@@ -1,0 +1,6 @@
+UnRAR 5.3.8	Nov.2015
+
+NoCrypt-only DLL source from
+www.rarlab.com/rar_add.htm
+
+DLL currently used by the RARBuilder plugin (optional update).

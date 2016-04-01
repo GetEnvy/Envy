@@ -1,0 +1,2256 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<skin xmlns="http://schemas.getenvy.com/Skin.xsd" version="1.0">
+
+<!-- Envy Default Finnish Skin File -->
+
+<!-- Translation based on default en.xml r1 --> <!-- (Shareaza 2.1.3.7) -->
+<!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
+
+<!-- This skin template represents current Envy defaults. -->
+<!-- Use this file as a basis for creating new language skins,   -->
+<!-- however be sure to include only sections that are changed:  -->
+<!-- Unedited English content limits compatibility & performance.-->
+<!-- Better to be concise than literal:  Please test visibility! -->
+
+<!-- Manifest -->
+<manifest
+	name="Suomi"
+	author="Toni Kaija"
+	updatedBy=""
+	description="Envy Default Finnish Skin File"
+	link="http://getenvy.com"
+	email=""
+	version="1.0.0.0"
+	type="Language"
+	language="fi"
+	priority="38"
+	prompt="Klikkaa tähän valitaksesi Suomen käyttökieleksi."
+/>
+
+<!-- Toolbar Definitions -->
+<toolbars>
+	<!-- MAIN WINDOW -->
+	<toolbar name="CMainWnd.Basic">
+		<button id="ID_NETWORK_CONNECT" text="Yhdistä"/>
+		<separator/>
+		<button id="ID_TAB_HOME" text="Koti"/>
+		<button id="ID_TAB_TRANSFERS" text="Lataukset"/>
+		<button id="ID_TAB_LIBRARY" text="Kirjasto"/>
+		<button id="ID_TAB_MEDIA" text="Media"/>
+		<button id="ID_TAB_SEARCH" text="Hae"/>
+	</toolbar>
+	<toolbar name="CMainWnd.Tabbed">
+		<button id="ID_TAB_CONNECT" text="Yhdistä"/>
+		<separator/>
+		<button id="ID_TAB_HOME" text="Koti"/>
+		<button id="ID_TAB_TRANSFERS" text="Siirrot"/>
+		<button id="ID_TAB_NETWORK" text="Verkko"/>
+		<button id="ID_TAB_LIBRARY" text="Kirjasto"/>
+		<button id="ID_TAB_MEDIA" text="Media"/>
+		<button id="ID_TAB_IRC" text="IRC"/>
+		<button id="ID_TAB_SEARCH" text="Hae"/>
+	</toolbar>
+	<toolbar name="CMainWnd.Windowed">
+		<button id="ID_NETWORK_CONNECT" text="Yhdistä"/>
+		<button id="ID_NETWORK_DISCONNECT"/>
+		<separator/>
+		<button id="ID_TAB_HOME"/>
+		<button id="ID_VIEW_SYSTEM"/>
+		<button id="ID_VIEW_NEIGHBOURS"/>
+		<button id="ID_VIEW_DOWNLOADS"/>
+		<button id="ID_VIEW_UPLOADS"/>
+		<button id="ID_VIEW_LIBRARY"/>
+		<button id="ID_VIEW_MEDIA"/>
+		<button id="ID_TAB_IRC"/>
+		<separator/>
+		<button id="ID_VIEW_SCHEDULER"/>
+		<button id="ID_VIEW_SECURITY"/>
+		<button id="ID_VIEW_HOSTS"/>
+		<button id="ID_VIEW_DISCOVERY"/>
+		<button id="ID_VIEW_TRAFFIC"/>
+		<button id="ID_VIEW_PACKETS"/>
+		<button id="ID_VIEW_SEARCH_MONITOR"/>
+		<button id="ID_VIEW_RESULTS_MONITOR"/>
+		<separator/>
+		<button id="ID_WINDOW_CASCADE"/>
+		<button id="ID_WINDOW_TILE_HORZ"/>
+		<button id="ID_WINDOW_TILE_VERT"/>
+		<separator/>
+		<button id="ID_TOOLS_SETTINGS"/>
+		<button id="ID_TOOLS_DOWNLOAD"/>
+		<button id="ID_NETWORK_SEARCH" text="Uusi Haku"/>
+	</toolbar>
+	<!-- SEARCH WINDOW -->
+	<toolbar name="CSearchWnd.Panel.Basic">
+		<button id="ID_SEARCH_DOWNLOAD" text="Lataa"/>
+		<separator/>
+		<button id="ID_BROWSE_LAUNCH" text="Selaa Käyttäjää"/>
+		<rightalign/>
+		<button id="ID_SEARCH_FILTER_RAW" text="Suodatin:" tip="Kirjoita sanoja joilla haluat suodattaa hakuasi"/>
+		<control id="IDC_FILTER_BOX" width="80"/>
+		<separator/>
+		<button id="ID_SEARCH_DETAILS" text="Näytä Tiedot"/>
+	</toolbar>
+	<toolbar name="CSearchWnd.Panel">
+		<button id="ID_SEARCH_DOWNLOAD" text="Lataa"/>
+		<separator/>
+		<button id="ID_BROWSE_LAUNCH" text="Selaa Käyttäjää"/>
+		<button id="ID_SECURITY_BAN" text="Ban"/>
+		<rightalign/>
+		<button id="ID_SEARCH_FILTER_RAW" text="Suodatin" tip="Kirjoita sanoja joilla haluat suodattaa hakuasi"/>
+		<control id="IDC_FILTER_BOX" width="80"/>
+		<separator/>
+		<button id="ID_SEARCH_DETAILS" text="Näytä Tiedot"/>
+		<button id="ID_SEARCH_PANEL" text="Näytä Haku"/>
+	</toolbar>
+	<toolbar name="CSearchWnd.Full">
+		<button id="ID_SEARCH_SEARCH" text="Etsi Uudestaan..."/>
+		<button id="ID_SEARCH_STOP" text="Pysäytä Haku"/>
+		<separator/>
+		<button id="ID_SEARCH_DOWNLOAD" text="Lataa"/>
+		<button id="ID_BROWSE_LAUNCH" text="Selaa Käyttäjää"/>
+		<button id="ID_SECURITY_BAN" text="Ban"/>
+		<rightalign/>
+		<button id="ID_SEARCH_FILTER_RAW" text="Suodatin" tip="Kirjoita sanoja joilla haluat suodattaa hakuasi"/>
+		<control id="IDC_FILTER_BOX" width="80"/>
+		<separator/>
+		<button id="ID_SEARCH_DETAILS" text="Näytä Tiedot"/>
+		<button id="ID_SEARCH_PANEL" text="Näytä Haku"/>
+	</toolbar>
+	<!-- BROWSE HOST WINDOW -->
+	<toolbar name="CBrowseHeaderCtrl">
+		<button id="ID_BROWSE_PROFILE" text="Profiili"/>
+		<button id="ID_BROWSE_FILES" text="Jaetut tiedostot"/>
+	</toolbar>
+	<toolbar name="CBrowseTree.Top">
+		<button id="ID_LIBRARY_TREE_PHYSICAL" text="Kansiot"/>
+		<button id="ID_LIBRARY_TREE_VIRTUAL" text="Järjestelijä"/>
+	</toolbar>
+	<toolbar name="CBrowseHostWnd.Basic">
+		<button id="ID_SEARCH_DOWNLOAD" text="Lataa Tiedosto"/>
+		<button id="ID_SEARCH_CHAT" text="Keskustele Käyttäjän kanssa"/>
+		<rightalign/>
+		<button id="ID_SEARCH_FILTER_RAW" text="Suodatin" tip="Kirjoita sanoja joilla haluat suodattaa hakuasi"/>
+		<control id="IDC_FILTER_BOX" width="80"/>
+		<separator/>
+		<button id="ID_SEARCH_DETAILS" text="Näytä Tiedot"/>
+	</toolbar>
+	<toolbar name="CBrowseHostWnd">
+		<button id="ID_SEARCH_DOWNLOAD" text="Lataa Tiedosto"/>
+		<button id="ID_BROWSE_STOP" text="Pysäytä"/>
+		<button id="ID_BROWSE_REFRESH" text="Virkistä"/>
+		<separator/>
+		<button id="ID_SEARCH_CHAT" text="Keskustele Käyttäjän kanssa"/>
+		<rightalign/>
+		<button id="ID_SEARCH_FILTER_RAW" text="Suodatin" tip="Kirjoita sanoja joilla haluat suodattaa hakuasi"/>
+		<control id="IDC_FILTER_BOX" width="80"/>
+		<separator/>
+		<button id="ID_SEARCH_DETAILS" text="Näytä Tiedot"/>
+	</toolbar>
+	<!-- DOWNLOADS WINDOW -->
+	<toolbar name="CDownloadsWnd.Basic">
+		<button id="ID_DOWNLOADS_LAUNCH_COMPLETE" text="Avaa tai Toista"/>
+		<button id="ID_DOWNLOADS_LAUNCH_COPY" text="Esikatsele Tiedosto"/>
+		<separator/>
+		<button id="ID_DOWNLOADS_FILE_DELETE" text="Poista Tiedosto"/>
+		<button id="ID_DOWNLOADS_CLEAR_INCOMPLETE" text="Peruuta Lataus"/>
+		<button id="ID_DOWNLOADS_CLEAR_COMPLETE" text="Poista Latauslistalta"/>
+		<button id="ID_DOWNLOADS_RESUME" text="Palaa Lataukseen"/>
+		<button id="ID_DOWNLOADS_PAUSE" text="Pysäytä Lataus"/>
+		<separator/>
+		<button id="ID_DOWNLOADS_EDIT" text="Torrentin Tiedot"/>
+		<button id="ID_DOWNLOADS_MONITOR" text="Näytä Monitori"/>
+		<rightalign/>
+		<button id="ID_DOWNLOADS_CLEAR_COMPLETED" text="Poista Valmiit listalta"/>
+	</toolbar>
+	<toolbar name="CDownloadsWnd">
+		<button id="ID_DOWNLOADS_LAUNCH_COMPLETE" text="Avaa tai Toista"/>
+		<button id="ID_DOWNLOADS_LAUNCH" text="Esikatsele Tiedosto"/>
+		<separator/>
+		<button id="ID_DOWNLOADS_FILE_DELETE" text="Poista Tiedosto"/>
+		<button id="ID_DOWNLOADS_CLEAR_INCOMPLETE" text="Peruuta Lataus"/>
+		<button id="ID_DOWNLOADS_CLEAR_COMPLETE" text="Poista Latauslistalta"/>
+		<button id="ID_DOWNLOADS_RESUME" text="Palaa Lataukseen"/>
+		<button id="ID_DOWNLOADS_PAUSE" text="Pysäytä Lataus"/>
+		<separator/>
+		<button id="ID_DOWNLOADS_EDIT" text="Torrentin Tiedot"/>
+		<button id="ID_DOWNLOADS_MONITOR" text="Näytä Monitori"/>
+		<rightalign/>
+		<button id="ID_TOOLS_DOWNLOAD" text="Lisää Lataus/Torrentti..."/>
+		<button id="ID_DOWNLOADS_CLEAR_COMPLETED" text="Poista Valmiit listalta"/>
+		<separator/>
+		<button id="ID_DOWNLOADS_FILTER_MENU" text="Suodatin"/>
+	</toolbar>
+	<!-- UPLOADS WINDOW -->
+	<toolbar name="CUploadsWnd.Basic">
+		<button id="ID_BROWSE_LAUNCH" text="Selaa Käyttäjää"/>
+		<button id="ID_UPLOADS_CHAT" text="Keskustele Käyttäjän kanssa"/>
+		<rightalign/>
+		<button id="ID_UPLOADS_CLEAR_COMPLETED" text="Poista valmiit listalta"/>
+	</toolbar>
+	<toolbar name="CUploadsWnd">
+		<button id="ID_UPLOADS_LAUNCH" text="Avaa tai Toista"/>
+		<separator/>
+		<button id="ID_UPLOADS_CLEAR" text="Poista Lähetys"/>
+		<button id="ID_UPLOADS_START" text="Aloita Nyt"/>
+		<button id="ID_UPLOADS_PRIORITY" text="Prioriteetti" visible="false"/>
+		<separator/>
+		<button id="ID_BROWSE_LAUNCH" text="Selaa Käyttäjää"/>
+		<button id="ID_UPLOADS_CHAT" text="Keskustele Käyttäjän kanssa"/>
+		<button id="ID_SECURITY_BAN" text="Estä Käyttäjä"/>
+		<rightalign/>
+		<button id="ID_UPLOADS_CLEAR_COMPLETED" text="Poista valmiit listalta"/>
+		<separator/>
+		<button id="ID_UPLOADS_FILTER_MENU" text="Suodatin"/>
+	</toolbar>
+	<!-- LIBRARY FRAME -->
+	<toolbar name="CLibraryTree.Top">
+		<button id="ID_LIBRARY_TREE_PHYSICAL" text="Kansiot"/>
+		<button id="ID_LIBRARY_TREE_VIRTUAL" text="Järjestelijä"/>
+	</toolbar>
+	<toolbar name="CLibraryTree.Virtual">
+		<button id="ID_LIBRARY_FOLDERS" text="Jaa tiedostoja..."/>
+	</toolbar>
+	<toolbar name="CLibraryHeaderBar.Physical">
+		<button id="ID_LIBRARY_PARENT" text="Ylös"/>
+		<button id="ID_LIBRARY_VIEW" text="Näytä"/>
+	</toolbar>
+	<toolbar name="CLibraryHeaderBar.Virtual">
+		<button id="ID_LIBRARY_PARENT" text="Ylös"/>
+		<button id="ID_LIBRARY_VIEW" text="Näytä"/>
+	</toolbar>
+	<!-- LIBRARY VIEWS -->
+	<toolbar name="CLibraryTileView.Physical">
+		<button id="ID_LIBRARY_FOLDERS" text="Jaa tiedostoja..."/>
+		<rightalign/>
+		<button id="ID_LIBRARY_SEARCH_QUICK" text="Etsi:"/>
+		<control id="IDC_SEARCH_BOX" width="90"/>
+		<separator/>
+		<button id="ID_LIBRARY_PANEL" text="Näytä Tiedot"/>
+	</toolbar>
+	<toolbar name="CLibraryTileView.Virtual">
+		<button id="ID_LIBRARY_FOLDER_NEW" text="Luo Albumi"/>
+		<button id="ID_LIBRARY_ALBUM_DELETE" text="Poista Albumi"/>
+		<rightalign/>
+		<button id="ID_LIBRARY_SEARCH_QUICK" text="Etsi:"/>
+		<control id="IDC_SEARCH_BOX" width="90"/>
+		<separator/>
+		<button id="ID_LIBRARY_PANEL" text="Näytä Tiedot"/>
+	</toolbar>
+	<toolbar name="CLibraryFileView.Physical.Basic">
+		<button id="ID_LIBRARY_LAUNCH" text="Avaa tai Toista"/>
+		<button id="ID_LIBRARY_ENQUEUE" text="Lisää Soittolistaan"/>
+		<separator/>
+		<rightalign/>
+		<button id="ID_LIBRARY_SEARCH_QUICK" text="Etsi:"/>
+		<control id="IDC_SEARCH_BOX" width="90"/>
+		<separator/>
+		<button id="ID_LIBRARY_PANEL" text="Näytä Tiedot"/>
+	</toolbar>
+	<toolbar name="CLibraryFileView.Physical">
+		<button id="ID_LIBRARY_LAUNCH" text="Avaa tai Toista"/>
+		<button id="ID_LIBRARY_ENQUEUE" text="Lisää Soittolistaan"/>
+		<separator/>
+		<button id="ID_LIBRARY_PROPERTIES" text="Ominaisuudet"/>
+		<button id="ID_WEBSERVICES_LIST" text="Web Services"/>
+		<separator/>
+		<button id="ID_LIBRARY_MOVE" text="Siirrä"/>
+		<button id="ID_LIBRARY_COPY" text="Kopioi"/>
+		<button id="ID_LIBRARY_DELETE" text="Poista"/>
+		<rightalign/>
+		<button id="ID_LIBRARY_SEARCH_QUICK" text="Etsi:"/>
+		<control id="IDC_SEARCH_BOX" width="90"/>
+		<separator/>
+		<button id="ID_LIBRARY_PANEL" text="Näytä Tiedot"/>
+	</toolbar>
+	<toolbar name="CLibraryFileView.Virtual.Basic">
+		<button id="ID_LIBRARY_LAUNCH" text="Avaa tai Toista"/>
+		<button id="ID_LIBRARY_ENQUEUE" text="Lisää Soittolistaan"/>
+		<button id="ID_LIBRARY_FOLDER_ENQUEUE" text="Toista Albumi"/>
+		<separator/>
+		<rightalign/>
+		<button id="ID_LIBRARY_SEARCH_QUICK" text="Etsi:"/>
+		<control id="IDC_SEARCH_BOX" width="90"/>
+		<separator/>
+		<button id="ID_LIBRARY_PANEL" text="Näytä Tiedot"/>
+	</toolbar>
+	<toolbar name="CLibraryFileView.Virtual">
+		<button id="ID_LIBRARY_LAUNCH" text="Avaa tai Toista"/>
+		<button id="ID_LIBRARY_ENQUEUE" text="Lisää Soittolistaan"/>
+		<button id="ID_LIBRARY_FOLDER_ENQUEUE" text="Toista Albumi"/>
+		<separator/>
+		<button id="ID_LIBRARY_PROPERTIES" text="Ominaisuudet"/>
+		<rightalign/>
+		<button id="ID_LIBRARY_SEARCH_QUICK" text="Etsi:"/>
+		<control id="IDC_SEARCH_BOX" width="90"/>
+		<separator/>
+		<button id="ID_LIBRARY_PANEL" text="Näytä Tiedot"/>
+	</toolbar>
+	<toolbar name="CLibraryCollectionView.Virtual">
+		<button id="ID_LIBRARY_FOLDER_ENQUEUE" text="Toista Koko Albumi"/>
+		<separator/>
+		<button id="ID_LIBRARY_FOLDER_DOWNLOAD" text="Lataa Kaikki Tiedostot"/>
+		<rightalign/>
+		<button id="ID_LIBRARY_SEARCH_QUICK" text="Etsi:"/>
+		<control id="IDC_SEARCH_BOX" width="90"/>
+		<separator/>
+		<button id="ID_LIBRARY_PANEL" text="Näytä Tiedot"/>
+	</toolbar>
+	<!-- MEDIA WINDOW -->
+	<toolbar name="CMediaFrame.Basic">
+		<button id="ID_MEDIA_PLAY" text="Toista"/>
+		<button id="ID_MEDIA_PAUSE" text="Keskeytä" visible="false"/>
+		<button id="ID_MEDIA_STOP" text="Pysäytä"/>
+		<separator/>
+		<label text="Hae:" tip="Hae kohtaan media tiedostossa"/>
+		<control id="IDC_MEDIA_POSITION" width="190" height="22"/>
+		<label text="Voimakkuus" tip="Säädä äänen voimakkuuta"/>
+		<control id="IDC_MEDIA_VOLUME" width="50" height="22"/>
+		<separator/>
+		<button id="ID_MEDIA_OPEN" text="Avaa Tiedosto"/>
+		<rightalign/>
+		<button id="ID_MEDIA_PREVIOUS" text="Edellinen"/>
+		<button id="ID_MEDIA_NEXT" text="Seuraava"/>
+		<separator/>
+		<button id="ID_MEDIA_PLAYLIST" text="Soittolista"/>
+	</toolbar>
+	<toolbar name="CMediaFrame">
+		<button id="ID_MEDIA_PLAY" text="Toista"/>
+		<button id="ID_MEDIA_PAUSE" text="Keskeytä" visible="false"/>
+		<button id="ID_MEDIA_STOP" text="Pysäytä"/>
+		<separator/>
+		<label text="Hae:" tip="Hae kohtaan media tiedostossa"/>
+		<control id="IDC_MEDIA_POSITION" width="190" height="22"/>
+		<label text="Nopeus:" tip="Säädä mediatiedoston toisto nopeutta"/>
+		<control id="IDC_MEDIA_SPEED" width="40" height="22"/>
+		<label text="Voimakkuus" tip="Säädä äänen voimakkuuta"/>
+		<control id="IDC_MEDIA_VOLUME" width="50" height="22"/>
+		<separator/>
+		<button id="ID_MEDIA_OPEN" text="Avaa"/>
+		<separator/>
+		<button id="ID_MEDIA_FULLSCREEN"/>
+		<button id="ID_MEDIA_ZOOM"/>
+		<button id="ID_MEDIA_SETTINGS"/>
+		<rightalign/>
+		<button id="ID_MEDIA_PREVIOUS"/>
+		<button id="ID_MEDIA_NEXT"/>
+		<separator/>
+		<button id="ID_MEDIA_PLAYLIST" text="Soittolista"/>
+	</toolbar>
+	<toolbar name="CMediaList">
+		<button id="ID_MEDIA_ADD"/>
+		<button id="ID_MEDIA_REMOVE"/>
+		<rightalign/>
+		<button id="ID_MEDIA_CLEAR" text="Tyhjennä"/>
+		<button id="ID_MEDIA_SAVE" text="Tallenna"/>
+	</toolbar>
+	<!-- IRC WINDOW -->
+	<!-- NEIGHBOURS WINDOW -->
+	<toolbar name="CNeighboursWnd.Basic">
+		<button id="ID_BROWSE_LAUNCH" text="Selaa Käyttäjää"/>
+		<button id="ID_NEIGHBOURS_CHAT" text="Keskustele Käyttäjän Kanssa"/>
+		<rightalign/>
+		<button id="ID_NETWORK_G2" text="Gnutella2"/>
+		<button id="ID_NETWORK_G1" text="Gnutella"/>
+		<button id="ID_NETWORK_ED2K" text="eDonkey"/>
+		<separator/>
+		<button id="ID_NEIGHBOURS_SETTINGS" text="Asetukset"/>
+	</toolbar>
+	<toolbar name="CNeighboursWnd">
+		<button id="ID_NETWORK_CONNECT_TO" text="Yhdistä..."/>
+		<button id="ID_NEIGHBOURS_DISCONNECT" text="Kataise Yhteys"/>
+		<separator/>
+		<button id="ID_SECURITY_BAN" text="Estä Käyttäjä"/>
+		<rightalign/>
+		<button id="ID_NETWORK_G2" text="Gnutella2"/>
+		<button id="ID_NETWORK_G1" text="Gnutella"/>
+		<button id="ID_NETWORK_ED2K" text="eDonkey"/>
+		<button id="ID_NETWORK_DC" text="DC++"/>
+		<button id="ID_NETWORK_BT" text="BitTorrent"/>
+		<separator/>
+		<button id="ID_NEIGHBOURS_SETTINGS" text="Asetukset"/>
+	</toolbar>
+	<!-- HIT MONITOR WINDOW -->
+	<toolbar name="CHitMonitorWnd">
+		<button id="ID_SEARCH_DOWNLOAD" text="Lataa"/>
+		<button id="ID_HITMONITOR_SEARCH" text="Kysy Uudelleen"/>
+		<separator/>
+		<button id="ID_HITMONITOR_PAUSE" text="Keskeytä"/>
+		<button id="ID_HITMONITOR_CLEAR" text="Tyhjennä"/>
+		<rightalign/>
+		<label text="Suodatin" tip="Kirjoita sanoja joilla haluat suodattaa hakuasi"/>
+		<control id="IDC_FILTER_BOX" width="80"/>
+		<button id="ID_SEARCH_FILTER_RAW" text="Lisää..."/>
+	</toolbar>
+	<!-- DISCOVERY SERVICES WINDOW Missing -->
+	<!-- HOST CACHE WINDOW -->
+	<toolbar name="CHostCacheWnd">
+		<button id="ID_HOSTCACHE_CONNECT" text="Yhdistä..."/>
+		<button id="ID_HOSTCACHE_DISCONNECT" text="Katkaise Yhteys"/>
+		<button id="ID_HOSTCACHE_REMOVE" text="Poista"/>
+		<rightalign/>
+		<button id="ID_HOSTCACHE_G2_HORIZON" text="Cluster"/>
+		<button id="ID_HOSTCACHE_G2_CACHE" text="Välimuisti"/>
+		<button id="ID_HOSTCACHE_G1_CACHE" text="Välimuisti"/>
+		<button id="ID_HOSTCACHE_ED2K_CACHE" text="Välimuisti"/>
+		<button id="ID_HOSTCACHE_DC_CACHE" text="Hubs"/>
+	</toolbar>
+	<!-- PRIVATE CHAT WINDOW -->
+	<toolbar name="CPrivateChatWnd">
+		<button id="ID_CHAT_BOLD"/>
+		<button id="ID_CHAT_ITALIC"/>
+		<button id="ID_CHAT_UNDERLINE"/>
+		<button id="ID_CHAT_COLOR"/>
+		<button id="ID_CHAT_EMOTICONS" text=" &#160; "/>
+		<separator/>
+		<button id="ID_CHAT_BROWSE" text="Selaa Käyttäjää"/>
+		<button id="ID_CHAT_PRIORITY" text="Anna Prioriteetti"/>
+		<!--button id="ID_CHAT_SEND_FILE" text="Lähetä Tiedosto"-->
+		<separator/>
+		<button id="ID_CHAT_CONNECT" text="Yhdistä" visible="false"/>
+		<button id="ID_CHAT_DISCONNECT" text="Katkaise Yhteys"/>
+	</toolbar>
+	<!-- WEBSERVICES -->
+	<!-- IMAGE VIEWER PLUGIN WINDOW -->
+</toolbars>
+<!-- Menu Definitions -->
+<menus>
+	<!-- TAB BAR POPUP MENUS -->
+	<menu name="CTabBar">
+		<item id="ID_MOVETAB_LEFT" text="Siirrä Vasen"/>
+		<item id="ID_MOVETAB_RIGHT" text="Siirrä Oikea"/>
+		<separator/>
+		<item id="ID_CHILD_CLOSE" text="_Close Window"/>
+	</menu>
+	<menu name="CTabBar.Child">
+		<item id="ID_MOVETAB_LEFT" text="Siirrä Vasen"/>
+		<item id="ID_MOVETAB_RIGHT" text="Siirrä Oikea"/>
+		<separator/>
+		<item id="ID_CHILD_MAXIMISE" text="_Full Screen"/>
+		<item id="ID_CHILD_RESTORE" text="_Restore"/>
+		<item id="ID_CHILD_MINIMISE" text="_Minimise"/>
+		<separator/>
+		<item id="ID_CHILD_CLOSE" text="_Close Window"/>
+	</menu>
+	<!-- TRAY MENU -->
+	<menu name="CMainWnd.Tray">	<!--"CRemoteWnd"-->
+		<item id="ID_TRAY_OPEN" text="Avaa Envy"/>
+		<separator/>
+		<item id="ID_WINDOW_REMOTE" text="Näytä Kauko-ohjain"/>
+		<item id="ID_TOOLS_SETTINGS" text="Näytä Asetukset..."/>
+		<item id="ID_NETWORK_SEARCH" text="Uusi Haku.."/>
+		<item id="ID_TOOLS_DOWNLOAD" text="Lataa Tiedosto..."/>
+		<separator/>
+		<item id="ID_MEDIA_PLAY" text="Toista Media"/>
+		<item id="ID_MEDIA_PAUSE" text="Keskeytä Media"/>
+		<item id="ID_MEDIA_PREVIOUS" text="Edellinen Raita"/>
+		<item id="ID_MEDIA_NEXT" text="Seuraava Raita"/>
+		<separator/>
+		<item id="ID_NETWORK_AUTO_CLOSE" text="Poistu Siirtojen Jälkeen"/>
+		<item id="ID_NETWORK_EXIT" text="Poistu"/>
+	</menu>
+	<!-- MAIN WINDOW MENU BAR -->
+	<menu name="CMainWnd.DropMenu" type="bar">
+		<menu text="&#160; Valikko &#160;">
+			<item id="ID_TOOLS_SETTINGS" text="_Asetukset..."/>
+			<menu text="_Verkko">
+				<item id="ID_NETWORK_CONNECT" text="_Yhdistä" shortcut="Ctrl+G"/>
+				<item id="ID_NETWORK_DISCONNECT" text="_Katkaise Yhteys"/>
+				<separator/>
+				<item id="ID_NETWORK_G2" text="Yhdistä Gnutella_2"/>
+				<item id="ID_NETWORK_G1" text="Yhdistä _Gnutella"/>
+				<item id="ID_NETWORK_ED2K" text="Yhdistä _eDonkey2000"/>
+				<item id="ID_NETWORK_DC" text="Yhdistä _DC++"/>
+				<item id="ID_NETWORK_BT" text="Yhdistä _BitTorrent"/>
+				<separator/>
+				<item id="ID_NETWORK_CONNECT_TO" text="Yhdistä..." shortcut="Ctrl+T"/>
+				<item id="ID_NETWORK_BROWSE_TO" text="_Selaa Käyttäjää"/>
+				<separator/>
+				<item id="ID_NETWORK_AUTO_CLOSE" text="Poistu _Siirtojen Jälkeen"/>
+				<item id="ID_NETWORK_EXIT" text="_Poistu"/>
+			</menu>
+			<menu text="_Työkalut">
+				<item id="ID_LIBRARY_FOLDERS" text="Jaa _Tiedostoja"/>
+				<item id="ID_OPEN_DOWNLOADS_FOLDER" text="_Open Downloads Folder"/>
+				<separator/>
+				<item id="ID_TOOLS_DOWNLOAD" text="_Lataa Tiedosto/Torrentti..."/>
+				<item id="ID_TOOLS_CREATETORRENT" text="_Create New .Torrent..."/>
+				<separator/>
+				<item id="ID_TOOLS_LANGUAGE" text="Valitse _Käyttökieli"/>
+				<item id="ID_TOOLS_SKIN" text="Valitse U_lkoasu"/>
+				<separator/>
+				<item id="ID_TOOLS_PROFILE" text="Editoi _Profiiliani..."/>
+				<item id="ID_TOOLS_WIZARD" text="QuickStart _Aloitus..."/>
+				<separator/>
+				<item id="ID_TOOLS_SETTINGS" text="_Envyn Asetukset..."/>
+			</menu>
+			<menu text="_Näytä">
+				<item id="ID_TAB_HOME" text="_Koti" shortcut="Ctrl+H"/>
+				<item id="ID_VIEW_NEIGHBOURS" text="N_aapurit" shortcut="Ctrl+F11"/>
+				<item id="ID_VIEW_SYSTEM" text="J_ärjestelmä" shortcut="F11"/>
+				<item id="ID_VIEW_DOWNLOADS" text="_Lataukset" shortcut="F3"/>
+				<item id="ID_VIEW_UPLOADS" text="_Lähetykset" shortcut="F4"/>
+				<item id="ID_VIEW_LIBRARY" text="_Kirjasto" shortcut="F5"/>
+				<item id="ID_VIEW_MEDIA" text="_Media" shortcut="F6"/>
+				<separator/>
+				<item id="ID_VIEW_SECURITY" text="Tu_rvallisuus" shortcut="F7"/>
+				<item id="ID_VIEW_HOSTS" text="K_äyttäjä Välimuisti" shortcut="F8"/>
+				<item id="ID_VIEW_DISCOVERY" text="Disco_very" shortcut="F9"/>
+				<item id="ID_VIEW_TRAFFIC" text="_Grafiikka" shortcut="F10"/>
+				<separator/>
+				<item id="ID_VIEW_PACKETS" text="_Paketti Tuloste" shortcut="Ctrl+F1"/>
+				<item id="ID_VIEW_SEARCH_MONITOR" text="Ha_ku Monitori" shortcut="Ctrl+F2"/>
+				<item id="ID_VIEW_RESULTS_MONITOR" text="O_suma Monitori" shortcut="Ctrl+F3"/>
+				<item id="ID_TAB_SEARCH" text="_Hae" shortcut="Ctrl+S"/>
+			</menu>
+			<menu text="_Ikkuna">
+				<item id="ID_VIEW_BASIC" text="N_ormaali Tila"/>
+				<item id="ID_VIEW_TABBED" text="V_älilehti Tila"/>
+				<item id="ID_VIEW_WINDOWED" text="_Ikkunoitu Tila"/>
+				<separator/>
+				<item id="ID_WINDOW_NAVBAR" text="Näytä _Navigaatio Palkki"/>
+				<item id="ID_WINDOW_TOOLBAR" text="Näytä _Työkalu Palkki"/>
+				<separator/>
+				<item id="ID_WINDOW_TABBAR" text="Näytä Välilehti _Palkki"/>
+				<item id="ID_WINDOW_MONITOR" text="Näytä _Monitori"/>
+				<item id="ID_WINDOW_REMOTE" text="Näytä _Kauko-ohjain"/>
+			</menu>
+			<menu text="_Ohje">
+				<item id="ID_HELP_FAQ" text="Envy _UKK (en)"/>
+				<separator/>
+				<menu text="_Ohjeet">
+					<item id="ID_HELP_GUIDE" text="Envy _Käyttäjän Ohje (en)"/>
+					<item id="ID_HELP_ROUTER" text="_Reititin Apu (en)"/>
+					<item id="ID_HELP_SECURITY" text="_Turvallisuus Ohje (en)"/>
+					<item id="ID_HELP_CODEC" text="_Koodekki Apu (en)"/>
+				</menu>
+				<separator/>
+				<menu text="_Sivustot">
+					<item id="ID_HELP_FORUMS" text="Envy _Foorumit (en)"/>
+					<separator/>
+					<!--item id="ID_HELP_UPDATE" text="Viimeisimmät uutiset (en)"-->
+					<!--item id="ID_HELP_WEB_1" text="Zeropaid.com (en)"-->
+				</menu>
+				<item id="ID_HELP_HOMEPAGE" text="_Envy site (en)"/>
+				<separator/>
+				<item id="ID_HELP_ABOUT" text="_Tietoja Envysta..."/>
+			</menu>
+			<item id="ID_NETWORK_EXIT" text="_Poistu"/>
+		</menu>
+	</menu>
+	<menu name="CMainWnd.Tabbed" type="bar">
+	<menu text="_Verkko">
+			<item id="ID_NETWORK_CONNECT" text="_Yhdistä" shortcut="Ctrl+G"/>
+			<item id="ID_NETWORK_DISCONNECT" text="_Katkaise Yhteys"/>
+			<separator/>
+			<item id="ID_NETWORK_G2" text="Yhdistä Gnutella_2"/>
+			<item id="ID_NETWORK_G1" text="Yhdistä _Gnutella"/>
+			<item id="ID_NETWORK_ED2K" text="Yhdistä _eDonkey2000"/>
+			<item id="ID_NETWORK_DC" text="Yhdistä _DC++"/>
+			<item id="ID_NETWORK_BT" text="Yhdistä _BitTorrent"/>
+			<separator/>
+			<item id="ID_NETWORK_CONNECT_TO" text="Yhdistä..." shortcut="Ctrl+T"/>
+			<item id="ID_NETWORK_BROWSE_TO" text="_Selaa Käyttäjää"/>
+			<separator/>
+			<item id="ID_NETWORK_AUTO_CLOSE" text="Poistu _Siirtojen Jälkeen"/>
+			<item id="ID_NETWORK_EXIT" text="P_oistu"/>
+		</menu>
+		<menu text="_Näytä">
+			<item id="ID_TAB_HOME" text="_Koti"/>
+			<item id="ID_TAB_LIBRARY" text="_Kirjasto"/>
+			<item id="ID_TAB_MEDIA" text="_Media Soitin"/>
+			<item id="ID_TAB_SEARCH" text="_Hae"/>
+			<item id="ID_TAB_TRANSFERS" text="_Siirrot"/>
+			<item id="ID_TAB_NETWORK" text="_Verkko"/>
+			<separator/>
+			<item id="ID_VIEW_SECURITY" text="Tu_rvallisuus"/>
+			<item id="ID_VIEW_HOSTS" text="K_äyttäjä Välimuisti"/>
+			<separator/>
+			<menu text="L_isää">
+				<item id="ID_VIEW_SYSTEM" text="J_ärjestelmä" shortcut="F11"/>
+				<item id="ID_VIEW_NEIGHBOURS" text="N_aapurit" shortcut="Ctrl+F11"/>
+				<item id="ID_VIEW_DOWNLOADS" text="_Lataukset" shortcut="F3"/>
+				<item id="ID_VIEW_UPLOADS" text="_Lähetykset" shortcut="F4"/>
+				<item id="ID_VIEW_LIBRARY" text="_Kirjasto" shortcut="F5"/>
+				<item id="ID_VIEW_MEDIA" text="_Media" shortcut="F6"/>
+				<separator/>
+				<item id="ID_VIEW_SECURITY" text="Tu_rvallisuus" shortcut="F7"/>
+				<item id="ID_VIEW_HOSTS" text="K_äyttäjä Välimuisti" shortcut="F8"/>
+				<item id="ID_VIEW_DISCOVERY" text="Disco_very" shortcut="F9"/>
+				<item id="ID_VIEW_TRAFFIC" text="_Grafiikka" shortcut="F10"/>
+				<separator/>
+				<item id="ID_VIEW_PACKETS" text="_Paketti Tuloste" shortcut="Ctrl+F1"/>
+				<item id="ID_VIEW_SEARCH_MONITOR" text="Ha_ku Monitori" shortcut="Ctrl+F2"/>
+				<item id="ID_VIEW_RESULTS_MONITOR" text="O_suma Monitori" shortcut="Ctrl+F3"/>
+			</menu>
+			<separator/>
+			<item id="ID_VIEW_BASIC" text="N_ormaali Tila"/>
+			<item id="ID_VIEW_TABBED" text="V_älilehti Tila"/>
+			<item id="ID_VIEW_WINDOWED" text="_Ikkunoitu Tila"/>
+		</menu>
+		<menu text="_Työkalut">
+			<item id="ID_LIBRARY_FOLDERS" text="Jaa _Tiedostoja"/>
+			<item id="ID_TOOLS_DOWNLOAD" text="_Lataa Tiedosto/Torrentti..."/>
+			<separator/>
+			<item id="ID_TOOLS_SKIN" text="Valitse U_lkoasu"/>
+			<item id="ID_TOOLS_LANGUAGE" text="Valitse _Käyttökieli"/>
+			<separator/>
+			<item id="ID_TOOLS_PROFILE" text="Editoi _Profiiliani..."/>
+			<item id="ID_TOOLS_WIZARD" text="QuickStart _Aloitus..."/>
+			<separator/>
+			<item id="ID_TOOLS_SETTINGS" text="_Envyn Asetukset..."/>
+		</menu>
+		<menu text="_Ikkuna">
+			<item id="ID_WINDOW_NAVBAR" text="Näytä _Navigaatio Palkki"/>
+			<item id="ID_WINDOW_TOOLBAR" text="Näytä _Työkalu Palkki"/>
+			<item id="ID_WINDOW_TABBAR" text="Näytä Välilehti _Palkki"/>
+			<item id="ID_WINDOW_MONITOR" text="Näytä _Monitori"/>
+			<item id="ID_WINDOW_REMOTE" text="Näytä _Kauko-ohjain"/>
+		</menu>
+		<menu text="_Ohje">
+			<item id="ID_HELP_FAQ" text="Envy _UKK (en)"/>
+			<separator/>
+			<menu text="_Ohjeet">
+				<item id="ID_HELP_GUIDE" text="Envy _Käyttäjän Ohje (en)"/>
+				<item id="ID_HELP_ROUTER" text="_Reititin Apu (en)"/>
+				<item id="ID_HELP_SECURITY" text="_Turvallisuus Ohje (en)"/>
+				<item id="ID_HELP_CODEC" text="_Koodekki Apu (en)"/>
+			</menu>
+			<separator/>
+			<menu text="_Sivustot">
+				<item id="ID_HELP_HOMEPAGE" text="_Envy site (en)"/>
+				<separator/>
+				<item id="ID_HELP_FORUMS" text="Envy _Foorumit (en)"/>
+				<item id="ID_HELP_FORUMS_LOCAL" text="Envy _Foorumit Suomi"/>
+				<!--item id="ID_HELP_UPDATE" text="Viimeisimmät uutiset (en)"-->
+				<!--item id="ID_HELP_WEB_1" text="Zeropaid.com (en)"-->
+			</menu>
+			<separator/>
+			<item id="ID_HELP_ABOUT" text="_Tietoja Envysta..."/>
+		</menu>
+	</menu>
+	<menu name="CMainWnd.Basic" type="bar">
+		<menu text="_Verkko">
+			<item id="ID_NETWORK_CONNECT" text="_Yhdistä" shortcut="Ctrl+G"/>
+			<separator/>
+			<item id="ID_NETWORK_G2" text="Yhdistä Gnutella_2"/>
+			<item id="ID_NETWORK_G1" text="Yhdistä _Gnutella"/>
+			<item id="ID_NETWORK_ED2K" text="Yhdistä _eDonkey"/>
+			<separator/>
+			<item id="ID_NETWORK_AUTO_CLOSE" text="Poistu Siirtojen Jälkeen"/>
+			<item id="ID_NETWORK_EXIT" text="P_oistu"/>
+		</menu>
+		<menu text="_Näytä">
+			<item id="ID_TAB_HOME" text="_Koti"/>
+			<item id="ID_TAB_LIBRARY" text="_Kirjasto"/>
+			<item id="ID_TAB_MEDIA" text="_Media Soitin"/>
+			<item id="ID_TAB_SEARCH" text="_Hae"/>
+			<item id="ID_TAB_TRANSFERS" text="_Lataukset"/>
+			<item id="ID_WINDOW_REMOTE" text="Näytä _Kauko-ohjain"/>
+			<separator/>
+			<menu text="_Lisää">
+				<item id="ID_VIEW_NEIGHBOURS" text="_Naapurit"/>
+				<item id="ID_VIEW_UPLOADS" text="_Lähetykset"/>
+				<separator/>
+				<item id="ID_VIEW_SECURITY" text="Tu_rvallisuus"/>
+				<item id="ID_VIEW_HOSTS" text="K_äyttäjä Välimuisti"/>
+				<item id="ID_VIEW_DISCOVERY" text="Disco_very"/>
+			</menu>
+			<separator/>
+			<item id="ID_VIEW_BASIC" text="_Normaali Tila"/>
+			<item id="ID_VIEW_TABBED" text="_Teho Tila"/>
+		</menu>
+		<menu text="_Työkalut">
+			<item id="ID_LIBRARY_FOLDERS" text="Jaa _Tiedostoja"/>
+			<item id="ID_TOOLS_DOWNLOAD" text="_Lataa Tiedosto/Torrentti..."/>
+			<separator/>
+			<item id="ID_TOOLS_SKIN" text="Valitse U_lkoasu"/>
+			<item id="ID_TOOLS_LANGUAGE" text="Valitse _Käyttökieli"/>
+			<separator/>
+			<item id="ID_TOOLS_PROFILE" text="Editoi _Profiiliani"/>
+			<item id="ID_TOOLS_WIZARD" text="QuickStart _Aloitus..."/>
+			<separator/>
+			<item id="ID_TOOLS_SETTINGS" text="_Envy Asetukset..."/>
+		</menu>
+		<menu text="_Ohje">
+			<item id="ID_HELP_FAQ" text="Envy _UKK (en)"/>
+			<separator/>
+			<menu text="_Ohjeet">
+				<item id="ID_HELP_GUIDE" text="Envy _Käyttäjän Ohje (en)"/>
+				<item id="ID_HELP_ROUTER" text="_Reititin Apu (en)"/>
+				<item id="ID_HELP_SECURITY" text="_Turvallisuus Ohje (en)"/>
+				<item id="ID_HELP_CODEC" text="_Koodekki Apu (en)"/>
+			</menu>
+			<separator/>
+			<menu text="_Sivustot">
+				<item id="ID_HELP_HOMEPAGE" text="_Envy site (en)"/>
+				<separator/>
+				<item id="ID_HELP_FORUMS" text="Envy _Foorumit (en)"/>
+				<item id="ID_HELP_FORUMS_LOCAL" text="Envy _Foorumit Suomi"/>
+				<!--item id="ID_HELP_UPDATE" text="Viimeisimmät uutiset (en)"-->
+				<!--item id="ID_HELP_WEB_1" text="Zeropaid.com (en)"-->
+			</menu>
+			<separator/>
+			<item id="ID_HELP_ABOUT" text="_Tietoja Envy..."/>
+		</menu>
+	</menu>
+	<menu name="CMainWnd.Windowed" type="bar">
+		<menu text="_Verkko">
+			<item id="ID_NETWORK_SEARCH" text="Uusi _Haku" shortcut="Ctrl+S"/>
+			<separator/>
+			<item id="ID_NETWORK_CONNECT" text="_Yhdistä" shortcut="Ctrl+G"/>
+			<item id="ID_NETWORK_DISCONNECT" text="_Katkaise Yhteys"/>
+			<separator/>
+			<item id="ID_NETWORK_CONNECT_TO" text="Yhdistä..." shortcut="Ctrl+T"/>
+			<item id="ID_NETWORK_BROWSE_TO" text="_Selaa Käyttäjää"/>
+			<separator/>
+			<item id="ID_NETWORK_G2" text="Yhdistä Gnutella_2"/>
+			<item id="ID_NETWORK_G1" text="Yhdistä _Gnutella"/>
+			<item id="ID_NETWORK_ED2K" text="Yhdistä _eDonkey2000"/>
+			<item id="ID_NETWORK_DC" text="Yhdistä _DC++"/>
+			<item id="ID_NETWORK_BT" text="Yhdistä _BitTorrent"/>
+			<separator/>
+			<item id="ID_NETWORK_AUTO_CLOSE" text="Sulje _Siirtojen Jälkeen"/>
+			<item id="ID_NETWORK_EXIT" text="P_oistu"/>
+		</menu>
+		<menu text="_Näytä">
+			<item id="ID_VIEW_SYSTEM" text="_Järjestelmä" shortcut="F11"/>
+			<item id="ID_VIEW_NEIGHBOURS" text="_Naapurit" shortcut="Ctrl+F11"/>
+			<item id="ID_VIEW_DOWNLOADS" text="_Lataukset" shortcut="F3"/>
+			<item id="ID_VIEW_UPLOADS" text="_Lähetykset" shortcut="F4"/>
+			<item id="ID_VIEW_LIBRARY" text="_Kirjasto" shortcut="F5"/>
+			<item id="ID_VIEW_MEDIA" text="_Media" shortcut="F6"/>
+			<separator/>
+			<item id="ID_VIEW_SECURITY" text="Tu_rvallisuus" shortcut="F7"/>
+			<item id="ID_VIEW_HOSTS" text="K_äyttäjä Välimuisti" shortcut="F8"/>
+			<item id="ID_VIEW_DISCOVERY" text="Disco_very" shortcut="F9"/>
+			<item id="ID_VIEW_TRAFFIC" text="_Grafiikka" shortcut="F10"/>
+			<separator/>
+			<item id="ID_VIEW_PACKETS" text="_Paketti Tuloste" shortcut="Ctrl+F1"/>
+			<item id="ID_VIEW_SEARCH_MONITOR" text="Ha_ku Monitori" shortcut="Ctrl+F2"/>
+			<item id="ID_VIEW_RESULTS_MONITOR" text="O_suma Monitori" shortcut="Ctrl+F3"/>
+			<separator/>
+			<item id="ID_VIEW_BASIC" text="Normaali Tila"/>
+			<item id="ID_VIEW_TABBED" text="Välilehti Tila"/>
+			<item id="ID_VIEW_WINDOWED" text="Ikkunoitu Tila"/>
+		</menu>
+		<menu text="_Työkalut">
+			<item id="ID_LIBRARY_FOLDERS" text="Jaa _Tiedostoja"/>
+			<item id="ID_TOOLS_DOWNLOAD" text="Lataa Tiedosto/Torrentti..."/>
+			<separator/>
+			<item id="ID_TOOLS_SKIN" text="Valitse U_koasu"/>
+			<item id="ID_TOOLS_LANGUAGE" text="Valitse _Käyttökieli"/>
+			<separator/>
+			<item id="ID_TOOLS_PROFILE" text="Editoi _Profiiliani"/>
+			<separator/>
+			<item id="ID_TOOLS_WIZARD" text="QuickStart _Aloitus..."/>
+			<item id="ID_TOOLS_SETTINGS" text="_Envyn Asetukset"/>
+		</menu>
+		<menu text="_Ikkuna">
+			<item id="ID_WINDOW_CASCADE" text="_Koko Näyttö"/>
+			<item id="ID_WINDOW_TILE_HORZ" text="Kasaa _Vierekkäin"/>
+			<item id="ID_WINDOW_TILE_VERT" text="Kasaa _Allekkain"/>
+			<separator/>
+			<item id="ID_WINDOW_NAVBAR" text="Näytä _Navigaatio Palkki"/>
+			<item id="ID_WINDOW_TOOLBAR" text="Näytä _Työkalu Palkki"/>
+			<item id="ID_WINDOW_TABBAR" text="Näytä Välilehti _Palkki"/>
+			<item id="ID_WINDOW_MONITOR" text="Näytä _Monitori"/>
+			<item id="ID_WINDOW_REMOTE" text="Näytä _Kauko-ohjain"/>
+		</menu>
+		<menu text="_Ohje">
+			<item id="ID_HELP_FAQ" text="Envy _UKK (en)"/>
+			<separator/>
+			<menu text="_Ohjeet">
+				<item id="ID_HELP_GUIDE" text="Envy _Käyttäjän Ohje (en)"/>
+				<item id="ID_HELP_ROUTER" text="_Reititin Apu (en)"/>
+				<item id="ID_HELP_SECURITY" text="_Turvallisuus Ohje (en)"/>
+				<item id="ID_HELP_CODEC" text="_Koodekki Apu (en)"/>
+			</menu>
+			<separator/>
+			<menu text="_Sivustot">
+				<item id="ID_HELP_HOMEPAGE" text="_Envy site (en)"/>
+				<separator/>
+				<item id="ID_HELP_FORUMS" text="Envy _Foorumit (en)"/>
+				<!--item id="ID_HELP_UPDATE" text="Viimeisimmät uutiset (en)"-->
+				<!--item id="ID_HELP_WEB_1" text="Zeropaid.com (en)"-->
+			</menu>
+			<separator/>
+			<item id="ID_HELP_ABOUT" text="_Tietoja Envysta..."/>
+		</menu>
+	</menu>
+	<!-- VIEW POPUP -->
+	<menu name="CMainWnd.View.Basic">
+		<item id="ID_TAB_HOME" text="_Koti"/>
+		<item id="ID_TAB_LIBRARY" text="_Kirjasto"/>
+		<item id="ID_TAB_MEDIA" text="_Media"/>
+		<item id="ID_TAB_SEARCH" text="_Hae"/>
+		<item id="ID_TAB_TRANSFERS" text="_Lataukset"/>
+		<separator/>
+		<menu text="_Lisää">
+			<item id="ID_VIEW_NEIGHBOURS" text="_Naapurit"/>
+			<item id="ID_VIEW_UPLOADS" text="_Lähetykset"/>
+			<item id="ID_VIEW_SECURITY" text="_Turvallisuus"/>
+			<item id="ID_VIEW_HOSTS" text="_Käyttäjä Välimuisti"/>
+		</menu>
+	</menu>
+	<menu name="CMainWnd.View.Tabbed">
+		<item id="ID_TAB_HOME" text="_Koti"/>
+		<item id="ID_TAB_LIBRARY" text="_Kirjasto"/>
+		<item id="ID_TAB_MEDIA" text="_Media"/>
+		<item id="ID_TAB_SEARCH" text="_Hae"/>
+		<item id="ID_TAB_TRANSFERS" text="_Siirrot"/>
+		<item id="ID_TAB_NETWORK" text="_Verkko"/>
+		<separator/>
+		<item id="ID_VIEW_SECURITY" text="Tu_rvallisuus"/>
+		<item id="ID_VIEW_HOSTS" text="_Käyttäjä Välimuisti"/>
+		<item id="ID_VIEW_DISCOVERY" text="Disco_very"/>
+		<item id="ID_VIEW_TRAFFIC" text="_Grafiikka"/>
+		<separator/>
+		<item id="ID_VIEW_PACKETS" text="_Paketti Tuloste"/>
+		<item id="ID_VIEW_SEARCH_MONITOR" text="Ha_ku Monitori"/>
+		<item id="ID_VIEW_RESULTS_MONITOR" text="O_suma Monitori"/>
+	</menu>
+	<menu name="CMainWnd.View.Windowed">
+		<item id="ID_NETWORK_SEARCH" text="Uusi _Haku"/>
+		<separator/>
+		<item id="ID_VIEW_SYSTEM" text="J_ärjestelmä"/>
+		<item id="ID_VIEW_NEIGHBOURS" text="N_aapurit"/>
+		<item id="ID_VIEW_DOWNLOADS" text="_Lataukset"/>
+		<item id="ID_VIEW_UPLOADS" text="_Lähetykset"/>
+		<item id="ID_VIEW_LIBRARY" text="_Kirjasto"/>
+		<item id="ID_VIEW_MEDIA" text="_Media Toistin"/>
+		<separator/>
+		<item id="ID_VIEW_SECURITY" text="Tu_rvallisuus"/>
+		<item id="ID_VIEW_HOSTS" text="_Käyttäjä Välimuisti"/>
+		<item id="ID_VIEW_DISCOVERY" text="Disco_very"/>
+		<item id="ID_VIEW_TRAFFIC" text="_Grafiikka"/>
+		<separator/>
+		<item id="ID_VIEW_PACKETS" text="_Paketti Tuloste"/>
+		<item id="ID_VIEW_SEARCH_MONITOR" text="Ha_ku Monitori"/>
+		<item id="ID_VIEW_RESULTS_MONITOR" text="O_suma Monitori"/>
+	</menu>
+	<!-- HOME MENU -->
+	<menu name="CHomeWnd.Basic">
+		<item id="ID_TAB_HOME" text="_Koti"/>
+		<item id="ID_TAB_LIBRARY" text="_Kirjasto"/>
+		<item id="ID_TAB_MEDIA" text="_Media"/>
+		<item id="ID_TAB_SEARCH" text="_Hae"/>
+		<item id="ID_TAB_TRANSFERS" text="_Lataukset"/>
+		<separator/>
+		<menu text="_Lisää">
+			<item id="ID_VIEW_NEIGHBOURS" text="_Naapurit"/>
+			<item id="ID_VIEW_UPLOADS" text="_Lähetykset"/>
+			<item id="ID_VIEW_SECURITY" text="_Turvallisuus"/>
+			<item id="ID_VIEW_HOSTS" text="_Käyttäjä Välimuisti"/>
+		</menu>
+	</menu>
+	<menu name="CHomeWnd.Tabbed">
+		<item id="ID_TAB_HOME" text="_Koti"/>
+		<item id="ID_TAB_LIBRARY" text="_Kirjasto"/>
+		<item id="ID_TAB_MEDIA" text="_Media"/>
+		<item id="ID_TAB_SEARCH" text="_Hae"/>
+		<item id="ID_TAB_TRANSFERS" text="_Siirrot"/>
+		<item id="ID_TAB_NETWORK" text="_Verkko"/>
+		<separator/>
+		<item id="ID_VIEW_SECURITY" text="Tu_rvallisuus"/>
+		<item id="ID_VIEW_HOSTS" text="_Käyttäjä Välimuisti"/>
+		<item id="ID_VIEW_DISCOVERY" text="Disco_very"/>
+		<item id="ID_VIEW_TRAFFIC" text="_Grafiikka"/>
+		<separator/>
+		<item id="ID_VIEW_PACKETS" text="_Paketti Tuloste"/>
+		<item id="ID_VIEW_SEARCH_MONITOR" text="Ha_ku Monitori"/>
+		<item id="ID_VIEW_RESULTS_MONITOR" text="O_suma Monitori"/>
+	</menu>
+	<!-- HOST CACHE WINDOW -->
+	<menu name="CHostCacheWnd">
+		<item id="ID_HOSTCACHE_CONNECT" text="_Yhdistä Nyt"/>
+		<item id="ID_HOSTCACHE_DISCONNECT" text="_Katkaise Yhteys"/>
+		<item id="ID_HOSTCACHE_PRIORITY" text="_Prioritetti Palvelin"/>
+		<separator/>
+		<item id="ID_HOSTCACHE_REMOVE" text="Poista Käyttäjä(t)"/>
+		<separator/>
+		<menu text="_Suodatin">
+			<item id="ID_HOSTCACHE_G2_HORIZON" text="Gnutella2 Cl_uster"/>
+			<item id="ID_HOSTCACHE_G2_CACHE" text="Gnutella_2 Välimuisti"/>
+			<item id="ID_HOSTCACHE_G1_CACHE" text="_Gnutella Välimuisti"/>
+			<item id="ID_HOSTCACHE_ED2K_CACHE" text="_eDonkey Palvelimet"/>
+		</menu>
+		<separator/>
+		<item id="ID_HOSTCACHE_IMPORT" text="_Tuo MET Tiedosto..."/>
+		<item id="ID_HOSTCACHE_FILE_DOWNLOAD" text="Lataa MET..."/>
+	</menu>
+	<!-- SEARCH WINDOW -->
+	<menu name="CSearchWnd.Basic">
+		<item id="ID_SEARCH_DOWNLOAD" text="_Lataa"/>
+		<separator/>
+		<item id="ID_BROWSE_LAUNCH" text="_Selaa Käyttäjää"/>
+		<item id="ID_SEARCH_CHAT" text="_Keskustele Käyttäjän Kanssa"/>
+		<separator/>
+		<menu text="_Etsi...">
+			<item id="ID_SEARCH_FOR_SIMILAR" text="Samankaltaisia Tiedostoja"/>
+			<separator/>
+			<item id="ID_SEARCH_FOR_ARTIST" text="Musiikkia samalta Artistilta"/>
+			<item id="ID_SEARCH_FOR_ALBUM" text="Musiikkia samalta Albumilta"/>
+			<item id="ID_SEARCH_FOR_SERIES" text="Jaksoja samasta Sarjasta"/>
+		</menu>
+		<menu id="ID_WEBSERVICES_LIST" text="_Web Palvelut">
+			<item id="ID_LIBRARY_BITPRINTS_WEB" text="Näytä _Bitprints listing"/>
+			<item id="ID_SEARCH_URI" text="Kopioi _URI..."/>
+		</menu>
+	</menu>
+	<menu name="CSearchWnd">
+		<item id="ID_SEARCH_DOWNLOAD" text="_Lataa"/>
+		<item id="ID_SEARCH_DOWNLOADNOW" text="Lataa Nyt"/>
+		<item id="ID_SEARCH_URI" text="Kopioi _URI"/>
+		<separator/>
+		<item id="ID_BROWSE_LAUNCH" text="Sel_aa Käyttäjää"/>
+		<item id="ID_SEARCH_CHAT" text="_Keskustele Käyttäjän Kanssa"/>
+		<item id="ID_SECURITY_BAN" text="_Estä Käyttäjä"/>
+		<separator/>
+		<menu text="_Etsi...">
+			<item id="ID_SEARCH_FOR_THIS" text="Tämä Tiedosto"/>
+			<item id="ID_SEARCH_FOR_SIMILAR" text="Samankaltaisia Tiedostoja"/>
+			<separator/>
+			<item id="ID_SEARCH_FOR_ARTIST" text="Musiikkia samalta Artistilta"/>
+			<item id="ID_SEARCH_FOR_ALBUM" text="Musiikkia samalta Albumilta"/>
+			<item id="ID_SEARCH_FOR_SERIES" text="Jaksoja samasta Sarjasta"/>
+			<separator/>
+			<item id="ID_VIEW_SEARCH_MONITOR" text="Etsi M_onitor"/>
+			<item id="ID_VIEW_RESULTS_MONITOR" text="_Hit Monitor"/>
+		</menu>
+		<menu id="ID_WEBSERVICES_LIST" text="_Web Palvelut">
+			<item id="ID_LIBRARY_BITPRINTS_WEB" text="Näytä _Bitprints listing"/>
+		</menu>
+		<separator/>
+		<item id="ID_SEARCH_FILTER" text="_Suodata Tuloksia..."/>
+		<item id="ID_SEARCH_FILTER_REMOVE" text="_Poista Suodatin"/>
+		<item id="ID_SEARCH_CLEAR" text="T_yhjennä Tulokset"/>
+		<separator/>
+		<item id="ID_SEARCH_COLUMNS" text="Editoi K_olumneja"/>
+	</menu>
+	<!-- BROWSE HOST WINDOW -->
+	<menu name="CBrowseHostWnd.Basic">
+		<item id="ID_SEARCH_DOWNLOAD" text="_Lataa"/>
+		<item id="ID_SEARCH_DOWNLOADNOW" text="Lataa _Nyt"/>
+		<separator/>
+		<item id="ID_SEARCH_CHAT" text="_Keskustele Käyttäjän Kanssa"/>
+		<separator/>
+		<menu text="_Etsi...">
+			<item id="ID_SEARCH_FOR_SIMILAR" text="Samankaltaisia Tiedostoja"/>
+			<separator/>
+			<item id="ID_SEARCH_FOR_ARTIST" text="Musiikkia samalta Artistilta"/>
+			<item id="ID_SEARCH_FOR_ALBUM" text="Musiikkia samalta Albumilta"/>
+			<item id="ID_SEARCH_FOR_SERIES" text="Jaksoja samasta Sarjasta"/>
+		</menu>
+		<menu text="_Web Tiedosto Informaatio">
+			<item id="ID_LIBRARY_BITPRINTS_WEB" text="Näytä _Bitprints listing"/>
+			<item id="ID_SEARCH_URI" text="Kopioi _URI..."/>
+		</menu>
+	</menu>
+	<menu name="CBrowseHostWnd">
+		<item id="ID_SEARCH_DOWNLOAD" text="_Lataa"/>
+		<item id="ID_SEARCH_DOWNLOADNOW" text="Lataa _Nyt"/>
+		<item id="ID_SEARCH_URI" text="Kopioi _URI"/>
+		<separator/>
+		<item id="ID_SEARCH_CHAT" text="_Keskustele Käyttäjän Kanssa"/>
+		<separator/>
+		<menu text="_Etsi...">
+			<item id="ID_SEARCH_FOR_THIS" text="Tämä Tiedosto"/>
+			<item id="ID_SEARCH_FOR_SIMILAR" text="Samankaltaisia Tiedostoja"/>
+			<separator/>
+			<item id="ID_SEARCH_FOR_ARTIST" text="Musiikkia samalta Artistilta"/>
+			<item id="ID_SEARCH_FOR_ALBUM" text="Musiikkia samalta Albumilta"/>
+			<item id="ID_SEARCH_FOR_SERIES" text="Jaksoja samasta Sarjasta"/>
+		</menu>
+		<menu id="ID_WEBSERVICES_LIST" text="_Web Palvelut">
+			<item id="ID_LIBRARY_BITPRINTS_WEB" text="Näytä _Bitprints listing"/>
+		</menu>
+		<separator/>
+		<item id="ID_SEARCH_FILTER" text="_Suodata Tuloksia..."/>
+		<item id="ID_SEARCH_FILTER_REMOVE" text="P_oista Suodatin"/>
+		<separator/>
+		<item id="ID_SEARCH_COLUMNS" text="Editoi K_olumneja"/>
+	</menu>
+	<!-- HIT MONITOR WINDOW -->
+	<menu name="CHitMonitorWnd">
+		<item id="ID_SEARCH_DOWNLOAD" text="_Lataa"/>
+		<item id="ID_SEARCH_URI" text="Kopioi _URI"/>
+		<separator/>
+		<item id="ID_BROWSE_LAUNCH" text="_Selaa Käyttäjää"/>
+		<item id="ID_SEARCH_CHAT" text="_Keskustele Käyttäjän Kanssa"/>
+		<separator/>
+		<menu text="_Etsi...">
+			<item id="ID_SEARCH_FOR_THIS" text="Tämä Tiedosto"/>
+			<item id="ID_SEARCH_FOR_SIMILAR" text="Samankaltaisia Tiedostoja"/>
+			<separator/>
+			<item id="ID_SEARCH_FOR_ARTIST" text="Musiikkia samalta Artistilta"/>
+			<item id="ID_SEARCH_FOR_ALBUM" text="Musiikkia samalta Albumilta"/>
+			<item id="ID_SEARCH_FOR_SERIES" text="Jaksoja samasta Sarjasta"/>
+		</menu>
+		<menu id="ID_WEBSERVICES_LIST" text="_Web Palvelut">
+			<item id="ID_LIBRARY_BITPRINTS_WEB" text="Näytä _Bitprints listing"/>
+		</menu>
+		<separator/>
+		<item id="ID_SEARCH_FILTER" text="_Suodata Tuloksia..."/>
+		<item id="ID_SEARCH_FILTER_REMOVE" text="_Poista Suodatin"/>
+		<separator/>
+		<item id="ID_HITMONITOR_PAUSE" text="_Keskeytä Näyttö"/>
+		<item id="ID_HITMONITOR_CLEAR" text="Tyhjennä Näyttö"/>
+		<separator/>
+		<item id="ID_SEARCH_COLUMNS" text="Editoi K_olumneja"/>
+	</menu>
+	<!-- DOWNLOADS WINDOW -->
+	<menu name="CDownloadsWnd.Download.Basic">
+		<item id="ID_DOWNLOADS_LAUNCH" text="_Esikatsele"/>
+		<separator/>
+		<item id="ID_DOWNLOADS_RESUME" text="_Palaa"/>
+		<item id="ID_DOWNLOADS_PAUSE" text="K_eskeytä"/>
+		<item id="ID_DOWNLOADS_CLEAR_INCOMPLETE" text="_Peruuta"/>
+		<separator/>
+		<item id="ID_DOWNLOADS_SOURCES" text="_Etsi Lisää Lähteitä"/>
+		<item id="ID_DOWNLOADS_REMOTE_PREVIEW" text="R_emote Preview"/>
+		<item id="ID_DOWNLOADS_VIEW_REVIEWS" text="_Näytä Arvostelut"/>
+		<separator/>
+		<item id="ID_DOWNLOADS_HELP" text="_Ohje..."/>
+	</menu>
+	<menu name="CDownloadsWnd.Download">
+		<item id="ID_DOWNLOADS_LAUNCH_COPY" text="Esi_katsele Kopio"/>
+		<item id="ID_DOWNLOADS_LAUNCH" text="_Esikatsele"/>
+		<item id="ID_DOWNLOADS_ENQUEUE" text="Lisää Soi_ttolistaan"/>
+		<separator/>
+		<item id="ID_DOWNLOADS_RESUME" text="_Palaa"/>
+		<item id="ID_DOWNLOADS_PAUSE" text="K_eskeytä"/>
+		<item id="ID_DOWNLOADS_CLEAR_INCOMPLETE" text="_Peruuta"/>
+		<separator/>
+		<item id="ID_DOWNLOADS_VIEW_REVIEWS" text="_Näytä Arvostelut"/>
+		<item id="ID_DOWNLOADS_REMOTE_PREVIEW" text="R_emote Preview"/>
+		<item id="ID_DOWNLOADS_SOURCES" text="_Etsi Lisää Lähteitä"/>
+		<separator/>
+		<menu text="_Lisää">
+			<item id="ID_DOWNLOADS_SHARE" text="_Jaa Tiedosto"/>
+			<separator/>
+			<item id="ID_DOWNLOADS_URI" text="_Kopioi URI"/>
+			<item id="ID_DOWNLOADS_ADD_SOURCE" text="_Lisää Lähde..."/>
+			<item id="ID_DOWNLOADS_MERGE" text="Sulautua paikallinen tiedosto"/>
+			<separator/>
+			<item id="ID_DOWNLOADS_MONITOR" text="Monitori _Ikkuna"/>
+		</menu>
+		<menu text="Ensisi_jaisia">
+			<item id="ID_DOWNLOADS_BOOST" text="_Hylkää Kaista Rajoitus"/>
+			<separator/>
+			<item id="ID_DOWNLOADS_MOVE_TOP" text="Siirrä _Ylös!"/>
+			<item id="ID_DOWNLOADS_MOVE_BOTTOM" text="Siirrä _Alas!"/>
+			<item id="ID_DOWNLOADS_MOVE_UP" text="Siirrä _Ylös"/>
+			<item id="ID_DOWNLOADS_MOVE_DOWN" text="Siirrä _Alas"/>
+		</menu>
+		<item id="ID_DOWNLOADS_HELP" text="_Ohje..."/>
+		<separator/>
+		<item id="ID_DOWNLOADS_EDIT" text="Kehittynyt _Editointi"/>
+	</menu>
+	<menu name="CDownloadsWnd.Source">
+		<item id="ID_TRANSFERS_CONNECT" text="_Yhdistä"/>
+		<separator/>
+		<item id="ID_BROWSE_LAUNCH" text="_Selaa Käyttäjää"/>
+		<item id="ID_TRANSFERS_CHAT" text="_Keskustele Käyttäjän Kanssa"/>
+		<item id="ID_DOWNLOADS_URI" text="Copy P2P Link (_URI)"/>
+		<separator/>
+		<item id="ID_TRANSFERS_DISCONNECT" text="_Katkaise Yhteys"/>
+		<item id="ID_TRANSFERS_FORGET" text="_Unohda"/>
+	</menu>
+	<menu name="CDownloadsWnd.Completed.Basic">
+		<item id="ID_DOWNLOADS_LAUNCH_COMPLETE" text="_Avaa tai Toista"/>
+		<item id="ID_DOWNLOADS_ENQUEUE" text="_Lisää Soittolistaan"/>
+		<item id="ID_DOWNLOADS_CLEAR_COMPLETE" text="_Tyhjennä"/>
+		<separator/>
+		<item id="ID_DOWNLOADS_FILE_DELETE" text="_Poista Tiedostot"/>
+	</menu>
+	<menu name="CDownloadsWnd.Completed">
+		<item id="ID_DOWNLOADS_LAUNCH_COMPLETE" text="_Avaa tai Toista"/>
+		<item id="ID_DOWNLOADS_ENQUEUE" text="_Lisää Soittolistaan"/>
+		<item id="ID_DOWNLOADS_FOLDER" text="Avaa _Folder"/>
+		<item id="ID_DOWNLOADS_CLEAR_COMPLETE" text="_Tyhjennä"/>
+		<separator/>
+		<item id="ID_DOWNLOADS_FILE_DELETE" text="_Poista Tiedostot"/>
+		<item id="ID_DOWNLOADS_RATE" text="_Arvioi Tiedosto..."/>
+		<item id="ID_DOWNLOADS_URI" text="Kopioi _URl"/>
+		<separator/>
+		<item id="ID_DOWNLOADS_EDIT" text="_Info"/>
+	</menu>
+	<menu name="CDownloadsWnd.Seeding">
+		<item id="ID_DOWNLOADS_LAUNCH_COMPLETE" text="_Avaa"/>
+		<item id="ID_DOWNLOADS_FOLDER" text="Avaa _Folder"/>
+		<item id="ID_DOWNLOADS_FILE_DELETE" text="_Delete Files"/>
+		<separator/>
+		<item id="ID_DOWNLOADS_CLEAR_COMPLETE" text="_Lopeta Jako"/>
+		<item id="ID_DOWNLOADS_PAUSE" text="Pa_use Seeding"/>
+		<item id="ID_DOWNLOADS_RESUME" text="_Resume Seeding"/>
+		<separator/>
+		<item id="ID_DOWNLOADS_URI" text="Get Magnet Link (_URI)"/>
+		<item id="ID_DOWNLOADS_HELP" text="_Ohje..."/>
+		<separator/>
+		<item id="ID_DOWNLOADS_EDIT" text="Torrentti _Info..."/>
+	</menu>
+	<menu name="CDownloadsWnd.Default">
+		<item id="ID_TOOLS_DOWNLOAD" text="Start Uusi Download"/>
+		<item id="ID_TOOLS_SEEDTORRENT" text="Seed Uusi Torrent"/>
+		<item id="ID_DOWNLOADS_CLEAR_COMPLETED" text="T_yhjennä Valmiit"/>
+		<separator/>
+		<item id="ID_DOWNLOADS_HELP" text="_Ohje..."/>
+	</menu>
+	<menu name="CDownloadTabBar">
+		<item id="ID_DOWNLOAD_GROUP_OPEN" text="Avaa _Folder"/>
+		<separator/>
+		<item id="ID_DOWNLOAD_GROUP_RESUME" text="_Jatka Kaikkia"/>
+		<item id="ID_DOWNLOAD_GROUP_PAUSE" text="K_eskeytä Kaikki"/>
+		<item id="ID_DOWNLOAD_GROUP_CLEAR" text="_Tyhjennä Kaikki"/>
+		<separator/>
+		<!--item id="ID_DOWNLOAD_GROUP_SHOW" text="_Näytä Ryhmät"-->
+		<item id="ID_DOWNLOAD_GROUP_MOVELEFT" text="Siirrä Ryhmä _Vasen"/>
+		<item id="ID_DOWNLOAD_GROUP_MOVERIGHT" text="Siirrä Ryhmä _Oikea"/>
+		<item id="ID_DOWNLOAD_GROUP_REMOVE" text="_Poista Ryhmä"/>
+		<item id="ID_DOWNLOAD_GROUP_NEW" text="_Uusi Ryhmä..."/>
+		<separator/>
+		<item id="ID_DOWNLOAD_GROUP_PROPERTIES" text="_Ominaisuudet"/>
+	</menu>
+	<menu name="CDownloadsWnd.Filter">
+		<item id="ID_DOWNLOADS_FILTER_ALL" text="Näytä _Kaikki"/>
+		<separator/>
+		<item id="ID_DOWNLOADS_FILTER_ACTIVE" text="Näytä A_ktiiviset"/>
+		<item id="ID_DOWNLOADS_FILTER_QUEUED" text="Näytä P_yytävät"/>
+		<item id="ID_DOWNLOADS_FILTER_SOURCES" text="Näytä _Lähteetömät"/>
+		<item id="ID_DOWNLOADS_FILTER_PAUSED" text="Näytä _Keskeytetyt"/>
+		<item id="ID_DOWNLOADS_FILTER_SEEDS" text="Näytä See_ds"/>
+		<separator/>
+		<item id="ID_DOWNLOADS_SHOW_SOURCES" text="Näytä Kaikki _Lähteet"/>
+		<separator/>
+		<item id="ID_DOWNLOAD_GROUP_SHOW" text="Näytä _Ryhmät"/>
+	</menu>
+	<!-- UPLOADS WINDOW -->
+	<menu name="CUploadsWnd.Upload.Basic">
+		<item id="ID_BROWSE_LAUNCH" text="_Selaa Käyttäjää"/>
+		<item id="ID_UPLOADS_CHAT" text="_Keskustele Käyttäjän Kanssa"/>
+		<separator/>
+		<item id="ID_UPLOADS_HELP" text="_Ohje..."/>
+	</menu>
+	<menu name="CUploadsWnd.Upload">
+		<item id="ID_UPLOADS_LAUNCH" text="Näytä _Library"/>
+		<item id="ID_UPLOADS_FOLDER" text="Avaa _Folder"/>
+		<separator/>
+		<item id="ID_UPLOADS_CLEAR" text="_Tyhjennä"/>
+		<item id="ID_UPLOADS_START" text="_Aloita Nyt"/>
+		<item id="ID_UPLOADS_PRIORITY" text="_Prioriteetti"/>
+		<separator/>
+		<item id="ID_BROWSE_LAUNCH" text="_Selaa Käyttäjää"/>
+		<item id="ID_UPLOADS_CHAT" text="_Keskustele Käyttäjän Kanssa"/>
+		<item id="ID_SECURITY_BAN" text="_Estä Käyttäjä"/>
+	</menu>
+	<menu name="CUploadsWnd.Default">
+		<item id="ID_LIBRARY_FOLDERS" text="Jaa Tiedostoja..."/>
+		<item id="ID_UPLOADS_SETTINGS" text="_Jonotus Asetukset..."/>
+		<item id="ID_UPLOADS_CLEAR_COMPLETED" text="T_yhjennä Valmiit"/>
+		<separator/>
+		<item id="ID_UPLOADS_HELP" text="_Ohje..."/>
+	</menu>
+	<menu name="CUploadsWnd.Filter">
+		<item id="ID_UPLOADS_FILTER_ALL" text="Näytä Kaikki"/>
+		<separator/>
+		<item id="ID_UPLOADS_FILTER_ACTIVE" text="Näytä Aktiiviset"/>
+		<item id="ID_UPLOADS_FILTER_QUEUED" text="Näytä Jonottavat"/>
+		<item id="ID_UPLOADS_FILTER_TORRENT" text="Näytä BitTorrent"/>
+		<item id="ID_UPLOADS_FILTER_HISTORY" text="Näytä Historia"/>
+		<separator/>
+		<item id="ID_UPLOADS_AUTO_CLEAR" text="Aut_omaattinen Tyhjennys"/>
+	</menu>
+	<!-- LIBRARY FRAME -->
+	<menu name="CLibraryTree.Physical.Basic">
+		<item id="ID_LIBRARY_SHARED_FOLDER" text="_Jaettu"/>
+		<item id="ID_LIBRARY_REMOVE" text="_Poista"/>
+		<separator/>
+		<item id="ID_LIBRARY_FOLDERS" text="Jaa Tiedostoja..."/>
+	</menu>
+	<menu name="CLibraryTree.Physical">
+		<item id="ID_LIBRARY_EXPLORE" text="_Selaa"/>
+		<item id="ID_LIBRARY_REMOVE" text="_Poista"/>
+		<separator/>
+		<item id="ID_LIBRARY_SHARED_FOLDER" text="_Jaettu"/>
+		<separator/>
+		<item id="ID_LIBRARY_SCAN" text="S_kannaa"/>
+		<item id="ID_LIBRARY_REBUILD" text="Ra_kenna Uudelleen"/>
+		<item id="ID_LIBRARY_FOLDERS" text="Jaa Tiedostoja..."/>
+		<separator/>
+		<item id="ID_SHELL_MENU" text="S_hell menu"/>
+		<separator/>
+		<item id="ID_LIBRARY_FOLDER_FILE_PROPERTIES" text="Tiedoston _Ominaisuudet"/>
+	</menu>
+	<menu name="CLibraryTree.Virtual.Basic">
+		<item id="ID_LIBRARY_FOLDER_ENQUEUE" text="_Toista Albumit"/>
+		<item id="ID_LIBRARY_FOLDER_DELETE" text="_Poista"/>
+		<separator/>
+		<item id="ID_LIBRARY_FOLDER_FILE_PROPERTIES" text="_Tiedosto Asetukset"/>
+		<item id="ID_LIBRARY_FOLDER_PROPERTIES" text="_Albumin Asetukset"/>
+	</menu>
+	<menu name="CLibraryTree.Virtual">
+		<item id="ID_LIBRARY_FOLDER_ENQUEUE" text="_Toista Albumit"/>
+		<item id="ID_LIBRARY_FOLDER_DELETE" text="_Poista"/>
+		<separator/>
+		<item id="ID_LIBRARY_REBUILD" text="_Rakenna Uudelleen"/>
+		<item id="ID_LIBRARY_EXPORT_COLLECTION" text="_Vie Kokoelma..."/>
+		<separator/>
+		<item id="ID_LIBRARY_FOLDER_NEW" text="_Uusi Kansio..."/>
+		<separator/>
+		<item id="ID_LIBRARY_FOLDER_FILE_PROPERTIES" text="_Tiedosto Asetukset"/>
+		<item id="ID_LIBRARY_FOLDER_PROPERTIES" text="_Albumin Asetukset"/>
+	</menu>
+	<menu name="CLibraryHistoryPanel">
+		<item id="ID_LIBRARY_CLEAR_HISTORY" text="Clear from _History"/>
+		<item id="ID_LIBRARY_CLEAR_HISTORY_ALL" text="Tyhjennä _Kaikki"/>
+	</menu>
+	<!-- LIBRARY VIEWS -->
+	<menu name="CLibraryTileView">
+		<item id="ID_LIBRARY_ALBUM_OPEN" text="_Avaa"/>
+		<item id="ID_LIBRARY_ALBUM_DELETE" text="_Poista"/>
+		<separator/>
+		<item id="ID_LIBRARY_ALBUM_PROPERTIES" text="_Ominaisuudet"/>
+	</menu>
+	<menu name="CLibraryFileView.Basic">
+		<item id="ID_LIBRARY_LAUNCH" text="_Avaa tai Toista"/>
+		<item id="ID_LIBRARY_ENQUEUE" text="_Lisää Soittolistaan"/>
+		<item id="ID_LIBRARY_DELETE" text="_Poista"/>
+		<separator/>
+		<item id="ID_LIBRARY_SHARED_FILE" text="_Jaettu"/>
+		<separator/>
+		<menu text="J_ärjestä">
+			<item id="ID_LIBRARY_RENAME" text="_Nimeä Uudelleen"/>
+			<item id="ID_LIBRARY_COPY" text="_Kopioi Tiedostoja..."/>
+			<item id="ID_LIBRARY_MOVE" text="_Siirrä Tiedostoja..."/>
+		</menu>
+		<menu text="E_tsi...">
+			<item id="ID_SEARCH_FOR_THIS" text="Tämä Tiedosto"/>
+			<item id="ID_SEARCH_FOR_SIMILAR" text="Samankaltaisia Tiedostoja"/>
+			<separator/>
+			<item id="ID_SEARCH_FOR_ARTIST" text="Musiikkia samalta Artistilta"/>
+			<item id="ID_SEARCH_FOR_ALBUM" text="Musiikkia samalta Albumilta"/>
+			<item id="ID_SEARCH_FOR_SERIES" text="Jaksoja samasta Sarjasta"/>
+		</menu>
+		<menu text="_Web Palvelut">
+			<item id="ID_LIBRARY_BITPRINTS_WEB" text="Näytä _Bitprints listing"/>
+			<item id="ID_LIBRARY_BITPRINTS_DOWNLOAD" text="_Lataa Metadata"/>
+			<separator/>
+			<item id="ID_LIBRARY_URI" text="_URI"/>
+		</menu>
+		<separator/>
+		<item id="ID_LIBRARY_PROPERTIES" text="_Ominaisuudet"/>
+	</menu>
+	<menu name="CLibraryFileView">
+		<item id="ID_LIBRARY_LAUNCH" text="_Avaa tai Toista"/>
+		<item id="ID_LIBRARY_ENQUEUE" text="Lisää Soi_ttolistaan"/>
+		<item id="ID_LIBRARY_DELETE" text="_Poista"/>
+		<separator/>
+		<item id="ID_LIBRARY_SHARED_FILE" text="_Jaettu"/>
+		<separator/>
+		<item id="ID_LIBRARY_URI" text="_URI"/>
+		<item id="ID_LIBRARY_CREATETORRENT" text="Luo .torrent Tiedosto"/>
+		<item id="ID_LIBRARY_LAUNCH_FOLDER" text="Open _Folder"/>
+		<separator/>
+		<menu text="J_ärjestä">
+			<item id="ID_LIBRARY_UNLINK" text="Poista _Tiedostot"/>
+			<separator/>
+			<item id="ID_LIBRARY_RENAME" text="_Nimeä Uudelleen"/>
+			<item id="ID_LIBRARY_COPY" text="_Kopioi Tiedostoja..."/>
+			<item id="ID_LIBRARY_MOVE" text="_Siirrä Tiedostoja..."/>
+		</menu>
+		<menu text="E_tsi...">
+			<item id="ID_SEARCH_FOR_THIS" text="Tämä Tiedosto"/>
+			<item id="ID_SEARCH_FOR_SIMILAR" text="Samankaltaisia Tiedostoja"/>
+			<separator/>
+			<item id="ID_SEARCH_FOR_ARTIST" text="Musiikkia samalta Artistilta"/>
+			<item id="ID_SEARCH_FOR_ALBUM" text="Musiikkia samalta Albumilta"/>
+			<item id="ID_SEARCH_FOR_SERIES" text="Jaksoja samasta Sarjasta"/>
+		</menu>
+		<menu text="_Web Palvelut">
+			<item id="ID_LIBRARY_BITPRINTS_WEB" text="Näytä _Bitprints listing"/>
+			<item id="ID_LIBRARY_BITPRINTS_DOWNLOAD" text="_Hanki Metadata"/>
+		</menu>
+		<menu text="_Metadata">
+			<item id="ID_LIBRARY_REBUILD_FILE" text="Re_build Hashes"/>
+			<item id="ID_LIBRARY_REFRESH_METADATA" text="_Refresh Metadata"/>
+			<item id="ID_LIBRARY_REBUILD_ANSI" text="_Paikallista Metadata"/>
+			<item id="ID_LIBRARY_COLUMNS" text="Valitse _Kolumnit..."/>
+		</menu>
+		<separator/>
+		<item id="ID_SHELL_MENU" text="S_hell menu"/>
+		<item id="ID_LIBRARY_PROPERTIES" text="_Ominaisuudet"/>
+	</menu>
+	<!-- MEDIA WINDOW -->
+	<menu name="CMediaFrame.Basic">
+		<item id="ID_MEDIA_PLAY" text="_Toista"/>
+		<item id="ID_MEDIA_PAUSE" text="Ke_skeytä"/>
+		<item id="ID_MEDIA_STOP" text="_Pysäytä"/>
+		<separator/>
+		<item id="ID_MEDIA_OPEN" text="_Avaa Media Tiedosto..."/>
+		<separator/>
+		<menu text="Soittolista">
+			<item id="ID_MEDIA_PREVIOUS" text="Ede_llinen"/>
+			<item id="ID_MEDIA_NEXT" text="_Seuraava"/>
+			<item id="ID_MEDIA_RANDOM" text="_Sattumanvarainen"/>
+			<item id="ID_MEDIA_REPEAT" text="J_atkuva Toisto"/>
+			<separator/>
+			<item id="ID_MEDIA_PLAYLIST" text="Näytä _Soittolista"/>
+		</menu>
+		<menu text="Videon Ko_ko">
+			<item id="ID_MEDIA_SIZE_ONE" text="_Alkuperäinen Koko"/>
+			<item id="ID_MEDIA_SIZE_TWO" text="_Kaksinkertainen Koko"/>
+			<item id="ID_MEDIA_SIZE_HALF" text="_Kolminkertainen Koko"/>
+			<item id="ID_MEDIA_SIZE_FILL" text="_Suurin"/>
+			<item id="ID_MEDIA_SIZE_DISTORT" text="_Täytä Ikkuna"/>
+			<separator/>
+			<item id="ID_MEDIA_ASPECT_DEFAULT" text="Oletus _Suhde"/>
+			<item id="ID_MEDIA_ASPECT_4_3" text="_4:3 Suhde (TV)"/>
+			<item id="ID_MEDIA_ASPECT_16_9" text="_16:9 (Elokuva)"/>
+			<separator/>
+			<item id="ID_MEDIA_FULLSCREEN" text="_Koko Näyttö"/>
+		</menu>
+		<menu text="Asetukset">
+			<item id="ID_MEDIA_VIS" text="Valitse _Visualisointi..."/>
+			<separator/>
+			<item id="ID_MEDIA_PLAYLIST" text="Näytä _Soittolista"/>
+			<item id="ID_MEDIA_STATUS" text="Näytä _Status Linja"/>
+			<separator/>
+			<item id="ID_MEDIA_SETTINGS" text="_Media Asetukset..."/>
+		</menu>
+	</menu>
+	<menu name="CMediaFrame">
+		<item id="ID_MEDIA_PLAY" text="_Toista"/>
+		<item id="ID_MEDIA_PAUSE" text="Ke_skeytä"/>
+		<item id="ID_MEDIA_STOP" text="_Pysäytä"/>
+		<separator/>
+		<item id="ID_MEDIA_OPEN" text="_Avaa Media Tiedosto..."/>
+		<item id="ID_MEDIA_CLOSE" text="_Sulje Tiedosto"/>
+		<separator/>
+		<menu text="Soittolista">
+			<item id="ID_MEDIA_PREVIOUS" text="Ede_llinen"/>
+			<item id="ID_MEDIA_NEXT" text="_Seuraava"/>
+			<item id="ID_MEDIA_RANDOM" text="_Sattumanvarainen"/>
+			<item id="ID_MEDIA_REPEAT" text="J_atkuva Toisto"/>
+			<separator/>
+			<item id="ID_MEDIA_PLAYLIST" text="Näytä _Soittolista"/>
+		</menu>
+		<menu text="Videon Ko_ko">
+			<item id="ID_MEDIA_SIZE_ONE" text="_Alkuperäinen Koko"/>
+			<item id="ID_MEDIA_SIZE_TWO" text="_Kaksinkertainen Koko"/>
+			<item id="ID_MEDIA_SIZE_HALF" text="_Kolminkertainen Koko"/>
+			<item id="ID_MEDIA_SIZE_FILL" text="_Suurin"/>
+			<item id="ID_MEDIA_SIZE_DISTORT" text="_Täytä Ikkuna"/>
+			<separator/>
+			<item id="ID_MEDIA_ASPECT_DEFAULT" text="Oletus _Suhde"/>
+			<item id="ID_MEDIA_ASPECT_4_3" text="_4:3 Suhde (TV)"/>
+			<item id="ID_MEDIA_ASPECT_16_9" text="_16:9 (Elokuva)"/>
+			<separator/>
+			<item id="ID_MEDIA_FULLSCREEN" text="_Koko Näyttö"/>
+		</menu>
+		<menu text="Asetukset">
+			<item id="ID_MEDIA_VIS" text="Valitse _Visualisointi..."/>
+			<separator/>
+			<item id="ID_MEDIA_PLAYLIST" text="Näytä _Soittolista"/>
+			<item id="ID_MEDIA_STATUS" text="Näytä _Status Linja"/>
+			<separator/>
+			<item id="ID_MEDIA_SETTINGS" text="_Media Asetukset..."/>
+		</menu>
+	</menu>
+	<menu name="CMediaFrame.Zoom">
+		<item id="ID_MEDIA_SIZE_ONE" text="_Alkuperäinen Koko"/>
+		<item id="ID_MEDIA_SIZE_TWO" text="_Kaksinkertainen Koko"/>
+		<item id="ID_MEDIA_SIZE_HALF" text="_Kolminkertainen Koko"/>
+		<item id="ID_MEDIA_SIZE_FILL" text="_Suurin"/>
+		<item id="ID_MEDIA_SIZE_DISTORT" text="_Täytä Ikkuna"/>
+		<separator/>
+		<item id="ID_MEDIA_ASPECT_DEFAULT" text="Oletus _Suhde"/>
+		<item id="ID_MEDIA_ASPECT_4_3" text="_4:3 Suhde (TV)"/>
+		<item id="ID_MEDIA_ASPECT_16_9" text="_16:9 (Elokuva)"/>
+	</menu>
+	<menu name="CMediaList">
+		<item id="ID_MEDIA_SELECT" text="_Toista"/>
+		<separator/>
+		<item id="ID_MEDIA_ADD" text="_Lisää Tiedosto"/>
+		<item id="ID_MEDIA_ADD_FOLDER" text="Lisää _Kansio..."/>
+		<item id="ID_MEDIA_REMOVE" text="_Poista"/>
+		<separator/>
+		<item id="ID_MEDIA_RANDOM" text="Sattumanvarainen Tila"/>
+		<item id="ID_MEDIA_REPEAT" text="Jatkuva Toisto Tila"/>
+		<separator/>
+		<item id="ID_MEDIA_OPEN" text="_Avaa Soittolista..."/>
+		<item id="ID_MEDIA_SAVE" text="_Tallenna Soittolista..."/>
+		<item id="ID_MEDIA_CLEAR" text="_Tyhjennä Soittolista"/>
+		<separator/>
+		<item id="ID_MEDIA_PLAYLIST" text="Näytä Soi_ttolista"/>
+	</menu>
+	<!-- SYSTEM WINDOW -->
+	<menu name="CSystemWnd">
+		<menu id="ID_SYSTEM_VERBOSE" text="_Laaja Tila">
+			<item id="ID_SYSTEM_VERBOSE_ERROR" text="_Error"/>
+			<item id="ID_SYSTEM_VERBOSE_WARNING" text="_Warning"/>
+			<item id="ID_SYSTEM_VERBOSE_NOTICE" text="_Notice"/>
+			<item id="ID_SYSTEM_VERBOSE_INFO" text="_Info"/>
+			<item id="ID_SYSTEM_VERBOSE_DEBUG" text="_Debug"/>
+		</menu>
+		<item id="ID_SYSTEM_TIMESTAMP" text="_Aikaleima"/>
+		<separator/>
+		<item id="ID_SYSTEM_COPY" text="_Copy" shortcut="Ctrl+C"/>
+		<separator/>
+		<item id="ID_SYSTEM_CLEAR" text="Tyhjennä _Puskuri"/>
+	</menu>
+	<!-- NEIGHBOURS WINDOW -->
+	<menu name="CNeighboursWnd.Basic">
+		<item id="ID_BROWSE_LAUNCH" text="_Selaa Käyttäjää"/>
+		<item id="ID_NEIGHBOURS_CHAT" text="_Keskustele Käyttäjän Kanssa"/>
+		<separator/>
+		<item id="ID_NEIGHBOURS_DISCONNECT" text="_Katkaise Yhteys"/>
+		<separator/>
+		<item id="ID_NEIGHBOURS_URI" text="Kopioi _URl"/>
+	</menu>
+	<menu name="CNeighboursWnd">
+		<item id="ID_BROWSE_LAUNCH" text="_Selaa Käyttäjää"/>
+		<item id="ID_NEIGHBOURS_CHAT" text="_Keskustele Käyttäjän Kanssa"/>
+		<item id="ID_SECURITY_BAN" text="E_stä Käyttäjä"/>
+		<separator/>
+		<item id="ID_NEIGHBOURS_DISCONNECT" text="_Katkaise Yhteys"/>
+		<separator/>
+		<item id="ID_NEIGHBOURS_URI" text="Kopioi _URl"/>
+		<separator/>
+		<menu text="_Verkot">
+			<item id="ID_NETWORK_CONNECT" text="_Yhdistä"/>
+			<item id="ID_NETWORK_DISCONNECT" text="_Katkaise Yhteys"/>
+			<separator/>
+			<item id="ID_NETWORK_G2" text="Gnutella_2"/>
+			<item id="ID_NETWORK_G1" text="_Gnutella"/>
+			<item id="ID_NETWORK_ED2K" text="_eDonkey2000"/>
+			<item id="ID_NETWORK_DC" text="_DC++"/>
+			<item id="ID_NETWORK_BT" text="_BitTorrent"/>
+			<separator/>
+			<item id="ID_VIEW_DISCOVERY" text="Disco_very"/>
+			<item id="ID_VIEW_HOSTS" text="K_äyttäjä Välimuisti"/>
+			<item id="ID_VIEW_SECURITY" text="Tu_rvallisuus"/>
+		</menu>
+		<menu text="_Monitori">
+			<item id="ID_NEIGHBOURS_VIEW_ALL" text="Näytä _Kaikki Liikenne"/>
+			<item id="ID_NEIGHBOURS_VIEW_INCOMING" text="Näytä Sisääntuleva Liikenne"/>
+			<item id="ID_NEIGHBOURS_VIEW_OUTGOING" text="Näytä _Ulosmenevä Liikenne"/>
+		</menu>
+	</menu>
+	<!-- SEARCH MONITOR WINDOW -->
+	<menu name="CSearchMonitorWnd">
+		<item id="ID_HITMONITOR_SEARCH" text="_Etsi Tätä"/>
+		<separator/>
+		<item id="ID_SEARCHMONITOR_PAUSE" text="_Keskeytä Näyttö"/>
+		<item id="ID_SEARCHMONITOR_CLEAR" text="_Tyhjennä Puskuri"/>
+	</menu>
+	<!-- GRAPH/TRAFFIC WINDOW -->
+	<menu name="CTrafficWnd">
+		<item id="ID_TRAFFIC_SETUP" text="_Valitse Grafiikat..."/>
+		<separator/>
+		<item id="ID_TRAFFIC_GRID" text="_Verkkolinjat"/>
+		<item id="ID_TRAFFIC_AXIS" text="_Axis"/>
+		<item id="ID_TRAFFIC_LEGEND" text="_Merkkien Selitys"/>
+		<separator/>
+		<item id="ID_TRAFFIC_CLEAR" text="_Tyhjennä"/>
+		<separator/>
+		<item id="ID_TRAFFIC_WINDOW" text="_Uusi Ikkuna"/>
+	</menu>
+	<!-- SECURITY WINDOW -->
+	<menu name="CSecurityWnd">
+		<item id="ID_SECURITY_ADD" text="_Lisää Sääntö..."/>
+		<separator/>
+		<item id="ID_SECURITY_REMOVE" text="_Poista"/>
+		<item id="ID_SECURITY_RESET" text="Rese_toi"/>
+		<separator/>
+		<item id="ID_SECURITY_MOVE_UP" text="Siirä _Ylös"/>
+		<item id="ID_SECURITY_MOVE_DOWN" text="Siirrä _Alas"/>
+		<separator/>
+		<item id="ID_SECURITY_IMPORT" text="_Tuo..."/>
+		<item id="ID_SECURITY_EXPORT" text="V_ie..."/>
+		<separator/>
+		<menu text="Oletus K_äytäntö">
+			<item id="ID_SECURITY_POLICY_ACCEPT" text="_Salli"/>
+			<item id="ID_SECURITY_POLICY_DENY" text="_Estä"/>
+		</menu>
+		<separator/>
+		<item id="ID_SECURITY_EDIT" text="_Ominaisuudet"/>
+	</menu>
+	<!-- DISCOVERY SERVICES WINDOW -->
+	<menu name="CDiscoveryWnd">
+		<item id="ID_DISCOVERY_ADD" text="_Lisaa Palvelu..."/>
+		<separator/>
+		<item id="ID_DISCOVERY_EDIT" text="_Ominaisuudet"/>
+		<item id="ID_DISCOVERY_REMOVE" text="_Poista"/>
+		<separator/>
+		<item id="ID_DISCOVERY_QUERY" text="_Kysele Nyt"/>
+		<item id="ID_DISCOVERY_ADVERTISE" text="M_Mainosta"/>
+		<item id="ID_DISCOVERY_BROWSE" text="Selaa _Statistiikkaa"/>
+		<separator/>
+		<item id="ID_DISCOVERY_GNUTELLA" text="Näytä _Booststraps"/>
+		<item id="ID_DISCOVERY_WEBCACHE" text="Näytä _GWebCaches"/>
+		<item id="ID_DISCOVERY_SERVERLIST" text="Näytä Pal_velin.met:it"/>
+		<item id="ID_DISCOVERY_BLOCKED" text="Näytä _Tukossa"/>
+	</menu>
+	<!-- PRIVATE CHAT FRAME -->
+	<menu name="CPrivateChatWnd">
+		<item id="ID_CHAT_CONNECT" text="_Yhdistä"/>
+		<item id="ID_CHAT_DISCONNECT" text="_Katkaise Yhteys"/>
+		<separator/>
+		<item id="ID_CHAT_BROWSE" text="_Selaa Käyttäjää"/>
+		<!--item id="ID_CHAT_SEND_FILE" text="_Lähetä tiedosto..."-->
+		<item id="ID_CHAT_PRIORITY" text="Anna _Prioriteetti"/>
+		<separator/>
+		<menu text="_Formatoi">
+			<item id="ID_CHAT_BOLD" text="Aseta _Lihavointi"/>
+			<item id="ID_CHAT_ITALIC" text="Aseta _Kursiivointi"/>
+			<item id="ID_CHAT_UNDERLINE" text="Aseta _Alleviivaus"/>
+			<item id="ID_CHAT_COLOR" text="Aseta _Väri"/>
+			<item id="ID_CHAT_EMOTICONS" text="_Hymiöt"/>
+		</menu>
+		<separator/>
+		<item id="ID_CHAT_TIMESTAMP" text="_Aikaleima"/>
+		<item id="ID_CHAT_CLEAR" text="T_yhjennä Ikkuna"/>
+	</menu>
+</menus>
+<!-- Documents -->
+<documents>
+	<!-- Home View -->
+	<document name="CHomeViewCtrl" leftMargin="20" topMargin="0">
+		<styles>
+			<style name="default">
+				<font size="13"/>
+			</style>
+			<style name="heading">
+				<font face="Segoe UI" size="18" weight="400"/>
+			</style>
+		</styles>
+		<anchor id="Header" width="32" height="152"/>
+		<newline gap="0"/>
+		<group id="1">
+			<icon res="136" width="32" height="32"/><gap size="8"/>
+			<heading align="middle">YHDISTÄ NYT</heading>
+			<newline gap="8" indent="42"/>
+			<text>Tervetuloa Envyan! &#160;Sinä et ole tällä hetkellä yhteydessä mihinkään p2p verkkoon. &#160;</text>
+			<link target="command:ID_NETWORK_CONNECT">Klikkaa tähän aloittaaksesi!</link>
+			<newline gap="18" indent="0"/>
+		</group>
+		<group id="2">
+			<icon res="130" width="32" height="32"/><gap size="8"/>
+			<heading align="middle">ETSI LLA</heading>
+			<newline gap="8" indent="42"/>
+			<anchor id="SearchBox" width="256" height="80"/>
+			<newline gap="12" indent="0"/>
+			<icon res="122" width="32" height="32" target="command:shell:downloads"/><gap size="8"/>
+			<heading align="middle">OMAT LATAUKSET</heading>
+			<newline gap="8" indent="42"/>
+			<text>Or open your completed </text>
+			<link target="command:shell:downloads">downloads folder.</link>
+			<newline gap="18" indent="0"/>
+		</group>
+		<group id="3">
+			<icon res="120" width="32" height="32" target="command:ID_TOOLS_SETTINGS"/><gap size="8"/>
+			<heading align="middle">PÄIVITYS HUOMAUTUS</heading>
+			<newline gap="8" indent="42"/>
+			<text id="Päivitä"/>
+			<newline gap="6"/>
+			<link target="command:upgrade">Klikkaa tähän päivittääksesi</link>
+			<newline gap="18" indent="0"/>
+		</group>
+		<group id="5">
+			<icon res="180" width="32" height="32" target="command:ID_TOOLS_WIZARD"/><gap size="8"/>
+			<heading align="middle">VAROITUS: SINUT ON PALOMUURTETTU</heading>
+			<newline gap="8" indent="42"/>
+			<text color="FF0000">Envy on huomannut että olet NAT reitittimen tai palomuurin takana,
+			ja sinä et voi ottaa yhteyksiä netistä. &#160;</text>
+			<text color="FF0000" format="b">Tämä saattaa aiheuttaa huonon lataus tehon.</text>
+			<newline gap="6"/>
+			<link target="command:ID_HELP_ROUTER">Klikkaa tähän kunika konfiguroida reitittimesi tai palomuurisi</link>
+			<newline gap="18" indent="0"/>
+		</group>
+		<icon res="120" width="32" height="32" target="command:ID_TOOLS_SETTINGS"/><gap size="8"/>
+		<heading align="middle">KUSTOMOI ENVY A</heading>
+		<newline gap="12" indent="42"/>
+		<icon res="196" width="16" height="16" target="command:ID_TOOLS_SKIN"/><gap size="8"/>
+		<link target="command:ID_TOOLS_SKIN" align="middle" format="bu">Ulkoasut</link><gap size="6"/>
+		<text align="middle">- Muuta Envyn ulkonäköä</text>
+		<newline gap="8"/>
+		<icon res="138" width="16" height="16" target="command:ID_VIEW_SECURITY"/><gap size="8"/>
+		<link target="command:ID_VIEW_SECURITY" align="middle">Turvallisuus Suodattimet</link><gap size="6"/>
+		<text align="middle">- Päivitä blocklist välttää huonoja hakutuloksia</text>
+		<newline gap="8"/>
+		<icon res="197" width="16" height="16" target="command:ID_TOOLS_WIZARD"/><gap size="8"/>
+		<link target="command:ID_TOOLS_WIZARD" align="middle">Asetus Velho</link><gap size="6"/>
+		<text align="middle">- Editoi Envy:n Asetuksia</text>
+		<newline gap="8"/>
+		<icon res="182" width="16" height="16" target="command:ID_HELP_FAQ"/><gap size="8"/>
+		<link target="command:ID_HELP_FAQ" align="middle">Pika Apu</link><gap size="6"/>
+		<text align="middle">- Hanki joitain perus ohjeita Envyn käyttämiseen, or </text>
+		<link target="command:ID_TAB_IRC" align="middle">IRC.</link>
+		<newline gap="8"/>
+		<icon res="201" width="16" height="16" target="command:ID_HELP_FORUMS_LOCAL"/><gap size="8"/>
+		<link target="command:ID_HELP_FORUMS_LOCAL" align="middle">Paikallinen Forum</link><gap size="6"/>
+		<text align="middle">- Mene Suomen kielen keskustelufoorumi</text>
+		<newline gap="18" indent="0"/>
+		<group id="4">
+			<icon res="120" width="32" height="32"/>
+			<gap size="8"/>
+			<heading align="middle">KAUKO OHJAUS ON KÄYTÖSSÄ</heading>
+			<newline gap="8" indent="42"/>
+			<text>Envyn Kauko Ohjaus on päällä. Voit kontrolloida Envya nettiselaimellasi osoitteessa:</text>
+			<newline gap="6"/>
+			<link id="RemoteAccessURL"/>
+			<text>&#160;- tai -&#160;</text>
+			<link id="RemoteAccessLocal"/>
+			<newline gap="16" indent="0"/>
+		</group>
+	</document>
+	<!-- Homepanel Taskboxes -->
+	<document name="CHomeConnectionBox" title="Yhteys" leftMargin="6" topMargin="6">
+		<styles>
+			<style name="default">
+				<font size="11"/>
+			</style>
+		</styles>
+		<group id="1">
+			<para align="center">
+				<text format="b">Ei yhdistetty</text>
+				<newline gap="4"/>
+				<link target="command:ID_NETWORK_CONNECT">Klikkaa tähän yhdistääksesi</link>
+			</para>
+		</group>
+		<icon group="20" command="ID_NETWORK_G2"/>
+		<text group="20" align="middle" format="b">&#160;Gnutella2: </text>
+		<text group="21" align="middle">Ei Yhdistetty</text>
+		<text group="22" align="middle">Yhdistetään...</text>
+		<text group="23" align="middle">Yhdistetty</text>
+		<text group="24" align="middle" id="G2Hubs">%i hubia</text>
+		<text group="25" align="middle" id="G2Leaves">%i lehteä</text>
+		<newline group="20" gap="2"/>
+		<icon group="10" command="ID_NETWORK_G1"/>
+		<text group="10" align="middle" format="b">&#160;Gnutella: </text>
+		<text group="11" align="middle">Ei Yhdistetty</text>
+		<text group="12" align="middle">Yhdistetään...</text>
+		<text group="13" align="middle">Yhdistetty</text>
+		<text group="14" align="middle" id="G1Hubs">%i peers</text>
+		<text group="15" align="middle" id="G1Leaves">%i lehteä</text>
+		<newline group="10" gap="2"/>
+		<icon group="30" command="ID_NETWORK_ED2K"/>
+		<text group="30" align="middle" format="b">&#160;eDonkey: </text>
+		<text group="31" align="middle">Ei Yhdistetty</text>
+		<text group="32" align="middle">Yhdistetään...</text>
+		<text group="33" align="middle">Yhdistetty</text>
+		<newline group="30" gap="2"/>
+		<group id="2">
+			<para align="center">
+				<newline gap="4"/>
+				<text>Olet ollut yhteydessä </text>
+				<newline gap="0"/>
+				<text id="ConnectedHours" format="b">%i </text>
+				<text>tuntia ja </text>
+				<text id="ConnectedMinutes" format="b">%i </text>
+				<text>minuuttia.</text>
+			</para>
+		</group>
+	</document>
+	<document name="CHomeLibraryBox" title="Oma Kirjasto" leftMargin="6" topMargin="6">
+		<styles>
+			<style name="default">
+				<font size="11"/>
+			</style>
+		</styles>
+		<para align="center">
+			<group id="2">
+				<text>Sinä et ole ladannut yhtään tiedostoa viime aikoina.</text>
+				<newline gap="8"/>
+			</group>
+			<link target="command:ID_VIEW_LIBRARY">Mene Kirjastoon</link>
+			<newline gap="4"/>
+			<text id="LibraryFiles" format="b">%lu </text>
+			<text>tiedostoa (</text>
+			<text id="LibraryVolume" format="b">%s</text>
+			<text>)</text>
+			<group id="1">
+				<newline gap="8"/>
+				<text>Envy scannaa ja prosessoi </text>
+				<text id="LibraryHashRemaining" format="b">%lu</text>
+				<text>tiedostoa.</text>
+				<newline gap="8"/>
+			</group>
+			<group id="3">
+				<link target="command:ID_LIBRARY_HASH_PRIORITY">Klikkaa tähän käsitelläksesi nopeammin</link>
+			</group>
+			<group id="5">
+				<link target="command:ID_LIBRARY_HASH_PRIORITY">Klikkaa tähän käsitelläksesi hitaammin</link>
+			</group>
+		</para>
+	</document>
+	<document name="CHomeDownloadsBox" title="Omat Lataukset" leftMargin="6" topMargin="6">
+		<styles>
+			<style name="default">
+				<font size="11"/>
+			</style>
+		</styles>
+		<para align="center">
+			<group id="1">
+				<text>Sinä et ole vielä lataamassa yhtään tiedostoa.</text>
+				<newline gap="4"/>
+			</group>
+			<link id="DownloadsNone" target="command:ID_VIEW_DOWNLOADS">Mene Latauksiin</link>
+			<link id="DownloadsOne" target="command:ID_VIEW_DOWNLOADS" format="bu">Mene Lataukseen (1)</link>
+			<link id="DownloadsMany" target="command:ID_VIEW_DOWNLOADS" format="bu">Mene Latauksiin (%i)</link>
+			<newline gap="4"/>
+			<text id="DownloadedNone">No tiedostoa (</text>
+			<text id="DownloadedOne">1 tiedoston (</text>
+			<text id="DownloadedMany">%i tiedostoa (</text>
+			<text id="DownloadedVolume" format="b">%s</text>
+			<text>)</text>
+		</para>
+	</document>
+	<document name="CHomeUploadsBox" title="Lähetykset" leftMargin="6" topMargin="6">
+		<styles>
+			<style name="default">
+				<font size="11"/>
+			</style>
+		</styles>
+		<para align="center">
+			<text id="UploadsNone" format="b">Ei aktiivisia lähetyksiä</text>
+			<link id="UploadsOne" target="command:ID_VIEW_UPLOADS" format="bu">1 aktiivinen lähetys</link>
+			<link id="UploadsMany" target="command:ID_VIEW_UPLOADS" format="bu">%i aktiivista lähetystä</link>
+			<newline gap="4"/>
+			<group id="1">
+				<text id="TorrentsOne">1 jaettu torrentti</text>
+				<text id="TorrentsMany">%i jaettua torrenttia</text>
+				<newline gap="4"/>
+			</group>
+			<text id="UploadedNone">Sinä et ole lähettänyt yhtään tiedostoa tänään.</text>
+			<text id="UploadedOne">1 tiedoston (%s)</text>
+			<text id="UploadedMany">%i tiedostoa (%s)</text>
+		</para>
+	</document>
+	<!-- Settings Pages -->
+	<document name="CGeneralSettingsGroup" title="Yleiset" leftMargin="8" topMargin="8">
+		<text format="b">Tervetuloa Envyn Asetus Manageriin</text>
+		<newline gap="16"/>
+		<text>Envy Asetus Manageri antaa käyttäjien kustomoida täysin kuinka
+			Envy toimii. Asetukset </text>
+		<text format="b">Yleiset </text>
+		<text>alue joka liittyy käyttö kokemukseen.</text>
+		<newline gap="16" indent="16"/>
+		<link target="page:CGeneralSettingsPage" format="b">Yleinen:</link>
+		<text>&#160;Yleiset käyttöliitymän asetukset kuten työkaluvihjeet, pienennys käyttäytyminen, formaattien määrä, kyselyt, jne.</text>
+		<newline gap="10"/>
+		<link target="page:CLibrarySettingsPage" format="b">Kirjasto:</link>
+		<text>&#160;Kirjaston näyttö ja managerointi, ja tiedostojen avaus.</text>
+		<newline gap="10"/>
+		<link target="page:CMediaSettingsPage" format="b">Media Toistin:</link>
+		<text>&#160;Missä ja milloin käyttää sisään rakennettuaEnvyn Media Keskusta.</text>
+		<newline gap="10"/>
+		<link target="page:CIRCSettingsPage" format="b">IRC:</link>
+		<text>&#160;IRC chatroom connection settings and display options.</text>
+		<newline gap="10"/>
+		<link target="page:CCommunitySettingsPage" format="b">Yhteisö:</link>
+		<text>&#160;Sinun profiilisi, chat ja pikaviesti asetukset.</text>
+		<newline gap="10"/>
+		<link target="page:CRemoteSettingsPage" format="b">Kauko-ohjaus:</link>
+		<text>&#160;Aseta mahdollisuus kontrolloida Envya nettiselaimellasi.</text>
+		<newline gap="10"/>
+		<link target="page:CWebSettingsPage" format="b">Web:</link>
+		<text>&#160;Integroi Envy sinun nettiselaimeesi hyväksyäksesi p2p linkkejä ja ladata sisältöä.</text>
+	</document>
+	<document name="CInternetSettingsGroup" title="Internet" leftMargin="8" topMargin="8">
+		<text format="b">Tervetuloa Envyn Asetus Manageriin</text>
+		<newline gap="16"/>
+		<text>Envy Asetus Manageri antaa käyttäjien kustomoida täysin kuinka
+			Envy toimii. Asetukset </text>
+		<text format="b">Internet </text>
+		<text>alue joka kontrolloi kuinka Envy käyttäytyy toisien koneiden kanssa jaetuissa p2p verkoissa.</text>
+		<newline gap="16" indent="16"/>
+		<link target="page:CConnectionSettingsPage" format="b">Yhteys:</link>
+		<text>&#160;Internet yhteytesi nopeus ja toimivuus.</text>
+		<newline gap="10"/>
+		<link target="page:CDownloadsSettingsPage" format="b">Lataukset:</link>
+		<text>&#160;Latauksen tuotos, ajastus, varmistus, aikakatkaisut ja managerointi.</text>
+		<newline gap="10"/>
+		<link target="page:CUploadsSettingsPage" format="b">Lähetykset:</link>
+		<text>&#160;Lähetys kyky, jonotus, estäminen, aikakatkaisut ja erikois pyynnöt.</text>
+		<newline gap="10"/>
+		<link target="page:CSchedulerSettingsPage" format="b">Scheduler:</link>
+		<text>&#160;Limit download connections based on a periodic schedule.</text>
+	</document>
+	<!-- Browse User Profile -->
+	<document name="CBrowseHostProfile.1">
+		<heading id="Nick"/>
+		<heading>n Profiili</heading>
+		<newline gap="8"/>
+		<group id="1">
+			<newline gap="8" indent="0"/>
+			<text format="b">Nimi</text>
+			<newline gap="2" indent="8"/>
+			<text id="FullName"/>
+		</group>
+		<group id="2">
+			<newline gap="8" indent="0"/>
+			<text format="b">Sijainti</text>
+			<newline gap="2" indent="8"/>
+			<text id="FullLocation"/>
+		</group>
+		<group id="3">
+			<newline gap="8" indent="0"/>
+			<text format="b">Kuvaus</text>
+			<newline gap="2" indent="8"/>
+			<text id="GenderMale">Mies</text>
+			<text id="GenderFemale">Nainen</text>
+			<text>,</text>
+			<text id="Age"/>
+		</group>
+		<group id="5">
+			<newline gap="8" indent="0"/>
+			<text format="b">Yhteydenotto info</text>
+			<newline gap="1" indent="8"/>
+		</group>
+		<group id="40">
+			<newline gap="1"/>
+			<icon res="203"/><gap size="5"/>
+			<link id="ContactEmail" align="middle"/>
+		</group>
+		<group id="44">
+			<newline gap="1"/>
+			<icon res="206"/><gap size="5"/>
+			<link id="ContactMSN"/>
+		</group>
+		<group id="41">
+			<newline gap="1"/>
+			<icon res="207"/><gap size="5"/>
+			<link id="ContactYahoo"/>
+		</group>
+		<group id="42">
+			<newline gap="1"/>
+			<icon res="205"/><gap size="5"/>
+			<link id="ContactICQ"/>
+		</group>
+		<group id="43">
+			<newline gap="1"/>
+			<icon res="204"/><gap size="5"/>
+			<link id="ContactAOL"/>
+		</group>
+		<group id="45">
+			<newline gap="1"/>
+			<icon res="204"/><gap size="5"/>
+			<link id="ContactJabber"/>
+		</group>
+		<group id="4">
+			<newline gap="8" indent="0"/>
+			<text format="b">Kiinostukset</text>
+			<newline gap="2" indent="8"/>
+			<text id="Interests"/>
+		</group>
+		<group id="6">
+			<newline gap="8" indent="0"/>
+			<text format="b">Bio</text>
+			<newline gap="2" indent="8"/>
+			<text id="BioText"/>
+		</group>
+	</document>
+	<document name="CBrowseHostProfile.2">
+		<newline gap="40" indent="0"/>
+		<text format="b">Jaetut Tiedostot</text>
+		<newline gap="4" indent="8"/>
+		<icon res="137" target="command:ID_BROWSE_FILES"/><gap size="5"/>
+		<link target="command:ID_BROWSE_FILES" align="middle">Näytä Jaetut Tiedostot</link>
+		<group id="2">
+			<newline gap="16" indent="0"/>
+			<text format="b">Yhteisö</text>
+			<newline gap="4" indent="8"/>
+			<icon res="127" target="command:ID_SEARCH_CHAT"/>
+			<gap size="5"/>
+			<link target="command:ID_SEARCH_CHAT" align="middle">Keskustele Käyttäjän Kanssa</link>
+		</group>
+		<group id="3">
+			<newline gap="16" indent="0"/>
+			<text format="b">Suosikki Netti Linkit</text>
+			<newline gap="4" indent="8" id="Bookmarks"/>
+		</group>
+		<newline gap="16" indent="0"/>
+	</document>
+	<!-- Download help documents -->
+	<document name="DownloadHelp.Select">
+		<text format="b">Lataus Alue</text>
+		<newline gap="8"/>
+		<text>Tämä on missä tällä hetkellä latauksessa olevat tiedostot vat näytillä. Sinä voit katsoa
+		yksittäisiä lähteitä laajentamalla jokaisen tiedoston missä on vasemmalla puolella + merkki.</text>
+		<newline gap="8"/>
+		<text>Sinä voit käyttää tätä komentoa saadaksesi tietoa tietystä latauksesta.
+		Valitse vain lataus ja valitse tämä komento uudelleen.</text>
+	</document>
+	<document name="DownloadHelp.Completed">
+		<text format="b">Tämä lataus on valmis</text>
+		<newline gap="8"/>
+		<text>Envy on lopettanut tämän tiedoston lataamisen ja varmistanut, että
+		se 100% ladattu. Se on myös siirtänyt tiedoston sinun lataukset kansioon.</text>
+	</document>
+	<document name="DownloadHelp.Moving">
+		<text format="b">Tätä latausta siirretään</text>
+		<newline gap="8"/>
+		<text>Envy on lopettanut tämän tiedoston lataamisen ja varmistanut, että
+		se on ladattu kokonaan. Sitä ollaan nyt siirtämässä ja/tai purkamassa lataukset kansioosi.</text>
+	</document>
+	<document name="DownloadHelp.Paused">
+		<text format="b">Tämä lataus on pysäytetty</text>
+		<newline gap="8"/>
+		<text>Sinä olet pysäyttänyt tämän latauksen. Jos haluat, että sitä aletaan taas lataamaan sinun
+		klikata</text><text format="b"> Jatka Latausta</text><text> komentoa.</text>
+	</document>
+	<document name="DownloadHelp.DiskFull">
+		<text format="b">Levy on täynnä</text>
+		<newline gap="8"/>
+		<text>Envy on pysäyttänyt latauksen automaattisesti koska kovalevy
+		näyttää olevan täynnä, tai lataus tiedostoa ei voida kirjoittaa. Jos haluat
+		jatkaa latausta, ole hyvä ja vapauta tilaa kovalevyltäsi ja/tai tarkista
+		että keskeneräiset kansion on luettavissa, sitten jatka
+		latausta.</text>
+	</document>
+	<document name="DownloadHelp.Verifying">
+		<text format="b">Tätä latausta ollaan varmistamassa</text>
+		<newline gap="8"/>
+		<text>Tämä lataus on valmis ja Envy tarkistaa varmistaakseen
+		että se on sama kuin alkuperäinen tiedosto. Jos vahingoittuneita osia
+		löydetään, Envy korjaa ne automaattisesti.</text>
+	</document>
+	<document name="DownloadHelp.Downloading">
+		<text format="b">Tämä lataus on aktiivinen!</text>
+		<newline gap="8"/>
+		<text>Tämä tiedosto on nyt latauksessa. Jos tiedosto latautuu liian hitaasti,
+		sinä voit yrittää etsiä verkosta lisää lähteitä</text>
+		<text format="b"> Etsi Lisää Lähteitä</text><text> komennolla. Jos nopeus ei
+		parannu se voi johtua rajoitetusta lähetys nopeudesta jota käyttäjä jolta lataat käyttää.
+		Lataus nopeus yleensä nopeentuu ajan kuluessa.</text>
+	</document>
+	<document name="DownloadHelp.Pending">
+		<text format="b">Tämä lataus on Pyynnössä</text>
+		<newline gap="8"/>
+		<text>Tämä lataus odottaa jotakuta alkamaan lähettämään sitä.
+		Envy on valmis aloittamaan latauksen, mutta kukaan ei ole lähettämässä sitä
+		tällä hetkellä. Sinä olet varmaan odottamassa käyttäjän jonoissa, ja lataus
+		voi alkaa miloin tahansa. Sinä voit tarkastella yksittäisiä lähteitä
+		nähdäksesi jokaisen jonossa olevan. Jos jaat tiedostoja itse, se saattaa
+		parantaa mahdollisuuksia aloittaa lataus nopeasti.</text>
+	</document>
+	<document name="DownloadHelp.Queued">
+		<text format="b">Tämä lataus on jonossa</text>
+		<newline gap="8"/>
+		<text>Tämä lataus odottaa, että joku muu sinun latauksistasi valmistuisi.
+		Sinu lataus rajoituksesi määrittävät kuinka monta latausta sinulla voi olla aktiivisena
+		mihinkä annettuna aikana tahansa, varmistakseen että jokaine lataus saa hyvän nopeuden saatavasta
+		lataus nopeudesta. Voit muuttaa näitä asetuksia Työkalu, Envyn Asetukset.
+		Kuitenkin voit manuaalisesti aloittaa latauksen jatka komennolla.</text>
+	</document>
+	<document name="DownloadHelp.Searching">
+		<text format="b">Tämä lataus on Hakee</text>
+		<newline gap="8"/>
+		<text>Tälle lataukselle ei ole olemassa tunnettuja lähteitä, joten Envy etsii
+		kaikista yhdistetyistä P2P verkoista uusia lähteitä. Kun lähteet on löydetty
+		lataus alkaa automaattisesti. Envy etsii lähteitä automaattisesti,
+		kuitenkin voit nopeuttaa prosessia käyttämällä</text>
+		<text format="b"> Etsi Lisää Lähteitä</text><text> komennolla.</text>
+		<newline gap="8"/>
+		<text>Valitettavasti monissa tapauksissa kukaan käyttjäj ei ole online tilassa jolla olisi
+		tiedosto jota etsit. Ainut toiminta on odottaa
+		jonkun tulevan online tilaan, tai peruuttaa sen ja yrittää löytää smanlaisen tiedoston mikä on
+		paremmin saatavilla.</text>
+	</document>
+	<document name="DownloadHelp.Creating">
+		<text format="b">Tätä latausta luodaan</text>
+		<newline gap="8"/>
+		<text>Envy on luomassa väliaikais tiedostoa mihinkä tallentaa lataus
+		säästääkseen aikaa myöhemmin.</text>
+	</document>
+	<document name="DownloadHelp.Tracker">
+		<text format="b">BitTorrent Jäjitin Alhaalla</text>
+		<newline gap="8"/>
+		<text>The BitTorrent jäljitys palvelin tälle lataukselle näyttää olevan
+		suljettu tai epäkunnossa. Envy ei voi ottaa siihen yhteyttä saadakseen
+		listan peereistä.</text>
+	</document>
+	<!-- Upload help documents -->
+	<document name="UploadHelp">
+		<text format="b">Lähetykset Alue</text>
+		<newline gap="8"/>
+		<text>Tämä on missä konot jalähetykset näkyvät. Sinä voit laajentaa jokaisen jonon
+		missä on pieni + vasemmalla puolella ja voit myös suodattaa mitä näytetään painikkeella
+		oikealla ikkunan työkalu palkissa.</text>
+	</document>
+	<!-- General help documents -->
+	<document name="GeneralHelp.DiskSpace">
+		<text format="b">Vähäinen kovalevy tila</text>
+		<newline gap="8"/>
+		<text>Vapaa kovalevy tila yhdellä tai monella kovalevyllä joita Envy käyttää on vähissä.</text>
+		<newline gap="8"/>
+		<text>You should always attempt to keep a reasonable amount of disk space free. Ohjelmat
+		voivat tulla epävakaiksi jos kovalevy tulee täyteen ja väliaikais tiedostot voivat hävitä. Sinun tulisi
+		ajaa levyn puhdistus, poistaa tiedostoja tai poistaa ohjelmat joita et tarvitse.</text>
+	</document>
+	<document name="GeneralHelp.DiskWriteFail">
+		<text format="b">Tarvittava kansio ei ole kirjoitettavissa</text>
+		<newline gap="8"/>
+		<text>Levy tai kansio mitä Envy käyttää ei voida kirjoittaa.</text>
+		<newline gap="8"/>
+		<text>Verkko kovalevy voi olla offline tilassa, tai sinulla ei ole kirjoitus lupaa
+		hakemistoon. Ole hyvä ja tarkista hakemistot ja luvat, tai vaihda
+		väliaikais tiedostojen sijaintia.</text>
+	</document>
+	<document name="GeneralHelp.ConnectionFail">
+		<text format="b">Internet yhteys on hvitetty</text>
+		<newline gap="8"/>
+		<text>Windows raportoi ett internet yhteytt ei ole saatavilla.</text>
+		<newline gap="8"/>
+		<text>On todennkist ett modeemi tai reititin on pudonnut, tarkoittaen ett webi ei
+		voida kytt. Sinun tytyy manuaalisesti yhdist uudelleen tai resetoida yhteys.</text>
+		<newline gap="8"/>
+		<text>Envy on pysyttnyt yhdistys yritykset jotta kaikkia kyttji jotka ovat vlimuistissa ei hukattaisi.</text>
+	</document>
+	<document name="GeneralHelp.AdultFilter">
+		<text format="b">Aikuisviihde suodatus on pll</text>
+		<newline gap="8"/>
+		<text>Ota huomioon ett (kuin kaikissa muissa automatisoiduissa suodattimissa) varmaa 100% tehoa
+		sislln suodatukseen. Se on vain tehty suodattamaan ei halutut tulokset kuin
+		100% tysi blokkaus.</text>
+		<newline gap="8"/>
+		<text>Lasten internetin kytt (mukaan lukien P2P tiedoston jako) tulisi aina olla vanhemman valvonnassa.</text>
+	</document>
+	<document name="GeneralHelp.BadTorrentEncoding">
+		<text format="b">Tm torrentti nytt sisltv koodaus virheen</text>
+		<newline gap="8"/>
+		<text>Windows on raportoinut kntvirheen koodattaessa teksti tss torrentissa. Se on
+		mahdollista ett torrentti on virheelinen tai vain vrin koodattu. Tm torrentti voi
+		kuitenkin latautua kunnolla mutta jotkut tiedosto nimet voivat olla vrin.</text>
+		<newline gap="8"/>
+		<text>Suurin osa torrent teko ohjelmista antaa mahdollisuuden korjata tm torrentti, mik
+		varmistaa ett se toimii oikein kaikissa BitTorrent ohjemissa.</text>
+		<newline gap="8"/>
+		<link target="http://getenvy.com/help/?torrentencoding">Klikkaa thn saadaksesi lis apua (en)</link>
+		<text>, tai lataa ohjelma jolla voit korjata torrentin.</text>
+	</document>
+	<document name="GeneralHelp.DonkeyServerList">
+		<text format="b">Sinun eDonkey palvelin lista on tyhj</text>
+		<newline gap="8"/>
+		<text>Sinulla ei ole yhtn palvelinta eDonkey2000 palvelin listassa. Sinun tulee ladata
+		pivitetty palvelin lista (met tiedosto) yhdistksesi ED2K.</text>
+		<newline gap="8"/>
+		<text>Sin voit ladata palvelin listan ed2k asetukset sivulla tai discovery
+		palvelu ikkunassa. (Paina F9 avataksesi discovery palvelut ikkunan)</text>
+	</document>
+	<document name="GeneralHelp.UploadWarning">
+		<text format="b">Rajoitetut letys paikat saattavat hidastaa latauksia</text>
+		<newline gap="8"/>
+		<text>Moni verkko mihink Envy yhdist vaati tietyt lhetys paikat
+		kyttjille jotka eivtjaa tai eivt vain halua ladata tunnetuille jakajille.</text>
+		<newline/>
+		<text>Valitettavasti laajakaista DSL yhteydet ovat kuin kaksi kaistainen moottorite: sinulla tytyy olla
+		eri rajoitukse lhetyksile ja latauksille. Jos sinun ohjelmasi on oikein konfiguroitu
+		sinun tulisi lhett hyvll nopeudella samalla piten tyden lataus tehon.</text>
+		<newline gap="8"/>
+		<text>Oletuksena sinun lhetys rajoitukset ovat noin 85% lhetys kaistasta
+		kun lataukset ovat rajoittamattomat. Tuon konfiguraation tulisi antaa sinulle mahdollisimman nopean
+		lataus nopuden kuin mahdollista.</text>
+	</document>
+	<!-- Search help documents -->
+	<document name="SearchHelp.BadSearch1">
+		<text format="b">Ole hyv ja jrjest hakusi uudelleen</text>
+		<newline gap="8"/>
+		<text>Tm haku on huonosti formatoitu ja ei saata tomia oikein
+		Haut tulisivat sislt niin monta termi kuin mahdollista ja sinun tulisi aina valita
+		tiedosto tyyppi. Haut eivt saa olla rajoitettu vain numeroihin tai negatiivisiin
+		termeihein ja sinun tulisi vltt erittin yleisi hakuja.</text>
+		<newline gap="8"/>
+		<text>Suurin osa p2p ohjelmista hylk MP3 tiedosto haun esimerkiksi
+		koska se ei ole liian tarkka ja tuottaisi liian monta tulosta.</text>
+	</document>
+	<document name="SearchHelp.BadSearch2">
+		<text format="b">Ole hyv ja jrjest hakusi uudelleen</text>
+		<newline gap="8"/>
+		<text>Tm haku ei sisll tarpeeksi termej toimiakseen kunnollisesti. Kaikki haut tarvitsevat
+		vhimmis mrn numeroita tai aakkosellisia kirjaimia aloittaakseen.</text>
+		<newline gap="8"/>
+		<text>Kun taas yleisi tiedosto ptteit (ja numeroita) voi etsi, sinun tulee laittaa
+		toisia termej aloittaessasi hakua. Pilkutuksia ja jokerimerkkej ei kytet
+		hauissa joten vain se teksti mink annat.</text>
+	</document>
+	<!--Untranslated Documents-->
+</documents>
+
+<!-- <commandtips> Untranslated -->
+<!-- <strings> Untranslated -->
+<!-- <dialogs> Untranslated -->
+
+<dialogs>
+	<dialog name="CSettingSheet" cookie="SyBuBuBu" caption="Envy Asetukset">
+		<control/>
+		<control caption="OK"/>
+		<control caption="Peruuttaa"/>
+		<control caption="Käytä"/>
+		<control/>
+	</dialog>
+</dialogs>
+
+<!-- Remote Accesss Web Interface (Missing) -->
+<remote>
+	<tag find="text_metatitle" replace="Envy Web Interface"/>
+	<tag find="text_logout" replace="Kirjautua ulos"/>
+	<tag find="text_tabhome" replace="Koti"/>
+	<tag find="text_tabdownloads" replace="Lataukset"/>
+	<tag find="text_tabuploads" replace="Lähetykset"/>
+	<tag find="text_tabnetworks" replace="Verkko"/>
+	<tag find="text_tabsearch" replace="Hae"/>
+	<tag find="text_" replace=""/>
+</remote>
+<!-- Column Definitions -->
+<listcolumns>
+	<list name="CDownloadCtrl">
+		<column from="Downloaded File" to="Tiedosto"/>
+		<column from="Size" to="Koko"/>
+		<column from="Progress" to="Edistys"/>
+		<column from="Transfer" to="Siirto"/>
+		<column from="Percent" to="Prosentti"/>
+		<column from="Speed" to="Nopeus"/>
+		<column from="Status" to="Tila"/>
+		<column from="Client" to="Asiakas"/>
+		<column from="Country" to="Maa"/>
+	</list>
+	<list name="CUploadCtrl">
+		<column from="Uploaded File" to="Tiedosto"/>
+		<column from="Size" to="Koko"/>
+		<column from="Progress" to="Edistys"/>
+		<column from="Transfer" to="Siirto"/>
+		<column from="Speed" to="Nopeus"/>
+		<column from="Rating" to="Arvostelut"/>
+		<column from="Remote User" to="Etäkäyttäjä"/>
+		<column from="Client" to="Asiakas"/>
+		<column from="Country" to="Maa"/>
+	</list>
+	<list name="CLibraryWnd">
+		<column from="File" to="Tiedosto"/>
+		<column from="Type" to="Tyyppi"/>
+		<column from="Size" to="Koko"/>
+		<column from="Modified" to="Muutettu"/>
+		<column from="Folder" to="Kansio"/>
+		<column from="Shared" to="Jaetun"/>
+		<column from="Uploads" to="Lähetykset"/>
+		<column from="Hits" to=""/>
+	</list>
+	<list name="CNeighboursWnd">
+		<column from="Address" to="Osoite"/>
+		<column from="Port" to=""/>
+		<column from="Time" to="Aika"/>
+		<column from="Traffic" to=""/>
+		<column from="Total" to=""/>
+		<column from="Packets" to=""/>
+		<column from="Flow" to=""/>
+		<column from="Leaves" to=""/>
+		<column from="Mode" to=""/>
+		<column from="Client" to="Asiakas"/>
+		<column from="Name" to="Nimi"/>
+		<column from="Country" to="Maa"/>
+	</list>
+	<list name="CHostCacheWnd">
+		<column from="Address" to="Osoite"/>
+		<column from="Port" to=""/>
+		<column from="Last Seen" to=""/>
+		<column from="Client" to="Asiakas"/>
+		<column from="Name" to="Nimi"/>
+		<column from="Description" to=""/>
+		<column from="Failures" to=""/>
+		<column from="CurUsers" to=""/>
+		<column from="MaxUsers" to=""/>
+		<column from="Country" to="Maa"/>
+	</list>
+	<list name="CDiscoveryWnd">
+		<column from="Address" to="Osoite"/>
+		<column from="Type" to="Tyyppi"/>
+		<column from="Last Access" to=""/>
+		<column from="Hosts" to=""/>
+		<column from="Accesses" to=""/>
+		<column from="Updates" to=""/>
+		<column from="Failures" to=""/>
+	</list>
+	<list name="CPacketWnd">
+		<column from="Time" to="Aika"/>
+		<column from="Address" to="Osoite"/>
+		<column from="Protocol" to=""/>
+		<column from="Type" to="Tyyppi"/>
+		<column from="TTL/Hops" to=""/>
+		<column from="GUID" to=""/>
+		<column from="Hex" to=""/>
+		<column from="ASCII" to=""/>
+	</list>
+	<list name="CSearchMonitorWnd">
+		<column from="Search" to=""/>
+		<column from="URN" to=""/>
+		<column from="Schema" to=""/>
+	</list>
+	<list name="CMatchCtrl">
+		<column from="File" to="Tiedosto"/>
+		<column from="Type" to="Tyyppi"/>
+		<column from="Size" to="Koko"/>
+		<column from="Host/Count" to=""/>
+		<column from="Speed" to="Nopeus"/>
+		<column from="Rating" to="Arvostelut"/>
+		<column from="Status" to="Tila"/>
+		<column from="Client" to="Asiakas"/>
+		<column from="Country" to="Maa"/>
+		<column from="Time" to="Aika"/>
+	</list>
+	<list name="CSecurityWnd">
+		<column from="Address / Content" to="Osoite / Content"/>
+		<column from="Hits" to=""/>
+		<column from="#" to=""/>
+		<column from="Action" to=""/>
+		<column from="Expires" to=""/>
+		<column from="Match" to=""/>
+		<column from="Comment" to=""/>
+	</list>
+	<list name="CSchedulerWnd">
+		<column from="Task" to=""/>
+		<column from="Date" to=""/>
+		<column from="Time" to="Aika"/>
+		<column from="Status" to=""/>
+		<column from="Activity" to=""/>
+		<column from="Comment" to=""/>
+	</list>
+	<list name="CUploadQueueList">
+		<column from="Name" to="Nimi"/>
+		<column from="Criteria" to=""/>
+		<column from="Minimum" to=""/>
+		<column from="Transfers" to="Siirto"/>
+		<column from="Priority" to="Prioriteetti"/>
+	</list>
+	<list name="CAdvancedSettingsList">
+		<column from="Setting" to=""/>
+		<column from="Value" to=""/>
+	</list>
+	<list name="CFavoritesProfileList">
+		<column from="Name" to="Nimi"/>
+		<column from="URL" to=""/>
+	</list>
+	<list name="CFileSourcesPageList">
+		<column from="URL" to=""/>
+		<column from="Expires" to=""/>
+	</list>
+	<list name="CTorrentFileList">
+		<column from="Filename" to="Nimi"/>
+		<column from="Size" to="Koko"/>
+		<column from="Status" to="Tila"/>
+	</list>
+	<list name="CTorrentTrackerList">
+		<column from="Tracker" to=""/>
+		<column from="Status" to="Tila"/>
+		<column from="Type" to="Tyyppi"/>
+	</list>
+	<list name="CReviewList">
+		<column from="User" to="Käyttäjä"/>
+		<column from="Rating" to="Arvostelut"/>
+		<column from="Comments" to=""/>
+		<column from="Order" to=""/>
+	</list>
+</listcolumns>
+</skin>

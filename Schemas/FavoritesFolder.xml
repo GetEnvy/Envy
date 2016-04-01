@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<schemaDescriptor location="http://schemas.getenvy.com/FavoritesFolder.xsd" xmlns="http://schemas.getenvy.com/SchemaDescriptor.xsd">
+
+	<object type="folder" availability="system"/>
+	<images>
+		<icon path="Favorites.ico"/>
+	</images>
+	<titles>
+		<title language="en">Favorites: Favorite Files</title>
+		<title language="en-uk">Favourites:Favourite Files</title>
+		<title language="af">Gunstelinge: Gunstelinge</title>
+		<title language="ca">Favorits: Favorits</title>
+		<title language="cz">Oblíbené: Oblíbené</title>
+		<title language="de">Favoriten: Favoriten</title>
+		<title language="ee">Lemmikud: Lemmikud</title>
+		<title language="es">Favoritos: Favoritos</title>
+		<title language="fr">Favoris: Favoris</title>
+		<title language="gr">ΑΑγαπημένα: ΑΑγαπημένα</title>
+		<title language="he">מועדפים: מועדפים</title>
+		<title language="hr">Favoriti: Favoriti</title>
+		<title language="hu">Kedvencek: Kedvencek</title>
+		<title language="it">Preferiti: Preferiti</title>
+		<title language="lt">Mėgiamybės: Mėgiamybės</title>
+		<title language="nl">Favorieten: Favorieten</title>
+		<title language="no">Favoritter: Favoritter</title>
+		<title language="pt">Favoritos: Favoritos</title>
+		<title language="ru">Избранное: Избранное</title>
+		<title language="sl">Zaznamki: Zaznamki</title>
+		<title language="sq">Favoritet: Favoritet</title>
+		<title language="sr">Favoriti: Favoriti</title>
+		<title language="sv">Favoriter: Favoriter</title>
+		<title language="tr">Favoriler: Favoriler</title>
+		<title language="ja">お気に入り: お気に入り</title>
+		<title language="ko">즐겨찾기: 즐겨찾기</title>
+		<title language="zhs">我的最爱: 我的最爱</title>
+		<title language="zht">喜愛的: 喜愛的</title>
+	</titles>
+	<headerContent version="1.0">
+		<title language="en">Your Public Favorite Files</title>
+		<title language="en-uk">Your Public Favourite Files</title>
+		<title language="af">Jou Gunsteling Lêers</title>
+		<title language="ca">Els meus arxius favorits</title>
+		<title language="cz">Moje oblíbené</title>
+		<title language="de">Favoriten</title>
+		<title language="ee">Minu Lemmikfailid</title>
+		<title language="es">Tus Archivos Favoritos</title>
+		<title language="fr">Mes fichiers favoris</title>
+		<title language="gr">Αγαπημένα Αρχεία</title>
+		<title language="he">הקבצים המועדפים שלי</title>
+		<title language="hr">Moje Omiljene Datateke</title>
+		<title language="hu">Kedvenc fájlok</title>
+		<title language="it">I miei file preferiti</title>
+		<title language="lt">Mano mėgiami failai</title>
+		<title language="nl">Mijn Favoriete Bestanden</title>
+		<title language="no">Mine favorittfiler</title>
+		<title language="pt">Meus Arquivos Favoritos</title>
+		<title language="ru">Мои избранные файлы</title>
+		<title language="sl">Moje priljubljene datoteke</title>
+		<title language="sq">Skedat e Mia Favorite</title>
+		<title language="sr">Moje Omiljene Datateke</title>
+		<title language="sv">Mina favoritfiler</title>
+		<title language="tr">Favori Dosyalarım</title>
+		<title language="ja">お気に入り</title>
+		<title language="zhs">我最喜欢的文件</title>
+		<title language="zht">我的最愛檔案</title>
+		<subtitle language="en">This folder displays selected files for easy reference, and as recommendations to other users who browse your collection.</subtitle>
+		<subtitle language="af">Hierdie gids bevat gunsteling lêers wat Envy aan ander gebruikers sal aanbeveel wat deur jou versameling blaai.</subtitle>
+		<subtitle language="ca">Aquesta carpeta conté arxius favorits que Envy recomana a altres usuaris que naveguen per la teva col·lecció</subtitle>
+		<subtitle language="cz">Tato složka obsahuje vaše oblíbené položky, které bude Envy doporučovat ostatním uživatelům, kteří si prohlíží vaše sdílené soubory.</subtitle>
+		<subtitle language="de">Dieser Ordner enthält empfohlene Dateien, die Benutzer sehen können, die ihre Freigaben durchsuchen.</subtitle>
+		<subtitle language="ee">See kaust sisaldab sinu Lemmik faile, mida Envy soovitab sinu profiili vaatajatele.</subtitle>
+		<subtitle language="es">Esta carpeta contiene archivos favoritos que Envy recomienda a otros usuarios que navegan por tu librería</subtitle>
+		<subtitle language="fr">Ce dossier contient les fichiers que Envy va recommander aux autres utilisateurs.</subtitle>
+		<subtitle language="gr">Αυτός ο φάκελος περιέχει τα αγαπημένα αρχεία, τα οποία και συστείνονται σε όσους χρήστες περιηγούνται τα αρχεία σας.</subtitle>
+		<subtitle language="he">ספרייה זו מכילה קבצים מועדפים ששרזה תמליץ עליהם למשתמשים שיצפו בפרופיל שלך</subtitle>
+		<subtitle language="hr">Ova mapa sadrži vaše favorite koje preporučate ostalima.</subtitle>
+		<subtitle language="hu">Ez a mappa a kedvenc fájlokat tartalmazza, amit a Envy a fájllistát lekérőknek ajánlani fog.</subtitle>
+		<subtitle language="it">Questa cartella contiene i file preferiti che Envy raccomanderà agli utenti che esamineranno la tua collezione.</subtitle>
+		<subtitle language="lt">Šiame kataloge yra failai, kuriuos „Envy“ rekomenduos kitiems vartotojams, naršantiems Jūsų kolekcijoje.</subtitle>
+		<subtitle language="nl">Deze map bevat favoriete bestanden die Envy zal aanbevelen aan andere gebruikers die je verzameling doorzoeken.</subtitle>
+		<subtitle language="no">Denne mappen inneholder dine favoritter, som Envy vil anbefale til andre brukere som utforsker mine samlinger</subtitle>
+		<subtitle language="pt">Esta pasta contém os arquivos favoritos os quais o Envy recomendará para os outros usuários que navegarem pela sua coleção.</subtitle>
+		<subtitle language="ru">Эта папка отображает избранные файлы, они также видны смотрящим Ваш профиль.</subtitle>
+		<subtitle language="sl">Ta mapa vsebuje priljubljene datoteke, ki jih bo Envy priporočila drugim uporabnikom, ki brskajo po vaši kolekciji.</subtitle>
+		<subtitle language="sq">Kjo dosje përmban skedat favorite që Envy i rekomandon te përdoruesit që shfletojnë koleksionin tuaj.</subtitle>
+		<subtitle language="sr">Ova fascikla sadrži vaše favorite koje preporučujete ostalima.</subtitle>
+		<subtitle language="sv">Denna mapp innehåller favoritfiler som Envy kommer att rekommendera till andra användare som visar din filsamling.</subtitle>
+		<subtitle language="tr">Bu klasör Envy'nın senin koleksiyonunu inceleyen diğer kullanıcılara önereceği favori dosyaları içerir.</subtitle>
+		<subtitle language="ja">このフォルダーにはライブラリー内にある映画の一覧があります</subtitle>
+		<subtitle language="zhs">此文件夹中包含了您向浏览您的收藏那个的用户所推荐的您最喜欢的文件。</subtitle>
+		<subtitle language="zht">這個資料夾包含了最愛的檔案 Envy 將推薦給其他瀏覽您收藏的使用者.</subtitle>
+	</headerContent>
+	<members>
+		<member name="title" search="none">
+			<display defaultColumn="true"/>
+			<title language="en">Title</title>
+			<title language="af">Titel</title>
+			<title language="ca">Títol</title>
+			<title language="cz">Název</title>
+			<title language="de">Titel</title>
+			<title language="ee">Pealkiri</title>
+			<title language="es">Título</title>
+			<title language="fr">Titre</title>
+			<title language="gr">Τίτλος</title>
+			<title language="he">כותרת</title>
+			<title language="hr">Naslov</title>
+			<title language="hu">Cím</title>
+			<title language="it">Titolo</title>
+			<title language="lt">Pavadinimas</title>
+			<title language="nl">Titel</title>
+			<title language="no">Tittel</title>
+			<title language="pl">Tytuł</title>
+			<title language="pt">Título</title>
+			<title language="ru">Название</title>
+			<title language="sl">Naslov</title>
+			<title language="sq">Titulli</title>
+			<title language="sr">Naslov</title>
+			<title language="sv">Titel</title>
+			<title language="tr">Başlık</title>
+			<title language="ja">タイトル</title>
+			<title language="ko">제목</title>
+			<title language="zhs">标题</title>
+			<title language="zht">標題</title>
+		</member>
+		<member name="description">
+			<title language="en">Description</title>
+			<title language="af">Beskrywing</title>
+			<title language="ca">Descripció</title>
+			<title language="cz">Popis</title>
+			<title language="de">Beschreibung</title>
+			<title language="ee">Kirjeldus</title>
+			<title language="es">Descripción</title>
+			<title language="fr">Description</title>
+			<title language="gr">Περιγραφή</title>
+			<title language="he">תיאור</title>
+			<title language="hr">Opis</title>
+			<title language="hu">Leírás</title>
+			<title language="it">Descrizione</title>
+			<title language="lt">Aprašas</title>
+			<title language="nl">Omschrijving</title>
+			<title language="no">Beskrivelse</title>
+			<title language="pt">Descrição</title>
+			<title language="ru">Описание</title>
+			<title language="sl">Opis</title>
+			<title language="sq">Përshkrimi</title>
+			<title language="sr">Opis</title>
+			<title language="sv">Beskrivning</title>
+			<title language="tr">Tanımlama</title>
+			<title language="ja">詳細</title>
+			<title language="zhs">描述</title>
+			<title language="zht">描述</title>
+		</member>
+	</members>
+
+</schemaDescriptor>

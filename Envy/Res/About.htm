@@ -1,0 +1,145 @@
+200 OK
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Envy Node Information</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta name="robots" content="noindex, nofollow" />
+<style type="text/css">
+body {
+	margin: 0px;
+	padding:0px;
+	background-color: #FDFDFD;
+}
+.headerborder {
+	border-width: 1px;
+	border-bottom-style: solid;
+	border-color: #999999;
+}
+body,td,th {
+	font-family: Tahoma, Verdana, Arial, sans-serif;
+	font-size: 12px;
+	color: #666666;
+}
+a:link {
+	color: #444444;
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+	color: #333333;
+}
+a:hover {
+	text-decoration: underline;
+	color: #666666;
+}
+a:active {
+	text-decoration: none;
+	color: #555555;
+}
+.boldtext {
+	font-size: 12px;
+	font-weight: bold;
+}
+.solidborder {
+	border: 1px solid #999999;
+}
+.text1 {color: #333333}
+.text2 {
+	font-size: 12px;
+	font-weight: bold;
+	color: #333333;
+	padding: 4px;
+	}
+.text3 {
+	color: #000000;
+	font-size: 14px;
+	}
+.text4 {
+	color: #000000;
+	font-size: 11px;
+	}
+.blacktext {color: #000000}
+
+table.nodeinfo { border-bottom: solid #999999 1px;}
+th {
+	border-bottom: solid #999999 1px;
+	padding-bottom: 8px;
+	background-color: white;
+	}
+.lcol { border-left: solid #999999 1px;}
+.rcol { border-right: solid #999999 1px;}
+
+table.nodeinfo tr td {
+	background-color: #F7F7F7;
+	padding: 11px 0 10px 12px;
+	text-align: center;
+	}
+</style>
+</head>
+<body>
+
+<div class="headerborder" style="width: 100%; background-image:url(/remote/header_repeat.png);">
+	<img src="/remote/header.png" width="800" height="152" alt="Envy header" />
+</div>
+
+<div align="center"><br /> <!-- NODE BOX START -->
+	<table width="800" border="0" cellspacing="4" cellpadding="6">
+		<tr align="center" bgcolor="#999999">
+			<td colspan="2" bgcolor="#CCCCCC" class="solidborder blacktext">This node is powered by <a href="http://getenvy.com" target="_top"><strong>Envy <% Version %></strong></a></td>
+		</tr>
+		<tr>
+			<td width="50%" align="center" valign="top" class="solidborder"><a href="gnutella:browse:<% ListenIP %>"><strong>Browse Node </strong></a> in Envy</td>
+			<td width="50%" align="center" valign="top" class="solidborder"><a href="/remote/" target="_top"><strong>Remotely Access </strong></a> your node</td>
+		</tr>
+		<tr>
+			<td colspan="2" align="center" valign="top">
+
+				<table width="630" border="0" cellspacing="0" class="nodeinfo">
+					<tr>
+						<th width="170" align="center" valign="top" class="text2">Neighbor Address</th>
+						<th width="100" align="center" valign="top" class="text2">Uptime</th>
+						<th width="100" align="center" valign="top" class="text2">Mode</th>
+						<th width="170" align="center" valign="top" class="text2">User Agent</th>
+						<th width="80"  align="center" valign="top" class="text2">&nbsp;</th>
+					</tr>
+
+					<% Neighbours
+					<tr>
+						<td class="lcol"><a href="gnutella:host:%s:%lu">%s:%lu</a></td>
+						<td>%i:%.2i:%.2i</td>
+						<td>%s</td>
+						<td>%s</td>
+						<td class="rcol"><a href="http://%s:%lu/">Browse</a></td>
+					</tr>
+					%>
+				</table>
+
+			</td>
+		</tr>
+	</table> <!-- NODE BOX END -->
+
+	<br />
+	<table width="800" border="0" cellpadding="4" cellspacing="0" bgcolor="#F8F8F8" class="solidborder">
+		<tr align="center" valign="top">
+			<td colspan="2" bgcolor="#CFCFCF" class="headerborder blacktext"><strong>What Is Envy?</strong></td>
+		</tr>
+		<tr>
+			<td rowspan="2" align="left" valign="top" style="width: 35px"><img src="/favicon.ico" alt="GetEnvy.com" width="32" height="32" /></td>
+			<td valign="top" class="text3">Envy is a personal peer-to-peer client that allows you to share and download any file found on several popular P2P networks.<br />
+			-Proud to be Free and Open-Source Software.</td>
+		</tr>
+		<tr>
+			<td valign="top">
+			<ul>
+				<li class="text1"><a href="http://getenvy.com/" target="_top">Visit the GetEnvy.com homepage</a> </li>
+				<li class="text1"><a href="http://sourceforge.net/projects/envy/" target="_top">Check out the latest Envy p2p release</a></li>
+			</ul>
+			</td>
+		</tr>
+	</table>
+	<br />
+	<br />
+</div>
+</body>
+</html>

@@ -1,0 +1,860 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<skin xmlns="http://schemas.getenvy.com/Skin.xsd" version="1.0">
+
+<!-- Envy UK English Skin File -->
+
+<!-- Translation based on default en.xml r1 -->
+<!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
+
+<!-- This skin template represents current Envy defaults. -->
+<!-- Use this file as a basis for creating new language skins,   -->
+<!-- however be sure to include only sections that are changed:  -->
+<!-- Unedited English content limits compatibility & performance.-->
+<!-- Better to be concise than literal:  Please test visibility! -->
+
+<!-- Manifest -->
+<manifest
+	name="English"
+	author="Envy Development Team"
+	description="Envy Alt English Skin File"
+	link="http://getenvy.com"
+	email="Contact(at)GetEnvy.com"
+	version="1.0.0.0"
+	type="Language"
+	language="en-uk"
+	dir="ltr"
+	priority="2"
+	prompt="Click here to select English (UK) as your natural language."
+/>
+
+<!-- Toolbar Definitions -->
+<toolbars>
+	<!-- BROWSE HOST WINDOW -->
+	<toolbar name="CBrowseTree.Top">
+		<button id="ID_LIBRARY_TREE_PHYSICAL" text="Folders"/>
+		<button id="ID_LIBRARY_TREE_VIRTUAL" text="Organiser"/>
+	</toolbar>
+	<!-- LIBRARY FRAME -->
+	<toolbar name="CLibraryTree.Top">
+		<button id="ID_LIBRARY_TREE_PHYSICAL" text="Folders"/>
+		<button id="ID_LIBRARY_TREE_VIRTUAL" text="Organiser"/>
+	</toolbar>
+</toolbars>
+<!-- Menu Definitions -->
+<menus>
+	<!-- TAB BAR POPUP MENUS -->
+	<menu name="CTabBar.Child">
+		<item id="ID_MOVETAB_LEFT" text="Move Tab _Left"/>
+		<item id="ID_MOVETAB_RIGHT" text="Move Tab _Right"/>
+		<!--<item id="ID_MOVETAB_FIRST" text="Move Tab _First"/>-->
+		<!--<item id="ID_MOVETAB_LAST" text="Move Tab L_ast"/>-->
+		<separator/>
+		<item id="ID_CHILD_MAXIMISE" text="_Full Screen"/>
+		<item id="ID_CHILD_RESTORE" text="_Restore"/>
+		<item id="ID_CHILD_MINIMISE" text="_Minimise"/>
+		<separator/>
+		<item id="ID_CHILD_CLOSE" text="_Close Window"/>
+	</menu>
+	<!-- MAIN WINDOW MENU BAR -->
+	<menu name="CMainWnd.Basic" type="bar">
+		<menu text="_Network">
+			<item id="ID_NETWORK_CONNECT" text="_Connect" shortcut="Ctrl+G"/>
+			<separator/>
+			<menu text="Choose _Networks">
+				<item id="ID_NETWORK_G2" text="Connect to Gnutella_2"/>
+				<item id="ID_NETWORK_G1" text="Connect to _Gnutella"/>
+				<item id="ID_NETWORK_ED2K" text="Connect to _eDonkey"/>
+			</menu>
+			<separator/>
+			<item id="ID_NETWORK_AUTO_CLOSE" text="Exit _After Transfers"/>
+			<item id="ID_NETWORK_EXIT" text="E_xit"/>
+		</menu>
+		<menu text="_View">
+			<item id="ID_TAB_HOME" text="_Home"/>
+			<item id="ID_TAB_SEARCH" text="_Search"/>
+			<item id="ID_TAB_TRANSFERS" text="_Downloads"/>
+			<item id="ID_TAB_LIBRARY" text="_Library"/>
+			<item id="ID_TAB_MEDIA" text="_Media Player"/>
+			<item id="ID_TAB_IRC" text="IRC _Chat"/>
+			<item id="ID_WINDOW_REMOTE" text="Media _Remote"/>
+			<separator/>
+			<menu text="_Advanced">
+				<item id="ID_VIEW_NEIGHBOURS" text="_Neighbours"/>
+				<item id="ID_VIEW_UPLOADS" text="_Uploads"/>
+				<separator/>
+				<item id="ID_VIEW_SECURITY" text="Se_curity"/>
+				<item id="ID_VIEW_SECURITY" text="Sc_heduler"/>
+				<item id="ID_VIEW_HOSTS" text="H_ost Cache"/>
+				<item id="ID_VIEW_DISCOVERY" text="Disco_very"/>
+			</menu>
+			<separator/>
+			<item id="ID_VIEW_BASIC" text="_Basic Mode"/>
+			<item id="ID_VIEW_TABBED" text="_Power Mode"/>
+		</menu>
+		<menu text="_Tools">
+			<item id="ID_LIBRARY_FOLDERS" text="Share _Files..."/>
+			<item id="ID_TOOLS_DOWNLOAD" text="_Download File/Torrent..."/>
+			<separator/>
+			<item id="ID_TOOLS_LANGUAGE" text="Choose a _Language..."/>
+			<item id="ID_TOOLS_SKIN" text="Choose a S_kin..."/>
+			<separator/>
+			<item id="ID_TOOLS_PROFILE" text="Edit My _Profile..."/>
+			<item id="ID_TOOLS_WIZARD" text="QuickStart _Wizard..."/>
+			<separator/>
+			<item id="ID_TOOLS_SETTINGS" text="_Envy Settings..."/>
+		</menu>
+		<menu text="_Help">
+			<item id="ID_HELP_FAQ" text="Envy _FAQ"/>
+			<item id="ID_HELP_TEST" text="_Connection Test"/>
+			<separator/>
+			<menu text="_Guides">
+				<item id="ID_HELP_GUIDE" text="Envy _Users Guide"/>
+				<item id="ID_HELP_ROUTER" text="_Router Help"/>
+				<item id="ID_HELP_SECURITY" text="_Security Help"/>
+				<item id="ID_HELP_CODEC" text="_Codec Help"/>
+			</menu>
+			<separator/>
+			<menu text="_Websites">
+				<item id="ID_HELP_HOMEPAGE" text="_Envy Site"/>
+				<separator/>
+				<item id="ID_HELP_FORUMS" text="Envy _Forums"/>
+				<item id="ID_HELP_WEB_SKINS" text="Envy S_kin Site"/> <!--
+				<item id="ID_HELP_UPDATE" text="Latest news"/>
+				<!--item id="ID_HELP_WEB_1" text="Zeropaid.com"-->
+			</menu>
+			<separator/> <!--
+			<item id="ID_HELP_VERSION_CHECK" text="Check for new _version"/>
+			<item id="ID_HELP_DONATE" text="_Donate to Envy"/>
+			<separator/> -->
+			<item id="ID_HELP_ABOUT" text="_About Envy..."/>
+		</menu>
+	</menu>
+	<menu name="CMainWnd.Tabbed" type="bar">
+		<menu text="_Network">
+			<item id="ID_NETWORK_CONNECT" text="_Connect" shortcut="Ctrl+G"/>
+			<item id="ID_NETWORK_DISCONNECT" text="_Disconnect"/>
+			<separator/>
+			<menu text="Choose _Networks">
+				<item id="ID_NETWORK_G2" text="Connect to Gnutella_2"/>
+				<item id="ID_NETWORK_G1" text="Connect to _Gnutella"/>
+				<item id="ID_NETWORK_ED2K" text="Connect to _eDonkey"/>
+			</menu>
+			<separator/>
+			<item id="ID_NETWORK_CONNECT_TO" text="Connect _To..." shortcut="Ctrl+T"/>
+			<item id="ID_NETWORK_BROWSE_TO" text="_Browse Host..."/>
+			<separator/>
+			<item id="ID_NETWORK_AUTO_CLOSE" text="Exit _After Transfers"/>
+			<item id="ID_NETWORK_EXIT" text="E_xit"/>
+		</menu>
+		<menu text="_View">
+			<item id="ID_TAB_HOME" text="_Home"/>
+			<item id="ID_TAB_SEARCH" text="_Search"/>
+			<item id="ID_TAB_TRANSFERS" text="_Transfers"/>
+			<item id="ID_TAB_NETWORK" text="_Network"/>
+			<item id="ID_TAB_LIBRARY" text="_Library"/>
+			<item id="ID_TAB_MEDIA" text="_Media Player"/>
+			<item id="ID_TAB_IRC" text="IRC _Chat"/>
+			<separator/>
+			<item id="ID_VIEW_SECURITY" text="Se_curity"/>
+			<item id="ID_VIEW_SCHEDULER" text="Schedule_r"/>
+			<item id="ID_VIEW_HOSTS" text="H_ost Cache"/>
+			<separator/>
+			<menu text="A_dvanced">
+				<item id="ID_TAB_HOME" text="_Home Tab" shortcut="Alt-Home"/>
+				<item id="ID_TAB_IRC" text="IRC _Chatrooms" shortcut="F12"/>
+				<item id="ID_VIEW_DOWNLOADS" text="_Downloads" shortcut="F3"/>
+				<item id="ID_VIEW_UPLOADS" text="_Uploads" shortcut="F4"/>
+				<item id="ID_VIEW_LIBRARY" text="_Library" shortcut="F5"/>
+				<item id="ID_VIEW_MEDIA" text="_Media Player" shortcut="F6"/>
+				<separator/>
+				<item id="ID_VIEW_SCHEDULER" text="Schedule_r" shortcut="Ctrl+F7"/>
+				<item id="ID_VIEW_SECURITY" text="Se_curity" shortcut="F7"/>
+				<item id="ID_VIEW_HOSTS" text="H_ost Cache" shortcut="F8"/>
+				<item id="ID_VIEW_DISCOVERY" text="Disco_very" shortcut="F9"/>
+				<item id="ID_VIEW_TRAFFIC" text="_Graph" shortcut="F10"/>
+				<item id="ID_VIEW_SYSTEM" text="S_ystem" shortcut="F11"/>
+				<item id="ID_VIEW_NEIGHBOURS" text="N_eighbours" shortcut="Ctrl+F11"/>
+				<separator/>
+				<item id="ID_VIEW_PACKETS" text="_Packet Dump" shortcut="Ctrl+F1"/>
+				<item id="ID_VIEW_SEARCH_MONITOR" text="Se_arch Monitor" shortcut="Ctrl+F2"/>
+				<item id="ID_VIEW_RESULTS_MONITOR" text="H_it Monitor" shortcut="Ctrl+F3"/>
+				<item id="ID_TAB_SEARCH" text="New _Search" shortcut="Ctrl-S"/>
+			</menu>
+			<separator/>
+			<item id="ID_VIEW_BASIC" text="_Basic Mode"/>
+			<item id="ID_VIEW_TABBED" text="T_abbed Mode"/>
+			<item id="ID_VIEW_WINDOWED" text="_Windowed Mode"/>
+		</menu>
+		<menu text="_Tools">
+			<item id="ID_LIBRARY_FOLDERS" text="Share _Files..."/>
+			<item id="ID_OPEN_DOWNLOADS_FOLDER" text="_Open completed download folder"/>
+			<separator/>
+			<item id="ID_TOOLS_DOWNLOAD" text="_Download File/Torrent..."/>
+			<item id="ID_TOOLS_SEEDTORRENT" text="_Seed New Torrent..."/>
+			<item id="ID_TOOLS_CREATETORRENT" text="_Create New .Torrent..."/>
+			<item id="ID_IMPORT_DOWNLOADS" text="_Import eMule Partials..."/>
+			<separator/>
+			<item id="ID_TOOLS_LANGUAGE" text="Choose a _Language..."/>
+			<item id="ID_TOOLS_SKIN" text="Choose a S_kin..."/>
+			<separator/>
+			<item id="ID_TOOLS_PROFILE" text="Edit My _Profile..."/>
+			<item id="ID_TOOLS_WIZARD" text="QuickStart _Wizard..."/>
+			<separator/>
+			<item id="ID_TOOLS_SETTINGS" text="_Envy Settings..."/>
+		</menu>
+		<menu text="_Window">
+			<item id="ID_WINDOW_NAVBAR" text="Show _Navigation Bar"/>
+			<item id="ID_WINDOW_TOOLBAR" text="Show _Tool Bar"/>
+			<separator/>
+			<item id="ID_WINDOW_TABBAR" text="Show Tab _Bar"/>
+			<item id="ID_WINDOW_MONITOR" text="Show _Monitor"/>
+			<item id="ID_WINDOW_REMOTE" text="Show _Remote"/>
+		</menu>
+		<menu text="_Help">
+			<item id="ID_HELP_FAQ" text="Envy _FAQ"/>
+			<item id="ID_HELP_TEST" text="_Connection Test"/>
+			<separator/>
+			<menu text="_Guides">
+				<item id="ID_HELP_GUIDE" text="Envy _Users Guide"/>
+				<item id="ID_HELP_ROUTER" text="_Router Help"/>
+				<item id="ID_HELP_SECURITY" text="_Security Help"/>
+				<item id="ID_HELP_CODEC" text="_Codec Help"/>
+			</menu>
+			<separator/>
+			<menu text="_Websites">
+				<item id="ID_HELP_HOMEPAGE" text="_Envy Site"/>
+				<separator/>
+				<item id="ID_HELP_FORUMS" text="Envy _Forums"/>
+				<item id="ID_HELP_WEB_SKINS" text="Envy S_kin Site"/> <!--
+				<item id="ID_HELP_UPDATE" text="Latest news"/>
+				<!--item id="ID_HELP_WEB_1" text="Zeropaid.com"-->
+			</menu>
+			<separator/> <!--
+			<item id="ID_HELP_VERSION_CHECK" text="Check for new _version"/>
+			<item id="ID_HELP_DONATE" text="_Donate to Envy"/>
+			<separator/> -->
+			<item id="ID_HELP_ABOUT" text="_About Envy..."/>
+		</menu>
+	</menu>
+	<menu name="CMainWnd.Windowed" type="bar">
+		<menu text="_Network">
+			<item id="ID_NETWORK_SEARCH" text="New _Search..." shortcut="Ctrl+S"/>
+			<separator/>
+			<item id="ID_NETWORK_CONNECT" text="_Connect" shortcut="Ctrl+G"/>
+			<item id="ID_NETWORK_DISCONNECT" text="_Disconnect"/>
+			<separator/>
+			<item id="ID_NETWORK_CONNECT_TO" text="Connect _To..." shortcut="Ctrl+T"/>
+			<item id="ID_NETWORK_BROWSE_TO" text="_Browse User..."/>
+			<item id="ID_NETWORK_CHAT_TO" text="Chat with _User..."/>
+			<separator/>
+			<menu text="Choose _Networks">
+				<item id="ID_NETWORK_G2" text="Connect to Gnutella_2"/>
+				<item id="ID_NETWORK_G1" text="Connect to _Gnutella"/>
+				<item id="ID_NETWORK_ED2K" text="Connect to _eDonkey"/>
+				<item id="ID_NETWORK_DC" text="Connect to _DC++"/>
+				<item id="ID_NETWORK_BT" text="Connect to _BitTorrent"/>
+			</menu>
+			<separator/>
+			<item id="ID_NETWORK_AUTO_CLOSE" text="Close _After Transfers"/>
+			<item id="ID_NETWORK_EXIT" text="E_xit"/>
+		</menu>
+		<menu text="_View">
+			<item id="ID_TAB_HOME" text="_Home View" shortcut="Alt-Home"/>
+			<item id="ID_VIEW_SYSTEM" text="S_ystem" shortcut="F11"/>
+			<item id="ID_VIEW_NEIGHBOURS" text="_Neighbours" shortcut="Ctrl+F11"/>
+			<item id="ID_VIEW_DOWNLOADS" text="_Downloads" shortcut="F3"/>
+			<item id="ID_VIEW_UPLOADS" text="_Uploads" shortcut="F4"/>
+			<item id="ID_VIEW_LIBRARY" text="_Library" shortcut="F5"/>
+			<item id="ID_VIEW_MEDIA" text="_Media Player" shortcut="F6"/>
+			<item id="ID_TAB_IRC" text="IRC _Chat" shortcut="F12"/>
+			<separator/>
+			<item id="ID_VIEW_SCHEDULER" text="Schedule_r" shortcut="Ctrl+F7"/>
+			<item id="ID_VIEW_SECURITY" text="Se_curity" shortcut="F7"/>
+			<item id="ID_VIEW_HOSTS" text="H_ost Cache" shortcut="F8"/>
+			<item id="ID_VIEW_DISCOVERY" text="Disco_very" shortcut="F9"/>
+			<item id="ID_VIEW_TRAFFIC" text="_Graph" shortcut="F10"/>
+			<separator/>
+			<item id="ID_VIEW_PACKETS" text="_Packet Dump" shortcut="Ctrl+F1"/>
+			<item id="ID_VIEW_SEARCH_MONITOR" text="Se_arch Monitor" shortcut="Ctrl+F2"/>
+			<item id="ID_VIEW_RESULTS_MONITOR" text="H_it Monitor" shortcut="Ctrl+F3"/>
+			<item id="ID_TAB_SEARCH" text="New _Search" shortcut="Ctrl+S"/>
+			<separator/>
+			<item id="ID_VIEW_BASIC" text="Basic Mode"/>
+			<item id="ID_VIEW_TABBED" text="Tabbed Mode"/>
+			<item id="ID_VIEW_WINDOWED" text="Windowed Mode"/>
+		</menu>
+		<menu text="_Tools">
+			<item id="ID_LIBRARY_FOLDERS" text="Share _Files..."/>
+			<item id="ID_OPEN_DOWNLOADS_FOLDER" text="_Open Downloads Folder"/>
+			<separator/>
+			<item id="ID_TOOLS_DOWNLOAD" text="_Download File/Torrent..."/>
+			<item id="ID_TOOLS_SEEDTORRENT" text="_Seed New Torrent..."/>
+			<item id="ID_TOOLS_CREATETORRENT" text="_Create New .Torrent..."/>
+			<item id="ID_IMPORT_DOWNLOADS" text="_Import eMule Partials..."/>
+			<separator/>
+			<item id="ID_TOOLS_LANGUAGE" text="Choose a _Language..."/>
+			<item id="ID_TOOLS_SKIN" text="Choose a S_kin..."/>
+			<separator/>
+			<item id="ID_TOOLS_PROFILE" text="Edit _Profile..."/>
+			<item id="ID_TOOLS_WIZARD" text="QuickStart _Wizard..."/>
+			<separator/>
+			<item id="ID_TOOLS_SETTINGS" text="_Envy Settings..."/>
+		</menu>
+		<menu text="_Window">
+			<item id="ID_WINDOW_CASCADE" text="_Full Screen"/>
+			<item id="ID_WINDOW_TILE_HORZ" text="Tile _Horizontal"/>
+			<item id="ID_WINDOW_TILE_VERT" text="Tile _Vertical"/>
+			<separator/>
+			<item id="ID_WINDOW_NAVBAR" text="Show _Navigation Bar"/>
+			<item id="ID_WINDOW_TOOLBAR" text="Show _Tool Bar"/>
+			<separator/>
+			<item id="ID_WINDOW_TABBAR" text="Show Tab _Bar"/>
+			<item id="ID_WINDOW_MONITOR" text="Show _Monitor"/>
+			<item id="ID_WINDOW_REMOTE" text="Show _Remote"/>
+		</menu>
+		<menu text="_Help">
+			<item id="ID_HELP_FAQ" text="Envy _FAQ"/>
+			<item id="ID_HELP_TEST" text="_Connection Test"/>
+			<separator/>
+			<menu text="_Guides">
+				<item id="ID_HELP_GUIDE" text="Envy _Users Guide"/>
+				<item id="ID_HELP_ROUTER" text="_Router Help"/>
+				<item id="ID_HELP_SECURITY" text="_Security Help"/>
+				<item id="ID_HELP_CODEC" text="_Codec Help"/>
+			</menu>
+			<separator/>
+			<menu text="_Websites">
+				<item id="ID_HELP_HOMEPAGE" text="_Envy site"/>
+				<separator/>
+				<item id="ID_HELP_FORUMS" text="Envy _Forums"/>
+				<!--item id="ID_HELP_WEB_SKINS" text="Envy S_kin Site"-->
+				<item id="ID_HELP_UPDATE" text="Latest news"/>
+				<!--item id="ID_HELP_WEB_1" text="Zeropaid.com"-->
+			</menu>
+			<separator/> <!--
+			<item id="ID_HELP_VERSION_CHECK" text="Check for new _version"/>
+			<item id="ID_HELP_DONATE" text="_Donate to Envy"/>
+			<separator/> -->
+			<item id="ID_HELP_ABOUT" text="_About Envy..."/>
+		</menu>
+	</menu>
+	<!-- VIEW POPUP -->
+	<menu name="CMainWnd.View.Basic">
+		<item id="ID_TAB_HOME" text="_Home"/>
+		<item id="ID_TAB_SEARCH" text="_Search"/>
+		<item id="ID_TAB_TRANSFERS" text="_Downloads"/>
+		<item id="ID_TAB_LIBRARY" text="_Library"/>
+		<item id="ID_TAB_MEDIA" text="_Media Player"/>
+		<item id="ID_TAB_IRC" text="_Chatrooms"/>
+		<separator/>
+		<menu text="_Advanced">
+			<item id="ID_VIEW_NEIGHBOURS" text="_Neighbours"/>
+			<item id="ID_VIEW_UPLOADS" text="_Uploads"/>
+			<item id="ID_VIEW_SECURITY" text="_Security"/>
+			<item id="ID_VIEW_SCHEDULER" text="Schedule_r"/>
+			<item id="ID_VIEW_HOSTS" text="_Host Cache"/>
+		</menu>
+	</menu>
+	<menu name="CMainWnd.View.Windowed">
+		<item id="ID_NETWORK_SEARCH" text="New _Search..."/>
+		<separator/>
+		<item id="ID_VIEW_SYSTEM" text="S_ystem"/>
+		<item id="ID_VIEW_NEIGHBOURS" text="N_eighbours"/>
+		<item id="ID_VIEW_DOWNLOADS" text="_Downloads"/>
+		<item id="ID_VIEW_UPLOADS" text="_Uploads"/>
+		<item id="ID_VIEW_LIBRARY" text="_Library"/>
+		<item id="ID_VIEW_MEDIA" text="_Media Player"/>
+		<separator/>
+		<item id="ID_VIEW_SECURITY" text="Se_curity"/>
+		<item id="ID_VIEW_SCHEDULER" text="Schedule_r"/>
+		<item id="ID_VIEW_HOSTS" text="_Host Cache"/>
+		<item id="ID_VIEW_DISCOVERY" text="Disco_very"/>
+		<item id="ID_VIEW_TRAFFIC" text="_Graph"/>
+		<separator/>
+		<item id="ID_VIEW_PACKETS" text="_Packet Dump"/>
+		<item id="ID_VIEW_SEARCH_MONITOR" text="Se_arch Monitor"/>
+		<item id="ID_VIEW_RESULTS_MONITOR" text="H_it Monitor"/>
+	</menu>
+	<!-- HOME MENU -->
+	<menu name="CHomeWnd.Basic">
+		<item id="ID_TAB_HOME" text="_Home"/>
+		<item id="ID_TAB_LIBRARY" text="_Library"/>
+		<item id="ID_TAB_MEDIA" text="_Media Player"/>
+		<item id="ID_TAB_SEARCH" text="_Search"/>
+		<item id="ID_TAB_TRANSFERS" text="_Downloads"/>
+		<separator/>
+		<menu text="_Advanced">
+			<item id="ID_VIEW_NEIGHBOURS" text="_Neighbours"/>
+			<item id="ID_VIEW_UPLOADS" text="_Uploads"/>
+			<item id="ID_VIEW_SECURITY" text="_Security"/>
+			<item id="ID_VIEW_SCHEDULER" text="Schedule_r"/>
+			<item id="ID_VIEW_HOSTS" text="_Host Cache"/>
+		</menu>
+	</menu>
+	<menu name="CLibraryFileView">
+		<item id="ID_LIBRARY_LAUNCH" text="_Open/Play"/>
+		<item id="ID_LIBRARY_ENQUEUE" text="Add to Pla_ylist"/>
+		<item id="ID_LIBRARY_DELETE" text="_Delete"/>
+		<separator/>
+		<item id="ID_LIBRARY_SHARED_FILE" text="_Shared"/>
+		<separator/>
+		<item id="ID_LIBRARY_URI" text="Get P2P Link (_URI)"/>
+		<item id="ID_LIBRARY_CREATETORRENT" text="Create ._torrent File"/>
+		<menu text="O_rganise">
+			<item id="ID_LIBRARY_LAUNCH_FOLDER" text="Open _Folder"/>
+			<item id="ID_LIBRARY_UNLINK" text="Remove _Files"/>
+			<separator/>
+			<item id="ID_LIBRARY_RENAME" text="_Rename File" shortcut="F2"/>
+			<item id="ID_LIBRARY_COPY" text="_Copy Files..." shortcut="Ctrl+C"/>
+			<item id="ID_LIBRARY_MOVE" text="_Move Files..." shortcut="Ctrl+X"/>
+		</menu>
+		<separator/>
+		<menu text="S_earch For">
+			<item id="ID_SEARCH_FOR_THIS" text="_This File"/>
+			<item id="ID_SEARCH_FOR_SIMILAR" text="_Similar Files"/>
+			<separator/>
+			<item id="ID_SEARCH_FOR_ARTIST" text="_Music by the same Artist"/>
+			<item id="ID_SEARCH_FOR_ALBUM" text="Music in the same _Album"/>
+			<item id="ID_SEARCH_FOR_SERIES" text="_Episodes in the same Series"/>
+		</menu>
+		<menu id="ID_WEBSERVICES_LIST" text="_Web Services">
+			<item id="ID_LIBRARY_BITPRINTS_WEB" text="View Bitprints listing"/>
+			<item id="ID_LIBRARY_BITPRINTS_DOWNLOAD" text="_Download Metadata"/>
+			<separator/>
+		</menu>
+		<menu text="_Metadata">
+			<item id="ID_LIBRARY_REBUILD_FILE" text="Re_build Hashes"/>
+			<item id="ID_LIBRARY_REFRESH_METADATA" text="_Refresh Metadata"/>
+			<item id="ID_LIBRARY_REBUILD_ANSI" text="_Localise Metadata"/>
+			<item id="ID_LIBRARY_COLUMNS" text="Choose Detail _Columns..."/>
+		</menu>
+		<separator/>
+		<item id="ID_SHELL_MENU" text="_Windows Menu"/>
+		<item id="ID_LIBRARY_PROPERTIES" text="_Properties"/>
+	</menu>
+	<!-- PRIVATE CHAT FRAME -->
+	<menu name="CPrivateChatWnd">
+		<item id="ID_CHAT_CONNECT" text="_Connect"/>
+		<item id="ID_CHAT_DISCONNECT" text="_Disconnect"/>
+		<separator/>
+		<item id="ID_CHAT_BROWSE" text="_Browse User"/>
+		<item id="ID_CHAT_PRIORITY" text="Grant _Priority"/>
+		<separator/>
+		<menu text="_Format">
+			<item id="ID_CHAT_BOLD" text="Set _Bold"/>
+			<item id="ID_CHAT_ITALIC" text="Set _Italic"/>
+			<item id="ID_CHAT_UNDERLINE" text="Set _Underline"/>
+			<item id="ID_CHAT_COLOR" text="Set _Colour"/>
+			<item id="ID_CHAT_EMOTICONS" text="_Emoticons"/>
+		</menu>
+		<separator/>
+		<item id="ID_CHAT_TIMESTAMP" text="Toggle _Timestamp"/>
+		<item id="ID_CHAT_CLEAR" text="C_lear Window"/>
+	</menu>
+</menus>
+
+<!-- Documents -->
+<documents>
+	<!-- Home View -->
+	<document name="CHomeViewCtrl" leftMargin="20" topMargin="0">
+		<styles>
+			<style name="default">
+				<font size="13"/>
+			</style>
+			<style name="heading">
+				<font face="Segoe UI" size="18" weight="400"/>
+			</style>
+		</styles>
+		<anchor id="Header" width="32" height="152"/>
+		<newline gap="0"/>
+		<group id="1">
+			<icon res="136" width="32" height="32" target="command:ID_NETWORK_CONNECT"/><gap size="8"/>
+			<heading align="middle">Get Connected</heading>
+			<newline gap="8" indent="42"/>
+			<text>Welcome to Envy.</text>
+			<newline gap="8" indent="42"/>
+			<text>You are not currently connected to any peer-to-peer networks.</text>
+			<newline gap="2" indent="42"/>
+			<link target="command:ID_NETWORK_CONNECT" format="bu">Click here to start</link>
+			<newline gap="20" indent="0"/>
+		</group>
+		<group id="2">
+			<icon res="130" width="32" height="32" target="command:ID_TAB_SEARCH"/><gap size="8"/>
+			<heading align="middle">Search for Files</heading>
+			<newline gap="4" indent="42"/>
+			<anchor id="SearchBox" width="256" height="80"/>
+			<newline gap="20" indent="0"/>
+			<icon res="122" width="32" height="32" target="command:ID_TOOLS_DOWNLOAD"/><gap size="8"/>
+			<heading align="middle">Start a Download</heading>
+			<newline gap="8" indent="42"/>
+			<link target="command:ID_TOOLS_DOWNLOAD" format="bu">Click here to start</link>
+			<text align="middle">&#160;downloading a new file or torrent link.</text>
+			<newline gap="4" indent="42"/>
+			<text align="middle">Or open your completed </text>
+			<link target="command:shell:downloads">downloads folder.</link>
+			<newline gap="20" indent="0"/>
+		</group>
+		<group id="3">
+			<icon res="120" width="32" height="32" target="command:upgrade"/><gap size="8"/>
+			<heading align="middle">Upgrade Notice</heading>
+			<newline gap="8" indent="42"/>
+			<text id="Upgrade"/>
+			<newline gap="6"/>
+			<link target="command:upgrade">Click here to upgrade</link>
+			<newline gap="18" indent="0"/>
+		</group>
+		<group id="5">
+			<icon res="180" width="32" height="32" target="command:ID_TOOLS_WIZARD"/><gap size="8"/>
+			<heading align="middle">Warning: You Are Firewalled</heading>
+			<newline gap="8" indent="42"/>
+			<text color="FF0000">Envy has detected that you are hidden behind a router or firewall,
+			and are unable to receive active connections from the Internet. &#160;</text>
+			<text color="FF0000" format="b">This may cause poor download and search performance.</text>
+			<newline gap="6"/>
+			<link target="command:ID_TOOLS_WIZARD">Enable Plug'n'Play port forwarding</link>
+			<text>&#160;or </text>
+			<link target="command:ID_HELP_ROUTER">learn how to configure your router.</link>
+			<newline gap="20" indent="0"/>
+		</group>
+		<group id="6">
+			<icon res="180" width="32" height="32"/><gap size="8"/>
+			<heading align="middle">Warning: Your TCP Port Is Firewalled</heading>
+			<newline gap="8" indent="42"/>
+			<text color="FF0000">Envy has detected that you are behind a NAT router or firewall,
+			and are unable to receive TCP connections from the Internet. &#160;</text>
+			<text color="FF0000" format="b">This may cause poor download performance.</text>
+			<newline gap="6"/>
+			<link target="command:ID_TOOLS_WIZARD">Enable Plug'n'Play port forwarding</link>
+			<text>&#160;or </text>
+			<link target="command:ID_HELP_ROUTER">learn how to configure your router.</link>
+			<newline gap="20" indent="0"/>
+		</group>
+		<group id="7">
+			<icon res="180" width="32" height="32"/><gap size="8"/>
+			<heading align="middle">Warning: Your UDP Port Is Firewalled</heading>
+			<newline gap="8" indent="42"/>
+			<text color="FF0000">Envy has detected that you are behind a NAT router or firewall,
+			and are unable to receive UDP messages from the Internet. &#160;</text>
+			<text color="FF0000" format="b">This may cause poor search performance.</text>
+			<newline gap="6"/>
+			<link target="command:ID_TOOLS_WIZARD">Enable Plug'n'Play port forwarding</link>
+			<text>&#160;or </text>
+			<link target="command:ID_HELP_ROUTER">learn how to configure your router.</link>
+			<newline gap="20" indent="0"/>
+		</group>
+		<icon res="120" width="30" height="30" target="command:ID_TOOLS_SETTINGS"/><gap size="8"/>
+		<heading align="middle">Customise Envy</heading>
+		<newline gap="12" indent="42"/>
+		<icon res="196" width="16" height="16" target="command:ID_TOOLS_SKIN"/><gap size="8"/>
+		<link target="command:ID_TOOLS_SKIN" align="middle" format="bu">Skins</link><gap size="6"/>
+		<text align="middle">- Mix&apos;n&apos;match changes to visual appearances</text>
+		<newline gap="8"/>
+		<icon res="139" width="16" height="16" target="command:ID_VIEW_SCHEDULER"/><gap size="8"/>
+		<link target="command:ID_VIEW_SCHEDULER" align="middle">Scheduler</link><gap size="6"/>
+		<text align="middle">- Set automated tasks to occur at specific times</text>
+		<newline gap="8"/>
+		<icon res="138" width="16" height="16" target="command:ID_VIEW_SECURITY"/><gap size="8"/>
+		<link target="command:ID_VIEW_SECURITY" align="middle">Security Filters</link><gap size="6"/>
+		<text align="middle">- Update blocklist to avoid bad search results</text>
+		<newline gap="8"/>
+		<icon res="197" width="16" height="16" target="command:ID_TOOLS_WIZARD"/><gap size="8"/>
+		<link target="command:ID_TOOLS_WIZARD" align="middle">Settings Wizard</link><gap size="6"/>
+		<text align="middle">- Quick-edit Envy's basic settings</text>
+		<newline gap="8"/>
+		<icon res="182" width="16" height="16" target="command:ID_HELP_FAQ"/><gap size="8"/>
+		<link target="command:ID_HELP_FAQ" align="middle">Quick Help</link><gap size="6"/>
+		<text align="middle">- Get online support using Envy, or try </text>
+		<link target="command:ID_TAB_IRC" align="middle">live chat.</link>
+		<newline gap="8"/>
+		<icon res="201" width="16" height="16" target="command:ID_HELP_FORUMS_LOCAL"/><gap size="8"/>
+		<link target="command:ID_HELP_FORUMS_LOCAL" align="middle">Local Forums</link><gap size="6"/>
+		<text align="middle">- Go to the local English language forum</text>
+		<newline gap="18" indent="0"/>
+		<group id="4">
+			<icon res="120" width="32" height="32" target="command:ID_TOOLS_SETTINGS"/><gap size="8"/>
+			<heading align="middle">Remote Access Enabled</heading>
+			<newline gap="8" indent="42"/>
+			<text>Control Envy using your web browser at:</text>
+			<newline gap="6"/>
+			<link id="RemoteAccessURL"/>
+			<text>&#160; or &#160;</text>
+			<link id="RemoteAccessLocal"/>
+			<newline gap="18" indent="0"/>
+		</group>
+		<newline gap="16" indent="0"/>
+	</document>
+	<!-- Settings Pages -->
+	<document name="CGeneralSettingsGroup" title="General" leftMargin="8" topMargin="8">
+		<text format="b">Welcome to Envy's Settings Manager</text>
+		<newline gap="16"/>
+		<text>These option pages allow advanced users to customise how Envy works.
+			&#160;Settings in the </text>
+		<text format="b">General </text>
+		<text>section relate to the user experience.</text>
+		<newline gap="16" indent="16"/>
+		<link target="page:CGeneralSettingsPage" format="b">General:</link>
+		<text>&#160;Common user interface settings like tooltips, minimise behavior, number formats, prompts, etc.</text>
+		<newline gap="10"/>
+		<link target="page:CLibrarySettingsPage" format="b">Library:</link>
+		<text>&#160;Presentation, file access, and management of the file library.</text>
+		<newline gap="10"/>
+		<link target="page:CMediaSettingsPage" format="b">Media Player:</link>
+		<text>&#160;Set when to use the internal Envy Media Center.</text>
+		<newline gap="10"/>
+		<link target="page:CIRCSettingsPage" format="b">IRC Chat:</link>
+		<text>&#160;IRC chatroom connection settings and display options.</text>
+		<newline gap="10"/>
+		<link target="page:CCommunitySettingsPage" format="b">Community:</link>
+		<text>&#160;Your profile and direct chat settings.</text>
+		<newline gap="10"/>
+		<link target="page:CRemoteSettingsPage" format="b">Remote:</link>
+		<text>&#160;Setup Envy to be controlled from a web browser.</text>
+		<newline gap="10"/>
+		<link target="page:CWebSettingsPage" format="b">Web Integration:</link>
+		<text>&#160;Enable your web browser to use Envy for peer-to-peer links and as general download manager.</text>
+	</document>
+	<document name="CInternetSettingsGroup" title="Internet" leftMargin="8" topMargin="8">
+		<text format="b">Welcome to Envy's Settings Manager</text>
+		<newline gap="16"/>
+		<text>These option pages allow advanced users to customise how Envy works.
+			&#160;Settings in the </text>
+		<text format="b">Internet </text>
+		<text>section control how Envy interacts with other nodes in distributed peer-to-peer networks.</text>
+		<newline gap="16" indent="16"/>
+		<link target="page:CConnectionSettingsPage" format="b">Connection:</link>
+		<text>&#160;Indicate speed and capabilities of your Internet access.</text>
+		<newline gap="10"/>
+		<link target="page:CDownloadsSettingsPage" format="b">Downloads:</link>
+		<text>&#160;Manage bandwidth-in, limits, and folder locations.</text>
+		<newline gap="10"/>
+		<link target="page:CUploadsSettingsPage" format="b">Uploads:</link>
+		<text>&#160;Manage bandwidth-out, limits, and queues.</text>
+		<newline gap="10"/>
+		<link target="page:CSchedulerSettingsPage" format="b">Scheduler:</link>
+		<text>&#160;Limit download connections based on a periodic schedule.</text>
+	</document>
+	<document name="CBrowseHostProfile.2">
+		<newline gap="40" indent="0"/>
+		<text format="b">Shared Files</text>
+		<newline gap="4" indent="8"/>
+		<icon res="137" target="command:ID_BROWSE_FILES"/><gap size="5"/>
+		<link target="command:ID_BROWSE_FILES" align="middle">View Shared Files</link>
+		<group id="2">
+			<newline gap="16" indent="0"/>
+			<text format="b">Community</text>
+			<newline gap="4" indent="8"/>
+			<icon res="127" target="command:ID_SEARCH_CHAT"/>
+			<gap size="5"/>
+			<link target="command:ID_SEARCH_CHAT" align="middle">Chat With User</link>
+		</group>
+		<group id="3">
+			<newline gap="16" indent="0"/>
+			<text format="b">Favourite Web Links</text>
+			<newline gap="4" indent="8" id="Bookmarks"/>
+		</group>
+		<newline gap="16" indent="0"/>
+	</document>
+</documents>
+<!-- Localised Command Tip Text."Message" displayed in status bar, "Tip" shown in tooltip -->
+<commandtips>
+	<tip id="ID_CHAT_COLOR" message="Select a text colour (Ctrl+K)"/>
+	<tip id="ID_CHILD_MINIMISE" message="Minimise the selected window to the tab bar."/>
+	<tip id="ID_HOSTCACHE_DISCONNECT" message="Disconnect from the selected neighbour(s)."/>
+	<tip id="ID_LIBRARY_TREE_VIRTUAL" message="Organise your library."/>
+	<tip id="ID_NEIGHBOURS_DISCONNECT" message="Disconnect the selected neighbour(s)."/>
+	<tip id="ID_NEIGHBOURS_VIEW_ALL" message="Open a new Packet Dump window monitoring this neighbour."/>
+	<tip id="ID_NEIGHBOURS_VIEW_INCOMING" message="Open a new Packet Dump window monitoring incoming traffic from this neighbour."/>
+	<tip id="ID_NEIGHBOURS_VIEW_OUTGOING" message="Open a new Packet Dump window monitoring outgoing traffic to this neighbour."/>
+	<tip id="ID_VIEW_NEIGHBOURS" message="Show or hide the NEIGHBOURS window."/>
+</commandtips>
+<!-- Localised Strings -->
+<strings>
+	<string id="WINDOW_NEIGHBOURS" value="Neighbours"/>
+	<string id="20303" value="Initiating a neighbour connection to %s port %i..."/>
+	<string id="20304" value="Neighbour %s closed connection (%i : %s)."/>
+	<string id="20305" value="Closed connection with neighbour %s."/>
+	<string id="20306" value="Established a connection with neighbour %s, handshaking..."/>
+	<string id="20307" value="Unable to initiate a neighbour connection with %s."/>
+	<string id="20308" value="Neighbour %s dropped the connection unexpectedly."/>
+	<string id="20309" value="Closed connection with neighbour %s because it is not a hub."/>
+	<string id="20310" value="Unable to initiate a neighbour connection with %s (refused)."/>
+	<string id="20312" value="Closing connection to neighbour %s due to lack of traffic."/>
+	<string id="20385" value="Connecting neighbour %s falling back to shielded leaf mode."/>
+	<string id="20387" value="Hub neighbour %s won't accept us as a hub, closing connection."/>
+	<string id="20389" value="Acting as a hub for leaf neighbour %s."/>
+	<string id="20392" value="Neighbour %s is not a hub, closing connection."/>
+	<string id="20393" value="Closing connection to non-Gnutella2 neighbour %s."/>
+	<string id="20394" value="Neighbour %s wants to be a hub, closing connection."/>
+	<string id="20395" value="Gnutella connection with neighbour %s established successfully (G%i.%i : %s)."/>
+	<string id="20396" value="Gnutella2 connection with neighbour %s established successfully (%s)."/>
+	<string id="20572" value="Neighbour %s forwarded a packet with excessive TTL, dropping packet (TTL=%i, Hops=%i)."/>
+	<!--string id="20573" value="Neighbour %s forwarded a packet with zero TTL, ignoring."-->
+	<string id="20574" value="Neighbour %s forwarded an extended packet that is not GGEP encoded."/>
+	<string id="20575" value="Neighbour %s sent an invalid query routing table update, dropping connection."/>
+	<string id="20576" value="Sending query routing table to neighbour %s (%i bit = %lu[%i], %i%% full)"/>
+	<string id="20577" value="Receiving an unexpected query routing table update from neighbour %s."/>
+	<string id="20578" value="Neighbour %s updated its query routing table (%i bit = %lu[%i], %i%% full)."/>
+	<string id="20580" value="Leaf neighbour %s is forwarding queries, dropping connection."/>
+	<string id="20582" value="Neighbour %s forwarded a %s packet with invalid length, ignoring."/>
+	<string id="20584" value="Neighbour %s forwarded a packet of excessive size, dropping connection."/>
+	<string id="20586" value="Neighbour %s forwarded an unrecognised packet (0x%.2x), ignoring."/>
+	<string id="20587" value="Neighbour %s forwarded a pong with invalid address data, ignoring."/>
+	<string id="20588" value="Neighbour %s forwarded a push request to a firewalled address, ignoring."/>
+	<string id="20701" value="Connected to %lu neighbours. %s in local library."/>
+	<string id="20702" value="Hub mode with %lu neighbours. %s in local library."/>
+	<string id="20703" value="Hub/Ultrapeer mode with %lu neighbours. %s in local library."/>
+	<string id="20704" value="Ultrapeer mode with %lu neighbours. %s in local library."/>
+</strings>
+<!-- Localised Dialog Text, "cookie" verifies that the skin matches current dialog -->
+<dialogs>
+	<dialog name="CGeneralSettingsPage" cookie="BuBuBuBuBuBuBuBuStCoBuBuBuBuBuBuSyStEdmsStmsBuBuStCoStCo" caption="General">
+		<control caption="_General:"/>
+		<control caption="Start Envy at Windows startup"/>
+		<control caption="Auto-connect at Envy startup"/>
+		<control caption="Show a dialog when opening links"/>
+		<control caption="Check for updates (monthly)"/>
+		<control caption="_Downloads:"/>
+		<control caption="Expand new downloads by default"/>
+		<control caption="Display simple progress bar"/>
+		<control caption="Show rates in:"/>
+		<control caption="Auto bits/sec|Auto bytes/sec|b/s|B/s|Kb/s|KB/s|Mb/s|MB/s"/>
+		<control caption="_Search:"/>
+		<control caption="Expand multi-source files by default"/>
+		<control caption="Switch to Transfers view on download"/>
+		<control caption="Hide side bar when starting search"/>
+		<control caption="Filter adult content from searches"/>
+		<control caption="_Tooltips:"/>
+		<control/>
+		<control caption="Delay (ms):"/>
+		<control/>
+		<control/>
+		<control caption="Opacity:"/>
+		<control/>
+		<control caption="DropShadows"/>
+		<control caption="_Tray:"/>
+		<control caption="Close button behaviour:"/>
+		<control caption="Ask Me|Minimise to Tray|Close Immediately|Close After Transfers"/>
+		<control caption="Minimise button behaviour:"/>
+		<control caption="Normal Taskbar|Minimise to Tray"/>
+	</dialog>
+	<dialog name="CMediaSettingsPage" cookie="BuStCoBuBuBuCoBuBuBuBuSt" caption="Media Player">
+		<control caption="_Media Handling"/>
+		<control caption="Choose Media Handler:"/>
+		<control/>
+		<control caption="Use Envy Media Player to PLAY the file types listed below"/>
+		<control caption="Use Envy Media Player to ENQUEUE the file types listed below"/>
+		<control caption="File _Types:"/>
+		<control/>
+		<control caption="_Add"/>
+		<control caption="_Remove"/>
+		<control caption="Audio _Visualisation Plugin:"/>
+		<control caption="_Select Plugin..."/>
+		<control caption="Note: Choosing an external Media Handler will disable Media/Visualisation Plugins."/>
+	</dialog>
+	<dialog name="CIRCSettingsPage" cookie="BuBuBuBuStEdmsStStEdmsCoBuBuStBuStBuStBuStBuStBuStBuStBuStBuStEdStEdStEdStEdStCoStEdStEd" caption="Chat">
+		<control caption="Client _Options:"/>
+		<control caption="Show chat integration"/>
+		<control caption="Show timestamp"/>
+		<control caption="Flood protection:"/>
+		<control caption="Lines"/>
+		<control/>
+		<control caption="Screen Font:"/>
+		<control caption="Size"/>
+		<control/>
+		<control/>
+		<control caption="_Colours:"/>
+		<control/>
+		<control caption="Window"/>
+		<control/>
+		<control caption="Text"/>
+		<control/>
+		<control caption="Local text"/>
+		<control/>
+		<control caption="User actions"/>
+		<control/>
+		<control caption="Channel actions"/>
+		<control/>
+		<control caption="Server messages"/>
+		<control/>
+		<control caption="Notices"/>
+		<control/>
+		<control caption="Topics"/>
+		<control caption="Connection _Settings:"/>
+		<control caption="Screen name:"/>
+		<control/>
+		<control caption="User name:"/>
+		<control/>
+		<control caption="Alt screen name:"/>
+		<control/>
+		<control caption="Real name:"/>
+		<control/>
+		<control caption="Server:"/>
+		<control/>
+		<control caption="Port:"/>
+		<control/>
+		<control caption="Run command on connect"/>
+		<control/>
+	</dialog>
+	<dialog name="CFilesProfilePage" cookie="BuStSy" caption="Favourites">
+		<control caption="_Favourite Files:"/>
+		<control caption="Favourite files are recommended to users who browse your profile. You can create favourite files by adding them to the &quot;Favourites&quot; library folder."/>
+		<control/>
+	</dialog>
+	<dialog name="CGraphItemDlg" cookie="BuBuBuCoStEdStEdBuBuStBu" caption="Graph Item Properties">
+		<control caption="OK"/>
+		<control caption="Cancel"/>
+		<control caption="_Source:"/>
+		<control/>
+		<control caption="Multiplier:"/>
+		<control/>
+		<control caption="Units:"/>
+		<control/>
+		<control caption="_Display:"/>
+		<control caption="Select Colour..."/>
+		<control/>
+		<control caption="_Remove"/>
+	</dialog>
+	<dialog name="CCloseModeDlg" cookie="StBuBuBuBuBuBu" caption="Close Button">
+		<control caption="This is the first time you have clicked Envy's close button. Please choose what action you would like to take from now on:"/>
+		<control caption="Minimise to the tray area"/>
+		<control caption="Shut down Envy immediately"/>
+		<control caption="Shut down Envy after any downloads and uploads finish"/>
+		<control caption="OK"/>
+		<control caption="Cancel"/>
+	</dialog>
+	<dialog name="CCollectionExportDlg" cookie="StSyBuStStStStStEdBuBuBu" caption="Collection Export">
+		<control caption="This feature is used to export the contents of a folder or playlist as a rich collection file. Please select a template and press Next to continue.|Customise your collection by entering data below."/>
+		<control/>
+		<control caption="Template Information:"/>
+		<control caption="Name:"/>
+		<control caption="..."/>
+		<control caption="Author:"/>
+		<control caption="..."/>
+		<control caption="Description:"/>
+		<control/>
+		<control caption="Delete|_Back"/>
+		<control caption="_Next|_Export..."/>
+		<control caption="_Cancel"/>
+	</dialog>
+	<dialog name="CMediaVisDlg" cookie="BuSyCoBuBuBu" caption="Select Visualisation">
+		<control caption="Select an audio visualisation from the list:"/>
+		<control/>
+		<control caption="Footer Display|Full Size Display|Large Display|Medium Display|Small Display"/>
+		<control caption="_Setup..."/>
+		<control caption="OK"/>
+		<control caption="Cancel"/>
+	</dialog>
+	<dialog name="CDecodeMetadataDlg" cookie="StCoBuBuBuStStBuBu" caption="Metadata Localisation">
+		<control caption="Please select the method of re-encoding:"/>
+		<control caption="Arabic|Baltic|Central European|Chinese Simplified|Chinese Traditional|Cyrillic|Greek|Hebrew|Japanese|Korean|Thai|Turkish|Vietnamese"/>
+		<control caption="Preview:"/>
+		<control/>
+		<control/>
+		<control/>
+		<control/>
+		<control caption="OK"/>
+		<control caption="Cancel"/>
+	</dialog>
+</dialogs>
+<!-- No Column Definitions -->
+</skin>

@@ -1,0 +1,28 @@
+//
+// WindowsThumbnail.idl
+//
+// This file will be processed by the MIDL tool to produce
+// the type library (WindowsThumbnail.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+import "Envy.idl";
+
+[
+	uuid(3772E712-75B5-4AAF-B423-FD7C0399F13F),
+	version(1.0),
+	helpstring("WindowsThumbnail 1.0 Type Library")
+]
+library WindowsThumbnailLib
+{
+	importlib("stdole2.tlb");
+
+	[
+		uuid(0EEA2A0F-AD1F-4555-9827-0DD9335611A4),
+		helpstring("Windows Thumbnail Plugin")
+	]
+	coclass ImageService
+	{
+		[default] interface IImageServicePlugin;
+	};
+};

@@ -1,0 +1,46 @@
+HKCR
+{
+	ForceRemove RARBuilder.RARBuilder.1 = s 'RAR Builder'
+	{
+		CLSID = s '{C2F61D04-BE35-4AE3-84A8-BE140613E26D}'
+	}
+	ForceRemove RARBuilder.RARBuilder = s 'RAR Builder'
+	{
+		CLSID = s '{C2F61D04-BE35-4AE3-84A8-BE140613E26D}'
+		CurVer = s 'RARBuilder.RARBuilder.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {C2F61D04-BE35-4AE3-84A8-BE140613E26D} = s 'RAR Builder'
+		{
+			ProgID = s 'RARBuilder.RARBuilder.1'
+			VersionIndependentProgID = s 'RARBuilder.RARBuilder'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Both'
+			}
+			val AppID = s '%APPID%'
+			'TypeLib' = s '{EDB05406-0D3F-49F1-8ABC-9B53758008A0}'
+		}
+	}
+}
+HKCU
+{
+	NoRemove Software
+	{
+		NoRemove Envy
+		{
+			NoRemove Envy
+			{
+				NoRemove Plugins
+				{
+					NoRemove LibraryBuilder
+					{
+						val '.rar' = s '{C2F61D04-BE35-4AE3-84A8-BE140613E26D}'
+						val '.cbr' = s '{C2F61D04-BE35-4AE3-84A8-BE140613E26D}'
+					}
+				}
+			}
+		}
+	}
+}

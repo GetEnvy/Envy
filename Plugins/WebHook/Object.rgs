@@ -1,0 +1,74 @@
+HKCR
+{
+	ForceRemove Envy.WebHook.1 = s 'Envy Web Download Hook'
+	{
+		CLSID = s '{C0283C00-AA11-43E4-8C1D-8D28A0C86042}'
+	}
+	ForceRemove Envy.WebHook = s 'Envy Web Download Hook'
+	{
+		CLSID = s '{C0283C00-AA11-43E4-8C1D-8D28A0C86042}'
+		CurVer = s 'Envy.WebHook.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {C0283C00-AA11-43E4-8C1D-8D28A0C86042} = s 'Envy Web Download Hook'
+		{
+			ProgID = s 'Envy.WebHook.1'
+			VersionIndependentProgID = s 'Envy.WebHook'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Both'
+			}
+			val AppID = s '%APPID%'
+			'TypeLib' = s '{3403F6D8-9584-4231-A988-2B4E96527962}'
+			'Implemented Categories'
+			{
+				'{7DD95801-9882-11CF-9FA9-00AA006C42C4}'
+				'{7DD95802-9882-11CF-9FA9-00AA006C42C4}'
+				'{0DE86A58-2BAA-11CF-A229-00AA003D7352}'
+			}
+		}
+	}
+}
+HKLM
+{
+	NoRemove Software
+	{
+		NoRemove Microsoft
+		{
+			NoRemove Windows
+			{
+				NoRemove CurrentVersion
+				{
+					NoRemove Explorer
+					{
+						NoRemove 'Browser Helper Objects'
+						{
+							ForceRemove {C0283C00-AA11-43E4-8C1D-8D28A0C86042}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+HKCU
+{
+	NoRemove Software
+	{
+		NoRemove Microsoft
+		{
+			NoRemove 'Internet Explorer'
+			{
+				NoRemove MenuExt
+				{
+					ForceRemove 'Download with &Envy' = s 'res://%MODULE%/3000'
+					{
+						val Contexts = d 34
+					}
+				}
+			}
+		}
+	}
+}

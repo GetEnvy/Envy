@@ -1,0 +1,212 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "Resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "Includes\atlres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif // _WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE
+BEGIN
+    "Resource.h\0"
+END
+
+2 TEXTINCLUDE
+BEGIN
+    "#include ""Includes\\atlres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE
+BEGIN
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "Res\\SkinBuilder.ico"
+IDI_ICON1               ICON                    "Res\\Star.ico"
+IDI_ICON2               ICON                    "Res\\Paint.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_BANNER              BITMAP                  "Res\\Banner.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_MAINDLG DIALOGEX 0, 0, 292, 190
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_MINIMIZEBOX | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME
+CAPTION "Envy SkinBuilder"
+FONT 8, "MS Shell Dlg", 0, 0, 0x0
+BEGIN
+    CONTROL         200,IDC_STATIC,"Static",SS_BITMAP,0,0,413,31
+    LTEXT           "(Click a tab for sub-tabs)",IDC_STATIC1,4,170,164,14,SS_NOPREFIX
+    DEFPUSHBUTTON   "Save",IDOK,182,170,50,14
+    PUSHBUTTON      "Exit",IDCANCEL,235,170,50,14
+    LISTBOX         IDC_LIST1,0,31,293,132,LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+END
+
+
+IDD_ABOUTBOX DIALOGEX 0, 0, 187, 133
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "About"
+FONT 8, "MS Sans Serif", 0, 0, 0x0
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,130,112,50,14
+    CTEXT           "Envy SkinBuilder Demo\n\nCopyright © 2009",IDC_STATIC,26,55,78,32
+    ICON            IDR_MAINFRAME,IDC_STATIC,55,24,21,20
+    GROUPBOX        "",IDC_STATIC,7,7,115,119
+    LTEXT           "RibbonTabs Code by Raj Pabari",IDC_ICONLINK,29,104,72,8
+END
+
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 180
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 126
+    END
+
+    IDD_MAINDLG, DIALOG
+    BEGIN
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 184
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,0
+ PRODUCTVERSION 1,0,0,0
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x2L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904b0"
+        BEGIN
+            VALUE "FileDescription", "Envy SkinBuilder Demo"
+            VALUE "FileVersion", "1.0.0.0"
+            VALUE "InternalName", "SkinBuilder"
+            VALUE "LegalCopyright", "© 2009"
+            VALUE "OriginalFilename", "SkinBuilder.exe"
+            VALUE "ProductName", "Envy SkinBuilder"
+            VALUE "ProductVersion", "1.0.0.0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE
+BEGIN
+    IDR_MAINFRAME           "SkinBuilder"
+    IDS_TAB1                "&Start"
+    IDS_TAB1A               "Skin &Setup"
+    IDS_TAB1B               "&Metadata"
+    IDS_TAB1C               "&Help"
+    IDS_TAB1D               "&About"
+    IDS_TAB2                "&Frames"
+    IDS_TAB2A               "&Main Frame"
+    IDS_TAB2B               "&Subframes"
+    IDS_TAB2C               "&Dialogs"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_TAB2D               "&Headers"
+    IDS_TAB3                "&Images"
+    IDS_TAB3A               "&Navbar"
+    IDS_TAB3B               "&Toolbars"
+    IDS_TAB3C               "&Sidebars"
+    IDS_TAB3D               "&Watermarks"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_TAB4                "&Icons"
+    IDS_TAB4A               "&Commandstrip"
+    IDS_TAB4B               "&Individuals"
+    IDS_TAB4C               "Custom Men&us"
+    IDS_TAB5                "&Colors"
+    IDS_TAB5A               "&System"
+    IDS_TAB5B               "&Local"
+    IDS_TAB5C               "Fon&ts"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_TAB6                "&Finish"
+    IDS_TAB6A               "Create S&kinfile"
+    IDS_TAB6B               "&Optimize"
+    IDS_TAB6C               "View &XML"
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////

@@ -1,0 +1,4255 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<skin xmlns="http://schemas.getenvy.com/Skin.xsd" version="1.0">
+
+<!-- Envy Default Hebrew Skin File -->
+
+<!-- Translation based on default en.xml r1 -->
+<!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
+
+<!-- This skin template represents current Envy defaults. -->
+<!-- Use this file as a basis for creating new language skins,   -->
+<!-- however be sure to include only sections that are changed:  -->
+<!-- Unedited English content limits compatibility & performance.-->
+<!-- Better to be concise than literal:  Please test visibility! -->
+
+<!-- למתרגמים: יש לשים לב לתווים בלתי נראים שהופכים את כיוון ההצגה בשרזה.
+יש גם שוני בתגים של עיצוב כמו
+gap i newline
+בגלל שהממשק מימין לשמאל.-->
+
+<!-- Manifest -->
+<manifest
+	name="עברית"
+	author="David Aravon"
+	updatedBy="_peer_ (la. Han), Omega"
+	description="Envy Default Hebrew Skin File"
+	link="http://getenvy.com"
+	email="peer_l_(at)hotmail, omega09(at)sourceforge.net"
+	version="1.0.0.0"
+	type="Language"
+	language="he"
+	dir="rtl"
+	priority="44"
+	prompt="לחץ כאן לקביעת עברית כשפת ברירת המחדל"
+/>
+
+<!-- Toolbar Definitions -->
+<toolbars>
+	<!-- MAIN WINDOW -->
+	<toolbar name="CMainWnd.Basic">
+		<button id="ID_NETWORK_CONNECT" text="‪‪התחבר"/>
+		<separator/>
+		<button id="ID_TAB_HOME" text="ראשי"/>
+		<button id="ID_TAB_TRANSFERS" text="‪הורדות"/>
+		<button id="ID_TAB_LIBRARY" text="‪‪ספרייה"/>
+		<button id="ID_TAB_MEDIA" text="‪‪נגן מדיה"/>
+		<button id="ID_TAB_SEARCH" text="‪חיפוש"/>
+	</toolbar>
+	<toolbar name="CMainWnd.Tabbed">
+		<button id="ID_TAB_CONNECT" text="‪התחבר"/>
+		<separator/>
+		<button id="ID_TAB_HOME" text="‪ראשי"/>
+		<button id="ID_TAB_TRANSFERS" text="‪העברות"/>
+		<button id="ID_TAB_NETWORK" text="‪רשת"/>
+		<button id="ID_TAB_LIBRARY" text="‪ספרייה"/>
+		<button id="ID_TAB_MEDIA" text="‪נגן מדיה"/>
+		<button id="ID_TAB_IRC" text="לשוחח"/>
+		<button id="ID_TAB_SEARCH" text="‪חיפוש"/>
+	</toolbar>
+	<toolbar name="CMainWnd.Windowed">
+		<button id="ID_NETWORK_CONNECT" text="‪התחבר"/>
+		<button id="ID_NETWORK_DISCONNECT"/>
+		<separator/>
+		<button id="ID_TAB_HOME"/>
+		<button id="ID_VIEW_SYSTEM"/>
+		<button id="ID_VIEW_NEIGHBOURS"/>
+		<button id="ID_VIEW_DOWNLOADS"/>
+		<button id="ID_VIEW_UPLOADS"/>
+		<button id="ID_VIEW_LIBRARY"/>
+		<button id="ID_VIEW_MEDIA"/>
+		<button id="ID_TAB_IRC"/>
+		<separator/>
+		<button id="ID_VIEW_SCHEDULER"/>
+		<button id="ID_VIEW_SECURITY"/>
+		<button id="ID_VIEW_HOSTS"/>
+		<button id="ID_VIEW_DISCOVERY"/>
+		<button id="ID_VIEW_TRAFFIC"/>
+		<button id="ID_VIEW_PACKETS"/>
+		<button id="ID_VIEW_SEARCH_MONITOR"/>
+		<button id="ID_VIEW_RESULTS_MONITOR"/>
+		<separator/>
+		<button id="ID_WINDOW_CASCADE"/>
+		<button id="ID_WINDOW_TILE_HORZ"/>
+		<button id="ID_WINDOW_TILE_VERT"/>
+		<separator/>
+		<button id="ID_TOOLS_SETTINGS"/>
+		<button id="ID_TOOLS_DOWNLOAD"/>
+		<button id="ID_NETWORK_SEARCH" text="‪חיפוש חדש"/>
+	</toolbar>
+	<!-- SEARCH WINDOW -->
+	<toolbar name="CSearchWnd.Panel.Basic">
+		<button id="ID_SEARCH_DOWNLOAD" text="‪הורד"/>
+		<button id="ID_BROWSE_LAUNCH" text="‪עיין במשתמש"/>
+		<rightalign/>
+		<button id="ID_SEARCH_FILTER_RAW" text="‪:מסנן" tip="הקלד מספר מילים לסינון תוצאות החיפוש"/>
+		<control id="IDC_FILTER_BOX" width="80"/>
+		<separator/>
+		<button id="ID_SEARCH_DETAILS" text="‪הצג פרטי חיפוש"/>
+	</toolbar>
+	<toolbar name="CSearchWnd.Panel">
+		<button id="ID_SEARCH_DOWNLOAD" text="‪הורד"/>
+		<separator/>
+		<button id="ID_BROWSE_LAUNCH" text="‪עיין במשתמש"/>
+		<button id="ID_SECURITY_BAN" text="Ban"/>
+		<rightalign/>
+		<button id="ID_SEARCH_FILTER_RAW" text="‪:מסנן" tip="הקלד מספר מילים לסינון תוצאות החיפוש"/>
+		<control id="IDC_FILTER_BOX" width="80"/>
+		<separator/>
+		<button id="ID_SEARCH_DETAILS" text="‪הצג פרטי חיפוש"/>
+		<button id="ID_SEARCH_PANEL" text="‪הצג לוח חיפוש"/>
+	</toolbar>
+	<toolbar name="CSearchWnd.Full">
+		<button id="ID_SEARCH_SEARCH" text="‪חפש שוב..."/>
+		<button id="ID_SEARCH_STOP" text="‪הפסק חיפוש"/>
+		<separator/>
+		<button id="ID_SEARCH_DOWNLOAD" text="‪הורד"/>
+		<button id="ID_BROWSE_LAUNCH" text="‪עיין במשתמש"/>
+		<button id="ID_SECURITY_BAN" text="Ban"/>
+		<rightalign/>
+		<button id="ID_SEARCH_FILTER_RAW" text="‪:מסנן" tip="הקלד מספר מילים לסינון תוצאות החיפוש"/>
+		<control id="IDC_FILTER_BOX" width="80"/>
+		<separator/>
+		<button id="ID_SEARCH_DETAILS" text="‪הצג פרטי חיפוש"/>
+		<button id="ID_SEARCH_PANEL" text="‪הצג לוח חיפוש"/>
+	</toolbar>
+	<!-- BROWSE HOST WINDOW -->
+	<toolbar name="CBrowseHeaderCtrl">
+		<button id="ID_BROWSE_PROFILE" text="‪פרופיל"/>
+		<button id="ID_BROWSE_FILES" text="‪קבצים משותפים"/>
+	</toolbar>
+	<toolbar name="CBrowseTree.Top">
+		<button id="ID_LIBRARY_TREE_PHYSICAL" text="‪תקיות"/>
+		<button id="ID_LIBRARY_TREE_VIRTUAL" text="‪ארגונית"/>
+	</toolbar>
+	<toolbar name="CBrowseHostWnd.Basic">
+		<button id="ID_SEARCH_DOWNLOAD" text="‪הורד קובץ"/>
+		<button id="ID_SEARCH_CHAT" text="‪שוחח עם משתמש"/>
+		<rightalign/>
+		<button id="ID_SEARCH_FILTER_RAW" text="‪‪:מסנן" tip="הקלד מספר מילים לסינון תוצאות החיפוש"/>
+		<control id="IDC_FILTER_BOX" width="80"/>
+		<separator/>
+		<button id="ID_SEARCH_DETAILS" text="‪הצג פרטים"/>
+	</toolbar>
+	<toolbar name="CBrowseHostWnd">
+		<button id="ID_SEARCH_DOWNLOAD" text="‪הורד קובץ"/>
+		<button id="ID_BROWSE_STOP" text="‪הפסק"/>
+		<button id="ID_BROWSE_REFRESH" text="‪רענן"/>
+		<separator/>
+		<button id="ID_SEARCH_CHAT" text="‪שוחח עם משתמש"/>
+		<rightalign/>
+		<button id="ID_SEARCH_FILTER_RAW" text="‪‪:מסנן" tip="הקלד מספר מילים לסינון תוצאות החיפוש"/>
+		<control id="IDC_FILTER_BOX" width="80"/>
+		<separator/>
+		<button id="ID_SEARCH_DETAILS" text="‪הצג פרטים"/>
+	</toolbar>
+	<!-- DOWNLOADS WINDOW -->
+	<toolbar name="CDownloadsWnd.Basic">
+		<button id="ID_DOWNLOADS_LAUNCH_COMPLETE" text="‪פתח או הפעל"/>
+		<button id="ID_DOWNLOADS_LAUNCH_COPY" text="‪תצוגה מקדימה"/>
+		<separator/>
+		<button id="ID_DOWNLOADS_FILE_DELETE" text="‪מחק קובץ"/>
+		<button id="ID_DOWNLOADS_CLEAR_INCOMPLETE" text="‪בטל הורדה"/>
+		<button id="ID_DOWNLOADS_CLEAR_COMPLETE" text="‪נקה הורדה"/>
+		<button id="ID_DOWNLOADS_RESUME" text="‪המשך הורדה"/>
+		<button id="ID_DOWNLOADS_PAUSE" text="‪השהה הורדה"/>
+		<separator/>
+		<button id="ID_DOWNLOADS_EDIT" text="‪מידע הטורנט"/>
+		<button id="ID_DOWNLOADS_MONITOR" text="‪(הצג משגוח (מוניטור"/>
+		<rightalign/>
+		<button id="ID_DOWNLOADS_CLEAR_COMPLETED" text="‪נקה הורדות שהסתיימו"/>
+	</toolbar>
+	<toolbar name="CDownloadsWnd">
+		<button id="ID_DOWNLOADS_LAUNCH_COMPLETE" text="‪פתח או הפעל"/>
+		<button id="ID_DOWNLOADS_LAUNCH" text="‪תצוגה מקדימה"/>
+		<separator/>
+		<button id="ID_DOWNLOADS_FILE_DELETE" text="‪מחק קובץ"/>
+		<button id="ID_DOWNLOADS_CLEAR_INCOMPLETE" text="‪בטל הורדה"/>
+		<button id="ID_DOWNLOADS_CLEAR_COMPLETE" text="‪נקה הורדה"/>
+		<button id="ID_DOWNLOADS_RESUME" text="‪המשך הורדה"/>
+		<button id="ID_DOWNLOADS_PAUSE" text="‪השהה הורדה"/>
+		<separator/>
+		<button id="ID_DOWNLOADS_EDIT" text="‪מידע הטורנט"/>
+		<button id="ID_DOWNLOADS_MONITOR" text="‪(הצג משגוח (מוניטור"/>
+		<rightalign/>
+		<button id="ID_TOOLS_DOWNLOAD" text="‪הוסף הורדה/טורנט"/>
+		<button id="ID_DOWNLOADS_CLEAR_COMPLETED" text="‪נקה הורדות שהסתיימו"/>
+		<separator/>
+		<button id="ID_DOWNLOADS_FILTER_MENU" text="‪מסנן"/>
+	</toolbar>
+	<!-- UPLOADS WINDOW -->
+	<toolbar name="CUploadsWnd.Basic">
+		<button id="ID_BROWSE_LAUNCH" text="‪עיין במשתמש"/>
+		<button id="ID_UPLOADS_CHAT" text="‪שוחח עם משתמש"/>
+		<rightalign/>
+		<button id="ID_UPLOADS_CLEAR_COMPLETED" text="נקה העלאות שהסתיימו"/>
+	</toolbar>
+	<toolbar name="CUploadsWnd">
+		<button id="ID_UPLOADS_LAUNCH" text="‪פתח או הפעל"/>
+		<separator/>
+		<button id="ID_UPLOADS_CLEAR" text="‪נקה העלאה"/>
+		<button id="ID_UPLOADS_START" text="‪התחל כעת"/>
+		<button id="ID_UPLOADS_PRIORITY" text="עדיפות" visible="false"/>
+		<separator/>
+		<button id="ID_BROWSE_LAUNCH" text="‪עיין במשתמש"/>
+		<button id="ID_UPLOADS_CHAT" text="‪שוחח עם משתמש"/>
+		<button id="ID_SECURITY_" text="‪חסום משתמש"/>
+		<rightalign/>
+		<button id="ID_UPLOADS_CLEAR_COMPLETED" text="‪נקה העלאות שהסתיימו"/>
+		<separator/>
+		<button id="ID_UPLOADS_FILTER_MENU" text="‪מסנן"/>
+	</toolbar>
+	<!-- LIBRARY FRAME -->
+	<toolbar name="CLibraryTree.Top">
+		<button id="ID_LIBRARY_TREE_PHYSICAL" text="‪תקיות"/>
+		<button id="ID_LIBRARY_TREE_VIRTUAL" text="‪ארגונית"/>
+	</toolbar>
+	<toolbar name="CLibraryTree.Virtual">
+		<button id="ID_LIBRARY_FOLDERS" text="‪...שתף קבצים"/>
+	</toolbar>
+	<toolbar name="CLibraryHeaderBar.Physical">
+		<button id="ID_LIBRARY_PARENT" text="‪תיקיה מכילה"/>
+		<button id="ID_LIBRARY_VIEW" text="‪תצוגה"/>
+	</toolbar>
+	<toolbar name="CLibraryHeaderBar.Virtual">
+		<button id="ID_LIBRARY_PARENT" text="‪תיקיה מכילה"/>
+		<button id="ID_LIBRARY_VIEW" text="‪תצוגה"/>
+	</toolbar>
+	<!-- LIBRARY VIEWS -->
+	<toolbar name="CLibraryTileView.Physical">
+		<button id="ID_LIBRARY_FOLDERS" text="‪...שתף קבצים"/>
+		<rightalign/>
+		<button id="ID_LIBRARY_SEARCH_QUICK" text="‪חפש"/>
+		<control id="IDC_SEARCH_BOX" width="90"/>
+		<separator/>
+		<button id="ID_LIBRARY_PANEL" text="‪הצג פרטים"/>
+	</toolbar>
+	<toolbar name="CLibraryTileView.Virtual">
+		<button id="ID_LIBRARY_FOLDER_NEW" text="‪...צור אלבום"/>
+		<button id="ID_LIBRARY_ALBUM_DELETE" text="‪מחק אלבום"/>
+		<rightalign/>
+		<separator/>
+		<button id="ID_LIBRARY_SEARCH_QUICK" text="‪חפש"/>
+		<control id="IDC_SEARCH_BOX" width="90"/>
+		<separator/>
+		<button id="ID_LIBRARY_PANEL" text="‪הצג פרטים"/>
+	</toolbar>
+	<toolbar name="CLibraryFileView.Physical.Basic">
+		<button id="ID_LIBRARY_LAUNCH" text="‪פתח או הפעל"/>
+		<button id="ID_LIBRARY_ENQUEUE" text="‪הוסף לרשימת השמעה"/>
+		<separator/>
+		<button id="ID_WEBSERVICES_LIST" text="שרותי רשת"/>
+		<rightalign/>
+		<button id="ID_LIBRARY_SEARCH_QUICK" text="‪חפש"/>
+		<control id="IDC_SEARCH_BOX" width="90"/>
+		<separator/>
+		<button id="ID_LIBRARY_PANEL" text="‪הצג פרטים"/>
+	</toolbar>
+	<toolbar name="CLibraryFileView.Physical">
+		<button id="ID_LIBRARY_LAUNCH" text="‪פתח או הפעל"/>
+		<button id="ID_LIBRARY_ENQUEUE" text="‪הוסף לרשימת השמעה"/>
+		<separator/>
+		<button id="ID_LIBRARY_PROPERTIES" text="Properties"/>
+		<separator/>
+		<button id="ID_LIBRARY_PROPERTIES" text="‪מאפיינים"/>
+		<separator/>
+		<button id="ID_LIBRARY_MOVE" text="‪העבר"/>
+		<button id="ID_LIBRARY_COPY" text="‪העתק"/>
+		<button id="ID_LIBRARY_DELETE" text="‪מחק"/>
+		<rightalign/>
+		<button id="ID_LIBRARY_SEARCH_QUICK" text="‪חפש"/>
+		<control id="IDC_SEARCH_BOX" width="90"/>
+		<separator/>
+		<button id="ID_LIBRARY_PANEL" text="‪הצג פרטים"/>
+	</toolbar>
+	<toolbar name="CLibraryFileView.Virtual.Basic">
+		<button id="ID_LIBRARY_LAUNCH" text="‪פתח או הפעל"/>
+		<button id="ID_LIBRARY_ENQUEUE" text="‪הוסף לרשימת השמעה"/>
+		<button id="ID_LIBRARY_FOLDER_ENQUEUE" text="‪נגן אלבום"/>
+		<separator/>
+		<button id="ID_WEBSERVICES_LIST" text="שרותי רשת"/>
+		<rightalign/>
+		<button id="ID_LIBRARY_SEARCH_QUICK" text="‪חפש"/>
+		<control id="IDC_SEARCH_BOX" width="90"/>
+		<separator/>
+		<button id="ID_LIBRARY_PANEL" text="‪הצג פרטים"/>
+	</toolbar>
+	<toolbar name="CLibraryFileView.Virtual">
+		<button id="ID_LIBRARY_LAUNCH" text="‪פתח או הפעל"/>
+		<button id="ID_LIBRARY_ENQUEUE" text="‪הוסף לרשימת השמעה"/>
+		<button id="ID_LIBRARY_FOLDER_ENQUEUE" text="‪נגן אלבום"/>
+		<separator/>
+		<button id="ID_LIBRARY_PROPERTIES" text="מאפייניפ"/>
+		<rightalign/>
+		<button id="ID_LIBRARY_SEARCH_QUICK" text="‪חפש"/>
+		<control id="IDC_SEARCH_BOX" width="90"/>
+		<separator/>
+		<button id="ID_LIBRARY_PANEL" text="‪הצג פרטים"/>
+	</toolbar>
+	<toolbar name="CLibraryCollectionView.Virtual">
+		<button id="ID_LIBRARY_FOLDER_ENQUEUE" text="‪נגן אלבום מלא"/>
+		<separator/>
+		<button id="ID_LIBRARY_FOLDER_DOWNLOAD" text="‪הורד את כל הקבצים"/>
+		<rightalign/>
+		<button id="ID_LIBRARY_SEARCH_QUICK" text="‪חפש"/>
+		<control id="IDC_SEARCH_BOX" width="90"/>
+		<separator/>
+		<button id="ID_LIBRARY_PANEL" text="‪הצג פרטים"/>
+	</toolbar>
+	<!-- MEDIA WINDOW -->
+	<toolbar name="CMediaFrame.Basic">
+		<button id="ID_MEDIA_PLAY" text="‪נגן"/>
+		<button id="ID_MEDIA_PAUSE" text="‪השהה" visible="false"/>
+		<button id="ID_MEDIA_STOP" text="‪עצור"/>
+		<separator/>
+		<label text="‪:מיקום" tip="עבור למיקום אחר בקובץ המדיה"/>
+		<control id="IDC_MEDIA_POSITION" width="190" height="22"/>
+		<label text="‪:עוצמה" tip="כוונן את עוצמת הקול"/>
+		<control id="IDC_MEDIA_VOLUME" width="50" height="22"/>
+		<separator/>
+		<button id="ID_MEDIA_OPEN" text="‪פתח קובץ"/>
+		<rightalign/>
+		<button id="ID_MEDIA_NEXT" text="‪הבא"/>
+		<button id="ID_MEDIA_PREVIOUS" text="‪הקודם"/>
+		<separator/>
+		<button id="ID_MEDIA_PLAYLIST" text="‪רשימת השמעה"/>
+	</toolbar>
+	<toolbar name="CMediaFrame">
+		<button id="ID_MEDIA_PLAY" text="‪נגן"/>
+		<button id="ID_MEDIA_PAUSE" text="‪השהה" visible="false"/>
+		<button id="ID_MEDIA_STOP" text="‪עצור"/>
+		<separator/>
+		<label text="‪:מיקום" tip="עבור למיקום אחר בקובץ המדיה"/>
+		<control id="IDC_MEDIA_POSITION" width="190" height="22"/>
+		<label text="‪:מהירות" tip="כוונן את מהירות השמעת קובץ המדיה"/>
+		<control id="IDC_MEDIA_SPEED" width="40" height="22"/>
+		<label text="‪:עוצמה" tip="כוונן את עוצמת הקול"/>
+		<control id="IDC_MEDIA_VOLUME" width="50" height="22"/>
+		<separator/>
+		<button id="ID_MEDIA_OPEN" text="‪פתח"/>
+		<separator/>
+		<button id="ID_MEDIA_FULLSCREEN"/>
+		<button id="ID_MEDIA_ZOOM"/>
+		<button id="ID_MEDIA_SETTINGS"/>
+		<rightalign/>
+		<button id="ID_MEDIA_NEXT"/>
+		<button id="ID_MEDIA_PREVIOUS"/>
+		<separator/>
+		<button id="ID_MEDIA_PLAYLIST" text="‪רשימת השמעה"/>
+	</toolbar>
+	<toolbar name="CMediaList">
+		<button id="ID_MEDIA_ADD"/>
+		<button id="ID_MEDIA_REMOVE"/>
+		<rightalign/>
+		<button id="ID_MEDIA_CLEAR" text="‪נקה"/>
+		<button id="ID_MEDIA_SAVE" text="‪שמור"/>
+	</toolbar>
+	<!-- IRC WINDOW -->
+	<toolbar name="CIRCFrame">
+		<button id="ID_IRC_SENDTEXT" text="Send" tip="Post הערות"/>
+		<separator/>
+		<button id="ID_IRC_CLOSETAB" text="Close" tip="Exit Current Channel Window"/>
+		<rightalign/>
+		<button id="ID_IRC_CONNECT" text="התחבר" tip="התחבר לחדר שיחה"/>
+		<button id="ID_IRC_DISCONNECT" text="התנתק" tip="התנתק מחדר שיחה"/>
+		<separator/>
+		<button id="ID_IRC_SETTINGS" text="הגדרות" tip="כוון הגדרות חדר השיחה"/>
+	</toolbar>
+	<!-- NEIGHBOURS WINDOW -->
+	<toolbar name="CNeighboursWnd.Basic">
+		<button id="ID_BROWSE_LAUNCH" text="‪עיין במשתמש"/>
+		<button id="ID_NEIGHBOURS_CHAT" text="‪שוחח עם משתמש"/>
+		<rightalign/>
+		<button id="ID_NETWORK_G2" text="‪גנוטלה 2"/>
+		<button id="ID_NETWORK_G1" text="‪גנוטלה "/>
+		<button id="ID_NETWORK_ED2K" text="‪אי-דונקי 2000"/>
+		<separator/>
+		<button id="ID_NEIGHBOURS_SETTINGS" text="‪הגדרות"/>
+	</toolbar>
+	<toolbar name="CNeighboursWnd">
+		<button id="ID_NETWORK_CONNECT_TO" text="‪התחבר אל"/>
+		<button id="ID_NEIGHBOURS_DISCONNECT" text="‪התנתק"/>
+		<separator/>
+		<button id="ID_SECURITY_BAN" text="חסום מארח (הוסט)"/>
+		<rightalign/>
+		<button id="ID_NETWORK_G2" text="‪גנוטלה 2"/>
+		<button id="ID_NETWORK_G1" text="גנוטלה "/>
+		<button id="ID_NETWORK_ED2K" text="‪אי-דונקי"/>
+		<button id="ID_NETWORK_DC" text="DC++"/>
+		<button id="ID_NETWORK_BT" text="BitTorrent"/>
+		<separator/>
+		<button id="ID_NEIGHBOURS_SETTINGS" text="‪הגדרות"/>
+	</toolbar>
+	<!-- SECURITY WINDOW -->
+	<toolbar name="CSecurityWnd">
+		<button id="ID_SECURITY_ADD" text="הוספת כלל"/>
+		<separator/>
+		<button id="ID_SECURITY_EDIT" text="עריכת כלל"/>
+		<button id="ID_SECURITY_REMOVE" text="הסר כלל"/>
+		<separator/>
+		<button id="ID_SECURITY_MOVE_UP" text="העבר למעלה"/>
+		<button id="ID_SECURITY_MOVE_DOWN" text="הזז למטה"/>
+		<rightalign/>
+		<button id="ID_SECURITY_RESET" text="איפוס צפיות"/>
+		<separator/>
+		<button id="ID_SECURITY_IMPORT" text="ייבוא ​​רשימה"/>
+		<button id="ID_SECURITY_EXPORT" text="ייצוא רשימת"/>
+	</toolbar>
+	<!-- SCHEDULER WINDOW -->
+	<toolbar name="CSchedulerWnd">
+		<button id="ID_SCHEDULER_ADD" text="הוסף משימה"/>
+		<separator/>
+		<button id="ID_SCHEDULER_EDIT" text="ערוך משימה"/>
+		<button id="ID_SCHEDULER_REMOVE" text="הסר משימה"/>
+		<separator/>
+		<button id="ID_SCHEDULER_ACTIVATE" text="להפעיל"/>
+		<button id="ID_SCHEDULER_DEACTIVATE" text="בטל"/>
+		<rightalign/>
+		<button id="ID_SCHEDULER_REMOVE_ALL" text="הסר הכל"/>
+		<separator/>
+		<button id="ID_SCHEDULER_IMPORT" text="ייבוא ​​רשימה"/>
+		<button id="ID_SCHEDULER_EXPORT" text="ייצוא רשימת"/>
+	</toolbar>
+	<!-- HIT MONITOR WINDOW -->
+	<toolbar name="CHitMonitorWnd">
+		<button id="ID_SEARCH_DOWNLOAD" text="‪הורד"/>
+		<button id="ID_HITMONITOR_SEARCH" text="‪שלח בקשת חיפוש חוזרת"/>
+		<separator/>
+		<button id="ID_HITMONITOR_PAUSE" text="‪השהה"/>
+		<button id="ID_HITMONITOR_CLEAR" text="‪נקה"/>
+		<rightalign/>
+		<label text="‪:מסנן" tip="הקלד מספר מילים לסינון התוצאות"/>
+		<control id="IDC_FILTER_BOX" width="80"/>
+		<button id="ID_SEARCH_FILTER_RAW" text="‪...עוד"/>
+	</toolbar>
+	<!-- DISCOVERY SERVICES WINDOW Missing -->
+	<!-- HOST CACHE WINDOW -->
+	<toolbar name="CHostCacheWnd">
+		<button id="ID_HOSTCACHE_CONNECT" text="‪התחבר אל"/>
+		<button id="ID_HOSTCACHE_DISCONNECT" text="‪התנתק"/>
+		<button id="ID_HOSTCACHE_REMOVE" text="‪הסר"/>
+		<rightalign/>
+		<button id="ID_HOSTCACHE_G2_HORIZON" text="‪אשכול גנוטלה 2"/>
+		<button id="ID_HOSTCACHE_G2_CACHE" text="‪מטמון גנוטלה 2"/>
+		<button id="ID_HOSTCACHE_G1_CACHE" text="‪מטמון גנוטלה 1"/>
+		<button id="ID_HOSTCACHE_ED2K_CACHE" text="‪מטמון אי-דונקי"/>
+		<button id="ID_HOSTCACHE_DC_CACHE" text="מטמון אי-דונקי"/>
+		<!--button id="ID_HOSTCACHE_BT_CACHE" text="מטמון ביטורנט"-->
+		<!--button id="ID_HOSTCACHE_KAD_CACHE" text="מטמון קדמילה"-->
+	</toolbar>
+	<!-- IRC WINDOW -->
+	<toolbar name="CIRCFrame">
+		<button id="ID_IRC_SENDTEXT" text="לשלוח" tip="תגובות לפרסום שלך"/>
+		<separator/>
+		<button id="ID_IRC_CLOSETAB" text="סגור" tip="השאירו חלון ערוץ נוכחית"/>
+		<rightalign/>
+		<button id="ID_IRC_CONNECT" text="לחבר" tip="חיבור ה-IRC"/>
+		<button id="ID_IRC_DISCONNECT" text="לנתק" tip="התנתקות IRC"/>
+		<separator/>
+		<button id="ID_IRC_SETTINGS" text="הגדרות" tip="קביעת תצורה של הגדרות ה-IRC"/>
+	</toolbar>
+	<!-- PRIVATE CHAT WINDOW -->
+	<toolbar name="CPrivateChatWnd">
+		<button id="ID_CHAT_BOLD"/>
+		<button id="ID_CHAT_ITALIC"/>
+		<button id="ID_CHAT_UNDERLINE"/>
+		<button id="ID_CHAT_COLOR"/>
+		<button id="ID_CHAT_EMOTICONS" text=" &#160; "/>
+		<separator/>
+		<button id="ID_CHAT_BROWSE" text="עיין במשתמש"/>
+		<button id="ID_CHAT_PRIORITY" text="הענק עדיפות"/>
+		<!--button id="ID_CHAT_SEND_FILE" text="Send File"-->
+		<rightalign/>
+		<button id="ID_CHAT_CONNECT" text="התחבר" visible="false"/>
+		<button id="ID_CHAT_DISCONNECT" text="התנתק"/>
+	</toolbar>
+	<!-- WEBSERVICES -->
+	<toolbar name="WebServices.MusicBrainz">
+		<button id="ID_MUSICBRAINZ_MATCHES" text="הצג "/>
+		<button id="ID_MUSICBRAINZ_ALBUMS" text="הצג את כל האלבומים"/>
+		<separator/>
+	</toolbar>
+	<!--
+	<toolbar name="WebServices.ShareMonkey">
+		<button id="ID_SHAREMONKEY_DOWNLOAD" text="השג מידע"/>
+		<button id="ID_SHAREMONKEY_SAVE" text="שמור"/>
+		<separator/>
+		<button id="ID_SHAREMONKEY_PREVIOUS" text="הקודם"/>
+		<button id="ID_SHAREMONKEY_NEXT" text="הבה"/>
+		<separator/>
+		<button id="ID_SHAREMONKEY_PRICES" text="השג מחירים"/>
+		<button id="ID_SHAREMONKEY_COMPARE" text="השווה"/>
+		<button id="ID_SHAREMONKEY_BUY" text="קנה"/>
+	</toolbar>
+	-->
+	<!-- IMAGE VIEWER PLUGIN WINDOW -->
+	<toolbar name="ImageViewerWnd">
+		<button id="PluginID_ImageViewer_BestFit" text="התאמה מיטבית"/>
+		<button id="PluginID_ImageViewer_FullSize" text="גודל מקורי"/>
+		<separator/>
+		<button id="PluginID_ImageViewer_Refresh" text="רענן"/>
+		<rightalign/>
+		<button id="PluginID_ImageViewer_Close" text="סגור"/>
+	</toolbar>
+</toolbars>
+<!-- Menu Definitions -->
+<menus>
+	<!-- TAB BAR POPUP MENUS -->
+	<menu name="CTabBar">
+		<item id="ID_MOVETAB_LEFT" text="העבר שמאלה"/>
+		<item id="ID_MOVETAB_RIGHT" text="העבר ימינה"/>
+		<separator/>
+		<item id="ID_CHILD_CLOSE" text="סגור חלון_"/>
+	</menu>
+	<menu name="CTabBar.Child">
+		<item id="ID_MOVETAB_LEFT" text="העבר שמאלה"/>
+		<item id="ID_MOVETAB_RIGHT" text="העבר ימינה"/>
+		<separator/>
+		<item id="ID_CHILD_MAXIMISE" text="מסך מלא_"/>
+		<item id="ID_CHILD_RESTORE" text="שחזר_"/>
+		<item id="ID_CHILD_MINIMISE" text="מ_זער"/>
+		<separator/>
+		<item id="ID_CHILD_CLOSE" text="סגור חלון_"/>
+	</menu>
+	<!-- TRAY MENU -->
+	<menu name="CMainWnd.Tray">
+		<item id="ID_TRAY_OPEN" text="‪פתח את שרזה"/>
+		<separator/>
+		<item id="ID_WINDOW_REMOTE" text="הצג לוח שליטה"/>
+		<item id="ID_TOOLS_SETTINGS" text="הגדרות שרזה..."/>
+		<item id="ID_NETWORK_SEARCH" text="‪חיפוש חדש..."/>
+		<item id="ID_TOOLS_DOWNLOAD" text="‪הורד קובץ..."/>
+		<separator/>
+		<item id="ID_MEDIA_PLAY" text="‪נגן מדיה"/>
+		<item id="ID_MEDIA_PAUSE" text="ה_שהה מדיה"/>
+		<item id="ID_MEDIA_NEXT" text="‪רצועה באה"/>
+		<item id="ID_MEDIA_PREVIOUS" text="‪רצועה קודמת"/>
+		<separator/>
+		<item id="ID_NETWORK_AUTO_CLOSE" text="‪צא לאחר העברות"/>
+		<item id="ID_NETWORK_EXIT" text="‪יציאה"/>
+	</menu>
+	<!-- MAIN WINDOW MENU BAR -->
+	<menu name="CMainWnd.DropMenu" type="bar">
+		<menu text="תפריט">
+			<item id="ID_TOOLS_SETTINGS" text="ה_גדרות שרזה..."/>
+			<menu text="‪_רשת">
+				<item id="ID_NETWORK_CONNECT" text="הת_חבר" shortcut="Ctrl+G"/>
+				<item id="ID_NETWORK_DISCONNECT" text="הת_נתק"/>
+				<separator/>
+				<item id="ID_NETWORK_G2" text="התחבר אל גנוטלה _2"/>
+				<item id="ID_NETWORK_G1" text="התחבר אל גנוטלה _1"/>
+				<item id="ID_NETWORK_ED2K" text="‪התחבר אל _אידונקי"/>
+				<item id="ID_NETWORK_DC" text="התחבר אל גנוטלה _DC"/>
+				<separator/>
+				<item id="ID_NETWORK_CONNECT_TO" text="_התחבר אל..." shortcut="Ctrl+T"/>
+				<item id="ID_NETWORK_BROWSE_TO" text="_עיין במארח..."/>
+				<separator/>
+				<item id="ID_NETWORK_AUTO_CLOSE" text="צא ב_סיום ההעברות"/>
+				<item id="ID_NETWORK_EXIT" text="י_ציאה"/>
+			</menu>
+			<menu text="‪_כלים">
+				<item id="ID_LIBRARY_FOLDERS" text="שתף _קבצים..."/>
+				<item id="ID_OPEN_DOWNLOADS_FOLDER" text="_פתח את תקיית ההורדות שהושלמו..."/>
+				<separator/>
+				<item id="ID_TOOLS_DOWNLOAD" text="_הורד קבצים/טורנטים..."/>
+				<item id="ID_TOOLS_CREATETORRENT" text="_Create .Torrent..."/>
+				<item id="ID_IMPORT_DOWNLOADS" text="_ייבא קבצים חלקיים של אי-מיול..."/>
+				<separator/>
+				<item id="ID_TOOLS_LANGUAGE" text="‪...בחר _שפה"/>
+				<item id="ID_TOOLS_SKIN" text="‪...בחר _מעטפת"/>
+				<separator/>
+				<item id="ID_TOOLS_PROFILE" text="‪_ערוך את הפרופיל שלי..."/>
+				<item id="ID_TOOLS_WIZARD" text="‪_אשף הפעלה מהירה..."/>
+				<separator/>
+				<item id="ID_TOOLS_SETTINGS" text="ה_גדרות שרזה..."/>
+			</menu>
+			<menu text="‪_תצוגה">
+				<item id="ID_TAB_HOME" text="_ראשי" shortcut="Ctrl+H"/>
+				<item id="ID_VIEW_NEIGHBOURS" text="_שכנים" shortcut="Ctrl+F11"/>
+				<item id="ID_VIEW_SYSTEM" text="_מערכת" shortcut="F11"/>
+				<item id="ID_VIEW_DOWNLOADS" text="_הורדות" shortcut="F3"/>
+				<item id="ID_VIEW_UPLOADS" text="ה_עלאות" shortcut="F4"/>
+				<item id="ID_VIEW_LIBRARY" text="_ספרייה" shortcut="F5"/>
+				<item id="ID_VIEW_MEDIA" text="_נגן מדיה" shortcut="F6"/>
+				<item id="ID_TAB_IRC" text="_חדר שיחה" shortcut="F12"/>
+				<separator/>
+				<item id="ID_VIEW_SECURITY" text="‪_אבטחה" shortcut="F7"/>
+				<item id="ID_VIEW_HOSTS" text="מ_טמון מארחים (הוסטים)" shortcut="F8"/>
+				<item id="ID_VIEW_DISCOVERY" text="משאבי חי_בור" shortcut="F9"/>
+				<item id="ID_VIEW_TRAFFIC" text="_גרף" shortcut="F10"/>
+				<separator/>
+				<item id="ID_VIEW_PACKETS" text="‪(ת_פוקת חבילות (פאקט" shortcut="Ctrl+F1"/>
+				<item id="ID_VIEW_SEARCH_MONITOR" text="משגוח (מוניטור) ה_חיפוש" shortcut="Ctrl+F2"/>
+				<item id="ID_VIEW_RESULTS_MONITOR" text="‪משגוח (מוניטור) ה_תוצאות" shortcut="Ctrl+F3"/>
+				<item id="ID_TAB_SEARCH" text="_חיפוש" shortcut="Ctrl+S"/>
+			</menu>
+			<menu text="‪_חלון">
+				<item id="ID_VIEW_BASIC" text="‪מצב _רגיל"/>
+				<item id="ID_VIEW_TABBED" text="מצב _תוויות (טאבים)"/>
+				<item id="ID_VIEW_WINDOWED" text="‪מצב _חלונות"/>
+				<separator/>
+				<item id="ID_WINDOW_NAVBAR" text="‪הצג סרגל _ניווט"/>
+				<item id="ID_WINDOW_TOOLBAR" text="‪הצג סרגל _כלים"/>
+				<separator/>
+				<item id="ID_WINDOW_TABBAR" text="הצג סרגל _תוויות (טאב)"/>
+				<item id="ID_WINDOW_MONITOR" text="הצג _משגוח (מוניטור)"/>
+				<item id="ID_WINDOW_REMOTE" text="הצג _לוח שליטה"/>
+			</menu>
+			<menu text="‪_עזרה">
+				<item id="ID_HELP_FAQ" text="_שאלות נפוצות על שרזה"/>
+				<item id="ID_HELP_TEST" text="_בדיקת התחברות"/>
+				<separator/>
+				<menu text="‪_מדריכים">
+					<item id="ID_HELP_GUIDE" text="‪_מדריך למשתמש"/>
+					<item id="ID_HELP_ROUTER" text="עזרה בנושא _נתב (ראוטר)"/>
+					<item id="ID_HELP_SECURITY" text="‪עזרה בנושא _אבטחה"/>
+					<item id="ID_HELP_CODEC" text="‪עזרה בנושאי מ_קודדים"/>
+				</menu>
+				<separator/>
+				<menu text="‪_אתרי אינטרנט">
+					<item id="ID_HELP_FORUMS" text="_פורומים של שרזה"/>
+					<separator/>
+					<item id="ID_HELP_VERSION_CHECK" text="_בדוק אם קיימות גרסאות חדשות"/>
+					<!--item id="ID_HELP_DONATE" text="_תרום לפרוייקט שרזה"-->
+					<item id="ID_HELP_UPDATE" text="‪חדשות אחרונות"/>
+					<!--item id="ID_HELP_WEB_1" text="‪Zeropaid.com"-->
+				</menu>
+				<item id="ID_HELP_HOMEPAGE" text="‪_אתר הבית של שרזה"/>
+				<separator/>
+				<item id="ID_HELP_ABOUT" text="‪...או_דות שרזה"/>
+			</menu>
+			<item id="ID_NETWORK_EXIT" text="י_ציאה"/>
+		</menu>
+	</menu>
+	<menu name="CMainWnd.Tabbed" type="bar">
+		<menu text="‪_רשת">
+			<item id="ID_NETWORK_CONNECT" text="הת_חבר" shortcut="Ctrl+G"/>
+			<item id="ID_NETWORK_DISCONNECT" text="הת_נתק"/>
+			<separator/>
+			<item id="ID_NETWORK_G2" text="התחבר אל גנוטלה _2"/>
+			<item id="ID_NETWORK_G1" text="התחבר אל גנוטלה _1"/>
+			<item id="ID_NETWORK_ED2K" text="‪התחבר אל _אידונקי"/>
+			<item id="ID_NETWORK_DC" text="התחבר אל גנוטלה DC"/>
+			<separator/>
+			<item id="ID_NETWORK_CONNECT_TO" text="_התחבר אל..." shortcut="Ctrl+T"/>
+			<item id="ID_NETWORK_BROWSE_TO" text="_עיין במארח..."/>
+			<separator/>
+			<item id="ID_NETWORK_AUTO_CLOSE" text="צא ב_סיום ההעברות"/>
+			<item id="ID_NETWORK_EXIT" text="י_ציאה"/>
+		</menu>
+		<menu text="‪_תצוגה">
+			<item id="ID_TAB_HOME" text="_ראשי"/>
+			<item id="ID_TAB_LIBRARY" text="‪_ספרייה"/>
+			<item id="ID_TAB_MEDIA" text="_נגן מדיה"/>
+			<item id="ID_TAB_SEARCH" text="_חיפוש"/>
+			<item id="ID_TAB_TRANSFERS" text="_העברות"/>
+			<item id="ID_TAB_NETWORK" text="_רשת"/>
+			<item id="ID_TAB_IRC" text="_חדר שיחה"/>
+			<separator/>
+			<item id="ID_VIEW_SECURITY" text="_אבטחה"/>
+			<item id="ID_VIEW_HOSTS" text="_מטמון מארחים (הוסטים)"/>
+			<separator/>
+			<menu text="‪מתק_דם">
+				<item id="ID_VIEW_SYSTEM" text="_מערכת" shortcut="F11"/>
+				<item id="ID_VIEW_NEIGHBOURS" text="_שכנים" shortcut="Ctrl+F11"/>
+				<item id="ID_VIEW_DOWNLOADS" text="_הורדות" shortcut="F3"/>
+				<item id="ID_VIEW_UPLOADS" text="ה_עלאות" shortcut="F4"/>
+				<item id="ID_VIEW_LIBRARY" text="_ספרייה" shortcut="F5"/>
+				<item id="ID_VIEW_MEDIA" text="_נגן מדיה" shortcut="F6"/>
+				<separator/>
+				<item id="ID_VIEW_SECURITY" text="‪_אבטחה" shortcut="F7"/>
+				<item id="ID_VIEW_HOSTS" text="מ_טמון מארחים (הוסטים)" shortcut="F8"/>
+				<item id="ID_VIEW_DISCOVERY" text="משאבי חי_בור" shortcut="F9"/>
+				<item id="ID_VIEW_TRAFFIC" text="_גרף" shortcut="F10"/>
+				<separator/>
+				<item id="ID_VIEW_PACKETS" text="‪(ת_פוקת חבילות (פאקט" shortcut="Ctrl+F1"/>
+				<item id="ID_VIEW_SEARCH_MONITOR" text="משגוח (מוניטור) ה_חיפוש" shortcut="Ctrl+F2"/>
+				<item id="ID_VIEW_RESULTS_MONITOR" text="‪משגוח (מוניטור) ה_תוצאות" shortcut="Ctrl+F3"/>
+			</menu>
+			<separator/>
+			<item id="ID_VIEW_BASIC" text="‪מצב _רגיל"/>
+			<item id="ID_VIEW_TABBED" text="מצב _תוויות (טאבים)"/>
+			<item id="ID_VIEW_WINDOWED" text="‪מצב _חלונות"/>
+		</menu>
+		<menu text="‪_כלים">
+			<item id="ID_LIBRARY_FOLDERS" text="שתף _קבצים..."/>
+			<item id="ID_TOOLS_DOWNLOAD" text="_הורד קבצים/טורנטים..."/>
+			<item id="ID_IMPORT_DOWNLOADS" text="_ייבא קבצים חלקיים של אי-מיול..."/>
+			<item id="ID_OPEN_DOWNLOADS_FOLDER" text="_פתח את תקיית ההורדות שהושלמו..."/>
+			<separator/>
+			<item id="ID_TOOLS_SKIN" text="‪...בחר _מעטפת"/>
+			<item id="ID_TOOLS_LANGUAGE" text="‪...בחר _שפה"/>
+			<separator/>
+			<item id="ID_TOOLS_PROFILE" text="‪_ערוך את הפרופיל שלי..."/>
+			<item id="ID_TOOLS_WIZARD" text="‪_אשף הפעלה מהירה..."/>
+			<separator/>
+			<item id="ID_TOOLS_SETTINGS" text="ה_גדרות שרזה..."/>
+		</menu>
+		<menu text="‪_חלון">
+			<item id="ID_WINDOW_NAVBAR" text="‪הצג סרגל _ניווט"/>
+			<item id="ID_WINDOW_TOOLBAR" text="‪הצג סרגל _כלים"/>
+			<separator/>
+			<item id="ID_WINDOW_TABBAR" text="הצג סרגל _תוויות (טאב)"/>
+			<item id="ID_WINDOW_MONITOR" text="הצג _משגוח (מוניטור)"/>
+			<item id="ID_WINDOW_REMOTE" text="הצג _לוח שליטה"/>
+		</menu>
+		<menu text="‪_עזרה">
+			<item id="ID_HELP_FAQ" text="_שאלות נפוצות על שרזה"/>
+			<item id="ID_HELP_TEST" text="_בדיקת התחברות"/>
+			<separator/>
+			<menu text="‪_מדריכים">
+				<item id="ID_HELP_GUIDE" text="‪_מדריך למשתמש"/>
+				<item id="ID_HELP_ROUTER" text="עזרה בנושא _נתב (ראוטר)"/>
+				<item id="ID_HELP_SECURITY" text="‪עזרה בנושא _אבטחה"/>
+				<item id="ID_HELP_CODEC" text="‪עזרה בנושאי מ_קודדים"/>
+			</menu>
+			<separator/>
+			<menu text="‪_אתרי אינטרנט">
+				<item id="ID_HELP_HOMEPAGE" text="‪_אתר הבית של שרזה"/>
+				<item id="ID_HELP_FORUMS" text="_פורומים של שרזה"/>
+				<separator/>
+				<!--item id="ID_HELP_UPDATE" text="‪חדשות אחרונות"-->
+				<item id="ID_HELP_WEB_1" text="‪Zeropaid.com"/> -->
+			</menu>
+			<separator/> <!--
+			<item id="ID_HELP_VERSION_CHECK" text="_בדוק אם קיימות גרסאות חדשות"/>
+			<item id="ID_HELP_DONATE" text="_תרום לפרוייקט שרזה"/>
+			<separator/> -->
+			<item id="ID_HELP_ABOUT" text="‪...או_דות שרזה"/>
+				</menu>
+	</menu>
+	<menu name="CMainWnd.Basic" type="bar">
+		<menu text="‪_רשת">
+			<item id="ID_NETWORK_CONNECT" text="ה_תחבר" shortcut="Ctrl+G"/>
+			<separator/>
+			<item id="ID_NETWORK_G2" text="‪התחבר אל גנוטלה _2"/>
+			<item id="ID_NETWORK_G1" text="‪התחבר אל גנוטלה _1"/>
+			<item id="ID_NETWORK_ED2K" text="‪התחבר אל _אי-דונקי"/>
+			<separator/>
+			<item id="ID_NETWORK_AUTO_CLOSE" text="‪צא ב_סיום העברות"/>
+			<item id="ID_NETWORK_EXIT" text="י_ציאה"/>
+		</menu>
+		<menu text="‪_תצוגה">
+			<item id="ID_TAB_HOME" text="_ראשי"/>
+			<item id="ID_TAB_LIBRARY" text="_ספרייה"/>
+			<item id="ID_TAB_MEDIA" text="‪_נגן מדיה"/>
+			<item id="ID_TAB_SEARCH" text="_חיפוש"/>
+			<item id="ID_TAB_TRANSFERS" text="ה_ורדות"/>
+			<item id="ID_WINDOW_REMOTE" text="הצג לוח _שליטה"/>
+			<item id="ID_TAB_IRC" text="_חדר שיחה"/>
+			<separator/>
+			<menu text="_מתקדם">
+				<item id="ID_VIEW_NEIGHBOURS" text="_שכנים"/>
+				<item id="ID_VIEW_UPLOADS" text="‪ה_עלאות"/>
+				<separator/>
+				<item id="ID_VIEW_SECURITY" text="_אבטחה"/>
+				<item id="ID_VIEW_HOSTS" text="_מטמון מארחים (הוסטים)"/>
+				<item id="ID_VIEW_DISCOVERY" text="משאבי _חיבור"/>
+			</menu>
+			<separator/>
+			<item id="ID_VIEW_BASIC" text="‪תצוגה ר_גילה"/>
+			<item id="ID_VIEW_TABBED" text="‪תצוגה מ_תקדמת"/>
+		</menu>
+		<menu text="_כלים">
+			<item id="ID_LIBRARY_FOLDERS" text="שתף _קבצים..."/>
+			<item id="ID_TOOLS_DOWNLOAD" text="_הורד קבצים/טורנטים..."/>
+			<separator/>
+			<item id="ID_TOOLS_SKIN" text="בחר _מעטפת..."/>
+			<item id="ID_TOOLS_LANGUAGE" text="בחר _שפה..."/>
+			<separator/>
+			<item id="ID_TOOLS_PROFILE" text="‪_ערוך את הפרופיל שלי..."/>
+			<item id="ID_TOOLS_WIZARD" text="‪_אשף הפעלה מהירה..."/>
+			<separator/>
+			<item id="ID_TOOLS_SETTINGS" text="ה_גדרות שרזה..."/>
+		</menu>
+		<menu text="_עזרה">
+			<item id="ID_HELP_FAQ" text="_שאלות נפוצות על שרזה"/>
+			<item id="ID_HELP_TEST" text="_בדיקת חיבור"/>
+			<separator/>
+			<menu text="_מדריך">
+				<item id="ID_HELP_GUIDE" text="‪מ_דריך למשתמש"/>
+				<item id="ID_HELP_ROUTER" text="עזרה בנושא _נתב (ראוטר)"/>
+				<item id="ID_HELP_SECURITY" text="‪עזרה בנושא _אבטחה"/>
+				<item id="ID_HELP_CODEC" text="‪עזרה בנושאי _מקודדים"/>
+			</menu>
+			<separator/>
+			<menu text="_אתרי אינטרנט">
+				<item id="ID_HELP_HOMEPAGE" text="‪_אתר הבית של שרזה"/>
+				<item id="ID_HELP_FORUMS" text="_פורומים של שרזה"/>
+				<separator/>
+				<!--item id="ID_HELP_UPDATE" text="‪חדשות אחרונות"-->
+				<item id="ID_HELP_WEB_1" text="‪Zeropaid.com"/> -->
+			</menu>
+			<separator/> <!--
+			<item id="ID_HELP_VERSION_CHECK" text="_בדוק אם קיימות גרסאות חדשות"/>
+			<item id="ID_HELP_DONATE" text="_תרום לפרוייקט שרזה"/>
+			<separator/> -->
+			<item id="ID_HELP_ABOUT" text="‪...או_דות שרזה"/>
+		</menu>
+	</menu>
+	<menu name="CMainWnd.Windowed" type="bar">
+		<menu text="‪ר_שת">
+			<item id="ID_NETWORK_SEARCH" text="‪_חיפוש חדש" shortcut="Ctrl+S"/>
+			<separator/>
+			<item id="ID_NETWORK_CONNECT" text="ה_תחבר" shortcut="Ctrl+G"/>
+			<item id="ID_NETWORK_DISCONNECT" text="הת_נתק"/>
+			<separator/>
+			<item id="ID_NETWORK_CONNECT_TO" text="_...התחבר אל" shortcut="Ctrl+T"/>
+			<item id="ID_NETWORK_BROWSE_TO" text="_...עיין במארח"/>
+			<separator/>
+			<item id="ID_NETWORK_G2" text="‪_התחבר אל גנוטלה 2"/>
+			<item id="ID_NETWORK_G1" text="‪_התחבר אל גנוטלה 1"/>
+			<item id="ID_NETWORK_ED2K" text="‪התחבר אל _אידונקי"/>
+			<item id="ID_NETWORK_G1" text="‪_התחבר אל גנוטלה DC"/>
+			<separator/>
+			<item id="ID_NETWORK_AUTO_CLOSE" text="‪_סגור בסיום העברות"/>
+			<item id="ID_NETWORK_EXIT" text="‪_יציאה"/>
+		</menu>
+		<menu text="‪_תצוגה">
+			<item id="ID_VIEW_SYSTEM" text="‪_מערכת" shortcut="F11"/>
+			<item id="ID_VIEW_NEIGHBOURS" text="‪_שכנים" shortcut="Ctrl+F11"/>
+			<item id="ID_VIEW_DOWNLOADS" text="‪_הורדות" shortcut="F3"/>
+			<item id="ID_VIEW_UPLOADS" text="‪ה_עלאות" shortcut="F4"/>
+			<item id="ID_VIEW_LIBRARY" text="‪_ספרייה" shortcut="F5"/>
+			<item id="ID_VIEW_MEDIA" text="‪_נגן מדיה" shortcut="F6"/>
+			<separator/>
+			<item id="ID_VIEW_SECURITY" text="‪_אבטחה" shortcut="F7"/>
+			<item id="ID_VIEW_HOSTS" text="מ_טמון מארחים (הוסטים)" shortcut="F8"/>
+			<item id="ID_VIEW_DISCOVERY" text="‪משא_בי חיבור" shortcut="F9"/>
+			<item id="ID_VIEW_TRAFFIC" text="‪_גרף" shortcut="F10"/>
+			<separator/>
+			<item id="ID_VIEW_PACKETS" text="ת_פוקת חבילות (פאקט)" shortcut="Ctrl+F1"/>
+			<item id="ID_VIEW_SEARCH_MONITOR" text="‪משגוח (מוניטור) ה_חיפוש" shortcut="Ctrl+F2"/>
+			<item id="ID_VIEW_RESULTS_MONITOR" text="‪משגוח (מוניטור) ה_תוצאות" shortcut="Ctrl+F3"/>
+			<separator/>
+			<item id="ID_VIEW_BASIC" text="‪מצב _רגיל"/>
+			<item id="ID_VIEW_TABBED" text="מצב ת_וויות (טאבים)"/>
+			<item id="ID_VIEW_WINDOWED" text="‪מצב ח_לונות"/>
+		</menu>
+		<menu text="‪_כלים">
+			<item id="ID_LIBRARY_FOLDERS" text="‪...שתף _קבצים"/>
+			<item id="ID_TOOLS_DOWNLOAD" text="_הורד קבצים/טורנטים..."/>
+			<item id="ID_IMPORT_DOWNLOADS" text="_ייבא קבצים חלקיים של אי-מיול..."/>
+			<item id="ID_OPEN_DOWNLOADS_FOLDER" text="_פתח את תקיית ההורדות שהושלמו..."/>
+			<separator/>
+			<item id="ID_TOOLS_SKIN" text="‪...בחר _מעטפת"/>
+			<item id="ID_TOOLS_LANGUAGE" text="‪...בחר _שפה"/>
+			<separator/>
+			<item id="ID_TOOLS_PROFILE" text="‪_ערוך את הפרופיל שלי..."/>
+			<separator/>
+			<item id="ID_TOOLS_WIZARD" text="‪‪_אשף הפעלה מהירה..."/>
+			<item id="ID_TOOLS_SETTINGS" text="ה_גדרות שרזה..."/>
+		</menu>
+		<menu text="‪_חלון">
+			<item id="ID_WINDOW_CASCADE" text="‪מ_סך מלא"/>
+			<item id="ID_WINDOW_TILE_HORZ" text="‪פזר חלונות או_פקית"/>
+			<item id="ID_WINDOW_TILE_VERT" text="‪פזר חלונות אנ_כית"/>
+			<separator/>
+			<item id="ID_WINDOW_NAVBAR" text="‪הצג סרגל _ניווט"/>
+			<item id="ID_WINDOW_TOOLBAR" text="‪הצג סרגל _כלים"/>
+			<separator/>
+			<item id="ID_WINDOW_TABBAR" text="הצג סרגל _תוויות (טאבים)"/>
+			<item id="ID_WINDOW_MONITOR" text="נצג _משגוח (מוניטור)"/>
+			<item id="ID_WINDOW_REMOTE" text="‪הצג לוח _שליטה"/>
+		</menu>
+		<menu text="‪_עזרה">
+			<item id="ID_HELP_FAQ" text="_שאלות נפוצות על שרזה"/>
+			<item id="ID_HELP_TEST" text="_בדיקת התחברות"/>
+			<separator/>
+			<menu text="‪_מדריך">
+				<item id="ID_HELP_GUIDE" text="‪_מדריך למשתמש"/>
+				<item id="ID_HELP_ROUTER" text="עזרה בנושא _נתב (ראוטר)"/>
+				<item id="ID_HELP_SECURITY" text="‪עזרה בנושא _אבטחה"/>
+				<item id="ID_HELP_CODEC" text="‪עזרה בנושאי מ_קודדים"/>
+			</menu>
+			<separator/>
+			<menu text="‪_אתרי אינטרנט">
+				<item id="ID_HELP_HOMEPAGE" text="‪_אתר הבית של שרזה"/>
+				<item id="ID_HELP_FORUMS" text="‪_פורומים של שרזה"/>
+				<separator/>
+				<!--item id="ID_HELP_UPDATE" text="‪חדשות אחרונות"-->
+				<item id="ID_HELP_WEB_1" text="‪Zeropaid.com"/> -->
+			</menu>
+			<separator/> <!--
+			<item id="ID_HELP_VERSION_CHECK" text="_בדוק אם קיימות גרסאות חדשות"/>
+			<item id="ID_HELP_DONATE" text="_תרום לפרוייקט שרזה"/>
+			<separator/> -->
+			<item id="ID_HELP_ABOUT" text="‪...או_דות שרזה"/>
+		</menu>
+	</menu>
+	<!-- VIEW POPUP -->
+	<menu name="CMainWnd.View.Basic">
+		<item id="ID_TAB_HOME" text="_ראשי"/>
+		<item id="ID_TAB_LIBRARY" text="_ספרייה"/>
+		<item id="ID_TAB_MEDIA" text="_נגן מדיה"/>
+		<item id="ID_TAB_SEARCH" text="‪_חיפוש"/>
+		<item id="ID_TAB_TRANSFERS" text="‪_הורדות"/>
+		<separator/>
+		<menu text="‪_מתקדם">
+			<item id="ID_VIEW_NEIGHBOURS" text="‪_שכנים"/>
+			<item id="ID_VIEW_UPLOADS" text="‪ה_עלאות"/>
+			<item id="ID_VIEW_SECURITY" text="‪_אבטחה"/>
+			<item id="ID_VIEW_HOSTS" text="_מטמון מארחים (הוסטים)"/>
+		</menu>
+	</menu>
+	<menu name="CMainWnd.View.Tabbed">
+		<item id="ID_TAB_HOME" text="‪_ראשי"/>
+		<item id="ID_TAB_SEARCH" text="ח_יפוש"/>
+		<item id="ID_TAB_TRANSFERS" text="‪_העברות"/>
+		<item id="ID_TAB_NETWORK" text="ר_שת"/>
+		<item id="ID_TAB_LIBRARY" text="‪_ספרייה"/>
+		<item id="ID_TAB_MEDIA" text="‪_נגן מדיה"/>
+		<item id="ID_TAB_IRC" text="_חדר שיחה"/>
+		<separator/>
+		<item id="ID_VIEW_SECURITY" text="‪_אבטחה"/>
+		<item id="ID_VIEW_HOSTS" text="מ_טמון מארחים (הוסטים)"/>
+		<item id="ID_VIEW_DISCOVERY" text="_משאבי חיבור"/>
+		<item id="ID_VIEW_TRAFFIC" text="‪_גרף"/>
+		<separator/>
+		<item id="ID_VIEW_PACKETS" text="‪(ת_פוקת חבילות (פאקט"/>
+		<item id="ID_VIEW_SEARCH_MONITOR" text="משגוח (מוניטור) ה_חיפוש"/>
+		<item id="ID_VIEW_RESULTS_MONITOR" text="משגוח (מוניטור) ה_תוצאות"/>
+	</menu>
+	<menu name="CMainWnd.View.Windowed">
+		<item id="ID_NETWORK_SEARCH" text="‪חיפוש ח_דש"/>
+		<separator/>
+		<item id="ID_VIEW_SYSTEM" text="_מערכת"/>
+		<item id="ID_VIEW_NEIGHBOURS" text="‪_שכנים"/>
+		<item id="ID_VIEW_DOWNLOADS" text="‪_הורדות"/>
+		<item id="ID_VIEW_UPLOADS" text="‪ה_עלאות"/>
+		<item id="ID_VIEW_LIBRARY" text="‪_ספרייה"/>
+		<item id="ID_VIEW_MEDIA" text="‪_נגן המדיה"/>
+		<separator/>
+		<item id="ID_VIEW_SECURITY" text="‪_אבטחה"/>
+		<item id="ID_VIEW_HOSTS" text="מ_טמון מארחים (הוסטים)"/>
+		<item id="ID_VIEW_DISCOVERY" text="‪משא_בי חיבור"/>
+		<item id="ID_VIEW_TRAFFIC" text="‪_גרף"/>
+		<separator/>
+		<item id="ID_VIEW_PACKETS" text="‪(ת_פוקת חבילות (פאקט"/>
+		<item id="ID_VIEW_SEARCH_MONITOR" text="משגוח (מוניטור) ה_חיפוש"/>
+		<item id="ID_VIEW_RESULTS_MONITOR" text="משגוח (מוניטור) ה_תוצאות"/>
+	</menu>
+	<!-- HOME MENU -->
+	<menu name="CHomeWnd.Basic">
+		<item id="ID_TAB_HOME" text="_ראשי"/>
+		<item id="ID_TAB_LIBRARY" text="‪_ספרייה"/>
+		<item id="ID_TAB_MEDIA" text="‪_נגן מדיה"/>
+		<item id="ID_TAB_SEARCH" text="‪_חיפוש"/>
+		<item id="ID_TAB_TRANSFERS" text="_הורדות"/>
+		<separator/>
+		<menu text="‪_מתקדם">
+			<item id="ID_VIEW_NEIGHBOURS" text="‪_שכנים"/>
+			<item id="ID_VIEW_UPLOADS" text="_העלאות"/>
+			<item id="ID_VIEW_SECURITY" text="‪_אבטחה"/>
+			<item id="ID_VIEW_HOSTS" text="_מטמון מארחים (הוסטים)"/>
+		</menu>
+	</menu>
+	<menu name="CHomeWnd.Tabbed">
+		<item id="ID_TAB_HOME" text="_ראשי"/>
+		<item id="ID_TAB_LIBRARY" text="‪_ספרייה"/>
+		<item id="ID_TAB_MEDIA" text="‪_נגן מדיה"/>
+		<item id="ID_TAB_SEARCH" text="‪ח_יפוש"/>
+		<item id="ID_TAB_TRANSFERS" text="‪_העברות"/>
+		<item id="ID_TAB_NETWORK" text="‪ר_שת"/>
+		<item id="ID_TAB_IRC" text="_חדר שיחה"/>
+		<separator/>
+		<item id="ID_VIEW_SECURITY" text="‪_אבטחה"/>
+		<item id="ID_VIEW_HOSTS" text="_מטמון מארחים (הוסטים)"/>
+		<item id="ID_VIEW_DISCOVERY" text="‪משאבי חי_בור"/>
+		<item id="ID_VIEW_TRAFFIC" text="‪_גרף"/>
+		<separator/>
+		<item id="ID_VIEW_PACKETS" text="ת_פוקת חבילות (פאקט)"/>
+		<item id="ID_VIEW_SEARCH_MONITOR" text="‪משגוח (מוניטור) ה_חיפוש"/>
+		<item id="ID_VIEW_RESULTS_MONITOR" text="‪‪משגוח (מוניטור) ה_תוצאות"/>
+	</menu>
+	<!-- HOST CACHE WINDOW -->
+	<menu name="CHostCacheWnd">
+		<item id="ID_HOSTCACHE_CONNECT" text="‪_התחבר כעת"/>
+		<item id="ID_HOSTCACHE_DISCONNECT" text="‪ה_תנתק"/>
+		<item id="ID_NEIGHBOURS_URI" text="ה_עתק URI"/>
+		<item id="ID_HOSTCACHE_PRIORITY" text="‪_שרת מועדף"/>
+		<separator/>
+		<item id="ID_HOSTCACHE_REMOVE" text="ה_סר כתובת מארח (הוסט)"/>
+		<separator/>
+		<menu text="_מסנן">
+			<item id="ID_HOSTCACHE_G2_HORIZON" text="אשכול _גנוטלה 2"/>
+			<item id="ID_HOSTCACHE_G2_CACHE" text="‪מטמון גנוטלה _2"/>
+			<item id="ID_HOSTCACHE_G1_CACHE" text="‪מטמון גנוטלה _1"/>
+			<item id="ID_HOSTCACHE_ED2K_CACHE" text="‪מטמון _אידונקי"/>
+			<item id="ID_HOSTCACHE_BT_CACHE" text="מטמון ביטורנט"/>
+			<item id="ID_HOSTCACHE_KAD_CACHE" text="מטמון קדמילה"/>
+		</menu>
+		<separator/>
+		<item id="ID_HOSTCACHE_IMPORT" text="_ייבא קובץ MET..."/>
+		<item id="ID_HOSTCACHE_FILE_DOWNLOAD" text="ה_ורד MET..."/>
+	</menu>
+	<!-- SEARCH WINDOW -->
+	<menu name="CSearchWnd.Basic">
+		<item id="ID_SEARCH_DOWNLOAD" text="‪_הורד"/>
+		<separator/>
+		<item id="ID_BROWSE_LAUNCH" text="‪_עיין במשתמש"/>
+		<item id="ID_SEARCH_CHAT" text="‪_שוחח עם משתמש"/>
+		<separator/>
+		<menu text="‪_חפש">
+			<item id="ID_SEARCH_FOR_SIMILAR" text="_‪קבצים דומים"/>
+			<separator/>
+			<item id="ID_SEARCH_FOR_ARTIST" text="‪מוזיקה של אותו _אמן"/>
+			<item id="ID_SEARCH_FOR_ALBUM" text="‪מוזיקה באותו א_לבום"/>
+			<item id="ID_SEARCH_FOR_SERIES" text="‪פרקים באותה _סדרה"/>
+		</menu>
+		<menu id="ID_WEBSERVICES_LIST" text="‪שירותי רשת">
+			<item id="ID_LIBRARY_BITPRINTS_WEB" text="‪Bitprints הראה כרטיס"/>
+			<item id="ID_SEARCH_URI" text="‪...URI העתק"/>
+		</menu>
+	</menu>
+	<menu name="CSearchWnd">
+		<item id="ID_SEARCH_DOWNLOAD" text="‪_הורד"/>
+		<item id="ID_SEARCH_DOWNLOADNOW" text="‪הורד כעת"/>
+		<item id="ID_SEARCH_URI" text="‪...URI העתק"/>
+		<separator/>
+		<item id="ID_BROWSE_LAUNCH" text="‪_עיין בקבצי המשתמש"/>
+		<item id="ID_SEARCH_CHAT" text="‪_שוחח עם המשתמש"/>
+		<item id="ID_SECURITY_BAN" text="‪_חסום משתמש"/>
+		<separator/>
+		<menu text="_חיפוש של">
+			<item id="ID_SEARCH_FOR_THIS" text="‪קובץ זה"/>
+			<item id="ID_SEARCH_FOR_SIMILAR" text="‪קבצים דומים"/>
+			<separator/>
+			<item id="ID_SEARCH_FOR_ARTIST" text="‪מוזיקה של אותו אמן"/>
+			<item id="ID_SEARCH_FOR_ALBUM" text="‪מוזיקה באותו אלבום"/>
+			<item id="ID_SEARCH_FOR_SERIES" text="‪פרקים באותה סדרה"/>
+			<separator/>
+			<item id="ID_VIEW_SEARCH_MONITOR" text="חיפוש M_onitor"/>
+			<item id="ID_VIEW_RESULTS_MONITOR" text="_Hit Monitor"/>
+		</menu>
+		<menu id="ID_WEBSERVICES_LIST" text="‪שירותי רשת">
+			<item id="ID_LIBRARY_BITPRINTS_WEB" text="‪Bitprints הראה כרטיס"/>
+		</menu>
+		<separator/>
+		<item id="ID_SEARCH_FILTER" text="‪...סנן תוצאות"/>
+		<item id="ID_SEARCH_FILTER_REMOVE" text="‪_הסר מסנן"/>
+		<item id="ID_SEARCH_CLEAR" text="‪_נקה תוצאות"/>
+		<separator/>
+		<item id="ID_SEARCH_COLUMNS" text="‪_ערוך עמודות "/>
+	</menu>
+	<!-- BROWSE HOST WINDOW -->
+	<menu name="CBrowseHostWnd.Basic">
+		<item id="ID_SEARCH_DOWNLOAD" text="‪_הורד"/>
+		<item id="ID_SEARCH_DOWNLOADNOW" text="‪הורד כעת"/>
+		<separator/>
+		<item id="ID_SEARCH_CHAT" text="‪_שוחח עם המשתמש"/>
+		<separator/>
+		<menu text="‪_חיפוש של">
+			<item id="ID_SEARCH_FOR_SIMILAR" text="‪קבצים דומים"/>
+			<separator/>
+			<item id="ID_SEARCH_FOR_ARTIST" text="‪מוזיקה של אותו אמן"/>
+			<item id="ID_SEARCH_FOR_ALBUM" text="‪מוזיקה באותו אלבום"/>
+			<item id="ID_SEARCH_FOR_SERIES" text="‪פרקים באותה סדרה"/>
+		</menu>
+		<menu text="‪_Web File Info">
+			<item id="ID_LIBRARY_BITPRINTS_WEB" text="‪Bitprints הראה כרטיס"/>
+			<item id="ID_SEARCH_URI" text="‪...URI העתק"/>
+		</menu>
+	</menu>
+	<menu name="CBrowseHostWnd">
+		<item id="ID_SEARCH_DOWNLOAD" text="‪_הורד"/>
+		<item id="ID_SEARCH_DOWNLOADNOW" text="‪הורד כעת"/>
+		<item id="ID_SEARCH_URI" text="‪...URI העתק"/>
+		<separator/>
+		<item id="ID_SEARCH_CHAT" text="‪_שוחח עם המשתמש"/>
+		<separator/>
+		<menu text="‪_חיפוש של">
+			<item id="ID_SEARCH_FOR_THIS" text="‪קובץ זה"/>
+			<item id="ID_SEARCH_FOR_SIMILAR" text="‪קבצים דומים"/>
+			<separator/>
+			<item id="ID_SEARCH_FOR_ARTIST" text="‪מוזיקה של אותו אמן"/>
+			<item id="ID_SEARCH_FOR_ALBUM" text="‪מוזיקה באותו אלבום"/>
+			<item id="ID_SEARCH_FOR_SERIES" text="‪פרקים באותה סדרה"/>
+		</menu>
+		<menu id="ID_WEBSERVICES_LIST" text="‪שירותי רשת">
+			<item id="ID_LIBRARY_BITPRINTS_WEB" text="‪Bitprints הראה כרטיס"/>
+		</menu>
+		<separator/>
+		<item id="ID_SEARCH_FILTER" text="‪...סנן תוצאות"/>
+		<item id="ID_SEARCH_FILTER_REMOVE" text="‪_הסר מסנן"/>
+		<separator/>
+		<item id="ID_SEARCH_COLUMNS" text="‪_ערוך עמודות "/>
+	</menu>
+	<!-- HIT MONITOR WINDOW -->
+	<menu name="CHitMonitorWnd">
+		<item id="ID_SEARCH_DOWNLOAD" text="‪_הורד"/>
+		<item id="ID_SEARCH_URI" text="‪...URI העתק"/>
+		<separator/>
+		<item id="ID_BROWSE_LAUNCH" text="‪_עיין בקבצי המשתמש"/>
+		<item id="ID_SEARCH_CHAT" text="‪_שוחח עם המשתמש"/>
+		<separator/>
+		<menu text="‪_חיפוש של">
+			<item id="ID_SEARCH_FOR_THIS" text="‪קובץ זה"/>
+			<item id="ID_SEARCH_FOR_SIMILAR" text="‪קבצים דומים"/>
+			<separator/>
+			<item id="ID_SEARCH_FOR_ARTIST" text="‪מוזיקה של אותו אמן"/>
+			<item id="ID_SEARCH_FOR_ALBUM" text="‪מוזיקה באותו אלבום"/>
+			<item id="ID_SEARCH_FOR_SERIES" text="‪פרקים באותה סדרה"/>
+		</menu>
+		<menu id="ID_WEBSERVICES_LIST" text="‪שירותי רשת">
+			<item id="ID_LIBRARY_BITPRINTS_WEB" text="‪Bitprints הראה כרטיס"/>
+		</menu>
+		<separator/>
+		<item id="ID_SEARCH_FILTER" text="‪...סנן תוצאות"/>
+		<item id="ID_SEARCH_FILTER_REMOVE" text="‪_הסר מסנן"/>
+		<separator/>
+		<item id="ID_HITMONITOR_PAUSE" text="‪השהה תצוגה"/>
+		<item id="ID_HITMONITOR_CLEAR" text="‪נקה תצוגה"/>
+		<separator/>
+		<item id="ID_SEARCH_COLUMNS" text="‪_ערוך עמודות "/>
+	</menu>
+	<!-- DOWNLOADS WINDOW -->
+	<menu name="CDownloadsWnd.Download.Basic">
+		<item id="ID_DOWNLOADS_LAUNCH" text="‪_תצוגה מקדימה"/>
+		<separator/>
+		<item id="ID_DOWNLOADS_RESUME" text="‪המשך"/>
+		<item id="ID_DOWNLOADS_PAUSE" text="‪השהה"/>
+		<item id="ID_DOWNLOADS_CLEAR_INCOMPLETE" text="‪בטל"/>
+		<separator/>
+		<item id="ID_DOWNLOADS_SOURCES" text="‪מצא מ_קורות נוספים"/>
+		<item id="ID_DOWNLOADS_REMOTE_PREVIEW" text="R_emote Preview"/>
+		<item id="ID_DOWNLOADS_VIEW_REVIEWS" text="‪הצג _ביקורות"/>
+		<separator/>
+		<item id="ID_DOWNLOADS_HELP" text="‪...ע_זרה"/>
+	</menu>
+	<menu name="CDownloadsWnd.Download">
+		<item id="ID_DOWNLOADS_LAUNCH_COPY" text="‪תצוגה מקדימה _Copy"/>
+		<item id="ID_DOWNLOADS_LAUNCH" text="‪_תצוגה מקדימה"/>
+		<item id="ID_DOWNLOADS_ENQUEUE" text="‪הוסף לרשימת השמעה"/>
+		<separator/>
+		<item id="ID_DOWNLOADS_RESUME" text="‪המשך"/>
+		<item id="ID_DOWNLOADS_PAUSE" text="‪השהה"/>
+		<item id="ID_DOWNLOADS_CLEAR_INCOMPLETE" text="‪בטל"/>
+		<separator/>
+		<item id="ID_DOWNLOADS_VIEW_REVIEWS" text="‪הצג _ביקורות"/>
+		<item id="ID_DOWNLOADS_REMOTE_PREVIEW" text="R_emote תצוגה מקדימה"/>
+		<item id="ID_DOWNLOADS_SOURCES" text="‪מצא מ_קורות נוספים"/>
+		<separator/>
+		<menu text="‪מתק_דם">
+			<item id="ID_DOWNLOADS_SHARE" text="‪_שתף קובץ"/>
+			<separator/>
+			<item id="ID_DOWNLOADS_URI" text="‪URI העתק כתובת"/>
+			<item id="ID_DOWNLOADS_ADD_SOURCE" text="‪הו_סף מקור"/>
+			<item id="ID_DOWNLOADS_MERGE" text="מיזוג הקבצים המקומית"/>
+			<separator/>
+			<item id="ID_DOWNLOADS_MONITOR" text="‪_חלון מוניטור"/>
+		</menu>
+		<menu text="עדיפות">
+			<item id="ID_DOWNLOADS_BOOST" text="‪התעלם מהגבלת רוחב פס"/>
+			<separator/>
+			<item id="ID_DOWNLOADS_MOVE_TOP" text="‪העבר מעלה" shortcut="Ctrl+Home"/>
+			<item id="ID_DOWNLOADS_MOVE_BOTTOM" text="‪העבר מטה" shortcut="Ctrl+End"/>
+			<item id="ID_DOWNLOADS_MOVE_UP" text="‪העבר מעלה" shortcut="Ctrl+Up"/>
+			<item id="ID_DOWNLOADS_MOVE_DOWN" text="‪העבר מטה" shortcut="Ctrl+Down"/>
+		</menu>
+		<item id="ID_DOWNLOADS_HELP" text="‪...ע_זרה"/>
+		<separator/>
+		<item id="ID_DOWNLOADS_EDIT" text="‪_עריכה מתקדמת"/>
+	</menu>
+	<menu name="CDownloadsWnd.Source">
+		<item id="ID_TRANSFERS_CONNECT" text="‪_כניסה"/>
+		<separator/>
+		<item id="ID_BROWSE_LAUNCH" text="‪_עיין בקבצי המשתמש"/>
+		<item id="ID_TRANSFERS_CHAT" text="‪_שוחח עם המשתמש"/>
+		<item id="ID_DOWNLOADS_URI" text="העתק _URI"/>
+		<separator/>
+		<item id="ID_TRANSFERS_DISCONNECT" text="‪ה_תנתק"/>
+		<item id="ID_TRANSFERS_FORGET" text="‪שכח"/>
+	</menu>
+	<menu name="CDownloadsWnd.Completed.Basic">
+		<item id="ID_DOWNLOADS_LAUNCH_COMPLETE" text="‪_פתח או הפעל"/>
+		<item id="ID_DOWNLOADS_ENQUEUE" text="‪_הוסף לרשימת השמעה"/>
+		<item id="ID_DOWNLOADS_CLEAR_COMPLETE" text="‪_נקה"/>
+		<separator/>
+		<item id="ID_DOWNLOADS_FILE_DELETE" text="‪_מחק קובץ"/>
+	</menu>
+	<menu name="CDownloadsWnd.Completed">
+		<item id="ID_DOWNLOADS_LAUNCH_COMPLETE" text="‪_פתח או הפעל"/>
+		<item id="ID_DOWNLOADS_ENQUEUE" text="‪_הוסף לרשימת השמעה"/>
+		<item id="ID_DOWNLOADS_FOLDER" text="פתח _Folder"/>
+		<item id="ID_DOWNLOADS_CLEAR_COMPLETE" text="‪_נקה"/>
+		<separator/>
+		<item id="ID_DOWNLOADS_FILE_DELETE" text="‪_מחק קובץ"/>
+		<item id="ID_DOWNLOADS_RATE" text="‪...דרג קובץ"/>
+		<item id="ID_DOWNLOADS_URI" text="‪...URI העתק"/>
+		<separator/>
+		<item id="ID_DOWNLOADS_EDIT" text="‪מידע לגבי הטורנט"/>
+	</menu>
+	<menu name="CDownloadsWnd.Seeding">
+		<item id="ID_DOWNLOADS_LAUNCH_COMPLETE" text="‪_פתח"/>
+		<item id="ID_DOWNLOADS_FOLDER" text="פתח _Folder"/>
+		<item id="ID_DOWNLOADS_CLEAR_COMPLETE" text="‪הפסק בקשות להעלאות"/>
+		<separator/>
+		<item id="ID_DOWNLOADS_URI" text="‪...URI העתק"/>
+		<item id="ID_DOWNLOADS_HELP" text="‪...ע_זרה"/>
+		<separator/>
+		<item id="ID_DOWNLOADS_EDIT" text="...‪מידע על ה_טורנט"/>
+	</menu>
+	<menu name="CDownloadsWnd.Default">
+		<item id="ID_TOOLS_DOWNLOAD" text="Start New Downloadחדשה"/>
+		<item id="ID_TOOLS_SEEDTORRENT" text="Seed New Torrentחדשה"/>
+		<item id="ID_DOWNLOADS_CLEAR_COMPLETED" text="‪נקה הורדות שהסתיימו"/>
+		<separator/>
+		<item id="ID_DOWNLOADS_HELP" text="‪...ע_זרה"/>
+	</menu>
+	<menu name="CDownloadTabBar">
+		<item id="ID_DOWNLOAD_GROUP_OPEN" text="פתח _Folder"/>
+		<separator/>
+		<item id="ID_DOWNLOAD_GROUP_RESUME" text="‪המשך את כל ההור_דות"/>
+		<item id="ID_DOWNLOAD_GROUP_PAUSE" text="‪ה_שהה את כל ההורדות"/>
+		<item id="ID_DOWNLOAD_GROUP_CLEAR" text="‪_נקה את כל ההורדות"/>
+		<separator/> <!--
+		<item id="ID_DOWNLOAD_GROUP_SHOW" text="‪הצג קבוצות"/>
+		<separator/> -->
+		<item id="ID_DOWNLOAD_GROUP_MOVELEFT" text="העבר הקבוצה נותר"/>
+		<item id="ID_DOWNLOAD_GROUP_MOVERIGHT" text="קבוצת העבר העכבר"/>
+		<item id="ID_DOWNLOAD_GROUP_REMOVE" text="‪...הסר קבוצה"/>
+		<item id="ID_DOWNLOAD_GROUP_NEW" text="‪_קבוצה חדשה"/>
+		<separator/>
+		<item id="ID_DOWNLOAD_GROUP_PROPERTIES" text="‪מ_אפיינים"/>
+	</menu>
+	<menu name="CDownloadsWnd.Filter">
+		<item id="ID_DOWNLOADS_FILTER_ALL" text="‪הצג הכל"/>
+		<separator/>
+		<item id="ID_DOWNLOADS_FILTER_ACTIVE" text="‪הצג פעילים"/>
+		<item id="ID_DOWNLOADS_FILTER_PAUSED" text="‪הצג מושהים"/>
+		<item id="ID_DOWNLOADS_FILTER_QUEUED" text="‪הצג בהמתנה לתשובה"/>
+		<item id="ID_DOWNLOADS_FILTER_SOURCES" text="‪הצג ללא מקורות"/>
+		<item id="ID_DOWNLOADS_FILTER_SEEDS" text="Seedsהצג"/>
+		<separator/>
+		<item id="ID_DOWNLOADS_SHOW_SOURCES" text="‪הצג את כל המקורות"/>
+		<separator/>
+		<item id="ID_DOWNLOAD_GROUP_SHOW" text="‪הצג קבוצות"/>
+	</menu>
+	<!-- UPLOADS WINDOW -->
+	<menu name="CUploadsWnd.Upload.Basic">
+		<item id="ID_BROWSE_LAUNCH" text="‪_עיין בקבצי המשתמש"/>
+		<item id="ID_UPLOADS_CHAT" text="‪_שוחח עם המשתמש"/>
+		<separator/>
+		<item id="ID_UPLOADS_HELP" text="‪...ע_זרה"/>
+	</menu>
+	<menu name="CUploadsWnd.Upload">
+		<item id="ID_UPLOADS_LAUNCH" text="_Library הצג "/>
+		<item id="ID_UPLOADS_FOLDER" text="פתח _Folder"/>
+		<separator/>
+		<item id="ID_UPLOADS_CLEAR" text="‪_נקה"/>
+		<item id="ID_UPLOADS_START" text="‪_התחל כעת"/>
+		<item id="ID_UPLOADS_PRIORITY" text="עדיפות"/>
+		<separator/>
+		<item id="ID_BROWSE_LAUNCH" text="‪_עיין בקבצי המשתמש"/>
+		<item id="ID_UPLOADS_CHAT" text="‪_שוחח עם המשתמש"/>
+		<item id="ID_SECURITY_BAN" text="‪_חסום משתמש"/>
+	</menu>
+	<menu name="CUploadsWnd.Default">
+		<item id="ID_LIBRARY_FOLDERS" text="‪...שתף קבצים"/>
+		<item id="ID_UPLOADS_SETTINGS" text="...‪הגדרות תורים"/>
+		<item id="ID_UPLOADS_CLEAR_COMPLETED" text="‪נקה הורדות שהסתיימו"/>
+		<separator/>
+		<item id="ID_UPLOADS_HELP" text="‪...ע_זרה"/>
+	</menu>
+	<menu name="CUploadsWnd.Filter">
+		<item id="ID_UPLOADS_FILTER_ALL" text="‪הצג הכל"/>
+		<separator/>
+		<item id="ID_UPLOADS_FILTER_ACTIVE" text="‪הצג פעילים"/>
+		<item id="ID_UPLOADS_FILTER_QUEUED" text="‪_הצג המתנות בתור"/>
+		<item id="ID_UPLOADS_FILTER_TORRENT" text="‪BitTorrent הצג"/>
+		<item id="ID_UPLOADS_FILTER_HISTORY" text="‪הצג היסטוריה"/>
+		<separator/>
+		<item id="ID_UPLOADS_AUTO_CLEAR" text="‪נקה אוטומטית הורדות שהסתיימו"/>
+	</menu>
+	<!-- LIBRARY FRAME -->
+	<menu name="CLibraryTree.Physical.Basic">
+		<item id="ID_LIBRARY_SHARED_FOLDER" text="‪_משותף"/>
+		<item id="ID_LIBRARY_REMOVE" text="‪_הסר"/>
+		<separator/>
+		<item id="ID_LIBRARY_FOLDERS" text="‪...שתף קבצים"/>
+	</menu>
+	<menu name="CLibraryTree.Physical">
+		<item id="ID_LIBRARY_EXPLORE" text="‪_סייר"/>
+		<item id="ID_LIBRARY_REMOVE" text="‪_הסר"/>
+		<separator/>
+		<item id="ID_LIBRARY_SHARED_FOLDER" text="‪_משותף"/>
+		<separator/>
+		<item id="ID_LIBRARY_SCAN" text="‪סריקה"/>
+		<item id="ID_LIBRARY_REBUILD" text="‪בנה מחדש"/>
+		<item id="ID_LIBRARY_FOLDERS" text="‪...שתף קבצים"/>
+		<separator/>
+		<item id="ID_LIBRARY_FOLDER_FILE_PROPERTIES" text="‪מאפייני הקובץ"/>
+	</menu>
+	<menu name="CLibraryTree.Virtual.Basic">
+		<item id="ID_LIBRARY_FOLDER_ENQUEUE" text="‪_נגן אלבום"/>
+		<item id="ID_LIBRARY_FOLDER_DELETE" text="‪_מחק"/>
+		<separator/>
+		<item id="ID_LIBRARY_FOLDER_FILE_PROPERTIES" text="‪מאפייני קובץ"/>
+		<item id="ID_LIBRARY_FOLDER_PROPERTIES" text="‪מאפייני אלבום"/>
+	</menu>
+	<menu name="CLibraryTree.Virtual">
+		<item id="ID_LIBRARY_FOLDER_ENQUEUE" text="‪_נגן אלבום"/>
+		<item id="ID_LIBRARY_FOLDER_DELETE" text="‪_מחק"/>
+		<separator/>
+		<item id="ID_LIBRARY_REBUILD" text="‪בנה מחדש"/>
+		<item id="ID_LIBRARY_EXPORT_COLLECTION" text="‪...ייצא רשימה"/>
+		<separator/>
+		<item id="ID_LIBRARY_FOLDER_NEW" text="‪...ספריה חדשה"/>
+		<separator/>
+		<item id="ID_LIBRARY_FOLDER_FILE_PROPERTIES" text="‪מאפייני קובץ"/>
+		<item id="ID_LIBRARY_FOLDER_PROPERTIES" text="‪מאפייני אלבום"/>
+	</menu>
+	<menu name="CLibraryHistoryPanel">
+		<item id="ID_LIBRARY_CLEAR_HISTORY" text="Clear from _History"/>
+		<item id="ID_LIBRARY_CLEAR_HISTORY_ALL" text="‪_נקה את כל ההורדות"/>
+	</menu>
+	<!-- LIBRARY VIEWS -->
+	<menu name="CLibraryTileView">
+		<item id="ID_LIBRARY_ALBUM_OPEN" text="‪_פתח"/>
+		<item id="ID_LIBRARY_ALBUM_DELETE" text="‪_מחק"/>
+		<separator/>
+		<item id="ID_LIBRARY_ALBUM_PROPERTIES" text="‪מ_אפיינים"/>
+	</menu>
+	<menu name="CLibraryFileView.Basic">
+		<item id="ID_LIBRARY_LAUNCH" text="‪_פתח או הפעל"/>
+		<item id="ID_LIBRARY_ENQUEUE" text="‪_הוסף לרשימת השמעה"/>
+		<item id="ID_LIBRARY_DELETE" text="‪_מחק"/>
+		<separator/>
+		<item id="ID_LIBRARY_SHARED_FILE" text="‪_משותף"/>
+		<separator/>
+		<menu text="‪אירגון">
+			<item id="ID_LIBRARY_RENAME" text="‪שנה שם קובץ"/>
+			<item id="ID_LIBRARY_COPY" text="‪העתק קובץ"/>
+			<item id="ID_LIBRARY_MOVE" text="‪_העבר קובץ"/>
+		</menu>
+		<menu text="‪_חיפוש של">
+			<item id="ID_SEARCH_FOR_THIS" text="‪קובץ זה"/>
+			<item id="ID_SEARCH_FOR_SIMILAR" text="‪קבצים דומים"/>
+			<separator/>
+			<item id="ID_SEARCH_FOR_ARTIST" text="‪מוזיקה של אותו אמן"/>
+			<item id="ID_SEARCH_FOR_ALBUM" text="‪מוזיקה באותו אלבום"/>
+			<item id="ID_SEARCH_FOR_SERIES" text="‪פרקים באותה סדרה"/>
+		</menu>
+		<menu text="‪שירותי רשת">
+			<item id="ID_LIBRARY_REFRESH_METADATA" text="_Refresh Metadata"/>
+			<separator/>
+			<item id="ID_LIBRARY_BITPRINTS_WEB" text="‪Bitprints הראה כרטיס"/>
+			<item id="ID_LIBRARY_BITPRINTS_DOWNLOAD" text="‪Metadata הורד"/>
+			<separator/>
+			<item id="ID_LIBRARY_URI" text="‪_URI"/>
+		</menu>
+		<separator/>
+		<item id="ID_LIBRARY_PROPERTIES" text="‪מ_אפיינים"/>
+	</menu>
+	<menu name="CLibraryFileView">
+		<item id="ID_LIBRARY_LAUNCH" text="‪_פתח או הפעל"/>
+		<item id="ID_LIBRARY_ENQUEUE" text="‪הוסף לרשימת השמעה"/>
+		<item id="ID_LIBRARY_DELETE" text="‪_מחק"/>
+		<separator/>
+		<item id="ID_LIBRARY_SHARED_FILE" text="_משותף"/>
+		<separator/>
+		<item id="ID_LIBRARY_URI" text="_URI"/>
+		<item id="ID_LIBRARY_CREATETORRENT" text="‪.torrent צור קובץ"/>
+		<item id="ID_LIBRARY_LAUNCH_FOLDER" text="Open _Folder"/>
+		<separator/>
+		<menu text="‪אירגון">
+			<item id="ID_LIBRARY_UNLINK" text="‪הסר קבצים"/>
+			<separator/>
+			<item id="ID_LIBRARY_RENAME" text="‪שנה שם קובץ"/>
+			<item id="ID_LIBRARY_COPY" text="‪העתק קובץ"/>
+			<item id="ID_LIBRARY_MOVE" text="‪_העבר קובץ"/>
+		</menu>
+		<menu text="‪_חיפוש של">
+			<item id="ID_SEARCH_FOR_THIS" text="‪קובץ זה"/>
+			<item id="ID_SEARCH_FOR_SIMILAR" text="‪קבצים דומים"/>
+			<separator/>
+			<item id="ID_SEARCH_FOR_ARTIST" text="‪מוזיקה של אותו אמן"/>
+			<item id="ID_SEARCH_FOR_ALBUM" text="‪מוזיקה באותו אלבום"/>
+			<item id="ID_SEARCH_FOR_SERIES" text="‪פרקים באותה סדרה"/>
+		</menu>
+		<menu text="‪שירותי רשת">
+			<item id="ID_LIBRARY_BITPRINTS_WEB" text="‪Bitprints הראה כרטיס"/>
+			<item id="ID_LIBRARY_BITPRINTS_DOWNLOAD" text="‪Metadata קבל"/>
+		</menu>
+		<menu text="_Metadata">
+			<item id="ID_LIBRARY_REBUILD_FILE" text="Re_build Hashes"/>
+			<item id="ID_LIBRARY_REFRESH_METADATA" text="_Refresh Metadata"/>
+			<item id="ID_LIBRARY_REBUILD_ANSI" text="‪מקומי Metadata שינוי"/>
+			<item id="ID_LIBRARY_COLUMNS" text="‪...בחר עמודות"/>
+		</menu>
+		<separator/>
+		<item id="ID_SHELL_MENU" text="Windows Men_u"/>
+		<item id="ID_LIBRARY_PROPERTIES" text="‪מ_אפיינים"/>
+	</menu>
+	<!-- MEDIA WINDOW -->
+	<menu name="CMediaFrame.Basic">
+		<item id="ID_MEDIA_PLAY" text="‪_נגן"/>
+		<item id="ID_MEDIA_PAUSE" text="‪_השהה"/>
+		<item id="ID_MEDIA_STOP" text="‪_עצור"/>
+		<separator/>
+		<item id="ID_MEDIA_OPEN" text="‪_פתח קבצי מדיה"/>
+		<separator/>
+		<menu text="‪רשימת השמעה">
+			<item id="ID_MEDIA_NEXT" text="‪ה_בא"/>
+			<item id="ID_MEDIA_PREVIOUS" text="‪ה_קודם"/>
+			<item id="ID_MEDIA_RANDOM" text="‪רנדומלי"/>
+			<item id="ID_MEDIA_REPEAT" text="‪נגן שוב"/>
+			<separator/>
+			<item id="ID_MEDIA_PLAYLIST" text="‪הצג רשימת ה_שמעה"/>
+		</menu>
+		<menu text="‪Video Si_ze">
+			<item id="ID_MEDIA_SIZE_ONE" text="‪גודל מקורי"/>
+			<item id="ID_MEDIA_SIZE_TWO" text="‪גודל כפול"/>
+			<item id="ID_MEDIA_SIZE_HALF" text="‪גודל משולש"/>
+			<item id="ID_MEDIA_SIZE_FILL" text="‪גודל מקסימלי"/>
+			<item id="ID_MEDIA_SIZE_DISTORT" text="‪מלא את החלון"/>
+			<separator/>
+			<item id="ID_MEDIA_ASPECT_DEFAULT" text="‪יחס תמונה ברירת מחדל"/>
+			<item id="ID_MEDIA_ASPECT_4_3" text="‪יחס תמונה 4:3 (TV)"/>
+			<item id="ID_MEDIA_ASPECT_16_9" text="‪יחס תמונה 16:9 (Film)"/>
+			<separator/>
+			<item id="ID_MEDIA_FULLSCREEN" text="‪מ_סך מלא"/>
+		</menu>
+		<menu text="‪הגדרות">
+			<item id="ID_MEDIA_VIS" text="‪בחר אפקט ויזואלי"/>
+			<separator/>
+			<item id="ID_MEDIA_PLAYLIST" text="‪הצג רשימת ה_שמעה"/>
+			<item id="ID_MEDIA_STATUS" text="‪הראה שורת סטטוס"/>
+			<separator/>
+			<item id="ID_MEDIA_SETTINGS" text="‪הגדרות נגן המדיה"/>
+		</menu>
+	</menu>
+	<menu name="CMediaFrame">
+		<item id="ID_MEDIA_PLAY" text="‪_נגן"/>
+		<item id="ID_MEDIA_PAUSE" text="‪_השהה"/>
+		<item id="ID_MEDIA_STOP" text="‪_עצור"/>
+		<separator/>
+		<item id="ID_MEDIA_OPEN" text="‪_פתח קבצי מדיה"/>
+		<item id="ID_MEDIA_CLOSE" text="‪סגור קובץ"/>
+		<separator/>
+		<menu text="‪רשימת השמעה">
+			<item id="ID_MEDIA_NEXT" text="‪ה_בא"/>
+			<item id="ID_MEDIA_PREVIOUS" text="‪ה_קודם"/>
+			<item id="ID_MEDIA_RANDOM" text="‪רנדומלי"/>
+			<item id="ID_MEDIA_REPEAT" text="‪נגן שוב"/>
+			<separator/>
+			<item id="ID_MEDIA_PLAYLIST" text="‪הצג רשימת ה_שמעה"/>
+		</menu>
+		<menu text="‪גודל וידאו">
+			<item id="ID_MEDIA_SIZE_ONE" text="‪גודל מקורי"/>
+			<item id="ID_MEDIA_SIZE_TWO" text="‪גודל כפול"/>
+			<item id="ID_MEDIA_SIZE_HALF" text="‪גודל משולש"/>
+			<item id="ID_MEDIA_SIZE_FILL" text="‪גודל מקסימלי"/>
+			<item id="ID_MEDIA_SIZE_DISTORT" text="‪מלא את החלון"/>
+			<separator/>
+			<item id="ID_MEDIA_ASPECT_DEFAULT" text="‪יחס תמונה ברירת מחדל"/>
+			<item id="ID_MEDIA_ASPECT_4_3" text="‪יחס תמונה 4:3 (TV)"/>
+			<item id="ID_MEDIA_ASPECT_16_9" text="‪יחס תמונה 16:9 (Film)"/>
+			<separator/>
+			<item id="ID_MEDIA_FULLSCREEN" text="‪מ_סך מלא"/>
+		</menu>
+		<menu text="‪הגדרות">
+			<item id="ID_MEDIA_VIS" text="‪בחר אפקט ויזואלי"/>
+			<separator/>
+			<item id="ID_MEDIA_PLAYLIST" text="‪הצג רשימת ה_שמעה"/>
+			<item id="ID_MEDIA_STATUS" text="‪הראה שורת סטטוס"/>
+			<separator/>
+			<item id="ID_MEDIA_SETTINGS" text="‪הגדרות נגן המדיה"/>
+		</menu>
+	</menu>
+	<menu name="CMediaFrame.Zoom">
+		<item id="ID_MEDIA_SIZE_ONE" text="‪גודל מקורי"/>
+		<item id="ID_MEDIA_SIZE_TWO" text="‪גודל כפול"/>
+		<item id="ID_MEDIA_SIZE_HALF" text="‪גודל משולש"/>
+		<item id="ID_MEDIA_SIZE_FILL" text="‪גודל מקסימלי"/>
+		<item id="ID_MEDIA_SIZE_DISTORT" text="‪מלא את החלון"/>
+		<separator/>
+		<item id="ID_MEDIA_ASPECT_DEFAULT" text="‪יחס תמונה ברירת מחדל"/>
+		<item id="ID_MEDIA_ASPECT_4_3" text="‪יחס תמונה 4:3 (TV)"/>
+		<item id="ID_MEDIA_ASPECT_16_9" text="‪יחס תמונה 16:9 (Film)"/>
+	</menu>
+	<menu name="CMediaList">
+		<item id="ID_MEDIA_SELECT" text="‪_נגן"/>
+		<item id="ID_MEDIA_RATE" text="_דרג קובץ..."/>
+		<item id="ID_MEDIA_PROPERTIES" text="_מאפיינים..."/>
+		<separator/>
+		<item id="ID_MEDIA_ADD" text="‪...הוסף קובץ"/>
+		<item id="ID_MEDIA_ADD_FOLDER" text="‪...הוסף תיקייה"/>
+		<item id="ID_MEDIA_REMOVE" text="‪_הסר"/>
+		<separator/>
+		<item id="ID_MEDIA_RANDOM" text="‪מצב רנדומלי"/>
+		<item id="ID_MEDIA_REPEAT" text="‪מצב ניגון חוזר"/>
+		<separator/>
+		<item id="ID_MEDIA_OPEN" text="‪פתח רשימת השמעה"/>
+		<item id="ID_MEDIA_SAVE" text="‪שמור רשימת השמעה"/>
+		<item id="ID_MEDIA_EXPORT_COLLECTION" text="ייצא אוסף..."/>
+		<item id="ID_MEDIA_CLEAR" text="‪נקה רשימת השמעה"/>
+		<separator/>
+		<item id="ID_MEDIA_PLAYLIST" text="‪הצג רשימת השמעה"/>
+	</menu>
+	<!-- SYSTEM WINDOW -->
+	<menu name="CSystemWnd">
+		<menu id="ID_SYSTEM_VERBOSE" text="_Verbose Mode">
+			<item id="ID_SYSTEM_VERBOSE_ERROR" text="_Error"/>
+			<item id="ID_SYSTEM_VERBOSE_WARNING" text="_Warning"/>
+			<item id="ID_SYSTEM_VERBOSE_NOTICE" text="_Notice"/>
+			<item id="ID_SYSTEM_VERBOSE_INFO" text="_Info"/>
+			<item id="ID_SYSTEM_VERBOSE_DEBUG" text="_Debug"/>
+		</menu>
+		<item id="ID_SYSTEM_TIMESTAMP" text="‪הצגת זמנים לכל נתון"/>
+		<separator/>
+		<item id="ID_SYSTEM_COPY" text="_העתק" shortcut="Ctrl+C"/>
+		<separator/>
+		<item id="ID_SYSTEM_CLEAR" text="‪נקה איכסון המידע"/>
+	</menu>
+	<!-- NEIGHBOURS WINDOW -->
+	<menu name="CNeighboursWnd.Basic">
+		<item id="ID_BROWSE_LAUNCH" text="‪_עיין בקבצי המשתמש"/>
+		<item id="ID_NEIGHBOURS_CHAT" text="‪_שוחח עם המשתמש"/>
+		<separator/>
+		<item id="ID_NEIGHBOURS_DISCONNECT" text="‪ה_תנתק"/>
+		<separator/>
+		<item id="ID_NEIGHBOURS_URI" text="‪...URI העתק"/>
+	</menu>
+	<menu name="CNeighboursWnd">
+		<item id="ID_BROWSE_LAUNCH" text="‪_עיין בפרטי המשתמש"/>
+		<item id="ID_NEIGHBOURS_CHAT" text="‪_שוחח עם המשתמש"/>
+		<item id="ID_SECURITY_BAN" text="‪_חסום משתמש"/>
+		<separator/>
+		<item id="ID_NEIGHBOURS_DISCONNECT" text="‪ה_תנתק"/>
+		<separator/>
+		<item id="ID_NEIGHBOURS_URI" text="‪...URI העתק"/>
+		<separator/>
+		<menu text="‪מצב הר_שת">
+			<item id="ID_NETWORK_CONNECT" text="‪_התחבר"/>
+			<item id="ID_NETWORK_DISCONNECT" text="‪ה_תנתק"/>
+			<separator/>
+			<item id="ID_NETWORK_G2" text="‪גנוטלה 2"/>
+			<item id="ID_NETWORK_G1" text="‪גנוטלה 1"/>
+			<item id="ID_NETWORK_ED2K" text="‪אידונקי 2000"/>
+			<item id="ID_NETWORK_DC" text="_DC++ גנוטלה"/>
+			<item id="ID_NETWORK_BT" text="_BitTorrent גנוטלה"/>
+			<separator/>
+			<item id="ID_VIEW_DISCOVERY" text="משאבי _חיבור"/>
+			<item id="ID_VIEW_HOSTS" text="_מטמון מארחים (הוסטים)"/>
+			<item id="ID_VIEW_SECURITY" text="_אבטחה"/>
+		</menu>
+		<menu text="‪מוניטור">
+			<item id="ID_NEIGHBOURS_VIEW_ALL" text="‪הצג את כל תעבורת הרשת"/>
+			<item id="ID_NEIGHBOURS_VIEW_INCOMING" text="‪הצג את כל תעבורת הרשת הנכנסת"/>
+			<item id="ID_NEIGHBOURS_VIEW_OUTGOING" text="‪הצג את כל תעבורת הרשת היוצאת"/>
+		</menu>
+	</menu>
+	<!-- SEARCH MONITOR WINDOW -->
+	<menu name="CSearchMonitorWnd">
+		<item id="ID_HITMONITOR_SEARCH" text="‪חיפוש עבור"/>
+		<separator/>
+		<item id="ID_SEARCHMONITOR_PAUSE" text="‪השהה תצוגה"/>
+		<item id="ID_SEARCHMONITOR_CLEAR" text="‪נקה איכסון המידע"/>
+	</menu>
+	<!-- GRAPH/TRAFFIC WINDOW -->
+	<menu name="CTrafficWnd">
+		<item id="ID_TRAFFIC_SETUP" text="‪בחר גרפים"/>
+		<separator/>
+		<item id="ID_TRAFFIC_GRID" text="‪קווי קני מידה"/>
+		<item id="ID_TRAFFIC_AXIS" text="‪צירים"/>
+		<item id="ID_TRAFFIC_LEGEND" text="‪מקרא סימנים"/>
+		<separator/>
+		<item id="ID_TRAFFIC_CLEAR" text="‪_נקה"/>
+		<separator/>
+		<item id="ID_TRAFFIC_WINDOW" text="‪_חלון חדש"/>
+	</menu>
+	<!-- SECURITY WINDOW -->
+	<menu name="CSecurityWnd">
+		<item id="ID_SECURITY_ADD" text="‪הוסף חוק"/>
+		<separator/>
+		<item id="ID_SECURITY_REMOVE" text="‪_הסר"/>
+		<item id="ID_SECURITY_RESET" text="‪אפס הגדרות"/>
+		<separator/>
+		<item id="ID_SECURITY_MOVE_UP" text="‪העבר מעלה"/>
+		<item id="ID_SECURITY_MOVE_DOWN" text="‪העבר מטה"/>
+		<separator/>
+		<item id="ID_SECURITY_IMPORT" text="‪...ייבא"/>
+		<item id="ID_SECURITY_EXPORT" text="‪...ייצא"/>
+		<separator/>
+		<menu text="‪מדיניות ברירת מחדל">
+			<item id="ID_SECURITY_POLICY_ACCEPT" text="‪אני מסכים"/>
+			<item id="ID_SECURITY_POLICY_DENY" text="‪אינני מסכים"/>
+		</menu>
+		<separator/>
+		<item id="ID_SECURITY_EDIT" text="‪מ_אפיינים"/>
+	</menu>
+	<!-- DISCOVERY SERVICES WINDOW -->
+	<menu name="CDiscoveryWnd">
+		<item id="ID_DISCOVERY_ADD" text="‪...הוסף שירות"/>
+		<separator/>
+		<item id="ID_DISCOVERY_EDIT" text="‪מ_אפיינים"/>
+		<item id="ID_DISCOVERY_REMOVE" text="‪_הסר"/>
+		<separator/>
+		<item id="ID_DISCOVERY_QUERY" text="‪_שלח בקשה כעת"/>
+		<item id="ID_DISCOVERY_ADVERTISE" text="‪פרסם"/>
+		<item id="ID_DISCOVERY_BROWSE" text="‪סייר בסטטיסטיקות"/>
+		<separator/>
+		<item id="ID_DISCOVERY_GNUTELLA" text="‪הצג רצועת אתחול"/>
+		<item id="ID_DISCOVERY_WEBCACHE" text="‪GWebCaches הצג"/>
+		<item id="ID_DISCOVERY_SERVERLIST" text="‪של השרת Met's הצג"/>
+		<item id="ID_DISCOVERY_BLOCKED" text="חסום הצג"/>
+	</menu>
+	<!-- PRIVATE CHAT FRAME -->
+	<menu name="CPrivateChatWnd">
+		<item id="ID_CHAT_CONNECT" text="‪_התחבר"/>
+		<item id="ID_CHAT_DISCONNECT" text="‪ה_תנתק"/>
+		<separator/>
+		<item id="ID_CHAT_BROWSE" text="‪_עיין בקבצי המשתמש"/>
+		<!--item id="ID_CHAT_SEND_FILE" text="‪...שלח קובץ"-->
+		<item id="ID_CHAT_PRIORITY" text="‪...הענק עדיפות למשתמש"/>
+		<separator/>
+		<menu text="‪_Format">
+			<item id="ID_CHAT_BOLD" text="‪עיצוב מודגש"/>
+			<item id="ID_CHAT_ITALIC" text="‪עיצוב נוטה"/>
+			<item id="ID_CHAT_UNDERLINE" text="‪עיצוב קו תחתי"/>
+			<item id="ID_CHAT_COLOR" text="‪בחר צבע"/>
+			<item id="ID_CHAT_EMOTICONS" text="‪בחר סמיילי"/>
+		</menu>
+		<separator/>
+		<item id="ID_CHAT_TIMESTAMP" text="‪הראה זמנים בכל שורה"/>
+		<item id="ID_CHAT_CLEAR" text="‪נקה חלון"/>
+	</menu>
+	<!-- PLUGIN MENUS -->
+	<menu name="ImageViewer_Context">
+		<item id="PluginID_ImageViewer_FullSize" text="גודל מקורי"/>
+		<item id="PluginID_ImageViewer_BestFit" text="התאמה מיטבית"/>
+		<separator/>
+		<item id="PluginID_ImageViewer_Refresh" text="רענן"/>
+		<separator/>
+		<item id="PluginID_ImageViewer_Close" text="סגור"/>
+	</menu>
+	<!-- IRC WINDOW -->
+	<menu name="CIRCTabRClick">
+		<item id="ID_IRC_CLOSETAB" text="_סגור"/>
+	</menu>
+	<menu name="CIRCUserList">
+		<item id="ID_IRC_WHOIS" text="_מי-זה"/>
+		<item id="ID_IRC_QUERY" text="_שאילתא"/>
+		<separator/>
+		<menu text="Actions">
+			<item id="ID_IRC_TIME" text="זמן"/>
+			<item id="ID_IRC_VERSION" text="גירסא"/>
+		</menu>
+		<separator/>
+		<menu text="Control">
+			<item id="ID_IRC_IGNORE" text="התע_לם"/>
+			<item id="ID_IRC_UNIGNORE" text="בטל התעל_מות"/>
+			<item id="ID_IRC_OP" text="_אופרטור"/>
+			<item id="ID_IRC_DEOP" text="בטל או_פרטור"/>
+			<item id="ID_IRC_VOICE" text="ה_שמע"/>
+			<item id="ID_IRC_DEVOICE" text="הש_תק"/>
+			<item id="ID_IRC_KICK" text="ב_עט"/>
+			<item id="ID_IRC_KICKWHY" text="בעט (למה?)"/>
+			<item id="ID_IRC_BAN" text="_השעה"/>
+			<item id="ID_IRC_UNBAN" text="_בטל השעיה"/>
+			<item id="ID_IRC_BANKICK" text="בעט והשע_ה"/>
+			<item id="ID_IRC_BANKICKWHY" text="בעט והשעה (למה?)"/>
+		</menu>
+	</menu>
+	<menu name="WebServices.List.Menu">
+		<item id="ID_LIBRARY_BITPRINTS_DOWNLOAD" text="_Bitprints"/>
+		<item id="ID_WEBSERVICES_MUSICBRAINZ" text="_MusicBrainz"/>
+		<!--item id="ID_WEBSERVICES_SHAREMONKEY" text="_ShareMonkey"-->
+	</menu>
+</menus>
+<!-- Documents -->
+<documents>
+	<!-- Home View -->
+	<document name="CHomeViewCtrl" leftMargin="20" topMargin="0">
+		<para align="left">
+		<styles>
+			<style name="default">
+				<font size="15"/>
+			</style>
+			<style name="heading">
+				<font size="18" weight="800"/>
+			</style>
+		</styles>
+		<anchor id="Header" width="32" height="152"/>
+		<newline gap="0"/>
+		<group id="1">
+			<gap size="16"/><icon res="136" width="32" height="32" target="command:ID_NETWORK_CONNECT"/>
+			<heading align="middle">&#160; ה ת ח ב ר</heading>
+			<newline gap="8" indent="42"/>
+			<text> ברוך הבא לשרזה! &#160;</text>
+			<newline gap="8" indent="42"/>
+			<text>אתה כרגע לא מחובר לאף רשת שיתוף קבצים. &#160;</text>
+			<link target="command:ID_NETWORK_CONNECT">לחץ כאן כדי להתחיל!</link>
+			<newline gap="18" indent="16"/>
+		</group>
+		<group id="2">
+			<gap size="16"/><icon res="130" width="32" height="32" target="command:ID_TAB_SEARCH"/>
+			<heading align="middle">חפש  בשרזה</heading>
+			<newline gap="8" indent="42"/>
+			<anchor id="SearchBox" width="256" height="80"/>
+			<newline gap="14" indent="16"/>
+			<gap size="16"/><icon res="130" width="32" height="32" target="command:ID_TOOLS_DOWNLOAD"/><gap size="8"/>
+			<heading align="middle">התחל &#160; הורדה</heading>
+			<newline gap="8" indent="42"/>
+			<link target="command:ID_TOOLS_DOWNLOAD" format="bu">לחץ כאן כדי להתחיל </link>
+			<text> מוריד קובץ או טורנט.</text>
+			<newline gap="2" indent="42"/>
+			<link target="command:shell:downloads">פתח את תקיית ההורדות שלי</link>
+			<newline gap="4" indent="42"/>
+			<text>שיתוף קבצים שלך </text>
+			<link id="RemoteBrowseURL"/>
+			<newline gap="20" indent="0"/>
+		</group>
+		<group id="3">
+			<icon res="120" width="32" height="32" target="command:ID_TOOLS_SETTINGS"/><gap size="8"/>
+			<heading align="middle">הודעת ש ד ר וג</heading>
+			<newline gap="8" indent="42"/>
+			<text id="שדרוג"/>
+			<newline gap="6"/>
+			<link target="command:upgrade">.לחץ כאן לשדרוג</link>
+			<newline gap="18" indent="16"/>
+		</group>
+		<group id="5">
+			<icon res="180" width="32" height="32" target="command:ID_TOOLS_WIZARD"/><gap size="8"/>
+			<heading align="middle">א ז ה ר ה &#160; - &#160; א ת ה &#160; ח ס ו ם &#160; ב ח ו מ ת  א ש</heading>
+			<newline gap="8" indent="42"/>
+			<text color="FF0000"> (NAT) שרזה זיהה שאתה מאחורי חומת-אש או ראוטר,
+			ואינך מצליח לקבל חיבורי UDP מהאינטרנט. &#160;</text>
+			<text color="FF0000" format="b">זה עלול לגרום לביצועי הורדה נמוכים</text>
+			<newline gap="6"/>
+			<link target="command:ID_HELP_ROUTER">לחץ כאן כדי ללמוד איך להגדיר את הראוטר וחומת האש</link>
+			<newline gap="18" indent="16"/>
+		</group>
+		<group id="6">
+			<newline indent="16"/><icon res="145" width="32" height="32"/><gap size="8"/>
+			<heading align="middle" color="6060FF">א ז ה ר ה&#160; - &#160; פ ת ח ת  ( פ ו ר ט ) &#160; ה - T C P &#160; ש ל ך &#160; ח ס ו מ ה &#160; ע  י  ח ו מ ת - ש א</heading>
+			<newline gap="8" indent="42"/>
+			<text color="FF0000"> (NAT) שרזה זיהה שאתה מאחורי חומת-אש או ראוטר,
+			ואינך מצליח לקבל חיבורי UDP מהאינטרנט. &#160;</text>
+			<text color="FF0000" format="b">זה עלול לגרום לביצועי הורדה נמוכים</text>
+			<newline gap="6"/>
+			<link target="command:ID_HELP_ROUTER">Click here to learn how to configure your router or firewall</link>
+			<newline gap="18" indent="0"/>
+		</group>
+		<group id="7">
+			<icon res="180" width="32" height="32"/><gap size="8"/>
+			<heading align="middle">א ז ה ר ה &#160; - &#160; א ת ה &#160; ח ס ו ם &#160; ב ח ו מ ת  א ש</heading>
+			<newline gap="8" indent="42"/>
+			<text color="FF0000"> (NAT) שרזה זיהה שאתה מאחורי חומת-אש או ראוטר,
+			ואינך מצליח לקבל חיבורי UDP מהאינטרנט. &#160;</text>
+			<text color="FF0000" format="b">זה עלול לגרום לביצועי הורדה נמוכים.</text>
+			<newline gap="6"/>
+			<link target="command:ID_HELP_ROUTER">לחץ כאן כדי ללמוד איך להגדיר את הראוטר וחומת האש</link>
+			<newline gap="18" indent="0"/>
+		</group>
+		<icon res="120" width="32" height="32" target="command:ID_TOOLS_SETTINGS"/><gap size="8"/>
+		<heading align="middle">ה ת א מ ת &#160; ש ר ז ה&#160;&#160;&#160;</heading>
+		<newline gap="12" indent="42"/>
+		<icon res="196" width="16" height="16" target="command:ID_TOOLS_SKIN"/><gap size="8"/>
+		<link target="command:ID_TOOLS_SKIN" align="middle" format="bu">מעטפות</link><gap size="6"/>
+		<text align="middle">- שנה לשרזה את המראה וההרגשה</text>
+		<newline gap="8"/>
+		<icon res="138" width="16" height="16" target="command:ID_VIEW_SECURITY"/><gap size="8"/>
+		<link target="command:ID_VIEW_SECURITY" align="middle">מסנן אבטחה</link><gap size="6"/>
+		<text align="middle">- Update blocklist</text>
+		<newline gap="8"/>
+		<icon res="197" width="16" height="16" target="command:ID_TOOLS_WIZARD"/><gap size="8"/>
+		<link target="command:ID_TOOLS_WIZARD" align="middle">אשף ההגדרות</link><gap size="6"/>
+		<text align="middle">- ערוך את הגדרות שרזה</text>
+		<newline gap="8"/>
+		<icon res="182" width="16" height="16" target="command:ID_HELP_FAQ"/><gap size="8"/>
+		<link target="command:ID_HELP_FAQ" align="middle">עזרה מהירה</link><gap size="6"/>
+		<text align="middle">- קבל עזרה בסיסית בהפעלת שרזה</text>
+		<newline gap="8"/>
+		<icon res="201" width="16" height="16" target="command:ID_HELP_FORUMS_LOCAL"/><gap size="8"/>
+		<link target="command:ID_HELP_FORUMS_LOCAL" align="middle">מקומי פורום</link><gap size="6"/>
+		<text align="middle">- עברית עבור השפה שלך לדיון בפורום</text>
+		<newline gap="18" indent="16"/>
+		<group id="4">
+			<icon res="120" width="32" height="32" target="command:ID_TOOLS_SETTINGS"/><gap size="8"/>
+			<heading align="middle">ג י ש ה &#160; מ ר ח ו ק &#160; ב מ צ ב &#160; מ א ו פ ש ר</heading>
+			<newline gap="8" indent="42"/>
+			<text>שליטה מרחוק בשרזה במצב מאופשר, שלוט בשרזה עם הדפדפן שלך דרך:</text>
+			<newline gap="6"/>
+			<link id="RemoteAccessURL"/>
+			<text>&#160;- או -&#160;</text>
+			<link id="RemoteAccessLocal"/>
+			<newline gap="16" indent="16"/>
+		</group>
+		</para>
+	</document>
+	<document name="CHomeConnectionBox" title="חיבור" leftMargin="6" topMargin="6">
+		<styles>
+			<style name="default">
+				<font size="10"/>
+			</style>
+		</styles>
+		<group id="1">
+			<para align="center">
+				<text format="b">לא מחובר.</text>
+				<newline gap="4"/>
+				<link target="command:ID_NETWORK_CONNECT">לחץ כאן כדי להתחבר.</link>
+			</para>
+		</group>
+		<icon group="20" command="ID_NETWORK_G2"/><gap group="20" size="4"/>
+		<text group="20" align="middle" format="b">גונוטלה2: </text>
+		<text group="21" align="middle"> מנותק.</text>
+		<text group="22" align="middle"> מתחבר...</text>
+		<text group="23" align="middle"> מחובר.</text>
+		<text group="24" align="middle" id="G2Hubs">‪(hubs) מוקדים ‎%i</text>
+		<text group="25" align="middle" id="G2Leaves">‪&#160; ענפי קו‎ %i.</text>
+		<newline group="20" gap="2"/>
+		<icon group="10" command="ID_NETWORK_G1"/><gap group="10" size="4"/>
+		<text group="10" align="middle" format="b">גונוטלה: </text>
+		<text group="11" align="middle"> מנותק.</text>
+		<text group="12" align="middle"> מתחבר...</text>
+		<text group="13" align="middle"> מחובר.</text>
+		<text group="14" align="middle" id="G1Hubs"> מוקדים ‎%i</text>
+		<text group="15" align="middle" id="G1Leaves"> ענפי קו‎ %i</text>
+		<newline group="10" gap="2"/>
+		<icon group="30" command="ID_NETWORK_ED2K"/><gap group="30" size="4"/>
+		<text group="30" align="middle" format="b">אידונקי: </text>
+		<text group="31" align="middle">מנותק.</text>
+		<text group="32" align="middle"> מתחבר...</text>
+		<text group="33" align="middle">מחובר.</text>
+		<text group="34" align="middle" id="EDServers">%i Server</text>
+		<newline group="30" gap="2"/>
+		<icon group="60" command="ID_NETWORK_DC"/>
+		<text group="60" align="middle" format="b">&#160;DC++: &#160; </text>
+		<text group="61" align="middle">מנותק.</text>
+		<text group="62" align="middle"> מתחבר...</text>
+		<text group="63" align="middle">מחובר.</text>
+		<text group="64" align="middle" id="DCHubs"> מוקדים ‎%i</text>
+		<newline group="60" gap="2"/>
+		<group id="2">
+			<para align="center">
+				<newline gap="4"/>
+				<link target="command:ID_TAB_NETWORK">מחובר במשך</link>
+				<newline gap="4"/>
+				<text id="ConnectedHours" format="b">%i </text>
+				<text>שעות ו-</text>
+				<text id="ConnectedMinutes" format="b">%i </text>
+				<text>דקות </text>
+			</para>
+		</group>
+	</document>
+	<document name="CHomeLibraryBox" title="הספריה שלי" leftMargin="6" topMargin="6">
+		<styles>
+			<style name="default">
+				<font size="10"/>
+			</style>
+		</styles>
+		<para align="center">
+			<group id="2">
+				<text>לא הורדת אף קובץ חדש לאחרונה.</text>
+				<newline gap="8"/>
+			</group>
+			<link target="command:ID_VIEW_LIBRARY">עבור לספריה שלי</link>
+			<newline gap="4"/>
+			<text id="LibraryFiles" format="b">%lu</text>
+			<text>&#160;קבצים,&#160;</text>
+			<text id="LibraryVolume" format="b">%s</text>
+			<group id="1">
+				<newline gap="8"/>
+				<text>&#160;שרזה סורק ומעבד.</text>
+				<text id="LibraryHashRemaining" format="b">%lu</text>
+				<text>קבצים&#160;</text>
+				<newline gap="8"/>
+			</group>
+			<group id="3">
+				<link target="command:ID_LIBRARY_HASH_PRIORITY">מהיר יותר hash לחץ כאן לביצוע.</link>
+			</group>
+			<group id="5">
+				<link target="command:ID_LIBRARY_HASH_PRIORITY">איטי יותר hash לחץ כאן לביצוע.</link>
+			</group>
+		</para>
+	</document>
+	<document name="CHomeDownloadsBox" title="ההורדות שלי" leftMargin="6" topMargin="6">
+		<styles>
+			<style name="default">
+				<font size="10"/>
+			</style>
+		</styles>
+		<para align="center">
+			<group id="1">
+				<text>אינך מוריד אף קובץ עדיין.</text>
+				<newline gap="4"/>
+			</group>
+			<link id="DownloadsNone" target="command:ID_VIEW_DOWNLOADS">עבור להורדות</link>
+			<link id="DownloadsOne" target="command:ID_VIEW_DOWNLOADS" format="bu">&#8234;(1) ‏‏להורדות‎ ‏עבור</link>
+			<link id="DownloadsMany" target="command:ID_VIEW_DOWNLOADS" format="bu">‎‏‏‫‫‏‫‏‫‏‏‫‫‫‫‫‫‎‎&#8234;(%i) ‏להורדות‎ ‏עבור</link>
+			<newline gap="4"/>
+			<text id="DownloadedNone">No files (</text>
+			<text id="DownloadedOne">1 file (</text>
+			<text id="DownloadedMany">%i files (</text>
+			<text id="DownloadedVolume" format="b">%s</text>
+			<text>)</text>
+		</para>
+	</document>
+	<document name="CHomeUploadsBox" title="העלאות" leftMargin="6" topMargin="6">
+		<styles>
+			<style name="default">
+				<font size="10"/>
+			</style>
+		</styles>
+		<para align="center">
+			<text id="UploadsNone" format="b">אין העלאות פעילות</text>
+			<link id="UploadsOne" target="command:ID_VIEW_UPLOADS" format="bu">העלאה פעילה אחת</link>
+			<link id="UploadsMany" target="command:ID_VIEW_UPLOADS" format="bu">‏&#8234;.‏פעילות‎ ‏העלאות‎ %i</link>
+			<newline gap="4"/>
+			<group id="1">
+				<text id="TorrentsOne">טורנט אחד מופץ כעת.</text>
+				<text id="TorrentsMany">&#8234;.טורנטים‎ %i ‏מופצים‎ ‏כעת</text>
+				<newline gap="4"/>
+			</group>
+			<text id="UploadedNone">לא העלאת/ה אף קובץ היום.</text>
+			<text id="UploadedOne">&#8234;(%s) ‏אחד‎ ‏קובץ‎ ‏היום‎ העלאת/‏ה</text>
+			<text id="UploadedMany">&#8234;‏קבצים‎ %i ‏היום‎ ‏העלאת/ה (%s)</text>
+		</para>
+	</document>
+	<!-- Settings Pages -->
+	<document name="CGeneralSettingsGroup" title="כללי" leftMargin="8" topMargin="8">
+		<text format="b">‫‮‫‮ ברוכים הבאים למנהל ההגדרות של שרזה</text>
+		<newline gap="16"/>
+		<text>אשף ההגדרות של שרזה מאפשר למשתמשים מתקדמים להתאים באופן
+			מלא איך שרזה תפעל. </text>
+		<newline gap="10" margin="16"/>
+		<text format="b"> כללי: </text>
+		<text>נועד להגדרת העדפות המשתמש:</text>
+		<newline gap="16" indent="16"/>
+		<link target="page:CGeneralSettingsPage" format="b">כללי:</link>
+		<text>&#160;הגדרות ממשק משתמש רגילות כמו טיפים, מדיניות מזעור, צורת הצגת מספרים, הודעות וכדומה</text>
+		<newline gap="10"/>
+		<link target="page:CLibrarySettingsPage" format="b">ספריה:</link>
+		<text>&#160;הצגת אפשרויות ניהול של קבצי הספריה ופתיחת קבצים</text>
+		<newline gap="10"/>
+		<link target="page:CMediaSettingsPage" format="b">נגן המדיה:</link>
+		<text>&#160;מתי ואיפה להשתמש בנגן המדיה הפנימי של שרזה</text>
+		<newline gap="10"/>
+		<link target="page:CIRCSettingsPage" format="b">חדר שיחה:</link>
+		<text>&#160;הגדרות הפרופיל שלך, הצ'אט והמסרים מיידים</text>
+		<newline gap="10"/>
+		<link target="page:CCommunitySettingsPage" format="b">קהילה:</link>
+		<text>&#160;הגדרות תצוגה וחיבור של חדר השיחה</text>
+		<newline gap="10"/>
+		<link target="page:CRemoteSettingsPage" format="b">שליטה מרחוק:</link>
+		<text>&#160;קביעת אפשרות ליכולת שליטה בשרזה מרחוק על ידי הדפדפן</text>
+		<newline gap="10"/>
+		<link target="page:CWebSettingsPage" format="b">האינטרנט:</link>
+		<text>&#160;מזג את שרזה עם הדפדפן לקבלת לינקים ותוכן להורדה בתקשורת ישירה בין משתמשים</text>
+	</document>
+	<document name="CInternetSettingsGroup" title="אינטרנט" leftMargin="8" topMargin="8">
+		<text format="b">ברוכים הבאים למנהל ההגדרות של שרזה</text>
+		<newline gap="16"/>
+		<text>אשף ההגדרות של שרזה מאפשר למשתמשים מתקדמים להתאים באופן
+			מלא את האופן שבו שרזה פועלת.</text>
+		<newline gap="10" margin="16"/>
+		<text format="b"> אינטרנט: </text>
+		<text>חלק זה מגדיר את האופן שבה	שרזה מתקשרת עם נקודות אחרות ברשתות שיתוף:</text>
+		<newline gap="16" indent="16"/>
+		<link target="page:CConnectionSettingsPage" format="b">חיבור:</link>
+		<text>&#160;המהירות והיכולות של חיבור האינטרנט שלך</text>
+		<newline gap="10"/>
+		<link target="page:CDownloadsSettingsPage" format="b">הורדות:</link>
+		<text>&#160;הגדרות הורדה לגבי התפוקה, התזמונים, האימותים, זמן המתנה לתגובה וניהול כללי</text>
+		<newline gap="10"/>
+		<link target="page:CUploadsSettingsPage" format="b">העלאות:</link>
+		<text>&#160;הגדרות העלאה לגבי יכולות אכסון, תורות, חסימות, זמני המתנה לתגובה, ובקשות מיוחדות</text>
+	</document>
+	<!-- Browse User Profile -->
+	<document name="CBrowseHostProfile.1">
+		<heading id="Nick"/>
+		<heading>&#160; - פרופיל</heading>
+		<newline gap="8"/>
+		<group id="1">
+			<newline gap="8" indent="0"/>
+			<text format="b">שם:</text>
+			<newline gap="2" indent="8"/>
+			<text id="FullName"/>
+		</group>
+		<group id="2">
+			<newline gap="8" indent="0"/>
+			<text format="b">מקום מגורים:</text>
+			<newline gap="2" indent="8"/>
+			<text id="FullLocation"/>
+		</group>
+		<group id="3">
+			<newline gap="8" indent="0"/>
+			<text format="b">מין וגיל:</text>
+			<newline gap="2" indent="8"/>
+			<text id="GenderMale">זכר</text>
+			<text id="GenderFemale">נקבה</text>
+			<text>,</text>
+			<text id="Age"/>
+		</group>
+		<group id="5">
+			<newline gap="8" indent="0"/>
+			<text format="b">מידע ליצירת קשר:</text>
+			<newline gap="1" indent="8"/>
+		</group>
+		<group id="40">
+			<newline gap="1"/>
+			<icon res="203"/><gap size="5"/>
+			<link id="ContactEmail" align="middle"/>
+		</group>
+		<group id="44">
+			<newline gap="1"/>
+			<icon res="206"/><gap size="5"/>
+			<link id="ContactMSN"/>
+		</group>
+		<group id="41">
+			<newline gap="1"/>
+			<icon res="207"/><gap size="5"/>
+			<link id="ContactYahoo"/>
+		</group>
+		<group id="42">
+			<newline gap="1"/>
+			<icon res="205"/><gap size="5"/>
+			<link id="ContactICQ"/>
+		</group>
+		<group id="43">
+			<newline gap="1"/>
+			<icon res="204"/><gap size="5"/>
+			<link id="ContactAOL"/>
+		</group>
+		<group id="45">
+			<newline gap="1"/>
+			<icon res="204"/><gap size="5"/>
+			<link id="ContactJabber"/>
+		</group>
+		<group id="4">
+			<newline gap="8" indent="0"/>
+			<text format="b">תחומי עניין:</text>
+			<newline gap="2" indent="8"/>
+			<text id="Interests"/>
+		</group>
+		<group id="6">
+			<newline gap="8" indent="0"/>
+			<text format="b">גיל ומין:</text>
+			<newline gap="2" indent="8"/>
+			<text id="BioText"/>
+		</group>
+	</document>
+	<document name="CBrowseHostProfile.2">
+		<newline gap="40" indent="0"/>
+		<text format="b">קבצים משותפים:</text>
+		<newline gap="4" indent="8"/>
+		<icon res="137" target="command:ID_BROWSE_FILES"/><gap size="5"/>
+		<link target="command:ID_BROWSE_FILES" align="middle">הצג קבצים משותפים</link>
+		<group id="2">
+			<newline gap="16" indent="0"/>
+			<text format="b">קהילה:</text>
+			<newline gap="4" indent="8"/>
+			<icon res="127" target="command:ID_SEARCH_CHAT"/>
+			<gap size="5"/>
+			<link target="command:ID_SEARCH_CHAT" align="middle">שוחח עם משתמש</link>
+		</group>
+		<group id="3">
+			<newline gap="16" indent="0"/>
+			<text format="b">מועדפים:</text>
+			<newline gap="4" indent="8" id="Bookmarks"/>
+		</group>
+		<newline gap="16" indent="0"/>
+	</document>
+	<!-- Download help documents -->
+	<document name="DownloadHelp.Select">
+		<text format="b">אזור הורדות</text>
+		<newline gap="8"/>
+		<text>כאן יוצגו הקבצים שכרגע בהורדה. תוכל/י לראות
+		כל מקור בנפרד ע`י הרחבת כל קובץ בעזרת ה-'+' שמימינו.</text>
+		<newline gap="8"/>
+		<text>תוכל להשתמש בפקודה זו לקבלת עזרה לגבי הורדה ספציפית
+		פשוט לחץ על ההורדה ובחר את פקודה זו שנית.</text>
+	</document>
+	<document name="DownloadHelp.Completed">
+		<text format="b">הורדה זו הושלמה</text>
+		<newline gap="8"/>
+		<text>שרזה סיים להוריד את קובץ זה ווידא שהוא
+		.</text>
+	</document>
+	<document name="DownloadHelp.Moving">
+		<text format="b">הורדה זו מועברת</text>
+		<newline gap="8"/>
+		<text>שרזה סיים להוריד את קובץ זה ווידא שהוא
+		&#8234;‏שלך‎. ‏ההורדות‎ ‏לספריית‎ ‏הקובץ‎ ‏את‎ ‏העביר‎ ‏גם‎ ‏שרזה‎ ‏ב‎-100%, ‏תקין.</text>
+	</document>
+	<document name="DownloadHelp.Paused">
+		<text format="b">הורדה זו מושהת</text>
+		<newline gap="8"/>
+		<text>השהת את ההורדה. אם אתה מעוניין שזה ימשיך הוריד אתה
+		פקודת</text><text format="b"> המשך הורדה</text><text>יכול ללחוץ על.</text>
+	</document>
+	<document name="DownloadHelp.DiskFull">
+		<text format="b">הדיסק מלא</text>
+		<newline gap="8"/>
+		<text>שרזה השהה את ההורדה אוטמטית כי הכונן נראה מלא
+		או שלא ניתן לכתוב לתוך קובץ ההורדה. אם אתה מעוניין להמשיך
+		להוריד, אנא פנה קצת מקום בכון קשיח ו/או בדוק שספריית
+		הקבצים החלקיים לא מגבילה גישה, ואז המשך את ההורדה
+		.</text>
+	</document>
+	<document name="DownloadHelp.Verifying">
+		<text format="b">ההורדה מאומתת</text>
+		<newline gap="8"/>
+		<text>ההורדה הסתיימה, שרזה כרגע בודק אותה בכדי להבטיח
+		שהיא בדיוק כמו הקובץ המקורי. אם חלק כלשהו נמצא פגום
+		שרזה יתקנו באופן אוטמטי.</text>
+	</document>
+	<document name="DownloadHelp.Downloading">
+		<text format="b">!ההורדה פעילה</text>
+		<newline gap="8"/>
+		<text>.ההורדה בתהליכי השלמה, אם ההורדה מתקדמת לאט מדי
+		.תוכל לנסות לחפש את הרשת עבור עוד מקורות בעזרת פקודת
+		'מצא עוד מקורות'
+		.אם המהירות לא משתפרת, ייתכן שזה נובע ממהירות העלאה מוגבלת
+		של המשתמשים מהם אתה מוריד, מהירות ההורדה בד`כ משתפרת עם הזמן.</text>
+	</document>
+	<document name="DownloadHelp.Pending">
+		<text format="b">ההורדה בהמתנה לתשובה</text>
+		<newline gap="8"/>
+		<text>הורדה זו נמצאת בהמתנה עד שמשתמש כלשהו יציע את הקובץ
+		.שרזה מוכנה להורדת הקובץ, אך עדיין לא נמצא משתמש עם קובץ זה זמין
+		.אם הינך בהמתנה בתורים של משתמשים אחרים, ההורדה יכולה להתחיל בכל רגע
+		.באפשרותך לבחון מקורות בודדים בכדי לבחון את התורות בהן אתה ממתין
+		.אם תשתף קבצים בעצמך, יגדל הסיכוי שההורדה תחל מהר יותר
+		.</text>
+	</document>
+	<document name="DownloadHelp.Queued">
+		<text format="b">הורדה בהמתנה לסיום הורדות</text>
+		<newline gap="8"/>
+		<text>.הורדה זו ממתינה לסיום אחת ההורדות האחרות שלך
+		.הגדרות ההורדה מגבילות את כמות ההורדות שניתן לבצע בו זמנית
+		.זאת בכדי לוודא שכל הורדה תקבל כמות סבירה של רוחב-פס
+		.תוכל לשנות את ההגדרות הללו דרך כלים, הגדרות שרזה
+		.'לחילופין אתה יכול להתחיל ידנית את ההורדה על ידי פקודת 'המשך.</text>
+	</document>
+	<!-- Missing document DownloadHelp.Searching -->
+	<document name="DownloadHelp.Creating">
+		<text format="b">ההורדה נוצרת</text>
+		<newline gap="8"/>
+		<text>Envy is pre-allocating a file in which to store this download, to
+		save time later.</text>
+	</document>
+	<!-- Upload help documents -->
+	<document name="UploadHelp">
+		<text format="b">אזור העלאות</text>
+		<newline gap="8"/>
+		<text>זהו המקום בו מוצגות ההעלאות ותורות ההמתנה להעלאה. תוכל להרחיב כל תור
+		עם ה-'+' הקטן שמימין, ולסנן את מה שמוצג עם הלחצן משמאל לסרגל הכלים
+		.</text>
+	</document>
+	<!-- Missing documents -->
+	<document name="GeneralHelp.DonkeyServerList">
+		<text format="b">Your eDonkey server list is empty</text>
+		<newline gap="8"/>
+		<text>אין שרתים חדשים ברשימת השרתים של אידונקי שלך. יתכן ותצטרך להוריד רשימת שרתים מעודכנת
+		(קובץ met) כדי להתחבר לאידונקי.</text>
+		<newline gap="8"/>
+		<text>You can download a server list from the ed2k setting page, or the discovery
+		services window. (Press F9 to open the discovery services window)</text>
+	</document>
+	<!-- Missing Documents -->
+</documents>
+<!-- Localized Command Tip Text. "Message" displayed in status bar, "Tip" shown in tooltip -->
+<commandtips>
+	<tip id="ID_BROWSE_FILES" message="הצג את הקבצים שהמשתמש משתף"/>
+	<tip id="ID_BROWSE_LAUNCH" message="‪עיין בפרופיל המשתמש שבחרת ובקבציו"/>
+	<tip id="ID_BROWSE_PROFILE" message="‪עיין בפרופיל המשתמש"/>
+	<tip id="ID_BROWSE_REFRESH" message="‪רענן את רשימת הקבצים שמוצעים על ידי הכתובת"/>
+	<tip id="ID_BROWSE_STOP" message="‪עצור עיון הקבצים בכתובת זו"/>
+	<tip id="ID_CHAT_BOLD" message="החל עיצוב מודגש (Ctrl+B)"/>
+	<tip id="ID_CHAT_BROWSE" message="עיין בפרופיל המשתמש שבחרת ובקבציו"/>
+	<tip id="ID_CHAT_CLEAR" message="נקה את הודעת הטקסט בחלון זה"/>
+	<tip id="ID_CHAT_COLOR" message="בחר צבע טקסט (Ctrl+K)"/>
+	<tip id="ID_CHAT_CONNECT" message="התחבר לצ'אט"/>
+	<tip id="ID_CHAT_DISCONNECT" message="התנתק מהצ'אט"/>
+	<tip id="ID_CHAT_EMOTICONS" message="הכנס סמיילי"/>
+	<tip id="ID_CHAT_ITALIC" message="החל עיצוב טקסט נוטה (Ctrl+I)"/>
+	<tip id="ID_CHAT_PRIORITY" message="הענק עדיפות העלאה למשתמש"/>
+	<!--tip id="ID_CHAT_SEND_FILE" message="שלח קובץ אל המשתמש"-->
+	<tip id="ID_CHAT_TIMESTAMP" message="הראה את השעה שבה כל הודעה התקבלה"/>
+	<tip id="ID_CHAT_UNDERLINE" message="החל עיצוב קו תחתון (Ctrl+U)"/>
+	<tip id="ID_CHILD_CLOSE" message="סגור את החלון הפעיל"/>
+	<tip id="ID_CHILD_MAXIMISE" message="הגדל את החלון הפעיל בכדי למלא את החלון"/>
+	<tip id="ID_CHILD_MINIMISE" message="הקטן את החלון הפעיל אל סרגל הטאבים"/>
+	<tip id="ID_CHILD_RESTORE" message="פתח את החלון הנבחר"/>
+	<tip id="ID_DISCOVERY_ADD" message="הוסף שירות משאבי חיבור"/>
+	<tip id="ID_DISCOVERY_ADVERTISE" message=".GWebCache לשירות רנדומלי קיים של GWebCache פירסום שירות"/>
+	<tip id="ID_DISCOVERY_BROWSE" message="באינטרנט GWebCache סייר סטטיסטיקות לשירות"/>
+	<tip id="ID_DISCOVERY_EDIT" message="הצגת ההגדרות לשירות המשאבי חיבור הנבחר"/>
+	<tip id="ID_DISCOVERY_GNUTELLA" message="בחלון שירות המשאבי חיבור bootstrap הראה שירותי"/>
+	<tip id="ID_DISCOVERY_QUERY" message="שלח בקשה לשירותי המשאבי חיבור הנבחרים"/>
+	<tip id="ID_DISCOVERY_REMOVE" message="הסר את שירותי המשאבי חיבור הנבחרים"/>
+	<tip id="ID_DISCOVERY_SERVERLIST" message="Show eDonkey2000 Server.met services in the Discovery window."/>
+	<tip id="ID_DISCOVERY_WEBCACHE" message="Show GWebCache services in the Discovery window."/>
+	<tip id="ID_DOWNLOAD_GROUP_CLEAR" message="בטל והסר את כל ההורדות בקבוצה זו"/>
+	<tip id="ID_DOWNLOAD_GROUP_NEW" message="צור קבוצת הורדות חדשה"/>
+	<tip id="ID_DOWNLOAD_GROUP_PAUSE" message="השהה את כל ההורדות בקבוצה זו"/>
+	<tip id="ID_DOWNLOAD_GROUP_PROPERTIES" message="ערוך את המאפיינים של קבוצת ההורדות הקיימת"/>
+	<tip id="ID_DOWNLOAD_GROUP_REMOVE" message="הסר את קבוצת ההורדה הנבחרת"/>
+	<tip id="ID_DOWNLOAD_GROUP_RESUME" message="המשך את כל ההורדות בקבוצה זו"/>
+	<tip id="ID_DOWNLOAD_GROUP_SHOW" message="הסתר או הצג את סרגל הקבוצות"/>
+	<tip id="ID_DOWNLOADS_AUTO_CLEAR" message="נקה אוטמטית הורדות שהסתיימו"/>
+	<tip id="ID_DOWNLOADS_BOOST" message="האץ את הביצועים של ההורדה הנבחרת על ידי הורדת הגבלת רוחב פס"/>
+	<tip id="ID_DOWNLOADS_CLEAR" message="נקה או הסר את ההורדות הנבחרות"/>
+	<tip id="ID_DOWNLOADS_CLEAR_COMPLETE" message="הסר את ההורדה הנבחרת מהרשימה"/>
+	<tip id="ID_DOWNLOADS_CLEAR_COMPLETED" message="נקה הורדות שהושלמו"/>
+	<tip id="ID_DOWNLOADS_CLEAR_INCOMPLETE" message="בטל את ההורדה הלא שלמה שנבחרה"/>
+	<tip id="ID_DOWNLOADS_CLEAR_PAUSED" message="נקה הורדות שהושהו"/>
+	<tip id="ID_DOWNLOADS_URI" message="של הקובץ הנבחר URI העתק את כתובת"/>
+	<tip id="ID_DOWNLOADS_EDIT" message="הצג את ממשק עריכת ההורדות המתקדם..."/>
+	<tip id="ID_DOWNLOADS_ENQUEUE" message="הוסף את ההורדה הנבחרת לרשימת נגן המדיה"/>
+	<tip id="ID_DOWNLOADS_FILE_DELETE" message="מחק את הקבצים השלמים הנבחרים"/>
+	<tip id="ID_DOWNLOADS_FILTER_ACTIVE" message="הצג הורדות פעילות"/>
+	<tip id="ID_DOWNLOADS_FILTER_ALL" message="הצג את כל ההורדות"/>
+	<tip id="ID_DOWNLOADS_FILTER_MENU" message="בחר איזה סוגים של הורדות להראות או להסתיר בתצוגה"/>
+	<tip id="ID_DOWNLOADS_FILTER_PAUSED" message="הראה הורדות שהושההו"/>
+	<tip id="ID_DOWNLOADS_FILTER_QUEUED" message="הצג הורדות שמחכות בתור"/>
+	<tip id="ID_DOWNLOADS_FILTER_SOURCES" message="הצג הורדות שמחכות למקורות"/>
+	<tip id="ID_DOWNLOADS_HELP" message="הצג עזרה על ההורדה הנבחרת"/>
+	<tip id="ID_DOWNLOADS_LAUNCH" message="תצוגה מקדימה של הקובץ הנבחר במקומו"/>
+	<tip id="ID_DOWNLOADS_LAUNCH_COMPLETE" message="פתח או הפעל את קובץ זה"/>
+	<tip id="ID_DOWNLOADS_LAUNCH_COPY" message="תצוגה מקדימה חכמה של ההורדה הנבחרת"/>
+	<tip id="ID_DOWNLOADS_MONITOR" message="פתח חלון מוניטור הורדה, להורדה זו"/>
+	<tip id="ID_DOWNLOADS_MOVE_DOWN" message="ההעבר את ההורדות הנבחרות מטה ברשימת העדפות"/>
+	<tip id="ID_DOWNLOADS_MOVE_UP" message="ההעבר את ההורדות הנבחרות מעלה ברשימת העדפות"/>
+	<tip id="ID_DOWNLOADS_PAUSE" message="השהה את ההורדה או ההורדות שבחרת"/>
+	<tip id="ID_DOWNLOADS_RATE" message="דרג את ההורדה שבחרת"/>
+	<tip id="ID_DOWNLOADS_REMOTE_PREVIEW" message="הורד תמונת תצוגה להורדה הנבחרת."/>
+	<tip id="ID_DOWNLOADS_RESUME" message="המשך את ההורדה או ההורדות שבחרת"/>
+	<tip id="ID_DOWNLOADS_SETTINGS" message="קבע הגדרות הורדה"/>
+	<tip id="ID_DOWNLOADS_SHARE" message="שתף את קובץ זה שהורד חלקית עם משתמשים אחרים"/>
+	<tip id="ID_DOWNLOADS_SHOW_SOURCES" message="הצג מקורות שכרגע לא בשימוש"/>
+	<tip id="ID_DOWNLOADS_SOURCES" message="חפש מקורות נוספים עבור ההורדה הנבחרת"/>
+	<!--tip id="ID_DOWNLOADS_TORRENT_INFO" message="הצג מידע על הורדת הביטורנט הנוכחית"-->
+	<tip id="ID_DOWNLOADS_ADD_SOURCE" message="להורדה הנבחרת URL הוסף כתובת"/>
+	<tip id="ID_DOWNLOADS_VIEW_REVIEWS" message="הצג ביקורות להורדה הנבחרת"/>
+	<tip id="ID_HELP_ABOUT" message="הצג מידע אודות שרזה"/>
+	<tip id="ID_HELP_CODEC" message="הכל אודות מקודדים ובעיות וידאו"/>
+	<tip id="ID_HELP_FAQ" message="הצג שאלות נפוצות של שרזה"/>
+	<tip id="ID_HELP_ROUTER" message="קבל עזרה בהגדרת חומת האש או הראוטר"/>
+	<tip id="ID_HELP_FORUMS" message="בקר בפורומים של שרזה"/>
+	<tip id="ID_HELP_GUIDE" message="בקר את מדריך המשתמש של שרזה"/>
+	<tip id="ID_HELP_HOMEPAGE" message="Envy בקר באתר של שרזה"/>
+	<tip id="ID_HELP_SECURITY" message="עזרה בהגנה על קבצי המערכת שלך מתוכניות זדוניות"/>
+	<tip id="ID_HELP_UPDATE" message="בדוק אם יש חדשות ועדכונים"/>
+	<tip id="ID_HELP_TEST" message="הרץ את בדיקת החיבור."/>
+	<tip id="ID_HELP_WEB_1" message="בקר את אתר זה"/>
+	<tip id="ID_HELP_WEB_2" message="בקר את אתר זה"/>
+	<tip id="ID_HELP_WEB_3" message="בקר את אתר זה"/>
+	<tip id="ID_HELP_WEB_4" message="בקר את אתר זה"/>
+	<tip id="ID_HELP_DONATE" message="לבחירתך, תוכל לתרום לקופת ההגנה המשפטית ולהראות את הערכתך."/>
+	<tip id="ID_HITMONITOR_CLEAR" message="נקה את זיכרון התוצאות של המוניטור"/>
+	<tip id="ID_HITMONITOR_PAUSE" message="השהה את זיכרון התוצאות של המוניטור"/>
+	<tip id="ID_HITMONITOR_SEARCH" message="חפש את הרשת עבור המונח הנבחר"/>
+	<tip id="ID_HOSTCACHE_CONNECT" message="התחבר לכתובות הנבחרות"/>
+	<tip id="ID_HOSTCACHE_DISCONNECT" message="התנתק מהשכנים הנבחרים"/>
+	<tip id="ID_HOSTCACHE_ED2K_CACHE" message="הצג שרתים של אידונקי"/>
+	<tip id="ID_HOSTCACHE_FILE_DOWNLOAD" message="של אידונקי2000 &quot;server.met&quot; הורד קובץ"/>
+	<tip id="ID_HOSTCACHE_G1_CACHE" message="הצג כתובות של גנוטלה1"/>
+	<tip id="ID_HOSTCACHE_G2_CACHE" message="הצג כתובות של גנוטלה2"/>
+	<tip id="ID_HOSTCACHE_G2_HORIZON" message="של גנוטלה2 horizon hubs הצג"/>
+	<tip id="ID_HOSTCACHE_IMPORT" message="&quot;server.met&quot; ייבא רשימה של כתובות ידועות כמו"/>
+	<tip id="ID_HOSTCACHE_PRIORITY" message="נסה להתחבר לשרת זה לפני שרתים אחרים"/>
+	<tip id="ID_HOSTCACHE_REMOVE" message="הסר את הכתובות הנבחרות מהרשימה"/>
+	<tip id="ID_LIBRARY_ADD" message="הוסף תיקייה חדשה לספריה שלך"/>
+	<tip id="ID_LIBRARY_ALBUM_DELETE" message="מחק את תיקיית האלבום הנבחרת"/>
+	<tip id="ID_LIBRARY_ALBUM_OPEN" message="פתח את תיקיית האלבום הנבחרת"/>
+	<tip id="ID_LIBRARY_ALBUM_PROPERTIES" message="הצג וערוך מאפיינים של תיקיית האלבום הנבחרת"/>
+	<tip id="ID_LIBRARY_BITPRINTS_DOWNLOAD" message="הורד metadata לקובץ/ים הנבחר/ים מ-Bitprints..."/>
+	<tip id="ID_LIBRARY_BITPRINTS_WEB" message="הצג את כרטיס ה-Bitprints לקובץ הנבחר ברשת."/>
+	<tip id="ID_LIBRARY_COLUMNS" message="בחר את עמודות המידע שתרצה להציג"/>
+	<tip id="ID_LIBRARY_COPY" message="העתק את הקצבים הנבחרים לתיקייה אחרת בספריה"/>
+	<tip id="ID_LIBRARY_CREATETORRENT" message="צור טורנט לקובץ זה בכדי להעלותו לאתר"/>
+	<tip id="ID_LIBRARY_DELETE" message="מחק את הקבצים הנבחרים תמידית"/>
+	<tip id="ID_LIBRARY_ENQUEUE" message="הוסף את הקבצים הנבחרים לרשימת ההשמעה"/>
+	<tip id="ID_LIBRARY_EXPLORE" message="פתח את הספריות הנבחרות"/>
+	<tip id="ID_LIBRARY_EXPORT_COLLECTION" message="יצא את תקיית האלבום הנבחר לקבצי אוסף..."/>
+	<tip id="ID_LIBRARY_FOLDER_DOWNLOAD" message="הורד את כל הקבצים באוסף הנבחר"/>
+	<tip id="ID_LIBRARY_FOLDER_ENQUEUE" message="הוסף כל קובץ בתקית/ות האלבום הנבחרת/ות לרשימת השמע שלך."/>
+	<tip id="ID_LIBRARY_FOLDER_FILE_PROPERTIES" message="הצג וערוך את מאפייני כל הקבצים בתקיה/ות הנבחרת/ות..."/>
+	<tip id="ID_LIBRARY_FOLDER_METADATA" message="החל metadeta משותף מהאלבום על על כל הקבצים בתקיה/ות הנבחרת/ות."/>
+	<tip id="ID_LIBRARY_FOLDER_NEW" message="צור תיקיית אלבום חדשה כאן"/>
+	<tip id="ID_LIBRARY_FOLDER_PROPERTIES" message="הצג וערוך מאפיינים של תיקיית האלבום הנבחרת"/>
+	<tip id="ID_LIBRARY_FOLDERS" message="נהל את התיקיות בספריה שלך"/>
+	<tip id="ID_LIBRARY_HASH_PRIORITY" message="האץ את מהירות סריקת ועיבוד הקבצים"/>
+	<tip id="ID_LIBRARY_LAUNCH" message="פתח או נגן את הקבצים הנבחרים"/>
+	<tip id="ID_LIBRARY_MOVE" message="העתק את הקבצים הנבחרים לתיקייה אחרת בספריה"/>
+	<tip id="ID_LIBRARY_PANEL" message="הצג או הסתר את לוח פרטי הספריה"/>
+	<tip id="ID_LIBRARY_PARENT" message="העבר לספריה המכילה"/>
+	<tip id="ID_LIBRARY_PROPERTIES" message="הצג וערוך מאפיינים של הקבצים הנבחרים"/>
+	<tip id="ID_LIBRARY_REBUILD" message="בנה מחדש metadeta ו-hash לתקיות או הקבצים הנבחרים."/>
+	<tip id="ID_LIBRARY_REBUILD_FILE" message="בנה מחדש metadeta ו-hash לתקיות או הקבצים הנבחרים."/>
+	<tip id="ID_LIBRARY_REBUILD_ANSI" message="בנה מחדש metadeta בשמוש בשפה אחרת."/>
+	<tip id="ID_LIBRARY_REFRESH" message="רענן את תצוגת הספריה"/>
+	<tip id="ID_LIBRARY_REMOVE" message="הסר את התיקיות המשותפות הנבחרות"/>
+	<tip id="ID_LIBRARY_RENAME" message="שנה שם של הקובץ הנבחר"/>
+	<tip id="ID_LIBRARY_SCAN" message="סורק את הקבצים והתיקיות הנבחרים לשינויים"/>
+	<tip id="ID_LIBRARY_SEARCH" message="חפש בספריית הקבצים שלך"/>
+	<tip id="ID_LIBRARY_SEARCH_QUICK" message="חפש בספריית הקבצים שלך"/>
+	<tip id="ID_LIBRARY_SEED_TORRENT" message="הפץ את הטורנט הנבחר בביט-טורנט"/>
+	<tip id="ID_LIBRARY_SELECT_ALL" message="בחר והצג את כל התיקיות בספריה שלך"/>
+	<tip id="ID_LIBRARY_SHARED_FILE" message="שתף או בטל שיתוף של התיקיות הנבחרות"/>
+	<tip id="ID_LIBRARY_SHARED_FOLDER" message="שתף או בטל שיתוף של התיקיות הנבחרות"/>
+	<tip id="ID_LIBRARY_TREE_PHYSICAL" message="הצג את התיקיות הקיימות בספריה שלך"/>
+	<tip id="ID_LIBRARY_TREE_VIRTUAL" message="ארגן את הספריה שלך."/>
+	<tip id="ID_LIBRARY_UNLINK" message="הסר את הקבצים הנבחרים מתיקיית האלבום הנוכחית"/>
+	<tip id="ID_LIBRARY_URI" message="של הקובץ הנבחר URI העתק כתובת."/>
+	<tip id="ID_LIBRARY_VIEW" message="בחר תצוגת ספריה"/>
+	<tip id="ID_LIBRARY_VIEW_ALBUM" message="הצג בתצוגת אלבומים" tip="תצוגת אלבומים"/>
+	<tip id="ID_LIBRARY_VIEW_COLLECTION" message="הצג בתצוגה עשירה של אוספים.‪" tip="תצוגת אוספים"/>
+	<tip id="ID_LIBRARY_VIEW_DETAIL" message="הצג שם קובץ, פרטים, ומידע" tip="תצוגת פרטים"/>
+	<tip id="ID_LIBRARY_VIEW_HOME" message="הצג עמוד ראשי של הספריה" tip="תצוגת עמוד ראשי"/>
+	<tip id="ID_LIBRARY_VIEW_ICON" message="הצג קבצים כסמלים" tip="תצוגת סמלים"/>
+	<tip id="ID_LIBRARY_VIEW_LIST" message="הצג קבצים ברשימה אופקית" tip="תצוגת רשימה"/>
+	<tip id="ID_LIBRARY_VIEW_THUMBNAIL" message="הצג תמונות ממוזערות עבור קבצים" tip="תצוגת תמונות"/>
+	<tip id="ID_LIBRARY_VIEW_TILE" message="הצג רשימה של כל תיקיות האלבומים" tip="תצוגה רגילה"/>
+	<tip id="ID_MEDIA_ADD" message="‪הוסף קובץ מדיה לרשימת ההשמעה"/>
+	<tip id="ID_MEDIA_ADD_FOLDER" message="‪הוסף תיקיה עם קבצי מדיה לרשימת ההשמעה"/>
+	<tip id="ID_MEDIA_ASPECT_16_9" message="נעל ליחס תמונה 4:3 אשר מתאים לצפייה בסרט"/>
+	<tip id="ID_MEDIA_ASPECT_4_3" message="נעל ליחס תמונה 16:9 אשר מתאים לצפייה בטלוויזיה"/>
+	<tip id="ID_MEDIA_ASPECT_DEFAULT" message="השתמש ביחס תמונה אשר קבוע כברירת המחדל בקובץ הוידאו"/>
+	<tip id="ID_MEDIA_CLEAR" message="נקה את רשימת ההשמעה"/>
+	<tip id="ID_MEDIA_CLOSE" message="סגור את קובץ המדיה, לפינוי הזיכרון"/>
+	<tip id="ID_MEDIA_EXPORT_COLLECTION" message="שמור את רשימת ההשמעה כקובץ אוסף..."/>
+	<tip id="ID_MEDIA_FULLSCREEN" message="עבור למצב תצוגת וידאו במסך מלא"/>
+	<tip id="ID_MEDIA_MUTE" message="השתק את הקול"/>
+	<tip id="ID_MEDIA_NEXT" message="דלג לקובץ הבא ברשימת ההשמעה הנוכחית" tip="הקובץ הבא"/>
+	<tip id="ID_MEDIA_OPEN" message="פתח ונגן את קובץ המדיה או את רשימת ההשמעה"/>
+	<tip id="ID_MEDIA_PAUSE" message="השהה ניכון של קובץ המדיה" tip="השהה"/>
+	<tip id="ID_MEDIA_PLAY" message="התחל לנגן את קובץ המדיה הנוכחי" tip="נגן"/>
+	<tip id="ID_MEDIA_PLAYLIST" message="הצג או הסתר את עורך רשימת ההשמעה"/>
+	<tip id="ID_MEDIA_PREVIOUS" message="דלג לקובץ הקודם ברשימת ההשמעה הנוכחית" tip="הקובץ הקודם"/>
+	<tip id="ID_MEDIA_PROPERTIES" message="הצג וערוך את המאפיינים של הקבצים שנבחרו."/>
+	<tip id="ID_MEDIA_RANDOM" message="קבע מצב בחירה רנדומלית ברשימת ההשמעה הנוכחית"/>
+	<tip id="ID_MEDIA_RATE" message="דרג את הקבצים שנבחרו."/>
+	<tip id="ID_MEDIA_REMOVE" message="הסר את קובץ המדיה הנבחר מרשימת ההשמעה"/>
+	<tip id="ID_MEDIA_REPEAT" message="נגן שנית את קובץ המדיה הנוכחי"/>
+	<tip id="ID_MEDIA_SAVE" message="שמור את רשימת ההשמעה הנוכחית"/>
+	<tip id="ID_MEDIA_SELECT" message="בחר ונגן את קובץ המדיה"/>
+	<tip id="ID_MEDIA_SETTINGS" message="הצג את עמוד הגדרות המדיה"/>
+	<tip id="ID_MEDIA_SIZE_DISTORT" message="מתח את הסרט למילוי החלון, ייתכם עיוות."/>
+	<tip id="ID_MEDIA_SIZE_FILL" message="בחר את הגודל המתאים ביותר עבור הוידאו לפי יחס תצוגת התמונה"/>
+	<tip id="ID_MEDIA_SIZE_ONE" message="הצג את הוידאו בגודלו המקורי"/>
+	<tip id="ID_MEDIA_SIZE_HALF" message="הצג את הוידאו בגודל משולש מגודלו המקורי"/>
+	<tip id="ID_MEDIA_SIZE_TWO" message="הצג את הוידאו בגודל כפול מגודלו המקורי"/>
+	<tip id="ID_MEDIA_STATUS" message="הצג או הסתר את שורת מצב המדיה"/>
+	<tip id="ID_MEDIA_STOP" message="הפסק השמעת קובץ המדיה" tip="עצור"/>
+	<tip id="ID_MEDIA_VIS" message="בחר תוסף לאפקט אודיו ויזואלי"/>
+	<tip id="ID_MEDIA_ZOOM" message="שנה את הגדרות הזום ויחס התמונה"/>
+	<tip id="ID_MONITOR_CLOSE" message="סגור את חלון המוניטור"/>
+	<tip id="ID_NEIGHBOURS_CHAT" message="פתח חלון צ'אט עם המשתמש הנבחר"/>
+	<tip id="ID_NEIGHBOURS_URI" message="בכדי לגשת לכתובת הנבחרת URI התנתק מ"/>
+	<tip id="ID_NEIGHBOURS_DISCONNECT" message="התנתק מהשכנים הנבחרים"/>
+	<tip id="ID_NEIGHBOURS_SETTINGS" message="כוון הגדרות רשת..."/>
+	<tip id="ID_NEIGHBOURS_VIEW_ALL" message="Open a new Packet Dump window monitoring this neighbour."/>
+	<tip id="ID_NEIGHBOURS_VIEW_INCOMING" message="Open a new Packet Dump window monitoring incoming traffic from this neighbour."/>
+	<tip id="ID_NEIGHBOURS_VIEW_OUTGOING" message="Open a new Packet Dump window monitoring outgoing traffic to this neighbour."/>
+	<tip id="ID_NETWORK_AUTO_CLOSE" message="סגור אוטמטית את שרזה כשהעברות יסתיימו"/>
+	<tip id="ID_NETWORK_BROWSE_TO" message="סייר במשתמש, וצפה בפרופיל ובקבציו המשותפים"/>
+	<tip id="ID_NETWORK_CONNECT" message="התחבר לרשת"/>
+	<tip id="ID_NETWORK_CONNECT_TO" message="התחבר באופן ידני למשתמש..."/>
+	<tip id="ID_NETWORK_DISCONNECT" message="התנתק מהרשת"/>
+	<tip id="ID_NETWORK_EXIT" message="צא משרזה"/>
+	<tip id="ID_NETWORK_ED2K" message="התחבר לרשת אידונקי2000"/>
+	<tip id="ID_NETWORK_DC" message="התחבר לרשת אידונקיDC++"/>
+	<tip id="ID_NETWORK_BT" message="התחבר לרשת אידונקיBitTorrent"/>
+	<tip id="ID_NETWORK_G1" message="התחבר לרשת גנוטלה המקורית"/>
+	<tip id="ID_NETWORK_G2" message="התחבר לגנוטלה2 - מומלץ מאוד"/>
+	<tip id="ID_NETWORK_SEARCH" message="התחל חיפוש חדש ברשת"/>
+	<tip id="ID_SEARCH_CHAT" message="התחל צ'אט עם המשתמש הנבחר"/>
+	<tip id="ID_SEARCH_CLEAR" message="נקה את תוצאות החיפוש"/>
+	<tip id="ID_SEARCH_COLUMNS" message="בחר את עמודות המידע שיוצגו"/>
+	<tip id="ID_SEARCH_URI" message="העתק את כתובת URI של הקובץ הנבחר"/>
+	<tip id="ID_SEARCH_DETAILS" message="הצג מידע מפורט על הקובץ הנבחר"/>
+	<tip id="ID_SEARCH_DOWNLOAD" message="הורד את הקבצים הנבחרים"/>
+	<tip id="ID_SEARCH_DOWNLOADNOW" message="הורד את הקבצים הנבחרים ותן להם עדיפות"/>
+	<tip id="ID_SEARCH_FILTER" message="סנן את התוצאות לפי מילים ספציפיות ותנאים"/>
+	<tip id="ID_SEARCH_FILTER_RAW" message="סנן את התוצאות לפי מילים ספציפיות ותנאים"/>
+	<tip id="ID_SEARCH_FILTER_REMOVE" message="הסר את הסינון מהתוצאות"/>
+	<tip id="ID_SEARCH_FOR_ALBUM" message="חפש עבור קבצי מוזיקה מאותו אלבום כשל הקובץ הנבחר"/>
+	<tip id="ID_SEARCH_FOR_ARTIST" message="חפש עבור קבצי מוזיקה מאותו אמן של הקובץ הנבחר"/>
+	<tip id="ID_SEARCH_FOR_SERIES" message="חפש עבור קבצי וידאו מאותה סידרה של הקובץ הנבחר"/>
+	<tip id="ID_SEARCH_FOR_SIMILAR" message="חפש עבור קבצים הדומים לקובץ הנבחר"/>
+	<tip id="ID_SEARCH_FOR_THIS" message="חפש עבור עותקים אחרים של הקובץ הנבחר"/>
+	<tip id="ID_SEARCH_PANEL" message="הצג את לוח החיפוש המהיר מימין לחלון החיפוש"/>
+	<tip id="ID_SEARCH_SEARCH" message="חפש שנית את הרשת"/>
+	<tip id="ID_SEARCH_STOP" message="הפסק קבלת תוצאות בחלון זה"/>
+	<tip id="ID_SEARCHMONITOR_CLEAR" message="נקה את זכירון המטמון של מוניטור החיפוש"/>
+	<tip id="ID_SEARCHMONITOR_PAUSE" message="השהה ניטור חיפוש"/>
+	<tip id="ID_SECURITY_BAN" message="חסום את הכתובת למשך ההפעלה הנוכחית"/>
+	<tip id="ID_SECURITY_ADD" message="הוסף חוק חדש לשרשרת האבטחה"/>
+	<tip id="ID_SECURITY_EDIT" message="ערוך את חוק האבטחה הנבחר"/>
+	<tip id="ID_SECURITY_EXPORT" message=".ייצא חוקי אבטחה לקובץ"/>
+	<tip id="ID_SECURITY_IMPORT" message="ייבא חוקי אבטחה מקובץ"/>
+	<tip id="ID_SECURITY_MOVE_DOWN" message="Move the selected security rules down the precedence list."/>
+	<tip id="ID_SECURITY_MOVE_UP" message="Move the selected security rules up the precedence list."/>
+	<tip id="ID_SECURITY_POLICY_ACCEPT" message="Set the default security policy to allow all hosts."/>
+	<tip id="ID_SECURITY_POLICY_DENY" message="Set the default security policy to deny all hosts."/>
+	<tip id="ID_SECURITY_REMOVE" message="הסר את חוקי האבטחה הנבחרים"/>
+	<tip id="ID_SECURITY_RESET" message="אפס את המונה לחוקי אבטחה הנבחרים"/>
+	<tip id="ID_SCHEDULER_ADD" message="הוסף חוק חדש לשרשרת האבטחה"/>
+	<tip id="ID_SCHEDULER_EDIT" message="ערוך את חוק האבטחה הנבחר"/>
+	<tip id="ID_SCHEDULER_ACTIVATE" message="נקה את העלאות הנבחרות מהרשימה"/>
+	<tip id="ID_SCHEDULER_DEACTIVATE" message="התחבר לרשת"/>
+	<tip id="ID_SCHEDULER_EXPORT" message=".ייצא חוקי אבטחה לקובץ"/>
+	<tip id="ID_SCHEDULER_IMPORT" message="ייבא חוקי אבטחה מקובץ"/>
+	<tip id="ID_SCHEDULER_REMOVE" message="הסר את ההורדה הנבחרת מהרשימה"/>
+	<tip id="ID_SCHEDULER_REMOVE_ALL" message="Delete all scheduled tasks."/>
+	<tip id="ID_SYSTEM_CLEAR" message="נקה את רישום המצב"/>
+	<tip id="ID_SYSTEM_TIMESTAMP" message="הצג זמן/שעה לכל שורה"/>
+	<tip id="ID_SYSTEM_VERBOSE" message="הצג רישום מפורט על פעילות המערכת"/>
+	<tip id="ID_TAB_CONNECT" message="התחבר או התנתק לרשת"/>
+	<!--tip id="ID_TAB_HELP" message="קבל עזרה בשימוש בשרזה"-->
+	<tip id="ID_TAB_HOME" message="חזור לעמוד הבית של שרזה"/>
+	<tip id="ID_TAB_LIBRARY" message="הצג ונהל את התוכן המקומי בספריה שלך"/>
+	<tip id="ID_TAB_MEDIA" message="נגן קבצי וידאו ואודיו מהספריה שלך"/>
+	<tip id="ID_TAB_NETWORK" message="בדוק עד כמה טוב אתה מחובר לרשת"/>
+	<tip id="ID_TAB_SEARCH" message="חפש את הרשת לקבצים להורדה"/>
+	<tip id="ID_TAB_TRANSFERS" message="צפה בהורדות והעלאות שאתה מבצע"/>
+	<tip id="ID_TOOLS_DOWNLOAD" message="התחל להוריד קובץ או טורנט חדש"/>
+	<tip id="ID_TOOLS_LANGUAGE" message="בחר את השפה בה תרצה להשתמש בשרזה (Select Language)"/>
+	<tip id="ID_TOOLS_PROFILE" message="ערוך את פרופיל המשתמש שלך"/>
+	<tip id="ID_TOOLS_RESKIN" message="טען מחדש והחל את המעטפת הנוכחית שנבחרה"/>
+	<tip id="ID_TOOLS_SEEDTORRENT" message="הפץ את הטורנט הנבחר בביט-טורנט"/>
+	<tip id="ID_TOOLS_SETTINGS" message="כוון את הגדרות שרזה"/>
+	<tip id="ID_TOOLS_SKIN" message="בחר מעטפת אחרת לשרזה"/>
+	<tip id="ID_TOOLS_WIZARD" message="פתח את אשף ההפעלה המהירה של שרזה"/>
+	<tip id="ID_TRAFFIC_AXIS" message="Display Vertical Axis"/>
+	<tip id="ID_TRAFFIC_CLEAR" message="נקה את גרף התעבורה"/>
+	<tip id="ID_TRAFFIC_GRID" message="Display grid lines."/>
+	<tip id="ID_TRAFFIC_LEGEND" message="הצג מקרא"/>
+	<tip id="ID_TRAFFIC_SETUP" message="Select and configure items to graph..."/>
+	<tip id="ID_TRAFFIC_WINDOW" message="פתח חלון גרף חדש"/>
+	<tip id="ID_TRANSFERS_CHAT" message="פתח חלון צ'אט עם המשתמש הנבחר"/>
+	<tip id="ID_TRANSFERS_CONNECT" message="Access the selected download sources and attempt to download."/>
+	<tip id="ID_TRANSFERS_DISCONNECT" message="התנתק מהעברת ההורדה הנבחרת"/>
+	<tip id="ID_TRANSFERS_FORGET" message="התנתק ושכח את  ההורדה הנבחרת"/>
+	<tip id="ID_TRAY_OPEN" message="פתח את החלון של שרזה"/>
+	<tip id="ID_UPLOADS_AUTO_CLEAR" message="נקה אוטמטית העלאות שהסתיימו"/>
+	<tip id="ID_UPLOADS_CHAT" message="התחל צ'אט עם המשתמש הנבחר"/>
+	<tip id="ID_UPLOADS_CLEAR" message="נקה את העלאות הנבחרות מהרשימה"/>
+	<tip id="ID_UPLOADS_CLEAR_COMPLETED" message="נקה העלאה שהושלמה"/>
+	<tip id="ID_UPLOADS_DISCONNECT" message="נתק את ההעברת העלאות הנבחרות"/>
+	<tip id="ID_UPLOADS_FILTER_ACTIVE" message="הצג את כל ההעלאות שבאופן פעיל נשלחות"/>
+	<tip id="ID_UPLOADS_FILTER_ALL" message="הצג את כל ההעלאות"/>
+	<tip id="ID_UPLOADS_FILTER_HISTORY" message="הצג העלאות שכבר אינן מחוברות"/>
+	<tip id="ID_UPLOADS_FILTER_MENU" message="בחר אילו סוגי קבצים להראות אילו סוגי להסתיר בתצוגה זו."/>
+	<tip id="ID_UPLOADS_FILTER_QUEUED" message="הצג העלאות שממתינות בתור אצלך"/>
+	<tip id="ID_UPLOADS_FILTER_TORRENT" message="הצג העלאות של ביט-טורנט"/>
+	<tip id="ID_UPLOADS_LAUNCH" message="הפעל את הקבצים המשותפים שנבחר."/>
+	<tip id="ID_UPLOADS_SETTINGS" message="הגדר להעלות הגדרות..."/>
+	<tip id="ID_UPLOADS_START" message="כוח להתחיל שנוספו בתור נבחרת."/>
+	<tip id="ID_UPLOADS_PRIORITY" message="בחר אחד להעלות להסיר מגבלות."/>
+	<tip id="ID_VIEW_BASIC" message="השתמש בשרזה במצב רגיל"/>
+	<tip id="ID_VIEW_DISCOVERY" message="הצג או הסתר את חלון משאבי החיבור"/>
+	<tip id="ID_VIEW_DOWNLOADS" message="הצג או הסתר את חלון ההורדות"/>
+	<tip id="ID_VIEW_HOSTS" message="הצג או הסתר את חלון זיכרון מטמון הכתובות"/>
+	<tip id="ID_VIEW_LIBRARY" message="הצג או הסתר את חלון הספריה"/>
+	<tip id="ID_VIEW_MEDIA" message="הצג או הסתר את חלון נגן המדיה"/>
+	<tip id="ID_VIEW_NEIGHBOURS" message="הצג או הסתר את חלון השכנים"/>
+	<tip id="ID_VIEW_PACKETS" message="הצג או הסתר את חלון הפקטים"/>
+	<tip id="ID_VIEW_RESULTS_MONITOR" message="הצג או הסתר את מוניטור התוצאות"/>
+	<tip id="ID_VIEW_SEARCH_MONITOR" message="הראה או הסתר את חלון החיפוש"/>
+	<tip id="ID_VIEW_SECURITY" message="הראה או הסתר את חלון האבטחה"/>
+	<tip id="ID_VIEW_SYSTEM" message="הראה או הסתר את חלון המערכת"/>
+	<tip id="ID_VIEW_TABBED" message="השתשמש בשרזה במצב מתקדם של טאבים"/>
+	<tip id="ID_VIEW_TRAFFIC" message="הראה או הסתר את חלון הגרפים"/>
+	<tip id="ID_VIEW_UPLOADS" message="הראה או הסתר את חלון העלאות"/>
+	<tip id="ID_VIEW_WINDOWED" message="התשמש בשרזה במצב מתקדם של חלונות"/>
+	<tip id="ID_WINDOW_CASCADE" message="הרחב את כל החלונות בכדי להתאים למסך"/>
+	<tip id="ID_WINDOW_MONITOR" message="הראה או הסתר את מוניטור רוחב הפס"/>
+	<tip id="ID_WINDOW_NAVBAR" message="הראה או הסתר את לוח הניווט"/>
+	<tip id="ID_WINDOW_REMOTE" message="הראה או הסתר את לוח השליטה מרחוק"/>
+	<tip id="ID_WINDOW_TABBAR" message="הראה או הסתר את לוח חלונות הטאבים"/>
+	<tip id="ID_WINDOW_TILE_HORZ" message="Arrange open windows as horizontal, non-overlapping tiles."/>
+	<tip id="ID_WINDOW_TILE_VERT" message="Arrange open windows as vertical, non-overlapping tiles."/>
+	<tip id="ID_WINDOW_TOOLBAR" message="הראה או הסתר את סרגל הכלים"/>
+	<!-- Missing PLUGIN TIPS -->
+</commandtips>
+<!-- Tips displayed when mouse is moved over controls in the dialogs -->
+	<!-- Missing controlTips -->
+<!-- Localized Strings -->
+<strings>
+	<string id="WINDOW_MAIN" value="‪‪שרזה"/>
+	<string id="WINDOW_HOME" value="‪‪עמוד ראשי של שרזה"/>
+	<string id="WINDOW_SYSTEM" value="‪‪מערכת"/>
+	<string id="WINDOW_NEIGHBOURS" value="‪‪שכנים"/>
+	<string id="WINDOW_PACKET" value="‪‪תפוקת הפקט"/>
+	<string id="WINDOW_HOSTCACHE" value="‪‪זיכרון מטמון של כתובות משתמשים"/>
+	<string id="WINDOW_SEARCH" value="‪‪חיפוש"/>
+	<string id="WINDOW_SEARCHPAD" value="‪‪חיפוש"/>
+	<string id="WINDOW_SEARCHMONITOR" value="‪‪מוניטור חיפוש"/>
+	<string id="WINDOW_HITMONITOR" value="‪‪מוניטור תוצאות"/>
+	<string id="WINDOW_DOWNLOADS" value="‪‪הורדות"/>
+	<string id="WINDOW_UPLOADS" value="‪‪העלאות"/>
+	<string id="WINDOW_LIBRARY" value="‪‪ספריה"/>
+	<string id="WINDOW_TRAFFIC" value="‪‪גרף"/>
+	<string id="WINDOW_CHAT" value="‪‪צ'אט"/>
+	<string id="WINDOW_SECURITY" value="‪‪אבטחה"/>
+	<string id="WINDOW_SCHEDULER" value="מתזמן"/>
+	<string id="WINDOW_DISCOVERY" value="‪‪שירותי משאבי חיבור"/>
+	<string id="WINDOW_BROWSEHOST" value="‪‪סייר"/>
+	<string id="WINDOW_MEDIA" value="‪‪נגן המדיה"/>
+	<!--string id="WINDOW_HELP" value="‪‪עזרה של שרזה"-->
+	<string id="20001" value="כן"/>
+	<string id="20002" value="לא"/>
+	<string id="20003" value="אישור"/>
+	<string id="20004" value="ביטול"/>
+	<string id="20005" value="לחזור"/>
+	<string id="20006" value="הבא"/>
+	<string id="20008" value="קרוב"/>
+	<string id="20009" value="מתוך"/> <!-- ex: 1 of 10 -->
+	<string id="20010" value="כל"/>
+	<string id="20011" value="אוטומטי"/>
+	<string id="20012" value="מנהג"/>
+	<string id="20013" value="ברירת מחדל"/>
+	<string id="20014" value="לגמור"/>
+	<string id="20019" value="Please Wait..."/>
+	<string id="20020" value="קובץ"/>
+	<string id="20021" value="קבצים"/>
+	<string id="20022" value="‪כל הקבצים"/>
+	<string id="20023" value="No Files"/>
+	<string id="20024" value="‪קבצים גדולים"/>
+	<string id="20025" value="‪קבצים בינוניים"/>
+	<string id="20026" value="‪קבצים קטנים"/>
+	<string id="20027" value="‪קבצים חלקיים"/>
+	<string id="20028" value="ספריית קבצים"/>
+	<string id="20029" value="‪%s הקבצים"/>
+	<string id="20050" value="‪שכל יום"/>
+	<string id="20051" value="‪שני"/>
+	<string id="20052" value="‪שלישי"/>
+	<string id="20053" value="‪רביעי"/>
+	<string id="20054" value="‪חמישי"/>
+	<string id="20055" value="‪שישי"/>
+	<string id="20056" value="‪שבת"/>
+	<string id="20057" value="‪ראשון"/>
+	<string id="20060" value="‪(ללא דירוג)"/>
+	<string id="20061" value="‪מזוייף / מקולקל"/>
+	<string id="20062" value="‪גרוע"/>
+	<string id="20063" value="‪ממוצע"/>
+	<string id="20064" value="‪טוב"/>
+	<string id="20065" value="‪טוב מאוד"/>
+	<string id="20066" value="‪מעולה"/>
+	<string id="20080" value="‪‪‏הסתיימה‎ ‏הנסיון‎ תקופת‎ ‏שרזה‎ ‏של‎ ‏נסיונית‎ ‏גרסה‎ ‏זוהי http://getenvy.com ‏מהאתר‎ ‏והרשמית‎ ‏המלאה‎ ‏הגרסא‎ ‏את‎ ‏הורד‎ ‏אנא‎"/>
+	<string id="20081" value="‪סגור"/>
+	<string id="20082" value="‪הסתיים, לחץ על סגירה"/>
+	<string id="20083" value="‪...מבקש"/>
+	<string id="20084" value="‪!הצלחה"/>
+	<string id="20100" value="‪.%s סוגר את החיבור לסיור אצל המשתמש"/>
+	<string id="20102" value=".‪‏ההתחברות אל המשתמש נכשלה"/>
+	<string id="20105" value="‪...יוצר חיבור עם כתובת המשתמש"/>
+	<string id="20107" value="‪...(%2.f%%) מוריד בקשת סיור בתיקייה"/>
+	<string id="20109" value="‪נפל %s החיבור לסיור אצל המשתמש"/>
+	<string id="20110" value="‪.%s קבצים לאחר סיום הסיור אצל המשתמש %i נמצאו"/>
+	<string id="20111" value=".קבצים משותפים %i נמצאו %s בספרייה של"/>
+	<string id="20114" value=".הורדת רשימת הקבצים נכשלה, המשתמש חסם אפשרות זו"/>
+	<string id="20116" value="‪.ממתין להתחברות push נשלחה בקשת"/>
+	<string id="20118" value="‪מחובר, מבקש לסייר בקבצים"/>
+	<string id="20120" value="‪Closing browse user connection %s due to lack of traffic."/>
+	<string id="20121" value="‪מסייר אצל %s"/>
+	<string id="20155" value="‪‪&quot;%s&quot;.‏עבור‎ ‏ביט‎-‏טורנט‎ ‏עוקב‎ ‏של‎ ‏תגובה‎ ‏התקבלה‎ ‏חדשים‎, ‏מקורות‎ %i"/>
+	<string id="20160" value="‪Accepted incoming chat request from %s, handshaking..."/>
+	<string id="20161" value="‪%s לא מצליח ליצור חיבור אל"/>
+	<string id="20163" value="‪‪.החיבור נסגר"/>
+	<string id="20164" value="‪נסגר %s החיבור אל"/>
+	<string id="20165" value="‪‪‪...חיבור הושלם, מבצע לחיצת יד"/>
+	<string id="20166" value="‪...לוחץ ידיים ,%s מחובר אל"/>
+	<string id="20167" value="‪%s יוצר חיבור אל"/>
+	<string id="20168" value="...%s מתחבר לצ'אט עם משתמש"/>
+	<string id="20169" value="‪.%s נכשל להתחבר לכתובת"/>
+	<string id="20170" value="‪נכשל החיבור לצ'אט"/>
+	<string id="20171" value="‪אבד %s החיבור אל"/>
+	<string id="20172" value="‪.לחיצת היד הושלמה, כתובת המשתמש כנראה לא מאפשרת שיחות צ'אט"/>
+	<string id="20173" value="‪%s לחיצת היד הושלמה, גרסאת פרוטוקול הצ'אט היא "/>
+	<string id="20174" value="‪‪...מחליף מידע פרופילים"/>
+	<string id="20178" value="‪%s לאחר שינוי השם ,%s שמך כעת"/>
+	<string id="20179" value="‪Now chatting with %s (%s)."/>
+	<string id="20180" value=".%s הוענקה עדיפות העלאה למשתמש בכתובת"/>
+	<string id="20181" value="‪לא זמין כעת %s המשתמש: %s"/>
+	<string id="20182" value="‪‪.%s שיחה פרטית אושרה, אתה כרגע משוחח עם"/>
+	<string id="20183" value="‪‪.לא מקבל שיחות פרטיות, סליחה %s המשתמש"/>
+	<string id="20184" value="‪‪...מבקש שיחה פרטית עם המשתמש"/>
+	<string id="20185" value="‪משתמש מאומת"/>
+	<string id="20186" value="‪לוחץ יד %s -מ push אושר חיבור"/>
+	<string id="20187" value="‪%s -מוגן חומת אש מ push מבקש חיבור"/>
+	<string id="20188" value="‪.ההתחברות נכשלה בעקבות מידע שגוי בכבל התקשורת"/>
+	<string id="20189" value="‪%s :התקבלה תגובה לא מוכרת"/>
+	<string id="20190" value="‪.אתה אינך מחובר"/>
+	<string id="20191" value="‪&quot;%s&quot;.פקודה בלתי מזוהה"/>
+	<string id="20199" value="‪(סוגר בסיום ההעברות)"/>
+	<string id="20201" value="‪כבר בהורדה, מוסיף מקורות &quot;%s&quot; הקובץ"/>
+	<string id="20207" value="‪?האם אתה בטוח שברצונך לבטל או להפסיק את כל ההורדות בקבוצה"/>
+	<string id="20217" value="בחר את התקייה הזמנית של אי-דונקי/אי-מיול:"/>
+	<!-- Missing Download Edit Strings -->
+	<string id="20227" value="‪.האם אתה בטוח שברצונך ששרזה תניח שההורדה הושלמה,  ולאמת את ההורדה מחדש? כל הקובץ ייחשב, ושרזה תאשר את החלקים שיעברו את האימות בהצלחה ותוריד מחדש את החלקים שיכשלו בשלב האימות"/>
+	<string id="20250" value="Drag'n'drop קבצים לקבוצה %s"/>
+	<string id="20251" value="ברירת המחדל של הורדת הקבוצה. (הצג את כל הקבצים)"/>
+	<string id="20270" value="‪&quot;%s&quot;.:הורדה הוסרה"/>
+	<string id="20332" value="‪Unable to open part file &quot;%s&quot;."/>
+	<string id="20333" value="‪.סיים להעתיק קובץ"/>
+	<string id="20334" value="...&quot;%s&quot;.את &quot;%s&quot; מעתיק אל"/>
+	<string id="20337" value="‪.נכשל לייבא קובץ"/>
+	<string id="20338" value="‪Download data file is newer than .part file, aborting."/>
+	<string id="20339" value="‪Found partial file &quot;%s&quot;, importing..."/>
+	<string id="20341" value="‪...&quot;%s&quot;.:סורק ספריה"/>
+	<string id="20344" value="‪Found download &quot;%s&quot;, size %s."/>
+	<string id="20354" value="‪מאפייני קובץ"/>
+	<string id="20355" value="‪‪?האם הינך בטוח שברצונך למחוק את המסנן"/>
+	<string id="20360" value="Connection Errors (%)"/>
+	<string id="20361" value="‪רוחב פס להורדות"/>
+	<string id="20362" value="‪כמות קבצים בהורדה"/>
+	<string id="20363" value="‪כמות העברות של הורדות"/>
+	<string id="20364" value="‪רוחב פס קבלה של גנוטלה"/>
+	<string id="20365" value="‪רוחב פס שידור של גנוטלה"/>
+	<string id="20366" value="‪סך כל החיבורים לגנוטלה"/>
+	<string id="20367" value="‪חיבורים אקטיביים של גנוטלה"/>
+	<string id="20368" value="‪פקטים של גנוטלה נפלו"/>
+	<string id="20369" value="‪פקטים של גנוטלה אבדו"/>
+	<string id="20370" value="‪פקטים של גנוטלה התקבלו"/>
+	<string id="20371" value="‪פקטים של גנוטלה נשלחו"/>
+	<string id="20374" value="‪Gnutella Queries Incoming"/>
+	<string id="20375" value="‪Gnutella Queries Processed"/>
+	<string id="20376" value="‪פקטים של גנוטלה הועברו בראוטר"/>
+	<string id="20377" value="‪סך רוחב פס קבלה ג'נרית"/>
+	<string id="20378" value="‪סך רוחב פס שידור ג'נרי"/>
+	<string id="20379" value="‪כולל לקבלה TCP רוחב פס"/>
+	<string id="20380" value="‪כולל לשליחה TCP רוחב פס"/>
+	<string id="20381" value="‪כולל לקבלה UDP רוחב פס"/>
+	<string id="20382" value="‪כולל לשליחה UDP רוחב פס"/>
+	<string id="20383" value="‪רוחב-פס להעברות"/>
+	<string id="20384" value="‪סכום העלאות שהועברו"/>
+	<string id="20400" value="‪Envy is creating hashes for %Iu files:"/>
+	<string id="20410" value="‪סייר בספריית השיתוף שלך בשרזה"/>
+	<string id="20411" value="‪סיור"/>
+	<string id="20412" value="תיקיות ‪%i סייר בתכנים של"/>
+	<string id="20413" value="‪קבצים נבחרו %i"/>
+	<string id="20414" value="‪מספר ספריות"/>
+	<string id="20415" value="‪אף קובץ לא נבחר"/>
+	<string id="20416" value="‪דרג את הקובץ"/>
+	<string id="20417" value="‪תוספות אחרונות"/>
+	<string id="20418" value="אלבום"/>
+	<string id="20419" value="אמן"/>
+	<string id="20420" value="קצב דגימה"/>
+	<string id="20421" value="אורך"/>
+	<string id="20422" value="דרוג"/>
+	<string id="20423" value="כותרת"/>
+	<string id="20424" value="#"/> <!-- Track number -->
+	<string id="20430" value="‪? &quot;%s&quot; הם הינך בטוח/ה שברצונך להפעיל את הקובץnn.קבצים מסויימים יכולים לפגוע במחשב שלך, אנא וודא איזה קובץ אתה מפעיל"/>
+	<string id="20433" value="‪:שרזה נכשל למחוק את הקובץ קובץ:\n\n%s"/>
+	<string id="20436" value="הוסף תיקיה זו לספריית שלך?\n\n%s"/>
+	<string id="20437" value="Ghost קובץ"/>
+	<string id="20438" value="‪.ל- %i קבצים Meta עורך מידע "/>
+	<string id="20439" value="‪?קבצים, האם הינך מעוניינ/ת להמשיך %i-ל Meta את/ה עומד/ת לשנות את המידע"/>
+	<string id="20441" value="‪:שרזה נכשל לשנות את השם\n\n%snto\n%s"/>
+	<string id="20442" value="‪Target file exists:\n\n%s\n\nWould you like to overwrite it?"/>
+	<string id="20443" value="‪הצג את כל סוגי הקבצים"/>
+	<string id="20444" value="‪העתק URI"/>
+	<string id="20445" value="‪ייצא URI..."/>
+	<string id="20448" value="ציבור"/>	<!--Shared-->
+	<string id="20449" value="פרטי"/> 	<!--Unshared-->
+	<string id="20451" value="‪אף קובץ לא מנוגן כעת, לחץ לחיצה כפולה על קובץ בספריה שלך להשמעתו"/>
+	<string id="20452" value="‪All Media Files|*.asx;*.wax;*.m3u;*.wvx;*.wmx;*.asf;*.wav;*.snd;*.au;*.aif;*.aifc;*.aiff;*.wma;*.rm;*.mp3;*.ogg;*.ogm;*.cda;*.mid;*.rmi;*.midi;*.avi;*.asf;*.mpeg;*.mpg;*.m1v;*.mp2;*.mpa;*.mpe;*.wmv|Playlists|*.asx;*.wax;*.m3u;*.wvx;*.wmx|Audio Files|*.asf;*.wav;*.snd;*.au;*.aif;*.aifc;*.aiff;*.wma;*.rm;*.mp3;*.ogg;*.ogm|Video Files|*.avi;*.asf;*.mpeg;*.mpg;*.m1v;*.mp2;*.mpa;*.mpe;*.wmv|CD Audio Tracks|*.cda|MIDI Files|*.mid;*.rmi;*.midi|All Files|*.*||"/>
+	<string id="20453" value="‪Unable to load media file &quot;%s&quot;"/>
+	<string id="20454" value="‪The file may be damaged, or you may not have the necessary codecs to play it."/>
+	<string id="20455" value="‪Part of this file could not be played, you may need to download additional codecs."/>
+	<string id="20456" value="‪ר ש י מ ת   ה ש מ ע ה"/>
+	<string id="20457" value="‪Envy could not instantiate its MediaServices plugin. Please reinstall Envy, and confirm that you have the necessary media codecs and output drivers installed."/>
+	<string id="20458" value="Envy Media Player"/>
+	<string id="20460" value="‪ נ   ג   ן     ה   מ   ד   י   ה       ש   ר   ז   ה"/>
+	<string id="20462" value="‪(ללא אפקטים ויזואליים)"/>
+	<!--string id="20464" value="‪:שרזה סיים להוריד"-->
+	<!--string id="20465" value="‪:שרזה מוריד"-->
+	<!--string id="20466" value="‪:שרזה מעביר את ההורדה"-->
+	<!--string id="20467" value="‪:הורדה זו מושהת"-->
+	<!--string id="20468" value="‪:שרזה מחפשת מקורות עבור"-->
+	<!--string id="20469" value="‪:שרזה בודקת אם יש שגיאות בהורדה"-->
+	<string id="20470" value="ביטול"/>
+	<string id="20471" value="‪פתח"/>
+	<string id="20472" value="‪הושלם"/>
+	<string id="20473" value="‪:זמן מוערך שנותר"/>
+	<string id="20474" value="מספר ביקורות:"/>
+	<string id="20475" value="‪:מספר מקורות"/>
+	<string id="20476" value="‪אין מקורות"/>
+	<string id="20477" value="‫%i ימים %i שעות"/>
+	<string id="20478" value="‪‫%i שעות %i דקות"/>
+	<string id="20479" value="‪‫%i דקות %i שניות"/>
+	<string id="20480" value="‪%i שניות"/>
+	<string id="20481" value="‪:מהירות הורדה"/>
+	<string id="20482" value="‪:גודל שהורד"/>
+	<string id="20483" value="‪:העותק התעדכן"/>
+	<string id="20484" value="מגבלת מהירות ההורדה"/>
+	<string id="20485" value="מגבלת מהירות ההעלאה"/>
+	<string id="20490" value="‪‪כפול"/>
+	<string id="20491" value="‪‪ערכים כפולים"/>
+	<string id="20494" value="You haven't entered your location in your user profile.\n\nIt's a good idea to enter your location so that other users can see which country you are from. Note that entering a location does not reveal any compromising information.\n\nAre you sure you want to continue without entering your location?"/>
+	<string id="20495" value="You haven't entered a screen name in your user profile."/>
+	<string id="20496" value="‪?לא בחרת גיל ומין, אתה בטוח שאתה רוצה להמשיך"/>
+	<string id="20499" value="תיקיה חדשה"/>
+	<string id="20500" value="‪לחץ על כפתור התחבר כדי להתחיל"/>
+	<string id="20501" value="‪אתה לא מחובר לרשת"/>
+	<string id="20502" value="‪סוגר"/>
+	<string id="20503" value="‪:כיווץ"/>
+	<string id="20504" value="‪Deflate"/>
+	<string id="20505" value="‪אין"/>
+	<string id="20506" value="‪מתחבר"/>
+	<string id="20507" value="‪:נוכחי"/>
+	<string id="20510" value="‪חיבור של שרת אידונקי2000"/>
+	<string id="20511" value="‪אי-דונקי (HighID)"/>
+	<string id="20513" value="‪אי-דונקי (LowID)"/>
+	<string id="20514" value="‪אי-דונקי Server"/>
+	<string id="20515" value="‪קו ענף גנוטלה1"/>
+	<string id="20516" value="‪גנוטלה1 Peer"/>
+	<string id="20520" value="‪גנוטלה1 Ultrapeer"/>
+	<string id="20521" value="‪מוקד גנוטלה2"/>
+	<string id="20522" value="‪קו ענף גנוטלה2"/>
+	<string id="20524" value="‪גנוטלה2 Peer"/>
+	<string id="20530" value="‪לחיצת יד"/>
+	<string id="20531" value="‪לוחץ יד"/>
+	<string id="20532" value="‪נכנס"/>
+	<string id="20533" value="‪יוצא"/>
+	<string id="20534" value="‪:סכום כולל"/>
+	<string id="20535" value=":‪יחס"/>
+	<string id="20536" value="‪דחוי"/>
+	<string id="20538" value="‪לא ידוע"/>
+	<string id="20540" value="‪התחבר"/>
+	<string id="20541" value="‪...מתחבר"/>
+	<string id="20542" value="‪מחובר"/>
+	<string id="20543" value="‪התנתק"/>
+	<string id="20544" value="‪‪...סוגר את בסיס הרשת של שרזה"/>
+	<string id="20545" value="‪‪‪.מנותק מהרשת"/>
+	<string id="20546" value="‪?האם אתה בטוח שברצונך להתנתק"/>
+	<string id="20548" value="‪‪‏נכנסים‎ ‏לחיבורים‎ ‏תמיכה‎ ‏תיהיה‎ ‏לא‎ ‏לכן‎ ‏נכנסים‎. ‏לחיבורים‎ %s ‏של‎ %i ‏פורט‎ ‏את‎ ‏לקבוע‎ ‏ניתן‎ ‏לא"/>
+	<string id="20549" value="‪Can't resolve %s for outgoing connections. Outgoing connections will use the default interface."/>
+	<string id="20551" value="חומת האש, לא מקשיב לחיבורים נכנסים."/>
+	<string id="20553" value="‪‪%s ‏של‎ %i  ‏מפורט‎ ‏נכנסים‎ TCP ‏חיבורי‎ ‏מקבל"/>
+	<string id="20554" value="‪Listening for UDP datagrams on %s port %i."/>
+	<string id="20555" value="‪‪%s ‏של‎ %i  ‏מפורט‎ ‏חיבורים יוצאים יהיו"/>
+	<string id="20556" value="‪‪‪...&quot;%s&quot;.לא מצליח לפענח כתובת משתמש"/>
+	<string id="20557" value="‪‪...&quot;%s&quot;.מפענח כתובת משתמש"/>
+	<string id="20560" value="‪%s מנהל האבטחה מנע חיבור של"/>
+	<string id="20561" value="‪%s מנהל האבטחה בלם חיבור של"/>
+	<string id="20562" value="‪‪‪.%s הוסף חוק אבטחה לחסימת"/>
+	<string id="20563" value="‪‪.כבר חסומה על ידי חוקי האבטחה שלך %s הכתובת"/>
+	<string id="20564" value="‪מאתחל את בסיס הרשת של שרזה..."/>
+	<string id="20566" value="UPnP port mapping failed after 10 attempts."/>
+	<string id="20576" value="‪‪%s  ‏משכן‎ ‏ניווט‎ ‏בקשת‎ (‏ ‪%i bit = %lu[%i], %i%% full)"/>
+	<string id="20598" value="האם אתה בטוח שאתה רוצה למחוק את כללי הביטחון שנבחרו? זה לא ניתן לבטל."/>
+	<!-- Missing Scheduler/Security Strings -->
+	<string id="20620" value="‪...שרזה מחפשת ברשת באופן פעיל"/>
+	<string id="20621" value="‪.לחץ כאן בכדי לחפש שנית"/>
+	<string id="20622" value="‪כל הרשתות"/>
+	<string id="20623" value="‪?הינך עומד/ת להתחיל חיפוש חדש, האם הינך מעוניינ/ת למחוק את התוצאות של החיפוש הקודם"/>
+	<string id="20624" value="‪.אזור זה מראה מידע נוסף על הקבצים שבחרת"/>
+	<string id="20625" value="‪:%s לפי דעתו של"/>
+	<string id="20626" value="‪:%s דירג"/>
+	<string id="20627" value="‪לחץ כאן לתצוגה מקדימה"/>
+	<string id="20628" value="‪...מציג תצוגה מקדימה"/>
+	<string id="20629" value="‪&quot;%s&quot;.לא מצליח להוריד תכני תצוגה מקדימה מהמיקום"/>
+	<string id="20630" value="‪.ביקורות %i ישנם"/>
+	<string id="20631" value="‪.יש ביקורת אחת "/>
+	<string id="20632" value="%i מקורות זמינים. (%s)"/>
+	<string id="20633" value=" ‪.(%s) מקור אחד זמין"/>
+	<string id="20634" value="‪.הרשת לא החזירה אף תוצאה עדיין"/>
+	<string id="20635" value="‪.מספר תוצאות נמצאו, אך סוננו"/>
+	<string id="20636" value="‪.אף חיפוש לא החל בחלון זה עדיין"/>
+	<string id="20637" value="‪Metadata ללא"/>
+	<string id="20638" value="No Schema Columns"/>
+	<string id="20640" value="‪(נקה את היסטוריית החיפוש)"/>
+	<string id="20641" value="‪חפש בשרזה"/>
+	<string id="20642" value="‪?איזה סוג קובץ זה"/>
+	<string id="20643" value="‪:הקלד מספר מילים לחיפוש"/>
+	<string id="20644" value="מתקדם"/>
+	<string id="20645" value="‪כל סוג קובץ"/>
+	<string id="20646" value="‪נקה"/>
+	<string id="20648" value="‪הסתר את לוח החיפוש"/>
+	<string id="20650" value="‪חיפוש"/>
+	<string id="20651" value="‪:הקלד את החיפוש כאן"/>
+	<string id="20652" value="‪:חפש קבצים מסוג זה"/>
+	<string id="20653" value="‪:חפש ברשת זו"/>
+	<string id="20654" value="‪:גודל הקובץ"/>
+	<string id="20655" value="‪:גודל הקובץ"/>
+	<string id="20656" value="‪חפש עוד"/>
+	<string id="20657" value="‪הצג את לוח החיפוש"/>
+	<string id="20658" value="‪החל חיפוש"/>
+	<string id="20659" value="‪עצור"/>
+	<string id="20660" value="‪.לא נמצאו קבצים"/>
+	<string id="20661" value="‪‪‏מוקדים‎ %lu ,‏ענפי קו‎ %lu"/>
+	<string id="20662" value="‪.כרגע לא מחפש"/>
+	<string id="20663" value="‪תוצאות"/>
+	<string id="20664" value="‪‏‪‏קבצים‎ %lu ‏ובהם‎ ‏תוצאות‎ %lu|‪‏קבצים‎ %lu ‏ובהם‎ ‏תוצאות‎ %lu|‪‏קבצים‎ %lu ‏ובהם‎ ‏תוצאות‎ %lu"/>
+	<string id="20665" value="‪:נמצא"/>
+	<string id="20666" value="‪:‪מחפש"/>
+	<string id="20668" value="‪...מחפש"/>
+	<string id="20669" value="‪חיפוש טקסט פשוט"/>
+	<string id="20670" value="‪...שרזה מבצעת חיפוש ברשת"/>
+	<string id="20673" value="‪אוטומטי"/>
+	<string id="20674" value="שמות ספריית הקבצים השלמים והחלקיים חייבים להיות שונים"/>
+	<string id="20677" value="‪Please type the bandwidth limit you wish to set in the form &quot;123 kb/s&quot; for kilobits per second, or &quot;123 KB/s&quot; for kilobytes per second."/>
+	<string id="20680" value="‪‪הגדרות שרזה"/>
+	<string id="20682" value="‪גישה מרחוק לא מאופשרת"/>
+	<string id="20684" value="‪.אתה חייב לבחור שם משתמש וסיסמא http://%s:%i/remote"/>
+	<string id="20685" value="‪לא מצליח לקבל התקשרויות, כתובת האינטרנט לא זמינה"/>
+	<string id="20692" value="‪.המעטפת תימחק לקיבעון &quot;%s&quot; האם אתה בטוח שברצונך למחוק את המעטפת"/>
+	<string id="20699" value="‪‪סכמות"/>
+	<string id="20700" value="‪‪%s :‏נכנס‎ %s :‏יוצא‎ (D:%I64i/U:%I64i)"/>
+	<string id="20701" value="‪‏‪‏שכנים‎ %lu ‏אל‎ ‏מחובר‎ , %s ‏מקומית‎ ‏בספריה"/>
+	<string id="20702" value="‪‪%lu ‏מצב‎: ‏מוקד‎ ‏עם‎ ‏שכנים‎ , %s ‏מקומית‎ ‏בספריה"/>
+	<string id="20703" value="‪‏‪‏מצב‎ Ultrapeer/‏מוקד‎ ‏עם‎ %lu ‏שכנים‎: , %s ‏מקומית‎ ‏בספריה"/>
+	<string id="20704" value="‪‏‪Ultrapeer ‏עם‎ %lu ‏שכנים‎: , %s ‏מקומית‎ ‏בספריה"/>
+	<string id="20705" value="‪‪‏מחובר‎ , %s ‏מקומית‎ ‏בספריה"/>
+	<string id="20706" value="‪...מתחבר לרשת"/>
+	<string id="20707" value="‪.לא מחובר לרשת"/>
+	<string id="20708" value="‪פעיל"/>
+	<string id="20709" value="‪לא פעיל"/>
+	<string id="20710" value="מתבהרים"/>
+	<string id="20711" value="‪לא ניתן להעביר"/>
+	<string id="20712" value="‪Choked"/>
+	<string id="20713" value="‪נכנס לתור"/>
+	<string id="20714" value="‪שגיאה בקובץ"/>
+	<string id="20715" value="‪Hashset"/>
+	<string id="20716" value="‪Metadata"/>
+	<string id="20717" value="‪תגובה"/>
+	<string id="20718" value="‪מעביר"/>
+	<string id="20719" value="‪יוצר"/>
+	<string id="20720" value="‪הסתיים"/>
+	<string id="20721" value="‪מתחבר"/>
+	<string id="20722" value="‪מוריד"/>
+	<string id="20723" value="‪עסוק"/>
+	<string id="20724" value="‪הבא"/>
+	<string id="20725" value="בתור"/>
+	<string id="20726" value="בתור"/>
+	<string id="20727" value="‪מושהה"/>
+	<string id="20728" value="‪ממתין לתשובה"/>
+	<string id="20729" value="‪מבקש"/>
+	<string id="20730" value="‪מחפש"/>
+	<string id="20731" value="‪מפיץ"/>
+	<string id="20732" value=":מקורות"/>
+	<string id="20733" value="מקורות"/>
+	<string id="20734" value="‪:מקורות"/>
+	<string id="20735" value=":מקורות"/>
+	<string id="20736" value="‪(ללא מקורות)"/>
+	<string id="20740" value="‪TigerTree"/>
+	<string id="20741" value="‪טורנט"/>
+	<string id="20742" value="‪תקלה בגשש"/>
+	<string id="20743" value="‪לא מעוניין"/>
+	<string id="20744" value="‪לא ידוע"/>
+	<string id="20745" value="‪לא מעוניין"/>
+	<string id="20746" value="‪לא מאומת"/>
+	<string id="20747" value="‪מאומת"/>
+	<string id="20748" value="‪מאמת"/>
+	<string id="20750" value="‪!{version} ברוכים הבאים לשרזה \n\nשרזה היא תוכנה חופשית.\nאנא השתמש בה בצורה אחראית, כבד את חוקי הרכוש וזכויות היוצרים."/>
+	<string id="20751" value="‪.אין חיפושים פעילים, אנא לחץ כאן בכדי לחפש"/>
+	<string id="20752" value="‪.אינך מחובר, אנא לחץ על כפתור התחבר בכדי להתחיל"/>
+	<string id="20760" value="עדיפות"/>
+	<string id="20762" value="‪קובץ זה נראה כקובץ זדוני להצפה"/>
+	<string id="20763" value="‪‪:ברשימה שחורה"/>
+	<string id="20764" value="‪אתה הורדת ומחקת את קובץ זה בעבר"/>
+	<string id="20765" value="‪הקובץ כבר קיים אצלך ברשימת ההורדות"/>
+	<string id="20766" value="‪כבר יש לך את קובץ זה בספריה"/>
+	<string id="20767" value="‪ה‪מקורות לקובץ כרגע עסוקים"/>
+	<string id="20768" value="‪המקורות לקובץ כרגע מוגנים בחומת אש"/>
+	<string id="20769" value="‪המקורות לקובץ כרגע במצב לא יציב"/>
+	<string id="20770" value="‪מחיצת"/>
+	<string id="20771" value="תוצאות"/>
+	<string id="20772" value="‪‫מיקום"/>
+	<string id="20773" value="‪:מהווה מהספריה"/>
+	<string id="20774" value="‪לא ידוע"/>
+	<string id="20775" value="‪הבא בתור"/>
+	<string id="20776" value="לא חשיש"/>
+	<string id="20777" value="‪‪:(%.2f%%) חלקי מקור זמינים"/>
+	<string id="20778" value="‪‫‪קווים פנויים: %i, בתור: %i"/>
+	<string id="20780" value="‪‫גודל"/>
+	<string id="20781" value="‪המקור כרגע עסוק"/>
+	<string id="20782" value="‪המקור מוגן בחומת אש"/>
+	<string id="20783" value="‪המקור עלול להיות לא יציב"/>
+	<string id="20784" value="‪:מהירות"/>
+	<string id="20785" value="‪:מצב"/>
+	<string id="20786" value="‪.היום %lu , בסך הכל %lu"/>
+	<string id="20787" value="‪:מספר הקבצים"/>
+	<string id="20788" value="‪:גודל כולל"/>
+	<string id="20789" value=":העלאות"/>
+	<string id="20790" value="‪‫סוג"/>
+	<string id="20791" value="לא מהימן"/>
+	<string id="20792" value="העלאות"/>
+	<string id="20793" value="‪:URL כתובת"/>
+	<string id="20794" value="‪:‪סוכן משתמש"/>
+	<string id="20795" value="‪‪%s :‏נכנס‎ %s :‏יוצא‎ (D:%I64i/U:%I64i/H:%I64i)"/>
+	<string id="20796" value="הקבצים המשותפים באמצעות האינטרנט"/>
+	<string id="20798" value="‪?האם אתה מעוניין לשדרג כעת .(%s) שרזה סיים להוריד את הגרסא החדשהnnאם תבחר כן, שרזה תסגר באופן זמני, למהלך ההתקנה"/>
+	<string id="20811" value="?העלאות של אידונקי2000 לא אמורות להיות מבוטלות. האם הינך בטוח/ה שברצונך לבטל את העלאות"/>
+	<string id="20834" value="‪מרכז אידונקי"/>
+	<string id="20841" value="‪תור חדש"/>
+	<string id="20842" value="‪כל הקבצים"/>
+	<string id="20845" value="‪השומר של אידונקי"/>
+	<string id="20846" value="‪קבצים חלקיים של אידונקי"/>
+	<string id="20847" value="‪העלאות שהסתיימו"/>
+	<string id="20848" value="‪HTTP שומר"/>
+	<string id="20849" value="ספריית קבצים"/>
+	<string id="20850" value="‪קבצים גדולים"/>
+	<string id="20851" value="‪קבצים בינוניים"/>
+	<string id="20852" value="‪קבצים קטנים"/>
+	<string id="20853" value="‪קבצים חלקיים"/>
+	<string id="20854" value="‪חלקי"/>
+	<string id="20855" value="‪הכנס לתור"/>
+	<string id="20856" value="‪העלאות טורנטים"/>
+	<string id="20862" value="‪הוסף"/>
+	<string id="20864" value="‪סייר"/>
+	<string id="20865" value="‪התחבר"/>
+	<string id="20866" value=":‪קובץ"/>
+	<string id="20867" value="‪:כתובת"/>
+	<string id="20868" value="‪:יציאה"/>
+	<!--string id="20869" value="‪.כיוון ששרזה עסוק URL נכשל להציג את חלון הדו-שיח לפעולות"-->
+	<string id="20870" value="‪.שרזה לא מבין את כתובת אינטרנט זו ,URL נכשל לפענח את הכתובת"/>
+	<string id="20871" value="‪&quot;%s&quot;.URL קבלת כתובת"/>
+	<string id="20872" value="‪:סוג"/>
+	<string id="20874" value="‪URL כתובת:"/>
+	<string id="20875" value="‪לא מוגדר"/>
+	<string id="20880" value="‪ערוך את הפרופיל שלי"/>
+	<string id="20882" value="קבצים שנבחרו. האם אתה בטוח? %u"/>
+	<string id="20883" value="‪זמין URN אין"/>
+	<string id="20885" value="‪שינוי התצוגה יסגור את כל החלונות הפתוחים, אתה רוצה לשנות את התצוגה כעת?"/>
+	<string id="20886" value=" שינוי הכיוון של ממשק מחייב הפעלה מחדש. \n\n צא עכשיו? \n\n\nChanging interface direction requires restart.\n\nExit now?"/>
+	<string id="20890" value="‪ברוכים הבאים לשרזה"/>
+	<string id="20891" value="‪יציאה"/>
+	<string id="20895" value="(1050-65500)"/>
+	<string id="20898" value="‪?לא בחרת אף תיקייה לשיתוף, האם הינך מעוניין להמשיך"/>
+	<string id="20899" value="‪בגיל"/>
+	<!--Missing Wizard Strings-->
+	<!--string id="16771" value="‪‪.‏בספרייתך‎ %s ‏הקובץ‎ ‏את‎ ‏לך‎ ‏יש‎ ‏כבר  ?‏מקרה‎ ‏בכל‎ ‏מחדש‎ ‏להורידו‎ ‏רוצה‎ ‏אתה‎ ‏האם‎ "-->
+</strings>
+<!-- Localized Dialog Text, "cookie" verifies that the skin matches current dialog -->
+<dialogs>
+	<dialog name="CSettingSheet" cookie="SyBuBuBu" caption="הגדרות שרזה">
+		<control/>
+		<control caption="אישור"/>
+		<control caption="ביטול"/>
+		<control caption="החל"/>
+		<control/>
+	</dialog>
+	<dialog name="CGeneralSettingsGroup" cookie="Af" caption="כללי"/>
+	<dialog name="CInternetSettingsGroup" cookie="Af" caption="אינטרנט"/>
+	<dialog name="CGeneralSettingsPage" cookie="BuBuBuBuBuBuBuBuStCoBuBuBuBuBuBuSyStEdmsStmsBuBuStCoStCo" caption="כללי">
+		<control caption="‪:כללי"/>
+		<control caption="‪הפעל את שרזה עם אתחול חלונות"/>
+		<control caption="‪התחבר אוטמטית באתחול של שרזה"/>
+		<control caption="‪URI הראה הודעה לפני פתיחת"/>
+		<control caption="בדוק אם יש עדכונים (חודשי)"/>
+		<control caption="‪:הורדות"/>
+		<control caption="‪הרחב הורדות חדשות כברירת מחדל"/>
+		<control caption="‪הצג מד התקדמות פשוט"/>
+		<control caption="‪:הצגת מהירות"/>
+		<control caption="Auto bits/sec|Auto bytes/sec|b/s|B/s|Kb/s|KB/s|Mb/s|MB/s"/>
+		<control caption="‪:חיפוש"/>
+		<control caption="‪הרחב קבצים עם כמה מקורות אוטמטית"/>
+		<control caption="‪עבור לחלון ההעברות בתחילת הורדה"/>
+		<control caption="‪הסתר סרגל צדדי בתחילת חיפוש"/>
+		<control caption="‪סינון תוכן למבוגרים מהחיפוש"/>
+		<control caption="‪‪:טיפים"/>
+		<control/>
+		<control caption="‪(ms) :השהייה"/>
+		<control/>
+		<control/>
+		<control caption="‪:אטימות"/>
+		<control/>
+		<control caption="הצל "/>
+		<control caption="‪:שורת משימות"/>
+		<control caption=":כשאני לוחצ/ת סגור"/>
+		<control caption="‪שאל אותי|מזער|סגור מיד|סגור בסיום פעולה"/>
+		<control caption="‪:כשאני לוחצ/ת מזער"/>
+		<control caption="‪רגיל|מזער"/>
+	</dialog>
+	<dialog name="CLibrarySettingsPage" cookie="BuBuBuBuBuBuBuBuStEdmsStStEdmsStBuBuBuCoBuBuBuCoBuBuBuEdBu" caption="ספריה">
+		<control caption=":אפשרויות"/>
+		<control caption="אפשר לסייר בקבצי המשותפים"/>
+		<control caption="צפה בתיקיות הספריה"/>
+		<control caption="&#8234;(עומס למעבד)‎ ‏מהיר‎ ‏האשינג"/>
+		<control caption="זכור את תצוגות התיקייה"/>
+		<control caption="Create ghost files when deleting"/>
+		<control caption="Smart media series detection"/>
+		<control caption=":קבצים אחרונים"/>
+		<control caption=":זכור"/>
+		<control/>
+		<control/>
+		<control caption="קבצים"/>
+		<control caption="עד"/>
+		<control/>
+		<control/>
+		<control caption="ימים"/>
+		<control caption="נקה היסטוריה כעת"/>
+		<control caption="נקה היסטוריה כעת"/>
+		<control caption=":בטוח לפתיחה"/>
+		<control/>
+		<control caption="הוסף"/>
+		<control caption="הסר"/>
+		<control caption=":לעולם על תשתף"/>
+		<control/>
+		<control caption="הוסף"/>
+		<control caption="הסר"/>
+		<control caption=":אגור כאן את האוספים"/>
+		<control/>
+		<control/>
+	</dialog>
+	<dialog name="CMediaSettingsPage" cookie="BuStCoBuBuBuCoBuBuBuBuSt" caption="נגן המדיה">
+		<control caption=":א_פשררויות"/>
+		<control caption=":בחר תוסף לשירותי מדיה"/>
+		<control/>
+		<control caption="השתמש בנגן המדיה של שרזה לניגון סוגי הקבצים שרשומים להלן"/>
+		<control caption="השתמש בנגן המדיה של שרזה לזיהוי סוגי הקבצים שרשומים להלן"/>
+		<control caption=":סוגי קבצים"/>
+		<control/>
+		<control caption="הוסף"/>
+		<control caption="הסר"/>
+		<control caption=":תוסף אפקטים ויזואליים"/>
+		<control caption="...בחר תוסף"/>
+		<control caption="Note: Choosing an external Media Handler will disable Media/Visualization Plugins."/>
+	</dialog>
+	<!--dialog name="CIRCSettingsPage" cookie="BuBuBuBuStEdmsStStEdmsCoBuBuStBuStBuStBuStBuStBuStBuStBuStBuStEdStEdStEdStEdStCoStEdStEd" caption="חדר שיחה"-->
+	<dialog name="CCommunitySettingsPage" cookie="BuBuBuBuBuBuBuBuBuSt" caption="קהילה">
+		<control caption=":צ'אט"/>
+		<control caption="אפשר שיחות בתקשורת ישירה באפליקציות תומכות"/>
+		<control caption="אפשר שיחות לכל הרשתות"/>
+		<control caption="...סינון הודעות זבל"/>
+		<control caption="צינזור חומר פוגעני בצ'אט"/>
+		<control caption="הפרופיל שלי"/>
+		<control caption="הפרופיל שלי"/>
+		<control caption="ערוך את הפרופיל"/>
+		<control caption="מידע:"/>
+		<control caption=".‏‏ניתן להשתמש בפרופיל המשתמש שלך בגנוטלה לשיתוף מידע אודות עצמך כמו תחביבים והקבצים המועדפים שלך עם משתמשים אחרים"/>
+	</dialog>
+	<dialog name="CRemoteSettingsPage" cookie="BuBuStBuStStEdEdStBuSt" caption="גישה מרחוק">
+		<control caption=":אפשר"/>
+		<control caption=".אפשר גישה מרחוק לשרזה"/>
+		<control/>
+		<control caption=":פרטי חשבון"/>
+		<control caption=":בחר שם משתמש"/>
+		<control caption=":בחר סיסמא"/>
+		<control/>
+		<control/>
+		<control/>
+		<control caption=":מידע"/>
+		<control caption="אפשרות השליטה מרחוק של שרזה מאפשרת לך להשאיר את שרזה פועלת על המחשב, ולשלוט בה מרחוק בעזרת דפדפן האינטרנט, יהיה עלייך לדאוג שתוכל לקבל התקשרויות נכנסות - ראוטר מוגדר וכדומה"/>
+	</dialog>
+	<dialog name="CWebSettingsPage" cookie="BuStBuBuBuBuBuBuBuBuCoBuBuSt" caption="רשת">
+		<control caption=":צורת השימוש בלינקים לתקשורת ישירה"/>
+		<control caption=":השתמש בשרזה לפתיחת סוגי הלינקים הבאים"/>
+		<control caption="מגנט (magnet:)"/>
+		<control caption="גונוטלה (gnutella:)"/>
+		<control caption="אי-דונקי 2000 (ed2k:)"/>
+		<control caption="פיולט (mp2p:)"/>
+		<control caption="DC++ (dchub:)"/>
+		<control caption="ביט-טורנט (.torrent)"/>
+		<control caption=":מנהל ההורדות"/>
+		<control caption=":התשמש בשרזה לניהול כל ההורדות מסוגים אלה באינטרנט"/>
+		<control/>
+		<control caption="הוסף"/>
+		<control caption="הסר"/>
+		<control caption="תוסף מנהל ההורדות אך ורק ינסה להוריד את הקבצים המופיעים ברשימה להלן. סוגים אחרים של קבצים יטופלו על ידי הדפדפן. שרזה חייבת להיות מופעלת בכדי לנהל את ההורדות."/>
+	</dialog>
+	<dialog name="CConnectionSettingsPage" cookie="BuStCoStCoStEdBuBuBuStCoStCoBuStCoBuBuBuStEdmsStEdms" caption="חיבור">
+		<control caption=":כתובת נכנסת"/>
+		<control caption=":כתובת"/>
+		<control caption="אוטמטי"/>
+		<control caption=":מהירות"/>
+		<control/>
+		<control caption=":יציאה"/>
+		<control/>
+		<control caption="רנדומלי"/>
+		<control caption=".חייב הגבלה לכתובת זו"/>
+		<control caption=":כתובת יוצאת"/>
+		<control caption=":כתובת"/>
+		<control caption="אוטמטי"/>
+		<control caption=":מהירות"/>
+		<control/>
+		<control caption=":אפשרויות"/>
+		<control caption="אני יכול/ה לקבל חיבורים נכנסים"/>
+		<control/>
+		<control caption="מקומיות/פרטיות IP התעלם מכתובות"/>
+		<control caption="Enable Plug'n'Play port-forwarding"/>
+		<control caption=":זמן המתנה לתשובה"/>
+		<control caption="חיבור"/>
+		<control/>
+		<control/>
+		<control caption="לחיצת יד"/>
+		<control/>
+		<control/>
+	</dialog>
+	<dialog name="CDownloadsSettingsPage" cookie="BuEdBuBuEdBuBuStEdmsStEdmsStEdmsBuStCoStCoBuBuStCo" caption="הורדות">
+		<control caption=":אכסן קבצים שהושלמה הורדתם בתיקייה"/>
+		<control/>
+		<control/>
+		<control caption=":אכסן קבצים זמניים כאן"/>
+		<control/>
+		<control/>
+		<control caption=":מספר הורדות"/>
+		<control caption=":מקסימום העברות"/>
+		<control/>
+		<control/>
+		<control caption=":מקסימום חיבורים"/>
+		<control/>
+		<control/>
+		<control caption=":מקס' העברות לקובץ"/>
+		<control/>
+		<control/>
+		<control caption=":הגבלות"/>
+		<control caption=":רוחב פס להורדות"/>
+		<control/>
+		<control caption=":אורך תורות מקסימלי"/>
+		<control/>
+		<control caption="_‪‪אבטחה:"/>
+		<control caption="&#8234;‏מחובר‎ ‏אליהן אני‎ ‏ברשתות‎ ‏ורק‎ ‏אך‎ ‏והורד‎ ‏העלה"/>
+		<control caption="AntiVirus:"/>
+		<control/>
+	</dialog>
+	<dialog name="CUploadsSettingsPage" cookie="BuBuBuBuBuStEdmsBuCoBuBuBuStCoStCoBuSyBuBuBuSt" caption="העלאות">
+		<control caption=":אפשרויות"/>
+		<control caption="הגבל שיתוף במצב מוקד"/>
+		<control caption="שתף חלקי הורדות חדשים"/>
+		<control caption="שתף קבצי תצוגה מקדימה"/>
+		<control caption="Fair-Use mode (10% media limit)"/>
+		<control caption=":מקס' העלאות למשתמש"/>
+		<control/>
+		<control/>
+		<control caption=":סוכן-משתמש לסינון"/>
+		<control/>
+		<control caption="+"/>
+		<control caption="-"/>
+		<control caption=":רוחב פס"/>
+		<control caption=":הגבלה"/>
+		<control/>
+		<control caption=":איפשור"/>
+		<control caption="מקסימום|ממוצע"/>
+		<control caption=":תורים"/>
+		<control/>
+		<control caption="...חדש"/>
+		<control caption="...ערוך"/>
+		<control caption="מחק"/>
+		<control caption="(השינויים משפיעים מייד)"/>
+	</dialog>
+	<dialog name="CNetworksSettingsPage" cookie="StBuStBuStBuStBuStBuStBuStBuStBuSt" caption="רשתות">
+		<control caption="שרזה היא תוכנת שיתוף לשימוש כללי שמסוגלת לגשת למספר רשתות שיתוף קבצים בו זמנית. כאן אתה יכול לבחור לאילו רשתות תרצה לגשת ולקבוע הגדרות ספציפיות לכל רשת"/>
+		<control caption=":רשת גנוטלה2"/>
+		<control caption="רשת גנוטלה2 היא הרשת הראשית של שרזה, המציעה יותר אופציות וביצועים מכל רשת שיתוף אחרת - מאוד מומלץ"/>
+		<control caption="התחבר לגנוטלה2 (G2)"/>
+		<control caption="קבע הגדרות לגנוטלה2"/>
+		<control caption=":רשת גנוטלה המקורית"/>
+		<control caption="למרוח שרשת גנוטלה המקורית היא עם פחות אופציות מגנוטלה2 ועם פחות קבצים מאידונקי היא עדיין מקור בעל ערך"/>
+		<control caption="התחבר לגנוטה המקורית"/>
+		<control caption="קבע הגדרות לגנוטלה"/>
+		<control caption=":רשת אידונקי2000"/>
+		<control caption="רשת אידונקי היא רשת מבוססת שרת פופלרית. יש בה פחות אופציות מגונטלה2 אבל עם כמות קבצים מרשימה"/>
+		<control caption="התחבר לאידונקי2000"/>
+		<control caption="קבע הגדרות לאידונקי 2000"/>
+		<control caption=":רשת אידונקי DC++"/>
+		<control caption="רשת אידונקי היא רשת מבוססת שרת פופלרית. יש בה פחות אופציות מגונטלה2 אבל עם כמות קבצים מרשימה"/>
+		<control caption="התחבר לאידונקי DC++"/>
+		<control caption="קבע הגדרות לאידונקי DC++"/>
+	</dialog>
+	<dialog name="CGnutellaSettingsPage" cookie="BuBuBuStCoBuStEdmsStEdmsStEdmsBuBuBuStCoBuStEdmsStEdmsStEdmsBuBuBuBu" caption="גונטלה">
+		<control caption=":רשת גנוטלה2"/>
+		<control caption="התחבר אל גנוטלה2 היום"/>
+		<control caption="תמיד התחבר לגנוטלה2"/>
+		<control caption=":מצב"/>
+		<control caption="אופטימלי|קו ענף|מוקד"/>
+		<control caption=":חיבורי גנוטלה2"/>
+		<control caption="מוקד אל קו ענף"/>
+		<control/>
+		<control/>
+		<control caption="קו ענף אל מוקד"/>
+		<control/>
+		<control/>
+		<control caption="מוקד אל מוקד"/>
+		<control/>
+		<control/>
+		<control caption=":רשת גנוטלה"/>
+		<control caption="התחבר אל גנוטלה היום"/>
+		<control caption="תמיד התחבר לגנוטלה"/>
+		<control caption=":מצב"/>
+		<control caption="אופימלי|קו ענף|Ultrapeer"/>
+		<control caption=":חיבורי גנוטלה"/>
+		<control caption="Ultrapeer קו ענף אל"/>
+		<control/>
+		<control/>
+		<control caption="אל קו ענף Ultrapeer"/>
+		<control/>
+		<control/>
+		<control caption="Peer אל Peer"/>
+		<control/>
+		<control/>
+		<control caption=":כיווץ קישור"/>
+		<control caption="מוקד אל קו ענף"/>
+		<control caption="קו ענף אל מוקד"/>
+		<control caption="מוקד אל מוקד"/>
+	</dialog>
+	<dialog name="CDonkeySettingsPage" cookie="BuBuBuBuStEdmsStBuBuStEdmsStBuBuBuSt" caption="אי-דונקי 2000">
+		<control caption=":רשת אידונקי"/>
+		<control caption="חיבור אוטמטי בכל הפעלה"/>
+		<control caption="התחבר לרשת אידונקי"/>
+		<control caption=":חיבורי קישור מהתוכנה"/>
+		<control caption="אל תתחבר ליותר מאשר"/>
+		<control/>
+		<control/>
+		<control caption=".משתמשי אידונקי אחרים"/>
+		<control caption=":חיפוש גלובלי"/>
+		<control caption=":חפש שרתים מרוחקים ברשימות של אידונקי"/>
+		<control caption="עצור לחפש לאחר"/>
+		<control/>
+		<control/>
+		<control caption="תוצאות חיפוש"/>
+		<control caption="Update global server list from the connected server"/>
+		<control caption=":כלים של אי-דונקי 2000"/>
+		<control caption="...הורד"/>
+		<control caption="הורד רשימת שרתים של אידונקי מהרשת"/>
+	</dialog>
+	<dialog name="CDCSettingsPage" cookie="BuBuBuBuStEdmsStBuStBuBuSt" caption="DC++">
+		<control caption="_DC++ רשת:"/>
+		<control caption="Connect to DC++ now"/>
+		<control caption="Connect to DC++ at startup"/>
+		<control caption="_Hubs:"/>
+		<control caption="Connect by default to:"/>
+		<control/>
+		<control/>
+		<control caption="DC++ hubs."/>
+		<control caption="_Info:"/>
+		<control caption="DC++ works by connecting to specific &quot;hub&quot; communities. Please select hubs from the &quot;Hostcache&quot; advanced view window (F8), otherwise one will be randomly selected."/>
+		<control caption="_Tools:"/>
+		<control caption="...הורד"/>
+		<control caption="Update DC++ hubs from the web. (hublist.xml.bz2)"/>
+	</dialog>
+	<dialog name="CBitTorrentSettingsPage" cookie="BuEdmsStEdmsStBuBuBuBuBuEdmsStBuEdBuBuEdBuStEd" caption="ביט-טורנט">
+		<control caption=":הגדרות הורדה בביט-טורנט"/>
+		<control/>
+		<control/>
+		<control caption="טורנטים בו זמנית"/>
+		<control/>
+		<control/>
+		<control caption="מקסימום חיבורים"/>
+		<control caption="אפשר BitTorrent DHT"/>
+		<control caption="תן עדיפות למקורות של טורנטים"/>
+		<control caption=":EndGame (האצה)"/>
+		<control caption="כשמסיימים הורדת טורנטים EndGame אפשר אופציית"/>
+		<control caption="נקה טורנטים שהורדו  כשרמת השיתוף תגיע אל"/>
+		<control/>
+		<control/>
+		<control caption="%"/>
+		<control caption=":אכסן טורנטים כאן"/>
+		<control/>
+		<control/>
+		<control caption=":יוצר הטורנט"/>
+		<control/>
+		<control/>
+		<control caption=" :עוקב הטורנטים"/>
+		<control/>
+	</dialog>
+	<dialog name="CSkinsSettingsPage" cookie="SyBuStStStStStEdStBuBuBu" caption="מעטפות">
+		<control/>
+		<control caption=":מידע על המעטפות"/>
+		<control caption=" - תוסף"/>
+		<control/>
+		<control caption=" - עורך"/>
+		<control/>
+		<control caption=":מידע נוסף"/>
+		<control/>
+		<control caption="*"/>
+		<control caption="מחק"/>
+		<control caption="...התקן"/>
+		<control caption=":מידע נוסף"/>
+	</dialog>
+	<dialog name="CPluginsSettingsPage" cookie="SyBuStStStEdBuBu" caption="תוספים">
+		<control/>
+		<control caption=":מידע על התוסף"/>
+		<control caption=":שם התוסף"/>
+		<control/>
+		<control caption=":מידע נוסף"/>
+		<control/>
+		<control caption="...התקנה"/>
+		<control caption=":מידע נוסף"/>
+	</dialog>
+	<dialog name="CAdvancedSettingsPage" cookie="SyBuStEdmsEdCoBuBu" caption="מתקדם">
+		<control/>
+		<control caption=":ערך"/>
+		<control caption=":תיאור"/>
+		<control/>
+		<control/>
+		<control/>
+		<control/>
+		<control/>
+		<control caption="הגדרות"/>
+	</dialog>
+	<dialog name="CProtocolsSettingsPage" cookie="BuSy" caption="פרוטוקולים">
+		<control caption=":סייר ארכיטקטורת פרוטוקול משותף של שרזה"/>
+		<control/>
+	</dialog>
+	<dialog name="CQueuePropertiesDlg" cookie="BuEdBuBuBuBuBuEdBuEdBuCoBuEdBuSyBuBuStEdmsStEdmsStEdmsBuStEdStEdmsBuEdmsBuBuBu" caption="מאפייני תורות העלאה">
+		<control caption=":שם"/>
+		<control/>
+		<control caption=":רישום קריטריון"/>
+		<control caption="קבצים שהורדו חלקית בלבד"/>
+		<control caption="Shared Library files only"/>
+		<control caption="Both partial and library files"/>
+		<control caption="גודל קובץ מקור מינימלי"/>
+		<control/>
+		<control caption="גודל קובץ מקור מקסימלי"/>
+		<control/>
+		<control caption="קבצים מסומנים"/>
+		<control/>
+		<control caption="לפי שם קובץ"/>
+		<control/>
+		<control caption=":פרוטוקולים"/>
+		<control/>
+		<control caption=":יכולת צבירה"/>
+		<control caption="אפשר את תור זה"/>
+		<control caption=":מספר העברות מינמלי"/>
+		<control/>
+		<control/>
+		<control caption=":מספר העברות מקסימלי"/>
+		<control/>
+		<control/>
+		<control caption=":מספר מקסימלי של מחכים בתור"/>
+		<control/>
+		<control/>
+		<control caption=":פרמטרי השירות"/>
+		<control caption=":אחוז רוחב פס רווי"/>
+		<control/>
+		<control caption=":רוחב פס העלאה לתור זה"/>
+		<control/>
+		<control/>
+		<control caption="שניות # עבור לבא בכל"/>
+		<control/>
+		<control/>
+		<control caption="אישור"/>
+		<control caption="ביטול"/>
+		<control caption="הטבות למשתמשים משתפים"/>
+	</dialog>
+	<dialog name="CWizardWelcomePage" cookie="StStStStStStStStStStStSt" caption="(1/8) ברוכים הבאים לשרזה">
+		<control caption="!ברוכים הבאים לשרזה"/>
+		<control caption="אם לא השתמשת בשרזה או בתוכנת שיתוף אחרת בעבר, אשף הפעלה מהירה זה יעזור לך להגדיר את התוכנה בכמה צעדים פשוטים"/>
+		<control caption="אם אתה משתמש מתקדם יותר, אתה יכול לגשת לאפשרויות המלאות של שרזה דרך תפריט כלים, לחץ יציאה כדי לצאת מהאשף בכל רגע"/>
+		<control caption=":האשף יעזור לך להגדיר את הדברים הבאים"/>
+		<control/>
+		<control caption="הגדרת פרטי חיבור האינטרנט שלך בשרזה"/>
+		<control/>
+		<control caption="בחירת הקבצים לשיתוף"/>
+		<control/>
+		<control caption="בחירת רשתות שיתוף הקבצים אליהן תתחבר"/>
+		<control/>
+		<control caption="התחלת השימוש בשרזה"/>
+	</dialog>
+	<dialog name="CWizardConnectionPage" cookie="StStCoStStCoStCoStCoStEdBuStms" caption="(2/8) ברוכים הבאים לשרזה">
+		<control caption="לביצועים מירביים, שרזה צריכה לדעת קצת יותר על החיבור שלך לאינטרנט"/>
+		<control caption="&#160;אנא בחר|אני משתמש באינטרנט בביתי|אני משתמש באינטרנט בקו קבוע במכללה|אני משתמש באינטרנט בקו קבוע במשרד|אני משתמש באינטרנט במלון או בשדה תעופה"/>
+		<control caption="| Dial-up Modem| ISDN 128K| DSL 768K| DSL 1.5| Cable 3| DSL 4| DSL2 8| FIOS 10| DSL2 12| FIOS 15| FIOS 20| FIOS 25| FIOS 30| FIOS 50| T1| T3| LAN| OC3"/>
+		<control caption="מבחן ב Speedtest.net"/>
+		<control caption="או בחר:"/>
+		<control/>
+		<control caption="ומהירות ההעלאה:"/>
+		<control/>
+		<control caption="?UPnP-ברצונך להגדיר פתחה (פורט) אוטומטית עי שימוש ב"/>
+		<control/>
+		<control caption="Port:"/>
+		<control/>
+		<control caption="אקראיים"/>
+		<control caption="מצב:"/>
+		<control/>
+	</dialog>
+	<dialog name="CWizardNetworksPage" cookie="StBuStBuStBuStBu" caption="(3/8) ברוכים הבאים לשרזה">
+		<control caption="שרזה היא תוכנת שיתוף לשימוש כללי שמסוגלת לגשת למספר רשתות שיתוף קבצים בו זמנית. כאן אתה יכול לבחור לאילו רשתות תרצה לגשת. שים לב שאתה יכול תמיד לבחור רשתות אחרות מאוחר יותר"/>
+		<control caption="(החתבר לגנוטלה2 (מומלץ מאוד"/>
+		<control caption="רשת גנוטלה2 היא הרשת הראשית של שרזה, המציעה יותר אופציות וביצועים מכל רשת שיתוף אחרת"/>
+		<control caption="התחבר לאידונקי2000"/>
+		<control caption="רשת אידונקי היא רשת מבוססת שרת פופלרית. יש בה פחות אופציות מגונטלה2 אבל עם כמות קבצים מרשימה"/>
+		<control caption="התחבר לגנוטלה המקורי"/>
+		<control caption="למרוח שרשת גנוטלה המקורית היא עם פחות אופציות מגנוטלה2 ועם פחות קבצים מאידונקי היא עדיין מקור בעל ערך"/>
+		<control caption=".טפל בקישורי טורנטים"/>
+	</dialog>
+	<dialog name="CWizardFoldersPage" cookie="StStEdBuStEdBuStEdBuSt" caption="(4/8) ברוכים הבאים לשרזה">
+		<control caption="הורדות Envy הראשון חלקי הקבצים לתיקיה פרטית, ואז מעביר אותם כאשר הושלמה לפי קבוצות הורד."/>
+		<control caption=":אכסן קבצים זמניים כאן"/>
+		<control/>
+		<control/>
+		<control caption=":אכסן קבצים שהושלמה הורדתם בתיקייה"/>
+		<control/>
+		<control/>
+		<control caption="Store .Torrent files here:"/>
+		<control/>
+		<control/>
+		<control caption="סוגי קבצים נפוצים הם בתחילה ההתקנה בתיקיות משנה, אבל קבוצות יכול להיות מותאם אישית. פשוט Drag&apos;n&apos;drop קבצים."/>
+	</dialog>
+	<dialog name="CWizardSharePage" cookie="StStStSyBuBuSt" caption="(5/8) ברוכים הבאים לשרזה">
+		<control caption="ערך רשתות השיתוף הוא כערך האנשים שמשתמשים בהן. כל התוכן שזמין להורדה זמין ממשתמשים אחרים"/>
+		<control caption="אתה לא חייב לשתף תוכן כדי להשתמש בשרזה, עם זאת תוכנות שונות יתנהגו בצורה שונה למשתמשים שלא משתפים"/>
+		<control caption="אנא בחר ספריות, אם בכלל, אשר הינך מעוניין לשתף. פשוט לחץ על כפתור הוספה והוסף ספריה חדשה"/>
+		<control/>
+		<control caption="...הוסף"/>
+		<control caption="הסר"/>
+		<control caption=".הפצת חומרים שזכויותיהם שמורות היא עבירה ברוב המדינות"/>
+	</dialog>
+	<dialog name="CFolderScanDlg" cookie="StStStStStStBu" caption="...סורק תיקייה">
+		<control/>
+		<control caption="..."/>
+		<control caption=":קבצים"/>
+		<control caption="0"/>
+		<control caption=":כונן"/>
+		<control caption="0"/>
+		<control caption="סגור"/>
+	</dialog>
+	<dialog name="CWizardInterfacePage" cookie="StBuBuBuStStBuBuBuBuBuSt" caption="(6/8) ברוכים הבאים לשרזה">
+		<control caption="שרזה תומך בשתי ממשקי משתמש, כך שאתה יכול לבחור את האחד שהכי נוח בשבילך"/>
+		<control caption=":אנא בחר אחד משני הממשקים"/>
+		<control caption="מצב מתקדם"/>
+		<control caption="מצב רגיל"/>
+		<control caption="מצב מתקדם - מציע למשתמשים מתקדמים המון פקודות נוספות, חלונות ועוד"/>
+		<control caption="פשוט - קל להשתמש בתפריטים ובכפתורים. מוכר למשתמשים של תוכנות שיתוף אחרות"/>
+		<control caption="הצג פסי התקדמות פשוטים (מפחית שימוש במעבד)"/>
+		<control caption="בחר _מעטפת:"/>
+		<control caption="No Change"/>
+		<control caption="Windows Skin"/>
+		<control caption="Dark Skin"/>
+		<control caption=""/>
+	</dialog>
+	<dialog name="CWizardProfilePage" cookie="StStEdStCoCoStCoStCoStEd" caption="(7/8) ברוכים הבאים לשרזה">
+		<control caption=":שרזה היא מקום הרבה יותר ידידותי כאשר כל אחד רושם קצת פרטים על עצמו"/>
+		<control caption=":שמי"/>
+		<control/>
+		<control caption=":גיל ומין"/>
+		<control caption="(בחר)"/>
+		<control caption="בחר|בחור|בחורה|גבר|אישה"/>
+		<control caption=":מקום מגוריי"/>
+		<control/>
+		<control caption="Locale:"/>
+		<control/>
+		<control caption="הערות:"/>
+		<control/>
+	</dialog>
+	<dialog name="CWizardFinishedPage" cookie="StStStBuBuSt" caption="(8/8) ברוכים הבאים לשרזה">
+		<control caption="זהו! שרזה כעת מוכנה לעבודה עם המחשב שלך"/>
+		<control caption="אם תרצה לשנות את ההגדרות  תוכל להפעיל מחדש את אשף התחלה מהירה מתוך תפריט כלים"/>
+		<control caption="לאחר יציאה מהאשף על ידי לחיצה על סיים, תוכל להתחבר לרשתות שבחרת ולהתחיל לחפש ולהוריד תכנים"/>
+		<control caption="הפעל את שרזה עם אתחול חלונות"/>
+		<control caption="התחבר לרשת עם הפעלת שרזה"/>
+		<control caption="אנו מקווים שתהנה להשתמש בשרזה"/>
+	</dialog>
+	<dialog name="CDonkeyImportDlg" cookie="StBuBuEdBu" caption="ייבא הורדות של אידונקי">
+		<control caption="&#8234;‏שרזה‎? ‏אל‎ ‏הסתיימו‎ ‏שלא‎ ‏הורדות‎ ‏לייבא‎ ‏מעוניין‎ ‏אתה‎ ‏האם‎ ‏מחשבך‎. ‏על‎ ‏מותקנת‎ ‏אחרת‎ ‏אדיונקי‎2000 ‏תוכנת‎ ‏לך‎ ‏שיש‎ ‏זיהה‎ ‏שרזה"/>
+		<control caption="כן"/>
+		<control caption="לא|ביטול"/>
+		<control/>
+		<control caption="סגור"/>
+	</dialog>
+	<dialog name="CProfileManagerDlg" cookie="SyBuBuBu" caption="ערוך את הפרופיל שלי">
+		<control/>
+		<control caption="אישור"/>
+		<control caption="ביטול"/>
+		<control caption="החל"/>
+		<control/>
+	</dialog>
+	<dialog name="CIdentityProfilePage" cookie="BuStStEdEdEdBuStStCoCoBuStBuBu" caption="זהות">
+		<control caption="שם"/>
+		<control caption=":כינוי"/>
+		<control caption=":שם אמיתי"/>
+		<control/>
+		<control/>
+		<control/>
+		<control caption=":מין וגיל"/>
+		<control caption=":מין"/>
+		<control caption=":גיל"/>
+		<control caption="|זכר|נקבה"/>
+		<control/>
+		<control caption="Info:"/>
+		<control caption="{n}G2 (Envy / Shareaza)"/>
+		<control caption="החל:"/>
+		<control caption="אפשר לאחרים לסייר בפרופיל המשתמש שלי"/>
+	</dialog>
+	<dialog name="CAvatarProfilePage" cookie="BuStBuStBuBu" caption="תמונת פרופיל">
+		<control caption=":תצוגה מקדימה"/>
+		<control/>
+		<control caption=":בחר"/>
+		<control caption="משתמשי גנוטלה שיסיירו בפרופיל שלך יראו את תמונתך. תמונות שאתה יוצר צריכות להיות בגודל 128 על 128 פיקסלים ויכולים להיות מכל סוג של קובץ תמונה שנתמך במחשבך"/>
+		<control caption="סייר"/>
+		<control caption="הסר"/>
+	</dialog>
+	<dialog name="CProfileProfilePage" cookie="BuStCoStCoBuStEdStEdBuLiBuBuCo" caption="מיקום">
+		<control caption=":מיקום"/>
+		<control caption=":ארץ"/>
+		<control/>
+		<control caption=":עיר"/>
+		<control/>
+		<control caption=":מיפוי"/>
+		<control caption=":קו רוחב"/>
+		<control/>
+		<control caption=":קו אורך"/>
+		<control/>
+		<control caption=":תחביבים"/>
+		<control/>
+		<control caption="הוסף &gt;"/>
+		<control caption="הסר &lt;"/>
+		<control/>
+	</dialog>
+	<dialog name="CContactProfilePage" cookie="BuStEdBuStEdStEdStEdStEdStEdStEdStEdStEd" caption="צור קשר">
+		<control caption=":כתובות אימייל"/>
+		<control caption=":ראשי"/>
+		<control/>
+		<control caption=":מסרים מיידים"/>
+		<control caption="GetEnvy.com:"/>
+		<control/>
+		<control caption="Facebook:"/>
+		<control/>
+		<control caption="Twitter:"/>
+		<control/>
+		<control caption="Google:"/>
+		<control/>
+		<control caption="MSN/Live:"/>
+		<control/>
+		<control caption="Yahoo:"/>
+		<control/>
+		<control caption="AOL:"/>
+		<control/>
+		<control caption="ICQ:"/>
+		<control/>
+	</dialog>
+	<dialog name="CBioProfilePage" cookie="Ed" caption="ביוגרפיה">
+		<control/>
+	</dialog>
+	<dialog name="CFilesProfilePage" cookie="BuStSy" caption="קבצים">
+		<control caption=":קבצים מועדפים"/>
+		<control caption="‫שרזה ממליץ על קבצי המועדפים למשתמשים שצופים בפרופיל. תוכל לבחור קבצים על ידי הוספתם אל תיקיית מועדפים שבספריה שלך"/>
+		<control/>
+	</dialog>
+	<dialog name="CFavoritesProfilePage" cookie="SyBuStEdStEdBuBu" caption="מועדפים">
+		<control/>
+		<control caption=":ערוך"/>
+		<control caption=":כותרת"/>
+		<control/>
+		<control caption=":URL"/>
+		<control/>
+		<control caption="חדש"/>
+		<control caption="הסר"/>
+	</dialog>
+	<dialog name="CCertificateProfilePage" cookie="BuStStStStBuBuSt" caption="אישורים">
+		<control caption=":שירות אישורי זיהוי ייחודי גלובלי של גנוטלה"/>
+		<control caption=":Gnutella/G2 GUID"/>
+		<control/>
+		<control caption=":BitTorrent GUID"/>
+		<control/>
+		<control caption="צור כעת"/>
+		<control caption="Info:"/>
+		<control caption=" "/>
+	</dialog>
+	<dialog name="CLanguageDlg" cookie="" caption="בחר שפה">
+	</dialog>
+	<dialog name="CConnectToDlg" cookie="BuCoEdBuCoBuBuBu" caption="התחבר אל|סייר במידע משתמש">
+		<control caption=":צור חיבור חדש עם כתובת המשתמש או השרת|סייר במידע המשתמש"/>
+		<control/>
+		<control/>
+		<control caption=":פרוטוקול רשת"/>
+		<control/>
+		<control caption="Ultrapeer השהה"/>
+		<control caption="התחבר"/>
+		<control caption="ביטול"/>
+	</dialog>
+	<dialog name="CDownloadDlg" cookie="StStStEdStBuBuBu" caption="הורד קובץ או טורנט">
+		<control/>
+		<control caption="אוטמטי‎ ‏ובאופן ,(HTTP) ‏מהרשת‎ ‏קבצים‎ ‏להוריד‎ ‏יכול‎ ‏שרזה(http:, ftp:, ed2k:, magnet:, etc.) ‏שיתוף‎ ‏לרשתות‎ ‏קישורים‎ ‏ולהוריד‎ ‏לחפש‎. Enter ‏והקש‎‎ ‏לתא URI/URL כתובת‎ ‏הדבק‎/‏רשום‎ ‏‎.בשרזה קל להוריד קבצים"/>
+		<control caption="שרזה יכול להורד קבצים של טורנט-ביט. טורנט הוא למעשה קובץ לינק / ניווט 'torrent' לקבצי"/>
+		<control/>
+		<control/>
+		<control caption="הורד"/>
+		<control caption="ביטול"/>
+		<control caption="...פתח טורנט"/>
+	</dialog>
+	<dialog name="CNewSearchDlg" cookie="EdCoBuBu" caption="חיפוש חדש|חפש שוב|מצא בספריה">
+		<control/>
+		<control/>
+		<control caption="חפש"/>
+		<control caption="ביטול"/>
+	</dialog>
+	<dialog name="CFilterSearchDlg" cookie="BuEdBuStBuStEdStEdStEdmsBuBuBuBuBuBuBuBuBuBuBuBuBuCoBuBuBuBuBu" caption="...מסנן תוצאות">
+		<control caption=":הראה רק תוצאות שמכילות את המילים"/>
+		<control/>
+		<control caption="Reg. Exp."/>
+		<control caption="‫(תוכל גם להשמיט מילים כך: 'מילה') "/>
+		<control caption=":גודל הקבצים"/>
+		<control caption=":מינימום"/>
+		<control/>
+		<control caption=":מקסימום"/>
+		<control/>
+		<control caption="מקורות לפחות"/>
+		<control/>
+		<control/>
+		<control caption=":הסתר"/>
+		<control caption="קבצים לא תואמים"/>
+		<control caption="קבצים שכבר יש לך"/>
+		<control caption="קבצים חשודים"/>
+		<control caption="Restricted קבצי"/>
+		<control caption="DRM קבצי"/>
+		<control caption="תחת חומת אש/push"/>
+		<control caption="משתמשים לא יציבים"/>
+		<control caption="משתמשים עסוקים"/>
+		<control caption="תוצאות שגויות"/>
+		<control caption="תוצאות עם תוכן למבוגרים"/>
+		<control caption="אישור"/>
+		<control/>
+		<control caption="קבע כברירת מחדל"/>
+		<control caption="שמור בשם"/>
+		<control caption="מחק"/>
+		<control caption="‪:...סינון"/>
+		<control caption="ביטול"/>
+	</dialog>
+	<dialog name="CSaveFilterAsDlg" cookie="EdBuBuSt" caption="...שמור מסנן בשם">
+		<control/>
+		<control caption="אישור"/>
+		<control caption="ביטול"/>
+		<control caption=":שמור את המסנן הנוכחי בשם"/>
+	</dialog>
+	<dialog name="CDiscoveryServiceDlg" cookie="BuEdStCoBuBu" caption="שירות משאבי חיבור">
+		<control caption=":כתובת השירות"/>
+		<control/>
+		<control caption=":סוג שירות המשאבי חיבור"/>
+		<control caption="Gnutella Bootstrap|GWebCache|Server.met URL|Blocked"/>
+		<control caption="אישור"/>
+		<control caption="ביטול"/>
+	</dialog>
+	<dialog name="CDownloadMonitorDlg" cookie="StStStStStStStStStStStStBuBuBuBu" caption="שרזה : הורדה">
+		<control caption="..."/>
+		<control/>
+		<control/>
+		<control/>
+		<control caption=":מספר מקורות"/>
+		<control caption="..."/>
+		<control caption=":הורדה כוללת"/>
+		<control caption="..."/>
+		<control caption=":זמן שנותר"/>
+		<control caption="..."/>
+		<control caption=":גודל שהורד"/>
+		<control caption="..."/>
+		<control caption="תצוגת ספריה"/>
+		<control caption="בטל הורדה"/>
+		<control caption="הסתר"/>
+		<control caption="אוטומטי"/>
+	</dialog>
+	<dialog name="CFileGeneralPage" cookie="EdStStStStStEdEdEdEdEdStEdEdEdEd" caption="כללי">
+		<control/>
+		<control caption="מאפייני קובץ"/>
+		<control caption=":מיקום"/>
+		<control caption=":סוג"/>
+		<control caption=":השתנה"/>
+		<control caption=":גודל"/>
+		<control/>
+		<control/>
+		<control/>
+		<control/>
+		<control/>
+		<control caption="שמות משאבים אוניברסליים (URNs)"/>
+		<control/>
+		<control/>
+		<control/>
+		<control/>
+	</dialog>
+	<dialog name="CFileMetadataPage" cookie="CoEd" caption="Meta ‏מידע">
+		<control/>
+		<control/>
+	</dialog>
+	<dialog name="CFileCommentsPage" cookie="StStCoStEdEd" caption="הביקורת שלי">
+		<control caption="הדירוג שלי"/>
+		<control caption="הדירוג שלי לקובץ - "/>
+		<control caption="ללא דירוג|זיוף|שגוי|מטעה|גרוע|ממוצע|טוב|טוב מאוד|מעולה"/>
+		<control caption="הביקורת והתגובות שלי"/>
+		<control/>
+		<control/>
+	</dialog>
+	<dialog name="CFileSharingPage" cookie="EdStBuBuBuStCo" caption="שיתוף קבצים">
+		<control/>
+		<control caption="שיתוף קבצים פשוט"/>
+		<control caption="שתף את קובץ זה אם התיקייה המכילה משותפת"/>
+		<control caption="כפה הגדרות שיתוף על קובץ זה"/>
+		<control caption="הגדר את קובץ זה כזמין למשתמשים אחרים"/>
+		<control caption="העלה תגים לבחירת תורות"/>
+		<control/>
+	</dialog>
+	<dialog name="CFileSourcesPage" cookie="StStEdSyBuBuEd" caption="מקורות">
+		<control caption="מקורות ידועים"/>
+		<control caption="הוסף מקור חדש"/>
+		<control/>
+		<control/>
+		<control caption="הוסף"/>
+		<control caption="הסר"/>
+		<control/>
+	</dialog>
+	<dialog name="CFileCopyDlg" cookie="StStStmsmsStBuBu" caption="העתק קבצים|העבר קבצים">
+		<control caption=":הבאה‎ ‏לתיקייה‎ ‏ ‏להעברה‎ ‏קבצים‎ %i ‏בחרת‎ ‏הינך"/>
+		<control caption=":הבאה‎ ‏לתיקייה‎ ‏ ‏להעברה‎‏קבצים‎ %i ‏בחרת‎ ‏הינך"/>
+		<control/>
+		<control/>
+		<control/>
+		<control caption="...מוכן"/>
+		<control caption="אישור"/>
+		<control caption="ביטול"/>
+	</dialog>
+	<dialog name="CFolderPropertiesDlg" cookie="StEdStCoBuStBuBu" caption="הגדרות תיקיית אלבום">
+		<control caption=":כותרת תיקיית אלבום"/>
+		<control/>
+		<control caption=":סוג מחיצה"/>
+		<control/>
+		<control caption="הכל"/>
+		<control caption="העתק את ההגדרות הדומות לכל קובץ בתיקייה זו"/>
+		<control caption="אישור"/>
+		<control caption="ביטול"/>
+	</dialog>
+	<dialog name="CGraphListDlg" cookie="SyBuBuBuBuBuBuBuBuStEdmsStBuEdBuBu" caption="גרפי תעבורת רשת">
+		<control/>
+		<control caption="...הוסף"/>
+		<control caption="...ערוך"/>
+		<control caption="הסר"/>
+		<control caption=":הצג"/>
+		<control caption="קווי רשת"/>
+		<control caption="ציר אנכי"/>
+		<control caption="מקרא סימנים"/>
+		<control caption=":קצב דגימה"/>
+		<control caption="השהייה בין דגימות:"/>
+		<control/>
+		<control/>
+		<control caption="ms"/>
+		<control caption="שם"/>
+		<control/>
+		<control caption="אישור"/>
+		<control caption="ביטול"/>
+	</dialog>
+	<dialog name="CGraphItemDlg" cookie="BuBuBuCoStEdStEdBuBuStBu" caption="הגדרות רכיב גרף">
+		<control caption="אישור"/>
+		<control caption="ביטול"/>
+		<control caption=":מקור"/>
+		<control/>
+		<control caption=":כופל"/>
+		<control/>
+		<control caption=":יחידות"/>
+		<control/>
+		<control caption=":תצוגה"/>
+		<control caption="...בחר צבע"/>
+		<control/>
+		<control caption="הסר"/>
+	</dialog>
+	<dialog name="CSecureRuleDlg" cookie="BuStCoStEdBuStEdEdEdEdStEdEdEdEdBuEdBuBuBuBuEdBuBuStCoStCoEdStEdStEdStBuBu" caption="חוק אבטחה">
+		<control caption=":חוק"/>
+		<control caption=":סוג"/>
+		<control caption="כתובת רשת IP|מסנן תכנים|רשימת חסומים"/>
+		<control caption=":הערה"/>
+		<control/>
+		<control caption=":כתובת רשת"/>
+		<control caption=":IP כתובת"/>
+		<control/>
+		<control/>
+		<control/>
+		<control/>
+		<control caption=":Mask כתובת"/>
+		<control/>
+		<control/>
+		<control/>
+		<control/>
+		<control caption=":מסנן תוכן"/>
+		<control/>
+		<control caption="שיתאים חלקית"/>
+		<control caption="שיתאים להכל"/>
+		<control caption="Reg. Exp."/>
+		<control caption="מסנן תכנים קובץ:"/>
+		<control/>
+		<control caption="לדפדף"/>
+		<control caption=":אפשרויות"/>
+		<control caption=":פעולה"/>
+		<control caption="אין|קבל|חסום"/>
+		<control caption=":תקף עד"/>
+		<control caption="לעולם לא|בסיום ההפעלה|לאחר"/>
+		<control/>
+		<control caption="י"/>
+		<control/>
+		<control caption="ש"/>
+		<control/>
+		<control caption="ח"/>
+		<control caption="אישור"/>
+		<control caption="ביטול"/>
+	</dialog>
+	<dialog name="CScheduleTaskDlg" cookie="BuBuBuCoEdmsEdmsStStBuBuBuBuBuSySyBuBuBuBuBuBuBuBuBuEd" caption="לוח זמנים לפעילות">
+		<control caption="אישור"/>
+		<control caption="ביטול"/>
+		<control caption="Select Task Type"/>
+		<control/>
+		<control/>
+		<control/>
+		<control/>
+		<control/>
+		<control caption="% of Download limit"/>
+		<control caption="% of Upload limit"/>
+		<control caption="Active Task"/>
+		<control caption="Enable G2 Only"/>
+		<control caption="Set Event Time"/>
+		<control caption="Specified days"/>
+		<control caption="One day only"/>
+		<control/>
+		<control/>
+		<control caption="שני"/>
+		<control caption="שלישי"/>
+		<control caption="רביעי"/>
+		<control caption="חמישי"/>
+		<control caption="שישי"/>
+		<control caption="שבת"/>
+		<control caption="ראשון"/>
+		<control caption="כל"/>
+		<control caption="תגובות"/>
+		<control/>
+	</dialog>
+	<dialog name="CSchemaColumnsDlg" cookie="CoSyBuBuSt" caption="בחר עמודות מהסכמה">
+		<control/>
+		<control/>
+		<control caption="אישור"/>
+		<control caption="ביטול"/>
+		<control caption="‏כעמודות‎ ‏להצגה‎ ‏השדות‎ ‏את‎ ‏ובחר‎ ‏מהרשימה‎, ‏סכמה‎ ‏בחר"/>
+	</dialog>
+	<dialog name="CShareManagerDlg" cookie="StSyBuBuBuBu" caption="מנהל תיקיית שיתוף">
+		<control caption="זוהי רשימת התיקיות שבספריה שלך. אתה יכול להוסיף ולהסיר תיקיות בעזרת הכפתורים משמאל. כשאתה מוסיף תיקייה חדשה היא באופן אוטומטי מתחילה להיות משותפת עם המשתמשים, תוכל לבחור לא לשתף אותה מתוך הספריה"/>
+		<control/>
+		<control caption="...הוסף"/>
+		<control caption="הסר"/>
+		<control caption="אישור"/>
+		<control caption="ביטול"/>
+	</dialog>
+	<dialog name="CURLCopyDlg" cookie="StStStStStBuBu" caption="URI העתק">
+		<control caption="של הרכיב הנבחר בצורות שונות, אנא בחר את הקונטקסט של הכתובת שאתה מעוניין בה על ידי לחיצה על אחד :מהכתובות שמתחת URI אתה יכול להעתיק את הכתובת"/>
+		<control/>
+		<control/>
+		<control/>
+		<control/>
+		<control caption="URI כלול אותי כמקור תקין בכתובת"/>
+		<control caption="ביטול"/>
+	</dialog>
+	<dialog name="CURLExportDlg" cookie="StEdStCoStCoBuBumsBu" caption="URIs ייצא">
+		<control caption="אנא בחר את הצורה לקישורים ולחץ על כפתור שמור URI קבצים לייצא להפניות של קישורי %lu בחרת"/>
+		<control/>
+		<control caption="Token הכנס:"/>
+		<control caption="Tiger Root|SHA1|MD5|ED2K (CMD4)|Filename|Filename (URI)|Base Filename|File Extension|File Size|File Size (bytes)|Folder Path|Local Host|Local Port"/>
+		<control caption=":בחר מוצג"/>
+		<control/>
+		<control caption="_העתק"/>
+		<control caption="...שמור"/>
+		<control/>
+		<control caption="ביטול"/>
+	</dialog>
+	<dialog name="CURLActionDlg" cookie="StStStStStStEdStEdStBuBuBuBuBu" caption="מנהל URI של שרזה">
+		<control caption=":לחצת על כתובת URI אשר מקשרת לתוכן הבא ברשת"/>
+		<control caption=":לחצת על כתובת URI אשר מחברת לשרת או המשתמש הבא ברשת"/>
+		<control caption="‪:אשר מאפשר לסייר בקבצים המשותפים הזמינים אצל המשתמש הבא URI לחצת על כתובת"/>
+		<control caption="‪של שרזה אשר יוסיף את שירותי משאבי חיבור הבאים לזיכרון המטמון של שירותי המשאבי חיבור URI לחצתה על"/>
+		<control/>
+		<control/>
+		<control/>
+		<control/>
+		<control caption="‪:אנא בחר את הפעולה שברצונך ששרזה תבצע"/>
+		<control caption="‪הורדה כעת"/>
+		<control caption="‪חיפוש קובץ"/>
+		<control caption="‪ביטול"/>
+		<control caption="‪זכור את בחירתי בפעם הבאה"/>
+		<control caption="‪פתוח חלון מוניטור הורדות"/>
+	</dialog>
+	<dialog name="CBitprintsDownloadDlg" cookie="StStmsBuSySt" caption="...Metadata מוריד">
+		<control/>
+		<control caption="...Bitprints-מ Metadata שרזה מנסה להוריד"/>
+		<control/>
+		<control caption="ביטול"/>
+		<control/>
+		<control caption="bitprints.getenvy.com"/>
+	</dialog>
+	<dialog name="CFilePreviewDlg" cookie="StStStmsStBu" caption="...תצוגה מקדימה חכמה להורדה">
+		<control/>
+		<control caption=":שרזה יוצר תצוגה מקדימה של ההורדה"/>
+		<control/>
+		<control/>
+		<control caption="(מעתיק את החלקים שהורדו לתוך קובץ תצוגה מקדימה חדש)"/>
+		<control caption="ביטול"/>
+	</dialog>
+	<dialog name="CWarningsDlg" cookie="StStStStStStBu" caption="שרזה מכבדת את משתמשיה">
+		<control caption="?הידעת ששרזה היא תוכנה חינמית לחלוטין"/>
+		<control caption="שרזה לא מכילה רוגלות, תוספי פרסומות או תוכנה כלשהי נוספת בתוכה. שרזה לא מציגה פרסומות קופצות אף פעם {n}{n} אם אי פעם תראי פרסומות &quot;פרסומות קופצות&quot; בעת שאתה משתמש בשרזה, .הינך יכול להיות בטוח שהם אינם מגיעים משרזה"/>
+		<control caption="לצערנו הרבה תוכנות אחרות כן מגיעות עם תוספי פרסומות ורוגלות, לכן אם הינך רואה משהו חשוד כדאי שתבדוק את המחשב עם תוכנה לניקוי רוגלות ותוספי פרסומות"/>
+		<control caption="אינך אמור לשלם כלל כדי לקבל את שרזה. שרזה ניתנת להורדה בחינם על ידי כל אחד מהאתר  http://Envy.sourceforge.net/. אם נדרשת לשלם למישהו תמורת שרזה.עלייך לבקש החזר מלא לכספך באופן מיידי."/>
+		<control caption="!שרזה מכבדת את משתמשיה"/>
+		<control caption="http://Envy.sourceforge.net/"/>
+		<control caption="סגור"/>
+	</dialog>
+	<dialog name="CPromoteDlg" cookie="StStStStStStBu" caption="הפץ את השמועה">
+		<control caption="אנא עזור לנו להפיץ את השמועה"/>
+		<control caption="אנו מקווים שנהנית מהשימוש בשרזה עד כה, אנו מאמינים שזוהי תוכנת שיתוף הקבצים הטובה ביותר נכון להיום"/>
+		<control caption="!לצערנו הרב, הרבה מאוד משתפי קבצים לא יודעים מה הם מפסידים"/>
+		<control caption=" גם אם הוא משתמש חדש או משתמש בתוכנה נחותה יותר, למה לא לעזור לו ולכולנו וליידע אותם שיש אלטרנטיבה טובה יותר"/>
+		<control caption=":) !רוב הסיכויים שהם יהיו אסירי-תודה לכם שהצלתם אותם"/>
+		<control caption="http://Envy.sourceforge.net/"/>
+		<control caption="אישור"/>
+	</dialog>
+	<dialog name="CExistingFileDlg" cookie="StStStStBuBuBuBuBuStSt" caption="קובץ קיים">
+		<control/>
+		<control/>
+		<control/>
+		<control caption="?כבר יש לך את הקובץ בספרייתך, מה תרצה לעשות"/>
+		<control caption="הצג לי את הקובץ שבספריה שלי"/>
+		<control caption="הורד את הקובץ שנית"/>
+		<control caption="אל תוריד את הקובץ"/>
+		<control caption="אישור"/>
+		<control caption="ביטול"/>
+		<control caption="?הורדת ומחקת את קובץ זה בעבר. מה תרצה לעשות"/>
+		<control caption="אזהרה! התגלו קבצים משוכפלים. ייתכן ותוכנה זדונית תפגע בספרייה שלך. וודא שהורגת את הקובץ הזה או שמת אותו באופן ידני. אחרת, סגור את שרזה וסרוק את מחשבך עם תוכנת אנטי-וירוס."/>
+	</dialog>
+	<dialog name="CCloseModeDlg" cookie="StBuBuBuBuBuBu" caption="כפתור סגירה">
+		<control caption="זוהי הפעם הראשונה בה לחצת על לחצן הסגירה של שרזה. אנא בחר את הפעולה אותה תרצה ששרזה תעשה בכל פעם שתלחץ על כפתור זה מעכשיו והלאה"/>
+		<control caption="מזער לשורת המשימות"/>
+		<control caption="מזער לשורת המשימות"/>
+		<control caption="סגור את שרזה לאחר שכל ההורדות והעלאות מסתיימות"/>
+		<control caption="סגור את שרזה באופן מיידי"/>
+		<control caption="אישור"/>
+		<control caption="ביטול"/>
+	</dialog>
+	<dialog name="CUpdateServersDlg" cookie="StEdmsBuBu" caption="Server.met הורד קובץ">
+		<control caption="מהרשת בכדי לרענן את רשימת השרתים server.met הורד לאידונקי את"/>
+		<control/>
+		<control/>
+		<control caption="אישור"/>
+		<control caption="ביטול"/>
+	</dialog>
+	<dialog name="CDeleteFileDlg" cookie="StStBuBuBuStBuStStStStCoCoEd" caption="מחק קובץ">
+		<control caption=":האם אתה בטוח שברצונך למחוק"/>
+		<control/>
+		<control caption="מחק"/>
+		<control caption="מחק הכל"/>
+		<control caption="ביטול"/>
+		<control/>
+		<control caption="Create Ghost File"/>
+		<control caption=":שרזה יכול לזכור את קובץ זה ולהזהיר אותך במקרה שתתקל בו שוב בחיפוש אחר,"/>
+		<control caption="File rating:"/>
+		<control caption="Reason for deleting:"/>
+		<control caption="!"/>
+		<control caption="(No Rating)|Fake/Corrupt/Misleading|Poor|Average|Good|Very Good|Excellent"/>
+		<control caption="Just deleting, keep any current comments|File is very low quality or outdated|File is named incorrectly or misleading|File is fake, infected, corrupt, or unusable|File is restricted copyright material|File needs custom comments below..."/>
+		<control/>
+	</dialog>
+	<dialog name="CCollectionExportDlg" cookie="StSyBuStStStStStEdBuBuBu" caption="ייצא ספריה">
+		<control caption=".אפשרות זו נועדה לייצא את התכנים של תיקיית האלבום כקובץ אוסף מתקדם. אנא בחר תבנית ולחץ הבא כדי להמשיך. |התאם אישית את האוסף שלך על ידי הכנסת המידע מטה."/>
+		<control/>
+		<control caption="מידע התבנית:"/>
+		<control caption="שם:"/>
+		<control/>
+		<control caption="מחבר:"/>
+		<control/>
+		<control caption="תיאור:"/>
+		<control/>
+		<control caption="מחק|_הקודם"/>
+		<control caption="_הבא|יצא..."/>
+		<control caption="_בטל"/>
+	</dialog>
+	<dialog name="CTorrentSeedDlg" cookie="StBuBuBuStms" caption="פתח קובץ טורנט">
+		<control caption="?פתחת קובץ טורנט של ביטורנט. האם ברצונך להוריד את תכניו, או להפיצו מחדש"/>
+		<control caption="הורד"/>
+		<control caption="הפץ"/>
+		<control caption="ביטול"/>
+		<control caption="בכדי לשתף קבצים שלמים בעזרת ביטורנט יש לפני כן להפעיל תהליך הפצה, כשהתהליך מסתיים הטורנט יופי כפריט נוסף ברשימת ההורדה שלך"/>
+		<control/>
+	</dialog>
+	<dialog name="CTorrentFilesPage" cookie="StSy" caption="Files">
+		<control/>
+		<control/>
+	</dialog>
+	<dialog name="CTorrentTrackersPage" cookie="EdEdEdSyStBuStStStCoBuBuBu" caption="Trackers">
+		<control/>
+		<control/>
+		<control/>
+		<control/>
+		<control caption=":גשש"/>
+		<control caption="_Current Tracker:"/>
+		<control caption="Seeds (Complete):"/>
+		<control caption="Peers (Incomplete):"/>
+		<control caption="Tracker Mode:"/>
+		<control caption="Disabled|Custom|Single Tracker|Multi-tracker|Multi-tracker (locked)"/>
+		<control caption="רענן"/>
+		<control caption="הוסף"/>
+		<control caption="הסר"/>
+	</dialog>
+	<dialog name="CTorrentGeneralPage" cookie="EdEdEdEdEdCoEdBuStStStStBuStStSt" caption="מידע מתקדם של ביטורנט">
+		<control/>
+		<control/>
+		<control/>
+		<control/>
+		<control/>
+		<control caption="לפי הצורך|כשהיחס העברות מעל 100%|רק כשמתבקש|אף פעם"/>
+		<control/>
+		<control caption=":מידע על הטורנט"/>
+		<control caption=":שם"/>
+		<control caption=":נוצר"/>
+		<control caption=":לפי"/>
+		<control caption=":הערות"/>
+		<control caption=":העברות"/>
+		<control caption=":התחל העברות של הורדה חדשה"/>
+		<control caption="Total Uploaded:"/>
+		<control caption="Notes:"/>
+	</dialog>
+	<dialog name="CDownloadEditPage" cookie="StBuStStStStBuStEdEdEdSyBuEdBuEdBuEdBuEdBuEd" caption="ערוך הורדה">
+		<control caption="אזהרה: תיבת דו-שיח זו מעניקה אפשרויות מתקדמות לעריכה למשתמשים כבדים אשר ים, אם יעשה בה שימוש באופן שגוי עלולה לגרום לנזק."/>
+		<control caption="שם קובץ וגודל:"/>
+		<control caption="שם קובץ:"/>
+		<control caption="שם קובץ:"/>
+		<control caption="גודל קובץ (בתים):"/>
+		<control caption="Date:"/>
+		<control caption="URNs:"/>
+		<control caption="אמין"/>
+		<control/>
+		<control/>
+		<control/>
+		<control/>
+		<control caption="&#160;SHA1:"/>
+		<control/>
+		<control caption="&#160;ED2K:"/>
+		<control/>
+		<control caption="&#160;MD5:"/>
+		<control/>
+		<control caption="&#160;Tiger-Root:"/>
+		<control/>
+		<control caption="&#160;BitTorrent:"/>
+		<control/>
+	</dialog>
+	<dialog name="CDownloadActionsPage" cookie="StStStStStStEdEdBuBuStStBu" caption="פעולות">
+		<control caption="אזהרה: תיבת דו-שיח זו מעניקה אפשרויות מתקדמות לעריכה למשתמשים כבדים אשר ים, אם יעשה בה שימוש באופן שגוי עלולה לגרום לנזק."/>
+		<control caption="שכח את כל המקורות הידועים"/>
+		<control caption="שכח את מצב האימות הנוכחי ואמת מחדש"/>
+		<control caption="הנח שהקובץ שלם ב-100% ואמת את הקובץ מחדש"/>
+		<control caption="מזג עם קובץ מקומי וודא"/>
+		<control caption="ביטול"/>
+		<control/>
+		<control/>
+		<control caption="פעולות:"/>
+		<control caption="מוחק _מידע:"/>
+		<control caption="טווח בתים:"/>
+		<control caption="עד"/>
+		<control caption="מחק"/>
+	</dialog>
+	<dialog name="CDownloadGroupDlg" cookie="BuEdBuEdBuBuBuCoBuBuBuCoStBuBu" caption="הורד מאפייני קבוצה">
+		<control caption=":שם"/>
+		<control/>
+		<control caption=":התיקייה לשמירת קבצים כשמסתיימת ההורדה"/>
+		<control/>
+		<control/>
+		<control/>
+		<control caption=":מסננים"/>
+		<control/>
+		<control caption="הוסף"/>
+		<control caption="הסר"/>
+		<control caption=":כל סוג קובץ"/>
+		<control/>
+		<control caption="_BitTorrent"/>
+		<control caption="*Drag&apos;n&apos;drop any download later."/>
+		<control caption="אישור"/>
+		<control caption="ביטול"/>
+	</dialog>
+	<dialog name="CMediaVisDlg" cookie="BuSyCoBuBuBu" caption="בחר אפקט ויזואלי">
+		<control caption=":בחר אפקט ויזואלי למוזיקה מהרשימה"/>
+		<control/>
+		<control caption="תצוגה מיושנת|תצוגה בגודל מלא|תצוגה גדולה|תצוגה בינונית|תצוגה קטנה"/>
+		<control caption="...התקנה"/>
+		<control caption="אישור"/>
+		<control caption="ביטול"/>
+	</dialog>
+	<dialog name="CUpgradeDlg" cookie="StStBuBuBu" caption="הודעת עדכון גרסה">
+		<control caption="?קיימת גרסא חדשה לשרזה. האם ברצונך לשדרג"/>
+		<control caption="אם בחרת לשדרג כעת, שרזה יוסיף את השדרוג לרשימת ההורדות ויתחיל להוריד אותו באופן אוטומטי"/>
+		<control caption="אל תבדוק אם קיימות גרסאות חדשות"/>
+		<control caption="_שדרג כעת"/>
+		<control caption="ביטול"/>
+	</dialog>
+	<dialog name="CDownloadReviewDlg" cookie="BuSyEd" caption="הורד ביקורות">
+		<control caption="אישור"/>
+		<control/>
+		<control/>
+	</dialog>
+	<dialog name="CDecodeMetadataDlg" cookie="StCoBuBuBuStStBuBu" caption="Metadata-התאמת שפה ל">
+		<control caption="אנא בחר שפה:"/>
+		<control caption="Arabic|Baltic|Central European|Chinese simplified|Chinese traditional|Cyrillic|Greek|Hebrew|Japanese|Korean|Thai|Turkish|Vietnamese"/>
+		<control caption="Preview:"/>
+		<control/>
+		<control/>
+		<control/>
+		<control/>
+		<control caption="אישור"/>
+		<control caption="ביטול"/>
+	</dialog>
+	<dialog name="CSelectDialog" cookie="StCoBuBu" caption="Selection">
+		<control caption="Select File:"/>
+		<control/>
+		<control caption="אישור"/>
+		<control caption="ביטול"/>
+		<control/>
+	</dialog>
+	<dialog name="CIrcInputDlg" cookie="EdBuBuSt" caption="Channel Name|Reason Why">
+		<control/>
+		<control caption="אישור"/>
+		<control caption="ביטול"/>
+		<control caption="Add a channel name:|Enter kick/ban reason:"/>
+	</dialog>
+	<dialog name="CHelpDlg" cookie="BuAf" caption="עזרה של שרזה">
+		<control caption="סגור"/>
+		<control/>
+	</dialog>
+</dialogs>
+<!-- Columns Definitions -->
+<listcolumns>
+	<list name="CDownloadCtrl">
+		<column from="Downloaded File" to="קובץ בהורדה"/>
+		<column from="Size" to="גודל"/>
+		<column from="Progress" to="התקדמות"/>
+		<column from="Transfer" to="הורד"/>
+		<column from="Percent" to="הסתיים"/>
+		<column from="Speed" to="מהירות"/>
+		<column from="Status" to="מצב"/>
+		<column from="Client" to="מקורות"/>
+		<column from="Country" to="ארץ"/>
+	</list>
+	<list name="CUploadCtrl">
+		<column from="Uploaded File" to="קובץ שהועלה"/>
+		<column from="Size" to="גודל"/>
+		<column from="Progress" to="התקדמות"/>
+		<column from="Transfer" to="הורד"/>
+		<column from="Speed" to="מהירות"/>
+		<column from="Rating" to="דירוג"/>
+		<column from="Remote User" to="משתמש"/>
+		<column from="Client" to="מקורות"/>
+		<column from="Country" to="ארץ"/>
+	</list>
+	<list name="CLibraryWnd">
+		<column from="File" to="קובץ"/>
+		<column from="Type" to="סיומת"/>
+		<column from="Size" to="גודל"/>
+		<column from="Modified" to="השתנה"/>
+		<column from="Folder" to="תיקייה"/>
+		<column from="Shared" to="משותף"/>
+		<column from="Uploads" to="העלאות"/>
+		<column from="Hits" to="בקשות"/>
+	</list>
+	<list name="CNeighboursWnd">
+		<column from="Address" to="כתובת"/>
+		<column from="Port" to="יציאה"/>
+		<column from="Time" to="זמן"/>
+		<column from="Traffic" to="רוחב פס"/>
+		<column from="Total" to="כמות כוללת"/>
+		<column from="Packets" to="פקטים"/>
+		<column from="Flow" to="זרימה"/>
+		<column from="Leaves" to="קווי ענף"/>
+		<column from="Mode" to="מצב"/>
+		<column from="Client" to="לקוח"/>
+		<column from="Name" to="שם"/>
+		<column from="Country" to="ארץ"/>
+	</list>
+	<list name="CHostCacheWnd">
+		<column from="Address" to="כתובת"/>
+		<column from="Port" to="יציאה"/>
+		<column from="Last Seen" to="נראה לאחרונה"/>
+		<column from="Client" to="לקוח"/>
+		<column from="Name" to="שם"/>
+		<column from="Description" to="תיאור"/>
+		<column from="Failures" to=""/>
+		<column from="CurUsers" to="משתמשים כרגע"/>
+		<column from="MaxUsers" to="מקסימום משתמשים"/>
+		<column from="Country" to="ארץ"/>
+	</list>
+	<list name="CDiscoveryWnd">
+		<column from="Address" to="כתובת"/>
+		<column from="Type" to="סוג"/>
+		<column from="Last Access" to="גישה אחרונה"/>
+		<column from="Hosts" to="משתמשים"/>
+		<column from="Accesses" to="גישות"/>
+		<column from="Updates" to="עדכונים"/>
+		<column from="Failures" to="תקלות"/>
+	</list>
+	<list name="CPacketWnd">
+		<column from="Time" to="זמן"/>
+		<column from="Address" to="כתובת"/>
+		<column from="Protocol" to="פרוטוקול"/>
+		<column from="Type" to="סוג"/>
+		<column from="TTL/Hops" to=""/>
+		<column from="GUID" to=""/>
+		<column from="Hex" to=""/>
+		<column from="ASCII" to=""/>
+	</list>
+	<list name="CSearchMonitorWnd">
+		<column from="Search" to="חיפוש"/>
+		<column from="URN" to=""/>
+		<column from="Schema" to="סכמה"/>
+	</list>
+	<list name="CMatchCtrl">
+		<column from="File" to="קובץ"/>
+		<column from="Type" to="סיומת"/>
+		<column from="Size" to="גודל"/>
+		<column from="Host/Count" to="משתמשים/כמות"/>
+		<column from="Speed" to="מהירות"/>
+		<column from="Rating" to="דירוג"/>
+		<column from="Status" to="מצב"/>
+		<column from="Client" to="מקורות"/>
+		<column from="Country" to="ארץ"/>
+		<column from="Time" to="זמן"/>
+	</list>
+	<list name="CSecurityWnd">
+		<column from="Address / Content" to="כתובת/תוכן"/>
+		<column from="Hits" to="בקשות"/>
+		<column from="#" to=""/>
+		<column from="Action" to="פעולה"/>
+		<column from="Expires" to="בתוקף עד"/>
+		<column from="Match" to=""/>
+		<column from="Comment" to="הערה"/>
+	</list>
+	<list name="CSchedulerWnd">
+		<column from="Task" to="פעולה"/>
+		<column from="Date" to="תאריך"/>
+		<column from="Time" to="זמן"/>
+		<column from="Status" to="מצב"/>
+		<column from="Activity" to="פעיל"/>
+		<column from="Comment" to="הערה"/>
+	</list>
+	<list name="CUploadQueueList">
+		<column from="Name" to="שם"/>
+		<column from="Criteria" to="קריטריון"/>
+		<column from="Minimum" to="רוחב פס"/>
+		<column from="Transfers" to="העברות"/>
+		<column from="Priority" to="סדר"/>
+	</list>
+	<list name="CAdvancedSettingsList">
+		<column from="Setting" to="הגדרה"/>
+		<column from="Value" to="ערך"/>
+	</list>
+	<list name="CFavoritesProfileList">
+		<column from="Name" to="שם"/>
+		<column from="URL" to="כתובת אינטרנט"/>
+	</list>
+	<list name="CFileSourcesPageList">
+		<column from="URL" to="כתובת אינטרנט"/>
+		<column from="Expires" to="בתוקף עד"/>
+	</list>
+	<list name="CTorrentFileList">
+		<column from="Filename" to="שם קובץ"/>
+		<column from="Size" to="גודל"/>
+		<column from="Status" to="מצב"/>
+	</list>
+	<list name="CTorrentTrackerList">
+		<column from="Tracker" to="גשש"/>
+		<column from="Status" to="מצב"/>
+		<column from="Type" to="סוג"/>
+	</list>
+	<list name="CReviewList">
+		<column from="User" to="משתמש"/>
+		<column from="Rating" to="דירוג"/>
+		<column from="Comments" to="הערות"/>
+		<column from="Order" to="סדר"/>
+	</list>
+</listcolumns>
+</skin>

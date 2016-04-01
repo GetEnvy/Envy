@@ -1,0 +1,26 @@
+//
+// SkinScan.idl
+//
+// This file will be processed by the MIDL tool to produce
+// the type library (SkinScan.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+import "Envy.idl";
+
+[
+	uuid(251F45EE-7C3D-4D89-ADB8-974568419DBD),
+	version(1.0),
+	helpstring("SkinScan 1.0 Type Library")
+]
+library SkinScanLib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(C5594A56-ED24-44C8-B6DA-BDC1BCF809DD)
+	]
+	coclass SkinScan
+	{
+		[default] interface ILibraryBuilderPlugin;
+	};
+};

@@ -1,0 +1,31 @@
+//
+// RatDVDReader.idl
+//
+// This file will be processed by the MIDL tool to produce
+// the type library (RatDVDReader.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+import "Envy.idl";
+
+[
+	uuid(69A065D3-C03D-4fa2-9C43-CB38D2078567),
+	version(1.0),
+	helpstring("RatDVDReader 1.0 Type Library")
+]
+library RatDVDReaderLib
+{
+	importlib("stdole2.tlb");
+
+	interface IImageServicePlugin;
+	interface ILibraryBuilderPlugin;
+
+	[
+		uuid(C4E7FDB7-C085-465B-AC72-3AB28A20C353),
+	]
+	coclass RatDVDReader
+	{
+		[default] interface IImageServicePlugin;
+		interface ILibraryBuilderPlugin;
+	};
+};

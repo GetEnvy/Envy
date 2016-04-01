@@ -1,0 +1,25 @@
+﻿		<h4><%= network_caption %></h4>
+<%? !network_connected %>
+		<p>
+			<%= text_networkdisabled %> -<!--This network is <b>not</b> enabled-->
+			<a href="?connect=<%= network_id %>"><strong><%= text_networkconnect %> <%= network_caption %></strong></a>
+		</p>
+<%?%><%? network_connected %>
+		<p>
+			<%= text_networkenabled %> -<!--This network is enabled-->
+			<a href="?disconnect=<%= network_id %>"><strong><%= text_networkdisconnect %> <%= network_caption %></strong></a>
+		</p>
+		<div class="centertable">
+			<table>
+				<tr>
+					<th><%= text_networkaddress %></th>
+					<th><%= text_networktime %></th>
+					<th><%= text_networkpackets %></th>
+					<th><%= text_networkbandwidth %></th>
+					<th><%= text_networktotal %></th>
+					<th><%= text_networkmode %></th>
+					<th><%= text_networkleaves %></th>
+					<th><%= text_useragent %></th>
+					<th></th>
+				</tr>
+<%?%>

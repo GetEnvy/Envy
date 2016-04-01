@@ -1,0 +1,32 @@
+﻿<!-- downloadsTop-->
+	</ul>
+	<div id="content">
+		<div id="functions"><a href="?refresh=<%= random %>"><%= text_refreshpage %></a></div>
+		<form method="get" action="">
+			<div id="filters">
+				<input type="hidden" name="filter_set" value="1" />
+				<b><%= text_filter %></b>
+				<input type="checkbox" id="filter_active" name="filter_active" value="1" <%= filter_active %> />
+				<label for="filter_active"><%= text_filteractive %></label>
+				<input type="checkbox" id="filter_queued" name="filter_queued" value="1" <%= filter_queued %> />
+				<label for="filter_queued"><%= text_filterqueued %></label>
+				<input type="checkbox" id="filter_sources" name="filter_sources" value="1" <%= filter_sources %> />
+				<label for="filter_sources"><%= text_filternosources %></label>
+				<input type="checkbox" id="filter_paused" name="filter_paused" value="1" <%= filter_paused %> />
+				<label for="filter_paused"><%= text_filterpaused %></label>
+				<input type="checkbox" id="filter_show_all" name="filter_show_all" value="1" <%= filter_show_all %> />
+				<label for="filter_show_all"><%= text_filtershowall %></label>
+				<input type="submit" value=" <%= text_filtersubmit %> " /><br/>
+			</div>
+		</form><br/>
+		<table>
+			<tr>
+				<th><%= text_filename %></th>
+				<th><%= text_filesize %></th>
+				<th><%= text_fileprogress %></th>
+				<th><%= text_filespeed %></th>
+				<th><%= text_filesources %></th>
+				<th><%= text_filestatus %></th>
+				<th><%= text_fileoptions %></th>
+			</tr>
+<!-- /downloadsTop-->

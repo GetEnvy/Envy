@@ -1,0 +1,31 @@
+//
+// VirusTotal.idl
+//
+// This file will be processed by the MIDL tool to produce
+// the type library (VirusTotal.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+import "Envy.idl";
+
+[
+	uuid(ABC45D7F-EF52-4E5C-986A-93674FE3BBCC),
+	version(1.0),
+	helpstring("VirusTotal 1.0 Type Library")
+]
+library VirusTotalLib
+{
+	importlib("stdole2.tlb");
+
+	interface IGeneralPlugin;
+	interface ICommandPlugin;
+
+	[
+		uuid(C0C4B390-C390-414A-A1F0-6EF1A45B5852)
+	]
+	coclass Plugin
+	{
+		[default] interface IGeneralPlugin;
+		interface ICommandPlugin;
+	};
+};

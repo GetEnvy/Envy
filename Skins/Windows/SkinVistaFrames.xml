@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<skin xmlns="http://schemas.getenvy.com/Skin.xsd" version="1.0">
+
+<manifest
+ name="Windows7 Frames"
+ author="Envy"
+ icon=""
+ description="Add Windows 7/Vista Style Window Frames"
+ link="http://getenvy.com"
+ email="Contact(at)GetEnvy.com"
+ license="Persistent Public Domain (PPD)"
+ platform="Envy 1.0"
+ path="Windows"
+ version="1.0"
+ type="Skin"
+/>
+
+<windowskins>
+
+<!-- Main Window -->
+
+<windowSkin>
+<image 	path="FrameVista.png"/>
+<target window="CMainWnd"/>
+<parts>
+ <part name="TopLeftAlt" 	rect="1,0,380,32"/>
+ <part name="TopAlt"		rect="240,0,30,32"/>
+ <part name="TopRightAlt"	rect="419,0,220,32"/>
+ <part name="TopLeft"		rect="1,32,380,32"/>
+ <part name="Top"		rect="240,32,2,32"/>
+ <part name="TopRight"		rect="419,32,220,32"/>
+ <part name="LeftTop"		rect="1,76,8,128"/>
+ <part name="Left"		rect="21,132,8,128" mode="stretch"/>
+ <part name="LeftBottom"	rect="1,230,8,200"/>
+ <part name="RightTop"		rect="631,75,8,128"/>
+ <part name="Right"		rect="30,132,8,128" mode="stretch"/>
+ <part name="RightBottom"	rect="631,230,8,200"/>
+ <part name="BottomLeft"	rect="1,431,380,8"/>
+ <part name="Bottom"		rect="180,431,40,8"/>
+ <part name="BottomRight"	rect="419,431,220,8"/>
+ <part name="MinimiseHover"	rect="523,135,26,21"/>
+ <part name="MinimiseDown"	rect="523,159,26,21"/>
+ <part name="MaximiseHover"	rect="549,135,26,21"/>
+ <part name="MaximiseDown"	rect="549,159,26,21"/>
+ <part name="CloseHover"	rect="575,135,42,21"/>
+ <part name="CloseDown" 	rect="575,159,42,21"/>
+</parts>
+<anchors>
+ <anchor name="Minimise"	rect="-101,0,26,21"/>
+ <anchor name="Maximise"	rect="-75,0,26,21"/>
+ <anchor name="Close"		rect="-49,0,42,21"/>
+</anchors>
+<region>
+ <shape type="roundRect"	rect="0,2,-1,-1" size="12,12"/>
+ <shape type="roundRect"	rect="0,-20,-1,-1" size="9,9" combine="or"/>
+ <shape type="rectangle"	rect="9,0,20,2" combine="or"/>
+ <shape type="rectangle"	rect="20,1,22,2" combine="or"/>
+ <shape type="rectangle"	rect="63,0,74,2" combine="or"/>
+ <shape type="rectangle"	rect="74,1,76,2" combine="or"/>
+ <shape type="rectangle"	rect="108,1,111,2" combine="or"/>
+</region>
+<maximiseCrop rect="4,8,-4,-4"/>
+</windowSkin>
+
+<!-- Settings Window -->
+
+<windowSkin>
+<image path="FrameVista.png"/>
+<target window="CDialog"/>
+<parts>
+ <part name="TopLeft"		rect="9,104,380,27"/>
+ <part name="Top"		rect="380,104,6,27"/>
+ <part name="TopRight"		rect="395,104,120,27"/>
+ <part name="LeftTop"		rect="9,130,7,94"/>
+ <part name="Left"		rect="9,360,7,30"/>
+ <part name="RightTop"		rect="623,130,8,94"/>
+ <part name="Right"		rect="623,360,8,4"/>
+ <part name="BottomLeft"	rect="9,423,380,8"/>
+ <part name="Bottom"		rect="220,423,20,8"/>
+ <part name="BottomRight"	rect="511,423,120,8"/>
+ <part name="CloseHover"	rect="517,105,54,23"/>
+ <part name="CloseDown" 	rect="575,105,54,23"/>
+</parts>
+<anchors>
+ <anchor name="Close"		rect="-56,1,54,23"/>
+ <anchor name="Icon"		rect="6,5,16,16"/>
+</anchors>
+<region>
+ <shape type="roundRect"	rect="0,0,-1,-1" size="12,12"/>
+ <shape type="roundRect"	rect="0,0,10,-1" size="9,9" combine="or"/>
+</region>
+<caption align="left" rect="26,1,260,24" fontFace="Segoe UI" fontSize="12" fontWeight="Normal" color="000000" outlinecolor="ECECEC" inactivecolor="606060"/>
+</windowSkin>
+
+<!-- Download Monitor Window -->
+
+<windowSkin>
+<image path="FrameVista.png"/>
+<target window="CDownloadMonitorDlg"/>
+<parts>
+ <part name="TopLeft"		rect="9,104,110,27"/>
+ <part name="Top"		rect="110,104,2,27"/>
+ <part name="TopRight"		rect="340,76,100,27"/>
+ <part name="LeftTop"		rect="9,140,7,110"/>
+ <part name="Left"		rect="9,360,7,30"/>
+ <part name="RightTop"		rect="623,140,8,110"/>
+ <part name="Right"		rect="623,320,8,10"/>
+ <part name="BottomLeft"	rect="9,423,380,8"/>
+ <part name="Bottom"		rect="220,423,40,8"/>
+ <part name="BottomRight"	rect="600,423,31,8"/>
+ <part name="MinimiseHover"	rect="524,182,26,18"/>
+ <part name="MinimiseDown"	rect="524,202,26,18"/>
+ <part name="CloseHover"	rect="575,182,42,18"/>
+ <part name="CloseDown" 	rect="575,202,42,18"/>
+</parts>
+<anchors>
+ <anchor name="Icon"		rect="6,5,16,16"/>
+ <anchor name="Minimise"	rect="-75,1,26,18"/>
+ <anchor name="Close"		rect="-49,1,42,18"/>
+</anchors>
+<region>
+ <shape type="roundRect"	rect="0,0,-1,-1" size="12,12"/>
+ <shape type="roundRect"	rect="0,0,10,-1" size="9,9" combine="or"/>
+</region>
+<caption align="left" rect="26,1,280,24" fontFace="Segoe UI" fontSize="12" fontWeight="Normal" color="000000" outlinecolor="ECECEC" inactivecolor="707070"/>
+</windowSkin>
+
+<!-- Floating windows -->
+
+<windowSkin>
+<image path="FrameVista.png"/>
+<target window="CChildWnd"/>
+<parts>
+ <part name="TopLeft"		rect="9,76,220,27"/>
+ <part name="Top"		rect="230,76,10,27"/>
+ <part name="TopRight"		rect="482,76,148,27"/>
+ <part name="Left"		rect="9,152,7,270" mode="stretch"/>
+ <part name="Right"		rect="623,152,7,270" mode="stretch"/>
+ <part name="BottomLeft"	rect="9,423,210,7"/>
+ <part name="Bottom"		rect="220,423,20,7"/>
+ <part name="BottomRight"	rect="600,423,30,7"/>
+ <part name="MinimiseHover"	rect="524,182,25,18"/>
+ <part name="MinimiseDown"	rect="524,202,25,18"/>
+ <part name="MaximiseHover"	rect="549,182,26,17"/>
+ <part name="MaximiseDown"	rect="549,202,26,17"/>
+ <part name="CloseHover"	rect="575,182,42,18"/>
+ <part name="CloseDown" 	rect="575,202,42,18"/>
+</parts>
+<anchors>
+ <anchor name="Icon"		rect="6,5,16,16"/>
+ <anchor name="Minimise"	rect="-99,1,25,18"/>
+ <anchor name="Maximise"	rect="-74,1,26,18"/>
+ <anchor name="Close"		rect="-48,1,42,18"/>
+</anchors>
+<region>
+ <shape type="roundRect"	rect="0,0,-1,-1" size="9,9"/>
+</region>
+<caption align="left" rect="26,1,260,24" fontFace="Segoe UI" fontSize="12" fontWeight="Normal" color="000000" outlinecolor="ECECEC" inactivecolor="707070"/>
+</windowSkin>
+
+</windowskins>
+
+</skin>

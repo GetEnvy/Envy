@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package xmlns="http://schemas.getenvy.com/Skin.xsd" version="1.0">
+
+<manifest
+ name="GeoIP Update"
+ version="2012.00"
+ author="Maxmind (via GetEnvy.com)"
+ description="This product includes GeoLite data created by MaxMind, available from http://maxmind.com/"
+ link="http://maxmind.com/download/geoip/database/GeoLiteCountry/GeoIP.dat.gz"
+ email="Contact(at)getenvy.com"
+ license="OPEN DATA LICENSE"
+ platform="Envy 1.0"
+ path="Data"
+ type="Data"
+/>
+
+</package>

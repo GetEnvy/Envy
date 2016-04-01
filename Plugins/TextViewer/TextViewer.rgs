@@ -1,0 +1,46 @@
+HKCR
+{
+	Envy.TextViewerPlugin.1 = s 'Envy Text Viewer Plugin'
+	{
+		CLSID = s '{CFFA98CB-08D4-402B-8595-1E067D563060}'
+	}
+	Envy.TextViewerPlugin = s 'Envy Text Viewer Plugin'
+	{
+		CLSID = s '{CFFA98CB-08D4-402B-8595-1E067D563060}'
+		CurVer = s 'Envy.TextViewerPlugin.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {CFFA98CB-08D4-402B-8595-1E067D563060} = s 'Envy Text Viewer Plugin'
+		{
+			ProgID = s 'Envy.TextViewerPlugin.1'
+			VersionIndependentProgID = s 'Envy.TextViewerPlugin'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{2696CE9F-423F-4901-A109-0C85E6430266}'
+		}
+	}
+}
+
+HKCU
+{
+	NoRemove Software
+	{
+		NoRemove Envy
+		{
+			NoRemove Envy
+			{
+				NoRemove Plugins
+				{
+					NoRemove General
+					{
+						val 'Envy Text Viewer' = s '{CFFA98CB-08D4-402B-8595-1E067D563060}'
+					}
+					ForceRemove val '{CFFA98CB-08D4-402B-8595-1E067D563060}' = s ''
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,11 @@
+HKCR
+{
+	NoRemove AppID
+	{
+		'%APPID%' = s 'ShortURL Plugin'
+		'ShortURL.DLL'
+		{
+			val AppID = s '%APPID%'
+		}
+	}
+}

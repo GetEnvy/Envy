@@ -1,0 +1,198 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "Resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,0
+ PRODUCTVERSION 1,0,0,0
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x40004L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "000004b0"
+        BEGIN
+            VALUE "Comments", "Envy Skin Installer"
+            VALUE "CompanyName", "Envy Development Team"
+            VALUE "FileDescription", "Envy Skin Installer"
+            VALUE "FileVersion", "1.0.0.0"
+            VALUE "InternalName", "SkinInstaller"
+            VALUE "LegalCopyright", "© Envy 2016  (2002-2014)"
+            VALUE "OriginalFilename", "SkinInstaller.exe"
+            VALUE "ProductName", "Envy"
+            VALUE "ProductVersion", "1.0.0.0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x0, 1200
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+// English resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+LANGUAGE LANG_ENGLISH, SUBLANG_DEFAULT
+#pragma code_page(1252)
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure
+// application icon remains consistent on all systems.
+IDI_ICON			ICON                    "Res\\Skin.ico"
+IDI_ENVY		ICON                    "Res\\Envy.ico"
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_BANNER			BITMAP                  "Res\\Banner.bmp"
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_MAIN DIALOGEX 0, 0, 292, 135
+STYLE DS_SETFONT | DS_MODALFRAME | DS_CENTER | WS_MINIMIZEBOX | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Envy Skin Installer"
+FONT 8, "Tahoma", 0, 0, 0x0
+BEGIN
+    LTEXT           "",IDC_WHITERECT,0,31,293,75
+    LTEXT           "Unknown Skin",IDC_NAME,10,38,265,14
+    LTEXT           "Unknown Author",IDC_AUTH,10,52,265,19
+    CONTROL         "Progress1",IDC_PROGRESS,"msctls_progress32",WS_BORDER,10,74,273,10
+    LTEXT           "Ready to install",IDC_STATUS,10,91,273,8
+    CONTROL         "",-1,"Static",SS_ETCHEDHORZ,0,106,293,1
+    PUSHBUTTON      "Select &Skin",IDC_CONFIG,9,114,83,15
+    DEFPUSHBUTTON   "&Install",IDC_INSTALL,190,114,45,15
+    PUSHBUTTON      "&Close",IDOK,240,114,45,15
+END
+
+
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE
+BEGIN
+    "Resource.h\0"
+END
+
+2 TEXTINCLUDE
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)\r\n"
+    "LANGUAGE 9, 1\r\n"
+    "#pragma code_page(1252)\r\n"
+    "#include ""afxres.rc""     // Standard components\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+#endif    // English resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+LANGUAGE 9, 1
+#pragma code_page(1252)
+#include "afxres.rc"     // Standard components
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// RT_MANIFEST
+//
+
+// Note: Obsolete, for reference.  Manifest is generated, see Skin.h for controls
+
+//#define IDR_MANIFEST 1	// 2 for a DLL
+//
+//IDR_MANIFEST RT_MANIFEST
+//{
+//   "<assembly xmlns=""urn:schemas-microsoft-com:asm.v1"" manifestVersion=""1.0"">
+//       <assemblyIdentity type=""win32"" name=""Envy.SkinInstaller"" version=""1.0.0.0""
+//#ifdef WIN64
+//         processorArchitecture=""amd64""
+//#else
+//         processorArchitecture=""x86""
+//#endif
+//         publicKeyToken=""dfbe2673baf698eb"" />
+//      <description>Envy Skin Installer</description>
+//       <dependency>
+//         <dependentAssembly>
+//           <assemblyIdentity type=""win32"" name=""Microsoft.Windows.Common-Controls"" version=""6.0.0.0"" processorArchitecture=""*"" publicKeyToken=""6595b64144ccf1df"" language=""*"" />
+//         </dependentAssembly>
+//       </dependency>
+//       <asmv2:trustInfo xmlns:asmv2=""urn:schemas-microsoft-com:asm.v2"">
+//         <asmv2:security>
+//           <asmv2:requestedPrivileges>
+//             <asmv2:requestedExecutionLevel level=""asInvoker"" uiAccess=""false"" />
+//           </asmv2:requestedPrivileges>
+//         </asmv2:security>
+//       </asmv2:trustInfo>
+//     </assembly>"
+//}

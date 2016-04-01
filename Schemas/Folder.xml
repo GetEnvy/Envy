@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<schemaDescriptor location="http://schemas.getenvy.com/Folder.xsd" xmlns="http://schemas.getenvy.com/SchemaDescriptor.xsd">
+
+	<object type="folder" availability="default"/>
+	<contains>
+		<object type="folder" location="http://schemas.getenvy.com/Folder.xsd"/>
+		<object type="file" location="http://schemas.getenvy.com/File.xsd"/>
+	</contains>
+	<images>
+		<icon path="Folder.ico"/>
+	</images>
+	<titles>
+		<title language="en">Folder</title>
+		<title language="af">Gids</title>
+		<title language="ca">Carpeta</title>
+		<title language="cz">Složka</title>
+		<title language="de">Ordner</title>
+		<title language="ee">Kaust</title>
+		<title language="es">Carpeta</title>
+		<title language="fr">Dossier</title>
+		<title language="gr">Φάκελος</title>
+		<title language="he">ספריה</title>
+		<title language="hr">Mapa</title>
+		<title language="hu">Mappa</title>
+		<title language="it">Cartella</title>
+		<title language="lt">Katalogas</title>
+		<title language="nl">Map</title>
+		<title language="no">Mappe</title>
+		<title language="pt">Pasta</title>
+		<title language="ru">Папка</title>
+		<title language="sl">Mapa</title>
+		<title language="sq">Dosja</title>
+		<title language="sr">Fascikla</title>
+		<title language="sv">Mapp</title>
+		<title language="tr">Klasörler</title>
+		<title language="ja">フォルダー</title>
+		<title language="zhs">文件夹</title>
+		<title language="zht">資料夾</title>
+	</titles>
+	<headerContent version="1.0">
+		<title>{title}</title>
+		<subtitle>{description}</subtitle>
+	</headerContent>
+	<members>
+		<member name="title" search="generic">
+			<title language="en">Title</title>
+			<title language="af">Titel</title>
+			<title language="ca">Títol</title>
+			<title language="cz">Název</title>
+			<title language="de">Titel</title>
+			<title language="ee">Pealkiri</title>
+			<title language="es">Título</title>
+			<title language="fr">Titre</title>
+			<title language="gr">Τίτλος</title>
+			<title language="he">כותרת</title>
+			<title language="hr">Naslov</title>
+			<title language="hu">Cím</title>
+			<title language="it">Titolo</title>
+			<title language="lt">Pavadinimas</title>
+			<title language="nl">Titel</title>
+			<title language="no">Tittel</title>
+			<title language="pl">Tytuł</title>
+			<title language="pt">Título</title>
+			<title language="ru">Название</title>
+			<title language="sl">Naslov</title>
+			<title language="sq">Titulli</title>
+			<title language="sr">Naslov</title>
+			<title language="sv">Titel</title>
+			<title language="tr">Başlık</title>
+			<title language="ja">タイトル</title>
+			<title language="ko">제목</title>
+			<title language="zhs">标题</title>
+			<title language="zht">標題</title>
+		</member>
+		<member name="description" search="none">
+			<title language="en">Description</title>
+			<title language="af">Beskrywing</title>
+			<title language="ca">Descripció</title>
+			<title language="cz">Popis</title>
+			<title language="de">Beschreibung</title>
+			<title language="ee">Kirjeldus</title>
+			<title language="es">Descripción</title>
+			<title language="fr">Description</title>
+			<title language="gr">Περιγραφή</title>
+			<title language="he">תיאור</title>
+			<title language="hr">Opis</title>
+			<title language="hu">Leírás</title>
+			<title language="it">Descrizione</title>
+			<title language="lt">Aprašas</title>
+			<title language="nl">Omschrijving</title>
+			<title language="no">Beskrivelse</title>
+			<title language="pt">Descrição</title>
+			<title language="ru">Описание</title>
+			<title language="sl">Opis</title>
+			<title language="sq">Përshkrimi</title>
+			<title language="sr">Opis</title>
+			<title language="sv">Beskrivning</title>
+			<title language="tr">Tanımlama</title>
+			<title language="ja">詳細</title>
+			<title language="zhs">描述</title>
+			<title language="zht">描述</title>
+		</member>
+		<member name="collector" search="indexed">
+			<title language="en">Collector</title>
+			<title language="af">Versamelaar</title>
+			<title language="ca">Col·lector</title>
+			<title language="cz">Sběratel</title>
+			<title language="de">Sammler</title>
+			<title language="ee">Koguja</title>
+			<title language="es">Colector</title>
+			<title language="fr">Collecteur</title>
+			<title language="gr">Συλλέκτης</title>
+			<title language="he">שם יוצר האוסף</title>
+			<title language="hr">Sakupio</title>
+			<title language="hu">Gyűjtő</title>
+			<title language="it">Raccoglitore</title>
+			<title language="lt">Kolekcionierius</title>
+			<title language="nl">Samensteller</title>
+			<title language="no">Samler</title>
+			<title language="pt">Colecionador</title>
+			<title language="ru">Коллекционер</title>
+			<title language="sl">Kolektor</title>
+			<title language="sq">Koleksionuesi</title>
+			<title language="sr">Sakupio</title>
+			<title language="sv">Samlare</title>
+			<title language="tr">Koleksiyoncu</title>
+			<title language="ja">コレクター</title>
+			<title language="zhs">收藏者</title>
+			<title language="zht">美術品收藏者</title>
+		</member>
+		<member name="comments">
+			<title language="en">Comments</title>
+			<title language="af">Kommentaar</title>
+			<title language="ca">Comentaris</title>
+			<title language="cz">Komentáře</title>
+			<title language="de">Kommentar</title>
+			<title language="ee">Arvamused</title>
+			<title language="es">Comentarios</title>
+			<title language="fr">Commentaires</title>
+			<title language="gr">Σχόλια</title>
+			<title language="he">הערות</title>
+			<title language="hr">Komentari</title>
+			<title language="hu">Megjegyzés</title>
+			<title language="it">Commenti</title>
+			<title language="lt">Komentarai</title>
+			<title language="nl">Opmerkingen</title>
+			<title language="no">Kommentar</title>
+			<title language="pt">Comentários</title>
+			<title language="ru">Коментарии</title>
+			<title language="sl">Komentarji</title>
+			<title language="sq">Komente</title>
+			<title language="sr">Komentari</title>
+			<title language="sv">Kommentarer</title>
+			<title language="tr">Yorumlar</title>
+			<title language="ja">コメント</title>
+			<title language="zhs">注释</title>
+			<title language="zht">注釋</title>
+		</member>
+	</members>
+
+</schemaDescriptor>

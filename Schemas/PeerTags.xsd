@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://schemas.getenvy.com/PeerTags.xsd" version="1.0" xmlns="http://www.w3.org/2001/XMLSchema">
+
+	<element name="PeerTags">
+		<complexType>
+			<element name="PeerTag" type="peertagType" minOccurs="0" maxOccurs="unbounded"/>
+		</complexType>
+	</element>
+	<complexType name="peertagType">
+		<all>
+			<attribute name="peertag" type="boolean"/>
+			<attribute name="peertaglink" type="uriReference"/>
+			<attribute name="peertagtype" editable="true" hidden="false">
+				<simpleType base="string">
+					<enumeration name="XX" value="Unsafe (0/Black: Corrupt)"/>
+					<enumeration name="NF" value="Unfriendly (1/Red: Not Free)"/>
+					<enumeration name="FF" value="Fanfriendly (2/Yellow: Informally Free)"/>
+					<enumeration name="SF" value="Sharefriendly (3/Green: Set Free)"/>
+					<enumeration name="PD" value="Pulic Domain (4/Blue: No Copyright)"/>
+					<enumeration name="PE" value="Personal (5/Grey: Private Nature)"/>
+					<enumeration name="PP" value="Envy (6/Orange: Reserved)"/>
+				</simpleType>
+			</attribute>
+			<attribute name="peertagflag" editable="true" hidden="false">
+				<simpleType base="string">
+					<enumeration name="xxxx" value="Extreme"/>
+					<enumeration name="adlt" value="Adult"/>
+					<enumeration name="urbn" value="Urban"/>
+					<enumeration name="subn" value="Suburban"/>
+					<enumeration name="rurl" value="Rural"/>
+					<enumeration name="ethn" value="Ethnic"/>
+					<enumeration name="intl" value="Intellectual"/>
+					<enumeration name="hist" value="Historic"/>
+					<enumeration name="chld" value="Children"/>
+					<enumeration name="joke" value="Humor"/>
+					<enumeration name="fict" value="Fiction"/>
+					<enumeration name="nonf" value="Nonfiction"/>
+					<enumeration name="prsn" value="Personal"/>
+					<enumeration name="data" value="Data"/>
+					<enumeration name="safe" value="Safe"/>
+					<enumeration name="warn" value="Warning"/>
+				</simpleType>
+			</attribute>
+			<attribute name="peertagdata" editable="true" hidden="false">
+				<simpleType base="string">
+					<enumeration name="audiohi" value="Audio HD"/>
+					<enumeration name="audiolo" value="Audio"/>
+					<enumeration name="videohi" value="Video HD"/>
+					<enumeration name="videolo" value="Video"/>
+					<enumeration name="imagehi" value="Image HD"/>
+					<enumeration name="imagelo" value="Image"/>
+					<enumeration name="documenthi" value="Document"/>
+					<enumeration name="documentlo" value="Minor Document"/>
+					<enumeration name="datahi" value="Data"/>
+					<enumeration name="datalo" value="Minor Data"/>
+				</simpleType>
+			</attribute>
+		</all>
+	</complexType>
+
+</schema>

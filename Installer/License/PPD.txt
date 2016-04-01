@@ -1,0 +1,19 @@
+___________________________________________________
+
+Persistent Public Domain License:
+
+This as-is material may be freely treated as Public Domain.
+
+Provided the work in all its forms and attendant uses
+shall remain available as persistently "Public Domain"
+until such time it naturally enters true public domain.
+
+History remains immutable:
+Authors do not disclaim copyright, but rather
+disclaim all conferred rights beyond asserting
+the reach and duration and spirit of this license.
+
+In short: Do not threaten, do not lie, do not worry.
+___________________________________________________
+
+[PPD]  http://ppd.getenvy.com

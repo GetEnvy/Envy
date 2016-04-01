@@ -1,0 +1,23 @@
+﻿<!-- login main body -->
+	<div class="poetry" id="frame">
+		<div class="padding left">
+			<p><%= text_welcome %></p>
+			<p><%= text_logininfo %></p>
+			<!-- If this is your Envy client's address, please enter your username and password, and click the <b>Login</b> button. -->
+		</div>
+		<div class="poetry" style="color: red; font-weight: bold; height: 3em;">
+			<%? failure %> <%= text_loginfail %> <%?%>
+			<!-- Username or password was incorrect, please try again. -->
+		</div>
+		<form method="get" action="">
+			<div style="text-align: right; width: 24em; margin: 0 auto;">
+				<input type="hidden" name="submit" value="1" />
+				<label><%= text_loginuser %></label>
+				<input type="text" name="username" size="20" value="<%= user_name %>" /><br />
+				<label><%= text_loginpass %></label>
+				<input type="password" name="password" size="20" /><br />
+				<input type="submit" value="<%= text_loginsubmit %>" />
+			</div>
+		</form>
+	</div>
+<!-- /login main body -->

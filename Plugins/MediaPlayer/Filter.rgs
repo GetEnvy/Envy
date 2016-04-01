@@ -1,0 +1,26 @@
+HKCR
+{
+	ForceRemove Envy.MediaFilter.1 = s 'Envy Media Filter Class'
+	{
+		CLSID = s '{C8CF1C0A-0848-4BF4-AC3E-FCFCDD88F3E1}'
+	}
+	ForceRemove Envy.MediaFilter = s 'Envy Media Filter Class'
+	{
+		CLSID = s '{C8CF1C0A-0848-4BF4-AC3E-FCFCDD88F3E1}'
+		CurVer = s 'Envy.MediaFilter.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {C8CF1C0A-0848-4BF4-AC3E-FCFCDD88F3E1} = s 'Envy Media Filter Class'
+		{
+			ProgID = s 'Envy.MediaFilter.1'
+			VersionIndependentProgID = s 'Envy.MediaFilter'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Both'
+			}
+			'TypeLib' = s '{4E7B260F-E3A4-42DD-89D8-E0372158626E}'
+		}
+	}
+}

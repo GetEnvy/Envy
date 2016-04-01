@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<schemaDescriptor location="http://schemas.getenvy.com/Unknown.xsd" xmlns="http://schemas.getenvy.com/SchemaDescriptor.xsd">
+
+	<object type="file" availability="advanced"/>
+	<images>
+		<icon path="Unknown.ico"/>
+	</images>
+	<titles>
+		<title language="en">Unknown</title>
+		<title language="af">Onbekend</title>
+		<title language="ca">Desconegut</title>
+		<title language="cz">Neznámé</title>
+		<title language="de">Unbekannt</title>
+		<title language="ee">Tundmatu</title>
+		<title language="es">Desconocido</title>
+		<title language="fr">Inconnu</title>
+		<title language="gr">Άγνωστος</title>
+		<title language="he">לא ידוע</title>
+		<title language="hr">Nepoznato</title>
+		<title language="hu">Ismeretlen</title>
+		<title language="it">Sconosciuto</title>
+		<title language="lt">Nežinoma</title>
+		<title language="nl">Onbekend</title>
+		<title language="no">Ukjent</title>
+		<title language="pt">Desconhecido</title>
+		<title language="ru">Неизвестный</title>
+		<title language="sl">Neznan</title>
+		<title language="sq">Panjohur</title>
+		<title language="sr">Непознато</title>
+		<title language="sv">Okänt</title>
+		<title language="tr">Bilinmiyor</title>
+		<title language="ja">不明</title>
+		<title language="ko">알 수없는</title>
+		<title language="zhs">未知</title>
+		<title language="zht">未知</title>
+	</titles>
+	<members>
+		<member name="comments" search="generic">
+			<title language="en">Comments</title>
+			<title language="af">Kommentaar</title>
+			<title language="ca">Comentaris</title>
+			<title language="cz">Komentáře</title>
+			<title language="de">Kommentar</title>
+			<title language="ee">Arvamused</title>
+			<title language="es">Comentarios</title>
+			<title language="fr">Commentaires</title>
+			<title language="gr">Σχόλια</title>
+			<title language="he">הערות</title>
+			<title language="hr">Komentari</title>
+			<title language="hu">Megjegyzés</title>
+			<title language="it">Commenti</title>
+			<title language="lt">Komentarai</title>
+			<title language="nl">Opmerkingen</title>
+			<title language="no">Kommentar</title>
+			<title language="pt">Comentários</title>
+			<title language="ru">Коментарии</title>
+			<title language="sl">Komentarji</title>
+			<title language="sq">Komente</title>
+			<title language="sr">Komentari</title>
+			<title language="sv">Kommentarer</title>
+			<title language="tr">Yorumlar</title>
+			<title language="ja">コメント</title>
+			<title language="zhs">注释</title>
+			<title language="zht">注釋</title>
+		</member>
+		<member name="peertag">
+			<display prompt="true"/>
+			<title language="en">PeerTag</title>
+		</member>
+		<member name="peerinfo">
+			<title language="en">PeerTag Info</title>
+			<title language="fr">PeerTag Infos</title>
+			<title language="he">PeerTag מידע</title>
+			<title language="ru">PeerTag Инфо</title>
+			<title language="sl">PeerTag Podatki</title>
+			<title language="sr">PeerTag Инфо</title>
+			<title language="tr">PeerTag Bilgi</title>
+			<title language="ko">PeerTag 정보</title>
+			<title language="ja">PeerTag インフォ</title>
+			<title language="zhs">PeerTag 信息</title>
+			<title language="zht">PeerTag 信息</title>
+		</member>
+	</members>
+	<typeFilter>
+		<type extension=""/>
+	</typeFilter>
+
+</schemaDescriptor>

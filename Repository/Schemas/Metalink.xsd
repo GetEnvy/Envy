@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://www.metalinker.org" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.metalinker.org" elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+<xs:element name="metalink" type="metalinkType">
+	<xs:annotation>
+		<xs:documentation>Comment describing your root element</xs:documentation>
+	</xs:annotation>
+</xs:element>
+
+<xs:complexType name="filesType">
+	<xs:sequence>
+		<xs:element name="file" type="fileType" maxOccurs="unbounded"/>
+	</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="metalinkType">
+	<xs:sequence>
+		<xs:element name="files" type="filesType"/>
+	</xs:sequence>
+	<xs:attribute name="origin" type="xs:string"/>
+	<xs:attribute name="type">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="dynamic"/>
+				<xs:enumeration value="static"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:attribute name="pubdate" type="xs:dateTime"/>
+	<xs:attribute name="refreshdate" type="xs:dateTime"/>
+	<xs:attribute name="generator" type="xs:string"/>
+</xs:complexType>
+
+<xs:complexType name="fileType">
+	<xs:sequence>
+		<xs:element name="resources" type="resourcesType"/>
+		<xs:element name="identity" type="xs:string"/>
+		<xs:element name="version" type="xs:string"/>
+		<xs:element name="verification">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element name="hash" maxOccurs="unbounded">
+						<xs:complexType>
+							<xs:attribute name="type">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:enumeration value="md4"/>
+										<xs:enumeration value="md5"/>
+										<xs:enumeration value="sha1"/>
+										<xs:enumeration value="sha256"/>
+										<xs:enumeration value="sha384"/>
+										<xs:enumeration value="sha512"/>
+										<xs:enumeration value="rmd160"/>
+										<xs:enumeration value="tiger"/>
+										<xs:enumeration value="crc32"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:attribute>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="signature">
+						<xs:complexType>
+							<xs:attribute name="type" type="xs:string"/>
+							<xs:attribute name="file" type="xs:string"/>
+						</xs:complexType>
+					</xs:element>
+				</xs:sequence>
+			</xs:complexType>
+		</xs:element>
+		<xs:element name="size" type="xs:string"/>
+		<xs:element name="description" type="xs:string"/>
+		<xs:element name="logo" type="xs:string"/>
+		<xs:element name="tags" type="xs:string"/>
+		<xs:element name="lenguage" type="xs:string"/>
+		<xs:element name="os" type="xs:string"/>
+		<xs:element name="mimetype" type="xs:string"/>
+		<xs:element name="relations" type="xs:string"/>
+		<xs:element name="releasedate" type="xs:dateTime"/>
+		<xs:element name="changelog" type="xs:string"/>
+		<xs:element name="publisher" type="publisherType"/>
+		<xs:element name="license" type="licenseType"/>
+		<xs:element name="multimedia" type="multimediaType"/>
+		<xs:element name="screenshot" type="xs:string"/>
+		<xs:element name="upgrade" type="xs:string"/>
+	</xs:sequence>
+	<xs:attribute name="name" type="xs:string"/>
+</xs:complexType>
+
+<xs:complexType name="resourcesType">
+	<xs:sequence>
+		<xs:element name="url" maxOccurs="unbounded">
+			<xs:complexType>
+				<xs:attribute name="type">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="ftp"/>
+							<xs:enumeration value="ftps"/>
+							<xs:enumeration value="http"/>
+							<xs:enumeration value="https"/>
+							<xs:enumeration value="rsync"/>
+							<xs:enumeration value="bittorrent"/>
+							<xs:enumeration value="magnet"/>
+							<xs:enumeration value="ed2k"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+				<xs:attribute name="location">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:maxLength value="2"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+				<xs:attribute name="preference" type="xs:int"/>
+			</xs:complexType>
+		</xs:element>
+	</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="licenseType">
+	<xs:sequence>
+		<xs:element name="name" type="xs:string"/>
+		<xs:element name="url" type="xs:string"/>
+	</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="publisherType">
+	<xs:sequence>
+		<xs:element name="name" type="xs:string"/>
+		<xs:element name="url" type="xs:string"/>
+	</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="audioType">
+	<xs:sequence>
+		<xs:element name="bitrate" type="xs:string"/>
+		<xs:element name="codec" type="xs:string"/>
+		<xs:element name="duration" type="xs:string"/>
+		<xs:element name="resolution" type="xs:string"/>
+		<xs:element name="artist" type="xs:string"/>
+		<xs:element name="album" type="xs:string"/>
+	</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="videoType">
+	<xs:sequence>
+		<xs:element name="bitrate" type="xs:string"/>
+		<xs:element name="codec" type="xs:string"/>
+		<xs:element name="duration" type="xs:string"/>
+		<xs:element name="resolution" type="xs:string"/>
+		<xs:element name="artist" type="xs:string"/>
+		<xs:element name="album" type="xs:string"/>
+	</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="multimediaType">
+	<xs:sequence>
+		<xs:element name="audio" type="audioType" maxOccurs="unbounded"/>
+		<xs:element name="video" type="videoType" maxOccurs="unbounded"/>
+	</xs:sequence>
+</xs:complexType>
+
+</xs:schema>

@@ -1,0 +1,53 @@
+﻿<!-- after tabs -->
+<!-- home main body -->
+	<div id="frame">
+		<p><%= text_welcome %></p>
+		<p><%= text_homeinfo %></p>
+		<!--This web interface allows you to control searches, downloads, uploads and network connections.-->
+		<div style="float: right; width: 40em;">
+			<h3><%= text_homestart %></h3>
+			<div style="text-align: right;">
+				<form method="get" action="newsearch">
+					<div>
+						<label><%= text_homequick %></label>
+						<input type="text" name="search" size="20" />
+						<select name="schema">
+							<option value=""><%= text_anyfile %></option>
+							<option value="http://schemas.getenvy.com/BitTorrent.xsd"><%= text_typetorrent %></option>
+							<option value="http://schemas.getenvy.com/Application.xsd"><%= text_typeapp %></option>
+							<option value="http://schemas.getenvy.com/Archive.xsd"><%= text_typearchive %></option>
+							<option value="http://schemas.getenvy.com/Audio.xsd"><%= text_typeaudio %></option>
+							<option value="http://schemas.getenvy.com/Video.xsd"><%= text_typevideo %></option>
+							<option value="http://schemas.getenvy.com/Image.xsd"><%= text_typeimage %></option>
+							<option value="http://schemas.getenvy.com/Book.xsd"><%= text_typebook %></option>
+							<option value="http://schemas.getenvy.com/Document.xsd"><%= text_typedoc %></option>
+							<option value="http://schemas.getenvy.com/ROM.xsd"><%= text_typerom %></option>
+							<option value="http://schemas.getenvy.com/Skin.xsd"><%= text_typeskin %></option>
+							<option value="http://schemas.getenvy.com/SourceCode.xsd"><%= text_typecode %></option>
+							<option value="http://schemas.getenvy.com/Spreadsheet.xsd"><%= text_typespreadsheet %></option>
+							<option value="http://schemas.getenvy.com/Subtitle.xsd"><%= text_typesubtitle %></option>
+							<option value="http://schemas.getenvy.com/Collection.xsd"><%= text_typecollection %></option>
+						</select>
+						<input type="submit" value="<%= text_submit %>" />
+					</div>
+				</form><br/>
+				<form method="get" action="newdownload">
+					<div>
+						<label><%= text_homedirect %></label>
+						<input type="text" name="uri" size="35" />
+						<input type="submit" value="<%= text_submit %>" />
+					</div>
+				</form>
+			</div>
+		</div>
+		<h3><%= text_homelinks %></h3>
+		<ul>
+			<li><a href="http://getenvy.com" onclick="window.open(this.href); return false;">GetEnvy.com</a></li>
+			<li><a href="http://freebase.be" onclick="window.open(this.href); return false;">Freebase.be</a></li>
+			<!--<a href="http://peerweb.org" onclick="window.open(this.href); return false;">Peerweb.org</a>-->
+			<!--<a href="http://legaltorrents.com" onclick="window.open(this.href); return false;">LegalTorrents.com</a>-->
+			<li><a href="http://contentdb.emule-project.net" onclick="window.open(this.href); return false;">eMule content DB</a></li>
+			<li><a href="http://<%= text_customlink %>" onclick="window.open(this.href); return false;"><%= text_customlink %></a></li>
+		</ul>
+	</div>
+<!-- /home main body -->

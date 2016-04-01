@@ -1,0 +1,26 @@
+//
+// ZIPBuilder.idl
+//
+// This file will be processed by the MIDL tool to produce
+// the type library (ZIPBuilder.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+import "Envy.idl";
+
+[
+	uuid(D65FD676-83A0-40F7-9BF8-867AFE337FE1),
+	version(1.0),
+	helpstring("ZIPBuilder 1.0 Type Library")
+]
+library ZIPBuilderLib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(C2AC3234-100D-4CC4-BCBB-ACF5F18D4854)
+	]
+	coclass ZIPBuilder
+	{
+		[default] interface ILibraryBuilderPlugin;
+	};
+};

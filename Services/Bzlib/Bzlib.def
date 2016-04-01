@@ -1,0 +1,10 @@
+EXPORTS
+	BZ2_bzBuffToBuffCompress
+	BZ2_bzBuffToBuffDecompress
+	BZ2_bzCompress
+	BZ2_bzCompressEnd
+	BZ2_bzCompressInit
+	BZ2_bzDecompress
+	BZ2_bzDecompressEnd
+	BZ2_bzDecompressInit
+	BZ2_bzlibVersion

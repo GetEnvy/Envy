@@ -1,0 +1,35 @@
+//
+// SWFPlugin.idl
+//
+// This file will be processed by the MIDL tool to produce
+// the type library (SWFPlugin.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+import "Envy.idl";
+
+[
+	uuid(6820AC10-8EE8-439B-9CB6-B17029025978),
+	version(1.0),
+	helpstring("SWF Plugin 1.0 Type Library")
+]
+library SWFPluginLib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(C604ED62-01C8-407B-B8A2-3A5C8A71B542),
+		helpstring("SWF Image Services")
+	]
+	coclass SWFReader
+	{
+		[default] interface IImageServicePlugin;
+	};
+	[
+		uuid(C646E072-09A4-4E4C-9724-C5B737846D14),
+		helpstring("SWF Library Builder")
+	]
+	coclass SWFBuilder
+	{
+		[default] interface ILibraryBuilderPlugin;
+	};
+};

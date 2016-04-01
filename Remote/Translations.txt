@@ -1,0 +1,111 @@
+<%= text_ %>
+
+<head>
+text_metatitle		Envy Web Interface
+text_envy	Envy
+text_logout		Log out
+text_tabhome		Home
+text_tabdownloads	Downloads
+text_tabuploads		Uploads
+text_tabnetworks	Networks
+text_tabsearch		Search
+
+<login>
+text_welcome		Welcome to the <b>Envy Web Interface</b>.
+text_logininfo		If this is your Envy client's address, please enter your username and password, and click the <b>Login</b> button.
+text_loginfail		Username or password was incorrect, please try again.
+text_loginuser		Username:
+text_loginpass		Password:
+text_loginsubmit	Login
+
+<home>
+text_welcome*
+text_homeinfo		This web interface allows you to control searches, downloads, uploads and network connections.
+text_homestart		Start downloading:
+text_homequick		Quick search:
+text_directdownload	Magnet/Torrent download:
+text_anyfile		Any File
+text_submit		Go
+text_homelinks		Useful links:
+text_customlink		<languauge-specific-url>
+
+<downloadsDownload>
+text_downloadclear	Clear
+text_downloadcancel	Cancel
+text_downloadpause	Pause
+text_downloadresume	Resume
+text_downloadmoresources More Sources
+text_downloadcleartip	Clear the download from the list (this will not delete your file)
+
+<downloadFooter>
+text_directdownload*
+text_submit*
+tabs
+
+<downloadsSource>
+text_sourceaccess	Access
+text_sourceforget	Forget
+
+<downloadsTop>
+text_refreshpage	Refresh page
+
+text_filetype		File Type:
+text_filename		Filename		Skin.GetHeaderTranslation( L"CMatchCtrl", L"File" )
+text_filesize		Size
+text_fileprogress	Progress
+text_filespeed		Speed
+text_filesources	Sources
+text_filestatus		Status
+text_fileoptions	Options
+
+text_filter		Filter:
+text_filteractive	Active
+text_filterqueued	Queued
+text_filternosources	No Sources
+text_filterpaused	Paused
+text_filtershowall	Show all sources
+text_filtersubmit	Filter
+
+<networkHeader>
+text_refreshpage*
+tabs
+
+<networkNetStart>
+text_networkdisabled	This network is <b>not</b> enabled
+text_networkenabled	This network is enabled
+text_networkconnect	Connect to
+text_networkdisconnect	Disable
+text_networkaddress	Address
+text_networktime	Time
+text_networkpackets	Packets
+text_networkbandwidth	Bandwidth
+text_networktotal	Total
+text_networkmode	Mode
+text_networkleaves	Leaves
+text_useragent		User-Agent
+
+<searchNew>
+text_searchinfo		To start a new search, type your search term in the box below and click <strong>Start search</strong>. If you want to restrict your search to a particular file type, select it from the list (recommended).
+text_searchstart	Start Search
+text_searchnew		New Search
+text_searchfor		Search for:
+text_anyfile*
+
+<searchTop>
+text_filter*
+text_searchstop		Stop Searching
+text_searchclose	Close Search
+
+<uploadsHeader>
+text_refreshpage*
+tabs
+
+<uploadsQueueStart>
+text_file		File
+text_user		User
+text_filesize*
+text_filespeed*
+text_useragent*
+
+
+<%= text_ %>

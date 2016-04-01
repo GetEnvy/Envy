@@ -1,0 +1,44 @@
+//
+// WebHook.idl
+//
+// This file will be processed by the MIDL tool to produce
+// the type library (WebHook.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+import "objsafe.idl";	// CATID_SafeForScripting, CATID_SafeForInitializing
+import "exdisp.idl";	// DWebBrowserEvents2
+
+[
+	uuid(6B207D90-4C7A-43C5-863C-AC110209D745),
+	version(1.0),
+	helpstring("Envy Web Link Handler Library")
+]
+library WebHookLib
+{
+	importlib("stdole2.tlb");
+
+	[
+		object,
+		dual,
+		oleautomation,
+		uuid(974BFF32-401C-45CD-B60D-764E6E34540D),
+		nonextensible,
+		helpstring("Envy Web Link Handler Interface")
+	]
+	interface IWebHook : IDispatch
+	{
+		[id(1), helpstring("Send URL to Envy.")] HRESULT AddLink([in] VARIANT oLink);
+	};
+
+	[
+		uuid(C0283C00-AA11-43E4-8C1D-8D28A0C86042),
+		helpstring("Envy Download Manager")
+	]
+	coclass WebHook
+	{
+		[default] interface IWebHook;
+		interface DWebBrowserEvents2;
+		interface IObjectWithSite;
+	};
+};

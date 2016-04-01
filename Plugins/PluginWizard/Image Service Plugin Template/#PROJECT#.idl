@@ -1,0 +1,30 @@
+//
+// #PROJECT#.idl
+//
+// This file is part of Envy (getenvy.com) © 2010
+// #COPYRIGHT#
+//
+// This file will be processed by the MIDL tool to produce
+// the type library (#PROJECT#.tlb) and marshalling code.
+//
+
+import "oaidl.idl";
+import "ocidl.idl";
+import "Envy.idl";
+
+[
+	uuid(#GUIDLIB#),
+	version(1.0),
+	helpstring("#PROJECT# 1.0 Type Library")
+]
+library #PROJECT#Lib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(#GUID#)
+	]
+	coclass #PROJECT#
+	{
+		[default] interface IImageServicePlugin;
+	};
+};

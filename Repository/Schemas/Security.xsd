@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<schema targetNamespace="http://schemas.getenvy.com/Security.xsd" version="1.0" xmlns="http://www.w3.org/2001/XMLSchema">
+
+	<element name="security">
+		<complexType>
+			<sequence>
+				<element name="rule" type="ruleType" minOccurs="1" maxOccurs="unbounded"/>
+			</sequence>
+		</complexType>
+	</element>
+
+	<complexType name="ruleType">
+		<attribute name="guid" type="NMTOKEN" use="required"/>
+		<attribute name="type" use="required">
+			<simpleType base="string">
+				<enumeration value="address"/>
+				<enumeration value="content"/>
+			</simpleType>
+		</attribute>
+		<attribute name="address" type="string"/>
+		<attribute name="mask" type="string"/>
+		<attribute name="content" type="string"/>
+		<attribute name="match" type="string"/>
+			<simpleType base="string">
+				<enumeration value="hash"/>
+				<enumeration value="size"/>
+				<enumeration value="any"/>
+				<enumeration value="all"/>
+				<enumeration value="regexp"/>
+			</simpleType>
+		<attribute name="expire" type="string"/>
+		<attribute name="action">
+			<simpleType base="string">
+				<enumeration value="deny"/>
+				<enumeration value="accept"/>
+				<enumeration value="none"/>
+			</simpleType>
+		</attribute>
+		<attribute name="comment" type="string"/>
+	</complexType>
+
+</schema>

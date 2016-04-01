@@ -1,0 +1,26 @@
+//
+// GFLLibraryBuilder.idl
+//
+// This file will be processed by the MIDL tool to produce
+// the type library (GFLLibraryBuilder.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+import "Envy.idl";
+
+[
+	uuid(7B8046FF-0D3A-4D85-9424-7DFCCD1BCA45),
+	version(1.0),
+	helpstring("GFLLibraryBuilder 1.0 Type Library")
+]
+library GFLLibraryBuilderLib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(C937FE9E-FC47-49F8-A115-1925D95E1FE5)
+	]
+	coclass Builder
+	{
+		[default] interface ILibraryBuilderPlugin;
+	};
+};

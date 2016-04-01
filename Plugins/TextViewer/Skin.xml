@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<skin xmlns="http://schemas.getenvy.com/Skin.xsd" version="1.0">
+
+<menus replace="false">
+	<menu name="PluginID_TextViewer_Context">
+		<item id="PluginID_TextViewer_SystemFont" text="_System Font"/>
+		<item id="PluginID_TextViewer_MonoFont" text="_Mono Font"/>
+		<separator/>
+		<item id="PluginID_TextViewer_Wrap" text="_Word Wrap"/>
+		<separator/>
+		<item id="PluginID_TextViewer_Close" text="_Close"/>
+	</menu>
+</menus>
+
+<toolbars replace="false">
+	<toolbar name="TextViewerWnd">
+		<button id="PluginID_TextViewer_SystemFont" text="System Font"/>
+		<button id="PluginID_TextViewer_MonoFont" text="Mono Font"/>
+		<separator/>
+		<button id="PluginID_TextViewer_Wrap" text="_Word Wrap"/>
+			<rightAlign/>
+		<button id="PluginID_TextViewer_Close" text="Close"/>
+	</toolbar>
+</toolbars>
+
+<commandImages replace="false">
+	<bitmap id="204">
+		<image id="PluginID_TextViewer_SystemFont"/>
+		<image id="PluginID_TextViewer_MonoFont"/>
+		<image id="PluginID_TextViewer_Wrap"/>
+		<image id="PluginID_TextViewer_Close"/>
+	</bitmap>
+</commandImages>
+
+<commandTips replace="false">
+	<tip id="PluginID_TextViewer_SystemFont" message="Use the default system font."/>
+	<tip id="PluginID_TextViewer_MonoFont" message="Use a mono-space font."/>
+	<tip id="PluginID_TextViewer_Wrap" message="Display line-wrapping."/>
+	<tip id="PluginID_TextViewer_Close" message="Close the text viewer window."/>
+</commandTips>
+
+</skin>

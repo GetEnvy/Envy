@@ -1,0 +1,73 @@
+HKCR
+{
+	ForceRemove MediaImageServices.VideoReader.1 = s 'Media Image Services'
+	{
+		CLSID = s '{C88A4A9E-17C4-429D-86BA-3327CED6DE62}'
+	}
+	ForceRemove MediaImageServices.VideoReader = s 'Media Image Services'
+	{
+		CLSID = s '{C88A4A9E-17C4-429D-86BA-3327CED6DE62}'
+		CurVer = s 'MediaImageServices.VideoReader.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {C88A4A9E-17C4-429D-86BA-3327CED6DE62} = s 'Media Image Services'
+		{
+			ProgID = s 'MediaImageServices.VideoReader.1'
+			VersionIndependentProgID = s 'MediaImageServices.VideoReader'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Both'
+			}
+			val AppID = s '%APPID%'
+			'TypeLib' = s '{FD6EB3A2-CE8A-4A12-A065-0490816DF11F}'
+		}
+	}
+}
+HKCU
+{
+	NoRemove Software
+	{
+		NoRemove Envy
+		{
+			NoRemove Envy
+			{
+				NoRemove Plugins
+				{
+					NoRemove ImageService
+					{
+						ForceRemove val '.3gp' = s '{C88A4A9E-17C4-429D-86BA-3327CED6DE62}'
+						ForceRemove val '.3gpp' = s '{C88A4A9E-17C4-429D-86BA-3327CED6DE62}'
+						ForceRemove val '.3g2' = s '{C88A4A9E-17C4-429D-86BA-3327CED6DE62}'
+						ForceRemove val '.asf' = s '{C88A4A9E-17C4-429D-86BA-3327CED6DE62}'
+						ForceRemove val '.asx' = s '{C88A4A9E-17C4-429D-86BA-3327CED6DE62}'
+						ForceRemove val '.avi' = s '{C88A4A9E-17C4-429D-86BA-3327CED6DE62}'
+						ForceRemove val '.divx' = s '{C88A4A9E-17C4-429D-86BA-3327CED6DE62}'
+						ForceRemove val '.dv' = s '{C88A4A9E-17C4-429D-86BA-3327CED6DE62}'
+						ForceRemove val '.flv' = s '{C88A4A9E-17C4-429D-86BA-3327CED6DE62}'
+						ForceRemove val '.ivf' = s '{C88A4A9E-17C4-429D-86BA-3327CED6DE62}'
+						ForceRemove val '.gvi' = s '{C88A4A9E-17C4-429D-86BA-3327CED6DE62}'
+						ForceRemove val '.m2v' = s '{C88A4A9E-17C4-429D-86BA-3327CED6DE62}'
+						ForceRemove val '.m2p' = s '{C88A4A9E-17C4-429D-86BA-3327CED6DE62}'
+						ForceRemove val '.mkv' = s '{C88A4A9E-17C4-429D-86BA-3327CED6DE62}'
+						ForceRemove val '.mov' = s '{C88A4A9E-17C4-429D-86BA-3327CED6DE62}'
+						ForceRemove val '.mp4' = s '{C88A4A9E-17C4-429D-86BA-3327CED6DE62}'
+						ForceRemove val '.mpe' = s '{C88A4A9E-17C4-429D-86BA-3327CED6DE62}'
+						ForceRemove val '.mpeg' = s '{C88A4A9E-17C4-429D-86BA-3327CED6DE62}'
+						ForceRemove val '.mpg' = s '{C88A4A9E-17C4-429D-86BA-3327CED6DE62}'
+						ForceRemove val '.nsv' = s '{C88A4A9E-17C4-429D-86BA-3327CED6DE62}'
+						ForceRemove val '.ogm' = s '{C88A4A9E-17C4-429D-86BA-3327CED6DE62}'
+						ForceRemove val '.qt' = s '{C88A4A9E-17C4-429D-86BA-3327CED6DE62}'
+						ForceRemove val '.ram' = s '{C88A4A9E-17C4-429D-86BA-3327CED6DE62}'
+						ForceRemove val '.rm' = s '{C88A4A9E-17C4-429D-86BA-3327CED6DE62}'
+						ForceRemove val '.rmvb' = s '{C88A4A9E-17C4-429D-86BA-3327CED6DE62}'
+						ForceRemove val '.vob' = s '{C88A4A9E-17C4-429D-86BA-3327CED6DE62}'
+						ForceRemove val '.wm' = s '{C88A4A9E-17C4-429D-86BA-3327CED6DE62}'
+						ForceRemove val '.wmv' = s '{C88A4A9E-17C4-429D-86BA-3327CED6DE62}'
+						ForceRemove val '.xvid' = s '{C88A4A9E-17C4-429D-86BA-3327CED6DE62}'
+					}
+				}
+			}
+		}
+	}
+}

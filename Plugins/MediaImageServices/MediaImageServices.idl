@@ -1,0 +1,26 @@
+//
+// MediaImageServices.idl
+//
+// This file will be processed by the MIDL tool to produce
+// the type library (MediaImageServices.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+import "Envy.idl";
+
+[
+	uuid(FD6EB3A2-CE8A-4A12-A065-0490816DF11F),
+	version(1.0),
+	helpstring("MediaImageServices 1.0 Type Library")
+]
+library MediaImageServicesLib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(C88A4A9E-17C4-429D-86BA-3327CED6DE62)
+	]
+	coclass VideoReader
+	{
+		[default] interface IImageServicePlugin;
+	};
+};

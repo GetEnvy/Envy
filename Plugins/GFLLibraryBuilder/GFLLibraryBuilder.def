@@ -1,0 +1,12 @@
+;
+; GFLLibraryBuilder.def : Declares the module parameters.
+;
+
+LIBRARY      "GFLLibraryBuilder.DLL"
+
+EXPORTS
+	DllCanUnloadNow		PRIVATE
+	DllGetClassObject	PRIVATE
+	DllRegisterServer	PRIVATE
+	DllUnregisterServer	PRIVATE
+	DllInstall		PRIVATE

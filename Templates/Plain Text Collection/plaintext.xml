@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<template xmlns="http://schemas.getenvy.com/Template.xsd" version="1.0">
+<manifest	name="Plain Text Collection"
+			author="Envy"
+			version="1.0"
+			link="http://getenvy.com/"
+			email="contact@getenvy.com"
+			description="Simple plain-text list"
+			filename="Files.txt"
+/>
+<files>
+	<file type="main" path="plaintext.tpl"/>
+	<file type="evenfile" path="plaintext.row.tpl"/>
+	<file type="oddfile" path="plaintext.row.tpl"/>
+</files>
+<wizardText>
+	<text language="pt">
+		<item id="title" type="textbox" value="Título da Coleção" default="Envy"/>
+		<item id="description" type="textbox" value="Descrição"/>
+	</text>
+	<text language="es">
+		<item id="title" type="textbox" value="Título de la colección" default="Envy"/>
+		<item id="description" type="textbox" value="Descripción"/>
+	</text>
+	<text language="it">
+		<item id="title" type="textbox" value="Titolo della collezione" default="Envy"/>
+		<item id="description" type="textbox" value="Descrizione"/>
+	</text>
+	<text language="fr">
+		<item id="title" type="textbox" value="Titre de la collection" default="Envy"/>
+		<item id="description" type="textbox" value="Description"/>
+	</text>
+	<text language="de">
+		<item id="title" type="textbox" value="Sammlung Titel" default="Envy"/>
+		<item id="description" type="textbox" value="Beschreibung"/>
+	</text>
+	<text language="nl">
+		<item id="title" type="textbox" value="Collectie Titel" default="Envy"/>
+		<item id="description" type="textbox" value="Beschrijving"/>
+	</text>
+	<text language="ru">
+		<item id="title" type="textbox" value="Название коллекции" default="Envy"/>
+		<item id="description" type="textbox" value="Kоллекции"/>
+	</text>
+	<text language="lt">
+		<item id="title" type="textbox" value="Rinkinio pavadinimas" default="Envy"/>
+		<item id="description" type="textbox" value="Aprašas"/>
+	</text>
+	<text language="ja">
+		<item id="title" type="textbox" value="タイトル" default="Envy"/>
+		<item id="description" type="textbox" value="説明／詳細"/>
+	</text>
+	<text language="zhs">
+		<item id="title" type="textbox" value="收集称号" default="Envy"/>
+		<item id="description" type="textbox" value="描述"/>
+	</text>
+	<text language="zht">
+		<item id="title" type="textbox" value="收集稱號" default="Envy"/>
+		<item id="description" type="textbox" value="敘述"/>
+	</text>
+	<!-- Default English text last -->
+	<text language="en">
+		<item id="title" type="textbox" value="Collection Title" default="Envy Filelist"/>
+		<item id="description" type="textbox" value="Description"/>
+	</text>
+</wizardText>
+</template>

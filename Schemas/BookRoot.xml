@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<schemaDescriptor location="http://schemas.getenvy.com/BookRoot.xsd" xmlns="http://schemas.getenvy.com/SchemaDescriptor.xsd">
+
+	<object type="folder" availability="system"/>
+	<contains>
+		<object type="folder" location="http://schemas.getenvy.com/BookAll.xsd"/>
+	</contains>
+	<images>
+		<icon path="BookFolder.ico"/>
+	</images>
+	<titles>
+		<title language="en">Book: Books</title>
+		<title language="en-uk">Book:Books</title>
+		<title language="ca">Llibre: llibres</title>
+		<title language="cz">Knihy: Knihy</title>
+		<title language="de">Buch: Bücher</title>
+		<title language="ee">Raamat: Raamatud</title>
+		<title language="es">Libro: Libros</title>
+		<title language="fr">Livres: Livres</title>
+		<title language="gr">Βιβλίο: Βιβλία</title>
+		<title language="he">ספר: הספרים שלי</title>
+		<title language="hr">Knjiga: Knjige</title>
+		<title language="hu">Könyv: Könyvek</title>
+		<title language="it">Libro: Libri</title>
+		<title language="lt">Knyga: Knygos</title>
+		<title language="nl">Boek: Boeken</title>
+		<title language="no">Bok: bøker</title>
+		<title language="pt">Livro: Livros</title>
+		<title language="ru">Книга: Мои книги</title>
+		<title language="sl">Knjiga: Knjige</title>
+		<title language="sq">Libri: Libri</title>
+		<title language="sr">Knjiga: Knjige</title>
+		<title language="sv">Bok: Böcker</title>
+		<title language="tr">Kitap: Kitaplarım</title>
+		<title language="ja">書籍: マイ･ブック</title>
+		<title language="zhs">书籍: 我的书籍</title>
+		<title language="zht">書籍: 我的書籍</title>
+	</titles>
+	<headerContent version="1.0">
+		<title language="en">Welcome to your Books.</title>
+		<title language="af">Welkom by My Boeke.</title>
+		<title language="ca">Benvingut als meus llibres.</title>
+		<title language="cz">Moje knihy</title>
+		<title language="de">Willkommen bei Eigene Bücher.</title>
+		<title language="ee">Teretulemast Minu Raamatutesse.</title>
+		<title language="es">Bienvenido a Tus Libros.</title>
+		<title language="fr">Bienvenue dans Mes livres.</title>
+		<title language="gr">Καλώς ήρθατε στα Βιβλία.</title>
+		<title language="he">ברוך הבא לספרים שלי</title>
+		<title language="hr">Dobrodošli Među Vaše Knjige.</title>
+		<title language="hu">Üdvözöllek a Könyvek mappában.</title>
+		<title language="it">Benvenuto nei Libri.</title>
+		<title language="lt">Sveiki apsilankę „Mano knygose“.</title>
+		<title language="nl">Welkom bij Mijn Boeken.</title>
+		<title language="no">Velkommen til mine bøker</title>
+		<title language="pt">Bem-vindo aos Meus Livros.</title>
+		<title language="ru">Добро пожаловать в Ваши книги.</title>
+		<title language="sl">Dobrodošli v mojih knjigah.</title>
+		<title language="sq">Mirë se erdhët në Librat Tuaj.</title>
+		<title language="sr">Dobrodošli Među Vaše Knjige.</title>
+		<title language="sv">Välkommen till mina böcker.</title>
+		<title language="tr">Kitaplarıma Hoşgeldiniz.</title>
+		<title language="ja">マイ･ブックへようこそ</title>
+		<title language="zhs">欢迎来到我的书籍</title>
+		<title language="zht">歡迎來到我的書籍</title>
+		<subtitle language="en">These folders contain all of your books.</subtitle>
+		<subtitle language="af">Hierdie gidse bevat al jou boeke.</subtitle>
+		<subtitle language="ca">Aquestes carpetes contenen tots els teus llibres</subtitle>
+		<subtitle language="cz">Tyto složky obsahují všechny knihy v knihovně.</subtitle>
+		<subtitle language="de">Diese Ordner enthalten alle ihre Bücher.</subtitle>
+		<subtitle language="ee">Need kaustad sisaldavad kõiki sinu Raamatuid</subtitle>
+		<subtitle language="es">Estas carpetas contienen todos tus libros</subtitle>
+		<subtitle language="fr">Ce dossier contient tous vos livres.</subtitle>
+		<subtitle language="gr">Αυτός ο φάκελος περιέχει όλα τα αρχεία βιβλίων.</subtitle>
+		<subtitle language="he">ספרייה זו מכילה את כל הספרים שלך</subtitle>
+		<subtitle language="hr">Ove mape sadrže sve vaše knjige.</subtitle>
+		<subtitle language="hu">Ez a mappa könyveket tartalmaz.</subtitle>
+		<subtitle language="it">Queste cartelle contengono tutti i tuoi libri.</subtitle>
+		<subtitle language="lt">Šiuose kataloguose yra visos Jūsų knygos.</subtitle>
+		<subtitle language="nl">Deze mappen bevatten al je boeken.</subtitle>
+		<subtitle language="no">Disse mappene inneholder alle dine bøker</subtitle>
+		<subtitle language="pt">Estas pastas contém todos os seus livros.</subtitle>
+		<subtitle language="ru">Эти папки отображают все Ваши книги.</subtitle>
+		<subtitle language="sl">Te mape vsebujejo vse knjige.</subtitle>
+		<subtitle language="sq">Këto dosje përmbajnë gjithë librat tuaj.</subtitle>
+		<subtitle language="sr">Ove fascikle sadrže sve vaše knjige.</subtitle>
+		<subtitle language="sv">Denna mapp innehåller alla böcker.</subtitle>
+		<subtitle language="tr">Bu klasörler tüm kitaplarınızı içerir.</subtitle>
+		<subtitle language="ja">これらのフォルダーにはライブラリー内に所有している全ての書籍が収録されています</subtitle>
+		<subtitle language="zhs">这些文件夹包含您所有的书籍。</subtitle>
+		<subtitle language="zht">這些資料夾包含了您所有的書籍.</subtitle>
+	</headerContent>
+	<members>
+		<member name="title" search="none">
+			<display defaultColumn="true"/>
+			<title language="en">Title</title>
+			<title language="af">Titel</title>
+			<title language="ca">Títol</title>
+			<title language="cz">Název</title>
+			<title language="de">Titel</title>
+			<title language="ee">Pealkiri</title>
+			<title language="es">Título</title>
+			<title language="fr">Titre</title>
+			<title language="gr">Τίτλος</title>
+			<title language="he">כותרת</title>
+			<title language="hr">Naslov</title>
+			<title language="hu">Cím</title>
+			<title language="it">Titolo</title>
+			<title language="lt">Pavadinimas</title>
+			<title language="nl">Titel</title>
+			<title language="no">Tittel</title>
+			<title language="pl">Tytuł</title>
+			<title language="pt">Título</title>
+			<title language="ru">Название</title>
+			<title language="sl">Naslov</title>
+			<title language="sq">Titulli</title>
+			<title language="sr">Naslov</title>
+			<title language="sv">Titel</title>
+			<title language="tr">Başlık</title>
+			<title language="ja">タイトル</title>
+			<title language="ko">제목</title>
+			<title language="zhs">标题</title>
+			<title language="zht">標題</title>
+		</member>
+	</members>
+
+</schemaDescriptor>

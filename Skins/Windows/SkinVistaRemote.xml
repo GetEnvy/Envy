@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<skin xmlns="http://schemas.getenvy.com/Skin.xsd" version="1.0">
+
+<manifest
+ name="SkinVista Remote"
+ author="Envy"
+ description="Windows 7 Style Media Remote"
+ link="http://getenvy.com"
+ email="Contact(at)GetEnvy.com"
+ license="Persistent Public Domain (PPD)"
+ platform="Envy 1.0"
+ path="Windows"
+ version="1.0"
+ type="Skin"
+/>
+
+<!-- Media Remote -->
+<windowskins>
+<windowskin>
+ <image path="SkinVistaRemote.png"/>
+ <target window="CRemoteWnd"/>
+ <caption fontFace="Segoe UI" fontSize="11" fontWeight="Normal" color="EDF2F6" outlineColor="5A5856" />
+ <region>
+  <shape type="roundRect" size="12,12" rect="2,2,426,91"/>
+  <shape type="rectangle" combine="or" rect="0,0,8,2"/>
+  <shape type="rectangle" combine="or" rect="4,1,10,3"/>
+  <shape type="rectangle" combine="or" rect="1,2,5,14"/>
+  <shape type="rectangle" combine="or" rect="0,14,3,16"/>
+  <shape type="rectangle" combine="or" rect="40,0,48,2"/>
+  <shape type="rectangle" combine="or" rect="48,1,50,2"/>
+  <shape type="rectangle" combine="or" rect="73,1,76,2"/>
+ </region>
+ <anchors>
+  <anchor name="StatusText"            rect="86,8,254,11"/>
+  <anchor name="MediaSeekTrack"        rect="16,28,396,5"/>
+  <anchor name="MediaVolTrack"         rect="330,52,70,13"/>
+  <!--anchor name="MediaStatePlaying"  rect=""-->
+  <!--anchor name="MediaStatePaused"   rect=""-->
+  <!--anchor name="MediaStateStopped"  rect=""-->
+  <!--anchor name="ScalerTrack"        rect=""-->
+  <!--anchor name="History"            rect=""-->
+  <anchor name="_ID_MONITOR_CLOSE"     rect="370,2,52,22"/>
+  <anchor name="_ID_MEDIA_PLAY"        rect="190,34,46,48"/>
+  <anchor name="_ID_MEDIA_PAUSE"       rect="190,34,46,48"/>
+  <anchor name="_ID_MEDIA_STOP"        rect="107,46,25,25"/>
+  <anchor name="_ID_MEDIA_PREVIOUS"    rect="141,46,49,25"/>
+  <anchor name="_ID_MEDIA_NEXT"        rect="236,46,49,25"/>
+  <anchor name="_ID_MEDIA_MUTE"        rect="300,51,20,15"/>
+  <anchor name="_ID_MEDIA_RANDOM"      rect="36,50,17,17"/>
+  <anchor name="_ID_MEDIA_REPEAT"      rect="66,50,17,17"/>
+  <anchor name="_ID_MEDIA_ADD"         rect="4,1,82,20"/>
+ </anchors>
+ <parts>
+  <part name="Background"              rect="0,0,426,90"/>
+  <part name="MediaSeekBar"            rect="17,118,396,5"/>
+  <part name="MediaSeekTab"            rect="402,118,10,5"/>
+  <part name="MediaVolBar"             rect="330,142,70,13"/>
+  <part name="MediaVolTab"             rect="389,142,12,13"/>
+  <!--part name="MediaStatePlaying"    rect=""-->
+  <!--part name="MediaStatePaused"     rect=""-->
+  <!--part name="MediaStateStopped"    rect=""-->
+  <!--part name="HistoryTx1"           rect=""-->
+  <!--part name="HistoryRx1"           rect=""-->
+  <!--part name="ScalerTab"            rect=""-->
+  <part name="_ID_MONITOR_CLOSE.Hover" rect="370,92,52,22"/>
+  <part name="_ID_MONITOR_CLOSE.Down"  rect="318,92,52,22"/>
+  <part name="_ID_MEDIA_PLAY.Up"       rect="190,34,46,48"/>
+  <part name="_ID_MEDIA_PLAY.Hover"    rect="190,124,46,48"/>
+  <part name="_ID_MEDIA_PLAY.Down"     rect="380,158,46,48"/>
+  <part name="_ID_MEDIA_PAUSE.Up"      rect="46,158,45,48"/>
+  <part name="_ID_MEDIA_PAUSE.Hover"   rect="0,158,46,48"/>
+  <part name="_ID_MEDIA_PAUSE.Down"    rect="334,158,46,48"/>
+  <part name="_ID_MEDIA_STOP.Hover"    rect="116,136,25,25"/>
+  <part name="_ID_MEDIA_STOP.Down"     rect="200,181,25,25"/>
+  <part name="_ID_MEDIA_STOP.Disabled" rect="91,136,25,25"/>
+  <part name="_ID_MEDIA_PREVIOUS.Hover" rect="144,181,49,25"/>
+  <part name="_ID_MEDIA_PREVIOUS.Down"  rect="92,181,49,25"/>
+  <part name="_ID_MEDIA_PREVIOUS.Disabled" rect="141,136,49,25"/>
+  <part name="_ID_MEDIA_NEXT.Hover"    rect="233,181,49,25"/>
+  <part name="_ID_MEDIA_NEXT.Down"     rect="285,181,49,25"/>
+  <part name="_ID_MEDIA_NEXT.Disabled" rect="236,136,49,25"/>
+  <part name="_ID_MEDIA_MUTE.Checked"  rect="300,141,20,15"/>
+  <part name="_ID_MEDIA_RANDOM.Checked" rect="36,140,17,17"/>
+  <part name="_ID_MEDIA_REPEAT.Checked" rect="66,140,17,17"/>
+  <part name="_ID_MEDIA_ADD.Hover"     rect="4,91,82,20"/>
+ </parts>
+</windowskin>
+</windowskins>
+</skin>

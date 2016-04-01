@@ -1,0 +1,29 @@
+
+E*91.200.42.46:1176	# eMule Security No1 (eMule-Security.org)
+E 91.200.42.47:3883	# eMule Security No2
+E 91.200.42.119:9939	# eMule Security No3
+E*193.169.86.73:4184	# TV Underground No1
+E 176.103.48.36:4184	# TV Underground
+E*83.233.30.55:4500	# Master Server 1
+E 83.233.30.128:4500	# Master Server 7
+E 88.191.81.111:7111	# Peerates.net
+E 195.154.83.5:7111	# Peerates.net
+E 94.75.216.6:4666	# Emule Server No1
+E 212.63.206.35:4242	# eDonkeyServer No2
+
+B router.bittorrent.com:6881
+B router.utorrent.com:6881
+B router.bitcomet.com:6881
+B dht.transmissionbt.com:6881
+B dht.aelitis.com:6881	# Vuze
+
+# P/*	Priority flag
+# E	eDonkey server
+# D	DC++ hub
+# B	BitTorrent node/bootstrap
+# 1/L	Gnutella peer
+# 2/G	G2 hub
+# K	KAD node
+# X	Bad IP
+
+# Update Feb.2012 (Oct.2015)

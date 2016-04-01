@@ -1,0 +1,42 @@
+//
+// TextViewer.idl
+//
+// This file is part of Envy (getenvy.com) © 2010
+// TextViewer plugin is released under the Persistent Public Domain license.
+//
+// This code may be treated as Public Domain, provided:
+// the work in all its forms and attendant uses shall remain available as
+// persistently "Public Domain" until it naturally enters the public domain.
+// History remains immutable:  Authors do not disclaim copyright, but do disclaim
+// all rights beyond asserting the reach and duration and spirit of this license.
+
+// This file will be processed by the MIDL tool to produce
+// the type library (TextViewer.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+import "Envy.idl";
+
+[
+	uuid(2696CE9F-423F-4901-A109-0C85E6430266),
+	version(1.0),
+	helpstring("Envy Image Viewer Plugin Type Library")
+]
+library TextViewerLib
+{
+	importlib("stdole2.tlb");
+
+	[
+		uuid(CFFA98CB-08D4-402B-8595-1E067D563060),
+		helpstring("Image Viewer Plugin")
+	]
+	coclass TextViewerPlugin
+	{
+		[default] interface IGeneralPlugin;
+		interface IExecutePlugin;
+		interface ICommandPlugin;
+	};
+
+	interface IImageServicePlugin;
+};
+

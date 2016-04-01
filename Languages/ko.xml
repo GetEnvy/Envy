@@ -1,0 +1,3407 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<skin xmlns="http://schemas.getenvy.com/Skin.xsd" version="1.0">
+
+<!-- Envy Korean Language Skin File -->
+
+<!-- Translation based on default en.xml r1 --> <!--Machine Translated!-->
+<!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
+
+<!-- This skin template represents current Envy defaults. -->
+<!-- Use this file as a basis for creating new language skins,   -->
+<!-- however be sure to include only sections that are changed:  -->
+<!-- Unedited English content limits compatibility & performance.-->
+<!-- Better to be concise than literal:  Please test visibility! -->
+
+<!-- Manifest -->
+<manifest
+	name="한국어"
+	author="GetEnvy.com"
+	description="Envy Korean Language Skin File"
+	link="http://getenvy.com"
+	email="Contact(at)GetEnvy.com"
+	version="1.0.0.0"
+	type="Language"
+	language="ko"
+	priority="52"
+	prompt="여기를 클릭하여 자연 언어는 한국을 선택합니다."
+/>
+
+<!--<fonts>-->
+	<!--<font name="System.Plain"	face="Gulim" size="11" weight="Normal"/>-->
+	<!--<font name="System.Bold"	face="Gulim" size="11" weight="Bold"/>-->
+	<!--<font name="Panel.Caption"	face="Gulim" size="12" weight="Normal"/>-->
+	<!--<font name="Navbar.Caption"	face="Gulim" size="12" weight="Normal"/>-->
+<!--</fonts>-->
+
+<!-- Toolbar Definitions -->
+<toolbars>
+	<!-- MAIN WINDOW -->
+	<toolbar name="CMainWnd.Basic">
+		<button id="ID_NETWORK_CONNECT" text="연결"/>
+		<separator/>
+		<button id="ID_TAB_HOME" text="집"/>
+		<button id="ID_TAB_TRANSFERS" text="다운로드"/>
+		<button id="ID_TAB_LIBRARY" text="도서관"/>
+		<button id="ID_TAB_MEDIA" text="미디어 플레이어"/>
+		<button id="ID_TAB_IRC" text="IRC 채팅"/>
+		<button id="ID_TAB_SEARCH" text="검색"/>
+	</toolbar>
+	<toolbar name="CMainWnd.Tabbed">
+		<button id="ID_TAB_CONNECT" text="연결"/>
+		<separator/>
+		<button id="ID_TAB_HOME" text="홈"/>
+		<button id="ID_TAB_TRANSFERS" text="전학"/>
+		<button id="ID_TAB_NETWORK" text="네트워크"/>
+		<button id="ID_TAB_LIBRARY" text="도서관"/>
+		<button id="ID_TAB_MEDIA" text="미디어"/>
+		<button id="ID_TAB_IRC" text="IRC 채팅"/>
+		<button id="ID_TAB_SEARCH" text="검색"/>
+	</toolbar>
+	<toolbar name="CMainWnd.Windowed">
+		<button id="ID_NETWORK_CONNECT" text="연결"/>
+		<button id="ID_NETWORK_DISCONNECT"/>
+		<separator/>
+		<button id="ID_TAB_HOME"/>
+		<button id="ID_VIEW_SYSTEM"/>
+		<button id="ID_VIEW_NEIGHBOURS"/>
+		<button id="ID_VIEW_DOWNLOADS"/>
+		<button id="ID_VIEW_UPLOADS"/>
+		<button id="ID_VIEW_LIBRARY"/>
+		<button id="ID_VIEW_MEDIA"/>
+		<button id="ID_TAB_IRC"/>
+		<separator/>
+		<button id="ID_VIEW_SCHEDULER"/>
+		<button id="ID_VIEW_SECURITY"/>
+		<button id="ID_VIEW_HOSTS"/>
+		<button id="ID_VIEW_DISCOVERY"/>
+		<button id="ID_VIEW_TRAFFIC"/>
+		<button id="ID_VIEW_PACKETS"/>
+		<button id="ID_VIEW_SEARCH_MONITOR"/>
+		<button id="ID_VIEW_RESULTS_MONITOR"/>
+		<separator/>
+		<button id="ID_WINDOW_CASCADE"/>
+		<button id="ID_WINDOW_TILE_HORZ"/>
+		<button id="ID_WINDOW_TILE_VERT"/>
+		<separator/>
+		<button id="ID_TOOLS_SETTINGS"/>
+		<button id="ID_TOOLS_DOWNLOAD"/>
+		<button id="ID_NETWORK_SEARCH" text="새로운 검색"/>
+	</toolbar>
+	<!-- SEARCH WINDOW -->
+	<toolbar name="CSearchWnd.Panel.Basic">
+		<button id="ID_SEARCH_DOWNLOAD" text="파일 다운로드"/>
+		<separator/>
+		<button id="ID_BROWSE_LAUNCH" text="찾아보기 사용자"/>
+		<rightalign/>
+		<button id="ID_SEARCH_FILTER_RAW" text="필터 :"/>
+		<control id="IDC_FILTER_BOX" width="80"/>
+		<separator/>
+		<button id="ID_SEARCH_DETAILS" text="보기 / 숨기기 세부 사항"/>
+	</toolbar>
+	<toolbar name="CSearchWnd.Panel">
+		<button id="ID_SEARCH_DOWNLOAD" text="다운로드"/>
+		<separator/>
+		<button id="ID_BROWSE_LAUNCH" text="찾아보기 사용자"/>
+		<button id="ID_SECURITY_BAN" text="반 장관은 사용자"/>
+		<rightalign/>
+		<button id="ID_SEARCH_FILTER_RAW" text="필터 :"/>
+		<control id="IDC_FILTER_BOX" width="80"/>
+		<separator/>
+		<button id="ID_SEARCH_DETAILS" text="세부 정보 숨기"/>
+		<button id="ID_SEARCH_PANEL" text="숨기기 사이드바"/>
+	</toolbar>
+	<toolbar name="CSearchWnd.Full">
+		<button id="ID_SEARCH_SEARCH" text="새 검색"/>
+		<button id="ID_SEARCH_STOP" text="그만 검색"/>
+		<button id="ID_SEARCH_DOWNLOAD" text="다운로드"/>
+		<separator/>
+		<button id="ID_BROWSE_LAUNCH" text="찾아보기 사용"/>
+		<button id="ID_SECURITY_BAN" text="반 장관은 사용자"/>
+		<rightalign/>
+		<button id="ID_SEARCH_FILTER_RAW" text="필터 :"/>
+		<control id="IDC_FILTER_BOX" width="75"/>
+		<separator/>
+		<button id="ID_SEARCH_DETAILS" text="세부 정보 숨기기"/>
+		<button id="ID_SEARCH_PANEL" text="사이드바보기"/>
+	</toolbar>
+	<!-- BROWSE HOST WINDOW -->
+	<toolbar name="CBrowseHeaderCtrl">
+		<button id="ID_BROWSE_PROFILE" text="프로필"/>
+		<button id="ID_BROWSE_FILES" text="공유 파"/>
+	</toolbar>
+	<toolbar name="CBrowseTree.Top">
+		<button id="ID_LIBRARY_TREE_PHYSICAL" text="폴더"/>
+		<button id="ID_LIBRARY_TREE_VIRTUAL" text="주최자"/>
+	</toolbar>
+	<toolbar name="CBrowseHostWnd.Basic">
+		<button id="ID_SEARCH_DOWNLOAD" text="파일 다운로드"/>
+		<separator/>
+		<button id="ID_SEARCH_CHAT" text="채팅 사용자에게"/>
+		<rightalign/>
+		<button id="ID_SEARCH_FILTER_RAW" text="필 :"/>
+		<control id="IDC_FILTER_BOX" width="90"/>
+		<separator/>
+		<button id="ID_SEARCH_DETAILS" text="보기/숨기기 세부 사항"/>
+	</toolbar>
+	<toolbar name="CBrowseHostWnd">
+		<button id="ID_SEARCH_DOWNLOAD" text="파일 다운로드"/>
+		<button id="ID_BROWSE_STOP" text="중지"/>
+		<button id="ID_BROWSE_REFRESH" text="새로고침"/>
+		<separator/>
+		<button id="ID_SEARCH_CHAT" text="사용자"/>
+		<rightalign/>
+		<button id="ID_SEARCH_FILTER_RAW" text="필터 :"/>
+		<control id="IDC_FILTER_BOX" width="90"/>
+		<separator/>
+		<button id="ID_SEARCH_DETAILS" text="보기/숨기기 세부 사항"/>
+	</toolbar>
+	<!-- DOWNLOADS WINDOW -->
+	<toolbar name="CDownloadsWnd.Basic">
+		<button id="ID_DOWNLOADS_LAUNCH_COMPLETE" text="재생 또는 열기"/>
+		<button id="ID_DOWNLOADS_LAUNCH_COPY" text="미리보기 파일"/>
+		<separator/>
+		<button id="ID_DOWNLOADS_FILE_DELETE" text="파일 삭제"/>
+		<button id="ID_DOWNLOADS_CLEAR_INCOMPLETE" text="취소 다운로드"/>
+		<button id="ID_DOWNLOADS_CLEAR_COMPLETE" text="지우기 다운로드"/>
+		<button id="ID_DOWNLOADS_RESUME" text="이력서 다운로드"/>
+		<button id="ID_DOWNLOADS_PAUSE" text="일시 중지 다운로"/>
+		<separator/>
+		<button id="ID_DOWNLOADS_EDIT" text="세부 사항"/>
+		<button id="ID_DOWNLOADS_MONITOR" text="모니터보기"/>
+		<rightalign/>
+		<button id="ID_DOWNLOADS_CLEAR_COMPLETED" text="지우기 완료"/>
+	</toolbar>
+	<toolbar name="CDownloadsWnd">
+		<button id="ID_DOWNLOADS_LAUNCH_COMPLETE" text="파일 열기"/>
+		<button id="ID_DOWNLOADS_LAUNCH_COPY" text="미리보기"/>
+		<separator/>
+		<button id="ID_DOWNLOADS_FILE_DELETE" text="파일 삭제"/>
+		<button id="ID_DOWNLOADS_CLEAR_INCOMPLETE" text="취소 파일"/>
+		<button id="ID_DOWNLOADS_CLEAR_COMPLETE" text="클리어 파일"/>
+		<button id="ID_DOWNLOADS_RESUME" text="이력서 파일"/>
+		<button id="ID_DOWNLOADS_PAUSE" text="일시 중지 파"/>
+		<separator/>
+		<button id="ID_DOWNLOADS_EDIT" text="세부 사항"/>
+		<button id="ID_DOWNLOADS_MONITOR" text="상태 모니터"/>
+		<rightalign/>
+		<button id="ID_TOOLS_DOWNLOAD" text="대상에 추가"/>
+		<button id="ID_DOWNLOADS_CLEAR_COMPLETED" text="지우기 정가"/>
+		<separator/>
+		<button id="ID_DOWNLOADS_FILTER_MENU" text="필터"/>
+	</toolbar>
+	<!-- UPLOADS WINDOW -->
+	<toolbar name="CUploadsWnd.Basic">
+		<button id="ID_UPLOADS_LAUNCH" text="열기 또는 재생 파일"/>
+		<separator/>
+		<button id="ID_BROWSE_LAUNCH" text="찾아보기 사용자"/>
+		<button id="ID_UPLOADS_CHAT" text="채팅 사용자에게"/>
+		<rightalign/>
+		<button id="ID_UPLOADS_CLEAR_COMPLETED" text="지우기 완료"/>
+	</toolbar>
+	<toolbar name="CUploadsWnd">
+		<button id="ID_UPLOADS_LAUNCH" text="파일 열기"/>
+		<separator/>
+		<button id="ID_UPLOADS_CLEAR" text="취소 파일 버튼 아이디"/>
+		<button id="ID_UPLOADS_START" text="시작하세요"/>
+		<button id="ID_UPLOADS_PRIORITY" text="우선" visible="false"/>
+		<separator/>
+		<button id="ID_BROWSE_LAUNCH" text="찾아보기 사용자"/>
+		<button id="ID_UPLOADS_CHAT" text="Chat 사용자"/>
+		<button id="ID_SECURITY_BAN" text="반 장관은 사용자"/>
+		<rightalign/>
+		<button id="ID_UPLOADS_CLEAR_COMPLETED" text="지우기 정가"/>
+		<separator/>
+		<button id="ID_UPLOADS_FILTER_MENU" text="필터"/>
+	</toolbar>
+	<!-- LIBRARY FRAME -->
+	<toolbar name="CLibraryTree.Top">
+		<button id="ID_LIBRARY_TREE_PHYSICAL" text="폴더"/>
+		<button id="ID_LIBRARY_TREE_VIRTUAL" text="주최자"/>
+	</toolbar>
+	<toolbar name="CLibraryTree.Virtual">
+		<button id="ID_LIBRARY_FOLDERS" text="파일을 공유..."/>
+	</toolbar>
+	<toolbar name="CLibraryHeaderBar.Physical">
+		<button id="ID_LIBRARY_PARENT" text="위로"/>
+		<button id="ID_LIBRARY_VIEW" text="보기"/>
+	</toolbar>
+	<toolbar name="CLibraryHeaderBar.Virtual">
+		<button id="ID_LIBRARY_PARENT" text="위로"/>
+		<button id="ID_LIBRARY_VIEW" text="보기"/>
+	</toolbar>
+	<!-- LIBRARY VIEWS -->
+	<toolbar name="CLibraryTileView.Physical">
+		<button id="ID_LIBRARY_FOLDERS" text="파일을 공유..."/>
+		<rightalign/>
+		<button id="ID_LIBRARY_SEARCH_QUICK" text="찾기:"/>
+		<control id="IDC_SEARCH_BOX" width="90"/>
+		<separator/>
+		<button id="ID_LIBRARY_PANEL" text="숨기기 정보"/>
+	</toolbar>
+	<toolbar name="CLibraryTileView.Virtual">
+		<button id="ID_LIBRARY_FOLDER_NEW" text="그룹 만들기..."/>
+		<button id="ID_LIBRARY_ALBUM_DELETE" text="그룹 삭제"/>
+		<rightalign/>
+		<button id="ID_LIBRARY_SEARCH_QUICK" text="찾기:"/>
+		<control id="IDC_SEARCH_BOX" width="90"/>
+		<separator/>
+		<button id="ID_LIBRARY_PANEL" text="숨기기 정보"/>
+	</toolbar>
+	<toolbar name="CLibraryFileView.Physical.Basic">
+		<button id="ID_LIBRARY_LAUNCH" text="열기 또는 재생"/>
+		<button id="ID_LIBRARY_ENQUEUE" text="재생 목록에 추"/>
+		<separator/>
+		<rightalign/>
+		<button id="ID_LIBRARY_SEARCH_QUICK" text="찾기:"/>
+		<control id="IDC_SEARCH_BOX" width="90"/>
+		<separator/>
+		<button id="ID_LIBRARY_PANEL" text="숨기기 정보"/>
+	</toolbar>
+	<toolbar name="CLibraryFileView.Physical">
+		<button id="ID_LIBRARY_LAUNCH" text="파일 열기"/>
+		<button id="ID_LIBRARY_ENQUEUE" text="재생하려면"/>
+		<separator/>
+		<button id="ID_LIBRARY_PROPERTIES" text="메타 등록"/>
+		<button id="ID_WEBSERVICES_LIST" text="웹 서비스"/>
+		<separator/>
+		<button id="ID_LIBRARY_MOVE"/>
+		<button id="ID_LIBRARY_COPY"/>
+		<button id="ID_LIBRARY_DELETE"/>
+		<rightalign/>
+		<button id="ID_LIBRARY_SEARCH_QUICK" text="찾기:"/>
+		<control id="IDC_SEARCH_BOX" width="90"/>
+		<separator/>
+		<button id="ID_LIBRARY_PANEL" text="숨기기 정보"/>
+	</toolbar>
+	<toolbar name="CLibraryFileView.Virtual.Basic">
+		<button id="ID_LIBRARY_LAUNCH" text="열기 또는 재"/>
+		<button id="ID_LIBRARY_ENQUEUE" text="재생 목록에 추"/>
+		<button id="ID_LIBRARY_FOLDER_ENQUEUE" text="전체 재생"/>
+		<separator/>
+		<rightalign/>
+		<button id="ID_LIBRARY_SEARCH_QUICK" text="찾기:"/>
+		<control id="IDC_SEARCH_BOX" width="90"/>
+		<separator/>
+		<button id="ID_LIBRARY_PANEL" text="숨기기 정보"/>
+	</toolbar>
+	<toolbar name="CLibraryFileView.Virtual">
+		<button id="ID_LIBRARY_LAUNCH" text="파일 열기"/>
+		<button id="ID_LIBRARY_ENQUEUE" text="재생하려면"/>
+		<separator/>
+		<button id="ID_LIBRARY_PROPERTIES" text="메타 등록"/>
+		<button id="ID_WEBSERVICES_LIST" text="웹 서비스"/>
+		<rightalign/>
+		<button id="ID_LIBRARY_SEARCH_QUICK" text="찾기:"/>
+		<control id="IDC_SEARCH_BOX" width="90"/>
+		<separator/>
+		<button id="ID_LIBRARY_PANEL" text="숨기기 정보"/>
+	</toolbar>
+	<toolbar name="CLibraryCollectionView.Virtual">
+		<button id="ID_LIBRARY_FOLDER_ENQUEUE" text="재생 전체 앨범"/>
+		<separator/>
+		<button id="ID_LIBRARY_FOLDER_DOWNLOAD" text="모든 파일 다운로드"/>
+		<rightalign/>
+		<button id="ID_LIBRARY_SEARCH_QUICK" text="찾기:"/>
+		<control id="IDC_SEARCH_BOX" width="90"/>
+		<separator/>
+		<button id="ID_LIBRARY_PANEL" text="숨기기 정보"/>
+	</toolbar>
+	<!-- MEDIA WINDOW -->
+	<toolbar name="CMediaFrame.Basic">
+		<button id="ID_MEDIA_PLAY" text="재생&#160;&#160;&#160;"/>
+		<button id="ID_MEDIA_PAUSE" text="일시 중지" visible="false"/>
+		<button id="ID_MEDIA_STOP" text="중지"/>
+		<separator/>
+		<label text="탐색:" tip="Seek to a position in the media file"/>
+		<control id="IDC_MEDIA_POSITION" width="190" height="22"/>
+		<label text="거래량:" tip="Adjust the audio volume"/>
+		<control id="IDC_MEDIA_VOLUME" width="50" height="22"/>
+		<separator/>
+		<button id="ID_MEDIA_OPEN" text="파일 열기"/>
+		<rightalign/>
+		<button id="ID_MEDIA_PREVIOUS" text="이전"/>
+		<button id="ID_MEDIA_NEXT" text="다음"/>
+		<separator/>
+		<button id="ID_MEDIA_PLAYLIST" text="재생"/>
+	</toolbar>
+	<toolbar name="CMediaFrame">
+		<button id="ID_MEDIA_PLAY" text="재생&#160;&#160;&#160;"/>
+		<button id="ID_MEDIA_PAUSE" text="일시 중지" visible="false"/>
+		<button id="ID_MEDIA_STOP" text="중지"/>
+		<separator/>
+		<label text="탐색:" tip="Seek to a position in the media file"/>
+		<control id="IDC_MEDIA_POSITION" width="190" height="22"/>
+		<label text="스피드 :" tip="Adjust the speed of media play"/>
+		<control id="IDC_MEDIA_SPEED" width="40" height="22"/>
+		<label text="거래량:" tip="Adjust the audio volume"/>
+		<control id="IDC_MEDIA_VOLUME" width="50" height="22"/>
+		<separator/>
+		<button id="ID_MEDIA_OPEN" text="열기"/>
+		<separator/>
+		<button id="ID_MEDIA_FULLSCREEN"/>
+		<button id="ID_MEDIA_ZOOM"/>
+		<button id="ID_MEDIA_SETTINGS"/>
+		<rightalign/>
+		<button id="ID_MEDIA_PREVIOUS"/>
+		<button id="ID_MEDIA_NEXT"/>
+		<separator/>
+		<button id="ID_MEDIA_PLAYLIST" text="재생"/>
+	</toolbar>
+	<toolbar name="CMediaList">
+		<button id="ID_MEDIA_ADD"/>
+		<button id="ID_MEDIA_REMOVE"/>
+		<rightalign/>
+		<button id="ID_MEDIA_CLEAR" text="맑은"/>
+		<button id="ID_MEDIA_SAVE" text="저장"/>
+	</toolbar>
+	<!-- IRC WINDOW -->
+	<toolbar name="CIRCFrame">
+		<button id="ID_IRC_SENDTEXT" text="Send" tip="Post 댓글"/>
+		<separator/>
+		<button id="ID_IRC_CLOSETAB" text="Close" tip="Exit Current Channel Window"/>
+		<rightalign/>
+		<button id="ID_IRC_CONNECT" text="연결은" tip="Connect to IRC"/>
+		<button id="ID_IRC_DISCONNECT" text="끊기" tip="Disconnect from IRC"/>
+		<separator/>
+		<button id="ID_IRC_SETTINGS" text="설정" tip="Configure IRC Settings"/>
+	</toolbar>
+	<!-- NEIGHBORS WINDOW -->
+	<toolbar name="CNeighboursWnd.Basic">
+		<button id="ID_BROWSE_LAUNCH" text="찾아보기 사용자"/>
+		<button id="ID_NEIGHBOURS_CHAT" text="채팅 사용자에게"/>
+		<rightalign/>
+		<button id="ID_NETWORK_G2" text="Gnutella2"/>
+		<button id="ID_NETWORK_G1" text="Gnutella"/>
+		<button id="ID_NETWORK_ED2K" text="eDonkey"/>
+		<separator/>
+		<button id="ID_NEIGHBOURS_SETTINGS" text="설정"/>
+	</toolbar>
+	<toolbar name="CNeighboursWnd">
+		<button id="ID_NETWORK_CONNECT_TO" text="에 연결하려면"/>
+		<button id="ID_NEIGHBOURS_DISCONNECT" text="끊습니다"/>
+		<separator/>
+		<button id="ID_SECURITY_BAN" text="반 장관은 호스트"/>
+		<rightalign/>
+		<button id="ID_NETWORK_G2" text="Gnutella2"/>
+		<button id="ID_NETWORK_G1" text="Gnutella"/>
+		<button id="ID_NETWORK_ED2K" text="eDonkey2000"/>
+		<button id="ID_NETWORK_DC" text="DC++"/>
+		<button id="ID_NETWORK_BT" text="BitTorrent"/>
+		<separator/>
+		<button id="ID_NEIGHBOURS_SETTINGS" text="설정"/>
+	</toolbar>
+	<!-- SECURITY WINDOW -->
+	<toolbar name="CSecurityWnd">
+		<button id="ID_SECURITY_ADD" text="규칙 추가"/>
+		<separator/>
+		<button id="ID_SECURITY_EDIT" text="편집 규칙"/>
+		<button id="ID_SECURITY_REMOVE" text="제거 규칙"/>
+		<separator/>
+		<button id="ID_SECURITY_MOVE_UP" text="위로 이동"/>
+		<button id="ID_SECURITY_MOVE_DOWN" text="아래로"/>
+		<rightalign/>
+		<button id="ID_SECURITY_RESET" text="재설정 조회수"/>
+		<button id="ID_SECURITY_IMPORT" text="가져오기 정가"/>
+		<button id="ID_SECURITY_EXPORT" text="내보내기 정가"/>
+	</toolbar>
+	<!-- SCHEDULER WINDOW -->
+	<toolbar name="CSchedulerWnd">
+		<button id="ID_SCHEDULER_ADD" text="추가 Task"/>
+		<separator/>
+		<button id="ID_SCHEDULER_EDIT" text="편집 Task"/>
+		<button id="ID_SCHEDULER_REMOVE" text="제거 Task"/>
+		<separator/>
+		<button id="ID_SCHEDULER_ACTIVATE" text="Activate"/>
+		<button id="ID_SCHEDULER_DEACTIVATE" text="Deactivate"/>
+		<rightalign/>
+		<button id="ID_SCHEDULER_REMOVE_ALL" text="재설정 조회수"/>
+		<separator/>
+		<button id="ID_SCHEDULER_IMPORT" text="가져오기"/>
+		<button id="ID_SCHEDULER_EXPORT" text="내보내기"/>
+	</toolbar>
+	<!-- HIT MONITOR WINDOW -->
+	<toolbar name="CHitMonitorWnd">
+		<button id="ID_SEARCH_DOWNLOAD" text="다운로드"/>
+		<separator/>
+		<button id="ID_HITMONITOR_SEARCH" text="다시-쿼리"/>
+		<button id="ID_HITMONITOR_PAUSE" text="일시 중지"/>
+		<button id="ID_SEARCH_CLEAR" text="맑은"/>
+		<rightalign/>
+		<button id="ID_SEARCH_FILTER_RAW" text="필터 :"/>
+		<control id="IDC_FILTER_BOX" width="100"/>
+	</toolbar>
+	<!-- DISCOVERY SERVICES WINDOW Missing -->
+	<!-- HOST CACHE WINDOW -->
+	<toolbar name="CHostCacheWnd">
+		<button id="ID_HOSTCACHE_CONNECT" text="에 연결하려면"/>
+		<button id="ID_HOSTCACHE_DISCONNECT" text="끊습니다"/>
+		<button id="ID_HOSTCACHE_REMOVE" text="제거"/>
+		<rightalign/>
+		<button id="ID_HOSTCACHE_G2_HORIZON" text="클러스터"/>
+		<button id="ID_HOSTCACHE_G2_CACHE" text="캐시"/>
+		<button id="ID_HOSTCACHE_G1_CACHE" text="캐시"/>
+		<button id="ID_HOSTCACHE_ED2K_CACHE" text="캐시"/>
+		<button id="ID_HOSTCACHE_DC_CACHE" text="캐시"/>
+	</toolbar>
+	<!-- PRIVATE CHAT WINDOW -->
+	<toolbar name="CPrivateChatWnd">
+		<button id="ID_CHAT_BOLD"/>
+		<button id="ID_CHAT_ITALIC"/>
+		<button id="ID_CHAT_UNDERLINE"/>
+		<button id="ID_CHAT_COLOR"/>
+		<button id="ID_CHAT_EMOTICONS" text=" &#160; "/>
+		<separator/>
+		<button id="ID_CHAT_BROWSE" text="찾아보기 사용자"/>
+		<button id="ID_CHAT_PRIORITY" text="Grant Priority"/>
+		<!--button id="ID_CHAT_SEND_FILE" text="Send File"-->
+		<separator/>
+		<button id="ID_CHAT_CONNECT" text="연결" visible="false"/>
+		<button id="ID_CHAT_DISCONNECT" text="끊습니다"/>
+	</toolbar>
+	<!-- WEBSERVICES -->
+	<toolbar name="WebServices.MusicBrainz">
+		<button id="ID_MUSICBRAINZ_MATCHES" text="보기 Album Matches"/>
+		<button id="ID_MUSICBRAINZ_ALBUMS" text="보기 All Albums"/>
+		<separator/>
+	</toolbar>
+	<!-- IMAGE VIEWER PLUGIN WINDOW -->
+	<toolbar name="ImageViewerWnd">
+		<button id="PluginID_ImageViewer_FullSize" text="실제 크기"/>
+		<button id="PluginID_ImageViewer_BestFit" text="가장 적합"/>
+		<separator/>
+		<button id="PluginID_ImageViewer_Refresh" text="새로고침"/>
+		<rightalign/>
+		<button id="PluginID_ImageViewer_Close" text="닫기"/>
+	</toolbar>
+</toolbars>
+<!-- Menu Definitions -->
+<menus>
+	<!-- TAB BAR POPUP MENUS -->
+	<menu name="CTabBar">
+		<item id="ID_MOVETAB_LEFT" text="탭 왼쪽으로 이동"/>
+		<item id="ID_MOVETAB_RIGHT" text="탭 오른쪽으로 이동"/>
+		<separator/>
+		<item id="ID_CHILD_CLOSE" text="창 닫기"/>
+	</menu>
+	<menu name="CTabBar.Child">
+		<item id="ID_MOVETAB_LEFT" text="탭 왼쪽으로 이동"/>
+		<item id="ID_MOVETAB_RIGHT" text="탭 오른쪽으로 이동"/>
+		<separator/>
+		<item id="ID_CHILD_MAXIMISE" text="전체 화면"/>
+		<item id="ID_CHILD_RESTORE" text="복원"/>
+		<item id="ID_CHILD_MINIMISE" text="최소화"/>
+		<separator/>
+		<item id="ID_CHILD_CLOSE" text="창 닫기"/>
+	</menu>
+	<!-- TRAY MENU -->
+	<menu name="CMainWnd.Tray"> <!--"CRemoteWnd"-->
+		<item id="ID_TRAY_OPEN" text="열기 Envy"/>
+		<separator/>
+		<item id="ID_WINDOW_REMOTE" text="원격보기"/>
+		<item id="ID_TOOLS_SETTINGS" text="보기 설정..."/>
+		<item id="ID_NETWORK_SEARCH" text="새로운 검색..."/>
+		<item id="ID_TOOLS_DOWNLOAD" text="파일 다운로드 ..."/>
+		<separator/>
+		<item id="ID_MEDIA_PLAY" text="재생 미디어"/>
+		<item id="ID_MEDIA_PAUSE" text="일시 중지 미디어"/>
+		<item id="ID_MEDIA_PREVIOUS" text="이전 트랙"/>
+		<item id="ID_MEDIA_NEXT" text="다음 트랙"/>
+		<separator/>
+		<item id="ID_NETWORK_AUTO_CLOSE" text="후종료"/>
+		<item id="ID_NETWORK_EXIT" text="종료"/>
+	</menu>
+	<!-- MAIN WINDOW MENU BAR -->
+	<menu name="CMainWnd.DropMenu" type="bar">
+		<menu text="&#160; 메뉴 &#160;">
+			<item id="ID_TOOLS_SETTINGS" text="설정... &#160; "/>
+			<menu text="네트워크">
+				<item id="ID_NETWORK_CONNECT" text="연결" shortcut="Ctrl+G"/>
+				<item id="ID_NETWORK_DISCONNECT" text="끊습니다"/>
+				<separator/>
+				<item id="ID_NETWORK_G2" text="연결 to Gnutella_2"/>
+				<item id="ID_NETWORK_G1" text="연결 to _Gnutella"/>
+				<item id="ID_NETWORK_ED2K" text="연결 to _eDonkey"/>
+				<item id="ID_NETWORK_DC" text="연결 to _DC++"/>
+				<item id="ID_NETWORK_BT" text="연결 to _BitTorrent"/>
+				<separator/>
+				<item id="ID_NETWORK_CONNECT_TO" text="에 연결하려면..." shortcut="Ctrl+T"/>
+				<item id="ID_NETWORK_BROWSE_TO" text="찾아보기 호스트 ..."/>
+				<separator/>
+				<item id="ID_NETWORK_AUTO_CLOSE" text="후종료"/>
+				<item id="ID_NETWORK_EXIT" text="종료"/>
+			</menu>
+			<menu text="도구">
+				<item id="ID_LIBRARY_FOLDERS" text="파일을 공유..."/>
+				<item id="ID_OPEN_DOWNLOADS_FOLDER" text="다운로드 폴더를 완료"/>
+				<separator/>
+				<item id="ID_TOOLS_DOWNLOAD" text="다운로드 파일/Torrent..."/>
+				<item id="ID_TOOLS_SEEDTORRENT" text="종자 뉴 Torrent..."/>
+				<item id="ID_TOOLS_CREATETORRENT" text="새. Torrent 만들기..."/>
+				<item id="ID_IMPORT_DOWNLOADS" text="가져오기 eMule 부분..."/>
+				<separator/>
+				<item id="ID_TOOLS_LANGUAGE" text="언어 선택 항목 ID를..."/>
+				<item id="ID_TOOLS_SKIN" text="Skin 선택..."/>
+				<separator/>
+				<item id="ID_TOOLS_PROFILE" text="내 프로필 수정..."/>
+				<item id="ID_TOOLS_WIZARD" text="빠른 마법..."/>
+				<separator/>
+				<item id="ID_TOOLS_SETTINGS" text="_Envy 설정..."/>
+			</menu>
+			<menu text="보기">
+				<item id="ID_TAB_HOME" text="홈 Tab" shortcut="Alt-Home"/>
+				<item id="ID_TAB_IRC" text="IRC 채팅" shortcut="F12"/>
+				<item id="ID_VIEW_DOWNLOADS" text="다운로드" shortcut="F3"/>
+				<item id="ID_VIEW_UPLOADS" text="업로드" shortcut="F4"/>
+				<item id="ID_VIEW_LIBRARY" text="도서관" shortcut="F5"/>
+				<item id="ID_VIEW_MEDIA" text="미디어 플레이어" shortcut="F6"/>
+				<separator/>
+				<item id="ID_VIEW_SECURITY" text="보안 항목" shortcut="F7"/>
+				<item id="ID_VIEW_HOSTS" text="호스트 캐시" shortcut="F8"/>
+				<item id="ID_VIEW_DISCOVERY" text="디스커버리" shortcut="F9"/>
+				<item id="ID_VIEW_TRAFFIC" text="그래프" shortcut="F10"/>
+				<item id="ID_VIEW_SYSTEM" text="시스템" shortcut="F11"/>
+				<item id="ID_VIEW_NEIGHBOURS" text="이웃" shortcut="Ctrl+F11"/>
+				<separator/>
+				<item id="ID_VIEW_PACKETS" text="패킷 덤프" shortcut="Ctrl+F1"/>
+				<item id="ID_VIEW_SEARCH_MONITOR" text="검색 모니터" shortcut="Ctrl+F2"/>
+				<item id="ID_VIEW_RESULTS_MONITOR" text="히트 모니터" shortcut="Ctrl+F3"/>
+				<item id="ID_TAB_SEARCH" text="검색" shortcut="Ctrl-S"/>
+			</menu>
+			<menu text="창">
+				<item id="ID_VIEW_BASIC" text="_기본 모드"/>
+				<item id="ID_VIEW_TABBED" text="탭 모드"/>
+				<item id="ID_VIEW_WINDOWED" text="창 모드"/>
+				<separator/>
+				<item id="ID_WINDOW_NAVBAR" text="보기 네비게이션 바"/>
+				<item id="ID_WINDOW_TOOLBAR" text="보기 도구 모음"/>
+				<separator/>
+				<item id="ID_WINDOW_TABBAR" text="탭보기 바"/>
+				<item id="ID_WINDOW_MONITOR" text="모니터보기"/>
+				<item id="ID_WINDOW_REMOTE" text="원격보기"/>
+			</menu>
+			<menu text="도움말">
+				<item id="ID_HELP_FAQ" text="Envy 자주 묻는 질문"/>
+				<item id="ID_HELP_TEST" text="연결 테스트"/>
+				<separator/>
+				<menu text="가이드">
+					<item id="ID_HELP_GUIDE" text="Envy 사용자 가이드"/>
+					<item id="ID_HELP_ROUTER" text="라우터 도움말"/>
+					<item id="ID_HELP_SECURITY" text="보안 도움말 항목"/>
+					<item id="ID_HELP_CODEC" text="코덱 도움말"/>
+				</menu>
+				<separator/>
+				<menu text="_Websites">
+					<separator/>
+					<item id="ID_HELP_FORUMS" text="Envy 포럼"/>
+					<item id="ID_HELP_VERSION_CHECK" text="새 버전에 대한 확인"/>
+					<item id="ID_HELP_WEB_SKINS" text="Envy 스킨 사이트"/>
+					<item id="ID_HELP_DONATE" text="기부 Envy 로"/>
+					<!--item id="ID_HELP_UPDATE" text="최신 뉴스"-->
+					<!--item id="ID_HELP_WEB_1" text="Zeropaid.com"-->
+				</menu>
+				<item id="ID_HELP_HOMEPAGE" text="_Envy 사이트 항목"/>
+				<separator/>
+				<item id="ID_HELP_ABOUT" text="항목 ID를 Envy..."/>
+			</menu>
+			<item id="ID_NETWORK_EXIT" text="종료"/>
+		</menu>
+	</menu>
+	<menu name="CMainWnd.Tabbed" type="bar">
+		<menu text="네트워크">
+			<item id="ID_NETWORK_CONNECT" text="연결" shortcut="Ctrl+G"/>
+			<item id="ID_NETWORK_DISCONNECT" text="끊습니다"/>
+			<separator/>
+			<item id="ID_NETWORK_G2" text="연결 to Gnutella_2"/>
+			<item id="ID_NETWORK_G1" text="연결 to _Gnutella"/>
+			<item id="ID_NETWORK_ED2K" text="연결 to _eDonkey"/>
+			<item id="ID_NETWORK_DC" text="연결 to _DC++"/>
+			<item id="ID_NETWORK_BT" text="연결 to _BitTorrent"/>
+			<separator/>
+			<item id="ID_NETWORK_CONNECT_TO" text="에 연결하려면..." shortcut="Ctrl+T"/>
+			<item id="ID_NETWORK_BROWSE_TO" text="찾아보기 호스트 ..."/>
+			<separator/>
+			<item id="ID_NETWORK_AUTO_CLOSE" text="후종료"/>
+			<item id="ID_NETWORK_EXIT" text="종료"/>
+		</menu>
+		<menu text="_View">
+			<item id="ID_TAB_HOME" text="홈"/>
+			<item id="ID_TAB_SEARCH" text="검색"/>
+			<item id="ID_TAB_TRANSFERS" text="전학"/>
+			<item id="ID_TAB_NETWORK" text="네트워크"/>
+			<item id="ID_TAB_LIBRARY" text="도서관"/>
+			<item id="ID_TAB_MEDIA" text="미디어 플레이어"/>
+			<item id="ID_TAB_IRC" text="IRC 채팅"/>
+			<separator/>
+			<item id="ID_VIEW_SECURITY" text="보안 항목"/>
+			<item id="ID_VIEW_HOSTS" text="호스트 캐시"/>
+			<separator/>
+			<menu text="고급 ">
+				<item id="ID_TAB_HOME" text="홈 Tab" shortcut="Alt-Home"/>
+				<item id="ID_TAB_IRC" text="IRC 채팅" shortcut="F12"/>
+				<item id="ID_VIEW_DOWNLOADS" text="다운로드" shortcut="F3"/>
+				<item id="ID_VIEW_UPLOADS" text="업로드" shortcut="F4"/>
+				<item id="ID_VIEW_LIBRARY" text="도서관" shortcut="F5"/>
+				<item id="ID_VIEW_MEDIA" text="미디어 플레이어" shortcut="F6"/>
+				<separator/>
+				<item id="ID_VIEW_SECURITY" text="보안 항목" shortcut="F7"/>
+				<item id="ID_VIEW_HOSTS" text="호스트 캐시" shortcut="F8"/>
+				<item id="ID_VIEW_DISCOVERY" text="디스커버리" shortcut="F9"/>
+				<item id="ID_VIEW_TRAFFIC" text="그래프" shortcut="F10"/>
+				<item id="ID_VIEW_SYSTEM" text="시스템" shortcut="F11"/>
+				<item id="ID_VIEW_NEIGHBOURS" text="이웃" shortcut="Ctrl+F11"/>
+				<separator/>
+				<item id="ID_VIEW_PACKETS" text="패킷 덤프" shortcut="Ctrl+F1"/>
+				<item id="ID_VIEW_SEARCH_MONITOR" text="검색 모니터" shortcut="Ctrl+F2"/>
+				<item id="ID_VIEW_RESULTS_MONITOR" text="히트 모니터" shortcut="Ctrl+F3"/>
+				<item id="ID_TAB_SEARCH" text="검색" shortcut="Ctrl-S"/>
+			</menu>
+			<separator/>
+			<item id="ID_VIEW_BASIC" text="_기본 모드"/>
+			<item id="ID_VIEW_TABBED" text="탭 모드"/>
+			<item id="ID_VIEW_WINDOWED" text="창 모드"/>
+		</menu>
+		<menu text="도구">
+			<item id="ID_LIBRARY_FOLDERS" text="파일을 공유..."/>
+			<item id="ID_OPEN_DOWNLOADS_FOLDER" text="다운로드 폴더를 완료"/>
+			<separator/>
+			<item id="ID_TOOLS_DOWNLOAD" text="다운로드 파일/Torrent..."/>
+			<item id="ID_TOOLS_SEEDTORRENT" text="종자 뉴 Torrent..."/>
+			<item id="ID_TOOLS_CREATETORRENT" text="새. Torrent 만들기..."/>
+			<item id="ID_IMPORT_DOWNLOADS" text="가져오기 eMule 부분..."/>
+			<separator/>
+			<item id="ID_TOOLS_LANGUAGE" text="언어 선택 항목 ID를..."/>
+			<item id="ID_TOOLS_SKIN" text="Skin 선택..."/>
+			<separator/>
+			<item id="ID_TOOLS_PROFILE" text="내 프로필 수정..."/>
+			<item id="ID_TOOLS_WIZARD" text="빠른 마법..."/>
+			<separator/>
+			<item id="ID_TOOLS_SETTINGS" text="_Envy 설정..."/>
+		</menu>
+		<menu text="창">
+			<item id="ID_WINDOW_NAVBAR" text="보기 네비게이션 바"/>
+			<item id="ID_WINDOW_TOOLBAR" text="보기 도구 모음"/>
+			<separator/>
+			<item id="ID_WINDOW_TABBAR" text="탭보기 바"/>
+			<item id="ID_WINDOW_MONITOR" text="모니터보기"/>
+			<item id="ID_WINDOW_REMOTE" text="원격보기"/>
+		</menu>
+		<menu text="도움말">
+			<item id="ID_HELP_FAQ" text="Envy 자주 묻는 질문"/>
+			<item id="ID_HELP_TEST" text="연결 테스트"/>
+			<separator/>
+			<menu text="가이드">
+				<item id="ID_HELP_GUIDE" text="Envy 사용자 가이드"/>
+				<item id="ID_HELP_ROUTER" text="라우터 도움말"/>
+				<item id="ID_HELP_SECURITY" text="보안 도움말 항목"/>
+				<item id="ID_HELP_CODEC" text="코덱 도움말"/>
+			</menu>
+			<separator/>
+			<menu text="가이드">
+				<item id="ID_HELP_HOMEPAGE" text="_Envy 사이트 항목"/>
+				<separator/>
+				<item id="ID_HELP_FORUMS" text="Envy 포럼"/>
+				<item id="ID_HELP_WEB_SKINS" text="Envy스킨 사이트"/>
+				<!--item id="ID_HELP_UPDATE" text="최신 뉴스"-->
+				<!--item id="ID_HELP_WEB_1" text="Zeropaid.com"-->
+			</menu>
+			<separator/> <!--
+			<item id="ID_HELP_VERSION_CHECK" text="새 버전에 대한 확인"/>
+			<item id="ID_HELP_DONATE" text="기부 Envy로"/>
+			<separator/> -->
+			<item id="ID_HELP_ABOUT" text="항목 ID를 Envy..."/>
+		</menu>
+	</menu>
+	<menu name="CMainWnd.Basic" type="bar">
+		<menu text="네트워크">
+			<item id="ID_NETWORK_CONNECT" text="연결" shortcut="Ctrl+G"/>
+			<separator/>
+			<item id="ID_NETWORK_G2" text="연결 to Gnutella_2"/>
+			<item id="ID_NETWORK_G1" text="연결 to _Gnutella"/>
+			<item id="ID_NETWORK_ED2K" text="연결 to eDonkey"/>
+			<separator/>
+			<item id="ID_NETWORK_AUTO_CLOSE" text="종료 After Transfers"/>
+			<item id="ID_NETWORK_EXIT" text="종료"/>
+		</menu>
+		<menu text="_View">
+			<item id="ID_TAB_HOME" text="홈"/>
+			<item id="ID_TAB_SEARCH" text="검색"/>
+			<item id="ID_TAB_TRANSFERS" text="다운로드"/>
+			<item id="ID_TAB_LIBRARY" text="도서관"/>
+			<item id="ID_TAB_MEDIA" text="미디어 플레이어"/>
+			<item id="ID_TAB_IRC" text="IRC 채팅"/>
+			<item id="ID_WINDOW_REMOTE" text="미디어 리모트"/>
+			<separator/>
+			<menu text="고급 ">
+				<item id="ID_VIEW_NEIGHBOURS" text="이웃"/>
+				<item id="ID_VIEW_UPLOADS" text="업로드"/>
+				<separator/>
+				<item id="ID_VIEW_SECURITY" text="보안 항목"/>
+				<item id="ID_VIEW_SCHEDULER" text="Scheduler"/>
+				<item id="ID_VIEW_HOSTS" text="호스트 캐시"/>
+				<item id="ID_VIEW_DISCOVERY" text="디스커버"/>
+			</menu>
+			<separator/>
+			<item id="ID_VIEW_BASIC" text="_기본 모드"/>
+			<item id="ID_VIEW_TABBED" text="전원 모드"/>
+		</menu>
+		<menu text="_Tools">
+			<item id="ID_LIBRARY_FOLDERS" text="파일을 공유..."/>
+			<item id="ID_TOOLS_DOWNLOAD" text="다운로드 파일/Torrent..."/>
+			<separator/>
+			<item id="ID_TOOLS_LANGUAGE" text="C언어 선택 항목 ID를..."/>
+			<item id="ID_TOOLS_SKIN" text="스킨 선택..."/>
+			<separator/>
+			<item id="ID_TOOLS_PROFILE" text="내 프로필 수정..."/>
+			<item id="ID_TOOLS_WIZARD" text="빠른 마법사..."/>
+			<separator/>
+			<item id="ID_TOOLS_SETTINGS" text="_Envy 설정..."/>
+		</menu>
+		<menu text="_도움">
+			<item id="ID_HELP_FAQ" text="Envy 자주 묻는 질문"/>
+			<item id="ID_HELP_TEST" text="연결 테스트"/>
+			<separator/>
+			<menu text="가이드">
+				<item id="ID_HELP_GUIDE" text="Envy _사용자 가이"/>
+				<item id="ID_HELP_ROUTER" text="_라우터 도움말"/>
+				<item id="ID_HELP_SECURITY" text="보안 도움말 항목"/>
+				<item id="ID_HELP_CODEC" text="코덱 도움"/>
+			</menu>
+			<separator/>
+			<menu text="가이드">
+				<item id="ID_HELP_HOMEPAGE" text="_Envy 사이트 항목"/>
+				<separator/>
+				<item id="ID_HELP_FORUMS" text="Envy 포럼"/>
+				<item id="ID_HELP_WEB_SKINS" text="Envy 스킨 사이트"/>
+				<!--item id="ID_HELP_UPDATE" text="최신 뉴스"-->
+				<!--item id="ID_HELP_WEB_1" text="Zeropaid.com"-->
+			</menu>
+			<separator/> <!--
+			<item id="ID_HELP_VERSION_CHECK" text="새 버전에 대한 확인"/>
+			<item id="ID_HELP_DONATE" text="기부 Envy"/>
+			<separator/> -->
+			<item id="ID_HELP_ABOUT" text="항목 ID를 Envy..."/>
+		</menu>
+	</menu>
+	<menu name="CMainWnd.Windowed" type="bar">
+		<menu text="네트워크">
+			<item id="ID_NETWORK_SEARCH" text="새로운 검색..." shortcut="Ctrl+S"/>
+			<separator/>
+			<item id="ID_NETWORK_CONNECT" text="연결" shortcut="Ctrl+G"/>
+			<item id="ID_NETWORK_DISCONNECT" text="끊습니다"/>
+			<separator/>
+			<item id="ID_NETWORK_CONNECT_TO" text="에 연결하려면..." shortcut="Ctrl+T"/>
+			<item id="ID_NETWORK_BROWSE_TO" text="찾아보기 호스트..."/>
+			<separator/>
+			<item id="ID_NETWORK_G2" text="연결 Gnutella_2"/>
+			<item id="ID_NETWORK_G1" text="연결 _Gnutella"/>
+			<item id="ID_NETWORK_ED2K" text="연결 _eDonkey"/>
+			<item id="ID_NETWORK_ED2K" text="연결 _DC++"/>
+			<separator/>
+			<item id="ID_NETWORK_AUTO_CLOSE" text="전학 후 닫기"/>
+			<item id="ID_NETWORK_EXIT" text="종료"/>
+		</menu>
+		<menu text="보기">
+			<item id="ID_TAB_HOME" text="홈 View" shortcut="Alt-Home"/>
+			<item id="ID_VIEW_SYSTEM" text="시스템 " shortcut="F11"/>
+			<item id="ID_VIEW_NEIGHBOURS" text="이웃" shortcut="Ctrl+F11"/>
+			<item id="ID_VIEW_DOWNLOADS" text="다운로드" shortcut="F3"/>
+			<item id="ID_VIEW_UPLOADS" text="업로드" shortcut="F4"/>
+			<item id="ID_VIEW_LIBRARY" text="도서관" shortcut="F5"/>
+			<item id="ID_VIEW_MEDIA" text="미디어 플레이어" shortcut="F6"/>
+			<item id="ID_TAB_IRC" text="IRC 채팅" shortcut="F12"/>
+			<separator/>
+			<item id="ID_VIEW_SECURITY" text="보안 항목" shortcut="F7"/>
+			<item id="ID_VIEW_HOSTS" text="호스트 캐" shortcut="F8"/>
+			<item id="ID_VIEW_DISCOVERY" text="디스커버" shortcut="F9"/>
+			<item id="ID_VIEW_TRAFFIC" text="그래프 " shortcut="F10"/>
+			<separator/>
+			<item id="ID_VIEW_PACKETS" text="패킷 덤프 " shortcut="Ctrl+F1"/>
+			<item id="ID_VIEW_SEARCH_MONITOR" text="검색 모니터" shortcut="Ctrl+F2"/>
+			<item id="ID_VIEW_RESULTS_MONITOR" text="히트 모니" shortcut="Ctrl+F3"/>
+			<item id="ID_TAB_SEARCH" text="새로운 검색" shortcut="Ctrl+S"/>
+			<separator/>
+			<item id="ID_VIEW_BASIC" text="기본 모드"/>
+			<item id="ID_VIEW_TABBED" text="탭 모드"/>
+			<item id="ID_VIEW_WINDOWED" text="창 모드"/>
+		</menu>
+		<menu text="도구">
+			<item id="ID_LIBRARY_FOLDERS" text="파일을 공유..."/>
+			<item id="ID_OPEN_DOWNLOADS_FOLDER" text="열기 다운로드 폴더"/>
+			<separator/>
+			<item id="ID_TOOLS_DOWNLOAD" text="다운로드 파일Torrent..."/>
+			<item id="ID_TOOLS_SEEDTORRENT" text="종자 뉴 Torrent..."/>
+			<item id="ID_TOOLS_CREATETORRENT" text="새. Torrent 만들기..."/>
+			<item id="ID_IMPORT_DOWNLOADS" text="가져오기 eMule 부분..."/>
+			<separator/>
+			<item id="ID_TOOLS_LANGUAGE" text="언어 선택 항목 ID를..."/>
+			<item id="ID_TOOLS_SKIN" text="스킨 선택..."/>
+			<separator/>
+			<item id="ID_TOOLS_PROFILE" text="프로필 수정..."/>
+			<item id="ID_TOOLS_WIZARD" text="빠른 마법사d..."/>
+			<separator/>
+			<item id="ID_TOOLS_SETTINGS" text="_Envy 설정..."/>
+		</menu>
+		<menu text="창">
+			<item id="ID_WINDOW_CASCADE" text="전체 화면"/>
+			<item id="ID_WINDOW_TILE_HORZ" text="타일 수평"/>
+			<item id="ID_WINDOW_TILE_VERT" text="타일 수직"/>
+			<separator/>
+			<item id="ID_WINDOW_NAVBAR" text="쇼 네비게이션 바"/>
+			<item id="ID_WINDOW_TOOLBAR" text="보기 도구 모음"/>
+			<separator/>
+			<item id="ID_WINDOW_TABBAR" text="탭보기"/>
+			<item id="ID_WINDOW_MONITOR" text="모니터보기"/>
+			<item id="ID_WINDOW_REMOTE" text="원격보"/>
+		</menu>
+		<menu text="도움말">
+			<item id="ID_HELP_FAQ" text="Envy 주 묻는 질"/>
+			<item id="ID_HELP_TEST" text="연결 테스트"/>
+			<separator/>
+			<menu text="가이드">
+				<item id="ID_HELP_GUIDE" text="Envy 사용자 가이드"/>
+				<item id="ID_HELP_ROUTER" text="라우터 도움말"/>
+				<item id="ID_HELP_SECURITY" text="보안 도움말 항목"/>
+				<item id="ID_HELP_CODEC" text="코덱 도움말"/>
+			</menu>
+			<separator/>
+			<menu text="웹사이트 ">
+				<item id="ID_HELP_HOMEPAGE" text="_Envy 사이트 항목"/>
+				<separator/>
+				<item id="ID_HELP_FORUMS" text="Envy 포럼"/>
+				<item id="ID_HELP_WEB_SKINS" text="Envy 스킨 사이트"/>
+				<!--item id="ID_HELP_UPDATE" text="최신 뉴스"-->
+				<!--item id="ID_HELP_WEB_1" text="Zeropaid.com"-->
+			</menu>
+			<separator/> <!--
+			<item id="ID_HELP_VERSION_CHECK" text="새 버전에 대한 확인"/>
+			<item id="ID_HELP_DONATE" text="기부 Envy로"/>
+			<separator/> -->
+			<item id="ID_HELP_ABOUT" text="항목 ID를 Envy..."/>
+		</menu>
+	</menu>
+	<!-- VIEW POPUP -->
+	<menu name="CMainWnd.View.Basic">
+		<item id="ID_TAB_HOME" text="홈"/>
+		<item id="ID_TAB_SEARCH" text="검색h"/>
+		<item id="ID_TAB_TRANSFERS" text="다운로드"/>
+		<item id="ID_TAB_LIBRARY" text="도서관"/>
+		<item id="ID_TAB_MEDIA" text="미디어 플레이어"/>
+		<item id="ID_TAB_IRC" text="IRC Chat"/>
+		<separator/>
+		<menu text="_Advanced">
+			<item id="ID_VIEW_NEIGHBOURS" text="이웃"/>
+			<item id="ID_VIEW_UPLOADS" text="업로드"/>
+			<item id="ID_VIEW_SECURITY" text="보안 항목"/>
+			<item id="ID_VIEW_HOSTS" text="호스트 캐시"/>
+		</menu>
+	</menu>
+	<menu name="CMainWnd.View.Tabbed">
+		<item id="ID_TAB_HOME" text="홈"/>
+		<item id="ID_TAB_LIBRARY" text="도서관"/>
+		<item id="ID_TAB_MEDIA" text="미디어 플레이"/>
+		<item id="ID_TAB_SEARCH" text="검색"/>
+		<item id="ID_TAB_TRANSFERS" text="전학"/>
+		<item id="ID_TAB_NETWORK" text="네트워크"/>
+		<item id="ID_TAB_IRC" text="IRC 채팅"/>
+		<separator/>
+		<item id="ID_VIEW_SECURITY" text="Security"/>
+		<item id="ID_VIEW_HOSTS" text="호스트 캐시"/>
+		<item id="ID_VIEW_DISCOVERY" text="디스커버리"/>
+		<item id="ID_VIEW_TRAFFIC" text="그래프"/>
+		<separator/>
+		<item id="ID_VIEW_PACKETS" text="패킷 덤프"/>
+		<item id="ID_VIEW_SEARCH_MONITOR" text="모니터"/>
+		<item id="ID_VIEW_RESULTS_MONITOR" text="히트 모니터"/>
+	</menu>
+	<menu name="CMainWnd.View.Windowed">
+		<item id="ID_NETWORK_SEARCH" text="새로운 검색..."/>
+		<separator/>
+		<item id="ID_VIEW_SYSTEM" text="시스템"/>
+		<item id="ID_VIEW_NEIGHBOURS" text="이웃"/>
+		<item id="ID_VIEW_DOWNLOADS" text="다운로드"/>
+		<item id="ID_VIEW_UPLOADS" text="업로드"/>
+		<item id="ID_VIEW_LIBRARY" text="도서관"/>
+		<item id="ID_VIEW_MEDIA" text="미디어 플레이어"/>
+		<separator/>
+		<item id="ID_VIEW_SECURITY" text="보안 항목"/>
+		<item id="ID_VIEW_SCHEDULER" text="Schedule_r"/>
+		<item id="ID_VIEW_HOSTS" text="호스트 캐시"/>
+		<item id="ID_VIEW_DISCOVERY" text="디스커버리"/>
+		<item id="ID_VIEW_TRAFFIC" text="그래프"/>
+		<separator/>
+		<item id="ID_VIEW_PACKETS" text="패킷 덤프"/>
+		<item id="ID_VIEW_SEARCH_MONITOR" text="검색 모니터"/>
+		<item id="ID_VIEW_RESULTS_MONITOR" text="히트 모니터"/>
+	</menu>
+	<!-- HOME MENU -->
+	<menu name="CHomeWnd.Basic">
+		<item id="ID_TAB_HOME" text="홈"/>
+		<item id="ID_TAB_LIBRARY" text="도서관"/>
+		<item id="ID_TAB_MEDIA" text="미디어 플레이"/>
+		<item id="ID_TAB_SEARCH" text="검색"/>
+		<item id="ID_TAB_TRANSFERS" text="다운로드"/>
+		<separator/>
+		<menu text="_Advanced">
+			<item id="ID_VIEW_NEIGHBOURS" text="이웃"/>
+			<item id="ID_VIEW_UPLOADS" text="업로드"/>
+			<item id="ID_VIEW_SECURITY" text="보안 항목"/>
+			<item id="ID_VIEW_HOSTS" text="호스트 캐시"/>
+		</menu>
+	</menu>
+	<menu name="CHomeWnd.Tabbed">
+		<item id="ID_TAB_HOME" text="홈"/>
+		<item id="ID_TAB_SEARCH" text="검색"/>
+		<item id="ID_TAB_TRANSFERS" text="전학"/>
+		<item id="ID_TAB_NETWORK" text="네트워크"/>
+		<item id="ID_TAB_LIBRARY" text="도서관"/>
+		<item id="ID_TAB_MEDIA" text="미디어 플레이어"/>
+		<item id="ID_TAB_IRC" text="IRC 채팅"/>
+		<separator/>
+		<item id="ID_VIEW_SECURITY" text="보안 항목"/>
+		<item id="ID_VIEW_HOSTS" text="호스트 캐시e"/>
+		<item id="ID_VIEW_DISCOVERY" text="디스커버리"/>
+		<item id="ID_VIEW_TRAFFIC" text="그래프"/>
+		<separator/>
+		<item id="ID_VIEW_PACKETS" text="패킷 덤프"/>
+		<item id="ID_VIEW_SEARCH_MONITOR" text="검색 모니터를"/>
+		<item id="ID_VIEW_RESULTS_MONITOR" text="히트 모니터"/>
+	</menu>
+	<!-- HOST CACHE WINDOW -->
+	<menu name="CHostCacheWnd">
+		<item id="ID_HOSTCACHE_CONNECT" text="_Connect Now"/>
+		<item id="ID_HOSTCACHE_DISCONNECT" text="_Disconnect"/>
+		<item id="ID_NEIGHBOURS_URI" text="Get P2P Link (_URI)"/>
+		<item id="ID_HOSTCACHE_PRIORITY" text="_Priority Server"/>
+		<separator/>
+		<item id="ID_HOSTCACHE_REMOVE" text="_Remove Host"/>
+		<separator/>
+		<menu text="_Filter">
+			<item id="ID_HOSTCACHE_G2_HORIZON" text="Gnutella2 Cl_uster"/>
+			<item id="ID_HOSTCACHE_G2_CACHE" text="Gnutella_2 Cache"/>
+			<item id="ID_HOSTCACHE_G1_CACHE" text="Gnutella_1 Cache"/>
+			<item id="ID_HOSTCACHE_ED2K_CACHE" text="_eDonkey Servers"/>
+			<item id="ID_HOSTCACHE_BT_CACHE" text="_BitTorrent Cache"/>
+			<item id="ID_HOSTCACHE_KAD_CACHE" text="_Kademlia Cache"/>
+		</menu>
+		<separator/>
+		<item id="ID_HOSTCACHE_IMPORT" text="_Import MET File..."/>
+		<item id="ID_HOSTCACHE_FILE_DOWNLOAD" text="Download MET/Hublist..."/>
+	</menu>
+	<!-- SEARCH WINDOW -->
+	<menu name="CSearchWnd.Basic">
+		<item id="ID_SEARCH_DOWNLOAD" text="_Download"/>
+		<separator/>
+		<item id="ID_BROWSE_LAUNCH" text="_Browse User"/>
+		<item id="ID_SECURITY_BAN" text="B_an User"/>
+		<separator/>
+		<menu text="_Search For">
+			<item id="ID_SEARCH_FOR_SIMILAR" text="_Similar Files"/>
+			<separator/>
+			<item id="ID_SEARCH_FOR_ARTIST" text="_Music by the same Artist"/>
+			<item id="ID_SEARCH_FOR_ALBUM" text="Music in the same _Album"/>
+			<item id="ID_SEARCH_FOR_SERIES" text="_Episodes in the same Series"/>
+		</menu>
+		<menu id="ID_WEBSERVICES_LIST" text="_Web Services">
+			<item id="ID_LIBRARY_BITPRINTS_WEB" text="View Bitprints listing"/>
+			<item id="ID_SEARCH_URI" text="Get P2P Link (_URI)"/>
+		</menu>
+	</menu>
+	<menu name="CSearchWnd">
+		<item id="ID_SEARCH_DOWNLOAD" text="_Download"/>
+		<item id="ID_SEARCH_DOWNLOADNOW" text="Download _Now"/>
+		<item id="ID_SEARCH_URI" text="Get P2P Link (_URI)"/>
+		<separator/>
+		<item id="ID_BROWSE_LAUNCH" text="Bro_wse User"/>
+		<item id="ID_SEARCH_CHAT" text="_Chat with User"/>
+		<item id="ID_SECURITY_BAN" text="_Ban User+File"/>
+		<separator/>
+		<menu text="_Search For">
+			<item id="ID_SEARCH_FOR_THIS" text="_This File"/>
+			<item id="ID_SEARCH_FOR_SIMILAR" text="_Similar Files"/>
+			<separator/>
+			<item id="ID_SEARCH_FOR_ARTIST" text="_Music by the same Artist"/>
+			<item id="ID_SEARCH_FOR_ALBUM" text="Music in the same _Album"/>
+			<item id="ID_SEARCH_FOR_SERIES" text="_Episodes in the same Series"/>
+			<separator/>
+			<item id="ID_VIEW_SEARCH_MONITOR" text="Search M_onitor"/>
+			<item id="ID_VIEW_RESULTS_MONITOR" text="_Hit Monitor"/>
+		</menu>
+		<menu id="ID_WEBSERVICES_LIST" text="_Web Services">
+			<item id="ID_LIBRARY_BITPRINTS_WEB" text="View Bitprints listing"/>
+		</menu>
+		<separator/>
+		<item id="ID_SEARCH_FILTER" text="_Filter Results..."/>
+		<item id="ID_SEARCH_FILTER_REMOVE" text="_Remove Filter"/>
+		<separator/>
+		<item id="ID_SEARCH_CLEAR" text="C_lear Results"/>
+		<separator/>
+		<item id="ID_SEARCH_COLUMNS" text="Edit C_olumns..."/>
+	</menu>
+	<!-- BROWSE HOST WINDOW -->
+	<menu name="CBrowseHostWnd.Basic">
+		<item id="ID_SEARCH_DOWNLOAD" text="_Download"/>
+		<item id="ID_SEARCH_DOWNLOADNOW" text="Download _Now"/>
+		<separator/>
+		<item id="ID_SEARCH_CHAT" text="_Chat to User"/>
+		<separator/>
+		<menu text="_Search For">
+			<item id="ID_SEARCH_FOR_SIMILAR" text="_Similar Files"/>
+			<separator/>
+			<item id="ID_SEARCH_FOR_ARTIST" text="_Music by the same Artist"/>
+			<item id="ID_SEARCH_FOR_ALBUM" text="Music in the same _Album"/>
+			<item id="ID_SEARCH_FOR_SERIES" text="_Episodes in the same Series"/>
+		</menu>
+		<menu text="_Web File Info">
+			<item id="ID_LIBRARY_BITPRINTS_WEB" text="View Bitprints listing"/>
+			<item id="ID_SEARCH_URI" text="Get P2P Link (_URI)"/>
+		</menu>
+	</menu>
+	<menu name="CBrowseHostWnd">
+		<item id="ID_SEARCH_DOWNLOAD" text="_Download"/>
+		<item id="ID_SEARCH_DOWNLOADNOW" text="Download _Now"/>
+		<item id="ID_SEARCH_URI" text="Get P2P Link (_URI)"/>
+		<separator/>
+		<item id="ID_SEARCH_CHAT" text="_Chat to User"/>
+		<separator/>
+		<menu text="_Search For">
+			<item id="ID_SEARCH_FOR_THIS" text="_This File"/>
+			<item id="ID_SEARCH_FOR_SIMILAR" text="_Similar Files"/>
+			<separator/>
+			<item id="ID_SEARCH_FOR_ARTIST" text="_Music by the same Artist"/>
+			<item id="ID_SEARCH_FOR_ALBUM" text="Music in the same _Album"/>
+			<item id="ID_SEARCH_FOR_SERIES" text="_Episodes in the same Series"/>
+		</menu>
+		<menu id="ID_WEBSERVICES_LIST" text="_Web Services">
+			<item id="ID_LIBRARY_BITPRINTS_WEB" text="View Bitprints listing"/>
+		</menu>
+		<separator/>
+		<item id="ID_SEARCH_FILTER" text="_Filter Results..."/>
+		<item id="ID_SEARCH_FILTER_REMOVE" text="R_emove Filter"/>
+		<separator/>
+		<item id="ID_SEARCH_COLUMNS" text="Edit C_olumns..."/>
+	</menu>
+	<!-- HIT MONITOR WINDOW -->
+	<menu name="CHitMonitorWnd">
+		<item id="ID_SEARCH_DOWNLOAD" text="_Download"/>
+		<item id="ID_SEARCH_URI" text="Get P2P Link (_URI)"/>
+		<separator/>
+		<item id="ID_BROWSE_LAUNCH" text="_Browse User"/>
+		<item id="ID_SEARCH_CHAT" text="_Chat to User"/>
+		<separator/>
+		<menu text="_Search For">
+			<item id="ID_SEARCH_FOR_THIS" text="_This File"/>
+			<item id="ID_SEARCH_FOR_SIMILAR" text="_Similar Files"/>
+			<separator/>
+			<item id="ID_SEARCH_FOR_ARTIST" text="_Music by the same Artist"/>
+			<item id="ID_SEARCH_FOR_ALBUM" text="Music in the same _Album"/>
+			<item id="ID_SEARCH_FOR_SERIES" text="_Episodes in the same Series"/>
+		</menu>
+		<menu id="ID_WEBSERVICES_LIST" text="_Web Services">
+			<item id="ID_LIBRARY_BITPRINTS_WEB" text="View Bitprints listing"/>
+		</menu>
+		<separator/>
+		<item id="ID_SEARCH_FILTER" text="_Filter Results..."/>
+		<item id="ID_SEARCH_FILTER_REMOVE" text="_Remove Filter"/>
+		<separator/>
+		<item id="ID_HITMONITOR_PAUSE" text="_Pause Display"/>
+		<item id="ID_HITMONITOR_CLEAR" text="C_lear Display"/>
+		<separator/>
+		<item id="ID_SEARCH_COLUMNS" text="Edit C_olumns..."/>
+	</menu>
+	<!-- DOWNLOADS WINDOW -->
+	<menu name="CDownloadsWnd.Download.Basic">
+		<item id="ID_DOWNLOADS_LAUNCH" text="_Preview"/>
+		<separator/>
+		<item id="ID_DOWNLOADS_RESUME" text="_Resume"/>
+		<item id="ID_DOWNLOADS_PAUSE" text="일시 중지"/>
+		<item id="ID_DOWNLOADS_CLEAR_INCOMPLETE" text="취소"/>
+		<separator/>
+		<item id="ID_DOWNLOADS_SOURCES" text="_Find More Sources"/>
+		<item id="ID_DOWNLOADS_REMOTE_PREVIEW" text="Re_mote Preview"/>
+		<item id="ID_DOWNLOADS_VIEW_REVIEWS" text="_View Reviews"/>
+		<separator/>
+		<item id="ID_DOWNLOADS_HELP" text="도움..."/>
+	</menu>
+	<menu name="CDownloadsWnd.Download">
+		<item id="ID_DOWNLOADS_LAUNCH_COPY" text="Pre_view File Copy"/>
+		<item id="ID_DOWNLOADS_LAUNCH" text="_Preview Partial File"/>
+		<item id="ID_DOWNLOADS_ENQUEUE" text="Add to Pla_ylist"/>
+		<separator/>
+		<item id="ID_DOWNLOADS_RESUME" text="_Resume"/>
+		<item id="ID_DOWNLOADS_PAUSE" text="일시 중지"/>
+		<item id="ID_DOWNLOADS_CLEAR_INCOMPLETE" text="취소"/>
+		<separator/>
+		<item id="ID_DOWNLOADS_VIEW_REVIEWS" text="Vie_w Reviews"/>
+		<item id="ID_DOWNLOADS_REMOTE_PREVIEW" text="Re_mote Preview"/>
+		<item id="ID_DOWNLOADS_SOURCES" text="_Find More Sources"/>
+		<separator/>
+		<menu text="고급">
+			<item id="ID_DOWNLOADS_SHARE" text="_Share File"/>
+			<separator/>
+			<item id="ID_DOWNLOADS_URI" text="Get P2P Link (_URI)"/>
+			<item id="ID_DOWNLOADS_ADD_SOURCE" text="_Add Source..."/>
+			<item id="ID_DOWNLOADS_MERGE" text="로컬 파일을 병합합니다..."/>
+			<separator/>
+			<item id="ID_DOWNLOADS_MONITOR" text="_Monitor Window"/>
+		</menu>
+		<menu text="우선순위">
+			<item id="ID_DOWNLOADS_BOOST" text="_Ignore Bandwidth Limit"/>
+			<separator/>
+			<item id="ID_DOWNLOADS_MOVE_TOP" text="Move to _Top" shortcut="Ctrl+Home"/>
+			<item id="ID_DOWNLOADS_MOVE_BOTTOM" text="Move to _Bottom" shortcut="Ctrl+End"/>
+			<item id="ID_DOWNLOADS_MOVE_UP" text="Move _Up" shortcut="Ctrl+Up"/>
+			<item id="ID_DOWNLOADS_MOVE_DOWN" text="Move _Down" shortcut="Ctrl+Down"/>
+		</menu>
+		<item id="ID_DOWNLOADS_HELP" text="도움..."/>
+		<separator/>
+		<item id="ID_DOWNLOADS_EDIT" text="_Download Properties"/>
+	</menu>
+	<menu name="CDownloadsWnd.Source">
+		<item id="ID_TRANSFERS_CONNECT" text="_Access"/>
+		<separator/>
+		<item id="ID_BROWSE_LAUNCH" text="_Browse User"/>
+		<item id="ID_TRANSFERS_CHAT" text="_Chat to User"/>
+		<item id="ID_DOWNLOADS_URI" text="Get P2P Link (_URI)"/>
+		<separator/>
+		<item id="ID_TRANSFERS_DISCONNECT" text="끊습니다"/>
+		<item id="ID_TRANSFERS_FORGET" text="_Forget"/>
+	</menu>
+	<menu name="CDownloadsWnd.Completed.Basic">
+		<item id="ID_DOWNLOADS_LAUNCH_COMPLETE" text="_Play or Open"/>
+		<item id="ID_DOWNLOADS_FOLDER" text="열기 다운로드 폴더"/>
+		<item id="ID_DOWNLOADS_CLEAR_COMPLETE" text="_Clear"/>
+		<separator/>
+		<item id="ID_DOWNLOADS_FILE_DELETE" text="_Delete File"/>
+	</menu>
+	<menu name="CDownloadsWnd.Completed">
+		<item id="ID_DOWNLOADS_LAUNCH_COMPLETE" text="_Open or Play"/>
+		<item id="ID_DOWNLOADS_ENQUEUE" text="_Add to Playlist"/>
+		<item id="ID_DOWNLOADS_FOLDER" text="열기 다운로드 폴더"/>
+		<item id="ID_DOWNLOADS_CLEAR_COMPLETE" text="_Clear"/>
+		<separator/>
+		<item id="ID_DOWNLOADS_FILE_DELETE" text="_Delete File"/>
+		<item id="ID_DOWNLOADS_RATE" text="_Rate File..."/>
+		<item id="ID_DOWNLOADS_URI" text="Get P2P Link (_URI)"/>
+		<separator/>
+		<item id="ID_DOWNLOADS_EDIT" text="_Properties..."/>
+	</menu>
+	<menu name="CDownloadsWnd.Seeding">
+		<item id="ID_DOWNLOADS_LAUNCH_COMPLETE" text="_Open File"/>
+		<item id="ID_DOWNLOADS_FOLDER" text="Open _Folder"/>
+		<item id="ID_DOWNLOADS_CLEAR_COMPLETE" text="_Stop Seeding"/>
+		<separator/>
+		<item id="ID_DOWNLOADS_URI" text="Get P2P Link (_URI)"/>
+		<item id="ID_DOWNLOADS_HELP" text="_도움..."/>
+		<separator/>
+		<item id="ID_DOWNLOADS_EDIT" text="Torrent _Properties..."/>
+	</menu>
+	<menu name="CDownloadsWnd.Default">
+		<item id="ID_TOOLS_DOWNLOAD" text="Start New _Download"/>
+		<item id="ID_TOOLS_SEEDTORRENT" text="Seed New _Torrent"/>
+		<item id="ID_DOWNLOADS_CLEAR_COMPLETED" text="_Clear Completed"/>
+		<separator/>
+		<item id="ID_DOWNLOADS_HELP" text="_도움..."/>
+	</menu>
+	<menu name="CDownloadTabBar">
+		<item id="ID_DOWNLOAD_GROUP_OPEN" text="_Open Folder"/>
+		<separator/>
+		<item id="ID_DOWNLOAD_GROUP_RESUME" text="_Resume All"/>
+		<item id="ID_DOWNLOAD_GROUP_PAUSE" text="일시 중지 All"/>
+		<item id="ID_DOWNLOAD_GROUP_CLEAR" text="_Clear All"/>
+		<separator/> <!--
+		<item id="ID_DOWNLOAD_GROUP_SHOW" text="_Hide Groups"/>
+		<separator/> -->
+		<item id="ID_DOWNLOAD_GROUP_MOVELEFT" text="그룹 왼쪽으로 이동"/>
+		<item id="ID_DOWNLOAD_GROUP_MOVERIGHT" text="그룹을 오른쪽으로 이동"/>
+		<item id="ID_DOWNLOAD_GROUP_REMOVE" text="R_emove Group"/>
+		<item id="ID_DOWNLOAD_GROUP_NEW" text="_New Group..."/>
+		<separator/>
+		<item id="ID_DOWNLOAD_GROUP_PROPERTIES" text="_Properties..."/>
+	</menu>
+	<menu name="CDownloadsWnd.Filter">
+		<item id="ID_DOWNLOADS_FILTER_ALL" text="모두보기"/>
+		<separator/>
+		<item id="ID_DOWNLOADS_FILTER_ACTIVE" text="보기 A_ctive"/>
+		<item id="ID_DOWNLOADS_FILTER_PAUSED" text="보기 일시 중지됨"/>
+		<item id="ID_DOWNLOADS_FILTER_QUEUED" text="보기 _Queued"/>
+		<item id="ID_DOWNLOADS_FILTER_SOURCES" text="보기 _No Sources"/>
+		<item id="ID_DOWNLOADS_FILTER_SEEDS" text="보기 See_ds"/>
+		<separator/>
+		<item id="ID_DOWNLOADS_SHOW_SOURCES" text="모두보기 _Sources"/>
+		<item id="ID_DOWNLOADS_AUTO_CLEAR" text="_Auto 맑은"/>
+		<separator/>
+		<item id="ID_DOWNLOAD_GROUP_SHOW" text="보기 _Groups"/>
+	</menu>
+	<!-- UPLOADS WINDOW -->
+	<menu name="CUploadsWnd.Upload.Basic">
+		<item id="ID_BROWSE_LAUNCH" text="찾아보기 사용자"/>
+		<item id="ID_UPLOADS_CHAT" text="채팅 사용자에게"/>
+		<separator/>
+		<item id="ID_UPLOADS_HELP" text="도움..."/>
+	</menu>
+	<menu name="CUploadsWnd.Upload">
+		<item id="ID_UPLOADS_LAUNCH" text="라이브러리에서보기"/>
+		<item id="ID_UPLOADS_FOLDER" text="폴더 열기"/>
+		<separator/>
+		<item id="ID_UPLOADS_CLEAR" text="맑은"/>
+		<item id="ID_UPLOADS_START" text="지금 시작"/>
+		<item id="ID_UPLOADS_PRIORITY" text="우선"/>
+		<separator/>
+		<item id="ID_BROWSE_LAUNCH" text="찾아보기 사용자"/>
+		<item id="ID_UPLOADS_CHAT" text="채팅 사용자에게"/>
+		<item id="ID_SECURITY_BAN" text="B_an 사용자"/>
+	</menu>
+	<menu name="CUploadsWnd.Default">
+		<item id="ID_LIBRARY_FOLDERS" text="파일을 공유..."/>
+		<item id="ID_UPLOADS_SETTINGS" text="_Queue 설정이..."/>
+		<item id="ID_UPLOADS_CLEAR_COMPLETED" text="_Clear Completed"/>
+		<separator/>
+		<item id="ID_UPLOADS_HELP" text="_도움..."/>
+	</menu>
+	<menu name="CUploadsWnd.Filter">
+		<item id="ID_UPLOADS_FILTER_ALL" text="모두보기"/>
+		<separator/>
+		<item id="ID_UPLOADS_FILTER_ACTIVE" text="Show Acti_ve"/>
+		<item id="ID_UPLOADS_FILTER_QUEUED" text="Show _Queued"/>
+		<item id="ID_UPLOADS_FILTER_TORRENT" text="Show _BitTorrent"/>
+		<item id="ID_UPLOADS_FILTER_HISTORY" text="Show _History"/>
+		<separator/>
+		<item id="ID_UPLOADS_AUTO_CLEAR" text="Auto _Clear"/>
+	</menu>
+	<!-- LIBRARY FRAME -->
+	<menu name="CLibraryTree.Physical.Basic">
+		<item id="ID_LIBRARY_SHARED_FOLDER" text="공유d"/>
+		<item id="ID_LIBRARY_REMOVE" text="제거"/>
+		<separator/>
+		<item id="ID_LIBRARY_FOLDERS" text="파일을 공유..."/>
+	</menu>
+	<menu name="CLibraryTree.Physical">
+		<item id="ID_LIBRARY_EXPLORE" text="의 다른 버전"/>
+		<item id="ID_LIBRARY_REMOVE" text="제거"/>
+		<separator/>
+		<item id="ID_LIBRARY_SHARED_FOLDER" text="공유"/>
+		<separator/>
+		<item id="ID_LIBRARY_SCAN" text="스캔"/>
+		<item id="ID_LIBRARY_REBUILD" text="Re_build"/>
+		<item id="ID_LIBRARY_FOLDERS" text="Share _Files..."/>
+		<separator/>
+		<item id="ID_LIBRARY_FOLDER_FILE_PROPERTIES" text="File _Properties"/>
+	</menu>
+	<menu name="CLibraryTree.Virtual.Basic">
+		<item id="ID_LIBRARY_FOLDER_ENQUEUE" text="_Play Album"/>
+		<item id="ID_LIBRARY_FOLDER_DELETE" text="_Delete"/>
+		<separator/>
+		<item id="ID_LIBRARY_FOLDER_FILE_PROPERTIES" text="_File Properties"/>
+		<item id="ID_LIBRARY_FOLDER_PROPERTIES" text="_Album Properties"/>
+	</menu>
+	<menu name="CLibraryTree.Virtual">
+		<item id="ID_LIBRARY_FOLDER_ENQUEUE" text="_Play Album"/>
+		<item id="ID_LIBRARY_FOLDER_DELETE" text="_Delete"/>
+		<separator/>
+		<item id="ID_LIBRARY_REBUILD" text="_Rebuild"/>
+		<item id="ID_LIBRARY_EXPORT_COLLECTION" text="_Export Collection..."/>
+		<separator/>
+		<item id="ID_LIBRARY_FOLDER_NEW" text="새 폴더..."/>
+		<separator/>
+		<item id="ID_LIBRARY_FOLDER_FILE_PROPERTIES" text="_File Properties"/>
+		<item id="ID_LIBRARY_FOLDER_PROPERTIES" text="_Album Properties"/>
+	</menu>
+	<menu name="CLibraryHistoryPanel">
+		<item id="ID_LIBRARY_CLEAR_HISTORY" text="Clear from _History"/>
+		<item id="ID_LIBRARY_CLEAR_HISTORY_ALL" text="Clear _All"/>
+	</menu>
+	<!-- LIBRARY VIEWS -->
+	<menu name="CLibraryTileView">
+		<item id="ID_LIBRARY_ALBUM_OPEN" text="열기"/>
+		<item id="ID_LIBRARY_ALBUM_DELETE" text="삭제"/>
+		<item id="ID_LIBRARY_FOLDER_NEW" text="새..."/>
+		<separator/>
+		<item id="ID_LIBRARY_ALBUM_PROPERTIES" text="등록"/>
+	</menu>
+	<menu name="CLibraryFileView.Basic">
+		<item id="ID_LIBRARY_LAUNCH" text="열기 또는 재생"/>
+		<item id="ID_LIBRARY_ENQUEUE" text="재생 목록에 추가"/>
+		<item id="ID_LIBRARY_DELETE" text="삭제"/>
+		<separator/>
+		<item id="ID_LIBRARY_SHARED_FILE" text="공유"/>
+		<separator/>
+		<menu text="이동/복사/이름 바꾸기">
+			<item id="ID_LIBRARY_RENAME" text="파일 이름 바꾸기"/>
+			<item id="ID_LIBRARY_COPY" text="파일 복사..."/>
+			<item id="ID_LIBRARY_MOVE" text="파일 이동..."/>
+			<separator/>
+			<item id="ID_LIBRARY_URI" text="Get P2P Link (_URI)"/>
+		</menu>
+		<menu text="S_earch For">
+			<item id="ID_SEARCH_FOR_THIS" text="_이 파일을"/>
+			<item id="ID_SEARCH_FOR_SIMILAR" text="비슷한 파일"/>
+			<separator/>
+			<item id="ID_SEARCH_FOR_ARTIST" text="_Music by the same Artist"/>
+			<item id="ID_SEARCH_FOR_ALBUM" text="Music in the same _Album"/>
+			<item id="ID_SEARCH_FOR_SERIES" text="_Episodes in the same Series"/>
+		</menu>
+		<separator/>
+		<item id="ID_LIBRARY_PROPERTIES" text="등록"/>
+	</menu>
+	<menu name="CLibraryFileView">
+		<item id="ID_LIBRARY_LAUNCH" text="열기 또는 재생"/>
+		<item id="ID_LIBRARY_ENQUEUE" text="재생 목록에 추가"/>
+		<item id="ID_LIBRARY_DELETE" text="삭제"/>
+		<separator/>
+		<item id="ID_LIBRARY_SHARED_FILE" text="공유"/>
+		<separator/>
+		<item id="ID_LIBRARY_URI" text="Get P2P Link (_URI)"/>
+		<item id="ID_LIBRARY_CREATETORRENT" text="Create ._torrent File"/>
+		<item id="ID_LIBRARY_LAUNCH_FOLDER" text="Open _Folder"/>
+		<separator/>
+		<menu text="O_rganise">
+			<item id="ID_LIBRARY_UNLINK" text="파일 제거"/>
+			<separator/>
+			<item id="ID_LIBRARY_RENAME" text="파일 이름 바꾸"/>
+			<item id="ID_LIBRARY_MOVE" text="파일 이동..."/>
+			<item id="ID_LIBRARY_COPY" text="파일 복사..."/>
+		</menu>
+		<menu text="S_earch">
+			<item id="ID_SEARCH_FOR_THIS" text="이 파일을"/>
+			<item id="ID_SEARCH_FOR_SIMILAR" text="비슷한 파일"/>
+			<separator/>
+			<item id="ID_SEARCH_FOR_ARTIST" text="_Music by the same Artist"/>
+			<item id="ID_SEARCH_FOR_ALBUM" text="Music in the same _Album"/>
+			<item id="ID_SEARCH_FOR_SERIES" text="_Episodes in the same Series"/>
+		</menu>
+		<menu text="We_b Services">
+			<item id="ID_LIBRARY_BITPRINTS_WEB" text="View Bitprints listing"/>
+			<item id="ID_LIBRARY_BITPRINTS_DOWNLOAD" text="다운로드 메타"/>
+		</menu>
+		<menu text="_Metadata"> <!--메타 데이터-->
+			<item id="ID_LIBRARY_REBUILD_FILE" text="Re_build Hashes"/>
+			<item id="ID_LIBRARY_REFRESH_METADATA" text="새로고침 메"/>
+			<item id="ID_LIBRARY_REBUILD_ANSI" text="지방적 특색을 메"/>
+			<item id="ID_LIBRARY_COLUMNS" text="열 선택을..."/>
+		</menu>
+		<separator/>
+		<item id="ID_SHELL_MENU" text="S_hell menu"/>
+		<item id="ID_LIBRARY_PROPERTIES" text="등록"/>
+	</menu>
+	<!-- MEDIA WINDOW -->
+	<menu name="CMediaFrame.Basic">
+		<item id="ID_MEDIA_PLAY" text="재생"/>
+		<item id="ID_MEDIA_PAUSE" text="일시 중지"/>
+		<item id="ID_MEDIA_STOP" text="중"/>
+		<separator/>
+		<item id="ID_MEDIA_OPEN" text="_Open Media File..."/>
+		<separator/>
+		<menu text="Play_list">
+			<item id="ID_MEDIA_PREVIOUS" text="이전"/>
+			<item id="ID_MEDIA_NEXT" text="다음"/>
+			<item id="ID_MEDIA_RANDOM" text="랜덤"/>
+			<item id="ID_MEDIA_REPEAT" text="반복"/>
+			<separator/>
+			<item id="ID_MEDIA_PLAYLIST" text="쇼 재생"/>
+		</menu>
+		<menu text="Video Si_ze">
+			<item id="ID_MEDIA_SIZE_ONE" text="원본 크기"/>
+			<item id="ID_MEDIA_SIZE_TWO" text="더블 사이즈"/>
+			<item id="ID_MEDIA_SIZE_HALF" text="트리플 크기"/>
+			<item id="ID_MEDIA_SIZE_FILL" text="최대"/>
+			<item id="ID_MEDIA_SIZE_DISTORT" text="채우기 창"/>
+			<separator/>
+			<item id="ID_MEDIA_ASPECT_DEFAULT" text="기본 화면"/>
+			<item id="ID_MEDIA_ASPECT_4_3" text="_4:3 비율 (텔레비젼)"/>
+			<item id="ID_MEDIA_ASPECT_16_9" text="_16:9 (영화)"/>
+			<separator/>
+			<item id="ID_MEDIA_FULLSCREEN" text="전체 화면"/>
+		</menu>
+		<menu text="Setti_ngs">
+			<item id="ID_MEDIA_VIS" text="시각화 선택..."/>
+			<separator/>
+			<item id="ID_MEDIA_PLAYLIST" text="쇼 재생"/>
+			<item id="ID_MEDIA_STATUS" text="보기 상태 라인"/>
+			<separator/>
+			<item id="ID_MEDIA_SETTINGS" text="미디어 설정..."/>
+		</menu>
+	</menu>
+	<menu name="CMediaFrame">
+		<item id="ID_MEDIA_PLAY" text="재생"/>
+		<item id="ID_MEDIA_PAUSE" text="일시 중지"/>
+		<item id="ID_MEDIA_STOP" text="중"/>
+		<separator/>
+		<item id="ID_MEDIA_OPEN" text="_Open Media File..."/>
+		<item id="ID_MEDIA_CLOSE" text="_닫기 File"/>
+		<separator/>
+		<menu text="Play_list">
+			<item id="ID_MEDIA_PREVIOUS" text="Pre_vious"/>
+			<item id="ID_MEDIA_NEXT" text="_Next"/>
+			<item id="ID_MEDIA_RANDOM" text="_Random"/>
+			<item id="ID_MEDIA_REPEAT" text="R_epeat"/>
+			<separator/>
+			<item id="ID_MEDIA_PLAYLIST" text="쇼 재생"/>
+		</menu>
+		<menu text="Video Si_ze">
+			<item id="ID_MEDIA_SIZE_ONE" text="_Original Size"/>
+			<item id="ID_MEDIA_SIZE_TWO" text="_Double Size"/>
+			<item id="ID_MEDIA_SIZE_HALF" text="_Half Size"/>
+			<item id="ID_MEDIA_SIZE_FILL" text="Best _Fit"/>
+			<item id="ID_MEDIA_SIZE_DISTORT" text="Fill _Window"/>
+			<separator/>
+			<item id="ID_MEDIA_ASPECT_DEFAULT" text="Default _Aspect"/>
+			<item id="ID_MEDIA_ASPECT_4_3" text="_4:3 Ratio (텔레비젼)"/>
+			<item id="ID_MEDIA_ASPECT_16_9" text="_16:9 Ratio (영화)"/>
+			<separator/>
+			<item id="ID_MEDIA_FULLSCREEN" text="_Full Screen"/>
+		</menu>
+		<menu text="설정이">
+			<item id="ID_MEDIA_VIS" text="Choose _Visualisation..."/>
+			<separator/>
+			<item id="ID_MEDIA_PLAYLIST" text="Show _Playlist"/>
+			<item id="ID_MEDIA_STATUS" text="Show _Status Line"/>
+			<separator/>
+			<item id="ID_MEDIA_SETTINGS" text="_Media 설정이..."/>
+		</menu>
+	</menu>
+	<menu name="CMediaFrame.Zoom">
+		<item id="ID_MEDIA_SIZE_ONE" text="_Original Size"/>
+		<item id="ID_MEDIA_SIZE_TWO" text="_Double Size"/>
+		<item id="ID_MEDIA_SIZE_HALF" text="_Half Size"/>
+		<item id="ID_MEDIA_SIZE_FILL" text="Best _Fit"/>
+		<item id="ID_MEDIA_SIZE_DISTORT" text="Fill _Window"/>
+		<separator/>
+		<item id="ID_MEDIA_ASPECT_DEFAULT" text="Default _Aspect"/>
+		<item id="ID_MEDIA_ASPECT_4_3" text="_4:3 Ratio (텔레비젼)"/>
+		<item id="ID_MEDIA_ASPECT_16_9" text="_16:9 Ratio (영화)"/>
+	</menu>
+	<menu name="CMediaList">
+		<item id="ID_MEDIA_SELECT" text="재생"/>
+		<item id="ID_MEDIA_PROPERTIES" text="_Properties..."/>
+		<item id="ID_MEDIA_RATE" text="Ra_te File..."/>
+		<separator/>
+		<item id="ID_MEDIA_ADD" text="_Add Files..."/>
+		<item id="ID_MEDIA_REMOVE" text="_Remove Files"/>
+		<item id="ID_MEDIA_CLEAR" text="_Clear Playlist"/>
+		<separator/>
+		<item id="ID_MEDIA_ADD_FOLDER" text="Add _Folder..."/>
+		<item id="ID_MEDIA_OPEN" text="_Open Playlist..."/>
+		<item id="ID_MEDIA_SAVE" text="_Save Playlist..."/>
+		<item id="ID_MEDIA_EXPORT_COLLECTION" text="E_xport Collection..."/>
+		<separator/>
+		<item id="ID_MEDIA_RANDOM" text="Ra_ndom Mode"/>
+		<item id="ID_MEDIA_REPEAT" text="Rep_eat Mode"/>
+		<separator/>
+		<item id="ID_MEDIA_PLAYLIST" text="Hide Pla_ylist"/>
+	</menu>
+	<!-- SYSTEM WINDOW -->
+	<menu name="CSystemWnd">
+		<menu id="ID_SYSTEM_VERBOSE" text="_Verbose Mode">
+			<item id="ID_SYSTEM_VERBOSE_ERROR" text="_Error"/>
+			<item id="ID_SYSTEM_VERBOSE_WARNING" text="_Warning"/>
+			<item id="ID_SYSTEM_VERBOSE_NOTICE" text="_Notice"/>
+			<item id="ID_SYSTEM_VERBOSE_INFO" text="_Info"/>
+			<item id="ID_SYSTEM_VERBOSE_DEBUG" text="_Debug"/>
+		</menu>
+		<item id="ID_SYSTEM_TIMESTAMP" text="_Timestamp"/>
+		<separator/>
+		<item id="ID_SYSTEM_COPY" text="_Copy" shortcut="Ctrl+C"/>
+		<separator/>
+		<item id="ID_SYSTEM_CLEAR" text="Clear _Buffer"/>
+	</menu>
+	<!-- NEIGHBOURS WINDOW -->
+	<menu name="CNeighboursWnd.Basic">
+		<item id="ID_BROWSE_LAUNCH" text="_Browse User"/>
+		<item id="ID_NEIGHBOURS_CHAT" text="_Chat to User"/>
+		<separator/>
+		<item id="ID_NEIGHBOURS_DISCONNECT" text="끊습니다"/>
+		<separator/>
+		<item id="ID_NEIGHBOURS_URI" text="Get P2P Link (_URI)"/>
+	</menu>
+	<menu name="CNeighboursWnd">
+		<item id="ID_BROWSE_LAUNCH" text="_Browse User"/>
+		<item id="ID_NEIGHBOURS_CHAT" text="_Chat to User"/>
+		<item id="ID_SECURITY_BAN" text="B_an User"/>
+		<separator/>
+		<item id="ID_NEIGHBOURS_DISCONNECT" text="끊습니다"/>
+		<separator/>
+		<item id="ID_NEIGHBOURS_URI" text="Get P2P Link (_URI)"/>
+		<separator/>
+		<menu text="네트워크">
+			<item id="ID_NETWORK_CONNECT" text="연결"/>
+			<item id="ID_NETWORK_DISCONNECT" text="끊습니다"/>
+			<separator/>
+			<item id="ID_NETWORK_G2" text="Gnutella_2"/>
+			<item id="ID_NETWORK_G1" text="_Gnutella"/>
+			<item id="ID_NETWORK_ED2K" text="_eDonkey"/>
+			<item id="ID_NETWORK_DC" text="_DC++"/>
+			<item id="ID_NETWORK_BT" text="_BitTorrent"/>
+			<separator/>
+			<item id="ID_VIEW_DISCOVERY" text="디스커버"/>
+			<item id="ID_VIEW_HOSTS" text="호스트 캐시"/>
+			<item id="ID_VIEW_SECURITY" text="보안 항목"/>
+		</menu>
+		<menu text="_Monitor">
+			<item id="ID_NEIGHBOURS_VIEW_ALL" text="View _All Traffic"/>
+			<item id="ID_NEIGHBOURS_VIEW_INCOMING" text="View _Incoming Traffic"/>
+			<item id="ID_NEIGHBOURS_VIEW_OUTGOING" text="View _Outgoing Traffic"/>
+		</menu>
+	</menu>
+	<!-- SEARCH MONITOR WINDOW -->
+	<menu name="CSearchMonitorWnd">
+		<item id="ID_HITMONITOR_SEARCH" text="_Search for This"/>
+		<separator/>
+		<item id="ID_BROWSE_LAUNCH" text="_Browse User"/>
+		<item id="ID_SECURITY_BAN" text="B_an User"/>
+		<separator/>
+		<item id="ID_SEARCHMONITOR_PAUSE" text="_Pause Display"/>
+		<item id="ID_SEARCHMONITOR_CLEAR" text="_Clear Buffer"/>
+	</menu>
+	<!-- GRAPH/TRAFFIC WINDOW -->
+	<menu name="CTrafficWnd">
+		<item id="ID_TRAFFIC_SETUP" text="_Select Graphs..."/>
+		<separator/>
+		<item id="ID_TRAFFIC_GRID" text="_Grid Lines"/>
+		<item id="ID_TRAFFIC_AXIS" text="_Axis"/>
+		<item id="ID_TRAFFIC_LEGEND" text="_Legend"/>
+		<separator/>
+		<item id="ID_TRAFFIC_CLEAR" text="_Clear"/>
+		<separator/>
+		<item id="ID_TRAFFIC_WINDOW" text="_New Window"/>
+	</menu>
+	<!-- SECURITY WINDOW -->
+	<menu name="CSecurityWnd">
+		<item id="ID_SECURITY_ADD" text="추가 Rule..."/>
+		<separator/>
+		<item id="ID_SECURITY_REMOVE" text="삭제"/>
+		<item id="ID_SECURITY_RESET" text="Rese_t"/>
+		<separator/>
+		<item id="ID_SECURITY_MOVE_UP" text="Move _Up" shortcut="Ctrl+Up"/>
+		<item id="ID_SECURITY_MOVE_DOWN" text="Move _Down" shortcut="Ctrl+Dn"/>
+		<separator/>
+		<item id="ID_SECURITY_IMPORT" text="_Import..."/>
+		<item id="ID_SECURITY_EXPORT" text="E_xport..."/>
+		<separator/>
+		<menu text="Default P_olicy">
+			<item id="ID_SECURITY_POLICY_ACCEPT" text="_Accept"/>
+			<item id="ID_SECURITY_POLICY_DENY" text="_Deny"/>
+		</menu>
+		<separator/>
+		<item id="ID_SECURITY_EDIT" text="_Properties"/>
+	</menu>
+	<!-- DISCOVERY SERVICES WINDOW -->
+	<menu name="CDiscoveryWnd">
+		<item id="ID_DISCOVERY_ADD" text="추가..."/>
+		<separator/>
+		<item id="ID_DISCOVERY_EDIT" text="_Edit"/>
+		<item id="ID_DISCOVERY_REMOVE" text="삭제"/>
+		<separator/>
+		<item id="ID_DISCOVERY_QUERY" text="_Query Now"/>
+		<item id="ID_DISCOVERY_ADVERTISE" text="A_dvertise"/>
+		<item id="ID_DISCOVERY_BROWSE" text="Browse _Statistics"/>
+		<separator/>
+		<item id="ID_DISCOVERY_GNUTELLA" text="보기 _Bootstraps"/>
+		<item id="ID_DISCOVERY_WEBCACHE" text="보기 _GWebCaches"/>
+		<item id="ID_DISCOVERY_SERVERLIST" text="보기 Ser_ver.met's"/>
+		<item id="ID_DISCOVERY_BLOCKED" text="보기 차단된"/>
+	</menu>
+	<!-- PRIVATE CHAT FRAME -->
+	<!-- IRC WINDOW -->
+	<menu name="CIRCTabRClick">
+		<item id="ID_IRC_CLOSETAB" text="_닫기"/>
+	</menu>
+</menus>
+<!-- Documents -->
+<documents>
+	<!-- Home View -->
+	<!-- CHomeViewCtrl Front Page Font is Broken, set Gulim? -->
+	<!-- Homepanel Taskboxes -->
+	<document name="CHomeConnectionBox" title="연결" leftMargin="6" topMargin="6">
+		<styles>
+			<style name="default">
+				<font size="11"/>
+			</style>
+		</styles>
+		<group id="1">
+			<para align="center">
+				<text format="b">연결되지 않음</text>
+				<newline gap="4"/>
+				<link target="command:ID_NETWORK_CONNECT">여기를 클릭하여 연결합니다.</link>
+			</para>
+		</group>
+		<icon group="20" command="ID_NETWORK_G2"/>
+		<text group="20" align="middle" format="b">&#160;Gnutella2: </text>
+		<text group="21" align="middle">연결 끊김</text>
+		<text group="22" align="middle">연결 중...</text>
+		<text group="23" align="middle">연결</text>
+		<text group="24" align="middle" id="G2Hubs">%i hubs</text>
+		<text group="25" align="middle" id="G2Leaves">%i leaves</text>
+		<newline group="20" gap="2"/>
+		<icon group="10" command="ID_NETWORK_G1"/>
+		<text group="10" align="middle" format="b">&#160;Gnutella: </text>
+		<text group="11" align="middle">연결 끊김</text>
+		<text group="12" align="middle">연결 중...</text>
+		<text group="13" align="middle">연결</text>
+		<text group="14" align="middle" id="G1Hubs">%i peers</text>
+		<text group="15" align="middle" id="G1Leaves">%i leaves</text>
+		<newline group="10" gap="2"/>
+		<icon group="30" command="ID_NETWORK_ED2K"/>
+		<text group="30" align="middle" format="b">&#160;eDonkey: </text>
+		<text group="31" align="middle">연결 끊김</text>
+		<text group="32" align="middle">연결 중...</text>
+		<text group="33" align="middle">연결</text>
+		<text group="34" align="middle" id="EDServers">%i Server</text>
+		<newline group="30" gap="2"/>
+		<icon group="60" command="ID_NETWORK_DC"/>
+		<text group="60" align="middle" format="b">&#160;DC++: &#160; </text>
+		<text group="61" align="middle">연결 끊김</text>
+		<text group="62" align="middle">연결 중...</text>
+		<text group="63" align="middle">연결</text>
+		<text group="64" align="middle" id="DCHubs">%i Hubs</text>
+		<newline group="60" gap="2"/>
+		<group id="2">
+			<para align="center">
+				<newline gap="4"/>
+				<link target="command:ID_TAB_NETWORK">네트워크 Session</link>
+				<newline gap="4"/>
+				<text id="ConnectedHours" format="b">%i </text>
+				<text>시간 </text>
+				<text id="ConnectedMinutes" format="b">%i </text>
+				<text>분</text>
+			</para>
+		</group>
+	</document>
+	<document name="CHomeLibraryBox" title="도서관" leftMargin="6" topMargin="6">
+		<styles>
+			<style name="default">
+				<font size="11"/>
+			</style>
+		</styles>
+		<para align="center">
+			<group id="2">
+				<text>어떤 새로운 파일이 최근 다운로드하지</text>
+				<newline gap="8"/>
+			</group>
+			<link target="command:ID_VIEW_LIBRARY">지역 도서관</link>
+			<newline gap="4"/>
+			<text id="LibraryFiles" format="b">%lu </text>
+			<text>파일 (</text>
+			<text id="LibraryVolume" format="b">%s</text>
+			<text>)</text>
+			<group id="1">
+				<newline gap="8"/>
+				<text>Processing </text>
+				<text id="LibraryHashRemaining" format="b">%lu </text>
+				<text>파일:</text>
+				<newline gap="2"/>
+				<group id="3">
+					<link id="LibraryHashFaster" target="command:ID_LIBRARY_HASH_PRIORITY">빠른 해시 여기를 클릭하십시오.</link>
+				</group>
+				<group id="5">
+					<link id="LibraryHashFaster" target="command:ID_LIBRARY_HASH_PRIORITY">해시 느린하려면 여기를 클릭하십시오.</link>
+				</group>
+			</group>
+		</para>
+	</document>
+	<document name="CHomeDownloadsBox" title="다운로드" leftMargin="6" topMargin="6">
+		<styles>
+			<style name="default">
+				<font size="11"/>
+			</style>
+		</styles>
+		<para align="center">
+			<group id="1">
+				<text format="b">활성 다운로드하지</text>
+				<newline gap="4"/>
+			</group>
+			<link id="DownloadsNone" format="u" target="command:ID_VIEW_DOWNLOADS">다운로드보기로 이동</link>
+			<link id="DownloadsOne" format="bu" target="command:ID_VIEW_DOWNLOADS">1 활성화 다운로드</link>
+			<link id="DownloadsMany" format="bu" target="command:ID_VIEW_DOWNLOADS">%i 활성화 다운로드</link>
+			<newline gap="4"/>
+			<text id="DownloadedNone">파일 없음 (</text>
+			<text id="DownloadedOne">1 파일 (</text>
+			<text id="DownloadedMany">%i 파일 (</text>
+			<text id="DownloadedVolume" format="b">%s</text>
+			<text>)</text>
+		</para>
+	</document>
+	<document name="CHomeUploadsBox" title="업로드" leftMargin="6" topMargin="6">
+		<styles>
+			<style name="default">
+				<font size="11"/>
+			</style>
+		</styles>
+		<para align="center">
+			<text id="UploadsNone" format="b">활성 업로드하지</text>
+			<link id="UploadsOne" format="bu" target="command:ID_VIEW_UPLOADS">1 활성화 업로드</link>
+			<link id="UploadsMany" format="bu" target="command:ID_VIEW_UPLOADS">%i 활성화 업로드</link>
+			<newline gap="4"/>
+			<group id="1">
+				<text id="TorrentsOne">1 심는 급류</text>
+				<text id="TorrentsMany">%i 심는 토렌트</text>
+				<newline gap="4"/>
+			</group>
+			<text id="UploadedNone">업로드 된 파일 없음</text>
+			<text id="UploadedOne">1 파일 (%s)</text>
+			<text id="UploadedMany">%i 파일 (%s)</text>
+		</para>
+	</document>
+	<!-- Settings Pages -->
+<!--<document name="CGeneralSettingsGroup" title="General" leftMargin="8" topMargin="8">
+		<text format="b">Welcome to Envy's Settings Manager</text>
+		<newline gap="16"/>
+		<text>The Envy Settings Manager allows advanced users to completely customize how
+			Envy works. The settings in the </text>
+		<text format="b">General </text>
+		<text>section relate to the user experience.</text>
+		<newline gap="16" indent="16"/>
+		<link target="page:CGeneralSettingsPage" format="b">General:</link>
+		<text>&#160;Common user interface settings like tooltips, minimize behavior, number formats, prompts, etc.</text>
+		<newline gap="10"/>
+		<link target="page:CLibrarySettingsPage" format="b">Library:</link>
+		<text>&#160;Presentation, file access, and management of the file library.</text>
+		<newline gap="10"/>
+		<link target="page:CMediaSettingsPage" format="b">Media Player:</link>
+		<text>&#160;Set when to use the internal Envy Media System.</text>
+		<newline gap="10"/>
+		<link target="page:CIRCSettingsPage" format="b">IRC Chat:</link>
+		<text>&#160;IRC chatroom connection settings and display options.</text>
+		<newline gap="10"/>
+		<link target="page:CCommunitySettingsPage" format="b">Community:</link>
+		<text>&#160;Your profile and direct chat settings.</text>
+		<newline gap="10"/>
+		<link target="page:CRemoteSettingsPage" format="b">Remote:</link>
+		<text>&#160;Setup the ability to control Envy remotely through a web browser.</text>
+		<newline gap="10"/>
+		<link target="page:CWebSettingsPage" format="b">Web Integration:</link>
+		<text>&#160;Integrate Envy with your web browser to accept peer-to-peer links and download content.</text>
+	</document> -->
+<!--<document name="CInternetSettingsGroup" title="Internet" leftMargin="8" topMargin="8">
+		<text format="b">Welcome to Envy's Settings Manager</text>
+		<newline gap="16"/>
+		<text>The Envy Settings Manager allows advanced users to completely customize how
+			Envy works. The settings in the </text>
+		<text format="b">Internet </text>
+		<text>section control how Envy interacts with other nodes in distributed peer-to-peer networks.</text>
+		<newline gap="16" indent="16"/>
+		<link target="page:CConnectionSettingsPage" format="b">Connection:</link>
+		<text>&#160;The speeds and capabilities of your Internet connection.</text>
+		<newline gap="10"/>
+		<link target="page:CDownloadsSettingsPage" format="b">Downloads:</link>
+		<text>&#160;Download throughput, scheduling, verification, timeouts and management.</text>
+		<newline gap="10"/>
+		<link target="page:CUploadsSettingsPage" format="b">Uploads:</link>
+		<text>&#160;Upload capacity, queuing, banning, timeouts and special requests.</text>
+	</document> -->
+	<!-- Browse User Profile -->
+	<document name="CBrowseHostProfile.1">
+		<heading id="Nick"/>
+		<heading>'s 프로필</heading>
+		<newline gap="8"/>
+		<group id="1">
+			<newline gap="8" indent="0"/>
+			<text format="b">이름</text>
+			<newline gap="2" indent="8"/>
+			<text id="FullName"/>
+		</group>
+		<group id="2">
+			<newline gap="8" indent="0"/>
+			<text format="b">위치</text>
+			<newline gap="2" indent="8"/>
+			<text id="FullLocation"/>
+		</group>
+		<group id="3">
+			<newline gap="8" indent="0"/>
+			<text format="b">인구 통계 학적</text>
+			<newline gap="2" indent="8"/>
+			<text id="GenderMale">남성</text>
+			<text id="GenderFemale">여성</text>
+			<text>, </text>
+			<text id="Age"/>
+		</group>
+		<group id="5">
+			<newline gap="8" indent="0"/>
+			<text format="b">Contact Information</text>
+			<newline gap="1" indent="8"/>
+		</group>
+		<group id="40">
+			<newline gap="1"/>
+			<icon res="203"/><gap size="5"/>
+			<link id="ContactEmail" align="middle"/>
+		</group>
+		<group id="44">
+			<newline gap="1"/>
+			<icon res="206"/><gap size="5"/>
+			<link id="ContactMSN"/>
+		</group>
+		<group id="41">
+			<newline gap="1"/>
+			<icon res="207"/><gap size="5"/>
+			<link id="ContactYahoo"/>
+		</group>
+		<group id="42">
+			<newline gap="1"/>
+			<icon res="205"/><gap size="5"/>
+			<link id="ContactICQ"/>
+		</group>
+		<group id="43">
+			<newline gap="1"/>
+			<icon res="204"/><gap size="5"/>
+			<link id="ContactAOL"/>
+		</group>
+		<group id="45">
+			<newline gap="1"/>
+			<icon res="204"/><gap size="5"/>
+			<link id="ContactJabber"/>
+		</group>
+		<group id="4">
+			<newline gap="8" indent="0"/>
+			<text format="b">Interests</text>
+			<newline gap="2" indent="8"/>
+			<text id="Interests"/>
+		</group>
+		<group id="6">
+			<newline gap="8" indent="0"/>
+			<text format="b">Bio</text>
+			<newline gap="2" indent="8"/>
+			<text id="BioText"/>
+		</group>
+	</document>
+	<document name="CBrowseHostProfile.2">
+		<newline gap="40" indent="0"/>
+		<text format="b">Shared Files</text>
+		<newline gap="4" indent="8"/>
+		<icon res="137" target="command:ID_BROWSE_FILES"/><gap size="5"/>
+		<link target="command:ID_BROWSE_FILES" align="middle">공유 파일보기</link>
+		<group id="2">
+			<newline gap="16" indent="0"/>
+			<text format="b">Community</text>
+			<newline gap="4" indent="8"/>
+			<icon res="127" target="command:ID_SEARCH_CHAT"/><gap size="5"/>
+			<link target="command:ID_SEARCH_CHAT" align="middle">사용자와 채팅</link>
+		</group>
+		<group id="3">
+			<newline gap="16" indent="0"/>
+			<text format="b">Favorite Web Links</text>
+			<newline gap="4" indent="8" id="Bookmarks"/>
+		</group>
+		<newline gap="16" indent="0"/>
+	</document>
+	<!-- Download help documents -->
+	<!-- MISSING -->
+</documents>
+<!-- Localized Command Tip Text."Message" displayed in status bar, "Tip" shown in tooltip -->
+<!-- No CommandTips -->
+<!-- Tips displayed when mouse is moved over controls in the dialogs -->
+<!-- No ControlTips -->
+<!-- Localized Strings -->
+<strings>
+	<string id="WINDOW_MAIN" value="Envy"/>
+	<string id="WINDOW_HOME" value="Envy 홈"/>
+	<string id="WINDOW_SYSTEM" value="시스템"/>
+	<string id="WINDOW_NEIGHBOURS" value="이웃"/>
+	<string id="WINDOW_PACKET" value="패킷 덤프"/>
+	<string id="WINDOW_HOSTCACHE" value="호스트 캐시"/>
+	<string id="WINDOW_SEARCH" value="검색"/>
+	<string id="WINDOW_SEARCHPAD" value="검색"/>
+	<string id="WINDOW_SEARCHMONITOR" value="검색 모니터"/>
+	<string id="WINDOW_HITMONITOR" value="히트 모니"/>
+	<string id="WINDOW_DOWNLOADS" value="다운로드"/>
+	<string id="WINDOW_UPLOADS" value="업로드"/>
+	<string id="WINDOW_LIBRARY" value="도서관"/>
+	<string id="WINDOW_TRAFFIC" value="그래프"/>
+	<string id="WINDOW_CHAT" value="채팅"/>
+	<string id="WINDOW_SECURITY" value="보안"/>
+	<string id="WINDOW_SCHEDULER" value="스케줄러"/>
+	<string id="WINDOW_DISCOVERY" value="디스커버리 서비스"/>
+	<string id="WINDOW_BROWSEHOST" value="찾아보기"/>
+	<string id="WINDOW_MEDIA" value="미디어 플레이"/>
+	<!--string id="WINDOW_HELP" value="Envy 도움말"-->
+	<string id="WINDOW_IRC" value="IRC 채팅"/>
+	<string id="20001" value="예"/>
+	<string id="20002" value="아니오"/>
+	<string id="20003" value="확인"/>
+	<string id="20004" value="취소"/>
+	<string id="20005" value="위로"/>
+	<string id="20006" value="다음"/>
+	<string id="20007" value="계속"/>
+	<string id="20008" value="닫기"/>
+	<string id="20009" value="of"/> <!--"1 of 10"-->
+	<string id="20010" value="All"/>
+	<string id="20011" value="자동"/>
+	<string id="20012" value="사용자 지정"/>
+	<string id="20013" value="기본"/>
+	<string id="20014" value="마침"/>
+	<string id="20015" value="무시"/>
+	<string id="20016" value="다시 시도"/>
+	<string id="20017" value="을 중단하라"/>
+	<string id="20018" value="다시 시도"/>
+	<string id="20019" value="Please Wait..."/>
+	<string id="20020" value="파일"/>
+	<string id="20021" value="파일"/>
+	<string id="20022" value="모든 파일"/>
+	<string id="20023" value="No Files"/>
+	<string id="20024" value="Large 파일"/>
+	<string id="20025" value="Medium 파일"/>
+	<string id="20026" value="Small 파일"/>
+	<string id="20027" value="부분 파일"/>
+	<string id="20028" value="Library 파일"/>
+	<string id="20029" value="%s 파일"/>
+	<string id="20050" value="매일"/>
+	<string id="20051" value="월요일"/>
+	<string id="20052" value="화요일"/>
+	<string id="20053" value="수요일"/>
+	<string id="20054" value="목요일"/>
+	<string id="20055" value="금요일"/>
+	<string id="20056" value="토요일"/>
+	<string id="20057" value="일요일"/>
+	<string id="20060" value="(상세 평가)"/>
+	<string id="20061" value="가짜 / 부패해"/>
+	<string id="20062" value="불쌍한"/>
+	<string id="20063" value="에 관한"/>
+	<string id="20064" value="안녕"/>
+	<string id="20065" value="아주 좋은"/>
+	<string id="20066" value="아주좋음"/>
+	<string id="20080" value="This is a pre-release version of Envy, and the beta testing period has ended. Please download the full, official release from http://getenvy.com."/>
+	<string id="20081" value="닫기"/>
+	<!-- Missing Browse Strings -->
+	<!-- Missing BitTorrent Strings -->
+	<string id="20163" value="연결이 닫혔습니다."/>
+	<string id="20170" value="이 길을 잃었다고 연결 채팅."/>
+	<!-- Missing Connection Strings -->
+	<string id="20185" value="인증된 사용자"/>
+	<string id="20199" value="(전송 후 종료)"/>
+	<!-- Missing File Strings -->
+	<string id="20250" value="끌어 다 놓으십시오 %s 그룹에 파일을"/>
+	<string id="20251" value="기본 그룹을 다운로드하십시오. (모두보기 파일)"/>
+	<string id="20252" value="새 그룹"/>
+	<!-- Missing Hash Strings -->
+	<string id="20260" value="다운로드 등록"/>
+	<!-- Missing Connection Strings -->
+	<!--string id="20400" value="Envy is creating hashes for %Iu files:"-->
+	<string id="20401" value="나의 선택을 다음 번에 기억"/>
+	<string id="20402" value="추가"/>
+	<string id="20403" value="채"/>
+	<string id="20404" value="채팅:"/>
+	<string id="20405" value="Please respect others while using this service. Press Connect below to start."/>
+	<string id="20406" value="Welcome to the Envy IRC Chatrooms"/>
+	<string id="20407" value="제"/>
+	<string id="20408" value="사용자"/>
+	<string id="20410" value="Exploring Your Envy Library"/>
+	<string id="20411" value="탐방"/>
+	<string id="20412" value="Exploring the contents of %i folders"/>
+	<string id="20413" value="%i files selected"/>
+	<string id="20414" value="여러 폴더"/>
+	<string id="20415" value="파일을 선택하는"/>
+	<string id="20416" value="이 파일 평가"/>
+	<string id="20417" value="최근 추가"/>
+	<string id="20418" value="앨범"/>
+	<string id="20419" value="아티스트"/>
+	<string id="20420" value="비트 레이트"/>
+	<string id="20421" value="길"/>
+	<string id="20422" value="평가"/>
+	<string id="20423" value="타이틀"/>
+	<string id="20424" value="#"/> <!-- Track number -->
+	<!-- Missing Library Strings -->
+	<string id="20436" value="도서관에이 폴더를 추가?\n\n%s"/>
+	<string id="20437" value="Ghost File"/>
+	<string id="20443" value="모두보기 파일 형식"/>
+	<string id="20444" value="Get P2P Link (URI)"/>
+	<string id="20445" value="Export P2P Links..."/>
+	<string id="20446" value="The file &quot;%s&quot; failed a hash verification test, and might not be the file you intended to download. Are you sure you want to open it?"/>
+	<string id="20447" value="Would you like to remove the &quot;potentially unsafe&quot; attribute from this file?"/>
+	<string id="20448" value="공공"/> 	<!--Shared-->
+	<string id="20449" value="개인"/> 	<!--Unshared-->
+	<string id="20450" value="A subfolder of the selected folder &quot;%s&quot; is already part of your library.nAdding this folder will cause re-hashing of some files.\n\nDo you want to continue ?"/>
+	<string id="20451" value="아니 파일을 재생합니다. 미디어를 클릭하여 라이브러리에서 파일을 재생할 수있습니다."/>
+	<!-- Missing Media Strings -->
+	<string id="20456" value="재생 목록:"/>
+	<string id="20458" value="Envy Media Player"/>
+	<string id="20460" value="ENVY 미디어 시스템"/>
+	<string id="20462" value="(No Visualisation)"/>
+	<string id="20470" value="취소"/>
+	<string id="20471" value="열린"/>
+	<string id="20472" value="수료"/>
+	<string id="20473" value="예상 남은 시간:"/>
+	<string id="20474" value="번호 리뷰:"/>
+	<string id="20475" value="번호 소스의:"/>
+	<string id="20476" value="아니 소스"/>
+	<string id="20477" value="%i 일 %i 시간"/>
+	<string id="20478" value="%i 시간 %i 분"/>
+	<string id="20479" value="%i 분 %i 초"/>
+	<string id="20480" value="%i 초"/>
+	<string id="20481" value="총 전송 속도:"/>
+	<string id="20482" value="볼륨 다운로드:"/>
+	<string id="20483" value="볼륨 업로드:"/>
+	<string id="20484" value="다운로드 속도 제한"/>
+	<string id="20485" value="업로드 속도 제한"/>
+	<!-- Missing Profile Strings -->
+	<string id="20499" value="새 폴더"/>
+	<!-- Missing Network Strings -->
+	<string id="20540" value="연결"/>
+	<string id="20541" value="연결 중..."/>
+	<string id="20542" value="연결"/>
+	<string id="20543" value="연결 끊기"/>
+	<!-- Missing Security Strings -->
+	<!-- Missing Scheduler Strings -->
+	<string id="20620" value="Envy 적극적으로 네트워크를 찾고있습니다..."/>
+	<string id="20621" value="여기를 클릭하여 다시 검색을"/>
+	<string id="20622" value="All 네트워크"/>
+	<string id="20623" value="You are about to start a new search. Would you like to clear the results of your previous search?"/>
+	<string id="20624" value="이 영역은 선택한 파일에 대한 자세한 정보를 보여줍니다."/>
+	<string id="20625" value="%s writes:"/>
+	<string id="20626" value="%s rates this file:"/>
+	<string id="20627" value="Click to Preview"/>
+	<string id="20628" value="Previewing..."/>
+	<string id="20629" value="Unable to download preview content from &quot;%s&quot;."/>
+	<string id="20630" value="%i Reviews."/>
+	<string id="20631" value="One review."/>
+	<string id="20632" value="%i sources are available. (%s/s)"/>
+	<string id="20633" value="One source is available. (%s/s)"/>
+	<string id="20634" value="네트워크 어떠한 아직 경기를 반환하지 않았습니다."/>
+	<string id="20635" value="일부 결과,하지만없습니다 필터링된했다."/>
+	<string id="20636" value="검색이 창에서 아직 시작되고있다."/>
+	<string id="20637" value="메타"/>
+	<string id="20638" value="No Schema Columns"/>
+	<string id="20640" value="(Clear Search History)"/>
+	<string id="20641" value="수색 Envy"/>
+	<string id="20642" value="어떤 형식의 파일은 무엇입니까?"/>
+	<string id="20643" value="입력 일부 키워드가 검색:"/>
+	<string id="20644" value="Advanced"/>
+	<string id="20645" value="모든 파일 형식"/>
+	<string id="20646" value="맑은"/>
+	<string id="20647" value="%lu filtered"/>
+	<string id="20648" value="검색 패널 숨기기"/>
+	<string id="20650" value="찾기"/>
+	<string id="20651" value="여기에 검색어 입력:"/>
+	<string id="20652" value="이런 형식의 파일을 찾아보십시오:"/>
+	<string id="20653" value="네트워크:"/>
+	<string id="20654" value="최소 파일 크기:"/>
+	<string id="20655" value="최대 파일 크기:"/>
+	<string id="20656" value="추가"/>
+	<string id="20657" value="쇼 검색 패널"/>
+	<string id="20658" value="검색"/>
+	<string id="20659" value="중지"/>
+	<string id="20660" value="파일을 찾을 수 없음"/>
+	<string id="20661" value="%lu hubs, %lu leaves"/>
+	<string id="20662" value="활성 검색"/>
+	<string id="20663" value="Results"/>
+	<string id="20664" value="%lu file in %lu hit|%lu file in %lu hits|%lu files in %lu hits"/>
+	<string id="20665" value="를 찾을 수:"/>
+	<string id="20666" value="검색:"/>
+	<string id="20668" value="검색"/>
+	<string id="20669" value="Plain Text Search"/>
+	<string id="20670" value="Envy 네트워크를 찾고있습니다..."/>
+	<string id="20672" value="Select the eDonkey/eMule temp folder:"/>
+	<string id="20673" value="자동"/>
+	<!-- Missing Info Strings -->
+	<string id="20680" value="Envy 설정"/>
+	<string id="20682" value="Remote access is disabled."/>
+	<string id="20684" value="http://%s:%i/remote - Username/password required."/>
+	<string id="20685" value="Unable to accept connections, URL unavailable."/>
+	<string id="20699" value="&amp;Schemas"/>
+	<string id="20700" value="%s in : %s out (d:%I64i/u:%I64i)"/>
+	<string id="20701" value="%lu 이웃에 연결됨. %s 지방 컬렉션."/>
+	<string id="20702" value="Hub mode with %lu neighbours. %s 개 지역 도서관에."/>
+	<string id="20703" value="Hub/Ultrapeer mode with %lu neighbours. %s 개 지역 도서관에."/>
+	<string id="20704" value="Ultrapeer mode with %lu neighbours. %s 개 지역 도서관에."/>
+	<string id="20705" value="연결. %s 개 지역 도서관에."/>
+	<string id="20706" value="네트워크에 연결하기..."/>
+	<string id="20707" value="아니라 네트워크에 연결."/>
+	<string id="20708" value="액티브"/>
+	<string id="20709" value="Inactive"/>
+	<string id="20710" value="갤거야"/>
+	<string id="20711" value="Can't Move"/>
+	<string id="20712" value="숨막혀"/>
+	<string id="20713" value="Enqueue"/>
+	<string id="20714" value="File Error"/>
+	<string id="20715" value="Hashset"/>
+	<string id="20716" value="Metadata"/>
+	<string id="20717" value="Response"/>
+	<string id="20718" value="Moving"/>
+	<string id="20719" value="Creating"/>
+	<string id="20720" value="완성됨"/>
+	<string id="20721" value="Connecting"/>
+	<string id="20722" value="Downloading"/>
+	<string id="20723" value="Busy"/>
+	<string id="20724" value="다음"/>
+	<string id="20725" value="Q"/>
+	<string id="20726" value="Queued"/>
+	<string id="20727" value="일시 중지됨"/>
+	<string id="20728" value="Pending"/>
+	<string id="20729" value="Requesting"/>
+	<string id="20730" value="Searching"/>
+	<string id="20731" value="Seeding"/>
+	<string id="20732" value="소스"/>
+	<string id="20733" value="소스"/>
+	<string id="20734" value="소스"/>
+	<string id="20735" value="소스"/>
+	<string id="20736" value="(아니 소스)"/>
+	<string id="20740" value="TigerTree"/>
+	<string id="20741" value="Torrent"/>
+	<string id="20742" value="Tracker Down"/>
+	<string id="20743" value="관심"/>
+	<string id="20744" value="Unknown"/>
+	<string id="20745" value="지원되지 않는"/>
+	<string id="20746" value="Unverified"/>
+	<string id="20747" value="Verified"/>
+	<string id="20748" value="Verifying"/>
+	<string id="20750" value="!에 오신 것을 환영합니다 {version}\n\nEnvy is completely free software, please use it responsibly."/>
+	<string id="20751" value="There are no active searches. Click here to search for files."/>
+	<string id="20752" value="You're not connected. Click the Connect button to get started."/>
+	<string id="20755" value="Are you sure you want to delete the &quot;%s&quot; template?nThis cannot be undone."/>
+	<string id="20760" value="우선"/>
+	<string id="20762" value="This file appears to be spam."/>
+	<string id="20763" value="Blacklisted:"/>
+	<string id="20764" value="You have downloaded and deleted this file before."/>
+	<string id="20765" value="You already have this file on your download list."/>
+	<string id="20766" value="You already have this file in your library."/>
+	<string id="20767" value="Sources for this file are currently busy"/>
+	<string id="20768" value="Sources for this file are firewalled"/>
+	<string id="20769" value="Sources for this file may be unstable"/>
+	<string id="20770" value="폴더"/>
+	<string id="20771" value="Hits"/>
+	<string id="20772" value="위치"/>
+	<string id="20773" value="of your library"/>
+	<string id="20774" value="N/A"/>
+	<string id="20775" value="Next in Line"/>
+	<string id="20776" value="No Hashset"/>
+	<string id="20777" value="Partial Source (%.2f%% available)"/>
+	<string id="20778" value="%i upload slots, %i waiting in queue"/>
+	<string id="20780" value="크기"/>
+	<string id="20781" value="This source is currently busy"/>
+	<string id="20782" value="This source is firewalled"/>
+	<string id="20783" value="This source may be unstable"/>
+	<string id="20784" value="스피드 :"/>
+	<string id="20785" value="Status:"/>
+	<string id="20786" value="%lu today, %lu total"/>
+	<string id="20787" value="Total Files:"/>
+	<string id="20788" value="Total Size:"/>
+	<string id="20789" value="Transfer:"/>
+	<string id="20790" value="를 입력"/>
+	<string id="20791" value="Untrusted"/>
+	<string id="20792" value="업로드"/>
+	<string id="20793" value="URL:"/>
+	<string id="20794" value="User Agent:"/>
+	<string id="20795" value="%s in : %s out (d:%I64i/u:%I64i/peers:%I64i)"/>
+	<string id="20796" value="Files shared over the Internet"/>
+	<string id="20798" value="Envy has finished downloading the next Envy version (%s). Would you like to upgrade now?\n\nIf you select Yes, Envy will close temporarily while the upgrade is installed."/>
+	<string id="20799" value="새로 Envy 버전 감지."/>
+	<!-- Missing Upload Strings -->
+	<string id="20841" value="New 대기열"/>
+	<string id="20842" value="모든 파일"/>
+	<string id="20843" value="DC++ Guard"/>
+	<string id="20844" value="eDonkey Core"/>
+	<string id="20845" value="eDonkey Guard"/>
+	<string id="20846" value="eDonkey Partials"/>
+	<string id="20847" value="Completed Uploads"/>
+	<string id="20848" value="HTTP Guard"/>
+	<string id="20849" value="Library 파일"/>
+	<string id="20850" value="Large 파일"/>
+	<string id="20851" value="Medium 파일"/>
+	<string id="20852" value="Small 파일"/>
+	<string id="20853" value="부분 파일"/>
+	<string id="20854" value="부분"/>
+	<string id="20855" value="대기열"/>
+	<string id="20856" value="Torrent Uploads"/>
+	<string id="20857" value="Offline queued upload host %s expired, removing."/>
+	<string id="20858" value="Timed out waiting for request from upload host %s."/>
+	<string id="20859" value="Closing upload connection %s due to lack of traffic."/>
+	<string id="20860" value="Uploading tiger-tree data for &quot;%s&quot; to %s."/>
+	<string id="20861" value="Removed upload of &quot;%s&quot; to %s."/>
+	<string id="20862" value="추가"/>
+	<string id="20864" value="찾아보기"/>
+	<string id="20865" value="연결"/>
+	<string id="20866" value="파일명:"/>
+	<string id="20867" value="호스트 :"/>
+	<string id="20868" value="포트"/>
+	<!-- Missing URL Parse Messages -->
+	<string id="20872" value="종류:"/>
+	<string id="20874" value="URL:"/>
+	<string id="20875" value="지정되지 않음"/>
+	<string id="20880" value="내 프로필 수정"/>
+	<string id="20882" value="%u 파일을 선택했습니다. 당신은 확실한가요?"/>
+	<string id="20890" value="에 오신 것을 환영합니다 Envy (피어 프로젝트)."/>
+	<!-- Missing Warning Messages -->
+	<!-- Missing Wizard Strings -->
+	<string id="20895" value="(1050-65500)"/>
+	<string id="20899" value="살짜리"/>
+</strings>
+<!-- Localized Dialog Text, "cookie" verifies that the skin matches current dialog -->
+<dialogs>
+	<dialog name="CSettingSheet" cookie="SyBuBuBu" caption="Envy 설정이">
+		<control/>
+		<control caption="OK"/>
+		<control caption="취소"/>
+		<control caption="적용"/>
+		<control/>
+	</dialog>
+	<dialog name="CGeneralSettingsGroup" cookie="Af" caption="일반"/>
+	<dialog name="CInternetSettingsGroup" cookie="Af" caption="인터넷"/>
+	<dialog name="CGeneralSettingsPage" cookie="BuBuBuBuBuBuBuBuStCoBuBuBuBuBuBuSyStEdmsStmsBuBuStCoStCo" caption="일반">
+		<control caption="일반:"/>
+		<control caption="Start Envy at Windows startup"/>
+		<control caption="Auto-connect on Envy startup"/>
+		<control caption="Show a prompt before opening URIs"/>
+		<control caption="Check for updates monthly"/>
+		<control caption="Downloads:"/>
+		<control caption="Expand new downloads by default"/>
+		<control caption="Display simple progress bar"/>
+		<control caption="Show rates in:"/>
+		<control caption="Auto bits/sec|Auto bytes/sec|b/s|B/s|Kb/s|KB/s|Mb/s|MB/s"/>
+		<control caption="Search:"/>
+		<control caption="Expand multi-source files by default"/>
+		<control caption="Switch to Transfers view on download"/>
+		<control caption="Hide side bar when starting search"/>
+		<control caption="Filter adult content from searches"/>
+		<control caption="Tooltips:"/>
+		<control/>
+		<control caption="Delay (ms):"/>
+		<control/>
+		<control/>
+		<control caption="Opacity:"/>
+		<control/>
+		<control caption="DropShadows"/>
+		<control caption="Tray:"/>
+		<control caption="Close button behavior:"/>
+		<control caption="Ask Me|Minimize to Taskbar|Hide to Tray|Exit After Downloads|Exit Immediately"/>
+		<control caption="Minimize button behavior:"/>
+		<control caption="Normal Taskbar|Minimize to Tray"/>
+	</dialog>
+	<dialog name="CLibrarySettingsPage" cookie="BuBuBuBuBuBuBuBuStEdmsStStEdmsStBuBuBuCoBuBuBuCoBuBuBuEdBu" caption="도서관">
+		<control caption="옵션:"/>
+		<control caption="Allow others to browse"/>
+		<control caption="Watch library folders"/>
+		<control caption="Quick hashing (more CPU)"/>
+		<control caption="Show hashing status window"/>
+		<control caption="Smart media series detection"/>
+		<control caption="Create ghost files by default"/>
+		<control caption="Recent Files:"/>
+		<control caption="Remember:"/>
+		<control/>
+		<control/>
+		<control caption="files"/>
+		<control caption="For up to:"/>
+		<control/>
+		<control/>
+		<control caption="days"/>
+		<control caption="Clear History"/>
+		<control caption="Clear Ghosts"/>
+		<control caption="Safe to Open Types:"/>
+		<control/>
+		<control caption="추가"/>
+		<control caption="제거"/>
+		<control caption="Never Share Types:"/>
+		<control/>
+		<control caption="추가"/>
+		<control caption="제거"/>
+		<control caption="Store Collections Here:"/>
+		<control/>
+		<control/>
+	</dialog>
+	<dialog name="CMediaSettingsPage" cookie="BuStCoBuBuBuCoBuBuBuBuSt" caption="미디어">
+		<control caption="Media Handling"/>
+		<control caption="Choose Media Handler:"/>
+		<control/>
+		<control caption="Use Envy Media Player to PLAY the file types listed below"/>
+		<control caption="Use Envy Media Player to ENQUEUE the file types listed below"/>
+		<control caption="File Types:"/>
+		<control/>
+		<control caption="추가"/>
+		<control caption="제거"/>
+		<control caption="Audio Visualization Plugin:"/>
+		<control caption="Select Plugin..."/>
+		<control caption="Note: Choosing an external Media Handler will disable Media/Visualization Plugins."/>
+	</dialog>
+	<dialog name="CIRCSettingsPage" cookie="BuBuBuBuStEdmsStStEdmsCoBuBuStBuStBuStBuStBuStBuStBuStBuStBuStEdStEdStEdStEdStCoStEdStEd" caption="채팅 IRC">
+		<control caption="Client Options:"/>
+		<control caption="Show chat integration"/>
+		<control caption="Show timestamp"/>
+		<control caption="Flood protection:"/>
+		<control caption="Lines"/>
+		<control/>
+		<control caption="Screen Font:"/>
+		<control caption="Size"/>
+		<control/>
+		<control/>
+		<control caption="Colors:"/>
+		<control/>
+		<control caption="Window"/>
+		<control/>
+		<control caption="Text"/>
+		<control/>
+		<control caption="Local text"/>
+		<control/>
+		<control caption="User action"/>
+		<control/>
+		<control caption="Channel actions"/>
+		<control/>
+		<control caption="Server messages"/>
+		<control/>
+		<control caption="Notices"/>
+		<control/>
+		<control caption="Topics"/>
+		<control caption="Connection 설정이:"/>
+		<control caption="Screen 이름:"/>
+		<control/>
+		<control caption="User 이름:"/>
+		<control/>
+		<control caption="Alt screen 이름:"/>
+		<control/>
+		<control caption="Real 이름:"/>
+		<control/>
+		<control caption="Server:"/>
+		<control/>
+		<control caption="포트:"/>
+		<control/>
+		<control caption="Run command on connect"/>
+		<control/>
+	</dialog>
+	<dialog name="CCommunitySettingsPage" cookie="BuBuBuBuBuBuBuBuBuSt" caption="커뮤니티">
+		<control caption="Direct _Chat:"/>
+		<control caption="Enable peer-to-peer messaging with compatible clients"/>
+		<control caption="Enable chat over other protocols where possible"/>
+		<control caption="Filter chat messages for spam"/>
+		<control caption="Censor profanity in chat"/>
+		<control caption="_Profile:"/>
+		<control caption="Enable browse profile"/>
+		<control caption="Update Profile"/>
+		<control caption="정보:"/>
+		<control caption="Use your G2/Gnutella User Profile to share basic information about yourself, or recommend files and links to others."/>
+	</dialog>
+	<dialog name="CRemoteSettingsPage" cookie="BuBuStBuStStEdEdStBuSt" caption="원격 액세스">
+		<control caption="Activation:"/>
+		<control caption="원격 웹 액세스 활성화:"/>
+		<control/>
+		<control caption="Credentials:"/>
+		<control caption="Choose Username:"/>
+		<control caption="Choose Password:"/>
+		<control/>
+		<control/>
+		<control/>
+		<control caption="정보:"/>
+		<control caption="Remote Access allows you to leave Envy running on your PC, and control it remotely using any web browser. {n}You must be able to accept incoming connections.  (Port-forwarding)"/>
+	</dialog>
+	<dialog name="CWebSettingsPage" cookie="BuStBuBuBuBuBuBuBuBuCoBuBuSt" caption="웹 링크">
+		<control caption="Peer to Peer Link Handling:"/>
+		<control caption="Use Envy to open these types of links:"/>
+		<control caption="Magnet (magnet:)"/>
+		<control caption="Gnutella (gnutella:)"/>
+		<control caption="eDonkey (ed2k:)"/>
+		<control caption="Piolet (mp2p:)"/>
+		<control caption="DC++ (dchub:)"/>
+		<control caption="BitTorrent (.torrent)"/>
+		<control caption="Download Manager:"/>
+		<control caption="Use Envy to manage all my web downloads:"/>
+		<control/>
+		<control caption="추가"/>
+		<control caption="제거"/>
+		<control caption="The download manager plugin will only attempt to download file types listed here. Other file types will be handled by your web browser. Envy must be running to manage downloads."/>
+	</dialog>
+	<dialog name="CConnectionSettingsPage" cookie="BuStCoStCoStEdBuBuBuStCoStCoBuStCoBuBuBuStEdmsStEdms" caption="연결">
+		<control caption="Inbound Address:"/>
+		<control caption="Address:"/>
+		<control caption="자동"/>
+		<control caption="스피드 :"/>
+		<control/>
+		<control caption="포트"/>
+		<control/>
+		<control caption="Random"/>
+		<control caption="Force binding to this address"/>
+		<control caption="Outbound Address:"/>
+		<control caption="Address:"/>
+		<control caption="자동"/>
+		<control caption="스피드 :"/>
+		<control/>
+		<control caption="옵션:"/>
+		<control caption="Can accept incoming connections"/>
+		<control/>
+		<control caption="Ignore private/local IP addresses"/>
+		<control caption="Enable Plug'n'Play port-forwarding"/>
+		<control caption="Timeouts:"/>
+		<control caption="연결:"/>
+		<control/>
+		<control/>
+		<control caption="Handshake:"/>
+		<control/>
+		<control/>
+	</dialog>
+	<dialog name="CDownloadsSettingsPage" cookie="BuEdBuBuEdBuBuStEdmsStEdmsStEdmsBuStCoStCoBuBuStCo" caption="다운로드">
+		<control caption="Save Completed Files Here:"/>
+		<control/>
+		<control/>
+		<control caption="Store Temporary Incomplete Files Here:"/>
+		<control/>
+		<control/>
+		<control caption="Number of Downloads:"/>
+		<control caption="Maximum Files:"/>
+		<control/>
+		<control/>
+		<control caption="Maximum Transfers:"/>
+		<control/>
+		<control/>
+		<control caption="Transfers per File:"/>
+		<control/>
+		<control/>
+		<control caption="Limits:"/>
+		<control caption="Total Download Bandwidth:"/>
+		<control/>
+		<control caption="Maximum Queue Length:"/>
+		<control/>
+		<control caption="보안:"/>
+		<control caption="만 다운로드와 연결되어있는 네트워크에 업로드 할 수 있습니다."/>
+		<control caption="AntiVirus:"/>
+		<control/>
+	</dialog>
+	<dialog name="CUploadsSettingsPage" cookie="BuBuBuBuBuStEdmsBuCoBuBuBuStCoStCoBuSyBuBuBuSt" caption="업로드">
+		<control caption="옵션:"/>
+		<control caption="Limit sharing in hub mode"/>
+		<control caption="Share new partial downloads"/>
+		<control caption="Share preview files"/>
+		<control caption="Fair-Use mode (10% media limit)"/>
+		<control caption="Limit per unique host:"/>
+		<control/>
+		<control/>
+		<control caption="User-Agent Filter:"/>
+		<control/>
+		<control caption="+"/>
+		<control caption="-"/>
+		<control caption="대역폭:"/>
+		<control caption="한도:"/>
+		<control/>
+		<control caption="모드:"/>
+		<control caption="평균|최고 (엄격한)"/>
+		<control caption="큐:"/>
+		<control/>
+		<control caption="새로운..."/>
+		<control caption="편집..."/>
+		<control caption="삭제"/>
+		<control caption="(변경 사항은 즉시 적용)"/>
+	</dialog>
+	<!-- MISSING DIALOG PAGES -->
+	<dialog name="CSkinsSettingsPage" cookie="SyBuStStStStStEdStBuBuBu" caption="테마">
+		<control/>
+		<control caption="테마 정보:"/>
+		<control caption="이름:"/>
+		<control/>
+		<control caption="Author:"/>
+		<control/>
+		<control caption="기술:"/>
+		<control/>
+		<control caption="*혼합하는 여러 스킨을 선택합니다"/>
+		<control caption="삭제"/>
+		<control caption="설치..."/>
+		<control caption="좀 더"/>
+	</dialog>
+	<dialog name="CPluginsSettingsPage" cookie="SyBuStStStEdBuBu" caption="플러그인">
+		<control/>
+		<control caption="러그인 정보:"/>
+		<control caption="이름:"/>
+		<control/>
+		<control caption="기술:"/>
+		<control/>
+		<control caption="Setup..."/>
+		<control caption="Get More"/>
+	</dialog>
+	<dialog name="CAdvancedSettingsPage" cookie="SyBuStEdmsEdCoBuBu" caption="고급">
+		<control/>
+		<control caption="Setting Properties:"/>
+		<control caption=" 값:"/>
+		<control/>
+		<control/>
+		<control/>
+		<control/>
+		<control/>
+		<control caption="기본값 복원"/>
+	</dialog>
+	<dialog name="CProtocolsSettingsPage" cookie="BuSy" caption="프로토콜">
+		<control caption="Envy Common Architecture Protocol Explorer:"/>
+		<control/>
+	</dialog>
+	<dialog name="CQueuePropertiesDlg" cookie="BuEdBuBuBuBuBuEdBuEdBuCoBuEdBuSyBuBuStEdmsStEdmsStEdmsBuStEdStEdmsBuEdmsBuBuBu" caption="Upload Queue Properties">
+		<control caption="이름:"/>
+		<control/>
+		<control caption="Entry Criteria:"/>
+		<control caption="Partially downloaded files only"/>
+		<control caption="Shared Library files only"/>
+		<control caption="Both partial and library files"/>
+		<control caption="Minimum source file size:"/>
+		<control/>
+		<control caption="Maximum source file size:"/>
+		<control/>
+		<control caption="Marked files:"/>
+		<control caption="Popular|Release"/>
+		<control caption="Filename match:"/>
+		<control/>
+		<control caption="Protocols:"/>
+		<control/>
+		<control caption="Capacity:"/>
+		<control caption="Enable this queue"/>
+		<control caption="Minimum number of transfers:"/>
+		<control/>
+		<control/>
+		<control caption="Maximum number of transfers:"/>
+		<control/>
+		<control/>
+		<control caption="Maximum number waiting in queue:"/>
+		<control/>
+		<control/>
+		<control caption="Service Parameters:"/>
+		<control caption="Saturated bandwidth percentage:"/>
+		<control/>
+		<control caption="Upload bandwidth for this queue:"/>
+		<control/>
+		<control/>
+		<control caption="Rotate after # seconds:"/>
+		<control/>
+		<control/>
+		<control caption="OK"/>
+		<control caption="취소"/>
+		<control caption="Reward uploaders"/>
+	</dialog>
+	<dialog name="CWizardWelcomePage" cookie="StStStStStStStStStStStSt" caption="피어 프로젝트에 오신 것을 환영합니다. (1/8) &apos;Envy&apos;">
+		<control caption="피어 프로젝트에 오신 것을 환영합니다 (Envy)"/>
+		<control caption="If you haven&apos;t used Envy or another P2P client before, this QuickStart wizard can help you configure your copy in a few simple steps."/>
+		<control caption="If you&apos;re a more advanced user, you can access the full range of Envy&apos;s options via the Tools menu. Click Exit to close the wizard at any time."/>
+		<control caption="This wizard will assist you to:"/>
+		<control/>
+		<control caption="Tell Envy about your Internet connection"/>
+		<control/>
+		<control caption="Choose which files to share"/>
+		<control/>
+		<control caption="Connect to your choice of P2P networks, and"/>
+		<control/>
+		<control caption="Get started using Envy."/>
+	</dialog>
+	<dialog name="CWizardConnectionPage" cookie="StStCoStStCoStCoStCoStEdBuStms" caption="피어 프로젝트에 오신 것을 환영합니다 (2/8)">
+		<control caption="For best performance, Envy needs to know your internet connection."/>
+		<control caption="You may select the Internet connection type:"/>
+		<control caption="| Dial-up Modem| ISDN 128K| DSL 768K| DSL 1.5| Cable 3| DSL 4| DSL2 8| FIOS 10| DSL2 12| FIOS 15| FIOS 20| FIOS 25| FIOS 30| FIOS 50| T1| T3| LAN| OC3"/>
+		<control caption="Speedtest.net 에서 테스트"/>
+		<control caption="Or choose the download speed:"/>
+		<control/>
+		<control caption="...and upload speed:"/>
+		<control/>
+		<control caption="Do auto port-forwarding with Plug&apos;n&apos;Play?"/>
+		<control/>
+		<control caption="Port:"/>
+		<control/>
+		<control caption="Random"/>
+		<control caption="Status:"/>
+		<control/>
+	</dialog>
+	<dialog name="CWizardNetworksPage" cookie="StBuStBuStBuStBu" caption="피어 프로젝트에 오신 것을 환영합니다 (3/8)">
+		<control caption="Envy is a general purpose filesharing application that can swarm multiple P2P networks on a single download, therefore all are recommended. Note you can always manage specific networks at any time."/>
+		<control caption="Connect to Gnutella2 (Default)"/>
+		<control caption="The Gnutella2 network (G2) is Envy&apos;s premiere network, offering more features and performance than any other P2P net. (Shareaza)"/>
+		<control caption="Connect to Gnutella"/>
+		<control caption="The original Gnutella network (G1) is less feature-rich than G2, with more unwanted spam, yet remains a valuable resource. (LimeWire)"/>
+		<control caption="Connect to eDonkey2000"/>
+		<control caption="The eDonkey network (ED2K) is a popular server-based network. While not as feature-rich or fast as G2, ED2K has a vast file collection. (eMule)"/>
+		<control caption="Associate .Torrent Files  (Handle BitTorrent links by default)"/>
+	</dialog>
+	<dialog name="CWizardFoldersPage" cookie="StStEdBuStEdBuStEdBuSt" caption="피어 프로젝트에 오신 것을 환영합니다 (4/8)">
+		<control caption="Envy 첫번째 다운로드 부분적 개인 폴더로 파일을 다운로드 다음 그룹에 따라 완료되면 그들을 이동합니다."/>
+		<control caption="여기에 일시적으로 저장 불완전 파일 :"/>
+		<control/>
+		<control/>
+		<control caption="기본적으로 여기에 파일을 저장 완료 :"/>
+		<control/>
+		<control/>
+		<control caption="저장 .torrent 현재 파일 :"/>
+		<control/>
+		<control/>
+		<control caption="일반적인 파일 형식이 있지만, 하위 폴더에 처음 설치 아르 그룹은 사용자 정의할 수 있습니다. 간단히 Drag&apos;n&apos;drop 파일."/>
+	</dialog>
+	<dialog name="CWizardSharePage" cookie="StStStSyBuBuSt" caption="피어 프로젝트에 오신 것을 환영합니다 (5/8)">
+		<control caption="P2P networks are only as good as the people who use them. All of the content available for download is being shared by another user."/>
+		<control caption="You do not have to share content to use Envy, however some software will behave differently to users who are not sharing anything."/>
+		<control caption="Please indicate which folders, if any, you wish to share. Simply click the Add button to add a new folder."/>
+		<control/>
+		<control caption="추가..."/>
+		<control caption="제거"/>
+		<control caption="주의 : 업로드 승인되지 않은 저작권 작품이 일부 국가에서 책임을집니다."/>
+	</dialog>
+	<dialog name="CFolderScanDlg" cookie="StStStStStStBu" caption="Scanning Folder...">
+		<control/>
+		<control caption="..."/>
+		<control caption="Files:"/>
+		<control caption="0"/>
+		<control caption="Volume:"/>
+		<control caption="0"/>
+		<control caption="닫기"/>
+	</dialog>
+	<dialog name="CWizardInterfacePage" cookie="StBuBuBuStStBuBuBuBuBuSt" caption="피어 프로젝트에 오신 것을 환영합니다 (6/8)">
+		<control caption="Envy supports a flexible user interface, so you can choose what is most comfortable for you.  You can change these options at any time."/>
+		<control caption="Select user interface:"/>
+		<control caption="Normal Mode"/>
+		<control caption="Basic Mode"/>
+		<control caption="Standard view offers all available commands, windows, abilities."/>
+		<control caption="Simple, easy to use menus with fewer options. Limited for new users."/>
+		<control caption="Display simple download progress bars.  (Less detail)"/>
+		<control caption="Skin 선택:"/>
+		<control caption="변화 없음"/>
+		<control caption="Windows Skin"/>
+		<control caption="어두운 Skin"/>
+		<control caption="Full selection in Settings, try mixing various skins."/>
+	</dialog>
+	<dialog name="CWizardProfilePage" cookie="StStEdStCoCoStCoStCoStEd" caption="피어 프로젝트에 오신 것을 환영합니다 (7/8)">
+		<control caption="Envy is a much friendlier place when everyone writes a few basic details about themselves."/>
+		<control caption="Display name:"/>
+		<control/>
+		<control caption="I am a:"/>
+		<control caption="&#160;(choose)"/>
+		<control caption="&#160;(choose)| Man| Woman| Boy| Girl"/>
+		<control caption="From:"/>
+		<control/>
+		<control caption="Locale:"/>
+		<control/>
+		<control caption="댓글:"/>
+		<control/>
+	</dialog>
+	<dialog name="CWizardFinishedPage" cookie="StStStBuBuSt" caption="피어 프로젝트에 오신 것을 환영합니다 (8/8)">
+		<control caption="That&apos;s it. Envy has been configured to work with your computer."/>
+		<control caption="If you ever need to change your settings, you can re-run this QuickStart wizard by selecting it from the Tools menu or Home tab."/>
+		<control caption="After closing this wizard, try running a fake search to Ban the spammers. Explore toolbar tabs while waiting."/>
+		<control caption="Start Envy every time Windows starts"/>
+		<control caption="Connect to the networks when Envy starts"/>
+		<control caption="And thanks. {n}Enjoy using Envy for all your peer-to-peer networking needs."/>
+	</dialog>
+	<dialog name="CDonkeyImportDlg" cookie="StBuBuEdBu" caption="Import eDonkey Downloads">
+		<control caption="Envy has detected that you have another eDonkey program installed on your computer. Would you like to import any unfinished downloads into Envy?"/>
+		<control caption="예"/>
+		<control caption="아니오|취소"/>
+		<control/>
+		<control caption="닫기"/>
+	</dialog>
+	<dialog name="CProfileManagerDlg" cookie="SyBuBuBu" caption="Edit My Profile">
+		<control/>
+		<control caption="OK"/>
+		<control caption="취소"/>
+		<control caption="적용"/>
+		<control/>
+	</dialog>
+	<dialog name="CIdentityProfilePage" cookie="BuStStEdEdEdBuStStCoCoBuStBuBu" caption="Identity">
+		<control caption="이름:"/>
+		<control caption="Display 이름:"/>
+		<control caption="Real 이름:"/>
+		<control/>
+		<control/>
+		<control/>
+		<control caption="_Vitals:"/>
+		<control caption="Gender:"/>
+		<control caption="Age:"/>
+		<control caption="|Male|Female"/>
+		<control/>
+		<control caption="Note:"/>
+		<control caption="This profile is available to users who browse your files, primarily on the G2 network.{n}(Envy or Shareaza)"/>
+		<control caption="_Active:"/>
+		<control caption="Allow others to browse my user profile"/>
+	</dialog>
+	<!-- Mising Profile Dialogs -->
+	<dialog name="CLanguageDlg" cookie="" caption="언어 선택">
+	</dialog>
+	<dialog name="CConnectToDlg" cookie="BuCoEdBuCoBuBuBu" caption="Connect To|Browse Host|Chat with User">
+		<control caption="Initiate a new connection to host or server:|Browse this host:|Message this user:"/>
+		<control/>
+		<control/>
+		<control caption="네트워크 Protocol:"/>
+		<control/>
+		<control caption="Suppress Ultrapeer"/>
+		<control caption="Connect"/>
+		<control caption="취소"/>
+	</dialog>
+	<dialog name="CDownloadDlg" cookie="StStStEdStBuBuBu" caption="Download File from Link">
+		<control/>
+		<control caption="New files can be downloaded directly from Web and P2P links. Simply copy/paste the URL or URI link for the file into the box below. &#160; (http:, ftp:, ed2k:, magnet:, etc.)"/>
+		<control caption="A small .torrent file is needed to begin BitTorrent downloads. Paste the .torrent's direct link above, or select a local .torrent file. (Use drag'n'drop any time.)"/>
+		<control/>
+		<control/>
+		<control caption="다운로드"/>
+		<control caption="취소"/>
+		<control caption="Open Torrent"/>
+	</dialog>
+	<dialog name="CNewSearchDlg" cookie="EdCoBuBu" caption="New Search|Search Again|Find in Library">
+		<control/>
+		<control/>
+		<control caption="찾기"/>
+		<control caption="취소"/>
+	</dialog>
+	<dialog name="CFilterSearchDlg" cookie="BuEdBuStBuStEdStEdStEdmsBuBuBuBuBuBuBuBuBuBuBuBuBuCoBuBuBuBuBu" caption="Filter Matches">
+		<control caption="Only show matches with these _words:"/>
+		<control/>
+		<control caption="Reg. Exp."/>
+		<control caption="(Exclude -words)"/>
+		<control caption="_Limits:"/>
+		<control caption="Min. size:"/>
+		<control/>
+		<control caption="Max. size:"/>
+		<control/>
+		<control caption="Min. number of sources:"/>
+		<control/>
+		<control/>
+		<control caption="_Hide:"/>
+		<control caption="Files you have already"/>
+		<control caption="Non-matching files"/>
+		<control caption="Suspicious files"/>
+		<control caption="Restricted files"/>
+		<control caption="DRM files"/>
+		<control caption="Firewalled hosts (push)"/>
+		<control caption="Unstable hosts"/>
+		<control caption="Busy hosts"/>
+		<control caption="Bogus results"/>
+		<control caption="Adult results"/>
+		<control caption="Filters:"/>
+		<control/>
+		<control caption="Set as default"/>
+		<control caption="_Save as"/>
+		<control caption="_Delete"/>
+		<control caption="Filter"/>
+		<control caption="취소"/>
+	</dialog>
+	<dialog name="CSaveFilterAsDlg" cookie="EdBuBuSt" caption="Save filter as">
+		<control/>
+		<control caption="OK"/>
+		<control caption="취소"/>
+		<control caption="Save the current filter as"/>
+	</dialog>
+	<dialog name="CDiscoveryServiceDlg" cookie="BuEdStCoBuBu" caption="Discovery Service">
+		<control caption="Service Address:"/>
+		<control/>
+		<control caption="Discovery Service Type:"/>
+		<control caption="Gnutella Bootstrap|G1-WebCache|G2-WebCache|G1+G2-WebCache|Server.met URL|Blocked"/>
+		<control caption="OK"/>
+		<control caption="취소"/>
+	</dialog>
+	<dialog name="CDownloadMonitorDlg" cookie="StStStStStStStStStStStStBuBuBuBu" caption="다운로드">
+		<control caption="..."/>
+		<control/>
+		<control/>
+		<control/>
+		<control caption="번호 소스의:"/>
+		<control caption="..."/>
+		<control caption="Transfer speed:"/>
+		<control caption="..."/>
+		<control caption="Time remaining:"/>
+		<control caption="..."/>
+		<control caption="볼륨 다운로드:"/>
+		<control caption="..."/>
+		<control caption="Show"/>
+		<control caption="취소"/>
+		<control caption="Close"/>
+		<control caption="자동"/>
+	</dialog>
+	<dialog name="CFileGeneralPage" cookie="EdStStStStStEdEdEdEdEdStEdEdEdEd" caption="General">
+		<control/>
+		<control caption="File Info"/>
+		<control caption="위치:"/>
+		<control caption="종류:"/>
+		<control caption="Modified:"/>
+		<control caption="Size:"/>
+		<control/>
+		<control/>
+		<control/>
+		<control/>
+		<control/>
+		<control caption="Universal Resource Names (URN Hashes)"/>
+		<control/>
+		<control/>
+		<control/>
+		<control/>
+	</dialog>
+	<dialog name="CFileMetadataPage" cookie="CoEd" caption="메타 데이터">
+		<control/>
+		<control/>
+	</dialog>
+	<dialog name="CFileCommentsPage" cookie="StStCoStEdEd" caption="댓글">
+		<control caption="My Rating"/>
+		<control caption="I rate this file:"/>
+		<control caption="(No Rating)|Fake/Corrupt/Misleading|Poor|Average|Good|Very Good|Excellent"/>
+		<control caption="My Review / 댓글"/>
+		<control/>
+		<control/>
+	</dialog>
+<!--
+	<dialog name="CFileSharingPage" cookie="EdStBuBuBuStCo" caption="Sharing">
+		<control/>
+		<control caption="Simple Sharing"/>
+		<control caption="Default sharing (if parent folder is shared)"/>
+		<control caption="Override default sharing for this file:"/>
+		<control caption="Publicly share this file"/>
+		<control caption="Upload Queue Selection Tags"/>
+		<control/>
+	</dialog>
+-->
+	<dialog name="CFileSourcesPage" cookie="StStEdSyBuBuEd" caption="Sources">
+		<control caption="Known Sources"/>
+		<control caption="Add New Source"/>
+		<control/>
+		<control/>
+		<control caption="추가"/>
+		<control caption="제거"/>
+		<control/>
+	</dialog>
+	<dialog name="CFileCopyDlg" cookie="StStStmsmsStBuBu" caption="Copy Files|Move Files">
+		<control caption="You have selected %i files to copy to the following folder:"/>
+		<control caption="You have selected %i files to move to the following folder:"/>
+		<control/>
+		<control/>
+		<control/>
+		<control caption="Ready..."/>
+		<control caption="OK"/>
+		<control caption="취소"/>
+	</dialog>
+	<dialog name="CFolderPropertiesDlg" cookie="StEdStCoBuStBuBu" caption="Album Folder Properties">
+		<control caption="Album Folder Title:"/>
+		<control/>
+		<control caption="Folder Type:"/>
+		<control/>
+		<control caption="All"/>
+		<control caption="Add this information to all files in the folder"/>
+		<control caption="OK"/>
+		<control caption="취소"/>
+	</dialog>
+	<dialog name="CGraphListDlg" cookie="SyBuBuBuBuBuBuBuBuStEdmsStBuEdBuBu" caption="Traffic Graphs">
+		<control/>
+		<control caption="추가..."/>
+		<control caption="Edit..."/>
+		<control caption="제거"/>
+		<control caption="Show:"/>
+		<control caption="Grid Lines"/>
+		<control caption="Vertical Axis"/>
+		<control caption="Legend"/>
+		<control caption="Sampling Frequency:"/>
+		<control caption="Period between samples:"/>
+		<control/>
+		<control/>
+		<control caption="ms"/>
+		<control caption="이름:"/>
+		<control/>
+		<control caption="OK"/>
+		<control caption="취소"/>
+	</dialog>
+	<dialog name="CGraphItemDlg" cookie="BuBuBuCoStEdStEdBuBuStBu" caption="Graph Item Properties">
+		<control caption="OK"/>
+		<control caption="취소"/>
+		<control caption="Source:"/>
+		<control/>
+		<control caption="Multiplier:"/>
+		<control/>
+		<control caption="Units:"/>
+		<control/>
+		<control caption="Display:"/>
+		<control caption="Select Color..."/>
+		<control/>
+		<control caption="Remove"/>
+	</dialog>
+	<dialog name="CSecureRuleDlg" cookie="BuStCoStEdBuStEdEdEdEdStEdEdEdEdBuEdBuBuBuBuEdBuBuStCoStCoEdStEdStEdStBuBu" caption="보안 규칙">
+		<control caption="지배:"/>
+		<control caption="유형:"/>
+		<control caption="네트워크 주소 (IP)|콘텐츠 필터|차단 목록"/>
+		<control caption="논평:"/>
+		<control/>
+		<control caption="네트워크 주소:"/>
+		<control caption="IP Address:"/>
+		<control/>
+		<control/>
+		<control/>
+		<control/>
+		<control caption="Netmask:"/>
+		<control/>
+		<control/>
+		<control/>
+		<control/>
+		<control caption="콘텐츠 필터:"/>
+		<control/>
+		<control caption="일치"/>
+		<control caption="모든 경기"/>
+		<control caption="Reg. Exp."/>
+		<control caption="파일 차단 목록:"/>
+		<control/>
+		<control caption="찾아보기"/>
+		<control caption="옵션:"/>
+		<control caption="행동:"/>
+		<control caption="None|동의|부정하다"/>
+		<control caption="만기:"/>
+		<control caption="Never (Indefinite)|At End of Session|After:"/>
+		<control/>
+		<control caption="d"/>
+		<control/>
+		<control caption="h"/>
+		<control/>
+		<control caption="m"/>
+		<control caption="OK"/>
+		<control caption="취소"/>
+	</dialog>
+	<dialog name="CScheduleTaskDlg" cookie="BuBuBuCoEdmsEdmsStStBuBuBuBuBuSySyBuBuBuBuBuBuBuBuBuEd" caption="일정 작업">
+		<control caption="OK"/>
+		<control caption="취소"/>
+		<control caption="Select Task Type"/>
+		<control/>
+		<control/>
+		<control/>
+		<control/>
+		<control/>
+		<control caption="% of Download limit"/>
+		<control caption="% of Upload limit"/>
+		<control caption="Active Task"/>
+		<control caption="Enable G2 Only"/>
+		<control caption="Set Event Time"/>
+		<control caption="Specified days"/>
+		<control caption="One day only"/>
+		<control/>
+		<control/>
+		<control caption="월요일"/>
+		<control caption="화요일"/>
+		<control caption="수요일"/>
+		<control caption="목요일"/>
+		<control caption="금요일"/>
+		<control caption="토요일"/>
+		<control caption="일요일"/>
+		<control caption="모든"/>
+		<control caption="설명"/>
+		<control/>
+	</dialog>
+	<dialog name="CSchemaColumnsDlg" cookie="CoSyBuBuSt" caption="Select Columns from Schema">
+		<control/>
+		<control/>
+		<control caption="OK"/>
+		<control caption="취소"/>
+		<control caption="Select a schema from the list, then select the fields to display as columns."/>
+	</dialog>
+	<dialog name="CShareManagerDlg" cookie="StSyBuBuBuBu" caption="Shared Folder Manager">
+		<control caption="This is a list of folders in your library. You can add and remove folders using the buttons on the left. When you add a new folder it is initially shared with other users, however you can unshare it from the Envy library if you wish."/>
+		<control/>
+		<control caption="추가..."/>
+		<control caption="제거"/>
+		<control caption="OK"/>
+		<control caption="취소"/>
+	</dialog>
+	<dialog name="CURLCopyDlg" cookie="StStStStStBuBu" caption="Copy URI (P2P Link)">
+		<control caption="You can copy a URI for the selected item in a variety of different formats. Please choose the format you wish to use by clicking one of the URIs below:"/>
+		<control/>
+		<control/>
+		<control/>
+		<control/>
+		<control caption="Include myself as a fixed source in the URL"/>
+		<control caption="취소"/>
+	</dialog>
+	<dialog name="CURLExportDlg" cookie="StEdStCoStCoBuBumsBu" caption="Export URIs (P2P Links)">
+		<control caption="You have selected %lu files to export as Envy-powered URI references. Please select the format for the URIs, and click Save:"/>
+		<control/>
+		<control caption="Insert Token:"/>
+		<control caption="Tiger Root|SHA1|MD5|ED2K (CMD4)|BitTorrent|Filename|Filename (URI)|Base Filename|File Extension|File Size|File Size (bytes)|Folder Path|Local Host|Local Port|Link|Link (URI)"/>
+		<control caption="Select preset:"/>
+		<control caption="Magnet|eDonkey|Magnet HTML|eDonkey HTML"/>
+		<control caption="Copy"/>
+		<control caption="Save..."/>
+		<control/>
+		<control caption="취소"/>
+	</dialog>
+	<dialog name="CURLActionDlg" cookie="StStStStStStEdStEdStBuBuBuBuBu" caption="Envy URI Link Manager">
+		<control caption="You have clicked a Envy-powered URI that links to this content on the network:"/>
+		<control caption="You have clicked a Envy-powered URL that will connect you to this host or server:"/>
+		<control caption="You have clicked a Envy-powered URI that will allow you to browse the shared files available on the following host:"/>
+		<control caption="You have clicked a Envy-powered URI that will add this Discovery Service to your Discovery Services cache."/>
+		<control/>
+		<control/>
+		<control/>
+		<control/>
+		<control caption="Select the action you would like to take:"/>
+		<control caption="Download Now"/>
+		<control caption="Search for File"/>
+		<control caption="취소"/>
+		<control caption="Remember my selection next time"/>
+		<control caption="Open a download monitor window"/>
+	</dialog>
+	<dialog name="CBitprintsDownloadDlg" cookie="StStmsBuSySt" caption="Downloading Metadata...">
+		<control/>
+		<control caption="Envy is attempting to download metadata from Bitprints..."/>
+		<control/>
+		<control caption="취소"/>
+		<control/>
+		<control caption="bitprints.getenvy.com"/>
+	</dialog>
+	<dialog name="CFilePreviewDlg" cookie="StStStmsStBu" caption="Smart Download Preview...">
+		<control/>
+		<control caption="Envy is creating a preview of the download:"/>
+		<control/>
+		<control/>
+		<control caption="(Copying downloaded chunks to a new preview file)"/>
+		<control caption="취소"/>
+	</dialog>
+	<dialog name="CWarningsDlg" cookie="StStStStStStBu" caption="Envy Respects its Users">
+		<control caption="Did you know Envy is 100% free software?"/>
+		<control caption="Envy does not contain any spyware, adware or bundled software;{n}it does not display any advertisements, popups, or other bad behavior.{n}{n}If you ever see such activity be assured that it is not coming from this program."/>
+		<control caption="Envy is proud to be Free and Open-Source Software. A non-profit team of passionate volunteers shares this product with all the freedoms of GPL and Creative Commons Licenses, in the hope that it might be useful."/>
+		<control caption="You must not have paid any money to obtain this program. Envy can be freely downloaded from GetEnvy.com, if you've paid anyone for this demand a full refund immediately."/>
+		<control caption="Envy respects and appreciates its users."/>
+		<control caption="http://getenvy.com"/>
+		<control caption="닫기"/>
+	</dialog>
+	<dialog name="CPromoteDlg" cookie="StStStStStStBu" caption="Spread the Word">
+		<control caption="Help Spread the Word"/>
+		<control caption="Hope you've enjoyed using Envy so far, it strives to be the best true file sharing software available."/>
+		<control caption="Unfortunately, a lot of potential filesharers don't know what they're missing."/>
+		<control caption="If you know someone who might like Envy, whether a new user or still using older software, let them know there is a better alternative. And Thanks."/>
+		<control caption="{This is the last welcome message you will see.}"/>
+		<control caption="http://getenvy.com"/>
+		<control caption="OK"/>
+	</dialog>
+	<dialog name="CExistingFileDlg" cookie="StStStStBuBuBuBuBuStSt" caption="Existing File">
+		<control/>
+		<control/>
+		<control/>
+		<control caption="You already have this file in your file library. What would you like to do?"/>
+		<control caption="Show me the file in my library"/>
+		<control caption="Download the file again"/>
+		<control caption="Don't download this file"/>
+		<control caption="OK"/>
+		<control caption="취소"/>
+		<control caption="You have downloaded and deleted this file before. What would you like to do?"/>
+		<control caption="Warning: Duplicate files detected. Some malicious software may infect your Library. Make sure that you downloaded this file or placed it manually. Otherwise, shutdown Envy and scan your computer with an antivirus program."/>
+	</dialog>
+	<dialog name="CCloseModeDlg" cookie="StBuBuBuBuBuBu" caption="Close Button">
+		<control caption="This is the first time you have clicked Envy's close button. Please choose what action you would like to take:"/>
+		<control caption="Minimize to taskbar"/>
+		<control caption="Hide to tray area"/>
+		<control caption="Hide to tray and shut down after downloads"/>
+		<control caption="Shut down Envy immediately"/>
+		<control caption="OK"/>
+		<control caption="취소"/>
+	</dialog>
+	<dialog name="CUpdateServersDlg" cookie="StEdmsBuBu" caption="Download Server List File">
+		<control caption="You can download a file from the web to refresh your local list of servers.{n}Such as eDonkey server.met, DC++ hublist.xml.bz2, etc."/>
+		<control/>
+		<control/>
+		<control caption="OK"/>
+		<control caption="취소"/>
+	</dialog>
+	<dialog name="CDeleteFileDlg" cookie="StStBuBuBuStBuStStStStCoCoEd" caption="Delete File">
+		<control caption="Confirm deletion of this file:"/>
+		<control/>
+		<control caption="Delete"/>
+		<control caption="Delete All"/>
+		<control caption="취소"/>
+		<control/>
+		<control caption="Create Ghost File"/>
+		<control caption="Envy can remember files to warn you and others in the future. A new 'ghost file' will save your comments and rating with file info."/>
+		<control caption="File rating:"/>
+		<control caption="Reason for deleting:"/>
+		<control caption="!"/>
+		<control caption="(No Rating)|Fake/Corrupt/Misleading|Poor|Average|Good|Very Good|Excellent"/>
+		<control caption="Just deleting, keep any current comments|File is very low quality or outdated|File is named incorrectly or misleading|File is fake, infected, corrupt, or unusable|File is restricted copyright material|File needs custom comments below..."/>
+		<control/>
+		<control/>
+	</dialog>
+	<dialog name="CCollectionExportDlg" cookie="StSyBuStStStStStEdBuBuBu" caption="Collection Export">
+		<control caption="This feature is used to export the contents of a folder or playlist as a rich collection file. Please select a template and press Next to continue.|Customize your collection by entering data below."/>
+		<control/>
+		<control caption="Template Information:"/>
+		<control caption="이름:"/>
+		<control caption="..."/>
+		<control caption="Author:"/>
+		<control caption="..."/>
+		<control caption="Description:"/>
+		<control/>
+		<control caption="Delete|Back"/>
+		<control caption="Next|Export..."/>
+		<control caption="취소"/>
+	</dialog>
+	<dialog name="CTorrentSeedDlg" cookie="StBuBuBuStms" caption="Open Torrent File">
+		<control caption="You have opened a BitTorrent torrent file. Would you like to download its contents, or re-seed it?"/>
+		<control caption="다운로드"/>
+		<control caption="Seed"/>
+		<control caption="취소"/>
+		<control caption="To share complete files using BitTorrent they must first be seeded. Once this process is complete the Torrent will appear as a new item in your download list."/>
+		<control/>
+	</dialog>
+	<dialog name="CTorrentFilesPage" cookie="StSy" caption="파일">
+		<control/>
+		<control/>
+	</dialog>
+	<dialog name="CTorrentTrackersPage" cookie="EdEdEdSyStBuStStStCoBuBuBu" caption="추적자">
+		<control/>
+		<control/>
+		<control/>
+		<control/>
+		<control caption="Tracker:"/>
+		<control caption="Current Tracker:"/>
+		<control caption="Seeds (Complete):"/>
+		<control caption="Peers (Incomplete):"/>
+		<control caption="Tracker Mode:"/>
+		<control caption="Disabled|Custom|Single Tracker|Multi-tracker|Multi-tracker (locked)"/>
+		<control caption="Refresh"/>
+		<control caption="추가하기"/>
+		<control caption="제거"/>
+	</dialog>
+	<dialog name="CTorrentGeneralPage" cookie="EdEdEdEdEdCoEdBuStStStStBuStStSt" caption="Torrent">
+		<control/>
+		<control/>
+		<control/>
+		<control/>
+		<control/>
+		<control caption=" As needed| When ratio over 100%| Only when requested| Never"/>
+		<control/>
+		<control caption="Torrent Information:"/>
+		<control caption="이름:"/>
+		<control caption="Created:"/>
+		<control caption="By:"/>
+		<control caption="댓글:"/>
+		<control caption="Transfers:"/>
+		<control caption="Start new download transfers:"/>
+		<control caption="Total Uploaded:"/>
+		<control caption="Notes:"/>
+	</dialog>
+	<dialog name="CDownloadEditPage" cookie="StBuStStStStBuStEdEdEdSyBuEdBuEdBuEdBuEdBuEd" caption="일반">
+		<control caption="주의: This dialog provides advanced download editing features for power users, that may cause corruption when used incorrectly."/>
+		<control caption="세부:"/>
+		<control caption="이름:"/>
+		<control caption="위치:"/>
+		<control caption="바이트 크기:"/>
+		<control caption="날짜:"/>
+		<control caption="URN Hashes:"/>
+		<control caption="신뢰할 수있는?"/>
+		<control/>
+		<control/>
+		<control/>
+		<control/>
+		<control caption="&#160;SHA1:"/>
+		<control/>
+		<control caption="&#160;ED2K:"/>
+		<control/>
+		<control caption="&#160;MD5:"/>
+		<control/>
+		<control caption="&#160;Tiger-Root:"/>
+		<control/>
+		<control caption="&#160;BitTorrent:"/>
+		<control/>
+	</dialog>
+	<dialog name="CDownloadActionsPage" cookie="StStStStStStEdEdBuBuStStBu" caption="행위">
+		<control caption="주의: This dialog provides advanced download editing features for power users, that may cause corruption when used incorrectly."/>
+		<control caption="Forget all known sources"/>
+		<control caption="Forget current verification status and reverify"/>
+		<control caption="Assume file is 100% complete and reverify"/>
+		<control caption="Merge with local file and verify"/>
+		<control caption="취소 Cancel download but save incomplete files"/>
+		<control/>
+		<control/>
+		<control caption="행위:"/>
+		<control caption="Data Eraser:"/>
+		<control caption="Byte range:"/>
+		<control caption="to"/>
+		<control caption="Erase"/>
+	</dialog>
+	<dialog name="CDownloadGroupDlg" cookie="BuEdBuEdBuBuBuCoBuBuBuCoStBuBu" caption="Download Group Properties">
+		<control caption="_Group Name:"/>
+		<control/>
+		<control caption="_Completed File Folder:"/>
+		<control/>
+		<control/>
+		<control/>
+		<control caption="_Auto-Filters:"/>
+		<control/>
+		<control caption="추가하기"/>
+		<control caption="제거"/>
+		<control caption="_Types of Files:"/>
+		<control/>
+		<control caption="*Add any download type later."/>
+		<control caption="OK"/>
+		<control caption="취소"/>
+	</dialog>
+	<dialog name="CMediaVisDlg" cookie="BuSyCoBuBuBu" caption="Select Visualisation">
+		<control caption="Select an audio visualisation from the list:"/>
+		<control/>
+		<control caption="Footer Display|Full Size Display|Large Display|Medium Display|Small Display"/>
+		<control caption="Setup..."/>
+		<control caption="OK"/>
+		<control caption="취소"/>
+	</dialog>
+	<dialog name="CUpgradeDlg" cookie="StStBuBuBu" caption="New Version Available">
+		<control caption="A new version of Envy is now available. Would you like to upgrade?"/>
+		<control caption="To update now, the upgrade installer will simply be added to your download queue."/>
+		<control caption="Don't check for new versions"/>
+		<control caption="_Download"/>
+		<control caption="취소"/>
+	</dialog>
+	<dialog name="CDecodeMetadataDlg" cookie="StCoBuBuBuStStBuBu" caption="Metadata Localisation">
+		<control caption="Please select the method of re-encoding:"/>
+		<control caption="Arabic|Baltic|Central European|Chinese Simplified|Chinese Traditional|Cyrillic|Greek|Hebrew|Japanese|Korean|Thai|Turkish|Vietnamese"/>
+		<control caption="Preview:"/>
+		<control/>
+		<control/>
+		<control/>
+		<control/>
+		<control caption="OK"/>
+		<control caption="취소"/>
+	</dialog>
+	<dialog name="CSelectDialog" cookie="StCoBuBu" caption="Selection">
+		<control caption="Select File:"/>
+		<control/>
+		<control caption="OK"/>
+		<control caption="취소"/>
+		<control/>
+	</dialog>
+	<dialog name="CIrcInputDlg" cookie="EdBuBuSt" caption="Channel Name|Reason Why">
+		<control/>
+		<control caption="OK"/>
+		<control caption="취소"/>
+		<control caption="Add a channel name:|Enter kick/ban reason:"/>
+	</dialog>
+</dialogs>
+<!-- Remote Accesss Web Interface (Missing) -->
+<remote>
+	<tag find="text_metatitle" replace="Envy Web Interface"/>
+	<tag find="text_logout" replace="로그 아웃"/>
+	<tag find="text_tabhome" replace="홈"/>
+	<tag find="text_tabdownloads" replace="다운로드"/>
+	<tag find="text_tabuploads" replace="업로드"/>
+	<tag find="text_tabnetworks" replace="네트워크"/>
+	<tag find="text_tabsearch" replace="검색"/>
+	<tag find="text_" replace=""/>
+</remote>
+<!-- Columns Definitions -->
+<listcolumns>
+	<list name="CDownloadCtrl">
+		<column from="Downloaded File" to="다운로드한 파일을"/>
+		<column from="Size" to="크기"/>
+		<column from="Progress" to="진행"/>
+		<column from="Transfer" to="다운로드됨"/>
+		<column from="Percent" to="완료"/>
+		<column from="Speed" to="속도"/>
+		<column from="Status" to="상태"/>
+		<column from="Client" to="클라이언트"/>
+		<column from="Country" to="국가"/>
+	</list>
+	<list name="CUploadCtrl">
+		<column from="Uploaded File" to="을 올린 파일"/>
+		<column from="Size" to="크기"/>
+		<column from="Progress" to="진행"/>
+		<column from="Transfer" to="다운로드됨"/>
+		<column from="Speed" to="속도"/>
+		<column from="Rating" to="평가"/>
+		<column from="Remote User" to="원격 사용자"/>
+		<column from="Client" to="클라이언트"/>
+		<column from="Country" to="국가"/>
+	</list>
+	<list name="CLibraryWnd">
+		<column from="File" to="파일"/>
+		<column from="Type" to="확장"/>
+		<column from="Size" to="크기"/>
+		<column from="Modified" to="수정됨"/>
+		<column from="Folder" to="폴더"/>
+		<column from="Shared" to="공유"/>
+		<column from="Uploads" to="업로드"/>
+		<column from="Hits" to="조회수"/>
+	</list>
+	<list name="CNeighboursWnd">
+		<column from="Address" to="주소"/>
+		<column from="Port" to="포트"/>
+		<column from="Time" to="타임"/>
+		<column from="Traffic" to="대역폭"/>
+		<column from="Total" to="총"/>
+		<column from="Packets" to="패킷"/>
+		<column from="Flow" to="흐름"/>
+		<column from="Leaves" to="남겼더군요"/>
+		<column from="Mode" to="모드"/>
+		<column from="Client" to="클라이언트"/>
+		<column from="Name" to="이름"/>
+		<column from="Country" to="국가"/>
+	</list>
+	<list name="CHostCacheWnd">
+		<column from="Address" to="주소"/>
+		<column from="Port" to="포트"/>
+		<column from="Last Seen" to="을 봤어요 마지막"/>
+		<column from="Client" to="클라이언트"/>
+		<column from="Name" to="이름"/>
+		<column from="Description" to="설명"/>
+		<column from="Failures" to="실패"/>
+		<column from="CurUsers" to="사용자"/>
+		<column from="MaxUsers" to="최대 사용자"/>
+		<column from="Country" to="국가"/>
+	</list>
+	<list name="CDiscoveryWnd">
+		<column from="Address" to="주소"/>
+		<column from="Type" to="유형"/>
+		<column from="Last Access" to="마지막 액세스"/>
+		<column from="Hosts" to="호스트"/>
+		<column from="Accesses" to="접근"/>
+		<column from="Updates" to="업데이트"/>
+		<column from="Failures" to="실패"/>
+	</list>
+	<list name="CPacketWnd">
+		<column from="Time" to="타임"/>
+		<column from="Address" to="주소"/>
+		<column from="Protocol" to="프로토콜"/>
+		<column from="Type" to="유형"/>
+		<column from="TTL/Hops" to=""/>
+		<column from="GUID" to=""/>
+		<column from="Hex" to=""/>
+		<column from="ASCII" to=""/>
+	</list>
+	<list name="CSearchMonitorWnd">
+		<column from="Search" to="검색"/>
+		<column from="URN" to=""/>
+		<column from="Schema" to=""/>
+	</list>
+	<list name="CMatchCtrl">
+		<column from="File" to="파일"/>
+		<column from="Type" to="확장"/>
+		<column from="Size" to="크기"/>
+		<column from="Host/Count" to="호스트/백작"/>
+		<column from="Speed" to="속도"/>
+		<column from="Rating" to="평가"/>
+		<column from="Status" to="상태"/>
+		<column from="Client" to="클라이언트"/>
+		<column from="Country" to="국가"/>
+		<column from="Time" to="타임"/>
+	</list>
+	<list name="CSecurityWnd">
+		<column from="Address / Content" to="주소/콘텐츠"/>
+		<column from="Hits" to="조회수"/>
+		<column from="#" to="우선순"/>
+		<column from="Action" to="액션"/>
+		<column from="Expires" to="만료"/>
+		<column from="Match" to=""/>
+		<column from="Comment" to="코멘트"/>
+	</list>
+	<list name="CSchedulerWnd">
+		<column from="Task" to="액션"/>
+		<column from="Date" to="날짜"/>
+		<column from="Time" to="타임"/>
+		<column from="Status" to="상태"/>
+		<column from="Activity" to="활동적인"/>
+		<column from="Comment" to="코멘트"/>
+	</list>
+	<list name="CUploadQueueList">
+		<column from="Name" to="이름"/>
+		<column from="Criteria" to="기준"/>
+		<column from="Minimum" to="대역폭"/>
+		<column from="Transfers" to="전학"/>
+		<column from="Priority" to="주문"/>
+	</list>
+	<list name="CAdvancedSettingsList">
+		<column from="Setting" to="설정"/>
+		<column from="Value" to="값"/>
+	</list>
+	<list name="CFavoritesProfileList">
+		<column from="Name" to="이름"/>
+		<column from="URL" to=""/>
+	</list>
+	<list name="CFileSourcesPageList">
+		<column from="URL" to=""/>
+		<column from="Expires" to="만료"/>
+	</list>
+	<list name="CTorrentFileList">
+		<column from="Filename" to="이름"/>
+		<column from="Size" to="크기"/>
+		<column from="Status" to="상태"/>
+	</list>
+	<list name="CTorrentTrackerList">
+		<column from="Tracker" to="트래커"/>
+		<column from="Status" to="상태"/>
+		<column from="Type" to="유형"/>
+	</list>
+	<list name="CReviewList">
+		<column from="User" to="사용자"/>
+		<column from="Rating" to="평가"/>
+		<column from="Comments" to="댓글"/>
+		<column from="Order" to="주문"/>
+	</list>
+</listcolumns>
+</skin>

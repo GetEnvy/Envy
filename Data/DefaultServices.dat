@@ -1,0 +1,87 @@
+M http://cache.getenvy.com/cachechu/
+M http://cache.getenvy.com/skulls/
+M http://webcache.peerproject.org/
+M http://cache.w3-hidden.cc/
+M http://gwctest.zapto.org:1337/
+M http://tenafly5k.com/gwc/skulls.php
+M http://gweb2.4octets.co.uk/gwc.php
+# http://fascination77.free.fr/cachechu/
+
+2 http://cache.trillinux.org/g2/bazooka.php
+2 http://dkac.trillinux.org/dkac/dkac.php
+2 http://cache2.bazookanetworks.com/g2/bazooka.php
+2 http://cache.peernix.com/gwc.php
+2 http://cache.ce3c.be/
+2 http://cache.ibel.de/
+# http://cache.pongwar.com/
+# http://cache2.leite.us/cachechu
+# http://cache3.leite.us/
+# http://cache5.leite.us/
+# http://htmlhell.com/
+# http://midian.jayl.de/g2/bazooka.php
+# http://gwc2.wodi.org/skulls.php
+# http://silvers.zyns.com/gwc/dkac.php
+# http://dogma.cloud.bishopston.net:33559/
+# http://karma.cloud.bishopston.net:33559/
+# http://g2.uk.dyslexicfish.net:33558/
+2 http://uk.gnutella.dyslexicfish.net:3559/
+2 http://useast.gnutella.dyslexicfish.net:3559/
+2 http://uswest.gnutella.dyslexicfish.net:3559/
+
+1 http://useast.gnutella.dyslexicfish.net:3558/
+1 http://uswest.gnutella.dyslexicfish.net:3558/
+1 http://uk.gnutella.dyslexicfish.net:3558/
+# http://g1.uswest.dyslexicfish.net:33558/
+# http://g1.uk.dyslexicfish.net:33558/
+# http://gwc.ak-electron.eu:12050/
+# http://gwc.dietpac.com:8080/
+# http://gwc.glucolene.com:8080/
+# http://leet.gtkg.org:8080/gwc/
+# http://ein.gtkg.net:8080/gwc/
+# http://zwei.gtkg.net:8080/gwc/
+# http://drei.gtkg.net:8080/gwc/
+# http://sissy.gtkg.org:8080/gwc/
+
+U uhc:uhc.gtk-gnutella.nl:15749
+# uhc:yin.cloud.bishopston.net:33558
+# uhc:yang.cloud.bishopston.net:33558
+# uhc:uhc.udp-host-cache.com:9999
+# uhc:uhc2.limewire.com:20181
+# uhc:leet.gtkg.org:1337
+# uhc:ein.gtkg.net:60666
+# uhc:drei.gtkg.net:62666
+# uhc:sissy.gtkg.org:51557
+
+D http://peerates.net/servers.php
+D http://www.gruk.org/server.met
+D http://upd.emule-security.org/server.met
+D http://www.emule-server.de/server.met/max/server.met
+
+H http://dchublist.com/hublist.xml.bz2
+H http://dchublist.ru/hublist.xml.bz2
+H http://www.hublista.hu/hublist.xml.bz2
+# http://publichublist.com/?do=hublist.xml.bz2
+# http://openhublist.org
+
+X http://gwebcache.spearforensics.com/
+X http://www.myfoxy.net/gwc/cgi-bin/fc
+X http://gwc.gofoxy.net:2108/gwc/cgi-bin/fc
+X http://gweb.dwbo.nl/
+
+#
+# Last updated Oct 2015
+#
+# A letter and space must precede each link to indicate the type of service:
+# X = Banned,  M = Multinetwork gwebcache,
+# 2 = Gnutella2 gwebcache,  1 = Gnutella gwebcache (obsolete),
+# U = BootStrap (uhc, ukhl, gnutella1 host, gnutella2 host),
+# D = eDonkey server.met file,  H = DC++ Hublist.xml.bz2 file
+#
+# Keep at least four gwebcache links and one link to a .met/hublist file
+# or they'll keep getting added every time they're removed
+#
+# Delete this file and Envy will use internal defaults.
+#
+# Live Status may be at http://gwebcaches.pongwar.com
+# Test: http://webcache.getenvy.com/?get=1&net=gnutella2&client=TEST1.0
+# Latest version at http://sourceforge.net/p/getenvy/code/HEAD/tree/trunk/Data/DefaultServices.dat

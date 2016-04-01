@@ -1,0 +1,26 @@
+//
+// 7ZipBuilder.idl
+//
+// This file will be processed by the MIDL tool to produce
+// the type library (7ZipBuilder.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+import "Envy.idl";
+
+[
+	uuid(2975FA55-CDD5-41AE-8120-EB82E1BF9826),
+	version(1.0),
+	helpstring("7ZipBuilder 1.0 Type Library")
+]
+library SevenZipBuilderLib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(C2D1E91C-5C0B-4F01-BA5A-447D1F28A53B)
+	]
+	coclass SevenZipBuilder
+	{
+		[default] interface ILibraryBuilderPlugin;
+	};
+};

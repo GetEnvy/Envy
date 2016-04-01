@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<schemaDescriptor location="http://schemas.getenvy.com/LibraryRoot.xsd" xmlns="http://schemas.getenvy.com/SchemaDescriptor.xsd">
+
+	<object type="folder" availability="system"/>
+	<images>
+		<icon path="LibraryRoot.ico"/>
+	</images>
+	<titles>
+		<title language="en">General: the Envy Library</title>
+		<title language="af">Algemeen: Envy Biblioteek</title>
+		<title language="ca">General: La col·lecció</title>
+		<title language="cz">Obecné: Knihovna</title>
+		<title language="de">Allgemein: Envy Bibliothek</title>
+		<title language="ee">Üldine: Envy Raamatukogu</title>
+		<title language="es">General: Librería Envy de Archivos</title>
+		<title language="fr">Général: Bibliothèque Envy</title>
+		<title language="gr">Γενικά: Βιβλιοθήκη</title>
+		<title language="he">כללי: ספריית שרזה שלי</title>
+		<title language="hr">Općenito: Kolekcija</title>
+		<title language="hu">Általános: Envy könyvtár</title>
+		<title language="it">Generale: Libreria di Envy</title>
+		<title language="lt">Bendra: Mano „Envy“ kolekcija</title>
+		<title language="nl">Algemeen: Envy Bibliotheek</title>
+		<title language="no">Generelt: Bibliotek</title>
+		<title language="pl">Ogólny: Biblioteka</title>
+		<title language="pt">Geral: Biblioteca do Envy</title>
+		<title language="ru">Основное: хранилище</title>
+		<title language="sl">Splošno: Envy knjižnica</title>
+		<title language="sq">Përgjithësi: Libraria Juaj në Envy</title>
+		<title language="sr">Opšte: Kolekcija</title>
+		<title language="sv">Generellt: Envybibliotek</title>
+		<title language="tr">Genel: Envy Kütüphanem</title>
+		<title language="ja">一般: Envy ライブラリ</title>
+		<title language="zhs">常规: 我的 Envy 库</title>
+		<title language="zht">一般: 我的 Envy 收藏</title>
+	</titles>
+	<headerContent version="1.0">
+		<title language="en">Welcome to your Library.</title>
+		<title language="af">Welkom by Jou Biblioteek.</title>
+		<title language="ca">Benvingut/da a la meva col·lecció.</title>
+		<title language="cz">Vítejte v knihovně.</title>
+		<title language="de">Willkommen in ihrer Bibliothek.</title>
+		<title language="ee">Teretulemast minu Raamatukokku.</title>
+		<title language="es">Bienvenido a la Librería.</title>
+		<title language="fr">Bienvenue dans votre bibliothèque.</title>
+		<title language="gr">Καλώς ήρθατε στη Βιβλιοθήκη.</title>
+		<title language="he">ברוך הבא לספרייה שלי.</title>
+		<title language="hr">Dobrodošli U Vašu Kolekciju.</title>
+		<title language="hu">Üdvözöllek a Könyvtárban.</title>
+		<title language="it">Benvenuto nella tua libreria.</title>
+		<title language="lt">Sveiki apsilankę savo kolekcijoje.</title>
+		<title language="nl">Welkom bij Mijn Bibliotheek.</title>
+		<title language="no">Velkommen til biblioteket.</title>
+		<title language="pl">Zapraszamy do Biblioteki.</title>
+		<title language="pt">Bem-vindo a sua Biblioteca.</title>
+		<title language="ru">Добро пожаловать в Ваше хранилище.</title>
+		<title language="sl">Dobrodošli v vaši knjižnici.</title>
+		<title language="sq">Mirë se erdhët në Librarinë Tuaj.</title>
+		<title language="sr">Dobrodošli U Vašu Kolekciju.</title>
+		<title language="sv">Välkommen till ditt bibliotek.</title>
+		<title language="tr">Kütüphanenize Hoşgeldiniz.</title>
+		<title language="ko">도서관에 오신 것을 환영합니다.</title>
+		<title language="ja">Envy ライブラリへようこそ.</title>
+		<title language="zhs">欢迎来到您的库.</title>
+		<title language="zht">歡迎來到您的收藏.</title>
+		<subtitle language="en">You have {totalFiles} files at {totalVolume} available.</subtitle>
+		<subtitle language="af">Jy het {totalFiles} lêers met 'n totaal van {totalVolume} in jou biblioteek.</subtitle>
+		<subtitle language="ca">Tens {totalFiles} arxius a la teva col·lecció i {totalVolume} d'espai.</subtitle>
+		<subtitle language="cz">V knihovně máte celkem {totalFiles} souborů o celkové velikosti {totalVolume}.</subtitle>
+		<subtitle language="de">Sie haben {totalFiles} Dateien in ihrer Bibliothek, die {totalVolume} belegen.</subtitle>
+		<subtitle language="ee">Sul on {totalFiles} faili, kokku {totalVolume} sinu raamatukogus.</subtitle>
+		<subtitle language="es">Tienes {totalFiles} archivos en tu librería y {totalVolume} de espacio.</subtitle>
+		<subtitle language="fr">Vous avez {totalFiles} fichiers totalisant {totalVolume} dans votre bibliothèque.</subtitle>
+		<subtitle language="gr">Η Βιβλιοθήκη σας περιέχει {totalFiles} αρχεία συνολικού όγκου {totalVolume}.</subtitle>
+		<subtitle language="he">יש לך בספרייה ‎{totalVolume} בתוך {totalFiles} קבצים</subtitle>
+		<subtitle language="hr">Imate {totalFiles} datoteka Tj {totalVolume} koje djelite sa svijetom.</subtitle>
+		<subtitle language="hu">Jelenleg {totoalFiles} fájl van a könyvtárban. Méret: {totalVolume}.</subtitle>
+		<subtitle language="it">Tu hai {totalFiles} file che ammontano a {totalVolume} nella tua libreria.</subtitle>
+		<subtitle language="lt">Jūs turite {totalFiles} failų, užimančių Jūsų kolekcijoje {totalVolume}.</subtitle>
+		<subtitle language="nl">Je hebt {totalFiles} bestanden met een totaal van {totalVolume} in je bibliotheek.</subtitle>
+		<subtitle language="no">Du har {totalFiles} filer totalt {totalVolume} i mine filer.</subtitle>
+		<subtitle language="pt">Você tem {totalFiles} arquivos totalizando {totalVolume} na sua biblioteca.</subtitle>
+		<subtitle language="ru">У Вас файлов {totalFiles} занимающих {totalVolume} в Вашем хранилище.</subtitle>
+		<subtitle language="sl">V vaši knjižnici imate {totalFiles} datotek, v skupni velikosti {totalVolume}.</subtitle>
+		<subtitle language="sq">Në librari gjenden {totalFiles} skeda, me përmasë {totalVolume}.</subtitle>
+		<subtitle language="sr">Imate {totalFiles} datoteka Tj {totalVolume} koje delite sa svetom.</subtitle>
+		<subtitle language="sv">Du har {totalFiles} filer som upptar {totalVolume} i ditt bibliotek.</subtitle>
+		<subtitle language="tr">Kütüphanenizde {totalFiles} toplanmış {totalVolume} dosya vardır.</subtitle>
+		<subtitle language="ja">あなたのライブラリ内には {totalFiles} ファイルあり、総容量は {totalVolume} です</subtitle>
+		<subtitle language="zhs">您总计有 {totalFiles} 个文件，共计 {totalVolume} 位于您的库中。</subtitle>
+		<subtitle language="zht">您有 {totalFiles} 個檔案，總計大小 {totalVolume} 在您的收藏.</subtitle>
+	</headerContent>
+	<members>
+		<member name="title" search="generic">
+			<display defaultColumn="true"/>
+			<title language="en">Title</title>
+			<title language="af">Titel</title>
+			<title language="ca">Títol</title>
+			<title language="cz">Název</title>
+			<title language="de">Titel</title>
+			<title language="ee">Pealkiri</title>
+			<title language="es">Título</title>
+			<title language="fr">Titre</title>
+			<title language="gr">Τίτλος</title>
+			<title language="he">כותרת</title>
+			<title language="hr">Naslov</title>
+			<title language="hu">Cím</title>
+			<title language="it">Titolo</title>
+			<title language="lt">Pavadinimas</title>
+			<title language="nl">Titel</title>
+			<title language="no">Tittel</title>
+			<title language="pl">Tytuł</title>
+			<title language="pt">Título</title>
+			<title language="ru">Название</title>
+			<title language="sl">Naslov</title>
+			<title language="sq">Titulli</title>
+			<title language="sr">Naslov</title>
+			<title language="sv">Titel</title>
+			<title language="tr">Başlık</title>
+			<title language="ja">タイトル</title>
+			<title language="ko">제목</title>
+			<title language="zhs">标题</title>
+			<title language="zht">標題</title>
+		</member>
+		<member name="owner" search="indexed">
+			<title language="en">Owner</title>
+			<title language="af">Eienaar</title>
+			<title language="ca">Propietari</title>
+			<title language="cz">Majitel</title>
+			<title language="de">Eigentümer</title>
+			<title language="ee">Omanik</title>
+			<title language="es">Dueño</title>
+			<title language="fr">Propriétaire</title>
+			<title language="gr">Ιδιοκτήτης</title>
+			<title language="he">בעל הזכויות</title>
+			<title language="hr">Vlasnik</title>
+			<title language="hu">Tulajdonos</title>
+			<title language="it">Proprietario</title>
+			<title language="lt">Savininkas</title>
+			<title language="nl">Eigenaar</title>
+			<title language="no">Eier</title>
+			<title language="pt">Proprietário</title>
+			<title language="ru">Владелец</title>
+			<title language="sl">Lastnik</title>
+			<title language="sq">Zotëruesi</title>
+			<title language="sr">Vlasnik</title>
+			<title language="sv">Ägare</title>
+			<title language="tr">Sahibi</title>
+			<title language="ja">所有者</title>
+			<title language="zhs">所有人</title>
+			<title language="zht">所有人</title>
+		</member>
+		<member name="comments">
+			<title language="en">Comments</title>
+			<title language="af">Kommentaar</title>
+			<title language="ca">Comentaris</title>
+			<title language="cz">Komentáře</title>
+			<title language="de">Kommentar</title>
+			<title language="ee">Arvamused</title>
+			<title language="es">Comentarios</title>
+			<title language="fr">Commentaires</title>
+			<title language="gr">Σχόλια</title>
+			<title language="he">הערות</title>
+			<title language="hr">Komentari</title>
+			<title language="hu">Megjegyzés</title>
+			<title language="it">Commenti</title>
+			<title language="lt">Komentarai</title>
+			<title language="nl">Opmerkingen</title>
+			<title language="no">Kommentar</title>
+			<title language="pt">Comentários</title>
+			<title language="ru">Коментарии</title>
+			<title language="sl">Komentarji</title>
+			<title language="sq">Komente</title>
+			<title language="sr">Komentari</title>
+			<title language="sv">Kommentarer</title>
+			<title language="tr">Yorumlar</title>
+			<title language="ja">コメント</title>
+			<title language="zhs">注释</title>
+			<title language="zht">注釋</title>
+		</member>
+	</members>
+
+</schemaDescriptor>

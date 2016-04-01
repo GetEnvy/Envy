@@ -1,0 +1,47 @@
+HKCR
+{
+	ForceRemove ZIPBuilder.ZIPBuilder.1 = s 'ZIP Builder'
+	{
+		CLSID = s '{C2AC3234-100D-4CC4-BCBB-ACF5F18D4854}'
+	}
+	ForceRemove ZIPBuilder.ZIPBuilder = s 'ZIP Builder'
+	{
+		CLSID = s '{C2AC3234-100D-4CC4-BCBB-ACF5F18D4854}'
+		CurVer = s 'ZIPBuilder.ZIPBuilder.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {C2AC3234-100D-4CC4-BCBB-ACF5F18D4854} = s 'ZIP Builder'
+		{
+			ProgID = s 'ZIPBuilder.ZIPBuilder.1'
+			VersionIndependentProgID = s 'ZIPBuilder.ZIPBuilder'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Both'
+			}
+			val AppID = s '%APPID%'
+			'TypeLib' = s '{D65FD676-83A0-40F7-9BF8-867AFE337FE1}'
+		}
+	}
+}
+HKCU
+{
+	NoRemove Software
+	{
+		NoRemove Envy
+		{
+			NoRemove Envy
+			{
+				NoRemove Plugins
+				{
+					NoRemove LibraryBuilder
+					{
+						val '.zip' = s '{C2AC3234-100D-4CC4-BCBB-ACF5F18D4854}'
+						val '.cbz' = s '{C2AC3234-100D-4CC4-BCBB-ACF5F18D4854}'
+						val '.jar' = s '{C2AC3234-100D-4CC4-BCBB-ACF5F18D4854}'
+					}
+				}
+			}
+		}
+	}
+}

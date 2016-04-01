@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<skin xmlns="http://schemas.getenvy.com/Skin.xsd" version="1.0">
+<manifest
+	name="Shareaza OS Remote"
+	author="RocketX"
+	modified="Envy"
+	link="http://shareaza.sourceforge.net/"
+	Description="Legacy Media Remote skin companion for ShareazaOS"
+	version="1.5"
+	type="Skin"
+	/>
+
+<windowSkins>
+ <!-- MEDIA REMOTE -->
+ <windowSkin>
+  <image path="RemoteWnd.png"/>
+  <target window="CRemoteWnd"/>
+  <region>
+	<shape type="rectangle" rect="0,0,271,119"/>
+	<shape type="rectangle" combine="diff"		rect="0,0,249,3"/>
+	<shape type="rectangle" combine="diff"		rect="0,5,1,2"/>
+	<shape type="rectangle" combine="diff"		rect="2,4,1,1"/>
+	<shape type="rectangle" combine="diff"		rect="260,0,270,3"/>
+	<shape type="rectangle" combine="diff"		rect="269,0,270,4"/>
+	<shape type="rectangle" combine="diff"		rect="270,0,271,5"/>
+	<shape type="rectangle" combine="diff"		rect="249,0,260,1"/>
+	<shape type="rectangle" combine="diff"		rect="249,1,251,2"/>
+	<shape type="rectangle" combine="diff"		rect="258,1,260,2"/>
+	<shape type="rectangle" combine="diff"		rect="0,117,1,119"/>
+	<shape type="rectangle" combine="diff"		rect="1, 118,2,119"/>
+	<shape type="rectangle" combine="diff"		rect="270,117,271,118"/>
+	<shape type="rectangle" combine="diff"		rect="269,118,271,119"/>
+  </region>
+  <anchors>
+	<anchor name="StatusText"			rect="24,33,236,17"/>
+	<anchor name="History"				rect="12,14,112,13"/>
+	<anchor name="MediaSeekTrack"			rect="10,99,162,11"/>
+	<anchor name="MediaVolTrack"			rect="190,99,72,11"/>
+	<anchor name="ScalerTrack"			rect="12,27,112,3"/>
+	<anchor name="MediaStatePlaying"		rect="11,35,9,11"/>
+	<anchor name="MediaStatePaused"			rect="11,35,9,11"/>
+	<anchor name="MediaStateStopped"		rect="11,35,9,11"/>
+  </anchors>
+  <parts>
+	<part name="Background"				rect="0,0,271,119"/>
+	<part name="HistoryTx1"				rect="0,142,112,13"/>
+	<part name="HistoryRx1"				rect="0,155,112,13"/>
+	<part name="MediaSeekTab"			rect="271,18,19,11"/>
+	<part name="MediaSeekBar"			rect="10,119,162,11"/>
+	<part name="MediaVolTab"			rect="271,18,19,11"/>
+	<part name="MediaVolBar"			rect="190,119,72,11"/>
+	<part name="ScalerTab"				rect="318,23,5,3"/>
+	<part name="MediaStatePlaying"			rect="430,16,9,11"/>
+	<part name="MediaStatePaused"			rect="439,16,9,11"/>
+	<part name="MediaStateStopped"			rect="448,16,9,11"/>
+  </parts>
+  <anchors>
+	<anchor name="_ID_MEDIA_ADD"			rect="208,60,32,35"/>
+	<anchor name="_ID_MEDIA_ADD_FOLDER"		rect="240,67,23,23" />
+	<anchor name="_ID_MEDIA_PLAY"			rect="43,59,35,35"/>
+	<anchor name="_ID_MEDIA_PAUSE"			rect="43,59,35,35"/>
+	<anchor name="_ID_MEDIA_STOP"			rect="86,65,25,25"/>
+	<anchor name="_ID_MEDIA_PREVIOUS"		rect="10,65,25,25"/>
+	<anchor name="_ID_MEDIA_NEXT"			rect="119,65,25,25"/>
+	<anchor name="_ID_MEDIA_MUTE"			rect="131,18,22,7"/>
+	<anchor name="_ID_MONITOR_CLOSE"		rect="247,2,15,15"/>
+	<anchor name="_ID_MEDIA_RANDOM"			rect="160,18,38,7"/>
+	<anchor name="_ID_MEDIA_REPEAT" 		rect="205,18,33,7"/>
+  </anchors>
+  <parts>
+	<part name="_ID_MEDIA_ADD.Hover"		rect="369,126,32,35"/>
+	<part name="_ID_MEDIA_ADD.Down"			rect="430,126,33,35"/>
+	<part name="_ID_MEDIA_ADD_FOLDER.Hover"		rect="401,133,23,23"/>
+	<part name="_ID_MEDIA_ADD_FOLDER.Down"		rect="463,133,23,23"/>
+	<part name="_ID_MONITOR_CLOSE.Hover"		rect="292,2,15,15"/>
+	<part name="_ID_MONITOR_CLOSE.Down"		rect="273,2,15,15"/>
+	<part name="_ID_MEDIA_PLAY.Up"			rect="319,39,35,35"/>
+	<part name="_ID_MEDIA_PLAY.Hover"		rect="279,39,35,35"/>
+	<part name="_ID_MEDIA_PLAY.Down"		rect="279,82,35,35"/>
+	<part name="_ID_MEDIA_PAUSE.Up"			rect="359,82,35,35"/>
+	<part name="_ID_MEDIA_PAUSE.Hover"		rect="359,39,35,35"/>
+	<part name="_ID_MEDIA_PAUSE.Down"		rect="319,82,35,35"/>
+	<part name="_ID_MEDIA_STOP.Hover"		rect="274,154,25,25"/>
+	<part name="_ID_MEDIA_STOP.Down"		rect="274,124,25,25"/>
+	<part name="_ID_MEDIA_STOP.Disabled"		rect="274,184,25,25"/>
+	<part name="_ID_MEDIA_PREVIOUS.Down"		rect="330,124,25,25"/>
+	<part name="_ID_MEDIA_PREVIOUS.Hover"		rect="330,154,25,25"/>
+	<part name="_ID_MEDIA_PREVIOUS.Disabled"	rect="330,184,25,25"/>
+	<part name="_ID_MEDIA_MUTE.Checked"		rect="388,15,22,7"/>
+	<part name="_ID_MEDIA_NEXT.Down"		rect="302,124,25,25"/>
+	<part name="_ID_MEDIA_NEXT.Hover"		rect="302,154,25,25"/>
+	<part name="_ID_MEDIA_NEXT.Disabled"		rect="302,184,25,25"/>
+	<part name="_ID_MEDIA_RANDOM.Checked"		rect="350,15,38,7"/>
+	<part name="_ID_MEDIA_REPEAT.Checked"		rect="318,15,33,7"/>
+  </parts>
+  <caption fontFace="Arial" fontSize="11" fontWeight="Normal" color="000000"/>
+ </windowSkin>
+ <!-- End Media Remote -->
+</windowSkins>
+</skin>

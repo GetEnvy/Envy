@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<schemaDescriptor location="http://schemas.getenvy.com/ImageRoot.xsd" xmlns="http://schemas.getenvy.com/SchemaDescriptor.xsd">
+
+	<object type="folder" availability="system"/>
+	<contains>
+		<object type="folder" location="http://schemas.getenvy.com/ImageAlbum.xsd"/>
+	</contains>
+	<images>
+		<icon path="ImageFolder.ico"/>
+	</images>
+	<titles>
+		<title language="en">Image: Images</title>
+		<title language="af">Prent: Prente</title>
+		<title language="ca">Imatge: Les imatges</title>
+		<title language="cz">Obrázky: Obrázky</title>
+		<title language="de">Bild: Bilder</title>
+		<title language="ee">Pilt: Pildid</title>
+		<title language="es">Imagen: Imágenes</title>
+		<title language="fr">Image: Images</title>
+		<title language="gr">Εικόνα: Εικόνες</title>
+		<title language="he">תמונה: התמונות שלי</title>
+		<title language="hr">Slike: Slike</title>
+		<title language="hu">Kép: Képek</title>
+		<title language="it">Immagine: Immagini</title>
+		<title language="lt">Paveikslėlis: Paveikslėliai</title>
+		<title language="nl">Afbeelding: Afbeeldingen</title>
+		<title language="no">Bilde: Bilder</title>
+		<title language="pt">Imagem: Minhas Imagens</title>
+		<title language="ru">Картинка: картинки</title>
+		<title language="sl">Podoba: Podobe</title>
+		<title language="sq">Figurë: Figura</title>
+		<title language="sr">Slike: Slike</title>
+		<title language="sv">Bild: Bilder</title>
+		<title language="tr">Görüntü: Görüntülerim</title>
+		<title language="ja">静止画像: マイ･イメージ</title>
+		<title language="zhs">图片: 我的图片</title>
+		<title language="zht">圖片: 我的圖片</title>
+	</titles>
+	<headerContent version="1.0">
+		<title language="en">Welcome to you Images.</title>
+		<title language="af">Welkom by jou Prente.</title>
+		<title language="ca">Benvingut/da a les meves imatges.</title>
+		<title language="cz">Moje obrázky.</title>
+		<title language="de">Willkommen bei Eigene Bilder.</title>
+		<title language="ee">Teretulemast Minu Piltidesse.</title>
+		<title language="es">Bienvenido a Tus Imágenes.</title>
+		<title language="fr">Bienvenue dans Mes images.</title>
+		<title language="gr">Καλώς ήρθατε στις Εικόνες</title>
+		<title language="he">ברוך הבא לתמונות שלי.</title>
+		<title language="hr">Dobrodošli Među Vaše Slike.</title>
+		<title language="hu">Üdvözöllek a Képek mappában.</title>
+		<title language="it">Benvenuto nelle Immagini.</title>
+		<title language="lt">Sveiki apsilankę „Mano paveikslėliuose“.</title>
+		<title language="nl">Welkom bij Mijn Afbeeldingen.</title>
+		<title language="no">Velkommen til mine bilder.</title>
+		<title language="pt">Bem-vindo as Minhas Imagens.</title>
+		<title language="ru">Добро пожаловать в Ваши картинки.</title>
+		<title language="sl">Dobrodošli v mojih podobah.</title>
+		<title language="sq">Mirë se erdhët në Figurat Tuaja.</title>
+		<title language="sr">Dobrodošli Među Vaše Slike.</title>
+		<title language="sv">Välkommen till mina bilder.</title>
+		<title language="tr">Görüntülerime Hoşgeldiniz.</title>
+		<title language="ja">マイ･イメージへようこそ</title>
+		<title language="zhs">欢迎来到我的图片.</title>
+		<title language="zht">歡迎來到我的圖片.</title>
+		<subtitle language="en">These folders contain all of the images in your library, organised by album.  Open a folder below to continue.</subtitle>
+		<subtitle language="af">Hierdie gidse bevat al die prente in jou biblioteek, georganiseer volgens album. Open 'n gids hieronder om voort te gaan.</subtitle>
+		<subtitle language="ca">Aquestes carpetes contenen totes les imatges de la teva col·lecció, organitzades per àlbum. Obre una carpeta per a continuar.</subtitle>
+		<subtitle language="cz">Tyto složky obsahují všechny obrázky v knihovně roztříděné podle alba. Pokračujte kliknutím na složku .</subtitle>
+		<subtitle language="de">Diese Ordner enthalten alle Bilder Ihrer Bibliothek, geordnet nach Album. Öffnen Sie einen Ordner, um fortzufahren.</subtitle>
+		<subtitle language="ee">Need kaustad sisaldavad kõiki sinu raamatukogus asuvaid pilte. Jätkamiseks ava allolev kaust.</subtitle>
+		<subtitle language="es">Estas carpetas contienen todas tus imágenes de tu librería, organizadas por album. Abre una carpeta para continuar</subtitle>
+		<subtitle language="fr">Ce dossier contient toutes les images de votre bibliothèque, organisées par album.  Ouvrez un sous-dossier pour continuer.</subtitle>
+		<subtitle language="gr">Αυτός ο φάκελος περιέχει όλα τα αρχεία εικόνων.</subtitle>
+		<subtitle language="he">הספריות הללו מכילות את כל התמונות בספרייה שלך, מאורגנים לפי אלבום, פתח ספרייה מתחת כדי להמשיך</subtitle>
+		<subtitle language="hr">Ove mape sadrže sve slike iz vaše kolekcije posložene u albume. Otvorite željenu mapu.</subtitle>
+		<subtitle language="hu">Ez a mappa albumokra bontva tartalmazza az összes képet.</subtitle>
+		<subtitle language="it">Queste cartelle contengono tutte le immagini della tua libreria, organizzate per album.  Apri una cartella qui sotto per continuare.</subtitle>
+		<subtitle language="lt">Šiuose kataloguose yra visi Jūsų kolekcijos paveikslėliai, surūšiuoti pagal albumus. Tęskite atverdami žemiau esantį katalogą.</subtitle>
+		<subtitle language="nl">Deze mappen bevatten alle afbeeldingen uit je bibliotheek, georganiseerd per album.  Open een map hieronder om verder te gaan.</subtitle>
+		<subtitle language="no">Disse mappene inneholde alle bildene i mine filer, organisert i album. Åpne en mappe for å fortsette.</subtitle>
+		<subtitle language="pt">Estas pastas contém todas as imagens da sua biblioteca, organizadas por álbum. Abra uma pasta abaixo para continuar.</subtitle>
+		<subtitle language="ru">Эти папки отображают все картинки в Вашем хранилище организовнные по альбомам.</subtitle>
+		<subtitle language="sl">Te mape vsebujejo vse podobe v vaši knjižnici, urejene po albumu. Odprite mapo spodaj za nadaljevanje.</subtitle>
+		<subtitle language="sq">Kjo dosje përmban gjithë figurat në librarinë tuaj, organizuar sipas albumeve. Që të vijoni, hapni një dosje më poshtë.</subtitle>
+		<subtitle language="sr">Ove fascikle sadrže sve slike iz vaše kolekcije složene u albume. Otvorite željenu fasciklu.</subtitle>
+		<subtitle language="sv">Denna mapp innehåller alla bilder i ditt bibliotek, organiserade efter album. Öppna en mapp nedanför för att fortsätta.</subtitle>
+		<subtitle language="tr">Bu klasörler arşivinizdeki albümden düzenlenen tüm görüntüleri içermektedir. Devam etmek için bir klasör açınız.</subtitle>
+		<subtitle language="ja">これらのフォルダーにはライブラリー内に所有している全ての静止画像をアルバムごとに整理して収録しています</subtitle>
+		<subtitle language="zhs">这些文件夹包括您收藏中的所有图片，按相册进行排列。打开下面的文件夹可进行查看。</subtitle>
+		<subtitle language="zht">這些資料夾包含了在您的收藏中所有的圖片, 由相簿組織.  在下面開啟一個資料夾來繼續.</subtitle>
+	</headerContent>
+	<members>
+		<member name="title" search="none">
+			<display defaultColumn="true"/>
+			<title language="en">Title</title>
+			<title language="af">Titel</title>
+			<title language="ca">Títol</title>
+			<title language="cz">Název</title>
+			<title language="de">Titel</title>
+			<title language="ee">Pealkiri</title>
+			<title language="es">Título</title>
+			<title language="fr">Titre</title>
+			<title language="gr">Τίτλος</title>
+			<title language="he">כותרת</title>
+			<title language="hr">Naslov</title>
+			<title language="hu">Cím</title>
+			<title language="it">Titolo</title>
+			<title language="lt">Pavadinimas</title>
+			<title language="nl">Titel</title>
+			<title language="no">Tittel</title>
+			<title language="pl">Tytuł</title>
+			<title language="pt">Título</title>
+			<title language="ru">Название</title>
+			<title language="sl">Naslov</title>
+			<title language="sq">Titulli</title>
+			<title language="sr">Naslov</title>
+			<title language="sv">Titel</title>
+			<title language="tr">Başlık</title>
+			<title language="ja">タイトル</title>
+			<title language="ko">제목</title>
+			<title language="zhs">标题</title>
+			<title language="zht">標題</title>
+		</member>
+	</members>
+
+</schemaDescriptor>

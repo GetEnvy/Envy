@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Mappings of local schema changes, for backward compatibility and extra metadata from other vendors -->
+<schemaMappings xmlns="http://schemas.getenvy.com/SchemaMappings.xsd" version="1.0">
+
+	<!-- Envy Changes -->
+	<map uri="http://schemas.getenvy.com/Sample.xsd">
+		<target uri="http://schemas.getenvy.com/Sample.xsd">
+			<attribute from="A" to="B"/>
+			<attribute from="B" to="A"/>
+		</target>
+	</map>
+	<!-- Envy Trigger -->
+	<map uri="http://schemas.getenvy.com/Application.xsd">
+		<target uri="http://www.shareaza.com/schemas/application.xsd" />
+		<target uri="http://www.limewire.com/schemas/application.xsd" />
+	</map>
+	<map uri="http://schemas.getenvy.com/Archive.xsd">
+		<target uri="http://www.shareaza.com/schemas/archive.xsd" />
+	</map>
+	<map uri="http://schemas.getenvy.com/Audio.xsd">
+		<target uri="http://www.limewire.com/schemas/audio.xsd" />
+	</map>
+	<map uri="http://schemas.getenvy.com/Book.xsd">
+		<target uri="http://www.limewire.com/schemas/book.xsd" />
+	</map>
+	<map uri="http://schemas.getenvy.com/Video.xsd">
+		<target uri="http://www.limewire.com/schemas/video.xsd" />
+	</map>
+	<map uri="http://schemas.getenvy.com/Image.xsd">
+		<target uri="http://www.shareaza.com/schemas/image.xsd" />
+		<target uri="http://www.limewire.com/schemas/image.xsd" />
+	</map>
+	<map uri="http://schemas.getenvy.com/ROM.xsd">
+		<target uri="http://www.shareaza.com/schemas/rom.xsd" />
+	</map>
+	<map uri="http://schemas.getenvy.com/Subtitle.xsd">
+		<target uri="http://www.shareaza.com/schemas/subtitle.xsd" />
+	</map>
+	<map uri="http://schemas.getenvy.com/SourceCode.xsd">
+		<target uri="http://www.shareaza.com/schemas/sourceCode.xsd" />
+	</map>
+	<map uri="http://schemas.getenvy.com/Document.xsd">
+		<target uri="http://www.shareaza.com/schemas/wordProcessing.xsd" />
+		<target uri="http://www.limewire.com/schemas/document.xsd" />
+	</map>
+	<map uri="http://schemas.getenvy.com/Spreadsheet.xsd">
+		<target uri="http://www.shareaza.com/schemas/spreadsheet.xsd" />
+	</map>
+	<map uri="http://schemas.getenvy.com/Presentation.xsd">
+		<target uri="http://www.shareaza.com/schemas/presentation.xsd" />
+	</map>
+	<map uri="http://schemas.getenvy.com/Collection.xsd">
+		<target uri="http://www.shareaza.com/schemas/collection.xsd" />
+	</map>
+	<map uri="http://schemas.getenvy.com/BitTorrent.xsd">
+		<target uri="http://www.shareaza.com/schemas/bittorrent.xsd" />
+	</map>
+	<!-- Envy Target (Unused?) -->
+	<map uri="http://www.shareaza.com/schemas/application.xsd">
+		<target uri="http://schemas.getenvy.com/Application.xsd" />
+	</map>
+	<map uri="http://www.limewire.com/schemas/application.xsd">
+		<target uri="http://schemas.getenvy.com/Application.xsd" />
+	</map>
+	<map uri="http://www.shareaza.com/schemas/archive.xsd">
+		<target uri="http://schemas.getenvy.com/Archive.xsd" />
+	</map>
+	<map uri="http://www.limewire.com/schemas/audio.xsd">
+		<target uri="http://schemas.getenvy.com/Audio.xsd" />
+	</map>
+	<map uri="http://www.limewire.com/schemas/book.xsd">
+		<target uri="http://schemas.getenvy.com/Book.xsd" />
+	</map>
+	<map uri="http://www.limewire.com/schemas/video.xsd">
+		<target uri="http://schemas.getenvy.com/Video.xsd" />
+	</map>
+	<map uri="http://www.limewire.com/schemas/image.xsd">
+		<target uri="http://schemas.getenvy.com/Image.xsd" />
+	</map>
+	<map uri="http://www.shareaza.com/schemas/image.xsd">
+		<target uri="http://schemas.getenvy.com/Image.xsd" />
+	</map>
+	<map uri="http://www.shareaza.com/schemas/rom.xsd">
+		<target uri="http://schemas.getenvy.com/ROM.xsd" />
+	</map>
+	<map uri="http://www.shareaza.com/schemas/subtitle.xsd">
+		<target uri="http://schemas.getenvy.com/Subtitle.xsd" />
+	</map>
+	<map uri="http://www.shareaza.com/schemas/sourceCode.xsd">
+		<target uri="http://schemas.getenvy.com/SourceCode.xsd" />
+	</map>
+	<map uri="http://www.shareaza.com/schemas/wordProcessing.xsd">
+		<target uri="http://schemas.getenvy.com/Document.xsd" />
+	</map>
+	<map uri="http://www.limewire.com/schemas/document.xsd">
+		<target uri="http://schemas.getenvy.com/Document.xsd" />
+	</map>
+	<map uri="http://www.shareaza.com/schemas/spreadsheet.xsd">
+		<target uri="http://schemas.getenvy.com/Spreadsheet.xsd" />
+	</map>
+	<map uri="http://www.shareaza.com/schemas/presentation.xsd">
+		<target uri="http://schemas.getenvy.com/Presentation.xsd" />
+	</map>
+	<map uri="http://www.shareaza.com/schemas/collection.xsd">
+		<target uri="http://schemas.getenvy.com/Collection.xsd" />
+	</map>
+	<map uri="http://www.shareaza.com/schemas/bittorrent.xsd">
+		<target uri="http://schemas.getenvy.com/BitTorrent.xsd" />
+	</map>
+	<!-- Legacy (Unused) -->
+	<!--
+	<map uri="http://www.limewire.com/schemas/book.xsd">
+		<target uri="http://www.shareaza.com/schemas/wordProcessing.xsd">
+			<attribute from="publisher" to="copyright"/>
+			<attribute from="edition" to="revision"/>
+			<attribute from="description" to="abstract"/>
+		</target>
+		<target uri="http://www.shareaza.com/schemas/spreadsheet.xsd">
+			<attribute from="publisher" to="copyright"/>
+			<attribute from="edition" to="revision"/>
+			<attribute from="description" to="abstract"/>
+		</target>
+	</map>
+	<map uri="http://www.shareaza.com/schemas/wordProcessing.xsd">
+		<target uri="http://www.limewire.com/schemas/book.xsd">
+			<attribute from="copyright" to="publisher"/>
+			<attribute from="revision" to="edition"/>
+			<attribute from="abstract" to="description"/>
+		</target>
+	</map>
+	<map uri="http://www.shareaza.com/schemas/spreadsheet.xsd">
+		<target uri="http://www.limewire.com/schemas/book.xsd">
+			<attribute from="copyright" to="publisher"/>
+			<attribute from="revision" to="edition"/>
+			<attribute from="abstract" to="description"/>
+		</target>
+	</map>
+	<map uri="http://www.shareaza.com/schemas/rom.xsd">
+		<target uri="http://www.shareaza.com/schemas/application.xsd">
+			<attribute from="system" to="OS"/>
+			<attribute from="comments" to="releaseNotes"/>
+		</target>
+	</map>
+	<map uri="http://www.shareaza.com/schemas/application.xsd">
+		<target uri="http://www.shareaza.com/schemas/rom.xsd">
+			<attribute from="OS" to="system"/>
+			<attribute from="releaseNotes" to="comments"/>
+		</target>
+		<target uri="http://www.limewire.com/schemas/application.xsd">
+			<attribute from="title" to="name"/>
+			<attribute from="company" to="publisher"/>
+			<attribute from="OS" to="platform"/>
+			<attribute from="copyright" to="licensetype"/>
+		</target>
+	</map>
+	<map uri="http://www.limewire.com/schemas/application.xsd">
+		<target uri="http://www.shareaza.com/schemas/application.xsd">
+			<attribute from="name" to="title"/>
+			<attribute from="publisher" to="company"/>
+			<attribute from="platform" to="OS"/>
+			<attribute from="licensetype" to="copyright"/>
+		</target>
+	</map>
+	<map uri="http://www.shareaza.com/schemas/image.xsd">
+		<target uri="http://www.limewire.com/schemas/image.xsd">
+			<attribute from="author" to="artist"/>
+			<attribute from="copyright" to="licensetype"/>
+		</target>
+	</map>
+	<map uri="http://www.limewire.com/schemas/image.xsd">
+		<target uri="http://www.shareaza.com/schemas/image.xsd">
+			<attribute from="artist" to="author"/>
+			<attribute from="licensetype" to="copyright"/>
+		</target>
+	</map>
+	<map uri="http://www.shareaza.com/schemas/wordProcessing.xsd">
+		<target uri="http://www.limewire.com/schemas/document.xsd">
+			<attribute from="subject" to="topic"/>
+			<attribute from="copyright" to="licensetype"/>
+		</target>
+	</map>
+	<map uri="http://www.limewire.com/schemas/document.xsd">
+		<target uri="http://www.shareaza.com/schemas/wordProcessing.xsd">
+			<attribute from="topic" to="subject"/>
+			<attribute from="licensetype" to="copyright"/>
+		</target>
+	</map>
+	<map uri="http://www.limewire.com/schemas/audio.xsd">
+		<target uri="http://www.limewire.com/schemas/audio.xsd">
+			<attribute from="licensetype" to="copyright"/>
+			<attribute from="copyright" to="licensetype"/>
+		</target>
+	</map>
+	-->
+
+</schemaMappings>

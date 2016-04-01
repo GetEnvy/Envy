@@ -1,0 +1,50 @@
+HKCR
+{
+	ForceRemove Envy.RatDVDReader.1 = s 'RatDVD Reader'
+	{
+		CLSID = s '{C4E7FDB7-C085-465B-AC72-3AB28A20C353}'
+	}
+	ForceRemove Envy.RatDVDReader = s 'RatDVD Reader'
+	{
+		CLSID = s '{C4E7FDB7-C085-465B-AC72-3AB28A20C353}'
+		CurVer = s 'Envy.RatDVDReader.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {C4E7FDB7-C085-465B-AC72-3AB28A20C353} = s 'RatDVD Reader'
+		{
+			ProgID = s 'Envy.RatDVDReader.1'
+			VersionIndependentProgID = s 'Envy.RatDVDReader'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Both'
+			}
+			val AppID = s '%APPID%'
+			'TypeLib' = s '{69A065D3-C03D-4fa2-9C43-CB38D2078567}'
+		}
+	}
+}
+HKCU
+{
+	NoRemove Software
+	{
+		NoRemove Envy
+		{
+			NoRemove Envy
+			{
+				NoRemove Plugins
+				{
+					NoRemove ImageService
+					{
+						val '.ratdvd' = s '{C4E7FDB7-C085-465B-AC72-3AB28A20C353}'
+					}
+					NoRemove LibraryBuilder
+					{
+						val '.ratdvd' = s '{C4E7FDB7-C085-465B-AC72-3AB28A20C353}'
+						val '.fluxdvd' = s '{C4E7FDB7-C085-465B-AC72-3AB28A20C353}'
+					}
+				}
+			}
+		}
+	}
+}

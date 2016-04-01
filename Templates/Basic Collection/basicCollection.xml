@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template xmlns="http://schemas.getenvy.com/Template.xsd" version="1.0">
+<!-- Originally created by Tom Higginson (higgy) -->
+<manifest	name="Basic Collection"
+			author="Envy"
+			version="1.0"
+			link="http://getenvy.com/"
+			email="contact@getenvy.com"
+			description="A .collection can be edited just like a webpage: This template creates an .html file to get you started, be creative."
+			icon="envy.ico"
+			thumbnails="true"
+/>
+<files>
+	<file type="main" path="basic.tpl"/>
+	<file type="evenfile" path="basicRow.tpl"/>
+	<file type="oddfile" path="basicRow.tpl"/>
+</files>
+</template>

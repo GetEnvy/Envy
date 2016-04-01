@@ -1,0 +1,27 @@
+//
+// DocumentReader.idl
+//
+// This file will be processed by the MIDL tool to produce
+// the type library (DocumentReader.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+import "Envy.idl";
+
+[
+	uuid(607C3F69-850D-4413-A81A-CF1C849BF387),
+	version(1.0),
+	helpstring("DocumentReader 1.0 Type Library")
+]
+library DocumentReaderLib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(C4CBDA0D-CAD2-44E5-92CD-9F6E76BC56BC),
+	]
+	coclass DocReader
+	{
+		[default] interface ILibraryBuilderPlugin;
+		interface IImageServicePlugin;
+	};
+};

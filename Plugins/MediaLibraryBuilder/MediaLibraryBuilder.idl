@@ -1,0 +1,26 @@
+//
+// MediaLibraryBuilder.idl
+//
+// This file will be processed by the MIDL tool to produce
+// the type library (MediaLibraryBuilder.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+import "Envy.idl";
+
+[
+	uuid(6B3F5CE8-238C-4285-BE4B-EF7A9F71D1C2),
+	version(1.0),
+	helpstring("MediaLibraryBuilder 1.0 Type Library")
+]
+library MediaLibraryBuilderLib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(C8613374-9313-4E34-AD6C-A6F7FA317D3A)
+	]
+	coclass Builder
+	{
+		[default] interface ILibraryBuilderPlugin;
+	};
+};

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<skin xmlns="schemas.getenvy.com/Skin.xsd" version="1.0">
+
+<manifest
+ name="ShowMenu"
+ author="Envy"
+ description="Mix to add classic XP-style menu bar to Windows Skins or others. (Not a full skin)"
+ link="http://getenvy.com"
+ email="Contact(at)GetEnvy.com"
+ license="Persistent Public Domain (PPD)"
+ path="Windows"
+ version="1.0"
+ type="Skin"
+/>
+
+<options>
+ <option name="DropMenu" value="false" width="0"/>
+ <option name="ButtonEdge" value="3"/>
+ <option name="MonitorBar" value="110"/>
+</options>
+
+<images>
+ <image target="ButtonMap.MenuText" path="ButtonmapMenuBar.png"/>
+ <!--image target="CCoolMenuItem.Hover" path="Skin7\MenuButtonState.png"-->
+</images>
+
+</skin>

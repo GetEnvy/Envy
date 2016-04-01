@@ -1,0 +1,12 @@
+;
+; 7ZipBuilder.def : Declares the module parameters.
+;
+
+LIBRARY      "7ZipBuilder.dll"
+
+EXPORTS
+	DllCanUnloadNow		PRIVATE
+	DllGetClassObject	PRIVATE
+	DllRegisterServer	PRIVATE
+	DllUnregisterServer	PRIVATE
+	DllInstall		PRIVATE

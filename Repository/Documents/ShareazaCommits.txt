@@ -1,0 +1,215 @@
+Envy Update Status to Shareaza Commits
+
+Shareaza 2.7.9.0 r9600~
+PeerProject 1.0.3.0 r128
+(Recent PeerProject updates to 2016)
+
+http://sourceforge.net/p/shareaza/code/log
+http://sourceforge.net/p/shareaza/code/9600
+http://sourceforge.net/p/shareaza/code/HEAD/tree/
+http://sourceforge.net/p/shareaza/code/commit_browser
+http://sourceforge.net/apps/trac/shareaza/timeline
+http://sourceforge.net/apps/trac/shareaza/report/1
+
+svn+ssh://svn.code.sf.net/p/shareaza/code/trunk shareaza-code
+
+
+•
+
+
+9622	r128	1f	Updated VS2015 project
+9621	.	1f	Updated copyright (.rc)
+9620	.	1f	Updated projects up to VS2015 Update 1 (installer)
+9619	r128	40f	Fixed Platform SDK 8.1 (VS2015) and Windows XP compatibility for Win32 targets (used _ATL_XP_TARGETING macros, "/Zc:threadSafeInit-" compiler option and linker's "Minimum required version 5.01")
+9618	r128	1f	Removed legacy GetVersionEx (BugTrap)
+9617		1f	Updated services list ( http://bit.ly/1RrvYll )
+9616		1f	Updated VS2013 and VS2010 projects to latest version and used 7-Zip instead of GZip to compress resources
+9615	.	1f	Removed orphan file (outdated duplicate of \trunk\GeoData\WorldGPS.xml)
+9614		3f	Updated VS2015 project to latest version and used 7-Zip instead of GZip to compress resources
+9613	.	4f	Added more docs to bzlib project
+9612	.	1f	Updated GeoIP database (05 Jan 2016)
+9611	.	45f	Updated MiniUPnPc library to 1.9.20151008
+(2015)
+9610	r128?	1f	Spelling (dht)
+9609	.	1f	Updated GeoIP database (09 Oct 2015)
+9608	.	.	Bumped version 2.7.9.1
+9607	.	.	Tagged version 2.7.9.0
+9606	.	3f	Fixed Microsoft Visual C++ Redistributable URL in 64-bit
+9605	.	.	Outdated (Deleted Tag)
+9604	.	.	Tagged version 2.7.9.0
+9603	.	30f	Bumped version 2.7.9.0
+9602	.	6f	Using "targetver.h" file
+9601	.	2f	Updated SQLite up to 3.8.11.1
+9600	.	1f	Changed bugtrap report mail (SF.Net seems not work anymore)
+9599	r126	1f	Fixed previous fix
+9598	r126	3f	Fixed deadlock in the "merge with" operation
+9597		10f	Added support for Windows 10
+9596		30f	Updated VS2015 projects options
+9595	/	18f	Fixed minor warnings
+9594	.	1f	Updated GeoIP database (02 Sep 2015)
+9593		1f	Changed dialog fonts to standard and sizable "MS Shell Dlg"
+9592		1f	20 private types (file extensions forbidden for sharing)
+9591	r126	1f	Fixed advanced settings page value limits
+9590	r126	6f	Improving Shareaza exit on system shutdown
+9589	.	1f	Updated GeoIP database (05 Aug 2015)
+9588		90f	Added VS 2015 compilation support
+9587	.	7f	Deleted VC ++ redistributable from setup (will be downloaded during installation)
+9586	.	1f	Fixed CR LF (7zipbuilder)
+9585		30f	Updated VS 2013 project files
+9584	r126	2f	More correct array size macro
+9583	.	1f	GeoIP
+9582	.	1f	Formated
+9581	.	2f	dht_get_nodes() parameters can be optional
+9580	.	2f	Formated
+9579	.	2f	Fixed IPv4 or OPv6 selection logic
+9578	r126	2f	Updated BT DHT library to 0.24
+9577		42f	Fixed type size warnings  (_stscanf)
+9576		2f	Fixed legacy GetVersionEx() warnings
+9575	r127?	2f	Fixed VS2010 compatibility
+9574		3f	Refactoring for r9571 (fixed share status)
+9573	r126	6f	Fixed minor 64-bit warnings
+9572		6f	Added limit of ghost files (new option "Library.GhostLimit", defaulted to 1000 files)
+9571		4f	Added metadata restoring from ghost files.  Added creating of sharable ghost files during automatic deletion.  (Refactored r9574)
+9570		2f	Fixed unused half of library files hash map
+9569	r126	4f	Renamed macroses to be with different names
+9568	r126	1f	Optimized initial hash table size
+9567	.	1f	Removed unneeded ASSERT
+9566		7f	Optimized case insensitive string maps: CMap replaced by CAtlMap< CStringElementTraitsI >
+9565		2f	Refactored (LibraryMaps)
+9564	r126	4f	Fixed minor warnings (skin-installer)
+9563	.	1f	Updated GeoIP database (06 May 2015)
+9562		10f	Optimized case insensitive string maps: CMap replaced by CAtlMap< CStringElementTraitsI >. Fixed upload memory leak.
+9561		17f	Optimized case insensitive string maps: CMap replaced by CAtlMap< CStringElementTraitsI >. Added CStringIMap class
+9560	r125	1f	Fixed space trimming of query string
+9559		4f	Optimized case insensitive string maps: CMap replaced by CAtlMap< CStringElementTraitsI >
+9558		5f	Optimized case insensitive string maps: CMap replaced by CAtlMap< CStringElementTraitsI >
+9557		8f	Added "const" to and renamed "CVendor*" -> "CVendorPtr"    Optimized case insensitive string maps: CMap replaced by CAtlMap< CStringElementTraitsI >.
+9556	r125	2f	Optimized GetMediaFrame function
+9555	r126	1f	Optimized HashKey<CString> function (StdAfx.h)
+9554		1f	Fixed minor warnings (StdAfx.cpp pragmas)
+9553		1f	Updated VS2013 project dependencies (sln)
+9552	/	4f	More const-s
+9551		1f	Fixed resize of muti-file/torrent download
+9550	.	3f	Fixed math rounding error in the time metadata
+9549		3f	Added .asx, .flv, .ogv and .webm extensions to the media plugins and schemas
+9548		33f	(Various metadata fixes and const)
+9547	r125	2f	CXMLNode::SetValue() minor optimization
+9546	r126	1f	Added well-known DC++ hub list
+9545	r125	2f	Fixed stable time calculation
+9544		12f+30	Added a DC++ hub list URL as a full fledged discovery services (renamed options)
+9543		1f	Added DC++ hub list retrieval in the startup wizard
+9542		2f	Improved detection of 3d party ED2K and DC++ client files
+9541	r125	1f	Fixed error in getting of 64-bit "Program Files" folder
+9540		4f	Updated French and Turkish translation (zigotozor)
+9539		5f	Fixed last fuzzy bug. Bumped SkinTranslate version up to 1.0.0.4
+9538	.	1f	Updated GeoIP database (03 Mar 2015)
+9537	.	1f	Disabled hacked web-cache - http://bit.ly/1F9Kcic
+9536	r125	3f	More descriptive comments of UPnP mappings
+9535	r126?	f	Updated MiniUPnPc library to 1.9.20150206
+9534		8f+lang	Added quick search for advanced settings. GZIP resources moved to .rc2
+9533	.	1f	Updated GeoIP database (05 Feb 2015)
+9532	r125	4f	Fixed BTIH status of download - http://bit.ly/1DXAm0T
+9531		2f	Updated Polish translation (by Neo2001)
+9530		1f	Updated cleanup script
+9529		22f+lng	Improved selection interface element (ComboBox + context menu) for Downloads, Incomplete, Collection and Torrents folders in Settings.
+9528		3f	Added SkinUpdate program and script
+9527	.	1f	Updated GeoIP database (07 Jan 2015)
+9526	r126	2f	Fixed black splash dialog on Windows shutdown
+9525	.	1f	Bumped version 2.7.8.1
+9524		4f	Added partial support of BEP 19 : "WebSeed - HTTP/FTP Seeding (GetRight style)" - http://bit.ly/1wUJNhj (by ivan386)
+9522	.	.	Tagged version 2.7.8.0
+9517		6f	Added Release build scripts
+9516		10f	Optimized build scripts
+9515		3f	Updated VS2010 projects
+9514	\r119	4f	Fixed rare crash when user rapidly presses Browse button in Browse Host Window		NOTE: Commented Locks
+9513		2f	Updated UnRAR version to 5.20.4.1419
+9512		24f	Updated MiniUPnPc library to 1.9.20141117
+9504	\r119	3f	Adjusted project options (Preview Plugin)
+9503		5f	Changed file externals to SVN externals
+9501	\r119	48f	Fixed 64-bit warnings
+9500	.	.	Tagged version 2.7.7.0
+9495	\r119	4f+15regAdded more crash protection to the metadata extractors	(Breaks GFL)
+9490		1f	Another fix for file hashing window
+9488		1f	Slightly improved file hashing window
+9487		15f	Added banning by client agent (BitTorrent)
+9486		18f	Fixed compiler warnings
+9484		3f	Extended BitTorrent client name detection
+9479		2f	Added info message just before file hashing
+9477		7f	Synchronized LZMA SDK library files (7zip)
+9474		30f?	Excluded fuzzy and ill-formated translations from language files ("Quality is better than quantity")
+9473		8f	Added more checks to Skin Translate utility
+9469	r129	5f	Improving naming of download and assigning to download group. Added auto-start of downloaded .torrent-files
+9468		1f	Fixed old filename in hash progress window
+9466		1f	Forced adding of new hashes to download when user doing it manually
+9464		2f	Fixed simple URLs handling
+9457		14f	Fixed Windows XP incompatibility - http://bit.ly/1t8auup (vcxproj)
+9453	.	.	Tagged version 2.7.5.0
+9452		1f	Updated setup script for VS2013
+9450		1f	Added workaround for negative uptime in the web cache
+9449		1f	Updated Default services list (Jul 2014)
+9448		25f	Enabled "Edit And Continue" for VS2013 Debug Win32
+9442		f	Disabled plugin registration during VS2013 build
+9441		f	Disabled plugin registration during VS2010 build
+9438		f	Updated plugin icons  (DocReader/SWFReader)
+9437		f	Updated VS2013 64-bit projects
+9436		15f	Added Download Monitor opening on: external link, search window download, eMule import. Changed "Hide" button of Download Monitor from monitor closing to hiding to tray instead
+9435		2f	Fixed stuck progress bar of main window title when last download cancelled
+9434		f	Updated VS2010 project delay loaded DLLs
+9433		3f+	Changed "Display simple progress bar" to more useful "Open a download monitor window" option in general settings dialog
+9432		f	Updated VS2013 projects
+9428		3f	Removed useless (and incorrect) internal metadata extraction for BMP, GIF, PNG and JPEG files. Fixed inverted "Library.ScanProperties" option
+9419	r112/	25f	Fixed more warnings	(Skip nothrow?)
+9418	/	1f	Improved "Existing File" dialog (now incremental torrents must be downloaded without any questions).	// Commented Out: r9350
+9416	/	5f	Fixed multi-file magnet parsing (but not supported yet) - http://bit.ly/1jZGG1a
+9403		1f	Increased height of "Download File or Torrent" dialog
+9400		14+f	Removed Bitzi.com support.
+9390	r127/	12f	Removed Windows 2000 code  (ToDo:Plugins)
+9389	.	f	Added Visual Studio 2013 project, fixed incompatibilities
+9377		3f	Adjusted project options
+9350		8f+	Adjusted interface of Existing File dialog. Removed confusing duplicate file detection. (Deadlocks)
+9347		1f	Updated Nederlands translation
+9346		1f	Removed BitComet LT-Seeding "filehash" field from torrent-file since it's no more a SHA1 hash
+9344		1f	Added sample script for Daily Build uploads
+9342		10f	TorrentWizard: Fixed unsorted torrent-file dictionary keys (http://bit.ly/1dYKoBS)
+9340		7f	Added daily build script (VS2010)
+9306		2f	Fixed Library file upload counter
+9292		1f	Trying to make less annoying hash window (added WS_EX_NOACTIVATE style)
+9290		4f	Fixed issue #3. "No searches have been started in this window yet"
+9266		7f	Setup resources clean-up
+9263	r105~	11f	Add thumbnails generation in collection wizard, add thumbnails to "basicCollection" template, Add new collection variable: $title$ name of album folder, Fix "GeneralPurpleCollection" and "VideoCollection" collection templates
+9257	+r129	7f	XML element and attribute names must not be lowercased (Fix for http://is.gd/2xAByG)
+9251	/	4f	TorrentWizard: Fix VS2008
+
+9235 r86~ r105	1f	Optimized thread code.		(Note: Minor oversight broke Filter Lists)
+
+9203	 r105~	1f	Now desktop.ini in Shareaza folders will be created only if it's not exist before
+9149		4f	Windows 2000 compatibility fix.  (~DelayLoadDLLs)
+9146		5+60f	Added support for Windows 7 task bar jump list.		(CreateshellLink etc.)
+9120		7f	Tried to add progress dialogs to some long operations like file deleting or download clearing
+9113		/	Removed downloads extra checks, adjusted downloading file open time (earlier)  (Note: DownloadWithTiger IsFileOpen)
+9022		4+60f	Language addition to r8987 ("Create torrent" menu)
+8995		10f	Library tree folder tips: Total Files:, Total Volume:, Free: (space)
+8988		1f	+Below
+8987	 r109	10f	Add "Create .torrent File" to Library folder tree menu  +r9022
+8925		2f	Cyko: About css  +8926 +8927
+
+8917		6f	SkinTranslate Utility
+8850		5f	Fix tooltip flickering, download/upload tips more dynamic
+8824		14f	Updated Language Support (Scheduler Dialog Strings Sorted, HashWndAlpha, etc.)
+8764		8f	Colorful download sources
+8763		2f	Flexible hash progress window
+8537	~r108	2f	Optimized CDownloadWithTiger::GetWantedFragmentList() function by adding cache.	(Enabled r108)
+
+8156?		7f	Fix plugin description and icon retrieving. Add support for .exe plugins. Plugins enumeration speed increased ten times. (LoadCLSIDIcon) (2009)
+
+
+ToDos:			Add ID_TAB_MENU ?
+			JumpLists: r9146 http://msdn.microsoft.com/en-us/gg465010#_Toc243450447
+			Wizard Browser Integration ?
+			Default Downloads Location <My Docs>  ?
+			File Formats. .lst, .urls, .grx (getright), .metalink, .magma, etc.
+			r8625+ BENode TorrentWizard
+			BitTorrent DNS, uTP
+
+
+Check ShareazaPlus:	http://sourceforge.net/p/shareazaplus/code/HEAD/tree/branches/TestingCode/

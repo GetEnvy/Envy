@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<schemaDescriptor location="http://schemas.getenvy.com/SearchFolder.xsd" xmlns="http://schemas.getenvy.com/SchemaDescriptor.xsd">
+
+	<object type="folder" availability="system" private="true"/>
+	<images>
+		<icon path="SearchFolder.ico"/>
+	</images>
+	<titles>
+		<title language="en">Search: Search Results</title>
+		<title language="af">Soek: Soekresultate</title>
+		<title language="ca">Cercar: Resultats de cerca</title>
+		<title language="cz">Hledání: Výsledky hledání</title>
+		<title language="de">Suche: Suchergebnisse</title>
+		<title language="ee">Otsi: Otsingu Tulemused</title>
+		<title language="es">Buscar: Resultados de busqueda</title>
+		<title language="fr">Recherche: Résultats de recherche</title>
+		<title language="gr">Αναζήτηση: Αποτελέσματα Αναζήτησης</title>
+		<title language="he">חפש: חפש בתוצאות</title>
+		<title language="hr">Traži: Rezultati Potrage</title>
+		<title language="hu">Keresés: Keresési eredmények</title>
+		<title language="it">Ricerca: Risultati della ricerca</title>
+		<title language="lt">Paieška: Radiniai</title>
+		<title language="nl">Zoeken: Zoekresultaten</title>
+		<title language="no">Søk: Søkeresultat</title>
+		<title language="pt">Procurar: Resultados da Busca</title>
+		<title language="ru">Поиск: Результаты поиска</title>
+		<title language="sl">Iskanje: Rezultati iskanja</title>
+		<title language="sq">Kërkimi: Rezultatet e Kërkimit</title>
+		<title language="sr">Traži: Rezultati Potrage</title>
+		<title language="sv">Sök: Sökresultat</title>
+		<title language="tr">Ara: Arama Sonuçları</title>
+		<title language="ja">サーチ: サーチ結果</title>
+		<title language="zhs">搜索: 搜索结果</title>
+		<title language="zht">搜尋: 搜尋結果</title>
+	</titles>
+	<headerContent version="1.0">
+		<title language="en">Search for "{content}"</title>
+		<title language="af">Soek vir " {content} "</title>
+		<title language="ca">Cerca per "{content}"</title>
+		<title language="cz">Hledat "{content}"</title>
+		<title language="de">Suche nach "{content}"</title>
+		<title language="ee">Otsi "{content}"</title>
+		<title language="es">Busca por "{content}"</title>
+		<title language="fr">Recherche de "{content}"</title>
+		<title language="gr">Αναζήτηση για "{content}"</title>
+		<title language="he">חפש תוכן "{content}"</title>
+		<title language="hr">Traži "{content}"</title>
+		<title language="hu">Keresés: "{content}"</title>
+		<title language="it">Ricerca di "{content}"</title>
+		<title language="lt">„{content}“ radiniai</title>
+		<title language="nl">Zoeken naar "{content}"</title>
+		<title language="no">Søk etter "{content}"</title>
+		<title language="pt">Procurar por "{content}"</title>
+		<title language="ru">Поиск для "{content}"</title>
+		<title language="sl">Išči po "{content}"</title>
+		<title language="sq">Kërko për "{content}"</title>
+		<title language="sr">Traži "{content}"</title>
+		<title language="sv">Sök efter "{content}"</title>
+		<title language="tr">Ara "{content}"</title>
+		<title language="ja">"{content}" のサーチ</title>
+		<title language="zhs">搜索 "{content}"</title>
+		<title language="zht">搜尋於 "{content}"</title>
+		<subtitle language="en">This folder contains the files which matched your search for "{content}"</subtitle>
+		<subtitle language="af">Hierdie gids bevat die lêers wat jou soektog vir " {content} " bevredig.</subtitle>
+		<subtitle language="ca">Aquesta carpeta conté arxius que varen coincidir amb la cerca "{content}"</subtitle>
+		<subtitle language="cz">Tato složka obsahuje soubory, které vyhovují hledání "{content}".</subtitle>
+		<subtitle language="de">Dieser Ordner enthält die Dateien, die ihrer Suche nach "{content}" entsprachen.</subtitle>
+		<subtitle language="ee">See kaust sisaldab faile, mis vastavad sinu "{content}" otsingule.</subtitle>
+		<subtitle language="es">Esta carpeta contiene archivos que concidieron con la busqueda "{content}"</subtitle>
+		<subtitle language="fr">Ce dossier contient tous les fichiers correspondants à votre recherche de "{content}"</subtitle>
+		<subtitle language="gr">Αυτός ο φάκελος περιέχει τα αποτελέσματα της αναζήτησης αρχείων "{content}".</subtitle>
+		<subtitle language="he">ספרייה זו מכילה קבצים שהתאימו לחיפוש עבור "{content}"</subtitle>
+		<subtitle language="hr">Ova mapa sadrži nađene datoteke po izrazu "{content}"</subtitle>
+		<subtitle language="hu">Ebben a mappában lévő fájlok egyeznek a keresési feltétellel, ami {content} volt.</subtitle>
+		<subtitle language="it">Questa cartella contiene i file che corrispondono alla tua ricerca di "{content}"</subtitle>
+		<subtitle language="lt">Šiame kataloge yra failai, surasti pagal ieškinį „{content}“.</subtitle>
+		<subtitle language="nl">Deze map bevat alle bestanden die resulteerden uit je zoekopdracht naar "{content}"</subtitle>
+		<subtitle language="no">Denne mappen inneholder resultat som matcher søk etter "{content}"</subtitle>
+		<subtitle language="pt">Esta pasta contém os arquivos que combinaram na sua busca por "{content}".</subtitle>
+		<subtitle language="ru">Эта папка отображает результаты поиска для {content}.</subtitle>
+		<subtitle language="sl">Ta mapa vsebuje datoteke, ki so se ujemale vašemu iskanju po "{content}"</subtitle>
+		<subtitle language="sq">Kjo dosje përmban skedat që i ngjajnë kërkimit tuaj, "{content}"</subtitle>
+		<subtitle language="sr">Ova fascikla sadrži nađene datoteke po izrazu "{content}"</subtitle>
+		<subtitle language="sv">Denna mapp innehåller filer som matchar din sökning efter "{content}".</subtitle>
+		<subtitle language="tr">Bu klasör "{content}" aramanıza benzer içeriğe sahip dosyaları içerir.</subtitle>
+		<subtitle language="ja">このフォルダーには "{content}" に当てはまるサーチ結果が収録されています</subtitle>
+		<subtitle language="zhs">此文件夹包含了匹配搜索 "{content}" 的文件</subtitle>
+		<subtitle language="zht">這個資料夾包含了符合您搜尋 "{content}" 的檔案</subtitle>
+	</headerContent>
+	<members>
+		<member name="title" search="none">
+			<title language="en">Title</title>
+			<title language="af">Titel</title>
+			<title language="ca">Títol</title>
+			<title language="cz">Název</title>
+			<title language="de">Titel</title>
+			<title language="ee">Pealkiri</title>
+			<title language="es">Título</title>
+			<title language="fr">Titre</title>
+			<title language="gr">Τίτλος</title>
+			<title language="he">כותרת</title>
+			<title language="hr">Naslov</title>
+			<title language="hu">Cím</title>
+			<title language="it">Titolo</title>
+			<title language="lt">Pavadinimas</title>
+			<title language="nl">Titel</title>
+			<title language="no">Tittel</title>
+			<title language="pl">Tytuł</title>
+			<title language="pt">Título</title>
+			<title language="ru">Название</title>
+			<title language="sl">Naslov</title>
+			<title language="sq">Titulli</title>
+			<title language="sr">Naslov</title>
+			<title language="sv">Titel</title>
+			<title language="tr">Başlık</title>
+			<title language="ja">タイトル</title>
+			<title language="ko">제목</title>
+			<title language="zhs">标题</title>
+			<title language="zht">標題</title>
+		</member>
+		<member name="time" search="none">
+			<title language="en">Time</title>
+			<title language="af">Tyd</title>
+			<title language="ca">Temps</title>
+			<title language="cz">Čas</title>
+			<title language="de">Zeit</title>
+			<title language="ee">Aeg</title>
+			<title language="es">Tiempo</title>
+			<title language="fr">Temps</title>
+			<title language="gr">Χρόνος</title>
+			<title language="he">זמן</title>
+			<title language="hr">Vrijeme</title>
+			<title language="hu">Idő</title>
+			<title language="it">Ora</title>
+			<title language="lt">Laikas</title>
+			<title language="nl">Tijd</title>
+			<title language="no">Tid</title>
+			<title language="pt">Tempo</title>
+			<title language="ru">Время</title>
+			<title language="sl">Čas</title>
+			<title language="sq">Ora</title>
+			<title language="sr">Vreme</title>
+			<title language="sv">Tid</title>
+			<title language="tr">Süre</title>
+			<title language="ja">時間</title>
+			<title language="zhs">时间</title>
+			<title language="zht">時間</title>
+		</member>
+		<member name="date" search="none">
+			<title language="en">Date</title>
+			<title language="af">Datum</title>
+			<title language="ca">Data</title>
+			<title language="cz">Datum</title>
+			<title language="de">Datum</title>
+			<title language="ee">Kuupäev</title>
+			<title language="es">Fecha</title>
+			<title language="fr">Date</title>
+			<title language="gr">Ημ/νία</title>
+			<title language="he">תאריך</title>
+			<title language="hr">Datum</title>
+			<title language="hu">Dátum</title>
+			<title language="it">Data</title>
+			<title language="lt">Data</title>
+			<title language="nl">Datum</title>
+			<title language="no">Dato</title>
+			<title language="pt">Data</title>
+			<title language="ru">Дата</title>
+			<title language="sl">Datum</title>
+			<title language="sq">Të dhënat</title>
+			<title language="sr">Datum</title>
+			<title language="sv">Datum</title>
+			<title language="tr">Tarih</title>
+			<title language="ja">日付</title>
+			<title language="zhs">日期</title>
+			<title language="zht">日期</title>
+		</member>
+		<member name="content" search="none">
+			<title language="en">Content</title>
+			<title language="af">Inhoud</title>
+			<title language="ca">Contingut</title>
+			<title language="cz">Obsah</title>
+			<title language="de">Inhalt</title>
+			<title language="ee">Sisu</title>
+			<title language="es">Contenido</title>
+			<title language="fr">Contenu</title>
+			<title language="gr">Περιεχόμενο</title>
+			<title language="he">תוכן</title>
+			<title language="hr">Sadržaj</title>
+			<title language="hu">Tartalom</title>
+			<title language="it">Contenuto</title>
+			<title language="lt">Turinys</title>
+			<title language="nl">Inhoud</title>
+			<title language="no">Innhold</title>
+			<title language="pt">Conteúdo</title>
+			<title language="ru">Содержание</title>
+			<title language="sl">Vsebina</title>
+			<title language="sq">Përmbajtja</title>
+			<title language="sr">Sadržaj</title>
+			<title language="sv">Innehåll</title>
+			<title language="tr">İçerik</title>
+			<title language="ja">内容</title>
+			<title language="zhs">内容</title>
+			<title language="zht">內容</title>
+		</member>
+	</members>
+
+</schemaDescriptor>

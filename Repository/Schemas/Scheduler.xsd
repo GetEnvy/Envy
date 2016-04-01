@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<schema targetNamespace="http://schemas.getenvy.com/Scheduler.xsd" version="1.0" xmlns="http://www.w3.org/2001/XMLSchema">
+
+	<element name="scheduler">
+		<complexType>
+			<sequence>
+				<element name="task" type="taskType" minOccurs="1" maxOccurs="unbounded"/>
+			</sequence>
+		</complexType>
+	</element>
+
+	<complexType name="taskType">
+		<attribute name="guid" type="NMTOKEN" use="required"/>
+		<attribute name="time" type="int" use="required"/>
+		<attribute name="days" type="string"/>
+		<attribute name="action">
+			<simpleType base="string">
+				<enumeration value="Bandwidth:Full"/>
+				<enumeration value="Bandwidth:Limited"/>
+				<enumeration value="Bandwidth:Stop"/>
+				<enumeration value="System:Exit"/>
+				<enumeration value="System:Shutdown"/>
+				<enumeration value="System:Disconnect"/>
+				<enumeration value="System:Notice"/>
+			</simpleType>
+		</attribute>
+		<attribute name="active" type="bool"/>
+		<attribute name="executed" type="bool"/>
+		<attribute name="specificdays" type="bool"/>
+		<attribute name="limitednet" type="bool"/>
+		<attribute name="limitdown" type="int"/>
+		<attribute name="limitup" type="int"/>
+		<attribute name="comment" type="string"/>
+	</complexType>
+
+</schema>

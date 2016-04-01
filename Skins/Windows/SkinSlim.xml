@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<skin xmlns="http://schemas.getenvy.com/Skin.xsd" version="1.0">
+
+<manifest
+ name="SkinSlim"
+ author="Envy"
+ description="Mix to make some skin areas thinner. (Not a full skin.)"
+ link="http://getenvy.com"
+ email="Contact(at)GetEnvy.com"
+ license="Persistent Public Domain (PPD)"
+ platform="Envy 1.0"
+ path="Windows"
+ version="1.0"
+ type="Skin"
+/>
+
+<options>
+ <!--option name="Navbar" offset="0,0"-->
+ <option name="DropMenu" value="true"/>
+ <option name="MenuBorders" value="false"/>
+ <option name="MenuGripper" value="false"/>
+ <option name="MonitorBar" value="108"/>
+ <option name="Taskbar" value="22" width="193"/>
+ <option name="Toolbar" value="24"/>
+ <option name="Titlebar" value="60"/>
+ <option name="Sidebar" value="182"/>
+ <option name="SidebarPadding" value="8"/>
+ <option name="Splitter" value="5"/>
+</options>
+
+<images>
+ <image target="Banner" path="Slim.png"/>
+</images>
+
+<windowskins>
+
+<!-- REMOVED PANEL HEADERS -->
+
+<windowskin>
+<image path="Skin7\Header.png"/>
+<target window="CHomeWnd.Panel"/>
+<target window="CDownloadsWnd.Panel"/>
+<target window="CNeighboursWnd.Panel"/>
+<target window="CLibraryWnd.Panel"/>
+<target window="CMediaWnd.Panel"/>
+<target window="CIRCWnd.Panel"/>
+<target window="CSecurityWnd.Panel"/>
+<target window="CSchedulerWnd.Panel"/>
+<target window="CBrowseHostWnd.Panel"/>
+<target window="CHostCacheWnd.Panel"/>
+<target window="CDiscoveryWnd.Panel"/>
+<target window="CPacketWnd.Panel"/>
+<target window="CSearchMonitorWnd.Panel"/>
+<target window="CHitMonitorWnd.Panel"/>
+<parts>
+ <part name="Top" rect="0,0,20,1"/>
+</parts>
+<caption/>
+</windowskin>
+
+<!-- MINIMAL HEADERS -->
+
+<windowskin>
+<image path="Skin7\Header.png"/>
+<target window="CUploadsWnd.Panel"/>
+<target window="CSystemWnd.Panel"/>
+<parts>
+ <part name="TopLeft" rect="0,6,24,14"/>
+ <part name="Top" rect="140,6,20,14"/>
+ <part name="TopRight" rect="170,6,165,14"/>
+</parts>
+<caption align="left" rect="20,2,500,21" fontFace="Segoe UI" fontSize="10" fontWeight="Normal" color="FFFFFF" inactivecolor="FFFFFF"/>
+</windowskin>
+
+<!-- SEARCH HEADER -->
+
+<windowskin>
+<image path="Skin7\Header.png"/>
+<target window="CSearchWnd.Panel"/>
+<parts>
+ <part name="TopLeft" rect="56,3,120,18"/>
+ <part name="Top" rect="140,3,10,18"/>
+ <part name="TopRight" rect="170,3,180,18"/>
+ <part name="Close" rect="334,8,12,12"/>
+ <part name="CloseHover" rect="349,8,12,12"/>
+ <part name="CloseDown" rect="348,7,12,12"/>
+</parts>
+<anchors>
+ <anchor name="Close" rect="-16,4,12,12"/>
+</anchors>
+<caption align="left" rect="20,1,500,18" fontFace="Segoe UI" fontSize="10" fontWeight="Normal" color="0666CC" outlinecolor="FFFFFF" inactivecolor="B0CAD0"/>
+</windowskin>
+
+</windowskins>
+
+</skin>

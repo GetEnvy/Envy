@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://schemas.getenvy.com/Unknown.xsd" xmlns="http://www.w3.org/2001/XMLSchema">
+
+	<element name="unknowns">
+		<complexType>
+			<element name="unknown" type="unknownType" minOccurs="1" maxOccurs="unbounded"/>
+		</complexType>
+	</element>
+	<complexType name="unknownType">
+		<all>
+			<attribute name="comments">
+				<simpleType base="string">
+					<maxInclusive value="256"/>
+				</simpleType>
+			</attribute>
+			<attribute name="peertag" type="boolean"/>
+			<attribute name="peerinfo" type="string"/>
+		</all>
+	</complexType>
+
+</schema>

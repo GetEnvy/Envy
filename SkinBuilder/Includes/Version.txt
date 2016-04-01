@@ -1,0 +1,5 @@
+WTL 9.1 (Nov.2015)
+
+Windows Template Library
+
+sourceforge.net/projects/wtl

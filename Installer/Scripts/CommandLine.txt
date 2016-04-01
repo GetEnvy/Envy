@@ -1,0 +1,42 @@
+Setup and repair command-line parameters:
+(brackets indicate things you need to fill in.) (Don't type the brackets.)
+
+/SILENT						automatic mode
+/VERYSILENT					hidden mode
+/LOG="[path\filename]"				create logfile in specified folder
+/NOCANCEL					disable cancel button
+/NORESTART					do not reboot
+/RESTARTEXITCODE=[exit code]			exit code if reboot needed
+/LOADINF="[path\filename]"			Load setup settings from file
+/SAVEINF="[path\filename]"			Save setup settings to file
+/LANG=[languagename]				Specify language to use.
+(Look in Languages.iss to find valid names. examples: en nl lt)
+
+/DIR="[path]"					Specify default path setup uses
+/GROUP="[foldername]"				Specify default name of start menu group
+/COMPONENTS="[component1,component2,etc]"	Specify list of extra components to install
+(comma separated list, valid entries: language)
+
+/SETTINGS="[path\filename]"			Path to ini file to overwrite some settings
+
+Uninstall command-line parameters:
+(brackets indicate things you need to fill in.) (Don't type the brackets.)
+
+/SILENT						automatic mode
+/VERYSILENT					hidden mode
+/LOG="[path\filename]"				create logfile in specified folder
+
+example ini file:
+
+[Locations]
+CompletePath=C:\Documents and Settings\All Users\Application Data\Envy\Downloads
+IncompletePath=C:\Documents and Settings\All Users\Application Data\Envy\Incomplete
+TorrentPath=C:\Documents and Settings\All Users\Application Data\Envy\Torrents
+CollectionPath=C:\Documents and Settings\All Users\Application Data\Envy\Collections
+UserPath=C:\Documents and Settings\All Users\Application Data\Envy
+Path=C:\Program Files\Envy
+[General]
+RatesInBytes=1
+VerboseMode=0
+[Skins]
+EnvyOS=1

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<schema targetNamespace="http://schemas.getenvy.com/Profile.xsd" version="1.0" xmlns="http://www.w3.org/2001/XMLSchema">
+
+	<element name="profile">
+		<complexType>
+			<sequence>
+				<element name="gnutella" type="guidType" minOccurs="0" maxOccurs="1"/>
+				<element name="bittorrent" type="guidType" minOccurs="0" maxOccurs="1"/>
+				<element name="identity" type="identityType" minOccurs="0" maxOccurs="1"/>
+				<element name="vitals" type="vitalsType" minOccurs="0" maxOccurs="1"/>
+				<element name="location" type="locationType" minOccurs="0" maxOccurs="1"/>
+				<element name="statistics" type="statsType" minOccurs="0" maxOccurs="1"/>
+				<element name="notes" minOccurs="0" maxOccurs="1"/>
+			</sequence>
+		</complexType>
+	</element>
+
+	<complexType name="guidType">
+		<attribute name="guid" type="NMTOKEN" use="required"/>
+	</complexType>
+
+	<complexType name="identityType">
+		<sequence>
+			<element name="handle" minOccurs="0" maxOccurs="1">
+				<complexType>
+					<attribute name="primary" type="string"/>
+					<attribute name="first" type="string"/>
+					<attribute name="last" type="string"/>
+				</complexType>
+			</element>
+		</sequence>
+	</complexType>
+
+	<complexType name="vitalsType">
+		<attribute name="age" type="int"/>
+		<attribute name="gender">
+			<simpleType base="string">
+				<enumeration value="male"/>
+				<enumeration value="female"/>
+			</simpleType>
+		</attribute>
+	</complexType>
+
+	<complexType name="locationType">
+		<sequence>
+			<element name="political" minOccurs="0" maxOccurs="1">
+				<complexType>
+					<attribute name="country" type="string"/>
+					<attribute name="city" type="string"/>
+					<attribute name="state" type="string"/>
+				</complexType>
+			</element>
+			<element name="coordinates" minOccurs="0" maxOccurs="1">
+				<complexType>
+					<attribute name="latitude" type="decimal"/>
+					<attribute name="longitude" type="decimal"/>
+				</complexType>
+			</element>
+		</sequence>
+	</complexType>
+
+	<complexType name="statsType">
+		<attribute name="hitcount" type="int"/>
+	</complexType>
+
+</schema>

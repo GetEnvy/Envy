@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://schemas.getenvy.com/Skin.xsd" version="1.0" xmlns="http://www.w3.org/2001/XMLSchema">
+
+	<element name="EnvySkins">
+		<complexType>
+			<element name="EnvySkin" type="skinType" minOccurs="1" maxOccurs="unbounded"/>
+		</complexType>
+	</element>
+	<complexType name="skinType">
+		<all>
+			<attribute name="name" type="string"/>
+			<attribute name="path" type="string"/>
+			<attribute name="version" type="decimal"/>
+			<attribute name="author" type="string"/>
+			<attribute name="email" type="string"/>
+			<attribute name="link" type="uriReference"/>
+			<attribute name="description" type="string"/>
+			<attribute name="comments" type="string"/>
+			<attribute name="license" type="string"/>
+			<attribute name="platform" type="string"/>
+			<attribute name="language" type="string"/>
+			<attribute name="type">
+				<simpleType base="string">
+					<enumeration value="Skin"/>
+					<enumeration value="Language"/>
+					<enumeration value="Template"/>
+					<enumeration value="Schemas"/>
+					<enumeration value="Security"/>
+					<enumeration value="Plugin"/>
+					<enumeration value="Data"/>
+				</simpleType>
+			</attribute>
+			<attribute name="peertag" type="boolean"/>
+			<attribute name="peerinfo" type="string"/>
+		</all>
+	</complexType>
+
+</schema>

@@ -1,0 +1,26 @@
+//
+// GFLImageServices.idl
+//
+// This file will be processed by the MIDL tool to produce
+// the type library (GFLImageServices.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+import "Envy.idl";
+
+[
+	uuid(FCCC9C8C-45EF-4EB4-8AB1-5235585A631D),
+	version(1.0),
+	helpstring("GFLImageServices 1.0 Type Library")
+]
+library GFLImageServicesLib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(C9314782-CB91-40B8-B375-F631FF30C1C8)
+	]
+	coclass GFLReader
+	{
+		[default] interface IImageServicePlugin;
+	};
+};

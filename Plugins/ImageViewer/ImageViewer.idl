@@ -1,0 +1,37 @@
+//
+// ImageViewer.idl
+//
+// This file is part of Envy (getenvy.com) © 2008
+// Original author Michael Stokes released portions into the public domain.
+// You are free to redistribute and modify this page without any restrictions.
+//
+// This file will be processed by the MIDL tool to produce
+// the type library (ImageViewer.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+import "Envy.idl";
+
+[
+	uuid(2696CE9F-423F-4901-A109-0C85E6430266),
+	version(1.0),
+	helpstring("Envy Image Viewer Plugin Type Library")
+]
+library ImageViewerLib
+{
+	importlib("stdole2.tlb");
+
+	[
+		uuid(CFFA98CB-08D4-402B-8595-1E067D563060),
+		helpstring("Image Viewer Plugin")
+	]
+	coclass ImageViewerPlugin
+	{
+		[default] interface IGeneralPlugin;
+		interface IExecutePlugin;
+		interface ICommandPlugin;
+	};
+
+	interface IImageServicePlugin;
+};
+

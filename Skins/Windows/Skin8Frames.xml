@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<skin xmlns="http://schemas.getenvy.com/Skin.xsd" version="1.0">
+
+<manifest
+ name="Windows8 Frames"
+ author="Envy"
+ icon=""
+ description="Add Windows 8 Style Window Frames"
+ link="http://getenvy.com"
+ email="Contact(at)GetEnvy.com"
+ license="Persistent Public Domain (PPD)"
+ platform="Envy 1.0"
+ path="Windows"
+ version="1.0"
+ type="Skin"
+/>
+
+<windowskins>
+
+<!-- Main Window -->
+
+<windowskin>
+<image path="Frame8.png"/>
+<target window="CMainWnd"/>
+<parts>
+ <part name="TopLeft"		rect="0,30,30,28"/>
+ <part name="Top"		rect="40,30,100,28"/>
+ <part name="TopRight"		rect="148,30,100,28"/>
+ <part name="Left"		rect="0,100,6,40"/>
+ <part name="Right"		rect="242,100,6,40"/>
+ <part name="BottomLeft"	rect="0,182,40,6"/>
+ <part name="Bottom"		rect="20,182,200,6" mode="stretch"/>
+ <part name="BottomRight"	rect="242,182,6,6"/>
+ <part name="TopLeftAlt" 	rect="0,0,30,28"/>
+ <part name="TopAlt"		rect="40,0,100,28"/>
+ <part name="TopRightAlt"	rect="148,0,100,28"/>
+ <part name="LeftAlt"		rect="15,120,6,40"/>
+ <part name="RightAlt"		rect="227,144,6,14"/>
+ <part name="BottomLeftAlt"	rect="15,167,6,6"/>
+ <part name="BottomAlt"		rect="100,167,40,6"/>
+ <part name="BottomRightAlt"	rect="227,167,6,6"/>
+ <part name="MinimiseHover"	rect="82,116,26,20"/>
+ <part name="MinimiseDown"	rect="82,138,26,20"/>
+ <part name="MaximiseHover"	rect="108,116,26,20"/>
+ <part name="MaximiseDown"	rect="108,138,26,20"/>
+ <part name="CloseHover"	rect="134,116,45,20"/>
+ <part name="CloseDown" 	rect="134,138,45,20"/>
+ <part name="MenuHover" 	rect="216,117,17,23"/>
+ <part name="MenuDown"  	rect="6,1,17,23"/>
+</parts>
+<anchors>
+ <!--anchor name="System"	rect="6,1,21,20"-->
+ <anchor name="Menu"		rect="6,1,17,23"/>
+ <anchor name="Minimise"	rect="-103,2,26,20"/>
+ <anchor name="Maximise"	rect="-77,2,26,20"/>
+ <anchor name="Close"		rect="-51,2,45,20"/>
+</anchors>
+<region>
+ <shape type="rectangle"	rect="0,1,-1,-1"/>
+ <shape type="rectangle"	rect="6,0,27,1" combine="or"/>
+</region>
+<!--maximiseCrop rect="0,0,0,0"-->
+<minimumSize width="700" height="260"/>
+</windowskin>
+
+<!-- Settings Window / Dialogs -->
+
+<windowskin>
+<image path="Frame8.png"/>
+<target window="CDialog"/>
+<parts>
+ <part name="TopLeft"		rect="8,88,50,26"/>
+ <part name="Top"		rect="55,88,5,26"/>
+ <part name="TopRight"		rect="76,88,44,26"/>
+ <part name="Left"		rect="8,120,6,40"/>
+ <part name="Right"		rect="234,120,6,20"/>
+ <part name="BottomLeft"	rect="8,174,6,6"/>
+ <part name="Bottom"		rect="20,174,100,6"/>
+ <part name="BottomRight"	rect="234,174,6,6"/>
+ <part name="TopLeftAlt"	rect="8,60,50,26"/>
+ <part name="TopAlt"		rect="55,60,6,26"/>
+ <part name="TopRightAlt"	rect="76,60,44,26"/>
+ <part name="LeftAlt"		rect="22,120,6,40"/>
+ <part name="RightAlt"		rect="220,144,6,16"/>
+ <part name="BottomLeftAlt"	rect="22,160,6,6"/>
+ <part name="BottomAlt"		rect="30,160,100,6"/>
+ <part name="BottomRightAlt"	rect="220,160,6,6"/>
+ <part name="CloseHover"	rect="180,116,31,20"/>
+ <part name="CloseDown" 	rect="180,138,31,20"/>
+</parts>
+<anchors>
+ <anchor name="Close"		rect="-37,1,31,20"/>
+ <anchor name="Icon"		rect="5,5,16,16"/>
+</anchors>
+<region>
+ <shape type="rectangle"	rect="0,0,-1,-1"/>
+</region>
+<caption align="center" rect="24,1,-26,22" fontFace="Segoe UI" fontSize="14" fontWeight="Normal" color="000000" outlinecolor="" inactivecolor="101010"/>
+</windowskin>
+
+<!-- Download Monitor Window -->
+
+<windowskin>
+<image path="Frame8.png"/>
+<target window="CDownloadMonitorDlg"/>
+<parts>
+ <part name="TopLeft"		rect="8,88,50,26"/>
+ <part name="Top"		rect="55,88,5,26"/>
+ <part name="TopRight"		rect="60,88,60,26"/>
+ <part name="Left"		rect="8,120,6,40"/>
+ <part name="Right"		rect="234,120,6,20"/>
+ <part name="BottomLeft"	rect="8,174,6,6"/>
+ <part name="Bottom"		rect="20,174,100,6"/>
+ <part name="BottomRight"	rect="234,174,6,6"/>
+ <part name="TopLeftAlt"	rect="8,60,50,26"/>
+ <part name="TopAlt"		rect="55,60,6,26"/>
+ <part name="TopRightAlt"	rect="60,60,60,26"/>
+ <part name="LeftAlt"		rect="22,120,6,40"/>
+ <part name="RightAlt"		rect="220,144,6,20"/>
+ <part name="BottomLeftAlt"	rect="22,160,6,6"/>
+ <part name="BottomAlt"		rect="30,160,100,6"/>
+ <part name="BottomRightAlt"	rect="220,160,6,6"/>
+ <part name="MinimiseHover"	rect="30,116,26,20"/>
+ <part name="MinimiseDown" 	rect="30,138,26,20"/>
+ <part name="CloseHover"	rect="180,116,31,20"/>
+ <part name="CloseDown" 	rect="180,138,31,20"/>
+</parts>
+<anchors>
+ <anchor name="Icon"		rect="6,5,16,16"/>
+ <anchor name="Minimise"	rect="-63,1,26,20"/>
+ <anchor name="Close"		rect="-37,1,31,20"/>
+</anchors>
+<region>
+ <shape type="rectangle"	rect="0,0,-1,-1"/>
+</region>
+<caption align="center" rect="24,1,-64,22" fontFace="Segoe UI" fontSize="14" fontWeight="Normal" color="000000" outlinecolor="" inactivecolor="101010"/>
+</windowskin>
+
+<!-- Floating windows -->
+
+<windowskin>
+<image path="Frame8.png"/>
+<target window="CChildWnd"/>
+<parts>
+ <part name="TopLeft"		rect="8,88,50,26"/>
+ <part name="Top"		rect="55,88,5,26"/>
+ <part name="TopRight"		rect="140,88,100,26"/>
+ <part name="Left"		rect="8,120,6,40"/>
+ <part name="Right"		rect="234,120,6,20"/>
+ <part name="BottomLeft"	rect="8,174,6,6"/>
+ <part name="Bottom"		rect="20,174,100,6"/>
+ <part name="BottomRight"	rect="234,174,6,6"/>
+ <part name="TopLeftAlt"	rect="8,60,50,26"/>
+ <part name="TopAlt"		rect="55,60,6,26"/>
+ <part name="TopRightAlt"	rect="140,60,100,26"/>
+ <part name="LeftAlt"		rect="22,120,6,40"/>
+ <part name="RightAlt"		rect="220,144,6,20"/>
+ <part name="BottomLeftAlt"	rect="22,160,6,6"/>
+ <part name="BottomAlt"		rect="30,160,100,6"/>
+ <part name="BottomRightAlt"	rect="220,160,6,6"/>
+ <part name="MinimiseHover"	rect="30,116,26,20"/>
+ <part name="MinimiseDown" 	rect="30,138,26,20"/>
+ <part name="MaximiseHover"	rect="56,116,26,20"/>
+ <part name="MaximiseDown" 	rect="56,138,26,20"/>
+ <part name="CloseHover"	rect="134,116,45,20"/>
+ <part name="CloseDown" 	rect="134,138,45,20"/>
+</parts>
+<anchors>
+ <anchor name="Icon"		rect="6,5,16,16"/>
+ <anchor name="Minimise"	rect="-103,1,26,20"/>
+ <anchor name="Maximise"	rect="-77,1,26,20"/>
+ <anchor name="Close"		rect="-51,1,45,20"/>
+</anchors>
+<region>
+ <shape type="rectangle"	rect="0,0,-1,-1"/>
+</region>
+<caption align="center" rect="24,1,-102,22" fontFace="Segoe UI" fontSize="14" fontWeight="Normal" color="000000" outlinecolor="" inactivecolor="101010"/>
+</windowskin>
+
+</windowskins>
+
+</skin>

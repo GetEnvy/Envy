@@ -1,0 +1,20 @@
+﻿			<li class="active"><a class="noline" href="?id=0"><%= text_searchnew %></a></li>
+		</ul>
+		<div style="border: 1px #000 solid;padding: 5px;">
+		<!--To start a new search, type your search term in the box below and click <b>Start search</b>. If you want to restrict your search to a particular file type, select it from the list (recommended).-->
+		<p><%= text_searchinfo %></p>
+
+		<form method="get" action="newsearch">
+			<div style="text-align:right; width: 30em;">
+				<label><%= text_searchfor %></label>
+				<input type="text" name="search" class="regularinput" /><br/>
+				<label><%= text_filetype %></label>
+
+				<select name="schema" class="regularinput">
+					<option value=""><%= text_anyfile %></option>
+					<%= schema_option_list %>
+				</select><br />
+
+				<input type="submit" value="<%= text_searchstart %>" />
+			</div>
+		</form>

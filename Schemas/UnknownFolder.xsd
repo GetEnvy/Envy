@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://schemas.getenvy.com/UnknownFolder.xsd" xmlns="http://www.w3.org/2001/XMLSchema">
+
+	<element name="unknownFolders">
+		<complexType>
+			<element name="unknownFolder" type="unknownType" minOccurs="1" maxOccurs="unbounded"/>
+		</complexType>
+	</element>
+	<complexType name="unknownType">
+		<all>
+			<attribute name="title" type="string"/>
+		</all>
+	</complexType>
+
+</schema>

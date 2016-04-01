@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<template xmlns="http://schemas.getenvy.com/Template.xsd" version="1.0">
+<manifest	name="CSV Collection"
+			author="Envy"
+			version="1.0"
+			link="http://getenvy.com/"
+			email="contact@getenvy.com"
+			description="Simple .csv spreadsheet"
+			filename="Files.csv"
+/>
+<files>
+	<file type="main" path="csv.tpl"/>
+	<file type="evenfile" path="csv.row.tpl"/>
+	<file type="oddfile" path="csv.row.tpl"/>
+</files>
+<wizardText>
+</wizardText>
+</template>
