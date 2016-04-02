@@ -88,7 +88,7 @@
  <color name="Dialog.Panel.Text"			value="393630"/>
  <color name="Dialog.Menu.Back" 			value="FAF9F8"/>  <!--settings menu-->
  <color name="Dialog.Menu.Text" 			value="403A34"/>
- <color name="Banner.Back"				value="C4D6FE"/>  <!--library/browse headers-->
+ <color name="Banner.Back"				value="D2C2AE"/>  <!--library/browse headers-->
  <color name="Banner.Text"				value="FFFFFF"/>
 
  <color name="Media.Window.Back"			value="080400"/>

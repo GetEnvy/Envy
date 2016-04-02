@@ -76,7 +76,7 @@
 #include "WndSystem.h"
 #include "WndLibrary.h"
 
-#ifdef NOXP
+#if defined(NOXP) && (_MSC_VER >= 1800)		// VS2013+ for WinSDK 8.1+
 #include <VersionHelpers.h>
 #endif
 
@@ -267,7 +267,7 @@ CEnvyApp::CEnvyApp()
 //	BT_SetAppVersion( m_sVersionLong );	// Below
 	BT_SetFlags( BTF_INTERCEPTSUEF | BTF_SHOWADVANCEDUI | BTF_DESCRIBEERROR | BTF_DETAILEDMODE | BTF_ATTACHREPORT | BTF_EDITMAIL );
 	BT_SetSupportURL( L"http://getenvy.com" );
-	BT_SetSupportEMail( L"envyreports@lists.sourceforge.net" );
+	BT_SetSupportEMail( L"getenvy-reports@lists.sourceforge.net" );
 //	BT_SetSupportServer( L"http://bugtrap.getenvy.com/RequestHandler.aspx", 80 );
 	BT_AddRegFile( L"Settings.reg", L"HKEY_CURRENT_USER\\" REGISTRY_KEY );
 #endif
@@ -1450,7 +1450,7 @@ void CEnvyApp::GetVersionNumber()
 	//	Major ver 6:	Vista = 0, Server2008 = 0, Windows7 = 1, Windows8 = 2, Windows8.1 = 3
 	//	Major ver 10:	Windows10 = 0 (1000)
 
-#ifndef NOXP
+#if !defined(NOXP) || (_MSC_VER < 1800)
 	GetVersionEx( (OSVERSIONINFO*)&Windows );	// Deprecated
 	m_bIsWinXP = Windows.dwMajorVersion == 5;
 	m_nWinVer = Windows.dwMajorVersion * 100 + Windows.dwMinorVersion * 10;

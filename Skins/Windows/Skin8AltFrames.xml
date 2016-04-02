@@ -53,19 +53,19 @@
  <part name="MaximiseDown"	rect="207,150,27,20"/>
  <part name="CloseHover"	rect="234,120,47,20"/>
  <part name="CloseDown" 	rect="234,150,47,20"/>
- <part name="MenuHover" 	rect="5,33,21,22"/>
- <part name="MenuDown"  	rect="5,2,21,22"/>
+ <part name="MenuHover" 	rect="5,31,24,24"/>
+ <part name="MenuDown"  	rect="5,0,24,24"/>
 </parts>
 <anchors>
  <!--anchor name="System"	rect="5,3,21,20"-->
- <anchor name="Menu"		rect="5,2,21,22"/>
+ <anchor name="Menu"		rect="5,0,24,24"/>
  <anchor name="Minimise"	rect="-109,3,29,20"/>
  <anchor name="Maximise"	rect="-80,3,27,20"/>
  <anchor name="Close"		rect="-53,3,47,20"/>
 </anchors>
 <region>
  <shape type="rectangle"	rect="0,2,-1,-1"/>
- <shape type="rectangle"	rect="5,1,26,2" combine="or"/>
+ <shape type="rectangle"	rect="5,1,29,2" combine="or"/>
 </region>
 <!--maximiseCrop rect="0,0,0,0"-->
 <minimumSize width="700" height="260"/>

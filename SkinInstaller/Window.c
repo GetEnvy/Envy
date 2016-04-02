@@ -83,11 +83,11 @@ INT_PTR CALLBACK ExtractProc(HWND hwndDlg, UINT msg, WPARAM wParam, LPARAM lPara
 				TCHAR buf[MAX_PATH];
 				if ( szAuthor )
 				{
-#if defined(_MSC_VER) && (_MSC_VER >= 1600)
+#if defined(_MSC_VER) && (_MSC_VER >= 1800)
 					GetDlgItemText(hwndDlg, IDC_AUTH, buf, MAX_PATH);
 					size_t len = wcslen(buf);
 					_snwprintf(buf + len, MAX_PATH - len, L",  Updated by %s", szUpdates);
-#else	// VS2008
+#else	// VS2012~
 					TCHAR upbuf[MAX_PATH];
 					_snwprintf(upbuf, MAX_PATH, L",  Updated by %s", szUpdates);
 					GetDlgItemText(hwndDlg, IDC_AUTH, buf, MAX_PATH);

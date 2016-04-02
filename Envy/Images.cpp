@@ -670,7 +670,7 @@ BOOL CImages::DrawButton(CDC* pDC, const CRect* rc, CBitmap* bmButton, CBitmap* 
 	return TRUE;
 }
 
-BOOL CImages::DrawButtonMap(CDC* pDC, const CRect* rc, CBitmap* bmButtonMap, const int nState, BOOL bRTL)
+BOOL CImages::DrawButtonMap(CDC* pDC, const CRect* rc, CBitmap* bmButtonMap, const int nState, const int nOption /*0*/)
 {
 	if ( ! bmButtonMap->m_hObject || pDC == NULL || rc == NULL )
 		return FALSE;
@@ -707,7 +707,7 @@ BOOL CImages::DrawButtonMap(CDC* pDC, const CRect* rc, CBitmap* bmButtonMap, con
 	CDC dcMark;
 	dcMark.CreateCompatibleDC( pDC );
 	if ( Settings.General.LanguageRTL )
-		SetLayout( dcMark.m_hDC, bRTL ? LAYOUT_RTL : LAYOUT_BITMAPORIENTATIONPRESERVED );
+		SetLayout( dcMark.m_hDC, nOption == OPTION_RTL ? LAYOUT_RTL : LAYOUT_BITMAPORIENTATIONPRESERVED );
 
 	CBitmap* pOld;
 	pOld = (CBitmap*)dcMark.SelectObject( bmButtonMap );
@@ -718,31 +718,56 @@ BOOL CImages::DrawButtonMap(CDC* pDC, const CRect* rc, CBitmap* bmButtonMap, con
 	bf.SourceConstantAlpha = 0xFF;	// Opaque (Bitmap alpha only)
 	bf.AlphaFormat = AC_SRC_ALPHA;	// Use bitmap alpha
 
-	if ( rc->Width() > nEdge )
+	if ( nOption == OPTION_NOREPEAT )	// Centered (Icon)
 	{
-		for ( int nY = rc->top ; nY < rc->bottom ; nY += nSourceHeight )
+		int nWidth  = rc->Width();	// min( pInfo.bmWidth, rc->Width() );
+		int nHeight = rc->Height();	//min( nSourceHeight, rc->Height() );
+		int nLeft = rc->left;
+		int nTop  = rc->top;
+		if ( pInfo.bmWidth < nWidth )
 		{
-			for ( int nX = rc->left ; nX < rc->right - nEdge ; nX += nSourceWidth )
-			{
-				const int nWidth  = min( nSourceWidth, rc->right - nX - nEdge );
-				const int nHeight = min( nSourceHeight, rc->bottom - nY ); 	// No repeat (+ 1 to allow 1px overdraw?)
+			nLeft += ( nWidth - pInfo.bmWidth ) / 2;
+			nWidth = pInfo.bmWidth;
+		}
+		if ( nSourceHeight < nHeight )
+		{
+			nTop  += ( nHeight - nSourceHeight ) / 2;
+			nHeight = nSourceHeight;
+		}
 
-				if ( pInfo.bmBitsPixel == 32 )		// (Pre-multiplied for AlphaBlend Transparency)
-					pDC->AlphaBlend( nX, nY, nWidth, nHeight, &dcMark, 0, nPosition, nWidth, nHeight, bf );
-				else
-					pDC->BitBlt( nX, nY, nWidth, nHeight, &dcMark, 0, nPosition, SRCCOPY );
+		if ( pInfo.bmBitsPixel == 32 )		// (Pre-multiplied for AlphaBlend Transparency)
+			pDC->AlphaBlend( nLeft, nTop, nWidth, nHeight, &dcMark, 0, nPosition, nWidth, nHeight, bf );
+		else
+			pDC->BitBlt( nLeft, nTop, nWidth, nHeight, &dcMark, 0, nPosition, SRCCOPY );
+	}
+	else	// Default
+	{
+		if ( rc->Width() > nEdge )
+		{
+			for ( int nY = rc->top ; nY < rc->bottom ; nY += nSourceHeight )
+			{
+				for ( int nX = rc->left ; nX < rc->right - nEdge ; nX += nSourceWidth )
+				{
+					const int nWidth  = min( nSourceWidth, rc->right - nX - nEdge );
+					const int nHeight = min( nSourceHeight, rc->bottom - nY ); 	// No repeat (+ 1 to allow 1px overdraw?)
+
+					if ( pInfo.bmBitsPixel == 32 )		// (Pre-multiplied for AlphaBlend Transparency)
+						pDC->AlphaBlend( nX, nY, nWidth, nHeight, &dcMark, 0, nPosition, nWidth, nHeight, bf );
+					else
+						pDC->BitBlt( nX, nY, nWidth, nHeight, &dcMark, 0, nPosition, SRCCOPY );
+				}
 			}
 		}
-	}
 
-	if ( nEdge > 0 )
-	{
-		const int nHeight = min( nSourceHeight, rc->Height() ); 	// No repeat (+ 1 to allow 1px overdraw?)
+		if ( nEdge > 0 )
+		{
+			const int nHeight = min( nSourceHeight, rc->Height() ); 	// No repeat (+ 1 to allow 1px overdraw?)
 
-		if ( pInfo.bmBitsPixel == 32 )
-			pDC->AlphaBlend( rc->right - nEdge, rc->top, nEdge, nHeight, &dcMark, nSourceWidth, nPosition, nEdge, nHeight, bf );
-		else
-			pDC->BitBlt( rc->right - nEdge, rc->top, nEdge, nHeight, &dcMark, nSourceWidth, nPosition, SRCCOPY );
+			if ( pInfo.bmBitsPixel == 32 )
+				pDC->AlphaBlend( rc->right - nEdge, rc->top, nEdge, nHeight, &dcMark, nSourceWidth, nPosition, nEdge, nHeight, bf );
+			else
+				pDC->BitBlt( rc->right - nEdge, rc->top, nEdge, nHeight, &dcMark, nSourceWidth, nPosition, SRCCOPY );
+		}
 	}
 
 	dcMark.SelectObject( pOld );
@@ -774,17 +799,17 @@ BOOL CImages::DrawButtonState(CDC* pDC, const CRect* rc, const int nResource)
 
 	case IMAGE_SELECTED:	// + IMAGE_HIGHLIGHT
 		return DrawButton( pDC, rc, &m_bmSelected ) ||	// ToDo: &m_bmSelectedEdge?
-			DrawButtonMap( pDC, rc, &m_bmButtonMapSelect, STATE_DEFAULT, TRUE );
+			DrawButtonMap( pDC, rc, &m_bmButtonMapSelect, STATE_DEFAULT, OPTION_RTL );
 	case IMAGE_SELECTEDGREY:
 		return DrawButton( pDC, rc, &m_bmSelectedGrey ) ||
-			DrawButtonMap( pDC, rc, &m_bmButtonMapSelect, STATE_DEFAULT+1, TRUE ) ||
+			DrawButtonMap( pDC, rc, &m_bmButtonMapSelect, STATE_DEFAULT+1, OPTION_RTL ) ||
 			DrawButton( pDC, rc, &m_bmSelected );
 	case IMAGE_MENUSELECTED:
 		return DrawButton( pDC, rc, &m_bmMenuSelected, &m_bmMenuSelectedEdge, TRUE ) ||
-			DrawButtonMap( pDC, rc, &m_bmButtonMapMenuselect, STATE_HOVER, TRUE );
+			DrawButtonMap( pDC, rc, &m_bmButtonMapMenuselect, STATE_HOVER, OPTION_RTL );
 	case IMAGE_MENUDISABLED:
 		return DrawButton( pDC, rc, &m_bmMenuDisabled, &m_bmMenuDisabledEdge, TRUE ) ||
-			DrawButtonMap( pDC, rc, &m_bmButtonMapMenuselect, STATE_PRESS, TRUE );
+			DrawButtonMap( pDC, rc, &m_bmButtonMapMenuselect, STATE_PRESS, OPTION_RTL );
 	case IMAGE_PROGRESSBAR:
 		return DrawButton( pDC, rc, &m_bmProgress, &m_bmProgressEdge ) ||
 			DrawButtonMap( pDC, rc, &m_bmButtonMapProgressbar, STATE_HOVER );
@@ -797,19 +822,19 @@ BOOL CImages::DrawButtonState(CDC* pDC, const CRect* rc, const int nResource)
 
 	case ICONBUTTON_DEFAULT:
 		return DrawIconButton( pDC, rc, &m_bmIconButton ) ||
-			DrawButtonMap( pDC, rc, &m_bmButtonMapIconbox, STATE_DEFAULT );
+			DrawButtonMap( pDC, rc, &m_bmButtonMapIconbox, STATE_DEFAULT, OPTION_CENTERED );
 	case ICONBUTTON_HOVER:
 		return DrawIconButton( pDC, rc, &m_bmIconButtonHover ) ||
-			DrawButtonMap( pDC, rc, &m_bmButtonMapIconbox, STATE_HOVER );
+			DrawButtonMap( pDC, rc, &m_bmButtonMapIconbox, STATE_HOVER, OPTION_CENTERED );
 	case ICONBUTTON_PRESS:
 		return DrawIconButton( pDC, rc, &m_bmIconButtonPress ) ||
-			DrawButtonMap( pDC, rc, &m_bmButtonMapIconbox, STATE_PRESS );
+			DrawButtonMap( pDC, rc, &m_bmButtonMapIconbox, STATE_PRESS, OPTION_CENTERED );
 	case ICONBUTTON_ACTIVE:
 		return DrawIconButton( pDC, rc, &m_bmIconButtonActive ) ||
-			DrawButtonMap( pDC, rc, &m_bmButtonMapIconbox, STATE_ACTIVE );
+			DrawButtonMap( pDC, rc, &m_bmButtonMapIconbox, STATE_ACTIVE, OPTION_CENTERED );
 	case ICONBUTTON_DISABLED:
 		return DrawIconButton( pDC, rc, &m_bmIconButtonDisabled ) ||
-			DrawButtonMap( pDC, rc, &m_bmButtonMapIconbox, STATE_DISABLED );
+			DrawButtonMap( pDC, rc, &m_bmButtonMapIconbox, STATE_DISABLED, OPTION_CENTERED );
 
 	case RICHBUTTON_DEFAULT:
 		return DrawButton( pDC, rc, &m_bmRichButton, &m_bmRichButtonEdge ) ||
@@ -829,19 +854,19 @@ BOOL CImages::DrawButtonState(CDC* pDC, const CRect* rc, const int nResource)
 
 	case TOOLBARBUTTON_DEFAULT:
 		return DrawButton( pDC, rc, &m_bmToolbarButton, &m_bmToolbarButtonEdge, TRUE ) ||
-			DrawButtonMap( pDC, rc, &m_bmButtonMapToolbar, STATE_DEFAULT, TRUE );
+			DrawButtonMap( pDC, rc, &m_bmButtonMapToolbar, STATE_DEFAULT, OPTION_RTL );
 	case TOOLBARBUTTON_HOVER:
 		return DrawButton( pDC, rc, &m_bmToolbarButtonHover, &m_bmToolbarButtonHoverEdge, TRUE ) ||
-			DrawButtonMap( pDC, rc, &m_bmButtonMapToolbar, STATE_HOVER, TRUE );
+			DrawButtonMap( pDC, rc, &m_bmButtonMapToolbar, STATE_HOVER, OPTION_RTL );
 	case TOOLBARBUTTON_PRESS:
 		return DrawButton( pDC, rc, &m_bmToolbarButtonPress, &m_bmToolbarButtonPressEdge, TRUE ) ||
-			DrawButtonMap( pDC, rc, &m_bmButtonMapToolbar, STATE_PRESS, TRUE );
+			DrawButtonMap( pDC, rc, &m_bmButtonMapToolbar, STATE_PRESS, OPTION_RTL );
 	case TOOLBARBUTTON_ACTIVE:
 		return DrawButton( pDC, rc, &m_bmToolbarButtonActive, &m_bmToolbarButtonActiveEdge, TRUE ) ||
-			DrawButtonMap( pDC, rc, &m_bmButtonMapToolbar, STATE_ACTIVE, TRUE );
+			DrawButtonMap( pDC, rc, &m_bmButtonMapToolbar, STATE_ACTIVE, OPTION_RTL );
 	case TOOLBARBUTTON_DISABLED:
 		return DrawButton( pDC, rc, &m_bmToolbarButtonDisabled, &m_bmToolbarButtonDisabledEdge, TRUE ) ||
-			DrawButtonMap( pDC, rc, &m_bmButtonMapToolbar, STATE_DISABLED, TRUE );
+			DrawButtonMap( pDC, rc, &m_bmButtonMapToolbar, STATE_DISABLED, OPTION_RTL );
 	case TOOLBAR_SEPARATOR:
 		return DrawButton( pDC, rc, &m_bmToolbarSeparator );
 

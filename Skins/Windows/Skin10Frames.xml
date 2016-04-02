@@ -24,13 +24,13 @@
 <target window="CMainWnd"/>
 <parts>
  <part name="TopLeft"		rect="0,0,50,33"/>
- <part name="Top"		rect="40,0,20,33"/>
+ <part name="Top"		rect="42,0,20,33"/>
  <part name="TopRight"		rect="141,0,139,33"/>
  <part name="Left"		rect="0,4,1,24"/>
  <part name="Right"		rect="0,4,1,24"/>
  <part name="Bottom"		rect="40,2,20,1"/>
  <part name="TopLeftAlt" 	rect="0,33,50,33"/>
- <part name="TopAlt"		rect="40,33,20,33"/>
+ <part name="TopAlt"		rect="42,33,20,33"/>
  <part name="TopRightAlt"	rect="141,33,139,33"/>
  <part name="LeftAlt"		rect="0,36,1,24"/>
  <part name="RightAlt"		rect="0,36,1,24"/>
@@ -52,7 +52,7 @@
 </anchors>
 <region>
  <shape type="rectangle"	rect="0,2,-1,-1"/>
- <shape type="rectangle"	rect="14,0,36,2" combine="or"/>
+ <shape type="rectangle"	rect="9,0,41,2" combine="or"/>
 </region>
 <!--maximisecrop rect="0,0,0,0"-->
 <minimumsize width="700" height="260"/>

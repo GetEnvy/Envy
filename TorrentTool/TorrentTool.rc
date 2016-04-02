@@ -25,7 +25,7 @@ LANGUAGE LANG_NEUTRAL, SUBLANG_NEUTRAL
 //
 
 VS_VERSION_INFO VERSIONINFO
- FILEVERSION 1,0,1
+ FILEVERSION 1,0,0
  PRODUCTVERSION 1,0,0,0
  FILEFLAGSMASK 0x3fL
 #ifdef _DEBUG
@@ -44,7 +44,7 @@ BEGIN
             VALUE "Comments", "Envy Torrent Tool"
             VALUE "CompanyName", "Envy Development Team"
             VALUE "FileDescription", "Envy Torrent Tool"
-            VALUE "FileVersion", "1.0.1"
+            VALUE "FileVersion", "1.0.0"
             VALUE "InternalName", "TorrentTool"
             VALUE "LegalCopyright", "© Envy 2016  (2008-2014)"
             VALUE "OriginalFilename", "TorrentTool.exe"

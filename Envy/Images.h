@@ -126,7 +126,7 @@ public:
 	BOOL		PreBlend(HBITMAP hButton);
 	BOOL		SkinImage(CBitmap* bmImage, LPCTSTR pszName, BOOL bAllowAlpha = TRUE, UINT nStates = 1);
 	BOOL		DrawButtonState(CDC* pDC, const CRect* rc, const int nResource);
-	BOOL		DrawButtonMap(CDC* pDC, const CRect* rc, CBitmap* bmButton, const int nState = 0, BOOL bRTL = FALSE);
+	BOOL		DrawButtonMap(CDC* pDC, const CRect* rc, CBitmap* bmButton, const int nState = 0, const int nOption = 0);
 	BOOL		DrawButton(CDC* pDC, const CRect* rc, CBitmap* bmButton, CBitmap* bmButtonEdge = NULL, BOOL bRTL = FALSE);
 	BOOL		DrawIconButton(CDC* pDC, const CRect* rc, CBitmap* bmButton);
 	BOOL		DrawImage(CDC* pDC, const CRect* prc, CBitmap* bmImage, BOOL bRepeat = TRUE);
@@ -135,13 +135,19 @@ public:
 extern CImages Images;
 
 
-// Map order:
+// Map Order:
 #define STATE_DEFAULT			0
 #define STATE_HOVER				1
 #define STATE_PRESS				2
 #define STATE_ACTIVE			3
 #define STATE_DISABLED			4
 #define STATE_COUNT 			5
+
+// Map Options:
+#define OPTION_NONE				0
+#define OPTION_NOREPEAT			1
+#define OPTION_CENTERED			1
+#define OPTION_RTL				2
 
 // External References
 #define IMAGE_BANNER			0

@@ -387,7 +387,7 @@
 
 	static int QRinput_encodeBitStream(QRinput_List *entry, int version)
 	{
-		int words, ret;
+		int words, ret = 0;
 		QRinput_List *st1 = NULL, *st2 = NULL;
 
 		if(entry->bstream != NULL) {
@@ -420,9 +420,7 @@
 
 			QRinput_List_freeEntry(st1);
 			QRinput_List_freeEntry(st2);
-			if(ret < 0) return -1;
 		} else {
-			ret = 0;
 			switch(entry->mode) {
 		//	case QR_MODE_NUM:
 		//		ret = QRinput_encodeModeNum(entry, version);
@@ -445,9 +443,9 @@
 			//default:
 			//	break;
 			}
-			if(ret < 0) return -1;
 		}
 
+		if(ret < 0) return -1;
 		return BitStream_size(entry->bstream);
 	}
 
@@ -491,9 +489,7 @@
 			prev = version;
 			bits = QRinput_estimateBitStreamSize(input, prev);
 			version = QRspec_getMinimumVersion((bits + 7) / 8, input->level);
-			if (version < 0) {
-				return -1;
-			}
+			if (version < 0) return -1;
 		} while (version > prev);
 
 		return version;

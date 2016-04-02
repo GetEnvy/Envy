@@ -138,13 +138,13 @@
 </colorScheme>
 
 <watermarks>
-  <watermark target="CWndTabBar"			path="Windows\RibbonBaseline.png"/>
-  <watermark target="CCoolMenuBar"			path="Windows\RibbonMenubar.png"/>
-  <watermark target="CCoolMenu" 			path="Windows\MenuBkg.png"/>
-  <watermark target="CCoolMenu.Hover"			path="Windows\MenuHover.png"/>
-  <watermark target="CMonitorBar"			path="Windows\RibbonMonitorBkg.png"/>
-  <watermark target="CHashProgressBar"			path="Windows\HashWnd.png"/>
-  <watermark target="CMainWnd.Toolbar"			path="Windows\RibbonTabsBkg.png"/>
+  <watermark target="CWndTabBar"			path="SkinVista\RibbonBaseline.png"/>
+  <watermark target="CCoolMenuBar"			path="SkinVista\RibbonMenubar.png"/>
+  <watermark target="CCoolMenu" 			path="SkinVista\MenuBkg.png"/>
+  <watermark target="CCoolMenu.Hover"			path="SkinVista\MenuHover.png"/>
+  <watermark target="CMonitorBar"			path="SkinVista\RibbonMonitorBkg.png"/>
+  <watermark target="CHashProgressBar"			path="SkinVista\HashWnd.png"/>
+  <watermark target="CMainWnd.Toolbar"			path="SkinVista\RibbonTabsBkg.png"/>
   <watermark target="CMediaFrame.Toolbar"		path="Mediabar.png"/>
   <!--watermark target="CMediaList.Toolbar"		path="ToolbarLt.png"-->
   <watermark target="CDownloadTabBar"			path="DownloadgroupsToolbar.png"/>
@@ -173,29 +173,29 @@
   <watermark target="CSecurityWnd.Toolbar"  		path="Toolbar.png"/>
   <watermark target="CSearchWnd.Full.Toolbar"		path="ToolbarLt.png"/>
   <watermark target="CSearchWnd.Panel.Toolbar"		path="Toolbar.png"/>
-  <watermark target="CSearchPanel"			path="Windows\SidebarHeader.png"/>
-  <watermark target="CSearchPanel.Footer"		path="Windows\SidebarFooter.jpg"/>
-  <watermark target="CHomePanel"			path="Windows\SidebarHeader.png"/>
-  <watermark target="CHomePanel.Footer" 		path="Windows\SidebarFooter.jpg"/>
+  <watermark target="CSearchPanel"			path="SkinVista\SidebarHeader.png"/>
+  <watermark target="CSearchPanel.Footer"		path="SkinVista\SidebarFooter.jpg"/>
+  <watermark target="CHomePanel"			path="SkinVista\SidebarHeader.png"/>
+  <watermark target="CHomePanel.Footer" 		path="SkinVista\SidebarFooter.jpg"/>
   <!--watermark target="CHomeBox"			path=""-->
-  <watermark target="CIRCPanel"				path="Windows\SidebarHeader.png"/>
-  <watermark target="CIRCPanel.Footer" 			path="Windows\SidebarFooter.jpg"/>
-  <watermark target="CIRCWaterMarkPanel"		path="Windows\MenuBkg.png"/>
+  <watermark target="CIRCPanel"				path="SkinVista\SidebarHeader.png"/>
+  <watermark target="CIRCPanel.Footer" 			path="SkinVista\SidebarFooter.jpg"/>
+  <watermark target="CIRCWaterMarkPanel"		path="SkinVista\MenuBkg.png"/>
   <watermark target="CIRCHeaderPanel"			path="BrowseBanner.png"/>
   <watermark target="CLibraryHeaderPanel"		path="BrowseBanner.png"/>
   <watermark target="CBrowseHeaderCtrl.Toolbar" 	path="BrowseBanner.png"/>
   <!--watermark target="CPanelWnd.Caption" 		path=""-->
-  <watermark target="CIRCUsersBox.Caption"		path="Windows\SidebarCaption.png"/>
-  <watermark target="CIRCChannelsBox.Caption"		path="Windows\SidebarCaptionAlt.png"/>
-  <watermark target="CHomeConnectionBox.Caption" 	path="Windows\SidebarCaptionAlt.png"/>
-  <watermark target="CHomeLibraryBox.Caption"		path="Windows\SidebarCaption.png"/>
-  <watermark target="CHomeDownloadsBox.Caption" 	path="Windows\SidebarCaption.png"/>
-  <watermark target="CHomeUploadsBox.Caption"		path="Windows\SidebarCaption.png"/>
-  <watermark target="CHomeTorrentsBox.Caption"		path="Windows\SidebarCaption.png"/>
-  <watermark target="CSearchInputBox.Caption"		path="Windows\SidebarCaptionAlt.png"/>
-  <watermark target="CSearchResultsBox.Caption" 	path="Windows\SidebarCaption.png"/>
-  <watermark target="CSearchSchemaBox.Caption"  	path="Windows\SidebarCaption.png"/>
-  <watermark target="CSearchAdvancedBox.Caption" 	path="Windows\SidebarCaption.png"/>
+  <watermark target="CIRCUsersBox.Caption"		path="SkinVista\SidebarCaption.png"/>
+  <watermark target="CIRCChannelsBox.Caption"		path="SkinVista\SidebarCaptionAlt.png"/>
+  <watermark target="CHomeConnectionBox.Caption" 	path="SkinVista\SidebarCaptionAlt.png"/>
+  <watermark target="CHomeLibraryBox.Caption"		path="SkinVista\SidebarCaption.png"/>
+  <watermark target="CHomeDownloadsBox.Caption" 	path="SkinVista\SidebarCaption.png"/>
+  <watermark target="CHomeUploadsBox.Caption"		path="SkinVista\SidebarCaption.png"/>
+  <watermark target="CHomeTorrentsBox.Caption"		path="SkinVista\SidebarCaption.png"/>
+  <watermark target="CSearchInputBox.Caption"		path="SkinVista\SidebarCaptionAlt.png"/>
+  <watermark target="CSearchResultsBox.Caption" 	path="SkinVista\SidebarCaption.png"/>
+  <watermark target="CSearchSchemaBox.Caption"  	path="SkinVista\SidebarCaption.png"/>
+  <watermark target="CSearchAdvancedBox.Caption" 	path="SkinVista\SidebarCaption.png"/>
   <!--watermark target="CSearchInputBox"  		path="MenuBkg.png"-->
   <!--watermark target="CSearchAdvancedBox"		path="MenuBkg.png"-->
   <!--watermark target="CSearchResultsBox"  		path="MenuBkg.png"-->
@@ -203,19 +203,19 @@
   <!--watermark target="CHomeViewCtrl.Header"		path="###.png"-->
   <!--watermark target="CHomeViewCtrl.HeaderRepeat"	path="###.png"-->
 
-  <watermark target="CWndTabBar.Active" 		path="Windows\RibbonBaselineTabActive.png"/>
-  <watermark target="CWndTabBar.Hover"  		path="Windows\RibbonBaselineTabActive.png"/>
-  <watermark target="CWndTabBar.Active.Hover"  		path="Windows\RibbonBaselineTabAlt.png"/>
+  <watermark target="CWndTabBar.Active" 		path="SkinVista\RibbonBaselineTabActive.png"/>
+  <watermark target="CWndTabBar.Hover"  		path="SkinVista\RibbonBaselineTabActive.png"/>
+  <watermark target="CWndTabBar.Active.Hover"  		path="SkinVista\RibbonBaselineTabAlt.png"/>
   <watermark target="CDownloadTabBar.Active" 		path="DownloadgroupsTab.png"/>
   <watermark target="CDownloadTabBar.Hover" 		path="DownloadgroupsHover.png"/>
   <watermark target="CDownloadTabBar.Active.Hover" 	path="DownloadgroupsHover.png"/>
-  <watermark target="CCoolMenuItem.Hover" 		path="Windows\CoolMenuBarHover.png"/>
-  <watermark target="CCoolMenuItem.Down" 		path="Windows\CoolMenuBarDown.png"/>
-  <!--watermark target="CCoolbar.Disabled" 		path="Windows\ToolbarButtonHover.png"-->
-  <!--watermark target="CCoolbar.Up" 			path="Windows\ToolbarButtonHover.png"-->
-  <watermark target="CCoolbar.Down" 			path="Windows\ToolbarButtonDown.png"/>
-  <watermark target="CCoolbar.Hover" 			path="Windows\ToolbarButtonHover.png"/>
-  <watermark target="CCoolbar.Checked" 			path="Windows\ToolbarButtonDown.png"/>
+  <watermark target="CCoolMenuItem.Hover" 		path="SkinVista\CoolMenuBarHover.png"/>
+  <watermark target="CCoolMenuItem.Down" 		path="SkinVista\CoolMenuBarDown.png"/>
+  <!--watermark target="CCoolbar.Disabled" 		path="SkinVista\ToolbarButtonHover.png"-->
+  <!--watermark target="CCoolbar.Up" 			path="SkinVista\ToolbarButtonHover.png"-->
+  <watermark target="CCoolbar.Down" 			path="SkinVista\ToolbarButtonDown.png"/>
+  <watermark target="CCoolbar.Hover" 			path="SkinVista\ToolbarButtonHover.png"/>
+  <watermark target="CCoolbar.Checked" 			path="SkinVista\ToolbarButtonDown.png"/>
   <watermark target="CCoolbar.Separator"		path="ToolbarSeparator.png"/>
 </watermarks>
 
@@ -368,7 +368,7 @@
 <!-- HOME HEADER -->
 
 <windowSkin>
-<image path="Windows\Header.png"/>
+<image path="SkinVista\Header.png"/>
 <target window="CHomeWnd.Panel"/>
 <target window="CIRCWnd.Panel"/>
 <parts>
@@ -382,7 +382,7 @@
 <!-- SEARCH HEADER -->
 
 <windowSkin>
-<image path="Windows\Header.png"/>
+<image path="SkinVista\Header.png"/>
 <target window="CSearchWnd.Panel"/>
 <parts>
  <part name="TopLeft"		rect="42,0,110,28"/>
@@ -401,7 +401,7 @@
 <!-- TRANSFER DOWNLOADS HEADER -->
 
 <windowSkin>
-<image path="Windows\Header.png"/>
+<image path="SkinVista\Header.png"/>
 <target window="CDownloadsWnd.Panel"/>
 <parts>
  <part name="TopLeft"		rect="26,0,110,27"/>
@@ -414,7 +414,7 @@
 <!-- TRANSFER UPLOADS HEADER -->
 
 <windowSkin>
-<image path="Windows\Header.png"/>
+<image path="SkinVista\Header.png"/>
 <target window="CUploadsWnd.Panel"/>
 <parts>
  <part name="TopLeft"		rect="42,0,110,27"/>
@@ -427,7 +427,7 @@
 <!-- NETWORK NEIGHBORS HEADER -->
 
 <windowSkin>
-<image path="Windows\Header.png"/>
+<image path="SkinVista\Header.png"/>
 <target window="CNeighboursWnd.Panel"/>
 <parts>
  <part name="TopLeft"		rect="20,0,110,27"/>
@@ -440,7 +440,7 @@
 <!-- NETWORK SYSTEM HEADER -->
 
 <windowSkin>
-<image path="Windows\Header.png"/>
+<image path="SkinVista\Header.png"/>
 <target window="CSystemWnd.Panel"/>
 <parts>
  <part name="TopLeft"		rect="44,0,110,27"/>
@@ -453,7 +453,7 @@
 <!-- LIBRARY HEADER -->
 
 <windowSkin>
-<image path="Windows\Header.png"/>
+<image path="SkinVista\Header.png"/>
 <target window="CLibraryWnd.Panel"/>
 <parts>
  <part name="TopLeft"		rect="49,0,116,27"/>
@@ -466,7 +466,7 @@
 <!-- MEDIA PLAYER HEADER -->
 
 <windowSkin>
-<image path="Windows\Header.png"/>
+<image path="SkinVista\Header.png"/>
 <target window="CMediaWnd.Panel"/>
 <parts>
  <part name="TopLeft"		rect="18,0,112,27"/>
@@ -485,7 +485,7 @@
 <!-- Other Panel Headers -->
 
 <windowSkin>
-<image path="Windows\Header.png"/>
+<image path="SkinVista\Header.png"/>
 <target window="CSecurityWnd.Panel"/>
 <target window="CSchedulerWnd.Panel"/>
 <target window="CHostCacheWnd.Panel"/>
@@ -578,8 +578,8 @@
 <!-- English Default Navbar -->
 
 <windowSkin>
-<image type="image" path="Windows\RibbonTabs.png"/>
-<image type="watermark" path="Windows\RibbonTabsBkg.png"/>
+<image type="image" path="SkinVista\RibbonTabs.png"/>
+<image type="watermark" path="SkinVista\RibbonTabsBkg.png"/>
 <target window="CMainTabBarCtrl"/>
 <!--
 <target window="CMainTabBarCtrl.Basic"/>
@@ -631,8 +631,8 @@
 <!-- Afrikaans -->
 
 <windowSkin>
-<image type="image" language="af" path="Windows\RibbonTabs_af.png"/>
-<image type="watermark" path="Windows\RibbonTabsBkg.png"/>
+<image type="image" language="af" path="SkinVista\RibbonTabs_af.png"/>
+<image type="watermark" path="SkinVista\RibbonTabsBkg.png"/>
 <target window="CMainTabBarCtrl"/>
 <parts>
  <part name="_ID_TAB_HOME.Up"		rect="0,0,74,24"/>
@@ -679,8 +679,8 @@
 <!-- Catalan -->
 
 <windowSkin>
-<image type="image" language="ca" path="Windows\RibbonTabs_ca.png"/>
-<image type="watermark" path="Windows\RibbonTabsBkg.png"/>
+<image type="image" language="ca" path="SkinVista\RibbonTabs_ca.png"/>
+<image type="watermark" path="SkinVista\RibbonTabsBkg.png"/>
 <target window="CMainTabBarCtrl"/>
 <parts>
  <part name="_ID_TAB_HOME.Up"		rect="0,0,68,24"/>
@@ -727,8 +727,8 @@
 <!-- Czech -->
 
 <windowSkin>
-<image type="image" language="cz" path="Windows\RibbonTabs_cz.png"/>
-<image type="watermark" path="Windows\RibbonTabsBkg.png"/>
+<image type="image" language="cz" path="SkinVista\RibbonTabs_cz.png"/>
+<image type="watermark" path="SkinVista\RibbonTabsBkg.png"/>
 <target window="CMainTabBarCtrl"/>
 <parts>
  <part name="_ID_TAB_HOME.Up"		rect="0,0,70,24"/>
@@ -775,8 +775,8 @@
 <!-- German -->
 
 <windowSkin>
-<image type="image" language="de" path="Windows\RibbonTabs_de.png"/>
-<image type="watermark" path="Windows\RibbonTabsBkg.png"/>
+<image type="image" language="de" path="SkinVista\RibbonTabs_de.png"/>
+<image type="watermark" path="SkinVista\RibbonTabsBkg.png"/>
 <target window="CMainTabBarCtrl"/>
 <parts>
  <part name="_ID_TAB_HOME.Up"		rect="0,0,70,24"/>
@@ -823,8 +823,8 @@
 <!-- Estonian -->
 
 <windowSkin>
-<image type="image" language="ee" path="Windows\RibbonTabs_ee.png"/>
-<image type="watermark" path="Windows\RibbonTabsBkg.png"/>
+<image type="image" language="ee" path="SkinVista\RibbonTabs_ee.png"/>
+<image type="watermark" path="SkinVista\RibbonTabsBkg.png"/>
 <target window="CMainTabBarCtrl"/>
 <parts>
  <part name="_ID_TAB_HOME.Up"		rect="0,0,70,24"/>
@@ -871,8 +871,8 @@
 <!-- Spanish -->
 
 <windowSkin>
-<image type="image" language="es" path="Windows\RibbonTabs_es.png"/>
-<image type="watermark" path="Windows\RibbonTabsBkg.png"/>
+<image type="image" language="es" path="SkinVista\RibbonTabs_es.png"/>
+<image type="watermark" path="SkinVista\RibbonTabsBkg.png"/>
 <target window="CMainTabBarCtrl"/>
 <parts>
  <part name="_ID_TAB_HOME.Up"		rect="0,0,68,24"/>
@@ -919,8 +919,8 @@
 <!-- Finnish -->
 
 <windowSkin>
-<image type="image" language="fi" path="Windows\RibbonTabs_fi.png"/>
-<image type="watermark" path="Windows\RibbonTabsBkg.png"/>
+<image type="image" language="fi" path="SkinVista\RibbonTabs_fi.png"/>
+<image type="watermark" path="SkinVista\RibbonTabsBkg.png"/>
 <target window="CMainTabBarCtrl"/>
 <parts>
  <part name="_ID_TAB_HOME.Up"		rect="0,0,64,24"/>
@@ -967,8 +967,8 @@
 <!-- French -->
 
 <windowSkin>
-<image type="image" language="fr" path="Windows\RibbonTabs_fr.png"/>
-<image type="watermark" path="Windows\RibbonTabsBkg.png"/>
+<image type="image" language="fr" path="SkinVista\RibbonTabs_fr.png"/>
+<image type="watermark" path="SkinVista\RibbonTabsBkg.png"/>
 <target window="CMainTabBarCtrl"/>
 <parts>
  <part name="_ID_TAB_HOME.Up"		rect="0,0,74,24"/>
@@ -1015,8 +1015,8 @@
 <!-- Croatian -->
 
 <windowSkin>
-<image type="image" language="hr" path="Windows\RibbonTabs_hr.png"/>
-<image type="watermark" path="Windows\RibbonTabsBkg.png"/>
+<image type="image" language="hr" path="SkinVista\RibbonTabs_hr.png"/>
+<image type="watermark" path="SkinVista\RibbonTabsBkg.png"/>
 <target window="CMainTabBarCtrl"/>
 <parts>
  <part name="_ID_TAB_HOME.Up"		rect="0,0,70,24"/>
@@ -1063,8 +1063,8 @@
 <!-- Hungarian -->
 
 <windowSkin>
-<image type="image" language="hu" path="Windows\RibbonTabs_hu.png"/>
-<image type="watermark" path="Windows\RibbonTabsBkg.png"/>
+<image type="image" language="hu" path="SkinVista\RibbonTabs_hu.png"/>
+<image type="watermark" path="SkinVista\RibbonTabsBkg.png"/>
 <target window="CMainTabBarCtrl"/>
 <parts>
  <part name="_ID_TAB_HOME.Up"		rect="0,0,76,24"/>
@@ -1111,8 +1111,8 @@
 <!-- Italian -->
 
 <windowSkin>
-<image type="image" language="it" path="Windows\RibbonTabs_it.png"/>
-<image type="watermark" path="Windows\RibbonTabsBkg.png"/>
+<image type="image" language="it" path="SkinVista\RibbonTabs_it.png"/>
+<image type="watermark" path="SkinVista\RibbonTabsBkg.png"/>
 <target window="CMainTabBarCtrl"/>
 <parts>
  <part name="_ID_TAB_HOME.Up"		rect="0,0,70,24"/>
@@ -1159,8 +1159,8 @@
 <!-- Lithuanian -->
 
 <windowSkin>
-<image type="image" language="lt" path="Windows\RibbonTabs_lt.png"/>
-<image type="watermark" path="Windows\RibbonTabsBkg.png"/>
+<image type="image" language="lt" path="SkinVista\RibbonTabs_lt.png"/>
+<image type="watermark" path="SkinVista\RibbonTabsBkg.png"/>
 <target window="CMainTabBarCtrl"/>
 <parts>
  <part name="_ID_TAB_HOME.Up"		rect="0,0,70,24"/>
@@ -1207,8 +1207,8 @@
 <!-- Dutch -->
 
 <windowSkin>
-<image type="image" language="nl" path="Windows\RibbonTabs_nl.png"/>
-<image type="watermark" path="Windows\RibbonTabsBkg.png"/>
+<image type="image" language="nl" path="SkinVista\RibbonTabs_nl.png"/>
+<image type="watermark" path="SkinVista\RibbonTabsBkg.png"/>
 <target window="CMainTabBarCtrl"/>
 <parts>
  <part name="_ID_TAB_HOME.Up"		rect="0,0,88,24"/>
@@ -1255,8 +1255,8 @@
 <!-- Norwegian -->
 
 <windowSkin>
-<image type="image" language="no" path="Windows\RibbonTabs_no.png"/>
-<image type="watermark" path="Windows\RibbonTabsBkg.png"/>
+<image type="image" language="no" path="SkinVista\RibbonTabs_no.png"/>
+<image type="watermark" path="SkinVista\RibbonTabsBkg.png"/>
 <target window="CMainTabBarCtrl"/>
 <parts>
  <part name="_ID_TAB_HOME.Up"		rect="0,0,68,24"/>
@@ -1303,8 +1303,8 @@
 <!-- Polish -->
 
 <windowSkin>
-<image type="image" language="pl" path="Windows\RibbonTabs_pl.png"/>
-<image type="watermark" path="Windows\RibbonTabsBkg.png"/>
+<image type="image" language="pl" path="SkinVista\RibbonTabs_pl.png"/>
+<image type="watermark" path="SkinVista\RibbonTabsBkg.png"/>
 <target window="CMainTabBarCtrl"/>
 <parts>
  <part name="_ID_TAB_HOME.Up"		rect="0,0,70,24"/>
@@ -1351,8 +1351,8 @@
 <!-- Portuguese -->
 
 <windowSkin>
-<image type="image" language="pt" path="Windows\RibbonTabs_pt.png"/>
-<image type="watermark" path="Windows\RibbonTabsBkg.png"/>
+<image type="image" language="pt" path="SkinVista\RibbonTabs_pt.png"/>
+<image type="watermark" path="SkinVista\RibbonTabsBkg.png"/>
 <target window="CMainTabBarCtrl"/>
 <parts>
  <part name="_ID_TAB_HOME.Up"		rect="0,0,62,24"/>
@@ -1399,8 +1399,8 @@
 <!-- Russian -->
 
 <windowSkin>
-<image type="image" language="ru" path="Windows\RibbonTabs_ru.png"/>
-<image type="watermark" path="Windows\RibbonTabsBkg.png"/>
+<image type="image" language="ru" path="SkinVista\RibbonTabs_ru.png"/>
+<image type="watermark" path="SkinVista\RibbonTabsBkg.png"/>
 <target window="CMainTabBarCtrl"/>
 <parts>
  <part name="_ID_TAB_HOME.Up"		rect="0,0,74,24"/>
@@ -1447,8 +1447,8 @@
 <!-- Slovenian -->
 
 <windowSkin>
-<image type="image" language="sl" path="Windows\RibbonTabs_sl.png"/>
-<image type="watermark" path="Windows\RibbonTabsBkg.png"/>
+<image type="image" language="sl" path="SkinVista\RibbonTabs_sl.png"/>
+<image type="watermark" path="SkinVista\RibbonTabsBkg.png"/>
 <target window="CMainTabBarCtrl"/>
 <parts>
  <part name="_ID_TAB_HOME.Up"		rect="0,0,70,24"/>
@@ -1495,8 +1495,8 @@
 <!-- Serbian -->
 
 <windowSkin>
-<image type="image" language="sr" path="Windows\RibbonTabs_sr.png"/>
-<image type="watermark" path="Windows\RibbonTabsBkg.png"/>
+<image type="image" language="sr" path="SkinVista\RibbonTabs_sr.png"/>
+<image type="watermark" path="SkinVista\RibbonTabsBkg.png"/>
 <target window="CMainTabBarCtrl"/>
 <parts>
  <part name="_ID_TAB_HOME.Up"		rect="0,0,74,24"/>
@@ -1543,8 +1543,8 @@
 <!-- Albanian -->
 
 <windowSkin>
-<image type="image" language="sq" path="Windows\RibbonTabs_sr.png"/>
-<image type="watermark" path="Windows\RibbonTabsBkg.png"/>
+<image type="image" language="sq" path="SkinVista\RibbonTabs_sr.png"/>
+<image type="watermark" path="SkinVista\RibbonTabsBkg.png"/>
 <target window="CMainTabBarCtrl"/>
 <parts>
  <part name="_ID_TAB_HOME.Up"		rect="0,0,74,24"/>
@@ -1591,8 +1591,8 @@
 <!-- Turkish -->
 
 <windowSkin>
-<image type="image" language="tr" path="Windows\RibbonTabs_tr.png"/>
-<image type="watermark" path="Windows\RibbonTabsBkg.png"/>
+<image type="image" language="tr" path="SkinVista\RibbonTabs_tr.png"/>
+<image type="watermark" path="SkinVista\RibbonTabsBkg.png"/>
 <target window="CMainTabBarCtrl"/>
 <parts>
  <part name="_ID_TAB_HOME.Up"		rect="0,0,80,24"/>
@@ -1639,8 +1639,8 @@
 <!-- Greek -->
 
 <windowSkin>
-<image type="image" language="gr" path="Windows\RibbonTabs_gr.png"/>
-<image type="watermark" path="Windows\RibbonTabsBkg.png"/>
+<image type="image" language="gr" path="SkinVista\RibbonTabs_gr.png"/>
+<image type="watermark" path="SkinVista\RibbonTabsBkg.png"/>
 <target window="CMainTabBarCtrl"/>
 <parts>
  <part name="_ID_TAB_HOME.Up"		rect="0,0,64,24"/>
@@ -1687,8 +1687,8 @@
 <!-- Japanese -->
 
 <windowSkin>
-<image type="image" language="ja" path="Windows\RibbonTabs_ja.png"/>
-<image type="watermark" path="Windows\RibbonTabsBkg.png"/>
+<image type="image" language="ja" path="SkinVista\RibbonTabs_ja.png"/>
+<image type="watermark" path="SkinVista\RibbonTabsBkg.png"/>
 <target window="CMainTabBarCtrl"/>
 <parts>
  <part name="_ID_TAB_HOME.Up"		rect="0,0,70,24"/>
@@ -1735,8 +1735,8 @@
 <!-- Korean -->
 
 <windowSkin>
-<image type="image" language="ko" path="Windows\RibbonTabs_ko.png"/>
-<image type="watermark" path="Windows\RibbonTabsBkg.png"/>
+<image type="image" language="ko" path="SkinVista\RibbonTabs_ko.png"/>
+<image type="watermark" path="SkinVista\RibbonTabsBkg.png"/>
 <target window="CMainTabBarCtrl"/>
 <parts>
  <part name="_ID_TAB_HOME.Up"		rect="0,0,68,24"/>
@@ -1783,8 +1783,8 @@
 <!-- Chinese Simple -->
 
 <windowSkin>
-<image type="image" language="zhs" path="Windows\RibbonTabs_zhs.png"/>
-<image type="watermark" path="Windows\RibbonTabsBkg.png"/>
+<image type="image" language="zhs" path="SkinVista\RibbonTabs_zhs.png"/>
+<image type="watermark" path="SkinVista\RibbonTabsBkg.png"/>
 <target window="CMainTabBarCtrl"/>
 <parts>
  <part name="_ID_TAB_HOME.Up"		rect="0,0,70,24"/>
@@ -1831,8 +1831,8 @@
 <!-- Chinese Traditional -->
 
 <windowSkin>
-<image type="image" language="zht" path="Windows\RibbonTabs_zht.png"/>
-<image type="watermark" path="Windows\RibbonTabsBkg.png"/>
+<image type="image" language="zht" path="SkinVista\RibbonTabs_zht.png"/>
+<image type="watermark" path="SkinVista\RibbonTabsBkg.png"/>
 <target window="CMainTabBarCtrl"/>
 <parts>
  <part name="_ID_TAB_HOME.Up"		rect="0,0,70,24"/>
