@@ -17,6 +17,12 @@ svn+ssh://svn.code.sf.net/p/shareaza/code/trunk shareaza-code
 •
 
 
+9628		f	
+9627		f	Fixed second-tier plugin registration
+9626		f	Updated MiniUPnPc library to 1.9.20160209
+9625		1f	Updated GeoIP database (05 Apr 2016)
+9624		f	Updated Visual C++ Redistributable for Visual Studio 2015 Update 2 (Updated Inno Download Plugin 1.5.1.0)
+9623		f	Updated VS2015 projects references
 9622	r128	1f	Updated VS2015 project
 9621	.	1f	Updated copyright (.rc)
 9620	.	1f	Updated projects up to VS2015 Update 1 (installer)
@@ -202,14 +208,15 @@ svn+ssh://svn.code.sf.net/p/shareaza/code/trunk shareaza-code
 
 8156?		7f	Fix plugin description and icon retrieving. Add support for .exe plugins. Plugins enumeration speed increased ten times. (LoadCLSIDIcon) (2009)
 
+Check ShareazaPlus:	http://sourceforge.net/p/shareazaplus/code/HEAD/tree/branches/TestingCode/
 
 ToDos:			Add ID_TAB_MENU ?
-			JumpLists: r9146 http://msdn.microsoft.com/en-us/gg465010#_Toc243450447
+			Add Private Shared Folders (Keycode)
+			Save Browse/Chat IPs (Bookmarks)
 			Wizard Browser Integration ?
 			Default Downloads Location <My Docs>  ?
 			File Formats. .lst, .urls, .grx (getright), .metalink, .magma, etc.
+			JumpLists: r9146 http://msdn.microsoft.com/en-us/gg465010#_Toc243450447
 			r8625+ BENode TorrentWizard
 			BitTorrent DNS, uTP
 
-
-Check ShareazaPlus:	http://sourceforge.net/p/shareazaplus/code/HEAD/tree/branches/TestingCode/

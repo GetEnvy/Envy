@@ -284,7 +284,7 @@ BOOL CSkinWindow::Parse(CXMLElement* pBase, const CString& strPath)
 			lf.lfHeight			= nFontSize;
 			lf.lfWeight			= nFontWeight;
 			lf.lfCharSet		= DEFAULT_CHARSET;
-			lf.lfQuality		= theApp.m_nFontQuality;	// DEFAULT_QUALITY
+			lf.lfQuality		= Settings.Fonts.Quality;	// DEFAULT_QUALITY
 			lf.lfOutPrecision	= OUT_DEFAULT_PRECIS;
 			lf.lfClipPrecision	= CLIP_DEFAULT_PRECIS;
 			lf.lfPitchAndFamily	= DEFAULT_PITCH|FF_DONTCARE;
@@ -804,20 +804,16 @@ void CSkinWindow::OnNcMouseMove(CWnd* pWnd, UINT nHitTest, CPoint /*point*/)
 
 	BOOL bUpdate = ( m_nHoverAnchor != nAnchor );
 
-	if ( m_nDownAnchor && nAnchor )
+	if ( m_nDownAnchor )
 	{
-		if ( m_nDownAnchor == nAnchor )
+		if ( ( GetAsyncKeyState( VK_LBUTTON ) & 0x8000 ) == 0 )
 		{
-			if ( ( GetAsyncKeyState( VK_LBUTTON ) & 0x8000 ) != 0 )
-			{
-				m_nDownAnchor = 0;
-				bUpdate = TRUE;
-			}
+			nAnchor = 0;
+			m_nDownAnchor = 0;
+			bUpdate = TRUE;
 		}
-		else	// DownAnchor != nAnchor
+		else if ( m_nDownAnchor != nAnchor )
 		{
-			if ( ( GetAsyncKeyState( VK_LBUTTON ) & 0x8000 ) == 0 )
-				m_nDownAnchor = 0;
 			nAnchor = 0;
 			bUpdate = TRUE;
 		}

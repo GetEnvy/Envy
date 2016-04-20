@@ -198,7 +198,7 @@ void CPacketWnd::OnSkinChange()
 	// Fonts
 	if ( m_pFont.m_hObject ) m_pFont.DeleteObject();
 	m_pFont.CreateFont( -(int)(Settings.Fonts.DefaultSize /*- 1*/), 0, 0, 0, FW_NORMAL, FALSE, FALSE, FALSE,
-		DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS, theApp.m_nFontQuality,
+		DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS, Settings.Fonts.Quality,
 		DEFAULT_PITCH|FF_DONTCARE, Settings.Fonts.PacketDumpFont );
 	m_wndList.SetFont( &m_pFont );
 	m_wndList.GetHeaderCtrl()->SetFont( &theApp.m_gdiFont );

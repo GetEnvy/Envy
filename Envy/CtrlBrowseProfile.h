@@ -39,8 +39,8 @@ protected:
 	CCriticalSection	m_pSection;
 	CRichViewCtrl		m_wndDoc1;
 	CRichViewCtrl		m_wndDoc2;
-	CRichDocument*		m_pDocument1;
-	CRichDocument*		m_pDocument2;
+	CRichDocument*		m_pDocumentLeft;
+	CRichDocument*		m_pDocumentRight;
 	CRichElement*		m_pdNick;
 	CRichElement*		m_pdFullName;
 	CRichElement*		m_pdFullLocation;
@@ -59,8 +59,8 @@ protected:
 	CRichElement*		m_pdContactTwitter;
 	CRichElement*		m_pdContactFacebook;
 	CRichElement*		m_pdContactGetEnvy;
-//	CRichElement*		m_pdCountryName;
-//	CRichElement*		m_pdVendor;
+	CRichElement*		m_pdVendor;
+	CRichElement*		m_pdAddress;
 
 	CImageFile			m_imgHead;
 
@@ -70,8 +70,8 @@ public:
 	void	OnHeadPacket(CG2Packet* pPacket);
 	void	Update(CHostBrowser* pBrowser);
 protected:
-	void	UpdateDocument1(CGProfile* pProfile);
-	void	UpdateDocument2(CHostBrowser* pBrowser);
+	void	UpdateDocumentLeft(CHostBrowser* pBrowser, CGProfile* pProfile);
+	void	UpdateDocumentRight(CHostBrowser* pBrowser, CGProfile* pProfile);
 	void	LoadDefaultHead();
 
 public:

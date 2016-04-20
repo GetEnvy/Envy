@@ -2297,6 +2297,7 @@ BOOL CSkin::LoadFonts(CXMLElement* pBase, const CString& strPath)
 				CString strFace		= pXML->GetAttributeValue( L"face" );
 				CString strSize		= pXML->GetAttributeValue( L"size" );
 				CString strWeight	= pXML->GetAttributeValue( L"weight" );
+				CString strColor	= pXML->GetAttributeValue( L"color" );
 				CFont* pFont		= NULL;
 
 				if ( strName.GetLength() < 6 ) continue;
@@ -2309,8 +2310,11 @@ BOOL CSkin::LoadFonts(CXMLElement* pBase, const CString& strPath)
 					Font[ L"system.plain" ]		= 'd';
 					Font[ L"system.bold" ]		= 'b';
 					Font[ L"panel.caption" ]	= 'p';
+					Font[ L"navbar" ]			= 'n';
 					Font[ L"navbar.caption" ]	= 'n';
 					Font[ L"navbar.selected" ]	= 's';
+					Font[ L"navbar.active" ]	= 's';
+					Font[ L"navbar.hover" ]		= 'v';
 					Font[ L"richdoc.default" ]	= 'r';
 					Font[ L"rich.default" ]		= 'r';
 					Font[ L"richdoc.heading" ]	= 'h';
@@ -2321,26 +2325,43 @@ BOOL CSkin::LoadFonts(CXMLElement* pBase, const CString& strPath)
 				{
 				case 'd':	// system.default, system.plain, system
 					pFont = &CoolInterface.m_fntNormal;
+					if ( ! strColor.IsEmpty() )
+						Colors.m_crText = GetColor( strColor );
 					break;
 				case 'b':	// system.bold
 					pFont = &CoolInterface.m_fntBold;
 					break;
 				case 'p':	// panel.caption
 					pFont = &CoolInterface.m_fntCaption;
+					if ( ! strColor.IsEmpty() )
+						Colors.m_crTaskBoxCaptionText = GetColor( strColor );
 					break;
 				case 'n':	// navbar.caption
 					pFont = &CoolInterface.m_fntNavBar;
+					if ( ! strColor.IsEmpty() )
+						Colors.m_crNavBarText = GetColor( strColor );
 					break;
 				case 's':	// navbar.selected
 					pFont = &CoolInterface.m_fntNavBarActive;
+					if ( ! strColor.IsEmpty() )
+						Colors.m_crNavBarTextChecked = GetColor( strColor );
+					break;
+				case 'v':	// navbar.hover
+					pFont = &CoolInterface.m_fntNavBarHover;
+					if ( ! strColor.IsEmpty() )
+						Colors.m_crNavBarTextHover = GetColor( strColor );
 					break;
 				case 'r':	// richdoc.default, rich.default
-					pFont = &CoolInterface.m_fntRichDefault;
 					bRichDefault = true;
+					pFont = &CoolInterface.m_fntRichDefault;
+					if ( ! strColor.IsEmpty() )
+						Colors.m_crRichdocText = GetColor( strColor );
 					break;
 				case 'h':	// richdoc.heading, rich.heading
-					pFont = &CoolInterface.m_fntRichHeading;
 					bRichHeading = true;
+					pFont = &CoolInterface.m_fntRichHeading;
+					if ( ! strColor.IsEmpty() )
+						Colors.m_crRichdocHeading = GetColor( strColor );
 					break;
 				default:
 					theApp.Message( MSG_ERROR, IDS_SKIN_ERROR, L"Unknown font name", pXML->ToString() );
@@ -2356,7 +2377,7 @@ BOOL CSkin::LoadFonts(CXMLElement* pBase, const CString& strPath)
 					strWeight = L"400";
 				else if ( strWeight.CompareNoCase( L"bold" ) == 0 )
 					strWeight = L"700";
-				else if ( strWeight.CompareNoCase( L"extrabold" ) == 0 )
+				else if ( strWeight.CompareNoCase( L"extrabold" ) == 0 || strWeight.CompareNoCase( L"heavy" ) == 0 )
 					strWeight = L"900";
 
 				int nFontSize = Settings.Fonts.DefaultSize;
@@ -2370,7 +2391,7 @@ BOOL CSkin::LoadFonts(CXMLElement* pBase, const CString& strPath)
 
 				pFont->CreateFont( -nFontSize, 0, 0, 0, nFontWeight, FALSE, FALSE, FALSE,
 					DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS,
-					theApp.m_nFontQuality, DEFAULT_PITCH|FF_DONTCARE, strFace );
+					Settings.Fonts.Quality, DEFAULT_PITCH|FF_DONTCARE, strFace );
 
 				if ( strName.CompareNoCase( L"system.plain" ) == 0 )
 				{
@@ -2379,14 +2400,14 @@ BOOL CSkin::LoadFonts(CXMLElement* pBase, const CString& strPath)
 
 					pFont->CreateFont( -nFontSize, 0, 0, 0, nFontWeight, FALSE, TRUE, FALSE,
 						DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS,
-						theApp.m_nFontQuality, DEFAULT_PITCH|FF_DONTCARE, strFace );
+						Settings.Fonts.Quality, DEFAULT_PITCH|FF_DONTCARE, strFace );
 
 					pFont = &CoolInterface.m_fntItalic;
 					if ( pFont->m_hObject ) pFont->DeleteObject();
 
 					pFont->CreateFont( -nFontSize, 0, 0, 0, nFontWeight, TRUE, FALSE, FALSE,
 						DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS,
-						theApp.m_nFontQuality, DEFAULT_PITCH|FF_DONTCARE, strFace );
+						Settings.Fonts.Quality, DEFAULT_PITCH|FF_DONTCARE, strFace );
 				}
 				else if ( strName.CompareNoCase( L"system.bold" ) == 0 )
 				{
@@ -2395,7 +2416,21 @@ BOOL CSkin::LoadFonts(CXMLElement* pBase, const CString& strPath)
 
 					pFont->CreateFont( -nFontSize, 0, 0, 0, nFontWeight, TRUE, FALSE, FALSE,
 						DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS,
-						theApp.m_nFontQuality, DEFAULT_PITCH|FF_DONTCARE, strFace );
+						Settings.Fonts.Quality, DEFAULT_PITCH|FF_DONTCARE, strFace );
+				}
+				else if ( strName.CompareNoCase( L"navbar" ) == 0 )
+				{
+					pFont = &CoolInterface.m_fntNavBarActive;
+					if ( pFont->m_hObject ) pFont->DeleteObject();
+					pFont->CreateFont( -nFontSize, 0, 0, 0, nFontWeight, FALSE, FALSE, FALSE,
+						DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS,
+						Settings.Fonts.Quality, DEFAULT_PITCH|FF_DONTCARE, strFace );
+
+					pFont = &CoolInterface.m_fntNavBarHover;
+					if ( pFont->m_hObject ) pFont->DeleteObject();
+					pFont->CreateFont( -nFontSize, 0, 0, 0, nFontWeight, FALSE, FALSE, FALSE,
+						DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS,
+						Settings.Fonts.Quality, DEFAULT_PITCH|FF_DONTCARE, strFace );
 				}
 			}
 		}
@@ -2927,6 +2962,9 @@ COLORREF CSkin::GetColor(CString sColor)
 			 nRed < 256 && nGreen < 256 && nBlue < 256 )
 			return RGB( nRed, nGreen, nBlue );
 	}
+
+	if ( sColor.IsEmpty() )
+		sColor = L"(Empty)";
 
 	theApp.Message( MSG_ERROR, IDS_SKIN_ERROR, L"Bad value for color: " + sColor );
 

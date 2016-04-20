@@ -17,8 +17,8 @@
 />
 
 <fonts>
- <font name="Navbar.Caption" size="15" weight="normal" face="Calibri"/> <!--No face="Segoe UI"-->
- <font name="Navbar.Selected" size="15" weight="bold" face="Calibri"/>
+ <font name="Navbar" size="16" weight="normal" face="Segoe UI"/>
+ <font name="Navbar.Selected" size="16" weight="600" face="Segoe UI"/>
  <!--font name="System.Plain"  face="Segoe UI" size="11" weight="Normal"-->
  <!--font name="System.Bold"   face="Segoe UI" size="11" weight="Bold"-->
  <!--font name="Panel.Caption" face="Segoe UI" size="12" weight="Normal"-->
@@ -34,7 +34,7 @@
  <option name="FrameEdge" value="false"/>
  <option name="ButtonEdge" value="3"/>
  <option name="Taskbar" value="25" width="204"/>
- <option name="Menubar" value="32"/>
+ <option name="Menubar" value="36"/>
  <!--option name="Toolbar" value="28"-->
  <!--option name="Titlebar" value="64"-->
  <!--option name="MonitorBar" value="120"-->
@@ -47,7 +47,7 @@
 
 <colors>
  <color name="Navbar.Text.Up"				value="606060"/>
- <color name="Navbar.Text.Hover"			value="101010"/>
+ <color name="Navbar.Text.Hover"			value="000000"/>
  <color name="Navbar.Text.Checked"			value="101010"/>
  <color name="Navbar.Shadow.Down"			value="101010"/>
  <color name="System.Base.Window"			value="FFFFFF"/>  <!--whitespace-->
@@ -210,11 +210,11 @@
  <!--image target="CNeighboursWnd.Toolbar" 		path="Skin10\ToolbarLt.png"-->
  <!--image target="CSearchWnd.Panel.Toolbar"		path="Skin10\Toolbar.png"-->
  <!--image target="CSearchWnd.Full.Toolbar"		path="Skin10\Toolbar.png"-->
- <image target="CSearchPanel"				path="Skin10\Sidebar.png"/>
+ <image target="CSearchPanel"				path="Skin10\Tabs.png"/>
  <!--image target="CSearchPanel.Footer" 		path="Skin10\SidebarFooter.jpg"-->
- <image target="CHomePanel" 				path="Skin10\Sidebar.png"/>
+ <image target="CHomePanel" 				path="Skin10\Tabs.png"/>
  <!--image target="CHomePanel.Footer"			path="Skin10\SidebarFooter.jpg"-->
- <image target="CIRCPanel"				path="Skin10\Sidebar.png"/>
+ <image target="CIRCPanel"				path="Skin10\Tabs.png"/>
  <!--image target="CIRCPanel.Footer" 			path="Skin10\SidebarFooter.jpg"-->
  <image target="CIRCWaterMarkPanel" 			path="Skin10\MenuBkg.png"/>
  <image target="CIRCHeaderPanel"			path="Skin10\BrowseBanner.png"/>
@@ -422,12 +422,15 @@
 
 <!-- PANEL HEADERS -->
 
-<!-- HOME HEADER -->
-
 <windowskin>
 <image path="Skin10\Header.png"/>
 <target window="CHomeWnd.Panel"/>
+<target window="CDownloadsWnd.Panel"/>
+<target window="CUploadsWnd.Panel"/>
+<target window="CSystemWnd.Panel"/>
+<target window="CNeighboursWnd.Panel"/>
 <target window="CIRCWnd.Panel"/>
+<target window="CLibraryWnd.Panel"/>
 <parts>
  <part name="TopLeft"		rect="0,1,140,25"/>
  <part name="Top"		rect="140,1,20,25"/>
@@ -436,152 +439,31 @@
 <caption align="left" rect="20,1,500,21" fontFace="Segoe UI" fontSize="13" fontWeight="Normal" color="0266CC" outlinecolor="FFFFFF" inactivecolor="A0BACC"/>
 </windowskin>
 
-<!-- SEARCH HEADER -->
-
 <windowskin>
 <image path="Skin10\Header.png"/>
-<target window="CSearchWnd.Panel"/>
-<parts>
- <part name="TopLeft"		rect="56,1,120,25"/>
- <part name="Top"		rect="140,1,10,25"/>
- <part name="TopRight"		rect="170,1,180,25"/>
- <part name="Close"		rect="334,8,12,12"/>
- <part name="CloseHover"	rect="349,8,12,12"/>
- <part name="CloseDown" 	rect="348,7,12,12"/>
-</parts>
-<anchors>
- <anchor name="Close"		rect="-16,7,12,12"/>
-</anchors>
-<caption align="left" rect="20,1,500,21" fontFace="Segoe UI" fontSize="13" fontWeight="Normal" color="0666CC" outlinecolor="FFFFFF" inactivecolor="B0CAD0"/>
-</windowskin>
-
-<!-- TRANSFER DOWNLOADS HEADER -->
-
-<windowskin>
-<image path="Skin10\Header.png"/>
-<target window="CDownloadsWnd.Panel"/>
-<parts>
- <part name="TopLeft"		rect="0,1,90,25"/>
- <part name="Top"		rect="140,1,20,25"/>
- <part name="TopRight"		rect="170,1,165,25"/>
-</parts>
-<caption align="left" rect="20,1,500,21" fontFace="Segoe UI" fontSize="13" fontWeight="Normal" color="0666CC" outlinecolor="FFFFFF" inactivecolor="4080E0"/>
-</windowskin>
-
-<!-- TRANSFER UPLOADS HEADER -->
-
-<windowskin>
-<image path="Skin10\Header.png"/>
-<target window="CUploadsWnd.Panel"/>
-<parts>
- <part name="TopLeft"		rect="0,0,74,25"/>
- <part name="Top"		rect="140,0,20,25"/>
- <part name="TopRight"		rect="170,0,165,25"/>
-</parts>
-<caption align="left" rect="20,2,500,21" fontFace="Segoe UI" fontSize="13" fontWeight="Normal" color="0666CC" outlinecolor="FFFFFF" inactivecolor="4080E0"/>
-</windowskin>
-
-<!-- NETWORK NEIGHBORS HEADER -->
-
-<windowskin>
-<image path="Skin10\Header.png"/>
-<target window="CNeighboursWnd.Panel"/>
-<parts>
- <part name="TopLeft"		rect="0,1,86,25"/>
- <part name="Top"		rect="140,1,20,25"/>
- <part name="TopRight"		rect="170,1,165,25"/>
-</parts>
-<caption align="left" rect="20,1,500,20" fontFace="Segoe UI" fontSize="13" fontWeight="Normal" color="0666CC" outlinecolor="FFFFFF" inactivecolor="B6CCDD"/>
-</windowskin>
-
-<!-- NETWORK SYSTEM HEADER -->
-
-<windowskin>
-<image path="Skin10\Header.png"/>
-<target window="CSystemWnd.Panel"/>
-<parts>
- <part name="TopLeft"		rect="0,0,66,25"/>
- <part name="Top"		rect="140,0,20,25"/>
- <part name="TopRight"		rect="170,0,165,25"/>
-</parts>
-<caption align="left" rect="20,2,500,21" fontFace="Segoe UI" fontSize="13" fontWeight="Normal" color="0666CC" outlinecolor="FFFFFF" inactivecolor="4080E0"/>
-</windowskin>
-
-<!-- LIBRARY HEADER -->
-
-<windowskin>
-<image path="Skin10\Header.png"/>
-<target window="CLibraryWnd.Panel"/>
-<parts>
- <part name="TopLeft"		rect="0,1,64,25"/>
- <part name="Top"		rect="140,1,20,25"/>
- <part name="TopRight"		rect="170,1,165,25"/>
-</parts>
-<caption align="left" rect="20,1,500,21" fontFace="Segoe UI" fontSize="13" fontWeight="Normal" color="0666CC" outlinecolor="FFFFFF" inactivecolor="A0BACC"/>
-</windowskin>
-
-<!-- MEDIA PLAYER HEADER -->
-
-<windowskin>
-<image path="Skin10\Header.png"/>
+<target window="CChildWnd.Panel"/>
 <target window="CMediaWnd.Panel"/>
-<parts>
- <part name="TopLeft"		rect="0,1,100,25"/>
- <part name="Top"		rect="140,1,20,25"/>
- <part name="TopRight"		rect="170,1,180,25"/>
- <part name="Close"		rect="334,8,12,12"/>
- <part name="CloseHover"	rect="349,8,12,12"/>
- <part name="CloseDown" 	rect="348,7,12,12"/>
-</parts>
-<anchors>
- <anchor name="Close" rect="-16,7,12,12"/>
-</anchors>
-<caption align="left" rect="20,1,500,21" fontFace="Segoe UI" fontSize="13" fontWeight="Normal" color="0666CC" outlinecolor="FFFFFF" inactivecolor="A0BACC"/>
-</windowskin>
-
-<!-- SECURITY/SCHEDULER HEADER -->
-
-<windowskin>
-<image path="Skin10\Header.png"/>
-<target window="CSecurityWnd.Panel"/>
-<target window="CSchedulerWnd.Panel"/>
-<parts>
- <part name="TopLeft"		rect="0,1,70,25"/>
- <part name="Top"		rect="140,1,20,25"/>
- <part name="TopRight"		rect="170,1,180,25"/>
- <part name="Close"		rect="334,8,12,12"/>
- <part name="CloseHover"	rect="349,8,12,12"/>
- <part name="CloseDown" 	rect="348,7,12,12"/>
-</parts>
-<anchors>
- <anchor name="Close" rect="-16,7,12,12"/>
-</anchors>
-<caption align="left" rect="20,1,500,21" fontFace="Segoe UI" fontSize="13" fontWeight="Normal" color="0666CC" outlinecolor="FFFFFF" inactivecolor="A0BACC"/>
-</windowskin>
-
-<!-- Other Panel Headers -->
-
-<windowskin>
-<image path="Skin10\Header.png"/>
 <target window="CHostCacheWnd.Panel"/>
 <target window="CDiscoveryWnd.Panel"/>
 <target window="CPacketWnd.Panel"/>
-<target window="CSearchMonitorWnd.Panel"/>
 <target window="CHitMonitorWnd.Panel"/>
+<target window="CSearchMonitorWnd.Panel"/>
+<target window="CSearchWnd.Panel"/>
+<target window="CSecurityWnd.Panel"/>
+<target window="CSchedulerWnd.Panel"/>
 <target window="CBrowseHostWnd.Panel"/>
-<target window="CChildWnd.Panel"/>
 <parts>
- <part name="TopLeft"		rect="0,1,90,25"/>
- <part name="Top"		rect="140,1,20,25"/>
- <part name="TopRight"		rect="170,1,180,25"/>
+ <part name="TopLeft"		rect="0,1,100,25"/>
+ <part name="Top"		rect="100,1,20,25"/>
+ <part name="TopRight"		rect="170,1,165,25"/>
  <part name="Close"		rect="334,8,12,12"/>
  <part name="CloseHover"	rect="349,8,12,12"/>
- <part name="CloseDown" 	rect="348,7,12,12"/>
+ <part name="CloseDown"		rect="338,7,12,12"/>
 </parts>
 <anchors>
  <anchor name="Close" rect="-16,7,12,12"/>
 </anchors>
-<caption align="left" rect="20,1,500,21" fontFace="Segoe UI" fontSize="13" fontWeight="Normal" color="0666CC" outlinecolor="FFFFFF" inactivecolor="A0BACC"/>
+<caption align="left" rect="20,1,500,21" fontFace="Segoe UI" fontSize="13" fontWeight="Normal" color="0266CC" outlinecolor="FFFFFF" inactivecolor="A0BACC"/>
 </windowskin>
 
 </windowskins>
@@ -632,14 +514,14 @@
  <part name="_ID_TAB_SEARCH.Down" rect="60,72,66,24"/>
 </parts>
 <anchors>
- <anchor name="Background" rect="0,0,484,30"/>
+ <anchor name="Background" rect="0,0,494,36"/>
  <anchor name="_ID_TAB_HOME" rect="6,2,66,24"/>
- <anchor name="_ID_TAB_TRANSFERS" rect="72,2,74,24"/>
- <anchor name="_ID_TAB_NETWORK" rect="146,2,74,24"/>
- <anchor name="_ID_TAB_LIBRARY" rect="220,2,66,24"/>
- <anchor name="_ID_TAB_MEDIA" rect="286,2,66,24"/>
- <anchor name="_ID_TAB_IRC" rect="352,2,60,24"/>
- <anchor name="_ID_TAB_SEARCH" rect="412,2,66,24"/>
+ <anchor name="_ID_TAB_TRANSFERS" rect="72,2,80,24"/>
+ <anchor name="_ID_TAB_NETWORK" rect="152,2,82,24"/>
+ <anchor name="_ID_TAB_LIBRARY" rect="234,2,66,24"/>
+ <anchor name="_ID_TAB_MEDIA" rect="300,2,66,24"/>
+ <anchor name="_ID_TAB_IRC" rect="366,2,56,24"/>
+ <anchor name="_ID_TAB_SEARCH" rect="422,2,66,24"/>
 </anchors>
 </windowskin>
 

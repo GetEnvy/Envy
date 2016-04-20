@@ -1098,7 +1098,7 @@ void CDownloadsWnd::OnDownloadsRemotePreview()
 				{
 					if ( pSource->m_sPreview.IsEmpty() )
 					{
-						pSource->m_sPreview.Format( L"http://%s:%i/gnutella/preview/v1?%s",
+						pSource->m_sPreview.Format( L"http://%s:%u/gnutella/preview/v1?%s",
 							(LPCTSTR)CString( inet_ntoa( pSource->m_pAddress ) ), pSource->m_nPort,
 							(LPCTSTR)pDownload->m_oSHA1.toUrn() );
 					}

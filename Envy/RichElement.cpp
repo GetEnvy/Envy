@@ -235,7 +235,7 @@ void CRichElement::PrePaintBitmap(CDC* /*pDC*/)
 	//	if ( ! pFile.EnsureRGB() ) return;	// ToDo: Support Alpha?
 	//	m_hImage = pFile.CreateBitmap();
 
-		m_hImage = CImageFile::LoadBitmapFromFile( Settings.General.Path + '\\' + m_sText );
+		m_hImage = CImageFile::LoadBitmapFromFile( Settings.General.Path + L'\\' + m_sText );
 	}
 }
 

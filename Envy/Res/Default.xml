@@ -2038,6 +2038,15 @@
 		<heading id="Nick"/>
 		<heading>'s Profile</heading>
 		<newline gap="8"/>
+		<group id="0">
+			<newline gap="8" indent="0"/>
+			<text format="b">Client</text>
+			<newline gap="2" indent="8"/>
+			<text id="Vendor"/>
+			<newline gap="2" indent="8"/>
+			<!--anchor id="Flag" width="18" height="12"-->
+			<text id="Address"/>
+		</group>
 		<group id="1">
 			<newline gap="8" indent="0"/>
 			<text format="b">Name</text>
@@ -2139,24 +2148,9 @@
 			<icon res="127" target="command:ID_SEARCH_CHAT"/><gap size="5"/>
 			<link target="command:ID_SEARCH_CHAT" align="middle">Chat With User</link>
 		</group>
-		<!-- ToDo: Add Client/Flag to Profile -->
-<!--	<group id="3">
+		<group id="3">
 			<newline gap="16" indent="0"/>
-			<text format="b">Region</text>
-			<newline gap="4" indent="8"/>
-			<anchor id="CountryFlag" width="16" height="12"/>
-			<gap size="4"/><text id="CountryName"/>
-		</group>
-		<group id="4">
-			<newline gap="16" indent="0"/>
-			<text format="b">Client</text>
-			<newline gap="4" indent="8"/>
-			<anchor id="VendorIcon" width="16" height="12"/>
-			<gap size="4"/><text id="Vendor"/>
-		</group>
--->		<group id="3">
-			<newline gap="16" indent="0"/>
-			<text format="b">Favorite Web Links</text>
+			<text format="b">Favorites (Web Links)</text>
 			<newline gap="4" indent="8" id="Bookmarks"/>
 		</group>
 		<newline gap="16" indent="0"/>

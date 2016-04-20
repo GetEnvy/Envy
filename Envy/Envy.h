@@ -85,7 +85,7 @@ public:
 	CString			m_sSmartAgent;				// Envy x.x.x.x
 	CString			m_sBuildDate;
 	CString			m_strBinaryPath;			// Envy.exe path
-	BYTE			m_nFontQuality;				// ClearType DEFAULT_QUALITY
+//	BYTE			m_nFontQuality;				// Obsolete CLEARTYPE_QUALITY, use Settings.Fonts.Quality
 	CFont			m_gdiFont;
 	CFont			m_gdiFontBold;
 	CFont			m_gdiFontLine;

@@ -1,7 +1,7 @@
 //
 // Class.h : Declaration of the CClass
 //
-// This file is part of Envy (getenvy.com) © 2008
+// This file is part of Envy (getenvy.com) © 2016
 // #COPYRIGHT#
 //
 // Envy is free software; you can redistribute it and/or

@@ -30,6 +30,14 @@ enum XmlType
 	xmlDC			// DC++ file listing
 };
 
+// ToDo: Support Private Share Key
+//enum ShareType
+//{
+//	ShareAll,		// bSharedOnly FALSE
+//	SharePublic,	// bSharedOnly TRUE
+//	SharePrivate	// Passcode
+//};
+
 
 class CLibraryFolders : public CComObject
 {
@@ -45,7 +53,7 @@ protected:
 
 // Physical Folder Operations
 public:
-	CXMLElement*	CreateXML(LPCTSTR szRoot, BOOL bSharedOnly, XmlType nType) const;
+	CXMLElement*	CreateXML(LPCTSTR szRoot, BOOL bSharedOnly, XmlType nType = xmlDefault) const;
 	POSITION		GetFolderIterator() const;
 	CLibraryFolder*	GetNextFolder(POSITION& pos) const;
 	INT_PTR			GetFolderCount() const { return m_pFolders.GetCount(); }

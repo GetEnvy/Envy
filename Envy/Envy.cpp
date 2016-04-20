@@ -213,7 +213,7 @@ CEnvyApp::CEnvyApp()
 	, m_hHookMouse				( NULL )
 	, m_hHookKbd				( NULL )
 	, m_pPacketWnd				( NULL )
-	, m_nFontQuality			( DEFAULT_QUALITY )
+//	, m_nFontQuality			( DEFAULT_QUALITY )		// Obsolete, use Settings.Fonts.Quality
 
 	, m_hCryptProv				( NULL )
 
@@ -352,7 +352,7 @@ BOOL CEnvyApp::InitInstance()
 
 	// Unskinned Banner Workaround:
 	Images.m_bmBanner.Attach( CImageFile::LoadBitmapFromResource( IDB_BANNER ) );
-	Skin.m_nBanner = 50;
+	Skin.m_nBanner = 48;
 
 
 	// BETA EXPIRATION.  Remember to re-compile to update the time.
@@ -1696,15 +1696,19 @@ void CEnvyApp::InitResources()
 	// Setup default fonts:
 	//
 
-	// theApp.m_nFontQuality default ClearType
-	UINT nSmoothingType = 0;
-	BOOL bFontSmoothing = FALSE;
-	if ( SystemParametersInfo( SPI_GETFONTSMOOTHING, 0, &bFontSmoothing, 0 ) && bFontSmoothing &&
-		 SystemParametersInfo( SPI_GETFONTSMOOTHINGTYPE, 0, &nSmoothingType, 0 ) )
+	// Set Settings.Fonts.Quality to ClearType
+	if ( Settings.Fonts.Quality == 0 || Settings.Fonts.Quality == 1 || Settings.Fonts.Quality > 6  )
 	{
-		m_nFontQuality = ( nSmoothingType == FE_FONTSMOOTHINGSTANDARD ) ?
-			ANTIALIASED_QUALITY : ( ( nSmoothingType == FE_FONTSMOOTHINGCLEARTYPE ) ?
-			CLEARTYPE_QUALITY : DEFAULT_QUALITY );
+		UINT nSmoothingType = 0;
+		BOOL bFontSmoothing = FALSE;
+		if ( SystemParametersInfo( SPI_GETFONTSMOOTHING, 0, &bFontSmoothing, 0 ) && bFontSmoothing &&
+			 SystemParametersInfo( SPI_GETFONTSMOOTHINGTYPE, 0, &nSmoothingType, 0 ) )
+		{
+			Settings.Fonts.Quality =	// Was m_nFontQuality
+				( nSmoothingType == FE_FONTSMOOTHINGSTANDARD ) ? ANTIALIASED_QUALITY :
+				( nSmoothingType == FE_FONTSMOOTHINGCLEARTYPE ) ? CLEARTYPE_NATURAL_QUALITY :	// Note XPsp1+ ?
+				DEFAULT_QUALITY;
+		}
 	}
 
 	if ( Settings.Fonts.DefaultFont.IsEmpty() )
@@ -1730,15 +1734,15 @@ void CEnvyApp::InitResources()
 		Settings.Fonts.PacketDumpFont = L"Lucida Console";
 
 	m_gdiFont.CreateFont( -(int)Settings.Fonts.DefaultSize, 0, 0, 0, FW_NORMAL, FALSE, FALSE, FALSE,
-		DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS, m_nFontQuality,
+		DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS, Settings.Fonts.Quality,
 		DEFAULT_PITCH|FF_DONTCARE, Settings.Fonts.DefaultFont );
 
 	m_gdiFontBold.CreateFont( -(int)Settings.Fonts.DefaultSize, 0, 0, 0, FW_BOLD, FALSE, FALSE, FALSE,
-		DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS, m_nFontQuality,
+		DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS, Settings.Fonts.Quality,
 		DEFAULT_PITCH|FF_DONTCARE, Settings.Fonts.DefaultFont );
 
 	m_gdiFontLine.CreateFont( -(int)Settings.Fonts.DefaultSize, 0, 0, 0, FW_NORMAL, FALSE, TRUE, FALSE,
-		DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS, m_nFontQuality,
+		DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS, Settings.Fonts.Quality,
 		DEFAULT_PITCH|FF_DONTCARE, Settings.Fonts.DefaultFont );
 
 	CryptAcquireContext( &m_hCryptProv, NULL, NULL, PROV_RSA_FULL, CRYPT_VERIFYCONTEXT );

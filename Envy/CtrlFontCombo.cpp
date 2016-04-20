@@ -205,7 +205,7 @@ BOOL CFontCombo::AddFont(const CString& strFontName)
 
 	if ( pFont->CreateFont( m_nFontHeight, 0, 0, 0, FW_NORMAL, FALSE, FALSE, FALSE,
 		DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS,
-		theApp.m_nFontQuality, DEFAULT_PITCH, strFontName ) )
+		Settings.Fonts.Quality, DEFAULT_PITCH, strFontName ) )
 	{
 		m_pFonts.SetAt( strFontName, pFont );
 	}

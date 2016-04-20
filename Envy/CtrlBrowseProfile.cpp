@@ -26,6 +26,7 @@
 
 #include "RichElement.h"
 #include "RichDocument.h"
+#include "Flags.h"
 #include "Colors.h"
 #include "Skin.h"
 #include "XML.h"
@@ -35,6 +36,8 @@
 static char THIS_FILE[] = __FILE__;
 #define new DEBUG_NEW
 #endif	// Debug
+
+#define AVATAR_COLUMN 148
 
 BEGIN_MESSAGE_MAP(CBrowseProfileCtrl, CWnd)
 	ON_WM_CREATE()
@@ -50,8 +53,8 @@ END_MESSAGE_MAP()
 // CBrowseProfileCtrl construction
 
 CBrowseProfileCtrl::CBrowseProfileCtrl()
-	: m_pDocument1 ( NULL )
-	, m_pDocument2 ( NULL )
+	: m_pDocumentLeft ( NULL )
+	, m_pDocumentRight ( NULL )
 {
 }
 
@@ -64,37 +67,37 @@ CBrowseProfileCtrl::~CBrowseProfileCtrl()
 
 BOOL CBrowseProfileCtrl::Create(CWnd* pParentWnd)
 {
-	CRect rect( 0, 0, 0, 0 );
-	return CWnd::Create( NULL, NULL, WS_CHILD,
-		rect, pParentWnd, IDC_BROWSE_PROFILE, NULL );
+	return CWnd::Create( NULL, NULL, WS_CHILD, CRect(0), pParentWnd, IDC_BROWSE_PROFILE, NULL );
 }
 
 void CBrowseProfileCtrl::OnSkinChange()
 {
 	CSingleLock pLock( &m_pSection, TRUE );
 
-	if ( m_pDocument1 != NULL )
-		m_pDocument1->Clear();
+	if ( m_pDocumentLeft != NULL )
+		m_pDocumentLeft->Clear();
 	else
-		m_pDocument1 = new CRichDocument();
+		m_pDocumentLeft = new CRichDocument();
 
 	m_pdNick = m_pdFullName = m_pdFullLocation = NULL;
 	m_pdGenderMale = m_pdGenderFemale = m_pdAge = NULL;
-	m_pdContactEmail = m_pdContactMSN = m_pdContactYahoo = m_pdContactICQ = m_pdContactAOL = m_pdContactJabber = NULL;
-	m_pdBioText = m_pdInterests = NULL;
+	m_pdContactEmail = m_pdContactGetEnvy = m_pdContactFacebook = m_pdContactTwitter = NULL;
+	m_pdContactAOL = m_pdContactYahoo = m_pdContactMSN = m_pdContactJabber = m_pdContactICQ = NULL;
+	m_pdBioText = m_pdInterests = m_pdVendor = m_pdAddress = NULL;
 
 	if ( CXMLElement* pXML = Skin.GetDocument( L"CBrowseHostProfile.1" ) )
 	{
 		CMap< CString, const CString&, CRichElement*, CRichElement* > pMap;
-		m_pDocument1->LoadXML( pXML, &pMap );
+		m_pDocumentLeft->LoadXML( pXML, &pMap );
 
-	//	pMap.Lookup( L"Vendor", m_pdVendor );
 		pMap.Lookup( L"Nick", m_pdNick );
 		pMap.Lookup( L"FullName", m_pdFullName );
 		pMap.Lookup( L"FullLocation", m_pdFullLocation );
 		pMap.Lookup( L"GenderMale", m_pdGenderMale );
 		pMap.Lookup( L"GenderFemale", m_pdGenderFemale );
 		pMap.Lookup( L"Age", m_pdAge );
+		pMap.Lookup( L"Vendor", m_pdVendor );
+		pMap.Lookup( L"Address", m_pdAddress );
 		pMap.Lookup( L"BioText", m_pdBioText );
 		pMap.Lookup( L"Interests", m_pdInterests );
 		pMap.Lookup( L"ContactEmail", m_pdContactEmail );
@@ -108,53 +111,85 @@ void CBrowseProfileCtrl::OnSkinChange()
 		pMap.Lookup( L"ContactGetEnvy", m_pdContactGetEnvy );
 	}
 
-	if ( m_pDocument2 != NULL )
-		m_pDocument2->Clear();
+	if ( m_pDocumentRight != NULL )
+		m_pDocumentRight->Clear();
 	else
-		m_pDocument2 = new CRichDocument();
+		m_pDocumentRight = new CRichDocument();
 
 	m_pdBookmarks = NULL;
 
 	if ( CXMLElement* pXML = Skin.GetDocument( L"CBrowseHostProfile.2" ) )
 	{
 		CMap< CString, const CString&, CRichElement*, CRichElement* > pMap;
-		m_pDocument2->LoadXML( pXML, &pMap );
+		m_pDocumentRight->LoadXML( pXML, &pMap );
 
 		pMap.Lookup( L"Bookmarks", m_pdBookmarks );
 	}
 
-	m_wndDoc1.SetDocument( m_pDocument1 );
-	m_wndDoc2.SetDocument( m_pDocument2 );
+	m_wndDoc1.SetDocument( m_pDocumentLeft );
+	m_wndDoc2.SetDocument( m_pDocumentRight );
 }
 
 void CBrowseProfileCtrl::Update(CHostBrowser* pBrowser)
 {
 	CSingleLock pLock( &m_pSection, TRUE );
 
-	CGProfile* pProfile = pBrowser->m_pProfile;
+	if ( m_pDocumentLeft == NULL || m_pDocumentRight == NULL ) return;
 
-	if ( m_pDocument1 == NULL || m_pDocument2 == NULL ) return;
+	CGProfile* pProfile = pBrowser->m_pProfile;
 	if ( pProfile == NULL || pProfile->IsValid() == FALSE ) return;
 
 	if ( ! pBrowser->IsBrowsing() && pBrowser->m_nHits > 0 && ! m_imgHead.m_bLoaded )
 		LoadDefaultHead();
 
-	UpdateDocument1( pProfile );
-	UpdateDocument2( pBrowser );
+	UpdateDocumentLeft( pBrowser, pProfile );
+	UpdateDocumentRight( pBrowser, pProfile );
 
 	if ( m_wndDoc1.IsWindowVisible() == FALSE ) m_wndDoc1.ShowWindow( SW_SHOW );
 	if ( m_wndDoc2.IsWindowVisible() == FALSE ) m_wndDoc2.ShowWindow( SW_SHOW );
 }
 
-void CBrowseProfileCtrl::UpdateDocument1(CGProfile* pProfile)
+void CBrowseProfileCtrl::UpdateDocumentLeft(CHostBrowser* pBrowser, CGProfile* pProfile)
 {
-	CSingleLock pLock( &m_pDocument1->m_pSection, TRUE );
-
-	CString str;
+	CSingleLock pLock( &m_pDocumentLeft->m_pSection, TRUE );
 
 	if ( m_pdNick != NULL )
 		m_pdNick->SetText( pProfile->GetNick() );
 
+	// 0 Client/Flag
+	if ( m_pdVendor != NULL && ( ! pBrowser->m_sServer.IsEmpty() || ! pBrowser->m_sCountry.IsEmpty() ) )
+	{
+		CString str = Settings.General.GUIMode == GUI_BASIC ?
+			theApp.GetCountryName( pBrowser->m_pAddress ) : (LPCTSTR)CString( inet_ntoa( pBrowser->m_pAddress ) );
+		m_pdAddress->SetText( str );
+		m_pdVendor->SetText( (LPCTSTR)pBrowser->m_sServer );
+		str.Format( L"gnutella:browse:%s:%u", str, pBrowser->m_nPort );
+		m_pdVendor->m_sLink = L"command:copy:" + str;				// ToDo: Private Key?
+		// Note: pBrowser->m_sAddress and pBrowser->m_sCountry are empty at this point, but available in 2nd colunm (Invalidate cookie?)
+
+		if ( ! m_pdAddress->m_hImage )	// Add Flag Once
+		{
+			if ( int nFlagImage = Flags.GetFlagIndex( theApp.GetCountryCode( pBrowser->m_pAddress ) ) )
+			{
+				if ( POSITION pos = m_pDocumentLeft->Find( m_pdAddress ) )
+				{
+					if ( HICON hFlag = Flags.ExtractIconW( nFlagImage ) )
+					{
+						m_pdAddress->m_hImage = hFlag;
+					//	m_pDocumentLeft->GetNext( pos );	// Place after text
+						m_pDocumentLeft->Add( hFlag, NULL, 0, 0, pos );
+						m_pDocumentLeft->Add( retGap, L"5", NULL, 0, 0, pos );
+					}
+				}
+			}
+		}
+
+		m_pDocumentRight->ShowGroup( 0, TRUE );
+	}
+	else
+		m_pDocumentRight->ShowGroup( 0, FALSE );
+
+	// 1 Name
 	if ( CXMLElement* pIdentity = pProfile->GetXML( L"identity" ) )
 	{
 		if ( CXMLElement* pName = pIdentity->GetElementByName( L"name" ) )
@@ -163,34 +198,26 @@ void CBrowseProfileCtrl::UpdateDocument1(CGProfile* pProfile)
 			CString strLast  = pName->GetAttributeValue( L"last" );
 
 			if ( m_pdFullName != NULL && ( ! strFirst.IsEmpty() || ! strLast.IsEmpty() ) )
-			{
-				m_pDocument1->ShowGroup( 1, TRUE );
 				m_pdFullName->SetText( strFirst + L' ' + strLast );
-			}
-			else
-			{
-				m_pDocument1->ShowGroup( 1, FALSE );
-			}
 		}
-		else
-		{
-			m_pDocument1->ShowGroup( 1, FALSE );
-		}
-	}
-	else
-	{
-		m_pDocument1->ShowGroup( 1, FALSE );
 	}
 
-	str = pProfile->GetLocation();
-	m_pDocument1->ShowGroup( 2, ! str.IsEmpty() );
+	if ( ! m_pdFullName || m_pdFullName->m_sText.IsEmpty() )
+		m_pDocumentLeft->ShowGroup( 1, FALSE );
+	else
+		m_pDocumentLeft->ShowGroup( 1, TRUE );
+
+	// 2 Location
+	CString str = pProfile->GetLocation();
+	m_pDocumentLeft->ShowGroup( 2, ! str.IsEmpty() );
 	if ( m_pdFullLocation != NULL )
 		m_pdFullLocation->SetText( str );
 
+	// 3 Age/Gender
 	if ( CXMLElement* pVitals = pProfile->GetXML( L"vitals" ) )
 	{
 		str = pVitals->GetAttributeValue( L"gender" );
-		m_pDocument1->ShowGroup( 3, ! str.IsEmpty() );
+		m_pDocumentLeft->ShowGroup( 3, ! str.IsEmpty() );
 
 		if ( m_pdGenderMale != NULL && m_pdGenderFemale != NULL )
 		{
@@ -203,14 +230,15 @@ void CBrowseProfileCtrl::UpdateDocument1(CGProfile* pProfile)
 	}
 	else
 	{
-		m_pDocument1->ShowGroup( 3, FALSE );
+		m_pDocumentLeft->ShowGroup( 3, FALSE );
 	}
 
+	// 4 Social
 	BOOL bContact = FALSE;
 
 	str = pProfile->GetContact( L"Email" );
 	bContact |= ( ! str.IsEmpty() );
-	m_pDocument1->ShowGroup( 40, ! str.IsEmpty() );
+	m_pDocumentLeft->ShowGroup( 40, ! str.IsEmpty() );
 	if ( m_pdContactEmail != NULL )
 	{
 		m_pdContactEmail->SetText( str );
@@ -219,7 +247,7 @@ void CBrowseProfileCtrl::UpdateDocument1(CGProfile* pProfile)
 
 	str = pProfile->GetContact( L"MSN" );
 	bContact |= ( ! str.IsEmpty() );
-	m_pDocument1->ShowGroup( 44, ! str.IsEmpty() );
+	m_pDocumentLeft->ShowGroup( 44, ! str.IsEmpty() );
 	if ( m_pdContactMSN != NULL )
 	{
 		m_pdContactMSN->SetText( str );
@@ -228,7 +256,7 @@ void CBrowseProfileCtrl::UpdateDocument1(CGProfile* pProfile)
 
 	str = pProfile->GetContact( L"Yahoo" );
 	bContact |= ( ! str.IsEmpty() );
-	m_pDocument1->ShowGroup( 41, ! str.IsEmpty() );
+	m_pDocumentLeft->ShowGroup( 41, ! str.IsEmpty() );
 	if ( m_pdContactYahoo != NULL )
 	{
 		m_pdContactYahoo->SetText( str );
@@ -237,7 +265,7 @@ void CBrowseProfileCtrl::UpdateDocument1(CGProfile* pProfile)
 
 	str = pProfile->GetContact( L"AOL" );
 	bContact |= ( ! str.IsEmpty() );
-	m_pDocument1->ShowGroup( 43, ! str.IsEmpty() );
+	m_pDocumentLeft->ShowGroup( 43, ! str.IsEmpty() );
 	if ( m_pdContactAOL != NULL )
 	{
 		m_pdContactAOL->SetText( str );
@@ -246,7 +274,7 @@ void CBrowseProfileCtrl::UpdateDocument1(CGProfile* pProfile)
 
 	str = pProfile->GetContact( L"ICQ" );
 	bContact |= ( ! str.IsEmpty() );
-	m_pDocument1->ShowGroup( 42, ! str.IsEmpty() );
+	m_pDocumentLeft->ShowGroup( 42, ! str.IsEmpty() );
 	if ( m_pdContactICQ != NULL )
 	{
 		m_pdContactICQ->SetText( str );
@@ -256,7 +284,7 @@ void CBrowseProfileCtrl::UpdateDocument1(CGProfile* pProfile)
 	str = pProfile->GetContact( L"Google" );
 	if ( str.IsEmpty() ) str = pProfile->GetContact( L"Jabber" );
 	bContact |= ( ! str.IsEmpty() );
-	m_pDocument1->ShowGroup( 45, ! str.IsEmpty() );
+	m_pDocumentLeft->ShowGroup( 45, ! str.IsEmpty() );
 	if ( m_pdContactJabber != NULL )
 	{
 		m_pdContactJabber->SetText( str );
@@ -266,7 +294,7 @@ void CBrowseProfileCtrl::UpdateDocument1(CGProfile* pProfile)
 	// Custom Extended Fields:
 
 	str = pProfile->GetContact( L"Twitter" );
-	m_pDocument1->ShowGroup( 46, ! str.IsEmpty() );
+	m_pDocumentLeft->ShowGroup( 46, ! str.IsEmpty() );
 	if ( ! str.IsEmpty() && m_pdContactTwitter != NULL )
 	{
 		bContact = TRUE;
@@ -275,7 +303,7 @@ void CBrowseProfileCtrl::UpdateDocument1(CGProfile* pProfile)
 	}
 
 	str = pProfile->GetContact( L"Facebook" );
-	m_pDocument1->ShowGroup( 47, ! str.IsEmpty() );
+	m_pDocumentLeft->ShowGroup( 47, ! str.IsEmpty() );
 	if ( ! str.IsEmpty() && m_pdContactFacebook != NULL )
 	{
 		bContact = TRUE;
@@ -284,7 +312,7 @@ void CBrowseProfileCtrl::UpdateDocument1(CGProfile* pProfile)
 	}
 
 	str = pProfile->GetContact( L"GetEnvy.com" );
-	m_pDocument1->ShowGroup( 48, ! str.IsEmpty() );
+	m_pDocumentLeft->ShowGroup( 48, ! str.IsEmpty() );
 	if ( ! str.IsEmpty() && m_pdContactGetEnvy != NULL )
 	{
 		bContact = TRUE;
@@ -292,10 +320,11 @@ void CBrowseProfileCtrl::UpdateDocument1(CGProfile* pProfile)
 		m_pdContactGetEnvy->m_sLink = L"http://getenvy.com/users/" + str;	// ToDo: Update user profile link
 	}
 
-	m_pDocument1->ShowGroup( 4, bContact );
+	m_pDocumentLeft->ShowGroup( 4, bContact );
 
 	str.Empty();
 
+	// 5 Interests
 	if ( CXMLElement* pInterests = pProfile->GetXML( L"interests" ) )
 	{
 		for ( POSITION pos = pInterests->GetElementIterator() ; pos ; )
@@ -310,88 +339,72 @@ void CBrowseProfileCtrl::UpdateDocument1(CGProfile* pProfile)
 		}
 	}
 
-	m_pDocument1->ShowGroup( 5, ! str.IsEmpty() );
+	m_pDocumentLeft->ShowGroup( 5, ! str.IsEmpty() );
 	if ( m_pdInterests != NULL ) m_pdInterests->SetText( str );
 
 	str.Empty();
+
+	// 6 Comments
 	if ( CXMLElement* pBio = pProfile->GetXML( L"notes" ) )
 		str = pBio->GetValue();
-	m_pDocument1->ShowGroup( 6, ! str.IsEmpty() );
+	m_pDocumentLeft->ShowGroup( 6, ! str.IsEmpty() );
 	if ( m_pdBioText != NULL ) m_pdBioText->SetText( str );
 
 	m_wndDoc1.InvalidateIfModified();
 }
 
-void CBrowseProfileCtrl::UpdateDocument2(CHostBrowser* pBrowser)
+void CBrowseProfileCtrl::UpdateDocumentRight(CHostBrowser* pBrowser, CGProfile* pProfile)
 {
 	int nBookmarks = 0;
-	CGProfile* pProfile = pBrowser->m_pProfile;
 
-	CSingleLock pLock( &m_pDocument2->m_pSection, TRUE );
+	CSingleLock pLock( &m_pDocumentRight->m_pSection, TRUE );
 
-	m_pDocument2->ShowGroup( 2, pBrowser->m_bCanChat );
-
-//  ToDo: Add Flag/ClientVersion to Profile
-//	CString str = pBrowser->m_sm_sCountry;
-//	int nFlagImage = Flags.GetFlagIndex( pBrowser->m_sCountry );
-//	if ( int )
-//	{
-//		m_pdCountryName->SetText( str );
-//		m_pDocument2->ShowGroup( 4, TRUE );
-//	}
-//	else
-//		m_pDocument2->ShowGroup( 4, FALSE );
-//
-//	str = pBrowser->m_sUserAgent;
-//	if ( str != NULL )
-//	{
-//		m_pdVendor->SetText( str );
-//		m_pDocument2->ShowGroup( 5, TRUE );
-//	}
-//	else
-//		m_pDocument2->ShowGroup( 5, FALSE );
+	m_pDocumentRight->ShowGroup( 2, pBrowser->m_bCanChat );
 
 	if ( m_pdBookmarks != NULL )
 	{
-		POSITION pos = m_pDocument2->Find( m_pdBookmarks );
+		POSITION pos = m_pDocumentRight->Find( m_pdBookmarks );
 		if ( pos == NULL ) return;
 
 		POSITION posSave = pos;
-		m_pDocument2->GetNext( pos );
+		m_pDocumentRight->GetNext( pos );
 
 		while ( pos )
 		{
-			CRichElement* pElement = m_pDocument2->GetNext( pos );
+			CRichElement* pElement = m_pDocumentRight->GetNext( pos );
 			if ( pElement->m_nGroup != 1 ) break;
 			pElement->Delete();
 		}
 
-		m_pDocument2->GetNext( posSave );
-
-		if ( CXMLElement* pBookmarks = pProfile->GetXML( L"bookmarks" ) )
+		if ( pProfile != NULL && pProfile->IsValid() )
 		{
-			for ( pos = pBookmarks->GetElementIterator() ; pos ; )
+			m_pDocumentRight->GetNext( posSave );
+
+			if ( CXMLElement* pBookmarks = pProfile->GetXML( L"bookmarks" ) )
 			{
-				CXMLElement* pBookmark = pBookmarks->GetNextElement( pos );
-				if ( ! pBookmark->IsNamed( L"bookmark" ) ) continue;
+				for ( pos = pBookmarks->GetElementIterator() ; pos ; )
+				{
+					CXMLElement* pBookmark = pBookmarks->GetNextElement( pos );
+					if ( ! pBookmark->IsNamed( L"bookmark" ) ) continue;
 
-				CString strTitle	= pBookmark->GetAttributeValue( L"title" );
-				CString strURL		= pBookmark->GetAttributeValue( L"url" );
+					CString strTitle	= pBookmark->GetAttributeValue( L"title" );
+					CString strURL		= pBookmark->GetAttributeValue( L"url" );
 
-				if ( strTitle.IsEmpty() ) continue;
-				if ( strURL.Find( L"http://" ) != 0 ) continue;
+					if ( strTitle.IsEmpty() ) continue;
+					if ( ! StartsWith( strURL, _P( L"http://" ) ) && ! StartsWith( strURL, _P( L"https://" ) ) ) continue;
 
-				m_pDocument2->Add( retIcon, MAKEINTRESOURCE(IDI_WEB_URL), strURL, 0, 1, posSave );
-				m_pDocument2->Add( retGap, L"5", NULL, 0, 1, posSave );
-				m_pDocument2->Add( retLink, strTitle, strURL, retfMiddle, 1, posSave );
-				m_pDocument2->Add( retNewline, L"2", NULL, 0, 1, posSave );
+					m_pDocumentRight->Add( retIcon, MAKEINTRESOURCE(IDI_WEB_URL), strURL, 0, 1, posSave );
+					m_pDocumentRight->Add( retGap, L"5", NULL, 0, 1, posSave );
+					m_pDocumentRight->Add( retLink, strTitle, strURL, retfMiddle, 1, posSave );
+					m_pDocumentRight->Add( retNewline, L"2", NULL, 0, 1, posSave );
 
-				nBookmarks ++;
+					nBookmarks++;
+				}
 			}
 		}
 	}
 
-	m_pDocument2->ShowGroup( 3, nBookmarks ? TRUE : FALSE );
+	m_pDocumentRight->ShowGroup( 3, nBookmarks ? TRUE : FALSE );
 
 	m_wndDoc2.InvalidateIfModified();
 }
@@ -462,11 +475,11 @@ void CBrowseProfileCtrl::OnDestroy()
 {
 	CWnd::OnDestroy();
 
-	if ( m_pDocument2 != NULL ) delete m_pDocument2;
-	m_pDocument2 = NULL;
+	if ( m_pDocumentRight != NULL ) delete m_pDocumentRight;
+	m_pDocumentRight = NULL;
 
-	if ( m_pDocument1 != NULL ) delete m_pDocument1;
-	m_pDocument1 = NULL;
+	if ( m_pDocumentLeft != NULL ) delete m_pDocumentLeft;
+	m_pDocumentLeft = NULL;
 }
 
 void CBrowseProfileCtrl::OnSize(UINT nType, int cx, int cy)
@@ -475,7 +488,7 @@ void CBrowseProfileCtrl::OnSize(UINT nType, int cx, int cy)
 
 	CRect rc;
 	GetClientRect( &rc );
-	rc.left += 148;
+	rc.left += AVATAR_COLUMN;
 
 	m_wndDoc1.SetWindowPos( NULL, rc.left, rc.top, rc.Width() / 2,
 		rc.Height(), SWP_NOZORDER );
@@ -501,15 +514,14 @@ void CBrowseProfileCtrl::OnPaint()
 		bmHead.Attach( m_imgHead.CreateBitmap() );
 		dcMem.CreateCompatibleDC( &dc );
 		CBitmap* pOldBmp = (CBitmap*)dcMem.SelectObject( &bmHead );
-		dc.BitBlt( rcHead.left, rcHead.top, rcHead.Width(), rcHead.Height(),
-			&dcMem, 0, 0, SRCCOPY );
+		dc.BitBlt( rcHead.left, rcHead.top, rcHead.Width(), rcHead.Height(), &dcMem, 0, 0, SRCCOPY );
 		dc.ExcludeClipRect( &rcHead );
 		dcMem.SelectObject( pOldBmp );
 		bmHead.DeleteObject();
 	}
 
 	if ( m_wndDoc1.IsWindowVisible() )
-		rcPanel.right = rcPanel.left + 148;
+		rcPanel.right = rcPanel.left + AVATAR_COLUMN;
 
 	dc.FillSolidRect( &rcPanel, Colors.m_crWindow );
 }

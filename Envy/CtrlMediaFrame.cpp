@@ -536,7 +536,7 @@ void CMediaFrame::OnPaint()
 	{
 		LOGFONT pFont = { 80, 0, 0, 0, FW_NORMAL, FALSE, FALSE, FALSE,
 			DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS,
-			theApp.m_nFontQuality, DEFAULT_PITCH|FF_DONTCARE, L"Segoe UI" };
+			Settings.Fonts.Quality, DEFAULT_PITCH|FF_DONTCARE, L"Segoe UI" };
 
 #ifndef NOXP
 		if ( theApp.m_bIsWinXP )	// XP-Safe

@@ -158,6 +158,7 @@ public:
 		CString		PacketDumpFont;			// Packet Window font
 		CString		SystemLogFont;			// System Window font
 		DWORD		DefaultSize;			// Basic font size
+		DWORD		Quality;				// Cleartype
 	} Fonts;
 
 	struct sLibrary

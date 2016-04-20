@@ -5,7 +5,7 @@ Envy Skin Installer
 
 Copyright Information
 =====================
-The SkinInstaller is part of Envy (getenvy.com) © 2008
+The SkinInstaller is part of Envy (getenvy.com) © 2016
 
 However this software component has been released into the public domain.
 You are free to redistribute and modify it without any restrictions

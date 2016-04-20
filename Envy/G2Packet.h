@@ -37,19 +37,11 @@ typedef QWORD G2_PACKET;
 	( ! ( (G2_PACKET)((p)) & 0xff00000000000000ui64 ) ) ? 7 : ( \
 	8 )))))))))
 
-#define	MAKE_G2_PACKET(a,b,c,d,e,f,g,h) \
-	MAKEQWORD(	MAKEDWORD(MAKEWORD(((a)),((b))),MAKEWORD(((c)),((d)))), \
-				MAKEDWORD(MAKEWORD(((e)),((f))),MAKEWORD(((g)),((h)))) 	)
-
 #define G2_PACKET_LEN(p,len) \
 	(1+(((len)>0xFF)?(((len)>0xFFFF)?3:2):1)+G2_TYPE_LEN(p)+(len))
 
-//
-// G2 Packet Flags
-//
-
-#define G2_FLAG_COMPOUND	0x04
-#define G2_FLAG_BIG_ENDIAN	0x02
+#define	MAKE_G2_PACKET(a,b,c,d,e,f,g,h) \
+	MAKEQWORD( MAKEDWORD(MAKEWORD(((a)),((b))),MAKEWORD(((c)),((d)))),MAKEDWORD(MAKEWORD(((e)),((f))),MAKEWORD(((g)),((h)))) )
 
 //
 // G2 Packet Types
@@ -78,14 +70,14 @@ const G2_PACKET G2_PACKET_CRAWL_RGPS		= MAKE_G2_PACKET( 'R', 'G', 'P', 'S',  0 ,
 const G2_PACKET G2_PACKET_CRAWL_RLEAF		= MAKE_G2_PACKET( 'R', 'L', 'E', 'A', 'F',  0 ,  0 ,  0  );
 const G2_PACKET G2_PACKET_CRAWL_RNAME		= MAKE_G2_PACKET( 'R', 'N', 'A', 'M', 'E',  0 ,  0 ,  0  );
 const G2_PACKET G2_PACKET_DESCRIPTIVE_NAME	= MAKE_G2_PACKET( 'D', 'N',  0 ,  0 ,  0 ,  0 ,  0 ,  0  );
-const G2_PACKET G2_PACKET_DISCOVERY			= MAKE_G2_PACKET( 'D', 'I', 'S',  0 ,  0 ,  0 ,  0 ,  0  );	// Extension. UDP request for node /KHL (Ryo-oh-ki)
+const G2_PACKET G2_PACKET_DISCOVERY			= MAKE_G2_PACKET( 'D', 'I', 'S',  0 ,  0 ,  0 ,  0 ,  0  );		// Extension. UDP request for node /KHL (Ryo-oh-ki)
 const G2_PACKET G2_PACKET_DISCOVERY_ANS		= MAKE_G2_PACKET( 'D', 'I', 'S', 'C', 'A',  0 ,  0 ,  0  );
 const G2_PACKET G2_PACKET_DISCOVERY_HUB		= MAKE_G2_PACKET( 'D', 'I', 'S', 'C', 'H',  0 ,  0 ,  0  );
 const G2_PACKET G2_PACKET_DISCOVERY_LOG		= MAKE_G2_PACKET( 'D', 'I', 'S', 'C', 'L',  0 ,  0 ,  0  );
 const G2_PACKET G2_PACKET_DISCOVERY_REQ		= MAKE_G2_PACKET( 'D', 'I', 'S', 'C', 'R',  0 ,  0 ,  0  );
 const G2_PACKET G2_PACKET_FILES				= MAKE_G2_PACKET( 'F', 'I', 'L', 'E', 'S',  0 ,  0 ,  0  );
 const G2_PACKET G2_PACKET_FROM_ADDRESS		= MAKE_G2_PACKET( 'F', 'R',  0 ,  0 ,  0 ,  0 ,  0 ,  0  );
-const G2_PACKET G2_PACKET_FW				= MAKE_G2_PACKET( 'F', 'W',  0 ,  0 ,  0 ,  0 ,  0 ,  0  ); // Extension. LNI Firewall Flag. From GnucDNAR3
+const G2_PACKET G2_PACKET_FW				= MAKE_G2_PACKET( 'F', 'W',  0 ,  0 ,  0 ,  0 ,  0 ,  0  );		// Extension. LNI Firewall Flag. From GnucDNAR3
 const G2_PACKET G2_PACKET_G1				= MAKE_G2_PACKET( 'G', '1',  0 ,  0 ,  0 ,  0 ,  0 ,  0  );
 const G2_PACKET G2_PACKET_GPS				= MAKE_G2_PACKET( 'G', 'P', 'S',  0 ,  0 ,  0 ,  0 ,  0  );
 const G2_PACKET G2_PACKET_GROUP_ID			= MAKE_G2_PACKET( 'G',  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0  );
@@ -99,19 +91,19 @@ const G2_PACKET G2_PACKET_HUB				= MAKE_G2_PACKET( 'H', 'U', 'B',  0 ,  0 ,  0 ,
 const G2_PACKET G2_PACKET_HUB_STATUS		= MAKE_G2_PACKET( 'H', 'S',  0 ,  0 ,  0 ,  0 ,  0 ,  0  );
 const G2_PACKET G2_PACKET_INTEREST			= MAKE_G2_PACKET( 'I',  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0  );
 const G2_PACKET G2_PACKET_KHL				= MAKE_G2_PACKET( 'K', 'H', 'L',  0 ,  0 ,  0 ,  0 ,  0  );
-const G2_PACKET G2_PACKET_KHL_ANS			= MAKE_G2_PACKET( 'K', 'H', 'L', 'A',  0 ,  0 ,  0 ,  0  );	// Answer on G2_PACKET_KHL_REQ packet below
-const G2_PACKET G2_PACKET_KHL_REQ			= MAKE_G2_PACKET( 'K', 'H', 'L', 'R',  0 ,  0 ,  0 ,  0  );	// UDPKHL request used for "ukhl:"-caches during G2 boot process
+const G2_PACKET G2_PACKET_KHL_ANS			= MAKE_G2_PACKET( 'K', 'H', 'L', 'A',  0 ,  0 ,  0 ,  0  );		// Answer on G2_PACKET_KHL_REQ packet below
+const G2_PACKET G2_PACKET_KHL_REQ			= MAKE_G2_PACKET( 'K', 'H', 'L', 'R',  0 ,  0 ,  0 ,  0  );		// UDPKHL request used for "ukhl:"-caches during G2 boot process
 const G2_PACKET G2_PACKET_LEAF				= MAKE_G2_PACKET( 'L', 'E', 'A', 'F',  0 ,  0 ,  0 ,  0  );
 const G2_PACKET G2_PACKET_LIBRARY_STATUS	= MAKE_G2_PACKET( 'L', 'S',  0 ,  0 ,  0 ,  0 ,  0 ,  0  );
 const G2_PACKET G2_PACKET_LNI				= MAKE_G2_PACKET( 'L', 'N', 'I',  0 ,  0 ,  0 ,  0 ,  0  );
 const G2_PACKET G2_PACKET_METADATA			= MAKE_G2_PACKET( 'M', 'D',  0 ,  0 ,  0 ,  0 ,  0 ,  0  );
 const G2_PACKET G2_PACKET_NAME				= MAKE_G2_PACKET( 'N', 'A', 'M', 'E',  0 ,  0 ,  0 ,  0  );
 const G2_PACKET G2_PACKET_NEIGHBOUR_HUB		= MAKE_G2_PACKET( 'N', 'H',  0 ,  0 ,  0 ,  0 ,  0 ,  0  );
-const G2_PACKET G2_PACKET_NEIGHBOUR_LEAF	= MAKE_G2_PACKET( 'N', 'L',  0 ,  0 ,  0 ,  0 ,  0 ,  0  );	// Extension. /CRAWL leaf info
+const G2_PACKET G2_PACKET_NEIGHBOUR_LEAF	= MAKE_G2_PACKET( 'N', 'L',  0 ,  0 ,  0 ,  0 ,  0 ,  0  );		// Extension. /CRAWL leaf info
 const G2_PACKET G2_PACKET_NICK				= MAKE_G2_PACKET( 'N', 'I', 'C', 'K',  0 ,  0 ,  0 ,  0  );
 const G2_PACKET G2_PACKET_NODE_ADDRESS		= MAKE_G2_PACKET( 'N', 'A',  0 ,  0 ,  0 ,  0 ,  0 ,  0  );
 const G2_PACKET G2_PACKET_NODE_GUID			= MAKE_G2_PACKET( 'G', 'U',  0 ,  0 ,  0 ,  0 ,  0 ,  0  );
-const G2_PACKET G2_PACKET_NODE_INFO			= MAKE_G2_PACKET( 'N', 'I',  0 ,  0 ,  0 ,  0 ,  0 ,  0  );	// Obsolete. Equal to G2_PACKET_NODE_ADDRESS
+const G2_PACKET G2_PACKET_NODE_INFO			= MAKE_G2_PACKET( 'N', 'I',  0 ,  0 ,  0 ,  0 ,  0 ,  0  );		// Obsolete. Equal to G2_PACKET_NODE_ADDRESS
 const G2_PACKET G2_PACKET_OBJECT_ID			= MAKE_G2_PACKET( 'I', 'D',  0 ,  0 ,  0 ,  0 ,  0 ,  0  );
 const G2_PACKET G2_PACKET_PARTIAL			= MAKE_G2_PACKET( 'P', 'A', 'R', 'T',  0 ,  0 ,  0 ,  0  );
 const G2_PACKET G2_PACKET_PEER_BUSY			= MAKE_G2_PACKET( 'B', 'U', 'S', 'Y',  0 ,  0 ,  0 ,  0  );
@@ -129,7 +121,7 @@ const G2_PACKET G2_PACKET_PROFILE_CHALLENGE	= MAKE_G2_PACKET( 'U', 'P', 'R', 'O'
 const G2_PACKET G2_PACKET_PROFILE_DELIVERY	= MAKE_G2_PACKET( 'U', 'P', 'R', 'O', 'D',  0 ,  0 ,  0  );
 const G2_PACKET G2_PACKET_PUSH				= MAKE_G2_PACKET( 'P', 'U', 'S', 'H',  0 ,  0 ,  0 ,  0  );
 const G2_PACKET G2_PACKET_QHT				= MAKE_G2_PACKET( 'Q', 'H', 'T',  0 ,  0 ,  0 ,  0 ,  0  );
-const G2_PACKET G2_PACKET_QKY				= MAKE_G2_PACKET( 'Q', 'K', 'Y',  0 ,  0 ,  0 ,  0 ,  0  );	// Extension. /Q2 query key without /Q2/UDP
+const G2_PACKET G2_PACKET_QKY				= MAKE_G2_PACKET( 'Q', 'K', 'Y',  0 ,  0 ,  0 ,  0 ,  0  );		// Extension. /Q2 query key without /Q2/UDP
 const G2_PACKET G2_PACKET_QUERY				= MAKE_G2_PACKET( 'Q', '2',  0 ,  0 ,  0 ,  0 ,  0 ,  0  );
 const G2_PACKET G2_PACKET_QUERY_ACK			= MAKE_G2_PACKET( 'Q', 'A',  0 ,  0 ,  0 ,  0 ,  0 ,  0  );
 const G2_PACKET G2_PACKET_QUERY_ADDRESS		= MAKE_G2_PACKET( 'Q', 'N', 'A',  0 ,  0 ,  0 ,  0 ,  0  );
@@ -140,7 +132,7 @@ const G2_PACKET G2_PACKET_QUERY_KEY_ANS		= MAKE_G2_PACKET( 'Q', 'K', 'A',  0 ,  
 const G2_PACKET G2_PACKET_QUERY_KEY_REQ		= MAKE_G2_PACKET( 'Q', 'K', 'R',  0 ,  0 ,  0 ,  0 ,  0  );
 const G2_PACKET G2_PACKET_QUERY_REFRESH		= MAKE_G2_PACKET( 'R', 'E', 'F',  0 ,  0 ,  0 ,  0 ,  0  );
 const G2_PACKET G2_PACKET_QUERY_SEARCH		= MAKE_G2_PACKET( 'S',  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0  );
-const G2_PACKET G2_PACKET_QUERY_WRAP		= MAKE_G2_PACKET( 'Q', '1',  0 ,  0 ,  0 ,  0 ,  0 ,  0  );	// Obsolete
+const G2_PACKET G2_PACKET_QUERY_WRAP		= MAKE_G2_PACKET( 'Q', '1',  0 ,  0 ,  0 ,  0 ,  0 ,  0  );		// Obsolete
 const G2_PACKET G2_PACKET_RELAY				= MAKE_G2_PACKET( 'R', 'E', 'L', 'A', 'Y',  0 ,  0 ,  0  );
 const G2_PACKET G2_PACKET_REQUEST_ADDRESS	= MAKE_G2_PACKET( 'R', 'N', 'A',  0 ,  0 ,  0 ,  0 ,  0  );
 const G2_PACKET G2_PACKET_RETRY_AFTER		= MAKE_G2_PACKET( 'R', 'A',  0 ,  0 ,  0 ,  0 ,  0 ,  0  );
@@ -192,9 +184,16 @@ const G2_PACKET G2_PACKET_TCP_FIREWALLED	= MAKE_G2_PACKET( 'T', 'C', 'P', 'F', '
 const G2_PACKET G2_PACKET_UDP_FIREWALLED	= MAKE_G2_PACKET( 'U', 'D', 'P', 'F', 'W',  0 ,  0 ,  0  );
 const G2_PACKET G2_PACKET_CONNECT			= MAKE_G2_PACKET( 'C', 'O', 'N', 'N', 'E', 'C', 'T',  0  );
 const G2_PACKET G2_PACKET_CONNECT_ACK		= MAKE_G2_PACKET( 'C', 'O', 'N', 'N', 'A', 'C', 'K',  0  );
-const G2_PACKET G2_PACKET_YOURIP			= MAKE_G2_PACKET( 'Y', 'O', 'U', 'R', 'I', 'P',  0 ,  0  );	// Your IP extension for KHL/KHLA
-const G2_PACKET G2_PACKET_HASHED_URN		= MAKE_G2_PACKET( 'H', 'U', 'R', 'N',  0 ,  0 ,  0 ,  0  );	// hashed URNs
-const G2_PACKET G2_PACKET_HASHED_KEYWORD	= MAKE_G2_PACKET( 'H', 'K', 'E', 'Y',  0 ,  0 ,  0 ,  0  );	// hashed keywords
+const G2_PACKET G2_PACKET_YOURIP			= MAKE_G2_PACKET( 'Y', 'O', 'U', 'R', 'I', 'P',  0 ,  0  );		// Your IP extension for KHL/KHLA
+const G2_PACKET G2_PACKET_HASHED_URN		= MAKE_G2_PACKET( 'H', 'U', 'R', 'N',  0 ,  0 ,  0 ,  0  );		// Hashed URNs
+const G2_PACKET G2_PACKET_HASHED_KEYWORD	= MAKE_G2_PACKET( 'H', 'K', 'E', 'Y',  0 ,  0 ,  0 ,  0  );		// Hashed keywords
+
+//
+// G2 Packet Flags
+//
+
+#define G2_FLAG_COMPOUND	0x04
+#define G2_FLAG_BIG_ENDIAN	0x02
 
 //
 // G2 SS
@@ -204,6 +203,7 @@ const G2_PACKET G2_PACKET_HASHED_KEYWORD	= MAKE_G2_PACKET( 'H', 'K', 'E', 'Y',  
 #define G2_SS_BUSY		0x02
 #define G2_SS_STABLE	0x04
 
+
 class CG2Packet : public CPacket
 {
 protected:
@@ -211,20 +211,21 @@ protected:
 	virtual ~CG2Packet();
 
 public:
-	G2_PACKET	m_nType;
-	BOOL		m_bCompound;
+	G2_PACKET		m_nType;
+	BOOL			m_bCompound;
 
 public:
-	void	WritePacket(CG2Packet* pPacket);
-	void	WritePacket(G2_PACKET nType, DWORD nLength, BOOL bCompound = FALSE);
-	BOOL	ReadPacket(G2_PACKET& nType, DWORD& nLength, BOOL* pbCompound = NULL);
-	BOOL	SkipCompound();
-	BOOL	SkipCompound(DWORD& nLength, DWORD nRemaining = 0);
-	BOOL	GetTo(Hashes::Guid& oGUID);
-	BOOL	SeekToWrapped();
+	void			WritePacket(CG2Packet* pPacket);
+	void			WritePacket(G2_PACKET nType, DWORD nLength, BOOL bCompound = FALSE);
+	BOOL			ReadPacket(G2_PACKET& nType, DWORD& nLength, BOOL* pbCompound = NULL);
+	BOOL			SkipCompound();
+	BOOL			SkipCompound(DWORD& nLength, DWORD nRemaining = 0);
+	BOOL			GetTo(Hashes::Guid& oGUID);
+	BOOL			SeekToWrapped();
+
 public:
-	virtual void	Reset();
 	CG2Packet*		Clone() const;
+	virtual void	Reset();
 	virtual CString	ReadString(DWORD nMaximum = 0xFFFFFFFF);
 	virtual void	WriteString(LPCTSTR pszString, BOOL bNull = TRUE);
 	virtual int		GetStringLen(LPCTSTR pszString) const;

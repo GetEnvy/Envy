@@ -421,7 +421,7 @@ void CIRCFrame::SetFonts()
 	//
 	//	LOGFONT lf = {};
 	//	lf.lfCharSet = DEFAULT_CHARSET;
-	//	lf.lfQuality = theApp.m_nFontQuality;
+	//	lf.lfQuality = Settings.Fonts.Quality;
 	//	lstrcpy( lf.lfFaceName, Settings.IRC.ScreenFont );
 	//
 	//	CFont pFont;
@@ -468,11 +468,11 @@ void CIRCFrame::SetFonts()
 	//}
 
 	m_pContent.m_fntNormal.CreateFont( -(int)Settings.IRC.FontSize, 0, 0, 0, FW_NORMAL, FALSE, FALSE, FALSE,
-		DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS, theApp.m_nFontQuality,
+		DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS, Settings.Fonts.Quality,
 		DEFAULT_PITCH|FF_DONTCARE, Settings.IRC.ScreenFont );
 
 	m_fntEdit.CreateFont( -(int)( Settings.Fonts.DefaultSize + 1 ), 0, 0, 0, FW_NORMAL, FALSE, FALSE, FALSE,
-		DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS, theApp.m_nFontQuality,
+		DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS, Settings.Fonts.Quality,
 		DEFAULT_PITCH|FF_DONTCARE, Settings.Fonts.DefaultFont );
 
 	m_wndEdit.SetFont( &m_fntEdit, TRUE );
@@ -633,7 +633,7 @@ void CIRCFrame::PaintHeader(CRect rcHeader, CDC &dc)
 	m_hBuffer = (HBITMAP)m_dcBuffer.SelectObject( &m_bmBuffer )->m_hObject;
 
 	if ( ! CoolInterface.DrawWatermark( &m_dcBuffer, &rcClient, &m_bmWatermark ) )
-		m_dcBuffer.FillSolidRect( &rcHeader, Colors.m_crBannerBack );
+		m_dcBuffer.FillSolidRect( &rcClient, Colors.m_crBannerBack );
 
 	dc.BitBlt( rcHeader.left, rcHeader.top, rcHeader.Width(), rcHeader.Height(),
 		&m_dcBuffer, 0, 0, SRCCOPY );
@@ -1095,8 +1095,8 @@ CString CIRCFrame::GetTabText(int nTabIndex) const
 
 void CIRCFrame::OnLocalText(LPCTSTR pszText)
 {
-	CString strMessage( pszText ), strSend, strBufferMsg, strStatusMsg;
-	if ( strMessage.IsEmpty() ) return; 	// Crash prevention.  ToDo: Fix properly
+	CString strMessage( pszText ), strBufferMsg, strStatusMsg;
+	if ( strMessage.IsEmpty() ) return; 	// Crash prevention.  ToDo: Fix properly?
 
 	CString strTabTitle = GetTabText();
 	BOOL bMeMsg = FALSE;	// /me Action
@@ -1147,38 +1147,37 @@ void CIRCFrame::OnLocalText(LPCTSTR pszText)
 
 // END local display line
 
+	CString strSend( strMessage );
+
 	// If it's a command, remove the slash '/'
-	if ( strMessage[ 0 ] == L'/' )
+	if ( strSend[ 0 ] == L'/' )
 	{
-		strSend = strMessage.Mid( 1 );
+		strSend.Trim( L" /" );
+	}
+	else if ( strTabTitle.Compare( m_sStatus ) == 0 )
+	{
+		// Not a command, but in the status window?
+		OnNewMessage( L":localhost 400 You are not currently in a channel" );
+		return;
 	}
 	else
 	{
-		// Not a command, but in the status window?
-		if ( strTabTitle.Compare( m_sStatus ) == 0 )
-		{
-			OnNewMessage( L":localhost 400 You are not currently in a channel" );
-			return;
-		}
+		// Display the line locally, in the appropriate color
+		OnStatusMessage( strStatusMsg, bMeMsg ? ID_COLOR_ME : ID_COLOR_TEXTLOCAL );
+		m_pIrcBuffer[ m_wndTab.GetCurSel() ].Add( strBufferMsg );
+
+		if ( bMeMsg )
+			strSend = L"\x01 ACTION " + strMessage + L"\x01";
 		else
-		{
-			// Display the line locally, in the appropriate color
-			OnStatusMessage( strStatusMsg, bMeMsg ? ID_COLOR_ME : ID_COLOR_TEXTLOCAL );
-			m_pIrcBuffer[ m_wndTab.GetCurSel() ].Add( strBufferMsg );
+			strSend = strMessage;
 
-			if ( bMeMsg )
-				strSend = L"\x01 ACTION " + strMessage + L"\x01";
-			else
-				strSend = strMessage;
+		strSend = L"PRIVMSG " + strTabTitle + L" :" + strSend;
 
-			strSend = L"PRIVMSG " + strTabTitle + L" :" + strSend;
-
-			// Notify chat plugins about new local message
-			Plugins.OnChatMessage( strTabTitle, TRUE, m_sNickname, strTabTitle, pszText );
-		}
+		// Notify chat plugins about new local message
+		Plugins.OnChatMessage( strTabTitle, TRUE, m_sNickname, strTabTitle, pszText );
 	}
 
-	// Send 'strSend' to the server
+	// Send formatted message to the server
 	SendString( strSend );
 }
 

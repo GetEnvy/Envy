@@ -32,13 +32,13 @@ public:
 	~CFlags();
 
 protected:
-	CImageList	m_pImage;	// Flag images
+	CImageList	m_pImage;
 
 public:
 	BOOL		Load();
 	void		Clear();
 	int			GetCount() const;
-	int			GetFlagIndex(const CString& sCountry) const;
+	int			GetFlagIndex(const CString& sCountryCode) const;
 	BOOL		Draw(int i, HDC hdcDst, int x, int y, COLORREF rgbBk, COLORREF rgbFg = CLR_NONE, UINT fStyle = ILD_NORMAL);
 	HICON		ExtractIcon(int i);
 

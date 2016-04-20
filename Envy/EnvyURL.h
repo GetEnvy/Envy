@@ -58,8 +58,8 @@ public:
 
 public:
 	BOOL	Parse(const CString& sText, CList< CString >& pURLs, BOOL bResolve = FALSE);	// Parse URL list
-	BOOL	Parse(LPCTSTR pszURL, BOOL bResolve = TRUE);	// Parse single URL
-	CQuerySearchPtr ToQuery() const;						// Construct CQuerySearch object
+	BOOL	Parse(LPCTSTR pszURL, BOOL bResolve = TRUE);		// Parse single URL
+	CQuerySearchPtr ToQuery() const;							// Construct CQuerySearch object
 
 protected:
 	void	Clear();
@@ -68,23 +68,23 @@ protected:
 	BOOL	ParseHTTP(LPCTSTR pszURL, BOOL bResolve = TRUE);
 	BOOL	ParseFTP(LPCTSTR pszURL, BOOL bResolve = TRUE);
 	BOOL	ParseED2KFTP(LPCTSTR pszURL, BOOL bResolve = TRUE);	// ed2kftp://[client_id@]address:port/{md4_hash}/{size}/
-	BOOL	ParseDCFile(LPCTSTR pszURL, BOOL bResolve = TRUE); 	// dcfile://address:port/login/TTH:tiger_hash/size/	(Deprecated?)
-	BOOL	ParseDCHub(LPCTSTR pszURL, BOOL bResolve = TRUE);  	// dchub://[login@]address:port/[filepath] -Can be regular path or "files.xml.bz2" or "TTH:tiger_hash/size/"	 (adc:// ?)
+	BOOL	ParseDCFile(LPCTSTR pszURL, BOOL bResolve = TRUE); 	// dcfile://address:port/login/TTH:tiger_hash/size/	 (Deprecated?)
+	BOOL	ParseDCHub(LPCTSTR pszURL, BOOL bResolve = TRUE);  	// dchub://[login@]address:port/[filepath]  -Can be regular path or "files.xml.bz2" or "TTH:tiger_hash/size/"	 (adc:// ?)
 	BOOL	ParseBTC(LPCTSTR pszURL, BOOL bResolve = TRUE);		// btc://address:port/[{node_guid}]/{btih_hash}/
-	BOOL	ParseMagnet(LPCTSTR pszURL);					// magnet:?{params}
-											// Host:		// envy:[//]{verb}{[user@]address[:port]}, where {verb} is "" (empty), "host:", "hub:", "server:", "browse:" or "btnode:"
-											// WebCache:	// envy:[//]gwc:{url}[?nets={net_list}], where {net_list} is "gnutella" or "gnutella2"
-											// Discovery:	// envy:[//]{verb}{url}, where {verb} is "uhc:", "ukhl:", "gnutella1:host:" or "gnutella2:host:"
-											// ServerMet:	// envy:[//]meturl:{url}
-											// URL:			// envy:[//]url:{nested_url}
+	BOOL	ParseMagnet(LPCTSTR pszURL);						// magnet:?{params}
+												// Host:		// envy:[//]{verb}{[user@]address[:port]}  -Where {verb} is "" (empty), "host:", "hub:", "server:", "browse:" or "btnode:"
+												// WebCache:	// envy:[//]gwc:{url}[?nets={net_list}]  -Where {net_list} is "gnutella" or "gnutella2"
+												// Discovery:	// envy:[//]{verb}{url}  -Where {verb} is "uhc:", "ukhl:", "gnutella1:host:" or "gnutella2:host:"
+												// ServerMet:	// envy:[//]meturl:{url}
+												// URL:			// envy:[//]url:{nested_url}
 	BOOL	ParseEnvy(LPCTSTR pszURL);
 	BOOL	ParseEnvyFile(LPCTSTR pszURL);
 	BOOL	ParseEnvyHost(LPCTSTR pszURL, BOOL bBrowse = FALSE, PROTOCOLID nProtocol = PROTOCOL_G2);
 	BOOL	ParseDiscovery(LPCTSTR pszURL, int nType);
-	BOOL	ParseDonkey(LPCTSTR pszURL);					// ed2k://|file|{name}|{size}|{md4_hash}|/	ed2k://|server|{address}|{port}|/	ed2k://|search|{query}|/
+	BOOL	ParseDonkey(LPCTSTR pszURL);						// ed2k://|file|{name}|{size}|{md4_hash}|/	ed2k://|server|{address}|{port}|/	ed2k://|search|{query}|/
 	BOOL	ParseDonkeyFile(LPCTSTR pszURL);
 	BOOL	ParseDonkeyServer(LPCTSTR pszURL);
-	BOOL	ParsePiolet(LPCTSTR pszURL);					// mp2p://[|]file|{name}|{size}|{sha1_hash}/
+	BOOL	ParsePiolet(LPCTSTR pszURL);						// mp2p://[|]file|{name}|{size}|{sha1_hash}/
 	BOOL	ParsePioletFile(LPCTSTR pszURL);
 
 // Registration Operations

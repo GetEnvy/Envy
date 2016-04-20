@@ -623,7 +623,10 @@ void CMainTabBarCtrl::TabItem::Paint(CDC* pDstDC, CDC* pSrcDC, const CPoint& ptO
 
 	rcTarget.top += Skin.m_ptNavBarOffset.y;
 
-	CFont* pOldFont = pDstDC->SelectObject( ( m_bSelected || bHover ) ? &CoolInterface.m_fntNavBarActive : &CoolInterface.m_fntNavBar );
+	CFont* pOldFont = pDstDC->SelectObject(
+		m_bSelected ? &CoolInterface.m_fntNavBarActive :
+		bHover ? &CoolInterface.m_fntNavBarHover :
+		&CoolInterface.m_fntNavBar );
 
 	pDstDC->SetBkMode( TRANSPARENT );
 
@@ -635,22 +638,19 @@ void CMainTabBarCtrl::TabItem::Paint(CDC* pDstDC, CDC* pSrcDC, const CPoint& ptO
 			for ( int y = -1 ; y < 2 ; y++ )
 			{
 				if ( x || y )
-					pDstDC->DrawText( m_sTitle, rcTarget + CPoint( x, y ),
-						DT_CENTER | DT_SINGLELINE | DT_VCENTER | DT_NOCLIP );
+					pDstDC->DrawText( m_sTitle, rcTarget + CPoint( x, y ), DT_CENTER|DT_SINGLELINE|DT_VCENTER|DT_NOCLIP );
 			}
 		}
 	}
 	if ( crNavBarShadow != CLR_NONE )
 	{
 		pDstDC->SetTextColor( crNavBarShadow );
-		pDstDC->DrawText( m_sTitle, rcTarget + CPoint( 1, 1 ),
-			DT_CENTER | DT_SINGLELINE | DT_VCENTER | DT_NOCLIP );
+		pDstDC->DrawText( m_sTitle, rcTarget + CPoint( 1, 1 ), DT_CENTER|DT_SINGLELINE|DT_VCENTER|DT_NOCLIP );
 	}
 	if ( crNavBarText != CLR_NONE )
 	{
 		pDstDC->SetTextColor( crNavBarText );
-		pDstDC->DrawText( m_sTitle, rcTarget,
-			DT_CENTER | DT_SINGLELINE | DT_VCENTER | DT_NOCLIP );
+		pDstDC->DrawText( m_sTitle, rcTarget, DT_CENTER|DT_SINGLELINE|DT_VCENTER|DT_NOCLIP );
 	}
 
 	pDstDC->SelectObject( pOldFont );

@@ -247,7 +247,7 @@ CXMLElement* CLibraryFile::CreateXML(CXMLElement* pRoot, BOOL bSharedOnly, XmlTy
 //////////////////////////////////////////////////////////////////////
 // CLibraryFile shared check
 
-bool CLibraryFile::IsShared(bool bIgnoreOverride) const
+bool CLibraryFile::IsShared(bool bIgnoreOverride /*false*/) const
 {
 	ASSUME_LOCK( Library.m_pSection );
 

@@ -65,7 +65,7 @@ CLibraryFolders::~CLibraryFolders()
 	delete m_pAlbumRoot;
 }
 
-CXMLElement* CLibraryFolders::CreateXML(LPCTSTR szRoot, BOOL bSharedOnly, XmlType nType) const
+CXMLElement* CLibraryFolders::CreateXML(LPCTSTR szRoot, BOOL bSharedOnly, XmlType nType /*xmlDefault*/) const
 {
 	CXMLElement* pRoot;
 

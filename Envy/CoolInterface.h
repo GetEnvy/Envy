@@ -38,6 +38,7 @@ public:
 	CFont		m_fntCaption;		// panel.caption
 	CFont		m_fntNavBar;		// navbar.caption
 	CFont		m_fntNavBarActive;	// navbar.selected
+	CFont		m_fntNavBarHover;	// navbar.hover
 	CFont		m_fntRichDefault;	// richdoc.default
 	CFont		m_fntRichHeading;	// richdoc.heading
 

@@ -180,15 +180,16 @@ void CSettings::Load()
 	Add( L"Toolbars", L"ShowRemote", &Toolbars.ShowRemote, true );
 	Add( L"Toolbars", L"ShowMonitor", &Toolbars.ShowMonitor, true );
 
+	Add( L"Fonts", L"Quality", &Fonts.Quality, 0, 1, 0, 6 );	// 	CLEARTYPE_QUALITY etc.
 	Add( L"Fonts", L"DefaultSize", &Fonts.DefaultSize, 11, 1, 9, 12, L" px" );
-#ifndef NOXP
-	Add( L"Fonts", L"DefaultFont", &Fonts.DefaultFont, theApp.m_bIsWinXP ? L"Tahoma" : L"Segoe UI" , false, setFont );
-	Add( L"Fonts", L"SystemLogFont", &Fonts.SystemLogFont, theApp.m_bIsWinXP ? L"Tahoma" : L"Segoe UI", false, setFont );
-	Add( L"Fonts", L"PacketDumpFont", &Fonts.PacketDumpFont, theApp.m_bIsWinXP ? L"Lucida Console" : L"Consolas", false, setFont );
-#else // No XP
+#ifdef NOXP
 	Add( L"Fonts", L"DefaultFont", &Fonts.DefaultFont, L"Segoe UI" , false, setFont );
 	Add( L"Fonts", L"SystemLogFont", &Fonts.SystemLogFont, L"Segoe UI", false, setFont );
 	Add( L"Fonts", L"PacketDumpFont", &Fonts.PacketDumpFont, L"Consolas", false, setFont );
+#else // XP Supported
+	Add( L"Fonts", L"DefaultFont", &Fonts.DefaultFont, theApp.m_bIsWinXP ? L"Tahoma" : L"Segoe UI" , false, setFont );
+	Add( L"Fonts", L"SystemLogFont", &Fonts.SystemLogFont, theApp.m_bIsWinXP ? L"Tahoma" : L"Segoe UI", false, setFont );
+	Add( L"Fonts", L"PacketDumpFont", &Fonts.PacketDumpFont, theApp.m_bIsWinXP ? L"Lucida Console" : L"Consolas", false, setFont );
 #endif
 
 	Add( L"Library", L"CreateGhosts", &Library.CreateGhosts, true );

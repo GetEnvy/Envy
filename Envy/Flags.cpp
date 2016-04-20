@@ -167,19 +167,20 @@ int CFlags::GetCount() const
 	return m_pImage.GetImageCount();
 }
 
-int CFlags::GetFlagIndex(const CString& sCountry) const
+int CFlags::GetFlagIndex(const CString& sCountryCode) const
 {
-	if ( sCountry.GetLength() == 2 )
-	{
-		char nFirstLetter  = (char)( sCountry[0] - 'A' );
-		char nSecondLetter = (char)( sCountry[1] - 'A' );
-		// Currently only the letters A-Z are in the flag matrix
-		// but GeoIP can also return some combinations that aren't all letters (A1, A2, etc.)
-		if ( nFirstLetter >= 0 && nFirstLetter < 26 && nSecondLetter >= 0 && nSecondLetter < 26 )
-			return nFirstLetter * 26 + nSecondLetter;
-		if ( nFirstLetter == 0 && nSecondLetter < 0 )
-			return 0;
-	}
+	if ( sCountryCode.GetLength() != 2 )
+		return -1;
+
+	char nFirstLetter  = (char)( sCountryCode[0] - 'A' );
+	char nSecondLetter = (char)( sCountryCode[1] - 'A' );
+	// Currently only the letters A-Z are in the flag matrix
+	// but GeoIP can also return some combinations that aren't all letters (A1, A2, etc.)
+	if ( nFirstLetter >= 0 && nFirstLetter < 26 && nSecondLetter >= 0 && nSecondLetter < 26 )
+		return nFirstLetter * 26 + nSecondLetter;
+	if ( nFirstLetter == 0 && nSecondLetter < 0 )
+		return 0;
+
 	return -1;
 }
 
