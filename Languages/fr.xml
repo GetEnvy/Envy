@@ -3,7 +3,7 @@
 
 <!-- Envy Default French Skin File -->
 
-<!-- Translation based on default en.xml r1 -->
+<!-- Translation based on default en.xml r4 -->
 <!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -2065,35 +2065,59 @@
 		</group>
 		<group id="40">
 			<newline gap="1"/>
-			<icon res="203"/><gap size="5"/>
+			<icon res="203"/>
+			<gap size="5"/>
 			<link id="ContactEmail" align="middle"/>
 		</group>
 		<group id="44">
 			<newline gap="1"/>
-			<icon res="206"/><gap size="5"/>
-			<link id="ContactMSN"/>
+			<icon res="206"/>
+			<gap size="5"/>
+			<link id="ContactSkype"/>
 		</group>
 		<group id="41">
 			<newline gap="1"/>
-			<icon res="207"/><gap size="5"/>
+			<icon res="207"/>
+			<gap size="5"/>
 			<link id="ContactYahoo"/>
 		</group>
 		<group id="42">
 			<newline gap="1"/>
-			<icon res="205"/><gap size="5"/>
+			<icon res="205"/>
+			<gap size="5"/>
 			<link id="ContactICQ"/>
 		</group>
 		<group id="43">
 			<newline gap="1"/>
-			<icon res="204"/><gap size="5"/>
+			<icon res="204"/>
+			<gap size="5"/>
 			<link id="ContactAOL"/>
 		</group>
 		<group id="45">
 			<newline gap="1"/>
-			<icon res="204"/><gap size="5"/>
+			<icon res="208"/>
+			<gap size="5"/>
 			<link id="ContactJabber"/>
 		</group>
-		<group id="4">
+		<group id="46">
+			<newline gap="1"/>
+			<icon res="209"/>
+			<gap size="5"/>
+			<link id="ContactTwitter"/>
+		</group>
+		<group id="47">
+			<newline gap="1"/>
+			<icon res="210"/>
+			<gap size="5"/>
+			<link id="ContactFacebook"/>
+		</group>
+		<group id="48">
+			<newline gap="1"/>
+			<icon res="212"/>
+			<gap size="5"/>
+			<link id="ContactGetEnvy"/>
+		</group>
+		<group id="5">
 			<newline gap="8" indent="0"/>
 			<text format="b">Centres d'intérêt</text>
 			<newline gap="2" indent="8"/>
@@ -4080,7 +4104,7 @@
 		<control/>
 		<control caption="Google :"/>
 		<control/>
-		<control caption="MSN/Live :"/>
+		<control caption="Skype :"/>
 		<control/>
 		<control caption="Yahoo :"/>
 		<control/>

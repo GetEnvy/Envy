@@ -8410,35 +8410,35 @@ msgstr "Messagerie instantanée :"
 
 #: ccontactprofilepage;control;5
 msgid "GetEnvy.com:"
-msgstr "GetEnvy.com:"
+msgstr "GetEnvy.com :"
 
 #: ccontactprofilepage;control;7
 msgid "Facebook:"
-msgstr "Facebook:"
+msgstr "Facebook :"
 
 #: ccontactprofilepage;control;9
 msgid "Twitter:"
-msgstr "Twitter:"
+msgstr "Twitter :"
 
 #: ccontactprofilepage;control;11
 msgid "Google:"
-msgstr "Google:"
+msgstr "Google :"
 
 #: ccontactprofilepage;control;13
-msgid "MSN/Live:"
-msgstr "MSN/Live:"
+msgid "Skype:"
+msgstr "Skype :"
 
 #: ccontactprofilepage;control;15
 msgid "Yahoo:"
-msgstr "Yahoo:"
+msgstr "Yahoo :"
 
 #: ccontactprofilepage;control;17
 msgid "AOL:"
-msgstr "AOL:"
+msgstr "AOL :"
 
 #: ccontactprofilepage;control;19
 msgid "ICQ:"
-msgstr "ICQ:"
+msgstr "ICQ :"
 
 #: dialog;cfilesprofilepage
 msgid "Favorites"

@@ -53,10 +53,10 @@ CFileHash::CFileHash(QWORD nFileSize)
 
 void CFileHash::Add(const void* pBuffer, DWORD nBlock)
 {
-	m_pSHA1.Add( pBuffer, nBlock );
-	m_pTiger.AddToFile( pBuffer, nBlock );
-	m_pED2K.AddToFile( pBuffer, nBlock );
-	m_pMD5.Add( pBuffer, nBlock );
+	m_pSHA1.Add( pBuffer, nBlock );			// Hashlib High CPU
+	m_pTiger.AddToFile( pBuffer, nBlock );	// Hashlib
+	m_pED2K.AddToFile( pBuffer, nBlock );	// Hashlib High CPU
+	m_pMD5.Add( pBuffer, nBlock );			// Hashlib High CPU
 }
 
 void CFileHash::Finish()

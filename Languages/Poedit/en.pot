@@ -8425,7 +8425,7 @@ msgid "Google:"
 msgstr ""
 
 #: ccontactprofilepage;control;13
-msgid "MSN/Live:"
+msgid "Skype:"
 msgstr ""
 
 #: ccontactprofilepage;control;15

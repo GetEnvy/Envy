@@ -3,7 +3,7 @@
 
 <!-- Envy UK English Skin File -->
 
-<!-- Translation based on default en.xml r1 -->
+<!-- Translation based on default en.xml r4 -->
 <!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -632,27 +632,6 @@
 		<newline gap="10"/>
 		<link target="page:CSchedulerSettingsPage" format="b">Scheduler:</link>
 		<text>&#160;Limit download connections based on a periodic schedule.</text>
-	</document>
-	<document name="CBrowseHostProfile.2">
-		<newline gap="40" indent="0"/>
-		<text format="b">Shared Files</text>
-		<newline gap="4" indent="8"/>
-		<icon res="137" target="command:ID_BROWSE_FILES"/><gap size="5"/>
-		<link target="command:ID_BROWSE_FILES" align="middle">View Shared Files</link>
-		<group id="2">
-			<newline gap="16" indent="0"/>
-			<text format="b">Community</text>
-			<newline gap="4" indent="8"/>
-			<icon res="127" target="command:ID_SEARCH_CHAT"/>
-			<gap size="5"/>
-			<link target="command:ID_SEARCH_CHAT" align="middle">Chat With User</link>
-		</group>
-		<group id="3">
-			<newline gap="16" indent="0"/>
-			<text format="b">Favourite Web Links</text>
-			<newline gap="4" indent="8" id="Bookmarks"/>
-		</group>
-		<newline gap="16" indent="0"/>
 	</document>
 </documents>
 <!-- Localised Command Tip Text."Message" displayed in status bar, "Tip" shown in tooltip -->

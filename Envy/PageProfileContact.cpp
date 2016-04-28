@@ -52,7 +52,7 @@ void CContactProfilePage::DoDataExchange(CDataExchange* pDX)
 {
 	CSettingsPage::DoDataExchange(pDX);
 	DDX_Text(pDX, IDC_PROFILE_EMAIL, m_sEmail);
-	DDX_Text(pDX, IDC_PROFILE_MSN, m_sMSN);
+	DDX_Text(pDX, IDC_PROFILE_SKYPE, m_sSkype);
 	DDX_Text(pDX, IDC_PROFILE_YAHOO, m_sYahoo);
 	DDX_Text(pDX, IDC_PROFILE_AOL, m_sAOL);
 	DDX_Text(pDX, IDC_PROFILE_ICQ, m_sICQ);
@@ -86,7 +86,7 @@ BOOL CContactProfilePage::OnInitDialog()
 					if ( strGroup.CompareNoCase( L"email" ) == 0 )
 						m_sEmail = strAddress;
 					else if ( strGroup.CompareNoCase( L"msn" ) == 0 )
-						m_sMSN = strAddress;
+						m_sSkype = strAddress;
 					else if ( strGroup.CompareNoCase( L"yahoo" ) == 0 )
 						m_sYahoo = strAddress;
 					else if ( strGroup.CompareNoCase( L"icq" ) == 0 )
@@ -145,9 +145,9 @@ void CContactProfilePage::OnPaint()
 	ScreenToClient( &rc );
 	CoolInterface.Draw( &dc, IDI_CONTACT_GOOGLE, 16, rc.left - 20, rc.top + 2 );
 
-	GetDlgItem( IDC_PROFILE_MSN )->GetWindowRect( &rc );
+	GetDlgItem( IDC_PROFILE_SKYPE )->GetWindowRect( &rc );
 	ScreenToClient( &rc );
-	CoolInterface.Draw( &dc, IDI_CONTACT_MSN, 16, rc.left - 20, rc.top + 2 );
+	CoolInterface.Draw( &dc, IDI_CONTACT_SKYPE, 16, rc.left - 20, rc.top + 2 );
 
 	GetDlgItem( IDC_PROFILE_YAHOO )->GetWindowRect( &rc );
 	ScreenToClient( &rc );
@@ -170,7 +170,7 @@ void CContactProfilePage::OnOK()
 		m_sEmail.Empty();
 
 	AddAddress( L"Email", L"Primary", m_sEmail );
-	AddAddress( L"MSN", L"Primary", m_sMSN );
+	AddAddress( L"Skype", L"Primary", m_sSkype );
 	AddAddress( L"Yahoo", L"Primary", m_sYahoo );
 	AddAddress( L"ICQ", L"Primary", m_sICQ );
 	AddAddress( L"AOL", L"Primary", m_sAOL );

@@ -3,7 +3,7 @@
 
 <!-- Envy Default English Skin File -->
 
-<!-- Translation based on default en.xml r1 -->
+<!-- Translation based on default en.xml r4 -->
 <!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -513,16 +513,16 @@
 	<menu name="CTabBar">
 		<item id="ID_MOVETAB_LEFT" text="Move Tab _Left"/>
 		<item id="ID_MOVETAB_RIGHT" text="Move Tab _Right"/>
-		<!--<item id="ID_MOVETAB_FIRST" text="Move Tab _First"/>-->
-		<!--<item id="ID_MOVETAB_LAST" text="Move Tab L_ast"/>-->
+		<!--item id="ID_MOVETAB_FIRST" text="Move Tab _First"-->
+		<!--item id="ID_MOVETAB_LAST" text="Move Tab L_ast"-->
 		<separator/>
 		<item id="ID_CHILD_CLOSE" text="_Close Window"/>
 	</menu>
 	<menu name="CTabBar.Child">
 		<item id="ID_MOVETAB_LEFT" text="Move Tab _Left"/>
 		<item id="ID_MOVETAB_RIGHT" text="Move Tab _Right"/>
-		<!--<item id="ID_MOVETAB_FIRST" text="Move Tab _First"/>-->
-		<!--<item id="ID_MOVETAB_LAST" text="Move Tab L_ast"/>-->
+		<!--item id="ID_MOVETAB_FIRST" text="Move Tab _First"-->
+		<!--item id="ID_MOVETAB_LAST" text="Move Tab L_ast"-->
 		<separator/>
 		<item id="ID_CHILD_MAXIMISE" text="_Full Screen"/>
 		<item id="ID_CHILD_RESTORE" text="_Restore"/>
@@ -1267,7 +1267,7 @@
 		<item id="ID_DOWNLOAD_GROUP_PAUSE" text="Pa_use All"/>
 		<item id="ID_DOWNLOAD_GROUP_CLEAR" text="_Clear All"/>
 		<separator/>
-	<!--<item id="ID_DOWNLOAD_GROUP_SHOW" text="_Hide Groups"/>-->
+		<!--item id="ID_DOWNLOAD_GROUP_SHOW" text="_Hide Groups"-->
 		<item id="ID_DOWNLOAD_GROUP_MOVELEFT" text="Move Group _Left"/>
 		<item id="ID_DOWNLOAD_GROUP_MOVERIGHT" text="Move Group R_ight"/>
 		<item id="ID_DOWNLOAD_GROUP_REMOVE" text="R_emove Group"/>
@@ -1963,7 +1963,7 @@
 				<group id="3">
 					<link id="LibraryHashFaster" target="command:ID_LIBRARY_HASH_PRIORITY">Click here to hash faster.</link>
 				</group>
-				<group id="5">
+				<group id="4">
 					<link id="LibraryHashFaster" target="command:ID_LIBRARY_HASH_PRIORITY">Click here to hash slower.</link>
 				</group>
 			</group>
@@ -2065,6 +2065,14 @@
 		<heading id="Nick"/>
 		<heading>'s Profile</heading>
 		<newline gap="8"/>
+		<group id="0">
+			<newline gap="8" indent="0"/>
+			<text format="b">Client</text>
+			<newline gap="2" indent="8"/>
+			<text id="Vendor"/>
+			<newline gap="2" indent="8"/>
+			<text id="Address"/>
+		</group>
 		<group id="1">
 			<newline gap="8" indent="0"/>
 			<text format="b">Name</text>
@@ -2086,24 +2094,27 @@
 			<text>, </text>
 			<text id="Age"/>
 		</group>
-		<group id="5">
+		<group id="4">
 			<newline gap="8" indent="0"/>
-			<text format="b">Contact Information</text>
+			<text format="b">Contact Info</text>
 			<newline gap="1" indent="8"/>
 		</group>
 		<group id="40">
 			<newline gap="1"/>
-			<icon res="203"/><gap size="5"/>
+			<icon res="203"/>
+			<gap size="5"/>
 			<link id="ContactEmail" align="middle"/>
 		</group>
 		<group id="44">
 			<newline gap="1"/>
-			<icon res="206"/><gap size="5"/>
-			<link id="ContactMSN"/>
+			<icon res="206"/>
+			<gap size="5"/>
+			<link id="ContactSkype"/>
 		</group>
 		<group id="41">
 			<newline gap="1"/>
-			<icon res="207"/><gap size="5"/>
+			<icon res="207"/>
+			<gap size="5"/>
 			<link id="ContactYahoo"/>
 		</group>
 		<group id="43">
@@ -2114,12 +2125,14 @@
 		</group>
 		<group id="42">
 			<newline gap="1"/>
-			<icon res="205"/><gap size="5"/>
+			<icon res="205"/>
+			<gap size="5"/>
 			<link id="ContactICQ"/>
 		</group>
 		<group id="45">
 			<newline gap="1"/>
-			<icon res="208"/><gap size="5"/>
+			<icon res="208"/>
+			<gap size="5"/>
 			<link id="ContactJabber"/>
 		</group>
 		<group id="46">
@@ -2140,7 +2153,7 @@
 			<gap size="5"/>
 			<link id="ContactGetEnvy"/>
 		</group>
-		<group id="4">
+		<group id="5">
 			<newline gap="8" indent="0"/>
 			<text format="b">Interests</text>
 			<newline gap="2" indent="8"/>
@@ -2163,12 +2176,13 @@
 			<newline gap="16" indent="0"/>
 			<text format="b">Community</text>
 			<newline gap="4" indent="8"/>
-			<icon res="127" target="command:ID_SEARCH_CHAT"/><gap size="5"/>
+			<icon res="127" target="command:ID_SEARCH_CHAT"/>
+			<gap size="5"/>
 			<link target="command:ID_SEARCH_CHAT" align="middle">Chat With User</link>
 		</group>
 		<group id="3">
 			<newline gap="16" indent="0"/>
-			<text format="b">Favorite Web Links</text>
+			<text format="b">Suggested Links</text>
 			<newline gap="4" indent="8" id="Bookmarks"/>
 		</group>
 		<newline gap="16" indent="0"/>
@@ -4188,7 +4202,7 @@
 		<control/>
 		<control caption="Google:"/>
 		<control/>
-		<control caption="MSN/Live:"/>
+		<control caption="Skype:"/>
 		<control/>
 		<control caption="Yahoo:"/>
 		<control/>

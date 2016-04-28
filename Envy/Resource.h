@@ -78,7 +78,7 @@
 #define IDI_MAIL                        203
 #define IDI_CONTACT_AOL                 204
 #define IDI_CONTACT_ICQ                 205
-#define IDI_CONTACT_MSN                 206
+#define IDI_CONTACT_SKYPE               206
 #define IDI_CONTACT_YAHOO               207
 #define IDI_CONTACT_GOOGLE              208
 #define IDI_CONTACT_TWITTER             209
@@ -552,7 +552,7 @@
 #define IDC_PROFILE_EMAIL               1408
 #define IDC_PROFILE_AOL                 1410
 #define IDC_PROFILE_ICQ                 1411
-#define IDC_PROFILE_MSN                 1412
+#define IDC_PROFILE_SKYPE               1412
 #define IDC_PROFILE_YAHOO               1414
 #define IDC_PROFILE_JABBER              1415
 #define IDC_PROFILE_TWITTER             1416

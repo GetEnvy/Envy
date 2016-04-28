@@ -33,7 +33,7 @@ public:
 
 public:
 	CString	m_sEmail;
-	CString	m_sMSN;
+	CString	m_sSkype;
 	CString	m_sYahoo;
 	CString	m_sAOL;
 	CString	m_sICQ;

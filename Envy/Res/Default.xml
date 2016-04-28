@@ -600,7 +600,7 @@
 				<item id="ID_HELP_FAQ" text="Envy FA_Q" shortcut="F1"/>
 				<item id="ID_HELP_GUIDE" text="Envy User _Guide"/>
 				<item id="ID_HELP_FORUMS" text="Envy _Forums"/>
-				<item id="ID_HELP_FORUMS_LOCAL" text="_English Local Forum"/>
+				<!--item id="ID_HELP_FORUMS_LOCAL" text="_English Local Forum"-->
 				<separator/>
 				<menu text="_Websites">
 					<!--item id="ID_HELP_WEB_3" text="Slyck.com"-->
@@ -973,7 +973,7 @@
 			<item id="ID_VIEW_NEIGHBOURS" text="_Neighbors"/>
 			<item id="ID_VIEW_UPLOADS" text="_Uploads"/>
 			<item id="ID_VIEW_SECURITY" text="_Security"/>
-			<item id="ID_VIEW_SCHEDULER" text="Schedule_r"/>
+			<!--item id="ID_VIEW_SCHEDULER" text="Schedule_r"-->
 			<item id="ID_VIEW_HOSTS" text="_Host Cache"/>
 		</menu>
 	</menu>
@@ -1244,7 +1244,7 @@
 		<item id="ID_DOWNLOAD_GROUP_PAUSE" text="Pa_use All"/>
 		<item id="ID_DOWNLOAD_GROUP_CLEAR" text="_Clear All"/>
 		<separator/>
-	<!--<item id="ID_DOWNLOAD_GROUP_SHOW" text="_Hide Groups"/>-->
+		<!--item id="ID_DOWNLOAD_GROUP_SHOW" text="_Hide Groups"-->
 		<item id="ID_DOWNLOAD_GROUP_MOVELEFT" text="Move Group _Left"/>
 		<item id="ID_DOWNLOAD_GROUP_MOVERIGHT" text="Move Group R_ight"/>
 		<item id="ID_DOWNLOAD_GROUP_REMOVE" text="R_emove Group"/>
@@ -1667,7 +1667,7 @@
 		<separator/>
 		<item id="ID_CHAT_BROWSE" text="_Browse User"/>
 		<item id="ID_CHAT_PRIORITY" text="Grant _Priority"/>
-		<!-- <item id="ID_CHAT_SEND_FILE" text="_Send File..."/> -->
+		<!--item id="ID_CHAT_SEND_FILE" text="_Send File..."-->
 		<separator/>
 		<menu text="_Format">
 			<item id="ID_CHAT_BOLD" text="Set _Bold"/>
@@ -1713,7 +1713,7 @@
 	<menu name="WebServices.List.Menu">
 		<item id="ID_LIBRARY_BITPRINTS_DOWNLOAD" text="_Bitprints"/>
 		<item id="ID_WEBSERVICES_MUSICBRAINZ" text="_MusicBrainz"/>
-		<!-- item id="ID_WEBSERVICES_SHAREMONKEY" text="_ShareMonkey" -->
+		<!--item id="ID_WEBSERVICES_SHAREMONKEY" text="_ShareMonkey"-->
 	</menu>
 </menus>
 
@@ -1757,7 +1757,7 @@
 			<text>Or open your default completed </text>
 			<link target="command:shell:downloads">downloads folder.</link>
 			<newline gap="4" indent="42"/>
-			<text>Share your own files from </text>
+			<text>Share your own files at </text>
 			<link id="RemoteBrowseURL"/>
 			<newline gap="20" indent="0"/>
 		</group>
@@ -1847,10 +1847,10 @@
 			<link id="RemoteAccessURL"/>
 			<text>&#160; or &#160;</text>
 			<link id="RemoteAccessLocal"/>
-		<!--newline gap="4" indent="0"-->
-		<!--bitmap path="/data/QRCodeRemote.bmp" width="116" height="116"-->
-		<gap size="8"/>
-		<newline gap="18" indent="0"/>
+			<!--newline gap="4" indent="0"-->
+			<!--bitmap path="/data/QRCodeRemote.bmp" width="116" height="116"-->
+			<gap size="8"/>
+			<newline gap="18" indent="0"/>
 		</group>
 		<newline gap="4" indent="0"/>
 	</document>
@@ -2070,7 +2070,7 @@
 		</group>
 		<group id="4">
 			<newline gap="8" indent="0"/>
-			<text format="b">Contact Information</text>
+			<text format="b">Contact Info</text>
 			<newline gap="1" indent="8"/>
 		</group>
 		<group id="40">
@@ -2081,7 +2081,7 @@
 		<group id="44">
 			<newline gap="1"/>
 			<icon res="206"/><gap size="5"/>
-			<link id="ContactMSN"/>
+			<link id="ContactSkype"/>
 		</group>
 		<group id="41">
 			<newline gap="1"/>
@@ -2090,8 +2090,7 @@
 		</group>
 		<group id="43">
 			<newline gap="1"/>
-			<icon res="204"/>
-			<gap size="5"/>
+			<icon res="204"/><gap size="5"/>
 			<link id="ContactAOL"/>
 		</group>
 		<group id="42">
@@ -2106,20 +2105,17 @@
 		</group>
 		<group id="46">
 			<newline gap="1"/>
-			<icon res="209"/>
-			<gap size="5"/>
+			<icon res="209"/><gap size="5"/>
 			<link id="ContactTwitter"/>
 		</group>
 		<group id="47">
 			<newline gap="1"/>
-			<icon res="210"/>
-			<gap size="5"/>
+			<icon res="210"/><gap size="5"/>
 			<link id="ContactFacebook"/>
 		</group>
 		<group id="48">
 			<newline gap="1"/>
-			<icon res="212"/>
-			<gap size="5"/>
+			<icon res="212"/><gap size="5"/>
 			<link id="ContactGetEnvy"/>
 		</group>
 		<group id="5">
@@ -2150,7 +2146,7 @@
 		</group>
 		<group id="3">
 			<newline gap="16" indent="0"/>
-			<text format="b">Favorites (Web Links)</text>
+			<text format="b">Suggested Links</text>
 			<newline gap="4" indent="8" id="Bookmarks"/>
 		</group>
 		<newline gap="16" indent="0"/>
@@ -2750,13 +2746,13 @@
 	</bitmap>
 	<bitmap id="IDB_SOCIAL" mask="CLR_NONE">
 		<image id="IDI_CONTACT_GETENVY"/>
-		<image id="IDI_CONTACT_MSN"/>
+		<image id="IDI_CONTACT_FACEBOOK"/>
+		<image id="IDI_CONTACT_TWITTER"/>
+		<image id="IDI_CONTACT_SKYPE"/>
+		<image id="IDI_CONTACT_GOOGLE"/>
 		<image id="IDI_CONTACT_YAHOO"/>
 		<image id="IDI_CONTACT_AOL"/>
 		<image id="IDI_CONTACT_ICQ"/>
-		<image id="IDI_CONTACT_GOOGLE"/>
-		<image id="IDI_CONTACT_FACEBOOK"/>
-		<image id="IDI_CONTACT_TWITTER"/>
 		<image />
 		<image id="IDI_MAIL"/>
 	</bitmap>

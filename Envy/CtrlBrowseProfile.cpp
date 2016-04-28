@@ -82,7 +82,7 @@ void CBrowseProfileCtrl::OnSkinChange()
 	m_pdNick = m_pdFullName = m_pdFullLocation = NULL;
 	m_pdGenderMale = m_pdGenderFemale = m_pdAge = NULL;
 	m_pdContactEmail = m_pdContactGetEnvy = m_pdContactFacebook = m_pdContactTwitter = NULL;
-	m_pdContactAOL = m_pdContactYahoo = m_pdContactMSN = m_pdContactJabber = m_pdContactICQ = NULL;
+	m_pdContactAOL = m_pdContactYahoo = m_pdContactSkype = m_pdContactJabber = m_pdContactICQ = NULL;
 	m_pdBioText = m_pdInterests = m_pdVendor = m_pdAddress = NULL;
 
 	if ( CXMLElement* pXML = Skin.GetDocument( L"CBrowseHostProfile.1" ) )
@@ -101,7 +101,7 @@ void CBrowseProfileCtrl::OnSkinChange()
 		pMap.Lookup( L"BioText", m_pdBioText );
 		pMap.Lookup( L"Interests", m_pdInterests );
 		pMap.Lookup( L"ContactEmail", m_pdContactEmail );
-		pMap.Lookup( L"ContactMSN", m_pdContactMSN );
+		pMap.Lookup( L"ContactSkype", m_pdContactSkype );
 		pMap.Lookup( L"ContactYahoo", m_pdContactYahoo );
 		pMap.Lookup( L"ContactAOL", m_pdContactAOL );
 		pMap.Lookup( L"ContactICQ", m_pdContactICQ );
@@ -159,13 +159,13 @@ void CBrowseProfileCtrl::UpdateDocumentLeft(CHostBrowser* pBrowser, CGProfile* p
 	// 0 Client/Flag
 	if ( m_pdVendor != NULL && ( ! pBrowser->m_sServer.IsEmpty() || ! pBrowser->m_sCountry.IsEmpty() ) )
 	{
+		// Note: pBrowser->m_sAddress and pBrowser->m_sCountry are empty at this point, but available in 2nd colunm (Invalidate cookie?)
 		CString str = Settings.General.GUIMode == GUI_BASIC ?
 			theApp.GetCountryName( pBrowser->m_pAddress ) : (LPCTSTR)CString( inet_ntoa( pBrowser->m_pAddress ) );
 		m_pdAddress->SetText( str );
 		m_pdVendor->SetText( (LPCTSTR)pBrowser->m_sServer );
-		str.Format( L"gnutella:browse:%s:%u", str, pBrowser->m_nPort );
-		m_pdVendor->m_sLink = L"command:copy:" + str;				// ToDo: Private Key?
-		// Note: pBrowser->m_sAddress and pBrowser->m_sCountry are empty at this point, but available in 2nd colunm (Invalidate cookie?)
+		str.Format( L"gnutella:browse:%s:%u", str, pBrowser->m_nPort );			// ToDo: Private Key?
+		m_pdVendor->m_sLink = L"command:copy:" + str;	
 
 		if ( ! m_pdAddress->m_hImage )	// Add Flag Once
 		{
@@ -177,7 +177,7 @@ void CBrowseProfileCtrl::UpdateDocumentLeft(CHostBrowser* pBrowser, CGProfile* p
 					{
 						m_pdAddress->m_hImage = hFlag;
 					//	m_pDocumentLeft->GetNext( pos );	// Place after text
-						m_pDocumentLeft->Add( hFlag, NULL, 0, 0, pos );
+						m_pDocumentLeft->Add( hFlag, m_pdVendor->m_sLink, 0, 0, pos );
 						m_pDocumentLeft->Add( retGap, L"5", NULL, 0, 0, pos );
 					}
 				}
@@ -237,69 +237,21 @@ void CBrowseProfileCtrl::UpdateDocumentLeft(CHostBrowser* pBrowser, CGProfile* p
 	BOOL bContact = FALSE;
 
 	str = pProfile->GetContact( L"Email" );
-	bContact |= ( ! str.IsEmpty() );
 	m_pDocumentLeft->ShowGroup( 40, ! str.IsEmpty() );
 	if ( m_pdContactEmail != NULL )
 	{
+		bContact = TRUE;
 		m_pdContactEmail->SetText( str );
 		m_pdContactEmail->m_sLink = L"mailto:" + str;
 	}
 
-	str = pProfile->GetContact( L"MSN" );
-	bContact |= ( ! str.IsEmpty() );
-	m_pDocumentLeft->ShowGroup( 44, ! str.IsEmpty() );
-	if ( m_pdContactMSN != NULL )
-	{
-		m_pdContactMSN->SetText( str );
-		m_pdContactMSN->m_sLink = L"msn:" + str;
-	}
-
-	str = pProfile->GetContact( L"Yahoo" );
-	bContact |= ( ! str.IsEmpty() );
-	m_pDocumentLeft->ShowGroup( 41, ! str.IsEmpty() );
-	if ( m_pdContactYahoo != NULL )
-	{
-		m_pdContactYahoo->SetText( str );
-		m_pdContactYahoo->m_sLink = L"ymsgr:sendim?" + str;
-	}
-
-	str = pProfile->GetContact( L"AOL" );
-	bContact |= ( ! str.IsEmpty() );
-	m_pDocumentLeft->ShowGroup( 43, ! str.IsEmpty() );
-	if ( m_pdContactAOL != NULL )
-	{
-		m_pdContactAOL->SetText( str );
-		m_pdContactAOL->m_sLink = L"aim:goim?screenname=" + str;
-	}
-
-	str = pProfile->GetContact( L"ICQ" );
-	bContact |= ( ! str.IsEmpty() );
-	m_pDocumentLeft->ShowGroup( 42, ! str.IsEmpty() );
-	if ( m_pdContactICQ != NULL )
-	{
-		m_pdContactICQ->SetText( str );
-		m_pdContactICQ->m_sLink = L"http://people.icq.com/people/about_me.php?uin=" + str;
-	}
-
-	str = pProfile->GetContact( L"Google" );
-	if ( str.IsEmpty() ) str = pProfile->GetContact( L"Jabber" );
-	bContact |= ( ! str.IsEmpty() );
-	m_pDocumentLeft->ShowGroup( 45, ! str.IsEmpty() );
-	if ( m_pdContactJabber != NULL )
-	{
-		m_pdContactJabber->SetText( str );
-	//	m_pdContactJabber->m_sLink = L"xmpp:" + str;
-	}
-
-	// Custom Extended Fields:
-
-	str = pProfile->GetContact( L"Twitter" );
-	m_pDocumentLeft->ShowGroup( 46, ! str.IsEmpty() );
-	if ( ! str.IsEmpty() && m_pdContactTwitter != NULL )
+	str = pProfile->GetContact( L"GetEnvy.com" );
+	m_pDocumentLeft->ShowGroup( 48, ! str.IsEmpty() );
+	if ( ! str.IsEmpty() && m_pdContactGetEnvy != NULL )
 	{
 		bContact = TRUE;
-		m_pdContactTwitter->SetText( str );
-		m_pdContactTwitter->m_sLink = L"http://twitter.com/" + str;
+		m_pdContactGetEnvy->SetText( str );
+		m_pdContactGetEnvy->m_sLink = L"http://getenvy.com/users/" + str;	// ToDo: Update user profile link
 	}
 
 	str = pProfile->GetContact( L"Facebook" );
@@ -311,13 +263,62 @@ void CBrowseProfileCtrl::UpdateDocumentLeft(CHostBrowser* pBrowser, CGProfile* p
 		m_pdContactFacebook->m_sLink = L"http://facebook.com/" + str;
 	}
 
-	str = pProfile->GetContact( L"GetEnvy.com" );
-	m_pDocumentLeft->ShowGroup( 48, ! str.IsEmpty() );
-	if ( ! str.IsEmpty() && m_pdContactGetEnvy != NULL )
+	str = pProfile->GetContact( L"Twitter" );
+	m_pDocumentLeft->ShowGroup( 46, ! str.IsEmpty() );
+	if ( ! str.IsEmpty() && m_pdContactTwitter != NULL )
 	{
 		bContact = TRUE;
-		m_pdContactGetEnvy->SetText( str );
-		m_pdContactGetEnvy->m_sLink = L"http://getenvy.com/users/" + str;	// ToDo: Update user profile link
+		m_pdContactTwitter->SetText( str );
+		m_pdContactTwitter->m_sLink = L"http://twitter.com/" + str;
+	}
+
+	str = pProfile->GetContact( L"Skype" );
+	if ( str.IsEmpty() )
+		str = pProfile->GetContact( L"MSN" );	// Legacy
+	m_pDocumentLeft->ShowGroup( 44, ! str.IsEmpty() );
+	if ( ! str.IsEmpty() && m_pdContactSkype != NULL )
+	{
+		bContact = TRUE;
+		m_pdContactSkype->SetText( str );
+		m_pdContactSkype->m_sLink = L"skype:" + str + L"?chat";
+	}
+
+	str = pProfile->GetContact( L"Yahoo" );
+	m_pDocumentLeft->ShowGroup( 41, ! str.IsEmpty() );
+	if ( ! str.IsEmpty() && m_pdContactYahoo != NULL )
+	{
+		bContact = TRUE;
+		m_pdContactYahoo->SetText( str );
+		m_pdContactYahoo->m_sLink = L"ymsgr:sendim?" + str;
+	}
+
+	str = pProfile->GetContact( L"AOL" );
+	m_pDocumentLeft->ShowGroup( 43, ! str.IsEmpty() );
+	if ( ! str.IsEmpty() && m_pdContactAOL != NULL )
+	{
+		bContact = TRUE;
+		m_pdContactAOL->SetText( str );
+		m_pdContactAOL->m_sLink = L"aim:goim?screenname=" + str;
+	}
+
+	str = pProfile->GetContact( L"ICQ" );
+	m_pDocumentLeft->ShowGroup( 42, ! str.IsEmpty() );
+	if ( ! str.IsEmpty() && m_pdContactICQ != NULL )
+	{
+		bContact = TRUE;
+		m_pdContactICQ->SetText( str );
+		m_pdContactICQ->m_sLink = L"http://icq.com/people/" + str;
+	}
+
+	str = pProfile->GetContact( L"Google" );
+	if ( str.IsEmpty() )
+		str = pProfile->GetContact( L"Jabber" );	// Legacy
+	m_pDocumentLeft->ShowGroup( 45, ! str.IsEmpty() );
+	if ( ! str.IsEmpty() && m_pdContactJabber != NULL )
+	{
+		bContact = TRUE;
+		m_pdContactJabber->SetText( str );
+	//	m_pdContactJabber->m_sLink = L"xmpp:" + str;
 	}
 
 	m_pDocumentLeft->ShowGroup( 4, bContact );

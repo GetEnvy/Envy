@@ -107,7 +107,7 @@
 	<resource code="203" id="IDI_MAIL"/>
 	<resource code="204" id="IDI_CONTACT_AOL"/>
 	<resource code="205" id="IDI_CONTACT_ICQ"/>
-	<resource code="206" id="IDI_CONTACT_MSN"/>
+	<resource code="206" id="IDI_CONTACT_SKYPE"/>
 	<resource code="207" id="IDI_CONTACT_YAHOO"/>
 	<resource code="208" id="IDI_CONTACT_GOOGLE"/>
 	<resource code="209" id="IDI_CONTACT_TWITTER"/>

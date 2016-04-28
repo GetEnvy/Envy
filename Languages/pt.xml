@@ -3,7 +3,7 @@
 
 <!-- Envy Default Brazilian Portuguese Skin File -->
 
-<!-- Translation based on default en.xml r1 -->
+<!-- Translation based on default en.xml r4 -->
 <!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -1988,73 +1988,105 @@
 		<heading id="Nick"/>
 		<heading>Do Perfil</heading>
 		<newline gap="8"/>
+		<group id="0">
+			<newline gap="8" indent="0"/>
+			<text format="b">Cliente</text>
+			<newline gap="2" indent="8"/>
+			<text id="Vendor"/>
+			<newline gap="2" indent="8"/>
+			<text id="Address"/>
+		</group>
 		<group id="1">
-		<newline gap="8" indent="0"/>
-		<text format="b">Nome</text>
-		<newline gap="2" indent="8"/>
-		<text id="FullName"/>
+			<newline gap="8" indent="0"/>
+			<text format="b">Nome</text>
+			<newline gap="2" indent="8"/>
+			<text id="FullName"/>
 		</group>
 		<group id="2">
-		<newline gap="8" indent="0"/>
-		<text format="b">Local</text>
-		<newline gap="2" indent="8"/>
-		<text id="FullLocation"/>
+			<newline gap="8" indent="0"/>
+			<text format="b">Local</text>
+			<newline gap="2" indent="8"/>
+			<text id="FullLocation"/>
 		</group>
 		<group id="3">
-		<newline gap="8" indent="0"/>
-		<text format="b">Demográfico</text>
-		<newline gap="2" indent="8"/>
-		<text id="GenderMale">Masculino</text>
-		<text id="GenderFemale">Feminino</text>
-		<text>, </text>
-		<text id="Age"/>
-		</group>
-		<group id="5">
-		<newline gap="8" indent="0"/>
-		<text format="b">Informação para Contato</text>
-		<newline gap="1" indent="8"/>
-		</group>
-		<group id="40">
-		<newline gap="1"/>
-		<icon res="203"/><gap size="5"/>
-		<link id="ContactEmail" align="middle"/>
-		</group>
-		<group id="44">
-		<newline gap="1"/>
-		<icon res="206"/><gap size="5"/>
-		<link id="ContactMSN"/>
-		</group>
-		<group id="41">
-		<newline gap="1"/>
-		<icon res="207"/><gap size="5"/>
-		<link id="ContactYahoo"/>
-		</group>
-		<group id="42">
-		<newline gap="1"/>
-		<icon res="205"/><gap size="5"/>
-		<link id="ContactICQ"/>
-		</group>
-		<group id="43">
-		<newline gap="1"/>
-		<icon res="204"/><gap size="5"/>
-		<link id="ContactAOL"/>
-		</group>
-		<group id="45">
-		<newline gap="1"/>
-		<icon res="204"/><gap size="5"/>
-		<link id="ContactJabber"/>
+			<newline gap="8" indent="0"/>
+			<text format="b">Demográfico</text>
+			<newline gap="2" indent="8"/>
+			<text id="GenderMale">Masculino</text>
+			<text id="GenderFemale">Feminino</text>
+			<text>, </text>
+			<text id="Age"/>
 		</group>
 		<group id="4">
-		<newline gap="8" indent="0"/>
-		<text format="b">Interesses</text>
-		<newline gap="2" indent="8"/>
-		<text id="Interests"/>
+			<newline gap="8" indent="0"/>
+			<text format="b">Informação para Contato</text>
+			<newline gap="1" indent="8"/>
+		</group>
+		<group id="40">
+			<newline gap="1"/>
+			<icon res="203"/>
+			<gap size="5"/>
+			<link id="ContactEmail" align="middle"/>
+		</group>
+		<group id="44">
+			<newline gap="1"/>
+			<icon res="206"/>
+			<gap size="5"/>
+			<link id="ContactSkype"/>
+		</group>
+		<group id="41">
+			<newline gap="1"/>
+			<icon res="207"/>
+			<gap size="5"/>
+			<link id="ContactYahoo"/>
+		</group>
+		<group id="43">
+			<newline gap="1"/>
+			<icon res="204"/>
+			<gap size="5"/>
+			<link id="ContactAOL"/>
+		</group>
+		<group id="42">
+			<newline gap="1"/>
+			<icon res="205"/>
+			<gap size="5"/>
+			<link id="ContactICQ"/>
+		</group>
+		<group id="45">
+			<newline gap="1"/>
+			<icon res="208"/>
+			<gap size="5"/>
+			<link id="ContactJabber"/>
+		</group>
+		<group id="46">
+			<newline gap="1"/>
+			<icon res="209"/>
+			<gap size="5"/>
+			<link id="ContactTwitter"/>
+		</group>
+		<group id="47">
+			<newline gap="1"/>
+			<icon res="210"/>
+			<gap size="5"/>
+			<link id="ContactFacebook"/>
+		</group>
+		<group id="48">
+			<newline gap="1"/>
+			<icon res="212"/>
+			<gap size="5"/>
+			<link id="ContactGetEnvy"/>
+		</group>
+		<group id="5">
+			<newline gap="8" indent="0"/>
+			<text format="b">Interesses</text>
+			<newline gap="2" indent="8"/>
+			<text id="Interests"/>
 		</group>
 		<group id="6">
-		<newline gap="8" indent="0"/>
-		<text format="b">Biografia</text>
-		<newline gap="2" indent="8"/>
-		<text id="BioText"/>
+			<newline gap="8" indent="0"/>
+			<text format="b">Biografia</text>
+			<newline gap="2" indent="8"/>
+			<text id="BioText"/>
 		</group>
 	</document>
 	<document name="CBrowseHostProfile.2">
@@ -2065,17 +2097,17 @@
 		<gap size="5"/>
 		<link target="command:ID_BROWSE_FILES" align="middle">Ver Arquivos Compartilhados</link>
 		<group id="2">
-		<newline gap="16" indent="0"/>
-		<text format="b">Comunidade</text>
-		<newline gap="4" indent="8"/>
-		<icon res="127" target="command:ID_SEARCH_CHAT"/>
-		<gap size="5"/>
-		<link target="command:ID_SEARCH_CHAT" align="middle">Conversar com Usuário</link>
+			<newline gap="16" indent="0"/>
+			<text format="b">Comunidade</text>
+			<newline gap="4" indent="8"/>
+			<icon res="127" target="command:ID_SEARCH_CHAT"/>
+			<gap size="5"/>
+			<link target="command:ID_SEARCH_CHAT" align="middle">Conversar com Usuário</link>
 		</group>
 		<group id="3">
-		<newline gap="16" indent="0"/>
-		<text format="b">Links Favoritos da Rede</text>
-		<newline gap="4" indent="8" id="Bookmarks"/>
+			<newline gap="16" indent="0"/>
+			<text format="b">Links Favoritos da Rede</text>
+			<newline gap="4" indent="8" id="Bookmarks"/>
 		</group>
 		<newline gap="16" indent="0"/>
 	</document>
@@ -4052,7 +4084,7 @@
 		<control/>
 		<control caption="Google:"/>
 		<control/>
-		<control caption="MSN/Live:"/>
+		<control caption="Skype:"/>
 		<control/>
 		<control caption="Yahoo:"/>
 		<control/>

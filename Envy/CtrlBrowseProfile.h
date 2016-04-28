@@ -51,7 +51,7 @@ protected:
 	CRichElement*		m_pdInterests;
 	CRichElement*		m_pdBookmarks;
 	CRichElement*		m_pdContactEmail;
-	CRichElement*		m_pdContactMSN;
+	CRichElement*		m_pdContactSkype;
 	CRichElement*		m_pdContactYahoo;
 	CRichElement*		m_pdContactICQ;
 	CRichElement*		m_pdContactAOL;
