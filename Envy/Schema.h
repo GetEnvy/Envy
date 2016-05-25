@@ -113,7 +113,7 @@ protected:
 	void			LoadDescriptorBitprintsImport(const CXMLElement* pElement);
 	void			LoadDescriptorHeaderContent(const CXMLElement* pElement);
 	void			LoadDescriptorViewContent(const CXMLElement* pElement);
-	BOOL			LoadIcon();
+	BOOL			LoadIcon(CString sPath = L"");
 
 // Inlines
 public:
@@ -149,48 +149,60 @@ public:
 	static LPCTSTR	uriVideo;
 	static LPCTSTR	uriROM;
 	static LPCTSTR	uriDocument;
+	static LPCTSTR	uriSourceCode;
 	static LPCTSTR	uriSpreadsheet;
 	static LPCTSTR	uriPresentation;
 	static LPCTSTR	uriCollection;
 	static LPCTSTR	uriLibrary;
 	static LPCTSTR	uriFolder;
 	static LPCTSTR	uriAllFiles;
+
 	static LPCTSTR	uriCollectionsFolder;
 	static LPCTSTR	uriFavoritesFolder;
 	static LPCTSTR	uriSearchFolder;
-	static LPCTSTR	uriApplicationRoot;
-	static LPCTSTR	uriApplicationAll;
-	static LPCTSTR	uriArchiveRoot;
-	static LPCTSTR	uriArchiveAll;
-	static LPCTSTR	uriBookRoot;
-	static LPCTSTR	uriBookAll;
-	static LPCTSTR	uriImageRoot;
-	static LPCTSTR	uriImageAll;
-	static LPCTSTR	uriImageAlbum;
-	static LPCTSTR	uriMusicRoot;
-	static LPCTSTR	uriMusicAll;
-	static LPCTSTR	uriMusicAlbum;
-	static LPCTSTR	uriMusicArtist;
-	static LPCTSTR	uriMusicGenre;
-	static LPCTSTR	uriMusicAlbumCollection;
-	static LPCTSTR	uriMusicArtistCollection;
-	static LPCTSTR	uriMusicGenreCollection;
-	static LPCTSTR	uriVideoRoot;
-	static LPCTSTR	uriVideoAll;
-	static LPCTSTR	uriVideoFilm;
-	static LPCTSTR	uriVideoSeries;
-	static LPCTSTR	uriVideoFilmCollection;
-	static LPCTSTR	uriVideoSeriesCollection;
-	static LPCTSTR	uriVideoMusicCollection;
-	static LPCTSTR	uriDocumentRoot;
-	static LPCTSTR	uriDocumentAll;
-	static LPCTSTR	uriUnknown;
-	static LPCTSTR	uriUnknownFolder;
+
+	static LPCTSTR	uriUnsorted;
+	static LPCTSTR	uriUnsortedFolder;
 	static LPCTSTR	uriBitTorrent;
 	static LPCTSTR	uriBitTorrentFolder;
 	static LPCTSTR	uriGhostFolder;
-//	static LPCTSTR	uriComments;
-//	static LPCTSTR	uriSkin;
+	//static LPCTSTR	uriComments;
+	//static LPCTSTR	uriSkin;
+
+	static LPCTSTR	uriApplicationFolder;
+	static LPCTSTR	uriArchiveFolder;
+	static LPCTSTR	uriAudioFolder;
+	static LPCTSTR	uriVideoFolder;
+	static LPCTSTR	uriImageFolder;
+	static LPCTSTR	uriDocumentFolder;
+
+// Legacy Subfolders:
+//	static LPCTSTR	uriApplicationRoot;
+//	static LPCTSTR	uriApplicationAll;
+//	static LPCTSTR	uriArchiveRoot;
+//	static LPCTSTR	uriArchiveAll;
+//	static LPCTSTR	uriDocumentRoot;
+//	static LPCTSTR	uriDocumentAll;
+//	static LPCTSTR	uriBookRoot;
+//	static LPCTSTR	uriBookAll;
+//	static LPCTSTR	uriImageRoot;
+//	static LPCTSTR	uriImageAll;
+//	static LPCTSTR	uriImageAlbum;
+//	static LPCTSTR	uriMusicRoot;
+//	static LPCTSTR	uriMusicAll;
+//	static LPCTSTR	uriMusicAlbum;
+//	static LPCTSTR	uriMusicArtist;
+//	static LPCTSTR	uriMusicGenre;
+//	static LPCTSTR	uriMusicAlbumCollection;
+//	static LPCTSTR	uriMusicArtistCollection;
+//	static LPCTSTR	uriMusicGenreCollection;
+//	static LPCTSTR	uriVideoRoot;
+//	static LPCTSTR	uriVideoAll;
+//	static LPCTSTR	uriVideoFilm;
+//	static LPCTSTR	uriVideoSeries;
+//	static LPCTSTR	uriVideoFilmCollection;
+//	static LPCTSTR	uriVideoSeriesCollection;
+//	static LPCTSTR	uriVideoMusicCollection;
 
 	friend class CSchemaMember;
 

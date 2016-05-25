@@ -21,8 +21,8 @@
 			<attribute name="encrypted" type="boolean"/>
 			<attribute name="unpackedsize" type="string"/>
 			<attribute name="filecount" type="string"/>
-			<attribute name="peertag" type="boolean"/>
-			<attribute name="peerinfo" type="string"/>
+			<attribute name="sharetag" type="boolean"/>
+			<attribute name="sharetaginfo" type="string"/>
 		</all>
 	</complexType>
 

@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <skin xmlns="http://schemas.getenvy.com/Skin.xsd" version="1.0">
 
-<!-- Envy/ПеерПројецт Default Serbian Skin File -->
+<!-- Envy Default Serbian Skin File -->
 
-<!-- Translation based on default en.xml r4 -->
+<!-- Translation based on default en.xml r6 -->
 <!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -3412,7 +3412,7 @@
 		<control caption="Ovde _Sačuvaj Torrente:"/>
 		<control/>
 		<control/>
-		<control caption="_Torrent Tool:"/>
+		<control caption="_Torrent Creator:"/>
 		<control/>
 		<control/>
 		<control caption="Default Tracker:"/>

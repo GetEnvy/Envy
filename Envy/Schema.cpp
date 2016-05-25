@@ -170,25 +170,29 @@ BOOL CSchema::Load(LPCTSTR pszFile)
 	PathRemoveExtension( strFile.GetBuffer() );
 	strFile.ReleaseBuffer();
 
-	if ( ! LoadSchema( strFile + L".xsd" ) ) return FALSE;
+	m_sIcon = strFile + L".ico";	// Default first
 
-	m_sIcon = strFile + L".ico";
+	if ( ! LoadSchema( strFile + L".xsd" ) ) return FALSE;
 
 	LoadDescriptor( strFile + L".xml" );
 
+	CString strRoot = m_sIcon.Left( m_sIcon.GetLength() - 4 );
+
+	LoadIcon( strRoot + L".Skin.ico" ) ||		// Allow Custom
+#ifndef NOXP
+		theApp.m_nWinVer < WIN_VISTA ? LoadIcon( strRoot + L".Safe.ico" ) : FALSE ||	// Legacy XP
+#endif
+		theApp.m_nWinVer < WIN_10 ? LoadIcon( strRoot + L".Alt.ico" ) : FALSE ||	// Prior Style
+		LoadIcon() ||							// As Defined (m_sIcon)
+		LoadIcon( strRoot + L".Safe.ico" );		// Fallback
+
 	// LoadIcon() causes bad registry reads (?)
-	// CCoolInterface::IsNewWindows() caused several reapeat ones.(?)
-	if ( ! LoadIcon() )
-	{
-		m_sIcon = m_sIcon.Left( m_sIcon.GetLength() - 4 );
-		m_sIcon += L".Safe.ico";
-		LoadIcon();
-	}
+	// CCoolInterface::IsNewWindows() caused several reapeat ones (?)
 
 	if ( m_sTitle.IsEmpty() )
 	{
 		m_sTitle = m_sSingular;
-		m_sTitle.SetAt( 0, TCHAR( toupper( m_sTitle.GetAt( 0 ) ) ) );
+		m_sTitle.SetAt( 0, TCHAR( toupper( m_sTitle.GetAt( 0 ) ) ) );	// Capitalize
 	}
 
 	return TRUE;
@@ -399,11 +403,11 @@ BOOL CSchema::LoadDescriptor(LPCTSTR pszFile)
 		{
 			LoadDescriptorViewContent( pElement );
 		}
-		else if ( pElement->IsNamed( L"typeFilter" ) )
+		else if ( pElement->IsNamed( L"typeFilter" ) || pElement->IsNamed( L"groupfilter" ) )
 		{
 			LoadDescriptorTypeFilter( pElement );
 		}
-		else if ( pElement->IsNamed( L"BitprintsImport" ) )
+		else if ( pElement->IsNamed( L"bitprintsImport" ) )
 		{
 			LoadDescriptorBitprintsImport( pElement );
 		}
@@ -411,9 +415,9 @@ BOOL CSchema::LoadDescriptor(LPCTSTR pszFile)
 		{
 			LoadDescriptorIcons( pElement );
 		}
-		// ToDo: Add this to schemas for ed2k?
 		//else if ( pElement->IsNamed( L"donkeyType" ) )
 		//{
+		// ToDo: Add this to schemas for ed2k?
 		//	LoadDescriptorDonkeyType( pElement );
 		//}
 	}
@@ -428,19 +432,17 @@ void CSchema::LoadDescriptorTitles(const CXMLElement* pElement)
 	for ( POSITION pos = pElement->GetElementIterator() ; pos ; )
 	{
 		const CXMLElement* pTitle = pElement->GetNextElement( pos );
+		if ( ! pTitle->IsNamed( L"title" ) )
+			continue;
 
-		if ( pTitle->IsNamed( L"title" ) )
+		if ( pTitle->GetAttributeValue( L"language" ).CompareNoCase( Settings.General.Language ) == 0 )
 		{
-			if ( pTitle->GetAttributeValue( L"language" ).CompareNoCase( Settings.General.Language ) == 0 )
-			{
-				m_sTitle = pTitle->GetValue();
-				break;
-			}
-			else if ( m_sTitle.IsEmpty() )
-			{
-				m_sTitle = pTitle->GetValue();
-			}
+			m_sTitle = pTitle->GetValue();
+			break;
 		}
+
+		if ( m_sTitle.IsEmpty() )				// Default "en" should be listed first
+			m_sTitle = pTitle->GetValue();
 	}
 }
 
@@ -604,11 +606,13 @@ void CSchema::LoadDescriptorViewContent(const CXMLElement* pElement)
 //////////////////////////////////////////////////////////////////////
 // CSchema load icon
 
-BOOL CSchema::LoadIcon()
+BOOL CSchema::LoadIcon(CString sPath /*Empty*/)
 {
 	HICON hIcon16 = NULL, hIcon32 = NULL, hIcon48 = NULL;
 
-	::LoadIcon( m_sIcon, &hIcon16, &hIcon32, &hIcon48 );
+	if ( sPath.IsEmpty() ) sPath = m_sIcon;
+
+	::LoadIcon( sPath, &hIcon16, &hIcon32, &hIcon48 );
 
 	if ( hIcon16 )
 	{
@@ -730,9 +734,9 @@ BOOL CSchema::Validate(CXMLElement* pXML, BOOL bFix) const
 		}
 		else if ( pMember->m_bBoolean )
 		{
-			if ( str == L"1" || str.CompareNoCase( L"true" ) == 0 )
+			if ( str.CompareNoCase( L"true" ) == 0 || str == L"1" )
 				str = L"true";
-			else if ( str == L"0" || str.CompareNoCase( L"false" ) == 0 )
+			else if ( str.CompareNoCase( L"false" ) == 0 || str == L"0" )
 				str = L"false";
 			else if ( ! bFix )
 				return FALSE;
@@ -789,9 +793,10 @@ CString CSchema::GetVisibleWords(CXMLElement* pXML) const
 
 			if ( ! strMember.IsEmpty() )
 			{
-				if ( ! str.IsEmpty() )
-					str += L' ';
-				str += strMember;
+				if ( str.IsEmpty() )
+					str = strMember;
+				else
+					str += L' ' + strMember;
 			}
 		}
 	}
@@ -842,66 +847,64 @@ BOOL CSchemaBitprints::Load(const CXMLElement* pXML)
 LPCTSTR CSchema::uriApplication 			= L"http://schemas.getenvy.com/Application.xsd";			// http://www.shareaza.com/schemas/application.xsd
 LPCTSTR CSchema::uriArchive					= L"http://schemas.getenvy.com/Archive.xsd";				// http://www.shareaza.com/schemas/archive.xsd
 LPCTSTR CSchema::uriAudio					= L"http://schemas.getenvy.com/Audio.xsd";					// http://www.limewire.com/schemas/audio.xsd
-LPCTSTR CSchema::uriBook					= L"http://schemas.getenvy.com/Book.xsd";					// http://www.limewire.com/schemas/book.xsd
-LPCTSTR CSchema::uriImage					= L"http://schemas.getenvy.com/Image.xsd";					// http://www.shareaza.com/schemas/image.xsd
 LPCTSTR CSchema::uriVideo					= L"http://schemas.getenvy.com/Video.xsd";					// http://www.limewire.com/schemas/video.xsd
+LPCTSTR CSchema::uriImage					= L"http://schemas.getenvy.com/Image.xsd";					// http://www.shareaza.com/schemas/image.xsd
 LPCTSTR CSchema::uriROM 					= L"http://schemas.getenvy.com/ROM.xsd";					// http://www.shareaza.com/schemas/rom.xsd
+LPCTSTR CSchema::uriBook					= L"http://schemas.getenvy.com/Book.xsd";					// http://www.limewire.com/schemas/book.xsd
 LPCTSTR CSchema::uriDocument				= L"http://schemas.getenvy.com/Document.xsd";				// http://www.shareaza.com/schemas/wordProcessing.xsd
+LPCTSTR CSchema::uriSourceCode				= L"http://schemas.getenvy.com/SourceCode.xsd";				// http://www.shareaza.com/schemas/sourceCode.xsd
 LPCTSTR CSchema::uriSpreadsheet				= L"http://schemas.getenvy.com/Spreadsheet.xsd";			// http://www.shareaza.com/schemas/spreadsheet.xsd
 LPCTSTR CSchema::uriPresentation			= L"http://schemas.getenvy.com/Presentation.xsd";			// http://www.shareaza.com/schemas/presentation.xsd
 LPCTSTR CSchema::uriCollection				= L"http://schemas.getenvy.com/Collection.xsd";				// http://www.shareaza.com/schemas/collection.xsd
+LPCTSTR CSchema::uriBitTorrent				= L"http://schemas.getenvy.com/BitTorrent.xsd";				// http://www.shareaza.com/schemas/bittorrent.xsd
+LPCTSTR CSchema::uriUnsorted				= L"http://schemas.getenvy.com/Unsorted.xsd";
 
 LPCTSTR CSchema::uriLibrary					= L"http://schemas.getenvy.com/LibraryRoot.xsd";			// http://www.shareaza.com/schemas/libraryRoot.xsd
-
-LPCTSTR CSchema::uriFolder					= L"http://schemas.getenvy.com/Folder.xsd";					// http://www.shareaza.com/schemas/folder.xsd
-LPCTSTR CSchema::uriCollectionsFolder		= L"http://schemas.getenvy.com/CollectionsFolder.xsd";		// http://www.shareaza.com/schemas/collectionsFolder.xsd
-LPCTSTR CSchema::uriFavoritesFolder			= L"http://schemas.getenvy.com/FavoritesFolder.xsd";		// http://www.shareaza.com/schemas/favouritesFolder.xsd
-LPCTSTR CSchema::uriSearchFolder			= L"http://schemas.getenvy.com/SearchFolder.xsd";			// http://www.shareaza.com/schemas/searchFolder.xsd
-
 LPCTSTR CSchema::uriAllFiles				= L"http://schemas.getenvy.com/AllFiles.xsd";				// http://www.shareaza.com/schemas/allFiles.xsd
 
-LPCTSTR CSchema::uriApplicationRoot			= L"http://schemas.getenvy.com/ApplicationRoot.xsd";		// http://www.shareaza.com/schemas/applicationRoot.xsd
-LPCTSTR CSchema::uriApplicationAll			= L"http://schemas.getenvy.com/ApplicationAll.xsd";			// http://www.shareaza.com/schemas/applicationAll.xsd
-
-LPCTSTR CSchema::uriArchiveRoot 			= L"http://schemas.getenvy.com/ArchiveRoot.xsd";			// http://www.shareaza.com/schemas/archiveRoot.xsd
-LPCTSTR CSchema::uriArchiveAll				= L"http://schemas.getenvy.com/ArchiveAll.xsd";				// http://www.shareaza.com/schemas/archiveAll.xsd
-
-LPCTSTR CSchema::uriBookRoot				= L"http://schemas.getenvy.com/BookRoot.xsd";				// http://www.shareaza.com/schemas/bookRoot.xsd
-LPCTSTR CSchema::uriBookAll					= L"http://schemas.getenvy.com/BookAll.xsd";				// http://www.shareaza.com/schemas/bookAll.xsd
-
-LPCTSTR CSchema::uriImageRoot				= L"http://schemas.getenvy.com/ImageRoot.xsd";				// http://www.shareaza.com/schemas/imageRoot.xsd
-LPCTSTR CSchema::uriImageAll				= L"http://schemas.getenvy.com/ImageAll.xsd";				// http://www.shareaza.com/schemas/imageAll.xsd
-LPCTSTR CSchema::uriImageAlbum				= L"http://schemas.getenvy.com/ImageAlbum.xsd";				// http://www.shareaza.com/schemas/imageAlbum.xsd
-
-LPCTSTR CSchema::uriMusicRoot				= L"http://schemas.getenvy.com/MusicRoot.xsd";				// http://www.shareaza.com/schemas/musicRoot.xsd
-LPCTSTR CSchema::uriMusicAll				= L"http://schemas.getenvy.com/MusicAll.xsd";				// http://www.shareaza.com/schemas/musicAll.xsd
-LPCTSTR CSchema::uriMusicAlbum				= L"http://schemas.getenvy.com/MusicAlbum.xsd";				// http://www.shareaza.com/schemas/musicAlbum.xsd
-LPCTSTR CSchema::uriMusicArtist				= L"http://schemas.getenvy.com/MusicArtist.xsd";			// http://www.shareaza.com/schemas/musicArtist.xsd
-LPCTSTR CSchema::uriMusicGenre				= L"http://schemas.getenvy.com/MusicGenre.xsd";				// http://www.shareaza.com/schemas/musicGenre.xsd
-LPCTSTR CSchema::uriMusicAlbumCollection	= L"http://schemas.getenvy.com/MusicAlbumCollection.xsd";	// http://www.shareaza.com/schemas/musicAlbumCollection.xsd
-LPCTSTR CSchema::uriMusicArtistCollection	= L"http://schemas.getenvy.com/MusicArtistCollection.xsd";	// http://www.shareaza.com/schemas/musicArtistCollection.xsd
-LPCTSTR CSchema::uriMusicGenreCollection	= L"http://schemas.getenvy.com/MusicGenreCollection.xsd";	// http://www.shareaza.com/schemas/musicGenreCollection.xsd
-
-LPCTSTR CSchema::uriVideoRoot				= L"http://schemas.getenvy.com/VideoRoot.xsd";				// http://www.shareaza.com/schemas/videoRoot.xsd
-LPCTSTR CSchema::uriVideoAll				= L"http://schemas.getenvy.com/VideoAll.xsd";				// http://www.shareaza.com/schemas/videoAll.xsd
-LPCTSTR CSchema::uriVideoFilm				= L"http://schemas.getenvy.com/VideoFilm.xsd";				// http://www.shareaza.com/schemas/videoFilm.xsd
-LPCTSTR CSchema::uriVideoSeries				= L"http://schemas.getenvy.com/VideoSeries.xsd";			// http://www.shareaza.com/schemas/videoSeries.xsd
-LPCTSTR CSchema::uriVideoFilmCollection		= L"http://schemas.getenvy.com/VideoFilmCollection.xsd";	// http://www.shareaza.com/schemas/videoFilmCollection.xsd
-LPCTSTR CSchema::uriVideoSeriesCollection	= L"http://schemas.getenvy.com/VideoSeriesCollection.xsd";	// http://www.shareaza.com/schemas/videoSeriesCollection.xsd
-LPCTSTR CSchema::uriVideoMusicCollection	= L"http://schemas.getenvy.com/VideoMusicCollection.xsd";	// http://www.shareaza.com/schemas/videoMusicCollection.xsd
-
-LPCTSTR CSchema::uriDocumentRoot			= L"http://schemas.getenvy.com/DocumentRoot.xsd";			// http://www.shareaza.com/schemas/documentRoot.xsd
-LPCTSTR CSchema::uriDocumentAll				= L"http://schemas.getenvy.com/DocumentAll.xsd";			// http://www.shareaza.com/schemas/documentAll.xsd
-
-LPCTSTR CSchema::uriUnknown					= L"http://schemas.getenvy.com/Unknown.xsd";
-LPCTSTR CSchema::uriUnknownFolder			= L"http://schemas.getenvy.com/UnknownFolder.xsd";
-
-LPCTSTR CSchema::uriGhostFolder				= L"http://schemas.getenvy.com/GhostFolder.xsd";			// http://www.shareaza.com/schemas/ghostFolder.xsd
-
-LPCTSTR CSchema::uriBitTorrent				= L"http://schemas.getenvy.com/BitTorrent.xsd";				// http://www.shareaza.com/schemas/bittorrent.xsd
+LPCTSTR CSchema::uriFolder					= L"http://schemas.getenvy.com/Folder.xsd";					// http://www.shareaza.com/schemas/folder.xsd
+LPCTSTR CSchema::uriApplicationFolder		= L"http://schemas.getenvy.com/ApplicationFolder.xsd";		// http://www.shareaza.com/schemas/applicationAll.xsd
+LPCTSTR CSchema::uriArchiveFolder			= L"http://schemas.getenvy.com/ArchiveFolder.xsd";			// http://www.shareaza.com/schemas/archiveAll.xsd
+LPCTSTR CSchema::uriAudioFolder				= L"http://schemas.getenvy.com/AudioFolder.xsd";			// http://www.shareaza.com/schemas/musicAll.xsd
+LPCTSTR CSchema::uriVideoFolder				= L"http://schemas.getenvy.com/VideoFolder.xsd";			// http://www.shareaza.com/schemas/videoAll.xsd
+LPCTSTR CSchema::uriImageFolder				= L"http://schemas.getenvy.com/ImageFolder.xsd";			// http://www.shareaza.com/schemas/imageAll.xsd
+LPCTSTR CSchema::uriDocumentFolder			= L"http://schemas.getenvy.com/DocumentFolder.xsd";			// http://www.shareaza.com/schemas/documentAll.xsd
 LPCTSTR CSchema::uriBitTorrentFolder		= L"http://schemas.getenvy.com/BitTorrentFolder.xsd";
+LPCTSTR CSchema::uriCollectionsFolder		= L"http://schemas.getenvy.com/CollectionFolder.xsd";		// http://www.shareaza.com/schemas/collectionsFolder.xsd
+LPCTSTR CSchema::uriFavoritesFolder			= L"http://schemas.getenvy.com/FavoritesFolder.xsd";		// http://www.shareaza.com/schemas/favouritesFolder.xsd
+LPCTSTR CSchema::uriSearchFolder			= L"http://schemas.getenvy.com/SearchFolder.xsd";			// http://www.shareaza.com/schemas/searchFolder.xsd
+LPCTSTR CSchema::uriGhostFolder				= L"http://schemas.getenvy.com/GhostFolder.xsd";			// http://www.shareaza.com/schemas/ghostFolder.xsd
+LPCTSTR CSchema::uriUnsortedFolder			= L"http://schemas.getenvy.com/UnsortedFolder.xsd";
+
+// Legacy Subfolders:
+//LPCTSTR CSchema::uriApplicationRoot		= L"http://schemas.getenvy.com/ApplicationRoot.xsd";		// http://www.shareaza.com/schemas/applicationRoot.xsd
+//LPCTSTR CSchema::uriApplicationAll		= L"http://schemas.getenvy.com/ApplicationAll.xsd";			// http://www.shareaza.com/schemas/applicationAll.xsd
+//LPCTSTR CSchema::uriArchiveRoot 			= L"http://schemas.getenvy.com/ArchiveRoot.xsd";			// http://www.shareaza.com/schemas/archiveRoot.xsd
+//LPCTSTR CSchema::uriArchiveAll			= L"http://schemas.getenvy.com/ArchiveAll.xsd";				// http://www.shareaza.com/schemas/archiveAll.xsd
+//LPCTSTR CSchema::uriBookRoot				= L"http://schemas.getenvy.com/BookRoot.xsd";				// http://www.shareaza.com/schemas/bookRoot.xsd
+//LPCTSTR CSchema::uriBookAll				= L"http://schemas.getenvy.com/BookAll.xsd";				// http://www.shareaza.com/schemas/bookAll.xsd
+//LPCTSTR CSchema::uriDocumentRoot			= L"http://schemas.getenvy.com/DocumentRoot.xsd";			// http://www.shareaza.com/schemas/documentRoot.xsd
+//LPCTSTR CSchema::uriDocumentAll			= L"http://schemas.getenvy.com/DocumentAll.xsd";			// http://www.shareaza.com/schemas/documentAll.xsd
+//LPCTSTR CSchema::uriImageRoot				= L"http://schemas.getenvy.com/ImageRoot.xsd";				// http://www.shareaza.com/schemas/imageRoot.xsd
+//LPCTSTR CSchema::uriImageAll				= L"http://schemas.getenvy.com/ImageAll.xsd";				// http://www.shareaza.com/schemas/imageAll.xsd
+//LPCTSTR CSchema::uriImageAlbum			= L"http://schemas.getenvy.com/ImageAlbum.xsd";				// http://www.shareaza.com/schemas/imageAlbum.xsd
+
+//LPCTSTR CSchema::uriMusicRoot				= L"http://schemas.getenvy.com/MusicRoot.xsd";				// http://www.shareaza.com/schemas/musicRoot.xsd
+//LPCTSTR CSchema::uriMusicAll				= L"http://schemas.getenvy.com/MusicAll.xsd";				// http://www.shareaza.com/schemas/musicAll.xsd
+//LPCTSTR CSchema::uriMusicAlbum			= L"http://schemas.getenvy.com/MusicAlbum.xsd";				// http://www.shareaza.com/schemas/musicAlbum.xsd
+//LPCTSTR CSchema::uriMusicArtist			= L"http://schemas.getenvy.com/MusicArtist.xsd";			// http://www.shareaza.com/schemas/musicArtist.xsd
+//LPCTSTR CSchema::uriMusicGenre			= L"http://schemas.getenvy.com/MusicGenre.xsd";				// http://www.shareaza.com/schemas/musicGenre.xsd
+//LPCTSTR CSchema::uriMusicAlbumCollection	= L"http://schemas.getenvy.com/MusicAlbumCollection.xsd";	// http://www.shareaza.com/schemas/musicAlbumCollection.xsd
+//LPCTSTR CSchema::uriMusicArtistCollection	= L"http://schemas.getenvy.com/MusicArtistCollection.xsd";	// http://www.shareaza.com/schemas/musicArtistCollection.xsd
+//LPCTSTR CSchema::uriMusicGenreCollection	= L"http://schemas.getenvy.com/MusicGenreCollection.xsd";	// http://www.shareaza.com/schemas/musicGenreCollection.xsd
+//LPCTSTR CSchema::uriVideoRoot				= L"http://schemas.getenvy.com/VideoRoot.xsd";				// http://www.shareaza.com/schemas/videoRoot.xsd
+//LPCTSTR CSchema::uriVideoAll				= L"http://schemas.getenvy.com/VideoAll.xsd";				// http://www.shareaza.com/schemas/videoAll.xsd
+//LPCTSTR CSchema::uriVideoFilm				= L"http://schemas.getenvy.com/VideoFilm.xsd";				// http://www.shareaza.com/schemas/videoFilm.xsd
+//LPCTSTR CSchema::uriVideoSeries			= L"http://schemas.getenvy.com/VideoSeries.xsd";			// http://www.shareaza.com/schemas/videoSeries.xsd
+//LPCTSTR CSchema::uriVideoFilmCollection	= L"http://schemas.getenvy.com/VideoFilmCollection.xsd";	// http://www.shareaza.com/schemas/videoFilmCollection.xsd
+//LPCTSTR CSchema::uriVideoSeriesCollection	= L"http://schemas.getenvy.com/VideoSeriesCollection.xsd";	// http://www.shareaza.com/schemas/videoSeriesCollection.xsd
+//LPCTSTR CSchema::uriVideoMusicCollection	= L"http://schemas.getenvy.com/VideoMusicCollection.xsd";	// http://www.shareaza.com/schemas/videoMusicCollection.xsd
 
 //LPCTSTR CSchema::uriComments				= L"http://schemas.getenvy.com/Comments.xsd";				// http://www.shareaza.com/schemas/comments.xsd
-
-//LPCTSTR CSchema::uriSkin					= L"http://schemas.getenvy.com/Skin.xsd";
 //LPCTSTR CSchema::uriPackage				= L"http://schemas.getenvy.com/Package.xsd";
+//LPCTSTR CSchema::uriSkin					= L"http://schemas.getenvy.com/Skin.xsd";

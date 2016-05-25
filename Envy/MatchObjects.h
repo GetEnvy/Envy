@@ -175,7 +175,7 @@ public:
 	int			m_nRating;				// Total value of all ratings
 	int			m_nRated;				// Number of ratings received
 	BOOL		m_bDRM;					// Appears to have DRM
-	TRISTATE	m_bRestricted;			// Appears to be a Restricted copyright file, or known Permissive File (False/True PeerTag)
+	TRISTATE	m_bRestricted;			// Appears to be a Restricted copyright file, or known Permissive File (Inverse ShareTag)
 	BOOL		m_bSuspicious;			// Appears to be a suspicious file (small exe, vbs, etc)
 	BOOL		m_bCollection;			// Appears to be a collection
 	BOOL		m_bTorrent;				// Appears to be a torrent

@@ -1,5 +1,5 @@
 /*
-** sqlite3.c  (3.12.0) (Apr.2016)
+** sqlite3.c  (3.12.0) (May.2016)
 **
 ** This file is part of Envy (getenvy.com) © 2016
 ** The original author disclaimed copyright to this source code.
@@ -31,7 +31,7 @@
 ** The code for the "sqlite3" command-line shell is also in a separate file.
 ** This file contains only code for the core SQLite library.
 **
-** This amalgamation was generated on 2016-03-30.
+** This amalgamation was generated on 2016-04-18.
 **
 ** http://www.sqlite.org/download.html
 */
@@ -292,7 +292,7 @@ extern "C" {
 
 #define SQLITE_VERSION        "3.12.0"
 #define SQLITE_VERSION_NUMBER 3012000
-#define SQLITE_SOURCE_ID      "2016-03-29 10:14:15 e9bb4cf40f4971974a74468ef922bdee481c988b"
+#define SQLITE_SOURCE_ID      "2016-04-18 17:30:31 92dc59fd5ad66f646666042eb04195e3a61a9e8e"
 
 /*
 ** Run-Time Library Version Numbers
@@ -7895,6 +7895,7 @@ SQLITE_PRIVATE void sqlite3CollapseDatabaseArray(sqlite3*);
 SQLITE_PRIVATE void sqlite3CommitInternalChanges(sqlite3*);
 SQLITE_PRIVATE void sqlite3DeleteColumnNames(sqlite3*,Table*);
 SQLITE_PRIVATE int sqlite3ColumnsFromExprList(Parse*,ExprList*,i16*,Column**);
+SQLITE_PRIVATE void sqlite3SelectAddColumnTypeAndCollation(Parse*,Table*,Select*);
 SQLITE_PRIVATE Table *sqlite3ResultSetOfSelect(Parse*,Select*);
 SQLITE_PRIVATE void sqlite3OpenMasterTable(Parse *, int);
 SQLITE_PRIVATE Index *sqlite3PrimaryKeyIndex(Table*);
@@ -44164,6 +44165,27 @@ SQLITE_PRIVATE int sqlite3BtreeDelete(BtCursor *pCur, u8 flags){
   pPage = pCur->apPage[iCellDepth];
   pCell = findCell(pPage, iCellIdx);
 
+  /* If the bPreserve flag is set to true, then the cursor position must
+  ** be preserved following this delete operation. If the current delete
+  ** will cause a b-tree rebalance, then this is done by saving the cursor
+  ** key and leaving the cursor in CURSOR_REQUIRESEEK state before returning.
+  **
+  ** Or, if the current delete will not cause a rebalance, then the cursor
+  ** will be left in CURSOR_SKIPNEXT state pointing to the entry immediately
+  ** before or after the deleted entry. In this case set bSkipnext to true.  */
+  if( bPreserve ){
+    if( !pPage->leaf
+     || (pPage->nFree+cellSizePtr(pPage,pCell)+2)>(int)(pBt->usableSize*2/3)
+    ){
+      /* A b-tree rebalance will be required after deleting this entry.
+      ** Save the cursor key.  */
+      rc = saveCursorKey(pCur);
+      if( rc ) return rc;
+    }else{
+      bSkipnext = 1;
+    }
+  }
+
   /* If the page containing the entry to delete is not a leaf page, move
   ** the cursor to the largest entry in the tree that is smaller than
   ** the entry being deleted. This cell will replace the cell being deleted
@@ -44188,27 +44210,6 @@ SQLITE_PRIVATE int sqlite3BtreeDelete(BtCursor *pCur, u8 flags){
   ** invalidate any incrblob cursors open on the row being deleted.  */
   if( pCur->pKeyInfo==0 ){
     invalidateIncrblobCursors(p, pCur->info.nKey, 0);
-  }
-
-  /* If the bPreserve flag is set to true, then the cursor position must
-  ** be preserved following this delete operation. If the current delete
-  ** will cause a b-tree rebalance, then this is done by saving the cursor
-  ** key and leaving the cursor in CURSOR_REQUIRESEEK state before  returning.
-  **
-  ** Or, if the current delete will not cause a rebalance, then the cursor
-  ** will be left in CURSOR_SKIPNEXT state pointing to the entry immediately
-  ** before or after the deleted entry. In this case set bSkipnext to true.  */
-  if( bPreserve ){
-    if( !pPage->leaf
-     || (pPage->nFree+cellSizePtr(pPage,pCell)+2)>(int)(pBt->usableSize*2/3)
-    ){
-      /* A b-tree rebalance will be required after deleting this entry.
-      ** Save the cursor key.  */
-      rc = saveCursorKey(pCur);
-      if( rc ) return rc;
-    }else{
-      bSkipnext = 1;
-    }
   }
 
   /* Make the page containing the entry to be deleted writable. Then free any
@@ -62500,7 +62501,6 @@ SQLITE_PRIVATE int sqlite3VdbeSorterInit(
 ){
   int pgsz;                       /* Page size of main database */
   int i;                          /* Used to iterate through aTask[] */
-  int mxCache;                    /* Cache size */
   VdbeSorter *pSorter;            /* The new sorter */
   KeyInfo *pKeyInfo;              /* Copy of pCsr->pKeyInfo with db==0 */
   int szKeyInfo;                  /* Size of pCsr->pKeyInfo in bytes */
@@ -62557,11 +62557,20 @@ SQLITE_PRIVATE int sqlite3VdbeSorterInit(
     }
 
     if( !sqlite3TempInMemory(db) ){
+      i64 mxCache;                /* Cache size in bytes*/
       u32 szPma = sqlite3GlobalConfig.szPma;
       pSorter->mnPmaSize = szPma * pgsz;
+
       mxCache = db->aDb[0].pSchema->cache_size;
-      if( mxCache<(int)szPma ) mxCache = (int)szPma;
-      pSorter->mxPmaSize = MIN((i64)mxCache*pgsz, SQLITE_MAX_PMASZ);
+      if( mxCache<0 ){
+        /* A negative cache-size value C indicates that the cache is abs(C)
+        ** KiB in size.  */
+        mxCache = mxCache * -1024;
+      }else{
+        mxCache = mxCache * pgsz;
+      }
+      mxCache = MIN(mxCache, SQLITE_MAX_PMASZ);
+      pSorter->mxPmaSize = MAX(pSorter->mnPmaSize, (int)mxCache);
 
       /* EVIDENCE-OF: R-26747-61719 When the application provides any amount of
       ** scratch memory using SQLITE_CONFIG_SCRATCH, SQLite avoids unnecessary
@@ -64348,6 +64357,7 @@ static int memjrnlRead(
 #endif
 
   assert( (iAmt+iOfst)<=p->endpoint.iOffset );
+  assert( p->readpoint.iOffset==0 || p->readpoint.pChunk!=0 );
   if( p->readpoint.iOffset!=iOfst || iOfst==0 ){
     sqlite3_int64 iOff = 0;
     for(pChunk=p->pFirst;
@@ -64358,6 +64368,7 @@ static int memjrnlRead(
     }
   }else{
     pChunk = p->readpoint.pChunk;
+    assert( pChunk!=0 );
   }
 
   iChunkOffset = (int)(iOfst%p->nChunkSize);
@@ -64369,7 +64380,7 @@ static int memjrnlRead(
     nRead -= iSpace;
     iChunkOffset = 0;
   } while( nRead>=0 && (pChunk=pChunk->pNext)!=0 && nRead>0 );
-  p->readpoint.iOffset = iOfst+iAmt;
+  p->readpoint.iOffset = pChunk ? iOfst+iAmt : 0;
   p->readpoint.pChunk = pChunk;
 
   return SQLITE_OK;
@@ -74899,6 +74910,7 @@ SQLITE_PRIVATE void sqlite3AddColumn(Parse *pParse, Token *pName, Token *pType){
     zType = z + sqlite3Strlen30(z) + 1;
     memcpy(zType, pType->z, pType->n);
     zType[pType->n] = 0;
+    sqlite3Dequote(zType);
     pCol->affinity = sqlite3AffinityType(zType, &pCol->szEst);
     pCol->colFlags |= COLFLAG_HASTYPE;
   }
@@ -75979,44 +75991,55 @@ SQLITE_PRIVATE int sqlite3ViewGetColumnNames(Parse *pParse, Table *pTable){
   ** statement that defines the view.
   */
   assert( pTable->pSelect );
-  if( pTable->pCheck ){
+  pSel = sqlite3SelectDup(db, pTable->pSelect, 0);
+  if( pSel ){
+    n = pParse->nTab;
+    sqlite3SrcListAssignCursors(pParse, pSel->pSrc);
+    pTable->nCol = -1;
     db->lookaside.bDisable++;
-    sqlite3ColumnsFromExprList(pParse, pTable->pCheck,
-                               &pTable->nCol, &pTable->aCol);
-    db->lookaside.bDisable--;
-  }else{
-    pSel = sqlite3SelectDup(db, pTable->pSelect, 0);
-    if( pSel ){
-      n = pParse->nTab;
-      sqlite3SrcListAssignCursors(pParse, pSel->pSrc);
-      pTable->nCol = -1;
-      db->lookaside.bDisable++;
 #ifndef SQLITE_OMIT_AUTHORIZATION
-      xAuth = db->xAuth;
-      db->xAuth = 0;
-      pSelTab = sqlite3ResultSetOfSelect(pParse, pSel);
-      db->xAuth = xAuth;
+    xAuth = db->xAuth;
+    db->xAuth = 0;
+    pSelTab = sqlite3ResultSetOfSelect(pParse, pSel);
+    db->xAuth = xAuth;
 #else
-      pSelTab = sqlite3ResultSetOfSelect(pParse, pSel);
+    pSelTab = sqlite3ResultSetOfSelect(pParse, pSel);
 #endif
-      db->lookaside.bDisable--;
-      pParse->nTab = n;
-      if( pSelTab ){
-        assert( pTable->aCol==0 );
-        pTable->nCol = pSelTab->nCol;
-        pTable->aCol = pSelTab->aCol;
-        pSelTab->nCol = 0;
-        pSelTab->aCol = 0;
-        sqlite3DeleteTable(db, pSelTab);
-        assert( sqlite3SchemaMutexHeld(db, 0, pTable->pSchema) );
-      }else{
-        pTable->nCol = 0;
-        nErr++;
+    pParse->nTab = n;
+    if( pTable->pCheck ){
+      /* CREATE VIEW name(arglist) AS ...
+      ** The names of the columns in the table are taken from
+      ** arglist which is stored in pTable->pCheck.  The pCheck field
+      ** normally holds CHECK constraints on an ordinary table, but for
+      ** a VIEW it holds the list of column names.
+      */
+      sqlite3ColumnsFromExprList(pParse, pTable->pCheck,
+                                 &pTable->nCol, &pTable->aCol);
+      if( db->mallocFailed==0
+       && pParse->nErr==0
+       && pTable->nCol==pSel->pEList->nExpr
+      ){
+        sqlite3SelectAddColumnTypeAndCollation(pParse, pTable, pSel);
       }
-      sqlite3SelectDelete(db, pSel);
-    } else {
+    }else if( pSelTab ){
+      /* CREATE VIEW name AS...  without an argument list.  Construct
+      ** the column names from the SELECT statement that defines the view.
+      */
+      assert( pTable->aCol==0 );
+      pTable->nCol = pSelTab->nCol;
+      pTable->aCol = pSelTab->aCol;
+      pSelTab->nCol = 0;
+      pSelTab->aCol = 0;
+      assert( sqlite3SchemaMutexHeld(db, 0, pTable->pSchema) );
+    }else{
+      pTable->nCol = 0;
       nErr++;
     }
+    if( pSelTab ) sqlite3DeleteTable(db, pSelTab);
+    sqlite3SelectDelete(db, pSel);
+    db->lookaside.bDisable--;
+  } else {
+    nErr++;
   }
   pTable->pSchema->schemaFlags |= DB_UnresetViews;
 #endif /* SQLITE_OMIT_VIEW */
@@ -91063,7 +91086,7 @@ SQLITE_PRIVATE int sqlite3ColumnsFromExprList(
 ** This routine requires that all identifiers in the SELECT
 ** statement be resolved.
 */
-static void selectAddColumnTypeAndCollation(
+SQLITE_PRIVATE void sqlite3SelectAddColumnTypeAndCollation(
   Parse *pParse,        /* Parsing contexts */
   Table *pTab,          /* Add column type information to this table */
   Select *pSelect       /* SELECT used to determine types and collations */
@@ -91085,10 +91108,20 @@ static void selectAddColumnTypeAndCollation(
   sNC.pSrcList = pSelect->pSrc;
   a = pSelect->pEList->a;
   for(i=0, pCol=pTab->aCol; i<pTab->nCol; i++, pCol++){
+    const char *zType;
+    int n, m;
     p = a[i].pExpr;
-    columnType(&sNC, p, 0, 0, 0, &pCol->szEst);
+    zType = columnType(&sNC, p, 0, 0, 0, &pCol->szEst);
     szAll += pCol->szEst;
     pCol->affinity = sqlite3ExprAffinity(p);
+    if( zType && (m = sqlite3Strlen30(zType))>0 ){
+      n = sqlite3Strlen30(pCol->zName);
+      pCol->zName = sqlite3DbReallocOrFree(db, pCol->zName, n+m+2);
+      if( pCol->zName ){
+        memcpy(&pCol->zName[n+1], zType, m+1);
+        pCol->colFlags |= COLFLAG_HASTYPE;
+      }
+    }
     if( pCol->affinity==0 ) pCol->affinity = SQLITE_AFF_BLOB;
     pColl = sqlite3ExprCollSeq(pParse, p);
     if( pColl && pCol->zColl==0 ){
@@ -91124,7 +91157,7 @@ SQLITE_PRIVATE Table *sqlite3ResultSetOfSelect(Parse *pParse, Select *pSelect){
   pTab->zName = 0;
   pTab->nRowLogEst = 200; assert( 200==sqlite3LogEst(1048576) );
   sqlite3ColumnsFromExprList(pParse, pSelect->pEList, &pTab->nCol, &pTab->aCol);
-  selectAddColumnTypeAndCollation(pParse, pTab, pSelect);
+  sqlite3SelectAddColumnTypeAndCollation(pParse, pTab, pSelect);
   pTab->iPKey = -1;
   if( db->mallocFailed ){
     sqlite3DeleteTable(db, pTab);
@@ -93765,7 +93798,7 @@ static void selectAddSubqueryTypeInfo(Walker *pWalker, Select *p){
       Select *pSel = pFrom->pSelect;
       if( pSel ){
         while( pSel->pPrior ) pSel = pSel->pPrior;
-        selectAddColumnTypeAndCollation(pParse, pTab, pSel);
+        sqlite3SelectAddColumnTypeAndCollation(pParse, pTab, pSel);
       }
     }
   }
@@ -99923,7 +99956,13 @@ SQLITE_PRIVATE Bitmask sqlite3WhereCodeOneLoopStart(
         }
       }
     }
-    sqlite3ReleaseTempRange(pParse, iReg, nConstraint+2);
+    /* These registers need to be preserved in case there is an IN operator loop.
+    ** So we could deallocate the registers here (and potentially
+    ** reuse them later) if (pLoop->wsFlags & WHERE_IN_ABLE)==0.
+    ** But it seems simpler and safer to simply not reuse the registers.
+    **
+    **    sqlite3ReleaseTempRange(pParse, iReg, nConstraint+2);
+    */
     sqlite3ExprCachePop(pParse);
   }else
 #endif /* SQLITE_OMIT_VIRTUALTABLE */
@@ -104281,8 +104320,6 @@ static int whereLoopAddBtreeIndex(
   assert( (pNew->wsFlags & WHERE_TOP_LIMIT)==0 );
   if( pNew->wsFlags & WHERE_BTM_LIMIT ){
     opMask = WO_LT|WO_LE;
-  }else if( /*pProbe->tnum<=0 ||*/ (pSrc->fg.jointype & JT_LEFT)!=0 ){
-    opMask = WO_EQ|WO_IN|WO_GT|WO_GE|WO_LT|WO_LE;
   }else{
     opMask = WO_EQ|WO_IN|WO_GT|WO_GE|WO_LT|WO_LE|WO_ISNULL|WO_IS;
   }
@@ -104319,6 +104356,17 @@ static int whereLoopAddBtreeIndex(
     /* Do not allow the upper bound of a LIKE optimization range constraint
     ** to mix with a lower range bound from some other source */
     if( pTerm->wtFlags & TERM_LIKEOPT && pTerm->eOperator==WO_LT ) continue;
+
+    /* Do not allow IS constraints from the WHERE clause to be used by the
+    ** right table of a LEFT JOIN.  Only constraints in the ON clause are allowed */
+    if( (pSrc->fg.jointype & JT_LEFT)!=0
+     && !ExprHasProperty(pTerm->pExpr, EP_FromJoin)
+     && (eOp & (WO_IS|WO_ISNULL))!=0
+    ){
+      testcase( eOp & WO_IS );
+      testcase( eOp & WO_ISNULL );
+      continue;
+    }
 
     pNew->wsFlags = saved_wsFlags;
     pNew->u.btree.nEq = saved_nEq;

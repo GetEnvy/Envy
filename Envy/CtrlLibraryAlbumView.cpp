@@ -84,8 +84,8 @@ BOOL CLibraryAlbumView::Create(CWnd* pParentWnd)
 {
 	CRect rect( 0, 0, 0, 0 );
 	SelClear( FALSE );
-	return CWnd::CreateEx( 0, NULL, L"CLibraryAlbumView", WS_CHILD | WS_VSCROLL |
-		WS_TABSTOP | WS_GROUP, rect, pParentWnd, IDC_LIBRARY_VIEW );
+	return CWnd::CreateEx( 0, NULL, L"CLibraryAlbumView", WS_CHILD | WS_VSCROLL | WS_TABSTOP | WS_GROUP,
+		rect, pParentWnd, IDC_LIBRARY_VIEW );
 }
 
 int CLibraryAlbumView::OnCreate(LPCREATESTRUCT lpCreateStruct)
@@ -134,12 +134,13 @@ void CLibraryAlbumView::Update()
 	{
 		CAlbumFolder* pFolder = pFolders->m_pVirtual;
 
-		if ( CheckURI( pFolder->m_sSchemaURI, CSchema::uriMusicAlbum ) )
-			m_pStyle = CSchema::uriMusicAlbum;
-		else if ( CheckURI( pFolder->m_sSchemaURI, CSchema::uriMusicArtist ) )
-			m_pStyle = CSchema::uriMusicArtist;
-		else if ( CheckURI( pFolder->m_sSchemaURI, CSchema::uriMusicAll ) || CheckURI( pFolder->m_sSchemaURI, CSchema::uriMusicGenre ) )
-			m_pStyle = CSchema::uriMusicAll;
+	//	if ( CheckURI( pFolder->m_sSchemaURI, CSchema::uriMusicAlbum ) )
+	//		m_pStyle = CSchema::uriMusicAlbum;
+	//	else if ( CheckURI( pFolder->m_sSchemaURI, CSchema::uriMusicArtist ) )
+	//		m_pStyle = CSchema::uriMusicArtist;
+	//	else if ( CheckURI( pFolder->m_sSchemaURI, CSchema::uriMusicAll ) || CheckURI( pFolder->m_sSchemaURI, CSchema::uriMusicGenre ) )
+		if ( CheckURI( pFolder->m_sSchemaURI, CSchema::uriAudioFolder ) )
+			m_pStyle = CSchema::uriAudioFolder;
 		else if ( CheckURI( pFolder->m_sSchemaURI, CSchema::uriGhostFolder ) )
 			bGhostFolder = TRUE;
 	}
@@ -274,34 +275,40 @@ int CLibraryAlbumView::SortList(LPCVOID pA, LPCVOID pB)
 	CLibraryAlbumTrack* ppA = *(CLibraryAlbumTrack**)pA;
 	CLibraryAlbumTrack* ppB = *(CLibraryAlbumTrack**)pB;
 
-	if ( m_pStaticStyle == CSchema::uriMusicAlbum )
-	{
-		if ( ppA->m_nTrack != ppB->m_nTrack )
-			return ( ppA->m_nTrack < ppB->m_nTrack ) ? -1 : 1;
+//	if ( m_pStaticStyle == CSchema::uriMusicAlbum )
+//	{
+//		if ( ppA->m_nTrack != ppB->m_nTrack )
+//			return ( ppA->m_nTrack < ppB->m_nTrack ) ? -1 : 1;
+//
+//		return _tcsicoll( ppA->m_sTitle, ppB->m_sTitle );
+//	}
+//	if ( m_pStaticStyle == CSchema::uriMusicArtist )
+//	{
+//		int nCompare = _tcsicoll( ppA->m_sAlbum, ppB->m_sAlbum );
+//		if ( nCompare )
+//			return nCompare;
+//
+//		return _tcsicoll( ppA->m_sTitle, ppB->m_sTitle );
+//	}
 
-		return _tcsicoll( ppA->m_sTitle, ppB->m_sTitle );
-	}
-	else if ( m_pStaticStyle == CSchema::uriMusicArtist )
-	{
-		int nCompare = _tcsicoll( ppA->m_sAlbum, ppB->m_sAlbum );
-
-		if ( nCompare )
-			return nCompare;
-
-		return _tcsicoll( ppA->m_sTitle, ppB->m_sTitle );
-	}
-	else
+	if ( m_pStaticStyle == CSchema::uriAudioFolder )
 	{
 		int nCompare = _tcsicoll( ppA->m_sArtist, ppB->m_sArtist );
-
 		if ( nCompare )
 			return nCompare;
-
-		if ( ( nCompare = _tcsicoll( ppA->m_sAlbum, ppB->m_sAlbum ) ) != 0 )
-			return nCompare;
-
-		return _tcsicoll( ppA->m_sTitle, ppB->m_sTitle );
+		if ( ! ppA->m_sAlbum.IsEmpty() || ! ppB->m_sAlbum.IsEmpty() )
+		{
+			nCompare = _tcsicoll( ppA->m_sAlbum, ppB->m_sAlbum );
+			if ( nCompare )
+				return nCompare;
+			if ( ppA->m_nTrack < ppB->m_nTrack )
+				return -1;
+			if ( ppA->m_nTrack > ppB->m_nTrack )
+				return 1;
+		}
 	}
+
+	return _tcsicoll( ppA->m_sTitle, ppB->m_sTitle );
 }
 
 /////////////////////////////////////////////////////////////////////////////
@@ -609,28 +616,28 @@ void CLibraryAlbumView::OnPaint()
 	rcLine.left += ICON_WIDTH;
 	rcLine.right -= RATING_WIDTH;
 	pBuffer->FillSolidRect( &rcBuffer, Colors.m_crWindow );
-	if ( m_pStyle == CSchema::uriMusicAlbum )
+//	if ( m_pStyle == CSchema::uriMusicAlbum )
+//	{
+//		// Track, Title, Length, Bitrate
+//		CLibraryAlbumTrack::PaintText( pBuffer, rcLine,  0,   5, IDS_LIBRARY_ALBUM_TRACK, TRUE );
+//		CLibraryAlbumTrack::PaintText( pBuffer, rcLine,  5,  84, IDS_LIBRARY_ALBUM_TITLE );
+//		CLibraryAlbumTrack::PaintText( pBuffer, rcLine, 84,  92, IDS_LIBRARY_ALBUM_LENGTH, TRUE );
+//		CLibraryAlbumTrack::PaintText( pBuffer, rcLine, 92, 100, IDS_LIBRARY_ALBUM_BITRATE, TRUE );
+//	}
+//	else if ( m_pStyle == CSchema::uriMusicArtist )
+//	{
+//		// Album, Title, Length, Bitrate
+//		CLibraryAlbumTrack::PaintText( pBuffer, rcLine,  0,  30, IDS_LIBRARY_ALBUM_ALBUM );
+//		CLibraryAlbumTrack::PaintText( pBuffer, rcLine, 30,  84, IDS_LIBRARY_ALBUM_TITLE );
+//		CLibraryAlbumTrack::PaintText( pBuffer, rcLine, 84,  92, IDS_LIBRARY_ALBUM_LENGTH, TRUE );
+//		CLibraryAlbumTrack::PaintText( pBuffer, rcLine, 92, 100, IDS_LIBRARY_ALBUM_BITRATE, TRUE );
+//	}
+	if ( m_pStyle == CSchema::uriAudioFolder )
 	{
-		// Track, Title, Length, Bitrate
-		CLibraryAlbumTrack::PaintText( pBuffer, rcLine,  0,   5, IDS_LIBRARY_ALBUM_TRACK, TRUE );
-		CLibraryAlbumTrack::PaintText( pBuffer, rcLine,  5,  84, IDS_LIBRARY_ALBUM_TITLE );
-		CLibraryAlbumTrack::PaintText( pBuffer, rcLine, 84,  92, IDS_LIBRARY_ALBUM_LENGTH, TRUE );
-		CLibraryAlbumTrack::PaintText( pBuffer, rcLine, 92, 100, IDS_LIBRARY_ALBUM_BITRATE, TRUE );
-	}
-	else if ( m_pStyle == CSchema::uriMusicArtist )
-	{
-		// Album, Title, Length, Bitrate
-		CLibraryAlbumTrack::PaintText( pBuffer, rcLine,  0,  30, IDS_LIBRARY_ALBUM_ALBUM );
-		CLibraryAlbumTrack::PaintText( pBuffer, rcLine, 30,  84, IDS_LIBRARY_ALBUM_TITLE );
-		CLibraryAlbumTrack::PaintText( pBuffer, rcLine, 84,  92, IDS_LIBRARY_ALBUM_LENGTH, TRUE );
-		CLibraryAlbumTrack::PaintText( pBuffer, rcLine, 92, 100, IDS_LIBRARY_ALBUM_BITRATE, TRUE );
-	}
-	else if ( m_pStyle == CSchema::uriMusicAll ) // Genre
-	{
-		// Artist, Album, Title, Length, Bitrate
+		// Artist, Title, Album, Length, Bitrate
 		CLibraryAlbumTrack::PaintText( pBuffer, rcLine,  0,  25, IDS_LIBRARY_ALBUM_ARTIST );
-		CLibraryAlbumTrack::PaintText( pBuffer, rcLine, 25,  50, IDS_LIBRARY_ALBUM_ALBUM );
-		CLibraryAlbumTrack::PaintText( pBuffer, rcLine, 50,  84, IDS_LIBRARY_ALBUM_TITLE );
+		CLibraryAlbumTrack::PaintText( pBuffer, rcLine, 25,  50, IDS_LIBRARY_ALBUM_TITLE );
+		CLibraryAlbumTrack::PaintText( pBuffer, rcLine, 50,  84, IDS_LIBRARY_ALBUM_ALBUM );
 		CLibraryAlbumTrack::PaintText( pBuffer, rcLine, 84,  92, IDS_LIBRARY_ALBUM_LENGTH, TRUE );
 		CLibraryAlbumTrack::PaintText( pBuffer, rcLine, 92, 100, IDS_LIBRARY_ALBUM_BITRATE, TRUE );
 	}
@@ -874,11 +881,12 @@ void CLibraryAlbumView::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 					{
 						LPCTSTR psz = NULL;
 
-						if ( m_pStyle == CSchema::uriMusicAlbum )
-							psz = (*pChild)->m_sTitle;
-						else if ( m_pStyle == CSchema::uriMusicArtist )
-							psz = (*pChild)->m_sAlbum;
-						else
+						// Obsolete Legacy Subfolders
+						//if ( m_pStyle == CSchema::uriMusicAlbum )
+						//	psz = (*pChild)->m_sTitle;
+						//else if ( m_pStyle == CSchema::uriMusicArtist )
+						//	psz = (*pChild)->m_sAlbum;
+						//else
 							psz = (*pChild)->m_sArtist;
 
 						if ( psz && *psz && toupper( *psz ) == (int)nChar )
@@ -1226,28 +1234,28 @@ void CLibraryAlbumTrack::Paint(CLibraryAlbumView* pView, CDC* pDC, const CRect& 
 
 	// Metadata Boxes  (Available space %)
 
-	if ( pView->m_pStyle == CSchema::uriMusicAlbum )
+//	if ( pView->m_pStyle == CSchema::uriMusicAlbum )
+//	{
+//		// Track, Title, Length, Bitrate
+//		PaintText( pDC, rcLine, 0, 5, &m_sTrack, TRUE );
+//		PaintText( pDC, rcLine, 5, 84, &m_sTitle );
+//		PaintText( pDC, rcLine, 84, 92, &m_sLength, TRUE );
+//		PaintText( pDC, rcLine, 92, 100, &m_sBitrate, TRUE );
+//	}
+//	else if ( pView->m_pStyle == CSchema::uriMusicArtist )
+//	{
+//		// Album, Title, Length, Bitrate
+//		PaintText( pDC, rcLine, 0, 30, &m_sAlbum );
+//		PaintText( pDC, rcLine, 30, 84, &m_sTitle );
+//		PaintText( pDC, rcLine, 84, 92, &m_sLength, TRUE );
+//		PaintText( pDC, rcLine, 92, 100, &m_sBitrate, TRUE );
+//	}
+	if ( pView->m_pStyle == CSchema::uriAudioFolder )
 	{
-		// Track, Title, Length, Bitrate
-		PaintText( pDC, rcLine, 0, 5, &m_sTrack, TRUE );
-		PaintText( pDC, rcLine, 5, 84, &m_sTitle );
-		PaintText( pDC, rcLine, 84, 92, &m_sLength, TRUE );
-		PaintText( pDC, rcLine, 92, 100, &m_sBitrate, TRUE );
-	}
-	else if ( pView->m_pStyle == CSchema::uriMusicArtist )
-	{
-		// Album, Title, Length, Bitrate
-		PaintText( pDC, rcLine, 0, 30, &m_sAlbum );
-		PaintText( pDC, rcLine, 30, 84, &m_sTitle );
-		PaintText( pDC, rcLine, 84, 92, &m_sLength, TRUE );
-		PaintText( pDC, rcLine, 92, 100, &m_sBitrate, TRUE );
-	}
-	else if ( pView->m_pStyle == CSchema::uriMusicAll ) // Genre
-	{
-		// Artist, Album, Title, Length, Bitrate
-		PaintText( pDC, rcLine, 0, 25, &m_sArtist );
-		PaintText( pDC, rcLine, 25, 50, &m_sAlbum );
-		PaintText( pDC, rcLine, 50, 84, &m_sTitle );
+		// Artist, Title, Album, Length, Bitrate
+		PaintText( pDC, rcLine,  0, 25, &m_sArtist );
+		PaintText( pDC, rcLine, 25, 50, &m_sTitle );
+		PaintText( pDC, rcLine, 50, 84, &m_sAlbum );
 		PaintText( pDC, rcLine, 84, 92, &m_sLength, TRUE );
 		PaintText( pDC, rcLine, 92, 100, &m_sBitrate, TRUE );
 	}

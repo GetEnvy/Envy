@@ -1399,7 +1399,7 @@
 		<item id="ID_LIBRARY_LAUNCH_FOLDER" text="Open _Folder"/>
 		<separator/>
 		<menu text="O_rganize">
-			<item id="ID_LIBRARY_UNLINK" text="Remove _Files"/>
+			<item id="ID_LIBRARY_UNLINK" text="Remove from _Folder"/>
 			<separator/>
 			<item id="ID_LIBRARY_RENAME" text="_Rename File" shortcut="F2"/>
 			<item id="ID_LIBRARY_COPY" text="_Copy Files..." shortcut="Ctrl+C"/>

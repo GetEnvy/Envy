@@ -833,7 +833,7 @@ void CLibraryFolder::Maintain(BOOL bAdd)
 #ifndef NOXP
 		theApp.m_nWinVer < WIN_VISTA ? L"\\Schemas\\WindowsFolder.Safe.ico" :
 #endif
-		theApp.m_nWinVer < WIN_10 ? L"\\Schemas\\WindowsFolder.ico" : L"\\Schemas\\WindowsShareFolder.ico" );
+		theApp.m_nWinVer < WIN_10 ? L"\\Schemas\\WindowsFolder.Alt.ico" : L"\\Schemas\\WindowsFolder.ico" );
 	if ( ! PathFileExists( strIconFile ) )
 	{
 		strIconResource = Skin.GetImagePath( IDI_COLLECTION );

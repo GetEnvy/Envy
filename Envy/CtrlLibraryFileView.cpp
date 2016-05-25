@@ -498,7 +498,7 @@ void CLibraryFileView::OnLibraryDelete()
 
 void CLibraryFileView::OnUpdateLibraryCreateTorrent(CCmdUI* pCmdUI)
 {
-	pCmdUI->Enable( ! m_bGhostFolder && Settings.BitTorrent.TorrentToolPath.GetLength() > 6 && GetSelectedCount() < 2 );
+	pCmdUI->Enable( ! m_bGhostFolder && Settings.BitTorrent.TorrentCreatorPath.GetLength() > 6 && GetSelectedCount() < 2 );
 }
 
 void CLibraryFileView::OnLibraryCreateTorrent()
@@ -520,14 +520,14 @@ void CLibraryFileView::OnLibraryCreateTorrent()
 					L"\" -tracker \"" + Settings.BitTorrent.DefaultTracker +
 					L"\"";
 
-				ShellExecute( GetSafeHwnd(), L"open", Settings.BitTorrent.TorrentToolPath, strCommandLine, NULL, SW_SHOWNORMAL );
+				ShellExecute( GetSafeHwnd(), L"open", Settings.BitTorrent.TorrentCreatorPath, strCommandLine, NULL, SW_SHOWNORMAL );
 
 				return;
 			}
 		}
 	}
 
-	ShellExecute( GetSafeHwnd(), L"open", Settings.BitTorrent.TorrentToolPath, NULL, NULL, SW_SHOWNORMAL );
+	ShellExecute( GetSafeHwnd(), L"open", Settings.BitTorrent.TorrentCreatorPath, NULL, NULL, SW_SHOWNORMAL );
 }
 
 void CLibraryFileView::OnUpdateLibraryRebuildAnsi(CCmdUI* pCmdUI)

@@ -178,18 +178,20 @@ CString CSchemaCache::GetFilter(LPCTSTR pszURI) const
 		LPCTSTR pszURIType;
 		if ( pszURI == CSchema::uriAllFiles )
 			pszURIType = NULL;
-		else if ( pszURI == CSchema::uriApplicationAll )
-			pszURIType = CSchema::uriApplication;
-		else if ( pszURI == CSchema::uriVideoAll )
-			pszURIType = CSchema::uriVideo;
-		else if ( pszURI == CSchema::uriMusicAll )
-			pszURIType = CSchema::uriAudio;
-		else if ( pszURI == CSchema::uriImageAll )
-			pszURIType = CSchema::uriImage;
-		else if ( pszURI == CSchema::uriArchiveAll )
+		else if ( pszURI == CSchema::uriArchiveFolder )
 			pszURIType = CSchema::uriArchive;
-		else if ( pszURI == CSchema::uriDocumentAll )
+		else if ( pszURI == CSchema::uriApplicationFolder )
+			pszURIType = CSchema::uriApplication;
+		else if ( pszURI == CSchema::uriAudioFolder )
+			pszURIType = CSchema::uriAudio;
+		else if ( pszURI == CSchema::uriVideoFolder )
+			pszURIType = CSchema::uriVideo;
+		else if ( pszURI == CSchema::uriImageFolder )
+			pszURIType = CSchema::uriImage;
+		else if ( pszURI == CSchema::uriDocumentFolder )
 			pszURIType = CSchema::uriDocument;
+		else if ( pszURI == CSchema::uriBitTorrentFolder )
+			pszURIType = CSchema::uriBitTorrent;
 		else
 		{
 			ASSERT( FALSE );

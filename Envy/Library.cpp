@@ -100,7 +100,7 @@ void CLibrary::AddFile(CLibraryFile* pFile)
 		if ( pFile->IsHashed() )
 		{
 			LibraryHistory.Submit( pFile );
-			GetAlbumRoot()->OrganiseFile( pFile );
+			GetAlbumRoot()->OrganizeFile( pFile );
 
 			if ( pFile->IsNewFile() )			// The new file was hashed
 			{
@@ -116,7 +116,7 @@ void CLibrary::AddFile(CLibraryFile* pFile)
 	}
 	else
 	{
-		GetAlbumRoot()->OrganiseFile( pFile );
+		GetAlbumRoot()->OrganizeFile( pFile );
 	}
 }
 

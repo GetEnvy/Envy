@@ -42,6 +42,7 @@
  <option name="Sidebar" value="210"/>
  <option name="SidebarPadding" value="14"/>
  <!--option name="Splitter" value="6"-->
+ <option name="RowSize" value="18"/>
  <option name="RoundedSelect" value="false"/>
 </options>
 
@@ -90,7 +91,7 @@
  <color name="Dialog.Panel.Text"			value="393630"/>
  <color name="Dialog.Menu.Back" 			value="FAF9F8"/>  <!--settings menu-->
  <color name="Dialog.Menu.Text" 			value="403A34"/>
- <color name="Banner.Back"				value="D2C2AE"/>  <!--library/browse headers-->
+ <color name="Banner.Back"				value="DCCAB4"/>  <!--library/browse headers-->
  <color name="Banner.Text"				value="FFFFFF"/>
 
  <color name="Media.Window.Back"			value="080400"/>

@@ -1497,7 +1497,7 @@ msgid "O_rganize"
 msgstr "O_rganizar"
 
 #: clibraryfileview.physical;50;item;id_library_unlink clibraryfileview.virtual.basic;54;item;id_library_unlink clibraryfileview.virtual;56;item;id_library_unlink
-msgid "Remove _Files"
+msgid "Remove from _Folder"
 msgstr "Remover _Arquivos"
 
 #: clibraryfileview.physical;52;item;id_library_bitprints_download clibraryfileview.virtual;58;item;id_library_bitprints_download
@@ -7857,7 +7857,7 @@ msgid "_Store Torrents Here:"
 msgstr "_Armazenar Torrents Aqui:"
 
 #: cbittorrentsettingspage;control;18
-msgid "_Torrent Tool:"
+msgid "_Torrent Creator:"
 msgstr "_Criador de Torrents:"
 
 #: cbittorrentsettingspage;control;21

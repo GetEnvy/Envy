@@ -538,7 +538,7 @@ void CSettings::Load()
 	Add( L"BitTorrent", L"SkipPaddingFiles", &BitTorrent.SkipPaddingFiles, true );
 	Add( L"BitTorrent", L"SkipTrackerFiles", &BitTorrent.SkipTrackerFiles, false );	// Breaks seeding?
 	Add( L"BitTorrent", L"TorrentCodePage", &BitTorrent.TorrentCodePage, 0, 1, 0, 9999999 );
-	Add( L"BitTorrent", L"TorrentToolPath", &BitTorrent.TorrentToolPath );
+	Add( L"BitTorrent", L"TorrentCreatorPath", &BitTorrent.TorrentCreatorPath );
 	Add( L"BitTorrent", L"TrackerKey", &BitTorrent.TrackerKey, true );
 	Add( L"BitTorrent", L"UploadCount", &BitTorrent.UploadCount, 4, 1, 2, 20 );
 

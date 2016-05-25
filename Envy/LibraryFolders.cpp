@@ -306,24 +306,21 @@ bool CLibraryFolders::AddSharedFolder(CListCtrl& oList)
 			CString strMessage;
 			strMessage.Format( LoadString( IDS_LIBRARY_SUBFOLDER_IN_LIBRARY ), strPath );
 
-			if ( bForceAdd || MsgBox( strMessage, MB_ICONQUESTION|MB_YESNO ) == IDYES )
-			{
-				// Don't bother asking again- remove all sub-folders
-				bForceAdd = true;
-
-				// Remove the sub-folder
-				oList.DeleteItem( nItem );
-				--nItem;
-			}
-			else
-			{
+			if ( ! bForceAdd || MsgBox( strMessage, MB_ICONQUESTION|MB_YESNO ) != IDYES )
 				return false;
-			}
+
+			// Don't bother asking again- remove all sub-folders
+			bForceAdd = true;
+
+			// Remove the sub-folder
+			oList.DeleteItem( nItem );
+			--nItem;
 		}
 		else
 		{
 			CString strMessage;
 			strMessage.Format( LoadString( IDS_WIZARD_SHARE_ALREADY ), strOldLow );
+
 			MsgBox( strMessage, MB_ICONINFORMATION );
 			return false;
 		}
@@ -556,85 +553,92 @@ CAlbumFolder* CLibraryFolders::CreateAlbumTree()
 	if ( m_pAlbumRoot == NULL )
 		m_pAlbumRoot = new CAlbumFolder( NULL, CSchema::uriLibrary );
 
-	DWORD nCount = m_pAlbumRoot->GetFolderCount();
+	const DWORD nCount = m_pAlbumRoot->GetFolderCount();
 
 	if ( m_pAlbumRoot->GetFolderByURI( CSchema::uriAllFiles ) == NULL )
-	{
-		/*CAlbumFolder* pAllFiles		=*/ m_pAlbumRoot->AddFolder( CSchema::uriAllFiles );
-	}
+		m_pAlbumRoot->AddFolder( CSchema::uriAllFiles );
 
-	if ( m_pAlbumRoot->GetFolderByURI( CSchema::uriApplicationRoot ) == NULL )
-	{
-		CAlbumFolder* pAppRoot			= m_pAlbumRoot->AddFolder( CSchema::uriApplicationRoot );
-		/*CAlbumFolder* pAppAll			=*/ pAppRoot->AddFolder( CSchema::uriApplicationAll );
-	}
+// Legacy subfolders:
+//	if ( m_pAlbumRoot->GetFolderByURI( CSchema::uriApplicationRoot ) == NULL )
+//	{
+//		CAlbumFolder* pAppRoot			= m_pAlbumRoot->AddFolder( CSchema::uriApplicationRoot );
+//		/*CAlbumFolder* pAppAll			=*/ pAppRoot->AddFolder( CSchema::uriApplicationAll );
+//	}
+//
+//	if ( m_pAlbumRoot->GetFolderByURI( CSchema::uriArchiveRoot ) == NULL )
+//	{
+//		CAlbumFolder* pArchiveRoot		= m_pAlbumRoot->AddFolder( CSchema::uriArchiveRoot );
+//		/*CAlbumFolder* pArchiveAll		=*/ pArchiveRoot->AddFolder( CSchema::uriArchiveAll );
+//	}
+//
+//	if ( m_pAlbumRoot->GetFolderByURI( CSchema::uriBookRoot ) == NULL )
+//	{
+//		CAlbumFolder* pBookRoot			= m_pAlbumRoot->AddFolder( CSchema::uriBookRoot );
+//		/*CAlbumFolder* pBookAll		=*/ pBookRoot->AddFolder( CSchema::uriBookAll );
+//	}
+//
+//	if ( m_pAlbumRoot->GetFolderByURI( CSchema::uriImageRoot ) == NULL )
+//	{
+//		CAlbumFolder* pImageRoot		= m_pAlbumRoot->AddFolder( CSchema::uriImageRoot );
+//		/*CAlbumFolder* pImageAll		=*/ pImageRoot->AddFolder( CSchema::uriImageAll );
+//	}
+//
+//	if ( m_pAlbumRoot->GetFolderByURI( CSchema::uriMusicRoot ) == NULL )
+//	{
+//		CAlbumFolder* pMusicRoot		= m_pAlbumRoot->AddFolder( CSchema::uriMusicRoot );
+//		/*CAlbumFolder* pMusicAll		=*/ pMusicRoot->AddFolder( CSchema::uriMusicAll );
+//		/*CAlbumFolder* pMusicAlbum		=*/ pMusicRoot->AddFolder( CSchema::uriMusicAlbumCollection );
+//		/*CAlbumFolder* pMusicArtist	=*/ pMusicRoot->AddFolder( CSchema::uriMusicArtistCollection );
+//		/*CAlbumFolder* pMusicGenre		=*/ pMusicRoot->AddFolder( CSchema::uriMusicGenreCollection );
+//	}
+//
+//	if ( m_pAlbumRoot->GetFolderByURI( CSchema::uriVideoRoot ) == NULL )
+//	{
+//		CAlbumFolder* pVideoRoot		= m_pAlbumRoot->AddFolder( CSchema::uriVideoRoot );
+//		/*CAlbumFolder* pVideoAll		=*/ pVideoRoot->AddFolder( CSchema::uriVideoAll );
+//		/*CAlbumFolder* pVideoSeries	=*/ pVideoRoot->AddFolder( CSchema::uriVideoSeriesCollection );
+//		/*CAlbumFolder* pVideoFilm		=*/ pVideoRoot->AddFolder( CSchema::uriVideoFilmCollection );
+//		/*CAlbumFolder* pVideoMusic		=*/ pVideoRoot->AddFolder( CSchema::uriVideoMusicCollection );
+//	}
+//
+//	if ( m_pAlbumRoot->GetFolderByURI( CSchema::uriDocumentRoot ) == NULL )
+//	{
+//		CAlbumFolder* pDocumentRoot		= m_pAlbumRoot->AddFolder( CSchema::uriDocumentRoot );
+//		/*CAlbumFolder* pDocumentAll	=*/ pDocumentRoot->AddFolder( CSchema::uriDocumentAll );
+//	}
 
-	if ( m_pAlbumRoot->GetFolderByURI( CSchema::uriArchiveRoot ) == NULL )
-	{
-		CAlbumFolder* pArchiveRoot		= m_pAlbumRoot->AddFolder( CSchema::uriArchiveRoot );
-		/*CAlbumFolder* pArchiveAll		=*/ pArchiveRoot->AddFolder( CSchema::uriArchiveAll );
-	}
+	if ( m_pAlbumRoot->GetFolderByURI( CSchema::uriArchiveFolder ) == NULL )
+		m_pAlbumRoot->AddFolder( CSchema::uriArchiveFolder );
 
-	if ( m_pAlbumRoot->GetFolderByURI( CSchema::uriBookRoot ) == NULL )
-	{
-		CAlbumFolder* pBookRoot			= m_pAlbumRoot->AddFolder( CSchema::uriBookRoot );
-		/*CAlbumFolder* pBookAll		=*/ pBookRoot->AddFolder( CSchema::uriBookAll );
-	}
+	if ( m_pAlbumRoot->GetFolderByURI( CSchema::uriApplicationFolder ) == NULL )
+		m_pAlbumRoot->AddFolder( CSchema::uriApplicationFolder );
 
-	if ( m_pAlbumRoot->GetFolderByURI( CSchema::uriImageRoot ) == NULL )
-	{
-		CAlbumFolder* pImageRoot		= m_pAlbumRoot->AddFolder( CSchema::uriImageRoot );
-		/*CAlbumFolder* pImageAll		=*/ pImageRoot->AddFolder( CSchema::uriImageAll );
-	}
+	if ( m_pAlbumRoot->GetFolderByURI( CSchema::uriAudioFolder ) == NULL )
+		m_pAlbumRoot->AddFolder( CSchema::uriAudioFolder );
 
-	if ( m_pAlbumRoot->GetFolderByURI( CSchema::uriMusicRoot ) == NULL )
-	{
-		CAlbumFolder* pMusicRoot		= m_pAlbumRoot->AddFolder( CSchema::uriMusicRoot );
-		/*CAlbumFolder* pMusicAll		=*/ pMusicRoot->AddFolder( CSchema::uriMusicAll );
-		/*CAlbumFolder* pMusicAlbum		=*/ pMusicRoot->AddFolder( CSchema::uriMusicAlbumCollection );
-		/*CAlbumFolder* pMusicArtist	=*/ pMusicRoot->AddFolder( CSchema::uriMusicArtistCollection );
-		/*CAlbumFolder* pMusicGenre		=*/ pMusicRoot->AddFolder( CSchema::uriMusicGenreCollection );
-	}
+	if ( m_pAlbumRoot->GetFolderByURI( CSchema::uriVideoFolder ) == NULL )
+		m_pAlbumRoot->AddFolder( CSchema::uriVideoFolder );
 
-	if ( m_pAlbumRoot->GetFolderByURI( CSchema::uriVideoRoot ) == NULL )
-	{
-		CAlbumFolder* pVideoRoot		= m_pAlbumRoot->AddFolder( CSchema::uriVideoRoot );
-		/*CAlbumFolder* pVideoAll		=*/ pVideoRoot->AddFolder( CSchema::uriVideoAll );
-		/*CAlbumFolder* pVideoSeries	=*/ pVideoRoot->AddFolder( CSchema::uriVideoSeriesCollection );
-		/*CAlbumFolder* pVideoFilm		=*/ pVideoRoot->AddFolder( CSchema::uriVideoFilmCollection );
-		/*CAlbumFolder* pVideoMusic		=*/ pVideoRoot->AddFolder( CSchema::uriVideoMusicCollection );
-	}
+	if ( m_pAlbumRoot->GetFolderByURI( CSchema::uriImageFolder ) == NULL )
+		m_pAlbumRoot->AddFolder( CSchema::uriImageFolder );
 
-	if ( m_pAlbumRoot->GetFolderByURI( CSchema::uriDocumentRoot ) == NULL )
-	{
-		CAlbumFolder* pDocumentRoot		= m_pAlbumRoot->AddFolder( CSchema::uriDocumentRoot );
-		/*CAlbumFolder* pDocumentAll	=*/ pDocumentRoot->AddFolder( CSchema::uriDocumentAll );
-	}
+	if ( m_pAlbumRoot->GetFolderByURI( CSchema::uriDocumentFolder ) == NULL )
+		m_pAlbumRoot->AddFolder( CSchema::uriDocumentFolder );
 
-	if ( m_pAlbumRoot->GetFolderByURI( CSchema::uriUnknownFolder ) == NULL )
-	{
-		/*CAlbumFolder* pUnknownFolder	=*/ m_pAlbumRoot->AddFolder( CSchema::uriUnknownFolder );
-	}
+	if ( m_pAlbumRoot->GetFolderByURI( CSchema::uriUnsortedFolder ) == NULL )
+		m_pAlbumRoot->AddFolder( CSchema::uriUnsortedFolder );
 
-	if ( Settings.BitTorrent.Enabled && m_pAlbumRoot->GetFolderByURI( CSchema::uriBitTorrentFolder ) == NULL )
-	{
-		/*CAlbumFolder* pTorrentFolder	=*/ m_pAlbumRoot->AddFolder( CSchema::uriBitTorrentFolder );
-	}
-
-	if ( m_pAlbumRoot->GetFolderByURI( CSchema::uriFavoritesFolder ) == NULL )
-	{
-		/*CAlbumFolder* pFavorites		=*/ m_pAlbumRoot->AddFolder( CSchema::uriFavoritesFolder );
-	}
+	if ( Settings.BitTorrent.Enabled && m_pAlbumRoot->GetFolderByURI( CSchema::uriBitTorrentFolder ) == NULL )		// Settings.BitTorrent.ShowInterface
+		m_pAlbumRoot->AddFolder( CSchema::uriBitTorrentFolder );
 
 	if ( m_pAlbumRoot->GetFolderByURI( CSchema::uriCollectionsFolder ) == NULL )
-	{
-		/*CAlbumFolder* pCollections	=*/ m_pAlbumRoot->AddFolder( CSchema::uriCollectionsFolder );	// Include .torrent
-	}
+		m_pAlbumRoot->AddFolder( CSchema::uriCollectionsFolder );
 
 	if ( m_pAlbumRoot->GetFolderByURI( CSchema::uriGhostFolder ) == NULL )
-	{
-		/*CAlbumFolder* pGhostFolder	=*/ m_pAlbumRoot->AddFolder( CSchema::uriGhostFolder );
-	}
+		m_pAlbumRoot->AddFolder( CSchema::uriGhostFolder );
+
+	if ( m_pAlbumRoot->GetFolderByURI( CSchema::uriFavoritesFolder ) == NULL )
+		m_pAlbumRoot->AddFolder( CSchema::uriFavoritesFolder );
 
 	if ( m_pAlbumRoot->GetFolderCount() != nCount )
 	{
@@ -642,7 +646,7 @@ CAlbumFolder* CLibraryFolders::CreateAlbumTree()
 		{
 			CLibraryFile* pFile = LibraryMaps.GetNextFile( pos );
 			if ( pFile->IsAvailable() )
-				m_pAlbumRoot->OrganiseFile( pFile );
+				m_pAlbumRoot->OrganizeFile( pFile );
 		}
 	}
 

@@ -1805,10 +1805,10 @@ void CMatchFile::Added(CQueryHit* pHit)
 		}
 
 		if ( m_bRestricted == TRI_UNKNOWN &&
-				( ! pHit->m_pXML->GetAttributeValue( L"PeerTag" ).IsEmpty() ||
+				( ! pHit->m_pXML->GetAttributeValue( L"ShareTag" ).IsEmpty() ||
 				  ! pHit->m_pXML->GetAttributeValue( L"Permissive" ).IsEmpty() ) )
 		{
-			CString strTag = pHit->m_pXML->GetAttributeValue( L"PeerTag" );
+			CString strTag = pHit->m_pXML->GetAttributeValue( L"ShareTag" );
 			if ( strTag.IsEmpty() ) strTag = pHit->m_pXML->GetAttributeValue( L"Permissive" );
 
 			ToLower( strTag );

@@ -5,10 +5,12 @@ SchemaDescriptor URIs (schemas.getenvy.com) are universal names, and cannot easi
 Schema reconciliation is in SchemaMappings.xml and Schema.cpp, etc.
 
 The exact filename from .xsd is used to detect related resources: (.xml/.ico)
-Library icons may be re-specified in xml.  Simply overwrite existing icons to skin, not upgrade-safe.
-".Safe" variant icons are used when original cannot be loaded. (Was Windows2000)
+Library icons may be re-specified in xml. Optional naming variants:
+".Skin.ico" icons allow upgrade-safe custom skinning.
+".Safe.ico" icons are used for WinXP and fallback. (Was Win2K)
+".Alt.ico"  icons are used for any prior styling. (Pre-Win10)
 
-"Database" folder was used for convenience in xml translation. (Outdated)
+"Database" legacy folder was used for convenience in xml translation. (Outdated)
 "typeFilter" extensions in xml are used for download group default filters.
 
 Library Organizer file/folder inclusion itself remains hard-coded.
@@ -18,7 +20,6 @@ Folders translated by Schema language when missing (at first run or deletion).
 
 Note many aspects are mutually dependant in various places,
 any functional change must often be mirrored elsewhere.  (xsd/xml/code)
-
 
 
 

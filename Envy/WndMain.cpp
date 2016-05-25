@@ -2661,8 +2661,8 @@ void CMainWnd::OnToolsCreateTorrent()
 // ToDo: Detect Selected Files for Command Line Message
 //	if ( CLibraryFile* pFile = GetSelectedFile() )
 //		CString strCommandLine = L" -sourcefile \"" + pFile->GetPath() );
-//	ShellExecute( GetSafeHwnd(), L"open", Settings.BitTorrent.TorrentToolPath, strCommandLine, NULL, SW_SHOWNORMAL );
-	ShellExecute( GetSafeHwnd(), L"open", Settings.BitTorrent.TorrentToolPath, NULL, NULL, SW_SHOWNORMAL );
+//	ShellExecute( GetSafeHwnd(), L"open", Settings.BitTorrent.TorrentCreatorPath, strCommandLine, NULL, SW_SHOWNORMAL );
+	ShellExecute( GetSafeHwnd(), L"open", Settings.BitTorrent.TorrentCreatorPath, NULL, NULL, SW_SHOWNORMAL );
 }
 
 void CMainWnd::OnDiskSpace()

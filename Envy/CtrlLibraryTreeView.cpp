@@ -2064,7 +2064,7 @@ void CLibraryTreeView::OnLibraryExportCollection()
 void CLibraryTreeView::OnUpdateLibraryCreateTorrent(CCmdUI* pCmdUI)
 {
 	pCmdUI->Enable( ! m_bVirtual &&
-		! Settings.BitTorrent.TorrentToolPath.IsEmpty() &&
+		! Settings.BitTorrent.TorrentCreatorPath.IsEmpty() &&
 		GetSelectedCount() < 2 );
 }
 
@@ -2094,7 +2094,7 @@ void CLibraryTreeView::OnLibraryCreateTorrent()
 	}
 
 	ShellExecute( GetSafeHwnd(), L"open",
-		Settings.BitTorrent.TorrentToolPath, strCommandLine,
+		Settings.BitTorrent.TorrentCreatorPath, strCommandLine,
 		Settings.Downloads.TorrentPath,
 		SW_SHOWNORMAL );
 }

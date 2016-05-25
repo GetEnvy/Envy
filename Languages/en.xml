@@ -3,7 +3,7 @@
 
 <!-- Envy Default English Skin File -->
 
-<!-- Translation based on default en.xml r4 -->
+<!-- Translation based on default en.xml r6 -->
 <!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -1422,7 +1422,7 @@
 		<item id="ID_LIBRARY_LAUNCH_FOLDER" text="Open _Folder"/>
 		<separator/>
 		<menu text="O_rganize">
-			<item id="ID_LIBRARY_UNLINK" text="Remove _Files"/>
+			<item id="ID_LIBRARY_UNLINK" text="Remove from _Folder"/>
 			<separator/>
 			<item id="ID_LIBRARY_RENAME" text="_Rename File" shortcut="F2"/>
 			<item id="ID_LIBRARY_COPY" text="_Copy Files..." shortcut="Ctrl+C"/>
@@ -3939,7 +3939,7 @@
 		<control caption="_Store Torrents Here:"/>
 		<control/>
 		<control/>
-		<control caption="_Torrent Tool:"/>
+		<control caption="_Torrent Creator:"/>
 		<control/>
 		<control/>
 		<control caption="Default Tracker:"/>

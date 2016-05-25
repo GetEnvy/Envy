@@ -164,7 +164,7 @@ void CBrowseProfileCtrl::UpdateDocumentLeft(CHostBrowser* pBrowser, CGProfile* p
 			theApp.GetCountryName( pBrowser->m_pAddress ) : (LPCTSTR)CString( inet_ntoa( pBrowser->m_pAddress ) );
 		m_pdAddress->SetText( str );
 		m_pdVendor->SetText( (LPCTSTR)pBrowser->m_sServer );
-		str.Format( L"gnutella:browse:%s:%u", str, pBrowser->m_nPort );			// ToDo: Private Key?
+		str.Format( L"gnutella:browse:%s:%u", (LPCTSTR)str, pBrowser->m_nPort );			// ToDo: Append Private Key?
 		m_pdVendor->m_sLink = L"command:copy:" + str;	
 
 		if ( ! m_pdAddress->m_hImage )	// Add Flag Once

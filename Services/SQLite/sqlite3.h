@@ -1,5 +1,5 @@
 /*
-** sqlite3.h  (3.12.0) (Apr.2016)
+** sqlite3.h  (3.12.0) (May.2016)
 **
 ** This file is part of Envy (getenvy.com) © 2016
 ** The original author disclaimed copyright to this source code.
@@ -90,7 +90,7 @@ extern "C" {
 
 #define SQLITE_VERSION        "3.12.0"
 #define SQLITE_VERSION_NUMBER 3012000
-#define SQLITE_SOURCE_ID      "2016-03-29 10:14:15 e9bb4cf40f4971974a74468ef922bdee481c988b"
+#define SQLITE_SOURCE_ID      "2016-04-18 17:30:31 92dc59fd5ad66f646666042eb04195e3a61a9e8e"
 
 /*
 ** Run-Time Library Version Numbers

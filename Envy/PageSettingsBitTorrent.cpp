@@ -92,7 +92,7 @@ BOOL CBitTorrentSettingsPage::OnInitDialog()
 	m_nDownloads		= Settings.BitTorrent.DownloadTorrents;
 	m_sTracker			= Settings.BitTorrent.DefaultTracker;
 	m_sTorrentPath		= Settings.Downloads.TorrentPath;
-	m_sToolPath		= Settings.BitTorrent.TorrentToolPath;
+	m_sToolPath			= Settings.BitTorrent.TorrentCreatorPath;
 
 	m_wndTorrentPath.SetIcon( IDI_BROWSE );
 	m_wndMakerPath.SetIcon( IDI_BROWSE );
@@ -147,7 +147,7 @@ void CBitTorrentSettingsPage::OnTorrentsBrowse()
 
 void CBitTorrentSettingsPage::OnMakerBrowse()
 {
-	CFileDialog dlg( TRUE, L"exe", L"TorrentTool.exe", OFN_HIDEREADONLY|OFN_FILEMUSTEXIST,
+	CFileDialog dlg( TRUE, L"exe", L"TorrentEnvy.exe", OFN_HIDEREADONLY|OFN_FILEMUSTEXIST,
 		L"Executable Files|*.exe|" + LoadString( IDS_FILES_ALL ) + L"|*.*||", this );
 
 	if ( dlg.DoModal() != IDOK ) return;
@@ -187,7 +187,7 @@ void CBitTorrentSettingsPage::OnOK()
 	Settings.BitTorrent.ClearRatio			= m_nClearPercentage;
 	Settings.BitTorrent.DefaultTracker		= m_sTracker;
 	Settings.Downloads.TorrentPath			= m_sTorrentPath;
-	Settings.BitTorrent.TorrentToolPath 	= m_sToolPath;
+	Settings.BitTorrent.TorrentCreatorPath 	= m_sToolPath;
 
 	if ( ! StartsWith( Settings.BitTorrent.DefaultTracker, _P( L"http://" ) ) &&
 		 ! StartsWith( Settings.BitTorrent.DefaultTracker, _P( L"udp://" ) ) )

@@ -61,7 +61,7 @@ public:
 	FILETIME		m_pMetadataTime;		// Metadata time
 	BOOL			m_bMetadataAuto;		// Metadata is auto-generated
 	BOOL			m_bMetadataModified;	// Metadata must be saved
-	//int			m_nPeerTag;				// Permissiveness
+	//int			m_nShareTag;				// Permissiveness
 	int				m_nRating;
 	CString			m_sComments;
 	CString			m_sShareTags;
@@ -98,7 +98,7 @@ public:
 	BOOL			IsSchemaURI(LPCTSTR pszURI) const;
 	BOOL			IsRated() const;		// File rated or commented
 	BOOL			IsRatedOnly() const;	// File rated but has no metadata
-//	BOOL			IsPeerTagged() const;	// Permissiveness  ToDo: PeerTags
+//	BOOL			IsShareTagged() const;	// Permissiveness  ToDo: ShareTags
 	BOOL			IsHashed() const;		// File fully hashed
 	BOOL			IsNewFile() const;
 	BOOL			IsReadable() const;

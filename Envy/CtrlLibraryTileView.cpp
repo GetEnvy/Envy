@@ -324,18 +324,15 @@ BOOL CLibraryTileView::Select(iterator pTile, TRISTATE bSelect)
 BOOL CLibraryTileView::DeselectAll(iterator pTile)
 {
 	CSingleLock oLock( &Library.m_pSection );
-	if ( ! oLock.Lock( 250 ) )
+	if ( ! SafeLock( oLock ) )
 		return FALSE;
 
 	BOOL bChanged = FALSE;
 
 	for ( iterator pItem = begin() ; pItem != end() ; ++pItem )
 	{
-		if ( pItem != pTile )
-		{
-			if ( (*pTile)->m_bSelected )
-				bChanged = Select( pItem, TRI_FALSE );
-		}
+		if ( pItem != pTile && (*pItem)->m_bSelected )
+			bChanged |= Select( pItem, TRI_FALSE );
 	}
 
 	return bChanged;

@@ -1,10 +1,14 @@
 ; Input defines: ConfigurationName (Debug or Release), PlatformName (Win32 or x64)
 
-; Change from "Yes" to "No" on the next line for public releases.
+; Change from "Yes" to "No" or "Preview" on the next line for public releases.
 #define alpha "Yes"
 
-; Change to match signing certificate password, if available
+; Optional: Change to match signing certificate password, if available
 #define signpass "XXXXXX"
+
+; Optional: Visual Studio location and VC version number (for Debug)
+#define VisualStudioPath  "c:\Program Files\Visual Studio 2015"
+#define VisualCVersion    "14"
 
 #if VER < 0x05030500
   #error Inno Setup version 5.3.5 or higher (2009) is needed for this script
@@ -23,20 +27,26 @@
 
 #if ConfigurationName == "Debug"
   #if PlatformName == "x64"
-    #define output_name	internal_name + "_" + version + "_" + date + "_" + ConfigurationName + "_" + PlatformName
+    #define output_name	internal_name + "." + version + "." + date + "." + ConfigurationName + "." + PlatformName
   #else
-    #define output_name	internal_name + "_" + version + "_" + date + "_" + ConfigurationName
+    #define output_name	internal_name + "." + version + "." + date + "." + ConfigurationName
   #endif
 #elif alpha == "Yes"
   #if PlatformName == "x64"
-    #define output_name	internal_name + "_" + version + "_" + date + "_" + PlatformName
+    #define output_name	internal_name + "." + version + "." + date + "." + PlatformName
   #else
-    #define output_name	internal_name + "_" + version + "_" + date
+    #define output_name	internal_name + "." + version + "." + date
+  #endif
+#elif alpha == "Preview"
+  #if PlatformName == "x64"
+    #define output_name	internal_name + "." + version + ".Preview." + PlatformName
+  #else
+    #define output_name	internal_name + "." + version + ".Preview"
   #endif
 #elif PlatformName == "x64"
-  #define output_name	internal_name + "_" + version + "_" + PlatformName
+  #define output_name	internal_name + "." + version + "." + PlatformName
 #else
-  #define output_name	internal_name + "_" + version
+  #define output_name	internal_name + "." + version
 #endif
 
 [Setup]
@@ -45,7 +55,7 @@ AppId={#internal_name}
 AppName={#name}
 AppVersion={#version}
 AppVerName={#internal_name} {#build} {#version}
-AppMutex={#internal_name},Global\TorrentTool
+AppMutex={#internal_name},Global\TorrentEnvy
 DefaultDirName={ini:{param:SETTINGS|},Locations,Path|{reg:HKLM\SOFTWARE\{#internal_name},|{pf}\{#internal_name}}}
 DirExistsWarning=no
 DefaultGroupName={#internal_name}
@@ -122,7 +132,7 @@ Name: "deleteoldsetup"; Description: "{cm:tasks_deleteoldsetup}"; Check: WasInst
 [Files]
 ; Main files
 Source: "Envy\{#ConfigurationName} {#PlatformName}\Envy.exe"; 	DestDir: "{app}"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension
-Source: "TorrentTool\{#ConfigurationName} {#PlatformName}\TorrentTool.exe";	DestDir: "{app}"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension
+Source: "TorrentEnvy\{#ConfigurationName} {#PlatformName}\TorrentEnvy.exe";	DestDir: "{app}"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension
 Source: "SkinInstaller\{#ConfigurationName} {#PlatformName}\SkinInstaller.exe";	DestDir: "{app}"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension
 ;Source: "SkinBuilder\{#ConfigurationName} {#PlatformName}\SkinBuilder.exe"; 	DestDir: "{app}"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension
 
@@ -227,7 +237,16 @@ Source: "Services\BugTrap\dbghelp-x64.dll"; DestDir: "{sys}"; DestName: "dbghelp
 Source: "Services\BugTrap\dbghelp.dll"; DestDir: "{sys}"; DestName: "dbghelp.dll"; Flags: overwritereadonly replacesameversion restartreplace uninsneveruninstall sortfilesbyextension
 #endif
 
+#if PlatformName == "x64"
+Source: "{#VisualStudioPath}\VC\redist\debug_nonredist\x64\Microsoft.VC{#VisualCVersion}0.DebugCRT\vcruntime{#VisualCVersion}0d.dll"; DestDir: "{app}"; Flags: skipifsourcedoesntexist replacesameversion overwritereadonly uninsremovereadonly sortfilesbyextension
+Source: "{pf32}\Windows Kits\10\bin\x64\ucrt\ucrtbased.dll"; DestDir: "{app}"; Flags: skipifsourcedoesntexist replacesameversion overwritereadonly uninsrestartdelete uninsremovereadonly sortfilesbyextension
+#else
+Source: "{#VisualStudioPath}\VC\redist\debug_nonredist\x86\Microsoft.VC{#VisualCVersion}0.DebugCRT\vcruntime{#VisualCVersion}0d.dll"; DestDir: "{app}"; Flags: skipifsourcedoesntexist replacesameversion overwritereadonly uninsremovereadonly sortfilesbyextension
+Source: "{pf32}\Windows Kits\10\bin\x86\ucrt\ucrtbased.dll"; DestDir: "{app}"; Flags: skipifsourcedoesntexist replacesameversion overwritereadonly uninsrestartdelete uninsremovereadonly sortfilesbyextension
 #endif
+
+#endif
+
 
 ; Include Files:
 
@@ -235,7 +254,7 @@ Source: "Services\BugTrap\dbghelp.dll"; DestDir: "{sys}"; DestName: "dbghelp.dll
 Source: "Data\*"; DestDir: "{app}\Data"; Flags: ignoreversion overwritereadonly uninsremovereadonly sortfilesbyextension; Excludes: ".svn,*.bak,*.bak.*,*GPL*,WorldGPS.xml"
 
 ; Schemas
-Source: "Schemas\*"; DestDir: "{app}\Schemas"; Flags: ignoreversion overwritereadonly uninsremovereadonly sortfilesbyextension; Excludes: ".svn,*.bak,*.Safe.ico,ReadMe.txt,SchemaDescriptor.*,PeerTags.*"
+Source: "Schemas\*"; DestDir: "{app}\Schemas"; Flags: ignoreversion overwritereadonly uninsremovereadonly sortfilesbyextension; Excludes: ".svn,*.bak,*.Safe.ico,ReadMe.txt,SchemaDescriptor.*,ShareTags.*"
 #if PlatformName == "Win32"
 Source: "Schemas\*.Safe.ico"; DestDir: "{app}\Schemas"; Flags: ignoreversion overwritereadonly uninsremovereadonly sortfilesbyextension
 #endif
@@ -324,14 +343,14 @@ Source: "Data\DefaultSecurity.dat"; DestDir: "{app}\Data"; DestName: "Security.d
 [Icons]
 ; Envy Start Menu Shortcuts
 Name: "{group}\{#internal_name}"; Filename: "{app}\Envy.exe"; WorkingDir: "{app}"; Comment: "{cm:reg_apptitle}"; AppUserModelID: "Envy"
-Name: "{group}\TorrentTool"; Filename: "{app}\TorrentTool.exe"; WorkingDir: "{app}"; Comment: "Envy Torrent File Creator"
+Name: "{group}\TorrentEnvy"; Filename: "{app}\TorrentEnvy.exe"; WorkingDir: "{app}"; Comment: "Envy Torrent File Creator"
 Name: "{group}\GUI Modes\{#internal_name} ({cm:icons_basicmode})"; Filename: "{app}\Envy.exe"; Parameters: "-basic"; WorkingDir: "{app}"; Comment: "{cm:reg_apptitle}"; AppUserModelID: "Envy"
 Name: "{group}\GUI Modes\{#internal_name} ({cm:icons_tabbedmode})"; Filename: "{app}\Envy.exe"; Parameters: "-tabbed"; WorkingDir: "{app}"; Comment: "{cm:reg_apptitle}"; AppUserModelID: "Envy"
 Name: "{group}\GUI Modes\{#internal_name} ({cm:icons_windowedmode})"; Filename: "{app}\Envy.exe"; Parameters: "-windowed"; WorkingDir: "{app}"; Comment: "{cm:reg_apptitle}"; AppUserModelID: "Envy"
 Name: "{group}\GUI Modes\{#internal_name} ({cm:icons_launchtray})"; Filename: "{app}\Envy.exe"; Parameters: "-tray"; WorkingDir: "{app}"; Comment: "{cm:reg_apptitle}"; AppUserModelID: "Envy"
 ;Name: "{group}\GUI Modes\{#internal_name} ({cm:icons_noskin})"; Filename: "{app}\Envy.exe"; Parameters: "-noskin"; WorkingDir: "{app}"; Comment: "{cm:reg_apptitle}"; AppUserModelID: "Envy"
 Name: "{commondesktop}\{#internal_name}"; Filename: "{app}\Envy.exe"; WorkingDir: "{app}"; Comment: "{cm:reg_apptitle}"; Tasks: desktopicon; Check: not FileExists(ExpandConstant('{commondesktop}\{#internal_name}.lnk')); AppUserModelID: "Envy"
-Name: "{commondesktop}\TorrentTool"; Filename: "{app}\TorrentTool.exe"; WorkingDir: "{app}"; Comment: "Envy Drag'n'Drop Torrent Creator"; Tasks: desktopicontorrents; Check: not FileExists(ExpandConstant('{commondesktop}\TorrentTool.lnk')); AppUserModelID: "TorrentTool"
+Name: "{commondesktop}\TorrentEnvy"; Filename: "{app}\TorrentEnvy.exe"; WorkingDir: "{app}"; Comment: "Envy Drag'n'Drop Torrent Creator"; Tasks: desktopicontorrents; Check: not FileExists(ExpandConstant('{commondesktop}\TorrentEnvy.lnk')); AppUserModelID: "TorrentEnvy"
 Name: "{userappdata}\Microsoft\Internet Explorer\Quick Launch\{#internal_name}"; Filename: "{app}\Envy.exe"; WorkingDir: "{app}"; Comment: "{cm:reg_apptitle}"; Tasks: quicklaunch
 
 #if alpha == "Yes"
@@ -482,12 +501,12 @@ Root: HKLM; Subkey: "Software\Microsoft\Windows\CurrentVersion\Uninstall\Envy_is
 Root: HKCU; Subkey: "Software\Envy\Envy\VersionCheck"; Flags: dontcreatekey deletekey
 Root: HKLM; Subkey: "Software\Envy\Envy\VersionCheck"; Flags: dontcreatekey deletekey
 
-; Create TorrentTool default dir locations
-Root: HKCU; Subkey: "Software\Envy\TorrentTool\Folders"; ValueType: string; ValueName: "001.Path"; ValueData: "{userappdata}\Envy\Torrents"; Flags: createvalueifdoesntexist; Tasks: multiuser
-Root: HKCU; Subkey: "Software\Envy\TorrentTool\Folders"; ValueType: string; ValueName: "Last"; ValueData: "{userappdata}\Envy\Torrents"; Flags: createvalueifdoesntexist; Tasks: multiuser
-Root: HKCU; Subkey: "Software\Envy\TorrentTool\Folders"; ValueType: string; ValueName: "001.Path"; ValueData: "{app}\Torrents"; Flags: createvalueifdoesntexist; Tasks: not multiuser
-Root: HKCU; Subkey: "Software\Envy\TorrentTool\Folders"; ValueType: string; ValueName: "Last"; ValueData: "{app}\Torrents"; Flags: createvalueifdoesntexist; Tasks: not multiuser
-Root: HKCU; Subkey: "Software\Envy\Envy\BitTorrent"; ValueType: string; ValueName: "TorrentToolPath"; ValueData: "TorrentTool.exe" ; Flags: createvalueifdoesntexist uninsdeletekey
+; Create TorrentEnvy default dir locations
+Root: HKCU; Subkey: "Software\Envy\TorrentEnvy\Folders"; ValueType: string; ValueName: "001.Path"; ValueData: "{userappdata}\Envy\Torrents"; Flags: createvalueifdoesntexist; Tasks: multiuser
+Root: HKCU; Subkey: "Software\Envy\TorrentEnvy\Folders"; ValueType: string; ValueName: "Last"; ValueData: "{userappdata}\Envy\Torrents"; Flags: createvalueifdoesntexist; Tasks: multiuser
+Root: HKCU; Subkey: "Software\Envy\TorrentEnvy\Folders"; ValueType: string; ValueName: "001.Path"; ValueData: "{app}\Torrents"; Flags: createvalueifdoesntexist; Tasks: not multiuser
+Root: HKCU; Subkey: "Software\Envy\TorrentEnvy\Folders"; ValueType: string; ValueName: "Last"; ValueData: "{app}\Torrents"; Flags: createvalueifdoesntexist; Tasks: not multiuser
+Root: HKCU; Subkey: "Software\Envy\Envy\BitTorrent"; ValueType: string; ValueName: "TorrentCreatorPath"; ValueData: "TorrentEnvy.exe" ; Flags: createvalueifdoesntexist uninsdeletekey
 
 ; Disable extensions for plugins which make trouble
 ; Since it is image services plugin we need to add extensions required for the first run
@@ -539,8 +558,8 @@ Type: files; Name: "{userappdata}\Envy\Data\DefaultAvatar.png"
 ; Clean up old/unwanted Envy Shortcuts
 Type: files; Name: "{userdesktop}\Envy.lnk"; Tasks: not desktopicon
 Type: files; Name: "{commondesktop}\Envy.lnk"; Tasks: not desktopicon
-Type: files; Name: "{userdesktop}\TorrentTool.lnk"; Tasks: not desktopicontorrents
-Type: files; Name: "{commondesktop}\TorrentTool.lnk"; Tasks: not desktopicontorrents
+Type: files; Name: "{userdesktop}\TorrentEnvy.lnk"; Tasks: not desktopicontorrents
+Type: files; Name: "{commondesktop}\TorrentEnvy.lnk"; Tasks: not desktopicontorrents
 ;Type: files; Name: "{userdesktop}\Start Envy.lnk"; Check: NSISUsed
 ;Type: filesandordirs; Name: "{userprograms}\Envy"; Check: InnoSetupUsed
 ;Type: filesandordirs; Name: "{commonprograms}\Envy"; Check: InnoSetupUsed

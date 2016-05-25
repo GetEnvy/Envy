@@ -130,8 +130,8 @@
 			</attribute>
 			<attribute name="price" type="string"/>
 			<attribute name="link" type="uriReference"/>
-			<attribute name="peertag" type="boolean"/>
-			<attribute name="peerinfo" type="string"/>
+			<attribute name="sharetag" type="boolean"/>
+			<attribute name="sharetaginfo" type="string"/>
 		</all>
 	</complexType>
 

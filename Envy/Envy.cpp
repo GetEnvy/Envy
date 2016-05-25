@@ -479,7 +479,7 @@ BOOL CEnvyApp::InitInstance()
 		if ( ! Flags.Load() )
 			Message( MSG_ERROR, L"Failed to load Flags." );
 	SplashStep( L"Metadata Schemas" );
-		if ( SchemaCache.Load() < 48 &&		// Presumed number of .xsd files in Schemas folder
+		if ( SchemaCache.Load() < 30 &&		// Expected number of .xsd files in Schemas folder
 			 MsgBox( IDS_SCHEMA_LOAD_ERROR, MB_ICONWARNING|MB_OKCANCEL ) != IDOK )
 		{
 			SplashAbort();

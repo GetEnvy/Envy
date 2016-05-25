@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<schemaDescriptor location="http://schemas.getenvy.com/ArchiveFolder.xsd" xmlns="http://schemas.getenvy.com/SchemaDescriptor.xsd">
+
+	<object type="folder" availability="system"/>
+	<viewContent version="1.0" preferredView="CLibraryDetailView"/>
+	<contains>
+		<object type="file" location="http://schemas.getenvy.com/Archive.xsd"/>
+	</contains>
+	<images>
+		<icon path="ArchiveFolder.ico"/>
+	</images>
+	<titles>
+		<title language="en">Archives</title>
+		<title language="af">Archives</title>
+		<title language="ca">Arquivos</title>
+		<title language="cz">Archives</title>
+		<title language="de">Archives</title>
+		<title language="ee">Archives</title>
+		<title language="es">Arquivos</title>
+		<title language="fr">Archives</title>
+		<title language="gr">Συμπίεση</title>
+		<title language="he">Archives</title>
+		<title language="hr">Archives</title>
+		<title language="hu">Archives</title>
+		<title language="it">Archivios</title>
+		<title language="lt">Archyvas</title>
+		<title language="nl">Archiefs</title>
+		<title language="no">Archives</title>
+		<title language="pt">Arquivos</title>
+		<title language="ru">Архив</title>
+		<title language="sl">Archives</title>
+		<title language="sq">Archives</title>
+		<title language="sr">Archives</title>
+		<title language="sv">Arkivs</title>
+		<title language="tr">Arşiv</title>
+		<title language="ja">アーカイブ</title>
+		<title language="ko">고기록</title>
+		<title language="zhs">档案</title>
+		<title language="zht">档案</title>
+	</titles>
+	<headerContent version="1.0">
+		<title language="en">All Archives</title>
+		<title language="af">Alle Archives</title>
+		<title language="ca">Tots els Archives</title>
+		<title language="cz">Všechny Archives</title>
+		<title language="de">Alle Archives</title>
+		<title language="ee">Kõik Archives</title>
+		<title language="es">Todos Los Archivos</title>
+		<title language="fr">Tous les Archives</title>
+		<title language="gr">Όλα τα Συμπίεση</title>
+		<title language="he">כל המסמכים</title>
+		<title language="hr">Svi Archives</title>
+		<title language="hu">Minden Archives</title>
+		<title language="it">Tutti i Archives</title>
+		<title language="lt">Visi Archives</title>
+		<title language="nl">Alle Archives</title>
+		<title language="no">Alle Archives</title>
+		<title language="pt">Todos os Archives</title>
+		<title language="ru">Все Архив</title>
+		<title language="sl">Vsi Archives</title>
+		<title language="sq">Gjithë Archives</title>
+		<title language="sr">Svi Archives</title>
+		<title language="sv">Alla Archives</title>
+		<title language="tr">Tüm Arşiv</title>
+		<title language="ja">文章</title>
+		<title language="ko">고기록</title>
+		<title language="zhs">所有文档</title>
+		<title language="zht">所有文件</title>
+		<subtitle language="en">This folder contains every archive file in your library.</subtitle>
+		<subtitle language="af">Hierdie gids bevat alle dokumente in jou biblioteek.</subtitle>
+		<subtitle language="ca">Aquesta carpeta conté tots els documents de la teva col·lecció.</subtitle>
+		<subtitle language="cz">Tato složka obsahuje všechny dokumenty v knihovně.</subtitle>
+		<subtitle language="de">Dieser Ordner enthält alle Dokumente ihrer Bibliothek.</subtitle>
+		<subtitle language="ee">See kaust sisaldab sinu raamatukogus olevaid dokumente.</subtitle>
+		<subtitle language="es">Esta carpeta contine todos los documentos en tu librería.</subtitle>
+		<subtitle language="fr">Ce dossier contient tout document dans votre bibliothèque.</subtitle>
+		<subtitle language="gr">Αυτός ο φάκελος περιέχει όλα τα έγγραφα.</subtitle>
+		<subtitle language="he">ספרייה זו מכילה את כל המסמכים שבספרייה שלך</subtitle>
+		<subtitle language="hr">Ova mapa sadrži sve vaše dokumente u kolekciji.</subtitle>
+		<subtitle language="hu">Ez a mappa az összes dokumentumot tartalmazza.</subtitle>
+		<subtitle language="it">Questa cartella contiene tutti i documenti della tua libreria.</subtitle>
+		<subtitle language="lt">Šiame kataloge yra visi Jūsų kolekcijos dokumentai.</subtitle>
+		<subtitle language="nl">Deze map bevat elk document uit je bibliotheek.</subtitle>
+		<subtitle language="no">Denne mappen inneholder alle dokumentene i biblioteket ditt.</subtitle>
+		<subtitle language="pt">Esta pasta contém todos os documentos da sua biblioteca.</subtitle>
+		<subtitle language="ru">Эта папка отображает каждый документ в Вашем хранилище.</subtitle>
+		<subtitle language="sl">Ta mapa vsebuje vse dokumente v vaši knjižnici.</subtitle>
+		<subtitle language="sq">Kjo dosje përmban dokumentet në librarinë tuaj.</subtitle>
+		<subtitle language="sr">Ova fascikla sadrži sve vaše dokumente u kolekciji.</subtitle>
+		<subtitle language="sv">Denna mapp innehåller alla dokument i biblioteket.</subtitle>
+		<subtitle language="tr">Bu klasör arşivinizdeki her dokümanı içerir.</subtitle>
+		<subtitle language="ja">このフォルダーにはライブラリー内ーにある全ての文章が収録されています</subtitle>
+		<subtitle language="zhs">此文件夹包含您收藏中的所有文档。</subtitle>
+		<subtitle language="zht">這個資料夾包含您收藏中所有的文件</subtitle>
+	</headerContent>
+	<members>
+		<member name="title" search="none">
+			<display defaultColumn="true"/>
+			<title language="en">Title</title>
+			<title language="af">Titel</title>
+			<title language="ca">Títol</title>
+			<title language="cz">Název</title>
+			<title language="de">Titel</title>
+			<title language="ee">Pealkiri</title>
+			<title language="es">Título</title>
+			<title language="fr">Titre</title>
+			<title language="gr">Τίτλος</title>
+			<title language="he">כותרת</title>
+			<title language="hr">Naslov</title>
+			<title language="hu">Cím</title>
+			<title language="it">Titolo</title>
+			<title language="lt">Pavadinimas</title>
+			<title language="nl">Titel</title>
+			<title language="no">Tittel</title>
+			<title language="pl">Tytuł</title>
+			<title language="pt">Título</title>
+			<title language="ru">Название</title>
+			<title language="sl">Naslov</title>
+			<title language="sq">Titulli</title>
+			<title language="sr">Naslov</title>
+			<title language="sv">Titel</title>
+			<title language="tr">Başlık</title>
+			<title language="ja">タイトル</title>
+			<title language="ko">제목</title>
+			<title language="zhs">标题</title>
+			<title language="zht">標題</title>
+		</member>
+	</members>
+
+</schemaDescriptor>

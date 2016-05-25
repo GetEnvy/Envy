@@ -598,22 +598,22 @@
 			<title language="zhs">链接</title>
 			<title language="zht">連結</title>
 		</member>
-		<member name="peertag">
+		<member name="sharetag">
 			<display prompt="true"/>
-			<title language="en">PeerTag</title>
+			<title language="en">ShareTag</title>
 		</member>
-		<member name="peerinfo">
-			<title language="en">PeerTag Info</title>
-			<title language="fr">PeerTag Infos</title>
-			<title language="he">PeerTag מידע</title>
-			<title language="ru">PeerTag Инфо</title>
-			<title language="sl">PeerTag Podatki</title>
-			<title language="sr">PeerTag Инфо</title>
-			<title language="tr">PeerTag Bilgi</title>
-			<title language="ko">PeerTag 정보</title>
-			<title language="ja">PeerTag インフォ</title>
-			<title language="zhs">PeerTag 信息</title>
-			<title language="zht">PeerTag 信息</title>
+		<member name="sharetaginfo">
+			<title language="en">ShareTag Info</title>
+			<title language="fr">ShareTag Infos</title>
+			<title language="he">ShareTag מידע</title>
+			<title language="ru">ShareTag Инфо</title>
+			<title language="sl">ShareTag Podatki</title>
+			<title language="sr">ShareTag Инфо</title>
+			<title language="tr">ShareTag Bilgi</title>
+			<title language="ko">ShareTag 정보</title>
+			<title language="ja">ShareTag インフォ</title>
+			<title language="zhs">ShareTag 信息</title>
+			<title language="zht">ShareTag 信息</title>
 		</member>
 	</members>
 	<typeFilter>

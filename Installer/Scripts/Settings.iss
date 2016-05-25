@@ -114,10 +114,10 @@ Root: HKCU; Subkey: "Software\Envy\Envy\Toolbars\CoolBar-Bar10"; ValueType: dwor
 
 ; Set Defaults
 Root: HKCU; Subkey: "Software\Envy\Envy\BitTorrent"; ValueType: string; ValueName: "DefaultTracker"; ValueData: "udp://tracker.openbittorrent.com:80/announce"; Flags: createvalueifdoesntexist uninsdeletekey
-Root: HKCU; Subkey: "Software\Envy\TorrentTool\Trackers"; ValueType: string; ValueName: "001.URL"; ValueData: "udp://tracker.openbittorrent.com:80/announce"; Flags: createvalueifdoesntexist uninsdeletekey
-Root: HKCU; Subkey: "Software\Envy\TorrentTool\Trackers"; ValueType: string; ValueName: "002.URL"; ValueData: "udp://open.stealth.si:80/announce"; Flags: createvalueifdoesntexist uninsdeletekey
-;Root: HKCU; Subkey: "Software\Envy\TorrentTool\Trackers"; ValueType: string; ValueName: "003.URL"; ValueData: "http://tracker.publicbt.com:80/announce"; Flags: createvalueifdoesntexist uninsdeletekey
-Root: HKCU; Subkey: "Software\Envy\TorrentTool\Trackers"; ValueType: dword; ValueName: "Count"; ValueData: 2; Flags: createvalueifdoesntexist uninsdeletekey
+Root: HKCU; Subkey: "Software\Envy\TorrentEnvy\Trackers"; ValueType: string; ValueName: "001.URL"; ValueData: "udp://tracker.openbittorrent.com:80/announce"; Flags: createvalueifdoesntexist uninsdeletekey
+Root: HKCU; Subkey: "Software\Envy\TorrentEnvy\Trackers"; ValueType: string; ValueName: "002.URL"; ValueData: "udp://open.stealth.si:80/announce"; Flags: createvalueifdoesntexist uninsdeletekey
+;Root: HKCU; Subkey: "Software\Envy\TorrentEnvy\Trackers"; ValueType: string; ValueName: "003.URL"; ValueData: "http://tracker.publicbt.com:80/announce"; Flags: createvalueifdoesntexist uninsdeletekey
+Root: HKCU; Subkey: "Software\Envy\TorrentEnvy\Trackers"; ValueType: dword; ValueName: "Count"; ValueData: 2; Flags: createvalueifdoesntexist uninsdeletekey
 
 ; Disable extensions for plugins that have trouble (?)
 ; For image services plugin we need to add extensions required for the first run

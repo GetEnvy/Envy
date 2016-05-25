@@ -184,7 +184,7 @@
       <Project>{dfab04e0-9275-42fb-bcbb-2f153eb7d253}</Project>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
-    <ProjectReference Include="..\TorrentTool\TorrentTool.vcxproj">
+    <ProjectReference Include="..\TorrentEnvy\TorrentEnvy.vcxproj">
       <Project>{f02ede36-e2ac-40e8-b6dc-76b1d53f9a5a}</Project>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>

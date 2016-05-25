@@ -1497,7 +1497,7 @@ msgid "O_rganize"
 msgstr "网页服务(_W)"
 
 #: clibraryfileview.physical;50;item;id_library_unlink clibraryfileview.virtual.basic;54;item;id_library_unlink clibraryfileview.virtual;56;item;id_library_unlink
-msgid "Remove _Files"
+msgid "Remove from _Folder"
 msgstr "移除文件(_F)"
 
 #: clibraryfileview.physical;52;item;id_library_bitprints_download clibraryfileview.virtual;58;item;id_library_bitprints_download
@@ -7853,7 +7853,7 @@ msgid "_Store Torrents Here:"
 msgstr "在这里保存 Torrent:"
 
 #: cbittorrentsettingspage;control;18
-msgid "_Torrent Tool:"
+msgid "_Torrent Creator:"
 msgstr "_Torrent 制作工具:"
 
 #: cbittorrentsettingspage;control;21

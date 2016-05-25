@@ -88,7 +88,7 @@ CLibraryFile::CLibraryFile(CLibraryFolder* pFolder, LPCTSTR pszName)
 	, m_bCachedPreview	( FALSE )
 	, m_bBogus			( FALSE )
 	, m_nRating			( 0 )
-//	, m_nPeerTag		( 0 )	// ToDo: Implement PeerTag Ratings
+//	, m_bShareTag		( TRI_UNKNOWN )		// ToDo: Implement ShareTag
 	, m_nHitsToday		( 0ul )
 	, m_nHitsTotal		( 0ul )
 	, m_nUploadsToday	( 0ul )
@@ -385,10 +385,10 @@ BOOL CLibraryFile::IsRatedOnly() const
 	return IsRated() && ( m_pSchema == NULL || m_pMetadata == NULL );
 }
 
-// ToDo: Implement PeerTags (Permissiveness)
-//BOOL CLibraryFile::IsPeerTagged() const
+// ToDo: Implement ShareTags (Permissiveness)
+//BOOL CLibraryFile::IsShareTagged() const
 //{
-//	return ( m_nPeerTag );
+//	return ( m_bShareTag != TRI_UNKNOWN );
 //}
 
 BOOL CLibraryFile::IsHashed() const
@@ -861,18 +861,18 @@ void CLibraryFile::Serialize(CArchive& ar, int nVersion)
 		ar << m_nRating;
 		ar << m_sComments;
 		ar << m_sShareTags;
-		//ar << m_nPeerTag;
+		//ar << m_bShareTag;
 
 		//if ( nVersion > 1000 )
 		//{
-		//	// PeerTags Support above Envy r44?
-		//	ar << m_nPeerTag;
+		//	// ShareTags Support?
+		//	ar << m_nShareTag;
 		//}
 		//else
 		//{
-		//	DWORD nPeerTag;
-		//	ar >> nPeerTag;
-		//	m_nPeerTag = nPeerTag;
+		//	DWORD nShareTag;
+		//	ar >> nShareTag;
+		//	m_nShareTag = nShareTag;
 		//}
 
 		ar << m_bMetadataAuto;
@@ -965,7 +965,7 @@ void CLibraryFile::Serialize(CArchive& ar, int nVersion)
 		ar >> m_nRating;
 		ar >> m_sComments;
 		ar >> m_sShareTags;
-		//ar >> m_nPeerTag;
+		//ar >> m_bShareTag;
 
 		//if ( nVersion >= 27 )
 		//{

@@ -37,25 +37,21 @@ BEGIN_MESSAGE_MAP(CSplashDlg, CDialog)
 	ON_WM_QUERYENDSESSION()
 END_MESSAGE_MAP()
 
-//#ifndef WS_EX_LAYERED		// Win9x
-//#define WS_EX_LAYERED		0x80000
-//#define LWA_COLORKEY		0x01
-//#define LWA_ALPHA 		0x02
+
+//#ifndef AW_HIDE
+//#define AW_HIDE			0x00010000
+//#define AW_BLEND			0x00080000
 //#endif
-#ifndef AW_HIDE
-#define AW_HIDE				0x00010000
-#define AW_BLEND			0x00080000
-#endif
 
-#define SPLASH_WIDTH		520
-#define SPLASH_HEIGHT		220
+#define SPLASH_WIDTH		500
+#define SPLASH_HEIGHT		200
 
-#define COLOR_DEFAULT		RGB( 210, 194, 174 )
-#define COLOR_TEXT			RGB( 242, 238, 232 )
+#define COLOR_DEFAULT		RGB( 220, 202, 180 )
+#define COLOR_TEXT			RGB( 252, 248, 242 )
 #define COLOR_TEXT_SHADOW	RGB( 190, 172, 152 )
-#define COLOR_TEXT_FADE		RGB( 202, 185, 165 )
-#define COLOR_BAR_FILL		RGB( 201, 184, 164 )
-#define COLOR_BAR_PROGRESS	RGB( 236, 230, 220 )
+#define COLOR_TEXT_FADE		RGB( 208, 190, 170 )
+#define COLOR_BAR_FILL		RGB( 208, 190, 170 )
+#define COLOR_BAR_PROGRESS	RGB( 250, 246, 240 )
 //#define COLOR_BAR_UPPEREDGE	RGB( 236, 230, 220 )
 //#define COLOR_BAR_LOWEREDGE	RGB( 236, 230, 220 )
 
@@ -231,10 +227,10 @@ void CSplashDlg::DoPaint(CDC* pDC)
 	CFont* pOldFont = (CFont*)dcMemory.SelectObject( &theApp.m_gdiFontBold );
 	dcMemory.SetBkMode( TRANSPARENT );
 
-	CRect rc( 8, m_nHeight - 18, m_nWidth - 98, m_nHeight - 2 );		// Text Position
-	UINT nFormat = DT_LEFT|DT_SINGLELINE|DT_VCENTER|DT_NOPREFIX;
+	CRect rc( 8, m_nHeight - 18, m_nWidth - 98, m_nHeight - 2 );				// Text Position
+	const UINT nFormat = DT_LEFT|DT_VCENTER|DT_SINGLELINE|DT_NOPREFIX;
 
-	dcMemory.SetTextColor( COLOR_TEXT_FADE );							// Text Outline/Fade
+	dcMemory.SetTextColor( COLOR_TEXT_FADE );									// Text Outline/Fade
 	rc.left--;
 	rc.top += 2;
 	dcMemory.DrawText( m_sState, &rc, nFormat );
@@ -247,28 +243,26 @@ void CSplashDlg::DoPaint(CDC* pDC)
 	dcMemory.DrawText( m_sState, &rc, nFormat );
 	rc.left--;
 	rc.top--;
-	dcMemory.SetTextColor( COLOR_TEXT_SHADOW );							// Text Outline/Shadow
+	dcMemory.SetTextColor( COLOR_TEXT_SHADOW );									// Text Shadow
 	dcMemory.DrawText( m_sState, &rc, nFormat );
 	rc.left--;
 	rc.top -= 2;
 
-	dcMemory.SetTextColor( COLOR_TEXT );								// Text Color
+	dcMemory.SetTextColor( COLOR_TEXT );										// Text Color
 	dcMemory.DrawText( m_sState, &rc, nFormat );
 
 	dcMemory.SelectObject( pOldFont );
 
 	rc.SetRect( m_nWidth - 90, m_nHeight - 14, m_nWidth - 8, m_nHeight - 5 );	// Progress Bar Position ( 440, 222, 522, 231 )
-//	dcMemory.Draw3dRect( &rc, COLOR_BAR_UPPEREDGE, COLOR_BAR_LOWEREDGE );
-	rc.DeflateRect( 1, 1 );												// Progress Bar Outline
-	dcMemory.FillSolidRect( &rc, COLOR_BAR_FILL ); 						// Progress Bar Background
+//	dcMemory.Draw3dRect( &rc, COLOR_BAR_UPPEREDGE, COLOR_BAR_LOWEREDGE );		// Progress Bar Outline
+	rc.DeflateRect( 1, 1 );
+	dcMemory.FillSolidRect( &rc, COLOR_BAR_FILL ); 								// Progress Bar Background
 
-	int nOffset;
+	int nOffset = 0;
 	if ( Settings.General.LanguageRTL )
 		nOffset = m_nMax - min( m_nPos, m_nMax );
-	else
-		nOffset = 0;
 
-	CFragmentBar::DrawFragment( &dcMemory, &rc, m_nMax, nOffset, min( m_nPos, m_nMax ), COLOR_BAR_PROGRESS, TRUE );		// Progress Bar Color
+	CFragmentBar::DrawFragment( &dcMemory, &rc, m_nMax, nOffset, min( m_nPos, m_nMax ), COLOR_BAR_PROGRESS, FALSE );		// Progress Bar Color (No 3d edge)
 	dcMemory.SelectClipRgn( NULL );
 
 	pDC->BitBlt( 0, 0, m_nWidth, m_nHeight, &dcMemory, 0, 0, SRCCOPY );

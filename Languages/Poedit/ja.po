@@ -1497,7 +1497,7 @@ msgid "O_rganize"
 msgstr "ウェブサービス(_W)"
 
 #: clibraryfileview.physical;50;item;id_library_unlink clibraryfileview.virtual.basic;54;item;id_library_unlink clibraryfileview.virtual;56;item;id_library_unlink
-msgid "Remove _Files"
+msgid "Remove from _Folder"
 msgstr "ファイルを削除(_F)"
 
 #: clibraryfileview.physical;52;item;id_library_bitprints_download clibraryfileview.virtual;58;item;id_library_bitprints_download
@@ -7853,8 +7853,8 @@ msgid "_Store Torrents Here:"
 msgstr "Torrentの保存先:"
 
 #: cbittorrentsettingspage;control;18
-msgid "_Torrent Tool:"
-msgstr "Torrent Tool:"
+msgid "_Torrent Creator:"
+msgstr "Torrent Creator:"
 
 #: cbittorrentsettingspage;control;21
 msgid "Default Tracker:"
