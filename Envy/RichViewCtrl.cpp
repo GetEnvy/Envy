@@ -211,7 +211,8 @@ void CRichViewCtrl::OnPaint()
 		return;
 	}
 
-	CSingleLock pLock( &m_pDocument->m_pSection, TRUE );
+	CSingleLock pLock( &m_pDocument->m_pSection );
+	if ( ! SafeLock( pLock ) ) return;
 
 	CFont* pOldFont = (CFont*)dc.SelectObject( &CoolInterface.m_fntNormal );
 
@@ -257,13 +258,18 @@ BOOL CRichViewCtrl::OnSetCursor(CWnd* pWnd, UINT nHitTest, UINT message)
 {
 	if ( nHitTest == HTCLIENT && m_pDocument != NULL )
 	{
-		CSingleLock pLock( &m_pDocument->m_pSection, TRUE );
+		CRichFragment* pFrag = NULL;
 
-		CPoint pt;
-		GetCursorPos( &pt );
-		ScreenToClient( &pt );
+		CSingleLock pLock( &m_pDocument->m_pSection );
+		if ( ! SafeLock( pLock ) ) return FALSE;
 
-		CRichFragment* pFrag = m_bSelecting ? NULL : PointToFrag( pt );
+		if ( ! m_bSelecting )
+		{
+			CPoint pt;
+			GetCursorPos( &pt );
+			ScreenToClient( &pt );
+			pFrag = PointToFrag( pt );
+		}
 
 		RVN_ELEMENTEVENT pNotify = {};
 		pNotify.hdr.hwndFrom	= GetSafeHwnd();
@@ -272,7 +278,6 @@ BOOL CRichViewCtrl::OnSetCursor(CWnd* pWnd, UINT nHitTest, UINT message)
 		pNotify.pElement		= pFrag == NULL ? NULL : pFrag->m_pElement;
 
 		LRESULT result = GetOwner()->SendMessage( WM_NOTIFY, pNotify.hdr.idFrom, (LPARAM)&pNotify );
-
 		HCURSOR hCursor = (HCURSOR)result;
 		if ( hCursor != NULL )
 		{

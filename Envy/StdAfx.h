@@ -244,10 +244,6 @@
 //#include <deque>
 //#include <stack>
 
-#if defined(_MSC_VER) && (_MSC_VER < 1600)		// VS2008, needed for MinMax.hpp?
-#include <limits>
-#endif
-
 using namespace std::tr1::placeholders;			// For std::bind _1, std::placeholders:: but tr1 for VS2008
 
 //
@@ -269,13 +265,12 @@ using namespace std::tr1::placeholders;			// For std::bind _1, std::placeholders
 //#include <array>								// In HashDescriptors.hpp
 //#include <memory>
 //#include <regex>								// In RegExp.cpp
-//#include <type_traits>						// In MinMax.hpp
+//#include <type_traits>
 //#include <unordered_map>
 
 //
-// Boost
+// Boost: Removed
 //
-// Removed, except MPL in MinMax.hpp
 
 // Handle static_assert(false,"text") prior to VS2010
 #if defined(_MSC_VER) && (_MSC_VER < 1600)
@@ -296,7 +291,7 @@ using namespace std::tr1::placeholders;			// For std::bind _1, std::placeholders
 #define BZ_NO_STDIO
 #include <Bzlib/Bzlib.h>
 
-#include "MinMax.hpp"
+// Note "MinMax.hpp" Removed
 
 #if defined(_MSC_VER) && (_MSC_VER < 1600) && (_MSC_VER >= 1500)		// Work-around for VC9 (VS2008) where
 	#pragma warning ( pop )				// a (pop) is ifdef'd out in stdio.h

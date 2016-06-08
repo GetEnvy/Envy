@@ -76,7 +76,7 @@ BOOL CHostCache::Load()
 {
 	const CString strFile = Settings.General.DataPath + L"HostCache.dat";
 
-	BOOL bSuccess = FALSE;
+	BOOL bResult = FALSE;
 
 	CFile pFile;
 	if ( pFile.Open( strFile, CFile::modeRead | CFile::shareDenyWrite | CFile::osSequentialScan ) )
@@ -97,7 +97,7 @@ BOOL CHostCache::Load()
 
 				pFile.Close();
 
-				bSuccess = TRUE;	// Success
+				bResult = TRUE;	// Success
 			}
 			catch ( CException* pException )
 			{
@@ -116,15 +116,14 @@ BOOL CHostCache::Load()
 	if ( Gnutella2.IsEmpty() )	CheckMinimumServers( PROTOCOL_G2 );
 	if ( Gnutella1.IsEmpty() )	CheckMinimumServers( PROTOCOL_G1 );
 	if ( eDonkey.IsEmpty() )	CheckMinimumServers( PROTOCOL_ED2K );
-	if ( DC.IsEmpty() )			CheckMinimumServers( PROTOCOL_DC );
 	if ( BitTorrent.IsEmpty() )	CheckMinimumServers( PROTOCOL_BT );
 	if ( Kademlia.IsEmpty() )	CheckMinimumServers( PROTOCOL_KAD );
+	if ( DC.IsEmpty() )			CheckMinimumServers( PROTOCOL_DC );
 
-	if ( bSuccess )
-		return TRUE;
+	if ( ! bResult )
+		theApp.Message( MSG_ERROR, L"Failed to load host cache: %s", strFile );
 
-	theApp.Message( MSG_ERROR, L"Failed to load host cache: %s", strFile );
-	return FALSE;
+	return bResult;
 }
 
 BOOL CHostCache::Save()
@@ -912,7 +911,7 @@ int CHostCache::ImportHubList(CFile* pFile)
 			else if ( _tcsnicmp( strAddress, L"adcs://", 7 ) == 0 )
 				continue;	// Skip ADCS-hubs
 
-			const int nUsers		= _tstoi( pHub->GetAttributeValue( L"Users" ) );
+			const int nUsers	= _tstoi( pHub->GetAttributeValue( L"Users" ) );
 			const int nMaxusers	= _tstoi( pHub->GetAttributeValue( L"Maxusers" ) );
 
 			CQuickLock oLock( DC.m_pSection );
@@ -1067,18 +1066,18 @@ bool CHostCache::CheckMinimumServers(PROTOCOLID nProtocol)
 	// Get the server list from local eMule/mods if possible
 	if ( nProtocol == PROTOCOL_ED2K )
 	{
-		const LPCTSTR sServerMetPaths[ 4 ] =
+		const static LPCTSTR sServerMetPaths[ 4 ] =
 		{
 			{ L"\\eMule\\config\\server.met" },
 			{ L"\\eMule\\server.met" },
-		//	{ L"\\Neo Mule\\config\\server.met" },
-		//	{ L"\\Neo Mule\\server.met" },
-		//	{ L"\\hebMule\\config\\server.met" },
-		//	{ L"\\hebMule\\server.met" },
-		//	{ L"\\iMule\\config\\server.met" },
-		//	{ L"\\iMule\\server.met" },
 			{ L"\\aMule\\config\\server.met" },
 			{ L"\\aMule\\server.met" }
+		//	{ L"\\iMule\\config\\server.met" },
+		//	{ L"\\iMule\\server.met" },
+		//	{ L"\\hebMule\\config\\server.met" },
+		//	{ L"\\hebMule\\server.met" },
+		//	{ L"\\Neo Mule\\config\\server.met" },
+		//	{ L"\\Neo Mule\\server.met" }
 		};
 
 		CString strRootPaths[ 4 ] =

@@ -126,7 +126,7 @@
  <color name="Meta.Rating5"				value="000000"/>
  <color name="Richdoc.Back"				value="FFFFFF"/>
  <color name="Richdoc.Text"				value="4A4840"/>
- <color name="Richdoc.Heading"				value="9C8052"/>
+ <color name="Richdoc.Heading"				value="B8A080"/>
 
  <color name="System.Base.Chat.In"			value="0660CC"/>
  <color name="System.Base.Chat.Out"			value="EA4A60"/>
@@ -222,7 +222,7 @@
  <image target="CLibraryHeaderPanel"			path="Skin10\BrowseBanner.png"/>
  <image target="CBrowseHeaderCtrl.Toolbar"		path="Skin10\BrowseBanner.png"/>
  <!--image target="CPanelWnd.Caption"			path="Skin10\Footer.png"-->
- <image target="CTaskBox.Caption"			path="Skin10\SidebarCaption.png"/>
+ <!--image target="CTaskBox.Caption"			path="Skin10\SidebarCaption.png"-->
  <!--image target="CIRCUsersBox.Caption"		path="Skin10\SidebarCaption.png"-->
  <!--image target="CIRCChannelsBox.Caption"		path="Skin10\SidebarCaption.png"-->
  <!--image target="CHomeConnectionBox.Caption"		path="Skin10\SidebarCaption.png"-->

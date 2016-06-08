@@ -1277,7 +1277,6 @@
     <ClInclude Include="MatchObjects.h" />
     <ClInclude Include="MetaList.h" />
     <ClInclude Include="MiniUPnP.h" />
-    <ClInclude Include="MinMax.hpp" />
     <ClInclude Include="Neighbour.h" />
     <ClInclude Include="Neighbours.h" />
     <ClInclude Include="NeighboursBase.h" />

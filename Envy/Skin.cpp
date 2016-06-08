@@ -1308,7 +1308,7 @@ HBITMAP CSkin::GetWatermark(LPCTSTR pszName)
 		if ( HBITMAP hBitmap = LoadBitmap( strPath ) )
 			return hBitmap;
 
-		theApp.Message( MSG_ERROR, IDS_SKIN_ERROR, L"Failed to load watermark", CString( pszName ) + L". File: " + strPath );
+		theApp.Message( MSG_ERROR, IDS_SKIN_ERROR, L"Failed to load watermark", (LPCTSTR)( CString( pszName ) + L". File: " + strPath ) );
 	}
 	return NULL;
 }

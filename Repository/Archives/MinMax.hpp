@@ -27,6 +27,10 @@
 //#if defined(_MSC_VER) && (_MSC_FULL_VER > 150030000)	// VS2008 SP1 for tr1, VS2012 for std
 #include <type_traits>
 
+#if defined(_MSC_VER) && (_MSC_VER < 1600)		// VS2008?
+#include <limits>
+#endif
+
 #define BOOST_MPL_CFG_NO_FULL_LAMBDA_SUPPORT	// Require fewer include files
 //#define BOOST_NO_MEMBER_TEMPLATES				// Require fewer include files (unused)
 
@@ -140,12 +144,10 @@ namespace min_max_detail
 				? 1
 				:
 			std::tr1::is_integral< T_ >::value && std::tr1::is_integral< U_ >::value
-				? std::tr1::is_same< T_, char >::value
-											|| std::tr1::is_same< U_, char >::value
+				? std::tr1::is_same< T_, char >::value || std::tr1::is_same< U_, char >::value
 					? 4
 					:
-				std::numeric_limits< T_ >::is_signed
-										== std::numeric_limits< U_ >::is_signed
+				std::numeric_limits< T_ >::is_signed == std::numeric_limits< U_ >::is_signed
 					? conditionalIsT
 						? std::numeric_limits< T_ >::is_signed || !opt
 							? 1
@@ -159,8 +161,7 @@ namespace min_max_detail
 					: 4
 				:
 			std::tr1::is_floating_point< T_ >::value && std::tr1::is_floating_point< U_ >::value
-					|| std::tr1::is_pointer< T_ >::value
-							&& std::tr1::is_pointer< U_ >::value
+					|| std::tr1::is_pointer< T_ >::value && std::tr1::is_pointer< U_ >::value
 				? conditionalIsT
 					? 1
 					:

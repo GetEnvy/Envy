@@ -41,12 +41,12 @@
 //		ULONG_PTR gdiplusToken;
 //		Gdiplus::GdiplusStartupInput gdiplusStartupInput;
 //		Gdiplus::Status gdiPlusStatus = GdiplusStartup(&gdiplusToken, &gdiplusStartupInput, NULL);
-//
 //		GdiplusShutdown(gdiplusToken);
 //
 //	In project configuration properties, add the following to Linker/Input:
 //		Delay Loaded DLL:			dwmapi.dll UxTheme.dll
 //
+//  See https://web.archive.org/web/20150219082849/http://www.codeproject.com/Articles/35143/Ribbon-style-Two-level-Tab-Bar-for-Dialog-Boxes-in
 
 
 #pragma once
@@ -70,8 +70,8 @@
 // CUSTOM SETTINGS:
 
 // Colors (RGB) Theme
-#define TABBACKGROUNDCOLOR			GetSysColor( COLOR_3DFACE )	// Visible on XP or when Aero is off
-#define TAB_OUTLINE					72,68,62
+#define TABBACKGROUNDCOLOR			GetSysColor( COLOR_3DFACE )		// Non-Aero Windowframes
+#define TAB_OUTLINE					92,88,82
 #define TAB_FILL_GRADIENTSTART		255,254,252
 #define TAB_FILL_GRADIENTMID		212,206,200
 #define TAB_FILL_GRADIENTEND		244,238,234
@@ -80,7 +80,7 @@
 #define SUBTAB_FILL_BOTTOMHALF		238,232,226
 
 // Margins and padding
-#define TABINSET					16
+#define TABINSET					14
 #define TABPADDINGWIDTH				18
 #define TABPADDINGHEIGHT			5
 #define PADDINGBETWEENTABS			2
@@ -91,8 +91,10 @@
 #define RIBBONBARPADDING			1
 #define RIBBONBARGAP				2
 
+#define TABRADIUS					6
+
 // Animation duration
-#define TABCHANGEANIMATIONDURATION	200
+#define TABCHANGEANIMATIONDURATION	120
 
 
 // Tab states (RD: Ribbon Dialog, TST: Tab State)
@@ -555,11 +557,9 @@ public:
 
 			if (ba.IsNull() == false)
 			{
+				// Do this, so Windows will automagically use the previous image to animate from.
 				if (hdcFrom)
-				{
-					// Do this, so Windows will automagically use the previous image to animate from.
 					::DeleteDC(hdcFrom);
-				}
 
 				if (hdcTo)
 					dcOut.m_hDC = hdcTo;
@@ -709,8 +709,8 @@ private:
 			GetAcceleratorTable(true);
 		}
 
-		m_AnimationParams.dwDuration = dwAnimationDuration;	// Put this here for dwDuration=0 on first NCPAINT.
-															// Otherwise, get a fade-in from an (ugly) white box.
+		// Put this here for dwDuration=0 on first NCPAINT. Otherwise, get a fade-in from an (ugly) white box.
+		m_AnimationParams.dwDuration = dwAnimationDuration;
 
 		RedrawWindow(&m_rcRibbonBar, NULL, RDW_FRAME | RDW_INVALIDATE | RDW_ERASENOW);
 	}
@@ -766,22 +766,23 @@ private:
 
 				// Figure out the path around the checked tab and its sub-tabs
 				GraphicsPath path;
-				path.AddArc(rcTab.left, rcTab.top, 10, 10, 180.0f, 90.0f);
-				path.AddLine(rcTab.left + 10, rcTab.top, rcTab.right - 10, rcTab.top);
-				path.AddArc(rcTab.right - 10, rcTab.top, 10, 10, 270.0f, 90.0f);
-				path.AddLine(rcTab.right, rcTab.top + 10, rcTab.right, rcTab.bottom - 10);
-				path.AddArc(rcTab.right, rcTab.bottom - 10, 10, 10, 180.0f, -90.0f);
-				path.AddLine(rcTab.right + 10, rcTab.bottom, rcRibbonBar.right - 10, rcTab.bottom);
-				path.AddArc(rcRibbonBar.right - 10, rcTab.bottom, 10, 10, 270.0f, 90.0f);
-				path.AddLine(rcRibbonBar.right, rcTab.bottom + 10, rcRibbonBar.right, rcRibbonBar.bottom - 10);
-				path.AddArc(rcRibbonBar.right - 10, rcRibbonBar.bottom - 10, 10, 10, 0.0f, 90.0f);
-				path.AddLine(rcRibbonBar.right - 10, rcRibbonBar.bottom, rcRibbonBar.left + 10, rcRibbonBar.bottom);
-				path.AddArc(rcRibbonBar.left, rcRibbonBar.bottom - 10, 10, 10, 90.0f, 90.0f);
-				path.AddLine(rcRibbonBar.left, rcRibbonBar.bottom - 10, rcRibbonBar.left, rcTab.bottom + 10);
-				path.AddArc(rcRibbonBar.left, rcTab.bottom, 10, 10, 180.0f, 90.0f);
-				path.AddLine(rcRibbonBar.left + 10, rcTab.bottom, rcTab.left - 10, rcTab.bottom);
-				path.AddArc(rcTab.left - 10, rcTab.bottom - 10, 10, 10, 90.0f, -90.0f);
-				path.AddLine(rcTab.left, rcTab.bottom - 10, rcTab.left, rcTab.top + 5);
+				path.AddArc(rcTab.left, rcTab.top, TABRADIUS, TABRADIUS, 180.0f, 90.0f);
+				path.AddLine(rcTab.left + TABRADIUS, rcTab.top, rcTab.right - TABRADIUS, rcTab.top);
+				path.AddArc(rcTab.right - TABRADIUS, rcTab.top, TABRADIUS, TABRADIUS, 270.0f, 90.0f);
+				path.AddLine(rcTab.right, rcTab.top + TABRADIUS, rcTab.right, rcTab.bottom - TABRADIUS);
+				path.AddArc(rcTab.right, rcTab.bottom - TABRADIUS, TABRADIUS, TABRADIUS, 180.0f, -90.0f);
+				path.AddLine(rcTab.right + TABRADIUS, rcTab.bottom, rcRibbonBar.right - TABRADIUS, rcTab.bottom);
+				path.AddArc(rcRibbonBar.right - TABRADIUS, rcTab.bottom, TABRADIUS, TABRADIUS, 270.0f, 90.0f);
+				path.AddLine(rcRibbonBar.right, rcTab.bottom + TABRADIUS, rcRibbonBar.right, rcRibbonBar.bottom - TABRADIUS);
+				path.AddArc(rcRibbonBar.right - TABRADIUS, rcRibbonBar.bottom - TABRADIUS, TABRADIUS, TABRADIUS, 0.0f, 90.0f);
+				path.AddLine(rcRibbonBar.right - TABRADIUS, rcRibbonBar.bottom, rcRibbonBar.left + TABRADIUS, rcRibbonBar.bottom);
+				path.AddArc(rcRibbonBar.left, rcRibbonBar.bottom - TABRADIUS, TABRADIUS, TABRADIUS, 90.0f, 90.0f);
+				path.AddLine(rcRibbonBar.left, rcRibbonBar.bottom - TABRADIUS, rcRibbonBar.left, rcTab.bottom + TABRADIUS);
+				path.AddArc(rcRibbonBar.left, rcTab.bottom, TABRADIUS, TABRADIUS, 180.0f, 90.0f);
+				if ( rcTab.left - TABRADIUS > rcRibbonBar.left + TABRADIUS )
+					path.AddLine(rcRibbonBar.left + TABRADIUS, rcTab.bottom, rcTab.left - TABRADIUS, rcTab.bottom);
+				path.AddArc(rcTab.left - TABRADIUS, rcTab.bottom - TABRADIUS, TABRADIUS, TABRADIUS, 90.0f, -90.0f);
+				path.AddLine(rcTab.left, rcTab.bottom - TABRADIUS, rcTab.left, rcTab.top + (TABRADIUS/2) );
 
 				// Fill the path
 				Rect rect(rcRibbonBar.left, rcRibbonBar.top - 3, rcRibbonBar.Width(), rcRibbonBar.Height() );
@@ -836,32 +837,32 @@ private:
 					if (pSubtab->uState & RD_TST_SELECTED)
 					{
 						// Figure out the path around the selected sub-tab
-						GraphicsPath path;
-						path.AddArc(rcSubtab.left, rcSubtab.top, 10, 10, 180.0f, 90.0f);
-						path.AddLine(rcSubtab.left + 10, rcSubtab.top, rcSubtab.right - 10, rcSubtab.top);
-						path.AddArc(rcSubtab.right - 10, rcSubtab.top, 10, 10, 270.0f, 90.0f);
+						GraphicsPath subpath;
+						subpath.AddArc(rcSubtab.left, rcSubtab.top, TABRADIUS, TABRADIUS, 180.0f, 90.0f);
+						subpath.AddLine(rcSubtab.left + TABRADIUS, rcSubtab.top, rcSubtab.right - TABRADIUS, rcSubtab.top);
+						subpath.AddArc(rcSubtab.right - TABRADIUS, rcSubtab.top, TABRADIUS, TABRADIUS, 270.0f, 90.0f);
 
 						// Finish path around top-half of item
-						GraphicsPath* pathCopy = path.Clone();
-						pathCopy->AddLine(rcSubtab.right, rcSubtab.top + 10, rcSubtab.right, rcSubtab.Height() / 2);
+						GraphicsPath* pathCopy = subpath.Clone();
+						pathCopy->AddLine(rcSubtab.right, rcSubtab.top + TABRADIUS, rcSubtab.right, rcSubtab.Height() / 2);
 						pathCopy->AddLine(rcSubtab.right, rcSubtab.top + rcSubtab.Height() / 2, rcSubtab.left, rcSubtab.top + rcSubtab.Height() / 2);
-						pathCopy->AddLine(rcSubtab.left, rcSubtab.top + rcSubtab.Height() / 2, rcSubtab.left, rcSubtab.top + 10);
+						pathCopy->AddLine(rcSubtab.left, rcSubtab.top + rcSubtab.Height() / 2, rcSubtab.left, rcSubtab.top + TABRADIUS);
 
 						// Finish path around entire item
-						path.AddLine(rcSubtab.right, rcSubtab.top + 10, rcSubtab.right, rcSubtab.bottom - 10);
-						path.AddArc(rcSubtab.right - 10, rcSubtab.bottom - 10, 10, 10, 0.0f, 90.0f);
-						path.AddLine(rcSubtab.right - 10, rcSubtab.bottom, rcSubtab.left + 10, rcSubtab.bottom);
-						path.AddArc(rcSubtab.left, rcSubtab.bottom - 10, 10, 10, 90.0f, 90.0f);
-						path.AddLine(rcSubtab.left, rcSubtab.bottom - 10, rcSubtab.left, rcSubtab.top + 5);
+						subpath.AddLine(rcSubtab.right, rcSubtab.top + TABRADIUS, rcSubtab.right, rcSubtab.bottom - TABRADIUS);
+						subpath.AddArc(rcSubtab.right - TABRADIUS, rcSubtab.bottom - TABRADIUS, TABRADIUS, TABRADIUS, 0.0f, 90.0f);
+						subpath.AddLine(rcSubtab.right - TABRADIUS, rcSubtab.bottom, rcSubtab.left + TABRADIUS, rcSubtab.bottom);
+						subpath.AddArc(rcSubtab.left, rcSubtab.bottom - TABRADIUS, TABRADIUS, TABRADIUS, 90.0f, 90.0f);
+						subpath.AddLine(rcSubtab.left, rcSubtab.bottom - TABRADIUS, rcSubtab.left, rcSubtab.top + (TABRADIUS/2) );
 
 						// Fills
 						SolidBrush br1(Color(SUBTAB_FILL_TOPHALF)), br2(Color(SUBTAB_FILL_BOTTOMHALF));
-						graphics.FillPath(&br2, &path);
+						graphics.FillPath(&br2, &subpath);
 						graphics.FillPath(&br1, pathCopy);
 
 						// Outline
 						Pen pen(Color(SUBTAB_OUTLINE));
-						graphics.DrawPath(&pen, &path);
+						graphics.DrawPath(&pen, &subpath);
 
 						// Clean up
 						delete pathCopy;
@@ -944,8 +945,8 @@ private:
 
 					dc.SelectFont((pSubtab->uState == RD_TST_HOT) ? m_fontHot : m_font);
 
-					bool bShowPrefix = m_bShowPrefixes && ((pSubtab->uState & RD_TST_SELECTED) == 0);
-					DWORD dwTextFlags = DT_FORMATFLAGS | (bShowPrefix ? 0 : DT_HIDEPREFIX);
+					bShowPrefix = m_bShowPrefixes && ((pSubtab->uState & RD_TST_SELECTED) == 0);
+					dwTextFlags = DT_FORMATFLAGS | (bShowPrefix ? 0 : DT_HIDEPREFIX);
 
 					CRect rcText(pSubtab->rc);
 
@@ -1125,15 +1126,13 @@ private:
 		WORD R, G, B;			// RGB component values
 		WORD Magic1, Magic2;	// Calculated magic numbers
 
-		// Achromatic case
-		if (sat == 0)
+		if (sat == 0)	// Achromatic case
 		{
 			R=G=B=(lum*RGBMAX)/HLSMAX;
 			//if (hue != UNDEFINED)
 			//	; // ERROR
 		}
-		// Chromatic case
-		else
+		else			// Chromatic case
 		{
 			// Set up magic numbers
 			if (lum <= (HLSMAX/2))
