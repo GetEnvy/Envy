@@ -165,7 +165,7 @@ void CBrowseProfileCtrl::UpdateDocumentLeft(CHostBrowser* pBrowser, CGProfile* p
 		m_pdAddress->SetText( str );
 		m_pdVendor->SetText( (LPCTSTR)pBrowser->m_sServer );
 		str.Format( L"gnutella:browse:%s:%u", (LPCTSTR)str, pBrowser->m_nPort );			// ToDo: Append Private Key?
-		m_pdVendor->m_sLink = L"command:copy:" + str;	
+		m_pdVendor->m_sLink = L"command:copy:" + str;
 
 		if ( ! m_pdAddress->m_hImage )	// Add Flag Once
 		{

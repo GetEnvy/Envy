@@ -667,19 +667,19 @@ UINT CSkinWindow::OnNcHitTest(CWnd* pWnd, CPoint point, BOOL bResizable)
 			if ( point.y >= rc.bottom - m_rcResize.bottom ) return HTBOTTOMLEFT;
 			return HTLEFT;
 		}
-		else if ( point.x >= rc.right - m_rcResize.right )
+		if ( point.x >= rc.right - m_rcResize.right )
 		{
 			if ( point.y < rc.top + m_rcResize.top ) return HTTOPRIGHT;
 			if ( point.y >= rc.bottom - m_rcResize.bottom ) return HTBOTTOMRIGHT;
 			return HTRIGHT;
 		}
-		else if ( point.y < rc.top + m_rcResize.top )
+		if ( point.y < rc.top + m_rcResize.top )
 		{
 			if ( point.x < rc.left + m_rcResize.left ) return HTTOPLEFT;
 			if ( point.x >= rc.right - m_rcResize.right ) return HTTOPRIGHT;
 			return HTTOP;
 		}
-		else if ( point.y >= rc.bottom - m_rcResize.bottom )
+		if ( point.y >= rc.bottom - m_rcResize.bottom )
 		{
 			if ( point.x < rc.left + m_rcResize.left ) return HTBOTTOMLEFT;
 			if ( point.x >= rc.right - m_rcResize.right ) return HTBOTTOMRIGHT;
@@ -715,7 +715,7 @@ void CSkinWindow::OnSize(CWnd* pWnd)
 {
 	if ( pWnd->IsIconic() ) return;
 
-	if ( pWnd->IsZoomed() )	// Fullscreen Resize
+	if ( pWnd->IsZoomed() )		// Fullscreen Resize
 	{
 		CRect rcWnd;
 		SystemParametersInfo( SPI_GETWORKAREA, 0, rcWnd, 0 );
@@ -727,10 +727,7 @@ void CSkinWindow::OnSize(CWnd* pWnd)
 		GetMonitorInfo( hMonitor, &oMonitor );
 
 		if ( oMonitor.dwFlags & MONITORINFOF_PRIMARY )
-		{
-			SetWindowPos( pWnd->GetSafeHwnd(), HWND_TOP, rcWnd.left, rcWnd.top,
-				rcWnd.Width(), rcWnd.Height(), 0 );
-		}
+			SetWindowPos( pWnd->GetSafeHwnd(), HWND_TOP, rcWnd.left, rcWnd.top, rcWnd.Width(), rcWnd.Height(), 0 );
 
 		pWnd->SetWindowRgn( NULL, TRUE );
 	}
@@ -741,14 +738,13 @@ void CSkinWindow::OnSize(CWnd* pWnd)
 	else
 	{
 		CRect rcWnd;
-
 		pWnd->GetWindowRect( &rcWnd );
 		rcWnd.OffsetRect( -rcWnd.left, -rcWnd.top );
 		rcWnd.right++;
 		rcWnd.bottom++;
 
 		HRGN hRgn = CreateRectRgnIndirect( &rcWnd );
-		pWnd->SetWindowRgn( hRgn, TRUE );	// Redraw = true
+		pWnd->SetWindowRgn( hRgn, TRUE );	// Redraw = true (ToDo: High CPU Resize)
 	}
 }
 

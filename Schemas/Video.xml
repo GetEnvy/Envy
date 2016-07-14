@@ -1145,6 +1145,7 @@
 		<type extension="avi"/>
 		<type extension="divx"/>
 		<type extension="dv"/>
+		<type extension="f4v"/>
 		<type extension="flv"/>
 		<type extension="fluxdvd"/>
 		<type extension="gvi"/>

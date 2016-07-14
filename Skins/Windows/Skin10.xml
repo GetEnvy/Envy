@@ -23,7 +23,7 @@
  <!--font name="System.Bold"   face="Segoe UI" size="11" weight="Bold"-->
  <!--font name="Panel.Caption" face="Segoe UI" size="12" weight="Normal"-->
  <!--font name="RichDoc.Default" face="Segoe UI" size="13" weight="Normal"-->
- <!--font name="RichDoc.Heading" face="Segoe UI" size="18" weight="400"-->
+ <!--font name="RichDoc.Heading" face="Segoe UI" size="18" weight="400" color="EE9900"-->
 </fonts>
 
 <options>
@@ -91,7 +91,7 @@
  <color name="Dialog.Panel.Text"			value="393630"/>
  <color name="Dialog.Menu.Back" 			value="FAF9F8"/>  <!--settings menu-->
  <color name="Dialog.Menu.Text" 			value="403A34"/>
- <color name="Banner.Back"				value="DCCAB4"/>  <!--library/browse headers-->
+ <color name="Banner.Back"				value="FEB814"/>  <!--library/browse headers-->
  <color name="Banner.Text"				value="FFFFFF"/>
 
  <color name="Media.Window.Back"			value="080400"/>
@@ -126,7 +126,7 @@
  <color name="Meta.Rating5"				value="000000"/>
  <color name="Richdoc.Back"				value="FFFFFF"/>
  <color name="Richdoc.Text"				value="4A4840"/>
- <color name="Richdoc.Heading"				value="B8A080"/>
+ <color name="Richdoc.Heading"				value="EE9900"/>
 
  <color name="System.Base.Chat.In"			value="0660CC"/>
  <color name="System.Base.Chat.Out"			value="EA4A60"/>
@@ -333,7 +333,7 @@
  <image />
  <image />
  <image id="ID_TOOLS_SETTINGS"/>
- <image id="ID_TOOLS_PROFILE"/>
+ <image id="ID_TOOLS_PROFILE" id1="ID_BROWSE_PROFILE"/>
  <image id="ID_SEARCH_SEARCH" id1="ID_TAB_SEARCH" id2="ID_NETWORK_SEARCH" id3="ID_LIBRARY_SEARCH_QUICK" id4="ID_DOWNLOADS_SOURCES" id5="ID_VIEW_SEARCH_MONITOR" id6="ID_VIEW_RESULTS_MONITOR" id7="ID_HITMONITOR_SEARCH" id8="IDR_SEARCHFRAME"/>
  <image id="ID_CHECKMARK"/>
  <image id="ID_TOOLS_WIZARD" id1="IDI_STAR"/>

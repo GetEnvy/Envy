@@ -2,7 +2,7 @@ Envy Update Status to Shareaza Commits
 
 Shareaza 2.7.9.0 r9600~
 PeerProject 1.0.3.0 r128
-(Recent PeerProject updates to 2016)
+(Recent PeerProject updates r100+ to 2016)
 
 http://sourceforge.net/p/shareaza/code/log
 http://sourceforge.net/p/shareaza/code/9600
@@ -17,10 +17,12 @@ svn+ssh://svn.code.sf.net/p/shareaza/code/trunk shareaza-code
 •
 
 
-9628		f	
-9627		f	Fixed second-tier plugin registration
-9626		f	Updated MiniUPnPc library to 1.9.20160209
-9625		1f	Updated GeoIP database (05 Apr 2016)
+9630		f	
+9629		1f	Updated services list (by ale5000)
+9628		4f	Updated setup script to support new splitted redistributables (minimum and additional)
+9627		1f	Fixed second-tier plugin registration
+9626		20f	Updated MiniUPnPc library to 1.9.20160209
+9625	.	1f	Updated GeoIP database (05 Apr 2016)
 9624		f	Updated Visual C++ Redistributable for Visual Studio 2015 Update 2 (Updated Inno Download Plugin 1.5.1.0)
 9623		f	Updated VS2015 projects references
 9622	r128	1f	Updated VS2015 project
@@ -97,8 +99,8 @@ svn+ssh://svn.code.sf.net/p/shareaza/code/trunk shareaza-code
 9552	/	4f	More const-s
 9551		1f	Fixed resize of muti-file/torrent download
 9550	.	3f	Fixed math rounding error in the time metadata
-9549		3f	Added .asx, .flv, .ogv and .webm extensions to the media plugins and schemas
-9548		33f	(Various metadata fixes and const)
+9549	r8	3f	Added .asx, .flv, .ogv and .webm extensions to the media plugins and schemas
+9548		33f	(Various metadata fixes and const) (Add CSchemaMemberPtr for CSchemaMember*)
 9547	r125	2f	CXMLNode::SetValue() minor optimization
 9546	r126	1f	Added well-known DC++ hub list
 9545	r125	2f	Fixed stable time calculation
@@ -156,7 +158,7 @@ svn+ssh://svn.code.sf.net/p/shareaza/code/trunk shareaza-code
 9448		25f	Enabled "Edit And Continue" for VS2013 Debug Win32
 9442		f	Disabled plugin registration during VS2013 build
 9441		f	Disabled plugin registration during VS2010 build
-9438		f	Updated plugin icons  (DocReader/SWFReader)
+9438		2f	Updated plugin icons  (DocReader/SWFReader)
 9437		f	Updated VS2013 64-bit projects
 9436		15f	Added Download Monitor opening on: external link, search window download, eMule import. Changed "Hide" button of Download Monitor from monitor closing to hiding to tray instead
 9435		2f	Fixed stuck progress bar of main window title when last download cancelled
@@ -168,8 +170,8 @@ svn+ssh://svn.code.sf.net/p/shareaza/code/trunk shareaza-code
 9418	/	1f	Improved "Existing File" dialog (now incremental torrents must be downloaded without any questions).	// Commented Out: r9350
 9416	/	5f	Fixed multi-file magnet parsing (but not supported yet) - http://bit.ly/1jZGG1a
 9403		1f	Increased height of "Download File or Torrent" dialog
-9400		14+f	Removed Bitzi.com support.
-9390	r127/	12f	Removed Windows 2000 code  (ToDo:Plugins)
+9400		14+f	Removed Bitzi.com support
+9390	r127	12f	Removed Windows 2000 code  (ToDo: Check Plugins?)
 9389	.	f	Added Visual Studio 2013 project, fixed incompatibilities
 9377		3f	Adjusted project options
 9350		8f+	Adjusted interface of Existing File dialog. Removed confusing duplicate file detection. (Deadlocks)
@@ -219,4 +221,3 @@ ToDos:			Add ID_TAB_MENU ?
 			JumpLists: r9146 http://msdn.microsoft.com/en-us/gg465010#_Toc243450447
 			r8625+ BENode TorrentWizard
 			BitTorrent DNS, uTP
-

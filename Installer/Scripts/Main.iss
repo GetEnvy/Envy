@@ -19,7 +19,7 @@
 
 #define internal_name GetStringFileInfo("..\..\Envy\" + ConfigurationName + " " + PlatformName + "\Envy.exe", INTERNAL_NAME);
 #define name          internal_name
-#define build         PlatformName + " " + ConfigurationName + " Build"
+;#define build        PlatformName + " " + ConfigurationName
 #define version       GetFileVersion("..\..\Envy\" + ConfigurationName + " " + PlatformName + "\Envy.exe")
 #define publisher     "GetEnvy.com"
 #define description   internal_name + " Filesharing"
@@ -28,25 +28,33 @@
 #if ConfigurationName == "Debug"
   #if PlatformName == "x64"
     #define output_name	internal_name + "." + version + "." + date + "." + ConfigurationName + "." + PlatformName
+    #define build "64-bit " + ConfigurationName
   #else
     #define output_name	internal_name + "." + version + "." + date + "." + ConfigurationName
+    #define build "32-bit " + ConfigurationName
   #endif
 #elif alpha == "Yes"
   #if PlatformName == "x64"
     #define output_name	internal_name + "." + version + "." + date + "." + PlatformName
+    #define build "64-bit"
   #else
     #define output_name	internal_name + "." + version + "." + date
+    #define build "32-bit"
   #endif
 #elif alpha == "Preview"
   #if PlatformName == "x64"
     #define output_name	internal_name + "." + version + ".Preview." + PlatformName
+    #define build "64-bit Preview"
   #else
     #define output_name	internal_name + "." + version + ".Preview"
+    #define build "32-bit Preview"
   #endif
 #elif PlatformName == "x64"
   #define output_name	internal_name + "." + version + "." + PlatformName
+  #define build "64-bit"
 #else
   #define output_name	internal_name + "." + version
+  #define build "32-bit"
 #endif
 
 [Setup]
@@ -54,7 +62,7 @@ AppComments={#description}
 AppId={#internal_name}
 AppName={#name}
 AppVersion={#version}
-AppVerName={#internal_name} {#build} {#version}
+AppVerName={#internal_name} {#version} {#build}
 AppMutex={#internal_name},Global\TorrentEnvy
 DefaultDirName={ini:{param:SETTINGS|},Locations,Path|{reg:HKLM\SOFTWARE\{#internal_name},|{pf}\{#internal_name}}}
 DirExistsWarning=no

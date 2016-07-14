@@ -182,7 +182,7 @@ BOOL CSchema::Load(LPCTSTR pszFile)
 #ifndef NOXP
 		theApp.m_nWinVer < WIN_VISTA ? LoadIcon( strRoot + L".Safe.ico" ) : FALSE ||	// Legacy XP
 #endif
-		theApp.m_nWinVer < WIN_10 ? LoadIcon( strRoot + L".Alt.ico" ) : FALSE ||	// Prior Style
+		Settings.Skin.AltIcons ? LoadIcon( strRoot + L".Alt.ico" ) : FALSE ||	// Prior Style (theApp.m_nWinVer < WIN_10)
 		LoadIcon() ||							// As Defined (m_sIcon)
 		LoadIcon( strRoot + L".Safe.ico" );		// Fallback
 

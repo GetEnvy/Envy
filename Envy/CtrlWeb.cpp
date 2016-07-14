@@ -17,7 +17,6 @@
 //
 
 // Uses Internet Explorer for viewing Library Collection files (In CtrlLibraryCollectionView)
-// ToDo: Remove depednecy on afxocc.h for VCExpress+WDK (COleControlSite)
 
 #include "StdAfx.h"
 #include "Envy.h"
@@ -168,7 +167,8 @@ void CWebCtrl::OnDestroy()
 	EnterMenu( NULL );
 
 	m_pBrowser = NULL;
-	if ( m_wndBrowser.m_hWnd != NULL ) m_wndBrowser.DestroyWindow();
+	if ( m_wndBrowser.m_hWnd != NULL )
+		m_wndBrowser.DestroyWindow();
 
 	CWnd::OnDestroy();
 }
@@ -340,7 +340,8 @@ STDMETHODIMP CWebCtrl::DocSite::XDocHostUIHandler::GetExternal(LPDISPATCH *lppDi
 	CWebCtrl* pCtrl = pThis->GetCtrl();
 
 	*lppDispatch = pCtrl->m_pExternal;
-	if ( *lppDispatch != NULL ) (*lppDispatch)->AddRef();
+	if ( *lppDispatch != NULL )
+		(*lppDispatch)->AddRef();
 
 	return ( *lppDispatch != NULL ) ? S_OK : S_FALSE;
 }
@@ -528,26 +529,25 @@ STDMETHODIMP CWebCtrl::DocSite::XInternetSecurityManager::ProcessUrlAction(LPCWS
 	if ( cbPolicy != 4 ) return INET_E_DEFAULT_ACTION;
 	PBOOL pBool = (PBOOL)pPolicy;
 
-	if ( wcsncmp( pwszUrl, L"p2p-col://", 10 ) == 0 )
-	{
-		if ( ( dwAction >= URLACTION_ACTIVEX_MIN && dwAction <= URLACTION_ACTIVEX_MAX ) ||
-			 ( dwAction >= URLACTION_SHELL_MIN && dwAction <= URLACTION_SHELL_MAX ) ||
-			 ( dwAction >= URLACTION_INFODELIVERY_MIN && dwAction <= URLACTION_INFODELIVERY_MAX ) ||
-			 ( dwAction >= URLACTION_HTML_MIN && dwAction <= URLACTION_HTML_MAX ) ||
-			 ( dwAction >= URLACTION_DOWNLOAD_MIN && dwAction <= URLACTION_DOWNLOAD_MAX ) )
-		{
-			*pBool = URLPOLICY_DISALLOW;
-			return S_OK;
-		}
-		if ( dwAction >= URLACTION_SCRIPT_MIN && dwAction <= URLACTION_SCRIPT_MAX )
-		{
-			*pBool = ( dwAction == URLACTION_SCRIPT_RUN ) ? URLPOLICY_ALLOW : URLPOLICY_DISALLOW;
-			return S_OK;
-		}
-	}
-	else
+	if ( wcsncmp( pwszUrl, L"p2p-col://", 10 ) != 0 )
 	{
 		*pBool = URLPOLICY_DISALLOW;
+		return S_OK;
+	}
+
+	if ( ( dwAction >= URLACTION_ACTIVEX_MIN && dwAction <= URLACTION_ACTIVEX_MAX ) ||
+		 ( dwAction >= URLACTION_SHELL_MIN && dwAction <= URLACTION_SHELL_MAX ) ||
+		 ( dwAction >= URLACTION_INFODELIVERY_MIN && dwAction <= URLACTION_INFODELIVERY_MAX ) ||
+		 ( dwAction >= URLACTION_HTML_MIN && dwAction <= URLACTION_HTML_MAX ) ||
+		 ( dwAction >= URLACTION_DOWNLOAD_MIN && dwAction <= URLACTION_DOWNLOAD_MAX ) )
+	{
+		*pBool = URLPOLICY_DISALLOW;
+		return S_OK;
+	}
+
+	if ( dwAction >= URLACTION_SCRIPT_MIN && dwAction <= URLACTION_SCRIPT_MAX )
+	{
+		*pBool = ( dwAction == URLACTION_SCRIPT_RUN ) ? URLPOLICY_ALLOW : URLPOLICY_DISALLOW;
 		return S_OK;
 	}
 

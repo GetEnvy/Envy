@@ -3,7 +3,7 @@
 
 <!-- Envy Default English Skin File -->
 
-<!-- Translation based on default en.xml r6 -->
+<!-- Translation based on default en.xml r8 -->
 <!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -3721,7 +3721,7 @@
 		<control caption="_Info:"/>
 		<control caption="Use your G2/Gnutella User Profile to share basic information about yourself, or recommend files and links to others."/>
 	</dialog>
-	<dialog name="CRemoteSettingsPage" cookie="BuBuStBuStStEdEdBuSt" caption="Remote Access">
+	<dialog name="CRemoteSettingsPage" cookie="BuBuStBuStStEdEdStBuSt" caption="Remote Access">
 		<control caption="_Activation:"/>
 		<control caption="_Enable Envy Remote Web Access:"/>
 		<control caption="..."/>
@@ -4806,11 +4806,11 @@
 		<control/>
 	</dialog>
 	<dialog name="CAboutDlg" cookie="StStStStStStBu" caption="About Envy">
+		<control/>
 		<control caption="Envy Filesharing Client"/>
-		<control caption="&#169; Envy Development Team, 2008-"/>
-		<control caption="Envy™ is free software; &#160;you can redistribute and/or modify it {n}under terms of the GNU Affero General Public License as published {n}by the Free Software Foundation, version 3 or later. &#160;(AGPL v3)"/>
-		<control caption="CreativeCommons BY-NC-SA covers original artwork."/>
-		<control caption="Portions copyright PeerProject 2008-2016 and Shareaza 2002-2008."/>
+		<control caption="&#169; Envy Development Team, 2016-"/>
+		<control caption="Envy™ is free software; you can redistribute and/or modify it{n}under terms of the GNU Affero General Public License as published{n}by the Free Software Foundation, version 3 or later. (AGPL v3)"/>
+		<control caption="Portions copyright Shareaza 2002-2008 and PeerProject 2008-2016."/>
 		<control caption="http://getenvy.com"/>
 		<control caption="OK"/>
 	</dialog>

@@ -172,6 +172,7 @@ void CSettings::Load()
 	Add( L"Skin", L"RowSize", &Skin.RowSize, 17, 1, 16, 20, L" px" );
 	Add( L"Skin", L"LibIconsX", &Skin.LibIconsX, 220, 1, 30, 500, L" px" );
 	Add( L"Skin", L"LibIconsY", &Skin.LibIconsY, 56, 1, 30, 100, L" px" );
+	Add( L"Skin", L"AltIcons", &Skin.AltIcons, theApp.m_nWinVer < WIN_10 );
 
 	Add( L"Windows", L"RunWizard", &Windows.RunWizard, false );
 	Add( L"Windows", L"RunWarnings", &Windows.RunWarnings, false );

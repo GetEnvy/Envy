@@ -22,7 +22,7 @@
  <!--font name="System.Bold"   face="Segoe UI" size="11" weight="Bold"-->
  <!--font name="Panel.Caption" face="Segoe UI" size="12" weight="Normal"-->
  <!--font name="RichDoc.Default" face="Segoe UI" size="13" weight="Normal"-->
- <!--font name="RichDoc.Heading" face="Segoe UI" size="18" weight="400"-->
+ <!--font name="RichDoc.Heading" face="Segoe UI" size="18" weight="400" color="EE9900"-->
 </fonts>
 
 <options>
@@ -123,7 +123,7 @@
  <color name="Meta.Rating5"				value="000000"/>
  <color name="Richdoc.Back"				value="FFFFFF"/>
  <color name="Richdoc.Text"				value="4A4840"/>
- <color name="Richdoc.Heading"				value="9C8052"/>
+ <color name="Richdoc.Heading"				value="EE9900"/>
 
  <color name="System.Base.Chat.In"			value="0660CC"/>
  <color name="System.Base.Chat.Out"			value="EA4A60"/>
@@ -565,7 +565,7 @@
  <image id="ID_TAB_HOME"/>
 </bitmap>
 
-<bitmap path="8/Checked.png" mask="CLR_NONE">
+<bitmap path="Skin8/Checked.png" mask="CLR_NONE">
  <image id="ID_CHECKMARK"/>
 </bitmap>
 

@@ -637,6 +637,8 @@ void CMatchCtrl::OnPaint()
 	CPaintDC dc( this );
 	if ( Settings.General.LanguageRTL ) dc.SetTextAlign( TA_RTLREADING );
 
+	// ToDo: Skip if not visible, potential high cpu whenever resizing window
+
 	GetClientRect( &rcClient );
 	rcClient.top += HEADER_HEIGHT;
 
@@ -647,8 +649,6 @@ void CMatchCtrl::OnPaint()
 	rcClient.right = max( rcClient.right, LONG(nColWidth) );
 
 	CFont* pOldFont = (CFont*)dc.SelectObject( &CoolInterface.m_fntNormal );
-
-	m_nTrailWidth = dc.GetTextExtent( L"\x2026" ).cx;
 
 	rcItem.SetRect( rcClient.left, rcClient.top, rcClient.right, 0 );
 	rcItem.top -= m_nHitIndex * Settings.Skin.RowSize;
@@ -712,11 +712,13 @@ void CMatchCtrl::DrawItem(CDC& dc, CRect& rcRow, CMatchFile* pFile, CQueryHit* p
 {
 	TCHAR szBuffer[64];
 
+	static const int nTrailWidth = dc.GetTextExtent( L"\x2026" ).cx;	// ...
+
 	int nColumns	= m_wndHeader.GetItemCount();
 	int nHits		= pHit ? 0 : pFile->GetFilteredCount();
 
 	LPCTSTR pszName	= pHit ? pHit->m_sName : pFile->m_sName;
-	LPCTSTR pszType	= _tcsrchr( pszName, '.' );
+	LPCTSTR pszType	= _tcsrchr( pszName, L'.' );
 	int nNameLen	= static_cast< int >( pszType ? pszType - pszName : _tcslen( pszName ) );
 
 	BOOL bSelected	= pHit ? pHit->m_bSelected : pFile->m_bSelected;
@@ -802,6 +804,10 @@ void CMatchCtrl::DrawItem(CDC& dc, CRect& rcRow, CMatchFile* pFile, CQueryHit* p
 	{
 		CRect rcDraw = rcRow;
 		CoolInterface.DrawWatermark( &dc, &rcDraw, &Images.m_bmSelected );
+	}
+	else
+	{
+		dc.FillSolidRect( &rcRow, crBack );
 	}
 
 	dc.SetBkMode( bSelectmark ? TRANSPARENT : OPAQUE );
@@ -1128,25 +1134,37 @@ void CMatchCtrl::DrawItem(CDC& dc, CRect& rcRow, CMatchFile* pFile, CQueryHit* p
 			break;
 		}
 
-		if ( nText < 0 ) nText = static_cast< int >( _tcslen( pszText ) );
+		if ( nText < 0 )
+			nText = static_cast< int >( _tcslen( pszText ) );
 		int nWidth = 0;
-		int nTrail = 0;
 		const int nColWidth = rcCol.Width() - 4;
-		if ( nColWidth > 4 )
+		BOOL bTruncate = FALSE;
+
+		if ( nColWidth < 4 )
 		{
-			while ( nText )
-			{
-				nWidth = dc.GetTextExtent( pszText, nText ).cx + nTrail;
-				if ( nWidth <= nColWidth )
-					break;
-				nTrail = m_nTrailWidth;
-				nText--;
-			}
+			bTruncate = TRUE;
+			nWidth = nText = 0;
 		}
 		else
 		{
-			nTrail = m_nTrailWidth;
-			nWidth = nText = 0;
+			nWidth = dc.GetTextExtent( pszText, nText ).cx;
+			if ( nWidth > nColWidth )
+			{
+				bTruncate = TRUE;
+				const int nEstimate = ( nWidth - nColWidth ) / nTrailWidth;
+				if ( nEstimate > 3 )
+					nText -= ( nEstimate - 2 );
+				else
+					nText -= 2;
+
+				while ( nText )
+				{
+					nWidth = dc.GetTextExtent( pszText, nText ).cx + nTrailWidth;		// Potential High CPU
+					if ( nWidth <= nColWidth )
+						break;
+					nText--;
+				}
+			}
 		}
 
 		switch ( pColumn.fmt & HDF_JUSTIFYMASK )
@@ -1164,7 +1182,7 @@ void CMatchCtrl::DrawItem(CDC& dc, CRect& rcRow, CMatchFile* pFile, CQueryHit* p
 
 		dc.SetBkColor( crBack );
 
-		if ( nTrail )
+		if ( bTruncate )
 		{
 			CString strTrail;
 			LPTSTR pszTrail = strTrail.GetBuffer( nText + 1 );
@@ -1182,11 +1200,8 @@ void CMatchCtrl::DrawItem(CDC& dc, CRect& rcRow, CMatchFile* pFile, CQueryHit* p
 				&rcCol, pszText, nText, NULL );
 		}
 
-		dc.ExcludeClipRect( nLeft, rcCol.top, rcCol.right, rcCol.bottom );
+		//dc.ExcludeClipRect( nLeft, rcCol.top, rcCol.right, rcCol.bottom );	// Potential High CPU, paint row first.
 	}
-
-	if ( ! bSelectmark )
-		dc.FillSolidRect( &rcRow, crBack );
 }
 
 void CMatchCtrl::DrawStatus(CDC& dc, CRect& rcCol, CMatchFile* pFile, CQueryHit* pHit, COLORREF crBack, BOOL bSelected, BOOL bSkinned)

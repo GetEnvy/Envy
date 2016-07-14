@@ -668,6 +668,7 @@ BOOL CSkin::LoadOptions(CXMLElement* pBase)
 			Text[ L"buttonmap" ] 	= 'e';
 			Text[ L"icongrid" ]		= 'i';
 			Text[ L"librarytiles" ]	= 'i';
+			Text[ L"alticons" ]		= 'l';
 		}
 
 		switch ( Text[ strName ] )
@@ -695,13 +696,13 @@ BOOL CSkin::LoadOptions(CXMLElement* pBase)
 				Settings.Skin.DropMenu = true;
 			break;
 		case 'b':	// "MenuBorders" or "MenubarBevel"
-			Settings.Skin.MenuBorders = LoadOptionBool( strValue, Settings.Skin.MenuBorders );	// "true/false"
+			Settings.Skin.MenuBorders = LoadOptionBool( strValue, Settings.Skin.MenuBorders );
 			break;
 		case 'p':	// "MenuGripper" or "Grippers"
-			Settings.Skin.MenuGripper = LoadOptionBool( strValue, Settings.Skin.MenuGripper );	// "true/false"
+			Settings.Skin.MenuGripper = LoadOptionBool( strValue, Settings.Skin.MenuGripper );
 			break;
 		case 'c':	// "RoundedSelect" or "HighlightChamfer"
-			Settings.Skin.RoundedSelect = LoadOptionBool( strValue, Settings.Skin.RoundedSelect );	// "true/false"
+			Settings.Skin.RoundedSelect = LoadOptionBool( strValue, Settings.Skin.RoundedSelect );
 			break;
 		case 'm':	// "Menubar" or "Menubars"
 			if ( ! strHeight.IsEmpty() )
@@ -766,7 +767,10 @@ BOOL CSkin::LoadOptions(CXMLElement* pBase)
 				Settings.Skin.ButtonEdge = _wtoi(strValue);
 			break;
 		case 'f':	// "FrameEdge"
-			Settings.Skin.FrameEdge = LoadOptionBool( strValue, Settings.Skin.FrameEdge );	// "true/false"
+			Settings.Skin.FrameEdge = LoadOptionBool( strValue, Settings.Skin.FrameEdge );
+			break;
+		case 'l':	// "AltIcons"
+			Settings.Skin.AltIcons = LoadOptionBool( strValue, Settings.Skin.AltIcons );
 			break;
 		case 'i':	// "IconGrid" or "LibraryTiles"
 			if ( ! strHeight.IsEmpty() )
@@ -808,6 +812,10 @@ bool CSkin::LoadOptionBool(const CString str, bool bDefault /*false*/)
 	if ( str == L"on" )
 		return true;
 	if ( str == L"off" )
+		return false;
+	if ( str == L"yes" )
+		return true;
+	if ( str == L"no" )
 		return false;
 	theApp.Message( MSG_DEBUG, L"Unexpected skin option value: %s", (LPCTSTR)str );
 	return bDefault;

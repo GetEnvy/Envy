@@ -1017,7 +1017,7 @@ void CEnvyApp::AddToRecentFileList(LPCTSTR lpszPathName)
 	SHAddToRecentDocs( SHARD_PATHW, lpszPathName );
 
 // For VS2008, No need VS2010+ (Confirm?)
-// SHARDAPPIDINFO Requires #define NTDDI_VERSION NTDDI_WIN7 in StdAfx.h (May be NTDDI_LONGHORN fallback or NTDDI_WIN2K test)
+// SHARDAPPIDINFO Requires #define NTDDI_VERSION NTDDI_WIN7 in StdAfx.h (May be NTDDI_LONGHORN fallback or NTDDI_WINXPSP2 test)
 // For applicability here, need to detect VS2008 with WinSDK 7.0+ added.
 #if defined(_MSC_VER) && (_MSC_VER < 1600) && (NTDDI_VERSION > NTDDI_LONGHORN)
 	if ( theApp.m_nWinVer >= WIN_7 && m_pfnSHCreateItemFromParsingName )
@@ -1697,7 +1697,7 @@ void CEnvyApp::InitResources()
 	//
 
 	// Set Settings.Fonts.Quality to ClearType
-	if ( Settings.Fonts.Quality == 0 || Settings.Fonts.Quality == 1 || Settings.Fonts.Quality > 6  )
+	if ( Settings.Fonts.Quality == 0 || Settings.Fonts.Quality == 1 || Settings.Fonts.Quality > 6 )
 	{
 		UINT nSmoothingType = 0;
 		BOOL bFontSmoothing = FALSE;

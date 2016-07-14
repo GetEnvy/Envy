@@ -5737,8 +5737,8 @@ msgid " / "
 msgstr ""
 
 #: string;20460
-msgid "P    E    E    R    P    R    O    J    E    C    T       M    E    D    I    A       S    Y    S    T    E    M"
-msgstr "P    E    E    R    P    R    O    J    E    C    T       M    E    D    I    A       S    Y    S    T    E    M"
+msgid "Envy Media"
+msgstr "Envy Media"
 
 #: string;20462
 msgid "(No Visualisation)"
@@ -9442,7 +9442,7 @@ msgstr "Selekteer asseblief die her-enkoderingsmetode:"
 
 #: cdecodemetadatadlg;control;2
 msgid "Arabic|Baltic|Central European|Chinese Simplified|Chinese Traditional|Cyrillic|Greek|Hebrew|Japanese|Korean|Thai|Turkish|Vietnamese"
-msgstr "Arabic|Baltic|Central European|Chinese Simplified|Chinese Traditional|Cyrillic|Greek|Hebrew|Japanese|Korean|Thai|Turkish|Vietnamese"
+msgstr ""
 
 #: cdecodemetadatadlg;control;3
 msgid "Preview:"
@@ -9458,11 +9458,11 @@ msgstr "Select File:"
 
 #: dialog;circinputdlg
 msgid "Channel Name|Reason Why"
-msgstr "Channel Name|Reason Why"
+msgstr ""
 
 #: circinputdlg;control;4
 msgid "Add new channel to the list:|Enter kick/ban reason:"
-msgstr "Add a channel name:|Enter kick/ban reason:"
+msgstr ""
 
 #: dialog;cdownloadreviewdlg
 msgid "Download Reviews"
@@ -9477,19 +9477,15 @@ msgid "Envy Filesharing Client"
 msgstr ""
 
 #: caboutdlg;control;2
-msgid "© Envy Development Team, 2008-"
+msgid "© Envy Development Team, 2016-"
 msgstr ""
 
 #: caboutdlg;control;3
-msgid "Envy™ is free software;  you can redistribute and/or modify it {n}under terms of the GNU Affero General Public License as published {n}by the Free Software Foundation, version 3 or later.  (AGPL v3)"
+msgid "Envy™ is free software; you can redistribute and/or modify it{n}under terms of the GNU Affero General Public License as published{n}by the Free Software Foundation, version 3 or later. (AGPL v3)"
 msgstr ""
 
 #: caboutdlg;control;4
-msgid "CreativeCommons BY-NC-SA covers original artwork."
-msgstr ""
-
-#: caboutdlg;control;5
-msgid "Portions copyright PeerProject 2008-2016 and Shareaza 2002-2008."
+msgid "Portions copyright Shareaza 2002-2008 and PeerProject 2008-2016."
 msgstr ""
 
 #: column;downloadedfile

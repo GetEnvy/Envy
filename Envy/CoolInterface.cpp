@@ -599,8 +599,7 @@ void CCoolInterface::DrawThumbnail(CDC* pDC, const CRect& rcThumb,
 			pDC->SetBkColor( bWaiting ? Colors.m_crWindow : Colors.m_crBackNormal );
 			pDC->SetTextColor( bWaiting ? Colors.m_crTextAlert : Colors.m_crTextLink );
 			pDC->FillSolidRect( &rcLabel, ( bWaiting ? Colors.m_crWindow : Colors.m_crBackNormal ) );
-			pDC->DrawText( strLabel, &rcLabel, DT_CENTER | DT_VCENTER | DT_WORDBREAK |
-				DT_EDITCONTROL | DT_NOPREFIX | DT_END_ELLIPSIS );
+			pDC->DrawText( strLabel, &rcLabel, DT_CENTER | DT_VCENTER | DT_WORDBREAK | DT_EDITCONTROL | DT_NOPREFIX | DT_END_ELLIPSIS );
 			pDC->ExcludeClipRect( &rcLabel );
 			pDC->SelectObject( pOldFont );
 		}
@@ -625,7 +624,7 @@ void CCoolInterface::DrawThumbnail(CDC* pDC, const CRect& rcThumb,
 //////////////////////////////////////////////////////////////////////
 // CCoolInterface fonts
 
-void CCoolInterface::CreateFonts(LPCTSTR pszFace, int nSize)
+void CCoolInterface::CreateFonts(LPCTSTR pszFace /*0*/, int nSize /*0*/)
 {
 	//CQuickLock oLock( m_pSection );
 

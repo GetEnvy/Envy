@@ -152,7 +152,7 @@ BOOL CGeneralSettingsPage::OnInitDialog()
 	Settings.SetRange( &Settings.Interface.TipAlpha, m_wndTipAlpha );
 	m_wndTipAlpha.SetPos( Settings.Interface.TipAlpha );
 
-	//if ( Win2000 )
+	//if ( Win2000 )	// Legacy, for reference
 	//	GetDlgItem( IDC_TIP_SHADOW )->EnableWindow( FALSE );
 
 	UpdateData( FALSE );

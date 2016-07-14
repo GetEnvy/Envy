@@ -238,9 +238,9 @@ Source: "Installer\Filter\AdultFilter.dat"; DestDir: "{app}\Data"; DestName: "Ad
 ; This section overrides existing phrases specified in Inno's Default.isl file
 
 en.SelectLanguageLabel=%nConfirm default language:
-en.WelcomeLabel1=%nWelcome to the%n[name] Setup Wizard
-en.WelcomeLabel2=This will install [name/ver]%nP2P filesharing on your computer.%n%nIt is recommended to close applications before continuing.
-en.FinishedHeadingLabel=%nCompleting the [name]%nInstaller Wizard
+en.WelcomeLabel1=%nWelcome to the%n[name] Install Wizard
+en.WelcomeLabel2=This will install [name/ver]%np2p filesharing on your computer.%n%nIt is recommended to close other applications.
+en.FinishedHeadingLabel=%nCompleting the%n[name] Install Wizard
 en.FinishedLabel=Setup has finished installing [name] on your computer.%nIt can be launched from the installed shortcut icons.
 en.LicenseLabel3=Please read the following open-source license summary.%nYou should understand the basic terms of this License before continuing installation.
 
@@ -280,10 +280,10 @@ CreateDesktopIconTorrents=Show &TorrentEnvy desktop icon
 PathNotExist=Error, the path of the %1 folder doesn't exist
 dialog_shutdown=%1 is currently running. Would you like %1 to be shutdown so the installation can continue?
 dialog_firewall=Setup failed to add Envy to the Windows Firewall.%nPlease add Envy to the exception list manually.
-dialog_malwaredetected=Malware is been detected on your system at %1, please remove it with an anti-virus before installing Envy.  Do you wish to exit now?
+dialog_malwaredetected=Malware is detected on your system at %1, please remove it with an anti-virus before installing Envy.  Do you wish to exit now?
 page_safetywarning_title=Safety Awareness
 page_safetywarning_subtitle=Do you have an AntiVirus program running?
-page_safetywarning_text=Filesharing is a home server with browser to find others like you.%n%nWhen downloading, always have an updated virus scanner to protect yourself from malicious files.  Be aware that spammers will return fake results to searches, but can easily be banned.%n%nWhen uploading, recognize Permissive and Restrictive material.%nSharing unlicensed copyright work may be liable in many countries.%nThe best policy is to boycott corporate copyright maximalists entirely:%nSimply don't promote those who won't appreciate it, many others do.%n
+page_safetywarning_text=Filesharing is a personal server + browser to find others like you.%n%nWhen downloading, remember to use a virus scanner to protect yourself from malicious files.  Be aware that spammers will return fake results to searches, but can easily be banned.%n%nWhen uploading, recognize Permissive and Restrictive material.%nSharing unlicensed copyright work may be liable in many places.%nBest policy is to boycott corporate copyright maximalists entirely:%nSimply don't promote those who won't appreciate it, others do.%n
 ; Don't copy these last 2 messages, they are just links.
 page_safetywarning_link=http://security.getenvy.com
 page_safetywarning_destination=http://security.getenvy.com

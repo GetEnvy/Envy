@@ -3,7 +3,7 @@
 
 <!-- Envy Default French Skin File -->
 
-<!-- Translation based on default en.xml r4 -->
+<!-- Translation based on default en.xml r8 -->
 <!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -4699,11 +4699,11 @@
 		<control/>
 	</dialog>
 	<dialog name="CAboutDlg" cookie="StStStStStStBu" caption="À Propos de Envy">
+		<control/>
 		<control caption="Envy Filesharing Client"/>
 		<control caption="&#169; Envy Development Team, 2016-"/>
-		<control caption="Envy™ is free software; &#160;you can redistribute and/or modify it {n}under terms of the GNU Affero General Public License as published {n}by the Free Software Foundation, version 3 or later. &#160;(AGPL v3)"/>
-		<control caption="CreativeCommons BY-NC-SA covers original artwork."/>
-		<control caption="Parties à l'origine du PeerProject 2008-2016 & Shareaza 2002-2008."/>
+		<control caption="Envy™ is free software; you can redistribute and/or modify it{n}under terms of the GNU Affero General Public License as published{n}by the Free Software Foundation, version 3 or later. (AGPL v3)"/>
+		<control caption="Parties à l'origine du Shareaza 2002-2008 & PeerProject 2008-2016."/>
 		<control caption="http://GetEnvy.com"/>
 		<control caption="Valider"/>
 	</dialog>

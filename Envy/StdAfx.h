@@ -104,8 +104,8 @@
 // WINVER Target features available from Windows Vista/7 onwards.
 // To find features that need guards for Windows XP temporarily use:
 #if 0
-#define NTDDI_VERSION	NTDDI_WINXPSP2	// NTDDI_WIN2K Unsupported
-#define _WIN32_WINNT	0x0501			// 0x0500
+#define NTDDI_VERSION	NTDDI_WINXPSP2
+#define _WIN32_WINNT	0x0501
 //#elif defined(_MSC_VER) && (_MSC_VER >= 1600)	// Features require WinSDK 7.0+ (VS2010+)
 //#define NTDDI_VERSION	NTDDI_WIN7		// Minimum build target Win7
 //#define _WIN32_WINNT	0x0601			// Win7/2008.2
@@ -168,10 +168,8 @@
 #include <afxole.h>				// MFC OLE
 #include <afxpriv.h>			// MFC UI
 #include <afxhtml.h>			// MFC HTML	(For CtrlWeb)
-//#ifndef VCEXPRESS
 //#include <afxocc.h> 			// MFC OCC	(For CtrlWeb?)
 #include <../src/mfc/afximpl.h>
-//#endif
 
 //
 // ATL
@@ -431,7 +429,7 @@ AFX_INLINE UINT AFXAPI HashKey(LPUNKNOWN key)
 #ifndef OFN_ENABLESIZING
 	#define OFN_ENABLESIZING		0x00800000
 #endif
-#ifndef LVS_EX_TRANSPARENTBKGND		// NTDDI_WINXP/2K
+#ifndef LVS_EX_TRANSPARENTBKGND		// NTDDI_WINXP
 	#define LVS_EX_TRANSPARENTBKGND	0x00400000
 #endif
 

@@ -3,7 +3,7 @@
 
 <!-- Envy UK English Skin File -->
 
-<!-- Translation based on default en.xml r6 -->
+<!-- Translation based on default en.xml r8 -->
 <!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -46,8 +46,8 @@
 	<menu name="CTabBar.Child">
 		<item id="ID_MOVETAB_LEFT" text="Move Tab _Left"/>
 		<item id="ID_MOVETAB_RIGHT" text="Move Tab _Right"/>
-		<!--<item id="ID_MOVETAB_FIRST" text="Move Tab _First"/>-->
-		<!--<item id="ID_MOVETAB_LAST" text="Move Tab L_ast"/>-->
+		<!--item id="ID_MOVETAB_FIRST" text="Move Tab _First"-->
+		<!--item id="ID_MOVETAB_LAST" text="Move Tab L_ast"-->
 		<separator/>
 		<item id="ID_CHILD_MAXIMISE" text="_Full Screen"/>
 		<item id="ID_CHILD_RESTORE" text="_Restore"/>
@@ -118,14 +118,14 @@
 				<item id="ID_HELP_HOMEPAGE" text="_Envy Site"/>
 				<separator/>
 				<item id="ID_HELP_FORUMS" text="Envy _Forums"/>
-				<item id="ID_HELP_WEB_SKINS" text="Envy S_kin Site"/> <!--
-				<item id="ID_HELP_UPDATE" text="Latest news"/>
+				<item id="ID_HELP_WEB_SKINS" text="Envy S_kin Site"/>
+				<!--item id="ID_HELP_UPDATE" text="Latest news"-->
 				<!--item id="ID_HELP_WEB_1" text="Zeropaid.com"-->
 			</menu>
-			<separator/> <!--
-			<item id="ID_HELP_VERSION_CHECK" text="Check for new _version"/>
-			<item id="ID_HELP_DONATE" text="_Donate to Envy"/>
-			<separator/> -->
+			<separator/>
+			<!--item id="ID_HELP_VERSION_CHECK" text="Check for new _version"-->
+			<!--item id="ID_HELP_DONATE" text="_Donate to Envy"-->
+			<!--separator-->
 			<item id="ID_HELP_ABOUT" text="_About Envy..."/>
 		</menu>
 	</menu>
@@ -225,14 +225,14 @@
 				<item id="ID_HELP_HOMEPAGE" text="_Envy Site"/>
 				<separator/>
 				<item id="ID_HELP_FORUMS" text="Envy _Forums"/>
-				<item id="ID_HELP_WEB_SKINS" text="Envy S_kin Site"/> <!--
-				<item id="ID_HELP_UPDATE" text="Latest news"/>
+				<item id="ID_HELP_WEB_SKINS" text="Envy S_kin Site"/>
+				<!--item id="ID_HELP_UPDATE" text="Latest news"-->
 				<!--item id="ID_HELP_WEB_1" text="Zeropaid.com"-->
 			</menu>
-			<separator/> <!--
-			<item id="ID_HELP_VERSION_CHECK" text="Check for new _version"/>
-			<item id="ID_HELP_DONATE" text="_Donate to Envy"/>
-			<separator/> -->
+			<separator/>
+			<!--item id="ID_HELP_VERSION_CHECK" text="Check for new _version"-->
+			<!--item id="ID_HELP_DONATE" text="_Donate to Envy"-->
+			<!--separator-->
 			<item id="ID_HELP_ABOUT" text="_About Envy..."/>
 		</menu>
 	</menu>
@@ -331,10 +331,10 @@
 				<item id="ID_HELP_UPDATE" text="Latest news"/>
 				<!--item id="ID_HELP_WEB_1" text="Zeropaid.com"-->
 			</menu>
-			<separator/> <!--
-			<item id="ID_HELP_VERSION_CHECK" text="Check for new _version"/>
-			<item id="ID_HELP_DONATE" text="_Donate to Envy"/>
-			<separator/> -->
+			<separator/>
+			<!--item id="ID_HELP_VERSION_CHECK" text="Check for new _version"-->
+			<!--item id="ID_HELP_DONATE" text="_Donate to Envy"-->
+			<!--separator-->
 			<item id="ID_HELP_ABOUT" text="_About Envy..."/>
 		</menu>
 	</menu>
@@ -452,7 +452,6 @@
 		<item id="ID_CHAT_CLEAR" text="C_lear Window"/>
 	</menu>
 </menus>
-
 <!-- Documents -->
 <documents>
 	<!-- Home View -->

@@ -24,13 +24,14 @@
 class CAboutDlg : public CSkinDialog
 {
 public:
-	CAboutDlg(CWnd* pParent = NULL);		// Standard constructor
+	CAboutDlg(CWnd* pParent = NULL);
 
 	enum { IDD = IDD_ABOUT };
 
 protected:
 	CStatic		m_wndWeb;
 	CStatic		m_wndTitle;
+	CStatic		m_wndLogo;
 
 	virtual void DoDataExchange(CDataExchange* pDX);
 	virtual BOOL OnInitDialog();

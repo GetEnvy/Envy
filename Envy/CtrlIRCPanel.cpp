@@ -154,8 +154,7 @@ int CIRCChannelsBox::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	CRect rc( 0, 0, 0, 0 );
 
 	m_wndChanList.Create( WS_CHILD | WS_VSCROLL | WS_TABSTOP | WS_GROUP | WS_VISIBLE |
-		LVS_SINGLESEL | LVS_SHOWSELALWAYS | LVS_REPORT |
-		LVS_NOCOLUMNHEADER | LVS_SORTASCENDING | LVS_NOLABELWRAP,
+		LVS_SINGLESEL | LVS_SHOWSELALWAYS | LVS_REPORT | LVS_NOCOLUMNHEADER | LVS_SORTASCENDING | LVS_NOLABELWRAP,
 		rc, this, IDC_IRC_CHANNELS );
 	rc.right -= GetSystemMetrics( SM_CXVSCROLL );
 	m_wndChanList.SetExtendedStyle( LVS_EX_DOUBLEBUFFER|LVS_EX_TRANSPARENTBKGND|LVS_EX_FULLROWSELECT|LVS_EX_LABELTIP );
@@ -368,11 +367,9 @@ int CIRCUsersBox::HitTest(const CPoint& pt) const
 
 void CIRCUsersBox::UpdateCaptionCount()
 {
-	CString strCaption;
-	LoadString( strCaption, IDS_IRC_USERLIST );
 	CString strCount;
 	strCount.Format( L" (%d)", m_wndUserList.GetCount() );
-	SetCaption( strCaption + strCount );
+	SetCaption( LoadString( IDS_IRC_USERLIST ) + strCount );
 }
 
 int CIRCUsersBox::OnCompareItem(int nIDCtl, LPCOMPAREITEMSTRUCT lpCompareItemStruct)

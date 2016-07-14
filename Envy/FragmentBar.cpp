@@ -193,7 +193,7 @@ void CFragmentBar::DrawDownload(CDC* pDC, CRect* prcBar, const CDownloadDisplayD
 	for ( UINT nSource = 0 ; nSource < pDownloadData->m_nSourceCount ; nSource++ )
 	{
 		// Note: Was pDownload->GetNext( posSource )->Draw( pDC, prcBar );
-		if ( ! (  pDownloadData->m_bCompleted || pDownloadData->m_bSeeding ) || ! pDownloadData->m_pSourcesData[ nSource ].m_oPastFragments.empty() )
+		if ( ! ( pDownloadData->m_bCompleted || pDownloadData->m_bSeeding ) || ! pDownloadData->m_pSourcesData[ nSource ].m_oPastFragments.empty() )
 			DrawSource( pDC, prcBar, &pDownloadData->m_pSourcesData.GetAt( nSource ), crNatural, FALSE );
 	}
 
@@ -340,7 +340,6 @@ void CFragmentBar::DrawSource(CDC* pDC, CRect* prcBar, const CSourceDisplayData*
 
 //////////////////////////////////////////////////////////////////////
 // CFragmentBar original moved to DownloadSource
-//
 
 //void CFragmentBar::DrawSource(CDC* pDC, CRect* prcBar, CDownloadSource* pSource, COLORREF crNatural)
 //{
@@ -355,22 +354,6 @@ void CFragmentBar::DrawSource(CDC* pDC, CRect* prcBar, const CSourceDisplayData*
 //
 //		switch ( pSource->m_pTransfer->m_nProtocol )
 //		{
-//		case PROTOCOL_G1:
-//		case PROTOCOL_G2:
-//		case PROTOCOL_HTTP:
-//		case PROTOCOL_FTP:
-//			break;	// Do nothing more
-//		case PROTOCOL_ED2K:
-//			for ( Fragments::Queue::const_iterator pRequested
-//				= static_cast< CDownloadTransferED2K* >( pSource->m_pTransfer )->m_oRequested.begin() ;
-//				pRequested
-//				!= static_cast< CDownloadTransferED2K* >( pSource->m_pTransfer )->m_oRequested.end() ;
-//				++pRequested )
-//			{
-//				DrawStateBar( pDC, prcBar, pSource->m_pDownload->m_nSize,
-//					pRequested->begin(), pRequested->size(), Colors.m_crFragmentRequest, TRUE );
-//			}
-//			break;
 //		case PROTOCOL_BT:
 //			for ( Fragments::Queue::const_iterator pRequested =
 //				static_cast< CDownloadTransferBT* >( pSource->m_pTransfer )->m_oRequested.begin() ;
@@ -382,10 +365,25 @@ void CFragmentBar::DrawSource(CDC* pDC, CRect* prcBar, const CSourceDisplayData*
 //					pRequested->begin(), pRequested->size(), Colors.m_crFragmentRequest, TRUE );
 //			}
 //			break;
+//		case PROTOCOL_ED2K:
+//			for ( Fragments::Queue::const_iterator pRequested
+//				= static_cast< CDownloadTransferED2K* >( pSource->m_pTransfer )->m_oRequested.begin() ;
+//				pRequested
+//				!= static_cast< CDownloadTransferED2K* >( pSource->m_pTransfer )->m_oRequested.end() ;
+//				++pRequested )
+//			{
+//				DrawStateBar( pDC, prcBar, pSource->m_pDownload->m_nSize,
+//					pRequested->begin(), pRequested->size(), Colors.m_crFragmentRequest, TRUE );
+//			}
+//			break;
+//		case PROTOCOL_G1:
+//		case PROTOCOL_G2:
+//		case PROTOCOL_HTTP:
+//		case PROTOCOL_FTP:
 //		case PROTOCOL_NULL:
 //		case PROTOCOL_ANY:
 //		default:
-//			;
+//			;	// Do nothing more
 //		}
 //	}
 //

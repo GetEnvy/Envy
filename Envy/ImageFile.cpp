@@ -309,7 +309,7 @@ HBITMAP CImageFile::CreateBitmap(HDC hUseDC)
 	if ( ! m_bLoaded ) return NULL;
 	if ( m_nComponents == 1 ) MonoToRGB();
 	//if ( m_nComponents != 3 )
-	//	AlphaToRGB( RGB( 255,255,255 ) );	// EnsureRGB for Win2K to otherwise support Alpha transparency
+	//	AlphaToRGB( RGB( 255,255,255 ) );	// Was EnsureRGB for Win2K, otherwise support Alpha transparency
 
 	BITMAPV5HEADER pV5Header = {};
 

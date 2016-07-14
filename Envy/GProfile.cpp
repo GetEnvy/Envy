@@ -322,7 +322,7 @@ DWORD CGProfile::GetPackedGPS() const
 		if ( const CXMLElement* pCoordinates = pLocation->GetElementByName( L"coordinates" ) )
 		{
 			float nLatitude = 0, nLongitude = 0;
-			if ( _stscanf( pCoordinates->GetAttributeValue( L"latitude" ),  L"%f", &nLatitude  ) == 1 &&
+			if ( _stscanf( pCoordinates->GetAttributeValue( L"latitude" ),  L"%f", &nLatitude ) == 1 &&
 				 _stscanf( pCoordinates->GetAttributeValue( L"longitude" ), L"%f", &nLongitude ) == 1 )
 			{
 				return ( (DWORD)WORDLIM( ( nLatitude  + 90.0f )  * 65535.0f / 180.0f ) << 16 ) +
@@ -384,6 +384,7 @@ void CGProfile::Serialize(CArchive& ar, int /*nVersion*/)	// BROWSER_SER_VERSION
 	{
 		ar >> bXMLPresent;
 	}
+
 	if ( m_pXML && bXMLPresent )
 		m_pXML->Serialize( ar );
 }

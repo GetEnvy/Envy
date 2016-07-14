@@ -49,6 +49,7 @@ void CAboutDlg::DoDataExchange(CDataExchange* pDX)
 	CSkinDialog::DoDataExchange(pDX);
 	DDX_Control(pDX, IDC_WEB, m_wndWeb);
 	DDX_Control(pDX, IDC_TITLE, m_wndTitle);
+	DDX_Control(pDX, IDC_LOGO, m_wndLogo);
 }
 
 /////////////////////////////////////////////////////////////////////////////
@@ -60,8 +61,9 @@ BOOL CAboutDlg::OnInitDialog()
 
 	SkinMe( L"CAboutDlg", IDR_MAINFRAME );
 
-	CString strCaption;
+	m_wndLogo.SetBitmap( Skin.LoadBitmap( IDR_LOGO ) );
 
+	CString strCaption;
 	GetWindowText( strCaption );
 	strCaption += L" v";
 	strCaption += theApp.m_sVersion;
@@ -89,7 +91,7 @@ HBRUSH CAboutDlg::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
 
 	if ( pWnd == &m_wndTitle )
 	{
-		pDC->SelectObject( &CoolInterface.m_fntBold );
+		pDC->SelectObject( &CoolInterface.m_fntRichDefault );		// Bold size+1 CoolInterface.m_fntBold theApp.m_gdiFontBold
 	}
 	else if ( pWnd == &m_wndWeb )
 	{

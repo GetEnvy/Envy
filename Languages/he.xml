@@ -3,7 +3,7 @@
 
 <!-- Envy Default Hebrew Skin File -->
 
-<!-- Translation based on default en.xml r4 -->
+<!-- Translation based on default en.xml r8 -->
 <!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -2699,7 +2699,7 @@ gap i newline
 	<string id="20456" value="‪ר ש י מ ת   ה ש מ ע ה"/>
 	<string id="20457" value="‪Envy could not instantiate its MediaServices plugin. Please reinstall Envy, and confirm that you have the necessary media codecs and output drivers installed."/>
 	<string id="20458" value="Envy Media Player"/>
-	<string id="20460" value="‪ נ   ג   ן     ה   מ   ד   י   ה       ש   ר   ז   ה"/>
+	<string id="20460" value="‪נג ן  המד י ה  שרזה"/>
 	<string id="20462" value="‪(ללא אפקטים ויזואליים)"/>
 	<!--string id="20464" value="‪:שרזה סיים להוריד"-->
 	<!--string id="20465" value="‪:שרזה מוריד"-->

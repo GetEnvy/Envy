@@ -211,8 +211,8 @@ void CRichViewCtrl::OnPaint()
 		return;
 	}
 
-	CSingleLock pLock( &m_pDocument->m_pSection );
-	if ( ! SafeLock( pLock ) ) return;
+	CSingleLock pLock( &m_pDocument->m_pSection, TRUE );
+	//if ( ! SafeLock( pLock ) ) return;	// Assert? (Win8 Debug)
 
 	CFont* pOldFont = (CFont*)dc.SelectObject( &CoolInterface.m_fntNormal );
 
@@ -260,8 +260,8 @@ BOOL CRichViewCtrl::OnSetCursor(CWnd* pWnd, UINT nHitTest, UINT message)
 	{
 		CRichFragment* pFrag = NULL;
 
-		CSingleLock pLock( &m_pDocument->m_pSection );
-		if ( ! SafeLock( pLock ) ) return FALSE;
+		CSingleLock pLock( &m_pDocument->m_pSection, TRUE );
+		//if ( ! SafeLock( pLock ) ) return FALSE;	// Assert? (Win8 Debug)
 
 		if ( ! m_bSelecting )
 		{

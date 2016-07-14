@@ -122,6 +122,7 @@ public:
 		bool		MenuBorders;
 		bool		MenuGripper;
 		bool		RoundedSelect;
+		bool		AltIcons;
 		bool		FrameEdge;
 		DWORD		ButtonEdge;
 		DWORD		MenubarHeight;

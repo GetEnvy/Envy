@@ -118,7 +118,8 @@
 #define IDB_SORT_DESC                   322
 #define IDB_TASKBOX_CAPTION             324
 #define IDB_TASKPANEL_FOOTER            325
-#define IDB_MUSICBRAINZ_LOGO            328
+#define IDB_MUSICBRAINZ_LOGO            326
+#define IDR_LOGO                        328
 #define IDR_LARGE_LOGO                  330
 #define IDR_HOME_HEADER                 332
 #define IDR_HOME_HEADER_REPEAT          333
@@ -467,6 +468,7 @@
 #define IDC_LOC_COUNTRY                 1281
 #define IDC_LOC_LAT                     1282
 #define IDC_LOC_LONG                    1284
+#define IDC_LOGO                        1299
 #define IDC_LOG                         1300
 #define IDC_IP_1                        1301
 #define IDC_IP_2                        1302

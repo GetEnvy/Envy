@@ -1712,13 +1712,14 @@ void CMainWnd::LocalSystemChecks()
 		}
 		//else
 		//{
-		// Extra NT/Win2000/XP permission checks
+		// Extra Win2000/XP permission checks
 		// ToDo: These checks fail on some machines. WinXP goofyness?
 		//	if ( ( _taccess( Settings.Downloads.IncompletePath, 06 ) != 0 ) ||
 		//		 ( _taccess( Settings.Downloads.CompletePath, 06 ) != 0 ) )
 		//	{
 		//		Settings.Live.DiskWriteWarning = true;
 		//		PostMessage( WM_COMMAND, ID_HELP_DISKWRITEFAIL );
+		//	}
 		//}
 	}
 

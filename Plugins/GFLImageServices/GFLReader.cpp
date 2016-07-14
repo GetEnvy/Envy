@@ -5,7 +5,7 @@
 // Portions copyright PeerProject 2008-2014 and Nikolay Raspopov 2005
 //
 // GFL Library, GFL SDK and XnView
-// Copyright (c) 1991-2004 Pierre-E Gougelet
+// Copyright (c) 1991-2009 Pierre-E Gougelet
 //
 // Envy is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
@@ -32,8 +32,7 @@ void CGFLReader::FinalRelease() throw()
 	m_pUnkMarshaler.Release();
 }
 
-HRESULT BitmapToSafeArray ( SAFEARRAY** const ppImage, const IMAGESERVICEDATA* const pParams,
-	const GFL_BITMAP* hGflBitmap ) throw ()
+HRESULT BitmapToSafeArray ( SAFEARRAY** const ppImage, const IMAGESERVICEDATA* const pParams, const GFL_BITMAP* hGflBitmap ) throw ()
 {
 	HRESULT hr = E_OUTOFMEMORY;
 	ULONG line_size = ( ( pParams->nWidth * pParams->nComponents ) + 3 ) & ( -4 );
@@ -48,8 +47,7 @@ HRESULT BitmapToSafeArray ( SAFEARRAY** const ppImage, const IMAGESERVICEDATA* c
 		{
 			BYTE* dst = pDestination;
 			const BYTE* src = hGflBitmap->Data;
-			for ( LONG line = 0; line < pParams->nHeight; ++line,
-				dst += line_size, src += hGflBitmap->BytesPerLine )
+			for ( LONG line = 0; line < pParams->nHeight; ++line, dst += line_size, src += hGflBitmap->BytesPerLine )
 				CopyMemory( dst, src, hGflBitmap->BytesPerLine );
 			SafeArrayUnaccessData( *ppImage );
 		}
@@ -92,6 +90,7 @@ STDMETHODIMP CGFLReader::LoadFromFile (
 		else
 			err = GFL_ERROR_FILE_OPEN;
 	}
+
 	if ( err == GFL_NO_ERROR )
 	{
 		pParams->nHeight = inf.Height;
@@ -111,7 +110,6 @@ STDMETHODIMP CGFLReader::LoadFromFile (
 			prm.ColorModel = ( inf.ComponentsPerPixel == 4 ) ? GFL_RGBA : GFL_RGB;
 			prm.FormatIndex = inf.FormatIndex;
 			hr = SAFEgflLoadBitmap ( *pszPath ? pszPath : (LPCWSTR)sFile, &hGflBitmap, &prm, &inf);
-
 			if ( SUCCEEDED( hr ) )
 				hr = BitmapToSafeArray (ppImage, pParams, hGflBitmap);
 		}
@@ -233,7 +231,7 @@ STDMETHODIMP CGFLReader::SaveToFile (
 		{
 			hr = E_OUTOFMEMORY;
 			GFL_BITMAP* hGflBitmap = gflAllockBitmapEx(
-				( pParams->nComponents == 4 ) ? GFL_RGBA : GFL_RGB,
+				pParams->nComponents == 4 ? GFL_RGBA : GFL_RGB,
 				pParams->nWidth, pParams->nHeight, 8, 4, NULL );
 			if ( hGflBitmap )
 			{
@@ -286,7 +284,7 @@ STDMETHODIMP CGFLReader::SaveToMemory (
 		{
 			hr = E_OUTOFMEMORY;
 			GFL_BITMAP* hGflBitmap = gflAllockBitmapEx (
-				(pParams->nComponents == 4) ? GFL_RGBA : GFL_RGB,
+				pParams->nComponents == 4 ? GFL_RGBA : GFL_RGB,
 				pParams->nWidth, pParams->nHeight, 8, 4, NULL );
 			if ( hGflBitmap )
 			{

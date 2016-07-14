@@ -137,7 +137,7 @@ BOOL CVendorCache::LoadFrom(CXMLElement* pXML)
 				else
 				{
 					m_pCodeMap.SetAt( pVendor->m_sCode, pVendor );
-					m_pNameMap.SetAt( CString ( pVendor->m_sName ).MakeLower(), pVendor );
+					m_pNameMap.SetAt( CString( pVendor->m_sName ).MakeLower(), pVendor );
 				}
 			}
 			else
@@ -155,7 +155,7 @@ bool CVendorCache::IsExtended(LPCTSTR pszCode) const
 {
 	ASSERT( pszCode );
 
-	if ( ! *pszCode || *pszCode == L'µ' || _tcsicmp( pszCode, L"BitTorrent" ) == 0  )
+	if ( ! *pszCode || *pszCode == L'µ' || _tcsicmp( pszCode, L"BitTorrent" ) == 0 )
 		return false;
 
 	// Find by product name (Server or User-Agent HTTP-headers)
@@ -192,7 +192,7 @@ CVendor::CVendor(LPCTSTR pszCode)
 		m_sCode = m_sCode.Left( 4 );
 	else
 		while ( m_sCode.GetLength() < 4 )
-			m_sCode += ' ';
+			m_sCode += L' ';
 }
 
 CVendor::~CVendor()

@@ -73,7 +73,7 @@
  <part name="Top"		rect="55,88,5,26"/>
  <part name="TopRight"		rect="76,88,44,26"/>
  <part name="Left"		rect="8,120,6,40"/>
- <part name="Right"		rect="234,120,6,20"/>
+ <part name="Right"		rect="234,142,6,20"/>
  <part name="BottomLeft"	rect="8,174,6,6"/>
  <part name="Bottom"		rect="20,174,100,6"/>
  <part name="BottomRight"	rect="234,174,6,6"/>
@@ -81,7 +81,7 @@
  <part name="TopAlt"		rect="55,60,6,26"/>
  <part name="TopRightAlt"	rect="76,60,44,26"/>
  <part name="LeftAlt"		rect="22,120,6,40"/>
- <part name="RightAlt"		rect="220,144,6,16"/>
+ <part name="RightAlt"		rect="220,142,6,16"/>
  <part name="BottomLeftAlt"	rect="22,160,6,6"/>
  <part name="BottomAlt"		rect="30,160,100,6"/>
  <part name="BottomRightAlt"	rect="220,160,6,6"/>
