@@ -1,8 +1,8 @@
-/* $Id: miniupnpc.h,v 1.41 2015/05/22 10:23:48 nanard Exp $ */
+/* $Id: miniupnpc.h,v 1.50 2016/04/19 21:06:21 nanard Exp $ */
 /* Project: miniupnp
  * http://miniupnp.free.fr/
  * Author: Thomas Bernard
- * Copyright (c) 2005-2015 Thomas Bernard
+ * Copyright (c) 2005-2016 Thomas Bernard
  * This software is subject to the conditions detailed
  * in the LICENCE file provided within this distribution */
 
@@ -20,8 +20,8 @@
 #define UPNPDISCOVER_MEMORY_ERROR (-102)
 
 /* versions : */
-#define MINIUPNPC_VERSION		"1.9.20151020"
-#define MINIUPNPC_API_VERSION	15
+#define MINIUPNPC_VERSION		"2.0"
+#define MINIUPNPC_API_VERSION	16
 
 /* Source port:
    Using "1" as an alias for 1900 for backwards compatability
@@ -85,6 +85,7 @@ upnpDiscoverDevices(const char * const deviceTypes[],
 
 /* freeUPNPDevlist()
  * free list returned by upnpDiscover() */
+/* Fix: Declared here instead of upndev.h */
 MINIUPNP_LIBSPEC void freeUPNPDevlist(struct UPNPDev * devlist);
 
 /* parserootdesc() :

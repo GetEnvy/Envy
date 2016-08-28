@@ -544,11 +544,8 @@ BOOL CMatchCtrl::OnMouseWheel(UINT nFlags, short zDelta, CPoint pt)
 	// Scroll window under cursor
 	if ( CWnd* pWnd = WindowFromPoint( pt ) )
 	{
-		if ( pWnd != this )
-		{
-			if ( pWnd == FindWindowEx( GetParent()->GetSafeHwnd(), NULL, NULL, L"CPanelCtrl" ) )
-				return pWnd->PostMessage( WM_MOUSEWHEEL, MAKEWPARAM( nFlags, zDelta ), MAKELPARAM( pt.x, pt.y ) );
-		}
+		if ( pWnd != this && pWnd == FindWindowEx( GetParent()->GetSafeHwnd(), NULL, NULL, L"CPanelCtrl" ) )
+			return pWnd->PostMessage( WM_MOUSEWHEEL, MAKEWPARAM( nFlags, zDelta ), MAKELPARAM( pt.x, pt.y ) );
 	}
 
 	ScrollBy( - zDelta / WHEEL_DELTA * theApp.m_nMouseWheel );
@@ -625,33 +622,33 @@ BOOL CMatchCtrl::OnEraseBkgnd(CDC* /*pDC*/)
 
 void CMatchCtrl::OnPaint()
 {
-	CSingleLock pLock( &m_pMatches->m_pSection );
+	// Skip if not visible, potential high cpu when resizing window
+	if ( ! CWnd::IsWindowVisible() )
+		return;
 
+	CSingleLock pLock( &m_pMatches->m_pSection );
 	if ( ! pLock.Lock( 80 ) )
 	{
 		PostMessage( WM_TIMER, 1 );
 		return;
 	}
 
-	CRect rcClient, rcItem;
 	CPaintDC dc( this );
 	if ( Settings.General.LanguageRTL ) dc.SetTextAlign( TA_RTLREADING );
+	dc.SetViewportOrg( -GetScrollPos( SB_HORZ ), 0 );
 
-	// ToDo: Skip if not visible, potential high cpu whenever resizing window
-
+	CRect rcClient, rcItem;
 	GetClientRect( &rcClient );
 	rcClient.top += HEADER_HEIGHT;
 
-	dc.SetViewportOrg( -GetScrollPos( SB_HORZ ), 0 );
-
-	INT nZeroInt, nColWidth;
+	int nZeroInt, nColWidth;
 	GetScrollRange( SB_HORZ, &nZeroInt, &nColWidth );
 	rcClient.right = max( rcClient.right, LONG(nColWidth) );
 
 	CFont* pOldFont = (CFont*)dc.SelectObject( &CoolInterface.m_fntNormal );
 
 	rcItem.SetRect( rcClient.left, rcClient.top, rcClient.right, 0 );
-	rcItem.top -= m_nHitIndex * Settings.Skin.RowSize;
+	rcItem.top  -= m_nHitIndex * Settings.Skin.RowSize;
 	rcItem.bottom = rcItem.top + Settings.Skin.RowSize;
 
 	CMatchFile** ppFile = m_pMatches->m_pFiles + m_nTopIndex;
@@ -818,20 +815,22 @@ void CMatchCtrl::DrawItem(CDC& dc, CRect& rcRow, CMatchFile* pFile, CQueryHit* p
 
 	for ( int nColumn = 0 ; nColumn < nColumns ; nColumn++ )
 	{
-		HDITEM pColumn = { HDI_FORMAT|HDI_WIDTH|HDI_ORDER };
 		CRect rcCol;
-
-		Header_GetItem( m_wndHeader.GetSafeHwnd(), nColumn, &pColumn );
-		Header_GetItemRect( m_wndHeader.GetSafeHwnd(), nColumn, &rcCol );
+		Header_GetItemRect( m_wndHeader.GetSafeHwnd(), nColumn, &rcCol );		// ToDo: Potential high cpu
 
 		int nLeft = rcCol.left;
 		rcCol.top = rcRow.top;
 		rcCol.bottom = rcRow.bottom;
 
+		if ( ! dc.RectVisible( &rcCol ) || rcCol.Width() < 2 )
+			continue;
+
+		HDITEM pColumn = { HDI_FORMAT };	// |HDI_WIDTH|HDI_ORDER
+		Header_GetItem( m_wndHeader.GetSafeHwnd(), nColumn, &pColumn );			// ToDo: Potential high cpu, for centering indication
+
 		POINT ptHover;
-		RECT  rcTick = { rcCol.left+2, rcCol.top+2, rcCol.left+14, rcCol.bottom-2 };
-		GetCursorPos(&ptHover);
-		ScreenToClient(&ptHover);
+		GetCursorPos( &ptHover );
+		ScreenToClient( &ptHover );
 
 		LPCTSTR pszText = L"";
 		int nPosition, nText = -1;
@@ -851,6 +850,8 @@ void CMatchCtrl::DrawItem(CDC& dc, CRect& rcRow, CMatchFile* pFile, CQueryHit* p
 
 			if ( ! pHit && nHits > 1 )
 			{
+				RECT  rcTick = { rcCol.left + 2, rcCol.top + 2, rcCol.left + 14, rcCol.bottom - 2 };
+
 				// Draw Open/Close Tick
 				if ( pFile->m_bExpanded )
 				{

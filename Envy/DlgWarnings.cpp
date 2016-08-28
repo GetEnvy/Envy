@@ -105,10 +105,8 @@ void CWarningsDlg::OnLButtonUp(UINT nFlags, CPoint point)
 
 	if ( rc.PtInRect( point ) )
 	{
-		const CString strWebSite( WEB_SITE );
-
 		ShellExecute( GetSafeHwnd(), L"open",
-			strWebSite + L"?Version=" + theApp.m_sVersion,
+			CString( WEB_SITE ) + L"?Version=" + theApp.m_sVersion,
 			NULL, NULL, SW_SHOWNORMAL );
 	}
 }

@@ -47,9 +47,9 @@ static char THIS_FILE[] = __FILE__;
 enum {
 	COL_TITLE,
 	COL_SIZE,
-	COL_PROGRESS,
 	COL_TRANSFER,
 	COL_SPEED,
+	COL_PROGRESS,
 	COL_RATING,
 	COL_USER,
 	COL_CLIENT,
@@ -127,12 +127,12 @@ int CUploadsCtrl::OnCreate(LPCREATESTRUCT lpCreateStruct)
 
 	InsertColumn( COL_TITLE, L"Uploaded File", LVCFMT_LEFT, rect.Width() > 1600 ? 400 : 300 );
 	InsertColumn( COL_SIZE, L"Size", LVCFMT_CENTER, 64 );
-	InsertColumn( COL_PROGRESS, L"Progress", LVCFMT_CENTER, 100 );
 	InsertColumn( COL_TRANSFER, L"Transfer", LVCFMT_CENTER, 64 );
-	InsertColumn( COL_SPEED, L"Speed", LVCFMT_CENTER, 76 );
+	InsertColumn( COL_SPEED, L"Speed", LVCFMT_CENTER, 74 );
+	InsertColumn( COL_PROGRESS, L"Progress", LVCFMT_CENTER, 100 );
 	InsertColumn( COL_RATING, L"Rating", LVCFMT_CENTER, 0 );
-	InsertColumn( COL_USER, L"Remote User", LVCFMT_CENTER, 140 );
-	InsertColumn( COL_CLIENT, L"Client", LVCFMT_CENTER, 100 );
+	InsertColumn( COL_USER, L"Remote User", LVCFMT_CENTER, 134 );
+	InsertColumn( COL_CLIENT, L"Client", LVCFMT_CENTER, 108 );
 	InsertColumn( COL_COUNTRY, L"Country", LVCFMT_LEFT, 54 );
 
 	LoadColumnState();
@@ -1039,7 +1039,7 @@ void CUploadsCtrl::PaintQueue(CDC& dc, const CRect& rcRow, const CQueueDisplayDa
 				strText += L'\x2026';
 		}
 
-		nTextLeft  = min( nTextLeft, (int)rcCell.left );
+		nTextLeft  = min( nTextLeft,  (int)rcCell.left );
 		nTextRight = max( nTextRight, (int)rcCell.right );
 
 		int nPosition = 0;

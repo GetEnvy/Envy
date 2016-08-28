@@ -188,6 +188,7 @@ BEGIN_MESSAGE_MAP(CMainWnd, CMDIFrameWnd)
 	ON_COMMAND(ID_HELP_WEB_4, OnHelpWeb4)
 	ON_COMMAND(ID_HELP_WEB_SKINS, OnHelpWebSkins)
 	ON_COMMAND(ID_HELP_WEB_BITPRINTS, OnHelpWebBitprints)
+	ON_COMMAND(ID_HELP_WEB_KICKBACKS, OnHelpWebKickbacks)
 	ON_COMMAND(ID_HELP_FAQ, OnHelpFaq)
 	ON_COMMAND(ID_HELP_GUIDE, OnHelpGuide)
 	ON_COMMAND(ID_HELP_FORUMS, OnHelpForums)
@@ -2891,48 +2892,50 @@ void CMainWnd::OnHelpVersionCheck()
 
 void CMainWnd::OnHelpHomepage()
 {
-	const CString strWebSite( WEB_SITE );
-
 	ShellExecute( GetSafeHwnd(), L"open",
-		strWebSite + L"?Version=" + theApp.m_sVersion,
+		CString( WEB_SITE ) + L"?Version=" + theApp.m_sVersion,
 		NULL, NULL, SW_SHOWNORMAL );
 }
 
 void CMainWnd::OnHelpWeb1()
 {
-	const CString strWebSite( WEB_SITE );
-
-	ShellExecute( GetSafeHwnd(), L"open", strWebSite + L"external/?link1",
+	ShellExecute( GetSafeHwnd(), L"open",
+		CString( WEB_SITE ) + L"external/?link1",
 		NULL, NULL, SW_SHOWNORMAL );
 }
 
 void CMainWnd::OnHelpWeb2()
 {
-	const CString strWebSite( WEB_SITE );
-
-	ShellExecute( GetSafeHwnd(), L"open", strWebSite + L"external/?link2",
+	ShellExecute( GetSafeHwnd(), L"open",
+		CString( WEB_SITE ) + L"external/?link2",
 		NULL, NULL, SW_SHOWNORMAL );
 }
 
 void CMainWnd::OnHelpWeb3()
 {
-	const CString strWebSite( WEB_SITE );
-
-	ShellExecute( GetSafeHwnd(), L"open", strWebSite + L"external/?link3",
+	ShellExecute( GetSafeHwnd(), L"open",
+		CString( WEB_SITE ) + L"external/?link3",
 		NULL, NULL, SW_SHOWNORMAL );
 }
 
 void CMainWnd::OnHelpWeb4()
 {
-	const CString strWebSite( WEB_SITE );
+	ShellExecute( GetSafeHwnd(), L"open",
+		CString( WEB_SITE ) + L"external/?link4",
+		NULL, NULL, SW_SHOWNORMAL );
+}
 
-	ShellExecute( GetSafeHwnd(), L"open", strWebSite + L"external/?link4",
+void CMainWnd::OnHelpWebKickbacks()
+{
+	ShellExecute( GetSafeHwnd(), L"open",
+		CString( WEB_SITE ) + L"kickbacks",
 		NULL, NULL, SW_SHOWNORMAL );
 }
 
 void CMainWnd::OnHelpWebBitprints()
 {
-	ShellExecute( GetSafeHwnd(), L"open", L"bitprints.getenvy.com",
+	ShellExecute( GetSafeHwnd(), L"open",
+		L"http://bitprints.getenvy.com",
 		NULL, NULL, SW_SHOWNORMAL );
 }
 
@@ -2951,18 +2954,17 @@ void CMainWnd::OnHelpWebSkins()
 
 void CMainWnd::OnHelpStartpage()
 {
-	const CString strWebSite( WEB_SITE );
-
-	ShellExecute( GetSafeHwnd(), L"open", strWebSite + L"start",
+	ShellExecute( GetSafeHwnd(), L"open",
+		CString( WEB_SITE ) + L"start",
 		NULL, NULL, SW_SHOWNORMAL );
 }
 
 void CMainWnd::OnHelpConnectiontest()
 {
 	CString strTestUrl;
-	strTestUrl.Format( L"%s/connectiontest/?port=%u&lang=%s&Version=%s",
+	strTestUrl.Format( L"%stestenvy/?port=%u&lang=%s&Version=%s",
 		WEB_SITE, Settings.Connection.InPort,
-		(LPCTSTR)Settings.General.Language, (LPCTSTR)theApp.m_sVersion );
+		(LPCTSTR)Settings.General.Language.Left(2), (LPCTSTR)theApp.m_sVersion );
 
 	ShellExecute( GetSafeHwnd(), L"open", strTestUrl,
 		NULL, NULL, SW_SHOWNORMAL );
@@ -2970,37 +2972,29 @@ void CMainWnd::OnHelpConnectiontest()
 
 void CMainWnd::OnHelpFaq()
 {
-	const CString strWebSite( WEB_SITE );
-
 	ShellExecute( GetSafeHwnd(), L"open",
-		strWebSite + L"wiki/faq",
+		CString( WEB_SITE ) + L"wiki/faq",
 		NULL, NULL, SW_SHOWNORMAL );
 }
 
 void CMainWnd::OnHelpGuide()
 {
-	const CString strWebSite( WEB_SITE );
-
 	ShellExecute( GetSafeHwnd(), L"open",
-		strWebSite + L"wiki/userguide",
+		CString( WEB_SITE ) + L"wiki/userguide",
 		NULL, NULL, SW_SHOWNORMAL );
 }
 
 void CMainWnd::OnHelpForums()
 {
-	const CString strWebSite( WEB_SITE );
-
 	ShellExecute( GetSafeHwnd(), L"open",
-		strWebSite + L"forums",
+		CString( WEB_SITE ) + L"forums",
 		NULL, NULL, SW_SHOWNORMAL );
 }
 
 void CMainWnd::OnHelpForumsLocal()
 {
-	const CString strWebSite( WEB_SITE );
-
 	ShellExecute( GetSafeHwnd(), L"open",
-		strWebSite + L"forums/local/" + Settings.General.Language.Left(2),
+		CString( WEB_SITE ) + L"forums/local/" + Settings.General.Language.Left(2),
 		NULL, NULL, SW_SHOWNORMAL );
 }
 
@@ -3022,41 +3016,36 @@ void CMainWnd::OnHelpUpdate()
 
 void CMainWnd::OnHelpRouter()
 {
-	const CString strWebSite( WEB_SITE );
-
-	ShellExecute( GetSafeHwnd(), L"open", L"http://portforward.com",	// ToDo: "wiki/userguide/router"
+	ShellExecute( GetSafeHwnd(), L"open",
+		L"http://portforward.com",	// ToDo: CString( WEB_SITE ) + L"wiki/userguide/router"
 		NULL, NULL, SW_SHOWNORMAL );
 }
 
 void CMainWnd::OnHelpSecurity()
 {
-	const CString strWebSite( WEB_SITE );
-
-	ShellExecute( GetSafeHwnd(), L"open", strWebSite + L"wiki/userguide/security",
+	ShellExecute( GetSafeHwnd(), L"open",
+		CString( WEB_SITE ) + L"wiki/userguide/security",
 		NULL, NULL, SW_SHOWNORMAL );
 }
 
 //void CMainWnd::OnHelpScheduler()
 //{
-//	const CString strWebSite(WEB_SITE_T);
-//
-//	ShellExecute( GetSafeHwnd(), L"open", strWebSite + L"wiki/userguide/scheduler",
+//	ShellExecute( GetSafeHwnd(), L"open",
+//		CString( WEB_SITE ) + L"wiki/userguide/scheduler",
 //		NULL, NULL, SW_SHOWNORMAL );
 //}
 
 void CMainWnd::OnHelpCodec()
 {
-	const CString strWebSite( WEB_SITE );
-
-	ShellExecute( GetSafeHwnd(), L"open", strWebSite + L"wiki/userguide/codecs",
+	ShellExecute( GetSafeHwnd(), L"open",
+		CString( WEB_SITE ) + L"wiki/userguide/codecs",
 		NULL, NULL, SW_SHOWNORMAL );
 }
 
 void CMainWnd::OnHelpDonate()
 {
-	const CString strWebSite( WEB_SITE );
-
-	ShellExecute( GetSafeHwnd(), L"open", strWebSite + L"donations",
+	ShellExecute( GetSafeHwnd(), L"open",
+		CString( WEB_SITE ) + L"donations",
 		NULL, NULL, SW_SHOWNORMAL );
 }
 

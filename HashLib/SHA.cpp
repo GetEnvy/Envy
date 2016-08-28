@@ -71,7 +71,7 @@ void CSHA::Add(const void* pData, std::size_t nLength)
 	SHA1_Add_p5( &m_State, pData, nLength );
 }
 
-#else // HASHLIB_USE_ASM
+#else // No HASHLIB_USE_ASM
 
 CSHA::TransformArray::TransformArray(const uint32* const buffer)
 {
@@ -301,37 +301,39 @@ void CSHA::Add(const void* pData, std::size_t nLength)
 {
 	// Update number of bytes
 	const char* input = static_cast< const char* >( pData );
+
+	uint32 index = static_cast< uint32 >( m_State.m_nCount % m_State.blockSize );
+	m_State.m_nCount += nLength;
+	if ( index )
 	{
-		uint32 index = static_cast< uint32 >( m_State.m_nCount % m_State.blockSize );
-		m_State.m_nCount += nLength;
-		if ( index )
+		// Buffer has some data already,
+		// Fill it before doing the rest of the transformation on the original data
+		const uint32 nFill = m_State.blockSize - index;
+		if ( nLength < nFill )
 		{
-			// buffer has some data already - lets fill it
-			// before doing the rest of the transformation on the original data
-			if ( index + nLength < m_State.blockSize )
-			{
-				std::memcpy( m_State.m_oBuffer + index, input, nLength );
-				return;
-			}
-			std::memcpy( m_State.m_oBuffer + index, input, m_State.blockSize - index );
-			nLength -= m_State.blockSize - index;
-			input += m_State.blockSize - index;
-			Transform( reinterpret_cast< const uint32* >( m_State.m_oBuffer ) );
+			std::memcpy( m_State.m_oBuffer + index, input, nLength );
+			return;
 		}
+		std::memcpy( m_State.m_oBuffer + index, input, nFill );
+		nLength -= nFill;
+		input   += nFill;
+		Transform( reinterpret_cast< const uint32* >( m_State.m_oBuffer ) );
 	}
+
 	// Transform as many times as possible using the original data stream
 	const char* const end = input + nLength - nLength % m_State.blockSize;
 	nLength %= m_State.blockSize;
 	for ( ; input != end; input += m_State.blockSize )
 	{
-		Transform( reinterpret_cast< const uint32* >( input ) );
+		Transform( reinterpret_cast< const uint32* >( input ) );	// High cpu
 	}
+
 	// Buffer remaining input
 	if ( nLength )
 		std::memcpy( m_State.m_oBuffer, input, nLength );
 }
 
-#endif // HASHLIB_USE_ASM
+#endif // No HASHLIB_USE_ASM
 
 // Free implementation of SHA1, Additional Terms:
 // Copyright (c) 2002, Dr Brian Gladman <brg@gladman.me.uk>, Worcester, UK.

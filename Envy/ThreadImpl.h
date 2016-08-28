@@ -43,12 +43,12 @@ private:
 	CEvent			m_pWakeup;		// Thread wakeup event (optional)
 	CEvent			m_pCancel;		// Thread cancel event (signaled if abort requested)
 	volatile LONG	m_bCancelled;	// Thread is canceling
-//	volatile bool	m_bCompleted;	// TRUE - thread runs at least once
+//	volatile bool	m_bCompleted;	// TRUE if thread runs at least once
 
 	static UINT ThreadStart(LPVOID pParam)
 	{
 		CThreadImpl* pThis = reinterpret_cast< CThreadImpl* >( pParam );
-		pThis->OnRun();
+		pThis->OnRun();				// High thread contentions here
 	//	pThis->m_bCompleted = true;	// Set complete status
 		return 0;
 	}
@@ -72,8 +72,8 @@ public:
 
 	inline void CloseThread(DWORD dwTimeout = ALMOST_INFINITE) throw()
 	{
-		m_pCancel.SetEvent();	// Ask thread for exit
-		m_pWakeup.SetEvent();	// Wakeup thread if any
+		m_pCancel.SetEvent();		// Ask thread for exit
+		m_pWakeup.SetEvent();		// Wakeup thread if any
 		if ( ! InterlockedCompareExchange( &m_bCancelled, TRUE, FALSE ) )
 		{
 			if ( m_nThreadID != GetCurrentThreadId() )

@@ -1093,7 +1093,7 @@ bool CLibraryBuilder::DetectVirtualLAME(HANDLE hFile, QWORD& nOffset, QWORD& nLe
 
 		int nLen = sizeof( pFrame );
 		ZeroMemory( &pFrame, nLen );
-		if ( ! ReadFile( hFile, &pFrame, min( (DWORD)nLen, nFrameSize - nVbrHeaderOffset ), &nRead, NULL ) )
+		if ( ! ReadFile( hFile, &pFrame, min( (DWORD)nLen, (DWORD)( nFrameSize - nVbrHeaderOffset ) ), &nRead, NULL ) )
 			break;
 
 		nLen--;

@@ -39,9 +39,9 @@ public:
 		CString	m_sName;
 		CString	m_sTitle;
 		CRect	m_rc;
-		CRect	m_rcSrc[5];
-		BOOL	m_bEnabled;
+		CRect	m_rcSrc[4];
 		BOOL	m_bSelected;
+		//BOOL	m_bEnabled;
 
 		TabItem(CMainTabBarCtrl* pCtrl, LPCTSTR pszName);
 		virtual ~TabItem() {}
@@ -51,8 +51,8 @@ public:
 		void	Paint(CDC* pDstDC, CDC* pSrcDC, const CPoint& ptOffset, BOOL bHover, BOOL bDown);
 		void	OnSkinChange(CSkinWindow* pSkin, CDC* pdcCache, CBitmap* pbmCache);
 
-		virtual void	Enable(BOOL bEnable);
-		virtual void	SetCheck(BOOL bCheck);
+		virtual void	SetCheck(BOOL bCheck);	// Selected state
+		//virtual void	Enable(BOOL bEnable);	// Disabled state (unused)
 	};
 
 protected:

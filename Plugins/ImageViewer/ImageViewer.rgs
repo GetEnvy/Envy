@@ -1,10 +1,10 @@
 HKCR
 {
-	Envy.ImageViewerPlugin.1 = s 'Envy Image Viewer Plugin'
+	ForceRemove Envy.ImageViewerPlugin.1 = s 'Envy Image Viewer Plugin'
 	{
 		CLSID = s '{CFFA98CB-08D4-402B-8595-1E067D563060}'
 	}
-	Envy.ImageViewerPlugin = s 'Envy Image Viewer Plugin'
+	ForceRemove Envy.ImageViewerPlugin = s 'Envy Image Viewer Plugin'
 	{
 		CLSID = s '{CFFA98CB-08D4-402B-8595-1E067D563060}'
 		CurVer = s 'Envy.ImageViewerPlugin.1'

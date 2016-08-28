@@ -529,7 +529,7 @@ void CSkinsSettingsPage::OnDoubleClick(NMHDR* /*pNMHDR*/, LRESULT* pResult)
 void CSkinsSettingsPage::OnSkinsBrowse()
 {
 	CFileDialog dlg( TRUE, L"envy", L"*.envy", OFN_FILEMUSTEXIST,
-		L"Skin Packages|*.envy;*.psk;*.sks|" + LoadString( IDS_FILES_ALL ) + L"|*.*||", this );
+		L"Skin Packages|*.envy;*.env;*.psk;*.sks|" + LoadString( IDS_FILES_ALL ) + L"|*.*||", this );
 
 	if ( dlg.DoModal() != IDOK ) return;
 
@@ -540,10 +540,9 @@ void CSkinsSettingsPage::OnSkinsBrowse()
 
 void CSkinsSettingsPage::OnSkinsWeb()
 {
-	const CString strWebSite( WEB_SITE );
-
 	ShellExecute( GetSafeHwnd(), L"open",
-		strWebSite + L"Skins?Version=" + theApp.m_sVersion, NULL, NULL, SW_SHOWNORMAL );
+		CString( WEB_SITE ) + L"Skins?Version=" + theApp.m_sVersion,
+		NULL, NULL, SW_SHOWNORMAL );
 }
 
 void CSkinsSettingsPage::OnOK()

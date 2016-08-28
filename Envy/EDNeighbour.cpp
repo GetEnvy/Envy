@@ -590,10 +590,8 @@ BOOL CEDNeighbour::OnFoundSources(CEDPacket* pPacket)
 bool CEDNeighbour::IsGoodSize(QWORD nFileSize) const
 {
 	return ( nFileSize != SIZE_UNKNOWN ) &&
-		   ( ( Settings.eDonkey.MinServerFileSize == 0 ) ||
-		     ( nFileSize >= (QWORD)Settings.eDonkey.MinServerFileSize * 1024ull * 1024ull ) ) &&
-		   ( ( nFileSize <= MAX_SIZE_32BIT ) ||
-		     ( Settings.eDonkey.LargeFileSupport && ( m_nTCPFlags & ED2K_SERVER_TCP_64BITSIZE ) ) );
+		   ( Settings.eDonkey.MinServerFileSize == 0 || ( nFileSize >= (QWORD)Settings.eDonkey.MinServerFileSize * 1024ull * 1024ull ) ) &&
+		   ( nFileSize <= MAX_SIZE_32BIT || ( Settings.eDonkey.LargeFileSupport && ( m_nTCPFlags & ED2K_SERVER_TCP_64BITSIZE ) ) );
 }
 
 // The login message is the first message send by the client to the server after TCP connection establishment.
@@ -632,7 +630,7 @@ BOOL CEDNeighbour::SendLogin()
 		( Settings.eDonkey.LargeFileSupport ? ED2K_SRVCAP_LARGEFILES : 0 )
 		).Write( pPacket );
 
-	// 4 - Software Version ('Client Version').
+	// 4 - Software Version ('Client Version')
 	CEDTag( ED2K_CT_SOFTWAREVERSION,
 		( ( ( ED2K_CLIENT_ID & 0xFF ) << 24 ) |
 		( ( theApp.m_nVersion[0] & 0x7F ) << 17 ) |
@@ -693,7 +691,6 @@ BOOL CEDNeighbour::SendSharedFiles()
 				 ( ! pDownload->IsMoving() ) )
 			{
 				pPacket->WriteFile( pDownload, nSize, NULL, this, TRUE );
-
 				m_nFilesSent++;
 			}
 		}
@@ -715,7 +712,6 @@ BOOL CEDNeighbour::SendSharedFiles()
 			{
 				// Send the file to the ed2k server
 				pPacket->WriteFile( pFile, nSize, NULL, this, FALSE );
-
 				m_nFilesSent++;
 			}
 		}
@@ -754,7 +750,7 @@ BOOL CEDNeighbour::SendSharedDownload(const CDownloadWithTiger* pDownload)
 	pPacket->m_bDeflate = bDeflate;
 
 	// Increment number of files sent
-	m_nFilesSent ++;
+	m_nFilesSent++;
 
 	return Send( pPacket );
 }

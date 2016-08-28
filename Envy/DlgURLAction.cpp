@@ -102,9 +102,9 @@ BOOL CURLActionDlg::OnInitDialog()
 	m_bNewWindow  = Settings.Downloads.ShowMonitorURLs;
 
 	const BOOL bGoodURL =
+		( m_pURL->m_oSHA1 || m_pURL->m_oTiger || m_pURL->m_oBTH || m_pURL->m_oED2K || m_pURL->m_oMD5 ) ||
 		( m_pURL->m_sName.GetLength() > 10 && m_pURL->m_sName.Find( L'.', 5 ) > 5 && m_pURL->m_sName[ m_pURL->m_sName.GetLength() - 1 ] > L'.' ) ||
 		( m_pURL->m_sURL.GetLength() > 8 && m_pURL->m_sURL.Find( L'.' ) > 1 && m_pURL->m_sURL[ m_pURL->m_sURL.GetLength() - 1 ] > L'.' ) ||
-		( m_pURL->m_oSHA1 || m_pURL->m_oTiger || m_pURL->m_oBTH || m_pURL->m_oED2K || m_pURL->m_oMD5 ) ||
 		( m_pURL->m_nAction == CEnvyURL::uriSearch );
 
 	if ( ! bGoodURL )
@@ -117,11 +117,21 @@ BOOL CURLActionDlg::OnInitDialog()
 
 	const BOOL bIsMetafile =
 		( m_pURL->m_nAction <= CEnvyURL::uriDownload || m_pURL->m_nAction == CEnvyURL::uriCommand ) &&
-		( EndsWith( m_pURL->m_sURL, _P( L".torrent" ) ) );		// ToDo: .metalink?
+		( EndsWith( m_pURL->m_sURL, _P( L".torrent" ) ) || m_pURL->m_oBTH );		// ToDo: .metalink?
 
+	// Skip for .Torrent
 	if ( bIsMetafile )
 	{
-		// Skip Torrent
+		//if ( m_pURL->m_oBTH && Settings.Downloads.ShowMonitorURLs )		// "btih:"
+		//{
+		//	if ( CDownload* pDownload = Downloads.Add( *m_pURL ) )
+		//	{
+		//		CSingleLock pLock( &Transfers.m_pSection );
+		//		if ( SafeLock( pLock ) && Downloads.Check( pDownload ) )
+		//			pDownload->ShowMonitor( &pLock );
+		//	}
+		//}
+
 		PostMessage( WM_COMMAND, IDC_URL_DOWNLOAD );
 		return FALSE;
 	}

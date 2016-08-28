@@ -25,7 +25,7 @@ LANGUAGE LANG_NEUTRAL, SUBLANG_NEUTRAL
 //
 
 VS_VERSION_INFO VERSIONINFO
- FILEVERSION 3,8,12,0
+ FILEVERSION 3,14,0,0
  PRODUCTVERSION 1,0,0,0
  FILEFLAGSMASK 0x17L
 #ifdef _DEBUG
@@ -43,7 +43,7 @@ BEGIN
         BEGIN
             VALUE "CompanyName", "Envy Development Team"
             VALUE "FileDescription", "SQLite3 Library"
-            VALUE "FileVersion", "3.8.12.0"
+            VALUE "FileVersion", "3.14.0"
             VALUE "InternalName", "sqlite3"
             VALUE "LegalCopyright", "© Envy 2016"
             VALUE "OriginalFilename", "SQLite.dll"

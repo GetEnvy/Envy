@@ -25,6 +25,7 @@ struct UPNPDev {
 
 /* freeUPNPDevlist()
  * free list returned by upnpDiscover() */
+/* Fix: Declared in miniupnpc.h */
 //MINIUPNP_LIBSPEC void freeUPNPDevlist(struct UPNPDev * devlist);
 
 

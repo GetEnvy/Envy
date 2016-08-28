@@ -175,7 +175,7 @@
 		<separator/>
 		<button id="ID_UPLOADS_CLEAR" text="Cancel File"/>
 		<button id="ID_UPLOADS_START" text="Start Now"/>
-		<button id="ID_UPLOADS_PRIORITY" text="Priority " visible="false"/>
+		<button id="ID_UPLOADS_PRIORITY" text="Priority" visible="false"/>
 		<separator/>
 		<button id="ID_BROWSE_LAUNCH" text="Browse User"/>
 		<button id="ID_UPLOADS_CHAT" text="Chat User"/>
@@ -303,7 +303,7 @@
 		<separator/>
 		<label text="Seek:" tip="Seek to a position in the media file"/>
 		<control id="IDC_MEDIA_POSITION" width="190" height="22"/>
-		<label text="Speed:" tip="Adjust the speed of the media file"/>
+		<label text="Speed:" tip="Adjust media playback speed"/>
 		<control id="IDC_MEDIA_SPEED" width="40" height="22"/>
 		<label text="Volume:" tip="Adjust the audio volume"/>
 		<control id="IDC_MEDIA_VOLUME" width="50" height="22"/>
@@ -581,7 +581,7 @@
 				<item id="ID_VIEW_DISCOVERY" text="Disco_very" shortcut="F9"/>
 				<item id="ID_VIEW_TRAFFIC" text="_Graph" shortcut="F10"/>
 				<item id="ID_VIEW_SYSTEM" text="S_ystem" shortcut="F11"/>
-				<item id="ID_VIEW_NEIGHBOURS" text="N_eighbours" shortcut="Crtl+F11"/>
+				<item id="ID_VIEW_NEIGHBOURS" text="_Neighbors" shortcut="Crtl+F11"/>
 				<separator/>
 				<item id="ID_VIEW_PACKETS" text="_Packet Dump" shortcut="Ctrl+F1"/>
 				<item id="ID_VIEW_SEARCH_MONITOR" text="Se_arch Monitor" shortcut="Ctrl+F2"/>
@@ -605,7 +605,8 @@
 				<menu text="_Websites">
 					<!--item id="ID_HELP_WEB_3" text="Slyck.com"-->
 					<!--item id="ID_HELP_WEB_1" text="ZeroPaid.com"-->
-					<item id="ID_HELP_WEB_SKINS" text="Envy Skin Site"/>
+					<item id="ID_HELP_WEB_KICKBACKS" text="Envy _Kickbacks"/>
+					<item id="ID_HELP_WEB_SKINS" text="Envy _Skin Site"/>
 					<item id="ID_HELP_TEST" text="_Connection Test"/>
 				</menu>
 				<item id="ID_HELP_HOMEPAGE" text="_GetEnvy.com"/>
@@ -662,7 +663,7 @@
 				<item id="ID_VIEW_DISCOVERY" text="Disco_very" shortcut="F9"/>
 				<item id="ID_VIEW_TRAFFIC" text="_Graph" shortcut="F10"/>
 				<item id="ID_VIEW_SYSTEM" text="S_ystem" shortcut="F11"/>
-				<item id="ID_VIEW_NEIGHBOURS" text="N_eighbors" shortcut="Ctrl+F11"/>
+				<item id="ID_VIEW_NEIGHBOURS" text="_Neighbors" shortcut="Ctrl+F11"/>
 				<separator/>
 				<item id="ID_VIEW_PACKETS" text="_Packet Dump" shortcut="Ctrl+F1"/>
 				<item id="ID_VIEW_SEARCH_MONITOR" text="Se_arch Monitor" shortcut="Ctrl+F2"/>
@@ -716,6 +717,7 @@
 				<separator/>
 				<item id="ID_HELP_FORUMS" text="Envy _Forums"/>
 				<!--item id="ID_HELP_FORUMS_LOCAL" text="_English Local Forum"-->
+				<item id="ID_HELP_WEB_KICKBACKS" text="Envy _Kickbacks"/>
 				<item id="ID_HELP_WEB_SKINS" text="Envy S_kin Site"/>
 				<item id="ID_HELP_UPDATE" text="Latest news"/>
 				<!--item id="ID_HELP_WEB_1" text="Zeropaid.com"-->
@@ -893,15 +895,16 @@
 				<separator/>
 				<item id="ID_HELP_FORUMS" text="Envy _Forums"/>
 				<!--item id="ID_HELP_FORUMS_LOCAL" text="_English Local Forum"-->
-				<item id="ID_HELP_WEB_SKINS" text="Envy S_kin Site"/>
-				<item id="ID_HELP_UPDATE" text="Latest news"/>
+				<item id="ID_HELP_WEB_KICKBACKS" text="Envy _Kickbacks"/>
+				<item id="ID_HELP_WEB_SKINS" text="Envy _Skin Site"/>
 				<!--item id="ID_HELP_WEB_1" text="Zeropaid.com"-->
+				<!--item id="ID_HELP_UPDATE" text="Latest _News"-->
 				<item id="ID_HELP_TEST" text="_Connection Test"/>
 			</menu>
-			<separator/> <!--
-			<item id="ID_HELP_VERSION_CHECK" text="Check for new _version"/>
-			<item id="ID_HELP_DONATE" text="_Donate to Envy"/>
-			<separator/> -->
+			<separator/>
+			<!--item id="ID_HELP_VERSION_CHECK" text="Check for new _version"-->
+			<!--item id="ID_HELP_DONATE" text="_Donate to Envy"-->
+			<!--separator-->
 			<item id="ID_HELP_ABOUT" text="_About Envy..."/>
 		</menu>
 	</menu>
@@ -945,7 +948,7 @@
 		<item id="ID_NETWORK_SEARCH" text="New _Search..."/>
 		<separator/>
 		<item id="ID_VIEW_SYSTEM" text="S_ystem"/>
-		<item id="ID_VIEW_NEIGHBOURS" text="N_eighbors"/>
+		<item id="ID_VIEW_NEIGHBOURS" text="_Neighbors"/>
 		<item id="ID_VIEW_DOWNLOADS" text="_Downloads"/>
 		<item id="ID_VIEW_UPLOADS" text="_Uploads"/>
 		<item id="ID_VIEW_LIBRARY" text="_Library"/>
@@ -1739,7 +1742,7 @@
 			<newline gap="8" indent="42"/>
 			<text>You are not currently connected to any peer-to-peer networks.</text>
 			<newline gap="2" indent="42"/>
-			<link target="command:ID_NETWORK_CONNECT" format="bu">Click here to start!</link>
+			<link target="command:ID_NETWORK_CONNECT" format="bu">Click here to start.</link>
 			<newline gap="20" indent="0"/>
 		</group>
 		<group id="2">
@@ -1757,7 +1760,7 @@
 			<text>Or open your default completed </text>
 			<link target="command:shell:downloads">downloads folder.</link>
 			<newline gap="4" indent="42"/>
-			<text>Share your own files at </text>
+			<text>Share your files at </text>
 			<link id="RemoteBrowseURL"/>
 			<newline gap="20" indent="0"/>
 		</group>
@@ -2029,7 +2032,7 @@
 		<newline gap="10"/>
 		<link target="page:CUploadsSettingsPage" format="b">Uploads: </link>
 		<text>&#160;Manage bandwidth-out, limits, and queues.</text>
-		<newline />
+		<newline/>
 		<newline gap="10"/>
 		<text>Find Task Scheduler, Security Filters, Traffic Graphs, and more from the Advanced View menu.</text>
 	</document>
@@ -2406,17 +2409,17 @@
 
 <!-- Watermarks -->
 <watermarks>
-	<watermark target="Banner" path="310"/>
-	<watermark target="LargeLogo" path="330"/>
-	<watermark target="CHomeViewCtrl.Header" path="332.PNG"/>
-	<watermark target="CHomeViewCtrl.HeaderRepeat" path="333.PNG"/>
+	<watermark target="Banner" path="310"/> <!--IDB_BANNER-->
+	<watermark target="LargeLogo" path="330"/> <!--IDR_LARGE_LOGO-->
+	<watermark target="CHomeViewCtrl.Header" path="332.PNG"/> <!--IDR_HOME_HEADER-->
+	<watermark target="CHomeViewCtrl.HeaderRepeat" path="333.PNG"/> <!--IDR_HOME_HEADER_REPEAT-->
 </watermarks>
 
 <!-- Navigation Bar -->
 <windowskins>
 	<windowskin>
-		<image type="image" language="en" res="302"/>
-		<image type="alpha" language="en" res="304"/>
+		<image type="image" language="en" res="302"/> <!--IDB_NAVBAR_IMAGE-->
+		<image type="alpha" language="en" res="304"/> <!--IDB_NAVBAR_ALPHA-->
 		<target window="CMainTabBarCtrl.Basic"/>
 		<anchors>
 			<anchor name="Background" 				rect="0,0,576,44"/>
@@ -2455,8 +2458,8 @@
 		</parts>
 	</windowskin>
 	<windowskin>
-		<image type="image" language="en" res="302"/>
-		<image type="alpha" language="en" res="304"/>
+		<image type="image" language="en" res="302"/> <!--IDB_NAVBAR_IMAGE-->
+		<image type="alpha" language="en" res="304"/> <!--IDB_NAVBAR_ALPHA-->
 		<target window="CMainTabBarCtrl"/>
 		<anchors>
 			<anchor name="Background"				rect="0,0,684,44"/>
@@ -2630,7 +2633,8 @@
 		<image id="ID_SEARCH_PANEL"/>
 		<image id="ID_SEARCH_DETAILS" id1="ID_LIBRARY_PANEL" id2="ID_WINDOW_REMOTE"/>
 		<!--Pages-->
-		<image id="ID_HELP_TEST" id1="ID_HELP_WEB_1" id2="ID_HELP_WEB_2" id3="ID_HELP_WEB_3" id4="ID_HELP_WEB_4" id5="ID_HELP_WEB_SKINS" id6="ID_HELP_STARTPAGE"/>
+		<image id="ID_HELP_TEST" id1="ID_HELP_WEB_1" id2="ID_HELP_WEB_2" id3="ID_HELP_WEB_3" id4="ID_HELP_WEB_4"
+			id5="ID_HELP_WEB_SKINS" id6="ID_HELP_WEB_KICKBACKS" id7="ID_HELP_STARTPAGE"/>
 		<image id="ID_HELP_FORUMS" id1="ID_HELP_GUIDE" id2="ID_HELP_FAQ" id3="ID_DISCOVERY_BROWSE" id4="ID_DOWNLOADS_ADD_SOURCE"
 			id5="ID_DOWNLOADS_URI" id6="ID_SEARCH_URI" id7="ID_LIBRARY_URI" id8="ID_NEIGHBOURS_URI" id9="ID_WEBSERVICES_LIST"/>
 		<image id="ID_LIBRARY_BITPRINTS_WEB" id1="ID_LIBRARY_BITPRINTS_DOWNLOAD"/>
@@ -2795,10 +2799,10 @@
 
 <!-- Tips displayed when mouse is moved over controls in Settings dialog -->
 <controlTips>
-	<tip id="IDC_REGEXP" message="Enter regular expressions in perl syntax.{n}All search keywords can be listed in order with the &lt;%&gt; tag.{n}Individual keywords can be specified with &lt;1&gt;, numbers 1 through 9."/>
-	<tip id="IDC_THROTTLE_MODE" message="In maximum mode bandwidth won't ever exceed the specified value.{n}In average mode it will fluctuate around the value to both sides."/>
-	<tip id="IDC_SHARE_PARTIALS" message="This setting has no effect on current downloads, or torrents, or with eDonkey hash and eDonkey network enabled. However, this setting is not ignored if the download is paused.{n}{n}ATTENTION: Use this option only if necessary, if you abuse the option you may be banned."/>
-	<tip id="IDC_TIP_SHADOW" message="Toggle drop shadow effect under advanced tooltips."/>
+	<tip id="IDC_REGEXP" text="Enter regular expressions in perl syntax.{n}All search keywords can be listed in order with the &lt;%&gt; tag.{n}Individual keywords can be specified with &lt;1&gt;, numbers 1 through 9."/>
+	<tip id="IDC_THROTTLE_MODE" text="In maximum mode bandwidth won't ever exceed the specified value.{n}In average mode it will fluctuate around the value to both sides."/>
+	<tip id="IDC_SHARE_PARTIALS" text="This setting has no effect on current downloads, or torrents, or with eDonkey hash and eDonkey network enabled. However, this setting is not ignored if the download is paused.{n}{n}ATTENTION: Use this option only if necessary, if you abuse the option you may be banned."/>
+	<tip id="IDC_TIP_SHADOW" text="Toggle drop shadow effect under advanced tooltips."/>
 </controlTips>
 
 </skin>

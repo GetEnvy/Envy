@@ -714,7 +714,7 @@ BOOL CHostBrowser::ReadContent()
 		{
 			CLockedBuffer pInput( GetInput() );
 
-			DWORD nVolume = min( m_nLength - m_nReceived, pInput->m_nLength );
+			DWORD nVolume = min( DWORD( m_nLength - m_nReceived ), pInput->m_nLength );
 			m_nReceived += nVolume;
 
 			if ( ! m_bDeflate )

@@ -277,13 +277,14 @@ icons_launchtray=Tray Launch
 CreateQuickLaunchIcon=Show Envy &quick launch icon
 CreateDesktopIcon=Show &Envy desktop icon
 CreateDesktopIconTorrents=Show &TorrentEnvy desktop icon
+CreateDesktopIconGetEnvy=Show &GetEnvy.com Kickbacks desktop link
 PathNotExist=Error, the path of the %1 folder doesn't exist
 dialog_shutdown=%1 is currently running. Would you like %1 to be shutdown so the installation can continue?
 dialog_firewall=Setup failed to add Envy to the Windows Firewall.%nPlease add Envy to the exception list manually.
 dialog_malwaredetected=Malware is detected on your system at %1, please remove it with an anti-virus before installing Envy.  Do you wish to exit now?
 page_safetywarning_title=Safety Awareness
 page_safetywarning_subtitle=Do you have an AntiVirus program running?
-page_safetywarning_text=Filesharing is a personal server + browser to find others like you.%n%nWhen downloading, remember to use a virus scanner to protect yourself from malicious files.  Be aware that spammers will return fake results to searches, but can easily be banned.%n%nWhen uploading, recognize Permissive and Restrictive material.%nSharing unlicensed copyright work may be liable in many places.%nBest policy is to boycott corporate copyright maximalists entirely:%nSimply don't promote those who won't appreciate it, others do.%n
+page_safetywarning_text=Filesharing is a personal server + browser to find others like you.%n%nWhen downloading, remember to use a virus scanner to protect  yourself from malicious files.  Be aware that spammers will return fake results to searches, but can easily be banned.%n%nWhen uploading, recognize Permissive and Restrictive material.%nSharing unlicensed copyright work may be liable in many places.%nBest policy is to boycott corporate copyright maximalists entirely:%nSimply don't promote those who won't appreciate it, others do.%n
 ; Don't copy these last 2 messages, they are just links.
 page_safetywarning_link=http://security.getenvy.com
 page_safetywarning_destination=http://security.getenvy.com

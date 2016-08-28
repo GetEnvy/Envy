@@ -2195,1494 +2195,1496 @@ gap i newline
 </documents>
 <!-- Localized Command Tip Text. "Message" displayed in status bar, "Tip" shown in tooltip -->
 <commandtips>
-	<tip id="ID_BROWSE_FILES" message="הצג את הקבצים שהמשתמש משתף"/>
-	<tip id="ID_BROWSE_LAUNCH" message="‪עיין בפרופיל המשתמש שבחרת ובקבציו"/>
-	<tip id="ID_BROWSE_PROFILE" message="‪עיין בפרופיל המשתמש"/>
-	<tip id="ID_BROWSE_REFRESH" message="‪רענן את רשימת הקבצים שמוצעים על ידי הכתובת"/>
-	<tip id="ID_BROWSE_STOP" message="‪עצור עיון הקבצים בכתובת זו"/>
-	<tip id="ID_CHAT_BOLD" message="החל עיצוב מודגש (Ctrl+B)"/>
-	<tip id="ID_CHAT_BROWSE" message="עיין בפרופיל המשתמש שבחרת ובקבציו"/>
-	<tip id="ID_CHAT_CLEAR" message="נקה את הודעת הטקסט בחלון זה"/>
-	<tip id="ID_CHAT_COLOR" message="בחר צבע טקסט (Ctrl+K)"/>
-	<tip id="ID_CHAT_CONNECT" message="התחבר לצ'אט"/>
-	<tip id="ID_CHAT_DISCONNECT" message="התנתק מהצ'אט"/>
-	<tip id="ID_CHAT_EMOTICONS" message="הכנס סמיילי"/>
-	<tip id="ID_CHAT_ITALIC" message="החל עיצוב טקסט נוטה (Ctrl+I)"/>
-	<tip id="ID_CHAT_PRIORITY" message="הענק עדיפות העלאה למשתמש"/>
-	<!--tip id="ID_CHAT_SEND_FILE" message="שלח קובץ אל המשתמש"-->
-	<tip id="ID_CHAT_TIMESTAMP" message="הראה את השעה שבה כל הודעה התקבלה"/>
-	<tip id="ID_CHAT_UNDERLINE" message="החל עיצוב קו תחתון (Ctrl+U)"/>
-	<tip id="ID_CHILD_CLOSE" message="סגור את החלון הפעיל"/>
-	<tip id="ID_CHILD_MAXIMISE" message="הגדל את החלון הפעיל בכדי למלא את החלון"/>
-	<tip id="ID_CHILD_MINIMISE" message="הקטן את החלון הפעיל אל סרגל הטאבים"/>
-	<tip id="ID_CHILD_RESTORE" message="פתח את החלון הנבחר"/>
-	<tip id="ID_DISCOVERY_ADD" message="הוסף שירות משאבי חיבור"/>
-	<tip id="ID_DISCOVERY_ADVERTISE" message=".GWebCache לשירות רנדומלי קיים של GWebCache פירסום שירות"/>
-	<tip id="ID_DISCOVERY_BROWSE" message="באינטרנט GWebCache סייר סטטיסטיקות לשירות"/>
-	<tip id="ID_DISCOVERY_EDIT" message="הצגת ההגדרות לשירות המשאבי חיבור הנבחר"/>
-	<tip id="ID_DISCOVERY_GNUTELLA" message="בחלון שירות המשאבי חיבור bootstrap הראה שירותי"/>
-	<tip id="ID_DISCOVERY_QUERY" message="שלח בקשה לשירותי המשאבי חיבור הנבחרים"/>
-	<tip id="ID_DISCOVERY_REMOVE" message="הסר את שירותי המשאבי חיבור הנבחרים"/>
-	<tip id="ID_DISCOVERY_SERVERLIST" message="Show eDonkey2000 Server.met services in the Discovery window."/>
-	<tip id="ID_DISCOVERY_WEBCACHE" message="Show GWebCache services in the Discovery window."/>
-	<tip id="ID_DOWNLOAD_GROUP_CLEAR" message="בטל והסר את כל ההורדות בקבוצה זו"/>
-	<tip id="ID_DOWNLOAD_GROUP_NEW" message="צור קבוצת הורדות חדשה"/>
-	<tip id="ID_DOWNLOAD_GROUP_PAUSE" message="השהה את כל ההורדות בקבוצה זו"/>
-	<tip id="ID_DOWNLOAD_GROUP_PROPERTIES" message="ערוך את המאפיינים של קבוצת ההורדות הקיימת"/>
-	<tip id="ID_DOWNLOAD_GROUP_REMOVE" message="הסר את קבוצת ההורדה הנבחרת"/>
-	<tip id="ID_DOWNLOAD_GROUP_RESUME" message="המשך את כל ההורדות בקבוצה זו"/>
-	<tip id="ID_DOWNLOAD_GROUP_SHOW" message="הסתר או הצג את סרגל הקבוצות"/>
-	<tip id="ID_DOWNLOADS_AUTO_CLEAR" message="נקה אוטמטית הורדות שהסתיימו"/>
-	<tip id="ID_DOWNLOADS_BOOST" message="האץ את הביצועים של ההורדה הנבחרת על ידי הורדת הגבלת רוחב פס"/>
-	<tip id="ID_DOWNLOADS_CLEAR" message="נקה או הסר את ההורדות הנבחרות"/>
-	<tip id="ID_DOWNLOADS_CLEAR_COMPLETE" message="הסר את ההורדה הנבחרת מהרשימה"/>
-	<tip id="ID_DOWNLOADS_CLEAR_COMPLETED" message="נקה הורדות שהושלמו"/>
-	<tip id="ID_DOWNLOADS_CLEAR_INCOMPLETE" message="בטל את ההורדה הלא שלמה שנבחרה"/>
-	<tip id="ID_DOWNLOADS_CLEAR_PAUSED" message="נקה הורדות שהושהו"/>
-	<tip id="ID_DOWNLOADS_URI" message="של הקובץ הנבחר URI העתק את כתובת"/>
-	<tip id="ID_DOWNLOADS_EDIT" message="הצג את ממשק עריכת ההורדות המתקדם..."/>
-	<tip id="ID_DOWNLOADS_ENQUEUE" message="הוסף את ההורדה הנבחרת לרשימת נגן המדיה"/>
-	<tip id="ID_DOWNLOADS_FILE_DELETE" message="מחק את הקבצים השלמים הנבחרים"/>
-	<tip id="ID_DOWNLOADS_FILTER_ACTIVE" message="הצג הורדות פעילות"/>
-	<tip id="ID_DOWNLOADS_FILTER_ALL" message="הצג את כל ההורדות"/>
-	<tip id="ID_DOWNLOADS_FILTER_MENU" message="בחר איזה סוגים של הורדות להראות או להסתיר בתצוגה"/>
-	<tip id="ID_DOWNLOADS_FILTER_PAUSED" message="הראה הורדות שהושההו"/>
-	<tip id="ID_DOWNLOADS_FILTER_QUEUED" message="הצג הורדות שמחכות בתור"/>
-	<tip id="ID_DOWNLOADS_FILTER_SOURCES" message="הצג הורדות שמחכות למקורות"/>
-	<tip id="ID_DOWNLOADS_HELP" message="הצג עזרה על ההורדה הנבחרת"/>
-	<tip id="ID_DOWNLOADS_LAUNCH" message="תצוגה מקדימה של הקובץ הנבחר במקומו"/>
-	<tip id="ID_DOWNLOADS_LAUNCH_COMPLETE" message="פתח או הפעל את קובץ זה"/>
-	<tip id="ID_DOWNLOADS_LAUNCH_COPY" message="תצוגה מקדימה חכמה של ההורדה הנבחרת"/>
-	<tip id="ID_DOWNLOADS_MONITOR" message="פתח חלון מוניטור הורדה, להורדה זו"/>
-	<tip id="ID_DOWNLOADS_MOVE_DOWN" message="ההעבר את ההורדות הנבחרות מטה ברשימת העדפות"/>
-	<tip id="ID_DOWNLOADS_MOVE_UP" message="ההעבר את ההורדות הנבחרות מעלה ברשימת העדפות"/>
-	<tip id="ID_DOWNLOADS_PAUSE" message="השהה את ההורדה או ההורדות שבחרת"/>
-	<tip id="ID_DOWNLOADS_RATE" message="דרג את ההורדה שבחרת"/>
-	<tip id="ID_DOWNLOADS_REMOTE_PREVIEW" message="הורד תמונת תצוגה להורדה הנבחרת."/>
-	<tip id="ID_DOWNLOADS_RESUME" message="המשך את ההורדה או ההורדות שבחרת"/>
-	<tip id="ID_DOWNLOADS_SETTINGS" message="קבע הגדרות הורדה"/>
-	<tip id="ID_DOWNLOADS_SHARE" message="שתף את קובץ זה שהורד חלקית עם משתמשים אחרים"/>
-	<tip id="ID_DOWNLOADS_SHOW_SOURCES" message="הצג מקורות שכרגע לא בשימוש"/>
-	<tip id="ID_DOWNLOADS_SOURCES" message="חפש מקורות נוספים עבור ההורדה הנבחרת"/>
-	<!--tip id="ID_DOWNLOADS_TORRENT_INFO" message="הצג מידע על הורדת הביטורנט הנוכחית"-->
-	<tip id="ID_DOWNLOADS_ADD_SOURCE" message="להורדה הנבחרת URL הוסף כתובת"/>
-	<tip id="ID_DOWNLOADS_VIEW_REVIEWS" message="הצג ביקורות להורדה הנבחרת"/>
-	<tip id="ID_HELP_ABOUT" message="הצג מידע אודות שרזה"/>
-	<tip id="ID_HELP_CODEC" message="הכל אודות מקודדים ובעיות וידאו"/>
-	<tip id="ID_HELP_FAQ" message="הצג שאלות נפוצות של שרזה"/>
-	<tip id="ID_HELP_ROUTER" message="קבל עזרה בהגדרת חומת האש או הראוטר"/>
-	<tip id="ID_HELP_FORUMS" message="בקר בפורומים של שרזה"/>
-	<tip id="ID_HELP_GUIDE" message="בקר את מדריך המשתמש של שרזה"/>
-	<tip id="ID_HELP_HOMEPAGE" message="Envy בקר באתר של שרזה"/>
-	<tip id="ID_HELP_SECURITY" message="עזרה בהגנה על קבצי המערכת שלך מתוכניות זדוניות"/>
-	<tip id="ID_HELP_UPDATE" message="בדוק אם יש חדשות ועדכונים"/>
-	<tip id="ID_HELP_TEST" message="הרץ את בדיקת החיבור."/>
-	<tip id="ID_HELP_WEB_1" message="בקר את אתר זה"/>
-	<tip id="ID_HELP_WEB_2" message="בקר את אתר זה"/>
-	<tip id="ID_HELP_WEB_3" message="בקר את אתר זה"/>
-	<tip id="ID_HELP_WEB_4" message="בקר את אתר זה"/>
-	<tip id="ID_HELP_DONATE" message="לבחירתך, תוכל לתרום לקופת ההגנה המשפטית ולהראות את הערכתך."/>
-	<tip id="ID_HITMONITOR_CLEAR" message="נקה את זיכרון התוצאות של המוניטור"/>
-	<tip id="ID_HITMONITOR_PAUSE" message="השהה את זיכרון התוצאות של המוניטור"/>
-	<tip id="ID_HITMONITOR_SEARCH" message="חפש את הרשת עבור המונח הנבחר"/>
-	<tip id="ID_HOSTCACHE_CONNECT" message="התחבר לכתובות הנבחרות"/>
-	<tip id="ID_HOSTCACHE_DISCONNECT" message="התנתק מהשכנים הנבחרים"/>
-	<tip id="ID_HOSTCACHE_ED2K_CACHE" message="הצג שרתים של אידונקי"/>
-	<tip id="ID_HOSTCACHE_FILE_DOWNLOAD" message="של אידונקי2000 &quot;server.met&quot; הורד קובץ"/>
-	<tip id="ID_HOSTCACHE_G1_CACHE" message="הצג כתובות של גנוטלה1"/>
-	<tip id="ID_HOSTCACHE_G2_CACHE" message="הצג כתובות של גנוטלה2"/>
-	<tip id="ID_HOSTCACHE_G2_HORIZON" message="של גנוטלה2 horizon hubs הצג"/>
-	<tip id="ID_HOSTCACHE_IMPORT" message="&quot;server.met&quot; ייבא רשימה של כתובות ידועות כמו"/>
-	<tip id="ID_HOSTCACHE_PRIORITY" message="נסה להתחבר לשרת זה לפני שרתים אחרים"/>
-	<tip id="ID_HOSTCACHE_REMOVE" message="הסר את הכתובות הנבחרות מהרשימה"/>
-	<tip id="ID_LIBRARY_ADD" message="הוסף תיקייה חדשה לספריה שלך"/>
-	<tip id="ID_LIBRARY_ALBUM_DELETE" message="מחק את תיקיית האלבום הנבחרת"/>
-	<tip id="ID_LIBRARY_ALBUM_OPEN" message="פתח את תיקיית האלבום הנבחרת"/>
-	<tip id="ID_LIBRARY_ALBUM_PROPERTIES" message="הצג וערוך מאפיינים של תיקיית האלבום הנבחרת"/>
-	<tip id="ID_LIBRARY_BITPRINTS_DOWNLOAD" message="הורד metadata לקובץ/ים הנבחר/ים מ-Bitprints..."/>
-	<tip id="ID_LIBRARY_BITPRINTS_WEB" message="הצג את כרטיס ה-Bitprints לקובץ הנבחר ברשת."/>
-	<tip id="ID_LIBRARY_COLUMNS" message="בחר את עמודות המידע שתרצה להציג"/>
-	<tip id="ID_LIBRARY_COPY" message="העתק את הקצבים הנבחרים לתיקייה אחרת בספריה"/>
-	<tip id="ID_LIBRARY_CREATETORRENT" message="צור טורנט לקובץ זה בכדי להעלותו לאתר"/>
-	<tip id="ID_LIBRARY_DELETE" message="מחק את הקבצים הנבחרים תמידית"/>
-	<tip id="ID_LIBRARY_ENQUEUE" message="הוסף את הקבצים הנבחרים לרשימת ההשמעה"/>
-	<tip id="ID_LIBRARY_EXPLORE" message="פתח את הספריות הנבחרות"/>
-	<tip id="ID_LIBRARY_EXPORT_COLLECTION" message="יצא את תקיית האלבום הנבחר לקבצי אוסף..."/>
-	<tip id="ID_LIBRARY_FOLDER_DOWNLOAD" message="הורד את כל הקבצים באוסף הנבחר"/>
-	<tip id="ID_LIBRARY_FOLDER_ENQUEUE" message="הוסף כל קובץ בתקית/ות האלבום הנבחרת/ות לרשימת השמע שלך."/>
-	<tip id="ID_LIBRARY_FOLDER_FILE_PROPERTIES" message="הצג וערוך את מאפייני כל הקבצים בתקיה/ות הנבחרת/ות..."/>
-	<tip id="ID_LIBRARY_FOLDER_METADATA" message="החל metadeta משותף מהאלבום על על כל הקבצים בתקיה/ות הנבחרת/ות."/>
-	<tip id="ID_LIBRARY_FOLDER_NEW" message="צור תיקיית אלבום חדשה כאן"/>
-	<tip id="ID_LIBRARY_FOLDER_PROPERTIES" message="הצג וערוך מאפיינים של תיקיית האלבום הנבחרת"/>
-	<tip id="ID_LIBRARY_FOLDERS" message="נהל את התיקיות בספריה שלך"/>
-	<tip id="ID_LIBRARY_HASH_PRIORITY" message="האץ את מהירות סריקת ועיבוד הקבצים"/>
-	<tip id="ID_LIBRARY_LAUNCH" message="פתח או נגן את הקבצים הנבחרים"/>
-	<tip id="ID_LIBRARY_MOVE" message="העתק את הקבצים הנבחרים לתיקייה אחרת בספריה"/>
-	<tip id="ID_LIBRARY_PANEL" message="הצג או הסתר את לוח פרטי הספריה"/>
-	<tip id="ID_LIBRARY_PARENT" message="העבר לספריה המכילה"/>
-	<tip id="ID_LIBRARY_PROPERTIES" message="הצג וערוך מאפיינים של הקבצים הנבחרים"/>
-	<tip id="ID_LIBRARY_REBUILD" message="בנה מחדש metadeta ו-hash לתקיות או הקבצים הנבחרים."/>
-	<tip id="ID_LIBRARY_REBUILD_FILE" message="בנה מחדש metadeta ו-hash לתקיות או הקבצים הנבחרים."/>
-	<tip id="ID_LIBRARY_REBUILD_ANSI" message="בנה מחדש metadeta בשמוש בשפה אחרת."/>
-	<tip id="ID_LIBRARY_REFRESH" message="רענן את תצוגת הספריה"/>
-	<tip id="ID_LIBRARY_REMOVE" message="הסר את התיקיות המשותפות הנבחרות"/>
-	<tip id="ID_LIBRARY_RENAME" message="שנה שם של הקובץ הנבחר"/>
-	<tip id="ID_LIBRARY_SCAN" message="סורק את הקבצים והתיקיות הנבחרים לשינויים"/>
-	<tip id="ID_LIBRARY_SEARCH" message="חפש בספריית הקבצים שלך"/>
-	<tip id="ID_LIBRARY_SEARCH_QUICK" message="חפש בספריית הקבצים שלך"/>
-	<tip id="ID_LIBRARY_SEED_TORRENT" message="הפץ את הטורנט הנבחר בביט-טורנט"/>
-	<tip id="ID_LIBRARY_SELECT_ALL" message="בחר והצג את כל התיקיות בספריה שלך"/>
-	<tip id="ID_LIBRARY_SHARED_FILE" message="שתף או בטל שיתוף של התיקיות הנבחרות"/>
-	<tip id="ID_LIBRARY_SHARED_FOLDER" message="שתף או בטל שיתוף של התיקיות הנבחרות"/>
-	<tip id="ID_LIBRARY_TREE_PHYSICAL" message="הצג את התיקיות הקיימות בספריה שלך"/>
-	<tip id="ID_LIBRARY_TREE_VIRTUAL" message="ארגן את הספריה שלך."/>
-	<tip id="ID_LIBRARY_UNLINK" message="הסר את הקבצים הנבחרים מתיקיית האלבום הנוכחית"/>
-	<tip id="ID_LIBRARY_URI" message="של הקובץ הנבחר URI העתק כתובת."/>
-	<tip id="ID_LIBRARY_VIEW" message="בחר תצוגת ספריה"/>
-	<tip id="ID_LIBRARY_VIEW_ALBUM" message="הצג בתצוגת אלבומים" tip="תצוגת אלבומים"/>
-	<tip id="ID_LIBRARY_VIEW_COLLECTION" message="הצג בתצוגה עשירה של אוספים.‪" tip="תצוגת אוספים"/>
-	<tip id="ID_LIBRARY_VIEW_DETAIL" message="הצג שם קובץ, פרטים, ומידע" tip="תצוגת פרטים"/>
-	<tip id="ID_LIBRARY_VIEW_HOME" message="הצג עמוד ראשי של הספריה" tip="תצוגת עמוד ראשי"/>
-	<tip id="ID_LIBRARY_VIEW_ICON" message="הצג קבצים כסמלים" tip="תצוגת סמלים"/>
-	<tip id="ID_LIBRARY_VIEW_LIST" message="הצג קבצים ברשימה אופקית" tip="תצוגת רשימה"/>
-	<tip id="ID_LIBRARY_VIEW_THUMBNAIL" message="הצג תמונות ממוזערות עבור קבצים" tip="תצוגת תמונות"/>
-	<tip id="ID_LIBRARY_VIEW_TILE" message="הצג רשימה של כל תיקיות האלבומים" tip="תצוגה רגילה"/>
-	<tip id="ID_MEDIA_ADD" message="‪הוסף קובץ מדיה לרשימת ההשמעה"/>
-	<tip id="ID_MEDIA_ADD_FOLDER" message="‪הוסף תיקיה עם קבצי מדיה לרשימת ההשמעה"/>
-	<tip id="ID_MEDIA_ASPECT_16_9" message="נעל ליחס תמונה 4:3 אשר מתאים לצפייה בסרט"/>
-	<tip id="ID_MEDIA_ASPECT_4_3" message="נעל ליחס תמונה 16:9 אשר מתאים לצפייה בטלוויזיה"/>
-	<tip id="ID_MEDIA_ASPECT_DEFAULT" message="השתמש ביחס תמונה אשר קבוע כברירת המחדל בקובץ הוידאו"/>
-	<tip id="ID_MEDIA_CLEAR" message="נקה את רשימת ההשמעה"/>
-	<tip id="ID_MEDIA_CLOSE" message="סגור את קובץ המדיה, לפינוי הזיכרון"/>
-	<tip id="ID_MEDIA_EXPORT_COLLECTION" message="שמור את רשימת ההשמעה כקובץ אוסף..."/>
-	<tip id="ID_MEDIA_FULLSCREEN" message="עבור למצב תצוגת וידאו במסך מלא"/>
-	<tip id="ID_MEDIA_MUTE" message="השתק את הקול"/>
-	<tip id="ID_MEDIA_NEXT" message="דלג לקובץ הבא ברשימת ההשמעה הנוכחית" tip="הקובץ הבא"/>
-	<tip id="ID_MEDIA_OPEN" message="פתח ונגן את קובץ המדיה או את רשימת ההשמעה"/>
-	<tip id="ID_MEDIA_PAUSE" message="השהה ניכון של קובץ המדיה" tip="השהה"/>
-	<tip id="ID_MEDIA_PLAY" message="התחל לנגן את קובץ המדיה הנוכחי" tip="נגן"/>
-	<tip id="ID_MEDIA_PLAYLIST" message="הצג או הסתר את עורך רשימת ההשמעה"/>
-	<tip id="ID_MEDIA_PREVIOUS" message="דלג לקובץ הקודם ברשימת ההשמעה הנוכחית" tip="הקובץ הקודם"/>
-	<tip id="ID_MEDIA_PROPERTIES" message="הצג וערוך את המאפיינים של הקבצים שנבחרו."/>
-	<tip id="ID_MEDIA_RANDOM" message="קבע מצב בחירה רנדומלית ברשימת ההשמעה הנוכחית"/>
-	<tip id="ID_MEDIA_RATE" message="דרג את הקבצים שנבחרו."/>
-	<tip id="ID_MEDIA_REMOVE" message="הסר את קובץ המדיה הנבחר מרשימת ההשמעה"/>
-	<tip id="ID_MEDIA_REPEAT" message="נגן שנית את קובץ המדיה הנוכחי"/>
-	<tip id="ID_MEDIA_SAVE" message="שמור את רשימת ההשמעה הנוכחית"/>
-	<tip id="ID_MEDIA_SELECT" message="בחר ונגן את קובץ המדיה"/>
-	<tip id="ID_MEDIA_SETTINGS" message="הצג את עמוד הגדרות המדיה"/>
-	<tip id="ID_MEDIA_SIZE_DISTORT" message="מתח את הסרט למילוי החלון, ייתכם עיוות."/>
-	<tip id="ID_MEDIA_SIZE_FILL" message="בחר את הגודל המתאים ביותר עבור הוידאו לפי יחס תצוגת התמונה"/>
-	<tip id="ID_MEDIA_SIZE_ONE" message="הצג את הוידאו בגודלו המקורי"/>
-	<tip id="ID_MEDIA_SIZE_HALF" message="הצג את הוידאו בגודל משולש מגודלו המקורי"/>
-	<tip id="ID_MEDIA_SIZE_TWO" message="הצג את הוידאו בגודל כפול מגודלו המקורי"/>
-	<tip id="ID_MEDIA_STATUS" message="הצג או הסתר את שורת מצב המדיה"/>
-	<tip id="ID_MEDIA_STOP" message="הפסק השמעת קובץ המדיה" tip="עצור"/>
-	<tip id="ID_MEDIA_VIS" message="בחר תוסף לאפקט אודיו ויזואלי"/>
-	<tip id="ID_MEDIA_ZOOM" message="שנה את הגדרות הזום ויחס התמונה"/>
-	<tip id="ID_MONITOR_CLOSE" message="סגור את חלון המוניטור"/>
-	<tip id="ID_NEIGHBOURS_CHAT" message="פתח חלון צ'אט עם המשתמש הנבחר"/>
-	<tip id="ID_NEIGHBOURS_URI" message="בכדי לגשת לכתובת הנבחרת URI התנתק מ"/>
-	<tip id="ID_NEIGHBOURS_DISCONNECT" message="התנתק מהשכנים הנבחרים"/>
-	<tip id="ID_NEIGHBOURS_SETTINGS" message="כוון הגדרות רשת..."/>
-	<tip id="ID_NEIGHBOURS_VIEW_ALL" message="Open a new Packet Dump window monitoring this neighbour."/>
-	<tip id="ID_NEIGHBOURS_VIEW_INCOMING" message="Open a new Packet Dump window monitoring incoming traffic from this neighbour."/>
-	<tip id="ID_NEIGHBOURS_VIEW_OUTGOING" message="Open a new Packet Dump window monitoring outgoing traffic to this neighbour."/>
-	<tip id="ID_NETWORK_AUTO_CLOSE" message="סגור אוטמטית את שרזה כשהעברות יסתיימו"/>
-	<tip id="ID_NETWORK_BROWSE_TO" message="סייר במשתמש, וצפה בפרופיל ובקבציו המשותפים"/>
-	<tip id="ID_NETWORK_CONNECT" message="התחבר לרשת"/>
-	<tip id="ID_NETWORK_CONNECT_TO" message="התחבר באופן ידני למשתמש..."/>
-	<tip id="ID_NETWORK_DISCONNECT" message="התנתק מהרשת"/>
-	<tip id="ID_NETWORK_EXIT" message="צא משרזה"/>
-	<tip id="ID_NETWORK_ED2K" message="התחבר לרשת אידונקי2000"/>
-	<tip id="ID_NETWORK_DC" message="התחבר לרשת אידונקיDC++"/>
-	<tip id="ID_NETWORK_BT" message="התחבר לרשת אידונקיBitTorrent"/>
-	<tip id="ID_NETWORK_G1" message="התחבר לרשת גנוטלה המקורית"/>
-	<tip id="ID_NETWORK_G2" message="התחבר לגנוטלה2 - מומלץ מאוד"/>
-	<tip id="ID_NETWORK_SEARCH" message="התחל חיפוש חדש ברשת"/>
-	<tip id="ID_SEARCH_CHAT" message="התחל צ'אט עם המשתמש הנבחר"/>
-	<tip id="ID_SEARCH_CLEAR" message="נקה את תוצאות החיפוש"/>
-	<tip id="ID_SEARCH_COLUMNS" message="בחר את עמודות המידע שיוצגו"/>
-	<tip id="ID_SEARCH_URI" message="העתק את כתובת URI של הקובץ הנבחר"/>
-	<tip id="ID_SEARCH_DETAILS" message="הצג מידע מפורט על הקובץ הנבחר"/>
-	<tip id="ID_SEARCH_DOWNLOAD" message="הורד את הקבצים הנבחרים"/>
-	<tip id="ID_SEARCH_DOWNLOADNOW" message="הורד את הקבצים הנבחרים ותן להם עדיפות"/>
-	<tip id="ID_SEARCH_FILTER" message="סנן את התוצאות לפי מילים ספציפיות ותנאים"/>
-	<tip id="ID_SEARCH_FILTER_RAW" message="סנן את התוצאות לפי מילים ספציפיות ותנאים"/>
-	<tip id="ID_SEARCH_FILTER_REMOVE" message="הסר את הסינון מהתוצאות"/>
-	<tip id="ID_SEARCH_FOR_ALBUM" message="חפש עבור קבצי מוזיקה מאותו אלבום כשל הקובץ הנבחר"/>
-	<tip id="ID_SEARCH_FOR_ARTIST" message="חפש עבור קבצי מוזיקה מאותו אמן של הקובץ הנבחר"/>
-	<tip id="ID_SEARCH_FOR_SERIES" message="חפש עבור קבצי וידאו מאותה סידרה של הקובץ הנבחר"/>
-	<tip id="ID_SEARCH_FOR_SIMILAR" message="חפש עבור קבצים הדומים לקובץ הנבחר"/>
-	<tip id="ID_SEARCH_FOR_THIS" message="חפש עבור עותקים אחרים של הקובץ הנבחר"/>
-	<tip id="ID_SEARCH_PANEL" message="הצג את לוח החיפוש המהיר מימין לחלון החיפוש"/>
-	<tip id="ID_SEARCH_SEARCH" message="חפש שנית את הרשת"/>
-	<tip id="ID_SEARCH_STOP" message="הפסק קבלת תוצאות בחלון זה"/>
-	<tip id="ID_SEARCHMONITOR_CLEAR" message="נקה את זכירון המטמון של מוניטור החיפוש"/>
-	<tip id="ID_SEARCHMONITOR_PAUSE" message="השהה ניטור חיפוש"/>
-	<tip id="ID_SECURITY_BAN" message="חסום את הכתובת למשך ההפעלה הנוכחית"/>
-	<tip id="ID_SECURITY_ADD" message="הוסף חוק חדש לשרשרת האבטחה"/>
-	<tip id="ID_SECURITY_EDIT" message="ערוך את חוק האבטחה הנבחר"/>
-	<tip id="ID_SECURITY_EXPORT" message=".ייצא חוקי אבטחה לקובץ"/>
-	<tip id="ID_SECURITY_IMPORT" message="ייבא חוקי אבטחה מקובץ"/>
-	<tip id="ID_SECURITY_MOVE_DOWN" message="Move the selected security rules down the precedence list."/>
-	<tip id="ID_SECURITY_MOVE_UP" message="Move the selected security rules up the precedence list."/>
-	<tip id="ID_SECURITY_POLICY_ACCEPT" message="Set the default security policy to allow all hosts."/>
-	<tip id="ID_SECURITY_POLICY_DENY" message="Set the default security policy to deny all hosts."/>
-	<tip id="ID_SECURITY_REMOVE" message="הסר את חוקי האבטחה הנבחרים"/>
-	<tip id="ID_SECURITY_RESET" message="אפס את המונה לחוקי אבטחה הנבחרים"/>
-	<tip id="ID_SCHEDULER_ADD" message="הוסף חוק חדש לשרשרת האבטחה"/>
-	<tip id="ID_SCHEDULER_EDIT" message="ערוך את חוק האבטחה הנבחר"/>
-	<tip id="ID_SCHEDULER_ACTIVATE" message="נקה את העלאות הנבחרות מהרשימה"/>
-	<tip id="ID_SCHEDULER_DEACTIVATE" message="התחבר לרשת"/>
-	<tip id="ID_SCHEDULER_EXPORT" message=".ייצא חוקי אבטחה לקובץ"/>
-	<tip id="ID_SCHEDULER_IMPORT" message="ייבא חוקי אבטחה מקובץ"/>
-	<tip id="ID_SCHEDULER_REMOVE" message="הסר את ההורדה הנבחרת מהרשימה"/>
-	<tip id="ID_SCHEDULER_REMOVE_ALL" message="Delete all scheduled tasks."/>
-	<tip id="ID_SYSTEM_CLEAR" message="נקה את רישום המצב"/>
-	<tip id="ID_SYSTEM_TIMESTAMP" message="הצג זמן/שעה לכל שורה"/>
-	<tip id="ID_SYSTEM_VERBOSE" message="הצג רישום מפורט על פעילות המערכת"/>
-	<tip id="ID_TAB_CONNECT" message="התחבר או התנתק לרשת"/>
-	<!--tip id="ID_TAB_HELP" message="קבל עזרה בשימוש בשרזה"-->
-	<tip id="ID_TAB_HOME" message="חזור לעמוד הבית של שרזה"/>
-	<tip id="ID_TAB_LIBRARY" message="הצג ונהל את התוכן המקומי בספריה שלך"/>
-	<tip id="ID_TAB_MEDIA" message="נגן קבצי וידאו ואודיו מהספריה שלך"/>
-	<tip id="ID_TAB_NETWORK" message="בדוק עד כמה טוב אתה מחובר לרשת"/>
-	<tip id="ID_TAB_SEARCH" message="חפש את הרשת לקבצים להורדה"/>
-	<tip id="ID_TAB_TRANSFERS" message="צפה בהורדות והעלאות שאתה מבצע"/>
-	<tip id="ID_TOOLS_DOWNLOAD" message="התחל להוריד קובץ או טורנט חדש"/>
-	<tip id="ID_TOOLS_LANGUAGE" message="בחר את השפה בה תרצה להשתמש בשרזה (Select Language)"/>
-	<tip id="ID_TOOLS_PROFILE" message="ערוך את פרופיל המשתמש שלך"/>
-	<tip id="ID_TOOLS_RESKIN" message="טען מחדש והחל את המעטפת הנוכחית שנבחרה"/>
-	<tip id="ID_TOOLS_SEEDTORRENT" message="הפץ את הטורנט הנבחר בביט-טורנט"/>
-	<tip id="ID_TOOLS_SETTINGS" message="כוון את הגדרות שרזה"/>
-	<tip id="ID_TOOLS_SKIN" message="בחר מעטפת אחרת לשרזה"/>
-	<tip id="ID_TOOLS_WIZARD" message="פתח את אשף ההפעלה המהירה של שרזה"/>
-	<tip id="ID_TRAFFIC_AXIS" message="Display Vertical Axis"/>
-	<tip id="ID_TRAFFIC_CLEAR" message="נקה את גרף התעבורה"/>
-	<tip id="ID_TRAFFIC_GRID" message="Display grid lines."/>
-	<tip id="ID_TRAFFIC_LEGEND" message="הצג מקרא"/>
-	<tip id="ID_TRAFFIC_SETUP" message="Select and configure items to graph..."/>
-	<tip id="ID_TRAFFIC_WINDOW" message="פתח חלון גרף חדש"/>
-	<tip id="ID_TRANSFERS_CHAT" message="פתח חלון צ'אט עם המשתמש הנבחר"/>
-	<tip id="ID_TRANSFERS_CONNECT" message="Access the selected download sources and attempt to download."/>
-	<tip id="ID_TRANSFERS_DISCONNECT" message="התנתק מהעברת ההורדה הנבחרת"/>
-	<tip id="ID_TRANSFERS_FORGET" message="התנתק ושכח את  ההורדה הנבחרת"/>
-	<tip id="ID_TRAY_OPEN" message="פתח את החלון של שרזה"/>
-	<tip id="ID_UPLOADS_AUTO_CLEAR" message="נקה אוטמטית העלאות שהסתיימו"/>
-	<tip id="ID_UPLOADS_CHAT" message="התחל צ'אט עם המשתמש הנבחר"/>
-	<tip id="ID_UPLOADS_CLEAR" message="נקה את העלאות הנבחרות מהרשימה"/>
-	<tip id="ID_UPLOADS_CLEAR_COMPLETED" message="נקה העלאה שהושלמה"/>
-	<tip id="ID_UPLOADS_DISCONNECT" message="נתק את ההעברת העלאות הנבחרות"/>
-	<tip id="ID_UPLOADS_FILTER_ACTIVE" message="הצג את כל ההעלאות שבאופן פעיל נשלחות"/>
-	<tip id="ID_UPLOADS_FILTER_ALL" message="הצג את כל ההעלאות"/>
-	<tip id="ID_UPLOADS_FILTER_HISTORY" message="הצג העלאות שכבר אינן מחוברות"/>
-	<tip id="ID_UPLOADS_FILTER_MENU" message="בחר אילו סוגי קבצים להראות אילו סוגי להסתיר בתצוגה זו."/>
-	<tip id="ID_UPLOADS_FILTER_QUEUED" message="הצג העלאות שממתינות בתור אצלך"/>
-	<tip id="ID_UPLOADS_FILTER_TORRENT" message="הצג העלאות של ביט-טורנט"/>
-	<tip id="ID_UPLOADS_LAUNCH" message="הפעל את הקבצים המשותפים שנבחר."/>
-	<tip id="ID_UPLOADS_SETTINGS" message="הגדר להעלות הגדרות..."/>
-	<tip id="ID_UPLOADS_START" message="כוח להתחיל שנוספו בתור נבחרת."/>
-	<tip id="ID_UPLOADS_PRIORITY" message="בחר אחד להעלות להסיר מגבלות."/>
-	<tip id="ID_VIEW_BASIC" message="השתמש בשרזה במצב רגיל"/>
-	<tip id="ID_VIEW_DISCOVERY" message="הצג או הסתר את חלון משאבי החיבור"/>
-	<tip id="ID_VIEW_DOWNLOADS" message="הצג או הסתר את חלון ההורדות"/>
-	<tip id="ID_VIEW_HOSTS" message="הצג או הסתר את חלון זיכרון מטמון הכתובות"/>
-	<tip id="ID_VIEW_LIBRARY" message="הצג או הסתר את חלון הספריה"/>
-	<tip id="ID_VIEW_MEDIA" message="הצג או הסתר את חלון נגן המדיה"/>
-	<tip id="ID_VIEW_NEIGHBOURS" message="הצג או הסתר את חלון השכנים"/>
-	<tip id="ID_VIEW_PACKETS" message="הצג או הסתר את חלון הפקטים"/>
-	<tip id="ID_VIEW_RESULTS_MONITOR" message="הצג או הסתר את מוניטור התוצאות"/>
-	<tip id="ID_VIEW_SEARCH_MONITOR" message="הראה או הסתר את חלון החיפוש"/>
-	<tip id="ID_VIEW_SECURITY" message="הראה או הסתר את חלון האבטחה"/>
-	<tip id="ID_VIEW_SYSTEM" message="הראה או הסתר את חלון המערכת"/>
-	<tip id="ID_VIEW_TABBED" message="השתשמש בשרזה במצב מתקדם של טאבים"/>
-	<tip id="ID_VIEW_TRAFFIC" message="הראה או הסתר את חלון הגרפים"/>
-	<tip id="ID_VIEW_UPLOADS" message="הראה או הסתר את חלון העלאות"/>
-	<tip id="ID_VIEW_WINDOWED" message="התשמש בשרזה במצב מתקדם של חלונות"/>
-	<tip id="ID_WINDOW_CASCADE" message="הרחב את כל החלונות בכדי להתאים למסך"/>
-	<tip id="ID_WINDOW_MONITOR" message="הראה או הסתר את מוניטור רוחב הפס"/>
-	<tip id="ID_WINDOW_NAVBAR" message="הראה או הסתר את לוח הניווט"/>
-	<tip id="ID_WINDOW_REMOTE" message="הראה או הסתר את לוח השליטה מרחוק"/>
-	<tip id="ID_WINDOW_TABBAR" message="הראה או הסתר את לוח חלונות הטאבים"/>
-	<tip id="ID_WINDOW_TILE_HORZ" message="Arrange open windows as horizontal, non-overlapping tiles."/>
-	<tip id="ID_WINDOW_TILE_VERT" message="Arrange open windows as vertical, non-overlapping tiles."/>
-	<tip id="ID_WINDOW_TOOLBAR" message="הראה או הסתר את סרגל הכלים"/>
+	<tip id="ID_BROWSE_FILES" text="הצג את הקבצים שהמשתמש משתף"/>
+	<tip id="ID_BROWSE_LAUNCH" text="‪עיין בפרופיל המשתמש שבחרת ובקבציו"/>
+	<tip id="ID_BROWSE_PROFILE" text="‪עיין בפרופיל המשתמש"/>
+	<tip id="ID_BROWSE_REFRESH" text="‪רענן את רשימת הקבצים שמוצעים על ידי הכתובת"/>
+	<tip id="ID_BROWSE_STOP" text="‪עצור עיון הקבצים בכתובת זו"/>
+	<tip id="ID_CHAT_BOLD" text="החל עיצוב מודגש (Ctrl+B)"/>
+	<tip id="ID_CHAT_BROWSE" text="עיין בפרופיל המשתמש שבחרת ובקבציו"/>
+	<tip id="ID_CHAT_CLEAR" text="נקה את הודעת הטקסט בחלון זה"/>
+	<tip id="ID_CHAT_COLOR" text="בחר צבע טקסט (Ctrl+K)"/>
+	<tip id="ID_CHAT_CONNECT" text="התחבר לצ'אט"/>
+	<tip id="ID_CHAT_DISCONNECT" text="התנתק מהצ'אט"/>
+	<tip id="ID_CHAT_EMOTICONS" text="הכנס סמיילי"/>
+	<tip id="ID_CHAT_ITALIC" text="החל עיצוב טקסט נוטה (Ctrl+I)"/>
+	<tip id="ID_CHAT_PRIORITY" text="הענק עדיפות העלאה למשתמש"/>
+	<!--tip id="ID_CHAT_SEND_FILE" text="שלח קובץ אל המשתמש"-->
+	<tip id="ID_CHAT_TIMESTAMP" text="הראה את השעה שבה כל הודעה התקבלה"/>
+	<tip id="ID_CHAT_UNDERLINE" text="החל עיצוב קו תחתון (Ctrl+U)"/>
+	<tip id="ID_CHILD_CLOSE" text="סגור את החלון הפעיל"/>
+	<tip id="ID_CHILD_MAXIMISE" text="הגדל את החלון הפעיל בכדי למלא את החלון"/>
+	<tip id="ID_CHILD_MINIMISE" text="הקטן את החלון הפעיל אל סרגל הטאבים"/>
+	<tip id="ID_CHILD_RESTORE" text="פתח את החלון הנבחר"/>
+	<tip id="ID_DISCOVERY_ADD" text="הוסף שירות משאבי חיבור"/>
+	<tip id="ID_DISCOVERY_ADVERTISE" text=".GWebCache לשירות רנדומלי קיים של GWebCache פירסום שירות"/>
+	<tip id="ID_DISCOVERY_BROWSE" text="באינטרנט GWebCache סייר סטטיסטיקות לשירות"/>
+	<tip id="ID_DISCOVERY_EDIT" text="הצגת ההגדרות לשירות המשאבי חיבור הנבחר"/>
+	<tip id="ID_DISCOVERY_GNUTELLA" text="בחלון שירות המשאבי חיבור bootstrap הראה שירותי"/>
+	<tip id="ID_DISCOVERY_QUERY" text="שלח בקשה לשירותי המשאבי חיבור הנבחרים"/>
+	<tip id="ID_DISCOVERY_REMOVE" text="הסר את שירותי המשאבי חיבור הנבחרים"/>
+	<tip id="ID_DISCOVERY_SERVERLIST" text="Show eDonkey2000 Server.met services in the Discovery window."/>
+	<tip id="ID_DISCOVERY_WEBCACHE" text="Show GWebCache services in the Discovery window."/>
+	<tip id="ID_DOWNLOAD_GROUP_CLEAR" text="בטל והסר את כל ההורדות בקבוצה זו"/>
+	<tip id="ID_DOWNLOAD_GROUP_NEW" text="צור קבוצת הורדות חדשה"/>
+	<tip id="ID_DOWNLOAD_GROUP_PAUSE" text="השהה את כל ההורדות בקבוצה זו"/>
+	<tip id="ID_DOWNLOAD_GROUP_PROPERTIES" text="ערוך את המאפיינים של קבוצת ההורדות הקיימת"/>
+	<tip id="ID_DOWNLOAD_GROUP_REMOVE" text="הסר את קבוצת ההורדה הנבחרת"/>
+	<tip id="ID_DOWNLOAD_GROUP_RESUME" text="המשך את כל ההורדות בקבוצה זו"/>
+	<tip id="ID_DOWNLOAD_GROUP_SHOW" text="הסתר או הצג את סרגל הקבוצות"/>
+	<tip id="ID_DOWNLOADS_AUTO_CLEAR" text="נקה אוטמטית הורדות שהסתיימו"/>
+	<tip id="ID_DOWNLOADS_BOOST" text="האץ את הביצועים של ההורדה הנבחרת על ידי הורדת הגבלת רוחב פס"/>
+	<tip id="ID_DOWNLOADS_CLEAR" text="נקה או הסר את ההורדות הנבחרות"/>
+	<tip id="ID_DOWNLOADS_CLEAR_COMPLETE" text="הסר את ההורדה הנבחרת מהרשימה"/>
+	<tip id="ID_DOWNLOADS_CLEAR_COMPLETED" text="נקה הורדות שהושלמו"/>
+	<tip id="ID_DOWNLOADS_CLEAR_INCOMPLETE" text="בטל את ההורדה הלא שלמה שנבחרה"/>
+	<tip id="ID_DOWNLOADS_CLEAR_PAUSED" text="נקה הורדות שהושהו"/>
+	<tip id="ID_DOWNLOADS_URI" text="של הקובץ הנבחר URI העתק את כתובת"/>
+	<tip id="ID_DOWNLOADS_EDIT" text="הצג את ממשק עריכת ההורדות המתקדם..."/>
+	<tip id="ID_DOWNLOADS_ENQUEUE" text="הוסף את ההורדה הנבחרת לרשימת נגן המדיה"/>
+	<tip id="ID_DOWNLOADS_FILE_DELETE" text="מחק את הקבצים השלמים הנבחרים"/>
+	<tip id="ID_DOWNLOADS_FILTER_ACTIVE" text="הצג הורדות פעילות"/>
+	<tip id="ID_DOWNLOADS_FILTER_ALL" text="הצג את כל ההורדות"/>
+	<tip id="ID_DOWNLOADS_FILTER_MENU" text="בחר איזה סוגים של הורדות להראות או להסתיר בתצוגה"/>
+	<tip id="ID_DOWNLOADS_FILTER_PAUSED" text="הראה הורדות שהושההו"/>
+	<tip id="ID_DOWNLOADS_FILTER_QUEUED" text="הצג הורדות שמחכות בתור"/>
+	<tip id="ID_DOWNLOADS_FILTER_SOURCES" text="הצג הורדות שמחכות למקורות"/>
+	<tip id="ID_DOWNLOADS_HELP" text="הצג עזרה על ההורדה הנבחרת"/>
+	<tip id="ID_DOWNLOADS_LAUNCH" text="תצוגה מקדימה של הקובץ הנבחר במקומו"/>
+	<tip id="ID_DOWNLOADS_LAUNCH_COMPLETE" text="פתח או הפעל את קובץ זה"/>
+	<tip id="ID_DOWNLOADS_LAUNCH_COPY" text="תצוגה מקדימה חכמה של ההורדה הנבחרת"/>
+	<tip id="ID_DOWNLOADS_MONITOR" text="פתח חלון מוניטור הורדה, להורדה זו"/>
+	<tip id="ID_DOWNLOADS_MOVE_DOWN" text="ההעבר את ההורדות הנבחרות מטה ברשימת העדפות"/>
+	<tip id="ID_DOWNLOADS_MOVE_UP" text="ההעבר את ההורדות הנבחרות מעלה ברשימת העדפות"/>
+	<tip id="ID_DOWNLOADS_PAUSE" text="השהה את ההורדה או ההורדות שבחרת"/>
+	<tip id="ID_DOWNLOADS_RATE" text="דרג את ההורדה שבחרת"/>
+	<tip id="ID_DOWNLOADS_REMOTE_PREVIEW" text="הורד תמונת תצוגה להורדה הנבחרת."/>
+	<tip id="ID_DOWNLOADS_RESUME" text="המשך את ההורדה או ההורדות שבחרת"/>
+	<tip id="ID_DOWNLOADS_SETTINGS" text="קבע הגדרות הורדה"/>
+	<tip id="ID_DOWNLOADS_SHARE" text="שתף את קובץ זה שהורד חלקית עם משתמשים אחרים"/>
+	<tip id="ID_DOWNLOADS_SHOW_SOURCES" text="הצג מקורות שכרגע לא בשימוש"/>
+	<tip id="ID_DOWNLOADS_SOURCES" text="חפש מקורות נוספים עבור ההורדה הנבחרת"/>
+	<!--tip id="ID_DOWNLOADS_TORRENT_INFO" text="הצג מידע על הורדת הביטורנט הנוכחית"-->
+	<tip id="ID_DOWNLOADS_ADD_SOURCE" text="להורדה הנבחרת URL הוסף כתובת"/>
+	<tip id="ID_DOWNLOADS_VIEW_REVIEWS" text="הצג ביקורות להורדה הנבחרת"/>
+	<tip id="ID_HELP_ABOUT" text="הצג מידע אודות שרזה"/>
+	<tip id="ID_HELP_CODEC" text="הכל אודות מקודדים ובעיות וידאו"/>
+	<tip id="ID_HELP_FAQ" text="הצג שאלות נפוצות של שרזה"/>
+	<tip id="ID_HELP_ROUTER" text="קבל עזרה בהגדרת חומת האש או הראוטר"/>
+	<tip id="ID_HELP_FORUMS" text="בקר בפורומים של שרזה"/>
+	<tip id="ID_HELP_GUIDE" text="בקר את מדריך המשתמש של שרזה"/>
+	<tip id="ID_HELP_HOMEPAGE" text="Envy בקר באתר של שרזה"/>
+	<tip id="ID_HELP_SECURITY" text="עזרה בהגנה על קבצי המערכת שלך מתוכניות זדוניות"/>
+	<tip id="ID_HELP_UPDATE" text="בדוק אם יש חדשות ועדכונים"/>
+	<tip id="ID_HELP_TEST" text="הרץ את בדיקת החיבור."/>
+	<tip id="ID_HELP_WEB_1" text="בקר את אתר זה"/>
+	<tip id="ID_HELP_WEB_2" text="בקר את אתר זה"/>
+	<tip id="ID_HELP_WEB_3" text="בקר את אתר זה"/>
+	<tip id="ID_HELP_WEB_4" text="בקר את אתר זה"/>
+	<tip id="ID_HELP_DONATE" text="לבחירתך, תוכל לתרום לקופת ההגנה המשפטית ולהראות את הערכתך."/>
+	<tip id="ID_HITMONITOR_CLEAR" text="נקה את זיכרון התוצאות של המוניטור"/>
+	<tip id="ID_HITMONITOR_PAUSE" text="השהה את זיכרון התוצאות של המוניטור"/>
+	<tip id="ID_HITMONITOR_SEARCH" text="חפש את הרשת עבור המונח הנבחר"/>
+	<tip id="ID_HOSTCACHE_CONNECT" text="התחבר לכתובות הנבחרות"/>
+	<tip id="ID_HOSTCACHE_DISCONNECT" text="התנתק מהשכנים הנבחרים"/>
+	<tip id="ID_HOSTCACHE_ED2K_CACHE" text="הצג שרתים של אידונקי"/>
+	<tip id="ID_HOSTCACHE_FILE_DOWNLOAD" text="של אידונקי2000 &quot;server.met&quot; הורד קובץ"/>
+	<tip id="ID_HOSTCACHE_G1_CACHE" text="הצג כתובות של גנוטלה1"/>
+	<tip id="ID_HOSTCACHE_G2_CACHE" text="הצג כתובות של גנוטלה2"/>
+	<tip id="ID_HOSTCACHE_G2_HORIZON" text="של גנוטלה2 horizon hubs הצג"/>
+	<tip id="ID_HOSTCACHE_IMPORT" text="&quot;server.met&quot; ייבא רשימה של כתובות ידועות כמו"/>
+	<tip id="ID_HOSTCACHE_PRIORITY" text="נסה להתחבר לשרת זה לפני שרתים אחרים"/>
+	<tip id="ID_HOSTCACHE_REMOVE" text="הסר את הכתובות הנבחרות מהרשימה"/>
+	<tip id="ID_LIBRARY_ADD" text="הוסף תיקייה חדשה לספריה שלך"/>
+	<tip id="ID_LIBRARY_ALBUM_DELETE" text="מחק את תיקיית האלבום הנבחרת"/>
+	<tip id="ID_LIBRARY_ALBUM_OPEN" text="פתח את תיקיית האלבום הנבחרת"/>
+	<tip id="ID_LIBRARY_ALBUM_PROPERTIES" text="הצג וערוך מאפיינים של תיקיית האלבום הנבחרת"/>
+	<tip id="ID_LIBRARY_BITPRINTS_DOWNLOAD" text="הורד metadata לקובץ/ים הנבחר/ים מ-Bitprints..."/>
+	<tip id="ID_LIBRARY_BITPRINTS_WEB" text="הצג את כרטיס ה-Bitprints לקובץ הנבחר ברשת."/>
+	<tip id="ID_LIBRARY_COLUMNS" text="בחר את עמודות המידע שתרצה להציג"/>
+	<tip id="ID_LIBRARY_COPY" text="העתק את הקצבים הנבחרים לתיקייה אחרת בספריה"/>
+	<tip id="ID_LIBRARY_CREATETORRENT" text="צור טורנט לקובץ זה בכדי להעלותו לאתר"/>
+	<tip id="ID_LIBRARY_DELETE" text="מחק את הקבצים הנבחרים תמידית"/>
+	<tip id="ID_LIBRARY_ENQUEUE" text="הוסף את הקבצים הנבחרים לרשימת ההשמעה"/>
+	<tip id="ID_LIBRARY_EXPLORE" text="פתח את הספריות הנבחרות"/>
+	<tip id="ID_LIBRARY_EXPORT_COLLECTION" text="יצא את תקיית האלבום הנבחר לקבצי אוסף..."/>
+	<tip id="ID_LIBRARY_FOLDER_DOWNLOAD" text="הורד את כל הקבצים באוסף הנבחר"/>
+	<tip id="ID_LIBRARY_FOLDER_ENQUEUE" text="הוסף כל קובץ בתקית/ות האלבום הנבחרת/ות לרשימת השמע שלך."/>
+	<tip id="ID_LIBRARY_FOLDER_FILE_PROPERTIES" text="הצג וערוך את מאפייני כל הקבצים בתקיה/ות הנבחרת/ות..."/>
+	<tip id="ID_LIBRARY_FOLDER_METADATA" text="החל metadeta משותף מהאלבום על על כל הקבצים בתקיה/ות הנבחרת/ות."/>
+	<tip id="ID_LIBRARY_FOLDER_NEW" text="צור תיקיית אלבום חדשה כאן"/>
+	<tip id="ID_LIBRARY_FOLDER_PROPERTIES" text="הצג וערוך מאפיינים של תיקיית האלבום הנבחרת"/>
+	<tip id="ID_LIBRARY_FOLDERS" text="נהל את התיקיות בספריה שלך"/>
+	<tip id="ID_LIBRARY_HASH_PRIORITY" text="האץ את מהירות סריקת ועיבוד הקבצים"/>
+	<tip id="ID_LIBRARY_LAUNCH" text="פתח או נגן את הקבצים הנבחרים"/>
+	<tip id="ID_LIBRARY_MOVE" text="העתק את הקבצים הנבחרים לתיקייה אחרת בספריה"/>
+	<tip id="ID_LIBRARY_PANEL" text="הצג או הסתר את לוח פרטי הספריה"/>
+	<tip id="ID_LIBRARY_PARENT" text="העבר לספריה המכילה"/>
+	<tip id="ID_LIBRARY_PROPERTIES" text="הצג וערוך מאפיינים של הקבצים הנבחרים"/>
+	<tip id="ID_LIBRARY_REBUILD" text="בנה מחדש metadeta ו-hash לתקיות או הקבצים הנבחרים."/>
+	<tip id="ID_LIBRARY_REBUILD_FILE" text="בנה מחדש metadeta ו-hash לתקיות או הקבצים הנבחרים."/>
+	<tip id="ID_LIBRARY_REBUILD_ANSI" text="בנה מחדש metadeta בשמוש בשפה אחרת."/>
+	<tip id="ID_LIBRARY_REFRESH" text="רענן את תצוגת הספריה"/>
+	<tip id="ID_LIBRARY_REMOVE" text="הסר את התיקיות המשותפות הנבחרות"/>
+	<tip id="ID_LIBRARY_RENAME" text="שנה שם של הקובץ הנבחר"/>
+	<tip id="ID_LIBRARY_SCAN" text="סורק את הקבצים והתיקיות הנבחרים לשינויים"/>
+	<tip id="ID_LIBRARY_SEARCH" text="חפש בספריית הקבצים שלך"/>
+	<tip id="ID_LIBRARY_SEARCH_QUICK" text="חפש בספריית הקבצים שלך"/>
+	<tip id="ID_LIBRARY_SEED_TORRENT" text="הפץ את הטורנט הנבחר בביט-טורנט"/>
+	<tip id="ID_LIBRARY_SELECT_ALL" text="בחר והצג את כל התיקיות בספריה שלך"/>
+	<tip id="ID_LIBRARY_SHARED_FILE" text="שתף או בטל שיתוף של התיקיות הנבחרות"/>
+	<tip id="ID_LIBRARY_SHARED_FOLDER" text="שתף או בטל שיתוף של התיקיות הנבחרות"/>
+	<tip id="ID_LIBRARY_TREE_PHYSICAL" text="הצג את התיקיות הקיימות בספריה שלך"/>
+	<tip id="ID_LIBRARY_TREE_VIRTUAL" text="ארגן את הספריה שלך."/>
+	<tip id="ID_LIBRARY_UNLINK" text="הסר את הקבצים הנבחרים מתיקיית האלבום הנוכחית"/>
+	<tip id="ID_LIBRARY_URI" text="של הקובץ הנבחר URI העתק כתובת."/>
+	<tip id="ID_LIBRARY_VIEW" text="בחר תצוגת ספריה"/>
+	<tip id="ID_LIBRARY_VIEW_ALBUM" text="הצג בתצוגת אלבומים" tip="תצוגת אלבומים"/>
+	<tip id="ID_LIBRARY_VIEW_COLLECTION" text="הצג בתצוגה עשירה של אוספים.‪" tip="תצוגת אוספים"/>
+	<tip id="ID_LIBRARY_VIEW_DETAIL" text="הצג שם קובץ, פרטים, ומידע" tip="תצוגת פרטים"/>
+	<tip id="ID_LIBRARY_VIEW_HOME" text="הצג עמוד ראשי של הספריה" tip="תצוגת עמוד ראשי"/>
+	<tip id="ID_LIBRARY_VIEW_ICON" text="הצג קבצים כסמלים" tip="תצוגת סמלים"/>
+	<tip id="ID_LIBRARY_VIEW_LIST" text="הצג קבצים ברשימה אופקית" tip="תצוגת רשימה"/>
+	<tip id="ID_LIBRARY_VIEW_THUMBNAIL" text="הצג תמונות ממוזערות עבור קבצים" tip="תצוגת תמונות"/>
+	<tip id="ID_LIBRARY_VIEW_TILE" text="הצג רשימה של כל תיקיות האלבומים" tip="תצוגה רגילה"/>
+	<tip id="ID_MEDIA_ADD" text="‪הוסף קובץ מדיה לרשימת ההשמעה"/>
+	<tip id="ID_MEDIA_ADD_FOLDER" text="‪הוסף תיקיה עם קבצי מדיה לרשימת ההשמעה"/>
+	<tip id="ID_MEDIA_ASPECT_16_9" text="נעל ליחס תמונה 4:3 אשר מתאים לצפייה בסרט"/>
+	<tip id="ID_MEDIA_ASPECT_4_3" text="נעל ליחס תמונה 16:9 אשר מתאים לצפייה בטלוויזיה"/>
+	<tip id="ID_MEDIA_ASPECT_DEFAULT" text="השתמש ביחס תמונה אשר קבוע כברירת המחדל בקובץ הוידאו"/>
+	<tip id="ID_MEDIA_CLEAR" text="נקה את רשימת ההשמעה"/>
+	<tip id="ID_MEDIA_CLOSE" text="סגור את קובץ המדיה, לפינוי הזיכרון"/>
+	<tip id="ID_MEDIA_EXPORT_COLLECTION" text="שמור את רשימת ההשמעה כקובץ אוסף..."/>
+	<tip id="ID_MEDIA_FULLSCREEN" text="עבור למצב תצוגת וידאו במסך מלא"/>
+	<tip id="ID_MEDIA_MUTE" text="השתק את הקול"/>
+	<tip id="ID_MEDIA_NEXT" text="דלג לקובץ הבא ברשימת ההשמעה הנוכחית" tip="הקובץ הבא"/>
+	<tip id="ID_MEDIA_OPEN" text="פתח ונגן את קובץ המדיה או את רשימת ההשמעה"/>
+	<tip id="ID_MEDIA_PAUSE" text="השהה ניכון של קובץ המדיה" tip="השהה"/>
+	<tip id="ID_MEDIA_PLAY" text="התחל לנגן את קובץ המדיה הנוכחי" tip="נגן"/>
+	<tip id="ID_MEDIA_PLAYLIST" text="הצג או הסתר את עורך רשימת ההשמעה"/>
+	<tip id="ID_MEDIA_PREVIOUS" text="דלג לקובץ הקודם ברשימת ההשמעה הנוכחית" tip="הקובץ הקודם"/>
+	<tip id="ID_MEDIA_PROPERTIES" text="הצג וערוך את המאפיינים של הקבצים שנבחרו."/>
+	<tip id="ID_MEDIA_RANDOM" text="קבע מצב בחירה רנדומלית ברשימת ההשמעה הנוכחית"/>
+	<tip id="ID_MEDIA_RATE" text="דרג את הקבצים שנבחרו."/>
+	<tip id="ID_MEDIA_REMOVE" text="הסר את קובץ המדיה הנבחר מרשימת ההשמעה"/>
+	<tip id="ID_MEDIA_REPEAT" text="נגן שנית את קובץ המדיה הנוכחי"/>
+	<tip id="ID_MEDIA_SAVE" text="שמור את רשימת ההשמעה הנוכחית"/>
+	<tip id="ID_MEDIA_SELECT" text="בחר ונגן את קובץ המדיה"/>
+	<tip id="ID_MEDIA_SETTINGS" text="הצג את עמוד הגדרות המדיה"/>
+	<tip id="ID_MEDIA_SIZE_DISTORT" text="מתח את הסרט למילוי החלון, ייתכם עיוות."/>
+	<tip id="ID_MEDIA_SIZE_FILL" text="בחר את הגודל המתאים ביותר עבור הוידאו לפי יחס תצוגת התמונה"/>
+	<tip id="ID_MEDIA_SIZE_ONE" text="הצג את הוידאו בגודלו המקורי"/>
+	<tip id="ID_MEDIA_SIZE_HALF" text="הצג את הוידאו בגודל משולש מגודלו המקורי"/>
+	<tip id="ID_MEDIA_SIZE_TWO" text="הצג את הוידאו בגודל כפול מגודלו המקורי"/>
+	<tip id="ID_MEDIA_STATUS" text="הצג או הסתר את שורת מצב המדיה"/>
+	<tip id="ID_MEDIA_STOP" text="הפסק השמעת קובץ המדיה" tip="עצור"/>
+	<tip id="ID_MEDIA_VIS" text="בחר תוסף לאפקט אודיו ויזואלי"/>
+	<tip id="ID_MEDIA_ZOOM" text="שנה את הגדרות הזום ויחס התמונה"/>
+	<tip id="ID_MONITOR_CLOSE" text="סגור את חלון המוניטור"/>
+	<tip id="ID_NEIGHBOURS_CHAT" text="פתח חלון צ'אט עם המשתמש הנבחר"/>
+	<tip id="ID_NEIGHBOURS_URI" text="בכדי לגשת לכתובת הנבחרת URI התנתק מ"/>
+	<tip id="ID_NEIGHBOURS_DISCONNECT" text="התנתק מהשכנים הנבחרים"/>
+	<tip id="ID_NEIGHBOURS_SETTINGS" text="כוון הגדרות רשת..."/>
+	<tip id="ID_NEIGHBOURS_VIEW_ALL" text="Open a new Packet Dump window monitoring this neighbour."/>
+	<tip id="ID_NEIGHBOURS_VIEW_INCOMING" text="Open a new Packet Dump window monitoring incoming traffic from this neighbour."/>
+	<tip id="ID_NEIGHBOURS_VIEW_OUTGOING" text="Open a new Packet Dump window monitoring outgoing traffic to this neighbour."/>
+	<tip id="ID_NETWORK_AUTO_CLOSE" text="סגור אוטמטית את שרזה כשהעברות יסתיימו"/>
+	<tip id="ID_NETWORK_BROWSE_TO" text="סייר במשתמש, וצפה בפרופיל ובקבציו המשותפים"/>
+	<tip id="ID_NETWORK_CONNECT" text="התחבר לרשת"/>
+	<tip id="ID_NETWORK_CONNECT_TO" text="התחבר באופן ידני למשתמש..."/>
+	<tip id="ID_NETWORK_DISCONNECT" text="התנתק מהרשת"/>
+	<tip id="ID_NETWORK_EXIT" text="צא משרזה"/>
+	<tip id="ID_NETWORK_ED2K" text="התחבר לרשת אידונקי2000"/>
+	<tip id="ID_NETWORK_DC" text="התחבר לרשת אידונקיDC++"/>
+	<tip id="ID_NETWORK_BT" text="התחבר לרשת אידונקיBitTorrent"/>
+	<tip id="ID_NETWORK_G1" text="התחבר לרשת גנוטלה המקורית"/>
+	<tip id="ID_NETWORK_G2" text="התחבר לגנוטלה2 - מומלץ מאוד"/>
+	<tip id="ID_NETWORK_SEARCH" text="התחל חיפוש חדש ברשת"/>
+	<tip id="ID_SEARCH_CHAT" text="התחל צ'אט עם המשתמש הנבחר"/>
+	<tip id="ID_SEARCH_CLEAR" text="נקה את תוצאות החיפוש"/>
+	<tip id="ID_SEARCH_COLUMNS" text="בחר את עמודות המידע שיוצגו"/>
+	<tip id="ID_SEARCH_URI" text="העתק את כתובת URI של הקובץ הנבחר"/>
+	<tip id="ID_SEARCH_DETAILS" text="הצג מידע מפורט על הקובץ הנבחר"/>
+	<tip id="ID_SEARCH_DOWNLOAD" text="הורד את הקבצים הנבחרים"/>
+	<tip id="ID_SEARCH_DOWNLOADNOW" text="הורד את הקבצים הנבחרים ותן להם עדיפות"/>
+	<tip id="ID_SEARCH_FILTER" text="סנן את התוצאות לפי מילים ספציפיות ותנאים"/>
+	<tip id="ID_SEARCH_FILTER_RAW" text="סנן את התוצאות לפי מילים ספציפיות ותנאים"/>
+	<tip id="ID_SEARCH_FILTER_REMOVE" text="הסר את הסינון מהתוצאות"/>
+	<tip id="ID_SEARCH_FOR_ALBUM" text="חפש עבור קבצי מוזיקה מאותו אלבום כשל הקובץ הנבחר"/>
+	<tip id="ID_SEARCH_FOR_ARTIST" text="חפש עבור קבצי מוזיקה מאותו אמן של הקובץ הנבחר"/>
+	<tip id="ID_SEARCH_FOR_SERIES" text="חפש עבור קבצי וידאו מאותה סידרה של הקובץ הנבחר"/>
+	<tip id="ID_SEARCH_FOR_SIMILAR" text="חפש עבור קבצים הדומים לקובץ הנבחר"/>
+	<tip id="ID_SEARCH_FOR_THIS" text="חפש עבור עותקים אחרים של הקובץ הנבחר"/>
+	<tip id="ID_SEARCH_PANEL" text="הצג את לוח החיפוש המהיר מימין לחלון החיפוש"/>
+	<tip id="ID_SEARCH_SEARCH" text="חפש שנית את הרשת"/>
+	<tip id="ID_SEARCH_STOP" text="הפסק קבלת תוצאות בחלון זה"/>
+	<tip id="ID_SEARCHMONITOR_CLEAR" text="נקה את זכירון המטמון של מוניטור החיפוש"/>
+	<tip id="ID_SEARCHMONITOR_PAUSE" text="השהה ניטור חיפוש"/>
+	<tip id="ID_SECURITY_BAN" text="חסום את הכתובת למשך ההפעלה הנוכחית"/>
+	<tip id="ID_SECURITY_ADD" text="הוסף חוק חדש לשרשרת האבטחה"/>
+	<tip id="ID_SECURITY_EDIT" text="ערוך את חוק האבטחה הנבחר"/>
+	<tip id="ID_SECURITY_EXPORT" text=".ייצא חוקי אבטחה לקובץ"/>
+	<tip id="ID_SECURITY_IMPORT" text="ייבא חוקי אבטחה מקובץ"/>
+	<tip id="ID_SECURITY_MOVE_DOWN" text="Move the selected security rules down the precedence list."/>
+	<tip id="ID_SECURITY_MOVE_UP" text="Move the selected security rules up the precedence list."/>
+	<tip id="ID_SECURITY_POLICY_ACCEPT" text="Set the default security policy to allow all hosts."/>
+	<tip id="ID_SECURITY_POLICY_DENY" text="Set the default security policy to deny all hosts."/>
+	<tip id="ID_SECURITY_REMOVE" text="הסר את חוקי האבטחה הנבחרים"/>
+	<tip id="ID_SECURITY_RESET" text="אפס את המונה לחוקי אבטחה הנבחרים"/>
+	<tip id="ID_SCHEDULER_ADD" text="הוסף חוק חדש לשרשרת האבטחה"/>
+	<tip id="ID_SCHEDULER_EDIT" text="ערוך את חוק האבטחה הנבחר"/>
+	<tip id="ID_SCHEDULER_ACTIVATE" text="נקה את העלאות הנבחרות מהרשימה"/>
+	<tip id="ID_SCHEDULER_DEACTIVATE" text="התחבר לרשת"/>
+	<tip id="ID_SCHEDULER_EXPORT" text=".ייצא חוקי אבטחה לקובץ"/>
+	<tip id="ID_SCHEDULER_IMPORT" text="ייבא חוקי אבטחה מקובץ"/>
+	<tip id="ID_SCHEDULER_REMOVE" text="הסר את ההורדה הנבחרת מהרשימה"/>
+	<tip id="ID_SCHEDULER_REMOVE_ALL" text="Delete all scheduled tasks."/>
+	<tip id="ID_SYSTEM_CLEAR" text="נקה את רישום המצב"/>
+	<tip id="ID_SYSTEM_TIMESTAMP" text="הצג זמן/שעה לכל שורה"/>
+	<tip id="ID_SYSTEM_VERBOSE" text="הצג רישום מפורט על פעילות המערכת"/>
+	<tip id="ID_TAB_CONNECT" text="התחבר או התנתק לרשת"/>
+	<!--tip id="ID_TAB_HELP" text="קבל עזרה בשימוש בשרזה"-->
+	<tip id="ID_TAB_HOME" text="חזור לעמוד הבית של שרזה"/>
+	<tip id="ID_TAB_LIBRARY" text="הצג ונהל את התוכן המקומי בספריה שלך"/>
+	<tip id="ID_TAB_MEDIA" text="נגן קבצי וידאו ואודיו מהספריה שלך"/>
+	<tip id="ID_TAB_NETWORK" text="בדוק עד כמה טוב אתה מחובר לרשת"/>
+	<tip id="ID_TAB_SEARCH" text="חפש את הרשת לקבצים להורדה"/>
+	<tip id="ID_TAB_TRANSFERS" text="צפה בהורדות והעלאות שאתה מבצע"/>
+	<tip id="ID_TOOLS_DOWNLOAD" text="התחל להוריד קובץ או טורנט חדש"/>
+	<tip id="ID_TOOLS_LANGUAGE" text="בחר את השפה בה תרצה להשתמש בשרזה (Select Language)"/>
+	<tip id="ID_TOOLS_PROFILE" text="ערוך את פרופיל המשתמש שלך"/>
+	<tip id="ID_TOOLS_RESKIN" text="טען מחדש והחל את המעטפת הנוכחית שנבחרה"/>
+	<tip id="ID_TOOLS_SEEDTORRENT" text="הפץ את הטורנט הנבחר בביט-טורנט"/>
+	<tip id="ID_TOOLS_SETTINGS" text="כוון את הגדרות שרזה"/>
+	<tip id="ID_TOOLS_SKIN" text="בחר מעטפת אחרת לשרזה"/>
+	<tip id="ID_TOOLS_WIZARD" text="פתח את אשף ההפעלה המהירה של שרזה"/>
+	<tip id="ID_TRAFFIC_AXIS" text="Display Vertical Axis"/>
+	<tip id="ID_TRAFFIC_CLEAR" text="נקה את גרף התעבורה"/>
+	<tip id="ID_TRAFFIC_GRID" text="Display grid lines."/>
+	<tip id="ID_TRAFFIC_LEGEND" text="הצג מקרא"/>
+	<tip id="ID_TRAFFIC_SETUP" text="Select and configure items to graph..."/>
+	<tip id="ID_TRAFFIC_WINDOW" text="פתח חלון גרף חדש"/>
+	<tip id="ID_TRANSFERS_CHAT" text="פתח חלון צ'אט עם המשתמש הנבחר"/>
+	<tip id="ID_TRANSFERS_CONNECT" text="Access the selected download sources and attempt to download."/>
+	<tip id="ID_TRANSFERS_DISCONNECT" text="התנתק מהעברת ההורדה הנבחרת"/>
+	<tip id="ID_TRANSFERS_FORGET" text="התנתק ושכח את  ההורדה הנבחרת"/>
+	<tip id="ID_TRAY_OPEN" text="פתח את החלון של שרזה"/>
+	<tip id="ID_UPLOADS_AUTO_CLEAR" text="נקה אוטמטית העלאות שהסתיימו"/>
+	<tip id="ID_UPLOADS_CHAT" text="התחל צ'אט עם המשתמש הנבחר"/>
+	<tip id="ID_UPLOADS_CLEAR" text="נקה את העלאות הנבחרות מהרשימה"/>
+	<tip id="ID_UPLOADS_CLEAR_COMPLETED" text="נקה העלאה שהושלמה"/>
+	<tip id="ID_UPLOADS_DISCONNECT" text="נתק את ההעברת העלאות הנבחרות"/>
+	<tip id="ID_UPLOADS_FILTER_ACTIVE" text="הצג את כל ההעלאות שבאופן פעיל נשלחות"/>
+	<tip id="ID_UPLOADS_FILTER_ALL" text="הצג את כל ההעלאות"/>
+	<tip id="ID_UPLOADS_FILTER_HISTORY" text="הצג העלאות שכבר אינן מחוברות"/>
+	<tip id="ID_UPLOADS_FILTER_MENU" text="בחר אילו סוגי קבצים להראות אילו סוגי להסתיר בתצוגה זו."/>
+	<tip id="ID_UPLOADS_FILTER_QUEUED" text="הצג העלאות שממתינות בתור אצלך"/>
+	<tip id="ID_UPLOADS_FILTER_TORRENT" text="הצג העלאות של ביט-טורנט"/>
+	<tip id="ID_UPLOADS_LAUNCH" text="הפעל את הקבצים המשותפים שנבחר."/>
+	<tip id="ID_UPLOADS_SETTINGS" text="הגדר להעלות הגדרות..."/>
+	<tip id="ID_UPLOADS_START" text="כוח להתחיל שנוספו בתור נבחרת."/>
+	<tip id="ID_UPLOADS_PRIORITY" text="בחר אחד להעלות להסיר מגבלות."/>
+	<tip id="ID_VIEW_BASIC" text="השתמש בשרזה במצב רגיל"/>
+	<tip id="ID_VIEW_DISCOVERY" text="הצג או הסתר את חלון משאבי החיבור"/>
+	<tip id="ID_VIEW_DOWNLOADS" text="הצג או הסתר את חלון ההורדות"/>
+	<tip id="ID_VIEW_HOSTS" text="הצג או הסתר את חלון זיכרון מטמון הכתובות"/>
+	<tip id="ID_VIEW_LIBRARY" text="הצג או הסתר את חלון הספריה"/>
+	<tip id="ID_VIEW_MEDIA" text="הצג או הסתר את חלון נגן המדיה"/>
+	<tip id="ID_VIEW_NEIGHBOURS" text="הצג או הסתר את חלון השכנים"/>
+	<tip id="ID_VIEW_PACKETS" text="הצג או הסתר את חלון הפקטים"/>
+	<tip id="ID_VIEW_RESULTS_MONITOR" text="הצג או הסתר את מוניטור התוצאות"/>
+	<tip id="ID_VIEW_SEARCH_MONITOR" text="הראה או הסתר את חלון החיפוש"/>
+	<tip id="ID_VIEW_SECURITY" text="הראה או הסתר את חלון האבטחה"/>
+	<tip id="ID_VIEW_SYSTEM" text="הראה או הסתר את חלון המערכת"/>
+	<tip id="ID_VIEW_TABBED" text="השתשמש בשרזה במצב מתקדם של טאבים"/>
+	<tip id="ID_VIEW_TRAFFIC" text="הראה או הסתר את חלון הגרפים"/>
+	<tip id="ID_VIEW_UPLOADS" text="הראה או הסתר את חלון העלאות"/>
+	<tip id="ID_VIEW_WINDOWED" text="התשמש בשרזה במצב מתקדם של חלונות"/>
+	<tip id="ID_WINDOW_CASCADE" text="הרחב את כל החלונות בכדי להתאים למסך"/>
+	<tip id="ID_WINDOW_MONITOR" text="הראה או הסתר את מוניטור רוחב הפס"/>
+	<tip id="ID_WINDOW_NAVBAR" text="הראה או הסתר את לוח הניווט"/>
+	<tip id="ID_WINDOW_REMOTE" text="הראה או הסתר את לוח השליטה מרחוק"/>
+	<tip id="ID_WINDOW_TABBAR" text="הראה או הסתר את לוח חלונות הטאבים"/>
+	<tip id="ID_WINDOW_TILE_HORZ" text="Arrange open windows as horizontal, non-overlapping tiles."/>
+	<tip id="ID_WINDOW_TILE_VERT" text="Arrange open windows as vertical, non-overlapping tiles."/>
+	<tip id="ID_WINDOW_TOOLBAR" text="הראה או הסתר את סרגל הכלים"/>
 	<!-- Missing PLUGIN TIPS -->
 </commandtips>
 <!-- Tips displayed when mouse is moved over controls in the dialogs -->
 	<!-- Missing controlTips -->
 <!-- Localized Strings -->
 <strings>
-	<string id="WINDOW_MAIN" value="‪‪שרזה"/>
-	<string id="WINDOW_HOME" value="‪‪עמוד ראשי של שרזה"/>
-	<string id="WINDOW_SYSTEM" value="‪‪מערכת"/>
-	<string id="WINDOW_NEIGHBOURS" value="‪‪שכנים"/>
-	<string id="WINDOW_PACKET" value="‪‪תפוקת הפקט"/>
-	<string id="WINDOW_HOSTCACHE" value="‪‪זיכרון מטמון של כתובות משתמשים"/>
-	<string id="WINDOW_SEARCH" value="‪‪חיפוש"/>
-	<string id="WINDOW_SEARCHPAD" value="‪‪חיפוש"/>
-	<string id="WINDOW_SEARCHMONITOR" value="‪‪מוניטור חיפוש"/>
-	<string id="WINDOW_HITMONITOR" value="‪‪מוניטור תוצאות"/>
-	<string id="WINDOW_DOWNLOADS" value="‪‪הורדות"/>
-	<string id="WINDOW_UPLOADS" value="‪‪העלאות"/>
-	<string id="WINDOW_LIBRARY" value="‪‪ספריה"/>
-	<string id="WINDOW_TRAFFIC" value="‪‪גרף"/>
-	<string id="WINDOW_CHAT" value="‪‪צ'אט"/>
-	<string id="WINDOW_SECURITY" value="‪‪אבטחה"/>
-	<string id="WINDOW_SCHEDULER" value="מתזמן"/>
-	<string id="WINDOW_DISCOVERY" value="‪‪שירותי משאבי חיבור"/>
-	<string id="WINDOW_BROWSEHOST" value="‪‪סייר"/>
-	<string id="WINDOW_MEDIA" value="‪‪נגן המדיה"/>
-	<!--string id="WINDOW_HELP" value="‪‪עזרה של שרזה"-->
-	<string id="20001" value="כן"/>
-	<string id="20002" value="לא"/>
-	<string id="20003" value="אישור"/>
-	<string id="20004" value="ביטול"/>
-	<string id="20005" value="לחזור"/>
-	<string id="20006" value="הבא"/>
-	<string id="20008" value="קרוב"/>
-	<string id="20009" value="מתוך"/> <!-- ex: 1 of 10 -->
-	<string id="20010" value="כל"/>
-	<string id="20011" value="אוטומטי"/>
-	<string id="20012" value="מנהג"/>
-	<string id="20013" value="ברירת מחדל"/>
-	<string id="20014" value="לגמור"/>
-	<string id="20019" value="Please Wait..."/>
-	<string id="20020" value="קובץ"/>
-	<string id="20021" value="קבצים"/>
-	<string id="20022" value="‪כל הקבצים"/>
-	<string id="20023" value="No Files"/>
-	<string id="20024" value="‪קבצים גדולים"/>
-	<string id="20025" value="‪קבצים בינוניים"/>
-	<string id="20026" value="‪קבצים קטנים"/>
-	<string id="20027" value="‪קבצים חלקיים"/>
-	<string id="20028" value="ספריית קבצים"/>
-	<string id="20029" value="‪%s הקבצים"/>
-	<string id="20050" value="‪שכל יום"/>
-	<string id="20051" value="‪שני"/>
-	<string id="20052" value="‪שלישי"/>
-	<string id="20053" value="‪רביעי"/>
-	<string id="20054" value="‪חמישי"/>
-	<string id="20055" value="‪שישי"/>
-	<string id="20056" value="‪שבת"/>
-	<string id="20057" value="‪ראשון"/>
-	<string id="20060" value="‪(ללא דירוג)"/>
-	<string id="20061" value="‪מזוייף / מקולקל"/>
-	<string id="20062" value="‪גרוע"/>
-	<string id="20063" value="‪ממוצע"/>
-	<string id="20064" value="‪טוב"/>
-	<string id="20065" value="‪טוב מאוד"/>
-	<string id="20066" value="‪מעולה"/>
-	<string id="20080" value="‪‪‏הסתיימה‎ ‏הנסיון‎ תקופת‎ ‏שרזה‎ ‏של‎ ‏נסיונית‎ ‏גרסה‎ ‏זוהי http://getenvy.com ‏מהאתר‎ ‏והרשמית‎ ‏המלאה‎ ‏הגרסא‎ ‏את‎ ‏הורד‎ ‏אנא‎"/>
-	<string id="20081" value="‪סגור"/>
-	<string id="20082" value="‪הסתיים, לחץ על סגירה"/>
-	<string id="20083" value="‪...מבקש"/>
-	<string id="20084" value="‪!הצלחה"/>
-	<string id="20100" value="‪.%s סוגר את החיבור לסיור אצל המשתמש"/>
-	<string id="20102" value=".‪‏ההתחברות אל המשתמש נכשלה"/>
-	<string id="20105" value="‪...יוצר חיבור עם כתובת המשתמש"/>
-	<string id="20107" value="‪...(%2.f%%) מוריד בקשת סיור בתיקייה"/>
-	<string id="20109" value="‪נפל %s החיבור לסיור אצל המשתמש"/>
-	<string id="20110" value="‪.%s קבצים לאחר סיום הסיור אצל המשתמש %i נמצאו"/>
-	<string id="20111" value=".קבצים משותפים %i נמצאו %s בספרייה של"/>
-	<string id="20114" value=".הורדת רשימת הקבצים נכשלה, המשתמש חסם אפשרות זו"/>
-	<string id="20116" value="‪.ממתין להתחברות push נשלחה בקשת"/>
-	<string id="20118" value="‪מחובר, מבקש לסייר בקבצים"/>
-	<string id="20120" value="‪Closing browse user connection %s due to lack of traffic."/>
-	<string id="20121" value="‪מסייר אצל %s"/>
-	<string id="20155" value="‪‪&quot;%s&quot;.‏עבור‎ ‏ביט‎-‏טורנט‎ ‏עוקב‎ ‏של‎ ‏תגובה‎ ‏התקבלה‎ ‏חדשים‎, ‏מקורות‎ %i"/>
-	<string id="20160" value="‪Accepted incoming chat request from %s, handshaking..."/>
-	<string id="20161" value="‪%s לא מצליח ליצור חיבור אל"/>
-	<string id="20163" value="‪‪.החיבור נסגר"/>
-	<string id="20164" value="‪נסגר %s החיבור אל"/>
-	<string id="20165" value="‪‪‪...חיבור הושלם, מבצע לחיצת יד"/>
-	<string id="20166" value="‪...לוחץ ידיים ,%s מחובר אל"/>
-	<string id="20167" value="‪%s יוצר חיבור אל"/>
-	<string id="20168" value="...%s מתחבר לצ'אט עם משתמש"/>
-	<string id="20169" value="‪.%s נכשל להתחבר לכתובת"/>
-	<string id="20170" value="‪נכשל החיבור לצ'אט"/>
-	<string id="20171" value="‪אבד %s החיבור אל"/>
-	<string id="20172" value="‪.לחיצת היד הושלמה, כתובת המשתמש כנראה לא מאפשרת שיחות צ'אט"/>
-	<string id="20173" value="‪%s לחיצת היד הושלמה, גרסאת פרוטוקול הצ'אט היא "/>
-	<string id="20174" value="‪‪...מחליף מידע פרופילים"/>
-	<string id="20178" value="‪%s לאחר שינוי השם ,%s שמך כעת"/>
-	<string id="20179" value="‪Now chatting with %s (%s)."/>
-	<string id="20180" value=".%s הוענקה עדיפות העלאה למשתמש בכתובת"/>
-	<string id="20181" value="‪לא זמין כעת %s המשתמש: %s"/>
-	<string id="20182" value="‪‪.%s שיחה פרטית אושרה, אתה כרגע משוחח עם"/>
-	<string id="20183" value="‪‪.לא מקבל שיחות פרטיות, סליחה %s המשתמש"/>
-	<string id="20184" value="‪‪...מבקש שיחה פרטית עם המשתמש"/>
-	<string id="20185" value="‪משתמש מאומת"/>
-	<string id="20186" value="‪לוחץ יד %s -מ push אושר חיבור"/>
-	<string id="20187" value="‪%s -מוגן חומת אש מ push מבקש חיבור"/>
-	<string id="20188" value="‪.ההתחברות נכשלה בעקבות מידע שגוי בכבל התקשורת"/>
-	<string id="20189" value="‪%s :התקבלה תגובה לא מוכרת"/>
-	<string id="20190" value="‪.אתה אינך מחובר"/>
-	<string id="20191" value="‪&quot;%s&quot;.פקודה בלתי מזוהה"/>
-	<string id="20199" value="‪(סוגר בסיום ההעברות)"/>
-	<string id="20201" value="‪כבר בהורדה, מוסיף מקורות &quot;%s&quot; הקובץ"/>
-	<string id="20207" value="‪?האם אתה בטוח שברצונך לבטל או להפסיק את כל ההורדות בקבוצה"/>
-	<string id="20217" value="בחר את התקייה הזמנית של אי-דונקי/אי-מיול:"/>
+	<string id="WINDOW_MAIN" text="‪‪שרזה"/>
+	<string id="WINDOW_HOME" text="‪‪עמוד ראשי של שרזה"/>
+	<string id="WINDOW_SYSTEM" text="‪‪מערכת"/>
+	<string id="WINDOW_NEIGHBOURS" text="‪‪שכנים"/>
+	<string id="WINDOW_PACKET" text="‪‪תפוקת הפקט"/>
+	<string id="WINDOW_HOSTCACHE" text="‪‪זיכרון מטמון של כתובות משתמשים"/>
+	<string id="WINDOW_SEARCH" text="‪‪חיפוש"/>
+	<string id="WINDOW_SEARCHPAD" text="‪‪חיפוש"/>
+	<string id="WINDOW_SEARCHMONITOR" text="‪‪מוניטור חיפוש"/>
+	<string id="WINDOW_HITMONITOR" text="‪‪מוניטור תוצאות"/>
+	<string id="WINDOW_DOWNLOADS" text="‪‪הורדות"/>
+	<string id="WINDOW_UPLOADS" text="‪‪העלאות"/>
+	<string id="WINDOW_LIBRARY" text="‪‪ספריה"/>
+	<string id="WINDOW_TRAFFIC" text="‪‪גרף"/>
+	<string id="WINDOW_CHAT" text="‪‪צ'אט"/>
+	<string id="WINDOW_SECURITY" text="‪‪אבטחה"/>
+	<string id="WINDOW_SCHEDULER" text="מתזמן"/>
+	<string id="WINDOW_DISCOVERY" text="‪‪שירותי משאבי חיבור"/>
+	<string id="WINDOW_BROWSEHOST" text="‪‪סייר"/>
+	<string id="WINDOW_MEDIA" text="‪‪נגן המדיה"/>
+	<!--string id="WINDOW_HELP" text="‪‪עזרה של שרזה"-->
+	<string id="20001" text="כן"/>
+	<string id="20002" text="לא"/>
+	<string id="20003" text="אישור"/>
+	<string id="20004" text="ביטול"/>
+	<string id="20005" text="לחזור"/>
+	<string id="20006" text="הבא"/>
+	<string id="20008" text="קרוב"/>
+	<string id="20009" text="מתוך"/> <!-- ex: 1 of 10 -->
+	<string id="20010" text="כל"/>
+	<string id="20011" text="אוטומטי"/>
+	<string id="20012" text="מנהג"/>
+	<string id="20013" text="ברירת מחדל"/>
+	<string id="20014" text="לגמור"/>
+	<string id="20019" text="Please Wait..."/>
+	<string id="20020" text="קובץ"/>
+	<string id="20021" text="קבצים"/>
+	<string id="20022" text="‪כל הקבצים"/>
+	<string id="20023" text="No Files"/>
+	<string id="20024" text="‪קבצים גדולים"/>
+	<string id="20025" text="‪קבצים בינוניים"/>
+	<string id="20026" text="‪קבצים קטנים"/>
+	<string id="20027" text="‪קבצים חלקיים"/>
+	<string id="20028" text="ספריית קבצים"/>
+	<string id="20029" text="‪%s הקבצים"/>
+	<string id="20050" text="‪שכל יום"/>
+	<string id="20051" text="‪שני"/>
+	<string id="20052" text="‪שלישי"/>
+	<string id="20053" text="‪רביעי"/>
+	<string id="20054" text="‪חמישי"/>
+	<string id="20055" text="‪שישי"/>
+	<string id="20056" text="‪שבת"/>
+	<string id="20057" text="‪ראשון"/>
+	<string id="20060" text="‪(ללא דירוג)"/>
+	<string id="20061" text="‪מזוייף / מקולקל"/>
+	<string id="20062" text="‪גרוע"/>
+	<string id="20063" text="‪ממוצע"/>
+	<string id="20064" text="‪טוב"/>
+	<string id="20065" text="‪טוב מאוד"/>
+	<string id="20066" text="‪מעולה"/>
+	<string id="20080" text="‪‪‏הסתיימה‎ ‏הנסיון‎ תקופת‎ ‏שרזה‎ ‏של‎ ‏נסיונית‎ ‏גרסה‎ ‏זוהי http://getenvy.com ‏מהאתר‎ ‏והרשמית‎ ‏המלאה‎ ‏הגרסא‎ ‏את‎ ‏הורד‎ ‏אנא‎"/>
+	<string id="20081" text="‪סגור"/>
+	<string id="20082" text="‪הסתיים, לחץ על סגירה"/>
+	<string id="20083" text="‪...מבקש"/>
+	<string id="20084" text="‪!הצלחה"/>
+	<string id="20100" text="‪.%s סוגר את החיבור לסיור אצל המשתמש"/>
+	<string id="20102" text=".‪‏ההתחברות אל המשתמש נכשלה"/>
+	<string id="20105" text="‪...יוצר חיבור עם כתובת המשתמש"/>
+	<string id="20107" text="‪...(%2.f%%) מוריד בקשת סיור בתיקייה"/>
+	<string id="20109" text="‪נפל %s החיבור לסיור אצל המשתמש"/>
+	<string id="20110" text="‪.%s קבצים לאחר סיום הסיור אצל המשתמש %i נמצאו"/>
+	<string id="20111" text=".קבצים משותפים %i נמצאו %s בספרייה של"/>
+	<string id="20114" text=".הורדת רשימת הקבצים נכשלה, המשתמש חסם אפשרות זו"/>
+	<string id="20116" text="‪.ממתין להתחברות push נשלחה בקשת"/>
+	<string id="20118" text="‪מחובר, מבקש לסייר בקבצים"/>
+	<string id="20120" text="‪Closing browse user connection %s due to lack of traffic."/>
+	<string id="20121" text="‪מסייר אצל %s"/>
+	<string id="20155" text="‪‪&quot;%s&quot;.‏עבור‎ ‏ביט‎-‏טורנט‎ ‏עוקב‎ ‏של‎ ‏תגובה‎ ‏התקבלה‎ ‏חדשים‎, ‏מקורות‎ %i"/>
+	<string id="20160" text="‪Accepted incoming chat request from %s, handshaking..."/>
+	<string id="20161" text="‪%s לא מצליח ליצור חיבור אל"/>
+	<string id="20163" text="‪‪.החיבור נסגר"/>
+	<string id="20164" text="‪נסגר %s החיבור אל"/>
+	<string id="20165" text="‪‪‪...חיבור הושלם, מבצע לחיצת יד"/>
+	<string id="20166" text="‪...לוחץ ידיים ,%s מחובר אל"/>
+	<string id="20167" text="‪%s יוצר חיבור אל"/>
+	<string id="20168" text="...%s מתחבר לצ'אט עם משתמש"/>
+	<string id="20169" text="‪.%s נכשל להתחבר לכתובת"/>
+	<string id="20170" text="‪נכשל החיבור לצ'אט"/>
+	<string id="20171" text="‪אבד %s החיבור אל"/>
+	<string id="20172" text="‪.לחיצת היד הושלמה, כתובת המשתמש כנראה לא מאפשרת שיחות צ'אט"/>
+	<string id="20173" text="‪%s לחיצת היד הושלמה, גרסאת פרוטוקול הצ'אט היא "/>
+	<string id="20174" text="‪‪...מחליף מידע פרופילים"/>
+	<string id="20178" text="‪%s לאחר שינוי השם ,%s שמך כעת"/>
+	<string id="20179" text="‪Now chatting with %s (%s)."/>
+	<string id="20180" text=".%s הוענקה עדיפות העלאה למשתמש בכתובת"/>
+	<string id="20181" text="‪לא זמין כעת %s המשתמש: %s"/>
+	<string id="20182" text="‪‪.%s שיחה פרטית אושרה, אתה כרגע משוחח עם"/>
+	<string id="20183" text="‪‪.לא מקבל שיחות פרטיות, סליחה %s המשתמש"/>
+	<string id="20184" text="‪‪...מבקש שיחה פרטית עם המשתמש"/>
+	<string id="20185" text="‪משתמש מאומת"/>
+	<string id="20186" text="‪לוחץ יד %s -מ push אושר חיבור"/>
+	<string id="20187" text="‪%s -מוגן חומת אש מ push מבקש חיבור"/>
+	<string id="20188" text="‪.ההתחברות נכשלה בעקבות מידע שגוי בכבל התקשורת"/>
+	<string id="20189" text="‪%s :התקבלה תגובה לא מוכרת"/>
+	<string id="20190" text="‪.אתה אינך מחובר"/>
+	<string id="20191" text="‪&quot;%s&quot;.פקודה בלתי מזוהה"/>
+	<string id="20199" text="‪(סוגר בסיום ההעברות)"/>
+	<string id="20201" text="‪כבר בהורדה, מוסיף מקורות &quot;%s&quot; הקובץ"/>
+	<string id="20207" text="‪?האם אתה בטוח שברצונך לבטל או להפסיק את כל ההורדות בקבוצה"/>
+	<string id="20217" text="בחר את התקייה הזמנית של אי-דונקי/אי-מיול:"/>
 	<!-- Missing Download Edit Strings -->
-	<string id="20227" value="‪.האם אתה בטוח שברצונך ששרזה תניח שההורדה הושלמה,  ולאמת את ההורדה מחדש? כל הקובץ ייחשב, ושרזה תאשר את החלקים שיעברו את האימות בהצלחה ותוריד מחדש את החלקים שיכשלו בשלב האימות"/>
-	<string id="20250" value="Drag'n'drop קבצים לקבוצה %s"/>
-	<string id="20251" value="ברירת המחדל של הורדת הקבוצה. (הצג את כל הקבצים)"/>
-	<string id="20270" value="‪&quot;%s&quot;.:הורדה הוסרה"/>
-	<string id="20332" value="‪Unable to open part file &quot;%s&quot;."/>
-	<string id="20333" value="‪.סיים להעתיק קובץ"/>
-	<string id="20334" value="...&quot;%s&quot;.את &quot;%s&quot; מעתיק אל"/>
-	<string id="20337" value="‪.נכשל לייבא קובץ"/>
-	<string id="20338" value="‪Download data file is newer than .part file, aborting."/>
-	<string id="20339" value="‪Found partial file &quot;%s&quot;, importing..."/>
-	<string id="20341" value="‪...&quot;%s&quot;.:סורק ספריה"/>
-	<string id="20344" value="‪Found download &quot;%s&quot;, size %s."/>
-	<string id="20354" value="‪מאפייני קובץ"/>
-	<string id="20355" value="‪‪?האם הינך בטוח שברצונך למחוק את המסנן"/>
-	<string id="20360" value="Connection Errors (%)"/>
-	<string id="20361" value="‪רוחב פס להורדות"/>
-	<string id="20362" value="‪כמות קבצים בהורדה"/>
-	<string id="20363" value="‪כמות העברות של הורדות"/>
-	<string id="20364" value="‪רוחב פס קבלה של גנוטלה"/>
-	<string id="20365" value="‪רוחב פס שידור של גנוטלה"/>
-	<string id="20366" value="‪סך כל החיבורים לגנוטלה"/>
-	<string id="20367" value="‪חיבורים אקטיביים של גנוטלה"/>
-	<string id="20368" value="‪פקטים של גנוטלה נפלו"/>
-	<string id="20369" value="‪פקטים של גנוטלה אבדו"/>
-	<string id="20370" value="‪פקטים של גנוטלה התקבלו"/>
-	<string id="20371" value="‪פקטים של גנוטלה נשלחו"/>
-	<string id="20374" value="‪Gnutella Queries Incoming"/>
-	<string id="20375" value="‪Gnutella Queries Processed"/>
-	<string id="20376" value="‪פקטים של גנוטלה הועברו בראוטר"/>
-	<string id="20377" value="‪סך רוחב פס קבלה ג'נרית"/>
-	<string id="20378" value="‪סך רוחב פס שידור ג'נרי"/>
-	<string id="20379" value="‪כולל לקבלה TCP רוחב פס"/>
-	<string id="20380" value="‪כולל לשליחה TCP רוחב פס"/>
-	<string id="20381" value="‪כולל לקבלה UDP רוחב פס"/>
-	<string id="20382" value="‪כולל לשליחה UDP רוחב פס"/>
-	<string id="20383" value="‪רוחב-פס להעברות"/>
-	<string id="20384" value="‪סכום העלאות שהועברו"/>
-	<string id="20400" value="‪Envy is creating hashes for %Iu files:"/>
-	<string id="20410" value="‪סייר בספריית השיתוף שלך בשרזה"/>
-	<string id="20411" value="‪סיור"/>
-	<string id="20412" value="תיקיות ‪%i סייר בתכנים של"/>
-	<string id="20413" value="‪קבצים נבחרו %i"/>
-	<string id="20414" value="‪מספר ספריות"/>
-	<string id="20415" value="‪אף קובץ לא נבחר"/>
-	<string id="20416" value="‪דרג את הקובץ"/>
-	<string id="20417" value="‪תוספות אחרונות"/>
-	<string id="20418" value="אלבום"/>
-	<string id="20419" value="אמן"/>
-	<string id="20420" value="קצב דגימה"/>
-	<string id="20421" value="אורך"/>
-	<string id="20422" value="דרוג"/>
-	<string id="20423" value="כותרת"/>
-	<string id="20424" value="#"/> <!-- Track number -->
-	<string id="20430" value="‪? &quot;%s&quot; הם הינך בטוח/ה שברצונך להפעיל את הקובץnn.קבצים מסויימים יכולים לפגוע במחשב שלך, אנא וודא איזה קובץ אתה מפעיל"/>
-	<string id="20433" value="‪:שרזה נכשל למחוק את הקובץ קובץ:\n\n%s"/>
-	<string id="20436" value="הוסף תיקיה זו לספריית שלך?\n\n%s"/>
-	<string id="20437" value="Ghost קובץ"/>
-	<string id="20438" value="‪.ל- %i קבצים Meta עורך מידע "/>
-	<string id="20439" value="‪?קבצים, האם הינך מעוניינ/ת להמשיך %i-ל Meta את/ה עומד/ת לשנות את המידע"/>
-	<string id="20441" value="‪:שרזה נכשל לשנות את השם\n\n%snto\n%s"/>
-	<string id="20442" value="‪Target file exists:\n\n%s\n\nWould you like to overwrite it?"/>
-	<string id="20443" value="‪הצג את כל סוגי הקבצים"/>
-	<string id="20444" value="‪העתק URI"/>
-	<string id="20445" value="‪ייצא URI..."/>
-	<string id="20448" value="ציבור"/>	<!--Shared-->
-	<string id="20449" value="פרטי"/> 	<!--Unshared-->
-	<string id="20451" value="‪אף קובץ לא מנוגן כעת, לחץ לחיצה כפולה על קובץ בספריה שלך להשמעתו"/>
-	<string id="20452" value="‪All Media Files|*.asx;*.wax;*.m3u;*.wvx;*.wmx;*.asf;*.wav;*.snd;*.au;*.aif;*.aifc;*.aiff;*.wma;*.rm;*.mp3;*.ogg;*.ogm;*.cda;*.mid;*.rmi;*.midi;*.avi;*.asf;*.mpeg;*.mpg;*.m1v;*.mp2;*.mpa;*.mpe;*.wmv|Playlists|*.asx;*.wax;*.m3u;*.wvx;*.wmx|Audio Files|*.asf;*.wav;*.snd;*.au;*.aif;*.aifc;*.aiff;*.wma;*.rm;*.mp3;*.ogg;*.ogm|Video Files|*.avi;*.asf;*.mpeg;*.mpg;*.m1v;*.mp2;*.mpa;*.mpe;*.wmv|CD Audio Tracks|*.cda|MIDI Files|*.mid;*.rmi;*.midi|All Files|*.*||"/>
-	<string id="20453" value="‪Unable to load media file &quot;%s&quot;"/>
-	<string id="20454" value="‪The file may be damaged, or you may not have the necessary codecs to play it."/>
-	<string id="20455" value="‪Part of this file could not be played, you may need to download additional codecs."/>
-	<string id="20456" value="‪ר ש י מ ת   ה ש מ ע ה"/>
-	<string id="20457" value="‪Envy could not instantiate its MediaServices plugin. Please reinstall Envy, and confirm that you have the necessary media codecs and output drivers installed."/>
-	<string id="20458" value="Envy Media Player"/>
-	<string id="20460" value="‪נג ן  המד י ה  שרזה"/>
-	<string id="20462" value="‪(ללא אפקטים ויזואליים)"/>
-	<!--string id="20464" value="‪:שרזה סיים להוריד"-->
-	<!--string id="20465" value="‪:שרזה מוריד"-->
-	<!--string id="20466" value="‪:שרזה מעביר את ההורדה"-->
-	<!--string id="20467" value="‪:הורדה זו מושהת"-->
-	<!--string id="20468" value="‪:שרזה מחפשת מקורות עבור"-->
-	<!--string id="20469" value="‪:שרזה בודקת אם יש שגיאות בהורדה"-->
-	<string id="20470" value="ביטול"/>
-	<string id="20471" value="‪פתח"/>
-	<string id="20472" value="‪הושלם"/>
-	<string id="20473" value="‪:זמן מוערך שנותר"/>
-	<string id="20474" value="מספר ביקורות:"/>
-	<string id="20475" value="‪:מספר מקורות"/>
-	<string id="20476" value="‪אין מקורות"/>
-	<string id="20477" value="‫%i ימים %i שעות"/>
-	<string id="20478" value="‪‫%i שעות %i דקות"/>
-	<string id="20479" value="‪‫%i דקות %i שניות"/>
-	<string id="20480" value="‪%i שניות"/>
-	<string id="20481" value="‪:מהירות הורדה"/>
-	<string id="20482" value="‪:גודל שהורד"/>
-	<string id="20483" value="‪:העותק התעדכן"/>
-	<string id="20484" value="מגבלת מהירות ההורדה"/>
-	<string id="20485" value="מגבלת מהירות ההעלאה"/>
-	<string id="20490" value="‪‪כפול"/>
-	<string id="20491" value="‪‪ערכים כפולים"/>
-	<string id="20494" value="You haven't entered your location in your user profile.\n\nIt's a good idea to enter your location so that other users can see which country you are from. Note that entering a location does not reveal any compromising information.\n\nAre you sure you want to continue without entering your location?"/>
-	<string id="20495" value="You haven't entered a screen name in your user profile."/>
-	<string id="20496" value="‪?לא בחרת גיל ומין, אתה בטוח שאתה רוצה להמשיך"/>
-	<string id="20499" value="תיקיה חדשה"/>
-	<string id="20500" value="‪לחץ על כפתור התחבר כדי להתחיל"/>
-	<string id="20501" value="‪אתה לא מחובר לרשת"/>
-	<string id="20502" value="‪סוגר"/>
-	<string id="20503" value="‪:כיווץ"/>
-	<string id="20504" value="‪Deflate"/>
-	<string id="20505" value="‪אין"/>
-	<string id="20506" value="‪מתחבר"/>
-	<string id="20507" value="‪:נוכחי"/>
-	<string id="20510" value="‪חיבור של שרת אידונקי2000"/>
-	<string id="20511" value="‪אי-דונקי (HighID)"/>
-	<string id="20513" value="‪אי-דונקי (LowID)"/>
-	<string id="20514" value="‪אי-דונקי Server"/>
-	<string id="20515" value="‪קו ענף גנוטלה1"/>
-	<string id="20516" value="‪גנוטלה1 Peer"/>
-	<string id="20520" value="‪גנוטלה1 Ultrapeer"/>
-	<string id="20521" value="‪מוקד גנוטלה2"/>
-	<string id="20522" value="‪קו ענף גנוטלה2"/>
-	<string id="20524" value="‪גנוטלה2 Peer"/>
-	<string id="20530" value="‪לחיצת יד"/>
-	<string id="20531" value="‪לוחץ יד"/>
-	<string id="20532" value="‪נכנס"/>
-	<string id="20533" value="‪יוצא"/>
-	<string id="20534" value="‪:סכום כולל"/>
-	<string id="20535" value=":‪יחס"/>
-	<string id="20536" value="‪דחוי"/>
-	<string id="20538" value="‪לא ידוע"/>
-	<string id="20540" value="‪התחבר"/>
-	<string id="20541" value="‪...מתחבר"/>
-	<string id="20542" value="‪מחובר"/>
-	<string id="20543" value="‪התנתק"/>
-	<string id="20544" value="‪‪...סוגר את בסיס הרשת של שרזה"/>
-	<string id="20545" value="‪‪‪.מנותק מהרשת"/>
-	<string id="20546" value="‪?האם אתה בטוח שברצונך להתנתק"/>
-	<string id="20548" value="‪‪‏נכנסים‎ ‏לחיבורים‎ ‏תמיכה‎ ‏תיהיה‎ ‏לא‎ ‏לכן‎ ‏נכנסים‎. ‏לחיבורים‎ %s ‏של‎ %i ‏פורט‎ ‏את‎ ‏לקבוע‎ ‏ניתן‎ ‏לא"/>
-	<string id="20549" value="‪Can't resolve %s for outgoing connections. Outgoing connections will use the default interface."/>
-	<string id="20551" value="חומת האש, לא מקשיב לחיבורים נכנסים."/>
-	<string id="20553" value="‪‪%s ‏של‎ %i  ‏מפורט‎ ‏נכנסים‎ TCP ‏חיבורי‎ ‏מקבל"/>
-	<string id="20554" value="‪Listening for UDP datagrams on %s port %i."/>
-	<string id="20555" value="‪‪%s ‏של‎ %i  ‏מפורט‎ ‏חיבורים יוצאים יהיו"/>
-	<string id="20556" value="‪‪‪...&quot;%s&quot;.לא מצליח לפענח כתובת משתמש"/>
-	<string id="20557" value="‪‪...&quot;%s&quot;.מפענח כתובת משתמש"/>
-	<string id="20560" value="‪%s מנהל האבטחה מנע חיבור של"/>
-	<string id="20561" value="‪%s מנהל האבטחה בלם חיבור של"/>
-	<string id="20562" value="‪‪‪.%s הוסף חוק אבטחה לחסימת"/>
-	<string id="20563" value="‪‪.כבר חסומה על ידי חוקי האבטחה שלך %s הכתובת"/>
-	<string id="20564" value="‪מאתחל את בסיס הרשת של שרזה..."/>
-	<string id="20566" value="UPnP port mapping failed after 10 attempts."/>
-	<string id="20576" value="‪‪%s  ‏משכן‎ ‏ניווט‎ ‏בקשת‎ (‏ ‪%i bit = %lu[%i], %i%% full)"/>
-	<string id="20598" value="האם אתה בטוח שאתה רוצה למחוק את כללי הביטחון שנבחרו? זה לא ניתן לבטל."/>
+	<string id="20227" text="‪.האם אתה בטוח שברצונך ששרזה תניח שההורדה הושלמה,  ולאמת את ההורדה מחדש? כל הקובץ ייחשב, ושרזה תאשר את החלקים שיעברו את האימות בהצלחה ותוריד מחדש את החלקים שיכשלו בשלב האימות"/>
+	<string id="20250" text="Drag'n'drop קבצים לקבוצה %s"/>
+	<string id="20251" text="ברירת המחדל של הורדת הקבוצה. (הצג את כל הקבצים)"/>
+	<string id="20270" text="‪&quot;%s&quot;.:הורדה הוסרה"/>
+	<string id="20332" text="‪Unable to open part file &quot;%s&quot;."/>
+	<string id="20333" text="‪.סיים להעתיק קובץ"/>
+	<string id="20334" text="...&quot;%s&quot;.את &quot;%s&quot; מעתיק אל"/>
+	<string id="20337" text="‪.נכשל לייבא קובץ"/>
+	<string id="20338" text="‪Download data file is newer than .part file, aborting."/>
+	<string id="20339" text="‪Found partial file &quot;%s&quot;, importing..."/>
+	<string id="20341" text="‪...&quot;%s&quot;.:סורק ספריה"/>
+	<string id="20344" text="‪Found download &quot;%s&quot;, size %s."/>
+	<string id="20354" text="‪מאפייני קובץ"/>
+	<string id="20355" text="‪‪?האם הינך בטוח שברצונך למחוק את המסנן"/>
+	<string id="20360" text="Connection Errors (%)"/>
+	<string id="20361" text="‪רוחב פס להורדות"/>
+	<string id="20362" text="‪כמות קבצים בהורדה"/>
+	<string id="20363" text="‪כמות העברות של הורדות"/>
+	<string id="20364" text="‪רוחב פס קבלה של גנוטלה"/>
+	<string id="20365" text="‪רוחב פס שידור של גנוטלה"/>
+	<string id="20366" text="‪סך כל החיבורים לגנוטלה"/>
+	<string id="20367" text="‪חיבורים אקטיביים של גנוטלה"/>
+	<string id="20368" text="‪פקטים של גנוטלה נפלו"/>
+	<string id="20369" text="‪פקטים של גנוטלה אבדו"/>
+	<string id="20370" text="‪פקטים של גנוטלה התקבלו"/>
+	<string id="20371" text="‪פקטים של גנוטלה נשלחו"/>
+	<string id="20374" text="‪Gnutella Queries Incoming"/>
+	<string id="20375" text="‪Gnutella Queries Processed"/>
+	<string id="20376" text="‪פקטים של גנוטלה הועברו בראוטר"/>
+	<string id="20377" text="‪סך רוחב פס קבלה ג'נרית"/>
+	<string id="20378" text="‪סך רוחב פס שידור ג'נרי"/>
+	<string id="20379" text="‪כולל לקבלה TCP רוחב פס"/>
+	<string id="20380" text="‪כולל לשליחה TCP רוחב פס"/>
+	<string id="20381" text="‪כולל לקבלה UDP רוחב פס"/>
+	<string id="20382" text="‪כולל לשליחה UDP רוחב פס"/>
+	<string id="20383" text="‪רוחב-פס להעברות"/>
+	<string id="20384" text="‪סכום העלאות שהועברו"/>
+	<string id="20400" text="‪Envy is creating hashes for %Iu files:"/>
+	<string id="20410" text="‪סייר בספריית השיתוף שלך בשרזה"/>
+	<string id="20411" text="‪סיור"/>
+	<string id="20412" text="תיקיות ‪%i סייר בתכנים של"/>
+	<string id="20413" text="‪קבצים נבחרו %i"/>
+	<string id="20414" text="‪מספר ספריות"/>
+	<string id="20415" text="‪אף קובץ לא נבחר"/>
+	<string id="20416" text="‪דרג את הקובץ"/>
+	<string id="20417" text="‪תוספות אחרונות"/>
+	<string id="20418" text="אלבום"/>
+	<string id="20419" text="אמן"/>
+	<string id="20420" text="קצב דגימה"/>
+	<string id="20421" text="אורך"/>
+	<string id="20422" text="דרוג"/>
+	<string id="20423" text="כותרת"/>
+	<string id="20424" text="#"/> <!-- Track number -->
+	<string id="20430" text="‪? &quot;%s&quot; הם הינך בטוח/ה שברצונך להפעיל את הקובץnn.קבצים מסויימים יכולים לפגוע במחשב שלך, אנא וודא איזה קובץ אתה מפעיל"/>
+	<string id="20433" text="‪:שרזה נכשל למחוק את הקובץ קובץ:\n\n%s"/>
+	<string id="20436" text="הוסף תיקיה זו לספריית שלך?\n\n%s"/>
+	<string id="20437" text="Ghost קובץ"/>
+	<string id="20438" text="‪.ל- %i קבצים Meta עורך מידע "/>
+	<string id="20439" text="‪?קבצים, האם הינך מעוניינ/ת להמשיך %i-ל Meta את/ה עומד/ת לשנות את המידע"/>
+	<string id="20441" text="‪:שרזה נכשל לשנות את השם\n\n%snto\n%s"/>
+	<string id="20442" text="‪Target file exists:\n\n%s\n\nWould you like to overwrite it?"/>
+	<string id="20443" text="‪הצג את כל סוגי הקבצים"/>
+	<string id="20444" text="‪העתק URI"/>
+	<string id="20445" text="‪ייצא URI..."/>
+	<string id="20448" text="ציבור"/>	<!--Shared-->
+	<string id="20449" text="פרטי"/> 	<!--Unshared-->
+	<string id="20451" text="‪אף קובץ לא מנוגן כעת, לחץ לחיצה כפולה על קובץ בספריה שלך להשמעתו"/>
+	<string id="20452" text="‪All Media Files|*.asx;*.wax;*.m3u;*.wvx;*.wmx;*.asf;*.wav;*.snd;*.au;*.aif;*.aifc;*.aiff;*.wma;*.rm;*.mp3;*.ogg;*.ogm;*.cda;*.mid;*.rmi;*.midi;*.avi;*.asf;*.mpeg;*.mpg;*.m1v;*.mp2;*.mpa;*.mpe;*.wmv|Playlists|*.asx;*.wax;*.m3u;*.wvx;*.wmx|Audio Files|*.asf;*.wav;*.snd;*.au;*.aif;*.aifc;*.aiff;*.wma;*.rm;*.mp3;*.ogg;*.ogm|Video Files|*.avi;*.asf;*.mpeg;*.mpg;*.m1v;*.mp2;*.mpa;*.mpe;*.wmv|CD Audio Tracks|*.cda|MIDI Files|*.mid;*.rmi;*.midi|All Files|*.*||"/>
+	<string id="20453" text="‪Unable to load media file &quot;%s&quot;"/>
+	<string id="20454" text="‪The file may be damaged, or you may not have the necessary codecs to play it."/>
+	<string id="20455" text="‪Part of this file could not be played, you may need to download additional codecs."/>
+	<string id="20456" text="‪ר ש י מ ת   ה ש מ ע ה"/>
+	<string id="20457" text="‪Envy could not instantiate its MediaServices plugin. Please reinstall Envy, and confirm that you have the necessary media codecs and output drivers installed."/>
+	<string id="20458" text="Envy Media Player"/>
+	<string id="20460" text="‪נג ן  המד י ה  שרזה"/>
+	<string id="20462" text="‪(ללא אפקטים ויזואליים)"/>
+	<!--string id="20464" text="‪:שרזה סיים להוריד"-->
+	<!--string id="20465" text="‪:שרזה מוריד"-->
+	<!--string id="20466" text="‪:שרזה מעביר את ההורדה"-->
+	<!--string id="20467" text="‪:הורדה זו מושהת"-->
+	<!--string id="20468" text="‪:שרזה מחפשת מקורות עבור"-->
+	<!--string id="20469" text="‪:שרזה בודקת אם יש שגיאות בהורדה"-->
+	<string id="20470" text="ביטול"/>
+	<string id="20471" text="‪פתח"/>
+	<string id="20472" text="‪הושלם"/>
+	<string id="20473" text="‪:זמן מוערך שנותר"/>
+	<string id="20474" text="מספר ביקורות:"/>
+	<string id="20475" text="‪:מספר מקורות"/>
+	<string id="20476" text="‪אין מקורות"/>
+	<string id="20477" text="‫%i ימים %i שעות"/>
+	<string id="20478" text="‪‫%i שעות %i דקות"/>
+	<string id="20479" text="‪‫%i דקות %i שניות"/>
+	<string id="20480" text="‪%i שניות"/>
+	<string id="20481" text="‪:מהירות הורדה"/>
+	<string id="20482" text="‪:גודל שהורד"/>
+	<string id="20483" text="‪:העותק התעדכן"/>
+	<string id="20484" text="מגבלת מהירות ההורדה"/>
+	<string id="20485" text="מגבלת מהירות ההעלאה"/>
+	<string id="20490" text="‪‪כפול"/>
+	<string id="20491" text="‪‪ערכים כפולים"/>
+	<string id="20494" text="You haven't entered your location in your user profile.\n\nIt's a good idea to enter your location so that other users can see which country you are from. Note that entering a location does not reveal any compromising information.\n\nAre you sure you want to continue without entering your location?"/>
+	<string id="20495" text="You haven't entered a screen name in your user profile."/>
+	<string id="20496" text="‪?לא בחרת גיל ומין, אתה בטוח שאתה רוצה להמשיך"/>
+	<string id="20499" text="תיקיה חדשה"/>
+	<string id="20500" text="‪לחץ על כפתור התחבר כדי להתחיל"/>
+	<string id="20501" text="‪אתה לא מחובר לרשת"/>
+	<string id="20502" text="‪סוגר"/>
+	<string id="20503" text="‪:כיווץ"/>
+	<string id="20504" text="‪Deflate"/>
+	<string id="20505" text="‪אין"/>
+	<string id="20506" text="‪מתחבר"/>
+	<string id="20507" text="‪:נוכחי"/>
+	<string id="20510" text="‪חיבור של שרת אידונקי2000"/>
+	<string id="20511" text="‪אי-דונקי (HighID)"/>
+	<string id="20513" text="‪אי-דונקי (LowID)"/>
+	<string id="20514" text="‪אי-דונקי Server"/>
+	<string id="20515" text="‪קו ענף גנוטלה1"/>
+	<string id="20516" text="‪גנוטלה1 Peer"/>
+	<string id="20520" text="‪גנוטלה1 Ultrapeer"/>
+	<string id="20521" text="‪מוקד גנוטלה2"/>
+	<string id="20522" text="‪קו ענף גנוטלה2"/>
+	<string id="20524" text="‪גנוטלה2 Peer"/>
+	<string id="20530" text="‪לחיצת יד"/>
+	<string id="20531" text="‪לוחץ יד"/>
+	<string id="20532" text="‪נכנס"/>
+	<string id="20533" text="‪יוצא"/>
+	<string id="20534" text="‪:סכום כולל"/>
+	<string id="20535" text=":‪יחס"/>
+	<string id="20536" text="‪דחוי"/>
+	<string id="20538" text="‪לא ידוע"/>
+	<string id="20540" text="‪התחבר"/>
+	<string id="20541" text="‪...מתחבר"/>
+	<string id="20542" text="‪מחובר"/>
+	<string id="20543" text="‪התנתק"/>
+	<string id="20544" text="‪‪...סוגר את בסיס הרשת של שרזה"/>
+	<string id="20545" text="‪‪‪.מנותק מהרשת"/>
+	<string id="20546" text="‪?האם אתה בטוח שברצונך להתנתק"/>
+	<string id="20548" text="‪‪‏נכנסים‎ ‏לחיבורים‎ ‏תמיכה‎ ‏תיהיה‎ ‏לא‎ ‏לכן‎ ‏נכנסים‎. ‏לחיבורים‎ %s ‏של‎ %i ‏פורט‎ ‏את‎ ‏לקבוע‎ ‏ניתן‎ ‏לא"/>
+	<string id="20549" text="‪Can't resolve %s for outgoing connections. Outgoing connections will use the default interface."/>
+	<string id="20551" text="חומת האש, לא מקשיב לחיבורים נכנסים."/>
+	<string id="20553" text="‪‪%s ‏של‎ %i  ‏מפורט‎ ‏נכנסים‎ TCP ‏חיבורי‎ ‏מקבל"/>
+	<string id="20554" text="‪Listening for UDP datagrams on %s port %i."/>
+	<string id="20555" text="‪‪%s ‏של‎ %i  ‏מפורט‎ ‏חיבורים יוצאים יהיו"/>
+	<string id="20556" text="‪‪‪...&quot;%s&quot;.לא מצליח לפענח כתובת משתמש"/>
+	<string id="20557" text="‪‪...&quot;%s&quot;.מפענח כתובת משתמש"/>
+	<string id="20560" text="‪%s מנהל האבטחה מנע חיבור של"/>
+	<string id="20561" text="‪%s מנהל האבטחה בלם חיבור של"/>
+	<string id="20562" text="‪‪‪.%s הוסף חוק אבטחה לחסימת"/>
+	<string id="20563" text="‪‪.כבר חסומה על ידי חוקי האבטחה שלך %s הכתובת"/>
+	<string id="20564" text="‪מאתחל את בסיס הרשת של שרזה..."/>
+	<string id="20566" text="UPnP port mapping failed after 10 attempts."/>
+	<string id="20576" text="‪‪%s  ‏משכן‎ ‏ניווט‎ ‏בקשת‎ (‏ ‪%i bit = %lu[%i], %i%% full)"/>
+	<string id="20598" text="האם אתה בטוח שאתה רוצה למחוק את כללי הביטחון שנבחרו? זה לא ניתן לבטל."/>
 	<!-- Missing Scheduler/Security Strings -->
-	<string id="20620" value="‪...שרזה מחפשת ברשת באופן פעיל"/>
-	<string id="20621" value="‪.לחץ כאן בכדי לחפש שנית"/>
-	<string id="20622" value="‪כל הרשתות"/>
-	<string id="20623" value="‪?הינך עומד/ת להתחיל חיפוש חדש, האם הינך מעוניינ/ת למחוק את התוצאות של החיפוש הקודם"/>
-	<string id="20624" value="‪.אזור זה מראה מידע נוסף על הקבצים שבחרת"/>
-	<string id="20625" value="‪:%s לפי דעתו של"/>
-	<string id="20626" value="‪:%s דירג"/>
-	<string id="20627" value="‪לחץ כאן לתצוגה מקדימה"/>
-	<string id="20628" value="‪...מציג תצוגה מקדימה"/>
-	<string id="20629" value="‪&quot;%s&quot;.לא מצליח להוריד תכני תצוגה מקדימה מהמיקום"/>
-	<string id="20630" value="‪.ביקורות %i ישנם"/>
-	<string id="20631" value="‪.יש ביקורת אחת "/>
-	<string id="20632" value="%i מקורות זמינים. (%s)"/>
-	<string id="20633" value=" ‪.(%s) מקור אחד זמין"/>
-	<string id="20634" value="‪.הרשת לא החזירה אף תוצאה עדיין"/>
-	<string id="20635" value="‪.מספר תוצאות נמצאו, אך סוננו"/>
-	<string id="20636" value="‪.אף חיפוש לא החל בחלון זה עדיין"/>
-	<string id="20637" value="‪Metadata ללא"/>
-	<string id="20638" value="No Schema Columns"/>
-	<string id="20640" value="‪(נקה את היסטוריית החיפוש)"/>
-	<string id="20641" value="‪חפש בשרזה"/>
-	<string id="20642" value="‪?איזה סוג קובץ זה"/>
-	<string id="20643" value="‪:הקלד מספר מילים לחיפוש"/>
-	<string id="20644" value="מתקדם"/>
-	<string id="20645" value="‪כל סוג קובץ"/>
-	<string id="20646" value="‪נקה"/>
-	<string id="20648" value="‪הסתר את לוח החיפוש"/>
-	<string id="20650" value="‪חיפוש"/>
-	<string id="20651" value="‪:הקלד את החיפוש כאן"/>
-	<string id="20652" value="‪:חפש קבצים מסוג זה"/>
-	<string id="20653" value="‪:חפש ברשת זו"/>
-	<string id="20654" value="‪:גודל הקובץ"/>
-	<string id="20655" value="‪:גודל הקובץ"/>
-	<string id="20656" value="‪חפש עוד"/>
-	<string id="20657" value="‪הצג את לוח החיפוש"/>
-	<string id="20658" value="‪החל חיפוש"/>
-	<string id="20659" value="‪עצור"/>
-	<string id="20660" value="‪.לא נמצאו קבצים"/>
-	<string id="20661" value="‪‪‏מוקדים‎ %lu ,‏ענפי קו‎ %lu"/>
-	<string id="20662" value="‪.כרגע לא מחפש"/>
-	<string id="20663" value="‪תוצאות"/>
-	<string id="20664" value="‪‏‪‏קבצים‎ %lu ‏ובהם‎ ‏תוצאות‎ %lu|‪‏קבצים‎ %lu ‏ובהם‎ ‏תוצאות‎ %lu|‪‏קבצים‎ %lu ‏ובהם‎ ‏תוצאות‎ %lu"/>
-	<string id="20665" value="‪:נמצא"/>
-	<string id="20666" value="‪:‪מחפש"/>
-	<string id="20668" value="‪...מחפש"/>
-	<string id="20669" value="‪חיפוש טקסט פשוט"/>
-	<string id="20670" value="‪...שרזה מבצעת חיפוש ברשת"/>
-	<string id="20673" value="‪אוטומטי"/>
-	<string id="20674" value="שמות ספריית הקבצים השלמים והחלקיים חייבים להיות שונים"/>
-	<string id="20677" value="‪Please type the bandwidth limit you wish to set in the form &quot;123 kb/s&quot; for kilobits per second, or &quot;123 KB/s&quot; for kilobytes per second."/>
-	<string id="20680" value="‪‪הגדרות שרזה"/>
-	<string id="20682" value="‪גישה מרחוק לא מאופשרת"/>
-	<string id="20684" value="‪.אתה חייב לבחור שם משתמש וסיסמא http://%s:%i/remote"/>
-	<string id="20685" value="‪לא מצליח לקבל התקשרויות, כתובת האינטרנט לא זמינה"/>
-	<string id="20692" value="‪.המעטפת תימחק לקיבעון &quot;%s&quot; האם אתה בטוח שברצונך למחוק את המעטפת"/>
-	<string id="20699" value="‪‪סכמות"/>
-	<string id="20700" value="‪‪%s :‏נכנס‎ %s :‏יוצא‎ (D:%I64i/U:%I64i)"/>
-	<string id="20701" value="‪‏‪‏שכנים‎ %lu ‏אל‎ ‏מחובר‎ , %s ‏מקומית‎ ‏בספריה"/>
-	<string id="20702" value="‪‪%lu ‏מצב‎: ‏מוקד‎ ‏עם‎ ‏שכנים‎ , %s ‏מקומית‎ ‏בספריה"/>
-	<string id="20703" value="‪‏‪‏מצב‎ Ultrapeer/‏מוקד‎ ‏עם‎ %lu ‏שכנים‎: , %s ‏מקומית‎ ‏בספריה"/>
-	<string id="20704" value="‪‏‪Ultrapeer ‏עם‎ %lu ‏שכנים‎: , %s ‏מקומית‎ ‏בספריה"/>
-	<string id="20705" value="‪‪‏מחובר‎ , %s ‏מקומית‎ ‏בספריה"/>
-	<string id="20706" value="‪...מתחבר לרשת"/>
-	<string id="20707" value="‪.לא מחובר לרשת"/>
-	<string id="20708" value="‪פעיל"/>
-	<string id="20709" value="‪לא פעיל"/>
-	<string id="20710" value="מתבהרים"/>
-	<string id="20711" value="‪לא ניתן להעביר"/>
-	<string id="20712" value="‪Choked"/>
-	<string id="20713" value="‪נכנס לתור"/>
-	<string id="20714" value="‪שגיאה בקובץ"/>
-	<string id="20715" value="‪Hashset"/>
-	<string id="20716" value="‪Metadata"/>
-	<string id="20717" value="‪תגובה"/>
-	<string id="20718" value="‪מעביר"/>
-	<string id="20719" value="‪יוצר"/>
-	<string id="20720" value="‪הסתיים"/>
-	<string id="20721" value="‪מתחבר"/>
-	<string id="20722" value="‪מוריד"/>
-	<string id="20723" value="‪עסוק"/>
-	<string id="20724" value="‪הבא"/>
-	<string id="20725" value="בתור"/>
-	<string id="20726" value="בתור"/>
-	<string id="20727" value="‪מושהה"/>
-	<string id="20728" value="‪ממתין לתשובה"/>
-	<string id="20729" value="‪מבקש"/>
-	<string id="20730" value="‪מחפש"/>
-	<string id="20731" value="‪מפיץ"/>
-	<string id="20732" value=":מקורות"/>
-	<string id="20733" value="מקורות"/>
-	<string id="20734" value="‪:מקורות"/>
-	<string id="20735" value=":מקורות"/>
-	<string id="20736" value="‪(ללא מקורות)"/>
-	<string id="20740" value="‪TigerTree"/>
-	<string id="20741" value="‪טורנט"/>
-	<string id="20742" value="‪תקלה בגשש"/>
-	<string id="20743" value="‪לא מעוניין"/>
-	<string id="20744" value="‪לא ידוע"/>
-	<string id="20745" value="‪לא מעוניין"/>
-	<string id="20746" value="‪לא מאומת"/>
-	<string id="20747" value="‪מאומת"/>
-	<string id="20748" value="‪מאמת"/>
-	<string id="20750" value="‪!{version} ברוכים הבאים לשרזה \n\nשרזה היא תוכנה חופשית.\nאנא השתמש בה בצורה אחראית, כבד את חוקי הרכוש וזכויות היוצרים."/>
-	<string id="20751" value="‪.אין חיפושים פעילים, אנא לחץ כאן בכדי לחפש"/>
-	<string id="20752" value="‪.אינך מחובר, אנא לחץ על כפתור התחבר בכדי להתחיל"/>
-	<string id="20760" value="עדיפות"/>
-	<string id="20762" value="‪קובץ זה נראה כקובץ זדוני להצפה"/>
-	<string id="20763" value="‪‪:ברשימה שחורה"/>
-	<string id="20764" value="‪אתה הורדת ומחקת את קובץ זה בעבר"/>
-	<string id="20765" value="‪הקובץ כבר קיים אצלך ברשימת ההורדות"/>
-	<string id="20766" value="‪כבר יש לך את קובץ זה בספריה"/>
-	<string id="20767" value="‪ה‪מקורות לקובץ כרגע עסוקים"/>
-	<string id="20768" value="‪המקורות לקובץ כרגע מוגנים בחומת אש"/>
-	<string id="20769" value="‪המקורות לקובץ כרגע במצב לא יציב"/>
-	<string id="20770" value="‪מחיצת"/>
-	<string id="20771" value="תוצאות"/>
-	<string id="20772" value="‪‫מיקום"/>
-	<string id="20773" value="‪:מהווה מהספריה"/>
-	<string id="20774" value="‪לא ידוע"/>
-	<string id="20775" value="‪הבא בתור"/>
-	<string id="20776" value="לא חשיש"/>
-	<string id="20777" value="‪‪:(%.2f%%) חלקי מקור זמינים"/>
-	<string id="20778" value="‪‫‪קווים פנויים: %i, בתור: %i"/>
-	<string id="20780" value="‪‫גודל"/>
-	<string id="20781" value="‪המקור כרגע עסוק"/>
-	<string id="20782" value="‪המקור מוגן בחומת אש"/>
-	<string id="20783" value="‪המקור עלול להיות לא יציב"/>
-	<string id="20784" value="‪:מהירות"/>
-	<string id="20785" value="‪:מצב"/>
-	<string id="20786" value="‪.היום %lu , בסך הכל %lu"/>
-	<string id="20787" value="‪:מספר הקבצים"/>
-	<string id="20788" value="‪:גודל כולל"/>
-	<string id="20789" value=":העלאות"/>
-	<string id="20790" value="‪‫סוג"/>
-	<string id="20791" value="לא מהימן"/>
-	<string id="20792" value="העלאות"/>
-	<string id="20793" value="‪:URL כתובת"/>
-	<string id="20794" value="‪:‪סוכן משתמש"/>
-	<string id="20795" value="‪‪%s :‏נכנס‎ %s :‏יוצא‎ (D:%I64i/U:%I64i/H:%I64i)"/>
-	<string id="20796" value="הקבצים המשותפים באמצעות האינטרנט"/>
-	<string id="20798" value="‪?האם אתה מעוניין לשדרג כעת .(%s) שרזה סיים להוריד את הגרסא החדשהnnאם תבחר כן, שרזה תסגר באופן זמני, למהלך ההתקנה"/>
-	<string id="20811" value="?העלאות של אידונקי2000 לא אמורות להיות מבוטלות. האם הינך בטוח/ה שברצונך לבטל את העלאות"/>
-	<string id="20834" value="‪מרכז אידונקי"/>
-	<string id="20841" value="‪תור חדש"/>
-	<string id="20842" value="‪כל הקבצים"/>
-	<string id="20845" value="‪השומר של אידונקי"/>
-	<string id="20846" value="‪קבצים חלקיים של אידונקי"/>
-	<string id="20847" value="‪העלאות שהסתיימו"/>
-	<string id="20848" value="‪HTTP שומר"/>
-	<string id="20849" value="ספריית קבצים"/>
-	<string id="20850" value="‪קבצים גדולים"/>
-	<string id="20851" value="‪קבצים בינוניים"/>
-	<string id="20852" value="‪קבצים קטנים"/>
-	<string id="20853" value="‪קבצים חלקיים"/>
-	<string id="20854" value="‪חלקי"/>
-	<string id="20855" value="‪הכנס לתור"/>
-	<string id="20856" value="‪העלאות טורנטים"/>
-	<string id="20862" value="‪הוסף"/>
-	<string id="20864" value="‪סייר"/>
-	<string id="20865" value="‪התחבר"/>
-	<string id="20866" value=":‪קובץ"/>
-	<string id="20867" value="‪:כתובת"/>
-	<string id="20868" value="‪:יציאה"/>
-	<!--string id="20869" value="‪.כיוון ששרזה עסוק URL נכשל להציג את חלון הדו-שיח לפעולות"-->
-	<string id="20870" value="‪.שרזה לא מבין את כתובת אינטרנט זו ,URL נכשל לפענח את הכתובת"/>
-	<string id="20871" value="‪&quot;%s&quot;.URL קבלת כתובת"/>
-	<string id="20872" value="‪:סוג"/>
-	<string id="20874" value="‪URL כתובת:"/>
-	<string id="20875" value="‪לא מוגדר"/>
-	<string id="20880" value="‪ערוך את הפרופיל שלי"/>
-	<string id="20882" value="קבצים שנבחרו. האם אתה בטוח? %u"/>
-	<string id="20883" value="‪זמין URN אין"/>
-	<string id="20885" value="‪שינוי התצוגה יסגור את כל החלונות הפתוחים, אתה רוצה לשנות את התצוגה כעת?"/>
-	<string id="20886" value=" שינוי הכיוון של ממשק מחייב הפעלה מחדש. \n\n צא עכשיו? \n\n\nChanging interface direction requires restart.\n\nExit now?"/>
-	<string id="20890" value="‪ברוכים הבאים לשרזה"/>
-	<string id="20891" value="‪יציאה"/>
-	<string id="20895" value="(1050-65500)"/>
-	<string id="20898" value="‪?לא בחרת אף תיקייה לשיתוף, האם הינך מעוניין להמשיך"/>
-	<string id="20899" value="‪בגיל"/>
+	<string id="20620" text="‪...שרזה מחפשת ברשת באופן פעיל"/>
+	<string id="20621" text="‪.לחץ כאן בכדי לחפש שנית"/>
+	<string id="20622" text="‪כל הרשתות"/>
+	<string id="20623" text="‪?הינך עומד/ת להתחיל חיפוש חדש, האם הינך מעוניינ/ת למחוק את התוצאות של החיפוש הקודם"/>
+	<string id="20624" text="‪.אזור זה מראה מידע נוסף על הקבצים שבחרת"/>
+	<string id="20625" text="‪:%s לפי דעתו של"/>
+	<string id="20626" text="‪:%s דירג"/>
+	<string id="20627" text="‪לחץ כאן לתצוגה מקדימה"/>
+	<string id="20628" text="‪...מציג תצוגה מקדימה"/>
+	<string id="20629" text="‪&quot;%s&quot;.לא מצליח להוריד תכני תצוגה מקדימה מהמיקום"/>
+	<string id="20630" text="‪.ביקורות %i ישנם"/>
+	<string id="20631" text="‪.יש ביקורת אחת "/>
+	<string id="20632" text="%i מקורות זמינים. (%s)"/>
+	<string id="20633" text=" ‪.(%s) מקור אחד זמין"/>
+	<string id="20634" text="‪.הרשת לא החזירה אף תוצאה עדיין"/>
+	<string id="20635" text="‪.מספר תוצאות נמצאו, אך סוננו"/>
+	<string id="20636" text="‪.אף חיפוש לא החל בחלון זה עדיין"/>
+	<string id="20637" text="‪Metadata ללא"/>
+	<string id="20638" text="No Schema Columns"/>
+	<string id="20640" text="‪(נקה את היסטוריית החיפוש)"/>
+	<string id="20641" text="‪חפש בשרזה"/>
+	<string id="20642" text="‪?איזה סוג קובץ זה"/>
+	<string id="20643" text="‪:הקלד מספר מילים לחיפוש"/>
+	<string id="20644" text="מתקדם"/>
+	<string id="20645" text="‪כל סוג קובץ"/>
+	<string id="20646" text="‪נקה"/>
+	<string id="20648" text="‪הסתר את לוח החיפוש"/>
+	<string id="20650" text="‪חיפוש"/>
+	<string id="20651" text="‪:הקלד את החיפוש כאן"/>
+	<string id="20652" text="‪:חפש קבצים מסוג זה"/>
+	<string id="20653" text="‪:חפש ברשת זו"/>
+	<string id="20654" text="‪:גודל הקובץ"/>
+	<string id="20655" text="‪:גודל הקובץ"/>
+	<string id="20656" text="‪חפש עוד"/>
+	<string id="20657" text="‪הצג את לוח החיפוש"/>
+	<string id="20658" text="‪החל חיפוש"/>
+	<string id="20659" text="‪עצור"/>
+	<string id="20660" text="‪.לא נמצאו קבצים"/>
+	<string id="20661" text="‪‪‏מוקדים‎ %lu ,‏ענפי קו‎ %lu"/>
+	<string id="20662" text="‪.כרגע לא מחפש"/>
+	<string id="20663" text="‪תוצאות"/>
+	<string id="20664" text="‪‏‪‏קבצים‎ %lu ‏ובהם‎ ‏תוצאות‎ %lu|‪‏קבצים‎ %lu ‏ובהם‎ ‏תוצאות‎ %lu|‪‏קבצים‎ %lu ‏ובהם‎ ‏תוצאות‎ %lu"/>
+	<string id="20665" text="‪:נמצא"/>
+	<string id="20666" text="‪:‪מחפש"/>
+	<string id="20668" text="‪...מחפש"/>
+	<string id="20669" text="‪חיפוש טקסט פשוט"/>
+	<string id="20670" text="‪...שרזה מבצעת חיפוש ברשת"/>
+	<string id="20673" text="‪אוטומטי"/>
+	<string id="20674" text="שמות ספריית הקבצים השלמים והחלקיים חייבים להיות שונים"/>
+	<string id="20677" text="‪Please type the bandwidth limit you wish to set in the form &quot;123 kb/s&quot; for kilobits per second, or &quot;123 KB/s&quot; for kilobytes per second."/>
+	<string id="20680" text="‪‪הגדרות שרזה"/>
+	<string id="20682" text="‪גישה מרחוק לא מאופשרת"/>
+	<string id="20684" text="‪.אתה חייב לבחור שם משתמש וסיסמא http://%s:%i/remote"/>
+	<string id="20685" text="‪לא מצליח לקבל התקשרויות, כתובת האינטרנט לא זמינה"/>
+	<string id="20692" text="‪.המעטפת תימחק לקיבעון &quot;%s&quot; האם אתה בטוח שברצונך למחוק את המעטפת"/>
+	<string id="20699" text="‪‪סכמות"/>
+	<string id="20700" text="‪‪%s :‏נכנס‎ %s :‏יוצא‎ (D:%I64i/U:%I64i)"/>
+	<string id="20701" text="‪‏‪‏שכנים‎ %lu ‏אל‎ ‏מחובר‎ , %s ‏מקומית‎ ‏בספריה"/>
+	<string id="20702" text="‪‪%lu ‏מצב‎: ‏מוקד‎ ‏עם‎ ‏שכנים‎ , %s ‏מקומית‎ ‏בספריה"/>
+	<string id="20703" text="‪‏‪‏מצב‎ Ultrapeer/‏מוקד‎ ‏עם‎ %lu ‏שכנים‎: , %s ‏מקומית‎ ‏בספריה"/>
+	<string id="20704" text="‪‏‪Ultrapeer ‏עם‎ %lu ‏שכנים‎: , %s ‏מקומית‎ ‏בספריה"/>
+	<string id="20705" text="‪‪‏מחובר‎ , %s ‏מקומית‎ ‏בספריה"/>
+	<string id="20706" text="‪...מתחבר לרשת"/>
+	<string id="20707" text="‪.לא מחובר לרשת"/>
+	<string id="20708" text="‪פעיל"/>
+	<string id="20709" text="‪לא פעיל"/>
+	<string id="20710" text="מתבהרים"/>
+	<string id="20711" text="‪לא ניתן להעביר"/>
+	<string id="20712" text="‪Choked"/>
+	<string id="20713" text="‪נכנס לתור"/>
+	<string id="20714" text="‪שגיאה בקובץ"/>
+	<string id="20715" text="‪Hashset"/>
+	<string id="20716" text="‪Metadata"/>
+	<string id="20717" text="‪תגובה"/>
+	<string id="20718" text="‪מעביר"/>
+	<string id="20719" text="‪יוצר"/>
+	<string id="20720" text="‪הסתיים"/>
+	<string id="20721" text="‪מתחבר"/>
+	<string id="20722" text="‪מוריד"/>
+	<string id="20723" text="‪עסוק"/>
+	<string id="20724" text="‪הבא"/>
+	<string id="20725" text="בתור"/>
+	<string id="20726" text="בתור"/>
+	<string id="20727" text="‪מושהה"/>
+	<string id="20728" text="‪ממתין לתשובה"/>
+	<string id="20729" text="‪מבקש"/>
+	<string id="20730" text="‪מחפש"/>
+	<string id="20731" text="‪מפיץ"/>
+	<string id="20732" text=":מקורות"/>
+	<string id="20733" text="מקורות"/>
+	<string id="20734" text="‪:מקורות"/>
+	<string id="20735" text=":מקורות"/>
+	<string id="20736" text="‪(ללא מקורות)"/>
+	<string id="20740" text="‪TigerTree"/>
+	<string id="20741" text="‪טורנט"/>
+	<string id="20742" text="‪תקלה בגשש"/>
+	<string id="20743" text="‪לא מעוניין"/>
+	<string id="20744" text="‪לא ידוע"/>
+	<string id="20745" text="‪לא מעוניין"/>
+	<string id="20746" text="‪לא מאומת"/>
+	<string id="20747" text="‪מאומת"/>
+	<string id="20748" text="‪מאמת"/>
+	<string id="20750" text="‪!{version} ברוכים הבאים לשרזה \n\nשרזה היא תוכנה חופשית.\nאנא השתמש בה בצורה אחראית, כבד את חוקי הרכוש וזכויות היוצרים."/>
+	<string id="20751" text="‪.אין חיפושים פעילים, אנא לחץ כאן בכדי לחפש"/>
+	<string id="20752" text="‪.אינך מחובר, אנא לחץ על כפתור התחבר בכדי להתחיל"/>
+	<string id="20760" text="עדיפות"/>
+	<string id="20762" text="‪קובץ זה נראה כקובץ זדוני להצפה"/>
+	<string id="20763" text="‪‪:ברשימה שחורה"/>
+	<string id="20764" text="‪אתה הורדת ומחקת את קובץ זה בעבר"/>
+	<string id="20765" text="‪הקובץ כבר קיים אצלך ברשימת ההורדות"/>
+	<string id="20766" text="‪כבר יש לך את קובץ זה בספריה"/>
+	<string id="20767" text="‪ה‪מקורות לקובץ כרגע עסוקים"/>
+	<string id="20768" text="‪המקורות לקובץ כרגע מוגנים בחומת אש"/>
+	<string id="20769" text="‪המקורות לקובץ כרגע במצב לא יציב"/>
+	<string id="20770" text="‪מחיצת"/>
+	<string id="20771" text="תוצאות"/>
+	<string id="20772" text="‪‫מיקום"/>
+	<string id="20773" text="‪:מהווה מהספריה"/>
+	<string id="20774" text="‪לא ידוע"/>
+	<string id="20775" text="‪הבא בתור"/>
+	<string id="20776" text="לא חשיש"/>
+	<string id="20777" text="‪‪:(%.2f%%) חלקי מקור זמינים"/>
+	<string id="20778" text="‪‫‪קווים פנויים: %i, בתור: %i"/>
+	<string id="20780" text="‪‫גודל"/>
+	<string id="20781" text="‪המקור כרגע עסוק"/>
+	<string id="20782" text="‪המקור מוגן בחומת אש"/>
+	<string id="20783" text="‪המקור עלול להיות לא יציב"/>
+	<string id="20784" text="‪:מהירות"/>
+	<string id="20785" text="‪:מצב"/>
+	<string id="20786" text="‪.היום %lu , בסך הכל %lu"/>
+	<string id="20787" text="‪:מספר הקבצים"/>
+	<string id="20788" text="‪:גודל כולל"/>
+	<string id="20789" text=":העלאות"/>
+	<string id="20790" text="‪‫סוג"/>
+	<string id="20791" text="לא מהימן"/>
+	<string id="20792" text="העלאות"/>
+	<string id="20793" text="‪:URL כתובת"/>
+	<string id="20794" text="‪:‪סוכן משתמש"/>
+	<string id="20795" text="‪‪%s :‏נכנס‎ %s :‏יוצא‎ (D:%I64i/U:%I64i/H:%I64i)"/>
+	<string id="20796" text="הקבצים המשותפים באמצעות האינטרנט"/>
+	<string id="20798" text="‪?האם אתה מעוניין לשדרג כעת .(%s) שרזה סיים להוריד את הגרסא החדשהnnאם תבחר כן, שרזה תסגר באופן זמני, למהלך ההתקנה"/>
+	<string id="20811" text="?העלאות של אידונקי2000 לא אמורות להיות מבוטלות. האם הינך בטוח/ה שברצונך לבטל את העלאות"/>
+	<string id="20834" text="‪מרכז אידונקי"/>
+	<string id="20841" text="‪תור חדש"/>
+	<string id="20842" text="‪כל הקבצים"/>
+	<string id="20845" text="‪השומר של אידונקי"/>
+	<string id="20846" text="‪קבצים חלקיים של אידונקי"/>
+	<string id="20847" text="‪העלאות שהסתיימו"/>
+	<string id="20848" text="‪HTTP שומר"/>
+	<string id="20849" text="ספריית קבצים"/>
+	<string id="20850" text="‪קבצים גדולים"/>
+	<string id="20851" text="‪קבצים בינוניים"/>
+	<string id="20852" text="‪קבצים קטנים"/>
+	<string id="20853" text="‪קבצים חלקיים"/>
+	<string id="20854" text="‪חלקי"/>
+	<string id="20855" text="‪הכנס לתור"/>
+	<string id="20856" text="‪העלאות טורנטים"/>
+	<string id="20862" text="‪הוסף"/>
+	<string id="20864" text="‪סייר"/>
+	<string id="20865" text="‪התחבר"/>
+	<string id="20866" text=":‪קובץ"/>
+	<string id="20867" text="‪:כתובת"/>
+	<string id="20868" text="‪:יציאה"/>
+	<!--string id="20869" text="‪.כיוון ששרזה עסוק URL נכשל להציג את חלון הדו-שיח לפעולות"-->
+	<string id="20870" text="‪.שרזה לא מבין את כתובת אינטרנט זו ,URL נכשל לפענח את הכתובת"/>
+	<string id="20871" text="‪&quot;%s&quot;.URL קבלת כתובת"/>
+	<string id="20872" text="‪:סוג"/>
+	<string id="20874" text="‪URL כתובת:"/>
+	<string id="20875" text="‪לא מוגדר"/>
+	<string id="20880" text="‪ערוך את הפרופיל שלי"/>
+	<string id="20882" text="קבצים שנבחרו. האם אתה בטוח? %u"/>
+	<string id="20883" text="‪זמין URN אין"/>
+	<string id="20885" text="‪שינוי התצוגה יסגור את כל החלונות הפתוחים, אתה רוצה לשנות את התצוגה כעת?"/>
+	<string id="20886" text=" שינוי הכיוון של ממשק מחייב הפעלה מחדש. \n\n צא עכשיו? \n\n\nChanging interface direction requires restart.\n\nExit now?"/>
+	<string id="20890" text="‪ברוכים הבאים לשרזה"/>
+	<string id="20891" text="‪יציאה"/>
+	<string id="20895" text="(1050-65500)"/>
+	<string id="20898" text="‪?לא בחרת אף תיקייה לשיתוף, האם הינך מעוניין להמשיך"/>
+	<string id="20899" text="‪בגיל"/>
 	<!--Missing Wizard Strings-->
-	<!--string id="16771" value="‪‪.‏בספרייתך‎ %s ‏הקובץ‎ ‏את‎ ‏לך‎ ‏יש‎ ‏כבר  ?‏מקרה‎ ‏בכל‎ ‏מחדש‎ ‏להורידו‎ ‏רוצה‎ ‏אתה‎ ‏האם‎ "-->
+	<!--string id="16771" text="‪‪.‏בספרייתך‎ %s ‏הקובץ‎ ‏את‎ ‏לך‎ ‏יש‎ ‏כבר  ?‏מקרה‎ ‏בכל‎ ‏מחדש‎ ‏להורידו‎ ‏רוצה‎ ‏אתה‎ ‏האם‎ "-->
 </strings>
 <!-- Localized Dialog Text, "cookie" verifies that the skin matches current dialog -->
 <dialogs>
 	<dialog name="CSettingSheet" cookie="SyBuBuBu" caption="הגדרות שרזה">
 		<control/>
-		<control caption="אישור"/>
-		<control caption="ביטול"/>
-		<control caption="החל"/>
+		<control text="אישור"/>
+		<control text="ביטול"/>
+		<control text="החל"/>
 		<control/>
 	</dialog>
 	<dialog name="CGeneralSettingsGroup" cookie="Af" caption="כללי"/>
 	<dialog name="CInternetSettingsGroup" cookie="Af" caption="אינטרנט"/>
 	<dialog name="CGeneralSettingsPage" cookie="BuBuBuBuBuBuBuBuStCoBuBuBuBuBuBuSyStEdmsStmsBuBuStCoStCo" caption="כללי">
-		<control caption="‪:כללי"/>
-		<control caption="‪הפעל את שרזה עם אתחול חלונות"/>
-		<control caption="‪התחבר אוטמטית באתחול של שרזה"/>
-		<control caption="‪URI הראה הודעה לפני פתיחת"/>
-		<control caption="בדוק אם יש עדכונים (חודשי)"/>
-		<control caption="‪:הורדות"/>
-		<control caption="‪הרחב הורדות חדשות כברירת מחדל"/>
-		<control caption="‪הצג מד התקדמות פשוט"/>
-		<control caption="‪:הצגת מהירות"/>
-		<control caption="Auto bits/sec|Auto bytes/sec|b/s|B/s|Kb/s|KB/s|Mb/s|MB/s"/>
-		<control caption="‪:חיפוש"/>
-		<control caption="‪הרחב קבצים עם כמה מקורות אוטמטית"/>
-		<control caption="‪עבור לחלון ההעברות בתחילת הורדה"/>
-		<control caption="‪הסתר סרגל צדדי בתחילת חיפוש"/>
-		<control caption="‪סינון תוכן למבוגרים מהחיפוש"/>
-		<control caption="‪‪:טיפים"/>
+		<control text="‪:כללי"/>
+		<control text="‪הפעל את שרזה עם אתחול חלונות"/>
+		<control text="‪התחבר אוטמטית באתחול של שרזה"/>
+		<control text="‪URI הראה הודעה לפני פתיחת"/>
+		<control text="בדוק אם יש עדכונים (חודשי)"/>
+		<control text="‪:הורדות"/>
+		<control text="‪הרחב הורדות חדשות כברירת מחדל"/>
+		<control text="‪הצג מד התקדמות פשוט"/>
+		<control text="‪:הצגת מהירות"/>
+		<control text="Auto bits/sec|Auto bytes/sec|b/s|B/s|Kb/s|KB/s|Mb/s|MB/s"/>
+		<control text="‪:חיפוש"/>
+		<control text="‪הרחב קבצים עם כמה מקורות אוטמטית"/>
+		<control text="‪עבור לחלון ההעברות בתחילת הורדה"/>
+		<control text="‪הסתר סרגל צדדי בתחילת חיפוש"/>
+		<control text="‪סינון תוכן למבוגרים מהחיפוש"/>
+		<control text="‪‪:טיפים"/>
 		<control/>
-		<control caption="‪(ms) :השהייה"/>
+		<control text="‪(ms) :השהייה"/>
 		<control/>
 		<control/>
-		<control caption="‪:אטימות"/>
+		<control text="‪:אטימות"/>
 		<control/>
-		<control caption="הצל "/>
-		<control caption="‪:שורת משימות"/>
-		<control caption=":כשאני לוחצ/ת סגור"/>
-		<control caption="‪שאל אותי|מזער|סגור מיד|סגור בסיום פעולה"/>
-		<control caption="‪:כשאני לוחצ/ת מזער"/>
-		<control caption="‪רגיל|מזער"/>
+		<control text="הצל "/>
+		<control text="‪:שורת משימות"/>
+		<control text=":כשאני לוחצ/ת סגור"/>
+		<control text="‪שאל אותי|מזער|סגור מיד|סגור בסיום פעולה"/>
+		<control text="‪:כשאני לוחצ/ת מזער"/>
+		<control text="‪רגיל|מזער"/>
 	</dialog>
 	<dialog name="CLibrarySettingsPage" cookie="BuBuBuBuBuBuBuBuStEdmsStStEdmsStBuBuBuCoBuBuBuCoBuBuBuEdBu" caption="ספריה">
-		<control caption=":אפשרויות"/>
-		<control caption="אפשר לסייר בקבצי המשותפים"/>
-		<control caption="צפה בתיקיות הספריה"/>
-		<control caption="&#8234;(עומס למעבד)‎ ‏מהיר‎ ‏האשינג"/>
-		<control caption="זכור את תצוגות התיקייה"/>
-		<control caption="Create ghost files when deleting"/>
-		<control caption="Smart media series detection"/>
-		<control caption=":קבצים אחרונים"/>
-		<control caption=":זכור"/>
+		<control text=":אפשרויות"/>
+		<control text="אפשר לסייר בקבצי המשותפים"/>
+		<control text="צפה בתיקיות הספריה"/>
+		<control text="&#8234;(עומס למעבד)‎ ‏מהיר‎ ‏האשינג"/>
+		<control text="זכור את תצוגות התיקייה"/>
+		<control text="Create ghost files when deleting"/>
+		<control text="Smart media series detection"/>
+		<control text=":קבצים אחרונים"/>
+		<control text=":זכור"/>
 		<control/>
 		<control/>
-		<control caption="קבצים"/>
-		<control caption="עד"/>
+		<control text="קבצים"/>
+		<control text="עד"/>
 		<control/>
 		<control/>
-		<control caption="ימים"/>
-		<control caption="נקה היסטוריה כעת"/>
-		<control caption="נקה היסטוריה כעת"/>
-		<control caption=":בטוח לפתיחה"/>
+		<control text="ימים"/>
+		<control text="נקה היסטוריה כעת"/>
+		<control text="נקה היסטוריה כעת"/>
+		<control text=":בטוח לפתיחה"/>
 		<control/>
-		<control caption="הוסף"/>
-		<control caption="הסר"/>
-		<control caption=":לעולם על תשתף"/>
+		<control text="הוסף"/>
+		<control text="הסר"/>
+		<control text=":לעולם על תשתף"/>
 		<control/>
-		<control caption="הוסף"/>
-		<control caption="הסר"/>
-		<control caption=":אגור כאן את האוספים"/>
+		<control text="הוסף"/>
+		<control text="הסר"/>
+		<control text=":אגור כאן את האוספים"/>
 		<control/>
 		<control/>
 	</dialog>
 	<dialog name="CMediaSettingsPage" cookie="BuStCoBuBuBuCoBuBuBuBuSt" caption="נגן המדיה">
-		<control caption=":א_פשררויות"/>
-		<control caption=":בחר תוסף לשירותי מדיה"/>
+		<control text=":א_פשררויות"/>
+		<control text=":בחר תוסף לשירותי מדיה"/>
 		<control/>
-		<control caption="השתמש בנגן המדיה של שרזה לניגון סוגי הקבצים שרשומים להלן"/>
-		<control caption="השתמש בנגן המדיה של שרזה לזיהוי סוגי הקבצים שרשומים להלן"/>
-		<control caption=":סוגי קבצים"/>
+		<control text="השתמש בנגן המדיה של שרזה לניגון סוגי הקבצים שרשומים להלן"/>
+		<control text="השתמש בנגן המדיה של שרזה לזיהוי סוגי הקבצים שרשומים להלן"/>
+		<control text=":סוגי קבצים"/>
 		<control/>
-		<control caption="הוסף"/>
-		<control caption="הסר"/>
-		<control caption=":תוסף אפקטים ויזואליים"/>
-		<control caption="...בחר תוסף"/>
-		<control caption="Note: Choosing an external Media Handler will disable Media/Visualization Plugins."/>
+		<control text="הוסף"/>
+		<control text="הסר"/>
+		<control text=":תוסף אפקטים ויזואליים"/>
+		<control text="...בחר תוסף"/>
+		<control text="Note: Choosing an external Media Handler will disable Media/Visualization Plugins."/>
 	</dialog>
 	<!--dialog name="CIRCSettingsPage" cookie="BuBuBuBuStEdmsStStEdmsCoBuBuStBuStBuStBuStBuStBuStBuStBuStBuStEdStEdStEdStEdStCoStEdStEd" caption="חדר שיחה"-->
 	<dialog name="CCommunitySettingsPage" cookie="BuBuBuBuBuBuBuBuBuSt" caption="קהילה">
-		<control caption=":צ'אט"/>
-		<control caption="אפשר שיחות בתקשורת ישירה באפליקציות תומכות"/>
-		<control caption="אפשר שיחות לכל הרשתות"/>
-		<control caption="...סינון הודעות זבל"/>
-		<control caption="צינזור חומר פוגעני בצ'אט"/>
-		<control caption="הפרופיל שלי"/>
-		<control caption="הפרופיל שלי"/>
-		<control caption="ערוך את הפרופיל"/>
-		<control caption="מידע:"/>
-		<control caption=".‏‏ניתן להשתמש בפרופיל המשתמש שלך בגנוטלה לשיתוף מידע אודות עצמך כמו תחביבים והקבצים המועדפים שלך עם משתמשים אחרים"/>
+		<control text=":צ'אט"/>
+		<control text="אפשר שיחות בתקשורת ישירה באפליקציות תומכות"/>
+		<control text="אפשר שיחות לכל הרשתות"/>
+		<control text="...סינון הודעות זבל"/>
+		<control text="צינזור חומר פוגעני בצ'אט"/>
+		<control text="הפרופיל שלי"/>
+		<control text="הפרופיל שלי"/>
+		<control text="ערוך את הפרופיל"/>
+		<control text="מידע:"/>
+		<control text=".‏‏ניתן להשתמש בפרופיל המשתמש שלך בגנוטלה לשיתוף מידע אודות עצמך כמו תחביבים והקבצים המועדפים שלך עם משתמשים אחרים"/>
 	</dialog>
 	<dialog name="CRemoteSettingsPage" cookie="BuBuStBuStStEdEdStBuSt" caption="גישה מרחוק">
-		<control caption=":אפשר"/>
-		<control caption=".אפשר גישה מרחוק לשרזה"/>
+		<control text=":אפשר"/>
+		<control text=".אפשר גישה מרחוק לשרזה"/>
 		<control/>
-		<control caption=":פרטי חשבון"/>
-		<control caption=":בחר שם משתמש"/>
-		<control caption=":בחר סיסמא"/>
+		<control text=":פרטי חשבון"/>
+		<control text=":בחר שם משתמש"/>
+		<control text=":בחר סיסמא"/>
 		<control/>
 		<control/>
 		<control/>
-		<control caption=":מידע"/>
-		<control caption="אפשרות השליטה מרחוק של שרזה מאפשרת לך להשאיר את שרזה פועלת על המחשב, ולשלוט בה מרחוק בעזרת דפדפן האינטרנט, יהיה עלייך לדאוג שתוכל לקבל התקשרויות נכנסות - ראוטר מוגדר וכדומה"/>
+		<control text=":מידע"/>
+		<control text="אפשרות השליטה מרחוק של שרזה מאפשרת לך להשאיר את שרזה פועלת על המחשב, ולשלוט בה מרחוק בעזרת דפדפן האינטרנט, יהיה עלייך לדאוג שתוכל לקבל התקשרויות נכנסות - ראוטר מוגדר וכדומה"/>
 	</dialog>
 	<dialog name="CWebSettingsPage" cookie="BuStBuBuBuBuBuBuBuBuCoBuBuSt" caption="רשת">
-		<control caption=":צורת השימוש בלינקים לתקשורת ישירה"/>
-		<control caption=":השתמש בשרזה לפתיחת סוגי הלינקים הבאים"/>
-		<control caption="מגנט (magnet:)"/>
-		<control caption="גונוטלה (gnutella:)"/>
-		<control caption="אי-דונקי 2000 (ed2k:)"/>
-		<control caption="פיולט (mp2p:)"/>
-		<control caption="DC++ (dchub:)"/>
-		<control caption="ביט-טורנט (.torrent)"/>
-		<control caption=":מנהל ההורדות"/>
-		<control caption=":התשמש בשרזה לניהול כל ההורדות מסוגים אלה באינטרנט"/>
+		<control text=":צורת השימוש בלינקים לתקשורת ישירה"/>
+		<control text=":השתמש בשרזה לפתיחת סוגי הלינקים הבאים"/>
+		<control text="מגנט (magnet:)"/>
+		<control text="גונוטלה (gnutella:)"/>
+		<control text="אי-דונקי 2000 (ed2k:)"/>
+		<control text="פיולט (mp2p:)"/>
+		<control text="DC++ (dchub:)"/>
+		<control text="ביט-טורנט (.torrent)"/>
+		<control text=":מנהל ההורדות"/>
+		<control text=":התשמש בשרזה לניהול כל ההורדות מסוגים אלה באינטרנט"/>
 		<control/>
-		<control caption="הוסף"/>
-		<control caption="הסר"/>
-		<control caption="תוסף מנהל ההורדות אך ורק ינסה להוריד את הקבצים המופיעים ברשימה להלן. סוגים אחרים של קבצים יטופלו על ידי הדפדפן. שרזה חייבת להיות מופעלת בכדי לנהל את ההורדות."/>
+		<control text="הוסף"/>
+		<control text="הסר"/>
+		<control text="תוסף מנהל ההורדות אך ורק ינסה להוריד את הקבצים המופיעים ברשימה להלן. סוגים אחרים של קבצים יטופלו על ידי הדפדפן. שרזה חייבת להיות מופעלת בכדי לנהל את ההורדות."/>
 	</dialog>
 	<dialog name="CConnectionSettingsPage" cookie="BuStCoStCoStEdBuBuBuStCoStCoBuStCoBuBuBuStEdmsStEdms" caption="חיבור">
-		<control caption=":כתובת נכנסת"/>
-		<control caption=":כתובת"/>
-		<control caption="אוטמטי"/>
-		<control caption=":מהירות"/>
+		<control text=":כתובת נכנסת"/>
+		<control text=":כתובת"/>
+		<control text="אוטמטי"/>
+		<control text=":מהירות"/>
 		<control/>
-		<control caption=":יציאה"/>
+		<control text=":יציאה"/>
 		<control/>
-		<control caption="רנדומלי"/>
-		<control caption=".חייב הגבלה לכתובת זו"/>
-		<control caption=":כתובת יוצאת"/>
-		<control caption=":כתובת"/>
-		<control caption="אוטמטי"/>
-		<control caption=":מהירות"/>
+		<control text="רנדומלי"/>
+		<control text=".חייב הגבלה לכתובת זו"/>
+		<control text=":כתובת יוצאת"/>
+		<control text=":כתובת"/>
+		<control text="אוטמטי"/>
+		<control text=":מהירות"/>
 		<control/>
-		<control caption=":אפשרויות"/>
-		<control caption="אני יכול/ה לקבל חיבורים נכנסים"/>
+		<control text=":אפשרויות"/>
+		<control text="אני יכול/ה לקבל חיבורים נכנסים"/>
 		<control/>
-		<control caption="מקומיות/פרטיות IP התעלם מכתובות"/>
-		<control caption="Enable Plug'n'Play port-forwarding"/>
-		<control caption=":זמן המתנה לתשובה"/>
-		<control caption="חיבור"/>
+		<control text="מקומיות/פרטיות IP התעלם מכתובות"/>
+		<control text="Enable Plug'n'Play port-forwarding"/>
+		<control text=":זמן המתנה לתשובה"/>
+		<control text="חיבור"/>
 		<control/>
 		<control/>
-		<control caption="לחיצת יד"/>
+		<control text="לחיצת יד"/>
 		<control/>
 		<control/>
 	</dialog>
 	<dialog name="CDownloadsSettingsPage" cookie="BuEdBuBuEdBuBuStEdmsStEdmsStEdmsBuStCoStCoBuBuStCo" caption="הורדות">
-		<control caption=":אכסן קבצים שהושלמה הורדתם בתיקייה"/>
+		<control text=":אכסן קבצים שהושלמה הורדתם בתיקייה"/>
 		<control/>
 		<control/>
-		<control caption=":אכסן קבצים זמניים כאן"/>
+		<control text=":אכסן קבצים זמניים כאן"/>
 		<control/>
 		<control/>
-		<control caption=":מספר הורדות"/>
-		<control caption=":מקסימום העברות"/>
+		<control text=":מספר הורדות"/>
+		<control text=":מקסימום העברות"/>
 		<control/>
 		<control/>
-		<control caption=":מקסימום חיבורים"/>
+		<control text=":מקסימום חיבורים"/>
 		<control/>
 		<control/>
-		<control caption=":מקס' העברות לקובץ"/>
+		<control text=":מקס' העברות לקובץ"/>
 		<control/>
 		<control/>
-		<control caption=":הגבלות"/>
-		<control caption=":רוחב פס להורדות"/>
+		<control text=":הגבלות"/>
+		<control text=":רוחב פס להורדות"/>
 		<control/>
-		<control caption=":אורך תורות מקסימלי"/>
+		<control text=":אורך תורות מקסימלי"/>
 		<control/>
-		<control caption="_‪‪אבטחה:"/>
-		<control caption="&#8234;‏מחובר‎ ‏אליהן אני‎ ‏ברשתות‎ ‏ורק‎ ‏אך‎ ‏והורד‎ ‏העלה"/>
-		<control caption="AntiVirus:"/>
+		<control text="_‪‪אבטחה:"/>
+		<control text="&#8234;‏מחובר‎ ‏אליהן אני‎ ‏ברשתות‎ ‏ורק‎ ‏אך‎ ‏והורד‎ ‏העלה"/>
+		<control text="AntiVirus:"/>
 		<control/>
 	</dialog>
 	<dialog name="CUploadsSettingsPage" cookie="BuBuBuBuBuStEdmsBuCoBuBuBuStCoStCoBuSyBuBuBuSt" caption="העלאות">
-		<control caption=":אפשרויות"/>
-		<control caption="הגבל שיתוף במצב מוקד"/>
-		<control caption="שתף חלקי הורדות חדשים"/>
-		<control caption="שתף קבצי תצוגה מקדימה"/>
-		<control caption="Fair-Use mode (10% media limit)"/>
-		<control caption=":מקס' העלאות למשתמש"/>
+		<control text=":אפשרויות"/>
+		<control text="הגבל שיתוף במצב מוקד"/>
+		<control text="שתף חלקי הורדות חדשים"/>
+		<control text="שתף קבצי תצוגה מקדימה"/>
+		<control text="Fair-Use mode (10% media limit)"/>
+		<control text=":מקס' העלאות למשתמש"/>
 		<control/>
 		<control/>
-		<control caption=":סוכן-משתמש לסינון"/>
+		<control text=":סוכן-משתמש לסינון"/>
 		<control/>
-		<control caption="+"/>
-		<control caption="-"/>
-		<control caption=":רוחב פס"/>
-		<control caption=":הגבלה"/>
+		<control text="+"/>
+		<control text="-"/>
+		<control text=":רוחב פס"/>
+		<control text=":הגבלה"/>
 		<control/>
-		<control caption=":איפשור"/>
-		<control caption="מקסימום|ממוצע"/>
-		<control caption=":תורים"/>
+		<control text=":איפשור"/>
+		<control text="מקסימום|ממוצע"/>
+		<control text=":תורים"/>
 		<control/>
-		<control caption="...חדש"/>
-		<control caption="...ערוך"/>
-		<control caption="מחק"/>
-		<control caption="(השינויים משפיעים מייד)"/>
+		<control text="...חדש"/>
+		<control text="...ערוך"/>
+		<control text="מחק"/>
+		<control text="(השינויים משפיעים מייד)"/>
 	</dialog>
 	<dialog name="CNetworksSettingsPage" cookie="StBuStBuStBuStBuStBuStBuStBuStBuSt" caption="רשתות">
-		<control caption="שרזה היא תוכנת שיתוף לשימוש כללי שמסוגלת לגשת למספר רשתות שיתוף קבצים בו זמנית. כאן אתה יכול לבחור לאילו רשתות תרצה לגשת ולקבוע הגדרות ספציפיות לכל רשת"/>
-		<control caption=":רשת גנוטלה2"/>
-		<control caption="רשת גנוטלה2 היא הרשת הראשית של שרזה, המציעה יותר אופציות וביצועים מכל רשת שיתוף אחרת - מאוד מומלץ"/>
-		<control caption="התחבר לגנוטלה2 (G2)"/>
-		<control caption="קבע הגדרות לגנוטלה2"/>
-		<control caption=":רשת גנוטלה המקורית"/>
-		<control caption="למרוח שרשת גנוטלה המקורית היא עם פחות אופציות מגנוטלה2 ועם פחות קבצים מאידונקי היא עדיין מקור בעל ערך"/>
-		<control caption="התחבר לגנוטה המקורית"/>
-		<control caption="קבע הגדרות לגנוטלה"/>
-		<control caption=":רשת אידונקי2000"/>
-		<control caption="רשת אידונקי היא רשת מבוססת שרת פופלרית. יש בה פחות אופציות מגונטלה2 אבל עם כמות קבצים מרשימה"/>
-		<control caption="התחבר לאידונקי2000"/>
-		<control caption="קבע הגדרות לאידונקי 2000"/>
-		<control caption=":רשת אידונקי DC++"/>
-		<control caption="רשת אידונקי היא רשת מבוססת שרת פופלרית. יש בה פחות אופציות מגונטלה2 אבל עם כמות קבצים מרשימה"/>
-		<control caption="התחבר לאידונקי DC++"/>
-		<control caption="קבע הגדרות לאידונקי DC++"/>
+		<control text="שרזה היא תוכנת שיתוף לשימוש כללי שמסוגלת לגשת למספר רשתות שיתוף קבצים בו זמנית. כאן אתה יכול לבחור לאילו רשתות תרצה לגשת ולקבוע הגדרות ספציפיות לכל רשת"/>
+		<control text=":רשת גנוטלה2"/>
+		<control text="רשת גנוטלה2 היא הרשת הראשית של שרזה, המציעה יותר אופציות וביצועים מכל רשת שיתוף אחרת - מאוד מומלץ"/>
+		<control text="התחבר לגנוטלה2 (G2)"/>
+		<control text="קבע הגדרות לגנוטלה2"/>
+		<control text=":רשת גנוטלה המקורית"/>
+		<control text="למרוח שרשת גנוטלה המקורית היא עם פחות אופציות מגנוטלה2 ועם פחות קבצים מאידונקי היא עדיין מקור בעל ערך"/>
+		<control text="התחבר לגנוטה המקורית"/>
+		<control text="קבע הגדרות לגנוטלה"/>
+		<control text=":רשת אידונקי2000"/>
+		<control text="רשת אידונקי היא רשת מבוססת שרת פופלרית. יש בה פחות אופציות מגונטלה2 אבל עם כמות קבצים מרשימה"/>
+		<control text="התחבר לאידונקי2000"/>
+		<control text="קבע הגדרות לאידונקי 2000"/>
+		<control text=":רשת אידונקי DC++"/>
+		<control text="רשת אידונקי היא רשת מבוססת שרת פופלרית. יש בה פחות אופציות מגונטלה2 אבל עם כמות קבצים מרשימה"/>
+		<control text="התחבר לאידונקי DC++"/>
+		<control text="קבע הגדרות לאידונקי DC++"/>
 	</dialog>
 	<dialog name="CGnutellaSettingsPage" cookie="BuBuBuStCoBuStEdmsStEdmsStEdmsBuBuBuStCoBuStEdmsStEdmsStEdmsBuBuBuBu" caption="גונטלה">
-		<control caption=":רשת גנוטלה2"/>
-		<control caption="התחבר אל גנוטלה2 היום"/>
-		<control caption="תמיד התחבר לגנוטלה2"/>
-		<control caption=":מצב"/>
-		<control caption="אופטימלי|קו ענף|מוקד"/>
-		<control caption=":חיבורי גנוטלה2"/>
-		<control caption="מוקד אל קו ענף"/>
+		<control text=":רשת גנוטלה2"/>
+		<control text="התחבר אל גנוטלה2 היום"/>
+		<control text="תמיד התחבר לגנוטלה2"/>
+		<control text=":מצב"/>
+		<control text="אופטימלי|קו ענף|מוקד"/>
+		<control text=":חיבורי גנוטלה2"/>
+		<control text="מוקד אל קו ענף"/>
 		<control/>
 		<control/>
-		<control caption="קו ענף אל מוקד"/>
+		<control text="קו ענף אל מוקד"/>
 		<control/>
 		<control/>
-		<control caption="מוקד אל מוקד"/>
+		<control text="מוקד אל מוקד"/>
 		<control/>
 		<control/>
-		<control caption=":רשת גנוטלה"/>
-		<control caption="התחבר אל גנוטלה היום"/>
-		<control caption="תמיד התחבר לגנוטלה"/>
-		<control caption=":מצב"/>
-		<control caption="אופימלי|קו ענף|Ultrapeer"/>
-		<control caption=":חיבורי גנוטלה"/>
-		<control caption="Ultrapeer קו ענף אל"/>
+		<control text=":רשת גנוטלה"/>
+		<control text="התחבר אל גנוטלה היום"/>
+		<control text="תמיד התחבר לגנוטלה"/>
+		<control text=":מצב"/>
+		<control text="אופימלי|קו ענף|Ultrapeer"/>
+		<control text=":חיבורי גנוטלה"/>
+		<control text="Ultrapeer קו ענף אל"/>
 		<control/>
 		<control/>
-		<control caption="אל קו ענף Ultrapeer"/>
+		<control text="אל קו ענף Ultrapeer"/>
 		<control/>
 		<control/>
-		<control caption="Peer אל Peer"/>
+		<control text="Peer אל Peer"/>
 		<control/>
 		<control/>
-		<control caption=":כיווץ קישור"/>
-		<control caption="מוקד אל קו ענף"/>
-		<control caption="קו ענף אל מוקד"/>
-		<control caption="מוקד אל מוקד"/>
+		<control text=":כיווץ קישור"/>
+		<control text="מוקד אל קו ענף"/>
+		<control text="קו ענף אל מוקד"/>
+		<control text="מוקד אל מוקד"/>
 	</dialog>
 	<dialog name="CDonkeySettingsPage" cookie="BuBuBuBuStEdmsStBuBuStEdmsStBuBuBuSt" caption="אי-דונקי 2000">
-		<control caption=":רשת אידונקי"/>
-		<control caption="חיבור אוטמטי בכל הפעלה"/>
-		<control caption="התחבר לרשת אידונקי"/>
-		<control caption=":חיבורי קישור מהתוכנה"/>
-		<control caption="אל תתחבר ליותר מאשר"/>
+		<control text=":רשת אידונקי"/>
+		<control text="חיבור אוטמטי בכל הפעלה"/>
+		<control text="התחבר לרשת אידונקי"/>
+		<control text=":חיבורי קישור מהתוכנה"/>
+		<control text="אל תתחבר ליותר מאשר"/>
 		<control/>
 		<control/>
-		<control caption=".משתמשי אידונקי אחרים"/>
-		<control caption=":חיפוש גלובלי"/>
-		<control caption=":חפש שרתים מרוחקים ברשימות של אידונקי"/>
-		<control caption="עצור לחפש לאחר"/>
+		<control text=".משתמשי אידונקי אחרים"/>
+		<control text=":חיפוש גלובלי"/>
+		<control text=":חפש שרתים מרוחקים ברשימות של אידונקי"/>
+		<control text="עצור לחפש לאחר"/>
 		<control/>
 		<control/>
-		<control caption="תוצאות חיפוש"/>
-		<control caption="Update global server list from the connected server"/>
-		<control caption=":כלים של אי-דונקי 2000"/>
-		<control caption="...הורד"/>
-		<control caption="הורד רשימת שרתים של אידונקי מהרשת"/>
+		<control text="תוצאות חיפוש"/>
+		<control text="Update global server list from the connected server"/>
+		<control text=":כלים של אי-דונקי 2000"/>
+		<control text="...הורד"/>
+		<control text="הורד רשימת שרתים של אידונקי מהרשת"/>
 	</dialog>
 	<dialog name="CDCSettingsPage" cookie="BuBuBuBuStEdmsStBuStBuBuSt" caption="DC++">
-		<control caption="_DC++ רשת:"/>
-		<control caption="Connect to DC++ now"/>
-		<control caption="Connect to DC++ at startup"/>
-		<control caption="_Hubs:"/>
-		<control caption="Connect by default to:"/>
+		<control text="_DC++ רשת:"/>
+		<control text="Connect to DC++ now"/>
+		<control text="Connect to DC++ at startup"/>
+		<control text="_Hubs:"/>
+		<control text="Connect by default to:"/>
 		<control/>
 		<control/>
-		<control caption="DC++ hubs."/>
-		<control caption="_Info:"/>
-		<control caption="DC++ works by connecting to specific &quot;hub&quot; communities. Please select hubs from the &quot;Hostcache&quot; advanced view window (F8), otherwise one will be randomly selected."/>
-		<control caption="_Tools:"/>
-		<control caption="...הורד"/>
-		<control caption="Update DC++ hubs from the web. (hublist.xml.bz2)"/>
+		<control text="DC++ hubs."/>
+		<control text="_Info:"/>
+		<control text="DC++ works by connecting to specific &quot;hub&quot; communities. Please select hubs from the &quot;Hostcache&quot; advanced view window (F8), otherwise one will be randomly selected."/>
+		<control text="_Tools:"/>
+		<control text="...הורד"/>
+		<control text="Update DC++ hubs from the web. (hublist.xml.bz2)"/>
 	</dialog>
 	<dialog name="CBitTorrentSettingsPage" cookie="BuEdmsStEdmsStBuBuBuBuBuEdmsStBuEdBuBuEdBuStEd" caption="ביט-טורנט">
-		<control caption=":הגדרות הורדה בביט-טורנט"/>
+		<control text=":הגדרות הורדה בביט-טורנט"/>
 		<control/>
 		<control/>
-		<control caption="טורנטים בו זמנית"/>
+		<control text="טורנטים בו זמנית"/>
 		<control/>
 		<control/>
-		<control caption="מקסימום חיבורים"/>
-		<control caption="אפשר BitTorrent DHT"/>
-		<control caption="תן עדיפות למקורות של טורנטים"/>
-		<control caption=":EndGame (האצה)"/>
-		<control caption="כשמסיימים הורדת טורנטים EndGame אפשר אופציית"/>
-		<control caption="נקה טורנטים שהורדו  כשרמת השיתוף תגיע אל"/>
+		<control text="מקסימום חיבורים"/>
+		<control text="אפשר BitTorrent DHT"/>
+		<control text="תן עדיפות למקורות של טורנטים"/>
+		<control text=":EndGame (האצה)"/>
+		<control text="כשמסיימים הורדת טורנטים EndGame אפשר אופציית"/>
+		<control text="נקה טורנטים שהורדו  כשרמת השיתוף תגיע אל"/>
 		<control/>
 		<control/>
-		<control caption="%"/>
-		<control caption=":אכסן טורנטים כאן"/>
+		<control text="%"/>
+		<control text=":אכסן טורנטים כאן"/>
 		<control/>
 		<control/>
-		<control caption=":יוצר הטורנט"/>
+		<control text=":יוצר הטורנט"/>
 		<control/>
 		<control/>
-		<control caption=" :עוקב הטורנטים"/>
+		<control text=" :עוקב הטורנטים"/>
 		<control/>
 	</dialog>
 	<dialog name="CSkinsSettingsPage" cookie="SyBuStStStStStEdStBuBuBu" caption="מעטפות">
 		<control/>
-		<control caption=":מידע על המעטפות"/>
-		<control caption=" - תוסף"/>
+		<control text=":מידע על המעטפות"/>
+		<control text=" - תוסף"/>
 		<control/>
-		<control caption=" - עורך"/>
+		<control text=" - עורך"/>
 		<control/>
-		<control caption=":מידע נוסף"/>
+		<control text=":מידע נוסף"/>
 		<control/>
-		<control caption="*"/>
-		<control caption="מחק"/>
-		<control caption="...התקן"/>
-		<control caption=":מידע נוסף"/>
+		<control text="*"/>
+		<control text="מחק"/>
+		<control text="...התקן"/>
+		<control text=":מידע נוסף"/>
 	</dialog>
 	<dialog name="CPluginsSettingsPage" cookie="SyBuStStStEdBuBu" caption="תוספים">
 		<control/>
-		<control caption=":מידע על התוסף"/>
-		<control caption=":שם התוסף"/>
+		<control text=":מידע על התוסף"/>
+		<control text=":שם התוסף"/>
 		<control/>
-		<control caption=":מידע נוסף"/>
+		<control text=":מידע נוסף"/>
 		<control/>
-		<control caption="...התקנה"/>
-		<control caption=":מידע נוסף"/>
+		<control text="...התקנה"/>
+		<control text=":מידע נוסף"/>
 	</dialog>
 	<dialog name="CAdvancedSettingsPage" cookie="SyBuStEdmsEdCoBuBu" caption="מתקדם">
 		<control/>
-		<control caption=":ערך"/>
-		<control caption=":תיאור"/>
+		<control text=":ערך"/>
+		<control text=":תיאור"/>
 		<control/>
 		<control/>
 		<control/>
 		<control/>
 		<control/>
-		<control caption="הגדרות"/>
+		<control text="הגדרות"/>
 	</dialog>
 	<dialog name="CProtocolsSettingsPage" cookie="BuSy" caption="פרוטוקולים">
-		<control caption=":סייר ארכיטקטורת פרוטוקול משותף של שרזה"/>
+		<control text=":סייר ארכיטקטורת פרוטוקול משותף של שרזה"/>
 		<control/>
 	</dialog>
 	<dialog name="CQueuePropertiesDlg" cookie="BuEdBuBuBuBuBuEdBuEdBuCoBuEdBuSyBuBuStEdmsStEdmsStEdmsBuStEdStEdmsBuEdmsBuBuBu" caption="מאפייני תורות העלאה">
-		<control caption=":שם"/>
+		<control text=":שם"/>
 		<control/>
-		<control caption=":רישום קריטריון"/>
-		<control caption="קבצים שהורדו חלקית בלבד"/>
-		<control caption="Shared Library files only"/>
-		<control caption="Both partial and library files"/>
-		<control caption="גודל קובץ מקור מינימלי"/>
+		<control text=":רישום קריטריון"/>
+		<control text="קבצים שהורדו חלקית בלבד"/>
+		<control text="Shared Library files only"/>
+		<control text="Both partial and library files"/>
+		<control text="גודל קובץ מקור מינימלי"/>
 		<control/>
-		<control caption="גודל קובץ מקור מקסימלי"/>
+		<control text="גודל קובץ מקור מקסימלי"/>
 		<control/>
-		<control caption="קבצים מסומנים"/>
+		<control text="קבצים מסומנים"/>
 		<control/>
-		<control caption="לפי שם קובץ"/>
+		<control text="לפי שם קובץ"/>
 		<control/>
-		<control caption=":פרוטוקולים"/>
+		<control text=":פרוטוקולים"/>
 		<control/>
-		<control caption=":יכולת צבירה"/>
-		<control caption="אפשר את תור זה"/>
-		<control caption=":מספר העברות מינמלי"/>
-		<control/>
-		<control/>
-		<control caption=":מספר העברות מקסימלי"/>
+		<control text=":יכולת צבירה"/>
+		<control text="אפשר את תור זה"/>
+		<control text=":מספר העברות מינמלי"/>
 		<control/>
 		<control/>
-		<control caption=":מספר מקסימלי של מחכים בתור"/>
+		<control text=":מספר העברות מקסימלי"/>
 		<control/>
 		<control/>
-		<control caption=":פרמטרי השירות"/>
-		<control caption=":אחוז רוחב פס רווי"/>
-		<control/>
-		<control caption=":רוחב פס העלאה לתור זה"/>
+		<control text=":מספר מקסימלי של מחכים בתור"/>
 		<control/>
 		<control/>
-		<control caption="שניות # עבור לבא בכל"/>
+		<control text=":פרמטרי השירות"/>
+		<control text=":אחוז רוחב פס רווי"/>
+		<control/>
+		<control text=":רוחב פס העלאה לתור זה"/>
 		<control/>
 		<control/>
-		<control caption="אישור"/>
-		<control caption="ביטול"/>
-		<control caption="הטבות למשתמשים משתפים"/>
+		<control text="שניות # עבור לבא בכל"/>
+		<control/>
+		<control/>
+		<control text="אישור"/>
+		<control text="ביטול"/>
+		<control text="הטבות למשתמשים משתפים"/>
 	</dialog>
-	<dialog name="CWizardWelcomePage" cookie="StStStStStStStStStStStSt" caption="(1/8) ברוכים הבאים לשרזה">
-		<control caption="!ברוכים הבאים לשרזה"/>
-		<control caption="אם לא השתמשת בשרזה או בתוכנת שיתוף אחרת בעבר, אשף הפעלה מהירה זה יעזור לך להגדיר את התוכנה בכמה צעדים פשוטים"/>
-		<control caption="אם אתה משתמש מתקדם יותר, אתה יכול לגשת לאפשרויות המלאות של שרזה דרך תפריט כלים, לחץ יציאה כדי לצאת מהאשף בכל רגע"/>
-		<control caption=":האשף יעזור לך להגדיר את הדברים הבאים"/>
+	<dialog name="CWizardWelcomePage" cookie="StStStStStStStStStStStStSt" caption="(1/8) ברוכים הבאים לשרזה">
+		<control text="!ברוכים הבאים לשרזה"/>
+		<control text="אם לא השתמשת בשרזה או בתוכנת שיתוף אחרת בעבר, אשף הפעלה מהירה זה יעזור לך להגדיר את התוכנה בכמה צעדים פשוטים"/>
+		<control text="אם אתה משתמש מתקדם יותר, אתה יכול לגשת לאפשרויות המלאות של שרזה דרך תפריט כלים, לחץ יציאה כדי לצאת מהאשף בכל רגע"/>
+		<control text=":האשף יעזור לך להגדיר את הדברים הבאים"/>
 		<control/>
-		<control caption="הגדרת פרטי חיבור האינטרנט שלך בשרזה"/>
+		<control text="הגדרת פרטי חיבור האינטרנט שלך בשרזה"/>
 		<control/>
-		<control caption="בחירת הקבצים לשיתוף"/>
+		<control text="בחירת הקבצים לשיתוף"/>
 		<control/>
-		<control caption="בחירת רשתות שיתוף הקבצים אליהן תתחבר"/>
+		<control text="בחירת רשתות שיתוף הקבצים אליהן תתחבר"/>
 		<control/>
-		<control caption="התחלת השימוש בשרזה"/>
+		<control text="התחלת השימוש בשרזה"/>
+		<control/>
 	</dialog>
 	<dialog name="CWizardConnectionPage" cookie="StStCoStStCoStCoStCoStEdBuStms" caption="(2/8) ברוכים הבאים לשרזה">
-		<control caption="לביצועים מירביים, שרזה צריכה לדעת קצת יותר על החיבור שלך לאינטרנט"/>
-		<control caption="&#160;אנא בחר|אני משתמש באינטרנט בביתי|אני משתמש באינטרנט בקו קבוע במכללה|אני משתמש באינטרנט בקו קבוע במשרד|אני משתמש באינטרנט במלון או בשדה תעופה"/>
-		<control caption="| Dial-up Modem| ISDN 128K| DSL 768K| DSL 1.5| Cable 3| DSL 4| DSL2 8| FIOS 10| DSL2 12| FIOS 15| FIOS 20| FIOS 25| FIOS 30| FIOS 50| T1| T3| LAN| OC3"/>
-		<control caption="מבחן ב Speedtest.net"/>
-		<control caption="או בחר:"/>
+		<control text="לביצועים מירביים, שרזה צריכה לדעת קצת יותר על החיבור שלך לאינטרנט"/>
+		<control text="&#160;אנא בחר|אני משתמש באינטרנט בביתי|אני משתמש באינטרנט בקו קבוע במכללה|אני משתמש באינטרנט בקו קבוע במשרד|אני משתמש באינטרנט במלון או בשדה תעופה"/>
+		<control text="| Dial-up Modem| ISDN 128K| DSL 768K| DSL 1.5| Cable 3| DSL 4| DSL2 8| FIOS 10| DSL2 12| FIOS 15| FIOS 20| FIOS 25| FIOS 30| FIOS 50| T1| T3| LAN| OC3"/>
+		<control text="מבחן ב Speedtest.net"/>
+		<control text="או בחר:"/>
 		<control/>
-		<control caption="ומהירות ההעלאה:"/>
+		<control text="ומהירות ההעלאה:"/>
 		<control/>
-		<control caption="?UPnP-ברצונך להגדיר פתחה (פורט) אוטומטית עי שימוש ב"/>
+		<control text="?UPnP-ברצונך להגדיר פתחה (פורט) אוטומטית עי שימוש ב"/>
 		<control/>
-		<control caption="Port:"/>
+		<control text="Port:"/>
 		<control/>
-		<control caption="אקראיים"/>
-		<control caption="מצב:"/>
+		<control text="אקראיים"/>
+		<control text="מצב:"/>
 		<control/>
 	</dialog>
 	<dialog name="CWizardNetworksPage" cookie="StBuStBuStBuStBu" caption="(3/8) ברוכים הבאים לשרזה">
-		<control caption="שרזה היא תוכנת שיתוף לשימוש כללי שמסוגלת לגשת למספר רשתות שיתוף קבצים בו זמנית. כאן אתה יכול לבחור לאילו רשתות תרצה לגשת. שים לב שאתה יכול תמיד לבחור רשתות אחרות מאוחר יותר"/>
-		<control caption="(החתבר לגנוטלה2 (מומלץ מאוד"/>
-		<control caption="רשת גנוטלה2 היא הרשת הראשית של שרזה, המציעה יותר אופציות וביצועים מכל רשת שיתוף אחרת"/>
-		<control caption="התחבר לאידונקי2000"/>
-		<control caption="רשת אידונקי היא רשת מבוססת שרת פופלרית. יש בה פחות אופציות מגונטלה2 אבל עם כמות קבצים מרשימה"/>
-		<control caption="התחבר לגנוטלה המקורי"/>
-		<control caption="למרוח שרשת גנוטלה המקורית היא עם פחות אופציות מגנוטלה2 ועם פחות קבצים מאידונקי היא עדיין מקור בעל ערך"/>
-		<control caption=".טפל בקישורי טורנטים"/>
+		<control text="שרזה היא תוכנת שיתוף לשימוש כללי שמסוגלת לגשת למספר רשתות שיתוף קבצים בו זמנית. כאן אתה יכול לבחור לאילו רשתות תרצה לגשת. שים לב שאתה יכול תמיד לבחור רשתות אחרות מאוחר יותר"/>
+		<control text="(החתבר לגנוטלה2 (מומלץ מאוד"/>
+		<control text="רשת גנוטלה2 היא הרשת הראשית של שרזה, המציעה יותר אופציות וביצועים מכל רשת שיתוף אחרת"/>
+		<control text="התחבר לאידונקי2000"/>
+		<control text="רשת אידונקי היא רשת מבוססת שרת פופלרית. יש בה פחות אופציות מגונטלה2 אבל עם כמות קבצים מרשימה"/>
+		<control text="התחבר לגנוטלה המקורי"/>
+		<control text="למרוח שרשת גנוטלה המקורית היא עם פחות אופציות מגנוטלה2 ועם פחות קבצים מאידונקי היא עדיין מקור בעל ערך"/>
+		<control text=".טפל בקישורי טורנטים"/>
 	</dialog>
 	<dialog name="CWizardFoldersPage" cookie="StStEdBuStEdBuStEdBuSt" caption="(4/8) ברוכים הבאים לשרזה">
-		<control caption="הורדות Envy הראשון חלקי הקבצים לתיקיה פרטית, ואז מעביר אותם כאשר הושלמה לפי קבוצות הורד."/>
-		<control caption=":אכסן קבצים זמניים כאן"/>
+		<control text="הורדות Envy הראשון חלקי הקבצים לתיקיה פרטית, ואז מעביר אותם כאשר הושלמה לפי קבוצות הורד."/>
+		<control text=":אכסן קבצים זמניים כאן"/>
 		<control/>
 		<control/>
-		<control caption=":אכסן קבצים שהושלמה הורדתם בתיקייה"/>
+		<control text=":אכסן קבצים שהושלמה הורדתם בתיקייה"/>
 		<control/>
 		<control/>
-		<control caption="Store .Torrent files here:"/>
+		<control text="Store .Torrent files here:"/>
 		<control/>
 		<control/>
-		<control caption="סוגי קבצים נפוצים הם בתחילה ההתקנה בתיקיות משנה, אבל קבוצות יכול להיות מותאם אישית. פשוט Drag&apos;n&apos;drop קבצים."/>
+		<control text="סוגי קבצים נפוצים הם בתחילה ההתקנה בתיקיות משנה, אבל קבוצות יכול להיות מותאם אישית. פשוט Drag&apos;n&apos;drop קבצים."/>
 	</dialog>
 	<dialog name="CWizardSharePage" cookie="StStStSyBuBuSt" caption="(5/8) ברוכים הבאים לשרזה">
-		<control caption="ערך רשתות השיתוף הוא כערך האנשים שמשתמשים בהן. כל התוכן שזמין להורדה זמין ממשתמשים אחרים"/>
-		<control caption="אתה לא חייב לשתף תוכן כדי להשתמש בשרזה, עם זאת תוכנות שונות יתנהגו בצורה שונה למשתמשים שלא משתפים"/>
-		<control caption="אנא בחר ספריות, אם בכלל, אשר הינך מעוניין לשתף. פשוט לחץ על כפתור הוספה והוסף ספריה חדשה"/>
+		<control text="ערך רשתות השיתוף הוא כערך האנשים שמשתמשים בהן. כל התוכן שזמין להורדה זמין ממשתמשים אחרים"/>
+		<control text="אתה לא חייב לשתף תוכן כדי להשתמש בשרזה, עם זאת תוכנות שונות יתנהגו בצורה שונה למשתמשים שלא משתפים"/>
+		<control text="אנא בחר ספריות, אם בכלל, אשר הינך מעוניין לשתף. פשוט לחץ על כפתור הוספה והוסף ספריה חדשה"/>
 		<control/>
-		<control caption="...הוסף"/>
-		<control caption="הסר"/>
-		<control caption=".הפצת חומרים שזכויותיהם שמורות היא עבירה ברוב המדינות"/>
+		<control text="...הוסף"/>
+		<control text="הסר"/>
+		<control text=".הפצת חומרים שזכויותיהם שמורות היא עבירה ברוב המדינות"/>
 	</dialog>
 	<dialog name="CFolderScanDlg" cookie="StStStStStStBu" caption="...סורק תיקייה">
 		<control/>
-		<control caption="..."/>
-		<control caption=":קבצים"/>
-		<control caption="0"/>
-		<control caption=":כונן"/>
-		<control caption="0"/>
-		<control caption="סגור"/>
+		<control text="..."/>
+		<control text=":קבצים"/>
+		<control text="0"/>
+		<control text=":כונן"/>
+		<control text="0"/>
+		<control text="סגור"/>
 	</dialog>
 	<dialog name="CWizardInterfacePage" cookie="StBuBuBuStStBuBuBuBuBuSt" caption="(6/8) ברוכים הבאים לשרזה">
-		<control caption="שרזה תומך בשתי ממשקי משתמש, כך שאתה יכול לבחור את האחד שהכי נוח בשבילך"/>
-		<control caption=":אנא בחר אחד משני הממשקים"/>
-		<control caption="מצב מתקדם"/>
-		<control caption="מצב רגיל"/>
-		<control caption="מצב מתקדם - מציע למשתמשים מתקדמים המון פקודות נוספות, חלונות ועוד"/>
-		<control caption="פשוט - קל להשתמש בתפריטים ובכפתורים. מוכר למשתמשים של תוכנות שיתוף אחרות"/>
-		<control caption="הצג פסי התקדמות פשוטים (מפחית שימוש במעבד)"/>
-		<control caption="בחר _מעטפת:"/>
-		<control caption="No Change"/>
-		<control caption="Windows Skin"/>
-		<control caption="Dark Skin"/>
-		<control caption=""/>
+		<control text="שרזה תומך בשתי ממשקי משתמש, כך שאתה יכול לבחור את האחד שהכי נוח בשבילך"/>
+		<control text=":אנא בחר אחד משני הממשקים"/>
+		<control text="מצב מתקדם"/>
+		<control text="מצב רגיל"/>
+		<control text="מצב מתקדם - מציע למשתמשים מתקדמים המון פקודות נוספות, חלונות ועוד"/>
+		<control text="פשוט - קל להשתמש בתפריטים ובכפתורים. מוכר למשתמשים של תוכנות שיתוף אחרות"/>
+		<control text="הצג פסי התקדמות פשוטים (מפחית שימוש במעבד)"/>
+		<control text="בחר _מעטפת:"/>
+		<control text="No Change"/>
+		<control text="Windows Skin"/>
+		<control text="Dark Skin"/>
+		<control text=""/>
 	</dialog>
 	<dialog name="CWizardProfilePage" cookie="StStEdStCoCoStCoStCoStEd" caption="(7/8) ברוכים הבאים לשרזה">
-		<control caption=":שרזה היא מקום הרבה יותר ידידותי כאשר כל אחד רושם קצת פרטים על עצמו"/>
-		<control caption=":שמי"/>
+		<control text=":שרזה היא מקום הרבה יותר ידידותי כאשר כל אחד רושם קצת פרטים על עצמו"/>
+		<control text=":שמי"/>
 		<control/>
-		<control caption=":גיל ומין"/>
-		<control caption="(בחר)"/>
-		<control caption="בחר|בחור|בחורה|גבר|אישה"/>
-		<control caption=":מקום מגוריי"/>
+		<control text=":גיל ומין"/>
+		<control text="(בחר)"/>
+		<control text="בחר|בחור|בחורה|גבר|אישה"/>
+		<control text=":מקום מגוריי"/>
 		<control/>
-		<control caption="Locale:"/>
+		<control text="Locale:"/>
 		<control/>
-		<control caption="הערות:"/>
+		<control text="הערות:"/>
 		<control/>
 	</dialog>
-	<dialog name="CWizardFinishedPage" cookie="StStStBuBuSt" caption="(8/8) ברוכים הבאים לשרזה">
-		<control caption="זהו! שרזה כעת מוכנה לעבודה עם המחשב שלך"/>
-		<control caption="אם תרצה לשנות את ההגדרות  תוכל להפעיל מחדש את אשף התחלה מהירה מתוך תפריט כלים"/>
-		<control caption="לאחר יציאה מהאשף על ידי לחיצה על סיים, תוכל להתחבר לרשתות שבחרת ולהתחיל לחפש ולהוריד תכנים"/>
-		<control caption="הפעל את שרזה עם אתחול חלונות"/>
-		<control caption="התחבר לרשת עם הפעלת שרזה"/>
-		<control caption="אנו מקווים שתהנה להשתמש בשרזה"/>
+	<dialog name="CWizardFinishedPage" cookie="StStStBuBuStSt" caption="(8/8) ברוכים הבאים לשרזה">
+		<control text="זהו! שרזה כעת מוכנה לעבודה עם המחשב שלך"/>
+		<control text="אם תרצה לשנות את ההגדרות  תוכל להפעיל מחדש את אשף התחלה מהירה מתוך תפריט כלים"/>
+		<control text="לאחר יציאה מהאשף על ידי לחיצה על סיים, תוכל להתחבר לרשתות שבחרת ולהתחיל לחפש ולהוריד תכנים"/>
+		<control text="הפעל את שרזה עם אתחול חלונות"/>
+		<control text="התחבר לרשת עם הפעלת שרזה"/>
+		<control text="אנו מקווים שתהנה להשתמש בשרזה"/>
+		<control/>
 	</dialog>
 	<dialog name="CDonkeyImportDlg" cookie="StBuBuEdBu" caption="ייבא הורדות של אידונקי">
-		<control caption="&#8234;‏שרזה‎? ‏אל‎ ‏הסתיימו‎ ‏שלא‎ ‏הורדות‎ ‏לייבא‎ ‏מעוניין‎ ‏אתה‎ ‏האם‎ ‏מחשבך‎. ‏על‎ ‏מותקנת‎ ‏אחרת‎ ‏אדיונקי‎2000 ‏תוכנת‎ ‏לך‎ ‏שיש‎ ‏זיהה‎ ‏שרזה"/>
-		<control caption="כן"/>
-		<control caption="לא|ביטול"/>
+		<control text="&#8234;‏שרזה‎? ‏אל‎ ‏הסתיימו‎ ‏שלא‎ ‏הורדות‎ ‏לייבא‎ ‏מעוניין‎ ‏אתה‎ ‏האם‎ ‏מחשבך‎. ‏על‎ ‏מותקנת‎ ‏אחרת‎ ‏אדיונקי‎2000 ‏תוכנת‎ ‏לך‎ ‏שיש‎ ‏זיהה‎ ‏שרזה"/>
+		<control text="כן"/>
+		<control text="לא|ביטול"/>
 		<control/>
-		<control caption="סגור"/>
+		<control text="סגור"/>
 	</dialog>
 	<dialog name="CProfileManagerDlg" cookie="SyBuBuBu" caption="ערוך את הפרופיל שלי">
 		<control/>
-		<control caption="אישור"/>
-		<control caption="ביטול"/>
-		<control caption="החל"/>
+		<control text="אישור"/>
+		<control text="ביטול"/>
+		<control text="החל"/>
 		<control/>
 	</dialog>
 	<dialog name="CIdentityProfilePage" cookie="BuStStEdEdEdBuStStCoCoBuStBuBu" caption="זהות">
-		<control caption="שם"/>
-		<control caption=":כינוי"/>
-		<control caption=":שם אמיתי"/>
+		<control text="שם"/>
+		<control text=":כינוי"/>
+		<control text=":שם אמיתי"/>
 		<control/>
 		<control/>
 		<control/>
-		<control caption=":מין וגיל"/>
-		<control caption=":מין"/>
-		<control caption=":גיל"/>
-		<control caption="|זכר|נקבה"/>
+		<control text=":מין וגיל"/>
+		<control text=":מין"/>
+		<control text=":גיל"/>
+		<control text="|זכר|נקבה"/>
 		<control/>
-		<control caption="Info:"/>
-		<control caption="{n}G2 (Envy / Shareaza)"/>
-		<control caption="החל:"/>
-		<control caption="אפשר לאחרים לסייר בפרופיל המשתמש שלי"/>
+		<control text="Info:"/>
+		<control text="{n}G2 (Envy / Shareaza)"/>
+		<control text="החל:"/>
+		<control text="אפשר לאחרים לסייר בפרופיל המשתמש שלי"/>
 	</dialog>
 	<dialog name="CAvatarProfilePage" cookie="BuStBuStBuBu" caption="תמונת פרופיל">
-		<control caption=":תצוגה מקדימה"/>
+		<control text=":תצוגה מקדימה"/>
 		<control/>
-		<control caption=":בחר"/>
-		<control caption="משתמשי גנוטלה שיסיירו בפרופיל שלך יראו את תמונתך. תמונות שאתה יוצר צריכות להיות בגודל 128 על 128 פיקסלים ויכולים להיות מכל סוג של קובץ תמונה שנתמך במחשבך"/>
-		<control caption="סייר"/>
-		<control caption="הסר"/>
+		<control text=":בחר"/>
+		<control text="משתמשי גנוטלה שיסיירו בפרופיל שלך יראו את תמונתך. תמונות שאתה יוצר צריכות להיות בגודל 128 על 128 פיקסלים ויכולים להיות מכל סוג של קובץ תמונה שנתמך במחשבך"/>
+		<control text="סייר"/>
+		<control text="הסר"/>
 	</dialog>
 	<dialog name="CProfileProfilePage" cookie="BuStCoStCoBuStEdStEdBuLiBuBuCo" caption="מיקום">
-		<control caption=":מיקום"/>
-		<control caption=":ארץ"/>
+		<control text=":מיקום"/>
+		<control text=":ארץ"/>
 		<control/>
-		<control caption=":עיר"/>
+		<control text=":עיר"/>
 		<control/>
-		<control caption=":מיפוי"/>
-		<control caption=":קו רוחב"/>
+		<control text=":מיפוי"/>
+		<control text=":קו רוחב"/>
 		<control/>
-		<control caption=":קו אורך"/>
+		<control text=":קו אורך"/>
 		<control/>
-		<control caption=":תחביבים"/>
+		<control text=":תחביבים"/>
 		<control/>
-		<control caption="הוסף &gt;"/>
-		<control caption="הסר &lt;"/>
+		<control text="הוסף &gt;"/>
+		<control text="הסר &lt;"/>
 		<control/>
 	</dialog>
 	<dialog name="CContactProfilePage" cookie="BuStEdBuStEdStEdStEdStEdStEdStEdStEdStEd" caption="צור קשר">
-		<control caption=":כתובות אימייל"/>
-		<control caption=":ראשי"/>
+		<control text=":כתובות אימייל"/>
+		<control text=":ראשי"/>
 		<control/>
-		<control caption=":מסרים מיידים"/>
-		<control caption="GetEnvy.com:"/>
+		<control text=":מסרים מיידים"/>
+		<control text="GetEnvy.com:"/>
 		<control/>
-		<control caption="Facebook:"/>
+		<control text="Facebook:"/>
 		<control/>
-		<control caption="Twitter:"/>
+		<control text="Twitter:"/>
 		<control/>
-		<control caption="Google:"/>
+		<control text="Google:"/>
 		<control/>
-		<control caption="Skype:"/>
+		<control text="Skype:"/>
 		<control/>
-		<control caption="Yahoo:"/>
+		<control text="Yahoo:"/>
 		<control/>
-		<control caption="AOL:"/>
+		<control text="AOL:"/>
 		<control/>
-		<control caption="ICQ:"/>
+		<control text="ICQ:"/>
 		<control/>
 	</dialog>
 	<dialog name="CBioProfilePage" cookie="Ed" caption="ביוגרפיה">
 		<control/>
 	</dialog>
 	<dialog name="CFilesProfilePage" cookie="BuStSy" caption="קבצים">
-		<control caption=":קבצים מועדפים"/>
-		<control caption="‫שרזה ממליץ על קבצי המועדפים למשתמשים שצופים בפרופיל. תוכל לבחור קבצים על ידי הוספתם אל תיקיית מועדפים שבספריה שלך"/>
+		<control text=":קבצים מועדפים"/>
+		<control text="‫שרזה ממליץ על קבצי המועדפים למשתמשים שצופים בפרופיל. תוכל לבחור קבצים על ידי הוספתם אל תיקיית מועדפים שבספריה שלך"/>
 		<control/>
 	</dialog>
 	<dialog name="CFavoritesProfilePage" cookie="SyBuStEdStEdBuBu" caption="מועדפים">
 		<control/>
-		<control caption=":ערוך"/>
-		<control caption=":כותרת"/>
+		<control text=":ערוך"/>
+		<control text=":כותרת"/>
 		<control/>
-		<control caption=":URL"/>
+		<control text=":URL"/>
 		<control/>
-		<control caption="חדש"/>
-		<control caption="הסר"/>
+		<control text="חדש"/>
+		<control text="הסר"/>
 	</dialog>
 	<dialog name="CCertificateProfilePage" cookie="BuStStStStBuBuSt" caption="אישורים">
-		<control caption=":שירות אישורי זיהוי ייחודי גלובלי של גנוטלה"/>
-		<control caption=":Gnutella/G2 GUID"/>
+		<control text=":שירות אישורי זיהוי ייחודי גלובלי של גנוטלה"/>
+		<control text=":Gnutella/G2 GUID"/>
 		<control/>
-		<control caption=":BitTorrent GUID"/>
+		<control text=":BitTorrent GUID"/>
 		<control/>
-		<control caption="צור כעת"/>
-		<control caption="Info:"/>
-		<control caption=" "/>
+		<control text="צור כעת"/>
+		<control text="Info:"/>
+		<control text=" "/>
 	</dialog>
 	<dialog name="CLanguageDlg" cookie="" caption="בחר שפה">
 	</dialog>
 	<dialog name="CConnectToDlg" cookie="BuCoEdBuCoBuBuBu" caption="התחבר אל|סייר במידע משתמש">
-		<control caption=":צור חיבור חדש עם כתובת המשתמש או השרת|סייר במידע המשתמש"/>
+		<control text=":צור חיבור חדש עם כתובת המשתמש או השרת|סייר במידע המשתמש"/>
 		<control/>
 		<control/>
-		<control caption=":פרוטוקול רשת"/>
+		<control text=":פרוטוקול רשת"/>
 		<control/>
-		<control caption="Ultrapeer השהה"/>
-		<control caption="התחבר"/>
-		<control caption="ביטול"/>
+		<control text="Ultrapeer השהה"/>
+		<control text="התחבר"/>
+		<control text="ביטול"/>
 	</dialog>
 	<dialog name="CDownloadDlg" cookie="StStStEdStBuBuBu" caption="הורד קובץ או טורנט">
 		<control/>
-		<control caption="אוטמטי‎ ‏ובאופן ,(HTTP) ‏מהרשת‎ ‏קבצים‎ ‏להוריד‎ ‏יכול‎ ‏שרזה(http:, ftp:, ed2k:, magnet:, etc.) ‏שיתוף‎ ‏לרשתות‎ ‏קישורים‎ ‏ולהוריד‎ ‏לחפש‎. Enter ‏והקש‎‎ ‏לתא URI/URL כתובת‎ ‏הדבק‎/‏רשום‎ ‏‎.בשרזה קל להוריד קבצים"/>
-		<control caption="שרזה יכול להורד קבצים של טורנט-ביט. טורנט הוא למעשה קובץ לינק / ניווט 'torrent' לקבצי"/>
+		<control text="אוטמטי‎ ‏ובאופן ,(HTTP) ‏מהרשת‎ ‏קבצים‎ ‏להוריד‎ ‏יכול‎ ‏שרזה(http:, ftp:, ed2k:, magnet:, etc.) ‏שיתוף‎ ‏לרשתות‎ ‏קישורים‎ ‏ולהוריד‎ ‏לחפש‎. Enter ‏והקש‎‎ ‏לתא URI/URL כתובת‎ ‏הדבק‎/‏רשום‎ ‏‎.בשרזה קל להוריד קבצים"/>
+		<control text="שרזה יכול להורד קבצים של טורנט-ביט. טורנט הוא למעשה קובץ לינק / ניווט 'torrent' לקבצי"/>
 		<control/>
 		<control/>
-		<control caption="הורד"/>
-		<control caption="ביטול"/>
-		<control caption="...פתח טורנט"/>
+		<control text="הורד"/>
+		<control text="ביטול"/>
+		<control text="...פתח טורנט"/>
 	</dialog>
 	<dialog name="CNewSearchDlg" cookie="EdCoBuBu" caption="חיפוש חדש|חפש שוב|מצא בספריה">
 		<control/>
 		<control/>
-		<control caption="חפש"/>
-		<control caption="ביטול"/>
+		<control text="חפש"/>
+		<control text="ביטול"/>
 	</dialog>
 	<dialog name="CFilterSearchDlg" cookie="BuEdBuStBuStEdStEdStEdmsBuBuBuBuBuBuBuBuBuBuBuBuBuCoBuBuBuBuBu" caption="...מסנן תוצאות">
-		<control caption=":הראה רק תוצאות שמכילות את המילים"/>
+		<control text=":הראה רק תוצאות שמכילות את המילים"/>
 		<control/>
-		<control caption="Reg. Exp."/>
-		<control caption="‫(תוכל גם להשמיט מילים כך: 'מילה') "/>
-		<control caption=":גודל הקבצים"/>
-		<control caption=":מינימום"/>
+		<control text="Reg. Exp."/>
+		<control text="‫(תוכל גם להשמיט מילים כך: 'מילה') "/>
+		<control text=":גודל הקבצים"/>
+		<control text=":מינימום"/>
 		<control/>
-		<control caption=":מקסימום"/>
+		<control text=":מקסימום"/>
 		<control/>
-		<control caption="מקורות לפחות"/>
+		<control text="מקורות לפחות"/>
 		<control/>
 		<control/>
-		<control caption=":הסתר"/>
-		<control caption="קבצים לא תואמים"/>
-		<control caption="קבצים שכבר יש לך"/>
-		<control caption="קבצים חשודים"/>
-		<control caption="Restricted קבצי"/>
-		<control caption="DRM קבצי"/>
-		<control caption="תחת חומת אש/push"/>
-		<control caption="משתמשים לא יציבים"/>
-		<control caption="משתמשים עסוקים"/>
-		<control caption="תוצאות שגויות"/>
-		<control caption="תוצאות עם תוכן למבוגרים"/>
-		<control caption="אישור"/>
+		<control text=":הסתר"/>
+		<control text="קבצים לא תואמים"/>
+		<control text="קבצים שכבר יש לך"/>
+		<control text="קבצים חשודים"/>
+		<control text="Restricted קבצי"/>
+		<control text="DRM קבצי"/>
+		<control text="תחת חומת אש/push"/>
+		<control text="משתמשים לא יציבים"/>
+		<control text="משתמשים עסוקים"/>
+		<control text="תוצאות שגויות"/>
+		<control text="תוצאות עם תוכן למבוגרים"/>
+		<control text="אישור"/>
 		<control/>
-		<control caption="קבע כברירת מחדל"/>
-		<control caption="שמור בשם"/>
-		<control caption="מחק"/>
-		<control caption="‪:...סינון"/>
-		<control caption="ביטול"/>
+		<control text="קבע כברירת מחדל"/>
+		<control text="שמור בשם"/>
+		<control text="מחק"/>
+		<control text="‪:...סינון"/>
+		<control text="ביטול"/>
 	</dialog>
 	<dialog name="CSaveFilterAsDlg" cookie="EdBuBuSt" caption="...שמור מסנן בשם">
 		<control/>
-		<control caption="אישור"/>
-		<control caption="ביטול"/>
-		<control caption=":שמור את המסנן הנוכחי בשם"/>
+		<control text="אישור"/>
+		<control text="ביטול"/>
+		<control text=":שמור את המסנן הנוכחי בשם"/>
 	</dialog>
 	<dialog name="CDiscoveryServiceDlg" cookie="BuEdStCoBuBu" caption="שירות משאבי חיבור">
-		<control caption=":כתובת השירות"/>
+		<control text=":כתובת השירות"/>
 		<control/>
-		<control caption=":סוג שירות המשאבי חיבור"/>
-		<control caption="Gnutella Bootstrap|GWebCache|Server.met URL|Blocked"/>
-		<control caption="אישור"/>
-		<control caption="ביטול"/>
+		<control text=":סוג שירות המשאבי חיבור"/>
+		<control text="Gnutella Bootstrap|GWebCache|Server.met URL|Blocked"/>
+		<control text="אישור"/>
+		<control text="ביטול"/>
 	</dialog>
 	<dialog name="CDownloadMonitorDlg" cookie="StStStStStStStStStStStStBuBuBuBu" caption="שרזה : הורדה">
-		<control caption="..."/>
+		<control text="..."/>
 		<control/>
 		<control/>
 		<control/>
-		<control caption=":מספר מקורות"/>
-		<control caption="..."/>
-		<control caption=":הורדה כוללת"/>
-		<control caption="..."/>
-		<control caption=":זמן שנותר"/>
-		<control caption="..."/>
-		<control caption=":גודל שהורד"/>
-		<control caption="..."/>
-		<control caption="תצוגת ספריה"/>
-		<control caption="בטל הורדה"/>
-		<control caption="הסתר"/>
-		<control caption="אוטומטי"/>
+		<control text=":מספר מקורות"/>
+		<control text="..."/>
+		<control text=":הורדה כוללת"/>
+		<control text="..."/>
+		<control text=":זמן שנותר"/>
+		<control text="..."/>
+		<control text=":גודל שהורד"/>
+		<control text="..."/>
+		<control text="תצוגת ספריה"/>
+		<control text="בטל הורדה"/>
+		<control text="הסתר"/>
+		<control text="אוטומטי"/>
 	</dialog>
 	<dialog name="CFileGeneralPage" cookie="EdStStStStStEdEdEdEdEdStEdEdEdEd" caption="כללי">
 		<control/>
-		<control caption="מאפייני קובץ"/>
-		<control caption=":מיקום"/>
-		<control caption=":סוג"/>
-		<control caption=":השתנה"/>
-		<control caption=":גודל"/>
+		<control text="מאפייני קובץ"/>
+		<control text=":מיקום"/>
+		<control text=":סוג"/>
+		<control text=":השתנה"/>
+		<control text=":גודל"/>
 		<control/>
 		<control/>
 		<control/>
 		<control/>
 		<control/>
-		<control caption="שמות משאבים אוניברסליים (URNs)"/>
+		<control text="שמות משאבים אוניברסליים (URNs)"/>
 		<control/>
 		<control/>
 		<control/>
@@ -3693,303 +3695,303 @@ gap i newline
 		<control/>
 	</dialog>
 	<dialog name="CFileCommentsPage" cookie="StStCoStEdEd" caption="הביקורת שלי">
-		<control caption="הדירוג שלי"/>
-		<control caption="הדירוג שלי לקובץ - "/>
-		<control caption="ללא דירוג|זיוף|שגוי|מטעה|גרוע|ממוצע|טוב|טוב מאוד|מעולה"/>
-		<control caption="הביקורת והתגובות שלי"/>
+		<control text="הדירוג שלי"/>
+		<control text="הדירוג שלי לקובץ - "/>
+		<control text="ללא דירוג|זיוף|שגוי|מטעה|גרוע|ממוצע|טוב|טוב מאוד|מעולה"/>
+		<control text="הביקורת והתגובות שלי"/>
 		<control/>
 		<control/>
 	</dialog>
 	<dialog name="CFileSharingPage" cookie="EdStBuBuBuStCo" caption="שיתוף קבצים">
 		<control/>
-		<control caption="שיתוף קבצים פשוט"/>
-		<control caption="שתף את קובץ זה אם התיקייה המכילה משותפת"/>
-		<control caption="כפה הגדרות שיתוף על קובץ זה"/>
-		<control caption="הגדר את קובץ זה כזמין למשתמשים אחרים"/>
-		<control caption="העלה תגים לבחירת תורות"/>
+		<control text="שיתוף קבצים פשוט"/>
+		<control text="שתף את קובץ זה אם התיקייה המכילה משותפת"/>
+		<control text="כפה הגדרות שיתוף על קובץ זה"/>
+		<control text="הגדר את קובץ זה כזמין למשתמשים אחרים"/>
+		<control text="העלה תגים לבחירת תורות"/>
 		<control/>
 	</dialog>
 	<dialog name="CFileSourcesPage" cookie="StStEdSyBuBuEd" caption="מקורות">
-		<control caption="מקורות ידועים"/>
-		<control caption="הוסף מקור חדש"/>
+		<control text="מקורות ידועים"/>
+		<control text="הוסף מקור חדש"/>
 		<control/>
 		<control/>
-		<control caption="הוסף"/>
-		<control caption="הסר"/>
+		<control text="הוסף"/>
+		<control text="הסר"/>
 		<control/>
 	</dialog>
 	<dialog name="CFileCopyDlg" cookie="StStStmsmsStBuBu" caption="העתק קבצים|העבר קבצים">
-		<control caption=":הבאה‎ ‏לתיקייה‎ ‏ ‏להעברה‎ ‏קבצים‎ %i ‏בחרת‎ ‏הינך"/>
-		<control caption=":הבאה‎ ‏לתיקייה‎ ‏ ‏להעברה‎‏קבצים‎ %i ‏בחרת‎ ‏הינך"/>
+		<control text=":הבאה‎ ‏לתיקייה‎ ‏ ‏להעברה‎ ‏קבצים‎ %i ‏בחרת‎ ‏הינך"/>
+		<control text=":הבאה‎ ‏לתיקייה‎ ‏ ‏להעברה‎‏קבצים‎ %i ‏בחרת‎ ‏הינך"/>
 		<control/>
 		<control/>
 		<control/>
-		<control caption="...מוכן"/>
-		<control caption="אישור"/>
-		<control caption="ביטול"/>
+		<control text="...מוכן"/>
+		<control text="אישור"/>
+		<control text="ביטול"/>
 	</dialog>
 	<dialog name="CFolderPropertiesDlg" cookie="StEdStCoBuStBuBu" caption="הגדרות תיקיית אלבום">
-		<control caption=":כותרת תיקיית אלבום"/>
+		<control text=":כותרת תיקיית אלבום"/>
 		<control/>
-		<control caption=":סוג מחיצה"/>
+		<control text=":סוג מחיצה"/>
 		<control/>
-		<control caption="הכל"/>
-		<control caption="העתק את ההגדרות הדומות לכל קובץ בתיקייה זו"/>
-		<control caption="אישור"/>
-		<control caption="ביטול"/>
+		<control text="הכל"/>
+		<control text="העתק את ההגדרות הדומות לכל קובץ בתיקייה זו"/>
+		<control text="אישור"/>
+		<control text="ביטול"/>
 	</dialog>
 	<dialog name="CGraphListDlg" cookie="SyBuBuBuBuBuBuBuBuStEdmsStBuEdBuBu" caption="גרפי תעבורת רשת">
 		<control/>
-		<control caption="...הוסף"/>
-		<control caption="...ערוך"/>
-		<control caption="הסר"/>
-		<control caption=":הצג"/>
-		<control caption="קווי רשת"/>
-		<control caption="ציר אנכי"/>
-		<control caption="מקרא סימנים"/>
-		<control caption=":קצב דגימה"/>
-		<control caption="השהייה בין דגימות:"/>
+		<control text="...הוסף"/>
+		<control text="...ערוך"/>
+		<control text="הסר"/>
+		<control text=":הצג"/>
+		<control text="קווי רשת"/>
+		<control text="ציר אנכי"/>
+		<control text="מקרא סימנים"/>
+		<control text=":קצב דגימה"/>
+		<control text="השהייה בין דגימות:"/>
 		<control/>
 		<control/>
-		<control caption="ms"/>
-		<control caption="שם"/>
+		<control text="ms"/>
+		<control text="שם"/>
 		<control/>
-		<control caption="אישור"/>
-		<control caption="ביטול"/>
+		<control text="אישור"/>
+		<control text="ביטול"/>
 	</dialog>
 	<dialog name="CGraphItemDlg" cookie="BuBuBuCoStEdStEdBuBuStBu" caption="הגדרות רכיב גרף">
-		<control caption="אישור"/>
-		<control caption="ביטול"/>
-		<control caption=":מקור"/>
+		<control text="אישור"/>
+		<control text="ביטול"/>
+		<control text=":מקור"/>
 		<control/>
-		<control caption=":כופל"/>
+		<control text=":כופל"/>
 		<control/>
-		<control caption=":יחידות"/>
+		<control text=":יחידות"/>
 		<control/>
-		<control caption=":תצוגה"/>
-		<control caption="...בחר צבע"/>
+		<control text=":תצוגה"/>
+		<control text="...בחר צבע"/>
 		<control/>
-		<control caption="הסר"/>
+		<control text="הסר"/>
 	</dialog>
 	<dialog name="CSecureRuleDlg" cookie="BuStCoStEdBuStEdEdEdEdStEdEdEdEdBuEdBuBuBuBuEdBuBuStCoStCoEdStEdStEdStBuBu" caption="חוק אבטחה">
-		<control caption=":חוק"/>
-		<control caption=":סוג"/>
-		<control caption="כתובת רשת IP|מסנן תכנים|רשימת חסומים"/>
-		<control caption=":הערה"/>
+		<control text=":חוק"/>
+		<control text=":סוג"/>
+		<control text="כתובת רשת IP|מסנן תכנים|רשימת חסומים"/>
+		<control text=":הערה"/>
 		<control/>
-		<control caption=":כתובת רשת"/>
-		<control caption=":IP כתובת"/>
-		<control/>
-		<control/>
-		<control/>
-		<control/>
-		<control caption=":Mask כתובת"/>
+		<control text=":כתובת רשת"/>
+		<control text=":IP כתובת"/>
 		<control/>
 		<control/>
 		<control/>
 		<control/>
-		<control caption=":מסנן תוכן"/>
+		<control text=":Mask כתובת"/>
 		<control/>
-		<control caption="שיתאים חלקית"/>
-		<control caption="שיתאים להכל"/>
-		<control caption="Reg. Exp."/>
-		<control caption="מסנן תכנים קובץ:"/>
 		<control/>
-		<control caption="לדפדף"/>
-		<control caption=":אפשרויות"/>
-		<control caption=":פעולה"/>
-		<control caption="אין|קבל|חסום"/>
-		<control caption=":תקף עד"/>
-		<control caption="לעולם לא|בסיום ההפעלה|לאחר"/>
 		<control/>
-		<control caption="י"/>
 		<control/>
-		<control caption="ש"/>
+		<control text=":מסנן תוכן"/>
 		<control/>
-		<control caption="ח"/>
-		<control caption="אישור"/>
-		<control caption="ביטול"/>
+		<control text="שיתאים חלקית"/>
+		<control text="שיתאים להכל"/>
+		<control text="Reg. Exp."/>
+		<control text="מסנן תכנים קובץ:"/>
+		<control/>
+		<control text="לדפדף"/>
+		<control text=":אפשרויות"/>
+		<control text=":פעולה"/>
+		<control text="אין|קבל|חסום"/>
+		<control text=":תקף עד"/>
+		<control text="לעולם לא|בסיום ההפעלה|לאחר"/>
+		<control/>
+		<control text="י"/>
+		<control/>
+		<control text="ש"/>
+		<control/>
+		<control text="ח"/>
+		<control text="אישור"/>
+		<control text="ביטול"/>
 	</dialog>
 	<dialog name="CScheduleTaskDlg" cookie="BuBuBuCoEdmsEdmsStStBuBuBuBuBuSySyBuBuBuBuBuBuBuBuBuEd" caption="לוח זמנים לפעילות">
-		<control caption="אישור"/>
-		<control caption="ביטול"/>
-		<control caption="Select Task Type"/>
+		<control text="אישור"/>
+		<control text="ביטול"/>
+		<control text="Select Task Type"/>
 		<control/>
 		<control/>
 		<control/>
 		<control/>
 		<control/>
-		<control caption="% of Download limit"/>
-		<control caption="% of Upload limit"/>
-		<control caption="Active Task"/>
-		<control caption="Enable G2 Only"/>
-		<control caption="Set Event Time"/>
-		<control caption="Specified days"/>
-		<control caption="One day only"/>
+		<control text="% of Download limit"/>
+		<control text="% of Upload limit"/>
+		<control text="Active Task"/>
+		<control text="Enable G2 Only"/>
+		<control text="Set Event Time"/>
+		<control text="Specified days"/>
+		<control text="One day only"/>
 		<control/>
 		<control/>
-		<control caption="שני"/>
-		<control caption="שלישי"/>
-		<control caption="רביעי"/>
-		<control caption="חמישי"/>
-		<control caption="שישי"/>
-		<control caption="שבת"/>
-		<control caption="ראשון"/>
-		<control caption="כל"/>
-		<control caption="תגובות"/>
+		<control text="שני"/>
+		<control text="שלישי"/>
+		<control text="רביעי"/>
+		<control text="חמישי"/>
+		<control text="שישי"/>
+		<control text="שבת"/>
+		<control text="ראשון"/>
+		<control text="כל"/>
+		<control text="תגובות"/>
 		<control/>
 	</dialog>
 	<dialog name="CSchemaColumnsDlg" cookie="CoSyBuBuSt" caption="בחר עמודות מהסכמה">
 		<control/>
 		<control/>
-		<control caption="אישור"/>
-		<control caption="ביטול"/>
-		<control caption="‏כעמודות‎ ‏להצגה‎ ‏השדות‎ ‏את‎ ‏ובחר‎ ‏מהרשימה‎, ‏סכמה‎ ‏בחר"/>
+		<control text="אישור"/>
+		<control text="ביטול"/>
+		<control text="‏כעמודות‎ ‏להצגה‎ ‏השדות‎ ‏את‎ ‏ובחר‎ ‏מהרשימה‎, ‏סכמה‎ ‏בחר"/>
 	</dialog>
 	<dialog name="CShareManagerDlg" cookie="StSyBuBuBuBu" caption="מנהל תיקיית שיתוף">
-		<control caption="זוהי רשימת התיקיות שבספריה שלך. אתה יכול להוסיף ולהסיר תיקיות בעזרת הכפתורים משמאל. כשאתה מוסיף תיקייה חדשה היא באופן אוטומטי מתחילה להיות משותפת עם המשתמשים, תוכל לבחור לא לשתף אותה מתוך הספריה"/>
+		<control text="זוהי רשימת התיקיות שבספריה שלך. אתה יכול להוסיף ולהסיר תיקיות בעזרת הכפתורים משמאל. כשאתה מוסיף תיקייה חדשה היא באופן אוטומטי מתחילה להיות משותפת עם המשתמשים, תוכל לבחור לא לשתף אותה מתוך הספריה"/>
 		<control/>
-		<control caption="...הוסף"/>
-		<control caption="הסר"/>
-		<control caption="אישור"/>
-		<control caption="ביטול"/>
+		<control text="...הוסף"/>
+		<control text="הסר"/>
+		<control text="אישור"/>
+		<control text="ביטול"/>
 	</dialog>
 	<dialog name="CURLCopyDlg" cookie="StStStStStBuBu" caption="URI העתק">
-		<control caption="של הרכיב הנבחר בצורות שונות, אנא בחר את הקונטקסט של הכתובת שאתה מעוניין בה על ידי לחיצה על אחד :מהכתובות שמתחת URI אתה יכול להעתיק את הכתובת"/>
+		<control text="של הרכיב הנבחר בצורות שונות, אנא בחר את הקונטקסט של הכתובת שאתה מעוניין בה על ידי לחיצה על אחד :מהכתובות שמתחת URI אתה יכול להעתיק את הכתובת"/>
 		<control/>
 		<control/>
 		<control/>
 		<control/>
-		<control caption="URI כלול אותי כמקור תקין בכתובת"/>
-		<control caption="ביטול"/>
+		<control text="URI כלול אותי כמקור תקין בכתובת"/>
+		<control text="ביטול"/>
 	</dialog>
 	<dialog name="CURLExportDlg" cookie="StEdStCoStCoBuBumsBu" caption="URIs ייצא">
-		<control caption="אנא בחר את הצורה לקישורים ולחץ על כפתור שמור URI קבצים לייצא להפניות של קישורי %lu בחרת"/>
+		<control text="אנא בחר את הצורה לקישורים ולחץ על כפתור שמור URI קבצים לייצא להפניות של קישורי %lu בחרת"/>
 		<control/>
-		<control caption="Token הכנס:"/>
-		<control caption="Tiger Root|SHA1|MD5|ED2K (CMD4)|Filename|Filename (URI)|Base Filename|File Extension|File Size|File Size (bytes)|Folder Path|Local Host|Local Port"/>
-		<control caption=":בחר מוצג"/>
+		<control text="Token הכנס:"/>
+		<control text="Tiger Root|SHA1|MD5|ED2K (CMD4)|Filename|Filename (URI)|Base Filename|File Extension|File Size|File Size (bytes)|Folder Path|Local Host|Local Port"/>
+		<control text=":בחר מוצג"/>
 		<control/>
-		<control caption="_העתק"/>
-		<control caption="...שמור"/>
+		<control text="_העתק"/>
+		<control text="...שמור"/>
 		<control/>
-		<control caption="ביטול"/>
+		<control text="ביטול"/>
 	</dialog>
 	<dialog name="CURLActionDlg" cookie="StStStStStStEdStEdStBuBuBuBuBu" caption="מנהל URI של שרזה">
-		<control caption=":לחצת על כתובת URI אשר מקשרת לתוכן הבא ברשת"/>
-		<control caption=":לחצת על כתובת URI אשר מחברת לשרת או המשתמש הבא ברשת"/>
-		<control caption="‪:אשר מאפשר לסייר בקבצים המשותפים הזמינים אצל המשתמש הבא URI לחצת על כתובת"/>
-		<control caption="‪של שרזה אשר יוסיף את שירותי משאבי חיבור הבאים לזיכרון המטמון של שירותי המשאבי חיבור URI לחצתה על"/>
+		<control text=":לחצת על כתובת URI אשר מקשרת לתוכן הבא ברשת"/>
+		<control text=":לחצת על כתובת URI אשר מחברת לשרת או המשתמש הבא ברשת"/>
+		<control text="‪:אשר מאפשר לסייר בקבצים המשותפים הזמינים אצל המשתמש הבא URI לחצת על כתובת"/>
+		<control text="‪של שרזה אשר יוסיף את שירותי משאבי חיבור הבאים לזיכרון המטמון של שירותי המשאבי חיבור URI לחצתה על"/>
 		<control/>
 		<control/>
 		<control/>
 		<control/>
-		<control caption="‪:אנא בחר את הפעולה שברצונך ששרזה תבצע"/>
-		<control caption="‪הורדה כעת"/>
-		<control caption="‪חיפוש קובץ"/>
-		<control caption="‪ביטול"/>
-		<control caption="‪זכור את בחירתי בפעם הבאה"/>
-		<control caption="‪פתוח חלון מוניטור הורדות"/>
+		<control text="‪:אנא בחר את הפעולה שברצונך ששרזה תבצע"/>
+		<control text="‪הורדה כעת"/>
+		<control text="‪חיפוש קובץ"/>
+		<control text="‪ביטול"/>
+		<control text="‪זכור את בחירתי בפעם הבאה"/>
+		<control text="‪פתוח חלון מוניטור הורדות"/>
 	</dialog>
 	<dialog name="CBitprintsDownloadDlg" cookie="StStmsBuSySt" caption="...Metadata מוריד">
 		<control/>
-		<control caption="...Bitprints-מ Metadata שרזה מנסה להוריד"/>
+		<control text="...Bitprints-מ Metadata שרזה מנסה להוריד"/>
 		<control/>
-		<control caption="ביטול"/>
+		<control text="ביטול"/>
 		<control/>
-		<control caption="bitprints.getenvy.com"/>
+		<control text="bitprints.getenvy.com"/>
 	</dialog>
 	<dialog name="CFilePreviewDlg" cookie="StStStmsStBu" caption="...תצוגה מקדימה חכמה להורדה">
 		<control/>
-		<control caption=":שרזה יוצר תצוגה מקדימה של ההורדה"/>
+		<control text=":שרזה יוצר תצוגה מקדימה של ההורדה"/>
 		<control/>
 		<control/>
-		<control caption="(מעתיק את החלקים שהורדו לתוך קובץ תצוגה מקדימה חדש)"/>
-		<control caption="ביטול"/>
+		<control text="(מעתיק את החלקים שהורדו לתוך קובץ תצוגה מקדימה חדש)"/>
+		<control text="ביטול"/>
 	</dialog>
 	<dialog name="CWarningsDlg" cookie="StStStStStStBu" caption="שרזה מכבדת את משתמשיה">
-		<control caption="?הידעת ששרזה היא תוכנה חינמית לחלוטין"/>
-		<control caption="שרזה לא מכילה רוגלות, תוספי פרסומות או תוכנה כלשהי נוספת בתוכה. שרזה לא מציגה פרסומות קופצות אף פעם {n}{n} אם אי פעם תראי פרסומות &quot;פרסומות קופצות&quot; בעת שאתה משתמש בשרזה, .הינך יכול להיות בטוח שהם אינם מגיעים משרזה"/>
-		<control caption="לצערנו הרבה תוכנות אחרות כן מגיעות עם תוספי פרסומות ורוגלות, לכן אם הינך רואה משהו חשוד כדאי שתבדוק את המחשב עם תוכנה לניקוי רוגלות ותוספי פרסומות"/>
-		<control caption="אינך אמור לשלם כלל כדי לקבל את שרזה. שרזה ניתנת להורדה בחינם על ידי כל אחד מהאתר  http://Envy.sourceforge.net/. אם נדרשת לשלם למישהו תמורת שרזה.עלייך לבקש החזר מלא לכספך באופן מיידי."/>
-		<control caption="!שרזה מכבדת את משתמשיה"/>
-		<control caption="http://Envy.sourceforge.net/"/>
-		<control caption="סגור"/>
+		<control text="?הידעת ששרזה היא תוכנה חינמית לחלוטין"/>
+		<control text="שרזה לא מכילה רוגלות, תוספי פרסומות או תוכנה כלשהי נוספת בתוכה. שרזה לא מציגה פרסומות קופצות אף פעם {n}{n} אם אי פעם תראי פרסומות &quot;פרסומות קופצות&quot; בעת שאתה משתמש בשרזה, .הינך יכול להיות בטוח שהם אינם מגיעים משרזה"/>
+		<control text="לצערנו הרבה תוכנות אחרות כן מגיעות עם תוספי פרסומות ורוגלות, לכן אם הינך רואה משהו חשוד כדאי שתבדוק את המחשב עם תוכנה לניקוי רוגלות ותוספי פרסומות"/>
+		<control text="אינך אמור לשלם כלל כדי לקבל את שרזה. שרזה ניתנת להורדה בחינם על ידי כל אחד מהאתר  http://Envy.sourceforge.net/. אם נדרשת לשלם למישהו תמורת שרזה.עלייך לבקש החזר מלא לכספך באופן מיידי."/>
+		<control text="!שרזה מכבדת את משתמשיה"/>
+		<control text="http://Envy.sourceforge.net/"/>
+		<control text="סגור"/>
 	</dialog>
 	<dialog name="CPromoteDlg" cookie="StStStStStStBu" caption="הפץ את השמועה">
-		<control caption="אנא עזור לנו להפיץ את השמועה"/>
-		<control caption="אנו מקווים שנהנית מהשימוש בשרזה עד כה, אנו מאמינים שזוהי תוכנת שיתוף הקבצים הטובה ביותר נכון להיום"/>
-		<control caption="!לצערנו הרב, הרבה מאוד משתפי קבצים לא יודעים מה הם מפסידים"/>
-		<control caption=" גם אם הוא משתמש חדש או משתמש בתוכנה נחותה יותר, למה לא לעזור לו ולכולנו וליידע אותם שיש אלטרנטיבה טובה יותר"/>
-		<control caption=":) !רוב הסיכויים שהם יהיו אסירי-תודה לכם שהצלתם אותם"/>
-		<control caption="http://Envy.sourceforge.net/"/>
-		<control caption="אישור"/>
+		<control text="אנא עזור לנו להפיץ את השמועה"/>
+		<control text="אנו מקווים שנהנית מהשימוש בשרזה עד כה, אנו מאמינים שזוהי תוכנת שיתוף הקבצים הטובה ביותר נכון להיום"/>
+		<control text="!לצערנו הרב, הרבה מאוד משתפי קבצים לא יודעים מה הם מפסידים"/>
+		<control text=" גם אם הוא משתמש חדש או משתמש בתוכנה נחותה יותר, למה לא לעזור לו ולכולנו וליידע אותם שיש אלטרנטיבה טובה יותר"/>
+		<control text=":) !רוב הסיכויים שהם יהיו אסירי-תודה לכם שהצלתם אותם"/>
+		<control text="http://Envy.sourceforge.net/"/>
+		<control text="אישור"/>
 	</dialog>
 	<dialog name="CExistingFileDlg" cookie="StStStStBuBuBuBuBuStSt" caption="קובץ קיים">
 		<control/>
 		<control/>
 		<control/>
-		<control caption="?כבר יש לך את הקובץ בספרייתך, מה תרצה לעשות"/>
-		<control caption="הצג לי את הקובץ שבספריה שלי"/>
-		<control caption="הורד את הקובץ שנית"/>
-		<control caption="אל תוריד את הקובץ"/>
-		<control caption="אישור"/>
-		<control caption="ביטול"/>
-		<control caption="?הורדת ומחקת את קובץ זה בעבר. מה תרצה לעשות"/>
-		<control caption="אזהרה! התגלו קבצים משוכפלים. ייתכן ותוכנה זדונית תפגע בספרייה שלך. וודא שהורגת את הקובץ הזה או שמת אותו באופן ידני. אחרת, סגור את שרזה וסרוק את מחשבך עם תוכנת אנטי-וירוס."/>
+		<control text="?כבר יש לך את הקובץ בספרייתך, מה תרצה לעשות"/>
+		<control text="הצג לי את הקובץ שבספריה שלי"/>
+		<control text="הורד את הקובץ שנית"/>
+		<control text="אל תוריד את הקובץ"/>
+		<control text="אישור"/>
+		<control text="ביטול"/>
+		<control text="?הורדת ומחקת את קובץ זה בעבר. מה תרצה לעשות"/>
+		<control text="אזהרה! התגלו קבצים משוכפלים. ייתכן ותוכנה זדונית תפגע בספרייה שלך. וודא שהורגת את הקובץ הזה או שמת אותו באופן ידני. אחרת, סגור את שרזה וסרוק את מחשבך עם תוכנת אנטי-וירוס."/>
 	</dialog>
 	<dialog name="CCloseModeDlg" cookie="StBuBuBuBuBuBu" caption="כפתור סגירה">
-		<control caption="זוהי הפעם הראשונה בה לחצת על לחצן הסגירה של שרזה. אנא בחר את הפעולה אותה תרצה ששרזה תעשה בכל פעם שתלחץ על כפתור זה מעכשיו והלאה"/>
-		<control caption="מזער לשורת המשימות"/>
-		<control caption="מזער לשורת המשימות"/>
-		<control caption="סגור את שרזה לאחר שכל ההורדות והעלאות מסתיימות"/>
-		<control caption="סגור את שרזה באופן מיידי"/>
-		<control caption="אישור"/>
-		<control caption="ביטול"/>
+		<control text="זוהי הפעם הראשונה בה לחצת על לחצן הסגירה של שרזה. אנא בחר את הפעולה אותה תרצה ששרזה תעשה בכל פעם שתלחץ על כפתור זה מעכשיו והלאה"/>
+		<control text="מזער לשורת המשימות"/>
+		<control text="מזער לשורת המשימות"/>
+		<control text="סגור את שרזה לאחר שכל ההורדות והעלאות מסתיימות"/>
+		<control text="סגור את שרזה באופן מיידי"/>
+		<control text="אישור"/>
+		<control text="ביטול"/>
 	</dialog>
 	<dialog name="CUpdateServersDlg" cookie="StEdmsBuBu" caption="Server.met הורד קובץ">
-		<control caption="מהרשת בכדי לרענן את רשימת השרתים server.met הורד לאידונקי את"/>
+		<control text="מהרשת בכדי לרענן את רשימת השרתים server.met הורד לאידונקי את"/>
 		<control/>
 		<control/>
-		<control caption="אישור"/>
-		<control caption="ביטול"/>
+		<control text="אישור"/>
+		<control text="ביטול"/>
 	</dialog>
 	<dialog name="CDeleteFileDlg" cookie="StStBuBuBuStBuStStStStCoCoEd" caption="מחק קובץ">
-		<control caption=":האם אתה בטוח שברצונך למחוק"/>
+		<control text=":האם אתה בטוח שברצונך למחוק"/>
 		<control/>
-		<control caption="מחק"/>
-		<control caption="מחק הכל"/>
-		<control caption="ביטול"/>
+		<control text="מחק"/>
+		<control text="מחק הכל"/>
+		<control text="ביטול"/>
 		<control/>
-		<control caption="Create Ghost File"/>
-		<control caption=":שרזה יכול לזכור את קובץ זה ולהזהיר אותך במקרה שתתקל בו שוב בחיפוש אחר,"/>
-		<control caption="File rating:"/>
-		<control caption="Reason for deleting:"/>
-		<control caption="!"/>
-		<control caption="(No Rating)|Fake/Corrupt/Misleading|Poor|Average|Good|Very Good|Excellent"/>
-		<control caption="Just deleting, keep any current comments|File is very low quality or outdated|File is named incorrectly or misleading|File is fake, infected, corrupt, or unusable|File is restricted copyright material|File needs custom comments below..."/>
+		<control text="Create Ghost File"/>
+		<control text=":שרזה יכול לזכור את קובץ זה ולהזהיר אותך במקרה שתתקל בו שוב בחיפוש אחר,"/>
+		<control text="File rating:"/>
+		<control text="Reason for deleting:"/>
+		<control text="!"/>
+		<control text="(No Rating)|Fake/Corrupt/Misleading|Poor|Average|Good|Very Good|Excellent"/>
+		<control text="Just deleting, keep any current comments|File is very low quality or outdated|File is named incorrectly or misleading|File is fake, infected, corrupt, or unusable|File is restricted copyright material|File needs custom comments below..."/>
 		<control/>
 	</dialog>
 	<dialog name="CCollectionExportDlg" cookie="StSyBuStStStStStEdBuBuBu" caption="ייצא ספריה">
-		<control caption=".אפשרות זו נועדה לייצא את התכנים של תיקיית האלבום כקובץ אוסף מתקדם. אנא בחר תבנית ולחץ הבא כדי להמשיך. |התאם אישית את האוסף שלך על ידי הכנסת המידע מטה."/>
+		<control text=".אפשרות זו נועדה לייצא את התכנים של תיקיית האלבום כקובץ אוסף מתקדם. אנא בחר תבנית ולחץ הבא כדי להמשיך. |התאם אישית את האוסף שלך על ידי הכנסת המידע מטה."/>
 		<control/>
-		<control caption="מידע התבנית:"/>
-		<control caption="שם:"/>
+		<control text="מידע התבנית:"/>
+		<control text="שם:"/>
 		<control/>
-		<control caption="מחבר:"/>
+		<control text="מחבר:"/>
 		<control/>
-		<control caption="תיאור:"/>
+		<control text="תיאור:"/>
 		<control/>
-		<control caption="מחק|_הקודם"/>
-		<control caption="_הבא|יצא..."/>
-		<control caption="_בטל"/>
+		<control text="מחק|_הקודם"/>
+		<control text="_הבא|יצא..."/>
+		<control text="_בטל"/>
 	</dialog>
 	<dialog name="CTorrentSeedDlg" cookie="StBuBuBuStms" caption="פתח קובץ טורנט">
-		<control caption="?פתחת קובץ טורנט של ביטורנט. האם ברצונך להוריד את תכניו, או להפיצו מחדש"/>
-		<control caption="הורד"/>
-		<control caption="הפץ"/>
-		<control caption="ביטול"/>
-		<control caption="בכדי לשתף קבצים שלמים בעזרת ביטורנט יש לפני כן להפעיל תהליך הפצה, כשהתהליך מסתיים הטורנט יופי כפריט נוסף ברשימת ההורדה שלך"/>
+		<control text="?פתחת קובץ טורנט של ביטורנט. האם ברצונך להוריד את תכניו, או להפיצו מחדש"/>
+		<control text="הורד"/>
+		<control text="הפץ"/>
+		<control text="ביטול"/>
+		<control text="בכדי לשתף קבצים שלמים בעזרת ביטורנט יש לפני כן להפעיל תהליך הפצה, כשהתהליך מסתיים הטורנט יופי כפריט נוסף ברשימת ההורדה שלך"/>
 		<control/>
 	</dialog>
 	<dialog name="CTorrentFilesPage" cookie="StSy" caption="Files">
@@ -4001,15 +4003,15 @@ gap i newline
 		<control/>
 		<control/>
 		<control/>
-		<control caption=":גשש"/>
-		<control caption="_Current Tracker:"/>
-		<control caption="Seeds (Complete):"/>
-		<control caption="Peers (Incomplete):"/>
-		<control caption="Tracker Mode:"/>
-		<control caption="Disabled|Custom|Single Tracker|Multi-tracker|Multi-tracker (locked)"/>
-		<control caption="רענן"/>
-		<control caption="הוסף"/>
-		<control caption="הסר"/>
+		<control text=":גשש"/>
+		<control text="_Current Tracker:"/>
+		<control text="Seeds (Complete):"/>
+		<control text="Peers (Incomplete):"/>
+		<control text="Tracker Mode:"/>
+		<control text="Disabled|Custom|Single Tracker|Multi-tracker|Multi-tracker (locked)"/>
+		<control text="רענן"/>
+		<control text="הוסף"/>
+		<control text="הסר"/>
 	</dialog>
 	<dialog name="CTorrentGeneralPage" cookie="EdEdEdEdEdCoEdBuStStStStBuStStSt" caption="מידע מתקדם של ביטורנט">
 		<control/>
@@ -4017,121 +4019,121 @@ gap i newline
 		<control/>
 		<control/>
 		<control/>
-		<control caption="לפי הצורך|כשהיחס העברות מעל 100%|רק כשמתבקש|אף פעם"/>
+		<control text="לפי הצורך|כשהיחס העברות מעל 100%|רק כשמתבקש|אף פעם"/>
 		<control/>
-		<control caption=":מידע על הטורנט"/>
-		<control caption=":שם"/>
-		<control caption=":נוצר"/>
-		<control caption=":לפי"/>
-		<control caption=":הערות"/>
-		<control caption=":העברות"/>
-		<control caption=":התחל העברות של הורדה חדשה"/>
-		<control caption="Total Uploaded:"/>
-		<control caption="Notes:"/>
+		<control text=":מידע על הטורנט"/>
+		<control text=":שם"/>
+		<control text=":נוצר"/>
+		<control text=":לפי"/>
+		<control text=":הערות"/>
+		<control text=":העברות"/>
+		<control text=":התחל העברות של הורדה חדשה"/>
+		<control text="Total Uploaded:"/>
+		<control text="Notes:"/>
 	</dialog>
 	<dialog name="CDownloadEditPage" cookie="StBuStStStStBuStEdEdEdSyBuEdBuEdBuEdBuEdBuEd" caption="ערוך הורדה">
-		<control caption="אזהרה: תיבת דו-שיח זו מעניקה אפשרויות מתקדמות לעריכה למשתמשים כבדים אשר ים, אם יעשה בה שימוש באופן שגוי עלולה לגרום לנזק."/>
-		<control caption="שם קובץ וגודל:"/>
-		<control caption="שם קובץ:"/>
-		<control caption="שם קובץ:"/>
-		<control caption="גודל קובץ (בתים):"/>
-		<control caption="Date:"/>
-		<control caption="URNs:"/>
-		<control caption="אמין"/>
+		<control text="אזהרה: תיבת דו-שיח זו מעניקה אפשרויות מתקדמות לעריכה למשתמשים כבדים אשר ים, אם יעשה בה שימוש באופן שגוי עלולה לגרום לנזק."/>
+		<control text="שם קובץ וגודל:"/>
+		<control text="שם קובץ:"/>
+		<control text="שם קובץ:"/>
+		<control text="גודל קובץ (בתים):"/>
+		<control text="Date:"/>
+		<control text="URNs:"/>
+		<control text="אמין"/>
 		<control/>
 		<control/>
 		<control/>
 		<control/>
-		<control caption="&#160;SHA1:"/>
+		<control text="&#160;SHA1:"/>
 		<control/>
-		<control caption="&#160;ED2K:"/>
+		<control text="&#160;ED2K:"/>
 		<control/>
-		<control caption="&#160;MD5:"/>
+		<control text="&#160;MD5:"/>
 		<control/>
-		<control caption="&#160;Tiger-Root:"/>
+		<control text="&#160;Tiger-Root:"/>
 		<control/>
-		<control caption="&#160;BitTorrent:"/>
+		<control text="&#160;BitTorrent:"/>
 		<control/>
 	</dialog>
 	<dialog name="CDownloadActionsPage" cookie="StStStStStStEdEdBuBuStStBu" caption="פעולות">
-		<control caption="אזהרה: תיבת דו-שיח זו מעניקה אפשרויות מתקדמות לעריכה למשתמשים כבדים אשר ים, אם יעשה בה שימוש באופן שגוי עלולה לגרום לנזק."/>
-		<control caption="שכח את כל המקורות הידועים"/>
-		<control caption="שכח את מצב האימות הנוכחי ואמת מחדש"/>
-		<control caption="הנח שהקובץ שלם ב-100% ואמת את הקובץ מחדש"/>
-		<control caption="מזג עם קובץ מקומי וודא"/>
-		<control caption="ביטול"/>
+		<control text="אזהרה: תיבת דו-שיח זו מעניקה אפשרויות מתקדמות לעריכה למשתמשים כבדים אשר ים, אם יעשה בה שימוש באופן שגוי עלולה לגרום לנזק."/>
+		<control text="שכח את כל המקורות הידועים"/>
+		<control text="שכח את מצב האימות הנוכחי ואמת מחדש"/>
+		<control text="הנח שהקובץ שלם ב-100% ואמת את הקובץ מחדש"/>
+		<control text="מזג עם קובץ מקומי וודא"/>
+		<control text="ביטול"/>
 		<control/>
 		<control/>
-		<control caption="פעולות:"/>
-		<control caption="מוחק _מידע:"/>
-		<control caption="טווח בתים:"/>
-		<control caption="עד"/>
-		<control caption="מחק"/>
+		<control text="פעולות:"/>
+		<control text="מוחק _מידע:"/>
+		<control text="טווח בתים:"/>
+		<control text="עד"/>
+		<control text="מחק"/>
 	</dialog>
 	<dialog name="CDownloadGroupDlg" cookie="BuEdBuEdBuBuBuCoBuBuBuCoStBuBu" caption="הורד מאפייני קבוצה">
-		<control caption=":שם"/>
+		<control text=":שם"/>
 		<control/>
-		<control caption=":התיקייה לשמירת קבצים כשמסתיימת ההורדה"/>
+		<control text=":התיקייה לשמירת קבצים כשמסתיימת ההורדה"/>
 		<control/>
 		<control/>
 		<control/>
-		<control caption=":מסננים"/>
+		<control text=":מסננים"/>
 		<control/>
-		<control caption="הוסף"/>
-		<control caption="הסר"/>
-		<control caption=":כל סוג קובץ"/>
+		<control text="הוסף"/>
+		<control text="הסר"/>
+		<control text=":כל סוג קובץ"/>
 		<control/>
-		<control caption="_BitTorrent"/>
-		<control caption="*Drag&apos;n&apos;drop any download later."/>
-		<control caption="אישור"/>
-		<control caption="ביטול"/>
+		<control text="_BitTorrent"/>
+		<control text="*Drag&apos;n&apos;drop any download later."/>
+		<control text="אישור"/>
+		<control text="ביטול"/>
 	</dialog>
 	<dialog name="CMediaVisDlg" cookie="BuSyCoBuBuBu" caption="בחר אפקט ויזואלי">
-		<control caption=":בחר אפקט ויזואלי למוזיקה מהרשימה"/>
+		<control text=":בחר אפקט ויזואלי למוזיקה מהרשימה"/>
 		<control/>
-		<control caption="תצוגה מיושנת|תצוגה בגודל מלא|תצוגה גדולה|תצוגה בינונית|תצוגה קטנה"/>
-		<control caption="...התקנה"/>
-		<control caption="אישור"/>
-		<control caption="ביטול"/>
+		<control text="תצוגה מיושנת|תצוגה בגודל מלא|תצוגה גדולה|תצוגה בינונית|תצוגה קטנה"/>
+		<control text="...התקנה"/>
+		<control text="אישור"/>
+		<control text="ביטול"/>
 	</dialog>
 	<dialog name="CUpgradeDlg" cookie="StStBuBuBu" caption="הודעת עדכון גרסה">
-		<control caption="?קיימת גרסא חדשה לשרזה. האם ברצונך לשדרג"/>
-		<control caption="אם בחרת לשדרג כעת, שרזה יוסיף את השדרוג לרשימת ההורדות ויתחיל להוריד אותו באופן אוטומטי"/>
-		<control caption="אל תבדוק אם קיימות גרסאות חדשות"/>
-		<control caption="_שדרג כעת"/>
-		<control caption="ביטול"/>
+		<control text="?קיימת גרסא חדשה לשרזה. האם ברצונך לשדרג"/>
+		<control text="אם בחרת לשדרג כעת, שרזה יוסיף את השדרוג לרשימת ההורדות ויתחיל להוריד אותו באופן אוטומטי"/>
+		<control text="אל תבדוק אם קיימות גרסאות חדשות"/>
+		<control text="_שדרג כעת"/>
+		<control text="ביטול"/>
 	</dialog>
 	<dialog name="CDownloadReviewDlg" cookie="BuSyEd" caption="הורד ביקורות">
-		<control caption="אישור"/>
+		<control text="אישור"/>
 		<control/>
 		<control/>
 	</dialog>
 	<dialog name="CDecodeMetadataDlg" cookie="StCoBuBuBuStStBuBu" caption="Metadata-התאמת שפה ל">
-		<control caption="אנא בחר שפה:"/>
-		<control caption="Arabic|Baltic|Central European|Chinese simplified|Chinese traditional|Cyrillic|Greek|Hebrew|Japanese|Korean|Thai|Turkish|Vietnamese"/>
-		<control caption="Preview:"/>
+		<control text="אנא בחר שפה:"/>
+		<control text="Arabic|Baltic|Central European|Chinese simplified|Chinese traditional|Cyrillic|Greek|Hebrew|Japanese|Korean|Thai|Turkish|Vietnamese"/>
+		<control text="Preview:"/>
 		<control/>
 		<control/>
 		<control/>
 		<control/>
-		<control caption="אישור"/>
-		<control caption="ביטול"/>
+		<control text="אישור"/>
+		<control text="ביטול"/>
 	</dialog>
 	<dialog name="CSelectDialog" cookie="StCoBuBu" caption="Selection">
-		<control caption="Select File:"/>
+		<control text="Select File:"/>
 		<control/>
-		<control caption="אישור"/>
-		<control caption="ביטול"/>
+		<control text="אישור"/>
+		<control text="ביטול"/>
 		<control/>
 	</dialog>
 	<dialog name="CIrcInputDlg" cookie="EdBuBuSt" caption="Channel Name|Reason Why">
 		<control/>
-		<control caption="אישור"/>
-		<control caption="ביטול"/>
-		<control caption="Add a channel name:|Enter kick/ban reason:"/>
+		<control text="אישור"/>
+		<control text="ביטול"/>
+		<control text="Add a channel name:|Enter kick/ban reason:"/>
 	</dialog>
 	<dialog name="CHelpDlg" cookie="BuAf" caption="עזרה של שרזה">
-		<control caption="סגור"/>
+		<control text="סגור"/>
 		<control/>
 	</dialog>
 </dialogs>

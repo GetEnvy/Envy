@@ -254,6 +254,7 @@ bool CLibraryBuilderInternals::ExtractMetadata(DWORD nIndex, const CString& strP
 	//	FileType[ L".wav" ]  = 'i';
 	//	FileType[ L".webp" ] = 'i';	// ToDo: RIFF-type Files?
 		FileType[ L".envy" ] = 'z';	// SkinScan
+		FileType[ L".env" ]  = 'z';	// SkinScan
 		FileType[ L".psk" ]  = 'z';	// SkinScan
 		FileType[ L".sks" ]  = 'z';	// SkinScan
 		FileType[ L".bz2" ]  = 'c';	// .xml.bz2

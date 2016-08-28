@@ -155,7 +155,7 @@ void CUploadTipCtrl::OnCalcSize(CDC* pDC)
 	{
 		CString strName		= m_pHeaderName.GetAt( nHeader );
 		CString strValue	= m_pHeaderValue.GetAt( nHeader );
-		CSize szKey			= pDC->GetTextExtent( strName + ':' );
+		CSize szKey			= pDC->GetTextExtent( strName + L':' );
 		CSize szValue		= pDC->GetTextExtent( strValue );
 
 		m_nHeaderWidth		= max( m_nHeaderWidth, szKey.cx );
@@ -165,8 +165,7 @@ void CUploadTipCtrl::OnCalcSize(CDC* pDC)
 	}
 
 	if ( m_nHeaderWidth ) m_nHeaderWidth += TIP_GAP;
-	m_sz.cx = min( max( max( m_sz.cx, m_nHeaderWidth + nValueWidth ), 400 ),
-		GetSystemMetrics( SM_CXSCREEN ) / 2 );
+	m_sz.cx = min( max( max( m_sz.cx, m_nHeaderWidth + nValueWidth ), 400 ), GetSystemMetrics( SM_CXSCREEN ) / 2 );
 }
 
 void CUploadTipCtrl::OnPaint(CDC* pDC)

@@ -98,6 +98,9 @@
       <KeyFile>
       </KeyFile>
     </Link>
+    <Manifest>
+      <AdditionalManifestFiles>Res\Manifest.xml %(AdditionalManifestFiles)</AdditionalManifestFiles>
+    </Manifest>
     <PostBuildEvent>
       <Message>Performing registration</Message>
       <Command>copy "..\Services\zlib\$(Configuration) $(Platform)\zlibwapi.dll" "$(TargetDir)" /b /y
@@ -132,6 +135,9 @@
       <SubSystem>Windows</SubSystem>
       <TargetMachine>MachineX64</TargetMachine>
     </Link>
+    <Manifest>
+      <AdditionalManifestFiles>Res\Manifest.xml %(AdditionalManifestFiles)</AdditionalManifestFiles>
+    </Manifest>
     <PostBuildEvent>
       <Message>Performing registration</Message>
       <Command>copy "..\Services\zlib\$(Configuration) $(Platform)\zlibwapi.dll" "$(TargetDir)" /b /y
@@ -172,6 +178,9 @@
       <KeyFile>
       </KeyFile>
     </Link>
+    <Manifest>
+      <AdditionalManifestFiles>Res\Manifest.xml %(AdditionalManifestFiles)</AdditionalManifestFiles>
+    </Manifest>
     <PostBuildEvent>
       <Message>Performing registration</Message>
       <Command>copy "..\Services\zlib\$(Configuration) $(Platform)\zlibwapi.dll" "$(TargetDir)" /b /y
@@ -210,6 +219,9 @@
       <SubSystem>Windows</SubSystem>
       <TargetMachine>MachineX64</TargetMachine>
     </Link>
+    <Manifest>
+      <AdditionalManifestFiles>Res\Manifest.xml %(AdditionalManifestFiles)</AdditionalManifestFiles>
+    </Manifest>
     <PostBuildEvent>
       <Message>Performing registration</Message>
       <Command>copy "..\Services\zlib\$(Configuration) $(Platform)\zlibwapi.dll" "$(TargetDir)" /b /y
@@ -235,7 +247,7 @@
     <None Include="Res\Banner.bmp" />
     <None Include="Res\Envy.ico" />
     <None Include="Res\Skin.ico" />
-    <None Include="Readme.txt" />
+    <None Include="Manifest.xml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Services\zlib\zlibwapi.vcxproj">

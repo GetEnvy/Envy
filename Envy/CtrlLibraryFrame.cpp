@@ -237,7 +237,8 @@ void CLibraryFrame::OnSkinChange()
 	SetView( pView, TRUE, FALSE );
 	SetPanel( pPanel );
 
-	if ( HasView() ) m_pView->OnSkinChange();
+	if ( HasView() )
+		m_pView->OnSkinChange();
 }
 
 /////////////////////////////////////////////////////////////////////////////
@@ -379,13 +380,14 @@ void CLibraryFrame::OnPaint()
 			rcClient.right - rc.right, 1, Colors.m_crSys3DHighlight );
 	}
 
+	// Dropdown box padding
 	if ( ! Settings.Library.ShowVirtual )
 	{
 		rc.SetRect( rcClient.left, rcClient.bottom - Settings.Skin.ToolbarHeight,
 			rcClient.left + m_nTreeSize, rcClient.bottom - m_nTreeTypesHeight );
-		if ( Settings.Skin.ToolbarHeight <= m_nTreeTypesHeight || ! Images.DrawImage( &dc, &rc, &Images.m_bmToolbar ) )		// L"System.Toolbars"
+		if ( Settings.Skin.ToolbarHeight <= m_nTreeTypesHeight || ! Images.DrawImage( &dc, &rc, &Images.m_bmToolbar ) )		// Was "System.Toolbars"
 		{
-			// ToDo: Draw Splitter?
+			// ToDo: Draw Splitter? (Resizebar)
 			dc.FillSolidRect( rc.left, rc.top, rc.Width(), 1, Colors.m_crSys3DShadow );
 			dc.FillSolidRect( rc.left, rc.top + 1, rc.Width(), 1, Colors.m_crSys3DHighlight );
 			dc.FillSolidRect( rc.left, rc.top + 2, rc.Width(), rc.Height() - 2, Colors.m_crSysBtnFace );
@@ -528,7 +530,7 @@ BOOL CLibraryFrame::DoSizeTree()
 		nSplit += nOffset;
 
 		nSplit = max( nSplit, 0 );
-		nSplit = min( nSplit, int(rcClient.right - Settings.Skin.Splitter) );
+		nSplit = min( nSplit, int( rcClient.right - Settings.Skin.Splitter ) );
 
 		if ( nSplit < 8 )
 			nSplit = 0;
@@ -959,12 +961,12 @@ void CLibraryFrame::OnUpdateLibraryTreePhysical(CCmdUI* pCmdUI)
 
 void CLibraryFrame::OnLibraryTreePhysical()
 {
-	if ( Settings.Library.ShowVirtual )
-	{
-		Settings.Library.ShowVirtual = false;
-		OnSkinChange();
-		m_wndTreeBottom.Invalidate();
-	}
+	if ( ! Settings.Library.ShowVirtual )
+		return;
+
+	Settings.Library.ShowVirtual = false;
+	OnSkinChange();
+	m_wndTreeBottom.Invalidate();
 }
 
 void CLibraryFrame::OnUpdateLibraryTreeVirtual(CCmdUI* pCmdUI)
@@ -974,12 +976,12 @@ void CLibraryFrame::OnUpdateLibraryTreeVirtual(CCmdUI* pCmdUI)
 
 void CLibraryFrame::OnLibraryTreeVirtual()
 {
-	if ( ! Settings.Library.ShowVirtual )
-	{
-		Settings.Library.ShowVirtual = true;
-		OnSkinChange();
-		m_wndTreeBottom.Invalidate();
-	}
+	if ( Settings.Library.ShowVirtual )
+		return;
+
+	Settings.Library.ShowVirtual = true;
+	OnSkinChange();
+	m_wndTreeBottom.Invalidate();
 }
 
 void CLibraryFrame::OnLibraryRefresh()

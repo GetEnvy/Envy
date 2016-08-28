@@ -361,7 +361,7 @@ BOOL CEnvyApp::InitInstance()
 	COleDateTime tCompileTime;
 	tCompileTime.ParseDateTime( _T(__DATE__), LOCALE_NOUSEROVERRIDE, 1033 );
 #ifdef _DEBUG
-	COleDateTimeSpan tTimeOut( 21, 0, 0, 0 );		// Daily debug builds
+	COleDateTimeSpan tTimeOut( 30, 0, 0, 0 );		// Daily debug builds
 #else
 	COleDateTimeSpan tTimeOut( 45, 0, 0, 0 );		// Private Betas (Non-sourceforge release)
 #endif
@@ -390,9 +390,9 @@ BOOL CEnvyApp::InitInstance()
 			L"\nWARNING: This is a PRIVATE TEST version of Envy p2p"
 #endif
 			+ strVersion +
-			L"\n\nNOT FOR GENERAL USE, it is intended for pre-release testing in controlled environments.  "
-			L"It may stop running or display debug info.\n\n"
-			L"If you wish to simply use this software, then download the current\n"
+			L"\n\nNOT FOR GENERAL USE, it is intended for pre-release testing in\n"
+			L"controlled environments.  It may stop running or display debug info.\n\n"
+			L"If you wish to simply use this software, download the current\n"
 			L"stable release from GetEnvy.com.  If you continue past this point,\n"
 			L"you could possibly experience system instability or lose files.\n"
 			L"Please be aware of recent development before using.\n\n"
@@ -416,8 +416,12 @@ BOOL CEnvyApp::InitInstance()
 	if ( ! pTest || Settings.Live.FirstRun )
 	{
 		pTest.Release();
-		if ( ! Plugins.Register( Settings.General.Path ) ||
-			 ! Plugins.Register( Settings.General.Path + L"\\Plugins" ) )
+
+		Plugins.Register( Settings.General.Path );
+		Plugins.Register( Settings.General.Path + L"\\Plugins" );
+
+		pTest.Attach( Plugins.GetPlugin( _T( "ImageService" ), _T( ".png" ) ) );
+		if ( ! pTest )
 		{
 			CString strPath = m_strBinaryPath.Left( m_strBinaryPath.ReverseFind( L'\\' ) );
 			Plugins.Register( strPath );
@@ -1691,6 +1695,17 @@ void CEnvyApp::InitResources()
 	// Load LibGFL in a custom way, so Envy plugins can use this library too when not in their search path (From Plugins folder, and when running inside Visual Studio)
 	m_hLibGFL = CustomLoadLibrary( L"LibGFL340.dll" );
 
+	// DPI:
+	if ( Settings.Interface.DisplayScaling < 101 || Settings.Interface.DisplayScaling > 200 )
+	{
+		CDC ScreenDC;
+		ScreenDC.CreateIC( _T("DISPLAY"), NULL, NULL, NULL );
+		const int nDPI = ScreenDC.GetDeviceCaps( LOGPIXELSY );
+		Settings.Interface.DisplayScaling =
+			nDPI < 100 ? 100 :
+			nDPI > 190 ? 200 :
+			(DWORD)( ( nDPI * 100 ) / 96 );
+	}
 
 	//
 	// Setup default fonts:

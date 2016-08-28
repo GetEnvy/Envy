@@ -3,7 +3,7 @@
 
 <!-- Envy Default Finnish Skin File -->
 
-<!-- Translation based on default en.xml r4 --> <!-- (Shareaza 2.1.3.7) -->
+<!-- Translation based on default en.xml r8 --> <!-- (Shareaza 2.1.3.7) -->
 <!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -2118,23 +2118,23 @@
 <dialogs>
 	<dialog name="CSettingSheet" cookie="SyBuBuBu" caption="Envy Asetukset">
 		<control/>
-		<control caption="OK"/>
-		<control caption="Peruuttaa"/>
-		<control caption="Käytä"/>
+		<control text="OK"/>
+		<control text="Peruuttaa"/>
+		<control text="Käytä"/>
 		<control/>
 	</dialog>
 </dialogs>
 
 <!-- Remote Accesss Web Interface (Missing) -->
 <remote>
-	<tag find="text_metatitle" replace="Envy Web Interface"/>
-	<tag find="text_logout" replace="Kirjautua ulos"/>
-	<tag find="text_tabhome" replace="Koti"/>
-	<tag find="text_tabdownloads" replace="Lataukset"/>
-	<tag find="text_tabuploads" replace="Lähetykset"/>
-	<tag find="text_tabnetworks" replace="Verkko"/>
-	<tag find="text_tabsearch" replace="Hae"/>
-	<tag find="text_" replace=""/>
+	<tag id="text_metatitle" text="Envy Web Interface"/>
+	<tag id="text_logout" text="Kirjautua ulos"/>
+	<tag id="text_tabhome" text="Koti"/>
+	<tag id="text_tabdownloads" text="Lataukset"/>
+	<tag id="text_tabuploads" text="Lähetykset"/>
+	<tag id="text_tabnetworks" text="Verkko"/>
+	<tag id="text_tabsearch" text="Hae"/>
+	<tag id="text_" text=""/>
 </remote>
 <!-- Column Definitions -->
 <listcolumns>

@@ -96,20 +96,19 @@
 #define IDR_COPY_XP                     284
 #define IDR_MOVE_XP                     285
 #define IDB_MENUBAR                     300
-#define IDB_REMOTE_SKIN                 301
-#define IDB_NAVBAR_IMAGE                302
+#define IDB_REMOTE_SKIN                 301		// Hardcoded Default.xml
+#define IDB_NAVBAR_IMAGE                302		// Hardcoded Default.xml
 #define IDB_NAVBAR_IMAGE_RTL            303
-#define IDB_NAVBAR_ALPHA                304
+#define IDB_NAVBAR_ALPHA                304		// Hardcoded Default.xml
 #define IDB_NAVBAR_ALPHA_RTL            305
 #define IDB_PROTOCOLS                   306
 #define IDB_IRCICONS                    307
 #define IDB_SOCIAL                      308
 #define IDB_CHILDFRAME                  309
-#define IDB_BANNER                      310
+#define IDB_BANNER                      310		// Hardcoded Default.xml
 #define IDB_BANNER_MARK                 312
 #define IDB_BOX_MARK                    313
 #define IDB_PANEL_MARK                  314
-#define IDB_QRCODE                      315
 #define IDB_SMALL_STAR                  316
 #define IDB_COLORDOT                    317
 #define IDB_FONT_SYMBOLS                318
@@ -120,9 +119,10 @@
 #define IDB_TASKPANEL_FOOTER            325
 #define IDB_MUSICBRAINZ_LOGO            326
 #define IDR_LOGO                        328
-#define IDR_LARGE_LOGO                  330
-#define IDR_HOME_HEADER                 332
-#define IDR_HOME_HEADER_REPEAT          333
+#define IDR_LARGE_LOGO                  330		// Hardcoded Default.xml
+#define IDR_HOME_HEADER                 332		// Hardcoded Default.xml
+#define IDR_HOME_HEADER_REPEAT          333		// Hardcoded Default.xml
+#define IDR_QRCODE                      334
 #define IDR_XML_DEFAULT                 350
 #define IDR_XML_DEFINITIONS             351
 #define IDR_XML_SCHEMA_MAPS             352
@@ -1667,8 +1667,9 @@
 #define ID_HELP_WEB_2                   40122
 #define ID_HELP_WEB_3                   40123
 #define ID_HELP_WEB_4                   40124
-#define ID_HELP_WEB_BITPRINTS           40125
-#define ID_HELP_WEB_SKINS               40126
+#define ID_HELP_WEB_SKINS               40125
+#define ID_HELP_WEB_BITPRINTS           40126
+#define ID_HELP_WEB_KICKBACKS           40127
 #define ID_HELP_WARNINGS                40128
 #define ID_HELP_STARTPAGE               40129
 #define ID_HOSTCACHE_CONNECT            40130

@@ -169,7 +169,7 @@ void CBrowseFrameCtrl::OnSize(UINT nType, int cx, int cy)
 	DeferWindowPos( hDWP, m_wndList->GetSafeHwnd(), NULL, rc.left, rc.top,
 		rc.Width(), rc.Height(), SWP_SHOWWINDOW | SWP_NOACTIVATE | SWP_NOZORDER );
 
-	EndDeferWindowPos( hDWP );
+	EndDeferWindowPos( hDWP );		// High cpu
 }
 
 void CBrowseFrameCtrl::OnPaint()
@@ -224,11 +224,9 @@ BOOL CBrowseFrameCtrl::OnSetCursor(CWnd* pWnd, UINT nHitTest, UINT message)
 	GetClientRect( &rcClient );
 	ClientToScreen( &rcClient );
 
-	rc.SetRect(	Settings.General.LanguageRTL ? rcClient.right - m_nTreeSize - Settings.Skin.Splitter :
-				rcClient.left + m_nTreeSize,
+	rc.SetRect(	Settings.General.LanguageRTL ? rcClient.right - m_nTreeSize - Settings.Skin.Splitter : rcClient.left + m_nTreeSize,
 				rcClient.top,
-				Settings.General.LanguageRTL ? rcClient.right - m_nTreeSize :
-				rcClient.left + m_nTreeSize + Settings.Skin.Splitter,
+				Settings.General.LanguageRTL ? rcClient.right - m_nTreeSize : rcClient.left + m_nTreeSize + Settings.Skin.Splitter,
 				rcClient.bottom );
 
 	if ( m_wndTree.IsWindowVisible() && rc.PtInRect( point ) )
@@ -247,7 +245,7 @@ BOOL CBrowseFrameCtrl::OnSetCursor(CWnd* pWnd, UINT nHitTest, UINT message)
 		if ( Settings.General.LanguageRTL )
 			rc.right -= m_nTreeSize + Settings.Skin.Splitter;
 		else
-			rc.left += m_nTreeSize + Settings.Skin.Splitter;
+			rc.left  += m_nTreeSize + Settings.Skin.Splitter;
 	}
 
 	if ( m_wndDetails.IsWindowVisible() && rc.PtInRect( point ) )
@@ -280,7 +278,8 @@ void CBrowseFrameCtrl::OnLButtonDown(UINT nFlags, CPoint point)
 				rcClient.right,
 				rcClient.bottom - m_nPanelSize );
 
-	if ( m_wndTree.IsWindowVisible() ) rc.left += m_nTreeSize + Settings.Skin.Splitter;
+	if ( m_wndTree.IsWindowVisible() )
+		rc.left += m_nTreeSize + Settings.Skin.Splitter;
 
 	if ( m_wndDetails.IsWindowVisible() && rc.PtInRect( point ) )
 	{

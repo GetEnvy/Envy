@@ -413,18 +413,17 @@ LRESULT PASCAL CSchemaCombo::ListWndProc(HWND hWnd, UINT nMsg, WPARAM wParam, LP
 					if ( nMsg == WM_LBUTTONDOWN ) return 0;
 
 					nIndex = pThis->GetCurSel();
-					if ( nIndex >= 0 ) CallWindowProc( pThis->m_pWndProc, hWnd, LB_SETCURSEL, nIndex, 0 );
+					if ( nIndex >= 0 )
+						CallWindowProc( pThis->m_pWndProc, hWnd, LB_SETCURSEL, nIndex, 0 );
 
 					::GetWindowRect( hWnd, &rcClient );
 					LRESULT nHeight = pThis->GetCount() * nItemHeight + 2;
 
 					if ( rcClient.Height() < nHeight )
 					{
-						rcClient.bottom = (LONG)min( GetSystemMetrics( SM_CYSCREEN ) - 1,
-							rcClient.top + nHeight );
+						rcClient.bottom = min( LONG( GetSystemMetrics( SM_CYSCREEN ) - 1 ), rcClient.top + (LONG)nHeight );
 
-						::MoveWindow( hWnd, rcClient.left, rcClient.top,
-							rcClient.Width(), rcClient.Height(), TRUE );
+						::MoveWindow( hWnd, rcClient.left, rcClient.top, rcClient.Width(), rcClient.Height(), TRUE );
 					}
 
 					return 0;

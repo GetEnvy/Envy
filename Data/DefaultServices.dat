@@ -3,17 +3,22 @@ M http://cache.getenvy.com/skulls/
 M http://webcache.peerproject.org/
 M http://cache.w3-hidden.cc/
 M http://gwctest.zapto.org:1337/
+M http://gwc.mccarragher.org/skulls/skulls.php
+M http://disobscure.velum-ultra.com/skulls.php
 M http://tenafly5k.com/gwc/skulls.php
+M http://gweb.4octets.co.uk/skulls.php
 M http://gweb2.4octets.co.uk/gwc.php
-# http://fascination77.free.fr/cachechu/
+M http://gweb.dwbo.nl/
 
-2 http://cache.trillinux.org/g2/bazooka.php
+# http://cache.getenvy.com/dkac/
 2 http://dkac.trillinux.org/dkac/dkac.php
+2 http://cache.trillinux.org/g2/bazooka.php
 2 http://cache2.bazookanetworks.com/g2/bazooka.php
 2 http://cache.peernix.com/gwc.php
 2 http://cache.ce3c.be/
 2 http://cache.ibel.de/
-# http://cache.pongwar.com/
+2 http://ping.pongwar.com/
+2 http://www.k33bz.com/g2/bazooka.php
 # http://cache2.leite.us/cachechu
 # http://cache3.leite.us/
 # http://cache5.leite.us/
@@ -36,21 +41,12 @@ M http://gweb2.4octets.co.uk/gwc.php
 # http://gwc.ak-electron.eu:12050/
 # http://gwc.dietpac.com:8080/
 # http://gwc.glucolene.com:8080/
-# http://leet.gtkg.org:8080/gwc/
-# http://ein.gtkg.net:8080/gwc/
-# http://zwei.gtkg.net:8080/gwc/
-# http://drei.gtkg.net:8080/gwc/
-# http://sissy.gtkg.org:8080/gwc/
 
 U uhc:uhc.gtk-gnutella.nl:15749
 # uhc:yin.cloud.bishopston.net:33558
 # uhc:yang.cloud.bishopston.net:33558
 # uhc:uhc.udp-host-cache.com:9999
 # uhc:uhc2.limewire.com:20181
-# uhc:leet.gtkg.org:1337
-# uhc:ein.gtkg.net:60666
-# uhc:drei.gtkg.net:62666
-# uhc:sissy.gtkg.org:51557
 
 D http://peerates.net/servers.php
 D http://www.gruk.org/server.met
@@ -66,10 +62,9 @@ H http://www.hublista.hu/hublist.xml.bz2
 X http://gwebcache.spearforensics.com/
 X http://www.myfoxy.net/gwc/cgi-bin/fc
 X http://gwc.gofoxy.net:2108/gwc/cgi-bin/fc
-X http://gweb.dwbo.nl/
 
 #
-# Last updated Oct 2015
+# Last updated Aug 2016
 #
 # A letter and space must precede each link to indicate the type of service:
 # X = Banned,  M = Multinetwork gwebcache,

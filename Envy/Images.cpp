@@ -277,7 +277,8 @@ void CImages::Load()
 		SkinImage( &m_bmToolbar, L"CCoolbar" ) ||
 		SkinImage( &m_bmToolbar, L"Toolbar" );
 
-	// "System.Toolbars.CClass" override in Skin
+	// Note: "System.Toolbars" applied and "System.Toolbars.CClass" override in Skin
+	// Note: Do not use Images.DrawImage( &dc, &rc, &Images.m_bmToolbar ) directly (bugs?)
 
 	// Main Menubar (Text) Buttons:
 
@@ -387,6 +388,7 @@ BOOL CImages::SkinImage(CBitmap* bmImage, LPCTSTR pszName, BOOL bAllowAlpha /*1*
 		BITMAP pInfo;
 		if ( bAllowAlpha )
 			PreBlend( hImage );
+		if ( bmImage->m_hObject ) bmImage->DeleteObject();
 		bmImage->Attach( hImage );
 		bmImage->GetObject( sizeof( BITMAP ), &pInfo );
 		if ( nStates > 1 )		// Special ButtonMap handling
@@ -517,7 +519,7 @@ BOOL CImages::PreBlend(HBITMAP hButton)
 	return TRUE;
 }
 
-BOOL CImages::DrawImage(CDC* pDC, const CRect* prc, CBitmap* bmImage, BOOL bRepeat /*=TRUE*/)
+BOOL CImages::DrawImage(CDC* pDC, const CRect* prc, CBitmap* bmImage, BOOL bRepeat /*TRUE*/)
 {
 	if ( ! bmImage->m_hObject || pDC == NULL || prc == NULL )
 		return FALSE;

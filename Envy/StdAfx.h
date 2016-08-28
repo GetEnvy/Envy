@@ -289,7 +289,9 @@ using namespace std::tr1::placeholders;			// For std::bind _1, std::placeholders
 #define BZ_NO_STDIO
 #include <Bzlib/Bzlib.h>
 
-// Note "MinMax.hpp" Removed
+// Note legacy "MinMax.hpp" removed for Boost dependency,
+// However simply using standard min/max templates/macros introduces runtime bugs.
+#include "MinMax.h"
 
 #if defined(_MSC_VER) && (_MSC_VER < 1600) && (_MSC_VER >= 1500)		// Work-around for VC9 (VS2008) where
 	#pragma warning ( pop )				// a (pop) is ifdef'd out in stdio.h

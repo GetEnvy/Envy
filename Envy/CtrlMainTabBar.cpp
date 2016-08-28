@@ -325,7 +325,7 @@ BOOL CMainTabBarCtrl::OnSetCursor(CWnd* pWnd, UINT nHitTest, UINT message)
 
 		if ( TabItem* pItem = HitTest( point ) )
 		{
-			if ( pItem->m_bEnabled )
+		//	if ( pItem->m_bEnabled )
 			{
 				SetCursor( theApp.LoadCursor( IDC_HAND ) );
 				return TRUE;
@@ -359,7 +359,7 @@ void CMainTabBarCtrl::OnLButtonDown(UINT nFlags, CPoint point)
 {
 	m_pHover = HitTest( point );
 
-	if ( m_pHover != NULL && m_pHover->m_bEnabled )
+	if ( m_pHover != NULL )		// && m_pHover->m_bEnabled
 		m_pDown = m_pHover;
 
 	if ( m_pHover == NULL )
@@ -455,6 +455,19 @@ BOOL CMainTabBarCtrl::OnDrop(IDataObject* pDataObj, DWORD /*grfKeyState*/, POINT
 	return FALSE;
 }
 
+
+/////////////////////////////////////////////////////////////////////////////
+// CMainTabBarCtrl::TabItem
+
+// Match pszState Order for m_rcSrc
+enum {
+	STATE_DEFAULT,
+	STATE_SELECTED,
+	STATE_HOVER,
+	STATE_DOWN
+//	STATE_DISABLED	// Unused
+};
+
 /////////////////////////////////////////////////////////////////////////////
 // CMainTabBarCtrl::TabItem construction
 
@@ -463,8 +476,8 @@ CMainTabBarCtrl::TabItem::TabItem(CMainTabBarCtrl* pCtrl, LPCTSTR pszName)
 	m_pCtrl		= pCtrl;
 	m_nID		= CoolInterface.NameToID( pszName + 1 );
 	m_sName		= pszName;
-	m_bEnabled	= TRUE;
 	m_bSelected	= FALSE;
+//	m_bEnabled	= TRUE;
 }
 
 /////////////////////////////////////////////////////////////////////////////
@@ -472,9 +485,16 @@ CMainTabBarCtrl::TabItem::TabItem(CMainTabBarCtrl* pCtrl, LPCTSTR pszName)
 
 void CMainTabBarCtrl::TabItem::OnSkinChange(CSkinWindow* pSkin, CDC* pdcCache, CBitmap* pbmCache)
 {
+	// Note order must match STATE_ enum
 	static LPCTSTR pszState[] =
 	{
-		L".Checked", L".Down", L".Hover", L".Up", L".Disabled", NULL
+		L".Default", L".Selected", L".Hover", L".Down", NULL	// Null to end loop
+	};
+
+	// Deprecated use, order must match
+	static LPCTSTR pszStateLegacy[] =
+	{
+		L".Up", L".Checked", L".Hover", L".Down", NULL	// ".Disabled" Unused
 	};
 
 	m_rc.SetRectEmpty();
@@ -503,15 +523,15 @@ void CMainTabBarCtrl::TabItem::OnSkinChange(CSkinWindow* pSkin, CDC* pdcCache, C
 		CRect* pRect = &m_rcSrc[ nState ];
 		pRect->SetRectEmpty();
 
-		if ( pSkin->GetPart( m_sName + pszState[ nState ], *pRect ) )
+		if ( pSkin->GetPart( m_sName + pszState[ nState ], *pRect ) ||
+			 pSkin->GetPart( m_sName + pszStateLegacy[ nState ], *pRect ) )		// Deprecated fallback
 		{
 			CBitmap* pOld = (CBitmap*)pdcCache->SelectObject( pbmCache );
 
 			if ( pSkin->m_bmWatermark.m_hObject != NULL )
 			{
 				pdcCache->IntersectClipRect( pRect );
-				CoolInterface.DrawWatermark( pdcCache, pRect, &pSkin->m_bmWatermark,
-					m_rc.left, m_rc.top );
+				CoolInterface.DrawWatermark( pdcCache, pRect, &pSkin->m_bmWatermark, m_rc.left, m_rc.top );
 				pdcCache->SelectClipRgn( NULL );
 			}
 			else
@@ -531,12 +551,12 @@ void CMainTabBarCtrl::TabItem::OnSkinChange(CSkinWindow* pSkin, CDC* pdcCache, C
 
 BOOL CMainTabBarCtrl::TabItem::Update(CFrameWnd* pWnd)
 {
-	BOOL bEnabled  = m_bEnabled;
+//	BOOL bEnabled  = m_bEnabled;
 	BOOL bSelected = m_bSelected;
 
-	DoUpdate( pWnd, TRUE );
+	DoUpdate( pWnd, FALSE );	// TRUE handles bEnabled (runtime error otherwise)
 
-	return ( bEnabled != m_bEnabled || bSelected != m_bSelected );
+	return ( bSelected != m_bSelected );	// || bEnabled != m_bEnabled
 }
 
 /////////////////////////////////////////////////////////////////////////////
@@ -557,16 +577,16 @@ void CMainTabBarCtrl::TabItem::Paint(CDC* pDstDC, CDC* pSrcDC, const CPoint& ptO
 
 	CRect* pPart = NULL;
 
+//	if ( ! m_bEnabled )
+//		pPart = &m_rcSrc[ STATE_DISABLED ];
 	if ( bDown )
-		pPart = &m_rcSrc[1];
+		pPart = &m_rcSrc[ STATE_DOWN ];
 	else if ( m_bSelected )
-		pPart = &m_rcSrc[0];
-	else if ( ! m_bEnabled )
-		pPart = &m_rcSrc[4];
+		pPart = &m_rcSrc[ STATE_SELECTED ];
 	else if ( bHover )
-		pPart = &m_rcSrc[2];
+		pPart = &m_rcSrc[ STATE_HOVER ];
 	else
-		pPart = &m_rcSrc[3];
+		pPart = &m_rcSrc[ STATE_DEFAULT ];
 
 	CRect rcTarget( m_rc );
 	rcTarget += ptOffset;
@@ -656,10 +676,10 @@ void CMainTabBarCtrl::TabItem::Paint(CDC* pDstDC, CDC* pSrcDC, const CPoint& ptO
 	pDstDC->SelectObject( pOldFont );
 }
 
-void CMainTabBarCtrl::TabItem::Enable(BOOL bEnable)
-{
-	m_bEnabled = bEnable;
-}
+//void CMainTabBarCtrl::TabItem::Enable(BOOL bEnable)
+//{
+//	m_bEnabled = bEnable;
+//}
 
 void CMainTabBarCtrl::TabItem::SetCheck(BOOL bCheck)
 {

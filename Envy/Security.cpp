@@ -347,7 +347,7 @@ void CSecurity::Ban(const CEnvyFile* pFile, int nBanLength, BOOL bMessage)
 			( pFile->m_oTiger ? pFile->m_oTiger.toUrn() + L" " : CString() ) +
 			( pFile->m_oED2K  ? pFile->m_oED2K.toUrn()  + L" " : CString() ) +
 			( pFile->m_oMD5   ? pFile->m_oMD5.toUrn()   + L" " : CString() ) +
-			( pFile->m_oBTH   ? pFile->m_oBTH.toUrn()             : CString() ) );
+			( pFile->m_oBTH   ? pFile->m_oBTH.toUrn()          : CString() ) );
 	}
 
 	Add( pRule );
@@ -1242,7 +1242,7 @@ void CAdultFilter::Load()
 {
 	CFile pFile;
 	CString strBlockedWords, strDubiousWords, strChildWords;
-	const CString strFile = Settings.General.Path + L"\\Data\\AdultFilter.dat";	// Settings.General.DataPath ?
+	const CString strFile = Settings.General.DataPath + L"AdultFilter.dat";
 
 	// Delete current adult filters (if present)
 	if ( m_pszBlockedWords ) delete [] m_pszBlockedWords;
@@ -1504,7 +1504,7 @@ BOOL CAdultFilter::IsFiltered(LPCTSTR pszText) const
 	// Check dubious words
 	if ( m_pszDubiousWords )
 	{
-		size_t nDubiousWords = 0, nWordsPermitted = min( _tcslen( pszText ) / 8, 4u );
+		size_t nDubiousWords = 0, nWordsPermitted = min( (DWORD)(_tcslen( pszText ) / 8), 4 );
 
 		for ( LPCTSTR pszWord = m_pszDubiousWords ; *pszWord ; )
 		{
@@ -1540,7 +1540,7 @@ void CMessageFilter::Load()
 {
 	CFile pFile;
 	CString strFilteredPhrases, strED2KSpamPhrases;
-	const CString strFile = Settings.General.Path + L"\\Data\\MessageFilter.dat";
+	const CString strFile = Settings.General.DataPath + L"MessageFilter.dat";
 
 	// Delete current filter (if present)
 	if ( m_pszFilteredPhrases ) delete [] m_pszFilteredPhrases;

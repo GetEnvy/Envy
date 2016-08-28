@@ -1919,6 +1919,9 @@
     <ClCompile Include="MiniUPnP.h">
       <Filter>Header Files</Filter>
     </ClCompile>
+    <ClInclude Include="MinMax.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="Neighbour.h">
       <Filter>Header Files</Filter>
     </ClInclude>

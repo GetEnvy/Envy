@@ -10,14 +10,14 @@ _____________________
 
 
 2. Locate this complete Envy sourcecode set.
-	- http://github.com/envy/envy/zipball/master
-	- https://sourceforge.net/p/envy/code/HEAD/tarball?path=/trunk
+	- http://github.com/getenvy/envy/zipball/master
+	- https://sourceforge.net/p/getenvy/code/HEAD/tarball?path=/trunk
 	- That's it, there are no external dependencies or setup.
 
 
 3. Build the project
 	- Open \Visual Studio\ folder
-	- Click SetVS201X.bat file once if desired to update project files for earlier versions
+	- Click SetVS201X.bat file if needed to update project files for earlier versions
 	- Open Envy.sln file and click "Build Solution"
 
 

@@ -128,7 +128,7 @@ void CCoolBarCtrl::SetSyncObject(CSyncObject* pSyncObject)
 	m_pSyncObject = pSyncObject;
 }
 
-void CCoolBarCtrl::SetWatermark(HBITMAP hBitmap, BOOL bDetach)
+void CCoolBarCtrl::SetWatermark(HBITMAP hBitmap, BOOL bDetach /*FALSE*/)
 {
 	if ( m_bmImage.m_hObject )
 	{
@@ -138,7 +138,8 @@ void CCoolBarCtrl::SetWatermark(HBITMAP hBitmap, BOOL bDetach)
 			m_bmImage.DeleteObject();
 	}
 
-	if ( hBitmap ) m_bmImage.Attach( hBitmap );
+	if ( hBitmap )
+		m_bmImage.Attach( hBitmap );
 }
 
 /////////////////////////////////////////////////////////////////////////////

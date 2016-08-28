@@ -128,7 +128,7 @@
 			<Tool
 				Name="VCPreBuildEventTool"
 				Description="Pre-Build Dependencies"
-				CommandLine="copy &quot;7zxa-x64.dll&quot; &quot;$(TargetDir)/7zxa.dll&quot; /b /y"
+				CommandLine="copy &quot;7zxa.64.dll&quot; &quot;$(TargetDir)/7zxa.dll&quot; /b /y"
 			/>
 			<Tool
 				Name="VCCustomBuildTool"

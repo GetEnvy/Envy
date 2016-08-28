@@ -37,6 +37,7 @@ HKCU
 					NoRemove LibraryBuilder
 					{
 						ForceRemove val '.envy' = s '{C5594A56-ED24-44C8-B6DA-BDC1BCF809DD}'
+						ForceRemove val '.env' = s '{C5594A56-ED24-44C8-B6DA-BDC1BCF809DD}'
 						ForceRemove val '.psk' = s '{C5594A56-ED24-44C8-B6DA-BDC1BCF809DD}'
 						ForceRemove val '.sks' = s '{C5594A56-ED24-44C8-B6DA-BDC1BCF809DD}'
 					}

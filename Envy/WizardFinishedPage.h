@@ -32,6 +32,7 @@ public:
 	enum { IDD = IDD_WIZARD_FINISHED };
 
 public:
+	CStatic	m_wndLogo;
 	BOOL	m_bAutoConnect;
 	BOOL	m_bStartup;
 
@@ -39,12 +40,12 @@ public:
 	virtual BOOL OnSetActive();
 	virtual BOOL OnWizardFinish();
 	virtual LRESULT OnWizardBack();
+
 protected:
 	virtual BOOL OnInitDialog();
 
 	virtual void DoDataExchange(CDataExchange* pDX);
 
-protected:
 	afx_msg void OnXButtonDown(UINT nFlags, UINT nButton, CPoint point);
 
 	DECLARE_MESSAGE_MAP()

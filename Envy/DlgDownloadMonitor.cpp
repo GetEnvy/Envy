@@ -355,24 +355,21 @@ void CDownloadMonitorDlg::OnTimer(UINT_PTR nIDEvent)
 
 	if ( bCompleted )
 	{
-		if ( m_pDownload->IsSeeding() )
-			strText += L"  (" + LoadString( IDS_STATUS_SEEDING ) + L")";
-		else
-			LoadString( strText, IDS_MONITOR_COMPLETED_WORD );
 		LoadString( strAction, IDS_MONITOR_ACTION_OPEN );
 		Update( &m_wndAction, TRUE );
 	//	LoadString( strText, IDS_MONITOR_COMPLETED );
 	//	Update( &m_wndStatus, strText );
+		LoadString( strText, m_pDownload->IsSeeding() ? IDS_STATUS_SEEDING : IDS_MONITOR_COMPLETED_WORD );
 		Update( &m_wndSources, strText );
-		Update( &m_wndSpeed, strNA );
-		Update( &m_wndTime, strNA );
+		Update( &m_wndSpeed, L"--" );
+		Update( &m_wndTime, L"--" );
 	}
 	else if ( m_pDownload->IsMoving() )
 	{
 		LoadString( strAction, IDS_STATUS_MOVING );
 		Update( &m_wndAction, FALSE );
 	//	Update( &m_wndStatus, strText );
-		LoadString( strText, IDS_MONITOR_COMPLETED_WORD );
+		strText = strAction;
 		Update( &m_wndSources, strText );
 		Update( &m_wndSpeed, strNA );
 		Update( &m_wndTime, strNA );

@@ -491,9 +491,12 @@ const LPCTSTR RT_GZIP = L"GZIP";
 
 // Locations
 #define WEB_SITE				L"http://getenvy.com/"
-#define UPDATE_URL				L"http://getenvy.sourceforge.net/update"
+#define UPDATE_URL				L"http://getenvy.com/update"
 #define REGISTRY_KEY			L"Software\\Envy\\Envy"
 
+// ToDo: https://sf.net/p/getenvy/code/HEAD/tree/trunk/release?format=raw
+// Or:   https://raw.githubusercontent.com/GetEnvy/Envy/master/release
+// Or use L"http://getenvy.sourceforge.net/update"
 
 // Saved-State Serialization:
 #define INTERNAL_VERSION		1000

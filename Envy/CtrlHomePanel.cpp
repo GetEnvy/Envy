@@ -1097,7 +1097,7 @@ void CHomeDownloadsBox::OnPaint()
 			COLORREF cr = pItem->m_bPaused ? Colors.m_crNetworkNull : crAlt[ nItem % 3 ];
 			dc.Draw3dRect( &rcIcon, Colors.m_crFragmentBorder, Colors.m_crFragmentBorder );
 			rcIcon.DeflateRect( 1, 1 );
-			CFragmentBar::DrawFragment( &dc, &rcIcon, pItem->m_nSize, 0, pItem->m_nComplete, cr, TRUE );
+			CFragmentBar::DrawFragment( &dc, &rcIcon, pItem->m_nSize, 0, pItem->m_nComplete, cr, TRUE, TRUE );
 			dc.FillSolidRect( &rcIcon, Colors.m_crTaskBoxClient );	// Was Colors.m_crRichdocBack
 			rcIcon.InflateRect( 1, 1 );
 			dc.ExcludeClipRect( &rcIcon );

@@ -69,6 +69,10 @@ startelt(void * d, const char * name, int l)
 		if(pm == NULL)
 		{
 			/* malloc error */
+//#ifdef DEBUG
+//			fprintf(stderr, "%s: error allocating memory",
+//			        "startelt");
+//#endif /* DEBUG */
 			return;
 		}
 		pm->l_next = pdata->l_head;	/* insert in list */

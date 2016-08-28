@@ -88,7 +88,7 @@
  <color name="Dialog.Panel.Text"			value="393630"/>
  <color name="Dialog.Menu.Back" 			value="FAF9F8"/>  <!--settings menu-->
  <color name="Dialog.Menu.Text" 			value="403A34"/>
- <color name="Banner.Back"				value="D2C2AE"/>  <!--library/browse headers-->
+ <color name="Banner.Back"				value="FEBA14"/>  <!--library/browse headers-->
  <color name="Banner.Text"				value="FFFFFF"/>
 
  <color name="Media.Window.Back"			value="080400"/>
@@ -180,8 +180,8 @@
  <image target="CMainWnd"				path="Skin8Alt\RibbonTabsBkg.png"/>
  <image target="CMainWnd.Toolbar"			path="Skin8Alt\RibbonTabsBkg.png"/>
  <image target="CMediaFrame.Toolbar"			path="Mediabar.png"/>
- <!--image target="CMediaList.Toolbar"			path="Toolbar.png"-->
  <image target="CDownloadTabBar"			path="DownloadgroupsToolbar.png"/>
+ <!--image target="CMediaList.Toolbar"			path="Toolbar.png"-->
  <!--image target="CDownloadsWnd.Toolbar"		path="ToolbarLt.png"/>
  <!--image target="CUploadsWnd.Toolbar" 		path="Toolbar.png"-->
  <!--image target="CPrivateChatWnd.Toolbar"		path="Toolbar.png"-->
@@ -269,6 +269,7 @@
  <!--image target="CCoolMenuBar.Checked"			path="Skin7\MenuButtonState.png"-->
  <image target="CCoolbar.Control"			path="MediaSlider.png"/>
  <image target="CCoolbar.Separator"			path="Skin8\ToolbarSeparator.png"/>
+ <image target="CCoolbar"				path="Skin8\Toolbar.png"/>
 
  <!--image target="CCoolbar.Disabled"			path="ToolbarButtonHover.png"-->
  <!--image target="CCoolbar.Up" 			path="ToolbarButtonHover.png"-->

@@ -201,10 +201,8 @@ BOOL CUploadTransferDC::OnWrite()
 			QWORD nRead = 0;
 			auto_array< BYTE > pBuffer( new BYTE[ nToRead ] );
 			if ( ! ReadFile( m_nFileBase + m_nOffset + m_nPosition, pBuffer.get(), nToRead, &nRead ) || nToRead != nRead )
-			{
-				// File error
-				return FALSE;
-			}
+				return FALSE;	// File error
+
 			m_pClient->Write( pBuffer.get(), (DWORD)nRead );
 
 			m_nPosition += nRead;
@@ -394,7 +392,7 @@ BOOL CUploadTransferDC::RequestFile(CLibraryFile* pFile, QWORD nOffset, QWORD nL
 	if ( m_nOffset >= m_nSize )
 		m_nLength = SIZE_UNKNOWN;
 	else
-		m_nLength = min( ( ( nLength == SIZE_UNKNOWN ) ? m_nSize : nLength ), m_nSize - m_nOffset );
+		m_nLength = min( ( nLength == SIZE_UNKNOWN ? m_nSize : nLength ), m_nSize - m_nOffset );
 	m_nPosition = 0;
 
 	if ( m_nLength > m_nSize || m_nOffset + m_nLength > m_nSize )

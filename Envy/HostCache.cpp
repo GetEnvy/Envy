@@ -1109,7 +1109,7 @@ bool CHostCache::CheckMinimumServers(PROTOCOLID nProtocol)
 
 int CHostCache::LoadDefaultServers(PROTOCOLID nProtocol)
 {
-	const CString strFile = Settings.General.Path + L"\\Data\\DefaultServers.dat";
+	const CString strFile = Settings.General.DataPath + L"DefaultServers.dat";
 	int nServers = 0;
 
 	// Ignore old files (300 days)

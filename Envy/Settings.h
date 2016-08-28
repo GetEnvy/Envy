@@ -101,6 +101,7 @@ public:
 		DWORD		RefreshRateGraph;		// Data display update in milliseconds (set speed)
 		DWORD		RefreshRateText;		// Data display update in milliseconds
 		DWORD		RefreshRateUI;			// Button availability update in milliseconds (~4 chances per second)
+		DWORD		DisplayScaling;			// Windows High DPI Modes 100/125/150/200 (96dpi = 100%)
 		DWORD		TipDelay;
 		DWORD		TipAlpha;
 		bool		TipShadow;

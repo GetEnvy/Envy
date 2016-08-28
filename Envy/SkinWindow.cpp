@@ -152,15 +152,12 @@ BOOL CSkinWindow::Parse(CXMLElement* pBase, const CString& strPath)
 		{
 			CString strTarget = pGroup->GetAttributeValue( L"window" );
 
-			if ( strTarget == L"CMainTabBarCtrl" )
-				strTarget = strTarget;
+		// ToDo: Fix legacy logic error, what did this intend to do?
+		//	if ( strTarget == L"CMainTabBarCtrl" )
+		//		strTarget = strTarget;
 
 			if ( ! strTarget.IsEmpty() )
-			{
-				m_sTargets += '|';
-				m_sTargets += strTarget;
-				m_sTargets += '|';
-			}
+				m_sTargets += L'|' + strTarget + L'|';
 		}
 		else if ( pGroup->IsNamed( L"parts" ) )
 		{
@@ -172,20 +169,20 @@ BOOL CSkinWindow::Parse(CXMLElement* pBase, const CString& strPath)
 					theApp.Message( MSG_ERROR, IDS_SKIN_ERROR, L"Unknown element in [parts] element", pXML->ToString() );
 					continue;
 				}
+
 				if ( ! ParseRect( pXML, &rc ) ) continue;
 				if ( ! rc.Width() ) rc.right++;
 				if ( ! rc.Height() ) rc.bottom++;
 
-				CString strMode = pXML->GetAttributeValue( L"mode" );
-				int nMode = SKINPARTMODE_TILE;
+				CString strName = pXML->GetAttributeValue( L"name" );
+				if ( strName.IsEmpty() ) continue;
 
+				int nMode = SKINPARTMODE_TILE;
+				CString strMode = pXML->GetAttributeValue( L"mode" );
 				if ( strMode.CompareNoCase( L"stretch" ) == 0 )
 					nMode = SKINPARTMODE_STRETCH;
 				//else if ( strMode.CompareNoCase( L"tile" ) == 0 )
 				//	nMode = SKINPARTMODE_TILE;
-
-				CString strName = pXML->GetAttributeValue( L"name" );
-				if ( strName.IsEmpty() ) continue;
 
 				int nPart = 0;
 				for ( ; pszPart[ nPart ] ; nPart++ )
@@ -474,7 +471,6 @@ BOOL CSkinWindow::ParseRect(CXMLElement* pXML, CRect* pRect)
 	}
 
 	CString strPoint = pXML->GetAttributeValue( L"point" );
-
 	if ( ! strPoint.IsEmpty() )
 	{
 		int x, y;
@@ -486,6 +482,38 @@ BOOL CSkinWindow::ParseRect(CXMLElement* pXML, CRect* pRect)
 		pRect->left = x;
 		pRect->top = y;
 		pRect->right = pRect->bottom = 0;
+
+		CString strSize = pXML->GetAttributeValue( L"size" );
+		if ( ! strSize.IsEmpty() )
+		{
+			if ( _stscanf( strPoint, L"%i,%i", &x, &y ) != 2 )
+			{
+				theApp.Message( MSG_ERROR, IDS_SKIN_ERROR, L"Invalid [size] attribute", pXML->ToString() );
+			}
+			else
+			{
+				if ( x )
+					pRect->right  = pRect->left + x;
+				if ( y )
+					pRect->bottom = pRect->top + y;
+			}
+		}
+
+		// Infer 0 size values where possible
+		if ( ! pRect->right || ! pRect->bottom )
+		{
+			CString strName = pXML->GetAttributeValue( L"name" );
+			int nTruncate = strName.FindOneOf( L".HDA" );	// CloseHover/Down/Alt/.
+			if ( nTruncate ) strName = strName.Left( nTruncate );
+			CRect* pPartRect;
+			if ( m_pAnchorList.Lookup( strName, pPartRect ) || m_pPartList.Lookup( strName, pPartRect ) )
+			{
+				if ( ! pRect->right )
+					pRect->right = pRect->left + pPartRect->Width();
+				if ( ! pRect->bottom )
+					pRect->bottom = pRect->top + pPartRect->Height();
+			}
+		}
 
 		return TRUE;
 	}

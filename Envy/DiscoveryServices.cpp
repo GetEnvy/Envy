@@ -126,8 +126,8 @@ BOOL CDiscoveryServices::Add(LPCTSTR pszAddress, int nType, PROTOCOLID nProtocol
 
 	CString strAddress( pszAddress );
 
-	// Trim any excess whitespace or garbage at the end -sometimes get "//", "./", "./." etc. (Bad caches)
-	bool bEndSlash = strAddress.GetAt( strAddress.GetLength() - 1 ) == '/';
+	// Trim any excess whitespace or garbage at the end -Sometimes get "//", "./", "./." etc. (Bad caches)
+	bool bEndSlash = strAddress.GetAt( strAddress.GetLength() - 1 ) == L'/';
 	strAddress.Trim();
 	strAddress.TrimRight( L"./" );
 
@@ -629,7 +629,7 @@ BOOL CDiscoveryServices::EnoughServices() const
 void CDiscoveryServices::AddDefaults()
 {
 	CFile pFile;
-	CString strFile = Settings.General.Path + L"\\Data\\DefaultServices.dat";	// Settings.General.DataPath ?
+	CString strFile = Settings.General.DataPath + L"DefaultServices.dat";
 
 	if ( pFile.Open( strFile, CFile::modeRead ) )			// Load default list from file if possible
 	{
@@ -1303,6 +1303,7 @@ BOOL CDiscoveryServices::RequestWebCache(CDiscoveryService* pService, Mode nMode
 			m_nLastQueryProtocol = nProtocol;
 		}
 		break;
+
 	default:
 		ASSERT( FALSE );
 		return FALSE;
@@ -1400,7 +1401,7 @@ BOOL CDiscoveryServices::RunWebCacheGet(BOOL bCaches)
 	else
 		strURL += L"?get=1&hostfile=1";
 
-	//	strURL += L"&support=1";					// GWC network and status - ToDo: Use this parameter's output to check GWCs for self-network support relay.
+	//	strURL += L"&support=1";				// GWC network and status - ToDo: Use this parameter's output to check GWCs for self-network support relay.
 	//	strURL += L"&info=1";					// Maintainer Info - ToDo: Use this parameter's output to add info (about maintainer etc.) into new Discovery window columns.
 
 	if ( m_nLastQueryProtocol == PROTOCOL_G2 )
@@ -1417,9 +1418,10 @@ BOOL CDiscoveryServices::RunWebCacheGet(BOOL bCaches)
 		strURL += theApp.m_sVersion;
 	}
 
-	strURL += L"&getleaves=1&getnetworks=1&getclusters=0&getvendors=1&getuptime=1";	// Specification 2.1 additions... (cluster output disabled, as clustering concept was vague)
-
 	pLock.Unlock();
+
+	// Specification 2.1 additions... (cluster output disabled, as clustering concept was vague)
+	strURL += L"&getleaves=1&getnetworks=1&getclusters=0&getvendors=1&getuptime=1";
 
 	CString strOutput;
 	if ( ! SendWebCacheRequest( strURL, strOutput ) )
@@ -1456,101 +1458,102 @@ BOOL CDiscoveryServices::RunWebCacheGet(BOOL bCaches)
 		if ( oParts[ 0 ].CompareNoCase( L"h" ) == 0 )
 		{
 			// Hosts: "h|Host:Port|Age|Cluster|CurrentLeaves|VendorCode|Uptime|LeafLimit"
-			if ( oParts.GetCount() >= 3 )
+			if ( oParts.GetCount() < 3 )
+				return FALSE;	// Empty
+
+			// Get host and age fields
+			int nPos = oParts[ 1 ].Find( L':' );
+			if ( nPos < 6 )
+				return FALSE;	// Invalid format
+
+			DWORD nAddress = inet_addr( CT2CA( (LPCTSTR)oParts[ 1 ].Left( nPos ) ) );
+			if ( nAddress == INADDR_NONE || nAddress < 10 )
+				return FALSE;	// Invalid format
+
+			int nPort = 0;
+			if ( _stscanf( oParts[ 1 ].Mid( nPos + 1 ), L"%i", &nPort ) != 1 || nPort < 0 || nPort > 65535 )
+				return FALSE;	// Invalid format
+
+			int nSeconds = 0;
+			if ( _stscanf( oParts[ 2 ], L"%i", &nSeconds ) != 1 || nSeconds < 0 || nSeconds > 60 * 60 * 24 * 366 )		// 1yr+ ?
+				return FALSE;	// Invalid format
+
+			// Skip cluster field
+
+			// Get current leaves field
+			DWORD nCurrentLeaves = 0;
+			if ( oParts.GetCount() >= 5 && ! oParts[ 4 ].IsEmpty() )
 			{
-				// Get host and age fields
-				DWORD nAddress = INADDR_NONE;
-				int nPort = 0, nSeconds = 0;
-				int nPos = oParts[ 1 ].Find( L':' );
-				if ( nPos > 6 &&
-					( nAddress = inet_addr( CT2CA( (LPCTSTR)oParts[ 1 ].Left( nPos ) ) ) ) != INADDR_NONE &&
-					_stscanf( oParts[ 1 ].Mid( nPos + 1 ), L"%i", &nPort ) == 1 &&
-					nPort > 0 && nPort < 65536 &&
-					_stscanf( oParts[ 2 ], L"%i", &nSeconds ) == 1 &&
-					nSeconds >= 0 && nSeconds < 60 * 60 * 24 * 400 )	// Under 1 Year Old (?)
+				int nCurrentLeavesTmp;
+				if ( _stscanf( oParts[ 4 ], L"%i", &nCurrentLeavesTmp ) == 1 &&
+					nCurrentLeavesTmp >= 0 && nCurrentLeavesTmp < 2048 )
 				{
-					// Skip cluster field
-
-					// Get current leaves field
-					DWORD nCurrentLeaves = 0;
-					if ( oParts.GetCount() >= 5 && ! oParts[ 4 ].IsEmpty() )
-					{
-						int nCurrentLeavesTmp;
-						if ( _stscanf( oParts[ 4 ], L"%i", &nCurrentLeavesTmp ) == 1 &&
-							nCurrentLeavesTmp >= 0 && nCurrentLeavesTmp < 2048 )
-						{
-							nCurrentLeaves = nCurrentLeavesTmp;
-						}
-						else
-						{
-							// Bad current leaves format
-							return FALSE;
-						}
-					}
-
-					// Get vendor field
-					CVendor* pVendor = NULL;
-					if ( oParts.GetCount() >= 6 && ! oParts[ 5 ].IsEmpty() )
-					{
-						CString strVendor = oParts[ 5 ].Left( 4 );
-						if ( Security.IsVendorBlocked( strVendor ) )
-							return FALSE;	// Invalid client
-						pVendor = VendorCache.Lookup( strVendor );
-					}
-
-					// Get uptime field
-					DWORD tUptime = 0;
-					if ( oParts.GetCount() >= 7 && ! oParts[ 6 ].IsEmpty() )
-					{
-						int tUptimeTmp;
-						if ( _stscanf( oParts[ 6 ], L"%i", &tUptimeTmp ) == 1 &&
-							tUptimeTmp > 60 && tUptimeTmp < 60 * 60 * 24 * 365 )
-						{
-							tUptime = tUptimeTmp;
-						}
-						else
-						{
-							// Bad uptime format
-							return FALSE;
-						}
-					}
-
-					// Get leaf limit field
-					DWORD nLeafLimit = 0;
-					if ( oParts.GetCount() >= 8 && ! oParts[ 7 ].IsEmpty() )
-					{
-						int nLeafLimitTmp;
-						if ( _stscanf( oParts[ 7 ], L"%i", &nLeafLimitTmp ) == 1 &&
-							nLeafLimitTmp >= 0 && nLeafLimitTmp < 2048 )
-						{
-							nLeafLimit = nLeafLimitTmp;
-						}
-						else
-						{
-							// Bad uptime format
-							return FALSE;
-						}
-					}
-
-					const DWORD tSeen = static_cast< DWORD >( time( NULL ) ) - nSeconds;
-
-					if ( ( m_nLastQueryProtocol == PROTOCOL_G2 ) ?
-						HostCache.Gnutella2.Add( (IN_ADDR*)&nAddress, (WORD)nPort,
-							tSeen, ( pVendor ? (LPCTSTR)pVendor->m_sCode : NULL ),
-							tUptime, nCurrentLeaves, nLeafLimit ) :
-						HostCache.Gnutella1.Add( (IN_ADDR*)&nAddress, (WORD)nPort,
-							tSeen, ( pVendor ? (LPCTSTR)pVendor->m_sCode : NULL ),
-							tUptime, nCurrentLeaves, nLeafLimit ) )
-					{
-						m_pWebCache->OnHostAdd();
-						nHosts++;
-					}
+					nCurrentLeaves = nCurrentLeavesTmp;
 				}
 				else
-					return FALSE;	// Invalid format
+				{
+					// Bad current leaves format
+					return FALSE;
+				}
 			}
-			else
-				return FALSE;		// Empty
+
+			// Get vendor field
+			CVendor* pVendor = NULL;
+			if ( oParts.GetCount() >= 6 && ! oParts[ 5 ].IsEmpty() )
+			{
+				CString strVendor = oParts[ 5 ].Left( 4 );
+				if ( Security.IsVendorBlocked( strVendor ) )
+					return FALSE;	// Invalid client
+				pVendor = VendorCache.Lookup( strVendor );
+			}
+
+			// Get uptime field
+			DWORD tUptime = 0;
+			if ( oParts.GetCount() >= 7 && ! oParts[ 6 ].IsEmpty() )
+			{
+				int tUptimeTmp;
+				if ( _stscanf( oParts[ 6 ], L"%i", &tUptimeTmp ) == 1 &&
+					tUptimeTmp > 60 && tUptimeTmp < 60 * 60 * 24 * 365 )
+				{
+					tUptime = tUptimeTmp;
+				}
+				else
+				{
+					// Bad uptime format
+					return FALSE;
+				}
+			}
+
+			// Get leaf limit field
+			DWORD nLeafLimit = 0;
+			if ( oParts.GetCount() >= 8 && ! oParts[ 7 ].IsEmpty() )
+			{
+				int nLeafLimitTmp;
+				if ( _stscanf( oParts[ 7 ], L"%i", &nLeafLimitTmp ) == 1 &&
+					nLeafLimitTmp >= 0 && nLeafLimitTmp < 2048 )
+				{
+					nLeafLimit = nLeafLimitTmp;
+				}
+				else
+				{
+					// Bad uptime format
+					return FALSE;
+				}
+			}
+
+			const DWORD tSeen = static_cast< DWORD >( time( NULL ) ) - nSeconds;
+
+			if ( ( m_nLastQueryProtocol == PROTOCOL_G2 ) ?
+				HostCache.Gnutella2.Add( (IN_ADDR*)&nAddress, (WORD)nPort,
+					tSeen, ( pVendor ? (LPCTSTR)pVendor->m_sCode : NULL ),
+					tUptime, nCurrentLeaves, nLeafLimit ) :
+				HostCache.Gnutella1.Add( (IN_ADDR*)&nAddress, (WORD)nPort,
+					tSeen, ( pVendor ? (LPCTSTR)pVendor->m_sCode : NULL ),
+					tUptime, nCurrentLeaves, nLeafLimit ) )
+			{
+				m_pWebCache->OnHostAdd();
+				nHosts++;
+			}
 		}
 		else if ( oParts[ 0 ].CompareNoCase( L"u" ) == 0 )
 		{
@@ -1885,14 +1888,6 @@ BOOL CDiscoveryServices::RunWebCacheUpdate()
 			return TRUE;
 		}
 
-		if ( _tcsistr( strLine, L"i|warning|client|early" ) != NULL ||
-			 _tcsistr( strLine, L"i|warning|You came back too early" ) != NULL ||
-			 _tcsistr( strLine, L"WARNING: You came back too early" ) != NULL )
-		{
-			// Old Beacon Cache type flood warning (404s for 0.4.1+).
-			return FALSE;
-		}
-
 		if ( _tcsistr( strLine, L"ERROR" ) != NULL )
 		{
 			// GhostWhiteCrab type flood warning.
@@ -1902,19 +1897,23 @@ BOOL CDiscoveryServices::RunWebCacheUpdate()
 			return FALSE;
 		}
 
-		if ( strLine == L"i|force|remove" )
+		if ( StartsWith( strLine, _P( L"i|" ) ) )
 		{
-			m_pWebCache->Remove();
-			return FALSE;
-		}
+			if ( strLine == L"i|force|remove" )
+			{
+				m_pWebCache->Remove();
+				return FALSE;
+			}
 
-		if ( _tcsnicmp( strLine, L"i|access|period|", 16 ) == 0 )
-		{
-			_stscanf( (LPCTSTR)strLine + 16, L"%lu", &m_pWebCache->m_nAccessPeriod );
-		}
-		else if ( _tcsnicmp( strLine, L"i|update|period|", 16 ) == 0 )
-		{
-			_stscanf( (LPCTSTR)strLine + 16, L"%lu", &m_pWebCache->m_nUpdatePeriod );
+			if ( _tcsistr( strLine, L"i|warning|client|early" ) != NULL ||
+				 _tcsistr( strLine, L"i|warning|You came back too early" ) != NULL )
+				 //_tcsistr( strLine, L"WARNING: You came back too early" ) != NULL )
+				return FALSE;	// Old Beacon Cache type flood warning (404s for 0.4.1+)
+
+			if ( _tcsnicmp( strLine, L"i|access|period|", 16 ) == 0 )
+				_stscanf( (LPCTSTR)strLine + 16, L"%lu", &m_pWebCache->m_nAccessPeriod );
+			else if ( _tcsnicmp( strLine, L"i|update|period|", 16 ) == 0 )
+				_stscanf( (LPCTSTR)strLine + 16, L"%lu", &m_pWebCache->m_nUpdatePeriod );
 		}
 	}
 

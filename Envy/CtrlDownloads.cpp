@@ -47,10 +47,10 @@ static char THIS_FILE[] = __FILE__;
 enum {
 	COL_TITLE,
 	COL_SIZE,
-	COL_PROGRESS,
 	COL_TRANSFER,
-	COL_PERCENT,
 	COL_SPEED,
+	COL_PROGRESS,
+	COL_PERCENT,
 	COL_STATUS,
 	COL_CLIENT,
 	COL_COUNTRY,
@@ -145,12 +145,12 @@ int CDownloadsCtrl::OnCreate(LPCREATESTRUCT lpCreateStruct)
 
 	InsertColumn( COL_TITLE, L"Downloaded File", LVCFMT_LEFT, rect.Width() > 1600 ? 400 : 300 );
 	InsertColumn( COL_SIZE, L"Size", LVCFMT_CENTER, 64 );
-	InsertColumn( COL_PROGRESS, L"Progress", LVCFMT_CENTER, 100 );
 	InsertColumn( COL_TRANSFER, L"Transfer", LVCFMT_CENTER, 64 );
-	InsertColumn( COL_PERCENT, L"Percent", LVCFMT_CENTER, 60 );
-	InsertColumn( COL_SPEED, L"Speed", LVCFMT_CENTER, 76 );
-	InsertColumn( COL_STATUS, L"Status", LVCFMT_CENTER, 80 );
-	InsertColumn( COL_CLIENT, L"Client", LVCFMT_CENTER, 100 );
+	InsertColumn( COL_SPEED, L"Speed", LVCFMT_CENTER, 74 );
+	InsertColumn( COL_PROGRESS, L"Progress", LVCFMT_CENTER, 100 );
+	InsertColumn( COL_PERCENT, L"Percent", LVCFMT_CENTER, 58 );
+	InsertColumn( COL_STATUS, L"Status", LVCFMT_CENTER, 76 );
+	InsertColumn( COL_CLIENT, L"Client", LVCFMT_CENTER, 108 );
 	InsertColumn( COL_COUNTRY, L"Country", LVCFMT_LEFT, 54 );
 
 	LoadColumnState();

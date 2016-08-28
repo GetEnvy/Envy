@@ -255,7 +255,7 @@ void CPackagePage::OnRemoveFile()
 			{
 				m_nTotalSize -= _wtoi( strSize );
 				m_sFileCount.Format( L"%i Files in this Torrent package:", m_wndList.GetItemCount() );
-				m_sTotalSize.Format( L"%s", SmartSize( m_nTotalSize ) );
+				m_sTotalSize.Format( L"%s", (LPCTSTR)SmartSize( m_nTotalSize ) );
 			}
 			else
 			{
@@ -324,8 +324,7 @@ void CPackagePage::AddFile(LPCTSTR pszFile)
 
 	SHFILEINFO pInfo = {};
 
-	HIMAGELIST hIL = (HIMAGELIST)SHGetFileInfo( pszFile, 0, &pInfo, sizeof(pInfo),
-		SHGFI_SYSICONINDEX|SHGFI_SMALLICON );
+	HIMAGELIST hIL = (HIMAGELIST)SHGetFileInfo( pszFile, 0, &pInfo, sizeof(pInfo), SHGFI_SYSICONINDEX|SHGFI_SMALLICON );
 
 	if ( hIL != NULL && m_hImageList == NULL )
 	{
@@ -340,13 +339,13 @@ void CPackagePage::AddFile(LPCTSTR pszFile)
 		pszFile, 0, 0, pInfo.iIcon, NULL );
 
 	CString strBytes;
-	strBytes.Format( L"%i", nSize );
+	strBytes.Format( L"%llu", nSize );
 
 	m_wndList.SetItemText( nItem, 1, SmartSize( nSize ) );
 	m_wndList.SetItemText( nItem, 2, strBytes );
 
 	m_nTotalSize += nSize;
-	m_sTotalSize.Format( L"%s", SmartSize( m_nTotalSize ) );
+	m_sTotalSize.Format( L"%s", (LPCTSTR)SmartSize( m_nTotalSize ) );
 	m_sFileCount.Format( L"%i Files in this Torrent package:", m_wndList.GetItemCount() );
 
 	UpdateData( FALSE );

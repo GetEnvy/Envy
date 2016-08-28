@@ -177,20 +177,20 @@ void CUploadsSettingsPage::UpdateQueues()
 
 		CUploadQueue* pQueue = UploadQueues.GetNext( pos );
 
-		// If queue is ed2k only and we need to be connected to upload, Then queue is inactive ed2k isn't enabled
-		if ( ( ( pQueue->m_nProtocols & ( 1 << PROTOCOL_ED2K ) ) != 0 ) && ( Settings.Connection.RequireForTransfers ) )
+		// If queue is ed2k only and we need to be connected to upload, then queue is inactive ed2k isn't enabled
+		if ( Settings.Connection.RequireForTransfers && ( ( pQueue->m_nProtocols & ( 1 << PROTOCOL_ED2K ) ) != 0 ) )
 			bDonkeyOnlyDisabled = !( Settings.eDonkey.EnableAlways | Settings.eDonkey.Enabled );
 
 		// If the queue is inactive and we're in basic GUI mode
-		if ( ( bDonkeyOnlyDisabled ) && (Settings.General.GUIMode == GUI_BASIC) )
+		if ( bDonkeyOnlyDisabled && Settings.General.GUIMode == GUI_BASIC )
 			continue;	// Skip drawing this queue
 
 		CLiveItem* pItem = pQueues.Add( pQueue );
 
-		if ( ( pQueue->m_bEnable ) && ( ! bDonkeyOnlyDisabled ) )
+		if ( pQueue->m_bEnable && ! bDonkeyOnlyDisabled )
 		{
 			QWORD nBandwidth = nLimit * pQueue->m_nBandwidthPoints / max( 1ul, UploadQueues.GetTotalBandwidthPoints( TRUE ) );
-			pItem->Set( 2, Settings.SmartSpeed( nBandwidth ) + '+' );
+			pItem->Set( 2, Settings.SmartSpeed( nBandwidth ) + L'+' );
 			pItem->Format( 3, L"%u-%u", pQueue->m_nMinTransfers, pQueue->m_nMaxTransfers );
 
 			pItem->SetImage( CoolInterface.ImageForID( ID_VIEW_UPLOADS ) );

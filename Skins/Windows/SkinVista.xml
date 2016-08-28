@@ -1087,24 +1087,24 @@
  <part name="_ID_TAB_LIBRARY.Checked"	rect="292,24,74,24"/>
  <part name="_ID_TAB_LIBRARY.Hover"	rect="292,48,74,24"/>
  <part name="_ID_TAB_LIBRARY.Down"	rect="292,72,74,24"/>
- <part name="_ID_TAB_MEDIA.Up"  	rect="366,0,70,24"/>
- <part name="_ID_TAB_MEDIA.Checked"	rect="366,24,70,24"/>
- <part name="_ID_TAB_MEDIA.Hover"	rect="366,48,70,24"/>
- <part name="_ID_TAB_MEDIA.Down"	rect="366,72,70,24"/>
- <part name="_ID_TAB_IRC.Up"		rect="436,0,60,24"/>
- <part name="_ID_TAB_IRC.Checked"	rect="436,24,60,24"/>
- <part name="_ID_TAB_IRC.Hover" 	rect="436,48,60,24"/>
- <part name="_ID_TAB_IRC.Down"		rect="436,72,60,24"/>
+ <part name="_ID_TAB_MEDIA.Up"  	rect="366,0,68,24"/>
+ <part name="_ID_TAB_MEDIA.Checked"	rect="366,24,68,24"/>
+ <part name="_ID_TAB_MEDIA.Hover"	rect="366,48,68,24"/>
+ <part name="_ID_TAB_MEDIA.Down"	rect="366,72,68,24"/>
+ <part name="_ID_TAB_IRC.Up"		rect="434,0,60,24"/>
+ <part name="_ID_TAB_IRC.Checked"	rect="434,24,60,24"/>
+ <part name="_ID_TAB_IRC.Hover" 	rect="434,48,60,24"/>
+ <part name="_ID_TAB_IRC.Down"		rect="434,72,60,24"/>
 </parts>
 <anchors>
- <anchor name="Background"			rect="0,0,504,28"/>
+ <anchor name="Background"			rect="0,0,502,28"/>
  <anchor name="_ID_TAB_HOME"		rect="6,2,76,24"/>
  <anchor name="_ID_TAB_SEARCH"		rect="82,2,68,24"/>
  <anchor name="_ID_TAB_TRANSFERS"	rect="150,2,78,24"/>
  <anchor name="_ID_TAB_NETWORK"		rect="228,2,70,24"/>
  <anchor name="_ID_TAB_LIBRARY"		rect="298,2,74,24"/>
- <anchor name="_ID_TAB_MEDIA"		rect="372,2,70,24"/>
- <anchor name="_ID_TAB_IRC" 		rect="442,2,60,24"/>
+ <anchor name="_ID_TAB_MEDIA"		rect="372,2,68,24"/>
+ <anchor name="_ID_TAB_IRC" 		rect="440,2,60,24"/>
 </anchors>
 </windowSkin>
 

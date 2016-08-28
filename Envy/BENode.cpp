@@ -357,7 +357,7 @@ const CString CBENode::Encode() const
 			const DWORD nLen = (DWORD)min( m_nValue, 100ll );
 			for ( DWORD n = 0 ; n < nLen ; n++ )
 			{
-				strOutput += ( ( ( (LPSTR)m_pValue )[ n ] < ' ' ) ? '.' : ( (LPSTR)m_pValue )[ n ] );
+				strOutput += ( ( ( (LPSTR)m_pValue )[ n ] < ' ' ) ? '.' : ( (LPSTR)m_pValue )[ n ] );	// Not L''
 			}
 		}
 		strOutput += L'\"';
@@ -365,7 +365,7 @@ const CString CBENode::Encode() const
 		break;
 
 	case beInt:
-		strOutput.Format( L"%I64u", m_nValue );
+		strOutput.Format( L"%I64i", m_nValue );
 		break;
 
 	case beList:

@@ -365,6 +365,7 @@
 	</members>
 	<typeFilter>
 		<type extension="envy"/>
+		<type extension="env"/>
 		<type extension="psk"/>
 		<type extension="sks"/>
 	</typeFilter>

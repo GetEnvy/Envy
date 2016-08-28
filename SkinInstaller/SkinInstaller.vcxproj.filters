@@ -54,6 +54,6 @@
     <None Include="Res\Skin.ico">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="Readme.txt" />
+    <None Include="Res\Manifest.xml" />
   </ItemGroup>
 </Project>

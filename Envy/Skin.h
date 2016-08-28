@@ -58,6 +58,7 @@ public:
 	BOOL		LoadControlTip(CString& str, UINT nCtrlID);
 	BOOL		LoadRemoteText(CString& str, const CString& strTag);
 	int			GetTextFlowChange(LPCTSTR pszText, BOOL* bIsRTL);
+	void		CheckExceptions(CString& str, BOOL bExtensive=FALSE);		// Special case overrides (Primarily Alt Brittish spelling)
 protected:
 	BOOL		LoadStrings(CXMLElement* pBase);
 	BOOL		LoadControlTips(CXMLElement* pBase);

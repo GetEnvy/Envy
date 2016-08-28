@@ -32,6 +32,8 @@ public:
 	enum { IDD = IDD_WIZARD_WELCOME };
 
 protected:
+	CStatic	m_wndLogo;
+
 	virtual BOOL OnSetActive();
 	virtual void DoDataExchange(CDataExchange* pDX);
 	virtual BOOL OnInitDialog();

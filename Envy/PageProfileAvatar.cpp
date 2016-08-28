@@ -69,7 +69,7 @@ BOOL CAvatarProfilePage::OnInitDialog()
 	if ( CXMLElement* pAvatar = MyProfile.GetXML( L"avatar" ) )
 		m_sAvatar = pAvatar->GetAttributeValue( L"path" );
 	else
-		m_sAvatar = Settings.General.Path + L"\\Data\\DefaultAvatar.png";	// Settings.General.DataPath ?
+		m_sAvatar = Settings.General.DataPath + L"DefaultAvatar.png";
 
 	PrepareImage();
 

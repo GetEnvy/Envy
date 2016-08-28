@@ -786,8 +786,7 @@ void CDownloadWithTiger::FinishValidation()
 			m_pTigerBlock[ m_nVerifyBlock ] = TRI_FALSE;
 
 			QWORD nOffset = QWORD(m_nVerifyBlock) * QWORD(m_nTigerSize);
-			oCorrupted.insert( oCorrupted.end(), Fragments::Fragment( nOffset,
-				min( nOffset + m_nTigerSize, m_nSize ) ) );
+			oCorrupted.insert( oCorrupted.end(), Fragments::Fragment( nOffset, min( nOffset + m_nTigerSize, m_nSize ) ) );
 		}
 	}
 	else if ( m_nVerifyHash == HASH_ED2K && m_pHashsetBlock )
@@ -802,8 +801,7 @@ void CDownloadWithTiger::FinishValidation()
 			m_pHashsetBlock[ m_nVerifyBlock ] = TRI_FALSE;
 
 			QWORD nOffset = QWORD(m_nVerifyBlock) * QWORD(ED2K_PART_SIZE);
-			oCorrupted.insert( oCorrupted.end(), Fragments::Fragment( nOffset,
-				min( nOffset + ED2K_PART_SIZE, m_nSize ) ) );
+			oCorrupted.insert( oCorrupted.end(), Fragments::Fragment( nOffset, min( nOffset + ED2K_PART_SIZE, m_nSize ) ) );
 		}
 	}
 	else if ( m_nVerifyHash == HASH_TORRENT && m_pTorrentBlock )
@@ -820,8 +818,7 @@ void CDownloadWithTiger::FinishValidation()
 			m_pTorrentBlock[ m_nVerifyBlock ] = TRI_FALSE;
 
 			QWORD nOffset = QWORD(m_nVerifyBlock) * QWORD(m_nTorrentSize);
-			oCorrupted.insert( oCorrupted.end(), Fragments::Fragment( nOffset,
-				min( nOffset + m_nTorrentSize, m_nSize ) ) );
+			oCorrupted.insert( oCorrupted.end(), Fragments::Fragment( nOffset, min( nOffset + m_nTorrentSize, m_nSize ) ) );
 		}
 	}
 
@@ -1018,12 +1015,13 @@ BOOL CDownloadWithTiger::GetFragment(CDownloadTransfer* pTransfer)
 	{
 		if ( pOther->m_bRecvBackwards )
 		{
-			if ( pOther->m_nOffset + pOther->m_nLength - pOther->m_nPosition
-				 != oLargest.end() ) continue;
+			if ( pOther->m_nOffset + pOther->m_nLength - pOther->m_nPosition != oLargest.end() )
+				 continue;
 		}
 		else
 		{
-			if ( pOther->m_nOffset + pOther->m_nPosition != oLargest.begin() ) continue;
+			if ( pOther->m_nOffset + pOther->m_nPosition != oLargest.begin() )
+				continue;
 		}
 
 		pExisting = pOther;
@@ -1087,7 +1085,7 @@ BOOL CDownloadWithTiger::GetFragment(CDownloadTransfer* pTransfer)
 //			if ( strRanges.IsEmpty() )
 //				strRanges = L"bytes ";
 //			else
-//				strRanges += ',';
+//				strRanges += L',';
 //
 //			strRange.Format( L"%I64i-%I64i", nOffset, nOffset + nLength - 1 );
 //			strRanges += strRange;

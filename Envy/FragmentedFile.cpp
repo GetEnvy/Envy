@@ -527,10 +527,10 @@ int CFragmentedFile::SelectFile(CSingleLock* pLock) const
 	{
 		// Special case single file detection (disregard tracker spam)
 		if ( m_oFile[ 1 ].m_nSize < 100 &&
-			StartsWith( m_oFile[ 1 ].m_sName.Mid( m_oFile[ 1 ].m_sName.Find( L'\\' ) + 1 ), L"Torrent downloaded from", 23 ) )
+			 StartsWith( m_oFile[ 1 ].m_sName.Mid( m_oFile[ 1 ].m_sName.Find( L'\\' ) + 1 ), L"Torrent downloaded from", 23 ) )
 			return 0;
 		if ( m_oFile[ 0 ].m_nSize < 100 &&
-			StartsWith( m_oFile[ 0 ].m_sName.Mid( m_oFile[ 0 ].m_sName.Find( L'\\' ) + 1 ), L"Torrent downloaded from", 23 ) )
+			 StartsWith( m_oFile[ 0 ].m_sName.Mid( m_oFile[ 0 ].m_sName.Find( L'\\' ) + 1 ), L"Torrent downloaded from", 23 ) )
 			return 1;
 	}
 
@@ -882,8 +882,7 @@ BOOL CFragmentedFile::Write(QWORD nOffset, LPCVOID pData, QWORD nLength, QWORD* 
 		QWORD nStart = max( pMatches.first->begin(), oMatch.begin() );
 		QWORD nToWrite = min( pMatches.first->end(), oMatch.end() ) - nStart;
 
-		const char* pSource
-			= static_cast< const char* >( pData ) + ( nStart - oMatch.begin() );
+		const char* pSource = static_cast< const char* >( pData ) + ( nStart - oMatch.begin() );
 
 		QWORD nWritten = 0;
 		if ( ! VirtualWrite( nStart, pSource, nToWrite, &nWritten ) )
@@ -924,8 +923,7 @@ BOOL CFragmentedFile::VirtualRead(QWORD nOffset, char* pBuffer, QWORD nBuffer, Q
 	ASSERT( pBuffer != NULL && AfxIsValidAddress( pBuffer, nBuffer ) );
 
 	// Find first file
-	CVirtualFile::const_iterator i = std::find_if( m_oFile.begin(), m_oFile.end(),
-		bind2nd( Greater(), nOffset ) );
+	CVirtualFile::const_iterator i = std::find_if( m_oFile.begin(), m_oFile.end(), bind2nd( Greater(), nOffset ) );
 	if ( i != m_oFile.begin() )
 		--i;
 
@@ -975,8 +973,7 @@ BOOL CFragmentedFile::VirtualWrite(QWORD nOffset, const char* pBuffer, QWORD nBu
 	ASSERT( pBuffer != NULL && AfxIsValidAddress( pBuffer, nBuffer ) );
 
 	// Find first file
-	CVirtualFile::const_iterator i = std::find_if( m_oFile.begin(), m_oFile.end(),
-		bind2nd( Greater(), nOffset ) );
+	CVirtualFile::const_iterator i = std::find_if( m_oFile.begin(), m_oFile.end(), bind2nd( Greater(), nOffset ) );
 	if ( i != m_oFile.begin() )
 		--i;
 
@@ -1037,6 +1034,5 @@ BOOL CFragmentedFile::EnsureWrite()
 {
 	CQuickLock oLock( m_pSection );
 
-	return ( std::count_if( m_oFile.begin(), m_oFile.end(),
-		EnsureWriter() ) == (int)m_oFile.size() );
+	return ( std::count_if( m_oFile.begin(), m_oFile.end(), EnsureWriter() ) == (int)m_oFile.size() );
 }

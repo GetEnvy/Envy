@@ -35,14 +35,14 @@
  <option name="ButtonEdge" value="3"/>
  <option name="Taskbar" value="25" width="204"/>
  <option name="Menubar" value="36"/>
- <!--option name="Toolbar" value="28"-->
+ <option name="Toolbar" value="27"/>
  <!--option name="Titlebar" value="64"-->
  <!--option name="MonitorBar" value="120"-->
  <!--option name="Groupsbar" value="24" width="140"-->
  <option name="Sidebar" value="210"/>
  <option name="SidebarPadding" value="14"/>
  <!--option name="Splitter" value="6"-->
- <option name="RowSize" value="18"/>
+ <option name="RowSize" value="19"/>
  <option name="RoundedSelect" value="false"/>
 </options>
 

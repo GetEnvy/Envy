@@ -327,8 +327,6 @@
 		<type extension="cbz"/>
 		<type extension="cb7"/>
 		<type extension="dat"/>
-		<type extension="dll"/>
-		<type extension="exe"/>
 		<type extension="envy"/>
 		<type extension="iso"/>
 		<type extension="jar"/>

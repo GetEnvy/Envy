@@ -49,6 +49,7 @@ CWizardWelcomePage::~CWizardWelcomePage()
 void CWizardWelcomePage::DoDataExchange(CDataExchange* pDX)
 {
 	CWizardPage::DoDataExchange(pDX);
+	DDX_Control(pDX, IDC_LOGO, m_wndLogo);
 }
 
 /////////////////////////////////////////////////////////////////////////////
@@ -59,6 +60,8 @@ BOOL CWizardWelcomePage::OnInitDialog()
 	CWizardPage::OnInitDialog();
 
 	Skin.Apply( L"CWizardWelcomePage", this );
+
+	m_wndLogo.SetBitmap( Skin.LoadBitmap( IDR_LOGO ) );
 
 	SetWizardButtons( PSWIZB_NEXT );
 

@@ -1057,12 +1057,14 @@ void CDownloads::OnRun()
 			nBandwidthAvailableED2K = max( UploadQueues.GetMinimumDonkeyBandwidth(), UploadQueues.GetCurrentDonkeyBandwidth() );
 			if ( nBandwidthAvailableED2K < 10240 )
 			{
-				bDonkeyRatioActive = TRUE;
 				// ED2K 3:1 ratio if you aren't uploading at 10KB/s
 				nBandwidthAvailableED2K *= 3;
+				bDonkeyRatioActive = TRUE;
 			}
 			else
+			{
 				nBandwidthAvailableED2K = 0;
+			}
 		}
 
 		// Limit the transfers. Faster transfers get a bigger share of the bandwidth
@@ -1080,8 +1082,8 @@ void CDownloads::OnRun()
 			else
 			{
 				double nPercentageUsed = (double)nCurrentSpeed / (double)nTotalBandwidth;
-				nPercentageUsed = min(nPercentageUsed, 0.90);
-				nLimit = (DWORD)(nBandwidthAvailable * nPercentageUsed);
+				nPercentageUsed = min( nPercentageUsed, 0.90 );
+				nLimit = (DWORD)( nBandwidthAvailable * nPercentageUsed );
 			}
 
 			// eDonkey ratio
@@ -1099,8 +1101,8 @@ void CDownloads::OnRun()
 				else
 				{
 					double nPercentageUsed = (double)nCurrentSpeed / (double)nTotalBandwidthED2K;
-					nPercentageUsed = min(nPercentageUsed, 0.90);
-					nLimitED2K = (DWORD)(nBandwidthAvailableED2K * nPercentageUsed );
+					nPercentageUsed = min( nPercentageUsed, 0.90 );
+					nLimitED2K = (DWORD)( nBandwidthAvailableED2K * nPercentageUsed );
 				}
 
 				nLimit = ( nLimit ? min( nLimit, nLimitED2K ) : nLimitED2K );

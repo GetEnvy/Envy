@@ -251,8 +251,9 @@
 	<resource code="40122" id="ID_HELP_WEB_2"/>
 	<resource code="40123" id="ID_HELP_WEB_3"/>
 	<resource code="40124" id="ID_HELP_WEB_4"/>
-	<resource code="40125" id="ID_HELP_WEB_BITPRINTS"/>
-	<resource code="40126" id="ID_HELP_WEB_SKINS"/>
+	<resource code="40125" id="ID_HELP_WEB_SKINS"/>
+	<resource code="40126" id="ID_HELP_WEB_BITPRINTS"/>
+	<resource code="40127" id="ID_HELP_WEB_KICKBACKS"/>
 	<resource code="40128" id="ID_HELP_WARNINGS"/>
 	<resource code="40129" id="ID_HELP_STARTPAGE"/>
 	<resource code="40130" id="ID_HOSTCACHE_CONNECT"/>

@@ -172,7 +172,7 @@ BOOL CEmoticons::Load()
 		m_pImage.Create( EMOTICON_SIZE, EMOTICON_SIZE, ILC_COLOR24|ILC_MASK, 1, 8 ) ||
 		m_pImage.Create( EMOTICON_SIZE, EMOTICON_SIZE, ILC_COLOR16|ILC_MASK, 1, 8 );
 
-	if ( ! LoadXML( Settings.General.Path + L"\\Data\\Emoticons.xml" ) )		// Settings.General.DataPath ?
+	if ( ! LoadXML( Settings.General.DataPath + L"Emoticons.xml" ) )
 		return FALSE;
 
 	BuildTokens();

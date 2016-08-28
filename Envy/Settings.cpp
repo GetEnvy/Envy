@@ -135,10 +135,11 @@ void CSettings::Load()
 	Add( L"Interface", L"AutoComplete", &Interface.AutoComplete, true );
 	Add( L"Interface", L"CoolMenuEnable", &Interface.CoolMenuEnable, true );
 	Add( L"Interface", L"LowResMode", &Interface.LowResMode, false );
-	Add( L"Interface", L"SaveOpenWindows", &Interface.SaveOpenWindows, General.GUIMode != GUI_BASIC );
+	Add( L"Interface", L"DisplayScaling", &Interface.DisplayScaling, 100, 1, 100, 200, L" %" );			// Windows high dpi zoom
 	Add( L"Interface", L"RefreshRateGraph", &Interface.RefreshRateGraph, 72, 1, 10, 60000, L" ms" );	// 30sec display areas
-	Add( L"Interface", L"RefreshRateText", &Interface.RefreshRateText, 650, 1, 10, 10000, L" ms" );	// 3x per 2 sec.
-	Add( L"Interface", L"RefreshRateUI", &Interface.RefreshRateUI, theApp.m_nWinVer < WIN_XP_64 ? 300 : 100, 1, 10, 2000, L" ms" );	// 3/10x per sec. (Button status)
+	Add( L"Interface", L"RefreshRateText", &Interface.RefreshRateText, 650, 1, 10, 10000, L" ms" );		// 3x per 2 sec.
+	Add( L"Interface", L"RefreshRateUI", &Interface.RefreshRateUI, theApp.m_nWinVer < WIN_VISTA ? 300 : 100, 1, 10, 2000, L" ms" );	// 3/10x per sec. (Button status)
+	Add( L"Interface", L"SaveOpenWindows", &Interface.SaveOpenWindows, General.GUIMode != GUI_BASIC );
 	Add( L"Interface", L"TipDelay", &Interface.TipDelay, 500, 1, 100, 5000, L" ms" );
 	Add( L"Interface", L"TipAlpha", &Interface.TipAlpha, 240, 1, 50, 255 );
 	Add( L"Interface", L"TipDownloads", &Interface.TipDownloads, true );
@@ -182,7 +183,7 @@ void CSettings::Load()
 	Add( L"Toolbars", L"ShowMonitor", &Toolbars.ShowMonitor, true );
 
 	Add( L"Fonts", L"Quality", &Fonts.Quality, 0, 1, 0, 6 );	// 	CLEARTYPE_QUALITY etc.
-	Add( L"Fonts", L"DefaultSize", &Fonts.DefaultSize, 11, 1, 9, 12, L" px" );
+	Add( L"Fonts", L"DefaultSize", &Fonts.DefaultSize, 11, 1, 8, 16, L" px" );
 #ifdef NOXP
 	Add( L"Fonts", L"DefaultFont", &Fonts.DefaultFont, L"Segoe UI" , false, setFont );
 	Add( L"Fonts", L"SystemLogFont", &Fonts.SystemLogFont, L"Segoe UI", false, setFont );
@@ -211,7 +212,7 @@ void CSettings::Load()
 	Add( L"Library", L"MaliciousFileSize", &Library.MaliciousFileSize, 2*MegaByte, KiloByte, KiloByte, 10*MegaByte, L" KB" );
 	Add( L"Library", L"MaliciousFileTypes", &Library.MaliciousFileTypes, L"|exe|com|bat|vbs|scr|zip|rar|ace|7z|cab|lzh|tar|tgz|bz2|wma|wmv|" );
 	Add( L"Library", L"PrivateTypes", &Library.PrivateTypes, L"|vbs|js|jc!|fb!|bc!|!ut|db3|dbx|part|partial|pst|reget|getright|crdownload|pif|lnk|url|pd|sd|wab|m4p|infodb|racestats|svn|chk|tmp|temp|ini|inf|log|old|manifest|met|bak|$$$|---|~~~|###|__incomplete___|" );
-	Add( L"Library", L"SafeExecute", &Library.SafeExecute, L"|3gp|7z|aac|ace|ape|asf|avi|bmp|cbr|cbz|co|collection|divx|envy|flv|flac|gif|iso|jpg|jpeg|lit|mid|mov|m1v|m2v|m3u|m4a|mka|mkv|mp2|mp3|mp4|mpa|mpe|mpg|mpeg|ogg|ogm|pdf|png|psk|qt|rar|rm|sks|swf|rtf|tar|tgz|torrent|txt|wav|zip|" );
+	Add( L"Library", L"SafeExecute", &Library.SafeExecute, L"|3gp|7z|aac|ace|ape|asf|avi|bmp|cbr|cbz|co|collection|divx|envy|env|flv|flac|gif|iso|jpg|jpeg|lit|mid|mov|m1v|m2v|m3u|m4v|m4a|mka|mkv|mp2|mp3|mp4|mpa|mpe|mpg|mpeg|ogg|ogm|pdf|png|psk|qt|rar|rm|sks|swf|rtf|tar|tgz|torrent|txt|wav|webm|webp|zip|" );
 	Add( L"Library", L"SchemaURI", &Library.SchemaURI, CSchema::uriAudio );
 	Add( L"Library", L"ScanAPE", &Library.ScanAPE, true );
 	Add( L"Library", L"ScanASF", &Library.ScanASF, true );
@@ -594,7 +595,7 @@ void CSettings::Load()
 	Add( L"Downloads", L"VerifyTorrent", &Downloads.VerifyTorrent, true );
 	Add( L"Downloads", L"NoRandomFragments", &Downloads.NoRandomFragments, false );	// ToDo: Streaming Download and Rarest Piece Selection
 	Add( L"Downloads", L"WebHookEnable", &Downloads.WebHookEnable, false );
-	Add( L"Downloads", L"WebHookExtensions", &Downloads.WebHookExtensions, L"|zip|zipx|7z|rar|r0|ace|z|gz|tgz|tar|arj|lzh|sit|hqx|fml|grs|cbr|cbz|aac|mp3|mp4|mkv|iso|msi|exe|bin|psk|sks|envy" );
+	Add( L"Downloads", L"WebHookExtensions", &Downloads.WebHookExtensions, L"|zip|zipx|7z|rar|r0|ace|z|gz|tgz|tar|arj|lzh|sit|hqx|fml|grs|cbr|cbz|aac|mp3|mp4|mkv|iso|msi|exe|bin|psk|sks|env|envy" );
 
 	Add( L"Uploads", L"AllowBackwards", &Uploads.AllowBackwards, true );
 	Add( L"Uploads", L"AutoClear", &Uploads.AutoClear, false );
@@ -696,8 +697,6 @@ void CSettings::Load()
 	{
 		if ( General.UserPath.IsEmpty() )
 			General.UserPath = theApp.GetAppDataFolder() + L"\\Envy";
-		if ( General.DataPath.IsEmpty() )
-			General.DataPath = General.UserPath + L"\\Data\\";
 		if ( Downloads.IncompletePath.IsEmpty() )
 			Downloads.IncompletePath = theApp.GetLocalAppDataFolder() + L"\\Envy\\Incomplete";
 		if ( Downloads.CompletePath.IsEmpty() )
@@ -707,13 +706,14 @@ void CSettings::Load()
 	{
 		if ( General.UserPath.IsEmpty() )
 			General.UserPath = General.Path;
-		if ( General.DataPath.IsEmpty() )
-			General.DataPath = General.UserPath + L"\\Data\\";
 		if ( Downloads.IncompletePath.IsEmpty() )
 			Downloads.IncompletePath = General.Path + L"\\Incomplete";
 		if ( Downloads.CompletePath.IsEmpty() )
 			Downloads.CompletePath = theApp.GetDownloadsFolder();	//General.Path + L"\\Downloads";
 	}
+
+	if ( General.DataPath.IsEmpty() )
+		General.DataPath = General.UserPath + L"\\Data\\";
 
 	if ( Downloads.CollectionPath.IsEmpty() )
 		Downloads.CollectionPath = General.UserPath + L"\\Collections";

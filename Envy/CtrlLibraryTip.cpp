@@ -208,9 +208,9 @@ void CLibraryTipCtrl::OnCalcSize(CDC* pDC)
 	m_pMetadata.ComputeWidth( pDC, m_nKeyWidth, nValueWidth );
 
 	if ( m_nKeyWidth ) m_nKeyWidth += TIP_GAP;
-	m_sz.cx = min( max( m_sz.cx, (LONG)m_nKeyWidth + nValueWidth +
-		(LONG)Settings.Library.ThumbSize + 16 ), (LONG)GetSystemMetrics( SM_CXSCREEN ) / 2 );
-	m_sz.cy += max( nMetaHeight, (int)Settings.Library.ThumbSize + 4 );
+	m_sz.cx = min( max( m_sz.cx, (LONG)m_nKeyWidth + nValueWidth + (LONG)Settings.Library.ThumbSize + 16 ),
+		(LONG)GetSystemMetrics( SM_CXSCREEN ) / 2 );
+	m_sz.cy += max( (LONG)nMetaHeight, (LONG)Settings.Library.ThumbSize + 4 );
 	m_sz.cy += 6;
 }
 
@@ -271,7 +271,7 @@ void CLibraryTipCtrl::OnPaint(CDC* pDC)
 
 		pt.x += 8;
 		DrawText( pDC, &pt,
-			Settings.General.LanguageRTL ? ':' + pItem->m_sKey : pItem->m_sKey + ':', &sz );
+			Settings.General.LanguageRTL ? L':' + pItem->m_sKey : pItem->m_sKey + L':', &sz );
 		pt.x += m_nKeyWidth;
 		DrawText( pDC, &pt, pItem->m_sValue, &sz );
 		pt.x -= 8 + m_nKeyWidth;

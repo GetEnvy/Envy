@@ -381,7 +381,7 @@ DWORD CBuffer::Receive(SOCKET hSocket, DWORD nSpeedLimit)
 	while ( nSpeedLimit )
 	{
 		// Limit nLength to the free buffer space or the maximum size of an int
-		size_t nLength = min( GetBufferFree(), (size_t)INT_MAX );	// static_cast< size_t >( INT_MAX )
+		size_t nLength = min( (size_t)GetBufferFree(), (size_t)INT_MAX );	// static_cast< size_t >( INT_MAX )
 
 		if ( nLength )
 			nLength = min( nLength, (size_t)nSpeedLimit );			// Limit nLength to the speed limit
@@ -734,7 +734,7 @@ bool CBuffer::InflateStreamTo(CBuffer& oBuffer, z_streamp& pStream, BOOL* pbEndO
 	}
 
 	// Tell Zlib how much data is available to try and decompress
-	pStream->avail_in = static_cast< uInt >( min( m_nLength, UINT_MAX ) );
+	pStream->avail_in = static_cast< uInt >( min( m_nLength, (DWORD)UINT_MAX ) );
 
 	// Record inflation state
 	int nResult = Z_OK;

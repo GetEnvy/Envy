@@ -2,8 +2,8 @@
 
 [Registry]
 ; Enable Default Theme (SkinVista)
-Root: HKCU; Subkey: "Software\Envy\Envy\Skins"; ValueType: dword; ValueName: "Windows\Skin8.xml"; ValueData: "{ini:{param:SETTINGS|},Skins,Windows8|1}"; Flags: createvalueifdoesntexist uninsdeletekey
-Root: HKCU; Subkey: "Software\Envy\Envy\Skins"; ValueType: dword; ValueName: "Windows\Skin8Frames.xml"; ValueData: "{ini:{param:SETTINGS|},Skins,Windows8|1}"; Flags: createvalueifdoesntexist uninsdeletekey
+Root: HKCU; Subkey: "Software\Envy\Envy\Skins"; ValueType: dword; ValueName: "Windows\Skin10.xml"; ValueData: "{ini:{param:SETTINGS|},Skins,Windows10|1}"; Flags: createvalueifdoesntexist uninsdeletekey
+Root: HKCU; Subkey: "Software\Envy\Envy\Skins"; ValueType: dword; ValueName: "Windows\Skin10Frames.xml"; ValueData: "{ini:{param:SETTINGS|},Skins,Windows10|1}"; Flags: createvalueifdoesntexist uninsdeletekey
 Root: HKCU; Subkey: "Software\Envy\Envy\MediaPlayer"; ValueType: dword; ValueName: "ListSize"; ValueData: 139 ;				Flags: createvalueifdoesntexist uninsdeletekey
 Root: HKCU; Subkey: "Software\Envy\Envy\ListStates"; ValueType: dword; ValueName: "CNeighboursWnd.Sort"; ValueData: 9 ;			Flags: createvalueifdoesntexist uninsdeletekey
 
@@ -115,10 +115,9 @@ Root: HKCU; Subkey: "Software\Envy\Envy\Toolbars\CoolBar-Bar10"; ValueType: dwor
 ; Set Defaults
 Root: HKCU; Subkey: "Software\Envy\Envy\BitTorrent"; ValueType: string; ValueName: "DefaultTracker"; ValueData: "udp://tracker.openbittorrent.com:80/announce"; Flags: createvalueifdoesntexist uninsdeletekey
 Root: HKCU; Subkey: "Software\Envy\TorrentEnvy\Trackers"; ValueType: string; ValueName: "001.URL"; ValueData: "udp://tracker.openbittorrent.com:80/announce"; Flags: createvalueifdoesntexist uninsdeletekey
-Root: HKCU; Subkey: "Software\Envy\TorrentEnvy\Trackers"; ValueType: string; ValueName: "002.URL"; ValueData: "udp://open.stealth.si:80/announce"; Flags: createvalueifdoesntexist uninsdeletekey
-;Root: HKCU; Subkey: "Software\Envy\TorrentEnvy\Trackers"; ValueType: string; ValueName: "003.URL"; ValueData: "http://tracker.publicbt.com:80/announce"; Flags: createvalueifdoesntexist uninsdeletekey
-Root: HKCU; Subkey: "Software\Envy\TorrentEnvy\Trackers"; ValueType: dword; ValueName: "Count"; ValueData: 2; Flags: createvalueifdoesntexist uninsdeletekey
+Root: HKCU; Subkey: "Software\Envy\TorrentEnvy\Trackers"; ValueType: string; ValueName: "002.URL"; ValueData: "udp://tracker.opentrackr.org:1337/announce"; Flags: createvalueifdoesntexist uninsdeletekey
+Root: HKCU; Subkey: "Software\Envy\TorrentEnvy\Trackers"; ValueType: string; ValueName: "003.URL"; ValueData: "udp://open.stealth.si:80/announce"; Flags: createvalueifdoesntexist uninsdeletekey
+Root: HKCU; Subkey: "Software\Envy\TorrentEnvy\Trackers"; ValueType: dword; ValueName: "Count"; ValueData: 3; Flags: createvalueifdoesntexist uninsdeletekey
 
-; Disable extensions for plugins that have trouble (?)
-; For image services plugin we need to add extensions required for the first run
+; For image services plugin, add extensions required for first run (?)
 ; Root: HKCU; Subkey: "Software\Envy\Envy\Plugins"; ValueType: string; ValueName: "{C9314782-CB91-40B8-B375-F631FF30C1C8}"; ValueData: "|-.pdf||.bmp||.png||.jpg|"; Flags: createvalueifdoesntexist uninsdeletekey

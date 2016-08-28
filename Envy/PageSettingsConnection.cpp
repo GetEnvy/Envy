@@ -298,8 +298,8 @@ void CConnectionSettingsPage::OnOK()
 	{
 		QWORD nDownload = max( Settings.Bandwidth.Downloads, Settings.Connection.InSpeed * Kilobits / Bytes );
 		QWORD nUpload   = Settings.Connection.OutSpeed * Kilobits / Bytes;
-		if ( Settings.Bandwidth.Uploads > 0 )
-			nUpload = min( Settings.Bandwidth.Uploads, nUpload );
+		if ( Settings.Bandwidth.Uploads > 0 && Settings.Bandwidth.Uploads < nUpload )
+			nUpload = Settings.Bandwidth.Uploads;
 
 		if ( nUpload * 16 < nDownload )
 		{

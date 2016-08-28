@@ -52,6 +52,7 @@ CWizardFinishedPage::~CWizardFinishedPage()
 void CWizardFinishedPage::DoDataExchange(CDataExchange* pDX)
 {
 	CWizardPage::DoDataExchange(pDX);
+	DDX_Control(pDX, IDC_LOGO, m_wndLogo);
 	DDX_Check(pDX, IDC_WIZARD_AUTO, m_bAutoConnect);
 	DDX_Check(pDX, IDC_WIZARD_STARTUP, m_bStartup);
 }
@@ -64,6 +65,8 @@ BOOL CWizardFinishedPage::OnInitDialog()
 	CWizardPage::OnInitDialog();
 
 	Skin.Apply( L"CWizardFinishedPage", this );
+
+	m_wndLogo.SetBitmap( Skin.LoadBitmap( IDR_LOGO ) );
 
 	m_bAutoConnect = Settings.Connection.AutoConnect;
 	m_bStartup = ( Settings.Live.FirstRun ? FALSE : Settings.CheckStartup() );

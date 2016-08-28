@@ -178,7 +178,7 @@ BOOL CProfileProfilePage::OnInitDialog()
 int CProfileProfilePage::LoadDefaultInterests()
 {
 	int nCount = 0;
-	const CString strFile = Settings.General.Path + L"\\Data\\Interests.dat";	// Settings.General.DataPath ?
+	const CString strFile = Settings.General.DataPath + L"Interests.dat";
 
 	CFile pFile;
 	if ( ! pFile.Open( strFile, CFile::modeRead ) )

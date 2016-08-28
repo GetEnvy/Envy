@@ -52,7 +52,7 @@ BOOL CWorldGPS::Load()
 	Clear();
 
 	CFile pFile;
-	CString strFile = Settings.General.Path + L"\\Data\\WorldGPS.dat";
+	CString strFile = Settings.General.DataPath + L"WorldGPS.dat";
 
 	// Registry use is obsolete (auto-fallback)
 	//bool bImport = theApp.GetProfileInt( L"", L"ImportWorldGPS", FALSE ) != 0;
@@ -73,7 +73,7 @@ BOOL CWorldGPS::Load()
 		return TRUE;
 	}
 
-	strFile = Settings.General.Path + L"\\Data\\WorldGPS.xml";
+	strFile = Settings.General.DataPath + L"WorldGPS.xml";
 	if ( ! pFile.Open( (LPCTSTR)strFile.GetBuffer(), CFile::modeRead ) )
 		return FALSE;
 
@@ -93,7 +93,7 @@ BOOL CWorldGPS::Load()
 
 	if ( ! bSuccess ) return FALSE;
 
-	strFile = Settings.General.Path + L"\\Data\\WorldGPS.dat";
+	strFile = Settings.General.DataPath + L"WorldGPS.dat";
 	if ( ! pFile.Open( strFile, CFile::modeWrite|CFile::modeCreate ) )
 		return FALSE;
 

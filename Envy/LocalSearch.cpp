@@ -327,7 +327,7 @@ void CLocalSearch::AddHitG1(CG1Packet* pPacket, CSchemaMap& pSchemas, CLibraryFi
 	const QWORD nFileSize = pFile->GetSize();
 
 	pPacket->WriteLongLE( pFile->m_nIndex );
-	pPacket->WriteLongLE( (DWORD)min( nFileSize, 0xFFFFFFFF ) );
+	pPacket->WriteLongLE( min( (DWORD)nFileSize, (DWORD)0xFFFFFFFF ) );
 	if ( Settings.Gnutella1.QueryHitUTF8 )		// Support UTF-8 Query
 		pPacket->WriteStringUTF8( pFile->m_sName );
 	else

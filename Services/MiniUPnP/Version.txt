@@ -1,6 +1,6 @@
 MiniUPnPc
-Version 1.9.20151020
-Oct. 28 2015
+Version 2.0
+April 2016
 
 http://miniupnp.free.fr
 https://github.com/miniupnp/miniupnp

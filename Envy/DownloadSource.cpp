@@ -1005,11 +1005,12 @@ void CDownloadSource::Draw(CDC* pDC, CRect* prcBar, COLORREF crNatural)
 	if ( ! IsIdle() )
 		m_pTransfer->DrawStateBar( pDC, prcBar, Colors.m_crFragmentRequest, TRUE );
 
-	Draw( pDC, prcBar );
-
-	// Draw empty bar areas
+	// Draw empty bar areas first
 	if ( ! m_oAvailable.empty() )
 	{
+		if ( ! Images.DrawButtonState( pDC, prcBar, IMAGE_PROGRESSBAR_NONE ) )
+			pDC->FillSolidRect( prcBar, Colors.m_crWindow );
+
 		Fragments::List::const_iterator pItr = m_oAvailable.begin();
 		const Fragments::List::const_iterator pEnd = m_oAvailable.end();
 		for ( ; pItr != pEnd ; ++pItr )
@@ -1017,9 +1018,6 @@ void CDownloadSource::Draw(CDC* pDC, CRect* prcBar, COLORREF crNatural)
 			CFragmentBar::DrawFragment( pDC, prcBar, m_pDownload->m_nSize,
 				pItr->begin(), pItr->size(), crNatural, FALSE );
 		}
-
-		if ( ! Images.DrawButtonState( pDC, prcBar, IMAGE_PROGRESSBAR_NONE ) )
-			pDC->FillSolidRect( prcBar, Colors.m_crWindow );
 	}
 	else if ( IsOnline() && HasUsefulRanges() || ! m_oPastFragments.empty() )
 	{
@@ -1031,6 +1029,9 @@ void CDownloadSource::Draw(CDC* pDC, CRect* prcBar, COLORREF crNatural)
 		if ( ! Images.DrawButtonState( pDC, prcBar, IMAGE_PROGRESSBAR_NONE ) )
 			pDC->FillSolidRect( prcBar, Colors.m_crWindow );
 	}
+
+	// Draw fragments second (to avoid clipping)
+	Draw( pDC, prcBar );
 }
 
 void CDownloadSource::Draw(CDC* pDC, CRect* prcBar)

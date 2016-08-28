@@ -10,6 +10,7 @@
 
 /* freeUPNPDevlist() should be used to
  * free the chained list returned by upnpDiscover() */
+/* Fix: Defined in miniupnpc.c */
 //MINIUPNP_LIBSPEC void freeUPNPDevlist(struct UPNPDev * devlist)
 //{
 //	struct UPNPDev * next;

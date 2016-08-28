@@ -275,7 +275,8 @@ void CQueuePropertiesDlg::OnChangeTransfersMax()
 	if ( m_wndBandwidthValue.m_hWnd != NULL )
 	{
 		UpdateData();
-		m_nCapacity = max( m_nCapacity, m_nTransfersMax );
+		if ( m_nTransfersMax > m_nCapacity)
+			m_nCapacity = m_nTransfersMax;
 		m_wndCapacity.SetRange( short( m_nTransfersMax ), 1024 );
 		UpdateData( FALSE );
 	}
@@ -293,11 +294,13 @@ void CQueuePropertiesDlg::OnHScroll(UINT /*nSBCode*/, UINT /*nPos*/, CScrollBar*
 	DWORD nTotal = Settings.Connection.OutSpeed * 1024 / 8;
 	DWORD nLimit = Settings.Bandwidth.Uploads;
 
-	if ( nLimit == 0 || nLimit > nTotal ) nLimit = nTotal;
+	if ( nLimit == 0 || nLimit > nTotal )
+		nLimit = nTotal;
 
 	int nOtherPoints = (int)UploadQueues.GetTotalBandwidthPoints( !( m_pQueue->m_nProtocols & (1<<PROTOCOL_ED2K) ) )
-						- (int)m_pQueue->m_nBandwidthPoints;
-	if ( nOtherPoints < 0 ) nOtherPoints = 0;
+					 - (int)m_pQueue->m_nBandwidthPoints;
+	if ( nOtherPoints < 0 )
+		nOtherPoints = 0;
 
 	int nLocalPoints = m_wndBandwidthSlider.GetPos();
 	int nTotalPoints = nLocalPoints + nOtherPoints;
@@ -308,7 +311,7 @@ void CQueuePropertiesDlg::OnHScroll(UINT /*nSBCode*/, UINT /*nPos*/, CScrollBar*
 	str.Format( L"%u%% (%i/%i)", ( 100 * nBandwidth ) / nLimit, nLocalPoints, nTotalPoints );
 
 	m_wndBandwidthPoints.SetWindowText( str );
-	m_wndBandwidthValue.SetWindowText( Settings.SmartSpeed( nBandwidth ) + '+' );
+	m_wndBandwidthValue.SetWindowText( Settings.SmartSpeed( nBandwidth ) + L'+' );
 }
 
 void CQueuePropertiesDlg::OnOK()
@@ -376,11 +379,21 @@ void CQueuePropertiesDlg::OnOK()
 	m_pQueue->m_nCapacity		= min( (int)m_nCapacity, ( m_pQueue->m_nProtocols & (1<<PROTOCOL_ED2K) ) ? 4096 : 64 );
 
 	m_pQueue->m_bEnable			= m_bEnable;
-	m_pQueue->m_nMinTransfers	= max( 1, (int)m_nTransfersMin );
-	m_pQueue->m_nMaxTransfers	= (int)max( m_nTransfersMin, m_nTransfersMax );
+	//m_pQueue->m_nMinTransfers	= max( (DWORD)m_nTransfersMin, 1 );
+	//m_pQueue->m_nMaxTransfers	= (int)max( m_nTransfersMin, m_nTransfersMax );		// INT_PTR use below
+
+	if ( m_nTransfersMin > 1 )
+		IntPtrToDWord( m_nTransfersMin, &m_pQueue->m_nMinTransfers );
+	else
+		m_pQueue->m_nMinTransfers = 1;
+
+	if ( m_nTransfersMax > m_nTransfersMin )
+		IntPtrToDWord( m_nTransfersMax, &m_pQueue->m_nMaxTransfers );
+	else
+		m_pQueue->m_nMaxTransfers =  m_pQueue->m_nMinTransfers;
 
 	m_pQueue->m_bRotate			= m_bRotate;
-	m_pQueue->m_nRotateTime		= max( 30, m_nRotateTime );
+	m_pQueue->m_nRotateTime		= max( m_nRotateTime, 30 );
 
 	m_pQueue->m_nBandwidthPoints = m_wndBandwidthSlider.GetPos();
 

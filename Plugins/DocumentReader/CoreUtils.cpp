@@ -75,9 +75,9 @@ STDAPI OpenPropertyStorage(IPropertySetStorage* pPropSS, REFFMTID fmtid, BOOL fR
 			// Check for CodePage first. It appears certain configurations choke on modification
 			// of the code page. This appears to be a change in OLE32 behavior. Workaround is to
 			// check to see if OLE32 has added the code page already during the create, and if so
-			// we can skip out on adding it ourselves...
+			// we can skip out on adding it ourselves... If not, we should add it.
 			if ( FAILED( ReadProperty( *ppPropStg, spc, 0, &vtT ) ) )
-			{	// If not, we should add it...
+			{
 				vtT.vt = VT_I4; vtT.lVal = GetACP();
 				WriteProperty( *ppPropStg, spc, 0, &vtT );
 			}
@@ -96,11 +96,10 @@ STDAPI OpenPropertyStorage(IPropertySetStorage* pPropSS, REFFMTID fmtid, BOOL fR
 STDAPI ConvertBinaryToVarVector(PROPVARIANT *pVarBlob, VARIANT *pVarByteArray)
 {
 	HRESULT hr = S_FALSE;
-	SAFEARRAY* pSA;
-	DWORD dwSize;
+	DWORD dwSize = 0;
 
 	if ( ( pVarBlob == NULL ) || ( pVarBlob->vt != VT_BLOB ) &&
-		( pVarBlob->vt != VT_CF ) || ( pVarByteArray == NULL ) )
+		 ( pVarBlob->vt != VT_CF ) || ( pVarByteArray == NULL ) )
 		return E_UNEXPECTED;
 
 	// Identify the size
@@ -109,34 +108,39 @@ STDAPI ConvertBinaryToVarVector(PROPVARIANT *pVarBlob, VARIANT *pVarByteArray)
 	else
 		dwSize = pVarBlob->pclipdata->cbSize;
 
-	if ( (dwSize) && ( dwSize < 0x800000 ) )
-	{
-		// Create a vector array the size of the blob or clipdata...
-		pSA = SafeArrayCreateVector(VT_UI1, 0, dwSize);
-		if ( pSA != NULL )
-		{
-			// Copy the data over to the vector
-			BYTE *pByte = NULL;
-			hr = SafeArrayAccessData( pSA, (void**)&pByte );
-			if ( SUCCEEDED(hr) )
-			{
-				SEH_TRY
-				if ( pVarBlob->vt == VT_BLOB )
-					memcpy( pByte, (BYTE*)(pVarBlob->blob.pBlobData), dwSize );
-				else
-					memcpy( pByte, (BYTE*)(pVarBlob->pclipdata->pClipData), dwSize );
-				SEH_EXCEPT(hr)
-				SafeArrayUnaccessData( pSA );
-			}
-		}
+	if ( ! dwSize || dwSize > 0x800000 )
+		return hr;	// False
 
-		if ( (pSA) && SUCCEEDED(hr) && (pVarByteArray) )
-		{
-			pVarByteArray->vt = ( VT_ARRAY | VT_UI1 );
-			pVarByteArray->parray = pSA;
-		}
-		else if ( pSA )
-			SafeArrayDestroy( pSA );
+	// Create a vector array the size of the blob or clipdata...
+	SAFEARRAY* pSA = SafeArrayCreateVector( VT_UI1, 0, dwSize );
+	if ( pSA == NULL )
+		return hr;	// False
+
+	// Copy the data over to the vector
+	BYTE *pByte = NULL;
+	hr = SafeArrayAccessData( pSA, (void**)&pByte );
+	if ( SUCCEEDED( hr ) )
+	{
+		SEH_TRY
+		if ( pVarBlob->vt == VT_BLOB )
+			memcpy( pByte, (BYTE*)(pVarBlob->blob.pBlobData), dwSize );
+		else
+			memcpy( pByte, (BYTE*)(pVarBlob->pclipdata->pClipData), dwSize );
+		SEH_EXCEPT( hr )
+		SafeArrayUnaccessData( pSA );
+	}
+
+	if ( pSA == NULL )
+		return hr;
+
+	if ( SUCCEEDED( hr ) && (pVarByteArray) )
+	{
+		pVarByteArray->vt = ( VT_ARRAY | VT_UI1 );
+		pVarByteArray->parray = pSA;
+	}
+	else
+	{
+		SafeArrayDestroy( pSA );
 	}
 
 	return hr;
@@ -822,7 +826,7 @@ STDAPI_(UINT) CompareStrings(LPCWSTR pwsz1, LPCWSTR pwsz2)
 }
 
 ////////////////////////////////////////////////////////////////////////
-// Unicode Win32 API wrappers (handles Unicode/ANSI convert for Win98/ME)
+// Unicode Win32 API wrappers (handled Unicode/ANSI convert for Win98)
 //
 ////////////////////////////////////////////////////////////////////////
 // FFindQualifiedFileName

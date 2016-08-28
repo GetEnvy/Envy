@@ -30,7 +30,7 @@ class CUploadDisplayData;
 class CFragmentBar
 {
 public:
-	static void DrawFragment(CDC* pDC, CRect* prcCell, QWORD nTotal, QWORD nOffset, QWORD nLength, COLORREF crFill, BOOL b3D);
+	static void DrawFragment(CDC* pDC, CRect* prcCell, QWORD nTotal, QWORD nOffset, QWORD nLength, COLORREF crFill, BOOL b3D = TRUE, BOOL bClip = TRUE);
 	static void DrawStateBar(CDC* pDC, CRect* prcBar, QWORD nTotal, QWORD nOffset, QWORD nLength, COLORREF crFill, BOOL bTop = FALSE);
 //	static void DrawDownloadSimple(CDC* pDC, CRect* prcBar, QWORD nSize, QWORD nProgress, COLORREF crNatural);
 	static void DrawSource(CDC* pDC, CRect* prcBar, const CSourceDisplayData* pSourceData, COLORREF crNatural, BOOL bDrawEmpty = TRUE);

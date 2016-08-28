@@ -679,6 +679,10 @@ void CCoolInterface::CreateFonts(LPCTSTR pszFace /*0*/, int nSize /*0*/)
 		DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS, Settings.Fonts.Quality,
 		DEFAULT_PITCH|FF_DONTCARE, pszFace );
 
+	// ToDo: Fix settings page high dpi richtext (this doesn't work)
+	if ( Settings.Interface.DisplayScaling > 101 && nSize == Settings.Fonts.DefaultSize )
+		nSize = (int)( nSize * Settings.Interface.DisplayScaling / 100 ) + 1;
+
 	m_fntRichDefault.CreateFont( -nSize - 1, 0, 0, 0, FW_BOLD, FALSE, FALSE, FALSE,
 		DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS, Settings.Fonts.Quality,
 		DEFAULT_PITCH|FF_DONTCARE, pszFace );

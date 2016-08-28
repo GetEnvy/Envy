@@ -19,9 +19,9 @@
 #include "StdAfx.h"
 #include "Settings.h"
 #include "Envy.h"
+#include "DlgSplash.h"
 #include "ImageServices.h"
 #include "ImageFile.h"
-#include "DlgSplash.h"
 #include "FragmentBar.h"
 
 #ifdef _DEBUG
@@ -30,6 +30,18 @@ static char THIS_FILE[] = __FILE__;
 #define new DEBUG_NEW
 #endif	// Debug
 
+#define SPLASH_WIDTH		500
+#define SPLASH_HEIGHT		200
+
+#define COLOR_DEFAULT		RGB( 254, 186, 20 )
+#define COLOR_TEXT			RGB( 255, 255, 255 )
+#define COLOR_TEXT_SHADOW	RGB( 234, 164, 0 )
+#define COLOR_TEXT_FADE		RGB( 244, 178, 10 )
+#define COLOR_BAR_FILL		RGB( 242, 178, 10 )
+#define COLOR_BAR_PROGRESS	RGB( 254, 250, 246 )
+//#define COLOR_BAR_UPPEREDGE	RGB( 236, 230, 220 )
+//#define COLOR_BAR_LOWEREDGE	RGB( 236, 230, 220 )
+
 //IMPLEMENT_DYNAMIC(CSplashDlg, CDialog)
 
 BEGIN_MESSAGE_MAP(CSplashDlg, CDialog)
@@ -37,20 +49,8 @@ BEGIN_MESSAGE_MAP(CSplashDlg, CDialog)
 	ON_WM_QUERYENDSESSION()
 END_MESSAGE_MAP()
 
-
-#define SPLASH_WIDTH		500
-#define SPLASH_HEIGHT		200
-
-#define COLOR_DEFAULT		RGB( 254, 186, 20 )
-#define COLOR_TEXT			RGB( 255, 255, 255 )
-#define COLOR_TEXT_SHADOW	RGB( 240, 170, 0 )
-#define COLOR_TEXT_FADE		RGB( 250, 180, 10 )
-#define COLOR_BAR_FILL		RGB( 240, 180, 10 )
-#define COLOR_BAR_PROGRESS	RGB( 254, 250, 246 )
-//#define COLOR_BAR_UPPEREDGE	RGB( 236, 230, 220 )
-//#define COLOR_BAR_LOWEREDGE	RGB( 236, 230, 220 )
-
 CBitmap CSplashDlg::m_bmSplash;		// Static
+
 
 /////////////////////////////////////////////////////////////////////////////
 // CSplashDlg construction
@@ -91,7 +91,7 @@ BOOL CSplashDlg::OnInitDialog()
 	SetWindowText( m_sState );
 
 	//CImageFile pFile;
-	//if ( pFile.LoadFromFile( Settings.General.Path + L"\\Data\\Splash.png" ) )	// Settings.General.DataPath ?
+	//if ( pFile.LoadFromFile( Settings.General.DataPath + L"Splash.png" ) )
 	//{
 	//	pFile.EnsureRGB();
 	//	HBITMAP bmHandle = pFile.CreateBitmap();

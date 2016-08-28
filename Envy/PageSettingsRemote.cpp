@@ -175,7 +175,7 @@ void CRemoteSettingsPage::OnBnClickedRemoteEnable()
 	}
 	else // Disabled
 	{
-		m_wndQRCode.SetBitmap( Skin.LoadBitmap( IDB_QRCODE ) );
+		m_wndQRCode.SetBitmap( Skin.LoadBitmap( IDR_QRCODE ) );
 	}
 }
 

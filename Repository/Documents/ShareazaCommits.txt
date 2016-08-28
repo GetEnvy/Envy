@@ -8,8 +8,7 @@ http://sourceforge.net/p/shareaza/code/log
 http://sourceforge.net/p/shareaza/code/9600
 http://sourceforge.net/p/shareaza/code/HEAD/tree/
 http://sourceforge.net/p/shareaza/code/commit_browser
-http://sourceforge.net/apps/trac/shareaza/timeline
-http://sourceforge.net/apps/trac/shareaza/report/1
+http://sourceforge.net/p/shareaza/tickets
 
 svn+ssh://svn.code.sf.net/p/shareaza/code/trunk shareaza-code
 
@@ -17,20 +16,20 @@ svn+ssh://svn.code.sf.net/p/shareaza/code/trunk shareaza-code
 •
 
 
-9630		f	
-9629		1f	Updated services list (by ale5000)
+9630		f
+9629	r9	1f	Updated services list (by ale5000)
 9628		4f	Updated setup script to support new splitted redistributables (minimum and additional)
-9627		1f	Fixed second-tier plugin registration
-9626		20f	Updated MiniUPnPc library to 1.9.20160209
+9627	r9	1f	Fixed second-tier plugin registration
+9626	r9	20f	Updated MiniUPnPc library to 1.9.20160209  (2.0)
 9625	.	1f	Updated GeoIP database (05 Apr 2016)
-9624		f	Updated Visual C++ Redistributable for Visual Studio 2015 Update 2 (Updated Inno Download Plugin 1.5.1.0)
+9624	.	f	Updated Visual C++ Redistributable for Visual Studio 2015 Update 2 (Updated Inno Download Plugin 1.5.1.0)
 9623		f	Updated VS2015 projects references
 9622	r128	1f	Updated VS2015 project
 9621	.	1f	Updated copyright (.rc)
 9620	.	1f	Updated projects up to VS2015 Update 1 (installer)
 9619	r128	40f	Fixed Platform SDK 8.1 (VS2015) and Windows XP compatibility for Win32 targets (used _ATL_XP_TARGETING macros, "/Zc:threadSafeInit-" compiler option and linker's "Minimum required version 5.01")
 9618	r128	1f	Removed legacy GetVersionEx (BugTrap)
-9617		1f	Updated services list ( http://bit.ly/1RrvYll )
+9617	.	1f	Updated services list ( http://bit.ly/1RrvYll )
 9616		1f	Updated VS2013 and VS2010 projects to latest version and used 7-Zip instead of GZip to compress resources
 9615	.	1f	Removed orphan file (outdated duplicate of \trunk\GeoData\WorldGPS.xml)
 9614		3f	Updated VS2015 project to latest version and used 7-Zip instead of GZip to compress resources
@@ -51,11 +50,11 @@ svn+ssh://svn.code.sf.net/p/shareaza/code/trunk shareaza-code
 9600	.	1f	Changed bugtrap report mail (SF.Net seems not work anymore)
 9599	r126	1f	Fixed previous fix
 9598	r126	3f	Fixed deadlock in the "merge with" operation
-9597		10f	Added support for Windows 10
+9597	/	10f	Added support for Windows 10  (ToDo: Manifest?)
 9596		30f	Updated VS2015 projects options
 9595	/	18f	Fixed minor warnings
 9594	.	1f	Updated GeoIP database (02 Sep 2015)
-9593		1f	Changed dialog fonts to standard and sizable "MS Shell Dlg"
+9593	r9	1f	Changed dialog fonts to standard and sizable "MS Shell Dlg"
 9592		1f	20 private types (file extensions forbidden for sharing)
 9591	r126	1f	Fixed advanced settings page value limits
 9590	r126	6f	Improving Shareaza exit on system shutdown
@@ -123,6 +122,7 @@ svn+ssh://svn.code.sf.net/p/shareaza/code/trunk shareaza-code
 9528		3f	Added SkinUpdate program and script
 9527	.	1f	Updated GeoIP database (07 Jan 2015)
 9526	r126	2f	Fixed black splash dialog on Windows shutdown
+(2014)
 9525	.	1f	Bumped version 2.7.8.1
 9524		4f	Added partial support of BEP 19 : "WebSeed - HTTP/FTP Seeding (GetRight style)" - http://bit.ly/1wUJNhj (by ivan386)
 9522	.	.	Tagged version 2.7.8.0
@@ -179,6 +179,7 @@ svn+ssh://svn.code.sf.net/p/shareaza/code/trunk shareaza-code
 9346		1f	Removed BitComet LT-Seeding "filehash" field from torrent-file since it's no more a SHA1 hash
 9344		1f	Added sample script for Daily Build uploads
 9342		10f	TorrentWizard: Fixed unsorted torrent-file dictionary keys (http://bit.ly/1dYKoBS)
+(2013)
 9340		7f	Added daily build script (VS2010)
 9306		2f	Fixed Library file upload counter
 9292		1f	Trying to make less annoying hash window (added WS_EX_NOACTIVATE style)
@@ -215,7 +216,7 @@ Check ShareazaPlus:	http://sourceforge.net/p/shareazaplus/code/HEAD/tree/branche
 ToDos:			Add ID_TAB_MENU ?
 			Add Private Shared Folders (Keycode)
 			Save Browse/Chat IPs (Bookmarks)
-			Wizard Browser Integration ?
+			Wizard IE Browser Integration ?
 			Default Downloads Location <My Docs>  ?
 			File Formats. .lst, .urls, .grx (getright), .metalink, .magma, etc.
 			JumpLists: r9146 http://msdn.microsoft.com/en-us/gg465010#_Toc243450447

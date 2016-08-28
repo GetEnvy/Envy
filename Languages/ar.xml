@@ -3,7 +3,7 @@
 
 <!-- Envy Arabic Language Skin File -->
 
-<!-- Translation based on default en.xml r4 -->
+<!-- Translation based on default en.xml r8 -->
 <!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -2272,584 +2272,584 @@
 </documents>
 <!-- Localized Command Tip Text. "Message" displayed in status bar, "Tip" shown in tooltip -->
 <commandtips>
-	<tip id="ID_BROWSE_FILES" message="عرض ملفات المستخدم المشاركة" />
-	<tip id="ID_BROWSE_LAUNCH" message="تصفح وضعية المستخدم المحددة و الملفات المشاركة" />
-	<tip id="ID_BROWSE_PROFILE" message="تصفح وضعية المستخدم" />
-	<tip id="ID_BROWSE_REFRESH" message="تحديث قائمة الملفات المتوفرة على هذا المضيف" />
-	<tip id="ID_BROWSE_STOP" message="التوقف عن تصفح الملفات على هذا المضيف" />
-	<tip id="ID_CHAT_BOLD" message="Ctrl+B)تطبيق التنسيق بخط عريض" />
-	<tip id="ID_CHAT_BROWSE" message="تصفح وضعية المستخدم و الملفات المشاركة" />
-	<tip id="ID_CHAT_CLEAR" message="مسح نص الرسالة في هذه النافذة" />
-	<tip id="ID_CHAT_COLOR" message="(Ctrl+K) تحديد لون النص" />
-	<tip id="ID_CHAT_CONNECT" message="الإتصال بجلسة المحادثة" />
-	<tip id="ID_CHAT_DISCONNECT" message="قطع الإتصال من بجلسة المحادثة" />
-	<tip id="ID_CHAT_EMOTICONS" message="إدراج مشاعر" />
-	<tip id="ID_CHAT_ITALIC" message="(Ctrl+I) تطبيق تنسيق خط مائل" />
-	<tip id="ID_CHAT_PRIORITY" message="إكتساب لأولوية إرسال إلى هذا المستخدم" />
-	<!--tip id="ID_CHAT_SEND_FILE" message="إرسال ملف إلى مستخدم ..."-->
-	<tip id="ID_CHAT_TIMESTAMP" message="إظعار الوقت عند وصول كل رسالة" />
-	<tip id="ID_CHAT_UNDERLINE" message="(Ctrl+U) تطبيق تنسيق خط تحته سطر" />
-	<tip id="ID_CHILD_CLOSE" message="إغلاق النافذة النشطة" />
-	<tip id="ID_CHILD_MAXIMISE" message="تكبير النافذة النشطة لملء الشاشة" />
-	<tip id="ID_CHILD_MINIMISE" message="تصغير النافذة النشطة إلى شريط التبويب" />
-	<tip id="ID_CHILD_RESTORE" message="فتح النافذة المحددة" />
-	<tip id="ID_DISCOVERY_ADD" message="إضافة خدمة إستكشاف جديدة..." />
-	<tip id="ID_DISCOVERY_ADVERTISE" message="عشوائية متوفرة GWebCache المحددة إلى GWebCache إعلان خدمة" />
-	<tip id="ID_DISCOVERY_BROWSE" message="المحددة على الشبكة GWebCache تصفح الإحصائيات لخدمة" />
-	<tip id="ID_DISCOVERY_EDIT" message="عرض الخصائص لخدمة الإكتشاف المحددة" />
-	<tip id="ID_DISCOVERY_GNUTELLA" message="إظهار خدمات البادئة في نافذة الإكتشاف" />
-	<tip id="ID_DISCOVERY_QUERY" message="إستعلام عن خدمات الإكتشاف المحددة الآن" />
-	<tip id="ID_DISCOVERY_REMOVE" message="إزالة خدمات الإكتشاف المحددة" />
-	<tip id="ID_DISCOVERY_SERVERLIST" message="في نافذة الإكتشاف eDonkey Server.met إظهار خدمات" />
-	<tip id="ID_DISCOVERY_WEBCACHE" message="في نافذة الإكتشاف GWebCache إظهار خدمات" />
-	<tip id="ID_DOWNLOAD_GROUP_CLEAR" message="إلغاء و إزالة جميع التحميلات في هذه المجموعة" />
-	<tip id="ID_DOWNLOAD_GROUP_NEW" message="إمشاء مجموعة تحميل جديدة..." />
-	<tip id="ID_DOWNLOAD_GROUP_PAUSE" message="إيقاف كل التحميلات مؤقتا في هذه المجموعة" />
-	<tip id="ID_DOWNLOAD_GROUP_PROPERTIES" message="تحرير الخصائص لمجموعة التحميل المحددة" />
-	<tip id="ID_DOWNLOAD_GROUP_REMOVE" message="إزالة مجموعة التحميل المحددة" />
-	<tip id="ID_DOWNLOAD_GROUP_RESUME" message="إستئناف جميع التحميلات في هذه المجموعة" />
-	<tip id="ID_DOWNLOAD_GROUP_SHOW" message="إظهار أو إخفاء شريط مجموعة التحميل" />
-	<tip id="ID_DOWNLOADS_AUTO_CLEAR" message="مسح تلقائي للتحميلات التي أنتهت" />
-	<tip id="ID_DOWNLOADS_BOOST" message="تعزيز الأداء للتحميل المحدد عن طريق إزالة حدود نطاق العرض" />
-	<tip id="ID_DOWNLOADS_CLEAR" message="مسح/إزالة التحميل(ات) المحددة" />
-	<tip id="ID_DOWNLOADS_CLEAR_COMPLETE" message="إزالة التحميل(ات) المحددة من القائمة" />
-	<tip id="ID_DOWNLOADS_CLEAR_COMPLETED" message="مسح التحميلات التي أنتهت" />
-	<tip id="ID_DOWNLOADS_CLEAR_INCOMPLETE" message="إلغاء التحميل(ات) الغير مكتملة المحددة" />
-	<tip id="ID_DOWNLOADS_CLEAR_PAUSED" message="مسح التحميلات التي تم إيقافها مؤقتا" />
-	<tip id="ID_DOWNLOADS_URI" message="نسخ الرابط للملف المحدد" />
-	<tip id="ID_DOWNLOADS_EDIT" message="إظهار واجهة التحرير المتقدمة للتحميل..." />
-	<tip id="ID_DOWNLOADS_ENQUEUE" message="إضافة التحميل(ات) المحددة إلى قائمة تشغيل الوسائط" />
-	<tip id="ID_DOWNLOADS_FILE_DELETE" message="حذف الملف المكتمل المحدد" />
-	<tip id="ID_DOWNLOADS_FILTER_ACTIVE" message="إظهار التحميلات النشطة" />
-	<tip id="ID_DOWNLOADS_FILTER_ALL" message="إظهار جميع التحميلات" />
-	<tip id="ID_DOWNLOADS_FILTER_MENU" message="إختر أنواع التحميلات المرد إظهارها و الأنواع المراد إخفاؤها في هذه العرض" />
-	<tip id="ID_DOWNLOADS_FILTER_PAUSED" message="إظهار التحميلات التي متوقف مؤقتا" />
-	<tip id="ID_DOWNLOADS_FILTER_QUEUED" message="إظهار التحميلات الموجودة في قائمة الإنتظار" />
-	<tip id="ID_DOWNLOADS_FILTER_SOURCES" message="إظهار التحميلات التي تنتظر مصادر" />
-	<tip id="ID_DOWNLOADS_HELP" message="عرض تعليمات مساعدة عن هذا التحميل..." />
-	<tip id="ID_DOWNLOADS_LAUNCH" message="معاينة الملف(ات) المحددة في مكانها" />
-	<tip id="ID_DOWNLOADS_LAUNCH_COMPLETE" message="فتح أو تشغيل الملف(ات) المحددة" />
-	<tip id="ID_DOWNLOADS_LAUNCH_COPY" message="معاينة التحميلات المحددة" />
-	<tip id="ID_DOWNLOADS_MONITOR" message="فتح نافذة لمراقبة التحميل لهذا الملف..." />
-	<tip id="ID_DOWNLOADS_MOVE_DOWN" message="تحريك التحميل(ات) المحددة أسفل قائمة الأولوية" />
-	<tip id="ID_DOWNLOADS_MOVE_UP" message="تحريك التحميل(ات) المحددة أعلى قائمة الأولوية" />
-	<tip id="ID_DOWNLOADS_PAUSE" message="إيقاف التحميل(ات) المحددة مؤقتا" />
-	<tip id="ID_DOWNLOADS_RATE" message="تصنيف التحميل(ات) المحددة" />
-	<tip id="ID_DOWNLOADS_REMOTE_PREVIEW" message="صورة معاينة التحميل لملف التحميل المحدد" />
-	<tip id="ID_DOWNLOADS_RESUME" message="إستئناف التحميل(ات) المحددة" />
-	<tip id="ID_DOWNLOADS_SETTINGS" message="تكوين إعدادات التحميل..." />
-	<tip id="ID_DOWNLOADS_SHARE" message="المشاركة في هذا الملف المحمل جزئيا مع المستخدمين الآخرين" />
-	<tip id="ID_DOWNLOADS_SHOW_SOURCES" message="عرض المصادر التي حاليا لم يتم تستخدم" />
-	<tip id="ID_DOWNLOADS_SOURCES" message="البحث عن مصادر أكثر للتحميل(ات) المحددة" />
-	<!--tip id="ID_DOWNLOADS_TORRENT_INFO" message="المحدد BitTorrent عرض معلومات عن تحميل"-->
-	<tip id="ID_DOWNLOADS_ADD_SOURCE" message="إضافة رابط مصدري إلى التحميل المحدد..." />
-	<tip id="ID_DOWNLOADS_VIEW_REVIEWS" message="عرض نظرة عامة للتحميل المحدد" />
-	<tip id="ID_HELP_ABOUT" message="Envy لوحة حول..." />
-	<tip id="ID_HELP_CODEC" message="كل شيء عن وحدات الترميز و مشاكل الفيديو" />
-	<tip id="ID_HELP_FAQ" message="Envy عرض إستفسارات" />
-	<tip id="ID_HELP_ROUTER" message="إحصل على تعليمات عن تكوين جهاز توجيهك أو جدارك الناري" />
-	<tip id="ID_HELP_FORUMS" message="Envy زيارة منتدى النقاش لـ" />
-	<tip id="ID_HELP_GUIDE" message="Envy زيارة دليل المستخدم لـ" />
-	<tip id="ID_HELP_HOMEPAGE" message="Envy زيارة موقع" />
-	<tip id="ID_HELP_SECURITY" message="تعليمات عن حماية نظامك من البرامج العدائية" />
-	<tip id="ID_HELP_UPDATE" message="التدقيق عن أخبار و عن تحديثات" />
-	<tip id="ID_HELP_TEST" message="تشغيل إختبار الإتصال" />
-	<tip id="ID_HELP_WEB_1" message="زيارة هذا الموقع" />
-	<tip id="ID_HELP_WEB_2" message="زيارة هذا الموقع" />
-	<tip id="ID_HELP_WEB_3" message="زيارة هذا الموقع" />
-	<tip id="ID_HELP_WEB_4" message="زيارة هذا الموقع" />
-	<tip id="ID_HELP_DONATE" message="إذا كنت تريد ، يمكنك أن تتبرع إلى حسابنا القانوني و تبدي لنا تقديرك" />
-	<!--tip id="ID_HELP_FAKESHAREAZA" message="ترجمة FakeShareaza.com لمعرفة المزيد حول الأحداث الأخيرة" -->
-	<tip id="ID_HITMONITOR_CLEAR" message="مسح المخزون المؤقت لمراقب ضربات" />
-	<tip id="ID_HITMONITOR_PAUSE" message="إيقاف مراقبة الضربات مؤقتا" />
-	<tip id="ID_HITMONITOR_SEARCH" message="البحث في الشبكة عن المادة المحددة" />
-	<tip id="ID_HOSTCACHE_CONNECT" message="الإتصال مع المضيف(ين) المحدد" />
-	<tip id="ID_HOSTCACHE_DISCONNECT" message="قطع الإتصال من الجوار المحدد" />
-	<tip id="ID_HOSTCACHE_ED2K_CACHE" message="إظهار خادمات eDonkey" />
-	<tip id="ID_HOSTCACHE_FILE_DOWNLOAD" message="تحميل ملف eDonkey &quot;server.met&quot;..." />
-	<tip id="ID_HOSTCACHE_G1_CACHE" message="إظهار المضيف المخزن مؤقتا لـ Gnutella1" />
-	<tip id="ID_HOSTCACHE_G2_CACHE" message="إظهار المضيف المخزن مؤقتا لـ Gnutella2" />
-	<tip id="ID_HOSTCACHE_G2_HORIZON" message="إظهار محاور الأفق لـ Gnutella2" />
-	<tip id="ID_HOSTCACHE_IMPORT" message="إستيراد قائمة المضيفين المعروفين ، مثل ملف &quot;server.met&quot;..." />
-	<tip id="ID_HOSTCACHE_PRIORITY" message="حاول الإتصال إلى هذا الخادم قبل الخادمات الأخرى" />
-	<tip id="ID_HOSTCACHE_REMOVE" message="إزالة مضيفين محددين من المخزون المؤقت للمضيف" />
-	<tip id="ID_LIBRARY_ADD" message="إضافة مجلد جديد إلى مكتبتك..."></tip>
-	<tip id="ID_LIBRARY_ALBUM_DELETE" message="حذف مجلد الألبوم المحدد" />
-	<tip id="ID_LIBRARY_ALBUM_OPEN" message="فتح مجلد الألبوم المحدد" />
-	<tip id="ID_LIBRARY_ALBUM_PROPERTIES" message="عرض و تحرير الخصائص لمجلد الألبوم المحدد..." />
-	<tip id="ID_LIBRARY_BITPRINTS_DOWNLOAD" message="تحميل بيانات التعريف للملف المحدد من Bitprints..." />
-	<tip id="ID_LIBRARY_BITPRINTS_WEB" message="عرض بطاقة Bitprints للملف المحدد على الشبكة" />
-	<tip id="ID_LIBRARY_COLUMNS" message="تحديد أعمدة بيانات التعريف للعرض..." />
-	<tip id="ID_LIBRARY_COPY" message="إنسخ الملفات المحددة إلى مجلد مكتبة آخر..." />
-	<tip id="ID_LIBRARY_CREATETORRENT" message="إنشاء .torrent لهذا الملف لرفعه إلى أي موقع على الشبكة" />
-	<tip id="ID_LIBRARY_DELETE" message="حذف الملفات المحددة بشكل دائم" />
-	<tip id="ID_LIBRARY_ENQUEUE" message="إضافة ملف(ات) محددة إلى قائمة تشغيل الوسائط" />
-	<tip id="ID_LIBRARY_EXPLORE" message="فتح المجلد(ات) المحدد" />
-	<tip id="ID_LIBRARY_EXPORT_COLLECTION" message="تصدير مجلد الألبوم المحدد إلى ملفات المجموعة..." />
-	<tip id="ID_LIBRARY_FOLDER_DOWNLOAD" message="تحميل كافة الملفات في المجموعة المحددة" />
-	<tip id="ID_LIBRARY_FOLDER_ENQUEUE" message="إضافة كل ملف في مجلد/ات الألبوم المحددة إلى قائمة التشغيل الخاصة بك" />
-	<tip id="ID_LIBRARY_FOLDER_FILE_PROPERTIES" message="عرض و تحرير الخصائص لكافة الملفات في المجلد/ات المحددة..." />
-	<tip id="ID_LIBRARY_FOLDER_METADATA" message="تطبيق بيانات تعريف مشتركة من مجلد الألبوم على كافة ملفاته" />
-	<tip id="ID_LIBRARY_FOLDER_NEW" message="إنشاء مجلد ألبوم جديدة هنا..." />
-	<tip id="ID_LIBRARY_FOLDER_PROPERTIES" message="عرض و تحرير الخصائص لمجلد الألبوم المحدد..." />
-	<tip id="ID_LIBRARY_FOLDERS" message="إدارة المجلدات الطبيعية في مكتبتك..." />
-	<tip id="ID_LIBRARY_HASH_PRIORITY" message="تعزيز السرعة لفحص الملف و التجزئة" />
-	<tip id="ID_LIBRARY_LAUNCH" message="فتح أو تشغيل الملف(ات) المحددة" />
-	<tip id="ID_LIBRARY_MOVE" message="نقل الملفات المحددة إلى مجلد مكتبة آخر..." />
-	<tip id="ID_LIBRARY_PANEL" message="إظهار أو إخفاء لائحة تفاصيل المكتبة" />
-	<tip id="ID_LIBRARY_PARENT" message="Move up to the parent folder." />
-	<tip id="ID_LIBRARY_PROPERTIES" message="عرض و تحرير الخصائص للملفات المحددة..." />
-	<tip id="ID_LIBRARY_REBUILD" message="إعادة بناء بيانات التعريف و التجزئة للمجلدات أو الملفات المحددة" />
-	<tip id="ID_LIBRARY_REBUILD_ANSI" message="إعادة بناء بيانات التعريف باستخدام لغة أخرى" />
-	<tip id="ID_LIBRARY_REFRESH" message="تحديث العرض للمكتبة" />
-	<tip id="ID_LIBRARY_REMOVE" message="إزالة المجلدات المشتركة المحددة" />
-	<tip id="ID_LIBRARY_RENAME" message="تسمية الملف المحدد في مكانه" />
-	<tip id="ID_LIBRARY_SCAN" message="االبحث في المجلدات أو الملفات المحددة عن تغييرات" />
-	<tip id="ID_LIBRARY_SEARCH" message="بحث عن مكتبة ملفاتك" />
-	<tip id="ID_LIBRARY_SEARCH_QUICK" message="بحث عن مكتبة ملفاتك..." />
-	<tip id="ID_LIBRARY_SEED_TORRENT" message="وضع Torrent المحدد كتلقيم على BitTorrent" />
-	<tip id="ID_LIBRARY_SELECT_ALL" message="تحديد و عرض كافة المجلدات في مكتبتك" />
-	<tip id="ID_LIBRARY_SHARED_FILE" message="مشاركة أو عدم مشاركة للملفات المحددة" />
-	<tip id="ID_LIBRARY_SHARED_FOLDER" message="مشاركة أو عدم مشاركة للمجلد(ات) المحددة" />
-	<tip id="ID_LIBRARY_TREE_PHYSICAL" message="عرض المجلدات الطبيعية في مكتبتك" />
-	<tip id="ID_LIBRARY_TREE_VIRTUAL" message="تنظيم مكتبتك" />
-	<tip id="ID_LIBRARY_UNLINK" message="إزالة الملفات المحددة من مجلد الألبوم الحالي" />
-	<tip id="ID_LIBRARY_URL" message="نسخ الرابط للملف المحدد" />
-	<tip id="ID_LIBRARY_VIEW" message="تحديد العرض للمكتبة..." />
-	<tip id="ID_LIBRARY_VIEW_ALBUM" message="إظهار عرض ألبوم" tip="عرض ألبوم" />
-	<tip id="ID_LIBRARY_VIEW_COLLECTION" message="إظهار عرض غني للمجموعة" tip="عرض المجموعة" />
-	<tip id="ID_LIBRARY_VIEW_DETAIL" message="إظهرا أسماء الملفات و التفاصيل و بيانات التعريف" tip="عرض التفاصيل" />
-	<tip id="ID_LIBRARY_VIEW_HOME" message="عرض الصفحة الرئيسية للمكتبة" tip="عرض رئيسي" />
-	<tip id="ID_LIBRARY_VIEW_ICON" message="إظهار الملفات كرموز" tip="عرض الرموز" />
-	<tip id="ID_LIBRARY_VIEW_LIST" message="إظهار الملفات كقائمة أفقية" tip="عرض قائمة" />
-	<tip id="ID_LIBRARY_VIEW_THUMBNAIL" message="إظهار صويرات للملفات" tip="عرض صويرات" />
-	<tip id="ID_LIBRARY_VIEW_TILE" message="عرض قائمة لمجلدات الألبوم" tip="عرض متجانب" />
-	<tip id="ID_MEDIA_ADD" message="إضافة ملف وسائط إلى قائمة التشغيل..." />
-	<tip id="ID_MEDIA_ADD_FOLDER" message="إضافة مجلد مع ملفات وسائط إلى قائمة التشغيل..." />
-	<tip id="ID_MEDIA_ASPECT_16_9" message="تقفيل النسبة المساحية للفيديو على 16:9 ، مناسب للفيلم" />
-	<tip id="ID_MEDIA_ASPECT_4_3" message="تقفيل النسبة المساحية للفيديو على 4:3 ، مناسب للتلفزيون" />
-	<tip id="ID_MEDIA_ASPECT_DEFAULT" message="إستخدام النسبة المساحية الإفتراضية للفيديو" />
-	<tip id="ID_MEDIA_CLEAR" message="مسح قائمة التشغيل (الفارغة) ـ" />
-	<tip id="ID_MEDIA_CLOSE" message="إغلاق ملف الوسائط الحالي ، تحرير الذاكرة" />
-	<tip id="ID_MEDIA_EXPORT_COLLECTION" message="حفظ قائمة التشغيل كملف مجموعة..." />
-	<tip id="ID_MEDIA_FULLSCREEN" message="تشغيل نمط الفيديو في كامل الشاشة" />
-	<tip id="ID_MEDIA_MUTE" message="كتم الصوت" />
-	<tip id="ID_MEDIA_NEXT" message="تجاوز إلى الملف التالي في قائمة التشغيل الحالية" tip="الملف التالي" />
-	<tip id="ID_MEDIA_OPEN" message="فتح و تشغيل ملف وسائط أو قائمة تشغيل..." />
-	<tip id="ID_MEDIA_PAUSE" message="إيقاف تشغيل ملف الوسائط مؤقتا" tip="إيقاف مؤقت" />
-	<tip id="ID_MEDIA_PLAY" message="تشغيل ملف الوسائط الحالي" tip="تشغيل" />
-	<tip id="ID_MEDIA_PLAYLIST" message="إظهار أو إخفاء محرر قائمة التشغيل" />
-	<tip id="ID_MEDIA_PREVIOUS" message="الرجوع إلى الملف السابق في قائمة التشغيل الحالية" tip="الملف السابق" />
-	<tip id="ID_MEDIA_PROPERTIES" message="عرض و تحرير خصائص الملفات المحددة" />
-	<tip id="ID_MEDIA_RANDOM" message="تشغيل نمط (الخلط) العشوائي في قائمنة التشغيل الحالية" />
-	<tip id="ID_MEDIA_RATE" message="تصنيف الملفات المحددة" />
-	<tip id="ID_MEDIA_REMOVE" message="إزالة ملف الوسائط المحدد من قائمة التشغيل" />
-	<tip id="ID_MEDIA_REPEAT" message="تكرار ملف الوسائط الحالي" />
-	<tip id="ID_MEDIA_SAVE" message="حفظ قائمة التشغيل الحالية إلى ملف..." />
-	<tip id="ID_MEDIA_SELECT" message="تحديد و تشغيل هذا الملف" />
-	<tip id="ID_MEDIA_SETTINGS" message="عرض صفحة إعدادات الوسائط..." />
-	<tip id="ID_MEDIA_SIZE_DISTORT" message="تمديد الفيديو لملئ النافذة (غير مستحسن) ـ" />
-	<tip id="ID_MEDIA_SIZE_FILL" message="إختيار أفضل حجم للفيديو حسب نسبته المساحية" />
-	<tip id="ID_MEDIA_SIZE_ONE" message="إظهار الفيديو بحجمه الأصلي (الطبيعي) ـ" />
-	<tip id="ID_MEDIA_SIZE_HALF" message="إظهار الفيديو بثلاثة أضعاف حجمه الأصلي (الطبيعي) ـ" />
-	<tip id="ID_MEDIA_SIZE_TWO" message="إظهار الفيديو بضعف حجمه الأصلي (الطبيعي) ـ" />
-	<tip id="ID_MEDIA_STATUS" message="إظهار أو إخفاء سطر معلومات الوسائط" />
-	<tip id="ID_MEDIA_STOP" message="إيقاف تشغيل ملف الوسائط" tip="إيقاف" />
-	<tip id="ID_MEDIA_VIS" message="تحديد وظيفة المرئيات الإضافية للصوت..." />
-	<tip id="ID_MEDIA_ZOOM" message="ضبط بؤرة الفيديو و إعدادات النسبة المساحية" />
-	<tip id="ID_MONITOR_CLOSE" message="إغلاق نافذة المراقبة" />
-	<tip id="ID_NEIGHBOURS_CHAT" message="فتح جلسة محادثة مع المستخدم المحدد" />
-	<tip id="ID_NEIGHBOURS_COPY" message="نسخ رابط للوصول إلى المضيف المحدد" />
-	<tip id="ID_NEIGHBOURS_DISCONNECT" message="قطع الإتصال من الجوار المحدد" />
-	<tip id="ID_NEIGHBOURS_SETTINGS" message="تكوين إعدادات الشبكة..." />
-	<tip id="ID_NEIGHBOURS_VIEW_ALL" message="لمراقبة هذا الجوار Packet Dump فتح نافذة" />
-	<tip id="ID_NEIGHBOURS_VIEW_INCOMING" message="لمراقبة حركة المرور الواردة من هذا الجوار Packet Dump فتح نافذة" />
-	<tip id="ID_NEIGHBOURS_VIEW_OUTGOING" message="لمراقبة حركة المرور الصادرة إلى هذا الجوار Packet Dump فتح نافذة" />
-	<tip id="ID_NETWORK_AUTO_CLOSE" message="إغلاق شير-أزا آليا عندما يكتمل النقل" />
-	<tip id="ID_NETWORK_BROWSE_TO" message="تصفح المستخدم لعرض الوضعيات و الملفات المشتركة..." />
-	<tip id="ID_NETWORK_CONNECT" message="الإتصال بالشبكات المحددة" />
-	<tip id="ID_NETWORK_CONNECT_TO" message="الإتصال يدويا بمضيف..." />
-	<tip id="ID_NETWORK_DISCONNECT" message="قطع الإتصال من كافة الشبكات ، سيتم إيقاف كافة التحميلات أيضا و عمليات الرفع" />
-	<tip id="ID_NETWORK_EXIT" message="الخروج من Envy" />
-	<tip id="ID_NETWORK_ED2K" message="الإتصال بشبكة eDonkey" />
-	<tip id="ID_NETWORK_DC" message="الإتصال بشبكة DC++" />
-	<tip id="ID_NETWORK_BT" message="الإتصال بشبكة BitTorrent" />
-	<tip id="ID_NETWORK_G1" message="الإتصال بشبكة Gnutella الأصلية" />
-	<tip id="ID_NETWORK_G2" message="الإتصال بشبكة Gnutella2 (جدا مستحسن) ـ" />
-	<tip id="ID_NETWORK_SEARCH" message="بدء بحث جديد للشبكة..." />
-	<tip id="ID_SEARCH_CHAT" message="فتح جلسة محادثة مع المستخدم المحدد" />
-	<tip id="ID_SEARCH_CLEAR" message="مسح نتائج البحث" />
-	<tip id="ID_SEARCH_COLUMNS" message="تحديد أعمدة بيانات التعريف لعرضها..." />
-	<tip id="ID_SEARCH_COPY" message="نسخ الرابط للملف المحدد" />
-	<tip id="ID_SEARCH_DETAILS" message="عرض معلومات تفصيلية على الملف المحدد" />
-	<tip id="ID_SEARCH_DOWNLOAD" message="تحميل الملف/ات المحددة" />
-	<tip id="ID_SEARCH_DOWNLOADNOW" message="تحميل الملف/ات المحددة مع أولوية" />
-	<tip id="ID_SEARCH_FILTER" message="فرز نتائج البحث ببعض الكلمات و الشروط" />
-	<tip id="ID_SEARCH_FILTER_RAW" message="فرز نتائج البحث بكلمات معينة و شروط..." />
-	<tip id="ID_SEARCH_FILTER_REMOVE" message="إزالة الفرز من النتائج" />
-	<tip id="ID_SEARCH_FOR_ALBUM" message="بحث عن ملفات صوتية في نفس الألبوم مثل الملف المحدد" />
-	<tip id="ID_SEARCH_FOR_ARTIST" message="بحث عن ملفات صوتية لنفس الفنان مثل الملف المحدد" />
-	<tip id="ID_SEARCH_FOR_SERIES" message="بحث عن ملفات الفيديو في نفس السلسلة مثل الملف المحدد" />
-	<tip id="ID_SEARCH_FOR_SIMILAR" message="بحث عن الملفات التي تكون مشابهة للملف المحدد" />
-	<tip id="ID_SEARCH_FOR_THIS" message="بحث عن نسخ آخرى من الملف المحدد" />
-	<tip id="ID_SEARCH_PANEL" message="عرض لائحة البحث السريع على يسار نافذة البحث" />
-	<tip id="ID_SEARCH_SEARCH" message="البحث في الشبكة مرة ثانية..." />
-	<tip id="ID_SEARCH_STOP" message="التوقف عن إستلام النتائج في هذه النافذة" />
-	<tip id="ID_SEARCHMONITOR_CLEAR" message="مسح المخزون المؤقت لمراقب البحث" />
-	<tip id="ID_SEARCHMONITOR_PAUSE" message="إيقاف مراقب البحث مؤقتا" />
-	<tip id="ID_SECURITY_BAN" message="حظر المضيف المحدد لمدة هذه الجلسة" />
-	<tip id="ID_SECURITY_ADD" message="إضافة قاعدة جديدة إلى سلسلة الأمان..." />
-	<tip id="ID_SECURITY_EDIT" message="تحرير قاعدة الأمان المحددة..." />
-	<tip id="ID_SECURITY_EXPORT" message="تصدير قواعد الأمان المحددة إلى ملف..." />
-	<tip id="ID_SECURITY_IMPORT" message="إستيراد قواعد الأمان المحددة من ملف..." />
-	<tip id="ID_SECURITY_MOVE_DOWN" message="نقل قواعد الأمان المحددة أسفل قائمة الأسبقية" />
-	<tip id="ID_SECURITY_MOVE_UP" message="نقل قواعد الأمان المحددة أعلى قائمة الأسبقية" />
-	<tip id="ID_SECURITY_POLICY_ACCEPT" message="وضع نهج الأمان الإفتراضي للسماح لكافة المضيفين" />
-	<tip id="ID_SECURITY_POLICY_DENY" message="وضع نهج الأمان الإفتراضي لحظر كافة المضيفين" />
-	<tip id="ID_SECURITY_REMOVE" message="إزالة قواعد الأمان المحددة" />
-	<tip id="ID_SECURITY_RESET" message="إستعادة عدد الضربات مع القواعد المحددة" />
-	<tip id="ID_SCHEDULER_ADD" message="إضافة قاعدة جديدة إلى سلسلة الأمان..." />
-	<tip id="ID_SCHEDULER_EDIT" message="تحرير قاعدة الأمان المحددة..." />
-	<tip id="ID_SCHEDULER_ACTIVATE" message="مسح عمليات الرفع المحددة من القائمة" />
-	<tip id="ID_SCHEDULER_DEACTIVATE" message="الإتصال بالشبكات المحددة" />
-	<tip id="ID_SCHEDULER_EXPORT" message="تصدير قواعد الأمان المحددة إلى ملف..." />
-	<tip id="ID_SCHEDULER_IMPORT" message="إستيراد قواعد الأمان المحددة من ملف..." />
-	<tip id="ID_SCHEDULER_REMOVE" message="إزالة التحميل(ات) المحددة من القائمة" />
-	<tip id="ID_SCHEDULER_REMOVE_ALL" message="Removes all scheduled tasks." />
-	<tip id="ID_SYSTEM_CLEAR" message="مسح سجل الحالة" />
-	<tip id="ID_SYSTEM_TIMESTAMP" message="تسجيل طابع الوقت لكل سطر" />
-	<tip id="ID_SYSTEM_VERBOSE" message="عرض سجل تفصيلي عن نشاط النظام" />
-	<tip id="ID_TAB_CONNECT" message="إتصال أو قطع الإتصال من الشبكة" />
-	<!--tip id="ID_TAB_HELP" message="إحصل على مساعدة لإستعمال Envy"-->
-	<tip id="ID_TAB_HOME" message="العودة إلى صفحة Envy الرئيسية" />
-	<tip id="ID_TAB_IRC" message="إظهار نافذة المحادثة عبر الإنترنت" />
-	<tip id="ID_TAB_LIBRARY" message="عرض و إدارة مكتبتك الحالية المحلية" />
-	<tip id="ID_TAB_MEDIA" message="تشغيل ملفات وسائط صوت و فيديو من مكتبتك" />
-	<tip id="ID_TAB_NETWORK" message="مشاهدة جودة إتصالك إلى الشبكة" />
-	<tip id="ID_TAB_SEARCH" message="البحث في الشبكة عن ملفات للتحميل" />
-	<tip id="ID_TAB_TRANSFERS" message="مراقبة عمليات الرفع و التحميل التي تقوم بها" />
-	<tip id="ID_TOOLS_DOWNLOAD" message="بدء تحميل ملف جديد أو BitTorrent torrent..." />
-	<tip id="ID_TOOLS_LANGUAGE" message="تحديد اللغة المراد إستخدامها في Envy..." />
-	<tip id="ID_TOOLS_PROFILE" message="تحرير ملفك الشخصي..." />
-	<tip id="ID_TOOLS_RESKIN" message="إعادة التفعيل و التطبيق للغلاف الحالي" />
-	<tip id="ID_TOOLS_SEEDTORRENT" message="وضع Torrent المحدد كتلقيم على BitTorrent" />
-	<tip id="ID_TOOLS_SETTINGS" message="تكوين إعدادات Envy..." />
-	<tip id="ID_TOOLS_SKIN" message="إختيار غلاف مختلف لـ Envy..." />
-	<tip id="ID_TOOLS_WIZARD" message="فتح معالج Envy للتشغيل السريع..." />
-	<tip id="ID_TRAFFIC_AXIS" message="عرض المحور الرأسي" />
-	<tip id="ID_TRAFFIC_CLEAR" message="مسح المخطط البياني لحركة المرور" />
-	<tip id="ID_TRAFFIC_GRID" message="عرض الخطوط الشبكية" />
-	<tip id="ID_TRAFFIC_LEGEND" message="عرض وسيلة الشرح" />
-	<tip id="ID_TRAFFIC_SETUP" message="تحديد و تكوين المواد للمخطط البياني..." />
-	<tip id="ID_TRAFFIC_WINDOW" message="فتح نافذة جديدة للمخطط البياني..." />
-	<tip id="ID_TRANSFERS_CHAT" message="فتح جلسة محادثة مع المستخدم المحدد" />
-	<tip id="ID_TRANSFERS_CONNECT" message="الدخول إلى مصدر/مصادر التحميل المحددة و محاولة التحميل" />
-	<tip id="ID_TRANSFERS_DISCONNECT" message="قطع الإتصال عن عمليات النقل للتحميل المحدد" />
-	<tip id="ID_TRANSFERS_FORGET" message="قطع الإتصال و تجاهل مصدر/مصادر التحميل المحدد" />
-	<tip id="ID_TRAY_OPEN" message="فتح نافذة Envy" />
-	<tip id="ID_UPLOADS_AUTO_CLEAR" message="مسح تلقائي لعمليات الرفع التي تم الإنتهاء منها" />
-	<tip id="ID_UPLOADS_CHAT" message="فتح جلسة محادثة مع المستخدم المحدد" />
-	<tip id="ID_UPLOADS_CLEAR" message="مسح عمليات الرفع المحددة من القائمة" />
-	<tip id="ID_UPLOADS_CLEAR_COMPLETED" message="مسح عمليات الرفع التي تم الإنتهاء منها" />
-	<tip id="ID_UPLOADS_DISCONNECT" message="قطع الإتصال عن عمليات النقل للرفع المحدد" />
-	<tip id="ID_UPLOADS_FILTER_ACTIVE" message="إظهار كافة عمليات الرفع المرسلة بشكل نشط" />
-	<tip id="ID_UPLOADS_FILTER_ALL" message="إظهار كافة عمليات الرفع" />
-	<tip id="ID_UPLOADS_FILTER_HISTORY" message="إظهار عمليات الرفع التي لم تعد متصلة" />
-	<tip id="ID_UPLOADS_FILTER_MENU" message="إختيار أنواع عمليات الرفع المراد إظهارها و الأنواع المراد إخفاؤها في هذا العرض" />
-	<tip id="ID_UPLOADS_FILTER_QUEUED" message="إظهار عمليات الرفع التي في قائمة الإنتظار" />
-	<tip id="ID_UPLOADS_FILTER_TORRENT" message="إظهار عمليات الرفع لـ BitTorrent" />
-	<tip id="ID_UPLOADS_LAUNCH" message="فتح الملف/ات المشتركة المحددة" />
-	<tip id="ID_UPLOADS_SETTINGS" message="تكوين إعدادات عمليات الرفع..." />
-	<tip id="ID_UPLOADS_START" message="بدء عمليات الرفع المحددة التي في قائمة الإنتظار" />
-	<tip id="ID_UPLOADS_PRIORITY" message="الأولوية" />
-	<tip id="ID_VIEW_BASIC" message="إستخدام Envy في النمط الأساسي" />
-	<tip id="ID_VIEW_DISCOVERY" message="إظهار أو إخفاء نافذة خدمات الإكتشاف" />
-	<tip id="ID_VIEW_DOWNLOADS" message="إظهار أو إخفاء نافذة عمليات التحميل" />
-	<tip id="ID_VIEW_HOSTS" message="إظهار أو إخفاء نافذة مخزون المضيف المؤقت" />
-	<tip id="ID_VIEW_LIBRARY" message="إظهار أو إخفاء نافذة المكتبة" />
-	<tip id="ID_VIEW_MEDIA" message="إظهار أو إخفاء نافذة مشغل الوسائط" />
-	<tip id="ID_VIEW_NEIGHBOURS" message="إظهار أو إخفاء نافذة الجوار" />
-	<tip id="ID_VIEW_PACKETS" message="PACKET DUMP إظهار أو إخفاء نافذة" />
-	<tip id="ID_VIEW_RESULTS_MONITOR" message="إظهار أو إخفاء نافذة مراقب الضربات" />
-	<tip id="ID_VIEW_SEARCH_MONITOR" message="إظهار أو إخفاء نافذة مراقب البحث" />
-	<tip id="ID_VIEW_SECURITY" message="إظهار أو إخفاء نافذة الأمان" />
-	<tip id="ID_VIEW_SYSTEM" message="إظهار أو إخفاء نافذة النظام" />
-	<tip id="ID_VIEW_TABBED" message="إستخدام Envy في نمط التبويب المتقدم (الرئيسية ، المكتبة ، الوسائط ، عمليات النقل ، الشبكة) ـ" />
-	<tip id="ID_VIEW_TRAFFIC" message="إظهار أو إخفاء نافذة المخطط البياني" />
-	<tip id="ID_VIEW_UPLOADS" message="إظهار أو إخفاء نافذة عمليات الرفع" />
-	<tip id="ID_VIEW_WINDOWED" message="إستخدام Envy في نمط النوافذ" />
-	<tip id="ID_WINDOW_CASCADE" message="توسيع كافة النوافذ المفتوحة إلى ملء الشاشة" />
-	<tip id="ID_WINDOW_MONITOR" message="إظهار أو إخفاء نافذة مراقب نطاق العرض" />
-	<tip id="ID_WINDOW_NAVBAR" message="إظهار أو إخفاء نافذة شريط التنقل" />
-	<tip id="ID_WINDOW_REMOTE" message="إظهار أو إخفاء تحكم Envy عن بعد" />
-	<tip id="ID_WINDOW_TABBAR" message="إظهار أو إخفاء شريط لسان النافذة" />
-	<tip id="ID_WINDOW_TILE_HORZ" message="ترتيب النوافذ المفتوحة أفقيا مع تجانب غير متداخل" />
-	<tip id="ID_WINDOW_TILE_VERT" message="ترتيب النوافذ المفتوحة رأسيا مع تجانب غير متداخل" />
-	<tip id="ID_WINDOW_TOOLBAR" message="إظهار أو إخفاء شريط الأدوات" />
-	<tip id="ID_WEBSERVICES_LIST" message="إختيار خدمة الويب للحصول على مزيد من المعلومات حول الملف المحدد" />
-	<!-- tip id="ID_WEBSERVICES_SHAREMONKEY" message="البحث عن معلومات الملف باستعمال خدمة ShareMonkey" -->
+	<tip id="ID_BROWSE_FILES" text="عرض ملفات المستخدم المشاركة" />
+	<tip id="ID_BROWSE_LAUNCH" text="تصفح وضعية المستخدم المحددة و الملفات المشاركة" />
+	<tip id="ID_BROWSE_PROFILE" text="تصفح وضعية المستخدم" />
+	<tip id="ID_BROWSE_REFRESH" text="تحديث قائمة الملفات المتوفرة على هذا المضيف" />
+	<tip id="ID_BROWSE_STOP" text="التوقف عن تصفح الملفات على هذا المضيف" />
+	<tip id="ID_CHAT_BOLD" text="Ctrl+B)تطبيق التنسيق بخط عريض" />
+	<tip id="ID_CHAT_BROWSE" text="تصفح وضعية المستخدم و الملفات المشاركة" />
+	<tip id="ID_CHAT_CLEAR" text="مسح نص الرسالة في هذه النافذة" />
+	<tip id="ID_CHAT_COLOR" text="(Ctrl+K) تحديد لون النص" />
+	<tip id="ID_CHAT_CONNECT" text="الإتصال بجلسة المحادثة" />
+	<tip id="ID_CHAT_DISCONNECT" text="قطع الإتصال من بجلسة المحادثة" />
+	<tip id="ID_CHAT_EMOTICONS" text="إدراج مشاعر" />
+	<tip id="ID_CHAT_ITALIC" text="(Ctrl+I) تطبيق تنسيق خط مائل" />
+	<tip id="ID_CHAT_PRIORITY" text="إكتساب لأولوية إرسال إلى هذا المستخدم" />
+	<!--tip id="ID_CHAT_SEND_FILE" text="إرسال ملف إلى مستخدم ..."-->
+	<tip id="ID_CHAT_TIMESTAMP" text="إظعار الوقت عند وصول كل رسالة" />
+	<tip id="ID_CHAT_UNDERLINE" text="(Ctrl+U) تطبيق تنسيق خط تحته سطر" />
+	<tip id="ID_CHILD_CLOSE" text="إغلاق النافذة النشطة" />
+	<tip id="ID_CHILD_MAXIMISE" text="تكبير النافذة النشطة لملء الشاشة" />
+	<tip id="ID_CHILD_MINIMISE" text="تصغير النافذة النشطة إلى شريط التبويب" />
+	<tip id="ID_CHILD_RESTORE" text="فتح النافذة المحددة" />
+	<tip id="ID_DISCOVERY_ADD" text="إضافة خدمة إستكشاف جديدة..." />
+	<tip id="ID_DISCOVERY_ADVERTISE" text="عشوائية متوفرة GWebCache المحددة إلى GWebCache إعلان خدمة" />
+	<tip id="ID_DISCOVERY_BROWSE" text="المحددة على الشبكة GWebCache تصفح الإحصائيات لخدمة" />
+	<tip id="ID_DISCOVERY_EDIT" text="عرض الخصائص لخدمة الإكتشاف المحددة" />
+	<tip id="ID_DISCOVERY_GNUTELLA" text="إظهار خدمات البادئة في نافذة الإكتشاف" />
+	<tip id="ID_DISCOVERY_QUERY" text="إستعلام عن خدمات الإكتشاف المحددة الآن" />
+	<tip id="ID_DISCOVERY_REMOVE" text="إزالة خدمات الإكتشاف المحددة" />
+	<tip id="ID_DISCOVERY_SERVERLIST" text="في نافذة الإكتشاف eDonkey Server.met إظهار خدمات" />
+	<tip id="ID_DISCOVERY_WEBCACHE" text="في نافذة الإكتشاف GWebCache إظهار خدمات" />
+	<tip id="ID_DOWNLOAD_GROUP_CLEAR" text="إلغاء و إزالة جميع التحميلات في هذه المجموعة" />
+	<tip id="ID_DOWNLOAD_GROUP_NEW" text="إمشاء مجموعة تحميل جديدة..." />
+	<tip id="ID_DOWNLOAD_GROUP_PAUSE" text="إيقاف كل التحميلات مؤقتا في هذه المجموعة" />
+	<tip id="ID_DOWNLOAD_GROUP_PROPERTIES" text="تحرير الخصائص لمجموعة التحميل المحددة" />
+	<tip id="ID_DOWNLOAD_GROUP_REMOVE" text="إزالة مجموعة التحميل المحددة" />
+	<tip id="ID_DOWNLOAD_GROUP_RESUME" text="إستئناف جميع التحميلات في هذه المجموعة" />
+	<tip id="ID_DOWNLOAD_GROUP_SHOW" text="إظهار أو إخفاء شريط مجموعة التحميل" />
+	<tip id="ID_DOWNLOADS_AUTO_CLEAR" text="مسح تلقائي للتحميلات التي أنتهت" />
+	<tip id="ID_DOWNLOADS_BOOST" text="تعزيز الأداء للتحميل المحدد عن طريق إزالة حدود نطاق العرض" />
+	<tip id="ID_DOWNLOADS_CLEAR" text="مسح/إزالة التحميل(ات) المحددة" />
+	<tip id="ID_DOWNLOADS_CLEAR_COMPLETE" text="إزالة التحميل(ات) المحددة من القائمة" />
+	<tip id="ID_DOWNLOADS_CLEAR_COMPLETED" text="مسح التحميلات التي أنتهت" />
+	<tip id="ID_DOWNLOADS_CLEAR_INCOMPLETE" text="إلغاء التحميل(ات) الغير مكتملة المحددة" />
+	<tip id="ID_DOWNLOADS_CLEAR_PAUSED" text="مسح التحميلات التي تم إيقافها مؤقتا" />
+	<tip id="ID_DOWNLOADS_URI" text="نسخ الرابط للملف المحدد" />
+	<tip id="ID_DOWNLOADS_EDIT" text="إظهار واجهة التحرير المتقدمة للتحميل..." />
+	<tip id="ID_DOWNLOADS_ENQUEUE" text="إضافة التحميل(ات) المحددة إلى قائمة تشغيل الوسائط" />
+	<tip id="ID_DOWNLOADS_FILE_DELETE" text="حذف الملف المكتمل المحدد" />
+	<tip id="ID_DOWNLOADS_FILTER_ACTIVE" text="إظهار التحميلات النشطة" />
+	<tip id="ID_DOWNLOADS_FILTER_ALL" text="إظهار جميع التحميلات" />
+	<tip id="ID_DOWNLOADS_FILTER_MENU" text="إختر أنواع التحميلات المرد إظهارها و الأنواع المراد إخفاؤها في هذه العرض" />
+	<tip id="ID_DOWNLOADS_FILTER_PAUSED" text="إظهار التحميلات التي متوقف مؤقتا" />
+	<tip id="ID_DOWNLOADS_FILTER_QUEUED" text="إظهار التحميلات الموجودة في قائمة الإنتظار" />
+	<tip id="ID_DOWNLOADS_FILTER_SOURCES" text="إظهار التحميلات التي تنتظر مصادر" />
+	<tip id="ID_DOWNLOADS_HELP" text="عرض تعليمات مساعدة عن هذا التحميل..." />
+	<tip id="ID_DOWNLOADS_LAUNCH" text="معاينة الملف(ات) المحددة في مكانها" />
+	<tip id="ID_DOWNLOADS_LAUNCH_COMPLETE" text="فتح أو تشغيل الملف(ات) المحددة" />
+	<tip id="ID_DOWNLOADS_LAUNCH_COPY" text="معاينة التحميلات المحددة" />
+	<tip id="ID_DOWNLOADS_MONITOR" text="فتح نافذة لمراقبة التحميل لهذا الملف..." />
+	<tip id="ID_DOWNLOADS_MOVE_DOWN" text="تحريك التحميل(ات) المحددة أسفل قائمة الأولوية" />
+	<tip id="ID_DOWNLOADS_MOVE_UP" text="تحريك التحميل(ات) المحددة أعلى قائمة الأولوية" />
+	<tip id="ID_DOWNLOADS_PAUSE" text="إيقاف التحميل(ات) المحددة مؤقتا" />
+	<tip id="ID_DOWNLOADS_RATE" text="تصنيف التحميل(ات) المحددة" />
+	<tip id="ID_DOWNLOADS_REMOTE_PREVIEW" text="صورة معاينة التحميل لملف التحميل المحدد" />
+	<tip id="ID_DOWNLOADS_RESUME" text="إستئناف التحميل(ات) المحددة" />
+	<tip id="ID_DOWNLOADS_SETTINGS" text="تكوين إعدادات التحميل..." />
+	<tip id="ID_DOWNLOADS_SHARE" text="المشاركة في هذا الملف المحمل جزئيا مع المستخدمين الآخرين" />
+	<tip id="ID_DOWNLOADS_SHOW_SOURCES" text="عرض المصادر التي حاليا لم يتم تستخدم" />
+	<tip id="ID_DOWNLOADS_SOURCES" text="البحث عن مصادر أكثر للتحميل(ات) المحددة" />
+	<!--tip id="ID_DOWNLOADS_TORRENT_INFO" text="المحدد BitTorrent عرض معلومات عن تحميل"-->
+	<tip id="ID_DOWNLOADS_ADD_SOURCE" text="إضافة رابط مصدري إلى التحميل المحدد..." />
+	<tip id="ID_DOWNLOADS_VIEW_REVIEWS" text="عرض نظرة عامة للتحميل المحدد" />
+	<tip id="ID_HELP_ABOUT" text="Envy لوحة حول..." />
+	<tip id="ID_HELP_CODEC" text="كل شيء عن وحدات الترميز و مشاكل الفيديو" />
+	<tip id="ID_HELP_FAQ" text="Envy عرض إستفسارات" />
+	<tip id="ID_HELP_ROUTER" text="إحصل على تعليمات عن تكوين جهاز توجيهك أو جدارك الناري" />
+	<tip id="ID_HELP_FORUMS" text="Envy زيارة منتدى النقاش لـ" />
+	<tip id="ID_HELP_GUIDE" text="Envy زيارة دليل المستخدم لـ" />
+	<tip id="ID_HELP_HOMEPAGE" text="Envy زيارة موقع" />
+	<tip id="ID_HELP_SECURITY" text="تعليمات عن حماية نظامك من البرامج العدائية" />
+	<tip id="ID_HELP_UPDATE" text="التدقيق عن أخبار و عن تحديثات" />
+	<tip id="ID_HELP_TEST" text="تشغيل إختبار الإتصال" />
+	<tip id="ID_HELP_WEB_1" text="زيارة هذا الموقع" />
+	<tip id="ID_HELP_WEB_2" text="زيارة هذا الموقع" />
+	<tip id="ID_HELP_WEB_3" text="زيارة هذا الموقع" />
+	<tip id="ID_HELP_WEB_4" text="زيارة هذا الموقع" />
+	<tip id="ID_HELP_DONATE" text="إذا كنت تريد ، يمكنك أن تتبرع إلى حسابنا القانوني و تبدي لنا تقديرك" />
+	<!--tip id="ID_HELP_FAKESHAREAZA" text="ترجمة FakeShareaza.com لمعرفة المزيد حول الأحداث الأخيرة" -->
+	<tip id="ID_HITMONITOR_CLEAR" text="مسح المخزون المؤقت لمراقب ضربات" />
+	<tip id="ID_HITMONITOR_PAUSE" text="إيقاف مراقبة الضربات مؤقتا" />
+	<tip id="ID_HITMONITOR_SEARCH" text="البحث في الشبكة عن المادة المحددة" />
+	<tip id="ID_HOSTCACHE_CONNECT" text="الإتصال مع المضيف(ين) المحدد" />
+	<tip id="ID_HOSTCACHE_DISCONNECT" text="قطع الإتصال من الجوار المحدد" />
+	<tip id="ID_HOSTCACHE_ED2K_CACHE" text="إظهار خادمات eDonkey" />
+	<tip id="ID_HOSTCACHE_FILE_DOWNLOAD" text="تحميل ملف eDonkey &quot;server.met&quot;..." />
+	<tip id="ID_HOSTCACHE_G1_CACHE" text="إظهار المضيف المخزن مؤقتا لـ Gnutella1" />
+	<tip id="ID_HOSTCACHE_G2_CACHE" text="إظهار المضيف المخزن مؤقتا لـ Gnutella2" />
+	<tip id="ID_HOSTCACHE_G2_HORIZON" text="إظهار محاور الأفق لـ Gnutella2" />
+	<tip id="ID_HOSTCACHE_IMPORT" text="إستيراد قائمة المضيفين المعروفين ، مثل ملف &quot;server.met&quot;..." />
+	<tip id="ID_HOSTCACHE_PRIORITY" text="حاول الإتصال إلى هذا الخادم قبل الخادمات الأخرى" />
+	<tip id="ID_HOSTCACHE_REMOVE" text="إزالة مضيفين محددين من المخزون المؤقت للمضيف" />
+	<tip id="ID_LIBRARY_ADD" text="إضافة مجلد جديد إلى مكتبتك..."></tip>
+	<tip id="ID_LIBRARY_ALBUM_DELETE" text="حذف مجلد الألبوم المحدد" />
+	<tip id="ID_LIBRARY_ALBUM_OPEN" text="فتح مجلد الألبوم المحدد" />
+	<tip id="ID_LIBRARY_ALBUM_PROPERTIES" text="عرض و تحرير الخصائص لمجلد الألبوم المحدد..." />
+	<tip id="ID_LIBRARY_BITPRINTS_DOWNLOAD" text="تحميل بيانات التعريف للملف المحدد من Bitprints..." />
+	<tip id="ID_LIBRARY_BITPRINTS_WEB" text="عرض بطاقة Bitprints للملف المحدد على الشبكة" />
+	<tip id="ID_LIBRARY_COLUMNS" text="تحديد أعمدة بيانات التعريف للعرض..." />
+	<tip id="ID_LIBRARY_COPY" text="إنسخ الملفات المحددة إلى مجلد مكتبة آخر..." />
+	<tip id="ID_LIBRARY_CREATETORRENT" text="إنشاء .torrent لهذا الملف لرفعه إلى أي موقع على الشبكة" />
+	<tip id="ID_LIBRARY_DELETE" text="حذف الملفات المحددة بشكل دائم" />
+	<tip id="ID_LIBRARY_ENQUEUE" text="إضافة ملف(ات) محددة إلى قائمة تشغيل الوسائط" />
+	<tip id="ID_LIBRARY_EXPLORE" text="فتح المجلد(ات) المحدد" />
+	<tip id="ID_LIBRARY_EXPORT_COLLECTION" text="تصدير مجلد الألبوم المحدد إلى ملفات المجموعة..." />
+	<tip id="ID_LIBRARY_FOLDER_DOWNLOAD" text="تحميل كافة الملفات في المجموعة المحددة" />
+	<tip id="ID_LIBRARY_FOLDER_ENQUEUE" text="إضافة كل ملف في مجلد/ات الألبوم المحددة إلى قائمة التشغيل الخاصة بك" />
+	<tip id="ID_LIBRARY_FOLDER_FILE_PROPERTIES" text="عرض و تحرير الخصائص لكافة الملفات في المجلد/ات المحددة..." />
+	<tip id="ID_LIBRARY_FOLDER_METADATA" text="تطبيق بيانات تعريف مشتركة من مجلد الألبوم على كافة ملفاته" />
+	<tip id="ID_LIBRARY_FOLDER_NEW" text="إنشاء مجلد ألبوم جديدة هنا..." />
+	<tip id="ID_LIBRARY_FOLDER_PROPERTIES" text="عرض و تحرير الخصائص لمجلد الألبوم المحدد..." />
+	<tip id="ID_LIBRARY_FOLDERS" text="إدارة المجلدات الطبيعية في مكتبتك..." />
+	<tip id="ID_LIBRARY_HASH_PRIORITY" text="تعزيز السرعة لفحص الملف و التجزئة" />
+	<tip id="ID_LIBRARY_LAUNCH" text="فتح أو تشغيل الملف(ات) المحددة" />
+	<tip id="ID_LIBRARY_MOVE" text="نقل الملفات المحددة إلى مجلد مكتبة آخر..." />
+	<tip id="ID_LIBRARY_PANEL" text="إظهار أو إخفاء لائحة تفاصيل المكتبة" />
+	<tip id="ID_LIBRARY_PARENT" text="Move up to the parent folder." />
+	<tip id="ID_LIBRARY_PROPERTIES" text="عرض و تحرير الخصائص للملفات المحددة..." />
+	<tip id="ID_LIBRARY_REBUILD" text="إعادة بناء بيانات التعريف و التجزئة للمجلدات أو الملفات المحددة" />
+	<tip id="ID_LIBRARY_REBUILD_ANSI" text="إعادة بناء بيانات التعريف باستخدام لغة أخرى" />
+	<tip id="ID_LIBRARY_REFRESH" text="تحديث العرض للمكتبة" />
+	<tip id="ID_LIBRARY_REMOVE" text="إزالة المجلدات المشتركة المحددة" />
+	<tip id="ID_LIBRARY_RENAME" text="تسمية الملف المحدد في مكانه" />
+	<tip id="ID_LIBRARY_SCAN" text="االبحث في المجلدات أو الملفات المحددة عن تغييرات" />
+	<tip id="ID_LIBRARY_SEARCH" text="بحث عن مكتبة ملفاتك" />
+	<tip id="ID_LIBRARY_SEARCH_QUICK" text="بحث عن مكتبة ملفاتك..." />
+	<tip id="ID_LIBRARY_SEED_TORRENT" text="وضع Torrent المحدد كتلقيم على BitTorrent" />
+	<tip id="ID_LIBRARY_SELECT_ALL" text="تحديد و عرض كافة المجلدات في مكتبتك" />
+	<tip id="ID_LIBRARY_SHARED_FILE" text="مشاركة أو عدم مشاركة للملفات المحددة" />
+	<tip id="ID_LIBRARY_SHARED_FOLDER" text="مشاركة أو عدم مشاركة للمجلد(ات) المحددة" />
+	<tip id="ID_LIBRARY_TREE_PHYSICAL" text="عرض المجلدات الطبيعية في مكتبتك" />
+	<tip id="ID_LIBRARY_TREE_VIRTUAL" text="تنظيم مكتبتك" />
+	<tip id="ID_LIBRARY_UNLINK" text="إزالة الملفات المحددة من مجلد الألبوم الحالي" />
+	<tip id="ID_LIBRARY_URL" text="نسخ الرابط للملف المحدد" />
+	<tip id="ID_LIBRARY_VIEW" text="تحديد العرض للمكتبة..." />
+	<tip id="ID_LIBRARY_VIEW_ALBUM" text="إظهار عرض ألبوم" tip="عرض ألبوم" />
+	<tip id="ID_LIBRARY_VIEW_COLLECTION" text="إظهار عرض غني للمجموعة" tip="عرض المجموعة" />
+	<tip id="ID_LIBRARY_VIEW_DETAIL" text="إظهرا أسماء الملفات و التفاصيل و بيانات التعريف" tip="عرض التفاصيل" />
+	<tip id="ID_LIBRARY_VIEW_HOME" text="عرض الصفحة الرئيسية للمكتبة" tip="عرض رئيسي" />
+	<tip id="ID_LIBRARY_VIEW_ICON" text="إظهار الملفات كرموز" tip="عرض الرموز" />
+	<tip id="ID_LIBRARY_VIEW_LIST" text="إظهار الملفات كقائمة أفقية" tip="عرض قائمة" />
+	<tip id="ID_LIBRARY_VIEW_THUMBNAIL" text="إظهار صويرات للملفات" tip="عرض صويرات" />
+	<tip id="ID_LIBRARY_VIEW_TILE" text="عرض قائمة لمجلدات الألبوم" tip="عرض متجانب" />
+	<tip id="ID_MEDIA_ADD" text="إضافة ملف وسائط إلى قائمة التشغيل..." />
+	<tip id="ID_MEDIA_ADD_FOLDER" text="إضافة مجلد مع ملفات وسائط إلى قائمة التشغيل..." />
+	<tip id="ID_MEDIA_ASPECT_16_9" text="تقفيل النسبة المساحية للفيديو على 16:9 ، مناسب للفيلم" />
+	<tip id="ID_MEDIA_ASPECT_4_3" text="تقفيل النسبة المساحية للفيديو على 4:3 ، مناسب للتلفزيون" />
+	<tip id="ID_MEDIA_ASPECT_DEFAULT" text="إستخدام النسبة المساحية الإفتراضية للفيديو" />
+	<tip id="ID_MEDIA_CLEAR" text="مسح قائمة التشغيل (الفارغة) ـ" />
+	<tip id="ID_MEDIA_CLOSE" text="إغلاق ملف الوسائط الحالي ، تحرير الذاكرة" />
+	<tip id="ID_MEDIA_EXPORT_COLLECTION" text="حفظ قائمة التشغيل كملف مجموعة..." />
+	<tip id="ID_MEDIA_FULLSCREEN" text="تشغيل نمط الفيديو في كامل الشاشة" />
+	<tip id="ID_MEDIA_MUTE" text="كتم الصوت" />
+	<tip id="ID_MEDIA_NEXT" text="تجاوز إلى الملف التالي في قائمة التشغيل الحالية" tip="الملف التالي" />
+	<tip id="ID_MEDIA_OPEN" text="فتح و تشغيل ملف وسائط أو قائمة تشغيل..." />
+	<tip id="ID_MEDIA_PAUSE" text="إيقاف تشغيل ملف الوسائط مؤقتا" tip="إيقاف مؤقت" />
+	<tip id="ID_MEDIA_PLAY" text="تشغيل ملف الوسائط الحالي" tip="تشغيل" />
+	<tip id="ID_MEDIA_PLAYLIST" text="إظهار أو إخفاء محرر قائمة التشغيل" />
+	<tip id="ID_MEDIA_PREVIOUS" text="الرجوع إلى الملف السابق في قائمة التشغيل الحالية" tip="الملف السابق" />
+	<tip id="ID_MEDIA_PROPERTIES" text="عرض و تحرير خصائص الملفات المحددة" />
+	<tip id="ID_MEDIA_RANDOM" text="تشغيل نمط (الخلط) العشوائي في قائمنة التشغيل الحالية" />
+	<tip id="ID_MEDIA_RATE" text="تصنيف الملفات المحددة" />
+	<tip id="ID_MEDIA_REMOVE" text="إزالة ملف الوسائط المحدد من قائمة التشغيل" />
+	<tip id="ID_MEDIA_REPEAT" text="تكرار ملف الوسائط الحالي" />
+	<tip id="ID_MEDIA_SAVE" text="حفظ قائمة التشغيل الحالية إلى ملف..." />
+	<tip id="ID_MEDIA_SELECT" text="تحديد و تشغيل هذا الملف" />
+	<tip id="ID_MEDIA_SETTINGS" text="عرض صفحة إعدادات الوسائط..." />
+	<tip id="ID_MEDIA_SIZE_DISTORT" text="تمديد الفيديو لملئ النافذة (غير مستحسن) ـ" />
+	<tip id="ID_MEDIA_SIZE_FILL" text="إختيار أفضل حجم للفيديو حسب نسبته المساحية" />
+	<tip id="ID_MEDIA_SIZE_ONE" text="إظهار الفيديو بحجمه الأصلي (الطبيعي) ـ" />
+	<tip id="ID_MEDIA_SIZE_HALF" text="إظهار الفيديو بثلاثة أضعاف حجمه الأصلي (الطبيعي) ـ" />
+	<tip id="ID_MEDIA_SIZE_TWO" text="إظهار الفيديو بضعف حجمه الأصلي (الطبيعي) ـ" />
+	<tip id="ID_MEDIA_STATUS" text="إظهار أو إخفاء سطر معلومات الوسائط" />
+	<tip id="ID_MEDIA_STOP" text="إيقاف تشغيل ملف الوسائط" tip="إيقاف" />
+	<tip id="ID_MEDIA_VIS" text="تحديد وظيفة المرئيات الإضافية للصوت..." />
+	<tip id="ID_MEDIA_ZOOM" text="ضبط بؤرة الفيديو و إعدادات النسبة المساحية" />
+	<tip id="ID_MONITOR_CLOSE" text="إغلاق نافذة المراقبة" />
+	<tip id="ID_NEIGHBOURS_CHAT" text="فتح جلسة محادثة مع المستخدم المحدد" />
+	<tip id="ID_NEIGHBOURS_COPY" text="نسخ رابط للوصول إلى المضيف المحدد" />
+	<tip id="ID_NEIGHBOURS_DISCONNECT" text="قطع الإتصال من الجوار المحدد" />
+	<tip id="ID_NEIGHBOURS_SETTINGS" text="تكوين إعدادات الشبكة..." />
+	<tip id="ID_NEIGHBOURS_VIEW_ALL" text="لمراقبة هذا الجوار Packet Dump فتح نافذة" />
+	<tip id="ID_NEIGHBOURS_VIEW_INCOMING" text="لمراقبة حركة المرور الواردة من هذا الجوار Packet Dump فتح نافذة" />
+	<tip id="ID_NEIGHBOURS_VIEW_OUTGOING" text="لمراقبة حركة المرور الصادرة إلى هذا الجوار Packet Dump فتح نافذة" />
+	<tip id="ID_NETWORK_AUTO_CLOSE" text="إغلاق شير-أزا آليا عندما يكتمل النقل" />
+	<tip id="ID_NETWORK_BROWSE_TO" text="تصفح المستخدم لعرض الوضعيات و الملفات المشتركة..." />
+	<tip id="ID_NETWORK_CONNECT" text="الإتصال بالشبكات المحددة" />
+	<tip id="ID_NETWORK_CONNECT_TO" text="الإتصال يدويا بمضيف..." />
+	<tip id="ID_NETWORK_DISCONNECT" text="قطع الإتصال من كافة الشبكات ، سيتم إيقاف كافة التحميلات أيضا و عمليات الرفع" />
+	<tip id="ID_NETWORK_EXIT" text="الخروج من Envy" />
+	<tip id="ID_NETWORK_ED2K" text="الإتصال بشبكة eDonkey" />
+	<tip id="ID_NETWORK_DC" text="الإتصال بشبكة DC++" />
+	<tip id="ID_NETWORK_BT" text="الإتصال بشبكة BitTorrent" />
+	<tip id="ID_NETWORK_G1" text="الإتصال بشبكة Gnutella الأصلية" />
+	<tip id="ID_NETWORK_G2" text="الإتصال بشبكة Gnutella2 (جدا مستحسن) ـ" />
+	<tip id="ID_NETWORK_SEARCH" text="بدء بحث جديد للشبكة..." />
+	<tip id="ID_SEARCH_CHAT" text="فتح جلسة محادثة مع المستخدم المحدد" />
+	<tip id="ID_SEARCH_CLEAR" text="مسح نتائج البحث" />
+	<tip id="ID_SEARCH_COLUMNS" text="تحديد أعمدة بيانات التعريف لعرضها..." />
+	<tip id="ID_SEARCH_COPY" text="نسخ الرابط للملف المحدد" />
+	<tip id="ID_SEARCH_DETAILS" text="عرض معلومات تفصيلية على الملف المحدد" />
+	<tip id="ID_SEARCH_DOWNLOAD" text="تحميل الملف/ات المحددة" />
+	<tip id="ID_SEARCH_DOWNLOADNOW" text="تحميل الملف/ات المحددة مع أولوية" />
+	<tip id="ID_SEARCH_FILTER" text="فرز نتائج البحث ببعض الكلمات و الشروط" />
+	<tip id="ID_SEARCH_FILTER_RAW" text="فرز نتائج البحث بكلمات معينة و شروط..." />
+	<tip id="ID_SEARCH_FILTER_REMOVE" text="إزالة الفرز من النتائج" />
+	<tip id="ID_SEARCH_FOR_ALBUM" text="بحث عن ملفات صوتية في نفس الألبوم مثل الملف المحدد" />
+	<tip id="ID_SEARCH_FOR_ARTIST" text="بحث عن ملفات صوتية لنفس الفنان مثل الملف المحدد" />
+	<tip id="ID_SEARCH_FOR_SERIES" text="بحث عن ملفات الفيديو في نفس السلسلة مثل الملف المحدد" />
+	<tip id="ID_SEARCH_FOR_SIMILAR" text="بحث عن الملفات التي تكون مشابهة للملف المحدد" />
+	<tip id="ID_SEARCH_FOR_THIS" text="بحث عن نسخ آخرى من الملف المحدد" />
+	<tip id="ID_SEARCH_PANEL" text="عرض لائحة البحث السريع على يسار نافذة البحث" />
+	<tip id="ID_SEARCH_SEARCH" text="البحث في الشبكة مرة ثانية..." />
+	<tip id="ID_SEARCH_STOP" text="التوقف عن إستلام النتائج في هذه النافذة" />
+	<tip id="ID_SEARCHMONITOR_CLEAR" text="مسح المخزون المؤقت لمراقب البحث" />
+	<tip id="ID_SEARCHMONITOR_PAUSE" text="إيقاف مراقب البحث مؤقتا" />
+	<tip id="ID_SECURITY_BAN" text="حظر المضيف المحدد لمدة هذه الجلسة" />
+	<tip id="ID_SECURITY_ADD" text="إضافة قاعدة جديدة إلى سلسلة الأمان..." />
+	<tip id="ID_SECURITY_EDIT" text="تحرير قاعدة الأمان المحددة..." />
+	<tip id="ID_SECURITY_EXPORT" text="تصدير قواعد الأمان المحددة إلى ملف..." />
+	<tip id="ID_SECURITY_IMPORT" text="إستيراد قواعد الأمان المحددة من ملف..." />
+	<tip id="ID_SECURITY_MOVE_DOWN" text="نقل قواعد الأمان المحددة أسفل قائمة الأسبقية" />
+	<tip id="ID_SECURITY_MOVE_UP" text="نقل قواعد الأمان المحددة أعلى قائمة الأسبقية" />
+	<tip id="ID_SECURITY_POLICY_ACCEPT" text="وضع نهج الأمان الإفتراضي للسماح لكافة المضيفين" />
+	<tip id="ID_SECURITY_POLICY_DENY" text="وضع نهج الأمان الإفتراضي لحظر كافة المضيفين" />
+	<tip id="ID_SECURITY_REMOVE" text="إزالة قواعد الأمان المحددة" />
+	<tip id="ID_SECURITY_RESET" text="إستعادة عدد الضربات مع القواعد المحددة" />
+	<tip id="ID_SCHEDULER_ADD" text="إضافة قاعدة جديدة إلى سلسلة الأمان..." />
+	<tip id="ID_SCHEDULER_EDIT" text="تحرير قاعدة الأمان المحددة..." />
+	<tip id="ID_SCHEDULER_ACTIVATE" text="مسح عمليات الرفع المحددة من القائمة" />
+	<tip id="ID_SCHEDULER_DEACTIVATE" text="الإتصال بالشبكات المحددة" />
+	<tip id="ID_SCHEDULER_EXPORT" text="تصدير قواعد الأمان المحددة إلى ملف..." />
+	<tip id="ID_SCHEDULER_IMPORT" text="إستيراد قواعد الأمان المحددة من ملف..." />
+	<tip id="ID_SCHEDULER_REMOVE" text="إزالة التحميل(ات) المحددة من القائمة" />
+	<tip id="ID_SCHEDULER_REMOVE_ALL" text="Removes all scheduled tasks." />
+	<tip id="ID_SYSTEM_CLEAR" text="مسح سجل الحالة" />
+	<tip id="ID_SYSTEM_TIMESTAMP" text="تسجيل طابع الوقت لكل سطر" />
+	<tip id="ID_SYSTEM_VERBOSE" text="عرض سجل تفصيلي عن نشاط النظام" />
+	<tip id="ID_TAB_CONNECT" text="إتصال أو قطع الإتصال من الشبكة" />
+	<!--tip id="ID_TAB_HELP" text="إحصل على مساعدة لإستعمال Envy"-->
+	<tip id="ID_TAB_HOME" text="العودة إلى صفحة Envy الرئيسية" />
+	<tip id="ID_TAB_IRC" text="إظهار نافذة المحادثة عبر الإنترنت" />
+	<tip id="ID_TAB_LIBRARY" text="عرض و إدارة مكتبتك الحالية المحلية" />
+	<tip id="ID_TAB_MEDIA" text="تشغيل ملفات وسائط صوت و فيديو من مكتبتك" />
+	<tip id="ID_TAB_NETWORK" text="مشاهدة جودة إتصالك إلى الشبكة" />
+	<tip id="ID_TAB_SEARCH" text="البحث في الشبكة عن ملفات للتحميل" />
+	<tip id="ID_TAB_TRANSFERS" text="مراقبة عمليات الرفع و التحميل التي تقوم بها" />
+	<tip id="ID_TOOLS_DOWNLOAD" text="بدء تحميل ملف جديد أو BitTorrent torrent..." />
+	<tip id="ID_TOOLS_LANGUAGE" text="تحديد اللغة المراد إستخدامها في Envy..." />
+	<tip id="ID_TOOLS_PROFILE" text="تحرير ملفك الشخصي..." />
+	<tip id="ID_TOOLS_RESKIN" text="إعادة التفعيل و التطبيق للغلاف الحالي" />
+	<tip id="ID_TOOLS_SEEDTORRENT" text="وضع Torrent المحدد كتلقيم على BitTorrent" />
+	<tip id="ID_TOOLS_SETTINGS" text="تكوين إعدادات Envy..." />
+	<tip id="ID_TOOLS_SKIN" text="إختيار غلاف مختلف لـ Envy..." />
+	<tip id="ID_TOOLS_WIZARD" text="فتح معالج Envy للتشغيل السريع..." />
+	<tip id="ID_TRAFFIC_AXIS" text="عرض المحور الرأسي" />
+	<tip id="ID_TRAFFIC_CLEAR" text="مسح المخطط البياني لحركة المرور" />
+	<tip id="ID_TRAFFIC_GRID" text="عرض الخطوط الشبكية" />
+	<tip id="ID_TRAFFIC_LEGEND" text="عرض وسيلة الشرح" />
+	<tip id="ID_TRAFFIC_SETUP" text="تحديد و تكوين المواد للمخطط البياني..." />
+	<tip id="ID_TRAFFIC_WINDOW" text="فتح نافذة جديدة للمخطط البياني..." />
+	<tip id="ID_TRANSFERS_CHAT" text="فتح جلسة محادثة مع المستخدم المحدد" />
+	<tip id="ID_TRANSFERS_CONNECT" text="الدخول إلى مصدر/مصادر التحميل المحددة و محاولة التحميل" />
+	<tip id="ID_TRANSFERS_DISCONNECT" text="قطع الإتصال عن عمليات النقل للتحميل المحدد" />
+	<tip id="ID_TRANSFERS_FORGET" text="قطع الإتصال و تجاهل مصدر/مصادر التحميل المحدد" />
+	<tip id="ID_TRAY_OPEN" text="فتح نافذة Envy" />
+	<tip id="ID_UPLOADS_AUTO_CLEAR" text="مسح تلقائي لعمليات الرفع التي تم الإنتهاء منها" />
+	<tip id="ID_UPLOADS_CHAT" text="فتح جلسة محادثة مع المستخدم المحدد" />
+	<tip id="ID_UPLOADS_CLEAR" text="مسح عمليات الرفع المحددة من القائمة" />
+	<tip id="ID_UPLOADS_CLEAR_COMPLETED" text="مسح عمليات الرفع التي تم الإنتهاء منها" />
+	<tip id="ID_UPLOADS_DISCONNECT" text="قطع الإتصال عن عمليات النقل للرفع المحدد" />
+	<tip id="ID_UPLOADS_FILTER_ACTIVE" text="إظهار كافة عمليات الرفع المرسلة بشكل نشط" />
+	<tip id="ID_UPLOADS_FILTER_ALL" text="إظهار كافة عمليات الرفع" />
+	<tip id="ID_UPLOADS_FILTER_HISTORY" text="إظهار عمليات الرفع التي لم تعد متصلة" />
+	<tip id="ID_UPLOADS_FILTER_MENU" text="إختيار أنواع عمليات الرفع المراد إظهارها و الأنواع المراد إخفاؤها في هذا العرض" />
+	<tip id="ID_UPLOADS_FILTER_QUEUED" text="إظهار عمليات الرفع التي في قائمة الإنتظار" />
+	<tip id="ID_UPLOADS_FILTER_TORRENT" text="إظهار عمليات الرفع لـ BitTorrent" />
+	<tip id="ID_UPLOADS_LAUNCH" text="فتح الملف/ات المشتركة المحددة" />
+	<tip id="ID_UPLOADS_SETTINGS" text="تكوين إعدادات عمليات الرفع..." />
+	<tip id="ID_UPLOADS_START" text="بدء عمليات الرفع المحددة التي في قائمة الإنتظار" />
+	<tip id="ID_UPLOADS_PRIORITY" text="الأولوية" />
+	<tip id="ID_VIEW_BASIC" text="إستخدام Envy في النمط الأساسي" />
+	<tip id="ID_VIEW_DISCOVERY" text="إظهار أو إخفاء نافذة خدمات الإكتشاف" />
+	<tip id="ID_VIEW_DOWNLOADS" text="إظهار أو إخفاء نافذة عمليات التحميل" />
+	<tip id="ID_VIEW_HOSTS" text="إظهار أو إخفاء نافذة مخزون المضيف المؤقت" />
+	<tip id="ID_VIEW_LIBRARY" text="إظهار أو إخفاء نافذة المكتبة" />
+	<tip id="ID_VIEW_MEDIA" text="إظهار أو إخفاء نافذة مشغل الوسائط" />
+	<tip id="ID_VIEW_NEIGHBOURS" text="إظهار أو إخفاء نافذة الجوار" />
+	<tip id="ID_VIEW_PACKETS" text="PACKET DUMP إظهار أو إخفاء نافذة" />
+	<tip id="ID_VIEW_RESULTS_MONITOR" text="إظهار أو إخفاء نافذة مراقب الضربات" />
+	<tip id="ID_VIEW_SEARCH_MONITOR" text="إظهار أو إخفاء نافذة مراقب البحث" />
+	<tip id="ID_VIEW_SECURITY" text="إظهار أو إخفاء نافذة الأمان" />
+	<tip id="ID_VIEW_SYSTEM" text="إظهار أو إخفاء نافذة النظام" />
+	<tip id="ID_VIEW_TABBED" text="إستخدام Envy في نمط التبويب المتقدم (الرئيسية ، المكتبة ، الوسائط ، عمليات النقل ، الشبكة) ـ" />
+	<tip id="ID_VIEW_TRAFFIC" text="إظهار أو إخفاء نافذة المخطط البياني" />
+	<tip id="ID_VIEW_UPLOADS" text="إظهار أو إخفاء نافذة عمليات الرفع" />
+	<tip id="ID_VIEW_WINDOWED" text="إستخدام Envy في نمط النوافذ" />
+	<tip id="ID_WINDOW_CASCADE" text="توسيع كافة النوافذ المفتوحة إلى ملء الشاشة" />
+	<tip id="ID_WINDOW_MONITOR" text="إظهار أو إخفاء نافذة مراقب نطاق العرض" />
+	<tip id="ID_WINDOW_NAVBAR" text="إظهار أو إخفاء نافذة شريط التنقل" />
+	<tip id="ID_WINDOW_REMOTE" text="إظهار أو إخفاء تحكم Envy عن بعد" />
+	<tip id="ID_WINDOW_TABBAR" text="إظهار أو إخفاء شريط لسان النافذة" />
+	<tip id="ID_WINDOW_TILE_HORZ" text="ترتيب النوافذ المفتوحة أفقيا مع تجانب غير متداخل" />
+	<tip id="ID_WINDOW_TILE_VERT" text="ترتيب النوافذ المفتوحة رأسيا مع تجانب غير متداخل" />
+	<tip id="ID_WINDOW_TOOLBAR" text="إظهار أو إخفاء شريط الأدوات" />
+	<tip id="ID_WEBSERVICES_LIST" text="إختيار خدمة الويب للحصول على مزيد من المعلومات حول الملف المحدد" />
+	<!-- tip id="ID_WEBSERVICES_SHAREMONKEY" text="البحث عن معلومات الملف باستعمال خدمة ShareMonkey" -->
 	<!-- PLUGIN TIPS -->
-	<tip id="PluginID_ImageViewer_BestFit" message="تحجيم الصورة لملائمة حجم النافذة" />
-	<tip id="PluginID_ImageViewer_FullSize" message="إظهار الصورة بحجمها الطبيعي" />
-	<tip id="PluginID_ImageViewer_Refresh" message="تحديث الصورة" />
-	<tip id="PluginID_ImageViewer_Close" message="إغلاق نافذة عارض الصور" />
+	<tip id="PluginID_ImageViewer_BestFit" text="تحجيم الصورة لملائمة حجم النافذة" />
+	<tip id="PluginID_ImageViewer_FullSize" text="إظهار الصورة بحجمها الطبيعي" />
+	<tip id="PluginID_ImageViewer_Refresh" text="تحديث الصورة" />
+	<tip id="PluginID_ImageViewer_Close" text="إغلاق نافذة عارض الصور" />
 </commandtips>
 <!-- Missing: Tips displayed when mouse is moved over controls in the dialogs -->
 <!--controltips-->
 <!-- Localised Strings -->
 <strings>
-	<string id="WINDOW_MAIN" value="Envy" />
-	<string id="WINDOW_HOME" value="موقع Envy ــــ ترجمة الأستاذ عوض الغامدي" />
-	<string id="WINDOW_SYSTEM" value="نظام" />
-	<string id="WINDOW_NEIGHBOURS" value="الإتصالات المجاوره" />
-	<string id="WINDOW_PACKET" value="تفريغ الحزمة" />
-	<string id="WINDOW_HOSTCACHE" value="مخزون المضيف المؤقت" />
-	<string id="WINDOW_SEARCH" value="بحث" />
-	<string id="WINDOW_SEARCHPAD" value="بحث" />
-	<string id="WINDOW_SEARCHMONITOR" value="مراقبة البحث" />
-	<string id="WINDOW_HITMONITOR" value="مراقبة النقرات" />
-	<string id="WINDOW_DOWNLOADS" value="التحميلات" />
-	<string id="WINDOW_UPLOADS" value="عمليات الإرسال" />
-	<string id="WINDOW_LIBRARY" value="المكتبة" />
-	<string id="WINDOW_TRAFFIC" value="المخطط" />
-	<string id="WINDOW_CHAT" value="محادثة" />
-	<string id="WINDOW_SECURITY" value="الأمان" />
-	<string id="WINDOW_SCHEDULER" value="جدولة" />
-	<string id="WINDOW_DISCOVERY" value="خدمات الإكتشاف" />
-	<string id="WINDOW_BROWSEHOST" value="تصفح" />
-	<string id="WINDOW_MEDIA" value="Media Player" />
-	<!--string id="WINDOW_HELP" value="تعليمات Envy"-->
-	<string id="20001" value="حسنا" />
-	<string id="20002" value="لا" />
-	<string id="20003" value="حسنا" />
-	<string id="20004" value="إلغاء الأمر" />
-	<string id="20005" value="&amp;Back" />
-	<string id="20006" value="&amp;Next" />
-	<string id="20008" value="Close" />
-	<string id="20009" value="/" />	<!-- "1 of 10" -->
-	<string id="20010" value="جميع" />
-	<string id="20011" value="تلقائيا" />
-	<string id="20012" value="مخصص" />
-	<string id="20013" value="Default" />
-	<string id="20014" value="Finish" />
-	<string id="20019" value="يرجى الانتظار." />
-	<string id="20020" value="ملف" />
-	<string id="20021" value="الملفات" />
-	<string id="20022" value="جميع الملفات" />
-	<string id="20023" value="No الملفات" />
-	<string id="20024" value="Large الملفات" />
-	<string id="20025" value="Medium الملفات" />
-	<string id="20026" value="Small الملفات" />
-	<string id="20027" value="Partial الملفات" />
-	<string id="20028" value="Library الملفات" />
-	<string id="20029" value="الملفات %s" />
-	<string id="20050" value="كل يوم" />
-	<string id="20051" value="الاثنين" />
-	<string id="20052" value="الثلاثاء" />
-	<string id="20053" value="الأربعاء" />
-	<string id="20054" value="الخميس" />
-	<string id="20055" value="الجمعة" />
-	<string id="20056" value="السبت" />
-	<string id="20057" value="الأحد" />
-	<string id="20060" value="(No Rating)" />
-	<string id="20061" value="Fake / Corrupt" />
-	<string id="20062" value="Poor" />
-	<string id="20063" value="Average" />
-	<string id="20064" value="Good" />
-	<string id="20065" value="Very Good" />
-	<string id="20066" value="Excellent" />
-	<string id="20080" value="هذا هي نسخة مبدئية من Envy ، و قد أنتهت فترة الإختبار لها . الرجاء حمل الإطلاق الرسمي الكامل من http://getenvy.com/." />
-	<string id="20081" value="&amp;إغلاق" />
-	<string id="20082" value="إنتهاء, اضغط إغلاق" />
-	<string id="20083" value="Requesting..." />
-	<string id="20084" value="نجاح!" />
+	<string id="WINDOW_MAIN" text="Envy" />
+	<string id="WINDOW_HOME" text="موقع Envy ــــ ترجمة الأستاذ عوض الغامدي" />
+	<string id="WINDOW_SYSTEM" text="نظام" />
+	<string id="WINDOW_NEIGHBOURS" text="الإتصالات المجاوره" />
+	<string id="WINDOW_PACKET" text="تفريغ الحزمة" />
+	<string id="WINDOW_HOSTCACHE" text="مخزون المضيف المؤقت" />
+	<string id="WINDOW_SEARCH" text="بحث" />
+	<string id="WINDOW_SEARCHPAD" text="بحث" />
+	<string id="WINDOW_SEARCHMONITOR" text="مراقبة البحث" />
+	<string id="WINDOW_HITMONITOR" text="مراقبة النقرات" />
+	<string id="WINDOW_DOWNLOADS" text="التحميلات" />
+	<string id="WINDOW_UPLOADS" text="عمليات الإرسال" />
+	<string id="WINDOW_LIBRARY" text="المكتبة" />
+	<string id="WINDOW_TRAFFIC" text="المخطط" />
+	<string id="WINDOW_CHAT" text="محادثة" />
+	<string id="WINDOW_SECURITY" text="الأمان" />
+	<string id="WINDOW_SCHEDULER" text="جدولة" />
+	<string id="WINDOW_DISCOVERY" text="خدمات الإكتشاف" />
+	<string id="WINDOW_BROWSEHOST" text="تصفح" />
+	<string id="WINDOW_MEDIA" text="Media Player" />
+	<!--string id="WINDOW_HELP" text="تعليمات Envy"-->
+	<string id="20001" text="حسنا" />
+	<string id="20002" text="لا" />
+	<string id="20003" text="حسنا" />
+	<string id="20004" text="إلغاء الأمر" />
+	<string id="20005" text="&amp;Back" />
+	<string id="20006" text="&amp;Next" />
+	<string id="20008" text="Close" />
+	<string id="20009" text="/" />	<!-- "1 of 10" -->
+	<string id="20010" text="جميع" />
+	<string id="20011" text="تلقائيا" />
+	<string id="20012" text="مخصص" />
+	<string id="20013" text="Default" />
+	<string id="20014" text="Finish" />
+	<string id="20019" text="يرجى الانتظار." />
+	<string id="20020" text="ملف" />
+	<string id="20021" text="الملفات" />
+	<string id="20022" text="جميع الملفات" />
+	<string id="20023" text="No الملفات" />
+	<string id="20024" text="Large الملفات" />
+	<string id="20025" text="Medium الملفات" />
+	<string id="20026" text="Small الملفات" />
+	<string id="20027" text="Partial الملفات" />
+	<string id="20028" text="Library الملفات" />
+	<string id="20029" text="الملفات %s" />
+	<string id="20050" text="كل يوم" />
+	<string id="20051" text="الاثنين" />
+	<string id="20052" text="الثلاثاء" />
+	<string id="20053" text="الأربعاء" />
+	<string id="20054" text="الخميس" />
+	<string id="20055" text="الجمعة" />
+	<string id="20056" text="السبت" />
+	<string id="20057" text="الأحد" />
+	<string id="20060" text="(No Rating)" />
+	<string id="20061" text="Fake / Corrupt" />
+	<string id="20062" text="Poor" />
+	<string id="20063" text="Average" />
+	<string id="20064" text="Good" />
+	<string id="20065" text="Very Good" />
+	<string id="20066" text="Excellent" />
+	<string id="20080" text="هذا هي نسخة مبدئية من Envy ، و قد أنتهت فترة الإختبار لها . الرجاء حمل الإطلاق الرسمي الكامل من http://getenvy.com/." />
+	<string id="20081" text="&amp;إغلاق" />
+	<string id="20082" text="إنتهاء, اضغط إغلاق" />
+	<string id="20083" text="Requesting..." />
+	<string id="20084" text="نجاح!" />
 	<!-- Missing Strings -->
-	<string id="20121" value="إستعراض %s" />
-	<string id="20121" value="إستعراض %s" />
+	<string id="20121" text="إستعراض %s" />
+	<string id="20121" text="إستعراض %s" />
 	<!-- Missing Strings -->
-	<string id="20196" value="لا يوجد في هذا القالب أي تخصيص" />
-	<string id="20197" value="هذا القالب غير صالح" />
-	<string id="20199" value="(الإغلاق بعد عمليات النقل)" />
+	<string id="20196" text="لا يوجد في هذا القالب أي تخصيص" />
+	<string id="20197" text="هذا القالب غير صالح" />
+	<string id="20199" text="(الإغلاق بعد عمليات النقل)" />
 	<!-- Missing Strings -->
-	<string id="20250" value="Drag'n'Drop الملفات إلى المجموعة %s" />
-	<string id="20251" value="افتراضي تحميل المجموعة. (إظهار كافة الملفات)" />
-	<string id="20252" value="مجموعة جديدة" />
+	<string id="20250" text="Drag'n'Drop الملفات إلى المجموعة %s" />
+	<string id="20251" text="افتراضي تحميل المجموعة. (إظهار كافة الملفات)" />
+	<string id="20252" text="مجموعة جديدة" />
 	<!-- Missing Strings -->
-	<string id="20354" value="خصائص الملف" />
-	<string id="20355" value="هل تريد فعلا حذف هذا المرشح ؟" />
-	<string id="20356" value="هناك مرشح بالإسم &quot;%s&quot; ، هل تريد إستبداله ؟" />
-	<string id="20358" value="الرجاء وضع إسم للمرشح" />
+	<string id="20354" text="خصائص الملف" />
+	<string id="20355" text="هل تريد فعلا حذف هذا المرشح ؟" />
+	<string id="20356" text="هناك مرشح بالإسم &quot;%s&quot; ، هل تريد إستبداله ؟" />
+	<string id="20358" text="الرجاء وضع إسم للمرشح" />
 	<!-- Missing Connection Strings -->
 	<!-- Missing Strings -->
-	<string id="20407" value="إزالة" />
-	<string id="20408" value="Users" />
-	<string id="20410" value="Exploring Your Envy Library" />
-	<string id="20411" value="Exploring" />
-	<string id="20412" value="Exploring the contents of %i folders" />
-	<string id="20413" value="%i الملف المحدد" />
-	<string id="20414" value="Multiple folders" />
-	<string id="20415" value="لم يتم تحديد الملفات" />
-	<string id="20416" value="Rate this file" />
-	<string id="20417" value="الإضافات الأخيرة" />
+	<string id="20407" text="إزالة" />
+	<string id="20408" text="Users" />
+	<string id="20410" text="Exploring Your Envy Library" />
+	<string id="20411" text="Exploring" />
+	<string id="20412" text="Exploring the contents of %i folders" />
+	<string id="20413" text="%i الملف المحدد" />
+	<string id="20414" text="Multiple folders" />
+	<string id="20415" text="لم يتم تحديد الملفات" />
+	<string id="20416" text="Rate this file" />
+	<string id="20417" text="الإضافات الأخيرة" />
 	<!-- Missing Strings -->
-	<string id="20436" value="إضافة هذا المجلد إلى المكتبة الخاصة بك؟\n\n%s" />
-	<string id="20443" value="عرض جميع امتداد الملفات" />
-	<string id="20444" value="Copy &amp;URI" />
-	<string id="20445" value="Export &amp;URIs..." />
-	<string id="20448" value="جمهور" />	<!--Shared-->
-	<string id="20449" value="خاص" />	<!--Unshared-->
+	<string id="20436" text="إضافة هذا المجلد إلى المكتبة الخاصة بك؟\n\n%s" />
+	<string id="20443" text="عرض جميع امتداد الملفات" />
+	<string id="20444" text="Copy &amp;URI" />
+	<string id="20445" text="Export &amp;URIs..." />
+	<string id="20448" text="جمهور" />	<!--Shared-->
+	<string id="20449" text="خاص" />	<!--Unshared-->
 	<!-- Missing Strings -->
-	<string id="20456" value="الأغاني:" />
-	<string id="20458" value="Envy Media Player" />
-	<string id="20460" value="Envy Media" />
-	<string id="20462" value="(No Visualisation)" />
-	<string id="20470" value="إلغاء الأمر" />
-	<string id="20471" value="Open" />
-	<string id="20472" value="مكمل" />
-	<string id="20473" value="Estimated time remaining:" />
-	<string id="20474" value="Number of reviews:" />
-	<string id="20475" value="عدد المصادر:" />
-	<string id="20476" value="No sources" />
-	<string id="20477" value="%i days %i ساعات و" />
-	<string id="20478" value="%i ساعات و %i دقائق" />
-	<string id="20479" value="%i دقائق و %i ثواني" />
-	<string id="20480" value="%i ثواني" />
-	<string id="20481" value="Total transfer speed:" />
-	<string id="20482" value="حجم التحميل:" />
-	<string id="20483" value="حجم التحميل:" />
-	<string id="20484" value="الحد من سرعة التحميل" />
-	<string id="20485" value="الحد الأقصى للسرعة تحميل" />
-	<string id="20490" value="متعددة" />
-	<string id="20491" value="قيم متعددة" />
-	<string id="20499" value="مجلد جديد" />
+	<string id="20456" text="الأغاني:" />
+	<string id="20458" text="Envy Media Player" />
+	<string id="20460" text="Envy Media" />
+	<string id="20462" text="(No Visualisation)" />
+	<string id="20470" text="إلغاء الأمر" />
+	<string id="20471" text="Open" />
+	<string id="20472" text="مكمل" />
+	<string id="20473" text="Estimated time remaining:" />
+	<string id="20474" text="Number of reviews:" />
+	<string id="20475" text="عدد المصادر:" />
+	<string id="20476" text="No sources" />
+	<string id="20477" text="%i days %i ساعات و" />
+	<string id="20478" text="%i ساعات و %i دقائق" />
+	<string id="20479" text="%i دقائق و %i ثواني" />
+	<string id="20480" text="%i ثواني" />
+	<string id="20481" text="Total transfer speed:" />
+	<string id="20482" text="حجم التحميل:" />
+	<string id="20483" text="حجم التحميل:" />
+	<string id="20484" text="الحد من سرعة التحميل" />
+	<string id="20485" text="الحد الأقصى للسرعة تحميل" />
+	<string id="20490" text="متعددة" />
+	<string id="20491" text="قيم متعددة" />
+	<string id="20499" text="مجلد جديد" />
 	<!-- Missing Strings -->
-	<string id="20540" value="إتصال" />
-	<string id="20541" value="إتصال..." />
-	<string id="20542" value="متصل" />
-	<string id="20543" value="قطع الإتصال" />
+	<string id="20540" text="إتصال" />
+	<string id="20541" text="إتصال..." />
+	<string id="20542" text="متصل" />
+	<string id="20543" text="قطع الإتصال" />
 	<!-- Missing Scheduler/Security Strings -->
-	<string id="20620" value="Envy is actively searching the network..." />
-	<string id="20621" value="اضغط هنا للبحث مره اخرى" />
-	<string id="20622" value="All Networks" />
-	<string id="20623" value="You are about to start a new search. Would you like to clear the results of your previous search?" />
-	<string id="20624" value="هذه المنطقة تعرض المزيد من المعلومات حول الملف المحدد." />
-	<string id="20625" value="%s يكتب:" />
-	<string id="20626" value="%s rates this file:" />
-	<string id="20627" value="إنقر للإستعراض" />
-	<string id="20628" value="الإستعراض..." />
-	<string id="20629" value="Unable to download preview content from &quot;%s&quot;." />
-	<string id="20630" value="مراجعات %i هنالك." />
-	<string id="20631" value="هناك مراجعة واحدة." />
-	<string id="20632" value="%i المصادر متوفرة (%s/s)" />
-	<string id="20633" value="مصدر واحد متوفر (%s/s)" />
-	<string id="20634" value="The network has not returned any matches yet." />
-	<string id="20635" value="Some results are available, but were filtered out." />
-	<string id="20636" value="لا يوجد عمليات بحث بدات في هذه النافذه حتى الان." />
-	<string id="20637" value="No Metadata" />
-	<string id="20638" value="No Schema Columns" />
-	<string id="20640" value="(Clear Search History)" />
-	<string id="20641" value="بحث Envy" />
-	<string id="20642" value="ما هو نوع الملف المطلوب ؟" />
-	<string id="20643" value="أكتب بعض الكلمات الرئيسية للبحث عنها :" />
-	<string id="20644" value="متقدم..." />
-	<string id="20645" value="أي نوع ملف" />
-	<string id="20646" value="إزالة" />
-	<string id="20648" value="Hide the Search Panel" />
-	<string id="20650" value="بحث" />
-	<string id="20651" value="نوع البحث هنا:" />
-	<string id="20652" value="البحث عن هذا نوع من الملفات:" />
-	<string id="20653" value="Network:" />
-	<string id="20654" value="دقيقة الحجم:" />
-	<string id="20655" value="أقصى حجم:" />
-	<string id="20656" value="Search More" />
-	<string id="20657" value="Show the Search Panel" />
-	<string id="20658" value="بدء البحث" />
-	<string id="20659" value="توقف" />
-	<string id="20660" value="لا يوجد ملفات" />
-	<string id="20661" value="%lu hubs, %lu leaves" />
-	<string id="20662" value="لا يفتّش حاليا" />
-	<string id="20663" value="النتائج" />
-	<string id="20664" value="%lu file in %lu hit|%lu file in %lu hits|%lu files in %lu hits" />
-	<string id="20665" value="Found:" />
-	<string id="20666" value="البحث:" />
-	<string id="20668" value="البحث..." />
+	<string id="20620" text="Envy is actively searching the network..." />
+	<string id="20621" text="اضغط هنا للبحث مره اخرى" />
+	<string id="20622" text="All Networks" />
+	<string id="20623" text="You are about to start a new search. Would you like to clear the results of your previous search?" />
+	<string id="20624" text="هذه المنطقة تعرض المزيد من المعلومات حول الملف المحدد." />
+	<string id="20625" text="%s يكتب:" />
+	<string id="20626" text="%s rates this file:" />
+	<string id="20627" text="إنقر للإستعراض" />
+	<string id="20628" text="الإستعراض..." />
+	<string id="20629" text="Unable to download preview content from &quot;%s&quot;." />
+	<string id="20630" text="مراجعات %i هنالك." />
+	<string id="20631" text="هناك مراجعة واحدة." />
+	<string id="20632" text="%i المصادر متوفرة (%s/s)" />
+	<string id="20633" text="مصدر واحد متوفر (%s/s)" />
+	<string id="20634" text="The network has not returned any matches yet." />
+	<string id="20635" text="Some results are available, but were filtered out." />
+	<string id="20636" text="لا يوجد عمليات بحث بدات في هذه النافذه حتى الان." />
+	<string id="20637" text="No Metadata" />
+	<string id="20638" text="No Schema Columns" />
+	<string id="20640" text="(Clear Search History)" />
+	<string id="20641" text="بحث Envy" />
+	<string id="20642" text="ما هو نوع الملف المطلوب ؟" />
+	<string id="20643" text="أكتب بعض الكلمات الرئيسية للبحث عنها :" />
+	<string id="20644" text="متقدم..." />
+	<string id="20645" text="أي نوع ملف" />
+	<string id="20646" text="إزالة" />
+	<string id="20648" text="Hide the Search Panel" />
+	<string id="20650" text="بحث" />
+	<string id="20651" text="نوع البحث هنا:" />
+	<string id="20652" text="البحث عن هذا نوع من الملفات:" />
+	<string id="20653" text="Network:" />
+	<string id="20654" text="دقيقة الحجم:" />
+	<string id="20655" text="أقصى حجم:" />
+	<string id="20656" text="Search More" />
+	<string id="20657" text="Show the Search Panel" />
+	<string id="20658" text="بدء البحث" />
+	<string id="20659" text="توقف" />
+	<string id="20660" text="لا يوجد ملفات" />
+	<string id="20661" text="%lu hubs, %lu leaves" />
+	<string id="20662" text="لا يفتّش حاليا" />
+	<string id="20663" text="النتائج" />
+	<string id="20664" text="%lu file in %lu hit|%lu file in %lu hits|%lu files in %lu hits" />
+	<string id="20665" text="Found:" />
+	<string id="20666" text="البحث:" />
+	<string id="20668" text="البحث..." />
 	<!-- Missing Strings -->
-	<string id="20680" value="إعدادات شير-أزا" />
-	<string id="20692" value="هل تريد فعلا حذف غلاف &quot;%s&quot; ؟ هذا لا يمكن التراجع عنه" />
-	<string id="20699" value="ال&amp;مخطط" />
-	<string id="20700" value="%s في : %s خارج (d:%I64i/u:%I64i)" />
-	<string id="20701" value="متصلة الجيران %lu. %s في المكتبة المحلية." />
-	<string id="20702" value="وضع المركز مع جيرانها %lu. %s في المكتبة المحلية." />
-	<string id="20703" value="وضع المركز مع جيرانها %lu. %s في المكتبة المحلية." />
-	<string id="20704" value="وضع المركز مع جيرانها %lu.. %s في المكتبة المحلية." />
-	<string id="20705" value="متصلة. %s في المكتبة الخاصة بك." />
-	<string id="20706" value="الاتصال بالشبكة..." />
-	<string id="20707" value="غير متصلة بالشبكة." />
-	<string id="20708" value="نشط" />
-	<string id="20709" value="Inactive" />
-	<string id="20710" value="ازالة" />
-	<string id="20711" value="لاتستطيع النقل" />
-	<string id="20712" value="Choked" />
-	<string id="20713" value="Enqueue" />
-	<string id="20714" value="خطاء في الملف" />
-	<string id="20715" value="Hashset" />
-	<string id="20716" value="Metadata" />
-	<string id="20717" value="Response" />
-	<string id="20718" value="نقل" />
-	<string id="20719" value="إنشاء" />
-	<string id="20720" value="مكتمل" />
-	<string id="20721" value="الاتصال" />
-	<string id="20722" value="تحميل" />
-	<string id="20723" value="مشغول" />
-	<string id="20724" value="التالي" />
-	<string id="20725" value="Q" />
-	<string id="20726" value="قائمة الانتظار" />
-	<string id="20727" value="موقف مؤقت" />
-	<string id="20728" value="انتظار" />
-	<string id="20729" value="الطالبة" />
-	<string id="20730" value="بحث" />
-	<string id="20731" value="ارسال" />
-	<string id="20732" value="مصدر" />  <!-- one -->
-	<string id="20733" value="المصادر" /> <!-- many -->
-	<string id="20734" value="المصادر" /> <!-- few  2-4 -->
-	<string id="20735" value="المصادر" /> <!-- ones 21,31,... -->
-	<string id="20736" value="(أي مصادر)" />
-	<string id="20741" value="Torrent" />
-	<string id="20742" value="تعقب لأسفل" />
-	<string id="20743" value="غير مهتم" />
-	<string id="20744" value="مجهول" />
-	<string id="20745" value="غير معتمد" />
-	<string id="20746" value="غير مؤكدة" />
-	<string id="20747" value="التحقق" />
-	<string id="20748" value="تحقيق" />
-	<string id="20750" value="!مرحبا بكم في {version}\n\nEnvy هو بالكامل برنامج مجاني, الرجاء إستعماله باحترام لقانون حقوق الملكية الفكرية و العقلية" />
-	<string id="20751" value="ليس هناك عمليات بحث نشطة . أنقر هنا للبحث عن ملفات" />
-	<string id="20752" value="أنت غير متصل . أنقر زر إتصال لتبدأ" />
-	<string id="20755" value="هل تريد فعلا حذف قالب &quot;%s&quot; ؟nهذا لا يمكن التراجع عنه" />
-	<string id="20760" value="الأولوية" />
-	<string id="20762" value="هذا الملف يبدو أن الرسائل غير المرغوب فيها." />
-	<string id="20763" value="مدرج في القائمة السوداء: " />
+	<string id="20680" text="إعدادات شير-أزا" />
+	<string id="20692" text="هل تريد فعلا حذف غلاف &quot;%s&quot; ؟ هذا لا يمكن التراجع عنه" />
+	<string id="20699" text="ال&amp;مخطط" />
+	<string id="20700" text="%s في : %s خارج (d:%I64i/u:%I64i)" />
+	<string id="20701" text="متصلة الجيران %lu. %s في المكتبة المحلية." />
+	<string id="20702" text="وضع المركز مع جيرانها %lu. %s في المكتبة المحلية." />
+	<string id="20703" text="وضع المركز مع جيرانها %lu. %s في المكتبة المحلية." />
+	<string id="20704" text="وضع المركز مع جيرانها %lu.. %s في المكتبة المحلية." />
+	<string id="20705" text="متصلة. %s في المكتبة الخاصة بك." />
+	<string id="20706" text="الاتصال بالشبكة..." />
+	<string id="20707" text="غير متصلة بالشبكة." />
+	<string id="20708" text="نشط" />
+	<string id="20709" text="Inactive" />
+	<string id="20710" text="ازالة" />
+	<string id="20711" text="لاتستطيع النقل" />
+	<string id="20712" text="Choked" />
+	<string id="20713" text="Enqueue" />
+	<string id="20714" text="خطاء في الملف" />
+	<string id="20715" text="Hashset" />
+	<string id="20716" text="Metadata" />
+	<string id="20717" text="Response" />
+	<string id="20718" text="نقل" />
+	<string id="20719" text="إنشاء" />
+	<string id="20720" text="مكتمل" />
+	<string id="20721" text="الاتصال" />
+	<string id="20722" text="تحميل" />
+	<string id="20723" text="مشغول" />
+	<string id="20724" text="التالي" />
+	<string id="20725" text="Q" />
+	<string id="20726" text="قائمة الانتظار" />
+	<string id="20727" text="موقف مؤقت" />
+	<string id="20728" text="انتظار" />
+	<string id="20729" text="الطالبة" />
+	<string id="20730" text="بحث" />
+	<string id="20731" text="ارسال" />
+	<string id="20732" text="مصدر" />  <!-- one -->
+	<string id="20733" text="المصادر" /> <!-- many -->
+	<string id="20734" text="المصادر" /> <!-- few  2-4 -->
+	<string id="20735" text="المصادر" /> <!-- ones 21,31,... -->
+	<string id="20736" text="(أي مصادر)" />
+	<string id="20741" text="Torrent" />
+	<string id="20742" text="تعقب لأسفل" />
+	<string id="20743" text="غير مهتم" />
+	<string id="20744" text="مجهول" />
+	<string id="20745" text="غير معتمد" />
+	<string id="20746" text="غير مؤكدة" />
+	<string id="20747" text="التحقق" />
+	<string id="20748" text="تحقيق" />
+	<string id="20750" text="!مرحبا بكم في {version}\n\nEnvy هو بالكامل برنامج مجاني, الرجاء إستعماله باحترام لقانون حقوق الملكية الفكرية و العقلية" />
+	<string id="20751" text="ليس هناك عمليات بحث نشطة . أنقر هنا للبحث عن ملفات" />
+	<string id="20752" text="أنت غير متصل . أنقر زر إتصال لتبدأ" />
+	<string id="20755" text="هل تريد فعلا حذف قالب &quot;%s&quot; ؟nهذا لا يمكن التراجع عنه" />
+	<string id="20760" text="الأولوية" />
+	<string id="20762" text="هذا الملف يبدو أن الرسائل غير المرغوب فيها." />
+	<string id="20763" text="مدرج في القائمة السوداء: " />
 	<!-- Missing Strings -->
-	<string id="20798" value="أنتهى Envy من تحميل نسخة Envy التالية (%s). هل تريد الترقية الآن ؟nnعند إختيار نعم ، Envy سيغلق بشكل مؤقت حتى يتم تثبيت الترقية" />
+	<string id="20798" text="أنتهى Envy من تحميل نسخة Envy التالية (%s). هل تريد الترقية الآن ؟nnعند إختيار نعم ، Envy سيغلق بشكل مؤقت حتى يتم تثبيت الترقية" />
 	<!-- Missing Upload Queue Strings -->
-	<string id="20862" value="إضافة" />
-	<string id="20864" value="إستعراض" />
-	<string id="20865" value="إتصال" />
-	<string id="20866" value="اسم الملف:" />
-	<string id="20867" value="المستضيف:" />
-	<string id="20868" value="المنفذ:" />
+	<string id="20862" text="إضافة" />
+	<string id="20864" text="إستعراض" />
+	<string id="20865" text="إتصال" />
+	<string id="20866" text="اسم الملف:" />
+	<string id="20867" text="المستضيف:" />
+	<string id="20868" text="المنفذ:" />
 	<!-- Missing Strings -->
-	<string id="20872" value="النوع:" />
-	<string id="20874" value="الرابط:" />
-	<string id="20875" value="غير محدد" />
-	<string id="20880" value="تحرير وضعيتي" />
-	<string id="20882" value="الملفات المختارة. هل أنت متأكد؟ %u" />
-	<string id="20886" value=" تغيير الاتجاه واجهة يتطلب إعادة التشغيل. \n\n الخروج الآن؟ \n\n\nChanging interface direction requires restart.\n\nExit now?" />
-	<string id="20890" value="مرحبا بك مع Envy" />
-	<string id="20892" value="يرجى الانتظار: Updating eDonkey server list..." />
-	<string id="20893" value="يرجى الانتظار: Updating discovery services..." />
-	<!--string id="20894" value="يرجى الانتظار: Finding UPnP devices and setting them up..." -->
-	<string id="20895" value="(1050-65500)" />
+	<string id="20872" text="النوع:" />
+	<string id="20874" text="الرابط:" />
+	<string id="20875" text="غير محدد" />
+	<string id="20880" text="تحرير وضعيتي" />
+	<string id="20882" text="الملفات المختارة. هل أنت متأكد؟ %u" />
+	<string id="20886" text=" تغيير الاتجاه واجهة يتطلب إعادة التشغيل. \n\n الخروج الآن؟ \n\n\nChanging interface direction requires restart.\n\nExit now?" />
+	<string id="20890" text="مرحبا بك مع Envy" />
+	<string id="20892" text="يرجى الانتظار: Updating eDonkey server list..." />
+	<string id="20893" text="يرجى الانتظار: Updating discovery services..." />
+	<!--string id="20894" text="يرجى الانتظار: Finding UPnP devices and setting them up..." -->
+	<string id="20895" text="(1050-65500)" />
 	<!-- Missing Warning Messages -->
 	<!-- Missing Wizard Strings -->
 </strings>
@@ -2857,765 +2857,767 @@
 <dialogs>
 	<dialog name="CSettingSheet" cookie="SyBuBuBu" caption="إعدادات شير-أزا">
 		<control />
-		<control caption="حسنا" />
-		<control caption="إلغاء الأمر" />
-		<control caption="تطبيق" />
+		<control text="حسنا" />
+		<control text="إلغاء الأمر" />
+		<control text="تطبيق" />
 		<control />
 	</dialog>
 	<dialog name="CGeneralSettingsGroup" cookie="Af" caption="عام" />
 	<dialog name="CInternetSettingsGroup" cookie="Af" caption="انترنت" />
 	<dialog name="CGeneralSettingsPage" cookie="BuBuBuBuBuBuBuBuStCoBuBuBuBuBuBuSyStEdmsStmsBuBuStCoStCo" caption="عام">
-		<control caption=":_عام" />
-		<control caption="Windows مع بدء الـ Envy تشغيل" />
-		<control caption="Envy إتصال تلقائي عند بدء تشغيل" />
-		<control caption="إظهار مطالبة قبل فتح الروابط" />
-		<control caption="التحقق من التحديثات" />
-		<control caption=":_التحميلات" />
-		<control caption="توسيع التحميلات الجديدة إفتراضيا" />
-		<control caption="عرض شريط تقدم بسيط" />
-		<control caption="إظهار التصنيفات بـ" />
-		<control caption="بت/ثانية|بايت/ثانية|بت/ث|ب/ث|كبت/ث|كب/ث|مبت/ث|مب/ث" />
-		<control caption="_بحث:" />
-		<control caption="توسيع الملفات المتعددة المصادر إفتراضيا" />
-		<control caption="التبديل إلى عرض عمليات النقل مع التحميل" />
-		<control caption="إخفاء الشريط الجانبي عند بدء البحث" />
-		<control caption="فرز مواد البالغين من عمليات البحث" />
-		<control caption=":الت_لميحات" />
+		<control text=":_عام" />
+		<control text="Windows مع بدء الـ Envy تشغيل" />
+		<control text="Envy إتصال تلقائي عند بدء تشغيل" />
+		<control text="إظهار مطالبة قبل فتح الروابط" />
+		<control text="التحقق من التحديثات" />
+		<control text=":_التحميلات" />
+		<control text="توسيع التحميلات الجديدة إفتراضيا" />
+		<control text="عرض شريط تقدم بسيط" />
+		<control text="إظهار التصنيفات بـ" />
+		<control text="بت/ثانية|بايت/ثانية|بت/ث|ب/ث|كبت/ث|كب/ث|مبت/ث|مب/ث" />
+		<control text="_بحث:" />
+		<control text="توسيع الملفات المتعددة المصادر إفتراضيا" />
+		<control text="التبديل إلى عرض عمليات النقل مع التحميل" />
+		<control text="إخفاء الشريط الجانبي عند بدء البحث" />
+		<control text="فرز مواد البالغين من عمليات البحث" />
+		<control text=":الت_لميحات" />
 		<control />
-		<control caption=":(التأخر (مث" />
+		<control text=":(التأخر (مث" />
 		<control />
 		<control />
-		<control caption=":العتامة" />
+		<control text=":العتامة" />
 		<control />
-		<control caption="الظل (إعادة)" />
-		<control caption="_جوار الساعة:" />
-		<control caption=":عند النقر على إغلاق" />
-		<control caption="السؤال|الإغلاق فورا|التصغير إلى جوار الساعة|الإغلاق بعد عمليات النقل" />
-		<control caption=":عند النقر على تصغير" />
-		<control caption="تصغير عادي|تصغير إلى جوار الساعة" />
+		<control text="الظل (إعادة)" />
+		<control text="_جوار الساعة:" />
+		<control text=":عند النقر على إغلاق" />
+		<control text="السؤال|الإغلاق فورا|التصغير إلى جوار الساعة|الإغلاق بعد عمليات النقل" />
+		<control text=":عند النقر على تصغير" />
+		<control text="تصغير عادي|تصغير إلى جوار الساعة" />
 	</dialog>
 	<dialog name="CLibrarySettingsPage" cookie="BuBuBuBuBuBuBuBuStEdmsStStEdmsStBuBuBuCoBuBuBuCoBuBuBuEdBu" caption="المكتبة">
-		<control caption=":_خيارات" />
-		<control caption="السماح للآخرين بتصفح الملفات المشاركة" />
-		<control caption="مشاهدة مجلدات المكتبة" />
-		<control caption="(CPU تجزئة سريعة (إستهلاك أكثر لـ" />
-		<control caption="تذكر طرق عرض المجلدات" />
-		<control caption="Smart media" />
-		<control caption="إنشاء ملفات وهمية عند الحذف" />
-		<control caption=":ال_ملفات الأخيرة" />
-		<control caption=":تذكر" />
+		<control text=":_خيارات" />
+		<control text="السماح للآخرين بتصفح الملفات المشاركة" />
+		<control text="مشاهدة مجلدات المكتبة" />
+		<control text="(CPU تجزئة سريعة (إستهلاك أكثر لـ" />
+		<control text="تذكر طرق عرض المجلدات" />
+		<control text="Smart media" />
+		<control text="إنشاء ملفات وهمية عند الحذف" />
+		<control text=":ال_ملفات الأخيرة" />
+		<control text=":تذكر" />
 		<control />
 		<control />
-		<control caption=":الملفات" />
-		<control caption=":العدد حتى" />
+		<control text=":الملفات" />
+		<control text=":العدد حتى" />
 		<control />
 		<control />
-		<control caption="يوم" />
-		<control caption="مسح المحفوظات الآن" />
-		<control caption="مسح المحفوظات الآن" />
-		<control caption="_: أمان في فتح" />
+		<control text="يوم" />
+		<control text="مسح المحفوظات الآن" />
+		<control text="مسح المحفوظات الآن" />
+		<control text="_: أمان في فتح" />
 		<control />
-		<control caption="إ_ضافة" />
-		<control caption="إ_زالة" />
-		<control caption="_:بدون مشاركة" />
+		<control text="إ_ضافة" />
+		<control text="إ_زالة" />
+		<control text="_:بدون مشاركة" />
 		<control />
-		<control caption="إ_ضافة" />
-		<control caption="إ_زالة" />
-		<control caption=":تخزين التجميعات _هنا" />
+		<control text="إ_ضافة" />
+		<control text="إ_زالة" />
+		<control text=":تخزين التجميعات _هنا" />
 		<control />
 		<control />
 	</dialog>
 	<dialog name="CMediaSettingsPage" cookie="BuStCoBuBuBuCoBuBuBuBuSt" caption="مشغل الوسائط">
-		<control caption="_معالجة الوسائط" />
-		<control caption=":تحديد معالج الوسائط" />
+		<control text="_معالجة الوسائط" />
+		<control text=":تحديد معالج الوسائط" />
 		<control />
-		<control caption="لتشغيل أنواع الملفات التالية Envy إستخدام مشغل" />
-		<control caption="لوضع أنواع الملفات التالية بالإنتظار Envy إستخدام مشغل" />
-		<control caption=":نوع _الملف" />
+		<control text="لتشغيل أنواع الملفات التالية Envy إستخدام مشغل" />
+		<control text="لوضع أنواع الملفات التالية بالإنتظار Envy إستخدام مشغل" />
+		<control text=":نوع _الملف" />
 		<control />
-		<control caption="_إضافة" />
-		<control caption="_إزالة" />
-		<control caption="_:وظيفة المرئيات الصوتية الإضافية" />
-		<control caption="_حدد الاضافات..." />
-		<control caption="تحذير : عند إختيار معالج وسائط خارجي سيتم التعطيل تلقائيا لجميع وظائف المرئيات الصوتية الإضافية" />
+		<control text="_إضافة" />
+		<control text="_إزالة" />
+		<control text="_:وظيفة المرئيات الصوتية الإضافية" />
+		<control text="_حدد الاضافات..." />
+		<control text="تحذير : عند إختيار معالج وسائط خارجي سيتم التعطيل تلقائيا لجميع وظائف المرئيات الصوتية الإضافية" />
 	</dialog>
 	<dialog name="CIRCSettingsPage" cookie="BuBuBuBuStEdmsStStEdmsCoBuBuStBuStBuStBuStBuStBuStBuStBuStBuStEdStEdStEdStEdStCoStEdStEd" caption="محادثة">
-		<control caption="خيارات ال_تابع :" />
-		<control caption="إظهار تكامل المحادثة" />
-		<control caption="إظهار طابع الوقت" />
-		<control caption="الحماية من الفيضان :" />
-		<control caption="السطور بالثانية" />
+		<control text="خيارات ال_تابع :" />
+		<control text="إظهار تكامل المحادثة" />
+		<control text="إظهار طابع الوقت" />
+		<control text="الحماية من الفيضان :" />
+		<control text="السطور بالثانية" />
 		<control />
-		<control caption="خط الشاشة :" />
-		<control caption="Size" />
+		<control text="خط الشاشة :" />
+		<control text="Size" />
 		<control />
 		<control />
-		<control caption="الألوان :" />
+		<control text="الألوان :" />
 		<control />
-		<control caption="خلفية المحادثة" />
+		<control text="خلفية المحادثة" />
 		<control />
-		<control caption="النص" />
+		<control text="النص" />
 		<control />
-		<control caption="النص" />
+		<control text="النص" />
 		<control />
-		<control caption="إجراءات القناة" />
+		<control text="إجراءات القناة" />
 		<control />
-		<control caption="إجراءات القناة" />
+		<control text="إجراءات القناة" />
 		<control />
-		<control caption="رسائل الخادم" />
+		<control text="رسائل الخادم" />
 		<control />
-		<control caption="ملاحظات" />
+		<control text="ملاحظات" />
 		<control />
-		<control caption="المواضيع" />
-		<control caption="إعدادات الإ_تصال:" />
-		<control caption="الإسم المستعار:" />
+		<control text="المواضيع" />
+		<control text="إعدادات الإ_تصال:" />
+		<control text="الإسم المستعار:" />
 		<control />
-		<control caption="المستخدم:" />
+		<control text="المستخدم:" />
 		<control />
-		<control caption="إسم بديل :" />
+		<control text="إسم بديل :" />
 		<control />
-		<control caption="الإسم الحقيقي:" />
+		<control text="الإسم الحقيقي:" />
 		<control />
-		<control caption="الخادم" />
+		<control text="الخادم" />
 		<control />
-		<control caption="المنفذ:" />
+		<control text="المنفذ:" />
 		<control />
-		<control caption="On-connect" />
+		<control text="On-connect" />
 		<control />
 	</dialog>
 	<dialog name="CCommunitySettingsPage" cookie="BuBuBuBuBuBuBuBuBuSt" caption="المجتمع">
-		<control caption="_:محادثة" />
-		<control caption="تمكين محادثة النظير إلى النظر مع العملاء المتوافقين" />
-		<control caption="تمكين المحادثة على جميع الشبكات" />
-		<control caption="فرز رسائل المحادثة من الرسائل العشوائية" />
-		<control caption="حساسية عبارات المحادثة" />
-		<control caption="_:وضعيتي" />
-		<control caption="وضعيتي" />
-		<control caption="تحرير وضعيتي" />
-		<control caption=":الدليل" />
-		<control caption="يمكنك إستخدام وضعية جي.نيوتيللا الخاصة بك للمشاركة بالمعلومات عن نفسك و اهتماماتك و توصياتك عن الملفات و المواقع التي تنصح بها الآخرين" />
+		<control text="_:محادثة" />
+		<control text="تمكين محادثة النظير إلى النظر مع العملاء المتوافقين" />
+		<control text="تمكين المحادثة على جميع الشبكات" />
+		<control text="فرز رسائل المحادثة من الرسائل العشوائية" />
+		<control text="حساسية عبارات المحادثة" />
+		<control text="_:وضعيتي" />
+		<control text="وضعيتي" />
+		<control text="تحرير وضعيتي" />
+		<control text=":الدليل" />
+		<control text="يمكنك إستخدام وضعية جي.نيوتيللا الخاصة بك للمشاركة بالمعلومات عن نفسك و اهتماماتك و توصياتك عن الملفات و المواقع التي تنصح بها الآخرين" />
 	</dialog>
 	<dialog name="CRemoteSettingsPage" cookie="BuBuStBuStStEdEdStBuSt" caption="الوصول البعيد">
-		<control caption="_:ممكن" />
-		<control caption=" :من التحكم عن بعد Envy تمكين" />
-		<control caption="الرابط" />
-		<control caption="الإ&amp;عتمادات:" />
-		<control caption="إختر إسم مستخدم:" />
-		<control caption="إختر كلمة مرور:" />
+		<control text="_:ممكن" />
+		<control text=" :من التحكم عن بعد Envy تمكين" />
+		<control text="الرابط" />
+		<control text="الإ&amp;عتمادات:" />
+		<control text="إختر إسم مستخدم:" />
+		<control text="إختر كلمة مرور:" />
 		<control />
 		<control />
 		<control />
-		<control caption=":الدليل" />
-		<control caption="يسمح لك الوصول البعيد لشير-أزا بترك &quot;شير-أزا&quot; يعمل في كمبيوترك و من ثم التحكم فيه عن بعد عن طريق متصفح ويب . لكن يجب قبول الإتصالات الواردة لإستخدام هذه الميزة" />
+		<control text=":الدليل" />
+		<control text="يسمح لك الوصول البعيد لشير-أزا بترك &quot;شير-أزا&quot; يعمل في كمبيوترك و من ثم التحكم فيه عن بعد عن طريق متصفح ويب . لكن يجب قبول الإتصالات الواردة لإستخدام هذه الميزة" />
 	</dialog>
 	<dialog name="CWebSettingsPage" cookie="BuStBuBuBuBuBuBuBuBuCoBuBuSt" caption="ويب">
-		<control caption="معالجة رابط _نظير إلى نظر:" />
-		<control caption="إستعمال Envy لفتح هذه الأنواع من الروابط :" />
-		<control caption="Magnet (magnet:)" />
-		<control caption="Gnutella (gnutella:)" />
-		<control caption="eDonkey (ed2k:)" />
-		<control caption="Piolet (mp2p:)" />
-		<control caption="DC++ (dchub:)" />
-		<control caption="BitTorrent (.torrent)" />
-		<control caption="_:مدير التحميل" />
-		<control caption=":لإدارة جميع تحميلات إنترنت Envy إستخدام" />
+		<control text="معالجة رابط _نظير إلى نظر:" />
+		<control text="إستعمال Envy لفتح هذه الأنواع من الروابط :" />
+		<control text="Magnet (magnet:)" />
+		<control text="Gnutella (gnutella:)" />
+		<control text="eDonkey (ed2k:)" />
+		<control text="Piolet (mp2p:)" />
+		<control text="DC++ (dchub:)" />
+		<control text="BitTorrent (.torrent)" />
+		<control text="_:مدير التحميل" />
+		<control text=":لإدارة جميع تحميلات إنترنت Envy إستخدام" />
 		<control />
-		<control caption="_إضافة" />
-		<control caption="_إزالة" />
-		<control caption="وظيفة مدير التحميل الإضافية ستحاول فقط تحميل أنواع الملفات المدرجة هنا . أما أنواع الملفات الأخرى فستعالج بواسطة متصفحك . يجب أن يكون &quot;شير-أزا&quot; شغال لإدارة التحميلات" />
+		<control text="_إضافة" />
+		<control text="_إزالة" />
+		<control text="وظيفة مدير التحميل الإضافية ستحاول فقط تحميل أنواع الملفات المدرجة هنا . أما أنواع الملفات الأخرى فستعالج بواسطة متصفحك . يجب أن يكون &quot;شير-أزا&quot; شغال لإدارة التحميلات" />
 	</dialog>
 	<dialog name="CConnectionSettingsPage" cookie="BuStCoStCoStEdBuBuBuStCoStCoBuStCoBuBuBuStEdmsStEdms" caption="الإتصال">
-		<control caption="_:عنوان الوارد" />
-		<control caption=":العنوان" />
-		<control caption="تلقائي" />
-		<control caption=":السرعة" />
+		<control text="_:عنوان الوارد" />
+		<control text=":العنوان" />
+		<control text="تلقائي" />
+		<control text=":السرعة" />
 		<control />
-		<control caption=":المنفذ" />
+		<control text=":المنفذ" />
 		<control />
-		<control caption="عشوائي" />
-		<control caption="فرض إجباري إلى هذا العنوان" />
-		<control caption="عنوان ال_صادر:" />
-		<control caption=":العنوان" />
-		<control caption="تلقائي" />
-		<control caption=":السرعة" />
+		<control text="عشوائي" />
+		<control text="فرض إجباري إلى هذا العنوان" />
+		<control text="عنوان ال_صادر:" />
+		<control text=":العنوان" />
+		<control text="تلقائي" />
+		<control text=":السرعة" />
 		<control />
-		<control caption=":المنفذ" />
-		<control caption="يمكن قبول الإتصالات الواردة" />
+		<control text=":المنفذ" />
+		<control text="يمكن قبول الإتصالات الواردة" />
 		<control />
-		<control caption="الخاصة/المحلية IP تجاهل عناوين الـ" />
-		<control caption="UPnP تمكين إعداد أجهزة إتصال" />
-		<control caption=":إنتهاء ال_مهلة" />
-		<control caption=":الإتصال" />
+		<control text="الخاصة/المحلية IP تجاهل عناوين الـ" />
+		<control text="UPnP تمكين إعداد أجهزة إتصال" />
+		<control text=":إنتهاء ال_مهلة" />
+		<control text=":الإتصال" />
 		<control />
 		<control />
-		<control caption=":المصافحة" />
+		<control text=":المصافحة" />
 		<control />
 		<control />
 	</dialog>
 	<dialog name="CDownloadsSettingsPage" cookie="BuEdBuBuEdBuBuStEdmsStEdmsStEdmsBuStCoStCoBuBuStCo" caption="التحميلات">
-		<control caption=":حفظ الملفات الم_كتملة هنا" />
+		<control text=":حفظ الملفات الم_كتملة هنا" />
 		<control />
 		<control />
-		<control caption=":تخزين الملفات ال_غير مكتملة المؤقتة هنا" />
+		<control text=":تخزين الملفات ال_غير مكتملة المؤقتة هنا" />
 		<control />
 		<control />
-		<control caption="_:عدد التحميلات" />
-		<control caption=":أقصى ملفات" />
+		<control text="_:عدد التحميلات" />
+		<control text=":أقصى ملفات" />
 		<control />
 		<control />
-		<control caption=":أقصى تحميلات" />
+		<control text=":أقصى تحميلات" />
 		<control />
 		<control />
-		<control caption=":المصادر لكل ملف" />
+		<control text=":المصادر لكل ملف" />
 		<control />
 		<control />
-		<control caption=":ال_حدود" />
-		<control caption=":نطاق العرض الإجمالي للتحميل" />
+		<control text=":ال_حدود" />
+		<control text=":نطاق العرض الإجمالي للتحميل" />
 		<control />
-		<control caption=":أقصى طول لقائمة الإنتظار" />
+		<control text=":أقصى طول لقائمة الإنتظار" />
 		<control />
-		<control caption="الأمان:" />
-		<control caption="التحميل و الإرسال من و إلى الشبكات المتصلة فقط" />
-		<control caption="AntiVirus:" />
+		<control text="الأمان:" />
+		<control text="التحميل و الإرسال من و إلى الشبكات المتصلة فقط" />
+		<control text="AntiVirus:" />
 		<control />
 	</dialog>
 	<dialog name="CUploadsSettingsPage" cookie="BuBuBuBuBuStEdmsBuCoBuBuBuStCoStCoBuSyBuBuBuSt" caption="الإرسال">
-		<control caption="ال&amp;خيارات" />
-		<control caption="حدود المشاركة في نمط النتوء" />
-		<control caption="المشاركة في جزئيات التحميلات الجديدة" />
-		<control caption="مشاركة ملفات المعاينة" />
-		<control caption="Fair-Use mode (10% media limit)" />
-		<control caption=":الحد لكل مضيف فريد" />
+		<control text="ال&amp;خيارات" />
+		<control text="حدود المشاركة في نمط النتوء" />
+		<control text="المشاركة في جزئيات التحميلات الجديدة" />
+		<control text="مشاركة ملفات المعاينة" />
+		<control text="Fair-Use mode (10% media limit)" />
+		<control text=":الحد لكل مضيف فريد" />
 		<control />
 		<control />
-		<control caption=":مرشح _عميل المستخدم" />
+		<control text=":مرشح _عميل المستخدم" />
 		<control />
-		<control caption="+" />
-		<control caption="-" />
-		<control caption="_:نطاق العرض" />
-		<control caption=":الحدود" />
+		<control text="+" />
+		<control text="-" />
+		<control text="_:نطاق العرض" />
+		<control text=":الحدود" />
 		<control />
-		<control caption=":النمط" />
-		<control caption="الحد الأعلى|معتدل" />
-		<control caption=":قوائم الإ_نتظار" />
+		<control text=":النمط" />
+		<control text="الحد الأعلى|معتدل" />
+		<control text=":قوائم الإ_نتظار" />
 		<control />
-		<control caption="_جديد..." />
-		<control caption="_تحرير..." />
-		<control caption="_حذف" />
-		<control caption="(التغييرات تصبح سارية المفعول فورا)" />
+		<control text="_جديد..." />
+		<control text="_تحرير..." />
+		<control text="_حذف" />
+		<control text="(التغييرات تصبح سارية المفعول فورا)" />
 	</dialog>
 	<dialog name="CNetworksSettingsPage" cookie="StBuStBuStBuStBuStBuStBuStBuStBuSt" caption="الشبكات">
-		<control caption="شير-أزا هو تطبيق لمشاركة الملفات لأغراض عامة حيث يقوم بالدخول على العديد من شبكات &quot;النظير-إلى-النظير&quot; المختلفة في نفس الوقت . في هذه الصفحة يمكنك تحديد شبكات &quot;النظير-إلى-النظير&quot; المراد الإنصال بها و من ثم ضبط الإعدادات لكل شبكة" />
-		<control caption=":Gnutella2 شبكة" />
-		<control caption="نوتيللا-2 هي الشبكة رئيسية إفتتاحية لشبكة شير-أزا . حيث تقدم الكثير من الميزات و الأداء أكثر من أي شبكة أخرى . و هي مستحسنة جدا" />
-		<control caption="Gnutella2 (G2) الإتصال بـ" />
-		<control caption="Gnutella2 تكوين" />
-		<control caption=":الأصليةGnutella شبكة" />
-		<control caption="نوتيللا هي شبكة مميزاتها أقل من  شبكة نوتيللا-2 و ملفاتها أقل من إ.دونكي و لكن تبقى هذه الشبكة مصدر ثمين للملفات" />
-		<control caption="الأصليةGnutella (G1) الإتصال بشبكة" />
-		<control caption="Gnutella تكوين" />
-		<control caption=":eDonkey شبكة" />
-		<control caption="إ.دونكي هي شبكة تعتمد على ملقم عام لكن مميزاتها أقل من  شبكة نوتيللا-2 . و هذه الشبكة تمتلك مجموعة لا يستهان بها من الملفات" />
-		<control caption=":eDonkey2000 (ED2K) الإتصال بـ" />
-		<control caption="eDonkey تكوين" />
-		<control caption=":DC++ شبكة" />
-		<control caption="إ.دونكي هي شبكة تعتمد على ملقم عام لكن مميزاتها أقل من  شبكة نوتيللا-2 . و هذه الشبكة تمتلك مجموعة لا يستهان بها من الملفات" />
-		<control caption=":DC++ (DC) الإتصال بـ" />
-		<control caption="DC++ تكوين" />
+		<control text="شير-أزا هو تطبيق لمشاركة الملفات لأغراض عامة حيث يقوم بالدخول على العديد من شبكات &quot;النظير-إلى-النظير&quot; المختلفة في نفس الوقت . في هذه الصفحة يمكنك تحديد شبكات &quot;النظير-إلى-النظير&quot; المراد الإنصال بها و من ثم ضبط الإعدادات لكل شبكة" />
+		<control text=":Gnutella2 شبكة" />
+		<control text="نوتيللا-2 هي الشبكة رئيسية إفتتاحية لشبكة شير-أزا . حيث تقدم الكثير من الميزات و الأداء أكثر من أي شبكة أخرى . و هي مستحسنة جدا" />
+		<control text="Gnutella2 (G2) الإتصال بـ" />
+		<control text="Gnutella2 تكوين" />
+		<control text=":الأصليةGnutella شبكة" />
+		<control text="نوتيللا هي شبكة مميزاتها أقل من  شبكة نوتيللا-2 و ملفاتها أقل من إ.دونكي و لكن تبقى هذه الشبكة مصدر ثمين للملفات" />
+		<control text="الأصليةGnutella (G1) الإتصال بشبكة" />
+		<control text="Gnutella تكوين" />
+		<control text=":eDonkey شبكة" />
+		<control text="إ.دونكي هي شبكة تعتمد على ملقم عام لكن مميزاتها أقل من  شبكة نوتيللا-2 . و هذه الشبكة تمتلك مجموعة لا يستهان بها من الملفات" />
+		<control text=":eDonkey2000 (ED2K) الإتصال بـ" />
+		<control text="eDonkey تكوين" />
+		<control text=":DC++ شبكة" />
+		<control text="إ.دونكي هي شبكة تعتمد على ملقم عام لكن مميزاتها أقل من  شبكة نوتيللا-2 . و هذه الشبكة تمتلك مجموعة لا يستهان بها من الملفات" />
+		<control text=":DC++ (DC) الإتصال بـ" />
+		<control text="DC++ تكوين" />
 	</dialog>
 	<dialog name="CGnutellaSettingsPage" cookie="BuBuBuStCoBuStEdmsStEdmsStEdmsBuBuBuStCoBuStEdmsStEdmsStEdmsBuBuBuBu" caption="Gnutella">
-		<control caption=":Gnutella2 شبكة" />
-		<control caption="Gnutella2 الإتصال اليوم بـ" />
-		<control caption="Gnutella2 الإتصال دائما بـ" />
-		<control caption="النمط:" />
-		<control caption="مثالي|طرفي|محوري" />
-		<control caption="G_2 Connections:" />
-		<control caption=":طرفي إلى محوري" />
+		<control text=":Gnutella2 شبكة" />
+		<control text="Gnutella2 الإتصال اليوم بـ" />
+		<control text="Gnutella2 الإتصال دائما بـ" />
+		<control text="النمط:" />
+		<control text="مثالي|طرفي|محوري" />
+		<control text="G_2 Connections:" />
+		<control text=":طرفي إلى محوري" />
 		<control />
 		<control />
-		<control caption=":محوري إلى طرفي" />
+		<control text=":محوري إلى طرفي" />
 		<control />
 		<control />
-		<control caption=":محوري إلى محوري" />
+		<control text=":محوري إلى محوري" />
 		<control />
 		<control />
-		<control caption=":Gnutella شبكة" />
-		<control caption="Gnutella الإتصال اليوم بـ" />
-		<control caption="Gnutella الإتصال دائما بـ" />
-		<control caption="النمط:" />
-		<control caption="مثالي|طرفي|نظير-فائق" />
-		<control caption=":G_1 إتصالات" />
-		<control caption=":طرفي إلى نظير-فائق" />
+		<control text=":Gnutella شبكة" />
+		<control text="Gnutella الإتصال اليوم بـ" />
+		<control text="Gnutella الإتصال دائما بـ" />
+		<control text="النمط:" />
+		<control text="مثالي|طرفي|نظير-فائق" />
+		<control text=":G_1 إتصالات" />
+		<control text=":طرفي إلى نظير-فائق" />
 		<control />
 		<control />
-		<control caption=":نظير-فائق إلى طرفي" />
+		<control text=":نظير-فائق إلى طرفي" />
 		<control />
 		<control />
-		<control caption=":نظير إلى نظير" />
+		<control text=":نظير إلى نظير" />
 		<control />
 		<control />
-		<control caption="_ :ضغط الرابط" />
-		<control caption="محوري إلى طرفي" />
-		<control caption="طرفي إلى محوري" />
-		<control caption="محوري إلى محوري" />
+		<control text="_ :ضغط الرابط" />
+		<control text="محوري إلى طرفي" />
+		<control text="طرفي إلى محوري" />
+		<control text="محوري إلى محوري" />
 	</dialog>
 	<dialog name="CDonkeySettingsPage" cookie="BuBuBuBuStEdmsStBuBuStEdmsStBuBuBuSt" caption="eDonkey">
-		<control caption=":_eDonkey شبكة" />
-		<control caption="eDonkey الإتصال دائما بـ" />
-		<control caption="eDonkey الإتصال اليوم بـ" />
-		<control caption=":_إتصالات إرتباط العميل" />
-		<control caption=":الإتصال باكثر من" />
+		<control text=":_eDonkey شبكة" />
+		<control text="eDonkey الإتصال دائما بـ" />
+		<control text="eDonkey الإتصال اليوم بـ" />
+		<control text=":_إتصالات إرتباط العميل" />
+		<control text=":الإتصال باكثر من" />
 		<control />
 		<control />
-		<control caption=" eDonkey عميل آخر لبرنامج" />
-		<control caption=":_البحث العالمي" />
-		<control caption="البحث في الملقمات البعيدة في مخزون الملقم المؤقت:" />
-		<control caption=":توقف عن البحث بعد" />
+		<control text=" eDonkey عميل آخر لبرنامج" />
+		<control text=":_البحث العالمي" />
+		<control text="البحث في الملقمات البعيدة في مخزون الملقم المؤقت:" />
+		<control text=":توقف عن البحث بعد" />
 		<control />
 		<control />
-		<control caption="نتيجة بحث" />
-		<control caption="إستقبال و تحديث قائمة الملقم من الملقم المتصل" />
-		<control caption=":eDonkey _أدوات" />
-		<control caption="تحميل..." />
-		<control caption=":من الانترنت eDonkey تحميل قائمة ملقم" />
+		<control text="نتيجة بحث" />
+		<control text="إستقبال و تحديث قائمة الملقم من الملقم المتصل" />
+		<control text=":eDonkey _أدوات" />
+		<control text="تحميل..." />
+		<control text=":من الانترنت eDonkey تحميل قائمة ملقم" />
 	</dialog>
 	<dialog name="CDCSettingsPage" cookie="BuBuBuBuStEdmsStBuStBuBuSt" caption="DC++">
-		<control caption=":_DC++ شبكة" />
-		<control caption="DC++ الإتصال دائما بـ" />
-		<control caption="DC++ الإتصال اليوم بـ" />
-		<control caption="_Hubs:" />
-		<control caption="Connect by default to:" />
+		<control text=":_DC++ شبكة" />
+		<control text="DC++ الإتصال دائما بـ" />
+		<control text="DC++ الإتصال اليوم بـ" />
+		<control text="_Hubs:" />
+		<control text="Connect by default to:" />
 		<control />
 		<control />
-		<control caption="DC++ hubs." />
-		<control caption="_Info:" />
-		<control caption="DC++ works by connecting to specific &quot;hub&quot; communities. Please select hubs from the &quot;Hostcache&quot; advanced view window (F8), otherwise one will be randomly selected." />
-		<control caption=":أدوات" />
-		<control caption="تحميل..." />
-		<control caption="Update DC++ hubs from the web. (hublist.xml.bz2)" />
+		<control text="DC++ hubs." />
+		<control text="_Info:" />
+		<control text="DC++ works by connecting to specific &quot;hub&quot; communities. Please select hubs from the &quot;Hostcache&quot; advanced view window (F8), otherwise one will be randomly selected." />
+		<control text=":أدوات" />
+		<control text="تحميل..." />
+		<control text="Update DC++ hubs from the web. (hublist.xml.bz2)" />
 	</dialog>
 	<dialog name="CBitTorrentSettingsPage" cookie="BuEdmsStEdmsStBuBuBuBuBuEdmsStBuEdBuBuEdBuStEd" caption="BitTorrent">
-		<control caption=":إ_تصالات التحميل" />
+		<control text=":إ_تصالات التحميل" />
 		<control />
 		<control />
-		<control caption="معا Torrents عمليات" />
+		<control text="معا Torrents عمليات" />
 		<control />
 		<control />
-		<control caption="إتصالات العميل" />
-		<control caption="تمكين BitTorrent DHT" />
-		<control caption=" المفضلة torrent مصادر" />
-		<control caption=":المرحلة ال_ختامية" />
-		<control caption="torrent تمكين نمط المرحلة الختامية عند إكتمال ملفات" />
-		<control caption="المحملة        عندما يصل معدل المشاركة torrent مسح ملفات" />
+		<control text="إتصالات العميل" />
+		<control text="تمكين BitTorrent DHT" />
+		<control text=" المفضلة torrent مصادر" />
+		<control text=":المرحلة ال_ختامية" />
+		<control text="torrent تمكين نمط المرحلة الختامية عند إكتمال ملفات" />
+		<control text="المحملة        عندما يصل معدل المشاركة torrent مسح ملفات" />
 		<control />
 		<control />
-		<control caption="%" />
-		<control caption=": هنا Torrent ت_خزين ملفات" />
+		<control text="%" />
+		<control text=": هنا Torrent ت_خزين ملفات" />
 		<control />
 		<control />
-		<control caption="_Torrent صانع" />
+		<control text="_Torrent صانع" />
 		<control />
 		<control />
-		<control caption="متتبع إفتراضي" />
+		<control text="متتبع إفتراضي" />
 		<control />
 	</dialog>
 	<dialog name="CSkinsSettingsPage" cookie="SyBuStStStStStEdStBuBuBu" caption="الغلاف">
 		<control />
-		<control caption=":معلومات الغلاف" />
-		<control caption=":الاسم" />
+		<control text=":معلومات الغلاف" />
+		<control text=":الاسم" />
 		<control />
-		<control caption=":المصمم" />
+		<control text=":المصمم" />
 		<control />
-		<control caption=":نبذة عنه" />
+		<control text=":نبذة عنه" />
 		<control />
-		<control caption="*Mix" />
-		<control caption="حذف" />
-		<control caption="تثبيت..." />
-		<control caption="أحضر المزيد" />
+		<control text="*Mix" />
+		<control text="حذف" />
+		<control text="تثبيت..." />
+		<control text="أحضر المزيد" />
 	</dialog>
 	<dialog name="CPluginsSettingsPage" cookie="SyBuStStStEdBuBu" caption="الإضافات">
 		<control />
-		<control caption=":معلومات الإضافات" />
-		<control caption=":الاسم" />
+		<control text=":معلومات الإضافات" />
+		<control text=":الاسم" />
 		<control />
-		<control caption=":نبذة عنها" />
+		<control text=":نبذة عنها" />
 		<control />
-		<control caption="_تثبيت..." />
-		<control caption="احضر المزيد" />
+		<control text="_تثبيت..." />
+		<control text="احضر المزيد" />
 	</dialog>
 	<dialog name="CAdvancedSettingsPage" cookie="SyBuStEdmsEdCoBuBu" caption="متقدم">
 		<control />
-		<control caption=":إعداد الخصائص" />
-		<control caption=":القيمة" />
+		<control text=":إعداد الخصائص" />
+		<control text=":القيمة" />
 		<control />
 		<control />
 		<control />
 		<control />
 		<control />
-		<control caption="وضع الإفتراضي" />
+		<control text="وضع الإفتراضي" />
 	</dialog>
 	<dialog name="CProtocolsSettingsPage" cookie="BuSy" caption="بروتوكول">
-		<control caption=": المشترك Envy مستكشف بروتوكول بنية" />
+		<control text=": المشترك Envy مستكشف بروتوكول بنية" />
 		<control />
 	</dialog>
 	<dialog name="CQueuePropertiesDlg" cookie="BuEdBuBuBuBuBuEdBuEdBuCoBuEdBuSyBuBuStEdmsStEdmsStEdmsBuStEdStEdmsBuEdmsBuBuBu" caption="خصائص قائمة إنتظار الإرسال">
-		<control caption=":_الاسم" />
+		<control text=":_الاسم" />
 		<control />
-		<control caption=":إ_دخال المعايير" />
-		<control caption="الملفات المحملة جزئيا فقط" />
-		<control caption="ملفات المكتبة المشاركة فقط" />
-		<control caption="كلا من الملفات الجزئية و ملفات المكتبة" />
-		<control caption=":أدنى حجم للملف المصدر" />
+		<control text=":إ_دخال المعايير" />
+		<control text="الملفات المحملة جزئيا فقط" />
+		<control text="ملفات المكتبة المشاركة فقط" />
+		<control text="كلا من الملفات الجزئية و ملفات المكتبة" />
+		<control text=":أدنى حجم للملف المصدر" />
 		<control />
-		<control caption=":أقصى حجم للملف المصدر" />
+		<control text=":أقصى حجم للملف المصدر" />
 		<control />
-		<control caption="الملفات المؤشرة:" />
-		<control caption="شائع | إصدار" />
-		<control caption="مطابقة إسم الملف:" />
+		<control text="الملفات المؤشرة:" />
+		<control text="شائع | إصدار" />
+		<control text="مطابقة إسم الملف:" />
 		<control />
-		<control caption="البروتوكولات:" />
+		<control text="البروتوكولات:" />
 		<control />
-		<control caption="ال_سعة:" />
-		<control caption="تمكين قائمة الإنتظار هذه" />
-		<control caption="العدد الأدنى لعمليات النقل :" />
-		<control />
-		<control />
-		<control caption="العدد الأقصى لعمليات النقل :" />
+		<control text="ال_سعة:" />
+		<control text="تمكين قائمة الإنتظار هذه" />
+		<control text="العدد الأدنى لعمليات النقل :" />
 		<control />
 		<control />
-		<control caption="العدد الأقصى في قائمة الإنتظار :" />
+		<control text="العدد الأقصى لعمليات النقل :" />
 		<control />
 		<control />
-		<control caption="_معايير الخدمة" />
-		<control caption="نسبة نطاق العرض المئوية المشبعة:" />
-		<control />
-		<control caption="نطاق العرض للإرسال لقائمة الإنتظار هذه :" />
+		<control text="العدد الأقصى في قائمة الإنتظار :" />
 		<control />
 		<control />
-		<control caption="تدوير بعد # ثانية :" />
+		<control text="_معايير الخدمة" />
+		<control text="نسبة نطاق العرض المئوية المشبعة:" />
+		<control />
+		<control text="نطاق العرض للإرسال لقائمة الإنتظار هذه :" />
 		<control />
 		<control />
-		<control caption="حسنا" />
-		<control caption="إلغاء الأمر" />
-		<control caption="أصحاب الإرسال الفائزون" />
+		<control text="تدوير بعد # ثانية :" />
+		<control />
+		<control />
+		<control text="حسنا" />
+		<control text="إلغاء الأمر" />
+		<control text="أصحاب الإرسال الفائزون" />
 	</dialog>
-	<dialog name="CWizardWelcomePage" cookie="StStStStStStStStStStStSt" caption="(1/8) _ Envy مرحبا بك في">
-		<control caption="Envy مرحبا بك في" />
-		<control caption="او اي برنامج مشاركة هذا المعالج سوف يساعدك على اعداد البرنامج و الإتصال به Envy  اذا كنت تستخدم برنامج." />
-		<control caption="لعمل إعدادات الإتصال Envy اضغط على خروج  واضغط على ادوات ثم إعدادات Envy اذا كنت مستخدم محترف اضغط  لبرنامج." />
-		<control caption=":هذا المعالج سيساعدك في" />
+	<dialog name="CWizardWelcomePage" cookie="StStStStStStStStStStStStSt" caption="(1/8) _ Envy مرحبا بك في">
+		<control text="Envy مرحبا بك في" />
+		<control text="او اي برنامج مشاركة هذا المعالج سوف يساعدك على اعداد البرنامج و الإتصال به Envy  اذا كنت تستخدم برنامج." />
+		<control text="لعمل إعدادات الإتصال Envy اضغط على خروج  واضغط على ادوات ثم إعدادات Envy اذا كنت مستخدم محترف اضغط  لبرنامج." />
+		<control text=":هذا المعالج سيساعدك في" />
 		<control />
-		<control caption="بالانترنت Envy طريقة إتصال " />
+		<control text="بالانترنت Envy طريقة إتصال " />
 		<control />
-		<control caption="اختيار الملفات التي تريد وضع مشاركة لها" />
+		<control text="اختيار الملفات التي تريد وضع مشاركة لها" />
 		<control />
-		<control caption="بالشبكة p2p إتصال " />
+		<control text="بالشبكة p2p إتصال " />
 		<control />
-		<control caption="Envy إبدأ الإستعمال" />
+		<control text="Envy إبدأ الإستعمال" />
+		<control/>
 	</dialog>
 	<dialog name="CWizardConnectionPage" cookie="StStCoStStCoStCoStCoStEdBuStms" caption="(2/8) _ Envy مرحبا بكم في">
-		<control caption="للإتصال بالإنترنت Envy لأداء مثالي ، يجب إعداد" />
-		<control caption=":إختر نوع إتصال الإنترنت" />
-		<control caption=" |مودم طلب هاتفي| ISDN 128ك| DSL 768ك| DSL 1.5|مودم كيبل 3| DSL 4م| DSL2 8م| FIOS 10م| DSL2 12م| FIOS 15م| FIOS 20م| FIOS 25م| FIOS 30م| FIOS 50م| T1| T3| LAN| OC3" />
-		<control caption="Speedtest.net اختبار في" />		<control caption=":أو إختر سرعة التحميل" />
+		<control text="للإتصال بالإنترنت Envy لأداء مثالي ، يجب إعداد" />
+		<control text=":إختر نوع إتصال الإنترنت" />
+		<control text=" |مودم طلب هاتفي| ISDN 128ك| DSL 768ك| DSL 1.5|مودم كيبل 3| DSL 4م| DSL2 8م| FIOS 10م| DSL2 12م| FIOS 15م| FIOS 20م| FIOS 25م| FIOS 30م| FIOS 50م| T1| T3| LAN| OC3" />
+		<control text="Speedtest.net اختبار في" />		<control text=":أو إختر سرعة التحميل" />
 		<control />
-		<control caption=":و سرعة الإرسال" />
+		<control text=":و سرعة الإرسال" />
 		<control />
-		<control caption="؟ UPnP هل تريد إعداد المنفذ تلقائيا بواسطة" />
+		<control text="؟ UPnP هل تريد إعداد المنفذ تلقائيا بواسطة" />
 		<control />
-		<control caption="Port:" />
+		<control text="Port:" />
 		<control />
-		<control caption="Random" />
-		<control caption=":الحالة" />
+		<control text="Random" />
+		<control text=":الحالة" />
 		<control />
 	</dialog>
 	<dialog name="CWizardNetworksPage" cookie="StBuStBuStBuStBu" caption="(3/8) _ Envy مرحبا بكم في">
-		<control caption="شير-أزا هو تطبيق لمشاركة الملفات بشكا عام حيث يمكنه الدخول على العديد من شبكات النظير إلى النظبر في نفس الوقت . هنا يمكنك أن تختار الشبكات المراد الدخول إليها . ملاحظة : يمكنك أن تختار شبكات مختلفة دائما فيما بعد" />
-		<control caption="(مهم جدا) Gnutella2 الإتصال بـ" />
-		<control caption="شبكة نيتيللاGnutella هي الشبكة الرئيسية لبرنامج شير-أزا ، فهي تقدم مميزات و أداء أكثر من أي شبكة أخرى" />
-		<control caption="الأصلية Gnutella الإتصال بـ" />
-		<control caption="أيضا شبكة نيتيللا الأصلية أقل من حيث المميزات من شبكة نيتيللا2 و ملفاتها أقل أيضا من أيدونكي و مع ذلك تبقى مصدر للملفات لا غنى عنه" />
-		<control caption="eDonkey الإتصال بـ" />
-		<control caption="شبكة إدونكي هي شبكة تعتمد على ملقم عام . لكنها ليست بمميزات نيتيللا2 . إدونكي تملك مجموعة ملفات لا يستهان بها" />
-		<control caption=".torrent معالجة روابط" />
+		<control text="شير-أزا هو تطبيق لمشاركة الملفات بشكا عام حيث يمكنه الدخول على العديد من شبكات النظير إلى النظبر في نفس الوقت . هنا يمكنك أن تختار الشبكات المراد الدخول إليها . ملاحظة : يمكنك أن تختار شبكات مختلفة دائما فيما بعد" />
+		<control text="(مهم جدا) Gnutella2 الإتصال بـ" />
+		<control text="شبكة نيتيللاGnutella هي الشبكة الرئيسية لبرنامج شير-أزا ، فهي تقدم مميزات و أداء أكثر من أي شبكة أخرى" />
+		<control text="الأصلية Gnutella الإتصال بـ" />
+		<control text="أيضا شبكة نيتيللا الأصلية أقل من حيث المميزات من شبكة نيتيللا2 و ملفاتها أقل أيضا من أيدونكي و مع ذلك تبقى مصدر للملفات لا غنى عنه" />
+		<control text="eDonkey الإتصال بـ" />
+		<control text="شبكة إدونكي هي شبكة تعتمد على ملقم عام . لكنها ليست بمميزات نيتيللا2 . إدونكي تملك مجموعة ملفات لا يستهان بها" />
+		<control text=".torrent معالجة روابط" />
 	</dialog>
 	<dialog name="CWizardFoldersPage" cookie="StStEdBuStEdBuStEdBuSt" caption="(4/8) _ Envy مرحبا بكم في">
-		<control caption="التنزيلات Envy أول جزئية الملفات إلى مجلد خاص، ثم ينتقل منها عند الانتهاء وفقا للمجموعات تحميل." />
-		<control caption=":تخزين الملفات ال_غير مكتملة المؤقتة هنا" />
+		<control text="التنزيلات Envy أول جزئية الملفات إلى مجلد خاص، ثم ينتقل منها عند الانتهاء وفقا للمجموعات تحميل." />
+		<control text=":تخزين الملفات ال_غير مكتملة المؤقتة هنا" />
 		<control />
 		<control />
-		<control caption=":حفظ الملفات الم_كتملة هنا" />
+		<control text=":حفظ الملفات الم_كتملة هنا" />
 		<control />
 		<control />
-		<control caption="Store .Torrent files here:" />
+		<control text="Store .Torrent files here:" />
 		<control />
 		<control />
-		<control caption="نوع الملف المشترك يتم الإعداد في البداية والمجلدات الفرعية من الموقع الافتراضي، ولكن يمكن بسهولة يمكن تطويعه من قبل مجموعات بزر الماوس الأيمن. ببساطة الملفات Drag&apos;n&apos;Drop." />
+		<control text="نوع الملف المشترك يتم الإعداد في البداية والمجلدات الفرعية من الموقع الافتراضي، ولكن يمكن بسهولة يمكن تطويعه من قبل مجموعات بزر الماوس الأيمن. ببساطة الملفات Drag&apos;n&apos;Drop." />
 	</dialog>
 	<dialog name="CWizardSharePage" cookie="StStStSyBuBuSt" caption="(5/8) _ Envy مرحبا بكم في">
-		<control caption="شبكات النظير إلى النظير هي فقط صالحة إذا كان من يستخدمها إنسان صالح . كل المحتوبات المتوفر للتحميل يتم مشاركتها مع مستخدمين آخرين" />
-		<control caption="ليس من الضروري أن تشارك من أجل إستعمال شير-أزا و من ناحية أخرى فهناك بعض البرامج تتصرف بشكل مختلف مع المستخدمين الذين لا يشاركون بأي شئ" />
-		<control caption="الرجاء تعيين المجلدات المراد المشاركة بها إن وجدت . أنقر زر إضافة لإضافة أي مجلد جديد" />
+		<control text="شبكات النظير إلى النظير هي فقط صالحة إذا كان من يستخدمها إنسان صالح . كل المحتوبات المتوفر للتحميل يتم مشاركتها مع مستخدمين آخرين" />
+		<control text="ليس من الضروري أن تشارك من أجل إستعمال شير-أزا و من ناحية أخرى فهناك بعض البرامج تتصرف بشكل مختلف مع المستخدمين الذين لا يشاركون بأي شئ" />
+		<control text="الرجاء تعيين المجلدات المراد المشاركة بها إن وجدت . أنقر زر إضافة لإضافة أي مجلد جديد" />
 		<control />
-		<control caption="_إضافة..." />
-		<control caption="_إزالة" />
-		<control caption=" تحذير : توزيع الأعمال المحفوظة الحقوق مخالفة في أكثر البلدان ." />
+		<control text="_إضافة..." />
+		<control text="_إزالة" />
+		<control text=" تحذير : توزيع الأعمال المحفوظة الحقوق مخالفة في أكثر البلدان ." />
 	</dialog>
 	<dialog name="CFolderScanDlg" cookie="StStStStStStBu" caption="فحص المجلد...">
 		<control />
-		<control caption="..." />
-		<control caption=":الملفات" />
-		<control caption="0" />
-		<control caption=":الحجم" />
-		<control caption="0" />
-		<control caption="إغلاق" />
+		<control text="..." />
+		<control text=":الملفات" />
+		<control text="0" />
+		<control text=":الحجم" />
+		<control text="0" />
+		<control text="إغلاق" />
 	</dialog>
 	<dialog name="CWizardInterfacePage" cookie="StBuBuBuStStBuBuBuBuBuSt" caption="(6/8) _ Envy مرحبا بك مع">
-		<control caption="شير-أزا يدعم واجهة المستخدم المرنة ، لذا يمكنك أن تختار الواجهة التي تريحك . يمكنك أن تغير هذه الخيارات في أي وقت كان" />
-		<control caption=":الرجاء تحديد الواجهة" />
-		<control caption="النمط المتقدم" />
-		<control caption="النمط العادي" />
-		<control caption="النمط المتقدم للمستخدمين الخبراء بالأوامر المتعددة" />
-		<control caption="القوائم و الأزرار سهلة الإستعمال و بسيطة ." />
-		<control caption="عرض أشرطة بسيطة لتقدم التحميل . (تخفض من إستعمال وحدة المعالج المركزية) ـ" />
-		<control caption="تحديد غ_لاف:" />
-		<control caption="No Change" />
-		<control caption="Windows Skin" />
-		<control caption="Dark Skin" />
-		<control caption="" />
+		<control text="شير-أزا يدعم واجهة المستخدم المرنة ، لذا يمكنك أن تختار الواجهة التي تريحك . يمكنك أن تغير هذه الخيارات في أي وقت كان" />
+		<control text=":الرجاء تحديد الواجهة" />
+		<control text="النمط المتقدم" />
+		<control text="النمط العادي" />
+		<control text="النمط المتقدم للمستخدمين الخبراء بالأوامر المتعددة" />
+		<control text="القوائم و الأزرار سهلة الإستعمال و بسيطة ." />
+		<control text="عرض أشرطة بسيطة لتقدم التحميل . (تخفض من إستعمال وحدة المعالج المركزية) ـ" />
+		<control text="تحديد غ_لاف:" />
+		<control text="No Change" />
+		<control text="Windows Skin" />
+		<control text="Dark Skin" />
+		<control text="" />
 	</dialog>
 	<dialog name="CWizardProfilePage" cookie="StStEdStCoCoStCoStCoStEd" caption="(7/8) _ Envy مرحبا بكم في">
-		<control caption="يعتبر شير-أزا المكان الأكثر ودية عندما يكتب أي شخص بضعة تفاصيل أساسية حول نفسه" />
-		<control caption="أنا إسمي:" />
+		<control text="يعتبر شير-أزا المكان الأكثر ودية عندما يكتب أي شخص بضعة تفاصيل أساسية حول نفسه" />
+		<control text="أنا إسمي:" />
 		<control />
-		<control caption="الجنس:" />
-		<control caption=" (إختر)" />
-		<control caption=" إختر)|رويجل|بنت|رجل|إمرأة)" />
-		<control caption="من :" />
+		<control text="الجنس:" />
+		<control text=" (إختر)" />
+		<control text=" إختر)|رويجل|بنت|رجل|إمرأة)" />
+		<control text="من :" />
 		<control />
-		<control caption="Locale:" />
+		<control text="Locale:" />
 		<control />
-		<control caption="تعليقات:" />
+		<control text="تعليقات:" />
 		<control />
 	</dialog>
-	<dialog name="CWizardFinishedPage" cookie="StStStBuBuSt" caption="(8/8) _ Envy مرحبا بكم في">
-		<control caption="ليعمل على كمبيوترك Envy هذا كل شيء . تم تكوين" />
-		<control caption="عندما تحتاج إلى تغيير إعداداتك ، يمكنك تشغيل معالج البدء السريع هذا مرة أخرى من قائمة أدوات" />
-		<control caption="بعد إغلاق هذا المعالج بواسطة النقر على زر إنهاء ، يمكنك الإتصال بالشبكات التي قمت بتحديدها و تبدأ البحث عن الملفات و تحميلها" />
-		<control caption="عند تشغيل نظام تشغيل الويندوز Envy بداء تشغيل" />
-		<control caption="عند تشغيل البرنامج Envy اتصل  بالشبكة " />
-		<control caption=" Envy تمتع بإستعمال" />
+	<dialog name="CWizardFinishedPage" cookie="StStStBuBuStSt" caption="(8/8) _ Envy مرحبا بكم في">
+		<control text="ليعمل على كمبيوترك Envy هذا كل شيء . تم تكوين" />
+		<control text="عندما تحتاج إلى تغيير إعداداتك ، يمكنك تشغيل معالج البدء السريع هذا مرة أخرى من قائمة أدوات" />
+		<control text="بعد إغلاق هذا المعالج بواسطة النقر على زر إنهاء ، يمكنك الإتصال بالشبكات التي قمت بتحديدها و تبدأ البحث عن الملفات و تحميلها" />
+		<control text="عند تشغيل نظام تشغيل الويندوز Envy بداء تشغيل" />
+		<control text="عند تشغيل البرنامج Envy اتصل  بالشبكة " />
+		<control text=" Envy تمتع بإستعمال" />
+		<control/>
 	</dialog>
 	<dialog name="CDonkeyImportDlg" cookie="StBuBuEdBu" caption="eDonkey2000 تحميل و تصدير ">
-		<control caption="إكتشف شير-أزا بأنه لديك برنامج إدونكي مثبت على كمبيوترك . هل تريد أن تستورد أي تحميلات غير منتهية إلى شير-أزا ؟" />
-		<control caption="نعم" />
-		<control caption="لا|إلغاء الأمر" />
+		<control text="إكتشف شير-أزا بأنه لديك برنامج إدونكي مثبت على كمبيوترك . هل تريد أن تستورد أي تحميلات غير منتهية إلى شير-أزا ؟" />
+		<control text="نعم" />
+		<control text="لا|إلغاء الأمر" />
 		<control />
-		<control caption="إغلاق" />
+		<control text="إغلاق" />
 	</dialog>
 	<dialog name="CProfileManagerDlg" cookie="SyBuBuBu" caption="تحرير ملفي الخاص">
 		<control />
-		<control caption="حسنا" />
-		<control caption="إلغاء الأمر" />
-		<control caption="تطبيق" />
+		<control text="حسنا" />
+		<control text="إلغاء الأمر" />
+		<control text="تطبيق" />
 		<control />
 	</dialog>
 	<dialog name="CIdentityProfilePage" cookie="BuStStEdEdEdBuStStCoCoBuStBuBu" caption="الهوية">
-		<control caption=":الإ+سم" />
-		<control caption=":ال_لقب" />
-		<control caption=":الإ_سم الحقيقي" />
+		<control text=":الإ+سم" />
+		<control text=":ال_لقب" />
+		<control text=":الإ_سم الحقيقي" />
 		<control />
 		<control />
 		<control />
-		<control caption=":ت_فاصيل أخرى" />
-		<control caption=":الجنس" />
-		<control caption=":العمر" />
-		<control caption="|ذكر|أنثى" />
+		<control text=":ت_فاصيل أخرى" />
+		<control text=":الجنس" />
+		<control text=":العمر" />
+		<control text="|ذكر|أنثى" />
 		<control />
-		<control caption="Info:" />
-		<control caption="{n}G2 (Envy / Shareaza)" />
-		<control caption="تطبيق:" />
-		<control caption="السمح للآخرين بتصفح التشكيل الجانبي لمواصفاتي" />
+		<control text="Info:" />
+		<control text="{n}G2 (Envy / Shareaza)" />
+		<control text="تطبيق:" />
+		<control text="السمح للآخرين بتصفح التشكيل الجانبي لمواصفاتي" />
 	</dialog>
 	<dialog name="CAvatarProfilePage" cookie="BuStBuStBuBu" caption="الصور الرمزية">
-		<control caption=":ال_عرض" />
+		<control text=":ال_عرض" />
 		<control />
-		<control caption=":إ_ختيار" />
-		<control caption="سيشاهد المستخدمون في شبكة نيتيللا الآخرون الذين يتصفحون التشكيل الجانبي لمعلوماتك الشخصية و ملفاتك المشاركة الصورة الرمزية الخاصة بك . الصور الرمزية المخصصة يجب أن تكون 128 × 128 بيكسل و يمكن أن تكون من نوع من أنواع الصور المعتمدة" />
-		<control caption="_استعرض..." />
-		<control caption="_إزالة" />
+		<control text=":إ_ختيار" />
+		<control text="سيشاهد المستخدمون في شبكة نيتيللا الآخرون الذين يتصفحون التشكيل الجانبي لمعلوماتك الشخصية و ملفاتك المشاركة الصورة الرمزية الخاصة بك . الصور الرمزية المخصصة يجب أن تكون 128 × 128 بيكسل و يمكن أن تكون من نوع من أنواع الصور المعتمدة" />
+		<control text="_استعرض..." />
+		<control text="_إزالة" />
 	</dialog>
 	<dialog name="CProfileProfilePage" cookie="BuStCoStCoBuStEdStEdBuLiBuBuCo" caption="_الموقع">
-		<control caption=":_الموقع" />
-		<control caption=":ال_دولة" />
+		<control text=":_الموقع" />
+		<control text=":ال_دولة" />
 		<control />
-		<control caption=":ال_مدينة" />
+		<control text=":ال_مدينة" />
 		<control />
-		<control caption=":ال_خريطة" />
-		<control caption=":خطّ العرض" />
+		<control text=":ال_خريطة" />
+		<control text=":خطّ العرض" />
 		<control />
-		<control caption="خط الطول:" />
+		<control text="خط الطول:" />
 		<control />
-		<control caption="ال_هوايات" />
+		<control text="ال_هوايات" />
 		<control />
-		<control caption=" إضافة&gt;" />
-		<control caption="&lt;إزالة " />
+		<control text=" إضافة&gt;" />
+		<control text="&lt;إزالة " />
 		<control />
 	</dialog>
 	<dialog name="CContactProfilePage" cookie="BuStEdBuStEdStEdStEdStEdStEdStEdStEdStEd" caption="الإتصال">
-		<control caption=":ال_بريد الالكتروني" />
-		<control caption=":ال_أساسي" />
+		<control text=":ال_بريد الالكتروني" />
+		<control text=":ال_أساسي" />
 		<control />
-		<control caption=":_ماسنجر الإتصال" />
-		<control caption="GetEnvy.com:" />
+		<control text=":_ماسنجر الإتصال" />
+		<control text="GetEnvy.com:" />
 		<control />
-		<control caption="Facebook:" />
+		<control text="Facebook:" />
 		<control />
-		<control caption="Twitter:" />
+		<control text="Twitter:" />
 		<control />
-		<control caption="Google:" />
+		<control text="Google:" />
 		<control />
-		<control caption="Skype:" />
+		<control text="Skype:" />
 		<control />
-		<control caption="Yahoo:" />
+		<control text="Yahoo:" />
 		<control />
-		<control caption="AOL:" />
+		<control text="AOL:" />
 		<control />
-		<control caption="ICQ:" />
+		<control text="ICQ:" />
 		<control />
 	</dialog>
 	<dialog name="CBioProfilePage" cookie="Ed" caption="نبذة عنك">
 		<control />
 	</dialog>
 	<dialog name="CFilesProfilePage" cookie="BuStSy" caption="المفضلة">
-		<control caption=":م_لفات المفضلة" />
-		<control caption="الملفات المفضلة هي الملفات المستحسنة للمستخدمين الذين يتصفحون تشكيلك الجانبي . يمكنك وضع ملفات المفضلة بإضافتها إلى مجلد مكتبة &quot;المفضلة&quot; ـ" />
+		<control text=":م_لفات المفضلة" />
+		<control text="الملفات المفضلة هي الملفات المستحسنة للمستخدمين الذين يتصفحون تشكيلك الجانبي . يمكنك وضع ملفات المفضلة بإضافتها إلى مجلد مكتبة &quot;المفضلة&quot; ـ" />
 		<control />
 	</dialog>
 	<dialog name="CFavoritesProfilePage" cookie="SyBuStEdStEdBuBu" caption="المفضلة">
 		<control />
-		<control caption=":ت_حرير" />
-		<control caption=":ال_وصف" />
+		<control text=":ت_حرير" />
+		<control text=":ال_وصف" />
 		<control />
-		<control caption=":ال_رابط" />
+		<control text=":ال_رابط" />
 		<control />
-		<control caption="جديد" />
-		<control caption="إزالة" />
+		<control text="جديد" />
+		<control text="إزالة" />
 	</dialog>
 	<dialog name="CCertificateProfilePage" cookie="BuStStStStBuBuSt" caption="شهادة">
-		<control caption=":_شهادة التعريف الفريدة العالمية من" />
-		<control caption="Gnutella/G2 GUID:" />
+		<control text=":_شهادة التعريف الفريدة العالمية من" />
+		<control text="Gnutella/G2 GUID:" />
 		<control />
-		<control caption="BitTorrent GUID:" />
+		<control text="BitTorrent GUID:" />
 		<control />
-		<control caption="توليد الآن" />
-		<control caption="Info:" />
-		<control caption="يتم تعريف مستخدمي نيتيللا من قبل معرف فريد عالميا و مفتاح عام و آخر خاص . عادة ليس هناك حاجة لتوليد هوية جديدة ، بالرغم من شير-أزا يقدم هذا الخيار للمستخدمين المتقدمين" />
+		<control text="توليد الآن" />
+		<control text="Info:" />
+		<control text="يتم تعريف مستخدمي نيتيللا من قبل معرف فريد عالميا و مفتاح عام و آخر خاص . عادة ليس هناك حاجة لتوليد هوية جديدة ، بالرغم من شير-أزا يقدم هذا الخيار للمستخدمين المتقدمين" />
 	</dialog>
 	<dialog name="CLanguageDlg" cookie="" caption="تحديد اللغة">
 	</dialog>
 	<dialog name="CConnectToDlg" cookie="BuCoEdBuCoBuBuBu" caption="الإتصال بـ|استعرض المستضيف">
-		<control caption=":تحضير إتصال جديد إلى مضيف أو ملقم|:تصفح هذا المضيف" />
+		<control text=":تحضير إتصال جديد إلى مضيف أو ملقم|:تصفح هذا المضيف" />
 		<control />
 		<control />
-		<control caption=":بر_وتوكول الشبكة" />
+		<control text=":بر_وتوكول الشبكة" />
 		<control />
-		<control caption="_منع نظير-فائق" />
-		<control caption="إتصال" />
-		<control caption="إلغاء الأمر" />
+		<control text="_منع نظير-فائق" />
+		<control text="إتصال" />
+		<control text="إلغاء الأمر" />
 	</dialog>
 	<dialog name="CDownloadDlg" cookie="StStStEdStBuBuBu" caption="تحميل ملف أو Torrent">
 		<control />
-		<control caption="شير-أزا يمكنه تحميل الملفات من الويب و البحث تلقائيا عنها و تحميل روابط نظير إلى نظير تحميل أي ملف بواسطة شير-أزا يعتبر أمر سهل . ببساطة أكتب أو ألصق الرابط للملف المراد تحميله أو وصفا عنه في الخانة بالأسفل ثم إضغط &quot;إنتر&quot;ـ {n}(http: و ftp: و ed2k: و magnet:)" />
-		<control caption="شير-أزا يمكنه أيضا تحميل ملفات بيت-تورينت . يمكن وصف أي ملف تورينت بملف{n}torrent لملف HTTP لتحميل رابط , torrent إلى ملف HTTP أو رابط xyz.torrent{n}:&quot;Torrent أنقر على زر &quot;فتح torrent ألصقه فوق . إذا كان لديك مسبقا ملف" />
+		<control text="شير-أزا يمكنه تحميل الملفات من الويب و البحث تلقائيا عنها و تحميل روابط نظير إلى نظير تحميل أي ملف بواسطة شير-أزا يعتبر أمر سهل . ببساطة أكتب أو ألصق الرابط للملف المراد تحميله أو وصفا عنه في الخانة بالأسفل ثم إضغط &quot;إنتر&quot;ـ {n}(http: و ftp: و ed2k: و magnet:)" />
+		<control text="شير-أزا يمكنه أيضا تحميل ملفات بيت-تورينت . يمكن وصف أي ملف تورينت بملف{n}torrent لملف HTTP لتحميل رابط , torrent إلى ملف HTTP أو رابط xyz.torrent{n}:&quot;Torrent أنقر على زر &quot;فتح torrent ألصقه فوق . إذا كان لديك مسبقا ملف" />
 		<control />
 		<control />
-		<control caption="تحميل" />
-		<control caption="إلغاء الأمر" />
-		<control caption="_Torrent فتح" />
+		<control text="تحميل" />
+		<control text="إلغاء الأمر" />
+		<control text="_Torrent فتح" />
 	</dialog>
 	<dialog name="CNewSearchDlg" cookie="EdCoBuBu" caption="بحث جديد|البحث مره اخرى|البحث في المكتبة">
 		<control />
 		<control />
-		<control caption="بحث" />
-		<control caption="إلغاء الأمر" />
+		<control text="بحث" />
+		<control text="إلغاء الأمر" />
 	</dialog>
 	<dialog name="CFilterSearchDlg" cookie="BuEdStBuStEdStEdStEdmsStBuBuBuBuBuBuBuBuBuCoBuBuBuBuBuBuBu" caption="فرز الملفات المطابقة">
-		<control caption=":فقط إظهار الملفات المطابقة التي تتضمن ال_كلمات" />
+		<control text=":فقط إظهار الملفات المطابقة التي تتضمن ال_كلمات" />
 		<control />
-		<control caption="(يمكنك أستبعاد الكلمات أيضا مع -كلمة)" />
-		<control caption=": و التي تطابق ال_حجم" />
-		<control caption=":الأدنى" />
+		<control text="(يمكنك أستبعاد الكلمات أيضا مع -كلمة)" />
+		<control text=": و التي تطابق ال_حجم" />
+		<control text=":الأدنى" />
 		<control />
-		<control caption=":الأقصى" />
+		<control text=":الأقصى" />
 		<control />
-		<control caption=":على الأقل" />
+		<control text=":على الأقل" />
 		<control />
 		<control />
-		<control caption=":إ_خفاء" />
-		<control caption="المضيفون المشغولون" />
-		<control caption="المضيفون المنهكون/أو خلف جدار ناري" />
-		<control caption="المضيفون الغير مستقرين" />
-		<control caption="Restricted ملف" />
-		<control caption="DRM ملف" />
-		<control caption="الملفات الغير مطابقة" />
-		<control caption="الملفات التي لديك مسبقا" />
-		<control caption="النتائج المزيفة" />
-		<control caption="وضع كإفتراضي" />
-		<control caption="حفظ _باسم" />
-		<control caption="الفرز:" />
+		<control text=":إ_خفاء" />
+		<control text="المضيفون المشغولون" />
+		<control text="المضيفون المنهكون/أو خلف جدار ناري" />
+		<control text="المضيفون الغير مستقرين" />
+		<control text="Restricted ملف" />
+		<control text="DRM ملف" />
+		<control text="الملفات الغير مطابقة" />
+		<control text="الملفات التي لديك مسبقا" />
+		<control text="النتائج المزيفة" />
+		<control text="وضع كإفتراضي" />
+		<control text="حفظ _باسم" />
+		<control text="الفرز:" />
 		<control />
-		<control caption="_حذف" />
-		<control caption="الملفات المشبوهة" />
-		<control caption="نتائج مواد البالغين" />
-		<control caption="فرز الآن" />
-		<control caption="إلغاء الأمر" />
+		<control text="_حذف" />
+		<control text="الملفات المشبوهة" />
+		<control text="نتائج مواد البالغين" />
+		<control text="فرز الآن" />
+		<control text="إلغاء الأمر" />
 	</dialog>
 	<dialog name="CSaveFilterAsDlg" cookie="EdBuBuSt" caption="حفظ المرشح باسم">
 		<control />
-		<control caption="حسنا" />
-		<control caption="إلغاء الأمر" />
-		<control caption="حفظ المرشح الحالي باسم" />
+		<control text="حسنا" />
+		<control text="إلغاء الأمر" />
+		<control text="حفظ المرشح الحالي باسم" />
 	</dialog>
 	<dialog name="CDiscoveryServiceDlg" cookie="BuEdStCoBuBu" caption="خدمة الإكتشاف">
-		<control caption=":عنوان ال_خدمة" />
+		<control text=":عنوان ال_خدمة" />
 		<control />
-		<control caption=": نوع خدمة الإكتشاف" />
-		<control caption="Gnutella Bootstrap|GWebCache|Server.met رابط|المحجوبة" />
-		<control caption="حسنا" />
-		<control caption="إلغاء الأمر" />
+		<control text=": نوع خدمة الإكتشاف" />
+		<control text="Gnutella Bootstrap|GWebCache|Server.met رابط|المحجوبة" />
+		<control text="حسنا" />
+		<control text="إلغاء الأمر" />
 	</dialog>
 	<dialog name="CDownloadMonitorDlg" cookie="StStStStStStStStStStStStBuBuBuBu" caption="تحميل">
-		<control caption="..." />
+		<control text="..." />
 		<control />
 		<control />
 		<control />
-		<control caption=":عدد المصادر" />
-		<control caption="..." />
-		<control caption=":السرعة الإجمالية للنقل" />
-		<control caption="..." />
-		<control caption=":الوقت المتبقي المقدر" />
-		<control caption="..." />
-		<control caption=":حجم التحميل" />
-		<control caption="..." />
-		<control caption="عرض المكتبة" />
-		<control caption="إلغاء التحميل" />
-		<control caption="اخفاء" />
-		<control caption="تلقائيا" />
+		<control text=":عدد المصادر" />
+		<control text="..." />
+		<control text=":السرعة الإجمالية للنقل" />
+		<control text="..." />
+		<control text=":الوقت المتبقي المقدر" />
+		<control text="..." />
+		<control text=":حجم التحميل" />
+		<control text="..." />
+		<control text="عرض المكتبة" />
+		<control text="إلغاء التحميل" />
+		<control text="اخفاء" />
+		<control text="تلقائيا" />
 	</dialog>
 	<dialog name="CFileGeneralPage" cookie="EdStStStStStEdEdEdEdEdStEdEdEdEd" caption="عام">
 		<control />
-		<control caption="خواص الملف" />
-		<control caption=":الموضع" />
-		<control caption=":النوع" />
-		<control caption=":التعديل" />
-		<control caption=":الحجم" />
+		<control text="خواص الملف" />
+		<control text=":الموضع" />
+		<control text=":النوع" />
+		<control text=":التعديل" />
+		<control text=":الحجم" />
 		<control />
 		<control />
 		<control />
 		<control />
 		<control />
-		<control caption="أسماء المصادر العالمية (URNs)" />
+		<control text="أسماء المصادر العالمية (URNs)" />
 		<control />
 		<control />
 		<control />
@@ -3626,304 +3628,304 @@
 		<control />
 	</dialog>
 	<dialog name="CFileCommentsPage" cookie="StStCoStEdEd" caption="معاينتي">
-		<control caption="معاينتي" />
-		<control caption=":تصنيفي لهذا الملف" />
-		<control caption="(بدون تصنيق)|زائف/تالف/محتال|سيئ|معتدل|جيد|جيد جدا|ممتاز" />
-		<control caption="معاينتي و تعليقاتي" />
+		<control text="معاينتي" />
+		<control text=":تصنيفي لهذا الملف" />
+		<control text="(بدون تصنيق)|زائف/تالف/محتال|سيئ|معتدل|جيد|جيد جدا|ممتاز" />
+		<control text="معاينتي و تعليقاتي" />
 		<control />
 		<control />
 	</dialog>
 	<dialog name="CFileSharingPage" cookie="EdStBuBuBuStCo" caption="مشاركة">
 		<control />
-		<control caption="مشاركة بسيطة" />
-		<control caption="وضع مشاركة على الملف اذا كان على المجلد الاصل عليه مشاركة" />
-		<control caption="تجاز وضع مشاركة على إعدادات هذا الملف:" />
-		<control caption="ضع هذا الملف متواجد للمستخدمين الاخرين" />
-		<control caption="بطاقة إختيار قائمة إنتظار الإرسال " />
+		<control text="مشاركة بسيطة" />
+		<control text="وضع مشاركة على الملف اذا كان على المجلد الاصل عليه مشاركة" />
+		<control text="تجاز وضع مشاركة على إعدادات هذا الملف:" />
+		<control text="ضع هذا الملف متواجد للمستخدمين الاخرين" />
+		<control text="بطاقة إختيار قائمة إنتظار الإرسال " />
 		<control />
 	</dialog>
 	<dialog name="CFileSourcesPage" cookie="StStEdSyBuBuEd" caption="المصادر">
-		<control caption="المصادر المعروفة" />
-		<control caption="إضافة مصدر جديد" />
+		<control text="المصادر المعروفة" />
+		<control text="إضافة مصدر جديد" />
 		<control />
 		<control />
-		<control caption="إ_ضافة" />
-		<control caption="إ_زالة" />
+		<control text="إ_ضافة" />
+		<control text="إ_زالة" />
 		<control />
 	</dialog>
 	<dialog name="CFileCopyDlg" cookie="StStStmsmsStBuBu" caption="نسخ الملفات|نقل الملفات">
-		<control caption="(Copy) : لقد قمت بتحديد %i ملف(ات) للنسخ إلى المجلد التالي" />
-		<control caption=": لقد قمت بتحديد %i ملف(ات) للنسخ إلى المجلد التالي" />
+		<control text="(Copy) : لقد قمت بتحديد %i ملف(ات) للنسخ إلى المجلد التالي" />
+		<control text=": لقد قمت بتحديد %i ملف(ات) للنسخ إلى المجلد التالي" />
 		<control />
 		<control />
 		<control />
-		<control caption="Ready..." />
-		<control caption="جاهز..." />
-		<control caption="إلغاء الأمر" />
+		<control text="Ready..." />
+		<control text="جاهز..." />
+		<control text="إلغاء الأمر" />
 	</dialog>
 	<dialog name="CFolderPropertiesDlg" cookie="StEdStCoBuStBuBu" caption="خصائص مجلد الألبوم">
-		<control caption="عنوان مجلد الألبوم:" />
+		<control text="عنوان مجلد الألبوم:" />
 		<control />
-		<control caption="نوع المجلد:" />
+		<control text="نوع المجلد:" />
 		<control />
-		<control caption="الكل" />
-		<control caption="انسخ هذه الملكيات المشتركة الى كل ملف في هذا المجلد" />
-		<control caption="حسنا" />
-		<control caption="إلغاء الأمر" />
+		<control text="الكل" />
+		<control text="انسخ هذه الملكيات المشتركة الى كل ملف في هذا المجلد" />
+		<control text="حسنا" />
+		<control text="إلغاء الأمر" />
 	</dialog>
 	<dialog name="CGraphListDlg" cookie="SyBuBuBuBuBuBuBuBuStEdmsStBuEdBuBu" caption="مخطط حركة المرور">
 		<control />
-		<control caption="_إضافة..." />
-		<control caption="_تحرير..." />
-		<control caption="_إزالة" />
-		<control caption=":إ_ظهار" />
-		<control caption="خطوط شبكة" />
-		<control caption="محاور رأسية" />
-		<control caption="إيضاح" />
-		<control caption=":تردد _أخذ العينات" />
-		<control caption=":الفترة بين العينات" />
+		<control text="_إضافة..." />
+		<control text="_تحرير..." />
+		<control text="_إزالة" />
+		<control text=":إ_ظهار" />
+		<control text="خطوط شبكة" />
+		<control text="محاور رأسية" />
+		<control text="إيضاح" />
+		<control text=":تردد _أخذ العينات" />
+		<control text=":الفترة بين العينات" />
 		<control />
 		<control />
-		<control caption="مث" />
-		<control caption=":ال_إسم" />
+		<control text="مث" />
+		<control text=":ال_إسم" />
 		<control />
-		<control caption="حسنا" />
-		<control caption="إلغاء الأمر" />
+		<control text="حسنا" />
+		<control text="إلغاء الأمر" />
 	</dialog>
 	<dialog name="CGraphItemDlg" cookie="BuBuBuCoStEdStEdBuBuStBu" caption="خصائص مادة المخطط">
-		<control caption="حسنا" />
-		<control caption="إلغاء الأمر" />
-		<control caption=":ال_مصادر" />
+		<control text="حسنا" />
+		<control text="إلغاء الأمر" />
+		<control text=":ال_مصادر" />
 		<control />
-		<control caption=":المعيار" />
+		<control text=":المعيار" />
 		<control />
-		<control caption=":الوحدات" />
+		<control text=":الوحدات" />
 		<control />
-		<control caption=":ال_عرض" />
-		<control caption="تحديد اللون..." />
+		<control text=":ال_عرض" />
+		<control text="تحديد اللون..." />
 		<control />
-		<control caption="_إزالة" />
+		<control text="_إزالة" />
 	</dialog>
 	<dialog name="CSecureRuleDlg" cookie="BuStCoStEdBuStEdEdEdEdStEdEdEdEdBuEdBuBuBuBuEdBuBuStCoStCoEdStEdStEdStBuBu" caption="قاعدة الأمان">
-		<control caption=":ال_قاعدة" />
-		<control caption=":النوع" />
-		<control caption=" عنوان الشبكة (IP)|تصفية المحتوى | قائمة ممنوعة" />
-		<control caption=":التعليق" />
+		<control text=":ال_قاعدة" />
+		<control text=":النوع" />
+		<control text=" عنوان الشبكة (IP)|تصفية المحتوى | قائمة ممنوعة" />
+		<control text=":التعليق" />
 		<control />
-		<control caption=":عنوان ال_شبكة" />
-		<control caption=":IP عنوان" />
-		<control />
-		<control />
-		<control />
-		<control />
-		<control caption=":قناع الشبكة" />
+		<control text=":عنوان ال_شبكة" />
+		<control text=":IP عنوان" />
 		<control />
 		<control />
 		<control />
 		<control />
-		<control caption=":مرشح ال_محتوى" />
+		<control text=":قناع الشبكة" />
 		<control />
-		<control caption="مطابقة" />
-		<control caption="مطابقة الكل" />
-		<control caption="Reg. Exp." />
-		<control caption="قائمة ممنوعة الملف:" />
 		<control />
-		<control caption="تصفح" />
-		<control caption="_:خيارات" />
-		<control caption=":الإجراء" />
-		<control caption="بدون|قبول|رفض" />
-		<control caption=":الإنتهاء" />
-		<control caption="(بدون (بغير تحديد|في نهاية الجلسة|: بعد" />
 		<control />
-		<control caption="ي" />
 		<control />
-		<control caption="س" />
+		<control text=":مرشح ال_محتوى" />
 		<control />
-		<control caption="د" />
-		<control caption="حسنا" />
-		<control caption="إلغاء الأمر" />
+		<control text="مطابقة" />
+		<control text="مطابقة الكل" />
+		<control text="Reg. Exp." />
+		<control text="قائمة ممنوعة الملف:" />
+		<control />
+		<control text="تصفح" />
+		<control text="_:خيارات" />
+		<control text=":الإجراء" />
+		<control text="بدون|قبول|رفض" />
+		<control text=":الإنتهاء" />
+		<control text="(بدون (بغير تحديد|في نهاية الجلسة|: بعد" />
+		<control />
+		<control text="ي" />
+		<control />
+		<control text="س" />
+		<control />
+		<control text="د" />
+		<control text="حسنا" />
+		<control text="إلغاء الأمر" />
 	</dialog>
 	<dialog name="CScheduleTaskDlg" cookie="BuBuBuCoEdmsEdmsStStBuBuBuBuBuSySyBuBuBuBuBuBuBuBuBuEd" caption="جدول الأحداث">
-		<control caption="حسنا" />
-		<control caption="إلغاء الأمر" />
-		<control caption="Select Task Type" />
+		<control text="حسنا" />
+		<control text="إلغاء الأمر" />
+		<control text="Select Task Type" />
 		<control />
 		<control />
 		<control />
 		<control />
 		<control />
-		<control caption="% of Download limit" />
-		<control caption="% of Upload limit" />
-		<control caption="Active Task" />
-		<control caption="Enable G2 Only" />
-		<control caption="Set Event Time" />
-		<control caption="Specified days" />
-		<control caption="One day only" />
+		<control text="% of Download limit" />
+		<control text="% of Upload limit" />
+		<control text="Active Task" />
+		<control text="Enable G2 Only" />
+		<control text="Set Event Time" />
+		<control text="Specified days" />
+		<control text="One day only" />
 		<control />
 		<control />
-		<control caption="إثنبن" />
-		<control caption="ثلاثاء" />
-		<control caption="أربعاء" />
-		<control caption="خميس" />
-		<control caption="جمعة" />
-		<control caption="سبت" />
-		<control caption="أحد" />
-		<control caption="جميع" />
-		<control caption="تلاحظ" />
+		<control text="إثنبن" />
+		<control text="ثلاثاء" />
+		<control text="أربعاء" />
+		<control text="خميس" />
+		<control text="جمعة" />
+		<control text="سبت" />
+		<control text="أحد" />
+		<control text="جميع" />
+		<control text="تلاحظ" />
 		<control />
 	</dialog>
 	<dialog name="CSchemaColumnsDlg" cookie="CoSyBuBuSt" caption="تحديد الأعمدة من المخطط">
 		<control />
 		<control />
-		<control caption="حسنا" />
-		<control caption="إلغاء الأمر" />
-		<control caption="قم بتحديد مخطط من القائمة ثم حدد الحقول لعرضها على شكل أعمدة" />
+		<control text="حسنا" />
+		<control text="إلغاء الأمر" />
+		<control text="قم بتحديد مخطط من القائمة ثم حدد الحقول لعرضها على شكل أعمدة" />
 	</dialog>
 	<dialog name="CShareManagerDlg" cookie="StSyBuBuBuBu" caption="إدارة مجلد المشاركة">
-		<control caption="هذه هي قائمة المجلدات في مكتبتك . يمكنك أن تضيف و أن تزيل المجلدات باستخدام الأزرار التي على اليسار . عندما تضيف أي مجلد جديد هو أصلا للمشاركة مع المستخدمين الآخرين ، يمكنك أن تزيله من مكتبة شير-أزا متى ما تريد" />
+		<control text="هذه هي قائمة المجلدات في مكتبتك . يمكنك أن تضيف و أن تزيل المجلدات باستخدام الأزرار التي على اليسار . عندما تضيف أي مجلد جديد هو أصلا للمشاركة مع المستخدمين الآخرين ، يمكنك أن تزيله من مكتبة شير-أزا متى ما تريد" />
 		<control />
-		<control caption="_إضافة..." />
-		<control caption="_إزالة" />
-		<control caption="حسنا" />
-		<control caption="إلغاء الأمر" />
+		<control text="_إضافة..." />
+		<control text="_إزالة" />
+		<control text="حسنا" />
+		<control text="إلغاء الأمر" />
 	</dialog>
 	<dialog name="CURLCopyDlg" cookie="StStStStStBuBu" caption="نسخ الرابط">
-		<control caption="You can copy a URI for the selected item in a variety of different formats. Please choose the format you wish to use by clicking one of the URIs below:" />
+		<control text="You can copy a URI for the selected item in a variety of different formats. Please choose the format you wish to use by clicking one of the URIs below:" />
 		<control />
 		<control />
 		<control />
 		<control />
-		<control caption="Include _myself as a fixed source in the URL" />
-		<control caption="إلغاء الأمر" />
+		<control text="Include _myself as a fixed source in the URL" />
+		<control text="إلغاء الأمر" />
 	</dialog>
 	<dialog name="CURLExportDlg" cookie="StEdStCoStCoBuBumsBu" caption="تصدير الروابط">
-		<control caption="You have selected %lu files to export as Envy-powered URI references. Please select the format for the URIs, and click Save:" />
+		<control text="You have selected %lu files to export as Envy-powered URI references. Please select the format for the URIs, and click Save:" />
 		<control />
-		<control caption="Insert Token:" />
-		<control caption="Tiger Root|SHA1|MD5|ED2K (CMD4)|Filename|Filename (URI)|Base Filename|File Extension|File Size|File Size (bytes)|Folder Path|Local Host|Local Port" />
-		<control caption="Select preset:" />
+		<control text="Insert Token:" />
+		<control text="Tiger Root|SHA1|MD5|ED2K (CMD4)|Filename|Filename (URI)|Base Filename|File Extension|File Size|File Size (bytes)|Folder Path|Local Host|Local Port" />
+		<control text="Select preset:" />
 		<control />
-		<control caption="إلغاء الأمر" />
-		<control caption="حفظ..." />
+		<control text="إلغاء الأمر" />
+		<control text="حفظ..." />
 		<control />
-		<control caption="إلغاء الأمر" />
+		<control text="إلغاء الأمر" />
 	</dialog>
 	<dialog name="CURLActionDlg" cookie="StStStStStStEdStEdStBuBuBuBuBu" caption="Envy URI Manager">
-		<control caption="You have clicked a Envy-powered URI that links to this content on the network:" />
-		<control caption="You have clicked a Envy-powered URL that will connect you to this host or server:" />
-		<control caption="You have clicked a Envy-powered URI that will allow you to browse the shared files available on the following host:" />
-		<control caption="You have clicked a Envy-powered URI that will add this Discovery Service to your Discovery Services cache." />
+		<control text="You have clicked a Envy-powered URI that links to this content on the network:" />
+		<control text="You have clicked a Envy-powered URL that will connect you to this host or server:" />
+		<control text="You have clicked a Envy-powered URI that will allow you to browse the shared files available on the following host:" />
+		<control text="You have clicked a Envy-powered URI that will add this Discovery Service to your Discovery Services cache." />
 		<control />
 		<control />
 		<control />
 		<control />
-		<control caption="Select the action you would like to take:" />
-		<control caption="_تحميل الان" />
-		<control caption="_البحث عن ملف" />
-		<control caption="إلغاء الأمر" />
-		<control caption="_تذكر اختياري في المرة القادمة" />
-		<control caption="شاشة التحميل _افتح نافذة " />
+		<control text="Select the action you would like to take:" />
+		<control text="_تحميل الان" />
+		<control text="_البحث عن ملف" />
+		<control text="إلغاء الأمر" />
+		<control text="_تذكر اختياري في المرة القادمة" />
+		<control text="شاشة التحميل _افتح نافذة " />
 	</dialog>
 	<dialog name="CBitprintsDownloadDlg" cookie="StStmsBuSySt" caption="Downloading Metadata...">
 		<control />
-		<control caption="Envy is attempting to download metadata from Bitprints..." />
+		<control text="Envy is attempting to download metadata from Bitprints..." />
 		<control />
-		<control caption="إلغاء الأمر" />
+		<control text="إلغاء الأمر" />
 		<control />
-		<control caption="bitprints.getenvy.com" />
+		<control text="bitprints.getenvy.com" />
 	</dialog>
 	<dialog name="CFilePreviewDlg" cookie="StStStmsStBu" caption="Smart Download Preview...">
 		<control />
-		<control caption="Envy is creating a preview of the download:" />
+		<control text="Envy is creating a preview of the download:" />
 		<control />
 		<control />
-		<control caption="(copying downloaded chunks to a new preview file)" />
-		<control caption="إلغاء الأمر" />
+		<control text="(copying downloaded chunks to a new preview file)" />
+		<control text="إلغاء الأمر" />
 	</dialog>
 	<dialog name="CWarningsDlg" cookie="StStStStStStBu" caption="Envy Respects its Users">
-		<control caption="Did you know Envy is a 100% free product?" />
-		<control caption="Envy does NOT contain ANY &quot;spyware&quot;, &quot;adware&quot; or other bundled software. It does NOT display any advertisements or &quot;popups&quot;, ever.{n}{n}If you ever see advertising or &quot;popups&quot; while using Envy, be assured that they are NOT coming from this program." />
-		<control caption="Unfortunately a lot of other software does come with undesirable adware or spyware, so if you see something suspicious you may wish to check your PC with an advertising or spyware removal program." />
-		<control caption="You should not have had to pay any money to obtain Envy. Envy can be freely downloaded by anyone from http://getenvy.com. If you paid someone money for Envy, you should demand a full refund immediately." />
-		<control caption="Envy respects its users." />
-		<control caption="http://getenvy.com" />
-		<control caption="إغلاق" />
+		<control text="Did you know Envy is a 100% free product?" />
+		<control text="Envy does NOT contain ANY &quot;spyware&quot;, &quot;adware&quot; or other bundled software. It does NOT display any advertisements or &quot;popups&quot;, ever.{n}{n}If you ever see advertising or &quot;popups&quot; while using Envy, be assured that they are NOT coming from this program." />
+		<control text="Unfortunately a lot of other software does come with undesirable adware or spyware, so if you see something suspicious you may wish to check your PC with an advertising or spyware removal program." />
+		<control text="You should not have had to pay any money to obtain Envy. Envy can be freely downloaded by anyone from http://getenvy.com. If you paid someone money for Envy, you should demand a full refund immediately." />
+		<control text="Envy respects its users." />
+		<control text="http://getenvy.com" />
+		<control text="إغلاق" />
 	</dialog>
 	<dialog name="CPromoteDlg" cookie="StStStStStStBu" caption="Spread the Word">
-		<control caption="Help Us Spread the Word" />
-		<control caption="We hope you have enjoyed using Envy so far. We believe it is the best file sharing application around." />
-		<control caption="Unfortunately, a lot of file sharers don't know what they're missing." />
-		<control caption="If you know someone who would like Envy, whether they're a new user or someone still putting up with an inferior product, why not let them know there is a better alternative?" />
-		<control caption="Chances are they'll be grateful you told them." />
-		<control caption="http://getenvy.com" />
-		<control caption="حسنا" />
+		<control text="Help Us Spread the Word" />
+		<control text="We hope you have enjoyed using Envy so far. We believe it is the best file sharing application around." />
+		<control text="Unfortunately, a lot of file sharers don't know what they're missing." />
+		<control text="If you know someone who would like Envy, whether they're a new user or someone still putting up with an inferior product, why not let them know there is a better alternative?" />
+		<control text="Chances are they'll be grateful you told them." />
+		<control text="http://getenvy.com" />
+		<control text="حسنا" />
 	</dialog>
 	<dialog name="CExistingFileDlg" cookie="StStStStBuBuBuBuBuStSt" caption="Existing File">
 		<control />
 		<control />
 		<control />
-		<control caption="You already have this file in your file library. What would you like to do?" />
-		<control caption="Show me the file in my library" />
-		<control caption="Download the file again" />
-		<control caption="Don't download this file" />
-		<control caption="حسنا" />
-		<control caption="إلغاء الأمر" />
-		<control caption="You have downloaded and deleted this file before. What would you like to do?" />
-		<control caption="Warning: Duplicate files detected. Some malicious software may infect your Library. Make sure that you downloaded this file or placed it manually. Otherwise, shutdown Envy and scan your computer with an antivirus program." />
+		<control text="You already have this file in your file library. What would you like to do?" />
+		<control text="Show me the file in my library" />
+		<control text="Download the file again" />
+		<control text="Don't download this file" />
+		<control text="حسنا" />
+		<control text="إلغاء الأمر" />
+		<control text="You have downloaded and deleted this file before. What would you like to do?" />
+		<control text="Warning: Duplicate files detected. Some malicious software may infect your Library. Make sure that you downloaded this file or placed it manually. Otherwise, shutdown Envy and scan your computer with an antivirus program." />
 	</dialog>
 	<dialog name="CCloseModeDlg" cookie="StBuBuBuBuBuBu" caption="زر الإغلاق">
-		<control caption="هذه اول مره تضغط على زر الإغلاق . رجاء تحديد ماذا تريد انت تعمل لكي يتم تطبيقه على جميع الاحوال:" />
-		<control caption="تصغير البرنامج في الاسفل مع امكانية استرجاعه" />
-		<control caption="تصغير البرنامج في الاسفل مع امكانية استرجاعه" />
-		<control caption="بعد الإنتهاء من تحميل الملفات او الإنتهاء من رفع الملفات  إيقاف " />
-		<control caption="حالاً Envy إيقاف تشغيل " />
-		<control caption="حسنا" />
-		<control caption="إلغاء الأمر" />
+		<control text="هذه اول مره تضغط على زر الإغلاق . رجاء تحديد ماذا تريد انت تعمل لكي يتم تطبيقه على جميع الاحوال:" />
+		<control text="تصغير البرنامج في الاسفل مع امكانية استرجاعه" />
+		<control text="تصغير البرنامج في الاسفل مع امكانية استرجاعه" />
+		<control text="بعد الإنتهاء من تحميل الملفات او الإنتهاء من رفع الملفات  إيقاف " />
+		<control text="حالاً Envy إيقاف تشغيل " />
+		<control text="حسنا" />
+		<control text="إلغاء الأمر" />
 	</dialog>
 	<dialog name="CUpdateServersDlg" cookie="StEdmsBuBu" caption=" Server.met تحميل ملف">
-		<control caption="You can download a file from the web to refresh your local list of servers.{n}Such as eDonkey server.met, DC++ hublist.xml.bz2, etc." />
+		<control text="You can download a file from the web to refresh your local list of servers.{n}Such as eDonkey server.met, DC++ hublist.xml.bz2, etc." />
 		<control />
 		<control />
-		<control caption="حسنا" />
-		<control caption="إلغاء الأمر" />
+		<control text="حسنا" />
+		<control text="إلغاء الأمر" />
 	</dialog>
 	<dialog name="CDeleteFileDlg" cookie="StStBuBuBuStBuStStStStCoCoEd" caption="حذف ملف">
-		<control caption="أنت متأكّد بأنك تريد الحذف:" />
+		<control text="أنت متأكّد بأنك تريد الحذف:" />
 		<control />
-		<control caption="حذف" />
-		<control caption="حذف الكل" />
-		<control caption="إلغاء الأمر" />
+		<control text="حذف" />
+		<control text="حذف الكل" />
+		<control text="إلغاء الأمر" />
 		<control />
-		<control caption="Create a ghost file" />
-		<control caption="يمكن للاشيرازا ان يتذكر هذا الملف ويحذرك اذا صادفة في البحث مرة اخرى . رجاء تحديد سبب لحذف هذا الملف:" />
-		<control caption="هذا الملف من النوعية الرديئة جدا." />
-		<control caption="لا اريد إضافة اي تعليق." />
-		<control caption="!" />
-		<control caption="(No Rating)|Fake/Corrupt/Misleading|Poor|Average|Good|Very Good|Excellent" />
-		<control caption="Just deleting, keep any current comments|File is very low quality or outdated|File is named incorrectly or misleading|File is fake, infected, corrupt, or unusable|File is restricted copyright material|File needs custom comments below..." />
+		<control text="Create a ghost file" />
+		<control text="يمكن للاشيرازا ان يتذكر هذا الملف ويحذرك اذا صادفة في البحث مرة اخرى . رجاء تحديد سبب لحذف هذا الملف:" />
+		<control text="هذا الملف من النوعية الرديئة جدا." />
+		<control text="لا اريد إضافة اي تعليق." />
+		<control text="!" />
+		<control text="(No Rating)|Fake/Corrupt/Misleading|Poor|Average|Good|Very Good|Excellent" />
+		<control text="Just deleting, keep any current comments|File is very low quality or outdated|File is named incorrectly or misleading|File is fake, infected, corrupt, or unusable|File is restricted copyright material|File needs custom comments below..." />
 		<control />
 		<control />
 	</dialog>
 	<dialog name="CCollectionExportDlg" cookie="StSyBuStStStStStEdBuBuBu" caption="Collection Export">
-		<control caption="This feature is used to export the contents of a folder or playlist as a rich collection file. Please select a template and press Next to continue.|Customize your collection by entering data below." />
+		<control text="This feature is used to export the contents of a folder or playlist as a rich collection file. Please select a template and press Next to continue.|Customize your collection by entering data below." />
 		<control />
-		<control caption="Template Information:" />
-		<control caption="Name:" />
-		<control caption="..." />
-		<control caption="Author:" />
-		<control caption="..." />
-		<control caption="Description:" />
+		<control text="Template Information:" />
+		<control text="Name:" />
+		<control text="..." />
+		<control text="Author:" />
+		<control text="..." />
+		<control text="Description:" />
 		<control />
-		<control caption="حذف|_Back" />
-		<control caption="_Next|Export..." />
-		<control caption="_إلغاء الأمر" />
+		<control text="حذف|_Back" />
+		<control text="_Next|Export..." />
+		<control text="_إلغاء الأمر" />
 	</dialog>
 	<dialog name="CTorrentSeedDlg" cookie="StBuBuBuStms" caption=" فتح ملف Torrent">
-		<control caption="You have opened a BitTorrent torrent file. Would you like to download its contents, or re-seed it?" />
-		<control caption="Download" />
-		<control caption="Seed" />
-		<control caption="إلغاء الأمر" />
-		<control caption="To share complete files using BitTorrent they must first be seeded. Once this process is complete the Torrent will appear as a new item in your download list." />
+		<control text="You have opened a BitTorrent torrent file. Would you like to download its contents, or re-seed it?" />
+		<control text="Download" />
+		<control text="Seed" />
+		<control text="إلغاء الأمر" />
+		<control text="To share complete files using BitTorrent they must first be seeded. Once this process is complete the Torrent will appear as a new item in your download list." />
 		<control />
 	</dialog>
 	<dialog name="CTorrentFilesPage" cookie="StSy" caption="ملفات">
@@ -3935,80 +3937,80 @@
 		<control />
 		<control />
 		<control />
-		<control caption="Tracker:" />
-		<control caption="_Current Tracker:" />
-		<control caption="Seeds (Complete):" />
-		<control caption="Peers (Incomplete):" />
-		<control caption="Tracker Mode:" />
-		<control caption="Disabled|Custom|Single Tracker|Multi-tracker|Multi-tracker (locked)" />
-		<control caption="ت_حديث" />
-		<control caption="إ_ضافة" />
-		<control caption="إ_زالة" />
+		<control text="Tracker:" />
+		<control text="_Current Tracker:" />
+		<control text="Seeds (Complete):" />
+		<control text="Peers (Incomplete):" />
+		<control text="Tracker Mode:" />
+		<control text="Disabled|Custom|Single Tracker|Multi-tracker|Multi-tracker (locked)" />
+		<control text="ت_حديث" />
+		<control text="إ_ضافة" />
+		<control text="إ_زالة" />
 	</dialog>
 	<!-- Missing Dialogs "CTorrentGeneralPage" "CDownloadEditPage" "CDownloadActionsPage"-->
 	<dialog name="CDownloadGroupDlg" cookie="BuEdBuEdBuBuBuCoBuBuBuCoStBuBu" caption="Download Group Properties">
-		<control caption="_Group Name:" />
+		<control text="_Group Name:" />
 		<control />
-		<control caption="_Completed File Folder:" />
+		<control text="_Completed File Folder:" />
 		<control />
 		<control />
 		<control />
-		<control caption="_Auto-Filters:" />
+		<control text="_Auto-Filters:" />
 		<control />
-		<control caption="إ_ضافة" />
-		<control caption="إ_زالة" />
-		<control caption="_Types of Files:" />
+		<control text="إ_ضافة" />
+		<control text="إ_زالة" />
+		<control text="_Types of Files:" />
 		<control />
-		<control caption="*Add any download type later." />
-		<control caption="حسنا" />
-		<control caption="إلغاء الأمر" />
+		<control text="*Add any download type later." />
+		<control text="حسنا" />
+		<control text="إلغاء الأمر" />
 	</dialog>
 	<dialog name="CMediaVisDlg" cookie="BuSyCoBuBuBu" caption="Select Visualisation">
-		<control caption="Select an audio visualisation from the list:" />
+		<control text="Select an audio visualisation from the list:" />
 		<control />
-		<control caption="Footer Display|Full Size Display|Large Display|Medium Display|Small Display" />
-		<control caption="_Setup..." />
-		<control caption="حسنا" />
-		<control caption="إلغاء الأمر" />
+		<control text="Footer Display|Full Size Display|Large Display|Medium Display|Small Display" />
+		<control text="_Setup..." />
+		<control text="حسنا" />
+		<control text="إلغاء الأمر" />
 	</dialog>
 	<dialog name="CUpgradeDlg" cookie="StStBuBuBu" caption="New Version Available">
-		<control caption="A new version of Envy is now available. Would you like to upgrade?" />
-		<control caption="To update now, the upgrade installer will simply be added to your download queue." />
-		<control caption="Don't check for new versions" />
-		<control caption="_رفع الملفات الان" />
-		<control caption="إلغاء الأمر" />
+		<control text="A new version of Envy is now available. Would you like to upgrade?" />
+		<control text="To update now, the upgrade installer will simply be added to your download queue." />
+		<control text="Don't check for new versions" />
+		<control text="_رفع الملفات الان" />
+		<control text="إلغاء الأمر" />
 	</dialog>
 	<dialog name="CDecodeMetadataDlg" cookie="StCoBuBuBuStStBuBu" caption="Metadata Localisation">
-		<control caption="Please select the method of re-encoding:" />
-		<control caption="Arabic|Baltic|Central European|Chinese simplified|Chinese traditional|Cyrillic|Greek|Hebrew|Japanese|Korean|Thai|Turkish|Vietnamese" />
-		<control caption="Preview:" />
+		<control text="Please select the method of re-encoding:" />
+		<control text="Arabic|Baltic|Central European|Chinese simplified|Chinese traditional|Cyrillic|Greek|Hebrew|Japanese|Korean|Thai|Turkish|Vietnamese" />
+		<control text="Preview:" />
 		<control />
 		<control />
 		<control />
 		<control />
-		<control caption="حسنا" />
-		<control caption="إلغاء الأمر" />
+		<control text="حسنا" />
+		<control text="إلغاء الأمر" />
 	</dialog>
 	<dialog name="CSelectDialog" cookie="StCoBuBu" caption="Selection">
-		<control caption="Select File:" />
+		<control text="Select File:" />
 		<control />
-		<control caption="حسنا" />
-		<control caption="إلغاء الأمر" />
+		<control text="حسنا" />
+		<control text="إلغاء الأمر" />
 		<control />
 	</dialog>
 	<dialog name="CIrcInputDlg" cookie="EdBuBuSt" caption="Channel Name|Reason Why">
 		<control />
-		<control caption="حسنا" />
-		<control caption="إلغاء الأمر" />
-		<control caption="Add a channel name:|Enter kick/ban reason:" />
+		<control text="حسنا" />
+		<control text="إلغاء الأمر" />
+		<control text="Add a channel name:|Enter kick/ban reason:" />
 	</dialog>
 	<dialog name="CDownloadReviewDlg" cookie="BuSyEd" caption="Download Reviews">
-		<control caption="حسنا" />
+		<control text="حسنا" />
 		<control />
 		<control />
 	</dialog>
 	<dialog name="CHelpDlg" cookie="BuAf" caption="Envy تعليمات">
-		<control caption="إغلاق" />
+		<control text="إغلاق" />
 		<control />
 	</dialog>
 </dialogs>

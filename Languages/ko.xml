@@ -3,7 +3,7 @@
 
 <!-- Envy Korean Language Skin File -->
 
-<!-- Translation based on default en.xml r4 --> <!--Machine Translated!-->
+<!-- Translation based on default en.xml r8 --> <!--Machine Translated!-->
 <!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -1923,914 +1923,916 @@
 <!-- No ControlTips -->
 <!-- Localized Strings -->
 <strings>
-	<string id="WINDOW_MAIN" value="Envy"/>
-	<string id="WINDOW_HOME" value="Envy 홈"/>
-	<string id="WINDOW_SYSTEM" value="시스템"/>
-	<string id="WINDOW_NEIGHBOURS" value="이웃"/>
-	<string id="WINDOW_PACKET" value="패킷 덤프"/>
-	<string id="WINDOW_HOSTCACHE" value="호스트 캐시"/>
-	<string id="WINDOW_SEARCH" value="검색"/>
-	<string id="WINDOW_SEARCHPAD" value="검색"/>
-	<string id="WINDOW_SEARCHMONITOR" value="검색 모니터"/>
-	<string id="WINDOW_HITMONITOR" value="히트 모니"/>
-	<string id="WINDOW_DOWNLOADS" value="다운로드"/>
-	<string id="WINDOW_UPLOADS" value="업로드"/>
-	<string id="WINDOW_LIBRARY" value="도서관"/>
-	<string id="WINDOW_TRAFFIC" value="그래프"/>
-	<string id="WINDOW_CHAT" value="채팅"/>
-	<string id="WINDOW_SECURITY" value="보안"/>
-	<string id="WINDOW_SCHEDULER" value="스케줄러"/>
-	<string id="WINDOW_DISCOVERY" value="디스커버리 서비스"/>
-	<string id="WINDOW_BROWSEHOST" value="찾아보기"/>
-	<string id="WINDOW_MEDIA" value="미디어 플레이"/>
-	<!--string id="WINDOW_HELP" value="Envy 도움말"-->
-	<string id="WINDOW_IRC" value="IRC 채팅"/>
-	<string id="20001" value="예"/>
-	<string id="20002" value="아니오"/>
-	<string id="20003" value="확인"/>
-	<string id="20004" value="취소"/>
-	<string id="20005" value="위로"/>
-	<string id="20006" value="다음"/>
-	<string id="20007" value="계속"/>
-	<string id="20008" value="닫기"/>
-	<string id="20009" value="of"/> <!--"1 of 10"-->
-	<string id="20010" value="All"/>
-	<string id="20011" value="자동"/>
-	<string id="20012" value="사용자 지정"/>
-	<string id="20013" value="기본"/>
-	<string id="20014" value="마침"/>
-	<string id="20015" value="무시"/>
-	<string id="20016" value="다시 시도"/>
-	<string id="20017" value="을 중단하라"/>
-	<string id="20018" value="다시 시도"/>
-	<string id="20019" value="Please Wait..."/>
-	<string id="20020" value="파일"/>
-	<string id="20021" value="파일"/>
-	<string id="20022" value="모든 파일"/>
-	<string id="20023" value="No Files"/>
-	<string id="20024" value="Large 파일"/>
-	<string id="20025" value="Medium 파일"/>
-	<string id="20026" value="Small 파일"/>
-	<string id="20027" value="부분 파일"/>
-	<string id="20028" value="Library 파일"/>
-	<string id="20029" value="%s 파일"/>
-	<string id="20050" value="매일"/>
-	<string id="20051" value="월요일"/>
-	<string id="20052" value="화요일"/>
-	<string id="20053" value="수요일"/>
-	<string id="20054" value="목요일"/>
-	<string id="20055" value="금요일"/>
-	<string id="20056" value="토요일"/>
-	<string id="20057" value="일요일"/>
-	<string id="20060" value="(상세 평가)"/>
-	<string id="20061" value="가짜 / 부패해"/>
-	<string id="20062" value="불쌍한"/>
-	<string id="20063" value="에 관한"/>
-	<string id="20064" value="안녕"/>
-	<string id="20065" value="아주 좋은"/>
-	<string id="20066" value="아주좋음"/>
-	<string id="20080" value="This is a pre-release version of Envy, and the beta testing period has ended. Please download the full, official release from http://getenvy.com."/>
-	<string id="20081" value="닫기"/>
+	<string id="WINDOW_MAIN" text="Envy"/>
+	<string id="WINDOW_HOME" text="Envy 홈"/>
+	<string id="WINDOW_SYSTEM" text="시스템"/>
+	<string id="WINDOW_NEIGHBOURS" text="이웃"/>
+	<string id="WINDOW_PACKET" text="패킷 덤프"/>
+	<string id="WINDOW_HOSTCACHE" text="호스트 캐시"/>
+	<string id="WINDOW_SEARCH" text="검색"/>
+	<string id="WINDOW_SEARCHPAD" text="검색"/>
+	<string id="WINDOW_SEARCHMONITOR" text="검색 모니터"/>
+	<string id="WINDOW_HITMONITOR" text="히트 모니"/>
+	<string id="WINDOW_DOWNLOADS" text="다운로드"/>
+	<string id="WINDOW_UPLOADS" text="업로드"/>
+	<string id="WINDOW_LIBRARY" text="도서관"/>
+	<string id="WINDOW_TRAFFIC" text="그래프"/>
+	<string id="WINDOW_CHAT" text="채팅"/>
+	<string id="WINDOW_SECURITY" text="보안"/>
+	<string id="WINDOW_SCHEDULER" text="스케줄러"/>
+	<string id="WINDOW_DISCOVERY" text="디스커버리 서비스"/>
+	<string id="WINDOW_BROWSEHOST" text="찾아보기"/>
+	<string id="WINDOW_MEDIA" text="미디어 플레이"/>
+	<!--string id="WINDOW_HELP" text="Envy 도움말"-->
+	<string id="WINDOW_IRC" text="IRC 채팅"/>
+	<string id="20001" text="예"/>
+	<string id="20002" text="아니오"/>
+	<string id="20003" text="확인"/>
+	<string id="20004" text="취소"/>
+	<string id="20005" text="위로"/>
+	<string id="20006" text="다음"/>
+	<string id="20007" text="계속"/>
+	<string id="20008" text="닫기"/>
+	<string id="20009" text="of"/> <!--"1 of 10"-->
+	<string id="20010" text="All"/>
+	<string id="20011" text="자동"/>
+	<string id="20012" text="사용자 지정"/>
+	<string id="20013" text="기본"/>
+	<string id="20014" text="마침"/>
+	<string id="20015" text="무시"/>
+	<string id="20016" text="다시 시도"/>
+	<string id="20017" text="을 중단하라"/>
+	<string id="20018" text="다시 시도"/>
+	<string id="20019" text="Please Wait..."/>
+	<string id="20020" text="파일"/>
+	<string id="20021" text="파일"/>
+	<string id="20022" text="모든 파일"/>
+	<string id="20023" text="No Files"/>
+	<string id="20024" text="Large 파일"/>
+	<string id="20025" text="Medium 파일"/>
+	<string id="20026" text="Small 파일"/>
+	<string id="20027" text="부분 파일"/>
+	<string id="20028" text="Library 파일"/>
+	<string id="20029" text="%s 파일"/>
+	<string id="20050" text="매일"/>
+	<string id="20051" text="월요일"/>
+	<string id="20052" text="화요일"/>
+	<string id="20053" text="수요일"/>
+	<string id="20054" text="목요일"/>
+	<string id="20055" text="금요일"/>
+	<string id="20056" text="토요일"/>
+	<string id="20057" text="일요일"/>
+	<string id="20060" text="(상세 평가)"/>
+	<string id="20061" text="가짜 / 부패해"/>
+	<string id="20062" text="불쌍한"/>
+	<string id="20063" text="에 관한"/>
+	<string id="20064" text="안녕"/>
+	<string id="20065" text="아주 좋은"/>
+	<string id="20066" text="아주좋음"/>
+	<string id="20080" text="This is a pre-release version of Envy, and the beta testing period has ended. Please download the full, official release from http://getenvy.com."/>
+	<string id="20081" text="닫기"/>
 	<!-- Missing Browse Strings -->
 	<!-- Missing BitTorrent Strings -->
-	<string id="20163" value="연결이 닫혔습니다."/>
-	<string id="20170" value="이 길을 잃었다고 연결 채팅."/>
+	<string id="20163" text="연결이 닫혔습니다."/>
+	<string id="20170" text="이 길을 잃었다고 연결 채팅."/>
 	<!-- Missing Connection Strings -->
-	<string id="20185" value="인증된 사용자"/>
-	<string id="20199" value="(전송 후 종료)"/>
+	<string id="20185" text="인증된 사용자"/>
+	<string id="20199" text="(전송 후 종료)"/>
 	<!-- Missing File Strings -->
-	<string id="20250" value="끌어 다 놓으십시오 %s 그룹에 파일을"/>
-	<string id="20251" value="기본 그룹을 다운로드하십시오. (모두보기 파일)"/>
-	<string id="20252" value="새 그룹"/>
+	<string id="20250" text="끌어 다 놓으십시오 %s 그룹에 파일을"/>
+	<string id="20251" text="기본 그룹을 다운로드하십시오. (모두보기 파일)"/>
+	<string id="20252" text="새 그룹"/>
 	<!-- Missing Hash Strings -->
-	<string id="20260" value="다운로드 등록"/>
+	<string id="20260" text="다운로드 등록"/>
 	<!-- Missing Connection Strings -->
-	<!--string id="20400" value="Envy is creating hashes for %Iu files:"-->
-	<string id="20401" value="나의 선택을 다음 번에 기억"/>
-	<string id="20402" value="추가"/>
-	<string id="20403" value="채"/>
-	<string id="20404" value="채팅:"/>
-	<string id="20405" value="Please respect others while using this service. Press Connect below to start."/>
-	<string id="20406" value="Welcome to the Envy IRC Chatrooms"/>
-	<string id="20407" value="제"/>
-	<string id="20408" value="사용자"/>
-	<string id="20410" value="Exploring Your Envy Library"/>
-	<string id="20411" value="탐방"/>
-	<string id="20412" value="Exploring the contents of %i folders"/>
-	<string id="20413" value="%i files selected"/>
-	<string id="20414" value="여러 폴더"/>
-	<string id="20415" value="파일을 선택하는"/>
-	<string id="20416" value="이 파일 평가"/>
-	<string id="20417" value="최근 추가"/>
-	<string id="20418" value="앨범"/>
-	<string id="20419" value="아티스트"/>
-	<string id="20420" value="비트 레이트"/>
-	<string id="20421" value="길"/>
-	<string id="20422" value="평가"/>
-	<string id="20423" value="타이틀"/>
-	<string id="20424" value="#"/> <!-- Track number -->
+	<!--string id="20400" text="Envy is creating hashes for %Iu files:"-->
+	<string id="20401" text="나의 선택을 다음 번에 기억"/>
+	<string id="20402" text="추가"/>
+	<string id="20403" text="채"/>
+	<string id="20404" text="채팅:"/>
+	<string id="20405" text="Please respect others while using this service. Press Connect below to start."/>
+	<string id="20406" text="Welcome to the Envy IRC Chatrooms"/>
+	<string id="20407" text="제"/>
+	<string id="20408" text="사용자"/>
+	<string id="20410" text="Exploring Your Envy Library"/>
+	<string id="20411" text="탐방"/>
+	<string id="20412" text="Exploring the contents of %i folders"/>
+	<string id="20413" text="%i files selected"/>
+	<string id="20414" text="여러 폴더"/>
+	<string id="20415" text="파일을 선택하는"/>
+	<string id="20416" text="이 파일 평가"/>
+	<string id="20417" text="최근 추가"/>
+	<string id="20418" text="앨범"/>
+	<string id="20419" text="아티스트"/>
+	<string id="20420" text="비트 레이트"/>
+	<string id="20421" text="길"/>
+	<string id="20422" text="평가"/>
+	<string id="20423" text="타이틀"/>
+	<string id="20424" text="#"/> <!-- Track number -->
 	<!-- Missing Library Strings -->
-	<string id="20436" value="도서관에이 폴더를 추가?\n\n%s"/>
-	<string id="20437" value="Ghost File"/>
-	<string id="20443" value="모두보기 파일 형식"/>
-	<string id="20444" value="Get P2P Link (URI)"/>
-	<string id="20445" value="Export P2P Links..."/>
-	<string id="20446" value="The file &quot;%s&quot; failed a hash verification test, and might not be the file you intended to download. Are you sure you want to open it?"/>
-	<string id="20447" value="Would you like to remove the &quot;potentially unsafe&quot; attribute from this file?"/>
-	<string id="20448" value="공공"/> 	<!--Shared-->
-	<string id="20449" value="개인"/> 	<!--Unshared-->
-	<string id="20450" value="A subfolder of the selected folder &quot;%s&quot; is already part of your library.nAdding this folder will cause re-hashing of some files.\n\nDo you want to continue ?"/>
-	<string id="20451" value="아니 파일을 재생합니다. 미디어를 클릭하여 라이브러리에서 파일을 재생할 수있습니다."/>
+	<string id="20436" text="도서관에이 폴더를 추가?\n\n%s"/>
+	<string id="20437" text="Ghost File"/>
+	<string id="20443" text="모두보기 파일 형식"/>
+	<string id="20444" text="Get P2P Link (URI)"/>
+	<string id="20445" text="Export P2P Links..."/>
+	<string id="20446" text="The file &quot;%s&quot; failed a hash verification test, and might not be the file you intended to download. Are you sure you want to open it?"/>
+	<string id="20447" text="Would you like to remove the &quot;potentially unsafe&quot; attribute from this file?"/>
+	<string id="20448" text="공공"/> 	<!--Shared-->
+	<string id="20449" text="개인"/> 	<!--Unshared-->
+	<string id="20450" text="A subfolder of the selected folder &quot;%s&quot; is already part of your library.nAdding this folder will cause re-hashing of some files.\n\nDo you want to continue ?"/>
+	<string id="20451" text="아니 파일을 재생합니다. 미디어를 클릭하여 라이브러리에서 파일을 재생할 수있습니다."/>
 	<!-- Missing Media Strings -->
-	<string id="20456" value="재생 목록:"/>
-	<string id="20458" value="Envy Media Player"/>
-	<string id="20460" value="ENVY 미디어 시스템"/>
-	<string id="20462" value="(No Visualisation)"/>
-	<string id="20470" value="취소"/>
-	<string id="20471" value="열린"/>
-	<string id="20472" value="수료"/>
-	<string id="20473" value="예상 남은 시간:"/>
-	<string id="20474" value="번호 리뷰:"/>
-	<string id="20475" value="번호 소스의:"/>
-	<string id="20476" value="아니 소스"/>
-	<string id="20477" value="%i 일 %i 시간"/>
-	<string id="20478" value="%i 시간 %i 분"/>
-	<string id="20479" value="%i 분 %i 초"/>
-	<string id="20480" value="%i 초"/>
-	<string id="20481" value="총 전송 속도:"/>
-	<string id="20482" value="볼륨 다운로드:"/>
-	<string id="20483" value="볼륨 업로드:"/>
-	<string id="20484" value="다운로드 속도 제한"/>
-	<string id="20485" value="업로드 속도 제한"/>
+	<string id="20456" text="재생 목록:"/>
+	<string id="20458" text="Envy Media Player"/>
+	<string id="20460" text="ENVY 미디어 시스템"/>
+	<string id="20462" text="(No Visualisation)"/>
+	<string id="20470" text="취소"/>
+	<string id="20471" text="열린"/>
+	<string id="20472" text="수료"/>
+	<string id="20473" text="예상 남은 시간:"/>
+	<string id="20474" text="번호 리뷰:"/>
+	<string id="20475" text="번호 소스의:"/>
+	<string id="20476" text="아니 소스"/>
+	<string id="20477" text="%i 일 %i 시간"/>
+	<string id="20478" text="%i 시간 %i 분"/>
+	<string id="20479" text="%i 분 %i 초"/>
+	<string id="20480" text="%i 초"/>
+	<string id="20481" text="총 전송 속도:"/>
+	<string id="20482" text="볼륨 다운로드:"/>
+	<string id="20483" text="볼륨 업로드:"/>
+	<string id="20484" text="다운로드 속도 제한"/>
+	<string id="20485" text="업로드 속도 제한"/>
 	<!-- Missing Profile Strings -->
-	<string id="20499" value="새 폴더"/>
+	<string id="20499" text="새 폴더"/>
 	<!-- Missing Network Strings -->
-	<string id="20540" value="연결"/>
-	<string id="20541" value="연결 중..."/>
-	<string id="20542" value="연결"/>
-	<string id="20543" value="연결 끊기"/>
+	<string id="20540" text="연결"/>
+	<string id="20541" text="연결 중..."/>
+	<string id="20542" text="연결"/>
+	<string id="20543" text="연결 끊기"/>
 	<!-- Missing Security Strings -->
 	<!-- Missing Scheduler Strings -->
-	<string id="20620" value="Envy 적극적으로 네트워크를 찾고있습니다..."/>
-	<string id="20621" value="여기를 클릭하여 다시 검색을"/>
-	<string id="20622" value="All 네트워크"/>
-	<string id="20623" value="You are about to start a new search. Would you like to clear the results of your previous search?"/>
-	<string id="20624" value="이 영역은 선택한 파일에 대한 자세한 정보를 보여줍니다."/>
-	<string id="20625" value="%s writes:"/>
-	<string id="20626" value="%s rates this file:"/>
-	<string id="20627" value="Click to Preview"/>
-	<string id="20628" value="Previewing..."/>
-	<string id="20629" value="Unable to download preview content from &quot;%s&quot;."/>
-	<string id="20630" value="%i Reviews."/>
-	<string id="20631" value="One review."/>
-	<string id="20632" value="%i sources are available. (%s/s)"/>
-	<string id="20633" value="One source is available. (%s/s)"/>
-	<string id="20634" value="네트워크 어떠한 아직 경기를 반환하지 않았습니다."/>
-	<string id="20635" value="일부 결과,하지만없습니다 필터링된했다."/>
-	<string id="20636" value="검색이 창에서 아직 시작되고있다."/>
-	<string id="20637" value="메타"/>
-	<string id="20638" value="No Schema Columns"/>
-	<string id="20640" value="(Clear Search History)"/>
-	<string id="20641" value="수색 Envy"/>
-	<string id="20642" value="어떤 형식의 파일은 무엇입니까?"/>
-	<string id="20643" value="입력 일부 키워드가 검색:"/>
-	<string id="20644" value="Advanced"/>
-	<string id="20645" value="모든 파일 형식"/>
-	<string id="20646" value="맑은"/>
-	<string id="20647" value="%lu filtered"/>
-	<string id="20648" value="검색 패널 숨기기"/>
-	<string id="20650" value="찾기"/>
-	<string id="20651" value="여기에 검색어 입력:"/>
-	<string id="20652" value="이런 형식의 파일을 찾아보십시오:"/>
-	<string id="20653" value="네트워크:"/>
-	<string id="20654" value="최소 파일 크기:"/>
-	<string id="20655" value="최대 파일 크기:"/>
-	<string id="20656" value="추가"/>
-	<string id="20657" value="쇼 검색 패널"/>
-	<string id="20658" value="검색"/>
-	<string id="20659" value="중지"/>
-	<string id="20660" value="파일을 찾을 수 없음"/>
-	<string id="20661" value="%lu hubs, %lu leaves"/>
-	<string id="20662" value="활성 검색"/>
-	<string id="20663" value="Results"/>
-	<string id="20664" value="%lu file in %lu hit|%lu file in %lu hits|%lu files in %lu hits"/>
-	<string id="20665" value="를 찾을 수:"/>
-	<string id="20666" value="검색:"/>
-	<string id="20668" value="검색"/>
-	<string id="20669" value="Plain Text Search"/>
-	<string id="20670" value="Envy 네트워크를 찾고있습니다..."/>
-	<string id="20672" value="Select the eDonkey/eMule temp folder:"/>
-	<string id="20673" value="자동"/>
+	<string id="20620" text="Envy 적극적으로 네트워크를 찾고있습니다..."/>
+	<string id="20621" text="여기를 클릭하여 다시 검색을"/>
+	<string id="20622" text="All 네트워크"/>
+	<string id="20623" text="You are about to start a new search. Would you like to clear the results of your previous search?"/>
+	<string id="20624" text="이 영역은 선택한 파일에 대한 자세한 정보를 보여줍니다."/>
+	<string id="20625" text="%s writes:"/>
+	<string id="20626" text="%s rates this file:"/>
+	<string id="20627" text="Click to Preview"/>
+	<string id="20628" text="Previewing..."/>
+	<string id="20629" text="Unable to download preview content from &quot;%s&quot;."/>
+	<string id="20630" text="%i Reviews."/>
+	<string id="20631" text="One review."/>
+	<string id="20632" text="%i sources are available. (%s/s)"/>
+	<string id="20633" text="One source is available. (%s/s)"/>
+	<string id="20634" text="네트워크 어떠한 아직 경기를 반환하지 않았습니다."/>
+	<string id="20635" text="일부 결과,하지만없습니다 필터링된했다."/>
+	<string id="20636" text="검색이 창에서 아직 시작되고있다."/>
+	<string id="20637" text="메타"/>
+	<string id="20638" text="No Schema Columns"/>
+	<string id="20640" text="(Clear Search History)"/>
+	<string id="20641" text="수색 Envy"/>
+	<string id="20642" text="어떤 형식의 파일은 무엇입니까?"/>
+	<string id="20643" text="입력 일부 키워드가 검색:"/>
+	<string id="20644" text="Advanced"/>
+	<string id="20645" text="모든 파일 형식"/>
+	<string id="20646" text="맑은"/>
+	<string id="20647" text="%lu filtered"/>
+	<string id="20648" text="검색 패널 숨기기"/>
+	<string id="20650" text="찾기"/>
+	<string id="20651" text="여기에 검색어 입력:"/>
+	<string id="20652" text="이런 형식의 파일을 찾아보십시오:"/>
+	<string id="20653" text="네트워크:"/>
+	<string id="20654" text="최소 파일 크기:"/>
+	<string id="20655" text="최대 파일 크기:"/>
+	<string id="20656" text="추가"/>
+	<string id="20657" text="쇼 검색 패널"/>
+	<string id="20658" text="검색"/>
+	<string id="20659" text="중지"/>
+	<string id="20660" text="파일을 찾을 수 없음"/>
+	<string id="20661" text="%lu hubs, %lu leaves"/>
+	<string id="20662" text="활성 검색"/>
+	<string id="20663" text="Results"/>
+	<string id="20664" text="%lu file in %lu hit|%lu file in %lu hits|%lu files in %lu hits"/>
+	<string id="20665" text="를 찾을 수:"/>
+	<string id="20666" text="검색:"/>
+	<string id="20668" text="검색"/>
+	<string id="20669" text="Plain Text Search"/>
+	<string id="20670" text="Envy 네트워크를 찾고있습니다..."/>
+	<string id="20672" text="Select the eDonkey/eMule temp folder:"/>
+	<string id="20673" text="자동"/>
 	<!-- Missing Info Strings -->
-	<string id="20680" value="Envy 설정"/>
-	<string id="20682" value="Remote access is disabled."/>
-	<string id="20684" value="http://%s:%i/remote - Username/password required."/>
-	<string id="20685" value="Unable to accept connections, URL unavailable."/>
-	<string id="20699" value="&amp;Schemas"/>
-	<string id="20700" value="%s in : %s out (d:%I64i/u:%I64i)"/>
-	<string id="20701" value="%lu 이웃에 연결됨. %s 지방 컬렉션."/>
-	<string id="20702" value="Hub mode with %lu neighbours. %s 개 지역 도서관에."/>
-	<string id="20703" value="Hub/Ultrapeer mode with %lu neighbours. %s 개 지역 도서관에."/>
-	<string id="20704" value="Ultrapeer mode with %lu neighbours. %s 개 지역 도서관에."/>
-	<string id="20705" value="연결. %s 개 지역 도서관에."/>
-	<string id="20706" value="네트워크에 연결하기..."/>
-	<string id="20707" value="아니라 네트워크에 연결."/>
-	<string id="20708" value="액티브"/>
-	<string id="20709" value="Inactive"/>
-	<string id="20710" value="갤거야"/>
-	<string id="20711" value="Can't Move"/>
-	<string id="20712" value="숨막혀"/>
-	<string id="20713" value="Enqueue"/>
-	<string id="20714" value="File Error"/>
-	<string id="20715" value="Hashset"/>
-	<string id="20716" value="Metadata"/>
-	<string id="20717" value="Response"/>
-	<string id="20718" value="Moving"/>
-	<string id="20719" value="Creating"/>
-	<string id="20720" value="완성됨"/>
-	<string id="20721" value="Connecting"/>
-	<string id="20722" value="Downloading"/>
-	<string id="20723" value="Busy"/>
-	<string id="20724" value="다음"/>
-	<string id="20725" value="Q"/>
-	<string id="20726" value="Queued"/>
-	<string id="20727" value="일시 중지됨"/>
-	<string id="20728" value="Pending"/>
-	<string id="20729" value="Requesting"/>
-	<string id="20730" value="Searching"/>
-	<string id="20731" value="Seeding"/>
-	<string id="20732" value="소스"/>
-	<string id="20733" value="소스"/>
-	<string id="20734" value="소스"/>
-	<string id="20735" value="소스"/>
-	<string id="20736" value="(아니 소스)"/>
-	<string id="20740" value="TigerTree"/>
-	<string id="20741" value="Torrent"/>
-	<string id="20742" value="Tracker Down"/>
-	<string id="20743" value="관심"/>
-	<string id="20744" value="Unknown"/>
-	<string id="20745" value="지원되지 않는"/>
-	<string id="20746" value="Unverified"/>
-	<string id="20747" value="Verified"/>
-	<string id="20748" value="Verifying"/>
-	<string id="20750" value="!에 오신 것을 환영합니다 {version}\n\nEnvy is completely free software, please use it responsibly."/>
-	<string id="20751" value="There are no active searches. Click here to search for files."/>
-	<string id="20752" value="You're not connected. Click the Connect button to get started."/>
-	<string id="20755" value="Are you sure you want to delete the &quot;%s&quot; template?nThis cannot be undone."/>
-	<string id="20760" value="우선"/>
-	<string id="20762" value="This file appears to be spam."/>
-	<string id="20763" value="Blacklisted:"/>
-	<string id="20764" value="You have downloaded and deleted this file before."/>
-	<string id="20765" value="You already have this file on your download list."/>
-	<string id="20766" value="You already have this file in your library."/>
-	<string id="20767" value="Sources for this file are currently busy"/>
-	<string id="20768" value="Sources for this file are firewalled"/>
-	<string id="20769" value="Sources for this file may be unstable"/>
-	<string id="20770" value="폴더"/>
-	<string id="20771" value="Hits"/>
-	<string id="20772" value="위치"/>
-	<string id="20773" value="of your library"/>
-	<string id="20774" value="N/A"/>
-	<string id="20775" value="Next in Line"/>
-	<string id="20776" value="No Hashset"/>
-	<string id="20777" value="Partial Source (%.2f%% available)"/>
-	<string id="20778" value="%i upload slots, %i waiting in queue"/>
-	<string id="20780" value="크기"/>
-	<string id="20781" value="This source is currently busy"/>
-	<string id="20782" value="This source is firewalled"/>
-	<string id="20783" value="This source may be unstable"/>
-	<string id="20784" value="스피드 :"/>
-	<string id="20785" value="Status:"/>
-	<string id="20786" value="%lu today, %lu total"/>
-	<string id="20787" value="Total Files:"/>
-	<string id="20788" value="Total Size:"/>
-	<string id="20789" value="Transfer:"/>
-	<string id="20790" value="를 입력"/>
-	<string id="20791" value="Untrusted"/>
-	<string id="20792" value="업로드"/>
-	<string id="20793" value="URL:"/>
-	<string id="20794" value="User Agent:"/>
-	<string id="20795" value="%s in : %s out (d:%I64i/u:%I64i/peers:%I64i)"/>
-	<string id="20796" value="Files shared over the Internet"/>
-	<string id="20798" value="Envy has finished downloading the next Envy version (%s). Would you like to upgrade now?\n\nIf you select Yes, Envy will close temporarily while the upgrade is installed."/>
-	<string id="20799" value="새로 Envy 버전 감지."/>
+	<string id="20680" text="Envy 설정"/>
+	<string id="20682" text="Remote access is disabled."/>
+	<string id="20684" text="http://%s:%i/remote - Username/password required."/>
+	<string id="20685" text="Unable to accept connections, URL unavailable."/>
+	<string id="20699" text="&amp;Schemas"/>
+	<string id="20700" text="%s in : %s out (d:%I64i/u:%I64i)"/>
+	<string id="20701" text="%lu 이웃에 연결됨. %s 지방 컬렉션."/>
+	<string id="20702" text="Hub mode with %lu neighbours. %s 개 지역 도서관에."/>
+	<string id="20703" text="Hub/Ultrapeer mode with %lu neighbours. %s 개 지역 도서관에."/>
+	<string id="20704" text="Ultrapeer mode with %lu neighbours. %s 개 지역 도서관에."/>
+	<string id="20705" text="연결. %s 개 지역 도서관에."/>
+	<string id="20706" text="네트워크에 연결하기..."/>
+	<string id="20707" text="아니라 네트워크에 연결."/>
+	<string id="20708" text="액티브"/>
+	<string id="20709" text="Inactive"/>
+	<string id="20710" text="갤거야"/>
+	<string id="20711" text="Can't Move"/>
+	<string id="20712" text="숨막혀"/>
+	<string id="20713" text="Enqueue"/>
+	<string id="20714" text="File Error"/>
+	<string id="20715" text="Hashset"/>
+	<string id="20716" text="Metadata"/>
+	<string id="20717" text="Response"/>
+	<string id="20718" text="Moving"/>
+	<string id="20719" text="Creating"/>
+	<string id="20720" text="완성됨"/>
+	<string id="20721" text="Connecting"/>
+	<string id="20722" text="Downloading"/>
+	<string id="20723" text="Busy"/>
+	<string id="20724" text="다음"/>
+	<string id="20725" text="Q"/>
+	<string id="20726" text="Queued"/>
+	<string id="20727" text="일시 중지됨"/>
+	<string id="20728" text="Pending"/>
+	<string id="20729" text="Requesting"/>
+	<string id="20730" text="Searching"/>
+	<string id="20731" text="Seeding"/>
+	<string id="20732" text="소스"/>
+	<string id="20733" text="소스"/>
+	<string id="20734" text="소스"/>
+	<string id="20735" text="소스"/>
+	<string id="20736" text="(아니 소스)"/>
+	<string id="20740" text="TigerTree"/>
+	<string id="20741" text="Torrent"/>
+	<string id="20742" text="Tracker Down"/>
+	<string id="20743" text="관심"/>
+	<string id="20744" text="Unknown"/>
+	<string id="20745" text="지원되지 않는"/>
+	<string id="20746" text="Unverified"/>
+	<string id="20747" text="Verified"/>
+	<string id="20748" text="Verifying"/>
+	<string id="20750" text="!에 오신 것을 환영합니다 {version}\n\nEnvy is completely free software, please use it responsibly."/>
+	<string id="20751" text="There are no active searches. Click here to search for files."/>
+	<string id="20752" text="You're not connected. Click the Connect button to get started."/>
+	<string id="20755" text="Are you sure you want to delete the &quot;%s&quot; template?nThis cannot be undone."/>
+	<string id="20760" text="우선"/>
+	<string id="20762" text="This file appears to be spam."/>
+	<string id="20763" text="Blacklisted:"/>
+	<string id="20764" text="You have downloaded and deleted this file before."/>
+	<string id="20765" text="You already have this file on your download list."/>
+	<string id="20766" text="You already have this file in your library."/>
+	<string id="20767" text="Sources for this file are currently busy"/>
+	<string id="20768" text="Sources for this file are firewalled"/>
+	<string id="20769" text="Sources for this file may be unstable"/>
+	<string id="20770" text="폴더"/>
+	<string id="20771" text="Hits"/>
+	<string id="20772" text="위치"/>
+	<string id="20773" text="of your library"/>
+	<string id="20774" text="N/A"/>
+	<string id="20775" text="Next in Line"/>
+	<string id="20776" text="No Hashset"/>
+	<string id="20777" text="Partial Source (%.2f%% available)"/>
+	<string id="20778" text="%i upload slots, %i waiting in queue"/>
+	<string id="20780" text="크기"/>
+	<string id="20781" text="This source is currently busy"/>
+	<string id="20782" text="This source is firewalled"/>
+	<string id="20783" text="This source may be unstable"/>
+	<string id="20784" text="스피드 :"/>
+	<string id="20785" text="Status:"/>
+	<string id="20786" text="%lu today, %lu total"/>
+	<string id="20787" text="Total Files:"/>
+	<string id="20788" text="Total Size:"/>
+	<string id="20789" text="Transfer:"/>
+	<string id="20790" text="를 입력"/>
+	<string id="20791" text="Untrusted"/>
+	<string id="20792" text="업로드"/>
+	<string id="20793" text="URL:"/>
+	<string id="20794" text="User Agent:"/>
+	<string id="20795" text="%s in : %s out (d:%I64i/u:%I64i/peers:%I64i)"/>
+	<string id="20796" text="Files shared over the Internet"/>
+	<string id="20798" text="Envy has finished downloading the next Envy version (%s). Would you like to upgrade now?\n\nIf you select Yes, Envy will close temporarily while the upgrade is installed."/>
+	<string id="20799" text="새로 Envy 버전 감지."/>
 	<!-- Missing Upload Strings -->
-	<string id="20841" value="New 대기열"/>
-	<string id="20842" value="모든 파일"/>
-	<string id="20843" value="DC++ Guard"/>
-	<string id="20844" value="eDonkey Core"/>
-	<string id="20845" value="eDonkey Guard"/>
-	<string id="20846" value="eDonkey Partials"/>
-	<string id="20847" value="Completed Uploads"/>
-	<string id="20848" value="HTTP Guard"/>
-	<string id="20849" value="Library 파일"/>
-	<string id="20850" value="Large 파일"/>
-	<string id="20851" value="Medium 파일"/>
-	<string id="20852" value="Small 파일"/>
-	<string id="20853" value="부분 파일"/>
-	<string id="20854" value="부분"/>
-	<string id="20855" value="대기열"/>
-	<string id="20856" value="Torrent Uploads"/>
-	<string id="20857" value="Offline queued upload host %s expired, removing."/>
-	<string id="20858" value="Timed out waiting for request from upload host %s."/>
-	<string id="20859" value="Closing upload connection %s due to lack of traffic."/>
-	<string id="20860" value="Uploading tiger-tree data for &quot;%s&quot; to %s."/>
-	<string id="20861" value="Removed upload of &quot;%s&quot; to %s."/>
-	<string id="20862" value="추가"/>
-	<string id="20864" value="찾아보기"/>
-	<string id="20865" value="연결"/>
-	<string id="20866" value="파일명:"/>
-	<string id="20867" value="호스트 :"/>
-	<string id="20868" value="포트"/>
+	<string id="20841" text="New 대기열"/>
+	<string id="20842" text="모든 파일"/>
+	<string id="20843" text="DC++ Guard"/>
+	<string id="20844" text="eDonkey Core"/>
+	<string id="20845" text="eDonkey Guard"/>
+	<string id="20846" text="eDonkey Partials"/>
+	<string id="20847" text="Completed Uploads"/>
+	<string id="20848" text="HTTP Guard"/>
+	<string id="20849" text="Library 파일"/>
+	<string id="20850" text="Large 파일"/>
+	<string id="20851" text="Medium 파일"/>
+	<string id="20852" text="Small 파일"/>
+	<string id="20853" text="부분 파일"/>
+	<string id="20854" text="부분"/>
+	<string id="20855" text="대기열"/>
+	<string id="20856" text="Torrent Uploads"/>
+	<string id="20857" text="Offline queued upload host %s expired, removing."/>
+	<string id="20858" text="Timed out waiting for request from upload host %s."/>
+	<string id="20859" text="Closing upload connection %s due to lack of traffic."/>
+	<string id="20860" text="Uploading tiger-tree data for &quot;%s&quot; to %s."/>
+	<string id="20861" text="Removed upload of &quot;%s&quot; to %s."/>
+	<string id="20862" text="추가"/>
+	<string id="20864" text="찾아보기"/>
+	<string id="20865" text="연결"/>
+	<string id="20866" text="파일명:"/>
+	<string id="20867" text="호스트 :"/>
+	<string id="20868" text="포트"/>
 	<!-- Missing URL Parse Messages -->
-	<string id="20872" value="종류:"/>
-	<string id="20874" value="URL:"/>
-	<string id="20875" value="지정되지 않음"/>
-	<string id="20880" value="내 프로필 수정"/>
-	<string id="20882" value="%u 파일을 선택했습니다. 당신은 확실한가요?"/>
-	<string id="20890" value="에 오신 것을 환영합니다 Envy (피어 프로젝트)."/>
+	<string id="20872" text="종류:"/>
+	<string id="20874" text="URL:"/>
+	<string id="20875" text="지정되지 않음"/>
+	<string id="20880" text="내 프로필 수정"/>
+	<string id="20882" text="%u 파일을 선택했습니다. 당신은 확실한가요?"/>
+	<string id="20890" text="에 오신 것을 환영합니다 Envy (피어 프로젝트)."/>
 	<!-- Missing Warning Messages -->
 	<!-- Missing Wizard Strings -->
-	<string id="20895" value="(1050-65500)"/>
-	<string id="20899" value="살짜리"/>
+	<string id="20895" text="(1050-65500)"/>
+	<string id="20899" text="살짜리"/>
 </strings>
 <!-- Localized Dialog Text, "cookie" verifies that the skin matches current dialog -->
 <dialogs>
 	<dialog name="CSettingSheet" cookie="SyBuBuBu" caption="Envy 설정이">
 		<control/>
-		<control caption="OK"/>
-		<control caption="취소"/>
-		<control caption="적용"/>
+		<control text="OK"/>
+		<control text="취소"/>
+		<control text="적용"/>
 		<control/>
 	</dialog>
 	<dialog name="CGeneralSettingsGroup" cookie="Af" caption="일반"/>
 	<dialog name="CInternetSettingsGroup" cookie="Af" caption="인터넷"/>
 	<dialog name="CGeneralSettingsPage" cookie="BuBuBuBuBuBuBuBuStCoBuBuBuBuBuBuSyStEdmsStmsBuBuStCoStCo" caption="일반">
-		<control caption="일반:"/>
-		<control caption="Start Envy at Windows startup"/>
-		<control caption="Auto-connect on Envy startup"/>
-		<control caption="Show a prompt before opening URIs"/>
-		<control caption="Check for updates monthly"/>
-		<control caption="Downloads:"/>
-		<control caption="Expand new downloads by default"/>
-		<control caption="Display simple progress bar"/>
-		<control caption="Show rates in:"/>
-		<control caption="Auto bits/sec|Auto bytes/sec|b/s|B/s|Kb/s|KB/s|Mb/s|MB/s"/>
-		<control caption="Search:"/>
-		<control caption="Expand multi-source files by default"/>
-		<control caption="Switch to Transfers view on download"/>
-		<control caption="Hide side bar when starting search"/>
-		<control caption="Filter adult content from searches"/>
-		<control caption="Tooltips:"/>
+		<control text="일반:"/>
+		<control text="Start Envy at Windows startup"/>
+		<control text="Auto-connect on Envy startup"/>
+		<control text="Show a prompt before opening URIs"/>
+		<control text="Check for updates monthly"/>
+		<control text="Downloads:"/>
+		<control text="Expand new downloads by default"/>
+		<control text="Display simple progress bar"/>
+		<control text="Show rates in:"/>
+		<control text="Auto bits/sec|Auto bytes/sec|b/s|B/s|Kb/s|KB/s|Mb/s|MB/s"/>
+		<control text="Search:"/>
+		<control text="Expand multi-source files by default"/>
+		<control text="Switch to Transfers view on download"/>
+		<control text="Hide side bar when starting search"/>
+		<control text="Filter adult content from searches"/>
+		<control text="Tooltips:"/>
 		<control/>
-		<control caption="Delay (ms):"/>
+		<control text="Delay (ms):"/>
 		<control/>
 		<control/>
-		<control caption="Opacity:"/>
+		<control text="Opacity:"/>
 		<control/>
-		<control caption="DropShadows"/>
-		<control caption="Tray:"/>
-		<control caption="Close button behavior:"/>
-		<control caption="Ask Me|Minimize to Taskbar|Hide to Tray|Exit After Downloads|Exit Immediately"/>
-		<control caption="Minimize button behavior:"/>
-		<control caption="Normal Taskbar|Minimize to Tray"/>
+		<control text="DropShadows"/>
+		<control text="Tray:"/>
+		<control text="Close button behavior:"/>
+		<control text="Ask Me|Minimize to Taskbar|Hide to Tray|Exit After Downloads|Exit Immediately"/>
+		<control text="Minimize button behavior:"/>
+		<control text="Normal Taskbar|Minimize to Tray"/>
 	</dialog>
 	<dialog name="CLibrarySettingsPage" cookie="BuBuBuBuBuBuBuBuStEdmsStStEdmsStBuBuBuCoBuBuBuCoBuBuBuEdBu" caption="도서관">
-		<control caption="옵션:"/>
-		<control caption="Allow others to browse"/>
-		<control caption="Watch library folders"/>
-		<control caption="Quick hashing (more CPU)"/>
-		<control caption="Show hashing status window"/>
-		<control caption="Smart media series detection"/>
-		<control caption="Create ghost files by default"/>
-		<control caption="Recent Files:"/>
-		<control caption="Remember:"/>
+		<control text="옵션:"/>
+		<control text="Allow others to browse"/>
+		<control text="Watch library folders"/>
+		<control text="Quick hashing (more CPU)"/>
+		<control text="Show hashing status window"/>
+		<control text="Smart media series detection"/>
+		<control text="Create ghost files by default"/>
+		<control text="Recent Files:"/>
+		<control text="Remember:"/>
 		<control/>
 		<control/>
-		<control caption="files"/>
-		<control caption="For up to:"/>
+		<control text="files"/>
+		<control text="For up to:"/>
 		<control/>
 		<control/>
-		<control caption="days"/>
-		<control caption="Clear History"/>
-		<control caption="Clear Ghosts"/>
-		<control caption="Safe to Open Types:"/>
+		<control text="days"/>
+		<control text="Clear History"/>
+		<control text="Clear Ghosts"/>
+		<control text="Safe to Open Types:"/>
 		<control/>
-		<control caption="추가"/>
-		<control caption="제거"/>
-		<control caption="Never Share Types:"/>
+		<control text="추가"/>
+		<control text="제거"/>
+		<control text="Never Share Types:"/>
 		<control/>
-		<control caption="추가"/>
-		<control caption="제거"/>
-		<control caption="Store Collections Here:"/>
+		<control text="추가"/>
+		<control text="제거"/>
+		<control text="Store Collections Here:"/>
 		<control/>
 		<control/>
 	</dialog>
 	<dialog name="CMediaSettingsPage" cookie="BuStCoBuBuBuCoBuBuBuBuSt" caption="미디어">
-		<control caption="Media Handling"/>
-		<control caption="Choose Media Handler:"/>
+		<control text="Media Handling"/>
+		<control text="Choose Media Handler:"/>
 		<control/>
-		<control caption="Use Envy Media Player to PLAY the file types listed below"/>
-		<control caption="Use Envy Media Player to ENQUEUE the file types listed below"/>
-		<control caption="File Types:"/>
+		<control text="Use Envy Media Player to PLAY the file types listed below"/>
+		<control text="Use Envy Media Player to ENQUEUE the file types listed below"/>
+		<control text="File Types:"/>
 		<control/>
-		<control caption="추가"/>
-		<control caption="제거"/>
-		<control caption="Audio Visualization Plugin:"/>
-		<control caption="Select Plugin..."/>
-		<control caption="Note: Choosing an external Media Handler will disable Media/Visualization Plugins."/>
+		<control text="추가"/>
+		<control text="제거"/>
+		<control text="Audio Visualization Plugin:"/>
+		<control text="Select Plugin..."/>
+		<control text="Note: Choosing an external Media Handler will disable Media/Visualization Plugins."/>
 	</dialog>
 	<dialog name="CIRCSettingsPage" cookie="BuBuBuBuStEdmsStStEdmsCoBuBuStBuStBuStBuStBuStBuStBuStBuStBuStEdStEdStEdStEdStCoStEdStEd" caption="채팅 IRC">
-		<control caption="Client Options:"/>
-		<control caption="Show chat integration"/>
-		<control caption="Show timestamp"/>
-		<control caption="Flood protection:"/>
-		<control caption="Lines"/>
+		<control text="Client Options:"/>
+		<control text="Show chat integration"/>
+		<control text="Show timestamp"/>
+		<control text="Flood protection:"/>
+		<control text="Lines"/>
 		<control/>
-		<control caption="Screen Font:"/>
-		<control caption="Size"/>
+		<control text="Screen Font:"/>
+		<control text="Size"/>
 		<control/>
 		<control/>
-		<control caption="Colors:"/>
+		<control text="Colors:"/>
 		<control/>
-		<control caption="Window"/>
+		<control text="Window"/>
 		<control/>
-		<control caption="Text"/>
+		<control text="Text"/>
 		<control/>
-		<control caption="Local text"/>
+		<control text="Local text"/>
 		<control/>
-		<control caption="User action"/>
+		<control text="User action"/>
 		<control/>
-		<control caption="Channel actions"/>
+		<control text="Channel actions"/>
 		<control/>
-		<control caption="Server messages"/>
+		<control text="Server messages"/>
 		<control/>
-		<control caption="Notices"/>
+		<control text="Notices"/>
 		<control/>
-		<control caption="Topics"/>
-		<control caption="Connection 설정이:"/>
-		<control caption="Screen 이름:"/>
+		<control text="Topics"/>
+		<control text="Connection 설정이:"/>
+		<control text="Screen 이름:"/>
 		<control/>
-		<control caption="User 이름:"/>
+		<control text="User 이름:"/>
 		<control/>
-		<control caption="Alt screen 이름:"/>
+		<control text="Alt screen 이름:"/>
 		<control/>
-		<control caption="Real 이름:"/>
+		<control text="Real 이름:"/>
 		<control/>
-		<control caption="Server:"/>
+		<control text="Server:"/>
 		<control/>
-		<control caption="포트:"/>
+		<control text="포트:"/>
 		<control/>
-		<control caption="Run command on connect"/>
+		<control text="Run command on connect"/>
 		<control/>
 	</dialog>
 	<dialog name="CCommunitySettingsPage" cookie="BuBuBuBuBuBuBuBuBuSt" caption="커뮤니티">
-		<control caption="Direct _Chat:"/>
-		<control caption="Enable peer-to-peer messaging with compatible clients"/>
-		<control caption="Enable chat over other protocols where possible"/>
-		<control caption="Filter chat messages for spam"/>
-		<control caption="Censor profanity in chat"/>
-		<control caption="_Profile:"/>
-		<control caption="Enable browse profile"/>
-		<control caption="Update Profile"/>
-		<control caption="정보:"/>
-		<control caption="Use your G2/Gnutella User Profile to share basic information about yourself, or recommend files and links to others."/>
+		<control text="Direct _Chat:"/>
+		<control text="Enable peer-to-peer messaging with compatible clients"/>
+		<control text="Enable chat over other protocols where possible"/>
+		<control text="Filter chat messages for spam"/>
+		<control text="Censor profanity in chat"/>
+		<control text="_Profile:"/>
+		<control text="Enable browse profile"/>
+		<control text="Update Profile"/>
+		<control text="정보:"/>
+		<control text="Use your G2/Gnutella User Profile to share basic information about yourself, or recommend files and links to others."/>
 	</dialog>
 	<dialog name="CRemoteSettingsPage" cookie="BuBuStBuStStEdEdStBuSt" caption="원격 액세스">
-		<control caption="Activation:"/>
-		<control caption="원격 웹 액세스 활성화:"/>
+		<control text="Activation:"/>
+		<control text="원격 웹 액세스 활성화:"/>
 		<control/>
-		<control caption="Credentials:"/>
-		<control caption="Choose Username:"/>
-		<control caption="Choose Password:"/>
+		<control text="Credentials:"/>
+		<control text="Choose Username:"/>
+		<control text="Choose Password:"/>
 		<control/>
 		<control/>
 		<control/>
-		<control caption="정보:"/>
-		<control caption="Remote Access allows you to leave Envy running on your PC, and control it remotely using any web browser. {n}You must be able to accept incoming connections.  (Port-forwarding)"/>
+		<control text="정보:"/>
+		<control text="Remote Access allows you to leave Envy running on your PC, and control it remotely using any web browser. {n}You must be able to accept incoming connections.  (Port-forwarding)"/>
 	</dialog>
 	<dialog name="CWebSettingsPage" cookie="BuStBuBuBuBuBuBuBuBuCoBuBuSt" caption="웹 링크">
-		<control caption="Peer to Peer Link Handling:"/>
-		<control caption="Use Envy to open these types of links:"/>
-		<control caption="Magnet (magnet:)"/>
-		<control caption="Gnutella (gnutella:)"/>
-		<control caption="eDonkey (ed2k:)"/>
-		<control caption="Piolet (mp2p:)"/>
-		<control caption="DC++ (dchub:)"/>
-		<control caption="BitTorrent (.torrent)"/>
-		<control caption="Download Manager:"/>
-		<control caption="Use Envy to manage all my web downloads:"/>
+		<control text="Peer to Peer Link Handling:"/>
+		<control text="Use Envy to open these types of links:"/>
+		<control text="Magnet (magnet:)"/>
+		<control text="Gnutella (gnutella:)"/>
+		<control text="eDonkey (ed2k:)"/>
+		<control text="Piolet (mp2p:)"/>
+		<control text="DC++ (dchub:)"/>
+		<control text="BitTorrent (.torrent)"/>
+		<control text="Download Manager:"/>
+		<control text="Use Envy to manage all my web downloads:"/>
 		<control/>
-		<control caption="추가"/>
-		<control caption="제거"/>
-		<control caption="The download manager plugin will only attempt to download file types listed here. Other file types will be handled by your web browser. Envy must be running to manage downloads."/>
+		<control text="추가"/>
+		<control text="제거"/>
+		<control text="The download manager plugin will only attempt to download file types listed here. Other file types will be handled by your web browser. Envy must be running to manage downloads."/>
 	</dialog>
 	<dialog name="CConnectionSettingsPage" cookie="BuStCoStCoStEdBuBuBuStCoStCoBuStCoBuBuBuStEdmsStEdms" caption="연결">
-		<control caption="Inbound Address:"/>
-		<control caption="Address:"/>
-		<control caption="자동"/>
-		<control caption="스피드 :"/>
+		<control text="Inbound Address:"/>
+		<control text="Address:"/>
+		<control text="자동"/>
+		<control text="스피드 :"/>
 		<control/>
-		<control caption="포트"/>
+		<control text="포트"/>
 		<control/>
-		<control caption="Random"/>
-		<control caption="Force binding to this address"/>
-		<control caption="Outbound Address:"/>
-		<control caption="Address:"/>
-		<control caption="자동"/>
-		<control caption="스피드 :"/>
+		<control text="Random"/>
+		<control text="Force binding to this address"/>
+		<control text="Outbound Address:"/>
+		<control text="Address:"/>
+		<control text="자동"/>
+		<control text="스피드 :"/>
 		<control/>
-		<control caption="옵션:"/>
-		<control caption="Can accept incoming connections"/>
+		<control text="옵션:"/>
+		<control text="Can accept incoming connections"/>
 		<control/>
-		<control caption="Ignore private/local IP addresses"/>
-		<control caption="Enable Plug'n'Play port-forwarding"/>
-		<control caption="Timeouts:"/>
-		<control caption="연결:"/>
+		<control text="Ignore private/local IP addresses"/>
+		<control text="Enable Plug'n'Play port-forwarding"/>
+		<control text="Timeouts:"/>
+		<control text="연결:"/>
 		<control/>
 		<control/>
-		<control caption="Handshake:"/>
+		<control text="Handshake:"/>
 		<control/>
 		<control/>
 	</dialog>
 	<dialog name="CDownloadsSettingsPage" cookie="BuEdBuBuEdBuBuStEdmsStEdmsStEdmsBuStCoStCoBuBuStCo" caption="다운로드">
-		<control caption="Save Completed Files Here:"/>
+		<control text="Save Completed Files Here:"/>
 		<control/>
 		<control/>
-		<control caption="Store Temporary Incomplete Files Here:"/>
+		<control text="Store Temporary Incomplete Files Here:"/>
 		<control/>
 		<control/>
-		<control caption="Number of Downloads:"/>
-		<control caption="Maximum Files:"/>
+		<control text="Number of Downloads:"/>
+		<control text="Maximum Files:"/>
 		<control/>
 		<control/>
-		<control caption="Maximum Transfers:"/>
+		<control text="Maximum Transfers:"/>
 		<control/>
 		<control/>
-		<control caption="Transfers per File:"/>
+		<control text="Transfers per File:"/>
 		<control/>
 		<control/>
-		<control caption="Limits:"/>
-		<control caption="Total Download Bandwidth:"/>
+		<control text="Limits:"/>
+		<control text="Total Download Bandwidth:"/>
 		<control/>
-		<control caption="Maximum Queue Length:"/>
+		<control text="Maximum Queue Length:"/>
 		<control/>
-		<control caption="보안:"/>
-		<control caption="만 다운로드와 연결되어있는 네트워크에 업로드 할 수 있습니다."/>
-		<control caption="AntiVirus:"/>
+		<control text="보안:"/>
+		<control text="만 다운로드와 연결되어있는 네트워크에 업로드 할 수 있습니다."/>
+		<control text="AntiVirus:"/>
 		<control/>
 	</dialog>
 	<dialog name="CUploadsSettingsPage" cookie="BuBuBuBuBuStEdmsBuCoBuBuBuStCoStCoBuSyBuBuBuSt" caption="업로드">
-		<control caption="옵션:"/>
-		<control caption="Limit sharing in hub mode"/>
-		<control caption="Share new partial downloads"/>
-		<control caption="Share preview files"/>
-		<control caption="Fair-Use mode (10% media limit)"/>
-		<control caption="Limit per unique host:"/>
+		<control text="옵션:"/>
+		<control text="Limit sharing in hub mode"/>
+		<control text="Share new partial downloads"/>
+		<control text="Share preview files"/>
+		<control text="Fair-Use mode (10% media limit)"/>
+		<control text="Limit per unique host:"/>
 		<control/>
 		<control/>
-		<control caption="User-Agent Filter:"/>
+		<control text="User-Agent Filter:"/>
 		<control/>
-		<control caption="+"/>
-		<control caption="-"/>
-		<control caption="대역폭:"/>
-		<control caption="한도:"/>
+		<control text="+"/>
+		<control text="-"/>
+		<control text="대역폭:"/>
+		<control text="한도:"/>
 		<control/>
-		<control caption="모드:"/>
-		<control caption="평균|최고 (엄격한)"/>
-		<control caption="큐:"/>
+		<control text="모드:"/>
+		<control text="평균|최고 (엄격한)"/>
+		<control text="큐:"/>
 		<control/>
-		<control caption="새로운..."/>
-		<control caption="편집..."/>
-		<control caption="삭제"/>
-		<control caption="(변경 사항은 즉시 적용)"/>
+		<control text="새로운..."/>
+		<control text="편집..."/>
+		<control text="삭제"/>
+		<control text="(변경 사항은 즉시 적용)"/>
 	</dialog>
 	<!-- MISSING DIALOG PAGES -->
 	<dialog name="CSkinsSettingsPage" cookie="SyBuStStStStStEdStBuBuBu" caption="테마">
 		<control/>
-		<control caption="테마 정보:"/>
-		<control caption="이름:"/>
+		<control text="테마 정보:"/>
+		<control text="이름:"/>
 		<control/>
-		<control caption="Author:"/>
+		<control text="Author:"/>
 		<control/>
-		<control caption="기술:"/>
+		<control text="기술:"/>
 		<control/>
-		<control caption="*혼합하는 여러 스킨을 선택합니다"/>
-		<control caption="삭제"/>
-		<control caption="설치..."/>
-		<control caption="좀 더"/>
+		<control text="*혼합하는 여러 스킨을 선택합니다"/>
+		<control text="삭제"/>
+		<control text="설치..."/>
+		<control text="좀 더"/>
 	</dialog>
 	<dialog name="CPluginsSettingsPage" cookie="SyBuStStStEdBuBu" caption="플러그인">
 		<control/>
-		<control caption="러그인 정보:"/>
-		<control caption="이름:"/>
+		<control text="러그인 정보:"/>
+		<control text="이름:"/>
 		<control/>
-		<control caption="기술:"/>
+		<control text="기술:"/>
 		<control/>
-		<control caption="Setup..."/>
-		<control caption="Get More"/>
+		<control text="Setup..."/>
+		<control text="Get More"/>
 	</dialog>
 	<dialog name="CAdvancedSettingsPage" cookie="SyBuStEdmsEdCoBuBu" caption="고급">
 		<control/>
-		<control caption="Setting Properties:"/>
-		<control caption=" 값:"/>
+		<control text="Setting Properties:"/>
+		<control text=" 값:"/>
 		<control/>
 		<control/>
 		<control/>
 		<control/>
 		<control/>
-		<control caption="기본값 복원"/>
+		<control text="기본값 복원"/>
 	</dialog>
 	<dialog name="CProtocolsSettingsPage" cookie="BuSy" caption="프로토콜">
-		<control caption="Envy Common Architecture Protocol Explorer:"/>
+		<control text="Envy Common Architecture Protocol Explorer:"/>
 		<control/>
 	</dialog>
 	<dialog name="CQueuePropertiesDlg" cookie="BuEdBuBuBuBuBuEdBuEdBuCoBuEdBuSyBuBuStEdmsStEdmsStEdmsBuStEdStEdmsBuEdmsBuBuBu" caption="Upload Queue Properties">
-		<control caption="이름:"/>
+		<control text="이름:"/>
 		<control/>
-		<control caption="Entry Criteria:"/>
-		<control caption="Partially downloaded files only"/>
-		<control caption="Shared Library files only"/>
-		<control caption="Both partial and library files"/>
-		<control caption="Minimum source file size:"/>
+		<control text="Entry Criteria:"/>
+		<control text="Partially downloaded files only"/>
+		<control text="Shared Library files only"/>
+		<control text="Both partial and library files"/>
+		<control text="Minimum source file size:"/>
 		<control/>
-		<control caption="Maximum source file size:"/>
+		<control text="Maximum source file size:"/>
 		<control/>
-		<control caption="Marked files:"/>
-		<control caption="Popular|Release"/>
-		<control caption="Filename match:"/>
+		<control text="Marked files:"/>
+		<control text="Popular|Release"/>
+		<control text="Filename match:"/>
 		<control/>
-		<control caption="Protocols:"/>
+		<control text="Protocols:"/>
 		<control/>
-		<control caption="Capacity:"/>
-		<control caption="Enable this queue"/>
-		<control caption="Minimum number of transfers:"/>
-		<control/>
-		<control/>
-		<control caption="Maximum number of transfers:"/>
+		<control text="Capacity:"/>
+		<control text="Enable this queue"/>
+		<control text="Minimum number of transfers:"/>
 		<control/>
 		<control/>
-		<control caption="Maximum number waiting in queue:"/>
+		<control text="Maximum number of transfers:"/>
 		<control/>
 		<control/>
-		<control caption="Service Parameters:"/>
-		<control caption="Saturated bandwidth percentage:"/>
-		<control/>
-		<control caption="Upload bandwidth for this queue:"/>
+		<control text="Maximum number waiting in queue:"/>
 		<control/>
 		<control/>
-		<control caption="Rotate after # seconds:"/>
+		<control text="Service Parameters:"/>
+		<control text="Saturated bandwidth percentage:"/>
+		<control/>
+		<control text="Upload bandwidth for this queue:"/>
 		<control/>
 		<control/>
-		<control caption="OK"/>
-		<control caption="취소"/>
-		<control caption="Reward uploaders"/>
+		<control text="Rotate after # seconds:"/>
+		<control/>
+		<control/>
+		<control text="OK"/>
+		<control text="취소"/>
+		<control text="Reward uploaders"/>
 	</dialog>
-	<dialog name="CWizardWelcomePage" cookie="StStStStStStStStStStStSt" caption="피어 프로젝트에 오신 것을 환영합니다. (1/8) &apos;Envy&apos;">
-		<control caption="피어 프로젝트에 오신 것을 환영합니다 (Envy)"/>
-		<control caption="If you haven&apos;t used Envy or another P2P client before, this QuickStart wizard can help you configure your copy in a few simple steps."/>
-		<control caption="If you&apos;re a more advanced user, you can access the full range of Envy&apos;s options via the Tools menu. Click Exit to close the wizard at any time."/>
-		<control caption="This wizard will assist you to:"/>
+	<dialog name="CWizardWelcomePage" cookie="StStStStStStStStStStStStSt" caption="피어 프로젝트에 오신 것을 환영합니다. (1/8) &apos;Envy&apos;">
+		<control text="피어 프로젝트에 오신 것을 환영합니다 (Envy)"/>
+		<control text="If you haven&apos;t used Envy or another P2P client before, this QuickStart wizard can help you configure your copy in a few simple steps."/>
+		<control text="If you&apos;re a more advanced user, you can access the full range of Envy&apos;s options via the Tools menu. Click Exit to close the wizard at any time."/>
+		<control text="This wizard will assist you to:"/>
 		<control/>
-		<control caption="Tell Envy about your Internet connection"/>
+		<control text="Tell Envy about your Internet connection"/>
 		<control/>
-		<control caption="Choose which files to share"/>
+		<control text="Choose which files to share"/>
 		<control/>
-		<control caption="Connect to your choice of P2P networks, and"/>
+		<control text="Connect to your choice of P2P networks, and"/>
 		<control/>
-		<control caption="Get started using Envy."/>
+		<control text="Get started using Envy."/>
+		<control/>
 	</dialog>
 	<dialog name="CWizardConnectionPage" cookie="StStCoStStCoStCoStCoStEdBuStms" caption="피어 프로젝트에 오신 것을 환영합니다 (2/8)">
-		<control caption="For best performance, Envy needs to know your internet connection."/>
-		<control caption="You may select the Internet connection type:"/>
-		<control caption="| Dial-up Modem| ISDN 128K| DSL 768K| DSL 1.5| Cable 3| DSL 4| DSL2 8| FIOS 10| DSL2 12| FIOS 15| FIOS 20| FIOS 25| FIOS 30| FIOS 50| T1| T3| LAN| OC3"/>
-		<control caption="Speedtest.net 에서 테스트"/>
-		<control caption="Or choose the download speed:"/>
+		<control text="For best performance, Envy needs to know your internet connection."/>
+		<control text="You may select the Internet connection type:"/>
+		<control text="| Dial-up Modem| ISDN 128K| DSL 768K| DSL 1.5| Cable 3| DSL 4| DSL2 8| FIOS 10| DSL2 12| FIOS 15| FIOS 20| FIOS 25| FIOS 30| FIOS 50| T1| T3| LAN| OC3"/>
+		<control text="Speedtest.net 에서 테스트"/>
+		<control text="Or choose the download speed:"/>
 		<control/>
-		<control caption="...and upload speed:"/>
+		<control text="...and upload speed:"/>
 		<control/>
-		<control caption="Do auto port-forwarding with Plug&apos;n&apos;Play?"/>
+		<control text="Do auto port-forwarding with Plug&apos;n&apos;Play?"/>
 		<control/>
-		<control caption="Port:"/>
+		<control text="Port:"/>
 		<control/>
-		<control caption="Random"/>
-		<control caption="Status:"/>
+		<control text="Random"/>
+		<control text="Status:"/>
 		<control/>
 	</dialog>
 	<dialog name="CWizardNetworksPage" cookie="StBuStBuStBuStBu" caption="피어 프로젝트에 오신 것을 환영합니다 (3/8)">
-		<control caption="Envy is a general purpose filesharing application that can swarm multiple P2P networks on a single download, therefore all are recommended. Note you can always manage specific networks at any time."/>
-		<control caption="Connect to Gnutella2 (Default)"/>
-		<control caption="The Gnutella2 network (G2) is Envy&apos;s premiere network, offering more features and performance than any other P2P net. (Shareaza)"/>
-		<control caption="Connect to Gnutella"/>
-		<control caption="The original Gnutella network (G1) is less feature-rich than G2, with more unwanted spam, yet remains a valuable resource. (LimeWire)"/>
-		<control caption="Connect to eDonkey2000"/>
-		<control caption="The eDonkey network (ED2K) is a popular server-based network. While not as feature-rich or fast as G2, ED2K has a vast file collection. (eMule)"/>
-		<control caption="Associate .Torrent Files  (Handle BitTorrent links by default)"/>
+		<control text="Envy is a general purpose filesharing application that can swarm multiple P2P networks on a single download, therefore all are recommended. Note you can always manage specific networks at any time."/>
+		<control text="Connect to Gnutella2 (Default)"/>
+		<control text="The Gnutella2 network (G2) is Envy&apos;s premiere network, offering more features and performance than any other P2P net. (Shareaza)"/>
+		<control text="Connect to Gnutella"/>
+		<control text="The original Gnutella network (G1) is less feature-rich than G2, with more unwanted spam, yet remains a valuable resource. (LimeWire)"/>
+		<control text="Connect to eDonkey2000"/>
+		<control text="The eDonkey network (ED2K) is a popular server-based network. While not as feature-rich or fast as G2, ED2K has a vast file collection. (eMule)"/>
+		<control text="Associate .Torrent Files  (Handle BitTorrent links by default)"/>
 	</dialog>
 	<dialog name="CWizardFoldersPage" cookie="StStEdBuStEdBuStEdBuSt" caption="피어 프로젝트에 오신 것을 환영합니다 (4/8)">
-		<control caption="Envy 첫번째 다운로드 부분적 개인 폴더로 파일을 다운로드 다음 그룹에 따라 완료되면 그들을 이동합니다."/>
-		<control caption="여기에 일시적으로 저장 불완전 파일 :"/>
+		<control text="Envy 첫번째 다운로드 부분적 개인 폴더로 파일을 다운로드 다음 그룹에 따라 완료되면 그들을 이동합니다."/>
+		<control text="여기에 일시적으로 저장 불완전 파일 :"/>
 		<control/>
 		<control/>
-		<control caption="기본적으로 여기에 파일을 저장 완료 :"/>
+		<control text="기본적으로 여기에 파일을 저장 완료 :"/>
 		<control/>
 		<control/>
-		<control caption="저장 .torrent 현재 파일 :"/>
+		<control text="저장 .torrent 현재 파일 :"/>
 		<control/>
 		<control/>
-		<control caption="일반적인 파일 형식이 있지만, 하위 폴더에 처음 설치 아르 그룹은 사용자 정의할 수 있습니다. 간단히 Drag&apos;n&apos;drop 파일."/>
+		<control text="일반적인 파일 형식이 있지만, 하위 폴더에 처음 설치 아르 그룹은 사용자 정의할 수 있습니다. 간단히 Drag&apos;n&apos;drop 파일."/>
 	</dialog>
 	<dialog name="CWizardSharePage" cookie="StStStSyBuBuSt" caption="피어 프로젝트에 오신 것을 환영합니다 (5/8)">
-		<control caption="P2P networks are only as good as the people who use them. All of the content available for download is being shared by another user."/>
-		<control caption="You do not have to share content to use Envy, however some software will behave differently to users who are not sharing anything."/>
-		<control caption="Please indicate which folders, if any, you wish to share. Simply click the Add button to add a new folder."/>
+		<control text="P2P networks are only as good as the people who use them. All of the content available for download is being shared by another user."/>
+		<control text="You do not have to share content to use Envy, however some software will behave differently to users who are not sharing anything."/>
+		<control text="Please indicate which folders, if any, you wish to share. Simply click the Add button to add a new folder."/>
 		<control/>
-		<control caption="추가..."/>
-		<control caption="제거"/>
-		<control caption="주의 : 업로드 승인되지 않은 저작권 작품이 일부 국가에서 책임을집니다."/>
+		<control text="추가..."/>
+		<control text="제거"/>
+		<control text="주의 : 업로드 승인되지 않은 저작권 작품이 일부 국가에서 책임을집니다."/>
 	</dialog>
 	<dialog name="CFolderScanDlg" cookie="StStStStStStBu" caption="Scanning Folder...">
 		<control/>
-		<control caption="..."/>
-		<control caption="Files:"/>
-		<control caption="0"/>
-		<control caption="Volume:"/>
-		<control caption="0"/>
-		<control caption="닫기"/>
+		<control text="..."/>
+		<control text="Files:"/>
+		<control text="0"/>
+		<control text="Volume:"/>
+		<control text="0"/>
+		<control text="닫기"/>
 	</dialog>
 	<dialog name="CWizardInterfacePage" cookie="StBuBuBuStStBuBuBuBuBuSt" caption="피어 프로젝트에 오신 것을 환영합니다 (6/8)">
-		<control caption="Envy supports a flexible user interface, so you can choose what is most comfortable for you.  You can change these options at any time."/>
-		<control caption="Select user interface:"/>
-		<control caption="Normal Mode"/>
-		<control caption="Basic Mode"/>
-		<control caption="Standard view offers all available commands, windows, abilities."/>
-		<control caption="Simple, easy to use menus with fewer options. Limited for new users."/>
-		<control caption="Display simple download progress bars.  (Less detail)"/>
-		<control caption="Skin 선택:"/>
-		<control caption="변화 없음"/>
-		<control caption="Windows Skin"/>
-		<control caption="어두운 Skin"/>
-		<control caption="Full selection in Settings, try mixing various skins."/>
+		<control text="Envy supports a flexible user interface, so you can choose what is most comfortable for you.  You can change these options at any time."/>
+		<control text="Select user interface:"/>
+		<control text="Normal Mode"/>
+		<control text="Basic Mode"/>
+		<control text="Standard view offers all available commands, windows, abilities."/>
+		<control text="Simple, easy to use menus with fewer options. Limited for new users."/>
+		<control text="Display simple download progress bars.  (Less detail)"/>
+		<control text="Skin 선택:"/>
+		<control text="변화 없음"/>
+		<control text="Windows Skin"/>
+		<control text="어두운 Skin"/>
+		<control text="Full selection in Settings, try mixing various skins."/>
 	</dialog>
 	<dialog name="CWizardProfilePage" cookie="StStEdStCoCoStCoStCoStEd" caption="피어 프로젝트에 오신 것을 환영합니다 (7/8)">
-		<control caption="Envy is a much friendlier place when everyone writes a few basic details about themselves."/>
-		<control caption="Display name:"/>
+		<control text="Envy is a much friendlier place when everyone writes a few basic details about themselves."/>
+		<control text="Display name:"/>
 		<control/>
-		<control caption="I am a:"/>
-		<control caption="&#160;(choose)"/>
-		<control caption="&#160;(choose)| Man| Woman| Boy| Girl"/>
-		<control caption="From:"/>
+		<control text="I am a:"/>
+		<control text="&#160;(choose)"/>
+		<control text="&#160;(choose)| Man| Woman| Boy| Girl"/>
+		<control text="From:"/>
 		<control/>
-		<control caption="Locale:"/>
+		<control text="Locale:"/>
 		<control/>
-		<control caption="댓글:"/>
+		<control text="댓글:"/>
 		<control/>
 	</dialog>
-	<dialog name="CWizardFinishedPage" cookie="StStStBuBuSt" caption="피어 프로젝트에 오신 것을 환영합니다 (8/8)">
-		<control caption="That&apos;s it. Envy has been configured to work with your computer."/>
-		<control caption="If you ever need to change your settings, you can re-run this QuickStart wizard by selecting it from the Tools menu or Home tab."/>
-		<control caption="After closing this wizard, try running a fake search to Ban the spammers. Explore toolbar tabs while waiting."/>
-		<control caption="Start Envy every time Windows starts"/>
-		<control caption="Connect to the networks when Envy starts"/>
-		<control caption="And thanks. {n}Enjoy using Envy for all your peer-to-peer networking needs."/>
+	<dialog name="CWizardFinishedPage" cookie="StStStBuBuStSt" caption="피어 프로젝트에 오신 것을 환영합니다 (8/8)">
+		<control text="That&apos;s it. Envy has been configured to work with your computer."/>
+		<control text="If you ever need to change your settings, you can re-run this QuickStart wizard by selecting it from the Tools menu or Home tab."/>
+		<control text="After closing this wizard, try running a fake search to Ban the spammers. Explore toolbar tabs while waiting."/>
+		<control text="Start Envy every time Windows starts"/>
+		<control text="Connect to networks when Envy starts"/>
+		<control text="And thanks. {n}Enjoy using Envy for all your peer-to-peer networking needs."/>
+		<control/>
 	</dialog>
 	<dialog name="CDonkeyImportDlg" cookie="StBuBuEdBu" caption="Import eDonkey Downloads">
-		<control caption="Envy has detected that you have another eDonkey program installed on your computer. Would you like to import any unfinished downloads into Envy?"/>
-		<control caption="예"/>
-		<control caption="아니오|취소"/>
+		<control text="Envy has detected that you have another eDonkey program installed on your computer. Would you like to import any unfinished downloads into Envy?"/>
+		<control text="예"/>
+		<control text="아니오|취소"/>
 		<control/>
-		<control caption="닫기"/>
+		<control text="닫기"/>
 	</dialog>
 	<dialog name="CProfileManagerDlg" cookie="SyBuBuBu" caption="Edit My Profile">
 		<control/>
-		<control caption="OK"/>
-		<control caption="취소"/>
-		<control caption="적용"/>
+		<control text="OK"/>
+		<control text="취소"/>
+		<control text="적용"/>
 		<control/>
 	</dialog>
 	<dialog name="CIdentityProfilePage" cookie="BuStStEdEdEdBuStStCoCoBuStBuBu" caption="Identity">
-		<control caption="이름:"/>
-		<control caption="Display 이름:"/>
-		<control caption="Real 이름:"/>
+		<control text="이름:"/>
+		<control text="Display 이름:"/>
+		<control text="Real 이름:"/>
 		<control/>
 		<control/>
 		<control/>
-		<control caption="_Vitals:"/>
-		<control caption="Gender:"/>
-		<control caption="Age:"/>
-		<control caption="|Male|Female"/>
+		<control text="_Vitals:"/>
+		<control text="Gender:"/>
+		<control text="Age:"/>
+		<control text="|Male|Female"/>
 		<control/>
-		<control caption="Note:"/>
-		<control caption="This profile is available to users who browse your files, primarily on the G2 network.{n}(Envy or Shareaza)"/>
-		<control caption="_Active:"/>
-		<control caption="Allow others to browse my user profile"/>
+		<control text="Note:"/>
+		<control text="This profile is available to users who browse your files, primarily on the G2 network.{n}(Envy or Shareaza)"/>
+		<control text="_Active:"/>
+		<control text="Allow others to browse my user profile"/>
 	</dialog>
 	<!-- Mising Profile Dialogs -->
 	<dialog name="CLanguageDlg" cookie="" caption="언어 선택">
 	</dialog>
 	<dialog name="CConnectToDlg" cookie="BuCoEdBuCoBuBuBu" caption="Connect To|Browse Host|Chat with User">
-		<control caption="Initiate a new connection to host or server:|Browse this host:|Message this user:"/>
+		<control text="Initiate a new connection to host or server:|Browse this host:|Message this user:"/>
 		<control/>
 		<control/>
-		<control caption="네트워크 Protocol:"/>
+		<control text="네트워크 Protocol:"/>
 		<control/>
-		<control caption="Suppress Ultrapeer"/>
-		<control caption="Connect"/>
-		<control caption="취소"/>
+		<control text="Suppress Ultrapeer"/>
+		<control text="Connect"/>
+		<control text="취소"/>
 	</dialog>
 	<dialog name="CDownloadDlg" cookie="StStStEdStBuBuBu" caption="Download File from Link">
 		<control/>
-		<control caption="New files can be downloaded directly from Web and P2P links. Simply copy/paste the URL or URI link for the file into the box below. &#160; (http:, ftp:, ed2k:, magnet:, etc.)"/>
-		<control caption="A small .torrent file is needed to begin BitTorrent downloads. Paste the .torrent's direct link above, or select a local .torrent file. (Use drag'n'drop any time.)"/>
+		<control text="New files can be downloaded directly from Web and P2P links. Simply copy/paste the URL or URI link for the file into the box below. &#160; (http:, ftp:, ed2k:, magnet:, etc.)"/>
+		<control text="A small .torrent file is needed to begin BitTorrent downloads. Paste the .torrent's direct link above, or select a local .torrent file. (Use drag'n'drop any time.)"/>
 		<control/>
 		<control/>
-		<control caption="다운로드"/>
-		<control caption="취소"/>
-		<control caption="Open Torrent"/>
+		<control text="다운로드"/>
+		<control text="취소"/>
+		<control text="Open Torrent"/>
 	</dialog>
 	<dialog name="CNewSearchDlg" cookie="EdCoBuBu" caption="New Search|Search Again|Find in Library">
 		<control/>
 		<control/>
-		<control caption="찾기"/>
-		<control caption="취소"/>
+		<control text="찾기"/>
+		<control text="취소"/>
 	</dialog>
 	<dialog name="CFilterSearchDlg" cookie="BuEdBuStBuStEdStEdStEdmsBuBuBuBuBuBuBuBuBuBuBuBuBuCoBuBuBuBuBu" caption="Filter Matches">
-		<control caption="Only show matches with these _words:"/>
+		<control text="Only show matches with these _words:"/>
 		<control/>
-		<control caption="Reg. Exp."/>
-		<control caption="(Exclude -words)"/>
-		<control caption="_Limits:"/>
-		<control caption="Min. size:"/>
+		<control text="Reg. Exp."/>
+		<control text="(Exclude -words)"/>
+		<control text="_Limits:"/>
+		<control text="Min. size:"/>
 		<control/>
-		<control caption="Max. size:"/>
+		<control text="Max. size:"/>
 		<control/>
-		<control caption="Min. number of sources:"/>
+		<control text="Min. number of sources:"/>
 		<control/>
 		<control/>
-		<control caption="_Hide:"/>
-		<control caption="Files you have already"/>
-		<control caption="Non-matching files"/>
-		<control caption="Suspicious files"/>
-		<control caption="Restricted files"/>
-		<control caption="DRM files"/>
-		<control caption="Firewalled hosts (push)"/>
-		<control caption="Unstable hosts"/>
-		<control caption="Busy hosts"/>
-		<control caption="Bogus results"/>
-		<control caption="Adult results"/>
-		<control caption="Filters:"/>
+		<control text="_Hide:"/>
+		<control text="Files you have already"/>
+		<control text="Non-matching files"/>
+		<control text="Suspicious files"/>
+		<control text="Restricted files"/>
+		<control text="DRM files"/>
+		<control text="Firewalled hosts (push)"/>
+		<control text="Unstable hosts"/>
+		<control text="Busy hosts"/>
+		<control text="Bogus results"/>
+		<control text="Adult results"/>
+		<control text="Filters:"/>
 		<control/>
-		<control caption="Set as default"/>
-		<control caption="_Save as"/>
-		<control caption="_Delete"/>
-		<control caption="Filter"/>
-		<control caption="취소"/>
+		<control text="Set as default"/>
+		<control text="_Save as"/>
+		<control text="_Delete"/>
+		<control text="Filter"/>
+		<control text="취소"/>
 	</dialog>
 	<dialog name="CSaveFilterAsDlg" cookie="EdBuBuSt" caption="Save filter as">
 		<control/>
-		<control caption="OK"/>
-		<control caption="취소"/>
-		<control caption="Save the current filter as"/>
+		<control text="OK"/>
+		<control text="취소"/>
+		<control text="Save the current filter as"/>
 	</dialog>
 	<dialog name="CDiscoveryServiceDlg" cookie="BuEdStCoBuBu" caption="Discovery Service">
-		<control caption="Service Address:"/>
+		<control text="Service Address:"/>
 		<control/>
-		<control caption="Discovery Service Type:"/>
-		<control caption="Gnutella Bootstrap|G1-WebCache|G2-WebCache|G1+G2-WebCache|Server.met URL|Blocked"/>
-		<control caption="OK"/>
-		<control caption="취소"/>
+		<control text="Discovery Service Type:"/>
+		<control text="Gnutella Bootstrap|G1-WebCache|G2-WebCache|G1+G2-WebCache|Server.met URL|Blocked"/>
+		<control text="OK"/>
+		<control text="취소"/>
 	</dialog>
 	<dialog name="CDownloadMonitorDlg" cookie="StStStStStStStStStStStStBuBuBuBu" caption="다운로드">
-		<control caption="..."/>
+		<control text="..."/>
 		<control/>
 		<control/>
 		<control/>
-		<control caption="번호 소스의:"/>
-		<control caption="..."/>
-		<control caption="Transfer speed:"/>
-		<control caption="..."/>
-		<control caption="Time remaining:"/>
-		<control caption="..."/>
-		<control caption="볼륨 다운로드:"/>
-		<control caption="..."/>
-		<control caption="Show"/>
-		<control caption="취소"/>
-		<control caption="Close"/>
-		<control caption="자동"/>
+		<control text="번호 소스의:"/>
+		<control text="..."/>
+		<control text="Transfer speed:"/>
+		<control text="..."/>
+		<control text="Time remaining:"/>
+		<control text="..."/>
+		<control text="볼륨 다운로드:"/>
+		<control text="..."/>
+		<control text="Show"/>
+		<control text="취소"/>
+		<control text="Close"/>
+		<control text="자동"/>
 	</dialog>
 	<dialog name="CFileGeneralPage" cookie="EdStStStStStEdEdEdEdEdStEdEdEdEd" caption="General">
 		<control/>
-		<control caption="File Info"/>
-		<control caption="위치:"/>
-		<control caption="종류:"/>
-		<control caption="Modified:"/>
-		<control caption="Size:"/>
+		<control text="File Info"/>
+		<control text="위치:"/>
+		<control text="종류:"/>
+		<control text="Modified:"/>
+		<control text="Size:"/>
 		<control/>
 		<control/>
 		<control/>
 		<control/>
 		<control/>
-		<control caption="Universal Resource Names (URN Hashes)"/>
+		<control text="Universal Resource Names (URN Hashes)"/>
 		<control/>
 		<control/>
 		<control/>
@@ -2841,306 +2843,306 @@
 		<control/>
 	</dialog>
 	<dialog name="CFileCommentsPage" cookie="StStCoStEdEd" caption="댓글">
-		<control caption="My Rating"/>
-		<control caption="I rate this file:"/>
-		<control caption="(No Rating)|Fake/Corrupt/Misleading|Poor|Average|Good|Very Good|Excellent"/>
-		<control caption="My Review / 댓글"/>
+		<control text="My Rating"/>
+		<control text="I rate this file:"/>
+		<control text="(No Rating)|Fake/Corrupt/Misleading|Poor|Average|Good|Very Good|Excellent"/>
+		<control text="My Review / 댓글"/>
 		<control/>
 		<control/>
 	</dialog>
 <!--
 	<dialog name="CFileSharingPage" cookie="EdStBuBuBuStCo" caption="Sharing">
 		<control/>
-		<control caption="Simple Sharing"/>
-		<control caption="Default sharing (if parent folder is shared)"/>
-		<control caption="Override default sharing for this file:"/>
-		<control caption="Publicly share this file"/>
-		<control caption="Upload Queue Selection Tags"/>
+		<control text="Simple Sharing"/>
+		<control text="Default sharing (if parent folder is shared)"/>
+		<control text="Override default sharing for this file:"/>
+		<control text="Publicly share this file"/>
+		<control text="Upload Queue Selection Tags"/>
 		<control/>
 	</dialog>
 -->
 	<dialog name="CFileSourcesPage" cookie="StStEdSyBuBuEd" caption="Sources">
-		<control caption="Known Sources"/>
-		<control caption="Add New Source"/>
+		<control text="Known Sources"/>
+		<control text="Add New Source"/>
 		<control/>
 		<control/>
-		<control caption="추가"/>
-		<control caption="제거"/>
+		<control text="추가"/>
+		<control text="제거"/>
 		<control/>
 	</dialog>
 	<dialog name="CFileCopyDlg" cookie="StStStmsmsStBuBu" caption="Copy Files|Move Files">
-		<control caption="You have selected %i files to copy to the following folder:"/>
-		<control caption="You have selected %i files to move to the following folder:"/>
+		<control text="You have selected %i files to copy to the following folder:"/>
+		<control text="You have selected %i files to move to the following folder:"/>
 		<control/>
 		<control/>
 		<control/>
-		<control caption="Ready..."/>
-		<control caption="OK"/>
-		<control caption="취소"/>
+		<control text="Ready..."/>
+		<control text="OK"/>
+		<control text="취소"/>
 	</dialog>
 	<dialog name="CFolderPropertiesDlg" cookie="StEdStCoBuStBuBu" caption="Album Folder Properties">
-		<control caption="Album Folder Title:"/>
+		<control text="Album Folder Title:"/>
 		<control/>
-		<control caption="Folder Type:"/>
+		<control text="Folder Type:"/>
 		<control/>
-		<control caption="All"/>
-		<control caption="Add this information to all files in the folder"/>
-		<control caption="OK"/>
-		<control caption="취소"/>
+		<control text="All"/>
+		<control text="Add this information to all files in the folder"/>
+		<control text="OK"/>
+		<control text="취소"/>
 	</dialog>
 	<dialog name="CGraphListDlg" cookie="SyBuBuBuBuBuBuBuBuStEdmsStBuEdBuBu" caption="Traffic Graphs">
 		<control/>
-		<control caption="추가..."/>
-		<control caption="Edit..."/>
-		<control caption="제거"/>
-		<control caption="Show:"/>
-		<control caption="Grid Lines"/>
-		<control caption="Vertical Axis"/>
-		<control caption="Legend"/>
-		<control caption="Sampling Frequency:"/>
-		<control caption="Period between samples:"/>
+		<control text="추가..."/>
+		<control text="Edit..."/>
+		<control text="제거"/>
+		<control text="Show:"/>
+		<control text="Grid Lines"/>
+		<control text="Vertical Axis"/>
+		<control text="Legend"/>
+		<control text="Sampling Frequency:"/>
+		<control text="Period between samples:"/>
 		<control/>
 		<control/>
-		<control caption="ms"/>
-		<control caption="이름:"/>
+		<control text="ms"/>
+		<control text="이름:"/>
 		<control/>
-		<control caption="OK"/>
-		<control caption="취소"/>
+		<control text="OK"/>
+		<control text="취소"/>
 	</dialog>
 	<dialog name="CGraphItemDlg" cookie="BuBuBuCoStEdStEdBuBuStBu" caption="Graph Item Properties">
-		<control caption="OK"/>
-		<control caption="취소"/>
-		<control caption="Source:"/>
+		<control text="OK"/>
+		<control text="취소"/>
+		<control text="Source:"/>
 		<control/>
-		<control caption="Multiplier:"/>
+		<control text="Multiplier:"/>
 		<control/>
-		<control caption="Units:"/>
+		<control text="Units:"/>
 		<control/>
-		<control caption="Display:"/>
-		<control caption="Select Color..."/>
+		<control text="Display:"/>
+		<control text="Select Color..."/>
 		<control/>
-		<control caption="Remove"/>
+		<control text="Remove"/>
 	</dialog>
 	<dialog name="CSecureRuleDlg" cookie="BuStCoStEdBuStEdEdEdEdStEdEdEdEdBuEdBuBuBuBuEdBuBuStCoStCoEdStEdStEdStBuBu" caption="보안 규칙">
-		<control caption="지배:"/>
-		<control caption="유형:"/>
-		<control caption="네트워크 주소 (IP)|콘텐츠 필터|차단 목록"/>
-		<control caption="논평:"/>
+		<control text="지배:"/>
+		<control text="유형:"/>
+		<control text="네트워크 주소 (IP)|콘텐츠 필터|차단 목록"/>
+		<control text="논평:"/>
 		<control/>
-		<control caption="네트워크 주소:"/>
-		<control caption="IP Address:"/>
-		<control/>
-		<control/>
-		<control/>
-		<control/>
-		<control caption="Netmask:"/>
+		<control text="네트워크 주소:"/>
+		<control text="IP Address:"/>
 		<control/>
 		<control/>
 		<control/>
 		<control/>
-		<control caption="콘텐츠 필터:"/>
+		<control text="Netmask:"/>
 		<control/>
-		<control caption="일치"/>
-		<control caption="모든 경기"/>
-		<control caption="Reg. Exp."/>
-		<control caption="파일 차단 목록:"/>
 		<control/>
-		<control caption="찾아보기"/>
-		<control caption="옵션:"/>
-		<control caption="행동:"/>
-		<control caption="None|동의|부정하다"/>
-		<control caption="만기:"/>
-		<control caption="Never (Indefinite)|At End of Session|After:"/>
 		<control/>
-		<control caption="d"/>
 		<control/>
-		<control caption="h"/>
+		<control text="콘텐츠 필터:"/>
 		<control/>
-		<control caption="m"/>
-		<control caption="OK"/>
-		<control caption="취소"/>
+		<control text="일치"/>
+		<control text="모든 경기"/>
+		<control text="Reg. Exp."/>
+		<control text="파일 차단 목록:"/>
+		<control/>
+		<control text="찾아보기"/>
+		<control text="옵션:"/>
+		<control text="행동:"/>
+		<control text="None|동의|부정하다"/>
+		<control text="만기:"/>
+		<control text="Never (Indefinite)|At End of Session|After:"/>
+		<control/>
+		<control text="d"/>
+		<control/>
+		<control text="h"/>
+		<control/>
+		<control text="m"/>
+		<control text="OK"/>
+		<control text="취소"/>
 	</dialog>
 	<dialog name="CScheduleTaskDlg" cookie="BuBuBuCoEdmsEdmsStStBuBuBuBuBuSySyBuBuBuBuBuBuBuBuBuEd" caption="일정 작업">
-		<control caption="OK"/>
-		<control caption="취소"/>
-		<control caption="Select Task Type"/>
+		<control text="OK"/>
+		<control text="취소"/>
+		<control text="Select Task Type"/>
 		<control/>
 		<control/>
 		<control/>
 		<control/>
 		<control/>
-		<control caption="% of Download limit"/>
-		<control caption="% of Upload limit"/>
-		<control caption="Active Task"/>
-		<control caption="Enable G2 Only"/>
-		<control caption="Set Event Time"/>
-		<control caption="Specified days"/>
-		<control caption="One day only"/>
+		<control text="% of Download limit"/>
+		<control text="% of Upload limit"/>
+		<control text="Active Task"/>
+		<control text="Enable G2 Only"/>
+		<control text="Set Event Time"/>
+		<control text="Specified days"/>
+		<control text="One day only"/>
 		<control/>
 		<control/>
-		<control caption="월요일"/>
-		<control caption="화요일"/>
-		<control caption="수요일"/>
-		<control caption="목요일"/>
-		<control caption="금요일"/>
-		<control caption="토요일"/>
-		<control caption="일요일"/>
-		<control caption="모든"/>
-		<control caption="설명"/>
+		<control text="월요일"/>
+		<control text="화요일"/>
+		<control text="수요일"/>
+		<control text="목요일"/>
+		<control text="금요일"/>
+		<control text="토요일"/>
+		<control text="일요일"/>
+		<control text="모든"/>
+		<control text="설명"/>
 		<control/>
 	</dialog>
 	<dialog name="CSchemaColumnsDlg" cookie="CoSyBuBuSt" caption="Select Columns from Schema">
 		<control/>
 		<control/>
-		<control caption="OK"/>
-		<control caption="취소"/>
-		<control caption="Select a schema from the list, then select the fields to display as columns."/>
+		<control text="OK"/>
+		<control text="취소"/>
+		<control text="Select a schema from the list, then select the fields to display as columns."/>
 	</dialog>
 	<dialog name="CShareManagerDlg" cookie="StSyBuBuBuBu" caption="Shared Folder Manager">
-		<control caption="This is a list of folders in your library. You can add and remove folders using the buttons on the left. When you add a new folder it is initially shared with other users, however you can unshare it from the Envy library if you wish."/>
+		<control text="This is a list of folders in your library. You can add and remove folders using the buttons on the left. When you add a new folder it is initially shared with other users, however you can unshare it from the Envy library if you wish."/>
 		<control/>
-		<control caption="추가..."/>
-		<control caption="제거"/>
-		<control caption="OK"/>
-		<control caption="취소"/>
+		<control text="추가..."/>
+		<control text="제거"/>
+		<control text="OK"/>
+		<control text="취소"/>
 	</dialog>
 	<dialog name="CURLCopyDlg" cookie="StStStStStBuBu" caption="Copy URI (P2P Link)">
-		<control caption="You can copy a URI for the selected item in a variety of different formats. Please choose the format you wish to use by clicking one of the URIs below:"/>
+		<control text="You can copy a URI for the selected item in a variety of different formats. Please choose the format you wish to use by clicking one of the URIs below:"/>
 		<control/>
 		<control/>
 		<control/>
 		<control/>
-		<control caption="Include myself as a fixed source in the URL"/>
-		<control caption="취소"/>
+		<control text="Include myself as a fixed source in the URL"/>
+		<control text="취소"/>
 	</dialog>
 	<dialog name="CURLExportDlg" cookie="StEdStCoStCoBuBumsBu" caption="Export URIs (P2P Links)">
-		<control caption="You have selected %lu files to export as Envy-powered URI references. Please select the format for the URIs, and click Save:"/>
+		<control text="You have selected %lu files to export as Envy-powered URI references. Please select the format for the URIs, and click Save:"/>
 		<control/>
-		<control caption="Insert Token:"/>
-		<control caption="Tiger Root|SHA1|MD5|ED2K (CMD4)|BitTorrent|Filename|Filename (URI)|Base Filename|File Extension|File Size|File Size (bytes)|Folder Path|Local Host|Local Port|Link|Link (URI)"/>
-		<control caption="Select preset:"/>
-		<control caption="Magnet|eDonkey|Magnet HTML|eDonkey HTML"/>
-		<control caption="Copy"/>
-		<control caption="Save..."/>
+		<control text="Insert Token:"/>
+		<control text="Tiger Root|SHA1|MD5|ED2K (CMD4)|BitTorrent|Filename|Filename (URI)|Base Filename|File Extension|File Size|File Size (bytes)|Folder Path|Local Host|Local Port|Link|Link (URI)"/>
+		<control text="Select preset:"/>
+		<control text="Magnet|eDonkey|Magnet HTML|eDonkey HTML"/>
+		<control text="Copy"/>
+		<control text="Save..."/>
 		<control/>
-		<control caption="취소"/>
+		<control text="취소"/>
 	</dialog>
 	<dialog name="CURLActionDlg" cookie="StStStStStStEdStEdStBuBuBuBuBu" caption="Envy URI Link Manager">
-		<control caption="You have clicked a Envy-powered URI that links to this content on the network:"/>
-		<control caption="You have clicked a Envy-powered URL that will connect you to this host or server:"/>
-		<control caption="You have clicked a Envy-powered URI that will allow you to browse the shared files available on the following host:"/>
-		<control caption="You have clicked a Envy-powered URI that will add this Discovery Service to your Discovery Services cache."/>
+		<control text="You have clicked a Envy-powered URI that links to this content on the network:"/>
+		<control text="You have clicked a Envy-powered URL that will connect you to this host or server:"/>
+		<control text="You have clicked a Envy-powered URI that will allow you to browse the shared files available on the following host:"/>
+		<control text="You have clicked a Envy-powered URI that will add this Discovery Service to your Discovery Services cache."/>
 		<control/>
 		<control/>
 		<control/>
 		<control/>
-		<control caption="Select the action you would like to take:"/>
-		<control caption="Download Now"/>
-		<control caption="Search for File"/>
-		<control caption="취소"/>
-		<control caption="Remember my selection next time"/>
-		<control caption="Open a download monitor window"/>
+		<control text="Select the action you would like to take:"/>
+		<control text="Download Now"/>
+		<control text="Search for File"/>
+		<control text="취소"/>
+		<control text="Remember my selection next time"/>
+		<control text="Open a download monitor window"/>
 	</dialog>
 	<dialog name="CBitprintsDownloadDlg" cookie="StStmsBuSySt" caption="Downloading Metadata...">
 		<control/>
-		<control caption="Envy is attempting to download metadata from Bitprints..."/>
+		<control text="Envy is attempting to download metadata from Bitprints..."/>
 		<control/>
-		<control caption="취소"/>
+		<control text="취소"/>
 		<control/>
-		<control caption="bitprints.getenvy.com"/>
+		<control text="bitprints.getenvy.com"/>
 	</dialog>
 	<dialog name="CFilePreviewDlg" cookie="StStStmsStBu" caption="Smart Download Preview...">
 		<control/>
-		<control caption="Envy is creating a preview of the download:"/>
+		<control text="Envy is creating a preview of the download:"/>
 		<control/>
 		<control/>
-		<control caption="(Copying downloaded chunks to a new preview file)"/>
-		<control caption="취소"/>
+		<control text="(Copying downloaded chunks to a new preview file)"/>
+		<control text="취소"/>
 	</dialog>
 	<dialog name="CWarningsDlg" cookie="StStStStStStBu" caption="Envy Respects its Users">
-		<control caption="Did you know Envy is 100% free software?"/>
-		<control caption="Envy does not contain any spyware, adware or bundled software;{n}it does not display any advertisements, popups, or other bad behavior.{n}{n}If you ever see such activity be assured that it is not coming from this program."/>
-		<control caption="Envy is proud to be Free and Open-Source Software. A non-profit team of passionate volunteers shares this product with all the freedoms of GPL and Creative Commons Licenses, in the hope that it might be useful."/>
-		<control caption="You must not have paid any money to obtain this program. Envy can be freely downloaded from GetEnvy.com, if you've paid anyone for this demand a full refund immediately."/>
-		<control caption="Envy respects and appreciates its users."/>
-		<control caption="http://getenvy.com"/>
-		<control caption="닫기"/>
+		<control text="Did you know Envy is 100% free software?"/>
+		<control text="Envy does not contain any spyware, adware or bundled software;{n}it does not display any advertisements, popups, or other bad behavior.{n}{n}If you ever see such activity be assured that it is not coming from this program."/>
+		<control text="Envy is proud to be Free and Open-Source Software. A non-profit team of passionate volunteers shares this product with all the freedoms of GPL and Creative Commons Licenses, in the hope that it might be useful."/>
+		<control text="You must not have paid any money to obtain this program. Envy can be freely downloaded from GetEnvy.com, if you've paid anyone for this demand a full refund immediately."/>
+		<control text="Envy respects and appreciates its users."/>
+		<control text="http://getenvy.com"/>
+		<control text="닫기"/>
 	</dialog>
 	<dialog name="CPromoteDlg" cookie="StStStStStStBu" caption="Spread the Word">
-		<control caption="Help Spread the Word"/>
-		<control caption="Hope you've enjoyed using Envy so far, it strives to be the best true file sharing software available."/>
-		<control caption="Unfortunately, a lot of potential filesharers don't know what they're missing."/>
-		<control caption="If you know someone who might like Envy, whether a new user or still using older software, let them know there is a better alternative. And Thanks."/>
-		<control caption="{This is the last welcome message you will see.}"/>
-		<control caption="http://getenvy.com"/>
-		<control caption="OK"/>
+		<control text="Help Spread the Word"/>
+		<control text="Hope you've enjoyed using Envy so far, it strives to be the best true file sharing software available."/>
+		<control text="Unfortunately, a lot of potential filesharers don't know what they're missing."/>
+		<control text="If you know someone who might like Envy, whether a new user or still using older software, let them know there is a better alternative. And Thanks."/>
+		<control text="{This is the last welcome message you will see.}"/>
+		<control text="http://getenvy.com"/>
+		<control text="OK"/>
 	</dialog>
 	<dialog name="CExistingFileDlg" cookie="StStStStBuBuBuBuBuStSt" caption="Existing File">
 		<control/>
 		<control/>
 		<control/>
-		<control caption="You already have this file in your file library. What would you like to do?"/>
-		<control caption="Show me the file in my library"/>
-		<control caption="Download the file again"/>
-		<control caption="Don't download this file"/>
-		<control caption="OK"/>
-		<control caption="취소"/>
-		<control caption="You have downloaded and deleted this file before. What would you like to do?"/>
-		<control caption="Warning: Duplicate files detected. Some malicious software may infect your Library. Make sure that you downloaded this file or placed it manually. Otherwise, shutdown Envy and scan your computer with an antivirus program."/>
+		<control text="You already have this file in your file library. What would you like to do?"/>
+		<control text="Show me the file in my library"/>
+		<control text="Download the file again"/>
+		<control text="Don't download this file"/>
+		<control text="OK"/>
+		<control text="취소"/>
+		<control text="You have downloaded and deleted this file before. What would you like to do?"/>
+		<control text="Warning: Duplicate files detected. Some malicious software may infect your Library. Make sure that you downloaded this file or placed it manually. Otherwise, shutdown Envy and scan your computer with an antivirus program."/>
 	</dialog>
 	<dialog name="CCloseModeDlg" cookie="StBuBuBuBuBuBu" caption="Close Button">
-		<control caption="This is the first time you have clicked Envy's close button. Please choose what action you would like to take:"/>
-		<control caption="Minimize to taskbar"/>
-		<control caption="Hide to tray area"/>
-		<control caption="Hide to tray and shut down after downloads"/>
-		<control caption="Shut down Envy immediately"/>
-		<control caption="OK"/>
-		<control caption="취소"/>
+		<control text="This is the first time you have clicked Envy's close button. Please choose what action you would like to take:"/>
+		<control text="Minimize to taskbar"/>
+		<control text="Hide to tray area"/>
+		<control text="Hide to tray and shut down after downloads"/>
+		<control text="Shut down Envy immediately"/>
+		<control text="OK"/>
+		<control text="취소"/>
 	</dialog>
 	<dialog name="CUpdateServersDlg" cookie="StEdmsBuBu" caption="Download Server List File">
-		<control caption="You can download a file from the web to refresh your local list of servers.{n}Such as eDonkey server.met, DC++ hublist.xml.bz2, etc."/>
+		<control text="You can download a file from the web to refresh your local list of servers.{n}Such as eDonkey server.met, DC++ hublist.xml.bz2, etc."/>
 		<control/>
 		<control/>
-		<control caption="OK"/>
-		<control caption="취소"/>
+		<control text="OK"/>
+		<control text="취소"/>
 	</dialog>
 	<dialog name="CDeleteFileDlg" cookie="StStBuBuBuStBuStStStStCoCoEd" caption="Delete File">
-		<control caption="Confirm deletion of this file:"/>
+		<control text="Confirm deletion of this file:"/>
 		<control/>
-		<control caption="Delete"/>
-		<control caption="Delete All"/>
-		<control caption="취소"/>
+		<control text="Delete"/>
+		<control text="Delete All"/>
+		<control text="취소"/>
 		<control/>
-		<control caption="Create Ghost File"/>
-		<control caption="Envy can remember files to warn you and others in the future. A new 'ghost file' will save your comments and rating with file info."/>
-		<control caption="File rating:"/>
-		<control caption="Reason for deleting:"/>
-		<control caption="!"/>
-		<control caption="(No Rating)|Fake/Corrupt/Misleading|Poor|Average|Good|Very Good|Excellent"/>
-		<control caption="Just deleting, keep any current comments|File is very low quality or outdated|File is named incorrectly or misleading|File is fake, infected, corrupt, or unusable|File is restricted copyright material|File needs custom comments below..."/>
+		<control text="Create Ghost File"/>
+		<control text="Envy can remember files to warn you and others in the future. A new 'ghost file' will save your comments and rating with file info."/>
+		<control text="File rating:"/>
+		<control text="Reason for deleting:"/>
+		<control text="!"/>
+		<control text="(No Rating)|Fake/Corrupt/Misleading|Poor|Average|Good|Very Good|Excellent"/>
+		<control text="Just deleting, keep any current comments|File is very low quality or outdated|File is named incorrectly or misleading|File is fake, infected, corrupt, or unusable|File is restricted copyright material|File needs custom comments below..."/>
 		<control/>
 		<control/>
 	</dialog>
 	<dialog name="CCollectionExportDlg" cookie="StSyBuStStStStStEdBuBuBu" caption="Collection Export">
-		<control caption="This feature is used to export the contents of a folder or playlist as a rich collection file. Please select a template and press Next to continue.|Customize your collection by entering data below."/>
+		<control text="This feature is used to export the contents of a folder or playlist as a rich collection file. Please select a template and press Next to continue.|Customize your collection by entering data below."/>
 		<control/>
-		<control caption="Template Information:"/>
-		<control caption="이름:"/>
-		<control caption="..."/>
-		<control caption="Author:"/>
-		<control caption="..."/>
-		<control caption="Description:"/>
+		<control text="Template Information:"/>
+		<control text="이름:"/>
+		<control text="..."/>
+		<control text="Author:"/>
+		<control text="..."/>
+		<control text="Description:"/>
 		<control/>
-		<control caption="Delete|Back"/>
-		<control caption="Next|Export..."/>
-		<control caption="취소"/>
+		<control text="Delete|Back"/>
+		<control text="Next|Export..."/>
+		<control text="취소"/>
 	</dialog>
 	<dialog name="CTorrentSeedDlg" cookie="StBuBuBuStms" caption="Open Torrent File">
-		<control caption="You have opened a BitTorrent torrent file. Would you like to download its contents, or re-seed it?"/>
-		<control caption="다운로드"/>
-		<control caption="Seed"/>
-		<control caption="취소"/>
-		<control caption="To share complete files using BitTorrent they must first be seeded. Once this process is complete the Torrent will appear as a new item in your download list."/>
+		<control text="You have opened a BitTorrent torrent file. Would you like to download its contents, or re-seed it?"/>
+		<control text="다운로드"/>
+		<control text="Seed"/>
+		<control text="취소"/>
+		<control text="To share complete files using BitTorrent they must first be seeded. Once this process is complete the Torrent will appear as a new item in your download list."/>
 		<control/>
 	</dialog>
 	<dialog name="CTorrentFilesPage" cookie="StSy" caption="파일">
@@ -3152,15 +3154,15 @@
 		<control/>
 		<control/>
 		<control/>
-		<control caption="Tracker:"/>
-		<control caption="Current Tracker:"/>
-		<control caption="Seeds (Complete):"/>
-		<control caption="Peers (Incomplete):"/>
-		<control caption="Tracker Mode:"/>
-		<control caption="Disabled|Custom|Single Tracker|Multi-tracker|Multi-tracker (locked)"/>
-		<control caption="Refresh"/>
-		<control caption="추가하기"/>
-		<control caption="제거"/>
+		<control text="Tracker:"/>
+		<control text="Current Tracker:"/>
+		<control text="Seeds (Complete):"/>
+		<control text="Peers (Incomplete):"/>
+		<control text="Tracker Mode:"/>
+		<control text="Disabled|Custom|Single Tracker|Multi-tracker|Multi-tracker (locked)"/>
+		<control text="Refresh"/>
+		<control text="추가하기"/>
+		<control text="제거"/>
 	</dialog>
 	<dialog name="CTorrentGeneralPage" cookie="EdEdEdEdEdCoEdBuStStStStBuStStSt" caption="Torrent">
 		<control/>
@@ -3168,124 +3170,124 @@
 		<control/>
 		<control/>
 		<control/>
-		<control caption=" As needed| When ratio over 100%| Only when requested| Never"/>
+		<control text=" As needed| When ratio over 100%| Only when requested| Never"/>
 		<control/>
-		<control caption="Torrent Information:"/>
-		<control caption="이름:"/>
-		<control caption="Created:"/>
-		<control caption="By:"/>
-		<control caption="댓글:"/>
-		<control caption="Transfers:"/>
-		<control caption="Start new download transfers:"/>
-		<control caption="Total Uploaded:"/>
-		<control caption="Notes:"/>
+		<control text="Torrent Information:"/>
+		<control text="이름:"/>
+		<control text="Created:"/>
+		<control text="By:"/>
+		<control text="댓글:"/>
+		<control text="Transfers:"/>
+		<control text="Start new download transfers:"/>
+		<control text="Total Uploaded:"/>
+		<control text="Notes:"/>
 	</dialog>
 	<dialog name="CDownloadEditPage" cookie="StBuStStStStBuStEdEdEdSyBuEdBuEdBuEdBuEdBuEd" caption="일반">
-		<control caption="주의: This dialog provides advanced download editing features for power users, that may cause corruption when used incorrectly."/>
-		<control caption="세부:"/>
-		<control caption="이름:"/>
-		<control caption="위치:"/>
-		<control caption="바이트 크기:"/>
-		<control caption="날짜:"/>
-		<control caption="URN Hashes:"/>
-		<control caption="신뢰할 수있는?"/>
+		<control text="주의: This dialog provides advanced download editing features for power users, that may cause corruption when used incorrectly."/>
+		<control text="세부:"/>
+		<control text="이름:"/>
+		<control text="위치:"/>
+		<control text="바이트 크기:"/>
+		<control text="날짜:"/>
+		<control text="URN Hashes:"/>
+		<control text="신뢰할 수있는?"/>
 		<control/>
 		<control/>
 		<control/>
 		<control/>
-		<control caption="&#160;SHA1:"/>
+		<control text="&#160;SHA1:"/>
 		<control/>
-		<control caption="&#160;ED2K:"/>
+		<control text="&#160;ED2K:"/>
 		<control/>
-		<control caption="&#160;MD5:"/>
+		<control text="&#160;MD5:"/>
 		<control/>
-		<control caption="&#160;Tiger-Root:"/>
+		<control text="&#160;Tiger-Root:"/>
 		<control/>
-		<control caption="&#160;BitTorrent:"/>
+		<control text="&#160;BitTorrent:"/>
 		<control/>
 	</dialog>
 	<dialog name="CDownloadActionsPage" cookie="StStStStStStEdEdBuBuStStBu" caption="행위">
-		<control caption="주의: This dialog provides advanced download editing features for power users, that may cause corruption when used incorrectly."/>
-		<control caption="Forget all known sources"/>
-		<control caption="Forget current verification status and reverify"/>
-		<control caption="Assume file is 100% complete and reverify"/>
-		<control caption="Merge with local file and verify"/>
-		<control caption="취소 Cancel download but save incomplete files"/>
+		<control text="주의: This dialog provides advanced download editing features for power users, that may cause corruption when used incorrectly."/>
+		<control text="Forget all known sources"/>
+		<control text="Forget current verification status and reverify"/>
+		<control text="Assume file is 100% complete and reverify"/>
+		<control text="Merge with local file and verify"/>
+		<control text="취소 Cancel download but save incomplete files"/>
 		<control/>
 		<control/>
-		<control caption="행위:"/>
-		<control caption="Data Eraser:"/>
-		<control caption="Byte range:"/>
-		<control caption="to"/>
-		<control caption="Erase"/>
+		<control text="행위:"/>
+		<control text="Data Eraser:"/>
+		<control text="Byte range:"/>
+		<control text="to"/>
+		<control text="Erase"/>
 	</dialog>
 	<dialog name="CDownloadGroupDlg" cookie="BuEdBuEdBuBuBuCoBuBuBuCoStBuBu" caption="Download Group Properties">
-		<control caption="_Group Name:"/>
+		<control text="_Group Name:"/>
 		<control/>
-		<control caption="_Completed File Folder:"/>
+		<control text="_Completed File Folder:"/>
 		<control/>
 		<control/>
 		<control/>
-		<control caption="_Auto-Filters:"/>
+		<control text="_Auto-Filters:"/>
 		<control/>
-		<control caption="추가하기"/>
-		<control caption="제거"/>
-		<control caption="_Types of Files:"/>
+		<control text="추가하기"/>
+		<control text="제거"/>
+		<control text="_Types of Files:"/>
 		<control/>
-		<control caption="*Add any download type later."/>
-		<control caption="OK"/>
-		<control caption="취소"/>
+		<control text="*Add any download type later."/>
+		<control text="OK"/>
+		<control text="취소"/>
 	</dialog>
 	<dialog name="CMediaVisDlg" cookie="BuSyCoBuBuBu" caption="Select Visualisation">
-		<control caption="Select an audio visualisation from the list:"/>
+		<control text="Select an audio visualisation from the list:"/>
 		<control/>
-		<control caption="Footer Display|Full Size Display|Large Display|Medium Display|Small Display"/>
-		<control caption="Setup..."/>
-		<control caption="OK"/>
-		<control caption="취소"/>
+		<control text="Footer Display|Full Size Display|Large Display|Medium Display|Small Display"/>
+		<control text="Setup..."/>
+		<control text="OK"/>
+		<control text="취소"/>
 	</dialog>
 	<dialog name="CUpgradeDlg" cookie="StStBuBuBu" caption="New Version Available">
-		<control caption="A new version of Envy is now available. Would you like to upgrade?"/>
-		<control caption="To update now, the upgrade installer will simply be added to your download queue."/>
-		<control caption="Don't check for new versions"/>
-		<control caption="_Download"/>
-		<control caption="취소"/>
+		<control text="A new version of Envy is now available. Would you like to upgrade?"/>
+		<control text="To update now, the upgrade installer will simply be added to your download queue."/>
+		<control text="Don't check for new versions"/>
+		<control text="_Download"/>
+		<control text="취소"/>
 	</dialog>
 	<dialog name="CDecodeMetadataDlg" cookie="StCoBuBuBuStStBuBu" caption="Metadata Localisation">
-		<control caption="Please select the method of re-encoding:"/>
-		<control caption="Arabic|Baltic|Central European|Chinese Simplified|Chinese Traditional|Cyrillic|Greek|Hebrew|Japanese|Korean|Thai|Turkish|Vietnamese"/>
-		<control caption="Preview:"/>
+		<control text="Please select the method of re-encoding:"/>
+		<control text="Arabic|Baltic|Central European|Chinese Simplified|Chinese Traditional|Cyrillic|Greek|Hebrew|Japanese|Korean|Thai|Turkish|Vietnamese"/>
+		<control text="Preview:"/>
 		<control/>
 		<control/>
 		<control/>
 		<control/>
-		<control caption="OK"/>
-		<control caption="취소"/>
+		<control text="OK"/>
+		<control text="취소"/>
 	</dialog>
 	<dialog name="CSelectDialog" cookie="StCoBuBu" caption="Selection">
-		<control caption="Select File:"/>
+		<control text="Select File:"/>
 		<control/>
-		<control caption="OK"/>
-		<control caption="취소"/>
+		<control text="OK"/>
+		<control text="취소"/>
 		<control/>
 	</dialog>
 	<dialog name="CIrcInputDlg" cookie="EdBuBuSt" caption="Channel Name|Reason Why">
 		<control/>
-		<control caption="OK"/>
-		<control caption="취소"/>
-		<control caption="Add a channel name:|Enter kick/ban reason:"/>
+		<control text="OK"/>
+		<control text="취소"/>
+		<control text="Add a channel name:|Enter kick/ban reason:"/>
 	</dialog>
 </dialogs>
 <!-- Remote Accesss Web Interface (Missing) -->
 <remote>
-	<tag find="text_metatitle" replace="Envy Web Interface"/>
-	<tag find="text_logout" replace="로그 아웃"/>
-	<tag find="text_tabhome" replace="홈"/>
-	<tag find="text_tabdownloads" replace="다운로드"/>
-	<tag find="text_tabuploads" replace="업로드"/>
-	<tag find="text_tabnetworks" replace="네트워크"/>
-	<tag find="text_tabsearch" replace="검색"/>
-	<tag find="text_" replace=""/>
+	<tag id="text_metatitle" text="Envy Web Interface"/>
+	<tag id="text_logout" text="로그 아웃"/>
+	<tag id="text_tabhome" text="홈"/>
+	<tag id="text_tabdownloads" text="다운로드"/>
+	<tag id="text_tabuploads" text="업로드"/>
+	<tag id="text_tabnetworks" text="네트워크"/>
+	<tag id="text_tabsearch" text="검색"/>
+	<tag id="text_" text=""/>
 </remote>
 <!-- Columns Definitions -->
 <listcolumns>

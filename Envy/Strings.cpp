@@ -1345,6 +1345,7 @@ CString HostToString(const SOCKADDR_IN* pHost)
 	InetNtop( AF_INET, &(IN_ADDR)(pHost->sin_addr), ipbuf, sizeof(ipbuf) );
 	strHost.Format( L"%s:%hu", (LPCTSTR)ipbuf, ntohs( pHost->sin_port ) );
 #else // XP (inet_ntoa deprecated Vista+)
+#define _WINSOCK_DEPRECATED_NO_WARNINGS
 	strHost.Format( L"%s:%hu", (LPCTSTR)CString( inet_ntoa( pHost->sin_addr ) ), ntohs( pHost->sin_port ) );
 #endif
 	return strHost;

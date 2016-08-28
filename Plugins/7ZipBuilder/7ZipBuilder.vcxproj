@@ -178,7 +178,7 @@
     </PostBuildEvent>
     <PreBuildEvent>
       <Message>Pre-Build Dependencies</Message>
-      <Command>copy "7zxa-x64.dll" "$(TargetDir)/7zxa.dll" /b /y</Command>
+      <Command>copy "7zxa.64.dll" "$(TargetDir)/7zxa.dll" /b /y</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">

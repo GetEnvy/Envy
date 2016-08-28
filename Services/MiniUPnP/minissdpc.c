@@ -73,6 +73,10 @@ struct sockaddr_un {
 #define HAS_IP_MREQN
 #endif
 
+//#if !defined(HAS_IP_MREQN) && !defined(_WIN32)
+//#include <sys/ioctl.h>
+//#endif
+
 #if defined(HAS_IP_MREQN) && defined(NEED_STRUCT_IP_MREQN)
 /* Several versions of glibc don't define this structure,
  * define it here and compile with CFLAGS NEED_STRUCT_IP_MREQN */
@@ -652,11 +656,13 @@ ssdpDiscoverDevices(const char * const deviceTypes[],
 				{
 					PRINT_SOCKET_ERROR("setsockopt");
 				}
-#else
+#elif !defined(_WIN32)
+				// Code Removed
+#else /* _WIN32 */
 #ifdef DEBUG
 				printf("Setting of multicast interface not supported with interface name.\n");
 #endif
-#endif
+#endif /* #ifdef HAS_IP_MREQN / !defined(_WIN32) */
 			}
 		}
 	}

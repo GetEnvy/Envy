@@ -146,12 +146,16 @@ void CVersionChecker::OnRun()
 
 BOOL CVersionChecker::ExecuteRequest()
 {
+	// ToDo: https://sf.net/p/getenvy/code/HEAD/tree/trunk/release?format=raw
+	// Or:   https://raw.githubusercontent.com/GetEnvy/Envy/master/release
+	// Or use L"http://getenvy.sourceforge.net/update"
+
 	const CString strURL = UPDATE_URL		// Settings.VersionCheck.UpdateCheckURL
 		  L"?Version=" + theApp.m_sVersion
 #ifdef WIN64
-		+ L"&Platform=x64"
+		+ L"&Bits=64"
 #else
-		+ L"&Platform=Win32"
+		+ L"&Bits=32"
 #endif	// WIN64
 		+ L"&Language=" + Settings.General.Language.Left(2);
 
@@ -170,7 +174,7 @@ BOOL CVersionChecker::ExecuteRequest()
 
 	theApp.Message( MSG_DEBUG | MSG_FACILITY_INCOMING, L"[VersionChecker] Response: %s", (LPCTSTR)strOutput );
 
-	for ( strOutput += '&' ; strOutput.GetLength() ; )
+	for ( strOutput += L'&' ; ! strOutput.IsEmpty() ; )
 	{
 		CString strItem	= strOutput.SpanExcluding( L"&" );
 		strOutput		= strOutput.Mid( strItem.GetLength() + 1 );
