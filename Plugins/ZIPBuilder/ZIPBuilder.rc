@@ -46,7 +46,7 @@ BEGIN
             VALUE "FileDescription", "ZIP Builder"
             VALUE "FileVersion", "1.0.0.0"
             VALUE "InternalName", "ZIPBuilder"
-            VALUE "LegalCopyright", "© Envy 2016  (2008-2014)"
+            VALUE "LegalCopyright", "© Envy 2016"
             VALUE "OriginalFilename", "ZIPBuilder.dll"
             VALUE "ProductName", "Envy"
             VALUE "ProductVersion", "1.0.0.0"

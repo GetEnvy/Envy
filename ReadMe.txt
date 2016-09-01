@@ -1,3 +1,9 @@
+Envy.
+Multi-Network P2P Filesharing and BitTorrent Client for Windows.
+http://getenvy.com
+
+
+
 Envy Compiling Notes:
 _____________________
 
@@ -17,7 +23,7 @@ _____________________
 
 3. Build the project
 	- Open \Visual Studio\ folder
-	- Click SetVS201X.bat file if needed to update project files for earlier versions
+	- Click SetVS201X.bat file if desired to update project files for earlier versions
 	- Open Envy.sln file and click "Build Solution"
 
 
@@ -31,7 +37,7 @@ ___________________
 0. This sourcecode package contains files under several permissive licenses, read them.
 
 
-1. Code is GPL/AGPLv3, except where noted otherwise.
+1. Code is AGPLv3 ("Affero GPL"), except where noted otherwise.
 	- Any resulting build or reuse must be AGPL 3+ compliant, including section 7 "Additional Terms."
 	- As this is network server software affecting others, Affero REQUIRES PUBLIC AVAILABILITY OF MODIFIED CODE.
 	- Other original work not covered by a prior license is available as Persistent Public Domain license (PPD).
@@ -48,7 +54,8 @@ ___________________
 
 
 Envy is copyright Envy Development Team (getenvy.com)
-Previously developed as PeerProject (peerproject.org)
-Some portions previously copyright Shareaza Development Team, and others (shareaza.sourceforge.net)
+Previously developed as PeerProject (peerproject.org, peerproject.sourceforge.net)
+Originally derived from Shareaza, with appreciation. (shareaza.sourceforge.net)
+Therefore some portions previously copyright Shareaza Development Team, and others.
 
 All good-faith use is encouraged, no scams or misrepresentation will be tolerated.  Proud to be Open Source.

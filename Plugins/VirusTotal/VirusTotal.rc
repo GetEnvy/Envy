@@ -43,11 +43,11 @@ BEGIN
         BLOCK "000004b0"
         BEGIN
             VALUE "Comments", "VirusTotal.com file hash check against known viruses."
-            VALUE "CompanyName", "Envy"
+            VALUE "CompanyName", "GetEnvy.com"
             VALUE "FileDescription", "VirusTotal plugin for Envy"
             VALUE "FileVersion", "1.0.0.0"
             VALUE "InternalName", "VirusTotal.dll"
-            VALUE "LegalCopyright", "© Nikolay Raspopov, 2009"
+            VALUE "LegalCopyright", "© Envy 2016, Nikolay Raspopov 2009"
             VALUE "OriginalFilename", "VirusTotal.dll"
             VALUE "ProductName", "VirusTotal plugin for Envy"
             VALUE "ProductVersion", "1.0.0.0"

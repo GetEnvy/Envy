@@ -82,7 +82,7 @@ BEGIN
             VALUE "FileDescription", "GFL Library Builder Plugin"
             VALUE "FileVersion", "1.0.0.0"
             VALUE "InternalName", "GFLLibraryBuilder"
-            VALUE "LegalCopyright", "© Envy 2016  (2008-2014)"
+            VALUE "LegalCopyright", "© Envy 2016"
             VALUE "OriginalFilename", "GFLLibraryBuilder.dll"
             VALUE "ProductName", "Envy"
             VALUE "ProductVersion", "1.0.0.0"

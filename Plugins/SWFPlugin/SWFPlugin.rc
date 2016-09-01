@@ -71,7 +71,7 @@ BEGIN
             VALUE "FileDescription", "SWF Library Builder & Image Service Plugins"
             VALUE "FileVersion", "1.0.0.0"
             VALUE "InternalName", "SWFPlugin"
-            VALUE "LegalCopyright", "© Envy 2016  (2008-2014)"
+            VALUE "LegalCopyright", "© Envy 2016"
             VALUE "OriginalFilename", "SWFPlugin.dll"
             VALUE "ProductName", "Envy"
             VALUE "ProductVersion", "1.0.0.0"

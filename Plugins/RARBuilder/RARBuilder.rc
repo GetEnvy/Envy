@@ -46,7 +46,7 @@ BEGIN
             VALUE "FileDescription", "RAR Builder"
             VALUE "FileVersion", "1.0.0.0"
             VALUE "InternalName", "RARBuilder"
-            VALUE "LegalCopyright", "© Envy 2016  (2008-2014)"
+            VALUE "LegalCopyright", "© Envy 2016"
             VALUE "OriginalFilename", "RARBuilder.dll"
             VALUE "ProductName", "Envy"
             VALUE "ProductVersion", "1.0.0.0"

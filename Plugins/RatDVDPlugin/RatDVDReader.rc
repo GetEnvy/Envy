@@ -74,7 +74,7 @@ BEGIN
             VALUE "FileDescription", "Envy RatDVD Reader Plugin"
             VALUE "FileVersion", "1.0.0.0"
             VALUE "InternalName", "RatDVDReader"
-            VALUE "LegalCopyright", "© Envy 2016  (2008-2014)"
+            VALUE "LegalCopyright", "© Envy 2016"
             VALUE "OriginalFilename", "RatDVDReader.dll"
             VALUE "ProductName", "Envy"
             VALUE "ProductVersion", "1.0.0.0"

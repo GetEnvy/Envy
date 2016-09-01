@@ -435,7 +435,7 @@ Source: "Skins\*"; DestDir: "{app}\Skins"; Flags: ignoreversion overwritereadonl
 ; Languages
 Source: "Languages\*.ico"; DestDir: "{app}\Skins\Languages"; Flags: ignoreversion overwritereadonly uninsremovereadonly sortfilesbyextension
 Source: "Languages\*.xml"; DestDir: "{app}\Skins\Languages"; Flags: ignoreversion overwritereadonly uninsremovereadonly sortfilesbyextension; Excludes: "en.xml"
-Source: "Languages\en.xml"; DestDir: "{app}\Skins\Languages\en.xml.sample"; Flags: ignoreversion overwritereadonly uninsremovereadonly sortfilesbyextension
+Source: "Languages\en.xml"; DestName: "en.defaults"; DestDir: "{app}\Skins\Languages"; Flags: ignoreversion overwritereadonly uninsremovereadonly sortfilesbyextension
 ; See Languages.iss for by-selection-only
 
 ; Templates

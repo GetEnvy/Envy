@@ -47,7 +47,7 @@ BEGIN
             VALUE "FileDescription", "Envy Web Hook"
             VALUE "FileVersion", "1.0.0.0"
             VALUE "InternalName", "WebHook"
-            VALUE "LegalCopyright", "© Envy 2016  (2009-2014)"
+            VALUE "LegalCopyright", "© Envy 2016"
             VALUE "OriginalFilename", "WebHook.dll"
             VALUE "ProductName", "Envy"
             VALUE "ProductVersion", "1.0.0.0"

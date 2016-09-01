@@ -25,7 +25,7 @@ LANGUAGE LANG_NEUTRAL, SUBLANG_NEUTRAL
 //
 
 VS_VERSION_INFO VERSIONINFO
- FILEVERSION 1,0,0
+ FILEVERSION 1,0,0,0
  PRODUCTVERSION 1,0,0,0
  FILEFLAGSMASK 0x3fL
 #ifdef _DEBUG
@@ -46,7 +46,7 @@ BEGIN
             VALUE "FileDescription", "Torrent Envy"
             VALUE "FileVersion", "1.0.0"
             VALUE "InternalName", "TorrentEnvy"
-            VALUE "LegalCopyright", "© Envy 2016  (2008-2014)"
+            VALUE "LegalCopyright", "© Envy 2016"
             VALUE "OriginalFilename", "TorrentEnvy.exe"
             VALUE "ProductName", "Envy"
             VALUE "ProductVersion", "1.0.0.0"

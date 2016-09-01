@@ -110,7 +110,6 @@
 	<emoticon text="((t))"><source name="msn" left="528" right="544" top="0" bottom="16"/></emoticon>
 
 	<emoticon text="(({))" button="yes"><source name="msn" left="544" right="560" top="0" bottom="16"/></emoticon>
-
 	<emoticon text="((}))" button="yes"><source name="msn" left="560" right="576" top="0" bottom="16"/></emoticon>
 
 	<emoticon text="((B))" button="yes"><source name="msn" left="576" right="592" top="0" bottom="16"/></emoticon>
@@ -119,24 +118,14 @@
 	<emoticon text="((D))" button="yes"><source name="msn" left="592" right="608" top="0" bottom="16"/></emoticon>
 	<emoticon text="((d))"><source name="msn" left="592" right="608" top="0" bottom="16"/></emoticon>
 
-	<emoticon text="((Z))" button="yes"><source name="msn" left="608" right="624" top="0" bottom="16"/></emoticon>
-	<emoticon text="((z))"><source name="msn" left="608" right="624" top="0" bottom="16"/></emoticon>
+	<emoticon text="((Y))" button="yes"><source name="msn" left="608" right="624" top="0" bottom="16"/></emoticon>
+	<emoticon text="((y))"><source name="msn" left="608" right="624" top="0" bottom="16"/></emoticon>
 
-	<emoticon text="((X))" button="yes"><source name="msn" left="624" right="640" top="0" bottom="16"/></emoticon>
-	<emoticon text="((x))"><source name="msn" left="624" right="640" top="0" bottom="16"/></emoticon>
+	<emoticon text="((N))" button="yes"><source name="msn" left="624" right="640" top="0" bottom="16"/></emoticon>
+	<emoticon text="((n))"><source name="msn" left="624" right="640" top="0" bottom="16"/></emoticon>
 
-	<emoticon text="((Y))" button="yes"><source name="msn" left="640" right="656" top="0" bottom="16"/></emoticon>
-	<emoticon text="((y))"><source name="msn" left="640" right="656" top="0" bottom="16"/></emoticon>
-
-	<emoticon text="((N))" button="yes"><source name="msn" left="656" right="672" top="0" bottom="16"/></emoticon>
-	<emoticon text="((n))"><source name="msn" left="656" right="672" top="0" bottom="16"/></emoticon>
-
-	<emoticon text="((1))" button="yes"><source name="msn" left="672" right="688" top="0" bottom="16"/></emoticon>
-
-	<emoticon text="((2))" button="yes"><source name="msn" left="704" right="720" top="0" bottom="16"/></emoticon>
-
-	<emoticon text="((3))" button="yes"><source name="msn" left="720" right="736" top="0" bottom="16"/></emoticon>
-
-	<emoticon text="((4))" button="yes"><source name="msn" left="736" right="752" top="0" bottom="16"/></emoticon>
-
+	<emoticon text="((1))" button="yes"><source name="msn" left="640" right="656" top="0" bottom="16"/></emoticon>
+	<emoticon text="((2))" button="yes"><source name="msn" left="656" right="672" top="0" bottom="16"/></emoticon>
+	<emoticon text="((3))" button="yes"><source name="msn" left="670" right="688" top="0" bottom="16"/></emoticon>
+	<emoticon text="((4))" button="yes"><source name="msn" left="688" right="704" top="0" bottom="16"/></emoticon>
 </emoticons>

@@ -3,7 +3,7 @@
 
 <!-- Envy Default Chinese (Simplified) Skin File -->
 
-<!-- Translation based on default en.xml r8 --> <!-- (Shareaza r6092) -->
+<!-- Translation based on default en.xml r10 --> <!-- (Shareaza r6092) -->
 <!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -1348,7 +1348,7 @@
 			<item id="ID_MEDIA_SIZE_DISTORT" text="适合窗口"/>
 			<separator/>
 			<item id="ID_MEDIA_ASPECT_DEFAULT" text="默认比例"/>
-			<item id="ID_MEDIA_ASPECT_4_3" text="4:3 电视比例(_4)"/>
+			<item id="ID_MEDIA_ASPECT_4_3" text="4:3 电视比例"/>
 			<item id="ID_MEDIA_ASPECT_16_9" text="16:9 电影比例"/>
 			<separator/>
 			<item id="ID_MEDIA_FULLSCREEN" text="全屏"/>
@@ -1386,7 +1386,7 @@
 			<item id="ID_MEDIA_SIZE_DISTORT" text="适合窗口"/>
 			<separator/>
 			<item id="ID_MEDIA_ASPECT_DEFAULT" text="默认比例"/>
-			<item id="ID_MEDIA_ASPECT_4_3" text="4:3 电视比例(_4)"/>
+			<item id="ID_MEDIA_ASPECT_4_3" text="4:3 电视比例"/>
 			<item id="ID_MEDIA_ASPECT_16_9" text="16:9 电影比例"/>
 			<separator/>
 			<item id="ID_MEDIA_FULLSCREEN" text="全屏"/>
@@ -1408,7 +1408,7 @@
 		<item id="ID_MEDIA_SIZE_DISTORT" text="适合窗口"/>
 		<separator/>
 		<item id="ID_MEDIA_ASPECT_DEFAULT" text="默认比例"/>
-		<item id="ID_MEDIA_ASPECT_4_3" text="4:3 电视比例(_4)"/>
+		<item id="ID_MEDIA_ASPECT_4_3" text="4:3 电视比例"/>
 		<item id="ID_MEDIA_ASPECT_16_9" text="16:9 电影比例"/>
 	</menu>
 	<menu name="CMediaList">
@@ -1677,7 +1677,7 @@
 		<icon res="182" width="16" height="16" target="command:ID_HELP_FAQ"/><gap size="8"/>
 		<link target="command:ID_HELP_FAQ" align="middle">快速帮助</link><gap size="6"/>
 		<text align="middle">- 获取使用 Envy 的基本帮助, or </text>
-		<link target="command:ID_TAB_IRC" align="middle">IRC.</link>
+		<link target="command:ID_TAB_IRC" align="middle">IRC</link>
 		<newline gap="8"/>
 		<icon res="201" width="16" height="16" target="command:ID_HELP_FORUMS_LOCAL"/><gap size="8"/>
 		<link target="command:ID_HELP_FORUMS_LOCAL" align="middle">本地论坛</link><gap size="6"/>
@@ -2606,7 +2606,7 @@
 	<string id="20065" text="很好"/>
 	<string id="20066" text="极棒"/>
 	<string id="20080" text="这是 Envy 的内部测试版本， beta 测试期已经结束。请下载 http://getenvy.com 完整的官方版本。"/>
-	<string id="20081" text="关闭(_C)"/>
+	<string id="20081" text="关闭"/>
 	<string id="20082" text="已完成，单击关闭"/>
 	<string id="20083" text="请求中..."/>
 	<string id="20084" text="成功"/>
@@ -3246,7 +3246,7 @@
 	<string id="20861" text="移除对 %s 主机的上传 &quot;%s&quot;."/>
 	<string id="20862" text="添加"/>
 	<string id="20864" text="浏览"/>
-	<string id="20865" text="连接(_C)"/>
+	<string id="20865" text="连接"/>
 	<string id="20866" text="文件名:"/>
 	<string id="20867" text="主机:"/>
 	<string id="20868" text="端口:"/>
@@ -3263,7 +3263,7 @@
 	<string id="20885" text="更改显示模式将关闭您已经打开的窗口。您要立即更改吗？"/>
 	<string id="20886" text="变更界面方向需要重新启动。\n\n立即退出？"/>
 	<string id="20890" text="欢迎来到 Envy"/>
-	<string id="20891" text="退出(_X)"/>
+	<string id="20891" text="退出"/>
 	<string id="20892" text="请稍候: 更新 edonkey 服务器列表..."/>
 	<string id="20893" text="请稍候: 更新发现服务器..."/>
 	<!--string id="20894" text="请稍候: 查找 UPnP 驱动器并进行设置..."-->
@@ -3340,12 +3340,12 @@
 		<control text="立即清除历史"/>
 		<control text="安全的扩展名:"/>
 		<control/>
-		<control text="添加(_A)"/>
-		<control text="移除(_R)"/>
+		<control text="添加"/>
+		<control text="移除"/>
 		<control text="不共享扩展名:"/>
 		<control/>
-		<control text="添加(_A)"/>
-		<control text="移除(_R)"/>
+		<control text="添加"/>
+		<control text="移除"/>
 		<control text="在这里储存收集:"/>
 		<control/>
 		<control/>
@@ -3358,10 +3358,10 @@
 		<control text="使用 Envy 媒体播放器排队下列文件类型"/>
 		<control text="文件类型:"/>
 		<control/>
-		<control text="添加(_A)"/>
-		<control text="移除(_R)"/>
+		<control text="添加"/>
+		<control text="移除"/>
 		<control text="可视化音频插件:"/>
-		<control text="选择插件(_S)..."/>
+		<control text="选择插件..."/>
 		<control text="警告: 选择一个额外的媒体滤镜将自动禁用所有的媒体和可视化插件！"/>
 	</dialog>
 	<!--Missing dialog name="CIRCSettingsPage"-->
@@ -3402,8 +3402,8 @@
 		<control text="下载管理器:"/>
 		<control text="使用 Envy 管理所有的网页下载:"/>
 		<control/>
-		<control text="添加(_A)"/>
-		<control text="移除(_R)"/>
+		<control text="添加"/>
+		<control text="移除"/>
 		<control text="下载管理器插件只尝试下载下列文件类型。其他文件类型将由您的网页浏览器处理。Envy 只有运行时才能处理这些类型的下载。"/>
 	</dialog>
 	<dialog name="CConnectionSettingsPage" cookie="BuStCoStCoStEdBuBuBuStCoStCoBuStCoBuBuBuStEdmsStEdms" caption="连接">
@@ -3481,9 +3481,9 @@
 		<control text="平均|最大 (严格)"/>
 		<control text="队列:"/>
 		<control/>
-		<control text="新建(_N)..."/>
-		<control text="编辑(_E)..."/>
-		<control text="删除(_D)"/>
+		<control text="新建..."/>
+		<control text="编辑..."/>
+		<control text="删除"/>
 		<control text="(变更立即生效)"/>
 	</dialog>
 	<dialog name="CNetworksSettingsPage" cookie="StBuStBuStBuStBuStBuStBuStBuStBuSt" caption="网络">
@@ -3741,8 +3741,8 @@
 		<control text="使用 Envy 您没有必要共享任何文件，但是如果用户不共享任何文件某些软件会有不同的反应。"/>
 		<control text="请指出要共享的一个或多个共享文件。点击添加按钮进行添加新的文件夹。"/>
 		<control/>
-		<control text="添加(_A)..."/>
-		<control text="移除(_R)"/>
+		<control text="添加..."/>
+		<control text="移除"/>
 		<control text="警告: 散布拥有版权的作品在绝大多数国家是犯罪行为。"/>
 	</dialog>
 	<dialog name="CFolderScanDlg" cookie="StStStStStStBu" caption="扫描文件夹...">
@@ -3827,8 +3827,8 @@
 		<control/>
 		<control text="选择:"/>
 		<control text="其他 Gnutella 用户浏览您的个人资料时将会看到您的头像。定制的头像应当是 128x128 象素，可以使用您电脑上的任何图片格式。"/>
-		<control text="浏览(_B)..."/>
-		<control text="移除(_R)"/>
+		<control text="浏览..."/>
+		<control text="移除"/>
 	</dialog>
 	<dialog name="CProfileProfilePage" cookie="BuStCoStCoBuStEdStEdBuLiBuBuCo" caption="位置">
 		<control text="位置:"/>
@@ -3905,7 +3905,7 @@
 		<control/>
 		<control text="网络协议:"/>
 		<control/>
-		<control text="抑制超对等(_S)"/>
+		<control text="抑制超对等"/>
 		<control text="连接"/>
 		<control text="取消"/>
 	</dialog>
@@ -3952,8 +3952,8 @@
 		<control text="过滤:"/>
 		<control/>
 		<control text="设为默认"/>
-		<control text="另存为(_S)"/>
-		<control text="删除(_D)"/>
+		<control text="另存为"/>
+		<control text="删除"/>
 		<control text="过滤"/>
 		<control text="取消"/>
 	</dialog>
@@ -4033,8 +4033,8 @@
 		<control text="添加新的资源"/>
 		<control/>
 		<control/>
-		<control text="添加(_A)"/>
-		<control text="移除(_R)"/>
+		<control text="添加"/>
+		<control text="移除"/>
 		<control/>
 	</dialog>
 	<dialog name="CFileCopyDlg" cookie="StStStmsmsStBuBu" caption="复制文件|移动文件">
@@ -4059,9 +4059,9 @@
 	</dialog>
 	<dialog name="CGraphListDlg" cookie="SyBuBuBuBuBuBuBuBuStEdmsStBuEdBuBu" caption="通讯图表">
 		<control/>
-		<control text="添加(_A)"/>
-		<control text="编辑(_E)"/>
-		<control text="移除(_R)"/>
+		<control text="添加"/>
+		<control text="编辑"/>
+		<control text="移除"/>
 		<control text="显示:"/>
 		<control text="网格线"/>
 		<control text="垂直轴线"/>
@@ -4088,7 +4088,7 @@
 		<control text="显示:"/>
 		<control text="选择颜色..."/>
 		<control/>
-		<control text="移除(_R)"/>
+		<control text="移除"/>
 	</dialog>
 	<dialog name="CSecureRuleDlg" cookie="BuStCoStEdBuStEdEdEdEdStEdEdEdEdBuEdBuBuBuBuEdBuBuStCoStCoEdStEdStEdStBuBu" caption="安全策略">
 		<control text="规则:"/>
@@ -4168,8 +4168,8 @@
 	<dialog name="CShareManagerDlg" cookie="StSyBuBuBuBu" caption="共享文件夹管理器">
 		<control text="此列表显示了您收藏中的所有文件夹。您可以使用右边的按钮进行添加和移除。新添加的文件夹最初是共享给其他用户的，但是您可以在 Envy 收藏中取消共享。"/>
 		<control/>
-		<control text="添加(_A)..."/>
-		<control text="移除(_R)"/>
+		<control text="添加..."/>
+		<control text="移除"/>
 		<control text="确定"/>
 		<control text="取消"/>
 	</dialog>
@@ -4179,7 +4179,7 @@
 		<control/>
 		<control/>
 		<control/>
-		<control text="将自己作为固定的资源包含在链接中(_M)"/>
+		<control text="将自己作为固定的资源包含在链接中"/>
 		<control text="取消"/>
 	</dialog>
 	<dialog name="CURLExportDlg" cookie="StEdStCoStCoBuBumsBu" caption="导出 URI">
@@ -4189,7 +4189,7 @@
 		<control text="Tiger Root|SHA1|MD5|ED2K (CMD4)|文件名|文件名 (URI)|基础文件名|文件扩展名|文件大小|文件大小 (字节)|文件夹路径|本地主机|本地端口"/>
 		<control text="选择预设:"/>
 		<control/>
-		<control text="复制(_C)"/>
+		<control text="复制"/>
 		<control text="保存..."/>
 		<control/>
 		<control text="取消"/>
@@ -4204,11 +4204,11 @@
 		<control/>
 		<control/>
 		<control text="请选择您希望 Envy 采取的操作:"/>
-		<control text="立即下载(_D)"/>
-		<control text="搜索文件(_S)"/>
+		<control text="立即下载"/>
+		<control text="搜索文件"/>
 		<control text="取消"/>
-		<control text="记住我的选择(_R)"/>
-		<control text="打开下载监视器窗口(_M)"/>
+		<control text="记住我的选择"/>
+		<control text="打开下载监视器窗口"/>
 	</dialog>
 	<dialog name="CBitprintsDownloadDlg" cookie="StStmsBuSySt" caption="下载元数据...">
 		<control/>
@@ -4300,9 +4300,9 @@
 		<control/>
 		<control text="描述:"/>
 		<control/>
-		<control text="删除|后退(_B)"/>
-		<control text="前进(_N)|导出..."/>
-		<control text="取消(_C)"/>
+		<control text="删除|后退"/>
+		<control text="前进|导出..."/>
+		<control text="取消"/>
 	</dialog>
 	<dialog name="CTorrentSeedDlg" cookie="StBuBuBuStms" caption="打开 Torrent 文件">
 		<control text="您已经打开了一个 BitTorrent Torrent 文件。您希望下载它的内容，还是重新做种？"/>
@@ -4327,9 +4327,9 @@
 		<control text="(未完成):"/>
 		<control text="Tracker 模式:"/>
 		<control text="已禁用|自定义|单一 Tracker|多重 Tracker|多重 Tracker(已锁定)"/>
-		<control text="刷新(_E)"/>
-		<control text="添加(_A)"/>
-		<control text="移除(_R)"/>
+		<control text="刷新"/>
+		<control text="添加"/>
+		<control text="移除"/>
 	</dialog>
 	<dialog name="CTorrentGeneralPage" cookie="EdEdEdEdEdCoEdBuStStStStBuStStSt" caption="常规">
 		<control/>
@@ -4397,8 +4397,8 @@
 		<control/>
 		<control text="过滤:"/>
 		<control/>
-		<control text="添加(_A)"/>
-		<control text="移除(_R)"/>
+		<control text="添加"/>
+		<control text="移除"/>
 		<control text="文件类型:"/>
 		<control/>
 		<control text="*Drag&apos;n&apos;drop any download later."/>
@@ -4409,7 +4409,7 @@
 		<control text="从此列表中选择一个音频可视化效果:"/>
 		<control/>
 		<control text="页脚显示|完全显示|放大显示|中等显示|缩小显示"/>
-		<control text="设置(_S)..."/>
+		<control text="设置..."/>
 		<control text="确定"/>
 		<control text="取消"/>
 	</dialog>
@@ -4417,7 +4417,7 @@
 		<control text="现在已存在一个新的 Envy 版本。您要升级吗？"/>
 		<control text="如果您选择立即升级，Envy 将把此更新添加到您的下载队列中并自动下载。"/>
 		<control text="不要检测新版本"/>
-		<control text="立即升级(_U)"/>
+		<control text="立即升级"/>
 		<control text="取消"/>
 	</dialog>
 	<dialog name="CDecodeMetadataDlg" cookie="StCoBuBuBuStStBuBu" caption="元数据本地化">
@@ -4536,7 +4536,7 @@
 	<tag id="text_typespreadsheet" text="电子表格"/>
 	<tag id="text_typesubtitle" text="字幕"/>
 	<tag id="text_typecollection" text="Collection"/>
-	<tag id="text_" text="活动 / <%= queue_queued %> 列队，使用中 <%= queue_bandwidth %>"-->
+	<!--tag id="text_" text="活动 / <%= queue_queued %> 列队，使用中 <%= queue_bandwidth %>"-->
 </remote>
 <!-- Columns Definitions -->
 <listcolumns>

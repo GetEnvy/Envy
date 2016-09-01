@@ -3,7 +3,7 @@
 
 <!-- Envy Default Slovenian Skin File -->
 
-<!-- Translation based on default en.xml r8 --> <!-- (Shareaza 2.2.2.12) -->
+<!-- Translation based on default en.xml r10 --> <!-- (Shareaza 2.2.2.12) -->
 <!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -1593,7 +1593,7 @@
 		<icon res="182" width="16" height="16" target="command:ID_HELP_FAQ"/><gap size="8"/>
 		<link target="command:ID_HELP_FAQ" align="middle">Hitra pomoč</link><gap size="6"/>
 		<text align="middle">- Osnovna pomoč za uporabo Envy, or </text>
-		<link target="command:ID_TAB_IRC" align="middle">IRC.</link>
+		<link target="command:ID_TAB_IRC" align="middle">IRC</link>
 		<newline gap="8"/>
 		<icon res="201" width="16" height="16" target="command:ID_HELP_FORUMS_LOCAL"/><gap size="8"/>
 		<link target="command:ID_HELP_FORUMS_LOCAL" align="middle">Lokalna Forums</link><gap size="6"/>

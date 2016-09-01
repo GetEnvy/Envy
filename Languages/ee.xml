@@ -3,7 +3,7 @@
 
 <!-- Envy Default Estonian Skin File -->
 
-<!-- Translation based on default en.xml r8 --> <!-- (Shareaza 2.2.2.9) -->
+<!-- Translation based on default en.xml r10 --> <!-- (Shareaza 2.2.2.9) -->
 <!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -1610,7 +1610,7 @@
 		<icon res="182" width="16" height="16" target="command:ID_HELP_FAQ"/><gap size="8"/>
 		<link target="command:ID_HELP_FAQ" align="middle">Kiire Abi</link><gap size="6"/>
 		<text align="middle">- Envy kasutusõpetused, o </text>
-		<link target="command:ID_TAB_IRC" align="middle">IRC.</link>
+		<link target="command:ID_TAB_IRC" align="middle">IRC</link>
 		<newline gap="8"/>
 		<icon res="201" width="16" height="16" target="command:ID_HELP_FORUMS_LOCAL"/><gap size="8"/>
 		<link target="command:ID_HELP_FORUMS_LOCAL" align="middle">Kohalik Foorum</link><gap size="6"/>
@@ -4374,7 +4374,7 @@
 	<tag id="text_metatitle" text="Envy Web Interface"/>
 	<tag id="text_logout" text="Logi välja"/>
 	<tag id="text_tabhome" text="Kodu"/>
-	<tag id="text_tabdownloads" text="Allalaadimised""/>
+	<tag id="text_tabdownloads" text="Allalaadimised"/>
 	<tag id="text_tabuploads" text="Üleslaadimised"/>
 	<tag id="text_tabnetworks" text="Võrk"/>
 	<tag id="text_tabsearch" text="Otsing"/>

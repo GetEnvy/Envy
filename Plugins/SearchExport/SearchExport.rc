@@ -47,7 +47,7 @@ BEGIN
 			VALUE "FileDescription", "Search Export Plugin"
 			VALUE "FileVersion", "1.0.0.0"
 			VALUE "InternalName", "SearchExport.dll"
-			VALUE "LegalCopyright", "© Nikolay Raspopov, 2009."
+			VALUE "LegalCopyright", "© Envy 2016, Nikolay Raspopov 2009"
 			VALUE "OriginalFilename", "SearchExport.dll"
 			VALUE "ProductName", "Envy Search Export Plugin"
 			VALUE "ProductVersion", "1.0.0.0"

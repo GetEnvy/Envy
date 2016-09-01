@@ -3,7 +3,7 @@
 
 <!-- Envy Default Swedish Skin File -->
 
-<!-- Translation based on default en.xml r8 -->
+<!-- Translation based on default en.xml r10 -->
 <!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -1693,7 +1693,7 @@
 		<icon res="182" width="16" height="16" target="command:ID_HELP_FAQ"/><gap size="8"/>
 		<link target="command:ID_HELP_FAQ" align="middle">Snabbhjälp</link><gap size="6"/>
 		<text align="middle">- Få grundläggande hjälp om Envy, or </text>
-		<link target="command:ID_TAB_IRC" align="middle">IRC.</link>
+		<link target="command:ID_TAB_IRC" align="middle">IRC</link>
 		<newline gap="8"/>
 		<icon res="201" width="16" height="16" target="command:ID_HELP_FORUMS_LOCAL"/><gap size="8"/>
 		<link target="command:ID_HELP_FORUMS_LOCAL" align="middle">Local Forums</link><gap size="6"/>
@@ -3477,7 +3477,7 @@
 		<control text="Hjälp:"/>
 		<control text="Fjärråtkomst tillåter dig att lämna Envy igång på din PC och kontrollera det med en webbläsare. Du måste kunna acceptera inkommande anslutningar för att använda denna funktion (d.v.s. en ordentligt anpassad router eller dylikt)."/>
 	</dialog>
-	<3 cookie="BuStBuBuBuBuBuBuBuBuCoBuBuSt" caption="Webb">
+	<dialog name="CWebSettingsPage" cookie="BuStBuBuBuBuBuBuBuBuCoBuBuSt" caption="Webb">
 		<control text="_Hantering av P2P-länkar:"/>
 		<control text="Använd Envy för att öppna filer av typen:"/>
 		<control text="Magnet (magnet:)"/>

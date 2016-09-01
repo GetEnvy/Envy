@@ -40,7 +40,7 @@ BEGIN
             VALUE "FileDescription", "Envy Skin Installer"
             VALUE "FileVersion", "1.0.0.0"
             VALUE "InternalName", "SkinInstaller"
-            VALUE "LegalCopyright", "© Envy 2016  (2002-2014)"
+            VALUE "LegalCopyright", "© Envy 2016"
             VALUE "OriginalFilename", "SkinInstaller.exe"
             VALUE "ProductName", "Envy"
             VALUE "ProductVersion", "1.0.0.0"

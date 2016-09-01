@@ -46,7 +46,7 @@ BEGIN
             VALUE "FileDescription", "Envy Skin Metadata Extractor"
             VALUE "FileVersion", "1.0.0.0"
             VALUE "InternalName", "SkinScan"
-            VALUE "LegalCopyright", "© Envy 2016  (2008-2014)"
+            VALUE "LegalCopyright", "© Envy 2016"
             VALUE "OriginalFilename", "SkinScan.dll"
             VALUE "ProductName", "Envy"
             VALUE "ProductVersion", "1.0.0.0"

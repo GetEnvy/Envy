@@ -43,11 +43,11 @@ BEGIN
         BLOCK "000004b0"
         BEGIN
             VALUE "Comments", "Use available Windows thumbnails in Envy."
-            VALUE "CompanyName", "Envy"
+            VALUE "CompanyName", "GetEnvy.com"
             VALUE "FileDescription", "Envy Thumbnail Plugin"
             VALUE "FileVersion", "1.0.0.0"
             VALUE "InternalName", "WindowsThumbnail.exe"
-            VALUE "LegalCopyright", "© Nikolay Raspopov, 2009."
+            VALUE "LegalCopyright", "© Envy 2016, Nikolay Raspopov 2009"
             VALUE "OriginalFilename", "WindowsThumbnail.exe"
             VALUE "ProductName", "Windows Thumbnail Support Plugin"
             VALUE "ProductVersion", "1.0.0.0"

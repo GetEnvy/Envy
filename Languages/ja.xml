@@ -3,7 +3,7 @@
 
 <!-- Envy Default Japanese Skin File -->
 
-<!-- Translation based on default en.xml r8 --> <!-- (Shareaza 2.2.0.2) -->
+<!-- Translation based on default en.xml r10 --> <!-- (Shareaza 2.2.0.2) -->
 <!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -896,8 +896,8 @@
 		<separator/>
 		<menu text="フィルタ">
 			<item id="ID_HOSTCACHE_G2_HORIZON" text="Gnutella2クラスタ"/>
-			<item id="ID_HOSTCACHE_G2_CACHE" text="Gnutella2キャッシュ.../>
-			<item id="ID_HOSTCACHE_G1_CACHE" text="Gnutella1キャッシュ.../>
+			<item id="ID_HOSTCACHE_G2_CACHE" text="Gnutella2キャッシュ"/>
+			<item id="ID_HOSTCACHE_G1_CACHE" text="Gnutella1キャッシュ"/>
 			<item id="ID_HOSTCACHE_ED2K_CACHE" text="eDonkeyサーバ"/>
 		</menu>
 		<separator/>
@@ -1648,7 +1648,7 @@
 		<icon res="182" width="16" height="16" target="command:ID_HELP_FAQ"/><gap size="8"/>
 		<link target="command:ID_HELP_FAQ" align="middle">クイックヘルプ</link><gap size="6"/>
 		<text align="middle">- Envyを使う上での基本的なヘルプを参照出来ます, or </text>
-		<link target="command:ID_TAB_IRC" align="middle">IRC.</link>
+		<link target="command:ID_TAB_IRC" align="middle">IRC</link>
 		<newline gap="8"/>
 		<icon res="201" width="16" height="16" target="command:ID_HELP_FORUMS_LOCAL"/><gap size="8"/>
 		<link target="command:ID_HELP_FORUMS_LOCAL" align="middle">ローカルフォーラム</link><gap size="6"/>
