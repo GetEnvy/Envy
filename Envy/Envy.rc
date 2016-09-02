@@ -85,12 +85,12 @@ BEGIN
 			VALUE "Comments", "Envy P2P"
 			VALUE "CompanyName", "GetEnvy.com"
 			VALUE "FileDescription", "Envy P2P"
-			VALUE "FileVersion", "1.0.0.0.RC"
+			VALUE "FileVersion", "1.0.0.0"
 			VALUE "LegalCopyright", "© Envy Development Team, 2016"
 			VALUE "OriginalFilename", "Envy.exe"
 			VALUE "InternalName", "Envy"
 			VALUE "ProductName", "Envy"
-			VALUE "ProductVersion", "1.0.0.0.RC"
+			VALUE "ProductVersion", "1.0.0.0"
 		END
 	END
 	BLOCK "VarFileInfo"
