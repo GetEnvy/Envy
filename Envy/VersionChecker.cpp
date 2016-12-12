@@ -61,27 +61,24 @@ void CVersionChecker::ForceCheck()
 
 void CVersionChecker::ClearVersionCheck()
 {
-	Settings.VersionCheck.UpgradePrompt.Empty();
+	Settings.VersionCheck.UpgradeVersion.Empty();
 	Settings.VersionCheck.UpgradeFile.Empty();
+	Settings.VersionCheck.UpgradeDate.Empty();
+	Settings.VersionCheck.UpgradeSize.Empty();
 	Settings.VersionCheck.UpgradeSHA1.Empty();
 	Settings.VersionCheck.UpgradeTiger.Empty();
-	Settings.VersionCheck.UpgradeSize.Empty();
+	Settings.VersionCheck.UpgradePrompt.Empty();
 	Settings.VersionCheck.UpgradeSources.Empty();
-	Settings.VersionCheck.UpgradeVersion.Empty();
 }
 
 BOOL CVersionChecker::IsVersionNewer()
 {
-	WORD nVersion[ 4 ];
-	return ( _stscanf_s( Settings.VersionCheck.UpgradeVersion, L"%hu.%hu.%hu.%hu",
-		&nVersion[ 0 ], &nVersion[ 1 ], &nVersion[ 2 ], &nVersion[ 3 ] ) == 4 ) &&
-	//	( theApp.m_nVersion[ 0 ] < nVersion[ 0 ] ||
+	WORD nVersion[ 2 ];
+	return ( _stscanf_s( Settings.VersionCheck.UpgradeVersion, L"%hu.%hu",
+		&nVersion[ 0 ], &nVersion[ 1 ] ) == 2 ) &&
+		( theApp.m_nVersion[ 0 ] < nVersion[ 0 ] ||
 		( theApp.m_nVersion[ 0 ] == nVersion[ 0 ] &&
-		( theApp.m_nVersion[ 1 ] < nVersion[ 1 ] ||
-		( theApp.m_nVersion[ 1 ] == nVersion[ 1 ] &&
-		( theApp.m_nVersion[ 2 ] < nVersion[ 2 ] ||
-		( theApp.m_nVersion[ 2 ] == nVersion[ 2 ] &&
-		( theApp.m_nVersion[ 3 ] < nVersion[ 3 ] ) ) ) ) ) );
+		( theApp.m_nVersion[ 1 ] < nVersion[ 1 ] ) ) );
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -146,33 +143,47 @@ void CVersionChecker::OnRun()
 
 BOOL CVersionChecker::ExecuteRequest()
 {
-	// ToDo: https://sf.net/p/getenvy/code/HEAD/tree/trunk/release?format=raw
-	// Or:   https://raw.githubusercontent.com/GetEnvy/Envy/master/release
-	// Or use L"http://getenvy.sourceforge.net/update"
+	// URL: http://sf.net/p/getenvy/code/HEAD/tree/trunk/release?format=raw
+	// ALT: http://raw.githubusercontent.com/GetEnvy/Envy/master/release
+	// Response: Version=1.0&Name=Envy.1.0.exe&Size=10009496&Date=20161220&SHA1=ZAEGMBJ6CS2NZM2I7ZZ3HLNLORBCXBUB&Tiger=IUOKZDQZPLTFU4R7YJJNMVVROW7XOMUR4OJH2AA&Info=First+public+release+1.0
 
-	const CString strURL = UPDATE_URL		// Settings.VersionCheck.UpdateCheckURL
-		  L"?Version=" + theApp.m_sVersion
-#ifdef WIN64
-		+ L"&Bits=64"
-#else
-		+ L"&Bits=32"
-#endif	// WIN64
-		+ L"&Language=" + Settings.General.Language.Left(2);
+//	const CString strURL = Settings.VersionCheck.UpdateCheckURL
+//		  L"?Version=" + theApp.m_sVersion
+//#ifdef WIN64
+//		+ L"&Bits=64"
+//#else
+//		+ L"&Bits=32"
+//#endif
+//		+ L"&Language=" + Settings.General.Language.Left(2);
 
-	if ( ! m_pRequest.SetURL( strURL ) )
+	BOOL bSuccess = FALSE;
+	theApp.Message( MSG_DEBUG | MSG_FACILITY_OUTGOING, L"[VersionChecker] Request: %s", UPDATE_URL );
+	if ( m_pRequest.SetURL( UPDATE_URL ) && m_pRequest.Execute( false ) )
+	{
+		int nStatusCode = m_pRequest.GetStatusCode();
+		if ( nStatusCode >= 200 && nStatusCode < 300 )
+			bSuccess = TRUE;
+	}
+
+	if ( ! bSuccess )
+	{
+		theApp.Message( MSG_DEBUG | MSG_FACILITY_OUTGOING, L"[VersionChecker] Request: %s", UPDATE_URL_ALT );
+		if ( m_pRequest.SetURL( UPDATE_URL_ALT ) && m_pRequest.Execute( false ) )
+		{
+			int nStatusCode = m_pRequest.GetStatusCode();
+			if ( nStatusCode >= 200 && nStatusCode < 300 )
+				bSuccess = TRUE;
+		}
+	}
+
+	if ( ! bSuccess )
 		return FALSE;
-
-	theApp.Message( MSG_DEBUG | MSG_FACILITY_OUTGOING, L"[VersionChecker] Request: %s", (LPCTSTR)strURL );
-
-	if ( ! m_pRequest.Execute( false ) )
-		return FALSE;
-
-	int nStatusCode = m_pRequest.GetStatusCode();
-	if ( nStatusCode < 200 || nStatusCode > 299 ) return FALSE;
 
 	CString strOutput = m_pRequest.GetResponseString();
-
 	theApp.Message( MSG_DEBUG | MSG_FACILITY_INCOMING, L"[VersionChecker] Response: %s", (LPCTSTR)strOutput );
+
+	if ( strOutput.GetLength() < 3 )
+		return FALSE;
 
 	for ( strOutput += L'&' ; ! strOutput.IsEmpty() ; )
 	{
@@ -220,28 +231,22 @@ void CVersionChecker::ProcessResponse()
 		}
 	}
 
-	if ( m_pResponse.Lookup( L"UpgradePrompt", strValue ) )
+	m_pResponse.Lookup( L"Version", Settings.VersionCheck.UpgradeVersion );		// "UpgradeVersion"
+
+	if ( IsVersionNewer() )
 	{
-		Settings.VersionCheck.UpgradePrompt = strValue;
-
-		m_pResponse.Lookup( L"UpgradeFile", Settings.VersionCheck.UpgradeFile );
-		m_pResponse.Lookup( L"UpgradeSHA1", Settings.VersionCheck.UpgradeSHA1 );
-		m_pResponse.Lookup( L"UpgradeTiger", Settings.VersionCheck.UpgradeTiger );
-		m_pResponse.Lookup( L"UpgradeSize", Settings.VersionCheck.UpgradeSize );
-		m_pResponse.Lookup( L"UpgradeSources", Settings.VersionCheck.UpgradeSources );
-		m_pResponse.Lookup( L"UpgradeVersion", Settings.VersionCheck.UpgradeVersion );
-
-		// Old name
-		if ( Settings.VersionCheck.UpgradeSHA1.IsEmpty() )
-			m_pResponse.Lookup( L"UpgradeHash", Settings.VersionCheck.UpgradeSHA1 );
+		m_pResponse.Lookup( L"File", Settings.VersionCheck.UpgradeFile );		// "UpgradeFile"
+		m_pResponse.Lookup( L"Date", Settings.VersionCheck.UpgradeDate );
+		m_pResponse.Lookup( L"Size", Settings.VersionCheck.UpgradeSize );		// "UpgradeSize"
+		m_pResponse.Lookup( L"SHA1", Settings.VersionCheck.UpgradeSHA1 );		// "UpgradeSHA1"
+		m_pResponse.Lookup( L"Tiger", Settings.VersionCheck.UpgradeTiger );		// "UpgradeTiger"
+		m_pResponse.Lookup( L"Sources", Settings.VersionCheck.UpgradeSources );	// "UpgradeSources"
+		m_pResponse.Lookup( L"Info", Settings.VersionCheck.UpgradePrompt );		// "UpgradePrompt"
 	}
 	else
 	{
 		ClearVersionCheck();
 	}
-
-	if ( ! IsVersionNewer() )
-		ClearVersionCheck();
 
 	if ( m_pResponse.Lookup( L"AddDiscovery", strValue ) )
 	{

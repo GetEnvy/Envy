@@ -3000,18 +3000,18 @@ void CMainWnd::OnHelpForumsLocal()
 
 void CMainWnd::OnHelpUpdate()
 {
-	const CString strUpdateSite( UPDATE_URL );
+	VersionChecker.ForceCheck();
 
-	ShellExecute( GetSafeHwnd(), L"open",
-		strUpdateSite + L"?Version=" + theApp.m_sVersion
-#ifdef WIN64
-		+ L"?Platform=x64"
-#else
-		+ L"?Platform=Win32"
-#endif
-		+ L"&Language=" + Settings.General.Language.Left(2),
-		NULL, NULL, SW_SHOWNORMAL );
-	// Run CVersionChecker::ExecuteRequest() instead?
+//	const CString strUpdateSite( UPDATE_URL );
+//	ShellExecute( GetSafeHwnd(), L"open",
+//		strUpdateSite + L"?Version=" + theApp.m_sVersion
+//#ifdef WIN64
+//		+ L"?Platform=x64"
+//#else
+//		+ L"?Platform=Win32"
+//#endif
+//		+ L"&Language=" + Settings.General.Language.Left(2),
+//		NULL, NULL, SW_SHOWNORMAL );
 }
 
 void CMainWnd::OnHelpRouter()

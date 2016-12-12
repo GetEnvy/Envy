@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<schemaDescriptor location="http://schemas.getenvy.com/FavoritesFolder.xsd" xmlns="http://schemas.getenvy.com/SchemaDescriptor.xsd">
+<schemadescriptor location="http://schemas.getenvy.com/FavoritesFolder.xsd" xmlns="http://schemas.getenvy.com/SchemaDescriptor.xsd">
 
 	<object type="folder" availability="system"/>
 	<images>
@@ -35,7 +35,7 @@
 		<title language="zhs">我的最爱</title>
 		<title language="zht">喜愛的</title>
 	</titles>
-	<headerContent version="1.0">
+	<header>
 		<title language="en">Your Public Favorite Files</title>
 		<title language="en-uk">Your Public Favourite Files</title>
 		<title language="af">Jou Gunsteling Lêers</title>
@@ -89,7 +89,7 @@
 		<subtitle language="ja">このフォルダーにはライブラリー内にある映画の一覧があります</subtitle>
 		<subtitle language="zhs">此文件夹中包含了您向浏览您的收藏那个的用户所推荐的您最喜欢的文件。</subtitle>
 		<subtitle language="zht">這個資料夾包含了最愛的檔案 Envy 將推薦給其他瀏覽您收藏的使用者.</subtitle>
-	</headerContent>
+	</header>
 	<members>
 		<member name="title" search="none">
 			<display defaultColumn="true"/>
@@ -152,4 +152,4 @@
 		</member>
 	</members>
 
-</schemaDescriptor>
+</schemadescriptor>

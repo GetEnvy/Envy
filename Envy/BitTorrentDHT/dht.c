@@ -1,8 +1,8 @@
 //
 // dht.c :	Implementation of Mainline BitTorrent DHT v0.24
 //
-// This file is part of Envy (getenvy.com) © 2010-2015
-// Copyright (c) 2009-2011 by Juliusz Chroboczek
+// This file is part of Envy (getenvy.com) © 2016
+// Copyright (c) 2009-2015 by Juliusz Chroboczek
 //
 // Permission is hereby granted, free of charge, to any person obtaining
 // a copyof this software and associated documentation files (the "Software"),
@@ -57,7 +57,11 @@
 //	#include <netinet/in.h>
 #else	// MSC
 	#ifndef _WIN32_WINNT
-	#define _WIN32_WINNT 0x0501	/* Windows XP */
+		#ifdef NOXP		// WIN64
+		#define _WIN32_WINNT 0x0600	/* Windows Vista */
+		#else	// WIN32
+		#define _WIN32_WINNT 0x0501	/* Windows XP */
+		#endif
 	#endif
 	#ifndef WINVER
 	#define WINVER _WIN32_WINNT
@@ -1799,6 +1803,8 @@ dht_init(int s, int s6, const unsigned char *id, const unsigned char *v)
  fail:
 	free(buckets);
 	buckets = NULL;
+	free(buckets6);
+	buckets6 = NULL;
 	return -1;
 }
 
@@ -2404,7 +2410,7 @@ dht_insert_node(const unsigned char *id, struct sockaddr *sa, int salen)
 }
 
 int
-dht_ping_node(struct sockaddr *sa, int salen)
+dht_ping_node(const struct sockaddr *sa, int salen)
 {
 	unsigned char tid[4];
 

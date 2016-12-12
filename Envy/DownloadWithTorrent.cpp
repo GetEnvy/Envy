@@ -324,7 +324,7 @@ BOOL CDownloadWithTorrent::SubmitData(QWORD nOffset, LPBYTE pData, QWORD nLength
 //////////////////////////////////////////////////////////////////////
 // CDownloadWithTorrent set torrent
 
-BOOL CDownloadWithTorrent::SetTorrent(const CBTInfo* pTorrent)
+BOOL CDownloadWithTorrent::SetTorrent(const CBTInfo* pTorrent /*NULL*/)
 {
 	ASSUME_LOCK( Transfers.m_pSection );
 
@@ -338,6 +338,30 @@ BOOL CDownloadWithTorrent::SetTorrent(const CBTInfo* pTorrent)
 
 		m_pTorrent = *pTorrent;
 	}
+
+	// Check conflicts first
+
+	if ( m_nSize != SIZE_UNKNOWN &&			// Single file download
+		 m_pTorrent.IsAvailableInfo() &&
+		 m_pTorrent.m_nSize != m_nSize )
+		return FALSE;
+
+	if ( m_bBTHTrusted && m_oBTH && m_pTorrent.m_oBTH && m_oBTH != m_pTorrent.m_oBTH )
+		return FALSE;
+
+	if ( m_bTigerTrusted && m_oTiger && m_pTorrent.m_oTiger && m_oTiger != m_pTorrent.m_oTiger )
+		return FALSE;
+
+	if ( m_bSHA1Trusted && m_oSHA1 && m_pTorrent.m_oSHA1 && m_oSHA1 != m_pTorrent.m_oSHA1 )
+		return FALSE;
+
+	if ( m_bED2KTrusted && m_oED2K && m_pTorrent.m_oED2K && m_oED2K != m_pTorrent.m_oED2K )
+		return FALSE;
+
+	if ( m_bMD5Trusted && m_oMD5 && m_pTorrent.m_oMD5 && m_oMD5 != m_pTorrent.m_oMD5)
+		return FALSE;
+
+	// Update
 
 	if ( ! m_pTorrent.m_sName.IsEmpty() )
 		Rename( m_pTorrent.m_sName );
@@ -543,7 +567,7 @@ void CDownloadWithTorrent::RunTorrent(DWORD tNow)
 // CDownloadWithTorrent Create Peer ID
 
 // The 'Peer ID' is different for each download and is not retained between sessions.
-// -PE1000-############
+// -EN0010-############
 
 BOOL CDownloadWithTorrent::GenerateTorrentDownloadID()
 {
@@ -562,10 +586,10 @@ BOOL CDownloadWithTorrent::GenerateTorrentDownloadID()
 	m_pPeerID[ 0 ] = '-';
 	m_pPeerID[ 1 ] = BT_ID1;
 	m_pPeerID[ 2 ] = BT_ID2;
-	m_pPeerID[ 3 ] = static_cast< BYTE >( '0' + theApp.m_nVersion[0] );
-	m_pPeerID[ 4 ] = static_cast< BYTE >( '0' + theApp.m_nVersion[1] );
-	m_pPeerID[ 5 ] = static_cast< BYTE >( '0' + theApp.m_nVersion[2] );
-	m_pPeerID[ 6 ] = static_cast< BYTE >( '0' + theApp.m_nVersion[3] );
+	m_pPeerID[ 3 ] = theApp.m_szVersion[0];		// 0	static_cast< BYTE >( '0' + theApp.m_nVersion[0] )
+	m_pPeerID[ 4 ] = theApp.m_szVersion[1];		// X
+	m_pPeerID[ 5 ] = theApp.m_szVersion[2];		// X
+	m_pPeerID[ 6 ] = theApp.m_szVersion[3];		// 0
 	m_pPeerID[ 7 ] = '-';
 
 	// Random characters for the rest of the Client ID

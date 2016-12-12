@@ -870,9 +870,9 @@ void CEDClient::SendHello(BYTE nType)
 	//		Note: Including this stops the remote client sending the eMuleInfo packet.
 	DWORD nVersion = ( ( ( ED2K_CLIENT_ID & 0xFF ) << 24 ) |
 					   ( ( theApp.m_nVersion[0] & 0x7F ) << 17 ) |
-					   ( ( theApp.m_nVersion[1] & 0x7F ) << 10 ) |
-					   ( ( theApp.m_nVersion[2] & 0x07 ) << 7  ) |
-					   ( ( theApp.m_nVersion[3] & 0x7F )       ) );
+					   ( ( theApp.m_nVersion[1] & 0x7F ) << 10 ) );
+					// ( ( theApp.m_nVersion[2] & 0x07 ) << 7  ) |
+					// ( ( theApp.m_nVersion[3] & 0x7F ) ) );
 	CEDTag( ED2K_CT_SOFTWAREVERSION, nVersion ).Write( pPacket );
 
 	if ( pServer )
@@ -1379,14 +1379,14 @@ void CEDClient::DetermineUserAgent()
 				}
 				m_sUserAgent = L"Shareaza";
 				break;
-			case 80:		// Envy (Proposed 0x50)
+			case 80:		// Envy (Proposed 0x50)  (Note shared with PeerProject)
 				if ( m_bEmAICH )	// Unsupported feature for fake detection (ToDo: support AICH, etc.)
 				{
 					if ( m_sUserAgent.IsEmpty() )
 						m_sUserAgent.Format( L"eMule Mod (80) v%u", m_nEmVersion );
 					break;
 				}
-				m_sUserAgent = L"Envy";		// Also PeerProject?
+				m_sUserAgent = L"Envy";		// ToDo: Detect PeerProject?
 				break;
 			case 203:		// ShareazaPlus RazaCB
 				m_sUserAgent.Format( L"ShareazaPlus" );

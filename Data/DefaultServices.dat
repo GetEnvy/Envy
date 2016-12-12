@@ -64,7 +64,7 @@ X http://www.myfoxy.net/gwc/cgi-bin/fc
 X http://gwc.gofoxy.net:2108/gwc/cgi-bin/fc
 
 #
-# Last updated Aug 2016
+# Last updated Sept 2016
 #
 # A letter and space must precede each link to indicate the type of service:
 # X = Banned,  M = Multinetwork gwebcache,
@@ -78,5 +78,5 @@ X http://gwc.gofoxy.net:2108/gwc/cgi-bin/fc
 # Delete this file and Envy will use internal defaults.
 #
 # Live Status may be at http://gwebcaches.pongwar.com
-# Test: http://webcache.getenvy.com/?get=1&net=gnutella2&client=TEST1.0
+# Test: http://cache.getenvy.com/cachechu/?get=1&net=gnutella2&client=TEST1.0
 # Latest version at http://sourceforge.net/p/getenvy/code/HEAD/tree/trunk/Data/DefaultServices.dat

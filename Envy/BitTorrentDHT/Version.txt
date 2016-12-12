@@ -1,4 +1,4 @@
-Mainline DHT  0.22  (May.2014)
+Mainline DHT  0.24  (Aug.2015)
 
 BitTorrent Kademlia implementation
 by Juliusz Chroboczek for Transmission.

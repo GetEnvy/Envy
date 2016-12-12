@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<schemaDescriptor location="http://schemas.getenvy.com/Rom.xsd" xmlns="http://schemas.getenvy.com/SchemaDescriptor.xsd">
+<schemadescriptor location="http://schemas.getenvy.com/Rom.xsd" xmlns="http://schemas.getenvy.com/SchemaDescriptor.xsd">
 
 	<object type="file" availability="advanced"/>
 	<titles>
@@ -335,7 +335,7 @@
 			<title language="zht">ShareTag 信息</title>
 		</member>
 	</members>
-	<typeFilter>
+	<typefilter>
 		<type extension="261a"/>
 		<type extension="32x"/>
 		<type extension="a21"/>
@@ -468,6 +468,6 @@
 		<type extension="xfc"/>
 		<type extension="xdsl"/>
 		<type extension="z64"/>
-	</typeFilter>
+	</typefilter>
 
-</schemaDescriptor>
+</schemadescriptor>

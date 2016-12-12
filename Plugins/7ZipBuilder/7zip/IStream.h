@@ -1,26 +1,10 @@
-//
 // IStream.h
-//
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2011 and 7Zip (7-zip.org)
-//
-// Envy is free software; you can redistribute it and/or
-// modify it under the terms of the GNU General Public License
-// as published by the Free Software Foundation (fsf.org);
-// either version 3 of the License, or later version (at your option).
-//
-// Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-// See the GNU General Public License for more details.
-// (http://www.gnu.org/licenses/gpl.html)
-//
 
 #ifndef __ISTREAM_H
 #define __ISTREAM_H
 
-#include "MyUnknown.h"
-#include "Types.h"
+#include "MyTypes.h"
+#include "MyWindows.h"
 
 #include "IDecl.h"
 
@@ -30,13 +14,9 @@
 STREAM_INTERFACE(ISequentialInStream, 0x01)
 {
   STDMETHOD(Read)(void *data, UInt32 size, UInt32 *processedSize) PURE;
+
   /*
-  Out: if size != 0, return_value = S_OK and (*processedSize == 0),
-    then there are no more bytes in stream.
-  if (size > 0) && there are bytes in stream,
-  this function must read at least 1 byte.
-  This function is allowed to read less than number of remaining bytes in stream.
-  You must call Read function in loop, if you need exact amount of data.
+  Notes: Removed
   */
 };
 
@@ -44,11 +24,25 @@ STREAM_INTERFACE(ISequentialOutStream, 0x02)
 {
   STDMETHOD(Write)(const void *data, UInt32 size, UInt32 *processedSize) PURE;
   /*
-  if (size > 0) this function must write at least 1 byte.
-  This function is allowed to write less than "size".
-  You must call Write function in loop, if you need to write exact amount of data.
+  Notes: Removed
   */
 };
+
+#ifdef __HRESULT_FROM_WIN32
+#define HRESULT_WIN32_ERROR_NEGATIVE_SEEK __HRESULT_FROM_WIN32(ERROR_NEGATIVE_SEEK)
+#else
+#define HRESULT_WIN32_ERROR_NEGATIVE_SEEK   HRESULT_FROM_WIN32(ERROR_NEGATIVE_SEEK)
+#endif
+
+/*  Seek() Function
+  If you seek before the beginning of the stream, Seek() function returns error code:
+      Recommended error code is __HRESULT_FROM_WIN32(ERROR_NEGATIVE_SEEK).
+      or STG_E_INVALIDFUNCTION
+
+  It is allowed to seek past the end of the stream.
+
+  if Seek() returns error, then the value of *newPosition is undefined.
+*/
 
 STREAM_INTERFACE_SUB(IInStream, ISequentialInStream, 0x03)
 {
@@ -66,9 +60,33 @@ STREAM_INTERFACE(IStreamGetSize, 0x06)
   STDMETHOD(GetSize)(UInt64 *size) PURE;
 };
 
-STREAM_INTERFACE(IOutStreamFlush, 0x07)
+STREAM_INTERFACE(IOutStreamFinish, 0x07)
 {
-  STDMETHOD(Flush)() PURE;
+  STDMETHOD(OutStreamFinish)() PURE;
+};
+
+
+STREAM_INTERFACE(IStreamGetProps, 0x08)
+{
+  STDMETHOD(GetProps)(UInt64 *size, FILETIME *cTime, FILETIME *aTime, FILETIME *mTime, UInt32 *attrib) PURE;
+};
+
+struct CStreamFileProps
+{
+  UInt64 Size;
+  UInt64 VolID;
+  UInt64 FileID_Low;
+  UInt64 FileID_High;
+  UInt32 NumLinks;
+  UInt32 Attrib;
+  FILETIME CTime;
+  FILETIME ATime;
+  FILETIME MTime;
+};
+
+STREAM_INTERFACE(IStreamGetProps2, 0x09)
+{
+  STDMETHOD(GetProps2)(CStreamFileProps *props) PURE;
 };
 
 #endif

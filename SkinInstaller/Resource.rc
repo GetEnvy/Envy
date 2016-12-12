@@ -14,13 +14,21 @@
 
 
 /////////////////////////////////////////////////////////////////////////////
+// English resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+LANGUAGE LANG_ENGLISH, SUBLANG_DEFAULT
+#pragma code_page(1252)
+
+
+/////////////////////////////////////////////////////////////////////////////
 //
 // Version
 //
 
 VS_VERSION_INFO VERSIONINFO
+ PRODUCTVERSION 1,0
  FILEVERSION 1,0,0,0
- PRODUCTVERSION 1,0,0,0
  FILEFLAGSMASK 0x3fL
 #ifdef _DEBUG
  FILEFLAGS 0x1L
@@ -31,34 +39,26 @@ VS_VERSION_INFO VERSIONINFO
  FILETYPE 0x1L
  FILESUBTYPE 0x0L
 BEGIN
-    BLOCK "StringFileInfo"
-    BEGIN
-        BLOCK "000004b0"
-        BEGIN
-            VALUE "Comments", "Envy Skin Installer"
-            VALUE "CompanyName", "Envy Development Team"
-            VALUE "FileDescription", "Envy Skin Installer"
-            VALUE "FileVersion", "1.0.0.0"
-            VALUE "InternalName", "SkinInstaller"
-            VALUE "LegalCopyright", "© Envy 2016"
-            VALUE "OriginalFilename", "SkinInstaller.exe"
-            VALUE "ProductName", "Envy"
-            VALUE "ProductVersion", "1.0.0.0"
-        END
-    END
-    BLOCK "VarFileInfo"
-    BEGIN
-        VALUE "Translation", 0x0, 1200
-    END
+	BLOCK "StringFileInfo"
+	BEGIN
+		BLOCK "000004b0"
+		BEGIN
+			VALUE "ProductName", "Envy"
+			VALUE "ProductVersion", "1.0"
+			VALUE "FileVersion", "1.0.0.0"
+			VALUE "InternalName", "SkinInstaller"
+			VALUE "OriginalFilename", "SkinInstaller.exe"
+			VALUE "FileDescription", "Envy Skin Installer"
+			VALUE "Comments", "Envy Skin Installer"
+			VALUE "CompanyName", "GetEnvy.com"
+			VALUE "LegalCopyright", "© Envy Development Team 2016"
+		END
+	END
+	BLOCK "VarFileInfo"
+	BEGIN
+		VALUE "Translation", 0x0, 1200
+	END
 END
-
-
-/////////////////////////////////////////////////////////////////////////////
-// English resources
-
-#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
-LANGUAGE LANG_ENGLISH, SUBLANG_DEFAULT
-#pragma code_page(1252)
 
 
 /////////////////////////////////////////////////////////////////////////////
@@ -68,7 +68,7 @@ LANGUAGE LANG_ENGLISH, SUBLANG_DEFAULT
 
 // Icon with lowest ID value placed first to ensure
 // application icon remains consistent on all systems.
-IDI_ICON			ICON                    "Res\\Skin.ico"
+IDI_ICON		ICON                    "Res\\Skin.ico"
 IDI_ENVY		ICON                    "Res\\Envy.ico"
 
 
@@ -77,7 +77,7 @@ IDI_ENVY		ICON                    "Res\\Envy.ico"
 // Bitmap
 //
 
-IDB_BANNER			BITMAP                  "Res\\Banner.bmp"
+IDB_BANNER		BITMAP                  "Res\\Banner.bmp"
 
 
 /////////////////////////////////////////////////////////////////////////////

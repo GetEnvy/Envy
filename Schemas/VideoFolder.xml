@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<schemaDescriptor location="http://schemas.getenvy.com/VideoFolder.xsd" xmlns="http://schemas.getenvy.com/SchemaDescriptor.xsd">
+<schemadescriptor location="http://schemas.getenvy.com/VideoFolder.xsd" xmlns="http://schemas.getenvy.com/SchemaDescriptor.xsd">
 
 	<object type="folder" availability="system"/>
-	<viewContent version="1.0" preferredView="CLibraryThumbView"/>
+	<view preferredview="CLibraryThumbView"/>
 	<contains>
 		<object type="file" location="http://schemas.getenvy.com/Video.xsd"/>
 	</contains>
@@ -39,7 +39,7 @@
 		<title language="zhs">视频</title>
 		<title language="zht">影像</title>
 	</titles>
-	<headerContent version="1.0">
+	<header>
 		<title language="en">All Videos</title>
 		<title language="af">Alle Video</title>
 		<title language="ca">Tots els vídeos</title>
@@ -94,7 +94,7 @@
 		<subtitle language="ja">このフォルダーにはライブラリー内ーにある全ての動画が収録されます</subtitle>
 		<subtitle language="zhs">此文件夹包含您收藏中的所有视频。</subtitle>
 		<subtitle language="zht">這個資料夾包含了在您的收藏中所有的影像檔案.</subtitle>
-	</headerContent>
+	</header>
 	<members>
 		<member name="title" search="generic">
 			<display defaultColumn="true"/>
@@ -129,4 +129,4 @@
 		</member>
 	</members>
 
-</schemaDescriptor>
+</schemadescriptor>

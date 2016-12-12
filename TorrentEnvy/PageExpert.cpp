@@ -464,7 +464,7 @@ void CExpertPage::OnRemoveFile()
 			if ( m_wndList.GetItemCount() )
 			{
 				m_nTotalSize -= _wtoi( strSize );
-				m_sFileCount.Format( L"%i Files, %s", m_wndList.GetItemCount(), SmartSize( m_nTotalSize ) );
+				m_sFileCount.Format( L"%i Files, %s", m_wndList.GetItemCount(), (LPCTSTR)SmartSize( m_nTotalSize ) );
 			}
 			else
 			{
@@ -540,7 +540,7 @@ void CExpertPage::AddFile(LPCTSTR pszFile)
 	m_wndList.SetItemText( nItem, 2, strBytes );
 
 	m_nTotalSize += nSize;
-	m_sFileCount.Format( L"%i Files,  %s", m_wndList.GetItemCount(), SmartSize( m_nTotalSize ) );
+	m_sFileCount.Format( L"%i Files,  %s", m_wndList.GetItemCount(), (LPCTSTR)SmartSize( m_nTotalSize ) );
 
 	UpdateData( FALSE );
 	UpdateWindow();

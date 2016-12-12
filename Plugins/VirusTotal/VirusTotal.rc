@@ -26,8 +26,8 @@ LANGUAGE LANG_NEUTRAL, SUBLANG_NEUTRAL
 //
 
 VS_VERSION_INFO VERSIONINFO
+ PRODUCTVERSION 1,0
  FILEVERSION 1,0,0,0
- PRODUCTVERSION 1,0,0,0
  FILEFLAGSMASK 0x3fL
 #ifdef _DEBUG
  FILEFLAGS 0x1L
@@ -42,15 +42,15 @@ BEGIN
     BEGIN
         BLOCK "000004b0"
         BEGIN
+            VALUE "ProductName", "Envy VirusTotal"
+            VALUE "ProductVersion", "1.0"
+            VALUE "FileVersion", "1.0.0.0"
+            VALUE "InternalName", "VirusTotal"
+            VALUE "OriginalFilename", "VirusTotal.dll"
+            VALUE "FileDescription", "VirusTotal plugin for Envy"
             VALUE "Comments", "VirusTotal.com file hash check against known viruses."
             VALUE "CompanyName", "GetEnvy.com"
-            VALUE "FileDescription", "VirusTotal plugin for Envy"
-            VALUE "FileVersion", "1.0.0.0"
-            VALUE "InternalName", "VirusTotal.dll"
             VALUE "LegalCopyright", "© Envy 2016, Nikolay Raspopov 2009"
-            VALUE "OriginalFilename", "VirusTotal.dll"
-            VALUE "ProductName", "VirusTotal plugin for Envy"
-            VALUE "ProductVersion", "1.0.0.0"
         END
     END
     BLOCK "VarFileInfo"

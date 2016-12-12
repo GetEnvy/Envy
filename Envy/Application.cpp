@@ -139,17 +139,19 @@ STDMETHODIMP CApplication::XApplication::CheckVersion(BSTR sVersion)
 	METHOD_PROLOGUE( CApplication, Application )
 	if ( sVersion == NULL ) return E_INVALIDARG;
 
-	int nDesired[4];
-
-	if ( swscanf_s( sVersion, L"%i.%i.%i.%i",
-		 &nDesired[3], &nDesired[2], &nDesired[1], &nDesired[0] ) != 4 )
+	WORD nDesired[2];
+	if ( swscanf_s( sVersion, L"%u.%u",
+		 &nDesired[0], &nDesired[1] ) != 2 )
 		return E_INVALIDARG;
 
 	// Note: Assumes each version component is 8 bit
-	BOOL bOk = ( theApp.m_nVersion[0] << 24 ) + ( theApp.m_nVersion[1] << 16 ) + ( theApp.m_nVersion[2] << 8 ) + theApp.m_nVersion[3]
-			>= ( nDesired[3] << 24 ) + ( nDesired[2] << 16 ) + ( nDesired[1] << 8 ) + nDesired[0];
+	//BOOL bOk = ( theApp.m_nVersion[0] << 24 ) + ( theApp.m_nVersion[1] << 16 ) + ( theApp.m_nVersion[2] << 8 ) + theApp.m_nVersion[3]
+	//		  >= ( nDesired[3] << 24 ) + ( nDesired[2] << 16 ) + ( nDesired[1] << 8 ) + nDesired[0];
 
-	return bOk ? S_OK : S_FALSE;
+	if ( nDesired[0] > theApp.m_nVersion[0] || nDesired[1] > theApp.m_nVersion[1] )
+		return S_OK;
+
+	return S_FALSE;
 }
 
 STDMETHODIMP CApplication::XApplication::CreateXML(ISXMLElement FAR* FAR* ppXML)

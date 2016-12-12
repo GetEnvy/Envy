@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<schemaDescriptor location="http://schemas.getenvy.com/Video.xsd" xmlns="http://schemas.getenvy.com/SchemaDescriptor.xsd">
+<schemadescriptor location="http://schemas.getenvy.com/Video.xsd" xmlns="http://schemas.getenvy.com/SchemaDescriptor.xsd">
 
 	<object type="file" availability="default"/>
 	<titles>
@@ -1137,7 +1137,7 @@
 		<mapping from="rdf:rdf/rdf:Description/dc:description/dc:date" to="year"/>
 		<mapping from="rdf:rdf/rdf:Description/dcterms:rightsHolder/" to="copyright"/>
 	</bitprintImport>
-	<typeFilter>
+	<typefilter>
 		<type extension="3gp"/>
 		<type extension="3gpp"/>
 		<type extension="3g2"/>
@@ -1175,6 +1175,6 @@
 		<type extension="wmv"/>
 		<type extension="webm"/>
 		<type extension="xvid"/>
-	</typeFilter>
+	</typefilter>
 
-</schemaDescriptor>
+</schemadescriptor>

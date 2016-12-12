@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<schemaDescriptor location="http://schemas.getenvy.com/GhostFolder.xsd" xmlns="http://schemas.getenvy.com/SchemaDescriptor.xsd">
+<schemadescriptor location="http://schemas.getenvy.com/GhostFolder.xsd" xmlns="http://schemas.getenvy.com/SchemaDescriptor.xsd">
 
 	<object type="folder" availability="system" private="true"/>
-	<viewContent version="1.0" preferredView="CLibraryDetailView"/>
+	<view preferredview="CLibraryDetailView"/>
 	<images>
 		<icon path="GhostFolder.ico"/>
 	</images>
@@ -36,7 +36,7 @@
 		<title language="zhs">回收文件</title>
 		<title language="zht">回收文件</title>
 	</titles>
-	<headerContent version="1.0">
+	<header>
 		<title language="en">Ghost Files</title>
 		<title language="af">Ghost Lêers</title>
 		<title language="ca">Arxius fantasma</title>
@@ -91,7 +91,7 @@
 		<subtitle language="ja">このフォルダーには全てのライブラリーからコメント付で削除されたファイルが収録されています（ファイル自体は存在いたしません）</subtitle>
 		<subtitle language="zhs">此文件夹包含了所有您从收藏夹删除的文件。</subtitle>
 		<subtitle language="zht">這個資料夾包含所有您從收藏刪除的檔案</subtitle>
-	</headerContent>
+	</header>
 	<members>
 		<member name="title" search="none">
 			<display defaultColumn="true"/>
@@ -126,4 +126,4 @@
 		</member>
 	</members>
 
-</schemaDescriptor>
+</schemadescriptor>

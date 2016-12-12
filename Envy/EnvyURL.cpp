@@ -1468,9 +1468,9 @@ void CEnvyURL::Register(BOOL bRegister, BOOL bOnStartup)
 		if ( bRegister && Settings.Web.Torrent )
 		{
 			RegisterShellType( NULL, L"BitTorrent", L"Torrent File", L".torrent",
-				L"Envy", L"PEERFORMAT", IDR_MAINFRAME );
+				L"Envy", L"ENVYFORMAT", IDR_MAINFRAME );
 			RegisterShellType( L"Applications\\Envy.exe", NULL, L"Torrent File", L".torrent",
-				L"Envy", L"PEERFORMAT", IDR_MAINFRAME );
+				L"Envy", L"ENVYFORMAT", IDR_MAINFRAME );
 		}
 		else
 		{
@@ -1484,9 +1484,9 @@ void CEnvyURL::Register(BOOL bRegister, BOOL bOnStartup)
 	if ( bRegister )
 	{
 		RegisterShellType( NULL, CLIENT_NAME L".Download", CLIENT_NAME L" Partial Data",
-			L".pd", CLIENT_NAME, L"PEERFORMAT", IDR_MAINFRAME );
+			L".pd", CLIENT_NAME, L"ENVYFORMAT", IDR_MAINFRAME );
 		RegisterShellType( L"Applications\\" CLIENT_NAME L".exe", NULL, CLIENT_NAME L" Partial Data",
-			L".pd", CLIENT_NAME, L"PEERFORMAT", IDR_MAINFRAME );
+			L".pd", CLIENT_NAME, L"ENVYFORMAT", IDR_MAINFRAME );
 
 		RegisterShellType( NULL, CLIENT_NAME L".Download", CLIENT_NAME L" Partial Data",
 			L".sd", CLIENT_NAME, L"RAZAFORMAT", IDR_MAINFRAME );
@@ -1503,19 +1503,19 @@ void CEnvyURL::Register(BOOL bRegister, BOOL bOnStartup)
 	if ( bRegister )
 	{
 		RegisterShellType( NULL, L"Envy.Collection", L"Envy Collection File",
-			L".co", L"Envy", L"PEERFORMAT", IDI_COLLECTION );
+			L".co", L"Envy", L"ENVYFORMAT", IDI_COLLECTION );
 		RegisterShellType( L"Applications\\Envy.exe", NULL, L"Envy Collection File",
-			L".co", L"Envy", L"PEERFORMAT", IDI_COLLECTION );
+			L".co", L"Envy", L"ENVYFORMAT", IDI_COLLECTION );
 
 		RegisterShellType( NULL, L"Envy.Collection", L"Envy Collection File",
-			L".collection", L"Envy", L"PEERFORMAT", IDI_COLLECTION );
+			L".collection", L"Envy", L"ENVYFORMAT", IDI_COLLECTION );
 		RegisterShellType( L"Applications\\Envy.exe", NULL, L"Envy Collection File",
-			L".collection", L"Envy", L"PEERFORMAT", IDI_COLLECTION );
+			L".collection", L"Envy", L"ENVYFORMAT", IDI_COLLECTION );
 
 		RegisterShellType( NULL, L"eMule.Collection", L"eMule Collection File",
-			L".emulecollection", L"Envy", L"PEERFORMAT", IDI_COLLECTION );
+			L".emulecollection", L"Envy", L"ENVYFORMAT", IDI_COLLECTION );
 		RegisterShellType( L"Applications\\Envy.exe", NULL, L"eMule Collection File",
-			L".emulecollection", L"Envy", L"PEERFORMAT", IDI_COLLECTION );
+			L".emulecollection", L"Envy", L"ENVYFORMAT", IDI_COLLECTION );
 	}
 	else
 	{

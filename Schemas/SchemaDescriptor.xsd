@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema targetNamespace="http://schemas.getenvy.com/SchemaDescriptor.xsd" version="1.0" xmlns="http://www.w3.org/2001/XMLSchema">
 
-	<element name="schemaDescriptor">
+	<element name="schemadescriptor">
 		<complexType>
 			<all>
 				<element name="title" type="string" minOccurs="0" maxOccurs="1"/>
 				<element name="extends" type="extendsType" minOccurs="0" maxOccurs="1"/>
 				<element name="memberDisplay" type="memberDisplayType" minOccurs="0" maxOccurs="1"/>
 				<element name="bitprintImport" type="bitprintImportType" minOccurs="0" maxOccurs="1"/>
-				<element name="typeFilter" type="typeFilterType" minOccurs="0" maxOccurs="1"/>
+				<element name="typefilter" type="typefilterType" minOccurs="0" maxOccurs="1"/>
 			</all>
 		</complexType>
 	</element>
@@ -57,7 +57,7 @@
 		</sequence>
 	</complexType>
 
-	<complexType name="typeFilterType">
+	<complexType name="typefilterType">
 		<sequence>
 			<element name="type" minOccurs="0" maxOccurs="unbounded">
 				<complexType>

@@ -153,7 +153,7 @@ void CTorrentEnvyApp::InitEnvironment()
 	TCHAR szPath[260];
 	DWORD dwSize = 0;
 
-	m_nVersion[0] = m_nVersion[1] = m_nVersion[2] = 0;
+	m_nVersion[0] = m_nVersion[1] = 0;
 
 	if ( GetModuleFileName( NULL, szPath, 260 ) )
 	{
@@ -173,7 +173,7 @@ void CTorrentEnvyApp::InitEnvironment()
 			{
 				m_nVersion[0] = (WORD)( pTable->dwFileVersionMS >> 16 );
 				m_nVersion[1] = (WORD)( pTable->dwFileVersionMS & 0xFFFF );
-				m_nVersion[2] = (WORD)( pTable->dwFileVersionLS >> 16 );
+			//	m_nVersion[2] = (WORD)( pTable->dwFileVersionLS >> 16 );
 			//	m_nVersion[3] = (WORD)( pTable->dwFileVersionLS & 0xFFFF );
 			}
 		}
@@ -181,8 +181,8 @@ void CTorrentEnvyApp::InitEnvironment()
 		delete [] pBuffer;
 	}
 
-	m_sVersion.Format( L"%i.%i.%i",
-		m_nVersion[0], m_nVersion[1], m_nVersion[2] );
+	m_sVersion.Format( L"%u.%u",
+		m_nVersion[0], m_nVersion[1] );
 
 	// Obsolete:
 	//OSVERSIONINFO pVersion;

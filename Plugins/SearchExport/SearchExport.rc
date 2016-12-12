@@ -20,21 +20,22 @@
 LANGUAGE LANG_NEUTRAL, SUBLANG_NEUTRAL
 #pragma code_page(1252)
 
+
 /////////////////////////////////////////////////////////////////////////////
 //
 // Version
 //
 
 VS_VERSION_INFO VERSIONINFO
+ PRODUCTVERSION 1,0
  FILEVERSION 1,0,0,0
- PRODUCTVERSION 1,0,0,0
  FILEFLAGSMASK 0x3fL
 #ifdef _DEBUG
  FILEFLAGS 0x1L
 #else
  FILEFLAGS 0x0L
 #endif
- FILEOS 0x4L
+ FILEOS 0x40004L
  FILETYPE 0x2L
  FILESUBTYPE 0x0L
 BEGIN
@@ -42,15 +43,15 @@ BEGIN
 	BEGIN
 		BLOCK "000004b0"
 		BEGIN
-			VALUE "Comments", "Output selected search results to an .mht file."
-			VALUE "CompanyName", "Envy"
-			VALUE "FileDescription", "Search Export Plugin"
+			VALUE "ProductName", "Envy Search Export Plugin"
+			VALUE "ProductVersion", "1.0"
 			VALUE "FileVersion", "1.0.0.0"
 			VALUE "InternalName", "SearchExport.dll"
-			VALUE "LegalCopyright", "© Envy 2016, Nikolay Raspopov 2009"
 			VALUE "OriginalFilename", "SearchExport.dll"
-			VALUE "ProductName", "Envy Search Export Plugin"
-			VALUE "ProductVersion", "1.0.0.0"
+			VALUE "FileDescription", "Search Export Plugin"
+			VALUE "Comments", "Output selected search results to an .mht file."
+			VALUE "CompanyName", "GetEnvy.com"
+			VALUE "LegalCopyright", "© Envy 2016, Nikolay Raspopov 2009"
 		END
 	END
 	BLOCK "VarFileInfo"

@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<schemaDescriptor location="http://schemas.getenvy.com/AudioFolder.xsd" xmlns="http://schemas.getenvy.com/SchemaDescriptor.xsd">
+<schemadescriptor location="http://schemas.getenvy.com/AudioFolder.xsd" xmlns="http://schemas.getenvy.com/SchemaDescriptor.xsd">
 
 	<object type="folder" availability="system"/>
-	<viewContent version="1.0" preferredView="CLibraryAlbumView"/>
+	<view preferredview="CLibraryAlbumView"/>
 	<contains>
 		<object type="file" location="http://schemas.getenvy.com/Audio.xsd"/>
 	</contains>
@@ -38,7 +38,7 @@
 		<title language="zhs">音频</title>
 		<title language="zht">聲音</title>
 	</titles>
-	<headerContent version="1.0">
+	<header>
 		<title language="en">All Music</title>
 		<title language="af">Alle Musiek</title>
 		<title language="ca">Tota la música</title>
@@ -91,7 +91,7 @@
 		<subtitle language="ja">このフォルダーにはライブラリー内ーにある全ての音楽が収録されます</subtitle>
 		<subtitle language="zhs">此文件夹包含您收藏中的所有音乐。</subtitle>
 		<subtitle language="zht">這個資料夾包含了在您的收藏中所有的音樂檔案.</subtitle>
-	</headerContent>
+	</header>
 	<members>
 		<member name="title" search="none">
 			<display defaultColumn="true"/>
@@ -126,4 +126,4 @@
 		</member>
 	</members>
 
-</schemaDescriptor>
+</schemadescriptor>

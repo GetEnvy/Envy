@@ -18,16 +18,16 @@
   #error PreProcessor version 5.4.2.0 or higher (2011) is needed for this script
 #endif
 
-#define internal_name GetStringFileInfo("..\..\Envy\" + ConfigurationName + " " + PlatformName + "\Envy.exe", INTERNAL_NAME);
-#define name          internal_name
-#define version       GetFileVersion("..\..\Envy\" + ConfigurationName + " " + PlatformName + "\Envy.exe")
+#define internal_name GetStringFileInfo("..\..\Envy\" + ConfigurationName + " " + PlatformName + "\Envy.exe", INTERNAL_NAME)
+#define version       GetStringFileInfo("..\..\Envy\" + ConfigurationName + " " + PlatformName + "\Envy.exe", FILE_VERSION)
+; #define version     GetFileVersion("..\..\Envy\" + ConfigurationName + " " + PlatformName + "\Envy.exe");
 #define publisher     "GetEnvy.com"
 #define description   internal_name + " Filesharing"
 #define date          GetDateTimeString('yyyy/mm/dd', '-', '')
 
 #if ConfigurationName == "Release"
   #if PlatformName == "Win32"
-    #if version == GetFileVersion("..\..\Envy\Release x64\Envy.exe")
+    #if version == GetStringFileInfo("..\..\Envy\Release x64\Envy.exe", FILE_VERSION)
       #define unified_build "True"
     #else
       #define unified_build "False"
@@ -76,7 +76,7 @@
 [Setup]
 AppComments={#description}
 AppId={#internal_name}
-AppName={#name}
+AppName={#internal_name}
 AppVersion={#version}
 AppVerName={#display_name}
 AppMutex={#internal_name},Global\TorrentEnvy
@@ -114,7 +114,7 @@ MinVersion=0,5.01
 #if unified_build == "True"
   OutputManifestFile=Manifest Release.txt
 #else
-  OutputManifestFile=Manifest ({#ConfigurationName} {#PlatformName}).txt
+  OutputManifestFile=Manifest {#ConfigurationName} {#PlatformName}.txt
 #endif
 #if PlatformName == "x64"
   ArchitecturesAllowed=x64

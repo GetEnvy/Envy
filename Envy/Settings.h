@@ -83,13 +83,14 @@ public:
 		CString		Quote;
 		bool		UpdateCheck;			// Does Envy check for new versions?
 	//	CString		UpdateCheckURL;			// UPDATE_URL (Envy.h)
-		CString		UpgradePrompt;
+		CString		UpgradeVersion;
 		CString		UpgradeFile;
+		CString		UpgradeSize;
+		CString		UpgradeDate;
 		CString		UpgradeSHA1;
 		CString		UpgradeTiger;
-		CString		UpgradeSize;
+		CString		UpgradePrompt;
 		CString		UpgradeSources;
-		CString		UpgradeVersion;
 	} VersionCheck;
 
 	struct sInterface

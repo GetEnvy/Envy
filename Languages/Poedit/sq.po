@@ -6225,7 +6225,7 @@ msgid "No tasks scheduled."
 msgstr ""
 
 #: string;20619
-msgid "Last number is 254,252,248,240,224,192,128, or 0. Others must be 255.\n\n(For Netmasked IP ranges.)\n\nSee perproject.org/wiki for help."
+msgid "Last number is 254,252,248,240,224,192,128, or 0. Others must be 255.\n\n(For Netmasked IP ranges.)\n\nSee getenvy.com/wiki for help."
 msgstr ""
 
 #: string;20620

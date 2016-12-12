@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<schemaDescriptor location="http://schemas.getenvy.com/SourceCode.xsd" xmlns="http://schemas.getenvy.com/SchemaDescriptor.xsd">
+<schemadescriptor location="http://schemas.getenvy.com/SourceCode.xsd" xmlns="http://schemas.getenvy.com/SchemaDescriptor.xsd">
 
 	<object type="file" availability="advanced"/>
 	<images>
@@ -480,7 +480,7 @@
 			<title language="zht">ShareTag 信息</title>
 		</member>
 	</members>
-	<typeFilter>
+	<typefilter>
 		<type extension="4gl"/>
 		<type extension="abc"/>
 		<type extension="as3"/>
@@ -572,6 +572,6 @@
 		<type extension="yaml"/>
 		<type extension="yab"/>
 		<type extension="zfs"/>
-	</typeFilter>
+	</typefilter>
 
-</schemaDescriptor>
+</schemadescriptor>

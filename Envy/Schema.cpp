@@ -346,7 +346,7 @@ BOOL CSchema::LoadDescriptor(LPCTSTR pszFile)
 	if ( NULL == pRoot ) return FALSE;
 
 	if ( ! CheckURI( pRoot->GetAttributeValue( L"location" ) ) ||
-		 ! pRoot->IsNamed( L"schemaDescriptor" ) )
+		 ! pRoot->IsNamed( L"schemadescriptor" ) )
 	{
 		delete pRoot;
 		return FALSE;
@@ -395,15 +395,15 @@ BOOL CSchema::LoadDescriptor(LPCTSTR pszFile)
 		{
 			LoadDescriptorContains( pElement );
 		}
-		else if ( pElement->IsNamed( L"headerContent" ) )
+		else if ( pElement->IsNamed( L"header" ) || pElement->IsNamed( L"headerContent" ) )		// Legacy
 		{
-			LoadDescriptorHeaderContent( pElement );
+			LoadDescriptorHeader( pElement );
 		}
-		else if ( pElement->IsNamed( L"viewContent" ) )
+		else if ( pElement->IsNamed( L"view" ) || pElement->IsNamed( L"viewContent" ) )			// Legacy
 		{
-			LoadDescriptorViewContent( pElement );
+			LoadDescriptorView( pElement );
 		}
-		else if ( pElement->IsNamed( L"typeFilter" ) || pElement->IsNamed( L"groupfilter" ) )
+		else if ( pElement->IsNamed( L"typefilter" ) || pElement->IsNamed( L"groupfilter" ) )
 		{
 			LoadDescriptorTypeFilter( pElement );
 		}
@@ -557,7 +557,7 @@ void CSchema::LoadDescriptorBitprintsImport(const CXMLElement* pElement)
 	}
 }
 
-void CSchema::LoadDescriptorHeaderContent(const CXMLElement* pElement)
+void CSchema::LoadDescriptorHeader(const CXMLElement* pElement)
 {
 	for ( POSITION pos = pElement->GetElementIterator() ; pos ; )
 	{
@@ -579,16 +579,17 @@ void CSchema::LoadDescriptorHeaderContent(const CXMLElement* pElement)
 	}
 }
 
-void CSchema::LoadDescriptorViewContent(const CXMLElement* pElement)
+void CSchema::LoadDescriptorView(const CXMLElement* pElement)
 {
-	m_sLibraryView = pElement->GetAttributeValue( L"preferredView" );
+	m_sLibraryView = pElement->GetAttributeValue( L"preferredview" );
+	if ( m_sLibraryView.IsEmpty() )
+		m_sLibraryView = pElement->GetAttributeValue( L"defaultview" );
 
 	for ( POSITION pos = pElement->GetElementIterator() ; pos ; )
 	{
 		const CXMLElement* pXML = pElement->GetNextElement( pos );
 
-		BOOL bLanguage = pXML->GetAttributeValue( L"language" ).
-			CompareNoCase( Settings.General.Language ) == 0;
+		BOOL bLanguage = pXML->GetAttributeValue( L"language" ).CompareNoCase( Settings.General.Language ) == 0;
 
 		if ( pXML->IsNamed( L"tileLine1" ) )
 		{
@@ -644,7 +645,8 @@ CSchemaChild* CSchema::GetContained(LPCTSTR pszURI) const
 	for ( POSITION pos = m_pContains.GetHeadPosition() ; pos ; )
 	{
 		CSchemaChild* pChild = m_pContains.GetNext( pos );
-		if ( pChild->m_sURI.CompareNoCase( pszURI ) == 0 ) return pChild;
+		if ( pChild->m_sURI.CompareNoCase( pszURI ) == 0 )
+			return pChild;
 	}
 	return NULL;
 }
@@ -655,7 +657,8 @@ CString CSchema::GetContainedURI(int nType) const
 	{
 		CSchemaChild* pChild = m_pContains.GetNext( pos );
 
-		if ( pChild->m_nType == nType ) return pChild->m_sURI;
+		if ( pChild->m_nType == nType )
+			return pChild->m_sURI;
 	}
 
 	return CString();

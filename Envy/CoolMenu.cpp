@@ -543,11 +543,11 @@ void CCoolMenu::DrawWatermark(CDC* pDC, CRect* pRect, int nOffX, int nOffY)
 // CCoolMenu border effects
 
 HHOOK	CCoolMenu::m_hMsgHook	= NULL;
-LPCTSTR CCoolMenu::wpnOldProc	= L"PEER_MenuOldWndProc";
+LPCTSTR CCoolMenu::wpnOldProc	= L"ENVY_MenuOldWndProc";
 BOOL	CCoolMenu::m_bPrinted	= TRUE;
-int		CCoolMenu::m_nEdgeLeft	= 0;
-int		CCoolMenu::m_nEdgeTop	= 0;
-int		CCoolMenu::m_nEdgeSize	= 0;
+int 	CCoolMenu::m_nEdgeLeft	= 0;
+int 	CCoolMenu::m_nEdgeTop	= 0;
+int 	CCoolMenu::m_nEdgeSize	= 0;
 
 void CCoolMenu::EnableHook()
 {

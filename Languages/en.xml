@@ -3320,7 +3320,7 @@
 	<string id="20596" text="Never"/>
 	<string id="20597" text="Session"/>
 	<string id="20598" text="Are you sure you wish to delete selected security rules?"/>
-	<string id="20599" text="Last number is 254,252,248,240,224,192,128, or 0. Others must be 255.\n\n(For Netmasked IP ranges.)\n\nSee perproject.org/wiki for help."/>
+	<string id="20599" text="Last number is 254,252,248,240,224,192,128, or 0. Others must be 255.\n\n(For Netmasked IP ranges.)\n\nSee getenvy.com/wiki for help."/>
 	<string id="20600" text="Bandwidth: Full"/>
 	<string id="20601" text="Bandwidth: Limited"/>
 	<string id="20602" text="Bandwidth: Stop"/>

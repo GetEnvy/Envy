@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<schemaDescriptor location="http://schemas.getenvy.com/AllFiles.xsd" xmlns="http://schemas.getenvy.com/SchemaDescriptor.xsd">
+<schemadescriptor location="http://schemas.getenvy.com/AllFiles.xsd" xmlns="http://schemas.getenvy.com/SchemaDescriptor.xsd">
 
 	<object type="folder" availability="system"/>
-	<viewContent version="1.0" preferredView="CLibraryDetailView"/>
+	<view preferredview="CLibraryDetailView"/>
 	<images>
 		<icon path="AllFilesFolder.ico"/>
 	</images>
@@ -35,7 +35,7 @@
 		<title language="zhs">常规: 所有文件</title>
 		<title language="zht">一般: 所有檔案</title>
 	</titles>
-	<headerContent version="1.0">
+	<header>
 		<title language="en">All Files</title>
 		<title language="af">Alle Lêers</title>
 		<title language="ca">Tots els arxius</title>
@@ -88,7 +88,7 @@
 		<subtitle language="ja">このフォルダーにはライブラリー内ーにある全てのファイルが収録されています</subtitle>
 		<subtitle language="zhs">此文件夹包含您收藏中的所有文件。</subtitle>
 		<subtitle language="zht">這個資料夾包含了在您的收藏中所有的檔案.</subtitle>
-	</headerContent>
+	</header>
 	<members>
 		<member name="title" search="none">
 			<display defaultColumn="true"/>
@@ -123,4 +123,4 @@
 		</member>
 	</members>
 
-</schemaDescriptor>
+</schemadescriptor>

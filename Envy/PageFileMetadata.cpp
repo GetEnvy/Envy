@@ -45,15 +45,8 @@ END_MESSAGE_MAP()
 
 CFileMetadataPage::CFileMetadataPage()
 	: CFilePropertiesPage	( CFileMetadataPage::IDD )
-	, m_pSchemaContainer	( NULL )
 	, m_pXML				( NULL )
 {
-}
-
-CFileMetadataPage::~CFileMetadataPage()
-{
-	if ( m_pSchemaContainer )
-		delete m_pSchemaContainer;
 }
 
 void CFileMetadataPage::DoDataExchange(CDataExchange* pDX)
@@ -115,7 +108,7 @@ BOOL CFileMetadataPage::OnInitDialog()
 
 	if ( pSchema != NULL )
 	{
-		m_pSchemaContainer = pSchema->Instantiate( TRUE );
+		m_pSchemaContainer.Attach( pSchema->Instantiate( TRUE ) );
 		m_pXML = m_pSchemaContainer->AddElement( pSchema->m_sSingular );
 
 		{
@@ -270,9 +263,8 @@ void CFileMetadataPage::OnOK()
 
 	if ( pFiles->GetCount() >= 10 )
 	{
-		CString strFormat, strMessage;
-		LoadString( strFormat, IDS_LIBRARY_METADATA_MANY );
-		strMessage.Format( strFormat, pFiles->GetCount() );
+		CString strMessage;
+		strMessage.Format( LoadString( IDS_LIBRARY_METADATA_MANY ), pFiles->GetCount() );
 		if ( MsgBox( strMessage, MB_YESNO|MB_ICONQUESTION ) != IDYES ) return;
 	}
 
@@ -280,9 +272,9 @@ void CFileMetadataPage::OnOK()
 	{
 		CQuickLock oLock( Library.m_pSection );
 
-		for ( POSITION pos1 = pFiles->GetHeadPosition() ; pos1 ; )
+		for ( POSITION pos = pFiles->GetHeadPosition() ; pos ; )
 		{
-			if ( CLibraryFile* pFile = pFiles->GetNextFile( pos1 ) )
+			if ( CLibraryFile* pFile = pFiles->GetNextFile( pos ) )
 			{
 				CXMLElement* pContainer = pSchema->Instantiate( TRUE );
 				if ( pContainer )
@@ -311,9 +303,9 @@ void CFileMetadataPage::OnOK()
 	{
 		CQuickLock oLock( Library.m_pSection );
 
-		for ( POSITION pos1 = pFiles->GetHeadPosition() ; pos1 ; )
+		for ( POSITION pos = pFiles->GetHeadPosition() ; pos ; )
 		{
-			if ( CLibraryFile* pFile = pFiles->GetNextFile( pos1 ) )
+			if ( CLibraryFile* pFile = pFiles->GetNextFile( pos ) )
 				pFile->ClearMetadata();
 		}
 	}

@@ -163,7 +163,7 @@ BOOL CSkinWindow::Parse(CXMLElement* pBase, const CString& strPath)
 		{
 			for ( POSITION posInner = pGroup->GetElementIterator() ; posInner ; )
 			{
-				CXMLElement* pXML = pGroup->GetNextElement( posInner );
+				const CXMLElement* pXML = pGroup->GetNextElement( posInner );
 				if ( ! pXML->IsNamed( L"part" ) )
 				{
 					theApp.Message( MSG_ERROR, IDS_SKIN_ERROR, L"Unknown element in [parts] element", pXML->ToString() );
@@ -216,7 +216,7 @@ BOOL CSkinWindow::Parse(CXMLElement* pBase, const CString& strPath)
 		{
 			for ( POSITION posInner = pGroup->GetElementIterator() ; posInner ; )
 			{
-				CXMLElement* pXML = pGroup->GetNextElement( posInner );
+				const CXMLElement* pXML = pGroup->GetNextElement( posInner );
 				if ( ! pXML->IsNamed( L"anchor" ) )
 				{
 					theApp.Message( MSG_ERROR, IDS_SKIN_ERROR, L"Unknown element in [anchors] element", pXML->ToString() );
@@ -450,7 +450,7 @@ BOOL CSkinWindow::Parse(CXMLElement* pBase, const CString& strPath)
 //////////////////////////////////////////////////////////////////////
 // CSkinWindow parse helpers
 
-BOOL CSkinWindow::ParseRect(CXMLElement* pXML, CRect* pRect)
+BOOL CSkinWindow::ParseRect(const CXMLElement* pXML, CRect* pRect)
 {
 	CString strRect = pXML->GetAttributeValue( L"rect" );
 
@@ -1660,7 +1660,7 @@ void CSkinWindow::SelectRegion(CWnd* pWnd)
 
 	for ( POSITION pos = m_pRegionXML->GetElementIterator() ; pos ; )
 	{
-		CXMLElement* pXML = m_pRegionXML->GetNextElement( pos );
+		const CXMLElement* pXML = m_pRegionXML->GetNextElement( pos );
 		if ( ! pXML->IsNamed( L"shape" ) ) continue;
 
 		if ( ParseRect( pXML, &rcPart ) )
@@ -1743,7 +1743,7 @@ CSize CSkinWindow::GetRegionSize()
 
 	for ( POSITION pos = m_pRegionXML->GetElementIterator() ; pos ; )
 	{
-		CXMLElement* pXML = m_pRegionXML->GetNextElement( pos );
+		const CXMLElement* pXML = m_pRegionXML->GetNextElement( pos );
 		CRect rcPart;
 
 		if ( pXML->IsNamed( L"shape" ) && ParseRect( pXML, &rcPart ) )

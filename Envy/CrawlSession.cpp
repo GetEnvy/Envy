@@ -200,6 +200,7 @@ CCrawlNode::CCrawlNode()
 	m_tDiscovered	= static_cast< DWORD >( time( NULL ) );
 	m_tCrawled		= 0;
 	m_tResponse		= 0;
+	m_nUnique		= 0;
 }
 
 CCrawlNode::~CCrawlNode()
@@ -211,12 +212,13 @@ CCrawlNode::~CCrawlNode()
 
 void CCrawlNode::OnCrawl(CCrawlSession* pSession, CG2Packet* pPacket)
 {
-	BOOL bCompound;
 	G2_PACKET nType;
-	DWORD nLength;
+	BOOL bCompound;
+	DWORD nLength = 0;
 
 	m_tResponse = static_cast< DWORD >( time( NULL ) );
-	if ( m_tCrawled == 0 ) m_tCrawled = m_tResponse;
+	if ( m_tCrawled == 0 )
+		m_tCrawled = m_tResponse;
 
 	while ( pPacket->ReadPacket( nType, nLength, &bCompound ) )
 	{
@@ -251,8 +253,8 @@ void CCrawlNode::OnNode(CCrawlSession* pSession, CG2Packet* pPacket, DWORD /*nPa
 	int nLeafs = 0;
 
 	CString strNick;
-	float nLatitude = 0;
-	float nLongitude = 0;
+	float fLatitude = 0;
+	float fLongitude = 0;
 
 	G2_PACKET nInnerType;
 	DWORD nLength;
@@ -279,14 +281,15 @@ void CCrawlNode::OnNode(CCrawlSession* pSession, CG2Packet* pPacket, DWORD /*nPa
 		else if ( nInnerType == G2_PACKET_GPS && nLength >= 4 )
 		{
 			DWORD nGPS = pPacket->ReadLongBE();
-			nLatitude	= (float)HIWORD( nGPS ) / 65535.0f * 180.0f - 90.0f;
-			nLongitude	= (float)LOWORD( nGPS ) / 65535.0f * 360.0f - 180.0f;
+			fLatitude  = (float)HIWORD( nGPS ) / 65535.0f * 180.0f - 90.0f;
+			fLongitude = (float)LOWORD( nGPS ) / 65535.0f * 360.0f - 180.0f;
 		}
 
 		pPacket->m_nPosition = nNext;
 	}
 
-	if ( pHost.sin_family != PF_INET ) return;
+	if ( pHost.sin_family != PF_INET )
+		return;
 
 	if ( nType == parseSelf )
 	{
@@ -294,12 +297,12 @@ void CCrawlNode::OnNode(CCrawlSession* pSession, CG2Packet* pPacket, DWORD /*nPa
 		m_nType			= bHub ? ntHub : ntLeaf;
 		m_nLeaves		= nLeafs;
 		m_sNick			= strNick;
-		m_nLatitude		= nLatitude;
-		m_nLongitude	= nLongitude;
+		m_nLatitude		= fLatitude;
+		m_nLongitude	= fLongitude;
 
 		theApp.Message( MSG_DEBUG, L"CRAWL: Found %s, %s(%i), \"%s\", lat: %.3f, lon: %.3f :",
 			(LPCTSTR)CString( inet_ntoa( pHost.sin_addr ) ), bHub ? L"hub" : L"leaf",
-			nLeafs, (LPCTSTR)strNick, double( nLatitude ), double( nLongitude ) );
+			nLeafs, (LPCTSTR)strNick, double( fLatitude ), double( fLongitude ) );
 	}
 	else
 	{
@@ -311,8 +314,8 @@ void CCrawlNode::OnNode(CCrawlSession* pSession, CG2Packet* pPacket, DWORD /*nPa
 			pNode->m_nType		= nType;
 			pNode->m_nLeaves	= nLeafs;
 			pNode->m_sNick		= strNick;
-			pNode->m_nLatitude	= nLatitude;
-			pNode->m_nLongitude	= nLongitude;
+			pNode->m_nLatitude	= fLatitude;
+			pNode->m_nLongitude	= fLongitude;
 		}
 
 		if ( m_pNeighbours.Find( pNode ) == NULL )
@@ -320,6 +323,6 @@ void CCrawlNode::OnNode(CCrawlSession* pSession, CG2Packet* pPacket, DWORD /*nPa
 
 		theApp.Message( MSG_DEBUG, L"CRAWL:    %s, %s(%i), \"%s\", lat: %.3f, lon: %.3f",
 			(LPCTSTR)CString( inet_ntoa( pHost.sin_addr ) ), bHub ? L"hub" : L"leaf",
-			nLeafs, (LPCTSTR)strNick, double( nLatitude ), double( nLongitude ) );
+			nLeafs, (LPCTSTR)strNick, double( fLatitude ), double( fLongitude ) );
 	}
 }

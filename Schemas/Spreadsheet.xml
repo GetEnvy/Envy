@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<schemaDescriptor location="http://schemas.getenvy.com/Spreadsheet.xsd" xmlns="http://schemas.getenvy.com/SchemaDescriptor.xsd">
+<schemadescriptor location="http://schemas.getenvy.com/Spreadsheet.xsd" xmlns="http://schemas.getenvy.com/SchemaDescriptor.xsd">
 
 	<object type="file" availability="advanced"/>
 	<titles>
@@ -505,7 +505,7 @@
 			<title language="zht">ShareTag 信息</title>
 		</member>
 	</members>
-	<typeFilter>
+	<typefilter>
 		<type extension="csv"/>
 		<type extension="db"/>
 		<type extension="db3"/>
@@ -525,6 +525,6 @@
 		<type extension="xlsx"/>
 		<type extension="xlt"/>
 		<type extension="xltx"/>
-	</typeFilter>
+	</typefilter>
 
-</schemaDescriptor>
+</schemadescriptor>

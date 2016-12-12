@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<schemaDescriptor location="http://schemas.getenvy.com/Folder.xsd" xmlns="http://schemas.getenvy.com/SchemaDescriptor.xsd">
+<schemadescriptor location="http://schemas.getenvy.com/Folder.xsd" xmlns="http://schemas.getenvy.com/SchemaDescriptor.xsd">
 
 	<object type="folder" availability="default"/>
 	<contains>
@@ -37,10 +37,10 @@
 		<title language="zhs">文件夹</title>
 		<title language="zht">資料夾</title>
 	</titles>
-	<headerContent version="1.0">
+	<header>
 		<title>{title}</title>
 		<subtitle>{description}</subtitle>
-	</headerContent>
+	</header>
 	<members>
 		<member name="title" search="generic">
 			<title language="en">Title</title>
@@ -158,4 +158,4 @@
 		</member>
 	</members>
 
-</schemaDescriptor>
+</schemadescriptor>

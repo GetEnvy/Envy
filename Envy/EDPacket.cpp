@@ -990,6 +990,7 @@ CString CEDPacket::ToASCII() const
 }
 
 #ifdef _DEBUG
+
 void CEDPacket::Debug(LPCTSTR pszReason) const
 {
 	if ( m_nType == ED2K_C2C_SENDINGPART ||
@@ -1001,6 +1002,7 @@ void CEDPacket::Debug(LPCTSTR pszReason) const
 	strOutput.Format( L"[ED2K] %s Proto: 0x%x Type: %s", pszReason, int( m_nEdProtocol ), (LPCTSTR)GetType() );
 	CPacket::Debug( strOutput );
 }
+
 #endif	// Debug
 
 
@@ -1010,6 +1012,7 @@ void CEDPacket::Debug(LPCTSTR pszReason) const
 CEDTag::CEDTag()
 	: m_nType	( ED2K_TAG_NULL )
 	, m_nKey	( 0 )
+	, m_nValue	( 0 )
 {
 }
 
@@ -1026,6 +1029,7 @@ CEDTag::CEDTag(const CEDTag& t)
 CEDTag::CEDTag(BYTE nKey, const Hashes::Ed2kHash& oHash)
 	: m_nType	( ED2K_TAG_HASH )
 	, m_nKey	( nKey )
+	, m_nValue	( 0 )
 	, m_oValue	( oHash )
 {
 }
@@ -1040,6 +1044,7 @@ CEDTag::CEDTag(BYTE nKey, QWORD nValue)
 CEDTag::CEDTag(BYTE nKey, LPCTSTR pszValue)
 	: m_nType	( ED2K_TAG_STRING )
 	, m_nKey	( nKey )
+	, m_nValue	( 0 )
 	, m_sValue	( pszValue )
 {
 }
@@ -1056,6 +1061,7 @@ CEDTag::CEDTag(LPCTSTR pszKey, LPCTSTR pszValue)
 	: m_nType	( ED2K_TAG_STRING )
 	, m_sKey	( pszKey )
 	, m_nKey	( 0 )
+	, m_nValue	( 0 )
 	, m_sValue	( pszValue )
 {
 }

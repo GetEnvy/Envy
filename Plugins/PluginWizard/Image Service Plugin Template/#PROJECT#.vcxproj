@@ -129,6 +129,9 @@
       <Command>regsvr32 /s /c "$(TargetPath)"
 </Command>
     </PostBuildEvent>
+    <BuildLog>
+      <Path>$(ProjectDir)$(IntDir)$(ProjectName).log</Path>
+    </BuildLog>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Midl>
@@ -172,6 +175,9 @@
       <Command>regsvr32 /s /c "$(TargetPath)"
 </Command>
     </PostBuildEvent>
+    <BuildLog>
+      <Path>$(ProjectDir)$(IntDir)$(ProjectName).log</Path>
+    </BuildLog>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Midl>
@@ -222,6 +228,9 @@
     <PostBuildEvent>
       <Message>No registration</Message>
     </PostBuildEvent>
+    <BuildLog>
+      <Path>$(ProjectDir)$(IntDir)$(ProjectName).log</Path>
+    </BuildLog>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Midl>
@@ -269,6 +278,9 @@
     <PostBuildEvent>
       <Message>No registration</Message>
     </PostBuildEvent>
+    <BuildLog>
+      <Path>$(ProjectDir)$(IntDir)$(ProjectName).log</Path>
+    </BuildLog>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="#NAME#.cpp" />

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<schemaDescriptor location="http://schemas.getenvy.com/Archive.xsd" xmlns="http://schemas.getenvy.com/SchemaDescriptor.xsd">
+<schemadescriptor location="http://schemas.getenvy.com/Archive.xsd" xmlns="http://schemas.getenvy.com/SchemaDescriptor.xsd">
 
 	<object type="file" availability="default"/>
 	<images>
@@ -316,8 +316,7 @@
 			<title language="zht">ShareTag 信息</title>
 		</member>
 	</members>
-	<typeFilter>
-		<type extension="001"/>
+	<typefilter>
 		<type extension="7z"/>
 		<type extension="ace"/>
 		<type extension="arj"/>
@@ -328,6 +327,8 @@
 		<type extension="cb7"/>
 		<type extension="dat"/>
 		<type extension="envy"/>
+		<type extension="env"/>
+		<type extension="exe"/>
 		<type extension="iso"/>
 		<type extension="jar"/>
 		<type extension="msi"/>
@@ -414,6 +415,6 @@
 		<type extension="z"/>
 		<type extension="zip"/>
 		<type extension="zipx"/>
-	</typeFilter>
+	</typefilter>
 
-</schemaDescriptor>
+</schemadescriptor>

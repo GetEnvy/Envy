@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<schemaDescriptor location="http://schemas.getenvy.com/CollectionFolder.xsd" xmlns="http://schemas.getenvy.com/SchemaDescriptor.xsd">
+<schemadescriptor location="http://schemas.getenvy.com/CollectionFolder.xsd" xmlns="http://schemas.getenvy.com/SchemaDescriptor.xsd">
 
 	<object type="folder" availability="system"/>
 	<contains>
@@ -37,7 +37,7 @@
 		<title language="zhs"> 我的收藏</title>
 		<title language="zht"> 我的收藏</title>
 	</titles>
-	<headerContent version="1.0">
+	<header>
 		<title language="en">My Collections</title>
 		<title language="af">My Versamelings</title>
 		<title language="ca">Les meves col·leccions</title>
@@ -90,7 +90,7 @@
 		<subtitle language="ja">このフォルダーにはライブラリー内にあるリッチファイルコレクションが収録されています</subtitle>
 		<subtitle language="zhs">此文件夹包含您库中的任何文件收藏。</subtitle>
 		<subtitle language="zht">這個資料夾包含了在您的收藏中何任的豐富檔案收藏.</subtitle>
-	</headerContent>
+	</header>
 	<members>
 		<member name="title" search="none">
 			<display defaultColumn="true"/>
@@ -125,4 +125,4 @@
 		</member>
 	</members>
 
-</schemaDescriptor>
+</schemadescriptor>

@@ -28,7 +28,6 @@ class CFileMetadataPage : public CFilePropertiesPage
 
 public:
 	CFileMetadataPage();
-	virtual ~CFileMetadataPage();
 
 	enum { IDD = IDD_FILE_METADATA };
 
@@ -38,7 +37,7 @@ public:
 	CXMLElement*	m_pXML;
 
 protected:
-	CXMLElement*	m_pSchemaContainer;
+	CAutoPtr< CXMLElement > m_pSchemaContainer;
 
 	void AddCrossAttributes(CXMLElement* pXML, LPCTSTR pszTargetURI);
 	virtual void DoDataExchange(CDataExchange* pDX);

@@ -905,22 +905,6 @@ BOOL CG1Neighbour::OnVendor(CG1Packet* pPacket)
 			pReply->WriteShortLE( 1 );
 			Send( pReply ); // Send the reply packet to the remote computer
 		}
-		// Vendor is the ASCII text "PEER" for PeerProject
-		else if ( nVendor == 'PEER' || nVendor == 'REEP' )	// Backwards for network byte order (Confirm?)
-		{
-			// Function code query for "PEER" (do)
-			CG1Packet* pReply = CG1Packet::New( pPacket->m_nType, 1, pPacket->m_oGUID );	// Create a reply packet
-			pReply->WriteLongBE( 'PEER' );
-			pReply->WriteShortLE( 0xFFFE );
-			pReply->WriteShortLE( 1 );
-			pReply->WriteShortLE( 0x0001 );
-			pReply->WriteShortLE( 1 );
-			pReply->WriteShortLE( 0x0002 );
-			pReply->WriteShortLE( 1 );
-			pReply->WriteShortLE( 0x0003 );
-			pReply->WriteShortLE( 1 );
-			Send( pReply ); // Send the reply packet to the remote computer
-		}
 		// Vendor is the ASCII text "RAZA" for Shareaza
 		else if ( nVendor == 'RAZA' || nVendor == 'AZAR' )	// Backwards for network byte order (Confirm?)
 		{
@@ -936,6 +920,22 @@ BOOL CG1Neighbour::OnVendor(CG1Packet* pPacket)
 			pReply->WriteShortLE( 0x0003 );
 			pReply->WriteShortLE( 1 );
 			Send( pReply );		// Send the reply packet to the remote computer
+		}
+		// Vendor is the ASCII text "PEER" for PeerProject
+		else if ( nVendor == 'PEER' || nVendor == 'REEP' )	// Backwards for network byte order (Confirm?)
+		{
+			// Function code query for "PEER" (do)
+			CG1Packet* pReply = CG1Packet::New( pPacket->m_nType, 1, pPacket->m_oGUID );	// Create a reply packet
+			pReply->WriteLongBE( 'PEER' );
+			pReply->WriteShortLE( 0xFFFE );
+			pReply->WriteShortLE( 1 );
+			pReply->WriteShortLE( 0x0001 );
+			pReply->WriteShortLE( 1 );
+			pReply->WriteShortLE( 0x0002 );
+			pReply->WriteShortLE( 1 );
+			pReply->WriteShortLE( 0x0003 );
+			pReply->WriteShortLE( 1 );
+			Send( pReply ); // Send the reply packet to the remote computer
 		}
 		// Vendor is the ASCII text "BEAR" for BearShare
 		else if ( nVendor == 'BEAR' || nVendor == 'RAEB' )	// Backwards for network byte order (Confirm?)
@@ -954,7 +954,7 @@ BOOL CG1Neighbour::OnVendor(CG1Packet* pPacket)
 			Send( pReply );		// Send the reply packet to the remote computer
 		}
 	}
-	else if ( nVendor == 'ENVY' || nVendor == 'PEER' || nVendor == 'RAZA' )	// The vendor "RAZA" is Shareaza, and the function isn't 0xFFFF
+	else if ( nVendor == 'ENVY' || nVendor == 'RAZA' || nVendor == 'PEER' )	// The vendor "RAZA" is Shareaza, and the function isn't 0xFFFF
 	{
 		// Switch on what the function is
 		switch ( nFunction )
@@ -969,16 +969,16 @@ BOOL CG1Neighbour::OnVendor(CG1Packet* pPacket)
 				CG1Packet* pReply = CG1Packet::New( pPacket->m_nType, 1, pPacket->m_oGUID );
 				if ( nVendor == 'ENVY' )
 					pReply->WriteLongBE( 'ENVY' );
+				else if (nVendor == 'RAZA')
+					pReply->WriteLongBE('RAZA');
 				else if ( nVendor == 'PEER' )
 					pReply->WriteLongBE( 'PEER' );
-				else if ( nVendor == 'RAZA' )
-					pReply->WriteLongBE( 'RAZA' );
 				pReply->WriteShortLE( 0x0002 );
 				pReply->WriteShortLE( 1 );
 				pReply->WriteShortLE( theApp.m_nVersion[0] );
 				pReply->WriteShortLE( theApp.m_nVersion[1] );
-				pReply->WriteShortLE( theApp.m_nVersion[2] );
-				pReply->WriteShortLE( theApp.m_nVersion[3] );
+				pReply->WriteShortLE( 0 );
+				pReply->WriteShortLE( 0 );
 				Send( pReply );
 			}
 			break;
@@ -1082,8 +1082,7 @@ void CG1Neighbour::SendClusterAdvisor()
 		CQuickLock oLock( HostCache.Gnutella1.m_pSection );
 
 		// Loop through the Gnutella host cache,
-		for ( CHostCacheIterator i = HostCache.Gnutella1.Begin() ;
-			i != HostCache.Gnutella1.End() && nCount < 20 ; ++i )
+		for ( CHostCacheIterator i = HostCache.Gnutella1.Begin() ; i != HostCache.Gnutella1.End() && nCount < 20 ; ++i )
 		{
 			CHostCacheHostPtr pHost = (*i);
 

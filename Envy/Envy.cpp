@@ -420,7 +420,7 @@ BOOL CEnvyApp::InitInstance()
 		Plugins.Register( Settings.General.Path );
 		Plugins.Register( Settings.General.Path + L"\\Plugins" );
 
-		pTest.Attach( Plugins.GetPlugin( _T( "ImageService" ), _T( ".png" ) ) );
+		pTest.Attach( Plugins.GetPlugin( L"ImageService", L".png" ) );
 		if ( ! pTest )
 		{
 			CString strPath = m_strBinaryPath.Left( m_strBinaryPath.ReverseFind( L'\\' ) );
@@ -1389,8 +1389,8 @@ void CEnvyApp::GetVersionNumber()
 				{
 					m_nVersion[0] = (WORD)( pTable->dwFileVersionMS >> 16 );
 					m_nVersion[1] = (WORD)( pTable->dwFileVersionMS & 0xFFFF );
-					m_nVersion[2] = (WORD)( pTable->dwFileVersionLS >> 16 );
-					m_nVersion[3] = (WORD)( pTable->dwFileVersionLS & 0xFFFF );
+				//	m_nVersion[2] = (WORD)( pTable->dwFileVersionLS >> 16 );
+				//	m_nVersion[3] = (WORD)( pTable->dwFileVersionLS & 0xFFFF );
 				}
 			}
 
@@ -1398,19 +1398,27 @@ void CEnvyApp::GetVersionNumber()
 		}
 	}
 
-	m_sVersion.Format( L"%u.%u.%u.%u",
-		m_nVersion[0], m_nVersion[1], m_nVersion[2], m_nVersion[3] );
+	// XX.0
+	m_sVersion.Format( L"%u.%u",
+		m_nVersion[0], m_nVersion[1] );
 
+	// Envy XX.0
 	m_sSmartAgent = CLIENT_NAME L" ";
 	m_sSmartAgent += m_sVersion;
 
-	m_pBTVersion[ 0 ] = BT_ID1;
-	m_pBTVersion[ 1 ] = BT_ID2;
-	m_pBTVersion[ 2 ] = (BYTE)m_nVersion[ 0 ];
-	m_pBTVersion[ 3 ] = (BYTE)m_nVersion[ 1 ];
+	// ENx0
+	m_pBTVersion[0] = BT_ID1;
+	m_pBTVersion[1] = BT_ID2;
+	m_pBTVersion[2] = (BYTE)m_nVersion[0];
+	m_pBTVersion[3] = (BYTE)m_nVersion[1];
 
-	// Envy 1.X.X.X  32/64-bit  (date rXXXX)  Debug
+	// 0XX0 (Torrent PeerID)
+	m_szVersion[0] = theApp.m_nVersion[0] < 100 ? '0' : '1';	// ToDo: Future-proof if ever needed
+	m_szVersion[1] = '0' + ( ( ( theApp.m_nVersion[0] % 100 ) - ( theApp.m_nVersion[0] % 10 ) ) / 10 );
+	m_szVersion[2] = '0' + theApp.m_nVersion[0] % 10;
+	m_szVersion[3] = '0' + theApp.m_nVersion[1];	// 0
 
+	// "Envy XX.0  32/64-bit  (date rXXX)  Debug"
 	m_sVersionLong = m_sSmartAgent +
 #ifdef WIN64
 	L"  64-bit  " +
@@ -1489,11 +1497,9 @@ void CEnvyApp::GetVersionNumber()
 #endif
 		0;	// Should never happen
 
-	m_bIsWinXP =
 #ifndef NOXP
-		m_nWinVer < WIN_VISTA ? true :
+	m_bIsWinXP = m_nWinVer < WIN_VISTA ? true : false;	// Note false default for NOXP
 #endif
-		false;
 
 #ifndef NOXP
 	if ( m_nWinVer == WIN_8_1 )		// Test for higher if needed (Win10+)
@@ -1699,7 +1705,7 @@ void CEnvyApp::InitResources()
 	if ( Settings.Interface.DisplayScaling < 101 || Settings.Interface.DisplayScaling > 200 )
 	{
 		CDC ScreenDC;
-		ScreenDC.CreateIC( _T("DISPLAY"), NULL, NULL, NULL );
+		ScreenDC.CreateIC( L"DISPLAY", NULL, NULL, NULL );
 		const int nDPI = ScreenDC.GetDeviceCaps( LOGPIXELSY );
 		Settings.Interface.DisplayScaling =
 			nDPI < 100 ? 100 :
@@ -3901,8 +3907,8 @@ BOOL IsUserFullscreen()
 {
 	// Detect system message availability
 
-	// Vista+ (XP-safe: Default SHQueryUserNotificationState inclusion breaks WinXP)
-	if ( theApp.m_pfnSHQueryUserNotificationState )		// ! theApp.m_bIsWinXP
+	// Vista+ (XP-safe: SHQueryUserNotificationState breaks WinXP)
+	if ( theApp.m_pfnSHQueryUserNotificationState )
 	{
 		QUERY_USER_NOTIFICATION_STATE state;
 		if ( theApp.m_pfnSHQueryUserNotificationState( &state ) == S_OK )

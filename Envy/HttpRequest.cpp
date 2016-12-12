@@ -153,7 +153,7 @@ CString CHttpRequest::GetHeader(LPCTSTR pszName) const
 	return ( ! IsPending() && m_pResponseHeaders.Lookup( strIn, strOut ) ) ? strOut : L"";
 }
 
-CString CHttpRequest::GetResponseString(UINT nCodePage) const
+CString CHttpRequest::GetResponseString(UINT nCodePage /*CP_UTF8*/) const
 {
 	return ( ! IsPending() && m_pResponse ) ?
 		m_pResponse->ReadString( m_pResponse->m_nLength, nCodePage ) : L"";
@@ -245,8 +245,7 @@ void CHttpRequest::OnRun()
 	{
 		HINTERNET hURL = CNetwork::InternetOpenUrl( m_hInternet,
 			m_sURL, m_sRequestHeaders, m_sRequestHeaders.GetLength(),
-			INTERNET_FLAG_KEEP_CONNECTION | INTERNET_FLAG_RELOAD |
-			INTERNET_FLAG_PRAGMA_NOCACHE | INTERNET_FLAG_NO_CACHE_WRITE |
+			INTERNET_FLAG_KEEP_CONNECTION | INTERNET_FLAG_RELOAD | INTERNET_FLAG_PRAGMA_NOCACHE | INTERNET_FLAG_NO_CACHE_WRITE |
 			( m_bUseCookie ? 0 : INTERNET_FLAG_NO_COOKIES ) );
 		if ( hURL )
 		{

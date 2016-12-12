@@ -11,7 +11,7 @@ Library icons may be re-specified in xml. Optional naming variants:
 ".Alt.ico"  icons are used for any prior styling. (Pre-Win10)
 
 "Database" legacy folder was used for convenience in xml translation. (Outdated)
-"typeFilter" extensions in xml are used for download group default filters.
+"typefilter" extensions in xml are used for download group default filters.
 
 Library Organizer file/folder inclusion itself remains hard-coded.
 Filetype .ext handling is in core LibraryBuilderInternals.cpp, and various Library Builder Plugins.

@@ -468,12 +468,17 @@ void CFragmentBar::DrawUpload(CDC* pDC, CRect* prcBar, const CUploadDisplayData*
 			pDC->FillSolidRect( prcBar, crNatural );
 	}
 
-	Fragments::List::const_iterator pItr = pUploadData->m_oFragments.begin();
-	const Fragments::List::const_iterator pEnd = pUploadData->m_oFragments.end();
-	for ( ; pItr != pEnd ; ++pItr )
+#if (_MSC_VER > 1700)	// VS2012 for C++11
+	for ( const auto &frag : pUploadData->m_oFragments )
+	{
+		DrawFragment( pDC, prcBar, pUploadData->m_nSize, frag.begin(), frag.size(), Colors.m_crFragmentComplete, TRUE );
+	}
+#else
+	for ( Fragments::List::const_iterator pItr = pUploadData->m_oFragments.begin() ; pItr != pUploadData->m_oFragments.end() ; pItr++ )
 	{
 		DrawFragment( pDC, prcBar, pUploadData->m_nSize, pItr->begin(), pItr->size(), Colors.m_crFragmentComplete, TRUE );
 	}
+#endif
 
 	if ( pUploadData->m_bBaseFile && pUploadData->m_nLength != SIZE_UNKNOWN )
 	{
@@ -500,7 +505,7 @@ void CFragmentBar::DrawUpload(CDC* pDC, CRect* prcBar, const CUploadDisplayData*
 	}
 }
 
-// Legacy locking method:
+// Legacy locking method:  (CtrlUploadTip)
 void CFragmentBar::DrawUpload(CDC* pDC, CRect* prcBar, CUploadFile* pFile, COLORREF crNatural)
 {
 	CUploadTransfer* pUpload = pFile->GetActive();

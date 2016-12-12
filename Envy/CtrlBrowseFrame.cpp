@@ -64,15 +64,15 @@ END_MESSAGE_MAP()
 // CBrowseFrameCtrl construction
 
 CBrowseFrameCtrl::CBrowseFrameCtrl()
+	: m_wndList			( NULL )
+	, m_bTreeVisible	( FALSE )
+	, m_bPanelEnable	( FALSE )
+	, m_bPanelVisible	( Settings.Search.DetailPanelVisible )
+	, m_nPanelSize		( Settings.Search.DetailPanelSize )
+	, m_nTreeSize		( Settings.Search.BrowseTreeSize )
+	, m_nTree			( 1 )
+	, m_pTree			()
 {
-	m_bTreeVisible	= FALSE;
-	m_nTreeSize		= Settings.Search.BrowseTreeSize;
-	m_nPanelSize	= Settings.Search.DetailPanelSize;
-	m_bPanelVisible	= Settings.Search.DetailPanelVisible;
-	m_bPanelEnable	= FALSE;
-	m_pTree[0]		= NULL;
-	m_pTree[1]		= NULL;
-	m_nTree			= 1;
 }
 
 CBrowseFrameCtrl::~CBrowseFrameCtrl()

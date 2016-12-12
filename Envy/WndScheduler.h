@@ -36,7 +36,7 @@ protected:
 	CListCtrl		m_wndList;
 	CImageList		m_gdiImageList;
 	CLiveListSizer	m_pSizer;
-	DWORD			tLastUpdate;
+	DWORD			m_tLastUpdate;
 
 public:
 	CScheduleTask*	GetItem(int nItem);

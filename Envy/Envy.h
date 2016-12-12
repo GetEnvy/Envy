@@ -78,11 +78,12 @@ public:
 public:
 	HANDLE			m_pMutex;
 	CMutex			m_pSection;
-	WORD			m_nVersion[4];
-	BYTE			m_pBTVersion[4];			// PExx
-	CString			m_sVersion;					// x.x.x.x
-	CString			m_sVersionLong;				// x.x.x.x 32/64-bit (date rXXXX) Debug
-	CString			m_sSmartAgent;				// Envy x.x.x.x
+	WORD			m_nVersion[2];
+	CHAR			m_szVersion[4];				// 0010
+	BYTE			m_pBTVersion[4];			// ENxx
+	CString			m_sVersion;					// xx.x
+	CString			m_sVersionLong;				// xx.x 32/64-bit (date rXXX) Debug
+	CString			m_sSmartAgent;				// Envy xx.x
 	CString			m_sBuildDate;
 	CString			m_strBinaryPath;			// Envy.exe path
 //	BYTE			m_nFontQuality;				// Obsolete CLEARTYPE_QUALITY, use Settings.Fonts.Quality
@@ -479,27 +480,22 @@ const LPCTSTR RT_GZIP = L"GZIP";
 #define VENDOR_CODE				"ENVY"
 
 // ED2K client ID number.
-// 80 (0x50) = Proposed Envy ID  (Was PeerProject)
+// 80 (0x50) = Proposed Envy ID  (From PeerProject)
 // 0 = eMule, 1 = cDonkey, 4 = old Shareaza, 40 (0x28) = Shareaza
 #define ED2K_CLIENT_ID			80
 
-// BT 2 character peer-id code: -EN1000-
+// BT 2 character peer-id code: -EN0010-
 // EN = Envy, PE = PeerProject, SZ = Shareaza, etc.
 #define BT_ID1					'E'
 #define BT_ID2					'N'
 
 
 // Locations
-#define WEB_SITE				L"http://getenvy.com/"
-#define UPDATE_URL				L"http://getenvy.com/update"
 #define REGISTRY_KEY			L"Software\\Envy\\Envy"
+#define WEB_SITE				L"http://getenvy.com/"
+#define UPDATE_URL				L"http://sf.net/p/getenvy/code/HEAD/tree/trunk/release?format=raw"
+#define UPDATE_URL_ALT			L"http://raw.githubusercontent.com/GetEnvy/Envy/master/release"
 
-// ToDo: https://sf.net/p/getenvy/code/HEAD/tree/trunk/release?format=raw
-// Or:   https://raw.githubusercontent.com/GetEnvy/Envy/master/release
-// Or use L"http://getenvy.sourceforge.net/update"
 
-// Saved-State Serialization:
-#define INTERNAL_VERSION		1000
-// Version History:
-// 1000 - Envy 1.0 (unused)
-// ToDo: Integrate various _SER_VERs ?  (Upgrade awareness)
+// Saved-State Serialization:	(ToDo: Integrate various _SER_VERs)
+#define INTERNAL_VERSION		1001

@@ -135,6 +135,9 @@
       <Message>Pre-Build Dependencies</Message>
       <Command>xcopy "..\..\Services\LibGFL\$(Platform)\*.dll" "$(TargetDir)" /y</Command>
     </PreBuildEvent>
+    <BuildLog>
+      <Path>$(ProjectDir)$(IntDir)$(ProjectName).log</Path>
+    </BuildLog>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Midl>
@@ -186,6 +189,9 @@
       <Message>Pre-Build Dependencies</Message>
       <Command>xcopy "..\..\Services\LibGFL\$(Platform)\*.dll" "$(TargetDir)" /y</Command>
     </PreBuildEvent>
+    <BuildLog>
+      <Path>$(ProjectDir)$(IntDir)$(ProjectName).log</Path>
+    </BuildLog>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Midl>
@@ -242,6 +248,9 @@
     </Bscmake>
     <PostBuildEvent>
     </PostBuildEvent>
+    <BuildLog>
+      <Path>$(ProjectDir)$(IntDir)$(ProjectName).log</Path>
+    </BuildLog>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Midl>
@@ -293,6 +302,9 @@
     </Bscmake>
     <PostBuildEvent>
     </PostBuildEvent>
+    <BuildLog>
+      <Path>$(ProjectDir)$(IntDir)$(ProjectName).log</Path>
+    </BuildLog>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="GFLImageServices.cpp" />

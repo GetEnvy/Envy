@@ -482,7 +482,7 @@ BOOL CLibraryTreeView::CleanItems(CLibraryTreeItem* pItem, DWORD nCookie, BOOL b
 void CLibraryTreeView::NotifySelection()
 {
 	if ( ! m_hWnd ) return;
-	NMHDR pNM = { GetSafeHwnd(), GetDlgCtrlID(), LTN_SELCHANGED };
+	NMHDR pNM = { GetSafeHwnd(), (UINT_PTR)GetDlgCtrlID(), LTN_SELCHANGED };
 	GetOwner()->SendMessage( WM_NOTIFY, pNM.idFrom, (LPARAM)&pNM );
 }
 

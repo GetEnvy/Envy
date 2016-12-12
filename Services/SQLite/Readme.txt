@@ -11,12 +11,14 @@ To
 (Note dot matches newline)
 
 
+
 Cleanup:
 
 [ \t]+$
 
 (?<=[^\r])\n
 \r\n
+
 
 
 Comment Removal:
@@ -29,34 +31,36 @@ Comment Removal:
 \*\* Synopsis: [^\r]+\r\n
 
 
+
 File Removal:
 
-(^/\*+ Begin file mutex_unix.c \*+\/\r\n).+(^/\*+ End of mutex_unix.c \*+\/\r\n)
-$1\r\n/* #ifdef SQLITE_MUTEX_PTHREADS Content Removed */\r\n\r\n$2
+^/\*+ Begin file (FILENAME\.c) \*+\/\r\n.+^/\*+ End of FILENAME\.c \*+\/\r\n
+/************** Removed file $1 *****************************************/
 
-(^/\*+ Begin file os_unix.c \*+\/\r\n).+(^/\*+ End of os_unix.c \*+\/\r\n)
-$1\r\n/* #if SQLITE_OS_UNIX Content Removed */\r\n\r\n$2
+FILENAME:
 
-(^/\*+ Begin file notify.c \*+\/\r\n).+(^/\*+ End of notify.c \*+\/\r\n)
-$1\r\n/* #ifdef SQLITE_ENABLE_UNLOCK_NOTIFY Content Removed */\r\n\r\n$2
+mem2.c
+mem3.c
+mem5.c
+fts3.c
+fts5.c
+fts5.h
+fts3_aux.c
+fts3_expr.c
+fts3_hash.c
+fts3_porter.c
+fts3_tokenizer.c
+vxworks.h
+os_unix.c
+mutex_unix.c
 
-(^/\*+ Begin file fts3.c \*+\/\r\n).+(^/\*+ End of fts3_[^ ]+ \*+\/\r\n)
-$1\r\n/* #ifdef SQLITE_ENABLE_FTS3 Content Removed */\r\n\r\n$2
-
-(^/\*+ Begin file mem3.c \*+\/\r\n).+(^/\*+ End of mem3[^ ]+ \*+\/\r\n)
-$1\r\n/* #ifdef SQLITE_ENABLE_MEMSYS3 Content Removed */\r\n\r\n$2
-
-(^/\*+ Begin file mem5.c \*+\/\r\n).+(^/\*+ End of mem5[^ ]+ \*+\/\r\n)
-$1\r\n/* #ifdef SQLITE_ENABLE_MEMSYS5 Content Removed */\r\n\r\n$2
-
-(^/\*+ Begin file sqlite3rbu.c \*+\/\r\n).+(^/\*+ End of sqlite3rbu[^ ]+ \*+\/\r\n)
-$1\r\n/* RBU Extension Content Removed */\r\n\r\n$2
-
-(^/\*+ Begin file dbstat.c \*+\/\r\n).+(^/\*+ End of dbstat[^ ]+ \*+\/\r\n)
-$1\r\n/* dbstat Virtual Table Content Removed */\r\n\r\n$2
-
-(^/\*+ Begin file json1.c \*+\/\r\n).+(^/\*+ End of json1.c \*+\/\r\n)
-$1\r\n/* JSON Content Removed */\r\n\r\n$2
-
-(^/\*+ Begin file fts5.c \*+\/\r\n).+(^/\*+ End of fts5.c \*+\/\r\n)
-$1\r\n/* #ifdef SQLITE_ENABLE_FTS5 Content Removed */\r\n\r\n$2
+notify.c
+fts3_unicode2.c
+rtree.c
+icu.c
+fts3_icu.c
+sqlite3rbu.c
+sqlite3session.c
+sqlite3session.h
+dbstat.c
+json1.c

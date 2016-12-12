@@ -1054,13 +1054,15 @@ void CRemoteWnd::TrackVol()
 /////////////////////////////////////////////////////////////////////////////
 // CRemoteWnd::CmdButton construction
 
-CRemoteWnd::CmdButton::CmdButton(LPCTSTR pszName) : m_rc( 0, 0, 0, 0 )
+CRemoteWnd::CmdButton::CmdButton(LPCTSTR pszName)
+	: m_rc( 0, 0, 0, 0 )
 {
 	m_nID		= CoolInterface.NameToID( pszName + 1 );
 	m_sName		= pszName;
 	m_bVisible	= TRUE;
 	m_bEnabled	= TRUE;
 	m_bChecked	= FALSE;
+	m_bChanged	= FALSE;
 	if ( m_nID == 0 ) m_nID = 1;
 }
 

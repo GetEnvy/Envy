@@ -606,6 +606,7 @@ BOOL CBTClient::OnHandshake2()
 //		{ 'E', 'B', L"EBit" },
 //		{ 'E', 'S', L"Electric Sheep" },
 //		{ 'E', 'N', L"Envy" },
+//		{ 'E', 'V', L"Envy" },
 //		{ 'F', 'C', L"FileCroc" },
 //		{ 'F', 'G', L"FlashGet" },	// vXX.XX
 //		{ 'G', 'R', L"GetRight" },
@@ -704,7 +705,7 @@ CString CBTClient::GetUserAgentAzureusStyle(LPBYTE pVendor, size_t nVendor)
 		Vendors[ L"AV" ] = L"Avicora";
 		Vendors[ L"AX" ] = L"BitPump";
 		Vendors[ L"AZ" ] = L"Azureus";		// Vuze+Frostwire/etc.
-	//	Vendors[ L"BA" ] = L"BA";			// ?
+	//	Vendors[ L"BA" ] = L"BA";
 		Vendors[ L"BB" ] = L"BitBuddy";
 		Vendors[ L"BC" ] = L"BitComet";
 		Vendors[ L"BE" ] = L"BareTorrent";
@@ -724,9 +725,10 @@ CString CBTClient::GetUserAgentAzureusStyle(LPBYTE pVendor, size_t nVendor)
 		Vendors[ L"EB" ] = L"EBit";
 		Vendors[ L"ES" ] = L"Electric Sheep";
 		Vendors[ L"EN" ] = L"Envy";
+		Vendors[ L"EV" ] = L"Envy";			// Unused
 		Vendors[ L"FC" ] = L"FileCroc";
 		Vendors[ L"FG" ] = L"FlashGet";		// vXX.XX
-	//	Vendors[ L"FL" ] = L"FL";			// ?
+	//	Vendors[ L"FL" ] = L"FL";
 		Vendors[ L"FT" ] = L"FoxTorrent";
 		Vendors[ L"FX" ] = L"Freebox";
 		Vendors[ L"GR" ] = L"GetRight";
@@ -788,10 +790,11 @@ CString CBTClient::GetUserAgentAzureusStyle(LPBYTE pVendor, size_t nVendor)
 		Vendors[ L"UM" ] = L"\x00B5Torrent Mac";
 		Vendors[ L"UT" ] = L"\x00B5Torrent";
 		Vendors[ L"VG" ] = L"Vagaa";
+		Vendors[ L"WS" ] = L"WireShare";
 		Vendors[ L"WT" ] = L"BitLet";
 		Vendors[ L"WW" ] = L"WebTorrent";
 		Vendors[ L"WY" ] = L"FireTorrent";
-	//	Vendors[ L"XC" ] = L"XC ";			// ?
+	//	Vendors[ L"XC" ] = L"XC";
 		Vendors[ L"XL" ] = L"Xunlei";
 		Vendors[ L"XT" ] = L"XanTorrent";
 		Vendors[ L"XX" ] = L"xTorrent";
@@ -805,13 +808,23 @@ CString CBTClient::GetUserAgentAzureusStyle(LPBYTE pVendor, size_t nVendor)
 
 	if ( strUserAgent.IsEmpty() )
 		theApp.Message( MSG_NOTICE, L"BitTorrent Unknown Vendor Code: %s", (LPCTSTR)strVendor.Left( 6 ) );
+	else if ( IsText( strUserAgent, _P( L"Envy" ) ) )	// Our special case
+	{
+		if ( (TCHAR)pVendor[2] > '0' )
+			strUserAgent.Format( L"%s %c%c%c.%c", (LPCTSTR)strUserAgent, (TCHAR)pVendor[2], (TCHAR)pVendor[3], (TCHAR)pVendor[4], (TCHAR)pVendor[5] );
+		else if ( (TCHAR)pVendor[3] > '0' )
+			strUserAgent.Format( L"%s %c%c.%c", (LPCTSTR)strUserAgent, (TCHAR)pVendor[3], (TCHAR)pVendor[4], (TCHAR)pVendor[5] );
+		else
+			strUserAgent.Format( L"%s %c.%c", (LPCTSTR)strUserAgent, (TCHAR)pVendor[4], (TCHAR)pVendor[5] );
+		return strUserAgent;
+	}
 
 	if ( strUserAgent.IsEmpty() ) 	// If we don't want the version, etc.
 		strUserAgent.Format( L"BitTorrent (%s)", (LPCTSTR)strVendor.Left( 2 ) );
 	else if ( nVendor == 6 )
-		strUserAgent.Format( L"%s %c.%c.%c.%c", strUserAgent, (TCHAR)pVendor[ 2 ], (TCHAR)pVendor[ 3 ], (TCHAR)pVendor[ 4 ], (TCHAR)pVendor[ 5 ] );
+		strUserAgent.Format( L"%s %c.%c.%c.%c", (LPCTSTR)strUserAgent, (TCHAR)pVendor[2], (TCHAR)pVendor[3], (TCHAR)pVendor[4], (TCHAR)pVendor[5] );
 	else //if ( nVendor == 4 )
-		strUserAgent.Format( L"%s %c.%c", strUserAgent, (TCHAR)pVendor[ 2 ], (TCHAR)pVendor[ 3 ] );
+		strUserAgent.Format( L"%s %c.%c", (LPCTSTR)strUserAgent, (TCHAR)pVendor[2], (TCHAR)pVendor[3] );
 
 	return strUserAgent;
 }
@@ -911,7 +924,7 @@ CString CBTClient::GetUserAgentOtherStyle(LPBYTE pVendor, CString* strNick)
 	}
 	else if ( m_oGUID[0] == '-' && m_oGUID[1] == 'F' && m_oGUID[2] == 'G' )
 	{
-		// FlashGet 	// This is never reached (Azureus-style but vXX.XX)
+		// FlashGet 	// Note this is never reached (Azureus-style but vXX.XX)
 		strUserAgent.Format( L"FlashGet %i.%i%i", ( ( m_oGUID[3] - '0' ) * 10 + ( m_oGUID[4] - '0' ) ), m_oGUID[5] - '0', m_oGUID[6] - '0' );
 	}
 	else if ( m_oGUID[0] == '-' && m_oGUID[1] == 'G' && m_oGUID[2] == '3' )
@@ -995,7 +1008,7 @@ void CBTClient::DetermineUserAgent()
 	m_sUserAgent.Empty();
 	m_bClientExtended = isExtendedBtGuid( m_oGUID );
 
-	if ( m_oGUID[ 0 ] == '-' && m_oGUID[ 7 ] == '-' )		// -PE1000-
+	if ( m_oGUID[ 0 ] == '-' && m_oGUID[ 7 ] == '-' )		// -EN0010-
 		m_sUserAgent = GetUserAgentAzureusStyle( &m_oGUID[1], 6 );
 	else
 		m_sUserAgent = GetUserAgentOtherStyle( &m_oGUID[0], &strNick );

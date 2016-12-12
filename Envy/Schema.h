@@ -110,9 +110,9 @@ protected:
 	void			LoadDescriptorTypeFilter(const CXMLElement* pElement);
 	void			LoadDescriptorExtends(const CXMLElement* pElement);
 	void			LoadDescriptorContains(const CXMLElement* pElement);
+	void			LoadDescriptorHeader(const CXMLElement* pElement);
+	void			LoadDescriptorView(const CXMLElement* pElement);
 	void			LoadDescriptorBitprintsImport(const CXMLElement* pElement);
-	void			LoadDescriptorHeaderContent(const CXMLElement* pElement);
-	void			LoadDescriptorViewContent(const CXMLElement* pElement);
 	BOOL			LoadIcon(CString sPath = L"");
 
 // Inlines
@@ -166,8 +166,8 @@ public:
 	static LPCTSTR	uriBitTorrent;
 	static LPCTSTR	uriBitTorrentFolder;
 	static LPCTSTR	uriGhostFolder;
-	//static LPCTSTR	uriComments;
-	//static LPCTSTR	uriSkin;
+	//static LPCTSTR uriComments;
+	//static LPCTSTR uriSkin;
 
 	static LPCTSTR	uriApplicationFolder;
 	static LPCTSTR	uriArchiveFolder;
@@ -176,33 +176,7 @@ public:
 	static LPCTSTR	uriImageFolder;
 	static LPCTSTR	uriDocumentFolder;
 
-// Legacy Subfolders:
-//	static LPCTSTR	uriApplicationRoot;
-//	static LPCTSTR	uriApplicationAll;
-//	static LPCTSTR	uriArchiveRoot;
-//	static LPCTSTR	uriArchiveAll;
-//	static LPCTSTR	uriDocumentRoot;
-//	static LPCTSTR	uriDocumentAll;
-//	static LPCTSTR	uriBookRoot;
-//	static LPCTSTR	uriBookAll;
-//	static LPCTSTR	uriImageRoot;
-//	static LPCTSTR	uriImageAll;
-//	static LPCTSTR	uriImageAlbum;
-//	static LPCTSTR	uriMusicRoot;
-//	static LPCTSTR	uriMusicAll;
-//	static LPCTSTR	uriMusicAlbum;
-//	static LPCTSTR	uriMusicArtist;
-//	static LPCTSTR	uriMusicGenre;
-//	static LPCTSTR	uriMusicAlbumCollection;
-//	static LPCTSTR	uriMusicArtistCollection;
-//	static LPCTSTR	uriMusicGenreCollection;
-//	static LPCTSTR	uriVideoRoot;
-//	static LPCTSTR	uriVideoAll;
-//	static LPCTSTR	uriVideoFilm;
-//	static LPCTSTR	uriVideoSeries;
-//	static LPCTSTR	uriVideoFilmCollection;
-//	static LPCTSTR	uriVideoSeriesCollection;
-//	static LPCTSTR	uriVideoMusicCollection;
+	// Legacy sorted subfolders removed. (Root/All/Collection)
 
 	friend class CSchemaMember;
 

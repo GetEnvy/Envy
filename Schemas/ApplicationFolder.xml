@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<schemaDescriptor location="http://schemas.getenvy.com/ApplicationFolder.xsd" xmlns="http://schemas.getenvy.com/SchemaDescriptor.xsd">
+<schemadescriptor location="http://schemas.getenvy.com/ApplicationFolder.xsd" xmlns="http://schemas.getenvy.com/SchemaDescriptor.xsd">
 
 	<object type="folder" availability="system"/>
-	<viewContent version="1.0" preferredView="CLibraryDetailView"/>
+	<view preferredview="CLibraryDetailView"/>
 	<contains>
 		<object type="file" location="http://schemas.getenvy.com/Application.xsd"/>
 		<object type="file" location="http://schemas.getenvy.com/ROM.xsd"/>
@@ -40,7 +40,7 @@
 		<title language="zhs">程序</title>
 		<title language="zht">應用程式</title>
 	</titles>
-	<headerContent version="1.0">
+	<header>
 		<title language="en">All Applications</title>
 		<title language="af">Alle Programme</title>
 		<title language="ca">Totes les aplicacions</title>
@@ -94,7 +94,7 @@
 		<subtitle language="ja">このフォルダーにはライブラリー内にある全てのファイルを含みます</subtitle>
 		<subtitle language="zhs">此文件夹包含您收藏中的所有程序。</subtitle>
 		<subtitle language="zht">這個資料夾包含了在您的收藏中所有的應用程式檔案.</subtitle>
-	</headerContent>
+	</header>
 	<members>
 		<member name="title" search="none">
 			<display defaultColumn="true"/>
@@ -129,4 +129,4 @@
 		</member>
 	</members>
 
-</schemaDescriptor>
+</schemadescriptor>

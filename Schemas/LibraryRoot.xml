@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<schemaDescriptor location="http://schemas.getenvy.com/LibraryRoot.xsd" xmlns="http://schemas.getenvy.com/SchemaDescriptor.xsd">
+<schemadescriptor location="http://schemas.getenvy.com/LibraryRoot.xsd" xmlns="http://schemas.getenvy.com/SchemaDescriptor.xsd">
 
 	<object type="folder" availability="system"/>
 	<images>
@@ -34,7 +34,7 @@
 		<title language="zhs">常规: 我的 Envy 库</title>
 		<title language="zht">一般: 我的 Envy 收藏</title>
 	</titles>
-	<headerContent version="1.0">
+	<header>
 		<title language="en">Welcome to your Library.</title>
 		<title language="af">Welkom by Jou Biblioteek.</title>
 		<title language="ca">Benvingut/da a la meva col·lecció.</title>
@@ -89,7 +89,7 @@
 		<subtitle language="ja">あなたのライブラリ内には {totalFiles} ファイルあり、総容量は {totalVolume} です</subtitle>
 		<subtitle language="zhs">您总计有 {totalFiles} 个文件，共计 {totalVolume} 位于您的库中。</subtitle>
 		<subtitle language="zht">您有 {totalFiles} 個檔案，總計大小 {totalVolume} 在您的收藏.</subtitle>
-	</headerContent>
+	</header>
 	<members>
 		<member name="title" search="generic">
 			<display defaultColumn="true"/>
@@ -180,4 +180,4 @@
 		</member>
 	</members>
 
-</schemaDescriptor>
+</schemadescriptor>

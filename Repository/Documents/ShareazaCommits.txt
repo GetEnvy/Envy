@@ -16,14 +16,24 @@ svn+ssh://svn.code.sf.net/p/shareaza/code/trunk shareaza-code
 •
 
 
-9630		f
+9640		f
+9639	r12	12f	Updated 7ZipBuilder plugin's Z-Zip library to 16.2.0
+9638	r12	6f	Fixed warnings
+9637	r12	8f	Fixed warnings
+9636	.	12f	Fixed warning C4777
+9635	.	1f	Updated VS2015 project
+9634	.	1f	Updated Visual C++ Redistributable for Visual Studio 2015 Update 3 14.0.24215
+9633		3f	Updated UnRAR version to 5.40.100.2100
+9632	.	4f	Updated SQLite up to 3.14.2
+9631	.	1f	Updated GeoIP database (07 Sep 2016)
+9630	.	3f	Envy Vendor Update
 9629	r9	1f	Updated services list (by ale5000)
 9628		4f	Updated setup script to support new splitted redistributables (minimum and additional)
 9627	r9	1f	Fixed second-tier plugin registration
 9626	r9	20f	Updated MiniUPnPc library to 1.9.20160209  (2.0)
 9625	.	1f	Updated GeoIP database (05 Apr 2016)
 9624	.	f	Updated Visual C++ Redistributable for Visual Studio 2015 Update 2 (Updated Inno Download Plugin 1.5.1.0)
-9623		f	Updated VS2015 projects references
+9623	.	f	Updated VS2015 projects references
 9622	r128	1f	Updated VS2015 project
 9621	.	1f	Updated copyright (.rc)
 9620	.	1f	Updated projects up to VS2015 Update 1 (installer)
@@ -99,7 +109,7 @@ svn+ssh://svn.code.sf.net/p/shareaza/code/trunk shareaza-code
 9551		1f	Fixed resize of muti-file/torrent download
 9550	.	3f	Fixed math rounding error in the time metadata
 9549	r8	3f	Added .asx, .flv, .ogv and .webm extensions to the media plugins and schemas
-9548		33f	(Various metadata fixes and const) (Add CSchemaMemberPtr for CSchemaMember*)
+9548		33f	(Various metadata fixes and const) (Add CSchemaMemberPtr for CSchemaMember*) - (Multiple Values) in file properties dialog
 9547	r125	2f	CXMLNode::SetValue() minor optimization
 9546	r126	1f	Added well-known DC++ hub list
 9545	r125	2f	Fixed stable time calculation
@@ -171,8 +181,6 @@ svn+ssh://svn.code.sf.net/p/shareaza/code/trunk shareaza-code
 9416	/	5f	Fixed multi-file magnet parsing (but not supported yet) - http://bit.ly/1jZGG1a
 9403		1f	Increased height of "Download File or Torrent" dialog
 9400		14+f	Removed Bitzi.com support
-9390	r127	12f	Removed Windows 2000 code  (ToDo: Check Plugins?)
-9389	.	f	Added Visual Studio 2013 project, fixed incompatibilities
 9377		3f	Adjusted project options
 9350		8f+	Adjusted interface of Existing File dialog. Removed confusing duplicate file detection. (Deadlocks)
 9347		1f	Updated Nederlands translation
@@ -189,17 +197,12 @@ svn+ssh://svn.code.sf.net/p/shareaza/code/trunk shareaza-code
 9257	+r129	7f	XML element and attribute names must not be lowercased (Fix for http://is.gd/2xAByG)
 9251	/	4f	TorrentWizard: Fix VS2008
 
-9235 r86~ r105	1f	Optimized thread code.		(Note: Minor oversight broke Filter Lists)
-
-9203	 r105~	1f	Now desktop.ini in Shareaza folders will be created only if it's not exist before
 9149		4f	Windows 2000 compatibility fix.  (~DelayLoadDLLs)
 9146		5+60f	Added support for Windows 7 task bar jump list.		(CreateshellLink etc.)
 9120		7f	Tried to add progress dialogs to some long operations like file deleting or download clearing
 9113		/	Removed downloads extra checks, adjusted downloading file open time (earlier)  (Note: DownloadWithTiger IsFileOpen)
 9022		4+60f	Language addition to r8987 ("Create torrent" menu)
 8995		10f	Library tree folder tips: Total Files:, Total Volume:, Free: (space)
-8988		1f	+Below
-8987	 r109	10f	Add "Create .torrent File" to Library folder tree menu  +r9022
 8925		2f	Cyko: About css  +8926 +8927
 
 8917		6f	SkinTranslate Utility
@@ -222,3 +225,4 @@ ToDos:			Add ID_TAB_MENU ?
 			JumpLists: r9146 http://msdn.microsoft.com/en-us/gg465010#_Toc243450447
 			r8625+ BENode TorrentWizard
 			BitTorrent DNS, uTP
+			C++11  VS2012+	https://msdn.microsoft.com/en-us/library/hh567368.aspx

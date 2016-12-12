@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<schemaDescriptor location="http://schemas.getenvy.com/Audio.xsd" xmlns="http://schemas.getenvy.com/SchemaDescriptor.xsd">
+<schemadescriptor location="http://schemas.getenvy.com/Audio.xsd" xmlns="http://schemas.getenvy.com/SchemaDescriptor.xsd">
 
 	<object type="file" availability="default"/>
 	<titles>
@@ -1233,7 +1233,7 @@
 		<mapping from="rdf:rdf/rdf:Description/dc:description/mm:trackNum" to="track"/>
 		<mapping from="rdf:rdf/rdf:Description/dc:description/dc:date" to="year"/>
 	</bitprintImport>
-	<typeFilter>
+	<typefilter>
 		<type extension="aac"/>
 		<type extension="aif"/>
 		<type extension="aiff"/>
@@ -1271,6 +1271,6 @@
 		<type extension="vqf"/>
 		<type extension="wav"/>
 		<type extension="wma"/>
-	</typeFilter>
+	</typefilter>
 
-</schemaDescriptor>
+</schemadescriptor>

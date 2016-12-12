@@ -26,8 +26,8 @@ LANGUAGE LANG_NEUTRAL, SUBLANG_NEUTRAL
 //
 
 VS_VERSION_INFO VERSIONINFO
+ PRODUCTVERSION 1,0
  FILEVERSION 1,0,0,0
- PRODUCTVERSION 1,0,0,0
  FILEFLAGSMASK 0x3fL
 #ifdef _DEBUG
  FILEFLAGS 0x1L
@@ -38,25 +38,25 @@ VS_VERSION_INFO VERSIONINFO
  FILETYPE 0x2L
  FILESUBTYPE 0x0L
 BEGIN
-    BLOCK "StringFileInfo"
-    BEGIN
-        BLOCK "000004b0"
-        BEGIN
-            VALUE "Comments", "Envy Download Manager"
-            VALUE "CompanyName", "GetEnvy.com"
-            VALUE "FileDescription", "Envy Web Hook"
-            VALUE "FileVersion", "1.0.0.0"
-            VALUE "InternalName", "WebHook"
-            VALUE "LegalCopyright", "© Envy 2016"
-            VALUE "OriginalFilename", "WebHook.dll"
-            VALUE "ProductName", "Envy"
-            VALUE "ProductVersion", "1.0.0.0"
-        END
-    END
-    BLOCK "VarFileInfo"
-    BEGIN
-        VALUE "Translation", 0x0, 1200
-    END
+	BLOCK "StringFileInfo"
+	BEGIN
+		BLOCK "000004b0"
+		BEGIN
+			VALUE "ProductName", "Envy"
+			VALUE "ProductVersion", "1.0"
+			VALUE "FileVersion", "1.0.0.0"
+			VALUE "InternalName", "WebHook"
+			VALUE "OriginalFilename", "WebHook.dll"
+			VALUE "FileDescription", "Envy Web Hook"
+			VALUE "Comments", "Envy Download Manager"
+			VALUE "CompanyName", "GetEnvy.com"
+			VALUE "LegalCopyright", "© Envy Development Team 2016"
+		END
+	END
+	BLOCK "VarFileInfo"
+	BEGIN
+		VALUE "Translation", 0x0, 1200
+	END
 END
 
 

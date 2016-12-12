@@ -87,6 +87,7 @@ END_MESSAGE_MAP()
 // CSchedulerWnd construction
 
 CSchedulerWnd::CSchedulerWnd()
+	: m_tLastUpdate ( 0 )
 {
 	Create( IDR_SCHEDULERFRAME );
 }
@@ -247,7 +248,7 @@ void CSchedulerWnd::Update(int nColumn, BOOL bSort)
 
 	pLiveList.Apply( &m_wndList, bSort );	// Put items in the main list
 
-	tLastUpdate = GetTickCount();			// Update time after done doing work
+	m_tLastUpdate = GetTickCount();			// Update time after done doing work
 }
 
 CScheduleTask* CSchedulerWnd::GetItem(int nItem)
@@ -280,7 +281,7 @@ void CSchedulerWnd::OnTimer(UINT_PTR nIDEvent)
 	{
 		const DWORD tDelay = max( ( 2 * (DWORD)Scheduler.GetCount() ), 1000ul );	// Delay based on size of list
 
-		if ( ( GetTickCount() - tLastUpdate ) > tDelay )
+		if ( ( GetTickCount() - m_tLastUpdate ) > tDelay )
 		{
 			if ( tDelay < 2000 )
 				Update();				// Sort if list is under 1000

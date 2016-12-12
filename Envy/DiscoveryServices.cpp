@@ -1834,7 +1834,7 @@ BOOL CDiscoveryServices::RunWebCacheUpdate()
 	{
 		strURL += L"&net=gnutella2";
 		strURL += L"&client=" _T(VENDOR_CODE);	// Version number combined with client parameter for spec2
-		strURL += theApp.m_sVersion;				// "PEER1.0.0.0"
+		strURL += theApp.m_sVersion;			// "ENVY1.0"
 	}
 	else
 	{

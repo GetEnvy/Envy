@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<schemaDescriptor location="http://schemas.getenvy.com/Book.xsd" xmlns="http://schemas.getenvy.com/SchemaDescriptor.xsd">
+<schemadescriptor location="http://schemas.getenvy.com/Book.xsd" xmlns="http://schemas.getenvy.com/SchemaDescriptor.xsd">
 
 	<object type="file" availability="default"/>
 	<titles>
@@ -736,7 +736,7 @@
 			<title language="zht">ShareTag 信息</title>
 		</member>
 	</members>
-	<typeFilter>
+	<typefilter>
 		<type extension="cbr"/>
 		<type extension="cbz"/>
 		<type extension="cbt"/>
@@ -770,6 +770,6 @@
 		<type extension="wri"/>
 		<type extension="xps"/>
 		<type extension="xml"/>
-	</typeFilter>
+	</typefilter>
 
-</schemaDescriptor>
+</schemadescriptor>

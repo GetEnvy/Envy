@@ -61,37 +61,37 @@ LANGUAGE LANG_NEUTRAL, SUBLANG_NEUTRAL
 //
 
 VS_VERSION_INFO VERSIONINFO
+ PRODUCTVERSION 1,0
  FILEVERSION 1,0,0,0
- PRODUCTVERSION 1,0,0,0
  FILEFLAGSMASK 0x3fL
 #ifdef _DEBUG
  FILEFLAGS 0x1L
 #else
  FILEFLAGS 0x0L
 #endif
- FILEOS 0x4L
+ FILEOS 0x40004L
  FILETYPE 0x2L
  FILESUBTYPE 0x0L
 BEGIN
-    BLOCK "StringFileInfo"
-    BEGIN
-        BLOCK "000004b0"
-        BEGIN
-            VALUE "Comments", "Extract previews from image files."
-            VALUE "CompanyName", "Envy Development Team"
-            VALUE "FileDescription", "GFL Image Service Plugin"
-            VALUE "FileVersion", "1.0.0.0"
-            VALUE "InternalName", "GFLImageServices"
-            VALUE "LegalCopyright", "© Envy 2016"
-            VALUE "OriginalFilename", "GFLImageServices.dll"
-            VALUE "ProductName", "Envy"
-            VALUE "ProductVersion", "1.0.0.0"
-        END
-    END
-    BLOCK "VarFileInfo"
-    BEGIN
-        VALUE "Translation", 0x0, 1200
-    END
+	BLOCK "StringFileInfo"
+	BEGIN
+		BLOCK "000004b0"
+		BEGIN
+			VALUE "ProductName", "Envy"
+			VALUE "ProductVersion", "1.0"
+			VALUE "FileVersion", "1.0.0.0"
+			VALUE "InternalName", "GFLImageServices"
+			VALUE "OriginalFilename", "GFLImageServices.dll"
+			VALUE "FileDescription", "GFL Image Service Plugin"
+			VALUE "Comments", "Extract previews from image files."
+			VALUE "CompanyName", "GetEnvy.com"
+			VALUE "LegalCopyright", "© Envy Development Team 2016"
+		END
+	END
+	BLOCK "VarFileInfo"
+	BEGIN
+		VALUE "Translation", 0x0, 1200
+	END
 END
 
 

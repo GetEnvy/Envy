@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<schemaDescriptor location="http://schemas.getenvy.com/UnsortedFolder.xsd" xmlns="http://schemas.getenvy.com/SchemaDescriptor.xsd">
+<schemadescriptor location="http://schemas.getenvy.com/UnsortedFolder.xsd" xmlns="http://schemas.getenvy.com/SchemaDescriptor.xsd">
 
 	<object type="folder" availability="system"/>
-	<viewContent version="1.0" preferredView="CLibraryDetailView"/>
+	<view preferredview="CLibraryDetailView"/>
 	<contains>
 		<object type="file" location="http://schemas.getenvy.com/Unsorted.xsd"/>
 	</contains>
@@ -39,7 +39,7 @@
 		<title language="zhs">未分类</title>
 		<title language="zht">未分類</title>
 	</titles>
-	<headerContent version="1.0">
+	<header>
 		<title language="en">Unsorted</title>
 		<title language="af">Onbekend</title>
 		<title language="ca">Desconegut</title>
@@ -94,7 +94,7 @@
 		<subtitle language="ja">このフォルダーにはライブラリー内ーにある全ての文章が収録されています</subtitle>
 		<subtitle language="zhs">此文件夹包含您收藏中的所有文档。</subtitle>
 		<subtitle language="zht">這個資料夾包含您收藏中所有的文件</subtitle>
-	</headerContent>
+	</header>
 	<members>
 		<member name="title" search="none">
 			<display defaultColumn="true"/>
@@ -129,4 +129,4 @@
 		</member>
 	</members>
 
-</schemaDescriptor>
+</schemadescriptor>

@@ -1,5 +1,6 @@
-LZMA SDK 9.22 (2011-04-18)	(Current Aug.2012)
+LZMA SDK 16.4  (Oct 2016)
 
-7z922_extra.7z
+DLL Source: 7z1604-extra.7z
+Header Source: 7z1604-src.7z
 
 http://sourceforge.net/projects/sevenzip/files/7-Zip/

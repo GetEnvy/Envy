@@ -170,10 +170,10 @@ void CDHT::Disconnect()
 	if ( ! m_bConnected )
 		return;
 
-	int nCount = 100, nZero = 0;
+	int nCount = 100, nNoIP6 = 0;
 	CAutoVectorPtr< SOCKADDR_IN > pHosts( new SOCKADDR_IN[ nCount ] );
 	CAutoVectorPtr< unsigned char > pIDs( new unsigned char[ nCount * Hashes::BtGuid::byteCount ] );
-	if ( dht_get_nodes( pHosts, pIDs, &nCount, NULL, NULL, &nZero ) >= 0 )
+	if ( dht_get_nodes( pHosts, pIDs, &nCount, NULL, NULL, &nNoIP6 ) >= 0 )
 	{
 		CQuickLock oLock( HostCache.BitTorrent.m_pSection );
 
@@ -711,7 +711,7 @@ BOOL CBTPacket::OnPacket(const SOCKADDR_IN* pHost)
 //		//	; // ToDo: Find node
 //		//else if ( strQueryMethod == BT_DICT_GET_PEERS ) 					// "get_peers"
 //		//	; // ToDo: Get peers
-//		//else if ( strQueryMethod == BT_DICT_ANNOUNCE_PEER )					// "announce_peer"
+//		//else if ( strQueryMethod == BT_DICT_ANNOUNCE_PEER )				// "announce_peer"
 //		//	; // ToDo: Announce peer
 //		//else if ( strQueryMethod == BT_DICT_ERROR_LONG )					// "error"
 //		//	; // ToDo: ??
@@ -768,14 +768,14 @@ BOOL CBTPacket::OnPacket(const SOCKADDR_IN* pHost)
 
 //BOOL CBTPacket::OnPing(const SOCKADDR_IN* pHost)
 //{
-//	const CBENode* pTransID = m_pNode->GetNode( BT_DICT_TRANSACT_ID );			// "t"
+//	const CBENode* pTransID = m_pNode->GetNode( BT_DICT_TRANSACT_ID );		// "t"
 //
-//	const CBENode* pQueryData = m_pNode->GetNode( BT_DICT_DATA );				// "a"
+//	const CBENode* pQueryData = m_pNode->GetNode( BT_DICT_DATA );			// "a"
 //	if ( ! pQueryData || ! pQueryData->IsType( CBENode::beDict ) )
 //		return FALSE;
 //
 //	Hashes::BtGuid oNodeGUID;
-//	const CBENode* pNodeID = pQueryData->GetNode( BT_DICT_ID );					// "id"
+//	const CBENode* pNodeID = pQueryData->GetNode( BT_DICT_ID );				// "id"
 //	if ( ! pNodeID || ! pNodeID->GetString( oNodeGUID ) )
 //		return FALSE;
 //

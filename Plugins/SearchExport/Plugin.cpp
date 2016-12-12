@@ -189,11 +189,8 @@ public:
 		{
 			do
 			{
-				if ( ! ( wfa.dwFileAttributes & ( FILE_ATTRIBUTE_DIRECTORY |
-					FILE_ATTRIBUTE_HIDDEN | FILE_ATTRIBUTE_SYSTEM ) ) )
-				{
+				if ( ! ( wfa.dwFileAttributes & ( FILE_ATTRIBUTE_DIRECTORY | FILE_ATTRIBUTE_SYSTEM | FILE_ATTRIBUTE_HIDDEN ) ) )
 					AddFile( sFolder + wfa.cFileName );
-				}
 			}
 			while ( FindNextFile( hFind, &wfa ) );
 		}
@@ -222,8 +219,7 @@ public:
 			 SUCCEEDED( fileOut.Write( (LPCSTR)CT2A( strHeader ), strHeader.GetLength() ) ) )
 		{
 			// Content
-			for ( POSITION pos1 = m_Parts.GetHeadPosition(),
-				pos2 = m_URIs.GetHeadPosition(); pos1 && pos2; )
+			for ( POSITION pos1 = m_Parts.GetHeadPosition(), pos2 = m_URIs.GetHeadPosition(); pos1 && pos2; )
 			{
 				const CStringA& sPart = m_Parts.GetNext( pos1 );
 				const CString& sURI = m_URIs.GetNext( pos2 );
@@ -239,7 +235,7 @@ public:
 					L"Content-Transfer-Encoding: base64\r\n"
 					L"Content-Location: %s%s\r\n"
 					L"\r\n",
-					szBoundary, szType, m_sRoot, sURI );
+					szBoundary, szType, (LPCTSTR)m_sRoot, (LPCTSTR)sURI );
 
 				fileOut.Write( (LPCSTR)CT2A( strHeader ), strHeader.GetLength() );
 				fileOut.Write( sPart, sPart.GetLength() );
@@ -374,11 +370,11 @@ HRESULT CPlugin::Export(IGenericView* pGenericView, LONG nCount)
 
 		str.Format( L"dn=%s&amp;xl=%I64u\">%s</a></span>"
 			L"<span class=\"fs\">%s</span></div>\r\n",
-			URLEncode( bstrName ), nSize, bstrName, SmartVolume( nSize ) );
+			(LPCTSTR)URLEncode( bstrName ), nSize, (LPCTSTR)bstrName, (LPCTSTR)SmartVolume( nSize ) );
 		sHTML += str;
 	}
 
-	//Date String
+	// Date String
 	TCHAR szBuffer[12];
 	SYSTEMTIME time;
 	GetSystemTime(&time);

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<schemaDescriptor location="http://schemas.getenvy.com/SearchFolder.xsd" xmlns="http://schemas.getenvy.com/SchemaDescriptor.xsd">
+<schemadescriptor location="http://schemas.getenvy.com/SearchFolder.xsd" xmlns="http://schemas.getenvy.com/SchemaDescriptor.xsd">
 
 	<object type="folder" availability="system" private="true"/>
 	<images>
@@ -33,7 +33,7 @@
 		<title language="zhs">搜索: 搜索结果</title>
 		<title language="zht">搜尋: 搜尋結果</title>
 	</titles>
-	<headerContent version="1.0">
+	<header>
 		<title language="en">Search for "{content}"</title>
 		<title language="af">Soek vir " {content} "</title>
 		<title language="ca">Cerca per "{content}"</title>
@@ -86,7 +86,7 @@
 		<subtitle language="ja">このフォルダーには "{content}" に当てはまるサーチ結果が収録されています</subtitle>
 		<subtitle language="zhs">此文件夹包含了匹配搜索 "{content}" 的文件</subtitle>
 		<subtitle language="zht">這個資料夾包含了符合您搜尋 "{content}" 的檔案</subtitle>
-	</headerContent>
+	</header>
 	<members>
 		<member name="title" search="none">
 			<title language="en">Title</title>
@@ -204,4 +204,4 @@
 		</member>
 	</members>
 
-</schemaDescriptor>
+</schemadescriptor>

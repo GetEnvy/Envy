@@ -1,8 +1,8 @@
 //
 // dht.h
 //
-// This file is part of Envy (getenvy.com) © 2010-2015
-// Copyright (c) 2009-2011 by Juliusz Chroboczek
+// This file is part of Envy (getenvy.com) © 2016
+// Copyright (c) 2009-2015 by Juliusz Chroboczek
 //
 // Permission is hereby granted, free of charge, to any person obtaining
 // a copyof this software and associated documentation files (the "Software"),
@@ -41,9 +41,14 @@ dht_callback(void *closure, int event,
 #define DHT_EVENT_REPLY 7			// Node sent us a reply
 #define DHT_EVENT_REMOVED 8			// Node was removed from DHT table
 
+//#ifdef DHT_DEBUG
+//extern FILE *dht_debug;
+//void dht_dump_tables(FILE *f);
+//#endif // DHT_DEBUG
+
 int dht_init(int s, int s6, const unsigned char *id, const unsigned char *v);
 int dht_insert_node(const unsigned char *id, struct sockaddr *sa, int salen);
-int dht_ping_node(struct sockaddr *sa, int salen);
+int dht_ping_node(const struct sockaddr *sa, int salen);
 int dht_periodic(const unsigned char *buf, size_t buflen,
 				 const struct sockaddr *from, int fromlen,
 				 time_t *tosleep, dht_callback *callback, void *closure);
@@ -56,11 +61,6 @@ int dht_get_nodes(struct sockaddr_in *sin, unsigned char* id, int *num,
 				  struct sockaddr_in6 *sin6, unsigned char* id6, int *num6);
 int dht_uninit(void);
 
-//#ifdef DHT_DEBUG
-//extern FILE *dht_debug;
-//void dht_dump_tables(FILE *f);
-//#endif // DHT_DEBUG
-
 /* This must be provided by the user. */
 int dht_blacklisted(const struct sockaddr *sa, int salen);
 void dht_hash(void *hash_return, int hash_size,
@@ -70,5 +70,3 @@ void dht_hash(void *hash_return, int hash_size,
 int dht_random_bytes(void *buf, size_t size);
 int dht_sendto(int s, const void *buf, int len, int flags,
 			  const struct sockaddr *to, int tolen);
-//void dht_new_node(const unsigned char *id,
-//            const struct sockaddr *sa, int salen, int confirm);

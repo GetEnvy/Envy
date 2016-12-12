@@ -32,7 +32,7 @@ public:
 public:
 	CString		m_sPath;
 	CString		m_sVersion;
-	WORD		m_nVersion[4];
+	WORD		m_nVersion[2];
 	CFont		m_fntNormal;
 	CFont		m_fntBold;
 	CFont		m_fntLine;

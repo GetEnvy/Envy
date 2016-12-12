@@ -6,11 +6,11 @@
 // Portions of this page have been previously released into the public domain.
 // You are free to redistribute and modify it without any restrictions.
 
-
 #include "Skin.h"
 
-static LSTATUS CreateHKCRKey(LPCTSTR lpSubKey, LPTSTR lpClass, LPTSTR lpData);
-static LSTATUS DeleteHKCRKey(LPCTSTR lpSubKey, LPTSTR lpClass);
+static BOOL CheckKey(LPCTSTR lpSubKey);
+static LSTATUS CreateKey(LPCTSTR lpSubKey, LPTSTR lpClass, LPTSTR lpData);
+static LSTATUS DeleteKey(LPCTSTR lpSubKey, LPTSTR lpClass);
 
 LSTATUS CreateSkinKeys()
 {

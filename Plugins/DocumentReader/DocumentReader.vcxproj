@@ -131,6 +131,9 @@
       <Message>Pre-Build Dependencies</Message>
       <Command>if exist "..\..\Services\zlib\$(ConfigurationName) $(PlatformName)\zlibwapi.dll" copy "..\..\Services\zlib\$(ConfigurationName) $(PlatformName)\zlibwapi.dll" "$(TargetDir)" /b /y</Command>
     </PreBuildEvent>
+    <BuildLog>
+      <Path>$(ProjectDir)$(IntDir)$(ProjectName).log</Path>
+    </BuildLog>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Midl>
@@ -178,6 +181,9 @@
       <Message>Pre-Build Dependencies</Message>
       <Command>if exist "..\..\Services\zlib\$(ConfigurationName) $(PlatformName)\zlibwapi.dll" copy "..\..\Services\zlib\$(ConfigurationName) $(PlatformName)\zlibwapi.dll" "$(TargetDir)" /b /y</Command>
     </PreBuildEvent>
+    <BuildLog>
+      <Path>$(ProjectDir)$(IntDir)$(ProjectName).log</Path>
+    </BuildLog>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Midl>
@@ -230,6 +236,9 @@
     <PostBuildEvent>
       <Message>No registration</Message>
     </PostBuildEvent>
+    <BuildLog>
+      <Path>$(ProjectDir)$(IntDir)$(ProjectName).log</Path>
+    </BuildLog>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Midl>
@@ -279,6 +288,9 @@
     <PostBuildEvent>
       <Message>No registration</Message>
     </PostBuildEvent>
+    <BuildLog>
+      <Path>$(ProjectDir)$(IntDir)$(ProjectName).log</Path>
+    </BuildLog>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="CoreUtils.cpp" />

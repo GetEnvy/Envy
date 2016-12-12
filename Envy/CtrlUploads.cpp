@@ -887,7 +887,8 @@ void CUploadsCtrl::OnPaint()
 	CFont* pfOld = (CFont*)dc.SelectObject( &CoolInterface.m_fntNormal );
 
 	int nIndex = 0;
-	for ( INT_PTR nQueue = 0 ; nQueue < m_pDisplayData.GetCount() && rcItem.top < rcClient.bottom ; nQueue++ )
+	int nDisplayCount = (int)m_pDisplayData.GetCount();
+	for ( int nQueue = 0 ; nQueue < nDisplayCount && rcItem.top < rcClient.bottom ; nQueue++ )
 	{
 		const CQueueDisplayData* pQueueData = &m_pDisplayData[ nQueue ];
 
@@ -901,7 +902,7 @@ void CUploadsCtrl::OnPaint()
 		if ( ! pQueueData->m_bExpanded )
 			continue;
 
-		for ( INT_PTR nUpload = 0 ; (DWORD)nUpload < pQueueData->m_nCount && rcItem.top < rcClient.bottom ; nUpload++ )
+		for ( int nUpload = 0 ; (DWORD)nUpload < pQueueData->m_nCount && rcItem.top < rcClient.bottom ; nUpload++ )
 		{
 			PaintFile( dc, rcItem, &pQueueData->m_pUploadsData[ nUpload ], bFocus && ( nFocus == nIndex ) );
 			rcItem.OffsetRect( 0, Settings.Skin.RowSize );
