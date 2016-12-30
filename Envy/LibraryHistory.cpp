@@ -220,7 +220,7 @@ void CLibraryHistory::Serialize(CArchive& ar, int nVersion)
 {
 	ASSUME_LOCK( Library.m_pSection );
 
-	if ( nVersion < 7 ) return;
+	//if ( nVersion < 7 ) return;
 
 	DWORD_PTR nCount = 0;
 	POSITION pos;
@@ -250,7 +250,7 @@ void CLibraryHistory::Serialize(CArchive& ar, int nVersion)
 			SerializeOut( ar, tmp );
 		}
 	}
-	else
+	else // Loading
 	{
 		Clear();
 
@@ -323,11 +323,11 @@ void CLibraryRecent::Serialize(CArchive& ar, int /*nVersion*/)
 		ar.Write( &m_tAdded, sizeof( FILETIME ) );
 		ar << m_pFile->m_nIndex;
 	}
-	else
+	else // Loading
 	{
-		DWORD nIndex;
-
 		ReadArchive( ar, &m_tAdded, sizeof( FILETIME ) );
+
+		DWORD nIndex;
 		ar >> nIndex;
 
 		if ( ( m_pFile = Library.LookupFile( nIndex ) ) != NULL )

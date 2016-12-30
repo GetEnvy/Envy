@@ -183,7 +183,7 @@
  <image target="CMainWnd"				path="Skin10\TabsBkg.png"/>
  <image target="CMainWnd.Toolbar"			path="Skin10\TabsBkg.png"/>
  <image target="CMediaFrame.Toolbar"			path="Mediabar10.png"/>
- <!--image target="CMediaList.Toolbar"			path="Skin10\Toolbar.png"-->
+ <image target="CMediaList.Toolbar"			path="Mediabar10.png"/>
  <image target="CDownloadTabBar"			path="Skin10\DownloadgroupsBar.png"/>
  <!--image target="CDownloadsWnd.Toolbar"		path="Skin10\ToolbarLt.png"-->
  <!--image target="CUploadsWnd.Toolbar" 		path="Skin10\Toolbar.png"-->

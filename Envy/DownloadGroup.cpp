@@ -313,7 +313,7 @@ void CDownloadGroup::Serialize(CArchive& ar, int nVersion)
 		ar >> m_sSchemaURI;
 		ar >> m_sFolder;
 
-		if ( nVersion > 2 )
+		if ( nVersion > 0 )
 		{
 			for ( DWORD_PTR nCount = ar.ReadCount() ; nCount > 0 ; nCount-- )
 			{
@@ -327,7 +327,7 @@ void CDownloadGroup::Serialize(CArchive& ar, int nVersion)
 			CString strFilters;
 			ar >> strFilters;
 
-			for ( strFilters += '|' ; strFilters.GetLength() ; )
+			for ( strFilters += L'|' ; strFilters.GetLength() ; )
 			{
 				CString strFilter = strFilters.SpanExcluding( L" |" );
 				strFilters = strFilters.Mid( strFilter.GetLength() + 1 );

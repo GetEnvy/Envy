@@ -367,7 +367,7 @@ void CDownloadSource::Serialize(CArchive& ar, int nVersion)	// DOWNLOAD_SER_VERS
 		ar << m_bClientExtended;
 		ar << m_bMetaIgnore;
 	}
-	else //if ( nVersion > 20 ) // Loading
+	else // Loading
 	{
 		ar >> m_sURL;
 		ar >> m_nProtocol;
@@ -385,24 +385,13 @@ void CDownloadSource::Serialize(CArchive& ar, int nVersion)	// DOWNLOAD_SER_VERS
 		ar >> m_bSHA1;
 		ar >> m_bTiger;
 		ar >> m_bED2K;
-		//if ( nVersion >= 37 )
-		//{
 		ar >> m_bBTH;
 		ar >> m_bMD5;
-		//}
 
 		ar >> m_sServer;
 		ar >> m_sNick;
-
-		//if ( nVersion >= 36 )
 		ar >> m_sCountry;
-		//else
-		//	m_sCountry = theApp.GetCountryCode( m_pAddress );
-
-		//if ( nVersion >= 38 )
 		ar >> m_sCountryName;
-		//else
-		//	m_sCountryName = theApp.GetCountryName( m_pAddress );
 
 		ar >> m_nSpeed;
 		ar >> m_bPushOnly;
