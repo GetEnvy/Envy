@@ -373,19 +373,8 @@ void CLibraryFolder::Serialize(CArchive& ar, int nVersion)
 
 		LoadGUID( m_sPath, m_oGUID );
 
-		//if ( nVersion >= 5 )
-		//{
-			ar >> m_bShared;
-		//}
-		//else
-		//{
-		//	BYTE bShared;
-		//	ar >> bShared;
-		//	m_bShared = bShared ? TRI_UNKNOWN : TRI_FALSE;
-		//}
-
-		//if ( nVersion >= 3 )
-			ar >> m_bExpanded;
+		ar >> m_bShared;
+		ar >> m_bExpanded;
 
 		PathToName();
 
@@ -830,7 +819,7 @@ void CLibraryFolder::Maintain(BOOL bAdd)
 	CString strInfoTip = LoadString( IDS_FOLDER_TIP );
 	CString strIconIndex = L"0";
 	CString strIconFile = Settings.General.Path + (
-#ifndef NOXP
+#ifdef XPSUPPORT
 		theApp.m_nWinVer < WIN_VISTA ? L"\\Schemas\\WindowsFolder.Safe.ico" :
 #endif
 		theApp.m_nWinVer < WIN_10 ? L"\\Schemas\\WindowsFolder.Alt.ico" : L"\\Schemas\\WindowsFolder.ico" );

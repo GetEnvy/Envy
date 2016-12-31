@@ -1065,20 +1065,19 @@ void CHostBrowser::Serialize(CArchive& ar, int nVersion)	// BROWSER_SER_VERSION
 		ar >> m_bCanPush;
 		SerializeIn( ar, m_oPushID, 31 );
 		SerializeIn( ar, m_oClientID, 31 );
-		//if ( nVersion >= 2 )
-			ar >> m_sNick;
+		ar >> m_sNick;
 		ar >> m_bCanChat;
 		ar >> m_sServer;
 		ar >> m_nProtocol;
 		ar >> m_nHits;
 		DWORD nLength = 0;
 		ar >> nLength;
-		m_nLength = nLength;	// QWORD
+		m_nLength = nLength;	// To QWORD
 		ar >> m_nReceived;
+		ar >> bProfilePresent;
 
 		m_pVendor = VendorCache.LookupByName( m_sServer );
 
-		ar >> bProfilePresent;
 		delete m_pProfile;
 		m_pProfile = new CGProfile();
 	}

@@ -129,6 +129,9 @@ BOOL CScheduler::Save()
 //////////////////////////////////////////////////////////////////////
 // CScheduler serialize
 
+// Set at INTERNAL_VERSION on change:
+#define SCHEDULER_SER_VERSION 1
+
 void CScheduler::Serialize(CArchive& ar)
 {
 	int nVersion = SCHEDULER_SER_VERSION;
@@ -136,6 +139,7 @@ void CScheduler::Serialize(CArchive& ar)
 	if ( ar.IsStoring() )
 	{
 		ar << nVersion;
+
 		ar.WriteCount( GetCount() );		// Write the number of scheduled tasks
 
 		for ( POSITION pos = GetIterator() ; pos ; )
@@ -206,38 +210,20 @@ void CScheduleTask::Serialize(CArchive& ar, int nVersion)
 	}
 	else // Loading
 	{
-		if ( nVersion >= 1000 )		// Initial release
-		{
-			// Load all task variables
-			ar >> m_bSpecificDays;
-			ar >> m_nAction;
-			ar >> m_sDescription;
-			ar >> m_tScheduleDateTime;
-			ar >> m_bActive;
-			ar >> m_bExecuted;
-			ar >> m_nLimitDown;
-			ar >> m_nLimitUp;
-			ar >> m_bLimitedNetworks;
-			ar >> m_nDays;
-			ReadArchive( ar, &m_pGUID, sizeof( GUID ) );
-		}
-		else if ( nVersion < 100 )	// Shareaza import ?
-		{
-			// Load all task variables
-			ar >> m_bSpecificDays;
-			ar >> m_nAction;
-			ar >> m_sDescription;
-			ar >> m_tScheduleDateTime;
-			ar >> m_bActive;
-			ar >> m_bExecuted;
-			ar >> m_nLimitDown;
-			m_nLimitUp = m_nLimitDown;
-			ar >> m_bLimitedNetworks;	//ar >> m_bToggleBandwidth;
-			ar >> m_bLimitedNetworks;
-			ar >> m_nDays;
-			ReadArchive( ar, &m_pGUID, sizeof( GUID ) );
-		}
-		// else unknown serialize version
+		// Load all task variables
+		ar >> m_bSpecificDays;
+		ar >> m_nAction;
+		ar >> m_sDescription;
+		ar >> m_tScheduleDateTime;
+		ar >> m_bActive;
+		ar >> m_bExecuted;
+		ar >> m_nLimitDown;
+		ar >> m_nLimitUp;
+		ar >> m_bLimitedNetworks;
+		ar >> m_nDays;
+		ReadArchive( ar, &m_pGUID, sizeof( GUID ) );
+
+		// ToDo: Support Shareaza import ?
 	}
 }
 /////////////////////////////////////////////////////////////////////

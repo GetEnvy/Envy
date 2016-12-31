@@ -386,7 +386,7 @@ BOOL CCollectionExportDlg::Step2()
 		return FALSE;	// No folder selected
 
 	CString strTitle;
-	CStringA strXMLUTF8;
+	CStringA sXMLUTF8;
 
 	{
 		CSingleLock pLock( &Library.m_pSection );
@@ -400,8 +400,8 @@ BOOL CCollectionExportDlg::Step2()
 		if ( ! pXML )
 			return FALSE;	// Out of memory
 
-		strXMLUTF8 = UTF8Encode( pXML->ToString( TRUE, TRUE ) );
-		if ( strXMLUTF8.IsEmpty() )
+		sXMLUTF8 = UTF8Encode( pXML->ToString( TRUE, TRUE ) );
+		if ( sXMLUTF8.IsEmpty() )
 			return FALSE;	// Out of memory
 
 		strTitle = m_pFolder->m_sName;	// For $title$
@@ -415,7 +415,7 @@ BOOL CCollectionExportDlg::Step2()
 
 	try
 	{
-		pFile.Write( (LPCSTR)strXMLUTF8, strXMLUTF8.GetLength() );
+		pFile.Write( (LPCSTR)sXMLUTF8, sXMLUTF8.GetLength() );
 		pFile.Close();
 	}
 	catch ( CException* pException )
@@ -556,7 +556,7 @@ BOOL CCollectionExportDlg::Step2()
 			ReplaceNoCase( strSource, L"$title$", strTitle );	// Folder Name
 		}
 
-		const CStringA strSourceUTF8 = UTF8Encode( strSource );
+		const CStringA sSourceUTF8 = UTF8Encode( strSource );
 
 		// Output to file
 		CFile pNewFile;
@@ -565,7 +565,7 @@ BOOL CCollectionExportDlg::Step2()
 
 		try
 		{
-			pNewFile.Write( (LPCSTR)strSourceUTF8, strSourceUTF8.GetLength() );
+			pNewFile.Write( (LPCSTR)sSourceUTF8, sSourceUTF8.GetLength() );
 			pNewFile.Close();
 		}
 		catch ( CException* pException )

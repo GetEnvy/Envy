@@ -498,31 +498,19 @@ void CUploadQueue::Serialize(CArchive& ar, int /*nVersion*/)
 		ar >> m_bEnable;
 
 		ar >> m_nProtocols;
+		ar >> m_nMinSize;
+		ar >> m_nMaxSize;
 
-	//	if ( nVersion >= 3 )
-	//	{
-			ar >> m_nMinSize;
-			ar >> m_nMaxSize;
-	//	}
-	//	else
-	//	{
-	//		DWORD nInt32;
-	//		ar >> nInt32;
-	//		m_nMinSize = nInt32;
-	//		ar >> nInt32;
-	//		m_nMaxSize = nInt32;
-	//	}
-
-	//	if ( nVersion >= 6 )
-	//	{
+		//if ( nVersion >= 6 )
+		//{
 			ar >> m_nFileStateFlag;
-	//	}
-	//	else
-	//	{
-	//		BOOL bPartial;
-	//		ar >> bPartial;
-	//		m_nFileStateFlag = bPartial ? ulqPartial : ulqBoth;
-	//	}
+		//}
+		//else
+		//{
+		//	BOOL bPartial;
+		//	ar >> bPartial;
+		//	m_nFileStateFlag = bPartial ? ulqPartial : ulqBoth;
+		//}
 
 		ar >> m_sShareTag;
 		ar >> m_sNameMatch;
@@ -534,11 +522,8 @@ void CUploadQueue::Serialize(CArchive& ar, int /*nVersion*/)
 		ar >> m_bRotate;
 		ar >> m_nRotateTime;
 		ar >> m_nRotateChunk;
+		ar >> m_bRewardUploaders;
 
-	//	if ( nVersion >= 5 )
-			ar >> m_bRewardUploaders;
-
-	//	if ( nVersion >= 4 )
-			ar >> m_bExpanded;
+		ar >> m_bExpanded;
 	}
 }

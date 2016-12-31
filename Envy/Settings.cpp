@@ -29,7 +29,7 @@ static char THIS_FILE[] = __FILE__;
 #define new DEBUG_NEW
 #endif	// Debug
 
-#define SMART_VERSION	1000	// 1.0.0.0 (60)		(ToDo: Use INTERNAL_VERSION?)
+//#define SMART_VERSION	INTERNAL_VERSION
 
 #define KiloByte		( 1024 )
 #define MegaByte		( KiloByte * 1024 )
@@ -96,7 +96,7 @@ void CSettings::Load()
 	Add( L"", L"SearchLog", &General.SearchLog, true );
 	Add( L"", L"DialogScan", &General.DialogScan, false );
 
-#ifndef NOXP
+#ifdef XPSUPPORT
 	//Add( L"", L"ItWasLimited", &General.ItWasLimited, false, true );
 	Add( L"Settings", L"IgnoreXPLimits", &General.IgnoreXPLimits, false );
 #endif
@@ -117,7 +117,7 @@ void CSettings::Load()
 	Add( L"Settings", L"Running", &General.Running, false, true );
 	Add( L"Settings", L"ShowTimestamp", &General.ShowTimestamp, true );
 	Add( L"Settings", L"SizeLists", &General.SizeLists, false );
-	Add( L"Settings", L"SmartVersion", &General.SmartVersion, SMART_VERSION );
+	Add( L"Settings", L"SmartVersion", &General.SmartVersion, INTERNAL_VERSION );
 	Add( L"Settings", L"TrayMinimise", &General.TrayMinimise, false );
 
 	Add( L"VersionCheck", L"NextCheck", &VersionCheck.NextCheck, 0 );
@@ -184,15 +184,15 @@ void CSettings::Load()
 
 	Add( L"Fonts", L"Quality", &Fonts.Quality, 0, 1, 0, 6 );	// 	CLEARTYPE_QUALITY etc.
 	Add( L"Fonts", L"DefaultSize", &Fonts.DefaultSize, 11, 1, 8, 16, L" px" );
-#ifdef NOXP
-	Add( L"Fonts", L"DefaultFont", &Fonts.DefaultFont, L"Segoe UI" , false, setFont );
-	Add( L"Fonts", L"SystemLogFont", &Fonts.SystemLogFont, L"Segoe UI", false, setFont );
-	Add( L"Fonts", L"PacketDumpFont", &Fonts.PacketDumpFont, L"Consolas", false, setFont );
-#else // XP Supported
-	Add( L"Fonts", L"DefaultFont", &Fonts.DefaultFont, theApp.m_bIsWinXP ? L"Tahoma" : L"Segoe UI" , false, setFont );
+#ifdef XPSUPPORT
+	Add( L"Fonts", L"DefaultFont", &Fonts.DefaultFont, theApp.m_bIsWinXP ? L"Tahoma" : L"Segoe UI", false, setFont );
 	Add( L"Fonts", L"SystemLogFont", &Fonts.SystemLogFont, theApp.m_bIsWinXP ? L"Tahoma" : L"Segoe UI", false, setFont );
 	Add( L"Fonts", L"PacketDumpFont", &Fonts.PacketDumpFont, theApp.m_bIsWinXP ? L"Lucida Console" : L"Consolas", false, setFont );
-#endif
+#else
+	Add( L"Fonts", L"DefaultFont", &Fonts.DefaultFont, L"Segoe UI", false, setFont );
+	Add( L"Fonts", L"SystemLogFont", &Fonts.SystemLogFont, L"Segoe UI", false, setFont );
+	Add( L"Fonts", L"PacketDumpFont", &Fonts.PacketDumpFont, L"Consolas", false, setFont );
+#endif // No XP
 
 	Add( L"Library", L"CreateGhosts", &Library.CreateGhosts, true );
 	Add( L"Library", L"GhostLimit", &Library.GhostLimit, 2000, 1, 0, 100000, L" files" );
@@ -872,7 +872,7 @@ void CSettings::SmartUpgrade()
 	// This function resets certain values when upgrading, obsolete depending on version.
 
 	// Set next update check
-//	if ( General.SmartVersion < SMART_VERSION )
+//	if ( General.SmartVersion < INTERNAL_VERSION )
 //	{
 //		// Don't check for a week if we've just upgraded
 //		CTimeSpan tPeriod( 7, 0, 0, 0 );
@@ -893,27 +893,28 @@ void CSettings::SmartUpgrade()
 //		}
 //	}
 
-	if ( General.SmartVersion < SMART_VERSION )
+	// BEGIN ENVY UPDATES @ v1 (Shareaza 60, 1.0.0.0 1000):
+	if ( General.SmartVersion < INTERNAL_VERSION )
 	{
 		// 'SmartUpgrade' setting updates:
-		// Change any settings that were mis-set in previous versions
-		// Starts at 1000, Prior to Version 60 is obsolete Shareaza code
-
-		// BEGIN ENVY UPDATES @ 60 (1000):
-	//	if ( General.SmartVersion < 1000 )
-	//		;
+		// Change any settings that were different in previous versions
+		// Starts at 1, higher but prior to Version 60 is obsolete Shareaza import
+	}
+	else if ( General.SmartVersion >= 1000 )
+	{
+		// 1000 for 1.0.0.0 pre-release and PeerProject
 	}
 
-	General.SmartVersion = SMART_VERSION;
+	General.SmartVersion = INTERNAL_VERSION;
 }
 
 void CSettings::OnChangeConnectionSpeed()
 {
-	bool bLimited =
-#ifndef NOXP
-		theApp.m_bLimitedConnections && theApp.m_bIsWinXP && ! General.IgnoreXPLimits;
-#else
-		false;
+	bool bLimited = false;
+
+#ifdef XPSUPPORT
+	if ( theApp.m_bLimitedConnections && theApp.m_bIsWinXP && ! General.IgnoreXPLimits )
+		bLimited = true;
 #endif
 
 	if ( Connection.OutSpeed < 1000 && Uploads.ChunkSize > 512*1024 )
@@ -990,7 +991,7 @@ void CSettings::OnChangeConnectionSpeed()
 		BitTorrent.DownloadTorrents 	= 10;	// Should be able to handle several torrents
 	}
 
-#ifndef NOXP
+#ifdef XPSUPPORT
 	if ( bLimited )	// Windows XP SP2+
 	{
 		Connection.ConnectThrottle		= max( Connection.ConnectThrottle, 250ul );
@@ -1014,7 +1015,7 @@ void CSettings::OnChangeConnectionSpeed()
 
 		General.ItWasLimited			= false;
 	}
-#endif
+#endif // XP
 }
 
 //////////////////////////////////////////////////////////////////////

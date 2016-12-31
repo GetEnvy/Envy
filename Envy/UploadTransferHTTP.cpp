@@ -72,7 +72,7 @@ CUploadTransferHTTP::CUploadTransferHTTP()
 	, m_bBackwards		( FALSE )
 	, m_bRange			( FALSE )
 	, m_bQueueMe		( FALSE )
-	, m_bNotEnvy	( FALSE )
+	, m_bNotEnvy		( FALSE )
 	, m_bTigerTree		( FALSE )
 	, m_bHashset		( FALSE )
 	, m_bMetadata		( FALSE )
@@ -1349,7 +1349,7 @@ void CUploadTransferHTTP::OnDropped()
 BOOL CUploadTransferHTTP::RequestMetadata(CXMLElement* pMetadata)
 {
 	ASSERT( pMetadata != NULL );
-	CStringA strXML = UTF8Encode( pMetadata->ToString( TRUE, TRUE ) );
+	CStringA sXML = UTF8Encode( pMetadata->ToString( TRUE, TRUE ) );
 	delete pMetadata;
 
 	Write( _P("HTTP/1.1 200 OK\r\n") );
@@ -1357,12 +1357,12 @@ BOOL CUploadTransferHTTP::RequestMetadata(CXMLElement* pMetadata)
 	Write( _P("Content-Type: text/xml\r\n") );
 
 	CString strHeader;
-	strHeader.Format( L"Content-Length: %d\r\n", strXML.GetLength() );
+	strHeader.Format( L"Content-Length: %d\r\n", sXML.GetLength() );
 	Write( strHeader );
 	Write( _P("\r\n") );
 
 	if ( ! m_bHead )
-		Write( (LPCSTR)strXML, strXML.GetLength() );
+		Write( (LPCSTR)sXML, sXML.GetLength() );
 
 	StartSending( upsMetadata );
 
@@ -1497,14 +1497,14 @@ BOOL CUploadTransferHTTP::RequestTigerTreeDIME(CTigerTree* pTigerTree, int nDept
 					L"</hashtree>",
 					m_nSize, nDepth, (LPCTSTR)strUUID );
 
-	CStringA strXMLUTF8 = UTF8Encode( strXML );
+	CStringA sXMLUTF8 = UTF8Encode( strXML );
 
 	int nUUID = WideCharToMultiByte( CP_ACP, 0, strUUID, -1, NULL, 0, NULL, NULL );
 	LPSTR pszUUID = new CHAR[ nUUID ];
 	WideCharToMultiByte( CP_ACP, 0, strUUID, -1, pszUUID, nUUID, NULL, NULL );
 
 	CBuffer pDIME;
-	pDIME.WriteDIME( 1, _P(""), _P("text/xml"), strXMLUTF8, strXMLUTF8.GetLength() );
+	pDIME.WriteDIME( 1, _P(""), _P("text/xml"), sXMLUTF8, sXMLUTF8.GetLength() );
 	pDIME.WriteDIME( pHashset ? 0 : 2, pszUUID, nUUID - 1,
 		_P("http://open-content.net/spec/thex/breadthfirst"), pSerialTree, nSerialTree );
 	GlobalFree( pSerialTree );
@@ -1818,15 +1818,15 @@ void CUploadTransferHTTP::SendResponse(UINT nResourceID, BOOL bFileHeaders)
 
 	Write( _P("Content-Type: text/html\r\n") );
 
-	CStringA strBodyUTF8 = UTF8Encode( strBody );
+	CStringA sBodyUTF8 = UTF8Encode( strBody );
 
-	strResponse.Format( L"Content-Length: %d\r\n\r\n", strBodyUTF8.GetLength() );
+	strResponse.Format( L"Content-Length: %d\r\n\r\n", sBodyUTF8.GetLength() );
 	Write( strResponse );
 
 	LogOutgoing();
 
 	if ( ! m_bHead )
-		Write( (LPCSTR)strBodyUTF8, strBodyUTF8.GetLength() );
+		Write( (LPCSTR)sBodyUTF8, sBodyUTF8.GetLength() );
 
 	StartSending( upsResponse );
 }

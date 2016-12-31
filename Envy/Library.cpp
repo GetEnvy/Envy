@@ -302,8 +302,8 @@ void CLibrary::Serialize(CArchive& ar)
 	else // Loading
 	{
 		ar >> nVersion;
-		if ( nVersion < 29 || nVersion > LIBRARY_SER_VERSION )	// Allow Shareaza imports? Downgrades?
-			AfxThrowUserException();
+	//	if ( nVersion > INTERNAL_VERSION && nVersion != 1000 )	// ToDo: Allow Shareaza imports
+	//		AfxThrowUserException();
 	}
 
 	LibraryDictionary.Serialize( ar, nVersion );

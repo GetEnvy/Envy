@@ -149,12 +149,22 @@ void CDHT::Connect()
 		for ( CHostCacheIterator i = HostCache.BitTorrent.Begin() ; i != HostCache.BitTorrent.End() && nCount < 100 ; ++i )
 		{
 			CHostCacheHostPtr pCache = (*i);
-
 			if ( pCache->m_oBtGUID )
 			{
 				SOCKADDR_IN sa = { AF_INET, htons( pCache->m_nPort ), pCache->m_pAddress };
 				dht_insert_node( &pCache->m_oBtGUID[ 0 ], (sockaddr*)&sa, sizeof( SOCKADDR_IN ) );
 				nCount++;
+			}
+		}
+
+		if ( nCount == 0 )
+		{
+			SOCKADDR_IN sa;
+			if ( Network.Resolve( L"router.bittorrent.com:6881", 0, &sa ) )
+			{
+				unsigned char tid[4];
+				make_tid( tid, "fn", 0 );
+				send_find_node( (sockaddr*)&sa, sizeof(SOCKADDR_IN), tid, 4, &oID[0], 1, 0 );
 			}
 		}
 

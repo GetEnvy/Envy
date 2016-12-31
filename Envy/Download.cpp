@@ -1141,7 +1141,7 @@ void CDownload::Serialize(CArchive& ar, int nVersion)	// DOWNLOAD_SER_VERSION
 	if ( ! Settings.BitTorrent.AutoSeed && m_bSeeding )
 		return;
 
-	if ( nVersion < 2 ) // NULL
+	if ( ! nVersion ) // NULL default
 	{
 		nVersion = DOWNLOAD_SER_VERSION;
 
@@ -1150,15 +1150,15 @@ void CDownload::Serialize(CArchive& ar, int nVersion)	// DOWNLOAD_SER_VERSION
 			ar.Write( "PD:", 3 );
 			ar << nVersion;
 		}
-		else // Loading ?
+		else // Loading
 		{
 			CHAR szID[3];
 			ReadArchive( ar, szID, 3 );
 			if ( strncmp( szID, "PD:", 3 ) != 0 )
-				if ( strncmp( szID, "SDL", 3 ) != 0 )	// Shareaza import or pre r60?
+				if ( strncmp( szID, "SDL", 3 ) != 0 )	// Shareaza import
 					AfxThrowUserException();
 			ar >> nVersion;
-			if ( nVersion < 1 || nVersion > DOWNLOAD_SER_VERSION )
+			if ( nVersion < 1 || ( nVersion > DOWNLOAD_SER_VERSION && nVersion != 1000 ) )
 				AfxThrowUserException();
 		}
 	}

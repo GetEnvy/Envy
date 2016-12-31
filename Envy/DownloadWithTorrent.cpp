@@ -157,8 +157,8 @@ void CDownloadWithTorrent::Serialize(CArchive& ar, int nVersion)
 {
 	CDownloadWithFile::Serialize( ar, nVersion );
 
-	if ( nVersion < 40 )	// Old Shareaza style conversion disabled
-		return;
+	//if ( nVersion < 40 )	// Old Shareaza style conversion disabled
+	//	return;
 
 	m_pTorrent.Serialize( ar );
 
@@ -168,7 +168,7 @@ void CDownloadWithTorrent::Serialize(CArchive& ar, int nVersion)
 	if ( ar.IsStoring() )
 	{
 		ar << m_nTorrentSuccess;
-		if ( m_pTorrentBlock )	//  || nVersion < 1020
+		if ( m_pTorrentBlock )
 			ar.Write( m_pTorrentBlock, sizeof( BYTE ) * m_nTorrentBlock );
 		ar << BOOL( m_bSeeding && Settings.BitTorrent.AutoSeed );
 	}

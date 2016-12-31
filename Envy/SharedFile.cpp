@@ -898,41 +898,21 @@ void CLibraryFile::Serialize(CArchive& ar, int nVersion)
 		ASSERT( ! m_sName.IsEmpty() );
 
 		ar >> m_nIndex;
-
-		//if ( nVersion >= 17 )
-			ar >> m_nSize;
-		//else
-		//{
-		//	DWORD nSize;
-		//	ar >> nSize;
-		//	m_nSize = nSize;
-		//}
+		ar >> m_nSize;
 
 		ReadArchive( ar, &m_pTime, sizeof( m_pTime ) );
 
-		//if ( nVersion >= 5 )
-			ar >> m_bShared;
-		//else
-		//{
-		//	BYTE bShared;
-		//	ar >> bShared;
-		//	m_bShared = bShared ? TRI_UNKNOWN : TRI_FALSE;
-		//}
+		ar >> m_bShared;
 
-		//if ( nVersion >= 21 )
-		//{
-			ar >> m_nVirtualSize;
-			if ( m_nVirtualSize > 0 ) ar >> m_nVirtualBase;
-		//}
+		ar >> m_nVirtualSize;
+		if ( m_nVirtualSize > 0 )
+			ar >> m_nVirtualBase;
 
 		SerializeIn( ar, m_oSHA1, nVersion );
 		SerializeIn( ar, m_oTiger, nVersion );
 		SerializeIn( ar, m_oED2K, nVersion );
 		SerializeIn( ar, m_oMD5,  nVersion );
-		//if ( nVersion >= 26 )
-			SerializeIn( ar, m_oBTH, nVersion );
-		//else
-		//	m_oBTH.clear();
+		SerializeIn( ar, m_oBTH, nVersion );
 
 		ar >> m_bVerify;
 
@@ -941,12 +921,6 @@ void CLibraryFile::Serialize(CArchive& ar, int nVersion)
 
 		if ( ! strURI.IsEmpty() )
 		{
-			//if ( nVersion < 27 )
-			//{
-			//	ar >> m_bMetadataAuto;
-			//	if ( ! m_bMetadataAuto )
-			//		ReadArchive( ar, &m_pMetadataTime, sizeof( m_pMetadataTime ) );
-			//}
 			m_pMetadata = new CXMLElement();
 			if ( ! m_pMetadata )
 				AfxThrowMemoryException();
@@ -967,27 +941,18 @@ void CLibraryFile::Serialize(CArchive& ar, int nVersion)
 		ar >> m_sShareTags;
 		//ar >> m_bShareTag;
 
-		//if ( nVersion >= 27 )
-		//{
-			ar >> m_bMetadataAuto;
-			ReadArchive( ar, &m_pMetadataTime, sizeof( m_pMetadataTime ) );
-		//}
-		//else
-		//{
-		//	if ( m_bMetadataAuto && IsRated() )
-		//		ReadArchive( ar, &m_pMetadataTime, sizeof( m_pMetadataTime ) );
-		//}
+		ar >> m_bMetadataAuto;
+		ReadArchive( ar, &m_pMetadataTime, sizeof( m_pMetadataTime ) );
 
 		m_bMetadataModified = FALSE;
 
 		ar >> m_nHitsTotal;
 		ar >> m_nUploadsTotal;
-		//if ( nVersion >= 14 )
 		ar >> m_bCachedPreview;
 		//if ( nVersion >= 20 )
 		ar >> m_bBogus;
 
-		if ( nVersion > 1 )
+		if ( nVersion > 0 )
 		{
 			SYSTEMTIME stNow;
 			FILETIME ftNow;
@@ -1395,36 +1360,28 @@ void CSharedSource::Serialize(CArchive& ar, int /*nVersion*/)
 	{
 		ar >> m_sURL;
 		ReadArchive( ar, &m_pTime, sizeof( FILETIME ) );
-
-		//if ( nVersion < 10 )
-		//{
-		//	DWORD nTemp;
-		//	ar >> nTemp;
-		//	Freshen();
-		//}
 	}
 }
 
 void CSharedSource::Freshen(FILETIME* pTime)
 {
-	SYSTEMTIME tNow1;
-	GetSystemTime( &tNow1 );
+	SYSTEMTIME tNowSys;
+	GetSystemTime( &tNowSys);
 
 	if ( pTime != NULL )
 	{
-		FILETIME tNow2;
+		FILETIME tNowFile;
+		SystemTimeToFileTime( &tNowSys, &tNowFile );
+		(LONGLONG&)tNowFile += 10000000;
 
-		SystemTimeToFileTime( &tNow1, &tNow2 );
-		(LONGLONG&)tNow2 += 10000000;
-
-		if ( CompareFileTime( pTime, &tNow2 ) <= 0 )
+		if ( CompareFileTime( pTime, &tNowFile ) <= 0 )
 			m_pTime = *pTime;
 		else
-			SystemTimeToFileTime( &tNow1, &m_pTime );
+			SystemTimeToFileTime( &tNowSys, &m_pTime );
 	}
 	else
 	{
-		SystemTimeToFileTime( &tNow1, &m_pTime );
+		SystemTimeToFileTime( &tNowSys, &m_pTime );
 	}
 }
 

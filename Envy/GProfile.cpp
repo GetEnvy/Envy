@@ -184,8 +184,8 @@ BOOL CGProfile::Save()
 	if ( ! pFile.Open( strPath, CFile::modeWrite | CFile::modeCreate ) )
 		return FALSE;
 
-	CStringA strUTF8 = UTF8Encode( m_pXML->ToString( TRUE, TRUE ) );
-	pFile.Write( (LPCSTR)strUTF8, strUTF8.GetLength() );
+	CStringA sUTF8 = UTF8Encode( m_pXML->ToString( TRUE, TRUE ) );
+	pFile.Write( (LPCSTR)sUTF8, sUTF8.GetLength() );
 
 	return TRUE;
 }
@@ -199,12 +199,12 @@ BOOL CGProfile::FromXML(const CXMLElement* pXML)
 	if ( pXML == NULL )
 		return FALSE;
 
-	if ( ! pXML->GetAttributeValue( L"xmlns" ).CompareNoCase( xmlns ) )				// http://schemas.getenvy.com/Profile.xsd defined above
+	if ( pXML->GetAttributeValue( L"xmlns" ).CompareNoCase( xmlns ) == 0 )				// http://schemas.getenvy.com/Profile.xsd defined above
 	{
 		if ( ! pXML->IsNamed( L"profile" ) )
 			return FALSE;
 	}
-	else if ( ! pXML->GetAttributeValue( L"xmlns" ).CompareNoCase( xmlnsLegacy ) )	// http://www.shareaza.com/schemas/GProfile.xsd defined above
+	else if ( pXML->GetAttributeValue( L"xmlns" ).CompareNoCase( xmlnsLegacy ) == 0 )	// http://www.shareaza.com/schemas/GProfile.xsd defined above
 	{
 		if ( ! pXML->IsNamed( L"gProfile" ) )
 			return FALSE;

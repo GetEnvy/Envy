@@ -305,7 +305,7 @@ BOOL CTrafficWnd::Serialize(BOOL bSave)
 
 void CTrafficWnd::UpdateCaption()
 {
-	CString strCaption, strName;
+	CString strName;
 
 	if ( ! m_sName.IsEmpty() )
 		strName = L" : " + m_sName;
@@ -314,7 +314,6 @@ void CTrafficWnd::UpdateCaption()
 	else
 		strName.Format( L" (%lu)", m_nUnique );
 
-	LoadString( strCaption, IDR_TRAFFICFRAME );
-	strCaption += strName;
-	SetWindowText( strCaption );
+	strName = LoadString( IDR_TRAFFICFRAME ) + strName;
+	SetWindowText( strName );
 }

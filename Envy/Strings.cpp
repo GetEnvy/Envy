@@ -19,7 +19,7 @@
 #include "StdAfx.h"
 #include "Strings.h"
 
-#ifdef NOXP	// inet_ntoa deprecated, use InetNtop Vista+
+#ifndef XPSUPPORT	// inet_ntoa deprecated, use InetNtop Vista+
 #include <Ws2tcpip.h>
 #endif
 
@@ -243,19 +243,19 @@ CStringA UTF8Encode(__in const CStringW& strInput)
 
 CStringA UTF8Encode(__in_bcount(nInput) LPCWSTR psInput, __in int nInput)
 {
-	CStringA strUTF8;
+	CStringA sUTF8;
 	int nUTF8 = ::WideCharToMultiByte( CP_UTF8, 0, psInput, nInput,
-		strUTF8.GetBuffer( nInput * 4 + 1 ), nInput * 4 + 1, NULL, NULL );
+		sUTF8.GetBuffer( nInput * 4 + 1 ), nInput * 4 + 1, NULL, NULL );
 
 	if ( nUTF8 == 0 && GetLastError() == ERROR_INSUFFICIENT_BUFFER )
 	{
 		nUTF8 = ::WideCharToMultiByte( CP_UTF8, 0, psInput, nInput, NULL, 0, NULL, NULL );
 
-		nUTF8 = ::WideCharToMultiByte( CP_UTF8, 0, psInput, nInput, strUTF8.GetBuffer( nUTF8 ), nUTF8, NULL, NULL );
+		nUTF8 = ::WideCharToMultiByte( CP_UTF8, 0, psInput, nInput, sUTF8.GetBuffer( nUTF8 ), nUTF8, NULL, NULL );
 	}
-	strUTF8.ReleaseBuffer( nUTF8 );
+	sUTF8.ReleaseBuffer( nUTF8 );
 
-	return strUTF8;
+	return sUTF8;
 }
 
 CStringW UTF8Decode(__in const CStringA& strInput)
@@ -397,11 +397,11 @@ CString URLDecode(__in_bcount(nInput) LPCSTR psInput, __in int nInput)
 CString URLDecodeANSI(const TCHAR* __restrict pszInput)
 {
 	TCHAR szHex[3] = { 0, 0, 0 };		// A 3 character long array filled with 3 null terminators
-	CStringA strOutput;					// The output string, which starts out blank
+	CStringA sOutput;					// The output string, which starts out blank
 	int nHex;							// The hex code of the character we found
 
 	int nLength = (int)_tcslen( pszInput );
-	CHAR* __restrict pszOutput = strOutput.GetBuffer( nLength + 1 );
+	CHAR* __restrict pszOutput = sOutput.GetBuffer( nLength + 1 );
 
 	// Loop for each character of input text
 	for ( ; *pszInput ; pszInput++ )
@@ -487,8 +487,8 @@ CString URLDecodeANSI(const TCHAR* __restrict pszInput)
 
 	*pszOutput = 0;		// Null terminator
 
-	strOutput.ReleaseBuffer();
-	return UTF8Decode( strOutput );
+	sOutput.ReleaseBuffer();
+	return UTF8Decode( sOutput );
 }
 
 // Decodes encoded characters in a unicode string
@@ -1340,9 +1340,9 @@ DWORD IPStringToDWORD(LPCTSTR pszIP, BOOL bReverse)
 CString HostToString(const SOCKADDR_IN* pHost)
 {
 	CString strHost;
-#ifdef NOXP
-	wchar ipbuf[INET_ADDRSTRLEN];
-	InetNtop( AF_INET, &(IN_ADDR)(pHost->sin_addr), ipbuf, sizeof(ipbuf) );
+#ifndef XPSUPPORT
+	WCHAR ipbuf[ INET_ADDRSTRLEN ];
+	InetNtop( AF_INET, &(IN_ADDR)( pHost->sin_addr ), ipbuf, sizeof(ipbuf) );
 	strHost.Format( L"%s:%hu", (LPCTSTR)ipbuf, ntohs( pHost->sin_port ) );
 #else // XP (inet_ntoa deprecated Vista+)
 #define _WINSOCK_DEPRECATED_NO_WARNINGS

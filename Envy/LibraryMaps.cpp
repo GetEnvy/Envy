@@ -842,26 +842,23 @@ void CLibraryMaps::Serialize1(CArchive& ar, int /*nVersion*/)
 		ar >> nNextIndex;
 		m_nNextIndex = nNextIndex;
 
-		//if ( nVersion >= 28 )
-		//{
-			DWORD nIndexMapCount = 0;
-			ar >> nIndexMapCount;
-			m_pIndexMap.InitHashTable( GetBestHashTableSize( nIndexMapCount ) );
+		DWORD nIndexMapCount = 0;
+		ar >> nIndexMapCount;
+		m_pIndexMap.InitHashTable( GetBestHashTableSize( nIndexMapCount ) );
 
-			DWORD nNameMapCount = 0;
-			ar >> nNameMapCount;
-			m_pNameMap.InitHashTable( GetBestHashTableSize( nNameMapCount ) );
+		DWORD nNameMapCount = 0;
+		ar >> nNameMapCount;
+		m_pNameMap.InitHashTable( GetBestHashTableSize( nNameMapCount ) );
 
-			DWORD nPathMapCount = 0;
-			ar >> nPathMapCount;
-			m_pPathMap.InitHashTable( GetBestHashTableSize( nPathMapCount ) );
-		//}
+		DWORD nPathMapCount = 0;
+		ar >> nPathMapCount;
+		m_pPathMap.InitHashTable( GetBestHashTableSize( nPathMapCount ) );
 	}
 }
 
 void CLibraryMaps::Serialize2(CArchive& ar, int nVersion)
 {
-	if ( nVersion < 18 ) return;
+	//if ( nVersion < 18 ) return;
 
 	if ( ar.IsStoring() )
 	{

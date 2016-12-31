@@ -1183,34 +1183,23 @@ void CDownloadWithTiger::Serialize(CArchive& ar, int nVersion)
 		}
 	}
 
-	//if ( nVersion >= 19 )
-	//{
-		CHashDatabase::Serialize( ar, &m_pHashset );
+	CHashDatabase::Serialize( ar, &m_pHashset );
 
-		if ( m_pHashset.IsAvailable() )
+	if ( m_pHashset.IsAvailable() )
+	{
+		if ( ar.IsStoring() )
 		{
-			if ( ar.IsStoring() )
-			{
-				ar << m_nHashsetBlock;
-				ar << m_nHashsetSuccess;
-				ar.Write( m_pHashsetBlock, sizeof( BYTE ) * m_nHashsetBlock );
-			}
-			else // Loading
-			{
-				ar >> m_nHashsetBlock;
-				ar >> m_nHashsetSuccess;
-
-				m_pHashsetBlock = new BYTE[ m_nHashsetBlock ];
-				ReadArchive( ar, m_pHashsetBlock, sizeof( BYTE ) * m_nHashsetBlock );
-			}
+			ar << m_nHashsetBlock;
+			ar << m_nHashsetSuccess;
+			ar.Write( m_pHashsetBlock, sizeof( BYTE ) * m_nHashsetBlock );
 		}
-	//}
+		else // Loading
+		{
+			ar >> m_nHashsetBlock;
+			ar >> m_nHashsetSuccess;
 
-	//if ( nVersion < 30 && m_oBTH )
-	//{
-	//	ClearVerification();
-	//	m_oSHA1.clear();
-	//	m_oTiger.clear();
-	//	m_oED2K.clear();
-	//}
+			m_pHashsetBlock = new BYTE[ m_nHashsetBlock ];
+			ReadArchive( ar, m_pHashsetBlock, sizeof( BYTE ) * m_nHashsetBlock );
+		}
+	}
 }

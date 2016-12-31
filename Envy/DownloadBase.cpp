@@ -87,22 +87,15 @@ void CDownloadBase::Serialize(CArchive& ar, int nVersion)
 	{
 		ar >> m_sName;
 
-		if ( nVersion < 100 && nVersion > 32 )
-		{
-			CString strSearchKeyword;
-			ar >> strSearchKeyword;		// Shareaza compatibility for ShareazaPlus
-		}
-
-		//if ( nVersion < 28 )
+		//if ( nVersion > 32 && nVersion < 1000 )
 		//{
-		//	DWORD nSize;
-		//	ar >> nSize;
-		//	m_nSize = nSize;
+		//	CString strSearchKeyword;
+		//	ar >> strSearchKeyword;		// Shareaza compatibility for ShareazaPlus
 		//}
-		//else
+
 		ar >> m_nSize;
 
-		if ( nVersion >= 1000 )
+		if ( nVersion < 30 || nVersion == 1000 )	// ToDo: Update this before version collision
 			ar >> m_tDate;
 		else	// Shareaza import
 			m_tDate = CTime::GetCurrentTime();
@@ -114,22 +107,21 @@ void CDownloadBase::Serialize(CArchive& ar, int nVersion)
 		SerializeIn( ar, m_oSHA1, nVersion );
 		ar >> b;
 		m_bSHA1Trusted = b != 0;
+
 		SerializeIn( ar, m_oTiger, nVersion );
 		ar >> b;
 		m_bTigerTrusted = b != 0;
-		//if ( nVersion > 36 )
-		//{
-			SerializeIn( ar, m_oMD5, nVersion );
-			ar >> b;
-			m_bMD5Trusted = b != 0;
 
-			SerializeIn( ar, m_oED2K, nVersion );
-			ar >> b;
-			m_bED2KTrusted = b != 0;
+		SerializeIn( ar, m_oMD5, nVersion );
+		ar >> b;
+		m_bMD5Trusted = b != 0;
 
-			SerializeIn( ar, m_oBTH, nVersion );
-			ar >> b;
-			m_bBTHTrusted = b != 0;
-		//}
+		SerializeIn( ar, m_oED2K, nVersion );
+		ar >> b;
+		m_bED2KTrusted = b != 0;
+
+		SerializeIn( ar, m_oBTH, nVersion );
+		ar >> b;
+		m_bBTHTrusted = b != 0;
 	}
 }

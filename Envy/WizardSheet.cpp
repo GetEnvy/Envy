@@ -333,7 +333,7 @@ BOOL CWizardPage::IsConnectionCapable()
 {
 	return
 		! theApp.m_bLimitedConnections
-#ifndef NOXP
+#ifdef XPSUPPORT
 		|| Settings.General.IgnoreXPLimits							// The connection rate limiting (XPsp2) makes multi-network performance awful
 #endif
 		&& ( Settings.Connection.InSpeed > 256 )					// Must have a decent connection to be worth it. (Or extra traffic will slow downloads)

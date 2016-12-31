@@ -26,9 +26,13 @@
 class CHostBrowser;
 class CG2Packet;
 
-#define BROWSER_SER_VERSION 2	// 1000		// ToDo: INTERNAL_VERSION ?
+// Set at INTERNAL_VERSION on change:
+#define BROWSER_SER_VERSION 1
+
 // History:
 // 2 - Added CHostBrowser::m_sNick (ryo-oh-ki) (Shareaza 2.5.4.0)
+// 1000 - (2)
+// 1 - (Envy 1.0)
 
 
 class CBrowseHostWnd : public CBaseMatchWnd

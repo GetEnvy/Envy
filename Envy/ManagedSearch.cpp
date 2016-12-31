@@ -78,14 +78,20 @@ CManagedSearch::~CManagedSearch()
 //////////////////////////////////////////////////////////////////////
 // CManagedSearch serialize
 
+// Set at INTERNAL_VERSION on change:
+#define MANAGEDSEARCH_SER_VERSION 1
+
+// nVersion History:
+// 3 - Shareaza 2.5
+// 4 - Added m_bAllowDC (ryo-oh-ki)
+// 1000 - (4)
+// 1 - (Envy 1.0)
+
 void CManagedSearch::Serialize(CArchive& ar)
 {
 	CQuickLock oLock( SearchManager.m_pSection );
 
-	int nVersion = 1000;	// 4	// ToDo: INTERNAL_VERSION
-	// Version History:
-	// 3 - Shareaza 2.5
-	// 4 = 1000 - Added m_bAllowDC (ryo-oh-ki) (Envy 1.0)
+	int nVersion = MANAGEDSEARCH_SER_VERSION;
 
 	if ( ar.IsStoring() )
 	{
@@ -103,7 +109,7 @@ void CManagedSearch::Serialize(CArchive& ar)
 	else // Loading
 	{
 		ar >> nVersion;
-		if ( nVersion < 4 ) AfxThrowUserException();
+		//if ( nVersion < 4 ) AfxThrowUserException();
 
 		m_pSearch->Serialize( ar );
 
@@ -117,8 +123,7 @@ void CManagedSearch::Serialize(CArchive& ar)
 		ar >> m_bAllowG2;
 		ar >> m_bAllowG1;
 		ar >> m_bAllowED2K;
-		//if ( nVersion >= 4 )
-			ar >> m_bAllowDC;
+		ar >> m_bAllowDC;
 	}
 }
 

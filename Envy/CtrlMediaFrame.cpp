@@ -538,7 +538,7 @@ void CMediaFrame::OnPaint()
 			DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS,
 			Settings.Fonts.Quality, DEFAULT_PITCH|FF_DONTCARE, L"Segoe UI" };
 
-#ifndef NOXP
+#ifdef XPSUPPORT
 		if ( theApp.m_bIsWinXP )	// XP-Safe
 			_tcsncpy( pFont.lfFaceName, L"Tahoma", LF_FACESIZE );
 #endif
@@ -569,8 +569,7 @@ void CMediaFrame::OnPaint()
 		dc.FillSolidRect( rcBar.left + 2, rcBar.top, rcBar.Width() - 3, rcBar.Height(), Colors.m_crResizebarFace );
 		dc.ExcludeClipRect( &rcBar );
 
-		rcBar.SetRect( rcBar.right, rcClient.top,
-			rcClient.right, rcClient.top + HEADER_HEIGHT );
+		rcBar.SetRect( rcBar.right, rcClient.top, rcClient.right, rcClient.top + HEADER_HEIGHT );
 
 		if ( dc.RectVisible( &rcBar ) )
 			PaintListHeader( dc, rcBar );

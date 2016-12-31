@@ -69,7 +69,7 @@ public:
 		bool		LanguageDefault;		// Assume English
 		bool		DebugBTSources;			// Display received sources for BT download when seeding
 		bool		AlwaysOpenURLs;
-#ifndef NOXP
+#ifdef XPSUPPORT
 		bool		IgnoreXPLimits;			// Ignore the presence of Windows XPsp2 limits  (Was IgnoreXPsp2)
 		bool		ItWasLimited;			// If user patches half-open connection limit change settings back to full speed
 #endif

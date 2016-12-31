@@ -1151,13 +1151,16 @@ void CMatchList::ClearNew()
 //////////////////////////////////////////////////////////////////////
 // CMatchList serialize
 
-//#define MATCHLIST_SER_VERSION	1000	// 15	// MatchObjects.h
+// Set at INTERNAL_VERSION on change (in MatchObjects.h)
+//#define MATCHLIST_SER_VERSION	1
+
 // nVersion History:
 // 12 - Shareaza 2.2 (Rolandas)
 // 13 - Shareaza 2.3 (ryo-oh-ki)
 // 14 - Shareaza 2.4 (ryo-oh-ki)
 // 15 - Added CQueryHit::m_sNick for DC++ hits (ryo-oh-ki) (Shareaza 2.5.5.0)
-// 1000 - (Envy 1.0) (15)
+// 1000 - (15)
+// 1 - (Envy 1.0) 
 
 void CMatchList::Serialize(CArchive& ar, int nVersion)
 {
@@ -1194,7 +1197,7 @@ void CMatchList::Serialize(CArchive& ar, int nVersion)
 	else // Loading
 	{
 		ar >> nVersion;
-		if ( nVersion < 1000 )
+		if ( nVersion > INTERNAL_VERSION && nVersion != 1000 )
 			AfxThrowUserException();
 
 		ar >> m_sFilter;
@@ -1209,19 +1212,8 @@ void CMatchList::Serialize(CArchive& ar, int nVersion)
 		ar >> m_bFilterAdult;
 		ar >> m_bFilterSuspicious;
 		ar >> m_bRegExp;
-
-		//if ( nVersion >= 10 )
-		//{
-			ar >> m_nFilterMinSize;
-			ar >> m_nFilterMaxSize;
-		//}
-		//else
-		//{
-		//	DWORD nInt32;
-		//	ar >> nInt32; m_nFilterMinSize = nInt32;
-		//	ar >> nInt32; m_nFilterMaxSize = nInt32;
-		//}
-
+		ar >> m_nFilterMinSize;
+		ar >> m_nFilterMaxSize;
 		ar >> m_nFilterSources;
 		ar >> m_nSortColumn;
 		ar >> m_bSortDir;
@@ -2122,12 +2114,8 @@ void CMatchFile::Serialize(CArchive& ar, int nVersion)	// MATCHLIST_SER_VERSION
 		SerializeIn( ar, m_oSHA1, nVersion );
 		SerializeIn( ar, m_oTiger, nVersion );
 		SerializeIn( ar, m_oED2K, nVersion );
-
-		//if ( nVersion >= 13 )
-		//{
-			SerializeIn( ar, m_oBTH, nVersion );
-			SerializeIn( ar, m_oMD5, nVersion );
-		//}
+		SerializeIn( ar, m_oBTH, nVersion );
+		SerializeIn( ar, m_oMD5, nVersion );
 
 		ar >> m_bBusy;
 		ar >> m_bPush;
@@ -2155,8 +2143,7 @@ void CMatchFile::Serialize(CArchive& ar, int nVersion)	// MATCHLIST_SER_VERSION
 			m_pHits->Serialize( ar, nVersion );
 		}
 
-		//if ( nVersion >= 14 )
-			ar >> m_pTime;
+		ar >> m_pTime;
 
 		RefreshStatus();
 	}

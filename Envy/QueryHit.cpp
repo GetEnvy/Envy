@@ -1980,8 +1980,7 @@ void CQueryHit::Serialize(CArchive& ar, int nVersion)	// MATCHLIST_SER_VERSION
 		ReadArchive( ar, &m_oSearchID[ 0 ], Hashes::Guid::byteCount );
 		m_oSearchID.validate();
 
-		//if ( nVersion >= 9 )
-			ar >> m_nProtocol;
+		ar >> m_nProtocol;
 		ReadArchive( ar, &m_oClientID[ 0 ], Hashes::Guid::byteCount );
 		m_oClientID.validate();
 		ReadArchive( ar, &m_pAddress, sizeof( IN_ADDR ) );
@@ -2008,35 +2007,20 @@ void CQueryHit::Serialize(CArchive& ar, int nVersion)	// MATCHLIST_SER_VERSION
 		SerializeIn( ar, m_oSHA1, nVersion );
 		SerializeIn( ar, m_oTiger, nVersion );
 		SerializeIn( ar, m_oED2K, nVersion );
-
-		//if ( nVersion >= 13 )
-		//{
-			SerializeIn( ar, m_oBTH, nVersion );
-			SerializeIn( ar, m_oMD5, nVersion );
-		//}
+		SerializeIn( ar, m_oBTH, nVersion );
+		SerializeIn( ar, m_oMD5, nVersion );
 
 		ar >> m_sURL;
 		ar >> m_sName;
 		ar >> m_nIndex;
 		ar >> m_bSize;
-
-		//if ( nVersion >= 10 )
-		//{
-			ar >> m_nSize;
-		//}
-		//else
-		//{
-		//	DWORD nSize;
-		//	ar >> nSize;
-		//	m_nSize = nSize;
-		//}
+		ar >> m_nSize;
 
 		ar >> m_nHitSources;
 		ar >> m_nPartial;
 		ar >> m_bPreview;
 		ar >> m_sPreview;
-		//if ( nVersion >= 11 )
-			ar >> m_bCollection;
+		ar >> m_bCollection;
 
 		CString strSchemaURI, strSchemaPlural;
 		ar >> strSchemaURI;
@@ -2051,12 +2035,10 @@ void CQueryHit::Serialize(CArchive& ar, int nVersion)	// MATCHLIST_SER_VERSION
 
 		ar >> m_nRating;
 		ar >> m_sComments;
-		//if ( nVersion >= 15 )
-			ar >> m_sNick;
+		ar >> m_sNick;
 
 		ar >> m_bMatched;
-		//if ( nVersion >= 12 )
-			ar >> m_bExactMatch;
+		ar >> m_bExactMatch;
 		ar >> m_bBogus;
 		ar >> m_bDownload;
 

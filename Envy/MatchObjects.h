@@ -18,13 +18,16 @@
 
 #pragma once
 
-#define MATCHLIST_SER_VERSION	1000	// 15	// Use INTERNAL_VERSION ?
+// Set at INTERNAL_VERSION on change:
+#define MATCHLIST_SER_VERSION 1
+
 // History:
 // 12 - Shareaza 2.2 (Rolandas)
 // 13 - Shareaza 2.3 (ryo-oh-ki)
 // 14 - Shareaza 2.4 (ryo-oh-ki)
-// 15 - Added CQueryHit::m_sNick for DC++ hits (ryo-oh-ki) (Shareaza 2.5.5.0)
-// 1000 - Envy 1.0 (15)
+// 15 - Shareaza 2.5.5.0 (ryo-oh-ki)  Added CQueryHit::m_sNick for DC++ hits
+// 1000 - (15)
+// 1  - Envy 1.0
 
 #include "EnvyFile.h"
 #include "Schema.h"
@@ -131,7 +134,7 @@ public:
 	void		ClearUpdated();
 	void		ClearNew();
 	void		SanityCheck();
-	void		Serialize(CArchive& ar, int nVersion = MATCHLIST_SER_VERSION);	// INTERNAL_VERSION?
+	void		Serialize(CArchive& ar, int nVersion = MATCHLIST_SER_VERSION);
 
 	CBaseMatchWnd* GetParent() const
 	{

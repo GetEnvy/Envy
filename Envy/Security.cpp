@@ -866,10 +866,13 @@ BOOL CSecurity::Save()
 //////////////////////////////////////////////////////////////////////
 // CSecurity serialize
 
-#define SECURITY_SER_VERSION	1000	// 5
+// Set at INTERNAL_VERSION on change:
+#define SECURITY_SER_VERSION 1
+
 // nVersion History:
-// 5 - extended security rule type (ryo-oh-ki)
-// 1000 - Added banCustom (Envy 1.0) (5+)
+// 5 - Extended security rule type (ryo-oh-ki)
+// 1000 - Added banCustom
+// 1 - (Envy 1.0)
 
 void CSecurity::Serialize(CArchive& ar)
 {

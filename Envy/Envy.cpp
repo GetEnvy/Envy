@@ -76,7 +76,7 @@
 #include "WndSystem.h"
 #include "WndLibrary.h"
 
-#if defined(NOXP) && (_MSC_VER >= 1800)		// VS2013+ for WinSDK 8.1+
+#if !defined(XPSUPPORT) && (_MSC_VER >= 1800)		// VS2013+ for WinSDK 8.1+
 #include <VersionHelpers.h>
 #endif
 
@@ -1462,7 +1462,7 @@ void CEnvyApp::GetVersionNumber()
 	//	Major ver 6:	Vista = 0, Server2008 = 0, Windows7 = 1, Windows8 = 2, Windows8.1 = 3
 	//	Major ver 10:	Windows10 = 0 (1000)
 
-#if !defined(NOXP) || (_MSC_VER < 1800)
+#if defined(XPSUPPORT) || (_MSC_VER < 1800)
 	GetVersionEx( (OSVERSIONINFO*)&Windows );	// Deprecated
 	m_bIsWinXP = Windows.dwMajorVersion == 5;
 	m_nWinVer = Windows.dwMajorVersion * 100 + Windows.dwMinorVersion * 10;
@@ -1482,7 +1482,7 @@ void CEnvyApp::GetVersionNumber()
 #else // WinSDK8.1~
 
 	m_nWinVer =
-#ifdef NOXP
+#ifndef XPSUPPORT
 		// IsWindows10OrGreater() unsupported below Win10, IsWindowsVersionOrGreater() unsupported below Vista
 		IsWindowsVersionOrGreater( 10, 0, 0 ) ? WIN_10 : // 1000
 #endif
@@ -1491,17 +1491,18 @@ void CEnvyApp::GetVersionNumber()
 		IsWindows7OrGreater() ? WIN_7 :					// 610
 		IsWindowsVistaSP2OrGreater() ? WIN_VISTA_SP2 :	// 602
 		IsWindowsVistaOrGreater() ? WIN_VISTA :			// 600
-#ifndef NOXP
+#ifdef XPSUPPORT
 		IsWindowsXPSP2OrGreater() ? WIN_XP_SP2 :		// 512
 		IsWindowsXPOrGreater() ? WIN_XP :				// 510
 #endif
 		0;	// Should never happen
 
-#ifndef NOXP
-	m_bIsWinXP = m_nWinVer < WIN_VISTA ? true : false;	// Note false default for NOXP
+#ifdef XPSUPPORT
+	if ( m_nWinVer < WIN_VISTA )
+		m_bIsWinXP = true;
 #endif
 
-#ifndef NOXP
+#ifdef XPSUPPORT
 	if ( m_nWinVer == WIN_8_1 )		// Test for higher if needed (Win10+)
 	{
 		OSVERSIONINFOEX osvi = { sizeof( osvi ) };
@@ -1573,7 +1574,7 @@ void CEnvyApp::GetVersionNumber()
 //		}
 //	}
 
-#ifndef NOXP
+#ifdef XPSUPPORT
 	if ( Windows.dwMajorVersion == 5 )
 	{
 		// Windows XP
@@ -1592,7 +1593,7 @@ void CEnvyApp::GetVersionNumber()
 		}
 	}
 	else //if ( Windows.dwMajorVersion >= 6 )
-#endif
+#endif // XP
 	{
 		if ( Windows.wProductType == VER_NT_SERVER )
 		{

@@ -179,7 +179,7 @@ BOOL CSchema::Load(LPCTSTR pszFile)
 	CString strRoot = m_sIcon.Left( m_sIcon.GetLength() - 4 );
 
 	LoadIcon( strRoot + L".Skin.ico" ) ||		// Allow Custom
-#ifndef NOXP
+#ifdef XPSUPPORT
 		theApp.m_nWinVer < WIN_VISTA ? LoadIcon( strRoot + L".Safe.ico" ) : FALSE ||	// Legacy XP
 #endif
 		Settings.Skin.AltIcons ? LoadIcon( strRoot + L".Alt.ico" ) : FALSE ||	// Prior Style (theApp.m_nWinVer < WIN_10)

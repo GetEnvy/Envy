@@ -32,8 +32,8 @@
 	#error Unicode Required
 #endif
 
-#if !defined(NOXP) && defined(WIN64)
-	#define NOXP	// No Windows XP support needed on x64 builds
+#if !defined(XPSUPPORT) && !defined(WIN64)
+	#define XPSUPPORT	// No Windows XP support needed on x64 builds
 #endif
 
 //
@@ -197,7 +197,7 @@
 #include <exdispid.h>			// Internet Explorer DISPID_ Messages (ctrlweb)
 #include <winioctl.h>			// Sparse files support
 
-//#ifdef NOXP	// inet_ntoa deprecated, use InetNtop Vista+ (Strings)
+//#ifndef XPSUPPORT	// inet_ntoa deprecated, use InetNtop Vista+ (Strings.cpp)
 //#include <Ws2tcpip.h>
 //#endif
 

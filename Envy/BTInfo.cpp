@@ -250,14 +250,17 @@ CBTInfo& CBTInfo::operator=(const CBTInfo& oSource)
 //////////////////////////////////////////////////////////////////////
 // CBTInfo serialize
 
-#define BTINFO_SER_VERSION	1000	// 11
+// Set at INTERNAL_VERSION on change:
+#define BTINFO_SER_VERSION 1
+
 // nVersion History:
 //  7 - redesigned tracker list (ryo-oh-ki)
 //  8 - removed m_nFilePriority (ryo-oh-ki)
 //  9 - added m_sName (ryo-oh-ki)
 // 10 - added m_pSource (ivan386) (Shareaza 2.5.2)
 // 11 - added m_nInfoStart & m_nInfoSize (ivan386)
-// 1000 - (Envy 1.0) (11)
+// 1000 - (11)
+// 1 - (Envy 1.0)
 
 void CBTInfo::Serialize(CArchive& ar)
 {
@@ -320,7 +323,7 @@ void CBTInfo::Serialize(CArchive& ar)
 		// ToDo: Are any BTINFO_SER_VERSION nVersions still necessary for Shareaza imports?
 
 		ar >> nVersion;
-		if ( nVersion < 7 )	// Shareaza 2.3
+		if ( nVersion > INTERNAL_VERSION && nVersion != 1000 )
 			AfxThrowUserException();
 
 		SerializeIn( ar, m_oBTH, nVersion );
@@ -400,7 +403,7 @@ void CBTInfo::Serialize(CArchive& ar)
 			}
 		}
 
-		if ( nVersion >= 10 )	// Shareaza 2.5.2.0+ (Envy 1.0)
+		//if ( nVersion >= 10 )	// Shareaza 2.5.2.0+
 		{
 			DWORD nLength;
 			ar >> nLength;
@@ -409,15 +412,8 @@ void CBTInfo::Serialize(CArchive& ar)
 				m_pSource.EnsureBuffer( nLength );
 				ar.Read( m_pSource.m_pBuffer, nLength );
 				m_pSource.m_nLength = nLength;
-				//if ( nVersion >= 11 )
-				//{
-					ar >> m_nInfoStart;
-					ar >> m_nInfoSize;
-				//}
-				//else
-				//{
-				//	VERIFY( CheckInfoData() );
-				//}
+				ar >> m_nInfoStart;
+				ar >> m_nInfoSize;
 			}
 		}
 
@@ -431,8 +427,8 @@ void CBTInfo::Serialize(CArchive& ar)
 
 //void CBTInfo::ConvertOldTorrents()
 //{
-//	// For Importing Shareaza 2.4 Multifile Partial Only
-//	// Reference only. Comment this out for Envy 1.0 release
+//	// For importing Shareaza 2.4 multifile partials
+//	// Legacy for reference only.
 //
 //	if ( m_pFiles.GetCount() < 2 )
 //		return;
@@ -536,27 +532,20 @@ void CBTInfo::CBTFile::Serialize(CArchive& ar, int nVersion)
 	{
 		ar >> m_nSize;
 		ar >> m_sPath;
+		ar >> m_sName;
 
-		if ( nVersion > 8 )
-			ar >> m_sName;
-		else // Upgrade Shareaza Import?
-			m_sName = PathFindFileName( m_sPath );
+		//if ( nVersion < 8 ) // Upgrade old Shareaza import
+		//	m_sName = PathFindFileName( m_sPath );
 
 		SerializeIn( ar, m_oSHA1, nVersion );
-
-		//if ( nVersion >= 4 )
+		SerializeIn( ar, m_oED2K, nVersion );
+		SerializeIn( ar, m_oTiger, nVersion );
+		//if ( nVersion < 8 )
 		//{
-			SerializeIn( ar, m_oED2K, nVersion );
-			SerializeIn( ar, m_oTiger, nVersion );
-			if ( nVersion < 8 )
-			{
-				int nFilePriority;
-				ar >> nFilePriority;
-			}
+		//	int nFilePriority;
+		//	ar >> nFilePriority;
 		//}
-
-		//if ( nVersion >= 6 )
-			SerializeIn( ar, m_oMD5, nVersion );
+		SerializeIn( ar, m_oMD5, nVersion );
 	}
 }
 
@@ -566,7 +555,6 @@ void CBTInfo::CBTFile::Serialize(CArchive& ar, int nVersion)
 BOOL CBTInfo::LoadTorrentFile(LPCTSTR pszFile)
 {
 	CFile pFile;
-
 	if ( pFile.Open( pszFile, CFile::modeRead|CFile::shareDenyNone ) )
 	{
 		DWORD nLength = (DWORD)pFile.GetLength();

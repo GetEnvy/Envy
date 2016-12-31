@@ -778,8 +778,7 @@ void CLibraryFolders::Serialize(CArchive& ar, int nVersion)
 		}
 	}
 
-	//if ( nVersion > 6 )
-		m_pAlbumRoot->Serialize( ar, nVersion );
+	m_pAlbumRoot->Serialize( ar, nVersion );
 }
 
 void CLibraryFolders::Maintain()

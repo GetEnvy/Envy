@@ -25,9 +25,18 @@
 	#error Unicode Required
 #endif
 
+#if !defined(XPSUPPORT) && !defined(WIN64)
+#define XPSUPPORT	// No Windows XP support needed on x64 builds
+#endif
+
 // TargetVer.h: (WINVER)
+#ifdef XPSUPPORT
 #define NTDDI_VERSION	0x05010200	// NTDDI_WINXPSP2
 #define _WIN32_WINNT	0x0501		// XP
+#else
+#define NTDDI_VERSION	0x06000000	// NTDDI_VISTA
+#define _WIN32_WINNT	0x0600		// Vista
+#endif
 #include <sdkddkver.h>
 
 #define VC_EXTRALEAN

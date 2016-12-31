@@ -227,7 +227,7 @@ int CDownloadsWnd::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	m_pDragImage	= NULL;
 	m_tSel			= 0;
 
-#ifndef NOXP
+#ifdef XPSUPPORT
 	m_hCursMove		= AfxGetApp()->LoadCursor( theApp.m_bIsWinXP ? IDR_MOVE_XP : IDR_MOVE );
 	m_hCursCopy		= AfxGetApp()->LoadCursor( theApp.m_bIsWinXP ? IDR_COPY_XP : IDR_COPY );
 #else // x64 Vista+

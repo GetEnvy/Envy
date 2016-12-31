@@ -61,11 +61,15 @@ void CResultFilters::Clear()
 	m_nDefault = NONE;
 }
 
-#define RESULTFILTERS_SER_VERSION	1000	// 2
+
+// Set at INTERNAL_VERSION on change:
+#define RESULTFILTERS_SER_VERSION 1
+
 // nVersion History:
-//  1 - Legacy
-//  2 - Cumulative Additions (Shareaza 2.3)
-//  1000 - (Envy 1.0) (2)
+// 1 - Legacy
+// 2 - Cumulative Additions (Shareaza 2.3)
+// 1000 - (2)
+// 1 - (Envy 1.0)
 
 void CResultFilters::Serialize(CArchive & ar)
 {

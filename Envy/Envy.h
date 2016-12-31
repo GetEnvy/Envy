@@ -497,5 +497,5 @@ const LPCTSTR RT_GZIP = L"GZIP";
 #define UPDATE_URL_ALT			L"http://raw.githubusercontent.com/GetEnvy/Envy/master/release"
 
 
-// Saved-State Serialization:	(ToDo: Integrate various _SER_VERs)
-#define INTERNAL_VERSION		1001
+// Saved-State Serialization:	(Set Smart Version and _SER_VERSIONs)
+#define INTERNAL_VERSION		1

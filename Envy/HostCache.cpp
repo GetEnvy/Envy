@@ -179,7 +179,10 @@ BOOL CHostCache::Save()
 	return TRUE;
 }
 
-#define HOSTCACHE_SER_VERSION		1000	// 19
+
+// Set at INTERNAL_VERSION on change:
+#define HOSTCACHE_SER_VERSION 1
+
 // nVersion History:
 // 14 - Added m_sCountry
 // 15 - Added m_bDHT and m_oBtGUID (Ryo-oh-ki)
@@ -187,11 +190,12 @@ BOOL CHostCache::Save()
 // 17 - Added m_tConnect (Ryo-oh-ki)
 // 18 - Added m_sUser and m_sPass (Ryo-oh-ki)
 // 19 - Added m_sAddress (Ryo-oh-ki)
-// 1000 - (Envy 1.0) (19) Removed m_bDHT
+// 1000 - Removed m_bDHT
+// 1 - (Envy 1.0)
 
 void CHostCache::Serialize(CArchive& ar)
 {
-	int nVersion = HOSTCACHE_SER_VERSION;	// ToDo: INTERNAL_VERSION
+	int nVersion = HOSTCACHE_SER_VERSION;
 
 	if ( ar.IsStoring() )
 	{
@@ -208,7 +212,8 @@ void CHostCache::Serialize(CArchive& ar)
 	else // Loading
 	{
 		ar >> nVersion;
-		if ( nVersion < 14 ) return;
+		if ( nVersion > INTERNAL_VERSION && nVersion != 1000 )
+			AfxThrowUserException();
 
 		for ( DWORD_PTR nCount = ar.ReadCount() ; nCount > 0 ; nCount-- )
 		{

@@ -27,12 +27,15 @@ class CQuerySearch;
 class CLibraryFolder;
 class CAlbumFolder;
 
-#define LIBRARY_SER_VERSION		1000	// 29	(ToDo: Use INTERNAL_VERSION?)
+// Set at INTERNAL_VERSION on change:
+#define LIBRARY_SER_VERSION 1
+
 // nVersion History:
 // 27 - Changed CLibraryFile metadata saving order (ryo-oh-ki)
 // 28 - Added CLibraryMaps m_pIndexMap, m_pNameMap and m_pPathMap counts (ryo-oh-ki)
 // 29 - Added CLibraryDictionary serialize (ryo-oh-ki)
-// 1000 - (Envy 1.0) (29)
+// 1000 - (29)
+// 1 - (Envy 1.0)
 
 class CLibrary :
 	public CComObject,

@@ -112,7 +112,7 @@ ChangesEnvironment=yes
 CloseApplications=no
 MinVersion=0,5.01
 #if unified_build == "True"
-  OutputManifestFile=Manifest Release.txt
+  OutputManifestFile=Manifest.txt
 #else
   OutputManifestFile=Manifest {#ConfigurationName} {#PlatformName}.txt
 #endif
@@ -196,14 +196,14 @@ Name: "{group}\{cm:icons_uninstall}"; Filename: "{uninstallexe}"; WorkingDir: "{
 ; Main files:
 
 #if unified_build == "True"
-Source: "Envy\Release x64\Envy.exe"; 	DestDir: "{app}"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension ; Check: Is64BitInstallMode
-Source: "Envy\Release Win32\Envy.exe"; 	DestDir: "{app}"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension ; Check: not Is64BitInstallMode
-Source: "TorrentEnvy\Release x64\TorrentEnvy.exe";	DestDir: "{app}"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension ; Check: Is64BitInstallMode
-Source: "TorrentEnvy\Release Win32\TorrentEnvy.exe";	DestDir: "{app}"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension ; Check: not Is64BitInstallMode
-Source: "SkinInstaller\Release x64\SkinInstaller.exe";	DestDir: "{app}"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension ; Check: Is64BitInstallMode
-Source: "SkinInstaller\Release Win32\SkinInstaller.exe";DestDir: "{app}"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension ; Check: not Is64BitInstallMode
-;Source: "SkinBuilder\Release x64\SkinBuilder.exe"; 	DestDir: "{app}"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension ; Check: Is64BitInstallMode
-;Source: "SkinBuilder\Release Win32\SkinBuilder.exe"; 	DestDir: "{app}"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension ; Check: not Is64BitInstallMode
+Source: "Envy\Release x64\Envy.exe"; 	DestDir: "{app}"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension ; Check: Install64Bit
+Source: "Envy\Release Win32\Envy.exe"; 	DestDir: "{app}"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension ; Check: not Install64Bit
+Source: "TorrentEnvy\Release x64\TorrentEnvy.exe";	DestDir: "{app}"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension ; Check: Install64Bit
+Source: "TorrentEnvy\Release Win32\TorrentEnvy.exe";	DestDir: "{app}"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension ; Check: not Install64Bit
+Source: "SkinInstaller\Release x64\SkinInstaller.exe";	DestDir: "{app}"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension ; Check: Install64Bit
+Source: "SkinInstaller\Release Win32\SkinInstaller.exe";DestDir: "{app}"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension ; Check: not Install64Bit
+;Source: "SkinBuilder\Release x64\SkinBuilder.exe"; 	DestDir: "{app}"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension ; Check: Install64Bit
+;Source: "SkinBuilder\Release Win32\SkinBuilder.exe"; 	DestDir: "{app}"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension ; Check: not Install64Bit
 #else
 Source: "Envy\{#ConfigurationName} {#PlatformName}\Envy.exe"; 	DestDir: "{app}"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension
 Source: "TorrentEnvy\{#ConfigurationName} {#PlatformName}\TorrentEnvy.exe";	DestDir: "{app}"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension
@@ -219,15 +219,15 @@ Source: "Services\RestoreSettings.bat"; DestDir: "{app}"; DestName: "RestoreSett
 
 #if unified_build == "True"
 
-Source: "Services\zlib\Release x64\zlibwapi.dll"; DestDir: "{app}"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension ; Check: Is64BitInstallMode
-Source: "Services\zlib\Release x64\zlibwapi.dll"; DestDir: "{app}\Plugins"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension ; Check: Is64BitInstallMode
-Source: "Services\zlib\Release Win32\zlibwapi.dll"; DestDir: "{app}"; Flags: overwritereadonly replacesameversion uninsremovereadonly sortfilesbyextension deleteafterinstall ; Check: not Is64BitInstallMode
-Source: "Services\zlib\Release Win32\zlibwapi.dll"; DestDir: "{app}\Plugins"; Flags: overwritereadonly replacesameversion uninsremovereadonly sortfilesbyextension deleteafterinstall ; Check: not Is64BitInstallMode
+Source: "Services\zlib\Release x64\zlibwapi.dll"; DestDir: "{app}"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension ; Check: Install64Bit
+Source: "Services\zlib\Release x64\zlibwapi.dll"; DestDir: "{app}\Plugins"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension ; Check: Install64Bit
+Source: "Services\zlib\Release Win32\zlibwapi.dll"; DestDir: "{app}"; Flags: overwritereadonly replacesameversion uninsremovereadonly sortfilesbyextension deleteafterinstall ; Check: not Install64Bit
+Source: "Services\zlib\Release Win32\zlibwapi.dll"; DestDir: "{app}\Plugins"; Flags: overwritereadonly replacesameversion uninsremovereadonly sortfilesbyextension deleteafterinstall ; Check: not Install64Bit
 ; Using smaller pre-built DLLs:
-;Source: "Services\zlibwapi.64.dll"; DestDir: "{app}";         DestName: "zlibwapi.dll"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension ; Check: Is64BitInstallMode
-;Source: "Services\zlibwapi.64.dll"; DestDir: "{app}\Plugins"; DestName: "zlibwapi.dll"; Flags: overwritereadonly replacesameversion uninsremovereadonly sortfilesbyextension deleteafterinstall ; Check: Is64BitInstallMode
-;Source: "Services\zlibwapi.dll"; DestDir: "{app}";         Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension ; Check: not Is64BitInstallMode
-;Source: "Services\zlibwapi.dll"; DestDir: "{app}\Plugins"; Flags: overwritereadonly replacesameversion uninsremovereadonly sortfilesbyextension deleteafterinstall ; Check: not Is64BitInstallMode
+;Source: "Services\zlibwapi.64.dll"; DestDir: "{app}";         DestName: "zlibwapi.dll"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension ; Check: Install64Bit
+;Source: "Services\zlibwapi.64.dll"; DestDir: "{app}\Plugins"; DestName: "zlibwapi.dll"; Flags: overwritereadonly replacesameversion uninsremovereadonly sortfilesbyextension deleteafterinstall ; Check: Install64Bit
+;Source: "Services\zlibwapi.dll"; DestDir: "{app}";         Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension ; Check: not Install64Bit
+;Source: "Services\zlibwapi.dll"; DestDir: "{app}\Plugins"; Flags: overwritereadonly replacesameversion uninsremovereadonly sortfilesbyextension deleteafterinstall ; Check: not Install64Bit
 
 #else
 
@@ -245,26 +245,26 @@ Source: "Services\zlib\{#ConfigurationName} {#PlatformName}\zlibwapi.dll"; DestD
 
 #if unified_build == "True"
 
-Source: "Services\Bzlib\Release x64\Bzlib.dll";   DestDir: "{app}"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension ; Check: Is64BitInstallMode
-Source: "Services\Bzlib\Release Win32\Bzlib.dll"; DestDir: "{app}"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension ; Check: not Is64BitInstallMode
+Source: "Services\Bzlib\Release x64\Bzlib.dll";   DestDir: "{app}"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension ; Check: Install64Bit
+Source: "Services\Bzlib\Release Win32\Bzlib.dll"; DestDir: "{app}"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension ; Check: not Install64Bit
 
-Source: "HashLib\Release x64\HashLib.dll";   DestDir: "{app}"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension ; Check: Is64BitInstallMode
-Source: "HashLib\Release Win32\HashLib.dll"; DestDir: "{app}"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension ; Check: not Is64BitInstallMode
+Source: "HashLib\Release x64\HashLib.dll";   DestDir: "{app}"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension ; Check: Install64Bit
+Source: "HashLib\Release Win32\HashLib.dll"; DestDir: "{app}"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension ; Check: not Install64Bit
 
-Source: "Services\SQLite\Release x64\SQLite.dll";   DestDir: "{app}"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension ; Check: Is64BitInstallMode
-Source: "Services\SQLite\Release Win32\SQLite.dll"; DestDir: "{app}"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension ; Check: not Is64BitInstallMode
+Source: "Services\SQLite\Release x64\SQLite.dll";   DestDir: "{app}"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension ; Check: Install64Bit
+Source: "Services\SQLite\Release Win32\SQLite.dll"; DestDir: "{app}"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension ; Check: not Install64Bit
 
-Source: "Services\MiniUPnP\Release x64\MiniUPnPc.dll";   DestDir: "{app}"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension ; Check: Is64BitInstallMode
-Source: "Services\MiniUPnP\Release Win32\MiniUPnPc.dll"; DestDir: "{app}"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension ; Check: not Is64BitInstallMode
+Source: "Services\MiniUPnP\Release x64\MiniUPnPc.dll";   DestDir: "{app}"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension ; Check: Install64Bit
+Source: "Services\MiniUPnP\Release Win32\MiniUPnPc.dll"; DestDir: "{app}"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension ; Check: not Install64Bit
 
-Source: "Services\GeoIP\Release x64\GeoIP.dll";   DestDir: "{app}"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension ; Check: Is64BitInstallMode
-Source: "Services\GeoIP\Release Win32\GeoIP.dll"; DestDir: "{app}"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension ; Check: not Is64BitInstallMode
+Source: "Services\GeoIP\Release x64\GeoIP.dll";   DestDir: "{app}"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension ; Check: Install64Bit
+Source: "Services\GeoIP\Release Win32\GeoIP.dll"; DestDir: "{app}"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension ; Check: not Install64Bit
 ;Source: "Data\GeoIP.dat"; DestDir: "{app}\Data"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension
 
-Source: "Services\LibGFL\x64\LibGFL340.dll";   DestDir: "{app}"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension ; Check: Is64BitInstallMode
-Source: "Services\LibGFL\Win32\LibGFL340.dll"; DestDir: "{app}"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension ; Check: not Is64BitInstallMode
-Source: "Services\LibGFL\x64\LibGFL340.dll";   DestDir: "{app}\Plugins"; Flags: overwritereadonly replacesameversion uninsremovereadonly sortfilesbyextension deleteafterinstall ; Check: Is64BitInstallMode
-Source: "Services\LibGFL\Win32\LibGFL340.dll"; DestDir: "{app}\Plugins"; Flags: overwritereadonly replacesameversion uninsremovereadonly sortfilesbyextension deleteafterinstall ; Check: not Is64BitInstallMode
+Source: "Services\LibGFL\x64\LibGFL340.dll";   DestDir: "{app}"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension ; Check: Install64Bit
+Source: "Services\LibGFL\Win32\LibGFL340.dll"; DestDir: "{app}"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension ; Check: not Install64Bit
+Source: "Services\LibGFL\x64\LibGFL340.dll";   DestDir: "{app}\Plugins"; Flags: overwritereadonly replacesameversion uninsremovereadonly sortfilesbyextension deleteafterinstall ; Check: Install64Bit
+Source: "Services\LibGFL\Win32\LibGFL340.dll"; DestDir: "{app}\Plugins"; Flags: overwritereadonly replacesameversion uninsremovereadonly sortfilesbyextension deleteafterinstall ; Check: not Install64Bit
 
 #else
 
@@ -283,57 +283,57 @@ Source: "Services\LibGFL\{#PlatformName}\LibGFL340.dll"; DestDir: "{app}\Plugins
 
 #if unified_build == "True"
 
-Source: "Plugins\DocumentReader\Release x64\DocumentReader.dll";   DestDir: "{app}\Plugins"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension regserver ; Check: Is64BitInstallMode
-Source: "Plugins\DocumentReader\Release Win32\DocumentReader.dll"; DestDir: "{app}\Plugins"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension regserver ; Check: not Is64BitInstallMode
+Source: "Plugins\DocumentReader\Release x64\DocumentReader.dll";   DestDir: "{app}\Plugins"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension regserver ; Check: Install64Bit
+Source: "Plugins\DocumentReader\Release Win32\DocumentReader.dll"; DestDir: "{app}\Plugins"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension regserver ; Check: not Install64Bit
 
-Source: "Plugins\ImageViewer\Release x64\ImageViewer.dll";   DestDir: "{app}\Plugins"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension regserver ; Check: Is64BitInstallMode
-Source: "Plugins\ImageViewer\Release Win32\ImageViewer.dll"; DestDir: "{app}\Plugins"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension regserver ; Check: not Is64BitInstallMode
+Source: "Plugins\ImageViewer\Release x64\ImageViewer.dll";   DestDir: "{app}\Plugins"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension regserver ; Check: Install64Bit
+Source: "Plugins\ImageViewer\Release Win32\ImageViewer.dll"; DestDir: "{app}\Plugins"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension regserver ; Check: not Install64Bit
 
-Source: "Plugins\GFLImageServices\Release x64\GFLImageServices.dll";   DestDir: "{app}\Plugins"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension regserver ; Check: Is64BitInstallMode
-Source: "Plugins\GFLImageServices\Release Win32\GFLImageServices.dll"; DestDir: "{app}\Plugins"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension regserver ; Check: not Is64BitInstallMode
-Source: "Plugins\GFLLibraryBuilder\Release x64\GFLLibraryBuilder.dll"; DestDir: "{app}\Plugins"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension regserver ; Check: Is64BitInstallMode
-Source: "Plugins\GFLLibraryBuilder\Release Win32\GFLLibraryBuilder.dll"; DestDir: "{app}\Plugins"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension regserver ; Check: not Is64BitInstallMode
+Source: "Plugins\GFLImageServices\Release x64\GFLImageServices.dll";   DestDir: "{app}\Plugins"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension regserver ; Check: Install64Bit
+Source: "Plugins\GFLImageServices\Release Win32\GFLImageServices.dll"; DestDir: "{app}\Plugins"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension regserver ; Check: not Install64Bit
+Source: "Plugins\GFLLibraryBuilder\Release x64\GFLLibraryBuilder.dll"; DestDir: "{app}\Plugins"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension regserver ; Check: Install64Bit
+Source: "Plugins\GFLLibraryBuilder\Release Win32\GFLLibraryBuilder.dll"; DestDir: "{app}\Plugins"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension regserver ; Check: not Install64Bit
 
-Source: "Plugins\MediaImageServices\Release x64\MediaImageServices.dll";   DestDir: "{app}\Plugins"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension regserver ; Check: Is64BitInstallMode
-Source: "Plugins\MediaImageServices\Release Win32\MediaImageServices.dll"; DestDir: "{app}\Plugins"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension regserver ; Check: not Is64BitInstallMode
-Source: "Plugins\MediaLibraryBuilder\Release x64\MediaLibraryBuilder.dll"; DestDir: "{app}\Plugins"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension regserver ; Check: Is64BitInstallMode
-Source: "Plugins\MediaLibraryBuilder\Release Win32\MediaLibraryBuilder.dll"; DestDir: "{app}\Plugins"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension regserver ; Check: not Is64BitInstallMode
+Source: "Plugins\MediaImageServices\Release x64\MediaImageServices.dll";   DestDir: "{app}\Plugins"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension regserver ; Check: Install64Bit
+Source: "Plugins\MediaImageServices\Release Win32\MediaImageServices.dll"; DestDir: "{app}\Plugins"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension regserver ; Check: not Install64Bit
+Source: "Plugins\MediaLibraryBuilder\Release x64\MediaLibraryBuilder.dll"; DestDir: "{app}\Plugins"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension regserver ; Check: Install64Bit
+Source: "Plugins\MediaLibraryBuilder\Release Win32\MediaLibraryBuilder.dll"; DestDir: "{app}\Plugins"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension regserver ; Check: not Install64Bit
 
-Source: "Plugins\RARBuilder\Release x64\RARBuilder.dll";   DestDir: "{app}\Plugins"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension regserver ; Check: Is64BitInstallMode
-Source: "Plugins\RARBuilder\Release Win32\RARBuilder.dll"; DestDir: "{app}\Plugins"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension regserver ; Check: not Is64BitInstallMode
+Source: "Plugins\RARBuilder\Release x64\RARBuilder.dll";   DestDir: "{app}\Plugins"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension regserver ; Check: Install64Bit
+Source: "Plugins\RARBuilder\Release Win32\RARBuilder.dll"; DestDir: "{app}\Plugins"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension regserver ; Check: not Install64Bit
 
-Source: "Plugins\RARBuilder\Unrar64.dll"; DestDir: "{app}\Plugins"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension ; Check: Is64BitInstallMode
-Source: "Plugins\RARBuilder\Unrar.dll";   DestDir: "{app}\Plugins"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension ; Check: not Is64BitInstallMode
+Source: "Plugins\RARBuilder\Unrar64.dll"; DestDir: "{app}\Plugins"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension ; Check: Install64Bit
+Source: "Plugins\RARBuilder\Unrar.dll";   DestDir: "{app}\Plugins"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension ; Check: not Install64Bit
 
-Source: "Plugins\7ZipBuilder\Release x64\7ZipBuilder.dll";   DestDir: "{app}\Plugins"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension regserver ; Check: Is64BitInstallMode
-Source: "Plugins\7ZipBuilder\Release Win32\7ZipBuilder.dll"; DestDir: "{app}\Plugins"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension regserver ; Check: not Is64BitInstallMode
+Source: "Plugins\7ZipBuilder\Release x64\7ZipBuilder.dll";   DestDir: "{app}\Plugins"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension regserver ; Check: Install64Bit
+Source: "Plugins\7ZipBuilder\Release Win32\7ZipBuilder.dll"; DestDir: "{app}\Plugins"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension regserver ; Check: not Install64Bit
 
-Source: "Plugins\7ZipBuilder\7zxa.64.dll"; DestDir: "{app}\Plugins"; DestName: "7zxa.dll"; Flags: overwritereadonly replacesameversion uninsremovereadonly sortfilesbyextension ; Check: Is64BitInstallMode
-Source: "Plugins\7ZipBuilder\7zxa.dll";    DestDir: "{app}\Plugins"; Flags: overwritereadonly replacesameversion uninsremovereadonly sortfilesbyextension ; Check: not Is64BitInstallMode
+Source: "Plugins\7ZipBuilder\7zxa.64.dll"; DestDir: "{app}\Plugins"; DestName: "7zxa.dll"; Flags: overwritereadonly replacesameversion uninsremovereadonly sortfilesbyextension ; Check: Install64Bit
+Source: "Plugins\7ZipBuilder\7zxa.dll";    DestDir: "{app}\Plugins"; Flags: overwritereadonly replacesameversion uninsremovereadonly sortfilesbyextension ; Check: not Install64Bit
 
-Source: "Plugins\ZIPBuilder\Release x64\ZIPBuilder.dll";   DestDir: "{app}\Plugins"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension regserver ; Check: Is64BitInstallMode
-Source: "Plugins\ZIPBuilder\Release Win32\ZIPBuilder.dll"; DestDir: "{app}\Plugins"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension regserver ; Check: not Is64BitInstallMode
+Source: "Plugins\ZIPBuilder\Release x64\ZIPBuilder.dll";   DestDir: "{app}\Plugins"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension regserver ; Check: Install64Bit
+Source: "Plugins\ZIPBuilder\Release Win32\ZIPBuilder.dll"; DestDir: "{app}\Plugins"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension regserver ; Check: not Install64Bit
 
-Source: "Plugins\SkinScan\Release x64\SkinScan.dll";   DestDir: "{app}\Plugins"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension regserver ; Check: Is64BitInstallMode
-Source: "Plugins\SkinScan\Release Win32\SkinScan.dll"; DestDir: "{app}\Plugins"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension regserver ; Check: not Is64BitInstallMode
+Source: "Plugins\SkinScan\Release x64\SkinScan.dll";   DestDir: "{app}\Plugins"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension regserver ; Check: Install64Bit
+Source: "Plugins\SkinScan\Release Win32\SkinScan.dll"; DestDir: "{app}\Plugins"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension regserver ; Check: not Install64Bit
 
-Source: "Plugins\SWFPlugin\Release x64\SWFPlugin.dll";   DestDir: "{app}\Plugins"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension regserver ; Check: Is64BitInstallMode
-Source: "Plugins\SWFPlugin\Release Win32\SWFPlugin.dll"; DestDir: "{app}\Plugins"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension regserver ; Check: not Is64BitInstallMode
+Source: "Plugins\SWFPlugin\Release x64\SWFPlugin.dll";   DestDir: "{app}\Plugins"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension regserver ; Check: Install64Bit
+Source: "Plugins\SWFPlugin\Release Win32\SWFPlugin.dll"; DestDir: "{app}\Plugins"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension regserver ; Check: not Install64Bit
 
-Source: "Plugins\SearchExport\Release x64\SearchExport.dll";   DestDir: "{app}\Plugins"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension regserver ; Check: Is64BitInstallMode
-Source: "Plugins\SearchExport\Release Win32\SearchExport.dll"; DestDir: "{app}\Plugins"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension regserver ; Check: not Is64BitInstallMode
+Source: "Plugins\SearchExport\Release x64\SearchExport.dll";   DestDir: "{app}\Plugins"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension regserver ; Check: Install64Bit
+Source: "Plugins\SearchExport\Release Win32\SearchExport.dll"; DestDir: "{app}\Plugins"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension regserver ; Check: not Install64Bit
 
-Source: "Plugins\ShortURL\Release x64\ShortURL.dll";   DestDir: "{app}\Plugins"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension regserver ; Check: Is64BitInstallMode
-Source: "Plugins\ShortURL\Release Win32\ShortURL.dll"; DestDir: "{app}\Plugins"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension regserver ; Check: not Is64BitInstallMode
+Source: "Plugins\ShortURL\Release x64\ShortURL.dll";   DestDir: "{app}\Plugins"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension regserver ; Check: Install64Bit
+Source: "Plugins\ShortURL\Release Win32\ShortURL.dll"; DestDir: "{app}\Plugins"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension regserver ; Check: not Install64Bit
 
-Source: "Plugins\VirusTotal\Release x64\VirusTotal.dll";   DestDir: "{app}\Plugins"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension regserver ; Check: Is64BitInstallMode
-Source: "Plugins\VirusTotal\Release Win32\VirusTotal.dll"; DestDir: "{app}\Plugins"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension regserver ; Check: not Is64BitInstallMode
+Source: "Plugins\VirusTotal\Release x64\VirusTotal.dll";   DestDir: "{app}\Plugins"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension regserver ; Check: Install64Bit
+Source: "Plugins\VirusTotal\Release Win32\VirusTotal.dll"; DestDir: "{app}\Plugins"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension regserver ; Check: not Install64Bit
 
-Source: "Plugins\WindowsThumbnail\Release x64\WindowsThumbnail.exe";   DestDir: "{app}\Plugins"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension ; Check: Is64BitInstallMode
-Source: "Plugins\WindowsThumbnail\Release Win32\WindowsThumbnail.exe"; DestDir: "{app}\Plugins"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension ; Check: not Is64BitInstallMode
+Source: "Plugins\WindowsThumbnail\Release x64\WindowsThumbnail.exe";   DestDir: "{app}\Plugins"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension ; Check: Install64Bit
+Source: "Plugins\WindowsThumbnail\Release Win32\WindowsThumbnail.exe"; DestDir: "{app}\Plugins"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension ; Check: not Install64Bit
 
-Source: "Plugins\MediaPlayer\Release x64\MediaPlayer.dll";   DestDir: "{app}\Plugins"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension regserver ; Check: Is64BitInstallMode
-Source: "Plugins\MediaPlayer\Release Win32\MediaPlayer.dll"; DestDir: "{app}\Plugins"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension regserver ; Check: not Is64BitInstallMode
+Source: "Plugins\MediaPlayer\Release x64\MediaPlayer.dll";   DestDir: "{app}\Plugins"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension regserver ; Check: Install64Bit
+Source: "Plugins\MediaPlayer\Release Win32\MediaPlayer.dll"; DestDir: "{app}\Plugins"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension regserver ; Check: not Install64Bit
 
 #else
 
@@ -426,7 +426,7 @@ Source: "Schemas\*"; DestDir: "{app}\Schemas"; Flags: ignoreversion overwriterea
 #if PlatformName == "Win32"
 Source: "Schemas\*.Safe.ico"; DestDir: "{app}\Schemas"; Flags: ignoreversion overwritereadonly uninsremovereadonly sortfilesbyextension
 #elif unified_build == "True"
-Source: "Schemas\*.Safe.ico"; DestDir: "{app}\Schemas"; Flags: ignoreversion overwritereadonly uninsremovereadonly sortfilesbyextension ; Check: not Is64BitInstallMode
+Source: "Schemas\*.Safe.ico"; DestDir: "{app}\Schemas"; Flags: ignoreversion overwritereadonly uninsremovereadonly sortfilesbyextension ; Check: not Install64Bit
 #endif
 
 ; Skins
@@ -944,6 +944,59 @@ Begin
         Result := False;
 End;
 
+// Was EnableDeleteOldSetup
+Function WasInstalled: Boolean;
+Begin
+  Result := Installed;
+End;
+
+Function ShouldSkipPage(PageID: Integer): Boolean;
+Begin
+  Result := False;
+  if PageID = wpSelectDir then Result := Installed;
+End;
+
+Procedure DeleteFolder(Param: String);
+var
+  Foldername: string;
+Begin
+  Foldername := ExpandConstant(Param);
+  DelTree(Foldername, True, True, True);
+End;
+
+Procedure DeleteFile(Param: String);
+var
+  Filename: string;
+Begin
+  Filename := ExpandConstant(Param);
+  DelayDeleteFile(Filename,3);
+End;
+
+Function WeOwnTorrentAssoc: boolean;
+var
+  CommandString: string;
+  Position: Integer;
+Begin
+  Result := False;
+  if RegQueryStringValue(HKEY_CLASSES_ROOT, 'BitTorrent\shell\open\command','', CommandString) then
+    Begin
+      Position := Pos('Envy.exe', CommandString);
+      Result := (Position > 0);
+    End
+End;
+
+// Is64BitInstallMode Allow Override
+Function Install64Bit: boolean;
+Begin
+  Result := Is64BitInstallMode;
+#if unified_build == "True"
+  if Is64BitInstallMode then
+    Begin
+      if not ( ExpandConstant('{param:force32|false}') = 'false' ) then Result := False;
+    End;
+#endif
+End;
+
 Function NextButtonClick(CurPageID: integer): Boolean;
 var
   Wnd: HWND;
@@ -995,34 +1048,6 @@ Begin
   Result := MalwareDetected;
 End;
 
-// Was EnableDeleteOldSetup
-Function WasInstalled: Boolean;
-Begin
-  Result := Installed;
-End;
-
-Function ShouldSkipPage(PageID: Integer): Boolean;
-Begin
-  Result := False;
-  if PageID = wpSelectDir then Result := Installed;
-End;
-
-Procedure DeleteFolder(Param: String);
-var
-  Foldername: string;
-Begin
-  Foldername := ExpandConstant(Param);
-  DelTree(Foldername, True, True, True);
-End;
-
-Procedure DeleteFile(Param: String);
-var
-  Filename: string;
-Begin
-  Filename := ExpandConstant(Param);
-  DelayDeleteFile(Filename,3);
-End;
-
 // Update Tasks Page
 // We don't allow to modify the setting of MultiUser if already selected.
 // See http://www.jrsoftware.org/ishelp/index.php?topic=scriptevents & Pages.iss
@@ -1053,19 +1078,6 @@ Begin
     End;
 #endif
   End;
-End;
-
-Function WeOwnTorrentAssoc: boolean;
-var
-  CommandString: string;
-  Position: Integer;
-Begin
-  Result := False;
-  if RegQueryStringValue(HKEY_CLASSES_ROOT, 'BitTorrent\shell\open\command','', CommandString) then
-    Begin
-      Position := Pos('Envy.exe', CommandString);
-      Result := (Position > 0);
-    End
 End;
 
 Procedure CurUninstallStepChanged(CurUninstallStep: TUninstallStep);

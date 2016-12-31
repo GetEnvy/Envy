@@ -386,11 +386,8 @@ void CLibraryDictionary::Serialize(CArchive& ar, const int /*nVersion*/)
 	}
 	else // Loading
 	{
-	//	if ( nVersion > 28 )
-	//	{
 		DWORD nWordsCount = 0u;
 		ar >> nWordsCount;
 		m_oWordMap.InitHashTable( GetBestHashTableSize( nWordsCount ) );
-	//	}
 	}
 }

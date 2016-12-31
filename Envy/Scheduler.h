@@ -20,9 +20,6 @@
 
 class CXMLElement;
 
-
-#define SCHEDULER_SER_VERSION	1000	// 1
-
 // Add new tasks here: (In order)
 enum ScheduleTask
 {

@@ -534,10 +534,13 @@ BOOL CDiscoveryServices::Save()
 //////////////////////////////////////////////////////////////////////
 // CDiscoveryServices serialize
 
-#define DISCOVERY_SER_VERSION		1000	// 7
+// Set at INTERNAL_VERSION on change:
+#define DISCOVERY_SER_VERSION 1
+
 // nVersion History:
 // 7 - Added m_nTotalHosts, m_nURLs, m_nTotalURLs and m_sPong (BeaconCache)
-// 1000 - (Envy 1.0) (7)
+// 1000 - (7)
+// 1 - (Envy 1.0)
 
 void CDiscoveryServices::Serialize(CArchive& ar)
 {
@@ -549,8 +552,8 @@ void CDiscoveryServices::Serialize(CArchive& ar)
 	{
 		ar << nVersion;
 
-	//	ar << m_tMetQueried;
-	//	ar << m_tHubsQueried;
+		//ar << m_tMetQueried;
+		//ar << m_tHubsQueried;
 
 		ar.WriteCount( GetCount() );
 
@@ -564,10 +567,11 @@ void CDiscoveryServices::Serialize(CArchive& ar)
 		Clear();
 
 		ar >> nVersion;
-		if ( nVersion < 6 ) return;
+		if ( nVersion > INTERNAL_VERSION && nVersion != 1000 )
+			AfxThrowUserException();
 
-	//	ar >> m_tMetQueried;
-	//	ar >> m_tHubsQueried;
+		//ar >> m_tMetQueried;
+		//ar >> m_tHubsQueried;
 
 		for ( DWORD_PTR nCount = ar.ReadCount() ; nCount > 0 ; nCount-- )
 		{
@@ -2117,7 +2121,7 @@ void CDiscoveryService::Serialize(CArchive& ar, int nVersion)
 	if ( ar.IsStoring() )
 	{
 		ar << m_nType;
-		ar << m_nProtocolID;		// nVersion 1000 (r68)
+		ar << m_nProtocolID;
 		ar << m_sAddress;
 		ar << m_bGnutella2;
 		ar << m_bGnutella1;
@@ -2138,8 +2142,7 @@ void CDiscoveryService::Serialize(CArchive& ar, int nVersion)
 	else // Loading
 	{
 		ar >> (int&)m_nType;
-		if ( nVersion >= 1000 ) 	// No imports (r68)
-			ar >> (int&)m_nProtocolID;
+		ar >> (int&)m_nProtocolID;	// No Shareaza imports
 		ar >> m_sAddress;
 		ar >> m_bGnutella2;
 		ar >> m_bGnutella1;
@@ -2150,16 +2153,12 @@ void CDiscoveryService::Serialize(CArchive& ar, int nVersion)
 		ar >> m_nUpdates;
 		ar >> m_nFailures;
 		ar >> m_nHosts;
-		//if ( nVersion > 6 )
-		//{
-			ar >> m_nTotalHosts;
-			ar >> m_nURLs;
-			ar >> m_nTotalURLs;
-		//}
+		ar >> m_nTotalHosts;
+		ar >> m_nURLs;
+		ar >> m_nTotalURLs;
 		ar >> m_nAccessPeriod;
 		ar >> m_nUpdatePeriod;
-		//if ( nVersion > 6 )
-			ar >> m_sPong;
+		ar >> m_sPong;
 
 		// Check it has a valid protocol
 		if ( _tcsnicmp( m_sAddress, L"ukhl:", 5 ) == 0 )

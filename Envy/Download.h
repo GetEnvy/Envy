@@ -18,7 +18,9 @@
 
 #pragma once
 
-#define DOWNLOAD_SER_VERSION	1000	// 42+	(ToDo: Use INTERNAL_VERSION?)
+// Set at INTERNAL_VERSION on change:
+#define DOWNLOAD_SER_VERSION 1
+
 // nVersion History:
 // 30 - Shareaza 2.0 (2004)
 // 33 - added m_sSearchKeyword to CDownloadBase (CyberBob)
@@ -31,7 +33,8 @@
 // 40 - added virtual fragmented file (Ryo-oh-ki)
 // 41 - added m_sName to CFragmentedFile (Ryo-oh-ki)
 // 42 - added m_bMetaIgnore to CDownloadSource (Ry-oh-ki) (Shareaza 2.5.2.0)
-// 1000 - add m_tDate, remove sSearchKeyword in CDownloadBase	(Envy 1.0) (42+)
+// 1000 - add m_tDate, remove sSearchKeyword in CDownloadBase
+// 1  - (Envy 1.0)
 
 #include "DownloadWithExtras.h"
 
@@ -116,8 +119,8 @@ public:
 	virtual BOOL OnVerify(const CLibraryFile* pFile, TRISTATE bVerified);	// File was hashed and verified in the Library
 	virtual void Serialize(CArchive& ar, int nVersion); 	// DOWNLOAD_SER_VERSION
 
-	friend class CDownloadTransfer;		// GetVerifyLength
-	friend class CDownloadWithTorrent;	// m_bComplete
-	friend class CDownloadsWnd;			// m_pTask
-	friend class CDownloads;			// m_bComplete for Load()
+	friend class CDownloadTransfer;			// GetVerifyLength
+	friend class CDownloadWithTorrent;		// m_bComplete
+	friend class CDownloadsWnd;				// m_pTask
+	friend class CDownloads;				// m_bComplete for Load()
 };

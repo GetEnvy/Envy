@@ -811,8 +811,8 @@ void CFragmentedFile::Serialize(CArchive& ar, int nVersion)
 	{
 		SerializeIn1( ar, m_oFList, nVersion );
 
-		if ( nVersion < 40 )
-			return;		// Old Shareaza import?
+		//if ( nVersion < 40 )
+		//	return;		// Old Shareaza import?
 
 		DWORD count = 0;
 		QWORD nOffset = 0;

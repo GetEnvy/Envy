@@ -409,7 +409,7 @@ void CBrowseHostWnd::Serialize(CArchive& ar, int nVersion)	// BROWSER_SER_VERSIO
 	else // Loading
 	{
 		ar >> nVersion;
-		if ( nVersion < 1 || nVersion > 1999 )
+		if ( nVersion > INTERNAL_VERSION && nVersion != 1000 )
 			AfxThrowUserException();
 
 		ar >> m_bOnFiles;

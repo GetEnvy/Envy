@@ -540,16 +540,19 @@ BOOL CUploadQueues::Save()
 //////////////////////////////////////////////////////////////////////
 // CUploadQueues serialize
 
-#define UPLOADQUEUES_SER_VERSION	1000	// 6
+// Set at INTERNAL_VERSION on change:
+#define UPLOADQUEUES_SER_VERSION 1
+
 // nVersion History:
 // 6 - Shareaza 2.3 (ryo-oh-ki)
-// 1000 - (Envy 1.0) (6)
+// 1000 - (6)
+// 1 - (Envy 1.0)
 
 void CUploadQueues::Serialize(CArchive& ar)
 {
 	ASSUME_LOCK( m_pSection );
 
-	int nVersion = UPLOADQUEUES_SER_VERSION;	// ToDo: INTERNAL_VERSION
+	int nVersion = UPLOADQUEUES_SER_VERSION;
 
 	if ( ar.IsStoring() )
 	{
@@ -567,7 +570,7 @@ void CUploadQueues::Serialize(CArchive& ar)
 		Clear();
 
 		ar >> nVersion;
-		if ( nVersion < 2 )
+		if ( nVersion > UPLOADQUEUES_SER_VERSION && nVersion != 1000 )
 			AfxThrowUserException();
 
 		for ( DWORD_PTR nCount = ar.ReadCount() ; nCount > 0 ; nCount-- )

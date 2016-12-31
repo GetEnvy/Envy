@@ -145,7 +145,7 @@ BOOL CVersionChecker::ExecuteRequest()
 {
 	// URL: http://sf.net/p/getenvy/code/HEAD/tree/trunk/release?format=raw
 	// ALT: http://raw.githubusercontent.com/GetEnvy/Envy/master/release
-	// Response: Version=1.0&Name=Envy.1.0.exe&Size=10009496&Date=20161220&SHA1=ZAEGMBJ6CS2NZM2I7ZZ3HLNLORBCXBUB&Tiger=IUOKZDQZPLTFU4R7YJJNMVVROW7XOMUR4OJH2AA&Info=First+public+release+1.0
+	// Response: Version=1.0&Name=Envy.1.0.exe&Size=10009496&Date=20161230&SHA1=ZAEGMBJ6CS2NZM2I7ZZ3HLNLORBCXBUB&Tiger=IUOKZDQZPLTFU4R7YJJNMVVROW7XOMUR4OJH2AA&Info=First+public+release+1.0
 
 //	const CString strURL = Settings.VersionCheck.UpdateCheckURL
 //		  L"?Version=" + theApp.m_sVersion

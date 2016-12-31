@@ -372,15 +372,12 @@ void CDownloadWithExtras::Serialize(CArchive& ar, int nVersion)		// DOWNLOAD_SER
 			m_pPreviews.AddTail( str );
 		}
 
-		//if ( nVersion >= 32 )
-		//{
-			for ( DWORD_PTR nCount = ar.ReadCount() ; nCount ; nCount-- )
-			{
-				CDownloadReview *pReview = new CDownloadReview;
-				pReview->Serialize( ar, nVersion );
-				AddReview( pReview );
-			}
-		//}
+		for ( DWORD_PTR nCount = ar.ReadCount() ; nCount ; nCount-- )
+		{
+			CDownloadReview *pReview = new CDownloadReview;
+			pReview->Serialize( ar, nVersion );
+			AddReview( pReview );
+		}
 	}
 }
 

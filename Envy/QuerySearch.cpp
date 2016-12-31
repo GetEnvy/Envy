@@ -1899,10 +1899,13 @@ void CQuerySearch::BuildWordList(bool bExpression, bool /*bLocal*/ )
 //////////////////////////////////////////////////////////////////////
 // CQuerySearch serialization
 
-#define QUERYSEARCH_SER_VERSION		1000	// 8
+// Set at INTERNAL_VERSION on change:
+#define QUERYSEARCH_SER_VERSION 1
+
 // nVersion History:
 // 8 - Added m_nMinSize & m_nMaxSize - Shareaza 2.2 (ryo-oh-ki)
-// 1000 - Added m_nProtocol for display (Envy 1.0) (8)
+// 1000 - Added m_nProtocol for display
+// 1 - (Envy 1.0) 
 
 void CQuerySearch::Serialize(CArchive& ar)
 {
@@ -1947,8 +1950,8 @@ void CQuerySearch::Serialize(CArchive& ar)
 	else // Loading
 	{
 		ar >> nVersion;
-		if ( nVersion < 8 )
-			AfxThrowUserException();
+		//if ( nVersion < 8 )
+		//	AfxThrowUserException();
 
 		ReadArchive( ar, &m_oGUID[ 0 ], Hashes::Guid::byteCount );
 
@@ -1974,12 +1977,8 @@ void CQuerySearch::Serialize(CArchive& ar)
 		ar >> m_bWantXML;
 		ar >> m_bWantCOM;
 		ar >> m_bWantPFS;
-
-		//if ( nVersion >= 8 )
-		//{
-			ar >> m_nMinSize;
-			ar >> m_nMaxSize;
-		//}
+		ar >> m_nMinSize;
+		ar >> m_nMaxSize;
 
 		//if ( nVersion >= 1000 )
 			ar >> m_nProtocol;

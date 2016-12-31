@@ -396,13 +396,16 @@ BOOL CDownloadGroups::Save(BOOL bForce)
 //////////////////////////////////////////////////////////////////////
 // CDownloadGroups serialize
 
-#define GROUPS_SER_VERSION	1000	// 7
+// Set at INTERNAL_VERSION on change:
+#define GROUPS_SER_VERSION	1
+
 // nVersion History:
 // 4 - Added m_bTemporary (ryo-oh-ki)
 // 5 - New download groups added (Image, Collection, etc.)
 // 6 - ?
 // 7 - Added m_bTorrent (ryo-oh-ki), fixed collection schema
-// 1000 - (Envy 1.0) (7)
+// 1000 - (7)
+// 1 - (Envy 1.0)
 
 void CDownloadGroups::Serialize(CArchive& ar)
 {
@@ -437,7 +440,8 @@ void CDownloadGroups::Serialize(CArchive& ar)
 	else // Loading
 	{
 		ar >> nVersion;
-		if ( nVersion < 2 || nVersion > GROUPS_SER_VERSION ) AfxThrowUserException();
+		if ( nVersion > INTERNAL_VERSION && nVersion != 1000 )
+			AfxThrowUserException();
 
 		DWORD_PTR nCount = ar.ReadCount();
 
