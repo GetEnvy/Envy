@@ -1160,7 +1160,7 @@ void CMatchList::ClearNew()
 // 14 - Shareaza 2.4 (ryo-oh-ki)
 // 15 - Added CQueryHit::m_sNick for DC++ hits (ryo-oh-ki) (Shareaza 2.5.5.0)
 // 1000 - (15)
-// 1 - (Envy 1.0) 
+// 1 - (Envy 1.0)
 
 void CMatchList::Serialize(CArchive& ar, int nVersion)
 {

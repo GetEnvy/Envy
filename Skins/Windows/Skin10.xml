@@ -182,7 +182,7 @@
  <image target="CHashProgressBar"			path="Skin10\HashWnd.png"/>
  <image target="CMainWnd"				path="Skin10\TabsBkg.png"/>
  <image target="CMainWnd.Toolbar"			path="Skin10\TabsBkg.png"/>
- <image target="CMediaFrame.Toolbar"			path="Mediabar.png"/>
+ <image target="CMediaFrame.Toolbar"			path="Mediabar10.png"/>
  <!--image target="CMediaList.Toolbar"			path="Skin10\Toolbar.png"-->
  <image target="CDownloadTabBar"			path="Skin10\DownloadgroupsBar.png"/>
  <!--image target="CDownloadsWnd.Toolbar"		path="Skin10\ToolbarLt.png"-->
@@ -270,7 +270,7 @@
  <!--image target="CCoolMenuBar.Hover"			path="Skin10\MenuButtonState.png"-->
  <!--image target="CCoolMenuBar.Down"			path="Skin10\MenuButtonState.png"-->
  <!--image target="CCoolMenuBar.Checked"		path="Skin10\MenuButtonState.png"-->
- <image target="CCoolbar.Control"			path="MediaSlider.png"/>
+ <image target="CCoolbar.Control"			path="MediaSlider10.png"/>
  <image target="CCoolbar.Separator"			path="Skin10\ToolbarSeparator.png"/>
 
  <!--image target="CCoolbar.Disabled"			path="ToolbarButtonHover.png"-->
@@ -340,17 +340,15 @@
  <image id="ID_TOOLS_LANGUAGE"/>
 </bitmap>
 
-<bitmap path="IconsMedia.png" mask="CLR_NONE">
- <image id="ID_MEDIA_PLAY"/>
- <image id="ID_MEDIA_PAUSE"/>
+<bitmap path="Skin10\IconsMedia.png" mask="CLR_NONE">
  <image id="ID_MEDIA_STOP"/>
- <image id="ID_MEDIA_PREVIOUS"/>
+ <image id="ID_MEDIA_PAUSE"/>
+ <image id="ID_MEDIA_PLAY"/>
  <image id="ID_MEDIA_NEXT"/>
+ <image id="ID_MEDIA_PREVIOUS"/>
+ <image id="ID_MEDIA_REPEAT"/>
+ <image id="ID_MEDIA_RANDOM"/>
  <image id="ID_MEDIA_MUTE"/>
- <image id="ID_CHILD_CLOSE" id1="ID_NETWORK_EXIT"/>
- <image />
- <image />
- <image id="ID_TAB_HOME"/>
 </bitmap>
 
 <bitmap path="Skin10\Ticks.png" mask="CLR_NONE">
@@ -367,16 +365,19 @@
 <toolbars>
 
 <toolbar name="CMediaFrame">
- <control id="IDC_MEDIA_POSITION" width="308" height="24"/>
- <button id="ID_MEDIA_STOP"/>
+ <control id="IDC_MEDIA_POSITION" width="340" height="24"/>
  <button id="ID_MEDIA_PREVIOUS"/>
+ <button id="ID_MEDIA_STOP"/>
  <button id="ID_MEDIA_PLAY"/>
  <button id="ID_MEDIA_PAUSE" visible="false"/>
  <button id="ID_MEDIA_NEXT"/>
- <button id="ID_MEDIA_MUTE"/>
  <rightalign/>
  <!--control id="IDC_MEDIA_SPEED" width="70" height="24"-->
  <control id="IDC_MEDIA_VOLUME" width="70" height="24"/>
+ <separator/>
+ <button id="ID_MEDIA_MUTE"/>
+ <button id="ID_MEDIA_REPEAT"/>
+ <button id="ID_MEDIA_RANDOM"/>
  <separator/>
  <button id="ID_MEDIA_ZOOM"/>
  <button id="ID_MEDIA_SETTINGS"/>

@@ -19,9 +19,8 @@
 #include "StdAfx.h"
 #include "Plugin.h"
 #include "OptionsDlg.h"
-//#include "..\..\Envy\Strings.h"
+//#include "..\..\Envy\Strings.h" (in StdAfx.h)
 
-//#if (_WIN32_IE >= _WIN32_IE_IE70)
 #ifndef PROGDLG_NOCANCEL
 #define PROGDLG_NOCANCEL        0x00000040      // No cancel button (operation cannot be canceled, use sparingly)
 #define PROGDLG_MARQUEEPROGRESS 0x00000020      // Use marquee progress (comctl32 v6 required)
@@ -208,13 +207,11 @@ STDMETHODIMP CPlugin::RegisterCommands()
 
 	HRESULT hr = m_pUserInterface->RegisterCommand( CComBSTR( LoadString( IDS_COMMAND ) ),
 		LoadIcon( _AtlBaseModule.GetResourceInstance(), MAKEINTRESOURCE( IDI_ICON ) ), &m_nCmdCheck );
-	if ( SUCCEEDED( hr ) )
-	{
-		m_pUserInterface->AddString( m_nCmdCheck, CComBSTR( LoadString( IDS_COMMAND_TIP ) ) );
-		return S_OK;
-	}
+	if ( ! SUCCEEDED( hr ) )
+		return E_FAIL;
 
-	return E_FAIL;
+	m_pUserInterface->AddString( m_nCmdCheck, CComBSTR( LoadString( IDS_COMMAND_TIP ) ) );
+	return S_OK;
 }
 
 STDMETHODIMP CPlugin::InsertCommands()
@@ -222,14 +219,14 @@ STDMETHODIMP CPlugin::InsertCommands()
 	if ( ! m_pUserInterface )
 		return E_UNEXPECTED;
 
-	CString sMenuItem = LoadString( IDS_MENU_ITEM );
+	CString strMenuItem = LoadString( IDS_MENU_ITEM );
 
 	// Insert before "Copy URI..." item
 	{
 		UINT nDownloadID = 0;
 		m_pUserInterface->NameToID( CComBSTR( L"ID_DOWNLOADS_URI" ), &nDownloadID );
 		const LPCWSTR szDownloadMenu[] = {  L"CDownloadsWnd.Download", L"CDownloadsWnd.Completed", L"CDownloadsWnd.Seeding", NULL };
-		InsertCommand( sMenuItem, szDownloadMenu, nDownloadID );
+		InsertCommand( strMenuItem, szDownloadMenu, nDownloadID );
 	}
 
 	// Insert before "Copy URI..." item
@@ -237,15 +234,15 @@ STDMETHODIMP CPlugin::InsertCommands()
 		UINT nSearchID = 0;
 		m_pUserInterface->NameToID( CComBSTR( L"ID_SEARCH_URI" ), &nSearchID );
 		const LPCWSTR szSearchMenu[] = {  L"CSearchWnd", L"CBrowseHostWnd", L"CHitMonitorWnd", NULL };
-		InsertCommand( sMenuItem, szSearchMenu, nSearchID );
+		InsertCommand( strMenuItem, szSearchMenu, nSearchID );
 	}
 
 	// Insert before "Copy URI..." item
 	{
 		UINT nLibraryID = 0;
 		m_pUserInterface->NameToID( CComBSTR( L"ID_LIBRARY_URI" ), &nLibraryID );
-		const LPCWSTR szLibraryMenu[] = {  L"CLibraryFileView", NULL };		// Was L"CLibraryFileView.Physical", L"CLibraryFileView.Virtual"
-		InsertCommand( sMenuItem, szLibraryMenu, nLibraryID );
+		const LPCWSTR szLibraryMenu[] = {  L"CLibraryFileView", NULL };		// Was "CLibraryFileView.Physical", "CLibraryFileView.Virtual"
+		InsertCommand( strMenuItem, szLibraryMenu, nLibraryID );
 	}
 
 	return S_OK;
@@ -263,23 +260,22 @@ STDMETHODIMP CPlugin::OnUpdate(
 	if ( ! m_pUserInterface )
 		return E_UNEXPECTED;
 
-	if ( nCommandID == m_nCmdCheck )
-	{
-		*pbEnabled = TRI_FALSE;
-		*pbVisible = TRI_TRUE;
-		*pbChecked = TRI_UNKNOWN;
+	if ( nCommandID != m_nCmdCheck )
+		return S_FALSE;
 
-		CComPtr< IGenericView > pGenericView;
-		if ( SUCCEEDED( m_pUserInterface->get_ActiveView( &pGenericView ) ) && pGenericView )
-		{
-			LONG nCount = 0;
-			if ( SUCCEEDED( pGenericView->get_Count( &nCount ) ) && nCount == 1 )
-				*pbEnabled = TRI_TRUE;
-		}
-		return S_OK;
+	*pbEnabled = TRI_FALSE;
+	*pbVisible = TRI_TRUE;
+	*pbChecked = TRI_UNKNOWN;
+
+	CComPtr< IGenericView > pGenericView;
+	if ( SUCCEEDED( m_pUserInterface->get_ActiveView( &pGenericView ) ) && pGenericView )
+	{
+		LONG nCount = 0;
+		if ( SUCCEEDED( pGenericView->get_Count( &nCount ) ) && nCount == 1 )
+			*pbEnabled = TRI_TRUE;
 	}
 
-	return S_FALSE;
+	return S_OK;
 }
 
 STDMETHODIMP CPlugin::OnCommand(
@@ -293,65 +289,67 @@ STDMETHODIMP CPlugin::OnCommand(
 		return E_UNEXPECTED;
 	}
 
-	if ( nCommandID == m_nCmdCheck )
+	if ( nCommandID != m_nCmdCheck )
+		return S_FALSE;
+
+	CComPtr< IGenericView > pGenericView;
+	HRESULT hr = m_pUserInterface->get_ActiveView( &pGenericView );
+	if ( SUCCEEDED( hr ) && pGenericView )
 	{
-		CComPtr< IGenericView > pGenericView;
-		HRESULT hr = m_pUserInterface->get_ActiveView( &pGenericView );
-		if ( SUCCEEDED( hr ) && pGenericView )
+		LONG nCount = 0;
+		hr = pGenericView->get_Count( &nCount );
+		if ( SUCCEEDED( hr ) && nCount )
 		{
-			LONG nCount = 0;
-			hr = pGenericView->get_Count( &nCount );
-			if ( SUCCEEDED( hr ) && nCount )
+			for ( LONG i = 0; i < nCount; ++i )
 			{
-				for ( LONG i = 0; i < nCount; ++i )
+				CComVariant pItem;
+				hr = pGenericView->get_Item( CComVariant( i ), &pItem );
+				if ( FAILED( hr ) )
 				{
-					CComVariant pItem;
-					hr = pGenericView->get_Item( CComVariant( i ), &pItem );
-					if ( FAILED( hr ) )
-					{
-						ATLTRACE( "ShortURL : OnCommand() : Get item error: 0x%08x\n", hr );
-						break;
-					}
-
-					CComBSTR pMagnet;
-					if ( pItem.vt == VT_I4 )
-					{
-						CComPtr< ILibrary > pLibrary;
-						hr = m_pApplication->get_Library( &pLibrary );
-						if ( SUCCEEDED( hr ) && pLibrary )
-						{
-							CComPtr< ILibraryFile > pLibraryFile;
-							hr = pLibrary->FindByIndex( pItem.lVal, &pLibraryFile );
-							if ( SUCCEEDED( hr ) && pLibraryFile )
-								pLibraryFile->get_Magnet( &pMagnet );
-							else
-								ATLTRACE( "ShortURL : OnCommand() : Find file by index error: 0x%08x\n", hr );
-						}
-						else
-							ATLTRACE( "ShortURL : OnCommand() : Get Library error: 0x%08x\n", hr );
-					}
-					else if ( pItem.vt == VT_DISPATCH )
-					{
-						CComQIPtr< IEnvyFile > pEnvyFile( pItem.pdispVal );
-						if ( pEnvyFile )
-							pEnvyFile->get_Magnet( &pMagnet );
-					}
-					else
-						ATLTRACE( "ShortURL : OnCommand() : Unknown item data.\n" );
-
-					if ( pMagnet.Length() )
-						Request( pMagnet );
-					else
-						ATLTRACE( "ShortURL : OnCommand() : No compatible hashes found.\n" );
+					ATLTRACE( "ShortURL : OnCommand() : Get item error: 0x%08x\n", hr );
+					break;
 				}
-				return S_OK;
+
+				CComBSTR pMagnet;
+				if ( pItem.vt == VT_I4 )
+				{
+					CComPtr< ILibrary > pLibrary;
+					hr = m_pApplication->get_Library( &pLibrary );
+					if ( SUCCEEDED( hr ) && pLibrary )
+					{
+						CComPtr< ILibraryFile > pLibraryFile;
+						hr = pLibrary->FindByIndex( pItem.lVal, &pLibraryFile );
+						if ( SUCCEEDED( hr ) && pLibraryFile )
+							pLibraryFile->get_Magnet( &pMagnet );
+						else
+							ATLTRACE( "ShortURL : OnCommand() : Find file by index error: 0x%08x\n", hr );
+					}
+					else
+						ATLTRACE( "ShortURL : OnCommand() : Get Library error: 0x%08x\n", hr );
+				}
+				else if ( pItem.vt == VT_DISPATCH )
+				{
+					CComQIPtr< IEnvyFile > pEnvyFile( pItem.pdispVal );
+					if ( pEnvyFile )
+						pEnvyFile->get_Magnet( &pMagnet );
+				}
+				else
+					ATLTRACE( "ShortURL : OnCommand() : Unknown item data.\n" );
+
+				if ( pMagnet.Length() )
+					Request( pMagnet );
+				else
+					ATLTRACE( "ShortURL : OnCommand() : No compatible hashes found.\n" );
 			}
-			else
-				ATLTRACE( "ShortURL : OnCommand() : No files selected: 0x%08x\n", hr );
+
+			return S_OK;
 		}
 		else
-			ATLTRACE( "ShortURL : OnCommand() : Active view get error: 0x%08x\n", hr );
+			ATLTRACE( "ShortURL : OnCommand() : No files selected: 0x%08x\n", hr );
 	}
+	else
+		ATLTRACE( "ShortURL : OnCommand() : Active view get error: 0x%08x\n", hr );
+
 
 	return S_FALSE;
 }

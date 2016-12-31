@@ -210,7 +210,6 @@ CG1Packet* CQuerySearch::ToG1Packet(DWORD nTTL) const
 		CGGEPBlock pBlock;
 
 		// ToDo: GGEP_HEADER_QUERY_KEY_SUPPORT + query key
-
 		// ToDo: GGEP_HEADER_NO_PROXY
 
 		// GGEP_HEADER_META
@@ -432,7 +431,7 @@ CG2Packet* CQuerySearch::ToG2Packet(SOCKADDR_IN* pUDP, DWORD nKey) const
 	}
 
 	if ( m_bFirewall ) pPacket->WritePacket( G2_PACKET_NAT_DESC, 0 );
-	//if ( m_bAndG1 ) pPacket->WritePacket( G2_PACKET_G1, 0 );
+	//if ( m_bAndG1 )  pPacket->WritePacket( G2_PACKET_G1, 0 );
 
 	pPacket->WriteByte( 0 );
 	pPacket->Write( m_oGUID );
@@ -1007,7 +1006,8 @@ BOOL CQuerySearch::ReadG2Packet(CG2Packet* pPacket, const SOCKADDR_IN* pEndpoint
 				if ( m_pEndpoint.sin_addr.S_un.S_addr == 0 && pEndpoint != NULL )
 					m_pEndpoint = *pEndpoint;
 				m_bUDP = ! Network.IsFirewalledAddress( &m_pEndpoint.sin_addr );
-				if ( m_bUDP ) m_pEndpoint.sin_family = PF_INET;
+				if ( m_bUDP )
+					m_pEndpoint.sin_family = PF_INET;
 
 				if ( nLength >= 10 )
 				{
@@ -1026,9 +1026,9 @@ BOOL CQuerySearch::ReadG2Packet(CG2Packet* pPacket, const SOCKADDR_IN* pEndpoint
 
 				if ( str.IsEmpty() ) break;
 				else if ( str == L"URL" )	m_bWantURL = TRUE;
-				else if ( str == L"DN" )		m_bWantDN  = TRUE;
-				else if ( str == L"SZ" )		m_bWantDN  = TRUE;	// Hack
-				else if ( str == L"MD" )		m_bWantXML = TRUE;
+				else if ( str == L"DN" )	m_bWantDN  = TRUE;
+				else if ( str == L"SZ" )	m_bWantDN  = TRUE;	// Hack
+				else if ( str == L"MD" )	m_bWantXML = TRUE;
 				else if ( str == L"COM" )	m_bWantCOM = TRUE;
 				else if ( str == L"PFS" )	m_bWantPFS = TRUE;
 				else if ( str.GetLength() <= 4 )
@@ -1905,7 +1905,7 @@ void CQuerySearch::BuildWordList(bool bExpression, bool /*bLocal*/ )
 // nVersion History:
 // 8 - Added m_nMinSize & m_nMaxSize - Shareaza 2.2 (ryo-oh-ki)
 // 1000 - Added m_nProtocol for display
-// 1 - (Envy 1.0) 
+// 1 - (Envy 1.0)
 
 void CQuerySearch::Serialize(CArchive& ar)
 {

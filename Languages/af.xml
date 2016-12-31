@@ -4,7 +4,7 @@
 <!-- Envy Default Afrikaans Skin File -->
 <!-- Weergawe: 27 Oktober 2005 vir Shareaza 2.2.0.2 -->
 
-<!-- Translation based on default en.xml r10 -->
+<!-- Translation based on default en.xml r15 -->
 <!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -21,7 +21,7 @@
 	description="Envy Default Afrikaans Skin File"
 	link="http://getenvy.com"
 	email="jvdwalt(at)tuks.co.za"
-	version="1.0.0.0"
+	version="1.0"
 	type="Language"
 	language="af"
 	priority="60"

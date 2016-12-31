@@ -4,7 +4,7 @@
 
 set "version=1.0"
 set "commaver=1,0"
-set "internalver=1001"
+set "internalver=1"
 
 set "productvertext=			VALUE "ProductVersion","
 set "filevertext=			VALUE "FileVersion","

@@ -3,7 +3,7 @@
 
 <!-- Envy Korean Language Skin File -->
 
-<!-- Translation based on default en.xml r10 --> <!--Machine Translated!-->
+<!-- Translation based on default en.xml r15 --> <!--Machine Translated!-->
 <!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -19,7 +19,7 @@
 	description="Envy Korean Language Skin File"
 	link="http://getenvy.com"
 	email="Contact(at)GetEnvy.com"
-	version="1.0.0.0"
+	version="1.0"
 	type="Language"
 	language="ko"
 	priority="52"

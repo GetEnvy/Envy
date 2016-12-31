@@ -3,7 +3,7 @@
 
 <!-- Envy Default Estonian Skin File -->
 
-<!-- Translation based on default en.xml r10 --> <!-- (Shareaza 2.2.2.9) -->
+<!-- Translation based on default en.xml r15 --> <!-- (Shareaza 2.2.2.9) -->
 <!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -26,7 +26,7 @@
 	description="Envy Default Estonian Skin File"
 	link="http://getenvy.com"
 	email="janekk32(at)solo.delfi.ee"
-	version="1.0.0.0"
+	version="1.0"
 	type="Language"
 	language="ee"
 	priority="18"

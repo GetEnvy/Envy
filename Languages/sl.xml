@@ -3,7 +3,7 @@
 
 <!-- Envy Default Slovenian Skin File -->
 
-<!-- Translation based on default en.xml r10 --> <!-- (Shareaza 2.2.2.12) -->
+<!-- Translation based on default en.xml r15 --> <!-- (Shareaza 2.2.2.12) -->
 <!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -20,7 +20,7 @@
 	description="Envy Default Slovenian Skin File"
 	link="http://mcdragon.blogspot.com/"
 	email="mcdragon(at)email.si"
-	version="1.0.0.0"
+	version="1.0"
 	type="Language"
 	language="sl"
 	priority="26"

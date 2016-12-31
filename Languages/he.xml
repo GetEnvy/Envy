@@ -3,7 +3,7 @@
 
 <!-- Envy Default Hebrew Skin File -->
 
-<!-- Translation based on default en.xml r10 -->
+<!-- Translation based on default en.xml r15 -->
 <!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -25,7 +25,7 @@ gap i newline
 	description="Envy Default Hebrew Skin File"
 	link="http://getenvy.com"
 	email="peer_l_(at)hotmail, omega09(at)sourceforge.net"
-	version="1.0.0.0"
+	version="1.0"
 	type="Language"
 	language="he"
 	dir="rtl"

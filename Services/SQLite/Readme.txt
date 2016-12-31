@@ -30,9 +30,16 @@ Comment Removal:
 
 \*\* Synopsis: [^\r]+\r\n
 
+([^*])\r\n *\*\* +([a-zA-Z0-9) ]{1,11}\.\)?)$
+$1 $2
+
 
 
 File Removal:
+
+End of main.c \*.+\z
+End of main.c ***/
+
 
 ^/\*+ Begin file (FILENAME\.c) \*+\/\r\n.+^/\*+ End of FILENAME\.c \*+\/\r\n
 /************** Removed file $1 *****************************************/
@@ -50,17 +57,10 @@ fts3_expr.c
 fts3_hash.c
 fts3_porter.c
 fts3_tokenizer.c
+fts3_unicode2.c
 vxworks.h
 os_unix.c
 mutex_unix.c
-
-notify.c
-fts3_unicode2.c
 rtree.c
-icu.c
-fts3_icu.c
-sqlite3rbu.c
 sqlite3session.c
 sqlite3session.h
-dbstat.c
-json1.c

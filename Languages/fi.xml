@@ -3,7 +3,7 @@
 
 <!-- Envy Default Finnish Skin File -->
 
-<!-- Translation based on default en.xml r10 --> <!-- (Shareaza 2.1.3.7) -->
+<!-- Translation based on default en.xml r15 --> <!-- (Shareaza 2.1.3.7) -->
 <!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -20,7 +20,7 @@
 	description="Envy Default Finnish Skin File"
 	link="http://getenvy.com"
 	email=""
-	version="1.0.0.0"
+	version="1.0"
 	type="Language"
 	language="fi"
 	priority="38"

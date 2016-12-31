@@ -3,7 +3,7 @@
 
 <!-- Envy Default German Skin File -->
 
-<!-- Translation based on default en.xml r10 -->
+<!-- Translation based on default en.xml r15 -->
 <!-- http://svn.code.sf.net/p/envy/code/trunk/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -20,7 +20,7 @@
 	description="Envy Default German Skin File"
 	link="http://getenvy.com"
 	email="zero9999(at)gmail.com"
-	version="1.0.0.0"
+	version="1.0"
 	type="Language"
 	language="de"
 	priority="6"
@@ -605,6 +605,7 @@
 			</menu>
 			<menu text="_Hilfe">
 				<item id="ID_HELP_FAQ" text="Envy-_FAQ"/>
+				<item id="ID_HELP_VERSION_CHECK" text="Nach _Update suchen"/>
 				<item id="ID_HELP_TEST" text="_Verbindungstest"/>
 				<separator/>
 				<menu text="_Anleitungen">
@@ -617,12 +618,9 @@
 				<menu text="_Websites">
 					<item id="ID_HELP_FORUMS" text="Envy-_Forums"/>
 					<item id="ID_HELP_FORUMS_LOCAL" text="_Deutsch Forum"/>
-					<!--separator-->
 					<!--item id="ID_HELP_WEB_1" text="File Sharing Portal"-->
+					<!--item id="ID_HELP_DONATE" text="_An das Envy spenden"-->
 				</menu>
-				<!--separator-->
-				<!--item id="ID_HELP_VERSION_CHECK" text="Nach _Update suchen"-->
-				<!--item id="ID_HELP_DONATE" text="_An das Envy spenden"-->
 				<separator/>
 				<item id="ID_HELP_HOMEPAGE" text="_Envy's Homepage"/>
 				<separator/>
@@ -710,6 +708,7 @@
 		</menu>
 		<menu text="_Hilfe">
 			<item id="ID_HELP_FAQ" text="Envy-_FAQ"/>
+			<item id="ID_HELP_VERSION_CHECK" text="Nach _Update suchen"/>
 			<item id="ID_HELP_TEST" text="_Verbindungstest"/>
 			<separator/>
 			<menu text="_Anleitungen">
@@ -723,12 +722,9 @@
 				<item id="ID_HELP_HOMEPAGE" text="_Envy's Homepage"/>
 				<item id="ID_HELP_FORUMS" text="Envy-_Forums"/>
 				<item id="ID_HELP_FORUMS_LOCAL" text="_Deutsch Forum"/>
-				<!--separator-->
+				<!--item id="ID_HELP_DONATE" text="_An das Envy spenden"-->
 				<!--item id="ID_HELP_WEB_1" text="File Sharing Portal"-->
 			</menu>
-			<!--separator-->
-			<!--item id="ID_HELP_VERSION_CHECK" text="Nach _Update suchen"-->
-			<!--item id="ID_HELP_DONATE" text="_An das Envy spenden"-->
 			<separator/>
 			<item id="ID_HELP_ABOUT" text="_Über Envy..."/>
 		</menu>
@@ -782,6 +778,7 @@
 		</menu>
 		<menu text="_Hilfe">
 			<item id="ID_HELP_FAQ" text="Envy-_FAQ"/>
+			<item id="ID_HELP_VERSION_CHECK" text="Auf neuere _Version prüfen"/>
 			<item id="ID_HELP_TEST" text="Verbindungstest"/>
 			<separator/>
 			<menu text="_Anleitungen">
@@ -795,12 +792,9 @@
 				<item id="ID_HELP_HOMEPAGE" text="_Envy's Homepage"/>
 				<item id="ID_HELP_FORUMS" text="Envy-_Forums"/>
 				<item id="ID_HELP_FORUMS_LOCAL" text="_Deutsch Forum"/>
-				<!--separator-->
+				<!--item id="ID_HELP_DONATE" text="_Spenden an das Envy"-->
 				<!--item id="ID_HELP_WEB_1" text="File Sharing Portal"-->
 			</menu>
-			<!--separator-->
-			<!--item id="ID_HELP_VERSION_CHECK" text="Auf neuere _Version prüfen"-->
-			<!--item id="ID_HELP_DONATE" text="_Spenden an das Envy"-->
 			<separator/>
 			<item id="ID_HELP_ABOUT" text="_Über Envy..."/>
 		</menu>
@@ -877,6 +871,7 @@
 		</menu>
 		<menu text="_Hilfe">
 			<item id="ID_HELP_FAQ" text="Envy-_FAQ"/>
+			<item id="ID_HELP_VERSION_CHECK" text="Nach _Update suchen"/>
 			<item id="ID_HELP_TEST" text="_Verbindungstest"/>
 			<separator/>
 			<menu text="_Anleitungen">
@@ -890,12 +885,9 @@
 				<item id="ID_HELP_HOMEPAGE" text="_Envy's Homepage"/>
 				<item id="ID_HELP_FORUMS" text="Envy-_Forum"/>
 				<item id="ID_HELP_FORUMS_LOCAL" text="_Deutsch Forum"/>
-				<!--separator-->
+				<!--item id="ID_HELP_DONATE" text="_An das Envy spenden"-->
 				<!--item id="ID_HELP_WEB_1" text="File Sharing Portal"-->
 			</menu>
-			<!--separator-->
-			<!--item id="ID_HELP_VERSION_CHECK" text="Nach _Update suchen"-->
-			<!--item id="ID_HELP_DONATE" text="_An das Envy spenden"-->
 			<separator/>
 			<item id="ID_HELP_ABOUT" text="_Über Envy..."/>
 		</menu>
