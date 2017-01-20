@@ -3,7 +3,7 @@
 
 <!-- Envy Default Slovenian Skin File -->
 
-<!-- Translation based on default en.xml r15 --> <!-- (Shareaza 2.2.2.12) -->
+<!-- Translation based on default en.xml r16 --> <!-- (Shareaza 2.2.2.12) -->
 <!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -2090,7 +2090,7 @@
 		ko je prenašanje (download) neomejeno. Konfiguracija te vrste vam bo omogočala najbolj učinkovito delovanje.</text>
 	</document>
 	<!-- Search help documents -->
-	<document name="SearchHelp.BadSearch1">
+	<document name="SearchHelp.BadSearch">
 		<text format="b">Izrazite iskalni niz na drugačen način</text>
 		<newline gap="8"/>
 		<text>Iskalni niz ni pravilno izražen (formuliran) in verejtno ne bo deloval pravilno.
@@ -2098,9 +2098,10 @@
 		tip datoteke (file type). Iskalni niz bi se, prav tako, ne omejeval izključno na številke,
 		negativne izraze ali pre-splošne besede.</text>
 		<newline gap="8"/>
-		<text>Večina odjemalcev na omrežju ne bo dovoljevala iskanje po npr. vseh datotekah MP3, ker je
+		<text>Večina odjemalcev na omrežju ne bo dovoljevala iskanje po npr. vseh datotekah audio, ker je
 		to enostavno presplošno in bi iskanje vrnilo preveč rezultatov.</text>
 	</document>
+	<!--
 	<document name="SearchHelp.BadSearch2">
 		<text format="b">Izrazite iskalni niz na drugačen način</text>
 		<newline gap="8"/>
@@ -2114,8 +2115,7 @@
 	<document name="SearchHelp.BadSearch3">
 		<text format="b">Izrazite iskalni niz na drugačen način</text>
 		<newline gap="8"/>
-		<text>Iskanje vsebuje bodisi samo navadne datotečne podaljške ali besede, po katerih iskanje
-		ni mogoče.</text>
+		<text>Iskanje vsebuje bodisi samo navadne datotečne podaljške ali besede, po katerih iskanje ni mogoče.</text>
 		<newline gap="8"/>
 		<text>Če imate težave pri iskanju, imejte v mislih, da je iskanje tu podobno, kot iskanje na spletu.
 		Priporoča se uporaba specifičnih in edinstvenih izrazov in ključnih besed.</text>
@@ -2125,6 +2125,7 @@
 		<newline gap="8"/>
 		<text>Dodatna pomoč je dosegljiva na spletni strani Envy.</text>
 	</document>
+	-->
 	<document name="SearchHelp.AdultSearch">
 		<text format="b">Iskanje se ne more začeti</text>
 		<newline gap="8"/>
@@ -2151,7 +2152,7 @@
 		<newline gap="8"/>
 		<text>Mape, kot so Windows ali Program Files ipd. ponavadi nimajo datotek, ki bi bile primerne
 		za deljenje drugim. Datoteke, ki bi bile lahko drugim zanimive bi se nahajale v pod mapah</text><text format="i"> znotraj</text>
-		<text> teh map. Priporočamo vam, da raje delite te.</text>
+		<text>teh map. Priporočamo vam, da raje delite te.</text>
 		<newline gap="8"/>
 		<text>Prav tako ne priporočamo deljenje datotek v mapi 'incomplete' saj lahko postopek zgoščevanja (hashing)
 		datotek v prenosu močno vpliva na učinkovitost delovanja Envy.</text>

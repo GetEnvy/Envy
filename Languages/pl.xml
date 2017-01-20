@@ -3,7 +3,7 @@
 
 <!-- Envy Default Polish Skin File -->
 
-<!-- Translation based on default en.xml r15 -->
+<!-- Translation based on default en.xml r16 -->
 <!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -1836,7 +1836,7 @@
 		<text>&#160;Popularne ustawienia interfejsu użytkownika takie jak zachowanie po zminimalizowaniu, format liczb, podpowiedzi, etc.</text>
 		<newline gap="10"/>
 		<link target="page:CLibrarySettingsPage" format="b">Zasoby:</link>
-		<text>&#160;Prezentacja i zarządzanie Zasobami. </text>
+		<text>&#160;Prezentacja i zarządzanie Zasobami.</text>
 		<newline gap="10"/>
 		<link target="page:CMediaSettingsPage" format="b">Odtwarzacz:</link>
 		<text>&#160;Kiedy i gdzie używać wbudowanego Odtwarzacza.</text>
@@ -2162,7 +2162,7 @@
 		najszybsze możliwe prędkości pobierań.</text>
 	</document>
 	<!-- Search help documents -->
-	<document name="SearchHelp.BadSearch1">
+	<document name="SearchHelp.BadSearch">
 		<text format="b">Wpisz ponownie frazę do wyszukania</text>
 		<newline gap="8"/>
 		<text>To wyszukiwanie jest źle sformułowane i może nie spełnić oczekiwań.
@@ -2170,9 +2170,10 @@
 		(typ pliku). Wyszukiwania nie powinny być ograniczone do liczb lub niechcianych fraz
 		i powinieneś omijać zbyt ogólne zapytania.</text>
 		<newline gap="8"/>
-		<text>Większość klientów w sieci będzie ignorować wyszukiwania dla wszystkich plików MP3,
+		<text>Większość klientów w sieci będzie ignorować wyszukiwania dla wszystkich plików audio,
 		Ponieważ są zbyt ogólne i generują za dużo wyników.</text>
 	</document>
+	<!--
 	<document name="SearchHelp.BadSearch2">
 		<text format="b">Wpisz ponownie frazę do wyszukania</text>
 		<newline gap="8"/>
@@ -2196,6 +2197,7 @@
 		<newline gap="8"/>
 		<text>Dalszą pomoc można uzyskać na stronie Envy.</text>
 	</document>
+	-->
 	<document name="SearchHelp.AdultSearch">
 		<text format="b">To wyszukiwanie nie może zostać rozpoczęte</text>
 		<newline gap="8"/>

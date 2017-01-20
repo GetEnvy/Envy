@@ -3,7 +3,7 @@
 
 <!-- Envy Default Russian Skin File -->
 
-<!-- Translation based on default en.xml r15 -->
+<!-- Translation based on default en.xml r16 -->
 <!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -2279,7 +2279,7 @@
 		для загрузок.</text>
 	</document>
 	<!-- Search help documents -->
-	<document name="SearchHelp.BadSearch1">
+	<document name="SearchHelp.BadSearch">
 		<text format="b">Перефразируйте Ваш запрос</text>
 		<newline gap="8"/>
 		<text>Ваш запрос плохо сформатирован, и он может работать неправильно.
@@ -2287,9 +2287,10 @@
 		(тип файла). Кроме того, во фразах не должны быть только цифры или отрицания (с минусом перед словами),
 		а также Вы должны избегать очень неконкретных запросов.</text>
 		<newline gap="8"/>
-		<text> Многие клиенты в сети будут игнорировать такие запросы, как например, запрос на
-		все MP3 файлы, так как он не достаточно конкретный.</text>
+		<text>Многие клиенты в сети будут игнорировать такие запросы, как например, запрос на
+		все audio файлы, так как он не достаточно конкретный.</text>
 	</document>
+	<!--
 	<document name="SearchHelp.BadSearch2">
 		<text format="b">Перефразируйте Ваш запрос</text>
 		<newline gap="8"/>
@@ -2312,6 +2313,7 @@
 		<newline gap="8"/>
 		<text>Подробную информацию Вы найдете на сайте Envy.</text>
 	</document>
+	-->
 	<document name="SearchHelp.AdultSearch">
 		<text format="b">Не могу начать этот поиск</text>
 		<newline gap="8"/>

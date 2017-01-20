@@ -3,7 +3,7 @@
 
 <!-- Envy Korean Language Skin File -->
 
-<!-- Translation based on default en.xml r15 --> <!--Machine Translated!-->
+<!-- Translation based on default en.xml r16 --> <!--Machine Translated!-->
 <!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -1915,7 +1915,19 @@
 		<newline gap="16" indent="0"/>
 	</document>
 	<!-- Download help documents -->
-	<!-- MISSING -->
+	<!-- Search help documents -->
+	<document name="SearchHelp.BadSearch">
+		<text format="b">검색을 다시 시도하십시오</text>
+		<newline gap="8"/>
+		<text>This search is overly general or poorly formatted, and may be rejected.</text>
+		<newline/>
+		<text>Try using additional or more specific search terms. Note common short terms such as
+		file types cannot be used alone, and any punctuation is ignored.</text>
+		<newline gap="8"/>
+		<text>Most clients on the network will skip a non-specific request that could generate
+		too many results, like just a file type. See the GetEnvy.com web site for help.</text>
+	</document>
+	<!-- Missing documents -->
 </documents>
 <!-- Localized Command Tip Text."Message" displayed in status bar, "Tip" shown in tooltip -->
 <!-- No CommandTips -->
@@ -2407,7 +2419,8 @@
 		<control/>
 		<control/>
 		<control text="정보:"/>
-		<control text="Remote Access allows you to leave Envy running on your PC, and control it remotely using any web browser. {n}You must be able to accept incoming connections.  (Port-forwarding)"/>
+		<control text="Remote Access allows you to leave Envy running on your PC, and control it remotely using any web browser. {n}You must be able to accept incoming connections.  (Port-forwarding)"/>
+
 	</dialog>
 	<dialog name="CWebSettingsPage" cookie="BuStBuBuBuBuBuBuBuBuCoBuBuSt" caption="웹 링크">
 		<control text="Peer to Peer Link Handling:"/>

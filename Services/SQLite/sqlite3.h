@@ -1,7 +1,7 @@
 /*
-** sqlite3.h  (3.15.0) (Oct.2016)
+** sqlite3.h  (3.16.0) (Jan.2017)
 **
-** This file is part of Envy (getenvy.com) © 2016
+** This file is part of Envy (getenvy.com) © 2016-2017
 ** The original author disclaimed copyright to this source code.
 */
 
@@ -97,9 +97,9 @@ extern "C" {
 ** Compile-Time Library Version Numbers
 */
 
-#define SQLITE_VERSION        "3.15.0"
-#define SQLITE_VERSION_NUMBER 3015000
-#define SQLITE_SOURCE_ID      "2016-10-14 10:20:30 707875582fcba352b4906a595ad89198d84711d8"
+#define SQLITE_VERSION        "3.16.0"
+#define SQLITE_VERSION_NUMBER 3016000
+#define SQLITE_SOURCE_ID      "2017-01-02 11:57:58 04ac0b75b1716541b2b97704f4809cb7ef19cccf"
 
 /*
 ** Run-Time Library Version Numbers
@@ -415,6 +415,7 @@ struct sqlite3_io_methods {
 #define SQLITE_FCNTL_VFS_POINTER            27
 #define SQLITE_FCNTL_JOURNAL_POINTER        28
 #define SQLITE_FCNTL_WIN32_GET_HANDLE       29
+#define SQLITE_FCNTL_PDB                    30
 
 /* deprecated names */
 #define SQLITE_GET_LOCKPROXYFILE      SQLITE_FCNTL_GET_LOCKPROXYFILE
@@ -581,6 +582,7 @@ struct sqlite3_mem_methods {
 #define SQLITE_DBCONFIG_ENABLE_TRIGGER        1003 /* int int* */
 #define SQLITE_DBCONFIG_ENABLE_FTS3_TOKENIZER 1004 /* int int* */
 #define SQLITE_DBCONFIG_ENABLE_LOAD_EXTENSION 1005 /* int int* */
+#define SQLITE_DBCONFIG_NO_CKPT_ON_CLOSE      1006 /* int int* */
 
 
 /*
@@ -1998,7 +2000,8 @@ SQLITE_API int sqlite3_db_cacheflush(sqlite3*);
 ** The pre-update hook.
 */
 
-SQLITE_API SQLITE_EXPERIMENTAL void *sqlite3_preupdate_hook(
+#if defined(SQLITE_ENABLE_PREUPDATE_HOOK)
+SQLITE_API void *sqlite3_preupdate_hook(
   sqlite3 *db,
   void(*xPreUpdate)(
     void *pCtx,                   /* Copy of third arg to preupdate_hook() */
@@ -2011,10 +2014,11 @@ SQLITE_API SQLITE_EXPERIMENTAL void *sqlite3_preupdate_hook(
   ),
   void*
 );
-SQLITE_API SQLITE_EXPERIMENTAL int sqlite3_preupdate_old(sqlite3 *, int, sqlite3_value **);
-SQLITE_API SQLITE_EXPERIMENTAL int sqlite3_preupdate_count(sqlite3 *);
-SQLITE_API SQLITE_EXPERIMENTAL int sqlite3_preupdate_depth(sqlite3 *);
-SQLITE_API SQLITE_EXPERIMENTAL int sqlite3_preupdate_new(sqlite3 *, int, sqlite3_value **);
+SQLITE_API int sqlite3_preupdate_old(sqlite3 *, int, sqlite3_value **);
+SQLITE_API int sqlite3_preupdate_count(sqlite3 *);
+SQLITE_API int sqlite3_preupdate_depth(sqlite3 *);
+SQLITE_API int sqlite3_preupdate_new(sqlite3 *, int, sqlite3_value **);
+#endif
 
 /*
 ** Low-level system error code
@@ -2026,7 +2030,9 @@ SQLITE_API int sqlite3_system_errno(sqlite3*);
 ** Database Snapshot
 */
 
-typedef struct sqlite3_snapshot sqlite3_snapshot;
+typedef struct sqlite3_snapshot {
+  unsigned char hidden[48];
+} sqlite3_snapshot;
 
 /*
 ** Record A Database Snapshot
@@ -2062,6 +2068,12 @@ SQLITE_API SQLITE_EXPERIMENTAL int sqlite3_snapshot_cmp(
   sqlite3_snapshot *p1,
   sqlite3_snapshot *p2
 );
+
+/*
+** Recover snapshots from a wal file
+*/
+
+//SQLITE_API SQLITE_EXPERIMENTAL int sqlite3_snapshot_recover(sqlite3 *db, const char *zDb);
 
 /*
 ** Undo the hack that converts floating point types to integer for

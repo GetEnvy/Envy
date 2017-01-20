@@ -3,7 +3,7 @@
 
 <!-- Envy Default Croatian Skin File -->
 
-<!-- Translation based on default en.xml r15 --> <!-- (Shareaza 2.2.0.2) -->
+<!-- Translation based on default en.xml r16 --> <!-- (Shareaza 2.2.0.2) -->
 <!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -2091,7 +2091,7 @@
 		downloads that are available.</text>
 	</document>
 	<!-- Search help documents -->
-	<document name="SearchHelp.BadSearch1">
+	<document name="SearchHelp.BadSearch">
 		<text format="b">Molim da promjenite frazu za traženje</text>
 		<newline gap="8"/>
 		<text>Loše ste formulirali traženje, i možda neće dati željene rezultate.
@@ -2099,9 +2099,10 @@
 		i vrsta datoteke. Nadalje, potraga nebi smjela sadržavati samo brojeve ili previše
 		opčenite izraze.</text>
 		<newline gap="8"/>
-		<text>Večina klijenata na mreži ignorira potragu za npr. svim mp3-cama,
+		<text>Večina klijenata na mreži ignorira potragu za npr. svim audio-cama,
 		iz jednostavnog razloga što nije dovoljno određena, a i ima previše rezultata.</text>
 	</document>
+	<!--
 	<document name="SearchHelp.BadSearch2">
 		<text format="b">Molim da promjenite frazu za traženje</text>
 		<newline gap="8"/>
@@ -2125,6 +2126,7 @@
 		<newline gap="8"/>
 		<text>Further help is available on the Envy web site.</text>
 	</document>
+	-->
 	<document name="SearchHelp.AdultSearch">
 		<text format="b">Ovu potragu ne mogu početi</text>
 		<newline gap="8"/>
@@ -2132,8 +2134,8 @@
 		content, and this has been turned off in the settings. You should either re-phrase the
 		search, or disable the filter.</text>
 		<newline gap="8"/>
-		<text>To disable the filter, go into Tools &gt; Settings &gt; General and un-check the
-		adult content filter.</text>
+		<text>To disable the filter, go into Tools &gt; Settings &gt; General
+		and un-check the adult content filter.</text>
 	</document>
 	<!-- Share help documents -->
 	<document name="ShareHelp.AlreadyShared">
@@ -2152,7 +2154,7 @@
 		<text>Mape kao Windows, Program Files, i slično obično ne sadrže
 		datoteke pogodne za djeljenje. Zanimljive datoteke mogu biti
 		pod-mape smještene</text><text format="i"> unutar</text>
-		<text> ovih mapa. Molimo da djelite te mape.</text>
+		<text>ovih mapa. Molimo da djelite te mape.</text>
 		<newline gap="8"/>
 		<text>Envy 'incomplete' mapa nebi smjela biti djeljena kroz kolekciju,
 		jer provjeravanje i dodavanje sadržaja koji se još uvijek skida može značajno usporiti rad.</text>

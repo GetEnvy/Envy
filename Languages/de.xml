@@ -3,7 +3,7 @@
 
 <!-- Envy Default German Skin File -->
 
-<!-- Translation based on default en.xml r15 -->
+<!-- Translation based on default en.xml r16 -->
 <!-- http://svn.code.sf.net/p/envy/code/trunk/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -2272,7 +2272,7 @@
 		Er wurde entwickelt, um übermäßige, ungewollte Suchergebnisse herauszufiltern und nicht als eine
 		100%ig sichere Blockade.</text>
 		<newline gap="8"/>
-		<text> Wenn Kinder das Internet nutzen (inklusive P2P), sollte dies immer von den Eltern überwacht werden.</text>
+		<text>Wenn Kinder das Internet nutzen (inklusive P2P), sollte dies immer von den Eltern überwacht werden.</text>
 	</document>
 	<document name="GeneralHelp.BadTorrentEncoding">
 		<text format="b">Diese .torrent-Datei scheint einen Codierungsfehler zu haben</text>
@@ -2311,19 +2311,19 @@
 		Downloadgeschwindigkeit.</text>
 	</document>
 	<!-- Search help documents -->
-	<document name="SearchHelp.BadSearch1">
-		<text format="b">Bitte formulieren Sie die Suche neu!</text>
+	<document name="SearchHelp.BadSearch">
+		<text format="b">Bitte formulieren Sie die Suche neu</text>
 		<newline gap="8"/>
 		<text>Die Suche ist schlecht formuliert und wird nicht richtig funktionieren.
 		Die Suche sollte, falls möglich, mehrere Wörter und ein Schema beinhalten.
-		So sollten sie nicht nur aus
-		Zahlen bestehen oder zu Allgemein sein.</text>
+		So sollten sie nicht nur aus Zahlen bestehen oder zu Allgemein sein.</text>
 		<newline gap="8"/>
 		<text>Die meisten Clients im Netzwerk
-		ignorieren zum Beispiel die Suche nach allen MP3-Dateien.</text>
+		ignorieren zum Beispiel die Suche nach allen Audio-Dateien.</text>
 	</document>
+	<!--
 	<document name="SearchHelp.BadSearch2">
-		<text format="b">Bitte formulieren Sie die Suche neu!</text>
+		<text format="b">Bitte formulieren Sie die Suche neu</text>
 		<newline gap="8"/>
 		<text>Diese Suche enthält nicht genügend Begriffe um ordnungsgemäß zu funktionieren.
 		Die Suche benötigt eine Mindestanzahl an gültigen Buchstaben, um gestartet werden zu können</text>
@@ -2333,7 +2333,7 @@
 		Punktuation und Joker werden bei der Suche nicht beachtet, sondern nur der Text.</text>
 	</document>
 	<document name="SearchHelp.BadSearch3">
-		<text format="b">Bitte formulieren Sie die Suche neu!</text>
+		<text format="b">Bitte formulieren Sie die Suche neu</text>
 		<newline gap="8"/>
 		<text>Diese Suche scheint nur Dateierweiterungen bzw. Wörter, nach denen
 		nicht gesucht werden kann, zu enthalten.</text>
@@ -2347,6 +2347,7 @@
 		<newline gap="8"/>
 		<text>Weitere Informationen finden Sie auf der Envy Webseite.</text>
 	</document>
+	-->
 	<document name="SearchHelp.AdultSearch">
 		<text format="b">Diese Suche kann nicht gestartet werden</text>
 		<newline gap="8"/>
@@ -2374,7 +2375,7 @@
 		<text>Ordner, wie das Windowsverzeichnis, Programme und ähnliche Ordner
 		enthalten normalerweise keine zur Freigabe geeigneten Dateien. Interessante Dateien befinden sich stets
 		</text><text format="i"> innerhalb </text>
-		<text> dieser Ordner. Bitte geben Sie diese Ordner frei.</text>
+		<text>dieser Ordner. Bitte geben Sie diese Ordner frei.</text>
 		<newline gap="8"/>
 		<text>Der Envy "incomplete"-Ordner sollte auch nicht über die Bibliothek freigegeben werden.
 		Der Versuch, Dateien zu hashen, die gerade heruntergeladen werden, wirkt sich negativ auf die Geschwindigkeit aus.</text>

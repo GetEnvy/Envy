@@ -1362,7 +1362,7 @@ BOOL CQuerySearch::CheckValid(bool bExpression)
 
 	if ( ! m_oWords.empty() )
 	{
-		DWORD nValidWords = 0;
+		BOOL bValidWords = FALSE;
 		DWORD nCommonWords = 0;
 
 		// Check we aren't just searching for broad terms - set counters, etc
@@ -1418,10 +1418,14 @@ BOOL CQuerySearch::CheckValid(bool bExpression)
 			if ( nValidCharacters < 2 )
 				continue;
 
-			if ( nValidCharacters > 8 )
+			if ( bValidWords )
+			{
+				;	// Do nothing, skip checks below
+			}
+			else if ( nValidCharacters >= 8 )
 			{
 				// Lengthy assume valid keyword
-				nValidWords++;
+				bValidWords = TRUE;
 			}
 			else if ( nValidCharacters == 2 )
 			{
@@ -1431,16 +1435,18 @@ BOOL CQuerySearch::CheckValid(bool bExpression)
 			else
 			{
 				// Set additional common keyword list (non-filetypes)
-				static const CString strCommom = L"dvd xxx sex fuck porn";
+				static const CString strCommom = L"and the dvd xxx sex fuck porn";
 
 				const CString strWord = CString( pWord->first, (int)pWord->second ).MakeLower();
 
-				if ( SchemaCache.IsFilter( strWord ) || strCommom.Find( strWord ) >= 0 )
-					nCommonWords++;		// Common term
+				if ( IsText( strWord, _P( L"envy" ) ) )		// CLIENT_NAME, gets caught in filetype filter
+					bValidWords = TRUE;
+				else if ( SchemaCache.IsFilter( strWord ) || strCommom.Find( strWord ) >= 0 )
+					nCommonWords++;			// Common term
 				else if ( nValidCharacters == 3 )
-					nCommonWords += 2;	// Count short valid keywords
+					nCommonWords += 2;		// Count short valid keywords
 				else
-					nValidWords++;		// Count any other as valid keywords
+					bValidWords = TRUE;		// Accept any other as valid keywords
 			}
 
 			DWORD nHash = CQueryHashTable::HashWord( pWord->first, 0, pWord->second, 32 );
@@ -1460,7 +1466,7 @@ BOOL CQuerySearch::CheckValid(bool bExpression)
 			//if ( std::find_if( common, common + commonWords, FindStr( *pWord ) ) != common + commonWords ) nCommonWords++;
 		}
 
-		if ( nValidWords || nCommonWords > 2 || ( m_pSchema && nCommonWords > 1 ) )
+		if ( bValidWords || nCommonWords > 2 || ( m_pSchema && nCommonWords > 1 ) )
 			return TRUE;
 	}
 
@@ -2009,19 +2015,22 @@ void CQuerySearch::PrepareCheck()
 
 void CQuerySearch::SearchHelp()
 {
-	static int nLastSearchHelp = 0;
-	switch ( ++nLastSearchHelp )
-	{
-	case 1:
-		CHelpDlg::Show( L"SearchHelp.BadSearch1" );
-		break;
-	case 2:
-		CHelpDlg::Show( L"SearchHelp.BadSearch2" );
-		break;
-	default:
-		CHelpDlg::Show( L"SearchHelp.BadSearch3" );
-		nLastSearchHelp = 0;
-	}
+	CHelpDlg::Show( L"SearchHelp.BadSearch" );
+
+	// Obsolete legacy multiple-messages
+//	static int nLastSearchHelp = 0;
+//	switch ( ++nLastSearchHelp )
+//	{
+//	case 1:
+//		CHelpDlg::Show( L"SearchHelp.BadSearch1" );
+//		break;
+//	case 2:
+//		CHelpDlg::Show( L"SearchHelp.BadSearch2" );
+//		break;
+//	default:
+//		CHelpDlg::Show( L"SearchHelp.BadSearch3" );
+//		nLastSearchHelp = 0;
+//	}
 }
 
 CString CQuerySearch::BuildRegExp(const CString& strPattern) const

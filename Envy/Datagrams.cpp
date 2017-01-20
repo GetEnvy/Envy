@@ -663,6 +663,24 @@ BOOL CDatagrams::OnDatagram(const SOCKADDR_IN* pHost, const BYTE* pBuffer, DWORD
 {
 	BOOL bHandled = FALSE;
 
+	// Detect BitTorrent packets (bencoded)
+	if ( nLength > 16 &&
+		 pBuffer[ 0 ] == 'd' &&
+		 pBuffer[ nLength - 1 ] == 'e'  )
+	{
+		if ( CBTPacket* pPacket = CBTPacket::New( BT_PACKET_EXTENSION, BT_EXTENSION_NOP, pBuffer, nLength ) )
+		{
+			m_nInPackets++;
+
+			bHandled = pPacket->OnPacket( pHost );
+
+			pPacket->Release();
+
+			if ( bHandled )
+				return TRUE;
+		}
+	}
+
 	// Detect Gnutella 1 packets
 	if ( nLength >= sizeof( GNUTELLAPACKET ) )
 	{
@@ -725,14 +743,14 @@ BOOL CDatagrams::OnDatagram(const SOCKADDR_IN* pHost, const BYTE* pBuffer, DWORD
 				try
 				{
 					m_nInPackets++;
-
 					bHandled = pPacket->OnPacket( pHost );
 				}
 				catch ( CException* pException )
 				{
 					pException->Delete();
-					DEBUG_ONLY( pPacket->Debug( L"Malformed packet." ) );
+					DEBUG_ONLY( pPacket->Debug( L"Malformed packet (ED2K)." ) );
 				}
+
 				pPacket->Release();
 
 				if ( bHandled )
@@ -748,22 +766,6 @@ BOOL CDatagrams::OnDatagram(const SOCKADDR_IN* pHost, const BYTE* pBuffer, DWORD
 		 pBuffer[ nLength - 1 ] == '|' )
 	{
 		if ( CDCPacket* pPacket = CDCPacket::New( pBuffer, nLength ) )
-		{
-			m_nInPackets++;
-
-			bHandled = pPacket->OnPacket( pHost );
-
-			pPacket->Release();
-
-			if ( bHandled )
-				return TRUE;
-		}
-	}
-
-	// Detect BitTorrent packets
-	if ( nLength > 16 )
-	{
-		if ( CBTPacket* pPacket = CBTPacket::New( BT_PACKET_EXTENSION, BT_EXTENSION_NOP, pBuffer, nLength ) )
 		{
 			m_nInPackets++;
 
@@ -956,8 +958,23 @@ BOOL CDatagrams::OnAcknowledgeSGP(const SOCKADDR_IN* pHost, const SGP_HEADER* pH
 
 	CDatagramOut** pHash = m_pOutputHash + ( nHash & DATAGRAM_HASH_MASK );
 
+	UINT nLimit = 0;
+	CDatagramOut* pDGLast = NULL;
 	for ( CDatagramOut* pDG = *pHash ; pDG ; pDG = pDG->m_pNextHash )
 	{
+		// Fix for rare loop. ToDo: detect cause properly
+		if ( pDG == pDGLast )
+		{
+			theApp.Message( MSG_DEBUG, L"CDatagrams::OnAcknowledgeSGP loop limit triggered." );
+			break;
+		}
+
+		if ( nLimit++ > 3000 )
+		{
+			nLimit = 0;
+			pDGLast = pDG;
+		}
+
 		if ( pDG->m_pHost.sin_addr.S_un.S_addr == pHost->sin_addr.S_un.S_addr &&
 			 pDG->m_pHost.sin_port == pHost->sin_port &&
 			 pDG->m_nSequence == pHeader->nSequence )

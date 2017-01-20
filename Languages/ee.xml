@@ -3,7 +3,7 @@
 
 <!-- Envy Default Estonian Skin File -->
 
-<!-- Translation based on default en.xml r15 --> <!-- (Shareaza 2.2.2.9) -->
+<!-- Translation based on default en.xml r16 --> <!-- (Shareaza 2.2.2.9) -->
 <!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -2112,7 +2112,7 @@
 		allalaadimis kiiruse.</text>
 	</document>
 	<!-- Search help documents -->
-	<document name="SearchHelp.BadSearch1">
+	<document name="SearchHelp.BadSearch">
 		<text format="b">Palun sõnasta otsingusõna ümber</text>
 		<newline gap="8"/>
 		<text>See otsing on halvasti sõnastatud ja ei pruugi anda korralikku vastet.
@@ -2120,9 +2120,10 @@
 		(faili tüüp). Veelgi enam, otsinguid ei peaks piirama arvuliselt ega nimeliselt
 		ja samas peaks vältima liiga üldsõnalisi otsinguid.</text>
 		<newline gap="8"/>
-		<text>Enamus kliente eirab liiga üldsõnalisi otsinguid, näiteks MP3, sest see
+		<text>Enamus kliente eirab liiga üldsõnalisi otsinguid, näiteks audio, sest see
 		ei ole piisavalt täpne, ja võib anda liiga palju vastuseid.</text>
 	</document>
+	<!--
 	<document name="SearchHelp.BadSearch2">
 		<text format="b">Palun sõnasta otsingusõna ümber</text>
 		<newline gap="8"/>
@@ -2147,6 +2148,7 @@
 		<newline gap="8"/>
 		<text>Edasiseks abiks külastage Envy kodulehte.</text>
 	</document>
+	-->
 	<document name="SearchHelp.AdultSearch">
 		<text format="b">Otsingut ei saa teha</text>
 		<newline gap="8"/>
@@ -2174,7 +2176,7 @@
 		<text>Kaustad nagu Windowsi kaustad, Program Files, ja teised sarnased kaustad
 		ei sisalda tavaliselt jagamiseks sobivaid faile. Failid, mida võiks jagada ja mis
 		asuvad </text><text format="i">nende</text>
-		<text> alamkaustades. Jagage siis alamkauste.</text>
+		<text>alamkaustades. Jagage siis alamkauste.</text>
 		<newline gap="8"/>
 		<text>Envy 'poolikute' kausta ei peaks samuti jagama läbi raamatukogu, kuna
 		nende hashimine võib need rikkuda.</text>

@@ -3,7 +3,7 @@
 
 <!-- Envy Default Czech Skin File -->
 
-<!-- Translation based on default en.xml r15 --> <!-- (Shareaza 2.2.5.7) -->
+<!-- Translation based on default en.xml r16 --> <!-- (Shareaza 2.2.5.7) -->
 <!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -1814,7 +1814,7 @@
 	<document name="CGeneralSettingsGroup" title="Hlavní" leftMargin="8" topMargin="8">
 		<text format="b">Vítejte ve správci nastavení Envy</text>
 		<newline gap="16"/>
-		<text> Správce nastavení Envy dovolí pokročilým uživatelům komletně upravit
+		<text>Správce nastavení Envy dovolí pokročilým uživatelům komletně upravit
 		práci se Envy. Nastavení položek v záložce </text>
 		<text format="b">Hlavní </text>
 		<text>závisí na zkušenosti uživatele.</text>
@@ -1843,10 +1843,10 @@
 	<document name="CInternetSettingsGroup" title="Internet" leftMargin="8" topMargin="8">
 		<text format="b">Vítejte ve správci nastavení Envy</text>
 		<newline gap="16"/>
-		<text> Správce nastavení Envy dovolí pokročilým uživatelům zcela komletně upravit
+		<text>Správce nastavení Envy dovolí pokročilým uživatelům zcela komletně upravit
 		práci se Envy. Nastavení v sekci</text>
 		<text format="b">Internet </text>
-		<text> zkontrolujte jak Envy pracuje společně s dalšími uzly uvnitř rozdělených sítí peer-to-peer.</text>
+		<text>zkontrolujte jak Envy pracuje společně s dalšími uzly uvnitř rozdělených sítí peer-to-peer.</text>
 		<newline gap="16" indent="16"/>
 		<link target="page:CConnectionSettingsPage" format="b">Spojení:</link>
 		<text>&#160;Rychlosti a možnosti vašeho Internetového připojení.</text>
@@ -2166,7 +2166,7 @@
 		možné stahování souborů.</text>
 	</document>
 	<!-- Search help documents -->
-	<document name="SearchHelp.BadSearch1">
+	<document name="SearchHelp.BadSearch">
 		<text format="b">Prosím zadejte výraz pro hledání znovu a upřesněte jej</text>
 		<newline gap="8"/>
 		<text>Zadané hledání je špatně formulované a mohlo by dělat problémy.
@@ -2174,9 +2174,10 @@
 		blíže určit co vlastně hledáte (typ souboru). Kromě toho, hledání nesmí být omezené na čísla nebo jen záporné
 		podmínky a měli by jste se také vyhnout moc všeobecných výrazů.</text>
 		<newline gap="8"/>
-		<text>Většina klientů na síti bude ignorovat hledání například všech souborů MP3,
+		<text>Většina klientů na síti bude ignorovat hledání například všech souborů audio,
 		protože hledání není upřesněno a nalezlo by se příliš mnoho výsledků.</text>
 	</document>
+	<!--
 	<document name="SearchHelp.BadSearch2">
 		<text format="b">Prosím zadejte výraz pro hledání znovu a upřesněte jej</text>
 		<newline gap="8"/>
@@ -2190,18 +2191,17 @@
 	<document name="SearchHelp.BadSearch3">
 		<text format="b">Prosím zadejte výraz pro hledání znovu a upřesněte jej</text>
 		<newline gap="8"/>
-		<text>Zdá se že toto hledání obsahuje jen samotnou příponu souboru, nebo se nevyhledávají
-		slova.</text>
+		<text>Zdá se že toto hledání obsahuje jen samotnou příponu souboru, nebo se nevyhledávají slova.</text>
 		<newline gap="8"/>
 		<text>Jestliže máte problém při vytváření hledání, mějte na paměti že to je docela podobné jako
-		hledání na Webu. Přesné termíny nebo fráze jsou nejlepší - Přesný název, tituly a
-		klíčová slova.</text>
+		hledání na Webu. Přesné termíny nebo fráze jsou nejlepší - Přesný název, tituly a klíčová slova.</text>
 		<newline gap="8"/>
 		<text>Všeobecná slova nemohou být vyhledávaná moc efektivně, to může mít za následek málo
 		vyhledaných výsledků, stejně jako velká šířka pásma použitá během hledání.</text>
 		<newline gap="8"/>
 		<text>Další pomoc je dostupná na webové stránce Envy.</text>
 	</document>
+	-->
 	<document name="SearchHelp.AdultSearch">
 		<text format="b">Toto vyhledávání nemůže být spuštěno</text>
 		<newline gap="8"/>
@@ -2228,7 +2228,7 @@
 		<newline gap="8"/>
 		<text>Adrešáře jako jsou Windows, Program Files a podobné obvykle neobsahují
 		soubory vhodné pro sdílení. Do těchto adresářů byste </text><text format="i"> neměli </text>
-		<text> ukládat zajímavé soubory ke sdílení. Vyberte prosím jiný adresář ke sdílení.</text>
+		<text>ukládat zajímavé soubory ke sdílení. Vyberte prosím jiný adresář ke sdílení.</text>
 		<newline gap="8"/>
 		<text>Také složku Envy 'Incomplete'(nedokončené) by jste neměli sdílet přes
 		knihovnu, ta se pak pokouší načítat pracovní soubory, což může mít dopad na výkon.</text>

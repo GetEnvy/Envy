@@ -3,7 +3,7 @@
 
 <!-- Envy Default Lithuanian Skin File -->
 
-<!-- Translation based on default en.xml r15 -->
+<!-- Translation based on default en.xml r16 -->
 <!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -2256,7 +2256,7 @@
 		to tarpu atsisiuntimai nėra ribojami. Tokios nuostatos turėtų Jums garantuoti sparčiausią įmanomą atsisiuntimą.</text>
 	</document>
 	<!-- Search help documents -->
-	<document name="SearchHelp.BadSearch1">
+	<document name="SearchHelp.BadSearch">
 		<text format="b">Perfrazuokite ieškinį</text>
 		<newline gap="8"/>
 		<text>Šis ieškinys yra prastai suformatuotas ir gali veikti neteisingai.
@@ -2264,9 +2264,10 @@
 		(failo plėtinys). Be to, ieškiniuose neturėtų būti vien tik skaičiai arba neigimo žodžiai
 		(su minusu priekyje), taip pat jūs turėtumėte vengti per daug ilgų bendrinių užklausų.</text>
 		<newline gap="8"/>
-		<text>Pavyzdžiui, dauguma tinklo klientų ignoruos visų MP3 failų paieškos užklausą,
+		<text>Pavyzdžiui, dauguma tinklo klientų ignoruos visų audio failų paieškos užklausą,
 		nes ji butų nepakankamai konkreti ir grąžintų per daug radinių.</text>
 	</document>
+	<!--
 	<document name="SearchHelp.BadSearch2">
 		<text format="b">Perfrazuokite ieškinį</text>
 		<newline gap="8"/>
@@ -2289,6 +2290,7 @@
 		<newline gap="8"/>
 		<text>Išsamesnę informaciją rasite Envy svetainėje.</text>
 	</document>
+	-->
 	<document name="SearchHelp.AdultSearch">
 		<text format="b">Šios paieškos neįmanoma pradėti</text>
 		<newline gap="8"/>

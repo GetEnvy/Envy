@@ -194,8 +194,7 @@ void CSearchWnd::OnSize(UINT nType, int cx, int cy)
 	{
 		const int nSidepanel = Settings.Skin.SidebarWidth;
 
-		m_wndPanel.SetWindowPos( NULL, rc.left, rc.top, nSidepanel, rc.Height(),
-			SWP_NOZORDER|SWP_SHOWWINDOW );
+		m_wndPanel.SetWindowPos( NULL, rc.left, rc.top, nSidepanel, rc.Height(), SWP_NOZORDER|SWP_SHOWWINDOW );
 		rc.left += nSidepanel;
 	}
 	else if ( m_wndPanel.IsWindowVisible() )
@@ -211,8 +210,7 @@ void CSearchWnd::OnSize(UINT nType, int cx, int cy)
 
 	if ( m_bDetails )
 	{
-		m_wndDetails.SetWindowPos( NULL, rc.left, rc.bottom - m_nDetails, rc.Width(),
-			m_nDetails, SWP_NOZORDER|SWP_SHOWWINDOW );
+		m_wndDetails.SetWindowPos( NULL, rc.left, rc.bottom - m_nDetails, rc.Width(), m_nDetails, SWP_NOZORDER|SWP_SHOWWINDOW );
 		rc.bottom -= m_nDetails + Settings.Skin.Splitter;
 	}
 	else if ( m_wndDetails.IsWindowVisible() )
@@ -230,9 +228,7 @@ void CSearchWnd::OnSkinChange()
 	CBaseMatchWnd::OnSkinChange();
 
 	m_wndToolBar.Clear();
-
-	if ( ! Skin.CreateToolBar( m_bPanel ? L"CSearchWnd.Panel" : L"CSearchWnd.Full", &m_wndToolBar ) )
-		Skin.CreateToolBar( L"CSearchWnd", &m_wndToolBar );
+	Skin.CreateToolBar( m_bPanel ? L"CSearchWnd.Panel" : L"CSearchWnd.Full", &m_wndToolBar );	// Can skin "CSearchWnd.Toolbar" 
 
 	OnSize( SIZE_INTERNAL, 0, 0 );
 	UpdateMessages();
@@ -312,12 +308,9 @@ void CSearchWnd::OnPaint()
 
 	CFont* pFont = (CFont*)dc.SelectObject( &CoolInterface.m_fntNormal );
 
-	CString str;
-	LoadString( str, IDS_SEARCH_ACTIVE );
-
 	dc.SetBkColor( Colors.m_crBannerBack );
 	dc.SetTextColor( Colors.m_crBannerText );
-	dc.ExtTextOut( rc.left + 8 + 16, nTop + 1, ETO_CLIPPED|ETO_OPAQUE, &rc, str, NULL );
+	dc.ExtTextOut( rc.left + 8 + 16, nTop + 1, ETO_CLIPPED|ETO_OPAQUE, &rc, LoadString(IDS_SEARCH_ACTIVE), NULL );
 
 	dc.SelectObject( pFont );
 }

@@ -143,8 +143,8 @@ void CSkinsSettingsPage::EnumerateSkins(LPCTSTR pszPath)
 				EnumerateSkins( strPath );
 			}
 			else if (	_tcsistr( pFind.cFileName, L".xml" ) != NULL &&
-						_tcsicmp( pFind.cFileName, L"Definitions.xml" ) &&
-						_tcsnicmp( pFind.cFileName, L"Default-", 8 ) )
+						_tcsnicmp( pFind.cFileName, L"en.xml", 6 ) != 0 &&
+						_tcsicmp( pFind.cFileName, L"Definitions.xml" ) != 0 )
 			{
 				AddSkin( pszPath, pFind.cFileName );
 			}
@@ -218,7 +218,7 @@ BOOL CSkinsSettingsPage::AddSkin(LPCTSTR pszPath, LPCTSTR pszName)
 
 	if ( nManifest > 0 )
 	{
-		CString strManifest = strXML.Mid( nManifest ).SpanExcluding( L">" ) + '>';
+		CString strManifest = strXML.Mid( nManifest ).SpanExcluding( L">" ) + L'>';
 
 		if ( CXMLElement* pManifest = CXMLElement::FromString( strManifest ) )
 		{
@@ -355,10 +355,10 @@ void CSkinsSettingsPage::CheckDependencies(CString sPaths)
 		for ( INT_PTR nToken = 0 ; nToken < nTotal ; nToken++ )
 		{
 			CString strToken = oTokens.GetAt( nToken );
-			strToken.Trim( L" \t\r\n," );
+			strToken.Trim( L" \t\r\n;,'" );
 			if ( strToken.GetLength() < 5 )
 				continue;
-			if ( strToken.Right( 4 ) == L".xml" || strToken.Right( 4 ) == L".XML" )
+			if ( EndsWith( strToken, _P( L".xml" ) ) )
 				oPaths.Add( strToken );
 		}
 

@@ -3,7 +3,7 @@
 
 <!-- Envy Default Brazilian Portuguese Skin File -->
 
-<!-- Translation based on default en.xml r15 -->
+<!-- Translation based on default en.xml r16 -->
 <!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -2294,7 +2294,7 @@
 		que estão disponíveis.</text>
 	</document>
 	<!-- Search help documents -->
-	<document name="SearchHelp.BadSearch1">
+	<document name="SearchHelp.BadSearch">
 		<text format="b">Por favor digite de novo a busca</text>
 		<newline gap="8"/>
 		<text>Esta busca está mal formatada, e pode não funcionar corretamente.
@@ -2302,9 +2302,10 @@
 		(tipo de arquivo). No mais, as buscas não devem estar limitadas só a números ou termos
 		negativos, e você deve evitar buscas muito gerais.</text>
 		<newline gap="8"/>
-		<text>A maioria dos clientes na rede ignorará uma busca por todos os arquivos MP3, por exemplo,
+		<text>A maioria dos clientes na rede ignorará uma busca por todos os arquivos audio, por exemplo,
 		porque não é específica o bastante, e geraria resultados demais.</text>
 	</document>
+	<!--
 	<document name="SearchHelp.BadSearch2">
 		<text format="b">Por favor digite de novo a busca</text>
 		<newline gap="8"/>
@@ -2318,18 +2319,17 @@
 	<document name="SearchHelp.BadSearch3">
 		<text format="b">Por favor digite de novo a busca</text>
 		<newline gap="8"/>
-		<text>Esta busca parece conter apenas extensões comuns de arquivo, ou nenhuma palavra
-		pesquisável.</text>
+		<text>Esta busca parece conter apenas extensões comuns de arquivo, ou nenhuma palavra pesquisável.</text>
 		<newline gap="8"/>
-		<text>Se você está tendo problemas em criar buscas, mantenha em mente que é bastante similar
-		a uma busca na rede. Termos específicos ou frases são melhores - nomes únicos, títulos e
-		palavras-chave.</text>
+		<text>Se você está tendo problemas em criar buscas, mantenha em mente que é bastante similar a uma
+		busca na rede. Termos específicos ou frases são melhores - nomes únicos, títulos e palavras-chave.</text>
 		<newline gap="8"/>
 		<text>Termos gerais não podem ser procurados eficientemente e podem resultar em uma pobre
 		performance de busca, assim como em um alto uso da banda durante as buscas.</text>
 		<newline gap="8"/>
 		<text>Mais ajuda está disponível no site do Envy.</text>
 	</document>
+	-->
 	<document name="SearchHelp.AdultSearch">
 		<text format="b">Esta busca não pôde ser iniciada</text>
 		<newline gap="8"/>
@@ -2358,7 +2358,7 @@
 		não contém geralmente, arquivos que possam ser adequados para compartilhar.
 		Quaisquer arquivos de interesse estariam em sub-pastas localizadas</text>
 		<text format="i"> dentro</text>
-		<text> destas pastas. Por favor compartilhe-as em vez das outras.</text>
+		<text>destas pastas. Por favor compartilhe-as em vez das outras.</text>
 		<newline gap="8"/>
 		<text>A pasta 'incompletos' do Envy também não deve ser compartilhada pela
 		biblioteca, já que a tentativa de fazer o hash dos downloads em progresso pode ter um impacto na performance.</text>

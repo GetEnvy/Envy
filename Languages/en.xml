@@ -3,7 +3,7 @@
 
 <!-- Envy Default English Skin File -->
 
-<!-- Translation based on default en.xml r15 -->
+<!-- Translation based on default en.xml r16 -->
 <!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -2369,6 +2369,18 @@
 		downloads that are available.</text>
 	</document>
 	<!-- Search help documents -->
+	<document name="SearchHelp.BadSearch">
+		<text format="b">Please re-phrase the search</text>
+		<newline gap="8"/>
+		<text>This search is overly general or poorly formatted, and may be rejected.</text>
+		<newline/>
+		<text>Try using additional or more specific search terms. Note common short terms such as
+		file types cannot be used alone, and any punctuation is ignored.</text>
+		<newline gap="8"/>
+		<text>Most clients on the network will skip a non-specific request that could generate
+		too many results, like just a file type. See the GetEnvy.com web site for help.</text>
+	</document>
+	<!--
 	<document name="SearchHelp.BadSearch1">
 		<text format="b">Please re-phrase the search</text>
 		<newline gap="8"/>
@@ -2377,7 +2389,7 @@
 		(file type). Furthermore, searches must not be limited to numbers or negative
 		terms only, and you should avoid overly general queries.</text>
 		<newline gap="8"/>
-		<text>Most clients on the network will ignore a search for all MP3 files, for example,
+		<text>Most clients on the network will ignore a search for all audio files, for example,
 		because it is not specific enough, and would generate too many results.</text>
 	</document>
 	<document name="SearchHelp.BadSearch2">
@@ -2403,6 +2415,7 @@
 		<newline gap="8"/>
 		<text>Further help is available on the Envy web site.</text>
 	</document>
+	-->
 	<document name="SearchHelp.AdultSearch">
 		<text format="b">This search cannot be started</text>
 		<newline gap="8"/>
@@ -2410,8 +2423,8 @@
 		and this option has been turned off. You should either re-phrase the search,
 		or disable the filter.</text>
 		<newline gap="8"/>
-		<text>To disable the filter, go into Tools &gt; Settings &gt; General and uncheck the
-		adult content filter.</text>
+		<text>To disable the filter, go into Tools &gt; Settings &gt; General
+		and uncheck the adult content filter.</text>
 	</document>
 	<!-- Share help documents -->
 	<document name="ShareHelp.AlreadyShared">

@@ -3,7 +3,7 @@
 
 <!-- Envy Default Catalan Skin File -->
 
-<!-- Translation based on default en.xml r15 -->
+<!-- Translation based on default en.xml r16 -->
 <!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -2183,19 +2183,20 @@
 		Aqueixa configuració t'hauria de donar la velocitat més ràpida.</text>
 	</document>
 	<!-- Search help documents -->
-	<document name="SearchHelp.BadSearch1">
-		<text format="b">Si us plau, torni a reformular la cerca</text>
+	<document name="SearchHelp.BadSearch">
+		<text format="b">Si us plau, reformula la cerca</text>
 		<newline gap="8"/>
 		<text>Aquesta cerca està mal formada, i no funcionarà correctament.
 		Las cerques han de tenir varis termes com sigui possible, i han d'especificar un esquema
 		(tipus d'arxiu). Les cerques no han d'estar limitades a nombres o termes negatius,
 		i has d'evitar fer-ne moltes.</text>
 		<newline gap="8"/>
-		<text> Quasi tots els clients de la xarxa ignoraran una cerca de tots els arxius MP3, per exemple,
+		<text>Quasi tots els clients de la xarxa ignoraran una cerca de tots els arxius audio, per exemple,
 		perquè no és sufientment específic i pot generar massa resultats.</text>
 	</document>
+	<!--
 	<document name="SearchHelp.BadSearch2">
-		<text format="b">Si us plau, reformula la cerca</text>
+		<text format="b">Si us plau, torni a reformular la cerca</text>
 		<newline gap="8"/>
 		<text>Aquesta cerca no conté suficients termes per a funcionar correctament. Totes les recerques necessiten
 		un nombre minim de lletres alfabètiques vàlides per a poder començar.</text>
@@ -2211,14 +2212,14 @@
 		que no poden ser utilitzades.</text>
 		<newline gap="8"/>
 		<text>Si estas tenint problemes al crear cerques, recorda que és molt similar a una cerca
-		d'Internet. Termes específics i frases són el millor - Nombres únics, títols
-		i paraules clau.</text>
+		d'Internet. Termes específics i frases són el millor - Nombres únics, títols i paraules clau.</text>
 		<newline gap="8"/>
 		<text>Els termes generals no poden ser buscats amb eficièncía i pot resultar
 		una cerca pobra, i també fer servir massa banda ampla utilitzada en la cerca.</text>
 		<newline gap="8"/>
 		<text>Pots trobar més ajuda a la web de Envy</text>
 	</document>
+	-->
 	<document name="SearchHelp.AdultSearch">
 		<text format="b">Aquesta cerca no pot començar</text>
 		<newline gap="8"/>
@@ -2245,7 +2246,7 @@
 		<text>Carpetes com la carpeta de Windows, arxius dels programes, i carpetes similars
 		no contenen arxius per a compartir. Qualsevol arxiu d'interés hauria d'estar localitzat a un
 		subdirectori</text><text format="i"> dins </text>
-		<text> d'aquestes carpetes. Per favor, comparteix altres arxius.</text>
+		<text>d'aquestes carpetes. Per favor, comparteix altres arxius.</text>
 		<newline gap="8"/>
 		<text>Els arxius de Envy de la carpeta 'incomplete' no han de ser compartits en la col·lecció,
 		perquè quan toqui fer el hashing tindràs problemes de rendiment.</text>

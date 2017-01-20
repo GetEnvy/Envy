@@ -3,7 +3,7 @@
 
 <!-- Envy Default Greek Skin File -->
 
-<!-- Translation based on default en.xml r15 -->
+<!-- Translation based on default en.xml r16 -->
 <!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -2229,7 +2229,7 @@
 		να εγγυηθούν ότι θα δουλέψει κατάλληλα σε όλες τις εφαρμογές BitTorrent.</text>
 		<newline gap="8"/>
 		<link target="http://getenvy.com/help/?torrentencoding">Κλικ εδώ για επιπλέον βοήθεια</link>
-		<text> ή για να λάβεται λογισμικό για να επιδιορθώσετε το torrent.</text>
+		<text>ή για να λάβεται λογισμικό για να επιδιορθώσετε το torrent.</text>
 	</document>
 	<document name="GeneralHelp.DonkeyServerList">
 		<text format="b">Η λίστα των ED2K servers σας είναι άδεια</text>
@@ -2255,7 +2255,7 @@
 		λήψεις που είναι διαθέσιμες.</text>
 	</document>
 	<!-- Search help documents -->
-	<document name="SearchHelp.BadSearch1">
+	<document name="SearchHelp.BadSearch">
 		<text format="b">Παρακαλώ επαναδιατυπώστε την αναζήτηση</text>
 		<newline gap="8"/>
 		<text>Αυτή η αναζήτηση είναι φτωχά διατυπωμένη και μπορεί να μην λειτουργήσει σωστά.
@@ -2263,9 +2263,10 @@
 		να περιλαμβάνουν αρκετούς μη αρνητικούς όρους, όχι αποκλειστικά αριθμούς
 		και, αν είναι δυνατόν, να καθορίζουν τον τύπο του αρχείου.</text>
 		<newline gap="8"/>
-		<text>Για παράδειγμα, τα περισσότερα peers στο δίκτυο θα αγνοήσουν μια αναζήτηση για όλα τα MP3 αρχεία,
+		<text>Για παράδειγμα, τα περισσότερα peers στο δίκτυο θα αγνοήσουν μια αναζήτηση για όλα τα audio αρχεία,
 		επειδή δεν είναι αρκετά ειδική και θα δημιουργούσε πάρα πολλά αποτελέσματα.</text>
 	</document>
+	<!--
 	<document name="SearchHelp.BadSearch2">
 		<text format="b">Παρακαλώ επαναδιατυπώστε την αναζήτηση</text>
 		<newline gap="8"/>
@@ -2291,6 +2292,7 @@
 		<newline gap="8"/>
 		<text>Επιπλέον βοήθεια είναι διαθέσιμη στον ιστοχώρο του Envy.</text>
 	</document>
+	-->
 	<document name="SearchHelp.AdultSearch">
 		<text format="b">Αυτή η αναζήτηση δεν μπορεί να ξεκινήσει</text>
 		<newline gap="8"/>
@@ -2318,7 +2320,7 @@
 		<text>Φάκελοι όπως οι Windows, Program Files και παρόμοιοι,
 		συνήθως δεν περιέχουν αρχεία πρόσφορα για κοινοποίηση. Ενδιαφέροντα αρχεία
 		θα βρίσκονται μεσα σε υποφακέλους </text><text format="i"> εντός </text>
-		<text> αυτών των φακέλων. Παρακαλώ κοινοποιείστε μάλλον αυτούς τους υποφακέλους.</text>
+		<text>αυτών των φακέλων. Παρακαλώ κοινοποιείστε μάλλον αυτούς τους υποφακέλους.</text>
 		<newline gap="8"/>
 		<text>Ο φάκελος 'incomplete' (ημιτελών) του Envy επίσης δεν πρέπει να κοινοποιείται μέσω της
 		Βιβλιοθήκης, επειδή η επαναλαμβανόμενη σάρωση των λήψεων σε εξέλιξη θα μειώσει τις επιδόσεις του συστήματος.</text>

@@ -3,7 +3,7 @@
 
 <!-- Envy Default Dutch Skin File -->
 
-<!-- Translation based on default en.xml r15 -->
+<!-- Translation based on default en.xml r16 -->
 <!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -2251,17 +2251,18 @@
 		geen limiet heeft. Over het algemeen geeft dit de best mogelijke downloadsnelheid.</text>
 	</document>
 	<!-- Search help documents -->
-	<document name="SearchHelp.BadSearch1">
+	<document name="SearchHelp.BadSearch">
 		<text format="b">Formuleer de zoekopdracht alsjeblieft opnieuw</text>
 		<newline gap="8"/>
 		<text>Deze zoekopdracht is fout ingevoerd, en zal waarschijnlijk niet goed werken.
 		Zoekopdrachten zouden voor zover mogelijk meerdere termen moeten bevatten, en het bestandstype (schema)
-		dient te worden uitgekozen. Bovendien mogen zoekopdrachten niet beperkt worden tot alleen maar nummers of negatieve
-		termen. Tevens dient het zoeken naar te algemene termen vermeden te worden.</text>
+		dient te worden uitgekozen. Bovendien mogen zoekopdrachten niet beperkt worden tot alleen maar nummers of
+		negatieve termen. Tevens dient het zoeken naar te algemene termen vermeden te worden.</text>
 		<newline gap="8"/>
 		<text>De meeste programma's op het netwerk negeren een zoekopdracht naar bijvoorbeeld alle MP3
 		bestanden, omdat het niet specifiek genoeg is en het teveel resultaten genereert.</text>
 	</document>
+	<!--
 	<document name="SearchHelp.BadSearch2">
 		<text format="b">Formuleer de zoekopdracht anders</text>
 		<newline gap="8"/>
@@ -2285,6 +2286,7 @@
 		<newline gap="8"/>
 		<text>Meer hulp is beschikbaar op de Envy website.</text>
 	</document>
+	-->
 	<document name="SearchHelp.AdultSearch">
 		<text format="b">Deze zoekopdracht kan niet gestart worden</text>
 		<newline gap="8"/>
@@ -2292,8 +2294,8 @@
 		inhoud voor volwassenen, en dit is uitgeschakeld in de instellingen. Je zal de zoekopdracht anders moeten formuleren,
 		of de filter uitschakelen.</text>
 		<newline gap="8"/>
-		<text>Om de filter uit te schakelen, ga naar Hulpmiddelen > Envy instellingen > Algemeen en vink de
-		volwasseninhoud filter uit.</text>
+		<text>Om de filter uit te schakelen, ga naar Hulpmiddelen &gt; Envy instellingen &gt; Algemeen
+		en vink de volwasseninhoud filter uit.</text>
 	</document>
 	<!-- Share help documents -->
 	<document name="ShareHelp.AlreadyShared">

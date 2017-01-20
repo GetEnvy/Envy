@@ -923,19 +923,25 @@ BOOL CSkin::LoadRemoteInterface(CXMLElement* pBase)
 
 CMenu* CSkin::GetMenu(LPCTSTR pszName) const
 {
-	ASSERT( Settings.General.GUIMode == GUI_WINDOWED ||
-		Settings.General.GUIMode == GUI_TABBED ||
-		Settings.General.GUIMode == GUI_BASIC );
 	ASSERT( pszName != NULL );
 	CString strName( pszName );
+
 	CMenu* pMenu = NULL;
-	for ( int nModeTry = 0 ; m_pszModeSuffix[ Settings.General.GUIMode ][ nModeTry ] ; nModeTry++ )
-	{
-		if ( m_pMenus.Lookup( strName + m_pszModeSuffix[ Settings.General.GUIMode ][ nModeTry ], pMenu ) )
-			break;
-	}
+	m_pMenus.Lookup( strName + m_pszGUIMode[ Settings.General.GUIMode ], pMenu ) ||
+		( Settings.General.GUIMode == GUI_BASIC && m_pMenus.Lookup( strName + m_pszGUIMode[ GUI_TABBED ], pMenu ) ) ||
+		m_pMenus.Lookup( strName, pMenu );
+
+	// Legacy method:
+//	ASSERT( Settings.General.GUIMode == GUI_TABBED || Settings.General.GUIMode == GUI_BASIC || Settings.General.GUIMode == GUI_WINDOWED );
+//	for ( int nModeTry = 0 ; m_pszModeSuffix[ Settings.General.GUIMode ][ nModeTry ] ; nModeTry++ )
+//	{
+//		if ( m_pMenus.Lookup( strName + m_pszModeSuffix[ Settings.General.GUIMode ][ nModeTry ], pMenu ) )
+//			break;
+//	}
+
 	ASSERT_VALID( pMenu );
 	ASSERT( pMenu->GetMenuItemCount() > 0 );
+
 	return pMenu;
 }
 
@@ -1104,7 +1110,11 @@ BOOL CSkin::CreateToolBar(LPCTSTR pszName, CCoolBarCtrl* pBar)
 {
 	//CQuickLock oLock( m_pSection );
 
-	if ( pszName == NULL ) return FALSE;
+	ASSERT( pszName );
+	ASSERT( Settings.General.GUIMode == GUI_TABBED || Settings.General.GUIMode == GUI_BASIC || Settings.General.GUIMode == GUI_WINDOWED );
+
+	if ( pszName == NULL )
+		return FALSE;
 
 	if ( pBar->m_hWnd )
 	{
@@ -1116,38 +1126,57 @@ BOOL CSkin::CreateToolBar(LPCTSTR pszName, CCoolBarCtrl* pBar)
 	pBar->SetWatermark( NULL, TRUE );
 	pBar->Clear();
 
-	ASSERT( Settings.General.GUIMode == GUI_TABBED || Settings.General.GUIMode == GUI_BASIC || Settings.General.GUIMode == GUI_WINDOWED );
-	LPCTSTR* pszModeSuffix = m_pszModeSuffix[ Settings.General.GUIMode ];
+	CCoolBarCtrl* pBase = NULL;
 	CString strClassName( pszName );
 
-	CCoolBarCtrl* pBase = NULL;
-	for ( int nModeTry = 0 ; nModeTry < 3 && pszModeSuffix[ nModeTry ] ; nModeTry++ )
+	if ( m_pToolbars.Lookup( strClassName + m_pszGUIMode[Settings.General.GUIMode], pBase ) || 
+		 ( Settings.General.GUIMode == GUI_BASIC && m_pToolbars.Lookup( strClassName + m_pszGUIMode[ GUI_TABBED ], pBase ) ) || 
+		 m_pToolbars.Lookup( strClassName, pBase ) )
 	{
-		CString strName( strClassName + pszModeSuffix[ nModeTry ] );
-		if ( m_pToolbars.Lookup( strName, pBase ) )
-		{
-		//	if ( StartsWith( strClassName, L"CLibraryHeaderBar" ) ) 	// Crash Workarounds
-		//	{
-		//		pBar->Copy( pBase );
-		//		return TRUE;
-		//	}
+		//if ( StartsWith( strClassName, L"CLibraryHeaderBar" ) )	// Crash Workarounds
+		//	; // Do nothing
+		HBITMAP hBitmap = GetWatermark( strClassName + m_pszGUIMode[ Settings.General.GUIMode ] + L".Toolbar" );
+		if ( ! hBitmap && Settings.General.GUIMode == GUI_BASIC )
+			hBitmap = GetWatermark( strClassName + m_pszGUIMode[ GUI_TABBED ] + L".Toolbar" );
+		if ( ! hBitmap )
+			hBitmap = GetWatermark( strClassName + L".Toolbar" );
+		if ( ! hBitmap && strClassName.Find( L'.', 5 ) > 1 )
+			hBitmap = GetWatermark( strClassName.Left( strClassName.ReverseFind( L'.' ) ) + L".Toolbar" );
+		if ( ! hBitmap && (HBITMAP)Images.m_bmToolbar )				// "System.Toolbars"
+			hBitmap = (HBITMAP)Images.m_bmToolbar;
 
-			if ( HBITMAP hBitmap = GetWatermark( strName + L".Toolbar" ) )
-				pBar->SetWatermark( hBitmap );
-			else if ( HBITMAP hBitmap = GetWatermark( strClassName + L".Toolbar" ) )
-				pBar->SetWatermark( hBitmap );
-			else if ( HBITMAP hBitmap = GetWatermark( L"System.Toolbars." + strClassName ) )
-				pBar->SetWatermark( hBitmap );
-			else if ( Images.m_bmToolbar.m_hObject )		// "System.Toolbars"
-				pBar->SetWatermark( (HBITMAP)Images.m_bmToolbar );
+		if ( hBitmap )
+			pBar->SetWatermark( hBitmap );
 
-			pBar->Copy( pBase );
-			return TRUE;
-		}
+		pBar->Copy( pBase );
+		return TRUE;
 	}
 
-//	ASSERT( pBase != NULL );
+	// Legacy method:
+//	LPCTSTR* pszModeSuffix = m_pszModeSuffix[ Settings.General.GUIMode ];
+//	for ( int nModeTry = 0 ; nModeTry < 3 && m_pszModeSuffix[ Settings.General.GUIMode ][ nModeTry ] ; nModeTry++ )
+//	{
+//		CString strName( strClassName + pszModeSuffix[ nModeTry ] );
+//		if ( m_pToolbars.Lookup( strName, pBase ) )
+//		{
+//			//if ( StartsWith( strClassName, L"CLibraryHeaderBar" ) )	// Crash Workarounds
+//			//	; // Do nothing
+//			if ( HBITMAP hBitmap = GetWatermark( strName + L".Toolbar" ) )
+//				pBar->SetWatermark( hBitmap );
+//			else if ( HBITMAP hBitmap = GetWatermark( L"System.Toolbars." + strClassName ) )
+//				pBar->SetWatermark( hBitmap );
+//			else if ( (HBITMAP)Images.m_bmToolbar )		// "System.Toolbars"
+//				pBar->SetWatermark( (HBITMAP)Images.m_bmToolbar, TRUE );
+//
+//			pBar->Copy( pBase );
+//			return TRUE;
+//		}
+//	}
 
+#ifdef _DEBUG
+	//ASSERT( pBase == NULL );
+	theApp.Message( MSG_ERROR, IDS_SKIN_ERROR, L"Toolbar Lookup", strClassName );
+#endif
 	return FALSE;
 }
 
@@ -1155,19 +1184,26 @@ CCoolBarCtrl* CSkin::GetToolBar(LPCTSTR pszName) const
 {
 	//CQuickLock oLock( m_pSection );
 
-	ASSERT( Settings.General.GUIMode == GUI_WINDOWED ||
-		Settings.General.GUIMode == GUI_TABBED ||
-		Settings.General.GUIMode == GUI_BASIC );
+	ASSERT( pszName );
+	ASSERT( Settings.General.GUIMode == GUI_TABBED || Settings.General.GUIMode == GUI_BASIC || Settings.General.GUIMode == GUI_WINDOWED );
 
-	LPCTSTR* pszModeSuffix = m_pszModeSuffix[ Settings.General.GUIMode ];
 	CCoolBarCtrl* pBar = NULL;
 	CString strName( pszName );
 
-	for ( int nModeTry = 0 ; nModeTry < 3 && pszModeSuffix[ nModeTry ] ; nModeTry++ )
-	{
-		if ( m_pToolbars.Lookup( strName + pszModeSuffix[ nModeTry ], pBar ) )
-			return pBar;
-	}
+	if ( m_pToolbars.Lookup( strName + m_pszGUIMode[ Settings.General.GUIMode ], pBar ) )
+		return pBar;
+	if ( Settings.General.GUIMode == GUI_BASIC && m_pToolbars.Lookup( strName + m_pszGUIMode[ GUI_TABBED ], pBar ) )
+		return pBar;
+	if ( m_pToolbars.Lookup( strName, pBar ) )
+		return pBar;
+
+	// Legacy method:
+	//LPCTSTR* pszModeSuffix = m_pszModeSuffix[ Settings.General.GUIMode ];
+	//for ( int nModeTry = 0 ; m_pszModeSuffix[ Settings.General.GUIMode ][ nModeTry ] ; nModeTry++ )
+	//{
+	//	if ( m_pToolbars.Lookup( strName + m_pszModeSuffix[ Settings.General.GUIMode ][ nModeTry ], pBar ) )
+	//		return pBar;
+	//}
 
 	return NULL;
 }
@@ -1366,6 +1402,7 @@ BOOL CSkin::GetWatermark(CBitmap* pBitmap, LPCTSTR pszName)
 {
 	ASSERT( pBitmap != NULL );
 	if ( pBitmap->m_hObject != NULL ) pBitmap->DeleteObject();
+
 	HBITMAP hBitmap = GetWatermark( pszName );
 	if ( hBitmap != NULL ) pBitmap->Attach( hBitmap );
 	return ( hBitmap != NULL );
@@ -1398,7 +1435,6 @@ BOOL CSkin::LoadWatermarks(CXMLElement* pSub, const CString& strPath)
 			theApp.Message( MSG_ERROR, IDS_SKIN_ERROR, L"Unknown element in [watermarks] element", pMark->ToString() );
 		}
 	}
-
 
 	// Common system-wide volatile bitmaps (buttons):
 	Images.Load();
@@ -1929,13 +1965,9 @@ CSkinWindow* CSkin::GetWindowSkin(LPCTSTR pszWindow, LPCTSTR pszAppend)
 
 CSkinWindow* CSkin::GetWindowSkin(CWnd* pWnd)
 {
-	ASSERT( Settings.General.GUIMode == GUI_WINDOWED ||
-		Settings.General.GUIMode == GUI_TABBED ||
-		Settings.General.GUIMode == GUI_BASIC );
-	LPCTSTR* pszModeSuffix = m_pszModeSuffix[ Settings.General.GUIMode ];
+	ASSERT( pWnd != NULL );
+	ASSERT( Settings.General.GUIMode == GUI_TABBED || Settings.General.GUIMode == GUI_BASIC || Settings.General.GUIMode == GUI_WINDOWED );
 	BOOL bPanel = FALSE;
-
-	ASSERT(pWnd != NULL);
 
 	if ( pWnd->IsKindOf( RUNTIME_CLASS(CChildWnd) ) )
 	{
@@ -1952,19 +1984,29 @@ CSkinWindow* CSkin::GetWindowSkin(CWnd* pWnd)
 		CString strClassName( pClass->m_lpszClassName );
 
 		if ( bPanel )
-		{
-			CSkinWindow* pSkin = GetWindowSkin( (LPCTSTR)strClassName, L".Panel" );
-			if ( pSkin != NULL ) return pSkin;
-		}
+			if ( CSkinWindow* pSkin = GetWindowSkin( (LPCTSTR)strClassName, L".Panel" ) )
+				return pSkin;
 
-		for ( int nSuffix = 0 ; nSuffix < 3 && pszModeSuffix[ nSuffix ] != NULL ; nSuffix ++ )
-		{
-			if ( pszModeSuffix[ nSuffix ][0] != 0 || ! bPanel )
-			{
-				CSkinWindow* pSkin = GetWindowSkin( (LPCTSTR)strClassName, pszModeSuffix[ nSuffix ] );
-				if ( pSkin != NULL ) return pSkin;
-			}
-		}
+		if ( CSkinWindow* pSkin = GetWindowSkin( (LPCTSTR)strClassName, m_pszGUIMode[ Settings.General.GUIMode ] ) )
+			return pSkin;
+
+		if ( Settings.General.GUIMode == GUI_BASIC )
+			if ( CSkinWindow* pSkin = GetWindowSkin( (LPCTSTR)strClassName, m_pszGUIMode[ GUI_TABBED ] ) )
+				return pSkin;
+		
+		if ( CSkinWindow* pSkin = GetWindowSkin( (LPCTSTR)strClassName ) )
+			return pSkin;
+
+		// Legacy method:
+	//	LPCTSTR* pszModeSuffix = m_pszModeSuffix[ Settings.General.GUIMode ];
+	//	for ( int nSuffix = 0 ; nSuffix < 3 && pszModeSuffix[ nSuffix ] != NULL ; nSuffix++ )
+	//	{
+	//		if ( pszModeSuffix[ nSuffix ][0] != 0 || ! bPanel )
+	//		{
+	//			CSkinWindow* pSkin = GetWindowSkin( (LPCTSTR)strClassName, pszModeSuffix[ nSuffix ] );
+	//			if ( pSkin != NULL ) return pSkin;
+	//		}
+	//	}
 	}
 
 	return NULL;
@@ -3068,12 +3110,21 @@ HBITMAP CSkin::LoadBitmap(UINT nID)
 	return LoadBitmap( strName );
 }
 
+
 //////////////////////////////////////////////////////////////////////
 // CSkin mode suffixes
 
-LPCTSTR CSkin::m_pszModeSuffix[3][4] =
+LPCTSTR CSkin::m_pszGUIMode[3] =
 {
-	{ L".Windowed", L"", NULL, NULL },			// GUI_WINDOWED
-	{ L".Tabbed", L"", NULL, NULL },			// GUI_TABBED
-	{ L".Basic", L".Tabbed", L"", NULL }		// GUI_BASIC
+	L".Windowed",	// 0 GUI_WINDOWED
+	L".Tabbed",		// 1 GUI_TABBED
+	L".Basic"		// 2 GUI_BASIC
 };
+
+// Obsolete legacy fallbacks method:
+//LPCTSTR CSkin::m_pszModeSuffix[3][4] =
+//{
+//	{ L".Windowed", L"", NULL, NULL },			// 0 GUI_WINDOWED
+//	{ L".Tabbed", L"", NULL, NULL },			// 1 GUI_TABBED
+//	{ L".Basic", L".Tabbed", L"", NULL }		// 2 GUI_BASIC
+//};

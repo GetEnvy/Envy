@@ -806,8 +806,9 @@ const
 var
   CurrentPath: string;
   Installed: Boolean;
-  MalwareDetected: Boolean;
+  Install64: Boolean;
   FirewallFailed: string;
+  MalwareDetected: Boolean;
 //HasUserPrivileges: Boolean;
 
 // NT API functions for services (Unused UPnP)
@@ -950,6 +951,17 @@ Begin
   Result := Installed;
 End;
 
+// Is64BitInstallMode Allow Override Flag
+Function Install64Bit: Boolean;
+Begin
+  Result := Install64;
+End;
+
+Function IsMalwareDetected: Boolean;
+Begin
+  Result := MalwareDetected;
+End;
+
 Function ShouldSkipPage(PageID: Integer): Boolean;
 Begin
   Result := False;
@@ -972,7 +984,7 @@ Begin
   DelayDeleteFile(Filename,3);
 End;
 
-Function WeOwnTorrentAssoc: boolean;
+Function WeOwnTorrentAssoc: Boolean;
 var
   CommandString: string;
   Position: Integer;
@@ -985,17 +997,6 @@ Begin
     End
 End;
 
-// Is64BitInstallMode Allow Override
-Function Install64Bit: boolean;
-Begin
-  Result := Is64BitInstallMode;
-#if unified_build == "True"
-  if Is64BitInstallMode then
-    Begin
-      if not ( ExpandConstant('{param:force32|false}') = 'false' ) then Result := False;
-    End;
-#endif
-End;
 
 Function NextButtonClick(CurPageID: integer): Boolean;
 var
@@ -1031,8 +1032,17 @@ End;
 
 Function InitializeSetup: Boolean;
 Begin
-  // Malware checks
+  // Preconditions and Malware checks
   Installed := (RegValueExists(HKEY_LOCAL_MACHINE, KeyLoc1, KeyName) or RegValueExists(HKEY_LOCAL_MACHINE, KeyLoc2, KeyName)) and DoesPathExist();
+  Install64 := Is64BitInstallMode;
+#if unified_build == "True"
+  if Is64BitInstallMode then
+    Begin
+      if not ( ExpandConstant('{param:force32|false}') = 'false' ) then Install64 := False;
+    //else if CompareText( ParamStr(1), '/force32' ) = 0 then Install64 := False
+    //else if CompareText( ParamStr(1), '-force32' ) = 0 then Install64 := False;
+    End;
+#endif
   MalwareDetected := False;
   Result := True;
   Result := NOT MalwareCheck( ExpandConstant('{win}\vgraph.dll') );
@@ -1041,11 +1051,6 @@ Begin
   if Result then Begin Result := NOT MalwareCheck( ExpandConstant('{win}\Envy*') ); End;
   if Result then Begin Result := NOT MalwareCheck( ExpandConstant('{sys}\Envy*') ); End;
   //if Result then Begin Result := NOT MalwareCheck( ExpandConstant('{pf}\Envy\vc2.dll') ); End;
-End;
-
-Function IsMalwareDetected: Boolean;
-Begin
-  Result := MalwareDetected;
 End;
 
 // Update Tasks Page

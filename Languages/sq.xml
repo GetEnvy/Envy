@@ -3,7 +3,7 @@
 
 <!-- Envy Default Albanian Skin File -->
 
-<!-- Translation based on default en.xml r15 -->
+<!-- Translation based on default en.xml r16 -->
 <!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -2255,7 +2255,7 @@
 		të mundshme.</text>
 	</document>
 	<!-- Search help documents -->
-	<document name="SearchHelp.BadSearch1">
+	<document name="SearchHelp.BadSearch">
 		<text format="b">Ju lutemi rishkruani kërkimin</text>
 		<newline gap="8"/>
 		<text>Kërkimi nuk është i formatuar mirë, ndaj mund të mos funksionojë si duhet.
@@ -2266,6 +2266,7 @@
 		<text>Shumë nga klientët në rrjet, për shembull, do e përbuznin kërkimin për një skedë MP3:
 		nuk është aq i mirëpërcaktuar dhe gjeneron shumë rezultate.</text>
 	</document>
+	<!--
 	<document name="SearchHelp.BadSearch2">
 		<text format="b">Ju lutemi rishkruani kërkimin</text>
 		<newline gap="8"/>
@@ -2279,18 +2280,17 @@
 	<document name="SearchHelp.BadSearch3">
 		<text format="b">Ju lutemi rishkruani kërkimin</text>
 		<newline gap="8"/>
-		<text>Me sa duket, kërkimi përmban vetëm shtojcën e zakonshme të skedës, ose fjalë që
-		nuk kërkohen.</text>
+		<text>Me sa duket, kërkimi përmban vetëm shtojcën e zakonshme të skedës, ose fjalë që nuk kërkohen.</text>
 		<newline gap="8"/>
 		<text>Nëse keni probleme me krijimin e kërkimeve, mbani mend se është mjaft i ngjashëm
-		me kërkimin në rrjet. Termat ose frazat e mirëpërcaktuara janë emrat unikë, titujt dhe
-		fjalët kyçe.</text>
+		me kërkimin në rrjet. Termat ose frazat e mirëpërcaktuara janë emrat unikë, titujt dhe fjalët kyçe.</text>
 		<newline gap="8"/>
 		<text>Termat e përgjithshëm nuk kërkohen me efektshmëri, ndaj edhe rezultatet mund të jenë të
 		dobëta, sikurse përdorimi i lartë i shtrirjes së bandës.</text>
 		<newline gap="8"/>
 		<text>Për ndihmesë të mëtejshme, shkoni në truallin e Envy-s.</text>
 	</document>
+	-->
 	<document name="SearchHelp.AdultSearch">
 		<text format="b">Ky kërkim nuk mund të nisë</text>
 		<newline gap="8"/>

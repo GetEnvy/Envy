@@ -171,7 +171,8 @@ protected:
 
 // Mode Suffixes
 protected:
-	static LPCTSTR m_pszModeSuffix[3][4];
+	static LPCTSTR m_pszGUIMode[3];
+//	static LPCTSTR m_pszModeSuffix[3][4];	// Legacy method
 
 // NavBar
 public:

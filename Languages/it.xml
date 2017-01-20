@@ -3,7 +3,7 @@
 
 <!-- Envy Default Italian Skin File -->
 
-<!-- Translation based on default en.xml r15 -->
+<!-- Translation based on default en.xml r16 -->
 <!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -2244,7 +2244,7 @@
 		alla massima velocità possibile.</text>
 	</document>
 	<!-- Search help documents -->
-	<document name="SearchHelp.BadSearch1">
+	<document name="SearchHelp.BadSearch">
 		<text format="b">Riformula la ricerca per favore</text>
 		<newline gap="8"/>
 		<text>Questa ricerca è malformattata, e potrebbe non funzionare correttamente.
@@ -2252,9 +2252,10 @@
 		(tipo file). Inoltre, le ricerche non devono essere limitate a numeri o
 		solo termini negativi, e si dovrebbero evitare ricerche generalizzate.</text>
 		<newline gap="8"/>
-		<text>La maggior parte dei client nella rete ignora una ricerca per tutti i file MP3, ad esempio,
+		<text>La maggior parte dei client nella rete ignora una ricerca per tutti i file audio, ad esempio,
 		in quanto non è abbastanza specifica, e potrebbe generare troppi risultati.</text>
 	</document>
+	<!--
 	<document name="SearchHelp.BadSearch2">
 		<text format="b">Riformula la ricerca per favore</text>
 		<newline gap="8"/>
@@ -2268,18 +2269,17 @@
 	<document name="SearchHelp.BadSearch3">
 		<text format="b">Riformula la ricerca per favore</text>
 		<newline gap="8"/>
-		<text>Questa ricerca sembra contenere solo estensioni di file comuni, o termini non
-		cercabili.</text>
+		<text>Questa ricerca sembra contenere solo estensioni di file comuni, o termini non cercabili.</text>
 		<newline gap="8"/>
-		<text>Se hai difficoltà a creare ricerche, tieni presente che è abbastanza simile
-		ad una ricerca sul web. I termini specifici o le frasi sono la cosa migliore: Nomi unici, titoli e
-		parole chiave.</text>
+		<text>Se hai difficoltà a creare ricerche, tieni presente che è abbastanza simile ad una ricerca sul web.
+		I termini specifici o le frasi sono la cosa migliore: Nomi unici, titoli e parole chiave.</text>
 		<newline gap="8"/>
 		<text>I termini generali non possono essere cercati efficientemente e possono risultare in misere
 		prestazioni di ricerca, come pure l'alto uso di larghezza di banda durante le ricerche.</text>
 		<newline gap="8"/>
 		<text>Ulteriore aiuto è disponibile sul sito web di Envy.</text>
 	</document>
+	-->
 	<document name="SearchHelp.AdultSearch">
 		<text format="b">Questa ricerca non può essere avviata</text>
 		<newline gap="8"/>

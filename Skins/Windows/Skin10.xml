@@ -167,7 +167,6 @@
  <color name="ResizeBar.Highlight"			value="FDFCFB"/>
  <color name="System.Environment.3DShadow" 		value="D8D7D6"/>
  <color name="System.Environment.3DHighlight"		value="FFFFFF"/>
- <!--color name="System.Environment.Borders" 		value=" "-->  <!--legacy, use option MenuBorders-->
 </colors>
 
 <images>  <!--watermarks-->
@@ -176,41 +175,41 @@
  <!--image target="CCoolMenu.Hover.Edge"		path="Skin10\MenuHoverEdge.png"-->
  <!--image target="CCoolMenu.Disabled"			path="Skin10\MenuHoverDisabled.png"-->
  <!--image target="CCoolMenu.Disabled.Edge"		path="Skin10\MenuHoverDisabledEdge.png"-->
- <image target="CCoolMenuBar"				path="Skin10\Menubar.png"/>
+ <!--image target="CCoolMenuBar"			path="Skin10\Menubar.png"-->
+ <!--image target="CMonitorBar"				path="Skin10\MonitorBkg.png"-->
  <image target="CWndTabBar"				path="Skin10\Taskbar.png"/>
- <image target="CMonitorBar"				path="Skin10\MonitorBkg.png"/>
  <image target="CHashProgressBar"			path="Skin10\HashWnd.png"/>
  <image target="CMainWnd"				path="Skin10\TabsBkg.png"/>
  <image target="CMainWnd.Toolbar"			path="Skin10\TabsBkg.png"/>
  <image target="CMediaFrame.Toolbar"			path="Mediabar10.png"/>
  <image target="CMediaList.Toolbar"			path="Mediabar10.png"/>
- <image target="CDownloadTabBar"			path="Skin10\DownloadgroupsBar.png"/>
- <!--image target="CDownloadsWnd.Toolbar"		path="Skin10\ToolbarLt.png"-->
- <!--image target="CUploadsWnd.Toolbar" 		path="Skin10\Toolbar.png"-->
- <!--image target="CPrivateChatWnd.Toolbar"		path="Skin10\Toolbar.png"-->
- <!--image target="CBrowseHostWnd.Toolbar"		path="Skin10\Toolbar.png"-->
- <!--image target="CBrowseTree.Top.Toolbar" 		path="Skin10\Toolbar.png"-->
- <!--image target="CLibraryTree.Top.Toolbar"		path="Skin10\Toolbar.png"-->
- <!--image target="CLibraryTree.Virtual.Toolbar"	path="Skin10\Toolbar.png"-->
- <!--image target="CLibraryHeaderBar.Physical.Toolbar"	path="Skin10\Toolbar.png"-->
- <!--image target="CLibraryHeaderBar.Virtual.Toolbar"	path="Skin10\Toolbar.png"-->
- <!--image target="CLibraryHomeView.Physical.Toolbar"	path="Skin10\Toolbar.png"-->
- <!--image target="CLibraryHomeView.Virtual.Toolbar"	path="Skin10\Toolbar.png"-->
- <!--image target="CLibraryFileView.Physical.Toolbar"	path="Skin10\Toolbar.png"-->
- <!--image target="CLibraryFileView.Virtual.Toolbar"	path="Skin10\Toolbar.png"-->
- <!--image target="CLibraryTileView.Physical.Toolbar"	path="Skin10\Toolbar.png"-->
- <!--image target="CLibraryTileView.Virtual.Toolbar"	path="Skin10\Toolbar.png"-->
- <!--image target="CLibraryCollectionView.Virtual.Toolbar" path="Skin10\Toolbar.png"-->
- <!--image target="CIRCFrame.Toolbar"			path="Skin10\Toolbar.png"-->
- <!--image target="CDiscoveryWnd.Toolbar"		path="Skin10\Toolbar.png"-->
- <!--image target="CHostCacheWnd.Toolbar"		path="Skin10\Toolbar.png"-->
- <!--image target="CHitMonitorWnd.Toolbar"		path="Skin10\Toolbar.png"-->
- <!--image target="CSchedulerWnd.Toolbar"		path="Skin10\Toolbar.png"-->
- <!--image target="CSecurityWnd.Toolbar"		path="Skin10\Toolbar.png"-->
- <!--image target="ImageViewerWnd.Toolbar" 		path="Skin10\Toolbar.png"-->
- <!--image target="CNeighboursWnd.Toolbar" 		path="Skin10\ToolbarLt.png"-->
- <!--image target="CSearchWnd.Panel.Toolbar"		path="Skin10\Toolbar.png"-->
- <!--image target="CSearchWnd.Full.Toolbar"		path="Skin10\Toolbar.png"-->
+ <!--image target="CDownloadTabBar"			path="Skin10\DownloadgroupsBar.png"-->
+ <!--image target="CDownloadsWnd.Toolbar"-->
+ <!--image target="CUploadsWnd.Toolbar"-->
+ <!--image target="CPrivateChatWnd.Toolbar"-->
+ <!--image target="CBrowseHostWnd.Toolbar"-->
+ <!--image target="CBrowseTree.Top.Toolbar"-->
+ <!--image target="CLibraryTree.Top.Toolbar"-->
+ <!--image target="CLibraryTree.Virtual.Toolbar"-->
+ <!--image target="CLibraryHeaderBar.Physical.Toolbar"-->
+ <!--image target="CLibraryHeaderBar.Virtual.Toolbar"-->
+ <!--image target="CLibraryHomeView.Physical.Toolbar"-->
+ <!--image target="CLibraryHomeView.Virtual.Toolbar"-->
+ <!--image target="CLibraryFileView.Physical.Toolbar"-->
+ <!--image target="CLibraryFileView.Virtual.Toolbar"-->
+ <!--image target="CLibraryTileView.Physical.Toolbar"-->
+ <!--image target="CLibraryTileView.Virtual.Toolbar"-->
+ <!--image target="CLibraryCollectionView.Virtual.Toolbar"-->
+ <!--image target="CIRCFrame.Toolbar"-->
+ <!--image target="CDiscoveryWnd.Toolbar"-->
+ <!--image target="CHostCacheWnd.Toolbar"-->
+ <!--image target="CHitMonitorWnd.Toolbar"-->
+ <!--image target="CSchedulerWnd.Toolbar"-->
+ <!--image target="CSecurityWnd.Toolbar"-->
+ <!--image target="ImageViewerWnd.Toolbar"-->
+ <!--image target="CNeighboursWnd.Toolbar"-->
+ <!--image target="CSearchWnd.Panel.Toolbar"-->
+ <!--image target="CSearchWnd.Full.Toolbar"-->
  <image target="CSearchPanel"				path="Skin10\Tabs.png"/>
  <!--image target="CSearchPanel.Footer" 		path="Skin10\SidebarFooter.jpg"-->
  <image target="CHomePanel" 				path="Skin10\Tabs.png"/>
@@ -242,8 +241,8 @@
  <!--image target="CNeighboursWnd"			path="Skin10\SideBlock.png"-->
  <!--image target="CSecurityWnd"			path="Skin10\SideBlock.png"-->
  <!--image target="CListCtrl"				path="Skin10\SideBlock.png"--> <!--dialog list boxes-->
- <image target="CDialog.Panel"				path="Skin10\DialogPanel.png"/> <!--meta tabs/wizard-->
- <image target="CDialog"				path="Skin10\Dialog.png"/> <!--settings bg-->
+ <!--image target="CDialog.Panel"			path="Skin10\DialogPanel.png"--> <!--meta tabs/wizard-->
+ <!--image target="CDialog"				path="Skin10\Dialog.png"--> <!--settings bg-->
  <image target="CMediaList"				path="Skin10\Playlist.png"/>
  <image target="CMediaList.Header"			path="Skin10\PlaylistHeader.png"/>
  <!--image target="CMediaFrame.StatusBar"		path="Skin10\Playlist.png"--> <!--flicker?-->
@@ -297,8 +296,8 @@
  <image target="ButtonMap.Iconbox"			path="Skin10\ButtonmapIconbox.png"/>
  <image target="ButtonMap.Richdoc"			path="Skin10\ButtonmapRichdoc.png"/>
  <image target="ButtonMap.Toolbar"			path="Skin10\ButtonmapToolbar.png"/>
- <image target="ButtonMap.Taskbar"			path="Skin10\ButtonmapTaskbar.png"/>
- <image target="ButtonMap.DownloadGroup" 		path="Skin10\ButtonmapGroupsbar.png"/>
+ <!--image target="ButtonMap.Taskbar"			path="Skin10\ButtonmapTaskbar.png"-->
+ <!--image target="ButtonMap.DownloadGroup" 		path="Skin10\ButtonmapGroupsbar.png"-->
  <!--image target="ButtonMap.Menubar" 			path="Skin10\ButtonmapMenuBar.png"-->
  <image target="ButtonMap.MenuText"			path="Skin10\ButtonmapMenuText.png"/>
  <image target="ButtonMap.MenuSelect"			path="Skin10\ButtonmapMenuSelect.png"/>
@@ -308,10 +307,10 @@
  <!--image target="CTranfers.Selected.Inactive"		path="Skin10\HighlightGrey.png"-->
  <image target="System.Highlight"			path="Skin10\Highlight.png"/>
  <image target="System.Highlight.Inactive"		path="Skin10\HighlightGrey.png"/>
- <image target="System.Progress"			path="Skin10\Progress.png"/>
- <image target="System.Progress.Edge"			path="Skin10\ProgressEdge.png"/>
- <image target="System.Progress.None"			path="Skin10\ProgressNone.png"/>
- <image target="System.Progress.Shaded" 		path="Skin10\ProgressNone.png"/>
+ <!--image target="System.Progress"			path="Skin10\Progress.png"-->
+ <!--image target="System.Progress.Edge"		path="Skin10\ProgressEdge.png"-->
+ <!--image target="System.Progress.None"		path="Skin10\ProgressNone.png"-->
+ <!--image target="System.Progress.Shaded" 		path="Skin10\ProgressNone.png"-->
  <image target="System.Tooltips"			path="Skin10\ToolTip.png"/>
  <!--image target="System.Toolbars"			path="Skin10\Toolbar.png"-->
 </images>
@@ -346,9 +345,11 @@
  <image id="ID_MEDIA_PLAY"/>
  <image id="ID_MEDIA_NEXT"/>
  <image id="ID_MEDIA_PREVIOUS"/>
+ <image id="ID_MEDIA_MUTE"/>
  <image id="ID_MEDIA_REPEAT"/>
  <image id="ID_MEDIA_RANDOM"/>
- <image id="ID_MEDIA_MUTE"/>
+ <image id="ID_MEDIA_ZOOM"/>
+ <image id="ID_MEDIA_SETTINGS"/>
 </bitmap>
 
 <bitmap path="Skin10\Ticks.png" mask="CLR_NONE">

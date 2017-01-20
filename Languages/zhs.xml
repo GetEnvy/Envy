@@ -3,7 +3,7 @@
 
 <!-- Envy Default Chinese (Simplified) Skin File -->
 
-<!-- Translation based on default en.xml r15 --> <!-- (Shareaza r6092) -->
+<!-- Translation based on default en.xml r16 --> <!-- (Shareaza r6092) -->
 <!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -2170,7 +2170,7 @@
 		而下载未做限制。此设置将给予您最快的可能下载速率。</text>
 	</document>
 	<!-- Search help documents -->
-	<document name="SearchHelp.BadSearch1">
+	<document name="SearchHelp.BadSearch">
 		<text format="b">请重新定义搜索</text>
 		<newline gap="8"/>
 		<text>此搜索格式不正确，可能无法正常工作。
@@ -2178,9 +2178,10 @@
 		(文件类型)。此外，搜索不能仅限制数量或负项。
 		并且您应当避免过度的整体查询。</text>
 		<newline gap="8"/>
-		<text>许多网络中客户端都将会忽略搜索，例如，所有的 MP3 文件，
+		<text>许多网络中客户端都将会忽略搜索，例如，所有的 audio 文件，
 		因为这样定义地太过宽泛而产生过多的结果。</text>
 	</document>
+	<!--
 	<document name="SearchHelp.BadSearch2">
 		<text format="b">请重新措词</text>
 		<newline gap="8"/>
@@ -2203,6 +2204,7 @@
 		<newline gap="8"/>
 		<text>进一步的帮助可以参考 Envy 的网页。</text>
 	</document>
+	-->
 	<document name="SearchHelp.AdultSearch">
 		<text format="b">此搜索不能启动</text>
 		<newline gap="8"/>

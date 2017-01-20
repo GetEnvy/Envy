@@ -180,31 +180,31 @@ BOOL CEnvyURL::ParseRoot(LPCTSTR pszURL, BOOL bResolve)
 
 	SwitchMap( Root )
 	{
-		Root[ L"http:" ] 	= 'h';
-		Root[ L"https:" ]	= 'h';
-		Root[ L"ftp:" ]		= 'f';
-		Root[ L"btc:" ]		= 'b';
-		Root[ L"magnet:" ]	= 'm';
-		Root[ L"ed2k:" ]	= 'e';
-		Root[ L"ed2kftp:" ]	= 'k';
-		Root[ L"envy:" ]	= 'g';
-		Root[ L"peer:" ]	= 'g';
+		Root[ L"http:" ] 		= 'h';
+		Root[ L"https:" ]		= 'h';
+		Root[ L"ftp:" ]			= 'f';
+		Root[ L"btc:" ]			= 'b';
+		Root[ L"magnet:" ]		= 'm';
+		Root[ L"ed2k:" ]		= 'e';
+		Root[ L"ed2kftp:" ]		= 'k';
+		Root[ L"envy:" ]		= 'g';
+		Root[ L"peer:" ]		= 'g';
 		Root[ L"peerproject:" ]	= 'g';
-		Root[ L"shareaza:" ] = 'g';
-		Root[ L"gnutella:" ] = 'g';
-		Root[ L"gnet:" ] 	= 'g';
-		Root[ L"g2:" ]		= '2';
-		Root[ L"gwc:" ]		= 'u';
-		Root[ L"uhc:" ]		= 'u';
-		Root[ L"ukhl:" ]	= 'u';
-		Root[ L"gnutella1:" ] = 'u';
-		Root[ L"gnutella2:" ] = 'u';
-		Root[ L"mp2p:" ]	= 'p';
-		Root[ L"adc:" ] 	= 'd';
-		Root[ L"dchub:" ]	= 'd';
-		Root[ L"dcfile:" ]	= 'c';
-		Root[ L"foxy:" ]	= 'x';
-		Root[ L"irc:" ]		= 'i';
+		Root[ L"shareaza:" ]	= 'g';
+		Root[ L"gnutella:" ]	= 'g';
+		Root[ L"gnet:" ] 		= 'g';
+		Root[ L"g2:" ]			= '2';
+		Root[ L"gwc:" ]			= 'u';
+		Root[ L"uhc:" ]			= 'u';
+		Root[ L"ukhl:" ]		= 'u';
+		Root[ L"gnutella1:" ]	= 'u';
+		Root[ L"gnutella2:" ]	= 'u';
+		Root[ L"mp2p:" ]		= 'p';
+		Root[ L"adc:" ] 		= 'd';
+		Root[ L"dchub:" ]		= 'd';
+		Root[ L"dcfile:" ]		= 'c';
+		Root[ L"foxy:" ]		= 'x';
+		Root[ L"irc:" ]			= 'i';
 	}
 
 	switch ( Root[ strRoot ] )
@@ -238,13 +238,11 @@ BOOL CEnvyURL::ParseRoot(LPCTSTR pszURL, BOOL bResolve)
 	case 'k':	// ed2kftp://
 		return ParseED2KFTP( pszURL, bResolve );
 	case 'e':	// ed2k:
-		SkipSlashes( pszURL, nRoot );
-		return ParseDonkey( pszURL );
+		return ParseDonkey( SkipSlashes( pszURL, nRoot ) );
 	case 'b':	// btc://
 		return ParseBTC( pszURL, bResolve );
 	case 'p':	// mp2p:
-		SkipSlashes( pszURL, nRoot );
-		return ParsePiolet( pszURL );
+		return ParsePiolet( SkipSlashes( pszURL, nRoot ) );
 	case 'd':	// dchub://1.2.3.4:411	(adc:// ?)
 		return ParseDCHub( pszURL, bResolve );
 	case 'c':	// dcfile:// (Deprecated?)
@@ -288,26 +286,23 @@ BOOL CEnvyURL::ParseRoot(LPCTSTR pszURL, BOOL bResolve)
 //	}
 //	else if ( _tcsnicmp( pszURL, L"ed2k:", 5 ) == 0 )
 //	{
-//		SkipSlashes( pszURL, 5 );
-//		return ParseDonkey( pszURL );
+//		return ParseDonkey( SkipSlashes( pszURL, 5 ) );
 //	}
 //	else if ( _tcsnicmp( pszURL, L"shareaza:", 9 ) == 0 ||
 //			  _tcsnicmp( pszURL, L"gnutella:", 9 ) == 0 )
 //	{
-//		SkipSlashes( pszURL, 9 );
-//		return ParseEnvy( pszURL );
+//		return ParseEnvy( SkipSlashes( pszURL, 9 ) );
 //	}
 //	else if ( _tcsnicmp( pszURL, L"envy:", 5 ) == 0 )	// APP_LENGTH LETTERCOUNT
 //	{
-//		SkipSlashes( pszURL, 5 );
-//		return ParseEnvy( pszURL );
+//		return ParseEnvy( SkipSlashes( pszURL, 5 ) );
 //	}
 //	else if ( _tcsnicmp( pszURL, L"gwc:", 4 ) == 0 )
 //	{
 //		CString strTemp;
 //		strTemp.Format( L"envy:%s", pszURL );
 //		pszURL = strTemp;
-//		SkipSlashes( pszURL, 5 );			// APP_LENGTH LETTERCOUNT
+//		pszURL = SkipSlashes( pszURL, 5 );			// APP_LENGTH LETTERCOUNT
 //		return ParseEnvy( pszURL );
 //	}
 //	else if ( _tcsnicmp( pszURL, L"uhc:", 4 ) == 0 ||
@@ -319,19 +314,19 @@ BOOL CEnvyURL::ParseRoot(LPCTSTR pszURL, BOOL bResolve)
 //	}
 //	else if ( _tcsnicmp( pszURL, L"g2:", 3 ) == 0 )
 //	{
-//		SkipSlashes( pszURL, 3 );
+//		pszURL = SkipSlashes( pszURL, 3 );
 //		if ( _tcsnicmp( pszURL, L"browse:", 7 ) == 0 || ! ParseMagnet( pszURL ) )
 //			return ParseEnvy( pszURL );
 //		return TRUE;
 //	}
 //	else if ( _tcsnicmp( pszURL, L"gnet:", 5 ) == 0 )
 //	{
-//		SkipSlashes( pszURL, 5 );
+//		pszURL = SkipSlashes( pszURL, 5 );
 //		return ParseEnvy( pszURL );
 //	}
 //	else if ( _tcsnicmp( pszURL, L"mp2p:", 5 ) == 0 )
 //	{
-//		SkipSlashes( pszURL, 5 );
+//		pszURL = SkipSlashes( pszURL, 5 );
 //		return ParsePiolet( pszURL );
 //	}
 //	else if ( _tcsnicmp( pszURL, L"foxy:", 5 ) == 0 )			// Foxy
@@ -350,7 +345,7 @@ BOOL CEnvyURL::ParseRoot(LPCTSTR pszURL, BOOL bResolve)
 //	}
 //	else if ( ! _tcsnicmp( pszURL, L"dchub://", 8 ) )			// dchub://1.2.3.4:411
 //	{
-//		SkipSlashes( pszURL, 8 );
+//		pszURL = SkipSlashes( pszURL, 8 );
 //	//	m_nProtocol	= PROTOCOL_DC;
 //	//	m_nPort = protocolPorts[ PROTOCOL_DC ];
 //		return ParseEnvyHost( pszURL, FALSE, PROTOCOL_DC );
@@ -1121,9 +1116,11 @@ BOOL CEnvyURL::ParseDonkeyFile(LPCTSTR pszURL)
 	CString strURL( pszURL ), strPart;
 	int nSep;
 
+	// ed2k://|file| part should not be passed
+
 	// Name
 	nSep = strURL.Find( L'|' );
-	if ( nSep < 0 ) return FALSE;
+	if ( nSep < 1 ) return FALSE;
 	strPart	= strURL.Left( nSep );
 	strURL	= strURL.Mid( nSep + 1 );
 
@@ -1134,12 +1131,22 @@ BOOL CEnvyURL::ParseDonkeyFile(LPCTSTR pszURL)
 	// Size
 	nSep = strURL.Find( L'|' );
 	if ( nSep < 0 ) return FALSE;
-	strPart	= strURL.Left( nSep );
-	strURL	= strURL.Mid( nSep + 1 );
 
-	QWORD nSize = 0;
-	if ( _stscanf( strPart, L"%I64u", &nSize ) != 1 || ! nSize ) return FALSE;
+	if ( nSep == 0 )	// No size
+	{
+		strURL = strURL.Mid( 1 );
+	}
+	else
+	{
+		strPart = strURL.Left( nSep );
+		strURL = strURL.Mid( nSep + 1 );
+
+		QWORD nSize = 0;
+		if ( _stscanf( strPart, L"%I64u", &nSize ) != 1 )
+			return FALSE;
+
 		m_nSize = nSize;
+	}
 
 	// Hash
 	nSep = strURL.Find( L'|' );
@@ -1191,7 +1198,7 @@ BOOL CEnvyURL::ParseDonkeyFile(LPCTSTR pszURL)
 
 	while ( strURL.GetLength() > 8 )
 	{
-		// Source (Starts with |/|sources,
+		// Source (Starts with |/|sources)
 		nSep = strURL.Find( L',' );
 		if ( nSep < 0 ) return TRUE;
 		strPart	= strURL.Left( nSep );

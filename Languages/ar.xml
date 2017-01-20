@@ -3,7 +3,7 @@
 
 <!-- Envy Arabic Language Skin File -->
 
-<!-- Translation based on default en.xml r15 -->
+<!-- Translation based on default en.xml r16 -->
 <!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -1785,7 +1785,7 @@
 			<newline gap="4" />
 			<group id="1">
 				<newline gap="8" />
-				<text> يقوم بالمسح والمعالجة Envy</text>
+				<text>يقوم بالمسح والمعالجة Envy</text>
 				<text id="LibraryHashRemaining" format="b">%lu </text>
 				<text>ملف</text>
 				<newline gap="8" />
@@ -2200,7 +2200,7 @@
 			ممكن يكون متوفر</text>
 	</document>
 	<!--البحث في وثائق التعليمات-->
-	<document name="SearchHelp.BadSearch1">
+	<document name="SearchHelp.BadSearch">
 		<text format="b">الرجاء إعادة كتابة عبارة البحث</text>
 		<newline gap="8" />
 		<text>هذا البحث مكتوب بشكل سيئ و قد لا يفيد في النتائج
@@ -2209,8 +2209,9 @@
 			تحتوى أرقام و يجب أن تتفادى الإستفسارات العامة</text>
 		<newline gap="8" />
 		<text>أغلب التوابع على الشبكة تتجاهل البحث عن جميع
-			لأنها ليست مميزة بما فيه الكفاية و تولد الكثير من النتائج MP3 ملفات</text>
+			لأنها ليست مميزة بما فيه الكفاية و تولد الكثير من النتائج audio ملفات</text>
 	</document>
+	<!--
 	<document name="SearchHelp.BadSearch2">
 		<text format="b">الرجاء إعادة كتابة عبارة البحث</text>
 		<newline gap="8" />
@@ -2236,6 +2237,7 @@
 		<newline gap="8" />
 		<text>Envy للمزيد من العليمات على موقع</text>
 	</document>
+	-->
 	<document name="SearchHelp.AdultSearch">
 		<text format="b">الرجاء إعادة كتابة عبارة البحث</text>
 		<newline gap="8" />
@@ -2267,7 +2269,7 @@
 		<text>حيث أن هذه المجلدات يمكن المشاركة بها بدلا من ذلك</text>
 		<newline gap="8" />
 		<text>مجلد Envy 'للغير مكتملة' يجب أن أيضا عدم المشاركة به من خلال
-		المكتبة ، لأن تجزئة التحميلات مستمر مما قد يؤثر على الأداء</text>
+			المكتبة ، لأن تجزئة التحميلات مستمر مما قد يؤثر على الأداء</text>
 	</document>
 </documents>
 <!-- Localized Command Tip Text. "Message" displayed in status bar, "Tip" shown in tooltip -->

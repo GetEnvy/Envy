@@ -4,7 +4,7 @@
 <!-- Envy Default Afrikaans Skin File -->
 <!-- Weergawe: 27 Oktober 2005 vir Shareaza 2.2.0.2 -->
 
-<!-- Translation based on default en.xml r15 -->
+<!-- Translation based on default en.xml r16 -->
 <!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -1882,7 +1882,7 @@
 		<text>Die Envy Verstellingsbeheerder laat gevorderde gebruikers toe om die werking van Envy
 			heeltemal te verander. Die verstellings in die </text>
 		<text format="b">Internet </text>
-		<text> afdeling beheer hoe Envy met ander nodusse binne verspreide persoon-tot-persoon netwerke kommunikeer. </text>
+		<text>afdeling beheer hoe Envy met ander nodusse binne verspreide persoon-tot-persoon netwerke kommunikeer.</text>
 		<newline gap="16" indent="16"/>
 		<link target="page:CConnectionSettingsPage" format="b">Konneksie:</link>
 		<text>&#160;Die spoed en vermoëns van jou Internet konneksie.</text>
@@ -2204,7 +2204,7 @@
 		aflaaispoed te verseker.</text>
 	</document>
 	<!-- Search help documents -->
-	<document name="SearchHelp.BadSearch1">
+	<document name="SearchHelp.BadSearch">
 		<text format="b">Herbewoord asseblief die soektog</text>
 		<newline gap="8"/>
 		<text>Hierdie soektog is swak bewoord, en mag dalk nie korrek funksioneer nie.
@@ -2212,10 +2212,11 @@
 		Verder moet soektogte nie slegs syfers of negatiewe terme bevat nie, en
 		jy moet oorveralgemeende soekterme vermy.</text>
 		<newline gap="8"/>
-		<text> Meeste kliënte op die netwerk sal byvoorbeeld 'n soektog vir
-		alle MP3 lêers ignoreer, omdat dit nie spesifiek genoeg is nie
+		<text>Meeste kliënte op die netwerk sal byvoorbeeld 'n soektog vir
+		alle audio lêers ignoreer, omdat dit nie spesifiek genoeg is nie
 		en te veel resultate sal lewer.</text>
 	</document>
+	<!--
 	<document name="SearchHelp.BadSearch2">
 		<text format="b">Herbewoord asseblief die soektog</text>
 		<newline gap="8"/>
@@ -2242,6 +2243,7 @@
 		<newline gap="8"/>
 		<text>Verdere hulp is beskikbaar op die Envy webblad.</text>
 	</document>
+	-->
 	<document name="SearchHelp.AdultSearch">
 		<text format="b">Hierdie soektog kan nie begin word nie</text>
 		<newline gap="8"/>

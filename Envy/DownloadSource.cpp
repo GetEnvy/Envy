@@ -296,6 +296,11 @@ BOOL CDownloadSource::ResolveURL()
 
 	switch ( m_nProtocol )
 	{
+	case PROTOCOL_BT:
+		if ( pURL.m_oBTC )
+			m_oGUID = transformGuid( pURL.m_oBTC );
+		break;
+
 	case PROTOCOL_ED2K:
 		m_pServerAddress	= pURL.m_pServerAddress;
 		m_nServerPort		= pURL.m_nServerPort;
@@ -310,14 +315,6 @@ BOOL CDownloadSource::ResolveURL()
 		m_bPushOnly			= TRUE;
 		CDCClients::CreateGUID( m_sNick, m_oGUID );
 		break;
-
-	case PROTOCOL_BT:
-		if ( pURL.m_oBTC )
-			m_oGUID = transformGuid( pURL.m_oBTC );
-		break;
-
-	//default:
-	//	;
 	}
 
 	m_sCountry		= theApp.GetCountryCode( m_pAddress );
@@ -417,21 +414,13 @@ void CDownloadSource::Serialize(CArchive& ar, int nVersion)	// DOWNLOAD_SER_VERS
 	//	ar >> m_nSpeed;
 	//	ar >> nIndex;
 	//	ar >> m_sName;
-	//	if ( nVersion >= 4 ) ar >> m_sURL;
+	//	if ( nVersion >= 4 )  ar >> m_sURL;
 	//	if ( nVersion >= 21 ) ar >> m_nProtocol;
 	//	ar >> m_bSHA1;
 	//	if ( nVersion >= 13 ) ar >> m_bTiger;
 	//	if ( nVersion >= 13 ) ar >> m_bED2K;
 	//	if ( nVersion >= 10 ) ar >> m_bHashAuth;
-	//
-	//	if ( nVersion == 8 )
-	//	{
-	//		DWORD nV;
-	//		ar >> nV;
-	//		m_sServer.Format( L"%c%c%c%c", nV & 0xFF, ( nV >> 8 ) & 0xFF, ( nV >> 16 ) & 0xFF, nV >> 24 );
-	//	}
-	//	else if ( nVersion >= 9 )
-	//		ar >> m_sServer;
+	//	if ( nVersion >= 9 )  ar >> m_sServer;
 	//
 	//	ar >> m_bPushOnly;
 	//	ar >> m_bReadContent;

@@ -3,7 +3,7 @@
 
 <!-- Envy Default Chinese (Traditional) Skin File -->
 
-<!-- Translation based on default en.xml r15 --> <!-- (Shareaza 2.2.2.12) -->
+<!-- Translation based on default en.xml r16 --> <!-- (Shareaza 2.2.2.12) -->
 <!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -2122,23 +2122,24 @@
 		<text>您的上傳上限速度預設為 85% 的可用上傳頻寬, 並且不對下載速度做任何限制. 這樣的設定方式應該可以讓您以最高可用下載速度下載.</text>
 	</document>
 	<!-- Search help documents -->
-	<document name="SearchHelp.BadSearch1">
-		<text format="b">請重新修改搜尋字眼(1)</text>
+	<document name="SearchHelp.BadSearch">
+		<text format="b">請重新修改搜尋字眼</text>
 		<newline gap="8"/>
 		<text>這個搜尋的格式不佳, 可能無法正常進行.
 		搜尋時, 盡可能使用多個詞, 並且指定一個檔案類型. 還有, 絕不要只打入數字或是負面語, 以及避免過於普通的詢問.</text>
 		<newline gap="8"/>
-		<text>幾乎所有在網路上的客戶端會忽略來自於其他人搜尋所有的 MP3 檔, 因為這樣子不夠明確, 而且會產生太多搜尋結果.</text>
+		<text>幾乎所有在網路上的客戶端會忽略來自於其他人搜尋所有的 audio 檔, 因為這樣子不夠明確, 而且會產生太多搜尋結果.</text>
 	</document>
+	<!--
 	<document name="SearchHelp.BadSearch2">
-		<text format="b">請重新修改搜尋字眼(2)</text>
+		<text format="b">請重新修改搜尋字眼</text>
 		<newline gap="8"/>
 		<text>這個搜尋無法正確進行, 因為沒有包含足夠的關鍵字. 想要開始搜尋, 您最少需要輸入一些有效的字母或是文字.</text>
 		<newline gap="8"/>
 		<text>雖然您可以搜尋通用的檔案副檔名/延伸檔名(以及數字), 但是您也要一併輸入其他的關鍵字. Envy 在搜尋時忽略標點符號與萬用字元, 只使用您鍵入的文字.</text>
 	</document>
 	<document name="SearchHelp.BadSearch3">
-		<text format="b">請重新修改搜尋字眼(3)</text>
+		<text format="b">請重新修改搜尋字眼</text>
 		<newline gap="8"/>
 		<text>這個搜尋僅僅包含通用檔案延伸 (副檔名), 或是不可用來搜尋的字眼.</text>
 		<newline gap="8"/>
@@ -2148,6 +2149,7 @@
 		<newline gap="8"/>
 		<text>在 Envy 官方網站可以找到相關說明.</text>
 	</document>
+	-->
 	<document name="SearchHelp.AdultSearch">
 		<text format="b">無法開始進行這個搜尋動作</text>
 		<newline gap="8"/>
@@ -2168,7 +2170,7 @@
 		<newline gap="8"/>
 		<text>這個資料夾本身是(或是含有) 系統資料夾. 不建議您分享這個資料夾, 因為大部份的檔案對其他人來說毫無用處.</text>
 		<newline gap="8"/>
-		<text> Windows, Program Files, 或是其他類似的資料夾都不含任何適合分享的檔案. 所有您想要分享的檔案應該置於這些資料夾的子資料夾的</text><text format="i">裡面</text>
+		<text>Windows, Program Files, 或是其他類似的資料夾都不含任何適合分享的檔案. 所有您想要分享的檔案應該置於這些資料夾的子資料夾的</text><text format="i">裡面</text>
 		<newline gap="8"/>
 		<text>Envy '未完成' 資料夾不應該放在收藏裡與其他人分享, 因為為正在進行的下載切細可能影響效能.</text>
 	</document>

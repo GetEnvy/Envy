@@ -3,7 +3,7 @@
 
 <!-- Envy Default Spanish Skin File -->
 
-<!-- Translation based on default en.xml r15 -->
+<!-- Translation based on default en.xml r16 -->
 <!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -2256,19 +2256,20 @@
 		de las descargas.</text>
 	</document>
 	<!-- Search help documents -->
-	<document name="SearchHelp.BadSearch1">
-		<text format="b">Por favor vuelve a reformular la busqueda</text>
+	<document name="SearchHelp.BadSearch">
+		<text format="b">Por favor reformule la busqueda</text>
 		<newline gap="8"/>
 		<text>Esta busqueda esta mal formateada, y no funcionará correctamente.
 		Las busquedas deberían incluir varios terminos cuando sea possible, y deberían especificar un esquema
 		(tipo de archivo). Además, las busquedas no deben ser limitadas a números o terminos negativos,
 		y debiendo evitar hacer muchas queries (busquedas).</text>
 		<newline gap="8"/>
-		<text> Casi todos los clientes de la red van a ignorar la busqueda de todos los archivos MP3,por ejemplo,
+		<text>Casi todos los clientes de la red van a ignorar la busqueda de todos los archivos audio,por ejemplo,
 		porque no es muy especifico y puede generar demasiados resultados.</text>
 	</document>
+	<!--
 	<document name="SearchHelp.BadSearch2">
-		<text format="b">Por favor reformule la búsqueda</text>
+		<text format="b">Por favor vuelve a reformular la búsqueda</text>
 		<newline gap="8"/>
 		<text>Esta búsqueda no contiene suficientes términos para funcionar correctamente. Todas las búsquedas necesitan
 		un número mínimo de letras alfabeticas válidas para poder comenzar.</text>
@@ -2292,6 +2293,7 @@
 		<newline gap="8"/>
 		<text>Más ayuda puede ser encontrada en el sitio de Envy.</text>
 	</document>
+	-->
 	<document name="SearchHelp.AdultSearch">
 		<text format="b">Esta busqueda no puede ser empezada</text>
 		<newline gap="8"/>
@@ -2319,7 +2321,7 @@
 		<text>Carpetas como la carpeta de Windows, Archivos del Programa, y carpetas similares
 		no continen archivos convenientes para compartir. Cualquier archivo de interés deberia estar ubicado en una
 		sub-carpeta localizada</text><text format="i"> adentro </text>
-		<text> estas carpetas. Por favor comparte estos en vez de los otros.</text>
+		<text>estas carpetas. Por favor comparte estos en vez de los otros.</text>
 		<newline gap="8"/>
 		<text>Los archivos de Envy de la carpeta 'incomplete' no deben ser compartidos en mi Colección,
 		porque cuando trates de hacer el hashing process vas a tener problemás en el rendimiento.</text>

@@ -3,7 +3,7 @@
 
 <!-- Envy Default Norwegian Skin File -->
 
-<!-- Translation based on default en.xml r15 --> <!-- (Shareaza 2.2.0.2) -->
+<!-- Translation based on default en.xml r16 --> <!-- (Shareaza 2.2.0.2) -->
 <!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -2001,7 +2001,7 @@
 		som mulig.</text>
 	</document>
 	<!-- Search help documents -->
-	<document name="SearchHelp.BadSearch1">
+	<document name="SearchHelp.BadSearch">
 		<text format="b">Vennligst omformuler søket</text>
 		<newline gap="8"/>
 		<text>Dette er et dårlig formulert søk, og vil muligens ikke gi noe bra resultat.
@@ -2009,9 +2009,10 @@
 		Søk bør ikke begrenses til kun tall eller negative uttrykk,
 		man bør også unngå generelle søk.</text>
 		<newline gap="8"/>
-		<text> De fleste programmene på nettverket vil ignorere søk etter alle MP3 filer, for eksempel,
+		<text>De fleste programmene på nettverket vil ignorere søk etter alle audio filer, for eksempel,
 		fordi det ikke er spesifisert godt nok og man ville fått alt for mange resultat.</text>
 	</document>
+	<!--
 	<document name="SearchHelp.BadSearch2">
 		<text format="b">Vennligst omformuler søket</text>
 		<newline gap="8"/>
@@ -2025,18 +2026,17 @@
 	<document name="SearchHelp.BadSearch3">
 		<text format="b">Vennligst omformuler søket</text>
 		<newline gap="8"/>
-		<text>Dette søket ser ut til å kun inneholde vanlige filetternavn, eller ikke-søkbare
-		ord.</text>
+		<text>Dette søket ser ut til å kun inneholde vanlige filetternavn, eller ikke-søkbare ord.</text>
 		<newline gap="8"/>
-		<text>Hvis du har problemer med å foreta søk, husk at det er nokså likt som
-		et nettsøk. Spesifikke uttrykk og kriterier er best- Unike navn, titler og
-		nøkkelord.</text>
+		<text>Hvis du har problemer med å foreta søk, husk at det er nokså likt som et nettsøk.
+		Spesifikke uttrykk og kriterier er best- Unike navn, titler og nøkkelord.</text>
 		<newline gap="8"/>
 		<text>Generelle uttrykk kan ikke bli søkt etter på en effektiv måte, og kan resultere
 		i dårlig søkeytelse og høyt bruk av båndbredde under søk.</text>
 		<newline gap="8"/>
 		<text>Mer hjelp er tilgjengelig på Envy sin nettside.</text>
 	</document>
+	-->
 	<document name="SearchHelp.AdultSearch">
 		<text format="b">Dette søket kan ikke startes</text>
 		<newline gap="8"/>
@@ -2044,8 +2044,8 @@
 		ment kun for voksne. Dette forhindres av et filter for voksent innhold, som finnes under Innstilinger.
 		Forandre søketeksten eller skru av filteret for voksent innhold.</text>
 		<newline gap="8"/>
-		<text>For å skru av filteret, gå til Verktøy &gt; Innstillinger &gt; Generelt og fjern
-		haken for filteret.</text>
+		<text>For å skru av filteret, gå til Verktøy &gt; Innstillinger &gt; Generelt
+		og fjern haken for filteret.</text>
 	</document>
 	<!-- Share help documents -->
 	<document name="ShareHelp.AlreadyShared">
@@ -2064,7 +2064,7 @@
 		<text>Mapper som Windows, Programfiler, og lignende mapper
 		inneholder ikke filer som passer for å bli delt. Filer av interesse vil være i
 		undermapper lagret </text><text format="i"> i </text>
-		<text> disse mappene. Vennligst del disse i stedet.</text>
+		<text>disse mappene. Vennligst del disse i stedet.</text>
 		<newline gap="8"/>
 		<text>Mappen 'incomplete' bør ikke deles,
 		da det vil få store konsekvenser for programmets ytelse.</text>

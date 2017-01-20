@@ -9,7 +9,7 @@
  link="http://getenvy.com"
  email="Contact(at)GetEnvy.com"
  license="Persistent Public Domain (PPD)"
- dependencies="..\Windows\Skin8Frames.xml"
+ dependencies="Skin8Frames.xml"
  platform="Envy 1.0"
  path="Carbon"
  version="1.0"
@@ -218,6 +218,7 @@
  <!--"CNeighboursWnd.Toolbar"-->
  <!--"CSearchWnd.Panel.Toolbar"-->
  <!--"CSearchWnd.Full.Toolbar"-->
+ <image target="CSearchWnd.Toolbar"			path="Toolbar.png"/>
  <image target="CSearchPanel"				path="Sidebar.png"/>
  <!--image target="CSearchPanel.Footer" 		path="SidebarFooter.jpg"-->
  <image target="CHomePanel" 				path="Sidebar.png"/>

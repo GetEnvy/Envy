@@ -3,7 +3,7 @@
 
 <!-- Envy Default Japanese Skin File -->
 
-<!-- Translation based on default en.xml r15 --> <!-- (Shareaza 2.2.0.2) -->
+<!-- Translation based on default en.xml r16 --> <!-- (Shareaza 2.2.0.2) -->
 <!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -2134,7 +2134,7 @@
 		</text>
 	</document>
 	<!-- Search help documents -->
-	<document name="SearchHelp.BadSearch1">
+	<document name="SearchHelp.BadSearch">
 		<text format="b">別の検索文字列を入力して下さい</text>
 		<newline gap="8"/>
 		<text>この検索文字列は不十分で、正しく検索できない可能性があります。
@@ -2143,8 +2143,9 @@
 		一般的なキーワードを避けるべきです。</text>
 		<newline gap="8"/>
 		<text>例えば、非常に多くの検索結果が発生するため、ネットワーク上の殆どのクライアントは
-		MP3ファイルを全て検索するような検索指定を無視します。</text>
+		audioファイルを全て検索するような検索指定を無視します。</text>
 	</document>
+	<!--
 	<document name="SearchHelp.BadSearch2">
 		<text format="b">別の検索文字列を入力して下さい</text>
 		<newline gap="8"/>
@@ -2170,6 +2171,7 @@
 		<newline gap="8"/>
 		<text>追加詳細はEnvyウェブサイトを参照して下さい。</text>
 	</document>
+	-->
 	<document name="SearchHelp.AdultSearch">
 		<text format="b">この検索は出来ません</text>
 		<newline gap="8"/>

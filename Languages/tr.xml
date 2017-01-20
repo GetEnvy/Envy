@@ -3,7 +3,7 @@
 
 <!-- Envy Default Turkish Skin File -->
 
-<!-- Translation based on default en.xml r15 -->
+<!-- Translation based on default en.xml r16 -->
 <!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -1875,10 +1875,10 @@
 		<text>Envy Ayarlar Yönetimi ileri kulanıcılara
 			Envy'nın nasıl çalışacağını tamamen ayarlamalarına izin verir. Ayarlar </text>
 		<text format="b">Genel</text>
-		<text>sekmesi kullanıcı olaylarını kapsar. </text>
+		<text>sekmesi kullanıcı olaylarını kapsar.</text>
 		<newline gap="16" indent="16"/>
 		<link target="page:CGeneralSettingsPage" format="b">Genel:</link>
-		<text>&#160;Ortak kullanıcılar arayüzünde araçlar, küçültme, numara formatları, uyarılar vb. ayarlar vardır. </text>
+		<text>&#160;Ortak kullanıcılar arayüzünde araçlar, küçültme, numara formatları, uyarılar vb. ayarlar vardır.</text>
 		<newline gap="10"/>
 		<link target="page:CLibrarySettingsPage" format="b">Kütüphane:</link>
 		<text>&#160;Dosya kütüphanesini tanıtır ve yönetir, ve dosyaları açar.</text>
@@ -1893,7 +1893,7 @@
 		<text>&#160;Profil, sohbet ve mesaj ayarları.</text>
 		<newline gap="10"/>
 		<link target="page:CRemoteSettingsPage" format="b">Uzak:</link>
-		<text>&#160;Web tarayıcınız aracılığıyla Envy uzaktan kontrol yapmanızı sağlayan ayarlar. </text>
+		<text>&#160;Web tarayıcınız aracılığıyla Envy uzaktan kontrol yapmanızı sağlayan ayarlar.</text>
 		<newline gap="10"/>
 		<link target="page:CWebSettingsPage" format="b">Web Bütünleşmesi:</link>
 		<text>&#160;Envy tarayıcınızın kabul ettiği linkler ve İndirilmiş içeriklerle bütünleşir.</text>
@@ -1904,7 +1904,7 @@
 		<text>Envy Ayarlar Yönetimi ileri kulanıcılara Envy'nın nasıl çalışacağını tamamen ayarlamalarına izin verir.
 			Ayarlar	</text>
 		<text format="b">İnternet </text>
-		<text> sekmesi karşılıklı ağlardaki diğer düğümlerle etkileşimini kontrol eder. </text>
+		<text>sekmesi karşılıklı ağlardaki diğer düğümlerle etkileşimini kontrol eder.</text>
 		<newline gap="16" indent="16"/>
 		<link target="page:CConnectionSettingsPage" format="b">Bağlantı:</link>
 		<text>&#160;İnternet bağlantınızın hızı ve verimidir.</text>
@@ -2139,7 +2139,7 @@
 	<document name="GeneralHelp.DiskSpace">
 		<text format="b">Disk Alanı Az</text>
 		<newline gap="8"/>
-		<text> Envy tarafından, bir ya da daha fazla sürücüde kullanılan boş alan azdır.</text>
+		<text>Envy tarafından, bir ya da daha fazla sürücüde kullanılan boş alan azdır.</text>
 		<newline gap="8"/>
 		<text>Diskte sürekli olarak yeterli bir boş alan korumaya çalışmalısınız. Sürücüler dolu olursa programlar
 		dengesiz olabilir ve geçici dosyalar kaybolabilir. Bir disk temizleyici kullanmalı, istenmeyen dosyaları silmeli ya da
@@ -2207,22 +2207,23 @@
 		Bu yapılandırma mevcut indirmeler arasında en hızlı olanağı vermelidir.</text>
 	</document>
 	<!-- Search help documents -->
-	<document name="SearchHelp.BadSearch1">
+	<document name="SearchHelp.BadSearch">
 		<text format="b">Lütfen anlamlı sözcüklerle arayın</text>
 		<newline gap="8"/>
 		<text>Bu arama kalitesiz formattadır ve doğru görev yapamayabilir.
 		Aramalar olanaklı birkaç terim içermelidir ve bir şema(mesela dosya türü) belirtilmelidir.
 		Ayrıca, aramalar sadece sayılar ve olumsuz terimlerle sınırlı kalmamalıdır ve bitmiş genel sorgulardan kaçınılmalıdır.</text>
 		<newline gap="8"/>
-		<text>Ağdaki birçok istemci örneğin mp3 dosyalarının tümü için bir aramayı görmezlikten gelecektir. Çünkü yeterince kesin değildir ve çok fazla sonuç oluşturacaktır.</text>
+		<text>Ağdaki birçok istemci örneğin audio dosyalarının tümü için bir aramayı görmezlikten gelecektir. Çünkü yeterince kesin değildir ve çok fazla sonuç oluşturacaktır.</text>
 	</document>
+	<!--
 	<document name="SearchHelp.BadSearch2">
 		<text format="b">Lütfen anlamlı sözcüklerle arayın</text>
 		<newline gap="8"/>
 		<text>Bu arama uygun biçimde işlemek için yeterli terimi içermez.
 		Tüm aramalar başlayabilmek için geçerli alfabetik karakterlerden en az birine ihtiyaç duyar.</text>
 		<newline gap="8"/>
-		<text> Genel dosya kapsamları (ve numaraları) aratıldığında, aramayı yaratıyorken iyi olarak diğer şarta girebilirsin.
+		<text>Genel dosya kapsamları (ve numaraları) aratıldığında, aramayı yaratıyorken iyi olarak diğer şarta girebilirsin.
 		Noktalama ve özel sembollar aramalarda kullanılmazlar, sadece metin girin.</text>
 	</document>
 	<document name="SearchHelp.BadSearch3">
@@ -2237,6 +2238,7 @@
 		<newline gap="8"/>
 		<text>Envy web sitesinde daha fazla yardım bulunabilir.</text>
 	</document>
+	-->
 	<document name="SearchHelp.AdultSearch">
 		<text format="b">Arama Başlayamadı</text>
 		<newline gap="8"/>

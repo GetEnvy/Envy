@@ -3,7 +3,7 @@
 
 <!-- Envy Default Hungarian Skin File -->
 
-<!-- Translation based on default en.xml r15 -->
+<!-- Translation based on default en.xml r16 -->
 <!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -2195,16 +2195,17 @@
 		míg a letöltés korlátlan marad. Ezzel a beállítással lehet a legjobb arányt elérni a fel- és a letöltés között.</text>
 	</document>
 	<!-- Search help documents -->
-	<document name="SearchHelp.BadSearch1">
+	<document name="SearchHelp.BadSearch">
 		<text format="b">Gyenge keresés</text>
 		<newline gap="8"/>
 		<text>Ez a keresés nem hatékony és nem működik megfelelően.
 		A keresések lehetőleg több kifejezést tartalmazzanak és/vagy a fájl kiterjesztését.
 		Ne csak kizárásos alapon keressünk és kerüljük az általános szavakat.</text>
 		<newline gap="8"/>
-		<text> Például a legtöbb kliensprogram nem engedélyezi csak az MP3 szóra
+		<text>Például a legtöbb kliensprogram nem engedélyezi csak az audio szóra
 		való rákeresést, mert nem elég sajátos és ezért túl sok találatot eredményezne.</text>
 	</document>
+	<!--
 	<document name="SearchHelp.BadSearch2">
 		<text format="b">Gyenge keresés</text>
 		<newline gap="8"/>
@@ -2226,6 +2227,7 @@
 		<newline gap="8"/>
 		<text>További segítséget a Envy weboldalán találhat.</text>
 	</document>
+	-->
 	<document name="SearchHelp.AdultSearch">
 		<text format="b">Ezt a keresést nem lehet elkezdeni</text>
 		<newline gap="8"/>

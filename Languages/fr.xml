@@ -3,7 +3,7 @@
 
 <!-- Envy Default French Skin File -->
 
-<!-- Translation based on default en.xml r15 -->
+<!-- Translation based on default en.xml r16 -->
 <!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -2236,7 +2236,7 @@
 		<text>Malheureusement dans de nombreux cas il se peut qu'il n'y est pas d'utilisateur connecté ayant
 		tout ou partie du fichier que vous recherchez. La seule chose à faire alors est d'attendre qu'un
 		utilisateur ayant ce fichier se connecte, ou d'annuler le téléchargement et d'essayer de télécharger
-		un fichier similaire mais possédant plus de sources, et donc plus largement disponible. </text>
+		un fichier similaire mais possédant plus de sources, et donc plus largement disponible.</text>
 	</document>
 	<document name="DownloadHelp.Creating">
 		<text format="b">Ce téléchargement est en cours de création</text>
@@ -2334,7 +2334,7 @@
 		Cette configuration devrait vous donner les téléchargements disponibles les plus rapides possibles.</text>
 	</document>
 	<!-- Search help documents -->
-	<document name="SearchHelp.BadSearch1">
+	<document name="SearchHelp.BadSearch">
 		<text format="b">Merci de reformuler votre recherche</text>
 		<newline gap="8"/>
 		<text>Cette recherche est pauvrement formatée, et peut ne pas fonctionner correctement.
@@ -2343,8 +2343,9 @@
 		et d'éviter les demandes trop générales.</text>
 		<newline gap="8"/>
 		<text>La plupart des clients sur le réseau ignoreront une recherche avec un seul terme,
-		"MP3" par exemple, peu précis, générerait beaucoup trop de résultats.</text>
+		audio par exemple, peu précis, générerait beaucoup trop de résultats.</text>
 	</document>
+	<!--
 	<document name="SearchHelp.BadSearch2">
 		<text format="b">Merci de reformuler votre recherche</text>
 		<newline gap="8"/>
@@ -2370,6 +2371,7 @@
 		<newline gap="8"/>
 		<text>Davantage d'aide est disponible sur le site Web de Envy.</text>
 	</document>
+	-->
 	<document name="SearchHelp.AdultSearch">
 		<text format="b">Cette recherche ne peut pas être démarrée</text>
 		<newline gap="8"/>
@@ -2397,7 +2399,7 @@
 		<text>Des dossiers comme le dossier «&#160;Windows&#160;», «&#160;Program Files&#160;», et autres dossiers similaires
 		ne contiennent généralement pas de fichiers appropriés au partage. Les fichiers intéressants doivent
 		plutôt être dans des sous-dossiers localisés </text><text format="i"> à l'intérieur de </text>
-		<text> ces dossiers. Merci de partager plutôt ceux-la.</text>
+		<text>ces dossiers. Merci de partager plutôt ceux-la.</text>
 		<newline gap="8"/>
 		<text>Le dossier «&#160;Incomplete&#160;» de Envy ne devrait également pas être partagé dans la bibliothèque
 		car le hachage d'un téléchargement en progression peut avoir un impact négatif sur les performances.</text>

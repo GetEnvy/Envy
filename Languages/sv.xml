@@ -3,7 +3,7 @@
 
 <!-- Envy Default Swedish Skin File -->
 
-<!-- Translation based on default en.xml r15 -->
+<!-- Translation based on default en.xml r16 -->
 <!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -2162,7 +2162,7 @@
 		möjligt att torrenten är skadad eller felaktigt kodad. Torrenten kan
 		fortfarande laddas ned korrekt, men vissa filnamn kan vara felaktiga.</text>
 		<newline gap="8"/>
-		<text> De flesta program för skapande av torrent bör tillåta en reparation av torrenten, vilket
+		<text>De flesta program för skapande av torrent bör tillåta en reparation av torrenten, vilket
 		säkrar korrekt funktion i alla BitTorrent applikationer.</text>
 		<newline gap="8"/>
 		<link target="http://getenvy.com/help/?torrentencoding">Klicka här för mer hjälp</link>
@@ -2192,7 +2192,7 @@
 		nedladdningshastighet.</text>
 	</document>
 	<!-- Search help documents -->
-	<document name="SearchHelp.BadSearch1">
+	<document name="SearchHelp.BadSearch">
 		<text format="b">Uttryck din sökning på ett annat sätt</text>
 		<newline gap="8"/>
 		<text>Denna sökning är dåligt genomförd och kanske inte fungerar ordentligt.
@@ -2200,9 +2200,10 @@
 		Vidare kan inte sökningar begränsas till nummer eller endast negativa
 		villkor, och du bör undvika för generella nyckelord.</text>
 		<newline gap="8"/>
-		<text> De flesta klienter på nätverket ignorerar en sökning efter
+		<text>De flesta klienter på nätverket ignorerar en sökning efter
 		alla filer av en viss filtyp, eftersom det inte är tillräckligt specifikt och skulle generera för många resultat.</text>
 	</document>
+	<!--
 	<document name="SearchHelp.BadSearch2">
 		<text format="b">Uttryck din skning på ett annat sätt</text>
 		<newline gap="8"/>
@@ -2216,18 +2217,17 @@
 	<document name="SearchHelp.BadSearch3">
 		<text format="b">Uttryck din sökning på ett annat sätt</text>
 		<newline gap="8"/>
-		<text>Denna sökning innehåller enbart vanliga filändelser eller saknar
-		sökbara ord.</text>
+		<text>Denna sökning innehåller enbart vanliga filändelser eller saknar sökbara ord.</text>
 		<newline gap="8"/>
-		<text>Om du finner det svårt att skriva bra sökningar, kom ihåg att det liknar
-		vanlig webbsökning. Specifika termer och fraser är bäst - unika namn, titlar och
-		nyckelord.</text>
+		<text>Om du finner det svårt att skriva bra sökningar, kom ihåg att det liknar vanlig webbsökning.
+		Specifika termer och fraser är bäst - unika namn, titlar och nyckelord.</text>
 		<newline gap="8"/>
 		<text>Generella termer kan inte sökas effektivt och kan leda till dålig
 		sökprestanda och hög bandbreddsanvändning.</text>
 		<newline gap="8"/>
 		<text>Mer hjälp finns på Envys hemsida.</text>
 	</document>
+	-->
 	<document name="SearchHelp.AdultSearch">
 		<text format="b">Denna sökning kan inte startas</text>
 		<newline gap="8"/>
@@ -2235,8 +2235,8 @@
 		och detta har blivit avstängt i inställningarna. Du bör antingen formulera om din söktext
 		eller stänga av filtret.</text>
 		<newline gap="8"/>
-		<text>För att stänga av filtret: Gå till Verktyg &gt; Inställningar &gt; Generellt och blocka av
-		"Filtrera vuxeninnehåll från sökningar".</text>
+		<text>För att stänga av filtret: Gå till Verktyg &gt; Inställningar &gt; Generellt
+		och blocka av "Filtrera vuxeninnehåll från sökningar".</text>
 	</document>
 	<!-- Share help documents -->
 	<document name="ShareHelp.AlreadyShared">
@@ -2255,7 +2255,7 @@
 		<text>Mappar som Windowsmappen, Program/Program Files och liknande mappar
 		innehåller vanligtvis inte filer lämpliga för utdelning. Filer som kan vara intressanta finns i
 		undermappar som finns </text><text format="i">innanför </text>
-		<text> dessa mappar. Dela gärna ut dem istället.</text>
+		<text>dessa mappar. Dela gärna ut dem istället.</text>
 		<newline gap="8"/>
 		<text>Envys mapp för ofullständiga filer ska inte heller delas ut,
 		eftersom granskning av filer som laddas ned kan påverka prestandan.</text>

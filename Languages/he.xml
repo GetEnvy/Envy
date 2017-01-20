@@ -3,7 +3,7 @@
 
 <!-- Envy Default Hebrew Skin File -->
 
-<!-- Translation based on default en.xml r15 -->
+<!-- Translation based on default en.xml r16 -->
 <!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -1687,7 +1687,7 @@ gap i newline
 			<gap size="16"/><icon res="136" width="32" height="32" target="command:ID_NETWORK_CONNECT"/>
 			<heading align="middle">&#160; ה ת ח ב ר</heading>
 			<newline gap="8" indent="42"/>
-			<text> ברוך הבא לשרזה! &#160;</text>
+			<text>ברוך הבא לשרזה! &#160;</text>
 			<newline gap="8" indent="42"/>
 			<text>אתה כרגע לא מחובר לאף רשת שיתוף קבצים. &#160;</text>
 			<link target="command:ID_NETWORK_CONNECT">לחץ כאן כדי להתחיל!</link>
@@ -1703,7 +1703,7 @@ gap i newline
 			<heading align="middle">התחל &#160; הורדה</heading>
 			<newline gap="8" indent="42"/>
 			<link target="command:ID_TOOLS_DOWNLOAD" format="bu">לחץ כאן כדי להתחיל </link>
-			<text> מוריד קובץ או טורנט.</text>
+			<text>מוריד קובץ או טורנט.</text>
 			<newline gap="2" indent="42"/>
 			<link target="command:shell:downloads">פתח את תקיית ההורדות שלי</link>
 			<newline gap="4" indent="42"/>
@@ -1923,7 +1923,7 @@ gap i newline
 		<text format="b">‫‮‫‮ ברוכים הבאים למנהל ההגדרות של שרזה</text>
 		<newline gap="16"/>
 		<text>אשף ההגדרות של שרזה מאפשר למשתמשים מתקדמים להתאים באופן
-			מלא איך שרזה תפעל. </text>
+			מלא איך שרזה תפעל.</text>
 		<newline gap="10" margin="16"/>
 		<text format="b"> כללי: </text>
 		<text>נועד להגדרת העדפות המשתמש:</text>
@@ -2170,8 +2170,7 @@ gap i newline
 	<document name="DownloadHelp.Creating">
 		<text format="b">ההורדה נוצרת</text>
 		<newline gap="8"/>
-		<text>Envy is pre-allocating a file in which to store this download, to
-		save time later.</text>
+		<text>Envy is pre-allocating a file in which to store this download, to save time later.</text>
 	</document>
 	<!-- Upload help documents -->
 	<document name="UploadHelp">
@@ -2191,7 +2190,19 @@ gap i newline
 		<text>You can download a server list from the ed2k setting page, or the discovery
 		services window. (Press F9 to open the discovery services window)</text>
 	</document>
-	<!-- Missing Documents -->
+	<!-- Search help documents -->
+	<document name="SearchHelp.BadSearch">
+		<text format="b">אנא נסח מחדש את החיפוש</text>
+		<newline gap="8"/>
+		<text>This search is overly general or poorly formatted, and may be rejected.</text>
+		<newline/>
+		<text>Try using additional or more specific search terms. Note common short terms such as
+		file types cannot be used alone, and any punctuation is ignored.</text>
+		<newline gap="8"/>
+		<text>Most clients on the network will skip a non-specific request that could generate
+		too many results, like just a file type. See the GetEnvy.com web site for help.</text>
+	</document>
+	<!-- Missing documents -->
 </documents>
 <!-- Localized Command Tip Text. "Message" displayed in status bar, "Tip" shown in tooltip -->
 <commandtips>
