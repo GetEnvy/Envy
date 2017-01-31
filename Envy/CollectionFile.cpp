@@ -1,7 +1,7 @@
 //
 // CollectionFile.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
+// This file is part of Envy (getenvy.com) © 2016-2017
 // Portions copyright PeerProject 2008-2014 and Shareaza 2002-2007
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -191,10 +191,10 @@ BOOL CCollectionFile::LoadCollection(LPCTSTR pszFile)
 	if ( pZIP.GetCount() == 1 )		// xml-only
 		m_nType = SimpleCollection;
 
-	auto_ptr< CBuffer > pBuffer ( pFile->Decompress() );
+	unique_ptr< CBuffer > pBuffer ( pFile->Decompress() );
 	if ( ! pBuffer.get() ) return FALSE;
 
-	auto_ptr< CXMLElement > pXML ( CXMLElement::FromString( pBuffer->ReadString( pBuffer->m_nLength, CP_UTF8 ), TRUE ) );
+	unique_ptr< CXMLElement > pXML ( CXMLElement::FromString( pBuffer->ReadString( pBuffer->m_nLength, CP_UTF8 ), TRUE ) );
 	if ( ! pXML.get() ) return FALSE;
 	if ( ! pXML->IsNamed( L"collection" ) ) return FALSE;
 
@@ -209,7 +209,7 @@ BOOL CCollectionFile::LoadCollection(LPCTSTR pszFile)
 		CXMLElement* pElement = pContents->GetNextElement( pos );
 		if ( pElement->IsNamed( L"file" ) )
 		{
-			auto_ptr< File > pNewFile( new File( this ) );
+			unique_ptr< File > pNewFile( new File( this ) );
 			if ( pNewFile.get() && pNewFile->Parse( pElement ) )
 				m_pFiles.AddTail( pNewFile.release() );
 		}
@@ -289,7 +289,7 @@ BOOL CCollectionFile::LoadEMule(LPCTSTR pszFile)
 			{
 				for ( DWORD i = 0 ; i < nFileCount ; ++i )
 				{
-					auto_ptr< File > pCollectionFile( new File( this ) );
+					unique_ptr< File > pCollectionFile( new File( this ) );
 					if ( pCollectionFile.get() && pCollectionFile->Parse( pFile ) )
 						m_pFiles.AddTail( pCollectionFile.release() );
 					else
@@ -332,7 +332,7 @@ BOOL CCollectionFile::LoadDC(LPCTSTR pszFile)
 	if ( ! pBuffer.UnBZip() )
 		return FALSE;	// Decompression error
 
-	auto_ptr< CXMLElement > pXML ( CXMLElement::FromString( pBuffer.ReadString( pBuffer.m_nLength, CP_UTF8 ), TRUE ) );
+	unique_ptr< CXMLElement > pXML ( CXMLElement::FromString( pBuffer.ReadString( pBuffer.m_nLength, CP_UTF8 ), TRUE ) );
 	if ( ! pXML.get() )
 		return FALSE;	// XML decoding error
 
@@ -363,7 +363,7 @@ void CCollectionFile::LoadDC(CXMLElement* pRoot)
 		{
 			// <File Name="music.mp3" Size="100000" TTH="3A6D6T2NDRLU6BGSTSJNW3R3QWTV6A44M6AGXMA"/>
 
-			auto_ptr< File > pNewFile( new File( this ) );
+			unique_ptr< File > pNewFile( new File( this ) );
 			if ( pNewFile.get() && pNewFile->Parse( pElement ) )
 				m_pFiles.AddTail( pNewFile.release() );
 		}
@@ -396,7 +396,7 @@ BOOL CCollectionFile::LoadText(LPCTSTR pszFile)
 			if ( ! pFile.ReadString( strText ) )
 				break;	// End of file
 
-			auto_ptr< File > pCollectionFile( new File( this ) );
+			unique_ptr< File > pCollectionFile( new File( this ) );
 			if ( ! pCollectionFile.get() )
 				break;	// Out of memory
 

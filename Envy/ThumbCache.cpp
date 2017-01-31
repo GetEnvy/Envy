@@ -1,7 +1,7 @@
 //
 // ThumbCache.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
+// This file is part of Envy (getenvy.com) © 2016-2017
 // Portions copyright PeerProject 2008-2014 and Shareaza 2002-2008
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -37,7 +37,7 @@ static char THIS_FILE[] = __FILE__;
 
 void CThumbCache::InitDatabase()
 {
-	auto_ptr< CDatabase > db( theApp.GetDatabase( DB_THUMBS ) );
+	unique_ptr< CDatabase > db( theApp.GetDatabase( DB_THUMBS ) );
 	if ( ! *db )
 	{
 		TRACE( "CThumbCache::InitDatabase : Database error: %s\n", (LPCSTR)CT2A( db->GetLastErrorMessage() ) );
@@ -86,7 +86,7 @@ BOOL CThumbCache::Load(LPCTSTR pszPath, CImageFile* pImage)
 	}
 
 	// Load file info from database
-	auto_ptr< CDatabase > db( theApp.GetDatabase( DB_THUMBS ) );
+	unique_ptr< CDatabase > db( theApp.GetDatabase( DB_THUMBS ) );
 	if ( ! *db )
 	{
 		TRACE( "CThumbCache::InitDatabase : Database error: %s\n", (LPCSTR)CT2A( db->GetLastErrorMessage() ) );
@@ -138,7 +138,7 @@ BOOL CThumbCache::Load(LPCTSTR pszPath, CImageFile* pImage)
 
 void CThumbCache::Delete(LPCTSTR pszPath)
 {
-	auto_ptr< CDatabase > db( theApp.GetDatabase( DB_THUMBS ) );
+	unique_ptr< CDatabase > db( theApp.GetDatabase( DB_THUMBS ) );
 	if ( ! *db )
 	{
 		TRACE( "CThumbCache::InitDatabase : Database error: %s\n", (LPCSTR)CT2A( db->GetLastErrorMessage() ) );
@@ -175,7 +175,7 @@ BOOL CThumbCache::Store(LPCTSTR pszPath, CImageFile* pImage)
 		return FALSE;
 	}
 
-	auto_ptr< CDatabase > db( theApp.GetDatabase( DB_THUMBS ) );
+	unique_ptr< CDatabase > db( theApp.GetDatabase( DB_THUMBS ) );
 	if ( ! *db )
 	{
 		TRACE( "CThumbCache::InitDatabase : Database error: %s\n", (LPCSTR)CT2A( db->GetLastErrorMessage() ) );

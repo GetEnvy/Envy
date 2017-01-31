@@ -17,7 +17,7 @@
 //
 
 // Example:		/Data/Envy.db3
-//	auto_ptr< CDatabase* > db( theApp.GetDatabase( DB_DEFAULT ) );
+//	unique_ptr< CDatabase* > db( theApp.GetDatabase( DB_DEFAULT ) );
 //	if ( db->Prepare( L"SELECT Number FROM Table;" ) )
 //	{
 //		while ( db->Step() || db->IsBusy() )

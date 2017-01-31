@@ -1,7 +1,7 @@
 //
 // SharedFile.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
+// This file is part of Envy (getenvy.com) © 2016-2017
 // Portions copyright PeerProject 2008-2016 and Shareaza 2002-2008
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -184,10 +184,12 @@ CString CLibraryFile::GetSearchName() const
 	return str;
 }
 
-CXMLElement* CLibraryFile::CreateXML(CXMLElement* pRoot, BOOL bSharedOnly, XmlType nType) const
+CXMLElement* CLibraryFile::CreateXML(CXMLElement* pRoot, BOOL bSharedOnly, XmlType nType /*0*/) const
 {
 	if ( bSharedOnly && ! IsShared() )
 		return NULL;
+
+	// ToDo: Support private passkey
 
 	// Special case-sensitive http://adc.sourceforge.net/ADC.html#_file_list
 	if ( nType == xmlDC )

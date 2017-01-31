@@ -27,15 +27,16 @@ class CXMLElement;
 enum XmlType
 {
 	xmlDefault,		// Default
+//	xmlPassKey,		// Private Share
 	xmlDC			// DC++ file listing
 };
 
 // ToDo: Support Private Share Key
-//enum ShareType
+//enum ShowType
 //{
-//	ShareAll,		// bSharedOnly FALSE
-//	SharePublic,	// bSharedOnly TRUE
-//	SharePrivate	// Passcode
+//	ShowAll,		// bSharedOnly FALSE
+//	ShowPublic,		// bSharedOnly TRUE
+//	ShowPrivate		// Passkey
 //};
 
 

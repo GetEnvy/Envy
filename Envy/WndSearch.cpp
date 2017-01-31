@@ -1,7 +1,7 @@
 //
 // WndSearch.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
+// This file is part of Envy (getenvy.com) © 2016-2017
 // Portions copyright PeerProject 2008-2014 and Shareaza 2002-2008
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -95,10 +95,10 @@ CSearchWnd::CSearchWnd(CQuerySearch* pSearch)
 	, m_nCacheHubs		( 0 )
 	, m_nCacheLeaves	( 0 )
 	, m_bWaitMore		( FALSE )
-	, m_sCaption		( L"" )
 	, m_nMaxResults		( 0 )
 	, m_nMaxED2KResults ( 0 )
 	, m_nMaxQueryCount  ( 0 )
+//	, m_sCaption		( L"" )
 {
 	if ( pSearch )
 	{
@@ -228,7 +228,7 @@ void CSearchWnd::OnSkinChange()
 	CBaseMatchWnd::OnSkinChange();
 
 	m_wndToolBar.Clear();
-	Skin.CreateToolBar( m_bPanel ? L"CSearchWnd.Panel" : L"CSearchWnd.Full", &m_wndToolBar );	// Can skin "CSearchWnd.Toolbar" 
+	Skin.CreateToolBar( m_bPanel ? L"CSearchWnd.Panel" : L"CSearchWnd.Full", &m_wndToolBar );	// Can skin "CSearchWnd.Toolbar"
 
 	OnSize( SIZE_INTERNAL, 0, 0 );
 	UpdateMessages();
@@ -297,7 +297,7 @@ void CSearchWnd::OnPaint()
 		rc.bottom --;
 		dc.FillSolidRect( rc.left, rc.bottom, rc.Width(), 1, RGB( 255, 255, 255 ) );
 		dc.Draw3dRect( &rc,
-			CColors::CalculateColor( Colors.m_crBannerBack, RGB(255,255,255), 100 ),
+			CColors::CalculateColor( Colors.m_crBannerBack, RGB( 255, 255, 255 ), 100 ),
 			CColors::CalculateColor( Colors.m_crBannerBack, 0, 150 ) );
 		rc.DeflateRect( 1, 1 );
 		nTop --;

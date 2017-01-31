@@ -1,7 +1,7 @@
 //
 // Envy.h
 //
-// This file is part of Envy (getenvy.com) © 2016
+// This file is part of Envy (getenvy.com) © 2016-2017
 // Portions copyright PeerProject 2008-2016 and Shareaza 2002-2008
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -209,7 +209,7 @@ public:
 	CString			GetAppDataFolder() const;
 	CString			GetLocalAppDataFolder() const;
 
-	CDatabase*		GetDatabase(BYTE nType = 0) const;				// Get SQLite (thumbs) database handler, must be freed by "delete" operator (or auto_ptr).
+	CDatabase*		GetDatabase(BYTE nType = 0) const;				// Get SQLite (thumbs) database handler, must be freed by "delete" operator. (unique_ptr?)
 
 	void			OnRename(LPCTSTR strSource, LPCTSTR pszTarget = (LPCTSTR)1);	// pszTarget: 0 = delete file, 1 = release file.
 

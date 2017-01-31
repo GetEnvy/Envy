@@ -1,7 +1,7 @@
 //
 // BTInfo.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
+// This file is part of Envy (getenvy.com) © 2016-2017
 // Portions copyright PeerProject 2008-2015 and Shareaza 2002-2008
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -685,7 +685,7 @@ BOOL CBTInfo::CheckInfoData()
 
 	if ( ! m_pSource.m_nLength ) return FALSE;
 
-	auto_ptr< CBENode > pNode ( CBENode::Decode( &m_pSource ) );
+	unique_ptr< CBENode > pNode ( CBENode::Decode( &m_pSource ) );
 	if ( ! pNode.get() )
 		return FALSE;
 
@@ -717,7 +717,7 @@ BOOL CBTInfo::CheckInfoData()
 
 BOOL CBTInfo::LoadTorrentBuffer(const CBuffer* pBuffer)
 {
-	auto_ptr< CBENode > pNode ( CBENode::Decode( pBuffer ) );
+	unique_ptr< CBENode > pNode ( CBENode::Decode( pBuffer ) );
 	if ( ! pNode.get() )
 	{
 		theApp.Message( MSG_ERROR, L"[BT] Failed to decode torrent data: %s", pBuffer->ReadString( (size_t)-1 ) );

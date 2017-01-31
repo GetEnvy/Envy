@@ -1,7 +1,7 @@
 //
 // UploadTransferBT.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
+// This file is part of Envy (getenvy.com) © 2016-2017
 // Portions copyright PeerProject 2008-2015 and Shareaza 2002-2007
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -280,7 +280,7 @@ BOOL CUploadTransferBT::OpenFile()
 	if ( m_pClient && Downloads.Check( m_pClient->m_pDownload ) )
 	{
 		// Try to get existing file object from download
-		auto_ptr< CFragmentedFile > pFile( m_pClient->m_pDownload->GetFile() );
+		unique_ptr< CFragmentedFile > pFile( m_pClient->m_pDownload->GetFile() );
 		if ( pFile.get() )
 		{
 			AttachFile( pFile );
@@ -290,7 +290,7 @@ BOOL CUploadTransferBT::OpenFile()
 		// HACK: Open from disk (ToDo: Replace this with SeedTorrent in OnDownloadComplete)
 		if ( m_pClient->m_pDownload->IsSeeding() )
 		{
-			auto_ptr< CFragmentedFile > pSeedingFile( new CFragmentedFile );
+			unique_ptr< CFragmentedFile > pSeedingFile( new CFragmentedFile );
 			if ( pSeedingFile.get() )
 			{
 				if ( pSeedingFile->Open( m_pClient->m_pDownload->m_pTorrent, FALSE ) )

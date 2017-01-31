@@ -1,7 +1,7 @@
 //
 // UploadTransfer.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
+// This file is part of Envy (getenvy.com) © 2016-2017
 // Portions copyright PeerProject 2008-2014 and Shareaza 2002-2007
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -60,7 +60,7 @@ CUploadTransfer::CUploadTransfer(PROTOCOLID nProtocol)
 	, m_nAveragePos		( 0 )
 	, m_tRatingTime		( 0 )
 	, m_nMaxRate		( 0 )
-	, m_pFile			( NULL )
+	, m_pFile			( )
 {
 	m_nProtocol			= nProtocol;
 	m_nBandwidth		= Settings.Bandwidth.Request;
@@ -474,7 +474,7 @@ BOOL CUploadTransfer::RequestPartial(CDownload* pDownload)
 	m_bFilePartial = TRUE;
 
 	// Try to get existing file object from download
-	auto_ptr< CFragmentedFile > pDownloadFile( pDownload->GetFile() );
+	unique_ptr< CFragmentedFile > pDownloadFile( pDownload->GetFile() );
 	if ( ! pDownloadFile.get() )
 		return FALSE;
 
@@ -534,7 +534,7 @@ BOOL CUploadTransfer::OpenFile()
 	if ( IsFileOpen() )
 		return TRUE;
 
-	auto_ptr< CFragmentedFile > pFile( new CFragmentedFile );
+	unique_ptr< CFragmentedFile > pFile( new CFragmentedFile );
 	if ( pFile.get() && pFile->Open( this, FALSE ) )
 	{
 		AttachFile( pFile );
@@ -564,7 +564,11 @@ BOOL CUploadTransfer::ReadFile(QWORD nOffset, LPVOID pData, QWORD nLength, QWORD
 	return m_pFile->Read( nOffset, pData, nLength, pnRead );
 }
 
-void CUploadTransfer::AttachFile(auto_ptr< CFragmentedFile >& pFile)
+void CUploadTransfer::AttachFile(unique_ptr< CFragmentedFile >& pFile)
 {
+#if !defined(_MSC_VER) || (_MSC_VER >= 1600)		// VS2010+
+	m_pFile = std::move( pFile );
+#else	// VS2008
 	m_pFile = pFile;
+#endif
 }

@@ -1,7 +1,7 @@
 //
 // DiscoveryServices.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
+// This file is part of Envy (getenvy.com) © 2016-2017
 // Portions copyright PeerProject 2008-2015 and Shareaza 2002-2008
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -575,7 +575,7 @@ void CDiscoveryServices::Serialize(CArchive& ar)
 
 		for ( DWORD_PTR nCount = ar.ReadCount() ; nCount > 0 ; nCount-- )
 		{
-			auto_ptr< CDiscoveryService > pService( new CDiscoveryService() );
+			unique_ptr< CDiscoveryService > pService( new CDiscoveryService() );
 			try
 			{
 				pService->Serialize( ar, nVersion );

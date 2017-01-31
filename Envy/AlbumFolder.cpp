@@ -1,7 +1,7 @@
 //
 // AlbumFolder.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
+// This file is part of Envy (getenvy.com) © 2016-2017
 // Portions copyright PeerProject 2008-2014 and Shareaza 2002-2007
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -1347,7 +1347,7 @@ void CAlbumFolder::Serialize(CArchive& ar, int nVersion)
 
 		while ( nCount-- > 0 )
 		{
-			auto_ptr< CAlbumFolder > pFolder( new CAlbumFolder( this, NULL, (LPCTSTR)1 ) );
+			unique_ptr< CAlbumFolder > pFolder( new CAlbumFolder( this, NULL, (LPCTSTR)1 ) );
 			pFolder->Serialize( ar, nVersion );
 			m_pFolders.AddTail( pFolder.release() );
 		}

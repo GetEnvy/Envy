@@ -1,7 +1,7 @@
 //
 // DownloadWithFile.h
 //
-// This file is part of Envy (getenvy.com) © 2016
+// This file is part of Envy (getenvy.com) © 2016-2017
 // Portions copyright PeerProject 2008-2014 and Shareaza 2002-2007
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -32,7 +32,7 @@ public:
 	TRISTATE		m_bVerify;				// Verify status (TRI_TRUE verified, TRI_FALSE failed, TRI_UNKNOWN not yet)
 	DWORD			m_tReceived;
 private:
-	auto_ptr< CFragmentedFile >	m_pFile;	// File(s)
+	unique_ptr< CFragmentedFile > m_pFile;	// File(s)
 	DWORD			m_nFileError;			// Last file/disk error
 	CString			m_sFileError;			// More info about error
 

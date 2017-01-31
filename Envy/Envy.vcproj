@@ -4252,15 +4252,7 @@
 				Name="Augment"
 				>
 				<File
-					RelativePath="Augment\Augment.hpp"
-					>
-				</File>
-				<File
 					RelativePath="Augment\auto_array.hpp"
-					>
-				</File>
-				<File
-					RelativePath="Augment\auto_ptr.hpp"
 					>
 				</File>
 				<File

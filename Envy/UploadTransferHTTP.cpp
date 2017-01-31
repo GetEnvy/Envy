@@ -1,7 +1,7 @@
 //
 // UploadTransferHTTP.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
+// This file is part of Envy (getenvy.com) © 2016-2017
 // Portions copyright PeerProject 2008-2015 and Shareaza 2008
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -117,7 +117,7 @@ BOOL CUploadTransferHTTP::OnRead()
 	case upsQueued:
 		if ( ! ReadRequest() ) return FALSE;
 		if ( m_nState != upsHeaders ) break;
-
+		// Fall through:
 	case upsHeaders:
 		return ReadHeaders();
 	}
@@ -167,7 +167,7 @@ BOOL CUploadTransferHTTP::ReadRequest()
 	m_bBackwards	= FALSE;
 	m_bRange		= FALSE;
 	m_bQueueMe		= FALSE;
-	m_bNotEnvy = FALSE;
+	m_bNotEnvy		= FALSE;
 	m_nAccept		= 0;
 
 	m_bMetadata		= FALSE;
@@ -433,10 +433,8 @@ BOOL CUploadTransferHTTP::OnHeadersComplete()
 			SendResponse( IDR_HTML_ABOUT );
 			theApp.Message( MSG_INFO, IDS_UPLOAD_ABOUT, (LPCTSTR)m_sAddress, (LPCTSTR)m_sUserAgent );
 		}
-		else if ( ( ! Settings.Community.ServeFiles ) &&
-					( m_nAccept == 0 || m_nAccept == 1 ||
-					( m_nAccept == 2 && ! Settings.Community.ServeProfile ) ) ||
-				  ( ! RequestHostBrowse() ) )
+		else if ( ( ! Settings.Community.ServeFiles && ( m_nAccept < 2 || ! Settings.Community.ServeProfile ) ) ||
+				  ! RequestHostBrowse() )
 		{
 			SendResponse( IDR_HTML_ABOUT );
 			theApp.Message( MSG_ERROR, IDS_UPLOAD_BROWSE_DENIED, (LPCTSTR)m_sAddress );
@@ -778,9 +776,7 @@ BOOL CUploadTransferHTTP::RequestSharedFile(CLibraryFile* pFile, CSingleLock& oL
 	}
 
 	if ( Settings.Library.SourceMesh && m_nGnutella > 1 )
-	{
 		m_sLocations = pFile->GetAlternateSources( &m_pSourcesSent, 15, PROTOCOL_HTTP );
-	}
 
 	oLibraryLock.Unlock();
 
@@ -815,10 +811,7 @@ BOOL CUploadTransferHTTP::RequestPartialFile(CDownload* pDownload)
 	}
 
 	if ( Settings.Library.SourceMesh )
-	{
-		m_sLocations = pDownload->GetSourceURLs( &m_pSourcesSent, 15,
-			( m_nGnutella < 2 ) ? PROTOCOL_G1 : PROTOCOL_HTTP, NULL );
-	}
+		m_sLocations = pDownload->GetSourceURLs( &m_pSourcesSent, 15, ( m_nGnutella < 2 ) ? PROTOCOL_G1 : PROTOCOL_HTTP, NULL );
 
 	pDownload->GetAvailableRanges( m_sRanges );
 
@@ -1227,16 +1220,16 @@ BOOL CUploadTransferHTTP::OnWrite()
 		{
 			QWORD nRead = 0;
 			if ( ! ReadFile( m_nFileBase + m_nOffset + m_nLength -
-				m_nPosition - nPacket, pBuffer.get(), nPacket, &nRead ) ||
-				nRead != nPacket )
+				 m_nPosition - nPacket, pBuffer.get(), nPacket, &nRead ) ||
+				 nRead != nPacket )
 				return TRUE;
 			WriteReversed( pBuffer.get(), (DWORD)nPacket );
 		}
 		else
 		{
 			if ( ! ReadFile( m_nFileBase + m_nOffset + m_nPosition,
-				pBuffer.get(), nPacket, &nPacket ) ||
-				nPacket == 0 )
+				 pBuffer.get(), nPacket, &nPacket ) ||
+				 nPacket == 0 )
 				return TRUE;
 			Write( pBuffer.get(), (DWORD)nPacket );
 		}
@@ -1408,8 +1401,6 @@ BOOL CUploadTransferHTTP::RequestTigerTreeRaw(CTigerTree* pTigerTree, BOOL bDele
 
 	if ( m_nLength <= nSerialTree )
 	{
-		CString strHeader;
-
 		if ( m_nLength != nSerialTree )
 			Write( _P("HTTP/1.1 206 OK\r\n") );
 		else
@@ -1418,6 +1409,8 @@ BOOL CUploadTransferHTTP::RequestTigerTreeRaw(CTigerTree* pTigerTree, BOOL bDele
 		SendDefaultHeaders();
 
 		Write( _P("Content-Type: application/tigertree-breadthfirst\r\n") );
+
+		CString strHeader;
 		strHeader.Format( L"Content-Length: %I64u\r\n", m_nLength );
 		Write( strHeader );
 
@@ -1505,16 +1498,14 @@ BOOL CUploadTransferHTTP::RequestTigerTreeDIME(CTigerTree* pTigerTree, int nDept
 
 	CBuffer pDIME;
 	pDIME.WriteDIME( 1, _P(""), _P("text/xml"), sXMLUTF8, sXMLUTF8.GetLength() );
-	pDIME.WriteDIME( pHashset ? 0 : 2, pszUUID, nUUID - 1,
-		_P("http://open-content.net/spec/thex/breadthfirst"), pSerialTree, nSerialTree );
+	pDIME.WriteDIME( pHashset ? 0 : 2, pszUUID, nUUID - 1, _P("http://open-content.net/spec/thex/breadthfirst"), pSerialTree, nSerialTree );
 	GlobalFree( pSerialTree );
 
 	delete [] pszUUID;
 
 	if ( pHashset && pHashset->ToBytes( &pSerialTree, &nSerialTree ) )
 	{
-		pDIME.WriteDIME( 2, _P(""),
-			_P("http://edonkey2000.com/spec/md4-hashset"), pSerialTree, nSerialTree );
+		pDIME.WriteDIME( 2, _P(""), _P("http://edonkey2000.com/spec/md4-hashset"), pSerialTree, nSerialTree );
 		GlobalFree( pSerialTree );
 	}
 
@@ -1536,8 +1527,6 @@ BOOL CUploadTransferHTTP::RequestTigerTreeDIME(CTigerTree* pTigerTree, int nDept
 
 	if ( m_nLength <= pDIME.m_nLength )
 	{
-		CString strHeader;
-
 		if ( m_nLength != pDIME.m_nLength )
 			Write( _P("HTTP/1.1 206 OK\r\n") );
 		else
@@ -1546,6 +1535,8 @@ BOOL CUploadTransferHTTP::RequestTigerTreeDIME(CTigerTree* pTigerTree, int nDept
 		SendDefaultHeaders();
 
 		Write( _P("Content-Type: application/dime\r\n") );
+
+		CString strHeader;
 		strHeader.Format( L"Content-Length: %I64u\r\n", m_nLength );
 		Write( strHeader );
 
@@ -1682,7 +1673,7 @@ BOOL CUploadTransferHTTP::RequestHostBrowse()
 
 		pBuffer.Print( pXML->ToString( TRUE, TRUE, TRUE, TRI_TRUE ), CP_UTF8 );
 	}
-	else if ( m_nAccept == 1 )
+	else if ( m_nAccept == 1 )		// Gnutella
 	{
 		if ( Settings.Community.ServeFiles )
 		{
@@ -1690,7 +1681,7 @@ BOOL CUploadTransferHTTP::RequestHostBrowse()
 			pSearch.Execute( 0 );
 		}
 	}
-	else if ( m_nAccept == 2 )
+	else if ( m_nAccept == 2 )		// G2
 	{
 		if ( Settings.Community.ServeProfile && MyProfile.IsValid() )
 		{

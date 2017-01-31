@@ -47,7 +47,7 @@ protected:
 	// "Accept" header:
 	// 0 - unknown;
 	// 1 - Gnutella 1 (application/x-gnutella-packets);
-	// 2 - Gnutella 2 (application/x-gnutella2 or application/x-Envy).
+	// 2 - Gnutella 2 (application/x-gnutella2 or application/x-envy).
 	int			m_nAccept;
 	// Gnutella functionality:
 	// 0 - Pure HTTP

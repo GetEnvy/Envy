@@ -74,8 +74,7 @@ private:
 	void	CreatePortMappings(ServicePointer pService);
 	HRESULT SaveServices(CComPtr< IEnumUnknown >, const LONG nTotalItems);
 
-	HRESULT InvokeAction(ServicePointer pService, CComBSTR action,
-		LPCTSTR pszInArgString, CString& strResult);
+	HRESULT InvokeAction(ServicePointer pService, CComBSTR action, LPCTSTR pszInArgString, CString& strResult);
 
 	// Utility functions
 	HRESULT CreateSafeArray(const VARTYPE vt, const ULONG nArgs, SAFEARRAY** ppsa);
@@ -94,17 +93,17 @@ public:
 private:
 	std::vector< CAdapt< DevicePointer > >	m_pDevices;
 	std::vector< CAdapt< ServicePointer> >	m_pServices;
-	FinderPointer m_pDeviceFinder;
-	CComPtr< IUPnPDeviceFinderCallback >	m_pDeviceFinderCallback;
 	CComPtr< IUPnPServiceCallback > 		m_pServiceCallback;
+	CComPtr< IUPnPDeviceFinderCallback >	m_pDeviceFinderCallback;
+	FinderPointer							m_pDeviceFinder;
 
 	LONG	m_nAsyncFindHandle;
 	bool	m_bAsyncFindRunning;
 	bool	m_bPortIsFree;
 	CString m_sLocalIP;
 	CString m_sExternalIP;
-	bool	m_bADSL;		// Is the device ADSL?
-	bool	m_bADSLFailed;	// Did port mapping failed for the ADSL device?
+	bool	m_bADSL;			// Is the device ADSL?
+	bool	m_bADSLFailed;		// Did port mapping failed for the ADSL device?
 	bool	m_bInited;
 	bool	m_bSecondTry;
 	bool	m_bDisableWANIPSetup;
@@ -112,9 +111,11 @@ private:
 	ServicePointer m_pWANIPService;
 };
 
+
+// IUnknownImplementation defined in Augment
+
 // DeviceFinder Callback
-class CDeviceFinderCallback
-	: public IUnknownImplementation< IUPnPDeviceFinderCallback >
+class CDeviceFinderCallback : public IUnknownImplementation< IUPnPDeviceFinderCallback >
 {
 public:
 	CDeviceFinderCallback(CUPnPFinder& instance)
@@ -124,7 +125,6 @@ public:
 private:
 	CUPnPFinder& m_instance;
 
-private:
 	HRESULT __stdcall DeviceAdded(LONG nFindData, IUPnPDevice* pDevice);
 	HRESULT __stdcall DeviceRemoved(LONG nFindData, BSTR bsUDN);
 	HRESULT __stdcall SearchComplete(LONG nFindData);
@@ -132,8 +132,7 @@ private:
 
 
 // Service Callback
-class CServiceCallback
-	: public IUnknownImplementation< IUPnPServiceCallback >
+class CServiceCallback : public IUnknownImplementation< IUPnPServiceCallback >
 {
 public:
 	CServiceCallback(CUPnPFinder& instance)
@@ -143,7 +142,6 @@ public:
 private:
 	CUPnPFinder& m_instance;
 
-private:
 	HRESULT __stdcall StateVariableChanged(IUPnPService* pService, LPCWSTR pszStateVarName, VARIANT varValue);
 	HRESULT __stdcall ServiceInstanceDied(IUPnPService* pService);
 };

@@ -1,7 +1,7 @@
 //
 // LocalSearch.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
+// This file is part of Envy (getenvy.com) © 2016-2017
 // Portions copyright PeerProject 2008-2015 and Shareaza 2002-2008
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -128,20 +128,20 @@ bool CLocalSearch::IsValidForHit< CLibraryFile >(const CLibraryFile* pFile) cons
 	}
 }
 
-	// Note IsValidForHit for PROTOCOL_G1:
-	// Check that a free queue exists that can upload this file.
-	//&& ( UploadQueues.QueueRank( PROTOCOL_HTTP, pFile ) <= Settings.Gnutella1.HitQueueLimit );  // Causes Deadlock?
-	// NOTE: Very CPU intensive operation!
-	// Normally this isn't a problem, default queue length is 8-10, so this check (50) will never be activated.
-	// However, sometimes users configure bad settings, such as a 2000 user HTTP queue.
-	// Although the remote client should handle this by itself,
-	// give Gnutella some protection against extreme settings (to reduce un-necessary traffic.)
+// Note IsValidForHit for PROTOCOL_G1:
+// Check that a free queue exists that can upload this file.
+//&& ( UploadQueues.QueueRank( PROTOCOL_HTTP, pFile ) <= Settings.Gnutella1.HitQueueLimit );  // Causes Deadlock?
+// NOTE: Very CPU intensive operation!
+// Normally this isn't a problem, default queue length is 8-10, so this check (50) will never be activated.
+// However, sometimes users configure bad settings, such as a 2000 user HTTP queue.
+// Although the remote client should handle this by itself,
+// give Gnutella some protection against extreme settings (to reduce un-necessary traffic).
 
 
 //////////////////////////////////////////////////////////////////////
 // CLocalSearch execute
 
-bool CLocalSearch::Execute(INT_PTR nMaximum, bool bPartial, bool bShared)
+bool CLocalSearch::Execute(INT_PTR nMaximum, bool bPartial /*true*/, bool bShared /*true*/)
 {
 	ASSERT( bPartial || bShared );
 
@@ -219,7 +219,7 @@ bool CLocalSearch::ExecuteSharedFiles(INT_PTR nMaximum, INT_PTR& nHits)
 	if ( ! oLock.Lock( 250 ) )
 		return false;
 
-	auto_ptr< CFileList > pFiles( Library.Search( m_pSearch, nMaximum, FALSE, m_nProtocol != PROTOCOL_G2 ) );	// Ghost files only for G2
+	unique_ptr< CFileList > pFiles( Library.Search( m_pSearch, nMaximum, FALSE, m_nProtocol != PROTOCOL_G2 ) );	// Ghost files only for G2
 
 	if ( pFiles.get() )
 	{
@@ -235,12 +235,12 @@ bool CLocalSearch::ExecuteSharedFiles(INT_PTR nMaximum, INT_PTR& nHits)
 				oFilesInPacket.AddTail( pFile );
 
 			// Obsolete for reference:
-			//	if ( ( Settings.Gnutella.HitsPerPacket && (DWORD)oFilesInPacket.GetCount() >= Settings.Gnutella.HitsPerPacket ) ||
-			//		( m_pPacket && m_pPacket->m_nLength >= MAX_QUERY_PACKET_SIZE ) )
-			//	{
-			//		nHits += SendHits( oFilesInPacket );	// Packet full, send it
-			//		oFilesInPacket.RemoveAll();
-			//	}
+			//if ( ( Settings.Gnutella.HitsPerPacket && (DWORD)oFilesInPacket.GetCount() >= Settings.Gnutella.HitsPerPacket ) ||
+			//	 ( m_pPacket && m_pPacket->m_nLength >= MAX_QUERY_PACKET_SIZE ) )
+			//{
+			//	nHits += SendHits( oFilesInPacket );	// Packet full, send it
+			//	oFilesInPacket.RemoveAll();
+			//}
 		}
 
 		SendHits( oFilesInPacket );
@@ -1286,7 +1286,7 @@ CG2Packet* CLocalSearch::AlbumToPacket(CAlbumFolder* pFolder)
 
 	if ( pFolder->m_pSchema != NULL )
 	{
-		auto_ptr< CXMLElement > pXML( pFolder->m_pSchema->Instantiate( TRUE ) );
+		unique_ptr< CXMLElement > pXML( pFolder->m_pSchema->Instantiate( TRUE ) );
 		if ( ! pXML.get() ) return NULL;
 
 		if ( pFolder->m_pXML != NULL )

@@ -1,7 +1,7 @@
 //
 // NeighboursWithConnect.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
+// This file is part of Envy (getenvy.com) © 2016-2017
 // Portions copyright PeerProject 2008-2014 and Shareaza 2002-2008
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -167,7 +167,7 @@ CNeighbour* CNeighboursWithConnect::ConnectTo(
 	{
 	case PROTOCOL_ED2K:
 		{
-			auto_ptr< CEDNeighbour > pNeighbour( new CEDNeighbour() );
+			unique_ptr< CEDNeighbour > pNeighbour( new CEDNeighbour() );
 			if ( pNeighbour->ConnectTo( &pAddress, nPort, bAutomatic ) )
 				return pNeighbour.release();			// Started connecting to an ed2k neighbour
 		}
@@ -175,7 +175,7 @@ CNeighbour* CNeighboursWithConnect::ConnectTo(
 
 	case PROTOCOL_DC:
 		{
-			auto_ptr< CDCNeighbour > pNeighbour( new CDCNeighbour() );
+			unique_ptr< CDCNeighbour > pNeighbour( new CDCNeighbour() );
 			if ( pNeighbour->ConnectTo( &pAddress, nPort, bAutomatic ) )
 				return pNeighbour.release();			// Started connecting to a dc++ neighbour
 		}
@@ -196,7 +196,7 @@ CNeighbour* CNeighboursWithConnect::ConnectTo(
 
 	default:	// PROTOCOL_G1/PROTOCOL_G2
 		{
-			auto_ptr< CShakeNeighbour > pNeighbour( new CShakeNeighbour() );
+			unique_ptr< CShakeNeighbour > pNeighbour( new CShakeNeighbour() );
 			if ( pNeighbour->ConnectTo( &pAddress, nPort, bAutomatic, bNoUltraPeer ) )
 			{
 				// If we only want G1 connections now, specify that to begin with

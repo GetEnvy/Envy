@@ -1,7 +1,7 @@
 //
 // Skin.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
+// This file is part of Envy (getenvy.com) © 2016-2017
 // Portions copyright PeerProject 2008-2016 and Shareaza 2002-2008
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -981,7 +981,7 @@ BOOL CSkin::LoadMenu(CXMLElement* pXML)
 		m_pMenus.RemoveKey( strName );
 	}
 
-	auto_ptr< CMenu > pMenu( new CMenu() );
+	unique_ptr< CMenu > pMenu( new CMenu() );
 	ASSERT_VALID( pMenu.get() );
 	if ( ! pMenu.get() )
 		return FALSE;
@@ -1129,8 +1129,8 @@ BOOL CSkin::CreateToolBar(LPCTSTR pszName, CCoolBarCtrl* pBar)
 	CCoolBarCtrl* pBase = NULL;
 	CString strClassName( pszName );
 
-	if ( m_pToolbars.Lookup( strClassName + m_pszGUIMode[Settings.General.GUIMode], pBase ) || 
-		 ( Settings.General.GUIMode == GUI_BASIC && m_pToolbars.Lookup( strClassName + m_pszGUIMode[ GUI_TABBED ], pBase ) ) || 
+	if ( m_pToolbars.Lookup( strClassName + m_pszGUIMode[Settings.General.GUIMode], pBase ) ||
+		 ( Settings.General.GUIMode == GUI_BASIC && m_pToolbars.Lookup( strClassName + m_pszGUIMode[ GUI_TABBED ], pBase ) ) ||
 		 m_pToolbars.Lookup( strClassName, pBase ) )
 	{
 		//if ( StartsWith( strClassName, L"CLibraryHeaderBar" ) )	// Crash Workarounds
@@ -1993,7 +1993,7 @@ CSkinWindow* CSkin::GetWindowSkin(CWnd* pWnd)
 		if ( Settings.General.GUIMode == GUI_BASIC )
 			if ( CSkinWindow* pSkin = GetWindowSkin( (LPCTSTR)strClassName, m_pszGUIMode[ GUI_TABBED ] ) )
 				return pSkin;
-		
+
 		if ( CSkinWindow* pSkin = GetWindowSkin( (LPCTSTR)strClassName ) )
 			return pSkin;
 

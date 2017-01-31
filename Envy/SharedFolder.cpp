@@ -94,10 +94,12 @@ void CLibraryFolder::RenewGUID()
 	m_oGUID.validate();
 }
 
-CXMLElement* CLibraryFolder::CreateXML(CXMLElement* pRoot, BOOL bSharedOnly, XmlType nType) const
+CXMLElement* CLibraryFolder::CreateXML(CXMLElement* pRoot, BOOL bSharedOnly, XmlType nType /*0*/) const
 {
 	if ( bSharedOnly && ! IsShared() )
 		return NULL;
+
+	// ToDo: Support private passkey
 
 	CXMLElement* pFolder;
 

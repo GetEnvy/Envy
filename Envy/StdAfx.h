@@ -1,7 +1,7 @@
 //
 // StdAfx.h
 //
-// This file is part of Envy (getenvy.com) © 2016
+// This file is part of Envy (getenvy.com) © 2016-2017
 // Portions copyright PeerProject 2008-2016 and Shareaza 2002-2008
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -149,9 +149,14 @@
 #define _ATL_NO_COM_SUPPORT
 #define _ATL_CSTRING_EXPLICIT_CONSTRUCTORS
 
-#if defined(_MSC_VER) && ( _MSC_VER < 1900 || _MSC_FULL_VER > 190022820 )
-#define _AFX_NO_MFC_CONTROLS_IN_DIALOGS		// Smaller filesize VS2012+ (VS2015 RC error)
-#endif
+// Smaller filesize VS2012+
+#define _AFX_NO_MFC_CONTROLS_IN_DIALOGS
+
+// Test deprecated c++ features for future visual studio
+// ToDo: Convert std::auto_ptr to std::unique_ptr for VS2010+
+//#ifndef _HAS_AUTO_PTR_ETC
+//#define _HAS_AUTO_PTR_ETC 0
+//#endif
 
 #pragma warning ( push, 0 )		// Suppress Microsoft warnings
 
@@ -299,18 +304,24 @@ using namespace std::tr1::placeholders;			// For std::bind _1, std::placeholders
 
 //#pragma warning ( pop )				// Restore warnings
 
-#include "Augment/Augment.hpp"
-using augment::implicit_cast;
-using augment::auto_ptr;
-using augment::auto_array;
+#include "Augment/IUnknownImplementation.hpp"	// For UPnPFinder
+#include "Augment/auto_array.hpp"
 using augment::IUnknownImplementation;
+using augment::auto_array;
+#if !defined(_MSC_VER) || (_MSC_VER >= 1600)	// VS2010+
+using std::unique_ptr;
+#else	// VS2008
+//#include "Augment/auto_ptr.hpp"
+using augment::auto_ptr;
+#define unique_ptr auto_ptr
+#endif
 
 #include "../HashLib/HashLib.h"
 
 // GeoIP (geolite.maxmind.com)
 #include <GeoIP/GeoIP.h>
 
-// BugTrap (intellesoft.net)
+// BugTrap (Defunct intellesoft.net)
 #ifdef _DEBUG
 	#include <BugTrap/BugTrap.h>
 #endif

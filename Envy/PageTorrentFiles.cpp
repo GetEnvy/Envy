@@ -1,7 +1,7 @@
 //
 // PageTorrentFiles.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
+// This file is part of Envy (getenvy.com) © 2016-2017
 // Portions copyright PeerProject 2008-2015 and Shareaza 2002-2007
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -91,7 +91,7 @@ BOOL CTorrentFilesPage::OnInitDialog()
 
 	//ASSUME_LOCK( Transfers.m_pSection );
 
-	auto_ptr< CLibraryTipCtrl > pTip( new CLibraryTipCtrl );
+	unique_ptr< CLibraryTipCtrl > pTip( new CLibraryTipCtrl );
 	pTip->Create( this, &Settings.Interface.TipDownloads );
 	//m_wndFiles.EnableTips( pTip );	// Unused ComboListCtrl
 
@@ -161,7 +161,7 @@ void CTorrentFilesPage::OnCheckbox(NMHDR* pNMHDR, LRESULT* pResult)
 	CDownload* pDownload = ((CDownloadSheet*)GetParent())->GetDownload();
 	if ( ! pDownload ) return;			// Invalid download
 
-	auto_ptr< CFragmentedFile > pFragFile( pDownload->GetFile() );
+	unique_ptr< CFragmentedFile > pFragFile( pDownload->GetFile() );
 	if ( ! pFragFile.get() ) return;
 
 	int nIndex = _wtoi( m_wndFiles.GetItemText( pNMListView->iItem, COL_INDEX ) );
@@ -252,7 +252,7 @@ BOOL CTorrentFilesPage::OnApply()
 //	CSingleLock oLock( &Transfers.m_pSection, TRUE );
 //	CDownload* pDownload = ((CDownloadSheet*)GetParent())->m_pDownload;
 //	if ( ! Downloads.Check( pDownload ) || ! pDownload->IsTorrent() ) return FALSE;
-//	auto_ptr< CFragmentedFile > pFragFile = pDownload->GetFile();
+//	unique_ptr< CFragmentedFile > pFragFile = pDownload->GetFile();
 //	if ( pFragFile.get() )
 //		for ( DWORD i = 0 ; i < pFragFile->GetCount() ; ++i )
 //			pFragFile->SetPriority( i, m_wndFiles.GetColumnData( i, COL_INDEX ) );
@@ -266,7 +266,7 @@ void CTorrentFilesPage::UpdateCount()
 	if ( ! oLock.Lock( 200 ) ) return;
 
 	CDownload* pDownload = ((CDownloadSheet*)GetParent())->GetDownload();
-	auto_ptr< CFragmentedFile > pFragFile( pDownload->GetFile() );
+	unique_ptr< CFragmentedFile > pFragFile( pDownload->GetFile() );
 	if ( ! pFragFile.get() ) return;
 
 	oLock.Unlock();
@@ -307,7 +307,7 @@ void CTorrentFilesPage::Update()
 	CDownload* pDownload = ((CDownloadSheet*)GetParent())->GetDownload();
 	if ( ! pDownload ) return;		// Invalid download
 
-	auto_ptr< CFragmentedFile > pFragFile( pDownload->GetFile() );
+	unique_ptr< CFragmentedFile > pFragFile( pDownload->GetFile() );
 	if ( ! pFragFile.get() )
 		return;
 
@@ -366,7 +366,7 @@ void CTorrentFilesPage::GetFiles()
 	CDownload* pDownload = ((CDownloadSheet*)GetParent())->GetDownload();
 	ASSERT( pDownload && pDownload->IsTorrent() );
 
-	auto_ptr< CFragmentedFile > pFragFile( pDownload->GetFile() );
+	unique_ptr< CFragmentedFile > pFragFile( pDownload->GetFile() );
 	if ( ! pFragFile.get() ) return;
 
 	pLock.Unlock();

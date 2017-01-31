@@ -1,7 +1,7 @@
 //
 // WndSecurity.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
+// This file is part of Envy (getenvy.com) © 2016-2017
 // Portions copyright PeerProject 2008-2014 and Shareaza 2002-2007
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -457,7 +457,7 @@ void CSecurityWnd::OnSecurityExport()
 	}
 	else	// Generate .XML
 	{
-		auto_ptr< CXMLElement > pXML( new CXMLElement( NULL, L"security" ) );
+		unique_ptr< CXMLElement > pXML( new CXMLElement( NULL, L"security" ) );
 
 		pXML->AddAttribute( L"xmlns", CSecurity::xmlns );
 

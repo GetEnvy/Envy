@@ -1,7 +1,7 @@
 //
 // HostBrowser.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
+// This file is part of Envy (getenvy.com) © 2016-2017
 // Portions copyright PeerProject 2008-2014 and Shareaza 2002-2008
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -457,7 +457,7 @@ BOOL CHostBrowser::LoadDC(LPCTSTR pszFile, CQueryHit*& pHits)
 	if ( ! pBuffer.UnBZip() )
 		return FALSE;	// Decompression error
 
-	auto_ptr< CXMLElement > pXML ( CXMLElement::FromString( pBuffer.ReadString( pBuffer.m_nLength, CP_UTF8 ), TRUE ) );
+	unique_ptr< CXMLElement > pXML ( CXMLElement::FromString( pBuffer.ReadString( pBuffer.m_nLength, CP_UTF8 ), TRUE ) );
 	if ( ! pXML.get() )
 		return FALSE;	// XML decoding error
 
@@ -741,11 +741,8 @@ BOOL CHostBrowser::ReadContent()
 		if ( ! StreamPacketsG1() ) return FALSE;
 		break;
 	//case PROTOCOL_ED2K:
-	//	// Skip
-	//	break;
 	//case PROTOCOL_DC:
-	//	// Skip
-	//	break;
+	//	break;	// Skip
 	//default:
 	//	theApp.Message( MSG_ERROR, L"CHostBrowser::ReadContent(): Unknown Browse Protocol" );
 	}

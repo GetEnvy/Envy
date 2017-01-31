@@ -1,7 +1,7 @@
 //
 // Envy.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
+// This file is part of Envy (getenvy.com) © 2016-2017
 // Portions copyright PeerProject 2008-2016 and Shareaza 2002-2008
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -164,7 +164,7 @@ void CAppCommandLineInfo::ParseParam(const TCHAR* pszParam, BOOL bFlag, BOOL bLa
 			m_sTask = pszParam + 4;
 			return;
 		}
-		if ( _tcsicmp( pszParam, L"help" ) == 0 || *pszParam == '?' )
+		if ( _tcsicmp( pszParam, L"help" ) == 0 || *pszParam == L'?' )
 		{
 			m_bHelp = TRUE;
 			return;
@@ -1178,7 +1178,7 @@ BOOL CEnvyApp::OpenInternetShortcut(LPCTSTR lpszFileName)
 BOOL CEnvyApp::OpenTorrent(LPCTSTR lpszFileName)
 {
 	// Test torrent
-	//auto_ptr< CBTInfo > pTorrent( new CBTInfo() );
+	//unique_ptr< CBTInfo > pTorrent( new CBTInfo() );
 	//if ( ! pTorrent.get() ) return FALSE;
 	//if ( ! pTorrent->LoadTorrentFile( lpszFileName ) ) return FALSE;
 
@@ -3339,7 +3339,7 @@ CString LoadRichHTML(UINT nResourceID, CString& strResponse, CEnvyFile* pFile)
 		bWindowsEOL = false;
 	}
 	strResponse	= strBody.Left( nBreak + ( bWindowsEOL ? 2 : 1 ) );
-	strBody		= strBody.Mid( nBreak + ( bWindowsEOL ? 2 : 1 ) );
+	strBody		= strBody.Mid(  nBreak + ( bWindowsEOL ? 2 : 1 ) );
 
 	for ( ;; )
 	{

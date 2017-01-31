@@ -84,7 +84,7 @@ public:
 	CString			GetFolder() const;
 	CString 		GetSearchName() const;
 	const CLibraryFolder* GetFolderPtr() const;
-	CXMLElement*	CreateXML(CXMLElement* pRoot, BOOL bSharedOnly, XmlType nType) const;
+	CXMLElement*	CreateXML(CXMLElement* pRoot, BOOL bSharedOnly, XmlType nType = xmlDefault ) const;
 
 	bool			IsPrivateTorrent() const;
 	DWORD			GetCreationTime();				// Get network wide file creation time (seconds, as time())

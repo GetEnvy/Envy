@@ -1,7 +1,7 @@
 //
 // HostCache.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
+// This file is part of Envy (getenvy.com) © 2016-2017
 // Portions copyright PeerProject 2008-2014 and Shareaza 2002-2008
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -887,7 +887,7 @@ int CHostCache::ImportHubList(CFile* pFile)
 		return 0;	// Decompression error
 
 	CString strEncoding;
-	auto_ptr< CXMLElement > pHublist ( CXMLElement::FromString(
+	unique_ptr< CXMLElement > pHublist ( CXMLElement::FromString(
 		pBuffer.ReadString( pBuffer.m_nLength ), TRUE, &strEncoding ) );
 	if ( strEncoding.CompareNoCase( L"utf-8" ) == 0 )	// Reload as UTF-8
 		pHublist.reset( CXMLElement::FromString(

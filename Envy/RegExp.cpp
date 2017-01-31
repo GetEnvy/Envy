@@ -1,7 +1,7 @@
 //
 // RegExp.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
+// This file is part of Envy (getenvy.com) © 2016-2017
 // Portions copyright PeerProject 2010-2014 and Shareaza 2008-2010
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -31,8 +31,14 @@
 #include <tchar.h>
 //#include <string>	// In StdAfx.h
 
-//#if defined(_MSC_VER) && (_MSC_FULL_VER > 150030000)	// _HAS_TR1		// VS2008 SP1 for tr1, VS2012 for std
+// VS2008 SP1 for _HAS_TR1, VS2012+ for std
 #include <regex>
+
+#if !defined(_MSC_VER) || (_MSC_VER < 1700)		// VS2010~
+#define std::regex std::tr1::regex
+#define std::wregex std::tr1::wregex
+#define std::wsmatch std::tr1::wsmatch
+#endif
 
 #ifdef _DEBUG
 #undef THIS_FILE
@@ -50,9 +56,8 @@ BOOL Match(LPCTSTR szRegExp, LPCTSTR szContent)
 	{
 		const std::wstring sContent( (LPCWSTR)CT2CW( szContent ) );
 		const std::wstring sRegExp( (LPCWSTR)CT2CW( szRegExp ) );
-		const std::tr1::wregex regExpPattern( sRegExp,
-			std::tr1::regex_constants::ECMAScript | std::tr1::regex_constants::icase );
-		if ( std::tr1::regex_search( sContent, regExpPattern ) )
+		const std::wregex regExpPattern( sRegExp, std::regex_constants::ECMAScript | std::regex_constants::icase );
+		if ( std::regex_search( sContent, regExpPattern ) )
 			return TRUE;
 	}
 	catch (...)
@@ -67,10 +72,10 @@ size_t Split(LPCTSTR szRegExp, LPCTSTR szContent, LPTSTR* pszResult)
 	{
 		const std::wstring sContent( (LPCWSTR)CT2CW( szContent ) );
 		const std::wstring sRegExp( (LPCWSTR)CT2CW( szRegExp ) );
-		const std::tr1::wregex regExpPattern( sRegExp,
-			std::tr1::regex_constants::ECMAScript | std::tr1::regex_constants::icase );
-		std::tr1::wsmatch results;
-		if ( std::tr1::regex_search( sContent, results, regExpPattern ) )
+		const std::wregex regExpPattern( sRegExp, std::regex_constants::ECMAScript | std::regex_constants::icase );
+		std::wsmatch results;
+
+		if ( std::regex_search( sContent, results, regExpPattern ) )
 		{
 			const size_t nCount = results.size();
 			size_t len = 0;

@@ -1,7 +1,7 @@
 //
 // FragmentedFile.h
 //
-// This file is part of Envy (getenvy.com) © 2016
+// This file is part of Envy (getenvy.com) © 2016-2017
 // Portions copyright PeerProject 2008-2014 and Shareaza 2002-2007
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -34,7 +34,6 @@ class CFragmentedFile : public CObject
 
 public:
 	CFragmentedFile();
-protected:
 	virtual ~CFragmentedFile();
 
 public:
@@ -337,10 +336,21 @@ public:
 //	}
 };
 
-// For auto_ptr< CFragmentedFile >
-// Defined in Augment/auto_ptr.hpp, was boost::checked_delete
+
+// delete, with compile-time type check, from boost::checked_delete.hpp:
+template<class T> inline void checked_delete(T * x)
+{
+#ifdef _DEBUG
+	// Intentionally complex, simplification causes regressions
+	typedef char type_must_be_complete[sizeof(T) ? 1 : -1];
+	(void) sizeof(type_must_be_complete);
+#endif
+	delete x;
+}
+
+// For unique_ptr< CFragmentedFile > - was boost::checked_delete
 template<>
-inline void augment::checked_delete< CFragmentedFile >(CFragmentedFile* x)
+inline void checked_delete< CFragmentedFile >(CFragmentedFile* x)
 {
 	if ( x ) x->Release();
 }

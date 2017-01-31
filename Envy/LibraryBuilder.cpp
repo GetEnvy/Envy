@@ -1,7 +1,7 @@
 //
 // LibraryBuilder.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
+// This file is part of Envy (getenvy.com) © 2016-2017
 // Portions copyright PeerProject 2008-2015 and Shareaza 2002-2008
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -539,7 +539,7 @@ bool CLibraryBuilder::HashFile(LPCTSTR szPath, HANDLE hFile)
 	nSizeHigh = (DWORD)( nFileBase >> 32 );
 	SetFilePointer( hFile, nSizeLow, (PLONG)&nSizeHigh, FILE_BEGIN );
 
-	auto_ptr< CFileHash > pFileHash( new CFileHash( nFileSize ) );
+	unique_ptr< CFileHash > pFileHash( new CFileHash( nFileSize ) );
 	if ( ! pFileHash.get() )
 		return false;	// Out of memory
 
@@ -706,7 +706,7 @@ int CLibraryBuilder::SubmitMetadata(DWORD nIndex, LPCTSTR pszSchemaURI, CXMLElem
 	}
 
 	// Validate schema
-	auto_ptr< CXMLElement > pBase( pSchema->Instantiate( true ) );
+	unique_ptr< CXMLElement > pBase( pSchema->Instantiate( true ) );
 	pBase->AddElement( pXML );
 	if ( ! pSchema->Validate( pBase.get(), true ) )
 		return 0;

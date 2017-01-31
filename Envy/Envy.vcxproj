@@ -1593,11 +1593,9 @@
     <ClInclude Include="Hashes\HashStringConversion.hpp" />
     <ClInclude Include="Hashes\StoragePolicies.hpp" />
     <ClInclude Include="Hashes\ValidationPolicies.hpp" />
-    <ClInclude Include="Augment\Augment.hpp" />
     <ClInclude Include="Augment\auto_array.hpp" />
-    <ClInclude Include="Augment\auto_ptr.hpp" />
     <ClInclude Include="Augment\IUnknownImplementation.hpp" />
-    <ClInclude Include="BitTorrent\dht.h" />
+    <ClInclude Include="BitTorrentDHT\dht.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HashLib\HashLib.vcxproj">

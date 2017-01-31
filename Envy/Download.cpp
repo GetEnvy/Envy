@@ -1,7 +1,7 @@
 //
 // Download.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
+// This file is part of Envy (getenvy.com) © 2016-2017
 // Portions copyright PeerProject 2008-2016 and Shareaza 2002-2008
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -747,7 +747,7 @@ BOOL CDownload::SeedTorrent()
 
 	ASSERT( m_pTorrent.GetCount() );
 
-	auto_ptr< CFragmentedFile > pFragmentedFile( new CFragmentedFile );
+	unique_ptr< CFragmentedFile > pFragmentedFile( new CFragmentedFile );
 	if ( ! pFragmentedFile.get() )
 		return FALSE;	// Out of memory
 
@@ -761,7 +761,7 @@ BOOL CDownload::SeedTorrent()
 
 	if ( IsSingleFileTorrent() )
 	{
-		// Refill missed hashes for single-file torrent
+		// Refill missing hashes for single-file torrent
 		const CBTInfo::CBTFile* pBTFile = m_pTorrent.m_pFiles.GetHead();
 		if ( ! m_pTorrent.m_oSHA1 && pBTFile->m_oSHA1 )
 			m_pTorrent.m_oSHA1 = pBTFile->m_oSHA1;
@@ -785,7 +785,7 @@ BOOL CDownload::SeedTorrent()
 		}
 	}
 
-	// Refill missed hashes
+	// Refill missng hashes
 	if ( ! m_oSHA1 && m_pTorrent.m_oSHA1 )
 		m_oSHA1 = m_pTorrent.m_oSHA1;
 	if ( ! m_oTiger && m_pTorrent.m_oTiger )
@@ -1235,7 +1235,7 @@ void CDownload::Serialize(CArchive& ar, int nVersion)	// DOWNLOAD_SER_VERSION
 //
 //	if ( nVersion >= 3 && ar.ReadCount() )
 //	{
-//		auto_ptr< CXMLElement > pXML( new CXMLElement() );
+//		unique_ptr< CXMLElement > pXML( new CXMLElement() );
 //		pXML->Serialize( ar );
 //		MergeMetadata( pXML.get() );
 //	}

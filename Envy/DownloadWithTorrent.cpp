@@ -1,7 +1,7 @@
 //
 // DownloadWithTorrent.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
+// This file is part of Envy (getenvy.com) © 2016-2017
 // Portions copyright PeerProject 2008-2015 and Shareaza 2002-2008
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -245,7 +245,7 @@ void CDownloadWithTorrent::Serialize(CArchive& ar, int nVersion)
 		//
 		//	// Create a bunch of new empty files
 		//	ClearFile();	// Close old files
-		//	auto_ptr< CFragmentedFile > pFragFile = GetFile();
+		//	unique_ptr< CFragmentedFile > pFragFile = GetFile();
 		//	if ( ! pFragFile.get() )
 		//		AfxThrowMemoryException();
 		//	if ( ! pFragFile->Open( m_pTorrent, ! IsSeeding() ) )
@@ -496,7 +496,7 @@ void CDownloadWithTorrent::RunTorrent(DWORD tNow)
 
 				if ( pDownload && pDownload->GetVolumeRemaining() == m_nSize )	// First load only
 				{
-					auto_ptr< CFragmentedFile > pFragFile( pDownload->GetFile() );
+					unique_ptr< CFragmentedFile > pFragFile( pDownload->GetFile() );
 					if ( pFragFile.get() )
 					{
 						const DWORD nCount = pFragFile->GetCount();

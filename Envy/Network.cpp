@@ -1,7 +1,7 @@
 //
 // Network.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
+// This file is part of Envy (getenvy.com) © 2016-2017
 // Portions copyright PeerProject 2008-2014 and Shareaza 2002-2008
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -542,7 +542,7 @@ BOOL CNetwork::AsyncResolve(LPCTSTR pszAddress, WORD nPort, PROTOCOLID nProtocol
 {
 	theApp.Message( MSG_INFO, IDS_NETWORK_RESOLVING, pszAddress );
 
-	auto_ptr< ResolveStruct > pResolve( new ResolveStruct );
+	unique_ptr< ResolveStruct > pResolve( new ResolveStruct );
 	if ( pResolve.get() )
 	{
 		pResolve->m_sAddress	= pszAddress;
@@ -915,7 +915,7 @@ void CNetwork::PostRun()
 
 void CNetwork::OnWinsock(WPARAM wParam, LPARAM lParam)
 {
-	auto_ptr< const ResolveStruct > pResolve( GetResolve( (HANDLE)wParam ) );
+	unique_ptr< const ResolveStruct > pResolve( GetResolve( (HANDLE)wParam ) );
 	if ( ! pResolve.get() )
 		return;		// Out of memory
 

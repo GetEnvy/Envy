@@ -62,7 +62,7 @@ protected:
 	DWORD			m_tRatingTime;	// When rating was last calculated
 
 private:
-	auto_ptr< CFragmentedFile > m_pFile;	// Disk file
+	unique_ptr< CFragmentedFile > m_pFile;	// Disk file
 
 public:
 	virtual void	Remove(BOOL bMessage = TRUE);
@@ -98,7 +98,7 @@ protected:
 	virtual void	CloseFile();
 	virtual BOOL	WriteFile(QWORD nOffset, LPCVOID pData, QWORD nLength, QWORD* pnWritten = NULL);
 	virtual BOOL	ReadFile(QWORD nOffset, LPVOID pData, QWORD nLength, QWORD* pnRead = NULL);
-	void			AttachFile(auto_ptr< CFragmentedFile >& pFile);
+	void			AttachFile(unique_ptr< CFragmentedFile >& pFile);
 };
 
 enum UserRating

@@ -126,7 +126,6 @@
     <Link>
       <AdditionalDependencies>ws2_32.lib;Wininet.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <DelayLoadDLLs>ws2_32.dll;Wininet.dll;%(DelayLoadDLLs)</DelayLoadDLLs>
-      <RegisterOutput>true</RegisterOutput>
       <PerUserRedirection>true</PerUserRedirection>
       <LargeAddressAware>true</LargeAddressAware>
       <ModuleDefinitionFile>ShortURL.def</ModuleDefinitionFile>
@@ -168,7 +167,6 @@
     <Link>
       <AdditionalDependencies>ws2_32.lib;Wininet.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <DelayLoadDLLs>ws2_32.dll;Wininet.dll;%(DelayLoadDLLs)</DelayLoadDLLs>
-      <RegisterOutput>true</RegisterOutput>
       <PerUserRedirection>true</PerUserRedirection>
       <ModuleDefinitionFile>ShortURL.def</ModuleDefinitionFile>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -214,7 +212,6 @@
       <ModuleDefinitionFile>ShortURL.def</ModuleDefinitionFile>
       <AdditionalDependencies>ws2_32.lib;Wininet.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <DelayLoadDLLs>ws2_32.dll;Wininet.dll;%(DelayLoadDLLs)</DelayLoadDLLs>
-      <RegisterOutput>true</RegisterOutput>
       <PerUserRedirection>true</PerUserRedirection>
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -261,7 +258,6 @@
       <AdditionalDependencies>ws2_32.lib;Wininet.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <DelayLoadDLLs>ws2_32.dll;Wininet.dll;%(DelayLoadDLLs)</DelayLoadDLLs>
       <ModuleDefinitionFile>ShortURL.def</ModuleDefinitionFile>
-      <RegisterOutput>true</RegisterOutput>
       <PerUserRedirection>true</PerUserRedirection>
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>

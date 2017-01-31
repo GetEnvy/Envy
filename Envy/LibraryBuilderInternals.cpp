@@ -1,7 +1,7 @@
 //
 // LibraryBuilderInternals.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
+// This file is part of Envy (getenvy.com) © 2016-2017
 // Portions copyright PeerProject 2008-2015 and Shareaza 2002-2008
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -602,7 +602,7 @@ bool CLibraryBuilderInternals::ReadID3v1(DWORD nIndex, HANDLE hFile)
 	if ( strncmp( pInfo.szTag, ID3V1_TAG, 3 ) != 0 )
 		return false;
 
-	auto_ptr< CXMLElement > pXML( new CXMLElement( NULL, L"audio" ) );
+	unique_ptr< CXMLElement > pXML( new CXMLElement( NULL, L"audio" ) );
 
 	CopyID3v1Field( pXML.get(), L"title", CString( pInfo.szSongname, 30 ) );
 	CopyID3v1Field( pXML.get(), L"artist", CString( pInfo.szArtist, 30 ) );
@@ -735,7 +735,7 @@ bool CLibraryBuilderInternals::ReadID3v2(DWORD nIndex, HANDLE hFile)
 		nBuffer -= pExtended->nSize;
 	}
 
-	auto_ptr< CXMLElement > pXML( new CXMLElement( NULL, L"audio" ) );
+	unique_ptr< CXMLElement > pXML( new CXMLElement( NULL, L"audio" ) );
 
 	// 4-Char ID3 FrameTag: 	(http://en.wikipedia.org/wiki/ID3)
 	SwitchMap( Tag )
@@ -1183,7 +1183,7 @@ bool CLibraryBuilderInternals::ReadMP3Frames(DWORD nIndex, HANDLE hFile)
 {
 	SetFilePointer( hFile, 0, NULL, FILE_BEGIN );
 
-	auto_ptr< CXMLElement > pXML( new CXMLElement( NULL, L"audio" ) );
+	unique_ptr< CXMLElement > pXML( new CXMLElement( NULL, L"audio" ) );
 
 	if ( ! ScanMP3Frame( pXML.get(), hFile, 0 ) )
 		return false;
@@ -1397,7 +1397,7 @@ bool CLibraryBuilderInternals::ScanMP3Frame(CXMLElement* pXML, HANDLE hFile, DWO
 
 bool CLibraryBuilderInternals::ReadVersion(DWORD nIndex, LPCTSTR pszPath)
 {
-	auto_ptr< CXMLElement > pXML( new CXMLElement( NULL, L"application" ) );
+	unique_ptr< CXMLElement > pXML( new CXMLElement( NULL, L"application" ) );
 	if ( ! pXML.get() )
 		return false;
 
@@ -1606,7 +1606,7 @@ bool CLibraryBuilderInternals::ReadMSI(DWORD nIndex, LPCTSTR pszPath)
 	if ( nError != ERROR_SUCCESS )
 		return false;
 
-	auto_ptr< CXMLElement > pXML( new CXMLElement( NULL, L"application" ) );
+	unique_ptr< CXMLElement > pXML( new CXMLElement( NULL, L"application" ) );
 
 	pXML->AddAttribute( L"os", L"Windows" );
 
@@ -1743,7 +1743,7 @@ bool CLibraryBuilderInternals::ReadJPEG(DWORD nIndex, HANDLE hFile)
 			strComment.SetAt( nChar, '?' );
 	}
 
-	auto_ptr< CXMLElement > pXML( new CXMLElement( NULL, L"image" ) );
+	unique_ptr< CXMLElement > pXML( new CXMLElement( NULL, L"image" ) );
 
 	CString strItem;
 	strItem.Format( L"%lu", nWidth );
@@ -1787,9 +1787,9 @@ bool CLibraryBuilderInternals::ReadGIF(DWORD nIndex, HANDLE hFile)
 	if ( ! ReadFile( hFile, &nHeight, 2, &nRead, NULL ) || nRead != 2 || nHeight == 0 )
 		return false;
 
-	auto_ptr< CXMLElement > pXML( new CXMLElement( NULL, L"image" ) );
-	CString strItem;
+	unique_ptr< CXMLElement > pXML( new CXMLElement( NULL, L"image" ) );
 
+	CString strItem;
 	strItem.Format( L"%lu", nWidth );
 	pXML->AddAttribute( L"width", strItem );
 	strItem.Format( L"%lu", nHeight );
@@ -1856,7 +1856,7 @@ bool CLibraryBuilderInternals::ReadPNG(DWORD nIndex, HANDLE hFile)
 	if ( ! ReadFile( hFile, &nColors, 1, &nRead, NULL ) || nRead != 1 )
 		return false;
 
-	auto_ptr< CXMLElement > pXML( new CXMLElement( NULL, L"image" ) );
+	unique_ptr< CXMLElement > pXML( new CXMLElement( NULL, L"image" ) );
 
 	CString strItem;
 	strItem.Format( L"%lu", nWidth );
@@ -1891,7 +1891,7 @@ bool CLibraryBuilderInternals::ReadBMP(DWORD nIndex, HANDLE hFile)
 	if ( nRead != sizeof( pBIH ) || pBIH.biSize != sizeof( pBIH ) )
 		return false;
 
-	auto_ptr< CXMLElement > pXML( new CXMLElement( NULL, L"image" ) );
+	unique_ptr< CXMLElement > pXML( new CXMLElement( NULL, L"image" ) );
 	CString strItem;
 
 	strItem.Format( L"%d", pBIH.biWidth );
@@ -2534,7 +2534,7 @@ bool CLibraryBuilderInternals::ReadASF(DWORD nIndex, HANDLE hFile)
 		SetFilePointer( hFile, dwPosition + (DWORD)nSize, NULL, FILE_BEGIN );
 	}
 
-	auto_ptr< CXMLElement > pXML( new CXMLElement( NULL,
+	unique_ptr< CXMLElement > pXML( new CXMLElement( NULL,
 		bVideo ? L"video" : L"audio" ) );
 	CString strItem;
 
@@ -2625,7 +2625,7 @@ bool CLibraryBuilderInternals::ReadMPEG(DWORD nIndex, HANDLE hFile)
 	if ( nHeader != 7 )
 		return false;
 
-	auto_ptr< CXMLElement > pXML( new CXMLElement( NULL, L"video" ) );
+	unique_ptr< CXMLElement > pXML( new CXMLElement( NULL, L"video" ) );
 	CString strItem;
 
 	DWORD nWidth, nHeight;
@@ -2656,7 +2656,7 @@ bool CLibraryBuilderInternals::ReadMPEG(DWORD nIndex, HANDLE hFile)
 //{
 //	// ToDo: http://www.matroska.org/technical/specs/index.html
 //
-//	auto_ptr< CXMLElement > pXML( new CXMLElement( NULL, L"video" ) );
+//	unique_ptr< CXMLElement > pXML( new CXMLElement( NULL, L"video" ) );
 //
 //	LibraryBuilder.SubmitMetadata( nIndex, CSchema::uriVideo, pXML.release() );
 //
@@ -2716,7 +2716,7 @@ bool CLibraryBuilderInternals::ReadOGG(DWORD nIndex, HANDLE hFile)
 	pOGG += 4;
 	nOGG -= 4;
 
-	auto_ptr< CXMLElement > pXML( new CXMLElement( NULL, L"audio" ) );
+	unique_ptr< CXMLElement > pXML( new CXMLElement( NULL, L"audio" ) );
 
 	for ( ; nComments && nOGG > 4 ; nComments-- )
 	{
@@ -2915,7 +2915,7 @@ bool CLibraryBuilderInternals::ReadAPE(DWORD nIndex, HANDLE hFile, bool bPreferF
 	DWORD nRead;
 	APE_TAG_FOOTER pFooter;
 
-	auto_ptr< CXMLElement > pXML( new CXMLElement( NULL, L"audio" ) );
+	unique_ptr< CXMLElement > pXML( new CXMLElement( NULL, L"audio" ) );
 
 	SetFilePointer( hFile, -(LONG)sizeof( pFooter ), NULL, FILE_END );
 	ReadFile( hFile, &pFooter, sizeof( pFooter ), &nRead, NULL );
@@ -3427,7 +3427,7 @@ bool CLibraryBuilderInternals::ReadAVI(DWORD nIndex, HANDLE hFile)
 		return false;
 
 	bool bMoviFound = false, bInfoFound = false;
-	auto_ptr< CXMLElement > pXML( new CXMLElement( NULL, L"video" ) );
+	unique_ptr< CXMLElement > pXML( new CXMLElement( NULL, L"video" ) );
 
 	do
 	{
@@ -3843,7 +3843,7 @@ bool CLibraryBuilderInternals::ReadPDF(DWORD nIndex, HANDLE hFile, LPCTSTR pszPa
 	// Collect author, title if file name contains "book" keyword
 	bool bBook = ( _tcsistr( pszPath, L"book" ) != NULL );
 
-	auto_ptr< CXMLElement > pXML( new CXMLElement( NULL,
+	unique_ptr< CXMLElement > pXML( new CXMLElement( NULL,
 		bBook ? L"book" : L"wordprocessing" ) );
 
 	if ( LPCTSTR pszName = _tcsrchr( pszPath, '\\' ) )
@@ -4517,7 +4517,7 @@ bool CLibraryBuilderInternals::ReadCHM(DWORD nIndex, HANDLE hFile, LPCTSTR pszPa
 	CString strLine;
 	bool bBook = ( _tcsistr( pszPath, L"book" ) != NULL );
 
-	auto_ptr< CXMLElement > pXML( new CXMLElement( NULL,
+	unique_ptr< CXMLElement > pXML( new CXMLElement( NULL,
 		bBook ? L"book" : L"wordprocessing" ) );
 
 	if ( LPCTSTR pszName = _tcsrchr( pszPath, '\\' ) )
@@ -4792,7 +4792,7 @@ bool CLibraryBuilderInternals::ReadCollection(DWORD nIndex, LPCTSTR pszPath)
 	{
 		if ( _tcslen( pszPath ) < 9 || _tcsicmp( pszPath + _tcslen( pszPath ) - 8, L".xml.bz2" ) != 0 )
 		{
-			auto_ptr< CXMLElement > pXML( new CXMLElement( NULL, L"archive" ) );
+			unique_ptr< CXMLElement > pXML( new CXMLElement( NULL, L"archive" ) );
 			LibraryBuilder.SubmitMetadata( nIndex, CSchema::uriArchive, pXML.release() );
 			return true;
 		}
@@ -4831,7 +4831,7 @@ bool CLibraryBuilderInternals::ReadTorrent(DWORD nIndex, HANDLE /*hFile*/, LPCTS
 	if ( ! oTorrent.LoadTorrentFile( pszPath ) )
 		return false;
 
-	auto_ptr< CXMLElement > pXML( new CXMLElement( NULL, L"torrent" ) );
+	unique_ptr< CXMLElement > pXML( new CXMLElement( NULL, L"torrent" ) );
 
 	CString str;
 	str.Format( L"%i", oTorrent.GetCount() );
@@ -4871,8 +4871,8 @@ bool CLibraryBuilderInternals::ReadTorrent(DWORD nIndex, HANDLE /*hFile*/, LPCTS
 bool CLibraryBuilderInternals::ReadSkin(DWORD nIndex)
 {
 	// .PSK Library inclusion workaround
-	auto_ptr< CXMLElement > pXMLApp( new CXMLElement( NULL, L"application" ) );	// Set Schema
-	auto_ptr< CXMLElement > pXMLArchive( new CXMLElement( NULL, L"archive" ) );	// Set Schema
+	unique_ptr< CXMLElement > pXMLApp( new CXMLElement( NULL, L"application" ) );	// Set Schema
+	unique_ptr< CXMLElement > pXMLArchive( new CXMLElement( NULL, L"archive" ) );	// Set Schema
 	pXMLApp->AddAttribute( L"company", L"Envy" );						// Hackish workaround: Invalid skin schema item so dual schema works. (SkinScan metadata)
 	return	LibraryBuilder.SubmitMetadata( nIndex, CSchema::uriApplication, pXMLApp.release() ) != 0 &&
 			LibraryBuilder.SubmitMetadata( nIndex, CSchema::uriArchive, pXMLArchive.release() ) != 0;
@@ -4880,7 +4880,7 @@ bool CLibraryBuilderInternals::ReadSkin(DWORD nIndex)
 
 bool CLibraryBuilderInternals::ReadBook(DWORD nIndex, CString strPath)
 {
-	auto_ptr< CXMLElement > pXML( new CXMLElement( NULL, L"book" ) );			// Set Schema
+	unique_ptr< CXMLElement > pXML( new CXMLElement( NULL, L"book" ) );			// Set Schema
 
 	strPath = PathFindFileName( strPath );
 	if ( strPath.GetLength() > 16 )
@@ -4914,7 +4914,7 @@ bool CLibraryBuilderInternals::ReadBook(DWORD nIndex, CString strPath)
 
 bool CLibraryBuilderInternals::ReadText(DWORD nIndex, CString /*strPath*/)
 {
-	auto_ptr< CXMLElement > pXML( new CXMLElement( NULL, L"wordprocessing" ) );	// Set Schema
+	unique_ptr< CXMLElement > pXML( new CXMLElement( NULL, L"wordprocessing" ) );	// Set Schema
 	//pXML->AddAttribute( L"path", strPath );									// No metadata
 	return LibraryBuilder.SubmitMetadata( nIndex, CSchema::uriDocument, pXML.release() ) != 0;
 }

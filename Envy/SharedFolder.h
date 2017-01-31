@@ -55,7 +55,7 @@ protected:
 	Hashes::Guid	m_oGUID;
 
 public:
-	CXMLElement*	CreateXML(CXMLElement* pRoot, BOOL bSharedOnly, XmlType nType) const;
+	CXMLElement*	CreateXML(CXMLElement* pRoot, BOOL bSharedOnly, XmlType nType = xmlDefault) const;
 	POSITION		GetFolderIterator() const;
 	CLibraryFolder*	GetNextFolder(POSITION& pos) const;
 	CLibraryFolder*	GetFolderByName(LPCTSTR pszName) const;

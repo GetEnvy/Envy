@@ -2813,13 +2813,7 @@
     <ClInclude Include="Hashes\ValidationPolicies.hpp">
       <Filter>Header Files\Hash Algorithms\Policies</Filter>
     </ClInclude>
-    <ClInclude Include="Augment\Augment.hpp">
-      <Filter>Header Files\Augment</Filter>
-    </ClInclude>
     <ClInclude Include="Augment\auto_array.hpp">
-      <Filter>Header Files\Augment</Filter>
-    </ClInclude>
-    <ClInclude Include="Augment\auto_ptr.hpp">
       <Filter>Header Files\Augment</Filter>
     </ClInclude>
     <ClInclude Include="Augment\IUnknownImplementation.hpp">

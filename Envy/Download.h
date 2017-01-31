@@ -26,7 +26,7 @@
 // 33 - added m_sSearchKeyword to CDownloadBase (CyberBob)
 // 34 - added m_bSeeding and m_sServingFileName to CDownloadWithTorrent (Rolandas)
 // 35 - added m_sCountry to CDownloadSource (dcat)
-// 36 - nothing (Rolandas) (Shareaza 2.2.4.0?)
+// 36 - nothing (Rolandas) (Shareaza 2.2.4.0)
 // 37 - added m_oBTH to CDownloadBase, m_bBTH and m_bMD5 to CDownloadSource (Ryo-oh-ki)
 // 38 - added m_sCountryName to CDownloadSource (dcat)
 // 39 - added m_bClientExtended to CDownloadSource (Ryo-oh-ki)

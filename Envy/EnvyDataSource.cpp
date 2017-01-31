@@ -1,7 +1,7 @@
 //
 // EnvyDataSource.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
+// This file is part of Envy (getenvy.com) © 2016-2017
 // Portions copyright PeerProject 2008-2015 and Shareaza 2002-2008
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -505,7 +505,7 @@ BOOL CEnvyDataSource::DropToFolder(IDataObject* pIDataObject, DWORD grfKeyState,
 		 size < sizeof( DROPFILES ) || size > 10000000 )
 		return FALSE;
 
-	auto_ptr<AsyncFileOperationParams> pAFOP( new AsyncFileOperationParams );
+	unique_ptr<AsyncFileOperationParams> pAFOP( new AsyncFileOperationParams );
 	if ( ! pAFOP.get() )
 		return FALSE;
 

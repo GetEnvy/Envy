@@ -1,7 +1,7 @@
 //
 // Images.cpp
 //
-// This file is part of Envy (getenvy.com) © 2010-2016
+// This file is part of Envy (getenvy.com) © 2016-2017
 // All work here is original and released as-is under Persistent Public Domain [PPD]
 //
 
@@ -273,7 +273,7 @@ void CImages::Load()
 		SkinImage( &m_bmToolbarSeparator, L"CCoolbar.Separator" ) ||
 		SkinImage( &m_bmToolbarSeparator, L"ToolbarSeparator" );
 
-	SkinImage( &m_bmToolbar, L"System.Toolbars" ) ||
+	SkinImage( &m_bmToolbar, L"System.Toolbars" ) ||	// FALSE disallow transparency?
 		SkinImage( &m_bmToolbar, L"CCoolbar" ) ||
 		SkinImage( &m_bmToolbar, L"Toolbar" );
 
