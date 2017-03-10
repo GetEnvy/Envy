@@ -16,7 +16,7 @@
 // (http://www.gnu.org/licenses/agpl.html)
 //
 
-// Note: This file is not currently used.
+// Note this file is not used.
 
 //#pragma once
 //
@@ -40,10 +40,10 @@
 //	int  GetColumnData(int iItem, int iColumn) const;
 //	void SetColumnData(int iItem, int iColumn, int iData);
 //	void SetColumnValues(int iColumn, const CIntStringMap& oValues);
-//	void EnableTips(unique_ptr< CLibraryTipCtrl > pTip);
+//	void EnableTips(std::unique_ptr< CLibraryTipCtrl > pTip);
 //
 //protected:
-//	unique_ptr< CLibraryTipCtrl > m_pTip;
+//	std::unique_ptr< CLibraryTipCtrl > m_pTip;
 //	CComboBox*			m_pCombo;
 //	int					m_iSelectedItem;
 //	int					m_iSelectedSubItem;

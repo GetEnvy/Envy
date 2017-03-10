@@ -37,6 +37,8 @@ public:
 	CString GetName(const CNeighbour* pNeighbour) const;
 	CString GetAgent(const CNeighbour* pNeighbour) const;
 	CString GetNick(const CNeighbour* pNeighbour) const;
+//	CString GetServerName(const CNeighbour* pNeighbour) const;
+	CString GetServerName(const CString& strIP) const;
 	CString GetNeighbourList(LPCTSTR szFormat) const;
 
 	// Let CNeighbour and CShakeNeighbour look at private members of CNeighbours class

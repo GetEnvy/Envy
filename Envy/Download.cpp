@@ -747,7 +747,7 @@ BOOL CDownload::SeedTorrent()
 
 	ASSERT( m_pTorrent.GetCount() );
 
-	unique_ptr< CFragmentedFile > pFragmentedFile( new CFragmentedFile );
+	augment::auto_ptr< CFragmentedFile > pFragmentedFile( new CFragmentedFile );
 	if ( ! pFragmentedFile.get() )
 		return FALSE;	// Out of memory
 
@@ -785,7 +785,7 @@ BOOL CDownload::SeedTorrent()
 		}
 	}
 
-	// Refill missng hashes
+	// Refill missing hashes
 	if ( ! m_oSHA1 && m_pTorrent.m_oSHA1 )
 		m_oSHA1 = m_pTorrent.m_oSHA1;
 	if ( ! m_oTiger && m_pTorrent.m_oTiger )
@@ -1235,7 +1235,7 @@ void CDownload::Serialize(CArchive& ar, int nVersion)	// DOWNLOAD_SER_VERSION
 //
 //	if ( nVersion >= 3 && ar.ReadCount() )
 //	{
-//		unique_ptr< CXMLElement > pXML( new CXMLElement() );
+//		augment::auto_ptr< CXMLElement > pXML( new CXMLElement() );
 //		pXML->Serialize( ar );
 //		MergeMetadata( pXML.get() );
 //	}

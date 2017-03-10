@@ -1,7 +1,7 @@
 //
 // CtrlMatchTip.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
+// This file is part of Envy (getenvy.com) © 2016-2017
 // Portions copyright PeerProject 2008-2014 and Shareaza 2002-2007
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -454,14 +454,14 @@ void CMatchTipCtrl::OnPaint(CDC* pDC)
 		{
 			Flags.Draw( nFlagIndex, *pDC, pt.x, pt.y, crBack, crBack );
 			if ( ! Images.m_bmToolTip.m_hObject )
-				pDC->ExcludeClipRect( pt.x, pt.y, pt.x + FLAG_WIDTH, pt.y + 16 );
-			pt.x += FLAG_WIDTH + 4;
+				pDC->ExcludeClipRect( pt.x, pt.y, pt.x + Flags.Width, pt.y + 16 );
+			pt.x += Flags.Width + 4;
 			pt.y += 2;
 		}
 		DrawText( pDC, &pt, m_sCountry );
 		if ( nFlagIndex >= 0 )
 		{
-			pt.x -= FLAG_WIDTH + 4;
+			pt.x -= Flags.Width + 4;
 			pt.y -= 2;
 		}
 		pt.y += TIP_ICONHEIGHT;

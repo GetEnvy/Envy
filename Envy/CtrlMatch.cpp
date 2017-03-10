@@ -1,7 +1,7 @@
 //
 // CtrlMatch.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
+// This file is part of Envy (getenvy.com) © 2016-2017
 // Portions copyright PeerProject 2008-2016 and Shareaza 2002-2008
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -949,7 +949,7 @@ void CMatchCtrl::DrawItem(CDC& dc, CRect& rcRow, CMatchFile* pFile, CQueryHit* p
 		case MATCH_COL_COUNT:
 			if ( nHits == 1 || pHit != NULL )
 			{
-				CQueryHit* ppHit = ( nHits == 1 || pHit == NULL ) ? pFile->GetBest() : pHit;
+				const CQueryHit* ppHit = ( nHits == 1 || pHit == NULL ) ? pFile->GetBest() : pHit;
 				CString strTemp;
 
 				if ( Settings.Search.ShowNames && ! ppHit->m_sNick.IsEmpty() )
@@ -957,10 +957,9 @@ void CMatchCtrl::DrawItem(CDC& dc, CRect& rcRow, CMatchFile* pFile, CQueryHit* p
 					strTemp = ppHit->m_sNick;
 
 					if ( ppHit->GetSources() > 1 )
-						_sntprintf( szBuffer, sizeof( szBuffer ) / sizeof( TCHAR ), L"%s+%lu", (LPCTSTR)strTemp, ppHit->GetSources() - 1 );
+						_sntprintf( szBuffer, _countof( szBuffer ), L"%s+%lu", (LPCTSTR)strTemp, ppHit->GetSources() - 1 );
 					else
-						_sntprintf( szBuffer, sizeof( szBuffer ) / sizeof( TCHAR ), L"%s", (LPCTSTR)strTemp );
-					szBuffer[ sizeof( szBuffer ) / sizeof( TCHAR ) - 1 ] = 0;
+						_sntprintf( szBuffer, _countof( szBuffer ), L"%s", (LPCTSTR)strTemp );
 				}
 				else if ( ppHit->m_nProtocol == PROTOCOL_ED2K && ppHit->m_bPush == TRI_TRUE )
 				{
@@ -968,23 +967,17 @@ void CMatchCtrl::DrawItem(CDC& dc, CRect& rcRow, CMatchFile* pFile, CQueryHit* p
 					//strText.Format( L"%lu@%s", ppHit->m_oClientID.begin()[2], (LPCTSTR)CString( inet_ntoa( (IN_ADDR&)*ppHit->m_oClientID.begin() ) ) );
 
 					if ( ppHit->GetSources() > 1 )
-						_sntprintf( szBuffer, sizeof( szBuffer ) / sizeof( TCHAR ), L"%s+%lu", (LPCTSTR)strTemp, ppHit->GetSources() - 1 );
+						_sntprintf( szBuffer, _countof( szBuffer ), L"%s+%lu", (LPCTSTR)strTemp, ppHit->GetSources() - 1 );
 					else
-						_sntprintf( szBuffer, sizeof( szBuffer ) / sizeof( TCHAR ), L"%s", (LPCTSTR)strTemp );
-					szBuffer[ sizeof( szBuffer ) / sizeof( TCHAR ) - 1 ] = 0;
+						_sntprintf( szBuffer, _countof( szBuffer ), L"%s", (LPCTSTR)strTemp );
 				}
 				else if ( ppHit->m_pAddress.S_un.S_addr )
 				{
 					if ( ppHit->GetSources() > 1 )
-					{
-						_sntprintf( szBuffer, sizeof( szBuffer ) / sizeof( TCHAR ), L"%s+%lu", (LPCTSTR)CString( inet_ntoa( ppHit->m_pAddress ) ), ppHit->GetSources() - 1 );
-						szBuffer[ sizeof( szBuffer ) / sizeof( TCHAR ) - 1 ] = 0;
-					}
+						_sntprintf( szBuffer, _countof( szBuffer ), L"%s+%lu", (LPCTSTR)CString( inet_ntoa( ppHit->m_pAddress ) ), ppHit->GetSources() - 1 );
 					else
-					{
-						// MultiByteToWideChar( CP_ACP, 0, inet_ntoa( ppHit->m_pAddress ), -1, szBuffer, 64 );	// Obsolete
 						_tcscpy( szBuffer, (LPCTSTR)CString( inet_ntoa( ppHit->m_pAddress ) ) );
-					}
+						// MultiByteToWideChar( CP_ACP, 0, inet_ntoa( ppHit->m_pAddress ), -1, szBuffer, 64 );	// Obsolete
 				}
 				else
 				{
@@ -1004,13 +997,11 @@ void CMatchCtrl::DrawItem(CDC& dc, CRect& rcRow, CMatchFile* pFile, CQueryHit* p
 						else
 							strText.Format( L"%lu %s", pFile->m_nFiltered, (LPCTSTR)strSource );
 
-						_sntprintf( szBuffer, sizeof( szBuffer ) / sizeof( TCHAR ), (LPCTSTR)strText );
-						szBuffer[ sizeof( szBuffer ) / sizeof( TCHAR ) - 1 ] = 0;
+						_tcsncpy( szBuffer, (LPCTSTR)strText, _countof( szBuffer ) );
 					}
 					else	// Not used?
 					{
-						_sntprintf( szBuffer, sizeof( szBuffer ) / sizeof( TCHAR ), L"(Firewalled)" );
-						szBuffer[ sizeof( szBuffer ) / sizeof( TCHAR ) - 1 ] = 0;
+						_tcscpy( szBuffer, L"(Firewalled)" );
 					}
 				}
 			}
@@ -1030,9 +1021,9 @@ void CMatchCtrl::DrawItem(CDC& dc, CRect& rcRow, CMatchFile* pFile, CQueryHit* p
 				else
 					strText.Format( L"%u %s", pFile->m_nFiltered, (LPCTSTR)strSource );
 
-				_sntprintf( szBuffer, sizeof( szBuffer ) / sizeof( TCHAR ), (LPCTSTR)strText );
-				szBuffer[ sizeof( szBuffer ) / sizeof( TCHAR ) - 1 ] = 0;
+				_tcsncpy( szBuffer, (LPCTSTR)strText, _countof( szBuffer ) );
 			}
+			szBuffer[ _countof( szBuffer ) - 1 ] = 0;
 			pszText = szBuffer;
 			break;
 
@@ -1313,14 +1304,14 @@ void CMatchCtrl::DrawCountry(CDC& dc, CRect& rcCol, const CString& sCountry, COL
 {
 	int nFlagIndex = Flags.GetFlagIndex( sCountry );
 	// If the column is very narrow then don't draw the flag.
-	if ( nFlagIndex >= 0 && rcCol.Width() > FLAG_WIDTH )
+	if ( nFlagIndex >= 0 && rcCol.Width() > Flags.Width )
 	{
 		CPoint pt( rcCol.left + 1, rcCol.top );
 		Flags.Draw( nFlagIndex, dc, pt.x, pt.y, ( bSkinned ? -1 : crBack ), crBack, bSelected ? ILD_BLEND50 : ILD_NORMAL );
-		dc.ExcludeClipRect( pt.x, pt.y, pt.x + FLAG_WIDTH, pt.y + 16 );
+		dc.ExcludeClipRect( pt.x, pt.y, pt.x + Flags.Width, pt.y + 16 );
 		if ( ! bSkinned )
 			dc.FillSolidRect( &rcCol, crBack );
-		rcCol.left += FLAG_WIDTH + 1;
+		rcCol.left += Flags.Width + 1;
 	}
 }
 

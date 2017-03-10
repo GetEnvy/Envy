@@ -9,7 +9,7 @@
  link="http://getenvy.com"
  email="Contact(at)GetEnvy.com"
  license="Persistent Public Domain (PPD)"
- dependencies="Skin8Frames.xml"
+ dependencies="Skin8Frames.xml,Flags.xml"
  platform="Envy 1.0"
  path="Carbon"
  version="1.0"
@@ -68,7 +68,7 @@
  <color name="Panel.Caption.Text"			value="DEDEDE"/>
  <color name="Panel.Caption.Back"			value="FFFFFF"/>
  <color name="TaskPanel.Back"				value="12100B"/>
- <color name="TaskBox.Back"				value="1F1E1D"/>  <!--TaskBox.Client-->
+ <color name="TaskBox.Back"				value="1F1E1D"/>
  <color name="TaskBox.Text"				value="F4F2F0"/>
  <color name="TaskBox.Primary.Back"			value="444240"/>
  <color name="TaskBox.Primary.Text"			value="108AE8"/>
@@ -337,11 +337,11 @@
 <target window="CHomeWnd.Panel"/>
 <target window="CIRCWnd.Panel"/>
 <parts>
- <part name="TopLeft"		rect="0,1,140,25"/>
- <part name="Top"		rect="140,1,20,25"/>
- <part name="TopRight"		rect="170,1,165,25"/>
+ <part name="TopLeft" rect="0,1,140,25"/>
+ <part name="Top" rect="140,1,20,25"/>
+ <part name="TopRight" rect="170,1,165,25"/>
 </parts>
-<caption align="left" rect="20,1,500,21" fontFace="Segoe UI" fontSize="13" fontWeight="Normal" color="0088EE" outlinecolor="121110" inactivecolor="207AE0"/>
+<caption rect="20,1,500,21" align="left" fontFace="Segoe UI" fontSize="13" fontWeight="Normal" color="0088EE" outlinecolor="121110" inactivecolor="207AE0"/>
 </windowskin>
 
 <!-- SEARCH HEADER -->
@@ -350,17 +350,17 @@
 <image path="Header.png"/>
 <target window="CSearchWnd.Panel"/>
 <parts>
- <part name="TopLeft"		rect="56,1,120,25"/>
- <part name="Top"		rect="140,1,10,25"/>
- <part name="TopRight"		rect="170,1,180,25"/>
- <part name="Close"		rect="334,8,12,12"/>
- <part name="CloseHover"	rect="349,8,12,12"/>
- <part name="CloseDown" 	rect="348,7,12,12"/>
+ <part name="TopLeft" rect="56,1,120,25"/>
+ <part name="Top" rect="140,1,10,25"/>
+ <part name="TopRight" rect="170,1,180,25"/>
+ <part name="Close" rect="334,8,12,12"/>
+ <part name="CloseHover" rect="349,8,12,12"/>
+ <part name="CloseDown" rect="348,7,12,12"/>
 </parts>
 <anchors>
- <anchor name="Close"		rect="-16,7,12,12"/>
+ <anchor name="Close" rect="-16,7,12,12"/>
 </anchors>
-<caption align="left" rect="20,1,500,21" fontFace="Segoe UI" fontSize="13" fontWeight="Normal" color="0088EE" outlinecolor="121110" inactivecolor="207AE0"/>
+<caption rect="20,1,500,21" align="left" fontFace="Segoe UI" fontSize="13" fontWeight="Normal" color="0088EE" outlinecolor="121110" inactivecolor="207AE0"/>
 </windowskin>
 
 <!-- TRANSFER DOWNLOADS HEADER -->
@@ -369,11 +369,11 @@
 <image path="Header.png"/>
 <target window="CDownloadsWnd.Panel"/>
 <parts>
- <part name="TopLeft"		rect="0,1,90,25"/>
- <part name="Top"		rect="140,1,20,25"/>
- <part name="TopRight"		rect="170,1,165,25"/>
+ <part name="TopLeft" rect="0,1,90,25"/>
+ <part name="Top" rect="140,1,20,25"/>
+ <part name="TopRight" rect="170,1,165,25"/>
 </parts>
-<caption align="left" rect="20,1,500,21" fontFace="Segoe UI" fontSize="13" fontWeight="Normal" color="0088EE" outlinecolor="121110" inactivecolor="207AE0"/>
+<caption rect="20,1,500,21" align="left" fontFace="Segoe UI" fontSize="13" fontWeight="Normal" color="0088EE" outlinecolor="121110" inactivecolor="207AE0"/>
 </windowskin>
 
 <!-- TRANSFER UPLOADS HEADER -->
@@ -382,11 +382,11 @@
 <image path="Header.png"/>
 <target window="CUploadsWnd.Panel"/>
 <parts>
- <part name="TopLeft"		rect="0,0,74,25"/>
- <part name="Top"		rect="140,0,20,25"/>
- <part name="TopRight"		rect="170,0,165,25"/>
+ <part name="TopLeft" rect="0,0,74,25"/>
+ <part name="Top" rect="140,0,20,25"/>
+ <part name="TopRight" rect="170,0,165,25"/>
 </parts>
-<caption align="left" rect="20,2,500,21" fontFace="Segoe UI" fontSize="13" fontWeight="Normal" color="0088EE" outlinecolor="121110" inactivecolor="207AE0"/>
+<caption rect="20,2,500,21" align="left" fontFace="Segoe UI" fontSize="13" fontWeight="Normal" color="0088EE" outlinecolor="121110" inactivecolor="207AE0"/>
 </windowskin>
 
 <!-- NETWORK NEIGHBORS HEADER -->
@@ -395,11 +395,11 @@
 <image path="Header.png"/>
 <target window="CNeighboursWnd.Panel"/>
 <parts>
- <part name="TopLeft"		rect="0,1,86,25"/>
- <part name="Top"		rect="140,1,20,25"/>
- <part name="TopRight"		rect="170,1,165,25"/>
+ <part name="TopLeft" rect="0,1,86,25"/>
+ <part name="Top" rect="140,1,20,25"/>
+ <part name="TopRight" rect="170,1,165,25"/>
 </parts>
-<caption align="left" rect="20,1,500,20" fontFace="Segoe UI" fontSize="13" fontWeight="Normal" color="0088EE" outlinecolor="121110" inactivecolor="207AE0"/>
+<caption rect="20,1,500,20" align="left" fontFace="Segoe UI" fontSize="13" fontWeight="Normal" color="0088EE" outlinecolor="121110" inactivecolor="207AE0"/>
 </windowskin>
 
 <!-- NETWORK SYSTEM HEADER -->
@@ -408,11 +408,11 @@
 <image path="Header.png"/>
 <target window="CSystemWnd.Panel"/>
 <parts>
- <part name="TopLeft"		rect="0,0,66,25"/>
- <part name="Top"		rect="140,0,20,25"/>
- <part name="TopRight"		rect="170,0,165,25"/>
+ <part name="TopLeft" rect="0,0,66,25"/>
+ <part name="Top" rect="140,0,20,25"/>
+ <part name="TopRight" rect="170,0,165,25"/>
 </parts>
-<caption align="left" rect="20,2,500,21" fontFace="Segoe UI" fontSize="13" fontWeight="Normal" color="0088EE" outlinecolor="121110" inactivecolor="207AE0"/>
+<caption rect="20,2,500,21" align="left" fontFace="Segoe UI" fontSize="13" fontWeight="Normal" color="0088EE" outlinecolor="121110" inactivecolor="207AE0"/>
 </windowskin>
 
 <!-- LIBRARY HEADER -->
@@ -421,11 +421,11 @@
 <image path="Header.png"/>
 <target window="CLibraryWnd.Panel"/>
 <parts>
- <part name="TopLeft"		rect="0,1,64,25"/>
- <part name="Top"		rect="140,1,20,25"/>
- <part name="TopRight"		rect="170,1,165,25"/>
+ <part name="TopLeft" rect="0,1,64,25"/>
+ <part name="Top" rect="140,1,20,25"/>
+ <part name="TopRight" rect="170,1,165,25"/>
 </parts>
-<caption align="left" rect="20,1,500,21" fontFace="Segoe UI" fontSize="13" fontWeight="Normal" color="0088EE" outlinecolor="121110" inactivecolor="207AE0"/>
+<caption rect="20,1,500,21" align="left" fontFace="Segoe UI" fontSize="13" fontWeight="Normal" color="0088EE" outlinecolor="121110" inactivecolor="207AE0"/>
 </windowskin>
 
 <!-- MEDIA PLAYER HEADER -->
@@ -434,17 +434,17 @@
 <image path="Header.png"/>
 <target window="CMediaWnd.Panel"/>
 <parts>
- <part name="TopLeft"		rect="0,1,100,25"/>
- <part name="Top"		rect="140,1,20,25"/>
- <part name="TopRight"		rect="170,1,180,25"/>
- <part name="Close"		rect="334,8,12,12"/>
- <part name="CloseHover"	rect="349,8,12,12"/>
- <part name="CloseDown" 	rect="348,7,12,12"/>
+ <part name="TopLeft" rect="0,1,100,25"/>
+ <part name="Top" rect="140,1,20,25"/>
+ <part name="TopRight" rect="170,1,180,25"/>
+ <part name="Close" rect="334,8,12,12"/>
+ <part name="CloseHover" rect="349,8,12,12"/>
+ <part name="CloseDown" rect="348,7,12,12"/>
 </parts>
 <anchors>
  <anchor name="Close" rect="-16,7,12,12"/>
 </anchors>
-<caption align="left" rect="20,1,500,21" fontFace="Segoe UI" fontSize="13" fontWeight="Normal" color="0088EE" outlinecolor="121110" inactivecolor="4080E0"/>
+<caption rect="20,1,500,21" align="left" fontFace="Segoe UI" fontSize="13" fontWeight="Normal" color="0088EE" outlinecolor="121110" inactivecolor="4080E0"/>
 </windowskin>
 
 <!-- SECURITY/SCHEDULER HEADER -->
@@ -454,17 +454,17 @@
 <target window="CSecurityWnd.Panel"/>
 <target window="CSchedulerWnd.Panel"/>
 <parts>
- <part name="TopLeft"		rect="0,1,70,25"/>
- <part name="Top"		rect="140,1,20,25"/>
- <part name="TopRight"		rect="170,1,180,25"/>
- <part name="Close"		rect="334,8,12,12"/>
- <part name="CloseHover"	rect="349,8,12,12"/>
- <part name="CloseDown" 	rect="348,7,12,12"/>
+ <part name="TopLeft" rect="0,1,70,25"/>
+ <part name="Top" rect="140,1,20,25"/>
+ <part name="TopRight" rect="170,1,180,25"/>
+ <part name="Close" rect="334,8,12,12"/>
+ <part name="CloseHover" rect="349,8,12,12"/>
+ <part name="CloseDown" rect="348,7,12,12"/>
 </parts>
 <anchors>
  <anchor name="Close" rect="-16,7,12,12"/>
 </anchors>
-<caption align="left" rect="20,1,500,21" fontFace="Segoe UI" fontSize="13" fontWeight="Normal" color="0088EE" outlinecolor="121110" inactivecolor="4088EE"/>
+<caption rect="20,1,500,21" align="left" fontFace="Segoe UI" fontSize="13" fontWeight="Normal" color="0088EE" outlinecolor="121110" inactivecolor="4088EE"/>
 </windowskin>
 
 <!-- Other Panel Headers -->
@@ -479,17 +479,17 @@
 <target window="CBrowseHostWnd.Panel"/>
 <target window="CChildWnd.Panel"/>
 <parts>
- <part name="TopLeft"		rect="0,1,90,25"/>
- <part name="Top"		rect="140,1,20,25"/>
- <part name="TopRight"		rect="170,1,180,25"/>
- <part name="Close"		rect="334,8,12,12"/>
- <part name="CloseHover"	rect="349,8,12,12"/>
- <part name="CloseDown" 	rect="348,7,12,12"/>
+ <part name="TopLeft" rect="0,1,90,25"/>
+ <part name="Top" rect="140,1,20,25"/>
+ <part name="TopRight" rect="170,1,180,25"/>
+ <part name="Close" rect="334,8,12,12"/>
+ <part name="CloseHover" rect="349,8,12,12"/>
+ <part name="CloseDown" rect="348,7,12,12"/>
 </parts>
 <anchors>
  <anchor name="Close" rect="-16,7,12,12"/>
 </anchors>
-<caption align="left" rect="20,1,500,21" fontFace="Segoe UI" fontSize="13" fontWeight="Normal" color="0088EE" outlinecolor="121110" inactivecolor="4080E0"/>
+<caption rect="20,1,500,21" align="left" fontFace="Segoe UI" fontSize="13" fontWeight="Normal" color="0088EE" outlinecolor="121110" inactivecolor="4080E0"/>
 </windowskin>
 
 </windowskins>

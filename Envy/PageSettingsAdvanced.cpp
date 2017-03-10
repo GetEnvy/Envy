@@ -1,7 +1,7 @@
 //
 // PageSettingsAdvanced.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
+// This file is part of Envy (getenvy.com) © 2016-2017
 // Portions copyright PeerProject 2008-2015 and Shareaza 2002-2008
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -21,8 +21,9 @@
 #include "StdAfx.h"
 #include "Settings.h"
 #include "Envy.h"
-#include "PageSettingsAdvanced.h"
 #include "LiveList.h"
+#include "PageSettingsAdvanced.h"
+#include "CoolInterface.h"
 #include "Skin.h"
 
 #ifdef _DEBUG
@@ -44,6 +45,8 @@ BEGIN_MESSAGE_MAP(CAdvancedSettingsPage, CSettingsPage)
 	ON_EN_CHANGE(IDC_VALUE, &CAdvancedSettingsPage::OnChangeValue)
 	ON_EN_CHANGE(IDC_MESSAGE, &CAdvancedSettingsPage::OnChangeValue)
 	ON_CBN_SELCHANGE(IDC_FONT, &CAdvancedSettingsPage::OnChangeValue)
+	ON_EN_CHANGE(IDC_FILTER_BOX, &CAdvancedSettingsPage::OnEnChangeQuickfilter)
+	ON_WM_TIMER()
 END_MESSAGE_MAP()
 
 
@@ -53,6 +56,7 @@ END_MESSAGE_MAP()
 CAdvancedSettingsPage::CAdvancedSettingsPage()
 	: CSettingsPage(CAdvancedSettingsPage::IDD)
 	, m_bUpdating( false )
+	, m_nTimer		( 0 )
 {
 }
 
@@ -70,6 +74,8 @@ void CAdvancedSettingsPage::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_FONT, m_wndFonts);
 	DDX_Control(pDX, IDC_CHECK, m_wndBool);
 	DDX_Control(pDX, IDC_DEFAULT_VALUE, m_wndDefault);
+	DDX_Control(pDX, IDC_FILTER_BOX, m_wndQuickFilter);
+	DDX_Control(pDX, IDC_SEARCH, m_wndQuickFilterIcon);
 }
 
 /////////////////////////////////////////////////////////////////////////////
@@ -79,6 +85,19 @@ BOOL CAdvancedSettingsPage::OnInitDialog()
 {
 	CSettingsPage::OnInitDialog();
 
+//	for ( POSITION pos = Settings.GetHeadPosition() ; pos ; )
+//	{
+//		const CSettings::Item* pItem = Settings.GetNext( pos );
+//
+//		if ( ! pItem->m_bHidden &&
+//			( pItem->m_pBool ||
+//			( pItem->m_pDword && pItem->m_nScale ) ||
+//			( pItem->m_pString && pItem->m_nType != CSettings::setNull ) ) )
+//		{
+//			m_pSettings.AddTail( new EditItem( pItem ) );
+//		}
+//	}
+
 	CRect rc;
 	m_wndList.GetClientRect( &rc );
 	rc.right -= GetSystemMetrics( SM_CXVSCROLL ) + 1;
@@ -87,14 +106,16 @@ BOOL CAdvancedSettingsPage::OnInitDialog()
 	m_wndList.InsertColumn( 1, L"Value", LVCFMT_LEFT, 100, 1 );
 	m_wndList.SetExtendedStyle( /*m_wndList.GetExtendedStyle()|*/ LVS_EX_FULLROWSELECT|LVS_EX_LABELTIP );
 
+	m_wndQuickFilterIcon.SetIcon( CoolInterface.ExtractIcon( ID_SEARCH_SEARCH, FALSE, LVSIL_SMALL ) );
+
 	Skin.Translate( L"CAdvancedSettingsList", m_wndList.GetHeaderCtrl() );
 
 	AddSettings();
 
-	CLiveList::Sort( &m_wndList, 0 );
+	//CLiveList::Sort( &m_wndList, 0 );
 	//CLiveList::Sort( &m_wndList, 0 );	// Repeat?
 
-	UpdateInputArea();
+	//UpdateInputArea();
 
 	m_wndList.EnsureVisible( Settings.General.LastSettingsIndex, FALSE );
 	m_wndList.EnsureVisible( Settings.General.LastSettingsIndex + m_wndList.GetCountPerPage() - 1, FALSE );
@@ -105,6 +126,12 @@ BOOL CAdvancedSettingsPage::OnInitDialog()
 void CAdvancedSettingsPage::AddSettings()
 {
 	m_wndList.DeleteAllItems();
+
+	CString strQuickFilter;
+	m_wndQuickFilter.GetWindowText( strQuickFilter );
+	strQuickFilter.Trim();
+	if ( strQuickFilter == L"*" )
+		strQuickFilter = EDIT_TOKEN;
 
 	for ( POSITION pos = Settings.GetHeadPosition() ; pos ; )
 	{
@@ -117,6 +144,8 @@ void CAdvancedSettingsPage::AddSettings()
 			EditItem* pEdit = new EditItem( pItem );
 			ASSERT( pEdit != NULL );
 			if ( pEdit == NULL ) return;
+			if ( ! strQuickFilter.IsEmpty() && _tcsistr( pEdit->m_sName, strQuickFilter ) == NULL )
+				continue;
 
 			LV_ITEM pList = {};
 			pList.mask		= LVIF_PARAM|LVIF_TEXT|LVIF_IMAGE;
@@ -129,6 +158,9 @@ void CAdvancedSettingsPage::AddSettings()
 			UpdateListItem( pList.iItem );
 		}
 	}
+
+	CLiveList::Sort( &m_wndList );
+	UpdateInputArea();
 }
 
 void CAdvancedSettingsPage::CommitAll()
@@ -153,6 +185,17 @@ void CAdvancedSettingsPage::UpdateAll()
 
 	UpdateInputArea();
 }
+
+//int CAdvancedSettingsPage::GetListItem(const EditItem* pItem)
+//{
+//	const int nCount = m_wndList.GetItemCount();
+//	for ( int nItem = 0 ; nItem < nCount ; ++nItem )
+//	{
+//		if ( (const EditItem*)m_wndList.GetItemData( nItem ) == pItem )
+//			return nItem;
+//	}
+//	return -1;
+//}
 
 void CAdvancedSettingsPage::UpdateListItem(int nItem)
 {
@@ -345,7 +388,15 @@ void CAdvancedSettingsPage::OnOK()
 
 void CAdvancedSettingsPage::OnDestroy()
 {
-	Settings.General.LastSettingsIndex = m_wndList.GetTopIndex();
+	if ( m_nTimer )
+		KillTimer( m_nTimer );
+
+	CString strFilter;
+	m_wndQuickFilter.GetWindowText( strFilter );
+	strFilter.Trim();
+
+	if ( strFilter.IsEmpty() )
+		Settings.General.LastSettingsIndex = m_wndList.GetTopIndex();
 
 	const int nCount = m_wndList.GetItemCount();
 	for ( int nItem = 0 ; nItem < nCount ; nItem++ )
@@ -381,6 +432,24 @@ bool CAdvancedSettingsPage::IsModified() const
 	return false;
 }
 
+void CAdvancedSettingsPage::OnEnChangeQuickfilter()
+{
+	if ( m_nTimer )
+		KillTimer( m_nTimer );
+
+	m_nTimer = SetTimer( 1, 600, NULL );
+}
+
+void CAdvancedSettingsPage::OnTimer(UINT_PTR nIDEvent)
+{
+	if ( m_nTimer == nIDEvent )
+	{
+		KillTimer( m_nTimer );
+		AddSettings();
+	}
+
+	CSettingsPage::OnTimer( nIDEvent );
+}
 
 /////////////////////////////////////////////////////////////////////////////
 // CSettingEdit construction

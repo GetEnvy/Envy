@@ -194,9 +194,9 @@ public:
 	BOOL			OpenShellShortcut(LPCTSTR lpszFileName);		// Open .lnk file
 	BOOL			OpenInternetShortcut(LPCTSTR lpszFileName);		// Open .url file
 	BOOL			OpenTorrent(LPCTSTR lpszFileName);				// Open .torrent file
-	BOOL			OpenCollection(LPCTSTR lpszFileName);			// Open Shareaza/eMule/DC++ file  (.co, .collection, .emulecollection, .files.xml.bz2)
-	BOOL			OpenImport(LPCTSTR lpszFileName);				// Open eMule/DC++ servers file   (.met, .dat, hublist.xml.bz2)
-	BOOL			OpenDownload(LPCTSTR lpszFileName);				// Open Envy Download data file (.pd/.sd)
+	BOOL			OpenCollection(LPCTSTR lpszFileName);			// Open Shareaza/eMule/DC++ file (.co .collection .emulecollection .files.xml.bz2)
+	BOOL			OpenImport(LPCTSTR lpszFileName);				// Open eMule/DC++ servers file  (.met .dat hublist.xml.bz2)
+	BOOL			OpenDownload(LPCTSTR lpszFileName);				// Open Envy Download data file  (.pd .sd)
 	BOOL			OpenURL(LPCTSTR lpszFileName, BOOL bSilent = FALSE);	// Open url
 	BOOL			OpenPath(LPCTSTR lpszFileName);					// Open/Share folder
 	BOOL			DisplayFile(LPCTSTR lpszFileName);				// Show file in Library
@@ -209,7 +209,7 @@ public:
 	CString			GetAppDataFolder() const;
 	CString			GetLocalAppDataFolder() const;
 
-	CDatabase*		GetDatabase(BYTE nType = 0) const;				// Get SQLite (thumbs) database handler, must be freed by "delete" operator. (unique_ptr?)
+	CDatabase*		GetDatabase(int nType = 0) const;				// Get SQLite (thumbs) database handler, must be freed by "delete" operator. (unique_ptr?)
 
 	void			OnRename(LPCTSTR strSource, LPCTSTR pszTarget = (LPCTSTR)1);	// pszTarget: 0 = delete file, 1 = release file.
 
@@ -382,7 +382,7 @@ template <>
 __int64 GetRandomNum<__int64>(const __int64& min, const __int64& max);
 
 // Databases
-enum DatabasePath
+enum DatabaseType
 {
 	DB_DEFAULT,
 	DB_THUMBS,

@@ -480,8 +480,8 @@ BOOL CEnvyApp::InitInstance()
 		ShellIcons.Clear();
 		if ( ! Emoticons.Load() )
 			Message( MSG_ERROR, L"Failed to load Emoticons." );
-		if ( ! Flags.Load() )
-			Message( MSG_ERROR, L"Failed to load Flags." );
+	//	if ( ! Flags.Load() )	// Moved to MainWnd OnSkinChanged
+	//		Message( MSG_ERROR, L"Failed to load Flags." );
 	SplashStep( L"Metadata Schemas" );
 		if ( SchemaCache.Load() < 30 &&		// Expected number of .xsd files in Schemas folder
 			 MsgBox( IDS_SCHEMA_LOAD_ERROR, MB_ICONWARNING|MB_OKCANCEL ) != IDOK )
@@ -857,9 +857,7 @@ BOOL CEnvyApp::ParseCommandLine()
 		return FALSE;
 	}
 
-#if defined(_MSC_VER) && (_MSC_VER >= 1500)	// No VS2005
 	AfxSetPerUserRegistration( m_cmdInfo.m_bRegisterPerUser || ! IsRunAsAdmin() );
-#endif
 
 	if ( m_cmdInfo.m_nShellCommand == CCommandLineInfo::AppUnregister ||
 		 m_cmdInfo.m_nShellCommand == CCommandLineInfo::AppRegister )
@@ -1023,7 +1021,7 @@ void CEnvyApp::AddToRecentFileList(LPCTSTR lpszPathName)
 // For VS2008, No need VS2010+ (Confirm?)
 // SHARDAPPIDINFO Requires #define NTDDI_VERSION NTDDI_WIN7 in StdAfx.h (May be NTDDI_LONGHORN fallback or NTDDI_WINXPSP2 test)
 // For applicability here, need to detect VS2008 with WinSDK 7.0+ added.
-#if defined(_MSC_VER) && (_MSC_VER < 1600) && (NTDDI_VERSION > NTDDI_LONGHORN)
+#if defined(VS2008) && (NTDDI_VERSION > NTDDI_LONGHORN)
 	if ( theApp.m_nWinVer >= WIN_7 && m_pfnSHCreateItemFromParsingName )
 	{
 		CComPtr< IShellItem > pItem;
@@ -1178,7 +1176,7 @@ BOOL CEnvyApp::OpenInternetShortcut(LPCTSTR lpszFileName)
 BOOL CEnvyApp::OpenTorrent(LPCTSTR lpszFileName)
 {
 	// Test torrent
-	//unique_ptr< CBTInfo > pTorrent( new CBTInfo() );
+	//augment::auto_ptr< CBTInfo > pTorrent( new CBTInfo() );
 	//if ( ! pTorrent.get() ) return FALSE;
 	//if ( ! pTorrent->LoadTorrentFile( lpszFileName ) ) return FALSE;
 
@@ -1230,7 +1228,7 @@ BOOL CEnvyApp::OpenCollection(LPCTSTR lpszFileName)
 //	return FALSE;
 //}
 
-BOOL CEnvyApp::OpenURL(LPCTSTR lpszFileName, BOOL bSilent)
+BOOL CEnvyApp::OpenURL(LPCTSTR lpszFileName, BOOL bSilent /*0*/)
 {
 	if ( ! bSilent )
 		theApp.Message( MSG_NOTICE, IDS_URL_RECEIVED, lpszFileName );
@@ -2747,25 +2745,25 @@ CString CEnvyApp::GetWindowsFolder() const
 	if ( m_pfnSHGetKnownFolderPath )
 	{
 		PWSTR pPath = NULL;
-		HRESULT hr = m_pfnSHGetKnownFolderPath( FOLDERID_Windows,
-			KF_FLAG_CREATE | KF_FLAG_INIT, NULL, &pPath );
+		HRESULT hr = m_pfnSHGetKnownFolderPath( FOLDERID_Windows, KF_FLAG_CREATE|KF_FLAG_INIT, NULL, &pPath );
 		if ( pPath )
 		{
 			strWindows = pPath;
 			CoTaskMemFree( pPath );
-		}
 
-		if ( SUCCEEDED( hr ) && ! strWindows.IsEmpty() )
-			return strWindows;
+			if ( SUCCEEDED( hr ) && ! strWindows.IsEmpty() )
+				return strWindows;
+		}
 	}
+#ifdef XPSUPPORT
 	else	// XP
 	{
-		HRESULT hr = SHGetFolderPath( NULL, CSIDL_WINDOWS, NULL, NULL,
-			strWindows.GetBuffer( MAX_PATH ) );
+		HRESULT hr = SHGetFolderPath( NULL, CSIDL_WINDOWS, NULL, NULL, strWindows.GetBuffer( MAX_PATH ) );
 		strWindows.ReleaseBuffer();
 		if ( SUCCEEDED( hr ) && ! strWindows.IsEmpty() )
 			return strWindows;
 	}
+#endif
 
 	// Legacy
 	GetWindowsDirectory( strWindows.GetBuffer( MAX_PATH ), MAX_PATH );
@@ -2816,25 +2814,25 @@ CString CEnvyApp::GetProgramFilesFolder() const
 	if ( m_pfnSHGetKnownFolderPath )
 	{
 		PWSTR pPath = NULL;
-		HRESULT hr = m_pfnSHGetKnownFolderPath( FOLDERID_ProgramFilesX86,
-			KF_FLAG_DONT_VERIFY, NULL, &pPath );
+		HRESULT hr = m_pfnSHGetKnownFolderPath( FOLDERID_ProgramFilesX86, KF_FLAG_DONT_VERIFY, NULL, &pPath );
 		if ( pPath )
 		{
 			strProgramFiles = pPath;
 			CoTaskMemFree( pPath );
-		}
 
-		if ( SUCCEEDED( hr ) && ! strProgramFiles.IsEmpty() )
-			return strProgramFiles;
+			if ( SUCCEEDED( hr ) && ! strProgramFiles.IsEmpty() )
+				return strProgramFiles;
+		}
 	}
+#ifdef XPSUPPORT
 	else	// XP
 	{
-		HRESULT hr = SHGetFolderPath( NULL, CSIDL_PROGRAM_FILES, NULL, NULL,
-			strProgramFiles.GetBuffer( MAX_PATH ) );
+		HRESULT hr = SHGetFolderPath( NULL, CSIDL_PROGRAM_FILES, NULL, NULL, strProgramFiles.GetBuffer( MAX_PATH ) );
 		strProgramFiles.ReleaseBuffer();
 		if ( SUCCEEDED( hr ) && ! strProgramFiles.IsEmpty() )
 			return strProgramFiles;
 	}
+#endif
 
 	// Legacy
 	strProgramFiles = GetWindowsFolder().Left( 1 ) + L":\\Program Files";
@@ -2850,25 +2848,25 @@ CString CEnvyApp::GetDocumentsFolder() const
 	if ( m_pfnSHGetKnownFolderPath )
 	{
 		PWSTR pPath = NULL;
-		HRESULT hr = m_pfnSHGetKnownFolderPath( FOLDERID_Documents,
-			KF_FLAG_CREATE | KF_FLAG_INIT, NULL, &pPath );
+		HRESULT hr = m_pfnSHGetKnownFolderPath( FOLDERID_Documents, KF_FLAG_CREATE|KF_FLAG_INIT, NULL, &pPath );
 		if ( pPath )
 		{
 			strDocuments = pPath;
 			CoTaskMemFree( pPath );
-		}
 
-		if ( SUCCEEDED( hr ) && ! strDocuments.IsEmpty() )
-			return strDocuments;
+			if ( SUCCEEDED( hr ) && ! strDocuments.IsEmpty() )
+				return strDocuments;
+		}
 	}
+#ifdef XPSUPPORT
 	else	// XP
 	{
-		HRESULT hr = SHGetFolderPath( NULL, CSIDL_PERSONAL, NULL, NULL,
-			strDocuments.GetBuffer( MAX_PATH ) );
+		HRESULT hr = SHGetFolderPath( NULL, CSIDL_PERSONAL, NULL, NULL, strDocuments.GetBuffer( MAX_PATH ) );
 		strDocuments.ReleaseBuffer();
 		if ( SUCCEEDED( hr ) && ! strDocuments.IsEmpty() )
 			return strDocuments;
 	}
+#endif
 
 	// Legacy
 	strDocuments = CRegistry::GetString( L"Shell Folders", L"Personal",
@@ -2886,16 +2884,15 @@ CString CEnvyApp::GetDownloadsFolder() const
 	if ( m_pfnSHGetKnownFolderPath )
 	{
 		PWSTR pPath = NULL;
-		hr = m_pfnSHGetKnownFolderPath( FOLDERID_Downloads,
-			KF_FLAG_CREATE | KF_FLAG_INIT, NULL, &pPath );
+		hr = m_pfnSHGetKnownFolderPath( FOLDERID_Downloads, KF_FLAG_CREATE|KF_FLAG_INIT, NULL, &pPath );
 		if ( pPath )
 		{
 			strDownloads = pPath;
 			CoTaskMemFree( pPath );
-		}
 
-		if ( SUCCEEDED( hr ) && ! strDownloads.IsEmpty() )
-			return strDownloads + L"\\Envy";	// CLIENT_NAME
+			if ( SUCCEEDED( hr ) && ! strDownloads.IsEmpty() )
+				return strDownloads + L"\\Envy";	// CLIENT_NAME
+		}
 	}
 
 	// Legacy (do not use...)
@@ -2919,25 +2916,25 @@ CString CEnvyApp::GetAppDataFolder() const
 	if ( m_pfnSHGetKnownFolderPath )
 	{
 		PWSTR pPath = NULL;
-		HRESULT hr = m_pfnSHGetKnownFolderPath( FOLDERID_RoamingAppData,
-			KF_FLAG_CREATE | KF_FLAG_INIT, NULL, &pPath );
+		HRESULT hr = m_pfnSHGetKnownFolderPath( FOLDERID_RoamingAppData, KF_FLAG_CREATE|KF_FLAG_INIT, NULL, &pPath );
 		if ( pPath )
 		{
 			strAppData = pPath;
 			CoTaskMemFree( pPath );
-		}
 
-		if ( SUCCEEDED( hr ) && ! strAppData.IsEmpty() )
-			return strAppData;
+			if ( SUCCEEDED( hr ) && ! strAppData.IsEmpty() )
+				return strAppData;
+		}
 	}
+#ifdef XPSUPPORT
 	else	// XP
 	{
-		HRESULT hr = SHGetFolderPath( NULL, CSIDL_APPDATA, NULL, NULL,
-			strAppData.GetBuffer( MAX_PATH ) );
+		HRESULT hr = SHGetFolderPath( NULL, CSIDL_APPDATA, NULL, NULL, strAppData.GetBuffer( MAX_PATH ) );
 		strAppData.ReleaseBuffer();
 		if ( SUCCEEDED( hr ) && ! strAppData.IsEmpty() )
 			return strAppData;
 	}
+#endif
 
 	// Legacy
 	strAppData = CRegistry::GetString( L"Shell Folders", L"AppData",
@@ -2954,24 +2951,25 @@ CString CEnvyApp::GetLocalAppDataFolder() const
 	if ( m_pfnSHGetKnownFolderPath )
 	{
 		PWSTR pPath = NULL;
-		HRESULT hr = m_pfnSHGetKnownFolderPath( FOLDERID_LocalAppData,
-			KF_FLAG_CREATE | KF_FLAG_INIT, NULL, &pPath );
+		HRESULT hr = m_pfnSHGetKnownFolderPath( FOLDERID_LocalAppData, KF_FLAG_CREATE|KF_FLAG_INIT, NULL, &pPath );
 		if ( pPath )
 		{
 			strLocalAppData = pPath;
 			CoTaskMemFree( pPath );
+
+			if ( SUCCEEDED( hr ) && ! strLocalAppData.IsEmpty() )
+				return strLocalAppData;
 		}
-		if ( SUCCEEDED( hr ) && ! strLocalAppData.IsEmpty() )
-			return strLocalAppData;
 	}
+#ifdef XPSUPPORT
 	else	// XP
 	{
-		HRESULT hr = SHGetFolderPath( NULL, CSIDL_LOCAL_APPDATA, NULL, NULL,
-			strLocalAppData.GetBuffer( MAX_PATH ) );
+		HRESULT hr = SHGetFolderPath( NULL, CSIDL_LOCAL_APPDATA, NULL, NULL, strLocalAppData.GetBuffer( MAX_PATH ) );
 		strLocalAppData.ReleaseBuffer();
 		if ( SUCCEEDED( hr ) && ! strLocalAppData.IsEmpty() )
 			return strLocalAppData;
 	}
+#endif
 
 	// Legacy
 	strLocalAppData = CRegistry::GetString( L"Shell Folders", L"Local AppData",
@@ -2994,25 +2992,34 @@ void CEnvyApp::OnRename(LPCTSTR pszSource, LPCTSTR pszTarget)
 	// Notify built-in Mediaplayer
 	if ( pszTarget == NULL )
 	{
-		CQuickLock otheAppLock( theApp.m_pSection );
-
 		if ( CMainWnd* pMainWnd = theApp.SafeMainWnd() )
 		{
 			if ( CMediaWnd* pMediaWnd = (CMediaWnd*)pMainWnd->m_pWindows.Find( RUNTIME_CLASS( CMediaWnd ) ) )
+			{
+				CQuickLock otheAppLock( theApp.m_pSection );
 				pMediaWnd->OnFileDelete( pszSource );
+			}
 		}
 	}
 }
 
-CDatabase* CEnvyApp::GetDatabase(BYTE nType /*0*/) const
+CDatabase* CEnvyApp::GetDatabase(int nType /*0*/) const
 {
 	ASSERT( nType < DB_LAST );
 
+	// Legacy v1.0 and earlier update (ToDo: Remove after v2.0)
+	static BOOL bCheck = TRUE;
+	if ( bCheck && PathFileExists( Settings.General.DataPath + L"Thumbnails.db3" ) )
+	{
+		::MoveFile( Settings.General.DataPath + L"Thumbnails.db3", Settings.General.DataPath + L"Thumbnails.db" );
+		bCheck = FALSE;
+	}
+
 	return new CDatabase( Settings.General.DataPath +
-		( nType == DB_THUMBS ? L"Thumbnails.db3" :
-		  nType == DB_SECURITY ? L"Security.db3" :
-		  nType == DB_BLACKLIST ? L"Blacklist.db3" :
-		/*nType == DB_DEFAULT ?*/ L"Envy.db3" ) );
+		( nType == DB_THUMBS ? L"Thumbnails.db" :
+		  nType == DB_SECURITY ? L"Security.db" :
+		  nType == DB_BLACKLIST ? L"Blacklist.db" :
+		/*nType == DB_DEFAULT ?*/ L"Envy.db" ) );
 }
 
 BOOL CEnvyApp::GetPropertyStoreFromParsingName(LPCWSTR pszPath, IPropertyStore**ppv)
@@ -3088,7 +3095,7 @@ BOOL CreateDirectory(LPCTSTR szPath)
 {
 	CString strDir = SafePath( szPath );
 	if ( strDir.GetLength() == 2 )	//&& strDir.GetAt( 1 ) == ':'
-		strDir.AppendChar( '\\' );	// Root Drive
+		strDir.AppendChar( L'\\' );	// Root Drive
 
 	DWORD dwAttr = GetFileAttributes( strDir );
 

@@ -3,7 +3,7 @@
 
 <!-- Envy Default Hebrew Skin File -->
 
-<!-- Translation based on default en.xml r16 -->
+<!-- Translation based on default en.xml r20 -->
 <!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -1310,6 +1310,7 @@ gap i newline
 		<item id="ID_LIBRARY_FOLDER_PROPERTIES" text="‪מאפייני אלבום"/>
 	</menu>
 	<menu name="CLibraryHistoryPanel">
+		<item id="ID_LIBRARY_SHOW_FILE" text="_Show in Library"/>
 		<item id="ID_LIBRARY_CLEAR_HISTORY" text="Clear from _History"/>
 		<item id="ID_LIBRARY_CLEAR_HISTORY_ALL" text="‪_נקה את כל ההורדות"/>
 	</menu>
@@ -1754,7 +1755,7 @@ gap i newline
 			<newline gap="18" indent="0"/>
 		</group>
 		<icon res="120" width="32" height="32" target="command:ID_TOOLS_SETTINGS"/><gap size="8"/>
-		<heading align="middle">ה ת א מ ת &#160; ש ר ז ה&#160;&#160;&#160;</heading>
+		<heading align="middle">ה ת א מ ת &#160; ש ר ז ה&#160; &#160;</heading>
 		<newline gap="12" indent="42"/>
 		<icon res="196" width="16" height="16" target="command:ID_TOOLS_SKIN"/><gap size="8"/>
 		<link target="command:ID_TOOLS_SKIN" align="middle" format="bu">מעטפות</link><gap size="6"/>
@@ -3319,7 +3320,7 @@ gap i newline
 		<control text="...התקנה"/>
 		<control text=":מידע נוסף"/>
 	</dialog>
-	<dialog name="CAdvancedSettingsPage" cookie="SyBuStEdmsEdCoBuBu" caption="מתקדם">
+	<dialog name="CAdvancedSettingsPage" cookie="SyBuStEdmsEdCoBuBuStEd" caption="מתקדם">
 		<control/>
 		<control text=":ערך"/>
 		<control text=":תיאור"/>
@@ -3329,6 +3330,8 @@ gap i newline
 		<control/>
 		<control/>
 		<control text="הגדרות"/>
+		<control/>
+		<control/>
 	</dialog>
 	<dialog name="CProtocolsSettingsPage" cookie="BuSy" caption="פרוטוקולים">
 		<control text=":סייר ארכיטקטורת פרוטוקול משותף של שרזה"/>

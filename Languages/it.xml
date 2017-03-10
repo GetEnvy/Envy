@@ -3,7 +3,7 @@
 
 <!-- Envy Default Italian Skin File -->
 
-<!-- Translation based on default en.xml r16 -->
+<!-- Translation based on default en.xml r20 -->
 <!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -295,7 +295,7 @@
 	</toolbar>
 	<!-- MEDIA WINDOW -->
 	<toolbar name="CMediaFrame.Basic">
-		<button id="ID_MEDIA_PLAY" text="Play&#160;&#160;&#160;"/>
+		<button id="ID_MEDIA_PLAY" text="Play&#160; &#160;"/>
 		<button id="ID_MEDIA_PAUSE" text="Pausa" visible="false"/>
 		<button id="ID_MEDIA_STOP" text="Stop"/>
 		<separator/>
@@ -312,7 +312,7 @@
 		<button id="ID_MEDIA_PLAYLIST" text="Playlist"/>
 	</toolbar>
 	<toolbar name="CMediaFrame">
-		<button id="ID_MEDIA_PLAY" text="Play&#160;&#160;&#160;"/>
+		<button id="ID_MEDIA_PLAY" text="Play&#160; &#160;"/>
 		<button id="ID_MEDIA_PAUSE" text="Pausa" visible="false"/>
 		<button id="ID_MEDIA_STOP" text="Stop"/>
 		<separator/>
@@ -1267,6 +1267,7 @@
 		<item id="ID_LIBRARY_FOLDER_PROPERTIES" text="Proprietà album"/>
 	</menu>
 	<menu name="CLibraryHistoryPanel">
+		<item id="ID_LIBRARY_SHOW_FILE" text="_Show in Library"/>
 		<item id="ID_LIBRARY_CLEAR_HISTORY" text="Clear from _History"/>
 		<item id="ID_LIBRARY_CLEAR_HISTORY_ALL" text="Rimuovi _tutti"/>
 	</menu>
@@ -3786,7 +3787,7 @@
 		<control text="_Installa..."/>
 		<control text="Altri plugin"/>
 	</dialog>
-	<dialog name="CAdvancedSettingsPage" cookie="SyBuStEdmsEdCoBuBu" caption="Avanzate">
+	<dialog name="CAdvancedSettingsPage" cookie="SyBuStEdmsEdCoBuBuStEd" caption="Avanzate">
 		<control/>
 		<control text="Regolazione delle proprietà:"/>
 		<control text="Valore:"/>
@@ -3796,6 +3797,8 @@
 		<control/>
 		<control/>
 		<control text="Ripristina default"/>
+		<control/>
+		<control/>
 	</dialog>
 	<dialog name="CProtocolsSettingsPage" cookie="BuSy" caption="Protocolli">
 		<control text="Esploratore protocollo di struttura comune per Envy:"/>

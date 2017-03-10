@@ -1,7 +1,7 @@
 //
 // ShakeNeighbour.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
+// This file is part of Envy (getenvy.com) © 2016-2017
 // Portions copyright PeerProject 2008-2016 and Shareaza 2002-2008
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -1192,9 +1192,8 @@ BOOL CShakeNeighbour::OnHeadersCompleteG2()
 		}
 
 		// If we don't need this connection
-		if ( ( ! Neighbours.NeedMoreHubs( PROTOCOL_G2 ) &&
-			( m_nNodeType != ntLeaf || ! Neighbours.NeedMoreLeafs( PROTOCOL_G2 ) ) ) ||
-			( ! m_bClientExtended && Neighbours.GetCount( PROTOCOL_G2, nrsConnected, ntLeaf ) > Settings.Gnutella2.NumLeafs - 5 ) )
+		if ( ( ! Neighbours.NeedMoreHubs( PROTOCOL_G2 ) && m_nNodeType != ntLeaf || ! Neighbours.NeedMoreLeafs( PROTOCOL_G2 ) ) ||
+			( m_nNodeType == ntLeaf && ! m_bClientExtended && Neighbours.GetCount( PROTOCOL_G2, nrsConnected, ntLeaf ) > Settings.Gnutella2.NumLeafs - 5 ) )
 		{
 			// We don't need another connection to the role the remote computer is acting
 			// Send an error code along with some more IP addresses it can try
@@ -1207,10 +1206,10 @@ BOOL CShakeNeighbour::OnHeadersCompleteG2()
 			return FALSE;
 		}
 
-		if ( ( m_nNodeType == ntHub && Settings.Gnutella2.ClientMode == MODE_HUB ) ||	// We're both hubs
+		if ( ( m_nNodeType == ntHub  && Settings.Gnutella2.ClientMode == MODE_HUB ) ||	// We're both hubs
 			 ( m_nNodeType == ntLeaf && Settings.Gnutella2.ClientMode == MODE_LEAF ) ) 	// We're both leaves
 		{
-			// Or if we're both in the same role on the network, tell the remote computer that we can't connect
+			// If we're both in the same role on the network, tell the remote computer that we can't connect
 			// Send the error code along with more IP addresses the remote computer can try
 			SendHostHeaders( _P("GNUTELLA/0.6 503 Ultrapeer disabled") );
 			DelayClose( IDS_HANDSHAKE_NOULTRAPEER );	// Close the connection, but not until we've written the buffered outgoing data first

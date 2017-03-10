@@ -10,7 +10,7 @@
 // The Zlib  library is Copyright (C) 1995-2002 Jean-loup Gailly and Mark Adler.
 // The Unzip library is Copyright (C) 1998-2003 Gilles Vollant.
 
-#include "Skin.h"
+#include "Packages.h"
 
 // EXPORT BEGIN
 INT_PTR CALLBACK ExtractProc(HWND hwndDlg, UINT msg, WPARAM wParam, LPARAM lParam)
@@ -40,17 +40,17 @@ INT_PTR CALLBACK ExtractProc(HWND hwndDlg, UINT msg, WPARAM wParam, LPARAM lPara
 			if ( !ValidateSkin(szFile, hwndDlg) )
 			{
 				SendDlgItemMessage(hwndDlg, IDC_PROGRESS, PBM_SETPOS, maxPos, 0);
-				SetWindowText(GetDlgItem(hwndDlg, IDC_STATUS), L"Please verify this file is a valid Envy Skin and try again.");
+				SetWindowText(GetDlgItem(hwndDlg, IDC_STATUS), L"Please verify this file is a valid Envy Package and try again.");
 				EnableWindow(GetDlgItem(hwndDlg, IDOK), TRUE);
 				EnableWindow(GetDlgItem(hwndDlg, IDC_INSTALL), FALSE);
 			}
 			else if ( !skinType )	// Default typeSkin
 			{
-				SetWindowText(hwndDlg, SKIN_SKIN_TITLE);
+				SetWindowText(hwndDlg, SKIN_TITLE);
 			}
 			else
 			{
-				SetWindowText(hwndDlg, SKIN_PACKAGE_TITLE);
+				SetWindowText(hwndDlg, PACKAGE_TITLE);
 				if ( skinType == typeLang )
 					SetWindowText(GetDlgItem(hwndDlg, IDC_CONFIG), L"Configure &Language...");
 			}
@@ -68,7 +68,7 @@ INT_PTR CALLBACK ExtractProc(HWND hwndDlg, UINT msg, WPARAM wParam, LPARAM lPara
 			{
 				TCHAR buf[MAX_PATH], tbuf[MAX_PATH];
 				_snwprintf(buf, MAX_PATH, L"%s %s", szName, szVersion ? szVersion : L"");
-				_snwprintf(tbuf, MAX_PATH, L"%s - %s", szName, skinType ? SKIN_PACKAGE_TITLE : SKIN_SKIN_TITLE);
+				_snwprintf(tbuf, MAX_PATH, L"%s - %s", szName, skinType ? PACKAGE_TITLE : SKIN_TITLE);
 				SetDlgItemText(hwndDlg, IDC_NAME, buf);
 				SetWindowText(hwndDlg, tbuf);
 			}
@@ -169,13 +169,13 @@ INT_PTR CALLBACK ExtractProc(HWND hwndDlg, UINT msg, WPARAM wParam, LPARAM lPara
 					L"Package successfully installed.");
 				EnableWindow(GetDlgItem(hwndDlg, IDOK), TRUE);
 				EnableWindow(GetDlgItem(hwndDlg, IDC_INSTALL), FALSE);
-				if ( FindWindow(SKIN_MAIN_HWND,NULL) )
+				if ( FindWindow(MAIN_HWND,NULL) )
 					EnableWindow(GetDlgItem(hwndDlg, IDC_CONFIG), TRUE);
 			}
 			break;
 		case IDC_CONFIG:
 			{
-				HWND app = FindWindow(SKIN_MAIN_HWND,NULL);
+				HWND app = FindWindow(MAIN_HWND,NULL);
 				if ( app )
 				{
 					if ( !IsZoomed(app) )

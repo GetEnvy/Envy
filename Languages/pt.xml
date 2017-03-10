@@ -3,7 +3,7 @@
 
 <!-- Envy Default Brazilian Portuguese Skin File -->
 
-<!-- Translation based on default en.xml r16 -->
+<!-- Translation based on default en.xml r20 -->
 <!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -298,7 +298,7 @@
 	</toolbar>
 	<!-- MEDIA WINDOW -->
 	<toolbar name="CMediaFrame.Basic">
-		<button id="ID_MEDIA_PLAY" text="Tocar&#160;&#160;&#160;"/>
+		<button id="ID_MEDIA_PLAY" text="Tocar&#160; &#160;"/>
 		<button id="ID_MEDIA_PAUSE" text="Pausar" visible="false"/>
 		<button id="ID_MEDIA_STOP" text="Parar"/>
 		<separator/>
@@ -1314,6 +1314,7 @@
 		<item id="ID_LIBRARY_FOLDER_PROPERTIES" text="_Propriedades do Álbum"/>
 	</menu>
 	<menu name="CLibraryHistoryPanel">
+		<item id="ID_LIBRARY_SHOW_FILE" text="_Show in Library"/>
 		<item id="ID_LIBRARY_CLEAR_HISTORY" text="Clear from _History"/>
 		<item id="ID_LIBRARY_CLEAR_HISTORY_ALL" text="Limpar _Todos"/>
 	</menu>
@@ -3850,7 +3851,7 @@
 		<control text="_Configuração..."/>
 		<control text="Obter Mais"/>
 	</dialog>
-	<dialog name="CAdvancedSettingsPage" cookie="SyBuStEdmsEdCoBuBu" caption="Avançado">
+	<dialog name="CAdvancedSettingsPage" cookie="SyBuStEdmsEdCoBuBuStEd" caption="Avançado">
 		<control/>
 		<control text="Propriedades da Configuração:"/>
 		<control text="Valor:"/>
@@ -3860,6 +3861,8 @@
 		<control/>
 		<control/>
 		<control text="Definir Padrão"/>
+		<control/>
+		<control/>
 	</dialog>
 	<dialog name="CProtocolsSettingsPage" cookie="BuSy" caption="Protocolos">
 		<control text="Explorador dos Protocolos de Arquitetura Comum do Envy:"/>

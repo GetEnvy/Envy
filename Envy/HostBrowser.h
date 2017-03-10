@@ -53,6 +53,7 @@ public:
 	int				m_nHits;
 	BOOL			m_bCanChat;
 	CString			m_sServer;
+//	CString			m_sKey;		// ToDo: Proposed Private Key
 
 protected:
 	CVendor*		m_pVendor;
@@ -74,8 +75,8 @@ public:
 	BOOL			OnPush(const Hashes::Guid& oClientID, CConnection* pConnection);
 	BOOL			OnNewFile(const CLibraryFile* pFile);
 
-	virtual BOOL	OnConnected();
 	virtual void	OnDropped();
+	virtual BOOL	OnConnected();
 	virtual BOOL	OnHeadersComplete();
 
 protected:
@@ -95,7 +96,7 @@ protected:
 	BOOL			LoadDC(LPCTSTR pszFile, CQueryHit*& pHits);
 	BOOL			LoadDCDirectory(CXMLElement* pRoot, CQueryHit*& pHits);
 
+	virtual BOOL	OnRun();
 	virtual BOOL	OnRead();
 	virtual BOOL	OnHeaderLine(CString& strHeader, CString& strValue);
-	virtual BOOL	OnRun();
 };

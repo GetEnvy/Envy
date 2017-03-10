@@ -10,7 +10,7 @@
 // The Zlib  library is Copyright (C) 1995-2002 Jean-loup Gailly and Mark Adler.
 // The Unzip library is Copyright (C) 1998-2003 Gilles Vollant.
 
-#include "Skin.h"
+#include "Packages.h"
 
 static LPCTSTR GetManifestValue(LPCTSTR manifest, LPCTSTR searchKey);
 static int CheckManifestForSkin(LPCTSTR pszFile);

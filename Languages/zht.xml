@@ -3,7 +3,7 @@
 
 <!-- Envy Default Chinese (Traditional) Skin File -->
 
-<!-- Translation based on default en.xml r16 --> <!-- (Shareaza 2.2.2.12) -->
+<!-- Translation based on default en.xml r20 --> <!-- (Shareaza 2.2.2.12) -->
 <!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -176,7 +176,7 @@
 		<button id="ID_DOWNLOADS_EDIT" text="資訊"/>
 		<button id="ID_DOWNLOADS_MONITOR" text="顯示監視器"/>
 		<rightalign/>
-		<button id="ID_TOOLS_DOWNLOAD" text="新增檔案下載/Torrent檔..."/>
+		<button id="ID_TOOLS_DOWNLOAD" text="新增檔案下載/Torrent檔…"/>
 		<button id="ID_DOWNLOADS_CLEAR_COMPLETED" text="清除已完成下載"/>
 		<separator/>
 		<button id="ID_DOWNLOADS_FILTER_MENU" text="過濾器"/>
@@ -206,10 +206,10 @@
 	<!-- LIBRARY FRAME -->
 	<toolbar name="CLibraryTree.Top">
 		<button id="ID_LIBRARY_TREE_PHYSICAL" text="資料夾"/>
-		<button id="ID_LIBRARY_TREE_VIRTUAL" text="組織器(Organiser)"/>
+		<button id="ID_LIBRARY_TREE_VIRTUAL" text="組織器(Organizer)"/>
 	</toolbar>
 	<toolbar name="CLibraryTree.Virtual">
-		<button id="ID_LIBRARY_FOLDERS" text="分享檔案..."/>
+		<button id="ID_LIBRARY_FOLDERS" text="分享檔案…"/>
 	</toolbar>
 	<toolbar name="CLibraryHeaderBar.Physical">
 		<button id="ID_LIBRARY_PARENT" text="'上移"/>
@@ -221,7 +221,7 @@
 	</toolbar>
 	<!-- LIBRARY VIEWS -->
 	<toolbar name="CLibraryTileView.Physical">
-		<button id="ID_LIBRARY_FOLDERS" text="分享檔案..."/>
+		<button id="ID_LIBRARY_FOLDERS" text="分享檔案…"/>
 		<rightalign/>
 		<button id="ID_LIBRARY_SEARCH_QUICK" text="尋找"/>
 		<control id="IDC_SEARCH_BOX" width="90"/>
@@ -229,7 +229,7 @@
 		<button id="ID_LIBRARY_PANEL" text="顯示詳細內容"/>
 	</toolbar>
 	<toolbar name="CLibraryTileView.Virtual">
-		<button id="ID_LIBRARY_FOLDER_NEW" text="新增專輯..."/>
+		<button id="ID_LIBRARY_FOLDER_NEW" text="新增專輯…"/>
 		<button id="ID_LIBRARY_ALBUM_DELETE" text="刪除專輯"/>
 		<rightalign/>
 		<button id="ID_LIBRARY_SEARCH_QUICK" text="尋找"/>
@@ -295,7 +295,7 @@
 	</toolbar>
 	<!-- MEDIA WINDOW -->
 	<toolbar name="CMediaFrame.Basic">
-		<button id="ID_MEDIA_PLAY" text="Play&#160;&#160;&#160;"/>
+		<button id="ID_MEDIA_PLAY" text="Play&#160; &#160;"/>
 		<button id="ID_MEDIA_PAUSE" text="暫停" visible="false"/>
 		<button id="ID_MEDIA_STOP" text="停止"/>
 		<separator/>
@@ -312,7 +312,7 @@
 		<button id="ID_MEDIA_PLAYLIST" text="播放清單"/>
 	</toolbar>
 	<toolbar name="CMediaFrame">
-		<button id="ID_MEDIA_PLAY" text="播放&#160;&#160;&#160;"/>
+		<button id="ID_MEDIA_PLAY" text="播放&#160; &#160;"/>
 		<button id="ID_MEDIA_PAUSE" text="暫停" visible="false"/>
 		<button id="ID_MEDIA_STOP" text="停止"/>
 		<separator/>
@@ -413,14 +413,14 @@
 	<!-- HIT MONITOR WINDOW -->
 	<toolbar name="CHitMonitorWnd">
 		<button id="ID_SEARCH_DOWNLOAD" text="下載"/>
-		<button id="ID_HITMONITOR_SEARCH" text="Requery"/>
+		<button id="ID_HITMONITOR_SEARCH" text="重新查詢"/>
 		<separator/>
 		<button id="ID_HITMONITOR_PAUSE" text="暫停"/>
 		<button id="ID_HITMONITOR_CLEAR" text="清除"/>
 		<rightalign/>
 		<label text="過濾:" tip="請鍵入要過濾的關鍵字"/>
 		<control id="IDC_FILTER_BOX" width="80"/>
-		<button id="ID_SEARCH_FILTER_RAW" text="更多..."/>
+		<button id="ID_SEARCH_FILTER_RAW" text="更多…"/>
 	</toolbar>
 	<!-- DISCOVERY SERVICES WINDOW Missing -->
 	<!-- HOST CACHE WINDOW -->
@@ -485,10 +485,10 @@
 	<menu name="CMainWnd.Tray">
 		<item id="ID_TRAY_OPEN" text="開啟 Envy"/>
 		<separator/>
-		<item id="ID_WINDOW_REMOTE" text="開啟 Remote"/>
-		<item id="ID_TOOLS_SETTINGS" text="開啟 設定..."/>
-		<item id="ID_NETWORK_SEARCH" text="新的搜尋..."/>
-		<item id="ID_TOOLS_DOWNLOAD" text="下載檔案..."/>
+		<item id="ID_WINDOW_REMOTE" text="開啟 顯示遙控"/>
+		<item id="ID_TOOLS_SETTINGS" text="開啟 設定…"/>
+		<item id="ID_NETWORK_SEARCH" text="新的搜尋…"/>
+		<item id="ID_TOOLS_DOWNLOAD" text="下載檔案…"/>
 		<separator/>
 		<item id="ID_MEDIA_PLAY" text="播放多媒體檔"/>
 		<item id="ID_MEDIA_PAUSE" text="暫停多媒體檔"/>
@@ -501,7 +501,7 @@
 	<!-- MAIN WINDOW MENU BAR -->
 	<menu name="CMainWnd.DropMenu" type="bar">
 		<menu text="&#160; 菜單 &#160;">
-			<item id="ID_TOOLS_SETTINGS" text="設定... &#160; "/>
+			<item id="ID_TOOLS_SETTINGS" text="設定… &#160; "/>
 			<menu text="網路">
 				<item id="ID_NETWORK_CONNECT" text="連線" shortcut="Ctrl+G"/>
 				<item id="ID_NETWORK_DISCONNECT" text="中斷連線"/>
@@ -512,18 +512,18 @@
 				<item id="ID_NETWORK_DC" text="連線至 DC++"/>
 				<item id="ID_NETWORK_BT" text="連線至 BitTorrent"/>
 				<separator/>
-				<item id="ID_NETWORK_CONNECT_TO" text="連線至..." shortcut="Ctrl+T"/>
-				<item id="ID_NETWORK_BROWSE_TO" text="瀏覽主機..."/>
+				<item id="ID_NETWORK_CONNECT_TO" text="連線至…" shortcut="Ctrl+T"/>
+				<item id="ID_NETWORK_BROWSE_TO" text="瀏覽主機…"/>
 				<separator/>
 				<item id="ID_NETWORK_AUTO_CLOSE" text="傳輸後離開"/>
 				<item id="ID_NETWORK_EXIT" text="離開"/>
 			</menu>
 			<menu text="工具箱">
-				<item id="ID_LIBRARY_FOLDERS" text="分享檔案..."/>
-				<item id="ID_OPEN_DOWNLOADS_FOLDER" text="_Open Downloads Folder"/>
+				<item id="ID_LIBRARY_FOLDERS" text="分享檔案…"/>
+				<item id="ID_OPEN_DOWNLOADS_FOLDER" text="開啟下載完成的資料夾"/>
 				<separator/>
-				<item id="ID_TOOLS_DOWNLOAD" text="下載檔案/Torrent..."/>
-				<item id="ID_TOOLS_CREATETORRENT" text="_Create New .Torrent..."/>
+				<item id="ID_TOOLS_DOWNLOAD" text="下載檔案/Torrent…"/>
+				<item id="ID_TOOLS_CREATETORRENT" text="Create New .Torrent…"/>
 				<separator/>
 				<item id="ID_TOOLS_LANGUAGE" text="選擇語言"/>
 				<item id="ID_TOOLS_SKIN" text="選擇外觀"/>
@@ -531,7 +531,7 @@
 				<item id="ID_TOOLS_PROFILE" text="編輯我的個人檔案"/>
 				<item id="ID_TOOLS_WIZARD" text="快速啟動精靈"/>
 				<separator/>
-				<item id="ID_TOOLS_SETTINGS" text="_Envy 設定"/>
+				<item id="ID_TOOLS_SETTINGS" text="Envy 設定"/>
 			</menu>
 			<menu text="檢視">
 				<item id="ID_TAB_HOME" text="主頁" shortcut="Ctrl+H"/>
@@ -548,7 +548,7 @@
 				<item id="ID_VIEW_TRAFFIC" text="圖表" shortcut="F10"/>
 				<separator/>
 				<item id="ID_VIEW_PACKETS" text="封包傾印" shortcut="Ctrl+F1"/>
-				<item id="ID_VIEW_SEARCH_MONITOR" text="Search Monitor" shortcut="Ctrl+F2"/>
+				<item id="ID_VIEW_SEARCH_MONITOR" text="監控搜尋要求" shortcut="Ctrl+F2"/>
 				<item id="ID_VIEW_RESULTS_MONITOR" text="搜尋回應監視器" shortcut="Ctrl+F3"/>
 				<item id="ID_TAB_SEARCH" text="搜索" shortcut="Ctrl+S"/>
 			</menu>
@@ -581,7 +581,7 @@
 				</menu>
 				<item id="ID_HELP_HOMEPAGE" text="Envy site"/>
 				<separator/>
-				<item id="ID_HELP_ABOUT" text="關於 Envy..."/>
+				<item id="ID_HELP_ABOUT" text="關於 Envy…"/>
 			</menu>
 			<item id="ID_NETWORK_EXIT" text="離開"/>
 		</menu>
@@ -597,8 +597,8 @@
 			<item id="ID_NETWORK_DC" text="連線至 DC++"/>
 			<item id="ID_NETWORK_BT" text="連線至 BitTorrent"/>
 			<separator/>
-			<item id="ID_NETWORK_CONNECT_TO" text="連線至..." shortcut="Ctrl+T"/>
-			<item id="ID_NETWORK_BROWSE_TO" text="瀏覽主機..."/>
+			<item id="ID_NETWORK_CONNECT_TO" text="連線至…" shortcut="Ctrl+T"/>
+			<item id="ID_NETWORK_BROWSE_TO" text="瀏覽主機…"/>
 			<separator/>
 			<item id="ID_NETWORK_AUTO_CLOSE" text="傳輸後離開"/>
 			<item id="ID_NETWORK_EXIT" text="離開"/>
@@ -628,7 +628,7 @@
 				<item id="ID_VIEW_TRAFFIC" text="圖表" shortcut="F10"/>
 				<separator/>
 				<item id="ID_VIEW_PACKETS" text="封包傾印" shortcut="Ctrl+F1"/>
-				<item id="ID_VIEW_SEARCH_MONITOR" text="Search Monitor" shortcut="Ctrl+F2"/>
+				<item id="ID_VIEW_SEARCH_MONITOR" text="監控搜尋要求" shortcut="Ctrl+F2"/>
 				<item id="ID_VIEW_RESULTS_MONITOR" text="搜尋回應監視器" shortcut="Ctrl+F3"/>
 			</menu>
 			<separator/>
@@ -637,8 +637,8 @@
 			<item id="ID_VIEW_WINDOWED" text="多重視窗模式"/>
 		</menu>
 		<menu text="工具箱">
-			<item id="ID_LIBRARY_FOLDERS" text="分享檔案..."/>
-			<item id="ID_TOOLS_DOWNLOAD" text="下載檔案/Torrent..."/>
+			<item id="ID_LIBRARY_FOLDERS" text="分享檔案…"/>
+			<item id="ID_TOOLS_DOWNLOAD" text="下載檔案/Torrent…"/>
 			<separator/>
 			<item id="ID_TOOLS_SKIN" text="選擇外觀"/>
 			<item id="ID_TOOLS_LANGUAGE" text="選擇語言"/>
@@ -646,7 +646,7 @@
 			<item id="ID_TOOLS_PROFILE" text="編輯我的個人檔案"/>
 			<item id="ID_TOOLS_WIZARD" text="快速啟動精靈"/>
 			<separator/>
-			<item id="ID_TOOLS_SETTINGS" text="_Envy 設定"/>
+			<item id="ID_TOOLS_SETTINGS" text="Envy 設定"/>
 		</menu>
 		<menu text="視窗">
 			<item id="ID_WINDOW_NAVBAR" text="顯示導覽列"/>
@@ -673,7 +673,7 @@
 				<!--item id="ID_HELP_WEB_1" text="Zeropaid.com"-->
 			</menu>
 			<separator/>
-			<item id="ID_HELP_ABOUT" text="關於 Envy..."/>
+			<item id="ID_HELP_ABOUT" text="關於 Envy…"/>
 		</menu>
 	</menu>
 	<menu name="CMainWnd.Basic" type="bar">
@@ -708,13 +708,13 @@
 			<item id="ID_VIEW_TABBED" text="進階模式"/>
 		</menu>
 		<menu text="工具箱">
-			<item id="ID_LIBRARY_FOLDERS" text="分享檔案..."/>
-			<item id="ID_TOOLS_DOWNLOAD" text="下載檔案/Torrent..."/>
+			<item id="ID_LIBRARY_FOLDERS" text="分享檔案…"/>
+			<item id="ID_TOOLS_DOWNLOAD" text="下載檔案/Torrent…"/>
 			<separator/>
 			<item id="ID_TOOLS_SKIN" text="選擇外觀"/>
 			<item id="ID_TOOLS_LANGUAGE" text="選擇語言"/>
 			<separator/>
-			<item id="ID_TOOLS_PROFILE" text="編輯我的個人檔案..."/>
+			<item id="ID_TOOLS_PROFILE" text="編輯我的個人檔案…"/>
 			<item id="ID_TOOLS_WIZARD" text="快速啟動精靈"/>
 			<separator/>
 			<item id="ID_TOOLS_SETTINGS" text="Envy 設定"/>
@@ -737,24 +737,24 @@
 				<!--item id="ID_HELP_WEB_1" text="Zeropaid.com"-->
 			</menu>
 			<separator/>
-			<item id="ID_HELP_ABOUT" text="關於 Envy..."/>
+			<item id="ID_HELP_ABOUT" text="關於 Envy…"/>
 		</menu>
 	</menu>
 	<menu name="CMainWnd.Windowed" type="bar">
 		<menu text="網路">
-			<item id="ID_NETWORK_SEARCH" text="新的搜尋..." shortcut="Ctrl+S"/>
+			<item id="ID_NETWORK_SEARCH" text="新的搜尋…" shortcut="Ctrl+S"/>
 			<separator/>
 			<item id="ID_NETWORK_CONNECT" text="連線" shortcut="Ctrl+G"/>
 			<item id="ID_NETWORK_DISCONNECT" text="中斷連線"/>
 			<separator/>
-			<item id="ID_NETWORK_CONNECT_TO" text="連線至..." shortcut="Ctrl+T"/>
-			<item id="ID_NETWORK_BROWSE_TO" text="瀏覽主機..."/>
+			<item id="ID_NETWORK_CONNECT_TO" text="連線至…" shortcut="Ctrl+T"/>
+			<item id="ID_NETWORK_BROWSE_TO" text="瀏覽主機…"/>
 			<separator/>
 			<item id="ID_NETWORK_G2" text="連線至 Gnutella_2"/>
-			<item id="ID_NETWORK_G1" text="連線至 _Gnutella"/>
-			<item id="ID_NETWORK_ED2K" text="連線至 _eDonkey2000"/>
-			<item id="ID_NETWORK_DC" text="連線至 _DC++"/>
-			<item id="ID_NETWORK_BT" text="連線至 _BitTorrent"/>
+			<item id="ID_NETWORK_G1" text="連線至 Gnutella"/>
+			<item id="ID_NETWORK_ED2K" text="連線至 eDonkey2000"/>
+			<item id="ID_NETWORK_DC" text="連線至 DC++"/>
+			<item id="ID_NETWORK_BT" text="連線至 BitTorrent"/>
 			<separator/>
 			<item id="ID_NETWORK_AUTO_CLOSE" text="傳輸後關閉"/>
 			<item id="ID_NETWORK_EXIT" text="離開"/>
@@ -782,8 +782,8 @@
 			<item id="ID_VIEW_WINDOWED" text="多重視窗模式"/>
 		</menu>
 		<menu text="工具">
-			<item id="ID_LIBRARY_FOLDERS" text="分享檔案..."/>
-			<item id="ID_TOOLS_DOWNLOAD" text="下載檔案/Torrent..."/>
+			<item id="ID_LIBRARY_FOLDERS" text="分享檔案…"/>
+			<item id="ID_TOOLS_DOWNLOAD" text="下載檔案/Torrent…"/>
 			<separator/>
 			<item id="ID_TOOLS_SKIN" text="選擇外觀"/>
 			<item id="ID_TOOLS_LANGUAGE" text="選擇語言"/>
@@ -822,7 +822,7 @@
 				<!--item id="ID_HELP_WEB_1" text="Zeropaid.com"-->
 			</menu>
 			<separator/>
-			<item id="ID_HELP_ABOUT" text="關於 Envy..."/>
+			<item id="ID_HELP_ABOUT" text="關於 Envy…"/>
 		</menu>
 	</menu>
 	<!-- VIEW POPUP -->
@@ -837,7 +837,7 @@
 			<item id="ID_VIEW_NEIGHBOURS" text="我的鄰居"/>
 			<item id="ID_VIEW_UPLOADS" text="上傳"/>
 			<item id="ID_VIEW_SECURITY" text="安全性"/>
-			<item id="ID_VIEW_SCHEDULER" text="Scheduler"/>
+			<item id="ID_VIEW_SCHEDULER" text="預定表"/>
 			<item id="ID_VIEW_HOSTS" text="主機快取"/>
 		</menu>
 	</menu>
@@ -850,17 +850,17 @@
 		<item id="ID_TAB_NETWORK" text="網路"/>
 		<separator/>
 		<item id="ID_VIEW_SECURITY" text="安全性"/>
-		<item id="ID_VIEW_SCHEDULER" text="Scheduler"/>
+		<item id="ID_VIEW_SCHEDULER" text="預定表"/>
 		<item id="ID_VIEW_HOSTS" text="主機快取"/>
 		<item id="ID_VIEW_DISCOVERY" text="揭示"/>
 		<item id="ID_VIEW_TRAFFIC" text="圖表"/>
 		<separator/>
 		<item id="ID_VIEW_PACKETS" text="封包傾印"/>
-		<item id="ID_VIEW_SEARCH_MONITOR" text="Search Monitor"/>
+		<item id="ID_VIEW_SEARCH_MONITOR" text="監控搜尋要求"/>
 		<item id="ID_VIEW_RESULTS_MONITOR" text="搜尋回應監視器"/>
 	</menu>
 	<menu name="CMainWnd.View.Windowed">
-		<item id="ID_NETWORK_SEARCH" text="新的搜尋..."/>
+		<item id="ID_NETWORK_SEARCH" text="新的搜尋…"/>
 		<separator/>
 		<item id="ID_VIEW_SYSTEM" text="系統"/>
 		<item id="ID_VIEW_NEIGHBOURS" text="我的鄰居"/>
@@ -875,7 +875,7 @@
 		<item id="ID_VIEW_TRAFFIC" text="圖表"/>
 		<separator/>
 		<item id="ID_VIEW_PACKETS" text="封包傾印"/>
-		<item id="ID_VIEW_SEARCH_MONITOR" text="Search Monitor"/>
+		<item id="ID_VIEW_SEARCH_MONITOR" text="監控搜尋要求"/>
 		<item id="ID_VIEW_RESULTS_MONITOR" text="搜尋回應監視器"/>
 	</menu>
 	<!-- HOME MENU -->
@@ -902,20 +902,20 @@
 		<item id="ID_TAB_NETWORK" text="網路"/>
 		<separator/>
 		<item id="ID_VIEW_SECURITY" text="安全性"/>
-		<item id="ID_VIEW_SCHEDULER" text="Scheduler"/>
+		<item id="ID_VIEW_SCHEDULER" text="預定表"/>
 		<item id="ID_VIEW_HOSTS" text="主機快取"/>
 		<item id="ID_VIEW_DISCOVERY" text="揭示"/>
 		<item id="ID_VIEW_TRAFFIC" text="圖表"/>
 		<separator/>
 		<item id="ID_VIEW_PACKETS" text="封包傾印"/>
-		<item id="ID_VIEW_SEARCH_MONITOR" text="Search Monitor"/>
+		<item id="ID_VIEW_SEARCH_MONITOR" text="監控搜尋要求"/>
 		<item id="ID_VIEW_RESULTS_MONITOR" text="搜尋回應監視器"/>
 	</menu>
 	<!-- HOST CACHE WINDOW -->
 	<menu name="CHostCacheWnd">
 		<item id="ID_HOSTCACHE_CONNECT" text="立刻連線"/>
 		<item id="ID_HOSTCACHE_DISCONNECT" text="中斷連線"/>
-		<item id="ID_HOSTCACHE_PRIORITY" text="_Priority Server"/>
+		<item id="ID_HOSTCACHE_PRIORITY" text="Priority Server"/>
 		<separator/>
 		<item id="ID_HOSTCACHE_REMOVE" text="移除主機"/>
 		<separator/>
@@ -926,8 +926,8 @@
 			<item id="ID_HOSTCACHE_ED2K_CACHE" text="eDonkey 伺服器"/>
 		</menu>
 		<separator/>
-		<item id="ID_HOSTCACHE_IMPORT" text="匯入 MET 檔..."/>
-		<item id="ID_HOSTCACHE_FILE_DOWNLOAD" text="下載 MET..."/>
+		<item id="ID_HOSTCACHE_IMPORT" text="匯入 MET 檔…"/>
+		<item id="ID_HOSTCACHE_FILE_DOWNLOAD" text="下載 MET…"/>
 	</menu>
 	<!-- SEARCH WINDOW -->
 	<menu name="CSearchWnd.Basic">
@@ -945,7 +945,7 @@
 		</menu>
 		<menu id="ID_LIBRARY_BITPRINTS_WEB" text="網際網路服務">
 			<item id="ID_LIBRARY_BITPRINTS_WEB" text="檢視 Bitprints 標籤"/>
-			<item id="ID_SEARCH_URI" text="複製 URI..."/>
+			<item id="ID_SEARCH_URI" text="複製 URI…"/>
 		</menu>
 	</menu>
 	<menu name="CSearchWnd">
@@ -965,18 +965,18 @@
 			<item id="ID_SEARCH_FOR_ALBUM" text="同一個專輯的音樂"/>
 			<item id="ID_SEARCH_FOR_SERIES" text="同一個系列的 Episodes"/>
 			<separator/>
-			<item id="ID_VIEW_SEARCH_MONITOR" text="搜尋 M_onitor"/>
-			<item id="ID_VIEW_RESULTS_MONITOR" text="_Hit Monitor"/>
+			<item id="ID_VIEW_SEARCH_MONITOR" text="監控搜尋要求"/>
+			<item id="ID_VIEW_RESULTS_MONITOR" text="搜尋回應監視器"/>
 		</menu>
 		<menu id="ID_LIBRARY_BITPRINTS_WEB" text="網際網路服務">
 			<item id="ID_LIBRARY_BITPRINTS_WEB" text="檢視 Bitprints 標籤"/>
 		</menu>
 		<separator/>
-		<item id="ID_SEARCH_FILTER" text="過濾搜尋結果..."/>
+		<item id="ID_SEARCH_FILTER" text="過濾搜尋結果…"/>
 		<item id="ID_SEARCH_FILTER_REMOVE" text="移除過濾"/>
 		<item id="ID_SEARCH_CLEAR" text="清除搜尋結果"/>
 		<separator/>
-		<item id="ID_SEARCH_COLUMNS" text="編輯欄位..."/>
+		<item id="ID_SEARCH_COLUMNS" text="編輯欄位…"/>
 	</menu>
 	<!-- BROWSE HOST WINDOW -->
 	<menu name="CBrowseHostWnd.Basic">
@@ -994,7 +994,7 @@
 		</menu>
 		<menu text="網際網路檔案資訊">
 			<item id="ID_LIBRARY_BITPRINTS_WEB" text="檢視 Bitprints 標籤"/>
-			<item id="ID_SEARCH_URI" text="複製 URI..."/>
+			<item id="ID_SEARCH_URI" text="複製 URI…"/>
 		</menu>
 	</menu>
 	<menu name="CBrowseHostWnd">
@@ -1016,10 +1016,10 @@
 			<item id="ID_LIBRARY_BITPRINTS_WEB" text="檢視 Bitprints 標籤"/>
 		</menu>
 		<separator/>
-		<item id="ID_SEARCH_FILTER" text="過濾搜尋結果..."/>
+		<item id="ID_SEARCH_FILTER" text="過濾搜尋結果…"/>
 		<item id="ID_SEARCH_FILTER_REMOVE" text="移除過濾"/>
 		<separator/>
-		<item id="ID_SEARCH_COLUMNS" text="編輯欄位..."/>
+		<item id="ID_SEARCH_COLUMNS" text="編輯欄位…"/>
 	</menu>
 	<!-- HIT MONITOR WINDOW -->
 	<menu name="CHitMonitorWnd">
@@ -1041,13 +1041,13 @@
 			<item id="ID_LIBRARY_BITPRINTS_WEB" text="檢視 Bitprints 標籤"/>
 		</menu>
 		<separator/>
-		<item id="ID_SEARCH_FILTER" text="過濾搜尋結果..."/>
+		<item id="ID_SEARCH_FILTER" text="過濾搜尋結果…"/>
 		<item id="ID_SEARCH_FILTER_REMOVE" text="移除過濾"/>
 		<separator/>
 		<item id="ID_HITMONITOR_PAUSE" text="暫停顯示"/>
 		<item id="ID_HITMONITOR_CLEAR" text="清除顯示"/>
 		<separator/>
-		<item id="ID_SEARCH_COLUMNS" text="編輯欄位..."/>
+		<item id="ID_SEARCH_COLUMNS" text="編輯欄位…"/>
 	</menu>
 	<!-- DOWNLOADS WINDOW -->
 	<menu name="CDownloadsWnd.Download.Basic">
@@ -1058,10 +1058,10 @@
 		<item id="ID_DOWNLOADS_CLEAR_INCOMPLETE" text="取消"/>
 		<separator/>
 		<item id="ID_DOWNLOADS_SOURCES" text="尋找更多來源"/>
-		<item id="ID_DOWNLOADS_REMOTE_PREVIEW" text="R_emote 預覽"/>
+		<item id="ID_DOWNLOADS_REMOTE_PREVIEW" text="Remote 預覽"/>
 		<item id="ID_DOWNLOADS_VIEW_REVIEWS" text="檢視評論"/>
 		<separator/>
-		<item id="ID_DOWNLOADS_HELP" text="說明..."/>
+		<item id="ID_DOWNLOADS_HELP" text="說明…"/>
 	</menu>
 	<menu name="CDownloadsWnd.Download">
 		<item id="ID_DOWNLOADS_LAUNCH_COPY" text="預覽 複製"/>
@@ -1073,15 +1073,15 @@
 		<item id="ID_DOWNLOADS_CLEAR_INCOMPLETE" text="取消"/>
 		<separator/>
 		<item id="ID_DOWNLOADS_VIEW_REVIEWS" text="檢視評論"/>
-		<item id="ID_DOWNLOADS_REMOTE_PREVIEW" text="R_emote 預覽"/>
+		<item id="ID_DOWNLOADS_REMOTE_PREVIEW" text="遠程預覽"/>
 		<item id="ID_DOWNLOADS_SOURCES" text="尋找更多來源"/>
 		<separator/>
 		<menu text="進階">
 			<item id="ID_DOWNLOADS_SHARE" text="檔案分享"/>
 			<separator/>
 			<item id="ID_DOWNLOADS_URI" text="複製 URI"/>
-			<item id="ID_DOWNLOADS_ADD_SOURCE" text="新增來源..."/>
-			<item id="ID_DOWNLOADS_MERGE" text="合併本地文件..."/>
+			<item id="ID_DOWNLOADS_ADD_SOURCE" text="新增來源…"/>
+			<item id="ID_DOWNLOADS_MERGE" text="合併本地文件…"/>
 			<separator/>
 			<item id="ID_DOWNLOADS_MONITOR" text="Monitor 視窗"/>
 		</menu>
@@ -1093,16 +1093,16 @@
 			<item id="ID_DOWNLOADS_MOVE_UP" text="上移" shortcut="Ctrl+Up"/>
 			<item id="ID_DOWNLOADS_MOVE_DOWN" text="下移" shortcut="Ctrl+Down"/>
 		</menu>
-		<item id="ID_DOWNLOADS_HELP" text="說明..."/>
+		<item id="ID_DOWNLOADS_HELP" text="說明…"/>
 		<separator/>
-		<item id="ID_DOWNLOADS_EDIT" text="進階編輯..."/>
+		<item id="ID_DOWNLOADS_EDIT" text="進階編輯…"/>
 	</menu>
 	<menu name="CDownloadsWnd.Source">
 		<item id="ID_TRANSFERS_CONNECT" text="存取"/>
 		<separator/>
 		<item id="ID_BROWSE_LAUNCH" text="瀏覽使用者"/>
 		<item id="ID_TRANSFERS_CHAT" text="與使用者聊天"/>
-		<item id="ID_DOWNLOADS_URI" text="複製 P2P Link (_URI)"/>
+		<item id="ID_DOWNLOADS_URI" text="複製 P2P Link (URI)"/>
 		<separator/>
 		<item id="ID_TRANSFERS_DISCONNECT" text="中斷連線"/>
 		<item id="ID_TRANSFERS_FORGET" text="忘卻"/>
@@ -1121,8 +1121,8 @@
 		<item id="ID_DOWNLOADS_CLEAR_COMPLETE" text="清除"/>
 		<separator/>
 		<item id="ID_DOWNLOADS_FILE_DELETE" text="刪除檔案"/>
-		<item id="ID_DOWNLOADS_RATE" text="為檔案評分..."/>
-		<item id="ID_DOWNLOADS_URI" text="複製 P2P Link (_URI)"/>
+		<item id="ID_DOWNLOADS_RATE" text="為檔案評分…"/>
+		<item id="ID_DOWNLOADS_URI" text="複製 P2P Link (URI)"/>
 		<separator/>
 		<item id="ID_DOWNLOADS_EDIT" text="資訊"/>
 	</menu>
@@ -1131,20 +1131,20 @@
 		<item id="ID_DOWNLOADS_FOLDER" text="開啟 Folder"/>
 		<item id="ID_DOWNLOADS_CLEAR_COMPLETE" text="停止做種"/>
 		<separator/>
-		<item id="ID_DOWNLOADS_URI" text="複製 P2P Link (_URI)"/>
-		<item id="ID_DOWNLOADS_HELP" text="說明..."/>
+		<item id="ID_DOWNLOADS_URI" text="複製 P2P Link (URI)"/>
+		<item id="ID_DOWNLOADS_HELP" text="說明…"/>
 		<separator/>
-		<item id="ID_DOWNLOADS_EDIT" text="Torrent 資訊..."/>
+		<item id="ID_DOWNLOADS_EDIT" text="Torrent 資訊…"/>
 	</menu>
 	<menu name="CDownloadsWnd.Default">
 		<item id="ID_TOOLS_DOWNLOAD" text="Start New Download"/>
 		<item id="ID_TOOLS_SEEDTORRENT" text="Seed New Torrent"/>
 		<item id="ID_DOWNLOADS_CLEAR_COMPLETED" text="自動清除"/>
 		<separator/>
-		<item id="ID_DOWNLOADS_HELP" text="說明..."/>
+		<item id="ID_DOWNLOADS_HELP" text="說明…"/>
 	</menu>
 	<menu name="CDownloadTabBar">
-		<item id="ID_DOWNLOAD_GROUP_OPEN" text="開啟 _Folder"/>
+		<item id="ID_DOWNLOAD_GROUP_OPEN" text="開啟 Folder"/>
 		<separator/>
 		<item id="ID_DOWNLOAD_GROUP_RESUME" text="全部繼續"/>
 		<item id="ID_DOWNLOAD_GROUP_PAUSE" text="全部暫停"/>
@@ -1155,7 +1155,7 @@
 		<item id="ID_DOWNLOAD_GROUP_MOVELEFT" text="移動組左"/>
 		<item id="ID_DOWNLOAD_GROUP_MOVERIGHT" text="移動組權"/>
 		<item id="ID_DOWNLOAD_GROUP_REMOVE" text="移除群組"/>
-		<item id="ID_DOWNLOAD_GROUP_NEW" text="新群組..."/>
+		<item id="ID_DOWNLOAD_GROUP_NEW" text="新群組…"/>
 		<separator/>
 		<item id="ID_DOWNLOAD_GROUP_PROPERTIES" text="屬性"/>
 	</menu>
@@ -1166,7 +1166,7 @@
 		<item id="ID_DOWNLOADS_FILTER_PAUSED" text="顯示暫停的"/>
 		<item id="ID_DOWNLOADS_FILTER_QUEUED" text="顯示等待中的"/>
 		<item id="ID_DOWNLOADS_FILTER_SOURCES" text="顯示沒有來源的"/>
-		<item id="ID_DOWNLOADS_FILTER_SEEDS" text="Show See_ds"/>
+		<item id="ID_DOWNLOADS_FILTER_SEEDS" text="Show Seeds"/>
 		<separator/>
 		<item id="ID_DOWNLOADS_SHOW_SOURCES" text="顯示所有的來源"/>
 		<separator/>
@@ -1177,11 +1177,11 @@
 		<item id="ID_BROWSE_LAUNCH" text="瀏覽使用者"/>
 		<item id="ID_UPLOADS_CHAT" text="與使用者聊天"/>
 		<separator/>
-		<item id="ID_UPLOADS_HELP" text="說明..."/>
+		<item id="ID_UPLOADS_HELP" text="說明…"/>
 	</menu>
 	<menu name="CUploadsWnd.Upload">
-		<item id="ID_UPLOADS_LAUNCH" text="顯示 _Library"/>
-		<item id="ID_UPLOADS_FOLDER" text="開啟 _Folder"/>
+		<item id="ID_UPLOADS_LAUNCH" text="顯示 Library"/>
+		<item id="ID_UPLOADS_FOLDER" text="開啟 Folder"/>
 		<separator/>
 		<item id="ID_UPLOADS_CLEAR" text="清除"/>
 		<item id="ID_UPLOADS_START" text="立刻開始"/>
@@ -1192,11 +1192,11 @@
 		<item id="ID_SECURITY_BAN" text="封鎖使用者"/>
 	</menu>
 	<menu name="CUploadsWnd.Default">
-		<item id="ID_LIBRARY_FOLDERS" text="分享檔案..."/>
-		<item id="ID_UPLOADS_SETTINGS" text="排隊設定..."/>
+		<item id="ID_LIBRARY_FOLDERS" text="分享檔案…"/>
+		<item id="ID_UPLOADS_SETTINGS" text="排隊設定…"/>
 		<item id="ID_UPLOADS_CLEAR_COMPLETED" text="清除完成的上傳"/>
 		<separator/>
-		<item id="ID_UPLOADS_HELP" text="說明..."/>
+		<item id="ID_UPLOADS_HELP" text="說明…"/>
 	</menu>
 	<menu name="CUploadsWnd.Filter">
 		<item id="ID_UPLOADS_FILTER_ALL" text="顯示所有的"/>
@@ -1213,7 +1213,7 @@
 		<item id="ID_LIBRARY_SHARED_FOLDER" text="分享的"/>
 		<item id="ID_LIBRARY_REMOVE" text="移除"/>
 		<separator/>
-		<item id="ID_LIBRARY_FOLDERS" text="分享檔案..."/>
+		<item id="ID_LIBRARY_FOLDERS" text="分享檔案…"/>
 	</menu>
 	<menu name="CLibraryTree.Physical">
 		<item id="ID_LIBRARY_EXPLORE" text="探索"/>
@@ -1223,9 +1223,9 @@
 		<separator/>
 		<item id="ID_LIBRARY_SCAN" text="掃瞄"/>
 		<item id="ID_LIBRARY_REBUILD" text="重建"/>
-		<item id="ID_LIBRARY_FOLDERS" text="分享檔案..."/>
+		<item id="ID_LIBRARY_FOLDERS" text="分享檔案…"/>
 		<separator/>
-		<item id="ID_SHELL_MENU" text="S_hell menu"/>
+		<item id="ID_SHELL_MENU" text="Shell menu"/>
 		<separator/>
 		<item id="ID_LIBRARY_FOLDER_FILE_PROPERTIES" text="檔案屬性"/>
 	</menu>
@@ -1241,15 +1241,16 @@
 		<item id="ID_LIBRARY_FOLDER_DELETE" text="刪除"/>
 		<separator/>
 		<item id="ID_LIBRARY_REBUILD" text="重建"/>
-		<item id="ID_LIBRARY_EXPORT_COLLECTION" text="匯出組檔..."/>
+		<item id="ID_LIBRARY_EXPORT_COLLECTION" text="匯出組檔…"/>
 		<separator/>
-		<item id="ID_LIBRARY_FOLDER_NEW" text="新增資料夾..."/>
+		<item id="ID_LIBRARY_FOLDER_NEW" text="新增資料夾…"/>
 		<separator/>
 		<item id="ID_LIBRARY_FOLDER_FILE_PROPERTIES" text="檔案屬性"/>
 		<item id="ID_LIBRARY_FOLDER_PROPERTIES" text="專輯屬性"/>
 	</menu>
 	<menu name="CLibraryHistoryPanel">
-		<item id="ID_LIBRARY_CLEAR_HISTORY" text="Clear from _History"/>
+		<item id="ID_LIBRARY_SHOW_FILE" text="在圖書館中顯示"/>
+		<item id="ID_LIBRARY_CLEAR_HISTORY" text="從歷史清除"/>
 		<item id="ID_LIBRARY_CLEAR_HISTORY_ALL" text="全部清除"/>
 	</menu>
 	<!-- LIBRARY VIEWS -->
@@ -1268,10 +1269,10 @@
 		<separator/>
 		<menu text="整理">
 			<item id="ID_LIBRARY_RENAME" text="重新命名檔案"/>
-			<item id="ID_LIBRARY_COPY" text="複製檔案..."/>
-			<item id="ID_LIBRARY_MOVE" text="移動檔案..."/>
+			<item id="ID_LIBRARY_COPY" text="複製檔案…"/>
+			<item id="ID_LIBRARY_MOVE" text="移動檔案…"/>
 		</menu>
-		<menu text="搜尋...">
+		<menu text="搜尋…">
 			<item id="ID_SEARCH_FOR_THIS" text="這個檔案"/>
 			<item id="ID_SEARCH_FOR_SIMILAR" text="相似的檔案"/>
 			<separator/>
@@ -1283,7 +1284,7 @@
 			<item id="ID_LIBRARY_BITPRINTS_WEB" text="檢視 Bitprints 標籤"/>
 			<item id="ID_LIBRARY_BITPRINTS_DOWNLOAD" text="下載解釋資料"/>
 			<separator/>
-			<item id="ID_LIBRARY_URI" text="_URI"/>
+			<item id="ID_LIBRARY_URI" text="URI"/>
 		</menu>
 		<separator/>
 		<item id="ID_LIBRARY_PROPERTIES" text="屬性"/>
@@ -1295,18 +1296,18 @@
 		<separator/>
 		<item id="ID_LIBRARY_SHARED_FILE" text="分享的"/>
 		<separator/>
-		<item id="ID_LIBRARY_URI" text="_URI"/>
+		<item id="ID_LIBRARY_URI" text="URI"/>
 		<item id="ID_LIBRARY_CREATETORRENT" text="製作 .torrent 檔"/>
-		<item id="ID_LIBRARY_LAUNCH_FOLDER" text="Open _Folder"/>
+		<item id="ID_LIBRARY_LAUNCH_FOLDER" text="打開文件夾"/>
 		<separator/>
 		<menu text="整理">
 			<item id="ID_LIBRARY_UNLINK" text="移除檔案"/>
 			<separator/>
 			<item id="ID_LIBRARY_RENAME" text="重新命名檔案"/>
-			<item id="ID_LIBRARY_MOVE" text="移動檔案..."/>
-			<item id="ID_LIBRARY_COPY" text="複製檔案..."/>
+			<item id="ID_LIBRARY_MOVE" text="移動檔案…"/>
+			<item id="ID_LIBRARY_COPY" text="複製檔案…"/>
 		</menu>
-		<menu text="搜尋...">
+		<menu text="搜尋…">
 			<item id="ID_SEARCH_FOR_THIS" text="這個檔案"/>
 			<item id="ID_SEARCH_FOR_SIMILAR" text="相似的檔案"/>
 			<separator/>
@@ -1318,14 +1319,14 @@
 			<item id="ID_LIBRARY_BITPRINTS_WEB" text="檢視 Bitprints 標籤"/>
 			<item id="ID_LIBRARY_BITPRINTS_DOWNLOAD" text="取得解釋資料"/>
 		</menu>
-		<menu text="_Metadata">
-			<item id="ID_LIBRARY_REBUILD_FILE" text="Re_build Hashes"/>
-			<item id="ID_LIBRARY_REFRESH_METADATA" text="_Refresh Metadata"/>
+		<menu text="Metadata">
+			<item id="ID_LIBRARY_REBUILD_FILE" text="重建 Hashes"/>
+			<item id="ID_LIBRARY_REFRESH_METADATA" text="重新整理元數據"/>
 			<item id="ID_LIBRARY_REBUILD_ANSI" text="將解釋資料本地化"/>
-			<item id="ID_LIBRARY_COLUMNS" text="選擇欄位..."/>
+			<item id="ID_LIBRARY_COLUMNS" text="選擇欄位…"/>
 		</menu>
 		<separator/>
-		<item id="ID_SHELL_MENU" text="Windows Men_u"/>
+		<item id="ID_SHELL_MENU" text="Windows 選單"/>
 		<item id="ID_LIBRARY_PROPERTIES" text="屬性"/>
 	</menu>
 	<!-- MEDIA WINDOW -->
@@ -1334,7 +1335,7 @@
 		<item id="ID_MEDIA_PAUSE" text="暫停"/>
 		<item id="ID_MEDIA_STOP" text="停止"/>
 		<separator/>
-		<item id="ID_MEDIA_OPEN" text="開啟多媒體檔案..."/>
+		<item id="ID_MEDIA_OPEN" text="開啟多媒體檔案…"/>
 		<separator/>
 		<menu text="播放清單">
 			<item id="ID_MEDIA_PREVIOUS" text="上一個"/>
@@ -1358,12 +1359,12 @@
 			<item id="ID_MEDIA_FULLSCREEN" text="全螢幕"/>
 		</menu>
 		<menu text="設定">
-			<item id="ID_MEDIA_VIS" text="選擇視覺效果..."/>
+			<item id="ID_MEDIA_VIS" text="選擇視覺效果…"/>
 			<separator/>
 			<item id="ID_MEDIA_PLAYLIST" text="顯示播放清單"/>
 			<item id="ID_MEDIA_STATUS" text="顯示狀態列"/>
 			<separator/>
-			<item id="ID_MEDIA_SETTINGS" text="多媒體設定..."/>
+			<item id="ID_MEDIA_SETTINGS" text="多媒體設定…"/>
 		</menu>
 	</menu>
 	<menu name="CMediaFrame">
@@ -1371,7 +1372,7 @@
 		<item id="ID_MEDIA_PAUSE" text="暫停"/>
 		<item id="ID_MEDIA_STOP" text="停止"/>
 		<separator/>
-		<item id="ID_MEDIA_OPEN" text="開啟多媒體檔案..."/>
+		<item id="ID_MEDIA_OPEN" text="開啟多媒體檔案…"/>
 		<item id="ID_MEDIA_CLOSE" text="關閉檔案"/>
 		<separator/>
 		<menu text="播放清單">
@@ -1396,12 +1397,12 @@
 			<item id="ID_MEDIA_FULLSCREEN" text="全螢幕"/>
 		</menu>
 		<menu text="設定">
-			<item id="ID_MEDIA_VIS" text="選擇視覺效果..."/>
+			<item id="ID_MEDIA_VIS" text="選擇視覺效果…"/>
 			<separator/>
 			<item id="ID_MEDIA_PLAYLIST" text="顯示播放清單"/>
 			<item id="ID_MEDIA_STATUS" text="顯示狀態列"/>
 			<separator/>
-			<item id="ID_MEDIA_SETTINGS" text="多媒體設定..."/>
+			<item id="ID_MEDIA_SETTINGS" text="多媒體設定…"/>
 		</menu>
 	</menu>
 	<menu name="CMediaFrame.Zoom">
@@ -1418,16 +1419,16 @@
 	<menu name="CMediaList">
 		<item id="ID_MEDIA_SELECT" text="播放"/>
 		<separator/>
-		<item id="ID_MEDIA_ADD" text="新增檔案..."/>
-		<item id="ID_MEDIA_ADD_FOLDER" text="新增資料夾..."/>
+		<item id="ID_MEDIA_ADD" text="新增檔案…"/>
+		<item id="ID_MEDIA_ADD_FOLDER" text="新增資料夾…"/>
 		<item id="ID_MEDIA_REMOVE" text="移除"/>
 		<separator/>
 		<item id="ID_MEDIA_RANDOM" text="隨機模式"/>
 		<item id="ID_MEDIA_REPEAT" text="重複模式"/>
 		<separator/>
-		<item id="ID_MEDIA_OPEN" text="開啟播放清單..."/>
-		<item id="ID_MEDIA_SAVE" text="儲存播放清單..."/>
-		<item id="ID_MEDIA_EXPORT_COLLECTION" text="匯出組檔..."/>
+		<item id="ID_MEDIA_OPEN" text="開啟播放清單…"/>
+		<item id="ID_MEDIA_SAVE" text="儲存播放清單…"/>
+		<item id="ID_MEDIA_EXPORT_COLLECTION" text="匯出組檔…"/>
 		<item id="ID_MEDIA_CLEAR" text="清除播放清單"/>
 		<separator/>
 		<item id="ID_MEDIA_PLAYLIST" text="顯示播放清單"/>
@@ -1435,11 +1436,11 @@
 	<!-- SYSTEM WINDOW -->
 	<menu name="CSystemWnd">
 		<menu id="ID_SYSTEM_VERBOSE" text="Verbose 模式">
-			<item id="ID_SYSTEM_VERBOSE_ERROR" text="_Error"/>
-			<item id="ID_SYSTEM_VERBOSE_WARNING" text="_Warning"/>
-			<item id="ID_SYSTEM_VERBOSE_NOTICE" text="_Notice"/>
-			<item id="ID_SYSTEM_VERBOSE_INFO" text="_Info"/>
-			<item id="ID_SYSTEM_VERBOSE_DEBUG" text="_Debug"/>
+			<item id="ID_SYSTEM_VERBOSE_ERROR" text="錯誤"/>
+			<item id="ID_SYSTEM_VERBOSE_WARNING" text="警告"/>
+			<item id="ID_SYSTEM_VERBOSE_NOTICE" text="注意"/>
+			<item id="ID_SYSTEM_VERBOSE_INFO" text="訊息"/>
+			<item id="ID_SYSTEM_VERBOSE_DEBUG" text="除錯"/>
 		</menu>
 		<item id="ID_SYSTEM_TIMESTAMP" text="時間郵戳"/>
 		<separator/>
@@ -1472,8 +1473,8 @@
 			<item id="ID_NETWORK_G2" text="Gnutella2"/>
 			<item id="ID_NETWORK_G1" text="Gnutella"/>
 			<item id="ID_NETWORK_ED2K" text="eDonkey2000"/>
-			<item id="ID_NETWORK_DC" text="_DC++"/>
-			<item id="ID_NETWORK_BT" text="_BitTorrent"/>
+			<item id="ID_NETWORK_DC" text="DC++"/>
+			<item id="ID_NETWORK_BT" text="BitTorrent"/>
 			<separator/>
 			<item id="ID_VIEW_DISCOVERY" text="揭示"/>
 			<item id="ID_VIEW_HOSTS" text="主機快取"/>
@@ -1494,7 +1495,7 @@
 	</menu>
 	<!-- GRAPH/TRAFFIC WINDOW -->
 	<menu name="CTrafficWnd">
-		<item id="ID_TRAFFIC_SETUP" text="選擇圖表..."/>
+		<item id="ID_TRAFFIC_SETUP" text="選擇圖表…"/>
 		<separator/>
 		<item id="ID_TRAFFIC_GRID" text="格線"/>
 		<item id="ID_TRAFFIC_AXIS" text="軸線"/>
@@ -1506,7 +1507,7 @@
 	</menu>
 	<!-- SECURITY WINDOW -->
 	<menu name="CSecurityWnd">
-		<item id="ID_SECURITY_ADD" text="新增規則..."/>
+		<item id="ID_SECURITY_ADD" text="新增規則…"/>
 		<separator/>
 		<item id="ID_SECURITY_REMOVE" text="移除"/>
 		<item id="ID_SECURITY_RESET" text="重設"/>
@@ -1514,8 +1515,8 @@
 		<item id="ID_SECURITY_MOVE_UP" text="上移"/>
 		<item id="ID_SECURITY_MOVE_DOWN" text="下移"/>
 		<separator/>
-		<item id="ID_SECURITY_IMPORT" text="匯入..."/>
-		<item id="ID_SECURITY_EXPORT" text="匯出..."/>
+		<item id="ID_SECURITY_IMPORT" text="匯入…"/>
+		<item id="ID_SECURITY_EXPORT" text="匯出…"/>
 		<separator/>
 		<menu text="默认策略">
 			<item id="ID_SECURITY_POLICY_ACCEPT" text="接受"/>
@@ -1526,7 +1527,7 @@
 	</menu>
 	<!-- SCHEDULER WINDOW -->
 	<menu name="CSchedulerWnd">
-		<item id="ID_SCHEDULER_ADD" text="新增規則..."/>
+		<item id="ID_SCHEDULER_ADD" text="新增規則…"/>
 		<separator/>
 		<item id="ID_SCHEDULER_EDIT" text="屬性"/>
 		<item id="ID_SCHEDULER_REMOVE" text="移除"/>
@@ -1534,14 +1535,14 @@
 		<item id="ID_SCHEDULER_ACTIVATE" text="接受"/>
 		<item id="ID_SCHEDULER_DEACTIVATE" text="拒絕"/>
 		<separator/>
-		<item id="ID_SCHEDULER_IMPORT" text="导入..."/>
-		<item id="ID_SCHEDULER_EXPORT" text="导出..."/>
+		<item id="ID_SCHEDULER_IMPORT" text="导入…"/>
+		<item id="ID_SCHEDULER_EXPORT" text="导出…"/>
 		<separator/>
-		<item id="ID_SCHEDULER_REMOVE_ALL" text="Remove Al_l"/>
+		<item id="ID_SCHEDULER_REMOVE_ALL" text="移除全部"/>
 	</menu>
 	<!-- DISCOVERY SERVICES WINDOW -->
 	<menu name="CDiscoveryWnd">
-		<item id="ID_DISCOVERY_ADD" text="新增服務..."/>
+		<item id="ID_DISCOVERY_ADD" text="新增服務…"/>
 		<separator/>
 		<item id="ID_DISCOVERY_EDIT" text="屬性"/>
 		<item id="ID_DISCOVERY_REMOVE" text="移除"/>
@@ -1561,7 +1562,7 @@
 		<item id="ID_CHAT_DISCONNECT" text="中斷連線"/>
 		<separator/>
 		<item id="ID_CHAT_BROWSE" text="瀏覽使用者"/>
-		<!--item id="ID_CHAT_SEND_FILE" text="傳送檔案..."-->
+		<!--item id="ID_CHAT_SEND_FILE" text="傳送檔案…"-->
 		<item id="ID_CHAT_PRIORITY" text="准予優先權"/>
 		<separator/>
 		<menu text="格式">
@@ -1586,7 +1587,7 @@
 		<menu text="Actions">
 			<item id="ID_IRC_TIME" text="时间"/>
 			<item id="ID_IRC_VERSION" text="版本"/>
-			<item id="ID_IRC_BROWSE" text="_Browse (G2)"/>
+			<item id="ID_IRC_BROWSE" text="瀏覽 (G2)"/>
 		</menu>
 		<separator/>
 		<menu text="Control">
@@ -1658,7 +1659,7 @@
 			<newline gap="8" indent="42"/>
 			<text color="FF0000">Envy 偵測到你受到 NAT 路由器或是防火牆的保護,
 			所以無法由網際網路接收到連線&#160;</text>
-			<text color="FF0000" format="b">這可能導致不良的下載效能.</text>
+			<text color="FF0000" format="b">這可能導致不良的下載效能。</text>
 			<newline gap="6"/>
 			<link target="command:ID_HELP_ROUTER">點選這裡學習如何設定您的路由器或是防火牆</link>
 			<newline gap="18" indent="0"/>
@@ -1691,7 +1692,7 @@
 			<icon res="120" width="32" height="32" target="command:ID_TOOLS_SETTINGS"/><gap size="8"/>
 			<heading align="middle">遠端 監控 已啟用</heading>
 			<newline gap="8" indent="42"/>
-			<text>Envy 遠端監控已啟用. 在這裡使用您的瀏覽器操控 Envy:</text>
+			<text>Envy 遠端監控已啟用。 在這裡使用您的瀏覽器操控 Envy:</text>
 			<newline gap="6"/>
 			<link id="RemoteAccessURL"/>
 			<text>&#160;- 或 -&#160;</text>
@@ -1710,7 +1711,7 @@
 		<icon group="20" command="ID_NETWORK_G2"/>
 		<text group="20" align="middle" format="b">&#160;Gnutella2: </text>
 		<text group="21" align="middle">已中斷連線</text>
-		<text group="22" align="middle">連線中...</text>
+		<text group="22" align="middle">連線中…</text>
 		<text group="23" align="middle">已連線</text>
 		<text group="24" align="middle" id="G2Hubs">%i 結點</text>
 		<text group="25" align="middle" id="G2Leaves">%i 葉結點</text>
@@ -1718,7 +1719,7 @@
 		<icon group="10" command="ID_NETWORK_G1"/>
 		<text group="10" align="middle" format="b">&#160;Gnutella: </text>
 		<text group="11" align="middle">已中斷連線</text>
-		<text group="12" align="middle">連線中...</text>
+		<text group="12" align="middle">連線中…</text>
 		<text group="13" align="middle">已連線</text>
 		<text group="14" align="middle" id="G1Hubs">%i 結點</text>
 		<text group="15" align="middle" id="G1Leaves">%i 葉結點</text>
@@ -1726,14 +1727,14 @@
 		<icon group="30" command="ID_NETWORK_ED2K"/>
 		<text group="30" align="middle" format="b">&#160;eDonkey: </text>
 		<text group="31" align="middle">已中斷連線</text>
-		<text group="32" align="middle">連線中...</text>
+		<text group="32" align="middle">連線中…</text>
 		<text group="33" align="middle">已連線</text>
 		<text group="34" align="middle" id="EDServers">%i 伺服器</text>
 		<newline group="30" gap="2"/>
 		<icon group="60" command="ID_NETWORK_DC"/>
 		<text group="60" align="middle" format="b">&#160;DC++: &#160; </text>
 		<text group="61" align="middle">已中斷連線</text>
-		<text group="62" align="middle">連線中...</text>
+		<text group="62" align="middle">連線中…</text>
 		<text group="63" align="middle">已連線</text>
 		<text group="64" align="middle" id="DCHubs">%i 結點</text>
 		<newline group="60" gap="2"/>
@@ -1765,7 +1766,7 @@
 				<newline gap="8"/>
 				<text>Envy 正在掃瞄並且處理 </text>
 				<text id="LibraryHashRemaining" format="b">%lu個</text>
-				<text>檔案.</text>
+				<text>檔案。</text>
 				<newline gap="8"/>
 			</group>
 			<group id="3">
@@ -1810,51 +1811,51 @@
 		</para>
 	</document>
 	<!-- Settings Pages -->
-	<document name="CGeneralSettingsGroup" title="General" leftMargin="8" topMargin="8">
+	<document name="CGeneralSettingsGroup" title="一般" leftMargin="8" topMargin="8">
 		<text format="b">歡迎使用 Envy 的設定管理員</text>
 		<newline gap="16"/>
 		<text>Envy 設定管理員讓進階使用者完全地自訂 Envy 的運作方式
-			以下的部分是用來自訂 </text>
+		以下的部分是用來自訂 </text>
 		<text format="b">一般 </text>
-		<text>使用者的習慣.</text>
+		<text>使用者的習慣。</text>
 		<newline gap="16" indent="16"/>
 		<link target="page:CGeneralSettingsPage" format="b">一般:</link>
-		<text>&#160;常用使用者介面, 像是工具提示, 最小化的運作方式, 數值格式, 提示, 等等...</text>
+		<text>&#160;常用使用者介面, 像是工具提示, 最小化的運作方式, 數值格式, 提示, 等等…</text>
 		<newline gap="10"/>
 		<link target="page:CLibrarySettingsPage" format="b">收藏:</link>
-		<text>&#160;管理與顯示檔案收藏, 檔案開啟.</text>
+		<text>&#160;管理與顯示檔案收藏, 檔案開啟。</text>
 		<newline gap="10"/>
 		<link target="page:CMediaSettingsPage" format="b">多媒體播放程式:</link>
-		<text>&#160;何時何處使用內建的Envy 多媒體結點.</text>
+		<text>&#160;何時何處使用內建的Envy 多媒體結點。</text>
 		<newline gap="10"/>
 		<link target="page:CIRCSettingsPage" format="b">IRC:</link>
-		<text>&#160;IRC.</text>
+		<text>&#160;IRC。</text>
 		<newline gap="10"/>
 		<link target="page:CCommunitySettingsPage" format="b">社群:</link>
-		<text>&#160;您的個人檔案, 聊天與即時通訊的設定.</text>
+		<text>&#160;您的個人檔案, 聊天與即時通訊的設定。</text>
 		<newline gap="10"/>
 		<link target="page:CRemoteSettingsPage" format="b">遙控:</link>
-		<text>&#160;有關經由瀏覽器遠端操控 Envy 的設定.</text>
+		<text>&#160;有關經由瀏覽器遠端操控 Envy 的設定。</text>
 		<newline gap="10"/>
 		<link target="page:CWebSettingsPage" format="b">網際網路:</link>
-		<text>&#160;Envy 崁入您的瀏覽器, 處理 P2P 連結與下載內容.</text>
+		<text>&#160;Envy 崁入您的瀏覽器, 處理 P2P 連結與下載內容。</text>
 	</document>
 	<document name="CInternetSettingsGroup" title="Internet" leftMargin="8" topMargin="8">
 		<text format="b">歡迎使用 Envy 的設定管理員</text>
 		<newline gap="16"/>
-		<text>Envy 設定管理員讓使用者完全地自訂 Envy 的運作方式.
-			這個設定讓您 </text>
+		<text>Envy 設定管理員讓使用者完全地自訂 Envy 的運作方式。
+		這個設定讓您 </text>
 		<text format="b">網際網路 </text>
-		<text>在分散式 P2P 網路中 Envy 如何與其他結點互動.</text>
+		<text>在分散式 P2P 網路中 Envy 如何與其他結點互動。</text>
 		<newline gap="16" indent="16"/>
 		<link target="page:CConnectionSettingsPage" format="b">連線:</link>
-		<text>&#160;網際網路的速度與性能.</text>
+		<text>&#160;網際網路的速度與性能。</text>
 		<newline gap="10"/>
 		<link target="page:CDownloadsSettingsPage" format="b">下載:</link>
-		<text>&#160;下載總處理能力, 預定表, 驗證, 逾時與管理.</text>
+		<text>&#160;下載總處理能力, 預定表, 驗證, 逾時與管理。</text>
 		<newline gap="10"/>
 		<link target="page:CUploadsSettingsPage" format="b">上傳:</link>
-		<text>&#160;上傳性能 , 排隊等候, 封鎖, 逾時與特別要求.</text>
+		<text>&#160;上傳性能 , 排隊等候, 封鎖, 逾時與特別要求。</text>
 	</document>
 	<!-- Browse User Profile -->
 	<document name="CBrowseHostProfile.1">
@@ -1988,338 +1989,338 @@
 	<document name="DownloadHelp.Select">
 		<text format="b">下載區域</text>
 		<newline gap="8"/>
-		<text>這裡顯示目前正在下載的檔案. 想要檢視來源的話, 點選任何一個檔案左側的 + 就可展開來源.</text>
+		<text>這裡顯示目前正在下載的檔案。 想要檢視來源的話, 點選任何一個檔案左側的 + 就可展開來源。</text>
 		<newline gap="8"/>
-		<text>You can also use this command to get help information on a specific download.
-		Simply select a download and choose this command again.</text>
+		<text>您可以藉由點選下載項目中的說明選項再次開啟這個說明訊息。</text>
 	</document>
 	<document name="DownloadHelp.Completed">
 		<text format="b">這個下載已經完成</text>
 		<newline gap="8"/>
-		<text>Envy 已經完成下載這個檔案並確認檔案完整無誤. 檔案已經移至下載資料夾.</text>
+		<text>Envy 已經完成下載這個檔案並確認檔案完整無誤。 檔案已經移至下載資料夾。</text>
 	</document>
 	<document name="DownloadHelp.Moving">
 		<text format="b">正在移動這個下載</text>
 		<newline gap="8"/>
-		<text>Envy 已經完成下載這個檔案, 而且驗證結果無誤. 正在移動檔案/解壓縮檔案至下載資料夾.</text>
+		<text>Envy 已經完成下載這個檔案, 而且驗證結果無誤。 正在移動檔案/解壓縮檔案至下載資料夾。</text>
 	</document>
 	<document name="DownloadHelp.Paused">
 		<text format="b">已暫停這個下載</text>
 		<newline gap="8"/>
-		<text>您已經暫停這個下載了. 如果您要繼續下載, 請點選 '</text><text format="b">繼續下載</text><text>'.</text>
+		<text>您已經暫停這個下載了。 如果您要繼續下載, 請點選 '</text><text format="b">繼續下載</text><text>'。</text>
 	</document>
 	<document name="DownloadHelp.DiskFull">
 		<text format="b">磁碟空間已滿</text>
 		<newline gap="8"/>
-		<text>Envy 已經自動暫停這個下載, 因為硬碟空間已滿, 或是下載檔案不能寫入. 如果您要繼續下載, 請空出硬碟空間以及確認未完成檔案資料夾不是唯讀, 然後繼續下載.</text>
+		<text>Envy 已經自動暫停這個下載, 因為硬碟空間已滿, 或是下載檔案不能寫入。 如果您要繼續下載, 請空出硬碟空間以及確認未完成檔案資料夾不是唯讀, 然後繼續下載。</text>
 	</document>
 	<document name="DownloadHelp.Verifying">
 		<text format="b">正在驗證這個下載</text>
 		<newline gap="8"/>
-		<text>這個下載已完成; Envy 正在檢查檔案的完整性. 如果找到任何損壞的部分, Envy 會自動修復它.</text>
+		<text>這個下載已完成; Envy 正在檢查檔案的完整性。 如果找到任何損壞的部分, Envy 會自動修復它。</text>
 	</document>
 	<document name="DownloadHelp.Downloading">
 		<text format="b">這個下載正在活躍中!</text>
 		<newline gap="8"/>
-		<text>下載進行中. 下載太慢的話, 可以嘗試這個命令 '</text>
-		<text format="b">尋找更多來源</text><text>'. 如果速度沒有任何改善, 可能是因為您嘗試下載的用戶限制上傳速度. 下載速度通常隨著時間流逝而增加.</text>
+		<text>下載進行中。 下載太慢的話, 可以嘗試這個命令 '</text>
+		<text format="b">尋找更多來源</text><text>'。
+		如果速度沒有任何改善, 可能是因為您嘗試下載的用戶限制上傳速度。 下載速度通常隨著時間流逝而增加。</text>
 	</document>
 	<document name="DownloadHelp.Pending">
 		<text format="b">正在等待這個下載</text>
 		<newline gap="8"/>
-		<text>這個下載這正等待其他人開始上傳.
-		Envy 已經準備好下載這個檔案, 但是目前沒有人正在傳送它. 您可能排隊排在其他使用者的後面; 下載可能隨時開始傳輸. 您可以查看每一個來源, 看看您目前排在第幾個位子. 如果您也在分享檔案, 可能可以更快地開始下載.</text>
+		<text>這個下載這正等待其他人開始上傳。
+		Envy 已經準備好下載這個檔案, 但是目前沒有人正在傳送它。 您可能排隊排在其他使用者的後面; 下載可能隨時開始傳輸。 您可以查看每一個來源, 看看您目前排在第幾個位子。 如果您也在分享檔案, 可能可以更快地開始下載。</text>
 	</document>
 	<document name="DownloadHelp.Queued">
 		<text format="b">這個下載正在排隊中</text>
 		<newline gap="8"/>
-		<text>這個下載正在等待其他的下載完成.
-		您的下載設定限制同一個時間的最大活躍中的下載數量, 以確保每一個下載擁有足夠的頻寬. 您可以在設定頁面改變設定值.
-		或是您可以使用'繼續' 命令 手動開始這個下載.</text>
+		<text>這個下載正在等待其他的下載完成。
+		您的下載設定限制同一個時間的最大活躍中的下載數量, 以確保每一個下載擁有足夠的頻寬。 您可以在設定頁面改變設定值。
+		或是您可以使用'繼續' 命令 手動開始這個下載。</text>
 	</document>
 	<document name="DownloadHelp.Searching">
 		<text format="b">正在搜尋這個下載</text>
 		<newline gap="8"/>
-		<text>這個下載目前沒有已知的來源, 所以 Envy 正在搜尋所有已連線的 P2P 網路看看是否有可用的來源. 找到來源後, 下載會自動開始. Envy 自動地搜尋來源, 不過,
+		<text>這個下載目前沒有已知的來源, 所以 Envy 正在搜尋所有已連線的 P2P 網路看看是否有可用的來源。 找到來源後, 下載會自動開始。 Envy 自動地搜尋來源, 不過,
 		您可以加速這個程序, 只要使用</text>
-		<text format="b"> 尋找更多來源</text><text> 命令.</text>
+		<text format="b"> 尋找更多來源</text><text> 命令。</text>
 		<newline gap="8"/>
-		<text>天不如人意. 大部份的情況下, 可能沒有任何上線的使用者擁有你正在尋找的檔案. 您只能等待使用者上線, 或是取消它並另覓較為熱門的類似檔案.</text>
+		<text>天不如人意。 大部份的情況下, 可能沒有任何上線的使用者擁有你正在尋找的檔案。 您只能等待使用者上線, 或是取消它並另覓較為熱門的類似檔案。</text>
 	</document>
 	<document name="DownloadHelp.Creating">
 		<text format="b">正在製作這個下載</text>
 		<newline gap="8"/>
-		<text>Envy 正在預先分配用來儲存下載的檔案以在稍後節省時間.</text>
+		<text>Envy 正在預先分配用來儲存下載的檔案以在稍後節省時間。</text>
 	</document>
 	<document name="DownloadHelp.Tracker">
 		<text format="b">BitTorrent 伺服器故障</text>
 		<newline gap="8"/>
-		<text>這個下載的 BitTorrent 伺服器可能故障或是離線. Envy 無法聯絡它取得下載用戶的清單.</text>
+		<text>這個下載的 BitTorrent 伺服器可能故障或是離線。 Envy 無法聯絡它取得下載用戶的清單。</text>
 	</document>
 	<!-- Upload help documents -->
 	<document name="UploadHelp">
 		<text format="b">上傳區域</text>
 		<newline gap="8"/>
-		<text>這裡顯示上傳與排隊的情況. 您可以使用每一個排隊隊伍左側的 + 來展開; and filter what is displayed with the button on the
-		right of the window's toolbar.</text>
+		<text>這裡顯示上傳與排隊的情況。
+		您可以使用每一個排隊隊伍左側的 + 來展開，以及點選視窗工具列旁邊的按鈕來過濾想要顯示的項。</text>
 	</document>
 	<!-- General help documents -->
 	<document name="GeneralHelp.DiskSpace">
 		<text format="b">磁碟空間即將用盡</text>
 		<newline gap="8"/>
-		<text>在其中一個磁碟分區的空間已經即將用盡.</text>
+		<text>在其中一個磁碟分區的空間已經即將用盡。</text>
 		<newline gap="8"/>
-		<text>您應該總是保留適當的儲存空間. 如果空間已滿, 程式可能開始不穩定, 而且暫存檔案可能遺失. 請重組磁碟, 刪除不需要的檔案, 或是解除安裝不再需要的軟體.</text>
+		<text>您應該總是保留適當的儲存空間。 如果空間已滿, 程式可能開始不穩定, 而且暫存檔案可能遺失。 請重組磁碟, 刪除不需要的檔案, 或是解除安裝不再需要的軟體。</text>
 	</document>
 	<document name="GeneralHelp.DiskWriteFail">
 		<text format="b">需要的資料夾為唯讀屬性</text>
 		<newline gap="8"/>
-		<text>Envy 無法寫入至磁碟分區或是目錄.</text>
+		<text>Envy 無法寫入至磁碟分區或是目錄。</text>
 		<newline gap="8"/>
-		<text>網路磁碟可能已經斷線, 或是你沒有權限寫入至選擇的目錄. 請檢查目錄與權限, 或改變暫存檔的位置.</text>
+		<text>網路磁碟可能已經斷線, 或是你沒有權限寫入至選擇的目錄。 請檢查目錄與權限, 或改變暫存檔的位置。</text>
 	</document>
 	<document name="GeneralHelp.ConnectionFail">
 		<text format="b">網路連線已丟失</text>
 		<newline gap="8"/>
-		<text>Windows 回報沒有可用的網際網路連線.</text>
+		<text>Windows 回報沒有可用的網際網路連線。</text>
 		<newline gap="8"/>
-		<text>數據機 (modem) 或路由器 (router) 可能已經中斷, 意指不能連上網際網路. 您可能要手動重新連線或重設連線.</text>
+		<text>數據機 (modem) 或路由器 (router) 可能已經中斷, 意指不能連上網際網路。 您可能要手動重新連線或重設連線。</text>
 		<newline gap="8"/>
-		<text>Envy 已停止嘗試連線以避免失去所有已快取主機.</text>
+		<text>Envy 已停止嘗試連線以避免失去所有已快取主機。</text>
 	</document>
 	<document name="GeneralHelp.AdultFilter">
 		<text format="b">已啟用成人內容過濾</text>
 		<newline gap="8"/>
-		<text>請注意: 如同任何一種自動過濾程式, 這個過濾程式無法百分之百有效地過濾所有的內容. 這只是設計為過濾掉過多不想要的搜尋結果, 而不是百分之百的安全避難所.</text>
+		<text>請注意: 如同任何一種自動過濾程式, 這個過濾程式無法百分之百有效地過濾所有的內容。 這只是設計為過濾掉過多不想要的搜尋結果, 而不是百分之百的安全避難所。</text>
 		<newline gap="8"/>
-		<text>請家長時時監控小孩的上網活動(包括 P2P 檔案分享).</text>
+		<text>請家長時時監控小孩的上網活動(包括 P2P 檔案分享)。</text>
 	</document>
 	<document name="GeneralHelp.BadTorrentEncoding">
 		<text format="b">這個 torrent 可能編碼錯誤</text>
 		<newline gap="8"/>
-		<text>Windows 回報, 在解碼這個 torrent 的內含文字時發生轉譯錯誤. 這個 torrent 可能損壞, 或是錯誤地編碼了.
-		您仍然可以正確下載 torrent, 不過有些檔案名稱可能不正確.</text>
+		<text>Windows 回報, 在解碼這個 torrent 的內含文字時發生轉譯錯誤。 這個 torrent 可能損壞, 或是錯誤地編碼了。
+		您仍然可以正確下載 torrent, 不過有些檔案名稱可能不正確。</text>
 		<newline gap="8"/>
-		<text>大部分的 torrent 製作程式允許您修復這個 torrent, 讓它能夠正確地在所有的 BT 程式運作.</text>
+		<text>大部分的 torrent 製作程式允許您修復這個 torrent, 讓它能夠正確地在所有的 BT 程式運作。</text>
 		<newline gap="8"/>
 		<link target="http://getenvy.com/help/?torrentencoding">點選這裡取得更多說明</link>
-		<text>, 或是下載軟體修復 torrent.</text>
+		<text>, 或是下載軟體修復 torrent。</text>
 	</document>
 	<document name="GeneralHelp.DonkeyServerList">
 		<text format="b">您的 eDonkey 伺服器清單是空的</text>
 		<newline gap="8"/>
-		<text>您的 eDonkey2000 伺服器清單沒有任何包含任何伺服器. 您需要下載最新的伺服器清單(met 檔)才能連線至 ED2K.</text>
+		<text>您的 eDonkey2000 伺服器清單沒有任何包含任何伺服器。 您需要下載最新的伺服器清單(met 檔)才能連線至 ED2K。</text>
 		<newline gap="8"/>
-		<text>您可以到 ed2k 設定頁面下載伺服器清單, 或是揭示服務視窗. (請按 F9 開啟揭示服務視窗)</text>
+		<text>您可以到 ed2k 設定頁面下載伺服器清單, 或是揭示服務視窗。 (請按 F9 開啟揭示服務視窗)</text>
 	</document>
 	<document name="GeneralHelp.UploadWarning">
 		<text format="b">限制上傳速度有可能減低下載速度</text>
 		<newline gap="8"/>
-		<text>與 Envy 連線的網路, 很多強制使用者維持一定的分享率, 限制上傳至不分享的使用者, 或是僅僅偏好上傳至已知的分享者.</text>
+		<text>與 Envy 連線的網路, 很多強制使用者維持一定的分享率, 限制上傳至不分享的使用者, 或是僅僅偏好上傳至已知的分享者。</text>
 		<newline/>
-		<text>幸好, 寬頻 DSL 連線如同兩線道高速高路: 上傳與下載各自有自己的分配量. 如果您正確設定客戶端, 您能夠以不錯的速度上傳, 並且同時保持全速下載的能力.</text>
+		<text>幸好, 寬頻 DSL 連線如同兩線道高速高路: 上傳與下載各自有自己的分配量。 如果您正確設定客戶端, 您能夠以不錯的速度上傳, 並且同時保持全速下載的能力。</text>
 		<newline gap="8"/>
-		<text>您的上傳上限速度預設為 85% 的可用上傳頻寬, 並且不對下載速度做任何限制. 這樣的設定方式應該可以讓您以最高可用下載速度下載.</text>
+		<text>您的上傳上限速度預設為 85% 的可用上傳頻寬, 並且不對下載速度做任何限制。 這樣的設定方式應該可以讓您以最高可用下載速度下載。</text>
 	</document>
 	<!-- Search help documents -->
 	<document name="SearchHelp.BadSearch">
 		<text format="b">請重新修改搜尋字眼</text>
 		<newline gap="8"/>
-		<text>這個搜尋的格式不佳, 可能無法正常進行.
-		搜尋時, 盡可能使用多個詞, 並且指定一個檔案類型. 還有, 絕不要只打入數字或是負面語, 以及避免過於普通的詢問.</text>
+		<text>這個搜尋的格式不佳, 可能無法正常進行。
+		搜尋時, 盡可能使用多個詞, 並且指定一個檔案類型。 還有, 絕不要只打入數字或是負面語, 以及避免過於普通的詢問。</text>
 		<newline gap="8"/>
-		<text>幾乎所有在網路上的客戶端會忽略來自於其他人搜尋所有的 audio 檔, 因為這樣子不夠明確, 而且會產生太多搜尋結果.</text>
+		<text>幾乎所有在網路上的客戶端會忽略來自於其他人搜尋所有的 audio 檔, 因為這樣子不夠明確, 而且會產生太多搜尋結果。</text>
 	</document>
 	<!--
 	<document name="SearchHelp.BadSearch2">
 		<text format="b">請重新修改搜尋字眼</text>
 		<newline gap="8"/>
-		<text>這個搜尋無法正確進行, 因為沒有包含足夠的關鍵字. 想要開始搜尋, 您最少需要輸入一些有效的字母或是文字.</text>
+		<text>這個搜尋無法正確進行, 因為沒有包含足夠的關鍵字。 想要開始搜尋, 您最少需要輸入一些有效的字母或是文字。</text>
 		<newline gap="8"/>
-		<text>雖然您可以搜尋通用的檔案副檔名/延伸檔名(以及數字), 但是您也要一併輸入其他的關鍵字. Envy 在搜尋時忽略標點符號與萬用字元, 只使用您鍵入的文字.</text>
+		<text>雖然您可以搜尋通用的檔案副檔名/延伸檔名(以及數字), 但是您也要一併輸入其他的關鍵字。 Envy 在搜尋時忽略標點符號與萬用字元, 只使用您鍵入的文字。</text>
 	</document>
 	<document name="SearchHelp.BadSearch3">
 		<text format="b">請重新修改搜尋字眼</text>
 		<newline gap="8"/>
-		<text>這個搜尋僅僅包含通用檔案延伸 (副檔名), 或是不可用來搜尋的字眼.</text>
+		<text>這個搜尋僅僅包含通用檔案延伸 (副檔名), 或是不可用來搜尋的字眼。</text>
 		<newline gap="8"/>
-		<text>如果您進行搜尋時發生困難, 請記得網際網路搜尋也是這樣運作的. 最好使用特定單字或詞語, 像是獨一無二的名稱, 標題, 或是關鍵字.</text>
+		<text>如果您進行搜尋時發生困難, 請記得網際網路搜尋也是這樣運作的。 最好使用特定單字或詞語, 像是獨一無二的名稱, 標題, 或是關鍵字。</text>
 		<newline gap="8"/>
-		<text>過於一般性的單字可能無法有效率地搜尋, 加上可能降低搜尋效能, 引起搜尋時大量頻寬的消耗.</text>
+		<text>過於一般性的單字可能無法有效率地搜尋, 加上可能降低搜尋效能, 引起搜尋時大量頻寬的消耗。</text>
 		<newline gap="8"/>
-		<text>在 Envy 官方網站可以找到相關說明.</text>
+		<text>在 Envy 官方網站可以找到相關說明。</text>
 	</document>
 	-->
 	<document name="SearchHelp.AdultSearch">
 		<text format="b">無法開始進行這個搜尋動作</text>
 		<newline gap="8"/>
-		<text>您指定的搜尋字眼可能找到大量的成人內容, 而且在設定裡已經被停用了. 您應該重新修改字眼, 或是停用這個過濾.</text>
+		<text>您指定的搜尋字眼可能找到大量的成人內容, 而且在設定裡已經被停用了。 您應該重新修改字眼, 或是停用這個過濾。</text>
 		<newline gap="8"/>
-		<text>想要停用過濾的話, 請到工具 &gt; 設定 &gt; 一般, 然後取消勾選成人內容過濾.</text>
+		<text>想要停用過濾的話, 請到工具 &gt; 設定 &gt; 一般, 然後取消勾選成人內容過濾。</text>
 	</document>
 	<!-- Share help documents -->
 	<document name="ShareHelp.AlreadyShared">
 		<text format="b">已分享</text>
 		<newline gap="8"/>
-		<text>您選擇的資料夾已經是另一個現有分享的一部份.</text>
+		<text>您選擇的資料夾已經是另一個現有分享的一部份。</text>
 		<newline gap="8"/>
 		<text>%s</text>
 	</document>
 	<document name="ShareHelp.BadShare">
 		<text format="b">您不應該分享這個資料夾</text>
 		<newline gap="8"/>
-		<text>這個資料夾本身是(或是含有) 系統資料夾. 不建議您分享這個資料夾, 因為大部份的檔案對其他人來說毫無用處.</text>
+		<text>這個資料夾本身是(或是含有) 系統資料夾。 不建議您分享這個資料夾, 因為大部份的檔案對其他人來說毫無用處。</text>
 		<newline gap="8"/>
-		<text>Windows, Program Files, 或是其他類似的資料夾都不含任何適合分享的檔案. 所有您想要分享的檔案應該置於這些資料夾的子資料夾的</text><text format="i">裡面</text>
+		<text>Windows, Program Files, 或是其他類似的資料夾都不含任何適合分享的檔案。 所有您想要分享的檔案應該置於這些資料夾的子資料夾的</text><text format="i">裡面</text>
 		<newline gap="8"/>
-		<text>Envy '未完成' 資料夾不應該放在收藏裡與其他人分享, 因為為正在進行的下載切細可能影響效能.</text>
+		<text>Envy '未完成' 資料夾不應該放在收藏裡與其他人分享, 因為為正在進行的下載切細可能影響效能。</text>
 	</document>
 </documents>
-<!-- Localized Command Tip Text. "Message" displayed in status bar, "Tip" shown in tooltip -->
+<!-- Localized Command Tip Text。 "Message" displayed in status bar, "Tip" shown in tooltip -->
 <commandtips>
 	<tip id="ID_BROWSE_FILES" text="檢視使用者分享的檔案"/>
-	<tip id="ID_BROWSE_LAUNCH" text="瀏覽選擇的使用者的個人檔案與分享的檔案."/>
+	<tip id="ID_BROWSE_LAUNCH" text="瀏覽選擇的使用者的個人檔案與分享的檔案。"/>
 	<tip id="ID_BROWSE_PROFILE" text="瀏覽使用者的個人檔案"/>
-	<tip id="ID_BROWSE_REFRESH" text="重新整理這個主機上可用的檔案."/>
-	<tip id="ID_BROWSE_STOP" text="停止在這個主機瀏覽檔案."/>
+	<tip id="ID_BROWSE_REFRESH" text="重新整理這個主機上可用的檔案。"/>
+	<tip id="ID_BROWSE_STOP" text="停止在這個主機瀏覽檔案。"/>
 	<tip id="ID_CHAT_BOLD" text="套用粗體格式(Ctrl+B)"/>
-	<tip id="ID_CHAT_BROWSE" text="瀏覽使用者的個人檔案與分享的檔案."/>
-	<tip id="ID_CHAT_CLEAR" text="清除這個視窗的訊息文字."/>
+	<tip id="ID_CHAT_BROWSE" text="瀏覽使用者的個人檔案與分享的檔案。"/>
+	<tip id="ID_CHAT_CLEAR" text="清除這個視窗的訊息文字。"/>
 	<tip id="ID_CHAT_COLOR" text="選擇一個文字顏色(Ctrl+K)"/>
-	<tip id="ID_CHAT_CONNECT" text="連線至聊天會期."/>
-	<tip id="ID_CHAT_DISCONNECT" text="中斷聊天會期的連線."/>
+	<tip id="ID_CHAT_CONNECT" text="連線至聊天會期。"/>
+	<tip id="ID_CHAT_DISCONNECT" text="中斷聊天會期的連線。"/>
 	<tip id="ID_CHAT_EMOTICONS" text="插入表情符號"/>
 	<tip id="ID_CHAT_ITALIC" text="套用斜體格式 (Ctrl+I)"/>
-	<tip id="ID_CHAT_PRIORITY" text="給與這個使用者上傳的優先權."/>
-	<!--tip id="ID_CHAT_SEND_FILE" text="傳送檔案給這個使用者..."-->
-	<tip id="ID_CHAT_TIMESTAMP" text="在每一個收到的訊息旁顯示時間."/>
+	<tip id="ID_CHAT_PRIORITY" text="給與這個使用者上傳的優先權。"/>
+	<!--tip id="ID_CHAT_SEND_FILE" text="傳送檔案給這個使用者…"-->
+	<tip id="ID_CHAT_TIMESTAMP" text="在每一個收到的訊息旁顯示時間。"/>
 	<tip id="ID_CHAT_UNDERLINE" text="套用底線格式 (Ctrl+U)"/>
-	<tip id="ID_CHILD_CLOSE" text="關閉活躍中的視窗."/>
-	<tip id="ID_CHILD_MAXIMISE" text="放大活躍中的視窗填滿這個視窗."/>
-	<tip id="ID_CHILD_MINIMISE" text="將選擇的視窗最小化至標籤列."/>
-	<tip id="ID_CHILD_RESTORE" text="開啟選擇的視窗."/>
-	<tip id="ID_DISCOVERY_ADD" text="新增一個新的揭示服務..."/>
-	<tip id="ID_DISCOVERY_ADVERTISE" text="Advertise the selected GWebCache service to a random existing GWebCache."/>
-	<tip id="ID_DISCOVERY_BROWSE" text="Browse statistics for the selected GWebCache service on the Web."/>
-	<tip id="ID_DISCOVERY_EDIT" text="檢視選擇的揭示服務的屬性."/>
-	<tip id="ID_DISCOVERY_GNUTELLA" text="在揭示視窗顯示 bootstrap 服務."/>
-	<tip id="ID_DISCOVERY_QUERY" text="立刻詢問選擇的揭示服務."/>
-	<tip id="ID_DISCOVERY_REMOVE" text="移除選擇的揭示服務."/>
-	<tip id="ID_DISCOVERY_SERVERLIST" text="在揭示視窗顯示 eDonkey2000 Server.met 服務."/>
-	<tip id="ID_DISCOVERY_WEBCACHE" text="在揭示視窗顯示 Gweb 快取服務."/>
-	<tip id="ID_DOWNLOAD_GROUP_CLEAR" text="取消並且移除這個群組裡所有的下載."/>
-	<tip id="ID_DOWNLOAD_GROUP_NEW" text="新增一個下載群組..."/>
-	<tip id="ID_DOWNLOAD_GROUP_PAUSE" text="暫停這個群組裡所有的下載."/>
-	<tip id="ID_DOWNLOAD_GROUP_PROPERTIES" text="編輯選擇的下載群組的屬性."/>
-	<tip id="ID_DOWNLOAD_GROUP_REMOVE" text="移除選擇的下載群組."/>
-	<tip id="ID_DOWNLOAD_GROUP_RESUME" text="繼續這個群組裡所有的下載."/>
-	<tip id="ID_DOWNLOAD_GROUP_SHOW" text="顯示或隱藏下載群組列."/>
-	<tip id="ID_DOWNLOADS_AUTO_CLEAR" text="自動清除已經完成的下載."/>
-	<tip id="ID_DOWNLOADS_BOOST" text="藉由移除頻寬限制以加速選擇的下載."/>
-	<tip id="ID_DOWNLOADS_CLEAR" text="清除/移除選擇的下載."/>
-	<tip id="ID_DOWNLOADS_CLEAR_COMPLETE" text="由清單移除選擇的下載."/>
-	<tip id="ID_DOWNLOADS_CLEAR_COMPLETED" text="清除已完成的下載."/>
-	<tip id="ID_DOWNLOADS_CLEAR_INCOMPLETE" text="取消選擇的未完成下載."/>
-	<tip id="ID_DOWNLOADS_CLEAR_PAUSED" text="清除暫停中的下載."/>
-	<tip id="ID_DOWNLOADS_URI" text="複製選擇的檔案的 URI."/>
-	<tip id="ID_DOWNLOADS_EDIT" text="顯示進階下載介面編輯..."/>
-	<tip id="ID_DOWNLOADS_ENQUEUE" text="新增選擇的下載到您的多媒體播放清單."/>
-	<tip id="ID_DOWNLOADS_FILE_DELETE" text="刪除選擇的已完成檔案."/>
-	<tip id="ID_DOWNLOADS_FILTER_ACTIVE" text="顯示活躍中的下載."/>
-	<tip id="ID_DOWNLOADS_FILTER_ALL" text="顯示所有的下載."/>
-	<tip id="ID_DOWNLOADS_FILTER_MENU" text="選擇哪一類型的下載要顯示或隱藏."/>
-	<tip id="ID_DOWNLOADS_FILTER_PAUSED" text="顯示被暫停的下載."/>
-	<tip id="ID_DOWNLOADS_FILTER_QUEUED" text="顯示排隊中的下載."/>
-	<tip id="ID_DOWNLOADS_FILTER_SOURCES" text="顯示等待來源中的下載."/>
-	<tip id="ID_DOWNLOADS_HELP" text="檢視這個下載的說明資訊..."/>
-	<tip id="ID_DOWNLOADS_LAUNCH" text="Preview selected files in place."/>
-	<tip id="ID_DOWNLOADS_LAUNCH_COMPLETE" text="開啟或播放選擇的檔案."/>
-	<tip id="ID_DOWNLOADS_LAUNCH_COPY" text="聰明地預覽選擇的下載."/>
-	<tip id="ID_DOWNLOADS_MONITOR" text="為這個下載開啟一個下載監控視窗..."/>
-	<tip id="ID_DOWNLOADS_MOVE_DOWN" text="降低選擇的檔案的優先度."/>
-	<tip id="ID_DOWNLOADS_MOVE_UP" text="提升選擇的檔案的優先度."/>
-	<tip id="ID_DOWNLOADS_PAUSE" text="暫停選擇的下載."/>
-	<tip id="ID_DOWNLOADS_RATE" text="為選擇的下載評分."/>
-	<tip id="ID_DOWNLOADS_REMOTE_PREVIEW" text="Download preview image for the selected download."/>
-	<tip id="ID_DOWNLOADS_RESUME" text="繼續選擇的下載."/>
-	<tip id="ID_DOWNLOADS_SETTINGS" text="規劃下載設定..."/>
-	<tip id="ID_DOWNLOADS_SHARE" text="與其他使用者分享這個部份完成的檔案."/>
-	<tip id="ID_DOWNLOADS_SHOW_SOURCES" text="顯示目前沒有用到的來源."/>
-	<tip id="ID_DOWNLOADS_SOURCES" text="為選擇的下載搜尋更多的來源."/>
-	<!--tip id="ID_DOWNLOADS_TORRENT_INFO" text="檢視選擇的 BitTorrent 下載的資訊..."-->
-	<tip id="ID_DOWNLOADS_ADD_SOURCE" text="將來源的 URL 新增至選擇的下載..."/>
+	<tip id="ID_CHILD_CLOSE" text="關閉活躍中的視窗。"/>
+	<tip id="ID_CHILD_MAXIMISE" text="放大活躍中的視窗填滿這個視窗。"/>
+	<tip id="ID_CHILD_MINIMISE" text="將選擇的視窗最小化至標籤列。"/>
+	<tip id="ID_CHILD_RESTORE" text="開啟選擇的視窗。"/>
+	<tip id="ID_DISCOVERY_ADD" text="新增一個新的揭示服務…"/>
+	<tip id="ID_DISCOVERY_ADVERTISE" text="將選定的 GWebCache 服務公佈到隨機存在的 GWebCache。"/>
+	<tip id="ID_DISCOVERY_BROWSE" text="瀏覽網頁上所選取的 GWebCache 服務統計信息。"/>
+	<tip id="ID_DISCOVERY_EDIT" text="檢視選擇的揭示服務的屬性。"/>
+	<tip id="ID_DISCOVERY_GNUTELLA" text="在揭示視窗顯示 bootstrap 服務。"/>
+	<tip id="ID_DISCOVERY_QUERY" text="立刻詢問選擇的揭示服務。"/>
+	<tip id="ID_DISCOVERY_REMOVE" text="移除選擇的揭示服務。"/>
+	<tip id="ID_DISCOVERY_SERVERLIST" text="在揭示視窗顯示 eDonkey2000 Server.met 服務。"/>
+	<tip id="ID_DISCOVERY_WEBCACHE" text="在揭示視窗顯示 Gweb 快取服務。"/>
+	<tip id="ID_DOWNLOAD_GROUP_CLEAR" text="取消並且移除這個群組裡所有的下載。"/>
+	<tip id="ID_DOWNLOAD_GROUP_NEW" text="新增一個下載群組…"/>
+	<tip id="ID_DOWNLOAD_GROUP_PAUSE" text="暫停這個群組裡所有的下載。"/>
+	<tip id="ID_DOWNLOAD_GROUP_PROPERTIES" text="編輯選擇的下載群組的屬性。"/>
+	<tip id="ID_DOWNLOAD_GROUP_REMOVE" text="移除選擇的下載群組。"/>
+	<tip id="ID_DOWNLOAD_GROUP_RESUME" text="繼續這個群組裡所有的下載。"/>
+	<tip id="ID_DOWNLOAD_GROUP_SHOW" text="顯示或隱藏下載群組列。"/>
+	<tip id="ID_DOWNLOADS_AUTO_CLEAR" text="自動清除已經完成的下載。"/>
+	<tip id="ID_DOWNLOADS_BOOST" text="藉由移除頻寬限制以加速選擇的下載。"/>
+	<tip id="ID_DOWNLOADS_CLEAR" text="清除/移除選擇的下載。"/>
+	<tip id="ID_DOWNLOADS_CLEAR_COMPLETE" text="由清單移除選擇的下載。"/>
+	<tip id="ID_DOWNLOADS_CLEAR_COMPLETED" text="清除已完成的下載。"/>
+	<tip id="ID_DOWNLOADS_CLEAR_INCOMPLETE" text="取消選擇的未完成下載。"/>
+	<tip id="ID_DOWNLOADS_CLEAR_PAUSED" text="清除暫停中的下載。"/>
+	<tip id="ID_DOWNLOADS_URI" text="複製選擇的檔案的 URI。"/>
+	<tip id="ID_DOWNLOADS_EDIT" text="顯示進階下載介面編輯…"/>
+	<tip id="ID_DOWNLOADS_ENQUEUE" text="新增選擇的下載到您的多媒體播放清單。"/>
+	<tip id="ID_DOWNLOADS_FILE_DELETE" text="刪除選擇的已完成檔案。"/>
+	<tip id="ID_DOWNLOADS_FILTER_ACTIVE" text="顯示活躍中的下載。"/>
+	<tip id="ID_DOWNLOADS_FILTER_ALL" text="顯示所有的下載。"/>
+	<tip id="ID_DOWNLOADS_FILTER_MENU" text="選擇哪一類型的下載要顯示或隱藏。"/>
+	<tip id="ID_DOWNLOADS_FILTER_PAUSED" text="顯示被暫停的下載。"/>
+	<tip id="ID_DOWNLOADS_FILTER_QUEUED" text="顯示排隊中的下載。"/>
+	<tip id="ID_DOWNLOADS_FILTER_SOURCES" text="顯示等待來源中的下載。"/>
+	<tip id="ID_DOWNLOADS_HELP" text="檢視這個下載的說明資訊…"/>
+	<tip id="ID_DOWNLOADS_LAUNCH" text="預覽選取的檔案。"/>
+	<tip id="ID_DOWNLOADS_LAUNCH_COMPLETE" text="開啟或播放選擇的檔案。"/>
+	<tip id="ID_DOWNLOADS_LAUNCH_COPY" text="聰明地預覽選擇的下載。"/>
+	<tip id="ID_DOWNLOADS_MONITOR" text="為這個下載開啟一個下載監控視窗…"/>
+	<tip id="ID_DOWNLOADS_MOVE_DOWN" text="降低選擇的檔案的優先度。"/>
+	<tip id="ID_DOWNLOADS_MOVE_UP" text="提升選擇的檔案的優先度。"/>
+	<tip id="ID_DOWNLOADS_PAUSE" text="暫停選擇的下載。"/>
+	<tip id="ID_DOWNLOADS_RATE" text="為選擇的下載評分。"/>
+	<tip id="ID_DOWNLOADS_REMOTE_PREVIEW" text="下載選取檔案的預覽圖片。"/>
+	<tip id="ID_DOWNLOADS_RESUME" text="繼續選擇的下載。"/>
+	<tip id="ID_DOWNLOADS_SETTINGS" text="規劃下載設定…"/>
+	<tip id="ID_DOWNLOADS_SHARE" text="與其他使用者分享這個部份完成的檔案。"/>
+	<tip id="ID_DOWNLOADS_SHOW_SOURCES" text="顯示目前沒有用到的來源。"/>
+	<tip id="ID_DOWNLOADS_SOURCES" text="為選擇的下載搜尋更多的來源。"/>
+	<!--tip id="ID_DOWNLOADS_TORRENT_INFO" text="檢視選擇的 BitTorrent 下載的資訊…"-->
+	<tip id="ID_DOWNLOADS_ADD_SOURCE" text="將來源的 URL 新增至選擇的下載…"/>
 	<tip id="ID_DOWNLOADS_VIEW_REVIEWS" text="檢視選擇的下載的評論"/>
-	<tip id="ID_HELP_ABOUT" text="顯示 Envy 關於對話框..."/>
-	<tip id="ID_HELP_CODEC" text="各行各樣的 codec 與視訊問題."/>
-	<tip id="ID_HELP_FAQ" text="檢視 Envy 常見答客問."/>
-	<tip id="ID_HELP_ROUTER" text="取得設定路由器或是防火牆的說明."/>
-	<tip id="ID_HELP_FORUMS" text="訪問 Envy 討論區."/>
-	<tip id="ID_HELP_GUIDE" text="翻閱 Envy 使用指南."/>
-	<tip id="ID_HELP_HOMEPAGE" text="訪問 Envy 網站."/>
-	<tip id="ID_HELP_SECURITY" text="幫助您保護系統, 抵擋惡意程式."/>
-	<tip id="ID_HELP_UPDATE" text="查看最新消息與更新檔."/>
+	<tip id="ID_HELP_ABOUT" text="顯示 Envy 關於對話框…"/>
+	<tip id="ID_HELP_CODEC" text="各行各樣的 codec 與視訊問題。"/>
+	<tip id="ID_HELP_FAQ" text="檢視 Envy 常見答客問。"/>
+	<tip id="ID_HELP_ROUTER" text="取得設定路由器或是防火牆的說明。"/>
+	<tip id="ID_HELP_FORUMS" text="訪問 Envy 討論區。"/>
+	<tip id="ID_HELP_GUIDE" text="翻閱 Envy 使用指南。"/>
+	<tip id="ID_HELP_HOMEPAGE" text="訪問 Envy 網站。"/>
+	<tip id="ID_HELP_SECURITY" text="幫助您保護系統, 抵擋惡意程式。"/>
+	<tip id="ID_HELP_UPDATE" text="查看最新消息與更新檔。"/>
 	<tip id="ID_HELP_WEB_1" text="瀏覽這個網站"/>
 	<tip id="ID_HELP_WEB_2" text="瀏覽這個網站"/>
 	<tip id="ID_HELP_WEB_3" text="瀏覽這個網站"/>
 	<tip id="ID_HELP_WEB_4" text="瀏覽這個網站"/>
-	<tip id="ID_HITMONITOR_CLEAR" text="清除 搜尋回應監視器 的緩衝."/>
-	<tip id="ID_HITMONITOR_PAUSE" text="暫停 搜尋回應監視器."/>
+	<tip id="ID_HITMONITOR_CLEAR" text="清除 搜尋回應監視器 的緩衝。"/>
+	<tip id="ID_HITMONITOR_PAUSE" text="暫停 搜尋回應監視器。"/>
 	<tip id="ID_HITMONITOR_SEARCH" text="以選擇的詞句搜尋網路"/>
-	<tip id="ID_HOSTCACHE_CONNECT" text="連線至選擇的主機."/>
-	<tip id="ID_HOSTCACHE_DISCONNECT" text="與選擇的鄰居中斷連線."/>
-	<tip id="ID_HOSTCACHE_ED2K_CACHE" text="顯示 eDonkey2000 伺服器."/>
-	<tip id="ID_HOSTCACHE_FILE_DOWNLOAD" text="下載 eDonkey2000 &quot;server.met&quot; 檔..."/>
-	<tip id="ID_HOSTCACHE_G1_CACHE" text="顯示 Gnutella1 已快取的主機."/>
-	<tip id="ID_HOSTCACHE_G2_CACHE" text="顯示 Gnutella2 已快取的主機."/>
-	<tip id="ID_HOSTCACHE_G2_HORIZON" text="顯示 Gnutella2 horizon hubs."/>
-	<tip id="ID_HOSTCACHE_IMPORT" text="匯入已知主機清單, 像是 &quot;server.met&quot; 檔..."/>
-	<tip id="ID_HOSTCACHE_PRIORITY" text="請優先連線至這個伺服器."/>
-	<tip id="ID_HOSTCACHE_REMOVE" text="從主機快取移除選擇的主機."/>
-	<tip id="ID_LIBRARY_ADD" text="新增一個資料夾至您的收藏..."/>
-	<tip id="ID_LIBRARY_ALBUM_DELETE" text="刪除選擇的專輯資料夾."/>
-	<tip id="ID_LIBRARY_ALBUM_OPEN" text="開啟選擇的專輯資料夾."/>
-	<tip id="ID_LIBRARY_ALBUM_PROPERTIES" text="檢視與編輯選擇的專輯資料夾的屬性..."/>
-	<tip id="ID_LIBRARY_BITPRINTS_DOWNLOAD" text="正在從 Bitprints 為選擇的檔案下載解釋資料..."/>
-	<tip id="ID_LIBRARY_BITPRINTS_WEB" text="View the Bitprints ticket for the selected file on the web."/>
-	<tip id="ID_LIBRARY_COLUMNS" text="選擇要顯示的解釋資料欄位..."/>
-	<tip id="ID_LIBRARY_COPY" text="複製選擇的檔案至另一個收藏資料夾..."/>
-	<tip id="ID_LIBRARY_CREATETORRENT" text="為這個檔案建立 torrent 檔以上傳至網站."/>
-	<tip id="ID_LIBRARY_DELETE" text="永久刪除選擇的檔案."/>
-	<tip id="ID_LIBRARY_ENQUEUE" text="新增選擇的檔案至多媒體播放清單."/>
-	<tip id="ID_LIBRARY_EXPLORE" text="開啟選擇的資料夾."/>
-	<tip id="ID_LIBRARY_EXPORT_COLLECTION" text="匯出選擇的專輯資料夾至一個組檔..."/>
-	<tip id="ID_LIBRARY_FOLDER_DOWNLOAD" text="下載選擇的組檔裡所有的檔案."/>
-	<tip id="ID_LIBRARY_FOLDER_ENQUEUE" text="新增選擇的專輯裡所有的檔案到您的播放清單."/>
-	<tip id="ID_LIBRARY_FOLDER_EXPORT_COLLECTION" text="匯出選擇的專輯資料夾至組檔..."/>
-	<tip id="ID_LIBRARY_FOLDER_FILE_PROPERTIES" text="顯示並編輯選擇的資料夾裡所有檔案的屬性..."/>
-	<tip id="ID_LIBRARY_FOLDER_METADATA" text="將專輯資料夾的通用解釋資料套用至它內含的所有的檔案."/>
-	<tip id="ID_LIBRARY_FOLDER_NEW" text="在這裡新增一個新的專輯資料夾..."/>
-	<tip id="ID_LIBRARY_FOLDER_PROPERTIES" text="檢視與編輯選擇的專輯資料夾的屬性..."/>
-	<tip id="ID_LIBRARY_FOLDERS" text="管理您的收藏裡的實體資料夾..."/>
-	<tip id="ID_LIBRARY_HASH_PRIORITY" text="加快檔案掃瞄與切細的速度."/>
-	<tip id="ID_LIBRARY_LAUNCH" text="開啟或是播放選擇的檔案."/>
-	<tip id="ID_LIBRARY_MOVE" text="移動選擇的檔案至另一個收藏資料夾..."/>
-	<tip id="ID_LIBRARY_PANEL" text="顯示或隱藏收藏細節欄."/>
-	<tip id="ID_LIBRARY_PARENT" text="上移至母資料夾."/>
-	<tip id="ID_LIBRARY_PROPERTIES" text="顯示並編輯選擇的檔案的屬性..."/>
-	<tip id="ID_LIBRARY_REBUILD" text="為選擇的資料夾或是檔案重建解釋資料."/>
-	<tip id="ID_LIBRARY_REBUILD_FILE" text="為選擇的資料夾或是檔案重建解釋資料."/>
-	<tip id="ID_LIBRARY_REBUILD_ANSI" text="使用其他語言重建解釋資料."/>
-	<tip id="ID_LIBRARY_REFRESH" text="重新整理我的收藏."/>
-	<tip id="ID_LIBRARY_REMOVE" text="移除選擇的分享的資料夾."/>
-	<tip id="ID_LIBRARY_RENAME" text="重新命名選擇的檔案 in-place."/>
-	<tip id="ID_LIBRARY_SCAN" text="掃瞄選擇的資料夾或檔案, 偵測變動的地方."/>
-	<tip id="ID_LIBRARY_SEARCH" text="搜尋您的檔案收藏..."/>
-	<tip id="ID_LIBRARY_SEARCH_QUICK" text="搜尋您的檔案收藏..."/>
-	<tip id="ID_LIBRARY_SEED_TORRENT" text="在 BitTorrent 上為選擇的 Torrent 做種."/>
-	<tip id="ID_LIBRARY_SELECT_ALL" text="選擇並檢視您的收藏裡所有的資料夾."/>
-	<tip id="ID_LIBRARY_SHARED_FILE" text="分享或停止分享選擇的檔案."/>
-	<tip id="ID_LIBRARY_SHARED_FOLDER" text="分享或停止分享選擇的資料夾."/>
-	<tip id="ID_LIBRARY_TREE_PHYSICAL" text="檢視您的收藏的實體資料夾."/>
-	<tip id="ID_LIBRARY_TREE_VIRTUAL" text="整理您的收藏."/>
-	<tip id="ID_LIBRARY_UNLINK" text="從目前的專輯資料夾移除選擇的檔案."/>
-	<tip id="ID_LIBRARY_URI" text="複製選擇的檔案的 URI."/>
-	<tip id="ID_LIBRARY_VIEW" text="選擇收藏的檢視方式..."/>
+	<tip id="ID_HOSTCACHE_CONNECT" text="連線至選擇的主機。"/>
+	<tip id="ID_HOSTCACHE_DISCONNECT" text="與選擇的鄰居中斷連線。"/>
+	<tip id="ID_HOSTCACHE_ED2K_CACHE" text="顯示 eDonkey2000 伺服器。"/>
+	<tip id="ID_HOSTCACHE_FILE_DOWNLOAD" text="下載 eDonkey2000 &quot;server.met&quot; 檔…"/>
+	<tip id="ID_HOSTCACHE_G1_CACHE" text="顯示 Gnutella1 已快取的主機。"/>
+	<tip id="ID_HOSTCACHE_G2_CACHE" text="顯示 Gnutella2 已快取的主機。"/>
+	<tip id="ID_HOSTCACHE_G2_HORIZON" text="顯示 Gnutella2 horizon hubs。"/>
+	<tip id="ID_HOSTCACHE_IMPORT" text="匯入已知主機清單, 像是 &quot;server.met&quot; 檔…"/>
+	<tip id="ID_HOSTCACHE_PRIORITY" text="請優先連線至這個伺服器。"/>
+	<tip id="ID_HOSTCACHE_REMOVE" text="從主機快取移除選擇的主機。"/>
+	<tip id="ID_LIBRARY_ADD" text="新增一個資料夾至您的收藏…"/>
+	<tip id="ID_LIBRARY_ALBUM_DELETE" text="刪除選擇的專輯資料夾。"/>
+	<tip id="ID_LIBRARY_ALBUM_OPEN" text="開啟選擇的專輯資料夾。"/>
+	<tip id="ID_LIBRARY_ALBUM_PROPERTIES" text="檢視與編輯選擇的專輯資料夾的屬性…"/>
+	<tip id="ID_LIBRARY_BITPRINTS_DOWNLOAD" text="正在從 Bitprints 為選擇的檔案下載解釋資料…"/>
+	<tip id="ID_LIBRARY_BITPRINTS_WEB" text="View the Bitprints ticket for the selected file on the web。"/>
+	<tip id="ID_LIBRARY_COLUMNS" text="選擇要顯示的解釋資料欄位…"/>
+	<tip id="ID_LIBRARY_COPY" text="複製選擇的檔案至另一個收藏資料夾…"/>
+	<tip id="ID_LIBRARY_CREATETORRENT" text="為這個檔案建立 torrent 檔以上傳至網站。"/>
+	<tip id="ID_LIBRARY_DELETE" text="永久刪除選擇的檔案。"/>
+	<tip id="ID_LIBRARY_ENQUEUE" text="新增選擇的檔案至多媒體播放清單。"/>
+	<tip id="ID_LIBRARY_EXPLORE" text="開啟選擇的資料夾。"/>
+	<tip id="ID_LIBRARY_EXPORT_COLLECTION" text="匯出選擇的專輯資料夾至一個組檔…"/>
+	<tip id="ID_LIBRARY_FOLDER_DOWNLOAD" text="下載選擇的組檔裡所有的檔案。"/>
+	<tip id="ID_LIBRARY_FOLDER_ENQUEUE" text="新增選擇的專輯裡所有的檔案到您的播放清單。"/>
+	<tip id="ID_LIBRARY_FOLDER_EXPORT_COLLECTION" text="匯出選擇的專輯資料夾至組檔…"/>
+	<tip id="ID_LIBRARY_FOLDER_FILE_PROPERTIES" text="顯示並編輯選擇的資料夾裡所有檔案的屬性…"/>
+	<tip id="ID_LIBRARY_FOLDER_METADATA" text="將專輯資料夾的通用解釋資料套用至它內含的所有的檔案。"/>
+	<tip id="ID_LIBRARY_FOLDER_NEW" text="在這裡新增一個新的專輯資料夾…"/>
+	<tip id="ID_LIBRARY_FOLDER_PROPERTIES" text="檢視與編輯選擇的專輯資料夾的屬性…"/>
+	<tip id="ID_LIBRARY_FOLDERS" text="管理您的收藏裡的實體資料夾…"/>
+	<tip id="ID_LIBRARY_HASH_PRIORITY" text="加快檔案掃瞄與切細的速度。"/>
+	<tip id="ID_LIBRARY_LAUNCH" text="開啟或是播放選擇的檔案。"/>
+	<tip id="ID_LIBRARY_MOVE" text="移動選擇的檔案至另一個收藏資料夾…"/>
+	<tip id="ID_LIBRARY_PANEL" text="顯示或隱藏收藏細節欄。"/>
+	<tip id="ID_LIBRARY_PARENT" text="上移至母資料夾。"/>
+	<tip id="ID_LIBRARY_PROPERTIES" text="顯示並編輯選擇的檔案的屬性…"/>
+	<tip id="ID_LIBRARY_REBUILD" text="為選擇的資料夾或是檔案重建解釋資料。"/>
+	<tip id="ID_LIBRARY_REBUILD_FILE" text="為選擇的資料夾或是檔案重建解釋資料。"/>
+	<tip id="ID_LIBRARY_REBUILD_ANSI" text="使用其他語言重建解釋資料。"/>
+	<tip id="ID_LIBRARY_REFRESH" text="重新整理我的收藏。"/>
+	<tip id="ID_LIBRARY_REMOVE" text="移除選擇的分享的資料夾。"/>
+	<tip id="ID_LIBRARY_RENAME" text="重新命名選擇的檔案 in-place。"/>
+	<tip id="ID_LIBRARY_SCAN" text="掃瞄選擇的資料夾或檔案, 偵測變動的地方。"/>
+	<tip id="ID_LIBRARY_SEARCH" text="搜尋您的檔案收藏…"/>
+	<tip id="ID_LIBRARY_SEARCH_QUICK" text="搜尋您的檔案收藏…"/>
+	<tip id="ID_LIBRARY_SEED_TORRENT" text="在 BitTorrent 上為選擇的 Torrent 做種。"/>
+	<tip id="ID_LIBRARY_SELECT_ALL" text="選擇並檢視您的收藏裡所有的資料夾。"/>
+	<tip id="ID_LIBRARY_SHARED_FILE" text="分享或停止分享選擇的檔案。"/>
+	<tip id="ID_LIBRARY_SHARED_FOLDER" text="分享或停止分享選擇的資料夾。"/>
+	<tip id="ID_LIBRARY_TREE_PHYSICAL" text="檢視您的收藏的實體資料夾。"/>
+	<tip id="ID_LIBRARY_TREE_VIRTUAL" text="整理您的收藏。"/>
+	<tip id="ID_LIBRARY_UNLINK" text="從目前的專輯資料夾移除選擇的檔案。"/>
+	<tip id="ID_LIBRARY_URI" text="複製選擇的檔案的 URI。"/>
+	<tip id="ID_LIBRARY_VIEW" text="選擇收藏的檢視方式…"/>
 	<tip id="ID_LIBRARY_VIEW_ALBUM" text="以專輯檢視方式顯示" tip="專輯檢視方式"/>
 	<tip id="ID_LIBRARY_VIEW_COLLECTION" text="以豐富組檔檢視方式顯示" tip="組檔方式"/>
 	<tip id="ID_LIBRARY_VIEW_DETAIL" text="顯示檔案名稱, 詳細資料, 與解釋資料" tip="詳細資料顯示方式"/>
@@ -2328,165 +2329,165 @@
 	<tip id="ID_LIBRARY_VIEW_LIST" text="以清單方式顯示檔案" tip="清單"/>
 	<tip id="ID_LIBRARY_VIEW_THUMBNAIL" text="以縮圖方式顯示檔案" tip="縮圖"/>
 	<tip id="ID_LIBRARY_VIEW_TILE" text="顯示專輯資料夾清單" tip="Tile View"/>
-	<tip id="ID_MEDIA_ADD" text="新增一個多媒體檔案至播放清單..."/>
-	<tip id="ID_MEDIA_ADD_FOLDER" text="新增多媒體檔案的資料夾至播放清單..."/>
-	<tip id="ID_MEDIA_ASPECT_16_9" text="鎖定視訊檔至 16:9 長寬比, 適用於電影."/>
-	<tip id="ID_MEDIA_ASPECT_4_3" text="鎖定視訊檔至 4:3 長寬比, 適用於電視."/>
-	<tip id="ID_MEDIA_ASPECT_DEFAULT" text="使用這個視訊檔的預設長寬比."/>
-	<tip id="ID_MEDIA_CLEAR" text="清除 (空白的) 播放清單."/>
-	<tip id="ID_MEDIA_CLOSE" text="關閉目前的多媒體檔, 釋出記憶體資源."/>
-	<tip id="ID_MEDIA_EXPORT_COLLECTION" text="儲存播放清單為組檔..."/>
-	<tip id="ID_MEDIA_FULLSCREEN" text="開關全螢幕視訊模式."/>
+	<tip id="ID_MEDIA_ADD" text="新增一個多媒體檔案至播放清單…"/>
+	<tip id="ID_MEDIA_ADD_FOLDER" text="新增多媒體檔案的資料夾至播放清單…"/>
+	<tip id="ID_MEDIA_ASPECT_16_9" text="鎖定視訊檔至 16:9 長寬比, 適用於電影。"/>
+	<tip id="ID_MEDIA_ASPECT_4_3" text="鎖定視訊檔至 4:3 長寬比, 適用於電視。"/>
+	<tip id="ID_MEDIA_ASPECT_DEFAULT" text="使用這個視訊檔的預設長寬比。"/>
+	<tip id="ID_MEDIA_CLEAR" text="清除 (空白的) 播放清單。"/>
+	<tip id="ID_MEDIA_CLOSE" text="關閉目前的多媒體檔, 釋出記憶體資源。"/>
+	<tip id="ID_MEDIA_EXPORT_COLLECTION" text="儲存播放清單為組檔…"/>
+	<tip id="ID_MEDIA_FULLSCREEN" text="開關全螢幕視訊模式。"/>
 	<tip id="ID_MEDIA_MUTE" text="音訊播放靜音化"/>
-	<tip id="ID_MEDIA_NEXT" text="跳到這個播放清單的下一個檔案." tip="下一個檔案"/>
-	<tip id="ID_MEDIA_OPEN" text="開啟並播放多媒體檔或播放清單..."/>
-	<tip id="ID_MEDIA_PAUSE" text="暫停播放多媒體檔案." tip="暫停"/>
-	<tip id="ID_MEDIA_PLAY" text="停止播放目前的多媒體檔案." tip="播放"/>
-	<tip id="ID_MEDIA_PLAYLIST" text="顯示或隱藏播放清單編輯器."/>
-	<tip id="ID_MEDIA_PREVIOUS" text="回到這個播放清單的上一個檔案." tip="上一個檔案"/>
-	<tip id="ID_MEDIA_RANDOM" text="開關目前的播放清單的隨機模式."/>
-	<tip id="ID_MEDIA_REMOVE" text="由播放清單移除選擇的多媒體檔案."/>
-	<tip id="ID_MEDIA_REPEAT" text="重複播放目前的多媒體檔案."/>
-	<tip id="ID_MEDIA_SAVE" text="儲存目前的播放清單為檔案..."/>
-	<tip id="ID_MEDIA_SELECT" text="選擇並播放這個檔案."/>
-	<tip id="ID_MEDIA_SETTINGS" text="顯示多媒體設定頁面..."/>
-	<tip id="ID_MEDIA_SIZE_DISTORT" text="伸展這個視訊檔填滿整個視窗, 但有可能會失真."/>
-	<tip id="ID_MEDIA_SIZE_FILL" text="根據長寬比選擇這個視訊的最佳大小."/>
-	<tip id="ID_MEDIA_SIZE_ONE" text="以原始大小顯示這個視訊."/>
-	<tip id="ID_MEDIA_SIZE_HALF" text="以兩倍的原始大小的顯示這個視訊."/>
-	<tip id="ID_MEDIA_SIZE_TWO" text="以三倍的原始大小顯示這個視訊."/>
-	<tip id="ID_MEDIA_STATUS" text="顯示或隱藏多媒體狀態列."/>
-	<tip id="ID_MEDIA_STOP" text="停止播放多媒體檔案." tip="停止"/>
-	<tip id="ID_MEDIA_VIS" text="選擇一個音訊視覺效果外掛..."/>
-	<tip id="ID_MEDIA_ZOOM" text="調整視訊縮放與比例設定."/>
-	<tip id="ID_MONITOR_CLOSE" text="關閉監控視窗."/>
-	<tip id="ID_NEIGHBOURS_CHAT" text="與選擇的使用者開啟聊天會期."/>
-	<tip id="ID_NEIGHBOURS_URI" text="Copy a URI to access the selected host."/>
-	<tip id="ID_NEIGHBOURS_DISCONNECT" text="與選擇的鄰居中斷連線."/>
-	<tip id="ID_NEIGHBOURS_SETTINGS" text="規劃網路設定..."/>
-	<tip id="ID_NEIGHBOURS_VIEW_ALL" text="開啟新的封包傾印視窗用於監視這個鄰居."/>
-	<tip id="ID_NEIGHBOURS_VIEW_INCOMING" text="開啟一個新的封包傾印視窗用於監控來自於這個鄰居的輸入流量."/>
-	<tip id="ID_NEIGHBOURS_VIEW_OUTGOING" text="開啟一個新的封包傾印視窗用於監控輸出至這個鄰居的流量."/>
-	<tip id="ID_NETWORK_AUTO_CLOSE" text="在傳輸完成後自動關閉 Envy."/>
-	<tip id="ID_NETWORK_BROWSE_TO" text="瀏覽一位使用者, 顯示他們的個人檔案與分享的檔案..."/>
-	<tip id="ID_NETWORK_CONNECT" text="連線至網路."/>
-	<tip id="ID_NETWORK_CONNECT_TO" text="手動連線至主機..."/>
-	<tip id="ID_NETWORK_DISCONNECT" text="與網路中斷連線."/>
+	<tip id="ID_MEDIA_NEXT" text="跳到這個播放清單的下一個檔案。" tip="下一個檔案"/>
+	<tip id="ID_MEDIA_OPEN" text="開啟並播放多媒體檔或播放清單…"/>
+	<tip id="ID_MEDIA_PAUSE" text="暫停播放多媒體檔案。" tip="暫停"/>
+	<tip id="ID_MEDIA_PLAY" text="停止播放目前的多媒體檔案。" tip="播放"/>
+	<tip id="ID_MEDIA_PLAYLIST" text="顯示或隱藏播放清單編輯器。"/>
+	<tip id="ID_MEDIA_PREVIOUS" text="回到這個播放清單的上一個檔案。" tip="上一個檔案"/>
+	<tip id="ID_MEDIA_RANDOM" text="開關目前的播放清單的隨機模式。"/>
+	<tip id="ID_MEDIA_REMOVE" text="由播放清單移除選擇的多媒體檔案。"/>
+	<tip id="ID_MEDIA_REPEAT" text="重複播放目前的多媒體檔案。"/>
+	<tip id="ID_MEDIA_SAVE" text="儲存目前的播放清單為檔案…"/>
+	<tip id="ID_MEDIA_SELECT" text="選擇並播放這個檔案。"/>
+	<tip id="ID_MEDIA_SETTINGS" text="顯示多媒體設定頁面…"/>
+	<tip id="ID_MEDIA_SIZE_DISTORT" text="伸展這個視訊檔填滿整個視窗, 但有可能會失真。"/>
+	<tip id="ID_MEDIA_SIZE_FILL" text="根據長寬比選擇這個視訊的最佳大小。"/>
+	<tip id="ID_MEDIA_SIZE_ONE" text="以原始大小顯示這個視訊。"/>
+	<tip id="ID_MEDIA_SIZE_HALF" text="以兩倍的原始大小的顯示這個視訊。"/>
+	<tip id="ID_MEDIA_SIZE_TWO" text="以三倍的原始大小顯示這個視訊。"/>
+	<tip id="ID_MEDIA_STATUS" text="顯示或隱藏多媒體狀態列。"/>
+	<tip id="ID_MEDIA_STOP" text="停止播放多媒體檔案。" tip="停止"/>
+	<tip id="ID_MEDIA_VIS" text="選擇一個音訊視覺效果外掛…"/>
+	<tip id="ID_MEDIA_ZOOM" text="調整視訊縮放與比例設定。"/>
+	<tip id="ID_MONITOR_CLOSE" text="關閉監控視窗。"/>
+	<tip id="ID_NEIGHBOURS_CHAT" text="與選擇的使用者開啟聊天會期。"/>
+	<tip id="ID_NEIGHBOURS_URI" text="複製選取主機的 URI。"/>
+	<tip id="ID_NEIGHBOURS_DISCONNECT" text="與選擇的鄰居中斷連線。"/>
+	<tip id="ID_NEIGHBOURS_SETTINGS" text="規劃網路設定…"/>
+	<tip id="ID_NEIGHBOURS_VIEW_ALL" text="開啟新的封包傾印視窗用於監視這個鄰居。"/>
+	<tip id="ID_NEIGHBOURS_VIEW_INCOMING" text="開啟一個新的封包傾印視窗用於監控來自於這個鄰居的輸入流量。"/>
+	<tip id="ID_NEIGHBOURS_VIEW_OUTGOING" text="開啟一個新的封包傾印視窗用於監控輸出至這個鄰居的流量。"/>
+	<tip id="ID_NETWORK_AUTO_CLOSE" text="在傳輸完成後自動關閉 Envy。"/>
+	<tip id="ID_NETWORK_BROWSE_TO" text="瀏覽一位使用者, 顯示他們的個人檔案與分享的檔案…"/>
+	<tip id="ID_NETWORK_CONNECT" text="連線至網路。"/>
+	<tip id="ID_NETWORK_CONNECT_TO" text="手動連線至主機…"/>
+	<tip id="ID_NETWORK_DISCONNECT" text="與網路中斷連線。"/>
 	<tip id="ID_NETWORK_EXIT" text="離開 Envy"/>
-	<tip id="ID_NETWORK_ED2K" text="連線至 eDonkey2000 網路."/>
-	<tip id="ID_NETWORK_DC" text="連線至 DC++ 網路."/>
-	<tip id="ID_NETWORK_BT" text="連線至 BitTorrent 網路."/>
-	<tip id="ID_NETWORK_G1" text="連線至原始的 Gnutella 網路."/>
-	<tip id="ID_NETWORK_G2" text="連縣至 Gnutella2 網路 (強烈建議)."/>
-	<tip id="ID_NETWORK_SEARCH" text="在這個網路上開始新的搜尋..."/>
-	<tip id="ID_SEARCH_CHAT" text="與選擇的使用者開啟聊天會期."/>
-	<tip id="ID_SEARCH_CLEAR" text="清除搜尋結果."/>
-	<tip id="ID_SEARCH_COLUMNS" text="選擇要顯示的解釋資料欄位..."/>
-	<tip id="ID_SEARCH_URI" text="複製選擇的檔案的 URI."/>
-	<tip id="ID_SEARCH_DETAILS" text="顯示被選擇的檔案的詳細資訊."/>
-	<tip id="ID_SEARCH_DOWNLOAD" text="下載選擇的檔案."/>
-	<tip id="ID_SEARCH_DOWNLOADNOW" text="優先下載選擇的檔案."/>
-	<tip id="ID_SEARCH_FILTER" text="根據特定字眼與條件過濾搜尋結果..."/>
-	<tip id="ID_SEARCH_FILTER_RAW" text="使用特定條件與字眼過濾搜尋結果..."/>
-	<tip id="ID_SEARCH_FILTER_REMOVE" text="顯示被過濾的搜尋結果."/>
-	<tip id="ID_SEARCH_FOR_ALBUM" text="搜尋與選擇的檔案歸類為同一個專輯的音樂檔."/>
-	<tip id="ID_SEARCH_FOR_ARTIST" text="搜尋與選擇的檔案歸類為同一個作家的音樂檔."/>
-	<tip id="ID_SEARCH_FOR_SERIES" text="搜尋與選擇的檔案歸類為同一個系列的影片檔."/>
-	<tip id="ID_SEARCH_FOR_SIMILAR" text="搜尋與選擇的檔案相似的檔案."/>
-	<tip id="ID_SEARCH_FOR_THIS" text="搜尋選擇的檔案的複製件."/>
-	<tip id="ID_SEARCH_PANEL" text="在搜尋視窗左側顯示快速搜尋欄."/>
-	<tip id="ID_SEARCH_SEARCH" text="再次搜尋網路..."/>
-	<tip id="ID_SEARCH_STOP" text="停止在這個視窗接收搜尋結果."/>
-	<tip id="ID_SEARCHMONITOR_CLEAR" text="清除 search monitor 緩衝."/>
-	<tip id="ID_SEARCHMONITOR_PAUSE" text="暫停搜尋要求監控."/>
-	<tip id="ID_SECURITY_BAN" text="封鎖選擇的主機直到會期結束."/>
-	<tip id="ID_SECURITY_ADD" text="添加新的规则到选定的安全链..."/>
-	<tip id="ID_SECURITY_EDIT" text="編輯選擇的安全性規則..."/>
-	<tip id="ID_SECURITY_EXPORT" text="匯出選擇的安全性規則至檔案..."/>
-	<tip id="ID_SECURITY_IMPORT" text="從檔案匯入安全性規則..."/>
-	<tip id="ID_SECURITY_MOVE_DOWN" text="降低選擇的安全性規則的優先權."/>
-	<tip id="ID_SECURITY_MOVE_UP" text="提升選擇的安全性規則的優先權."/>
-	<tip id="ID_SECURITY_POLICY_ACCEPT" text="將預設的安全性方針設定成接受所有的主機."/>
-	<tip id="ID_SECURITY_POLICY_DENY" text="將預設的安全性方針設定成拒絕所有的主機."/>
-	<tip id="ID_SECURITY_REMOVE" text="移除選擇的安全性規則."/>
-	<tip id="ID_SECURITY_RESET" text="重置选定规则的命中计数器."/>
-	<tip id="ID_SCHEDULER_ADD" text="添加新的规则到选定的安全链..."/>
-	<tip id="ID_SCHEDULER_EDIT" text="編輯選擇的安全性規則..."/>
-	<tip id="ID_SCHEDULER_ACTIVATE" text="從清單清除選擇的上傳."/>
+	<tip id="ID_NETWORK_ED2K" text="連線至 eDonkey2000 網路。"/>
+	<tip id="ID_NETWORK_DC" text="連線至 DC++ 網路。"/>
+	<tip id="ID_NETWORK_BT" text="連線至 BitTorrent 網路。"/>
+	<tip id="ID_NETWORK_G1" text="連線至原始的 Gnutella 網路。"/>
+	<tip id="ID_NETWORK_G2" text="連縣至 Gnutella2 網路 (強烈建議)。"/>
+	<tip id="ID_NETWORK_SEARCH" text="在這個網路上開始新的搜尋…"/>
+	<tip id="ID_SEARCH_CHAT" text="與選擇的使用者開啟聊天會期。"/>
+	<tip id="ID_SEARCH_CLEAR" text="清除搜尋結果。"/>
+	<tip id="ID_SEARCH_COLUMNS" text="選擇要顯示的解釋資料欄位…"/>
+	<tip id="ID_SEARCH_URI" text="複製選擇的檔案的 URI。"/>
+	<tip id="ID_SEARCH_DETAILS" text="顯示被選擇的檔案的詳細資訊。"/>
+	<tip id="ID_SEARCH_DOWNLOAD" text="下載選擇的檔案。"/>
+	<tip id="ID_SEARCH_DOWNLOADNOW" text="優先下載選擇的檔案。"/>
+	<tip id="ID_SEARCH_FILTER" text="根據特定字眼與條件過濾搜尋結果…"/>
+	<tip id="ID_SEARCH_FILTER_RAW" text="使用特定條件與字眼過濾搜尋結果…"/>
+	<tip id="ID_SEARCH_FILTER_REMOVE" text="顯示被過濾的搜尋結果。"/>
+	<tip id="ID_SEARCH_FOR_ALBUM" text="搜尋與選擇的檔案歸類為同一個專輯的音樂檔。"/>
+	<tip id="ID_SEARCH_FOR_ARTIST" text="搜尋與選擇的檔案歸類為同一個作家的音樂檔。"/>
+	<tip id="ID_SEARCH_FOR_SERIES" text="搜尋與選擇的檔案歸類為同一個系列的影片檔。"/>
+	<tip id="ID_SEARCH_FOR_SIMILAR" text="搜尋與選擇的檔案相似的檔案。"/>
+	<tip id="ID_SEARCH_FOR_THIS" text="搜尋選擇的檔案的複製件。"/>
+	<tip id="ID_SEARCH_PANEL" text="在搜尋視窗左側顯示快速搜尋欄。"/>
+	<tip id="ID_SEARCH_SEARCH" text="再次搜尋網路…"/>
+	<tip id="ID_SEARCH_STOP" text="停止在這個視窗接收搜尋結果。"/>
+	<tip id="ID_SEARCHMONITOR_CLEAR" text="清除 監控搜尋要求 緩衝。"/>
+	<tip id="ID_SEARCHMONITOR_PAUSE" text="暫停搜尋要求監控。"/>
+	<tip id="ID_SECURITY_BAN" text="封鎖選擇的主機直到會期結束。"/>
+	<tip id="ID_SECURITY_ADD" text="添加新的规则到选定的安全链…"/>
+	<tip id="ID_SECURITY_EDIT" text="編輯選擇的安全性規則…"/>
+	<tip id="ID_SECURITY_EXPORT" text="匯出選擇的安全性規則至檔案…"/>
+	<tip id="ID_SECURITY_IMPORT" text="從檔案匯入安全性規則…"/>
+	<tip id="ID_SECURITY_MOVE_DOWN" text="降低選擇的安全性規則的優先權。"/>
+	<tip id="ID_SECURITY_MOVE_UP" text="提升選擇的安全性規則的優先權。"/>
+	<tip id="ID_SECURITY_POLICY_ACCEPT" text="將預設的安全性方針設定成接受所有的主機。"/>
+	<tip id="ID_SECURITY_POLICY_DENY" text="將預設的安全性方針設定成拒絕所有的主機。"/>
+	<tip id="ID_SECURITY_REMOVE" text="移除選擇的安全性規則。"/>
+	<tip id="ID_SECURITY_RESET" text="重置选定规则的命中计数器。"/>
+	<tip id="ID_SCHEDULER_ADD" text="添加新的规则到选定的安全链…"/>
+	<tip id="ID_SCHEDULER_EDIT" text="編輯選擇的安全性規則…"/>
+	<tip id="ID_SCHEDULER_ACTIVATE" text="從清單清除選擇的上傳。"/>
 	<tip id="ID_SCHEDULER_DEACTIVATE" text="請選擇使用者介面:"/>
-	<tip id="ID_SCHEDULER_EXPORT" text="匯出選擇的安全性規則至檔案..."/>
-	<tip id="ID_SCHEDULER_IMPORT" text="從檔案匯入安全性規則..."/>
-	<tip id="ID_SCHEDULER_REMOVE" text="由清單移除選擇的下載."/>
-	<tip id="ID_SCHEDULER_REMOVE_ALL" text="Delete all scheduled tasks."/>
-	<tip id="ID_SYSTEM_CLEAR" text="清除狀態記錄."/>
-	<tip id="ID_SYSTEM_TIMESTAMP" text="為每一列附上時間郵戳."/>
-	<tip id="ID_SYSTEM_VERBOSE" text="顯示詳細系統活動記錄."/>
-	<tip id="ID_TAB_CONNECT" text="由網路連線或是中斷連線."/>
-	<!--tip id="ID_TAB_HELP" text="取得使用 Envy 的說明."-->
+	<tip id="ID_SCHEDULER_EXPORT" text="匯出選擇的安全性規則至檔案…"/>
+	<tip id="ID_SCHEDULER_IMPORT" text="從檔案匯入安全性規則…"/>
+	<tip id="ID_SCHEDULER_REMOVE" text="由清單移除選擇的下載。"/>
+	<tip id="ID_SCHEDULER_REMOVE_ALL" text="移除所有的預定工作。"/>
+	<tip id="ID_SYSTEM_CLEAR" text="清除狀態記錄。"/>
+	<tip id="ID_SYSTEM_TIMESTAMP" text="為每一列附上時間郵戳。"/>
+	<tip id="ID_SYSTEM_VERBOSE" text="顯示詳細系統活動記錄。"/>
+	<tip id="ID_TAB_CONNECT" text="由網路連線或是中斷連線。"/>
+	<!--tip id="ID_TAB_HELP" text="取得使用 Envy 的說明。"-->
 	<tip id="ID_TAB_HOME" text="回到 Envy 主頁"/>
-	<tip id="ID_TAB_LIBRARY" text="檢視與編輯您的本地收藏內容."/>
-	<tip id="ID_TAB_MEDIA" text="播放我的收藏裡的音訊與視訊檔案."/>
-	<tip id="ID_TAB_NETWORK" text="了解您連到網路的效能."/>
+	<tip id="ID_TAB_LIBRARY" text="檢視與編輯您的本地收藏內容。"/>
+	<tip id="ID_TAB_MEDIA" text="播放我的收藏裡的音訊與視訊檔案。"/>
+	<tip id="ID_TAB_NETWORK" text="了解您連到網路的效能。"/>
 	<tip id="ID_TAB_SEARCH" text="在這個網路上搜查可供下載的檔案"/>
-	<tip id="ID_TAB_TRANSFERS" text="監控您正在進行的下載與上傳."/>
-	<tip id="ID_TOOLS_DOWNLOAD" text="開始下載一個新的檔案或 BitTorrent torrent..."/>
-	<tip id="ID_TOOLS_LANGUAGE" text="請選擇Envy 使用的語言介面... (Select Language)"/>
-	<tip id="ID_TOOLS_PROFILE" text="編輯您的使用者個人檔案..."/>
-	<tip id="ID_TOOLS_RESKIN" text="重新整理並套用目前您選擇的外觀."/>
-	<tip id="ID_TOOLS_SEEDTORRENT" text="在 BitTorrent 為選擇的 Torrent 做種."/>
-	<tip id="ID_TOOLS_SETTINGS" text="規劃 Envy 設定..."/>
-	<tip id="ID_TOOLS_SKIN" text="選擇不同的外觀..."/>
-	<tip id="ID_TOOLS_WIZARD" text="開啟 Envy 快速啟動精靈..."/>
+	<tip id="ID_TAB_TRANSFERS" text="監控您正在進行的下載與上傳。"/>
+	<tip id="ID_TOOLS_DOWNLOAD" text="開始下載一個新的檔案或 BitTorrent torrent…"/>
+	<tip id="ID_TOOLS_LANGUAGE" text="請選擇Envy 使用的語言介面… (Select Language)"/>
+	<tip id="ID_TOOLS_PROFILE" text="編輯您的使用者個人檔案…"/>
+	<tip id="ID_TOOLS_RESKIN" text="重新整理並套用目前您選擇的外觀。"/>
+	<tip id="ID_TOOLS_SEEDTORRENT" text="在 BitTorrent 為選擇的 Torrent 做種。"/>
+	<tip id="ID_TOOLS_SETTINGS" text="規劃 Envy 設定…"/>
+	<tip id="ID_TOOLS_SKIN" text="選擇不同的外觀…"/>
+	<tip id="ID_TOOLS_WIZARD" text="開啟 Envy 快速啟動精靈…"/>
 	<tip id="ID_TRAFFIC_AXIS" text="顯示垂直軸線"/>
-	<tip id="ID_TRAFFIC_CLEAR" text="清除流量圖表."/>
-	<tip id="ID_TRAFFIC_GRID" text="顯示格線."/>
-	<tip id="ID_TRAFFIC_LEGEND" text="顯示圖解."/>
-	<tip id="ID_TRAFFIC_SETUP" text="選擇與規劃用於繪圖的項目..."/>
-	<tip id="ID_TRAFFIC_WINDOW" text="開啟新的圖表視窗..."/>
-	<tip id="ID_TRANSFERS_CHAT" text="與選擇的使用者開啟聊天會期."/>
-	<tip id="ID_TRANSFERS_CONNECT" text="讀取選擇的下載來源並嘗試下載."/>
-	<tip id="ID_TRANSFERS_DISCONNECT" text="將選擇的下載傳輸中斷連線."/>
-	<tip id="ID_TRANSFERS_FORGET" text="中斷連線並且忘卻所有的下載來源."/>
-	<tip id="ID_TRAY_OPEN" text="開啟 Envy 視窗."/>
-	<tip id="ID_UPLOADS_AUTO_CLEAR" text="自動清除已經完成的上傳."/>
-	<tip id="ID_UPLOADS_CHAT" text="與選擇的使用者開啟聊天會期."/>
-	<tip id="ID_UPLOADS_CLEAR" text="從清單清除選擇的上傳."/>
-	<tip id="ID_UPLOADS_CLEAR_COMPLETED" text="清除已完成上傳."/>
-	<tip id="ID_UPLOADS_DISCONNECT" text="將選擇的上傳傳輸中斷連線."/>
-	<tip id="ID_UPLOADS_FILTER_ACTIVE" text="顯示所有正在活躍地做種的上傳."/>
-	<tip id="ID_UPLOADS_FILTER_ALL" text="顯示所有的上傳."/>
-	<tip id="ID_UPLOADS_FILTER_HISTORY" text="顯示已經中斷連線的上傳."/>
-	<tip id="ID_UPLOADS_FILTER_MENU" text="請選擇哪一種上傳要顯示, 與哪一種上傳要隱藏."/>
-	<tip id="ID_UPLOADS_FILTER_QUEUED" text="顯示正在等待於您的排隊隊列的上傳."/>
-	<tip id="ID_UPLOADS_FILTER_TORRENT" text="顯示 BitTorrent 上傳."/>
-	<tip id="ID_UPLOADS_LAUNCH" text="啟動選擇的分享檔."/>
-	<tip id="ID_UPLOADS_SETTINGS" text="規劃上傳設定..."/>
-	<tip id="ID_UPLOADS_START" text="部隊開始選擇排隊上傳."/>
-	<tip id="ID_UPLOADS_PRIORITY" text="選擇一個上傳去除限制."/>
-	<tip id="ID_VIEW_BASIC" text="使用 Envy 的標準模式."/>
-	<tip id="ID_VIEW_DISCOVERY" text="顯示或隱藏揭示服務視窗."/>
-	<tip id="ID_VIEW_DOWNLOADS" text="顯示或隱藏 下載視窗."/>
-	<tip id="ID_VIEW_HOSTS" text="顯示或隱藏 主機快取視窗."/>
-	<tip id="ID_VIEW_LIBRARY" text="顯示或隱藏 收藏視窗."/>
-	<tip id="ID_VIEW_MEDIA" text="顯示或隱藏 多媒體播放程式視窗."/>
-	<tip id="ID_VIEW_NEIGHBOURS" text="顯示或隱藏 我的鄰居視窗."/>
-	<tip id="ID_VIEW_PACKETS" text="顯示或隱藏封包傾印視窗."/>
-	<tip id="ID_VIEW_RESULTS_MONITOR" text="顯示或隱藏 搜尋回應監視器 視窗."/>
-	<tip id="ID_VIEW_SEARCH_MONITOR" text="顯示或隱藏 SEARCH MONITOR 視窗."/>
-	<tip id="ID_VIEW_SECURITY" text="顯示或隱藏安全性視窗."/>
-	<tip id="ID_VIEW_SYSTEM" text="顯示或隱藏系統視窗."/>
-	<tip id="ID_VIEW_TABBED" text="使用 Envy 的進階標籤模式 (主頁, 收藏, 多媒體, 傳輸, 網路)."/>
-	<tip id="ID_VIEW_TRAFFIC" text="顯示或隱藏 圖表視窗."/>
-	<tip id="ID_VIEW_UPLOADS" text="顯示或隱藏 上傳視窗."/>
-	<tip id="ID_VIEW_WINDOWED" text="使用 Envy 的進階視窗模式."/>
-	<tip id="ID_WINDOW_CASCADE" text="擴大所有開啟的視窗填滿螢幕."/>
-	<tip id="ID_WINDOW_MONITOR" text="顯示或隱藏 頻寬監視器."/>
-	<tip id="ID_WINDOW_NAVBAR" text="顯示或隱藏 導覽列."/>
+	<tip id="ID_TRAFFIC_CLEAR" text="清除流量圖表。"/>
+	<tip id="ID_TRAFFIC_GRID" text="顯示格線。"/>
+	<tip id="ID_TRAFFIC_LEGEND" text="顯示圖解。"/>
+	<tip id="ID_TRAFFIC_SETUP" text="選擇與規劃用於繪圖的項目…"/>
+	<tip id="ID_TRAFFIC_WINDOW" text="開啟新的圖表視窗…"/>
+	<tip id="ID_TRANSFERS_CHAT" text="與選擇的使用者開啟聊天會期。"/>
+	<tip id="ID_TRANSFERS_CONNECT" text="讀取選擇的下載來源並嘗試下載。"/>
+	<tip id="ID_TRANSFERS_DISCONNECT" text="將選擇的下載傳輸中斷連線。"/>
+	<tip id="ID_TRANSFERS_FORGET" text="中斷連線並且忘卻所有的下載來源。"/>
+	<tip id="ID_TRAY_OPEN" text="開啟 Envy 視窗。"/>
+	<tip id="ID_UPLOADS_AUTO_CLEAR" text="自動清除已經完成的上傳。"/>
+	<tip id="ID_UPLOADS_CHAT" text="與選擇的使用者開啟聊天會期。"/>
+	<tip id="ID_UPLOADS_CLEAR" text="從清單清除選擇的上傳。"/>
+	<tip id="ID_UPLOADS_CLEAR_COMPLETED" text="清除已完成上傳。"/>
+	<tip id="ID_UPLOADS_DISCONNECT" text="將選擇的上傳傳輸中斷連線。"/>
+	<tip id="ID_UPLOADS_FILTER_ACTIVE" text="顯示所有正在活躍地做種的上傳。"/>
+	<tip id="ID_UPLOADS_FILTER_ALL" text="顯示所有的上傳。"/>
+	<tip id="ID_UPLOADS_FILTER_HISTORY" text="顯示已經中斷連線的上傳。"/>
+	<tip id="ID_UPLOADS_FILTER_MENU" text="請選擇哪一種上傳要顯示, 與哪一種上傳要隱藏。"/>
+	<tip id="ID_UPLOADS_FILTER_QUEUED" text="顯示正在等待於您的排隊隊列的上傳。"/>
+	<tip id="ID_UPLOADS_FILTER_TORRENT" text="顯示 BitTorrent 上傳。"/>
+	<tip id="ID_UPLOADS_LAUNCH" text="啟動選擇的分享檔。"/>
+	<tip id="ID_UPLOADS_SETTINGS" text="規劃上傳設定…"/>
+	<tip id="ID_UPLOADS_START" text="部隊開始選擇排隊上傳。"/>
+	<tip id="ID_UPLOADS_PRIORITY" text="選擇一個上傳去除限制。"/>
+	<tip id="ID_VIEW_BASIC" text="使用 Envy 的標準模式。"/>
+	<tip id="ID_VIEW_DISCOVERY" text="顯示或隱藏揭示服務視窗。"/>
+	<tip id="ID_VIEW_DOWNLOADS" text="顯示或隱藏 下載視窗。"/>
+	<tip id="ID_VIEW_HOSTS" text="顯示或隱藏 主機快取視窗。"/>
+	<tip id="ID_VIEW_LIBRARY" text="顯示或隱藏 收藏視窗。"/>
+	<tip id="ID_VIEW_MEDIA" text="顯示或隱藏 多媒體播放程式視窗。"/>
+	<tip id="ID_VIEW_NEIGHBOURS" text="顯示或隱藏 我的鄰居視窗。"/>
+	<tip id="ID_VIEW_PACKETS" text="顯示或隱藏封包傾印視窗。"/>
+	<tip id="ID_VIEW_RESULTS_MONITOR" text="顯示或隱藏 搜尋回應監視器 視窗。"/>
+	<tip id="ID_VIEW_SEARCH_MONITOR" text="顯示或隱藏 監控搜尋要求 視窗。"/>
+	<tip id="ID_VIEW_SECURITY" text="顯示或隱藏安全性視窗。"/>
+	<tip id="ID_VIEW_SYSTEM" text="顯示或隱藏系統視窗。"/>
+	<tip id="ID_VIEW_TABBED" text="使用 Envy 的進階標籤模式 (主頁, 收藏, 多媒體, 傳輸, 網路)。"/>
+	<tip id="ID_VIEW_TRAFFIC" text="顯示或隱藏 圖表視窗。"/>
+	<tip id="ID_VIEW_UPLOADS" text="顯示或隱藏 上傳視窗。"/>
+	<tip id="ID_VIEW_WINDOWED" text="使用 Envy 的進階視窗模式。"/>
+	<tip id="ID_WINDOW_CASCADE" text="擴大所有開啟的視窗填滿螢幕。"/>
+	<tip id="ID_WINDOW_MONITOR" text="顯示或隱藏 頻寬監視器。"/>
+	<tip id="ID_WINDOW_NAVBAR" text="顯示或隱藏 導覽列。"/>
 	<tip id="ID_WINDOW_REMOTE" text="顯示或隱藏 Envy 遙控器"/>
-	<tip id="ID_WINDOW_TABBAR" text="顯示或隱藏視窗標籤列."/>
-	<tip id="ID_WINDOW_TILE_HORZ" text="將開啟的視窗水平並排, 不重疊."/>
-	<tip id="ID_WINDOW_TILE_VERT" text="將開啟的視窗垂直並排, 不重疊."/>
-	<tip id="ID_WINDOW_TOOLBAR" text="顯示或隱藏工具列."/>
+	<tip id="ID_WINDOW_TABBAR" text="顯示或隱藏視窗標籤列。"/>
+	<tip id="ID_WINDOW_TILE_HORZ" text="將開啟的視窗水平並排, 不重疊。"/>
+	<tip id="ID_WINDOW_TILE_VERT" text="將開啟的視窗垂直並排, 不重疊。"/>
+	<tip id="ID_WINDOW_TOOLBAR" text="顯示或隱藏工具列。"/>
 </commandtips>
 <!-- Localized Strings -->
 <strings>
@@ -2523,7 +2524,7 @@
 	<string id="20011" text="自動"/>
 	<string id="20012" text="自訂"/>
 	<string id="20013" text="預設"/>
-	<string id="20019" text="请稍候..."/>
+	<string id="20019" text="请稍候…"/>
 	<string id="20020" text="文件"/>
 	<string id="20021" text="文件"/>
 	<string id="20022" text="所有的檔案"/>
@@ -2549,235 +2550,235 @@
 	<string id="20064" text="不錯(3)"/>
 	<string id="20065" text="很好(4)"/>
 	<string id="20066" text="極佳(5)"/>
-	<string id="20080" text="這是一個 Envy 的測試版. 測試期已經結束. 請從 http://getenvy.com/ 下載完整的官方版本."/>
+	<string id="20080" text="這是一個 Envy 的測試版。 測試期已經結束。 請從 http://getenvy.com 下載完整的官方版本。"/>
 	<string id="20081" text="關閉"/>
 	<string id="20082" text="完成, 請點選 關閉"/>
-	<string id="20083" text="要求..."/>
-	<string id="20084" text="成功."/>
-	<string id="20100" text="關閉至 %s 的瀏覽使用者連線."/>
-	<string id="20101" text="瀏覽主機 %s 發出不能辨識的回應, 而且可能不支援用戶/主機瀏覽."/>
-	<string id="20102" text="無法連線至主機, 因此無法瀏覽使用者."/>
-	<string id="20103" text="無法啟始連線至 %s , 因此無法瀏覽使用者."/>
-	<string id="20104" text="無法送出推播要求至 %s, 因此無法瀏覽使用者."/>
-	<string id="20105" text="正在對主機建立連線..."/>
-	<string id="20106" text="啟始連線至 %s 以瀏覽使用者..."/>
-	<string id="20107" text="正在下載瀏覽回應 (%2.f%%)..."/>
+	<string id="20083" text="要求…"/>
+	<string id="20084" text="成功。"/>
+	<string id="20100" text="關閉至 %s 的瀏覽使用者連線。"/>
+	<string id="20101" text="瀏覽主機 %s 發出不能辨識的回應, 而且可能不支援用戶/主機瀏覽。"/>
+	<string id="20102" text="無法連線至主機, 因此無法瀏覽使用者。"/>
+	<string id="20103" text="無法啟始連線至 %s , 因此無法瀏覽使用者。"/>
+	<string id="20104" text="無法送出推播要求至 %s, 因此無法瀏覽使用者。"/>
+	<string id="20105" text="正在對主機建立連線…"/>
+	<string id="20106" text="啟始連線至 %s 以瀏覽使用者…"/>
+	<string id="20107" text="正在下載瀏覽回應 (%2.f%%)…"/>
 	<string id="20108" text="正在從瀏覽主機 %s (%s) 接收內容"/>
-	<string id="20109" text="與 %s 的瀏覽使用者連線已忽略."/>
-	<string id="20110" text="完成瀏覽用戶 %s, 找到 %i 個檔案."/>
+	<string id="20109" text="與 %s 的瀏覽使用者連線已忽略。"/>
+	<string id="20110" text="完成瀏覽用戶 %s, 找到 %i 個檔案。"/>
 	<string id="20111" text="發現%i共享文件在%s的圖書館"/>
-	<string id="20112" text="瀏覽主機 %s 回應指令碼 %s (%s)."/>
-	<string id="20113" text="瀏覽主機 %s 送出了無效的 HTTP 回應."/>
-	<string id="20114" text="無法下載檔案清單. 這個主機不支援瀏覽."/>
-	<string id="20115" text="解碼來自於瀏覽主機 %s 的 Gnutella 封包時發生錯誤."/>
-	<string id="20116" text="送出推播要求, 等待連線中..."/>
-	<string id="20117" text="送出推播要求至 %s 以瀏覽使用者."/>
-	<string id="20118" text="已連線, 正在要求瀏覽..."/>
-	<string id="20119" text="傳送瀏覽使用者的要求至 %s..."/>
-	<string id="20120" text="正在關閉至 %s 的瀏覽使用者連線, 因為缺乏流量."/>
+	<string id="20112" text="瀏覽主機 %s 回應指令碼 %s (%s)。"/>
+	<string id="20113" text="瀏覽主機 %s 送出了無效的 HTTP 回應。"/>
+	<string id="20114" text="無法下載檔案清單。 這個主機不支援瀏覽。"/>
+	<string id="20115" text="解碼來自於瀏覽主機 %s 的 Gnutella 封包時發生錯誤。"/>
+	<string id="20116" text="送出推播要求, 等待連線中…"/>
+	<string id="20117" text="送出推播要求至 %s 以瀏覽使用者。"/>
+	<string id="20118" text="已連線, 正在要求瀏覽…"/>
+	<string id="20119" text="傳送瀏覽使用者的要求至 %s…"/>
+	<string id="20120" text="正在關閉至 %s 的瀏覽使用者連線, 因為缺乏流量。"/>
 	<string id="20121" text="瀏覽 %s"/>
-	<string id="20122" text="與 %s 的BitTorrent 耦合 已經為 &quot;%s&quot; 建立."/>
-	<string id="20123" text="來自於 %s 的輸入連線是 BitTorrent 耦合, 協商中..."/>
-	<string id="20124" text="正在啟始與 %s 的 BitTorrent 客戶端耦合..."/>
-	<string id="20125" text="連線到 BitTorrent 客戶端 %s 已逾時."/>
-	<string id="20126" text="與 %s 的 BitTorrent 耦合已忽略."/>
-	<string id="20127" text="至 %s 的 BitTorrent 連線已忽略."/>
-	<string id="20128" text="與 %s 的 BitTorrent 信號交換已忽略."/>
-	<string id="20129" text="與 %s 的 BitTorrent 耦合不被接受, 因為已連線至這個客戶端."/>
-	<string id="20130" text="%i 個新的 BitTorrent 來源: 由%s 接收到了."/>
-	<string id="20131" text="與 %s 的 BitTorrent 耦合 是一個延伸協定, 已辨認 &quot;%s&quot;."/>
-	<string id="20132" text="與 BitTorrent 客戶端 %s 信號交換已逾時."/>
-	<string id="20133" text="已建立與 %s 的BitTorrent 耦合, 信號交換中..."/>
-	<string id="20134" text="與 %s 的 BitTorrent 耦合不被接受, 因為已達到最大連線數."/>
-	<string id="20136" text="與 %s 的BitTorrent 耦合 要求了一個未知的檔案."/>
-	<string id="20137" text="與 %s 的 BitTorrent 耦合 回應了錯誤的檔案."/>
-	<string id="20138" text="與 %s 的 BitTorrent 耦合 失敗, 因為遠程客戶端有不同的用戶 ID."/>
-	<string id="20139" text="正在關閉與 %s 的 BitTorrent 耦合, 因為缺乏流量."/>
+	<string id="20122" text="與 %s 的BitTorrent 耦合 已經為 &quot;%s&quot; 建立。"/>
+	<string id="20123" text="來自於 %s 的輸入連線是 BitTorrent 耦合, 協商中…"/>
+	<string id="20124" text="正在啟始與 %s 的 BitTorrent 客戶端耦合…"/>
+	<string id="20125" text="連線到 BitTorrent 客戶端 %s 已逾時。"/>
+	<string id="20126" text="與 %s 的 BitTorrent 耦合已忽略。"/>
+	<string id="20127" text="至 %s 的 BitTorrent 連線已忽略。"/>
+	<string id="20128" text="與 %s 的 BitTorrent 信號交換已忽略。"/>
+	<string id="20129" text="與 %s 的 BitTorrent 耦合不被接受, 因為已連線至這個客戶端。"/>
+	<string id="20130" text="%i 個新的 BitTorrent 來源: 由%s 接收到了。"/>
+	<string id="20131" text="與 %s 的 BitTorrent 耦合 是一個延伸協定, 已辨認 &quot;%s&quot;。"/>
+	<string id="20132" text="與 BitTorrent 客戶端 %s 信號交換已逾時。"/>
+	<string id="20133" text="已建立與 %s 的BitTorrent 耦合, 信號交換中…"/>
+	<string id="20134" text="與 %s 的 BitTorrent 耦合不被接受, 因為已達到最大連線數。"/>
+	<string id="20136" text="與 %s 的BitTorrent 耦合 要求了一個未知的檔案。"/>
+	<string id="20137" text="與 %s 的 BitTorrent 耦合 回應了錯誤的檔案。"/>
+	<string id="20138" text="與 %s 的 BitTorrent 耦合 失敗, 因為遠程客戶端有不同的用戶 ID。"/>
+	<string id="20139" text="正在關閉與 %s 的 BitTorrent 耦合, 因為缺乏流量。"/>
 	<string id="20140" text="編碼錯誤"/>
 	<string id="20141" text="私人 torrent"/>
-	<string id="20142" text="Torrent &quot;%s&quot; 已存在你的下載清單, 而且不能被做種."/>
-	<string id="20143" text="在複製 &quot;%s&quot; 至一個 BitTorrent 的分享檔時發生錯誤."/>
-	<string id="20144" text="無法製作 BitTorrent 分享檔 &quot;%s&quot;."/>
-	<string id="20145" text="嘗試做種 &quot;%s&quot; 時, 發生未知的錯誤."/>
-	<string id="20146" text="載入此 torrent 檔時發生錯誤: &quot;%s&quot;. 這個 torrent 檔可能是無效的."/>
-	<string id="20147" text="這個 torrent 內含檔案 &quot;%s&quot;, 不過 Envy 在收藏中找不到這個檔案. 可能的話, 將這個檔案與 torrent 檔置於同一個資料夾並重試."/>
-	<string id="20148" text="這個 torrent 包含檔案 &quot;%s&quot; 但是應該為 %s, 不過您的檔案版本應為 %s."/>
-	<string id="20149" text="在這個檔案發現錯誤: &quot;%s&quot;."/>
+	<string id="20142" text="Torrent &quot;%s&quot; 已存在你的下載清單, 而且不能被做種。"/>
+	<string id="20143" text="在複製 &quot;%s&quot; 至一個 BitTorrent 的分享檔時發生錯誤。"/>
+	<string id="20144" text="無法製作 BitTorrent 分享檔 &quot;%s&quot;。"/>
+	<string id="20145" text="嘗試做種 &quot;%s&quot; 時, 發生未知的錯誤。"/>
+	<string id="20146" text="載入此 torrent 檔時發生錯誤: &quot;%s&quot;。 這個 torrent 檔可能是無效的。"/>
+	<string id="20147" text="這個 torrent 內含檔案 &quot;%s&quot;, 不過 Envy 在收藏中找不到這個檔案。 可能的話, 將這個檔案與 torrent 檔置於同一個資料夾並重試。"/>
+	<string id="20148" text="這個 torrent 包含檔案 &quot;%s&quot; 但是應該為 %s, 不過您的檔案版本應為 %s。"/>
+	<string id="20149" text="在這個檔案發現錯誤: &quot;%s&quot;。"/>
 	<string id="20150" text="無法與伺服器(Tracker)通訊"/>
 	<string id="20151" text="伺服器 (Tracker) 連線失敗- 正在嘗試下一個伺服器(Tracker) (%i of %i)"/>
-	<string id="20152" text="您已經更改了這個 torrent 的伺服器(Tracker) 的URL. 您確定要儲存這個更動嗎?\n\nAn 無效的伺服器(Tracker) URL 可能妨礙下載其餘的部分."/>
-	<string id="20153" text="BitTorrent 伺服器 (Tracker) 傳回錯誤: &quot;%s&quot; : &quot;%s&quot;."/>
-	<string id="20154" text="解析 BitTorrent 伺服器回應時發生錯誤."/>
-	<string id="20155" text="已接收到 BitTorrent 伺服器回應 for &quot;%s&quot;, %i 新來源."/>
-	<string id="20158" text="無法解析預先取得的 BitTorrent 檔 &quot;%s&quot;."/>
+	<string id="20152" text="您已經更改了這個 torrent 的伺服器(Tracker) 的URL。 您確定要儲存這個更動嗎?\n\nAn 無效的伺服器(Tracker) URL 可能妨礙下載其餘的部分。"/>
+	<string id="20153" text="BitTorrent 伺服器 (Tracker) 傳回錯誤: &quot;%s&quot; : &quot;%s&quot;。"/>
+	<string id="20154" text="解析 BitTorrent 伺服器回應時發生錯誤。"/>
+	<string id="20155" text="已接收到 BitTorrent 伺服器回應 for &quot;%s&quot;, %i 新來源。"/>
+	<string id="20158" text="無法解析預先取得的 BitTorrent 檔 &quot;%s&quot;。"/>
 	<string id="20159" text="已收到 BitTorrent descriptor 檔: &quot;%s&quot;"/>
-	<string id="20160" text="接受來自於 %s 輸入的聊天要求, 信號交換中..."/>
-	<string id="20161" text="無法新增連到 %s 的連線."/>
-	<string id="20162" text="無法從 %s 要求推播連線, 沒有可用的路由."/>
-	<string id="20163" text="連線關閉."/>
-	<string id="20164" text="連到 %s 的連線已經關閉."/>
-	<string id="20165" text="連線已建立, 信號交換中..."/>
-	<string id="20166" text="已連線至 %s, 信號交換中..."/>
-	<string id="20167" text="正在啟始連線至 %s..."/>
-	<string id="20168" text="連線至 %s 以聊天..."/>
-	<string id="20169" text="無法連線至主機 %s."/>
-	<string id="20170" text="聊天連線已丟失."/>
-	<string id="20171" text="連到 %s 的連線已經已丟失."/>
-	<string id="20172" text="信號交換失敗, 該主機可能不支援聊天功能."/>
-	<string id="20173" text="信號交換完成, 聊天協定版本為 %s."/>
-	<string id="20174" text="交換個人檔案資訊中..."/>
-	<string id="20175" text="您還沒有輸入個人檔案的資料. 您必須提供個人檔案才能與其他人聊天.\n\n您現在要輸入個人檔案嗎?"/>
-	<string id="20176" text="無法送出訊息, 您還未連線. Envy 正在嘗試連線..."/>
-	<string id="20177" text="無法送出訊息, 連線尚未建立."/>
-	<string id="20178" text="%s 現在改名為 %s."/>
-	<string id="20179" text="現在正在與這個人聊天: %s (%s)."/>
-	<string id="20180" text="已授與主機 %s 上傳優先權."/>
+	<string id="20160" text="接受來自於 %s 輸入的聊天要求, 信號交換中…"/>
+	<string id="20161" text="無法新增連到 %s 的連線。"/>
+	<string id="20162" text="無法從 %s 要求推播連線, 沒有可用的路由。"/>
+	<string id="20163" text="連線關閉。"/>
+	<string id="20164" text="連到 %s 的連線已經關閉。"/>
+	<string id="20165" text="連線已建立, 信號交換中…"/>
+	<string id="20166" text="已連線至 %s, 信號交換中…"/>
+	<string id="20167" text="正在啟始連線至 %s…"/>
+	<string id="20168" text="連線至 %s 以聊天…"/>
+	<string id="20169" text="無法連線至主機 %s。"/>
+	<string id="20170" text="聊天連線已丟失。"/>
+	<string id="20171" text="連到 %s 的連線已經已丟失。"/>
+	<string id="20172" text="信號交換失敗, 該主機可能不支援聊天功能。"/>
+	<string id="20173" text="信號交換完成, 聊天協定版本為 %s。"/>
+	<string id="20174" text="交換個人檔案資訊中…"/>
+	<string id="20175" text="您還沒有輸入個人檔案的資料。 您必須提供個人檔案才能與其他人聊天。\n\n您現在要輸入個人檔案嗎?"/>
+	<string id="20176" text="無法送出訊息, 您還未連線。 Envy 正在嘗試連線…"/>
+	<string id="20177" text="無法送出訊息, 連線尚未建立。"/>
+	<string id="20178" text="%s 現在改名為 %s。"/>
+	<string id="20179" text="現在正在與這個人聊天: %s (%s)。"/>
+	<string id="20180" text="已授與主機 %s 上傳優先權。"/>
 	<string id="20181" text="%s 不在: %s"/>
-	<string id="20182" text="私人對話准予, 你現正在與 %s 聊天."/>
-	<string id="20183" text="%s 不接受私人聊天."/>
-	<string id="20184" text="正在請求與該使用者私人對話..."/>
+	<string id="20182" text="私人對話准予, 你現正在與 %s 聊天。"/>
+	<string id="20183" text="%s 不接受私人聊天。"/>
+	<string id="20184" text="正在請求與該使用者私人對話…"/>
 	<string id="20185" text="已授權的使用者"/>
-	<string id="20186" text="接受來自於 %s 的推播連線, 信號交換中..."/>
+	<string id="20186" text="接受來自於 %s 的推播連線, 信號交換中…"/>
 	<string id="20187" text="正在要求來自於 %s 的受到防火牆保護的推播連線"/>
-	<string id="20188" text="連線失敗, 因為電話線有無效的資料."/>
+	<string id="20188" text="連線失敗, 因為電話線有無效的資料。"/>
 	<string id="20189" text="接收到未知的回應: %s"/>
-	<string id="20190" text="您還尚未連線."/>
-	<string id="20191" text="無法辨認的命令 &quot;%s&quot;."/>
-	<string id="20196" text="這個樣版沒有任何可自訂部分."/>
-	<string id="20197" text="這個樣版是無效."/>
+	<string id="20190" text="您還尚未連線。"/>
+	<string id="20191" text="無法辨認的命令 &quot;%s&quot;。"/>
+	<string id="20196" text="這個樣版沒有任何可自訂部分。"/>
+	<string id="20197" text="這個樣版是無效。"/>
 	<string id="20199" text="(傳輸後關閉)"/>
-	<string id="20200" text="已新增 &quot;%s&quot; 到下載排隊隊伍, 有 %i 個來源."/>
-	<string id="20201" text="此檔案 &quot;%s&quot; 已經正在被下載, 新增來源."/>
-	<string id="20202" text="從 %s 收到一個錯誤的推播連線, 關閉連線."/>
-	<string id="20203" text="藉由移除頻寬限制來加速下載 &quot;%s&quot;."/>
-	<string id="20204" text="下載主機 %s 忙碌中, 重試於 %i 秒後."/>
-	<string id="20205" text="硬碟空間不足, 無法下載 &quot;%s&quot; (%s)."/>
-	<string id="20206" text="無法移動下載 &quot;%s&quot; 至 &quot;%s&quot;. 請確定未完成檔案沒有正在被其他程式使用, 以及你的下載資料夾存在, 沒有設為唯讀."/>
+	<string id="20200" text="已新增 &quot;%s&quot; 到下載排隊隊伍, 有 %i 個來源。"/>
+	<string id="20201" text="此檔案 &quot;%s&quot; 已經正在被下載, 新增來源。"/>
+	<string id="20202" text="從 %s 收到一個錯誤的推播連線, 關閉連線。"/>
+	<string id="20203" text="藉由移除頻寬限制來加速下載 &quot;%s&quot;。"/>
+	<string id="20204" text="下載主機 %s 忙碌中, 重試於 %i 秒後。"/>
+	<string id="20205" text="硬碟空間不足, 無法下載 &quot;%s&quot; (%s)。"/>
+	<string id="20206" text="無法移動下載 &quot;%s&quot; 至 &quot;%s&quot;。 請確定未完成檔案沒有正在被其他程式使用, 以及你的下載資料夾存在, 沒有設為唯讀。"/>
 	<string id="20207" text="您確定取消/放棄這個群組裡所有的下載嗎?"/>
-	<string id="20208" text="關閉至%s 的下載連線, 不再需要了."/>
-	<string id="20209" text="下載主機 %s 送出沒有要求的資料, 關閉連線中."/>
-	<string id="20210" text="完成&quot;%s&quot;.的下載."/>
-	<string id="20211" text="您確定要清除 &quot;%s&quot;.\n\n一旦下載從下載視窗清除, 稍後將不能繼續它."/>
-	<string id="20212" text="您確定要清除所有已暫停的下載? 一旦由下載視窗清除下載, 將無法繼續下載."/>
-	<string id="20213" text="您確定要刪除下載 &quot;%s&quot;."/>
-	<string id="20214" text="連到 %s 的下載連線已建立."/>
-	<string id="20215" text="正在啟始連線至 %s 連接埠 %i 以下載 &quot;%s&quot;..."/>
-	<string id="20216" text="無法連線至下載主機 %s."/>
-	<string id="20217" text="從主機 %s (%s) 接收下載內容."/>
-	<string id="20218" text="正在放棄從 下載 &quot;%s&quot; from %s (%s), 因為網路已停用."/>
-	<string id="20219" text="與 %s 下載連線已丟失."/>
-	<string id="20221" text="请输入一个擦除的有效范围.&quot;从&quot; 区域是要擦除的第一个 byte，&quot;到&quot; 区域是要擦除的最后一个 byte."/>
-	<string id="20222" text="您鍵入的 %s 切細值無效. 請檢查後再試一次."/>
-	<string id="20223" text="您提供的 %s 切細值不同於這個下載的切細值. 您現在確定要更改 %s 切細嗎?"/>
-	<string id="20224" text="您已經更改了名稱欄位的記載. 您確定要重新命名這個下載嗎?"/>
-	<string id="20225" text="您已經改變檔案大小. 確定要改變這個下載的檔案大小嗎?"/>
-	<string id="20226" text="您無法假定這個下載已完成並且重新驗證, 因為你還沒有持有任何部分驗證資料, 像是 tiger-tree volume, eDonkey hashset 或 BitTorrent hashset. 在沒有驗證資訊的情況下將不能重新驗證下載."/>
-	<string id="20227" text="您要假設這個下載是完整的並重新驗證嗎? 我們會檢視整個檔案; Envy 會接受通過驗證的部分並重新下載驗證失敗的部分."/>
-	<string id="20228" text="您確定要忽略目前的驗證狀態嗎? 所有已下載的資料將被視為不可靠, 而且快取的 hashtrees 以及 hashsets 將會被沖掉."/>
+	<string id="20208" text="關閉至%s 的下載連線, 不再需要了。"/>
+	<string id="20209" text="下載主機 %s 送出沒有要求的資料, 關閉連線中。"/>
+	<string id="20210" text="完成&quot;%s&quot;.的下載。"/>
+	<string id="20211" text="您確定要清除 &quot;%s&quot;。\n\n一旦下載從下載視窗清除, 稍後將不能繼續它。"/>
+	<string id="20212" text="您確定要清除所有已暫停的下載? 一旦由下載視窗清除下載, 將無法繼續下載。"/>
+	<string id="20213" text="您確定要刪除下載 &quot;%s&quot;。"/>
+	<string id="20214" text="連到 %s 的下載連線已建立。"/>
+	<string id="20215" text="正在啟始連線至 %s 連接埠 %i 以下載 &quot;%s&quot;…"/>
+	<string id="20216" text="無法連線至下載主機 %s。"/>
+	<string id="20217" text="從主機 %s (%s) 接收下載內容。"/>
+	<string id="20218" text="正在放棄從 下載 &quot;%s&quot; from %s (%s), 因為網路已停用。"/>
+	<string id="20219" text="與 %s 下載連線已丟失。"/>
+	<string id="20221" text="请输入一个擦除的有效范围.&quot;从&quot; 区域是要擦除的第一个 byte，&quot;到&quot; 区域是要擦除的最后一个 byte。"/>
+	<string id="20222" text="您鍵入的 %s 切細值無效。 請檢查後再試一次。"/>
+	<string id="20223" text="您提供的 %s 切細值不同於這個下載的切細值。 您現在確定要更改 %s 切細嗎?"/>
+	<string id="20224" text="您已經更改了名稱欄位的記載。 您確定要重新命名這個下載嗎?"/>
+	<string id="20225" text="您已經改變檔案大小。 確定要改變這個下載的檔案大小嗎?"/>
+	<string id="20226" text="您無法假定這個下載已完成並且重新驗證, 因為你還沒有持有任何部分驗證資料, 像是 tiger-tree volume, eDonkey hashset 或 BitTorrent hashset。 在沒有驗證資訊的情況下將不能重新驗證下載。"/>
+	<string id="20227" text="您要假設這個下載是完整的並重新驗證嗎? 我們會檢視整個檔案; Envy 會接受通過驗證的部分並重新下載驗證失敗的部分。"/>
+	<string id="20228" text="您確定要忽略目前的驗證狀態嗎? 所有已下載的資料將被視為不可靠, 而且快取的 hashtrees 以及 hashsets 將會被沖掉。"/>
 	<string id="20229" text="您確定要忘卻選擇的下載的所有來源嗎?"/>
-	<string id="20231" text="無法從這個下載抹除選擇的部分, 因為沒有存在的part of the range."/>
-	<string id="20232" text="從下載抹除 %I64i 位元組."/>
-	<string id="20242" text="下載主機 %s 沒有這個檔案: &quot;%s&quot;."/>
-	<string id="20243" text="正在製作檔案 &quot;%s&quot; 以供下載."/>
-	<string id="20244" text="無法製作本地檔案 &quot;%s&quot; 用於下載, 放棄中."/>
-	<string id="20245" text="無法開啟本地檔案 &quot;%s&quot; 用於下載, 放棄中."/>
-	<string id="20246" text="沒有任何可用的下載分塊, 正在與 %s 的關閉連線."/>
-	<string id="20247" text="分塊縮減, 正在關閉與 %s 的連線."/>
-	<string id="20248" text="&quot;%s&quot; 的下載分塊(%I64u-%I64u): 正在向 %s 要求. %s"/>
+	<string id="20231" text="無法從這個下載抹除選擇的部分, 因為沒有存在的part of the range。"/>
+	<string id="20232" text="從下載抹除 %I64i 位元組。"/>
+	<string id="20242" text="下載主機 %s 沒有這個檔案: &quot;%s&quot;。"/>
+	<string id="20243" text="正在製作檔案 &quot;%s&quot; 以供下載。"/>
+	<string id="20244" text="無法製作本地檔案 &quot;%s&quot; 用於下載, 放棄中。"/>
+	<string id="20245" text="無法開啟本地檔案 &quot;%s&quot; 用於下載, 放棄中。"/>
+	<string id="20246" text="沒有任何可用的下載分塊, 正在與 %s 的關閉連線。"/>
+	<string id="20247" text="分塊縮減, 正在關閉與 %s 的連線。"/>
+	<string id="20248" text="&quot;%s&quot; 的下載分塊(%I64u-%I64u): 正在向 %s 要求。 %s"/>
 	<string id="20250" text="Drag'n'drop文件複製到%s組。"/>
 	<string id="20251" text="默認下載組。 （顯示所有文件）"/>
-	<string id="20253" text="下載主機的 eDonkey2000 hashset 是毀損的或是內部不一致, 正在忽略來源."/>
-	<string id="20254" text="由 %s 接收到無效的 EDonkey2000 hashset, 忽略來源中."/>
-	<string id="20255" text="已收到 &quot;%s&quot; 的 eDonkey2000 hashset, 最小可驗證分塊 (chunk) %s."/>
-	<string id="20256" text="正在從 %s 要求 &quot;%s&quot; 的 eDonkey2000 hashset..."/>
-	<string id="20257" text="無法啟始下載 &quot;%s&quot; 的解壓縮動作."/>
-	<string id="20258" text="由 %s (%s) 接收 tiger-tree 資料..."/>
-	<string id="20259" text="正在從 %s 要求 &quot;%s&quot; 的解釋資料 ..."/>
+	<string id="20253" text="下載主機的 eDonkey2000 hashset 是毀損的或是內部不一致, 正在忽略來源。"/>
+	<string id="20254" text="由 %s 接收到無效的 EDonkey2000 hashset, 忽略來源中。"/>
+	<string id="20255" text="已收到 &quot;%s&quot; 的 eDonkey2000 hashset, 最小可驗證分塊 (chunk) %s。"/>
+	<string id="20256" text="正在從 %s 要求 &quot;%s&quot; 的 eDonkey2000 hashset…"/>
+	<string id="20257" text="無法啟始下載 &quot;%s&quot; 的解壓縮動作。"/>
+	<string id="20258" text="由 %s (%s) 接收 tiger-tree 資料…"/>
+	<string id="20259" text="正在從 %s 要求 &quot;%s&quot; 的解釋資料…"/>
 	<string id="20260" text="編輯下載"/>
-	<string id="20261" text="下載主機 %s 回應了 %s (%s)."/>
-	<string id="20262" text="下載主機 %s 發出無效的 HTTP 回應."/>
-	<string id="20263" text="主機 %s 正在推播下載 &quot;%s&quot;, 接受."/>
-	<string id="20264" text="正在傳送下載 &quot;%s&quot; 的推播要求..."/>
-	<string id="20265" text="下載主機 %s 忙碌中, 等待於排隊位置 #%i of %i (&quot;%s&quot;.."/>
-	<string id="20266" text="Staying in queue for quot;%squot;."/>
-	<string id="20267" text="正在忽略下載來源 %s 的 &quot;%s&quot; 因為排隊位置 %s 太遠了."/>
-	<string id="20268" text="等待逾時: 來自於 eDonkey 2000 下載主機 %s 的檔案 &quot;%s&quot;.排隊位置更新."/>
-	<string id="20269" text="向 %s 的下載要求已經逾時, 關閉連線中."/>
-	<string id="20270" text="清除下載 quot;%squot;."/>
-	<string id="20271" text="已移動 &quot;%s&quot; 至 &quot;%s&quot;, 下載完成."/>
-	<string id="20272" text="暫停下載 quot;%squot;."/>
-	<string id="20273" text="繼續下載 quot;%squot;."/>
-	<string id="20275" text="正在詢問更多下載 &quot;%s&quot; 的來源於 %i 連線..."/>
-	<string id="20276" text="無法取得更多這個下載的來源: &quot;%s&quot; 因為網路沒有連線."/>
-	<!--string id="20277" text="正在解析 &quot;%s&quot; 以下載 quot;%squot;..."-->
-	<!--string id="20278" text="無法辨認 &quot;%s&quot;."-->
-	<string id="20280" text="下載主機的 tiger-tree 資料毀損或是內部不一致, 正在忽略它."/>
-	<string id="20281" text="下載主機的 tiger-tree 無法與期待的 root value 吻合."/>
-	<string id="20282" text="下載主機 %s 無法滿足 tiger-tree 要求."/>
-	<string id="20283" text="已收到 &quot;%s&quot; 的 tiger-tree volume, %i levels, 最小可驗證分塊 (chunk) %s."/>
-	<string id="20284" text="從 %s (%s) 接收到 tiger-tree 容量..."/>
-	<string id="20285" text="正在從 %s 要求 &quot;%s&quot; 的 tiger-tree 容量..."/>
-	<string id="20286" text="正在關閉下載連線 %s , 因為缺乏流量."/>
-	<string id="20290" text="回應了不同卻有用的 &quot;%s&quot; 分塊 (%I64i-%I64i): 下載主機 %s."/>
-	<string id="20291" text="收到來自於 %s 的不必要的推播連線."/>
-	<string id="20292" text="正在忽略來源 %s (%s), 因為它送出毀損的 &quot;%s&quot; 的部份(%I64i-%I64i)."/>
-	<string id="20293" text="警告: 下載檔 &quot;%s&quot; 驗證失敗 ; 這可能不是你想要下載的檔案."/>
-	<string id="20294" text="已成功驗證下載 &quot;%s&quot;."/>
-	<string id="20295" text="下載主機 %s 的 &quot;%s&quot; 的版本有不同的 URN, 放棄."/>
-	<string id="20296" text="下載主機 %s 回應了無效的 byte 分塊 of &quot;%s&quot;, 等待中."/>
-	<string id="20297" text="下載主機 %s 的 &quot;%s&quot; 的版本有不同的長度, 放棄."/>
-	<string id="20300" text="已接受來自於 %s 連接埠 %i 的輸入連線."/>
-	<string id="20301" text="已連線至 %s, 將不建立第二條連線."/>
-	<string id="20302" text="正在拒絕來自於 %s 的重覆連線."/>
-	<string id="20303" text="正在啟始鄰居連線至%s 連接埠 %i..."/>
-	<string id="20304" text="鄰居 %s 關閉了連線(%i : %s)."/>
-	<string id="20305" text="關閉與鄰居 %s 的連線."/>
-	<string id="20306" text="已與鄰居 %s 建立連線, 信號交換中..."/>
-	<string id="20307" text="無法與 %s 啟始鄰居連線."/>
-	<string id="20308" text="鄰居 %s 意外地忽略連線."/>
-	<string id="20309" text="已關閉與鄰居 %s 的連線, 因為它不是結點."/>
-	<string id="20310" text="無法啟始鄰居連線 with %s (已拒絕)."/>
-	<string id="20311" text="連線至%s 已逾時."/>
-	<string id="20312" text="正在中斷對鄰居%s 的連線, 因為缺乏流量."/>
-	<string id="20313" text="詢問主機揭示服務中..."/>
-	<string id="20314" text="揭示服務 &quot;%s&quot; 失敗, 失敗次數 %i."/>
-	<string id="20315" text="揭示服務 &quot;%s&quot; 已經失敗了 %i 次, 移除."/>
-	<string id="20316" text="正在詢問主機揭示服務 &quot;%s&quot;..."/>
-	<string id="20317" text="Submitting GWebCache &quot;%s&quot; to a random GWebCache..."/>
-	<string id="20318" text="正在傳送 GWebCache 更新至服務service &quot;%s&quot;..."/>
-	<string id="20319" text="GWeb快取交易成功 (&quot;%s&quot;.."/>
-	<string id="20320" text="來自於 % 的輸入連線是一個 eDonkey 客戶端連結."/>
-	<string id="20321" text="從 %s (id=%x) 收到了一個 錯誤格式的 eDonkey 封包."/>
-	<string id="20322" text="與 %s 的 eDonkey client 連線已閒置, 關閉了."/>
-	<string id="20323" text="正在啟始 eDonkey 客戶端連線至 %s..."/>
-	<string id="20324" text="與 eDonkey 客戶端 %s 的連線逾時."/>
-	<string id="20325" text="正在拒絕來自於 %s 的 eDonkey 客戶端連結, 因為 eDonkey 被停用了."/>
-	<string id="20326" text="與 %s 的 eDonkey 客戶端連線已關閉."/>
-	<string id="20327" text="與eDonkey 客戶端 %s 信號交換時發生錯誤."/>
-	<string id="20328" text="與 eDonkey 客戶端 %s 的信號交換逾時."/>
-	<string id="20329" text="正在送出 &quot;%s&quot; 的 eDonkey hashset 至 %s..."/>
-	<string id="20330" text="eDonkey 客戶端 %s 有錯誤的 GUID, 放棄信號交換."/>
-	<string id="20331" text="這個檔案已經在 Envy 的下載清單."/>
-	<string id="20332" text="無法開啟 part 檔 &quot;%s&quot;."/>
+	<string id="20261" text="下載主機 %s 回應了 %s (%s)。"/>
+	<string id="20262" text="下載主機 %s 發出無效的 HTTP 回應。"/>
+	<string id="20263" text="主機 %s 正在推播下載 &quot;%s&quot;, 接受。"/>
+	<string id="20264" text="正在傳送下載 &quot;%s&quot; 的推播要求…"/>
+	<string id="20265" text="下載主機 %s 忙碌中, 等待於排隊位置 #%i of %i (&quot;%s&quot;)。"/>
+	<string id="20266" text="Staying in queue for quot;%squot;。"/>
+	<string id="20267" text="正在忽略下載來源 %s 的 &quot;%s&quot; 因為排隊位置 %s 太遠了。"/>
+	<string id="20268" text="等待逾時: 來自於 eDonkey 2000 下載主機 %s 的檔案 &quot;%s&quot;.排隊位置更新。"/>
+	<string id="20269" text="向 %s 的下載要求已經逾時, 關閉連線中。"/>
+	<string id="20270" text="清除下載 quot;%squot;。"/>
+	<string id="20271" text="已移動 &quot;%s&quot; 至 &quot;%s&quot;, 下載完成。"/>
+	<string id="20272" text="暫停下載 quot;%squot;。"/>
+	<string id="20273" text="繼續下載 quot;%squot;。"/>
+	<string id="20275" text="正在詢問更多下載 &quot;%s&quot; 的來源於 %i 連線…"/>
+	<string id="20276" text="無法取得更多這個下載的來源: &quot;%s&quot; 因為網路沒有連線。"/>
+	<!--string id="20277" text="正在解析 &quot;%s&quot; 以下載 quot;%squot;…"-->
+	<!--string id="20278" text="無法辨認 &quot;%s&quot;。"-->
+	<string id="20280" text="下載主機的 tiger-tree 資料毀損或是內部不一致, 正在忽略它。"/>
+	<string id="20281" text="下載主機的 tiger-tree 無法與期待的 root value 吻合。"/>
+	<string id="20282" text="下載主機 %s 無法滿足 tiger-tree 要求。"/>
+	<string id="20283" text="已收到 &quot;%s&quot; 的 tiger-tree volume, %i levels, 最小可驗證分塊 (chunk) %s。"/>
+	<string id="20284" text="從 %s (%s) 接收到 tiger-tree 容量…"/>
+	<string id="20285" text="正在從 %s 要求 &quot;%s&quot; 的 tiger-tree 容量…"/>
+	<string id="20286" text="正在關閉下載連線 %s , 因為缺乏流量。"/>
+	<string id="20290" text="回應了不同卻有用的 &quot;%s&quot; 分塊 (%I64i-%I64i): 下載主機 %s。"/>
+	<string id="20291" text="收到來自於 %s 的不必要的推播連線。"/>
+	<string id="20292" text="正在忽略來源 %s (%s), 因為它送出毀損的 &quot;%s&quot; 的部份(%I64i-%I64i)。"/>
+	<string id="20293" text="警告: 下載檔 &quot;%s&quot; 驗證失敗 ; 這可能不是你想要下載的檔案。"/>
+	<string id="20294" text="已成功驗證下載 &quot;%s&quot;。"/>
+	<string id="20295" text="下載主機 %s 的 &quot;%s&quot; 的版本有不同的 URN, 放棄。"/>
+	<string id="20296" text="下載主機 %s 回應了無效的 byte 分塊 of &quot;%s&quot;, 等待中。"/>
+	<string id="20297" text="下載主機 %s 的 &quot;%s&quot; 的版本有不同的長度, 放棄。"/>
+	<string id="20300" text="已接受來自於 %s 連接埠 %i 的輸入連線。"/>
+	<string id="20301" text="已連線至 %s, 將不建立第二條連線。"/>
+	<string id="20302" text="正在拒絕來自於 %s 的重覆連線。"/>
+	<string id="20303" text="正在啟始鄰居連線至%s 連接埠 %i…"/>
+	<string id="20304" text="鄰居 %s 關閉了連線(%i : %s)。"/>
+	<string id="20305" text="關閉與鄰居 %s 的連線。"/>
+	<string id="20306" text="已與鄰居 %s 建立連線, 信號交換中…"/>
+	<string id="20307" text="無法與 %s 啟始鄰居連線。"/>
+	<string id="20308" text="鄰居 %s 意外地忽略連線。"/>
+	<string id="20309" text="已關閉與鄰居 %s 的連線, 因為它不是結點。"/>
+	<string id="20310" text="無法啟始鄰居連線 with %s (已拒絕)。"/>
+	<string id="20311" text="連線至%s 已逾時。"/>
+	<string id="20312" text="正在中斷對鄰居%s 的連線, 因為缺乏流量。"/>
+	<string id="20313" text="詢問主機揭示服務中…"/>
+	<string id="20314" text="揭示服務 &quot;%s&quot; 失敗, 失敗次數 %i。"/>
+	<string id="20315" text="揭示服務 &quot;%s&quot; 已經失敗了 %i 次, 移除。"/>
+	<string id="20316" text="正在詢問主機揭示服務 &quot;%s&quot;…"/>
+	<string id="20317" text="Submitting GWebCache &quot;%s&quot; to a random GWebCache…"/>
+	<string id="20318" text="正在傳送 GWebCache 更新至服務service &quot;%s&quot;…"/>
+	<string id="20319" text="GWeb快取交易成功 (&quot;%s&quot;)。"/>
+	<string id="20320" text="來自於 % 的輸入連線是一個 eDonkey 客戶端連結。"/>
+	<string id="20321" text="從 %s (id=%x) 收到了一個 錯誤格式的 eDonkey 封包。"/>
+	<string id="20322" text="與 %s 的 eDonkey client 連線已閒置, 關閉了。"/>
+	<string id="20323" text="正在啟始 eDonkey 客戶端連線至 %s…"/>
+	<string id="20324" text="與 eDonkey 客戶端 %s 的連線逾時。"/>
+	<string id="20325" text="正在拒絕來自於 %s 的 eDonkey 客戶端連結, 因為 eDonkey 被停用了。"/>
+	<string id="20326" text="與 %s 的 eDonkey 客戶端連線已關閉。"/>
+	<string id="20327" text="與eDonkey 客戶端 %s 信號交換時發生錯誤。"/>
+	<string id="20328" text="與 eDonkey 客戶端 %s 的信號交換逾時。"/>
+	<string id="20329" text="正在送出 &quot;%s&quot; 的 eDonkey hashset 至 %s…"/>
+	<string id="20330" text="eDonkey 客戶端 %s 有錯誤的 GUID, 放棄信號交換。"/>
+	<string id="20331" text="這個檔案已經在 Envy 的下載清單。"/>
+	<string id="20332" text="無法開啟 part 檔 &quot;%s&quot;。"/>
 	<string id="20333" text="檔案複製完成"/>
-	<string id="20334" text="複製 &quot;%s&quot; 至 &quot;%s&quot;..."/>
-	<string id="20335" text="硬碟空間不足, 無法複製下載的檔案."/>
-	<string id="20336" text="正在製作 Envy 部分下載, 剩下 %s."/>
-	<string id="20337" text="無法匯入檔案."/>
-	<string id="20338" text="下載資料檔比 .part 檔還新, 放棄中."/>
-	<string id="20339" text="找到部分檔 &quot;%s&quot;, 匯入中..."/>
-	<string id="20340" text="程序完成, %i 部分下載成功匯入."/>
-	<string id="20341" text="掃瞄資料夾中: quot;%squot;..."/>
-	<string id="20342" text="開始 eDonkey partial 下載匯入程序..."/>
-	<string id="20344" text="找到下載 &quot;%s&quot;, 大小 %s."/>
-	<string id="20345" text="已連線至 eDonkey 伺服器 %s, 信號交換中..."/>
-	<string id="20346" text="正在啟始連線至 eDonkey 伺服器於 %s..."/>
-	<string id="20347" text="eDonkey 伺服器 %s 已更改我們的用戶端 ID, 由 %lu 到 %lu."/>
-	<string id="20348" text="eDonkey 伺服器 %s 表示自己為 quot;%squot;."/>
+	<string id="20334" text="複製 &quot;%s&quot; 至 &quot;%s&quot;…"/>
+	<string id="20335" text="硬碟空間不足, 無法複製下載的檔案。"/>
+	<string id="20336" text="正在製作 Envy 部分下載, 剩下 %s。"/>
+	<string id="20337" text="無法匯入檔案。"/>
+	<string id="20338" text="下載資料檔比 .part 檔還新, 放棄中。"/>
+	<string id="20339" text="找到部分檔 &quot;%s&quot;, 匯入中…"/>
+	<string id="20340" text="程序完成, %i 部分下載成功匯入。"/>
+	<string id="20341" text="掃瞄資料夾中: quot;%squot;…"/>
+	<string id="20342" text="開始 eDonkey partial 下載匯入程序…"/>
+	<string id="20344" text="找到下載 &quot;%s&quot;, 大小 %s。"/>
+	<string id="20345" text="已連線至 eDonkey 伺服器 %s, 信號交換中…"/>
+	<string id="20346" text="正在啟始連線至 eDonkey 伺服器於 %s…"/>
+	<string id="20347" text="eDonkey 伺服器 %s 已更改我們的用戶端 ID, 由 %lu 到 %lu。"/>
+	<string id="20348" text="eDonkey 伺服器 %s 表示自己為 quot;%squot;。"/>
 	<string id="20349" text="ED2K[%s] %s"/>
-	<string id="20350" text="eDonkey 伺服器 %s 上線, 用戶端 ID 是 %lu."/>
-	<string id="20351" text="eDonkey 伺服器 %s 已經拒絕連線."/>
-	<string id="20352" text="eDonkey 伺服器 %s 拒絕連線."/>
+	<string id="20350" text="eDonkey 伺服器 %s 上線, 用戶端 ID 是 %lu。"/>
+	<string id="20351" text="eDonkey 伺服器 %s 已經拒絕連線。"/>
+	<string id="20352" text="eDonkey 伺服器 %s 拒絕連線。"/>
 	<string id="20354" text="檔案屬性"/>
 	<string id="20355" text="您要刪除這個過濾嗎?"/>
 	<string id="20356" text="已經有稱為&quot;%s&quot;.的過濾存在, 您要置換它嗎?"/>
@@ -2804,20 +2805,20 @@
 	<string id="20382" text="總計 UDP 傳送頻寬"/>
 	<string id="20383" text="上傳頻寬"/>
 	<string id="20384" text="上傳傳輸數"/>
-	<string id="20385" text="Connecting neighbour %s falling back to shielded 葉節點節點."/>
-	<string id="20386" text="正在關閉 surplus 連線 from %s with host hint (%s 連接埠 %i)."/>
-	<string id="20387" text="結點鄰居 %s 不接受我們當結點, 關閉連線中."/>
-	<string id="20388" text="與 %s 的信號交換失敗, 因為電話線上有無效資料."/>
-	<string id="20389" text="成為葉節點鄰居 %s 的結點."/>
-	<string id="20390" text="結點連線已建立, 正在關閉用戶連線."/>
-	<string id="20391" text="正在拒絕來自於 %s 的連線, 因為這是一個 shielded 葉節點節點."/>
-	<string id="20392" text="鄰居 %s 不是一個結點, 連線關閉."/>
-	<string id="20393" text="正在關閉連線到非 Gnutella2 鄰居 %s."/>
-	<string id="20394" text="鄰居 %s 想要成為結點, 連線關閉."/>
-	<string id="20395" text="與鄰居 %s 的 Gnutella 連線已成功建立 (G%i.%i : %s)."/>
-	<string id="20396" text="與鄰居 %s 的 Gnutella2 連線成功建立 (%s)."/>
-	<string id="20397" text="連到 %s 的連線已被拒絕 (%s)."/>
-	<string id="20398" text="正在關閉與 %s 多餘的連線."/>
+	<string id="20385" text="Connecting neighbour %s falling back to shielded 葉節點節點。"/>
+	<string id="20386" text="正在關閉 surplus 連線 from %s with host hint (%s 連接埠 %i)。"/>
+	<string id="20387" text="結點鄰居 %s 不接受我們當結點, 關閉連線中。"/>
+	<string id="20388" text="與 %s 的信號交換失敗, 因為電話線上有無效資料。"/>
+	<string id="20389" text="成為葉節點鄰居 %s 的結點。"/>
+	<string id="20390" text="結點連線已建立, 正在關閉用戶連線。"/>
+	<string id="20391" text="正在拒絕來自於 %s 的連線, 因為這是一個 shielded 葉節點節點。"/>
+	<string id="20392" text="鄰居 %s 不是一個結點, 連線關閉。"/>
+	<string id="20393" text="正在關閉連線到非 Gnutella2 鄰居 %s。"/>
+	<string id="20394" text="鄰居 %s 想要成為結點, 連線關閉。"/>
+	<string id="20395" text="與鄰居 %s 的 Gnutella 連線已成功建立 (G%i.%i : %s)。"/>
+	<string id="20396" text="與鄰居 %s 的 Gnutella2 連線成功建立 (%s)。"/>
+	<string id="20397" text="連到 %s 的連線已被拒絕 (%s)。"/>
+	<string id="20398" text="正在關閉與 %s 多餘的連線。"/>
 	<string id="20399" text="與%s 的連線已逾時"/>
 	<string id="20400" text="Envy 正在為這個檔案切細: %Iu 檔:"/>
 	<string id="20407" text="移除"/>
@@ -2831,41 +2832,41 @@
 	<string id="20417" text="最近的新增部分"/>
 	<string id="20422" text="評分"/>
 	<string id="20424" text="優先順序"/>	<!-- Track number -->
-	<string id="20425" text="Envy 無法經由複製到資料夾 &quot;%s&quot;.安裝組檔 &quot;%s&quot;."/>
-	<string id="20426" text="您要下載這個組檔裡所有的檔案嗎?\n\n選擇取消以停止進一步的提示."/>
-	<string id="20427" text="Envy 已加入組檔 &quot;%s&quot; 至您的收藏."/>
-	<string id="20428" text="Envy 接收到組檔:\n\n&quot;%s&quot;.\n\n這個檔案看起來不是有效的組檔."/>
+	<string id="20425" text="Envy 無法經由複製到資料夾 &quot;%s&quot;.安裝組檔 &quot;%s&quot;。"/>
+	<string id="20426" text="您要下載這個組檔裡所有的檔案嗎?\n\n選擇取消以停止進一步的提示。"/>
+	<string id="20427" text="Envy 已加入組檔 &quot;%s&quot; 至您的收藏。"/>
+	<string id="20428" text="Envy 接收到組檔:\n\n&quot;%s&quot;。\n\n這個檔案看起來不是有效的組檔。"/>
 	<string id="20429" text="您要避免這個組檔提示您下載其他東西嗎?"/>
-	<string id="20430" text="您確定要執行檔案: &quot;%s&quot; ?\n\n 有些檔案可能對您的檔案造成損害. 執行本檔案前請確定其內容為何."/>
-	<!--string id="20431" text="您要永久刪除%i 個選擇的檔案嗎?\n\n這些檔案將移至 &quot;資訊回收筒&quot;, 如果您有啟用它的話."-->
-	<string id="20432" text="您確定要刪除 %i 選擇的專輯資料夾嗎?\n\n請留意這個動作不會刪除專輯資料夾內的檔案, 只會刪除資料夾本身."/>
+	<string id="20430" text="您確定要執行檔案: &quot;%s&quot; ?\n\n 有些檔案可能對您的檔案造成損害。 執行本檔案前請確定其內容為何。"/>
+	<!--string id="20431" text="您要永久刪除%i 個選擇的檔案嗎?\n\n這些檔案將移至 &quot;資訊回收筒&quot;, 如果您有啟用它的話。"-->
+	<string id="20432" text="您確定要刪除 %i 選擇的專輯資料夾嗎?\n\n請留意這個動作不會刪除專輯資料夾內的檔案, 只會刪除資料夾本身。"/>
 	<string id="20433" text="Envy 無法刪除檔案 \n\n%s"/>
-	<string id="20434" text="您的已下載檔案資料夾 &quot;%s&quot; 不在您的收藏裡.\n\n將您的已下載檔案資料夾放入收藏允許您更簡單地檢視與整理新的下載; 您還可以利用進階的Envy 功能, 像是下載檔驗證與自動更新. 將已下載檔放在您的收藏裡不代表一定要分享他們: 您可以為每個檔案選擇是否要分享.\n\n您現在要新增已下載檔資料夾至您的收藏嗎?"/>
-	<string id="20435" text="您的下載資料夾已經加入至您的收藏. 您也要分享它嗎?"/>
-	<!--string id="20436" text="您還沒有選擇一個與檔案產生關聯的多媒體播放程式, 像是 Nullsoft WinAmp. 您現在要選擇嗎?\n\nEnvy will pass the name of the file to your selected program with the &quot;/ADD&quot; argument."-->
+	<string id="20434" text="您的已下載檔案資料夾 &quot;%s&quot; 不在您的收藏裡。\n\n將您的已下載檔案資料夾放入收藏允許您更簡單地檢視與整理新的下載; 您還可以利用進階的Envy 功能, 像是下載檔驗證與自動更新。 將已下載檔放在您的收藏裡不代表一定要分享他們: 您可以為每個檔案選擇是否要分享。\n\n您現在要新增已下載檔資料夾至您的收藏嗎?"/>
+	<string id="20435" text="您的下載資料夾已經加入至您的收藏。 您也要分享它嗎?"/>
+	<!--string id="20436" text="您還沒有選擇一個與檔案產生關聯的多媒體播放程式, 像是 Nullsoft WinAmp。 您現在要選擇嗎?\n\nEnvy will pass the name of the file to your selected program with the &quot;/ADD&quot; argument。"-->
 	<string id="20436" text="此文件夾添加到庫中?\n\n%s"/>
 	<string id="20437" text="Ghost 文件S"/>
-	<string id="20438" text="正在編輯檔案 %i 的解釋資料."/>
+	<string id="20438" text="正在編輯檔案 %i 的解釋資料。"/>
 	<string id="20439" text="您即將修改這個檔案的解釋資料: %i , 您要繼續嗎?"/>
-	<string id="20440" text="無法移動檔案 %s. 另一個程式可能在使用它.\n\n您要以複製這個檔案的方式替代嗎?"/>
+	<string id="20440" text="無法移動檔案 %s。 另一個程式可能在使用它。\n\n您要以複製這個檔案的方式替代嗎?"/>
 	<string id="20441" text="Envy 無法重新命名檔案 \n\n%s\nto\n%s"/>
 	<string id="20442" text="目標檔案已經存在:\n\n%s\n\n.您要覆寫它嗎?"/>
 	<string id="20443" text="顯示所有的檔案類型"/>
 	<string id="20444" text="複製 URI"/>
-	<string id="20445" text="匯出 URIs..."/>
-	<string id="20446" text="這個檔案 &quot;%s&quot; 無法通過切細驗證測試, 可能不是您想要下載的檔案. 您確定要開啟它嗎?"/>
+	<string id="20445" text="匯出 URIs…"/>
+	<string id="20446" text="這個檔案 &quot;%s&quot; 無法通過切細驗證測試, 可能不是您想要下載的檔案。 您確定要開啟它嗎?"/>
 	<string id="20447" text="您要將&quot;潛在不安全的&quot;屬性從這個檔案移除嗎?"/>
 	<string id="20448" text="公眾"/>	<!--Shared-->
 	<string id="20449" text="私人"/>	<!--Unshared-->
-	<string id="20086" text="這個檔案 &quot;%s&quot; 尚未切細. 請等到檔案完成切細後,再試一次."/>
-	<string id="20450" text="選擇的資料夾的次資料夾 &quot;%s&quot; 已經是您的收藏的一部份了.\n新增這個資料夾會引起某些檔案被重新切細.\n\n您要繼續嗎?"/>
-	<string id="20451" text="目前沒有播放任何檔案. 在您的收藏裡雙點一個多媒體檔案播放."/>
+	<string id="20086" text="這個檔案 &quot;%s&quot; 尚未切細。 請等到檔案完成切細後,再試一次。"/>
+	<string id="20450" text="選擇的資料夾的次資料夾 &quot;%s&quot; 已經是您的收藏的一部份了。\n新增這個資料夾會引起某些檔案被重新切細。\n\n您要繼續嗎?"/>
+	<string id="20451" text="目前沒有播放任何檔案。 在您的收藏裡雙點一個多媒體檔案播放。"/>
 	<string id="20452" text="所有的多媒體檔案|*.asx;*.wax;*.m3u;*.wvx;*.wmx;*.asf;*.wav;*.snd;*.au;*.aif;*.aifc;*.aiff;*.wma;*.rm;*.mp3;*.ogg;*.ogm;*.cda;*.mid;*.rmi;*.midi;*.avi;*.asf;*.mpeg;*.mpg;*.m1v;*.mp2;*.mpa;*.mpe;*.wmv|播放清單|*.asx;*.wax;*.m3u;*.wvx;*.wmx|音訊檔|*.asf;*.wav;*.snd;*.au;*.aif;*.aifc;*.aiff;*.wma;*.rm;*.mp3;*.ogg;*.ogm|視訊檔|*.avi;*.asf;*.mpeg;*.mpg;*.m1v;*.mp2;*.mpa;*.mpe;*.wmv|CD 音軌|*.cda|MIDI 檔|*.mid;*.rmi;*.midi|所有的檔案|*.*||"/>
 	<string id="20453" text="無法載入多媒體檔 &quot;%s&quot;"/>
-	<string id="20454" text="這個檔案可能已毀損, 或是您可能沒有必要的 Codec 播放它."/>
-	<string id="20455" text="這個檔案的某些部分無法播放, 您可能需要下載額外的 codecs."/>
+	<string id="20454" text="這個檔案可能已毀損, 或是您可能沒有必要的 Codec 播放它。"/>
+	<string id="20455" text="這個檔案的某些部分無法播放, 您可能需要下載額外的 codecs。"/>
 	<string id="20456" text="播放清單"/>
-	<string id="20457" text="Envy 無法啟用 MediaServices 外掛. 請重新安裝 Envy, 並確認您有必要的多媒體 codecs 與安裝好的輸出驅動程式."/>
+	<string id="20457" text="Envy 無法啟用 MediaServices 外掛。 請重新安裝 Envy, 並確認您有必要的多媒體 codecs 與安裝好的輸出驅動程式。"/>
 	<string id="20460" text="ENVY 媒 系 &#160; 统"/>
 	<string id="20462" text="(沒有視覺效果)"/>
 	<!--string id="20464" text="Envy 已經完成下載:"-->
@@ -2892,12 +2893,12 @@
 	<string id="20485" text="限制上傳速度"/>
 	<string id="20490" text="多重"/>
 	<string id="20491" text="多重值"/>
-	<string id="20494" text="您還沒有在你的個人檔案裡輸入地點.\n\n輸入地點是個好點子, 因為其他人可得知你來自於哪個國家. 輸入地點並不會洩露任何資料.\n\n您確定要繼續下一步而不輸入地點嗎?"/>
-	<string id="20495" text="您還沒有在您的個人檔案裡輸入一個代號."/>
-	<string id="20496" text="您還尚未選擇您的年齡與性別. 您確定要跳過這個步驟繼續下一步嗎?"/>
+	<string id="20494" text="您還沒有在你的個人檔案裡輸入地點。\n\n輸入地點是個好點子, 因為其他人可得知你來自於哪個國家。 輸入地點並不會洩露任何資料。\n\n您確定要繼續下一步而不輸入地點嗎?"/>
+	<string id="20495" text="您還沒有在您的個人檔案裡輸入一個代號。"/>
+	<string id="20496" text="您還尚未選擇您的年齡與性別。 您確定要跳過這個步驟繼續下一步嗎?"/>
 	<string id="20499" text="新建文件夾"/>
-	<string id="20500" text="點選連線鈕開始."/>
-	<string id="20501" text="您還尚未連線至網路."/>
+	<string id="20500" text="點選連線鈕開始。"/>
+	<string id="20501" text="您還尚未連線至網路。"/>
 	<string id="20502" text="關閉中"/>
 	<string id="20503" text="壓縮:"/>
 	<string id="20504" text="解壓縮"/>
@@ -2934,60 +2935,60 @@
 	<string id="20541" text="連線中"/>
 	<string id="20542" text="已連線"/>
 	<string id="20543" text="中斷連線"/>
-	<string id="20544" text="正在關閉 Envy 網路核心..."/>
-	<string id="20545" text="由網路中斷連線."/>
+	<string id="20544" text="正在關閉 Envy 網路核心…"/>
+	<string id="20545" text="由網路中斷連線。"/>
 	<string id="20546" text="您要中斷連線嗎?"/>
-	<string id="20547" text="Gnutella2 是 Envy's 首次推出的網路. 停用對它的支援將可能嚴重影響搜尋結果的數量與品質. 您確定要這樣做嗎?"/>
-	<string id="20548" text="無法 bind to %s 連接埠 %i 用於輸入的連線. 將不支援輸入連線."/>
-	<string id="20549" text="無法解析 %s 的輸出連線. 輸出的連線將會使用預設的介面."/>
+	<string id="20547" text="Gnutella2 是 Envy's 首次推出的網路。 停用對它的支援將可能嚴重影響搜尋結果的數量與品質。 您確定要這樣做嗎?"/>
+	<string id="20548" text="無法 bind to %s 連接埠 %i 用於輸入的連線。 將不支援輸入連線。"/>
+	<string id="20549" text="無法解析 %s 的輸出連線。 輸出的連線將會使用預設的介面。"/>
 	<string id="20550" text="您的輸出頻寬太小, 無法啟用這個網路"/>
-	<string id="20551" text="受到防火牆保護, 無法監聽 輸入 連線."/>
-	<string id="20552" text="強迫您的電腦進入結點模式可能對 P2P 網路與效能有害. 讓Envy 自行決定是否進入結點模式為上上之策.\n\n 結點模式不會產生更好的搜尋結果, 或是給您任何優勢.\n\n您要不顧這些不利的條件, 繼續此動作嗎?"/>
-	<string id="20553" text="正在接受輸入TCP連線於 on %s 連接埠 %i."/>
-	<string id="20554" text="監聽 UDP 資料包 於 %s 連接埠 %i."/>
-	<string id="20555" text="輸出的連線將來自於 %s 連接埠 %i."/>
-	<string id="20556" text="無法辨識主機 &quot;%s&quot;."/>
-	<string id="20557" text="正在解析主機 &quot;%s&quot;..."/>
-	<string id="20558" text="正在傳送 &quot;%s&quot; 的詢問至 %s."/>
-	<string id="20560" text="安全性管理員拒絕了來自於 %s 的連線."/>
-	<string id="20561" text="安全性管理員禁止了來自於 %s 的連線."/>
-	<string id="20562" text="已新增一個安全性規則用來封鎖 %s."/>
-	<string id="20563" text="位址 %s 已經被您設定的安全性規則封鎖了."/>
-	<string id="20564" text="正在啟動 Envy 網路核心..."/>
-	<string id="20570" text="從 %s 接收到一個錯誤格式的 query hit 封包, 忽略中."/>
-	<string id="20571" text="%s: 從 %s 接收到一個錯誤格式的詢問封包, 忽略中."/>
-	<string id="20572" text="鄰居 %s 轉送了一個過高 TTL 的封包, 正在忽略封包 (TTL=%i, Hops=%i)."/>
-	<!--string id="20573" text="鄰居 %s 轉送了一個零 TTL 的封包, 忽略."-->
-	<string id="20574" text="鄰居 %s 轉送了一個不是使用 GGEP 編碼的延伸封包."/>
-	<string id="20575" text="鄰居 %s 傳送了一個無效詢問路由表更新, 正在忽略連線."/>
+	<string id="20551" text="受到防火牆保護, 無法監聽 輸入 連線。"/>
+	<string id="20552" text="強迫您的電腦進入結點模式可能對 P2P 網路與效能有害。 讓Envy 自行決定是否進入結點模式為上上之策。\n\n 結點模式不會產生更好的搜尋結果, 或是給您任何優勢。\n\n您要不顧這些不利的條件, 繼續此動作嗎?"/>
+	<string id="20553" text="正在接受輸入TCP連線於 on %s 連接埠 %i。"/>
+	<string id="20554" text="監聽 UDP 資料包 於 %s 連接埠 %i。"/>
+	<string id="20555" text="輸出的連線將來自於 %s 連接埠 %i。"/>
+	<string id="20556" text="無法辨識主機 &quot;%s&quot;。"/>
+	<string id="20557" text="正在解析主機 &quot;%s&quot;…"/>
+	<string id="20558" text="正在傳送 &quot;%s&quot; 的詢問至 %s。"/>
+	<string id="20560" text="安全性管理員拒絕了來自於 %s 的連線。"/>
+	<string id="20561" text="安全性管理員禁止了來自於 %s 的連線。"/>
+	<string id="20562" text="已新增一個安全性規則用來封鎖 %s。"/>
+	<string id="20563" text="位址 %s 已經被您設定的安全性規則封鎖了。"/>
+	<string id="20564" text="正在啟動 Envy 網路核心…"/>
+	<string id="20570" text="從 %s 接收到一個錯誤格式的 query hit 封包, 忽略中。"/>
+	<string id="20571" text="%s: 從 %s 接收到一個錯誤格式的詢問封包, 忽略中。"/>
+	<string id="20572" text="鄰居 %s 轉送了一個過高 TTL 的封包, 正在忽略封包 (TTL=%i, Hops=%i)。"/>
+	<!--string id="20573" text="鄰居 %s 轉送了一個零 TTL 的封包, 忽略。"-->
+	<string id="20574" text="鄰居 %s 轉送了一個不是使用 GGEP 編碼的延伸封包。"/>
+	<string id="20575" text="鄰居 %s 傳送了一個無效詢問路由表更新, 正在忽略連線。"/>
 	<string id="20576" text="正在送出詢問路由表至鄰居 %s (%i bit = %lu[%i], %i%% full)"/>
-	<string id="20577" text="從鄰居 %s 接收到不可預料的詢問路由表更新."/>
-	<string id="20578" text="鄰居 %s 更新了它的詢問路由表 (%i bit = %lu[%i], %i%% full)."/>
+	<string id="20577" text="從鄰居 %s 接收到不可預料的詢問路由表更新。"/>
+	<string id="20578" text="鄰居 %s 更新了它的詢問路由表 (%i bit = %lu[%i], %i%% full)。"/>
 	<string id="20579" text="%s -&gt; %s [%i/%i] %s %s"/>
-	<string id="20580" text="葉節點鄰居 %s 正在轉送詢問, 正在忽略連線."/>
-	<string id="20582" text="鄰居 %s 轉送了一個無效長度的 %s 封包, 忽略."/>
-	<string id="20584" text="鄰居 %s 轉送了一個過大的封包大小, 正在忽略連線."/>
-	<string id="20586" text="鄰居 %s 轉送了一個無法辨認的封包 (0x%.2x), 忽略中."/>
-	<string id="20587" text="鄰居 %s 轉送了一個無效位址資料的 pong, 忽略中."/>
-	<string id="20588" text="鄰居 %s 轉送了一個推播要求至 a firewalled 位址, 忽略中."/>
+	<string id="20580" text="葉節點鄰居 %s 正在轉送詢問, 正在忽略連線。"/>
+	<string id="20582" text="鄰居 %s 轉送了一個無效長度的 %s 封包, 忽略。"/>
+	<string id="20584" text="鄰居 %s 轉送了一個過大的封包大小, 正在忽略連線。"/>
+	<string id="20586" text="鄰居 %s 轉送了一個無法辨認的封包 (0x%.2x), 忽略中。"/>
+	<string id="20587" text="鄰居 %s 轉送了一個無效位址資料的 pong, 忽略中。"/>
+	<string id="20588" text="鄰居 %s 轉送了一個推播要求至 a firewalled 位址, 忽略中。"/>
 	<!-- Missing Scheduler/Security Strings -->
-	<string id="20620" text="Envy 正在活躍地搜尋網路..."/>
+	<string id="20620" text="Envy 正在活躍地搜尋網路…"/>
 	<string id="20621" text="點選這裡再次搜尋"/>
 	<string id="20622" text="所有網路"/>
-	<string id="20623" text="您即將開始一個新的搜尋. 您要清除上一個搜尋的結果嗎?"/>
-	<string id="20624" text="這個區域顯示您選擇的檔案的更多資訊."/>
+	<string id="20623" text="您即將開始一個新的搜尋。 您要清除上一個搜尋的結果嗎?"/>
+	<string id="20624" text="這個區域顯示您選擇的檔案的更多資訊。"/>
 	<string id="20625" text="%s 寫下:"/>
 	<string id="20626" text="%s 為這個檔案評分:"/>
 	<string id="20627" text="點選這裡預覽"/>
-	<string id="20628" text="預覽中..."/>
-	<string id="20629" text="無法從&quot;%s&quot;.載預覽內容."/>
-	<string id="20630" text="有 %i 個評論."/>
-	<string id="20631" text="有一個評論."/>
-	<string id="20632" text="%i 個可用的來源. (%s/s)"/>
-	<string id="20633" text="有一個可用的來源. (%s/s)"/>
-	<string id="20634" text="網路還沒有轉回任何匹配."/>
-	<string id="20635" text="找到一些結果, 不過已經被過濾掉了."/>
-	<string id="20636" text="在這個視窗還沒有開始任何搜尋."/>
+	<string id="20628" text="預覽中…"/>
+	<string id="20629" text="無法從&quot;%s&quot;.載預覽內容。"/>
+	<string id="20630" text="有 %i 個評論。"/>
+	<string id="20631" text="有一個評論。"/>
+	<string id="20632" text="%i 個可用的來源。 (%s/s)"/>
+	<string id="20633" text="有一個可用的來源。 (%s/s)"/>
+	<string id="20634" text="網路還沒有轉回任何匹配。"/>
+	<string id="20635" text="找到一些結果, 不過已經被過濾掉了。"/>
+	<string id="20636" text="在這個視窗還沒有開始任何搜尋。"/>
 	<string id="20637" text="沒有解釋資料"/>
 	<string id="20640" text="(清除搜尋記錄)"/>
 	<string id="20641" text="搜尋 Envy"/>
@@ -3014,29 +3015,29 @@
 	<string id="20664" text="%lu file in %lu hit|%lu file in %lu hits|%lu files in %lu hits"/>
 	<string id="20665" text="找到:"/>
 	<string id="20666" text="搜尋中:"/>
-	<string id="20668" text="搜尋中..."/>
+	<string id="20668" text="搜尋中…"/>
 	<string id="20669" text="純文字搜尋"/>
-	<string id="20670" text="Envy 正在搜尋網路..."/>
+	<string id="20670" text="Envy 正在搜尋網路…"/>
 	<string id="20673" text="自動"/>
 	<string id="20674" text="儲存完整檔案的資料夾與部分檔案的資料夾不可以是相同的一個"/>
-	<string id="20675" text="視窗系統不支援大於256 個字母的檔案路徑.\n請選擇檔案路徑較小的資料夾."/>
-	<string id="20676" text="未完成檔案不應該置於收藏裡, 因為會降低效能. 未完成檔案可以直接在傳輸視窗分享."/>
-	<string id="20677" text="請以這樣的方式輸入您想要設定的頻寬限制 &quot;123 kb/s&quot; =每秒123 kb, or &quot;123 KB/s&quot; =每秒123KB."/>
-	<string id="20678" text="eDonkey 網路實施漫長的排隊長度與很長的等待時間. 如果您限制您能接受的排隊隊伍的長度, 您可能無法開始下載.\n您確定要限制您能夠接受的排隊隊伍的長度嗎?"/>
+	<string id="20675" text="視窗系統不支援大於256 個字母的檔案路徑。\n請選擇檔案路徑較小的資料夾。"/>
+	<string id="20676" text="未完成檔案不應該置於收藏裡, 因為會降低效能。 未完成檔案可以直接在傳輸視窗分享。"/>
+	<string id="20677" text="請以這樣的方式輸入您想要設定的頻寬限制 &quot;123 kb/s&quot; =每秒123 kb, or &quot;123 KB/s&quot; =每秒123KB。"/>
+	<string id="20678" text="eDonkey 網路實施漫長的排隊長度與很長的等待時間。 如果您限制您能接受的排隊隊伍的長度, 您可能無法開始下載。\n您確定要限制您能夠接受的排隊隊伍的長度嗎?"/>
 	<string id="20680" text="Envy 設定"/>
 	<string id="20682" text="遠端操控已經停用"/>
 	<string id="20684" text="http://%s:%i/remote - 您必須選擇一個使用者名稱與密碼"/>
-	<string id="20685" text="無法接受連線, 沒有可用的URL."/>
-	<string id="20692" text="您確定要刪除 &quot;%s&quot; 外觀嗎? 這個動作將不能回復."/>
+	<string id="20685" text="無法接受連線, 沒有可用的URL。"/>
+	<string id="20692" text="您確定要刪除 &quot;%s&quot; 外觀嗎? 這個動作將不能回復。"/>
 	<string id="20699" text="构架"/>
 	<string id="20700" text="%s in : %s out (d:%I64i/u:%I64i)"/>
-	<string id="20701" text="已連線至 %lu 鄰居. %s 在本地收藏."/>
-	<string id="20702" text="結點模式 %lu 鄰居. %s 在本地的收藏."/>
-	<string id="20703" text="結點/超級用戶模式 %lu 鄰居. %s 在本地的收藏."/>
-	<string id="20704" text="超級用戶模式 %lu 鄰居. %s 在本地的收藏."/>
-	<string id="20705" text="已連線. %s 在本地的收藏."/>
-	<string id="20706" text="連線到網路中..."/>
-	<string id="20707" text="還沒連線到網路."/>
+	<string id="20701" text="已連線至 %lu 鄰居。 %s 在本地收藏。"/>
+	<string id="20702" text="結點模式 %lu 鄰居。 %s 在本地的收藏。"/>
+	<string id="20703" text="結點/超級用戶模式 %lu 鄰居。 %s 在本地的收藏。"/>
+	<string id="20704" text="超級用戶模式 %lu 鄰居。 %s 在本地的收藏。"/>
+	<string id="20705" text="已連線。 %s 在本地的收藏。"/>
+	<string id="20706" text="連線到網路中…"/>
+	<string id="20707" text="還沒連線到網路。"/>
 	<string id="20708" text="活躍中"/>
 	<string id="20709" text="不在活躍中"/>
 	<string id="20710" text="放晴了"/>
@@ -3075,16 +3076,16 @@
 	<string id="20746" text="未驗證"/>
 	<string id="20747" text="已驗證"/>
 	<string id="20748" text="驗證中"/>
-	<string id="20750" text="!歡迎使用 {version}\n\nEnvy 是完全免費的軟體.\n請有責任地使用, 並尊重智慧財產權."/>
-	<string id="20751" text="目前沒有活躍中的搜尋. 點選這裡搜尋檔案."/>
-	<string id="20752" text="您還尚未連線. 點選連線鈕開始."/>
-	<string id="20755" text="您確定要刪除樣版 &quot;%s&quot; ?\n 此動作不能回復."/>
+	<string id="20750" text="!歡迎使用 {version}\n\nEnvy 是完全免費的軟體。\n請有責任地使用, 並尊重智慧財產權。"/>
+	<string id="20751" text="目前沒有活躍中的搜尋。 點選這裡搜尋檔案。"/>
+	<string id="20752" text="您還尚未連線。 點選連線鈕開始。"/>
+	<string id="20755" text="您確定要刪除樣版 &quot;%s&quot; ?\n 此動作不能回復。"/>
 	<string id="20760" text="優先"/>
-	<string id="20762" text="這個檔案看起來是垃圾(spam)."/>
+	<string id="20762" text="這個檔案看起來是垃圾(spam)。"/>
 	<string id="20763" text="已加入黑名單:"/>
-	<string id="20764" text="您曾經下載過並且刪除這個檔案."/>
-	<string id="20765" text="下載清單已經有這個檔案了."/>
-	<string id="20766" text="您的收藏已經有這個檔案存在了."/>
+	<string id="20764" text="您曾經下載過並且刪除這個檔案。"/>
+	<string id="20765" text="下載清單已經有這個檔案了。"/>
+	<string id="20766" text="您的收藏已經有這個檔案存在了。"/>
 	<string id="20767" text="這個檔案的來源目前忙祿中"/>
 	<string id="20768" text="這個檔案的來源受到防火牆保護"/>
 	<string id="20769" text="這個檔案的來源可能不穩定"/>
@@ -3113,45 +3114,45 @@
 	<string id="20793" text="URL:"/>
 	<string id="20794" text="使用者代理:"/>
 	<string id="20795" text="%s in : %s out (d:%I64i/u:%I64i/s:%I64i)"/>
-	<string id="20798" text="Envy 已經完成下載最新的Envy 版本(%s). 您要立刻升級嗎?\n\n如果您選擇Yes, 在安裝升級版時會暫時關閉 Envy."/>
-	<string id="20800" text="正在傳送預設 HTML 回應至上傳主機 %s (%s)."/>
-	<string id="20801" text="來自於 %s 的輸入連線是 HTTP 上傳要求."/>
-	<string id="20802" text="上傳主機 %s (%s) 傳甕了一個瀏覽使用者的要求, 回應中..."/>
-	<string id="20803" text="在使用者代理黑名單上找到上傳主機 %s, 正在拒絕要求."/>
-	<string id="20804" text="正在拒絕由 %s 傳來的瀏覽使用者的請求, 因為太多瀏覽連線."/>
-	<string id="20805" text="已拒絕由 %s 傳來的瀏覽使用者要求."/>
-	<string id="20806" text="Queued 上傳 %s 重新要求地太快了, 正在關閉連線."/>
-	<string id="20807" text="正在拒絕上傳 &quot;%s&quot; 至 %s (%s), 因為同一時間太多來自於主機的併發事件."/>
-	<string id="20808" text="正在拒絕上傳 &quot;%s&quot; 至 %s (%s), 因為忙錄, 以及客戶端不支援排隊."/>
-	<string id="20809" text="正在拒絕上傳 &quot;%s&quot; 至 %s (%s), 所有匹配的排隊隊伍已無空位."/>
-	<string id="20810" text="上傳主機 %s 要求了一個不滿意的檔案分塊 &quot;%s&quot;."/>
-	<string id="20811" text="eDonkey2000 上傳不應該被取消. 您確定要取消這個上傳嗎?"/>
-	<string id="20812" text="無法開啟 &quot;%s&quot; 以上傳至主機 %s, 磁碟/檔案錯誤."/>
-	<string id="20813" text="正在啟始一個推播連線至 %s. %s"/>
-	<string id="20814" text="無法連線至主機 %s 進行推播."/>
-	<string id="20815" text="正在傳送上傳內容, 範圍 %I64i-%I64i 從 &quot;%s&quot; 至主機 %s (%s)."/>
-	<string id="20816" text="至%s的上傳連線已關閉."/>
-	<string id="20817" text="正在拒絕新的上傳至 %s 因為稍早的連線還在等待中."/>
-	<string id="20818" text="關閉較舊的上傳至 %s, 因為它已經重新整理連線."/>
-	<string id="20819" text="拒絕上傳至 %s (%s), 網路已停用."/>
-	<string id="20820" text="已停止上傳檔案 &quot;%s&quot; 至 %s, 因為檔案已被刪除."/>
-	<string id="20821" text="上傳檔案 &quot;%s&quot; 至主機 %s..."/>
-	<string id="20822" text="上傳主機 %s 要求了未知的或是不可用的物件 &quot;%s&quot;."/>
-	<string id="20823" text="已完成上傳 &quot;%s&quot; 的 part 至 %s."/>
-	<string id="20824" text="與 %s 的推播連線已建立, 等待信號交換中..."/>
-	<string id="20825" text="上傳主機 %s 要求了 &quot;%s&quot; 有著不同的SHA1."/>
-	<string id="20826" text="正在傳送上傳標頭, 從 &quot;%s&quot; 至主機 %s (%s)."/>
-	<string id="20827" text="正在上傳檔案&quot;%s&quot;.的解釋資料 至 %s."/>
-	<string id="20828" text="上傳主機 %s 傳送了一個無效的 HTTP 要求."/>
-	<string id="20830" text="正在傳送上傳內容分塊 %I64i-%I64i 從部份檔案 &quot;%s&quot; 至主機 %s (%s)."/>
-	<string id="20832" text="拒絕上傳預覽 &quot;%s&quot; 至 %s, 因為太多預覽連線."/>
-	<string id="20833" text="Scheduling a dynamic preview of &quot;%s&quot; for upload to %s."/>
-	<string id="20834" text="上傳主機 %s 要求預覽 &quot;%s&quot;, 但是沒有可用的預覽."/>
-	<string id="20835" text="正在上傳預覽 &quot;%s&quot; 至 %s."/>
-	<string id="20836" text="正在拒絕推播要求至 %s, 因為它有太多上傳連線."/>
-	<!--string id="20837" text="來自於 %s 的Legacy 推播要求了一個未知的檔案, 無論如何連線..."-->
-	<string id="20838" text="過於忙碌, 無法上載&quot;%s&quot;.至 %s, 排隊位置於 #%i of %i (&quot;%s&quot;.."/>
-	<string id="20840" text="至 %s 的上傳連線丟失, 保留排隊位置."/>
+	<string id="20798" text="Envy 已經完成下載最新的Envy 版本(%s)。 您要立刻升級嗎?\n\n如果您選擇Yes, 在安裝升級版時會暫時關閉 Envy。"/>
+	<string id="20800" text="正在傳送預設 HTML 回應至上傳主機 %s (%s)。"/>
+	<string id="20801" text="來自於 %s 的輸入連線是 HTTP 上傳要求。"/>
+	<string id="20802" text="上傳主機 %s (%s) 傳甕了一個瀏覽使用者的要求, 回應中…"/>
+	<string id="20803" text="在使用者代理黑名單上找到上傳主機 %s, 正在拒絕要求。"/>
+	<string id="20804" text="正在拒絕由 %s 傳來的瀏覽使用者的請求, 因為太多瀏覽連線。"/>
+	<string id="20805" text="已拒絕由 %s 傳來的瀏覽使用者要求。"/>
+	<string id="20806" text="Queued 上傳 %s 重新要求地太快了, 正在關閉連線。"/>
+	<string id="20807" text="正在拒絕上傳 &quot;%s&quot; 至 %s (%s), 因為同一時間太多來自於主機的併發事件。"/>
+	<string id="20808" text="正在拒絕上傳 &quot;%s&quot; 至 %s (%s), 因為忙錄, 以及客戶端不支援排隊。"/>
+	<string id="20809" text="正在拒絕上傳 &quot;%s&quot; 至 %s (%s), 所有匹配的排隊隊伍已無空位。"/>
+	<string id="20810" text="上傳主機 %s 要求了一個不滿意的檔案分塊 &quot;%s&quot;。"/>
+	<string id="20811" text="eDonkey2000 上傳不應該被取消。 您確定要取消這個上傳嗎?"/>
+	<string id="20812" text="無法開啟 &quot;%s&quot; 以上傳至主機 %s, 磁碟/檔案錯誤。"/>
+	<string id="20813" text="正在啟始一個推播連線至 %s。 %s"/>
+	<string id="20814" text="無法連線至主機 %s 進行推播。"/>
+	<string id="20815" text="正在傳送上傳內容, 範圍 %I64i-%I64i 從 &quot;%s&quot; 至主機 %s (%s)。"/>
+	<string id="20816" text="至%s的上傳連線已關閉。"/>
+	<string id="20817" text="正在拒絕新的上傳至 %s 因為稍早的連線還在等待中。"/>
+	<string id="20818" text="關閉較舊的上傳至 %s, 因為它已經重新整理連線。"/>
+	<string id="20819" text="拒絕上傳至 %s (%s), 網路已停用。"/>
+	<string id="20820" text="已停止上傳檔案 &quot;%s&quot; 至 %s, 因為檔案已被刪除。"/>
+	<string id="20821" text="上傳檔案 &quot;%s&quot; 至主機 %s…"/>
+	<string id="20822" text="上傳主機 %s 要求了未知的或是不可用的物件 &quot;%s&quot;。"/>
+	<string id="20823" text="已完成上傳 &quot;%s&quot; 的 part 至 %s。"/>
+	<string id="20824" text="與 %s 的推播連線已建立, 等待信號交換中…"/>
+	<string id="20825" text="上傳主機 %s 要求了 &quot;%s&quot; 有著不同的SHA1。"/>
+	<string id="20826" text="正在傳送上傳標頭, 從 &quot;%s&quot; 至主機 %s (%s)。"/>
+	<string id="20827" text="正在上傳檔案&quot;%s&quot;.的解釋資料 至 %s。"/>
+	<string id="20828" text="上傳主機 %s 傳送了一個無效的 HTTP 要求。"/>
+	<string id="20830" text="正在傳送上傳內容分塊 %I64i-%I64i 從部份檔案 &quot;%s&quot; 至主機 %s (%s)。"/>
+	<string id="20832" text="拒絕上傳預覽 &quot;%s&quot; 至 %s, 因為太多預覽連線。"/>
+	<string id="20833" text="Scheduling a dynamic preview of &quot;%s&quot; for upload to %s。"/>
+	<string id="20834" text="上傳主機 %s 要求預覽 &quot;%s&quot;, 但是沒有可用的預覽。"/>
+	<string id="20835" text="正在上傳預覽 &quot;%s&quot; 至 %s。"/>
+	<string id="20836" text="正在拒絕推播要求至 %s, 因為它有太多上傳連線。"/>
+	<!--string id="20837" text="來自於 %s 的Legacy 推播要求了一個未知的檔案, 無論如何連線…"-->
+	<string id="20838" text="過於忙碌, 無法上載&quot;%s&quot;.至 %s, 排隊位置於 #%i of %i (&quot;%s&quot;)。"/>
+	<string id="20840" text="至 %s 的上傳連線丟失, 保留排隊位置。"/>
 	<string id="20841" text="新的排隊隊伍"/>
 	<string id="20842" text="所有的檔案"/>
 	<string id="20843" text="DC++ Guard"/>
@@ -3167,19 +3168,19 @@
 	<string id="20854" text="部分的"/>
 	<string id="20855" text="排隊"/>
 	<string id="20856" text="Torrent 上傳"/>
-	<string id="20857" text="離線排隊中的上傳主機 %s 過期, 移除中."/>
-	<string id="20858" text="等待由上傳主機 %s 傳來的要求已逾時."/>
-	<string id="20859" text="正在關閉上傳連線 %s , 因為缺乏流量."/>
-	<string id="20860" text="正在上傳 &quot;%s&quot; 的 tiger-tree 資料至 %s."/>
-	<string id="20861" text="移除上傳 &quot;%s&quot; 至 %s."/>
+	<string id="20857" text="離線排隊中的上傳主機 %s 過期, 移除中。"/>
+	<string id="20858" text="等待由上傳主機 %s 傳來的要求已逾時。"/>
+	<string id="20859" text="正在關閉上傳連線 %s , 因為缺乏流量。"/>
+	<string id="20860" text="正在上傳 &quot;%s&quot; 的 tiger-tree 資料至 %s。"/>
+	<string id="20861" text="移除上傳 &quot;%s&quot; 至 %s。"/>
 	<string id="20862" text="新增"/>
 	<string id="20864" text="瀏覽"/>
 	<string id="20865" text="連線"/>
 	<string id="20866" text="檔案名稱:"/>
 	<string id="20867" text="主機:"/>
 	<string id="20868" text="連接埠:"/>
-	<!--string id="20869" text="無法顯示 URL 動作對話框, 因為 Envy 忙祿中."-->
-	<string id="20870" text="無法解析 URL: Envy 不了解這個 URL."/>
+	<!--string id="20869" text="無法顯示 URL 動作對話框, 因為 Envy 忙祿中。"-->
+	<string id="20870" text="無法解析 URL: Envy 不了解這個 URL。"/>
 	<string id="20871" text="接收到 URL &quot;%s&quot;"/>
 	<string id="20872" text="類型:"/>
 	<string id="20874" text="URL:"/>
@@ -3187,24 +3188,24 @@
 	<string id="20880" text="編輯我的個人檔案"/>
 	<string id="20882" text="%u 張影像選擇。你肯定嗎？"/>
 	<string id="20883" text="沒有可用的 URN"/>
-	<string id="20884" text="UPnP Device Host 服务未运行.请重新设置该服务.\n您需要将该服务的启动类型设置为&quot;自动&quot;."/>
-	<string id="20885" text="切換檢視方式將關閉任何已開啟的視窗. 您確定要切換嗎?"/>
-	<string id="20886" text="改變介面顯示方向需要重新啟動 Envy.\n\n現在要離開嗎?"/>
+	<string id="20884" text="UPnP Device Host 服务未运行。请重新设置该服务。\n您需要将该服务的启动类型设置为&quot;自动&quot;。"/>
+	<string id="20885" text="切換檢視方式將關閉任何已開啟的視窗。 您確定要切換嗎?"/>
+	<string id="20886" text="改變介面顯示方向需要重新啟動 Envy。\n\n現在要離開嗎?"/>
 	<string id="20890" text="歡迎使用 Envy"/>
 	<string id="20891" text="離開"/>
-	<string id="20892" text="请稍候: 更新 edonkey 服务器列表..."/>
-	<string id="20893" text="请稍候: 更新发现服务器..."/>
-	<!--string id="20894" text="请稍候: 查找 UPnP 驱动器并进行设置..."-->
-	<!--string id="20894" text="您已經示意要自行設定防火牆或是NAT 路由器的連接埠轉送(Port-Forwarding).\n\n請設定您的網路以轉送TCP 與 UDP 連接埠到 %i 您的本機電腦."-->
+	<string id="20892" text="请稍候: 更新 edonkey 服务器列表…"/>
+	<string id="20893" text="请稍候: 更新发现服务器…"/>
+	<!--string id="20894" text="请稍候: 查找 UPnP 驱动器并进行设置…"-->
+	<!--string id="20894" text="您已經示意要自行設定防火牆或是NAT 路由器的連接埠轉送(Port-Forwarding)。\n\n請設定您的網路以轉送TCP 與 UDP 連接埠到 %i 您的本機電腦。"-->
 	<string id="20895" text="任何4-5位數 (1050-65500)"/>
-	<string id="20896" text="您還沒有具體指定連線速度. 繼續下一步動作前, 請選擇您的網路連線類型或是自行輸入連線速度."/>
+	<string id="20896" text="您還沒有具體指定連線速度。 繼續下一步動作前, 請選擇您的網路連線類型或是自行輸入連線速度。"/>
 	<string id="20897" text="您在分享的資料夾已經是另一個分享資料夾的一部份:\n\n%s"/>
-	<string id="20898" text="您還沒有具體指定任何要分享的資料夾. 您確定要這樣做嗎?"/>
+	<string id="20898" text="您還沒有具體指定任何要分享的資料夾。 您確定要這樣做嗎?"/>
 	<string id="20899" text="歲"/>
 	<!--string value="Torrent 資訊"-->
 	<!--string value="伺服器(Tracker)沒有回應- 重新嘗試取得用戶清單 (%i of %i)"-->
-	<!--string id="16771" text="您已經有檔案 &quot;%s&quot; 在收藏裡了. 您仍舊要下載它嗎?"-->
-	<!--string id="16801" text="在繼續動作前, 請選擇您使用的網際網路的連線方式."-->
+	<!--string id="16771" text="您已經有檔案 &quot;%s&quot; 在收藏裡了。 您仍舊要下載它嗎?"-->
+	<!--string id="16801" text="在繼續動作前, 請選擇您使用的網際網路的連線方式。"-->
 </strings>
 <!-- Localized Dialog Text, "cookie" verifies that the skin matches current dialog -->
 <dialogs>
@@ -3264,8 +3265,8 @@
 		<control/>
 		<control/>
 		<control text="天"/>
-		<control text="立刻清除歷史記錄"/>
-		<control text="立刻清除歷史記錄"/>
+		<control text="清除歷史記錄"/>
+		<control text="清除幽靈文件"/>
 		<control text="以下可以安全開啟:"/>
 		<control/>
 		<control text="新增"/>
@@ -3289,8 +3290,8 @@
 		<control text="新增"/>
 		<control text="移除"/>
 		<control text="音訊視覺效果外掛:"/>
-		<control text="選擇外掛..."/>
-		<control text="警告: 选择一个额外的媒体滤镜将自动禁用所有的媒体和可视化插件."/>
+		<control text="選擇外掛…"/>
+		<control text="警告: 选择一个额外的媒体滤镜将自动禁用所有的媒体和可视化插件。"/>
 	</dialog>
 	<!--Missing dialog name="CIRCSettingsPage"-->
 	<dialog name="CCommunitySettingsPage" cookie="BuBuBuBuBuBuBuBuBuSt" caption="社群">
@@ -3303,7 +3304,7 @@
 		<control text="我的個人檔案"/>
 		<control text="`編輯我的個人檔案"/>
 		<control text="信息:"/>
-		<control text="您能夠使用 G2 使用者個人檔案來分享關於自己的資料, 興趣與推薦的檔案以及網站."/>
+		<control text="您能夠使用 G2 使用者個人檔案來分享關於自己的資料, 興趣與推薦的檔案以及網站。"/>
 	</dialog>
 	<dialog name="CRemoteSettingsPage" cookie="BuBuStBuStStEdEdStBuSt" caption="遠端操控">
 		<control text="啟用:"/>
@@ -3316,7 +3317,7 @@
 		<control/>
 		<control/>
 		<control text="信息:"/>
-		<control text="Envy 在您的電腦上運作時, 您可以從遠端使用瀏覽器操控它. 您的電腦必須能夠啟用輸入連線以使用這個功能(例: 正確設定的路由器...等等)."/>
+		<control text="Envy 在您的電腦上運作時, 您可以從遠端使用瀏覽器操控它。 您的電腦必須能夠啟用輸入連線以使用這個功能(例: 正確設定的路由器…等等)。"/>
 	</dialog>
 	<dialog name="CWebSettingsPage" cookie="BuStBuBuBuBuBuBuBuBuCoBuBuSt" caption="網際網路">
 		<control text="P2P 連結處理:"/>
@@ -3332,7 +3333,7 @@
 		<control/>
 		<control text="新增"/>
 		<control text="移除"/>
-		<control text="這個下載管理員外掛將只嘗試下載以下的檔案類型. 其他的檔案類型交由您的瀏覽器來處理. Envy 在執行時才能管理下載."/>
+		<control text="這個下載管理員外掛將只嘗試下載以下的檔案類型。 其他的檔案類型交由您的瀏覽器來處理。 Envy 在執行時才能管理下載。"/>
 	</dialog>
 	<dialog name="CConnectionSettingsPage" cookie="BuStCoStCoStEdBuBuBuStCoStCoBuStCoBuBuBuStEdmsStEdms" caption="連線">
 		<control text="輸入位址:"/>
@@ -3385,8 +3386,8 @@
 		<control text="最大排隊長度:"/>
 		<control/>
 		<control text="安全性:"/>
-		<control text="只與您連線的網路下載與上傳."/>
-		<control text="AntiVirus:"/>
+		<control text="只與您連線的網路下載與上傳。"/>
+		<control text="選擇防毒軟體:"/>
 		<control/>
 	</dialog>
 	<dialog name="CUploadsSettingsPage" cookie="BuBuBuBuBuStEdmsBuCoBuBuBuStCoStCoBuSyBuBuBuSt" caption="上傳">
@@ -3409,27 +3410,27 @@
 		<control text="平均|最大 (嚴格)"/>
 		<control text="排隊隊伍規則:"/>
 		<control/>
-		<control text="新增..."/>
-		<control text="編輯..."/>
+		<control text="新增…"/>
+		<control text="編輯…"/>
 		<control text="刪除"/>
 		<control text="(變更即刻生效!)"/>
 	</dialog>
 	<dialog name="CNetworksSettingsPage" cookie="StBuStBuStBuStBuStBuStBuStBuStBuSt" caption="網路">
-		<control text="Envy 為萬用檔案分享軟體, 可同時連線到多個 P2P 網路. 本頁可以選擇您要連線的 P2P 網路, 以及每個網路的專用設定."/>
+		<control text="Envy 為萬用檔案分享軟體, 可同時連線到多個 P2P 網路。 本頁可以選擇您要連線的 P2P 網路, 以及每個網路的專用設定。"/>
 		<control text="Gnutella2 網路:"/>
 		<control text="Gnutella2 網路是 Envy 初次推出的網路, 提供比其他 P2P 網路更多的功能與更佳的效能.強烈推薦使用"/>
 		<control text="顯示 Gnutella2 (G2)"/>
 		<control text="規劃 Gnutella2"/>
 		<control text="原始 Gnutella 網路:"/>
-		<control text="雖然原始的 Gnutella 網路的功能不如 Gnutella2, 而且擁有的檔案數又少於 eDonkey, 它仍舊是寶貴的資源."/>
+		<control text="雖然原始的 Gnutella 網路的功能不如 Gnutella2, 而且擁有的檔案數又少於 eDonkey, 它仍舊是寶貴的資源。"/>
 		<control text="顯示 Gnutella"/>
 		<control text="規劃 Gnutella"/>
 		<control text="eDonkey 網路:"/>
-		<control text="The eDonkey 網路是一個十分熱門, 以伺服器構成的網路. 功能的多樣性不如 Gnutella2, 但是 eDonkey 擁有十分龐大的檔案數量."/>
+		<control text="The eDonkey 網路是一個十分熱門, 以伺服器構成的網路。 功能的多樣性不如 Gnutella2, 但是 eDonkey 擁有十分龐大的檔案數量。"/>
 		<control text="顯示 eDonkey2000 (ED2K)"/>
 		<control text="規劃 eDonkey"/>
 		<control text="DC++ 網路:"/>
-		<control text="The DC++ 網路是一個十分熱門, 以伺服器構成的網路. 功能的多樣性不如 Gnutella2, 但是 eDonkey 擁有十分龐大的檔案數量."/>
+		<control text="The DC++ 網路是一個十分熱門, 以伺服器構成的網路。 功能的多樣性不如 Gnutella2, 但是 eDonkey 擁有十分龐大的檔案數量。"/>
 		<control text="顯示 DC++ (DC)"/>
 		<control text="規劃 DC++"/>
 	</dialog>
@@ -3464,7 +3465,7 @@
 		<control text="用戶對用戶:"/>
 		<control/>
 		<control/>
-		<control text="Link Compression:"/>
+		<control text="連接壓縮:"/>
 		<control text="結點對葉節點"/>
 		<control text="葉節點對結點"/>
 		<control text="結點對結點"/>
@@ -3474,41 +3475,41 @@
 		<control text="本次連線至 eDonkey 網路"/>
 		<control text="自動連線"/>
 		<control text="客戶端連結的連線:"/>
-		<control text="...的連線數不超過:"/>
+		<control text="…的連線數不超過:"/>
 		<control/>
 		<control/>
-		<control text="其他的 eDonkey 客戶端."/>
+		<control text="其他的 eDonkey 客戶端。"/>
 		<control text="全球搜尋:"/>
 		<control text="從伺服器快取搜尋已知的遠端伺服器:"/>
-		<control text="在...之後停止搜尋:"/>
+		<control text="在…之後停止搜尋:"/>
 		<control/>
 		<control/>
-		<control text="搜尋結果."/>
+		<control text="搜尋結果。"/>
 		<control text="从连接接收和更新服务器列表"/>
 		<control text="eDonkey 工具箱:"/>
-		<control text="下載..."/>
+		<control text="下載…"/>
 		<control text="從網際網路下載 eDonkey 伺服器清單:"/>
 	</dialog>
 	<dialog name="CDCSettingsPage" cookie="BuBuBuBuStEdmsStBuStBuBuSt" caption="DC++">
-		<control text="_DC++ 網路:"/>
+		<control text="DC++ 網路:"/>
 		<control text="Connect to DC++ now"/>
 		<control text="Connect to DC++ at startup"/>
-		<control text="_Hubs:"/>
+		<control text="Hubs:"/>
 		<control text="Connect by default to:"/>
 		<control/>
 		<control/>
-		<control text="DC++ hubs."/>
-		<control text="_Info:"/>
-		<control text="DC++ works by connecting to specific &quot;hub&quot; communities. Please select hubs from the &quot;Hostcache&quot; advanced view window (F8), otherwise one will be randomly selected."/>
-		<control text="_工具箱:"/>
-		<control text="下載..."/>
-		<control text="Update DC++ hubs from the web. (hublist.xml.bz2)"/>
+		<control text="DC++ hubs。"/>
+		<control text="訊息:"/>
+		<control text="DC++ works by connecting to specific &quot;hub&quot; communities。 Please select hubs from the &quot;Hostcache&quot; advanced view window (F8), otherwise one will be randomly selected。"/>
+		<control text="工具箱:"/>
+		<control text="下載…"/>
+		<control text="Update DC++ hubs from the web。 (hublist.xml.bz2)"/>
 	</dialog>
 	<dialog name="CBitTorrentSettingsPage" cookie="BuEdmsStEdmsStBuBuBuBuBuEdmsStBuEdBuBuEdBuStEd" caption="BitTorrent">
 		<control text="下載連線:"/>
 		<control/>
 		<control/>
-		<control text="同時進行...個 Torrent"/>
+		<control text="同時進行…個 Torrent"/>
 		<control/>
 		<control/>
 		<control text="客戶端連線"/>
@@ -3540,7 +3541,7 @@
 		<control/>
 		<control text="*Mix"/>
 		<control text="刪除"/>
-		<control text="安裝..."/>
+		<control text="安裝…"/>
 		<control text="更多外觀"/>
 	</dialog>
 	<dialog name="CPluginsSettingsPage" cookie="SyBuStStStEdBuBu" caption="外掛">
@@ -3550,10 +3551,10 @@
 		<control/>
 		<control text="敘述:"/>
 		<control/>
-		<control text="設定..."/>
+		<control text="設定…"/>
 		<control text="取得更多"/>
 	</dialog>
-	<dialog name="CAdvancedSettingsPage" cookie="SyBuStEdmsEdCoBuBu" caption="進階">
+	<dialog name="CAdvancedSettingsPage" cookie="SyBuStEdmsEdCoBuBuStEd" caption="進階">
 		<control/>
 		<control text="敘述:"/>
 		<control text="設定的屬性:"/>
@@ -3563,12 +3564,14 @@
 		<control/>
 		<control/>
 		<control text="恢復默認"/>
+		<control/>
+		<control/>
 	</dialog>
 	<dialog name="CProtocolsSettingsPage" cookie="BuSy" caption="協定">
 		<control text="Envy 通用結構協定探索器:"/>
 		<control/>
 	</dialog>
-	<dialog name="CQueuePropertiesDlg" cookie="BuEdBuBuBuBuBuEdBuEdBuCoBuEdBuSyBuBuStEdmsStEdmsStEdmsBuStEdStEdmsBuEdmsBuBuBu" caption="Upload Queue Properties">
+	<dialog name="CQueuePropertiesDlg" cookie="BuEdBuBuBuBuBuEdBuEdBuCoBuEdBuSyBuBuStEdmsStEdmsStEdmsBuStEdStEdmsBuEdmsBuBuBu" caption="上傳隊列屬性">
 		<control text="名稱:"/>
 		<control/>
 		<control text="進入排隊隊伍的條件:"/>
@@ -3580,7 +3583,7 @@
 		<control text="最大來源檔案大小:"/>
 		<control/>
 		<control text="標示的檔案:"/>
-		<control text="Popular|Release"/>
+		<control text="熱門|發行"/>
 		<control text="檔案名稱比對:"/>
 		<control/>
 		<control text="協定:"/>
@@ -3610,9 +3613,9 @@
 		<control text="獎勵上傳者"/>
 	</dialog>
 	<dialog name="CWizardWelcomePage" cookie="StStStStStStStStStStStStSt" caption="歡迎使用 Envy (1/8)">
-		<control text="歡迎使用Envy."/>
-		<control text="如果您從來沒有使用過 Envy 或是其他P2P 客戶端軟體, 這個快速啟動精靈將幫助您經由幾個步驟設定."/>
-		<control text="如果您是進階使用者, 您可以透過工具選單讀取 Envy 全部的選項. 點選 離開 可以隨時關閉精靈."/>
+		<control text="歡迎使用Envy。"/>
+		<control text="如果您從來沒有使用過 Envy 或是其他P2P 客戶端軟體, 這個快速啟動精靈將幫助您經由幾個步驟設定。"/>
+		<control text="如果您是進階使用者, 您可以透過工具選單讀取 Envy 全部的選項。 點選 離開 可以隨時關閉精靈。"/>
 		<control text="本精靈將可以協助您:"/>
 		<control/>
 		<control text="讓 Envy 知道您用的網際網路連線為何"/>
@@ -3621,11 +3624,11 @@
 		<control/>
 		<control text="連接至您選擇的 P2P 網路, 然後"/>
 		<control/>
-		<control text="開始使用Envy."/>
+		<control text="開始使用Envy。"/>
 		<control/>
 	</dialog>
 	<dialog name="CWizardConnectionPage" cookie="StStCoStStCoStCoStCoStEdBuStms" caption="歡迎使用者 Envy (2/8)">
-		<control text="為了達到最佳效能, Envy 需要知道您的上網方式/地點."/>
+		<control text="為了達到最佳效能, Envy 需要知道您的上網方式/地點。"/>
 		<control text="如果知道您網際網路的頻寬, 請選擇最接近的速度:"/>
 		<control text="| 撥接網路| ISDN 128K| DSL 768K| DSL 1.5| Cable 3| DSL 4| DSL2 8| FIOS 10| DSL2 12| FIOS 15| FIOS 20| FIOS 25| FIOS 30| FIOS 50| T1| T3| 區域網路| OC3"/>
 		<control text="測試 Speedtest.net"/>
@@ -3642,14 +3645,14 @@
 		<control/>
 	</dialog>
 	<dialog name="CWizardNetworksPage" cookie="StBuStBuStBuStBu" caption="歡迎來到 Envy (3/8)">
-		<control text="Envy 為萬用型檔案交換程式, 可同時連線至多種 P2P 網路. 您可在這邊選擇要連線的網路. 您可稍後任意調整這些設定."/>
+		<control text="Envy 為萬用型檔案交換程式, 可同時連線至多種 P2P 網路。 您可在這邊選擇要連線的網路。 您可稍後任意調整這些設定。"/>
 		<control text="連線至 Gnutella2 (強烈建議)"/>
-		<control text=" Gnutella2 網路是 Envy 首次推出的網路, 比其他P2P 網路提供更多的功能與更佳的效能."/>
+		<control text=" Gnutella2 網路是 Envy 首次推出的網路, 比其他P2P 網路提供更多的功能與更佳的效能。"/>
 		<control text="連線至原始的 Gnutella"/>
-		<control text="雖然原始的 Gnutella 網路比 Gnutella2 網路的功能還少, 以及比起eDonkey2000 有更少的檔案, 它仍是寶貴的資源."/>
+		<control text="雖然原始的 Gnutella 網路比 Gnutella2 網路的功能還少, 以及比起eDonkey2000 有更少的檔案, 它仍是寶貴的資源。"/>
 		<control text="連線至 eDonkey2000"/>
-		<control text="eDonkey2000 網路依賴伺服器運作. 盡管功能比 Gnutella2 少, 但是 eDonkey2000 流通的檔案數量卻十分驚人."/>
-		<control text="管理 torrent 連結."/>
+		<control text="eDonkey2000 網路依賴伺服器運作。 盡管功能比 Gnutella2 少, 但是 eDonkey2000 流通的檔案數量卻十分驚人。"/>
+		<control text="管理 torrent 連結。"/>
 	</dialog>
 	<dialog name="CWizardFoldersPage" cookie="StStEdBuStEdBuStEdBuSt" caption="歡迎來到 Envy (4/8)">
 		<control text="Envy 第一部分文件下載到一個私人文件夾，然後將它們移動完成後按下載組。"/>
@@ -3665,17 +3668,17 @@
 		<control text="常見的文件類型設置為子最初的默認位置，但組可以很容易地定制右鍵單擊。只需拖放文件。"/>
 	</dialog>
 	<dialog name="CWizardSharePage" cookie="StStStSyBuBuSt" caption="歡迎使用 Envy (5/8)">
-		<control text="P2P 網路的有效性取決於使用它的用戶. 所有可以下載的檔案內容都是由其他使用者貢獻的."/>
-		<control text="分享您的檔案並不是使用 Envy 的所需條件, 但是某些軟體對於不分享任何檔案的使用者會採取不同的對待方式."/>
-		<control text="如果您想要分享您的資料夾(如果有的話), 請指示. 按下新增鈕即可新增資料夾."/>
+		<control text="P2P 網路的有效性取決於使用它的用戶。 所有可以下載的檔案內容都是由其他使用者貢獻的。"/>
+		<control text="分享您的檔案並不是使用 Envy 的所需條件, 但是某些軟體對於不分享任何檔案的使用者會採取不同的對待方式。"/>
+		<control text="如果您想要分享您的資料夾(如果有的話), 請指示。 按下新增鈕即可新增資料夾。"/>
 		<control/>
-		<control text="新增..."/>
+		<control text="新增…"/>
 		<control text="移除"/>
-		<control text="警告: 在大部分的國家, 散佈著作權保護的作品是違法行為."/>
+		<control text="警告: 在大部分的國家, 散佈著作權保護的作品是違法行為。"/>
 	</dialog>
-	<dialog name="CFolderScanDlg" cookie="StStStStStStBu" caption="掃瞄資料夾...">
+	<dialog name="CFolderScanDlg" cookie="StStStStStStBu" caption="掃瞄資料夾…">
 		<control/>
-		<control text="..."/>
+		<control text="…"/>
 		<control text="檔案:"/>
 		<control text="0"/>
 		<control text="容量:"/>
@@ -3683,13 +3686,13 @@
 		<control text="關閉"/>
 	</dialog>
 	<dialog name="CWizardInterfacePage" cookie="StBuBuBuStStBuBuBuBuBuSt" caption="歡迎使用 Envy (6/8)">
-		<control text="Envy 支援十分彈性化的使用介面, 所以請選擇您最感到順手的介面吧. 您可以隨時更改這些設定."/>
+		<control text="Envy 支援十分彈性化的使用介面, 所以請選擇您最感到順手的介面吧。 您可以隨時更改這些設定。"/>
 		<control text="請選擇使用者介面:"/>
 		<control text="進階模式"/>
 		<control text="標準模式"/>
-		<control text="進階模式提供進階使用者更多的指令與視窗顯示...等等."/>
-		<control text="簡單明瞭的選單與按鈕."/>
-		<control text="顯示簡化的下載進度棒."/>
+		<control text="進階模式提供進階使用者更多的指令與視窗顯示…等等。"/>
+		<control text="簡單明瞭的選單與按鈕。"/>
+		<control text="顯示簡化的下載進度棒。"/>
 		<control text="選擇外觀:"/>
 		<control text="沒有變化"/>
 		<control text="Windows Skin"/>
@@ -3697,12 +3700,12 @@
 		<control text=""/>
 	</dialog>
 	<dialog name="CWizardProfilePage" cookie="StStEdStCoCoStCoStCoStEd" caption="歡迎使用 Envy (7/8)">
-		<control text="每個人分享一些自己的基本資料會讓Envy成為更友善的社群."/>
+		<control text="每個人分享一些自己的基本資料會讓Envy成為更友善的社群。"/>
 		<control text="我的代號:"/>
 		<control/>
 		<control text="我是:"/>
-		<control text="&#160;(選擇)"/>
-		<control text="&#160;(選擇)| 男孩| 女孩| 男人| 女人"/>
+		<control text="&#160;(選取)"/>
+		<control text="&#160;(選取)| 男孩| 女孩| 男人| 女人"/>
 		<control text="來自:"/>
 		<control/>
 		<control text="Locale:"/>
@@ -3711,16 +3714,16 @@
 		<control/>
 	</dialog>
 	<dialog name="CWizardFinishedPage" cookie="StStStBuBuStSt" caption="歡迎使用 Envy (8/8)">
-		<control text="這樣就可以了. Envy 已經設定好在您的電腦上運作了"/>
-		<control text="如果您需要更改設定, 您可以從Tools Menu 重新執行 快速啟動精靈"/>
-		<control text="按下完成, 關閉精靈後, 您可以連線至你選擇的網路並且開始搜尋, 下載檔案."/>
+		<control text="這樣就可以了。 Envy 已經設定好在您的電腦上運作了"/>
+		<control text="如果您需要更改設定, 您可以從Tools 選單 重新執行 快速啟動精靈"/>
+		<control text="按下完成, 關閉精靈後, 您可以連線至你選擇的網路並且開始搜尋, 下載檔案。"/>
 		<control text="視窗系統啟動時, 啟動 Envy"/>
 		<control text="每次我啟動 Envy 時連線至網路"/>
-		<control text="好好享受使用 Envy 的樂趣吧."/>
+		<control text="好好享受使用 Envy 的樂趣吧。"/>
 		<control/>
 	</dialog>
 	<dialog name="CDonkeyImportDlg" cookie="StBuBuEdBu" caption="匯入eDonkey2000 下載檔">
-		<control text="Envy 偵測到您的電腦已經安裝了另一件 eDonkey2000 的程式. 您要將任何尚未下載完成的檔案匯入 Envy 嗎??"/>
+		<control text="Envy 偵測到您的電腦已經安裝了另一件 eDonkey2000 的程式。 您要將任何尚未下載完成的檔案匯入 Envy 嗎?"/>
 		<control text="要"/>
 		<control text="不要|取消"/>
 		<control/>
@@ -3745,7 +3748,7 @@
 		<control text="年齡:"/>
 		<control text="|男性|女性"/>
 		<control/>
-		<control text="Info:"/>
+		<control text="訊息:"/>
 		<control text="{n}G2 (Envy / Shareaza)"/>
 		<control text="套用:"/>
 		<control text="允許其他人瀏覽我的個人檔案"/>
@@ -3754,8 +3757,8 @@
 		<control text="預覽:"/>
 		<control/>
 		<control text="選擇:"/>
-		<control text="其他 Gnutella 瀏覽你的個人檔案與分享的檔案可以看見你的照片. 自訂的照片應為 128x128 像素, 可使用任何你的電腦支援的圖片類型."/>
-		<control text="瀏覽..."/>
+		<control text="其他 Gnutella 瀏覽你的個人檔案與分享的檔案可以看見你的照片。 自訂的照片應為 128x128 像素, 可使用任何你的電腦支援的圖片類型。"/>
+		<control text="瀏覽…"/>
 		<control text="移除"/>
 	</dialog>
 	<dialog name="CProfileProfilePage" cookie="BuStCoStCoBuStEdStEdBuLiBuBuCo" caption="地點">
@@ -3802,7 +3805,7 @@
 	</dialog>
 	<dialog name="CFilesProfilePage" cookie="BuStSy" caption="檔案">
 		<control text="我最愛的檔案:"/>
-		<control text="您可以推薦最愛的檔案給瀏覽您的個人檔案的使用者. 要加入您最愛的檔案, 增加檔案到 &quot;Favorites&quot; 收藏資料夾."/>
+		<control text="您可以推薦最愛的檔案給瀏覽您的個人檔案的使用者。 要加入您最愛的檔案, 增加檔案到 &quot;Favorites&quot; 收藏資料夾。"/>
 		<control/>
 	</dialog>
 	<dialog name="CFavoritesProfilePage" cookie="SyBuStEdStEdBuBu" caption="我的最愛">
@@ -3822,8 +3825,8 @@
 		<control text="BitTorrent GUID:"/>
 		<control/>
 		<control text="亂數產生新的GUID"/>
-		<control text="Info:"/>
-		<control text="Gnutella 使用全球獨特識別碼與對應的公共+私人鑰匙對用以辨識使用者. 在平常的情況下不需要產生新的 ID, 不過 Envy 提供進階使用者這項功能."/>
+		<control text="訊息:"/>
+		<control text="Gnutella 使用全球獨特識別碼與對應的公共+私人鑰匙對用以辨識使用者。 在平常的情況下不需要產生新的 ID, 不過 Envy 提供進階使用者這項功能。"/>
 	</dialog>
 	<dialog name="CLanguageDlg" cookie="" caption="選擇語言">
 	</dialog>
@@ -3839,13 +3842,13 @@
 	</dialog>
 	<dialog name="CDownloadDlg" cookie="StStStEdStBuBuBu" caption="下載檔案或 Torrent">
 		<control/>
-		<control text="Envy 可以由網際網路 下載檔案, 以及自動搜尋與下載 P2P 連結. 使用 Envy 下載檔案很簡單. 只要在下方的框框鍵入或是貼上 指向檔案的 URL/URI. (http:, ftp:, ed2k:, magnet:, etc.)"/>
-		<control text="Envy 也可以下載 BitTorrent 檔案. xyz.torrent 檔 敘述了一個 torrent 的樣子; 或是連接到 .torrent 檔的 HTTP 超連結. 想要下載一個 torrent HTTP 連結, 就將它貼在上方的框框. 如果您手上已經有一個 .torrent 檔, 點選 開啟 Torrent:"/>
+		<control text="Envy 可以由網際網路 下載檔案, 以及自動搜尋與下載 P2P 連結。 使用 Envy 下載檔案很簡單。 只要在下方的框框鍵入或是貼上 指向檔案的 URL/URI。 (http:, ftp:, ed2k:, magnet:, etc.)"/>
+		<control text="Envy 也可以下載 BitTorrent 檔案。 xyz.torrent 檔 敘述了一個 torrent 的樣子; 或是連接到 .torrent 檔的 HTTP 超連結。 想要下載一個 torrent HTTP 連結, 就將它貼在上方的框框。 如果您手上已經有一個 .torrent 檔, 點選 開啟 Torrent:"/>
 		<control/>
 		<control/>
 		<control text="下載"/>
 		<control text="取消"/>
-		<control text="開啟 Torrent..."/>
+		<control text="開啟 Torrent…"/>
 	</dialog>
 	<dialog name="CNewSearchDlg" cookie="EdCoBuBu" caption="新的搜尋|再次搜尋|搜尋收藏">
 		<control/>
@@ -3889,7 +3892,7 @@
 		<control/>
 		<control text="確定"/>
 		<control text="取消"/>
-		<control text="另存目前的過濾為..."/>
+		<control text="另存目前的過濾為…"/>
 	</dialog>
 	<dialog name="CDiscoveryServiceDlg" cookie="BuEdStCoBuBu" caption="揭示服務">
 		<control text="服務位址:"/>
@@ -3900,18 +3903,18 @@
 		<control text="取消"/>
 	</dialog>
 	<dialog name="CDownloadMonitorDlg" cookie="StStStStStStStStStStStStBuBuBuBu" caption="下載">
-		<control text="..."/>
+		<control text="…"/>
 		<control/>
 		<control/>
 		<control/>
 		<control text="來源數:"/>
-		<control text="..."/>
+		<control text="…"/>
 		<control text="總計傳輸速度:"/>
-		<control text="..."/>
+		<control text="…"/>
 		<control text="估計剩餘時間:"/>
-		<control text="..."/>
+		<control text="…"/>
 		<control text="已下載的容量:"/>
-		<control text="..."/>
+		<control text="…"/>
 		<control text="檢視收藏"/>
 		<control text="取消下載"/>
 		<control text="隱藏"/>
@@ -3971,7 +3974,7 @@
 		<control/>
 		<control/>
 		<control/>
-		<control text="就緒..."/>
+		<control text="就緒…"/>
 		<control text="確定"/>
 		<control text="取消"/>
 	</dialog>
@@ -3987,8 +3990,8 @@
 	</dialog>
 	<dialog name="CGraphListDlg" cookie="SyBuBuBuBuBuBuBuBuStEdmsStBuEdBuBu" caption="流量圖表">
 		<control/>
-		<control text="增加..."/>
-		<control text="編輯..."/>
+		<control text="增加…"/>
+		<control text="編輯…"/>
 		<control text="移除"/>
 		<control text="顯示:"/>
 		<control text="格線"/>
@@ -4047,7 +4050,7 @@
 		<control text="動作:"/>
 		<control text="無|接受|拒絕"/>
 		<control text="過期:"/>
-		<control text="絕不 (無限期)|在會期結束後|在...之後:"/>
+		<control text="絕不 (無限期)|在會期結束後|在…之後:"/>
 		<control/>
 		<control text="日"/>
 		<control/>
@@ -4057,7 +4060,7 @@
 		<control text="確定"/>
 		<control text="取消"/>
 	</dialog>
-	<dialog name="CScheduleTaskDlg" cookie="BuBuBuCoEdmsEdmsStStBuBuBuBuBuSySyBuBuBuBuBuBuBuBuBuEd" caption="Schedule Event">
+	<dialog name="CScheduleTaskDlg" cookie="BuBuBuCoEdmsEdmsStStBuBuBuBuBuSySyBuBuBuBuBuBuBuBuBuEd" caption="預定表">
 		<control text="確定"/>
 		<control text="取消"/>
 		<control text="選擇任務類型"/>
@@ -4086,15 +4089,15 @@
 		<control text="筆記"/>
 		<control/>
 	</dialog>
-	<dialog name="CSchemaColumnsDlg" cookie="CoSyBuBuSt" caption="Select Columns from Schema">
+	<dialog name="CSchemaColumnsDlg" cookie="CoSyBuBuSt" caption="從模式中選擇列">
 		<control/>
 		<control/>
 		<control text="確定"/>
 		<control text="取消"/>
-		<control text="Select a schema from the list, then select the fields to display as columns."/>
+		<control text="從清單中選擇模式，接著選擇的項目將顯示為列。"/>
 	</dialog>
 	<dialog name="CShareManagerDlg" cookie="StSyBuBuBuBu" caption="分享的資料夾管理員">
-		<control text="這是您的收藏的資料夾清單. 您可以使用左方按鈕新增或移除資料夾. 任何一個新增的資料夾將預設為開放給其他使用者分享, 不過您可以在 Envy 收藏停止分享."/>
+		<control text="這是您的收藏的資料夾清單。 您可以使用左方按鈕新增或移除資料夾。 任何一個新增的資料夾將預設為開放給其他使用者分享, 不過您可以在 Envy 收藏停止分享。"/>
 		<control/>
 		<control text="新增"/>
 		<control text="移除"/>
@@ -4102,7 +4105,7 @@
 		<control text="取消"/>
 	</dialog>
 	<dialog name="CURLCopyDlg" cookie="StStStStStBuBu" caption="複製 URI">
-		<control text="您可以為選擇的項目使用不同的格式複製 URL. 請點選以下其中一個 URI 決定您要使用的格式:"/>
+		<control text="您可以為選擇的項目使用不同的格式複製 URL。 請點選以下其中一個 URI 決定您要使用的格式:"/>
 		<control/>
 		<control/>
 		<control/>
@@ -4111,14 +4114,14 @@
 		<control text="取消"/>
 	</dialog>
 	<dialog name="CURLExportDlg" cookie="StEdStCoStCoBuBumsBu" caption="匯出 URI">
-		<control text="您已經選擇將 %lu 檔案匯出至 Envy 驅動的 URI references. 請選擇 URI 的格式, 然後按下儲存:"/>
+		<control text="您已經選擇將 %lu 檔案匯出至 Envy 驅動的 URI references。 請選擇 URI 的格式, 然後按下儲存:"/>
 		<control/>
 		<control text="放入 Token:"/>
 		<control text="Tiger Root|SHA1|MD5|ED2K (CMD4)|檔案名稱|檔案名稱 (URI)|Base Filename|File Extension|檔案大小|檔案大小 (位元組)|資料夾路徑|本地主機|本地連接埠"/>
 		<control text="選擇 preset:"/>
 		<control/>
 		<control text="複製"/>
-		<control text="儲存..."/>
+		<control text="儲存…"/>
 		<control/>
 		<control text="取消"/>
 	</dialog>
@@ -4126,7 +4129,7 @@
 		<control text="您點選了由 Envy 驅動的 URI, 讓您連結到以下的這個網路上的內容:"/>
 		<control text="您點選了由 Envy 驅動的 URL, 將讓您連線至以下的主機或伺服器:"/>
 		<control text="您點選了由 Envy 驅動的 URL, 將讓你瀏覽以下的主機的分享檔案:"/>
-		<control text="您點選了由 Envy 驅動的 URI, 將會新增以下的揭示服務至您的揭示服務快取."/>
+		<control text="您點選了由 Envy 驅動的 URI, 將會新增以下的揭示服務至您的揭示服務快取。"/>
 		<control/>
 		<control/>
 		<control/>
@@ -4138,15 +4141,15 @@
 		<control text="下次記住我的選擇"/>
 		<control text="開啟一個下載監控視窗"/>
 	</dialog>
-	<dialog name="CBitprintsDownloadDlg" cookie="StStmsBuSySt" caption="正在下載解釋資料...">
+	<dialog name="CBitprintsDownloadDlg" cookie="StStmsBuSySt" caption="正在下載解釋資料…">
 		<control/>
-		<control text="Envy 正在嘗試從 Bitprints 下載解釋資料..."/>
+		<control text="Envy 正在嘗試從 Bitprints 下載解釋資料…"/>
 		<control/>
 		<control text="取消"/>
 		<control/>
 		<control text="bitprints.getenvy.com"/>
 	</dialog>
-	<dialog name="CFilePreviewDlg" cookie="StStStmsStBu" caption="智慧型下載預覽...">
+	<dialog name="CFilePreviewDlg" cookie="StStStmsStBu" caption="智慧型下載預覽…">
 		<control/>
 		<control text="Envy 正在為這個下載製作預覽:"/>
 		<control/>
@@ -4156,19 +4159,19 @@
 	</dialog>
 	<dialog name="CWarningsDlg" cookie="StStStStStStBu" caption="Envy 尊重使用者">
 		<control text="您知道 Envy 是完全免費的產品嗎?"/>
-		<control text="Envy 沒有包含任何 &quot;間碟軟體&quot;, &quot;廣告軟體&quot; 或是其他 bundled 軟體. It does NOT display any advertisements or &quot;popups&quot;, ever.{n}{n}If you ever see advertising or &quot;popups&quot; while using Envy, be assured that they are NOT coming from this program."/>
-		<control text="不幸地, 很多軟體包含討人厭的廣告軟體或是間諜軟體; 因此, 如果您查覺任何可疑的活動, 您可能想要使用反廣告/反間諜軟體."/>
-		<control text="您不應該付錢取得 Envy. 任何人都可以從 http://getenvy.com/ 免費下載. 如果您付費取得Envy, 請立刻要求全額退費."/>
-		<control text="Envy 尊重它的使用者."/>
+		<control text="Envy 沒有包含任何間碟軟體、廣告軟體、或是其他包裝軟體。 它永遠都不會有任何的廣告或是彈出視窗。{n}{n}如果你在使用 Envy 時看到了任何廣告或是彈出視窗，可以保證來源絕對不是這個程式。"/>
+		<control text="不幸地, 很多軟體包含討人厭的廣告軟體或是間諜軟體; 因此, 如果您查覺任何可疑的活動, 您可能想要使用反廣告/反間諜軟體。"/>
+		<control text="您不應該付錢取得 Envy。 任何人都可以從 http://getenvy.com 免費下載。 如果您付費取得Envy, 請立刻要求全額退費。"/>
+		<control text="Envy 尊重它的使用者。"/>
 		<control text="http://getenvy.com"/>
 		<control text="關閉"/>
 	</dialog>
 	<dialog name="CPromoteDlg" cookie="StStStStStStBu" caption="散佈消息">
 		<control text="請幫我們散佈消息"/>
-		<control text="我們希望各位享受使用 Envy 的樂趣. 我們深信這是目前為止最好的檔案分享軟體."/>
-		<control text="天不從人願, 眾多檔案分享者不知道他們遺漏了什麼好東西."/>
+		<control text="我們希望各位享受使用 Envy 的樂趣。 我們深信這是目前為止最好的檔案分享軟體。"/>
+		<control text="天不從人願, 眾多檔案分享者不知道他們遺漏了什麼好東西。"/>
 		<control text="如果你知道某個人可能愛上 Envy, 不論是新手或是某個仍舊為了不良的軟體苦惱, 為什麼不讓他們知道有更好的替代品呢?"/>
-		<control text="他們可能感激你幫了他們一個大忙."/>
+		<control text="他們可能感激你幫了他們一個大忙。"/>
 		<control text="http://getenvy.com"/>
 		<control text="確定"/>
 	</dialog>
@@ -4176,17 +4179,17 @@
 		<control/>
 		<control/>
 		<control/>
-		<control text="你的檔案收藏已經有這個檔案了. 您的決定是?"/>
+		<control text="你的檔案收藏已經有這個檔案了。 您的決定是?"/>
 		<control text="在我的收藏顯示這個檔案"/>
 		<control text="再次下載這個檔案"/>
 		<control text="不要下載這個檔案"/>
 		<control text="確定"/>
 		<control text="取消"/>
-		<control text="您曾經下載過並且刪除這個檔案. 請問你要如何處理?"/>
-		<control text="警告:检测到重复文件.一些恶意软件可能感染您的收藏.请确认您是手动下载或存放此文件.否则，请关闭 Envy 并用杀毒软件扫描您的电脑."/>
+		<control text="您曾經下載過並且刪除這個檔案。 請問你要如何處理?"/>
+		<control text="警告:检测到重复文件.一些恶意软件可能感染您的收藏.请确认您是手动下载或存放此文件.否则，请关闭 Envy 并用杀毒软件扫描您的电脑。"/>
 	</dialog>
 	<dialog name="CCloseModeDlg" cookie="StBuBuBuBuBuBu" caption="關閉鈕">
-		<control text="本次是您第一次點選 Envy 的關閉鈕. 從現在開始, 請問您點選關閉鈕後, 想要做什麼動作:"/>
+		<control text="本次是您第一次點選 Envy 的關閉鈕。 從現在開始, 請問您點選關閉鈕後, 想要做什麼動作:"/>
 		<control text="最小化至系統列"/>
 		<control text="最小化至系統列"/>
 		<control text="在上傳與下載完成後關閉"/>
@@ -4195,7 +4198,7 @@
 		<control text="取消"/>
 	</dialog>
 	<dialog name="CUpdateServersDlg" cookie="StEdmsBuBu" caption="下載 Server.met 檔">
-		<control text="您可從網際網路下載 eDonkey2000 server.met 檔以更新您本地的伺服器清單."/>
+		<control text="您可從網際網路下載 eDonkey2000 server.met 檔以更新您本地的伺服器清單。"/>
 		<control/>
 		<control/>
 		<control text="確定"/>
@@ -4208,18 +4211,18 @@
 		<control text="全部刪除"/>
 		<control text="取消"/>
 		<control/>
-		<control text="Create Ghost File"/>
-		<control text="Envy 可以為您記憶這個檔案; 在另一次搜尋時, 如果您又再次發現這個檔案, 我們可以通知您. 請告訴我們為什麼您要刪除這個檔案:"/>
-		<control text="File rating:"/>
-		<control text="Reason for deleting:"/>
+		<control text="新增一個 Ghost 檔案"/>
+		<control text="Envy 可以為您記憶這個檔案; 在另一次搜尋時, 如果您又再次發現這個檔案, 我們可以通知您。 請告訴我們為什麼您要刪除這個檔案:"/>
+		<control text="檔案評分:"/>
+		<control text="刪除的原因:"/>
 		<control text="!"/>
 		<control text="(No Rating)|Fake/Corrupt/Misleading|Poor|Average|Good|Very Good|Excellent"/>
-		<control text="Just deleting, keep any current comments|File is very low quality or outdated|File is named incorrectly or misleading|File is fake, infected, corrupt, or unusable|File is restricted copyright material|File needs custom comments below..."/>
+		<control text="單純只是刪除，留下我的評論|檔案品質不良|名稱不正確，可能造成誤導|這是一個造假、毀損、或是無法使用的檔案|File is restricted copyright material|取代我的評論…"/>
 		<control/>
 		<control/>
 	</dialog>
 	<dialog name="CCollectionExportDlg" cookie="StSyBuStStStStStEdBuBuBu" caption="組檔匯出">
-		<control text="您可以使用這個功能匯出資料夾或是播放清單的內容至 rich 組檔. 請選擇一個樣版並按下一個按鈕繼續.|請在下方輸入資料自訂您的 collection."/>
+		<control text="您可以使用這個功能匯出資料夾或是播放清單的內容至 rich 組檔。 請選擇一個樣版並按下一個按鈕繼續.|請在下方輸入資料自訂您的 collection。"/>
 		<control/>
 		<control text="樣版資訊 :"/>
 		<control text="名稱:"/>
@@ -4233,11 +4236,11 @@
 		<control text="取消"/>
 	</dialog>
 	<dialog name="CTorrentSeedDlg" cookie="StBuBuBuStms" caption="開啟 Torrent 檔">
-		<control text="您開啟了一個 BitTorrent 的 torrent 檔. 您要下載它的內容或是重新做種?"/>
+		<control text="您開啟了一個 BitTorrent 的 torrent 檔。 您要下載它的內容或是重新做種?"/>
 		<control text="下載"/>
 		<control text="做種"/>
 		<control text="取消"/>
-		<control text="欲使用 BitTorrent 分享完整的檔案, 必須先做種. 完成這個程序後, 在下載清單中, Torrent 將成為新項目."/>
+		<control text="欲使用 BitTorrent 分享完整的檔案, 必須先做種。 完成這個程序後, 在下載清單中, Torrent 將成為新項目。"/>
 		<control/>
 	</dialog>
 	<dialog name="CTorrentFilesPage" cookie="StSy" caption="檔案">
@@ -4278,7 +4281,7 @@
 		<control text="備註:"/>
 	</dialog>
 	<dialog name="CDownloadEditPage" cookie="StBuStStStStBuStEdEdEdSyBuEdBuEdBuEdBuEdBuEd" caption="編輯下載">
-		<control text="警告: 這個對話框提供進階使用者進階的下載編輯功能. 如果錯誤地使用, 可能導致資料毀損."/>
+		<control text="警告: 這個對話框提供進階使用者進階的下載編輯功能。 如果錯誤地使用, 可能導致資料毀損。"/>
 		<control text="檔案名稱與大小:"/>
 		<control text="檔案名稱:"/>
 		<control text="檔案名稱:"/>
@@ -4302,16 +4305,16 @@
 		<control/>
 	</dialog>
 	<dialog name="CDownloadActionsPage" cookie="StStStStStStEdEdBuBuStStBu" caption="動作">
-		<control text="警告: 這個對話框提供進階使用者進階的下載編輯功能. 如果錯誤地使用, 可能導致資料毀損."/>
+		<control text="警告: 這個對話框提供進階使用者進階的下載編輯功能。 如果錯誤地使用, 可能導致資料毀損。"/>
 		<control text="忘卻所有已知的來源"/>
 		<control text="忘卻目前的驗證狀態並重新驗證"/>
 		<control text="假定檔案是100%完整並且重新驗證"/>
 		<control text="與本地檔案合併並進行驗證"/>
-		<control text="取消(save incomplete file)"/>
+		<control text="取消 (save incomplete file)"/>
 		<control/>
 		<control/>
 		<control text="動作:"/>
-		<control text="Data _Eraser:"/>
+		<control text="Data Eraser:"/>
 		<control text="Byte range:"/>
 		<control text="-"/>
 		<control text="抹除"/>
@@ -4329,7 +4332,7 @@
 		<control text="移除"/>
 		<control text="任何檔案類型:"/>
 		<control/>
-		<control text="*Drag&apos;n&apos;drop any download later."/>
+		<control text="*拖放任何下載。"/>
 		<control text="確定"/>
 		<control text="取消"/>
 	</dialog>
@@ -4337,13 +4340,13 @@
 		<control text="由清單選擇音訊視覺效果:"/>
 		<control/>
 		<control text="腳注顯示|完全顯示|大型顯示|中等顯示|小型顯示"/>
-		<control text="設定..."/>
+		<control text="設定…"/>
 		<control text="確定"/>
 		<control text="取消"/>
 	</dialog>
 	<dialog name="CUpgradeDlg" cookie="StStBuBuBu" caption="升級通知">
-		<control text="Envy 有新版本了. 您要升級嗎?"/>
-		<control text="如果您現在選擇立刻升級, Envy 將新增更新檔至您的下載等待隊伍並自動開始下載."/>
+		<control text="Envy 有新版本了。 您要升級嗎?"/>
+		<control text="如果您現在選擇立刻升級, Envy 將新增更新檔至您的下載等待隊伍並自動開始下載。"/>
 		<control text="不要檢查新版本"/>
 		<control text="立刻升級"/>
 		<control text="取消"/>
@@ -4351,7 +4354,7 @@
 	<dialog name="CDecodeMetadataDlg" cookie="StCoBuBuBuStStBuBu" caption="解釋資料本地化">
 		<control text="請選擇重新編碼的方法"/>
 		<control text="阿拉伯文|波羅的海文|中歐|簡體中文|繁體中文|西里爾文|希臘語|猶太人文|日文|韓文|泰文|土耳其文|越南文"/>
-		<control text="Preview:"/>
+		<control text="預覽:"/>
 		<control/>
 		<control/>
 		<control/>
@@ -4366,11 +4369,11 @@
 		<control text="取消"/>
 		<control/>
 	</dialog>
-	<dialog name="CIrcInputDlg" cookie="EdBuBuSt" caption="Channel Name|Reason Why">
+	<dialog name="CIrcInputDlg" cookie="EdBuBuSt" caption="頻道名稱|原因">
 		<control/>
 		<control text="確定"/>
 		<control text="取消"/>
-		<control text="Add a channel name:|Enter kick/ban reason:"/>
+		<control text="新增頻道名稱:|輸入 kick/ban 原因:"/>
 	</dialog>
 	<dialog name="CDownloadReviewDlg" cookie="BuSyEd" caption="下載評論">
 		<control text="確定"/>
@@ -4393,7 +4396,7 @@
 	<tag id="text_tabsearch" text="搜尋"/>
 	<tag id="text_welcome" text="欢迎来到 <b>Envy 远程访问。</b>"/>
 	<tag id="text_logininfo" text="如果這是你Envy客戶的地址，請插入您的用戶名和密碼，然後點擊<b>登錄</b>按鈕。"/>
-	<tag id="text_loginfail" text="您输入的用户名和密码不正确。请重试。."/>
+	<tag id="text_loginfail" text="您输入的用户名和密码不正确。请重试。"/>
 	<tag id="text_loginuser" text="用户:"/>
 	<tag id="text_loginpass" text="密码:"/>
 	<tag id="text_loginsubmit" text="登录"/>
@@ -4439,7 +4442,7 @@
 	<tag id="text_networkleaves" text="叶"/>
 	<tag id="text_useragent" text="用户代理"/>
 	<tag id="text_searchnew" text="新建搜索"/>
-	<tag id="text_searchinfo" text="要开始一个新的搜索，请将您要搜索的关键词输入到下面的输入框中并单击<b>开始搜索</b>。如果您想要限制您搜索的文件类型，请在下面的列表中选择。."/>
+	<tag id="text_searchinfo" text="要开始一个新的搜索，请将您要搜索的关键词输入到下面的输入框中并单击<b>开始搜索</b>。如果您想要限制您搜索的文件类型，请在下面的列表中选择。"/>
 	<tag id="text_searchfor" text="搜索:"/>
 	<tag id="text_searchstart" text="开始搜索"/>
 	<tag id="text_searchstop" text="停止搜索"/>

@@ -100,7 +100,7 @@ void CLibraryMaps::GetStatistics(DWORD* pnFiles, QWORD* pnVolume)
 //////////////////////////////////////////////////////////////////////
 // CLibraryMaps lookup file by index
 
-CLibraryFile* CLibraryMaps::LookupFile(DWORD_PTR nIndex, BOOL bSharedOnly, BOOL bAvailableOnly) const
+CLibraryFile* CLibraryMaps::LookupFile(DWORD_PTR nIndex, BOOL bSharedOnly /*0*/, BOOL bAvailableOnly /*0*/) const
 {
 	if ( ! nIndex ) return NULL;
 

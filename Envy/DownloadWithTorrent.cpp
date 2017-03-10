@@ -245,7 +245,7 @@ void CDownloadWithTorrent::Serialize(CArchive& ar, int nVersion)
 		//
 		//	// Create a bunch of new empty files
 		//	ClearFile();	// Close old files
-		//	unique_ptr< CFragmentedFile > pFragFile = GetFile();
+		//	augment::auto_ptr< CFragmentedFile > pFragFile = GetFile();
 		//	if ( ! pFragFile.get() )
 		//		AfxThrowMemoryException();
 		//	if ( ! pFragFile->Open( m_pTorrent, ! IsSeeding() ) )
@@ -343,22 +343,23 @@ BOOL CDownloadWithTorrent::SetTorrent(const CBTInfo* pTorrent /*NULL*/)
 
 	if ( m_nSize != SIZE_UNKNOWN &&			// Single file download
 		 m_pTorrent.IsAvailableInfo() &&
-		 m_pTorrent.m_nSize != m_nSize )
+		 m_pTorrent.m_nSize != m_nSize ||
+		 m_pTorrent.m_nSize == SIZE_UNKNOWN )
 		return FALSE;
 
-	if ( m_bBTHTrusted && m_oBTH && m_pTorrent.m_oBTH && m_oBTH != m_pTorrent.m_oBTH )
+	if ( m_bBTHTrusted && validAndUnequal( m_oBTH, m_pTorrent.m_oBTH ) )
 		return FALSE;
 
-	if ( m_bTigerTrusted && m_oTiger && m_pTorrent.m_oTiger && m_oTiger != m_pTorrent.m_oTiger )
+	if ( m_bTigerTrusted && validAndUnequal( m_oTiger, m_pTorrent.m_oTiger ) )
 		return FALSE;
 
-	if ( m_bSHA1Trusted && m_oSHA1 && m_pTorrent.m_oSHA1 && m_oSHA1 != m_pTorrent.m_oSHA1 )
+	if ( m_bSHA1Trusted && validAndUnequal( m_oSHA1, m_pTorrent.m_oSHA1 ) )
 		return FALSE;
 
-	if ( m_bED2KTrusted && m_oED2K && m_pTorrent.m_oED2K && m_oED2K != m_pTorrent.m_oED2K )
+	if ( m_bED2KTrusted && validAndUnequal( m_oED2K, m_pTorrent.m_oED2K ) )
 		return FALSE;
 
-	if ( m_bMD5Trusted && m_oMD5 && m_pTorrent.m_oMD5 && m_oMD5 != m_pTorrent.m_oMD5)
+	if ( m_bMD5Trusted && validAndUnequal( m_oMD5, m_pTorrent.m_oMD5 ) )
 		return FALSE;
 
 	// Update
@@ -489,36 +490,7 @@ void CDownloadWithTorrent::RunTorrent(DWORD tNow)
 			// Initial announce to tracker
 			SendStarted( nSourcesWanted );
 
-			// Deselect default unwanted files
-			if ( ( Settings.BitTorrent.SkipPaddingFiles || Settings.BitTorrent.SkipTrackerFiles ) && ! IsSeeding() )
-			{
-				CDownload* pDownload = Downloads.FindByBTH( m_oBTH );
-
-				if ( pDownload && pDownload->GetVolumeRemaining() == m_nSize )	// First load only
-				{
-					unique_ptr< CFragmentedFile > pFragFile( pDownload->GetFile() );
-					if ( pFragFile.get() )
-					{
-						const DWORD nCount = pFragFile->GetCount();
-						if ( nCount > 1 )
-						{
-							CString strName;
-							for ( DWORD i = 0 ; i < nCount ; i++ )
-							{
-								strName = pFragFile->GetName( i );
-								strName = strName.Mid( strName.ReverseFind( L'\\' ) + 1 );
-
-								if ( strName[0] == L'_' && Settings.BitTorrent.SkipPaddingFiles &&
-										  StartsWith( strName, L"_____padding_file_", 18 ) )
-									pFragFile->SetPriority( i, CFragmentedFile::prUnwanted );
-								else if ( Settings.BitTorrent.SkipTrackerFiles && strName.Right( 4 ) == L".txt" &&
-										( StartsWith( strName, L"Torrent downloaded from ", 24 ) || StartsWith( strName, L"Torrent_downloaded_from_", 24 ) ) )
-									pFragFile->SetPriority( i, CFragmentedFile::prUnwanted );
-							}
-						}
-					}
-				}
-			}
+			// Deselect default unwanted files	(Moved to initial CFragmentedFile::Open)
 		}
 
 		return;

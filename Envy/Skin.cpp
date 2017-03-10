@@ -270,7 +270,7 @@ BOOL CSkin::SelectCaption(CWnd* pWnd, int nIndex)
 
 BOOL CSkin::SelectCaption(CString& strCaption, int nIndex)
 {
-	for ( strCaption += '|' ; ; nIndex-- )
+	for ( strCaption += L'|' ; ; nIndex-- )
 	{
 		CString strSection = strCaption.SpanExcluding( L"|" );
 		strCaption = strCaption.Mid( strSection.GetLength() + 1 );
@@ -571,6 +571,7 @@ BOOL CSkin::LoadOptions(CXMLElement* pBase)
 			Text[ L"splitter" ]		= 'r';
 			Text[ L"listitem" ]		= 'w';
 			Text[ L"rowsize" ]		= 'w';
+			Text[ L"rowheight" ]	= 'w';
 			Text[ L"roundedselect" ] = 'c';
 			Text[ L"highlightchamfer" ] = 'c';
 			Text[ L"frameedge" ]	= 'f';
@@ -699,7 +700,7 @@ BOOL CSkin::LoadOptions(CXMLElement* pBase)
 				nSize = _wtoi(strValue);
 			else
 				break;
-			if ( nSize >= 16 && nSize <= 20 )
+			if ( nSize >= 16 && nSize <= 24 )
 				Settings.Skin.RowSize = nSize;
 		}
 		break;
@@ -981,7 +982,7 @@ BOOL CSkin::LoadMenu(CXMLElement* pXML)
 		m_pMenus.RemoveKey( strName );
 	}
 
-	unique_ptr< CMenu > pMenu( new CMenu() );
+	augment::auto_ptr< CMenu > pMenu( new CMenu() );
 	ASSERT_VALID( pMenu.get() );
 	if ( ! pMenu.get() )
 		return FALSE;
@@ -1086,11 +1087,8 @@ BOOL CSkin::CreateMenu(CXMLElement* pRoot, HMENU hMenu)
 BOOL CSkin::LoadNavBar(CXMLElement* pBase)
 {
 	CString strValue = pBase->GetAttributeValue( L"offset" );
-	if ( ! strValue.IsEmpty() )
-	{
-		if ( _stscanf( strValue, L"%li,%li", &m_ptNavBarOffset.x, &m_ptNavBarOffset.y ) != 2 )
-			theApp.Message( MSG_ERROR, IDS_SKIN_ERROR, L"Bad [offset] attribute in [navbar] element", pBase->ToString() );
-	}
+	if ( ! strValue.IsEmpty() && _stscanf( strValue, L"%li,%li", &m_ptNavBarOffset.x, &m_ptNavBarOffset.y ) != 2 )
+		theApp.Message( MSG_ERROR, IDS_SKIN_ERROR, L"Bad [offset] attribute in [navbar] element", pBase->ToString() );
 
 	strValue = pBase->GetAttributeValue( L"mode" );
 	if ( strValue.IsEmpty() )
@@ -1110,7 +1108,6 @@ BOOL CSkin::CreateToolBar(LPCTSTR pszName, CCoolBarCtrl* pBar)
 {
 	//CQuickLock oLock( m_pSection );
 
-	ASSERT( pszName );
 	ASSERT( Settings.General.GUIMode == GUI_TABBED || Settings.General.GUIMode == GUI_BASIC || Settings.General.GUIMode == GUI_WINDOWED );
 
 	if ( pszName == NULL )
@@ -1395,6 +1392,20 @@ HBITMAP CSkin::GetWatermark(LPCTSTR pszName)
 
 		theApp.Message( MSG_ERROR, IDS_SKIN_ERROR, L"Failed to load watermark", (LPCTSTR)( CString( pszName ) + L". File: " + strPath ) );
 	}
+
+	// Class-less Fallback:
+	if ( *pszName == L'C' )
+	{
+		pszName++;
+		if ( m_pWatermarks.Lookup( pszName, strPath ) && ! strPath.IsEmpty() )
+		{
+			if ( HBITMAP hBitmap = LoadBitmap( strPath ) )
+				return hBitmap;
+
+			theApp.Message( MSG_ERROR, IDS_SKIN_ERROR, L"Failed to load watermark", (LPCTSTR)( CString( pszName ) + L". File: " + strPath ) );
+		}
+	}
+
 	return NULL;
 }
 
@@ -1414,7 +1425,7 @@ BOOL CSkin::LoadWatermarks(CXMLElement* pSub, const CString& strPath)
 	{
 		CXMLElement* pMark = pSub->GetNextElement( posMark );
 
-		if ( pMark->IsNamed( L"watermark" ) || pMark->IsNamed( L"image" ) )
+		if ( pMark->IsNamed( L"image" ) || pMark->IsNamed( L"watermark" ) )
 		{
 			CString strName = pMark->GetAttributeValue( L"target" );
 			CString strFile = pMark->GetAttributeValue( L"path" );
@@ -2254,8 +2265,8 @@ BOOL CSkin::LoadColorScheme(CXMLElement* pBase)
 	pColors.SetAt( L"fragmentbar.source4", &Colors.m_crFragmentSource4 );
 	pColors.SetAt( L"fragmentbar.source5", &Colors.m_crFragmentSource5 );
 	pColors.SetAt( L"fragmentbar.source6", &Colors.m_crFragmentSource6 );
-	pColors.SetAt( L"fragmentbar.source5", &Colors.m_crFragmentSource7 );
-	pColors.SetAt( L"fragmentbar.source6", &Colors.m_crFragmentSource8 );
+	pColors.SetAt( L"fragmentbar.source7", &Colors.m_crFragmentSource7 );
+	pColors.SetAt( L"fragmentbar.source8", &Colors.m_crFragmentSource8 );
 	pColors.SetAt( L"fragmentbar.pass", &Colors.m_crFragmentPass );
 	pColors.SetAt( L"fragmentbar.fail", &Colors.m_crFragmentFail );
 	pColors.SetAt( L"fragmentbar.request", &Colors.m_crFragmentRequest );
@@ -2398,13 +2409,22 @@ BOOL CSkin::LoadFonts(CXMLElement* pBase, const CString& strPath)
 				( Settings.General.Language.CompareNoCase( strLanguage ) == 0 ) )
 			{
 				CString strName		= pXML->GetAttributeValue( L"name" ).MakeLower();
+				if ( strName.GetLength() < 6 )
+					continue;
+
 				CString strFace		= pXML->GetAttributeValue( L"face" );
 				CString strSize		= pXML->GetAttributeValue( L"size" );
 				CString strWeight	= pXML->GetAttributeValue( L"weight" );
 				CString strColor	= pXML->GetAttributeValue( L"color" );
+				CString strImport	= pXML->GetAttributeValue( L"path" );
 				CFont* pFont		= NULL;
 
-				if ( strName.GetLength() < 6 ) continue;
+				if ( strImport.GetLength() > 4 )
+				{
+					strImport = strPath + strImport;	// ToDo: Allow relative paths? (..)
+					if ( ! m_pFontPaths.Find( strImport ) && AddFontResourceEx( strImport, FR_PRIVATE, NULL ) )
+						m_pFontPaths.AddTail( strImport );
+				}
 
 				// Specifiable Fonts:
 				SwitchMap( Font )
@@ -2413,12 +2433,14 @@ BOOL CSkin::LoadFonts(CXMLElement* pBase, const CString& strPath)
 					Font[ L"system.default" ]	= 'd';
 					Font[ L"system.plain" ]		= 'd';
 					Font[ L"system.bold" ]		= 'b';
+					Font[ L"panel" ]			= 'p';
 					Font[ L"panel.caption" ]	= 'p';
 					Font[ L"navbar" ]			= 'n';
 					Font[ L"navbar.caption" ]	= 'n';
 					Font[ L"navbar.selected" ]	= 's';
 					Font[ L"navbar.active" ]	= 's';
 					Font[ L"navbar.hover" ]		= 'v';
+					Font[ L"richdoc" ]			= 'r';
 					Font[ L"richdoc.default" ]	= 'r';
 					Font[ L"rich.default" ]		= 'r';
 					Font[ L"richdoc.heading" ]	= 'h';
@@ -2427,7 +2449,7 @@ BOOL CSkin::LoadFonts(CXMLElement* pBase, const CString& strPath)
 
 				switch ( Font[ strName ] )
 				{
-				case 'd':	// system.default, system.plain, system
+				case 'd':	// system, system.default, system.plain
 					pFont = &CoolInterface.m_fntNormal;
 					if ( ! strColor.IsEmpty() )
 						Colors.m_crText = GetColor( strColor );
@@ -2435,12 +2457,12 @@ BOOL CSkin::LoadFonts(CXMLElement* pBase, const CString& strPath)
 				case 'b':	// system.bold
 					pFont = &CoolInterface.m_fntBold;
 					break;
-				case 'p':	// panel.caption
+				case 'p':	// panel, panel.caption
 					pFont = &CoolInterface.m_fntCaption;
 					if ( ! strColor.IsEmpty() )
 						Colors.m_crTaskBoxCaptionText = GetColor( strColor );
 					break;
-				case 'n':	// navbar.caption
+				case 'n':	// navbar, navbar.caption
 					pFont = &CoolInterface.m_fntNavBar;
 					if ( ! strColor.IsEmpty() )
 						Colors.m_crNavBarText = GetColor( strColor );
@@ -2455,7 +2477,7 @@ BOOL CSkin::LoadFonts(CXMLElement* pBase, const CString& strPath)
 					if ( ! strColor.IsEmpty() )
 						Colors.m_crNavBarTextHover = GetColor( strColor );
 					break;
-				case 'r':	// richdoc.default, rich.default
+				case 'r':	// richdoc, richdoc.default, rich.default
 					bRichDefault = true;
 					pFont = &CoolInterface.m_fntRichDefault;
 					if ( ! strColor.IsEmpty() )
@@ -2497,7 +2519,16 @@ BOOL CSkin::LoadFonts(CXMLElement* pBase, const CString& strPath)
 					DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS,
 					Settings.Fonts.Quality, DEFAULT_PITCH|FF_DONTCARE, strFace );
 
-				if ( strName.CompareNoCase( L"system.plain" ) == 0 )
+				if ( strName.CompareNoCase( L"system.bold" ) == 0 )
+				{
+					pFont = &CoolInterface.m_fntBoldItalic;
+					if (pFont->m_hObject) pFont->DeleteObject();
+
+					pFont->CreateFont( -nFontSize, 0, 0, 0, nFontWeight, TRUE, FALSE, FALSE,
+						DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS,
+						Settings.Fonts.Quality, DEFAULT_PITCH | FF_DONTCARE, strFace );
+				}
+				else if ( StartsWith( strName, _P( L"system" ) ) )	// "system.plain"
 				{
 					pFont = &CoolInterface.m_fntUnder;
 					if ( pFont->m_hObject ) pFont->DeleteObject();
@@ -2512,15 +2543,8 @@ BOOL CSkin::LoadFonts(CXMLElement* pBase, const CString& strPath)
 					pFont->CreateFont( -nFontSize, 0, 0, 0, nFontWeight, TRUE, FALSE, FALSE,
 						DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS,
 						Settings.Fonts.Quality, DEFAULT_PITCH|FF_DONTCARE, strFace );
-				}
-				else if ( strName.CompareNoCase( L"system.bold" ) == 0 )
-				{
-					pFont = &CoolInterface.m_fntBoldItalic;
-					if ( pFont->m_hObject ) pFont->DeleteObject();
 
-					pFont->CreateFont( -nFontSize, 0, 0, 0, nFontWeight, TRUE, FALSE, FALSE,
-						DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS,
-						Settings.Fonts.Quality, DEFAULT_PITCH|FF_DONTCARE, strFace );
+					Settings.Fonts.DefaultFont = strFace;
 				}
 				else if ( strName.CompareNoCase( L"navbar" ) == 0 )
 				{

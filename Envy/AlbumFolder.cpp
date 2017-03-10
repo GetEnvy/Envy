@@ -1347,7 +1347,7 @@ void CAlbumFolder::Serialize(CArchive& ar, int nVersion)
 
 		while ( nCount-- > 0 )
 		{
-			unique_ptr< CAlbumFolder > pFolder( new CAlbumFolder( this, NULL, (LPCTSTR)1 ) );
+			augment::auto_ptr< CAlbumFolder > pFolder( new CAlbumFolder( this, NULL, (LPCTSTR)1 ) );
 			pFolder->Serialize( ar, nVersion );
 			m_pFolders.AddTail( pFolder.release() );
 		}

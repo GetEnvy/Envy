@@ -213,10 +213,11 @@ BOOL CUploadTransferHTTP::OnHeaderLine(CString& strHeader, CString& strValue)
 	if ( ! CUploadTransfer::OnHeaderLine( strHeader, strValue ) )
 		return FALSE;
 
-	CString strCase( strHeader );
-	ToLower( strCase );
-	if ( strCase.GetLength() < 4 )
+	if ( strHeader.GetLength() < 3 )
 		return TRUE;	// Skip bad/unknown header
+
+	CString strCase( strHeader );
+	strCase = ToLower( strCase );
 
 	// Expected Headers
 	SwitchMap( Text )
@@ -224,6 +225,7 @@ BOOL CUploadTransferHTTP::OnHeaderLine(CString& strHeader, CString& strValue)
 		Text[ L"connection" ]			= 'c';
 		Text[ L"accept" ]				= 'a';
 		Text[ L"accept-encoding" ]		= 'e';
+	//	Text[ L"authorization" ]		= 'k';	// ToDo: Proposed PrivateKey, See: http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html
 		Text[ L"range" ]				= 'r';
 		Text[ L"content-urn" ]			= 'u';
 		Text[ L"x-content-urn" ]		= 'u';
@@ -254,12 +256,12 @@ BOOL CUploadTransferHTTP::OnHeaderLine(CString& strHeader, CString& strValue)
 		m_bConnectHdr = TRUE;
 		break;
 	case 'a':		// "Accept"
-		if ( _tcsistr( strValue, L"application/x-gnutella-packets" ) )
-			m_bHostBrowse = 1;
 		if ( _tcsistr( strValue, L"application/x-gnutella2" ) ||
 			 _tcsistr( strValue, L"application/x-shareaza" )  ||
 			 _tcsistr( strValue, L"application/x-envy" ) )
-			m_bHostBrowse = 2;
+			m_nAccept = 2;
+		else if ( _tcsistr( strValue, L"application/x-gnutella-packets" ) )
+			m_nAccept = 1;
 		break;
 	case 'e':		// "Accept-Encoding"
 		if ( _tcsistr( strValue, L"deflate" ) )
@@ -267,6 +269,17 @@ BOOL CUploadTransferHTTP::OnHeaderLine(CString& strHeader, CString& strValue)
 		if ( Settings.Uploads.AllowBackwards && _tcsistr( strValue, L"backwards" ) )
 			m_bBackwards = TRUE;
 		break;
+	//case 'k':		// "Authorization"	(Envy-proposed extension: Browse PrivateKey)
+	//	if ( strValue.GetLength() )
+	//	{
+	//		int nSplit = strValue.Find( L':' ) + 1;
+	//		if ( nSplit > 0 )
+	//			strValue = strValue.Mid( nSplit );
+	//		else if ( StartsWith( strValue, _P( L"Basic " )		// HTTP Spec (Unused)
+	//			strValue = strValue.Mid( 6 );	// Check for base64 encoding?
+	//		m_sPrivateKey = strValue;
+	//	}
+	//	break;
 	case 'r':		// "Range"
 		{
 			QWORD nFrom = 0, nTo = 0;
@@ -296,7 +309,6 @@ BOOL CUploadTransferHTTP::OnHeaderLine(CString& strHeader, CString& strValue)
 	case 's':		// "X-NAlt" 	(Dead alt-sources)
 		{
 			LPCTSTR pszURN = (LPCTSTR)m_sRequest + 13;
-
 			if ( CDownload* pDownload = Downloads.FindByURN( pszURN ) )
 			{
 				if ( Settings.Library.SourceMesh && strValue.Find( L"://" ) < 0 )
@@ -433,8 +445,7 @@ BOOL CUploadTransferHTTP::OnHeadersComplete()
 			SendResponse( IDR_HTML_ABOUT );
 			theApp.Message( MSG_INFO, IDS_UPLOAD_ABOUT, (LPCTSTR)m_sAddress, (LPCTSTR)m_sUserAgent );
 		}
-		else if ( ( ! Settings.Community.ServeFiles && ( m_nAccept < 2 || ! Settings.Community.ServeProfile ) ) ||
-				  ! RequestHostBrowse() )
+		else if ( ( ! Settings.Community.ServeFiles && ! Settings.Community.ServeProfile || m_nAccept < 2 ) || ! RequestHostBrowse() )
 		{
 			SendResponse( IDR_HTML_ABOUT );
 			theApp.Message( MSG_ERROR, IDS_UPLOAD_BROWSE_DENIED, (LPCTSTR)m_sAddress );
@@ -515,6 +526,7 @@ BOOL CUploadTransferHTTP::OnHeadersComplete()
 		Security.Complain( &m_pHost.sin_addr );
 		if ( m_sUserAgent.Find( L"Mozilla" ) >= 0 ) return TRUE;
 		Remove( FALSE );
+
 		return FALSE;
 	}
 	else if ( IsNetworkDisabled() )
@@ -558,6 +570,7 @@ BOOL CUploadTransferHTTP::OnHeadersComplete()
 		theApp.Message( MSG_ERROR, IDS_UPLOAD_DISABLED, (LPCTSTR)m_sAddress, (LPCTSTR)m_sUserAgent );
 		Security.Ban( &m_pHost.sin_addr, ban30Mins, FALSE );	// Anti-hammer protection if client doesn't understand 403
 		Remove( FALSE );
+
 		return FALSE;
 	}
 	else if ( ::StartsWith( m_sRequest, _P( L"/gnutella/tigertree/v3?urn:" ) ) && Settings.Uploads.ShareTiger )
@@ -625,8 +638,7 @@ BOOL CUploadTransferHTTP::OnHeadersComplete()
 			{
 				m_sName = pDownload->m_sName;
 				m_nSize = pDownload->m_nSize;
-				return RequestTigerTreeDIME( pDownload->GetTigerTree(), nDepth,
-					bHashset ? pDownload->GetHashset() : NULL, FALSE );
+				return RequestTigerTreeDIME( pDownload->GetTigerTree(), nDepth, bHashset ? pDownload->GetHashset() : NULL, FALSE );
 			}
 		}
 	}
@@ -672,7 +684,7 @@ BOOL CUploadTransferHTTP::OnHeadersComplete()
 		if ( bByIndex )
 		{
 			pFile = Library.LookupFile( nIndex, TRUE, TRUE );
-			if ( pFile && pFile->m_sName.CompareNoCase( strFile ) )
+			if ( pFile && pFile->m_sName.CompareNoCase( strFile ) != 0 )
 				pFile = NULL;
 		}
 		if ( ! pFile )
@@ -1697,7 +1709,7 @@ BOOL CUploadTransferHTTP::RequestHostBrowse()
 		if ( Settings.Community.ServeFiles )
 		{
 			CLocalSearch pSearch( &pBuffer, PROTOCOL_G2 );
-			pSearch.Execute( 0 );
+			pSearch.Execute( 0 );	// ToDo: PrivateKey?
 		}
 
 		if ( Settings.Community.ServeProfile && MyProfile.IsValid() )

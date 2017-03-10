@@ -1,7 +1,7 @@
 //
 // Flags.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
+// This file is part of Envy (getenvy.com) © 2016-2017
 // Portions copyright PeerProject 2008-2014 and Shareaza 2002-2007
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -19,9 +19,10 @@
 #include "StdAfx.h"
 #include "Settings.h"
 #include "Envy.h"
+#include "Flags.h"
+#include "Skin.h"
 #include "ImageServices.h"
 #include "ImageFile.h"
-#include "Flags.h"
 
 #ifdef _DEBUG
 #undef THIS_FILE
@@ -29,10 +30,11 @@ static char THIS_FILE[] = __FILE__;
 #define new DEBUG_NEW
 #endif	// Debug
 
-#define SOURCE_FLAG_WIDTH 		18
-#define SOURCE_FLAG_HEIGHT		12
-#define IMAGELIST_FLAG_WIDTH	FLAG_WIDTH	// 18
-#define IMAGELIST_FLAG_HEIGHT	16
+// Legacy defaults, use Flags.Height & Flags.Width
+//#define SOURCE_FLAG_WIDTH 	18
+//#define SOURCE_FLAG_HEIGHT	12
+//#define IMAGELIST_FLAG_WIDTH	FLAG_WIDTH	// 18
+//#define IMAGELIST_FLAG_HEIGHT	16			// Settings.Skin.RowSize - 1
 
 
 CFlags Flags;
@@ -53,22 +55,41 @@ BOOL CFlags::Load()
 {
 	Clear();
 
-	const CString strFile = Settings.General.DataPath + L"Flags.png";
-
-	m_pImage.Create( IMAGELIST_FLAG_WIDTH, IMAGELIST_FLAG_HEIGHT, ILC_COLOR32|ILC_MASK, 26 * 26, 8 ) ||
-	m_pImage.Create( IMAGELIST_FLAG_WIDTH, IMAGELIST_FLAG_HEIGHT, ILC_COLOR24|ILC_MASK, 26 * 26, 8 ) ||
-	m_pImage.Create( IMAGELIST_FLAG_WIDTH, IMAGELIST_FLAG_HEIGHT, ILC_COLOR16|ILC_MASK, 26 * 26, 8 );
+	const CString strDefault = Settings.General.DataPath + L"Flags.png";
 
 	CImageFile pImage;
-
-	if ( ! pImage.LoadFromFile( strFile ) ||
+	HBITMAP hBitmap = Skin.GetWatermark( L"CFlags" );
+	if ( ! hBitmap ||
+		 ! pImage.LoadFromBitmap( hBitmap ) ||
+		 pImage.m_nWidth < 6 * 26 ||
+		 pImage.m_nHeight < 6 * 26 ||
+		 pImage.m_nHeight > 32 * 26 ||
+		 pImage.m_nWidth % 26 != 0 ||
+		 pImage.m_nHeight % 26 != 0 ||
 		 ! pImage.EnsureRGB( GetSysColor( COLOR_WINDOW ) ) ||
-		 ! pImage.SwapRGB() ||
-		 pImage.m_nWidth < SOURCE_FLAG_WIDTH * 26 ||
-		 pImage.m_nHeight < SOURCE_FLAG_HEIGHT * 26 )
+		 ! pImage.SwapRGB() )
 	{
-		return FALSE;
+		if ( ! pImage.LoadFromFile( strDefault ) ||
+			pImage.m_nWidth < 6 * 26 ||
+			pImage.m_nHeight < 6 * 26 ||
+			pImage.m_nHeight > 32 * 26 ||
+		//	pImage.m_nWidth % 26 != 0 ||
+		//	pImage.m_nHeight % 26 != 0 ||
+			! pImage.EnsureRGB( GetSysColor( COLOR_WINDOW ) ) ||
+			! pImage.SwapRGB() )
+		{
+			return FALSE;
+		}
 	}
+
+	Height = pImage.m_nHeight / 26;
+	Width  = pImage.m_nWidth / 26;
+	m_nImagelistWidth  = max( Width, 16 );
+	m_nImagelistHeight = max( Height, ( Settings.Skin.RowSize > 17 ? (int)Settings.Skin.RowSize - 1 : 16 ) );
+
+	m_pImage.Create( m_nImagelistWidth, m_nImagelistHeight, ILC_COLOR32|ILC_MASK, 26 * 26, 8 ) ||
+	m_pImage.Create( m_nImagelistWidth, m_nImagelistHeight, ILC_COLOR24|ILC_MASK, 26 * 26, 8 ) ||
+	m_pImage.Create( m_nImagelistWidth, m_nImagelistHeight, ILC_COLOR16|ILC_MASK, 26 * 26, 8 );
 
 	const COLORREF crMask = RGB( 0, 255, 0 );
 
@@ -76,12 +97,7 @@ BOOL CFlags::Load()
 	{
 		for ( int j = 0 ; j < 26 ; j++ )
 		{
-			CRect rc(
-				i * SOURCE_FLAG_WIDTH,
-				j * SOURCE_FLAG_HEIGHT,
-				(i + 1) * SOURCE_FLAG_WIDTH,
-				(j + 1) * SOURCE_FLAG_HEIGHT );
-
+			CRect rc( i * Width, j * Height, i * Width + Width, j * Height + Height );
 			AddFlag( &pImage, &rc, crMask );
 		}
 	}
@@ -94,7 +110,7 @@ BOOL CFlags::Load()
 
 void CFlags::AddFlag(CImageFile* pImage, CRect* pRect, COLORREF crBack)
 {
-	//ASSERT( pImage->m_bLoaded && pImage->m_nComponents == 3 );	// Should allow alpha
+	//ASSERT( pImage->m_bLoaded && pImage->m_nComponents == 3 );	// Allow alpha?
 	//ASSERT( pRect->left >= 0 && pRect->left + SOURCE_FLAG_WIDTH <= pImage->m_nWidth );
 	//ASSERT( pRect->top >= 0 && pRect->top <= pImage->m_nHeight + SOURCE_FLAG_HEIGHT );
 	//ASSERT( pRect->right == pRect->left + SOURCE_FLAG_WIDTH );
@@ -113,19 +129,19 @@ void CFlags::AddFlag(CImageFile* pImage, CRect* pRect, COLORREF crBack)
 	CBitmap bmOriginal, bmMoved;
 	CDC* pDC = CDC::FromHandle( hDC );
 
-	bmOriginal.CreateCompatibleBitmap( pDC, SOURCE_FLAG_WIDTH, SOURCE_FLAG_HEIGHT );	// Source bitmap
-	bmMoved.CreateCompatibleBitmap( pDC, IMAGELIST_FLAG_WIDTH, IMAGELIST_FLAG_HEIGHT );	// Destination bitmap
+	bmOriginal.CreateCompatibleBitmap( pDC, Width, Height );	// Source bitmap
+	bmMoved.CreateCompatibleBitmap( pDC, m_nImagelistWidth, m_nImagelistHeight );	// Destination bitmap
 
 	BITMAPINFOHEADER pInfo = {};
 	pInfo.biSize		= sizeof( BITMAPINFOHEADER );
-	pInfo.biWidth		= SOURCE_FLAG_WIDTH;
-	pInfo.biHeight		= SOURCE_FLAG_HEIGHT;
+	pInfo.biWidth		= Width;
+	pInfo.biHeight		= Height;
 	pInfo.biPlanes		= 1;
 	pInfo.biBitCount	= 24;
 	pInfo.biCompression	= BI_RGB;
-	pInfo.biSizeImage	= SOURCE_FLAG_WIDTH * SOURCE_FLAG_HEIGHT * 3;
+	pInfo.biSizeImage	= Width * Height * 3;
 
-	for ( int nY = SOURCE_FLAG_HEIGHT - 1 ; nY >= 0 ; nY-- )
+	for ( int nY = Height - 1 ; nY >= 0 ; nY-- )
 	{
 		SetDIBits( hDCMem1, bmOriginal, nY, 1, pSource, (BITMAPINFO*)&pInfo, DIB_RGB_COLORS );
 		pSource += nPitch;
@@ -135,13 +151,14 @@ void CFlags::AddFlag(CImageFile* pImage, CRect* pRect, COLORREF crBack)
 	HBITMAP hOld_bm2 = (HBITMAP)SelectObject( hDCMem2, bmMoved.m_hObject );
 	CDC* pDC2 = CDC::FromHandle( hDCMem2 );
 	pDC2->SetBkMode( TRANSPARENT );
-	pDC2->FillSolidRect( 0, 0, IMAGELIST_FLAG_WIDTH, IMAGELIST_FLAG_HEIGHT, crBack );
+	pDC2->FillSolidRect( 0, 0, m_nImagelistWidth, m_nImagelistHeight, crBack );
 
 	if ( Settings.General.LanguageRTL )
 		SetLayout( hDCMem2, LAYOUT_RTL );
 
-	StretchBlt( hDCMem2, 0, 3, SOURCE_FLAG_WIDTH, SOURCE_FLAG_HEIGHT,
-				hDCMem1, 0, 0, SOURCE_FLAG_WIDTH, SOURCE_FLAG_HEIGHT, SRCCOPY );
+	int nOffset = ( m_nImagelistHeight - Height ) / 2;
+	StretchBlt( hDCMem2, 0, nOffset, Width, Height,
+				hDCMem1, 0, 0, Width, Height, SRCCOPY );
 
 	SelectObject( hDCMem1, hOld_bm1 );
 	SelectObject( hDCMem2, hOld_bm2 );
@@ -164,7 +181,10 @@ void CFlags::Clear()
 
 int CFlags::GetCount() const
 {
-	return m_pImage.GetImageCount();
+	if ( m_pImage.m_hImageList )
+		return m_pImage.GetImageCount();
+
+	return NULL;	// Startup
 }
 
 int CFlags::GetFlagIndex(const CString& sCountryCode) const
@@ -192,5 +212,5 @@ HICON CFlags::ExtractIcon(int i)
 BOOL CFlags::Draw(int i, HDC hdcDst, int x, int y, COLORREF rgbBk, COLORREF rgbFg, UINT fStyle)
 {
 	return ImageList_DrawEx( m_pImage, i, hdcDst, x, y,
-		IMAGELIST_FLAG_WIDTH, IMAGELIST_FLAG_HEIGHT, rgbBk, rgbFg, fStyle );
+		m_nImagelistWidth, m_nImagelistHeight, rgbBk, rgbFg, fStyle );
 }

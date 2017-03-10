@@ -3,7 +3,7 @@
 
 <!-- Envy Default Catalan Skin File -->
 
-<!-- Translation based on default en.xml r16 -->
+<!-- Translation based on default en.xml r20 -->
 <!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -297,7 +297,7 @@
 	</toolbar>
 	<!-- MEDIA WINDOW -->
 	<toolbar name="CMediaFrame.Basic">
-		<button id="ID_MEDIA_PLAY" text="Reprodueix&#160;&#160;&#160;"/>
+		<button id="ID_MEDIA_PLAY" text="Reprodueix&#160; &#160;"/>
 		<button id="ID_MEDIA_PAUSE" text="Pausa" visible="false"/>
 		<button id="ID_MEDIA_STOP" text="Atura"/>
 		<separator/>
@@ -314,7 +314,7 @@
 		<button id="ID_MEDIA_PLAYLIST" text="Llista de reproducció"/>
 	</toolbar>
 	<toolbar name="CMediaFrame">
-		<button id="ID_MEDIA_PLAY" text="Reprodueix&#160;&#160;&#160;"/>
+		<button id="ID_MEDIA_PLAY" text="Reprodueix&#160; &#160;"/>
 		<button id="ID_MEDIA_PAUSE" text="Pausa" visible="false"/>
 		<button id="ID_MEDIA_STOP" text="Atura"/>
 		<separator/>
@@ -1256,6 +1256,7 @@
 		<item id="ID_LIBRARY_FOLDER_PROPERTIES" text="_Propietats de l'àlbum"/>
 	</menu>
 	<menu name="CLibraryHistoryPanel">
+		<item id="ID_LIBRARY_SHOW_FILE" text="_Show in Library"/>
 		<item id="ID_LIBRARY_CLEAR_HISTORY" text="Clear from _History"/>
 		<item id="ID_LIBRARY_CLEAR_HISTORY_ALL" text="Cancel·la _Totes"/>
 	</menu>
@@ -3653,7 +3654,7 @@
 		<control text="_Configura..."/>
 		<control text="Obtén més..."/>
 	</dialog>
-	<dialog name="CAdvancedSettingsPage" cookie="SyBuStEdmsEdCoBuBu" caption="Avançades">
+	<dialog name="CAdvancedSettingsPage" cookie="SyBuStEdmsEdCoBuBuStEd" caption="Avançades">
 		<control/>
 		<control text="Configuració:"/>
 		<control text="Valor:"/>
@@ -3663,6 +3664,8 @@
 		<control/>
 		<control/>
 		<control text="Predeterminats"/>
+		<control/>
+		<control/>
 	</dialog>
 	<dialog name="CProtocolsSettingsPage" cookie="BuSy" caption="Protocols">
 		<control text="Explorador d'arquitectures comuns dels protocols de Envy:"/>

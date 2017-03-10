@@ -1,7 +1,7 @@
 //
 // Plugins.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
+// This file is part of Envy (getenvy.com) © 2016-2017
 // Portions copyright PeerProject 2008-2014 and Shareaza 2002-2006
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -49,11 +49,7 @@ BOOL CPlugins::Register(const CString& sPath)
 
 	DWORD nSucceeded = 0, nFailed = 0;
 
-	LPCTSTR szParam =
-#if defined(_MSC_VER) && (_MSC_VER >= 1500)	// No VS2005
-	AfxGetPerUserRegistration() ? L"/RegServerPerUser" :
-#endif
-	L"/RegServer";
+	LPCTSTR szParam = AfxGetPerUserRegistration() ? L"/RegServerPerUser" : L"/RegServer";
 
 	CFileFind finder;
 	BOOL bWorking = finder.FindFile( sPath + L"\\*.*" );	// .DLLs +.EXEs
@@ -73,7 +69,6 @@ BOOL CPlugins::Register(const CString& sPath)
 			{
 				HRESULT hr = S_FALSE;
 
-#if defined(_MSC_VER) && (_MSC_VER >= 1500)		// Legacy VS2005 No AfxGetPerUserRegistration
 				HRESULT (WINAPI *pfnDllInstall)(BOOL bInstall, LPCWSTR pszCmdLine);
 				(FARPROC&)pfnDllInstall = GetProcAddress( hDll, "DllInstall" );
 				if ( pfnDllInstall && AfxGetPerUserRegistration() )
@@ -81,7 +76,6 @@ BOOL CPlugins::Register(const CString& sPath)
 					hr = pfnDllInstall( TRUE, L"user" );
 				}
 				else
-#endif
 				{
 					HRESULT (WINAPI *pfnDllRegisterServer)(void);
 					(FARPROC&)pfnDllRegisterServer = GetProcAddress( hDll, "DllRegisterServer" );

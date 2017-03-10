@@ -167,7 +167,7 @@ CNeighbour* CNeighboursWithConnect::ConnectTo(
 	{
 	case PROTOCOL_ED2K:
 		{
-			unique_ptr< CEDNeighbour > pNeighbour( new CEDNeighbour() );
+			augment::auto_ptr< CEDNeighbour > pNeighbour( new CEDNeighbour() );
 			if ( pNeighbour->ConnectTo( &pAddress, nPort, bAutomatic ) )
 				return pNeighbour.release();			// Started connecting to an ed2k neighbour
 		}
@@ -175,7 +175,7 @@ CNeighbour* CNeighboursWithConnect::ConnectTo(
 
 	case PROTOCOL_DC:
 		{
-			unique_ptr< CDCNeighbour > pNeighbour( new CDCNeighbour() );
+			augment::auto_ptr< CDCNeighbour > pNeighbour( new CDCNeighbour() );
 			if ( pNeighbour->ConnectTo( &pAddress, nPort, bAutomatic ) )
 				return pNeighbour.release();			// Started connecting to a dc++ neighbour
 		}
@@ -196,7 +196,7 @@ CNeighbour* CNeighboursWithConnect::ConnectTo(
 
 	default:	// PROTOCOL_G1/PROTOCOL_G2
 		{
-			unique_ptr< CShakeNeighbour > pNeighbour( new CShakeNeighbour() );
+			augment::auto_ptr< CShakeNeighbour > pNeighbour( new CShakeNeighbour() );
 			if ( pNeighbour->ConnectTo( &pAddress, nPort, bAutomatic, bNoUltraPeer ) )
 			{
 				// If we only want G1 connections now, specify that to begin with
@@ -733,14 +733,14 @@ bool CNeighboursWithConnect::NeedMoreLeafs(PROTOCOLID nProtocol) const
 	// Return true if we need more Gnutella ultrapeer connections
 	case PROTOCOL_G1:
 		// Compare our leaf count to NumLeafs from settings, return true if we don't have enough
-		return IsG1UltrapeerCapable() &&
-			nConnected[PROTOCOL_G1] < Settings.Gnutella1.NumLeafs;	// Gnutella NumLeafs is 0 by default, we always have enough leaves
+		return //IsG1UltrapeerCapable() &&
+			nConnected[ PROTOCOL_G1 ] < Settings.Gnutella1.NumLeafs;	// Gnutella NumLeafs is 0 by default, we always have enough leaves
 
 	// Return true if we need more Gnutella2 hub connections
 	case PROTOCOL_G2:
 		// Compare our leaf count to NumLeafs from settings, return true if we don't have enough
-		return IsG2HubCapable() &&
-			nConnected[PROTOCOL_G2] < Settings.Gnutella2.NumLeafs;	// Gnutella2 NumLeafs is 1024 by default
+		return //IsG2HubCapable() &&
+			nConnected[ PROTOCOL_G2 ] < Settings.Gnutella2.NumLeafs;	// Gnutella2 NumLeafs is ~400
 	}
 
 	return false;

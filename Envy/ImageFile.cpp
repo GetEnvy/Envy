@@ -16,8 +16,6 @@
 // (http://www.gnu.org/licenses/agpl.html)
 //
 
-// ToDo: Support Alpha transparency from PNG loading (or at least allow for some)
-
 #include "StdAfx.h"
 #include "Settings.h"
 #include "Envy.h"
@@ -142,6 +140,7 @@ BOOL CImageFile::LoadFromURL(LPCTSTR pszURL)
 			 strMIME.CompareNoCase( L"image/bmp" ) != 0 &&
 			 strMIME.CompareNoCase( L"image/png" ) != 0 )
 		{
+			// ToDo: Alllow other image types?
 			theApp.Message( MSG_DEBUG, L"Preview failed: unacceptable content type." );
 			return FALSE;
 		}

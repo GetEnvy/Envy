@@ -457,7 +457,7 @@ BOOL CHostBrowser::LoadDC(LPCTSTR pszFile, CQueryHit*& pHits)
 	if ( ! pBuffer.UnBZip() )
 		return FALSE;	// Decompression error
 
-	unique_ptr< CXMLElement > pXML ( CXMLElement::FromString( pBuffer.ReadString( pBuffer.m_nLength, CP_UTF8 ), TRUE ) );
+	augment::auto_ptr< CXMLElement > pXML ( CXMLElement::FromString( pBuffer.ReadString( pBuffer.m_nLength, CP_UTF8 ), TRUE ) );
 	if ( ! pXML.get() )
 		return FALSE;	// XML decoding error
 
@@ -548,8 +548,10 @@ void CHostBrowser::SendRequest()
 		}
 
 		Write( _P("Accept: text/html, application/x-gnutella-packets, application/x-gnutella2\r\n") );
-
 		Write( _P("Accept-Encoding: deflate\r\n") );
+	//	if ( ! m_sKey.IsEmpty() )	// ToDo: Proposed PrivateKey extension
+	//		Write( L"Authorization: :" + m_sKey + L"\r\n" );
+
 		Write( _P("Connection: close\r\n") );
 
 		strHeader.Format( L"Host: %s:%lu\r\n\r\n", (LPCTSTR)m_sAddress, htons( m_pHost.sin_port ) );
@@ -649,7 +651,8 @@ BOOL CHostBrowser::OnHeaderLine(CString& strHeader, CString& strValue)
 	{
 		m_pVendor = VendorCache.LookupByName( strValue );
 		m_sServer = strValue;
-		if ( m_sServer.GetLength() > 64 ) m_sServer = m_sServer.Left( 64 );
+		if ( m_sServer.GetLength() > 64 )
+			m_sServer = m_sServer.Left( 64 );
 	}
 	else if ( strHeader.CompareNoCase( L"Content-Type" ) == 0 )
 	{

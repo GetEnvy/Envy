@@ -539,7 +539,7 @@ bool CLibraryBuilder::HashFile(LPCTSTR szPath, HANDLE hFile)
 	nSizeHigh = (DWORD)( nFileBase >> 32 );
 	SetFilePointer( hFile, nSizeLow, (PLONG)&nSizeHigh, FILE_BEGIN );
 
-	unique_ptr< CFileHash > pFileHash( new CFileHash( nFileSize ) );
+	augment::auto_ptr< CFileHash > pFileHash( new CFileHash( nFileSize ) );
 	if ( ! pFileHash.get() )
 		return false;	// Out of memory
 
@@ -706,7 +706,7 @@ int CLibraryBuilder::SubmitMetadata(DWORD nIndex, LPCTSTR pszSchemaURI, CXMLElem
 	}
 
 	// Validate schema
-	unique_ptr< CXMLElement > pBase( pSchema->Instantiate( true ) );
+	augment::auto_ptr< CXMLElement > pBase( pSchema->Instantiate( true ) );
 	pBase->AddElement( pXML );
 	if ( ! pSchema->Validate( pBase.get(), true ) )
 		return 0;

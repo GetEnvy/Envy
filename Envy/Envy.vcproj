@@ -484,10 +484,6 @@
 				>
 			</File>
 			<File
-				RelativePath="ComboListCtrl.cpp"
-				>
-			</File>
-			<File
 				RelativePath="ComMenu.cpp"
 				>
 			</File>
@@ -2737,10 +2733,6 @@
 				>
 			</File>
 			<File
-				RelativePath="ComboListCtrl.h"
-				>
-			</File>
-			<File
 				RelativePath="ComMenu.h"
 				>
 			</File>
@@ -4252,7 +4244,15 @@
 				Name="Augment"
 				>
 				<File
+					RelativePath="Augment\Augment.hpp"
+					>
+				</File>
+				<File
 					RelativePath="Augment\auto_array.hpp"
+					>
+				</File>
+				<File
+					RelativePath="Augment\auto_ptr.hpp"
 					>
 				</File>
 				<File

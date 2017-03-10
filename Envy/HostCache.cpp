@@ -49,7 +49,7 @@ CHostCache::CHostCache()
 	, BitTorrent( PROTOCOL_BT )
 	, Kademlia	( PROTOCOL_KAD )
 	, DC		( PROTOCOL_DC )
-	, m_tLastPruneTime ( 0 )
+//	, m_tLastPruneTime ( 0 )	// Using static
 {
 	m_pList.AddTail( &Gnutella1 );
 	m_pList.AddTail( &Gnutella2 );
@@ -239,14 +239,16 @@ void CHostCache::Serialize(CArchive& ar)
 void CHostCache::PruneOldHosts()
 {
 	const DWORD tNow = static_cast< DWORD >( time( NULL ) );
-	if ( tNow > m_tLastPruneTime + 90 )		// Every minute+
+	static DWORD tLastPruneTime = 0;
+
+	if ( tNow > tLastPruneTime + 90 )		// Every minute+ (ToDo: Setting?)
 	{
 		for ( POSITION pos = m_pList.GetHeadPosition() ; pos ; )
 		{
 			m_pList.GetNext( pos )->PruneOldHosts( tNow );
 		}
 
-		m_tLastPruneTime = tNow;
+		tLastPruneTime = tNow;
 	}
 }
 
@@ -887,7 +889,7 @@ int CHostCache::ImportHubList(CFile* pFile)
 		return 0;	// Decompression error
 
 	CString strEncoding;
-	unique_ptr< CXMLElement > pHublist ( CXMLElement::FromString(
+	augment::auto_ptr< CXMLElement > pHublist ( CXMLElement::FromString(
 		pBuffer.ReadString( pBuffer.m_nLength ), TRUE, &strEncoding ) );
 	if ( strEncoding.CompareNoCase( L"utf-8" ) == 0 )	// Reload as UTF-8
 		pHublist.reset( CXMLElement::FromString(
@@ -1052,6 +1054,25 @@ int CHostCache::ImportNodes(CFile* pFile)
 	}
 
 	return nServers;
+}
+
+bool CHostCache::EnoughServers(PROTOCOLID nProtocol) const
+{
+	switch ( nProtocol )
+	{
+	case PROTOCOL_G1:
+		return ! Settings.Gnutella1.Enabled || Gnutella1.CountHosts( TRUE ) > 20;
+	case PROTOCOL_G2:
+		return ! Settings.Gnutella2.Enabled || Gnutella2.CountHosts( TRUE ) > 25;
+	case PROTOCOL_ED2K:
+		return ! Settings.eDonkey.Enabled || eDonkey.CountHosts( TRUE ) > 0;
+	case PROTOCOL_DC:
+		return ! Settings.DC.Enabled || DC.CountHosts( TRUE ) > 0;
+	case PROTOCOL_BT:
+		return ! Settings.BitTorrent.Enabled || BitTorrent.CountHosts( TRUE ) > 0;
+	default:
+		return true;	// ( ForProtocol( nProtocol )->CountHosts( TRUE ) > 0 );
+	}
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -1380,40 +1401,18 @@ void CHostCacheHost::Serialize(CArchive& ar, int /*nVersion*/)	// HOSTCACHE_SER_
 			m_pVendor = VendorCache.Lookup( szVendor );
 		}
 
-		//if ( nVersion >= 10 )
-		//{
-			ar >> m_sName;
-			if ( ! m_sName.IsEmpty() )
-				ar >> m_sDescription;
+		ar >> m_sName;
+		if ( ! m_sName.IsEmpty() )
+			ar >> m_sDescription;
 
-			ar >> m_nUserCount;
-			ar >> m_nUserLimit;
-			ar >> m_bPriority;
+		ar >> m_nUserCount;
+		ar >> m_nUserLimit;
+		ar >> m_bPriority;
 
-			ar >> m_nFileLimit;
-			ar >> m_nTCPFlags;
-			ar >> m_nUDPFlags;
-			ar >> m_tStats;
-		//}
-		//else if ( nVersion >= 7 )
-		//{
-		//	ar >> m_sName;
-		//	if ( ! m_sName.IsEmpty() )
-		//	{
-		//		ar >> m_sDescription;
-		//		ar >> m_nUserCount;
-		//		if ( nVersion >= 8 )
-		//			ar >> m_nUserLimit;
-		//		if ( nVersion >= 9 )
-		//			ar >> m_bPriority;
-		//		if ( nVersion >= 10 )
-		//		{
-		//			ar >> m_nFileLimit;
-		//			ar >> m_nTCPFlags;
-		//			ar >> m_nUDPFlags;
-		//		}
-		//	}
-		//}
+		ar >> m_nFileLimit;
+		ar >> m_nTCPFlags;
+		ar >> m_nUDPFlags;
+		ar >> m_tStats;
 
 		ar >> m_nKeyValue;
 		if ( m_nKeyValue != 0 )
@@ -1422,49 +1421,29 @@ void CHostCacheHost::Serialize(CArchive& ar, int /*nVersion*/)	// HOSTCACHE_SER_
 			ar >> m_nKeyHost;
 		}
 
-		//if ( nVersion >= 11 )
-		//{
-			ar >> m_tFailure;
-			ar >> m_nFailures;
-		//}
+		ar >> m_tFailure;
+		ar >> m_nFailures;
 
-		//if ( nVersion >= 12 )
-		//{
-			ar >> m_bCheckedLocally;
-			ar >> m_nDailyUptime;
-		//}
+		ar >> m_bCheckedLocally;
+		ar >> m_nDailyUptime;
 
-		//if ( nVersion >= 14 )
-			ar >> m_sCountry;
-		//else
-		//	m_sCountry = theApp.GetCountryCode( m_pAddress );
+		ar >> m_sCountry;
 
-		//if ( nVersion >= 15 )
-		//{
-		//	ar >> m_bDHT;	// Unused
-			ReadArchive( ar, &m_oBtGUID[0], m_oBtGUID.byteCount );
-			m_oBtGUID.validate();
-		//}
+		//ar >> m_bDHT;	// Unused
+		ReadArchive( ar, &m_oBtGUID[0], m_oBtGUID.byteCount );
+		m_oBtGUID.validate();
 
-		//if ( nVersion >= 16 )
-		//{
-			ar >> m_nUDPPort;
-			ReadArchive( ar, &m_oGUID[0], m_oGUID.byteCount );
-			m_oGUID.validate();
-			ar >> m_nKADVersion;
-		//}
+		ar >> m_nUDPPort;
+		ReadArchive( ar, &m_oGUID[0], m_oGUID.byteCount );
+		m_oGUID.validate();
+		ar >> m_nKADVersion;
 
-		//if ( nVersion >= 17 )
-			ar >> m_tConnect;
+		ar >> m_tConnect;
 
-		//if ( nVersion >= 18 )
-		//{
-			ar >> m_sUser;
-			ar >> m_sPass;
-		//}
+		ar >> m_sUser;
+		ar >> m_sPass;
 
-		//if ( nVersion >= 19 )
-			ar >> m_sAddress;
+		ar >> m_sAddress;
 	}
 }
 
@@ -1531,7 +1510,7 @@ bool CHostCacheHost::ConnectTo(BOOL bAutomatic)
 //////////////////////////////////////////////////////////////////////
 // CHostCacheHost string
 
-CString CHostCacheHost::ToString(bool bLong) const
+CString CHostCacheHost::ToString(const bool bLong /*true*/) const
 {
 	CString str;
 

@@ -1,11 +1,15 @@
 --------------------------
-Envy Skin Installer
+Envy Package Installer
 --------------------------
+
+A package is a standard .zip file, renamed to .envy extension,
+and containing an appropriate .xml file, with assets.
+
 
 
 Copyright Information
 =====================
-The SkinInstaller is part of Envy (getenvy.com) © 2016
+Packages is part of Envy (getenvy.com) © 2016
 
 However this software component has been released into the public domain.
 You are free to redistribute and modify it without any restrictions
@@ -21,7 +25,7 @@ About
 This installer was originally developed by Robert Rainwater for Shareaza.
 Versions 1.0.9-1.0.11 are extensions by Jann Röder <jann_roeder@arcor.de>
 1.0.12 version improved by Rolandas Rudomanskis.
-1.0.0.0 Adapted to Envy
+2.0 Adapted to Envy
 
 
 
@@ -116,8 +120,11 @@ History
  - "Updated by" authors are displayed
 
 1.0.0.0
- - Initial release for Envy
+ - Adapted for PeerProject
  - Added "Path" Manifest element support
+
+1.0
+ - Initial release for Envy
 
 
 ToDo

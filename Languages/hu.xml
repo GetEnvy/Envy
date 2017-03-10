@@ -3,7 +3,7 @@
 
 <!-- Envy Default Hungarian Skin File -->
 
-<!-- Translation based on default en.xml r16 -->
+<!-- Translation based on default en.xml r20 -->
 <!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -299,7 +299,7 @@
 	</toolbar>
 	<!-- MEDIA WINDOW -->
 	<toolbar name="CMediaFrame.Basic">
-		<button id="ID_MEDIA_PLAY" text="Lejátszás&#160;&#160;&#160;"/>
+		<button id="ID_MEDIA_PLAY" text="Lejátszás&#160; &#160;"/>
 		<button id="ID_MEDIA_PAUSE" text="Szünet" visible="false"/>
 		<button id="ID_MEDIA_STOP" text="Stop"/>
 		<separator/>
@@ -316,7 +316,7 @@
 		<button id="ID_MEDIA_PLAYLIST" text="Lejátszólista"/>
 	</toolbar>
 	<toolbar name="CMediaFrame">
-		<button id="ID_MEDIA_PLAY" text="Lejátszás&#160;&#160;&#160;"/>
+		<button id="ID_MEDIA_PLAY" text="Lejátszás&#160; &#160;"/>
 		<button id="ID_MEDIA_PAUSE" text="Szünet" visible="false"/>
 		<button id="ID_MEDIA_STOP" text="Stop"/>
 		<separator/>
@@ -1261,6 +1261,7 @@
 		<item id="ID_LIBRARY_FOLDER_PROPERTIES" text="_Album tulajdonságai"/>
 	</menu>
 	<menu name="CLibraryHistoryPanel">
+		<item id="ID_LIBRARY_SHOW_FILE" text="_Show in Library"/>
 		<item id="ID_LIBRARY_CLEAR_HISTORY" text="Clear from _History"/>
 		<item id="ID_LIBRARY_CLEAR_HISTORY_ALL" text="_Mindet törli"/>
 	</menu>
@@ -3714,7 +3715,7 @@
 		<control text="_Beállít..."/>
 		<control text="Többet akarok"/>
 	</dialog>
-	<dialog name="CAdvancedSettingsPage" cookie="SyBuStEdmsEdCoBuBu" caption="Haladó">
+	<dialog name="CAdvancedSettingsPage" cookie="SyBuStEdmsEdCoBuBuStEd" caption="Haladó">
 		<control/>
 		<control text="Tulajdonság:"/>
 		<control text="Érték:"/>
@@ -3724,6 +3725,8 @@
 		<control/>
 		<control/>
 		<control text="Alapállapotba"/>
+		<control/>
+		<control/>
 	</dialog>
 	<dialog name="CProtocolsSettingsPage" cookie="BuSy" caption="Protokollok">
 		<control text="A Envy által támogatott protokollok"/>

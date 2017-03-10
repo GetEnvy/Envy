@@ -232,12 +232,12 @@ void CNeighbourTipCtrl::OnPaint(CDC* pDC)
 		{
 			Flags.Draw( nFlagIndex, pDC->GetSafeHdc(), pt.x, pt.y,
 				Images.m_bmToolTip.m_hObject ? CLR_NONE : Colors.m_crTipBack, CLR_NONE, ILD_NORMAL );
-			pDC->ExcludeClipRect( pt.x, pt.y, pt.x + FLAG_WIDTH, pt.y + 16 );
+			pDC->ExcludeClipRect( pt.x, pt.y, pt.x + Flags.Width, pt.y + 16 );
 
 			pt.y += 2;
-			pt.x += FLAG_WIDTH + 9;
+			pt.x += Flags.Width + 9;
 			DrawText( pDC, &pt, pNeighbour->m_sCountryName );
-			pt.x -= FLAG_WIDTH + 9;
+			pt.x -= Flags.Width + 9;
 		}
 		else
 		{

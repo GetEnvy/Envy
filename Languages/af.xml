@@ -4,7 +4,7 @@
 <!-- Envy Default Afrikaans Skin File -->
 <!-- Weergawe: 27 Oktober 2005 vir Shareaza 2.2.0.2 -->
 
-<!-- Translation based on default en.xml r16 -->
+<!-- Translation based on default en.xml r20 -->
 <!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -1180,7 +1180,7 @@
 		<item id="ID_UPLOADS_HELP" text="_Hulp..."/>
 	</menu>
 	<menu name="CUploadsWnd.Upload">
-		<item id="ID_UPLOADS_LAUNCH" text="Vertoon _Library"/>
+		<item id="ID_UPLOADS_LAUNCH" text="Vertoon in _Biblioteek"/>
 		<item id="ID_UPLOADS_FOLDER" text="Open _Folder"/>
 		<separator/>
 		<item id="ID_UPLOADS_CLEAR" text="_Kanselleer Oplaai"/>
@@ -1247,8 +1247,9 @@
 		<item id="ID_LIBRARY_FOLDER_PROPERTIES" text="_Album Eienskappe"/>
 	</menu>
 	<menu name="CLibraryHistoryPanel">
-		<item id="ID_LIBRARY_CLEAR_HISTORY" text="_Verwyder from History"/>
-		<item id="ID_LIBRARY_CLEAR_HISTORY_ALL" text="Verwyder _Alle"/>
+		<item id="ID_LIBRARY_SHOW_FILE" text="Vertoon in _Biblioteeky"/>
+		<item id="ID_LIBRARY_CLEAR_HISTORY" text="_Verwyder van Geskiedenis"/>
+		<item id="ID_LIBRARY_CLEAR_HISTORY_ALL" text="Verwyder _Alle Geskiedenis"/>
 	</menu>
 	<!-- LIBRARY VIEWS -->
 	<menu name="CLibraryTileView">
@@ -3674,7 +3675,7 @@
 		<control text="_Verstel..."/>
 		<control text="Kry meer"/>
 	</dialog>
-	<dialog name="CAdvancedSettingsPage" cookie="SyBuStEdmsEdCoBuBu" caption="Gevorderd">
+	<dialog name="CAdvancedSettingsPage" cookie="SyBuStEdmsEdCoBuBuStEd" caption="Gevorderd">
 		<control/>
 		<control text="Verstellings Eienskappe:"/>
 		<control text="Waarde:"/>
@@ -3684,6 +3685,8 @@
 		<control/>
 		<control/>
 		<control text="Herstel Standaard"/>
+		<control/>
+		<control/>
 	</dialog>
 	<dialog name="CProtocolsSettingsPage" cookie="BuSy" caption="Protokolle">
 		<control text="Envy Algemene Argitektuur Protokolverkenner:"/>

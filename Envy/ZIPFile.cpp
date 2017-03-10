@@ -382,7 +382,7 @@ CBuffer* CZIPFile::File::Decompress()
 	if ( ! PrepareToDecompress( pStream ) )
 		return NULL;
 
-	unique_ptr< CBuffer > pTarget( new CBuffer() );
+	augment::auto_ptr< CBuffer > pTarget( new CBuffer() );
 	if ( ! pTarget.get() )
 		return NULL;
 

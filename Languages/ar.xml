@@ -3,7 +3,7 @@
 
 <!-- Envy Arabic Language Skin File -->
 
-<!-- Translation based on default en.xml r16 -->
+<!-- Translation based on default en.xml r20 -->
 <!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -456,17 +456,17 @@
 		<item id="ID_MOVETAB_LEFT" text="تحرك تبويب اليسار" />
 		<item id="ID_MOVETAB_RIGHT" text="بويب تحرك بزر" />
 		<separator />
-		<item id="ID_CHILD_CLOSE" text="_إغلاق النافذة" />
+		<item id="ID_CHILD_CLOSE" text="إغلاق النافذة" />
 	</menu>
 	<menu name="CTabBar.Child">
 		<item id="ID_MOVETAB_LEFT" text="تحرك تبويب اليسار" />
 		<item id="ID_MOVETAB_RIGHT" text="بويب تحرك بزر" />
 		<separator />
-		<item id="ID_CHILD_MAXIMISE" text="_شاشة كاملة" />
-		<item id="ID_CHILD_RESTORE" text="_إستعادة" />
-		<item id="ID_CHILD_MINIMISE" text="_تصغير" />
+		<item id="ID_CHILD_MAXIMISE" text="شاشة كاملة" />
+		<item id="ID_CHILD_RESTORE" text="إستعادة" />
+		<item id="ID_CHILD_MINIMISE" text="تصغير" />
 		<separator />
-		<item id="ID_CHILD_CLOSE" text="_إغلاق النافذة" />
+		<item id="ID_CHILD_CLOSE" text="إغلاق النافذة" />
 	</menu>
 	<!-- TRAY MENU -->
 	<menu name="CMainWnd.Tray">
@@ -474,135 +474,135 @@
 		<separator />
 		<item id="ID_WINDOW_REMOTE" text="عرض البعيد" />
 		<item id="ID_TOOLS_SETTINGS" text="فتح إ_عدادات..." />
-		<item id="ID_NETWORK_SEARCH" text="بحث _جديد..." />
-		<item id="ID_TOOLS_DOWNLOAD" text="_تحميل الملف..." />
+		<item id="ID_NETWORK_SEARCH" text="بحث جديد..." />
+		<item id="ID_TOOLS_DOWNLOAD" text="تحميل الملف..." />
 		<separator />
-		<item id="ID_MEDIA_PLAY" text="_تشغيل الوسائط" />
+		<item id="ID_MEDIA_PLAY" text="تشغيل الوسائط" />
 		<item id="ID_MEDIA_PAUSE" text="اي_قاف مؤقت للوسائط" />
 		<item id="ID_MEDIA_PREVIOUS" text="ال_مسار السابق" />
-		<item id="ID_MEDIA_NEXT" text="_المسار التالي" />
+		<item id="ID_MEDIA_NEXT" text="المسار التالي" />
 		<separator />
-		<item id="ID_NETWORK_AUTO_CLOSE" text="الخروج عند إنتهاء _ نقل البيانات" />
+		<item id="ID_NETWORK_AUTO_CLOSE" text="الخروج عند إنتهاء  نقل البيانات" />
 		<item id="ID_NETWORK_EXIT" text="خ_روج" />
 	</menu>
 	<!-- MAIN WINDOW MENU BAR -->
 	<menu name="CMainWnd.DropMenu" type="bar">
 		<menu text="القائمة">
 			<item id="ID_TOOLS_SETTINGS" text="إ_عدادات ..." />
-			<menu text="_شبكة">
-				<item id="ID_NETWORK_CONNECT" text="_إتصال" shortcut="Ctrl+G" />
-				<item id="ID_NETWORK_DISCONNECT" text="_قطع الإتصال" />
+			<menu text="شبكة">
+				<item id="ID_NETWORK_CONNECT" text="إتصال" shortcut="Ctrl+G" />
+				<item id="ID_NETWORK_DISCONNECT" text="قطع الإتصال" />
 				<separator />
-				<item id="ID_NETWORK_G2" text="_الإتصال بـ Gnutella_2" />
-				<item id="ID_NETWORK_G1" text="الإتصال بـ _Gnutella" />
-				<item id="ID_NETWORK_ED2K" text=" _الإتصال بـ _eDonkey2000" />
-				<item id="ID_NETWORK_DC" text=" _الإتصال بـ _DC++" />
-				<item id="ID_NETWORK_BT" text=" _الإتصال بـ _BitTorrent" />
+				<item id="ID_NETWORK_G2" text="الإتصال بـ Gnutella_2" />
+				<item id="ID_NETWORK_G1" text="الإتصال بـ Gnutella" />
+				<item id="ID_NETWORK_ED2K" text=" الإتصال بـ eDonkey2000" />
+				<item id="ID_NETWORK_DC" text=" الإتصال بـ DC++" />
+				<item id="ID_NETWORK_BT" text=" الإتصال بـ BitTorrent" />
 				<separator />
-				<item id="ID_NETWORK_CONNECT_TO" text="الإتصال _بـ..." shortcut="Ctrl+T" />
-				<item id="ID_NETWORK_BROWSE_TO" text="_إستعراض المضيف..." />
+				<item id="ID_NETWORK_CONNECT_TO" text="الإتصال بـ..." shortcut="Ctrl+T" />
+				<item id="ID_NETWORK_BROWSE_TO" text="إستعراض المضيف..." />
 				<separator />
-				<item id="ID_NETWORK_AUTO_CLOSE" text="الخروج عند إنتهاء _ نقل البيانات" />
+				<item id="ID_NETWORK_AUTO_CLOSE" text="الخروج عند إنتهاء  نقل البيانات" />
 				<item id="ID_NETWORK_EXIT" text="خ_روج" />
 			</menu>
-			<menu text="_ادوات">
-				<item id="ID_LIBRARY_FOLDERS" text="مشاركة _الملفات..." />
-				<item id="ID_OPEN_DOWNLOADS_FOLDER" text="_فتح مجلدي للتحميلات المكتملة" />
+			<menu text="ادوات">
+				<item id="ID_LIBRARY_FOLDERS" text="مشاركة الملفات..." />
+				<item id="ID_OPEN_DOWNLOADS_FOLDER" text="فتح مجلدي للتحميلات المكتملة" />
 				<separator />
-				<item id="ID_TOOLS_DOWNLOAD" text="_تحميل الملف/Torrent..." />
-				<item id="ID_TOOLS_CREATETORRENT" text="_Create .Torrent..." />
-				<item id="ID_IMPORT_DOWNLOADS" text="_إستيراد تحميلات eMule الجزئية" />
+				<item id="ID_TOOLS_DOWNLOAD" text="تحميل الملف/Torrent..." />
+				<item id="ID_TOOLS_CREATETORRENT" text="Create .Torrent..." />
+				<item id="ID_IMPORT_DOWNLOADS" text="إستيراد تحميلات eMule الجزئية" />
 				<separator />
-				<item id="ID_TOOLS_LANGUAGE" text="تحديد _ اللغه..." />
+				<item id="ID_TOOLS_LANGUAGE" text="تحديد  اللغه..." />
 				<item id="ID_TOOLS_SKIN" text="تحديد غ_لاف..." />
 				<separator />
-				<item id="ID_TOOLS_PROFILE" text="تحرير _ملفي الخاص..." />
-				<item id="ID_TOOLS_WIZARD" text="_معالج البدء السريع..." />
+				<item id="ID_TOOLS_PROFILE" text="تحرير ملفي الخاص..." />
+				<item id="ID_TOOLS_WIZARD" text="معالج البدء السريع..." />
 				<separator />
 				<item id="ID_TOOLS_SETTINGS" text="إ_عدادات Envy" />
 			</menu>
-			<menu text="_عرض">
-				<item id="ID_TAB_HOME" text="_الرئيسية" shortcut="Ctrl+H" />
+			<menu text="عرض">
+				<item id="ID_TAB_HOME" text="الرئيسية" shortcut="Ctrl+H" />
 				<item id="ID_VIEW_NEIGHBOURS" text="الات_صالات المجاوره" shortcut="F2" />
 				<item id="ID_VIEW_SYSTEM" text="ن_ظام" shortcut="F11" />
-				<item id="ID_VIEW_DOWNLOADS" text="_مكتبة الملفات" shortcut="F3" />
-				<item id="ID_VIEW_UPLOADS" text="_رفع الملفات" shortcut="F4" />
-				<item id="ID_VIEW_LIBRARY" text="_المكتبة" shortcut="F5" />
-				<item id="ID_VIEW_MEDIA" text="_الوسائط" shortcut="F6" />
+				<item id="ID_VIEW_DOWNLOADS" text="مكتبة الملفات" shortcut="F3" />
+				<item id="ID_VIEW_UPLOADS" text="رفع الملفات" shortcut="F4" />
+				<item id="ID_VIEW_LIBRARY" text="المكتبة" shortcut="F5" />
+				<item id="ID_VIEW_MEDIA" text="الوسائط" shortcut="F6" />
 				<separator />
 				<item id="ID_VIEW_SCHEDULER" text="جدولة" shortcut="Ctrl+F7" />
 				<item id="ID_VIEW_SECURITY" text="ا_من" shortcut="F7" />
 				<item id="ID_VIEW_HOSTS" text="ا_لمخزون المؤقت للمضيف" shortcut="F8" />
 				<item id="ID_VIEW_DISCOVERY" text="اكت_شاف" shortcut="F9" />
-				<item id="ID_VIEW_TRAFFIC" text="_مخطط" shortcut="F10" />
+				<item id="ID_VIEW_TRAFFIC" text="مخطط" shortcut="F10" />
 				<separator />
-				<item id="ID_VIEW_PACKETS" text="_تفريغ الحزمة" shortcut="Ctrl+F1" />
+				<item id="ID_VIEW_PACKETS" text="تفريغ الحزمة" shortcut="Ctrl+F1" />
 				<item id="ID_VIEW_SEARCH_MONITOR" text="شا_شة البحث" shortcut="Ctrl+F2" />
 				<item id="ID_VIEW_RESULTS_MONITOR" text="ا_ختر شاشة" shortcut="Ctrl+F3" />
-				<item id="ID_TAB_SEARCH" text="_بحث" shortcut="Ctrl+S" />
+				<item id="ID_TAB_SEARCH" text="بحث" shortcut="Ctrl+S" />
 			</menu>
-			<menu text="_نافذة">
+			<menu text="نافذة">
 				<item id="ID_VIEW_BASIC" text="ن_ظام عادي" />
 				<item id="ID_VIEW_TABBED" text="نظ_ام متقدم" />
-				<item id="ID_VIEW_WINDOWED" text="_نظام ذو نوافذ" />
+				<item id="ID_VIEW_WINDOWED" text="نظام ذو نوافذ" />
 				<separator />
-				<item id="ID_WINDOW_NAVBAR" text="عرض _عامود التصفح" />
-				<item id="ID_WINDOW_TOOLBAR" text="إظهار _مربع الادوات" />
+				<item id="ID_WINDOW_NAVBAR" text="عرض عامود التصفح" />
+				<item id="ID_WINDOW_TOOLBAR" text="إظهار مربع الادوات" />
 				<separator />
 				<item id="ID_WINDOW_TABBAR" text="إظهار شريط المع_لومات" />
-				<item id="ID_WINDOW_MONITOR" text="إظهار _الشاشة" />
-				<item id="ID_WINDOW_REMOTE" text="إظهار _الإتصال عن بعد" />
+				<item id="ID_WINDOW_MONITOR" text="إظهار الشاشة" />
+				<item id="ID_WINDOW_REMOTE" text="إظهار الإتصال عن بعد" />
 			</menu>
-			<menu text="_تعليمات">
-				<item id="ID_HELP_FAQ" text="_إستفسارات Envy" />
-				<item id="ID_HELP_TEST" text="_فحص الإتصال" />
+			<menu text="تعليمات">
+				<item id="ID_HELP_FAQ" text="إستفسارات Envy" />
+				<item id="ID_HELP_TEST" text="فحص الإتصال" />
 				<separator />
-				<menu text="_الأدلة الإرشادية">
-					<item id="ID_HELP_GUIDE" text="مستخدمي _دليل Envy" />
-					<item id="ID_HELP_ROUTER" text="_تعليمات جهاز التوجيه" />
-					<item id="ID_HELP_SECURITY" text="_تعليمات الأمان" />
-					<item id="ID_HELP_CODEC" text="_تعليمات أدوات الترميز" />
+				<menu text="الأدلة الإرشادية">
+					<item id="ID_HELP_GUIDE" text="مستخدمي دليل Envy" />
+					<item id="ID_HELP_ROUTER" text="تعليمات جهاز التوجيه" />
+					<item id="ID_HELP_SECURITY" text="تعليمات الأمان" />
+					<item id="ID_HELP_CODEC" text="تعليمات أدوات الترميز" />
 				</menu>
 				<separator />
-				<menu text="_مواقع ويب">
-					<item id="ID_HELP_FORUMS" text="_منتديات Envy" />
+				<menu text="مواقع ويب">
+					<item id="ID_HELP_FORUMS" text="منتديات Envy" />
 					<separator />
 					<item id="ID_HELP_UPDATE" text="آخر الأخبار" />
 					<!--item id="ID_HELP_WEB_1" text="Zeropaid.com"-->
 				</menu>
-				<item id="ID_HELP_HOMEPAGE" text="_GetEnvy.com" />
+				<item id="ID_HELP_HOMEPAGE" text="GetEnvy.com" />
 				<separator />
-				<item id="ID_HELP_ABOUT" text="_معلومات عن Envy..." />
+				<item id="ID_HELP_ABOUT" text="معلومات عن Envy..." />
 			</menu>
 			<item id="ID_NETWORK_EXIT" text="خ_روج" />
 		</menu>
 	</menu>
 	<menu name="CMainWnd.Tabbed" type="شريط">
-		<menu text="_شبكة">
-			<item id="ID_NETWORK_CONNECT" text="_إتصال" shortcut="Ctrl+G" />
-			<item id="ID_NETWORK_DISCONNECT" text="_قطع الإتصال" />
+		<menu text="شبكة">
+			<item id="ID_NETWORK_CONNECT" text="إتصال" shortcut="Ctrl+G" />
+			<item id="ID_NETWORK_DISCONNECT" text="قطع الإتصال" />
 			<separator />
-			<menu text="تحديد _الشبكات">
-				<item id="ID_NETWORK_G2" text="_الإتصال بـ Gnutella_2" />
-				<item id="ID_NETWORK_G1" text="الإتصال بـ _Gnutella" />
-				<item id="ID_NETWORK_ED2K" text=" _الإتصال بـ _eDonkey2000" />
-				<item id="ID_NETWORK_DC" text=" _الإتصال بـ _DC++" />
-				<item id="ID_NETWORK_BT" text=" _الإتصال بـ _BitTorrent" />
+			<menu text="تحديد الشبكات">
+				<item id="ID_NETWORK_G2" text="الإتصال بـ Gnutella_2" />
+				<item id="ID_NETWORK_G1" text="الإتصال بـ Gnutella" />
+				<item id="ID_NETWORK_ED2K" text=" الإتصال بـ eDonkey2000" />
+				<item id="ID_NETWORK_DC" text=" الإتصال بـ DC++" />
+				<item id="ID_NETWORK_BT" text=" الإتصال بـ BitTorrent" />
 			</menu>
 			<separator />
-			<item id="ID_NETWORK_CONNECT_TO" text="الإتصال _بـ..." shortcut="Ctrl+T" />
-			<item id="ID_NETWORK_BROWSE_TO" text="_إستعراض المضيف..." />
+			<item id="ID_NETWORK_CONNECT_TO" text="الإتصال بـ..." shortcut="Ctrl+T" />
+			<item id="ID_NETWORK_BROWSE_TO" text="إستعراض المضيف..." />
 			<separator />
-			<item id="ID_NETWORK_AUTO_CLOSE" text="الخروج عند إنتهاء _ نقل البيانات" />
+			<item id="ID_NETWORK_AUTO_CLOSE" text="الخروج عند إنتهاء  نقل البيانات" />
 			<item id="ID_NETWORK_EXIT" text="خ_روج" />
 		</menu>
-		<menu text="_عرض">
-			<item id="ID_TAB_HOME" text="_الرئيسية" />
-			<item id="ID_TAB_LIBRARY" text="_المكتبة" />
-			<item id="ID_TAB_MEDIA" text="_مشغل الوسائط" />
-			<item id="ID_TAB_SEARCH" text="_بحث" />
-			<item id="ID_TAB_TRANSFERS" text="_نقل البيانات" />
-			<item id="ID_TAB_NETWORK" text="_شبكة" />
+		<menu text="عرض">
+			<item id="ID_TAB_HOME" text="الرئيسية" />
+			<item id="ID_TAB_LIBRARY" text="المكتبة" />
+			<item id="ID_TAB_MEDIA" text="مشغل الوسائط" />
+			<item id="ID_TAB_SEARCH" text="بحث" />
+			<item id="ID_TAB_TRANSFERS" text="نقل البيانات" />
+			<item id="ID_TAB_NETWORK" text="شبكة" />
 			<separator />
 			<item id="ID_VIEW_SECURITY" text="ا_من" />
 			<item id="ID_VIEW_SCHEDULER" text="جدولة" />
@@ -611,94 +611,94 @@
 			<menu text="مت_قدم">
 				<item id="ID_VIEW_SYSTEM" text="ن_ظام" shortcut="F11" />
 				<item id="ID_VIEW_NEIGHBOURS" text="الات_صالات المجاوره" shortcut="F2" />
-				<item id="ID_VIEW_DOWNLOADS" text="_مكتبة الملفات" shortcut="F3" />
-				<item id="ID_VIEW_UPLOADS" text="_رفع الملفات" shortcut="F4" />
-				<item id="ID_VIEW_LIBRARY" text="_المكتبة" shortcut="F5" />
-				<item id="ID_VIEW_MEDIA" text="_الوسائط" shortcut="F6" />
+				<item id="ID_VIEW_DOWNLOADS" text="مكتبة الملفات" shortcut="F3" />
+				<item id="ID_VIEW_UPLOADS" text="رفع الملفات" shortcut="F4" />
+				<item id="ID_VIEW_LIBRARY" text="المكتبة" shortcut="F5" />
+				<item id="ID_VIEW_MEDIA" text="الوسائط" shortcut="F6" />
 				<separator />
 				<item id="ID_VIEW_SECURITY" text="ا_من" shortcut="F7" />
 				<item id="ID_VIEW_HOSTS" text="ا_لمخزون المؤقت للمضيف" shortcut="F8" />
 				<item id="ID_VIEW_DISCOVERY" text="اكت_شاف" shortcut="F9" />
-				<item id="ID_VIEW_TRAFFIC" text="_مخطط" shortcut="F10" />
+				<item id="ID_VIEW_TRAFFIC" text="مخطط" shortcut="F10" />
 				<separator />
-				<item id="ID_VIEW_PACKETS" text="_تفريغ الحزمة" shortcut="Ctrl+F1" />
+				<item id="ID_VIEW_PACKETS" text="تفريغ الحزمة" shortcut="Ctrl+F1" />
 				<item id="ID_VIEW_SEARCH_MONITOR" text="شا_شة البحث" shortcut="Ctrl+F2" />
 				<item id="ID_VIEW_RESULTS_MONITOR" text="ا_ختر شاشة" shortcut="Ctrl+F3" />
 			</menu>
 			<separator />
 			<item id="ID_VIEW_BASIC" text="ن_ظام عادي" />
 			<item id="ID_VIEW_TABBED" text="نظ_ام متقدم" />
-			<item id="ID_VIEW_WINDOWED" text="_نظام ذو نوافذ" />
+			<item id="ID_VIEW_WINDOWED" text="نظام ذو نوافذ" />
 		</menu>
-		<menu text="_ادوات">
-			<item id="ID_LIBRARY_FOLDERS" text="مشاركة _الملفات..." />
-			<item id="ID_TOOLS_DOWNLOAD" text="_تحميل الملف/Torrent..." />
-			<item id="ID_IMPORT_DOWNLOADS" text="_إستيراد تحميلات eMule الجزئية" />
-			<item id="ID_OPEN_DOWNLOADS_FOLDER" text="_فتح مجلدي للتحميلات المكتملة" />
+		<menu text="ادوات">
+			<item id="ID_LIBRARY_FOLDERS" text="مشاركة الملفات..." />
+			<item id="ID_TOOLS_DOWNLOAD" text="تحميل الملف/Torrent..." />
+			<item id="ID_IMPORT_DOWNLOADS" text="إستيراد تحميلات eMule الجزئية" />
+			<item id="ID_OPEN_DOWNLOADS_FOLDER" text="فتح مجلدي للتحميلات المكتملة" />
 			<separator />
 			<item id="ID_TOOLS_SKIN" text="تحديد غ_لاف..." />
-			<item id="ID_TOOLS_LANGUAGE" text="تحديد _ اللغه..." />
+			<item id="ID_TOOLS_LANGUAGE" text="تحديد  اللغه..." />
 			<separator />
-			<item id="ID_TOOLS_PROFILE" text="تحرير _ملفي الخاص..." />
-			<item id="ID_TOOLS_WIZARD" text="_معالج البدء السريع..." />
+			<item id="ID_TOOLS_PROFILE" text="تحرير ملفي الخاص..." />
+			<item id="ID_TOOLS_WIZARD" text="معالج البدء السريع..." />
 			<separator />
 			<item id="ID_TOOLS_SETTINGS" text="إ_عدادات Envy" />
 		</menu>
-		<menu text="_نافذة">
-			<item id="ID_WINDOW_NAVBAR" text="عرض _عامود التصفح" />
-			<item id="ID_WINDOW_TOOLBAR" text="إظهار _مربع الادوات" />
+		<menu text="نافذة">
+			<item id="ID_WINDOW_NAVBAR" text="عرض عامود التصفح" />
+			<item id="ID_WINDOW_TOOLBAR" text="إظهار مربع الادوات" />
 			<separator />
 			<item id="ID_WINDOW_TABBAR" text="إظهار شريط المع_لومات" />
-			<item id="ID_WINDOW_MONITOR" text="إظهار _الشاشة" />
-			<item id="ID_WINDOW_REMOTE" text="إظهار _الإتصال عن بعد" />
+			<item id="ID_WINDOW_MONITOR" text="إظهار الشاشة" />
+			<item id="ID_WINDOW_REMOTE" text="إظهار الإتصال عن بعد" />
 		</menu>
-		<menu text="_تعليمات">
-			<item id="ID_HELP_FAQ" text="_إستفسارات Envy" />
-			<item id="ID_HELP_TEST" text="_فحص الإتصال" />
+		<menu text="تعليمات">
+			<item id="ID_HELP_FAQ" text="إستفسارات Envy" />
+			<item id="ID_HELP_TEST" text="فحص الإتصال" />
 			<separator />
-			<menu text="_الأدلة الإرشادية">
-				<item id="ID_HELP_GUIDE" text="مستخدمي _دليل Envy" />
-				<item id="ID_HELP_ROUTER" text="_تعليمات جهاز التوجيه" />
-				<item id="ID_HELP_SECURITY" text="_تعليمات الأمان" />
-				<item id="ID_HELP_CODEC" text="_تعليمات أدوات الترميز" />
+			<menu text="الأدلة الإرشادية">
+				<item id="ID_HELP_GUIDE" text="مستخدمي دليل Envy" />
+				<item id="ID_HELP_ROUTER" text="تعليمات جهاز التوجيه" />
+				<item id="ID_HELP_SECURITY" text="تعليمات الأمان" />
+				<item id="ID_HELP_CODEC" text="تعليمات أدوات الترميز" />
 			</menu>
 			<separator />
-			<menu text="_مواقع ويب">
-				<item id="ID_HELP_HOMEPAGE" text="_GetEnvy.com" />
+			<menu text="مواقع ويب">
+				<item id="ID_HELP_HOMEPAGE" text="GetEnvy.com" />
 				<separator />
-				<item id="ID_HELP_FORUMS" text="_منتديات Envy" />
+				<item id="ID_HELP_FORUMS" text="منتديات Envy" />
 				<item id="ID_HELP_UPDATE" text="آخر الأخبار" />
 				<!--item id="ID_HELP_WEB_1" text="Zeropaid.com"-->
 			</menu>
 			<separator />
-			<item id="ID_HELP_ABOUT" text="_معلومات عن Envy..." />
+			<item id="ID_HELP_ABOUT" text="معلومات عن Envy..." />
 		</menu>
 	</menu>
 	<menu name="CMainWnd.Basic" type="شريط">
-		<menu text="_شبكة">
-			<item id="ID_NETWORK_CONNECT" text="_إتصال" shortcut="Ctrl+G" />
+		<menu text="شبكة">
+			<item id="ID_NETWORK_CONNECT" text="إتصال" shortcut="Ctrl+G" />
 			<separator />
-			<menu text="تحديد _الشبكات">
-				<item id="ID_NETWORK_G2" text="_الإتصال بـ Gnutella_2" />
-				<item id="ID_NETWORK_G1" text="الإتصال بـ _Gnutella" />
-				<item id="ID_NETWORK_ED2K" text="_الإتصال بـ e_Donkey2000" />
+			<menu text="تحديد الشبكات">
+				<item id="ID_NETWORK_G2" text="الإتصال بـ Gnutella_2" />
+				<item id="ID_NETWORK_G1" text="الإتصال بـ Gnutella" />
+				<item id="ID_NETWORK_ED2K" text="الإتصال بـ e_Donkey2000" />
 			</menu>
 			<separator />
-			<item id="ID_NETWORK_AUTO_CLOSE" text="الخروج عند إنتهاء _ نقل البيانات" />
+			<item id="ID_NETWORK_AUTO_CLOSE" text="الخروج عند إنتهاء  نقل البيانات" />
 			<item id="ID_NETWORK_EXIT" text="خ_روج" />
 		</menu>
-		<menu text="_عرض">
-			<item id="ID_TAB_HOME" text="_الرئيسية" />
-			<item id="ID_TAB_SEARCH" text="_بحث" />
-			<item id="ID_TAB_TRANSFERS" text="_مكتبة الملفات" />
-			<item id="ID_TAB_LIBRARY" text="_المكتبة" />
-			<item id="ID_TAB_MEDIA" text="_مشغل الوسائط" />
-			<item id="ID_TAB_IRC" text="_محادثة" />
-			<item id="ID_WINDOW_REMOTE" text="_بعيد" />
+		<menu text="عرض">
+			<item id="ID_TAB_HOME" text="الرئيسية" />
+			<item id="ID_TAB_SEARCH" text="بحث" />
+			<item id="ID_TAB_TRANSFERS" text="مكتبة الملفات" />
+			<item id="ID_TAB_LIBRARY" text="المكتبة" />
+			<item id="ID_TAB_MEDIA" text="مشغل الوسائط" />
+			<item id="ID_TAB_IRC" text="محادثة" />
+			<item id="ID_WINDOW_REMOTE" text="بعيد" />
 			<separator />
-			<menu text="_خيارات متقدمة">
-				<item id="ID_VIEW_NEIGHBOURS" text="_الإتصالات المجاورة" />
-				<item id="ID_VIEW_UPLOADS" text="_المرفوعات" />
+			<menu text="خيارات متقدمة">
+				<item id="ID_VIEW_NEIGHBOURS" text="الإتصالات المجاورة" />
+				<item id="ID_VIEW_UPLOADS" text="المرفوعات" />
 				<separator />
 				<item id="ID_VIEW_SECURITY" text="ال_أمان" />
 				<item id="ID_VIEW_SCHEDULER" text="جدولة" />
@@ -706,270 +706,270 @@
 				<item id="ID_VIEW_DISCOVERY" text="الإكت_شاف" />
 			</menu>
 			<separator />
-			<item id="ID_VIEW_BASIC" text="_النمط العادي" />
-			<item id="ID_VIEW_TABBED" text="_النمط المتقدم" />
+			<item id="ID_VIEW_BASIC" text="النمط العادي" />
+			<item id="ID_VIEW_TABBED" text="النمط المتقدم" />
 		</menu>
-		<menu text="_أدوات">
+		<menu text="أدوات">
 			<item id="ID_LIBRARY_FOLDERS" text="مشارك_ة الملفات..." />
-			<item id="ID_TOOLS_DOWNLOAD" text="_تحميل ملف/Torrent..." />
+			<item id="ID_TOOLS_DOWNLOAD" text="تحميل ملف/Torrent..." />
 			<separator />
 			<item id="ID_TOOLS_SKIN" text="تحديد الغلا_ف..." />
-			<item id="ID_TOOLS_LANGUAGE" text="تحديد ال_لغة..." />
+			<item id="ID_TOOLS_LANGUAGE" text="تحديد ال لغة..." />
 			<separator />
 			<item id="ID_TOOLS_SKIN" text="تحديد غ_لاف..." />
-			<item id="ID_TOOLS_LANGUAGE" text="تحديد _ اللغه..." />
+			<item id="ID_TOOLS_LANGUAGE" text="تحديد  اللغه..." />
 			<separator />
-			<item id="ID_TOOLS_SETTINGS" text="إ_عدادات Envy" />
+			<item id="ID_TOOLS_SETTINGS" text="إعدادات Envy" />
 		</menu>
-		<menu text="_تعليمات">
-			<item id="ID_HELP_FAQ" text="مستخدمي _دليل Envy" />
-			<item id="ID_HELP_TEST" text="_فحص الإتصال" />
+		<menu text="تعليمات">
+			<item id="ID_HELP_FAQ" text="مستخدمي دليل Envy" />
+			<item id="ID_HELP_TEST" text="فحص الإتصال" />
 			<separator />
-			<menu text="_Guides">
-				<item id="ID_HELP_GUIDE" text="مستخدمي _دليل Envy" />
-				<item id="ID_HELP_ROUTER" text="_تعليمات جهاز التوجيه" />
-				<item id="ID_HELP_SECURITY" text="_تعليمات الأمان" />
-				<item id="ID_HELP_CODEC" text="_تعليمات أدوات الترميز" />
+			<menu text="Guides">
+				<item id="ID_HELP_GUIDE" text="مستخدمي دليل Envy" />
+				<item id="ID_HELP_ROUTER" text="تعليمات جهاز التوجيه" />
+				<item id="ID_HELP_SECURITY" text="تعليمات الأمان" />
+				<item id="ID_HELP_CODEC" text="تعليمات أدوات الترميز" />
 			</menu>
 			<separator />
-			<menu text="_المواقع">
-				<item id="ID_HELP_HOMEPAGE" text="_GetEnvy.com" />
+			<menu text="المواقع">
+				<item id="ID_HELP_HOMEPAGE" text="GetEnvy.com" />
 				<separator />
-				<item id="ID_HELP_FORUMS" text="_منتديات Envy" />
+				<item id="ID_HELP_FORUMS" text="منتديات Envy" />
 				<!--item id="ID_HELP_UPDATE" text="آخر الأخبار"-->
 				<!--item id="ID_HELP_WEB_1" text="Zeropaid.com"-->
 			</menu>
 			<separator />
-			<item id="ID_HELP_ABOUT" text="_معلومات عن Envy ..." />
+			<item id="ID_HELP_ABOUT" text="معلومات عن Envy ..." />
 		</menu>
 	</menu>
 	<menu name="CMainWnd.Windowed" type="bar">
-		<menu text="_شبكة">
-			<item id="ID_NETWORK_SEARCH" text="جديد _بحث..." shortcut="Ctrl+S" />
+		<menu text="شبكة">
+			<item id="ID_NETWORK_SEARCH" text="جديد بحث..." shortcut="Ctrl+S" />
 			<separator />
-			<item id="ID_NETWORK_CONNECT" text="_إتصال" shortcut="Ctrl+G" />
-			<item id="ID_NETWORK_DISCONNECT" text="_قطع الإتصال" />
+			<item id="ID_NETWORK_CONNECT" text="إتصال" shortcut="Ctrl+G" />
+			<item id="ID_NETWORK_DISCONNECT" text="قطع الإتصال" />
 			<separator />
-			<item id="ID_NETWORK_CONNECT_TO" text="الإتصال _بـ..." shortcut="Ctrl+T" />
-			<item id="ID_NETWORK_BROWSE_TO" text="_إستعراض المضيف..." />
+			<item id="ID_NETWORK_CONNECT_TO" text="الإتصال بـ..." shortcut="Ctrl+T" />
+			<item id="ID_NETWORK_BROWSE_TO" text="إستعراض المضيف..." />
 			<separator />
-			<menu text="تحديد _الشبكات">
+			<menu text="تحديد الشبكات">
 				<item id="ID_NETWORK_G2" text="Gnutella_2 الإتصال بـ" />
-				<item id="ID_NETWORK_G1" text="_Gnutella الإتصال بـ " />
-				<item id="ID_NETWORK_ED2K" text="_eDonkey2000 الإتصال بـ " />
-				<item id="ID_NETWORK_DC" text="_DC++ الإتصال بـ" />
-				<item id="ID_NETWORK_BT" text="_BitTorrent الإتصال بـ" />
+				<item id="ID_NETWORK_G1" text="Gnutella الإتصال بـ " />
+				<item id="ID_NETWORK_ED2K" text="eDonkey2000 الإتصال بـ " />
+				<item id="ID_NETWORK_DC" text="DC++ الإتصال بـ" />
+				<item id="ID_NETWORK_BT" text="BitTorrent الإتصال بـ" />
 			</menu>
 			<separator />
-			<item id="ID_NETWORK_AUTO_CLOSE" text="الإغلاق _عند اتمام نقل البيانات" />
+			<item id="ID_NETWORK_AUTO_CLOSE" text="الإغلاق عند اتمام نقل البيانات" />
 			<item id="ID_NETWORK_EXIT" text="خ_روج" />
 		</menu>
-		<menu text="_عرض">
-			<item id="ID_TAB_HOME" text="_Home View" shortcut="Alt-Home" />
-			<item id="ID_VIEW_SYSTEM" text="_نظام" shortcut="F11" />
-			<item id="ID_VIEW_NEIGHBOURS" text="_الإتصالات المجاوره" shortcut="F2" />
-			<item id="ID_VIEW_DOWNLOADS" text="_مكتبة الملفات" shortcut="F3" />
-			<item id="ID_VIEW_UPLOADS" text="_رفع الملفات" shortcut="F4" />
-			<item id="ID_VIEW_LIBRARY" text="_المكتبة" shortcut="F5" />
-			<item id="ID_VIEW_MEDIA" text="_الوسائط" shortcut="F6" />
-			<item id="ID_TAB_IRC" text="IRC _Chat" shortcut="F12" />
+		<menu text="عرض">
+			<item id="ID_TAB_HOME" text="Home View" shortcut="Alt-Home" />
+			<item id="ID_VIEW_SYSTEM" text="نظام" shortcut="F11" />
+			<item id="ID_VIEW_NEIGHBOURS" text="الإتصالات المجاوره" shortcut="F2" />
+			<item id="ID_VIEW_DOWNLOADS" text="مكتبة الملفات" shortcut="F3" />
+			<item id="ID_VIEW_UPLOADS" text="رفع الملفات" shortcut="F4" />
+			<item id="ID_VIEW_LIBRARY" text="المكتبة" shortcut="F5" />
+			<item id="ID_VIEW_MEDIA" text="الوسائط" shortcut="F6" />
+			<item id="ID_TAB_IRC" text="IRC Chat" shortcut="F12" />
 			<separator />
 			<item id="ID_VIEW_SCHEDULER" text="جدولة" shortcut="Ctrl+F7" />
 			<item id="ID_VIEW_SECURITY" text="ا_من" shortcut="F7" />
 			<item id="ID_VIEW_HOSTS" text="ا_لمخزون المؤقت للمضيف" shortcut="F8" />
 			<item id="ID_VIEW_DISCOVERY" text="اكت_شاف" shortcut="F9" />
-			<item id="ID_VIEW_TRAFFIC" text="_مخطط" shortcut="F10" />
+			<item id="ID_VIEW_TRAFFIC" text="مخطط" shortcut="F10" />
 			<separator />
-			<item id="ID_VIEW_PACKETS" text="_تفريغ الحزمة" shortcut="Ctrl+F1" />
+			<item id="ID_VIEW_PACKETS" text="تفريغ الحزمة" shortcut="Ctrl+F1" />
 			<item id="ID_VIEW_SEARCH_MONITOR" text="شا_شة البحث" shortcut="Ctrl+F2" />
 			<item id="ID_VIEW_RESULTS_MONITOR" text="ا_ختر شاشة" shortcut="Ctrl+F3" />
-			<item id="ID_TAB_SEARCH" text="New _Search" shortcut="Ctrl+S" />
+			<item id="ID_TAB_SEARCH" text="New Search" shortcut="Ctrl+S" />
 			<separator />
 			<item id="ID_VIEW_BASIC" text="نظام عادي" />
 			<item id="ID_VIEW_TABBED" text="نظام متقدم" />
 			<item id="ID_VIEW_WINDOWED" text="نظام ذو نوافذ" />
 		</menu>
-		<menu text="_ادوات">
-			<item id="ID_LIBRARY_FOLDERS" text="مشاركة _الملفات..." />
-			<item id="ID_OPEN_DOWNLOADS_FOLDER" text="_فتح مجلدي للتحميلات المكتملة" />
+		<menu text="ادوات">
+			<item id="ID_LIBRARY_FOLDERS" text="مشاركة الملفات..." />
+			<item id="ID_OPEN_DOWNLOADS_FOLDER" text="فتح مجلدي للتحميلات المكتملة" />
 			<separator />
-			<item id="ID_TOOLS_DOWNLOAD" text="_تحميل الملف/Torrent..." />
-			<item id="ID_TOOLS_SEEDTORRENT" text="_Seed New Torrent..." />
-			<item id="ID_IMPORT_DOWNLOADS" text="_إستيراد تحميلات eMule الجزئية" />
+			<item id="ID_TOOLS_DOWNLOAD" text="تحميل الملف/Torrent..." />
+			<item id="ID_TOOLS_SEEDTORRENT" text="Seed New Torrent..." />
+			<item id="ID_IMPORT_DOWNLOADS" text="إستيراد تحميلات eMule الجزئية" />
 			<separator />
-			<item id="ID_TOOLS_LANGUAGE" text="تحديد _ اللغه..." />
-			<item id="ID_TOOLS_SKIN" text="تحديد غ_لاف..." />
+			<item id="ID_TOOLS_LANGUAGE" text="تحديد  اللغه..." />
+			<item id="ID_TOOLS_SKIN" text="تحديد غ لاف..." />
 			<separator />
-			<item id="ID_TOOLS_PROFILE" text="تحرير _ملفي الخاص..." />
-			<item id="ID_TOOLS_WIZARD" text="_معالج البدء السريع..." />
+			<item id="ID_TOOLS_PROFILE" text="تحرير ملفي الخاص..." />
+			<item id="ID_TOOLS_WIZARD" text="معالج البدء السريع..." />
 			<separator />
-			<item id="ID_TOOLS_SETTINGS" text="إ_عدادات Envy" />
+			<item id="ID_TOOLS_SETTINGS" text="إعدادات Envy" />
 		</menu>
-		<menu text="_نافذة">
-			<item id="ID_WINDOW_CASCADE" text="_شاشة كاملة" />
-			<item id="ID_WINDOW_TILE_HORZ" text="عنوان _افقي" />
-			<item id="ID_WINDOW_TILE_VERT" text="عنوان _عامودي" />
+		<menu text="نافذة">
+			<item id="ID_WINDOW_CASCADE" text="شاشة كاملة" />
+			<item id="ID_WINDOW_TILE_HORZ" text="عنوان افقي" />
+			<item id="ID_WINDOW_TILE_VERT" text="عنوان عامودي" />
 			<separator />
-			<item id="ID_WINDOW_NAVBAR" text="عرض _عامود التصفح" />
-			<item id="ID_WINDOW_TOOLBAR" text="إظهار _مربع الادوات" />
+			<item id="ID_WINDOW_NAVBAR" text="عرض عامود التصفح" />
+			<item id="ID_WINDOW_TOOLBAR" text="إظهار مربع الادوات" />
 			<separator />
 			<item id="ID_WINDOW_TABBAR" text="إظهار شريط المع_لومات" />
-			<item id="ID_WINDOW_MONITOR" text="إظهار _الشاشة" />
-			<item id="ID_WINDOW_REMOTE" text="إظهار _الإتصال عن بعد" />
+			<item id="ID_WINDOW_MONITOR" text="إظهار الشاشة" />
+			<item id="ID_WINDOW_REMOTE" text="إظهار الإتصال عن بعد" />
 		</menu>
-		<menu text="_Help">
-			<item id="ID_HELP_FAQ" text="Envy _إستفسارات" />
-			<item id="ID_HELP_TEST" text="_فحص الإتصال" />
+		<menu text="Help">
+			<item id="ID_HELP_FAQ" text="Envy إستفسارات" />
+			<item id="ID_HELP_TEST" text="فحص الإتصال" />
 			<separator />
-			<menu text="_Guides">
-				<item id="ID_HELP_GUIDE" text="Envy مستخدمي _دليل" />
-				<item id="ID_HELP_ROUTER" text="_تعليمات جهاز التوجيه" />
-				<item id="ID_HELP_SECURITY" text="_تعليمات الأمان" />
-				<item id="ID_HELP_CODEC" text="_تعليمات أدوات الترميز" />
+			<menu text="Guides">
+				<item id="ID_HELP_GUIDE" text="Envy مستخدمي دليل" />
+				<item id="ID_HELP_ROUTER" text="تعليمات جهاز التوجيه" />
+				<item id="ID_HELP_SECURITY" text="تعليمات الأمان" />
+				<item id="ID_HELP_CODEC" text="تعليمات أدوات الترميز" />
 			</menu>
 			<separator />
-			<menu text="_Websites">
-				<item id="ID_HELP_HOMEPAGE" text="_GetEnvy.com" />
+			<menu text="Websites">
+				<item id="ID_HELP_HOMEPAGE" text="GetEnvy.com" />
 				<separator />
-				<item id="ID_HELP_FORUMS" text="Envy _منتديات" />
+				<item id="ID_HELP_FORUMS" text="Envy منتديات" />
 				<item id="ID_HELP_UPDATE" text="آخر الأخبار" />
 				<!--item id="ID_HELP_WEB_1" text="Zeropaid.com"-->
 			</menu>
 			<separator />
-			<item id="ID_HELP_ABOUT" text="_معلومات عن Envy..." />
+			<item id="ID_HELP_ABOUT" text="معلومات عن Envy..." />
 		</menu>
 	</menu>
 	<!-- VIEW POPUP -->
 	<menu name="CMainWnd.View.Basic">
-	<item id="ID_TAB_HOME" text="_الرئيسية" />
-	<item id="ID_TAB_LIBRARY" text="_المكتبة" />
-	<item id="ID_TAB_MEDIA" text="_الوسائط" />
-	<item id="ID_TAB_SEARCH" text="_بحث" />
-	<item id="ID_TAB_TRANSFERS" text="_مكتبة الملفات" />
+	<item id="ID_TAB_HOME" text="الرئيسية" />
+	<item id="ID_TAB_LIBRARY" text="المكتبة" />
+	<item id="ID_TAB_MEDIA" text="الوسائط" />
+	<item id="ID_TAB_SEARCH" text="بحث" />
+	<item id="ID_TAB_TRANSFERS" text="مكتبة الملفات" />
 	<separator />
-	<menu text="_متقدم">
-		<item id="ID_VIEW_NEIGHBOURS" text="_الإتصالات المجاوره" />
-		<item id="ID_VIEW_UPLOADS" text="_رفع الملفات" />
-		<item id="ID_VIEW_SECURITY" text="_الامن" />
-		<item id="ID_VIEW_HOSTS" text="_مخزون المضيف المؤقت" />
+	<menu text="متقدم">
+		<item id="ID_VIEW_NEIGHBOURS" text="الإتصالات المجاوره" />
+		<item id="ID_VIEW_UPLOADS" text="رفع الملفات" />
+		<item id="ID_VIEW_SECURITY" text="الامن" />
+		<item id="ID_VIEW_HOSTS" text="مخزون المضيف المؤقت" />
 	</menu>
 	</menu>
 	<menu name="CMainWnd.View.Tabbed">
-	<item id="ID_TAB_HOME" text="_الرئيسية" />
-	<item id="ID_TAB_LIBRARY" text="_المكتبة" />
-	<item id="ID_TAB_MEDIA" text="_الوسائط" />
-	<item id="ID_TAB_SEARCH" text="_بحث" />
-	<item id="ID_TAB_TRANSFERS" text="_نقل البيانات" />
-	<item id="ID_TAB_NETWORK" text="_شبكة" />
+	<item id="ID_TAB_HOME" text="الرئيسية" />
+	<item id="ID_TAB_LIBRARY" text="المكتبة" />
+	<item id="ID_TAB_MEDIA" text="الوسائط" />
+	<item id="ID_TAB_SEARCH" text="بحث" />
+	<item id="ID_TAB_TRANSFERS" text="نقل البيانات" />
+	<item id="ID_TAB_NETWORK" text="شبكة" />
 	<separator />
 	<item id="ID_VIEW_SECURITY" text="ا_من" />
-	<item id="ID_VIEW_HOSTS" text="_مخزون المضيف المؤقت" />
+	<item id="ID_VIEW_HOSTS" text="مخزون المضيف المؤقت" />
 	<item id="ID_VIEW_DISCOVERY" text="اكت_شاف" />
-	<item id="ID_VIEW_TRAFFIC" text="_مخطط" />
+	<item id="ID_VIEW_TRAFFIC" text="مخطط" />
 	<separator />
-	<item id="ID_VIEW_PACKETS" text="_تفريغ الحزمة" />
+	<item id="ID_VIEW_PACKETS" text="تفريغ الحزمة" />
 	<item id="ID_VIEW_SEARCH_MONITOR" text="شا_شة البحث" />
 	<item id="ID_VIEW_RESULTS_MONITOR" text="ا_ختر شاشة" />
 	</menu>
 	<menu name="CMainWnd.View.Windowed">
-	<item id="ID_NETWORK_SEARCH" text="جديد _بحث..." />
+	<item id="ID_NETWORK_SEARCH" text="جديد بحث..." />
 	<separator />
-	<item id="ID_VIEW_SYSTEM" text="ن_ظام" />
-	<item id="ID_VIEW_NEIGHBOURS" text="_الإتصالات المجاوره" />
-	<item id="ID_VIEW_DOWNLOADS" text="_مكتبة الملفات" />
-	<item id="ID_VIEW_UPLOADS" text="_رفع الملفات" />
-	<item id="ID_VIEW_LIBRARY" text="_المكتبة" />
-	<item id="ID_VIEW_MEDIA" text="_مشغل الوسائط" />
+	<item id="ID_VIEW_SYSTEM" text="ن ظام" />
+	<item id="ID_VIEW_NEIGHBOURS" text="الإتصالات المجاوره" />
+	<item id="ID_VIEW_DOWNLOADS" text="مكتبة الملفات" />
+	<item id="ID_VIEW_UPLOADS" text="رفع الملفات" />
+	<item id="ID_VIEW_LIBRARY" text="المكتبة" />
+	<item id="ID_VIEW_MEDIA" text="مشغل الوسائط" />
 	<separator />
-	<item id="ID_VIEW_SECURITY" text="ا_من" />
-	<item id="ID_VIEW_HOSTS" text="_مخزون المضيف المؤقت" />
-	<item id="ID_VIEW_DISCOVERY" text="اكت_شاف" />
-	<item id="ID_VIEW_TRAFFIC" text="_مخطط" />
+	<item id="ID_VIEW_SECURITY" text="ا من" />
+	<item id="ID_VIEW_HOSTS" text="مخزون المضيف المؤقت" />
+	<item id="ID_VIEW_DISCOVERY" text="اكت شاف" />
+	<item id="ID_VIEW_TRAFFIC" text="مخطط" />
 	<separator />
-	<item id="ID_VIEW_PACKETS" text="_تفريغ الحزمة" />
+	<item id="ID_VIEW_PACKETS" text="تفريغ الحزمة" />
 	<item id="ID_VIEW_SEARCH_MONITOR" text="شا_شة البحث" />
-	<item id="ID_VIEW_RESULTS_MONITOR" text="ا_ختر شاشة" />
+	<item id="ID_VIEW_RESULTS_MONITOR" text="ا ختر شاشة" />
 	</menu>
 	<!-- HOME MENU -->
 	<menu name="CHomeWnd.Basic">
-	<item id="ID_TAB_HOME" text="_الرئيسية" />
-	<item id="ID_TAB_LIBRARY" text="_المكتبة" />
-	<item id="ID_TAB_MEDIA" text="_الوسائط" />
-	<item id="ID_TAB_SEARCH" text="_بحث" />
-	<item id="ID_TAB_TRANSFERS" text="_مكتبة الملفات" />
+	<item id="ID_TAB_HOME" text="الرئيسية" />
+	<item id="ID_TAB_LIBRARY" text="المكتبة" />
+	<item id="ID_TAB_MEDIA" text="الوسائط" />
+	<item id="ID_TAB_SEARCH" text="بحث" />
+	<item id="ID_TAB_TRANSFERS" text="مكتبة الملفات" />
 	<separator />
-	<menu text="_متقدم">
-		<item id="ID_VIEW_NEIGHBOURS" text="_الإتصالات المجاوره" />
-		<item id="ID_VIEW_UPLOADS" text="_رفع الملفات" />
-		<item id="ID_VIEW_SECURITY" text="_الامن" />
-		<item id="ID_VIEW_HOSTS" text="_مخزون المضيف المؤقت" />
+	<menu text="متقدم">
+		<item id="ID_VIEW_NEIGHBOURS" text="الإتصالات المجاوره" />
+		<item id="ID_VIEW_UPLOADS" text="رفع الملفات" />
+		<item id="ID_VIEW_SECURITY" text="الامن" />
+		<item id="ID_VIEW_HOSTS" text="مخزون المضيف المؤقت" />
 	</menu>
 	</menu>
 	<menu name="CHomeWnd.Tabbed">
-	<item id="ID_TAB_HOME" text="_الرئيسية" />
-	<item id="ID_TAB_LIBRARY" text="_المكتبة" />
-	<item id="ID_TAB_MEDIA" text="_الوسائط" />
-	<item id="ID_TAB_SEARCH" text="_بحث" />
-	<item id="ID_TAB_TRANSFERS" text="_نقل البيانات" />
-	<item id="ID_TAB_NETWORK" text="_شبكة" />
+	<item id="ID_TAB_HOME" text="الرئيسية" />
+	<item id="ID_TAB_LIBRARY" text="المكتبة" />
+	<item id="ID_TAB_MEDIA" text="الوسائط" />
+	<item id="ID_TAB_SEARCH" text="بحث" />
+	<item id="ID_TAB_TRANSFERS" text="نقل البيانات" />
+	<item id="ID_TAB_NETWORK" text="شبكة" />
 	<separator />
 	<item id="ID_VIEW_SECURITY" text="ا_من" />
-	<item id="ID_VIEW_HOSTS" text="_مخزون المضيف المؤقت" />
+	<item id="ID_VIEW_HOSTS" text="مخزون المضيف المؤقت" />
 	<item id="ID_VIEW_DISCOVERY" text="اكت_شاف" />
-	<item id="ID_VIEW_TRAFFIC" text="_مخطط" />
+	<item id="ID_VIEW_TRAFFIC" text="مخطط" />
 	<separator />
-	<item id="ID_VIEW_PACKETS" text="_تفريغ الحزمة" />
+	<item id="ID_VIEW_PACKETS" text="تفريغ الحزمة" />
 	<item id="ID_VIEW_SEARCH_MONITOR" text="شا_شة البحث" />
-	<item id="ID_VIEW_RESULTS_MONITOR" text="ا_ختر شاشة" />
+	<item id="ID_VIEW_RESULTS_MONITOR" text="ا ختر شاشة" />
 	</menu>
 	<!-- HOST CACHE WINDOW -->
 	<menu name="CHostCacheWnd">
-	<item id="ID_HOSTCACHE_CONNECT" text="_إتصال الان" />
-	<item id="ID_HOSTCACHE_DISCONNECT" text="_قطع الإتصال" />
-	<item id="ID_NEIGHBOURS_URI" text="نسخ ال_رابط" />
-	<item id="ID_HOSTCACHE_PRIORITY" text="_ملقم الأولوية" />
+	<item id="ID_HOSTCACHE_CONNECT" text="إتصال الان" />
+	<item id="ID_HOSTCACHE_DISCONNECT" text="قطع الإتصال" />
+	<item id="ID_NEIGHBOURS_URI" text="نسخ ال رابط" />
+	<item id="ID_HOSTCACHE_PRIORITY" text="ملقم الأولوية" />
 	<separator />
-	<item id="ID_HOSTCACHE_REMOVE" text="_حذف المضيفون" />
+	<item id="ID_HOSTCACHE_REMOVE" text="حذف المضيفون" />
 	<separator />
-	<menu text="_فرز">
-		<item id="ID_HOSTCACHE_G2_HORIZON" text="كتلات _Gnutella2" />
-		<item id="ID_HOSTCACHE_G2_CACHE" text="مخزون Gnutella_2 المؤقت" />
-		<item id="ID_HOSTCACHE_G1_CACHE" text="مخزون Gnutella_1 المؤقت" />
-		<item id="ID_HOSTCACHE_ED2K_CACHE" text="_ملقمات eDonkey" />
+	<menu text="فرز">
+		<item id="ID_HOSTCACHE_G2_HORIZON" text="كتلات Gnutella2" />
+		<item id="ID_HOSTCACHE_G2_CACHE" text="مخزون Gnutella2 المؤقت" />
+		<item id="ID_HOSTCACHE_G1_CACHE" text="مخزون Gnutella1 المؤقت" />
+		<item id="ID_HOSTCACHE_ED2K_CACHE" text="ملقمات eDonkey" />
 	</menu>
 	<separator />
-	<item id="ID_HOSTCACHE_IMPORT" text="تصدير ملف _MET..." />
+	<item id="ID_HOSTCACHE_IMPORT" text="تصدير ملف MET..." />
 	<item id="ID_HOSTCACHE_FILE_DOWNLOAD" text="تحميل MET..." />
 	</menu>
 	<!-- SEARCH WINDOW -->
 	<menu name="CSearchWnd.Basic">
-	<item id="ID_SEARCH_DOWNLOAD" text="_تحميل" />
+	<item id="ID_SEARCH_DOWNLOAD" text="تحميل" />
 	<separator />
-	<item id="ID_BROWSE_LAUNCH" text="_معلومات عن المستخدم" />
-	<item id="ID_SEARCH_CHAT" text="_محادثة المستخدم" />
+	<item id="ID_BROWSE_LAUNCH" text="معلومات عن المستخدم" />
+	<item id="ID_SEARCH_CHAT" text="محادثة المستخدم" />
 	<separator />
-	<menu text="_البحث لـ">
+	<menu text="البحث لـ">
 		<item id="ID_SEARCH_FOR_SIMILAR" text="الملفات المتشابهة" />
 		<separator />
 		<item id="ID_SEARCH_FOR_ARTIST" text="موسيقى لنفس اسم الفنان" />
 		<item id="ID_SEARCH_FOR_ALBUM" text="موسيقى لنفس الألبوم" />
 		<item id="ID_SEARCH_FOR_SERIES" text="الأحداث في نفس السلسلة" />
 	</menu>
-	<menu id="ID_WEBSERVICES_LIST" text="_خدمات الانترنت">
+	<menu id="ID_WEBSERVICES_LIST" text="خدمات الانترنت">
 		<item id="ID_LIBRARY_BITPRINTS_WEB" text="عرض ب_طافة Bitprints" />
 		<item id="ID_SEARCH_URI" text="نسخ ا_لرابط..." />
 	</menu>
 	</menu>
 	<menu name="CSearchWnd">
-	<item id="ID_SEARCH_DOWNLOAD" text="_تحميل" />
+	<item id="ID_SEARCH_DOWNLOAD" text="تحميل" />
 	<item id="ID_SEARCH_DOWNLOADNOW" text="تحميل الان" />
-	<item id="ID_SEARCH_URI" text="نسخ _رابط" />
+	<item id="ID_SEARCH_URI" text="نسخ رابط" />
 	<separator />
-	<item id="ID_BROWSE_LAUNCH" text="_معلومات عن المستخدم" />
-	<item id="ID_SEARCH_CHAT" text="_محادثة المستخدم" />
-	<item id="ID_SECURITY_BAN" text="_حظر المستخدم" />
+	<item id="ID_BROWSE_LAUNCH" text="معلومات عن المستخدم" />
+	<item id="ID_SEARCH_CHAT" text="محادثة المستخدم" />
+	<item id="ID_SECURITY_BAN" text="حظر المستخدم" />
 	<separator />
-	<menu text="_البحث لـ">
+	<menu text="البحث لـ">
 		<item id="ID_SEARCH_FOR_THIS" text="هذا الملف" />
 		<item id="ID_SEARCH_FOR_SIMILAR" text="الملفات المتشابهة" />
 		<separator />
@@ -980,43 +980,43 @@
 			<item id="ID_VIEW_SEARCH_MONITOR" text="البحث لـ Monitor" />
 			<item id="ID_VIEW_RESULTS_MONITOR" text="Hit Monitor" />
 	</menu>
-	<menu id="ID_WEBSERVICES_LIST" text="_خدمات الانترنت">
-		<item id="ID_LIBRARY_BITPRINTS_WEB" text="Bitprints عرض ب_طافة" />
+	<menu id="ID_WEBSERVICES_LIST" text="خدمات الانترنت">
+		<item id="ID_LIBRARY_BITPRINTS_WEB" text="Bitprints عرض ب طافة" />
 	</menu>
 	<separator />
-	<item id="ID_SEARCH_FILTER" text="_فرز النتائج..." />
-	<item id="ID_SEARCH_FILTER_REMOVE" text="ا_زالة الفرز" />
-	<item id="ID_SEARCH_CLEAR" text="ا_زالة النتائج" />
+	<item id="ID_SEARCH_FILTER" text="فرز النتائج..." />
+	<item id="ID_SEARCH_FILTER_REMOVE" text="ا زالة الفرز" />
+	<item id="ID_SEARCH_CLEAR" text="ا زالة النتائج" />
 	<separator />
-	<item id="ID_SEARCH_COLUMNS" text="تحرير الا_عمدة..." />
+	<item id="ID_SEARCH_COLUMNS" text="تحرير الا عمدة..." />
 	</menu>
 	<!-- BROWSE HOST WINDOW -->
 	<menu name="CBrowseHostWnd.Basic">
-		<item id="ID_SEARCH_DOWNLOAD" text="_تحميل" />
-		<item id="ID_SEARCH_DOWNLOADNOW" text="تحميل ال_آن" />
+		<item id="ID_SEARCH_DOWNLOAD" text="تحميل" />
+		<item id="ID_SEARCH_DOWNLOADNOW" text="تحميل ال آن" />
 		<separator />
-		<item id="ID_SEARCH_CHAT" text="_محادثة المستخدم" />
+		<item id="ID_SEARCH_CHAT" text="محادثة المستخدم" />
 		<separator />
-		<menu text="_البحث لـ">
+		<menu text="البحث لـ">
 			<item id="ID_SEARCH_FOR_SIMILAR" text="الملفات المتشابهة" />
 			<separator />
 			<item id="ID_SEARCH_FOR_ARTIST" text="موسيقى لنفس اسم الفنان" />
 			<item id="ID_SEARCH_FOR_ALBUM" text="موسيقى لنفس الألبوم" />
 			<item id="ID_SEARCH_FOR_SERIES" text="الأحداث في نفس السلسلة" />
 		</menu>
-		<menu text="_معلومات ملف ويب">
+		<menu text="معلومات ملف ويب">
 			<item id="ID_LIBRARY_BITPRINTS_WEB" text="عرض ب_طافة Bitprints" />
-			<item id="ID_SEARCH_URI" text="نسخ ا_لرابط..." />
+			<item id="ID_SEARCH_URI" text="نسخ ا لرابط..." />
 		</menu>
 	</menu>
 	<menu name="CBrowseHostWnd">
-		<item id="ID_SEARCH_DOWNLOAD" text="_تحميل" />
-		<item id="ID_SEARCH_DOWNLOADNOW" text="تحميل ال_آن" />
-		<item id="ID_SEARCH_URI" text="نسخ ال_رابط" />
+		<item id="ID_SEARCH_DOWNLOAD" text="تحميل" />
+		<item id="ID_SEARCH_DOWNLOADNOW" text="تحميل ال آن" />
+		<item id="ID_SEARCH_URI" text="نسخ ال رابط" />
 		<separator />
-		<item id="ID_SEARCH_CHAT" text="_محادثة المستخدم" />
+		<item id="ID_SEARCH_CHAT" text="محادثة المستخدم" />
 		<separator />
-		<menu text="_البحث لـ">
+		<menu text="البحث لـ">
 			<item id="ID_SEARCH_FOR_THIS" text="هذا الملف" />
 			<item id="ID_SEARCH_FOR_SIMILAR" text="الملفات المتشابهة" />
 			<separator />
@@ -1024,24 +1024,24 @@
 			<item id="ID_SEARCH_FOR_ALBUM" text="موسيقى لنفس الألبوم" />
 			<item id="ID_SEARCH_FOR_SERIES" text="الأحداث في نفس السلسلة" />
 		</menu>
-		<menu id="ID_WEBSERVICES_LIST" text="_خدمات الانترنت">
-			<item id="ID_LIBRARY_BITPRINTS_WEB" text="عرض ب_طافة Bitprints" />
+		<menu id="ID_WEBSERVICES_LIST" text="خدمات الانترنت">
+			<item id="ID_LIBRARY_BITPRINTS_WEB" text="عرض ب طافة Bitprints" />
 		</menu>
 		<separator />
-		<item id="ID_SEARCH_FILTER" text="_فرز النتائج..." />
-		<item id="ID_SEARCH_FILTER_REMOVE" text="ا_زالة الفرز" />
+		<item id="ID_SEARCH_FILTER" text="فرز النتائج..." />
+		<item id="ID_SEARCH_FILTER_REMOVE" text="ا زالة الفرز" />
 		<separator />
-		<item id="ID_SEARCH_COLUMNS" text="تحرير الا_عمدة..." />
+		<item id="ID_SEARCH_COLUMNS" text="تحرير الا عمدة..." />
 	</menu>
 	<!-- HIT MONITOR WINDOW -->
 	<menu name="CHitMonitorWnd">
-		<item id="ID_SEARCH_DOWNLOAD" text="_تحميل" />
-		<item id="ID_SEARCH_URI" text="نسخ _رابط" />
+		<item id="ID_SEARCH_DOWNLOAD" text="تحميل" />
+		<item id="ID_SEARCH_URI" text="نسخ رابط" />
 		<separator />
-		<item id="ID_BROWSE_LAUNCH" text="_معلومات عن المستخدم" />
-		<item id="ID_SEARCH_CHAT" text="_محادثة المستخدم" />
+		<item id="ID_BROWSE_LAUNCH" text="معلومات عن المستخدم" />
+		<item id="ID_SEARCH_CHAT" text="محادثة المستخدم" />
 		<separator />
-		<menu text="_البحث لـ">
+		<menu text="البحث لـ">
 			<item id="ID_SEARCH_FOR_THIS" text="هذا الملف" />
 			<item id="ID_SEARCH_FOR_SIMILAR" text="الملفات المتشابهة" />
 			<separator />
@@ -1049,166 +1049,166 @@
 			<item id="ID_SEARCH_FOR_ALBUM" text="موسيقى لنفس الألبوم" />
 			<item id="ID_SEARCH_FOR_SERIES" text="الأحداث في نفس السلسلة" />
 		</menu>
-		<menu id="ID_WEBSERVICES_LIST" text="_خدمات الانترنت">
+		<menu id="ID_WEBSERVICES_LIST" text="خدمات الانترنت">
 			<item id="ID_LIBRARY_BITPRINTS_WEB" text="عرض ب_طافة Bitprints" />
 		</menu>
 		<separator />
-		<item id="ID_SEARCH_FILTER" text="_فرز النتائج..." />
-		<item id="ID_SEARCH_FILTER_REMOVE" text="ا_زالة الفرز" />
+		<item id="ID_SEARCH_FILTER" text="فرز النتائج..." />
+		<item id="ID_SEARCH_FILTER_REMOVE" text="ا زالة الفرز" />
 		<separator />
-		<item id="ID_HITMONITOR_PAUSE" text="_إيقاف مؤقت للعرض" />
-		<item id="ID_HITMONITOR_CLEAR" text="ت_نضيف العرض" />
+		<item id="ID_HITMONITOR_PAUSE" text="إيقاف مؤقت للعرض" />
+		<item id="ID_HITMONITOR_CLEAR" text="ت نضيف العرض" />
 		<separator />
-		<item id="ID_SEARCH_COLUMNS" text="تحرير الا_عمدة..." />
+		<item id="ID_SEARCH_COLUMNS" text="تحرير الا عمدة..." />
 	</menu>
 	<!-- DOWNLOADS WINDOW -->
 	<menu name="CDownloadsWnd.Download.Basic">
-		<item id="ID_DOWNLOADS_LAUNCH" text="_معاينة" />
+		<item id="ID_DOWNLOADS_LAUNCH" text="معاينة" />
 		<separator />
-		<item id="ID_DOWNLOADS_RESUME" text="_متابعة" />
+		<item id="ID_DOWNLOADS_RESUME" text="متابعة" />
 		<item id="ID_DOWNLOADS_PAUSE" text="ا_يقاف مؤقت" />
-		<item id="ID_DOWNLOADS_CLEAR_INCOMPLETE" text="_إلغاء الأمر" />
+		<item id="ID_DOWNLOADS_CLEAR_INCOMPLETE" text="إلغاء الأمر" />
 		<separator />
-		<item id="ID_DOWNLOADS_SOURCES" text="_إيجاد المزيد من المصادر" />
-		<item id="ID_DOWNLOADS_REMOTE_PREVIEW" text="م_عاينة عن بعد" />
-		<item id="ID_DOWNLOADS_VIEW_REVIEWS" text="_عرض معاينات" />
+		<item id="ID_DOWNLOADS_SOURCES" text="إيجاد المزيد من المصادر" />
+		<item id="ID_DOWNLOADS_REMOTE_PREVIEW" text="م عاينة عن بعد" />
+		<item id="ID_DOWNLOADS_VIEW_REVIEWS" text="عرض معاينات" />
 		<separator />
-		<item id="ID_DOWNLOADS_HELP" text="_تعليمات..." />
+		<item id="ID_DOWNLOADS_HELP" text="تعليمات..." />
 	</menu>
 	<menu name="CDownloadsWnd.Download">
 		<item id="ID_DOWNLOADS_LAUNCH_COPY" text="معا_ينة النسخة" />
-		<item id="ID_DOWNLOADS_LAUNCH" text="_معاينة" />
-		<item id="ID_DOWNLOADS_ENQUEUE" text="إضافة إلى _قائمة التشغيل" />
+		<item id="ID_DOWNLOADS_LAUNCH" text="معاينة" />
+		<item id="ID_DOWNLOADS_ENQUEUE" text="إضافة إلى قائمة التشغيل" />
 		<separator />
-		<item id="ID_DOWNLOADS_RESUME" text="_متابعة" />
-		<item id="ID_DOWNLOADS_PAUSE" text="ا_يقاف مؤقت" />
-		<item id="ID_DOWNLOADS_CLEAR_INCOMPLETE" text="_إلغاء الأمر" />
+		<item id="ID_DOWNLOADS_RESUME" text="متابعة" />
+		<item id="ID_DOWNLOADS_PAUSE" text="ا يقاف مؤقت" />
+		<item id="ID_DOWNLOADS_CLEAR_INCOMPLETE" text="إلغاء الأمر" />
 		<separator />
-		<item id="ID_DOWNLOADS_VIEW_REVIEWS" text="_عرض معاينات" />
+		<item id="ID_DOWNLOADS_VIEW_REVIEWS" text="عرض معاينات" />
 		<item id="ID_DOWNLOADS_REMOTE_PREVIEW" text="م_عاينة عن بعد" />
-		<item id="ID_DOWNLOADS_SOURCES" text="_إيجاد مزيد من المصادر" />
+		<item id="ID_DOWNLOADS_SOURCES" text="إيجاد مزيد من المصادر" />
 		<separator />
-		<menu text="_متقدم">
-			<item id="ID_DOWNLOADS_SHARE" text="_مشاركة ملف" />
+		<menu text="متقدم">
+			<item id="ID_DOWNLOADS_SHARE" text="مشاركة ملف" />
 			<separator />
-			<item id="ID_DOWNLOADS_URI" text="_نسخ الرابط" />
-			<item id="ID_DOWNLOADS_ADD_SOURCE" text="_اضف مصدر..." />
+			<item id="ID_DOWNLOADS_URI" text="نسخ الرابط" />
+			<item id="ID_DOWNLOADS_ADD_SOURCE" text="اضف مصدر..." />
 			<item id="ID_DOWNLOADS_MERGE" text="دمج الملفات المحلية" />
 			<separator />
-			<item id="ID_DOWNLOADS_MONITOR" text="نافذة _الشاشه" />
+			<item id="ID_DOWNLOADS_MONITOR" text="نافذة الشاشه" />
 		</menu>
 		<menu text="الأولوية">
-			<item id="ID_DOWNLOADS_BOOST" text="السرعة _زيادة" />
+			<item id="ID_DOWNLOADS_BOOST" text="السرعة زيادة" />
 			<separator />
-			<item id="ID_DOWNLOADS_MOVE_TOP" text="نقل _للاعلى" />
-			<item id="ID_DOWNLOADS_MOVE_BOTTOM" text="نقل _للاسفل" />
-			<item id="ID_DOWNLOADS_MOVE_UP" text="نقل _للاعلى" />
-			<item id="ID_DOWNLOADS_MOVE_DOWN" text="نقل _للاسفل" />
+			<item id="ID_DOWNLOADS_MOVE_TOP" text="نقل للاعلى" />
+			<item id="ID_DOWNLOADS_MOVE_BOTTOM" text="نقل للاسفل" />
+			<item id="ID_DOWNLOADS_MOVE_UP" text="نقل للاعلى" />
+			<item id="ID_DOWNLOADS_MOVE_DOWN" text="نقل للاسفل" />
 		</menu>
-		<item id="ID_DOWNLOADS_HELP" text="_تعليمات..." />
+		<item id="ID_DOWNLOADS_HELP" text="تعليمات..." />
 		<separator />
-		<item id="ID_DOWNLOADS_EDIT" text="تحرير _متقدم..." />
+		<item id="ID_DOWNLOADS_EDIT" text="تحرير متقدم..." />
 	</menu>
 	<menu name="CDownloadsWnd.Source">
 		<item id="ID_TRANSFERS_CONNECT" text="الوصول" />
 		<separator />
-		<item id="ID_BROWSE_LAUNCH" text="_معلومات عن المستخدم" />
-		<item id="ID_TRANSFERS_CHAT" text="_محادثة المستخدم" />
-		<item id="ID_DOWNLOADS_URI" text="نسخ ال_رابط" />
+		<item id="ID_BROWSE_LAUNCH" text="معلومات عن المستخدم" />
+		<item id="ID_TRANSFERS_CHAT" text="محادثة المستخدم" />
+		<item id="ID_DOWNLOADS_URI" text="نسخ ال رابط" />
 		<separator />
-		<item id="ID_TRANSFERS_DISCONNECT" text="_قطع الإتصال" />
-		<item id="ID_TRANSFERS_FORGET" text="_تجاهل" />
+		<item id="ID_TRANSFERS_DISCONNECT" text="قطع الإتصال" />
+		<item id="ID_TRANSFERS_FORGET" text="تجاهل" />
 	</menu>
 	<menu name="CDownloadsWnd.Completed.Basic">
-		<item id="ID_DOWNLOADS_LAUNCH_COMPLETE" text="_فتح او تشغيل" />
-		<item id="ID_DOWNLOADS_ENQUEUE" text="_اضافه الى قائمة التشغيل" />
-		<item id="ID_DOWNLOADS_CLEAR_COMPLETE" text="_إزالة" />
+		<item id="ID_DOWNLOADS_LAUNCH_COMPLETE" text="فتح او تشغيل" />
+		<item id="ID_DOWNLOADS_ENQUEUE" text="اضافه الى قائمة التشغيل" />
+		<item id="ID_DOWNLOADS_CLEAR_COMPLETE" text="إزالة" />
 		<separator />
-		<item id="ID_DOWNLOADS_FILE_DELETE" text="_حذف الملف" />
+		<item id="ID_DOWNLOADS_FILE_DELETE" text="حذف الملف" />
 	</menu>
 	<menu name="CDownloadsWnd.Completed">
-		<item id="ID_DOWNLOADS_LAUNCH_COMPLETE" text="_فتح او تشغيل" />
-		<item id="ID_DOWNLOADS_ENQUEUE" text="_اضافه الى قائمة التشغيل" />
-		<item id="ID_DOWNLOADS_FOLDER" text="فتح _Folder" />
-		<item id="ID_DOWNLOADS_CLEAR_COMPLETE" text="_إزالة" />
+		<item id="ID_DOWNLOADS_LAUNCH_COMPLETE" text="فتح او تشغيل" />
+		<item id="ID_DOWNLOADS_ENQUEUE" text="اضافه الى قائمة التشغيل" />
+		<item id="ID_DOWNLOADS_FOLDER" text="فتح Folder" />
+		<item id="ID_DOWNLOADS_CLEAR_COMPLETE" text="إزالة" />
 		<separator />
-		<item id="ID_DOWNLOADS_FILE_DELETE" text="_حذف الملف" />
-		<item id="ID_DOWNLOADS_RATE" text="_تصنيف الملف..." />
-		<item id="ID_DOWNLOADS_URI" text="نسخ _رابط" />
+		<item id="ID_DOWNLOADS_FILE_DELETE" text="حذف الملف" />
+		<item id="ID_DOWNLOADS_RATE" text="تصنيف الملف..." />
+		<item id="ID_DOWNLOADS_URI" text="نسخ رابط" />
 		<separator />
-		<item id="ID_DOWNLOADS_EDIT" text="_معلومات" />
+		<item id="ID_DOWNLOADS_EDIT" text="معلومات" />
 	</menu>
 	<menu name="CDownloadsWnd.Seeding">
-		<item id="ID_DOWNLOADS_LAUNCH_COMPLETE" text="_فتح" />
-		<item id="ID_DOWNLOADS_FOLDER" text="فتح _Folder" />
-		<item id="ID_DOWNLOADS_CLEAR_COMPLETE" text="_إيقاف الإرسال" />
+		<item id="ID_DOWNLOADS_LAUNCH_COMPLETE" text="فتح" />
+		<item id="ID_DOWNLOADS_FOLDER" text="فتح Folder" />
+		<item id="ID_DOWNLOADS_CLEAR_COMPLETE" text="إيقاف الإرسال" />
 		<separator />
-		<item id="ID_DOWNLOADS_URI" text="نسخ _رابط" />
-		<item id="ID_DOWNLOADS_HELP" text="_تعليمات..." />
+		<item id="ID_DOWNLOADS_URI" text="نسخ رابط" />
+		<item id="ID_DOWNLOADS_HELP" text="تعليمات..." />
 		<separator />
-		<item id="ID_DOWNLOADS_EDIT" text="_معلومات" />
+		<item id="ID_DOWNLOADS_EDIT" text="معلومات" />
 	</menu>
 	<menu name="CDownloadsWnd.Default">
 		<item id="ID_TOOLS_DOWNLOAD" text="Start New Download" />
 		<item id="ID_TOOLS_SEEDTORRENT" text="Seed New Torrent" />
-		<item id="ID_DOWNLOADS_CLEAR_COMPLETED" text="ت_م المسح" />
+		<item id="ID_DOWNLOADS_CLEAR_COMPLETED" text="ت م المسح" />
 		<separator />
-		<item id="ID_DOWNLOADS_HELP" text="_تعليمات..." />
+		<item id="ID_DOWNLOADS_HELP" text="تعليمات..." />
 	</menu>
 	<menu name="CDownloadTabBar">
-		<item id="ID_DOWNLOAD_GROUP_OPEN" text="فتح _Folder" />
+		<item id="ID_DOWNLOAD_GROUP_OPEN" text="فتح Folder" />
 		<separator />
-		<item id="ID_DOWNLOAD_GROUP_RESUME" text="_متابعة الكل" />
+		<item id="ID_DOWNLOAD_GROUP_RESUME" text="متابعة الكل" />
 		<item id="ID_DOWNLOAD_GROUP_PAUSE" text="ا_يقاف مؤقت للكل" />
-		<item id="ID_DOWNLOAD_GROUP_CLEAR" text="_مسح الكل" />
+		<item id="ID_DOWNLOAD_GROUP_CLEAR" text="مسح الكل" />
 		<separator /> <!--
-		<item id="ID_DOWNLOAD_GROUP_SHOW" text="_عرض المجموعات" />
+		<item id="ID_DOWNLOAD_GROUP_SHOW" text="عرض المجموعات" />
 		<separator /> -->
 		<item id="ID_DOWNLOAD_GROUP_MOVELEFT" text="تحرك فريق من الزمن" />
 		<item id="ID_DOWNLOAD_GROUP_MOVERIGHT" text="تحرك الفريق بز" />
-		<item id="ID_DOWNLOAD_GROUP_REMOVE" text="مجموعه _حذف" />
-		<item id="ID_DOWNLOAD_GROUP_NEW" text="_مجموعه جديدة..." />
+		<item id="ID_DOWNLOAD_GROUP_REMOVE" text="مجموعه حذف" />
+		<item id="ID_DOWNLOAD_GROUP_NEW" text="مجموعه جديدة..." />
 		<separator />
-		<item id="ID_DOWNLOAD_GROUP_PROPERTIES" text="_خصائص" />
+		<item id="ID_DOWNLOAD_GROUP_PROPERTIES" text="خصائص" />
 	</menu>
 	<menu name="CDownloadsWnd.Filter">
-		<item id="ID_DOWNLOADS_FILTER_ALL" text="عرض _الكل" />
+		<item id="ID_DOWNLOADS_FILTER_ALL" text="عرض الكل" />
 		<separator />
 		<item id="ID_DOWNLOADS_FILTER_ACTIVE" text="عرض الن_شط" />
-		<item id="ID_DOWNLOADS_FILTER_PAUSED" text="عرض  _الموقف وؤقت" />
+		<item id="ID_DOWNLOADS_FILTER_PAUSED" text="عرض  الموقف وؤقت" />
 		<item id="ID_DOWNLOADS_FILTER_QUEUED" text="عرض الم_توقف" />
-		<item id="ID_DOWNLOADS_FILTER_SOURCES" text="عرض _الذي لايوجد لدية مصدر" />
+		<item id="ID_DOWNLOADS_FILTER_SOURCES" text="عرض الذي لايوجد لدية مصدر" />
 		<item id="ID_DOWNLOADS_FILTER_SEEDS" text="Seedsعرض" />
 		<separator />
-		<item id="ID_DOWNLOADS_SHOW_SOURCES" text="المصادر _عرض جميع" />
+		<item id="ID_DOWNLOADS_SHOW_SOURCES" text="المصادر عرض جميع" />
 		<separator />
-		<item id="ID_DOWNLOAD_GROUP_SHOW" text="المجموعات _عرض" />
+		<item id="ID_DOWNLOAD_GROUP_SHOW" text="المجموعات عرض" />
 	</menu>
 	<!-- UPLOADS WINDOW -->
 	<menu name="CUploadsWnd.Upload.Basic">
 		<item id="ID_BROWSE_LAUNCH" text="ت_صفح المستخدم" />
 		<item id="ID_UPLOADS_CHAT" text="الم_حادثة مع المستخدم" />
 		<separator />
-		<item id="ID_UPLOADS_HELP" text="_تعليمات..." />
+		<item id="ID_UPLOADS_HELP" text="تعليمات..." />
 	</menu>
 	<menu name="CUploadsWnd.Upload">
-		<item id="ID_UPLOADS_LAUNCH" text="فتح _Library" />
-		<item id="ID_UPLOADS_FOLDER" text="فتح _Folder" />
+		<item id="ID_UPLOADS_LAUNCH" text="عرض في المكتبة" />
+		<item id="ID_UPLOADS_FOLDER" text="فتح Folder" />
 		<separator />
-		<item id="ID_UPLOADS_CLEAR" text="_إزالة" />
-		<item id="ID_UPLOADS_START" text="_ابداء الان" />
+		<item id="ID_UPLOADS_CLEAR" text="إزالة" />
+		<item id="ID_UPLOADS_START" text="ابداء الان" />
 		<item id="ID_UPLOADS_PRIORITY" text="الأولوية" />
 		<separator />
 		<item id="ID_BROWSE_LAUNCH" text="ت_صفح المستخدم" />
 		<item id="ID_UPLOADS_CHAT" text="الم_حادثة مع المستخدم" />
-		<item id="ID_SECURITY_BAN" text="مستخدم _Ban" />
+		<item id="ID_SECURITY_BAN" text="مستخدم Ban" />
 	</menu>
 	<menu name="CUploadsWnd.Default">
 		<item id="ID_LIBRARY_FOLDERS" text="مشاركة الملفات..." />
-		<item id="ID_UPLOADS_SETTINGS" text="إ_عدادات قائمة الإنتظار" />
-		<item id="ID_UPLOADS_CLEAR_COMPLETED" text="ت_م المسح" />
+		<item id="ID_UPLOADS_SETTINGS" text="إ عدادات قائمة الإنتظار" />
+		<item id="ID_UPLOADS_CLEAR_COMPLETED" text="ت م المسح" />
 		<separator />
-		<item id="ID_UPLOADS_HELP" text="_تعليمات..." />
+		<item id="ID_UPLOADS_HELP" text="تعليمات..." />
 	</menu>
 	<menu name="CUploadsWnd.Filter">
 		<item id="ID_UPLOADS_FILTER_ALL" text="عرض الكل" />
@@ -1218,65 +1218,66 @@
 		<item id="ID_UPLOADS_FILTER_TORRENT" text="لإظهار BitTorrent" />
 		<item id="ID_UPLOADS_FILTER_HISTORY" text="إظهار المحفوظات" />
 		<separator />
-		<item id="ID_UPLOADS_AUTO_CLEAR" text="مسح_ تلقائي" />
+		<item id="ID_UPLOADS_AUTO_CLEAR" text="مسح تلقائي" />
 	</menu>
 	<!-- LIBRARY FRAME -->
 	<menu name="CLibraryTree.Physical.Basic">
-		<item id="ID_LIBRARY_SHARED_FOLDER" text="_مشاركة" />
-		<item id="ID_LIBRARY_REMOVE" text="_إزالة" />
+		<item id="ID_LIBRARY_SHARED_FOLDER" text="مشاركة" />
+		<item id="ID_LIBRARY_REMOVE" text="إزالة" />
 		<separator />
 		<item id="ID_LIBRARY_FOLDERS" text="مشاركة الملفات..." />
 	</menu>
 	<menu name="CLibraryTree.Physical">
-		<item id="ID_LIBRARY_EXPLORE" text="_تصفح" />
-		<item id="ID_LIBRARY_REMOVE" text="_إزالة" />
+		<item id="ID_LIBRARY_EXPLORE" text="تصفح" />
+		<item id="ID_LIBRARY_REMOVE" text="إزالة" />
 		<separator />
-		<item id="ID_LIBRARY_SHARED_FOLDER" text="_مشاركة" />
+		<item id="ID_LIBRARY_SHARED_FOLDER" text="مشاركة" />
 		<separator />
 		<item id="ID_LIBRARY_SCAN" text="ف_حص" />
 		<item id="ID_LIBRARY_REBUILD" text="إع_ادة بناء" />
 		<item id="ID_LIBRARY_FOLDERS" text="مشاركة الملفات..." />
 		<separator />
-		<item id="ID_LIBRARY_FOLDER_FILE_PROPERTIES" text="خصائص  _الملف" />
+		<item id="ID_LIBRARY_FOLDER_FILE_PROPERTIES" text="خصائص  الملف" />
 	</menu>
 	<menu name="CLibraryTree.Virtual.Basic">
-		<item id="ID_LIBRARY_FOLDER_ENQUEUE" text="_تشغيل الألبوم" />
-		<item id="ID_LIBRARY_FOLDER_DELETE" text="_حذف" />
+		<item id="ID_LIBRARY_FOLDER_ENQUEUE" text="تشغيل الألبوم" />
+		<item id="ID_LIBRARY_FOLDER_DELETE" text="حذف" />
 		<separator />
-		<item id="ID_LIBRARY_FOLDER_FILE_PROPERTIES" text="_خصائص الملف" />
-		<item id="ID_LIBRARY_FOLDER_PROPERTIES" text="_خصائص الألبوم" />
+		<item id="ID_LIBRARY_FOLDER_FILE_PROPERTIES" text="خصائص الملف" />
+		<item id="ID_LIBRARY_FOLDER_PROPERTIES" text="خصائص الألبوم" />
 	</menu>
 	<menu name="CLibraryTree.Virtual">
-		<item id="ID_LIBRARY_FOLDER_ENQUEUE" text="_تشغيل الألبوم" />
-		<item id="ID_LIBRARY_FOLDER_DELETE" text="_حذف" />
+		<item id="ID_LIBRARY_FOLDER_ENQUEUE" text="تشغيل الألبوم" />
+		<item id="ID_LIBRARY_FOLDER_DELETE" text="حذف" />
 		<separator />
-		<item id="ID_LIBRARY_REBUILD" text="_إعادة بناء" />
-		<item id="ID_LIBRARY_EXPORT_COLLECTION" text="_مجموعة تصدير..." />
+		<item id="ID_LIBRARY_REBUILD" text="إعادة بناء" />
+		<item id="ID_LIBRARY_EXPORT_COLLECTION" text="مجموعة تصدير..." />
 		<separator />
-		<item id="ID_LIBRARY_FOLDER_NEW" text="_مجلد جديد..." />
+		<item id="ID_LIBRARY_FOLDER_NEW" text="مجلد جديد..." />
 		<separator />
-		<item id="ID_LIBRARY_FOLDER_FILE_PROPERTIES" text="_خصائص الملف" />
-		<item id="ID_LIBRARY_FOLDER_PROPERTIES" text="_خصائص الألبوم" />
+		<item id="ID_LIBRARY_FOLDER_FILE_PROPERTIES" text="خصائص الملف" />
+		<item id="ID_LIBRARY_FOLDER_PROPERTIES" text="خصائص الألبوم" />
 	</menu>
 	<menu name="CLibraryHistoryPanel">
-		<item id="ID_LIBRARY_CLEAR_HISTORY" text="Clear from _History" />
-		<item id="ID_LIBRARY_CLEAR_HISTORY_ALL" text="_مسح الكل" />
+		<item id="ID_LIBRARY_SHOW_FILE" text="عرض في المكتبة"/>
+		<item id="ID_LIBRARY_CLEAR_HISTORY" text="ضح من التاريخ" />
+		<item id="ID_LIBRARY_CLEAR_HISTORY_ALL" text="مسح الكل" />
 	</menu>
 	<!-- LIBRARY VIEWS -->
 	<menu name="CLibraryTileView">
-		<item id="ID_LIBRARY_ALBUM_OPEN" text="_فتح" />
-		<item id="ID_LIBRARY_ALBUM_DELETE" text="_حذف" />
+		<item id="ID_LIBRARY_ALBUM_OPEN" text="فتح" />
+		<item id="ID_LIBRARY_ALBUM_DELETE" text="حذف" />
 		<separator />
-		<item id="ID_LIBRARY_ALBUM_PROPERTIES" text="_خصائص" />
+		<item id="ID_LIBRARY_ALBUM_PROPERTIES" text="خصائص" />
 	</menu>
 	<menu name="CLibraryFileView.Basic">
-		<item id="ID_LIBRARY_LAUNCH" text="_فتح او تشغيل" />
-		<item id="ID_LIBRARY_ENQUEUE" text="_اضافه الى قائمة التشغيل" />
-		<item id="ID_LIBRARY_DELETE" text="_حذف" />
+		<item id="ID_LIBRARY_LAUNCH" text="فتح او تشغيل" />
+		<item id="ID_LIBRARY_ENQUEUE" text="اضافه الى قائمة التشغيل" />
+		<item id="ID_LIBRARY_DELETE" text="حذف" />
 		<separator />
-		<item id="ID_LIBRARY_SHARED_FILE" text="_مشاركة" />
+		<item id="ID_LIBRARY_SHARED_FILE" text="مشاركة" />
 		<separator />
-		<menu text="_البحث لـ">
+		<menu text="البحث لـ">
 			<item id="ID_SEARCH_FOR_THIS" text="هذا الملف" />
 			<item id="ID_SEARCH_FOR_SIMILAR" text="الملفات المتشابهة" />
 			<separator />
@@ -1284,43 +1285,43 @@
 			<item id="ID_SEARCH_FOR_ALBUM" text="موسيقى لنفس الألبوم" />
 			<item id="ID_SEARCH_FOR_SERIES" text="الأحداث في نفس السلسلة" />
 		</menu>
-		<menu text="_خدمات الانترنت">
+		<menu text="خدمات الانترنت">
 			<item id="ID_LIBRARY_REBUILD_FILE" text="Re_build Hashes" />
-			<item id="ID_LIBRARY_REFRESH_METADATA" text="_Refresh Metadata" />
-			<item id="ID_LIBRARY_REBUILD_ANSI" text="_توطين ملف تعريف" />
+			<item id="ID_LIBRARY_REFRESH_METADATA" text="Refresh Metadata" />
+			<item id="ID_LIBRARY_REBUILD_ANSI" text="توطين ملف تعريف" />
 			<separator />
 			<item id="ID_LIBRARY_BITPRINTS_WEB" text="Bitprints عرض ب_طافة" />
-			<item id="ID_LIBRARY_BITPRINTS_DOWNLOAD" text="_تحميل ملف تعريف" />
+			<item id="ID_LIBRARY_BITPRINTS_DOWNLOAD" text="تحميل ملف تعريف" />
 			<separator />
-			<item id="ID_LIBRARY_URI" text="_URI" />
+			<item id="ID_LIBRARY_URI" text="URI" />
 		</menu>
 		<menu text="ت_نظيم">
-			<item id="ID_LIBRARY_RENAME" text="_اعادة تسمية ملف" />
-			<item id="ID_LIBRARY_MOVE" text="_نقل ملفات..." />
-			<item id="ID_LIBRARY_COPY" text="_نسخ ملفات..." />
+			<item id="ID_LIBRARY_RENAME" text="اعادة تسمية ملف" />
+			<item id="ID_LIBRARY_MOVE" text="نقل ملفات..." />
+			<item id="ID_LIBRARY_COPY" text="نسخ ملفات..." />
 		</menu>
 		<separator />
-		<item id="ID_LIBRARY_PROPERTIES" text="_خصائص" />
+		<item id="ID_LIBRARY_PROPERTIES" text="خصائص" />
 	</menu>
 	<menu name="CLibraryFileView">
-		<item id="ID_LIBRARY_LAUNCH" text="_فتح او تشغيل" />
+		<item id="ID_LIBRARY_LAUNCH" text="فتح او تشغيل" />
 		<item id="ID_LIBRARY_ENQUEUE" text="اضف الى قائ_مة التشغيل" />
-		<item id="ID_LIBRARY_DELETE" text="_حذف" />
+		<item id="ID_LIBRARY_DELETE" text="حذف" />
 		<separator />
-		<item id="ID_LIBRARY_SHARED_FILE" text="_مشاركة" />
+		<item id="ID_LIBRARY_SHARED_FILE" text="مشاركة" />
 		<separator />
-		<item id="ID_LIBRARY_URI" text="نسخ _رابط" />
+		<item id="ID_LIBRARY_URI" text="نسخ رابط" />
 		<item id="ID_LIBRARY_CREATETORRENT" text="إنشاء ملف .torrent" />
-		<item id="ID_LIBRARY_LAUNCH_FOLDER" text="Open _Folder" />
+		<item id="ID_LIBRARY_LAUNCH_FOLDER" text="Open Folder" />
 		<separator />
 		<menu text="ت_نظيم">
-			<item id="ID_LIBRARY_UNLINK" text="حذف _ملفات" />
+			<item id="ID_LIBRARY_UNLINK" text="حذف ملفات" />
 			<separator />
-			<item id="ID_LIBRARY_RENAME" text="_اعادة تسمية ملف" />
-			<item id="ID_LIBRARY_COPY" text="_نسخ ملفات..." />
-			<item id="ID_LIBRARY_MOVE" text="_نقل ملفات..." />
+			<item id="ID_LIBRARY_RENAME" text="اعادة تسمية ملف" />
+			<item id="ID_LIBRARY_COPY" text="نسخ ملفات..." />
+			<item id="ID_LIBRARY_MOVE" text="نقل ملفات..." />
 		</menu>
-		<menu text="_البحث لـ">
+		<menu text="البحث لـ">
 			<item id="ID_SEARCH_FOR_THIS" text="هذا الملف" />
 			<item id="ID_SEARCH_FOR_SIMILAR" text="الملفات المتشابهة" />
 			<separator />
@@ -1328,251 +1329,251 @@
 			<item id="ID_SEARCH_FOR_ALBUM" text="موسيقى لنفس الألبوم" />
 			<item id="ID_SEARCH_FOR_SERIES" text="الأحداث في نفس السلسلة" />
 		</menu>
-		<menu text="_خدمات الانترنت">
+		<menu text="خدمات الانترنت">
 			<item id="ID_LIBRARY_BITPRINTS_WEB" text="عرض ب_طافة Bitprints" />
-			<item id="ID_LIBRARY_BITPRINTS_DOWNLOAD" text="_طلب ملف تعريف" />
+			<item id="ID_LIBRARY_BITPRINTS_DOWNLOAD" text="طلب ملف تعريف" />
 		</menu>
-		<menu text="_Metadata">
-			<item id="ID_LIBRARY_REBUILD_ANSI" text="_توطين ملف تعريف" />
-			<item id="ID_LIBRARY_REFRESH_METADATA" text="_تحديث بيانات التعريف" />
-			<item id="ID_LIBRARY_COLUMNS" text="أختيار الا_عمدة..." />
+		<menu text="Metadata">
+			<item id="ID_LIBRARY_REBUILD_ANSI" text="توطين ملف تعريف" />
+			<item id="ID_LIBRARY_REFRESH_METADATA" text="تحديث بيانات التعريف" />
+			<item id="ID_LIBRARY_COLUMNS" text="أختيار الا عمدة..." />
 		</menu>
 		<separator />
 		<item id="ID_SHELL_MENU" text="Windows Men_u" />
-		<item id="ID_LIBRARY_PROPERTIES" text="_خصائص" />
+		<item id="ID_LIBRARY_PROPERTIES" text="خصائص" />
 	</menu>
 	<!-- MEDIA WINDOW -->
 	<menu name="CMediaFrame.Basic">
-		<item id="ID_MEDIA_PLAY" text="_تشغيل" />
-		<item id="ID_MEDIA_PAUSE" text="اي_قلف مؤقت" />
-		<item id="ID_MEDIA_STOP" text="_إيقاف" />
+		<item id="ID_MEDIA_PLAY" text="تشغيل" />
+		<item id="ID_MEDIA_PAUSE" text="اي قلف مؤقت" />
+		<item id="ID_MEDIA_STOP" text="إيقاف" />
 		<separator />
-		<item id="ID_MEDIA_OPEN" text="_فتح ملف الوسائط..." />
+		<item id="ID_MEDIA_OPEN" text="فتح ملف الوسائط..." />
 		<separator />
 		<menu text="قائمة التشغيل">
-			<item id="ID_MEDIA_PREVIOUS" text="السا_بق" />
-			<item id="ID_MEDIA_NEXT" text="_التالي" />
-			<item id="ID_MEDIA_RANDOM" text="_عشوائي" />
+			<item id="ID_MEDIA_PREVIOUS" text="السا بق" />
+			<item id="ID_MEDIA_NEXT" text="التالي" />
+			<item id="ID_MEDIA_RANDOM" text="عشوائي" />
 			<item id="ID_MEDIA_REPEAT" text="تك_رار" />
 			<separator />
-			<item id="ID_MEDIA_PLAYLIST" text="إظهار _قائمة التشغيل" />
+			<item id="ID_MEDIA_PLAYLIST" text="إظهار قائمة التشغيل" />
 		</menu>
 		<menu text="ح_جم العرض ">
-			<item id="ID_MEDIA_SIZE_ONE" text="_الحجم الأصلي" />
-			<item id="ID_MEDIA_SIZE_TWO" text="_الحجم مرتان" />
-			<item id="ID_MEDIA_SIZE_HALF" text="_حجم ثلاثة أضعاف" />
-			<item id="ID_MEDIA_SIZE_FILL" text="_الاكبر" />
-			<item id="ID_MEDIA_SIZE_DISTORT" text="_ملئ الشاشة" />
+			<item id="ID_MEDIA_SIZE_ONE" text="الحجم الأصلي" />
+			<item id="ID_MEDIA_SIZE_TWO" text="الحجم مرتان" />
+			<item id="ID_MEDIA_SIZE_HALF" text="حجم ثلاثة أضعاف" />
+			<item id="ID_MEDIA_SIZE_FILL" text="الاكبر" />
+			<item id="ID_MEDIA_SIZE_DISTORT" text="ملئ الشاشة" />
 			<separator />
-			<item id="ID_MEDIA_ASPECT_DEFAULT" text="الوضع _ الافتراضي" />
-			<item id="ID_MEDIA_ASPECT_4_3" text="_نسبة 4:3 (تلفزيون)" />
-			<item id="ID_MEDIA_ASPECT_16_9" text="_16:9 (فيلم)" />
+			<item id="ID_MEDIA_ASPECT_DEFAULT" text="الوضع  الافتراضي" />
+			<item id="ID_MEDIA_ASPECT_4_3" text="نسبة 4:3 (تلفزيون)" />
+			<item id="ID_MEDIA_ASPECT_16_9" text="16:9 (فيلم)" />
 			<separator />
-			<item id="ID_MEDIA_FULLSCREEN" text="_شاشة كاملة" />
+			<item id="ID_MEDIA_FULLSCREEN" text="شاشة كاملة" />
 		</menu>
 		<menu text="إعدادات">
-			<item id="ID_MEDIA_VIS" text="تحديد _المرئيات..." />
+			<item id="ID_MEDIA_VIS" text="تحديد المرئيات..." />
 			<separator />
-			<item id="ID_MEDIA_PLAYLIST" text="إظهار _قائمة التشغيل" />
+			<item id="ID_MEDIA_PLAYLIST" text="إظهار قائمة التشغيل" />
 			<item id="ID_MEDIA_STATUS" text="عرض شريط_ الحالة" />
 			<separator />
-			<item id="ID_MEDIA_SETTINGS" text="_إعدادات الوسائط..." />
+			<item id="ID_MEDIA_SETTINGS" text="إعدادات الوسائط..." />
 		</menu>
 	</menu>
 	<menu name="CMediaFrame">
-		<item id="ID_MEDIA_PLAY" text="_تشغيل" />
+		<item id="ID_MEDIA_PLAY" text="تشغيل" />
 		<item id="ID_MEDIA_PAUSE" text="اي_قلف مؤقت" />
-		<item id="ID_MEDIA_STOP" text="_إيقاف" />
+		<item id="ID_MEDIA_STOP" text="إيقاف" />
 		<separator />
-		<item id="ID_MEDIA_OPEN" text="_فتح ملف الوسائط..." />
-		<item id="ID_MEDIA_CLOSE" text="_اغلق الملف" />
+		<item id="ID_MEDIA_OPEN" text="فتح ملف الوسائط..." />
+		<item id="ID_MEDIA_CLOSE" text="اغلق الملف" />
 		<separator />
 		<menu text="قائمة التشغيل">
-			<item id="ID_MEDIA_PREVIOUS" text="السا_بق" />
-			<item id="ID_MEDIA_NEXT" text="_التالي" />
-			<item id="ID_MEDIA_RANDOM" text="_عشوائي" />
-			<item id="ID_MEDIA_REPEAT" text="تك_رار" />
+			<item id="ID_MEDIA_PREVIOUS" text="السا بق" />
+			<item id="ID_MEDIA_NEXT" text="التالي" />
+			<item id="ID_MEDIA_RANDOM" text="عشوائي" />
+			<item id="ID_MEDIA_REPEAT" text="تك رار" />
 			<separator />
-			<item id="ID_MEDIA_PLAYLIST" text="إظهار _قائمة التشغيل" />
+			<item id="ID_MEDIA_PLAYLIST" text="إظهار قائمة التشغيل" />
 		</menu>
 		<menu text="ح_جم العرض ">
-			<item id="ID_MEDIA_SIZE_ONE" text="_حجم اصلي" />
-			<item id="ID_MEDIA_SIZE_TWO" text="_الحجم مرتان" />
-			<item id="ID_MEDIA_SIZE_HALF" text="_حجم ثلاثة أضعاف" />
-			<item id="ID_MEDIA_SIZE_FILL" text="_الاكبر" />
-			<item id="ID_MEDIA_SIZE_DISTORT" text="_ملئ الشاشة" />
+			<item id="ID_MEDIA_SIZE_ONE" text="حجم اصلي" />
+			<item id="ID_MEDIA_SIZE_TWO" text="الحجم مرتان" />
+			<item id="ID_MEDIA_SIZE_HALF" text="حجم ثلاثة أضعاف" />
+			<item id="ID_MEDIA_SIZE_FILL" text="الاكبر" />
+			<item id="ID_MEDIA_SIZE_DISTORT" text="ملئ الشاشة" />
 			<separator />
-			<item id="ID_MEDIA_ASPECT_DEFAULT" text="الوضع _ الافتراضي" />
-			<item id="ID_MEDIA_ASPECT_4_3" text="_نسبة 4:3 (تلفزيون)" />
-			<item id="ID_MEDIA_ASPECT_16_9" text="_16:9 (فيلم)" />
+			<item id="ID_MEDIA_ASPECT_DEFAULT" text="الوضع  الافتراضي" />
+			<item id="ID_MEDIA_ASPECT_4_3" text="نسبة 4:3 (تلفزيون)" />
+			<item id="ID_MEDIA_ASPECT_16_9" text="16:9 (فيلم)" />
 			<separator />
-			<item id="ID_MEDIA_FULLSCREEN" text="_شاشة كاملة" />
+			<item id="ID_MEDIA_FULLSCREEN" text="شاشة كاملة" />
 		</menu>
 		<menu text="إعدادات">
-			<item id="ID_MEDIA_VIS" text="تحديد _المرئيات..." />
+			<item id="ID_MEDIA_VIS" text="تحديد المرئيات..." />
 			<separator />
-			<item id="ID_MEDIA_PLAYLIST" text="إظهار _قائمة التشغيل" />
-			<item id="ID_MEDIA_STATUS" text="عرض شريط_ الحالة" />
+			<item id="ID_MEDIA_PLAYLIST" text="إظهار قائمة التشغيل" />
+			<item id="ID_MEDIA_STATUS" text="عرض شريط الحالة" />
 			<separator />
-			<item id="ID_MEDIA_SETTINGS" text="_إعدادات الوسائط..." />
+			<item id="ID_MEDIA_SETTINGS" text="إعدادات الوسائط..." />
 		</menu>
 	</menu>
 	<menu name="CMediaFrame.Zoom">
-		<item id="ID_MEDIA_SIZE_ONE" text="_حجم اصلي" />
-		<item id="ID_MEDIA_SIZE_TWO" text="_الحجم مرتان" />
-		<item id="ID_MEDIA_SIZE_HALF" text="_حجم ثلاثة أضعاف" />
-		<item id="ID_MEDIA_SIZE_FILL" text="_الاكبر" />
-		<item id="ID_MEDIA_SIZE_DISTORT" text="_ملئ الشاشة" />
+		<item id="ID_MEDIA_SIZE_ONE" text="حجم اصلي" />
+		<item id="ID_MEDIA_SIZE_TWO" text="الحجم مرتان" />
+		<item id="ID_MEDIA_SIZE_HALF" text="حجم ثلاثة أضعاف" />
+		<item id="ID_MEDIA_SIZE_FILL" text="الاكبر" />
+		<item id="ID_MEDIA_SIZE_DISTORT" text="ملئ الشاشة" />
 		<separator />
-		<item id="ID_MEDIA_ASPECT_DEFAULT" text="الوضع _ الافتراضي" />
-		<item id="ID_MEDIA_ASPECT_4_3" text="_نسبة 4:3 (تلفزيون)" />
-		<item id="ID_MEDIA_ASPECT_16_9" text="_16:9 (فيلم)" />
+		<item id="ID_MEDIA_ASPECT_DEFAULT" text="الوضع  الافتراضي" />
+		<item id="ID_MEDIA_ASPECT_4_3" text="نسبة 4:3 (تلفزيون)" />
+		<item id="ID_MEDIA_ASPECT_16_9" text="16:9 (فيلم)" />
 	</menu>
 	<menu name="CMediaList">
-		<item id="ID_MEDIA_SELECT" text="_تشغيل" />
+		<item id="ID_MEDIA_SELECT" text="تشغيل" />
 		<item id="ID_MEDIA_RATE" text="ت_صنيف الملف" />
-		<item id="ID_MEDIA_PROPERTIES" text="_خصائص..." />
+		<item id="ID_MEDIA_PROPERTIES" text="خصائص..." />
 		<separator />
-		<item id="ID_MEDIA_ADD" text="_اضف ملف..." />
-		<item id="ID_MEDIA_ADD_FOLDER" text="اضف _مجلد..." />
-		<item id="ID_MEDIA_REMOVE" text="_إزالة" />
+		<item id="ID_MEDIA_ADD" text="اضف ملف..." />
+		<item id="ID_MEDIA_ADD_FOLDER" text="اضف مجلد..." />
+		<item id="ID_MEDIA_REMOVE" text="إزالة" />
 		<separator />
 		<item id="ID_MEDIA_RANDOM" text="نمط عشوائي" />
 		<item id="ID_MEDIA_REPEAT" text="نمط تكرار" />
 		<separator />
-		<item id="ID_MEDIA_OPEN" text="_فتح قائمة تشغيل..." />
-		<item id="ID_MEDIA_SAVE" text="_حفظ قائمة تشغيل..." />
+		<item id="ID_MEDIA_OPEN" text="فتح قائمة تشغيل..." />
+		<item id="ID_MEDIA_SAVE" text="حفظ قائمة تشغيل..." />
 		<item id="ID_MEDIA_EXPORT_COLLECTION" text="ت_صدير المجموعة" />
-		<item id="ID_MEDIA_CLEAR" text="_مسح قائمة تشغيل" />
+		<item id="ID_MEDIA_CLEAR" text="مسح قائمة تشغيل" />
 		<separator />
 		<item id="ID_MEDIA_PLAYLIST" text="عرض قائم_ة تشغيل" />
 	</menu>
 	<!-- SYSTEM WINDOW -->
 	<menu name="CSystemWnd">
-		<menu id="ID_SYSTEM_VERBOSE" text="_نمط مسهب">
-			<item id="ID_SYSTEM_VERBOSE_ERROR" text="_Error" />
-			<item id="ID_SYSTEM_VERBOSE_WARNING" text="_Warning" />
-			<item id="ID_SYSTEM_VERBOSE_NOTICE" text="_Notice" />
-			<item id="ID_SYSTEM_VERBOSE_INFO" text="_Info" />
-			<item id="ID_SYSTEM_VERBOSE_DEBUG" text="_Debug" />
+		<menu id="ID_SYSTEM_VERBOSE" text="نمط مسهب">
+			<item id="ID_SYSTEM_VERBOSE_ERROR" text="Error" />
+			<item id="ID_SYSTEM_VERBOSE_WARNING" text="Warning" />
+			<item id="ID_SYSTEM_VERBOSE_NOTICE" text="Notice" />
+			<item id="ID_SYSTEM_VERBOSE_INFO" text="Info" />
+			<item id="ID_SYSTEM_VERBOSE_DEBUG" text="Debug" />
 		</menu>
 		<item id="ID_SYSTEM_TIMESTAMP" text="طبعةالوق_ت" />
 		<separator />
-		<item id="ID_SYSTEM_COPY" text="_نسخ" shortcut="Ctrl+C" />
+		<item id="ID_SYSTEM_COPY" text="نسخ" shortcut="Ctrl+C" />
 		<separator />
 		<item id="ID_SYSTEM_CLEAR" text="مسح_المخزون المؤقت" />
 	</menu>
 	<!-- NEIGHBOURS WINDOW -->
 	<menu name="CNeighboursWnd.Basic">
-		<item id="ID_BROWSE_LAUNCH" text="_معلومات عن المستخدم" />
-		<item id="ID_NEIGHBOURS_CHAT" text="_محادثة المستخدم" />
+		<item id="ID_BROWSE_LAUNCH" text="معلومات عن المستخدم" />
+		<item id="ID_NEIGHBOURS_CHAT" text="محادثة المستخدم" />
 		<separator />
-		<item id="ID_NEIGHBOURS_DISCONNECT" text="_قطع الإتصال" />
+		<item id="ID_NEIGHBOURS_DISCONNECT" text="قطع الإتصال" />
 		<separator />
-		<item id="ID_NEIGHBOURS_URI" text="نسخ _رابط" />
+		<item id="ID_NEIGHBOURS_URI" text="نسخ رابط" />
 	</menu>
 	<menu name="CNeighboursWnd">
-		<item id="ID_BROWSE_LAUNCH" text="_معلومات عن المستخدم" />
-		<item id="ID_NEIGHBOURS_CHAT" text="_محادثة المستخدم" />
+		<item id="ID_BROWSE_LAUNCH" text="معلومات عن المستخدم" />
+		<item id="ID_NEIGHBOURS_CHAT" text="محادثة المستخدم" />
 		<item id="ID_SECURITY_BAN" text="ح_ظر مستخدم" />
 		<separator />
-		<item id="ID_NEIGHBOURS_DISCONNECT" text="_قطع الإتصال" />
+		<item id="ID_NEIGHBOURS_DISCONNECT" text="قطع الإتصال" />
 		<separator />
-		<item id="ID_NEIGHBOURS_URI" text="نسخ _رابط" />
+		<item id="ID_NEIGHBOURS_URI" text="نسخ رابط" />
 		<separator />
-		<menu text="_شبكات">
-			<item id="ID_NETWORK_CONNECT" text="_إتصال" />
-			<item id="ID_NETWORK_DISCONNECT" text="_قطع الإتصال" />
+		<menu text="شبكات">
+			<item id="ID_NETWORK_CONNECT" text="إتصال" />
+			<item id="ID_NETWORK_DISCONNECT" text="قطع الإتصال" />
 			<separator />
 			<item id="ID_NETWORK_G2" text="Gnutella_2" />
-			<item id="ID_NETWORK_G1" text="_Gnutella" />
-			<item id="ID_NETWORK_ED2K" text="_eDonkey" />
-			<item id="ID_NETWORK_DC" text="_DC++" />
-			<item id="ID_NETWORK_BT" text="_BitTorrent" />
+			<item id="ID_NETWORK_G1" text="Gnutella" />
+			<item id="ID_NETWORK_ED2K" text="eDonkey" />
+			<item id="ID_NETWORK_DC" text="DC++" />
+			<item id="ID_NETWORK_BT" text="BitTorrent" />
 			<separator />
 			<item id="ID_VIEW_DISCOVERY" text="الإكت_شاف" />
 			<item id="ID_VIEW_HOSTS" text="ا_لمخزون المؤقت للمضيف" />
 			<item id="ID_VIEW_SECURITY" text="ال_أمان" />
 		</menu>
-		<menu text="_شاشة">
-			<item id="ID_NEIGHBOURS_VIEW_ALL" text="عرض _كافة حركات المرور" />
-			<item id="ID_NEIGHBOURS_VIEW_INCOMING" text="عرض _كافة حركة المرور المستقبلة" />
-			<item id="ID_NEIGHBOURS_VIEW_OUTGOING" text="عرض _كافة حركة المرور المرسلة" />
+		<menu text="شاشة">
+			<item id="ID_NEIGHBOURS_VIEW_ALL" text="عرض كافة حركات المرور" />
+			<item id="ID_NEIGHBOURS_VIEW_INCOMING" text="عرض كافة حركة المرور المستقبلة" />
+			<item id="ID_NEIGHBOURS_VIEW_OUTGOING" text="عرض كافة حركة المرور المرسلة" />
 		</menu>
 	</menu>
 	<!-- SEARCH MONITOR WINDOW -->
 	<menu name="CSearchMonitorWnd">
-		<item id="ID_HITMONITOR_SEARCH" text="_بحث لهذا" />
+		<item id="ID_HITMONITOR_SEARCH" text="بحث لهذا" />
 		<separator />
-		<item id="ID_SEARCHMONITOR_PAUSE" text="_إيقاف مؤقت للعرض" />
-		<item id="ID_SEARCHMONITOR_CLEAR" text="_مسح المخزون المؤقت" />
+		<item id="ID_SEARCHMONITOR_PAUSE" text="إيقاف مؤقت للعرض" />
+		<item id="ID_SEARCHMONITOR_CLEAR" text="مسح المخزون المؤقت" />
 	</menu>
 	<!-- GRAPH/TRAFFIC WINDOW -->
 	<menu name="CTrafficWnd">
-		<item id="ID_TRAFFIC_SETUP" text="_تحديد المخطط..." />
+		<item id="ID_TRAFFIC_SETUP" text="تحديد المخطط..." />
 		<separator />
-		<item id="ID_TRAFFIC_GRID" text="_خطوط شبكية" />
-		<item id="ID_TRAFFIC_AXIS" text="_المحور" />
-		<item id="ID_TRAFFIC_LEGEND" text="_وسيلة إيضاح" />
+		<item id="ID_TRAFFIC_GRID" text="خطوط شبكية" />
+		<item id="ID_TRAFFIC_AXIS" text="المحور" />
+		<item id="ID_TRAFFIC_LEGEND" text="وسيلة إيضاح" />
 		<separator />
-		<item id="ID_TRAFFIC_CLEAR" text="_إزالة" />
+		<item id="ID_TRAFFIC_CLEAR" text="إزالة" />
 		<separator />
-		<item id="ID_TRAFFIC_WINDOW" text="_نافذه جديدة" />
+		<item id="ID_TRAFFIC_WINDOW" text="نافذه جديدة" />
 	</menu>
 	<!-- SECURITY WINDOW -->
 	<menu name="CSecurityWnd">
-		<item id="ID_SECURITY_ADD" text="_اضف قاعده..." />
+		<item id="ID_SECURITY_ADD" text="اضف قاعده..." />
 		<separator />
-		<item id="ID_SECURITY_REMOVE" text="_إزالة" />
+		<item id="ID_SECURITY_REMOVE" text="إزالة" />
 		<item id="ID_SECURITY_RESET" text="إستع_ادة" />
 		<separator />
-		<item id="ID_SECURITY_MOVE_UP" text="نقل _للاعلى" />
-		<item id="ID_SECURITY_MOVE_DOWN" text="نقل _للاسفل" />
+		<item id="ID_SECURITY_MOVE_UP" text="نقل للاعلى" />
+		<item id="ID_SECURITY_MOVE_DOWN" text="نقل للاسفل" />
 		<separator />
-		<item id="ID_SECURITY_IMPORT" text="_استيراد..." />
+		<item id="ID_SECURITY_IMPORT" text="استيراد..." />
 		<item id="ID_SECURITY_EXPORT" text="ت_صدير..." />
 		<separator />
 		<menu text="ال_سياسة الإفتراضية">
-			<item id="ID_SECURITY_POLICY_ACCEPT" text="_قبول" />
-			<item id="ID_SECURITY_POLICY_DENY" text="_رفض" />
+			<item id="ID_SECURITY_POLICY_ACCEPT" text="قبول" />
+			<item id="ID_SECURITY_POLICY_DENY" text="رفض" />
 		</menu>
 		<separator />
-		<item id="ID_SECURITY_EDIT" text="_خصائص" />
+		<item id="ID_SECURITY_EDIT" text="خصائص" />
 	</menu>
 	<!-- DISCOVERY SERVICES WINDOW -->
 	<menu name="CDiscoveryWnd">
-		<item id="ID_DISCOVERY_ADD" text="_إضافة خدمة..." />
+		<item id="ID_DISCOVERY_ADD" text="إضافة خدمة..." />
 		<separator />
-		<item id="ID_DISCOVERY_EDIT" text="_خصائص" />
-		<item id="ID_DISCOVERY_REMOVE" text="_إزالة" />
+		<item id="ID_DISCOVERY_EDIT" text="خصائص" />
+		<item id="ID_DISCOVERY_REMOVE" text="إزالة" />
 		<separator />
-		<item id="ID_DISCOVERY_QUERY" text="_استعلم الان" />
+		<item id="ID_DISCOVERY_QUERY" text="استعلم الان" />
 		<item id="ID_DISCOVERY_ADVERTISE" text="أ_علن" />
 		<item id="ID_DISCOVERY_BROWSE" text="تصفّح_ الإحصائيات" />
 		<separator />
-		<item id="ID_DISCOVERY_GNUTELLA" text="_إظهار Bootstraps" />
-		<item id="ID_DISCOVERY_WEBCACHE" text="_إظهار GWebCaches" />
+		<item id="ID_DISCOVERY_GNUTELLA" text="إظهار Bootstraps" />
+		<item id="ID_DISCOVERY_WEBCACHE" text="إظهار GWebCaches" />
 		<item id="ID_DISCOVERY_SERVERLIST" text="إظهار Ser_ver.met's" />
-		<item id="ID_DISCOVERY_BLOCKED" text="_إظهار حظر" />
+		<item id="ID_DISCOVERY_BLOCKED" text="إظهار حظر" />
 	</menu>
 	<!-- PRIVATE CHAT FRAME -->
 	<menu name="CPrivateChatWnd">
-		<item id="ID_CHAT_CONNECT" text="_إتصال" />
-		<item id="ID_CHAT_DISCONNECT" text="_قطع الإتصال" />
+		<item id="ID_CHAT_CONNECT" text="إتصال" />
+		<item id="ID_CHAT_DISCONNECT" text="قطع الإتصال" />
 		<separator />
-		<item id="ID_CHAT_BROWSE" text="_معلومات عن المستخدم" />
-		<item id="ID_CHAT_PRIORITY" text="منح _أولوية" />
-		<!--item id="ID_CHAT_SEND_FILE" text="_ارسال ملف..."-->
+		<item id="ID_CHAT_BROWSE" text="معلومات عن المستخدم" />
+		<item id="ID_CHAT_PRIORITY" text="منح أولوية" />
+		<!--item id="ID_CHAT_SEND_FILE" text="ارسال ملف..."-->
 		<separator />
-		<menu text="_تنسيق">
-			<item id="ID_CHAT_BOLD" text="وضع _عريض" />
-			<item id="ID_CHAT_ITALIC" text="وضع _مائل" />
-			<item id="ID_CHAT_UNDERLINE" text="وضع _مسطر" />
-			<item id="ID_CHAT_COLOR" text="وضع _ملون" />
-			<item id="ID_CHAT_EMOTICONS" text="_تعبيرات وجه" />
+		<menu text="تنسيق">
+			<item id="ID_CHAT_BOLD" text="وضع عريض" />
+			<item id="ID_CHAT_ITALIC" text="وضع مائل" />
+			<item id="ID_CHAT_UNDERLINE" text="وضع مسطر" />
+			<item id="ID_CHAT_COLOR" text="وضع ملون" />
+			<item id="ID_CHAT_EMOTICONS" text="تعبيرات وجه" />
 		</menu>
 		<separator />
-		<item id="ID_CHAT_TIMESTAMP" text="_طابع الوقت" />
+		<item id="ID_CHAT_TIMESTAMP" text="طابع الوقت" />
 		<item id="ID_CHAT_CLEAR" text="ت_نظيف الشاشة" />
 	</menu>
 	<!-- PLUGIN MENUS -->
@@ -2877,7 +2878,7 @@
 		<control text="عرض شريط تقدم بسيط" />
 		<control text="إظهار التصنيفات بـ" />
 		<control text="بت/ثانية|بايت/ثانية|بت/ث|ب/ث|كبت/ث|كب/ث|مبت/ث|مب/ث" />
-		<control text="_بحث:" />
+		<control text="بحث:" />
 		<control text="توسيع الملفات المتعددة المصادر إفتراضيا" />
 		<control text="التبديل إلى عرض عمليات النقل مع التحميل" />
 		<control text="إخفاء الشريط الجانبي عند بدء البحث" />
@@ -2890,7 +2891,7 @@
 		<control text=":العتامة" />
 		<control />
 		<control text="الظل (إعادة)" />
-		<control text="_جوار الساعة:" />
+		<control text="جوار الساعة:" />
 		<control text=":عند النقر على إغلاق" />
 		<control text="السؤال|الإغلاق فورا|التصغير إلى جوار الساعة|الإغلاق بعد عمليات النقل" />
 		<control text=":عند النقر على تصغير" />
@@ -2915,30 +2916,30 @@
 		<control text="يوم" />
 		<control text="مسح المحفوظات الآن" />
 		<control text="مسح المحفوظات الآن" />
-		<control text="_: أمان في فتح" />
+		<control text=": أمان في فتح" />
 		<control />
 		<control text="إ_ضافة" />
 		<control text="إ_زالة" />
-		<control text="_:بدون مشاركة" />
+		<control text=":بدون مشاركة" />
 		<control />
 		<control text="إ_ضافة" />
 		<control text="إ_زالة" />
-		<control text=":تخزين التجميعات _هنا" />
+		<control text=":تخزين التجميعات هنا" />
 		<control />
 		<control />
 	</dialog>
 	<dialog name="CMediaSettingsPage" cookie="BuStCoBuBuBuCoBuBuBuBuSt" caption="مشغل الوسائط">
-		<control text="_معالجة الوسائط" />
+		<control text="معالجة الوسائط" />
 		<control text=":تحديد معالج الوسائط" />
 		<control />
 		<control text="لتشغيل أنواع الملفات التالية Envy إستخدام مشغل" />
 		<control text="لوضع أنواع الملفات التالية بالإنتظار Envy إستخدام مشغل" />
-		<control text=":نوع _الملف" />
+		<control text=":نوع الملف" />
 		<control />
-		<control text="_إضافة" />
-		<control text="_إزالة" />
-		<control text="_:وظيفة المرئيات الصوتية الإضافية" />
-		<control text="_حدد الاضافات..." />
+		<control text="إضافة" />
+		<control text="إزالة" />
+		<control text=":وظيفة المرئيات الصوتية الإضافية" />
+		<control text="حدد الاضافات..." />
 		<control text="تحذير : عند إختيار معالج وسائط خارجي سيتم التعطيل تلقائيا لجميع وظائف المرئيات الصوتية الإضافية" />
 	</dialog>
 	<dialog name="CIRCSettingsPage" cookie="BuBuBuBuStEdmsStStEdmsCoBuBuStBuStBuStBuStBuStBuStBuStBuStBuStEdStEdStEdStEdStCoStEdStEd" caption="محادثة">
@@ -2986,19 +2987,19 @@
 		<control />
 	</dialog>
 	<dialog name="CCommunitySettingsPage" cookie="BuBuBuBuBuBuBuBuBuSt" caption="المجتمع">
-		<control text="_:محادثة" />
+		<control text=":محادثة" />
 		<control text="تمكين محادثة النظير إلى النظر مع العملاء المتوافقين" />
 		<control text="تمكين المحادثة على جميع الشبكات" />
 		<control text="فرز رسائل المحادثة من الرسائل العشوائية" />
 		<control text="حساسية عبارات المحادثة" />
-		<control text="_:وضعيتي" />
+		<control text=":وضعيتي" />
 		<control text="وضعيتي" />
 		<control text="تحرير وضعيتي" />
 		<control text=":الدليل" />
 		<control text="يمكنك إستخدام وضعية جي.نيوتيللا الخاصة بك للمشاركة بالمعلومات عن نفسك و اهتماماتك و توصياتك عن الملفات و المواقع التي تنصح بها الآخرين" />
 	</dialog>
 	<dialog name="CRemoteSettingsPage" cookie="BuBuStBuStStEdEdStBuSt" caption="الوصول البعيد">
-		<control text="_:ممكن" />
+		<control text=":ممكن" />
 		<control text=" :من التحكم عن بعد Envy تمكين" />
 		<control text="الرابط" />
 		<control text="الإ&amp;عتمادات:" />
@@ -3011,7 +3012,7 @@
 		<control text="يسمح لك الوصول البعيد لشير-أزا بترك &quot;شير-أزا&quot; يعمل في كمبيوترك و من ثم التحكم فيه عن بعد عن طريق متصفح ويب . لكن يجب قبول الإتصالات الواردة لإستخدام هذه الميزة" />
 	</dialog>
 	<dialog name="CWebSettingsPage" cookie="BuStBuBuBuBuBuBuBuBuCoBuBuSt" caption="ويب">
-		<control text="معالجة رابط _نظير إلى نظر:" />
+		<control text="معالجة رابط نظير إلى نظر:" />
 		<control text="إستعمال Envy لفتح هذه الأنواع من الروابط :" />
 		<control text="Magnet (magnet:)" />
 		<control text="Gnutella (gnutella:)" />
@@ -3019,15 +3020,15 @@
 		<control text="Piolet (mp2p:)" />
 		<control text="DC++ (dchub:)" />
 		<control text="BitTorrent (.torrent)" />
-		<control text="_:مدير التحميل" />
+		<control text=":مدير التحميل" />
 		<control text=":لإدارة جميع تحميلات إنترنت Envy إستخدام" />
 		<control />
-		<control text="_إضافة" />
-		<control text="_إزالة" />
+		<control text="إضافة" />
+		<control text="إزالة" />
 		<control text="وظيفة مدير التحميل الإضافية ستحاول فقط تحميل أنواع الملفات المدرجة هنا . أما أنواع الملفات الأخرى فستعالج بواسطة متصفحك . يجب أن يكون &quot;شير-أزا&quot; شغال لإدارة التحميلات" />
 	</dialog>
 	<dialog name="CConnectionSettingsPage" cookie="BuStCoStCoStEdBuBuBuStCoStCoBuStCoBuBuBuStEdmsStEdms" caption="الإتصال">
-		<control text="_:عنوان الوارد" />
+		<control text=":عنوان الوارد" />
 		<control text=":العنوان" />
 		<control text="تلقائي" />
 		<control text=":السرعة" />
@@ -3061,7 +3062,7 @@
 		<control text=":تخزين الملفات ال_غير مكتملة المؤقتة هنا" />
 		<control />
 		<control />
-		<control text="_:عدد التحميلات" />
+		<control text=":عدد التحميلات" />
 		<control text=":أقصى ملفات" />
 		<control />
 		<control />
@@ -3090,20 +3091,20 @@
 		<control text=":الحد لكل مضيف فريد" />
 		<control />
 		<control />
-		<control text=":مرشح _عميل المستخدم" />
+		<control text=":مرشح عميل المستخدم" />
 		<control />
 		<control text="+" />
 		<control text="-" />
-		<control text="_:نطاق العرض" />
+		<control text=":نطاق العرض" />
 		<control text=":الحدود" />
 		<control />
 		<control text=":النمط" />
 		<control text="الحد الأعلى|معتدل" />
 		<control text=":قوائم الإ_نتظار" />
 		<control />
-		<control text="_جديد..." />
-		<control text="_تحرير..." />
-		<control text="_حذف" />
+		<control text="جديد..." />
+		<control text="تحرير..." />
+		<control text="حذف" />
 		<control text="(التغييرات تصبح سارية المفعول فورا)" />
 	</dialog>
 	<dialog name="CNetworksSettingsPage" cookie="StBuStBuStBuStBuStBuStBuStBuStBuSt" caption="الشبكات">
@@ -3156,7 +3157,7 @@
 		<control text=":نظير إلى نظير" />
 		<control />
 		<control />
-		<control text="_ :ضغط الرابط" />
+		<control text=" :ضغط الرابط" />
 		<control text="محوري إلى طرفي" />
 		<control text="طرفي إلى محوري" />
 		<control text="محوري إلى محوري" />
@@ -3177,7 +3178,7 @@
 		<control />
 		<control text="نتيجة بحث" />
 		<control text="إستقبال و تحديث قائمة الملقم من الملقم المتصل" />
-		<control text=":eDonkey _أدوات" />
+		<control text=":eDonkey أدوات" />
 		<control text="تحميل..." />
 		<control text=":من الانترنت eDonkey تحميل قائمة ملقم" />
 	</dialog>
@@ -3185,12 +3186,12 @@
 		<control text=":_DC++ شبكة" />
 		<control text="DC++ الإتصال دائما بـ" />
 		<control text="DC++ الإتصال اليوم بـ" />
-		<control text="_Hubs:" />
+		<control text="Hubs:" />
 		<control text="Connect by default to:" />
 		<control />
 		<control />
 		<control text="DC++ hubs." />
-		<control text="_Info:" />
+		<control text="Info:" />
 		<control text="DC++ works by connecting to specific &quot;hub&quot; communities. Please select hubs from the &quot;Hostcache&quot; advanced view window (F8), otherwise one will be randomly selected." />
 		<control text=":أدوات" />
 		<control text="تحميل..." />
@@ -3215,7 +3216,7 @@
 		<control text=": هنا Torrent ت_خزين ملفات" />
 		<control />
 		<control />
-		<control text="_Torrent صانع" />
+		<control text="Torrent صانع" />
 		<control />
 		<control />
 		<control text="متتبع إفتراضي" />
@@ -3242,10 +3243,10 @@
 		<control />
 		<control text=":نبذة عنها" />
 		<control />
-		<control text="_تثبيت..." />
+		<control text="تثبيت..." />
 		<control text="احضر المزيد" />
 	</dialog>
-	<dialog name="CAdvancedSettingsPage" cookie="SyBuStEdmsEdCoBuBu" caption="متقدم">
+	<dialog name="CAdvancedSettingsPage" cookie="SyBuStEdmsEdCoBuBuStEd" caption="متقدم">
 		<control />
 		<control text=":إعداد الخصائص" />
 		<control text=":القيمة" />
@@ -3288,7 +3289,7 @@
 		<control text="العدد الأقصى في قائمة الإنتظار :" />
 		<control />
 		<control />
-		<control text="_معايير الخدمة" />
+		<control text="معايير الخدمة" />
 		<control text="نسبة نطاق العرض المئوية المشبعة:" />
 		<control />
 		<control text="نطاق العرض للإرسال لقائمة الإنتظار هذه :" />
@@ -3301,7 +3302,7 @@
 		<control text="إلغاء الأمر" />
 		<control text="أصحاب الإرسال الفائزون" />
 	</dialog>
-	<dialog name="CWizardWelcomePage" cookie="StStStStStStStStStStStStSt" caption="(1/8) _ Envy مرحبا بك في">
+	<dialog name="CWizardWelcomePage" cookie="StStStStStStStStStStStStSt" caption="(1/8)  Envy مرحبا بك في">
 		<control text="Envy مرحبا بك في" />
 		<control text="او اي برنامج مشاركة هذا المعالج سوف يساعدك على اعداد البرنامج و الإتصال به Envy  اذا كنت تستخدم برنامج." />
 		<control text="لعمل إعدادات الإتصال Envy اضغط على خروج  واضغط على ادوات ثم إعدادات Envy اذا كنت مستخدم محترف اضغط  لبرنامج." />
@@ -3316,7 +3317,7 @@
 		<control text="Envy إبدأ الإستعمال" />
 		<control/>
 	</dialog>
-	<dialog name="CWizardConnectionPage" cookie="StStCoStStCoStCoStCoStEdBuStms" caption="(2/8) _ Envy مرحبا بكم في">
+	<dialog name="CWizardConnectionPage" cookie="StStCoStStCoStCoStCoStEdBuStms" caption="(2/8)  Envy مرحبا بكم في">
 		<control text="للإتصال بالإنترنت Envy لأداء مثالي ، يجب إعداد" />
 		<control text=":إختر نوع إتصال الإنترنت" />
 		<control text=" |مودم طلب هاتفي| ISDN 128ك| DSL 768ك| DSL 1.5|مودم كيبل 3| DSL 4م| DSL2 8م| FIOS 10م| DSL2 12م| FIOS 15م| FIOS 20م| FIOS 25م| FIOS 30م| FIOS 50م| T1| T3| LAN| OC3" />
@@ -3332,7 +3333,7 @@
 		<control text=":الحالة" />
 		<control />
 	</dialog>
-	<dialog name="CWizardNetworksPage" cookie="StBuStBuStBuStBu" caption="(3/8) _ Envy مرحبا بكم في">
+	<dialog name="CWizardNetworksPage" cookie="StBuStBuStBuStBu" caption="(3/8)  Envy مرحبا بكم في">
 		<control text="شير-أزا هو تطبيق لمشاركة الملفات بشكا عام حيث يمكنه الدخول على العديد من شبكات النظير إلى النظبر في نفس الوقت . هنا يمكنك أن تختار الشبكات المراد الدخول إليها . ملاحظة : يمكنك أن تختار شبكات مختلفة دائما فيما بعد" />
 		<control text="(مهم جدا) Gnutella2 الإتصال بـ" />
 		<control text="شبكة نيتيللاGnutella هي الشبكة الرئيسية لبرنامج شير-أزا ، فهي تقدم مميزات و أداء أكثر من أي شبكة أخرى" />
@@ -3342,7 +3343,7 @@
 		<control text="شبكة إدونكي هي شبكة تعتمد على ملقم عام . لكنها ليست بمميزات نيتيللا2 . إدونكي تملك مجموعة ملفات لا يستهان بها" />
 		<control text=".torrent معالجة روابط" />
 	</dialog>
-	<dialog name="CWizardFoldersPage" cookie="StStEdBuStEdBuStEdBuSt" caption="(4/8) _ Envy مرحبا بكم في">
+	<dialog name="CWizardFoldersPage" cookie="StStEdBuStEdBuStEdBuSt" caption="(4/8)  Envy مرحبا بكم في">
 		<control text="التنزيلات Envy أول جزئية الملفات إلى مجلد خاص، ثم ينتقل منها عند الانتهاء وفقا للمجموعات تحميل." />
 		<control text=":تخزين الملفات ال_غير مكتملة المؤقتة هنا" />
 		<control />
@@ -3355,13 +3356,13 @@
 		<control />
 		<control text="نوع الملف المشترك يتم الإعداد في البداية والمجلدات الفرعية من الموقع الافتراضي، ولكن يمكن بسهولة يمكن تطويعه من قبل مجموعات بزر الماوس الأيمن. ببساطة الملفات Drag&apos;n&apos;Drop." />
 	</dialog>
-	<dialog name="CWizardSharePage" cookie="StStStSyBuBuSt" caption="(5/8) _ Envy مرحبا بكم في">
+	<dialog name="CWizardSharePage" cookie="StStStSyBuBuSt" caption="(5/8)  Envy مرحبا بكم في">
 		<control text="شبكات النظير إلى النظير هي فقط صالحة إذا كان من يستخدمها إنسان صالح . كل المحتوبات المتوفر للتحميل يتم مشاركتها مع مستخدمين آخرين" />
 		<control text="ليس من الضروري أن تشارك من أجل إستعمال شير-أزا و من ناحية أخرى فهناك بعض البرامج تتصرف بشكل مختلف مع المستخدمين الذين لا يشاركون بأي شئ" />
 		<control text="الرجاء تعيين المجلدات المراد المشاركة بها إن وجدت . أنقر زر إضافة لإضافة أي مجلد جديد" />
 		<control />
-		<control text="_إضافة..." />
-		<control text="_إزالة" />
+		<control text="إضافة..." />
+		<control text="إزالة" />
 		<control text=" تحذير : توزيع الأعمال المحفوظة الحقوق مخالفة في أكثر البلدان ." />
 	</dialog>
 	<dialog name="CFolderScanDlg" cookie="StStStStStStBu" caption="فحص المجلد...">
@@ -3373,7 +3374,7 @@
 		<control text="0" />
 		<control text="إغلاق" />
 	</dialog>
-	<dialog name="CWizardInterfacePage" cookie="StBuBuBuStStBuBuBuBuBuSt" caption="(6/8) _ Envy مرحبا بك مع">
+	<dialog name="CWizardInterfacePage" cookie="StBuBuBuStStBuBuBuBuBuSt" caption="(6/8)  Envy مرحبا بك مع">
 		<control text="شير-أزا يدعم واجهة المستخدم المرنة ، لذا يمكنك أن تختار الواجهة التي تريحك . يمكنك أن تغير هذه الخيارات في أي وقت كان" />
 		<control text=":الرجاء تحديد الواجهة" />
 		<control text="النمط المتقدم" />
@@ -3387,7 +3388,7 @@
 		<control text="Dark Skin" />
 		<control text="" />
 	</dialog>
-	<dialog name="CWizardProfilePage" cookie="StStEdStCoCoStCoStCoStEd" caption="(7/8) _ Envy مرحبا بكم في">
+	<dialog name="CWizardProfilePage" cookie="StStEdStCoCoStCoStCoStEd" caption="(7/8)  Envy مرحبا بكم في">
 		<control text="يعتبر شير-أزا المكان الأكثر ودية عندما يكتب أي شخص بضعة تفاصيل أساسية حول نفسه" />
 		<control text="أنا إسمي:" />
 		<control />
@@ -3401,7 +3402,7 @@
 		<control text="تعليقات:" />
 		<control />
 	</dialog>
-	<dialog name="CWizardFinishedPage" cookie="StStStBuBuStSt" caption="(8/8) _ Envy مرحبا بكم في">
+	<dialog name="CWizardFinishedPage" cookie="StStStBuBuStSt" caption="(8/8)  Envy مرحبا بكم في">
 		<control text="ليعمل على كمبيوترك Envy هذا كل شيء . تم تكوين" />
 		<control text="عندما تحتاج إلى تغيير إعداداتك ، يمكنك تشغيل معالج البدء السريع هذا مرة أخرى من قائمة أدوات" />
 		<control text="بعد إغلاق هذا المعالج بواسطة النقر على زر إنهاء ، يمكنك الإتصال بالشبكات التي قمت بتحديدها و تبدأ البحث عن الملفات و تحميلها" />
@@ -3446,10 +3447,10 @@
 		<control />
 		<control text=":إ_ختيار" />
 		<control text="سيشاهد المستخدمون في شبكة نيتيللا الآخرون الذين يتصفحون التشكيل الجانبي لمعلوماتك الشخصية و ملفاتك المشاركة الصورة الرمزية الخاصة بك . الصور الرمزية المخصصة يجب أن تكون 128 × 128 بيكسل و يمكن أن تكون من نوع من أنواع الصور المعتمدة" />
-		<control text="_استعرض..." />
-		<control text="_إزالة" />
+		<control text="استعرض..." />
+		<control text="إزالة" />
 	</dialog>
-	<dialog name="CProfileProfilePage" cookie="BuStCoStCoBuStEdStEdBuLiBuBuCo" caption="_الموقع">
+	<dialog name="CProfileProfilePage" cookie="BuStCoStCoBuStEdStEdBuLiBuBuCo" caption="الموقع">
 		<control text=":_الموقع" />
 		<control text=":ال_دولة" />
 		<control />
@@ -3524,7 +3525,7 @@
 		<control />
 		<control text=":بر_وتوكول الشبكة" />
 		<control />
-		<control text="_منع نظير-فائق" />
+		<control text="منع نظير-فائق" />
 		<control text="إتصال" />
 		<control text="إلغاء الأمر" />
 	</dialog>
@@ -3536,7 +3537,7 @@
 		<control />
 		<control text="تحميل" />
 		<control text="إلغاء الأمر" />
-		<control text="_Torrent فتح" />
+		<control text="Torrent فتح" />
 	</dialog>
 	<dialog name="CNewSearchDlg" cookie="EdCoBuBu" caption="بحث جديد|البحث مره اخرى|البحث في المكتبة">
 		<control />
@@ -3566,10 +3567,10 @@
 		<control text="الملفات التي لديك مسبقا" />
 		<control text="النتائج المزيفة" />
 		<control text="وضع كإفتراضي" />
-		<control text="حفظ _باسم" />
+		<control text="حفظ باسم" />
 		<control text="الفرز:" />
 		<control />
-		<control text="_حذف" />
+		<control text="حذف" />
 		<control text="الملفات المشبوهة" />
 		<control text="نتائج مواد البالغين" />
 		<control text="فرز الآن" />
@@ -3677,14 +3678,14 @@
 	</dialog>
 	<dialog name="CGraphListDlg" cookie="SyBuBuBuBuBuBuBuBuStEdmsStBuEdBuBu" caption="مخطط حركة المرور">
 		<control />
-		<control text="_إضافة..." />
-		<control text="_تحرير..." />
-		<control text="_إزالة" />
+		<control text="إضافة..." />
+		<control text="تحرير..." />
+		<control text="إزالة" />
 		<control text=":إ_ظهار" />
 		<control text="خطوط شبكة" />
 		<control text="محاور رأسية" />
 		<control text="إيضاح" />
-		<control text=":تردد _أخذ العينات" />
+		<control text=":تردد أخذ العينات" />
 		<control text=":الفترة بين العينات" />
 		<control />
 		<control />
@@ -3706,7 +3707,7 @@
 		<control text=":ال_عرض" />
 		<control text="تحديد اللون..." />
 		<control />
-		<control text="_إزالة" />
+		<control text="إزالة" />
 	</dialog>
 	<dialog name="CSecureRuleDlg" cookie="BuStCoStEdBuStEdEdEdEdStEdEdEdEdBuEdBuBuBuBuEdBuBuStCoStCoEdStEdStEdStBuBu" caption="قاعدة الأمان">
 		<control text=":ال_قاعدة" />
@@ -3733,7 +3734,7 @@
 		<control text="قائمة ممنوعة الملف:" />
 		<control />
 		<control text="تصفح" />
-		<control text="_:خيارات" />
+		<control text=":خيارات" />
 		<control text=":الإجراء" />
 		<control text="بدون|قبول|رفض" />
 		<control text=":الإنتهاء" />
@@ -3786,8 +3787,8 @@
 	<dialog name="CShareManagerDlg" cookie="StSyBuBuBuBu" caption="إدارة مجلد المشاركة">
 		<control text="هذه هي قائمة المجلدات في مكتبتك . يمكنك أن تضيف و أن تزيل المجلدات باستخدام الأزرار التي على اليسار . عندما تضيف أي مجلد جديد هو أصلا للمشاركة مع المستخدمين الآخرين ، يمكنك أن تزيله من مكتبة شير-أزا متى ما تريد" />
 		<control />
-		<control text="_إضافة..." />
-		<control text="_إزالة" />
+		<control text="إضافة..." />
+		<control text="إزالة" />
 		<control text="حسنا" />
 		<control text="إلغاء الأمر" />
 	</dialog>
@@ -3797,7 +3798,7 @@
 		<control />
 		<control />
 		<control />
-		<control text="Include _myself as a fixed source in the URL" />
+		<control text="Include myself as a fixed source in the URL" />
 		<control text="إلغاء الأمر" />
 	</dialog>
 	<dialog name="CURLExportDlg" cookie="StEdStCoStCoBuBumsBu" caption="تصدير الروابط">
@@ -3822,11 +3823,11 @@
 		<control />
 		<control />
 		<control text="Select the action you would like to take:" />
-		<control text="_تحميل الان" />
-		<control text="_البحث عن ملف" />
+		<control text="تحميل الان" />
+		<control text="البحث عن ملف" />
 		<control text="إلغاء الأمر" />
-		<control text="_تذكر اختياري في المرة القادمة" />
-		<control text="شاشة التحميل _افتح نافذة " />
+		<control text="تذكر اختياري في المرة القادمة" />
+		<control text="شاشة التحميل افتح نافذة " />
 	</dialog>
 	<dialog name="CBitprintsDownloadDlg" cookie="StStmsBuSySt" caption="Downloading Metadata...">
 		<control />
@@ -3919,8 +3920,8 @@
 		<control text="Description:" />
 		<control />
 		<control text="حذف|_Back" />
-		<control text="_Next|Export..." />
-		<control text="_إلغاء الأمر" />
+		<control text="Next|Export..." />
+		<control text="إلغاء الأمر" />
 	</dialog>
 	<dialog name="CTorrentSeedDlg" cookie="StBuBuBuStms" caption=" فتح ملف Torrent">
 		<control text="You have opened a BitTorrent torrent file. Would you like to download its contents, or re-seed it?" />
@@ -3940,7 +3941,7 @@
 		<control />
 		<control />
 		<control text="Tracker:" />
-		<control text="_Current Tracker:" />
+		<control text="Current Tracker:" />
 		<control text="Seeds (Complete):" />
 		<control text="Peers (Incomplete):" />
 		<control text="Tracker Mode:" />
@@ -3951,17 +3952,17 @@
 	</dialog>
 	<!-- Missing Dialogs "CTorrentGeneralPage" "CDownloadEditPage" "CDownloadActionsPage"-->
 	<dialog name="CDownloadGroupDlg" cookie="BuEdBuEdBuBuBuCoBuBuBuCoStBuBu" caption="Download Group Properties">
-		<control text="_Group Name:" />
+		<control text="Group Name:" />
 		<control />
-		<control text="_Completed File Folder:" />
+		<control text="Completed File Folder:" />
 		<control />
 		<control />
 		<control />
-		<control text="_Auto-Filters:" />
+		<control text="Auto-Filters:" />
 		<control />
 		<control text="إ_ضافة" />
 		<control text="إ_زالة" />
-		<control text="_Types of Files:" />
+		<control text="Types of Files:" />
 		<control />
 		<control text="*Add any download type later." />
 		<control text="حسنا" />
@@ -3971,7 +3972,7 @@
 		<control text="Select an audio visualisation from the list:" />
 		<control />
 		<control text="Footer Display|Full Size Display|Large Display|Medium Display|Small Display" />
-		<control text="_Setup..." />
+		<control text="Setup..." />
 		<control text="حسنا" />
 		<control text="إلغاء الأمر" />
 	</dialog>
@@ -3979,7 +3980,7 @@
 		<control text="A new version of Envy is now available. Would you like to upgrade?" />
 		<control text="To update now, the upgrade installer will simply be added to your download queue." />
 		<control text="Don't check for new versions" />
-		<control text="_رفع الملفات الان" />
+		<control text="رفع الملفات الان" />
 		<control text="إلغاء الأمر" />
 	</dialog>
 	<dialog name="CDecodeMetadataDlg" cookie="StCoBuBuBuStStBuBu" caption="Metadata Localisation">

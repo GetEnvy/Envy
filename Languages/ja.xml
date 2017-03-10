@@ -3,7 +3,7 @@
 
 <!-- Envy Default Japanese Skin File -->
 
-<!-- Translation based on default en.xml r16 --> <!-- (Shareaza 2.2.0.2) -->
+<!-- Translation based on default en.xml r20 --> <!-- (Shareaza 2.2.0.2) -->
 <!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -1222,6 +1222,7 @@
 		<item id="ID_LIBRARY_FOLDER_PROPERTIES" text="アルバムプロパティ"/>
 	</menu>
 	<menu name="CLibraryHistoryPanel">
+		<item id="ID_LIBRARY_SHOW_FILE" text="_Show in Library"/>
 		<item id="ID_LIBRARY_CLEAR_HISTORY" text="Clear from _History"/>
 		<item id="ID_LIBRARY_CLEAR_HISTORY_ALL" text="全てクリア"/>
 	</menu>
@@ -3587,7 +3588,7 @@
 		<control text="設定..."/>
 		<control text="更に追加"/>
 	</dialog>
-	<dialog name="CAdvancedSettingsPage" cookie="SyBuStEdmsEdCoBuBu" caption="高度設定">
+	<dialog name="CAdvancedSettingsPage" cookie="SyBuStEdmsEdCoBuBuStEd" caption="高度設定">
 		<control/>
 		<control text="設定プロパティ:"/>
 		<control text="値:"/>
@@ -3597,6 +3598,8 @@
 		<control/>
 		<control/>
 		<control text="デフォルトに戻す"/>
+		<control/>
+		<control/>
 	</dialog>
 	<dialog name="CProtocolsSettingsPage" cookie="BuSy" caption="プロトコル">
 		<control text="Envy一般プロトコル構造エクスプローラ:"/>

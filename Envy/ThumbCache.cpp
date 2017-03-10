@@ -37,7 +37,7 @@ static char THIS_FILE[] = __FILE__;
 
 void CThumbCache::InitDatabase()
 {
-	unique_ptr< CDatabase > db( theApp.GetDatabase( DB_THUMBS ) );
+	augment::auto_ptr< CDatabase > db( theApp.GetDatabase( DB_THUMBS ) );
 	if ( ! *db )
 	{
 		TRACE( "CThumbCache::InitDatabase : Database error: %s\n", (LPCSTR)CT2A( db->GetLastErrorMessage() ) );
@@ -86,7 +86,7 @@ BOOL CThumbCache::Load(LPCTSTR pszPath, CImageFile* pImage)
 	}
 
 	// Load file info from database
-	unique_ptr< CDatabase > db( theApp.GetDatabase( DB_THUMBS ) );
+	augment::auto_ptr< CDatabase > db( theApp.GetDatabase( DB_THUMBS ) );
 	if ( ! *db )
 	{
 		TRACE( "CThumbCache::InitDatabase : Database error: %s\n", (LPCSTR)CT2A( db->GetLastErrorMessage() ) );
@@ -138,7 +138,7 @@ BOOL CThumbCache::Load(LPCTSTR pszPath, CImageFile* pImage)
 
 void CThumbCache::Delete(LPCTSTR pszPath)
 {
-	unique_ptr< CDatabase > db( theApp.GetDatabase( DB_THUMBS ) );
+	augment::auto_ptr< CDatabase > db( theApp.GetDatabase( DB_THUMBS ) );
 	if ( ! *db )
 	{
 		TRACE( "CThumbCache::InitDatabase : Database error: %s\n", (LPCSTR)CT2A( db->GetLastErrorMessage() ) );
@@ -175,7 +175,7 @@ BOOL CThumbCache::Store(LPCTSTR pszPath, CImageFile* pImage)
 		return FALSE;
 	}
 
-	unique_ptr< CDatabase > db( theApp.GetDatabase( DB_THUMBS ) );
+	augment::auto_ptr< CDatabase > db( theApp.GetDatabase( DB_THUMBS ) );
 	if ( ! *db )
 	{
 		TRACE( "CThumbCache::InitDatabase : Database error: %s\n", (LPCSTR)CT2A( db->GetLastErrorMessage() ) );

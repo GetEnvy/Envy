@@ -153,10 +153,15 @@
 #define _AFX_NO_MFC_CONTROLS_IN_DIALOGS
 
 // Test deprecated c++ features for future visual studio
-// ToDo: Convert std::auto_ptr to std::unique_ptr for VS2010+
+// ToDo: Verify augment::auto_ptr or std::unique_ptr for VS2010+
 //#ifndef _HAS_AUTO_PTR_ETC
 //#define _HAS_AUTO_PTR_ETC 0
 //#endif
+
+// Workarounds for legacy compilers (No C++11, use std::tr1:: for VS2008sp1)
+#if defined(_MSC_VER) && (_MSC_VER < 1600)
+#define VS2008
+#endif
 
 #pragma warning ( push, 0 )		// Suppress Microsoft warnings
 
@@ -218,7 +223,7 @@
 #include <powrprof.h>			// Power policy applicator
 
 // (Windows SDK 7.0 or later, do not assume VS2008)
-#if defined(_MSC_VER) && (_MSC_VER >= 1600)
+#ifndef VS2008
 #include <propkey.h>			// PKEY_Title (For CreateShellLink)		#ifdef _INC_PROPKEY
 #include <propvarutil.h>		// InitPropVariantFromString (For CreateShellLink)	Requires XP sp2
 #endif
@@ -247,13 +252,18 @@
 //#include <deque>
 //#include <stack>
 
-using namespace std::tr1::placeholders;			// For std::bind _1, std::placeholders:: but tr1 for VS2008
+// For std::bind _1, std::placeholders:: but tr1 for VS2008
+#ifndef VS2008
+using namespace std::placeholders;
+#else	// VS2008~
+using namespace std::tr1::placeholders;
+#endif
 
 //
 // C++11
 //
 
-//#if defined(_MSC_VER) && (_MSC_VER >= 1600)	// VS2010 for C++0x
+//#ifndef VS2008	// VS2010 for C++0x
   //#include <forward_list>
   //#if (_MSC_VER >= 1700)	// VS2012 for C++11
 //#endif
@@ -276,7 +286,7 @@ using namespace std::tr1::placeholders;			// For std::bind _1, std::placeholders
 //
 
 // Handle static_assert(false,"text") prior to VS2010
-#if defined(_MSC_VER) && (_MSC_VER < 1600)
+#ifdef VS2008
 	#ifdef _STATIC_ASSERT( expr )			// VS2008
 		#define static_assert( expr, text ) _STATIC_ASSERT( expr )
 	#else
@@ -298,22 +308,25 @@ using namespace std::tr1::placeholders;			// For std::bind _1, std::placeholders
 // However simply using standard min/max templates/macros introduces runtime bugs.
 #include "MinMax.h"
 
-#if defined(_MSC_VER) && (_MSC_VER < 1600) && (_MSC_VER >= 1500)		// Work-around for VC9 (VS2008) where
+#if defined(VS2008) && (_MSC_VER >= 1500)		// Work-around for VC9 (VS2008) where
 	#pragma warning ( pop )				// a (pop) is ifdef'd out in stdio.h
 #endif
 
 //#pragma warning ( pop )				// Restore warnings
 
-#include "Augment/IUnknownImplementation.hpp"	// For UPnPFinder
-#include "Augment/auto_array.hpp"
-using augment::IUnknownImplementation;
-using augment::auto_array;
-#if !defined(_MSC_VER) || (_MSC_VER >= 1600)	// VS2010+
-using std::unique_ptr;
-#else	// VS2008
-//#include "Augment/auto_ptr.hpp"
+#include "Augment/Augment.hpp"
+//#include "Augment/IUnknownImplementation.hpp"	// For UPnPFinder
+//#include "Augment/auto_array.hpp"
+//#include "Augment/auto_ptr.hpp"				// Legacy auto_ptr fix (ToDo: std::unique_ptr without runtime errors VS2010+)
+//using augment::implicit_cast;
 using augment::auto_ptr;
-#define unique_ptr auto_ptr
+using augment::auto_array;
+using augment::IUnknownImplementation;	// For UPnPFinder
+
+#ifdef VS2008	// VS2008~
+//#include "Augment/auto_ptr.hpp"
+#define std::unique_ptr augment::auto_ptr
+#define std::shared_ptr std::tr1::shared_ptr
 #endif
 
 #include "../HashLib/HashLib.h"
@@ -695,8 +708,8 @@ private:
 	CGuarded& operator=(const CGuarded&);
 };
 
-
-typedef std::tr1::shared_ptr< CCriticalSection > CCriticalSectionPtr;		// For Connection.h, was boost::shared_ptr, is std::shared_ptr but tr1 for VS2008
+// For Connection.h, was boost::shared_ptr, std::tr1::shared_ptr defined above for VS2008
+typedef std::shared_ptr< CCriticalSection > CCriticalSectionPtr;
 
 template< typename T, typename L >
 class CLocked

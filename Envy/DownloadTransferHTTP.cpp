@@ -1,7 +1,7 @@
 //
 // DownloadTransferHTTP.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
+// This file is part of Envy (getenvy.com) © 2016-2017
 // Portions copyright PeerProject 2008-2016 and Shareaza 2002-2008
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -287,7 +287,8 @@ BOOL CDownloadTransferHTTP::SendRequest()
 	CString strLine;
 
 	CEnvyURL pURL;
-	if ( ! pURL.Parse( m_pSource->m_sURL, FALSE ) || pURL.m_nProtocol != PROTOCOL_HTTP ) return FALSE;
+	if ( ! pURL.Parse( m_pSource->m_sURL, FALSE ) || pURL.m_nProtocol != PROTOCOL_HTTP )
+		return FALSE;
 
 	if ( m_bTigerFetch )
 	{
@@ -324,6 +325,9 @@ BOOL CDownloadTransferHTTP::SendRequest()
 	else if ( m_bMetaFetch )
 		Write( _P("Accept: text/xml\r\n") );
 
+	if ( m_bWantBackwards && Settings.Downloads.AllowBackwards )
+		Write( _P("Accept-Encoding: backwards\r\n") );
+
 	if ( m_nOffset != SIZE_UNKNOWN && ! m_bTigerFetch && ! m_bMetaFetch )
 	{
 		if ( m_nLength == SIZE_UNKNOWN || m_nLength == 0 || m_nOffset + m_nLength == m_pDownload->m_nSize )
@@ -337,9 +341,6 @@ BOOL CDownloadTransferHTTP::SendRequest()
 	{
 		Write( _P("Range: bytes=0-\r\n") );
 	}
-
-	if ( m_bWantBackwards && Settings.Downloads.AllowBackwards )
-		Write( _P("Accept-Encoding: backwards\r\n") );
 
 	strLine = Settings.SmartAgent();
 
@@ -375,6 +376,14 @@ BOOL CDownloadTransferHTTP::SendRequest()
 			Write( _P("\r\n") );
 		}
 	}
+
+	// ToDo: Browse PrivateKey  See: http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html
+	//if ( ! m_sKey.IsEmpty() )
+	//{
+	//	Write( _P("Authorization: :") );
+	//	Write( m_sKey );
+	//	Write( _P("\r\n") );
+	//}
 
 	Write( _P("X-Queue: 0.1\r\n") );
 

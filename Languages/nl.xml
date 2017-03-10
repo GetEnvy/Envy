@@ -3,7 +3,7 @@
 
 <!-- Envy Default Dutch Skin File -->
 
-<!-- Translation based on default en.xml r16 -->
+<!-- Translation based on default en.xml r20 -->
 <!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -1282,6 +1282,7 @@
 		<item id="ID_LIBRARY_FOLDER_PROPERTIES" text="Album_eigenschappen"/>
 	</menu>
 	<menu name="CLibraryHistoryPanel">
+		<item id="ID_LIBRARY_SHOW_FILE" text="_Show in Library"/>
 		<item id="ID_LIBRARY_CLEAR_HISTORY" text="Clear from _History"/>
 		<item id="ID_LIBRARY_CLEAR_HISTORY_ALL" text="_Alles wissen"/>
 	</menu>
@@ -3793,7 +3794,7 @@
 		<control text="Instellingen..."/>
 		<control text="Meer..."/>
 	</dialog>
-	<dialog name="CAdvancedSettingsPage" cookie="SyBuStEdmsEdCoBuBu" caption="Geadvanceerd">
+	<dialog name="CAdvancedSettingsPage" cookie="SyBuStEdmsEdCoBuBuStEd" caption="Geadvanceerd">
 		<control/>
 		<control text="Eigenschappen van de instelling:"/>
 		<control text="Waarde:"/>
@@ -3803,6 +3804,8 @@
 		<control/>
 		<control/>
 		<control text="Herstel Verzuim"/>
+		<control/>
+		<control/>
 	</dialog>
 	<dialog name="CProtocolsSettingsPage" cookie="BuSy" caption="Protocollen">
 		<control text="Envy's algemene architectuur protocolverkenner:"/>

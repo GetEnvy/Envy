@@ -172,7 +172,7 @@ inline POSITION CXMLElement::GetAttributeIterator() const
 
 inline CXMLAttribute* CXMLElement::GetNextAttribute(POSITION& pos) const
 {
-	CXMLAttribute* pAttribute;
+	CXMLAttribute* pAttribute = NULL;
 	CString strName;
 
 	m_bOrdered ?

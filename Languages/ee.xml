@@ -3,7 +3,7 @@
 
 <!-- Envy Default Estonian Skin File -->
 
-<!-- Translation based on default en.xml r16 --> <!-- (Shareaza 2.2.2.9) -->
+<!-- Translation based on default en.xml r20 --> <!-- (Shareaza 2.2.2.9) -->
 <!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -304,7 +304,7 @@
 	</toolbar>
 	<!-- MEDIA WINDOW -->
 	<toolbar name="CMediaFrame.Basic">
-		<button id="ID_MEDIA_PLAY" text="Mängi&#160;&#160;&#160;"/>
+		<button id="ID_MEDIA_PLAY" text="Mängi&#160; &#160;"/>
 		<button id="ID_MEDIA_PAUSE" text="Paus" visible="false"/>
 		<button id="ID_MEDIA_STOP" text="Stop"/>
 		<separator/>
@@ -321,7 +321,7 @@
 		<button id="ID_MEDIA_PLAYLIST" text="Playlist"/>
 	</toolbar>
 	<toolbar name="CMediaFrame">
-		<button id="ID_MEDIA_PLAY" text="Mängi&#160;&#160;&#160;"/>
+		<button id="ID_MEDIA_PLAY" text="Mängi&#160; &#160;"/>
 		<button id="ID_MEDIA_PAUSE" text="Paus" visible="false"/>
 		<button id="ID_MEDIA_STOP" text="Stop"/>
 		<separator/>
@@ -1220,6 +1220,7 @@
 		<item id="ID_LIBRARY_FOLDER_PROPERTIES" text="_Albumi Omadused"/>
 	</menu>
 	<menu name="CLibraryHistoryPanel">
+		<item id="ID_LIBRARY_SHOW_FILE" text="_Show in Library"/>
 		<item id="ID_LIBRARY_CLEAR_HISTORY" text="Clear from _History"/>
 		<item id="ID_LIBRARY_CLEAR_HISTORY_ALL" text="Puhasta _Kõik"/>
 	</menu>
@@ -3544,7 +3545,7 @@
 		<control text="Seade..."/>
 		<control text="Otsi lisaks"/>
 	</dialog>
-	<dialog name="CAdvancedSettingsPage" cookie="SyBuStEdmsEdCoBuBu" caption="Täpsem">
+	<dialog name="CAdvancedSettingsPage" cookie="SyBuStEdmsEdCoBuBuStEd" caption="Täpsem">
 		<control/>
 		<control text="Kirjeldus:"/>
 		<control text="Seadete Omadused:"/>
@@ -3554,6 +3555,8 @@
 		<control/>
 		<control/>
 		<control text="Taasta Vaikimisi"/>
+		<control/>
+		<control/>
 	</dialog>
 	<dialog name="CProtocolsSettingsPage" cookie="BuSy" caption="Protolollid">
 		<control text="Envy Üldehituse Protokollide Teave:"/>

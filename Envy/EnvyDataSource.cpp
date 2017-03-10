@@ -136,7 +136,7 @@ UINT AsyncFileOperationThread(LPVOID param)
 	// Shell file operations
 	SHFILEOPSTRUCT sFileOp = {
 		pAFOP->hWnd,
-		( bCopy ? FO_COPY : FO_MOVE ),
+		(UINT)( bCopy ? FO_COPY : FO_MOVE ),
 		pAFOP->sFrom.GetData(),
 		pAFOP->sTo.GetData(),
 		FOF_ALLOWUNDO,
@@ -505,7 +505,7 @@ BOOL CEnvyDataSource::DropToFolder(IDataObject* pIDataObject, DWORD grfKeyState,
 		 size < sizeof( DROPFILES ) || size > 10000000 )
 		return FALSE;
 
-	unique_ptr<AsyncFileOperationParams> pAFOP( new AsyncFileOperationParams );
+	augment::auto_ptr<AsyncFileOperationParams> pAFOP( new AsyncFileOperationParams );
 	if ( ! pAFOP.get() )
 		return FALSE;
 

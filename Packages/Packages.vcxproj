@@ -19,28 +19,28 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectName>SkinInstaller</ProjectName>
+    <ProjectName>Packages</ProjectName>
     <ProjectGuid>{CAA6FCC8-27B1-42B9-B647-976E7BE79C70}</ProjectGuid>
-    <RootNamespace>SkinInstaller</RootNamespace>
+    <RootNamespace>Packages</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v140_xp</PlatformToolset>
+    <PlatformToolset>v141_xp</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v140_xp</PlatformToolset>
+    <PlatformToolset>v141_xp</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -244,13 +244,13 @@
   <ItemGroup>
     <ClCompile Include="Extract.c" />
     <ClCompile Include="Registry.c" />
-    <ClCompile Include="Skin.c" />
+    <ClCompile Include="Packages.c" />
     <ClCompile Include="Utils.c" />
     <ClCompile Include="Window.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Resource.h" />
-    <ClInclude Include="Skin.h" />
+    <ClInclude Include="Packages.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Resource.rc" />
@@ -258,7 +258,7 @@
   <ItemGroup>
     <None Include="Res\Banner.bmp" />
     <None Include="Res\Envy.ico" />
-    <None Include="Res\Skin.ico" />
+    <None Include="Res\Packages.ico" />
     <None Include="Manifest.xml" />
   </ItemGroup>
   <ItemGroup>

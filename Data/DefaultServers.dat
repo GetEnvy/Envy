@@ -1,15 +1,23 @@
 
-E*91.200.42.46:1176	# eMule Security No1 (eMule-Security.org)
-E 91.200.42.47:3883	# eMule Security No2
-E 91.200.42.119:9939	# eMule Security No3
-E*193.169.86.73:4184	# TV Underground No1
-E 176.103.48.36:4184	# TV Underground
-E*83.233.30.55:4500	# Master Server 1
-E 83.233.30.128:4500	# Master Server 7
-E 88.191.81.111:7111	# Peerates.net
+E*176.103.48.36:4184	# TV Underground
+E 213.152.168.189:8593	# eMule Security (eMule-Security.org)
+E 176.103.56.135:2442	# eDonkey Server No2
+E 176.103.56.98:2442	# eDonkey Server No1
 E 195.154.83.5:7111	# Peerates.net
-E 94.75.216.6:4666	# Emule Server No1
-E 212.63.206.35:4242	# eDonkeyServer No2
+# 212.83.184.152:7111	# PeerBooter
+
+# Defunct:
+# 193.169.86.73:4184	# TV Underground No1
+# 91.200.42.46:1176	# eMule Security No1
+# 91.200.42.47:3883	# eMule Security No2
+# 91.200.42.119:9939	# eMule Security No3
+# 77.120.115.66:5041	# eMule Security No4
+# 94.75.216.6:4666	# Emule Server No1
+# 83.233.30.55:4500	# Master Server 1
+# 83.233.30.128:4500	# Master Server 7
+# 88.191.81.111:7111	# Peerates.net
+# 176.103.56.135:2442	# eDonkey Server No2
+# 212.63.206.35:4242	# eDonkey Server No2
 
 B router.bittorrent.com:6881
 B router.utorrent.com:6881
@@ -26,4 +34,7 @@ B dht.aelitis.com:6881	# Vuze
 # K	KAD node
 # X	Bad IP
 
-# Update Feb.2012 (Oct.2015)
+# See http://www.emule-security.org/serverlist/
+# -or http://edk.peerates.net/serveurs/serveurs-actifs
+
+# Updated Feb.2017 (From Feb.2012)

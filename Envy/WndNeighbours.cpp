@@ -1,7 +1,7 @@
 //
 // WndNeighbours.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
+// This file is part of Envy (getenvy.com) © 2016-2017
 // Portions copyright PeerProject 2008-2015 and Shareaza 2002-2007
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -348,7 +348,7 @@ void CNeighboursWnd::Update()
 					IDS_NEIGHBOUR_ED2K_LOWID : IDS_NEIGHBOUR_ED2K_HIGHID : IDS_NEIGHBOUR_ED2K_SERVER );
 				pItem->Set( COL_CLIENT, str );
 
-				pItem->Set( COL_MODE, L"eDonkey2000" );
+				pItem->Set( COL_MODE, L"ED2K" );
 			}
 			else if ( pNeighbour->m_nProtocol == PROTOCOL_DC )
 			{
@@ -357,8 +357,30 @@ void CNeighboursWnd::Update()
 				pItem->Set( COL_MODE, L"NMDC Hub" );		// ToDo: Support ADC mode hubs (adc://)
 			}
 		}
+		else	// Connecting
+		{
+			switch ( pNeighbour->m_nProtocol )
+			{
+			case PROTOCOL_G2:
+				pItem->Set( COL_MODE, L"G2" );
+				break;
+			case PROTOCOL_G1:
+				pItem->Set( COL_MODE, L"G1" );
+				break;
+			case PROTOCOL_ED2K:
+				pItem->Set( COL_MODE, L"ED2K" );
+				break;
+			case PROTOCOL_DC:
+				pItem->Set( COL_MODE, L"DC++" );
+				break;
+			}
+		}
 
-		pItem->Set( COL_NAME, pNeighbour->m_pProfile ? pNeighbour->m_pProfile->GetNick() : pNeighbour->m_sServerName );
+		CString strName = pNeighbour->m_pProfile ? pNeighbour->m_pProfile->GetNick() : pNeighbour->m_sServerName;
+		if ( pNeighbour->m_nProtocol == PROTOCOL_ED2K && strName.IsEmpty() )
+			strName = Neighbours.GetServerName( pNeighbour->m_sAddress );	// Display fix  (ToDo: Fix properly elsewhere)
+
+		pItem->Set( COL_NAME, strName );
 
 		pItem->Set( COL_COUNTRY, pNeighbour->m_sCountry );
 		const int nFlagIndex = Flags.GetFlagIndex( pNeighbour->m_sCountry );
@@ -650,13 +672,13 @@ void CNeighboursWnd::OnSkinChange()
 	Skin.CreateToolBar( L"CNeighboursWnd", &m_wndToolBar );
 	m_wndList.SetFont( &theApp.m_gdiFont );
 
-	CoolInterface.LoadIconsTo( m_gdiImageList, protocolIDs );
+	CoolInterface.LoadIconsTo( m_gdiImageList, protocolIDs, 0, LVSIL_SMALL, Flags.Width, ( Settings.Skin.RowSize > 17 ? (int)Settings.Skin.RowSize - 1 : 16 ) );
 	CoolInterface.LoadFlagsTo( m_gdiImageList );
 
 	m_wndList.SetImageList( &m_gdiImageList, LVSIL_SMALL );
 
-	if ( m_wndList.SetBkImage( Skin.GetWatermark( L"CNeighboursWnd" ) ) || m_wndList.SetBkImage( Skin.GetWatermark( L"System.Windows" ) ) )	// Images.m_bmSystemWindow.m_hObject
-		m_wndList.SetExtendedStyle( LVS_EX_FULLROWSELECT|LVS_EX_HEADERDRAGDROP|LVS_EX_LABELTIP|LVS_EX_SUBITEMIMAGES );	// No LVS_EX_DOUBLEBUFFER	-LVS_EX_TRANSPARENTBKGND ?
+	if ( m_wndList.SetBkImage( Skin.GetWatermark( L"CNeighboursWnd" ) ) || m_wndList.SetBkImage( Skin.GetWatermark( L"System.Windows" ) ) )		// Images.m_bmSystemWindow.m_hObject
+		m_wndList.SetExtendedStyle( LVS_EX_FULLROWSELECT|LVS_EX_HEADERDRAGDROP|LVS_EX_LABELTIP|LVS_EX_SUBITEMIMAGES );		// No LVS_EX_DOUBLEBUFFER	(LVS_EX_TRANSPARENTBKGND ?)
 	else
 		m_wndList.SetBkColor( Colors.m_crWindow );
 

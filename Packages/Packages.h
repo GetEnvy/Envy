@@ -1,5 +1,5 @@
 //
-// Skin.h
+// Packages.h
 //
 // This file is part of Envy (getenvy.com) © 2016
 //
@@ -23,10 +23,10 @@
 #include <errno.h>
 #include "Resource.h"
 
-#define VERSION				L"1.0.0.0"
-#define SKIN_MAIN_HWND		L"EnvyMainWnd"
-#define SKIN_SKIN_TITLE 	L"Envy Skin Installer"
-#define SKIN_PACKAGE_TITLE	L"Envy Package Installer"
+#define VERSION        L"1.0"
+#define MAIN_HWND      L"EnvyMainWnd"
+#define SKIN_TITLE     L"Envy Skin Installer"
+#define PACKAGE_TITLE  L"Envy Package Installer"
 
 enum
 {

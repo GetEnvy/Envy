@@ -1,7 +1,7 @@
 //
 // FragmentedFile.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
+// This file is part of Envy (getenvy.com) © 2016-2017
 // Portions copyright PeerProject 2008-2014 and Shareaza 2002-2007
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -175,6 +175,10 @@ BOOL CFragmentedFile::Open(LPCTSTR pszFile, QWORD nOffset, QWORD nLength, BOOL b
 
 		if ( pszName )
 			part.m_sName = SafeFilename( pszName, true );
+
+		if ( part.m_nOffset && part.m_sName.GetLength() > 16 && StartsWith( part.m_sName, _P( L"_____padding_file_" ) ) ||
+			 ( Settings.BitTorrent.SkipTrackerFiles && ( StartsWith( part.m_sName, _P( L"Torrent downloaded from " ) ) || StartsWith( part.m_sName, _P( L"Torrent_downloaded_from_" ) ) ) ) )
+			part.m_nPriority = prUnwanted;
 
 		m_oFile.push_back( part );
 		pItr = --m_oFile.end();

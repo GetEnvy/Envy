@@ -575,7 +575,7 @@ void CDiscoveryServices::Serialize(CArchive& ar)
 
 		for ( DWORD_PTR nCount = ar.ReadCount() ; nCount > 0 ; nCount-- )
 		{
-			unique_ptr< CDiscoveryService > pService( new CDiscoveryService() );
+			augment::auto_ptr< CDiscoveryService > pService( new CDiscoveryService() );
 			try
 			{
 				pService->Serialize( ar, nVersion );
@@ -916,7 +916,7 @@ BOOL CDiscoveryServices::Update()
 // You should never query server.met files, because of the load it would create.
 // This is public, and will be called quite regularly.
 
-BOOL CDiscoveryServices::Execute(BOOL bDiscovery, PROTOCOLID nProtocol, USHORT nForceDiscovery)
+BOOL CDiscoveryServices::Execute(BOOL bDiscovery, PROTOCOLID nProtocol /*PROTOCOL_NULL*/, USHORT nForceDiscovery /*0*/)
 {
 	//	bDiscovery:
 	//		TRUE	- Want Discovery(GEC, UHC, MET)
@@ -1494,9 +1494,8 @@ BOOL CDiscoveryServices::RunWebCacheGet(BOOL bCaches)
 				{
 					nCurrentLeaves = nCurrentLeavesTmp;
 				}
-				else
+				else	// Bad current leaves format
 				{
-					// Bad current leaves format
 					return FALSE;
 				}
 			}
@@ -1521,9 +1520,8 @@ BOOL CDiscoveryServices::RunWebCacheGet(BOOL bCaches)
 				{
 					tUptime = tUptimeTmp;
 				}
-				else
+				else	// Bad uptime format
 				{
-					// Bad uptime format
 					return FALSE;
 				}
 			}
@@ -1538,9 +1536,8 @@ BOOL CDiscoveryServices::RunWebCacheGet(BOOL bCaches)
 				{
 					nLeafLimit = nLeafLimitTmp;
 				}
-				else
+				else	// Bad uptime format
 				{
-					// Bad uptime format
 					return FALSE;
 				}
 			}
@@ -2073,6 +2070,7 @@ void CDiscoveryServices::OnResolve(PROTOCOLID nProtocol, LPCTSTR szAddress, cons
 			pService->OnFailure();
 	}
 }
+
 
 //////////////////////////////////////////////////////////////////////
 // CDiscoveryService construction

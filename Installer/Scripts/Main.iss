@@ -200,14 +200,14 @@ Source: "Envy\Release x64\Envy.exe"; 	DestDir: "{app}"; Flags: overwritereadonly
 Source: "Envy\Release Win32\Envy.exe"; 	DestDir: "{app}"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension ; Check: not Install64Bit
 Source: "TorrentEnvy\Release x64\TorrentEnvy.exe";	DestDir: "{app}"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension ; Check: Install64Bit
 Source: "TorrentEnvy\Release Win32\TorrentEnvy.exe";	DestDir: "{app}"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension ; Check: not Install64Bit
-Source: "SkinInstaller\Release x64\SkinInstaller.exe";	DestDir: "{app}"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension ; Check: Install64Bit
-Source: "SkinInstaller\Release Win32\SkinInstaller.exe";DestDir: "{app}"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension ; Check: not Install64Bit
+Source: "Packages\Release x64\Packages.exe";	DestDir: "{app}"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension ; Check: Install64Bit
+Source: "Packages\Release Win32\Packages.exe";DestDir: "{app}"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension ; Check: not Install64Bit
 ;Source: "SkinBuilder\Release x64\SkinBuilder.exe"; 	DestDir: "{app}"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension ; Check: Install64Bit
 ;Source: "SkinBuilder\Release Win32\SkinBuilder.exe"; 	DestDir: "{app}"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension ; Check: not Install64Bit
 #else
 Source: "Envy\{#ConfigurationName} {#PlatformName}\Envy.exe"; 	DestDir: "{app}"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension
 Source: "TorrentEnvy\{#ConfigurationName} {#PlatformName}\TorrentEnvy.exe";	DestDir: "{app}"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension
-Source: "SkinInstaller\{#ConfigurationName} {#PlatformName}\SkinInstaller.exe";	DestDir: "{app}"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension
+Source: "Packages\{#ConfigurationName} {#PlatformName}\Packages.exe";	DestDir: "{app}"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension
 ;Source: "SkinBuilder\{#ConfigurationName} {#PlatformName}\SkinBuilder.exe"; 	DestDir: "{app}"; Flags: overwritereadonly replacesameversion restartreplace uninsremovereadonly sortfilesbyextension
 #endif
 
@@ -519,14 +519,14 @@ Filename: "{app}\Envy.exe"; Parameters: "/RegServer"; WorkingDir: "{app}"
 ;Filename: "{app}\Plugins\MediaPlayer.exe"; Parameters: "/RegServer"; WorkingDir: "{app}"
 
 ; Run the skin installer at end of installation
-Filename: "{app}\SkinInstaller.exe"; Parameters: "/installsilent"; WorkingDir: "{app}"; StatusMsg: "{cm:run_skinexe}"
+Filename: "{app}\Packages.exe"; Parameters: "/installsilent"; WorkingDir: "{app}"; StatusMsg: "{cm:run_skinexe}"
 ; Run Envy at end of installation
 Filename: "{app}\Envy.exe"; Description: "{cm:LaunchProgram,Envy}"; WorkingDir: "{app}"; Flags: postinstall skipifsilent nowait
 
 
 [UninstallRun]
 ; Run the skin installer at start of uninstallation and make sure it only runs once
-Filename: "{app}\SkinInstaller.exe"; Parameters: "/uninstallsilent"; WorkingDir: "{app}"; StatusMsg: "{cm:run_skinexe}"; RunOnceId: "uninstallskinexe"
+Filename: "{app}\Packages.exe"; Parameters: "/uninstallsilent"; WorkingDir: "{app}"; StatusMsg: "{cm:run_skinexe}"; RunOnceId: "uninstallskinexe"
 ;Filename: "{app}\Plugins\WindowsThumbnail.exe"; Parameters: "/UnRegServer"; WorkingDir: "{app}"
 Filename: "{app}\Envy.exe"; Parameters: "/UnRegServer"; WorkingDir: "{app}"
 
@@ -629,7 +629,7 @@ Root: HKCU; Subkey: "Software\Classes\envy"; Flags: dontcreatekey uninsdeletekey
 Root: HKCU; Subkey: "Software\Classes\Envy.*"; Flags: dontcreatekey uninsdeletekey
 Root: HKCU; Subkey: "Software\Classes\Envy.Collection"; Flags: dontcreatekey uninsdeletekey
 Root: HKCU; Subkey: "Software\Classes\Applications\Envy.exe"; Flags: dontcreatekey uninsdeletekey
-Root: HKCU; Subkey: "Software\Classes\Applications\SkinInstaller.exe"; Flags: dontcreatekey uninsdeletekey
+Root: HKCU; Subkey: "Software\Classes\Applications\Packages.exe"; Flags: dontcreatekey uninsdeletekey
 
 Root: HKCU; Subkey: "Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.envy"; Flags: dontcreatekey uninsdeletekey
 Root: HKCU; Subkey: "Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.psk"; Flags: dontcreatekey uninsdeletekey

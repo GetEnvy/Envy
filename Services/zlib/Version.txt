@@ -1,6 +1,6 @@
-1.2.8
+1.2.10
 
-April.2013
+Jan.2017
 
-http://zlib.org
+http://zlib.net
 http://www.winimage.com/zLibDll/minizip.html

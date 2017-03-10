@@ -38,16 +38,15 @@ protected:
 	BOOL		m_bHead;
 	BOOL		m_bConnectHdr;
 	BOOL		m_bKeepAlive;
-	BOOL		m_bHostBrowse;
 	BOOL		m_bDeflate;
 	BOOL		m_bBackwards;
 	BOOL		m_bRange;
 	BOOL		m_bQueueMe;
 	BOOL		m_bNotEnvy;
 	// "Accept" header:
-	// 0 - unknown;
-	// 1 - Gnutella 1 (application/x-gnutella-packets);
-	// 2 - Gnutella 2 (application/x-gnutella2 or application/x-envy).
+	// 0 - unknown
+	// 1 - Gnutella 1 (application/x-gnutella-packets)
+	// 2 - Gnutella 2 (application/x-gnutella2 or application/x-envy)
 	int			m_nAccept;
 	// Gnutella functionality:
 	// 0 - Pure HTTP
@@ -61,6 +60,7 @@ protected:
 	BOOL		m_bMetadata;
 	CString		m_sLocations;
 	CString		m_sRanges;
+	CString		m_sPrivateKey;		// Envy-proposed extension: Browse Private Key
 
 public:
 	virtual void	AttachTo(CConnection* pConnection);

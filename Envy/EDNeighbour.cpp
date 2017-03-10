@@ -1,7 +1,7 @@
 //
 // EDNeighbour.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
+// This file is part of Envy (getenvy.com) © 2016-2017
 // Portions copyright PeerProject 2008-2014 and Shareaza 2002-2008
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -439,8 +439,10 @@ BOOL CEDNeighbour::OnServerIdent(CEDPacket* pPacket)
 		//case ED2K_ST_UDPFLAGS:
 		//	nUDPFlags = pTag.m_nValue;
 		//	break;
-#ifdef _DEBUG
 		default:
+			theApp.Message( MSG_DEBUG, L"Unknown ED2K Server Ident packet from %s (Opcode 0x%x:0x%x)",
+				(LPCTSTR)m_sAddress, (int)pTag.m_nKey, (int)pTag.m_nType );
+#ifdef _DEBUG
 			CString str;
 			str.Format( L"Unknown ED2K Server Ident packet from %s  (Opcode 0x%x:0x%x)",
 				LPCTSTR( m_sAddress ), int( pTag.m_nKey ), int( pTag.m_nType ) );
@@ -449,10 +451,22 @@ BOOL CEDNeighbour::OnServerIdent(CEDPacket* pPacket)
 		}
 	}
 
-	if ( *m_oGUID.begin() == 0x2A2A2A2A )
-		m_sUserAgent = L"eFarm Server";			// Very obsolete http://sourceforge.net/projects/efarm/
-	else
-		m_sUserAgent = L"eDonkey2000 Server";	// protocolNames[ PROTOCOL_ED2K ]
+	// Ineffective?
+	//if ( m_sServerName.IsEmpty() )
+	//{
+	//	// Fix for most common servers: (See DefaultServers.dat)
+	//	if ( ::IsText( m_sAddress, _P( L"176.103.48.36" ) ) )
+	//		m_sServerName = L"TV Underground";
+	//	else if ( ::StartsWith( m_sAddress, _P( L"91.200.42." ) ) )
+	//		m_sServerName = L"eMule Security";
+	//	else if ( ::IsText( m_sAddress, _P( L"195.154.83.5" ) ) )
+	//		m_sServerName = L"Peerates.net";
+	//}
+
+	m_sUserAgent = L"eDonkey2000 Server";		// protocolNames[ PROTOCOL_ED2K ]
+
+	//if ( *m_oGUID.begin() == 0x2A2A2A2A )
+	//	m_sUserAgent = L"eFarm Server";			// Very obsolete http://sourceforge.net/projects/efarm/
 
 	CQuickLock oLock( HostCache.eDonkey.m_pSection );
 

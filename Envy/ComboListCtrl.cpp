@@ -16,7 +16,7 @@
 // (http://www.gnu.org/licenses/agpl.html)
 //
 
-// This file is not used.
+// Note this file is not used.
 // (Extra features not needed by PageTorrentFiles)
 
 //#include "StdAfx.h"
@@ -168,7 +168,7 @@
 //	}
 //}
 //
-//void CComboListCtrl::EnableTips(unique_ptr< CLibraryTipCtrl > pTip)
+//void CComboListCtrl::EnableTips(std::unique_ptr< CLibraryTipCtrl > pTip)
 //{
 //#if !defined(_MSC_VER) || (_MSC_VER >= 1600)		// VS2010+
 //	m_pTip = std::move( pTip );

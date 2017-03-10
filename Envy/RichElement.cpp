@@ -1,7 +1,7 @@
 //
 // RichElement.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
+// This file is part of Envy (getenvy.com) © 2016-2017
 // Portions copyright PeerProject 2008-2015 and Shareaza 2002-2007
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -275,6 +275,20 @@ CSize CRichElement::GetSize() const
 	else if ( m_nType == retIcon )
 	{
 		sz.cx = sz.cy = 16;
+
+		ICONINFO ii;
+		if ( GetIconInfo( (HICON)m_hImage, &ii ) )
+		{
+			BITMAP bmInfo = {};
+			GetObject( ii.hbmColor, sizeof(BITMAP), &bmInfo );
+			if ( bmInfo.bmWidth > 16 )
+				sz.cx = bmInfo.bmWidth;
+			if ( bmInfo.bmHeight > 16 )
+				sz.cy = bmInfo.bmHeight;
+			DeleteObject( ii.hbmColor );
+			DeleteObject( ii.hbmMask );
+		}
+
 		UINT nID = 0;
 		_stscanf( m_sText, L"%u.%li.%li", &nID, &sz.cx, &sz.cy );
 	}

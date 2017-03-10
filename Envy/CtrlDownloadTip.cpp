@@ -837,7 +837,7 @@ void CDownloadTipCtrl::OnPaint(CDC* pDC, CDownloadSource* pSource)
 	if ( nFlagIndex >= 0 )
 	{
 		Flags.Draw( nFlagIndex, pDC->GetSafeHdc(), pt.x, pt.y, Colors.m_crTipBack );
-		pDC->ExcludeClipRect( pt.x, pt.y, pt.x + FLAG_WIDTH, pt.y + 16 );
+		pDC->ExcludeClipRect( pt.x, pt.y, pt.x + Flags.Width, pt.y + 16 );
 	}
 
 	pt.x += 25;

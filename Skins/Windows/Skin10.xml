@@ -9,7 +9,7 @@
  link="http://getenvy.com"
  email="Contact(at)getenvy.com"
  license="Persistent Public Domain (PPD)"
- dependencies="Skin10Frames.xml"
+ dependencies="Skin10Frames.xml,Flags.xml"
  platform="Envy 1.0"
  path="Skin10"
  version="1.0"
@@ -435,11 +435,11 @@
 <target window="CIRCWnd.Panel"/>
 <target window="CLibraryWnd.Panel"/>
 <parts>
- <part name="TopLeft"		rect="0,1,140,25"/>
- <part name="Top"		rect="140,1,20,25"/>
- <part name="TopRight"		rect="170,1,165,25"/>
+ <part name="TopLeft" rect="0,1,140,25"/>
+ <part name="Top" rect="140,1,20,25"/>
+ <part name="TopRight" rect="170,1,165,25"/>
 </parts>
-<caption align="left" rect="20,1,500,21" fontFace="Segoe UI" fontSize="13" fontWeight="Normal" color="0266CC" outlinecolor="FFFFFF" inactivecolor="A0BACC"/>
+<caption rect="20,1,500,21" align="left" fontFace="Segoe UI" fontSize="13" fontWeight="Normal" color="0266CC" outlinecolor="FFFFFF" inactivecolor="A0BACC"/>
 </windowskin>
 
 <windowskin>
@@ -456,17 +456,17 @@
 <target window="CSchedulerWnd.Panel"/>
 <target window="CBrowseHostWnd.Panel"/>
 <parts>
- <part name="TopLeft"		rect="0,1,100,25"/>
- <part name="Top"		rect="100,1,20,25"/>
- <part name="TopRight"		rect="170,1,165,25"/>
- <part name="Close"		rect="334,8,12,12"/>
- <part name="CloseHover"	rect="349,8,12,12"/>
- <part name="CloseDown"		rect="338,7,12,12"/>
+ <part name="TopLeft" rect="0,1,100,25"/>
+ <part name="Top" rect="100,1,20,25"/>
+ <part name="TopRight" rect="170,1,165,25"/>
+ <part name="Close" rect="334,8,12,12"/>
+ <part name="CloseHover" rect="349,8,12,12"/>
+ <part name="CloseDown" rect="338,7,12,12"/>
 </parts>
 <anchors>
  <anchor name="Close" rect="-16,7,12,12"/>
 </anchors>
-<caption align="left" rect="20,1,500,21" fontFace="Segoe UI" fontSize="13" fontWeight="Normal" color="0266CC" outlinecolor="FFFFFF" inactivecolor="A0BACC"/>
+<caption rect="20,1,500,21" align="left" fontFace="Segoe UI" fontSize="13" fontWeight="Normal" color="0266CC" outlinecolor="FFFFFF" inactivecolor="A0BACC"/>
 </windowskin>
 
 </windowskins>

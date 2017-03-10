@@ -1,5 +1,5 @@
 /* inflate.h -- internal inflate state definition
- * Copyright (C) 1995-2009 Mark Adler
+ * Copyright (C) 1995-2009, 2016 Mark Adler
  * For conditions of distribution and use, see copyright notice in zlib.h
  */
 
@@ -18,7 +18,7 @@
 
 /* Possible inflate modes between inflate() calls */
 typedef enum {
-    HEAD,       /* i: waiting for magic header */
+    HEAD = 16180, /* i: waiting for magic header */
     FLAGS,      /* i: waiting for method and flags (gzip) */
     TIME,       /* i: waiting for modification time (gzip) */
     OS,         /* i: waiting for extra flags and operating system (gzip) */
@@ -77,8 +77,9 @@ typedef enum {
         CHECK -> LENGTH -> DONE
  */
 
-/* state maintained between inflate() calls.  Approximately 10K bytes. */
+/* state maintained between inflate() calls.  Approximately 7K bytes. */
 struct inflate_state {
+    z_streamp strm;             /* pointer back to this zlib stream */
     inflate_mode mode;          /* current inflate mode */
     int last;                   /* true if processing last block */
     int wrap;                   /* bit 0 true for zlib, bit 1 true for gzip */

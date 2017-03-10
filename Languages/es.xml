@@ -3,7 +3,7 @@
 
 <!-- Envy Default Spanish Skin File -->
 
-<!-- Translation based on default en.xml r16 -->
+<!-- Translation based on default en.xml r20 -->
 <!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -1278,8 +1278,9 @@
 		<item id="ID_LIBRARY_FOLDER_PROPERTIES" text="_Propiedades de Album"/>
 	</menu>
 	<menu name="CLibraryHistoryPanel">
+		<item id="ID_LIBRARY_SHOW_FILE" text="_Mostrar en Coleccio"/>
 		<item id="ID_LIBRARY_CLEAR_HISTORY" text="_Eliminar de Historia"/>
-		<item id="ID_LIBRARY_CLEAR_HISTORY_ALL" text="Eliminar _Todas"/>
+		<item id="ID_LIBRARY_CLEAR_HISTORY_ALL" text="Eliminar Todas _Historias"/>
 	</menu>
 	<!-- LIBRARY VIEWS -->
 	<menu name="CLibraryTileView">
@@ -3794,7 +3795,7 @@
 		<control text="_Configurar..."/>
 		<control text="Buscar más"/>
 	</dialog>
-	<dialog name="CAdvancedSettingsPage" cookie="SyBuStEdmsEdCoBuBu" caption="Avanzadas">
+	<dialog name="CAdvancedSettingsPage" cookie="SyBuStEdmsEdCoBuBuStEd" caption="Avanzadas">
 		<control/>
 		<control text="Configuración:"/>
 		<control text="Valor:"/>
@@ -3804,6 +3805,8 @@
 		<control/>
 		<control/>
 		<control text="Restaurar"/>
+		<control/>
+		<control/>
 	</dialog>
 	<dialog name="CProtocolsSettingsPage" cookie="BuSy" caption="Protocolos">
 		<control text="Envy Common Architecture Protocol Explorer:"/>

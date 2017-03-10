@@ -126,9 +126,6 @@
     <ClCompile Include="Colors.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ComboListCtrl.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="ComMenu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -1102,10 +1099,10 @@
       <Filter>Source Files\Wizard</Filter>
     </ClCompile>
     <ClCompile Include="Hashes\HashDescriptors.cpp">
-      <Filter>Source Files\Hash algorithms\Policies</Filter>
+      <Filter>Source Files\Hash Algorithms\Policies</Filter>
     </ClCompile>
     <ClCompile Include="Hashes\HashStringConversion.cpp">
-      <Filter>Source Files\Hash algorithms\Policies</Filter>
+      <Filter>Source Files\Hash Algorithms\Policies</Filter>
     </ClCompile>
     <ClCompile Include="PageDownloadActions.cpp">
       <Filter>Source Files\Pages</Filter>
@@ -1650,9 +1647,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Colors.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ComboListCtrl.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ComMenu.h">
@@ -2813,7 +2807,13 @@
     <ClInclude Include="Hashes\ValidationPolicies.hpp">
       <Filter>Header Files\Hash Algorithms\Policies</Filter>
     </ClInclude>
+    <ClInclude Include="Augment\Augment.hpp">
+      <Filter>Header Files\Augment</Filter>
+    </ClInclude>
     <ClInclude Include="Augment\auto_array.hpp">
+      <Filter>Header Files\Augment</Filter>
+    </ClInclude>
+    <ClInclude Include="Augment\auto_ptr.hpp">
       <Filter>Header Files\Augment</Filter>
     </ClInclude>
     <ClInclude Include="Augment\IUnknownImplementation.hpp">

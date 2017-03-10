@@ -3,7 +3,7 @@
 
 <!-- Envy Default Albanian Skin File -->
 
-<!-- Translation based on default en.xml r16 -->
+<!-- Translation based on default en.xml r20 -->
 <!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -294,7 +294,7 @@
 	</toolbar>
 	<!-- MEDIA WINDOW -->
 	<toolbar name="CMediaFrame.Basic">
-		<button id="ID_MEDIA_PLAY" text="Lexo&#160;&#160;&#160;"/>
+		<button id="ID_MEDIA_PLAY" text="Lexo&#160; &#160;"/>
 		<button id="ID_MEDIA_PAUSE" text="Pusho" visible="false"/>
 		<button id="ID_MEDIA_STOP" text="Ndale"/>
 		<separator/>
@@ -311,7 +311,7 @@
 		<button id="ID_MEDIA_PLAYLIST" text="Lista"/>
 	</toolbar>
 	<toolbar name="CMediaFrame">
-		<button id="ID_MEDIA_PLAY" text="Lexo&#160;&#160;&#160;"/>
+		<button id="ID_MEDIA_PLAY" text="Lexo&#160; &#160;"/>
 		<button id="ID_MEDIA_PAUSE" text="Pusho" visible="false"/>
 		<button id="ID_MEDIA_STOP" text="Ndale"/>
 		<separator/>
@@ -1276,6 +1276,7 @@
 		<item id="ID_LIBRARY_FOLDER_PROPERTIES" text="Vetitë e _Albumit"/>
 	</menu>
 	<menu name="CLibraryHistoryPanel">
+		<item id="ID_LIBRARY_SHOW_FILE" text="_Show in Library"/>
 		<item id="ID_LIBRARY_CLEAR_HISTORY" text="Clear from _History"/>
 		<item id="ID_LIBRARY_CLEAR_HISTORY_ALL" text="Pastro _Gjithçka"/>
 	</menu>
@@ -3488,7 +3489,7 @@
 		<control text="_Ndërto..."/>
 		<control text="Gjej më Shumë"/>
 	</dialog>
-	<dialog name="CAdvancedSettingsPage" cookie="SyBuStEdmsEdCoBuBu" caption="Përparime">
+	<dialog name="CAdvancedSettingsPage" cookie="SyBuStEdmsEdCoBuBuStEd" caption="Përparime">
 		<control/>
 		<control text="Vetitë e Vendosjes:"/>
 		<control text="Vlera:"/>
@@ -3498,6 +3499,8 @@
 		<control/>
 		<control/>
 		<control text="Vendos Tipiket"/>
+		<control/>
+		<control/>
 	</dialog>
 	<dialog name="CProtocolsSettingsPage" cookie="BuSy" caption="Protokollet">
 		<control text="Eksploruesi i Protokollit Arkitekturor të Zakontë i Envy-s:"/>

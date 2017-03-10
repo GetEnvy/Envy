@@ -1,7 +1,7 @@
 //
 // Datagrams.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
+// This file is part of Envy (getenvy.com) © 2016-2017
 // Portions copyright PeerProject 2008-2015 and Shareaza 2002-2008
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -681,33 +681,6 @@ BOOL CDatagrams::OnDatagram(const SOCKADDR_IN* pHost, const BYTE* pBuffer, DWORD
 		}
 	}
 
-	// Detect Gnutella 1 packets
-	if ( nLength >= sizeof( GNUTELLAPACKET ) )
-	{
-		const GNUTELLAPACKET* pG1UDP = (const GNUTELLAPACKET*)pBuffer;
-		if ( ( sizeof( GNUTELLAPACKET ) + pG1UDP->m_nLength ) == nLength )
-		{
-			if ( CG1Packet* pPacket = CG1Packet::New( pG1UDP ) )
-			{
-				try
-				{
-					m_nInPackets++;
-
-					bHandled = pPacket->OnPacket( pHost );
-				}
-				catch ( CException* pException )
-				{
-					pException->Delete();
-					DEBUG_ONLY( pPacket->Debug( L"Malformed packet." ) );
-				}
-				pPacket->Release();
-
-				if ( bHandled )
-					return TRUE;
-			}
-		}
-	}
-
 	// Detect Gnutella 2 packets
 	if ( nLength >= sizeof( SGP_HEADER ) )
 	{
@@ -722,6 +695,32 @@ BOOL CDatagrams::OnDatagram(const SOCKADDR_IN* pHost, const BYTE* pBuffer, DWORD
 
 			if ( bHandled )
 				return TRUE;
+		}
+	}
+
+	// Detect Gnutella 1 packets
+	if ( nLength >= sizeof( GNUTELLAPACKET ) )
+	{
+		const GNUTELLAPACKET* pG1UDP = (const GNUTELLAPACKET*)pBuffer;
+		if ( nLength == ( sizeof( GNUTELLAPACKET ) + pG1UDP->m_nLength ) )
+		{
+			if ( CG1Packet* pPacket = CG1Packet::New( pG1UDP ) )
+			{
+				try
+				{
+					m_nInPackets++;
+					bHandled = pPacket->OnPacket( pHost );
+				}
+				catch ( CException* pException )
+				{
+					pException->Delete();
+					DEBUG_ONLY( pPacket->Debug( L"Malformed packet." ) );
+				}
+				pPacket->Release();
+
+				if ( bHandled )
+					return TRUE;
+			}
 		}
 	}
 

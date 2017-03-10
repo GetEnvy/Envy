@@ -1,7 +1,7 @@
 //
 // WndHostCache.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
+// This file is part of Envy (getenvy.com) © 2016-2017
 // Portions copyright PeerProject 2008-2014 and Shareaza 2002-2008
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -203,12 +203,16 @@ void CHostCacheWnd::Update(BOOL bForce)
 		pItem->SetImage( pHost->m_nProtocol );
 		pItem->SetMaskOverlay( pHost->m_bPriority );
 
+		CString strAddress;
+		if ( pHost->m_sAddress.IsEmpty() || pHost->m_pAddress.s_addr != INADDR_ANY )
+			strAddress = inet_ntoa( pHost->m_pAddress );
+
 		if ( pHost->m_sAddress.IsEmpty() )
-			pItem->Set( COL_ADDRESS, L" " + CString( inet_ntoa( pHost->m_pAddress ) ) );
+			pItem->Set( COL_ADDRESS, L" " + strAddress );
 		else if ( pHost->m_pAddress.s_addr == INADDR_ANY )
 			pItem->Set( COL_ADDRESS, L" " + pHost->m_sAddress );
 		else
-			pItem->Set( COL_ADDRESS, L" " + pHost->m_sAddress + L"  (" + CString( inet_ntoa( pHost->m_pAddress ) ) + L")" );
+			pItem->Set( COL_ADDRESS, L" " + pHost->m_sAddress + L"  (" + strAddress + L")" );
 
 		pItem->Format( COL_PORT, L"%hu", pHost->m_nPort );
 
@@ -220,7 +224,12 @@ void CHostCacheWnd::Update(BOOL bForce)
 		CTime pTime( (time_t)pHost->Seen() );
 		pItem->Set( COL_SEEN, pTime.Format( L"%Y-%m-%d %H:%M:%S" ) );
 
-		pItem->Set( COL_NAME, pHost->m_sName );
+		// Display workaround  (ToDo: Fix properly elsewhere)
+		CString strName = pHost->m_sName;
+		if ( pHost->m_nProtocol == PROTOCOL_ED2K && strName.IsEmpty() )
+			strName = Neighbours.GetServerName( pHost->m_sAddress.IsEmpty() ? strAddress : pHost->m_sAddress );
+
+		pItem->Set( COL_NAME, strName );
 		pItem->Set( COL_INFO, pHost->m_sDescription );
 		if ( pHost->m_nDailyUptime )	// Only G1?
 		{
@@ -270,7 +279,7 @@ void CHostCacheWnd::OnSkinChange()
 	Settings.LoadList( L"CHostCacheWnd", &m_wndList );
 	Skin.CreateToolBar( L"CHostCacheWnd", &m_wndToolBar );
 
-	CoolInterface.LoadIconsTo( m_gdiImageList, protocolIDs );
+	CoolInterface.LoadIconsTo( m_gdiImageList, protocolIDs, 0, LVSIL_SMALL, Flags.Width, (Settings.Skin.RowSize > 17 ? (int)Settings.Skin.RowSize - 1 : 16) );
 	CoolInterface.LoadFlagsTo( m_gdiImageList );
 
 	m_wndList.SetImageList( &m_gdiImageList, LVSIL_SMALL );
@@ -383,8 +392,7 @@ void CHostCacheWnd::OnHostCacheConnect()
 
 void CHostCacheWnd::OnUpdateHostCacheDisconnect(CCmdUI* pCmdUI)
 {
-	if ( m_nMode == PROTOCOL_G2 || m_nMode == PROTOCOL_G1 ||
-		 m_nMode == PROTOCOL_ED2K || m_nMode == PROTOCOL_NULL )
+	if ( m_nMode == PROTOCOL_G2 || m_nMode == PROTOCOL_G1 || m_nMode == PROTOCOL_ED2K || m_nMode == PROTOCOL_NULL )
 	{
 		// Lock Network objects until we are finished with them
 		// Note this needs to be locked before the HostCache object to avoid deadlocks with the network thread
@@ -414,8 +422,7 @@ void CHostCacheWnd::OnUpdateHostCacheDisconnect(CCmdUI* pCmdUI)
 
 void CHostCacheWnd::OnHostCacheDisconnect()
 {
-	if ( m_nMode == PROTOCOL_G2 || m_nMode == PROTOCOL_G1 ||
-		 m_nMode == PROTOCOL_ED2K || m_nMode == PROTOCOL_NULL )
+	if ( m_nMode == PROTOCOL_G2 || m_nMode == PROTOCOL_G1 || m_nMode == PROTOCOL_ED2K || m_nMode == PROTOCOL_NULL )
 	{
 		// Lock Network objects until we are finished with them
 		// Note this needs to be locked before the HostCache object to avoid deadlocks with the network thread

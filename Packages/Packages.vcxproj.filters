@@ -21,7 +21,7 @@
     <ClCompile Include="Registry.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Skin.c">
+    <ClCompile Include="Packages.c">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Utils.c">
@@ -35,7 +35,7 @@
     <ClInclude Include="Resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Skin.h">
+    <ClInclude Include="Packages.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -51,7 +51,7 @@
     <None Include="Res\Envy.ico">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="Res\Skin.ico">
+    <None Include="Res\Packages.ico">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="Res\Manifest.xml" />

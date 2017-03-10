@@ -185,7 +185,7 @@ uLong ZCALLBACK win32_write_file_func (voidpf opaque,voidpf stream,const void* b
 static BOOL MySetFilePointerEx(HANDLE hFile, LARGE_INTEGER pos, LARGE_INTEGER *newPos,  DWORD dwMoveMethod)
 {
     LONG lHigh = pos.HighPart;
-    DWORD dwNewPos = SetFilePointer(hFile, pos.LowPart, &lHigh, FILE_CURRENT);
+    DWORD dwNewPos = SetFilePointer(hFile, pos.LowPart, &lHigh, dwMoveMethod);
     BOOL fOk = TRUE;
     if (dwNewPos == 0xFFFFFFFF)
         if (GetLastError() != NO_ERROR)
@@ -310,7 +310,7 @@ long ZCALLBACK win32_seek64_file_func (voidpf opaque, voidpf stream,ZPOS64_T off
     {
         LARGE_INTEGER pos;
         pos.QuadPart = offset;
-        if (!MySetFilePointerEx(hFile, pos, NULL, FILE_CURRENT))
+        if (!MySetFilePointerEx(hFile, pos, NULL, dwMoveMethod))
         {
             DWORD dwErr = GetLastError();
             ((WIN32FILE_IOWIN*)stream) -> error=(int)dwErr;

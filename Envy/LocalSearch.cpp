@@ -219,14 +219,23 @@ bool CLocalSearch::ExecuteSharedFiles(INT_PTR nMaximum, INT_PTR& nHits)
 	if ( ! oLock.Lock( 250 ) )
 		return false;
 
-	unique_ptr< CFileList > pFiles( Library.Search( m_pSearch, nMaximum, FALSE, m_nProtocol != PROTOCOL_G2 ) );	// Ghost files only for G2
+	// Is it a browser request?		(ToDo: PrivateKey?)
+	if ( ! m_pSearch && m_nProtocol == PROTOCOL_G2 && Settings.Gnutella2.Enabled )
+	{
+		// Send virtual tree
+		DispatchPacket( AlbumToPacket( Library.GetAlbumRoot() ) );
+
+		// Send physical tree
+		DispatchPacket( FoldersToPacket() );
+	}
+
+	augment::auto_ptr< CFileList > pFiles( Library.Search( m_pSearch, (int)nMaximum, FALSE, m_nProtocol != PROTOCOL_G2 ) );	// Ghost files only for G2
 
 	if ( pFiles.get() )
 	{
 		CFileList oFilesInPacket;
 
-		for ( POSITION pos = pFiles->GetHeadPosition() ;
-			pos && ( ! nMaximum || ( nHits + oFilesInPacket.GetCount() < nMaximum ) ) ; )
+		for ( POSITION pos = pFiles->GetHeadPosition() ; pos && ( ! nMaximum || nMaximum > nHits + oFilesInPacket.GetCount() ) ; )
 		{
 			CLibraryFile* pFile = pFiles->GetNext( pos );
 
@@ -246,16 +255,6 @@ bool CLocalSearch::ExecuteSharedFiles(INT_PTR nMaximum, INT_PTR& nHits)
 		SendHits( oFilesInPacket );
 
 		nHits += oFilesInPacket.GetCount();
-	}
-
-	// Is it a browser request?
-	if ( ! m_pSearch && m_nProtocol == PROTOCOL_G2 )
-	{
-		// Send virtual tree
-		DispatchPacket( AlbumToPacket( Library.GetAlbumRoot() ) );
-
-		// Send physical tree
-		DispatchPacket( FoldersToPacket() );
 	}
 
 	return true;
@@ -1286,7 +1285,7 @@ CG2Packet* CLocalSearch::AlbumToPacket(CAlbumFolder* pFolder)
 
 	if ( pFolder->m_pSchema != NULL )
 	{
-		unique_ptr< CXMLElement > pXML( pFolder->m_pSchema->Instantiate( TRUE ) );
+		augment::auto_ptr< CXMLElement > pXML( pFolder->m_pSchema->Instantiate( TRUE ) );
 		if ( ! pXML.get() ) return NULL;
 
 		if ( pFolder->m_pXML != NULL )

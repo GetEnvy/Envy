@@ -536,12 +536,8 @@ void CMediaFrame::OnPaint()
 	{
 		LOGFONT pFont = { 80, 0, 0, 0, FW_NORMAL, FALSE, FALSE, FALSE,
 			DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS,
-			Settings.Fonts.Quality, DEFAULT_PITCH|FF_DONTCARE, L"Segoe UI" };
-
-#ifdef XPSUPPORT
-		if ( theApp.m_bIsWinXP )	// XP-Safe
-			_tcsncpy( pFont.lfFaceName, L"Tahoma", LF_FACESIZE );
-#endif
+			Settings.Fonts.Quality, DEFAULT_PITCH|FF_DONTCARE,
+			(WCHAR)(LPCTSTR)Settings.Fonts.DefaultFont };	// "Segoe UI"
 
 		m_pFontDefault.CreatePointFontIndirect( &pFont );
 

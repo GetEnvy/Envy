@@ -1,7 +1,7 @@
 //
 // Neighbours.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
+// This file is part of Envy (getenvy.com) © 2016-2017
 // Portions copyright PeerProject 2008-2014 and Shareaza 2002-2007
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -103,6 +103,25 @@ CString CNeighbours::GetAgent(const CNeighbour* pNeighbour) const
 CString CNeighbours::GetNick(const CNeighbour* pNeighbour) const
 {
 	return pNeighbour->m_pProfile ? pNeighbour->m_pProfile->GetNick() : pNeighbour->m_sServerName;
+}
+
+//CString GetServerName(const CNeighbour* pNeighbour) const
+//{
+//	return GetServerName( pNeighbour->m_sAddress );
+//}
+
+CString CNeighbours::GetServerName(const CString& strIP) const
+{
+	// ToDo: Utilize DefaultServers.dat or fix properly elsewhere
+	if ( IsText( strIP, _P( L"176.103.48.36" ) ) )
+		return L"TV Underground";
+	if ( IsText( strIP, _P( L"213.152.168.189" ) ) )
+		return L"eMule Security";
+	if ( StartsWith( strIP, _P( L"176.103.56." ) ) )
+		return L"eDonkey Server";
+	if ( IsText( strIP, _P( L"195.154.83.5" ) ) )
+		return L"Peerates.net";
+	return CString();
 }
 
 CString CNeighbours::GetNeighbourList(LPCTSTR szFormat) const

@@ -1,7 +1,7 @@
 //
 // WizardInterfacePage.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
+// This file is part of Envy (getenvy.com) © 2016-2017
 // Portions copyright PeerProject 2008-2015 and Shareaza 2002-2007
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -186,7 +186,7 @@ LRESULT CWizardInterfacePage::OnWizardNext()
 			theApp.WriteProfileInt( L"Skins", L"Windows\\Skin8.xml", 1 );
 			theApp.WriteProfileInt( L"Skins", L"Windows\\Skin8Frames.xml", 1 );
 		}
-		else if ( theApp.m_nWinVer == WIN_7 )
+		else if ( theApp.m_nWinVer >= WIN_7 )
 		{
 			theApp.WriteProfileInt( L"Skins", L"Windows\\Skin7.xml", 1 );
 			theApp.WriteProfileInt( L"Skins", L"Windows\\SkinVistaFrames.xml", 1 );
@@ -198,6 +198,9 @@ LRESULT CWizardInterfacePage::OnWizardNext()
 			theApp.WriteProfileInt( L"Skins", L"Windows\\SkinVistaFrames.xml", 1 );
 			theApp.WriteProfileInt( L"Skins", L"Windows\\SkinVistaRemote.xml", 1 );
 		}
+
+		if ( theApp.m_nWinVer >= WIN_7 && GetSystemMetrics( SM_CYSCREEN ) > 1050 )	// ToDo: Detect DPI
+			theApp.WriteProfileInt( L"Skins", L"Flags\\Flags.xml", 1 );
 
 		PostMainWndMessage( WM_SKINCHANGED );
 		Sleep( 2500 );		// Wait a few seconds

@@ -280,7 +280,7 @@ BOOL CUploadTransferBT::OpenFile()
 	if ( m_pClient && Downloads.Check( m_pClient->m_pDownload ) )
 	{
 		// Try to get existing file object from download
-		unique_ptr< CFragmentedFile > pFile( m_pClient->m_pDownload->GetFile() );
+		augment::auto_ptr< CFragmentedFile > pFile( m_pClient->m_pDownload->GetFile() );
 		if ( pFile.get() )
 		{
 			AttachFile( pFile );
@@ -290,7 +290,7 @@ BOOL CUploadTransferBT::OpenFile()
 		// HACK: Open from disk (ToDo: Replace this with SeedTorrent in OnDownloadComplete)
 		if ( m_pClient->m_pDownload->IsSeeding() )
 		{
-			unique_ptr< CFragmentedFile > pSeedingFile( new CFragmentedFile );
+			augment::auto_ptr< CFragmentedFile > pSeedingFile( new CFragmentedFile );
 			if ( pSeedingFile.get() )
 			{
 				if ( pSeedingFile->Open( m_pClient->m_pDownload->m_pTorrent, FALSE ) )
@@ -303,7 +303,7 @@ BOOL CUploadTransferBT::OpenFile()
 	}
 	// else Something wrong...
 
-	theApp.Message( MSG_ERROR, IDS_UPLOAD_CANTOPEN, (LPCTSTR)m_sName, (LPCTSTR)m_sAddress);
+	theApp.Message( MSG_ERROR, IDS_UPLOAD_CANTOPEN, (LPCTSTR)m_sName, (LPCTSTR)m_sAddress );
 
 	Close();
 

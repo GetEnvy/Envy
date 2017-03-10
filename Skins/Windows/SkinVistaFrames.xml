@@ -53,11 +53,7 @@
 <region>
  <shape type="roundRect"	rect="0,2,-1,-1" size="12,12"/>
  <shape type="roundRect"	rect="0,-20,-1,-1" size="9,9" combine="or"/>
- <shape type="rectangle"	rect="9,0,20,2" combine="or"/>
- <shape type="rectangle"	rect="20,1,22,2" combine="or"/>
- <shape type="rectangle"	rect="63,0,74,2" combine="or"/>
- <shape type="rectangle"	rect="74,1,76,2" combine="or"/>
- <shape type="rectangle"	rect="108,1,111,2" combine="or"/>
+ <shape type="rectangle"	rect="8,1,32,2" combine="or"/>
 </region>
 <maximiseCrop rect="4,8,-4,-4"/>
 </windowSkin>
@@ -89,7 +85,7 @@
  <shape type="roundRect"	rect="0,0,-1,-1" size="12,12"/>
  <shape type="roundRect"	rect="0,0,10,-1" size="9,9" combine="or"/>
 </region>
-<caption align="left" rect="26,1,260,24" fontFace="Segoe UI" fontSize="12" fontWeight="Normal" color="000000" outlinecolor="ECECEC" inactivecolor="606060"/>
+<caption rect="26,1,260,24" align="left" fontFace="Segoe UI" fontSize="12" fontWeight="Normal" color="000000" outlinecolor="ECECEC" inactivecolor="606060"/>
 </windowSkin>
 
 <!-- Download Monitor Window -->
@@ -122,7 +118,7 @@
  <shape type="roundRect"	rect="0,0,-1,-1" size="12,12"/>
  <shape type="roundRect"	rect="0,0,10,-1" size="9,9" combine="or"/>
 </region>
-<caption align="left" rect="26,1,280,24" fontFace="Segoe UI" fontSize="12" fontWeight="Normal" color="000000" outlinecolor="ECECEC" inactivecolor="707070"/>
+<caption rect="26,1,280,24" align="left" fontFace="Segoe UI" fontSize="12" fontWeight="Normal" color="000000" outlinecolor="ECECEC" inactivecolor="707070"/>
 </windowSkin>
 
 <!-- Floating windows -->
@@ -155,7 +151,7 @@
 <region>
  <shape type="roundRect"	rect="0,0,-1,-1" size="9,9"/>
 </region>
-<caption align="left" rect="26,1,260,24" fontFace="Segoe UI" fontSize="12" fontWeight="Normal" color="000000" outlinecolor="ECECEC" inactivecolor="707070"/>
+<caption rect="26,1,260,24" align="left" fontFace="Segoe UI" fontSize="12" fontWeight="Normal" color="000000" outlinecolor="ECECEC" inactivecolor="707070"/>
 </windowSkin>
 
 </windowskins>

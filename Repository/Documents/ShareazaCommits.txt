@@ -16,7 +16,31 @@ svn+ssh://svn.code.sf.net/p/shareaza/code/trunk shareaza-code
 •
 
 
-9640		f
+9664		f
+9663		3f	Added alone ED2K-hashset sharing over DIME
+9662		13f	Added more "const"s, text formatting
+9661		1f	Unified CLibraryFile::GetTigerTree() and CLibraryFile::GetED2K() code
+9660		6f	Improved services discovery
+9659		14f	Fixed warnings
+9658		1f	Updated Zlib project options
+9657	.	1f	Updated GeoIP database
+9656		*f	Updated zlib up to 1.2.11 (full sources included, asm disabled)
+9655		1f	Cleaning of *.log
+9654		1f	Optimization for r9652
+9653		1f	Added download group filter by a BitTorrent tracker URL
+9652		1f	Hash of found BitTorrent file is now a clickable link in the search details
+9651	r20	1f	Optimized Library browsing
+9650	r20	2f	Added loading of BitTorrent default servers
+9649	.	1f	BitTorrent UDP optimization
+9648	.	1f	Check if the torrent is the same as the download itself
+9647		1f	Fixed clean script for zlibwapi project
+9646		*f	Changed a structure of Zlibwapi project files
+9645		5f	Renamed root project option
+9644		*f	Renamed "zlib" project to "zlibwinapi"
+9643		17f	Updated MiniUPnPc library to 2.0.20161216
+9642	.	1f	GZip -> 7-Zip (Readme)
+9641	.	1f	Updated GeoIP database (07 Dec 2016)
+9640		1f	Added ReadMe.txt with short compilation instructions
 9639	r12	12f	Updated 7ZipBuilder plugin's Z-Zip library to 16.2.0
 9638	r12	6f	Fixed warnings
 9637	r12	8f	Fixed warnings
@@ -123,7 +147,7 @@ svn+ssh://svn.code.sf.net/p/shareaza/code/trunk shareaza-code
 9537	.	1f	Disabled hacked web-cache - http://bit.ly/1F9Kcic
 9536	r125	3f	More descriptive comments of UPnP mappings
 9535	r126?	f	Updated MiniUPnPc library to 1.9.20150206
-9534		8f+lang	Added quick search for advanced settings. GZIP resources moved to .rc2
+9534	r20	8f+lang	Added quick search for advanced settings. GZIP resources moved to .rc2
 9533	.	1f	Updated GeoIP database (05 Feb 2015)
 9532	r125	4f	Fixed BTIH status of download - http://bit.ly/1DXAm0T
 9531		2f	Updated Polish translation (by Neo2001)
@@ -210,7 +234,6 @@ svn+ssh://svn.code.sf.net/p/shareaza/code/trunk shareaza-code
 8824		14f	Updated Language Support (Scheduler Dialog Strings Sorted, HashWndAlpha, etc.)
 8764		8f	Colorful download sources
 8763		2f	Flexible hash progress window
-8537	~r108	2f	Optimized CDownloadWithTiger::GetWantedFragmentList() function by adding cache.	(Enabled r108)
 
 8156?		7f	Fix plugin description and icon retrieving. Add support for .exe plugins. Plugins enumeration speed increased ten times. (LoadCLSIDIcon) (2009)
 
@@ -219,7 +242,6 @@ Check ShareazaPlus:	http://sourceforge.net/p/shareazaplus/code/HEAD/tree/branche
 ToDos:			Add ID_TAB_MENU ?
 			Add Private Shared Folders (Keycode)
 			Save Browse/Chat IPs (Bookmarks)
-			Wizard IE Browser Integration ?
 			Default Downloads Location <My Docs>  ?
 			File Formats. .lst, .urls, .grx (getright), .metalink, .magma, etc.
 			JumpLists: r9146 http://msdn.microsoft.com/en-us/gg465010#_Toc243450447

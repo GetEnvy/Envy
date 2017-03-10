@@ -170,7 +170,7 @@ CGGEPItem* CGGEPBlock::ReadItem(BYTE nFlags)
 	}
 	szID[ nIDLen ] = 0;
 
-	unique_ptr< CGGEPItem > pItem( new CGGEPItem( szID ) );
+	augment::auto_ptr< CGGEPItem > pItem( new CGGEPItem( szID ) );
 	if ( ! pItem.get() )
 		return NULL;	// Error: Out of memory
 

@@ -32,11 +32,11 @@ enum XmlType
 };
 
 // ToDo: Support Private Share Key
-//enum ShowType
+//enum ShareType
 //{
-//	ShowAll,		// bSharedOnly FALSE
-//	ShowPublic,		// bSharedOnly TRUE
-//	ShowPrivate		// Passkey
+//	ShareAll,		// bSharedOnly FALSE
+//	SharePublic,	// bSharedOnly TRUE
+//	SharePrivateKey	// Passkey
 //};
 
 

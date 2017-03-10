@@ -1,5 +1,5 @@
 //
-// Skin.c
+// Packages.c
 //
 // This file is part of Envy (getenvy.com) © 2016
 //
@@ -10,7 +10,7 @@
 // The Zlib library is Copyright (C) 1995-2002 Jean-loup Gailly and Mark Adler.
 // The Unzip library is Copyright (C) 1998-2003 Gilles Vollant.
 
-#include "Skin.h"
+#include "Packages.h"
 
 // Globals
 int 	skinType;
@@ -38,7 +38,7 @@ int WINAPI wWinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPWSTR cmdParam, int c
 	szXML     = NULL;
 
 	if ( *cmdParam == 0 )
-		MessageBox(NULL,L"Envy Skin Installer " VERSION L"\n\nDouble-click an Envy skin package file (.envy) to use this tool.",L"Envy Skin Installer",MB_OK|MB_ICONINFORMATION);
+		MessageBox(NULL,L"Envy Package Installer " VERSION L"\n\nDouble-click an Envy skin package file (.envy) to use this tool.",L"Envy Package Installer",MB_OK|MB_ICONINFORMATION);
 	else if ( ! _wcsicmp(cmdParam, L"/install") || ! _wcsicmp(cmdParam, L"/installsilent") )
 		rtn = CreateSkinKeys();
 	else if ( ! _wcsicmp(cmdParam, L"/uninstall") || ! _wcsicmp(cmdParam, L"/uninstallsilent") )

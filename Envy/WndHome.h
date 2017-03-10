@@ -1,7 +1,7 @@
 //
 // WndHome.h
 //
-// This file is part of Envy (getenvy.com) © 2016
+// This file is part of Envy (getenvy.com) © 2016-2017
 // Portions copyright PeerProject 2008-2014 and Shareaza 2002-2007
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -37,7 +37,7 @@ protected:
 	CHomeViewCtrl	m_wndView;
 	CHomePanel		m_wndPanel;
 
-	virtual void	OnSkinChange();
+	virtual void OnSkinChange();
 
 	afx_msg int  OnCreate(LPCREATESTRUCT lpCreateStruct);
 	afx_msg void OnDestroy();
@@ -46,9 +46,10 @@ protected:
 	afx_msg void OnMDIActivate(BOOL bActivate, CWnd* pActivateWnd, CWnd* pDeactivateWnd);
 	afx_msg void OnClickView(NMHDR* pNotify, LRESULT *pResult);
 	afx_msg void OnContextMenu(CWnd* pWnd, CPoint point);
-	afx_msg void OnUpdateLibraryClear(CCmdUI* pCmdUI);
+	afx_msg void OnUpdateLibraryFile(CCmdUI* pCmdUI);
 	afx_msg void OnLibraryClear();
 	afx_msg void OnLibraryClearAll();
+	afx_msg void OnLibraryShowFile();
 
 	DECLARE_MESSAGE_MAP()
 };

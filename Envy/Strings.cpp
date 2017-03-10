@@ -1,7 +1,7 @@
 //
 // Strings.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
+// This file is part of Envy (getenvy.com) © 2016-2017
 // Portions copyright PeerProject 2010-2016 and Shareaza 2010
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -609,8 +609,7 @@ LPCTSTR _tcsistr(LPCTSTR pszString, LPCTSTR pszSubString)
 	while ( pszString <= pszCutOff )
 	{
 		// Search for the start of the substring
-		while ( pszString <= pszCutOff
-			&& ToLower( *pszString ) != cFirstPatternChar )
+		while ( pszString <= pszCutOff && ToLower( *pszString ) != cFirstPatternChar )
 		{
 			++pszString;
 		}
@@ -621,8 +620,7 @@ LPCTSTR _tcsistr(LPCTSTR pszString, LPCTSTR pszSubString)
 
 		// Check the rest of the substring
 		size_t nChar( 1 );
-		while ( pszSubString[nChar]
-			&& ToLower( pszString[nChar] ) == ToLower( pszSubString[nChar] ) )
+		while ( pszSubString[nChar] && ToLower( pszString[nChar] ) == ToLower( pszSubString[nChar] ) )
 		{
 			++nChar;
 		}
@@ -710,15 +708,28 @@ void Split(const CString& strSource, TCHAR cDelimiter, CStringArray& pAddIt, BOO
 
 BOOL StartsWith(const CString& strInput, LPCTSTR pszText, int nLen /*0*/)
 {
-	if ( strInput[0] != *pszText && //*pszText < L'A' ||
-	   ( strInput[0] & ~0x20 ) != *pszText && strInput[0] != ( *pszText & ~0x20 ) )		// Fast case-insensitive first char?
+	// Fast case-insensitive first char
+	if ( strInput[0] != *pszText && //( *pszText < L'A' ||		// Note extra check causes runtime errors
+	   ( strInput[0] & ~0x20 ) != *pszText && strInput[0] != ( *pszText & ~0x20 ) )
 		return FALSE;
 
 	if ( ! nLen )
 		nLen = (int)_tcslen( pszText );
 
-	return strInput.GetLength() >= nLen &&
-		_tcsnicmp( (LPCTSTR)strInput, pszText, nLen ) == 0;
+//	return strInput.GetLength() >= nLen &&
+//		_tcsnicmp( (LPCTSTR)strInput, pszText, nLen ) == 0;
+
+	if ( nLen > strInput.GetLength() )
+		return FALSE;
+
+	pszText++;
+	for ( int n = 1 ; n < nLen ; n++ && pszText++ )
+	{
+		if ( strInput[n] != *pszText && ToLower( strInput[n] ) != ToLower( *pszText ) )
+			return FALSE;
+	}
+
+	return TRUE;
 }
 
 BOOL EndsWith(const CString& strInput, LPCTSTR pszText, int nLen /*0*/)
@@ -729,19 +740,29 @@ BOOL EndsWith(const CString& strInput, LPCTSTR pszText, int nLen /*0*/)
 	if ( strInput.GetLength() < nLen )
 		return FALSE;
 
-	const CString str = strInput.Right( nLen );
-	LPCTSTR pszTest = str;
+	LPCTSTR pszTest = strInput.Right( nLen );
 
-	if ( *pszTest != *pszText && ( *pszText < L'A' || ( ( *pszTest & ~0x20 ) != *pszText && *pszTest != ( *pszText & ~0x20 ) ) ) )
-		return FALSE;		// Fast case-insensitive first char?
+	// Fast case-insensitive first char
+	//if ( *pszTest != *pszText && //( *pszText < L'A' ||		// Note extra check causes runtime errors
+	//	( ( *pszTest & ~0x20 ) != *pszText && *pszTest != ( *pszText & ~0x20 ) ) )
+	//	return FALSE;
+	//
+	//return _tcsnicmp( pszTest, pszText, nLen ) == 0;
 
-	return _tcsnicmp( pszTest, pszText, nLen ) == 0;
+	for ( int n = 0 ; n < nLen ; n++ && pszTest++ && pszText++ )
+	{
+		if ( *pszTest != *pszText && ToLower( *pszTest ) != ToLower( *pszText ) )
+			return FALSE;
+	}
+
+	return TRUE;
 }
 
 BOOL IsText(const CString& strInput, LPCTSTR pszText, int nLen /*0*/)
 {
-	if ( strInput[0] != *pszText && //*pszText < L'A' ||
-	   ( strInput[0] & ~0x20 ) != *pszText && strInput[0] != ( *pszText & ~0x20 ) )		// Fast case-insensitive first char?
+	// Fast case-insensitive first char
+	if ( strInput[0] != *pszText && //( *pszText < L'A' ||	// Note extra check causes runtime errors
+	   ( strInput[0] & ~0x20 ) != *pszText && strInput[0] != ( *pszText & ~0x20 ) )
 		return FALSE;
 
 	if ( ! nLen )
@@ -752,10 +773,10 @@ BOOL IsText(const CString& strInput, LPCTSTR pszText, int nLen /*0*/)
 
 	//return _tcsnicmp( (LPCTSTR)strInput, pszText, nLen ) == 0;
 
-	for ( int n = 0 ; n < nLen ; n++ && pszText++ )
+	pszText++;
+	for ( int n = 1 ; n < nLen ; n++ && pszText++ )
 	{
-		if ( strInput[ n ] != *pszText &&
-			 tolower( strInput[ n ] ) != tolower( *pszText ) )
+		if ( strInput[ n ] != *pszText && ToLower( strInput[ n ] ) != ToLower( *pszText ) )
 			return FALSE;
 	}
 
@@ -1342,7 +1363,8 @@ CString HostToString(const SOCKADDR_IN* pHost)
 	CString strHost;
 #ifndef XPSUPPORT
 	WCHAR ipbuf[ INET_ADDRSTRLEN ];
-	InetNtop( AF_INET, &(IN_ADDR)( pHost->sin_addr ), ipbuf, sizeof(ipbuf) );
+	IN_ADDR addr = pHost->sin_addr;
+	InetNtop( AF_INET, &addr, ipbuf, sizeof(ipbuf) );
 	strHost.Format( L"%s:%hu", (LPCTSTR)ipbuf, ntohs( pHost->sin_port ) );
 #else // XP (inet_ntoa deprecated Vista+)
 #define _WINSOCK_DEPRECATED_NO_WARNINGS

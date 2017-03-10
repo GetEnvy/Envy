@@ -474,7 +474,7 @@ BOOL CUploadTransfer::RequestPartial(CDownload* pDownload)
 	m_bFilePartial = TRUE;
 
 	// Try to get existing file object from download
-	unique_ptr< CFragmentedFile > pDownloadFile( pDownload->GetFile() );
+	augment::auto_ptr< CFragmentedFile > pDownloadFile( pDownload->GetFile() );
 	if ( ! pDownloadFile.get() )
 		return FALSE;
 
@@ -534,7 +534,7 @@ BOOL CUploadTransfer::OpenFile()
 	if ( IsFileOpen() )
 		return TRUE;
 
-	unique_ptr< CFragmentedFile > pFile( new CFragmentedFile );
+	augment::auto_ptr< CFragmentedFile > pFile( new CFragmentedFile );
 	if ( pFile.get() && pFile->Open( this, FALSE ) )
 	{
 		AttachFile( pFile );
@@ -564,11 +564,11 @@ BOOL CUploadTransfer::ReadFile(QWORD nOffset, LPVOID pData, QWORD nLength, QWORD
 	return m_pFile->Read( nOffset, pData, nLength, pnRead );
 }
 
-void CUploadTransfer::AttachFile(unique_ptr< CFragmentedFile >& pFile)
+void CUploadTransfer::AttachFile(augment::auto_ptr< CFragmentedFile >& pFile)
 {
-#if !defined(_MSC_VER) || (_MSC_VER >= 1600)		// VS2010+
-	m_pFile = std::move( pFile );
-#else	// VS2008
+//#ifndef VS2008		// VS2010+ std::unique_ptr
+//	m_pFile = std::move( pFile );
+//#else	// VS2008 auto_ptr
 	m_pFile = pFile;
-#endif
+//#endif
 }

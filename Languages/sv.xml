@@ -3,7 +3,7 @@
 
 <!-- Envy Default Swedish Skin File -->
 
-<!-- Translation based on default en.xml r16 -->
+<!-- Translation based on default en.xml r20 -->
 <!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -296,7 +296,7 @@
 	</toolbar>
 	<!-- MEDIA WINDOW -->
 	<toolbar name="CMediaFrame.Basic">
-		<button id="ID_MEDIA_PLAY" text="Spela upp&#160;&#160;&#160;"/>
+		<button id="ID_MEDIA_PLAY" text="Spela upp&#160; &#160;"/>
 		<button id="ID_MEDIA_PAUSE" text="Paus" visible="false"/>
 		<button id="ID_MEDIA_STOP" text="Stopp"/>
 		<separator/>
@@ -313,7 +313,7 @@
 		<button id="ID_MEDIA_PLAYLIST" text="Spellista"/>
 	</toolbar>
 	<toolbar name="CMediaFrame">
-		<button id="ID_MEDIA_PLAY" text="Spela upp&#160;&#160;&#160;"/>
+		<button id="ID_MEDIA_PLAY" text="Spela upp&#160; &#160;"/>
 		<button id="ID_MEDIA_PAUSE" text="Paus" visible="false"/>
 		<button id="ID_MEDIA_STOP" text="Stopp"/>
 		<separator/>
@@ -1241,6 +1241,7 @@
 		<item id="ID_LIBRARY_FOLDER_PROPERTIES" text="_Albumegenskaper"/>
 	</menu>
 	<menu name="CLibraryHistoryPanel">
+		<item id="ID_LIBRARY_SHOW_FILE" text="_Show in Library"/>
 		<item id="ID_LIBRARY_CLEAR_HISTORY" text="Rensa från historien"/>
 		<item id="ID_LIBRARY_CLEAR_HISTORY_ALL" text="Rensa _alla"/>
 	</menu>
@@ -3712,7 +3713,7 @@
 		<control text="_Inställningar…"/>
 		<control text="Skaffa fler"/>
 	</dialog>
-	<dialog name="CAdvancedSettingsPage" cookie="SyBuStEdmsEdCoBuBu" caption="Avancerat">
+	<dialog name="CAdvancedSettingsPage" cookie="SyBuStEdmsEdCoBuBuStEd" caption="Avancerat">
 		<control/>
 		<control text="Egenskaper för inställning:"/>
 		<control text="Värde:"/>
@@ -3722,6 +3723,8 @@
 		<control/>
 		<control/>
 		<control text="Återställ Standard"/>
+		<control/>
+		<control/>
 	</dialog>
 	<dialog name="CProtocolsSettingsPage" cookie="BuSy" caption="Protokoll">
 		<control text="Envys gemensamma protokollutforskare:"/>

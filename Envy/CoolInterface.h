@@ -1,7 +1,7 @@
 //
 // CoolInterface.h
 //
-// This file is part of Envy (getenvy.com) © 2016
+// This file is part of Envy (getenvy.com) © 2016-2017
 // Portions copyright PeerProject 2008-2015 and Shareaza 2002-2007
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -49,7 +49,7 @@ public:
 	int			ImageForID(UINT nID, int nImageListType = LVSIL_SMALL) const;
 	void		AddIcon(UINT nID, HICON hIcon, int nImageListType = LVSIL_SMALL);
 	void		CopyIcon(UINT nFromID, UINT nToID, int nImageListType = LVSIL_SMALL);
-	HICON		ExtractIcon(UINT nID, BOOL bMirrored = FALSE, int nImageListType = LVSIL_SMALL);
+	HICON		ExtractIcon(UINT nID, BOOL bMirrored = FALSE, int nImageListType = LVSIL_SMALL, int nSizeX = 0, int nSizeY = 0 );
 	int			ExtractIconID(UINT nID, BOOL bMirrored = FALSE, int nImageListType = LVSIL_SMALL);
 	// Set skinned icon to window: pWnd->SetIcon( hIcon, bBigIcon )
 	void		SetIcon(UINT nID, BOOL bMirrored, BOOL bBigIcon, CWnd* pWnd);
@@ -58,7 +58,7 @@ public:
 	// Assign image list to CListCtrl object. Returns old image list of CListCtrl object.
 	CImageList*	SetImageListTo(CListCtrl& pWnd, int nImageListType = LVSIL_SMALL);
 	// Loads skinable icons specified by ID array to CImageList object
-	void		LoadIconsTo(CImageList& pImageList, const UINT nID[], BOOL bMirror = FALSE, int nImageListType = LVSIL_SMALL);
+	void		LoadIconsTo(CImageList& pImageList, const UINT nID[], BOOL bMirror = FALSE, int nImageListType = LVSIL_SMALL, int nSizeX = 0, int nSizeY = 0);
 	void		LoadFlagsTo(CImageList& pImageList);
 	// No void	LoadProtocolIconsTo(), use LoadIconsTo( pImageList, protocolIDs );
 	//BOOL		AddImagesFromToolbar(UINT nIDToolBar, COLORREF crBack = RGB(0,255,0));

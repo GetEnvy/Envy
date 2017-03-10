@@ -93,9 +93,9 @@ BOOL CWizardProfilePage::OnInitDialog()
 		m_wndComments.SetWindowText( pNotes->GetValue() );
 
 	const int nFlags = Flags.GetCount();
-	VERIFY( m_gdiFlags.Create( FLAG_WIDTH, 16, ILC_COLOR32|ILC_MASK, nFlags, 0 ) ||
-			m_gdiFlags.Create( FLAG_WIDTH, 16, ILC_COLOR24|ILC_MASK, nFlags, 0 ) ||
-			m_gdiFlags.Create( FLAG_WIDTH, 16, ILC_COLOR16|ILC_MASK, nFlags, 0 ) );
+	VERIFY( m_gdiFlags.Create( Flags.Width, 16, ILC_COLOR32|ILC_MASK, nFlags, 0 ) ||
+			m_gdiFlags.Create( Flags.Width, 16, ILC_COLOR24|ILC_MASK, nFlags, 0 ) ||
+			m_gdiFlags.Create( Flags.Width, 16, ILC_COLOR16|ILC_MASK, nFlags, 0 ) );
 	for ( int nFlag = 0 ; nFlag < nFlags ; nFlag++ )
 	{
 		if ( HICON hIcon = Flags.ExtractIcon( nFlag ) )

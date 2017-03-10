@@ -3,7 +3,7 @@
 
 <!-- Envy Default Russian Skin File -->
 
-<!-- Translation based on default en.xml r16 -->
+<!-- Translation based on default en.xml r20 -->
 <!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -1303,6 +1303,7 @@
 		<item id="ID_LIBRARY_FOLDER_PROPERTIES" text="Свойства _альбома"/>
 	</menu>
 	<menu name="CLibraryHistoryPanel">
+		<item id="ID_LIBRARY_SHOW_FILE" text="_Show in Library"/>
 		<item id="ID_LIBRARY_CLEAR_HISTORY" text="Clear from _History"/>
 		<item id="ID_LIBRARY_CLEAR_HISTORY_ALL" text="Убрать _все"/>
 	</menu>
@@ -3824,7 +3825,7 @@
 		<control text="_Установки..."/>
 		<control text="_Хочу ещё..."/>
 	</dialog>
-	<dialog name="CAdvancedSettingsPage" cookie="SyBuStEdmsEdCoBuBu" caption="Опытным">
+	<dialog name="CAdvancedSettingsPage" cookie="SyBuStEdmsEdCoBuBuStEd" caption="Опытным">
 		<control/>
 		<control text="Свойства установки:"/>
 		<control text="Значение:"/>
@@ -3834,6 +3835,8 @@
 		<control/>
 		<control/>
 		<control text="По умолчанию"/>
+		<control/>
+		<control/>
 	</dialog>
 	<dialog name="CProtocolsSettingsPage" cookie="BuSy" caption="Протоколы">
 		<control text="Envy обозреватель протоколов общей архитектуры:"/>

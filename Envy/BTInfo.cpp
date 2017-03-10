@@ -685,7 +685,7 @@ BOOL CBTInfo::CheckInfoData()
 
 	if ( ! m_pSource.m_nLength ) return FALSE;
 
-	unique_ptr< CBENode > pNode ( CBENode::Decode( &m_pSource ) );
+	augment::auto_ptr< CBENode > pNode ( CBENode::Decode( &m_pSource ) );
 	if ( ! pNode.get() )
 		return FALSE;
 
@@ -717,7 +717,7 @@ BOOL CBTInfo::CheckInfoData()
 
 BOOL CBTInfo::LoadTorrentBuffer(const CBuffer* pBuffer)
 {
-	unique_ptr< CBENode > pNode ( CBENode::Decode( pBuffer ) );
+	augment::auto_ptr< CBENode > pNode ( CBENode::Decode( pBuffer ) );
 	if ( ! pNode.get() )
 	{
 		theApp.Message( MSG_ERROR, L"[BT] Failed to decode torrent data: %s", pBuffer->ReadString( (size_t)-1 ) );

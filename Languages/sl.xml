@@ -3,7 +3,7 @@
 
 <!-- Envy Default Slovenian Skin File -->
 
-<!-- Translation based on default en.xml r16 --> <!-- (Shareaza 2.2.2.12) -->
+<!-- Translation based on default en.xml r20 --> <!-- (Shareaza 2.2.2.12) -->
 <!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -294,7 +294,7 @@
 	</toolbar>
 	<!-- MEDIA WINDOW -->
 	<toolbar name="CMediaFrame.Basic">
-		<button id="ID_MEDIA_PLAY" text="Play&#160;&#160;&#160;"/>
+		<button id="ID_MEDIA_PLAY" text="Play&#160; &#160;"/>
 		<button id="ID_MEDIA_PAUSE" text="Pause" visible="false"/>
 		<button id="ID_MEDIA_STOP" text="Stop"/>
 		<separator/>
@@ -311,7 +311,7 @@
 		<button id="ID_MEDIA_PLAYLIST" text="Predvajalni seznam"/>
 	</toolbar>
 	<toolbar name="CMediaFrame">
-		<button id="ID_MEDIA_PLAY" text="Predvajaj&#160;&#160;&#160;"/>
+		<button id="ID_MEDIA_PLAY" text="Predvajaj&#160; &#160;"/>
 		<button id="ID_MEDIA_PAUSE" text="Premor" visible="false"/>
 		<button id="ID_MEDIA_STOP" text="Ustavi"/>
 		<separator/>
@@ -1202,6 +1202,7 @@
 		<item id="ID_LIBRARY_FOLDER_PROPERTIES" text="Lastnosti _albuma"/>
 	</menu>
 	<menu name="CLibraryHistoryPanel">
+		<item id="ID_LIBRARY_SHOW_FILE" text="_Show in Library"/>
 		<item id="ID_LIBRARY_CLEAR_HISTORY" text="Clear from _History"/>
 		<item id="ID_LIBRARY_CLEAR_HISTORY_ALL" text="Počisti _vse"/>
 	</menu>
@@ -3528,7 +3529,7 @@
 		<control text="_Namestitev..."/>
 		<control text="Več"/>
 	</dialog>
-	<dialog name="CAdvancedSettingsPage" cookie="SyBuStEdmsEdCoBuBu" caption="Napredno">
+	<dialog name="CAdvancedSettingsPage" cookie="SyBuStEdmsEdCoBuBuStEd" caption="Napredno">
 		<control/>
 		<control text="Nastavitve:"/>
 		<control text="Vrednost:"/>
@@ -3538,6 +3539,8 @@
 		<control/>
 		<control/>
 		<control text="Obnovi Privzeto"/>
+		<control/>
+		<control/>
 	</dialog>
 	<dialog name="CProtocolsSettingsPage" cookie="BuSy" caption="Protokoli">
 		<control text="Envy skupni raziskovalec arhitekturnih protokolov:"/>

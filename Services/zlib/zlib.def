@@ -70,7 +70,7 @@ EXPORTS
     crc32
     adler32_combine
     crc32_combine
-; various hacks, don't look :)
+; various hacks, don't look
     deflateInit_
     deflateInit2_
     inflateInit_

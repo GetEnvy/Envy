@@ -1,7 +1,7 @@
 //
 // CtrlHomePanel.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
+// This file is part of Envy (getenvy.com) © 2016-2017
 // Portions copyright PeerProject 2008-2014 and Shareaza 2002-2008
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -747,7 +747,7 @@ void CHomeLibraryBox::OnContextMenu(CWnd* /*pWnd*/, CPoint point)
 		{
 			m_nIndex = pItem->m_nIndex;
 
-			// Test only. (Prefer context menu)
+			// Shift-right-click dialog. (Primarily testing, prefer context menu)
 			if ( ( GetAsyncKeyState( VK_SHIFT ) & 0x8000 ) != 0 )
 			{
 				CSingleLock pLock( &Library.m_pSection );
@@ -768,7 +768,7 @@ void CHomeLibraryBox::OnContextMenu(CWnd* /*pWnd*/, CPoint point)
 			}
 		}
 
-		Skin.TrackPopupMenu( L"CLibraryHistoryPanel", point, ID_LIBRARY_CLEAR_HISTORY );
+		Skin.TrackPopupMenu( L"CLibraryHistoryPanel", point, ID_LIBRARY_SHOW_FILE );
 
 		// Note command handlers in WndHome
 	}

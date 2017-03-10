@@ -132,7 +132,7 @@ protected:
 public:
 	BYTE				m_nType;
 	BYTE				m_nExtension;	// Extension type if packet type is a BT_PACKET_EXTENSION
-	unique_ptr< CBENode > m_pNode;		// Extension decoded data
+	augment::auto_ptr< CBENode > m_pNode;		// Extension decoded data
 
 public:
 	virtual void		Reset();

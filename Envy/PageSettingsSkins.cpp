@@ -1,7 +1,7 @@
 //
 // PageSettingsSkins.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
+// This file is part of Envy (getenvy.com) © 2016-2017
 // Portions copyright PeerProject 2008-2014 and Shareaza 2002-2007
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -92,8 +92,8 @@ BOOL CSkinsSettingsPage::OnInitDialog()
 	AddIcon( IDI_SKIN, m_gdiImageList );
 
 	m_wndList.SetImageList( &m_gdiImageList, LVSIL_SMALL );
-	m_wndList.InsertColumn( COL_NAME,	L"Name", LVCFMT_LEFT, 220, 0 );
-	m_wndList.InsertColumn( COL_AUTHOR,	L"Author", LVCFMT_LEFT, 120, 1 );
+	m_wndList.InsertColumn( COL_NAME,	L"Name", LVCFMT_LEFT, 240, 0 );
+	m_wndList.InsertColumn( COL_AUTHOR,	L"Author", LVCFMT_LEFT, 100, 1 );
 	m_wndList.InsertColumn( COL_VERSION, L"Version", LVCFMT_LEFT, 42, 2 );
 	m_wndList.InsertColumn( COL_PATH,	L"Path", LVCFMT_LEFT, 0, 3 );
 	m_wndList.InsertColumn( COL_URL,	L"URL", LVCFMT_LEFT, 0, 4 );
@@ -261,7 +261,7 @@ BOOL CSkinsSettingsPage::AddSkin(LPCTSTR pszPath, LPCTSTR pszName)
 	CString strURL		= pManifest->GetAttributeValue( L"link" );
 	CString strEmail	= pManifest->GetAttributeValue( L"email" );
 	CString strDesc		= pManifest->GetAttributeValue( L"description" );
-	CString strDepend	= pManifest->GetAttributeValue( L"dependencies" );
+	CString strDepends	= pManifest->GetAttributeValue( L"dependencies" );
 //	CString strPlatform	= pManifest->GetAttributeValue( L"platform" );
 //	CString strLicense	= pManifest->GetAttributeValue( L"license" );
 
@@ -312,13 +312,17 @@ BOOL CSkinsSettingsPage::AddSkin(LPCTSTR pszPath, LPCTSTR pszName)
 		pItem.SetImage( 0 );
 	}
 
+	//strDepend.Trim( L" ,;\t" );
+	if ( IsText( strDepends, _P( L"none" ) ) )
+		strDepends.Empty();
+
 	pItem.Set( COL_NAME, strName );
 	pItem.Set( COL_AUTHOR, strAuthor );
 	pItem.Set( COL_VERSION, strVersion );
 	pItem.Set( COL_URL, strURL );
 	pItem.Set( COL_EMAIL, strEmail );
 	pItem.Set( COL_INFO, strDesc );
-	pItem.Set( COL_DEPEND, strDepend );
+	pItem.Set( COL_DEPEND, strDepends );
 
 	strName.Format( L"%s%s", pszPath ? pszPath : L"", pszName );
 	pItem.Set( COL_PATH, strName );

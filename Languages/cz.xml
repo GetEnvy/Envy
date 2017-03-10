@@ -3,7 +3,7 @@
 
 <!-- Envy Default Czech Skin File -->
 
-<!-- Translation based on default en.xml r16 --> <!-- (Shareaza 2.2.5.7) -->
+<!-- Translation based on default en.xml r20 --> <!-- (Shareaza 2.2.5.7) -->
 <!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -1234,6 +1234,7 @@
 		<item id="ID_LIBRARY_FOLDER_PROPERTIES" text="Vlastnosti _albumu"/>
 	</menu>
 	<menu name="CLibraryHistoryPanel">
+		<item id="ID_LIBRARY_SHOW_FILE" text="_Show in Library"/>
 		<item id="ID_LIBRARY_CLEAR_HISTORY" text="Clear from _History"/>
 		<item id="ID_LIBRARY_CLEAR_HISTORY_ALL" text="Smazat _vše"/>
 	</menu>
@@ -3632,7 +3633,7 @@
 		<control text="Na_stavení..."/>
 		<control text="Stáhnout další"/>
 	</dialog>
-	<dialog name="CAdvancedSettingsPage" cookie="SyBuStEdmsEdCoBuBu" caption="Pokročilé">
+	<dialog name="CAdvancedSettingsPage" cookie="SyBuStEdmsEdCoBuBuStEd" caption="Pokročilé">
 		<control/>
 		<control text="Nastavení vlastností:"/>
 		<control text="Hodnota:"/>
@@ -3642,6 +3643,8 @@
 		<control/>
 		<control/>
 		<control text="Obnovit Výchozí"/>
+		<control/>
+		<control/>
 	</dialog>
 	<dialog name="CProtocolsSettingsPage" cookie="BuSy" caption="Protokoly">
 		<control text="Envy Common Architecture Protocol Explorer:"/>

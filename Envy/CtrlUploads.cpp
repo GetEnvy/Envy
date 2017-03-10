@@ -1,7 +1,7 @@
 //
 // CtrlUploads.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
+// This file is part of Envy (getenvy.com) © 2016-2017
 // Portions copyright PeerProject 2008-2015 and Shareaza 2002-2007
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -1243,12 +1243,12 @@ void CUploadsCtrl::PaintFile(CDC& dc, const CRect& rcRow, const CUploadDisplayDa
 			int nFlagImage = Flags.GetFlagIndex( pUploadData->m_sCountry );
 
 			if ( ! bSelectmark )
-				dc.FillSolidRect( rcCell.left, rcCell.top, FLAG_WIDTH + 4, rcCell.Height(), crBack );
+				dc.FillSolidRect( rcCell.left, rcCell.top, Flags.Width + 4, rcCell.Height(), crBack );
 			rcCell.left += 2;
 			if ( nFlagImage >= 0 )
 				Flags.Draw( nFlagImage, dc.GetSafeHdc(), rcCell.left, rcCell.top,
 					bSelectmark ? CLR_NONE : crBack, CLR_DEFAULT, bSelected ? ILD_SELECTED : ILD_NORMAL );
-			rcCell.left += FLAG_WIDTH;
+			rcCell.left += Flags.Width;
 
 			strText = pUploadData->m_sCountry;
 			break;

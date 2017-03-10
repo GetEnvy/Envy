@@ -1,7 +1,7 @@
 //
 // WndMain.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
+// This file is part of Envy (getenvy.com) © 2016-2017
 // Portions copyright PeerProject 2008-2016 and Shareaza 2002-2008
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -43,12 +43,11 @@
 #include "ChatWindows.h"
 #include "Statistics.h"
 #include "BTInfo.h"
+#include "Flags.h"
 #include "Skin.h"
 #include "SkinWindow.h"
 #include "Scheduler.h"
 #include "SharedFile.h"
-#include "DlgHelp.h"
-#include "DlgDonkeyImport.h"
 #include "DiscoveryServices.h"
 
 #include "WndMain.h"
@@ -81,6 +80,8 @@
 #include "DlgDownload.h"
 #include "DlgURLAction.h"
 #include "DlgUpgrade.h"
+#include "DlgHelp.h"
+#include "DlgDonkeyImport.h"
 #include "DlgDownloadMonitor.h"
 #include "DlgExistingFile.h"
 #include "DlgFilePreview.h"
@@ -1292,6 +1293,9 @@ LRESULT CMainWnd::OnSkinChanged(WPARAM /*wParam*/, LPARAM /*lParam*/)
 
 	if ( m_pSkin )
 		m_pSkin->OnSize( this );
+
+	if ( ! Flags.Load() )
+		theApp.Message( MSG_ERROR, L"Failed to load Flags." );
 
 	m_wndRemoteWnd.OnSkinChange();
 	m_wndMonitorBar.OnSkinChange();

@@ -3,8 +3,8 @@ M http://cache.getenvy.com/skulls/
 M http://webcache.peerproject.org/
 M http://cache.w3-hidden.cc/
 M http://gwctest.zapto.org:1337/
-M http://gwc.mccarragher.org/skulls/skulls.php
 M http://disobscure.velum-ultra.com/skulls.php
+# http://gwc.mccarragher.org/skulls/skulls.php
 M http://tenafly5k.com/gwc/skulls.php
 M http://gweb.4octets.co.uk/skulls.php
 M http://gweb2.4octets.co.uk/gwc.php
@@ -13,19 +13,15 @@ M http://gweb.dwbo.nl/
 # http://cache.getenvy.com/dkac/
 2 http://dkac.trillinux.org/dkac/dkac.php
 2 http://cache.trillinux.org/g2/bazooka.php
-2 http://cache2.bazookanetworks.com/g2/bazooka.php
-2 http://cache.peernix.com/gwc.php
 2 http://cache.ce3c.be/
 2 http://cache.ibel.de/
 2 http://ping.pongwar.com/
 2 http://www.k33bz.com/g2/bazooka.php
-# http://cache2.leite.us/cachechu
-# http://cache3.leite.us/
-# http://cache5.leite.us/
-# http://htmlhell.com/
-# http://midian.jayl.de/g2/bazooka.php
+2 http://htmlhell.com/
 # http://gwc2.wodi.org/skulls.php
 # http://silvers.zyns.com/gwc/dkac.php
+# http://midian.jayl.de/g2/bazooka.php
+# http://cache2.bazookanetworks.com/g2/bazooka.php
 # http://dogma.cloud.bishopston.net:33559/
 # http://karma.cloud.bishopston.net:33559/
 # http://g2.uk.dyslexicfish.net:33558/
@@ -64,8 +60,6 @@ X http://www.myfoxy.net/gwc/cgi-bin/fc
 X http://gwc.gofoxy.net:2108/gwc/cgi-bin/fc
 
 #
-# Last updated Sept 2016
-#
 # A letter and space must precede each link to indicate the type of service:
 # X = Banned,  M = Multinetwork gwebcache,
 # 2 = Gnutella2 gwebcache,  1 = Gnutella gwebcache (obsolete),
@@ -77,6 +71,9 @@ X http://gwc.gofoxy.net:2108/gwc/cgi-bin/fc
 #
 # Delete this file and Envy will use internal defaults.
 #
-# Live Status may be at http://gwebcaches.pongwar.com
+# Network status: crawler.doxu.org
+# Cache status: gwebcaches.pongwar.com or cache.trillinux.org/crawler
 # Test: http://cache.getenvy.com/cachechu/?get=1&net=gnutella2&client=TEST1.0
 # Latest version at http://sourceforge.net/p/getenvy/code/HEAD/tree/trunk/Data/DefaultServices.dat
+#
+# Last updated Mar 2017

@@ -3,7 +3,7 @@
 
 <!-- Envy Default Finnish Skin File -->
 
-<!-- Translation based on default en.xml r16 --> <!-- (Shareaza 2.1.3.7) -->
+<!-- Translation based on default en.xml r20 --> <!-- (Shareaza 2.1.3.7) -->
 <!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -487,28 +487,28 @@
 			<menu text="_Näytä">
 				<item id="ID_TAB_HOME" text="_Koti" shortcut="Ctrl+H"/>
 				<item id="ID_VIEW_NEIGHBOURS" text="N_aapurit" shortcut="Ctrl+F11"/>
-				<item id="ID_VIEW_SYSTEM" text="J_ärjestelmä" shortcut="F11"/>
+				<item id="ID_VIEW_SYSTEM" text="Jä_rjestelmä" shortcut="F11"/>
 				<item id="ID_VIEW_DOWNLOADS" text="_Lataukset" shortcut="F3"/>
 				<item id="ID_VIEW_UPLOADS" text="_Lähetykset" shortcut="F4"/>
 				<item id="ID_VIEW_LIBRARY" text="_Kirjasto" shortcut="F5"/>
 				<item id="ID_VIEW_MEDIA" text="_Media" shortcut="F6"/>
 				<separator/>
 				<item id="ID_VIEW_SECURITY" text="Tu_rvallisuus" shortcut="F7"/>
-				<item id="ID_VIEW_HOSTS" text="K_äyttäjä Välimuisti" shortcut="F8"/>
+				<item id="ID_VIEW_HOSTS" text="Kä_yttäjä Välimuisti" shortcut="F8"/>
 				<item id="ID_VIEW_DISCOVERY" text="Disco_very" shortcut="F9"/>
 				<item id="ID_VIEW_TRAFFIC" text="_Grafiikka" shortcut="F10"/>
 				<separator/>
 				<item id="ID_VIEW_PACKETS" text="_Paketti Tuloste" shortcut="Ctrl+F1"/>
 				<item id="ID_VIEW_SEARCH_MONITOR" text="Ha_ku Monitori" shortcut="Ctrl+F2"/>
-				<item id="ID_VIEW_RESULTS_MONITOR" text="O_suma Monitori" shortcut="Ctrl+F3"/>
+				<item id="ID_VIEW_RESULTS_MONITOR" text="_Osuma Monitori" shortcut="Ctrl+F3"/>
 				<item id="ID_TAB_SEARCH" text="_Hae" shortcut="Ctrl+S"/>
 			</menu>
 			<menu text="_Ikkuna">
-				<item id="ID_VIEW_BASIC" text="N_ormaali Tila"/>
-				<item id="ID_VIEW_TABBED" text="V_älilehti Tila"/>
+				<item id="ID_VIEW_BASIC" text="_Normaali Tila"/>
+				<item id="ID_VIEW_TABBED" text="_Välilehti Tila"/>
 				<item id="ID_VIEW_WINDOWED" text="_Ikkunoitu Tila"/>
 				<separator/>
-				<item id="ID_WINDOW_NAVBAR" text="Näytä _Navigaatio Palkki"/>
+				<item id="ID_WINDOW_NAVBAR" text="Näytä Navigaatio _Palkki"/>
 				<item id="ID_WINDOW_TOOLBAR" text="Näytä _Työkalu Palkki"/>
 				<separator/>
 				<item id="ID_WINDOW_TABBAR" text="Näytä Välilehti _Palkki"/>
@@ -564,18 +564,18 @@
 			<item id="ID_TAB_NETWORK" text="_Verkko"/>
 			<separator/>
 			<item id="ID_VIEW_SECURITY" text="Tu_rvallisuus"/>
-			<item id="ID_VIEW_HOSTS" text="K_äyttäjä Välimuisti"/>
+			<item id="ID_VIEW_HOSTS" text="Kä_yttäjä Välimuisti"/>
 			<separator/>
 			<menu text="L_isää">
-				<item id="ID_VIEW_SYSTEM" text="J_ärjestelmä" shortcut="F11"/>
-				<item id="ID_VIEW_NEIGHBOURS" text="N_aapurit" shortcut="Ctrl+F11"/>
+				<item id="ID_VIEW_SYSTEM" text="Jä_rjestelmä" shortcut="F11"/>
+				<item id="ID_VIEW_NEIGHBOURS" text="_Naapurit" shortcut="Ctrl+F11"/>
 				<item id="ID_VIEW_DOWNLOADS" text="_Lataukset" shortcut="F3"/>
-				<item id="ID_VIEW_UPLOADS" text="_Lähetykset" shortcut="F4"/>
+				<item id="ID_VIEW_UPLOADS" text="Lä_hetykset" shortcut="F4"/>
 				<item id="ID_VIEW_LIBRARY" text="_Kirjasto" shortcut="F5"/>
 				<item id="ID_VIEW_MEDIA" text="_Media" shortcut="F6"/>
 				<separator/>
 				<item id="ID_VIEW_SECURITY" text="Tu_rvallisuus" shortcut="F7"/>
-				<item id="ID_VIEW_HOSTS" text="K_äyttäjä Välimuisti" shortcut="F8"/>
+				<item id="ID_VIEW_HOSTS" text="Kä_yttäjä Välimuisti" shortcut="F8"/>
 				<item id="ID_VIEW_DISCOVERY" text="Disco_very" shortcut="F9"/>
 				<item id="ID_VIEW_TRAFFIC" text="_Grafiikka" shortcut="F10"/>
 				<separator/>
@@ -584,8 +584,8 @@
 				<item id="ID_VIEW_RESULTS_MONITOR" text="O_suma Monitori" shortcut="Ctrl+F3"/>
 			</menu>
 			<separator/>
-			<item id="ID_VIEW_BASIC" text="N_ormaali Tila"/>
-			<item id="ID_VIEW_TABBED" text="V_älilehti Tila"/>
+			<item id="ID_VIEW_BASIC" text="_Normaali Tila"/>
+			<item id="ID_VIEW_TABBED" text="_Välilehti Tila"/>
 			<item id="ID_VIEW_WINDOWED" text="_Ikkunoitu Tila"/>
 		</menu>
 		<menu text="_Työkalut">
@@ -653,7 +653,7 @@
 				<item id="ID_VIEW_UPLOADS" text="_Lähetykset"/>
 				<separator/>
 				<item id="ID_VIEW_SECURITY" text="Tu_rvallisuus"/>
-				<item id="ID_VIEW_HOSTS" text="K_äyttäjä Välimuisti"/>
+				<item id="ID_VIEW_HOSTS" text="Kä_yttäjä Välimuisti"/>
 				<item id="ID_VIEW_DISCOVERY" text="Disco_very"/>
 			</menu>
 			<separator/>
@@ -722,7 +722,7 @@
 			<item id="ID_VIEW_MEDIA" text="_Media" shortcut="F6"/>
 			<separator/>
 			<item id="ID_VIEW_SECURITY" text="Tu_rvallisuus" shortcut="F7"/>
-			<item id="ID_VIEW_HOSTS" text="K_äyttäjä Välimuisti" shortcut="F8"/>
+			<item id="ID_VIEW_HOSTS" text="Kä_yttäjä Välimuisti" shortcut="F8"/>
 			<item id="ID_VIEW_DISCOVERY" text="Disco_very" shortcut="F9"/>
 			<item id="ID_VIEW_TRAFFIC" text="_Grafiikka" shortcut="F10"/>
 			<separator/>
@@ -813,7 +813,7 @@
 	<menu name="CMainWnd.View.Windowed">
 		<item id="ID_NETWORK_SEARCH" text="Uusi _Haku"/>
 		<separator/>
-		<item id="ID_VIEW_SYSTEM" text="J_ärjestelmä"/>
+		<item id="ID_VIEW_SYSTEM" text="Jä_rjestelmä"/>
 		<item id="ID_VIEW_NEIGHBOURS" text="N_aapurit"/>
 		<item id="ID_VIEW_DOWNLOADS" text="_Lataukset"/>
 		<item id="ID_VIEW_UPLOADS" text="_Lähetykset"/>
@@ -1202,8 +1202,9 @@
 		<item id="ID_LIBRARY_FOLDER_PROPERTIES" text="_Albumin Asetukset"/>
 	</menu>
 	<menu name="CLibraryHistoryPanel">
-		<item id="ID_LIBRARY_CLEAR_HISTORY" text="Clear from _History"/>
-		<item id="ID_LIBRARY_CLEAR_HISTORY_ALL" text="Tyhjennä _Kaikki"/>
+		<item id="ID_LIBRARY_SHOW_FILE" text="_Näytä Kirjasto"/>
+		<item id="ID_LIBRARY_CLEAR_HISTORY" text="Tyhjennä _Tämä Historiasta"/>
+		<item id="ID_LIBRARY_CLEAR_HISTORY_ALL" text="Tyhjennä _Koko Historia"/>
 	</menu>
 	<!-- LIBRARY VIEWS -->
 	<menu name="CLibraryTileView">
@@ -1219,7 +1220,7 @@
 		<separator/>
 		<item id="ID_LIBRARY_SHARED_FILE" text="_Jaettu"/>
 		<separator/>
-		<menu text="J_ärjestä">
+		<menu text="Jä_rjestä">
 			<item id="ID_LIBRARY_RENAME" text="_Nimeä Uudelleen"/>
 			<item id="ID_LIBRARY_COPY" text="_Kopioi Tiedostoja..."/>
 			<item id="ID_LIBRARY_MOVE" text="_Siirrä Tiedostoja..."/>
@@ -1252,7 +1253,7 @@
 		<item id="ID_LIBRARY_CREATETORRENT" text="Luo .torrent Tiedosto"/>
 		<item id="ID_LIBRARY_LAUNCH_FOLDER" text="Open _Folder"/>
 		<separator/>
-		<menu text="J_ärjestä">
+		<menu text="Jä_rjestä">
 			<item id="ID_LIBRARY_UNLINK" text="Poista _Tiedostot"/>
 			<separator/>
 			<item id="ID_LIBRARY_RENAME" text="_Nimeä Uudelleen"/>
@@ -1428,8 +1429,8 @@
 			<item id="ID_NETWORK_BT" text="_BitTorrent"/>
 			<separator/>
 			<item id="ID_VIEW_DISCOVERY" text="Disco_very"/>
-			<item id="ID_VIEW_HOSTS" text="K_äyttäjä Välimuisti"/>
-			<item id="ID_VIEW_SECURITY" text="Tu_rvallisuus"/>
+			<item id="ID_VIEW_HOSTS" text="_Käyttäjä Välimuisti"/>
+			<item id="ID_VIEW_SECURITY" text="_Turvallisuus"/>
 		</menu>
 		<menu text="_Monitori">
 			<item id="ID_NEIGHBOURS_VIEW_ALL" text="Näytä _Kaikki Liikenne"/>
@@ -1467,9 +1468,9 @@
 		<item id="ID_SECURITY_MOVE_DOWN" text="Siirrä _Alas"/>
 		<separator/>
 		<item id="ID_SECURITY_IMPORT" text="_Tuo..."/>
-		<item id="ID_SECURITY_EXPORT" text="V_ie..."/>
+		<item id="ID_SECURITY_EXPORT" text="_Vie..."/>
 		<separator/>
-		<menu text="Oletus K_äytäntö">
+		<menu text="Oletus _Käytäntö">
 			<item id="ID_SECURITY_POLICY_ACCEPT" text="_Salli"/>
 			<item id="ID_SECURITY_POLICY_DENY" text="_Estä"/>
 		</menu>
@@ -1484,7 +1485,7 @@
 		<item id="ID_DISCOVERY_REMOVE" text="_Poista"/>
 		<separator/>
 		<item id="ID_DISCOVERY_QUERY" text="_Kysele Nyt"/>
-		<item id="ID_DISCOVERY_ADVERTISE" text="M_Mainosta"/>
+		<item id="ID_DISCOVERY_ADVERTISE" text="_Mainosta"/>
 		<item id="ID_DISCOVERY_BROWSE" text="Selaa _Statistiikkaa"/>
 		<separator/>
 		<item id="ID_DISCOVERY_GNUTELLA" text="Näytä _Booststraps"/>
@@ -1529,20 +1530,20 @@
 		<newline gap="0"/>
 		<group id="1">
 			<icon res="136" width="32" height="32"/><gap size="8"/>
-			<heading align="middle">YHDISTÄ NYT</heading>
+			<heading align="middle">Yhdistä Nyt</heading>
 			<newline gap="8" indent="42"/>
-			<text>Tervetuloa Envyan! &#160;Sinä et ole tällä hetkellä yhteydessä mihinkään p2p verkkoon. &#160;</text>
-			<link target="command:ID_NETWORK_CONNECT">Klikkaa tähän aloittaaksesi!</link>
+			<text>Tervetuloa Envy. &#160;Sinä et ole tällä hetkellä yhteydessä mihinkään p2p verkkoon. &#160;</text>
+			<link target="command:ID_NETWORK_CONNECT">Klikkaa tähän aloittaaksesi.</link>
 			<newline gap="18" indent="0"/>
 		</group>
 		<group id="2">
 			<icon res="130" width="32" height="32"/><gap size="8"/>
-			<heading align="middle">ETSI LLA</heading>
+			<heading align="middle">Etsi Lla</heading>
 			<newline gap="8" indent="42"/>
 			<anchor id="SearchBox" width="256" height="80"/>
 			<newline gap="12" indent="0"/>
 			<icon res="122" width="32" height="32" target="command:shell:downloads"/><gap size="8"/>
-			<heading align="middle">OMAT LATAUKSET</heading>
+			<heading align="middle">Omat Lataukset</heading>
 			<newline gap="8" indent="42"/>
 			<text>Or open your completed </text>
 			<link target="command:shell:downloads">downloads folder.</link>
@@ -1550,16 +1551,16 @@
 		</group>
 		<group id="3">
 			<icon res="120" width="32" height="32" target="command:ID_TOOLS_SETTINGS"/><gap size="8"/>
-			<heading align="middle">PÄIVITYS HUOMAUTUS</heading>
+			<heading align="middle">Päivitys Huomautus</heading>
 			<newline gap="8" indent="42"/>
-			<text id="Päivitä"/>
+			<text id="Upgrade"/>
 			<newline gap="6"/>
 			<link target="command:upgrade">Klikkaa tähän päivittääksesi</link>
 			<newline gap="18" indent="0"/>
 		</group>
 		<group id="5">
 			<icon res="180" width="32" height="32" target="command:ID_TOOLS_WIZARD"/><gap size="8"/>
-			<heading align="middle">VAROITUS: SINUT ON PALOMUURTETTU</heading>
+			<heading align="middle">Varoitus: Sinut On Palomuurtettu</heading>
 			<newline gap="8" indent="42"/>
 			<text color="FF0000">Envy on huomannut että olet NAT reitittimen tai palomuurin takana,
 			ja sinä et voi ottaa yhteyksiä netistä. &#160;</text>
@@ -1569,7 +1570,7 @@
 			<newline gap="18" indent="0"/>
 		</group>
 		<icon res="120" width="32" height="32" target="command:ID_TOOLS_SETTINGS"/><gap size="8"/>
-		<heading align="middle">KUSTOMOI ENVY A</heading>
+		<heading align="middle">Kustomoi Envy A</heading>
 		<newline gap="12" indent="42"/>
 		<icon res="196" width="16" height="16" target="command:ID_TOOLS_SKIN"/><gap size="8"/>
 		<link target="command:ID_TOOLS_SKIN" align="middle" format="bu">Ulkoasut</link><gap size="6"/>
@@ -1595,7 +1596,7 @@
 		<group id="4">
 			<icon res="120" width="32" height="32"/>
 			<gap size="8"/>
-			<heading align="middle">KAUKO OHJAUS ON KÄYTÖSSÄ</heading>
+			<heading align="middle">Kauko Ohjaus On Käytössä</heading>
 			<newline gap="8" indent="42"/>
 			<text>Envyn Kauko Ohjaus on päällä. Voit kontrolloida Envya nettiselaimellasi osoitteessa:</text>
 			<newline gap="6"/>
@@ -1649,7 +1650,7 @@
 				<text id="ConnectedHours" format="b">%i </text>
 				<text>tuntia ja </text>
 				<text id="ConnectedMinutes" format="b">%i </text>
-				<text>minuuttia.</text>
+				<text>minuuttia</text>
 			</para>
 		</group>
 	</document>

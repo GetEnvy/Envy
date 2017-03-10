@@ -1,7 +1,7 @@
 //
 // RichViewCtrl.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
+// This file is part of Envy (getenvy.com) © 2016-2017
 // Portions copyright PeerProject 2008-2015 and Shareaza 2002-2007
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -152,7 +152,7 @@ BOOL CRichViewCtrl::GetElementRect(CRichElement* pElement, RECT* prc) const
 			prc->left	= pFragment->m_pt.x;
 			prc->top	= pFragment->m_pt.y;
 			prc->right	= prc->left + pFragment->m_sz.cx;
-			prc->bottom	= prc->top + pFragment->m_sz.cy;
+			prc->bottom	= prc->top  + pFragment->m_sz.cy;
 
 			return TRUE;
 		}
@@ -357,7 +357,8 @@ void CRichViewCtrl::OnMouseMove(UINT nFlags, CPoint point)
 
 				m_pHover = pHover;
 
-				if ( bPaint ) Invalidate();
+				if ( bPaint )
+					Invalidate();
 			}
 		}
 	}
@@ -422,9 +423,8 @@ void CRichViewCtrl::OnLButtonUp(UINT nFlags, CPoint point)
 void CRichViewCtrl::OnVScroll(UINT nSBCode, UINT nPos, CScrollBar* /*pScrollBar*/)
 {
 	SCROLLINFO pInfo = {};
-
-	pInfo.cbSize	= sizeof( pInfo );
-	pInfo.fMask		= SIF_POS|SIF_RANGE|SIF_PAGE;
+	pInfo.cbSize = sizeof( pInfo );
+	pInfo.fMask  = SIF_POS|SIF_RANGE|SIF_PAGE;
 
 	GetScrollInfo( SB_VERT, &pInfo );
 
@@ -660,7 +660,6 @@ void CRichViewCtrl::Layout(CDC* pDC, CRect* pRect)
 	m_nLength = pt.y - pRect->top + m_pDocument->m_szMargin.cy;
 
 	SCROLLINFO pInfo = {};
-
 	pInfo.cbSize	= sizeof( pInfo );
 	pInfo.fMask		= SIF_POS | SIF_RANGE | SIF_PAGE;
 
@@ -886,7 +885,7 @@ void CRichViewCtrl::CopySelection() const
 			}
 			else if ( pFragment->m_pElement->m_nType < retText )
 			{
-				str += ' ';
+				str += L' ';
 			}
 		}
 		else
@@ -960,6 +959,7 @@ void CRichViewCtrl::OnLButtonDblClk(UINT nFlags, CPoint point)
 CString CRichViewCtrl::GetWordFromPoint(CPoint& point, LPCTSTR szTokens) const
 {
 	ScreenToClient( &point );
+
 	CSingleLock pLock( &m_pDocument->m_pSection, TRUE );
 
 	const RICHPOSITION rp = PointToPosition( point );

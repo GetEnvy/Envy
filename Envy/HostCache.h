@@ -77,7 +77,7 @@ public:
 	BYTE			m_nKADVersion;	// Kademlia version
 
 	bool		ConnectTo(BOOL bAutomatic = FALSE);
-	CString		ToString(bool bLong = true) const;		// "10.0.0.1:6346 2002-04-30T08:30Z"
+	CString		ToString(const bool bLong = true) const;	// "10.0.0.1:6346 2002-04-30T08:30Z"
 	bool		IsExpired(const DWORD tNow) const;		// Is this host expired?
 	bool		IsThrottled(const DWORD tNow) const;	// Is host temporary throttled down?
 	bool		CanConnect(const DWORD tNow) const;		// Can we connect to this host now?
@@ -289,22 +289,7 @@ public:
 	void				OnFailure(const IN_ADDR* pAddress, WORD nPort, PROTOCOLID nProtocol = PROTOCOL_NULL, bool bRemove = true);
 	void				OnSuccess(const IN_ADDR* pAddress, WORD nPort, PROTOCOLID nProtocol = PROTOCOL_NULL, bool bUpdate = true);
 
-	inline bool EnoughServers(PROTOCOLID nProtocol) const
-	{
-		switch ( nProtocol )
-		{
-		case PROTOCOL_G2:
-			return Gnutella2.CountHosts( TRUE ) > 25;
-		case PROTOCOL_G1:
-			return Gnutella1.CountHosts( TRUE ) > 20;
-		case PROTOCOL_ED2K:
-			return eDonkey.CountHosts( TRUE ) > 0;
-		case PROTOCOL_DC:
-			return DC.CountHosts( TRUE ) > 0;
-		default:
-			return true;	// ( ForProtocol( nProtocol )->CountHosts( TRUE ) > 0 );
-		}
-	}
+	bool EnoughServers(PROTOCOLID nProtocol) const;
 
 	inline CHostCacheList* ForProtocol(PROTOCOLID nProtocol)
 	{
@@ -351,7 +336,7 @@ public:
 protected:
 	CList< CHostCacheList* >	m_pList;
 	mutable CCriticalSection	m_pSection;
-	DWORD		m_tLastPruneTime;
+	//DWORD		m_tLastPruneTime;	// Using static
 
 	void		Serialize(CArchive& ar);
 	int			LoadDefaultServers(PROTOCOLID nProtocol);

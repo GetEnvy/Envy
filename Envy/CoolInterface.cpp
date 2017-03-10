@@ -1,7 +1,7 @@
 //
 // CoolInterface.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
+// This file is part of Envy (getenvy.com) © 2016-2017
 // Portions copyright PeerProject 2008-2015 and Shareaza 2002-2008
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -205,48 +205,50 @@ void CCoolInterface::CopyIcon(UINT nFromID, UINT nToID, int nImageListType)
 	}
 }
 
-HICON CCoolInterface::ExtractIcon(UINT nID, BOOL bMirrored, int nImageListType)
+HICON CCoolInterface::ExtractIcon(UINT nID, BOOL bMirrored, int nImageListType /*1*/, int nSizeX /*0*/, int nSizeY /*0*/)
 {
 	//CQuickLock oLock( m_pSection );
 
 	HICON hIcon = NULL;
+	int cx = 0;
 	int nImage = ImageForID( nID, nImageListType );
 	if ( nImage >= 0 )
 	{
 		switch ( nImageListType )
 		{
 		case LVSIL_SMALL:
+			cx = 16;
 			hIcon = m_pImages16.ExtractIcon( nImage );
 			break;
 	//	case LVSIL_MID:
+	//		cx = 24;
 	//		hIcon = m_pImages24.ExtractIcon( nImage );
 	//		break;
 		case LVSIL_NORMAL:
+			cx = 32;
 			hIcon = m_pImages32.ExtractIcon( nImage );
 			break;
 		case LVSIL_BIG:
+			cx = 48;
 			hIcon = m_pImages48.ExtractIcon( nImage );
 			break;
 		}
 	}
+
 	if ( ! hIcon )
 	{
-		int cx = 0;
-		switch ( nImageListType )
+		if ( ! cx )
 		{
-		case LVSIL_SMALL:
-			cx = 16;
-			break;
-	//	case LVSIL_MID:
-	//		cx = 24;
-	//		break;
-		case LVSIL_NORMAL:
-			cx = 32;
-			break;
-		case LVSIL_BIG:
-			cx = 48;
-			break;
+			if ( nImageListType == LVSIL_SMALL )
+				cx = 16;
+			//else if ( nImageListType == LVSIL_MID )
+			//	cx = 24;
+			else if ( nImageListType == LVSIL_NORMAL )
+				cx = 32;
+			else if ( nImageListType == LVSIL_BIG )
+				cx = 48;
 		}
+
 		hIcon = (HICON)LoadImage( AfxGetResourceHandle(), MAKEINTRESOURCE( nID ), IMAGE_ICON, cx, cx, 0 );
 		if ( hIcon )
 			AddIcon( nID, hIcon, nImageListType );
@@ -255,11 +257,69 @@ HICON CCoolInterface::ExtractIcon(UINT nID, BOOL bMirrored, int nImageListType)
 			theApp.Message( MSG_DEBUG, L"Failed to load icon %d (%dx%d).", nID, cx, cx );
 #endif // _DEBUG
 	}
+
+	if ( ! hIcon )
+		return NULL;
+
 	if ( hIcon && bMirrored && nID != ID_HELP_ABOUT )
 	{
 		hIcon = CreateMirroredIcon( hIcon );
 		ASSERT( hIcon != NULL );
 	}
+
+	// Center size-mismatched icon (Not stretched)
+	if ( nSizeX > cx || nSizeY > cx )
+	{
+		HICON hIconNew = NULL;
+		if ( HDC hdcBitmap = CreateCompatibleDC( NULL ) )
+		{
+			if ( HDC hdcScreen = GetDC( NULL ) )
+			{
+				if ( HDC hdcMask = CreateCompatibleDC( NULL ) )
+				{
+					ICONINFO ii;
+					if ( GetIconInfo( hIcon, &ii ) )
+					{
+						// Do cleanup for the bitmaps
+						DeleteObject( ii.hbmMask );
+						DeleteObject( ii.hbmColor );
+						ii.hbmMask = ii.hbmColor = NULL;
+						if ( HBITMAP hbm = CreateCompatibleBitmap( hdcScreen, nSizeX, nSizeY ) )
+						{
+							if ( HBITMAP hbmMask = CreateBitmap( nSizeX, nSizeY, 1, 1, NULL ) )
+							{
+								int nOffsetX = (nSizeX - cx) / 2;
+								int nOffsetY = (nSizeY - cx) / 2;
+								HBITMAP hbmOld = (HBITMAP)SelectObject( hdcBitmap, hbm );
+								HBITMAP hbmOldMask = (HBITMAP)SelectObject( hdcMask, hbmMask );
+								DrawIconEx( hdcBitmap, nOffsetX, nOffsetY, hIcon, cx, cx, 0, NULL, DI_IMAGE );
+								DrawIconEx( hdcMask, nOffsetX, nOffsetY, hIcon, cx, cx, 0, NULL, DI_MASK );
+								SelectObject( hdcBitmap, hbmOld );
+								SelectObject( hdcMask, hbmOldMask );
+
+								// Create the new icon and delete bitmaps
+								ii.hbmMask = hbmMask;
+								ii.hbmColor = hbm;
+								hIconNew = CreateIconIndirect( &ii );
+
+								DeleteObject( hbmMask );
+							}
+							DeleteObject( hbm );
+						}
+					}
+					DeleteDC( hdcMask );
+				}
+				ReleaseDC( NULL, hdcScreen );
+			}
+			DeleteDC( hdcBitmap );
+		}
+
+		if ( hIconNew && hIcon )
+			VERIFY( DestroyIcon( hIcon ) );
+		if ( hIconNew )
+			return hIconNew;
+	}
+
 	return hIcon;
 }
 
@@ -358,30 +418,40 @@ BOOL CCoolInterface::ConfirmImageList()
 		  m_pImages48.Create( 48, 48, ILC_COLOR16|ILC_MASK, 16, 4 ) );
 }
 
-void CCoolInterface::LoadIconsTo(CImageList& pImageList, const UINT nID[], BOOL bMirror, int nImageListType)
+void CCoolInterface::LoadIconsTo(CImageList& pImageList, const UINT nID[], BOOL bMirror /*0*/, int nImageListType /*1*/, int nSizeX /*0*/, int nSizeY /*0*/)
 {
 	int nCount = 0;
 	for ( ; nID[ nCount ] ; ++nCount );
 	ASSERT( nCount != 0 );
 
-	int nSize = 16;		// LVSIL_SMALL
-	//if ( nImageListType == LVSIL_MID )
-	//	nSize = 24;
-	if ( nImageListType == LVSIL_NORMAL )
-		nSize = 32;
-	else if ( nImageListType == LVSIL_BIG )
-		nSize = 48;
+	if ( nImageListType == 16 )
+		nImageListType = LVSIL_SMALL;
+	else if ( nImageListType == 32 )
+		nImageListType = LVSIL_NORMAL;
+	//else if ( nImageListType == 24 )
+	//	nImageListType = LVSIL_MID;
+	//else if ( nImageListType == 48 )
+	//	nImageListType = LVSIL_BIG;
+
+	int nTypeSize = 16;		// LVSIL_SMALL
+	if ( nImageListType == LVSIL_NORMAL ) nTypeSize = 32;
+	//else if ( nImageListType == LVSIL_MID ) nTypeSize = 24;
+	//else if ( nImageListType == LVSIL_NORMAL ) nTypeSize = 48;
+
+	BOOL bCustomSize = nSizeX > nTypeSize || nSizeY > nTypeSize;
+	if ( nSizeX < nTypeSize ) nSizeX = nTypeSize;
+	if ( nSizeY < nTypeSize ) nSizeY = nTypeSize;
 
 	if ( pImageList.GetSafeHandle() )
 		VERIFY( pImageList.DeleteImageList() );
 
-	VERIFY( pImageList.Create( nSize, nSize, ILC_COLOR32|ILC_MASK, nCount, 0 ) ||
-			pImageList.Create( nSize, nSize, ILC_COLOR24|ILC_MASK, nCount, 0 ) ||
-			pImageList.Create( nSize, nSize, ILC_COLOR16|ILC_MASK, nCount, 0 ) );
+	VERIFY( pImageList.Create( nSizeX, nSizeY, ILC_COLOR32|ILC_MASK, nCount, 0 ) ||
+			pImageList.Create( nSizeX, nSizeY, ILC_COLOR24|ILC_MASK, nCount, 0 ) ||
+			pImageList.Create( nSizeX, nSizeY, ILC_COLOR16|ILC_MASK, nCount, 0 ) );
 
 	for ( int i = 0 ; nID[ i ] ; ++i )
 	{
-		if ( HICON hIcon = CoolInterface.ExtractIcon( nID[ i ], bMirror, nImageListType ) )
+		if ( HICON hIcon = CoolInterface.ExtractIcon( nID[ i ], bMirror, nImageListType, nSizeX, nSizeY ) )
 		{
 			VERIFY( pImageList.Add( hIcon ) != -1 );
 			VERIFY( DestroyIcon( hIcon ) );
@@ -402,9 +472,9 @@ void CCoolInterface::LoadFlagsTo(CImageList& pImageList)
 //	if ( pImageList.GetSafeHandle() )
 //		VERIFY( pImageList.DeleteImageList() );
 //
-//	VERIFY( pImageList.Create( FLAG_WIDTH, 16, ILC_COLOR32|ILC_MASK, nFlags, 0 ) ||
-//			pImageList.Create( FLAG_WIDTH, 16, ILC_COLOR24|ILC_MASK, nFlags, 0 ) ||
-//			pImageList.Create( FLAG_WIDTH, 16, ILC_COLOR16|ILC_MASK, nFlags, 0 ) );
+//	VERIFY( pImageList.Create( Flags.Width, 16, ILC_COLOR32|ILC_MASK, nFlags, 0 ) ||
+//			pImageList.Create( Flags.Width, 16, ILC_COLOR24|ILC_MASK, nFlags, 0 ) ||
+//			pImageList.Create( Flags.Width, 16, ILC_COLOR16|ILC_MASK, nFlags, 0 ) );
 
 //	//ImageList_SetIconSize( hList, 16, 16 );
 //	pImageList.Attach( hList );

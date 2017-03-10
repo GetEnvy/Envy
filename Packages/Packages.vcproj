@@ -2,9 +2,9 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="9.00"
-	Name="SkinInstaller"
+	Name="Packages"
 	ProjectGUID="{CAA6FCC8-27B1-42B9-B647-976E7BE79C70}"
-	RootNamespace="SkinInstaller"
+	RootNamespace="Packages"
 	TargetFrameworkVersion="131072"
 	>
 	<Platforms>
@@ -368,7 +368,7 @@
 				>
 			</File>
 			<File
-				RelativePath="Skin.c"
+				RelativePath="Packages.c"
 				>
 			</File>
 			<File
@@ -390,7 +390,7 @@
 				>
 			</File>
 			<File
-				RelativePath="Skin.h"
+				RelativePath="Packages.h"
 				>
 			</File>
 		</Filter>
@@ -412,7 +412,7 @@
 				>
 			</File>
 			<File
-				RelativePath="Res\Skin.ico"
+				RelativePath="Res\Packages.ico"
 				>
 			</File>
 		</Filter>

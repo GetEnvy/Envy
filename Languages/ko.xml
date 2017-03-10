@@ -3,7 +3,7 @@
 
 <!-- Envy Korean Language Skin File -->
 
-<!-- Translation based on default en.xml r16 --> <!--Machine Translated!-->
+<!-- Translation based on default en.xml r20 --> <!--Machine Translated!-->
 <!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -308,7 +308,7 @@
 	</toolbar>
 	<!-- MEDIA WINDOW -->
 	<toolbar name="CMediaFrame.Basic">
-		<button id="ID_MEDIA_PLAY" text="재생&#160;&#160;&#160;"/>
+		<button id="ID_MEDIA_PLAY" text="재생&#160; &#160;"/>
 		<button id="ID_MEDIA_PAUSE" text="일시 중지" visible="false"/>
 		<button id="ID_MEDIA_STOP" text="중지"/>
 		<separator/>
@@ -325,7 +325,7 @@
 		<button id="ID_MEDIA_PLAYLIST" text="재생"/>
 	</toolbar>
 	<toolbar name="CMediaFrame">
-		<button id="ID_MEDIA_PLAY" text="재생&#160;&#160;&#160;"/>
+		<button id="ID_MEDIA_PLAY" text="재생&#160; &#160;"/>
 		<button id="ID_MEDIA_PAUSE" text="일시 중지" visible="false"/>
 		<button id="ID_MEDIA_STOP" text="중지"/>
 		<separator/>
@@ -1307,6 +1307,7 @@
 		<item id="ID_LIBRARY_FOLDER_PROPERTIES" text="_Album Properties"/>
 	</menu>
 	<menu name="CLibraryHistoryPanel">
+		<item id="ID_LIBRARY_SHOW_FILE" text="_Show in Library"/>
 		<item id="ID_LIBRARY_CLEAR_HISTORY" text="Clear from _History"/>
 		<item id="ID_LIBRARY_CLEAR_HISTORY_ALL" text="Clear _All"/>
 	</menu>
@@ -2543,7 +2544,7 @@
 		<control text="Setup..."/>
 		<control text="Get More"/>
 	</dialog>
-	<dialog name="CAdvancedSettingsPage" cookie="SyBuStEdmsEdCoBuBu" caption="고급">
+	<dialog name="CAdvancedSettingsPage" cookie="SyBuStEdmsEdCoBuBuStEd" caption="고급">
 		<control/>
 		<control text="Setting Properties:"/>
 		<control text=" 값:"/>
@@ -2553,6 +2554,8 @@
 		<control/>
 		<control/>
 		<control text="기본값 복원"/>
+		<control/>
+		<control/>
 	</dialog>
 	<dialog name="CProtocolsSettingsPage" cookie="BuSy" caption="프로토콜">
 		<control text="Envy Common Architecture Protocol Explorer:"/>

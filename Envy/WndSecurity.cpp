@@ -457,7 +457,7 @@ void CSecurityWnd::OnSecurityExport()
 	}
 	else	// Generate .XML
 	{
-		unique_ptr< CXMLElement > pXML( new CXMLElement( NULL, L"security" ) );
+		augment::auto_ptr< CXMLElement > pXML( new CXMLElement( NULL, L"security" ) );
 
 		pXML->AddAttribute( L"xmlns", CSecurity::xmlns );
 

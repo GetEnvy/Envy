@@ -45,13 +45,13 @@ BEGIN
 		BEGIN
 			VALUE "ProductName", "Envy"
 			VALUE "ProductVersion", "1.0"
-			VALUE "FileVersion", "1.0.0.0"
-			VALUE "InternalName", "SkinInstaller"
-			VALUE "OriginalFilename", "SkinInstaller.exe"
-			VALUE "FileDescription", "Envy Skin Installer"
-			VALUE "Comments", "Envy Skin Installer"
+			VALUE "FileVersion", "1.0"
+			VALUE "InternalName", "Packages"
+			VALUE "OriginalFilename", "Packages.exe"
+			VALUE "FileDescription", "Envy Package Installer"
+			VALUE "Comments", "Envy Package Installer"
 			VALUE "CompanyName", "GetEnvy.com"
-			VALUE "LegalCopyright", "© Envy Development Team 2016"
+			VALUE "LegalCopyright", "© Envy Development Team 2016-2017"
 		END
 	END
 	BLOCK "VarFileInfo"
@@ -68,7 +68,7 @@ END
 
 // Icon with lowest ID value placed first to ensure
 // application icon remains consistent on all systems.
-IDI_ICON		ICON                    "Res\\Skin.ico"
+IDI_ICON		ICON                    "Res\\Packages.ico"
 IDI_ENVY		ICON                    "Res\\Envy.ico"
 
 
@@ -87,7 +87,7 @@ IDB_BANNER		BITMAP                  "Res\\Banner.bmp"
 
 IDD_MAIN DIALOGEX 0, 0, 292, 135
 STYLE DS_SETFONT | DS_MODALFRAME | DS_CENTER | WS_MINIMIZEBOX | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "Envy Skin Installer"
+CAPTION "Envy Package Installer"
 FONT 8, "Tahoma", 0, 0, 0x0
 BEGIN
     LTEXT           "",IDC_WHITERECT,0,31,293,75
@@ -167,21 +167,21 @@ LANGUAGE 9, 1
 // RT_MANIFEST
 //
 
-// Note: Obsolete, for reference.  Manifest is generated, see Skin.h for controls
+// Note: Obsolete, for reference.  Manifest is generated, see Packages.h for controls
 
 //#define IDR_MANIFEST 1	// 2 for a DLL
 //
 //IDR_MANIFEST RT_MANIFEST
 //{
 //   "<assembly xmlns=""urn:schemas-microsoft-com:asm.v1"" manifestVersion=""1.0"">
-//       <assemblyIdentity type=""win32"" name=""Envy.SkinInstaller"" version=""1.0.0.0""
+//       <assemblyIdentity type=""win32"" name=""Envy.Packages"" version=""1.0""
 //#ifdef WIN64
 //         processorArchitecture=""amd64""
 //#else
 //         processorArchitecture=""x86""
 //#endif
 //         publicKeyToken=""dfbe2673baf698eb"" />
-//      <description>Envy Skin Installer</description>
+//      <description>Envy Package Installer</description>
 //       <dependency>
 //         <dependentAssembly>
 //           <assemblyIdentity type=""win32"" name=""Microsoft.Windows.Common-Controls"" version=""6.0.0.0"" processorArchitecture=""*"" publicKeyToken=""6595b64144ccf1df"" language=""*"" />

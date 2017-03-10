@@ -42,11 +42,16 @@ protected:
 	CFontCombo		m_wndFonts;
 	CButton			m_wndBool;
 	CButton			m_wndDefault;
+	CStatic			m_wndQuickFilterIcon;
+	CEdit			m_wndQuickFilter;
+//	CEditItemList	m_pSettings;
 	bool			m_bUpdating;
+	UINT_PTR		m_nTimer;
 
-	void	AddSettings();				// Add settings to list
+//	int		GetListItem(const EditItem* pItem);
 	void	UpdateListItem(int nItem);	// Update list item
 	void	UpdateInputArea();			// Update edit box, spins and buttons
+	void	AddSettings();				// Add settings to list
 	void	CommitAll();				// Commit all data to settings
 	void	UpdateAll();				// Update settings list
 	bool	IsModified() const;			// Check if some of settings was modified
@@ -81,6 +86,8 @@ protected:
 	afx_msg void OnItemChangedProperties(NMHDR* pNMHDR, LRESULT* pResult);
 	afx_msg void OnColumnClickProperties(NMHDR* pNMHDR, LRESULT* pResult);
 	afx_msg void OnBnClickedDefaultValue();
+	afx_msg void OnEnChangeQuickfilter();
+	afx_msg void OnTimer(UINT_PTR nIDEvent);
 
 	DECLARE_MESSAGE_MAP()
 };

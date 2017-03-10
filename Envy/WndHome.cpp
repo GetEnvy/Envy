@@ -1,7 +1,7 @@
 //
 // WndHome.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
+// This file is part of Envy (getenvy.com) © 2016-2017
 // Portions copyright PeerProject 2008-2014 and Shareaza 2002-2008
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -33,6 +33,7 @@
 #include "Skin.h"
 #include "WndHome.h"
 #include "WndSearch.h"
+#include "WndLibrary.h"
 #include "WndBrowseHost.h"
 #include "WindowManager.h"
 #include "XML.h"
@@ -53,7 +54,9 @@ BEGIN_MESSAGE_MAP(CHomeWnd, CPanelWnd)
 	ON_WM_TIMER()
 	ON_WM_MDIACTIVATE()
 	ON_WM_CONTEXTMENU()
-	ON_UPDATE_COMMAND_UI(ID_LIBRARY_CLEAR_HISTORY, OnUpdateLibraryClear)
+	ON_UPDATE_COMMAND_UI(ID_LIBRARY_SHOW_FILE, OnUpdateLibraryFile)
+	ON_UPDATE_COMMAND_UI(ID_LIBRARY_CLEAR_HISTORY, OnUpdateLibraryFile)
+	ON_COMMAND(ID_LIBRARY_SHOW_FILE, OnLibraryShowFile)
 	ON_COMMAND(ID_LIBRARY_CLEAR_HISTORY, OnLibraryClear)
 	ON_COMMAND(ID_LIBRARY_CLEAR_HISTORY_ALL, OnLibraryClearAll)
 	ON_NOTIFY(RVN_CLICK, IDC_HOME_VIEW, OnClickView)
@@ -151,9 +154,25 @@ void CHomeWnd::OnContextMenu(CWnd* /*pWnd*/, CPoint point)
 
 // Context menu command handlers for CtrlHomePanel:
 
-void CHomeWnd::OnUpdateLibraryClear(CCmdUI* pCmdUI)
+void CHomeWnd::OnUpdateLibraryFile(CCmdUI* pCmdUI)
 {
 	pCmdUI->Enable( m_wndPanel.m_boxLibrary.m_nIndex >= 0 );
+}
+
+void CHomeWnd::OnLibraryShowFile()
+{
+	if ( m_wndPanel.m_boxLibrary.m_nIndex < 0 ) return;
+
+	CSingleLock pLock( &Library.m_pSection );
+	if ( ! SafeLock( pLock ) ) return;
+
+	if ( CLibraryFile* pFile = Library.LookupFile( m_wndPanel.m_boxLibrary.m_nIndex ) )
+	{
+		if ( CLibraryWnd* pLibrary = CLibraryWnd::GetLibraryWindow() )
+		{
+			pLibrary->Display( pFile );
+		}
+	}
 }
 
 void CHomeWnd::OnLibraryClear()

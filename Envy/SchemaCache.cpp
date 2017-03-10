@@ -1,7 +1,7 @@
 //
 // SchemaCache.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
+// This file is part of Envy (getenvy.com) © 2016-2017
 // Portions copyright PeerProject 2008-2014 and Shareaza 2002-2007
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -79,20 +79,13 @@ int CSchemaCache::Load()
 		CSchema* pSchema = new CSchema();
 		if ( pSchema && pSchema->Load( strPath ) )
 		{
-			CString strURI( pSchema->GetURI() );
-			strURI.MakeLower();
-
-			m_pURIs.SetAt( strURI, pSchema );
-
-			CString strName( pSchema->m_sSingular );
-			strName.MakeLower();
-
-			m_pNames.SetAt( strName, pSchema );
+			m_pURIs.SetAt( ToLower( pSchema->GetURI() ), pSchema );
+			m_pNames.SetAt( ToLower( pSchema->m_sSingular ), pSchema );
 
 			for ( POSITION pos = pSchema->GetFilterIterator() ; pos ; )
 			{
-				CString strType;
 				BOOL bResult;
+				CString strType;
 				pSchema->GetNextFilter( pos, strType, bResult );
 				if ( bResult )
 					m_pTypeFilters.SetAt( strType, pSchema );
@@ -203,8 +196,8 @@ CString CSchemaCache::GetFilter(LPCTSTR pszURI) const
 		{
 			for ( POSITION pos = pSchemaType->GetFilterIterator() ; pos ; )
 			{
-				CString strType;
 				BOOL bResult;
+				CString strType;
 				pSchemaType->GetNextFilter( pos, strType, bResult );
 				if ( bResult )
 				{

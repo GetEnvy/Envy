@@ -3,7 +3,7 @@
 
 <!-- Envy Default Polish Skin File -->
 
-<!-- Translation based on default en.xml r16 -->
+<!-- Translation based on default en.xml r20 -->
 <!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -1267,6 +1267,7 @@
 		<item id="ID_LIBRARY_FOLDER_PROPERTIES" text="Właściwości albumu"/>
 	</menu>
 	<menu name="CLibraryHistoryPanel">
+		<item id="ID_LIBRARY_SHOW_FILE" text="_Show in Library"/>
 		<item id="ID_LIBRARY_CLEAR_HISTORY" text="Clear from _History"/>
 		<item id="ID_LIBRARY_CLEAR_HISTORY_ALL" text="Wyczyść _wszystkie"/>
 	</menu>
@@ -3463,7 +3464,7 @@
 		<control text="Ustaw..."/>
 		<control text="Zdobądź więcej"/>
 	</dialog>
-	<dialog name="CAdvancedSettingsPage" cookie="SyBuStEdmsEdCoBuBu" caption="Zaawansowane">
+	<dialog name="CAdvancedSettingsPage" cookie="SyBuStEdmsEdCoBuBuStEd" caption="Zaawansowane">
 		<control/>
 		<control text="Właściwości ustawienia:"/>
 		<control text="Wartość:"/>
@@ -3473,6 +3474,8 @@
 		<control/>
 		<control/>
 		<control text="Ustaw domyślne"/>
+		<control/>
+		<control/>
 	</dialog>
 	<dialog name="CProtocolsSettingsPage" cookie="BuSy" caption="Protokoły">
 		<control text="Przeglądarka Protokołu Wspólnej Architektury Envyy:"/>

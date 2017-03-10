@@ -3,7 +3,7 @@
 
 <!-- Envy Default Turkish Skin File -->
 
-<!-- Translation based on default en.xml r16 -->
+<!-- Translation based on default en.xml r20 -->
 <!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -1260,6 +1260,7 @@
 		<item id="ID_LIBRARY_FOLDER_PROPERTIES" text="Albüm Ö_zellikleri"/>
 	</menu>
 	<menu name="CLibraryHistoryPanel">
+		<item id="ID_LIBRARY_SHOW_FILE" text="_Show in Library"/>
 		<item id="ID_LIBRARY_CLEAR_HISTORY" text="Clear from _History"/>
 		<item id="ID_LIBRARY_CLEAR_HISTORY_ALL" text="_Tümünü Temizle"/>
 	</menu>
@@ -3731,7 +3732,7 @@
 		<control text="_Kur..."/>
 		<control text="Dahası"/>
 	</dialog>
-	<dialog name="CAdvancedSettingsPage" cookie="SyBuStEdmsEdCoBuBu" caption="İleri">
+	<dialog name="CAdvancedSettingsPage" cookie="SyBuStEdmsEdCoBuBuStEd" caption="İleri">
 		<control/>
 		<control text="Özellik ayarları:"/>
 		<control text="Değer:"/>
@@ -3741,6 +3742,8 @@
 		<control/>
 		<control/>
 		<control text="Temel Yap"/>
+		<control/>
+		<control/>
 	</dialog>
 	<dialog name="CProtocolsSettingsPage" cookie="BuSy" caption="Protokoller">
 		<control text="Envy Genel Mimarlık Protokol Araştırıcısı:"/>

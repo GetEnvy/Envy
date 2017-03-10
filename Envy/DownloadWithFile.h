@@ -29,12 +29,12 @@ protected:
 	virtual ~CDownloadWithFile();
 
 public:
-	TRISTATE		m_bVerify;				// Verify status (TRI_TRUE verified, TRI_FALSE failed, TRI_UNKNOWN not yet)
+	TRISTATE		m_bVerify;					// Verify status (TRI_TRUE verified, TRI_FALSE failed, TRI_UNKNOWN not yet)
 	DWORD			m_tReceived;
 private:
-	unique_ptr< CFragmentedFile > m_pFile;	// File(s)
-	DWORD			m_nFileError;			// Last file/disk error
-	CString			m_sFileError;			// More info about error
+	augment::auto_ptr< CFragmentedFile > m_pFile;	// File(s)
+	DWORD			m_nFileError;				// Last file/disk error
+	CString			m_sFileError;				// More info about error
 
 public:
 	virtual float	GetProgress() const;

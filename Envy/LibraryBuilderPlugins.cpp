@@ -60,7 +60,7 @@ bool CLibraryBuilderPlugins::ExtractPluginMetadata(DWORD nIndex, const CString& 
 		if ( ! pPlugin )
 			break;
 
-		unique_ptr< CXMLElement > pXML( new CXMLElement() );
+		augment::auto_ptr< CXMLElement > pXML( new CXMLElement() );
 		CComPtr< ISXMLElement > pISXMLElement;
 		pISXMLElement.Attach( (ISXMLElement*)CXMLCOM::Wrap( pXML.get(), IID_ISXMLElement ) );
 		HRESULT hr = SafeProcess( pPlugin, CComBSTR( strPath ), pISXMLElement );

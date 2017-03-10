@@ -542,7 +542,7 @@ BOOL CNetwork::AsyncResolve(LPCTSTR pszAddress, WORD nPort, PROTOCOLID nProtocol
 {
 	theApp.Message( MSG_INFO, IDS_NETWORK_RESOLVING, pszAddress );
 
-	unique_ptr< ResolveStruct > pResolve( new ResolveStruct );
+	augment::auto_ptr< ResolveStruct > pResolve( new ResolveStruct );
 	if ( pResolve.get() )
 	{
 		pResolve->m_sAddress	= pszAddress;
@@ -843,8 +843,8 @@ void CNetwork::OnRun()
 					NodeRoute->SetDuration( Settings.Gnutella.RouteCache );
 					QueryRoute->SetDuration( Settings.Gnutella.RouteCache );
 
-					Neighbours.IsG2HubCapable( FALSE, TRUE );
-					Neighbours.IsG1UltrapeerCapable( FALSE, TRUE );
+					Neighbours.IsG2HubCapable( FALSE, TRUE );			// Debug notes?
+					Neighbours.IsG1UltrapeerCapable( FALSE, TRUE );		// Debug notes?
 
 					// It will check if it is needed inside the function
 					DiscoveryServices.Execute( TRUE, PROTOCOL_NULL, FALSE );
@@ -915,7 +915,7 @@ void CNetwork::PostRun()
 
 void CNetwork::OnWinsock(WPARAM wParam, LPARAM lParam)
 {
-	unique_ptr< const ResolveStruct > pResolve( GetResolve( (HANDLE)wParam ) );
+	augment::auto_ptr< const ResolveStruct > pResolve( GetResolve( (HANDLE)wParam ) );
 	if ( ! pResolve.get() )
 		return;		// Out of memory
 
