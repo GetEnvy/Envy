@@ -529,6 +529,8 @@
 		<type extension="fpx"/>
 		<type extension="gif"/>
 		<type extension="hdp"/>
+		<type extension="heic"/>
+		<type extension="heif"/>
 		<type extension="iff"/>
 		<type extension="ico"/>
 		<type extension="img"/>

@@ -139,7 +139,7 @@ STDMETHODIMP CApplication::XApplication::CheckVersion(BSTR sVersion)
 	METHOD_PROLOGUE( CApplication, Application )
 	if ( sVersion == NULL ) return E_INVALIDARG;
 
-	WORD nDesired[2];
+	UINT nDesired[2];
 	if ( swscanf_s( sVersion, L"%u.%u",
 		 &nDesired[0], &nDesired[1] ) != 2 )
 		return E_INVALIDARG;

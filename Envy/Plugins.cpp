@@ -1,7 +1,7 @@
 //
 // Plugins.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2017
+// This file is part of Envy (getenvy.com) © 2016-2018
 // Portions copyright PeerProject 2008-2014 and Shareaza 2002-2006
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -75,7 +75,7 @@ BOOL CPlugins::Register(const CString& sPath)
 				{
 					hr = pfnDllInstall( TRUE, L"user" );
 				}
-				else
+				else	// Should never happen
 				{
 					HRESULT (WINAPI *pfnDllRegisterServer)(void);
 					(FARPROC&)pfnDllRegisterServer = GetProcAddress( hDll, "DllRegisterServer" );
@@ -86,7 +86,7 @@ BOOL CPlugins::Register(const CString& sPath)
 				if ( hr == S_OK )
 				{
 					nSucceeded++;
-					theApp.Message( MSG_NOTICE, L"Registered plugin: %s", strName );
+					theApp.Message( MSG_NOTICE, L"Registered plugin: %s", (LPCTSTR)strName );
 				}
 				else if ( FAILED( hr ) )
 				{
@@ -131,7 +131,7 @@ BOOL CPlugins::Register(const CString& sPath)
 					if ( dwError == ERROR_SUCCESS )
 					{
 						nSucceeded++;
-						theApp.Message( MSG_NOTICE, L"Registered plugin: %s", strName );
+						theApp.Message( MSG_NOTICE, L"Registered plugin: %s", (LPCTSTR)strName );
 					}
 					else
 					{

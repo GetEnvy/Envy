@@ -300,7 +300,7 @@ BOOL CDownloadGroups::Load()
 	CFile pFile;
 	if ( ! pFile.Open( strFile, CFile::modeRead | CFile::shareDenyWrite | CFile::osSequentialScan ) )
 	{
-		theApp.Message( MSG_ERROR, L"Failed to load download groups: %s", strFile );
+		theApp.Message( MSG_ERROR, L"Failed to load download groups: %s", (LPCTSTR)strFile );
 		return FALSE;
 	}
 
@@ -320,7 +320,7 @@ BOOL CDownloadGroups::Load()
 			ar.Abort();
 			pFile.Abort();
 			pException->Delete();
-			theApp.Message( MSG_ERROR, L"Failed to load download groups: %s", strFile );
+			theApp.Message( MSG_ERROR, L"Failed to load download groups: %s", (LPCTSTR)strFile );
 		}
 		pFile.Close();
 	}
@@ -328,7 +328,7 @@ BOOL CDownloadGroups::Load()
 	{
 		pFile.Abort();
 		pException->Delete();
-		theApp.Message( MSG_ERROR, L"Failed to load download groups: %s", strFile );
+		theApp.Message( MSG_ERROR, L"Failed to load download groups: %s", (LPCTSTR)strFile );
 	}
 
 	m_nSaveCookie = m_nBaseCookie;
@@ -348,7 +348,7 @@ BOOL CDownloadGroups::Save(BOOL bForce)
 	if ( ! pFile.Open( strTemp, CFile::modeWrite | CFile::modeCreate | CFile::shareExclusive | CFile::osSequentialScan ) )
 	{
 		DeleteFile( strTemp );
-		theApp.Message( MSG_ERROR, L"Failed to save download groups: %s", strTemp );
+		theApp.Message( MSG_ERROR, L"Failed to save download groups: %s", (LPCTSTR)strTemp );
 		return FALSE;
 	}
 
@@ -370,7 +370,7 @@ BOOL CDownloadGroups::Save(BOOL bForce)
 			ar.Abort();
 			pFile.Abort();
 			pException->Delete();
-			theApp.Message( MSG_ERROR, L"Failed to save download groups: %s", strTemp );
+			theApp.Message( MSG_ERROR, L"Failed to save download groups: %s", (LPCTSTR)strTemp );
 			return FALSE;
 		}
 		pFile.Close();
@@ -379,14 +379,14 @@ BOOL CDownloadGroups::Save(BOOL bForce)
 	{
 		pFile.Abort();
 		pException->Delete();
-		theApp.Message( MSG_ERROR, L"Failed to save download groups: %s", strTemp );
+		theApp.Message( MSG_ERROR, L"Failed to save download groups: %s", (LPCTSTR)strTemp );
 		return FALSE;
 	}
 
 	if ( ! MoveFileEx( strTemp, strFile, MOVEFILE_COPY_ALLOWED | MOVEFILE_REPLACE_EXISTING ) )
 	{
 		DeleteFile( strTemp );
-		theApp.Message( MSG_ERROR, L"Failed to save download groups: %s", strFile );
+		theApp.Message( MSG_ERROR, L"Failed to save download groups: %s", (LPCTSTR)strFile );
 		return FALSE;
 	}
 

@@ -1,7 +1,7 @@
 //
 // ImageFile.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
+// This file is part of Envy (getenvy.com) © 2016-2018
 // Portions copyright PeerProject 2008-2015 and Shareaza 2002-2008
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -199,7 +199,7 @@ BOOL CImageFile::LoadFromBitmap(HBITMAP hBitmap, BOOL bScanOnly)
 	LPBYTE dst = m_pImage;
 	for ( LONG j = 0 ; j < bmInfo.bmHeight ; ++j, dst += line_size )
 	{
-		BYTE c;
+		BYTE c = 0;
 	//	if ( m_nComponents = 4 )
 	//	{
 	//		for ( LONG i = 0 ; i < bmInfo.bmWidth * 4 ; i += 3 )
@@ -214,8 +214,8 @@ BOOL CImageFile::LoadFromBitmap(HBITMAP hBitmap, BOOL bScanOnly)
 	//	{
 			for ( LONG i = 0, max = bmInfo.bmWidth * m_nComponents ; i < max ; i += 3 )
 			{
-				c = dst[i + 0];
-				dst[i + 0] = dst[i + 2];
+				c = dst[i];
+				dst[i] = dst[i + 2];
 				dst[i + 2] = c;
 			}
 	//	}

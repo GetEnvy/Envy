@@ -137,9 +137,11 @@ public:
 		DWORD		SidebarWidth;
 		DWORD		SidebarPadding;
 		DWORD		Splitter;
-		DWORD		RowSize;				// 17 pixel ITEM_HEIGHT in custom-draw lists
 		DWORD		LibIconsX;
 		DWORD		LibIconsY;
+		DWORD		RowSize;				// ~17 pixel ITEM_HEIGHT in custom-draw lists (or ~26 HiRes)
+		DWORD		IconSize;				// 16 (or 24 HiRes)
+		bool		HiRes;					// 1.5x Mode
 	} Skin;
 
 	struct sWindows

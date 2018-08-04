@@ -1,7 +1,7 @@
 //
 // Neighbours.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2017
+// This file is part of Envy (getenvy.com) © 2016-2018
 // Portions copyright PeerProject 2008-2014 and Shareaza 2002-2007
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -18,7 +18,7 @@
 
 // Complete the CNeighbours inheritance column, calling Close on each neighbour when the program exits
 // http://shareaza.sourceforge.net/mediawiki/index.php/Developers.Code.CNeighbours
-// http://getenvy.com/shareazawiki/Developers.Code.CNeighbours.html
+// http://getenvy.com/archives/shareazawiki/Developers.Code.CNeighbours.html
 
 #include "StdAfx.h"
 #include "Settings.h"

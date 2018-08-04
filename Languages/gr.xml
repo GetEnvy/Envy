@@ -3,14 +3,13 @@
 
 <!-- Envy Default Greek Skin File -->
 
-<!-- Translation based on default en.xml r20 -->
-<!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
+<!-- Translation based on default en.xml r21 -->
+<!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
-<!-- Use this file as a basis for creating new language skins,   -->
-<!-- however be sure to include only sections that are changed:  -->
-<!-- Unedited English content limits compatibility & performance.-->
-<!-- Better to be concise than literal:  Please test visibility! -->
+<!-- Use this file as a basis for creating new languages. -->
+<!-- Only include changed sections, not unedited English. -->
+<!-- Better concise than literal, please test visibility. -->
 
 <!-- Manifest -->
 <manifest
@@ -588,7 +587,6 @@
 					<!--item id="ID_HELP_WEB_SKINS" text="Φλοιοί Envy"-->
 					<!--item id="ID_HELP_DONATE" text="Δωρεά στο Envy"-->
 					<item id="ID_HELP_UPDATE" text="Τελευταία νέα"/>
-					<!--item id="ID_HELP_WEB_1" text="Zeropaid.com"-->
 				</menu>
 				<item id="ID_HELP_HOMEPAGE" text="Ιστοσελίδα_Envy"/>
 				<separator/>
@@ -688,7 +686,6 @@
 				<item id="ID_HELP_FORUMS_LOCAL" text="Envy Forums Ελληνικά"/>
 				<!--item id="ID_HELP_WEB_SKINS" text="Φλοιοί Envy"-->
 				<item id="ID_HELP_UPDATE" text="Τελευταία νέα"/>
-				<!--item id="ID_HELP_WEB_1" text="Zeropaid.com"-->
 			</menu>
 			<separator/> <!--
 			<item id="ID_HELP_VERSION_CHECK" text="Έλεγχος για νέα έκδοση"/>
@@ -759,7 +756,6 @@
 				<item id="ID_HELP_FORUMS_LOCAL" text="Envy Forums Ελληνικά"/>
 				<!--item id="ID_HELP_WEB_SKINS" text="Φλοιοί Envy"-->
 				<item id="ID_HELP_UPDATE" text="Τελευταία νέα"/>
-				<!--item id="ID_HELP_WEB_1" text="Zeropaid.com"-->
 			</menu>
 			<separator/> <!--
 			<item id="ID_HELP_VERSION_CHECK" text="Έλεγχος για νέα έκδοση"/>
@@ -852,7 +848,6 @@
 				<item id="ID_HELP_FORUMS" text="Envy Forums Ελληνικά"/>
 				<!--item id="ID_HELP_WEB_SKINS" text="Φλοιοί Envy"-->
 				<item id="ID_HELP_UPDATE" text="Τελευταία νέα"/>
-				<!--item id="ID_HELP_WEB_1" text="Zeropaid.com"-->
 			</menu>
 			<separator/> <!--
 			<item id="ID_HELP_VERSION_CHECK" text="Έλεγχος για νέα έκδοση"/>
@@ -1175,6 +1170,8 @@
 		<item id="ID_DOWNLOADS_EDIT" text="Ιδιότητες..."/>
 	</menu>
 	<menu name="CDownloadsWnd.Default">
+		<item id="ID_DOWNLOADS_FOLDER" text="Άνοιγμα _Folder"/>
+		<separator/>
 		<item id="ID_TOOLS_DOWNLOAD" text="Start Νέα Download"/>
 		<item id="ID_TOOLS_SEEDTORRENT" text="Seed Νέα Torrent"/>
 		<item id="ID_DOWNLOADS_CLEAR_COMPLETED" text="Απόσυρση Ολοκληρωμένων"/>
@@ -4125,7 +4122,7 @@
 		<control text="Διεύθυνση Υπηρεσίας:"/>
 		<control/>
 		<control text="Τύπος Υπηρεσίας:"/>
-		<control text="Gnutella Bootstrap|GWebCache|Server.met URL|Φραγμένη"/>
+		<control text="G2/G1 GWebCache|G2 WebCache|G1 WebCache|Gnutella Bootstrap|Server.met URL|DC++ Hublist|Φραγμένη"/>
 		<control text="OK"/>
 		<control text="Άκυρο"/>
 	</dialog>

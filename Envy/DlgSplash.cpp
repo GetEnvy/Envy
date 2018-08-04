@@ -1,7 +1,7 @@
 //
 // DlgSplash.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
+// This file is part of Envy (getenvy.com) © 2016-2018
 // Portions copyright PeerProject 2008-2015 and Shareaza 2002-2008
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -37,8 +37,8 @@ static char THIS_FILE[] = __FILE__;
 #define COLOR_TEXT			RGB( 255, 255, 255 )
 #define COLOR_TEXT_SHADOW	RGB( 234, 164, 0 )
 #define COLOR_TEXT_FADE		RGB( 244, 178, 10 )
-#define COLOR_BAR_FILL		RGB( 242, 178, 10 )
-#define COLOR_BAR_PROGRESS	RGB( 254, 250, 246 )
+#define COLOR_BAR_FILL		RGB( 254, 230, 150 )
+#define COLOR_BAR_PROGRESS	RGB( 255, 255, 254 )
 //#define COLOR_BAR_UPPEREDGE	RGB( 236, 230, 220 )
 //#define COLOR_BAR_LOWEREDGE	RGB( 236, 230, 220 )
 

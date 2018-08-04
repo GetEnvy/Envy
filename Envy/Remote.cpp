@@ -480,7 +480,7 @@ void CRemote::Output(LPCTSTR pszName)
 	if ( ! hFile.Open( strValue, CFile::modeRead ) ) return;
 
 	int nBytes = (int)hFile.GetLength();
-	CAutoVectorPtr< BYTE > pBytes ( new BYTE[ nBytes ] );
+	CAutoVectorPtr< BYTE > pBytes( new BYTE[ nBytes ] );
 	hFile.Read( pBytes, nBytes );
 	hFile.Close();
 	LPCSTR pBody = (LPCSTR)(BYTE*)pBytes;

@@ -18,7 +18,7 @@
 
 // Complete the CNeighbours inheritance column, calling Close on each neighbour when the program exits
 // http://shareaza.sourceforge.net/mediawiki/index.php/Developers.Code.CNeighbours
-// http://getenvy.com/shareazawiki/Developers.Code.CNeighbours.html
+// http://getenvy.com/archives/shareazawiki/Developers.Code.CNeighbours.html
 
 #pragma once
 

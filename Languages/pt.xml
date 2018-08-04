@@ -3,14 +3,13 @@
 
 <!-- Envy Default Brazilian Portuguese Skin File -->
 
-<!-- Translation based on default en.xml r20 -->
-<!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
+<!-- Translation based on default en.xml r21 -->
+<!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
-<!-- Use this file as a basis for creating new language skins,   -->
-<!-- however be sure to include only sections that are changed:  -->
-<!-- Unedited English content limits compatibility & performance.-->
-<!-- Better to be concise than literal:  Please test visibility! -->
+<!-- Use this file as a basis for creating new languages. -->
+<!-- Only include changed sections, not unedited English. -->
+<!-- Better concise than literal, please test visibility. -->
 
 <!-- Manifest -->
 <manifest
@@ -438,7 +437,7 @@
 		<rightalign/>
 		<button id="ID_DISCOVERY_WEBCACHE" text="GWebCaches"/>
 		<button id="ID_DISCOVERY_GNUTELLA" text="Bootstraps"/>
-		<button id="ID_DISCOVERY_SERVERLIST" text="Server.met/Hublists"/>
+		<button id="ID_DISCOVERY_SERVERLIST" text="Server Listas"/>
 		<button id="ID_DISCOVERY_BLOCKED" text="Bloqueado"/>
 	</toolbar>
 	<!-- HOST CACHE WINDOW -->
@@ -608,12 +607,8 @@
 				<item id="ID_HELP_FORUMS_LOCAL" text="_Foro de Português"/>
 				<separator/>
 			<!--
-				<menu text="Ayuda de SkinVista">
+				<menu text="Ayuda de Menu">
 					<menu text="Vuelve a cargar la interfaz gráfica para eliminar los errores: Ctrl+Mays+Z"> </menu>
-				</menu>
-				<menu text="_Enlaces">
-					<item id="ID_HELP_WEB_3" text="Slyck.com"/>
-					<item id="ID_HELP_WEB_1" text="ZeroPaid.com"/>
 				</menu>
 			-->
 				<item id="ID_HELP_HOMEPAGE" text="GetEnvy.com"/>
@@ -717,7 +712,6 @@
 				<item id="ID_HELP_VERSION_CHECK" text="Procurar nova _versão"/>
 				<!--item id="ID_HELP_DONATE" text="_Doar para o Projeto Envy."-->
 				<!--item id="ID_HELP_WEB_SKINS" text="Envy S_kins"-->
-				<!--item id="ID_HELP_WEB_1" text="Zeropaid.com"-->
 			</menu>
 			<item id="ID_HELP_HOMEPAGE" text="_Site do Envy"/>
 			<separator/>
@@ -876,7 +870,6 @@
 				<item id="ID_HELP_FORUMS_LOCAL" text="_Foro de Português"/>
 				<!--separator-->
 				<!--item id="ID_HELP_UPDATE" text="Últimas notícias"-->
-				<!--item id="ID_HELP_WEB_1" text="Zeropaid.com"-->
 			</menu>
 			<separator/> <!--
 			<item id="ID_HELP_VERSION_CHECK" text="Procurar nova _versão"/>
@@ -1204,6 +1197,8 @@
 		<item id="ID_DOWNLOADS_EDIT" text="_Propriedades..."/>
 	</menu>
 	<menu name="CDownloadsWnd.Default">
+		<item id="ID_DOWNLOADS_FOLDER" text="Abrir _Folder"/>
+		<separator/>
 		<item id="ID_TOOLS_DOWNLOAD" text="Start Novo Download"/>
 		<item id="ID_TOOLS_SEEDTORRENT" text="Seed Novo Torrent"/>
 		<item id="ID_DOWNLOADS_CLEAR_COMPLETED" text="L_impar os Completados"/>
@@ -4195,7 +4190,7 @@
 		<control text="Endereço do _Serviço:"/>
 		<control/>
 		<control text="Tipo de Serviço de Descobrimento:"/>
-		<control text="Gnutella Bootstrap|G1 GWebCache|G2 GWebCache|G1/G2 GWebCache|Server.met URL|Bloqueado"/>
+		<control text="G2/G1 GWebCache|G2 WebCache|G1 WebCache|Gnutella Bootstrap|Server.met URL|DC++ Hublist|Bloqueado"/>
 		<control text="OK"/>
 		<control text="Cancelar"/>
 	</dialog>

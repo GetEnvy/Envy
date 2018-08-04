@@ -1,7 +1,7 @@
 //
 // Flags.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2017
+// This file is part of Envy (getenvy.com) © 2016-2018
 // Portions copyright PeerProject 2008-2014 and Shareaza 2002-2007
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -181,10 +181,10 @@ void CFlags::Clear()
 
 int CFlags::GetCount() const
 {
-	if ( m_pImage.m_hImageList )
-		return m_pImage.GetImageCount();
+	if ( ! m_pImage.m_hImageList )
+		return NULL;	// Startup
 
-	return NULL;	// Startup
+	return m_pImage.GetImageCount();
 }
 
 int CFlags::GetFlagIndex(const CString& sCountryCode) const

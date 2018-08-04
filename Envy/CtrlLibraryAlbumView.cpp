@@ -1,7 +1,7 @@
 //
 // CtrlLibraryAlbumView.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
+// This file is part of Envy (getenvy.com) © 2016-2018
 // Portions copyright PeerProject 2008-2014 and Shareaza 2002-2007
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -1099,14 +1099,14 @@ BOOL CLibraryAlbumTrack::Update(CLibraryFile* pFile)
 			if ( nSplit >= 0 && nSplit < m_sLength.GetLength() )
 				swscanf_s( m_sLength.Mid( nSplit ), L"%f", &fSeconds );
 
-			m_sLength.Format( L"%s:%02i", m_sLength.Left( nSplit ), (int)(fSeconds * 60) );
+			m_sLength.Format( L"%s:%02i", (LPCTSTR)m_sLength.Left( nSplit ), (int)(fSeconds * 60) );
 		}
 		else
 		{
 			CString strSize = pFile->m_pMetadata->GetAttributeValue( L"width" );  // Image
 			if ( ! strSize.IsEmpty() )
 			{
-				m_sLength.Format( L"%s x %s", strSize, pFile->m_pMetadata->GetAttributeValue( L"height" ) );
+				m_sLength.Format( L"%s x %s", (LPCTSTR)strSize, (LPCTSTR)pFile->m_pMetadata->GetAttributeValue( L"height" ) );
 			}
 			else
 			{
@@ -1123,7 +1123,7 @@ BOOL CLibraryAlbumTrack::Update(CLibraryFile* pFile)
 					strSize = pFile->m_pMetadata->GetAttributeValue( L"filecount" );  // Archive
 					if ( ! strSize.IsEmpty() )
 					{
-						m_sLength.Format( L"%s", strSize );
+						m_sLength.Format( L"%s", (LPCTSTR)strSize );
 					}
 					else
 					{

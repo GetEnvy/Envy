@@ -1,7 +1,7 @@
 //
 // Augment/auto_ptr.hpp
 //
-// This file is part of Envy (getenvy.com) © 2016
+// This file is part of Envy (getenvy.com) © 2016-2018
 // Portions copyright PeerProject 2008-2014 and Shareaza 2002-2007
 //
 // Envy is free software; you can redistribute it and/or
@@ -15,7 +15,6 @@
 // See the GNU General Public License for more details.
 // (http://www.gnu.org/licenses/gpl.html)
 //
-//
 
 #pragma once
 
@@ -25,10 +24,16 @@
 //#include <Boost/type_traits/is_same.hpp>	// Use tr1 above
 //#include <Boost/checked_delete.hpp> 		// Was boost::checked_delete()
 
+// ToDo: Remove deprecated support for VS2010 std::tr1
+//#define _HAS_TR1_NAMESPACE 1
+//#define _SILENCE_TR1_NAMESPACE_DEPRECATION_WARNING 1
+#if !defined(_MSC_VER) || (_MSC_VER < 1700)		// VS2010~
+#define std::is_same std::tr1::is_same
+#endif
+
 
 namespace augment
 {
-
 	// delete, with compile-time type check, from boost::checked_delete.hpp:
 	template<class T> inline void checked_delete(T * x)
 	{
@@ -156,10 +161,10 @@ namespace augment
 
 		template<typename target_element_type>
 		operator auto_ptr_ref< target_element_type,
-			std::tr1::is_same< target_element_type, element_type >::value >() throw()
+			std::is_same< target_element_type, element_type >::value >() throw()
 		{
 			return auto_ptr_ref< target_element_type,
-				std::tr1::is_same< target_element_type, element_type >::value >( &ptr_, get() );
+				std::is_same< target_element_type, element_type >::value >( &ptr_, get() );
 		}
 	private:
 		const void* ptr_;

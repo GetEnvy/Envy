@@ -3,14 +3,13 @@
 
 <!-- Envy Default Slovenian Skin File -->
 
-<!-- Translation based on default en.xml r20 --> <!-- (Shareaza 2.2.2.12) -->
-<!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
+<!-- Translation based on default en.xml r21 --> <!-- (Shareaza 2.2.2.12) -->
+<!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
-<!-- Use this file as a basis for creating new language skins,   -->
-<!-- however be sure to include only sections that are changed:  -->
-<!-- Unedited English content limits compatibility & performance.-->
-<!-- Better to be concise than literal:  Please test visibility! -->
+<!-- Use this file as a basis for creating new languages. -->
+<!-- Only include changed sections, not unedited English. -->
+<!-- Better concise than literal, please test visibility. -->
 
 <!-- Manifest -->
 <manifest
@@ -536,7 +535,6 @@
 					<item id="ID_HELP_FORUMS" text="Envy _forumi"/>
 					<separator/>
 					<!--item id="ID_HELP_UPDATE" text="Latest news"-->
-					<!--item id="ID_HELP_WEB_1" text="Zeropaid.com"-->
 				</menu>
 				<item id="ID_HELP_HOMEPAGE" text="_Envy site"/>
 				<separator/>
@@ -629,7 +627,6 @@
 				<separator/>
 				<item id="ID_HELP_FORUMS" text="Envy _forumi"/>
 				<!--item id="ID_HELP_UPDATE" text="Latest news"-->
-				<!--item id="ID_HELP_WEB_1" text="Zeropaid.com"-->
 			</menu>
 			<separator/>
 			<item id="ID_HELP_ABOUT" text="Envy _vizitka"/>
@@ -693,7 +690,6 @@
 				<separator/>
 				<item id="ID_HELP_FORUMS" text="Envy _forumi"/>
 				<!--item id="ID_HELP_UPDATE" text="Latest news"-->
-				<!--item id="ID_HELP_WEB_1" text="Zeropaid.com"-->
 			</menu>
 			<separator/>
 			<item id="ID_HELP_ABOUT" text="Envy _vizitka"/>
@@ -777,7 +773,6 @@
 				<separator/>
 				<item id="ID_HELP_FORUMS" text="Envy _forumi"/>
 				<!--item id="ID_HELP_UPDATE" text="Latest news"-->
-				<!--item id="ID_HELP_WEB_1" text="Zeropaid.com"-->
 			</menu>
 			<separator/>
 			<item id="ID_HELP_ABOUT" text="Envy _vizitka"/>
@@ -1092,6 +1087,8 @@
 		<item id="ID_DOWNLOADS_EDIT" text="Informacija o _Torrentu..."/>
 	</menu>
 	<menu name="CDownloadsWnd.Default">
+		<item id="ID_DOWNLOADS_FOLDER" text="Odpri _Folder"/>
+		<separator/>
 		<item id="ID_TOOLS_DOWNLOAD" text="Start Nova Download"/>
 		<item id="ID_TOOLS_SEEDTORRENT" text="Seed Nova Torrent"/>
 		<item id="ID_DOWNLOADS_CLEAR_COMPLETED" text="Počisti _kočano"/>
@@ -3873,7 +3870,7 @@
 		<control text="Naslov _storitve:"/>
 		<control/>
 		<control text="Storitev Discovery tipa:"/>
-		<control text="Gnutella Bootstrap|GWebCache|Server.met URL"/>
+		<control text="G2/G1 GWebCache|G2 WebCache|G1 WebCache|Gnutella Bootstrap|Server.met URL|DC++ Hublist|Blocked"/>
 		<control text="V redu"/>
 		<control text="Prekliči"/>
 	</dialog>

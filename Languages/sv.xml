@@ -3,14 +3,13 @@
 
 <!-- Envy Default Swedish Skin File -->
 
-<!-- Translation based on default en.xml r20 -->
-<!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
+<!-- Translation based on default en.xml r21 -->
+<!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
-<!-- Use this file as a basis for creating new language skins,   -->
-<!-- however be sure to include only sections that are changed:  -->
-<!-- Unedited English content limits compatibility & performance.-->
-<!-- Better to be concise than literal:  Please test visibility! -->
+<!-- Use this file as a basis for creating new languages. -->
+<!-- Only include changed sections, not unedited English. -->
+<!-- Better concise than literal, please test visibility. -->
 
 <!-- Manifest -->
 <manifest
@@ -551,7 +550,6 @@
 					<item id="ID_HELP_DONATE" text="_Donera till Envy projektet."/>
 					<item id="ID_HELP_VERSION_CHECK" text="Leta efter ny version"/>
 					<!--item id="ID_HELP_UPDATE" text="Senaste nyheter"-->
-					<!--item id="ID_HELP_WEB_1" text="Zeropaid.com"-->
 				</menu>
 				<separator/>
 				<item id="ID_HELP_HOMEPAGE" text="_Envys hemsida"/>
@@ -650,7 +648,6 @@
 				<separator/>
 				<item id="ID_HELP_FORUMS" text="Envy _Forum"/>
 				<!--item id="ID_HELP_UPDATE" text="Senaste nyheter"-->
-				<!--item id="ID_HELP_WEB_1" text="Zeropaid.com"-->
 			</menu>
 			<separator/>
 			<item id="ID_HELP_VERSION_CHECK" text="Leta efter ny version"/>
@@ -719,7 +716,6 @@
 				<separator/>
 				<item id="ID_HELP_FORUMS" text="Envy _Forum"/>
 				<!--item id="ID_HELP_UPDATE" text="Senaste _nyheter"-->
-				<!--item id="ID_HELP_WEB_1" text="Zeropaid.com"-->
 			</menu>
 			<separator/>
 			<item id="ID_HELP_VERSION_CHECK" text="_Leta efter nya versioner"/>
@@ -810,7 +806,6 @@
 				<separator/>
 				<item id="ID_HELP_FORUMS" text="Envy _Forum"/>
 				<!--item id="ID_HELP_UPDATE" text="Senaste nyheter"-->
-				<!--item id="ID_HELP_WEB_1" text="Zeropaid.com"-->
 			</menu>
 			<separator/>
 			<item id="ID_HELP_VERSION_CHECK" text="Leta efter ny _version"/>
@@ -1131,6 +1126,8 @@
 		<item id="ID_DOWNLOADS_EDIT" text="_Torrentinformation…"/>
 	</menu>
 	<menu name="CDownloadsWnd.Default">
+		<item id="ID_DOWNLOADS_FOLDER" text="Öppna _Folder"/>
+		<separator/>
 		<item id="ID_TOOLS_DOWNLOAD" text="Start Ny Download"/>
 		<item id="ID_TOOLS_SEEDTORRENT" text="Seed Ny Torrent"/>
 		<item id="ID_DOWNLOADS_CLEAR_COMPLETED" text="_Rensa avslutade nedladdningar"/>
@@ -4057,7 +4054,7 @@
 		<control text="Tjänst_adress:"/>
 		<control/>
 		<control text="Typ av upptäckstjänst:"/>
-		<control text="Gnutella Bootstrap|GWebCache|Server.met URL|Blocked"/>
+		<control text="G2/G1 GWebCache|G2 WebCache|G1 WebCache|Gnutella Bootstrap|Server.met URL|DC++ Hublist|Blocked"/>
 		<control text="OK"/>
 		<control text="Avbryt"/>
 	</dialog>

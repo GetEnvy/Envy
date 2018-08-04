@@ -1,7 +1,7 @@
 //
 // DlgMessage.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
+// This file is part of Envy (getenvy.com) © 2016-2018
 // Portions copyright PeerProject 2009-2014 and Shareaza 2009
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -537,6 +537,8 @@ void CMessageDlg::UpdateTimer()
 		break;
 	}
 
+	if ( ! pButton ) return;
+
 	CString strText;
 	pButton->GetWindowText( strText );
 	int nPos = strText.Find( L" (" );
@@ -546,7 +548,7 @@ void CMessageDlg::UpdateTimer()
 	if ( m_nTimer > 0 )
 	{
 		CString strNewText;
-		strNewText.Format( L"%s (%u)", strText, m_nTimer - 1 );
+		strNewText.Format( L"%s (%u)", (LPCTSTR)strText, m_nTimer - 1 );
 		pButton->SetWindowText( strNewText );
 	}
 	else

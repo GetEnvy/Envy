@@ -1,7 +1,7 @@
 //
 // Library.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
+// This file is part of Envy (getenvy.com) © 2016-2018
 // Portions copyright PeerProject 2008-2015 and Shareaza 2002-2008
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -453,7 +453,7 @@ BOOL CLibrary::Save()
 	CFile pFile;
 	if ( ! pFile.Open( strFile, CFile::modeWrite|CFile::modeCreate ) )
 	{
-		theApp.Message( MSG_ERROR, L"Library save error to: %s", strFile );
+		theApp.Message( MSG_ERROR, L"Library save error to: %s", (LPCTSTR)strFile );
 		return FALSE;
 	}
 
@@ -474,7 +474,7 @@ BOOL CLibrary::Save()
 			ar.Abort();
 			pFile.Abort();
 			pException->Delete();
-			theApp.Message( MSG_ERROR, L"Library save error to: %s", strFile );
+			theApp.Message( MSG_ERROR, L"Library save error to: %s", (LPCTSTR)strFile );
 			return FALSE;
 		}
 
@@ -488,12 +488,12 @@ BOOL CLibrary::Save()
 	{
 		pFile.Abort();
 		pException->Delete();
-		theApp.Message( MSG_ERROR, L"Library save error to: %s", strFile );
+		theApp.Message( MSG_ERROR, L"Library save error to: %s", (LPCTSTR)strFile );
 		return FALSE;
 	}
 
 	m_nSaveCookie = m_nUpdateCookie;
-	theApp.Message( MSG_DEBUG, L"Library successfully saved to: %s", strFile );
+	theApp.Message( MSG_DEBUG, L"Library successfully saved to: %s", (LPCTSTR)strFile );
 	return TRUE;
 }
 

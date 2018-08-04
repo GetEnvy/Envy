@@ -403,11 +403,11 @@
 		<button id="ID_DISCOVERY_QUERY" text="Query Now"/>
 		<button id="ID_DISCOVERY_ADVERTISE" text="Advertise"/>
 		<separator/>
-		<button id="ID_DISCOVERY_BROWSE" text="Statistics Page"/>
+		<button id="ID_DISCOVERY_BROWSE" text="Statistics"/>
 		<rightalign/>
 		<button id="ID_DISCOVERY_WEBCACHE" text="GWebCaches"/>
 		<button id="ID_DISCOVERY_GNUTELLA" text="Bootstraps"/>
-		<button id="ID_DISCOVERY_SERVERLIST" text="Server.met/Hublists"/>
+		<button id="ID_DISCOVERY_SERVERLIST" text="Server Lists"/>
 		<button id="ID_DISCOVERY_BLOCKED" text="Blocked"/>
 	</toolbar>
 	<!-- HOST CACHE WINDOW -->
@@ -718,10 +718,10 @@
 				<item id="ID_HELP_HOMEPAGE" text="_Envy Site"/>
 				<separator/>
 				<item id="ID_HELP_FORUMS" text="Envy _Forums"/>
-				<!--item id="ID_HELP_FORUMS_LOCAL" text="_English Local Forum"-->
+				<!--item id="ID_HELP_FORUMS_LOCAL" text="English _Local Forum"-->
 				<item id="ID_HELP_WEB_KICKBACKS" text="Envy _Kickbacks"/>
-				<item id="ID_HELP_WEB_SKINS" text="Envy S_kin Site"/>
-				<item id="ID_HELP_UPDATE" text="Latest News"/>
+				<item id="ID_HELP_WEB_SKINS" text="Envy _Skin Site"/>
+				<item id="ID_HELP_UPDATE" text="Latest Ne_ws"/>
 				<!--item id="ID_HELP_DONATE" text="_Donate to Envy"-->
 				<!--item id="ID_HELP_WEB_1" text="Zeropaid.com"-->
 				<item id="ID_HELP_TEST" text="_Connection Test"/>
@@ -1024,7 +1024,7 @@
 		<item id="ID_SEARCH_DOWNLOAD" text="_Download"/>
 		<separator/>
 		<item id="ID_BROWSE_LAUNCH" text="_Browse User"/>
-		<item id="ID_SECURITY_BAN" text="B_an User"/>
+		<item id="ID_SECURITY_BAN" text="Ba_n User"/>
 		<separator/>
 		<menu text="_Search For">
 			<item id="ID_SEARCH_FOR_SIMILAR" text="_Similar Files"/>
@@ -1232,6 +1232,8 @@
 		<item id="ID_DOWNLOADS_EDIT" text="Torrent _Properties..."/>
 	</menu>
 	<menu name="CDownloadsWnd.Default">
+		<item id="ID_DOWNLOADS_FOLDER" text="Open _Folder"/>
+		<separator/>
 		<item id="ID_TOOLS_DOWNLOAD" text="Start New _Download"/>
 		<item id="ID_TOOLS_SEEDTORRENT" text="Seed New _Torrent"/>
 		<item id="ID_DOWNLOADS_CLEAR_COMPLETED" text="_Clear Completed"/>
@@ -1239,16 +1241,16 @@
 		<item id="ID_DOWNLOADS_HELP" text="_Help..."/>
 	</menu>
 	<menu name="CDownloadTabBar">
-		<item id="ID_DOWNLOAD_GROUP_OPEN" text="_Open Folder"/>
+		<item id="ID_DOWNLOAD_GROUP_OPEN" text="Open _Folder"/>
 		<separator/>
-		<item id="ID_DOWNLOAD_GROUP_RESUME" text="_Resume All"/>
+		<item id="ID_DOWNLOAD_GROUP_RESUME" text="R_esume All"/>
 		<item id="ID_DOWNLOAD_GROUP_PAUSE" text="Pa_use All"/>
 		<item id="ID_DOWNLOAD_GROUP_CLEAR" text="_Clear All"/>
 		<separator/>
 		<!--item id="ID_DOWNLOAD_GROUP_SHOW" text="_Hide Groups"-->
 		<item id="ID_DOWNLOAD_GROUP_MOVELEFT" text="Move Group _Left"/>
-		<item id="ID_DOWNLOAD_GROUP_MOVERIGHT" text="Move Group R_ight"/>
-		<item id="ID_DOWNLOAD_GROUP_REMOVE" text="R_emove Group"/>
+		<item id="ID_DOWNLOAD_GROUP_MOVERIGHT" text="Move Group _Right"/>
+		<item id="ID_DOWNLOAD_GROUP_REMOVE" text="Rem_ove Group"/>
 		<item id="ID_DOWNLOAD_GROUP_NEW" text="_New Group..."/>
 		<separator/>
 		<item id="ID_DOWNLOAD_GROUP_PROPERTIES" text="_Properties..."/>
@@ -1348,8 +1350,9 @@
 		<item id="ID_LIBRARY_FOLDER_PROPERTIES" text="_Group Properties"/>
 	</menu>
 	<menu name="CLibraryHistoryPanel">
-		<item id="ID_LIBRARY_CLEAR_HISTORY" text="Clear from _History"/>
-		<item id="ID_LIBRARY_CLEAR_HISTORY_ALL" text="Clear _All"/>
+		<item id="ID_LIBRARY_SHOW_FILE" text="_Show in Library"/>
+		<item id="ID_LIBRARY_CLEAR_HISTORY" text="_Clear from History"/>
+		<item id="ID_LIBRARY_CLEAR_HISTORY_ALL" text="Clear All _History"/>
 	</menu>
 	<!-- LIBRARY VIEWS -->
 	<menu name="CLibraryTileView">
@@ -1810,7 +1813,7 @@
 			<link target="command:ID_HELP_ROUTER">learn how to configure your router.</link>
 			<newline gap="20" indent="0"/>
 		</group>
-		<icon res="120" width="30" height="30" target="command:ID_TOOLS_SETTINGS"/><gap size="8"/>
+		<icon res="120" width="32" height="32" target="command:ID_TOOLS_SETTINGS"/><gap size="8"/>
 		<heading align="middle">Customize Envy</heading>
 		<newline gap="12" indent="42"/>
 		<icon res="196" width="16" height="16" target="command:ID_TOOLS_SKIN"/><gap size="8"/>
@@ -2685,9 +2688,9 @@
 		<image id="ID_IRC_REMOVE"/>
 		<image id="ID_IRC_KICK"/>
 		<image id="ID_IRC_KICKWHY"/>
-		<image id="ID_IRC_BAN"/>
 		<image id="ID_IRC_BANKICK"/>
 		<image id="ID_IRC_BANKICKWHY"/>
+		<image id="ID_IRC_BAN"/>
 		<image id="ID_IRC_UNBAN"/>
 		<image id="ID_IRC_CONNECT"/>
 		<image id="ID_IRC_DISCONNECT"/>

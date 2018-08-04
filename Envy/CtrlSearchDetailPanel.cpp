@@ -342,7 +342,7 @@ void CSearchDetailPanel::OnPaint()
 	dc.SelectObject( &CoolInterface.m_fntNormal );
 	{
 		CString strSize;
-		strSize.Format( L"%s   (%I64i bytes)", m_sSize, m_pFile->m_nSize );
+		strSize.Format( L"%s   (%I64i bytes)", (LPCTSTR)m_sSize, m_pFile->m_nSize );
 		CSize sz = dc.GetTextExtent( strSize );
 		int nOffset = sz.cx + 2;
 		DrawText( &dc, rcWork.right - nOffset, rcWork.top, strSize );

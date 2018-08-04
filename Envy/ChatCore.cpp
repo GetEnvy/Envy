@@ -74,7 +74,7 @@ BOOL CChatCore::Check(CChatSession* pSession) const
 BOOL CChatCore::OnAccept(CConnection* pConnection)
 {
 	CSingleLock pLock( &m_pSection );
-	if ( ! pLock.Lock( 100 ) )
+	if ( ! pLock.Lock( 200 ) )
 		return TRUE;	// Try later
 
 	if ( ! Settings.Community.ChatEnable || ! MyProfile.IsValid() )
@@ -99,12 +99,14 @@ BOOL CChatCore::OnAccept(CConnection* pConnection)
 BOOL CChatCore::OnPush(const Hashes::Guid& oGUID, CConnection* pConnection)
 {
 	CSingleLock pLock( &m_pSection );
-	if ( ! pLock.Lock( 250 ) ) return FALSE;
+	if ( ! pLock.Lock( 250 ) )
+		return FALSE;
 
 	for ( POSITION pos = GetIterator() ; pos ; )
 	{
 		CChatSession* pSession = GetNext( pos );
-		if ( pSession->OnPush( oGUID, pConnection ) ) return TRUE;
+		if ( pSession->OnPush( oGUID, pConnection ) )
+			return TRUE;
 	}
 
 	return FALSE;

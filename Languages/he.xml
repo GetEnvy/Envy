@@ -3,14 +3,13 @@
 
 <!-- Envy Default Hebrew Skin File -->
 
-<!-- Translation based on default en.xml r20 -->
-<!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
+<!-- Translation based on default en.xml r21 -->
+<!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
-<!-- Use this file as a basis for creating new language skins,   -->
-<!-- however be sure to include only sections that are changed:  -->
-<!-- Unedited English content limits compatibility & performance.-->
-<!-- Better to be concise than literal:  Please test visibility! -->
+<!-- Use this file as a basis for creating new languages. -->
+<!-- Only include changed sections, not unedited English. -->
+<!-- Better concise than literal, please test visibility. -->
 
 <!-- למתרגמים: יש לשים לב לתווים בלתי נראים שהופכים את כיוון ההצגה בשרזה.
 יש גם שוני בתגים של עיצוב כמו
@@ -21,10 +20,10 @@ gap i newline
 <manifest
 	name="עברית"
 	author="David Aravon"
-	updatedBy="_peer_ (la. Han), Omega"
+	updatedBy="peer (la. Han), Omega"
 	description="Envy Default Hebrew Skin File"
 	link="http://getenvy.com"
-	email="peer_l_(at)hotmail, omega09(at)sourceforge.net"
+	email="peerl_(at)hotmail, omega09(at)sourceforge.net"
 	version="1.0"
 	type="Language"
 	language="he"
@@ -432,6 +431,23 @@ gap i newline
 		<button id="ID_SEARCH_FILTER_RAW" text="‪...עוד"/>
 	</toolbar>
 	<!-- DISCOVERY SERVICES WINDOW Missing -->
+	<!-- DISCOVERY SERVICES WINDOW -->
+	<toolbar name="CDiscoveryWnd">
+		<button id="ID_DISCOVERY_ADD" text="הוסף "/>
+		<separator/>
+		<button id="ID_DISCOVERY_EDIT" text="ערוך "/>
+		<button id="ID_DISCOVERY_REMOVE" text="הסר "/>
+		<separator/>
+		<button id="ID_DISCOVERY_QUERY" text="Query"/>
+		<button id="ID_DISCOVERY_ADVERTISE" text="Advertise"/>
+		<separator/>
+		<button id="ID_DISCOVERY_BROWSE" text="Statistics"/>
+		<rightalign/>
+		<button id="ID_DISCOVERY_WEBCACHE" text="GWebCaches"/>
+		<button id="ID_DISCOVERY_GNUTELLA" text="Bootstraps"/>
+		<button id="ID_DISCOVERY_SERVERLIST" text="Server Lists"/>
+		<button id="ID_DISCOVERY_BLOCKED" text="Blocked"/>
+	</toolbar>
 	<!-- HOST CACHE WINDOW -->
 	<toolbar name="CHostCacheWnd">
 		<button id="ID_HOSTCACHE_CONNECT" text="‪התחבר אל"/>
@@ -508,17 +524,17 @@ gap i newline
 		<item id="ID_MOVETAB_LEFT" text="העבר שמאלה"/>
 		<item id="ID_MOVETAB_RIGHT" text="העבר ימינה"/>
 		<separator/>
-		<item id="ID_CHILD_CLOSE" text="סגור חלון_"/>
+		<item id="ID_CHILD_CLOSE" text="סגור חלון"/>
 	</menu>
 	<menu name="CTabBar.Child">
 		<item id="ID_MOVETAB_LEFT" text="העבר שמאלה"/>
 		<item id="ID_MOVETAB_RIGHT" text="העבר ימינה"/>
 		<separator/>
-		<item id="ID_CHILD_MAXIMISE" text="מסך מלא_"/>
-		<item id="ID_CHILD_RESTORE" text="שחזר_"/>
-		<item id="ID_CHILD_MINIMISE" text="מ_זער"/>
+		<item id="ID_CHILD_MAXIMISE" text="מסך מלא"/>
+		<item id="ID_CHILD_RESTORE" text="שחזר"/>
+		<item id="ID_CHILD_MINIMISE" text="מזער"/>
 		<separator/>
-		<item id="ID_CHILD_CLOSE" text="סגור חלון_"/>
+		<item id="ID_CHILD_CLOSE" text="סגור חלון"/>
 	</menu>
 	<!-- TRAY MENU -->
 	<menu name="CMainWnd.Tray">
@@ -530,7 +546,7 @@ gap i newline
 		<item id="ID_TOOLS_DOWNLOAD" text="‪הורד קובץ..."/>
 		<separator/>
 		<item id="ID_MEDIA_PLAY" text="‪נגן מדיה"/>
-		<item id="ID_MEDIA_PAUSE" text="ה_שהה מדיה"/>
+		<item id="ID_MEDIA_PAUSE" text="השהה מדיה"/>
 		<item id="ID_MEDIA_NEXT" text="‪רצועה באה"/>
 		<item id="ID_MEDIA_PREVIOUS" text="‪רצועה קודמת"/>
 		<separator/>
@@ -540,471 +556,467 @@ gap i newline
 	<!-- MAIN WINDOW MENU BAR -->
 	<menu name="CMainWnd.DropMenu" type="bar">
 		<menu text="תפריט">
-			<item id="ID_TOOLS_SETTINGS" text="ה_גדרות שרזה..."/>
-			<menu text="‪_רשת">
-				<item id="ID_NETWORK_CONNECT" text="הת_חבר" shortcut="Ctrl+G"/>
-				<item id="ID_NETWORK_DISCONNECT" text="הת_נתק"/>
+			<item id="ID_TOOLS_SETTINGS" text="הגדרות שרזה..."/>
+			<menu text="רשת">
+				<item id="ID_NETWORK_CONNECT" text="התחבר" shortcut="Ctrl+G"/>
+				<item id="ID_NETWORK_DISCONNECT" text="התנתק"/>
 				<separator/>
-				<item id="ID_NETWORK_G2" text="התחבר אל גנוטלה _2"/>
-				<item id="ID_NETWORK_G1" text="התחבר אל גנוטלה _1"/>
-				<item id="ID_NETWORK_ED2K" text="‪התחבר אל _אידונקי"/>
-				<item id="ID_NETWORK_DC" text="התחבר אל גנוטלה _DC"/>
+				<item id="ID_NETWORK_G2" text="התחבר אל גנוטלה 2"/>
+				<item id="ID_NETWORK_G1" text="התחבר אל גנוטלה 1"/>
+				<item id="ID_NETWORK_ED2K" text="‪התחבר אל אידונקי"/>
+				<item id="ID_NETWORK_DC" text="התחבר אל גנוטלה DC"/>
 				<separator/>
-				<item id="ID_NETWORK_CONNECT_TO" text="_התחבר אל..." shortcut="Ctrl+T"/>
-				<item id="ID_NETWORK_BROWSE_TO" text="_עיין במארח..."/>
+				<item id="ID_NETWORK_CONNECT_TO" text="התחבר אל..." shortcut="Ctrl+T"/>
+				<item id="ID_NETWORK_BROWSE_TO" text="עיין במארח..."/>
 				<separator/>
-				<item id="ID_NETWORK_AUTO_CLOSE" text="צא ב_סיום ההעברות"/>
-				<item id="ID_NETWORK_EXIT" text="י_ציאה"/>
+				<item id="ID_NETWORK_AUTO_CLOSE" text="צא בסיום ההעברות"/>
+				<item id="ID_NETWORK_EXIT" text="יציאה"/>
 			</menu>
-			<menu text="‪_כלים">
-				<item id="ID_LIBRARY_FOLDERS" text="שתף _קבצים..."/>
-				<item id="ID_OPEN_DOWNLOADS_FOLDER" text="_פתח את תקיית ההורדות שהושלמו..."/>
+			<menu text="כלים">
+				<item id="ID_LIBRARY_FOLDERS" text="שתף קבצים..."/>
+				<item id="ID_OPEN_DOWNLOADS_FOLDER" text="פתח את תקיית ההורדות שהושלמו..."/>
 				<separator/>
-				<item id="ID_TOOLS_DOWNLOAD" text="_הורד קבצים/טורנטים..."/>
-				<item id="ID_TOOLS_CREATETORRENT" text="_Create .Torrent..."/>
-				<item id="ID_IMPORT_DOWNLOADS" text="_ייבא קבצים חלקיים של אי-מיול..."/>
+				<item id="ID_TOOLS_DOWNLOAD" text="הורד קבצים/טורנטים..."/>
+				<item id="ID_TOOLS_CREATETORRENT" text="Create .Torrent..."/>
+				<item id="ID_IMPORT_DOWNLOADS" text="ייבא קבצים חלקיים של אי-מיול..."/>
 				<separator/>
-				<item id="ID_TOOLS_LANGUAGE" text="‪...בחר _שפה"/>
-				<item id="ID_TOOLS_SKIN" text="‪...בחר _מעטפת"/>
+				<item id="ID_TOOLS_LANGUAGE" text="‪...בחר שפה"/>
+				<item id="ID_TOOLS_SKIN" text="‪...בחר מעטפת"/>
 				<separator/>
-				<item id="ID_TOOLS_PROFILE" text="‪_ערוך את הפרופיל שלי..."/>
-				<item id="ID_TOOLS_WIZARD" text="‪_אשף הפעלה מהירה..."/>
+				<item id="ID_TOOLS_PROFILE" text="ערוך את הפרופיל שלי..."/>
+				<item id="ID_TOOLS_WIZARD" text="אשף הפעלה מהירה..."/>
 				<separator/>
-				<item id="ID_TOOLS_SETTINGS" text="ה_גדרות שרזה..."/>
+				<item id="ID_TOOLS_SETTINGS" text="הגדרות שרזה..."/>
 			</menu>
-			<menu text="‪_תצוגה">
-				<item id="ID_TAB_HOME" text="_ראשי" shortcut="Ctrl+H"/>
-				<item id="ID_VIEW_NEIGHBOURS" text="_שכנים" shortcut="Ctrl+F11"/>
-				<item id="ID_VIEW_SYSTEM" text="_מערכת" shortcut="F11"/>
-				<item id="ID_VIEW_DOWNLOADS" text="_הורדות" shortcut="F3"/>
-				<item id="ID_VIEW_UPLOADS" text="ה_עלאות" shortcut="F4"/>
-				<item id="ID_VIEW_LIBRARY" text="_ספרייה" shortcut="F5"/>
-				<item id="ID_VIEW_MEDIA" text="_נגן מדיה" shortcut="F6"/>
-				<item id="ID_TAB_IRC" text="_חדר שיחה" shortcut="F12"/>
+			<menu text="תצוגה">
+				<item id="ID_TAB_HOME" text="ראשי" shortcut="Ctrl+H"/>
+				<item id="ID_VIEW_NEIGHBOURS" text="שכנים" shortcut="Ctrl+F11"/>
+				<item id="ID_VIEW_SYSTEM" text="מערכת" shortcut="F11"/>
+				<item id="ID_VIEW_DOWNLOADS" text="הורדות" shortcut="F3"/>
+				<item id="ID_VIEW_UPLOADS" text="העלאות" shortcut="F4"/>
+				<item id="ID_VIEW_LIBRARY" text="ספרייה" shortcut="F5"/>
+				<item id="ID_VIEW_MEDIA" text="נגן מדיה" shortcut="F6"/>
+				<item id="ID_TAB_IRC" text="חדר שיחה" shortcut="F12"/>
 				<separator/>
-				<item id="ID_VIEW_SECURITY" text="‪_אבטחה" shortcut="F7"/>
-				<item id="ID_VIEW_HOSTS" text="מ_טמון מארחים (הוסטים)" shortcut="F8"/>
-				<item id="ID_VIEW_DISCOVERY" text="משאבי חי_בור" shortcut="F9"/>
-				<item id="ID_VIEW_TRAFFIC" text="_גרף" shortcut="F10"/>
+				<item id="ID_VIEW_SECURITY" text="אבטחה" shortcut="F7"/>
+				<item id="ID_VIEW_HOSTS" text="מטמון מארחים (הוסטים)" shortcut="F8"/>
+				<item id="ID_VIEW_DISCOVERY" text="משאבי חיבור" shortcut="F9"/>
+				<item id="ID_VIEW_TRAFFIC" text="גרף" shortcut="F10"/>
 				<separator/>
-				<item id="ID_VIEW_PACKETS" text="‪(ת_פוקת חבילות (פאקט" shortcut="Ctrl+F1"/>
-				<item id="ID_VIEW_SEARCH_MONITOR" text="משגוח (מוניטור) ה_חיפוש" shortcut="Ctrl+F2"/>
-				<item id="ID_VIEW_RESULTS_MONITOR" text="‪משגוח (מוניטור) ה_תוצאות" shortcut="Ctrl+F3"/>
-				<item id="ID_TAB_SEARCH" text="_חיפוש" shortcut="Ctrl+S"/>
+				<item id="ID_VIEW_PACKETS" text="‪(תפוקת חבילות (פאקט" shortcut="Ctrl+F1"/>
+				<item id="ID_VIEW_SEARCH_MONITOR" text="משגוח (מוניטור) החיפוש" shortcut="Ctrl+F2"/>
+				<item id="ID_VIEW_RESULTS_MONITOR" text="‪משגוח (מוניטור) התוצאות" shortcut="Ctrl+F3"/>
+				<item id="ID_TAB_SEARCH" text="חיפוש" shortcut="Ctrl+S"/>
 			</menu>
-			<menu text="‪_חלון">
-				<item id="ID_VIEW_BASIC" text="‪מצב _רגיל"/>
-				<item id="ID_VIEW_TABBED" text="מצב _תוויות (טאבים)"/>
-				<item id="ID_VIEW_WINDOWED" text="‪מצב _חלונות"/>
+			<menu text="חלון">
+				<item id="ID_VIEW_BASIC" text="‪מצב רגיל"/>
+				<item id="ID_VIEW_TABBED" text="מצב תוויות (טאבים)"/>
+				<item id="ID_VIEW_WINDOWED" text="‪מצב חלונות"/>
 				<separator/>
-				<item id="ID_WINDOW_NAVBAR" text="‪הצג סרגל _ניווט"/>
-				<item id="ID_WINDOW_TOOLBAR" text="‪הצג סרגל _כלים"/>
+				<item id="ID_WINDOW_NAVBAR" text="‪הצג סרגל ניווט"/>
+				<item id="ID_WINDOW_TOOLBAR" text="‪הצג סרגל כלים"/>
 				<separator/>
-				<item id="ID_WINDOW_TABBAR" text="הצג סרגל _תוויות (טאב)"/>
-				<item id="ID_WINDOW_MONITOR" text="הצג _משגוח (מוניטור)"/>
-				<item id="ID_WINDOW_REMOTE" text="הצג _לוח שליטה"/>
+				<item id="ID_WINDOW_TABBAR" text="הצג סרגל תוויות (טאב)"/>
+				<item id="ID_WINDOW_MONITOR" text="הצג משגוח (מוניטור)"/>
+				<item id="ID_WINDOW_REMOTE" text="הצג לוח שליטה"/>
 			</menu>
-			<menu text="‪_עזרה">
-				<item id="ID_HELP_FAQ" text="_שאלות נפוצות על שרזה"/>
-				<item id="ID_HELP_TEST" text="_בדיקת התחברות"/>
+			<menu text="עזרה">
+				<item id="ID_HELP_FAQ" text="שאלות נפוצות על שרזה"/>
+				<item id="ID_HELP_TEST" text="בדיקת התחברות"/>
 				<separator/>
-				<menu text="‪_מדריכים">
-					<item id="ID_HELP_GUIDE" text="‪_מדריך למשתמש"/>
-					<item id="ID_HELP_ROUTER" text="עזרה בנושא _נתב (ראוטר)"/>
-					<item id="ID_HELP_SECURITY" text="‪עזרה בנושא _אבטחה"/>
-					<item id="ID_HELP_CODEC" text="‪עזרה בנושאי מ_קודדים"/>
+				<menu text="מדריכים">
+					<item id="ID_HELP_GUIDE" text="מדריך למשתמש"/>
+					<item id="ID_HELP_ROUTER" text="עזרה בנושא נתב (ראוטר)"/>
+					<item id="ID_HELP_SECURITY" text="‪עזרה בנושא אבטחה"/>
+					<item id="ID_HELP_CODEC" text="‪עזרה בנושאי מקודדים"/>
 				</menu>
 				<separator/>
-				<menu text="‪_אתרי אינטרנט">
-					<item id="ID_HELP_FORUMS" text="_פורומים של שרזה"/>
+				<menu text="אתרי אינטרנט">
+					<item id="ID_HELP_FORUMS" text="פורומים של שרזה"/>
 					<separator/>
-					<item id="ID_HELP_VERSION_CHECK" text="_בדוק אם קיימות גרסאות חדשות"/>
-					<!--item id="ID_HELP_DONATE" text="_תרום לפרוייקט שרזה"-->
+					<item id="ID_HELP_VERSION_CHECK" text="בדוק אם קיימות גרסאות חדשות"/>
+					<!--item id="ID_HELP_DONATE" text="תרום לפרוייקט שרזה"-->
 					<item id="ID_HELP_UPDATE" text="‪חדשות אחרונות"/>
-					<!--item id="ID_HELP_WEB_1" text="‪Zeropaid.com"-->
 				</menu>
-				<item id="ID_HELP_HOMEPAGE" text="‪_אתר הבית של שרזה"/>
+				<item id="ID_HELP_HOMEPAGE" text="אתר הבית של שרזה"/>
 				<separator/>
-				<item id="ID_HELP_ABOUT" text="‪...או_דות שרזה"/>
+				<item id="ID_HELP_ABOUT" text="‪...אודות שרזה"/>
 			</menu>
-			<item id="ID_NETWORK_EXIT" text="י_ציאה"/>
+			<item id="ID_NETWORK_EXIT" text="יציאה"/>
 		</menu>
 	</menu>
 	<menu name="CMainWnd.Tabbed" type="bar">
-		<menu text="‪_רשת">
-			<item id="ID_NETWORK_CONNECT" text="הת_חבר" shortcut="Ctrl+G"/>
-			<item id="ID_NETWORK_DISCONNECT" text="הת_נתק"/>
+		<menu text="רשת">
+			<item id="ID_NETWORK_CONNECT" text="התחבר" shortcut="Ctrl+G"/>
+			<item id="ID_NETWORK_DISCONNECT" text="התנתק"/>
 			<separator/>
-			<item id="ID_NETWORK_G2" text="התחבר אל גנוטלה _2"/>
-			<item id="ID_NETWORK_G1" text="התחבר אל גנוטלה _1"/>
-			<item id="ID_NETWORK_ED2K" text="‪התחבר אל _אידונקי"/>
+			<item id="ID_NETWORK_G2" text="התחבר אל גנוטלה 2"/>
+			<item id="ID_NETWORK_G1" text="התחבר אל גנוטלה 1"/>
+			<item id="ID_NETWORK_ED2K" text="‪התחבר אל אידונקי"/>
 			<item id="ID_NETWORK_DC" text="התחבר אל גנוטלה DC"/>
 			<separator/>
-			<item id="ID_NETWORK_CONNECT_TO" text="_התחבר אל..." shortcut="Ctrl+T"/>
-			<item id="ID_NETWORK_BROWSE_TO" text="_עיין במארח..."/>
+			<item id="ID_NETWORK_CONNECT_TO" text="התחבר אל..." shortcut="Ctrl+T"/>
+			<item id="ID_NETWORK_BROWSE_TO" text="עיין במארח..."/>
 			<separator/>
-			<item id="ID_NETWORK_AUTO_CLOSE" text="צא ב_סיום ההעברות"/>
-			<item id="ID_NETWORK_EXIT" text="י_ציאה"/>
+			<item id="ID_NETWORK_AUTO_CLOSE" text="צא בסיום ההעברות"/>
+			<item id="ID_NETWORK_EXIT" text="יציאה"/>
 		</menu>
-		<menu text="‪_תצוגה">
-			<item id="ID_TAB_HOME" text="_ראשי"/>
-			<item id="ID_TAB_LIBRARY" text="‪_ספרייה"/>
-			<item id="ID_TAB_MEDIA" text="_נגן מדיה"/>
-			<item id="ID_TAB_SEARCH" text="_חיפוש"/>
-			<item id="ID_TAB_TRANSFERS" text="_העברות"/>
-			<item id="ID_TAB_NETWORK" text="_רשת"/>
-			<item id="ID_TAB_IRC" text="_חדר שיחה"/>
+		<menu text="תצוגה">
+			<item id="ID_TAB_HOME" text="ראשי"/>
+			<item id="ID_TAB_LIBRARY" text="ספרייה"/>
+			<item id="ID_TAB_MEDIA" text="נגן מדיה"/>
+			<item id="ID_TAB_SEARCH" text="חיפוש"/>
+			<item id="ID_TAB_TRANSFERS" text="העברות"/>
+			<item id="ID_TAB_NETWORK" text="רשת"/>
+			<item id="ID_TAB_IRC" text="חדר שיחה"/>
 			<separator/>
-			<item id="ID_VIEW_SECURITY" text="_אבטחה"/>
-			<item id="ID_VIEW_HOSTS" text="_מטמון מארחים (הוסטים)"/>
+			<item id="ID_VIEW_SECURITY" text="אבטחה"/>
+			<item id="ID_VIEW_HOSTS" text="מטמון מארחים (הוסטים)"/>
 			<separator/>
-			<menu text="‪מתק_דם">
-				<item id="ID_VIEW_SYSTEM" text="_מערכת" shortcut="F11"/>
-				<item id="ID_VIEW_NEIGHBOURS" text="_שכנים" shortcut="Ctrl+F11"/>
-				<item id="ID_VIEW_DOWNLOADS" text="_הורדות" shortcut="F3"/>
-				<item id="ID_VIEW_UPLOADS" text="ה_עלאות" shortcut="F4"/>
-				<item id="ID_VIEW_LIBRARY" text="_ספרייה" shortcut="F5"/>
-				<item id="ID_VIEW_MEDIA" text="_נגן מדיה" shortcut="F6"/>
+			<menu text="‪מתקדם">
+				<item id="ID_VIEW_SYSTEM" text="מערכת" shortcut="F11"/>
+				<item id="ID_VIEW_NEIGHBOURS" text="שכנים" shortcut="Ctrl+F11"/>
+				<item id="ID_VIEW_DOWNLOADS" text="הורדות" shortcut="F3"/>
+				<item id="ID_VIEW_UPLOADS" text="העלאות" shortcut="F4"/>
+				<item id="ID_VIEW_LIBRARY" text="ספרייה" shortcut="F5"/>
+				<item id="ID_VIEW_MEDIA" text="נגן מדיה" shortcut="F6"/>
 				<separator/>
-				<item id="ID_VIEW_SECURITY" text="‪_אבטחה" shortcut="F7"/>
-				<item id="ID_VIEW_HOSTS" text="מ_טמון מארחים (הוסטים)" shortcut="F8"/>
-				<item id="ID_VIEW_DISCOVERY" text="משאבי חי_בור" shortcut="F9"/>
-				<item id="ID_VIEW_TRAFFIC" text="_גרף" shortcut="F10"/>
+				<item id="ID_VIEW_SECURITY" text="אבטחה" shortcut="F7"/>
+				<item id="ID_VIEW_HOSTS" text="מטמון מארחים (הוסטים)" shortcut="F8"/>
+				<item id="ID_VIEW_DISCOVERY" text="משאבי חיבור" shortcut="F9"/>
+				<item id="ID_VIEW_TRAFFIC" text="גרף" shortcut="F10"/>
 				<separator/>
-				<item id="ID_VIEW_PACKETS" text="‪(ת_פוקת חבילות (פאקט" shortcut="Ctrl+F1"/>
-				<item id="ID_VIEW_SEARCH_MONITOR" text="משגוח (מוניטור) ה_חיפוש" shortcut="Ctrl+F2"/>
-				<item id="ID_VIEW_RESULTS_MONITOR" text="‪משגוח (מוניטור) ה_תוצאות" shortcut="Ctrl+F3"/>
+				<item id="ID_VIEW_PACKETS" text="‪(תפוקת חבילות (פאקט" shortcut="Ctrl+F1"/>
+				<item id="ID_VIEW_SEARCH_MONITOR" text="משגוח (מוניטור) החיפוש" shortcut="Ctrl+F2"/>
+				<item id="ID_VIEW_RESULTS_MONITOR" text="‪משגוח (מוניטור) התוצאות" shortcut="Ctrl+F3"/>
 			</menu>
 			<separator/>
-			<item id="ID_VIEW_BASIC" text="‪מצב _רגיל"/>
-			<item id="ID_VIEW_TABBED" text="מצב _תוויות (טאבים)"/>
-			<item id="ID_VIEW_WINDOWED" text="‪מצב _חלונות"/>
+			<item id="ID_VIEW_BASIC" text="‪מצב רגיל"/>
+			<item id="ID_VIEW_TABBED" text="מצב תוויות (טאבים)"/>
+			<item id="ID_VIEW_WINDOWED" text="‪מצב חלונות"/>
 		</menu>
-		<menu text="‪_כלים">
-			<item id="ID_LIBRARY_FOLDERS" text="שתף _קבצים..."/>
-			<item id="ID_TOOLS_DOWNLOAD" text="_הורד קבצים/טורנטים..."/>
-			<item id="ID_IMPORT_DOWNLOADS" text="_ייבא קבצים חלקיים של אי-מיול..."/>
-			<item id="ID_OPEN_DOWNLOADS_FOLDER" text="_פתח את תקיית ההורדות שהושלמו..."/>
+		<menu text="כלים">
+			<item id="ID_LIBRARY_FOLDERS" text="שתף קבצים..."/>
+			<item id="ID_TOOLS_DOWNLOAD" text="הורד קבצים/טורנטים..."/>
+			<item id="ID_IMPORT_DOWNLOADS" text="ייבא קבצים חלקיים של אי-מיול..."/>
+			<item id="ID_OPEN_DOWNLOADS_FOLDER" text="פתח את תקיית ההורדות שהושלמו..."/>
 			<separator/>
-			<item id="ID_TOOLS_SKIN" text="‪...בחר _מעטפת"/>
-			<item id="ID_TOOLS_LANGUAGE" text="‪...בחר _שפה"/>
+			<item id="ID_TOOLS_SKIN" text="‪...בחר מעטפת"/>
+			<item id="ID_TOOLS_LANGUAGE" text="‪...בחר שפה"/>
 			<separator/>
-			<item id="ID_TOOLS_PROFILE" text="‪_ערוך את הפרופיל שלי..."/>
-			<item id="ID_TOOLS_WIZARD" text="‪_אשף הפעלה מהירה..."/>
+			<item id="ID_TOOLS_PROFILE" text="ערוך את הפרופיל שלי..."/>
+			<item id="ID_TOOLS_WIZARD" text="אשף הפעלה מהירה..."/>
 			<separator/>
-			<item id="ID_TOOLS_SETTINGS" text="ה_גדרות שרזה..."/>
+			<item id="ID_TOOLS_SETTINGS" text="הגדרות שרזה..."/>
 		</menu>
-		<menu text="‪_חלון">
-			<item id="ID_WINDOW_NAVBAR" text="‪הצג סרגל _ניווט"/>
-			<item id="ID_WINDOW_TOOLBAR" text="‪הצג סרגל _כלים"/>
+		<menu text="חלון">
+			<item id="ID_WINDOW_NAVBAR" text="‪הצג סרגל ניווט"/>
+			<item id="ID_WINDOW_TOOLBAR" text="‪הצג סרגל כלים"/>
 			<separator/>
-			<item id="ID_WINDOW_TABBAR" text="הצג סרגל _תוויות (טאב)"/>
-			<item id="ID_WINDOW_MONITOR" text="הצג _משגוח (מוניטור)"/>
-			<item id="ID_WINDOW_REMOTE" text="הצג _לוח שליטה"/>
+			<item id="ID_WINDOW_TABBAR" text="הצג סרגל תוויות (טאב)"/>
+			<item id="ID_WINDOW_MONITOR" text="הצג משגוח (מוניטור)"/>
+			<item id="ID_WINDOW_REMOTE" text="הצג לוח שליטה"/>
 		</menu>
-		<menu text="‪_עזרה">
-			<item id="ID_HELP_FAQ" text="_שאלות נפוצות על שרזה"/>
-			<item id="ID_HELP_TEST" text="_בדיקת התחברות"/>
+		<menu text="עזרה">
+			<item id="ID_HELP_FAQ" text="שאלות נפוצות על שרזה"/>
+			<item id="ID_HELP_TEST" text="בדיקת התחברות"/>
 			<separator/>
-			<menu text="‪_מדריכים">
-				<item id="ID_HELP_GUIDE" text="‪_מדריך למשתמש"/>
-				<item id="ID_HELP_ROUTER" text="עזרה בנושא _נתב (ראוטר)"/>
-				<item id="ID_HELP_SECURITY" text="‪עזרה בנושא _אבטחה"/>
-				<item id="ID_HELP_CODEC" text="‪עזרה בנושאי מ_קודדים"/>
+			<menu text="מדריכים">
+				<item id="ID_HELP_GUIDE" text="מדריך למשתמש"/>
+				<item id="ID_HELP_ROUTER" text="עזרה בנושא נתב (ראוטר)"/>
+				<item id="ID_HELP_SECURITY" text="‪עזרה בנושא אבטחה"/>
+				<item id="ID_HELP_CODEC" text="‪עזרה בנושאי מקודדים"/>
 			</menu>
 			<separator/>
-			<menu text="‪_אתרי אינטרנט">
-				<item id="ID_HELP_HOMEPAGE" text="‪_אתר הבית של שרזה"/>
-				<item id="ID_HELP_FORUMS" text="_פורומים של שרזה"/>
+			<menu text="אתרי אינטרנט">
+				<item id="ID_HELP_HOMEPAGE" text="אתר הבית של שרזה"/>
+				<item id="ID_HELP_FORUMS" text="פורומים של שרזה"/>
 				<separator/>
 				<!--item id="ID_HELP_UPDATE" text="‪חדשות אחרונות"-->
-				<item id="ID_HELP_WEB_1" text="‪Zeropaid.com"/> -->
 			</menu>
 			<separator/> <!--
-			<item id="ID_HELP_VERSION_CHECK" text="_בדוק אם קיימות גרסאות חדשות"/>
-			<item id="ID_HELP_DONATE" text="_תרום לפרוייקט שרזה"/>
+			<item id="ID_HELP_VERSION_CHECK" text="בדוק אם קיימות גרסאות חדשות"/>
+			<item id="ID_HELP_DONATE" text="תרום לפרוייקט שרזה"/>
 			<separator/> -->
-			<item id="ID_HELP_ABOUT" text="‪...או_דות שרזה"/>
+			<item id="ID_HELP_ABOUT" text="‪...אודות שרזה"/>
 				</menu>
 	</menu>
 	<menu name="CMainWnd.Basic" type="bar">
-		<menu text="‪_רשת">
-			<item id="ID_NETWORK_CONNECT" text="ה_תחבר" shortcut="Ctrl+G"/>
+		<menu text="רשת">
+			<item id="ID_NETWORK_CONNECT" text="התחבר" shortcut="Ctrl+G"/>
 			<separator/>
-			<item id="ID_NETWORK_G2" text="‪התחבר אל גנוטלה _2"/>
-			<item id="ID_NETWORK_G1" text="‪התחבר אל גנוטלה _1"/>
-			<item id="ID_NETWORK_ED2K" text="‪התחבר אל _אי-דונקי"/>
+			<item id="ID_NETWORK_G2" text="‪התחבר אל גנוטלה 2"/>
+			<item id="ID_NETWORK_G1" text="‪התחבר אל גנוטלה 1"/>
+			<item id="ID_NETWORK_ED2K" text="‪התחבר אל אי-דונקי"/>
 			<separator/>
-			<item id="ID_NETWORK_AUTO_CLOSE" text="‪צא ב_סיום העברות"/>
-			<item id="ID_NETWORK_EXIT" text="י_ציאה"/>
+			<item id="ID_NETWORK_AUTO_CLOSE" text="‪צא בסיום העברות"/>
+			<item id="ID_NETWORK_EXIT" text="יציאה"/>
 		</menu>
-		<menu text="‪_תצוגה">
-			<item id="ID_TAB_HOME" text="_ראשי"/>
-			<item id="ID_TAB_LIBRARY" text="_ספרייה"/>
-			<item id="ID_TAB_MEDIA" text="‪_נגן מדיה"/>
-			<item id="ID_TAB_SEARCH" text="_חיפוש"/>
-			<item id="ID_TAB_TRANSFERS" text="ה_ורדות"/>
-			<item id="ID_WINDOW_REMOTE" text="הצג לוח _שליטה"/>
-			<item id="ID_TAB_IRC" text="_חדר שיחה"/>
+		<menu text="תצוגה">
+			<item id="ID_TAB_HOME" text="ראשי"/>
+			<item id="ID_TAB_LIBRARY" text="ספרייה"/>
+			<item id="ID_TAB_MEDIA" text="נגן מדיה"/>
+			<item id="ID_TAB_SEARCH" text="חיפוש"/>
+			<item id="ID_TAB_TRANSFERS" text="הורדות"/>
+			<item id="ID_WINDOW_REMOTE" text="הצג לוח שליטה"/>
+			<item id="ID_TAB_IRC" text="חדר שיחה"/>
 			<separator/>
-			<menu text="_מתקדם">
-				<item id="ID_VIEW_NEIGHBOURS" text="_שכנים"/>
-				<item id="ID_VIEW_UPLOADS" text="‪ה_עלאות"/>
+			<menu text="מתקדם">
+				<item id="ID_VIEW_NEIGHBOURS" text="שכנים"/>
+				<item id="ID_VIEW_UPLOADS" text="‪העלאות"/>
 				<separator/>
-				<item id="ID_VIEW_SECURITY" text="_אבטחה"/>
-				<item id="ID_VIEW_HOSTS" text="_מטמון מארחים (הוסטים)"/>
-				<item id="ID_VIEW_DISCOVERY" text="משאבי _חיבור"/>
+				<item id="ID_VIEW_SECURITY" text="אבטחה"/>
+				<item id="ID_VIEW_HOSTS" text="מטמון מארחים (הוסטים)"/>
+				<item id="ID_VIEW_DISCOVERY" text="משאבי חיבור"/>
 			</menu>
 			<separator/>
-			<item id="ID_VIEW_BASIC" text="‪תצוגה ר_גילה"/>
-			<item id="ID_VIEW_TABBED" text="‪תצוגה מ_תקדמת"/>
+			<item id="ID_VIEW_BASIC" text="‪תצוגה רגילה"/>
+			<item id="ID_VIEW_TABBED" text="‪תצוגה מתקדמת"/>
 		</menu>
-		<menu text="_כלים">
-			<item id="ID_LIBRARY_FOLDERS" text="שתף _קבצים..."/>
-			<item id="ID_TOOLS_DOWNLOAD" text="_הורד קבצים/טורנטים..."/>
+		<menu text="כלים">
+			<item id="ID_LIBRARY_FOLDERS" text="שתף קבצים..."/>
+			<item id="ID_TOOLS_DOWNLOAD" text="הורד קבצים/טורנטים..."/>
 			<separator/>
-			<item id="ID_TOOLS_SKIN" text="בחר _מעטפת..."/>
-			<item id="ID_TOOLS_LANGUAGE" text="בחר _שפה..."/>
+			<item id="ID_TOOLS_SKIN" text="בחר מעטפת..."/>
+			<item id="ID_TOOLS_LANGUAGE" text="בחר שפה..."/>
 			<separator/>
-			<item id="ID_TOOLS_PROFILE" text="‪_ערוך את הפרופיל שלי..."/>
-			<item id="ID_TOOLS_WIZARD" text="‪_אשף הפעלה מהירה..."/>
+			<item id="ID_TOOLS_PROFILE" text="ערוך את הפרופיל שלי..."/>
+			<item id="ID_TOOLS_WIZARD" text="אשף הפעלה מהירה..."/>
 			<separator/>
-			<item id="ID_TOOLS_SETTINGS" text="ה_גדרות שרזה..."/>
+			<item id="ID_TOOLS_SETTINGS" text="הגדרות שרזה..."/>
 		</menu>
-		<menu text="_עזרה">
-			<item id="ID_HELP_FAQ" text="_שאלות נפוצות על שרזה"/>
-			<item id="ID_HELP_TEST" text="_בדיקת חיבור"/>
+		<menu text="עזרה">
+			<item id="ID_HELP_FAQ" text="שאלות נפוצות על שרזה"/>
+			<item id="ID_HELP_TEST" text="בדיקת חיבור"/>
 			<separator/>
-			<menu text="_מדריך">
-				<item id="ID_HELP_GUIDE" text="‪מ_דריך למשתמש"/>
-				<item id="ID_HELP_ROUTER" text="עזרה בנושא _נתב (ראוטר)"/>
-				<item id="ID_HELP_SECURITY" text="‪עזרה בנושא _אבטחה"/>
-				<item id="ID_HELP_CODEC" text="‪עזרה בנושאי _מקודדים"/>
+			<menu text="מדריך">
+				<item id="ID_HELP_GUIDE" text="‪מדריך למשתמש"/>
+				<item id="ID_HELP_ROUTER" text="עזרה בנושא נתב (ראוטר)"/>
+				<item id="ID_HELP_SECURITY" text="‪עזרה בנושא אבטחה"/>
+				<item id="ID_HELP_CODEC" text="‪עזרה בנושאי מקודדים"/>
 			</menu>
 			<separator/>
-			<menu text="_אתרי אינטרנט">
-				<item id="ID_HELP_HOMEPAGE" text="‪_אתר הבית של שרזה"/>
-				<item id="ID_HELP_FORUMS" text="_פורומים של שרזה"/>
+			<menu text="אתרי אינטרנט">
+				<item id="ID_HELP_HOMEPAGE" text="אתר הבית של שרזה"/>
+				<item id="ID_HELP_FORUMS" text="פורומים של שרזה"/>
 				<separator/>
 				<!--item id="ID_HELP_UPDATE" text="‪חדשות אחרונות"-->
-				<item id="ID_HELP_WEB_1" text="‪Zeropaid.com"/> -->
 			</menu>
 			<separator/> <!--
-			<item id="ID_HELP_VERSION_CHECK" text="_בדוק אם קיימות גרסאות חדשות"/>
-			<item id="ID_HELP_DONATE" text="_תרום לפרוייקט שרזה"/>
+			<item id="ID_HELP_VERSION_CHECK" text="בדוק אם קיימות גרסאות חדשות"/>
+			<item id="ID_HELP_DONATE" text="תרום לפרוייקט שרזה"/>
 			<separator/> -->
-			<item id="ID_HELP_ABOUT" text="‪...או_דות שרזה"/>
+			<item id="ID_HELP_ABOUT" text="‪...אודות שרזה"/>
 		</menu>
 	</menu>
 	<menu name="CMainWnd.Windowed" type="bar">
-		<menu text="‪ר_שת">
-			<item id="ID_NETWORK_SEARCH" text="‪_חיפוש חדש" shortcut="Ctrl+S"/>
+		<menu text="‪רשת">
+			<item id="ID_NETWORK_SEARCH" text="חיפוש חדש" shortcut="Ctrl+S"/>
 			<separator/>
-			<item id="ID_NETWORK_CONNECT" text="ה_תחבר" shortcut="Ctrl+G"/>
-			<item id="ID_NETWORK_DISCONNECT" text="הת_נתק"/>
+			<item id="ID_NETWORK_CONNECT" text="התחבר" shortcut="Ctrl+G"/>
+			<item id="ID_NETWORK_DISCONNECT" text="התנתק"/>
 			<separator/>
-			<item id="ID_NETWORK_CONNECT_TO" text="_...התחבר אל" shortcut="Ctrl+T"/>
-			<item id="ID_NETWORK_BROWSE_TO" text="_...עיין במארח"/>
+			<item id="ID_NETWORK_CONNECT_TO" text="...התחבר אל" shortcut="Ctrl+T"/>
+			<item id="ID_NETWORK_BROWSE_TO" text="...עיין במארח"/>
 			<separator/>
-			<item id="ID_NETWORK_G2" text="‪_התחבר אל גנוטלה 2"/>
-			<item id="ID_NETWORK_G1" text="‪_התחבר אל גנוטלה 1"/>
-			<item id="ID_NETWORK_ED2K" text="‪התחבר אל _אידונקי"/>
-			<item id="ID_NETWORK_G1" text="‪_התחבר אל גנוטלה DC"/>
+			<item id="ID_NETWORK_G2" text="התחבר אל גנוטלה 2"/>
+			<item id="ID_NETWORK_G1" text="התחבר אל גנוטלה 1"/>
+			<item id="ID_NETWORK_ED2K" text="‪התחבר אל אידונקי"/>
+			<item id="ID_NETWORK_G1" text="התחבר אל גנוטלה DC"/>
 			<separator/>
-			<item id="ID_NETWORK_AUTO_CLOSE" text="‪_סגור בסיום העברות"/>
-			<item id="ID_NETWORK_EXIT" text="‪_יציאה"/>
+			<item id="ID_NETWORK_AUTO_CLOSE" text="סגור בסיום העברות"/>
+			<item id="ID_NETWORK_EXIT" text="יציאה"/>
 		</menu>
-		<menu text="‪_תצוגה">
-			<item id="ID_VIEW_SYSTEM" text="‪_מערכת" shortcut="F11"/>
-			<item id="ID_VIEW_NEIGHBOURS" text="‪_שכנים" shortcut="Ctrl+F11"/>
-			<item id="ID_VIEW_DOWNLOADS" text="‪_הורדות" shortcut="F3"/>
-			<item id="ID_VIEW_UPLOADS" text="‪ה_עלאות" shortcut="F4"/>
-			<item id="ID_VIEW_LIBRARY" text="‪_ספרייה" shortcut="F5"/>
-			<item id="ID_VIEW_MEDIA" text="‪_נגן מדיה" shortcut="F6"/>
+		<menu text="תצוגה">
+			<item id="ID_VIEW_SYSTEM" text="מערכת" shortcut="F11"/>
+			<item id="ID_VIEW_NEIGHBOURS" text="שכנים" shortcut="Ctrl+F11"/>
+			<item id="ID_VIEW_DOWNLOADS" text="הורדות" shortcut="F3"/>
+			<item id="ID_VIEW_UPLOADS" text="‪העלאות" shortcut="F4"/>
+			<item id="ID_VIEW_LIBRARY" text="ספרייה" shortcut="F5"/>
+			<item id="ID_VIEW_MEDIA" text="נגן מדיה" shortcut="F6"/>
 			<separator/>
-			<item id="ID_VIEW_SECURITY" text="‪_אבטחה" shortcut="F7"/>
-			<item id="ID_VIEW_HOSTS" text="מ_טמון מארחים (הוסטים)" shortcut="F8"/>
-			<item id="ID_VIEW_DISCOVERY" text="‪משא_בי חיבור" shortcut="F9"/>
-			<item id="ID_VIEW_TRAFFIC" text="‪_גרף" shortcut="F10"/>
+			<item id="ID_VIEW_SECURITY" text="אבטחה" shortcut="F7"/>
+			<item id="ID_VIEW_HOSTS" text="מטמון מארחים (הוסטים)" shortcut="F8"/>
+			<item id="ID_VIEW_DISCOVERY" text="‪משאבי חיבור" shortcut="F9"/>
+			<item id="ID_VIEW_TRAFFIC" text="גרף" shortcut="F10"/>
 			<separator/>
-			<item id="ID_VIEW_PACKETS" text="ת_פוקת חבילות (פאקט)" shortcut="Ctrl+F1"/>
-			<item id="ID_VIEW_SEARCH_MONITOR" text="‪משגוח (מוניטור) ה_חיפוש" shortcut="Ctrl+F2"/>
-			<item id="ID_VIEW_RESULTS_MONITOR" text="‪משגוח (מוניטור) ה_תוצאות" shortcut="Ctrl+F3"/>
+			<item id="ID_VIEW_PACKETS" text="תפוקת חבילות (פאקט)" shortcut="Ctrl+F1"/>
+			<item id="ID_VIEW_SEARCH_MONITOR" text="‪משגוח (מוניטור) החיפוש" shortcut="Ctrl+F2"/>
+			<item id="ID_VIEW_RESULTS_MONITOR" text="‪משגוח (מוניטור) התוצאות" shortcut="Ctrl+F3"/>
 			<separator/>
-			<item id="ID_VIEW_BASIC" text="‪מצב _רגיל"/>
-			<item id="ID_VIEW_TABBED" text="מצב ת_וויות (טאבים)"/>
-			<item id="ID_VIEW_WINDOWED" text="‪מצב ח_לונות"/>
+			<item id="ID_VIEW_BASIC" text="‪מצב רגיל"/>
+			<item id="ID_VIEW_TABBED" text="מצב תוויות (טאבים)"/>
+			<item id="ID_VIEW_WINDOWED" text="‪מצב חלונות"/>
 		</menu>
-		<menu text="‪_כלים">
-			<item id="ID_LIBRARY_FOLDERS" text="‪...שתף _קבצים"/>
-			<item id="ID_TOOLS_DOWNLOAD" text="_הורד קבצים/טורנטים..."/>
-			<item id="ID_IMPORT_DOWNLOADS" text="_ייבא קבצים חלקיים של אי-מיול..."/>
-			<item id="ID_OPEN_DOWNLOADS_FOLDER" text="_פתח את תקיית ההורדות שהושלמו..."/>
+		<menu text="כלים">
+			<item id="ID_LIBRARY_FOLDERS" text="‪...שתף קבצים"/>
+			<item id="ID_TOOLS_DOWNLOAD" text="הורד קבצים/טורנטים..."/>
+			<item id="ID_IMPORT_DOWNLOADS" text="ייבא קבצים חלקיים של אי-מיול..."/>
+			<item id="ID_OPEN_DOWNLOADS_FOLDER" text="פתח את תקיית ההורדות שהושלמו..."/>
 			<separator/>
-			<item id="ID_TOOLS_SKIN" text="‪...בחר _מעטפת"/>
-			<item id="ID_TOOLS_LANGUAGE" text="‪...בחר _שפה"/>
+			<item id="ID_TOOLS_SKIN" text="‪...בחר מעטפת"/>
+			<item id="ID_TOOLS_LANGUAGE" text="‪...בחר שפה"/>
 			<separator/>
-			<item id="ID_TOOLS_PROFILE" text="‪_ערוך את הפרופיל שלי..."/>
+			<item id="ID_TOOLS_PROFILE" text="ערוך את הפרופיל שלי..."/>
 			<separator/>
-			<item id="ID_TOOLS_WIZARD" text="‪‪_אשף הפעלה מהירה..."/>
-			<item id="ID_TOOLS_SETTINGS" text="ה_גדרות שרזה..."/>
+			<item id="ID_TOOLS_WIZARD" text="אשף הפעלה מהירה..."/>
+			<item id="ID_TOOLS_SETTINGS" text="הגדרות שרזה..."/>
 		</menu>
-		<menu text="‪_חלון">
-			<item id="ID_WINDOW_CASCADE" text="‪מ_סך מלא"/>
-			<item id="ID_WINDOW_TILE_HORZ" text="‪פזר חלונות או_פקית"/>
-			<item id="ID_WINDOW_TILE_VERT" text="‪פזר חלונות אנ_כית"/>
+		<menu text="חלון">
+			<item id="ID_WINDOW_CASCADE" text="‪מסך מלא"/>
+			<item id="ID_WINDOW_TILE_HORZ" text="‪פזר חלונות אופקית"/>
+			<item id="ID_WINDOW_TILE_VERT" text="‪פזר חלונות אנכית"/>
 			<separator/>
-			<item id="ID_WINDOW_NAVBAR" text="‪הצג סרגל _ניווט"/>
-			<item id="ID_WINDOW_TOOLBAR" text="‪הצג סרגל _כלים"/>
+			<item id="ID_WINDOW_NAVBAR" text="‪הצג סרגל ניווט"/>
+			<item id="ID_WINDOW_TOOLBAR" text="‪הצג סרגל כלים"/>
 			<separator/>
-			<item id="ID_WINDOW_TABBAR" text="הצג סרגל _תוויות (טאבים)"/>
-			<item id="ID_WINDOW_MONITOR" text="נצג _משגוח (מוניטור)"/>
-			<item id="ID_WINDOW_REMOTE" text="‪הצג לוח _שליטה"/>
+			<item id="ID_WINDOW_TABBAR" text="הצג סרגל תוויות (טאבים)"/>
+			<item id="ID_WINDOW_MONITOR" text="נצג משגוח (מוניטור)"/>
+			<item id="ID_WINDOW_REMOTE" text="‪הצג לוח שליטה"/>
 		</menu>
-		<menu text="‪_עזרה">
-			<item id="ID_HELP_FAQ" text="_שאלות נפוצות על שרזה"/>
-			<item id="ID_HELP_TEST" text="_בדיקת התחברות"/>
+		<menu text="עזרה">
+			<item id="ID_HELP_FAQ" text="שאלות נפוצות על שרזה"/>
+			<item id="ID_HELP_TEST" text="בדיקת התחברות"/>
 			<separator/>
-			<menu text="‪_מדריך">
-				<item id="ID_HELP_GUIDE" text="‪_מדריך למשתמש"/>
-				<item id="ID_HELP_ROUTER" text="עזרה בנושא _נתב (ראוטר)"/>
-				<item id="ID_HELP_SECURITY" text="‪עזרה בנושא _אבטחה"/>
-				<item id="ID_HELP_CODEC" text="‪עזרה בנושאי מ_קודדים"/>
+			<menu text="מדריך">
+				<item id="ID_HELP_GUIDE" text="מדריך למשתמש"/>
+				<item id="ID_HELP_ROUTER" text="עזרה בנושא נתב (ראוטר)"/>
+				<item id="ID_HELP_SECURITY" text="‪עזרה בנושא אבטחה"/>
+				<item id="ID_HELP_CODEC" text="‪עזרה בנושאי מקודדים"/>
 			</menu>
 			<separator/>
-			<menu text="‪_אתרי אינטרנט">
-				<item id="ID_HELP_HOMEPAGE" text="‪_אתר הבית של שרזה"/>
-				<item id="ID_HELP_FORUMS" text="‪_פורומים של שרזה"/>
+			<menu text="אתרי אינטרנט">
+				<item id="ID_HELP_HOMEPAGE" text="אתר הבית של שרזה"/>
+				<item id="ID_HELP_FORUMS" text="פורומים של שרזה"/>
 				<separator/>
 				<!--item id="ID_HELP_UPDATE" text="‪חדשות אחרונות"-->
-				<item id="ID_HELP_WEB_1" text="‪Zeropaid.com"/> -->
 			</menu>
 			<separator/> <!--
-			<item id="ID_HELP_VERSION_CHECK" text="_בדוק אם קיימות גרסאות חדשות"/>
-			<item id="ID_HELP_DONATE" text="_תרום לפרוייקט שרזה"/>
+			<item id="ID_HELP_VERSION_CHECK" text="בדוק אם קיימות גרסאות חדשות"/>
+			<item id="ID_HELP_DONATE" text="תרום לפרוייקט שרזה"/>
 			<separator/> -->
-			<item id="ID_HELP_ABOUT" text="‪...או_דות שרזה"/>
+			<item id="ID_HELP_ABOUT" text="‪...אודות שרזה"/>
 		</menu>
 	</menu>
 	<!-- VIEW POPUP -->
 	<menu name="CMainWnd.View.Basic">
-		<item id="ID_TAB_HOME" text="_ראשי"/>
-		<item id="ID_TAB_LIBRARY" text="_ספרייה"/>
-		<item id="ID_TAB_MEDIA" text="_נגן מדיה"/>
-		<item id="ID_TAB_SEARCH" text="‪_חיפוש"/>
-		<item id="ID_TAB_TRANSFERS" text="‪_הורדות"/>
+		<item id="ID_TAB_HOME" text="ראשי"/>
+		<item id="ID_TAB_LIBRARY" text="ספרייה"/>
+		<item id="ID_TAB_MEDIA" text="נגן מדיה"/>
+		<item id="ID_TAB_SEARCH" text="חיפוש"/>
+		<item id="ID_TAB_TRANSFERS" text="הורדות"/>
 		<separator/>
-		<menu text="‪_מתקדם">
-			<item id="ID_VIEW_NEIGHBOURS" text="‪_שכנים"/>
-			<item id="ID_VIEW_UPLOADS" text="‪ה_עלאות"/>
-			<item id="ID_VIEW_SECURITY" text="‪_אבטחה"/>
-			<item id="ID_VIEW_HOSTS" text="_מטמון מארחים (הוסטים)"/>
+		<menu text="מתקדם">
+			<item id="ID_VIEW_NEIGHBOURS" text="שכנים"/>
+			<item id="ID_VIEW_UPLOADS" text="‪העלאות"/>
+			<item id="ID_VIEW_SECURITY" text="אבטחה"/>
+			<item id="ID_VIEW_HOSTS" text="מטמון מארחים (הוסטים)"/>
 		</menu>
 	</menu>
 	<menu name="CMainWnd.View.Tabbed">
-		<item id="ID_TAB_HOME" text="‪_ראשי"/>
-		<item id="ID_TAB_SEARCH" text="ח_יפוש"/>
-		<item id="ID_TAB_TRANSFERS" text="‪_העברות"/>
-		<item id="ID_TAB_NETWORK" text="ר_שת"/>
-		<item id="ID_TAB_LIBRARY" text="‪_ספרייה"/>
-		<item id="ID_TAB_MEDIA" text="‪_נגן מדיה"/>
-		<item id="ID_TAB_IRC" text="_חדר שיחה"/>
+		<item id="ID_TAB_HOME" text="ראשי"/>
+		<item id="ID_TAB_SEARCH" text="חיפוש"/>
+		<item id="ID_TAB_TRANSFERS" text="העברות"/>
+		<item id="ID_TAB_NETWORK" text="רשת"/>
+		<item id="ID_TAB_LIBRARY" text="ספרייה"/>
+		<item id="ID_TAB_MEDIA" text="נגן מדיה"/>
+		<item id="ID_TAB_IRC" text="חדר שיחה"/>
 		<separator/>
-		<item id="ID_VIEW_SECURITY" text="‪_אבטחה"/>
-		<item id="ID_VIEW_HOSTS" text="מ_טמון מארחים (הוסטים)"/>
-		<item id="ID_VIEW_DISCOVERY" text="_משאבי חיבור"/>
-		<item id="ID_VIEW_TRAFFIC" text="‪_גרף"/>
+		<item id="ID_VIEW_SECURITY" text="אבטחה"/>
+		<item id="ID_VIEW_HOSTS" text="מטמון מארחים (הוסטים)"/>
+		<item id="ID_VIEW_DISCOVERY" text="משאבי חיבור"/>
+		<item id="ID_VIEW_TRAFFIC" text="גרף"/>
 		<separator/>
-		<item id="ID_VIEW_PACKETS" text="‪(ת_פוקת חבילות (פאקט"/>
-		<item id="ID_VIEW_SEARCH_MONITOR" text="משגוח (מוניטור) ה_חיפוש"/>
-		<item id="ID_VIEW_RESULTS_MONITOR" text="משגוח (מוניטור) ה_תוצאות"/>
+		<item id="ID_VIEW_PACKETS" text="‪(תפוקת חבילות (פאקט"/>
+		<item id="ID_VIEW_SEARCH_MONITOR" text="משגוח (מוניטור) החיפוש"/>
+		<item id="ID_VIEW_RESULTS_MONITOR" text="משגוח (מוניטור) התוצאות"/>
 	</menu>
 	<menu name="CMainWnd.View.Windowed">
-		<item id="ID_NETWORK_SEARCH" text="‪חיפוש ח_דש"/>
+		<item id="ID_NETWORK_SEARCH" text="‪חיפוש חדש"/>
 		<separator/>
-		<item id="ID_VIEW_SYSTEM" text="_מערכת"/>
-		<item id="ID_VIEW_NEIGHBOURS" text="‪_שכנים"/>
-		<item id="ID_VIEW_DOWNLOADS" text="‪_הורדות"/>
-		<item id="ID_VIEW_UPLOADS" text="‪ה_עלאות"/>
-		<item id="ID_VIEW_LIBRARY" text="‪_ספרייה"/>
-		<item id="ID_VIEW_MEDIA" text="‪_נגן המדיה"/>
+		<item id="ID_VIEW_SYSTEM" text="מערכת"/>
+		<item id="ID_VIEW_NEIGHBOURS" text="שכנים"/>
+		<item id="ID_VIEW_DOWNLOADS" text="הורדות"/>
+		<item id="ID_VIEW_UPLOADS" text="‪העלאות"/>
+		<item id="ID_VIEW_LIBRARY" text="ספרייה"/>
+		<item id="ID_VIEW_MEDIA" text="נגן המדיה"/>
 		<separator/>
-		<item id="ID_VIEW_SECURITY" text="‪_אבטחה"/>
-		<item id="ID_VIEW_HOSTS" text="מ_טמון מארחים (הוסטים)"/>
-		<item id="ID_VIEW_DISCOVERY" text="‪משא_בי חיבור"/>
-		<item id="ID_VIEW_TRAFFIC" text="‪_גרף"/>
+		<item id="ID_VIEW_SECURITY" text="אבטחה"/>
+		<item id="ID_VIEW_HOSTS" text="מטמון מארחים (הוסטים)"/>
+		<item id="ID_VIEW_DISCOVERY" text="‪משאבי חיבור"/>
+		<item id="ID_VIEW_TRAFFIC" text="גרף"/>
 		<separator/>
-		<item id="ID_VIEW_PACKETS" text="‪(ת_פוקת חבילות (פאקט"/>
-		<item id="ID_VIEW_SEARCH_MONITOR" text="משגוח (מוניטור) ה_חיפוש"/>
-		<item id="ID_VIEW_RESULTS_MONITOR" text="משגוח (מוניטור) ה_תוצאות"/>
+		<item id="ID_VIEW_PACKETS" text="‪(תפוקת חבילות (פאקט"/>
+		<item id="ID_VIEW_SEARCH_MONITOR" text="משגוח (מוניטור) החיפוש"/>
+		<item id="ID_VIEW_RESULTS_MONITOR" text="משגוח (מוניטור) התוצאות"/>
 	</menu>
 	<!-- HOME MENU -->
 	<menu name="CHomeWnd.Basic">
-		<item id="ID_TAB_HOME" text="_ראשי"/>
-		<item id="ID_TAB_LIBRARY" text="‪_ספרייה"/>
-		<item id="ID_TAB_MEDIA" text="‪_נגן מדיה"/>
-		<item id="ID_TAB_SEARCH" text="‪_חיפוש"/>
-		<item id="ID_TAB_TRANSFERS" text="_הורדות"/>
+		<item id="ID_TAB_HOME" text="ראשי"/>
+		<item id="ID_TAB_LIBRARY" text="ספרייה"/>
+		<item id="ID_TAB_MEDIA" text="נגן מדיה"/>
+		<item id="ID_TAB_SEARCH" text="חיפוש"/>
+		<item id="ID_TAB_TRANSFERS" text="הורדות"/>
 		<separator/>
-		<menu text="‪_מתקדם">
-			<item id="ID_VIEW_NEIGHBOURS" text="‪_שכנים"/>
-			<item id="ID_VIEW_UPLOADS" text="_העלאות"/>
-			<item id="ID_VIEW_SECURITY" text="‪_אבטחה"/>
-			<item id="ID_VIEW_HOSTS" text="_מטמון מארחים (הוסטים)"/>
+		<menu text="מתקדם">
+			<item id="ID_VIEW_NEIGHBOURS" text="שכנים"/>
+			<item id="ID_VIEW_UPLOADS" text="העלאות"/>
+			<item id="ID_VIEW_SECURITY" text="אבטחה"/>
+			<item id="ID_VIEW_HOSTS" text="מטמון מארחים (הוסטים)"/>
 		</menu>
 	</menu>
 	<menu name="CHomeWnd.Tabbed">
-		<item id="ID_TAB_HOME" text="_ראשי"/>
-		<item id="ID_TAB_LIBRARY" text="‪_ספרייה"/>
-		<item id="ID_TAB_MEDIA" text="‪_נגן מדיה"/>
-		<item id="ID_TAB_SEARCH" text="‪ח_יפוש"/>
-		<item id="ID_TAB_TRANSFERS" text="‪_העברות"/>
-		<item id="ID_TAB_NETWORK" text="‪ר_שת"/>
-		<item id="ID_TAB_IRC" text="_חדר שיחה"/>
+		<item id="ID_TAB_HOME" text="ראשי"/>
+		<item id="ID_TAB_LIBRARY" text="ספרייה"/>
+		<item id="ID_TAB_MEDIA" text="נגן מדיה"/>
+		<item id="ID_TAB_SEARCH" text="‪חיפוש"/>
+		<item id="ID_TAB_TRANSFERS" text="העברות"/>
+		<item id="ID_TAB_NETWORK" text="‪רשת"/>
+		<item id="ID_TAB_IRC" text="חדר שיחה"/>
 		<separator/>
-		<item id="ID_VIEW_SECURITY" text="‪_אבטחה"/>
-		<item id="ID_VIEW_HOSTS" text="_מטמון מארחים (הוסטים)"/>
-		<item id="ID_VIEW_DISCOVERY" text="‪משאבי חי_בור"/>
-		<item id="ID_VIEW_TRAFFIC" text="‪_גרף"/>
+		<item id="ID_VIEW_SECURITY" text="אבטחה"/>
+		<item id="ID_VIEW_HOSTS" text="מטמון מארחים (הוסטים)"/>
+		<item id="ID_VIEW_DISCOVERY" text="‪משאבי חיבור"/>
+		<item id="ID_VIEW_TRAFFIC" text="גרף"/>
 		<separator/>
-		<item id="ID_VIEW_PACKETS" text="ת_פוקת חבילות (פאקט)"/>
-		<item id="ID_VIEW_SEARCH_MONITOR" text="‪משגוח (מוניטור) ה_חיפוש"/>
-		<item id="ID_VIEW_RESULTS_MONITOR" text="‪‪משגוח (מוניטור) ה_תוצאות"/>
+		<item id="ID_VIEW_PACKETS" text="תפוקת חבילות (פאקט)"/>
+		<item id="ID_VIEW_SEARCH_MONITOR" text="‪משגוח (מוניטור) החיפוש"/>
+		<item id="ID_VIEW_RESULTS_MONITOR" text="‪‪משגוח (מוניטור) התוצאות"/>
 	</menu>
 	<!-- HOST CACHE WINDOW -->
 	<menu name="CHostCacheWnd">
-		<item id="ID_HOSTCACHE_CONNECT" text="‪_התחבר כעת"/>
-		<item id="ID_HOSTCACHE_DISCONNECT" text="‪ה_תנתק"/>
-		<item id="ID_NEIGHBOURS_URI" text="ה_עתק URI"/>
-		<item id="ID_HOSTCACHE_PRIORITY" text="‪_שרת מועדף"/>
+		<item id="ID_HOSTCACHE_CONNECT" text="התחבר כעת"/>
+		<item id="ID_HOSTCACHE_DISCONNECT" text="‪התנתק"/>
+		<item id="ID_NEIGHBOURS_URI" text="העתק URI"/>
+		<item id="ID_HOSTCACHE_PRIORITY" text="שרת מועדף"/>
 		<separator/>
-		<item id="ID_HOSTCACHE_REMOVE" text="ה_סר כתובת מארח (הוסט)"/>
+		<item id="ID_HOSTCACHE_REMOVE" text="הסר כתובת מארח (הוסט)"/>
 		<separator/>
-		<menu text="_מסנן">
-			<item id="ID_HOSTCACHE_G2_HORIZON" text="אשכול _גנוטלה 2"/>
-			<item id="ID_HOSTCACHE_G2_CACHE" text="‪מטמון גנוטלה _2"/>
-			<item id="ID_HOSTCACHE_G1_CACHE" text="‪מטמון גנוטלה _1"/>
-			<item id="ID_HOSTCACHE_ED2K_CACHE" text="‪מטמון _אידונקי"/>
+		<menu text="מסנן">
+			<item id="ID_HOSTCACHE_G2_HORIZON" text="אשכול גנוטלה 2"/>
+			<item id="ID_HOSTCACHE_G2_CACHE" text="‪מטמון גנוטלה 2"/>
+			<item id="ID_HOSTCACHE_G1_CACHE" text="‪מטמון גנוטלה 1"/>
+			<item id="ID_HOSTCACHE_ED2K_CACHE" text="‪מטמון אידונקי"/>
 			<item id="ID_HOSTCACHE_BT_CACHE" text="מטמון ביטורנט"/>
 			<item id="ID_HOSTCACHE_KAD_CACHE" text="מטמון קדמילה"/>
 		</menu>
 		<separator/>
-		<item id="ID_HOSTCACHE_IMPORT" text="_ייבא קובץ MET..."/>
-		<item id="ID_HOSTCACHE_FILE_DOWNLOAD" text="ה_ורד MET..."/>
+		<item id="ID_HOSTCACHE_IMPORT" text="ייבא קובץ MET..."/>
+		<item id="ID_HOSTCACHE_FILE_DOWNLOAD" text="הורד MET..."/>
 	</menu>
 	<!-- SEARCH WINDOW -->
 	<menu name="CSearchWnd.Basic">
-		<item id="ID_SEARCH_DOWNLOAD" text="‪_הורד"/>
+		<item id="ID_SEARCH_DOWNLOAD" text="הורד"/>
 		<separator/>
-		<item id="ID_BROWSE_LAUNCH" text="‪_עיין במשתמש"/>
-		<item id="ID_SEARCH_CHAT" text="‪_שוחח עם משתמש"/>
+		<item id="ID_BROWSE_LAUNCH" text="עיין במשתמש"/>
+		<item id="ID_SEARCH_CHAT" text="שוחח עם משתמש"/>
 		<separator/>
-		<menu text="‪_חפש">
-			<item id="ID_SEARCH_FOR_SIMILAR" text="_‪קבצים דומים"/>
+		<menu text="חפש">
+			<item id="ID_SEARCH_FOR_SIMILAR" text="‪קבצים דומים"/>
 			<separator/>
-			<item id="ID_SEARCH_FOR_ARTIST" text="‪מוזיקה של אותו _אמן"/>
-			<item id="ID_SEARCH_FOR_ALBUM" text="‪מוזיקה באותו א_לבום"/>
-			<item id="ID_SEARCH_FOR_SERIES" text="‪פרקים באותה _סדרה"/>
+			<item id="ID_SEARCH_FOR_ARTIST" text="‪מוזיקה של אותו אמן"/>
+			<item id="ID_SEARCH_FOR_ALBUM" text="‪מוזיקה באותו אלבום"/>
+			<item id="ID_SEARCH_FOR_SERIES" text="‪פרקים באותה סדרה"/>
 		</menu>
 		<menu id="ID_WEBSERVICES_LIST" text="‪שירותי רשת">
 			<item id="ID_LIBRARY_BITPRINTS_WEB" text="‪Bitprints הראה כרטיס"/>
@@ -1012,15 +1024,15 @@ gap i newline
 		</menu>
 	</menu>
 	<menu name="CSearchWnd">
-		<item id="ID_SEARCH_DOWNLOAD" text="‪_הורד"/>
+		<item id="ID_SEARCH_DOWNLOAD" text="הורד"/>
 		<item id="ID_SEARCH_DOWNLOADNOW" text="‪הורד כעת"/>
 		<item id="ID_SEARCH_URI" text="‪...URI העתק"/>
 		<separator/>
-		<item id="ID_BROWSE_LAUNCH" text="‪_עיין בקבצי המשתמש"/>
-		<item id="ID_SEARCH_CHAT" text="‪_שוחח עם המשתמש"/>
-		<item id="ID_SECURITY_BAN" text="‪_חסום משתמש"/>
+		<item id="ID_BROWSE_LAUNCH" text="עיין בקבצי המשתמש"/>
+		<item id="ID_SEARCH_CHAT" text="שוחח עם המשתמש"/>
+		<item id="ID_SECURITY_BAN" text="חסום משתמש"/>
 		<separator/>
-		<menu text="_חיפוש של">
+		<menu text="חיפוש של">
 			<item id="ID_SEARCH_FOR_THIS" text="‪קובץ זה"/>
 			<item id="ID_SEARCH_FOR_SIMILAR" text="‪קבצים דומים"/>
 			<separator/>
@@ -1028,46 +1040,46 @@ gap i newline
 			<item id="ID_SEARCH_FOR_ALBUM" text="‪מוזיקה באותו אלבום"/>
 			<item id="ID_SEARCH_FOR_SERIES" text="‪פרקים באותה סדרה"/>
 			<separator/>
-			<item id="ID_VIEW_SEARCH_MONITOR" text="חיפוש M_onitor"/>
-			<item id="ID_VIEW_RESULTS_MONITOR" text="_Hit Monitor"/>
+			<item id="ID_VIEW_SEARCH_MONITOR" text="חיפוש Monitor"/>
+			<item id="ID_VIEW_RESULTS_MONITOR" text="Hit Monitor"/>
 		</menu>
 		<menu id="ID_WEBSERVICES_LIST" text="‪שירותי רשת">
 			<item id="ID_LIBRARY_BITPRINTS_WEB" text="‪Bitprints הראה כרטיס"/>
 		</menu>
 		<separator/>
 		<item id="ID_SEARCH_FILTER" text="‪...סנן תוצאות"/>
-		<item id="ID_SEARCH_FILTER_REMOVE" text="‪_הסר מסנן"/>
-		<item id="ID_SEARCH_CLEAR" text="‪_נקה תוצאות"/>
+		<item id="ID_SEARCH_FILTER_REMOVE" text="הסר מסנן"/>
+		<item id="ID_SEARCH_CLEAR" text="נקה תוצאות"/>
 		<separator/>
-		<item id="ID_SEARCH_COLUMNS" text="‪_ערוך עמודות "/>
+		<item id="ID_SEARCH_COLUMNS" text="ערוך עמודות "/>
 	</menu>
 	<!-- BROWSE HOST WINDOW -->
 	<menu name="CBrowseHostWnd.Basic">
-		<item id="ID_SEARCH_DOWNLOAD" text="‪_הורד"/>
+		<item id="ID_SEARCH_DOWNLOAD" text="הורד"/>
 		<item id="ID_SEARCH_DOWNLOADNOW" text="‪הורד כעת"/>
 		<separator/>
-		<item id="ID_SEARCH_CHAT" text="‪_שוחח עם המשתמש"/>
+		<item id="ID_SEARCH_CHAT" text="שוחח עם המשתמש"/>
 		<separator/>
-		<menu text="‪_חיפוש של">
+		<menu text="חיפוש של">
 			<item id="ID_SEARCH_FOR_SIMILAR" text="‪קבצים דומים"/>
 			<separator/>
 			<item id="ID_SEARCH_FOR_ARTIST" text="‪מוזיקה של אותו אמן"/>
 			<item id="ID_SEARCH_FOR_ALBUM" text="‪מוזיקה באותו אלבום"/>
 			<item id="ID_SEARCH_FOR_SERIES" text="‪פרקים באותה סדרה"/>
 		</menu>
-		<menu text="‪_Web File Info">
+		<menu text="Web File Info">
 			<item id="ID_LIBRARY_BITPRINTS_WEB" text="‪Bitprints הראה כרטיס"/>
 			<item id="ID_SEARCH_URI" text="‪...URI העתק"/>
 		</menu>
 	</menu>
 	<menu name="CBrowseHostWnd">
-		<item id="ID_SEARCH_DOWNLOAD" text="‪_הורד"/>
+		<item id="ID_SEARCH_DOWNLOAD" text="הורד"/>
 		<item id="ID_SEARCH_DOWNLOADNOW" text="‪הורד כעת"/>
 		<item id="ID_SEARCH_URI" text="‪...URI העתק"/>
 		<separator/>
-		<item id="ID_SEARCH_CHAT" text="‪_שוחח עם המשתמש"/>
+		<item id="ID_SEARCH_CHAT" text="שוחח עם המשתמש"/>
 		<separator/>
-		<menu text="‪_חיפוש של">
+		<menu text="חיפוש של">
 			<item id="ID_SEARCH_FOR_THIS" text="‪קובץ זה"/>
 			<item id="ID_SEARCH_FOR_SIMILAR" text="‪קבצים דומים"/>
 			<separator/>
@@ -1080,19 +1092,19 @@ gap i newline
 		</menu>
 		<separator/>
 		<item id="ID_SEARCH_FILTER" text="‪...סנן תוצאות"/>
-		<item id="ID_SEARCH_FILTER_REMOVE" text="‪_הסר מסנן"/>
+		<item id="ID_SEARCH_FILTER_REMOVE" text="הסר מסנן"/>
 		<separator/>
-		<item id="ID_SEARCH_COLUMNS" text="‪_ערוך עמודות "/>
+		<item id="ID_SEARCH_COLUMNS" text="ערוך עמודות "/>
 	</menu>
 	<!-- HIT MONITOR WINDOW -->
 	<menu name="CHitMonitorWnd">
-		<item id="ID_SEARCH_DOWNLOAD" text="‪_הורד"/>
+		<item id="ID_SEARCH_DOWNLOAD" text="הורד"/>
 		<item id="ID_SEARCH_URI" text="‪...URI העתק"/>
 		<separator/>
-		<item id="ID_BROWSE_LAUNCH" text="‪_עיין בקבצי המשתמש"/>
-		<item id="ID_SEARCH_CHAT" text="‪_שוחח עם המשתמש"/>
+		<item id="ID_BROWSE_LAUNCH" text="עיין בקבצי המשתמש"/>
+		<item id="ID_SEARCH_CHAT" text="שוחח עם המשתמש"/>
 		<separator/>
-		<menu text="‪_חיפוש של">
+		<menu text="חיפוש של">
 			<item id="ID_SEARCH_FOR_THIS" text="‪קובץ זה"/>
 			<item id="ID_SEARCH_FOR_SIMILAR" text="‪קבצים דומים"/>
 			<separator/>
@@ -1105,48 +1117,48 @@ gap i newline
 		</menu>
 		<separator/>
 		<item id="ID_SEARCH_FILTER" text="‪...סנן תוצאות"/>
-		<item id="ID_SEARCH_FILTER_REMOVE" text="‪_הסר מסנן"/>
+		<item id="ID_SEARCH_FILTER_REMOVE" text="הסר מסנן"/>
 		<separator/>
 		<item id="ID_HITMONITOR_PAUSE" text="‪השהה תצוגה"/>
 		<item id="ID_HITMONITOR_CLEAR" text="‪נקה תצוגה"/>
 		<separator/>
-		<item id="ID_SEARCH_COLUMNS" text="‪_ערוך עמודות "/>
+		<item id="ID_SEARCH_COLUMNS" text="ערוך עמודות "/>
 	</menu>
 	<!-- DOWNLOADS WINDOW -->
 	<menu name="CDownloadsWnd.Download.Basic">
-		<item id="ID_DOWNLOADS_LAUNCH" text="‪_תצוגה מקדימה"/>
+		<item id="ID_DOWNLOADS_LAUNCH" text="תצוגה מקדימה"/>
 		<separator/>
 		<item id="ID_DOWNLOADS_RESUME" text="‪המשך"/>
 		<item id="ID_DOWNLOADS_PAUSE" text="‪השהה"/>
 		<item id="ID_DOWNLOADS_CLEAR_INCOMPLETE" text="‪בטל"/>
 		<separator/>
-		<item id="ID_DOWNLOADS_SOURCES" text="‪מצא מ_קורות נוספים"/>
-		<item id="ID_DOWNLOADS_REMOTE_PREVIEW" text="R_emote Preview"/>
-		<item id="ID_DOWNLOADS_VIEW_REVIEWS" text="‪הצג _ביקורות"/>
+		<item id="ID_DOWNLOADS_SOURCES" text="‪מצא מקורות נוספים"/>
+		<item id="ID_DOWNLOADS_REMOTE_PREVIEW" text="Remote Preview"/>
+		<item id="ID_DOWNLOADS_VIEW_REVIEWS" text="‪הצג ביקורות"/>
 		<separator/>
-		<item id="ID_DOWNLOADS_HELP" text="‪...ע_זרה"/>
+		<item id="ID_DOWNLOADS_HELP" text="‪...עזרה"/>
 	</menu>
 	<menu name="CDownloadsWnd.Download">
-		<item id="ID_DOWNLOADS_LAUNCH_COPY" text="‪תצוגה מקדימה _Copy"/>
-		<item id="ID_DOWNLOADS_LAUNCH" text="‪_תצוגה מקדימה"/>
+		<item id="ID_DOWNLOADS_LAUNCH_COPY" text="‪תצוגה מקדימה Copy"/>
+		<item id="ID_DOWNLOADS_LAUNCH" text="תצוגה מקדימה"/>
 		<item id="ID_DOWNLOADS_ENQUEUE" text="‪הוסף לרשימת השמעה"/>
 		<separator/>
 		<item id="ID_DOWNLOADS_RESUME" text="‪המשך"/>
 		<item id="ID_DOWNLOADS_PAUSE" text="‪השהה"/>
 		<item id="ID_DOWNLOADS_CLEAR_INCOMPLETE" text="‪בטל"/>
 		<separator/>
-		<item id="ID_DOWNLOADS_VIEW_REVIEWS" text="‪הצג _ביקורות"/>
-		<item id="ID_DOWNLOADS_REMOTE_PREVIEW" text="R_emote תצוגה מקדימה"/>
-		<item id="ID_DOWNLOADS_SOURCES" text="‪מצא מ_קורות נוספים"/>
+		<item id="ID_DOWNLOADS_VIEW_REVIEWS" text="‪הצג ביקורות"/>
+		<item id="ID_DOWNLOADS_REMOTE_PREVIEW" text="Remote תצוגה מקדימה"/>
+		<item id="ID_DOWNLOADS_SOURCES" text="‪מצא מקורות נוספים"/>
 		<separator/>
-		<menu text="‪מתק_דם">
-			<item id="ID_DOWNLOADS_SHARE" text="‪_שתף קובץ"/>
+		<menu text="‪מתקדם">
+			<item id="ID_DOWNLOADS_SHARE" text="שתף קובץ"/>
 			<separator/>
 			<item id="ID_DOWNLOADS_URI" text="‪URI העתק כתובת"/>
-			<item id="ID_DOWNLOADS_ADD_SOURCE" text="‪הו_סף מקור"/>
+			<item id="ID_DOWNLOADS_ADD_SOURCE" text="‪הוסף מקור"/>
 			<item id="ID_DOWNLOADS_MERGE" text="מיזוג הקבצים המקומית"/>
 			<separator/>
-			<item id="ID_DOWNLOADS_MONITOR" text="‪_חלון מוניטור"/>
+			<item id="ID_DOWNLOADS_MONITOR" text="חלון מוניטור"/>
 		</menu>
 		<menu text="עדיפות">
 			<item id="ID_DOWNLOADS_BOOST" text="‪התעלם מהגבלת רוחב פס"/>
@@ -1156,71 +1168,73 @@ gap i newline
 			<item id="ID_DOWNLOADS_MOVE_UP" text="‪העבר מעלה" shortcut="Ctrl+Up"/>
 			<item id="ID_DOWNLOADS_MOVE_DOWN" text="‪העבר מטה" shortcut="Ctrl+Down"/>
 		</menu>
-		<item id="ID_DOWNLOADS_HELP" text="‪...ע_זרה"/>
+		<item id="ID_DOWNLOADS_HELP" text="‪...עזרה"/>
 		<separator/>
-		<item id="ID_DOWNLOADS_EDIT" text="‪_עריכה מתקדמת"/>
+		<item id="ID_DOWNLOADS_EDIT" text="עריכה מתקדמת"/>
 	</menu>
 	<menu name="CDownloadsWnd.Source">
-		<item id="ID_TRANSFERS_CONNECT" text="‪_כניסה"/>
+		<item id="ID_TRANSFERS_CONNECT" text="כניסה"/>
 		<separator/>
-		<item id="ID_BROWSE_LAUNCH" text="‪_עיין בקבצי המשתמש"/>
-		<item id="ID_TRANSFERS_CHAT" text="‪_שוחח עם המשתמש"/>
-		<item id="ID_DOWNLOADS_URI" text="העתק _URI"/>
+		<item id="ID_BROWSE_LAUNCH" text="עיין בקבצי המשתמש"/>
+		<item id="ID_TRANSFERS_CHAT" text="שוחח עם המשתמש"/>
+		<item id="ID_DOWNLOADS_URI" text="העתק URI"/>
 		<separator/>
-		<item id="ID_TRANSFERS_DISCONNECT" text="‪ה_תנתק"/>
+		<item id="ID_TRANSFERS_DISCONNECT" text="‪התנתק"/>
 		<item id="ID_TRANSFERS_FORGET" text="‪שכח"/>
 	</menu>
 	<menu name="CDownloadsWnd.Completed.Basic">
-		<item id="ID_DOWNLOADS_LAUNCH_COMPLETE" text="‪_פתח או הפעל"/>
-		<item id="ID_DOWNLOADS_ENQUEUE" text="‪_הוסף לרשימת השמעה"/>
-		<item id="ID_DOWNLOADS_CLEAR_COMPLETE" text="‪_נקה"/>
+		<item id="ID_DOWNLOADS_LAUNCH_COMPLETE" text="פתח או הפעל"/>
+		<item id="ID_DOWNLOADS_ENQUEUE" text="הוסף לרשימת השמעה"/>
+		<item id="ID_DOWNLOADS_CLEAR_COMPLETE" text="נקה"/>
 		<separator/>
-		<item id="ID_DOWNLOADS_FILE_DELETE" text="‪_מחק קובץ"/>
+		<item id="ID_DOWNLOADS_FILE_DELETE" text="מחק קובץ"/>
 	</menu>
 	<menu name="CDownloadsWnd.Completed">
-		<item id="ID_DOWNLOADS_LAUNCH_COMPLETE" text="‪_פתח או הפעל"/>
-		<item id="ID_DOWNLOADS_ENQUEUE" text="‪_הוסף לרשימת השמעה"/>
-		<item id="ID_DOWNLOADS_FOLDER" text="פתח _Folder"/>
-		<item id="ID_DOWNLOADS_CLEAR_COMPLETE" text="‪_נקה"/>
+		<item id="ID_DOWNLOADS_LAUNCH_COMPLETE" text="פתח או הפעל"/>
+		<item id="ID_DOWNLOADS_ENQUEUE" text="הוסף לרשימת השמעה"/>
+		<item id="ID_DOWNLOADS_FOLDER" text="פתח Folder"/>
+		<item id="ID_DOWNLOADS_CLEAR_COMPLETE" text="נקה"/>
 		<separator/>
-		<item id="ID_DOWNLOADS_FILE_DELETE" text="‪_מחק קובץ"/>
+		<item id="ID_DOWNLOADS_FILE_DELETE" text="מחק קובץ"/>
 		<item id="ID_DOWNLOADS_RATE" text="‪...דרג קובץ"/>
 		<item id="ID_DOWNLOADS_URI" text="‪...URI העתק"/>
 		<separator/>
 		<item id="ID_DOWNLOADS_EDIT" text="‪מידע לגבי הטורנט"/>
 	</menu>
 	<menu name="CDownloadsWnd.Seeding">
-		<item id="ID_DOWNLOADS_LAUNCH_COMPLETE" text="‪_פתח"/>
-		<item id="ID_DOWNLOADS_FOLDER" text="פתח _Folder"/>
+		<item id="ID_DOWNLOADS_LAUNCH_COMPLETE" text="פתח"/>
+		<item id="ID_DOWNLOADS_FOLDER" text="פתח Folder"/>
 		<item id="ID_DOWNLOADS_CLEAR_COMPLETE" text="‪הפסק בקשות להעלאות"/>
 		<separator/>
 		<item id="ID_DOWNLOADS_URI" text="‪...URI העתק"/>
-		<item id="ID_DOWNLOADS_HELP" text="‪...ע_זרה"/>
+		<item id="ID_DOWNLOADS_HELP" text="‪...עזרה"/>
 		<separator/>
-		<item id="ID_DOWNLOADS_EDIT" text="...‪מידע על ה_טורנט"/>
+		<item id="ID_DOWNLOADS_EDIT" text="...‪מידע על הטורנט"/>
 	</menu>
 	<menu name="CDownloadsWnd.Default">
+		<item id="ID_DOWNLOADS_FOLDER" text="פתח Folder"/>
+		<separator/>
 		<item id="ID_TOOLS_DOWNLOAD" text="Start New Downloadחדשה"/>
 		<item id="ID_TOOLS_SEEDTORRENT" text="Seed New Torrentחדשה"/>
 		<item id="ID_DOWNLOADS_CLEAR_COMPLETED" text="‪נקה הורדות שהסתיימו"/>
 		<separator/>
-		<item id="ID_DOWNLOADS_HELP" text="‪...ע_זרה"/>
+		<item id="ID_DOWNLOADS_HELP" text="‪...עזרה"/>
 	</menu>
 	<menu name="CDownloadTabBar">
-		<item id="ID_DOWNLOAD_GROUP_OPEN" text="פתח _Folder"/>
+		<item id="ID_DOWNLOAD_GROUP_OPEN" text="פתח Folder"/>
 		<separator/>
-		<item id="ID_DOWNLOAD_GROUP_RESUME" text="‪המשך את כל ההור_דות"/>
-		<item id="ID_DOWNLOAD_GROUP_PAUSE" text="‪ה_שהה את כל ההורדות"/>
-		<item id="ID_DOWNLOAD_GROUP_CLEAR" text="‪_נקה את כל ההורדות"/>
+		<item id="ID_DOWNLOAD_GROUP_RESUME" text="‪המשך את כל ההורדות"/>
+		<item id="ID_DOWNLOAD_GROUP_PAUSE" text="‪השהה את כל ההורדות"/>
+		<item id="ID_DOWNLOAD_GROUP_CLEAR" text="נקה את כל ההורדות"/>
 		<separator/> <!--
 		<item id="ID_DOWNLOAD_GROUP_SHOW" text="‪הצג קבוצות"/>
 		<separator/> -->
 		<item id="ID_DOWNLOAD_GROUP_MOVELEFT" text="העבר הקבוצה נותר"/>
 		<item id="ID_DOWNLOAD_GROUP_MOVERIGHT" text="קבוצת העבר העכבר"/>
 		<item id="ID_DOWNLOAD_GROUP_REMOVE" text="‪...הסר קבוצה"/>
-		<item id="ID_DOWNLOAD_GROUP_NEW" text="‪_קבוצה חדשה"/>
+		<item id="ID_DOWNLOAD_GROUP_NEW" text="קבוצה חדשה"/>
 		<separator/>
-		<item id="ID_DOWNLOAD_GROUP_PROPERTIES" text="‪מ_אפיינים"/>
+		<item id="ID_DOWNLOAD_GROUP_PROPERTIES" text="‪מאפיינים"/>
 	</menu>
 	<menu name="CDownloadsWnd.Filter">
 		<item id="ID_DOWNLOADS_FILTER_ALL" text="‪הצג הכל"/>
@@ -1237,35 +1251,35 @@ gap i newline
 	</menu>
 	<!-- UPLOADS WINDOW -->
 	<menu name="CUploadsWnd.Upload.Basic">
-		<item id="ID_BROWSE_LAUNCH" text="‪_עיין בקבצי המשתמש"/>
-		<item id="ID_UPLOADS_CHAT" text="‪_שוחח עם המשתמש"/>
+		<item id="ID_BROWSE_LAUNCH" text="עיין בקבצי המשתמש"/>
+		<item id="ID_UPLOADS_CHAT" text="שוחח עם המשתמש"/>
 		<separator/>
-		<item id="ID_UPLOADS_HELP" text="‪...ע_זרה"/>
+		<item id="ID_UPLOADS_HELP" text="‪...עזרה"/>
 	</menu>
 	<menu name="CUploadsWnd.Upload">
-		<item id="ID_UPLOADS_LAUNCH" text="_Library הצג "/>
-		<item id="ID_UPLOADS_FOLDER" text="פתח _Folder"/>
+		<item id="ID_UPLOADS_LAUNCH" text="Library הצג "/>
+		<item id="ID_UPLOADS_FOLDER" text="פתח Folder"/>
 		<separator/>
-		<item id="ID_UPLOADS_CLEAR" text="‪_נקה"/>
-		<item id="ID_UPLOADS_START" text="‪_התחל כעת"/>
+		<item id="ID_UPLOADS_CLEAR" text="נקה"/>
+		<item id="ID_UPLOADS_START" text="התחל כעת"/>
 		<item id="ID_UPLOADS_PRIORITY" text="עדיפות"/>
 		<separator/>
-		<item id="ID_BROWSE_LAUNCH" text="‪_עיין בקבצי המשתמש"/>
-		<item id="ID_UPLOADS_CHAT" text="‪_שוחח עם המשתמש"/>
-		<item id="ID_SECURITY_BAN" text="‪_חסום משתמש"/>
+		<item id="ID_BROWSE_LAUNCH" text="עיין בקבצי המשתמש"/>
+		<item id="ID_UPLOADS_CHAT" text="שוחח עם המשתמש"/>
+		<item id="ID_SECURITY_BAN" text="חסום משתמש"/>
 	</menu>
 	<menu name="CUploadsWnd.Default">
 		<item id="ID_LIBRARY_FOLDERS" text="‪...שתף קבצים"/>
 		<item id="ID_UPLOADS_SETTINGS" text="...‪הגדרות תורים"/>
 		<item id="ID_UPLOADS_CLEAR_COMPLETED" text="‪נקה הורדות שהסתיימו"/>
 		<separator/>
-		<item id="ID_UPLOADS_HELP" text="‪...ע_זרה"/>
+		<item id="ID_UPLOADS_HELP" text="‪...עזרה"/>
 	</menu>
 	<menu name="CUploadsWnd.Filter">
 		<item id="ID_UPLOADS_FILTER_ALL" text="‪הצג הכל"/>
 		<separator/>
 		<item id="ID_UPLOADS_FILTER_ACTIVE" text="‪הצג פעילים"/>
-		<item id="ID_UPLOADS_FILTER_QUEUED" text="‪_הצג המתנות בתור"/>
+		<item id="ID_UPLOADS_FILTER_QUEUED" text="הצג המתנות בתור"/>
 		<item id="ID_UPLOADS_FILTER_TORRENT" text="‪BitTorrent הצג"/>
 		<item id="ID_UPLOADS_FILTER_HISTORY" text="‪הצג היסטוריה"/>
 		<separator/>
@@ -1273,16 +1287,16 @@ gap i newline
 	</menu>
 	<!-- LIBRARY FRAME -->
 	<menu name="CLibraryTree.Physical.Basic">
-		<item id="ID_LIBRARY_SHARED_FOLDER" text="‪_משותף"/>
-		<item id="ID_LIBRARY_REMOVE" text="‪_הסר"/>
+		<item id="ID_LIBRARY_SHARED_FOLDER" text="משותף"/>
+		<item id="ID_LIBRARY_REMOVE" text="הסר"/>
 		<separator/>
 		<item id="ID_LIBRARY_FOLDERS" text="‪...שתף קבצים"/>
 	</menu>
 	<menu name="CLibraryTree.Physical">
-		<item id="ID_LIBRARY_EXPLORE" text="‪_סייר"/>
-		<item id="ID_LIBRARY_REMOVE" text="‪_הסר"/>
+		<item id="ID_LIBRARY_EXPLORE" text="סייר"/>
+		<item id="ID_LIBRARY_REMOVE" text="הסר"/>
 		<separator/>
-		<item id="ID_LIBRARY_SHARED_FOLDER" text="‪_משותף"/>
+		<item id="ID_LIBRARY_SHARED_FOLDER" text="משותף"/>
 		<separator/>
 		<item id="ID_LIBRARY_SCAN" text="‪סריקה"/>
 		<item id="ID_LIBRARY_REBUILD" text="‪בנה מחדש"/>
@@ -1291,15 +1305,15 @@ gap i newline
 		<item id="ID_LIBRARY_FOLDER_FILE_PROPERTIES" text="‪מאפייני הקובץ"/>
 	</menu>
 	<menu name="CLibraryTree.Virtual.Basic">
-		<item id="ID_LIBRARY_FOLDER_ENQUEUE" text="‪_נגן אלבום"/>
-		<item id="ID_LIBRARY_FOLDER_DELETE" text="‪_מחק"/>
+		<item id="ID_LIBRARY_FOLDER_ENQUEUE" text="נגן אלבום"/>
+		<item id="ID_LIBRARY_FOLDER_DELETE" text="מחק"/>
 		<separator/>
 		<item id="ID_LIBRARY_FOLDER_FILE_PROPERTIES" text="‪מאפייני קובץ"/>
 		<item id="ID_LIBRARY_FOLDER_PROPERTIES" text="‪מאפייני אלבום"/>
 	</menu>
 	<menu name="CLibraryTree.Virtual">
-		<item id="ID_LIBRARY_FOLDER_ENQUEUE" text="‪_נגן אלבום"/>
-		<item id="ID_LIBRARY_FOLDER_DELETE" text="‪_מחק"/>
+		<item id="ID_LIBRARY_FOLDER_ENQUEUE" text="נגן אלבום"/>
+		<item id="ID_LIBRARY_FOLDER_DELETE" text="מחק"/>
 		<separator/>
 		<item id="ID_LIBRARY_REBUILD" text="‪בנה מחדש"/>
 		<item id="ID_LIBRARY_EXPORT_COLLECTION" text="‪...ייצא רשימה"/>
@@ -1310,30 +1324,30 @@ gap i newline
 		<item id="ID_LIBRARY_FOLDER_PROPERTIES" text="‪מאפייני אלבום"/>
 	</menu>
 	<menu name="CLibraryHistoryPanel">
-		<item id="ID_LIBRARY_SHOW_FILE" text="_Show in Library"/>
-		<item id="ID_LIBRARY_CLEAR_HISTORY" text="Clear from _History"/>
-		<item id="ID_LIBRARY_CLEAR_HISTORY_ALL" text="‪_נקה את כל ההורדות"/>
+		<item id="ID_LIBRARY_SHOW_FILE" text="Show in Library"/>
+		<item id="ID_LIBRARY_CLEAR_HISTORY" text="Clear from History"/>
+		<item id="ID_LIBRARY_CLEAR_HISTORY_ALL" text="נקה את כל ההורדות"/>
 	</menu>
 	<!-- LIBRARY VIEWS -->
 	<menu name="CLibraryTileView">
-		<item id="ID_LIBRARY_ALBUM_OPEN" text="‪_פתח"/>
-		<item id="ID_LIBRARY_ALBUM_DELETE" text="‪_מחק"/>
+		<item id="ID_LIBRARY_ALBUM_OPEN" text="פתח"/>
+		<item id="ID_LIBRARY_ALBUM_DELETE" text="מחק"/>
 		<separator/>
-		<item id="ID_LIBRARY_ALBUM_PROPERTIES" text="‪מ_אפיינים"/>
+		<item id="ID_LIBRARY_ALBUM_PROPERTIES" text="‪מאפיינים"/>
 	</menu>
 	<menu name="CLibraryFileView.Basic">
-		<item id="ID_LIBRARY_LAUNCH" text="‪_פתח או הפעל"/>
-		<item id="ID_LIBRARY_ENQUEUE" text="‪_הוסף לרשימת השמעה"/>
-		<item id="ID_LIBRARY_DELETE" text="‪_מחק"/>
+		<item id="ID_LIBRARY_LAUNCH" text="פתח או הפעל"/>
+		<item id="ID_LIBRARY_ENQUEUE" text="הוסף לרשימת השמעה"/>
+		<item id="ID_LIBRARY_DELETE" text="מחק"/>
 		<separator/>
-		<item id="ID_LIBRARY_SHARED_FILE" text="‪_משותף"/>
+		<item id="ID_LIBRARY_SHARED_FILE" text="משותף"/>
 		<separator/>
 		<menu text="‪אירגון">
 			<item id="ID_LIBRARY_RENAME" text="‪שנה שם קובץ"/>
 			<item id="ID_LIBRARY_COPY" text="‪העתק קובץ"/>
-			<item id="ID_LIBRARY_MOVE" text="‪_העבר קובץ"/>
+			<item id="ID_LIBRARY_MOVE" text="העבר קובץ"/>
 		</menu>
-		<menu text="‪_חיפוש של">
+		<menu text="חיפוש של">
 			<item id="ID_SEARCH_FOR_THIS" text="‪קובץ זה"/>
 			<item id="ID_SEARCH_FOR_SIMILAR" text="‪קבצים דומים"/>
 			<separator/>
@@ -1342,35 +1356,35 @@ gap i newline
 			<item id="ID_SEARCH_FOR_SERIES" text="‪פרקים באותה סדרה"/>
 		</menu>
 		<menu text="‪שירותי רשת">
-			<item id="ID_LIBRARY_REFRESH_METADATA" text="_Refresh Metadata"/>
+			<item id="ID_LIBRARY_REFRESH_METADATA" text="Refresh Metadata"/>
 			<separator/>
 			<item id="ID_LIBRARY_BITPRINTS_WEB" text="‪Bitprints הראה כרטיס"/>
 			<item id="ID_LIBRARY_BITPRINTS_DOWNLOAD" text="‪Metadata הורד"/>
 			<separator/>
-			<item id="ID_LIBRARY_URI" text="‪_URI"/>
+			<item id="ID_LIBRARY_URI" text="URI"/>
 		</menu>
 		<separator/>
-		<item id="ID_LIBRARY_PROPERTIES" text="‪מ_אפיינים"/>
+		<item id="ID_LIBRARY_PROPERTIES" text="‪מאפיינים"/>
 	</menu>
 	<menu name="CLibraryFileView">
-		<item id="ID_LIBRARY_LAUNCH" text="‪_פתח או הפעל"/>
+		<item id="ID_LIBRARY_LAUNCH" text="פתח או הפעל"/>
 		<item id="ID_LIBRARY_ENQUEUE" text="‪הוסף לרשימת השמעה"/>
-		<item id="ID_LIBRARY_DELETE" text="‪_מחק"/>
+		<item id="ID_LIBRARY_DELETE" text="מחק"/>
 		<separator/>
-		<item id="ID_LIBRARY_SHARED_FILE" text="_משותף"/>
+		<item id="ID_LIBRARY_SHARED_FILE" text="משותף"/>
 		<separator/>
-		<item id="ID_LIBRARY_URI" text="_URI"/>
+		<item id="ID_LIBRARY_URI" text="URI"/>
 		<item id="ID_LIBRARY_CREATETORRENT" text="‪.torrent צור קובץ"/>
-		<item id="ID_LIBRARY_LAUNCH_FOLDER" text="Open _Folder"/>
+		<item id="ID_LIBRARY_LAUNCH_FOLDER" text="Open Folder"/>
 		<separator/>
 		<menu text="‪אירגון">
 			<item id="ID_LIBRARY_UNLINK" text="‪הסר קבצים"/>
 			<separator/>
 			<item id="ID_LIBRARY_RENAME" text="‪שנה שם קובץ"/>
 			<item id="ID_LIBRARY_COPY" text="‪העתק קובץ"/>
-			<item id="ID_LIBRARY_MOVE" text="‪_העבר קובץ"/>
+			<item id="ID_LIBRARY_MOVE" text="העבר קובץ"/>
 		</menu>
-		<menu text="‪_חיפוש של">
+		<menu text="חיפוש של">
 			<item id="ID_SEARCH_FOR_THIS" text="‪קובץ זה"/>
 			<item id="ID_SEARCH_FOR_SIMILAR" text="‪קבצים דומים"/>
 			<separator/>
@@ -1382,33 +1396,33 @@ gap i newline
 			<item id="ID_LIBRARY_BITPRINTS_WEB" text="‪Bitprints הראה כרטיס"/>
 			<item id="ID_LIBRARY_BITPRINTS_DOWNLOAD" text="‪Metadata קבל"/>
 		</menu>
-		<menu text="_Metadata">
-			<item id="ID_LIBRARY_REBUILD_FILE" text="Re_build Hashes"/>
-			<item id="ID_LIBRARY_REFRESH_METADATA" text="_Refresh Metadata"/>
+		<menu text="Metadata">
+			<item id="ID_LIBRARY_REBUILD_FILE" text="Reuild Hashes"/>
+			<item id="ID_LIBRARY_REFRESH_METADATA" text="Refresh Metadata"/>
 			<item id="ID_LIBRARY_REBUILD_ANSI" text="‪מקומי Metadata שינוי"/>
 			<item id="ID_LIBRARY_COLUMNS" text="‪...בחר עמודות"/>
 		</menu>
 		<separator/>
-		<item id="ID_SHELL_MENU" text="Windows Men_u"/>
-		<item id="ID_LIBRARY_PROPERTIES" text="‪מ_אפיינים"/>
+		<item id="ID_SHELL_MENU" text="Windows Men"/>
+		<item id="ID_LIBRARY_PROPERTIES" text="‪מאפיינים"/>
 	</menu>
 	<!-- MEDIA WINDOW -->
 	<menu name="CMediaFrame.Basic">
-		<item id="ID_MEDIA_PLAY" text="‪_נגן"/>
-		<item id="ID_MEDIA_PAUSE" text="‪_השהה"/>
-		<item id="ID_MEDIA_STOP" text="‪_עצור"/>
+		<item id="ID_MEDIA_PLAY" text="נגן"/>
+		<item id="ID_MEDIA_PAUSE" text="השהה"/>
+		<item id="ID_MEDIA_STOP" text="עצור"/>
 		<separator/>
-		<item id="ID_MEDIA_OPEN" text="‪_פתח קבצי מדיה"/>
+		<item id="ID_MEDIA_OPEN" text="פתח קבצי מדיה"/>
 		<separator/>
 		<menu text="‪רשימת השמעה">
-			<item id="ID_MEDIA_NEXT" text="‪ה_בא"/>
-			<item id="ID_MEDIA_PREVIOUS" text="‪ה_קודם"/>
+			<item id="ID_MEDIA_NEXT" text="‪הבא"/>
+			<item id="ID_MEDIA_PREVIOUS" text="‪הקודם"/>
 			<item id="ID_MEDIA_RANDOM" text="‪רנדומלי"/>
 			<item id="ID_MEDIA_REPEAT" text="‪נגן שוב"/>
 			<separator/>
-			<item id="ID_MEDIA_PLAYLIST" text="‪הצג רשימת ה_שמעה"/>
+			<item id="ID_MEDIA_PLAYLIST" text="‪הצג רשימת השמעה"/>
 		</menu>
-		<menu text="‪Video Si_ze">
+		<menu text="‪Video Sie">
 			<item id="ID_MEDIA_SIZE_ONE" text="‪גודל מקורי"/>
 			<item id="ID_MEDIA_SIZE_TWO" text="‪גודל כפול"/>
 			<item id="ID_MEDIA_SIZE_HALF" text="‪גודל משולש"/>
@@ -1419,32 +1433,32 @@ gap i newline
 			<item id="ID_MEDIA_ASPECT_4_3" text="‪יחס תמונה 4:3 (TV)"/>
 			<item id="ID_MEDIA_ASPECT_16_9" text="‪יחס תמונה 16:9 (Film)"/>
 			<separator/>
-			<item id="ID_MEDIA_FULLSCREEN" text="‪מ_סך מלא"/>
+			<item id="ID_MEDIA_FULLSCREEN" text="‪מסך מלא"/>
 		</menu>
 		<menu text="‪הגדרות">
 			<item id="ID_MEDIA_VIS" text="‪בחר אפקט ויזואלי"/>
 			<separator/>
-			<item id="ID_MEDIA_PLAYLIST" text="‪הצג רשימת ה_שמעה"/>
+			<item id="ID_MEDIA_PLAYLIST" text="‪הצג רשימת השמעה"/>
 			<item id="ID_MEDIA_STATUS" text="‪הראה שורת סטטוס"/>
 			<separator/>
 			<item id="ID_MEDIA_SETTINGS" text="‪הגדרות נגן המדיה"/>
 		</menu>
 	</menu>
 	<menu name="CMediaFrame">
-		<item id="ID_MEDIA_PLAY" text="‪_נגן"/>
-		<item id="ID_MEDIA_PAUSE" text="‪_השהה"/>
-		<item id="ID_MEDIA_STOP" text="‪_עצור"/>
+		<item id="ID_MEDIA_PLAY" text="נגן"/>
+		<item id="ID_MEDIA_PAUSE" text="השהה"/>
+		<item id="ID_MEDIA_STOP" text="עצור"/>
 		<separator/>
-		<item id="ID_MEDIA_OPEN" text="‪_פתח קבצי מדיה"/>
+		<item id="ID_MEDIA_OPEN" text="פתח קבצי מדיה"/>
 		<item id="ID_MEDIA_CLOSE" text="‪סגור קובץ"/>
 		<separator/>
 		<menu text="‪רשימת השמעה">
-			<item id="ID_MEDIA_NEXT" text="‪ה_בא"/>
-			<item id="ID_MEDIA_PREVIOUS" text="‪ה_קודם"/>
+			<item id="ID_MEDIA_NEXT" text="‪הבא"/>
+			<item id="ID_MEDIA_PREVIOUS" text="‪הקודם"/>
 			<item id="ID_MEDIA_RANDOM" text="‪רנדומלי"/>
 			<item id="ID_MEDIA_REPEAT" text="‪נגן שוב"/>
 			<separator/>
-			<item id="ID_MEDIA_PLAYLIST" text="‪הצג רשימת ה_שמעה"/>
+			<item id="ID_MEDIA_PLAYLIST" text="‪הצג רשימת השמעה"/>
 		</menu>
 		<menu text="‪גודל וידאו">
 			<item id="ID_MEDIA_SIZE_ONE" text="‪גודל מקורי"/>
@@ -1457,12 +1471,12 @@ gap i newline
 			<item id="ID_MEDIA_ASPECT_4_3" text="‪יחס תמונה 4:3 (TV)"/>
 			<item id="ID_MEDIA_ASPECT_16_9" text="‪יחס תמונה 16:9 (Film)"/>
 			<separator/>
-			<item id="ID_MEDIA_FULLSCREEN" text="‪מ_סך מלא"/>
+			<item id="ID_MEDIA_FULLSCREEN" text="‪מסך מלא"/>
 		</menu>
 		<menu text="‪הגדרות">
 			<item id="ID_MEDIA_VIS" text="‪בחר אפקט ויזואלי"/>
 			<separator/>
-			<item id="ID_MEDIA_PLAYLIST" text="‪הצג רשימת ה_שמעה"/>
+			<item id="ID_MEDIA_PLAYLIST" text="‪הצג רשימת השמעה"/>
 			<item id="ID_MEDIA_STATUS" text="‪הראה שורת סטטוס"/>
 			<separator/>
 			<item id="ID_MEDIA_SETTINGS" text="‪הגדרות נגן המדיה"/>
@@ -1480,13 +1494,13 @@ gap i newline
 		<item id="ID_MEDIA_ASPECT_16_9" text="‪יחס תמונה 16:9 (Film)"/>
 	</menu>
 	<menu name="CMediaList">
-		<item id="ID_MEDIA_SELECT" text="‪_נגן"/>
-		<item id="ID_MEDIA_RATE" text="_דרג קובץ..."/>
-		<item id="ID_MEDIA_PROPERTIES" text="_מאפיינים..."/>
+		<item id="ID_MEDIA_SELECT" text="נגן"/>
+		<item id="ID_MEDIA_RATE" text="דרג קובץ..."/>
+		<item id="ID_MEDIA_PROPERTIES" text="מאפיינים..."/>
 		<separator/>
 		<item id="ID_MEDIA_ADD" text="‪...הוסף קובץ"/>
 		<item id="ID_MEDIA_ADD_FOLDER" text="‪...הוסף תיקייה"/>
-		<item id="ID_MEDIA_REMOVE" text="‪_הסר"/>
+		<item id="ID_MEDIA_REMOVE" text="הסר"/>
 		<separator/>
 		<item id="ID_MEDIA_RANDOM" text="‪מצב רנדומלי"/>
 		<item id="ID_MEDIA_REPEAT" text="‪מצב ניגון חוזר"/>
@@ -1500,50 +1514,50 @@ gap i newline
 	</menu>
 	<!-- SYSTEM WINDOW -->
 	<menu name="CSystemWnd">
-		<menu id="ID_SYSTEM_VERBOSE" text="_Verbose Mode">
-			<item id="ID_SYSTEM_VERBOSE_ERROR" text="_Error"/>
-			<item id="ID_SYSTEM_VERBOSE_WARNING" text="_Warning"/>
-			<item id="ID_SYSTEM_VERBOSE_NOTICE" text="_Notice"/>
-			<item id="ID_SYSTEM_VERBOSE_INFO" text="_Info"/>
-			<item id="ID_SYSTEM_VERBOSE_DEBUG" text="_Debug"/>
+		<menu id="ID_SYSTEM_VERBOSE" text="Verbose Mode">
+			<item id="ID_SYSTEM_VERBOSE_ERROR" text="Error"/>
+			<item id="ID_SYSTEM_VERBOSE_WARNING" text="Warning"/>
+			<item id="ID_SYSTEM_VERBOSE_NOTICE" text="Notice"/>
+			<item id="ID_SYSTEM_VERBOSE_INFO" text="Info"/>
+			<item id="ID_SYSTEM_VERBOSE_DEBUG" text="Debug"/>
 		</menu>
 		<item id="ID_SYSTEM_TIMESTAMP" text="‪הצגת זמנים לכל נתון"/>
 		<separator/>
-		<item id="ID_SYSTEM_COPY" text="_העתק" shortcut="Ctrl+C"/>
+		<item id="ID_SYSTEM_COPY" text="העתק" shortcut="Ctrl+C"/>
 		<separator/>
 		<item id="ID_SYSTEM_CLEAR" text="‪נקה איכסון המידע"/>
 	</menu>
 	<!-- NEIGHBOURS WINDOW -->
 	<menu name="CNeighboursWnd.Basic">
-		<item id="ID_BROWSE_LAUNCH" text="‪_עיין בקבצי המשתמש"/>
-		<item id="ID_NEIGHBOURS_CHAT" text="‪_שוחח עם המשתמש"/>
+		<item id="ID_BROWSE_LAUNCH" text="עיין בקבצי המשתמש"/>
+		<item id="ID_NEIGHBOURS_CHAT" text="שוחח עם המשתמש"/>
 		<separator/>
-		<item id="ID_NEIGHBOURS_DISCONNECT" text="‪ה_תנתק"/>
+		<item id="ID_NEIGHBOURS_DISCONNECT" text="‪התנתק"/>
 		<separator/>
 		<item id="ID_NEIGHBOURS_URI" text="‪...URI העתק"/>
 	</menu>
 	<menu name="CNeighboursWnd">
-		<item id="ID_BROWSE_LAUNCH" text="‪_עיין בפרטי המשתמש"/>
-		<item id="ID_NEIGHBOURS_CHAT" text="‪_שוחח עם המשתמש"/>
-		<item id="ID_SECURITY_BAN" text="‪_חסום משתמש"/>
+		<item id="ID_BROWSE_LAUNCH" text="עיין בפרטי המשתמש"/>
+		<item id="ID_NEIGHBOURS_CHAT" text="שוחח עם המשתמש"/>
+		<item id="ID_SECURITY_BAN" text="חסום משתמש"/>
 		<separator/>
-		<item id="ID_NEIGHBOURS_DISCONNECT" text="‪ה_תנתק"/>
+		<item id="ID_NEIGHBOURS_DISCONNECT" text="‪התנתק"/>
 		<separator/>
 		<item id="ID_NEIGHBOURS_URI" text="‪...URI העתק"/>
 		<separator/>
-		<menu text="‪מצב הר_שת">
-			<item id="ID_NETWORK_CONNECT" text="‪_התחבר"/>
-			<item id="ID_NETWORK_DISCONNECT" text="‪ה_תנתק"/>
+		<menu text="‪מצב הרשת">
+			<item id="ID_NETWORK_CONNECT" text="התחבר"/>
+			<item id="ID_NETWORK_DISCONNECT" text="‪התנתק"/>
 			<separator/>
 			<item id="ID_NETWORK_G2" text="‪גנוטלה 2"/>
 			<item id="ID_NETWORK_G1" text="‪גנוטלה 1"/>
 			<item id="ID_NETWORK_ED2K" text="‪אידונקי 2000"/>
-			<item id="ID_NETWORK_DC" text="_DC++ גנוטלה"/>
-			<item id="ID_NETWORK_BT" text="_BitTorrent גנוטלה"/>
+			<item id="ID_NETWORK_DC" text="DC++ גנוטלה"/>
+			<item id="ID_NETWORK_BT" text="BitTorrent גנוטלה"/>
 			<separator/>
-			<item id="ID_VIEW_DISCOVERY" text="משאבי _חיבור"/>
-			<item id="ID_VIEW_HOSTS" text="_מטמון מארחים (הוסטים)"/>
-			<item id="ID_VIEW_SECURITY" text="_אבטחה"/>
+			<item id="ID_VIEW_DISCOVERY" text="משאבי חיבור"/>
+			<item id="ID_VIEW_HOSTS" text="מטמון מארחים (הוסטים)"/>
+			<item id="ID_VIEW_SECURITY" text="אבטחה"/>
 		</menu>
 		<menu text="‪מוניטור">
 			<item id="ID_NEIGHBOURS_VIEW_ALL" text="‪הצג את כל תעבורת הרשת"/>
@@ -1566,15 +1580,15 @@ gap i newline
 		<item id="ID_TRAFFIC_AXIS" text="‪צירים"/>
 		<item id="ID_TRAFFIC_LEGEND" text="‪מקרא סימנים"/>
 		<separator/>
-		<item id="ID_TRAFFIC_CLEAR" text="‪_נקה"/>
+		<item id="ID_TRAFFIC_CLEAR" text="נקה"/>
 		<separator/>
-		<item id="ID_TRAFFIC_WINDOW" text="‪_חלון חדש"/>
+		<item id="ID_TRAFFIC_WINDOW" text="חלון חדש"/>
 	</menu>
 	<!-- SECURITY WINDOW -->
 	<menu name="CSecurityWnd">
 		<item id="ID_SECURITY_ADD" text="‪הוסף חוק"/>
 		<separator/>
-		<item id="ID_SECURITY_REMOVE" text="‪_הסר"/>
+		<item id="ID_SECURITY_REMOVE" text="הסר"/>
 		<item id="ID_SECURITY_RESET" text="‪אפס הגדרות"/>
 		<separator/>
 		<item id="ID_SECURITY_MOVE_UP" text="‪העבר מעלה"/>
@@ -1588,16 +1602,16 @@ gap i newline
 			<item id="ID_SECURITY_POLICY_DENY" text="‪אינני מסכים"/>
 		</menu>
 		<separator/>
-		<item id="ID_SECURITY_EDIT" text="‪מ_אפיינים"/>
+		<item id="ID_SECURITY_EDIT" text="‪מאפיינים"/>
 	</menu>
 	<!-- DISCOVERY SERVICES WINDOW -->
 	<menu name="CDiscoveryWnd">
 		<item id="ID_DISCOVERY_ADD" text="‪...הוסף שירות"/>
 		<separator/>
-		<item id="ID_DISCOVERY_EDIT" text="‪מ_אפיינים"/>
-		<item id="ID_DISCOVERY_REMOVE" text="‪_הסר"/>
+		<item id="ID_DISCOVERY_EDIT" text="‪מאפיינים"/>
+		<item id="ID_DISCOVERY_REMOVE" text="הסר"/>
 		<separator/>
-		<item id="ID_DISCOVERY_QUERY" text="‪_שלח בקשה כעת"/>
+		<item id="ID_DISCOVERY_QUERY" text="שלח בקשה כעת"/>
 		<item id="ID_DISCOVERY_ADVERTISE" text="‪פרסם"/>
 		<item id="ID_DISCOVERY_BROWSE" text="‪סייר בסטטיסטיקות"/>
 		<separator/>
@@ -1608,14 +1622,14 @@ gap i newline
 	</menu>
 	<!-- PRIVATE CHAT FRAME -->
 	<menu name="CPrivateChatWnd">
-		<item id="ID_CHAT_CONNECT" text="‪_התחבר"/>
-		<item id="ID_CHAT_DISCONNECT" text="‪ה_תנתק"/>
+		<item id="ID_CHAT_CONNECT" text="התחבר"/>
+		<item id="ID_CHAT_DISCONNECT" text="‪התנתק"/>
 		<separator/>
-		<item id="ID_CHAT_BROWSE" text="‪_עיין בקבצי המשתמש"/>
+		<item id="ID_CHAT_BROWSE" text="עיין בקבצי המשתמש"/>
 		<!--item id="ID_CHAT_SEND_FILE" text="‪...שלח קובץ"-->
 		<item id="ID_CHAT_PRIORITY" text="‪...הענק עדיפות למשתמש"/>
 		<separator/>
-		<menu text="‪_Format">
+		<menu text="Format">
 			<item id="ID_CHAT_BOLD" text="‪עיצוב מודגש"/>
 			<item id="ID_CHAT_ITALIC" text="‪עיצוב נוטה"/>
 			<item id="ID_CHAT_UNDERLINE" text="‪עיצוב קו תחתי"/>
@@ -1637,11 +1651,11 @@ gap i newline
 	</menu>
 	<!-- IRC WINDOW -->
 	<menu name="CIRCTabRClick">
-		<item id="ID_IRC_CLOSETAB" text="_סגור"/>
+		<item id="ID_IRC_CLOSETAB" text="סגור"/>
 	</menu>
 	<menu name="CIRCUserList">
-		<item id="ID_IRC_WHOIS" text="_מי-זה"/>
-		<item id="ID_IRC_QUERY" text="_שאילתא"/>
+		<item id="ID_IRC_WHOIS" text="מי-זה"/>
+		<item id="ID_IRC_QUERY" text="שאילתא"/>
 		<separator/>
 		<menu text="Actions">
 			<item id="ID_IRC_TIME" text="זמן"/>
@@ -1649,24 +1663,24 @@ gap i newline
 		</menu>
 		<separator/>
 		<menu text="Control">
-			<item id="ID_IRC_IGNORE" text="התע_לם"/>
-			<item id="ID_IRC_UNIGNORE" text="בטל התעל_מות"/>
-			<item id="ID_IRC_OP" text="_אופרטור"/>
-			<item id="ID_IRC_DEOP" text="בטל או_פרטור"/>
-			<item id="ID_IRC_VOICE" text="ה_שמע"/>
-			<item id="ID_IRC_DEVOICE" text="הש_תק"/>
-			<item id="ID_IRC_KICK" text="ב_עט"/>
+			<item id="ID_IRC_IGNORE" text="התעלם"/>
+			<item id="ID_IRC_UNIGNORE" text="בטל התעלמות"/>
+			<item id="ID_IRC_OP" text="אופרטור"/>
+			<item id="ID_IRC_DEOP" text="בטל אופרטור"/>
+			<item id="ID_IRC_VOICE" text="השמע"/>
+			<item id="ID_IRC_DEVOICE" text="השתק"/>
+			<item id="ID_IRC_KICK" text="בעט"/>
 			<item id="ID_IRC_KICKWHY" text="בעט (למה?)"/>
-			<item id="ID_IRC_BAN" text="_השעה"/>
-			<item id="ID_IRC_UNBAN" text="_בטל השעיה"/>
-			<item id="ID_IRC_BANKICK" text="בעט והשע_ה"/>
+			<item id="ID_IRC_BAN" text="השעה"/>
+			<item id="ID_IRC_UNBAN" text="בטל השעיה"/>
+			<item id="ID_IRC_BANKICK" text="בעט והשעה"/>
 			<item id="ID_IRC_BANKICKWHY" text="בעט והשעה (למה?)"/>
 		</menu>
 	</menu>
 	<menu name="WebServices.List.Menu">
-		<item id="ID_LIBRARY_BITPRINTS_DOWNLOAD" text="_Bitprints"/>
-		<item id="ID_WEBSERVICES_MUSICBRAINZ" text="_MusicBrainz"/>
-		<!--item id="ID_WEBSERVICES_SHAREMONKEY" text="_ShareMonkey"-->
+		<item id="ID_LIBRARY_BITPRINTS_DOWNLOAD" text="Bitprints"/>
+		<item id="ID_WEBSERVICES_MUSICBRAINZ" text="MusicBrainz"/>
+		<!--item id="ID_WEBSERVICES_SHAREMONKEY" text="ShareMonkey"-->
 	</menu>
 </menus>
 <!-- Documents -->
@@ -3046,7 +3060,7 @@ gap i newline
 		<control/>
 	</dialog>
 	<dialog name="CMediaSettingsPage" cookie="BuStCoBuBuBuCoBuBuBuBuSt" caption="נגן המדיה">
-		<control text=":א_פשררויות"/>
+		<control text=":אפשררויות"/>
 		<control text=":בחר תוסף לשירותי מדיה"/>
 		<control/>
 		<control text="השתמש בנגן המדיה של שרזה לניגון סוגי הקבצים שרשומים להלן"/>
@@ -3151,7 +3165,7 @@ gap i newline
 		<control/>
 		<control text=":אורך תורות מקסימלי"/>
 		<control/>
-		<control text="_‪‪אבטחה:"/>
+		<control text="‪‪אבטחה:"/>
 		<control text="&#8234;‏מחובר‎ ‏אליהן אני‎ ‏ברשתות‎ ‏ורק‎ ‏אך‎ ‏והורד‎ ‏העלה"/>
 		<control text="AntiVirus:"/>
 		<control/>
@@ -3257,17 +3271,17 @@ gap i newline
 		<control text="הורד רשימת שרתים של אידונקי מהרשת"/>
 	</dialog>
 	<dialog name="CDCSettingsPage" cookie="BuBuBuBuStEdmsStBuStBuBuSt" caption="DC++">
-		<control text="_DC++ רשת:"/>
+		<control text="DC++ רשת:"/>
 		<control text="Connect to DC++ now"/>
 		<control text="Connect to DC++ at startup"/>
-		<control text="_Hubs:"/>
+		<control text="Hubs:"/>
 		<control text="Connect by default to:"/>
 		<control/>
 		<control/>
 		<control text="DC++ hubs."/>
-		<control text="_Info:"/>
+		<control text="Info:"/>
 		<control text="DC++ works by connecting to specific &quot;hub&quot; communities. Please select hubs from the &quot;Hostcache&quot; advanced view window (F8), otherwise one will be randomly selected."/>
-		<control text="_Tools:"/>
+		<control text="Tools:"/>
 		<control text="...הורד"/>
 		<control text="Update DC++ hubs from the web. (hublist.xml.bz2)"/>
 	</dialog>
@@ -3459,7 +3473,7 @@ gap i newline
 		<control text="מצב מתקדם - מציע למשתמשים מתקדמים המון פקודות נוספות, חלונות ועוד"/>
 		<control text="פשוט - קל להשתמש בתפריטים ובכפתורים. מוכר למשתמשים של תוכנות שיתוף אחרות"/>
 		<control text="הצג פסי התקדמות פשוטים (מפחית שימוש במעבד)"/>
-		<control text="בחר _מעטפת:"/>
+		<control text="בחר מעטפת:"/>
 		<control text="No Change"/>
 		<control text="Windows Skin"/>
 		<control text="Dark Skin"/>
@@ -3664,7 +3678,7 @@ gap i newline
 		<control text=":כתובת השירות"/>
 		<control/>
 		<control text=":סוג שירות המשאבי חיבור"/>
-		<control text="Gnutella Bootstrap|GWebCache|Server.met URL|Blocked"/>
+		<control text="G2/G1 GWebCache|G2 WebCache|G1 WebCache|Gnutella Bootstrap|Server.met URL|DC++ Hublist|Blocked"/>
 		<control text="אישור"/>
 		<control text="ביטול"/>
 	</dialog>
@@ -3886,7 +3900,7 @@ gap i newline
 		<control text="Tiger Root|SHA1|MD5|ED2K (CMD4)|Filename|Filename (URI)|Base Filename|File Extension|File Size|File Size (bytes)|Folder Path|Local Host|Local Port"/>
 		<control text=":בחר מוצג"/>
 		<control/>
-		<control text="_העתק"/>
+		<control text="העתק"/>
 		<control text="...שמור"/>
 		<control/>
 		<control text="ביטול"/>
@@ -3996,9 +4010,9 @@ gap i newline
 		<control/>
 		<control text="תיאור:"/>
 		<control/>
-		<control text="מחק|_הקודם"/>
-		<control text="_הבא|יצא..."/>
-		<control text="_בטל"/>
+		<control text="מחק|הקודם"/>
+		<control text="הבא|יצא..."/>
+		<control text="בטל"/>
 	</dialog>
 	<dialog name="CTorrentSeedDlg" cookie="StBuBuBuStms" caption="פתח קובץ טורנט">
 		<control text="?פתחת קובץ טורנט של ביטורנט. האם ברצונך להוריד את תכניו, או להפיצו מחדש"/>
@@ -4018,7 +4032,7 @@ gap i newline
 		<control/>
 		<control/>
 		<control text=":גשש"/>
-		<control text="_Current Tracker:"/>
+		<control text="Current Tracker:"/>
 		<control text="Seeds (Complete):"/>
 		<control text="Peers (Incomplete):"/>
 		<control text="Tracker Mode:"/>
@@ -4079,7 +4093,7 @@ gap i newline
 		<control/>
 		<control/>
 		<control text="פעולות:"/>
-		<control text="מוחק _מידע:"/>
+		<control text="מוחק מידע:"/>
 		<control text="טווח בתים:"/>
 		<control text="עד"/>
 		<control text="מחק"/>
@@ -4097,7 +4111,7 @@ gap i newline
 		<control text="הסר"/>
 		<control text=":כל סוג קובץ"/>
 		<control/>
-		<control text="_BitTorrent"/>
+		<control text="BitTorrent"/>
 		<control text="*Drag&apos;n&apos;drop any download later."/>
 		<control text="אישור"/>
 		<control text="ביטול"/>
@@ -4114,7 +4128,7 @@ gap i newline
 		<control text="?קיימת גרסא חדשה לשרזה. האם ברצונך לשדרג"/>
 		<control text="אם בחרת לשדרג כעת, שרזה יוסיף את השדרוג לרשימת ההורדות ויתחיל להוריד אותו באופן אוטומטי"/>
 		<control text="אל תבדוק אם קיימות גרסאות חדשות"/>
-		<control text="_שדרג כעת"/>
+		<control text="שדרג כעת"/>
 		<control text="ביטול"/>
 	</dialog>
 	<dialog name="CDownloadReviewDlg" cookie="BuSyEd" caption="הורד ביקורות">

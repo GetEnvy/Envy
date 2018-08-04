@@ -1,7 +1,7 @@
 //
 // EnvyURL.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
+// This file is part of Envy (getenvy.com) © 2016-2018
 // Portions copyright PeerProject 2008-2015 and Shareaza 2002-2008
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -928,7 +928,7 @@ BOOL CEnvyURL::ParseEnvy(LPCTSTR pszURL)
 	{
 		if ( ParseEnvyHost( SkipSlashes( pszURL, 7 ), FALSE, PROTOCOL_BT ) )
 		{
-			m_sAddress.Format( L"%s:%u", m_sName, m_nPort );
+			m_sAddress.Format( L"%s:%u", (LPCTSTR)m_sName, m_nPort );
 		//	m_nPort = protocolPorts[ PROTOCOL_BT ];
 		//	m_nProtocol = PROTOCOL_BT;
 		//	m_nAction = uriHost;
@@ -1213,7 +1213,7 @@ BOOL CEnvyURL::ParseDonkeyFile(LPCTSTR pszURL)
 
 		// Now we have the source in x.x.x.x:port format.
 		CString strEDFTP;
-		strEDFTP.Format( L"ed2kftp://%s/%s/%I64u/", strPart, (LPCTSTR)m_oED2K.toString(), m_nSize );
+		strEDFTP.Format( L"ed2kftp://%s/%s/%I64u/", (LPCTSTR)strPart, (LPCTSTR)m_oED2K.toString(), m_nSize );
 		SafeString( strEDFTP );
 		if ( ! m_sURL.IsEmpty() )
 			m_sURL += L", ";
@@ -1241,7 +1241,7 @@ BOOL CEnvyURL::ParseDonkeyServer(LPCTSTR pszURL)
 	m_sName.Trim();
 	if ( m_sName.IsEmpty() ) return FALSE;
 
-	m_sAddress.Format( L"%s:%hu", m_sName, m_nPort );
+	m_sAddress.Format( L"%s:%hu", (LPCTSTR)m_sName, m_nPort );
 
 	m_nProtocol = PROTOCOL_ED2K;
 	m_nAction	= uriHost;
@@ -1576,7 +1576,7 @@ BOOL CEnvyURL::RegisterShellType(LPCTSTR pszRoot, LPCTSTR pszProtocol, LPCTSTR p
 	const BOOL bApplication = pszRoot && _tcsicmp( pszRoot, L"Applications\\Envy.exe" ) == 0;		// CLIENT_NAME
 
 	// Register protocol to "Default Programs"
-	if ( bProtocol )
+	if ( bProtocol && pszProtocol )
 	{
 		CString strUrlAssociations = L"Software\\Microsoft\\Windows\\Shell\\Associations\\UrlAssociations\\";
 		strUrlAssociations += pszProtocol;
@@ -1617,7 +1617,7 @@ BOOL CEnvyURL::RegisterShellType(LPCTSTR pszRoot, LPCTSTR pszProtocol, LPCTSTR p
 		{
 			if ( RegCreateKey( hSub2, L"command", &hSub3 ) == ERROR_SUCCESS )
 			{
-				strValue.Format( L"\"%s\" \"%%%c\"", theApp.m_strBinaryPath, bProtocol ? 'L' : '1' );
+				strValue.Format( L"\"%s\" \"%%%c\"", (LPCTSTR)theApp.m_strBinaryPath, bProtocol ? 'L' : '1' );
 				RegSetValueEx( hSub3, NULL, 0, REG_SZ, (LPBYTE)(LPCTSTR)strValue, sizeof( TCHAR ) * ( strValue.GetLength() + 1 ) );
 				RegCloseKey( hSub3 );
 			}
@@ -1849,7 +1849,7 @@ BOOL CEnvyURL::RegisterMagnetHandler(LPCTSTR pszID, LPCTSTR pszName, LPCTSTR psz
 
 	CString strCommand;
 	CString strIcon( Skin.GetImagePath( nIDIcon ) );
-	strCommand.Format( L"\"%s\" \"%%URL\"", theApp.m_strBinaryPath );
+	strCommand.Format( L"\"%s\" \"%%URL\"", (LPCTSTR)theApp.m_strBinaryPath );
 
 	RegSetValueEx( hHandler, L"", 0, REG_SZ,
 		(LPBYTE)pszName, static_cast< DWORD >( sizeof( TCHAR ) * ( _tcslen( pszName ) + 1 ) ) );

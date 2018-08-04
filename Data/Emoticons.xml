@@ -126,6 +126,4 @@
 
 	<emoticon text="((1))" button="yes"><source name="msn" left="640" right="656" top="0" bottom="16"/></emoticon>
 	<emoticon text="((2))" button="yes"><source name="msn" left="656" right="672" top="0" bottom="16"/></emoticon>
-	<emoticon text="((3))" button="yes"><source name="msn" left="670" right="688" top="0" bottom="16"/></emoticon>
-	<emoticon text="((4))" button="yes"><source name="msn" left="688" right="704" top="0" bottom="16"/></emoticon>
 </emoticons>

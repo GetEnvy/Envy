@@ -3,14 +3,13 @@
 
 <!-- Envy Default French Skin File -->
 
-<!-- Translation based on default en.xml r20 -->
-<!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
+<!-- Translation based on default en.xml r21 -->
+<!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
-<!-- Use this file as a basis for creating new language skins,   -->
-<!-- however be sure to include only sections that are changed:  -->
-<!-- Unedited English content limits compatibility & performance.-->
-<!-- Better to be concise than literal:  Please test visibility! -->
+<!-- Use this file as a basis for creating new languages. -->
+<!-- Only include changed sections, not unedited English. -->
+<!-- Better concise than literal, please test visibility. -->
 
 <!-- Manifest -->
 <manifest
@@ -427,11 +426,11 @@
 		<button id="ID_DISCOVERY_QUERY" text="Interrogez"/>
 		<button id="ID_DISCOVERY_ADVERTISE" text="Afficher"/>
 		<separator/>
-		<button id="ID_DISCOVERY_BROWSE" text="Page Statistiques"/>
+		<button id="ID_DISCOVERY_BROWSE" text="Statistiques"/>
 		<rightalign/>
 		<button id="ID_DISCOVERY_WEBCACHE" text="GWebCaches"/>
 		<button id="ID_DISCOVERY_GNUTELLA" text="Bootstraps"/>
-		<button id="ID_DISCOVERY_SERVERLIST" text="Server.met/Hublists"/>
+		<button id="ID_DISCOVERY_SERVERLIST" text="Server Listes"/>
 		<button id="ID_DISCOVERY_BLOCKED" text="Bloqué"/>
 	</toolbar>
 	<!-- HOST CACHE WINDOW -->
@@ -619,19 +618,15 @@
 				<item id="ID_HELP_FORUMS" text="Forums de Envy"/>
 				<item id="ID_HELP_FORUMS_LOCAL" text="_Forum de Français"/>
 			<!--
-				<menu text="Aide SkinVista">
+				<menu text="Aide des Menus">
 				<menu text="Si la barre des menus s'affiche mal --"></menu>
 				<menu text="Vérifiez Menu : Fenêtre : Montrer la barre de navigation"></menu>
 				<menu text="Déplacez les barres de navigation et de menu-"></menu>
 				<menu text="(Glissez et déplacez avant de les positionner en haut)"></menu>
 				<menu text="Rechargez l'intefrace graphique pour nettoyer les défectuosités : Cntrl+Shift+Z"></menu>
 				</menu>
-				<separator/>
-				<menu text="_Sites Web">
-					<item id="ID_HELP_WEB_3" text="Slyck.com"/>
-					<item id="ID_HELP_WEB_1" text="ZeroPaid.com"/>
-				</menu>
 			-->
+				<separator/>
 				<item id="ID_HELP_HOMEPAGE" text="GetEnvy.com"/>
 				<separator/>
 				<item id="ID_HELP_ABOUT" text="À propos de Envy..."/>
@@ -737,7 +732,6 @@
 				<item id="ID_HELP_FORUMS" text="_Forums de Envy"/>
 				<item id="ID_HELP_FORUMS_LOCAL" text="_Forum de Français"/>
 				<!--item id="ID_HELP_UPDATE" text="Dernières nouvelles"-->
-				<!--item id="ID_HELP_WEB_1" text="Zeropaid.com"-->
 			</menu>
 			<separator/> <!--
 			<item id="ID_HELP_VERSION_CHECK" text="_Rechercher des mises à jour"/>
@@ -905,7 +899,6 @@
 				<item id="ID_HELP_FORUMS" text="_Forums de Envy"/>
 				<item id="ID_HELP_FORUMS_LOCAL" text="_Forum de Français"/>
 				<!--item id="ID_HELP_UPDATE" text="Dernières nouvelles"-->
-				<!--item id="ID_HELP_WEB_1" text="Zeropaid.com"-->
 			</menu>
 			<separator/> <!--
 			<item id="ID_HELP_VERSION_CHECK" text="_Rechercher des mises à jour"/>
@@ -1237,6 +1230,8 @@
 		<item id="ID_DOWNLOADS_EDIT" text="_Propriétés..."/>
 	</menu>
 	<menu name="CDownloadsWnd.Default">
+		<item id="ID_DOWNLOADS_FOLDER" text="Ouvrir _Folder"/>
+		<separator/>
 		<item id="ID_TOOLS_DOWNLOAD" text="Start nouveau télécharg."/>
 		<item id="ID_TOOLS_SEEDTORRENT" text="Seed nouveau torrent"/>
 		<item id="ID_DOWNLOADS_CLEAR_COMPLETED" text="Nettoyer"/>
@@ -3136,7 +3131,7 @@
 	<string id="20456" text="Liste de Lecture"/>
 	<string id="20457" text="Envy ne peut instancier le module MediaServices. Veuillez réinstaller Envy et confirmer que les codecs et pilotes nécessaires sont installés sur votre PC."/>
 	<string id="20458" text="Lecteur Multimédia Envy"/>
-	<string id="20460" text="LECTEUR MULTIMEDIA ENVY"/>
+	<string id="20460" text="Lecteur Multimédia Envy"/>
 	<string id="20462" text="(Pas de visualisation)"/>
 	<!--string id="20464" text="Envy a terminé le téléchargement :"-->
 	<!--string id="20465" text="Envy télécharge :"-->
@@ -4219,7 +4214,7 @@
 		<control text="_Adresse du service :"/>
 		<control/>
 		<control text="Type de service :"/>
-		<control text="Gnutella Bootstrap|GWebCache|Server.met URL|Bloqué"/>
+		<control text="G2/G1 GWebCache|G2 WebCache|G1 WebCache|Gnutella Bootstrap|Server.met URL|DC++ Hublist|Bloqué"/>
 		<control text="Valider"/>
 		<control text="Annuler"/>
 	</dialog>

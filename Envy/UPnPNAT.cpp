@@ -140,7 +140,7 @@ void CUPnPNAT::OnRun()
 				CString strInfo;
 				for ( int i = 0 ; i < 5 && IsThreadEnabled() ; ++i )
 				{
-					strInfo.Format( L"%s at %s:%u", CLIENT_NAME L" TCP", strLocalIP, nPort );
+					strInfo.Format( L"%s at %s:%u", CLIENT_NAME L" TCP", (LPCTSTR)strLocalIP, nPort );
 					m_nExternalTCPPort = MapPort( pCollection, strLocalIP, nPort, L"TCP", strInfo );
 					if ( m_nExternalTCPPort )
 						theApp.Message( MSG_DEBUG, L"UPnP successfully mapped TCP port %u.", m_nExternalTCPPort );

@@ -1,7 +1,7 @@
 //
 // ShakeNeighbour.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2017
+// This file is part of Envy (getenvy.com) © 2016-2018
 // Portions copyright PeerProject 2008-2016 and Shareaza 2002-2008
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -18,8 +18,8 @@
 
 // CShakeNeighbour reads and sends handshake headers to negotiate the Gnutella or Gnutella2 handshake
 // http://shareaza.sourceforge.net/mediawiki/index.php/Developers.Code.CShakeNeighbour
-// http://getenvy.com/shareazawiki/Developers.Code.CShakeNeighbour.html
-// http://getenvy.com/shareazawiki/Developers.Code.CShakeNeighbour.Running.html
+// http://getenvy.com/archives/shareazawiki/Developers.Code.CShakeNeighbour.html
+// http://getenvy.com/archives/shareazawiki/Developers.Code.CShakeNeighbour.Running.html
 
 #include "StdAfx.h"
 #include "Settings.h"
@@ -799,7 +799,7 @@ BOOL CShakeNeighbour::OnHeaderLine(CString& strHeader, CString& strValue)
 		m_bG2Accept |= ( strValue.Find( L"application/x-shareaza" ) >= 0 );
 		m_bG2Accept |= ( strValue.Find( L"application/x-envy" ) >= 0 );
 		if ( ! m_bG1Accept && ! m_bG2Accept )
-			theApp.Message( MSG_DEBUG, L"Unknown app accepts header: %s %s", strHeader, strValue );
+			theApp.Message( MSG_DEBUG, L"Unknown app accepts header: %s %s", (LPCTSTR)strHeader, (LPCTSTR)strValue );
 		break;
 	case 't':		// "Content-Type"	(And we're connected to Gnutella2)
 		// Remote computer is telling us it is sending a kind of packets
@@ -809,7 +809,7 @@ BOOL CShakeNeighbour::OnHeaderLine(CString& strHeader, CString& strValue)
 		m_bG2Send |= ( strValue.Find( L"application/x-shareaza" ) >= 0 );
 		m_bG2Send |= ( strValue.Find( L"application/x-envy" ) >= 0 );
 		if ( ! m_bG1Send && ! m_bG2Send )
-			theApp.Message( MSG_DEBUG, L"Unknown app content-type header: %s", strHeader );
+			theApp.Message( MSG_DEBUG, L"Unknown app content-type header: %s", (LPCTSTR)strHeader );
 		break;
 	case 'e':		// "Accept-Encoding"	(Incoming compression)
 		// Remote computer is telling us it can accept compressed data, look for the text "deflate" when settings allow it

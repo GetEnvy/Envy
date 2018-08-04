@@ -1,7 +1,7 @@
 //
 // LiveList.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
+// This file is part of Envy (getenvy.com) © 2016-2018
 // Portions copyright PeerProject 2008-2015 and Shareaza 2002-2007
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -26,6 +26,10 @@ static char THIS_FILE[] = __FILE__;
 #define new DEBUG_NEW
 #endif	// Debug
 
+// ToDo: Remove deprecated support for VS2010 std::tr1
+#if !defined(_MSC_VER) || (_MSC_VER < 1700)		// VS2010~
+#define std::bind std::tr1::bind
+#endif
 
 //////////////////////////////////////////////////////////////////////
 // CLiveList construction
@@ -913,7 +917,7 @@ void CLiveListCtrl::Sort(int nColumn)
 	if ( nColumn )
 	{
 		std::stable_sort( m_pIndex.begin(), m_pIndex.end(),
-			std::tr1::bind( CLiveList::Less, _1, _2, nColumn ) );	// Was boost::bind, std::bind but tr1 for VS2008
+			std::bind( CLiveList::Less, _1, _2, nColumn ) );	// Was boost::bind, std::bind but tr1 for VS2008
 	}
 
 	InvalidateRect( NULL );

@@ -67,7 +67,7 @@ protected:
 	CMainTabBarCtrl		m_wndNavBar;
 	CCoolBarCtrl		m_wndToolBar;
 	CWndTabBar			m_wndTabBar;
-	CStatusBar			m_wndStatusBar;
+	CStatusBar			m_wndStatusBar;		// ToDo: Custom Class
 	CMonitorBarCtrl		m_wndMonitorBar;
 	CRemoteWnd			m_wndRemoteWnd;
 	CHashProgressBar	m_wndHashProgressBar;

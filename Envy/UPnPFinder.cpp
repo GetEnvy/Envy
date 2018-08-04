@@ -1,7 +1,7 @@
 //
 // UPnPFinder.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
+// This file is part of Envy (getenvy.com) © 2016-2018
 // Portions copyright PeerProject 2008-2015 and Shareaza 2002-2007
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -27,6 +27,11 @@
 static char THIS_FILE[] = __FILE__;
 #define new DEBUG_NEW
 #endif	// Debug
+
+// ToDo: Remove deprecated support for VS2010 std::tr1
+#if !defined(_MSC_VER) || (_MSC_VER < 1700)		// VS2010~
+#define std::bind std::tr1::bind
+#endif
 
 CUPnPFinder::CUPnPFinder()
 	: m_pDevices		( )
@@ -444,7 +449,7 @@ HRESULT CUPnPFinder::MapPort(const ServicePointer& service)
 	if ( strResult.IsEmpty() )
 		return hr;
 
-	theApp.Message( MSG_DEBUG, L"Got status info from the service %s: %s", strServiceId, strResult );
+	theApp.Message( MSG_DEBUG, L"Got status info from the service %s: %s", (LPCTSTR)strServiceId, (LPCTSTR)strResult );
 
 	if ( _tcsistr( strResult, L"|VT_BSTR=Connected|" ) != NULL )
 	{
@@ -487,7 +492,7 @@ HRESULT CUPnPFinder::MapPort(const ServicePointer& service)
 
 void CUPnPFinder::StartPortMapping()
 {
-	std::for_each( m_pServices.begin(), m_pServices.end(), std::tr1::bind( &CUPnPFinder::MapPort, this, _1 ) );		// Was boost::bind, is std::bind but tr1 for VS2008
+	std::for_each( m_pServices.begin(), m_pServices.end(), std::bind( &CUPnPFinder::MapPort, this, _1 ) );		// Was boost::bind, is std::bind but tr1 for VS2008
 	if ( m_bADSL && ! Settings.Connection.SkipWANIPSetup &&
 		( Network.m_bUPnPPortsForwarded == TRI_UNKNOWN || m_bADSLFailed ) && m_pWANIPService != NULL )
 	{
@@ -503,7 +508,7 @@ void CUPnPFinder::DeletePorts()
 {
 	if ( ! m_bInited )
 		return;
-	std::for_each( m_pServices.begin(), m_pServices.end(), std::tr1::bind( &CUPnPFinder::DeleteExistingPortMappings, this, _1 ) );		// Was boost::bind, is std::bind but tr1 for VS2008
+	std::for_each( m_pServices.begin(), m_pServices.end(), std::bind( &CUPnPFinder::DeleteExistingPortMappings, this, _1 ) );		// Was boost::bind, is std::bind but tr1 for VS2008
 }
 
 bool CUPnPFinder::IsAsyncFindRunning()
@@ -579,7 +584,7 @@ CString CUPnPFinder::GetLocalRoutableIP(ServicePointer pService)
 
 	if ( ! strLocalIP.IsEmpty() && ! strExternalIP.IsEmpty() )
 	{
-		theApp.Message( MSG_INFO, L"UPnP route: %s->%s", strLocalIP, strExternalIP );
+		theApp.Message( MSG_INFO, L"UPnP route: %s->%s", (LPCTSTR)strLocalIP, (LPCTSTR)strExternalIP );
 		Network.AcquireLocalAddress( strExternalIP );
 	}
 
@@ -661,7 +666,7 @@ void CUPnPFinder::DeleteExistingPortMappings(ServicePointer pService)
 					if ( FAILED( hrDel ) )
 						UPnPMessage( hrDel );
 					else
-						theApp.Message( MSG_DEBUG, L"Old port mapping deleted: %s", strPort + strProtocol );
+						theApp.Message( MSG_DEBUG, L"Old port mapping deleted: %s", (LPCTSTR)strPort + strProtocol );
 				}
 				else	// Different IP found in the port mapping entry
 				{

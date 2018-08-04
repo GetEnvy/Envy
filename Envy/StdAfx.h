@@ -1,7 +1,7 @@
 //
 // StdAfx.h
 //
-// This file is part of Envy (getenvy.com) © 2016-2017
+// This file is part of Envy (getenvy.com) © 2016-2018
 // Portions copyright PeerProject 2008-2016 and Shareaza 2002-2008
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -275,9 +275,9 @@ using namespace std::tr1::placeholders;
 // Note: See Shareaza r8451 for some tr1 implementation
 
 // _HAS_TR1
-//#include <array>								// In HashDescriptors.hpp
+//#include <array>							// In HashDescriptors.hpp
 //#include <memory>
-//#include <regex>								// In RegExp.cpp
+//#include <regex>							// In RegExp.cpp
 //#include <type_traits>
 //#include <unordered_map>
 
@@ -308,11 +308,11 @@ using namespace std::tr1::placeholders;
 // However simply using standard min/max templates/macros introduces runtime bugs.
 #include "MinMax.h"
 
-#if defined(VS2008) && (_MSC_VER >= 1500)		// Work-around for VC9 (VS2008) where
-	#pragma warning ( pop )				// a (pop) is ifdef'd out in stdio.h
+#if defined(VS2008) && (_MSC_VER >= 1500)	// Work-around for VC9 (VS2008) where
+	#pragma warning ( pop )					// a (pop) is ifdef'd out in stdio.h
 #endif
 
-//#pragma warning ( pop )				// Restore warnings
+//#pragma warning ( pop )					// Restore warnings
 
 #include "Augment/Augment.hpp"
 //#include "Augment/IUnknownImplementation.hpp"	// For UPnPFinder
@@ -1007,8 +1007,8 @@ INT_PTR MsgBox(UINT nIDPrompt, UINT nType = MB_OK, UINT nIDHelp = 0, DWORD* pnDe
 	((hr)==RPC_E_SERVERFAULT)|| \
 	((hr)==RPC_E_INVALID_OBJECT))
 
-#define TIMER_START			DWORD tTest = GetTickCount();		// Temporary testing purposes [PPD]
-#define TIMER_STOP			tTest = GetTickCount() - tTest; CString strTest; strTest.Format( L"\r\n %.3f seconds", tTest / 1000.000 ); \
+#define TIMER_START		DWORD tTest = GetTickCount();		// Temporary testing purposes [PPD]
+#define TIMER_STOP		tTest = GetTickCount() - tTest; CString strTest; strTest.Format( L"\r\n %.3f seconds", tTest / 1000.000 ); \
 	CFile pFile; if ( pFile.Open( Settings.General.Path + L"\\Timer.txt", CFile::modeReadWrite ) ) pFile.Seek( 0, CFile::end ); \
 	else if ( pFile.Open( Settings.General.Path + L"\\Timer.txt", CFile::modeWrite|CFile::modeCreate ) ) /*pFile.Write( (WORD)0xFEFF, 2 );*/ pFile.Write( L"Timer:", 6*2 ); \
 	pFile.Write( strTest, strTest.GetLength()*2 ); pFile.Close(); theApp.m_bLive && theApp.m_bInteractive ? theApp.Message( MSG_TRAY|MSG_NOTICE, strTest ) : MsgBox( strTest );

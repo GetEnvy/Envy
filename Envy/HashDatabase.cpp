@@ -103,7 +103,7 @@ BOOL CHashDatabase::Create()
 		{
 			m_pFile.Abort();
 			pException->Delete();
-			theApp.Message( MSG_ERROR, L"Hash Database load error: %s", m_sPath );
+			theApp.Message( MSG_ERROR, L"Hash Database load error: %s", (LPCTSTR)m_sPath );
 		}
 	}
 
@@ -129,7 +129,7 @@ BOOL CHashDatabase::Create()
 		}
 	}
 
-	theApp.Message( MSG_ERROR, L"Hash Database create error: %s", m_sPath );
+	theApp.Message( MSG_ERROR, L"Hash Database create error: %s", (LPCTSTR)m_sPath );
 	return FALSE;
 }
 

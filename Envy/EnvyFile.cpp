@@ -218,8 +218,8 @@ CString CEnvyFile::GetFilename() const
 		strFilename = L"btih_" + m_oBTH.toString();
 	else if ( m_oMD5 )
 		strFilename = L"md5_"  + m_oMD5.toString();
-	else if ( m_sName.GetLength() > 1 )			// Note intentional obfuscation. Need to avoid conflicts but random numbers can leave orphan partials, different .pd and .partial
-		strFilename.Format( L"file_%u%s", m_sName, CTime::GetCurrentTime().Format( L"%M%S" ).Mid( 1, 2 ) );
+	else if ( m_sName.GetLength() > 1 )			// Note need to avoid conflicts, but random numbers can leave orphan partials, different .pd and .partial
+		strFilename.Format( L"file_%s.%s", (LPCTSTR)m_sName, (LPCTSTR)CTime::GetCurrentTime().Format( L"%M%S" ).Mid( 1, 2 ) );
 	else
 		strFilename.Format( L"file_%.2i%.2i%.2i", GetRandomNum( 0, 99 ), GetRandomNum( 0, 99 ), GetRandomNum( 0, 99 ) );
 	return strFilename;

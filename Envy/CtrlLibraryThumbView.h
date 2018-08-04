@@ -35,17 +35,17 @@ public:
 	CLibraryThumbView();
 
 protected:
+	CLibraryThumbItem**	m_pList;
+	CLibraryThumbItem*	m_pFirst;
+	CLibraryThumbItem*	m_pFocus;
+	CList< CLibraryThumbItem* > m_pSelThumb;
 	DWORD				m_nInvalidate;
 	int					m_nColumns;
 	int					m_nRows;
-	CLibraryThumbItem**	m_pList;
 	int					m_nCount;
 	int					m_nBuffer;
 	int					m_nScroll;
 	int					m_nSelected;
-	CLibraryThumbItem*	m_pFocus;
-	CLibraryThumbItem*	m_pFirst;
-	CList< CLibraryThumbItem* > m_pSelThumb;
 	BOOL				m_bDrag;
 	CPoint				m_ptDrag;
 

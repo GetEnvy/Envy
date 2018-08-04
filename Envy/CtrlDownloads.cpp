@@ -1,7 +1,7 @@
 //
 // CtrlDownloads.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2017
+// This file is part of Envy (getenvy.com) © 2016-2018
 // Portions copyright PeerProject 2008-2015 and Shareaza 2002-2008
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -1297,18 +1297,15 @@ void CDownloadsCtrl::PaintDownload(CDC& dc, const CRect& rcRow, const CDownloadD
 			case 0:		// No reviews
 				break;
 			case 1:		// Ratings suggest fake file
-				CoolInterface.Draw( &dc, IDI_RATING_FAKE, 16,
-					rcCell.left, rcCell.top, CLR_NONE, bSelected );
+				CoolInterface.Draw( &dc, IDI_RATING_FAKE, 16, rcCell.left, rcCell.top, CLR_NONE, bSelected );
 				break;
 			case 2:
 			case 3:
 			case 4:		// Ratings suggest average file
-				CoolInterface.Draw( &dc, IDI_RATING_AVERAGE, 16,
-					rcCell.left, rcCell.top, CLR_NONE, bSelected );
+				CoolInterface.Draw( &dc, IDI_RATING_AVERAGE, 16, rcCell.left, rcCell.top, CLR_NONE, bSelected );
 				break;
 			default:	// Ratings suggest good file
-				CoolInterface.Draw( &dc, IDI_RATING_GOOD, 16,
-					rcCell.left, rcCell.top, CLR_NONE, bSelected );
+				CoolInterface.Draw( &dc, IDI_RATING_GOOD, 16, rcCell.left, rcCell.top, CLR_NONE, bSelected );
 				break;
 			}
 

@@ -1,7 +1,7 @@
 //
 // RegExp.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2017
+// This file is part of Envy (getenvy.com) © 2016-2018
 // Portions copyright PeerProject 2010-2014 and Shareaza 2008-2010
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -16,7 +16,7 @@
 // (http://www.gnu.org/licenses/agpl.html)
 //
 
-// Abstracted std::tr1:regex Regular Expression support  (2 case-insensitive functions:)
+// Abstracted std::regex Regular Expression support  (2 case-insensitive functions:)
 //
 // RegExp::Match	Returns TRUE if szContent finds szRegExp regular expression
 // RegExp::Split	Divides szContent according szRegExp regular expression

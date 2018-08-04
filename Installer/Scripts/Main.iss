@@ -102,7 +102,7 @@ UninstallDisplayName={#internal_name} {#version}
 UninstallFilesDir={app}\Uninstall
 SetupIconFile=Installer\Res\Install.ico
 WizardSmallImageFile=Installer\Res\CornerLogo.bmp
-WizardImageFile=Installer\Res\Sidebar.bmp
+WizardImageFile=Installer\Res\Sidebar.bmp,Installer\Res\Sidebar.*.bmp
 WizardImageStretch=no
 ;WizardImageBackColor=clWhite
 DisableWelcomePage=no
@@ -178,7 +178,7 @@ Name: "{group}\GUI Modes\{#internal_name} ({cm:icons_launchtray})"; Filename: "{
 ;Name: "{group}\GUI Modes\{#internal_name} ({cm:icons_noskin})"; Filename: "{app}\Envy.exe"; Parameters: "-noskin"; WorkingDir: "{app}"; Comment: "{cm:reg_apptitle}"; AppUserModelID: "Envy"
 Name: "{commondesktop}\{#internal_name}"; Filename: "{app}\Envy.exe"; WorkingDir: "{app}"; Comment: "{cm:reg_apptitle}"; Tasks: desktopicon; Check: not FileExists(ExpandConstant('{commondesktop}\{#internal_name}.lnk')); AppUserModelID: "Envy"
 Name: "{commondesktop}\TorrentEnvy"; Filename: "{app}\TorrentEnvy.exe"; WorkingDir: "{app}"; Comment: "Envy Drag'n'Drop Torrent Creator"; Tasks: desktopicontorrents; Check: not FileExists(ExpandConstant('{commondesktop}\TorrentEnvy.lnk')); AppUserModelID: "TorrentEnvy"
-Name: "{commondesktop}\GetEnvy.com Kickbacks"; Filename: "http://getenvy.com/kickbacks"; IconFilename: "{app}\Schemas\Skin.ico"; Tasks: desktopicongetenvy; Check: not FileExists(ExpandConstant('{commondesktop}\GetEnvy.com Kickbacks.url'))
+Name: "{commondesktop}\GetEnvy.com Kickbacks"; Filename: "http://getenvy.com/kickbacks"; IconFilename: "{app}\Schemas\Kickbacks.ico"; Tasks: desktopicongetenvy; Check: not FileExists(ExpandConstant('{commondesktop}\GetEnvy.com Kickbacks.url'))
 Name: "{userappdata}\Microsoft\Internet Explorer\Quick Launch\{#internal_name}"; Filename: "{app}\Envy.exe"; WorkingDir: "{app}"; Comment: "{cm:reg_apptitle}"; Tasks: quicklaunch
 
 #if alpha == "True"
@@ -555,10 +555,10 @@ Root: HKLM; Subkey: "Software\Microsoft\Windows\CurrentVersion\App Paths\Envy.ex
 ;Root: HKCU; Subkey: "Software\Envy\Envy\Downloads"; ValueType: string; ValueName: "CollectionPath"; ValueData: "{ini:{param:SETTINGS|},Locations,CollectionPath|{app}\Collections}"; Flags: uninsdeletekey createvalueifdoesntexist; Tasks: not multiuser
 
 ; Install chat notify sound
-Root: HKCU; Subkey: "AppEvents\EventLabels\Sound_IncomingChat"; ValueType: string; ValueName: ; ValueData: "{cm:reg_incomingchat}"; Flags: uninsdeletekey
-Root: HKCU; Subkey: "AppEvents\Schemes\Apps\Envy"; ValueType: string; ValueName: ; ValueData: "{cm:reg_apptitle}"; Flags: uninsdeletekey
-Root: HKCU; Subkey: "AppEvents\Schemes\Apps\Envy\Sound_IncomingChat\.current"; ValueType: string; ValueName: ; ValueData: "%SystemRoot%\Media\notify.wav"; Flags: uninsdeletekey
-Root: HKCU; Subkey: "AppEvents\Schemes\Apps\Envy\Sound_IncomingChat\.default"; ValueType: string; ValueName: ; ValueData: "%SystemRoot%\Media\notify.wav"; Flags: uninsdeletekey
+;Root: HKCU; Subkey: "AppEvents\EventLabels\Sound_IncomingChat"; ValueType: string; ValueName: ; ValueData: "{cm:reg_incomingchat}"; Flags: uninsdeletekey
+;Root: HKCU; Subkey: "AppEvents\Schemes\Apps\Envy"; ValueType: string; ValueName: ; ValueData: "{cm:reg_apptitle}"; Flags: uninsdeletekey
+;Root: HKCU; Subkey: "AppEvents\Schemes\Apps\Envy\Sound_IncomingChat\.current"; ValueType: string; ValueName: ; ValueData: "%SystemRoot%\Media\notify.wav"; Flags: uninsdeletekey
+;Root: HKCU; Subkey: "AppEvents\Schemes\Apps\Envy\Sound_IncomingChat\.default"; ValueType: string; ValueName: ; ValueData: "%SystemRoot%\Media\notify.wav"; Flags: uninsdeletekey
 
 ; Set UPnP by default (disabled choice during setup)
 ;Root: HKCU; Subkey: "Software\Envy\Envy\Connection"; ValueType: dword; ValueName: "EnableUPnP"; ValueData: 0; Flags: deletevalue; Tasks: not upnp
@@ -696,6 +696,9 @@ Type: files; Name: "{app}\*.xml"
 ;Type: files; Name: "{app}\*.png"
 ;Type: files; Name: "{app}\*.bmp"
 ;Type: files; Name: "{app}\Data\*.url"
+Type: filesandordirs; Name: "{app}\Envy\Skins\Carbon"
+Type: filesandordirs; Name: "{app}\Envy\Skins\Windows"
+Type: filesandordirs; Name: "{app}\Envy\Skins\XP Icons"
 Type: filesandordirs; Name: "{userappdata}\Envy\Remote"
 Type: filesandordirs; Name: "{userappdata}\Envy\Schemas"
 Type: filesandordirs; Name: "{userappdata}\Envy\Skins"

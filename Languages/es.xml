@@ -3,14 +3,13 @@
 
 <!-- Envy Default Spanish Skin File -->
 
-<!-- Translation based on default en.xml r20 -->
-<!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
+<!-- Translation based on default en.xml r21 -->
+<!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
-<!-- Use this file as a basis for creating new language skins,   -->
-<!-- however be sure to include only sections that are changed:  -->
-<!-- Unedited English content limits compatibility & performance.-->
-<!-- Better to be concise than literal:  Please test visibility! -->
+<!-- Use this file as a basis for creating new languages. -->
+<!-- Only include changed sections, not unedited English. -->
+<!-- Better concise than literal, please test visibility. -->
 
 <!-- Manifest -->
 <manifest
@@ -400,17 +399,17 @@
 	<toolbar name="CDiscoveryWnd">
 		<button id="ID_DISCOVERY_ADD" text="Añadir Servicio"/>
 		<separator/>
-		<button id="ID_DISCOVERY_EDIT" text="EEditar Servicio "/>
+		<button id="ID_DISCOVERY_EDIT" text="Editar Servicio "/>
 		<button id="ID_DISCOVERY_REMOVE" text="Eliminar Servicio"/>
 		<separator/>
-		<button id="ID_DISCOVERY_QUERY" text="Pregunta Ahora"/>
+		<button id="ID_DISCOVERY_QUERY" text="Pregunta"/>
 		<button id="ID_DISCOVERY_ADVERTISE" text="Anunciar"/>
 		<separator/>
 		<button id="ID_DISCOVERY_BROWSE" text="Estadísticas"/>
 		<rightalign/>
 		<button id="ID_DISCOVERY_WEBCACHE" text="GWebCaches"/>
 		<button id="ID_DISCOVERY_GNUTELLA" text="Bootstraps"/>
-		<button id="ID_DISCOVERY_SERVERLIST" text="Server.met/Hublists"/>
+		<button id="ID_DISCOVERY_SERVERLIST" text="Server Listas"/>
 		<button id="ID_DISCOVERY_BLOCKED" text="Bloqueado"/>
 	</toolbar>
 	<!-- HOST CACHE WINDOW -->
@@ -577,20 +576,7 @@
 				<item id="ID_HELP_GUIDE" text="Guia para Usuarios de Envy"/>
 				<item id="ID_HELP_FORUMS" text="Foros de Envy"/>
 				<item id="ID_HELP_FORUMS_LOCAL" text="Foro en Español"/>
-			<!--
-				<menu text="Ayuda de SkinVista">
-				<menu text="Si la barra de menús se muestra de forma erronea"> </menu>
-				<menu text="Comprobar el menú: Ventana: Mostrar barra de navegación-"> </menu>
-				<menu text="Entonces separa las barras de Navegacion y las de menú-"> </menu>
-				<menu text="(Arrastralas fuera antes de colocarlas en la parte superior)"> </menu>
-				<menu text="Vuelve a cargar la interfaz gráfica para eliminar los errores: Ctrl+Mays+Z"> </menu>
-				</menu>
 				<separator/>
-				<menu text="_Enlaces">
-					<item id="ID_HELP_WEB_3" text="Slyck.com"/>
-					<item id="ID_HELP_WEB_1" text="ZeroPaid.com"/>
-				</menu>
-			-->
 				<item id="ID_HELP_HOMEPAGE" text="GetEnvy.com"/>
 				<separator/>
 				<item id="ID_HELP_ABOUT" text="Acerca de Envy..."/>
@@ -691,7 +677,6 @@
 				<item id="ID_HELP_FORUMS" text="Foros de _Envy"/>
 				<item id="ID_HELP_FORUMS_LOCAL" text="Foro en Español"/>
 				<!--item id="ID_HELP_UPDATE" text="Últimas Noticias"-->
-				<!--item id="ID_HELP_WEB_1" text="Zeropaid.com"-->
 			</menu>
 			<separator/>
 			<item id="ID_HELP_ABOUT" text="_Acerca de Envy..."/>
@@ -852,7 +837,6 @@
 				<item id="ID_HELP_FORUMS" text="Foros de _Envy"/>
 				<item id="ID_HELP_FORUMS_LOCAL" text="Foro en Español"/>
 				<!--item id="ID_HELP_UPDATE" text="Últimas Noticias"-->
-				<!--item id="ID_HELP_WEB_1" text="Zeropaid.com"-->
 			</menu>
 			<separator/>
 			<item id="ID_HELP_ABOUT" text="_Acerca de Envy..."/>
@@ -1168,6 +1152,8 @@
 		<item id="ID_DOWNLOADS_EDIT" text="Información de Torrent..."/>
 	</menu>
 	<menu name="CDownloadsWnd.Default">
+		<item id="ID_DOWNLOADS_FOLDER" text="Abrir _Folder"/>
+		<separator/>
 		<item id="ID_TOOLS_DOWNLOAD" text="Start New Download"/>
 		<item id="ID_TOOLS_SEEDTORRENT" text="Seed New Torrent"/>
 		<item id="ID_DOWNLOADS_CLEAR_COMPLETED" text="Limpiar Completados"/>
@@ -3057,7 +3043,7 @@
 	<string id="20456" text="Lista de Reproducción"/>
 	<string id="20457" text="Envy no pudo iniciar los servicios de reproducción. Por favor reinstale Envy, y confirme que tiene todos los codecs, filtros y controladores necesarios.."/>
 	<string id="20458" text="Reproductor de Envy"/>
-	<string id="20460" text="ENVY MEDIA SISTEMA"/>
+	<string id="20460" text="Envy Media Sistema"/>
 	<string id="20462" text="(No Visualización)"/>
 	<!--string id="20464" text="Envy ha terminado de bajar:"-->
 	<!--string id="20465" text="Envy esta descargando:"-->
@@ -4139,7 +4125,7 @@
 		<control text="Dirección _del servicio:"/>
 		<control/>
 		<control text="Tipo de servicio de descubrimiento:"/>
-		<control text="Gnutella Bootstrap|GWebCache|Server.met URL|Bloqueado"/>
+		<control text="G2/G1 GWebCache|G2 WebCache|G1 WebCache|Gnutella Bootstrap|Server.met URL|DC++ Hublist|Bloqueado"/>
 		<control text="OK"/>
 		<control text="Cancelar"/>
 	</dialog>

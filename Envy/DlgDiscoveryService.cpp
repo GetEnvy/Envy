@@ -1,7 +1,7 @@
 //
 // DlgDiscoveryService.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
+// This file is part of Envy (getenvy.com) © 2016-2018
 // Portions copyright PeerProject 2008-2014 and Shareaza 2002-2007
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -38,7 +38,8 @@ END_MESSAGE_MAP()
 /////////////////////////////////////////////////////////////////////////////
 // CDiscoveryServiceDlg dialog
 
-CDiscoveryServiceDlg::CDiscoveryServiceDlg(CWnd* pParent, CDiscoveryService* pService) : CSkinDialog(CDiscoveryServiceDlg::IDD, pParent)
+CDiscoveryServiceDlg::CDiscoveryServiceDlg(CWnd* pParent, CDiscoveryService* pService)
+	: CSkinDialog(CDiscoveryServiceDlg::IDD, pParent)
 	, m_pService	( pService )
 	, m_nType 		( -1 )
 	, m_bNew		( FALSE )
@@ -53,6 +54,7 @@ CDiscoveryServiceDlg::~CDiscoveryServiceDlg()
 void CDiscoveryServiceDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CSkinDialog::DoDataExchange(pDX);
+
 	DDX_Control(pDX, IDOK, m_wndOK);
 	DDX_Text(pDX, IDC_ADDRESS, m_sAddress);
 	DDX_CBIndex(pDX, IDC_SERVICE_TYPE, m_nType);
@@ -151,7 +153,7 @@ void CDiscoveryServiceDlg::OnOK()
 	case 4:
 		m_pService->m_nType = CDiscoveryService::dsServerList;
 		m_pService->m_nProtocolID =
-			( m_sAddress.Find( L"hublist", 6 ) > 6 || m_sAddress.Find( L".xml.bz2", 8 ) > 8 ) ?
+			( m_sAddress.Find( L"hublist", 6 ) > 0 || m_sAddress.Find( L".xml.bz2", 8 ) > 0 ) ?
 			PROTOCOL_DC : PROTOCOL_ED2K;
 		break;
 	default:

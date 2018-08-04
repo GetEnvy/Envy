@@ -69,6 +69,7 @@ END_MESSAGE_MAP()
 CLibraryThumbView::CLibraryThumbView()
 {
 	m_nCommandID = ID_LIBRARY_VIEW_THUMBNAIL;
+	m_nRows = 0;
 }
 
 /////////////////////////////////////////////////////////////////////////////

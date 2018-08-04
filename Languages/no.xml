@@ -3,14 +3,13 @@
 
 <!-- Envy Default Norwegian Skin File -->
 
-<!-- Translation based on default en.xml r20 --> <!-- (Shareaza 2.2.0.2) -->
-<!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
+<!-- Translation based on default en.xml r21 --> <!-- (Shareaza 2.2.0.2) -->
+<!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
-<!-- Use this file as a basis for creating new language skins,   -->
-<!-- however be sure to include only sections that are changed:  -->
-<!-- Unedited English content limits compatibility & performance.-->
-<!-- Better to be concise than literal:  Please test visibility! -->
+<!-- Use this file as a basis for creating new languages. -->
+<!-- Only include changed sections, not unedited English. -->
+<!-- Better concise than literal, please test visibility. -->
 
 <!-- Manifest -->
 <manifest
@@ -535,7 +534,6 @@
 					<item id="ID_HELP_FORUMS" text="Envy forum"/>
 					<separator/>
 					<!--item id="ID_HELP_UPDATE" text="Siste nytt"-->
-					<!--item id="ID_HELP_WEB_1" text="Zeropaid.com"-->
 				</menu>
 				<item id="ID_HELP_HOMEPAGE" text="Envy site"/>
 				<separator/>
@@ -600,7 +598,6 @@
 			<menu text="Nettsider">
 				<item id="ID_HELP_FORUMS" text="Envy forum"/>
 				<!--item id="ID_HELP_UPDATE" text="Siste nytt"-->
-				<!--item id="ID_HELP_WEB_1" text="Zeropaid.com"-->
 			</menu>
 			<item id="ID_HELP_HOMEPAGE" text="Envy site"/>
 			<separator/>
@@ -685,7 +682,6 @@
 				<separator/>
 				<item id="ID_HELP_FORUMS" text="Envy forum"/>
 				<!--item id="ID_HELP_UPDATE" text="Siste nytt"-->
-				<!--item id="ID_HELP_WEB_1" text="Zeropaid.com"-->
 			</menu>
 			<separator/>
 			<item id="ID_HELP_ABOUT" text="Om Envy..."/>
@@ -1000,6 +996,8 @@
 		<item id="ID_DOWNLOADS_EDIT" text="Informasjon om torrent..."/>
 	</menu>
 	<menu name="CDownloadsWnd.Default">
+		<item id="ID_DOWNLOADS_FOLDER" text="Åpne _Folder"/>
+		<separator/>
 		<item id="ID_TOOLS_DOWNLOAD" text="Start Ny Download"/>
 		<item id="ID_TOOLS_SEEDTORRENT" text="Seed Ny Torrent"/>
 		<item id="ID_DOWNLOADS_CLEAR_COMPLETED" text="Fjern ferdige"/>
@@ -3775,7 +3773,7 @@
 		<control text="Tjenesteadresse:"/>
 		<control/>
 		<control text="Oppdagelsestjeneste-type:"/>
-		<control text="Gnutella Bootstrap|GWebCache|Server.met URL"/>
+		<control text="G2/G1 GWebCache|G2 WebCache|G1 WebCache|Gnutella Bootstrap|Server.met URL|DC++ Hublist|Blocked"/>
 		<control text="OK"/>
 		<control text="Avbryt"/>
 	</dialog>

@@ -1,7 +1,7 @@
 //
 // EDClient.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
+// This file is part of Envy (getenvy.com) © 2016-2018
 // Portions copyright PeerProject 2008-2014 and Shareaza 2002-2008
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -348,7 +348,7 @@ void CEDClient::Close(UINT nError)
 
 	if ( ( m_pDownloadTransfer ) && ( m_pDownloadTransfer->m_nState == dtsDownloading ) )
 	{
-		theApp.Message( MSG_ERROR, L"Warning: CEDClient::Close() called for downloading client %s", m_sAddress );
+		theApp.Message( MSG_ERROR, L"Warning: CEDClient::Close() called for downloading client %s", (LPCTSTR)m_sAddress );
 		m_pDownloadTransfer->SetState( dtsNull );
 	}
 	// if ( ! m_bGUID ) Remove();
@@ -794,7 +794,7 @@ BOOL CEDClient::SendCommentsPacket(int nRating, LPCTSTR pszComments)
 			pComment->WriteLongEDString( strComments.Left(ED2K_COMMENT_MAX), m_bEmUnicode );
 
 			// Send comments / rating
-			theApp.Message( MSG_DEBUG, L"Sending file comments to %s", m_sAddress );
+			theApp.Message( MSG_DEBUG, L"Sending file comments to %s", (LPCTSTR)m_sAddress );
 			m_bCommentSent = TRUE;
 			Send( pComment );
 

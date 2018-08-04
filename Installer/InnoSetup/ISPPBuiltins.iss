@@ -283,6 +283,15 @@
     FileName + "." + NewExt : \
     Copy(FileName, 1, Local[0]) + NewExt
 //
+// RemoveFileExt
+//
+// Removes extension in FileName.
+//
+#define RemoveFileExt(str FileName) \
+  !(Local[0] = RPos(".", FileName)) ? \
+  FileName : \
+  Copy(FileName, 1, Local[0] - 1)
+//
 // AddBackslash
 //
 // Adds a backslash to the string, if it's not already there.

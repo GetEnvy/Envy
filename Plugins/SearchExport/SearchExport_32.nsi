@@ -2,7 +2,7 @@
 !define VERSION		"1.0.0.0"
 !define COMPANY		"Envy"
 !define FILENAME	"Win32\SearchExport_Setup32_${VERSION}.exe"
-!define COPYRIGHT	"Copyright 2009 Nikolay Raspopov"
+!define COPYRIGHT	"© 2009 Nikolay Raspopov"
 !define UNINST		"SearchExport_Uninst.exe"
 
 Name "${TITLE}"
@@ -37,14 +37,14 @@ Var STARTMENU_FOLDER
 ; !define MUI_COMPONENTSPAGE_NODESC
 ; !define MUI_FINISHPAGE_NOAUTOCLOSE
 ; !define MUI_UNFINISHPAGE_NOAUTOCLOSE
-!define MUI_ICON "..\..\setup\misc\install.ico"
-!define MUI_UNICON "..\..\setup\misc\uninstall.ico"
-!define MUI_HEADERIMAGE_BITMAP "..\..\setup\misc\corner_150x57.bmp"
+!define MUI_ICON "..\..\Installer\Res\Install.ico"
+!define MUI_UNICON "..\..\Installer\Res\Uninstall.ico"
+!define MUI_HEADERIMAGE_BITMAP "..\..\Installer\Res\CornerLogo.bmp"
 !define MUI_HEADERIMAGE_BITMAP_NOSTRETCH
-!define MUI_HEADERIMAGE_UNBITMAP "..\..\setup\misc\corner_150x57.bmp"
+!define MUI_HEADERIMAGE_UNBITMAP "..\..\Installer\Res\CornerLogo.bmp"
 !define MUI_HEADERIMAGE_UNBITMAP_NOSTRETCH
-!define MUI_WELCOMEFINISHPAGE_BITMAP "..\..\setup\misc\sidebar.bmp"
-!define MUI_UNWELCOMEFINISHPAGE_BITMAP "..\..\setup\misc\sidebar.bmp"
+!define MUI_WELCOMEFINISHPAGE_BITMAP "..\..\Installer\Res\Sidebar.bmp"
+!define MUI_UNWELCOMEFINISHPAGE_BITMAP "..\..\Installer\Res\Sidebar.bmp"
 !define MUI_STARTMENUPAGE_DEFAULTFOLDER "Envy"
 !define MUI_STARTMENUPAGE_REGISTRY_ROOT "HKCU"
 !define MUI_STARTMENUPAGE_REGISTRY_KEY "Software\Envy"

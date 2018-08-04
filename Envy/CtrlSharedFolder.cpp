@@ -366,7 +366,7 @@ void CLibraryFolderCtrl::OnLButtonDblClk(UINT /*nFlags*/, CPoint point)
 	}
 	else
 	{
-		NMHDR pNM = { GetSafeHwnd(), GetDlgCtrlID(), NM_DBLCLK };
+		NMHDR pNM = { GetSafeHwnd(), (UINT_PTR)GetDlgCtrlID(), NM_DBLCLK };
 		GetParent()->SendMessage( WM_NOTIFY, GetDlgCtrlID(), (LPARAM)&pNM );
 	}
 }

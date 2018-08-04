@@ -18,7 +18,7 @@
 
 // Determine our hub or leaf role, count connections for each, and make new ones or close them to have the right number
 // http://shareaza.sourceforge.net/mediawiki/index.php/Developers.Code.CNeighboursWithConnect
-// http://getenvy.com/shareazawiki/Developers.Code.CNeighboursWithConnect.html
+// http://getenvy.com/archives/shareazawiki/Developers.Code.CNeighboursWithConnect.html
 
 #pragma once
 

@@ -1,7 +1,7 @@
 //
 // BTTrackerRequest.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
+// This file is part of Envy (getenvy.com) © 2016-2018
 // Portions copyright PeerProject 2008-2016 and Shareaza 2002-2008
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -358,7 +358,7 @@ CBTTrackerRequest::CBTTrackerRequest(CDownload* pDownload, BTTrackerEvent nEvent
 	}
 	// else Unsupported protocol
 
-	//theApp.Message( MSG_DEBUG | MSG_FACILITY_OUTGOING, L"[BT] Sending BitTorrent tracker announce: %s", m_sURL );
+	//theApp.Message( MSG_DEBUG | MSG_FACILITY_OUTGOING, L"[BT] Sending BitTorrent tracker announce: %s", (LPCTSTR)m_sURL );
 
 	BeginThread( "BT Tracker Request" );
 }
@@ -571,7 +571,7 @@ void CBTTrackerRequest::ProcessHTTP()
 		OnTrackerEvent( false, LoadString( IDS_BT_TRACKER_PARSE_ERROR ) );
 
 		CString strData( (const char*)pBuffer->m_pBuffer, pBuffer->m_nLength );
-		theApp.Message( MSG_DEBUG | MSG_FACILITY_INCOMING, L"[BT] Received BitTorrent tracker response: %s", strData.Trim() );
+		theApp.Message( MSG_DEBUG | MSG_FACILITY_INCOMING, L"[BT] Received BitTorrent tracker response: %s", (LPCTSTR)strData.Trim() );
 	}
 }
 
@@ -874,7 +874,7 @@ DWORD CBTTrackerRequests::Request(CDownload* pDownload, BTTrackerEvent nEvent, D
 {
 	CQuickLock oLock( m_pSection );
 
-	CAutoPtr< CBTTrackerRequest > pRequest ( new CBTTrackerRequest( pDownload, nEvent, nNumWant, pOnTrackerEvent ) );
+	CAutoPtr< CBTTrackerRequest > pRequest( new CBTTrackerRequest( pDownload, nEvent, nNumWant, pOnTrackerEvent ) );
 	if ( ! pRequest )
 		return 0;	// Out of memory
 

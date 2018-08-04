@@ -932,7 +932,7 @@ void CDownloadWithSources::AddFailedSource(LPCTSTR pszUrl, bool bLocal, bool bOf
 		if ( CFailedSource* pBadSource = new CFailedSource( pszUrl, bLocal, bOffline ) )
 		{
 			m_pFailedSources.AddTail( pBadSource );
-			theApp.Message( MSG_DEBUG, L"Bad sources count for \"%s\": %i. URL: %s", m_sName, m_pFailedSources.GetCount(), pszUrl );
+			theApp.Message( MSG_DEBUG, L"Bad sources count for \"%s\": %i. URL: %s", (LPCTSTR)m_sName, m_pFailedSources.GetCount(), pszUrl );
 		}
 	}
 }

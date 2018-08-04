@@ -3,14 +3,13 @@
 
 <!-- Envy Default Albanian Skin File -->
 
-<!-- Translation based on default en.xml r20 -->
-<!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
+<!-- Translation based on default en.xml r21 -->
+<!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
-<!-- Use this file as a basis for creating new language skins,   -->
-<!-- however be sure to include only sections that are changed:  -->
-<!-- Unedited English content limits compatibility & performance.-->
-<!-- Better to be concise than literal:  Please test visibility! -->
+<!-- Use this file as a basis for creating new languages. -->
+<!-- Only include changed sections, not unedited English. -->
+<!-- Better concise than literal, please test visibility. -->
 
 <!-- Manifest -->
 <manifest
@@ -393,10 +392,10 @@
 	</toolbar>
 	<!-- SCHEDULER WINDOW -->
 	<toolbar name="CSchedulerWnd">
-		<button id="ID_SCHEDULER_ADD" text="Shto Task"/>
+		<button id="ID_SCHEDULER_ADD" text="Shto Detyrë"/>
 		<separator/>
-		<button id="ID_SCHEDULER_EDIT" text="Edito Task"/>
-		<button id="ID_SCHEDULER_REMOVE" text="Hiqe Task"/>
+		<button id="ID_SCHEDULER_EDIT" text="Edito Detyrë"/>
+		<button id="ID_SCHEDULER_REMOVE" text="Hiqe Detyrë"/>
 		<separator/>
 		<button id="ID_SCHEDULER_ACTIVATE" text="Activate"/>
 		<button id="ID_SCHEDULER_DEACTIVATE" text="Deactivate"/>
@@ -418,7 +417,23 @@
 		<control id="IDC_FILTER_BOX" width="80"/>
 		<button id="ID_SEARCH_FILTER_RAW" text="Më shumë..."/>
 	</toolbar>
-	<!-- DISCOVERY SERVICES WINDOW Missing -->
+	<!-- DISCOVERY SERVICES WINDOW -->
+	<toolbar name="CDiscoveryWnd">
+		<button id="ID_DISCOVERY_ADD" text="Shto Shërbim"/>
+		<separator/>
+		<button id="ID_DISCOVERY_EDIT" text="Edito Shërbim"/>
+		<button id="ID_DISCOVERY_REMOVE" text="Hiqe Shërbim"/>
+		<separator/>
+		<button id="ID_DISCOVERY_QUERY" text="Query"/>
+		<button id="ID_DISCOVERY_ADVERTISE" text="Advertise"/>
+		<separator/>
+		<button id="ID_DISCOVERY_BROWSE" text="Statistikore"/>
+		<rightalign/>
+		<button id="ID_DISCOVERY_WEBCACHE" text="GWebCaches"/>
+		<button id="ID_DISCOVERY_GNUTELLA" text="Bootstraps"/>
+		<button id="ID_DISCOVERY_SERVERLIST" text="Server Lists"/>
+		<button id="ID_DISCOVERY_BLOCKED" text="Blocked"/>
+	</toolbar>
 	<!-- HOST CACHE WINDOW -->
 	<toolbar name="CHostCacheWnd">
 		<button id="ID_HOSTCACHE_CONNECT" text="Lidhu Te"/>
@@ -594,7 +609,6 @@
 					<item id="ID_HELP_FORUMS" text="_Forumet e Envy-s"/>
 					<separator/>
 					<!--item id="ID_HELP_UPDATE" text="Latest news"-->
-					<!--item id="ID_HELP_WEB_1" text="Zeropaid.com"-->
 				</menu>
 				<item id="ID_HELP_HOMEPAGE" text="Trualli i _Envy-s"/>
 				<separator/>
@@ -692,7 +706,6 @@
 				<separator/>
 				<item id="ID_HELP_FORUMS" text="_Forumet e Envy-s"/>
 				<!--item id="ID_HELP_UPDATE" text="Latest news"-->
-				<!--item id="ID_HELP_WEB_1" text="Zeropaid.com"-->
 			</menu>
 			<separator/>
 			<item id="ID_HELP_ABOUT" text="_Info të Envy-s..."/>
@@ -758,7 +771,6 @@
 				<separator/>
 				<item id="ID_HELP_FORUMS" text="_Forumet e Envy-s"/>
 				<!--item id="ID_HELP_UPDATE" text="Latest news"-->
-				<!--item id="ID_HELP_WEB_1" text="Zeropaid.com"-->
 			</menu>
 			<separator/>
 			<item id="ID_HELP_ABOUT" text="_Info të Envy-s..."/>
@@ -847,7 +859,6 @@
 				<separator/>
 				<item id="ID_HELP_FORUMS" text="_Forumet e Envy-s"/>
 				<!--item id="ID_HELP_UPDATE" text="Lajme të Reja"-->
-				<!--item id="ID_HELP_WEB_1" text="Zeropaid.com"-->
 			</menu>
 			<separator/>
 			<item id="ID_HELP_ABOUT" text="_Info të Envy-s..."/>
@@ -1166,6 +1177,8 @@
 		<item id="ID_DOWNLOADS_EDIT" text="_Info mbi Torrentin..."/>
 	</menu>
 	<menu name="CDownloadsWnd.Default">
+		<item id="ID_DOWNLOADS_FOLDER" text="Aç _Folder"/>
+		<separator/>
 		<item id="ID_TOOLS_DOWNLOAD" text="Start New Download"/>
 		<item id="ID_TOOLS_SEEDTORRENT" text="Seed New Torrent"/>
 		<item id="ID_DOWNLOADS_CLEAR_COMPLETED" text="P_astro të Përfunduarit"/>
@@ -3833,7 +3846,7 @@
 		<control text="_Adresa e Shërbimit:"/>
 		<control/>
 		<control text="Lloji i Shërbimit të Zbulimit:"/>
-		<control text="Gnutella Bootstrap|GWebCache|URL Server.met|Blocked"/>
+		<control text="G2/G1 GWebCache|G2 WebCache|G1 WebCache|Gnutella Bootstrap|Server.met URL|DC++ Hublist|Blocked"/>
 		<control text="OK"/>
 		<control text="Anulo"/>
 	</dialog>

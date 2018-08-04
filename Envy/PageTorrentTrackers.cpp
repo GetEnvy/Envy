@@ -696,7 +696,7 @@ void CTorrentTrackersPage::OnCustomDrawList(NMHDR* pNMHDR, LRESULT* pResult)
 //				m_pRequest.EnableCookie( false );
 //				m_pRequest.SetUserAgent( Settings.SmartAgent() );
 //
-//				theApp.Message( MSG_DEBUG | MSG_FACILITY_OUTGOING, L"[BT] Sending BitTorrent tracker scrape: %s", strURL );
+//				theApp.Message( MSG_DEBUG | MSG_FACILITY_OUTGOING, L"[BT] Sending BitTorrent tracker scrape: %s", (LPCTSTR)strURL );
 //
 //				if ( m_pRequest.Execute( FALSE ) && m_pRequest.InflateResponse() )
 //				{

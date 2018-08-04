@@ -1,7 +1,7 @@
 //
 // Images.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2017
+// This file is part of Envy (getenvy.com) © 2016-2018
 // All work here is original and released as-is under Persistent Public Domain [PPD]
 //
 
@@ -414,7 +414,7 @@ void CImages::BlendAlpha(CBitmap* bmImage, COLORREF crBlend /*RGB(255,255,255)*/
 	const BYTE nBValue = GetRValue( crBlend );	// Flip
 
 	const int bufferSize = pInfo.bmWidthBytes * pInfo.bmHeight;
-	BYTE* buffer = (BYTE*)malloc(bufferSize);
+	BYTE* buffer = (BYTE*)malloc( bufferSize );
 	GetBitmapBits( hImage, bufferSize, buffer );	// Get/SetBitmapBits() deprecated by MS, but useful here
 
 	for ( int i = 0, j = 0 ; i < bufferSize ; i += 4, j += 3 )
@@ -488,7 +488,7 @@ void CImages::BlendAlpha(CBitmap* bmImage, COLORREF crBlend /*RGB(255,255,255)*/
 	SetBitmapBits( hImage, bufferSize * 3 / 4, buffer );
 	bmImage->Attach( hImage );
 
-	delete buffer;
+	free( buffer );
 }
 
 BOOL CImages::PreBlend(HBITMAP hButton)
@@ -514,7 +514,7 @@ BOOL CImages::PreBlend(HBITMAP hButton)
 	}
 
 	SetBitmapBits( hButton, bufferSize, buffer );
-	delete buffer;
+	free( buffer );
 
 	return TRUE;
 }
@@ -690,7 +690,7 @@ BOOL CImages::DrawButtonMap(CDC* pDC, const CRect* rc, CBitmap* bmButtonMap, con
 		// ToDo: Faster/smarter way to check if available button state should be drawn now?
 		BOOL bEmpty = TRUE;
 		const int bufferSize = pInfo.bmWidthBytes * pInfo.bmHeight;
-		BYTE* buffer = (BYTE*)malloc(bufferSize);
+		BYTE* buffer = (BYTE*)malloc( bufferSize );
 		GetBitmapBits( (HBITMAP)bmButtonMap->m_hObject, bufferSize, buffer );	// Deprecated function but useful
 
 		for ( int i = 3 ; i < ( pInfo.bmWidthBytes * ( nSourceHeight - 1 ) ) ; i += 4 )
@@ -702,7 +702,7 @@ BOOL CImages::DrawButtonMap(CDC* pDC, const CRect* rc, CBitmap* bmButtonMap, con
 			}
 		}
 
-		delete buffer;
+		free( buffer );
 		if ( bEmpty ) return FALSE;
 	}
 

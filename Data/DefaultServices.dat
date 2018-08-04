@@ -1,14 +1,13 @@
 M http://cache.getenvy.com/cachechu/
 M http://cache.getenvy.com/skulls/
 M http://webcache.peerproject.org/
-M http://cache.w3-hidden.cc/
 M http://gwctest.zapto.org:1337/
 M http://disobscure.velum-ultra.com/skulls.php
-# http://gwc.mccarragher.org/skulls/skulls.php
 M http://tenafly5k.com/gwc/skulls.php
 M http://gweb.4octets.co.uk/skulls.php
 M http://gweb2.4octets.co.uk/gwc.php
-M http://gweb.dwbo.nl/
+# http://gweb.dwbo.nl/
+# http://cache.w3-hidden.cc/
 
 # http://cache.getenvy.com/dkac/
 2 http://dkac.trillinux.org/dkac/dkac.php
@@ -76,4 +75,4 @@ X http://gwc.gofoxy.net:2108/gwc/cgi-bin/fc
 # Test: http://cache.getenvy.com/cachechu/?get=1&net=gnutella2&client=TEST1.0
 # Latest version at http://sourceforge.net/p/getenvy/code/HEAD/tree/trunk/Data/DefaultServices.dat
 #
-# Last updated Mar 2017
+# Last updated June 2018

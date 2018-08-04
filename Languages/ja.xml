@@ -3,14 +3,13 @@
 
 <!-- Envy Default Japanese Skin File -->
 
-<!-- Translation based on default en.xml r20 --> <!-- (Shareaza 2.2.0.2) -->
-<!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
+<!-- Translation based on default en.xml r21 --> <!-- (Shareaza 2.2.0.2) -->
+<!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
-<!-- Use this file as a basis for creating new language skins,   -->
-<!-- however be sure to include only sections that are changed:  -->
-<!-- Unedited English content limits compatibility & performance.-->
-<!-- Better to be concise than literal:  Please test visibility! -->
+<!-- Use this file as a basis for creating new languages. -->
+<!-- Only include changed sections, not unedited English. -->
+<!-- Better concise than literal, please test visibility. -->
 
 <!-- Manifest -->
 <manifest
@@ -551,7 +550,6 @@
 					<item id="ID_HELP_FORUMS" text="Envyフォーラム"/>
 					<separator/>
 					<!--item id="ID_HELP_UPDATE" text="最新ニュース"-->
-					<!--item id="ID_HELP_WEB_1" text="Zeropaid.com"-->
 				</menu>
 				<item id="ID_HELP_HOMEPAGE" text="Envy site"/>
 				<separator/>
@@ -644,7 +642,6 @@
 				<separator/>
 				<item id="ID_HELP_FORUMS" text="Envyフォーラム"/>
 				<!--item id="ID_HELP_UPDATE" text="最新ニュース"-->
-				<!--item id="ID_HELP_WEB_1" text="Zeropaid.com"-->
 			</menu>
 			<separator/>
 			<item id="ID_HELP_ABOUT" text="Envyについて..."/>
@@ -709,7 +706,6 @@
 				<separator/>
 				<item id="ID_HELP_FORUMS" text="Envyフォーラム"/>
 				<!--item id="ID_HELP_UPDATE" text="最新ニュース"-->
-				<!--item id="ID_HELP_WEB_1" text="Zeropaid.com"-->
 			</menu>
 			<separator/>
 			<item id="ID_HELP_ABOUT" text="Envyについて..."/>
@@ -796,7 +792,6 @@
 				<separator/>
 				<item id="ID_HELP_FORUMS" text="Envyフォーラム"/>
 				<!--item id="ID_HELP_UPDATE" text="最新ニュース"-->
-				<!--item id="ID_HELP_WEB_1" text="Zeropaid.com"-->
 			</menu>
 			<separator/>
 			<item id="ID_HELP_ABOUT" text="Envyについて..."/>
@@ -1092,7 +1087,7 @@
 	<menu name="CDownloadsWnd.Completed">
 		<item id="ID_DOWNLOADS_LAUNCH_COMPLETE" text="開く・再生"/>
 		<item id="ID_DOWNLOADS_ENQUEUE" text="再生リストに追加"/>
-		<item id="ID_DOWNLOADS_FOLDER" text="開くFolder"/>
+		<item id="ID_DOWNLOADS_FOLDER" text="開く Folder"/>
 		<item id="ID_DOWNLOADS_CLEAR_COMPLETE" text="クリア"/>
 		<separator/>
 		<item id="ID_DOWNLOADS_FILE_DELETE" text="削除"/>
@@ -1112,6 +1107,8 @@
 		<item id="ID_DOWNLOADS_EDIT" text="Torrent情報..."/>
 	</menu>
 	<menu name="CDownloadsWnd.Default">
+		<item id="ID_DOWNLOADS_FOLDER" text="開く Folder"/>
+		<separator/>
 		<item id="ID_TOOLS_DOWNLOAD" text="Start New Download"/>
 		<item id="ID_TOOLS_SEEDTORRENT" text="Seed New Torrent"/>
 		<item id="ID_DOWNLOADS_CLEAR_COMPLETED" text="完了済みをクリア"/>
@@ -3932,7 +3929,7 @@
 		<control text="サービスのアドレス:"/>
 		<control/>
 		<control text="ディスカバリサービス種類:"/>
-		<control text="Gnutellaブートストラップ|GWebCache|Server.met URL|ブロック"/>
+		<control text="G2/G1 GWebCache|G2 WebCache|G1 WebCache|Gnutellaブートストラップ|Server.met URL|DC++ Hublist|ブロック"/>
 		<control text="OK"/>
 		<control text="キャンセル"/>
 	</dialog>

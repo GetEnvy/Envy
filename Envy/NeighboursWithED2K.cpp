@@ -18,7 +18,7 @@
 
 // Add methods helpful for eDonkey2000 that look at the list of neighbours
 // http://shareaza.sourceforge.net/mediawiki/index.php/Developers.Code.CNeighboursWithED2K
-// http://getenvy.com/shareazawiki/Developers.Code.CNeighboursWithED2K.html
+// http://getenvy.com/archives/shareazawiki/Developers.Code.CNeighboursWithED2K.html
 
 #include "StdAfx.h"
 #include "Settings.h"

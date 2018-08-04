@@ -420,7 +420,7 @@ BOOL CDCNeighbour::OnPacket(CDCPacket* pPacket)
 //			pServer->m_sName = m_sServerName;
 //		return TRUE;
 //	case 't':		// $HubTopic <topic>|
-//		theApp.Message( MSG_NOTICE, L"DC++ hub topic at %s:  %s", m_sServerName, (LPCTSTR)CA2CT( strParams.c_str() ) );
+//		theApp.Message( MSG_NOTICE, L"DC++ hub topic at %s:  %s", (LPCTSTR)m_sServerName, (LPCTSTR)CA2CT( strParams.c_str() ) );
 //		return TRUE;
 //	case 'o':		// $OpList operator1$$operator2|
 //		// Handle hub operators list, etc.?
@@ -428,7 +428,7 @@ BOOL CDCNeighbour::OnPacket(CDCPacket* pPacket)
 //		return TRUE;
 //	case 'n':		// $NickList user1$$user2|
 //		// Handle hub lists?  (ToDo: Could get user count, not sent currently)
-//		DEBUG_ONLY( theApp.Message( MSG_DEBUG, L"DC++ $NickList received, %i char long from %s", strParams.length(), m_sServerName ) );
+//		DEBUG_ONLY( theApp.Message( MSG_DEBUG, L"DC++ $NickList received, %i char long from %s", strParams.length(), (LPCTSTR)m_sServerName ) );
 //		return TRUE;
 //	case 'l':		// $Lock [EXTENDEDPROTOCOL]Challenge Pk=Vendor
 //		m_bExtended = ( strParams.substr( 0, 16 ) == "EXTENDEDPROTOCOL" );

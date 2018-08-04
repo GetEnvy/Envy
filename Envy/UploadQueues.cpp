@@ -1,7 +1,7 @@
 //
 // UploadQueues.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
+// This file is part of Envy (getenvy.com) © 2016-2018
 // Portions copyright PeerProject 2008-2014 and Shareaza 2002-2007
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -481,7 +481,7 @@ BOOL CUploadQueues::Load()
 	}
 
 	if ( ! bSuccess )
-		theApp.Message( MSG_ERROR, L"Failed to load upload queues: %s", strFile );
+		theApp.Message( MSG_ERROR, L"Failed to load upload queues: %s", (LPCTSTR)strFile );
 
 	if ( GetCount() == 0 )
 		CreateDefault();
@@ -533,7 +533,7 @@ BOOL CUploadQueues::Save()
 		DeleteFile( strTemp );
 	}
 
-	theApp.Message( MSG_ERROR, L"Failed to save upload queues: %s", strFile );
+	theApp.Message( MSG_ERROR, L"Failed to save upload queues: %s", (LPCTSTR)strFile );
 	return FALSE;
 }
 

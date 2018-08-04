@@ -3,14 +3,13 @@
 
 <!-- Envy Default Lithuanian Skin File -->
 
-<!-- Translation based on default en.xml r20 -->
-<!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
+<!-- Translation based on default en.xml r21 -->
+<!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
-<!-- Use this file as a basis for creating new language skins,   -->
-<!-- however be sure to include only sections that are changed:  -->
-<!-- Unedited English content limits compatibility & performance.-->
-<!-- Better to be concise than literal:  Please test visibility! -->
+<!-- Use this file as a basis for creating new languages. -->
+<!-- Only include changed sections, not unedited English. -->
+<!-- Better concise than literal, please test visibility. -->
 
 <!-- Manifest -->
 <manifest
@@ -418,7 +417,23 @@
 		<control id="IDC_FILTER_BOX" width="80"/>
 		<button id="ID_SEARCH_FILTER_RAW" text="Dar..."/>
 	</toolbar>
-	<!-- DISCOVERY SERVICES WINDOW Missing -->
+	<!-- DISCOVERY SERVICES WINDOW -->
+	<toolbar name="CDiscoveryWnd">
+		<button id="ID_DISCOVERY_ADD" text="Pridėti taisyklę"/>
+		<separator/>
+		<button id="ID_DISCOVERY_EDIT" text="Ypatybės"/>
+		<button id="ID_DISCOVERY_REMOVE" text="Šalinti"/>
+		<separator/>
+		<button id="ID_DISCOVERY_QUERY" text="Query"/>
+		<button id="ID_DISCOVERY_ADVERTISE" text="Advertise"/>
+		<separator/>
+		<button id="ID_DISCOVERY_BROWSE" text="Statistics"/>
+		<rightalign/>
+		<button id="ID_DISCOVERY_WEBCACHE" text="GWebCaches"/>
+		<button id="ID_DISCOVERY_GNUTELLA" text="Bootstraps"/>
+		<button id="ID_DISCOVERY_SERVERLIST" text="Server Lists"/>
+		<button id="ID_DISCOVERY_BLOCKED" text="Blocked"/>
+	</toolbar>
 	<!-- HOST CACHE WINDOW -->
 	<toolbar name="CHostCacheWnd">
 		<button id="ID_HOSTCACHE_CONNECT" text="Jungtis prie..."/>
@@ -584,16 +599,12 @@
 			<item id="ID_HELP_FORUMS_LOCAL" text="Lietuvių forumai"/>
 			<separator/>
 		<!--
-			<menu text="SkinVista žinynas">
+			<menu text="Meniu žinynas">
 				<menu text="Jei meniu juosta rodoma neteisingai --"/>
 				<menu text="Pasirinkite meniu: Langas: Rodyti naršymo juostą"/>
 				<menu text="Tada sujunkite naršymo juosta su meniu juosta-"/>
 				<menu text="(Nutempkite į šalį prieš padedant į viršų)"/>
 				<menu text="Perkraukite sąsają, jei reikia pašalinti defektus: Ctrl+Shift+Z"/>
-			</menu>
-			<menu text="Tinkl_alapiai">
-				<item id="ID_HELP_WEB_3" text="Slyck.com"/>
-				<item id="ID_HELP_WEB_1" text="ZeroPaid.com"/>
 			</menu>
 		-->
 			<item id="ID_HELP_HOMEPAGE" text="GetEnvy.com"/>
@@ -693,7 +704,6 @@
 				<item id="ID_HELP_FORUMS" text="„Envy“ _forumai"/>
 				<item id="ID_HELP_FORUMS_LOCAL" text="Lietuvių forumai"/>
 				<!--item id="ID_HELP_UPDATE" text="Paskutinės naujienos"-->
-				<!--item id="ID_HELP_WEB_1" text="Zeropaid.com"-->
 			</menu>
 			<separator/>
 			<item id="ID_HELP_VERSION_CHECK" text="Tikrinti naujesnės _versijos"/>
@@ -763,7 +773,6 @@
 				<item id="ID_HELP_FORUMS" text="„Envy“ _forumai"/>
 				<item id="ID_HELP_FORUMS_LOCAL" text="Lietuvių forumai"/>
 				<!--item id="ID_HELP_UPDATE" text="Paskutinės naujienos"-->
-				<!--item id="ID_HELP_WEB_1" text="Zeropaid.com"-->
 			</menu>
 			<separator/>
 			<item id="ID_HELP_VERSION_CHECK" text="Tikrinti naujesnės _versijos"/>
@@ -855,7 +864,6 @@
 				<item id="ID_HELP_FORUMS" text="„Envy“ _forumai"/>
 				<item id="ID_HELP_FORUMS_LOCAL" text="Lietuvių forumai"/>
 				<!--item id="ID_HELP_UPDATE" text="Paskutinės naujienos"-->
-				<!--item id="ID_HELP_WEB_1" text="Zeropaid.com"-->
 			</menu>
 			<separator/>
 			<item id="ID_HELP_VERSION_CHECK" text="Tikrinti naujesnės _versijos"/>
@@ -1178,6 +1186,8 @@
 		<item id="ID_DOWNLOADS_EDIT" text="Sa_vybės..."/>
 	</menu>
 	<menu name="CDownloadsWnd.Default">
+		<item id="ID_DOWNLOADS_FOLDER" text="Atverti _Folder"/>
+		<separator/>
 		<item id="ID_TOOLS_DOWNLOAD" text="Start Nauja Download"/>
 		<item id="ID_TOOLS_SEEDTORRENT" text="Seed Nauja Torrent"/>
 		<item id="ID_DOWNLOADS_CLEAR_COMPLETED" text="_Valyti baigtus"/>
@@ -3052,7 +3062,7 @@
 	<string id="20456" text="GROJARAŠTIS:"/>
 	<string id="20457" text="„Envy“ nesugebėjo sukurti atmintyje Grotuvo paslaugų papildinio objekto. Įdiekite „Envy“ iš naujo ir įsitikinkite, kad Jūs turite įdiegę reikalingus grotuvo kodekus bei išvesties tvarkykles."/>
 	<string id="20458" text="Envy grotuvas"/>
-	<string id="20460" text="ENVY MEDIJA SISTEMA"/>
+	<string id="20460" text="Envy Medija Sistema"/>
 	<string id="20462" text="(Be muzikos vaizdo)"/>
 	<!--string id="20464" text="„Envy“ baigė parsisiųsti:"-->
 	<!--string id="20465" text="„Envy“ siunčiasi:"-->
@@ -4130,7 +4140,7 @@
 		<control text="Tarnybos _adresas:"/>
 		<control/>
 		<control text="Tarnybos tipas:"/>
-		<control text="Gnutella Bootstrap|GWebCache|Server.met nuoroda|Blokuota"/>
+		<control text="G2/G1 GWebCache|G2 WebCache|G1 WebCache|Gnutella Bootstrap|Server.met nuoroda|DC++ Hublist|Blokuota"/>
 		<control text="Gerai"/>
 		<control text="Atšaukti"/>
 	</dialog>

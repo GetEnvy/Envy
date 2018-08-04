@@ -3,14 +3,13 @@
 
 <!-- Envy Default Estonian Skin File -->
 
-<!-- Translation based on default en.xml r20 --> <!-- (Shareaza 2.2.2.9) -->
-<!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
+<!-- Translation based on default en.xml r21 --> <!-- (Shareaza 2.2.2.9) -->
+<!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
-<!-- Use this file as a basis for creating new language skins,   -->
-<!-- however be sure to include only sections that are changed:  -->
-<!-- Unedited English content limits compatibility & performance.-->
-<!-- Better to be concise than literal:  Please test visibility! -->
+<!-- Use this file as a basis for creating new languages. -->
+<!-- Only include changed sections, not unedited English. -->
+<!-- Better concise than literal, please test visibility. -->
 
 <!-- Special characters used in Estonian:  Umlauts
 	&#196;  Ä  &#228;  ä
@@ -547,7 +546,6 @@
 					<item id="ID_HELP_FORUMS" text="Envy _Forums"/>
 					<separator/>
 					<!--item id="ID_HELP_UPDATE" text="Latest news"-->
-					<!--item id="ID_HELP_WEB_1" text="Zeropaid.com"-->
 				</menu>
 				<item id="ID_HELP_FORUMS_LOCAL" text="Envy _Forums Eesti"/>
 				<separator/>
@@ -642,7 +640,6 @@
 				<separator/>
 				<item id="ID_HELP_FORUMS" text="Envy _Forums"/>
 				<!--item id="ID_HELP_UPDATE" text="Latest news"-->
-				<!--item id="ID_HELP_WEB_1" text="Zeropaid.com"-->
 			</menu>
 			<separator/>
 			<item id="ID_HELP_ABOUT" text="_Envyst..."/>
@@ -708,7 +705,6 @@
 				<separator/>
 				<item id="ID_HELP_FORUMS" text="Envy _Forums"/>
 				<!--item id="ID_HELP_UPDATE" text="Latest news"-->
-				<!--item id="ID_HELP_WEB_1" text="Zeropaid.com"-->
 			</menu>
 			<separator/>
 			<item id="ID_HELP_ABOUT" text="_Envyst..."/>
@@ -794,7 +790,6 @@
 				<separator/>
 				<item id="ID_HELP_FORUMS" text="Envy _Forums"/>
 				<!--item id="ID_HELP_UPDATE" text="Latest news"-->
-				<!--item id="ID_HELP_WEB_1" text="Zeropaid.com"-->
 			</menu>
 			<separator/>
 			<item id="ID_HELP_ABOUT" text="_Envyst..."/>
@@ -872,7 +867,7 @@
 		<item id="ID_TAB_LIBRARY" text="_Raamatukogu"/>
 		<item id="ID_TAB_MEDIA" text="_Meedia"/>
 		<item id="ID_TAB_SEARCH" text="_Otsing"/>
-		<item id="ID_TAB_TRANSFERS" text="_Ülekanded"/>
+		<item id="ID_TAB_TRANSFERS" text="Ülekanded"/>
 		<item id="ID_TAB_NETWORK" text="_Võrk"/>
 		<separator/>
 		<item id="ID_VIEW_SECURITY" text="_Turvalisus"/>
@@ -882,11 +877,11 @@
 		<separator/>
 		<item id="ID_VIEW_PACKETS" text="_Pakettide Liikuvus"/>
 		<item id="ID_VIEW_SEARCH_MONITOR" text="Otsing_ud"/>
-		<item id="ID_VIEW_RESULTS_MONITOR" text="T_õmbamised"/>
+		<item id="ID_VIEW_RESULTS_MONITOR" text="Tõmbamised"/>
 	</menu>
 	<!-- HOST CACHE WINDOW -->
 	<menu name="CHostCacheWnd">
-		<item id="ID_HOSTCACHE_CONNECT" text="_Ühenda Nüüd"/>
+		<item id="ID_HOSTCACHE_CONNECT" text="Ühenda Nüüd"/>
 		<item id="ID_HOSTCACHE_DISCONNECT" text="_Katkesta Ühendus"/>
 		<item id="ID_NEIGHBOURS_URI" text="Get P2P Link (_URI)"/>
 		<item id="ID_HOSTCACHE_PRIORITY" text="_Oluline Server"/>
@@ -1110,6 +1105,8 @@
 		<item id="ID_DOWNLOADS_EDIT" text="_Info..."/>
 	</menu>
 	<menu name="CDownloadsWnd.Default">
+		<item id="ID_DOWNLOADS_FOLDER" text="Ava _Folder"/>
+		<separator/>
 		<item id="ID_TOOLS_DOWNLOAD" text="Start Näita Download"/>
 		<item id="ID_TOOLS_SEEDTORRENT" text="Seed Näita Torrent"/>
 		<item id="ID_DOWNLOADS_CLEAR_COMPLETED" text="P_uhasta Valmis"/>
@@ -3887,7 +3884,7 @@
 		<control text="Teenuse _Aadress:"/>
 		<control/>
 		<control text="Teenuse Tüüp:"/>
-		<control text="Gnutella Bootstrap|G1-WebCache|G2-WebCache|G1+G2-WebCache|Server.met URL|Blocked"/>
+		<control text="G2/G1 GWebCache|G2 WebCache|G1 WebCache|Gnutella Bootstrap|Server.met URL|DC++ Hublist|Blocked"/>
 		<control text="OK"/>
 		<control text="Tühista"/>
 	</dialog>

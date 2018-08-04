@@ -1,7 +1,7 @@
 //
 // Strings.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2017
+// This file is part of Envy (getenvy.com) © 2016-2018
 // Portions copyright PeerProject 2010-2016 and Shareaza 2010
 //
 // Envy is free software. You may redistribute and/or modify it

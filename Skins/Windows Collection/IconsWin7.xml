@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<skin xmlns="http://schemas.getenvy.com/Skin.xsd" version="1.0">
+<manifest
+ name="Win7 Icon Set"
+ author="Envy"
+ description="Windows 7 Shell Icons"
+ link="http://getenvy.com"
+ email="Contact(at)GetEnvy.com"
+ version="1.0"
+ type="Skin"
+/>
+
+<commandImages>
+ <icon id="244" path="IconsWin7\Collection.ico" types="16,32,48" rtl="0"/>
+ <icon id="236" path="IconsWin7\Clipboard.ico"  types="16,32" rtl="0"/>
+ <icon id="147" path="IconsWin7\Help.ico" types="16,32" rtl="0"/>
+ <icon id="137" path="IconsWin7\Library.ico" types="16,32" rtl="0"/>
+ <icon id="134" path="IconsWin7\Search.ico" types="16,32" rtl="0"/>
+ <icon id="136" path="IconsWin7\Downloads.ico" types="16,32" rtl="0"/>
+ <icon id="138" path="IconsWin7\Uploads.ico" types="16,32" rtl="0"/>
+ <icon id="130" path="IconsWin7\Connect.ico" types="16,32" rtl="0"/>
+ <icon id="IDI_OPENTICK" path="IconsWin7\TickClosed.ico" types="16" rtl="0"/>
+ <icon id="IDI_CLOSETICK" path="IconsWin7\TickOpened.ico" types="16" rtl="0"/>
+ <icon id="IDI_OPENTICK_HOVER" path="IconsWin7\TickClosedHover.ico" types="16" rtl="0"/>
+ <icon id="IDI_CLOSETICK_HOVER" path="IconsWin7\TickOpenedHover.ico" types="16" rtl="0"/>
+
+<bitmap path="IconsWin7\CommandImages.png" mask="CLR_NONE">
+ <image /> <!--Logo-->
+ <image id="ID_MEDIA_PREVIOUS" id1="ID_LIBRARY_PARENT"/>
+ <image id="ID_MEDIA_NEXT" id1="ID_CHAT_PRIORITY"/>
+ <image id="ID_SEARCH_DOWNLOAD" id1="ID_DOWNLOADS_RESUME" id2="ID_DOWNLOAD_GROUP_RESUME" id3="ID_UPLOADS_START" id4="ID_UPLOADS_PRIORITY"
+	id5="ID_HOSTCACHE_CONNECT" id6="ID_NETWORK_CONNECT" id7="ID_NETWORK_CONNECT_TO" id8="ID_TRANSFERS_CONNECT" id9="ID_DISCOVERY_QUERY"/>
+ <image id="ID_CHAT_CONNECT" id1="ID_IRC_CONNECT" id2="ID_SEARCH_DOWNLOADNOW" id3="ID_DOWNLOADS_BOOST"/>
+ <image id="ID_MEDIA_PLAY" id1="ID_MEDIA_SELECT" id2="ID_DOWNLOADS_LAUNCH" id3="ID_DOWNLOADS_LAUNCH_COPY" id4="ID_DOWNLOADS_LAUNCH_COMPLETE"
+	id5="ID_UPLOADS_LAUNCH" id6="ID_LIBRARY_LAUNCH" id7="ID_LIBRARY_ALBUM_OPEN" id8="ID_LIBRARY_EXPLORE" id9="ID_LIBRARY_FOLDER_ENQUEUE"/>
+ <image id="ID_DOWNLOADS_CLEAR_COMPLETE" id1="ID_DOWNLOADS_CLEAR_COMPLETED" id2="ID_UPLOADS_CLEAR_COMPLETED" id3="ID_DOWNLOAD_GROUP_CLEAR"
+	id4="ID_MEDIA_CLEAR" id5="ID_TRAFFIC_CLEAR" id6="ID_HITMONITOR_CLEAR" id7="ID_DOWNLOADS_CLEAR_PAUSED" id8="ID_SECURITY_RESET"/>
+ <image id="ID_MEDIA_STOP" id1="ID_MEDIA_STATE_STOP"/>
+ <image id="ID_MEDIA_PAUSE" id1="ID_MEDIA_STATE_PAUSE" id2="ID_DOWNLOADS_PAUSE" id3="ID_DOWNLOAD_GROUP_PAUSE" id4="ID_HITMONITOR_PAUSE"/>
+ <image id="ID_MEDIA_STATE_PLAY"/>
+ <image id="ID_MEDIA_OPEN" id1="ID_SECURITY_IMPORT" id2="ID_SCHEDULER_IMPORT"/>
+ <image id="ID_MEDIA_FULLSCREEN"/>
+ <image id="ID_MEDIA_ADD" id1="ID_TOOLS_DOWNLOAD" id2="ID_DOWNLOADS_ENQUEUE" id3="ID_LIBRARY_ENQUEUE" id4="ID_IRC_ADD" id5="ID_DISCOVERY_ADD" id6="ID_SCHEDULER_ACTIVATE"/>
+ <image id="ID_MEDIA_REMOVE" id1="ID_VIEW_MEDIA" id2="ID_TAB_MEDIA" id3="ID_IRC_REMOVE" id4="ID_SCHEDULER_DEACTIVATE"/>
+ <!--Cancel/Stars-->
+ <image id="ID_NEIGHBOURS_DISCONNECT" id1="ID_NETWORK_DISCONNECT" id2="ID_TRANSFERS_DISCONNECT" id3="ID_MONITOR_CLOSE" id4="ID_NETWORK_EXIT" id5="ID_SEARCH_CLEAR" id6="ID_SYSTEM_CLEAR"/>
+ <image id="ID_DOWNLOADS_CLEAR_INCOMPLETE" id1="ID_UPLOADS_CLEAR" id2="ID_DOWNLOADS_FILE_DELETE" id3="ID_SECURITY_REMOVE" id4="ID_SCHEDULER_REMOVE"
+	id5="ID_LIBRARY_DELETE" id6="ID_LIBRARY_ALBUM_DELETE" id7="ID_LIBRARY_FOLDER_DELETE" id8="ID_LIBRARY_REMOVE" id9="ID_HOSTCACHE_REMOVE" id10="ID_DISCOVERY_REMOVE"/>
+ <image id="IDI_SECURITY_DENY" id1="ID_LIBRARY_CLEAR_HISTORY" id2="ID_LIBRARY_CLEAR_HISTORY_ALL"/> <!--id="PluginID_ImageViewer_Close"-->
+ <image id="ID_SEARCH_STOP" id1="ID_BROWSE_STOP" id2="ID_NETWORK_DISCONNECT" id3="ID_UPLOADS_DISCONNECT"
+	id4="ID_IRC_DISCONNECT" id5="ID_CHAT_DISCONNECT" id6="ID_HOSTCACHE_DISCONNECT" id7="ID_SCHEDULER_REMOVE_ALL"/>
+ <image id="ID_SECURITY_BAN" id1="ID_TRANSFERS_FORGET" id2="ID_DOWNLOAD_GROUP_REMOVE" id3="ID_DISCOVERY_BLOCKED"/>
+ <image id="ID_LIBRARY_UNLINK" id1="ID_MEDIA_MUTE" /> <!--IDI_RATING_FAKE-->
+ <image /> <!--IDI_RATING_AVERAGE-->
+ <image /> <!--IDI_RATING_GOOD-->
+ <image id="IDI_COLLECTION_MASK"/>
+ <image id="ID_TOOLS_WIZARD" id1="ID_DOWNLOADS_RATE" id2="ID_MEDIA_RATE" id3="ID_DOWNLOADS_VIEW_REVIEWS"/>
+ <!--Folders-->
+ <image id="ID_DOWNLOADS_FILTER_MENU" id1="ID_UPLOADS_FILTER_MENU" id2="ID_SEARCH_FILTER" id3="ID_LIBRARY_FOLDER_PROPERTIES" id4="ID_LIBRARY_ALBUM_PROPERTIES"/>
+ <image id="ID_LIBRARY_TREE_PHYSICAL" id1="ID_DOWNLOADS_FOLDER" id2="ID_UPLOADS_FOLDER" id3="ID_OPEN_DOWNLOADS_FOLDER" id4="ID_DOWNLOAD_GROUP_OPEN" id5="ID_LIBRARY_LAUNCH_FOLDER"/>
+ <image /> <!--Opened-->
+ <image id="ID_LIBRARY_TREE_VIRTUAL"/>
+ <image id="SHI_FOLDER_CLOSED"/>
+ <image id="SHI_FOLDER_OPEN"/>
+ <image id="ID_LIBRARY_VIEW_TILE" id1="ID_MEDIA_ADD_FOLDER"/>
+ <image id="ID_VIEW_SECURITY"/>
+ <image id="ID_LIBRARY_ADD" id1="ID_LIBRARY_FOLDER_NEW" id2="ID_DOWNLOAD_GROUP_NEW"/>
+ <image id="ID_LIBRARY_FOLDERS"/>
+ <image id="ID_BROWSE_LAUNCH" id1="ID_CHAT_BROWSE" id2="ID_NETWORK_BROWSE_TO" id3="ID_BROWSE_FILES" id4="ID_IRC_BROWSE"/>
+ <image />
+ <image id="ID_LIBRARY_VIEW_COLLECTION" id1="ID_LIBRARY_EXPORT_COLLECTION" id2="ID_MEDIA_EXPORT_COLLECTION"/>
+ <image id="ID_TAB_LIBRARY" id1="ID_VIEW_LIBRARY" id2="ID_MEDIA_PROPERTIES"/>
+ <!--Blue/Grey-->
+ <image id="IDI_SECURITY_ACCEPT"/> <!--Checkmark-->
+ <image id="ID_CHECKMARK"/> <!--id1="ID_SHAREMONKEY_SAVE_OPTION"-->
+ <image id="ID_TOOLS_PROFILE" id1="ID_BROWSE_PROFILE"/>
+ <image id="ID_TOOLS_LANGUAGE" id1="ID_LIBRARY_REBUILD_ANSI" id2="ID_VIEW_DISCOVERY" id3="ID_DISCOVERY_EDIT" id4="ID_HELP_FORUMS_LOCAL"/>
+ <image id="ID_VIEW_DOWNLOADS" id1="ID_TAB_TRANSFERS" id2="ID_LIBRARY_FOLDER_DOWNLOAD"/>
+ <image id="ID_VIEW_UPLOADS" id1="ID_CHAT_SEND_FILE"/>
+ <image id="ID_HELP_ABOUT" id1="ID_DOWNLOADS_HELP" id2="ID_UPLOADS_HELP"/>
+ <image id="ID_MEDIA_SAVE" id1="ID_SECURITY_EXPORT" id2="ID_SCHEDULER_EXPORT"/>
+ <image id="ID_MEDIA_PLAYLIST"/>
+ <image id="ID_SEARCH_PANEL"/>
+ <image id="ID_SEARCH_DETAILS" id1="ID_LIBRARY_PANEL" id2="ID_WINDOW_REMOTE"/>
+ <!--Pages-->
+ <image id="ID_HELP_TEST" id1="ID_HELP_WEB_1" id2="ID_HELP_WEB_2" id3="ID_HELP_WEB_3" id4="ID_HELP_WEB_4"
+	id5="ID_HELP_WEB_SKINS" id6="ID_HELP_WEB_KICKBACKS" id7="ID_HELP_STARTPAGE"/>
+ <image id="ID_HELP_FORUMS" id1="ID_HELP_GUIDE" id2="ID_HELP_FAQ" id3="ID_DISCOVERY_BROWSE" id4="ID_DOWNLOADS_ADD_SOURCE"
+	id5="ID_DOWNLOADS_URI" id6="ID_SEARCH_URI" id7="ID_LIBRARY_URI" id8="ID_NEIGHBOURS_URI" id9="ID_WEBSERVICES_LIST"/>
+ <image id="ID_LIBRARY_BITPRINTS_WEB" id1="ID_LIBRARY_BITPRINTS_DOWNLOAD"/>
+ <image />
+ <image id="ID_TOOLS_SKIN"/>
+ <image id="ID_VIEW_SCHEDULER" id1="ID_SCHEDULER_ADD" id2="ID_SCHEDULER_EDIT"/>
+ <image id="ID_TOOLS_SETTINGS" id1="ID_MEDIA_SETTINGS" id2="ID_NEIGHBOURS_SETTINGS" id3="ID_IRC_SETTINGS"
+	id4="ID_DOWNLOADS_SETTINGS" id5="ID_UPLOADS_SETTINGS" id6="ID_UPLOADS_EDIT_QUEUE" id7="ID_TRAFFIC_SETUP"/>
+ <!--Search/Copy-->
+ <image id="ID_VIEW_PACKETS" id1="ID_VIEW_SEARCH_MONITOR" id2="ID_VIEW_RESULTS_MONITOR" id3="ID_NEIGHBOURS_VIEW_ALL" id4="ID_MUSICBRAINZ_MATCHES"/>
+ <image id="ID_SEARCH_SEARCH" id1="ID_TAB_SEARCH" id2="ID_NETWORK_SEARCH" id3="ID_LIBRARY_SEARCH_QUICK"
+	id4="ID_HITMONITOR_SEARCH" id5="ID_DOWNLOADS_SOURCES" id6="IDR_SEARCHFRAME"/>
+ <image id="ID_LIBRARY_PROPERTIES" id1="ID_LIBRARY_FOLDER_FILE_PROPERTIES"
+	id2="ID_DOWNLOAD_GROUP_PROPERTIES" id3="ID_DOWNLOADS_EDIT" id4="ID_DISCOVERY_EDIT" id5="ID_SEARCH_COLUMNS"/>
+ <image id="ID_LIBRARY_MOVE" id1="ID_DOWNLOADS_MERGE"/>
+ <image id="ID_LIBRARY_COPY" id1="ID_SYSTEM_COPY"/>
+ <image /> <!--Clipboard-->
+ <!--System-->
+ <image id="ID_SECURITY_ADD" id1="ID_SECURITY_EDIT"/>
+ <image id="ID_VIEW_TRAFFIC" id1="ID_TRAFFIC_WINDOW"/>
+ <image id="ID_VIEW_HOSTS" id1="ID_LIBRARY_REBUILD" id2="ID_LIBRARY_REBUILD_FILE"/>
+ <image id="ID_TAB_HOME" id1="ID_LIBRARY_VIEW_HOME"/>
+ <image id="ID_VIEW_SYSTEM" id1="ID_VIEW_NEIGHBOURS"/>
+ <image id="ID_DOWNLOADS_REMOTE_PREVIEW"/>
+ <image id="ID_UPLOADS_CHAT" id1="ID_SEARCH_CHAT" id2="ID_NEIGHBOURS_CHAT" id3="ID_TRANSFERS_CHAT" id4="ID_IRC_SENDTEXT" id5="ID_TAB_IRC" id6="ID_NETWORK_CHAT_TO"/>
+ <!--SystemViews-->
+ <image id="ID_WINDOW_CASCADE"/>
+ <image id="ID_WINDOW_TILE_HORZ"/>
+ <image id="ID_WINDOW_TILE_VERT"/>
+ <image id="ID_LIBRARY_VIEW_DETAIL" id1="ID_LIBRARY_COLUMNS" id2="ID_VIEW_PACKETS"/>
+ <image id="ID_LIBRARY_VIEW_LIST"/>
+ <image id="ID_LIBRARY_VIEW_ICON"/>
+ <image id="ID_LIBRARY_VIEW_THUMBNAIL"/>
+ <image id="ID_LIBRARY_VIEW_ALBUM" id1="ID_MUSICBRAINZ_ALBUMS"/>
+ <!--MediaOptions-->
+ <image id="ID_MEDIA_SIZE_ONE"/> <!--id="PluginID_ImageViewer_BestFit"-->
+ <image id="ID_MEDIA_SIZE_FILL" id1="ID_MEDIA_ZOOM"/> <!--id="PluginID_ImageViewer_FullSize"-->
+ <image id="ID_BROWSE_REFRESH" id1="ID_LIBRARY_REFRESH" id2="ID_LIBRARY_REFRESH_METADATA" id3="ID_DISCOVERY_ADVERTISE"/> <!--id="PluginID_ImageViewer_Refresh"-->
+ <image id="ID_MEDIA_REPEAT"/>
+ <image id="ID_MEDIA_RANDOM"/>
+ <image /> <!--ID_MEDIA_ZOOM-->
+ <image id="ID_MEDIA_VIS"/>
+ <!--ChatText-->
+ <image id="ID_LIBRARY_RENAME"/>
+ <image id="ID_CHAT_BOLD"/>
+ <image id="ID_CHAT_ITALIC"/>
+ <image id="ID_CHAT_UNDERLINE"/>
+ <image id="ID_CHAT_COLOR"/>
+ <image id="ID_CHAT_EMOTICONS"/>
+ <!--Arrows-->
+ <image />
+ <image />
+ <image id="ID_DOWNLOADS_MOVE_TOP" id1="ID_DOWNLOADS_MOVE_UP" id2="ID_SECURITY_MOVE_UP"/>
+ <image id="ID_DOWNLOADS_MOVE_BOTTOM" id1="ID_DOWNLOADS_MOVE_DOWN" id2="ID_SECURITY_MOVE_DOWN"/>
+ <image id="ID_DOWNLOAD_GROUP_MOVELEFT" id1="ID_MOVETAB_LEFT" id2="ID_MOVETAB_FIRST"/>
+ <image id="ID_DOWNLOAD_GROUP_MOVERIGHT" id1="ID_MOVETAB_RIGHT" id2="ID_MOVETAB_LAST"/>
+ <image id="IDI_INCOMING" id1="IDI_USER"/>
+ <image id="IDI_OUTGOING" id1="IDI_USER_ME"/>
+</bitmap>
+</commandImages>
+</skin>
+
+ <!--
+ Alternative Loading From Resources:
+ <icon id="236" path="..\..\Envy.exe,-244" types="16,32,48" rtl="0"/>
+ -->

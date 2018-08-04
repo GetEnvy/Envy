@@ -1,7 +1,7 @@
 //
 // WizardInterfacePage.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2017
+// This file is part of Envy (getenvy.com) © 2016-2018
 // Portions copyright PeerProject 2008-2015 and Shareaza 2002-2007
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -170,33 +170,38 @@ LRESULT CWizardInterfacePage::OnWizardNext()
 
 		ClearSkins();
 
-		if ( m_nSkin == 2 )	// Dark Skin
+		if ( m_nSkin == 2 && theApp.m_nWinVer >= WIN_10)	// Dark Mode
 		{
-			theApp.WriteProfileInt( L"Skins", L"Carbon\\Carbon.xml", 1 );
-			theApp.WriteProfileInt( L"Skins", L"Windows\\Skin8Frames.xml", 1 );
-			theApp.WriteProfileInt( L"Skins", L"Windows\\SkinVistaRemote.xml", 1 );
+			theApp.WriteProfileInt( L"Skins", L"Windows 10\\Windows10.Dark.xml", 1 );
+			theApp.WriteProfileInt( L"Skins", L"Windows 10\\Windows10.DarkFrames.xml", 1 );
+		}
+		else if ( m_nSkin == 2)	// Dark Skin
+		{
+			theApp.WriteProfileInt( L"Skins", L"Windows Collection\\SkinDark.xml", 1 );
+			theApp.WriteProfileInt( L"Skins", L"Windows Collection\\Skin8AltFrames.xml", 1 );
+			theApp.WriteProfileInt( L"Skins", L"Windows Collection\\SkinVistaRemote.xml", 1 );
 		}
 		else if ( theApp.m_nWinVer >= WIN_10 )
 		{
-			theApp.WriteProfileInt( L"Skins", L"Windows\\Skin10.xml", 1 );
-			theApp.WriteProfileInt( L"Skins", L"Windows\\Skin10Frames.xml", 1 );
+			theApp.WriteProfileInt( L"Skins", L"Windows 10\\Windows10.xml", 1 );
+			theApp.WriteProfileInt( L"Skins", L"Windows 10\\Windows10.Frames.xml", 1 );
 		}
 		else if ( theApp.m_nWinVer >= WIN_8 )
 		{
-			theApp.WriteProfileInt( L"Skins", L"Windows\\Skin8.xml", 1 );
-			theApp.WriteProfileInt( L"Skins", L"Windows\\Skin8Frames.xml", 1 );
+			theApp.WriteProfileInt( L"Skins", L"Windows Collection\\Skin8.xml", 1 );
+			theApp.WriteProfileInt( L"Skins", L"Windows Collection\\Skin8Frames.xml", 1 );
 		}
 		else if ( theApp.m_nWinVer >= WIN_7 )
 		{
-			theApp.WriteProfileInt( L"Skins", L"Windows\\Skin7.xml", 1 );
-			theApp.WriteProfileInt( L"Skins", L"Windows\\SkinVistaFrames.xml", 1 );
-			theApp.WriteProfileInt( L"Skins", L"Windows\\SkinVistaRemote.xml", 1 );
+			theApp.WriteProfileInt( L"Skins", L"Windows Collection\\Skin7.xml", 1 );
+			theApp.WriteProfileInt( L"Skins", L"Windows Collection\\SkinVistaFrames.xml", 1 );
+			theApp.WriteProfileInt( L"Skins", L"Windows Collection\\SkinVistaRemote.xml", 1 );
 		}
 		else if ( theApp.m_nWinVer < WIN_7 )
 		{
-			theApp.WriteProfileInt( L"Skins", L"Windows\\SkinVista.xml", 1 );
-			theApp.WriteProfileInt( L"Skins", L"Windows\\SkinVistaFrames.xml", 1 );
-			theApp.WriteProfileInt( L"Skins", L"Windows\\SkinVistaRemote.xml", 1 );
+			theApp.WriteProfileInt( L"Skins", L"Windows Collection\\SkinVista.xml", 1 );
+			theApp.WriteProfileInt( L"Skins", L"Windows Collection\\SkinVistaFrames.xml", 1 );
+			theApp.WriteProfileInt( L"Skins", L"Windows Collection\\SkinVistaRemote.xml", 1 );
 		}
 
 		if ( theApp.m_nWinVer >= WIN_7 && GetSystemMetrics( SM_CYSCREEN ) > 1050 )	// ToDo: Detect DPI

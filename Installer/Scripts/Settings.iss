@@ -2,9 +2,9 @@
 
 [Registry]
 ; Enable Default Theme (SkinVista)
-Root: HKCU; Subkey: "Software\Envy\Envy\Skins"; ValueType: dword; ValueName: "Windows\Skin10.xml"; ValueData: "{ini:{param:SETTINGS|},Skins,Windows10|1}"; Flags: createvalueifdoesntexist uninsdeletekey
-Root: HKCU; Subkey: "Software\Envy\Envy\Skins"; ValueType: dword; ValueName: "Windows\Skin10Frames.xml"; ValueData: "{ini:{param:SETTINGS|},Skins,Windows10|1}"; Flags: createvalueifdoesntexist uninsdeletekey
-Root: HKCU; Subkey: "Software\Envy\Envy\Skins"; ValueType: dword; ValueName: "Windows\Flags.xml"; ValueData: "{ini:{param:SETTINGS|},Skins,Flags|1}"; Flags: createvalueifdoesntexist uninsdeletekey
+Root: HKCU; Subkey: "Software\Envy\Envy\Skins"; ValueType: dword; ValueName: "Windows 10\Windows10.xml"; ValueData: "{ini:{param:SETTINGS|},Skins,Windows10|1}"; Flags: createvalueifdoesntexist uninsdeletekey
+Root: HKCU; Subkey: "Software\Envy\Envy\Skins"; ValueType: dword; ValueName: "Windows 10\Windows10.Frames.xml"; ValueData: "{ini:{param:SETTINGS|},Skins,Windows10|1}"; Flags: createvalueifdoesntexist uninsdeletekey
+Root: HKCU; Subkey: "Software\Envy\Envy\Skins"; ValueType: dword; ValueName: "Flags\Flags.xml"; ValueData: "{ini:{param:SETTINGS|},Skins,Flags|1}"; Flags: createvalueifdoesntexist uninsdeletekey
 Root: HKCU; Subkey: "Software\Envy\Envy\MediaPlayer"; ValueType: dword; ValueName: "ListSize"; ValueData: 139 ;				Flags: createvalueifdoesntexist uninsdeletekey
 Root: HKCU; Subkey: "Software\Envy\Envy\ListStates"; ValueType: dword; ValueName: "CNeighboursWnd.Sort"; ValueData: 9 ;			Flags: createvalueifdoesntexist uninsdeletekey
 

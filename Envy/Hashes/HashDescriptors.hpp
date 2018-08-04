@@ -1,7 +1,7 @@
 //
 // Hashes/HashDescriptors.hpp
 //
-// This file is part of Envy (getenvy.com) © 2016
+// This file is part of Envy (getenvy.com) © 2016-2018
 // Portions copyright PeerProject 2008-2014 and Shareaza 2005
 //
 // Envy is free software; you can redistribute it and/or
@@ -23,6 +23,13 @@
 
 // VS2012 for std::, VS2008 SP1 for std::tr1
 #include <array>
+
+// ToDo: Remove deprecated support for VS2010 std::tr1
+//#define _HAS_TR1_NAMESPACE 1
+//#define _SILENCE_TR1_NAMESPACE_DEPRECATION_WARNING 1
+#if !defined(_MSC_VER) || (_MSC_VER < 1700)		// VS2010~
+#define std::array std::tr1::array
+#endif
 
 
 namespace Hashes
@@ -70,8 +77,8 @@ namespace Hashes
 			static const size_t numUrns = 4;
 			static const UrnString urns[ numUrns ];
 			static const Encoding encoding = base32Encoding;
-			typedef std::tr1::array< uchar, byteCount > RawStorage;
-			typedef std::tr1::array< WordType, wordCount > AlignedStorage;
+			typedef std::array< uchar, byteCount > RawStorage;
+			typedef std::array< WordType, wordCount > AlignedStorage;
 			static std::vector< AlignedStorage > blackList;
 		};
 
@@ -90,8 +97,8 @@ namespace Hashes
 			static const size_t numUrns = 7;
 			static const UrnString urns[ numUrns ];
 			static const Encoding encoding = base32Encoding;
-			typedef std::tr1::array< uchar, byteCount > RawStorage;
-			typedef std::tr1::array< WordType, wordCount > AlignedStorage;
+			typedef std::array< uchar, byteCount > RawStorage;
+			typedef std::array< WordType, wordCount > AlignedStorage;
 			static std::vector< AlignedStorage > blackList;
 		};
 
@@ -111,8 +118,8 @@ namespace Hashes
 			static const size_t numUrns = 4;
 			static const UrnString urns[ numUrns ];
 			static const Encoding encoding = base16Encoding;
-			typedef std::tr1::array< uchar, byteCount > RawStorage;
-			typedef std::tr1::array< WordType, wordCount > AlignedStorage;
+			typedef std::array< uchar, byteCount > RawStorage;
+			typedef std::array< WordType, wordCount > AlignedStorage;
 			static std::vector< AlignedStorage > blackList;
 		};
 
@@ -126,8 +133,8 @@ namespace Hashes
 			static const size_t numUrns = 2;
 			static const UrnString urns[ numUrns ];
 			static const Encoding encoding = base16Encoding;
-			typedef std::tr1::array< uchar, byteCount > RawStorage;
-			typedef std::tr1::array< WordType, wordCount > AlignedStorage;
+			typedef std::array< uchar, byteCount > RawStorage;
+			typedef std::array< WordType, wordCount > AlignedStorage;
 			static std::vector< AlignedStorage > blackList;
 		};
 
@@ -148,8 +155,8 @@ namespace Hashes
 			static const size_t numUrns = 2;
 			static const UrnString urns[ numUrns ];
 			static const Encoding encoding = base32Encoding;
-			typedef std::tr1::array< uchar, byteCount > RawStorage;
-			typedef std::tr1::array< WordType, wordCount > AlignedStorage;
+			typedef std::array< uchar, byteCount > RawStorage;
+			typedef std::array< WordType, wordCount > AlignedStorage;
 			static std::vector< AlignedStorage > blackList;
 		};
 
@@ -166,8 +173,8 @@ namespace Hashes
 			static const size_t byteCount = wordCount * sizeof( WordType );
 			static const Encoding encoding = guidEncoding;
 			static const size_t numUrns = 0;
-			typedef std::tr1::array< uchar, byteCount > RawStorage;
-			typedef std::tr1::array< WordType, wordCount > AlignedStorage;
+			typedef std::array< uchar, byteCount > RawStorage;
+			typedef std::array< WordType, wordCount > AlignedStorage;
 			static std::vector< AlignedStorage > blackList;
 		};
 
@@ -183,8 +190,8 @@ namespace Hashes
 			static const size_t byteCount = wordCount * sizeof( WordType );
 			static const Encoding encoding = base16Encoding;
 			static const size_t numUrns = 0;
-			typedef std::tr1::array< uchar, byteCount > RawStorage;
-			typedef std::tr1::array< WordType, wordCount > AlignedStorage;
+			typedef std::array< uchar, byteCount > RawStorage;
+			typedef std::array< WordType, wordCount > AlignedStorage;
 			static std::vector< AlignedStorage > blackList;
 		};
 	} // namespace Polcies

@@ -1,7 +1,7 @@
 //
 // CoolInterface.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2017
+// This file is part of Envy (getenvy.com) © 2016-2018
 // Portions copyright PeerProject 2008-2015 and Shareaza 2002-2008
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -261,7 +261,7 @@ HICON CCoolInterface::ExtractIcon(UINT nID, BOOL bMirrored, int nImageListType /
 	if ( ! hIcon )
 		return NULL;
 
-	if ( hIcon && bMirrored && nID != ID_HELP_ABOUT )
+	if ( bMirrored && nID != ID_HELP_ABOUT )
 	{
 		hIcon = CreateMirroredIcon( hIcon );
 		ASSERT( hIcon != NULL );

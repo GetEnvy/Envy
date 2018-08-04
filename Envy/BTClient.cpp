@@ -1,7 +1,7 @@
 //
 // BTClient.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
+// This file is part of Envy (getenvy.com) © 2016-2018
 // Portions copyright PeerProject 2008-2015 and Shareaza 2002-2008
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -73,7 +73,7 @@ CBTClient::CBTClient()
 	m_mInput.pLimit = m_mOutput.pLimit = &Settings.Bandwidth.Request;
 
 	if ( Settings.General.DebugBTSources )
-		theApp.Message( MSG_DEBUG, L"Adding BT client to collection: %s", m_sAddress );
+		theApp.Message( MSG_DEBUG, L"Adding BT client to collection: %s", (LPCTSTR)m_sAddress );
 
 	BTClients.Add( this );
 }
@@ -86,7 +86,7 @@ CBTClient::~CBTClient()
 	ASSERT( m_pUploadTransfer == NULL );
 
 	if ( Settings.General.DebugBTSources )
-		theApp.Message( MSG_DEBUG, L"Removing BT client from collection: %s", m_sAddress );
+		theApp.Message( MSG_DEBUG, L"Removing BT client from collection: %s", (LPCTSTR)m_sAddress );
 
 	BTClients.Remove( this );
 }
@@ -125,7 +125,7 @@ void CBTClient::AttachTo(CConnection* pConnection)
 
 	CTransfer::AttachTo( pConnection );
 	if ( Settings.General.DebugBTSources )
-		theApp.Message( MSG_DEBUG, L"Attaching new BT client connection: %s", m_sAddress );
+		theApp.Message( MSG_DEBUG, L"Attaching new BT client connection: %s", (LPCTSTR)m_sAddress );
 
 	ASSERT( m_mInput.pLimit != NULL );
 	m_tConnected = GetTickCount();
@@ -146,7 +146,7 @@ void CBTClient::Close(UINT nError)
 	m_bClosing = TRUE;
 
 	if ( Settings.General.DebugBTSources )
-		theApp.Message( MSG_DEBUG, L"Deleting BT client: %s", m_sAddress );
+		theApp.Message( MSG_DEBUG, L"Deleting BT client: %s", (LPCTSTR)m_sAddress );
 
 	if ( m_pUploadTransfer != NULL )
 		m_pUploadTransfer->Close();
@@ -518,7 +518,7 @@ BOOL CBTClient::OnHandshake2()
 
 	ASSERT( m_pUploadTransfer == NULL );
 	if ( Settings.General.DebugBTSources )
-		theApp.Message( MSG_DEBUG, L"Creating new BT upload: %s", m_sAddress );
+		theApp.Message( MSG_DEBUG, L"Creating new BT upload: %s", (LPCTSTR)m_sAddress );
 	m_pUploadTransfer = new CUploadTransferBT( this, m_pDownload );
 
 	m_bOnline = TRUE;
@@ -687,13 +687,17 @@ BOOL CBTClient::OnHandshake2()
 //	return strUserAgent;
 //}
 
+// Other Client Vendor Codes (Peer IDs):
+// https://wiki.theory.org/BitTorrentSpecification#peer_id
+// https://github.com/transmission/transmission/blob/master/libtransmission/clients.c
+// Note: Extended protocol declared vendor takes priority (This is a fallback)
+
 CString CBTClient::GetUserAgentAzureusStyle(LPBYTE pVendor, size_t nVendor)
 {
 	CString strUserAgent;
 	if ( ! pVendor ) return strUserAgent;
 
 	// Azureus style "-SSVVVV-"
-	// https://wiki.theory.org/BitTorrentSpecification#peer_id
 	static std::map < const CString, CString > Vendors;
 	if ( Vendors.empty() )
 	{
@@ -705,6 +709,7 @@ CString CBTClient::GetUserAgentAzureusStyle(LPBYTE pVendor, size_t nVendor)
 		Vendors[ L"AV" ] = L"Avicora";
 		Vendors[ L"AX" ] = L"BitPump";
 		Vendors[ L"AZ" ] = L"Azureus";		// Vuze+Frostwire/etc.
+	//	Vendors[ L"Az" ] = L"Vuze";			?
 	//	Vendors[ L"BA" ] = L"BA";
 		Vendors[ L"BB" ] = L"BitBuddy";
 		Vendors[ L"BC" ] = L"BitComet";

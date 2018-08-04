@@ -18,7 +18,7 @@
 
 // A CG1Neighbour object represents a remote computer running Gnutella software with which we are exchanging Gnutella packets
 // http://shareaza.sourceforge.net/mediawiki/index.php/Developers.Code.CG1Neighbour
-// http://getenvy.com/shareazawiki/Developers.Code.CG1Neighbour.html
+// http://getenvy.com/archives/shareazawiki/Developers.Code.CG1Neighbour.html
 
 #include "StdAfx.h"
 #include "Settings.h"
@@ -969,7 +969,7 @@ BOOL CG1Neighbour::OnVendor(CG1Packet* pPacket)
 				CG1Packet* pReply = CG1Packet::New( pPacket->m_nType, 1, pPacket->m_oGUID );
 				if ( nVendor == 'ENVY' )
 					pReply->WriteLongBE( 'ENVY' );
-				else if (nVendor == 'RAZA')
+				else if ( nVendor == 'RAZA' )
 					pReply->WriteLongBE('RAZA');
 				else if ( nVendor == 'PEER' )
 					pReply->WriteLongBE( 'PEER' );

@@ -3,14 +3,13 @@
 
 <!-- Envy Default Hungarian Skin File -->
 
-<!-- Translation based on default en.xml r20 -->
-<!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
+<!-- Translation based on default en.xml r21 -->
+<!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
-<!-- Use this file as a basis for creating new language skins,   -->
-<!-- however be sure to include only sections that are changed:  -->
-<!-- Unedited English content limits compatibility & performance.-->
-<!-- Better to be concise than literal:  Please test visibility! -->
+<!-- Use this file as a basis for creating new languages. -->
+<!-- Only include changed sections, not unedited English. -->
+<!-- Better concise than literal, please test visibility. -->
 
 <!-- Manifest -->
 <manifest
@@ -566,12 +565,8 @@
 					<menu text="(Helyezze őket a főablakon kívülre.)"></menu>
 					<menu text="Frissítse a grafikus felületet: Ctrl+Shift+Z"></menu>
 				</menu>
-				<separator/>
-				<menu text="_Weboldalak">
-					<item id="ID_HELP_WEB_3" text="Slyck.com"/>
-					<item id="ID_HELP_WEB_1" text="ZeroPaid.com"/>
-				</menu>
 			-->
+				<separator/>
 				<item id="ID_HELP_HOMEPAGE" text="GetEnvy.com"/>
 				<separator/>
 				<item id="ID_HELP_ABOUT" text="Névjegy..."/>
@@ -668,7 +663,6 @@
 				<separator/>
 				<item id="ID_HELP_FORUMS" text="Envy hivatalos _fórum"/>
 				<!--item id="ID_HELP_UPDATE" text="Latest news"-->
-				<!--item id="ID_HELP_WEB_1" text="Zeropaid.com"-->
 			</menu>
 			<separator/> <!--
 			<item id="ID_HELP_VERSION_CHECK" text="_Frissítések keresése"/>
@@ -737,7 +731,6 @@
 				<separator/>
 				<item id="ID_HELP_FORUMS" text="Envy hivatalos _fórum"/>
 				<!--item id="ID_HELP_UPDATE" text="Latest news"-->
-				<!--item id="ID_HELP_WEB_1" text="Zeropaid.com"-->
 			</menu>
 			<separator/> <!--
 			<item id="ID_HELP_VERSION_CHECK" text="_Frissítések keresése"/>
@@ -828,7 +821,6 @@
 				<separator/>
 				<item id="ID_HELP_FORUMS" text="Envy hivatalos _fórum"/>
 				<!--item id="ID_HELP_UPDATE" text="Latest news"-->
-				<!--item id="ID_HELP_WEB_1" text="Zeropaid.com"-->
 			</menu>
 			<separator/> <!--
 			<item id="ID_HELP_VERSION_CHECK" text="_Frissítések keresése"/>
@@ -1151,6 +1143,8 @@
 		<item id="ID_DOWNLOADS_EDIT" text="T_ulajdonságok..."/>
 	</menu>
 	<menu name="CDownloadsWnd.Default">
+		<item id="ID_DOWNLOADS_FOLDER" text="Megnyitás _Folder"/>
+		<separator/>
 		<item id="ID_TOOLS_DOWNLOAD" text="Start Új Download"/>
 		<item id="ID_TOOLS_SEEDTORRENT" text="Seed Új Torrent"/>
 		<item id="ID_DOWNLOADS_CLEAR_COMPLETED" text="_Kész törlése"/>
@@ -4059,7 +4053,7 @@
 		<control text="Szolgáltatás _címe"/>
 		<control/>
 		<control text="Típusa:"/>
-		<control text="Gnutella Bootstrap|GWebCache|Server.met URL|Blokkolva"/>
+		<control text="G2/G1 GWebCache|G2 WebCache|G1 WebCache|Gnutella Bootstrap|Server.met URL|DC++ Hublist|Blokkolva"/>
 		<control text="OK"/>
 		<control text="Mégse"/>
 	</dialog>

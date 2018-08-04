@@ -542,7 +542,7 @@ BOOL CCollectionExportDlg::Step2()
 					if ( CThumbCache::Cache( strFilePath, &pImageFile ) )
 					{
 						CString strTarget;
-						strTarget.Format( L"%s\\thumbs\\%d.jpg", strPath, nPosFileDocs + 1 );
+						strTarget.Format( L"%s\\thumbs\\%d.jpg", (LPCTSTR)strPath, nPosFileDocs + 1 );
 						CreateDirectory( strTarget.Left( strTarget.ReverseFind( L'\\' ) ) );
 						if ( ! pImageFile.SaveToFile( strTarget, 85 ) )
 							return ErrorMessage( L"Failed to write file to:", strTarget );	// File disappeared

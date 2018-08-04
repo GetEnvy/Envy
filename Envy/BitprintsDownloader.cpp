@@ -226,7 +226,7 @@ BOOL CBitprintsDownloader::ExecuteRequest()
 {
 	const DWORD tTime = GetTickCount();
 
-	theApp.Message( MSG_DEBUG | MSG_FACILITY_OUTGOING, L"[Bitprints] Sent request: %s", m_sURL );
+	theApp.Message( MSG_DEBUG | MSG_FACILITY_OUTGOING, L"[Bitprints] Sent request: %s", (LPCTSTR)m_sURL );
 
 	CString strHost = m_sURL;
 	int nPos = strHost.Find( L"http://" );
@@ -275,7 +275,7 @@ BOOL CBitprintsDownloader::ExecuteRequest()
 	if ( ! HttpSendRequest( m_hRequest, NULL, 0, NULL, 0 ) )
 		return FALSE;
 
-	TCHAR szStatusCode[32];
+	TCHAR szStatusCode[32] = {};
 	DWORD nStatusCode = 0, nStatusLen = 32;
 
 	if ( ! HttpQueryInfo( m_hRequest, HTTP_QUERY_STATUS_CODE, szStatusCode, &nStatusLen, NULL ) )
@@ -331,7 +331,7 @@ BOOL CBitprintsDownloader::DecodeResponse()
 {
 	if ( m_pXML ) delete m_pXML;
 
-	theApp.Message( MSG_DEBUG | MSG_FACILITY_INCOMING, L"[Bitprints] Got response: %s", m_sResponse );
+	theApp.Message( MSG_DEBUG | MSG_FACILITY_INCOMING, L"[Bitprints] Got response: %s", (LPCTSTR)m_sResponse );
 
 	m_pXML = CXMLElement::FromString( m_sResponse, TRUE );
 	if ( m_pXML == NULL )

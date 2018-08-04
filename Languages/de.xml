@@ -3,14 +3,13 @@
 
 <!-- Envy Default German Skin File -->
 
-<!-- Translation based on default en.xml r20 -->
-<!-- http://svn.code.sf.net/p/envy/code/trunk/Languages/en.xml -->
+<!-- Translation based on default en.xml r21 -->
+<!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
-<!-- Use this file as a basis for creating new language skins,   -->
-<!-- however be sure to include only sections that are changed:  -->
-<!-- Unedited English content limits compatibility & performance.-->
-<!-- Better to be concise than literal:  Please test visibility! -->
+<!-- Use this file as a basis for creating new languages. -->
+<!-- Only include changed sections, not unedited English. -->
+<!-- Better concise than literal, please test visibility. -->
 
 <!-- Manifest -->
 <manifest
@@ -434,11 +433,11 @@
 		<button id="ID_DISCOVERY_QUERY" text="Abfrage"/>
 		<button id="ID_DISCOVERY_ADVERTISE" text="Werben"/>
 		<separator/>
-		<button id="ID_DISCOVERY_BROWSE" text="Statistik Seite"/>
+		<button id="ID_DISCOVERY_BROWSE" text="Statistik"/>
 		<rightalign/>
 		<button id="ID_DISCOVERY_WEBCACHE" text="GWebCaches"/>
 		<button id="ID_DISCOVERY_GNUTELLA" text="Bootstraps"/>
-		<button id="ID_DISCOVERY_SERVERLIST" text="Server.met/Hublists"/>
+		<button id="ID_DISCOVERY_SERVERLIST" text="Server Lists"/>
 		<button id="ID_DISCOVERY_BLOCKED" text="Blockierte"/>
 	</toolbar>
 	<!-- HOST CACHE WINDOW -->
@@ -1210,6 +1209,8 @@
 		<item id="ID_DOWNLOADS_EDIT" text="_Properties..."/>
 	</menu>
 	<menu name="CDownloadsWnd.Default">
+		<item id="ID_DOWNLOADS_FOLDER" text="Öffnen _Folder"/>
+		<separator/>
 		<item id="ID_TOOLS_DOWNLOAD" text="Start Neue Download"/>
 		<item id="ID_TOOLS_SEEDTORRENT" text="Seed Neue Torrent"/>
 		<item id="ID_DOWNLOADS_CLEAR_COMPLETED" text="Beendete _entfernen"/>
@@ -2467,10 +2468,10 @@
 	<tip id="ID_HELP_SECURITY" text="Hinweise, wie Sie ihren Computer vor schädlichen Programmen (Viren, Spyware) schützen können."/>
 	<tip id="ID_HELP_UPDATE" text="Neueste Nachrichten und Updates."/>
 	<tip id="ID_HELP_TEST" text="Prüfen, ob ihre Konfiguration eingehende Verbindungen zulässt."/>
-	<tip id="ID_HELP_WEB_1" text="Webseite1 besuchen"/>
-	<tip id="ID_HELP_WEB_2" text="Webseite2 besuchen"/>
-	<tip id="ID_HELP_WEB_3" text="Webseite3 besuchen"/>
-	<tip id="ID_HELP_WEB_4" text="Webseite4 besuchen"/>
+	<tip id="ID_HELP_WEB_1" text="Webseite besuchen"/>
+	<tip id="ID_HELP_WEB_2" text="Webseite besuchen"/>
+	<tip id="ID_HELP_WEB_3" text="Webseite besuchen"/>
+	<tip id="ID_HELP_WEB_4" text="Webseite besuchen"/>
 	<tip id="ID_HELP_DONATE" text="Wenn Sie möchten, können Sie für unsere gerichtlichen Geldmittel spenden und um Ihre Wertschätzung zu zeigen."/>
 	<tip id="ID_HITMONITOR_CLEAR" text="Den Treffermonitor-Puffer leeren." tip="Puffer leeren"/>
 	<tip id="ID_HITMONITOR_PAUSE" text="Den Treffermonitor anhalten." tip="Anzeige anhalten"/>
@@ -4205,7 +4206,7 @@
 		<control text="Service _Adresse:"/>
 		<control/>
 		<control text="Service Typ:"/>
-		<control text="Gnutella-Bootstrap|GWebCache|Server.met-URL|Blockiert"/>
+		<control text="G2/G1 WebCache|G2 WebCache|G1 WebCache|Gnutella-Bootstrap|Server.met-URL|DC++ Hublist|Blockiert"/>
 		<control text="OK"/>
 		<control text="Abbrechen"/>
 	</dialog>

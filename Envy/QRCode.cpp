@@ -118,6 +118,7 @@ HBITMAP CQRCode::GetBitmap(CString str, UINT nPixelsize /*4*/)
 	}
 
 	QRcode_free( pQRC );
+	free( pRGBData );
 
 	return hbitmap;
 }

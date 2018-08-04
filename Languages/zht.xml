@@ -3,14 +3,13 @@
 
 <!-- Envy Default Chinese (Traditional) Skin File -->
 
-<!-- Translation based on default en.xml r20 --> <!-- (Shareaza 2.2.2.12) -->
-<!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
+<!-- Translation based on default en.xml r21 --> <!-- (Shareaza 2.2.2.12) -->
+<!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
-<!-- Use this file as a basis for creating new language skins,   -->
-<!-- however be sure to include only sections that are changed:  -->
-<!-- Unedited English content limits compatibility & performance.-->
-<!-- Better to be concise than literal:  Please test visibility! -->
+<!-- Use this file as a basis for creating new languages. -->
+<!-- Only include changed sections, not unedited English. -->
+<!-- Better concise than literal, please test visibility. -->
 
 <!-- Manifest -->
 <manifest
@@ -422,7 +421,23 @@
 		<control id="IDC_FILTER_BOX" width="80"/>
 		<button id="ID_SEARCH_FILTER_RAW" text="更多…"/>
 	</toolbar>
-	<!-- DISCOVERY SERVICES WINDOW Missing -->
+	<!-- DISCOVERY SERVICES WINDOW -->
+	<toolbar name="CDiscoveryWnd">
+		<button id="ID_DISCOVERY_ADD" text="添加服務"/>
+		<separator/>
+		<button id="ID_DISCOVERY_EDIT" text="编辑服務"/>
+		<button id="ID_DISCOVERY_REMOVE" text="删除服務"/>
+		<separator/>
+		<button id="ID_DISCOVERY_QUERY" text="Query"/>
+		<button id="ID_DISCOVERY_ADVERTISE" text="Advertise"/>
+		<separator/>
+		<button id="ID_DISCOVERY_BROWSE" text="統計"/>
+		<rightalign/>
+		<button id="ID_DISCOVERY_WEBCACHE" text="GWebCaches"/>
+		<button id="ID_DISCOVERY_GNUTELLA" text="Bootstraps"/>
+		<button id="ID_DISCOVERY_SERVERLIST" text="Server Lists"/>
+		<button id="ID_DISCOVERY_BLOCKED" text="Blocked"/>
+	</toolbar>
 	<!-- HOST CACHE WINDOW -->
 	<toolbar name="CHostCacheWnd">
 		<button id="ID_HOSTCACHE_CONNECT" text="連線至"/>
@@ -577,7 +592,6 @@
 					<item id="ID_HELP_FORUMS" text="Envy 討論區"/>
 					<item id="ID_HELP_UPDATE" text="最新消息"/>
 					<!--separator-->
-					<!--item id="ID_HELP_WEB_1" text="Zeropaid.com"-->
 				</menu>
 				<item id="ID_HELP_HOMEPAGE" text="Envy site"/>
 				<separator/>
@@ -670,7 +684,6 @@
 				<separator/>
 				<item id="ID_HELP_FORUMS" text="Envy 討論區"/>
 				<item id="ID_HELP_UPDATE" text="最新消息"/>
-				<!--item id="ID_HELP_WEB_1" text="Zeropaid.com"-->
 			</menu>
 			<separator/>
 			<item id="ID_HELP_ABOUT" text="關於 Envy…"/>
@@ -734,7 +747,6 @@
 				<separator/>
 				<item id="ID_HELP_FORUMS" text="Envy 討論區"/>
 				<item id="ID_HELP_UPDATE" text="最新消息"/>
-				<!--item id="ID_HELP_WEB_1" text="Zeropaid.com"-->
 			</menu>
 			<separator/>
 			<item id="ID_HELP_ABOUT" text="關於 Envy…"/>
@@ -819,7 +831,6 @@
 				<separator/>
 				<item id="ID_HELP_FORUMS" text="Envy 討論區"/>
 				<item id="ID_HELP_UPDATE" text="最新消息"/>
-				<!--item id="ID_HELP_WEB_1" text="Zeropaid.com"-->
 			</menu>
 			<separator/>
 			<item id="ID_HELP_ABOUT" text="關於 Envy…"/>
@@ -1137,6 +1148,8 @@
 		<item id="ID_DOWNLOADS_EDIT" text="Torrent 資訊…"/>
 	</menu>
 	<menu name="CDownloadsWnd.Default">
+		<item id="ID_DOWNLOADS_FOLDER" text="開啟 Folder"/>
+		<separator/>
 		<item id="ID_TOOLS_DOWNLOAD" text="Start New Download"/>
 		<item id="ID_TOOLS_SEEDTORRENT" text="Seed New Torrent"/>
 		<item id="ID_DOWNLOADS_CLEAR_COMPLETED" text="自動清除"/>
@@ -3898,7 +3911,7 @@
 		<control text="服務位址:"/>
 		<control/>
 		<control text="揭示服務類型:"/>
-		<control text="Gnutella Bootstrap|GWeb 快取|Server.met URL"/>
+		<control text="G2/G1 快取|G2 快取|G1 快取|Gnutella Bootstrap|Server.met URL|DC++ Hublist|Blocked"/>
 		<control text="確定"/>
 		<control text="取消"/>
 	</dialog>

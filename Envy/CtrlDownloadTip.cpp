@@ -366,7 +366,7 @@ void CDownloadTipCtrl::OnPaint(CDC* pDC, CDownload* pDownload)
 			strSpeed += L"   " + strFormat;
 		}
 
-		strSources.Format( L"%i %s %i", nTransferCount, strOf, nSourceCount );
+		strSources.Format( L"%i %s %i", nTransferCount, (LPCTSTR)strOf, nSourceCount );
 		if ( Settings.General.LanguageRTL ) strSources = L"\x202B" + strSources;
 	}
 	else if ( nSourceCount )
@@ -860,9 +860,9 @@ void CDownloadTipCtrl::OnPaint(CDC* pDC, CDownloadSource* pSource)
 		if ( DWORD nLimit = pSource->GetLimit() )
 		{
 			strSpeed.Format( L"%s %s %s",
-				Settings.SmartSpeed( pSource->GetMeasuredSpeed() ),
+				(LPCTSTR)Settings.SmartSpeed( pSource->GetMeasuredSpeed() ),
 				(LPCTSTR)LoadString( IDS_GENERAL_OF ),
-				Settings.SmartSpeed( nLimit ) );
+				(LPCTSTR)Settings.SmartSpeed( nLimit ) );
 		}
 		else
 		{

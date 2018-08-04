@@ -18,7 +18,7 @@
 
 // CPacket represents a packet on a peer-to-peer network, and CPacketPool keeps lists of them
 // http://shareaza.sourceforge.net/mediawiki/index.php/Developers.Code.CPacket
-// http://getenvy.com/shareazawiki/Developers.Code.CPacket.html
+// http://getenvy.com/archives/shareazawiki/Developers.Code.CPacket.html
 
 #pragma once
 

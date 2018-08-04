@@ -1,7 +1,7 @@
 //
 // IEProtocol.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
+// This file is part of Envy (getenvy.com) © 2016-2018
 // Portions copyright PeerProject 2008-2014 and Shareaza 2002-2008
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -218,7 +218,8 @@ HRESULT CIEProtocolRequest::OnStart(LPCTSTR pszURL, IInternetProtocolSink* pSink
 HRESULT CIEProtocolRequest::OnRead(void* pv, ULONG cb, ULONG* pcbRead)
 {
 	cb = min( cb, m_oBuffer.m_nLength );
-	if ( pcbRead != NULL ) *pcbRead = cb;
+	if ( pcbRead != NULL )
+		*pcbRead = cb;
 
 	if ( cb > 0 )
 	{
@@ -453,7 +454,7 @@ HRESULT CIEProtocol::OnRequestCollection(LPCTSTR pszURL, CBuffer& oBuffer, CStri
 			return INET_E_OBJECT_NOT_FOUND;
 	}
 
-	CAutoPtr< CBuffer > pSource ( pFile->Decompress() );
+	CAutoPtr< CBuffer > pSource( pFile->Decompress() );
 	if ( ! pSource )
 		return INET_E_OBJECT_NOT_FOUND;
 
@@ -565,13 +566,13 @@ HRESULT CIEProtocol::OnRequestApplication(LPCTSTR pszURL, CBuffer& oBuffer, CStr
 			L".time1 { width: 8%%; background-color: %s; text-align: right; }\n"
 			L".icon { width: 16px; height: 16px; border-style: none; }\n"
 			L"</style>\n</head>\n<body onmousemove=\"window.external.hover(''); event.cancel\">\n<h1> %s </h1>\n<table>\n",
-			/*body*/	Settings.Fonts.DefaultFont, Settings.Fonts.DefaultSize, ToCSSColor( Colors.m_crWindow ), ToCSSColor( Colors.m_crDisabled ),
+			/*body*/	(LPCTSTR)Settings.Fonts.DefaultFont, Settings.Fonts.DefaultSize, ToCSSColor( Colors.m_crWindow ), ToCSSColor( Colors.m_crDisabled ),
 			/*h1*/		ToCSSColor( Colors.m_crBannerText ), ToCSSColor( Colors.m_crBannerBack ),
 			/*.name0*/	ToCSSColor( Colors.m_crSchemaRow[ 0 ] ), ToCSSColor( Colors.m_crTextLink ),
 			/*.time0*/	ToCSSColor( Colors.m_crSchemaRow[ 0 ] ),
 			/*.name1*/	ToCSSColor( Colors.m_crSchemaRow[ 1 ] ), ToCSSColor( Colors.m_crTextLink ),
 			/*.time1*/	ToCSSColor( Colors.m_crSchemaRow[ 1 ] ),
-			/*h1*/		Escape( LoadString( IDS_LIBPANEL_RECENT_ADDITIONS ) ) );
+			/*h1*/		(LPCTSTR)Escape( LoadString( IDS_LIBPANEL_RECENT_ADDITIONS ) ) );
 
 		CSingleLock oLock( &Library.m_pSection, FALSE );
 		if ( ! oLock.Lock( 500 ) )
@@ -602,8 +603,9 @@ HRESULT CIEProtocol::OnRequestApplication(LPCTSTR pszURL, CBuffer& oBuffer, CStr
 				L"<td class=\"name%d\" onclick=\"window.external.display('%s');\" onmousemove=\"window.external.hover('%s'); window.event.cancelBubble = true;\">"
 				L"<img class=\"icon\" src=\"p2p-file://%s/icon16\"> %s </a></td>"
 				L"<td class=\"time%d\"> %s </td>",
-				( nCount & 2 ) >> 1, Escape( strURN ), Escape( strURN ), Escape( strURN ), Escape( pRecent->m_pFile->m_sName ),
-				( nCount & 2 ) >> 1, Escape( strTime ) );
+				( nCount & 2 ) >> 1, (LPCTSTR)Escape( strURN ), (LPCTSTR)Escape( strURN ),
+				(LPCTSTR)Escape( strURN ), (LPCTSTR)Escape( pRecent->m_pFile->m_sName ),
+				( nCount & 2 ) >> 1, (LPCTSTR)Escape( strTime ) );
 
 			if ( ( nCount & 1 ) != 0 )
 				strXML += L"</tr>\n";

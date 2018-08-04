@@ -1140,7 +1140,7 @@ void CIRCFrame::OnLocalText(LPCTSTR pszText)
 	{
 		CTime pNow = CTime::GetCurrentTime();
 		strStatusMsg.Format( L"[%.2i:%.2i] %s",
-			pNow.GetHour(), pNow.GetMinute(), strStatusMsg );
+			pNow.GetHour(), pNow.GetMinute(), (LPCTSTR)strStatusMsg );
 	}
 
 	strBufferMsg = CHAR( bMeMsg ? ID_COLOR_ME : ID_COLOR_TEXTLOCAL ) + strStatusMsg;

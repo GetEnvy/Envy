@@ -185,7 +185,7 @@ BOOL CResultFilters::Load()
 			ar.Abort();
 			pFile.Abort();
 			pException->Delete();
-			theApp.Message( MSG_ERROR, L"Failed to load result filters: %s", strFile );
+			theApp.Message( MSG_ERROR, L"Failed to load result filters: %s", (LPCTSTR)strFile );
 			return FALSE;
 		}
 		pFile.Close();
@@ -194,7 +194,7 @@ BOOL CResultFilters::Load()
 	{
 		pFile.Abort();
 		pException->Delete();
-		theApp.Message( MSG_ERROR, L"Failed to load result filters: %s", strFile );
+		theApp.Message( MSG_ERROR, L"Failed to load result filters: %s", (LPCTSTR)strFile );
 		return FALSE;
 	}
 
@@ -218,7 +218,7 @@ BOOL CResultFilters::Save()
 	if ( ! pFile.Open( strTemp, CFile::modeWrite | CFile::modeCreate | CFile::shareExclusive | CFile::osSequentialScan ) )
 	{
 		DeleteFile( strTemp );
-		theApp.Message( MSG_ERROR, L"Failed to save result filters: %s", strTemp );
+		theApp.Message( MSG_ERROR, L"Failed to save result filters: %s", (LPCTSTR)strTemp );
 		return FALSE;
 	}
 
@@ -235,7 +235,7 @@ BOOL CResultFilters::Save()
 			ar.Abort();
 			pFile.Abort();
 			pException->Delete();
-			theApp.Message( MSG_ERROR, L"Failed to save result filters: %s", strTemp );
+			theApp.Message( MSG_ERROR, L"Failed to save result filters: %s", (LPCTSTR)strTemp );
 			return FALSE;
 		}
 		pFile.Close();
@@ -244,14 +244,14 @@ BOOL CResultFilters::Save()
 	{
 		pFile.Abort();
 		pException->Delete();
-		theApp.Message( MSG_ERROR, L"Failed to save result filters: %s", strTemp );
+		theApp.Message( MSG_ERROR, L"Failed to save result filters: %s", (LPCTSTR)strTemp );
 		return FALSE;
 	}
 
 	if ( ! MoveFileEx( strTemp, strFile, MOVEFILE_COPY_ALLOWED | MOVEFILE_REPLACE_EXISTING ) )
 	{
 		DeleteFile( strTemp );
-		theApp.Message( MSG_ERROR, L"Failed to save result filters: %s", strFile );
+		theApp.Message( MSG_ERROR, L"Failed to save result filters: %s", (LPCTSTR)strFile );
 		return FALSE;
 	}
 

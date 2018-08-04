@@ -18,7 +18,7 @@
 
 // CZLib makes it easier to use the zlib compression library
 // http://shareaza.sourceforge.net/mediawiki/index.php/Developers.Code.CZLib
-// http://getenvy.com/shareazawiki/Developers.Code.CZLib.html
+// http://getenvy.com/archives/shareazawiki/Developers.Code.CZLib.html
 
 #include "StdAfx.h"
 #include "Settings.h"

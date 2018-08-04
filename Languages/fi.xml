@@ -3,14 +3,13 @@
 
 <!-- Envy Default Finnish Skin File -->
 
-<!-- Translation based on default en.xml r20 --> <!-- (Shareaza 2.1.3.7) -->
-<!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
+<!-- Translation based on default en.xml r21 --> <!-- (Shareaza 2.1.3.7) -->
+<!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
-<!-- Use this file as a basis for creating new language skins,   -->
-<!-- however be sure to include only sections that are changed:  -->
-<!-- Unedited English content limits compatibility & performance.-->
-<!-- Better to be concise than literal:  Please test visibility! -->
+<!-- Use this file as a basis for creating new languages. -->
+<!-- Only include changed sections, not unedited English. -->
+<!-- Better concise than literal, please test visibility. -->
 
 <!-- Manifest -->
 <manifest
@@ -529,7 +528,6 @@
 					<item id="ID_HELP_FORUMS" text="Envy _Foorumit (en)"/>
 					<separator/>
 					<!--item id="ID_HELP_UPDATE" text="Viimeisimmät uutiset (en)"-->
-					<!--item id="ID_HELP_WEB_1" text="Zeropaid.com (en)"-->
 				</menu>
 				<item id="ID_HELP_HOMEPAGE" text="_Envy site (en)"/>
 				<separator/>
@@ -623,7 +621,6 @@
 				<item id="ID_HELP_FORUMS" text="Envy _Foorumit (en)"/>
 				<item id="ID_HELP_FORUMS_LOCAL" text="Envy _Foorumit Suomi"/>
 				<!--item id="ID_HELP_UPDATE" text="Viimeisimmät uutiset (en)"-->
-				<!--item id="ID_HELP_WEB_1" text="Zeropaid.com (en)"-->
 			</menu>
 			<separator/>
 			<item id="ID_HELP_ABOUT" text="_Tietoja Envysta..."/>
@@ -688,7 +685,6 @@
 				<item id="ID_HELP_FORUMS" text="Envy _Foorumit (en)"/>
 				<item id="ID_HELP_FORUMS_LOCAL" text="Envy _Foorumit Suomi"/>
 				<!--item id="ID_HELP_UPDATE" text="Viimeisimmät uutiset (en)"-->
-				<!--item id="ID_HELP_WEB_1" text="Zeropaid.com (en)"-->
 			</menu>
 			<separator/>
 			<item id="ID_HELP_ABOUT" text="_Tietoja Envy..."/>
@@ -772,7 +768,6 @@
 				<separator/>
 				<item id="ID_HELP_FORUMS" text="Envy _Foorumit (en)"/>
 				<!--item id="ID_HELP_UPDATE" text="Viimeisimmät uutiset (en)"-->
-				<!--item id="ID_HELP_WEB_1" text="Zeropaid.com (en)"-->
 			</menu>
 			<separator/>
 			<item id="ID_HELP_ABOUT" text="_Tietoja Envysta..."/>
@@ -1091,6 +1086,8 @@
 		<item id="ID_DOWNLOADS_EDIT" text="Torrentti _Info..."/>
 	</menu>
 	<menu name="CDownloadsWnd.Default">
+		<item id="ID_DOWNLOADS_FOLDER" text="Avaa _Folder"/>
+		<separator/>
 		<item id="ID_TOOLS_DOWNLOAD" text="Start Uusi Download"/>
 		<item id="ID_TOOLS_SEEDTORRENT" text="Seed Uusi Torrent"/>
 		<item id="ID_DOWNLOADS_CLEAR_COMPLETED" text="T_yhjennä Valmiit"/>

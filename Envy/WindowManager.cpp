@@ -1,7 +1,7 @@
 //
 // WindowManager.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
+// This file is part of Envy (getenvy.com) © 2016-2018
 // Portions copyright PeerProject 2008-2014 and Shareaza 2002-2006
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -534,7 +534,7 @@ BOOL CWindowManager::LoadSearchWindows()
 
 	if ( ! bSuccess )
 	{
-		theApp.Message( MSG_ERROR, L"Failed to load search windows: %s", strFile );
+		theApp.Message( MSG_ERROR, L"Failed to load search windows: %s", (LPCTSTR)strFile );
 		return FALSE;
 	}
 
@@ -559,7 +559,7 @@ BOOL CWindowManager::SaveSearchWindows() const
 	if ( ! pFile.Open( strTemp, CFile::modeWrite | CFile::modeCreate | CFile::shareExclusive | CFile::osSequentialScan ) )
 	{
 		DeleteFile( strTemp );
-		theApp.Message( MSG_ERROR, L"Failed to save search windows: %s", strTemp );
+		theApp.Message( MSG_ERROR, L"Failed to save search windows: %s", (LPCTSTR)strTemp );
 		return FALSE;
 	}
 
@@ -605,7 +605,7 @@ BOOL CWindowManager::SaveSearchWindows() const
 			pFile.Abort();
 			pException->Delete();
 			DeleteFile( strTemp );
-			theApp.Message( MSG_ERROR, L"Failed to save search windows: %s", strTemp );
+			theApp.Message( MSG_ERROR, L"Failed to save search windows: %s", (LPCTSTR)strTemp );
 			return FALSE;
 		}
 		pFile.Close();
@@ -615,7 +615,7 @@ BOOL CWindowManager::SaveSearchWindows() const
 		pFile.Abort();
 		pException->Delete();
 		DeleteFile( strTemp );
-		theApp.Message( MSG_ERROR, L"Failed to save search windows: %s", strTemp );
+		theApp.Message( MSG_ERROR, L"Failed to save search windows: %s", (LPCTSTR)strTemp );
 		return FALSE;
 	}
 
@@ -627,7 +627,7 @@ BOOL CWindowManager::SaveSearchWindows() const
 	else if ( ! MoveFileEx( strTemp, strFile, MOVEFILE_COPY_ALLOWED | MOVEFILE_REPLACE_EXISTING ) )
 	{
 		DeleteFile( strTemp );
-		theApp.Message( MSG_ERROR, L"Failed to save search windows: %s", strFile );
+		theApp.Message( MSG_ERROR, L"Failed to save search windows: %s", (LPCTSTR)strFile );
 		return FALSE;
 	}
 
@@ -668,7 +668,7 @@ BOOL CWindowManager::LoadBrowseHostWindows()
 			ar.Abort();
 			pFile.Abort();
 			pException->Delete();
-			theApp.Message( MSG_ERROR, L"Failed to load browse host windows: %s", strFile );
+			theApp.Message( MSG_ERROR, L"Failed to load browse host windows: %s", (LPCTSTR)strFile );
 			return FALSE;
 		}
 		pFile.Close();
@@ -677,7 +677,7 @@ BOOL CWindowManager::LoadBrowseHostWindows()
 	{
 		pFile.Abort();
 		pException->Delete();
-		theApp.Message( MSG_ERROR, L"Failed to load browse host windows: %s", strFile );
+		theApp.Message( MSG_ERROR, L"Failed to load browse host windows: %s", (LPCTSTR)strFile );
 		return FALSE;
 	}
 
@@ -700,7 +700,7 @@ BOOL CWindowManager::SaveBrowseHostWindows() const
 	if ( ! pFile.Open( strTemp, CFile::modeWrite | CFile::modeCreate | CFile::shareExclusive | CFile::osSequentialScan ) )
 	{
 		DeleteFile( strTemp );
-		theApp.Message( MSG_ERROR, L"Failed to save browse host windows: %s", strTemp );
+		theApp.Message( MSG_ERROR, L"Failed to save browse host windows: %s", (LPCTSTR)strTemp );
 		return FALSE;
 	}
 
@@ -745,7 +745,7 @@ BOOL CWindowManager::SaveBrowseHostWindows() const
 			pFile.Abort();
 			pException->Delete();
 			DeleteFile( strTemp );
-			theApp.Message( MSG_ERROR, L"Failed to save browse host windows: %s", strTemp );
+			theApp.Message( MSG_ERROR, L"Failed to save browse host windows: %s", (LPCTSTR)strTemp );
 			return FALSE;
 		}
 		pFile.Close();
@@ -755,11 +755,11 @@ BOOL CWindowManager::SaveBrowseHostWindows() const
 		pFile.Abort();
 		pException->Delete();
 		DeleteFile( strTemp );
-		theApp.Message( MSG_ERROR, L"Failed to save browse host windows: %s", strTemp );
+		theApp.Message( MSG_ERROR, L"Failed to save browse host windows: %s", (LPCTSTR)strTemp );
 		return FALSE;
 	}
 
-	//theApp.Message( MSG_DEBUG, L"Browses successfully saved to: %s", strFile );
+	//theApp.Message( MSG_DEBUG, L"Browses successfully saved to: %s", (LPCTSTR)strFile );
 
 	if ( ! nCount )
 	{
@@ -769,7 +769,7 @@ BOOL CWindowManager::SaveBrowseHostWindows() const
 	else if ( ! MoveFileEx( strTemp, strFile, MOVEFILE_COPY_ALLOWED | MOVEFILE_REPLACE_EXISTING ) )
 	{
 		DeleteFile( strTemp );
-		theApp.Message( MSG_ERROR, L"Failed to save browse host windows: %s", strFile );
+		theApp.Message( MSG_ERROR, L"Failed to save browse host windows: %s", (LPCTSTR)strFile );
 		return FALSE;
 	}
 

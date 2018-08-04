@@ -1,9 +1,8 @@
-Inno Setup 5.5.8 Components
-Copyright 2016 Jordan Russell
+Inno Setup 5.6.0 Components
+Copyright 2018 Jordan Russell
 Redistributed as per License.txt
 
 http://jrsoftware.org/isdl.php
 http://jrsoftware.org/ishelp
-http://ispp.sourceforge.net
 
-Source: isetup-5.5.8.exe
+Source: isetup-5.6.0.exe

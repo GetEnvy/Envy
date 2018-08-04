@@ -1285,7 +1285,7 @@ CDownload* CDownloads::Load(const CString& strPath)
 {
 	ASSUME_LOCK( Transfers.m_pSection );
 
-	CAutoPtr< CDownload > pDownload ( new CDownload() );
+	CAutoPtr< CDownload > pDownload( new CDownload() );
 	if ( ! pDownload->Load( strPath ) )
 	{
 		// Remove orphaned .pd/.sd files at startup

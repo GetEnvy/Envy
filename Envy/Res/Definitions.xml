@@ -321,8 +321,9 @@
 	<resource code="40217" id="ID_LIBRARY_FOLDER_FILE_PROPERTIES"/>
 	<resource code="40218" id="ID_LIBRARY_FOLDER_PROPERTIES"/>
 	<resource code="40220" id="ID_LIBRARY_FOLDERS"/>
-	<resource code="40221" id="ID_LIBRARY_HASH_PRIORITY"/>
-	<resource code="40222" id="ID_LIBRARY_PANEL"/>
+	<resource code="40221" id="ID_LIBRARY_SHOW_FILE"/>
+	<resource code="40222" id="ID_LIBRARY_HASH_PRIORITY"/>
+	<resource code="40223" id="ID_LIBRARY_PANEL"/>
 	<resource code="40224" id="ID_LIBRARY_PARENT"/>
 	<resource code="40225" id="ID_LIBRARY_PROPERTIES"/>
 	<resource code="40226" id="ID_LIBRARY_DELETE"/>

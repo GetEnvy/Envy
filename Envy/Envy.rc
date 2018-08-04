@@ -27,8 +27,8 @@ LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
 //
 
 VS_VERSION_INFO VERSIONINFO
- PRODUCTVERSION 1,1
- FILEVERSION 1,1
+ PRODUCTVERSION 1,2
+ FILEVERSION 1,2
  FILEFLAGSMASK 0x1fL
 #ifdef _DEBUG
  FILEFLAGS 0x1L
@@ -44,15 +44,15 @@ BEGIN
 		BLOCK "000004b0"
 		BEGIN
 			VALUE "ProductName", "Envy"
-			VALUE "ProductVersion", "1.1"
-			VALUE "FileVersion", "1.1"
+			VALUE "ProductVersion", "1.2"
+			VALUE "FileVersion", "1.2"
 			VALUE "Title", "Envy"
 			VALUE "InternalName", "Envy"
 			VALUE "OriginalFilename", "Envy.exe"
 			VALUE "FileDescription", "Envy Filesharing"
 			VALUE "Comments", "Envy Filesharing"
 			VALUE "CompanyName", "GetEnvy.com"
-			VALUE "LegalCopyright", "© Envy Development Team, 2016-2017"
+			VALUE "LegalCopyright", "© Envy Development Team, 2016-2018"
 		END
 	END
 	BLOCK "VarFileInfo"
@@ -91,7 +91,7 @@ BEGIN
 	"#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)\r\n"
 	"LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US\r\n"
 	"#pragma code_page(1252)\r\n"
-	"#include ""Res\\Envy.rc2"" // non-Microsoft Visual C++ edited resources\r\n"
+	"#include ""Res\\Envy.rc2""        // non-Microsoft Visual C++ edited resources\r\n"
 	"#include ""afxres.rc""            // Standard components\r\n"
 	"#endif\r\n"
 	"\r\n"
@@ -157,7 +157,7 @@ IDI_SEARCH_FOLDER		ICON		"Res\\SearchFolder.ico"
 IDI_COLLECTION			ICON		"Res\\Collection.ico"
 IDI_COLLECTION_MASK		ICON		"Res\\CollectionMask.ico"
 IDI_FIREWALLED			ICON		"Res\\Firewalled.ico"
-IDI_MULTIFILE			ICON		"Res\\Envy.ico"	// BitTorrent.ico
+IDI_MULTIFILE			ICON		"Res\\BitTorrent.ico"
 IDI_COLORS				ICON		"Res\\Colors.ico"
 IDI_HASH				ICON		"Res\\Hash.ico"
 IDI_OPENTICK			ICON		"Res\\TickClosed.ico"
@@ -4219,7 +4219,7 @@ BEGIN
 	IDS_MEDIA_PLUGIN_CREATE		"Envy could not instantiate its MediaServices plugin.  Please reinstall Envy, and confirm that you have the necessary media codecs and output drivers installed."
 	IDS_MEDIA_PLAYLIST			"Playlist:"
 	IDS_MEDIA_PLAYER			"Envy Media Player"
-	IDS_MEDIA_TITLE				"E n v y   M e d i a"
+	IDS_MEDIA_TITLE				"Envy Media System"
 	IDS_MEDIA_TIMESPLIT			" / "
 END
 

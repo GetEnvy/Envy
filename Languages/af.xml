@@ -4,14 +4,13 @@
 <!-- Envy Default Afrikaans Skin File -->
 <!-- Weergawe: 27 Oktober 2005 vir Shareaza 2.2.0.2 -->
 
-<!-- Translation based on default en.xml r20 -->
-<!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
+<!-- Translation based on default en.xml r21 -->
+<!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
-<!-- Use this file as a basis for creating new language skins,   -->
-<!-- however be sure to include only sections that are changed:  -->
-<!-- Unedited English content limits compatibility & performance.-->
-<!-- Better to be concise than literal:  Please test visibility! -->
+<!-- Use this file as a basis for creating new languages. -->
+<!-- Only include changed sections, not unedited English. -->
+<!-- Better concise than literal, please test visibility. -->
 
 <!-- Manifest -->
 <manifest
@@ -558,7 +557,6 @@
 					<item id="ID_HELP_DONATE" text="_Donate to Envy"/>
 					<separator/> -->
 					<!--item id="ID_HELP_UPDATE" text="Jongste nuus"-->
-					<!--item id="ID_HELP_WEB_1" text="Zeropaid.com"-->
 				</menu>
 				<item id="ID_HELP_HOMEPAGE" text="_Envy site"/>
 				<separator/>
@@ -659,7 +657,6 @@
 				<item id="ID_HELP_DONATE" text="_Donate to Envy"/>
 				<separator/> -->
 				<!--item id="ID_HELP_UPDATE" text="Jongste nuus"-->
-				<!--item id="ID_HELP_WEB_1" text="Zeropaid.com"-->
 			</menu>
 			<separator/>
 			<item id="ID_HELP_ABOUT" text="_Oor Envy..."/>
@@ -726,9 +723,7 @@
 				<!--item id="ID_HELP_WEB_SKINS" text="Envy S_kin Site"-->
 				<separator/>
 				<item id="ID_HELP_VERSION_CHECK" text="Check for new _version"/>
-				<item id="ID_HELP_DONATE" text="_Donate to Envy"/>
-				<separator/>
-				<!--item id="ID_HELP_WEB_1" text="Zeropaid.com"-->
+				<!--item id="ID_HELP_DONATE" text="_Donate to Envy"-->
 			</menu>
 			<separator/>
 			<item id="ID_HELP_ABOUT" text="_Oor Envy..."/>
@@ -816,7 +811,6 @@
 				<item id="ID_HELP_FORUMS" text="Envy _Forums"/>
 				<!--item id="ID_HELP_WEB_SKINS" text="Envy S_kin Site"-->
 				<!--item id="ID_HELP_UPDATE" text="Jongste nuus"-->
-				<!--item id="ID_HELP_WEB_1" text="Zeropaid.com"-->
 			</menu>
 			<separator/>
 			<item id="ID_HELP_ABOUT" text="_Oor Envy..."/>
@@ -1137,6 +1131,8 @@
 		<item id="ID_DOWNLOADS_EDIT" text="_Eienskappe..."/>
 	</menu>
 	<menu name="CDownloadsWnd.Default">
+		<item id="ID_DOWNLOADS_FOLDER" text="Open _Folder"/>
+		<separator/>
 		<item id="ID_TOOLS_DOWNLOAD" text="Start Nuwe Download"/>
 		<item id="ID_TOOLS_SEEDTORRENT" text="Seed Nuwe Torrent"/>
 		<item id="ID_DOWNLOADS_CLEAR_COMPLETED" text="Verwyder _Voltooide Aflaaie"/>
@@ -4019,7 +4015,7 @@
 		<control text="Diens _Adres:"/>
 		<control/>
 		<control text="Ontdekkingsdiens Tipe:"/>
-		<control text="Blocked"/>
+		<control text="G2/G1 GWebCache|G2 WebCache|G1 WebCache|Gnutella Bootstrap|Server.met URL|DC++ Hublist|Blocked"/>
 		<control text="OK"/>
 		<control text="Kanselleer"/>
 	</dialog>

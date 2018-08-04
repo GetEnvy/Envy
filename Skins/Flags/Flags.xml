@@ -11,7 +11,8 @@
 />
 
 <images>
- <image target="CFlags" path="Flags.png"/>
+ <image target="CFlags" path="Flags.21x15.png" mode="LoRes"/>
+ <!--image target="CFlags" path="Flags.30x21.png" mode="HiRes"-->
 </images>
 </skin>
 

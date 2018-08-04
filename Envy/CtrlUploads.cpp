@@ -1,7 +1,7 @@
 //
 // CtrlUploads.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2017
+// This file is part of Envy (getenvy.com) © 2016-2018
 // Portions copyright PeerProject 2008-2015 and Shareaza 2002-2007
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -634,7 +634,8 @@ CUploadFile* CUploadsCtrl::GetNextFile(CUploadQueue* pQueue, POSITION& pos, int*
 	ASSUME_LOCK( Transfers.m_pSection );
 	ASSERT( pos != NULL );
 
-	if ( pnPosition != NULL ) *pnPosition = -1;
+	if ( pnPosition != NULL )
+		*pnPosition = -1;
 
 	if ( pQueue == UploadQueues.m_pTorrentQueue )
 	{
@@ -653,7 +654,8 @@ CUploadFile* CUploadsCtrl::GetNextFile(CUploadQueue* pQueue, POSITION& pos, int*
 
 		return pReturn;
 	}
-	else if ( pQueue == UploadQueues.m_pHistoryQueue )
+
+	if ( pQueue == UploadQueues.m_pHistoryQueue )
 	{
 		CUploadFile* pReturn = UploadFiles.GetNext( pos );
 
@@ -674,7 +676,8 @@ CUploadFile* CUploadsCtrl::GetNextFile(CUploadQueue* pQueue, POSITION& pos, int*
 
 		return pReturn;
 	}
-	else if ( (DWORD_PTR)pos > pQueue->GetQueuedCount() )
+
+	if ( (DWORD_PTR)pos > pQueue->GetQueuedCount() )
 	{
 		CUploadTransfer* pTransfer = pQueue->GetNextActive( pos );
 
@@ -688,14 +691,16 @@ CUploadFile* CUploadsCtrl::GetNextFile(CUploadQueue* pQueue, POSITION& pos, int*
 			*pnPosition = 0;
 		return pTransfer->m_pBaseFile;
 	}
-	else
+
+	// Default
 	{
 		DWORD_PTR nPos = (DWORD_PTR)pos;
 		CUploadTransfer* pTransfer = pQueue->GetQueuedAt( nPos - 1 );
 		if ( pnPosition != NULL )
 			*pnPosition = static_cast< int >( nPos );
-		++nPos;
-		if ( nPos > pQueue->GetQueuedCount() ) nPos = 0;
+		nPos++;
+		if ( nPos > pQueue->GetQueuedCount() )
+			nPos = 0;
 		pos = (POSITION)nPos;
 		return pTransfer->m_pBaseFile;
 	}

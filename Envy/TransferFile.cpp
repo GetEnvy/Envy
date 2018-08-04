@@ -1,7 +1,7 @@
 //
 // TransferFile.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
+// This file is part of Envy (getenvy.com) © 2016-2018
 // Portions copyright PeerProject 2008-2014 and Shareaza 2002-2007
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -301,7 +301,7 @@ BOOL CTransferFile::Read(QWORD nOffset, LPVOID pBuffer, QWORD nBuffer, QWORD* pn
 
 	if ( ! ReadFile( m_hFile, pBuffer, (DWORD)nBuffer, (DWORD*)pnRead, NULL ) )
 	{
-		theApp.Message( MSG_ERROR, L"Can't read from file \"%s\". %s", m_sPath, GetErrorString() );
+		theApp.Message( MSG_ERROR, L"Can't read from file \"%s\". %s", (LPCTSTR)m_sPath, GetErrorString() );
 		return FALSE;
 	}
 
@@ -351,7 +351,7 @@ BOOL CTransferFile::Write(QWORD nOffset, LPCVOID pBuffer, QWORD nBuffer, QWORD* 
 
 	if ( ! WriteFile( m_hFile, pBuffer, (DWORD)nBuffer, (LPDWORD)pnWritten, NULL ) )
 	{
-		theApp.Message( MSG_ERROR, L"Can't write to file \"%s\". %s", m_sPath, GetErrorString() );
+		theApp.Message( MSG_ERROR, L"Can't write to file \"%s\". %s", (LPCTSTR)m_sPath, GetErrorString() );
 		return FALSE;
 	}
 

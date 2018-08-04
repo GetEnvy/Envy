@@ -18,7 +18,7 @@
 
 // CBuffer holds some memory, and takes care of allocating and freeing it itself
 // http://shareaza.sourceforge.net/mediawiki/index.php/Developers.Code.CBuffer
-// http://getenvy.com/shareazawiki/Developers.Code.CBuffer.html
+// http://getenvy.com/archives/shareazawiki/Developers.Code.CBuffer.html
 
 #include "StdAfx.h"
 #include "Buffer.h"

@@ -3,14 +3,13 @@
 
 <!-- Envy Default Turkish Skin File -->
 
-<!-- Translation based on default en.xml r20 -->
-<!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
+<!-- Translation based on default en.xml r21 -->
+<!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
-<!-- Use this file as a basis for creating new language skins,   -->
-<!-- however be sure to include only sections that are changed:  -->
-<!-- Unedited English content limits compatibility & performance.-->
-<!-- Better to be concise than literal:  Please test visibility! -->
+<!-- Use this file as a basis for creating new languages. -->
+<!-- Only include changed sections, not unedited English. -->
+<!-- Better concise than literal, please test visibility. -->
 
 <!-- Manifest -->
 <manifest
@@ -566,11 +565,7 @@
 					<menu text="Sorunu gidermek için arayüzü tekrar yükleyiniz: Cntrl+Shift+Z"> </menu>
 				</menu>
 				<separator/>
-				<menu text="_Web Siteleri">
-					<item id="ID_HELP_WEB_3" text="Slyck.com"/>
-					<item id="ID_HELP_WEB_1" text="ZeroPaid.com"/>
-				</menu>
-			-->
+				<!--menu text="_Web Siteleri"-->
 				<item id="ID_HELP_HOMEPAGE" text="GetEnvy.com"/>
 				<separator/>
 				<item id="ID_HELP_ABOUT" text="Envy Hakkında..."/>
@@ -667,7 +662,6 @@
 				<separator/>
 				<item id="ID_HELP_FORUMS" text="Envy _Forumları"/>
 				<!--item id="ID_HELP_UPDATE" text="Son Haberler"-->
-				<!--item id="ID_HELP_WEB_1" text="Zeropaid.com"-->
 			</menu>
 			<separator/> <!--
 			<item id="ID_HELP_VERSION_CHECK" text="Güncellemeleri _Kontrol Et"/>
@@ -736,7 +730,6 @@
 				<separator/>
 				<item id="ID_HELP_FORUMS" text="Envy _Forumları"/>
 				<!--item id="ID_HELP_UPDATE" text="Son Haberler"-->
-				<!--item id="ID_HELP_WEB_1" text="Zeropaid.com"-->
 			</menu>
 			<separator/> <!--
 			<item id="ID_HELP_VERSION_CHECK" text="Güncellemeleri _Kontrol Et"/>
@@ -827,7 +820,6 @@
 				<separator/>
 				<item id="ID_HELP_FORUMS" text="Envy _Forumları"/>
 				<!--item id="ID_HELP_UPDATE" text="Son Haberler"-->
-				<!--item id="ID_HELP_WEB_1" text="Zeropaid.com"-->
 			</menu>
 			<separator/> <!--
 			<item id="ID_HELP_VERSION_CHECK" text="Güncellemeleri Kontrol Et"/>
@@ -1150,6 +1142,8 @@
 		<item id="ID_DOWNLOADS_EDIT" text="İ_leri Düzenleme..."/>
 	</menu>
 	<menu name="CDownloadsWnd.Default">
+		<item id="ID_DOWNLOADS_FOLDER" text="Aç _Folder"/>
+		<separator/>
 		<item id="ID_TOOLS_DOWNLOAD" text="Start Yeni Download"/>
 		<item id="ID_TOOLS_SEEDTORRENT" text="Seed Yeni Torrent"/>
 		<item id="ID_DOWNLOADS_CLEAR_COMPLETED" text="Bi_teni Temizle"/>
@@ -4037,7 +4031,7 @@
 	<dialog name="CFilterSearchDlg" cookie="BuEdBuStBuStEdStEdStEdmsBuBuBuBuBuBuBuBuBuBuBuBuBuCoBuBuBuBuBu" caption="Filtre Eşleştirmesi">
 		<control text="Sadece kelimeyi içeren eşleştirmeleri göster:"/>
 		<control/>
-		<control text="Reg. Exp."/>
+		<control text="Düz. İfa."/>
 		<control text="(-kelimeleri arama dışı tutabilirsiniz)"/>
 		<control text="Ve boyutu:"/>
 		<control text="Minimum:"/>
@@ -4076,7 +4070,7 @@
 		<control text="Servis _Adresi:"/>
 		<control/>
 		<control text="Keşif Servis Türü:"/>
-		<control text="Gnutella Bootstrap|GWebCache|Server.met URL|Engellenmiş"/>
+		<control text="G2/G1 GWebCache|G2 WebCache|G1 WebCache|Gnutella Bootstrap|Server.met URL|Engellenmiş"/>
 		<control text="Tamam"/>
 		<control text="İptal"/>
 	</dialog>
@@ -4648,10 +4642,10 @@
 <!-- Columns Definitions -->
 <listcolumns>
 	<list name="CDownloadCtrl">
-		<column from="Downloaded File" to="Dosya"/>
+		<column from="Downloaded File" to="İndirilmiş Dosya"/>
 		<column from="Size" to="Boyut"/>
 		<column from="Progress" to="İlerleme"/>
-		<column from="Transfer" to="İndirmeler"/>
+		<column from="Transfer" to="İndirilme"/>
 		<column from="Percent" to="Tam"/>
 		<column from="Speed" to="Hız"/>
 		<column from="Status" to="Durum"/>
@@ -4659,7 +4653,7 @@
 		<column from="Country" to="Ülke"/>
 	</list>
 	<list name="CUploadCtrl">
-		<column from="Uploaded File" to="Dosya"/>
+		<column from="Uploaded File" to="Gönderilen Dosya"/>
 		<column from="Size" to="Boyut"/>
 		<column from="Progress" to="İlerleme"/>
 		<column from="Transfer" to="İndirmeler"/>

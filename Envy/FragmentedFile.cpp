@@ -1,7 +1,7 @@
 //
 // FragmentedFile.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2017
+// This file is part of Envy (getenvy.com) © 2016-2018
 // Portions copyright PeerProject 2008-2014 and Shareaza 2002-2007
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -287,7 +287,7 @@ BOOL CFragmentedFile::Open(const CEnvyFile* pPPFile, BOOL bWrite)
 	if ( ! Open( strSource, 0, pPPFile->m_nSize, bWrite, pPPFile->m_sName ) )
 	{
 		m_sFileError.Format( LoadString( bWrite ? IDS_DOWNLOAD_FILE_CREATE_ERROR : IDS_DOWNLOAD_FILE_OPEN_ERROR ), (LPCTSTR)strSource );
-		theApp.Message( MSG_ERROR, L"%s %s", m_sFileError, (LPCTSTR)GetErrorString( m_nFileError ) );
+		theApp.Message( MSG_ERROR, L"%s %s", (LPCTSTR)m_sFileError, (LPCTSTR)GetErrorString( m_nFileError ) );
 
 		Close();
 		return FALSE;

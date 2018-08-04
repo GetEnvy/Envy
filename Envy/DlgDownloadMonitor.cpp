@@ -280,9 +280,9 @@ void CDownloadMonitorDlg::OnTimer(UINT_PTR nIDEvent)
 		{
 			CString strText;
 			strText.Format( L"%s %s %s  (%.2f%%)",
-				Settings.SmartVolume( m_pDownload->GetVolumeComplete() ),
-				LoadString( IDS_GENERAL_OF ),
-				Settings.SmartVolume( m_pDownload->m_nSize ),
+				(LPCTSTR)Settings.SmartVolume( m_pDownload->GetVolumeComplete() ),
+				(LPCTSTR)LoadString( IDS_GENERAL_OF ),
+				(LPCTSTR)Settings.SmartVolume( m_pDownload->m_nSize ),
 				m_pDownload->GetProgress() );
 
 			Update( &m_wndVolume, strText );

@@ -3,14 +3,13 @@
 
 <!-- Envy Default Czech Skin File -->
 
-<!-- Translation based on default en.xml r20 --> <!-- (Shareaza 2.2.5.7) -->
-<!-- http://svn.code.sf.net/p/getenvy/code/trunk/Languages/en.xml -->
+<!-- Translation based on default en.xml r21 --> <!-- (Shareaza 2.2.5.7) -->
+<!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
-<!-- Use this file as a basis for creating new language skins,   -->
-<!-- however be sure to include only sections that are changed:  -->
-<!-- Unedited English content limits compatibility & performance.-->
-<!-- Better to be concise than literal:  Please test visibility! -->
+<!-- Use this file as a basis for creating new languages. -->
+<!-- Only include changed sections, not unedited English. -->
+<!-- Better concise than literal, please test visibility. -->
 
 <!-- Manifest -->
 <manifest
@@ -547,7 +546,6 @@
 					<item id="ID_HELP_FORUMS" text="Diskus_e Envy"/>
 					<separator/>
 					<!--item id="ID_HELP_UPDATE" text="Poslední novinky"-->
-					<item id="ID_HELP_WEB_1" text="Zeropaid.com"/>	-->
 				</menu>
 				<item id="ID_HELP_HOMEPAGE" text="_Envy site"/>
 				<separator/>
@@ -646,7 +644,6 @@
 				<separator/>
 				<item id="ID_HELP_FORUMS" text="Diskus_e Envy"/>
 				<!--item id="ID_HELP_UPDATE" text="Poslední novinky"-->
-				<item id="ID_HELP_WEB_1" text="Zeropaid.com"/>	-->
 			</menu>
 			<separator/>
 			<item id="ID_HELP_ABOUT" text="O progr_amu Envy..."/>
@@ -715,7 +712,6 @@
 				<separator/>
 				<item id="ID_HELP_FORUMS" text="Diskus_e Envy"/>
 				<!--item id="ID_HELP_UPDATE" text="Poslední novinky"-->
-				<!--item id="ID_HELP_WEB_1" text="Zeropaid.com"-->
 			</menu>
 			<separator/>
 			<item id="ID_HELP_ABOUT" text="O progr_amu Envy..."/>
@@ -803,7 +799,6 @@
 				<separator/>
 				<item id="ID_HELP_FORUMS" text="Diskus_e Envy"/>
 				<!--item id="ID_HELP_UPDATE" text="Poslední novinky"-->
-				<!--item id="ID_HELP_WEB_1" text="Zeropaid.com"-->
 			</menu>
 			<separator/>
 			<item id="ID_HELP_ABOUT" text="O progr_amu Envy..."/>
@@ -1124,6 +1119,8 @@
 		<item id="ID_DOWNLOADS_EDIT" text="_Vlastnosti..."/>
 	</menu>
 	<menu name="CDownloadsWnd.Default">
+		<item id="ID_DOWNLOADS_FOLDER" text="Otevřít _Folder"/>
+		<separator/>
 		<item id="ID_TOOLS_DOWNLOAD" text="Start Nová Download"/>
 		<item id="ID_TOOLS_SEEDTORRENT" text="Seed Nová Torrent"/>
 		<item id="ID_DOWNLOADS_CLEAR_COMPLETED" text="V_ymazat dokončené"/>
@@ -3977,7 +3974,7 @@
 		<control text="_Adresa služby:"/>
 		<control/>
 		<control text="Typ vyhledávací služby:"/>
-		<control text="Gnutella Bootstrap|GWebCache|Server.met URL|Blocked"/>
+		<control text="G2/G1 GWebCache|G2 WebCache|G1 WebCache|Gnutella Bootstrap|Server.met URL|DC++ Hublist|Blocked"/>
 		<control text="OK"/>
 		<control text="Zrušit"/>
 	</dialog>

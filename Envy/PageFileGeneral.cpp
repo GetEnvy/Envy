@@ -88,7 +88,7 @@ BOOL CFileGeneralPage::OnInitDialog()
 
 		m_sPath = pFile->GetFolder();
 		m_sType = ShellIcons.GetTypeString( pFile->m_sName );
-		m_sSize.Format( L"%s  (%I64i)", Settings.SmartVolume( pFile->GetSize() ), pFile->GetSize() );
+		m_sSize.Format( L"%s  (%I64i)", (LPCTSTR)Settings.SmartVolume( pFile->GetSize() ), pFile->GetSize() );
 		m_sIndex.Format( L"# %lu", pFile->m_nIndex );
 
 		m_sSHA1	 = pFile->m_oSHA1.toShortUrn();

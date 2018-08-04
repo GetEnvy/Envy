@@ -18,7 +18,7 @@
 
 // Adds the ping route and pong caches to the CNeighbours object, and methods to route Gnutella ping and pong packets
 // http://shareaza.sourceforge.net/mediawiki/index.php/Developers.Code.CNeighboursWithG1
-// http://getenvy.com/shareazawiki/Developers.Code.CNeighboursWithG1.html
+// http://getenvy.com/archives/shareazawiki/Developers.Code.CNeighboursWithG1.html
 
 #include "StdAfx.h"
 #include "Settings.h"

@@ -216,7 +216,7 @@ void CWizardCtrl::ScrollBy(int nDelta)
 		pWnd->ModifyStyle( WS_VISIBLE, 0 );
 	}
 
-	ScrollWindowEx( 0, -nDelta, NULL, NULL, NULL, NULL, SW_SCROLLCHILDREN|SW_INVALIDATE );
+	ScrollWindowEx( 0, -nDelta, NULL, NULL, NULL, NULL, SW_SCROLLCHILDREN|SW_INVALIDATE|SW_SMOOTHSCROLL );
 	Layout();
 	UpdateWindow();
 }

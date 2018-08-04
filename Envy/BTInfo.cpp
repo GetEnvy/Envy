@@ -1,7 +1,7 @@
 //
 // BTInfo.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2017
+// This file is part of Envy (getenvy.com) © 2016-2018
 // Portions copyright PeerProject 2008-2015 and Shareaza 2002-2008
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -839,7 +839,7 @@ BOOL CBTInfo::LoadTorrentTree(const CBENode* pRoot)
 				if ( pHost && pHost->IsType( CBENode::beString ) && pPort && pPort->IsType( CBENode::beInt ) )
 				{
 					CString strHost;
-					strHost.Format( L"%s:%u", pHost->GetString(), (WORD)pPort->GetInt() );
+					strHost.Format( L"%s:%u", (LPCTSTR)pHost->GetString(), (WORD)pPort->GetInt() );
 					m_oNodes.AddTail( strHost );
 				//	HostCache.BitTorrent.Add( pHost->GetString(), (WORD)pPort->GetInt() );	// Obsolete
 				}

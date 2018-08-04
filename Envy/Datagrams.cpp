@@ -1,7 +1,7 @@
 //
 // Datagrams.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2017
+// This file is part of Envy (getenvy.com) © 2016-2018
 // Portions copyright PeerProject 2008-2015 and Shareaza 2002-2008
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -663,7 +663,7 @@ BOOL CDatagrams::OnDatagram(const SOCKADDR_IN* pHost, const BYTE* pBuffer, DWORD
 {
 	BOOL bHandled = FALSE;
 
-	// Detect BitTorrent packets (bencoded)
+	// Detect BitTorrent extension packets (bencoded)
 	if ( nLength > 16 &&
 		 pBuffer[ 0 ] == 'd' &&
 		 pBuffer[ nLength - 1 ] == 'e'  )
@@ -801,7 +801,7 @@ BOOL CDatagrams::OnDatagram(const SOCKADDR_IN* pHost, const BYTE* pBuffer, DWORD
 //		if ( ! i ) strText += L": ";
 //		strText += ( ( pBuffer[ i ] < ' ' ) ? '.' : (char)pBuffer[ i ] );
 //	}
-//	theApp.Message( MSG_DEBUG | MSG_FACILITY_INCOMING, L"%s", strText );
+//	theApp.Message( MSG_DEBUG | MSG_FACILITY_INCOMING, L"%s", (LPCTSTR)strText );
 
 	return FALSE;
 }
