@@ -1,8 +1,8 @@
 //
 // GProfile.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2007
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -135,7 +135,7 @@ void CGProfile::CreateBT()
 	// Convert Gnutella GUID (128 bits) to BitTorrent GUID (160 bits)
 	Hashes::BtGuid tmp_bt;
 	CopyMemory( &tmp_bt[0], &((Hashes::Guid)oGUID)[0], ((Hashes::Guid)oGUID).byteCount );
-	for ( size_t nByte = ((Hashes::Guid)oGUID).byteCount ; nByte < tmp_bt.byteCount ; nByte++ )
+	for ( size_t nByte = ((Hashes::Guid)oGUID).byteCount; nByte < tmp_bt.byteCount; nByte++ )
 		tmp_bt[ nByte ] = GetRandomNum( 0ui8, _UI8_MAX );
 
 	VERIFY( tmp_bt.validate() );
@@ -218,7 +218,7 @@ BOOL CGProfile::FromXML(const CXMLElement* pXML)
 	//}
 	else
 	{
-		theApp.Message( MSG_INFO, L"Unknown Profile Type:  %s", pXML->GetAttributeValue( L"xmlns" ) );
+		theApp.Message( MSG_INFO, L"Unknown Profile Type:  %s", (LPCTSTR)pXML->GetAttributeValue( L"xmlns" ) );
 		if ( ! pXML->IsNamed( L"profile" ) && ! pXML->IsNamed( L"gProfile" ) )
 			return FALSE;
 	}
@@ -300,7 +300,7 @@ CString CGProfile::GetContact(LPCTSTR pszType) const
 {
 	if ( const CXMLElement* pContacts = m_pXML->GetElementByName( L"contacts" ) )
 	{
-		for ( POSITION pos = pContacts->GetElementIterator() ; pos ; )
+		for ( POSITION pos = pContacts->GetElementIterator(); pos; )
 		{
 			const CXMLElement* pGroup = pContacts->GetNextElement( pos );
 

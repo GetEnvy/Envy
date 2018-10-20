@@ -1,8 +1,8 @@
 //
 // PacketBuffer.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2007
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -117,8 +117,8 @@ CG1Packet* CG1PacketBuffer::GetPacketToSend(DWORD dwExpire)
 		4 };	// 4 query hit packets at a time
 
 	// Loop
-	for ( int nCycle = G1_PACKTYPE_MAX * 2 ;	// Start nCycle as 18		The local variable nCycle isn't used in the loop, just here
-		 nCycle ;								// Stop if nCycle is 0 (looped 18 times)
+	for ( int nCycle = G1_PACKTYPE_MAX * 2;	// Start nCycle as 18		The local variable nCycle isn't used in the loop, just here
+		 nCycle;								// Stop if nCycle is 0 (looped 18 times)
 		 nCycle--,								// Decrement loop counter
 		 m_nCycle++,							// Move to the next packet type array, like from 1 ping to 2 pong and so on
 		 m_nIterate = 0 )						// Reset the count of packets of this type we've sent to 0
@@ -157,7 +157,7 @@ CG1Packet* CG1PacketBuffer::GetPacketToSend(DWORD dwExpire)
 void CG1PacketBuffer::Clear()
 {
 	// Loop through the 9 arrays of 64 packets, one array for each packet type
-	for ( int nType = 0 ; nType < G1_PACKTYPE_MAX ; nType++ )
+	for ( int nType = 0; nType < G1_PACKTYPE_MAX; nType++ )
 	{
 		// Clear this array
 		m_pType[ nType ].Clear();

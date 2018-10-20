@@ -1,8 +1,8 @@
 //
 // GraphLine.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2007
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -83,7 +83,7 @@ void CLineGraph::RemoveItem(CGraphItem* pItem)
 
 void CLineGraph::ClearItems()
 {
-	for ( POSITION pos = GetItemIterator() ; pos ; )
+	for ( POSITION pos = GetItemIterator(); pos; )
 	{
 		delete GetNextItem( pos );
 	}
@@ -112,7 +112,7 @@ BOOL CLineGraph::Update()
 		ResetMaximum();
 	}
 
-	for ( POSITION pos = GetItemIterator() ; pos ; )
+	for ( POSITION pos = GetItemIterator(); pos; )
 	{
 		CGraphItem* pItem = GetNextItem( pos );
 		DWORD nValue = pItem->Update();
@@ -128,7 +128,7 @@ BOOL CLineGraph::Update()
 
 void CLineGraph::Clear()
 {
-	for ( POSITION pos = GetItemIterator() ; pos ; )
+	for ( POSITION pos = GetItemIterator(); pos; )
 	{
 		GetNextItem( pos )->Clear();
 	}
@@ -151,7 +151,7 @@ void CLineGraph::Serialize(CArchive& ar)
 
 		ar.WriteCount( GetItemCount() );
 
-		for ( POSITION pos = GetItemIterator() ; pos ; )
+		for ( POSITION pos = GetItemIterator(); pos; )
 		{
 			GetNextItem( pos )->Serialize( ar );
 		}
@@ -165,7 +165,7 @@ void CLineGraph::Serialize(CArchive& ar)
 		ar >> m_nScale;
 		m_nScale = max( m_nScale, MIN_GRID_SIZE_HORZ );
 
-		for ( DWORD_PTR nCount = ar.ReadCount() ; nCount > 0 ; nCount-- )
+		for ( DWORD_PTR nCount = ar.ReadCount(); nCount > 0; nCount-- )
 		{
 			CGraphItem* pItem = new CGraphItem();
 			pItem->Serialize( ar );
@@ -181,7 +181,7 @@ void CLineGraph::ResetMaximum(BOOL bForce)
 {
 	DWORD nMaximum = 0;
 
-	for ( POSITION pos = GetItemIterator() ; pos ; )
+	for ( POSITION pos = GetItemIterator(); pos; )
 	{
 		CGraphItem* pItem = GetNextItem( pos );
 		DWORD nValue = pItem->GetMaximum();
@@ -202,7 +202,7 @@ void CLineGraph::Paint(CDC* pDC, CRect* pRect)
 
 	if ( pRect->Width() > 64 )
 	{
-		for ( POSITION pos = GetItemIterator() ; pos ; )
+		for ( POSITION pos = GetItemIterator(); pos; )
 		{
 			CGraphItem* pItem = GetNextItem( pos );
 			pItem->SetHistory( nWidth );
@@ -219,14 +219,14 @@ void CLineGraph::Paint(CDC* pDC, CRect* pRect)
 	if ( m_bShowGrid )
 		PaintGrid( pDC, pRect );
 
-	for ( POSITION pos = m_pItems.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pItems.GetHeadPosition(); pos; )
 	{
 		CGraphItem* pItem = m_pItems.GetNext( pos );
 
 		DWORD nPoints	= min( pItem->m_nLength, nWidth );
 		POINT* pPoints	= new POINT[ nPoints ];
 
-		for ( DWORD nPos = 0 ; nPos < nPoints ; nPos++ )
+		for ( DWORD nPos = 0; nPos < nPoints; nPos++ )
 		{
 			DWORD nValue = pItem->GetValueAt( nPos );
 
@@ -240,7 +240,7 @@ void CLineGraph::Paint(CDC* pDC, CRect* pRect)
 
 		CPen* pOldPen = (CPen*)pDC->SelectObject( &pItem->m_pPen[3] );
 
-		for ( int nLayer = 4 ; nLayer ; nLayer-- )
+		for ( int nLayer = 4; nLayer; nLayer-- )
 		{
 			if ( nPoints == 1 )
 				pDC->SetPixel( *pPoints, pItem->m_cPen[3] );
@@ -249,7 +249,7 @@ void CLineGraph::Paint(CDC* pDC, CRect* pRect)
 
 			if ( nLayer > 1 )
 			{
-				for ( DWORD nPos = 0 ; nPos < nPoints ; nPos++ )
+				for ( DWORD nPos = 0; nPos < nPoints; nPos++ )
 					pPoints[ nPos ].y --;
 				pDC->SelectObject( &pItem->m_pPen[ nLayer - 2 ] );
 			}
@@ -277,7 +277,7 @@ void CLineGraph::PaintGrid(CDC* pDC, CRect* pRect)
 
 	int nX = pRect->right + m_nScale - ( m_nUpdates % nTimeB ) * m_nScale;
 
-	for ( DWORD nPos = 0 ; nPos < nCount ; nPos++, nX -= nScale )
+	for ( DWORD nPos = 0; nPos < nCount; nPos++, nX -= nScale )
 	{
 		pDC->MoveTo( nX, pRect->top );
 		pDC->LineTo( nX, pRect->bottom );
@@ -287,7 +287,7 @@ void CLineGraph::PaintGrid(CDC* pDC, CRect* pRect)
 
 	if ( m_bShowAxis )
 	{
-		for ( POSITION pos = GetItemIterator() ; pos && ! bVolume ; )
+		for ( POSITION pos = GetItemIterator(); pos && ! bVolume; )
 		{
 			const CGraphItem* pItem	= GetNextItem( pos );
 			const GRAPHITEM* pDesc	= pItem->GetItemDesc( pItem->m_nCode );
@@ -301,7 +301,7 @@ void CLineGraph::PaintGrid(CDC* pDC, CRect* pRect)
 
 	int nOldY = pRect->bottom;
 
-	for ( DWORD nPos = 1 ; ; nPos++ )
+	for ( DWORD nPos = 1; ; nPos++ )
 	{
 		int nY = pRect->bottom - nScale * nPos * ( pRect->Height() - TOP_MARGIN ) / m_nMaximum;
 		if ( nY < 0 || nY >= nOldY - 4 ) break;
@@ -332,7 +332,7 @@ void CLineGraph::PaintLegend(CDC* pDC, CRect* pRect)
 	int nLeft	= pRect->left + ( ( pRect->Width() > 128 ) ? 64 : 0 );
 	int nTop	= pRect->top + 1;
 
-	for ( POSITION pos = GetItemIterator() ; pos ; nTop += nHeight )
+	for ( POSITION pos = GetItemIterator(); pos; nTop += nHeight )
 	{
 		CGraphItem* pItem = GetNextItem( pos );
 		pDC->SetTextColor( pItem->m_nColor );

@@ -1,8 +1,8 @@
 //
 // WebServices.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2011-2014 and Shareaza 2002-2008
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2008 and PeerProject 2011-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -81,7 +81,7 @@ static char THIS_FILE[] = __FILE__;
 
 //void CWebServices::ClearServicePages()
 //{
-//	for ( POSITION pos = m_pServiceDataPages.GetHeadPosition() ; pos ; )
+//	for ( POSITION pos = m_pServiceDataPages.GetHeadPosition(); pos; )
 //	{
 //		CMetaList* pPanelData = m_pServiceDataPages.GetNext( pos );
 //		delete pPanelData;
@@ -363,7 +363,7 @@ static char THIS_FILE[] = __FILE__;
 //	INT_PTR nCurr = 0;
 //	CShareMonkeyData* pPanelData = NULL;
 //
-//	for ( POSITION pos = m_pServiceDataPages.GetHeadPosition() ; pos ; nCurr++ )
+//	for ( POSITION pos = m_pServiceDataPages.GetHeadPosition(); pos; nCurr++ )
 //	{
 //		if ( m_nCurrentPage == nCurr )
 //		{
@@ -496,7 +496,7 @@ static char THIS_FILE[] = __FILE__;
 //	CShareMonkeyData* pData = NULL;
 //
 //	// ToDo: Change m_pServiceDataPages to CMap. Now it's stupid
-//	for ( INT_PTR nPage = 0 ; nPage <= m_nCurrentPage ; nPage++ )
+//	for ( INT_PTR nPage = 0; nPage <= m_nCurrentPage; nPage++ )
 //	{
 //		pData = static_cast< CShareMonkeyData* >( m_pServiceDataPages.GetNext( pos ) );
 //	}
@@ -536,7 +536,7 @@ static char THIS_FILE[] = __FILE__;
 //	CShareMonkeyData* pData = NULL;
 //
 //	// ToDo: Change m_pServiceDataPages to CMap. Now it's stupid
-//	for ( INT_PTR nPage = 0 ; nPage <= m_nCurrentPage ; nPage++ )
+//	for ( INT_PTR nPage = 0; nPage <= m_nCurrentPage; nPage++ )
 //	{
 //		pData = static_cast< CShareMonkeyData* >( m_pServiceDataPages.GetNext( pos ) );
 //	}
@@ -556,7 +556,7 @@ static char THIS_FILE[] = __FILE__;
 //	CShareMonkeyData* pData = NULL;
 //
 //	// ToDo: Change m_pServiceDataPages to CMap. Now it's stupid
-//	for ( INT_PTR nPage = 0 ; nPage <= m_nCurrentPage ; nPage++ )
+//	for ( INT_PTR nPage = 0; nPage <= m_nCurrentPage; nPage++ )
 //	{
 //		pData = static_cast< CShareMonkeyData* >( m_pServiceDataPages.GetNext( pos ) );
 //	}
@@ -609,7 +609,7 @@ BOOL CWebServices::ShowBitprintsTicket(DWORD nIndex)
 			int nPeek = hFile.Read( nBuffer, 20 );
 			hFile.Close();
 
-			for ( int nByte = 0 ; nByte < nPeek ; nByte++ )
+			for ( int nByte = 0; nByte < nPeek; nByte++ )
 			{
 				str += pszHex[ (BYTE)nBuffer[ nByte ] >> 4 ];
 				str += pszHex[ (BYTE)nBuffer[ nByte ] & 15 ];
@@ -659,7 +659,7 @@ BOOL CWebServices::ShowBitprintsTicket(DWORD nIndex)
 		int nTemp, nAudioTag = 0, nImageTag = 0;
 		CString strDescription, strAudioTag, strImageTag;
 
-		for ( POSITION pos = pMetadata->GetAttributeIterator() ; pos ; )
+		for ( POSITION pos = pMetadata->GetAttributeIterator(); pos; )
 		{
 			CString strReplace;
 			CXMLNode* pNode = pMetadata->GetNextAttribute( pos );

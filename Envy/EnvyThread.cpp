@@ -1,8 +1,8 @@
 //
 // EnvyThread.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2014 and Shareaza 2008
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2008 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -149,7 +149,7 @@ void CEnvyThread::Add(CEnvyThread* pThread, LPCSTR pszName)
 	CThreadTag tag = { pThread, pszName };
 	m_ThreadMap.SetAt( pThread->m_nThreadID, tag );
 
-	TRACE( L"Creating '%hs' thread (0x%x). Count: %d\n",
+	TRACE( "Creating '%hs' thread (0x%x). Count: %d\n",
 		( pszName ? pszName : "unnamed" ), pThread->m_nThreadID, m_ThreadMap.GetCount() );
 }
 
@@ -165,7 +165,7 @@ void CEnvyThread::Remove(DWORD nThreadID)
 	{
 		m_ThreadMap.RemoveKey( nThreadID );
 
-		TRACE( L"Removing '%hs' thread (0x%x). Count: %d\n",
+		TRACE( "Removing '%hs' thread (0x%x). Count: %d\n",
 			( tag.pszName ? tag.pszName : "unnamed" ), nThreadID, m_ThreadMap.GetCount() );
 	}
 }
@@ -264,7 +264,7 @@ void CEnvyThread::CloseThread(DWORD nThreadID, DWORD dwTimeout)
 				if ( TerminateThread( hThread, 0 ) )
 				{
 					theApp.Message( MSG_DEBUG, L"WARNING: Terminating thread (0x%x).", nThreadID );
-					TRACE( L"WARNING: Terminating thread (0x%x).\n", nThreadID );
+					TRACE( "WARNING: Terminating thread (0x%x).\n", nThreadID );
 
 					DeleteThread( nThreadID );
 				}

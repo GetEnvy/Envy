@@ -1,8 +1,8 @@
 //
 // CtrlWizard.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2015 and Shareaza 2002-2007
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2015
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -72,7 +72,7 @@ void CWizardCtrl::Clear()
 	m_pFileDocs.RemoveAll();
 	m_pFilePaths.RemoveAll();
 	m_pItems.RemoveAll();
-	for ( INT_PTR nCount = 0 ; nCount < m_pControls.GetCount() ; nCount++ )
+	for ( INT_PTR nCount = 0; nCount < m_pControls.GetCount(); nCount++ )
 	{
 		CWnd* pWnd = m_pControls.ElementAt( nCount );
 		pWnd->DestroyWindow();
@@ -114,7 +114,7 @@ void CWizardCtrl::OnPaint()
 		nOffsetY = nOffsetY / 2 - dc.GetTextExtent( L"Xg" ).cy / 2 - 1;
 		int nRows = 0;
 
-		for ( INT_PTR nControl = 0 ; nControl < m_pControls.GetSize() ; nControl++ )
+		for ( INT_PTR nControl = 0; nControl < m_pControls.GetSize(); nControl++ )
 		{
 			float fFactor = 1;
 			CWnd* pControl	= m_pControls.GetAt( nControl );
@@ -211,7 +211,7 @@ void CWizardCtrl::ScrollBy(int nDelta)
 	m_nScroll = max( 0, min( GetScrollLimit( SB_VERT ), m_nScroll ) );
 	nDelta = m_nScroll - nBefore;
 
-	for ( CWnd* pWnd = GetWindow( GW_CHILD ) ; pWnd ; pWnd = pWnd->GetNextWindow() )
+	for ( CWnd* pWnd = GetWindow( GW_CHILD ); pWnd; pWnd = pWnd->GetNextWindow() )
 	{
 		pWnd->ModifyStyle( WS_VISIBLE, 0 );
 	}
@@ -305,7 +305,7 @@ void CWizardCtrl::MakeAll(const CString& sXMLPath, const CAlbumFolder* pFolder)
 		CString strEvenTemplate = LoadFile( strTemplatePath + m_sEvenFilePath );
 
 		int nFileCount = 1;
-		for ( std::size_t pos = 0 ; pos != pList.size() ; ++pos )
+		for ( std::size_t pos = 0; pos != pList.size(); ++pos )
 		{
 			m_pFilePaths.Add( pList[ pos ]->GetPath() );
 			pList[ pos ]->PrepareDoc( ( nFileCount & 1 ) ? strOddTemplate : strEvenTemplate, m_pFileDocs );
@@ -325,7 +325,7 @@ BOOL CWizardCtrl::CollectFiles(CXMLElement* pBase)
 	CXMLElement* pTemplate = pBase->GetElementByName( L"files", FALSE );
 	if ( ! pTemplate ) return FALSE;
 
-	for ( POSITION pos = pTemplate->GetElementIterator() ; pos ; )
+	for ( POSITION pos = pTemplate->GetElementIterator(); pos; )
 	{
 		CXMLElement* pItem = pTemplate->GetNextElement( pos );
 		if ( pItem->IsNamed( L"file" ) )
@@ -363,7 +363,7 @@ BOOL CWizardCtrl::CollectImages(CXMLElement* pBase)
 	CXMLElement* pTemplate = pBase->GetElementByName( L"images", FALSE );
 	if ( ! pTemplate ) return FALSE;
 
-	for ( POSITION pos = pTemplate->GetElementIterator() ; pos ; )
+	for ( POSITION pos = pTemplate->GetElementIterator(); pos; )
 	{
 		CXMLElement* pItem = pTemplate->GetNextElement( pos );
 		if ( pItem->IsNamed( L"image" ) )
@@ -388,7 +388,7 @@ BOOL CWizardCtrl::MakeControls(const CString& sXMLPath, CXMLElement* pBase, std:
 	CWnd* pControl = NULL;
 	CRect rc;
 
-	for ( POSITION posTemplate = pTemplate->GetElementIterator() ; posTemplate ; )
+	for ( POSITION posTemplate = pTemplate->GetElementIterator(); posTemplate; )
 	{
 		CXMLElement* pLangGroup = pTemplate->GetNextElement( posTemplate );
 		CString strLang = pLangGroup->GetAttributeValue( L"language" );
@@ -402,7 +402,7 @@ BOOL CWizardCtrl::MakeControls(const CString& sXMLPath, CXMLElement* pBase, std:
 			if ( ! Settings.General.LanguageDefault ) Clear();		// strLang != "en"
 
 			int nItemCount = 0;
-			for ( POSITION posLangGroup = pLangGroup->GetElementIterator() ; posLangGroup ; )
+			for ( POSITION posLangGroup = pLangGroup->GetElementIterator(); posLangGroup; )
 			{
 				CXMLElement* pItem = pLangGroup->GetNextElement( posLangGroup );
 				if ( pItem->IsNamed( L"item" ) )
@@ -416,7 +416,7 @@ BOOL CWizardCtrl::MakeControls(const CString& sXMLPath, CXMLElement* pBase, std:
 						// Do we need to check if the current text id is actually used in EvenFile.tpl and OddFile.tpl ?
 						int nFileCount = 0;
 
-						for ( std::size_t pos = 0 ; pos != pList.size() ; ++pos )
+						for ( std::size_t pos = 0; pos != pList.size(); ++pos )
 						{
 							CEdit* pEdit = new CEdit();
 
@@ -518,7 +518,7 @@ void CWizardCtrl::Layout()
 	int nTop = -m_nScroll;
 	BOOL bSameRow = FALSE;
 
-	for ( INT_PTR nControl = 0 ; nControl < m_pControls.GetSize() ; nControl++ )
+	for ( INT_PTR nControl = 0; nControl < m_pControls.GetSize(); nControl++ )
 	{
 		CWnd* pControl = m_pControls.GetAt( nControl );
 		float fFactor = 1;
@@ -635,7 +635,7 @@ BOOL CWizardCtrl::OnTab()
 		bNext = TRUE;
 	}
 
-	for ( INT_PTR nControl = 0 ; nControl < m_pControls.GetSize() ; nControl++ )
+	for ( INT_PTR nControl = 0; nControl < m_pControls.GetSize(); nControl++ )
 	{
 		CWnd* pControl = m_pControls.GetAt( nControl );
 

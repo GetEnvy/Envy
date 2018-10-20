@@ -1,8 +1,8 @@
 //
 // G1Neighbour.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2007
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -282,7 +282,7 @@ BOOL CG1Neighbour::ProcessPackets(CBuffer* pInput)
 
 	// Start out with bSuccess true and loop until it gets set to false
 	BOOL bSuccess = TRUE;
-	for ( ; bSuccess ; )	// This is the same thing as while ( bSuccess )
+	for ( ; bSuccess; )	// This is the same thing as while ( bSuccess )
 	{
 		// Look at the input buffer as a Gnutella packet
 		GNUTELLAPACKET* pPacket = (GNUTELLAPACKET*)pInput->m_pBuffer;	// Hopefully a packet starts right there
@@ -541,7 +541,7 @@ BOOL CG1Neighbour::OnPing(CG1Packet* pPacket)
 	if ( pPacket->m_nTTL == 2 && pPacket->m_nHops == 0 )
 	{
 		// Loop once for each computer we are connected to
-		for ( POSITION pos = Neighbours.GetIterator() ; pos ; )
+		for ( POSITION pos = Neighbours.GetIterator(); pos; )
 		{
 			// Get a pointer to a computer we are connected to
 			CNeighbour* pConnection = Neighbours.GetNext( pos );
@@ -608,7 +608,7 @@ BOOL CG1Neighbour::OnPing(CG1Packet* pPacket)
 	ZeroMemory( m_nPongNeeded, PONG_NEEDED_BUFFER );
 
 	// Loop nHops from 1 through the packet's TTL
-	for ( BYTE nHops = 1 ; nHops <= pPacket->m_nTTL ; nHops++ )
+	for ( BYTE nHops = 1; nHops <= pPacket->m_nTTL; nHops++ )
 	{
 		// Store ratios in the pong needed array based on the ping's TTL (do)
 		m_nPongNeeded[ nHops ] = BYTE(				// Set the byte at the nHops position in the array to
@@ -826,7 +826,7 @@ BOOL CG1Neighbour::OnBye(CG1Packet* pPacket)
 	}
 
 	// Loop the index nChar for each character in the text
-	for ( int nChar = 0 ; nChar < strReason.GetLength() ; nChar++ )
+	for ( int nChar = 0; nChar < strReason.GetLength(); nChar++ )
 	{
 		// If this character has a value less than 32, it's a special character, like tab
 		if ( strReason[nChar] < 32 )
@@ -1082,7 +1082,7 @@ void CG1Neighbour::SendClusterAdvisor()
 		CQuickLock oLock( HostCache.Gnutella1.m_pSection );
 
 		// Loop through the Gnutella host cache,
-		for ( CHostCacheIterator i = HostCache.Gnutella1.Begin() ; i != HostCache.Gnutella1.End() && nCount < 20 ; ++i )
+		for ( CHostCacheIterator i = HostCache.Gnutella1.Begin(); i != HostCache.Gnutella1.End() && nCount < 20; ++i )
 		{
 			CHostCacheHostPtr pHost = (*i);
 

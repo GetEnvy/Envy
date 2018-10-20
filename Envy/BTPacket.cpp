@@ -1,8 +1,8 @@
 //
 // BTPacket.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2015 and Shareaza 2002-2007
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2015
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -146,7 +146,7 @@ void CDHT::Connect()
 		CQuickLock oLock( HostCache.BitTorrent.m_pSection );
 
 		int nCount = 0;
-		for ( CHostCacheIterator i = HostCache.BitTorrent.Begin() ; i != HostCache.BitTorrent.End() && nCount < 100 ; ++i )
+		for ( CHostCacheIterator i = HostCache.BitTorrent.Begin(); i != HostCache.BitTorrent.End() && nCount < 100; ++i )
 		{
 			CHostCacheHostPtr pCache = (*i);
 			if ( pCache->m_oBtGUID )
@@ -187,7 +187,7 @@ void CDHT::Disconnect()
 	{
 		CQuickLock oLock( HostCache.BitTorrent.m_pSection );
 
-		for ( int i = 0 ; i < nCount ; ++i )
+		for ( int i = 0; i < nCount; ++i )
 		{
 			if ( CHostCacheHostPtr pCache = HostCache.BitTorrent.Add( &pHosts[ i ].sin_addr, pHosts[ i].sin_port ) )
 			{
@@ -269,7 +269,7 @@ void CDHT::OnRun()
 			const DWORD tNow = static_cast< DWORD >( time( NULL ) );
 
 			// Ping most recent node
-			for ( CHostCacheIterator i = HostCache.BitTorrent.Begin() ; i != HostCache.BitTorrent.End() ; ++i )
+			for ( CHostCacheIterator i = HostCache.BitTorrent.Begin(); i != HostCache.BitTorrent.End(); ++i )
 			{
 				CHostCacheHostPtr pCache = (*i);
 
@@ -372,7 +372,7 @@ void CDHT::OnEvent(void* /*closure*/, int evt, const unsigned char* info_hash, c
 
 					size_t nCount = data_len / 6;
 					//int nMax = Settings.Downloads.SourcesWanted;
-					for ( size_t i = 0 ; i < nCount ; ++i )
+					for ( size_t i = 0; i < nCount; ++i )
 					{
 						const char* p = &((const char*)data)[ i * 6 ];
 						pDownload->AddSourceBT( Hashes::BtGuid(), (IN_ADDR*)p, ntohs( *(WORD*)(p + 4) ) );
@@ -661,6 +661,7 @@ CString CBTPacket::ToASCII() const
 
 BOOL CBTPacket::OnPacket(const SOCKADDR_IN* pHost)
 {
+	// OnDatagram Extended: http://www.bittorrent.org/beps/bep_0010.html
 	ASSERT( m_nType == BT_PACKET_EXTENSION );
 	ASSERT( m_nExtension == BT_EXTENSION_NOP );
 
@@ -671,23 +672,32 @@ BOOL CBTPacket::OnPacket(const SOCKADDR_IN* pHost)
 	if ( ! m_pNode->IsType( CBENode::beDict ) )
 		return FALSE;
 
-	if ( ! Settings.BitTorrent.Enabled || ! Settings.BitTorrent.EnableDHT )
+	if ( ! Settings.BitTorrent.Enabled )
 		return TRUE;
 
+	// Get version
+	const CBENode* pVersion = m_pNode->GetNode( BT_DICT_VENDOR );			// "v"
+	if ( pVersion && pVersion->IsType( CBENode::beString ) )
 	{
-		CQuickLock oLock( HostCache.BitTorrent.m_pSection );
+		//CString strName = CBTClient::GetUserAgentAzureusStyle( (LPBYTE)pVersion->m_pValue, 4 );		// Unlikely off-spec
+		CString strName = pVersion->GetString();
 
-		if ( CHostCacheHostPtr pCache = HostCache.BitTorrent.OnSuccess( &pHost->sin_addr, htons( pHost->sin_port ) ) )
+		if ( ! strName.IsEmpty() )
 		{
-			// Get version
-			const CBENode* pVersion = m_pNode->GetNode( BT_DICT_VENDOR );	// "v"
-			if ( pVersion && pVersion->IsType( CBENode::beString ) )
-				pCache->m_sName = CBTClient::GetUserAgentAzureusStyle( (LPBYTE)pVersion->m_pValue, 4 );
+			CQuickLock oLock( HostCache.BitTorrent.m_pSection );
 
-			HostCache.BitTorrent.m_nCookie++;
+			if ( CHostCacheHostPtr pCache = HostCache.BitTorrent.OnSuccess( &pHost->sin_addr, htons( pHost->sin_port ) ) )
+			{
+				pCache->m_sName = strName;
+				HostCache.BitTorrent.m_nCookie++;
+			}
 		}
 	}
 
+	if ( ! Settings.BitTorrent.EnableDHT )
+		return TRUE;
+
+	// Get public IP
 	CBENode* pYourIP = m_pNode->GetNode( BT_DICT_YOURIP );					// "yourip"
 	if ( pYourIP && pYourIP->IsType( CBENode::beString ) )
 	{

@@ -1,8 +1,8 @@
 //
 // RichViewCtrl.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2017
-// Portions copyright PeerProject 2008-2015 and Shareaza 2002-2007
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2015
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -143,7 +143,7 @@ int CRichViewCtrl::FullHeightMove(int nX, int nY, int nWidth, BOOL bShow)
 
 BOOL CRichViewCtrl::GetElementRect(CRichElement* pElement, RECT* prc) const
 {
-	for ( int nFragment = 0 ; nFragment < m_pFragments.GetCount() ; nFragment ++ )
+	for ( int nFragment = 0; nFragment < m_pFragments.GetCount(); nFragment ++ )
 	{
 		const CRichFragment* pFragment = m_pFragments.GetAt( nFragment );
 
@@ -232,7 +232,7 @@ void CRichViewCtrl::OnPaint()
 
 	CRichElement* pElement = NULL;
 
-	for ( int nFragment = 0 ; nFragment < m_pFragments.GetSize() ; nFragment++ )
+	for ( int nFragment = 0; nFragment < m_pFragments.GetSize(); nFragment++ )
 	{
 		CRichFragment* pFragment = m_pFragments.GetAt( nFragment );
 
@@ -492,7 +492,7 @@ BOOL CRichViewCtrl::OnMouseWheel(UINT /*nFlags*/, short zDelta, CPoint /*pt*/)
 
 void CRichViewCtrl::ClearFragments()
 {
-	for ( int nFragment = 0 ; nFragment < m_pFragments.GetSize() ; nFragment++ )
+	for ( int nFragment = 0; nFragment < m_pFragments.GetSize(); nFragment++ )
 	{
 		delete m_pFragments.GetAt( nFragment );
 	}
@@ -530,7 +530,7 @@ void CRichViewCtrl::Layout(CDC* pDC, CRect* pRect)
 	CRichFragment* pFrag = NULL;
 	CList< CRichFragment* > pLine;
 
-	for ( POSITION pos = m_pDocument->GetIterator() ; pos ; )
+	for ( POSITION pos = m_pDocument->GetIterator(); pos; )
 	{
 		CRichElement* pElement = m_pDocument->GetNext( pos );
 
@@ -599,7 +599,7 @@ void CRichViewCtrl::Layout(CDC* pDC, CRect* pRect)
 
 		pFrag = NULL;
 
-		for ( int nChar = 0 ; nChar <= pElement->m_sText.GetLength() ; nChar++, pszText++ )
+		for ( int nChar = 0; nChar <= pElement->m_sText.GetLength(); nChar++, pszText++ )
 		{
 			if ( *pszText > ' ' ) continue;
 
@@ -692,7 +692,7 @@ void CRichViewCtrl::WrapLineHelper(CList< CRichFragment* >& pLine, CPoint& pt, i
 	else if ( nAlign == reaRight )
 		nHorz = nWidth - pt.x;
 
-	for ( POSITION posAlign = pLine.GetHeadPosition() ; posAlign ; )
+	for ( POSITION posAlign = pLine.GetHeadPosition(); posAlign; )
 	{
 		CRichFragment* pAlign = (CRichFragment*)pLine.GetNext( posAlign );
 
@@ -720,7 +720,7 @@ CRichFragment* CRichViewCtrl::PointToFrag(CPoint& pt) const
 
 	pt.y += GetScrollPos( SB_VERT );
 
-	for ( INT_PTR nFragment = m_pFragments.GetSize() - 1 ; nFragment >= 0 ; nFragment-- )
+	for ( INT_PTR nFragment = m_pFragments.GetSize() - 1; nFragment >= 0; nFragment-- )
 	{
 		CRichFragment* pFragment = m_pFragments.GetAt( nFragment );
 
@@ -746,7 +746,7 @@ RICHPOSITION CRichViewCtrl::PointToPosition(CPoint& pt) const
 
 	pt.y += GetScrollPos( SB_VERT );
 
-	for ( int nFragment = 0 ; nFragment < m_pFragments.GetSize() ; nFragment++ )
+	for ( int nFragment = 0; nFragment < m_pFragments.GetSize(); nFragment++ )
 	{
 		const CRichFragment* pFragment = m_pFragments.GetAt( nFragment );
 
@@ -767,7 +767,7 @@ RICHPOSITION CRichViewCtrl::PointToPosition(CPoint& pt) const
 					pszText += pFragment->m_nOffset;
 					int nX = pt.x - pFragment->m_pt.x;
 
-					for ( pos.nOffset = 0 ; pos.nOffset < pFragment->m_nLength ; pszText ++ )
+					for ( pos.nOffset = 0; pos.nOffset < pFragment->m_nLength; pszText ++ )
 					{
 						int nWidth = pDC->GetTextExtent( pszText, 1 ).cx;
 						if ( nX < ( nWidth >> 1 ) ) break;
@@ -868,7 +868,7 @@ void CRichViewCtrl::CopySelection() const
 {
 	CString str;
 
-	for ( int nFragment = m_pSelAbsStart.nFragment ; nFragment <= m_pSelAbsEnd.nFragment ; nFragment++ )
+	for ( int nFragment = m_pSelAbsStart.nFragment; nFragment <= m_pSelAbsEnd.nFragment; nFragment++ )
 	{
 		const CRichFragment* pFragment = m_pFragments.GetAt( nFragment );
 
@@ -927,7 +927,7 @@ void CRichViewCtrl::CopySelection() const
 	// Following block required for IRC functionality:
 	{
 		CString strTemp;
-		for ( int nPos = 0, nLength = str.GetLength() ; nPos < nLength ; nPos++ )
+		for ( int nPos = 0, nLength = str.GetLength(); nPos < nLength; nPos++ )
 		{
 			TCHAR ch = str.GetAt( nPos );
 			if ( ch != L'\x200D' )	// Zero Width Joiner
@@ -972,7 +972,7 @@ CString CRichViewCtrl::GetWordFromPoint(CPoint& point, LPCTSTR szTokens) const
 			const CString& strText = pFragment->m_pElement->m_sText;
 			if ( _tcschr( szTokens, strText.GetAt( nOffset ) ) == NULL )
 			{
-				for ( int nPos = pFragment->m_nOffset ; ; )
+				for ( int nPos = pFragment->m_nOffset; ; )
 				{
 					CString strWord = strText.Tokenize( szTokens, nPos );
 					if ( strWord.IsEmpty() )

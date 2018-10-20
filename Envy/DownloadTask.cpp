@@ -1,8 +1,8 @@
 //
 // DownloadTask.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2007
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -30,7 +30,6 @@
 #include "LibraryMaps.h"
 #include "SharedFile.h"
 #include "FragmentedFile.h"
-#include "ImageServices.h"
 #include "ImageFile.h"
 #include "HttpRequest.h"
 #include "BTInfo.h"
@@ -367,7 +366,7 @@ void CDownloadTask::RunMerge()
 	m_fProgress = 0;
 	const float fIncrement = 100.0f / m_oMergeFiles.GetCount();
 
-	for ( POSITION pos = m_oMergeFiles.GetHeadPosition() ; pos && IsThreadEnabled() ; )
+	for ( POSITION pos = m_oMergeFiles.GetHeadPosition(); pos && IsThreadEnabled(); )
 	{
 		if ( m_pDownload->IsCompleted() || m_pDownload->IsMoving() ) break;
 
@@ -387,7 +386,7 @@ void CDownloadTask::RunMerge()
 //	static LPCTSTR pszValid = L" `~!@#$%^&()-_=+[]{}';.,";
 //	CString strName = pszName;
 //
-//	for ( int nChar = 0 ; nChar < strName.GetLength() ; nChar++ )
+//	for ( int nChar = 0; nChar < strName.GetLength(); nChar++ )
 //	{
 //		TCHAR cChar = strName.GetAt( nChar );
 //		if ( (DWORD)cChar > 128 || IsCharacter( cChar ) || _tcschr( pszValid, cChar ) != NULL )

@@ -46,8 +46,8 @@ BEGIN
 			VALUE "ProductName", "Envy"
 			VALUE "ProductVersion", "1.0"
 			VALUE "FileVersion", "1.0"
-			VALUE "InternalName", "Packages"
-			VALUE "OriginalFilename", "Packages.exe"
+			VALUE "InternalName", "Unpacker"
+			VALUE "OriginalFilename", "Unpacker.exe"
 			VALUE "FileDescription", "Envy Package Installer"
 			VALUE "Comments", "Envy Package Installer"
 			VALUE "CompanyName", "GetEnvy.com"
@@ -68,7 +68,7 @@ END
 
 // Icon with lowest ID value placed first to ensure
 // application icon remains consistent on all systems.
-IDI_ICON		ICON                    "Res\\Packages.ico"
+IDI_ICON		ICON                    "Res\\Unpacker.ico"
 IDI_ENVY		ICON                    "Res\\Envy.ico"
 
 
@@ -167,14 +167,14 @@ LANGUAGE 9, 1
 // RT_MANIFEST
 //
 
-// Note: Obsolete, for reference.  Manifest is generated, see Packages.h for controls
+// Note: Obsolete, for reference.  Manifest is generated, see Unpacker.h for controls
 
 //#define IDR_MANIFEST 1	// 2 for a DLL
 //
 //IDR_MANIFEST RT_MANIFEST
 //{
 //   "<assembly xmlns=""urn:schemas-microsoft-com:asm.v1"" manifestVersion=""1.0"">
-//       <assemblyIdentity type=""win32"" name=""Envy.Packages"" version=""1.0""
+//       <assemblyIdentity type=""win32"" name=""Envy.Unpacker"" version=""1.0""
 //#ifdef WIN64
 //         processorArchitecture=""amd64""
 //#else

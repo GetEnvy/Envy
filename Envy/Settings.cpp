@@ -1,8 +1,8 @@
 //
 // Settings.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2016 and Shareaza 2002-2008
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2008 and PeerProject 2008-2016
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -69,7 +69,7 @@ CSettings::CSettings()
 
 CSettings::~CSettings()
 {
-	for ( POSITION pos = m_pItems.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pItems.GetHeadPosition(); pos; )
 	{
 		delete m_pItems.GetNext( pos );
 	}
@@ -667,7 +667,7 @@ void CSettings::Load()
 
 
 	// Load settings
-	for ( POSITION pos = m_pItems.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pItems.GetHeadPosition(); pos; )
 	{
 		Item* pItem = m_pItems.GetNext( pos );
 		pItem->Load();
@@ -820,7 +820,7 @@ void CSettings::Save(BOOL bShutdown)
 {
 	General.Running = ! bShutdown;
 
-	for ( POSITION pos = m_pItems.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pItems.GetHeadPosition(); pos; )
 	{
 		Item* pItem = m_pItems.GetNext( pos );
 		pItem->Save();
@@ -829,7 +829,7 @@ void CSettings::Save(BOOL bShutdown)
 
 void CSettings::Normalize(LPVOID pSetting)
 {
-	for ( POSITION pos = m_pItems.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pItems.GetHeadPosition(); pos; )
 	{
 		Item* pItem = m_pItems.GetNext( pos );
 		if ( *pItem == pSetting )
@@ -842,7 +842,7 @@ void CSettings::Normalize(LPVOID pSetting)
 
 bool CSettings::IsDefault(LPVOID pSetting) const
 {
-	for ( POSITION pos = m_pItems.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pItems.GetHeadPosition(); pos; )
 	{
 		Item* pItem = m_pItems.GetNext( pos );
 		if ( *pItem == pSetting )
@@ -853,7 +853,7 @@ bool CSettings::IsDefault(LPVOID pSetting) const
 
 void CSettings::SetDefault(LPVOID pSetting)
 {
-	for ( POSITION pos = m_pItems.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pItems.GetHeadPosition(); pos; )
 	{
 		Item* pItem = m_pItems.GetNext( pos );
 		if ( *pItem == pSetting )
@@ -1086,7 +1086,7 @@ BOOL CSettings::LoadList(LPCTSTR pszName, CListCtrl* pCtrl, int nSort)
 
 	pColumn.mask = LVCF_FMT;
 	int nColumns = 0;
-	for ( ; pCtrl->GetColumn( nColumns, &pColumn ) ; nColumns++ );
+	for ( ; pCtrl->GetColumn( nColumns, &pColumn ); nColumns++ );
 
 	CString strOrdering, strWidths, strItem;
 	BOOL bSuccess = FALSE;
@@ -1103,7 +1103,7 @@ BOOL CSettings::LoadList(LPCTSTR pszName, CListCtrl* pCtrl, int nSort)
 	{
 		UINT* pOrdering = new UINT[ nColumns ];
 
-		for ( int nColumn = 0 ; nColumn < nColumns ; nColumn++ )
+		for ( int nColumn = 0; nColumn < nColumns; nColumn++ )
 		{
 			_stscanf( strWidths.Mid( nColumn * 4, 4 ), L"%x", &pOrdering[ nColumn ] );
 			pCtrl->SetColumnWidth( nColumn, pOrdering[ nColumn ] );
@@ -1129,7 +1129,7 @@ void CSettings::SaveList(LPCTSTR pszName, CListCtrl* pCtrl)
 
 	pColumn.mask = LVCF_FMT;
 	int nColumns = 0;
-	for ( ; pCtrl->GetColumn( nColumns, &pColumn ) ; nColumns++ );
+	for ( ; pCtrl->GetColumn( nColumns, &pColumn ); nColumns++ );
 
 	UINT* pOrdering = new UINT[ nColumns ];
 	ZeroMemory( pOrdering, nColumns * sizeof( UINT ) );
@@ -1137,7 +1137,7 @@ void CSettings::SaveList(LPCTSTR pszName, CListCtrl* pCtrl)
 
 	CString strOrdering, strWidths, strItem;
 
-	for ( int nColumn = 0 ; nColumn < nColumns ; nColumn++ )
+	for ( int nColumn = 0; nColumn < nColumns; nColumn++ )
 	{
 		strItem.Format( L"%.2x", pOrdering[ nColumn ] );
 		strOrdering += strItem;
@@ -1184,7 +1184,7 @@ void CSettings::SetStartup(BOOL bStartup)
 	if ( bStartup )
 	{
 		CString strCommand;
-		strCommand.Format( L"\"%s\" -tray", theApp.m_strBinaryPath );
+		strCommand.Format( L"\"%s\" -tray", (LPCTSTR)theApp.m_strBinaryPath );
 		RegSetValueEx( hKey, L"Envy", 0, REG_SZ, (const BYTE*)(LPCTSTR)strCommand,
 			( strCommand.GetLength() + 1 ) * sizeof( TCHAR ) );
 	}
@@ -1199,7 +1199,7 @@ void CSettings::SetStartup(BOOL bStartup)
 void CSettings::ClearSearches()
 {
 	CString strEntry;
-	for ( int i = 1 ; ; i++ )
+	for ( int i = 1; ; i++ )
 	{
 		strEntry.Format( L"Search.%.2i", i );
 		if ( theApp.GetProfileString( L"Search", strEntry ).IsEmpty() )
@@ -1237,21 +1237,21 @@ const CString CSettings::SmartSpeed(QWORD nVolume, int nVolumeUnits, bool bTrunc
 
 	// bits - Bytes
 	case 1:
-		strVolume.Format( L"%I64u %s", nVolume, strUnit );
+		strVolume.Format( L"%I64u %s", nVolume, (LPCTSTR)strUnit );
 		break;
 
 	// Kilobits - KiloBytes
 	case 2:
-		strVolume.Format( L"%.1lf K%s", nVolume / KiloFloat, strUnit );
+		strVolume.Format( L"%.1lf K%s", nVolume / KiloFloat, (LPCTSTR)strUnit );
 		break;
 
 	// Megabits - MegaBytes
 	case 3:
-		strVolume.Format( L"%.2lf M%s", nVolume / MegaFloat, strUnit );
+		strVolume.Format( L"%.2lf M%s", nVolume / MegaFloat, (LPCTSTR)strUnit );
 		break;
 
 	default:
-		TRACE( L"Unknown RatesUnit - %i", General.RatesUnit );
+		TRACE( "Unknown RatesUnit - %i", General.RatesUnit );
 		break;
 	}
 
@@ -1470,7 +1470,7 @@ void CSettings::Item::Save() const
 void CSettings::LoadSet(string_set* pSet, LPCTSTR pszString)
 {
 	pSet->clear();
-	for ( LPCTSTR start = pszString ; start && *start ; start++ )
+	for ( LPCTSTR start = pszString; start && *start; start++ )
 	{
 		LPCTSTR c = _tcschr( start, L'|' );
 		int len = c ? (int) ( c - start ) : (int) _tcslen( start );
@@ -1492,7 +1492,7 @@ CString CSettings::SaveSet(const string_set* pSet)
 		return CString();
 
 	CString tmp( L"|" );
-	for ( string_set::const_iterator i = pSet->begin() ; i != pSet->end() ; i++ )
+	for ( string_set::const_iterator i = pSet->begin(); i != pSet->end(); i++ )
 	{
 		tmp += *i;
 		tmp += L'|';

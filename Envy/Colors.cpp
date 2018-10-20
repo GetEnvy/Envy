@@ -1,7 +1,7 @@
 //
 // Colors.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
+// This file is part of Envy (getenvy.com) © 2016-2018
 // Portions copyright PeerProject 2009-2014
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -67,6 +67,7 @@ void CColors::CalculateColors(BOOL bCustom)
 	m_crSys3DHighlight			= GetSysColor( COLOR_3DHIGHLIGHT );
 	m_crSysActiveCaption		= GetSysColor( COLOR_ACTIVECAPTION );
 	m_crSysMenuText 			= GetSysColor( COLOR_MENUTEXT );
+	m_crStatusBar				= GetSysColor( COLOR_WINDOWFRAME );
 
 	m_crDialog					= CalculateColor( m_crSysBtnFace, m_crSysWindow, 100 );
 	m_crDialogText				= RGB( 0, 0, 0 );

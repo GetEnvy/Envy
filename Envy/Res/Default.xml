@@ -1232,11 +1232,11 @@
 		<item id="ID_DOWNLOADS_EDIT" text="Torrent _Properties..."/>
 	</menu>
 	<menu name="CDownloadsWnd.Default">
-		<item id="ID_DOWNLOADS_FOLDER" text="Open _Folder"/>
-		<separator/>
 		<item id="ID_TOOLS_DOWNLOAD" text="Start New _Download"/>
 		<item id="ID_TOOLS_SEEDTORRENT" text="Seed New _Torrent"/>
 		<item id="ID_DOWNLOADS_CLEAR_COMPLETED" text="_Clear Completed"/>
+		<separator/>
+		<item id="ID_DOWNLOADS_FOLDER" text="Open _Folder"/>
 		<separator/>
 		<item id="ID_DOWNLOADS_HELP" text="_Help..."/>
 	</menu>

@@ -1,8 +1,8 @@
 //
 // CtrlLibraryTreeView.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2015 and Shareaza 2002-2007
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2015
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -241,7 +241,7 @@ BOOL CLibraryTreeView::Expand(CLibraryTreeItem* pItem, TRISTATE bExpand, BOOL bI
 
 	if ( pItem->m_bContract1 == FALSE )
 	{
-		for ( CLibraryTreeItem* pParent = pItem ; pParent != NULL ; pParent = pParent->parent() )
+		for ( CLibraryTreeItem* pParent = pItem; pParent != NULL; pParent = pParent->parent() )
 			pParent->m_bContract1 = FALSE;
 	}
 
@@ -261,7 +261,7 @@ BOOL CLibraryTreeView::CollapseRecursive(CLibraryTreeItem* pItem)
 	if ( pItem != m_pRoot && pItem->m_bExpanded && pItem->m_bContract1 )
 		bChanged |= Expand( pItem, TRI_FALSE, FALSE );
 
-	for ( CLibraryTreeItem::iterator pChild = pItem->begin() ; pChild != pItem->end() ; ++pChild )
+	for ( CLibraryTreeItem::iterator pChild = pItem->begin(); pChild != pItem->end(); ++pChild )
 	{
 		bChanged |= CollapseRecursive( &**pChild );
 	}
@@ -293,7 +293,7 @@ BOOL CLibraryTreeView::Select(CLibraryTreeItem* pItem, TRISTATE bSelect, BOOL bI
 
 	if ( pItem->m_bSelected )
 	{
-		for ( CLibraryTreeItem* pRootItem = pItem->parent() ; pRootItem ; pRootItem = pRootItem->parent() )
+		for ( CLibraryTreeItem* pRootItem = pItem->parent(); pRootItem; pRootItem = pRootItem->parent() )
 		{
 			Expand( pRootItem, TRI_TRUE, FALSE );
 		}
@@ -352,7 +352,7 @@ BOOL CLibraryTreeView::SelectAll(CLibraryTreeItem* pParent, BOOL bInvalidate)
 
 	BOOL bChanged = FALSE;
 
-	for ( CLibraryTreeItem::iterator pChild = pParent->begin() ; pChild != pParent->end() ; ++pChild )
+	for ( CLibraryTreeItem::iterator pChild = pParent->begin(); pChild != pParent->end(); ++pChild )
 	{
 		if ( (*pChild)->m_bSelected == FALSE )
 		{
@@ -376,7 +376,7 @@ BOOL CLibraryTreeView::DeselectAll(CLibraryTreeItem* pExcept, CLibraryTreeItem* 
 
 	BOOL bChanged = FALSE;
 
-	for ( CLibraryTreeItem::iterator pChild = pParent->begin() ; pChild != pParent->end() ; ++pChild )
+	for ( CLibraryTreeItem::iterator pChild = pParent->begin(); pChild != pParent->end(); ++pChild )
 	{
 		if ( &**pChild != pExcept && (*pChild)->m_bSelected )
 		{
@@ -413,7 +413,7 @@ BOOL CLibraryTreeView::Highlight(CLibraryTreeItem* pItem)
 {
 	m_pFocus = pItem;
 
-	for ( CLibraryTreeItem* pParent = m_pFocus->parent() ; pParent ; pParent = pParent->parent() )
+	for ( CLibraryTreeItem* pParent = m_pFocus->parent(); pParent; pParent = pParent->parent() )
 	{
 		Expand( pParent, TRI_TRUE, FALSE );
 
@@ -423,7 +423,7 @@ BOOL CLibraryTreeView::Highlight(CLibraryTreeItem* pItem)
 
 	CollapseRecursive( m_pRoot );
 
-	for ( CLibraryTreeItem* pParent = m_pFocus->parent() ; pParent ; pParent = pParent->parent() )
+	for ( CLibraryTreeItem* pParent = m_pFocus->parent(); pParent; pParent = pParent->parent() )
 	{
 		pParent->m_bContract1 = pParent->m_bContract2;
 	}
@@ -453,7 +453,7 @@ BOOL CLibraryTreeView::CleanItems(CLibraryTreeItem* pItem, DWORD nCookie, BOOL b
 {
 	BOOL bChanged = FALSE;
 
-	for ( CLibraryTreeItem::iterator pChild = pItem->begin() ; pChild != pItem->end() ; )
+	for ( CLibraryTreeItem::iterator pChild = pItem->begin(); pChild != pItem->end(); )
 	{
 		if ( (*pChild)->m_nCleanCookie != nCookie )
 		{
@@ -493,7 +493,7 @@ CLibraryTreeItem* CLibraryTreeView::GetFolderItem(LPCVOID pSearch, CLibraryTreeI
 {
 	if ( pParent == NULL ) pParent = m_pRoot;
 
-	for ( CLibraryTreeItem::iterator pChild = pParent->begin() ; pChild != pParent->end() ; ++pChild )
+	for ( CLibraryTreeItem::iterator pChild = pParent->begin(); pChild != pParent->end(); ++pChild )
 	{
 		if ( pSearch == (*pChild)->m_pPhysical || pSearch == (*pChild)->m_pVirtual )
 			return &**pChild;
@@ -709,9 +709,9 @@ void CLibraryTreeView::OnKeyDown(UINT nChar, UINT /*nRepCnt*/, UINT /*nFlags*/)
 		CLibraryTreeItem* pStart = m_pFocus;
 		CLibraryTreeItem* pBase  = pStart ? pStart->parent() : m_pRoot;
 
-		for ( int nLoop = 0 ; nLoop < 2 ; nLoop++ )
+		for ( int nLoop = 0; nLoop < 2; nLoop++ )
 		{
-			for ( CLibraryTreeItem::iterator pChild = pBase->begin() ; pChild != pBase->end() ; ++pChild )
+			for ( CLibraryTreeItem::iterator pChild = pBase->begin(); pChild != pBase->end(); ++pChild )
 			{
 				if ( pStart != NULL )
 				{
@@ -808,7 +808,7 @@ BOOL CLibraryTreeView::OnMouseWheel(UINT nFlags, short zDelta, CPoint pt)
 				L"CLibraryDetailView",
 				NULL
 			};
-			for ( int i = 0 ; szScrollable[ i ] ; ++i )
+			for ( int i = 0; szScrollable[ i ]; ++i )
 			{
 				if ( pWnd == FindWindowEx( GetParent()->GetSafeHwnd(), NULL, NULL, szScrollable[ i ] ) )
 					return pWnd->PostMessage( WM_MOUSEWHEEL, MAKEWPARAM( nFlags, zDelta ), MAKELPARAM( pt.x, pt.y ) );
@@ -856,7 +856,7 @@ void CLibraryTreeView::OnPaint()
 
 	CFont* pOldFont = (CFont*)dc.SelectObject( &CoolInterface.m_fntNormal );
 
-	for ( CLibraryTreeItem::iterator pChild = m_pRoot->begin() ; pChild != m_pRoot->end() && pt.y < rcClient.bottom ; ++pChild )
+	for ( CLibraryTreeItem::iterator pChild = m_pRoot->begin(); pChild != m_pRoot->end() && pt.y < rcClient.bottom; ++pChild )
 	{
 		Paint( dc, rcClient, pt, &**pChild );
 	}
@@ -895,7 +895,7 @@ void CLibraryTreeView::Paint(CDC& dc, CRect& rcClient, CPoint& pt, CLibraryTreeI
 	{
 		pt.x += 16;
 
-		for ( CLibraryTreeItem::iterator pChild = pItem->begin() ; pChild != pItem->end() ; ++pChild )
+		for ( CLibraryTreeItem::iterator pChild = pItem->begin(); pChild != pItem->end(); ++pChild )
 		{
 			Paint( dc, rcClient, pt, &**pChild );
 			if ( pt.y >= rcClient.bottom ) break;
@@ -915,7 +915,7 @@ CLibraryTreeItem* CLibraryTreeView::HitTest(const POINT& point, RECT* pRect) con
 
 	CPoint pt( rcClient.left, rcClient.top - m_nScroll );
 
-	for ( CLibraryTreeItem::iterator pChild = m_pRoot->begin() ; pChild != m_pRoot->end() && pt.y < rcClient.bottom ; ++pChild )
+	for ( CLibraryTreeItem::iterator pChild = m_pRoot->begin(); pChild != m_pRoot->end() && pt.y < rcClient.bottom; ++pChild )
 	{
 		CLibraryTreeItem* pItem = HitTest( rcClient, pt, &**pChild, point, pRect );
 		if ( pItem ) return pItem;
@@ -949,7 +949,7 @@ CLibraryTreeItem* CLibraryTreeView::HitTest(CRect& rcClient, CPoint& pt, CLibrar
 	{
 		pt.x += 16;
 
-		for ( CLibraryTreeItem::iterator pChild = pItem->begin() ; pChild != pItem->end() ; ++pChild )
+		for ( CLibraryTreeItem::iterator pChild = pItem->begin(); pChild != pItem->end(); ++pChild )
 		{
 			if ( CLibraryTreeItem* pHitItem = HitTest( rcClient, pt, &**pChild, point, pRect ) )
 				return pHitItem;
@@ -973,7 +973,7 @@ BOOL CLibraryTreeView::GetRect(CLibraryTreeItem* pItem, RECT* pRect)
 
 	CPoint pt( rcClient.left, rcClient.top - m_nScroll );
 
-	for ( CLibraryTreeItem::iterator pChild = m_pRoot->begin() ; pChild != m_pRoot->end() ; ++pChild )
+	for ( CLibraryTreeItem::iterator pChild = m_pRoot->begin(); pChild != m_pRoot->end(); ++pChild )
 	{
 		if ( GetRect( pt, &**pChild, pItem, pRect ) ) return TRUE;
 	}
@@ -1005,7 +1005,7 @@ BOOL CLibraryTreeView::GetRect(CPoint& pt, CLibraryTreeItem* pItem, CLibraryTree
 	{
 		pt.x += 16;
 
-		for ( CLibraryTreeItem::iterator pChild = pItem->begin() ; pChild != pItem->end() ; ++pChild )
+		for ( CLibraryTreeItem::iterator pChild = pItem->begin(); pChild != pItem->end(); ++pChild )
 		{
 			if ( GetRect( pt, &**pChild, pFind, pRect ) ) return TRUE;
 		}
@@ -1043,7 +1043,7 @@ HBITMAP CLibraryTreeView::CreateDragImage(const CPoint& ptMouse, CPoint& ptMiddl
 
 	GetClientRect( &rcClient );
 
-	for ( CLibraryTreeItem* pItem = m_pSelFirst ; pItem ; pItem = pItem->m_pSelNext )
+	for ( CLibraryTreeItem* pItem = m_pSelFirst; pItem; pItem = pItem->m_pSelNext )
 	{
 		GetRect( pItem, &rcOne );
 
@@ -1093,7 +1093,7 @@ HBITMAP CLibraryTreeView::CreateDragImage(const CPoint& ptMouse, CPoint& ptMiddl
 
 	CFont* pOldFont = (CFont*)dcDrag.SelectObject( &CoolInterface.m_fntNormal );
 
-	for ( CLibraryTreeItem* pItem = m_pSelFirst ; pItem ; pItem = pItem->m_pSelNext )
+	for ( CLibraryTreeItem* pItem = m_pSelFirst; pItem; pItem = pItem->m_pSelNext )
 	{
 		GetRect( pItem, &rcOne );
 		CRect rcDummy;
@@ -1175,7 +1175,7 @@ CLibraryTreeItem* CLibraryTreeItem::addItem(const CString& name)
 //{
 //	ASSERT( pItem->m_bSelected == FALSE );
 //	CLibraryTreeItem** pChild = m_pList;
-//	for ( int nChild = m_nCount ; nChild ; nChild--, pChild++ )
+//	for ( int nChild = m_nCount; nChild; nChild--, pChild++ )
 //	{
 //		if ( **pChild == pItem )
 //		{
@@ -1202,7 +1202,7 @@ CLibraryTreeItem* CLibraryTreeItem::addItem(const CString& name)
 
 BOOL CLibraryTreeItem::IsVisible() const
 {
-	for ( const CLibraryTreeItem* pRoot = parent() ; pRoot ; pRoot = pRoot->parent() )
+	for ( const CLibraryTreeItem* pRoot = parent(); pRoot; pRoot = pRoot->parent() )
 	{
 		if ( ! pRoot->m_bExpanded ) return FALSE;
 	}
@@ -1294,13 +1294,13 @@ BOOL CLibraryTreeView::UpdatePhysical(DWORD nSelectCookie)
 	DWORD nCleanCookie = m_nCleanCookie++;
 	BOOL bChanged = FALSE;
 
-	for ( POSITION pos = LibraryFolders.GetFolderIterator() ; pos ; )
+	for ( POSITION pos = LibraryFolders.GetFolderIterator(); pos; )
 	{
 		CLibraryFolder* pFolder = LibraryFolders.GetNextFolder( pos );
 
 		CLibraryTreeItem::iterator pChild = m_pRoot->begin();
 
-		for ( ; pChild != m_pRoot->end() ; ++pChild )
+		for ( ; pChild != m_pRoot->end(); ++pChild )
 		{
 			CLibraryFolder* pOld = (*pChild)->m_pPhysical;
 
@@ -1385,7 +1385,7 @@ BOOL CLibraryTreeView::Update(CLibraryFolder* pFolder, CLibraryTreeItem* pItem, 
 	{
 		if ( bRecurse || pItem->m_bSelected )
 		{
-			for ( POSITION pos = pFolder->GetFileIterator() ; pos ; )
+			for ( POSITION pos = pFolder->GetFileIterator(); pos; )
 			{
 				CLibraryFile* pFile = pFolder->GetNextFile( pos );
 				pFile->m_nSelectCookie = nSelectCookie;
@@ -1398,13 +1398,13 @@ BOOL CLibraryTreeView::Update(CLibraryFolder* pFolder, CLibraryTreeItem* pItem, 
 
 	nCleanCookie = m_nCleanCookie++;
 
-	for ( POSITION pos = pFolder->GetFolderIterator() ; pos ; )
+	for ( POSITION pos = pFolder->GetFolderIterator(); pos; )
 	{
 		CLibraryFolder* pSub = pFolder->GetNextFolder( pos );
 
 		CLibraryTreeItem::iterator pChild = pItem->begin();
 
-		for ( ; pChild != pItem->end() ; ++pChild )
+		for ( ; pChild != pItem->end(); ++pChild )
 		{
 			CLibraryFolder* pOld = (*pChild)->m_pPhysical;
 
@@ -1489,7 +1489,7 @@ BOOL CLibraryTreeView::Update(CAlbumFolder* pFolder, CLibraryTreeItem* pItem, CL
 
 	if ( nSelectCookie && pItem->m_bSelected )
 	{
-		for ( POSITION pos = pFolder->GetFileIterator() ; pos ; )
+		for ( POSITION pos = pFolder->GetFileIterator(); pos; )
 		{
 			CLibraryFile* pFile = pFolder->GetNextFile( pos );
 			pFile->m_nSelectCookie = nSelectCookie;
@@ -1500,13 +1500,13 @@ BOOL CLibraryTreeView::Update(CAlbumFolder* pFolder, CLibraryTreeItem* pItem, CL
 
 	nCleanCookie = m_nCleanCookie++;
 
-	for ( POSITION pos = pFolder->GetFolderIterator() ; pos ; )
+	for ( POSITION pos = pFolder->GetFolderIterator(); pos; )
 	{
 		CAlbumFolder* pSub = pFolder->GetNextFolder( pos );
 
 		CLibraryTreeItem::iterator pChild = pItem->begin();
 
-		for ( ; pChild != pItem->end() ; ++pChild )
+		for ( ; pChild != pItem->end(); ++pChild )
 		{
 			CAlbumFolder* pOld = (*pChild)->m_pVirtual;
 
@@ -1622,7 +1622,7 @@ void CLibraryTreeView::OnContextMenu(CWnd* /*pWnd*/, CPoint point)
 		CSingleLock pLock( &Library.m_pSection );
 		if ( ! SafeLock( pLock ) ) return;
 
-		for ( CLibraryTreeItem* pItem = m_pSelFirst ; pItem ; pItem = pItem->m_pSelNext )
+		for ( CLibraryTreeItem* pItem = m_pSelFirst; pItem; pItem = pItem->m_pSelNext )
 		{
 			if ( LibraryFolders.CheckFolder( pItem->m_pPhysical, TRUE ) )
 				oFiles.AddTail( pItem->m_pPhysical->m_sPath );
@@ -1704,7 +1704,7 @@ void CLibraryTreeView::OnLibraryScan()
 	CSingleLock pLock( &Library.m_pSection );
 	if ( ! SafeLock( pLock ) ) return;
 
-	for ( CLibraryTreeItem* pItem = m_pSelFirst ; pItem ; pItem = pItem->m_pSelNext )
+	for ( CLibraryTreeItem* pItem = m_pSelFirst; pItem; pItem = pItem->m_pSelNext )
 	{
 		if ( LibraryFolders.CheckFolder( pItem->m_pPhysical, TRUE ) )
 			pItem->m_pPhysical->Scan();
@@ -1718,7 +1718,7 @@ void CLibraryTreeView::OnUpdateLibraryShared(CCmdUI* pCmdUI)
 
 	TRISTATE bShared = TRI_UNKNOWN;
 
-	for ( CLibraryTreeItem* pItem = m_pSelFirst ; pItem ; pItem = pItem->m_pSelNext )
+	for ( CLibraryTreeItem* pItem = m_pSelFirst; pItem; pItem = pItem->m_pSelNext )
 	{
 		if ( LibraryFolders.CheckFolder( pItem->m_pPhysical, TRUE ) )
 		{
@@ -1743,7 +1743,7 @@ void CLibraryTreeView::OnLibraryShared()
 	{
 		CQuickLock oLock( Library.m_pSection );
 
-		for ( CLibraryTreeItem* pItem = m_pSelFirst ; pItem ; pItem = pItem->m_pSelNext )
+		for ( CLibraryTreeItem* pItem = m_pSelFirst; pItem; pItem = pItem->m_pSelNext )
 		{
 			if ( LibraryFolders.CheckFolder( pItem->m_pPhysical, TRUE ) )
 			{
@@ -1768,7 +1768,7 @@ void CLibraryTreeView::OnUpdateLibraryRemove(CCmdUI* pCmdUI)
 	CSingleLock pLock( &Library.m_pSection );
 	if ( ! pLock.Lock( 50 ) ) return;
 
-	for ( CLibraryTreeItem* pItem = m_pSelFirst ; pItem ; pItem = pItem->m_pSelNext )
+	for ( CLibraryTreeItem* pItem = m_pSelFirst; pItem; pItem = pItem->m_pSelNext )
 	{
 		if ( LibraryFolders.CheckFolder( pItem->m_pPhysical, TRUE ) )
 		{
@@ -1788,7 +1788,7 @@ void CLibraryTreeView::OnLibraryRemove()
 	CSingleLock pLock( &Library.m_pSection );
 	if ( ! SafeLock( pLock ) ) return;
 
-	for ( CLibraryTreeItem* pItem = m_pSelFirst ; pItem ; pItem = pItem->m_pSelNext )
+	for ( CLibraryTreeItem* pItem = m_pSelFirst; pItem; pItem = pItem->m_pSelNext )
 	{
 		if ( LibraryFolders.CheckFolder( pItem->m_pPhysical, TRUE ) )
 		{
@@ -1822,7 +1822,7 @@ void CLibraryTreeView::OnUpdateLibraryFolderEnqueue(CCmdUI* pCmdUI)
 	CSingleLock oLock( &Library.m_pSection );
 	if ( ! oLock.Lock( 200 ) ) return;
 
-	for ( CLibraryTreeItem* pItem = m_pSelFirst ; pItem ; pItem = pItem->m_pSelNext )
+	for ( CLibraryTreeItem* pItem = m_pSelFirst; pItem; pItem = pItem->m_pSelNext )
 	{
 		if ( LibraryFolders.CheckAlbum( pItem->m_pVirtual ) &&
 			 pItem->m_pVirtual->GetFileCount() > 0 &&
@@ -1844,13 +1844,13 @@ void CLibraryTreeView::OnLibraryFolderEnqueue()
 		CSingleLock oLock( &Library.m_pSection );
 		if ( ! oLock.Lock( 200 ) ) return;
 
-		for ( CLibraryTreeItem* pItem = m_pSelFirst ; pItem ; pItem = pItem->m_pSelNext )
+		for ( CLibraryTreeItem* pItem = m_pSelFirst; pItem; pItem = pItem->m_pSelNext )
 		{
 			if ( LibraryFolders.CheckAlbum( pItem->m_pVirtual ) &&
 				 pItem->m_pVirtual->GetFileCount() > 0 &&
 				 ! CheckURI( pItem->m_pVirtual->m_sSchemaURI, CSchema::uriGhostFolder ) )
 			{
-				for ( POSITION pos = pItem->m_pVirtual->GetFileIterator() ; pos ; )
+				for ( POSITION pos = pItem->m_pVirtual->GetFileIterator(); pos; )
 				{
 					CLibraryFile* pFile = pItem->m_pVirtual->GetNextFile( pos );
 					pList.AddTail( pFile->GetPath() );
@@ -1871,7 +1871,7 @@ void CLibraryTreeView::OnLibraryFolderMetadata()
 {
 	CQuickLock oLock( Library.m_pSection );
 
-	for ( CLibraryTreeItem* pItem = m_pSelFirst ; pItem ; pItem = pItem->m_pSelNext )
+	for ( CLibraryTreeItem* pItem = m_pSelFirst; pItem; pItem = pItem->m_pSelNext )
 	{
 		CAlbumFolder* pFolder = pItem->m_pVirtual;
 		if ( LibraryFolders.CheckAlbum( pFolder ) ) pFolder->MetaToFiles( TRUE );
@@ -1898,7 +1898,7 @@ void CLibraryTreeView::OnLibraryFolderDelete()
 	{
 		CQuickLock oLock( Library.m_pSection );
 
-		for ( CLibraryTreeItem* pItem = m_pSelFirst ; pItem ; pItem = pItem->m_pSelNext )
+		for ( CLibraryTreeItem* pItem = m_pSelFirst; pItem; pItem = pItem->m_pSelNext )
 		{
 			CAlbumFolder* pFolder = pItem->m_pVirtual;
 			if ( LibraryFolders.CheckAlbum( pFolder ) )
@@ -1963,12 +1963,12 @@ void CLibraryTreeView::OnLibraryRebuild()
 
 	CLibraryListPtr pList( new CLibraryList() );
 
-	for ( CLibraryTreeItem* pItem = m_pSelFirst ; pItem ; pItem = pItem->m_pSelNext )
+	for ( CLibraryTreeItem* pItem = m_pSelFirst; pItem; pItem = pItem->m_pSelNext )
 	{
 		pItem->GetFileList( pList, TRUE );
 	}
 
-	for ( POSITION pos = pList->GetHeadPosition() ; pos ; )
+	for ( POSITION pos = pList->GetHeadPosition(); pos; )
 	{
 		if ( CLibraryFile* pFile = pList->GetNextFile( pos ) )
 			pFile->Rebuild();
@@ -2016,7 +2016,7 @@ void CLibraryTreeView::OnLibraryFolderFileProperties()
 
 	CLibraryListPtr pList( new CLibraryList() );
 
-	for ( CLibraryTreeItem* pItem = m_pSelFirst ; pItem ; pItem = pItem->m_pSelNext )
+	for ( CLibraryTreeItem* pItem = m_pSelFirst; pItem; pItem = pItem->m_pSelNext )
 	{
 		pItem->GetFileList( pList, TRUE );
 	}

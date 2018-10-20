@@ -1,7 +1,7 @@
 //
 // QRCode.h
 //
-// This file is part of Envy (getenvy.com) © 2016
+// This file is part of Envy (getenvy.com) © 2016-2018
 // All work here is original and released as-is under Persistent Public Domain [PPD]
 //
 // LibQREncode DLL Interface

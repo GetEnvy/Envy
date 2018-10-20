@@ -2,7 +2,7 @@
 // ShakeNeighbour.cpp
 //
 // This file is part of Envy (getenvy.com) © 2016-2018
-// Portions copyright PeerProject 2008-2016 and Shareaza 2002-2008
+// Portions copyright Shareaza 2002-2008 and PeerProject 2008-2016
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -497,8 +497,8 @@ void CShakeNeighbour::SendHostHeaders(LPCSTR pszMessage, size_t nLength)
 		CQuickLock oLock( HostCache.Gnutella2.m_pSection );
 
 		// Loop through the Gnutella2 host cache from newest to oldest
-		for ( CHostCacheIterator i = HostCache.Gnutella2.Begin() ;
-			i != HostCache.Gnutella2.End() && nCount > 0 ; ++i )
+		for ( CHostCacheIterator i = HostCache.Gnutella2.Begin();
+			i != HostCache.Gnutella2.End() && nCount > 0; ++i )
 		{
 			CHostCacheHostPtr pHost = (*i);
 
@@ -528,8 +528,8 @@ void CShakeNeighbour::SendHostHeaders(LPCSTR pszMessage, size_t nLength)
 		CQuickLock oLock( HostCache.Gnutella1.m_pSection );
 
 		// Loop through the Gnutella host cache from newest to oldest
-		for ( CHostCacheIterator i = HostCache.Gnutella1.Begin() ;
-			i != HostCache.Gnutella1.End() && nCount > 0 ; ++i )
+		for ( CHostCacheIterator i = HostCache.Gnutella1.Begin();
+			i != HostCache.Gnutella1.End() && nCount > 0; ++i )
 		{
 			CHostCacheHostPtr pHost = (*i);
 
@@ -916,7 +916,7 @@ BOOL CShakeNeighbour::OnHeadersComplete()
 	{
 		// The remote computer is giving us a list GnucDNA G2 hubs
 		int nCount = 0;
-		for ( m_sTryDNAHubs += L',' ; ; )
+		for ( m_sTryDNAHubs += L','; ; )
 		{
 			int nPos = m_sTryDNAHubs.Find( L',' );			// Set nPos to the distance in characters from the start to the comma
 			if ( nPos < 0 ) break;							// If no comma was found, leave the loop
@@ -935,7 +935,7 @@ BOOL CShakeNeighbour::OnHeadersComplete()
 	{
 		// The remote computer is giving us a list G2 hubs
 		int nCount = 0;
-		for ( m_sTryHubs += L',' ; ; )
+		for ( m_sTryHubs += L','; ; )
 		{
 			int nPos = m_sTryHubs.Find( L',' );			// Set nPos to the distance in characters from the start to the comma
 			if ( nPos < 0 ) break;						// If no comma was found, leave the loop
@@ -957,7 +957,7 @@ BOOL CShakeNeighbour::OnHeadersComplete()
 
 		int nCount = 0;
 		// Append a comma onto the end of the value text once, and then loop forever
-		for ( m_sTryUltrapeers += L',' ; ; )				// for ( ;; ) is forever
+		for ( m_sTryUltrapeers += L','; ; )				// for ( ;; ) is forever
 		{
 			// Find the first comma in the value text
 			int nPos = m_sTryUltrapeers.Find( L',' );	// Set nPos to the distance in characters from the start to the comma

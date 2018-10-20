@@ -1,8 +1,8 @@
 //
 // DCClients.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2010-2014 and Shareaza 2010
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2010 and PeerProject 2010-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -93,7 +93,7 @@ void CDCClients::OnRun()
 {
 	CSingleLock oLock( &m_pSection, TRUE );
 
-	for ( POSITION pos = m_pList.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pList.GetHeadPosition(); pos; )
 	{
 		CDCClient* pClient = m_pList.GetNext( pos );
 
@@ -274,7 +274,7 @@ BOOL CDCClients::Merge(CDCClient* pClient)
 {
 	CQuickLock oLock( m_pSection );
 
-	for ( POSITION pos = m_pList.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pList.GetHeadPosition(); pos; )
 	{
 		CDCClient* pOther = m_pList.GetNext( pos );
 
@@ -298,7 +298,7 @@ std::string CDCClients::MakeKey(const std::string& aLock)
 	BYTE v1 = (BYTE)( (BYTE)aLock[ 0 ] ^ 5 );
 	v1 = (BYTE)( ( ( v1 >> 4 ) | ( v1 << 4 ) ) & 0xff );
 	temp[ 0 ] = v1;
-	for ( size_t i = 1 ; i < aLock.size() ; i++ )
+	for ( size_t i = 1; i < aLock.size(); i++ )
 	{
 		v1 = (BYTE)( (BYTE)aLock[ i ] ^ (BYTE)aLock[ i - 1 ] );
 		v1 = (BYTE)( ( ( v1 >> 4 ) | ( v1 << 4 ) ) & 0xff );
@@ -317,7 +317,7 @@ std::string CDCClients::KeySubst(const BYTE* aKey, size_t len, size_t n)
 {
 	auto_array< BYTE > temp( new BYTE[ len + n * 9 ] );
 	size_t j = 0;
-	for ( size_t i = 0 ; i < len ; i++ )
+	for ( size_t i = 0; i < len; i++ )
 	{
 		if ( IsExtra( aKey[ i ] ) )
 		{

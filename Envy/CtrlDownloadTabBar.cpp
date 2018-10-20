@@ -1,8 +1,8 @@
 //
 // CtrlDownloadTabBar.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2007
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -83,7 +83,7 @@ CDownloadTabBar::CDownloadTabBar()
 
 CDownloadTabBar::~CDownloadTabBar()
 {
-	for ( POSITION pos = m_pItems.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pItems.GetHeadPosition(); pos; )
 	{
 		delete m_pItems.GetNext( pos );
 	}
@@ -147,7 +147,7 @@ void CDownloadTabBar::Update(int nCookie)
 
 void CDownloadTabBar::UpdateGroups(int nCookie)
 {
-	for ( POSITION pos = m_pItems.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pItems.GetHeadPosition(); pos; )
 	{
 		delete m_pItems.GetNext( pos );
 	}
@@ -156,7 +156,7 @@ void CDownloadTabBar::UpdateGroups(int nCookie)
 
 	BOOL bFoundHot = ( m_pHot == NULL );
 
-	for ( POSITION pos = DownloadGroups.GetIterator() ; pos ; )
+	for ( POSITION pos = DownloadGroups.GetIterator(); pos; )
 	{
 		CDownloadGroup* pGroup = DownloadGroups.GetNext( pos );
 		m_pItems.AddTail( new TabItem( pGroup, nCookie ) );
@@ -175,7 +175,7 @@ void CDownloadTabBar::UpdateStates(int nCookie)
 {
 	BOOL bChanged = FALSE;
 
-	for ( POSITION posNext = m_pItems.GetHeadPosition() ; posNext ; )
+	for ( POSITION posNext = m_pItems.GetHeadPosition(); posNext; )
 	{
 		POSITION posThis = posNext;
 		TabItem* pItem = m_pItems.GetNext( posNext );
@@ -211,7 +211,7 @@ CDownloadTabBar::TabItem* CDownloadTabBar::HitTest(const CPoint& point, CRect* p
 	rcItem.right = static_cast< LONG >( ( rc.Width() - 3 * m_pItems.GetCount() ) / m_pItems.GetCount() + 3 );
 	rcItem.right = min( rcItem.right, m_nMaximumWidth );
 
-	for ( POSITION pos = m_pItems.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pItems.GetHeadPosition(); pos; )
 	{
 		TabItem* pItem = m_pItems.GetNext( pos );
 
@@ -285,7 +285,7 @@ void CDownloadTabBar::DoPaint(CDC* pDC)
 		rcItem.right = static_cast< LONG >( rc.Width() / m_pItems.GetCount() );
 		rcItem.right = min( rcItem.right, m_nMaximumWidth );
 
-		for ( POSITION pos = m_pItems.GetHeadPosition() ; pos ; )
+		for ( POSITION pos = m_pItems.GetHeadPosition(); pos; )
 		{
 			TabItem* pItem = m_pItems.GetNext( pos );
 
@@ -466,7 +466,7 @@ BOOL CDownloadTabBar::Select(TabItem* pHit)
 	if ( ! pHit )
 		pHit = m_pItems.GetHead();	// Default Supergroup
 
-	for ( POSITION pos = m_pItems.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pItems.GetHeadPosition(); pos; )
 	{
 		TabItem* pItem = m_pItems.GetNext( pos );
 		bChanged |= pItem->Select( pItem == pHit );
@@ -479,7 +479,7 @@ int CDownloadTabBar::GetSelectedCount(BOOL bDownloads)
 {
 	int nCount = 0;
 
-	for ( POSITION pos = m_pItems.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pItems.GetHeadPosition(); pos; )
 	{
 		TabItem* pItem = m_pItems.GetNext( pos );
 
@@ -494,7 +494,7 @@ CDownloadTabBar::TabItem* CDownloadTabBar::GetSelectedItem()
 {
 	TabItem* pSelected = NULL;
 
-	for ( POSITION pos = m_pItems.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pItems.GetHeadPosition(); pos; )
 	{
 		TabItem* pItem = m_pItems.GetNext( pos );
 
@@ -520,7 +520,7 @@ void CDownloadTabBar::GetSelectedDownloads(CList< CDownload* >* pDownloads)
 {
 	CSingleLock pLock( &DownloadGroups.m_pSection, TRUE );
 
-	for ( POSITION pos = m_pItems.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pItems.GetHeadPosition(); pos; )
 	{
 		TabItem* pItem = m_pItems.GetNext( pos );
 
@@ -637,7 +637,7 @@ void CDownloadTabBar::OnDownloadGroupResume()
 
 	GetSelectedDownloads( &pDownloads );
 
-	for ( POSITION pos = pDownloads.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = pDownloads.GetHeadPosition(); pos; )
 	{
 		CDownload* pDownload = (CDownload*)pDownloads.GetNext( pos );
 		if ( Downloads.Check( pDownload ) )
@@ -659,7 +659,7 @@ void CDownloadTabBar::OnDownloadGroupPause()
 
 	GetSelectedDownloads( &pDownloads );
 
-	for ( POSITION pos = pDownloads.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = pDownloads.GetHeadPosition(); pos; )
 	{
 		CDownload* pDownload = (CDownload*)pDownloads.GetNext( pos );
 		if ( Downloads.Check( pDownload ) )
@@ -681,7 +681,7 @@ void CDownloadTabBar::OnDownloadGroupClear()
 
 	GetSelectedDownloads( &pDownloads );
 
-	for ( POSITION pos = pDownloads.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = pDownloads.GetHeadPosition(); pos; )
 	{
 		CDownload* pDownload = (CDownload*)pDownloads.GetNext( pos );
 		if ( Downloads.Check( pDownload ) )
@@ -735,7 +735,7 @@ BOOL CDownloadTabBar::DropObjects(CList< CDownload* >* pList, const CPoint& ptSc
 
 	if ( DownloadGroups.Check( pItem->m_pGroup ) )
 	{
-		for ( POSITION posD = pList->GetHeadPosition() ; posD ; )
+		for ( POSITION posD = pList->GetHeadPosition(); posD; )
 		{
 			CDownload* pDownload = (CDownload*)pList->GetNext( posD );
 

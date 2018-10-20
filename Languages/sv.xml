@@ -3,7 +3,7 @@
 
 <!-- Envy Default Swedish Skin File -->
 
-<!-- Translation based on default en.xml r21 -->
+<!-- Translation based on default en.xml r22 -->
 <!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -15,7 +15,7 @@
 <manifest
 	name="Svenska"
 	author="Marcus Ehrenlans"
-	updatedBy="DanielB"
+	updatedby="DanielB"
 	description="Envy Default Swedish Skin File…"
 	link="http://getenvy.com"
 	email="swey1(at)hotmail.com"
@@ -3238,8 +3238,9 @@
 	<string id="20807" text="Vägrar uppladdning av &quot;%s&quot; till %s (%s), för många samtidiga anslutningar från värd."/>
 	<string id="20808" text="Vägrar uppladdning av &quot;%s&quot; till %s (%s), upptagen och klienten stödjer inte köläggning."/>
 	<string id="20809" text="Vägrar uppladdning av &quot;%s&quot; till %s (%s), alla matchande köer är fulla"/>
-	<string id="20810" text="Uppladdningsvärd %s begärde ett otillfredställbart omfång från fil &quot;%s&quot;."/>
-	<string id="20811" text="eDonkey-uppladdningar ska inte avbrytas. Är du säker på att du vill avbryta denna uppladdning?"/>
+	<string id="20810" text="Vägrar uppladdning av &quot;%s&quot; till %s (%s), Biblioteket är upptaget."/>
+	<string id="20811" text="Uppladdningsvärd %s begärde ett otillfredställbart omfång från fil &quot;%s&quot;."/>
+	<string id="20861" text="eDonkey-uppladdningar ska inte avbrytas. Är du säker på att du vill avbryta denna uppladdning?"/>
 	<string id="20812" text="Kan inte öppna &quot;%s&quot; för uppladdning till värd %s, disk- eller filfel."/>
 	<string id="20813" text="Initierar en anslutningsbegäran till %s. %s"/>
 	<string id="20814" text="Kan inte ansluta till värd %s för anslutningsbegäran."/>
@@ -3286,14 +3287,14 @@
 	<string id="20858" text="Tidsavbrott vid väntan på begäran från uppladdningsvärd %s."/>
 	<string id="20859" text="Stänger uppladdningsanslutning från %s p.g.a. bristande trafik."/>
 	<string id="20860" text="Uppladdar tiger-tree-data för &quot;%s&quot; till %s."/>
-	<string id="20861" text="Raderade uppladdning av &quot;%s&quot; till %s."/>
-	<string id="20862" text="Lägg till"/>
-	<string id="20864" text="&amp;Bläddra"/>
-	<string id="20865" text="&amp;Anslut"/>
-	<string id="20866" text="Filnamn:"/>
-	<string id="20867" text="Värd:"/>
-	<string id="20868" text="Port:"/>
-	<!--string id="20869" text="Kan inte visa URL-åtgärdsdialogrutan eftersom Envy är upptagen."-->
+	<string id="20862" text="Raderade uppladdning av &quot;%s&quot; till %s."/>
+	<string id="20864" text="Lägg till"/>
+	<string id="20865" text="&amp;Bläddra"/>
+	<string id="20866" text="&amp;Anslut"/>
+	<string id="20867" text="Filnamn:"/>
+	<string id="20868" text="Värd:"/>
+	<string id="20869" text="Port:"/>
+	<!--string id="20876" text="Kan inte visa URL-åtgärdsdialogrutan eftersom Envy är upptagen."-->
 	<string id="20870" text="Kan inte tolka URL: Envy förstår inte denna URL."/>
 	<string id="20871" text="Mottog URL &quot;%s&quot;"/>
 	<string id="20872" text="Typ:"/>
@@ -3786,7 +3787,7 @@
 	<dialog name="CWizardConnectionPage" cookie="StStCoStStCoStCoStCoStEdBuStms" caption="Välkommen till Envy (2/8)">
 		<control text="För att uppnå bästa prestanda måste Envy veta lite om din Internetanslutning."/>
 		<control text="Välj typ av Internetanslutning:"/>
-		<control text="| Uppringt modem| ISDN 128K| DSL 768K| DSL 1.5| Kabel 3| DSL 4| DSL2 8| FIOS 10| DSL2 12| FIOS 15| FIOS 20| FIOS 25| FIOS 30| FIOS 50| T1| T3| LAN| OC3"/>
+		<control text="|Uppringt modem|ISDN 128K|DSL 768K|DSL 1.5|Kabel 3|DSL 4|DSL2 8|FIOS 10|DSL2 12|FIOS 15|FIOS 20|FIOS 25|FIOS 30|FIOS 50|100|200|300|400|Gigabit|T1|T3|LAN|OC3"/>
 		<control text="Testa på Speedtest.net"/>
 		<control text="Eller välj nedladdningdshastighet:"/>
 		<control/>

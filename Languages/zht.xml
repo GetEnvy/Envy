@@ -3,7 +3,7 @@
 
 <!-- Envy Default Chinese (Traditional) Skin File -->
 
-<!-- Translation based on default en.xml r21 --> <!-- (Shareaza 2.2.2.12) -->
+<!-- Translation based on default en.xml r22 --> <!-- (Shareaza 2.2.2.12) -->
 <!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -15,7 +15,7 @@
 <manifest
 	name="繁體中文"
 	author="James Bond"
-	updateBy="James Bond"
+	updatedby="James Bond"
 	description="Envy Default Chinese (Traditional) Skin File"
 	link="http://getenvy.com"
 	email="Contact(at)GetEnvy.com"
@@ -401,8 +401,8 @@
 		<button id="ID_SCHEDULER_EDIT" text="编辑规则"/>
 		<button id="ID_SCHEDULER_REMOVE" text="删除规则"/>
 		<separator/>
-		<button id="ID_SCHEDULER_ACTIVATE" text="Activate"/>
-		<button id="ID_SCHEDULER_DEACTIVATE" text="Deactivate"/>
+		<button id="ID_SCHEDULER_ACTIVATE" text="啟動"/>
+		<button id="ID_SCHEDULER_DEACTIVATE" text="停用"/>
 		<rightalign/>
 		<button id="ID_SCHEDULER_REMOVE_ALL" text="重置列表"/>
 		<separator/>
@@ -460,7 +460,7 @@
 		<separator/>
 		<button id="ID_CHAT_BROWSE" text="瀏覽使用者"/>
 		<button id="ID_CHAT_PRIORITY" text="准予優先權"/>
-		<separator/>
+		<rightalign/>
 		<button id="ID_CHAT_CONNECT" text="連線" visible="false"/>
 		<button id="ID_CHAT_DISCONNECT" text="中斷連線"/>
 	</toolbar>
@@ -619,13 +619,14 @@
 		</menu>
 		<menu text="檢視">
 			<item id="ID_TAB_HOME" text="主頁"/>
-			<item id="ID_TAB_LIBRARY" text="收藏"/>
-			<item id="ID_TAB_MEDIA" text="多媒體播放程式"/>
 			<item id="ID_TAB_SEARCH" text="搜尋"/>
 			<item id="ID_TAB_TRANSFERS" text="傳輸"/>
 			<item id="ID_TAB_NETWORK" text="網路"/>
+			<item id="ID_TAB_LIBRARY" text="收藏"/>
+			<item id="ID_TAB_MEDIA" text="多媒體播放程式"/>
 			<separator/>
 			<item id="ID_VIEW_SECURITY" text="安全性"/>
+			<item id="ID_VIEW_SCHEDULER" text="排程器"/>
 			<item id="ID_VIEW_HOSTS" text="主機快取"/>
 			<separator/>
 			<menu text="進階">
@@ -637,6 +638,7 @@
 				<item id="ID_VIEW_MEDIA" text="多媒體" shortcut="F6"/>
 				<separator/>
 				<item id="ID_VIEW_SECURITY" text="安全性" shortcut="F7"/>
+				<item id="ID_VIEW_SCHEDULER" text="排程器" shortcut="Ctrl+F7"/>
 				<item id="ID_VIEW_HOSTS" text="主機快取" shortcut="F8"/>
 				<item id="ID_VIEW_DISCOVERY" text="揭示" shortcut="F9"/>
 				<item id="ID_VIEW_TRAFFIC" text="圖表" shortcut="F10"/>
@@ -779,7 +781,7 @@
 			<item id="ID_VIEW_LIBRARY" text="收藏" shortcut="F5"/>
 			<item id="ID_VIEW_MEDIA" text="多媒體" shortcut="F6"/>
 			<separator/>
-			<item id="ID_VIEW_SCHEDULER" text="Scheduler" shortcut="Ctrl+F7"/>
+			<item id="ID_VIEW_SCHEDULER" text="排程器" shortcut="Ctrl+F7"/>
 			<item id="ID_VIEW_SECURITY" text="安全性" shortcut="F7"/>
 			<item id="ID_VIEW_HOSTS" text="主機快取" shortcut="F8"/>
 			<item id="ID_VIEW_DISCOVERY" text="揭示" shortcut="F9"/>
@@ -881,6 +883,7 @@
 		<item id="ID_VIEW_MEDIA" text="多媒體播放檔案"/>
 		<separator/>
 		<item id="ID_VIEW_SECURITY" text="安全性"/>
+		<item id="ID_VIEW_SCHEDULER" text="排程器"/>
 		<item id="ID_VIEW_HOSTS" text="主機快取"/>
 		<item id="ID_VIEW_DISCOVERY" text="揭示"/>
 		<item id="ID_VIEW_TRAFFIC" text="圖表"/>
@@ -911,6 +914,7 @@
 		<item id="ID_TAB_SEARCH" text="搜尋"/>
 		<item id="ID_TAB_TRANSFERS" text="傳輸"/>
 		<item id="ID_TAB_NETWORK" text="網路"/>
+		<item id="ID_TAB_IRC" text="IRC Chat"/>
 		<separator/>
 		<item id="ID_VIEW_SECURITY" text="安全性"/>
 		<item id="ID_VIEW_SCHEDULER" text="預定表"/>
@@ -926,7 +930,7 @@
 	<menu name="CHostCacheWnd">
 		<item id="ID_HOSTCACHE_CONNECT" text="立刻連線"/>
 		<item id="ID_HOSTCACHE_DISCONNECT" text="中斷連線"/>
-		<item id="ID_HOSTCACHE_PRIORITY" text="Priority Server"/>
+		<item id="ID_HOSTCACHE_PRIORITY" text="優先伺服器"/>
 		<separator/>
 		<item id="ID_HOSTCACHE_REMOVE" text="移除主機"/>
 		<separator/>
@@ -946,15 +950,16 @@
 		<separator/>
 		<item id="ID_BROWSE_LAUNCH" text="瀏覽使用者"/>
 		<item id="ID_SEARCH_CHAT" text="與使用者聊天"/>
+		<item id="ID_SECURITY_BAN" text="封鎖使用者"/>
 		<separator/>
 		<menu text="搜尋">
 			<item id="ID_SEARCH_FOR_SIMILAR" text="相似的檔案"/>
 			<separator/>
 			<item id="ID_SEARCH_FOR_ARTIST" text="同一個作者的音樂"/>
 			<item id="ID_SEARCH_FOR_ALBUM" text="同一個專輯的音樂"/>
-			<item id="ID_SEARCH_FOR_SERIES" text="同一個系列的 Episodes"/>
+			<item id="ID_SEARCH_FOR_SERIES" text="同一個系列的影集"/>
 		</menu>
-		<menu id="ID_LIBRARY_BITPRINTS_WEB" text="網際網路服務">
+		<menu id="ID_WEBSERVICES_LIST" text="網際網路服務">
 			<item id="ID_LIBRARY_BITPRINTS_WEB" text="檢視 Bitprints 標籤"/>
 			<item id="ID_SEARCH_URI" text="複製 URI…"/>
 		</menu>
@@ -974,7 +979,7 @@
 			<separator/>
 			<item id="ID_SEARCH_FOR_ARTIST" text="同一個作家的音樂"/>
 			<item id="ID_SEARCH_FOR_ALBUM" text="同一個專輯的音樂"/>
-			<item id="ID_SEARCH_FOR_SERIES" text="同一個系列的 Episodes"/>
+			<item id="ID_SEARCH_FOR_SERIES" text="同一個系列的影集"/>
 			<separator/>
 			<item id="ID_VIEW_SEARCH_MONITOR" text="監控搜尋要求"/>
 			<item id="ID_VIEW_RESULTS_MONITOR" text="搜尋回應監視器"/>
@@ -985,6 +990,7 @@
 		<separator/>
 		<item id="ID_SEARCH_FILTER" text="過濾搜尋結果…"/>
 		<item id="ID_SEARCH_FILTER_REMOVE" text="移除過濾"/>
+		<separator/>
 		<item id="ID_SEARCH_CLEAR" text="清除搜尋結果"/>
 		<separator/>
 		<item id="ID_SEARCH_COLUMNS" text="編輯欄位…"/>
@@ -1001,7 +1007,7 @@
 			<separator/>
 			<item id="ID_SEARCH_FOR_ARTIST" text="同一個作家的音樂"/>
 			<item id="ID_SEARCH_FOR_ALBUM" text="同一個專輯的音樂"/>
-			<item id="ID_SEARCH_FOR_SERIES" text="同一個系列的 Episodes"/>
+			<item id="ID_SEARCH_FOR_SERIES" text="同一個系列的影集"/>
 		</menu>
 		<menu text="網際網路檔案資訊">
 			<item id="ID_LIBRARY_BITPRINTS_WEB" text="檢視 Bitprints 標籤"/>
@@ -1021,7 +1027,7 @@
 			<separator/>
 			<item id="ID_SEARCH_FOR_ARTIST" text="同一個作家的音樂"/>
 			<item id="ID_SEARCH_FOR_ALBUM" text="同一個專輯的音樂"/>
-			<item id="ID_SEARCH_FOR_SERIES" text="同一個系列的 Episodes"/>
+			<item id="ID_SEARCH_FOR_SERIES" text="同一個系列的影集"/>
 		</menu>
 		<menu id="ID_LIBRARY_BITPRINTS_WEB" text="網際網路">
 			<item id="ID_LIBRARY_BITPRINTS_WEB" text="檢視 Bitprints 標籤"/>
@@ -1046,7 +1052,7 @@
 			<separator/>
 			<item id="ID_SEARCH_FOR_ARTIST" text="同一個作家的音樂"/>
 			<item id="ID_SEARCH_FOR_ALBUM" text="同一個專輯的音樂"/>
-			<item id="ID_SEARCH_FOR_SERIES" text="同一個系列的episode"/>
+			<item id="ID_SEARCH_FOR_SERIES" text="同一個系列的影集"/>
 		</menu>
 		<menu id="ID_LIBRARY_BITPRINTS_WEB" text="網際網路服務">
 			<item id="ID_LIBRARY_BITPRINTS_WEB" text="檢視 Bitprints 標籤"/>
@@ -1069,7 +1075,7 @@
 		<item id="ID_DOWNLOADS_CLEAR_INCOMPLETE" text="取消"/>
 		<separator/>
 		<item id="ID_DOWNLOADS_SOURCES" text="尋找更多來源"/>
-		<item id="ID_DOWNLOADS_REMOTE_PREVIEW" text="Remote 預覽"/>
+		<item id="ID_DOWNLOADS_REMOTE_PREVIEW" text="遠程預覽"/>
 		<item id="ID_DOWNLOADS_VIEW_REVIEWS" text="檢視評論"/>
 		<separator/>
 		<item id="ID_DOWNLOADS_HELP" text="說明…"/>
@@ -1150,8 +1156,8 @@
 	<menu name="CDownloadsWnd.Default">
 		<item id="ID_DOWNLOADS_FOLDER" text="開啟 Folder"/>
 		<separator/>
-		<item id="ID_TOOLS_DOWNLOAD" text="Start New Download"/>
-		<item id="ID_TOOLS_SEEDTORRENT" text="Seed New Torrent"/>
+		<item id="ID_TOOLS_DOWNLOAD" text="新增檔案"/>
+		<item id="ID_TOOLS_SEEDTORRENT" text="Seed Torrent"/>
 		<item id="ID_DOWNLOADS_CLEAR_COMPLETED" text="自動清除"/>
 		<separator/>
 		<item id="ID_DOWNLOADS_HELP" text="說明…"/>
@@ -1238,7 +1244,7 @@
 		<item id="ID_LIBRARY_REBUILD" text="重建"/>
 		<item id="ID_LIBRARY_FOLDERS" text="分享檔案…"/>
 		<separator/>
-		<item id="ID_SHELL_MENU" text="Shell menu"/>
+		<item id="ID_SHELL_MENU" text="Shell 選單"/>
 		<separator/>
 		<item id="ID_LIBRARY_FOLDER_FILE_PROPERTIES" text="檔案屬性"/>
 	</menu>
@@ -1291,7 +1297,7 @@
 			<separator/>
 			<item id="ID_SEARCH_FOR_ARTIST" text="同一個作家的音樂"/>
 			<item id="ID_SEARCH_FOR_ALBUM" text="同一個專輯的音樂"/>
-			<item id="ID_SEARCH_FOR_SERIES" text="同一個系列的 Episodes"/>
+			<item id="ID_SEARCH_FOR_SERIES" text="同一個系列的影集"/>
 		</menu>
 		<menu text="網際網路服務">
 			<item id="ID_LIBRARY_BITPRINTS_WEB" text="檢視 Bitprints 標籤"/>
@@ -1326,14 +1332,14 @@
 			<separator/>
 			<item id="ID_SEARCH_FOR_ARTIST" text="同一個作家的音樂"/>
 			<item id="ID_SEARCH_FOR_ALBUM" text="同一個專輯的音樂"/>
-			<item id="ID_SEARCH_FOR_SERIES" text="同一個系列的 Episodes"/>
+			<item id="ID_SEARCH_FOR_SERIES" text="同一個系列的影集"/>
 		</menu>
 		<menu text="網際網路服務">
 			<item id="ID_LIBRARY_BITPRINTS_WEB" text="檢視 Bitprints 標籤"/>
 			<item id="ID_LIBRARY_BITPRINTS_DOWNLOAD" text="取得解釋資料"/>
 		</menu>
 		<menu text="Metadata">
-			<item id="ID_LIBRARY_REBUILD_FILE" text="重建 Hashes"/>
+			<item id="ID_LIBRARY_REBUILD_FILE" text="重新整理元數據"/>
 			<item id="ID_LIBRARY_REFRESH_METADATA" text="重新整理元數據"/>
 			<item id="ID_LIBRARY_REBUILD_ANSI" text="將解釋資料本地化"/>
 			<item id="ID_LIBRARY_COLUMNS" text="選擇欄位…"/>
@@ -1497,6 +1503,8 @@
 			<item id="ID_NEIGHBOURS_VIEW_ALL" text="顯示所有的流量"/>
 			<item id="ID_NEIGHBOURS_VIEW_INCOMING" text="顯示流入的流量"/>
 			<item id="ID_NEIGHBOURS_VIEW_OUTGOING" text="顯示流出的流量"/>
+			<separator/>
+			<item id="ID_VIEW_TRAFFIC" text="圖表"/>
 		</menu>
 	</menu>
 	<!-- SEARCH MONITOR WINDOW -->
@@ -1505,6 +1513,8 @@
 		<separator/>
 		<item id="ID_SEARCHMONITOR_PAUSE" text="暫停顯示"/>
 		<item id="ID_SEARCHMONITOR_CLEAR" text="清除緩衝"/>
+		<separator/>
+		<item id="ID_SECURITY_BAN" text="封鎖使用者"/>
 	</menu>
 	<!-- GRAPH/TRAFFIC WINDOW -->
 	<menu name="CTrafficWnd">
@@ -1777,7 +1787,7 @@
 			<text>)</text>
 			<group id="1">
 				<newline gap="8"/>
-				<text>Envy 正在掃瞄並且處理 </text>
+				<text>正在掃瞄並且處理 </text>
 				<text id="LibraryHashRemaining" format="b">%lu個</text>
 				<text>檔案。</text>
 				<newline gap="8"/>
@@ -1905,7 +1915,7 @@
 			<text id="Age"/>
 			<text>岁</text>
 		</group>
-		<group id="5">
+		<group id="4">
 			<newline gap="8" indent="0"/>
 			<text format="b">聯絡資訊</text>
 			<newline gap="1" indent="8"/>
@@ -1928,17 +1938,17 @@
 			<gap size="5"/>
 			<link id="ContactYahoo"/>
 		</group>
-		<group id="42">
-			<newline gap="1"/>
-			<icon res="205"/>
-			<gap size="5"/>
-			<link id="ContactICQ"/>
-		</group>
 		<group id="43">
 			<newline gap="1"/>
 			<icon res="204"/>
 			<gap size="5"/>
 			<link id="ContactAOL"/>
+		</group>
+		<group id="42">
+			<newline gap="1"/>
+			<icon res="205"/>
+			<gap size="5"/>
+			<link id="ContactICQ"/>
 		</group>
 		<group id="45">
 			<newline gap="1"/>
@@ -1987,8 +1997,7 @@
 			<newline gap="16" indent="0"/>
 			<text format="b">社群</text>
 			<newline gap="4" indent="8"/>
-			<icon res="127" target="command:ID_SEARCH_CHAT"/>
-			<gap size="5"/>
+			<icon res="127" target="command:ID_SEARCH_CHAT"/><gap size="5"/>
 			<link target="command:ID_SEARCH_CHAT" align="middle">與使用者聊天</link>
 		</group>
 		<group id="3">
@@ -2537,6 +2546,11 @@
 	<string id="20011" text="自動"/>
 	<string id="20012" text="自訂"/>
 	<string id="20013" text="預設"/>
+	<string id="20014" text="Finish"/>
+	<string id="20015" text="忽略"/>
+	<string id="20016" text="重試"/>
+	<string id="20017" text="終止"/>
+	<string id="20018" text="再試一次"/>
 	<string id="20019" text="请稍候…"/>
 	<string id="20020" text="文件"/>
 	<string id="20021" text="文件"/>
@@ -2603,7 +2617,8 @@
 	<string id="20132" text="與 BitTorrent 客戶端 %s 信號交換已逾時。"/>
 	<string id="20133" text="已建立與 %s 的BitTorrent 耦合, 信號交換中…"/>
 	<string id="20134" text="與 %s 的 BitTorrent 耦合不被接受, 因為已達到最大連線數。"/>
-	<string id="20136" text="與 %s 的BitTorrent 耦合 要求了一個未知的檔案。"/>
+	<string id="20135" text="與 %s 的 BitTorrent 耦合，要求了一個未知的檔案。"/>
+	<string id="20136" text="與 %s 的 BitTorrent 耦合 要求了一個未知的檔案。"/>
 	<string id="20137" text="與 %s 的 BitTorrent 耦合 回應了錯誤的檔案。"/>
 	<string id="20138" text="與 %s 的 BitTorrent 耦合 失敗, 因為遠程客戶端有不同的用戶 ID。"/>
 	<string id="20139" text="正在關閉與 %s 的 BitTorrent 耦合, 因為缺乏流量。"/>
@@ -2985,6 +3000,10 @@
 	<string id="20587" text="鄰居 %s 轉送了一個無效位址資料的 pong, 忽略中。"/>
 	<string id="20588" text="鄰居 %s 轉送了一個推播要求至 a firewalled 位址, 忽略中。"/>
 	<!-- Missing Scheduler/Security Strings -->
+	<string id="20614" text="等待中"/>
+	<string id="20615" text="完成 Today"/>
+	<string id="20616" text="完成"/>
+	<string id="20618" text="目前沒有預定工作"/>
 	<string id="20620" text="Envy 正在活躍地搜尋網路…"/>
 	<string id="20621" text="點選這裡再次搜尋"/>
 	<string id="20622" text="所有網路"/>
@@ -3138,8 +3157,9 @@
 	<string id="20807" text="正在拒絕上傳 &quot;%s&quot; 至 %s (%s), 因為同一時間太多來自於主機的併發事件。"/>
 	<string id="20808" text="正在拒絕上傳 &quot;%s&quot; 至 %s (%s), 因為忙錄, 以及客戶端不支援排隊。"/>
 	<string id="20809" text="正在拒絕上傳 &quot;%s&quot; 至 %s (%s), 所有匹配的排隊隊伍已無空位。"/>
-	<string id="20810" text="上傳主機 %s 要求了一個不滿意的檔案分塊 &quot;%s&quot;。"/>
-	<string id="20811" text="eDonkey2000 上傳不應該被取消。 您確定要取消這個上傳嗎?"/>
+	<string id="20810" text="正在拒絕上傳 &quot;%s&quot; 至 %s (%s), 圖書館很忙。"/>
+	<string id="20811" text="上傳主機 %s 要求了一個不滿意的檔案分塊 &quot;%s&quot;。"/>
+	<string id="20861" text="eDonkey2000 上傳不應該被取消。 您確定要取消這個上傳嗎?"/>
 	<string id="20812" text="無法開啟 &quot;%s&quot; 以上傳至主機 %s, 磁碟/檔案錯誤。"/>
 	<string id="20813" text="正在啟始一個推播連線至 %s。 %s"/>
 	<string id="20814" text="無法連線至主機 %s 進行推播。"/>
@@ -3159,7 +3179,7 @@
 	<string id="20828" text="上傳主機 %s 傳送了一個無效的 HTTP 要求。"/>
 	<string id="20830" text="正在傳送上傳內容分塊 %I64i-%I64i 從部份檔案 &quot;%s&quot; 至主機 %s (%s)。"/>
 	<string id="20832" text="拒絕上傳預覽 &quot;%s&quot; 至 %s, 因為太多預覽連線。"/>
-	<string id="20833" text="Scheduling a dynamic preview of &quot;%s&quot; for upload to %s。"/>
+	<string id="20833" text="正在排程動態預覽 &quot;%s&quot; 至上傳 %s。"/>
 	<string id="20834" text="上傳主機 %s 要求預覽 &quot;%s&quot;, 但是沒有可用的預覽。"/>
 	<string id="20835" text="正在上傳預覽 &quot;%s&quot; 至 %s。"/>
 	<string id="20836" text="正在拒絕推播要求至 %s, 因為它有太多上傳連線。"/>
@@ -3168,12 +3188,12 @@
 	<string id="20840" text="至 %s 的上傳連線丟失, 保留排隊位置。"/>
 	<string id="20841" text="新的排隊隊伍"/>
 	<string id="20842" text="所有的檔案"/>
-	<string id="20843" text="DC++ Guard"/>
+	<string id="20843" text="DC++ 防護"/>
 	<string id="20844" text="eDonkey 核心"/>
 	<string id="20845" text="eDonkey Guard"/>
 	<string id="20846" text="eDonkey 部份檔"/>
 	<string id="20847" text="已完成的上傳"/>
-	<string id="20848" text="HTTP Guard"/>
+	<string id="20848" text="HTTP 保護"/>
 	<string id="20850" text="大型檔案"/>
 	<string id="20851" text="中型檔案"/>
 	<string id="20852" text="小型檔案"/>
@@ -3185,14 +3205,14 @@
 	<string id="20858" text="等待由上傳主機 %s 傳來的要求已逾時。"/>
 	<string id="20859" text="正在關閉上傳連線 %s , 因為缺乏流量。"/>
 	<string id="20860" text="正在上傳 &quot;%s&quot; 的 tiger-tree 資料至 %s。"/>
-	<string id="20861" text="移除上傳 &quot;%s&quot; 至 %s。"/>
-	<string id="20862" text="新增"/>
-	<string id="20864" text="瀏覽"/>
-	<string id="20865" text="連線"/>
-	<string id="20866" text="檔案名稱:"/>
-	<string id="20867" text="主機:"/>
-	<string id="20868" text="連接埠:"/>
-	<!--string id="20869" text="無法顯示 URL 動作對話框, 因為 Envy 忙祿中。"-->
+	<string id="20862" text="移除上傳 &quot;%s&quot; 至 %s。"/>
+	<string id="20864" text="新增"/>
+	<string id="20865" text="瀏覽"/>
+	<string id="20866" text="連線"/>
+	<string id="20867" text="檔案名稱:"/>
+	<string id="20868" text="主機:"/>
+	<string id="20869" text="連接埠:"/>
+	<!--string id="20876" text="無法顯示 URL 動作對話框, 因為 Envy 忙祿中。"-->
 	<string id="20870" text="無法解析 URL: Envy 不了解這個 URL。"/>
 	<string id="20871" text="接收到 URL &quot;%s&quot;"/>
 	<string id="20872" text="類型:"/>
@@ -3408,7 +3428,7 @@
 		<control text="在結點模式時限制分享"/>
 		<control text="分享新進的部份檔下載"/>
 		<control text="分享預覽檔"/>
-		<control text="Fair-Use mode (10% media limit)"/>
+		<control text="合理使用模式 (10% 的媒體限制)"/>
 		<control text="每個主機的最多可同時下載:"/>
 		<control/>
 		<control/>
@@ -3643,7 +3663,7 @@
 	<dialog name="CWizardConnectionPage" cookie="StStCoStStCoStCoStCoStEdBuStms" caption="歡迎使用者 Envy (2/8)">
 		<control text="為了達到最佳效能, Envy 需要知道您的上網方式/地點。"/>
 		<control text="如果知道您網際網路的頻寬, 請選擇最接近的速度:"/>
-		<control text="| 撥接網路| ISDN 128K| DSL 768K| DSL 1.5| Cable 3| DSL 4| DSL2 8| FIOS 10| DSL2 12| FIOS 15| FIOS 20| FIOS 25| FIOS 30| FIOS 50| T1| T3| 區域網路| OC3"/>
+		<control text="|撥接網路|ISDN 128K|DSL 768K|DSL 1.5|Cable 3|DSL 4|DSL2 8|FIOS 10|DSL2 12|FIOS 15|FIOS 20|FIOS 25|FIOS 30|FIOS 50|100|200|300|400|Gigabit|T1|T3|區域網路|OC3"/>
 		<control text="測試 Speedtest.net"/>
 		<control text="或选择:"/>
 		<control/>
@@ -3651,7 +3671,7 @@
 		<control/>
 		<control text="不要自動端口轉發，即插即用？"/>
 		<control/>
-		<control text="Port:"/>
+		<control text="連接埠:"/>
 		<control/>
 		<control text="隨機"/>
 		<control text="身份:"/>

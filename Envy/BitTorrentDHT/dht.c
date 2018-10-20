@@ -1,7 +1,7 @@
 //
 // dht.c :	Implementation of Mainline BitTorrent DHT v0.24
 //
-// This file is part of Envy (getenvy.com) © 2016
+// This file is part of Envy (getenvy.com) © 2016-2018
 // Copyright (c) 2009-2015 by Juliusz Chroboczek
 //
 // Permission is hereby granted, free of charge, to any person obtaining

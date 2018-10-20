@@ -1,8 +1,8 @@
 //
 // NeighboursWithG1.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2007
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -24,8 +24,8 @@
 #include "Settings.h"
 #include "Envy.h"
 #include "Datagrams.h"
-#include "G1Packet.h"
 #include "G1Neighbour.h"
+#include "G1Packet.h"
 #include "Network.h"
 #include "Neighbours.h"
 #include "Statistics.h"
@@ -148,7 +148,7 @@ void CNeighboursWithG1::OnG1Ping()
 		Network.CreateID( oGUID );
 
 		// Loop for each neighbour we're connected to
-		for ( POSITION pos = GetIterator() ; pos ; )
+		for ( POSITION pos = GetIterator(); pos; )
 		{
 			// Get the neighbour at this position, and move pos to the next one
 			CNeighbour* pNeighbour = GetNext( pos );
@@ -176,7 +176,7 @@ void CNeighboursWithG1::OnG1Pong(CG1Neighbour* pFrom, IN_ADDR* pAddress, WORD nP
 		return;		// If Add didn't return a CPongItem, (do)
 
 	// Loop through each neighbour we're connected to
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		// Get the neighbour at this position, and move post forward
 		CG1Neighbour* pNeighbour = (CG1Neighbour*)GetNext( pos );
@@ -202,8 +202,8 @@ void CNeighboursWithG1::SendPing()
 		}
 
 		SOCKADDR_IN pAddress = { AF_INET };
-		pAddress.sin_addr.s_addr = inet_addr( DEFAULT_G1_MCAST_ADDRESS );
-		pAddress.sin_port = htons( DEFAULT_G1_MCAST_PORT );
+		pAddress.sin_addr.s_addr = inet_addr( G1_DEFAULT_MULTICAST_ADDRESS );
+		pAddress.sin_port = htons( G1_DEFAULT_MULTICAST_PORT );
 		Datagrams.Send( &pAddress, pPing, TRUE, NULL, FALSE );
 
 		Statistics.Current.Gnutella1.PingsSent++;
@@ -217,8 +217,8 @@ void CNeighboursWithG1::SendQuery(CQuerySearchPtr pSearch)
 	if ( CG1Packet* pQuery = pSearch->ToG1Packet( 1 ) )
 	{
 		SOCKADDR_IN pAddress = { AF_INET };
-		pAddress.sin_addr.s_addr = inet_addr( DEFAULT_G1_MCAST_ADDRESS );
-		pAddress.sin_port = htons( DEFAULT_G1_MCAST_PORT );
+		pAddress.sin_addr.s_addr = inet_addr( G1_DEFAULT_MULTICAST_ADDRESS );
+		pAddress.sin_port = htons( G1_DEFAULT_MULTICAST_PORT );
 		Datagrams.Send( &pAddress, pQuery, TRUE, NULL, FALSE );
 	}
 }

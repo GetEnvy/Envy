@@ -1,8 +1,8 @@
 //
 // EnvyDataSource.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2017
-// Portions copyright PeerProject 2008-2015 and Shareaza 2002-2008
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2008 and PeerProject 2008-2015
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -72,7 +72,7 @@ static LPCTSTR GetFORMATLIST(UINT id)
 		{ 0, NULL }
 	};
 	static TCHAR buf [256] = { 0 };
-	for ( int i = 0 ; FORMATLIST[i].name ; i++ )
+	for ( int i = 0; FORMATLIST[i].name; i++ )
 	{
 		if ( FORMATLIST[i].id == id )
 			return FORMATLIST[i].name;
@@ -87,7 +87,7 @@ void DumpIDataObject(IDataObject* pIDataObject)
 	CComPtr< IEnumFORMATETC > pIEnumFORMATETC;
 	if ( SUCCEEDED( pIDataObject->EnumFormatEtc( DATADIR_GET, &pIEnumFORMATETC ) ) )
 	{
-		TRACE( L"IDataObject = {\n" );
+		TRACE( "IDataObject = {\n" );
 		pIEnumFORMATETC->Reset();
 		for ( ;; )
 		{
@@ -95,11 +95,11 @@ void DumpIDataObject(IDataObject* pIDataObject)
 			ULONG celtFetched = 0;
 			if ( pIEnumFORMATETC->Next( 1, &formatetc, &celtFetched ) != S_OK )
 				break;
-			TRACE( L"\t{%s, %d, %d, 0x%08x, %d}\n",
+			TRACE( "\t{%s, %d, %d, 0x%08x, %d}\n",
 				GetFORMATLIST( formatetc.cfFormat ), formatetc.dwAspect, formatetc.lindex,
 				formatetc.ptd, formatetc.tymed );
 		}
-		TRACE( L"}\n" );
+		TRACE( "}\n" );
 	}
 }
 
@@ -268,7 +268,7 @@ void CEnvyDataSource::Clean()
 
 	if ( m_rgde )
 	{
-		for ( int ide = 0 ; ide < m_cde ; ide++ )
+		for ( int ide = 0; ide < m_cde; ide++ )
 		{
 			if ( m_rgde[ide].fe.ptd )
 			{
@@ -431,7 +431,7 @@ HRESULT CEnvyDataSource::ObjectToFiles(IDataObject* pIDataObject, CList < CStrin
 			if ( hDropInfo )
 			{
 				UINT nCount = DragQueryFile( hDropInfo, 0xFFFFFFFF, NULL, 0 );
-				for ( UINT nFile = 0 ; nFile < nCount ; nFile++ )
+				for ( UINT nFile = 0; nFile < nCount; nFile++ )
 				{
 					CString strFile;
 					DragQueryFile( hDropInfo, nFile, strFile.GetBuffer( MAX_PATH ), MAX_PATH );
@@ -517,7 +517,7 @@ BOOL CEnvyDataSource::DropToFolder(IDataObject* pIDataObject, DWORD grfKeyState,
 	if ( ! pdf->fWide )
 	{
 		// ANSI
-		for ( LPCSTR pFrom = (LPCSTR)( (char*)pdf + pdf->pFiles ) ; *pFrom ; offset += len + 1, pFrom += len + 1 )
+		for ( LPCSTR pFrom = (LPCSTR)( (char*)pdf + pdf->pFiles ); *pFrom; offset += len + 1, pFrom += len + 1 )
 		{
 			len = lstrlenA( pFrom );
 			CStringW sFile( pFrom );	// ANSI -> UNICODE
@@ -538,7 +538,7 @@ BOOL CEnvyDataSource::DropToFolder(IDataObject* pIDataObject, DWORD grfKeyState,
 	else
 	{
 		// UNICODE
-		for ( LPCWSTR pFrom = (LPCWSTR)( (char*)pdf + pdf->pFiles ) ; *pFrom ; offset += len + 1, pFrom += len + 1 )
+		for ( LPCWSTR pFrom = (LPCWSTR)( (char*)pdf + pdf->pFiles ); *pFrom; offset += len + 1, pFrom += len + 1 )
 		{
 			len = lstrlenW( pFrom );
 			if ( len > 4 && ! lstrcmpiW( pFrom + len - 4, L".lnk" ) )
@@ -960,7 +960,7 @@ HRESULT CEnvyDataSource::FindFORMATETC(FORMATETC *pfe, LPDATAENTRY *ppde, BOOL f
 	CSingleLock pLock( &m_pSection, TRUE );
 
 	// See if it's in our list
-	for ( int ide = 0 ; ide < m_cde ; ide++ )
+	for ( int ide = 0; ide < m_cde; ide++ )
 	{
 		if ( m_rgde[ide].fe.cfFormat == pfe->cfFormat &&
 			 m_rgde[ide].fe.dwAspect == pfe->dwAspect &&
@@ -1173,7 +1173,7 @@ STDMETHODIMP CEnvyDataSource::XDataObject::EnumFormatEtc(DWORD /*dwDirection*/, 
 
 	CSingleLock pLock( &pThis->m_pSection, TRUE );
 
-	for ( int nIndex = 0 ; nIndex < pThis->m_cde ; nIndex++ )
+	for ( int nIndex = 0; nIndex < pThis->m_cde; nIndex++ )
 	{
 		pFormatList->AddFormat( &pThis->m_rgde[nIndex].fe );
 	}
@@ -1350,7 +1350,7 @@ void CEnvyDataSource::GetTotalLength(const CLibraryTreeItem* pSelFirst, size_t& 
 {
 	ASSERT_VALID( pSelFirst );
 
-	for ( const CLibraryTreeItem* pItem = pSelFirst ; pItem ; pItem = pItem->m_pSelNext )
+	for ( const CLibraryTreeItem* pItem = pSelFirst; pItem; pItem = pItem->m_pSelNext )
 	{
 		if ( pItem->m_pVirtual && bRoot &&
 			! CheckURI( pItem->m_pVirtual->m_sSchemaURI, CSchema::uriGhostFolder ) )
@@ -1393,11 +1393,11 @@ void CEnvyDataSource::FillBuffer(const CLibraryList* pList, LPTSTR& buf_HDROP, C
 					CString strTemp;
 					strTemp.Format(
 						L"magnet:?xt=urn:bitprint:%s.%s&xt=%s&xl=%I64u&dn=%s",
-						pFile->m_oSHA1.toString(),
-						pFile->m_oTiger.toString(),
-						pFile->m_oED2K.toUrn(),
+						(LPCTSTR)pFile->m_oSHA1.toString(),
+						(LPCTSTR)pFile->m_oTiger.toString(),
+						(LPCTSTR)pFile->m_oED2K.toUrn(),
 						pFile->m_nSize,
-						URLEncode( pFile->m_sName ) );
+						(LPCTSTR)URLEncode( pFile->m_sName ) );
 					if ( ! buf_Text.IsEmpty() )
 						buf_Text += L"\r\n\r\n";
 					buf_Text += strTemp;
@@ -1463,7 +1463,7 @@ void CEnvyDataSource::FillBuffer(const CLibraryTreeItem* pSelFirst, LPTSTR& buf_
 {
 	ASSERT_VALID( pSelFirst );
 
-	for ( const CLibraryTreeItem* pItem = pSelFirst ; pItem ; pItem = pItem->m_pSelNext )
+	for ( const CLibraryTreeItem* pItem = pSelFirst; pItem; pItem = pItem->m_pSelNext )
 	{
 		if ( pItem->m_pVirtual && bRoot &&
 			! CheckURI( pItem->m_pVirtual->m_sSchemaURI, CSchema::uriGhostFolder ) )

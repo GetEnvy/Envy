@@ -1,7 +1,7 @@
 //
 // Image.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
+// This file is part of Envy (getenvy.com) © 2016-2018
 // Portions copyright PeerProject 2008,2014
 //
 // Original author Michael Stokes released portions into the public domain.
@@ -89,12 +89,12 @@ BOOL CImage::MonoToRGB()
 	BYTE* pInRow	= m_pImage;
 	BYTE* pOutRow	= pNew;
 
-	for ( int nY = m_nHeight ; nY ; nY-- )
+	for ( int nY = m_nHeight; nY; nY-- )
 	{
 		BYTE* pInCol	= pInRow;
 		BYTE* pOutCol	= pOutRow;
 
-		for ( int nX = m_nWidth ; nX ; nX-- )
+		for ( int nX = m_nWidth; nX; nX-- )
 		{
 			*pOutCol++ = *pInCol;
 			*pOutCol++ = *pInCol;
@@ -131,12 +131,12 @@ BOOL CImage::AlphaToRGB(COLORREF crBack)
 	BYTE* pInRow	= m_pImage;
 	BYTE* pOutRow	= pNew;
 
-	for ( int nY = m_nHeight ; nY ; nY-- )
+	for ( int nY = m_nHeight; nY; nY-- )
 	{
 		BYTE* pInCol	= pInRow;
 		BYTE* pOutCol	= pOutRow;
 
-		for ( int nX = m_nWidth ; nX ; nX-- )
+		for ( int nX = m_nWidth; nX; nX-- )
 		{
 			DWORD nAlpha = (DWORD)pInCol[3];
 
@@ -213,7 +213,7 @@ HBITMAP CImage::Resample(int nNewWidth, int nNewHeight)
 
 	int nFlag = ( nNewWidth == m_nWidth ) ? 0 : 1;
 
-	for ( int nX = 0 ; nX < nNewWidth ; nX++ )
+	for ( int nX = 0; nX < nNewWidth; nX++ )
 	{
 		int nFirst = ( nX * m_nWidth / nNewWidth );
 		int nCount = ( (nX+1) * m_nWidth / nNewWidth ) - nFirst + nFlag;
@@ -226,7 +226,7 @@ HBITMAP CImage::Resample(int nNewWidth, int nNewHeight)
 
 	nFlag = ( nNewHeight == m_nHeight ) ? 0 : 1;
 
-	for ( int nY = 0 ; nY < nNewHeight ; nY++ )
+	for ( int nY = 0; nY < nNewHeight; nY++ )
 	{
 		int nFirst = ( nY * m_nHeight / nNewHeight );
 		int nCount = ( (nY+1) * m_nHeight / nNewHeight ) - nFirst + nFlag;
@@ -237,15 +237,15 @@ HBITMAP CImage::Resample(int nNewWidth, int nNewHeight)
 		BYTE* pOut = pLine;
 		pColPtr = pColInfo;
 
-		for ( int nX = 0 ; nX < nNewWidth ; nX++, pColPtr++ )
+		for ( int nX = 0; nX < nNewWidth; nX++, pColPtr++ )
 		{
 			BYTE* pIn = pRow + *pColPtr++;
 
 			DWORD nRed = 0, nGreen = 0, nBlue = 0, nPixels = 0;
 
-			for ( int nYY = nCount ; nYY ; nYY-- )
+			for ( int nYY = nCount; nYY; nYY-- )
 			{
-				for ( int nXX = *pColPtr ; nXX ; nXX-- )
+				for ( int nXX = *pColPtr; nXX; nXX-- )
 				{
 					nRed	+= *pIn++;
 					nGreen	+= *pIn++;

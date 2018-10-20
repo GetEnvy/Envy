@@ -1,8 +1,8 @@
 //
 // ChatSession.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2015 and Shareaza 2002-2007
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2015
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -804,7 +804,7 @@ BOOL CChatSession::OnCaptchaRequest(CEDPacket* pPacket)
 	// Note: The message packet has already been validated by the EDClient.
 
 	// Skip tags
-	for ( BYTE nCount = pPacket->ReadByte() ; nCount && pPacket->GetRemaining() ; --nCount )
+	for ( BYTE nCount = pPacket->ReadByte(); nCount && pPacket->GetRemaining(); --nCount )
 	{
 		CEDTag pTag;
 		pTag.Read( pPacket );
@@ -911,7 +911,7 @@ BOOL CChatSession::ReadG2()
 	CLockedBuffer pInput( GetInput() );
 
 	BOOL bSuccess = TRUE;
-	for ( ; bSuccess && pInput->m_nLength ; )
+	for ( ; bSuccess && pInput->m_nLength; )
 	{
 		BYTE nInput = *( pInput->m_pBuffer );
 
@@ -939,7 +939,7 @@ BOOL CChatSession::ReadG2()
 		{
 			BYTE* pLenIn = pInput->m_pBuffer + 1;
 
-			for ( BYTE nIt = nLenLen ; nIt ; nIt-- )
+			for ( BYTE nIt = nLenLen; nIt; nIt-- )
 			{
 				nLength <<= 8;
 				nLength |= *pLenIn++;
@@ -949,7 +949,7 @@ BOOL CChatSession::ReadG2()
 		{
 			BYTE* pLenIn  = pInput->m_pBuffer + 1;
 			BYTE* pLenOut = (BYTE*)&nLength;
-			for ( BYTE nLenCnt = nLenLen ; nLenCnt-- ; ) *pLenOut++ = *pLenIn++;
+			for ( BYTE nLenCnt = nLenLen; nLenCnt--; ) *pLenOut++ = *pLenIn++;
 		}
 
 		if ( nLength >= Settings.Gnutella.MaximumPacket )
@@ -1169,7 +1169,7 @@ BOOL CChatSession::OnChatAnswer(CG2Packet* pPacket)
 
 		case G2_PACKET_CHAT_AWAY:
 			MakeActive();	// m_nState = cssAway;
-			StatusMessage( cmtError, IDS_CHAT_PRIVATE_AWAY, (LPCTSTR)m_sNick, pPacket->ReadString( nLength ) );
+			StatusMessage( cmtError, IDS_CHAT_PRIVATE_AWAY, (LPCTSTR)m_sNick, (LPCTSTR)pPacket->ReadString( nLength ) );
 			break;
 		}
 		pPacket->m_nPosition = nOffset;
@@ -1234,7 +1234,7 @@ BOOL CChatSession::SendPrivateMessage(bool bAction, const CString& strText)
 	//	CString strMessage;
 	//	CString strNick = MyProfile.GetNick();
 	//	if ( strNick.IsEmpty() ) strNick = CLIENT_NAME L" User";
-	//	strMessage.Format( LoadString( IDS_CHAT_PRIVATE_AWAY ), strNick, strText );
+	//	strMessage.Format( LoadString( IDS_CHAT_PRIVATE_AWAY ), (LPCTSTR)strNick, (LPCTSTR)strText );
 	//}
 
 	if ( m_nProtocol == PROTOCOL_ED2K )

@@ -66,7 +66,7 @@ protected:
 		CString sID;
 		CString sTranslated;
 		bool	bKeepUnderscores;
-	} ;
+	};
 
 	typedef CAtlList< CItem > CItemList;
 	typedef CAtlMap< CString, CItem* > CItemMap;

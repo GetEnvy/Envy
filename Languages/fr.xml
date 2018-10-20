@@ -3,7 +3,7 @@
 
 <!-- Envy Default French Skin File -->
 
-<!-- Translation based on default en.xml r21 -->
+<!-- Translation based on default en.xml r22 -->
 <!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -15,7 +15,7 @@
 <manifest
 	name="Français"
 	author="Antoine Martin-Lalande (Sensi)"
-	updatedBy="ceceboy, zigotozor"
+	updatedby="ceceboy, zigotozor"
 	description="Envy Default French Skin File"
 	link="http://getenvy.com"
 	email="shareaza.fr(at)gmail.com"
@@ -3397,8 +3397,9 @@
 	<string id="20807" text="Refus d'envoi de « %s » vers %s (%s), il y a trop de concurrents de l'hôte."/>
 	<string id="20808" text="Refus de l'envoi de « %s » à %s, occupé et le client ne supporte pas la mise en file d'attente."/>
 	<string id="20809" text="Envoi refusé de « %s » vers %s (%s), toutes les files d'attente assorties sont pleines."/>
-	<string id="20810" text="L'hôte d'envoi %s a demandé un segment impossible à satisfaire du fichier « %s »."/>
-	<string id="20811" text="Il n'est pas poli qu'un envoi soit annulé. Êtes-vous certain de vouloir annuler cet envoi ?"/>
+	<string id="20810" text="Refus de l'envoi de « %s » à %s (%s), la Bibliothèque est occupée."/>
+	<string id="20811" text="L'hôte d'envoi %s a demandé un segment impossible à satisfaire du fichier « %s »."/>
+	<string id="20861" text="Il n'est pas poli qu'un envoi soit annulé. Êtes-vous certain de vouloir annuler cet envoi ?"/>
 	<string id="20812" text="Impossible d'ouvrir « %s » pour l'envoi à l'hôte %s, erreur disque/fichier."/>
 	<string id="20813" text="Initialisation d'une connexion poussée à %s pour l'envoi de « %s »;."/>
 	<string id="20814" text="Impossible de se connecter à l'hôte d'envoi %s pour la poussée."/>
@@ -3445,14 +3446,14 @@
 	<string id="20858" text="Délai d'attente dépassé dans l'attente d'une demande de l'hôte d'envoi %s."/>
 	<string id="20859" text="Fermeture de la connexion d'envoi %s à cause du manque de trafic."/>
 	<string id="20860" text="Envoi du tiger-tree de « %s » pour « %s »."/>
-	<string id="20861" text="Supprime l'envoi de « %s » à %s."/>
-	<string id="20862" text="Ajouter"/>
-	<string id="20864" text="&amp;Parcourir"/>
-	<string id="20865" text="Se &amp;connecte"/>
-	<string id="20866" text="Fichier :"/>
-	<string id="20867" text="Hôte :"/>
-	<string id="20868" text="Port :"/>
-	<!--string id="20869" text="Impossible d'afficher le dialogue d'action de l'URL, Envy est occupé."-->
+	<string id="20862" text="Supprime l'envoi de « %s » à %s."/>
+	<string id="20864" text="Ajouter"/>
+	<string id="20865" text="&amp;Parcourir"/>
+	<string id="20866" text="Se &amp;connecte"/>
+	<string id="20867" text="Fichier :"/>
+	<string id="20868" text="Hôte :"/>
+	<string id="20869" text="Port :"/>
+	<!--string id="20876" text="Impossible d'afficher le dialogue d'action de l'URL, Envy est occupé."-->
 	<string id="20870" text="Impossible d'analyser cette URL : Envy ne reconnaît pas cette URL."/>
 	<string id="20871" text="Adresse reçue « %s »"/>
 	<string id="20872" text="Type :"/>

@@ -2,7 +2,7 @@
 // Library.cpp
 //
 // This file is part of Envy (getenvy.com) © 2016-2018
-// Portions copyright PeerProject 2008-2015 and Shareaza 2002-2008
+// Portions copyright Shareaza 2002-2008 and PeerProject 2008-2015
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -143,7 +143,7 @@ void CLibrary::CheckDuplicates(const CLibraryFile* pFile, bool bForce) const
 
 	DWORD nCount = 0;
 
-	for ( POSITION pos = LibraryMaps.GetFileIterator() ; pos ; )
+	for ( POSITION pos = LibraryMaps.GetFileIterator(); pos; )
 	{
 		const CLibraryFile* pExisting = LibraryMaps.GetNextFile( pos );
 
@@ -226,7 +226,7 @@ bool CLibrary::OnQueryHits(const CQueryHit* pHits)
 	if ( ! oLock.Lock( 250 ) )
 		return false;
 
-	for ( const CQueryHit* pHit = pHits ; pHit ; pHit = pHit->m_pNext )
+	for ( const CQueryHit* pHit = pHits; pHit; pHit = pHit->m_pNext )
 	{
 		if ( ! pHit->m_sURL.IsEmpty() )
 		{

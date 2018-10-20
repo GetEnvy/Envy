@@ -2,7 +2,7 @@
 // UPnPFinder.cpp
 //
 // This file is part of Envy (getenvy.com) © 2016-2018
-// Portions copyright PeerProject 2008-2015 and Shareaza 2002-2007
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2015
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -298,7 +298,7 @@ bool CUPnPFinder::OnSearchComplete()
 		return false;	// No devices found
 	}
 
-	for ( std::size_t pos = 0 ; pos < m_pDevices.size() ; pos++ )
+	for ( std::size_t pos = 0; pos < m_pDevices.size(); pos++ )
 	{
 		GetDeviceServices( m_pDevices[ pos ] );
 		StartPortMapping();
@@ -359,7 +359,7 @@ HRESULT CUPnPFinder::SaveServices(CComPtr< IEnumUnknown > pEU, const LONG nTotal
 	HRESULT hr = S_OK;
 	CComBSTR bsServiceId;
 
-	for ( LONG nIndex = 0 ; nIndex < nTotalItems ; nIndex++ )
+	for ( LONG nIndex = 0; nIndex < nTotalItems; nIndex++ )
 	{
 		CComPtr< IUnknown > punkService;
 		hr = pEU->Next( 1, &punkService, NULL );
@@ -573,7 +573,7 @@ CString CUPnPFinder::GetLocalRoutableIP(ServicePointer pService)
 
 	// Look for IP associated with the interface in the address table
 	// Loopback addresses are functional for ICS? (at least Windows maps them fine)
-	for ( DWORD nIf = 0 ; nIf < nCount ; nIf++ )
+	for ( DWORD nIf = 0; nIf < nCount; nIf++ )
 	{
 		if ( ipAddr->table[ nIf ].dwIndex == nInterfaceIndex )
 		{
@@ -775,7 +775,7 @@ HRESULT CUPnPFinder::InvokeAction(ServicePointer pService,
 
 	vaArray.pparray = &psaArgs;
 
-	for ( INT_PTR nArg = 0 ; nArg < nArgs ; nArg++ )
+	for ( INT_PTR nArg = 0; nArg < nArgs; nArg++ )
 	{
 		nPos = nArg + 1;
 		hr = SafeArrayPutElement( psaArgs, &nPos, ppVars[ nArg ] );
@@ -870,7 +870,7 @@ INT_PTR CUPnPFinder::CreateVarFromString(const CString& strArgs, VARIANT*** pppV
 	INT_PTR nArgs = oTokens.GetCount();
 	*pppVars = new VARIANT* [ nArgs ]();
 
-	for ( INT_PTR nArg = 0 ; nArg < nArgs ; nArg++ )
+	for ( INT_PTR nArg = 0; nArg < nArgs; nArg++ )
 	{
 		strToken = oTokens.GetAt( nArg );
 		int nEqualPos = strToken.Find( L'=' );
@@ -953,7 +953,7 @@ INT_PTR	CUPnPFinder::GetStringFromOutArgs(const VARIANT* pvaOutArgs, CString& st
 		CComVariant vaOutElement;
 		strResult = '|';
 
-		for ( LONG nIndex = nLBound ; nIndex <= nUBound && ! bInvalid ; ++nIndex )
+		for ( LONG nIndex = nLBound; nIndex <= nUBound && ! bInvalid; ++nIndex )
 		{
 			vaOutElement.Clear();
 			hr = GetVariantElement( pvaOutArgs->parray, nIndex, &vaOutElement );
@@ -1027,7 +1027,7 @@ void CUPnPFinder::DestroyVars(const INT_PTR nCount, VARIANT*** pppVars)
 
 	if ( nCount == 0 ) return;
 
-	for ( INT_PTR nArg = 0 ; nArg < nCount ; nArg++ )
+	for ( INT_PTR nArg = 0; nArg < nCount; nArg++ )
 	{
 		pVar = (*pppVars)[ nArg ];
 		if ( pVar != NULL )

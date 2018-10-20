@@ -1,8 +1,8 @@
 //
 // LibraryMaps.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2007
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -221,8 +221,8 @@ CFileList* CLibraryMaps::LookupFilesByHash(const CEnvyFile* pFilter, BOOL bShare
 
 	if ( pFilter->m_oSHA1 )
 	{
-		for ( CLibraryFile* pFile = m_pSHA1Map[ pFilter->m_oSHA1[ 0 ] & HASH_MASK ] ;
-			pFile ; pFile = pFile->m_pNextSHA1 )
+		for ( CLibraryFile* pFile = m_pSHA1Map[ pFilter->m_oSHA1[ 0 ] & HASH_MASK ];
+			pFile; pFile = pFile->m_pNextSHA1 )
 		{
 			if ( validAndEqual( pFile->m_oSHA1, pFilter->m_oSHA1 ) &&
 				 *pFile == *pFilter &&
@@ -249,8 +249,8 @@ CFileList* CLibraryMaps::LookupFilesByHash(const CEnvyFile* pFilter, BOOL bShare
 
 	if ( pFilter->m_oED2K )
 	{
-		for ( CLibraryFile* pFile = m_pED2KMap[ pFilter->m_oED2K[ 0 ] & HASH_MASK ] ;
-			pFile ; pFile = pFile->m_pNextED2K )
+		for ( CLibraryFile* pFile = m_pED2KMap[ pFilter->m_oED2K[ 0 ] & HASH_MASK ];
+			pFile; pFile = pFile->m_pNextED2K )
 		{
 			if ( validAndEqual( pFile->m_oED2K, pFilter->m_oED2K ) &&
 				 *pFile == *pFilter &&
@@ -277,8 +277,8 @@ CFileList* CLibraryMaps::LookupFilesByHash(const CEnvyFile* pFilter, BOOL bShare
 
 	if ( pFilter->m_oTiger )
 	{
-		for ( CLibraryFile* pFile = m_pTigerMap[ pFilter->m_oTiger[ 0 ] & HASH_MASK ] ;
-			pFile ; pFile = pFile->m_pNextTiger )
+		for ( CLibraryFile* pFile = m_pTigerMap[ pFilter->m_oTiger[ 0 ] & HASH_MASK ];
+			pFile; pFile = pFile->m_pNextTiger )
 		{
 			if ( validAndEqual( pFile->m_oTiger, pFilter->m_oTiger ) &&
 				 *pFile == *pFilter &&
@@ -305,8 +305,8 @@ CFileList* CLibraryMaps::LookupFilesByHash(const CEnvyFile* pFilter, BOOL bShare
 
 	if ( pFilter->m_oBTH )
 	{
-		for ( CLibraryFile* pFile = m_pBTHMap[ pFilter->m_oBTH[ 0 ] & HASH_MASK ] ;
-			pFile ; pFile = pFile->m_pNextBTH )
+		for ( CLibraryFile* pFile = m_pBTHMap[ pFilter->m_oBTH[ 0 ] & HASH_MASK ];
+			pFile; pFile = pFile->m_pNextBTH )
 		{
 			if ( validAndEqual( pFile->m_oBTH, pFilter->m_oBTH ) &&
 				 *pFile == *pFilter &&
@@ -335,8 +335,8 @@ CFileList* CLibraryMaps::LookupFilesByHash(const CEnvyFile* pFilter, BOOL bShare
 		// Since MD5 is not commonly used for searches we use it for the duplicate file search
 		// which requires getting a list of files not to return only 1 file. See CLibrary::CheckDuplicates
 
-		for ( CLibraryFile* pFile = m_pMD5Map[ pFilter->m_oMD5[ 0 ] & HASH_MASK ] ;
-			pFile ; pFile = pFile->m_pNextMD5 )
+		for ( CLibraryFile* pFile = m_pMD5Map[ pFilter->m_oMD5[ 0 ] & HASH_MASK ];
+			pFile; pFile = pFile->m_pNextMD5 )
 		{
 			if ( validAndEqual( pFile->m_oMD5, pFilter->m_oMD5 ) &&
 				 *pFile == *pFilter &&
@@ -396,7 +396,7 @@ CLibraryFile* CLibraryMaps::LookupFileBySHA1(const Hashes::Sha1Hash& oSHA1, BOOL
 
 	CLibraryFile* pFile = m_pSHA1Map[ oSHA1[ 0 ] & HASH_MASK ];
 
-	for ( ; pFile ; pFile = pFile->m_pNextSHA1 )
+	for ( ; pFile; pFile = pFile->m_pNextSHA1 )
 	{
 		if ( validAndEqual( oSHA1, pFile->m_oSHA1 ) )
 		{
@@ -418,7 +418,7 @@ CLibraryFile* CLibraryMaps::LookupFileByTiger(const Hashes::TigerHash& oTiger, B
 
 	CLibraryFile* pFile = m_pTigerMap[ oTiger[ 0 ] & HASH_MASK ];
 
-	for ( ; pFile ; pFile = pFile->m_pNextTiger )
+	for ( ; pFile; pFile = pFile->m_pNextTiger )
 	{
 		if ( validAndEqual( oTiger, pFile->m_oTiger ) )
 		{
@@ -440,7 +440,7 @@ CLibraryFile* CLibraryMaps::LookupFileByED2K(const Hashes::Ed2kHash& oED2K, BOOL
 
 	CLibraryFile* pFile = m_pED2KMap[ oED2K[ 0 ] & HASH_MASK ];
 
-	for ( ; pFile ; pFile = pFile->m_pNextED2K )
+	for ( ; pFile; pFile = pFile->m_pNextED2K )
 	{
 		if ( validAndEqual( oED2K, pFile->m_oED2K ) )
 		{
@@ -462,7 +462,7 @@ CLibraryFile* CLibraryMaps::LookupFileByBTH(const Hashes::BtHash& oBTH, BOOL bSh
 
 	CLibraryFile* pFile = m_pBTHMap[ oBTH[ 0 ] & HASH_MASK ];
 
-	for ( ; pFile ; pFile = pFile->m_pNextBTH )
+	for ( ; pFile; pFile = pFile->m_pNextBTH )
 	{
 		if ( validAndEqual( oBTH, pFile->m_oBTH ) )
 		{
@@ -484,7 +484,7 @@ CLibraryFile* CLibraryMaps::LookupFileByMD5(const Hashes::Md5Hash& oMD5, BOOL bS
 
 	CLibraryFile* pFile = m_pMD5Map[ oMD5[ 0 ] & HASH_MASK ];
 
-	for ( ; pFile ; pFile = pFile->m_pNextMD5 )
+	for ( ; pFile; pFile = pFile->m_pNextMD5 )
 	{
 		if ( validAndEqual( oMD5, pFile->m_oMD5 ) )
 		{
@@ -503,12 +503,12 @@ CLibraryFile* CLibraryMaps::LookupFileByMD5(const Hashes::Md5Hash& oMD5, BOOL bS
 
 void CLibraryMaps::Clear()
 {
-	for ( POSITION pos = GetFileIterator() ; pos ; ) delete GetNextFile( pos );
+	for ( POSITION pos = GetFileIterator(); pos; ) delete GetNextFile( pos );
 
 	ASSERT( m_pIndexMap.IsEmpty() );
 	ASSERT( m_pPathMap.IsEmpty() );
 #ifdef _DEBUG
-	for ( POSITION p = m_pPathMap.GetStartPosition() ; p ; )
+	for ( POSITION p = m_pPathMap.GetStartPosition(); p; )
 	{
 		CString k;
 		CLibraryFile* v;
@@ -664,7 +664,7 @@ void CLibraryMaps::OnFileRemove(CLibraryFile* pFile)
 	{
 		CLibraryFile** pPrev = &m_pSHA1Map[ pFile->m_oSHA1[ 0 ] & HASH_MASK ];
 
-		for ( CLibraryFile* pOther = *pPrev ; pOther ; pOther = pOther->m_pNextSHA1 )
+		for ( CLibraryFile* pOther = *pPrev; pOther; pOther = pOther->m_pNextSHA1 )
 		{
 			if ( pOther == pFile )
 			{
@@ -681,7 +681,7 @@ void CLibraryMaps::OnFileRemove(CLibraryFile* pFile)
 	{
 		CLibraryFile** pPrev = &m_pTigerMap[ pFile->m_oTiger[ 0 ] & HASH_MASK ];
 
-		for ( CLibraryFile* pOther = *pPrev ; pOther ; pOther = pOther->m_pNextTiger )
+		for ( CLibraryFile* pOther = *pPrev; pOther; pOther = pOther->m_pNextTiger )
 		{
 			if ( pOther == pFile )
 			{
@@ -698,7 +698,7 @@ void CLibraryMaps::OnFileRemove(CLibraryFile* pFile)
 	{
 		CLibraryFile** pPrev = &m_pED2KMap[ pFile->m_oED2K[ 0 ] & HASH_MASK ];
 
-		for ( CLibraryFile* pOther = *pPrev ; pOther ; pOther = pOther->m_pNextED2K )
+		for ( CLibraryFile* pOther = *pPrev; pOther; pOther = pOther->m_pNextED2K )
 		{
 			if ( pOther == pFile )
 			{
@@ -715,7 +715,7 @@ void CLibraryMaps::OnFileRemove(CLibraryFile* pFile)
 	{
 		CLibraryFile** pPrev = &m_pBTHMap[ pFile->m_oBTH[ 0 ] & HASH_MASK ];
 
-		for ( CLibraryFile* pOther = *pPrev ; pOther ; pOther = pOther->m_pNextBTH )
+		for ( CLibraryFile* pOther = *pPrev; pOther; pOther = pOther->m_pNextBTH )
 		{
 			if ( pOther == pFile )
 			{
@@ -732,7 +732,7 @@ void CLibraryMaps::OnFileRemove(CLibraryFile* pFile)
 	{
 		CLibraryFile** pPrev = &m_pMD5Map[ pFile->m_oMD5[ 0 ] & HASH_MASK ];
 
-		for ( CLibraryFile* pOther = *pPrev ; pOther ; pOther = pOther->m_pNextMD5 )
+		for ( CLibraryFile* pOther = *pPrev; pOther; pOther = pOther->m_pNextMD5 )
 		{
 			if ( pOther == pFile )
 			{
@@ -755,7 +755,7 @@ void CLibraryMaps::CullDeletedFiles(CLibraryFile* pMatch)
 
 	if ( CFileList* pList = LookupFilesByHash( pMatch, FALSE, FALSE, 0 ) )
 	{
-		for ( POSITION pos = pList->GetHeadPosition() ; pos ; )
+		for ( POSITION pos = pList->GetHeadPosition(); pos; )
 		{
 			CLibraryFile* pFile = const_cast< CLibraryFile* >( pList->GetNext( pos ) );
 			if ( ! pFile->IsAvailable() )
@@ -774,7 +774,7 @@ CFileList* CLibraryMaps::Browse(int nMaximum) const
 
 	CFileList* pHits = NULL;
 
-	for ( POSITION pos = GetFileIterator() ; pos ; )
+	for ( POSITION pos = GetFileIterator(); pos; )
 	{
 		CLibraryFile* pFile = GetNextFile( pos );
 
@@ -798,7 +798,7 @@ CFileList* CLibraryMaps::WhatsNew(const CQuerySearch* pSearch, int nMaximum) con
 	const DWORD tNow = static_cast< DWORD >( time( NULL ) );
 	CFileList* pHits = NULL;
 
-	for ( POSITION pos = GetFileIterator() ; pos ; )
+	for ( POSITION pos = GetFileIterator(); pos; )
 	{
 		CLibraryFile* pFile = GetNextFile( pos );
 
@@ -864,14 +864,14 @@ void CLibraryMaps::Serialize2(CArchive& ar, int nVersion)
 	{
 		ar.WriteCount( m_pDeleted.GetCount() );
 
-		for ( POSITION pos = m_pDeleted.GetHeadPosition() ; pos ; )
+		for ( POSITION pos = m_pDeleted.GetHeadPosition(); pos; )
 		{
 			m_pDeleted.GetNext( pos )->Serialize( ar, nVersion );
 		}
 	}
 	else // Loading
 	{
-		for ( DWORD_PTR nCount = ar.ReadCount() ; nCount > 0 ; nCount-- )
+		for ( DWORD_PTR nCount = ar.ReadCount(); nCount > 0; nCount-- )
 		{
 			//CLibraryFile* pFile = new CLibraryFile( NULL );
 			CAutoPtr< CLibraryFile > pFile( new CLibraryFile( NULL ) );
@@ -932,7 +932,7 @@ STDMETHODIMP CLibraryMaps::XLibraryFiles::get_Item(VARIANT vIndex, ILibraryFile 
 		if ( FAILED( va.ChangeType( VT_I4 ) ) || va.lVal < 0 || va.lVal >= pThis->GetFileCount() )
 			return E_INVALIDARG;
 
-		for ( POSITION pos = pThis->GetFileIterator() ; pos ; )
+		for ( POSITION pos = pThis->GetFileIterator(); pos; )
 		{
 			pFile = pThis->GetNextFile( pos );
 			if ( va.lVal-- == 0 ) break;

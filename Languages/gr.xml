@@ -3,7 +3,7 @@
 
 <!-- Envy Default Greek Skin File -->
 
-<!-- Translation based on default en.xml r21 -->
+<!-- Translation based on default en.xml r22 -->
 <!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -15,7 +15,7 @@
 <manifest
 	name="Ελληνικά"
 	author="erimitis"
-	updatedBy="erimitis, Maria Tatsiou"
+	updatedby="erimitis, Maria Tatsiou"
 	description="Envy Default Greek Skin File"
 	link="http://getenvy.com"
 	email="erimitis(at)users.sourceforge.net"
@@ -3305,8 +3305,9 @@
 	<string id="20807" text="Άρνηση αποστολής του &quot;%s&quot; προς %s (%s), λόγω πάρα πολλών ταυτόχρονων προς τον ίδιο."/>
 	<string id="20808" text="Άρνηση αποστολής του &quot;%s&quot; προς %s (%s), λόγω φόρτου και αφού δεν υποστηρίζει ουρές."/>
 	<string id="20809" text="Άρνηση αποστολής του &quot;%s&quot; προς %s (%s), λόγω πληρότητας όλων των ταιριαχτών ουρών."/>
-	<string id="20810" text="Αίτηση του host %s μη εικανοποιητικής σειράς από το αρχείο &quot;%s&quot;."/>
-	<string id="20811" text="Οι αποστολές προς το ED2K δεν πρέπει να ακυρώνονται! Θέλετε σίγουρα να ακυρώσετε αυτήν την αποστολή;"/>
+	<string id="20810" text="Refusing upload of &quot;%s&quot; to %s (%s), Η βιβλιοθήκη είναι απασχολημένη."/>
+	<string id="20811" text="Αίτηση του host %s μη εικανοποιητικής σειράς από το αρχείο &quot;%s&quot;."/>
+	<string id="20861" text="Οι αποστολές προς το ED2K δεν πρέπει να ακυρώνονται! Θέλετε σίγουρα να ακυρώσετε αυτήν την αποστολή;"/>
 	<string id="20812" text="Αδυναμία ανοίγματος του &quot;%s&quot; για αποστολή στον host %s, λόγω σφάλματος δίσκου/αρχείου."/>
 	<string id="20813" text="Εγκαινίαση σύνδεσης προώθησης με %s. %s"/>
 	<string id="20814" text="Αδυναμία σύνδεσης με host %s για προώθηση."/>
@@ -3353,14 +3354,14 @@
 	<string id="20858" text="Λήξη προθεσμίας αναμονής αίτησης από τον host %s."/>
 	<string id="20859" text="Κλείσιμο της σύνδεσης αποστολής %s, λόγω έλλειψης δραστηριότητας."/>
 	<string id="20860" text="Αποστολή δεδομένων tiger-tree για το &quot;%s&quot; προς %s."/>
-	<string id="20861" text="Αφαίρεση αποστολής του &quot;%s&quot; προς %s."/>
-	<string id="20862" text="Προσθήκη"/>
-	<string id="20864" text="Περιήγηση"/>
-	<string id="20865" text="Σύνδεση"/>
-	<string id="20866" text="Όνομα Αρχείου:"/>
-	<string id="20867" text="Host:"/>
-	<string id="20868" text="Θύρα:"/>
-	<!--string id="20869" text="Αδυναμία εμφάνισης URL action dialog, λόγω φόρτου."-->
+	<string id="20862" text="Αφαίρεση αποστολής του &quot;%s&quot; προς %s."/>
+	<string id="20864" text="Προσθήκη"/>
+	<string id="20865" text="Περιήγηση"/>
+	<string id="20866" text="Σύνδεση"/>
+	<string id="20867" text="Όνομα Αρχείου:"/>
+	<string id="20868" text="Host:"/>
+	<string id="20869" text="Θύρα:"/>
+	<!--string id="20876" text="Αδυναμία εμφάνισης URL action dialog, λόγω φόρτου."-->
 	<string id="20870" text="Αδυναμία ανάλυσης URL: Μη κατανοητό URL."/>
 	<string id="20871" text="Ληφθέντες URL &quot;%s&quot;"/>
 	<string id="20872" text="Τύπος:"/>

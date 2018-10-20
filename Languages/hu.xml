@@ -3,7 +3,7 @@
 
 <!-- Envy Default Hungarian Skin File -->
 
-<!-- Translation based on default en.xml r21 -->
+<!-- Translation based on default en.xml r22 -->
 <!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -15,7 +15,7 @@
 <manifest
 	name="Magyar"
 	author="Yuri"
-	updatedBy="Yuri"
+	updatedby="Yuri"
 	description="Envy Default Hungarian Skin File"
 	link="http://totenkopf.uw.hu"
 	email="yurielvtars(at)gmail.com"
@@ -3237,8 +3237,9 @@
 	<string id="20807" text="Feltöltés megtagadása: &quot;%s&quot; ide: %s (%s), túl sok egyidejű feltöltés."/>
 	<string id="20808" text="A(z) &quot;%s&quot; feltöltésének megtagadása ide: %s (%s), a kliens nem támogatja a sorbanállást."/>
 	<string id="20809" text="Feltöltés megtagadása: &quot;%s&quot; ide: %s (%s), az egész feltöltési sor tele van."/>
-	<string id="20810" text="%s egy nem megfelelő részt küldött a fájlból: &quot;%s&quot;."/>
-	<string id="20811" text="Az eDonkey feltöltéseket nem tanácsos megszakítani. Biztos megszakítja?"/>
+	<string id="20810" text="Feltöltés megtagadása: &quot;%s&quot; ide: %s (%s), A könyvtár elfoglalt."/>
+	<string id="20811" text="%s egy nem megfelelő részt küldött a fájlból: &quot;%s&quot;."/>
+	<string id="20861" text="Az eDonkey feltöltéseket nem tanácsos megszakítani. Biztos megszakítja?"/>
 	<string id="20812" text="Nem tudom megnyitni a feltöltéshez: &quot;%s&quot; ide: %s, lemez/fájlhiba."/>
 	<string id="20813" text="Push kapcsolat létrehozása: %s. %s"/>
 	<string id="20814" text="Nem tudtam kapcsolódni pusholáshoz: %s."/>
@@ -3285,14 +3286,14 @@
 	<string id="20858" text="A feltöltési kiszolgáló túllépte az időt: %s."/>
 	<string id="20859" text="Feltöltési kapcsolat bezárása a kevés forgalom miatt: %s."/>
 	<string id="20860" text="TTH adat feltöltése &quot;%s&quot; ide: %s."/>
-	<string id="20861" text="Feltöltés eltávolítva: &quot;%s&quot;, %s."/>
-	<string id="20862" text="Hozzáad"/>
-	<string id="20864" text="Böngészés"/>
-	<string id="20865" text="Kapcsolódás"/>
-	<string id="20866" text="Fájlnév:"/>
-	<string id="20867" text="Kiszolgáló:"/>
-	<string id="20868" text="Port:"/>
-	<!--string id="20869" text="Az URL ablakot nem lehet megnyitni, mert a Envy elfoglalt."-->
+	<string id="20862" text="Feltöltés eltávolítva: &quot;%s&quot;, %s."/>
+	<string id="20864" text="Hozzáad"/>
+	<string id="20865" text="Böngészés"/>
+	<string id="20866" text="Kapcsolódás"/>
+	<string id="20867" text="Fájlnév:"/>
+	<string id="20868" text="Kiszolgáló:"/>
+	<string id="20869" text="Port:"/>
+	<!--string id="20876" text="Az URL ablakot nem lehet megnyitni, mert a Envy elfoglalt."-->
 	<string id="20870" text="A Envy nem ismeri ezt a fajta URL-t."/>
 	<string id="20871" text="URL fogadva: &quot;%s&quot;"/>
 	<string id="20872" text="Típus:"/>

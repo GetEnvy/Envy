@@ -1,8 +1,8 @@
 //
 // CtrlLibraryDetailView.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2007
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -217,7 +217,7 @@ void CLibraryDetailView::OnDestroy()
 {
 	if ( m_pList )
 	{
-		for ( DWORD nItem = 0 ; nItem < m_nBuffer ; nItem++ )
+		for ( DWORD nItem = 0; nItem < m_nBuffer; nItem++ )
 		{
 			if ( m_pList[ nItem ].pText ) delete m_pList[ nItem ].pText;
 		}
@@ -268,7 +268,7 @@ void CLibraryDetailView::SetViewSchema(CSchemaPtr pSchema, CList< CSchemaMember*
 	int nColumn = COL_LAST;
 	while ( pList->DeleteColumn( nColumn ) );
 
-	for ( POSITION pos = m_pColumns.GetHeadPosition() ; pos ; nColumn++ )
+	for ( POSITION pos = m_pColumns.GetHeadPosition(); pos; nColumn++ )
 	{
 		CSchemaMember* pMember = m_pColumns.GetNext( pos );
 		pList->InsertColumn( nColumn, pMember->m_sTitle, pMember->m_nColumnAlign, pMember->m_nColumnWidth, nColumn - 1 );
@@ -322,7 +322,7 @@ void CLibraryDetailView::Update()
 
 	LDVITEM* pItem = m_pList + m_nList - 1;
 
-	for ( DWORD nCount = m_nList ; nCount ; nCount--, pItem-- )
+	for ( DWORD nCount = m_nList; nCount; nCount--, pItem-- )
 	{
 		CLibraryFile* pFile = Library.LookupFile( pItem->nIndex );
 
@@ -342,7 +342,7 @@ void CLibraryDetailView::Update()
 		}
 	}
 
-	for ( POSITION pos = LibraryMaps.GetFileIterator() ; pos ; )
+	for ( POSITION pos = LibraryMaps.GetFileIterator(); pos; )
 	{
 		CLibraryFile* pFile = LibraryMaps.GetNextFile( pos );
 
@@ -379,7 +379,7 @@ BOOL CLibraryDetailView::Select(DWORD nObject)
 {
 	GET_LIST();
 
-	for ( int nDeselect = -1 ; ; )
+	for ( int nDeselect = -1; ; )
 	{
 		nDeselect = pList->GetNextItem( nDeselect, LVNI_SELECTED );
 		if ( nDeselect < 0 ) break;
@@ -387,7 +387,7 @@ BOOL CLibraryDetailView::Select(DWORD nObject)
 	}
 
 	LDVITEM* pItem = m_pList;
-	for ( DWORD nCount = 0 ; nCount < m_nList ; nCount++, pItem++ )
+	for ( DWORD nCount = 0; nCount < m_nList; nCount++, pItem++ )
 	{
 		if ( pItem->nIndex == nObject )
 		{
@@ -411,7 +411,7 @@ void CLibraryDetailView::SelectAll()
 
 	SelClear( FALSE );
 
-	for ( DWORD i = 0 ; i < m_nList ; i++ )
+	for ( DWORD i = 0; i < m_nList; i++ )
 	{
 		pList->SetItemState( i, LVIS_SELECTED, LVIS_SELECTED );
 	}
@@ -494,7 +494,7 @@ void CLibraryDetailView::CacheItem(int nItem)
 	BOOL bSource =	pFile->m_pMetadata && m_pSchema->Equals( pFile->m_pSchema ) &&
 					m_pSchema->m_sSingular.CompareNoCase( pFile->m_pMetadata->GetName() ) == 0;
 
-	for ( POSITION pos = m_pColumns.GetHeadPosition() ; pos ; nColumn++ )
+	for ( POSITION pos = m_pColumns.GetHeadPosition(); pos; nColumn++ )
 	{
 		CSchemaMember* pMember = m_pColumns.GetNext( pos );
 
@@ -521,7 +521,7 @@ void CLibraryDetailView::OnCacheHint(NMHDR* pNotify, LRESULT* /*pResult*/)
 	CSingleLock oLock( &Library.m_pSection );
 	if ( ! oLock.Lock( 100 ) ) return;
 
-	for ( int nItem = ((NMLVCACHEHINT*)pNotify)->iFrom ; nItem <= ((NMLVCACHEHINT*)pNotify)->iTo ; nItem++ )
+	for ( int nItem = ((NMLVCACHEHINT*)pNotify)->iFrom; nItem <= ((NMLVCACHEHINT*)pNotify)->iTo; nItem++ )
 	{
 		CacheItem( nItem );
 	}
@@ -773,7 +773,7 @@ void CLibraryDetailView::CacheSelection()
 	GET_LIST();
 	SelClear( FALSE );
 
-	for ( int nItem = -1 ; ( nItem = pList->GetNextItem( nItem, LVNI_SELECTED ) ) >= 0 ; )
+	for ( int nItem = -1; ( nItem = pList->GetNextItem( nItem, LVNI_SELECTED ) ) >= 0; )
 	{
 		SelAdd( (DWORD)pList->GetItemData( nItem ), FALSE );
 	}
@@ -814,7 +814,7 @@ void CLibraryDetailView::OnItemChanged(NMHDR* pNotify, LRESULT* pResult)
 		SelClear();
 
 		LDVITEM* pItem = m_pList;
-		for ( DWORD nCount = m_nList ; nCount ; nCount--, pItem++ )
+		for ( DWORD nCount = m_nList; nCount; nCount--, pItem++ )
 			pItem->nState &= ~LDVI_SELECTED;
 	}
 }
@@ -823,8 +823,8 @@ void CLibraryDetailView::OnItemRangeChanged(NMHDR* pNotify, LRESULT* pResult)
 {
 	*pResult = 0;
 
-	for ( int nItem = ((NMLVODSTATECHANGE*)pNotify)->iFrom ;
-		nItem <= ((NMLVODSTATECHANGE*)pNotify)->iTo ; nItem++ )
+	for ( int nItem = ((NMLVODSTATECHANGE*)pNotify)->iFrom;
+		nItem <= ((NMLVODSTATECHANGE*)pNotify)->iTo; nItem++ )
 	{
 		if ( ((NMLVODSTATECHANGE*)pNotify)->uNewState & LVIS_SELECTED )
 		{
@@ -923,9 +923,9 @@ void CLibraryDetailView::OnFindItemW(NMHDR* pNotify, LRESULT* pResult)
 
 	CQuickLock oLock( Library.m_pSection );
 
-	for ( int nLoop = 0 ; nLoop < 2 ; nLoop++ )
+	for ( int nLoop = 0; nLoop < 2; nLoop++ )
 	{
-		for ( int nItem = ((NMLVFINDITEM*)pNotify)->iStart ; nItem < pList->GetItemCount() ; nItem++ )
+		for ( int nItem = ((NMLVFINDITEM*)pNotify)->iStart; nItem < pList->GetItemCount(); nItem++ )
 		{
 			if ( CLibraryFile* pFile = Library.LookupFile( m_pList[ nItem ].nIndex ) )
 			{
@@ -953,9 +953,9 @@ void CLibraryDetailView::OnFindItemA(NMHDR* pNotify, LRESULT* pResult)
 
 	CQuickLock oLock( Library.m_pSection );
 
-	for ( int nLoop = 0 ; nLoop < 2 ; nLoop++ )
+	for ( int nLoop = 0; nLoop < 2; nLoop++ )
 	{
-		for ( int nItem = ((NMLVFINDITEM*)pNotify)->iStart ; nItem < pList->GetItemCount() ; nItem++ )
+		for ( int nItem = ((NMLVFINDITEM*)pNotify)->iStart; nItem < pList->GetItemCount(); nItem++ )
 		{
 			if ( CLibraryFile* pFile = Library.LookupFile( m_pList[ nItem ].nIndex ) )
 			{

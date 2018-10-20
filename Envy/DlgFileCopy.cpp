@@ -1,8 +1,8 @@
 //
 // DlgFileCopy.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2007
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -306,7 +306,7 @@ void CFileCopyDlg::OnRun()
 	//	CString strFile = strPath + L"\\" + strName;
 	//	if ( strFile == strCurrent )
 	//	{
-	//		strCurrent.Format( LoadString( IDS_BITPRINTS_NOT_HASHED ), strName );
+	//		strCurrent.Format( LoadString( IDS_BITPRINTS_NOT_HASHED ), (LPCTSTR)strName );
 	//		theApp.Message( MSG_NOTICE, strCurrent );
 	//		m_wndFileName.SetWindowText( LoadString( IDS_STATUS_FILEERROR ) );
 	//	}
@@ -340,7 +340,7 @@ bool CFileCopyDlg::ProcessFile(const CString& strName, const CString& strPath)
 		if ( hFile == INVALID_HANDLE_VALUE )
 		{
 			CString strMessage;
-			strMessage.Format( LoadString( IDS_LIBRARY_MOVE_FAIL ), strName );
+			strMessage.Format( LoadString( IDS_LIBRARY_MOVE_FAIL ), (LPCTSTR)strName );
 
 			switch ( MsgBox( strMessage, MB_ICONQUESTION|MB_YESNO|MB_DEFBUTTON2 ) )
 			{
@@ -369,7 +369,7 @@ bool CFileCopyDlg::CheckTarget(const CString& strTarget)
 		return true;
 
 	CString strMessage;
-	strMessage.Format( LoadString( IDS_LIBRARY_TARGET_EXISTS ), strTarget );
+	strMessage.Format( LoadString( IDS_LIBRARY_TARGET_EXISTS ), (LPCTSTR)strTarget );
 
 	switch ( MsgBox( strMessage, MB_ICONQUESTION|MB_YESNOCANCEL|MB_DEFBUTTON2 ) )
 	{
@@ -385,7 +385,7 @@ bool CFileCopyDlg::CheckTarget(const CString& strTarget)
 	if ( DeleteFileEx( strTarget, TRUE, FALSE, FALSE ) )
 		return true;
 
-	strMessage.Format( LoadString( IDS_LIBRARY_DELETE_FAIL ), strTarget );
+	strMessage.Format( LoadString( IDS_LIBRARY_DELETE_FAIL ), (LPCTSTR)strTarget );
 	strMessage += L"\r\n\r\n" + GetErrorString();
 
 	MsgBox( strMessage, MB_ICONEXCLAMATION );

@@ -1,8 +1,8 @@
 //
 // Security.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2015 and Shareaza 2002-2008
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2008 and PeerProject 2008-2015
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -46,7 +46,8 @@ CListLoader ListLoader;
 // CSecurity construction
 
 CSecurity::CSecurity()
-	: m_bDenyPolicy ( FALSE )
+	: m_HashMap ()
+	, m_bDenyPolicy ( FALSE )
 {
 }
 
@@ -84,7 +85,7 @@ CSecureRule* CSecurity::GetGUID(const GUID& pGUID) const
 {
 	CQuickLock oLock( m_pSection );
 
-	for ( POSITION pos = m_pRules.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pRules.GetHeadPosition(); pos; )
 	{
 		CSecureRule* pRule = m_pRules.GetNext( pos );
 		if ( pRule->m_pGUID == pGUID ) return pRule;
@@ -153,7 +154,7 @@ void CSecurity::Remove(CSecureRule* pRule)
 		m_pRules.RemoveAt( pos );
 	}
 
-	for ( BYTE nIndex = (BYTE)m_pRuleIndexMap.size() ; nIndex ; nIndex-- )
+	for ( BYTE nIndex = (BYTE)m_pRuleIndexMap.size(); nIndex; nIndex-- )
 	{
 		if ( GetRuleByIndex( nIndex ) == pRule )
 		{
@@ -217,7 +218,7 @@ void CSecurity::Clear()
 {
 	CQuickLock oLock( m_pSection );
 
-	for ( POSITION pos = m_Complains.GetStartPosition() ; pos ; )
+	for ( POSITION pos = m_Complains.GetStartPosition(); pos; )
 	{
 		DWORD pAddress;
 		CComplain* pComplain;
@@ -226,7 +227,7 @@ void CSecurity::Clear()
 	}
 	m_Complains.RemoveAll();
 
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		delete GetNext( pos );
 	}
@@ -235,7 +236,7 @@ void CSecurity::Clear()
 	m_Cache.clear();
 	m_AddressMap.clear();
 	m_pRuleIndexMap.clear();
-	for ( BYTE nType = 0 ; nType < urnLast ; nType++ )
+	for ( BYTE nType = 0; nType < urnLast; nType++ )
 		m_HashMap[ nType ].clear();
 }
 
@@ -243,7 +244,7 @@ BYTE CSecurity::SetRuleIndex(CSecureRule* pRule)
 {
 	const size_t nSize = m_pRuleIndexMap.size() + 1;
 
-	for ( BYTE nTest = 1 ; nTest < (BYTE)nSize ; nTest++ )
+	for ( BYTE nTest = 1; nTest < (BYTE)nSize; nTest++ )
 	{
 		if ( m_pRuleIndexMap[ nTest ] == pRule )
 			return nTest;
@@ -310,7 +311,7 @@ void CSecurity::Ban(const CEnvyFile* pFile, int nBanLength, BOOL bMessage)
 
 	const DWORD tNow = static_cast< DWORD >( time( NULL ) );
 
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		POSITION posCurrent = pos;
 		CSecureRule* pRule = GetNext( pos );
@@ -353,7 +354,7 @@ void CSecurity::Ban(const CEnvyFile* pFile, int nBanLength, BOOL bMessage)
 	Add( pRule );
 
 	if ( bMessage && pFile )
-		theApp.Message( MSG_NOTICE, IDS_NETWORK_SECURITY_ADDED, (LPCTSTR)pFile->m_sName );
+		theApp.Message( MSG_NOTICE, IDS_SECURITY_ADDED, (LPCTSTR)pFile->m_sName );
 }
 
 void CSecurity::Ban(const IN_ADDR* pAddress, int nBanLength, BOOL bMessage, LPCTSTR szComment)
@@ -362,7 +363,7 @@ void CSecurity::Ban(const IN_ADDR* pAddress, int nBanLength, BOOL bMessage, LPCT
 
 	const DWORD tNow = static_cast< DWORD >( time( NULL ) );
 
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		POSITION posCurrent = pos;
 		CSecureRule* pRule = GetNext( pos );
@@ -383,7 +384,7 @@ void CSecurity::Ban(const IN_ADDR* pAddress, int nBanLength, BOOL bMessage, LPCT
 			else if ( nBanLength == banForever && ( pRule->m_nExpire != CSecureRule::srIndefinite ) )
 				pRule->m_nExpire = CSecureRule::srIndefinite;
 			else if ( bMessage && pAddress )
-				theApp.Message( MSG_NOTICE, IDS_NETWORK_SECURITY_EXISTS, (LPCTSTR)CString( inet_ntoa( *pAddress ) ) );
+				theApp.Message( MSG_NOTICE, IDS_SECURITY_EXISTS, (LPCTSTR)CString( inet_ntoa( *pAddress ) ) );
 			return;
 		}
 	}
@@ -396,7 +397,7 @@ void CSecurity::Ban(const IN_ADDR* pAddress, int nBanLength, BOOL bMessage, LPCT
 	Add( pRule );
 
 	if ( bMessage )
-		theApp.Message( MSG_NOTICE, IDS_NETWORK_SECURITY_ADDED, (LPCTSTR)CString( inet_ntoa( *pAddress ) ) );
+		theApp.Message( MSG_NOTICE, IDS_SECURITY_ADDED, (LPCTSTR)CString( inet_ntoa( *pAddress ) ) );
 }
 
 CSecureRule* CSecurity::NewBanRule(int nBanLength, CString sComment) const
@@ -514,7 +515,7 @@ BOOL CSecurity::IsDenied(const IN_ADDR* pAddress)
 
 	CQuickLock oLock( m_pSection );
 
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		POSITION posLast = pos;
 		CSecureRule* pRule = GetNext( pos );
@@ -548,7 +549,7 @@ BOOL CSecurity::IsDenied(const IN_ADDR* pAddress)
 
 BOOL CSecurity::IsDenied(LPCTSTR pszContent)
 {
-	if ( CString(pszContent).GetLength() > 30 && StartsWith( pszContent, _P( L"urn:" ) ) )
+	if ( CString(pszContent).GetLength() > 30 && StartsWith( (CString)pszContent, (LPCTSTR)_P( L"urn:" ) ) )
 	{
 		if ( BYTE nIndex = GetHashMap( pszContent ) )
 		{
@@ -568,7 +569,7 @@ BOOL CSecurity::IsDenied(LPCTSTR pszContent)
 
 	CQuickLock oLock( m_pSection );
 
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		POSITION posLast = pos;
 		CSecureRule* pRule = GetNext( pos );
@@ -662,7 +663,7 @@ BOOL CSecurity::IsDenied(const CEnvyFile* pFile)
 
 	CQuickLock oLock( m_pSection );
 
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		POSITION posLast = pos;
 		CSecureRule* pRule = GetNext( pos );
@@ -696,7 +697,7 @@ BOOL CSecurity::IsDenied(const CQuerySearch* pQuery, const CString& strContent)
 
 	CQuickLock oLock( m_pSection );
 
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		POSITION posLast = pos;
 		CSecureRule* pRule = GetNext( pos );
@@ -747,7 +748,7 @@ void CSecurity::Expire()
 
 	const DWORD tNow = static_cast< DWORD >( time( NULL ) );
 
-	for ( POSITION pos = m_Complains.GetStartPosition() ; pos ; )
+	for ( POSITION pos = m_Complains.GetStartPosition(); pos; )
 	{
 		DWORD pAddress;
 		CComplain* pComplain;
@@ -759,7 +760,7 @@ void CSecurity::Expire()
 		}
 	}
 
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		POSITION posLast = pos;
 		CSecureRule* pRule = GetNext( pos );
@@ -813,7 +814,7 @@ BOOL CSecurity::Load()
 		pFile.Close();
 	}
 
-	theApp.Message( MSG_ERROR, L"Failed to load security rules: %s", strFile );
+	theApp.Message( MSG_ERROR, L"Failed to load security rules: %s", (LPCTSTR)strFile );
 	return FALSE;
 }
 
@@ -859,7 +860,7 @@ BOOL CSecurity::Save()
 		DeleteFile( strTemp );
 	}
 
-	theApp.Message( MSG_ERROR, L"Failed to save security rules: %s", strFile );
+	theApp.Message( MSG_ERROR, L"Failed to save security rules: %s", (LPCTSTR)strFile );
 	return FALSE;
 }
 
@@ -885,13 +886,13 @@ void CSecurity::Serialize(CArchive& ar)
 
 		ar.WriteCount( GetCount() );
 
-		for ( POSITION pos = GetIterator() ; pos ; )
+		for ( POSITION pos = GetIterator(); pos; )
 		{
 			GetNext( pos )->Serialize( ar, nVersion );
 		}
 
 		// Unimplemented
-		//for ( CAddressRuleMap::const_iterator i = m_pIPRules.begin() ; i != m_pIPRules.end() ; ++i )
+		//for ( CAddressRuleMap::const_iterator i = m_pIPRules.begin(); i != m_pIPRules.end(); ++i )
 		//{
 		//	(*i).second->Serialize( ar, nVersion );
 		//}
@@ -905,7 +906,7 @@ void CSecurity::Serialize(CArchive& ar)
 
 		const DWORD tNow = static_cast< DWORD >( time( NULL ) );
 
-		for ( DWORD_PTR nCount = ar.ReadCount() ; nCount > 0 ; nCount-- )
+		for ( DWORD_PTR nCount = ar.ReadCount(); nCount > 0; nCount-- )
 		{
 			CSecureRule* pRule = new CSecureRule( FALSE );
 			pRule->Serialize( ar, nVersion );
@@ -952,7 +953,7 @@ CXMLElement* CSecurity::ToXML(BOOL bRules)
 
 	if ( bRules )
 	{
-		for ( POSITION pos = GetIterator() ; pos ; )
+		for ( POSITION pos = GetIterator(); pos; )
 		{
 			pXML->AddElement( GetNext( pos )->ToXML() );
 		}
@@ -961,13 +962,13 @@ CXMLElement* CSecurity::ToXML(BOOL bRules)
 	return pXML;
 }
 
-BOOL CSecurity::FromXML(CXMLElement* pXML)
+BOOL CSecurity::FromXML(const CXMLElement* pXML)
 {
 	if ( ! pXML->IsNamed( L"security" ) ) return FALSE;
 
 	int nCount = 0;
 
-	for ( POSITION pos = pXML->GetElementIterator() ; pos ; )
+	for ( POSITION pos = pXML->GetElementIterator(); pos; )
 	{
 		CXMLElement* pElement = pXML->GetNextElement( pos );
 
@@ -1169,8 +1170,8 @@ BOOL CSecurity::IsAgentBlocked(const CString& sUserAgent) const
 		CString( sUserAgent ).Trim().IsEmpty() )				return TRUE;
 
 	// Loop through the user-defined list of programs to block
-	for ( string_set::const_iterator i = Settings.Uploads.BlockAgents.begin() ;
-		i != Settings.Uploads.BlockAgents.end() ; i++ )
+	for ( string_set::const_iterator i = Settings.Uploads.BlockAgents.begin();
+		i != Settings.Uploads.BlockAgents.end(); i++ )
 	{
 		if ( _tcsistr( sUserAgent, *i ) )						return TRUE;
 	}
@@ -1204,13 +1205,13 @@ CLiveList* CSecurity::GetList() const
 	const DWORD tNow = static_cast< DWORD >( time( NULL ) );
 
 	int nCount = 1;
-	for ( POSITION pos = GetIterator() ; pos ; ++nCount )
+	for ( POSITION pos = GetIterator(); pos; ++nCount )
 	{
 		GetNext( pos )->ToList( pLiveList, nCount, tNow );
 	}
 
 	// Unimplemented separate IP address rules
-	//for ( CAddressRuleMap::const_iterator i = m_pIPRules.begin() ; i != m_pIPRules.end() ; ++i, ++nCount )
+	//for ( CAddressRuleMap::const_iterator i = m_pIPRules.begin(); i != m_pIPRules.end(); ++i, ++nCount )
 	//{
 	//	(*i).second->ToList( pLiveList, nCount, tNow );
 	//}
@@ -1309,7 +1310,7 @@ void CAdultFilter::Load()
 		CList< CString > pWords;
 
 		int nStart = 0, nPos = 0;
-		for ( ; *pszPtr ; nPos++, pszPtr++ )
+		for ( ; *pszPtr; nPos++, pszPtr++ )
 		{
 			if ( *pszPtr == ' ' )
 			{
@@ -1331,7 +1332,7 @@ void CAdultFilter::Load()
 		m_pszBlockedWords = new TCHAR[ nWordLen ];
 		LPTSTR pszFilter = m_pszBlockedWords;
 
-		for ( POSITION pos = pWords.GetHeadPosition() ; pos ; )
+		for ( POSITION pos = pWords.GetHeadPosition(); pos; )
 		{
 			CString strWord( pWords.GetNext( pos ) );
 			ToLower( strWord );
@@ -1352,7 +1353,7 @@ void CAdultFilter::Load()
 		CList< CString > pWords;
 
 		int nStart = 0, nPos = 0;
-		for ( ; *pszPtr ; nPos++, pszPtr++ )
+		for ( ; *pszPtr; nPos++, pszPtr++ )
 		{
 			if ( *pszPtr == ' ' )
 			{
@@ -1374,7 +1375,7 @@ void CAdultFilter::Load()
 		m_pszDubiousWords = new TCHAR[ nWordLen ];
 		LPTSTR pszFilter = m_pszDubiousWords;
 
-		for ( POSITION pos = pWords.GetHeadPosition() ; pos ; )
+		for ( POSITION pos = pWords.GetHeadPosition(); pos; )
 		{
 			CString strWord( pWords.GetNext( pos ) );
 			ToLower( strWord );
@@ -1395,7 +1396,7 @@ void CAdultFilter::Load()
 		CList< CString > pWords;
 
 		int nStart = 0, nPos = 0;
-		for ( ; *pszPtr ; nPos++, pszPtr++ )
+		for ( ; *pszPtr; nPos++, pszPtr++ )
 		{
 			if ( *pszPtr == ' ' )
 			{
@@ -1417,7 +1418,7 @@ void CAdultFilter::Load()
 		m_pszChildWords = new TCHAR[ nWordLen ];
 		LPTSTR pszFilter = m_pszChildWords;
 
-		for ( POSITION pos = pWords.GetHeadPosition() ; pos ; )
+		for ( POSITION pos = pWords.GetHeadPosition(); pos; )
 		{
 			CString strWord( pWords.GetNext( pos ) );
 			ToLower( strWord );
@@ -1463,7 +1464,7 @@ BOOL CAdultFilter::Censor(CString& sText) const
 	BOOL bModified = FALSE;
 
 	// Check and replace blocked words
-	for ( LPCTSTR pszWord = m_pszBlockedWords ; pszWord && *pszWord ; )
+	for ( LPCTSTR pszWord = m_pszBlockedWords; pszWord && *pszWord; )
 	{
 		int nWordLen = (int)_tcslen( pszWord );
 		if ( ReplaceNoCase( sText, pszWord, CString( L'*', nWordLen ) ) )
@@ -1479,7 +1480,7 @@ BOOL CAdultFilter::IsChildPornography(LPCTSTR pszText) const
 	if ( ! pszText )
 		return FALSE;
 
-	for ( LPCTSTR pszWord = m_pszChildWords ; *pszWord ; )
+	for ( LPCTSTR pszWord = m_pszChildWords; *pszWord; )
 	{
 		if ( _tcsistr( pszText, pszWord ) != NULL )
 			return ( IsFiltered( pszText ) );
@@ -1497,7 +1498,7 @@ BOOL CAdultFilter::IsFiltered(LPCTSTR pszText) const
 	// Check blocked words
 	if ( m_pszBlockedWords )
 	{
-		for ( LPCTSTR pszWord = m_pszBlockedWords ; *pszWord ; )
+		for ( LPCTSTR pszWord = m_pszBlockedWords; *pszWord; )
 		{
 			if ( _tcsistr( pszText, pszWord ) != NULL ) return TRUE;
 			pszWord += _tcslen( pszWord ) + 1;
@@ -1509,7 +1510,7 @@ BOOL CAdultFilter::IsFiltered(LPCTSTR pszText) const
 	{
 		size_t nDubiousWords = 0, nWordsPermitted = min( (DWORD)(_tcslen( pszText ) / 8), 4 );
 
-		for ( LPCTSTR pszWord = m_pszDubiousWords ; *pszWord ; )
+		for ( LPCTSTR pszWord = m_pszDubiousWords; *pszWord; )
 		{
 			if ( _tcsistr( pszText, pszWord ) != NULL ) nDubiousWords++;
 			if ( nDubiousWords > nWordsPermitted ) return TRUE;
@@ -1590,7 +1591,7 @@ void CMessageFilter::Load()
 		CList< CString > pWords;
 
 		int nStart = 0, nPos = 0;
-		for ( ; *pszPtr ; nPos++, pszPtr++ )
+		for ( ; *pszPtr; nPos++, pszPtr++ )
 		{
 			if ( *pszPtr == '|' )
 			{
@@ -1612,7 +1613,7 @@ void CMessageFilter::Load()
 		m_pszED2KSpam = new TCHAR[ nWordLen ];
 		LPTSTR pszFilter = m_pszED2KSpam;
 
-		for ( POSITION pos = pWords.GetHeadPosition() ; pos ; )
+		for ( POSITION pos = pWords.GetHeadPosition(); pos; )
 		{
 			CString strWord( pWords.GetNext( pos ) );
 			ToLower( strWord );
@@ -1633,7 +1634,7 @@ void CMessageFilter::Load()
 		CList< CString > pWords;
 
 		int nStart = 0, nPos = 0;
-		for ( ; *pszPtr ; nPos++, pszPtr++ )
+		for ( ; *pszPtr; nPos++, pszPtr++ )
 		{
 			if ( *pszPtr == '|' )
 			{
@@ -1655,7 +1656,7 @@ void CMessageFilter::Load()
 		m_pszFilteredPhrases = new TCHAR[ nWordLen ];
 		LPTSTR pszFilter = m_pszFilteredPhrases;
 
-		for ( POSITION pos = pWords.GetHeadPosition() ; pos ; )
+		for ( POSITION pos = pWords.GetHeadPosition(); pos; )
 		{
 			CString strWord( pWords.GetNext( pos ) );
 			ToLower( strWord );
@@ -1675,7 +1676,7 @@ BOOL CMessageFilter::IsED2KSpam( LPCTSTR pszText )
 		return FALSE;
 
 	// Check for Ed2K spam phrases
-	for ( LPCTSTR pszWord = m_pszED2KSpam ; *pszWord ; )
+	for ( LPCTSTR pszWord = m_pszED2KSpam; *pszWord; )
 	{
 		if ( _tcsistr( pszText, pszWord ) != NULL ) return TRUE;
 		pszWord += _tcslen( pszWord ) + 1;
@@ -1690,7 +1691,7 @@ BOOL CMessageFilter::IsFiltered(LPCTSTR pszText)
 		return FALSE;
 
 	// Check for filtered (spam) phrases
-	for ( LPCTSTR pszWord = m_pszFilteredPhrases ; *pszWord ; )
+	for ( LPCTSTR pszWord = m_pszFilteredPhrases; *pszWord; )
 	{
 		if ( _tcsistr( pszText, pszWord ) != NULL ) return TRUE;
 		pszWord += _tcslen( pszWord ) + 1;
@@ -1894,7 +1895,7 @@ void CListLoader::OnRun()
 				//	 StartsWith( strFirst, _P( L"127.0" ) ) )
 				//	continue;		// Redundant
 
-				for ( DWORD nRange = Settings.Security.ListRangeLimit ; nFirst <= nLast && nRange ; nFirst++, nRange-- )
+				for ( DWORD nRange = Settings.Security.ListRangeLimit; nFirst <= nLast && nRange; nFirst++, nRange-- )
 				{
 					Security.SetAddressMap( htonl( nFirst ), nIndex );	// Reverse host-byte order
 				}

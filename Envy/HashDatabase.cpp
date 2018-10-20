@@ -1,8 +1,8 @@
 //
 // HashDatabase.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2007
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -71,7 +71,7 @@ BOOL CHashDatabase::Create()
 				m_pFile.Read( &m_nIndex, 4 );
 				m_pFile.Seek( m_nOffset, 0 );
 
-				for ( m_nBuffer = m_nIndex ; m_nBuffer & 63 ; m_nBuffer++ );
+				for ( m_nBuffer = m_nIndex; m_nBuffer & 63; m_nBuffer++ );
 				m_pIndex = new HASHDB_INDEX[ m_nBuffer ];
 
 				if ( memcmp( szID, "HFDB1001", 8 ) == 0 )
@@ -82,7 +82,7 @@ BOOL CHashDatabase::Create()
 				{
 					HASHDB_INDEX_1000 pIndex1;
 
-					for ( DWORD nIndex = 0 ; nIndex < m_nIndex ; nIndex++ )
+					for ( DWORD nIndex = 0; nIndex < m_nIndex; nIndex++ )
 					{
 						m_pFile.Read( &pIndex1, sizeof( pIndex1 ) );
 						m_pIndex[ nIndex ].nIndex	= pIndex1.nIndex;
@@ -170,7 +170,7 @@ HASHDB_INDEX* CHashDatabase::Lookup(DWORD nIndex, DWORD nType)
 	ASSERT( m_bOpen );
 	HASHDB_INDEX* pIndex = m_pIndex;
 
-	for ( DWORD nCount = m_nIndex ; nCount ; nCount--, pIndex++ )
+	for ( DWORD nCount = m_nIndex; nCount; nCount--, pIndex++ )
 	{
 		if ( pIndex->nIndex == nIndex && pIndex->nType == nType )
 			return pIndex;
@@ -200,7 +200,7 @@ HASHDB_INDEX* CHashDatabase::PrepareToStore(DWORD nIndex, DWORD nType, DWORD nLe
 	DWORD nBestOverhead = 0xFFFFFFFF;
 	DWORD nCount;
 
-	for ( pIndex = m_pIndex, nCount = m_nIndex ; nCount ; nCount--, pIndex++ )
+	for ( pIndex = m_pIndex, nCount = m_nIndex; nCount; nCount--, pIndex++ )
 	{
 		if ( pIndex->nIndex == 0 && pIndex->nLength >= nLength )
 		{
@@ -301,7 +301,7 @@ BOOL CHashDatabase::DeleteAll(DWORD nIndex)
 	HASHDB_INDEX* pIndex = m_pIndex;
 	DWORD nChanged = 0;
 
-	for ( DWORD nCount = m_nIndex ; nCount ; nCount--, pIndex++ )
+	for ( DWORD nCount = m_nIndex; nCount; nCount--, pIndex++ )
 	{
 		if ( pIndex->nIndex == nIndex )
 		{

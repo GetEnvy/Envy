@@ -2,7 +2,7 @@
 // EnvyURL.cpp
 //
 // This file is part of Envy (getenvy.com) © 2016-2018
-// Portions copyright PeerProject 2008-2015 and Shareaza 2002-2008
+// Portions copyright Shareaza 2002-2008 and PeerProject 2008-2015
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -132,7 +132,7 @@ BOOL CEnvyURL::Parse(const CString& sText, CList< CString >& pURLs, BOOL bResolv
 	}
 
 	CString strBuf;
-	for ( POSITION pos = oReverse.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = oReverse.GetHeadPosition(); pos; )
 	{
 		CString strLine( oReverse.GetNext( pos ) );
 		if ( strLine.IsEmpty() )
@@ -399,12 +399,12 @@ BOOL CEnvyURL::ParseHTTP(LPCTSTR pszURL, BOOL bResolve)
 	if ( _tcsnicmp( m_sPath, L"/uri-res/N2R?", 13 ) == 0 )
 	{
 		strURL = m_sPath.Mid( 13 );
-		if ( m_oSHA1.fromUrn( strURL ) ) ;
-		else if ( m_oTiger.fromUrn( strURL ) ) ;
-		else if ( m_oED2K.fromUrn( strURL ) ) ;
-		else if ( m_oBTH.fromUrn( strURL ) ) ;
-		else if ( m_oBTH.fromUrn< Hashes::base16Encoding >( strURL ) ) ;
-		else if ( m_oMD5.fromUrn( strURL ) ) ;
+		if ( m_oSHA1.fromUrn( strURL ) );
+		else if ( m_oTiger.fromUrn( strURL ) );
+		else if ( m_oED2K.fromUrn( strURL ) );
+		else if ( m_oBTH.fromUrn( strURL ) );
+		else if ( m_oBTH.fromUrn< Hashes::base16Encoding >( strURL ) );
+		else if ( m_oMD5.fromUrn( strURL ) );
 		else return FALSE;
 
 		m_nAction = uriSource;
@@ -741,7 +741,7 @@ BOOL CEnvyURL::ParseMagnet(LPCTSTR pszURL)
 
 	// http://en.wikipedia.org/wiki/Magnet_URI_scheme
 
-	for ( strURL += L'&' ; ! strURL.IsEmpty() ; )
+	for ( strURL += L'&'; ! strURL.IsEmpty(); )
 	{
 		const CString strPart = strURL.SpanExcluding( L"&" );
 		strURL = strURL.Mid( strPart.GetLength() + 1 );
@@ -999,7 +999,7 @@ BOOL CEnvyURL::ParseEnvyFile(LPCTSTR pszURL)
 {
 	CString strURL( pszURL );
 
-	for ( strURL += L'/' ; ! strURL.IsEmpty() ; )
+	for ( strURL += L'/'; ! strURL.IsEmpty(); )
 	{
 		CString strPart = strURL.SpanExcluding( L"/|" );
 		strURL = strURL.Mid( strPart.GetLength() + 1 );

@@ -1,8 +1,8 @@
 //
 // NeighboursWithG2.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2007
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -96,7 +96,7 @@ CG2Packet* CNeighboursWithG2::CreateQueryWeb(const Hashes::Guid& oGUID, bool bWi
 			pPacket->WriteShortBE( nLeafs );
 
 			// Loop through the connected computers
-			for ( POSITION pos = GetIterator() ; pos ; )
+			for ( POSITION pos = GetIterator(); pos; )
 			{
 				// Get the neighbour object at this position, and move pos to the next one
 				CG2Neighbour* pNeighbour = (CG2Neighbour*)GetNext( pos );
@@ -122,7 +122,7 @@ CG2Packet* CNeighboursWithG2::CreateQueryWeb(const Hashes::Guid& oGUID, bool bWi
 			CQuickLock oLock( HostCache.Gnutella2.m_pSection );
 
 			// Loop, starting with the newest entry in the Gnutella2 host cache, then stepping to the one before that
-			for ( CHostCacheIterator i = HostCache.Gnutella2.Begin() ; i != HostCache.Gnutella2.End() ; ++i )
+			for ( CHostCacheIterator i = HostCache.Gnutella2.Begin(); i != HostCache.Gnutella2.End(); ++i )
 			{
 				CHostCacheHostPtr pHost = (*i);
 
@@ -170,7 +170,7 @@ CG2Neighbour* CNeighboursWithG2::GetRandomHub(CG2Neighbour* pExcept, const Hashe
 	CArray< CG2Neighbour* > pRandom;
 
 	// Loop through each computer we're connected to
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		// Get the neighbour under the current position, and move to the next one in the list
 		CNeighbour* pNeighbour = GetNext( pos );

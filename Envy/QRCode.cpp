@@ -1,7 +1,7 @@
 //
 // QRCode.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
+// This file is part of Envy (getenvy.com) © 2016-2018
 // All work here is original and released as-is under Persistent Public Domain [PPD]
 //
 
@@ -77,16 +77,16 @@ HBITMAP CQRCode::GetBitmap(CString str, UINT nPixelsize /*4*/)
 
 	// ToDo: Fix resulting image appears rotated 90° counter-clockwise
 
-	for( UINT y = 0 ; y < nUnitWidth ; y++ )
+	for( UINT y = 0; y < nUnitWidth; y++ )
 	{
 		pDestData = pRGBData + nBitWidth * y * nPixelsize;
-		for( UINT  x = 0 ; x < nUnitWidth ; x++ )
+		for( UINT  x = 0; x < nUnitWidth; x++ )
 		{
 			if ( *pSourceData & 1 )
 			{
-				for( UINT l = 0 ; l < nPixelsize ; l++ )
+				for( UINT l = 0; l < nPixelsize; l++ )
 				{
-					for( UINT n = 0 ; n < nPixelsize ; n++ )
+					for( UINT n = 0; n < nPixelsize; n++ )
 					{
 						*(pDestData +     n * 3 + nBitWidth * l) = 0;	// PIXEL_COLOR_B
 						*(pDestData + 1 + n * 3 + nBitWidth * l) = 0;	// PIXEL_COLOR_G

@@ -1,8 +1,8 @@
 //
 // CtrlLibraryThumbView.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2008
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2008 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -23,7 +23,6 @@
 #include "Library.h"
 #include "SharedFile.h"
 #include "SharedFolder.h"
-#include "ImageServices.h"
 #include "ImageFile.h"
 #include "ThumbCache.h"
 #include "ShellIcons.h"
@@ -128,7 +127,7 @@ void CLibraryThumbView::Update()
 
 	CLibraryThumbItem** pList = m_pList + m_nCount - 1;
 
-	for ( int nItem = m_nCount ; nItem ; nItem--, pList-- )
+	for ( int nItem = m_nCount; nItem; nItem--, pList-- )
 	{
 		CLibraryThumbItem* pThumb	= *pList;
 		CLibraryFile* pFile			= Library.LookupFile( pThumb->m_nIndex );
@@ -163,7 +162,7 @@ void CLibraryThumbView::Update()
 		m_nScroll = max( 0, min( m_nScroll, nMax - rcClient.Height() + 1 ) );
 	}
 
-	for ( POSITION pos = LibraryMaps.GetFileIterator() ; pos ; )
+	for ( POSITION pos = LibraryMaps.GetFileIterator(); pos; )
 	{
 		CLibraryFile* pFile = LibraryMaps.GetNextFile( pos );
 
@@ -204,7 +203,7 @@ BOOL CLibraryThumbView::Select(DWORD nObject)
 	CLibraryThumbItem** pList = m_pList + m_nCount - 1;
 
 	int nItem = m_nCount;
-	for ( ; nItem ; nItem--, pList-- )
+	for ( ; nItem; nItem--, pList-- )
 	{
 		CLibraryThumbItem* pThumb = *pList;
 		if ( pThumb->m_nIndex == nObject ) break;
@@ -231,7 +230,7 @@ BOOL CLibraryThumbView::Select(DWORD nObject)
 void CLibraryThumbView::SelectAll()
 {
 	CLibraryThumbItem** pList = m_pList;
-	for ( int nItem = 0 ; nItem < m_nCount ; nItem++, pList++ )
+	for ( int nItem = 0; nItem < m_nCount; nItem++, pList++ )
 	{
 		Select( *pList, TRI_TRUE );
 	}
@@ -261,7 +260,7 @@ void CLibraryThumbView::Clear()
 
 	if ( m_pList )
 	{
-		for ( int nItem = 0 ; nItem < m_nCount ; nItem++ )
+		for ( int nItem = 0; nItem < m_nCount; nItem++ )
 		{
 			delete m_pList[ nItem ];
 		}
@@ -283,7 +282,7 @@ int CLibraryThumbView::GetThumbIndex(CLibraryThumbItem* pThumb) const
 {
 	CLibraryThumbItem** pList = m_pList;
 
-	for ( int nItem = 0 ; nItem < m_nCount ; nItem++, pList++ )
+	for ( int nItem = 0; nItem < m_nCount; nItem++, pList++ )
 	{
 		if ( *pList == pThumb ) return nItem;
 	}
@@ -332,7 +331,7 @@ BOOL CLibraryThumbView::DeselectAll(CLibraryThumbItem* pThumb)
 	CLibraryThumbItem** pList = m_pList + m_nCount - 1;
 	BOOL bChanged = FALSE;
 
-	for ( int nItem = m_nCount ; nItem ; nItem--, pList-- )
+	for ( int nItem = m_nCount; nItem; nItem--, pList-- )
 	{
 		if ( *pList != pThumb )
 		{
@@ -370,13 +369,13 @@ BOOL CLibraryThumbView::SelectTo(CLibraryThumbItem* pThumb)
 			else if ( nFirst <= nFocus )
 			{
 				bChanged = TRUE;
-				for ( ; nFirst <= nFocus ; nFirst++ )
+				for ( ; nFirst <= nFocus; nFirst++ )
 					Select( m_pList[ nFirst ], TRI_TRUE );
 			}
 			else
 			{
 				bChanged = TRUE;
-				for ( ; nFocus <= nFirst ; nFocus++ )
+				for ( ; nFocus <= nFirst; nFocus++ )
 					Select( m_pList[ nFocus ], TRI_TRUE );
 			}
 		}
@@ -548,7 +547,7 @@ void CLibraryThumbView::OnPaint()
 
 	CLibraryThumbItem** pList = m_pList;
 
-	for ( int nItem = m_nCount ; nItem && pt.y < rcClient.bottom ; nItem--, pList++ )
+	for ( int nItem = m_nCount; nItem && pt.y < rcClient.bottom; nItem--, pList++ )
 	{
 		CLibraryThumbItem* pThumb = *pList;
 
@@ -578,7 +577,7 @@ CLibraryThumbItem* CLibraryThumbView::HitTest(const CPoint& point) const
 
 	CLibraryThumbItem** pList = m_pList;
 
-	for ( int nItem = m_nCount ; nItem && pt.y < rcClient.bottom ; nItem--, pList++ )
+	for ( int nItem = m_nCount; nItem && pt.y < rcClient.bottom; nItem--, pList++ )
 	{
 		CLibraryThumbItem* pThumb = *pList;
 
@@ -608,7 +607,7 @@ BOOL CLibraryThumbView::GetItemRect(CLibraryThumbItem* pThumb, CRect* pRect)
 
 	CLibraryThumbItem** pList = m_pList;
 
-	for ( int nItem = m_nCount ; nItem ; nItem--, pList++ )
+	for ( int nItem = m_nCount; nItem; nItem--, pList++ )
 	{
 		CRect rcBlock( pt.x, pt.y, pt.x + CX, pt.y + CY );
 
@@ -733,7 +732,7 @@ HBITMAP CLibraryThumbView::CreateDragImage(const CPoint& ptMouse, CPoint& ptMidd
 
 	GetClientRect( &rcClient );
 
-	for ( POSITION pos = m_pSelThumb.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pSelThumb.GetHeadPosition(); pos; )
 	{
 		CLibraryThumbItem* pThumb = m_pSelThumb.GetNext( pos );
 		GetItemRect( pThumb, &rcOne );
@@ -787,7 +786,7 @@ HBITMAP CLibraryThumbView::CreateDragImage(const CPoint& ptMouse, CPoint& ptMidd
 
 	CFont* pOldFont = (CFont*)pBuffer->SelectObject( &CoolInterface.m_fntNormal );
 
-	for ( POSITION pos = m_pSelThumb.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pSelThumb.GetHeadPosition(); pos; )
 	{
 		CLibraryThumbItem* pThumb = m_pSelThumb.GetNext( pos );
 		GetItemRect( pThumb, &rcOne );
@@ -824,7 +823,7 @@ void CLibraryThumbView::StartThread()
 	CLibraryThumbItem** pList = m_pList;
 	int nCount = 0;
 
-	for ( int nItem = m_nCount ; nItem ; nItem--, pList++ )
+	for ( int nItem = m_nCount; nItem; nItem--, pList++ )
 	{
 		if ( (*pList)->m_nThumb == CLibraryThumbItem::thumbWaiting )
 			nCount++;
@@ -856,7 +855,7 @@ void CLibraryThumbView::OnRun()
 		if ( ! oLock.Lock( 100 ) )
 			continue;	// Library is busy
 
-		for ( int i = 0 ; i < m_nCount ; ++i )
+		for ( int i = 0; i < m_nCount; ++i )
 		{
 			if ( m_pList[ i ]->m_nThumb == CLibraryThumbItem::thumbWaiting )
 			{
@@ -894,7 +893,7 @@ void CLibraryThumbView::OnRun()
 		if ( ! oLock.Lock( 100 ) )
 			continue;	// Library is busy
 
-		for ( int i = 0 ; i < m_nCount ; ++i )
+		for ( int i = 0; i < m_nCount; ++i )
 		{
 			if ( m_pList[ i ]->m_nIndex == nIndex )
 			{

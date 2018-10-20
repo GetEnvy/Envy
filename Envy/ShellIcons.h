@@ -1,8 +1,8 @@
 //
 // ShellIcons.h
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2015 and Shareaza 2002-2007
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2015
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -45,6 +45,8 @@ public:
 //		{
 //		case 16:
 //			return (CImageList*)&m_i16;
+//		case 24:
+//			return (CImageList*)&m_i24;
 //		case 32:
 //			return (CImageList*)&m_i32;
 //		case 48:
@@ -59,6 +61,8 @@ public:
 //		{
 //		case 16:
 //			return m_i16.GetSafeHandle();
+//		case 24:
+//			return m_i24.GetSafeHandle();
 //		case 32:
 //			return m_i32.GetSafeHandle();
 //		case 48:
@@ -74,9 +78,11 @@ private:
 
 	CCriticalSection	m_pSection;
 	CImageList	m_i16;
+//	CImageList	m_i24;
 	CImageList	m_i32;
 	CImageList	m_i48;
 	CIconMap	m_m16;
+//	CIconMap	m_m24;
 	CIconMap	m_m32;
 	CIconMap	m_m48;
 	CStringMap	m_MIME;

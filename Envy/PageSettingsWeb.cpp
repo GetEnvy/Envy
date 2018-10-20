@@ -1,8 +1,8 @@
 //
 // PageSettingsWeb.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2012 and Shareaza 2002-2007
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2012
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -89,8 +89,8 @@ BOOL CWebSettingsPage::OnInitDialog()
 
 	m_bWebHook		= Settings.Downloads.WebHookEnable;
 
-	for ( string_set::const_iterator i = Settings.Downloads.WebHookExtensions.begin() ;
-		i != Settings.Downloads.WebHookExtensions.end() ; i++ )
+	for ( string_set::const_iterator i = Settings.Downloads.WebHookExtensions.begin();
+		i != Settings.Downloads.WebHookExtensions.end(); i++ )
 	{
 		m_wndExtensions.AddString( (*i) );
 	}
@@ -157,7 +157,7 @@ void CWebSettingsPage::OnOK()
 	Settings.Downloads.WebHookEnable = m_bWebHook != FALSE;
 
 	Settings.Downloads.WebHookExtensions.clear();
-	for ( int nItem = 0 ; nItem < m_wndExtensions.GetCount() ; nItem++ )
+	for ( int nItem = 0; nItem < m_wndExtensions.GetCount(); nItem++ )
 	{
 		CString str;
 		m_wndExtensions.GetLBText( nItem, str );

@@ -1,8 +1,8 @@
 //
 // TigerTree.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2012 and Shareaza 2002-2007
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2012
 //
 // Envy is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
@@ -10,8 +10,8 @@
 // either version 3 of the License, or later version (at your option).
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU General Public License for more details.
 // (http://www.gnu.org/licenses/gpl.html)
 //
@@ -48,7 +48,7 @@ struct CSectionLock
 CTigerNode::CTigerNode()
 	: bValid	( false )
 {
-	ZeroMemory( value, sizeof( value ) ) ;
+	ZeroMemory( value, sizeof( value ) );
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -713,7 +713,7 @@ void CTigerTree::SetupAndAllocate(uint32 nHeight, uint64 nLength)
 	if ( nLength % BLOCK_SIZE ) nCount++;
 
 	uint32 nActualHeight = 1;
-	for ( uint32 nStep = 1 ; nStep < nCount ; nStep *= 2 )
+	for ( uint32 nStep = 1; nStep < nCount; nStep *= 2 )
 		nActualHeight++;
 
 	m_nHeight = min( nActualHeight, nHeight );
@@ -741,7 +741,7 @@ void CTigerTree::SetupParameters(uint64 nLength)
 	if ( nLength % BLOCK_SIZE ) nCount++;
 
 	uint32 nActualHeight = 1;
-	for ( uint32 nStep = 1 ; nStep < nCount ; nStep *= 2 )
+	for ( uint32 nStep = 1; nStep < nCount; nStep *= 2 )
 		nActualHeight++;
 
 	m_nBlockPos = 0;
@@ -778,7 +778,7 @@ void CTigerTree::Save(uchar* pBuf) const
 	if ( ! m_nHeight ) return;
 
 	CTigerNode* pNode = m_pNode;
-	for ( DWORD nStep = m_nNodeCount ; nStep ; nStep--, pNode++ )
+	for ( DWORD nStep = m_nNodeCount; nStep; nStep--, pNode++ )
 	{
 		CopyMemory( pBuf, pNode->value, TIGER_SIZE );
 		pBuf += TIGER_SIZE;
@@ -796,7 +796,7 @@ void CTigerTree::Load(const uchar* pBuf)
 	if ( CTigerNode* pNode = new CTigerNode[ m_nNodeCount ] )
 	{
 		m_pNode = pNode;
-		for ( DWORD nStep = m_nNodeCount ; nStep ; nStep--, pNode++ )
+		for ( DWORD nStep = m_nNodeCount; nStep; nStep--, pNode++ )
 		{
 			CopyMemory( pNode->value, pBuf, TIGER_SIZE );
 			pBuf += TIGER_SIZE;
@@ -814,7 +814,7 @@ void CTigerTree::SetHeight(uint32 nHeight)
 
 	m_nHeight = nHeight;
 	m_nNodeCount = 1;
-	for ( DWORD nStep = m_nHeight ; nStep ; nStep-- )
+	for ( DWORD nStep = m_nHeight; nStep; nStep-- )
 	{
 		m_nNodeCount *= 2;
 		if ( m_nNodeCount > 0xFFFFFFFF / 2 )
@@ -934,12 +934,12 @@ BOOL CTigerTree::FinishFile()
 
 	CTigerNode* pBase = m_pNode + m_nNodeCount - m_nNodeBase;
 
-	for ( uint32 nCombine = m_nNodeBase ; nCombine > 1 ; nCombine /= 2 )
+	for ( uint32 nCombine = m_nNodeBase; nCombine > 1; nCombine /= 2 )
 	{
 		CTigerNode* pIn  = pBase;
 		CTigerNode* pOut = pBase - nCombine / 2;
 
-		for ( uint32 nIterate = nCombine / 2 ; nIterate ; nIterate--, pIn += 2, pOut++ )
+		for ( uint32 nIterate = nCombine / 2; nIterate; nIterate--, pIn += 2, pOut++ )
 		{
 			if ( pIn[0].bValid && pIn[1].bValid )
 			{
@@ -1043,7 +1043,7 @@ BOOL CTigerTree::ToBytes(uint8** ppOutput, uint32* pnOutput, uint32 nHeight)
 	CTigerNode* pNode = m_pNode;
 	uint8* pOut = *ppOutput;
 
-	for ( uint32 nNode = 0 ; nNode < nNodeCount ; nNode++, pNode++ )
+	for ( uint32 nNode = 0; nNode < nNodeCount; nNode++, pNode++ )
 	{
 		if ( pNode->bValid )
 		{
@@ -1073,7 +1073,7 @@ BOOL CTigerTree::ToBytesLevel1(uint8** ppOutput, uint32* pnOutput)
 
 	CTigerNode* pNode = m_pNode + m_nNodeCount - m_nNodeBase;
 
-	for ( uint32 nNode = 0 ; nNode < m_nBaseUsed ; ++nNode, ++pNode )
+	for ( uint32 nNode = 0; nNode < m_nBaseUsed; ++nNode, ++pNode )
 	{
 		if ( pNode->bValid )
 		{
@@ -1100,17 +1100,17 @@ BOOL CTigerTree::FromBytes(const uint8* pInput, uint32 nInput, uint32 nHeight, u
 
 	CTigerNode* pBase = m_pNode + m_nNodeCount - m_nNodeBase;
 
-	for ( uint32 nStep = m_nBaseUsed ; nStep ; nStep-- )
+	for ( uint32 nStep = m_nBaseUsed; nStep; nStep-- )
 	{
 		pBase[ nStep - 1 ].bValid = true;
 	}
 
-	for ( uint32 nCombine = m_nNodeBase ; nCombine > 1 ; nCombine /= 2 )
+	for ( uint32 nCombine = m_nNodeBase; nCombine > 1; nCombine /= 2 )
 	{
 		CTigerNode* pIn  = pBase;
 		CTigerNode* pOut = pBase - nCombine / 2;
 
-		for ( uint32 nIterate = nCombine / 2 ; nIterate ; nIterate--, pIn += 2, pOut++ )
+		for ( uint32 nIterate = nCombine / 2; nIterate; nIterate--, pIn += 2, pOut++ )
 		{
 			if ( pIn[0].bValid )
 				pOut->bValid = true;
@@ -1125,7 +1125,7 @@ BOOL CTigerTree::FromBytes(const uint8* pInput, uint32 nInput, uint32 nHeight, u
 	uint32 nRowPos = 0, nRowCount = 1;
 	m_nHeight = 0;
 
-	for ( uint32 nStep = 0 ; nStep < m_nNodeCount && nInput > 0 ; nStep++ )
+	for ( uint32 nStep = 0; nStep < m_nNodeCount && nInput > 0; nStep++ )
 	{
 		if ( m_pNode[ nStep ].bValid )
 		{
@@ -1174,7 +1174,7 @@ BOOL CTigerTree::FromBytesLevel1(const uint8* pInput, uint32 nInput, uint64 nLen
 	}
 
 	uint32 nCountHeight = 1;
-	for ( uint32 nStep = 1 ; nStep < nCount ; nStep *= 2 )
+	for ( uint32 nStep = 1; nStep < nCount; nStep *= 2 )
 		nCountHeight++;
 
 	SetupAndAllocate( nCountHeight, nLength );
@@ -1188,7 +1188,7 @@ BOOL CTigerTree::FromBytesLevel1(const uint8* pInput, uint32 nInput, uint64 nLen
 		return FALSE;
 	}
 
-	for ( uint32 i = 0 ; i < m_nBaseUsed ; ++i, ++pBase )
+	for ( uint32 i = 0; i < m_nBaseUsed; ++i, ++pBase )
 	{
 		CopyMemory( pBase->value, &pInput[ i * TIGER_SIZE ], TIGER_SIZE );
 		pBase->bValid = true;
@@ -1215,12 +1215,12 @@ BOOL CTigerTree::CheckIntegrity()
 	m_nNodeBase = ( m_nNodeCount + 1 ) / 2;
 	CTigerNode* pBase = m_pNode + m_nNodeCount - m_nNodeBase;
 
-	for ( uint32 nCombine = m_nNodeBase ; nCombine > 1 ; )
+	for ( uint32 nCombine = m_nNodeBase; nCombine > 1; )
 	{
 		CTigerNode* pIn  = pBase;
 		CTigerNode* pOut = pBase - nCombine / 2;
 
-		for ( uint32 nIterate = nCombine / 2 ; nIterate ; nIterate--, pIn += 2, pOut++ )
+		for ( uint32 nIterate = nCombine / 2; nIterate; nIterate--, pIn += 2, pOut++ )
 		{
 			if ( pIn[0].bValid && pIn[1].bValid )
 			{
@@ -1306,7 +1306,7 @@ void CTigerTree::Tiger(LPCVOID pInput, uint64 nInput, uint64* pOutput, uint64* p
 		{
 			pTemp[0] = 0x00;
 			const uint8* pBytes = (const uint8*)pInput;
-			for ( j = 1 ; j < nInput + 1 ; j++ )
+			for ( j = 1; j < nInput + 1; j++ )
 				pTemp[j] = *pBytes++;
 		}
 		else
@@ -1317,13 +1317,13 @@ void CTigerTree::Tiger(LPCVOID pInput, uint64 nInput, uint64* pOutput, uint64* p
 
 			const uint64* pWords = (const uint64*)( (const uint8*)pInput + 63 );
 
-			for ( i = nInput - 63 ; i >= 64 ; i -= 64 )
+			for ( i = nInput - 63; i >= 64; i -= 64 )
 			{
 				::Tiger( (uint64*) pWords, pOutput );
 				pWords += 8;
 			}
 
-			for ( j = 0 ; j < i ; j++ )
+			for ( j = 0; j < i; j++ )
 				pTemp[j] = ((uint8*)pWords)[j];
 		}
 		nInput++;
@@ -1339,18 +1339,18 @@ void CTigerTree::Tiger(LPCVOID pInput, uint64 nInput, uint64* pOutput, uint64* p
 
 	pTemp[j++] = 0x01;
 
-	for ( ; j & 7 ; j++ )
+	for ( ; j & 7; j++ )
 		pTemp[j] = 0;
 
 	if ( j > 56 )
 	{
-		for ( ; j < 64 ; j++ )
+		for ( ; j < 64; j++ )
 			pTemp[j] = 0;
 		::Tiger( ((uint64*)pTemp), pOutput );
 		j = 0;
 	}
 
-	for ( ; j < 56 ; j++ )
+	for ( ; j < 56; j++ )
 		pTemp[j] = 0;
 
 	((uint64*)(&(pTemp[56])))[0] = ((uint64)nInput) << 3;

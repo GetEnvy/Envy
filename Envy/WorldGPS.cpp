@@ -1,8 +1,8 @@
 //
 // WorldGPS.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2010 and Shareaza 2002-2007
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2010
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -136,7 +136,7 @@ void CWorldGPS::Serialize(CArchive& ar)
 		m_pCountry = new CWorldCountry[ m_nCountry ];
 	}
 
-	for ( DWORD nCountry = 0 ; nCountry < m_nCountry ; nCountry++ )
+	for ( DWORD nCountry = 0; nCountry < m_nCountry; nCountry++ )
 	{
 		m_pCountry[ nCountry ].Serialize( ar );
 	}
@@ -146,7 +146,7 @@ BOOL CWorldGPS::LoadFrom(CXMLElement* pRoot)
 {
 	if ( ! pRoot->IsNamed( L"world" ) ) return FALSE;
 
-	for ( POSITION pos = pRoot->GetElementIterator() ; pos ; )
+	for ( POSITION pos = pRoot->GetElementIterator(); pos; )
 	{
 		CXMLElement* pElement = pRoot->GetNextElement( pos );
 		if ( pElement->IsNamed( L"country" ) ) m_nCountry++;
@@ -155,7 +155,7 @@ BOOL CWorldGPS::LoadFrom(CXMLElement* pRoot)
 	m_pCountry = new CWorldCountry[ m_nCountry ];
 	m_nCountry = 0;
 
-	for ( POSITION pos = pRoot->GetElementIterator() ; pos ; )
+	for ( POSITION pos = pRoot->GetElementIterator(); pos; )
 	{
 		CXMLElement* pElement = pRoot->GetNextElement( pos );
 		if ( pElement->IsNamed( L"country" ) )
@@ -213,7 +213,7 @@ void CWorldCountry::Serialize(CArchive& ar)
 		m_pCity = new CWorldCity[ m_nCity ];
 	}
 
-	for ( DWORD nCity = 0 ; nCity < m_nCity ; nCity++ )
+	for ( DWORD nCity = 0; nCity < m_nCity; nCity++ )
 	{
 		m_pCity[ nCity ].Serialize( ar );
 	}
@@ -230,7 +230,7 @@ BOOL CWorldCountry::LoadFrom(CXMLElement* pRoot)
 	m_szID[0] = (CHAR)strID.GetAt( 0 );
 	m_szID[1] = (CHAR)strID.GetAt( 1 );
 
-	for ( POSITION pos = pRoot->GetElementIterator() ; pos ; )
+	for ( POSITION pos = pRoot->GetElementIterator(); pos; )
 	{
 		CXMLElement* pElement = pRoot->GetNextElement( pos );
 		if ( pElement->IsNamed( L"city" ) ) m_nCity++;
@@ -239,7 +239,7 @@ BOOL CWorldCountry::LoadFrom(CXMLElement* pRoot)
 	m_pCity = new CWorldCity[ m_nCity ];
 	m_nCity = 0;
 
-	for ( POSITION pos = pRoot->GetElementIterator() ; pos ; )
+	for ( POSITION pos = pRoot->GetElementIterator(); pos; )
 	{
 		CXMLElement* pElement = pRoot->GetNextElement( pos );
 		if ( pElement->IsNamed( L"city" ) )

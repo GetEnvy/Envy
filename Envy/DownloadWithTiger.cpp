@@ -1,8 +1,8 @@
 //
 // DownloadWithTiger.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2015 and Shareaza 2002-2007
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2015
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -158,7 +158,7 @@ BOOL CDownloadWithTiger::GetNextVerifyRange(QWORD& nOffset, QWORD& nLength, BOOL
 
 	if ( nBlockSize == 0 ) return FALSE;
 
-	for ( QWORD nBlock = nOffset / nBlockSize ; nBlock < nBlockCount ; nBlock++ )
+	for ( QWORD nBlock = nOffset / nBlockSize; nBlock < nBlockCount; nBlock++ )
 	{
 		QWORD nThis = nBlock * nBlockSize;
 
@@ -169,7 +169,7 @@ BOOL CDownloadWithTiger::GetNextVerifyRange(QWORD& nOffset, QWORD& nLength, BOOL
 			nOffset			= nThis;
 			nLength			= 0;
 
-			for ( ; nBlock < nBlockCount ; nBlock++ )
+			for ( ; nBlock < nBlockCount; nBlock++ )
 			{
 				if ( nBase != pBlockPtr[ nBlock ] )
 					break;
@@ -206,7 +206,7 @@ bool CDownloadWithTiger::IsFullyVerified() const
 
 	if ( m_pTorrentBlock && Settings.Downloads.VerifyTorrent )
 	{
-		for ( DWORD i = 0 ; i < m_nTorrentBlock ; i++ )
+		for ( DWORD i = 0; i < m_nTorrentBlock; i++ )
 		{
 			if ( m_pTorrentBlock[ i ] == TRI_TRUE )
 			{
@@ -222,7 +222,7 @@ bool CDownloadWithTiger::IsFullyVerified() const
 
 	if ( m_pTigerBlock && Settings.Downloads.VerifyTiger )
 	{
-		for ( DWORD i = 0 ; i < m_nTigerBlock ; i++ )
+		for ( DWORD i = 0; i < m_nTigerBlock; i++ )
 		{
 			if ( m_pTigerBlock[ i ] == TRI_TRUE )
 			{
@@ -238,7 +238,7 @@ bool CDownloadWithTiger::IsFullyVerified() const
 
 	if ( m_pHashsetBlock && Settings.Downloads.VerifyED2K )
 	{
-		for ( DWORD i = 0 ; i < m_nHashsetBlock ; i++ )
+		for ( DWORD i = 0; i < m_nHashsetBlock; i++ )
 		{
 			if ( m_pHashsetBlock[ i ] == TRI_TRUE )
 			{
@@ -422,7 +422,7 @@ bool CDownloadWithTiger::RunMergeFile(LPCTSTR szFilename, BOOL bMergeValidation,
 	{
 		Fragments::List::const_iterator pItr = oMissedGaps.begin();
 		const Fragments::List::const_iterator pEnd = oMissedGaps.end();
-		for ( ; pItr != pEnd ; ++pItr )
+		for ( ; pItr != pEnd; ++pItr )
 			oList.erase( *pItr );
 	}
 
@@ -448,7 +448,7 @@ bool CDownloadWithTiger::RunMergeFile(LPCTSTR szFilename, BOOL bMergeValidation,
 			else if ( nIndex > 0 )
 			{
 				CBTInfo::CBTFile* pSelectFile = m_pTorrent.m_pFiles.GetAt( m_pTorrent.m_pFiles.FindIndex( nIndex ) );
-				for ( POSITION pos = m_pTorrent.m_pFiles.GetHeadPosition() ; pos ; )
+				for ( POSITION pos = m_pTorrent.m_pFiles.GetHeadPosition(); pos; )
 				{
 					pFile = m_pTorrent.m_pFiles.GetNext( pos );
 					if ( pFile->m_sPath == pSelectFile->m_sPath )
@@ -466,7 +466,7 @@ bool CDownloadWithTiger::RunMergeFile(LPCTSTR szFilename, BOOL bMergeValidation,
 
 		if ( ! bFound )		// No forced match, try filename
 		{
-			for ( POSITION pos = m_pTorrent.m_pFiles.GetHeadPosition() ; pos ; )
+			for ( POSITION pos = m_pTorrent.m_pFiles.GetHeadPosition(); pos; )
 			{
 				pFile = m_pTorrent.m_pFiles.GetNext( pos );
 				strTargetName = PathFindFileName( pFile->m_sPath );
@@ -486,7 +486,7 @@ bool CDownloadWithTiger::RunMergeFile(LPCTSTR szFilename, BOOL bMergeValidation,
 		if ( ! bFound )		// No filename match, try exact size
 		{
 			qwOffset = 0;
-			for ( POSITION pos = m_pTorrent.m_pFiles.GetHeadPosition() ; pos ; )
+			for ( POSITION pos = m_pTorrent.m_pFiles.GetHeadPosition(); pos; )
 			{
 				pFile = m_pTorrent.m_pFiles.GetNext( pos );
 
@@ -514,7 +514,7 @@ bool CDownloadWithTiger::RunMergeFile(LPCTSTR szFilename, BOOL bMergeValidation,
 
 	Fragments::List::const_iterator pItr = oList.begin();
 	const Fragments::List::const_iterator pEnd = oList.end();
-	for ( ; pItr != pEnd && pTask->IsThreadEnabled() ; ++pItr )
+	for ( ; pItr != pEnd && pTask->IsThreadEnabled(); ++pItr )
 	{
 		pTask->m_fProgress += fIncrement;		// Update tooltip
 
@@ -633,7 +633,7 @@ BOOL CDownloadWithTiger::FindNewValidationBlock(int nHash)
 
 	if ( ! IsFileOpen() )
 	{
-		for ( DWORD nBlock = 0 ; nBlock < nBlockCount ; nBlock ++ )
+		for ( DWORD nBlock = 0; nBlock < nBlockCount; nBlock ++ )
 		{
 			if ( static_cast< TRISTATE >( pBlockPtr[ nBlock ] ) == TRI_UNKNOWN )
 			{
@@ -643,7 +643,7 @@ BOOL CDownloadWithTiger::FindNewValidationBlock(int nHash)
 		}
 		if ( nTarget == 0xFFFFFFFF )
 		{
-			for ( DWORD nBlock = 0 ; nBlock < nBlockCount ; nBlock ++ )
+			for ( DWORD nBlock = 0; nBlock < nBlockCount; nBlock ++ )
 			{
 				if ( static_cast< TRISTATE >( pBlockPtr[ nBlock ] ) == TRI_FALSE )
 				{
@@ -661,7 +661,7 @@ BOOL CDownloadWithTiger::FindNewValidationBlock(int nHash)
 		Fragments::List oList( GetEmptyFragmentList() );
 		Fragments::List::const_iterator pItr = oList.begin();
 		const Fragments::List::const_iterator pEnd = oList.end();
-		for ( ; pItr != pEnd ; ++pItr )
+		for ( ; pItr != pEnd; ++pItr )
 		{
 			if ( pItr->begin() - nPrevious >= nBlockSize )
 			{
@@ -669,7 +669,7 @@ BOOL CDownloadWithTiger::FindNewValidationBlock(int nHash)
 				nPrevious = nBlockSize * nBlock + nBlockSize;
 
 				QWORD nFragmentBegin = pItr->begin();
-				for ( ; nPrevious <= nFragmentBegin ; nBlock ++, nPrevious += nBlockSize )
+				for ( ; nPrevious <= nFragmentBegin; nBlock ++, nPrevious += nBlockSize )
 				{
 					if ( static_cast< TRISTATE >( pBlockPtr[ nBlock ] ) == TRI_UNKNOWN )
 					{
@@ -695,7 +695,7 @@ BOOL CDownloadWithTiger::FindNewValidationBlock(int nHash)
 			QWORD nBlock = ( nPrevious + nBlockSize - 1 ) / nBlockSize;
 			nPrevious = nBlockSize * nBlock;
 
-			for ( ; nPrevious < m_nSize ; nBlock ++, nPrevious += nBlockSize )
+			for ( ; nPrevious < m_nSize; nBlock ++, nPrevious += nBlockSize )
 			{
 				if ( static_cast< TRISTATE >( pBlockPtr[ nBlock ] ) == TRI_UNKNOWN )
 				{
@@ -746,7 +746,7 @@ void CDownloadWithTiger::ContinueValidation()
 
 	auto_array< BYTE > pChunk( new BYTE[ 256 * 1024ull ] );
 
-	for ( int nRound = IsComplete() ? 10 : 2 ; nRound > 0 && m_nVerifyLength > 0 ; nRound-- )
+	for ( int nRound = IsComplete() ? 10 : 2; nRound > 0 && m_nVerifyLength > 0; nRound-- )
 	{
 		QWORD nChunk = min( m_nVerifyLength, 256 * 1024ull );
 
@@ -833,7 +833,7 @@ void CDownloadWithTiger::FinishValidation()
 
 		Fragments::List::const_iterator pItr = oCorrupted.begin();
 		const Fragments::List::const_iterator pEnd = oCorrupted.end();
-		for ( ; pItr != pEnd ; ++pItr )
+		for ( ; pItr != pEnd; ++pItr )
 		{
 			InvalidateFileRange( pItr->begin(), pItr->size() );
 			RemoveOverlappingSources( pItr->begin(), pItr->size() );
@@ -894,7 +894,7 @@ Fragments::List CDownloadWithTiger::GetHashableFragmentList() const
 	Fragments::List oResultList = oList;
 	Fragments::List::const_iterator pItr = oList.begin();
 	const Fragments::List::const_iterator pEnd = oList.end();
-	for ( ; pItr != pEnd ; ++pItr )
+	for ( ; pItr != pEnd; ++pItr )
 	{
 		QWORD nStart = ( pItr->begin() / nSmallest ) * nSmallest;
 		QWORD nEnd   = min( ( ( pItr->end() - 1ull ) / nSmallest + 1ull ) * nSmallest, m_nSize );
@@ -972,7 +972,7 @@ Fragments::List CDownloadWithTiger::GetPossibleFragments(const Fragments::List& 
 
 	oLargest = *oPossible.largest_range();
 
-	for ( const CDownloadTransfer* pTransfer = GetFirstTransfer() ; ! oPossible.empty() && pTransfer ; pTransfer = pTransfer->m_pDlNext )
+	for ( const CDownloadTransfer* pTransfer = GetFirstTransfer(); ! oPossible.empty() && pTransfer; pTransfer = pTransfer->m_pDlNext )
 	{
 		pTransfer->SubtractRequested( oPossible );
 	}
@@ -1011,7 +1011,7 @@ BOOL CDownloadWithTiger::GetFragment(CDownloadTransfer* pTransfer)
 
 	CDownloadTransfer* pExisting = NULL;
 
-	for ( CDownloadTransfer* pOther = GetFirstTransfer() ; pOther ; pOther = pOther->m_pDlNext )
+	for ( CDownloadTransfer* pOther = GetFirstTransfer(); pOther; pOther = pOther->m_pDlNext )
 	{
 		if ( pOther->m_bRecvBackwards )
 		{
@@ -1078,7 +1078,7 @@ BOOL CDownloadWithTiger::GetFragment(CDownloadTransfer* pTransfer)
 //	CString strRanges, strRange;
 //	QWORD nOffset, nLength;
 //	BOOL bSuccess;
-//	for ( nOffset = 0 ; GetNextVerifyRange( nOffset, nLength, bSuccess ) ; )
+//	for ( nOffset = 0; GetNextVerifyRange( nOffset, nLength, bSuccess ); )
 //	{
 //		if ( bSuccess )
 //		{

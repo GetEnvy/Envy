@@ -1,8 +1,8 @@
 //
 // PageSettingsAdvanced.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2017
-// Portions copyright PeerProject 2008-2015 and Shareaza 2002-2008
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2008 and PeerProject 2008-2015
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -85,7 +85,7 @@ BOOL CAdvancedSettingsPage::OnInitDialog()
 {
 	CSettingsPage::OnInitDialog();
 
-//	for ( POSITION pos = Settings.GetHeadPosition() ; pos ; )
+//	for ( POSITION pos = Settings.GetHeadPosition(); pos; )
 //	{
 //		const CSettings::Item* pItem = Settings.GetNext( pos );
 //
@@ -133,7 +133,7 @@ void CAdvancedSettingsPage::AddSettings()
 	if ( strQuickFilter == L"*" )
 		strQuickFilter = EDIT_TOKEN;
 
-	for ( POSITION pos = Settings.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = Settings.GetHeadPosition(); pos; )
 	{
 		CSettings::Item* pItem = Settings.GetNext( pos );
 		if ( ! pItem->m_bHidden &&
@@ -166,7 +166,7 @@ void CAdvancedSettingsPage::AddSettings()
 void CAdvancedSettingsPage::CommitAll()
 {
 	const int nCount = m_wndList.GetItemCount();
-	for ( int nItem = 0 ; nItem < nCount ; nItem++ )
+	for ( int nItem = 0; nItem < nCount; nItem++ )
 	{
 		EditItem* pItem = (EditItem*)m_wndList.GetItemData( nItem );
 		pItem->Commit();
@@ -176,7 +176,7 @@ void CAdvancedSettingsPage::CommitAll()
 void CAdvancedSettingsPage::UpdateAll()
 {
 	const int nCount = m_wndList.GetItemCount();
-	for ( int nItem = 0 ; nItem < nCount ; nItem++ )
+	for ( int nItem = 0; nItem < nCount; nItem++ )
 	{
 		EditItem* pItem = (EditItem*)m_wndList.GetItemData( nItem );
 		pItem->Update();
@@ -189,7 +189,7 @@ void CAdvancedSettingsPage::UpdateAll()
 //int CAdvancedSettingsPage::GetListItem(const EditItem* pItem)
 //{
 //	const int nCount = m_wndList.GetItemCount();
-//	for ( int nItem = 0 ; nItem < nCount ; ++nItem )
+//	for ( int nItem = 0; nItem < nCount; ++nItem )
 //	{
 //		if ( (const EditItem*)m_wndList.GetItemData( nItem ) == pItem )
 //			return nItem;
@@ -399,7 +399,7 @@ void CAdvancedSettingsPage::OnDestroy()
 		Settings.General.LastSettingsIndex = m_wndList.GetTopIndex();
 
 	const int nCount = m_wndList.GetItemCount();
-	for ( int nItem = 0 ; nItem < nCount ; nItem++ )
+	for ( int nItem = 0; nItem < nCount; nItem++ )
 	{
 		delete (EditItem*)m_wndList.GetItemData( nItem );
 	}
@@ -423,7 +423,7 @@ void CAdvancedSettingsPage::OnBnClickedDefaultValue()
 bool CAdvancedSettingsPage::IsModified() const
 {
 	const int nCount = m_wndList.GetItemCount();
-	for ( int nItem = 0 ; nItem < nCount ; nItem++ )
+	for ( int nItem = 0; nItem < nCount; nItem++ )
 	{
 		const EditItem* pItem = (const EditItem*)m_wndList.GetItemData( nItem );
 		if ( pItem->IsModified() )

@@ -1,8 +1,8 @@
 //
 // HashTest.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2010-2012 and Shareaza 2009
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2009 and PeerProject 2010-2012
 //
 // Envy is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
@@ -10,8 +10,8 @@
 // either version 3 of the License, or later version (at your option).
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU General Public License for more details.
 // (http://www.gnu.org/licenses/gpl.html)
 //
@@ -52,13 +52,13 @@ DWORD HashWord(LPCTSTR pszString, size_t nStart, size_t nLength, DWORD nBits) th
 	register DWORD nNumber	= 0;
 
 	// Obsolete method for reference & deletion:
-	//for ( int nByte = 0 ; nLength ; --nLength, ++pszString )
+	//for ( int nByte = 0; nLength; --nLength, ++pszString )
 	//{
 	//	nNumber ^= ( tolower( *pszString ) & 0xFF ) << ( nByte * 8 );
 	//	nByte = ( nByte + 1 ) & 3;
 	//}
 
-	for ( register size_t nLength1 = nLength / 8 ; nLength1 ; --nLength1, pszString += 8 )
+	for ( register size_t nLength1 = nLength / 8; nLength1; --nLength1, pszString += 8 )
 	{
 		nNumber ^=
 			( ( tolower( pszString[ 0 ] ) & 0xFF )       ) ^
@@ -168,7 +168,7 @@ int _tmain(int /*argc*/, _TCHAR* /*argv*/[])
 			__int64 nWorst = 0;
 			_tprintf( _T("HashWord : %I64d MB by "), nBlock / 1024 / 1024 );
 			DWORD foo;
-			for ( int i = 0 ; i < nCount ; ++i )
+			for ( int i = 0; i < nCount; ++i )
 			{
 				const __int64 nBegin = GetMicroCount();
 				foo = HashWord( (LPCTSTR)pBuffer, 0, nBlock / sizeof( TCHAR ) - 1, 20 );
@@ -199,7 +199,7 @@ int _tmain(int /*argc*/, _TCHAR* /*argv*/[])
 		{
 			__int64 nWorst = 0;
 			_tprintf( _T("MD4  hash: %I64d MB by "), nBlock / 1024 / 1024 );
-			for ( int i = 0 ; i < nCount ; ++i )
+			for ( int i = 0; i < nCount; ++i )
 			{
 				const __int64 nBegin = GetMicroCount();
 				CMD4 pMD4;
@@ -227,7 +227,7 @@ int _tmain(int /*argc*/, _TCHAR* /*argv*/[])
 		{
 			__int64 nWorst = 0;
 			_tprintf( _T("MD5  hash: %I64d MB by "), nBlock / 1024 / 1024 );
-			for ( int i = 0 ; i < nCount ; ++i )
+			for ( int i = 0; i < nCount; ++i )
 			{
 				const __int64 nBegin = GetMicroCount();
 				CMD5 pMD5;
@@ -255,7 +255,7 @@ int _tmain(int /*argc*/, _TCHAR* /*argv*/[])
 		{
 			__int64 nWorst = 0;
 			_tprintf( _T("SHA1 hash: %I64d MB by "), nBlock / 1024 / 1024 );
-			for ( int i = 0 ; i < nCount ; ++i )
+			for ( int i = 0; i < nCount; ++i )
 			{
 				const __int64 nBegin = GetMicroCount();
 				CSHA pSHA;

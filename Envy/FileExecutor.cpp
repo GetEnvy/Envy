@@ -1,8 +1,8 @@
 //
 // FileExecutor.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2008
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2008 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -154,8 +154,8 @@ void CFileExecutor::DetectFileType(LPCTSTR pszFile, LPCTSTR szType, bool& bVideo
 
 CString CFileExecutor::GetCustomPlayer()
 {
-	for ( string_set::const_iterator i = Settings.MediaPlayer.ServicePath.begin() ;
-		i != Settings.MediaPlayer.ServicePath.end() ; ++i )
+	for ( string_set::const_iterator i = Settings.MediaPlayer.ServicePath.begin();
+		i != Settings.MediaPlayer.ServicePath.end(); ++i )
 	{
 		CString strPlayer = *i;
 		if ( strPlayer.Right( 1 ) != L'*' )		// SELECTED_PLAYER_TOKEN
@@ -354,7 +354,7 @@ BOOL CFileExecutor::Execute(const CStringList& pList)
 			return FALSE;
 	}
 
-	for ( POSITION pos = pList.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = pList.GetHeadPosition(); pos; )
 	{
 		if ( ! CFileExecutor::Execute( pList.GetNext( pos ) ) )
 			return FALSE;
@@ -471,7 +471,7 @@ BOOL CFileExecutor::Enqueue(LPCTSTR pszFile, LPCTSTR pszExt)
 
 		// Try to create "enqueue" verb from default verb for known players
 		CString strExecutable = PathFindFileName( strCustomPlayer );
-		for ( int i = 0 ; KnownPlayers[ i ].szPlayer ; ++i )
+		for ( int i = 0; KnownPlayers[ i ].szPlayer; ++i )
 		{
 			if ( strExecutable.CompareNoCase( KnownPlayers[ i ].szPlayer ) == 0 )
 			{
@@ -508,7 +508,7 @@ BOOL CFileExecutor::Enqueue(LPCTSTR pszFile, LPCTSTR pszExt)
 	if ( hr == S_OK )
 	{
 		CString strParam, strExecutable = PathFindFileName( strCommand );
-		for ( int i = 0 ; KnownPlayers[ i ].szPlayer ; ++i )
+		for ( int i = 0; KnownPlayers[ i ].szPlayer; ++i )
 		{
 			if ( strExecutable.CompareNoCase( KnownPlayers[ i ].szPlayer ) == 0 )
 			{
@@ -544,7 +544,7 @@ BOOL CFileExecutor::Enqueue(const CStringList& pList)
 			return FALSE;
 	}
 
-	for ( POSITION pos = pList.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = pList.GetHeadPosition(); pos; )
 	{
 		if ( ! CFileExecutor::Enqueue( pList.GetNext( pos ) ) )
 			return FALSE;

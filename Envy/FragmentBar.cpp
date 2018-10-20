@@ -1,8 +1,8 @@
 //
 // FragmentBar.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2015 and Shareaza 2002-2007
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2015
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -176,7 +176,7 @@ void CFragmentBar::DrawDownload(CDC* pDC, CRect* prcBar, const CDownloadDisplayD
 		DrawStateBar( pDC, prcBar, pDownloadData->m_nSize, 0, pDownloadData->m_nVolumeComplete, Colors.m_crFragmentComplete, TRUE );
 
 	// pDownload->GetNextVerifyRange( nvOffset, nvLength, bvSuccess )
-	for ( INT_PTR nRange = 0 ; nRange < pDownloadData->m_pVerifyRanges.GetCount() ; nRange++ )
+	for ( INT_PTR nRange = 0; nRange < pDownloadData->m_pVerifyRanges.GetCount(); nRange++ )
 	{
 		DrawStateBar( pDC, prcBar, pDownloadData->m_nSize,
 			pDownloadData->m_pVerifyRanges.GetAt( nRange ).nOffset, pDownloadData->m_pVerifyRanges.GetAt( nRange ).nLength,
@@ -198,12 +198,12 @@ void CFragmentBar::DrawDownload(CDC* pDC, CRect* prcBar, const CDownloadDisplayD
 	Fragments::List oList( pDownloadData->m_oEmptyFragments );
 	Fragments::List::const_iterator pItr = oList.begin();
 	const Fragments::List::const_iterator pEnd = oList.end();
-	for ( ; pItr != pEnd ; ++pItr )
+	for ( ; pItr != pEnd; ++pItr )
 	{
 		DrawFragment( pDC, prcBar, pDownloadData->m_nSize, pItr->begin(), pItr->size(), crNatural, FALSE );
 	}
 
-	for ( UINT nSource = 0 ; nSource < pDownloadData->m_nSourceCount ; nSource++ )
+	for ( UINT nSource = 0; nSource < pDownloadData->m_nSourceCount; nSource++ )
 	{
 		// Note: Was pDownload->GetNext( posSource )->Draw( pDC, prcBar );
 		if ( ! ( pDownloadData->m_bCompleted || pDownloadData->m_bSeeding ) || ! pDownloadData->m_pSourcesData[ nSource ].m_oPastFragments.empty() )
@@ -227,7 +227,7 @@ void CFragmentBar::DrawDownload(CDC* pDC, CRect* prcBar, const CDownload* pDownl
 	if ( Settings.Downloads.ShowPercent )
 		DrawStateBar( pDC, prcBar, pDownload->m_nSize, 0, pDownload->GetVolumeComplete(), RGB( 0, 255, 0 ), TRUE );
 
-	for ( nvOffset = 0 ; pDownload->GetNextVerifyRange( nvOffset, nvLength, bvSuccess ) ; )
+	for ( nvOffset = 0; pDownload->GetNextVerifyRange( nvOffset, nvLength, bvSuccess ); )
 	{
 		DrawStateBar( pDC, prcBar, pDownload->m_nSize, nvOffset, nvLength, bvSuccess ? Colors.m_crFragmentPass : Colors.m_crFragmentFail );
 		nvOffset += nvLength;
@@ -236,12 +236,12 @@ void CFragmentBar::DrawDownload(CDC* pDC, CRect* prcBar, const CDownload* pDownl
 	Fragments::List oList( pDownload->GetEmptyFragmentList() );
 	Fragments::List::const_iterator pItr = oList.begin();
 	const Fragments::List::const_iterator pEnd = oList.end();
-	for ( ; pItr != pEnd ; ++pItr )
+	for ( ; pItr != pEnd; ++pItr )
 	{
 		DrawFragment( pDC, prcBar, pDownload->m_nSize, pItr->begin(), pItr->size(), crNatural, FALSE );
 	}
 
-	for ( POSITION posSource = pDownload->GetIterator() ; posSource ; )
+	for ( POSITION posSource = pDownload->GetIterator(); posSource; )
 	{
 		// CDownloadSource* pSource
 		pDownload->GetNext( posSource )->Draw( pDC, prcBar );
@@ -275,7 +275,7 @@ void CFragmentBar::DrawSource(CDC* pDC, CRect* prcBar, const CSourceDisplayData*
 	// ToDo:
 	//	if ( pSourceData->m_nProtocol == PROTOCOL_BT || pSourceData->m_nProtocol == PROTOCOL_ED2K )
 	//	{
-	//		for ( Fragments::Queue::const_iterator pItr = m_oRequested.begin() ; pItr != m_oRequested.end() ; ++pItr )
+	//		for ( Fragments::Queue::const_iterator pItr = m_oRequested.begin(); pItr != m_oRequested.end(); ++pItr )
 	//		{
 	//			CFragmentBar::DrawStateBar( pDC, prcBar, pSourceData->m_nSize, pItr->begin(), pItr->size(), Colors.m_crFragmentRequest, TRUE );
 	//		}
@@ -309,7 +309,7 @@ void CFragmentBar::DrawSource(CDC* pDC, CRect* prcBar, const CSourceDisplayData*
 		}
 	}
 
-	for ( Fragments::List::const_iterator pItr = pSourceData->m_oPastFragments.begin() ; pItr != pSourceData->m_oPastFragments.end() ; ++pItr )
+	for ( Fragments::List::const_iterator pItr = pSourceData->m_oPastFragments.begin(); pItr != pSourceData->m_oPastFragments.end(); ++pItr )
 	{
 		CFragmentBar::DrawFragment( pDC, prcBar, pSourceData->m_nSize, pItr->begin(), pItr->size(), crTransfer, TRUE, TRUE );
 	}
@@ -320,7 +320,7 @@ void CFragmentBar::DrawSource(CDC* pDC, CRect* prcBar, const CSourceDisplayData*
 	// Draw empty bar areas
 	if ( ! pSourceData->m_oAvailable.empty() )
 	{
-		for ( Fragments::List::const_iterator pItr = pSourceData->m_oAvailable.begin() ; pItr != pSourceData->m_oAvailable.end() ; ++pItr )
+		for ( Fragments::List::const_iterator pItr = pSourceData->m_oAvailable.begin(); pItr != pSourceData->m_oAvailable.end(); ++pItr )
 		{
 			CFragmentBar::DrawFragment( pDC, prcBar, pSourceData->m_nSize, pItr->begin(), pItr->size(), crNatural, FALSE, TRUE );		// ToDo: Crash here?
 		}
@@ -358,9 +358,9 @@ void CFragmentBar::DrawSource(CDC* pDC, CRect* prcBar, const CSourceDisplayData*
 //		{
 //		case PROTOCOL_BT:
 //			for ( Fragments::Queue::const_iterator pRequested =
-//				static_cast< CDownloadTransferBT* >( pSource->m_pTransfer )->m_oRequested.begin() ;
+//				static_cast< CDownloadTransferBT* >( pSource->m_pTransfer )->m_oRequested.begin();
 //				pRequested !=
-//				static_cast< CDownloadTransferBT* >( pSource->m_pTransfer )->m_oRequested.end() ;
+//				static_cast< CDownloadTransferBT* >( pSource->m_pTransfer )->m_oRequested.end();
 //				++pRequested )
 //			{
 //				DrawStateBar( pDC, prcBar, pSource->m_pDownload->m_nSize,
@@ -369,9 +369,9 @@ void CFragmentBar::DrawSource(CDC* pDC, CRect* prcBar, const CSourceDisplayData*
 //			break;
 //		case PROTOCOL_ED2K:
 //			for ( Fragments::Queue::const_iterator pRequested
-//				= static_cast< CDownloadTransferED2K* >( pSource->m_pTransfer )->m_oRequested.begin() ;
+//				= static_cast< CDownloadTransferED2K* >( pSource->m_pTransfer )->m_oRequested.begin();
 //				pRequested
-//				!= static_cast< CDownloadTransferED2K* >( pSource->m_pTransfer )->m_oRequested.end() ;
+//				!= static_cast< CDownloadTransferED2K* >( pSource->m_pTransfer )->m_oRequested.end();
 //				++pRequested )
 //			{
 //				DrawStateBar( pDC, prcBar, pSource->m_pDownload->m_nSize,
@@ -393,8 +393,8 @@ void CFragmentBar::DrawSource(CDC* pDC, CRect* prcBar, const CSourceDisplayData*
 //
 //	if ( ! pSource->m_oAvailable.empty() )
 //	{
-//		for ( Fragments::List::const_iterator pFragment = pSource->m_oAvailable.begin() ;
-//			pFragment != pSource->m_oAvailable.end() ; ++pFragment )
+//		for ( Fragments::List::const_iterator pFragment = pSource->m_oAvailable.begin();
+//			pFragment != pSource->m_oAvailable.end(); ++pFragment )
 //		{
 //			DrawFragment( pDC, prcBar, pSource->m_pDownload->m_nSize,
 //				pFragment->begin(), pFragment->size(), crNatural, FALSE );
@@ -442,8 +442,8 @@ void CFragmentBar::DrawSource(CDC* pDC, CRect* prcBar, const CSourceDisplayData*
 //		}
 //	}
 //
-//	for ( Fragments::List::const_iterator pFragment = pSource->m_oPastFragments.begin() ;
-//		pFragment != pSource->m_oPastFragments.end() ; ++pFragment )
+//	for ( Fragments::List::const_iterator pFragment = pSource->m_oPastFragments.begin();
+//		pFragment != pSource->m_oPastFragments.end(); ++pFragment )
 //	{
 //		DrawFragment( pDC, prcBar, pSource->m_pDownload->m_nSize,
 //			pFragment->begin(), pFragment->size(), crTransfer, TRUE );
@@ -474,7 +474,7 @@ void CFragmentBar::DrawUpload(CDC* pDC, CRect* prcBar, const CUploadDisplayData*
 		DrawFragment( pDC, prcBar, pUploadData->m_nSize, frag.begin(), frag.size(), Colors.m_crFragmentComplete, TRUE );
 	}
 #else
-	for ( Fragments::List::const_iterator pItr = pUploadData->m_oFragments.begin() ; pItr != pUploadData->m_oFragments.end() ; pItr++ )
+	for ( Fragments::List::const_iterator pItr = pUploadData->m_oFragments.begin(); pItr != pUploadData->m_oFragments.end(); pItr++ )
 	{
 		DrawFragment( pDC, prcBar, pUploadData->m_nSize, pItr->begin(), pItr->size(), Colors.m_crFragmentComplete, TRUE );
 	}
@@ -525,7 +525,7 @@ void CFragmentBar::DrawUpload(CDC* pDC, CRect* prcBar, CUploadFile* pFile, COLOR
 
 	Fragments::List::const_iterator pItr = pFile->m_oFragments.begin();
 	const Fragments::List::const_iterator pEnd = pFile->m_oFragments.end();
-	for ( ; pItr != pEnd ; ++pItr )
+	for ( ; pItr != pEnd; ++pItr )
 	{
 		DrawFragment( pDC, prcBar, pFile->m_nSize, pItr->begin(), pItr->size(), Colors.m_crFragmentComplete, TRUE );
 	}

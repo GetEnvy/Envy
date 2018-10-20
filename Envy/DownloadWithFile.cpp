@@ -2,7 +2,7 @@
 // DownloadWithFile.cpp
 //
 // This file is part of Envy (getenvy.com) © 2016-2018
-// Portions copyright PeerProject 2008-2016 and Shareaza 2002-2008
+// Portions copyright Shareaza 2002-2008 and PeerProject 2008-2016
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -303,7 +303,7 @@ bool CDownloadWithFile::Rename(const CString& strName)
 	if ( m_pFile.get() )
 	{
 		const DWORD nCount = m_pFile->GetCount();
-		for( DWORD nIndex = 0 ; nIndex < nCount ; ++nIndex )
+		for( DWORD nIndex = 0; nIndex < nCount; ++nIndex )
 		{
 			CString strFragmentName = m_pFile->GetName( nIndex ), strLeftover;
 			if ( ! strFragmentName.IsEmpty() )
@@ -363,7 +363,7 @@ DWORD CDownloadWithFile::MoveFile(LPCTSTR pszDestination, LPPROGRESS_ROUTINE lpP
 			strNewFolder.Empty();
 	}
 
-	for ( DWORD nIndex = 0 ; nIndex < nCount ; ++nIndex )
+	for ( DWORD nIndex = 0; nIndex < nCount; ++nIndex )
 	{
 		CString strName( m_pFile->GetName( nIndex ) );
 
@@ -420,7 +420,7 @@ DWORD CDownloadWithFile::MoveFile(LPCTSTR pszDestination, LPPROGRESS_ROUTINE lpP
 				else
 					strFormat.Append( L".%i" );
 
-				for ( int i = 1 ; i < 100 ; i++ )
+				for ( int i = 1; i < 100; i++ )
 				{
 					strName.Format( strFormat, i );
 					if ( ! PathFileExists( strRoot + strName ) )
@@ -601,8 +601,8 @@ CString CDownloadWithFile::GetDisplayName() const
 //
 //	oLargest = *oPossible.largest_range();
 //
-//	for ( CDownloadTransfer* pTransfer = GetFirstTransfer() ;
-//		! oPossible.empty() && pTransfer ;
+//	for ( CDownloadTransfer* pTransfer = GetFirstTransfer();
+//		! oPossible.empty() && pTransfer;
 //		pTransfer = pTransfer->m_pDlNext )
 //	{
 //		pTransfer->SubtractRequested( oPossible );
@@ -653,7 +653,7 @@ CString CDownloadWithFile::GetDisplayName() const
 //	{
 //		CDownloadTransfer* pExisting = NULL;
 //
-//		for ( CDownloadTransfer* pOther = GetFirstTransfer() ; pOther ; pOther = pOther->m_pDlNext )
+//		for ( CDownloadTransfer* pOther = GetFirstTransfer(); pOther; pOther = pOther->m_pDlNext )
 //		{
 //			if ( pOther->m_bRecvBackwards )
 //			{
@@ -773,7 +773,7 @@ bool CDownloadWithFile::GetAvailableRanges(CString& strRanges) const
 	CString strRange;
 	Fragments::List::const_iterator pItr = oAvailable.begin();
 	const Fragments::List::const_iterator pEnd = oAvailable.end();
-	for ( ; pItr != pEnd && strRanges.GetLength() < HTTP_HEADER_MAX_LINE - 256 ; ++pItr )
+	for ( ; pItr != pEnd && strRanges.GetLength() < HTTP_HEADER_MAX_LINE - 256; ++pItr )
 	{
 		strRange.Format( L"%I64i-%I64i,", pItr->begin(), pItr->end() - 1 );
 		strRanges += strRange;
@@ -987,7 +987,7 @@ void CDownloadWithFile::Serialize(CArchive& ar, int nVersion)
 		if ( static_cast< CDownload* >( this )->IsTorrent() )
 		{
 			CBTInfo& oInfo = static_cast< CDownload* >( this )->m_pTorrent;
-			for ( POSITION pos = oInfo.m_pFiles.GetHeadPosition() ; pos ; ++nIndex )
+			for ( POSITION pos = oInfo.m_pFiles.GetHeadPosition(); pos; ++nIndex )
 			{
 				CBTInfo::CBTFile* pBTFile = oInfo.m_pFiles.GetNext( pos );
 				if ( m_pFile.get() && m_pFile->GetName( nIndex ).IsEmpty() )

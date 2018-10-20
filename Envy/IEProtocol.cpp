@@ -2,7 +2,7 @@
 // IEProtocol.cpp
 //
 // This file is part of Envy (getenvy.com) © 2016-2018
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2008
+// Portions copyright Shareaza 2002-2008 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -31,10 +31,9 @@
 #include "LibraryHistory.h"
 #include "CollectionFile.h"
 #include "ZIPFile.h"
-#include "ShellIcons.h"
-#include "ImageServices.h"
 #include "ImageFile.h"
 #include "ThumbCache.h"
+#include "ShellIcons.h"
 #include "XML.h"
 
 #ifdef _DEBUG
@@ -106,7 +105,7 @@ BOOL CIEProtocol::Create()
 	if ( FAILED( CoInternetGetSession( 0, &pSession, 0 ) ) )
 		return FALSE;
 
-	for ( int nProtocol = 0 ; pszProtocols[ nProtocol ] != NULL ; nProtocol++ )
+	for ( int nProtocol = 0; pszProtocols[ nProtocol ] != NULL; nProtocol++ )
 	{
 		if ( FAILED( pSession->RegisterNameSpace( &m_xClassFactory, CLSID_EnvyIEProtocol, pszProtocols[ nProtocol ], 0, NULL, 0 ) ) )
 			return FALSE;
@@ -123,7 +122,7 @@ void CIEProtocol::Close()
 
 	if ( m_pSession )
 	{
-		for ( int nProtocol = 0 ; pszProtocols[ nProtocol ] != NULL ; nProtocol++ )
+		for ( int nProtocol = 0; pszProtocols[ nProtocol ] != NULL; nProtocol++ )
 		{
 			m_pSession->UnregisterNameSpace( &m_xClassFactory, pszProtocols[ nProtocol ] );
 		}
@@ -369,7 +368,7 @@ HRESULT CIEProtocol::OnRequest(LPCTSTR pszURL, CBuffer& oBuffer, CString& sMimeT
 {
 	CSingleLock pLock( &m_pSection, TRUE );
 
-	TRACE( L"Requested URL: %s\n", pszURL );
+	TRACE( "Requested URL: %s\n", pszURL );
 
 	if ( _tcsnicmp( pszURL, _P( L"p2p-col:" ) ) == 0 )		// p2p-col:[//]{SHA1}/{relative path inside zip}
 		return OnRequestCollection( SkipSlashes( pszURL, 8 ), oBuffer, sMimeType, bParseOnly );
@@ -579,7 +578,7 @@ HRESULT CIEProtocol::OnRequestApplication(LPCTSTR pszURL, CBuffer& oBuffer, CStr
 			return INET_E_OBJECT_NOT_FOUND;
 
 		int nCount = 0;
-		for ( POSITION pos = LibraryHistory.GetIterator() ; pos ; )
+		for ( POSITION pos = LibraryHistory.GetIterator(); pos; )
 		{
 			const CLibraryRecent* pRecent = LibraryHistory.GetNext( pos );
 			if ( ! pRecent->m_pFile )

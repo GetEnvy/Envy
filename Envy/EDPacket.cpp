@@ -1,8 +1,8 @@
 //
 // EDPacket.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2015 and Shareaza 2002-2007
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2015
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -146,7 +146,7 @@ public:
 
 		m_oTypes.InitHashTable( GetBestHashTableSize( _countof( pszTypes ) ) );
 
-		for ( int i = 0 ; i < _countof( pszTypes ) ; ++i )
+		for ( int i = 0; i < _countof( pszTypes ); ++i )
 		{
 			m_oTypes.SetAt( MAKEDWORD( MAKEWORD( pszTypes[ i ].nType, pszTypes[ i ].nProtocol ), MAKEWORD( pszTypes[ i ].bUDP, pszTypes[ i ].bServer ) ), pszTypes[ i ].pszName );
 		}
@@ -447,7 +447,7 @@ void CEDPacket::ToBuffer(CBuffer* pBuffer, bool bTCP)
 CEDPacket* CEDPacket::ReadBuffer(CBuffer* pBuffer)
 {
 	if ( pBuffer->m_nLength < sizeof( ED2K_TCP_HEADER ) ) return NULL;
-	ED2K_TCP_HEADER* pHeader = reinterpret_cast<ED2K_TCP_HEADER*>(pBuffer->m_pBuffer);
+	ED2K_TCP_HEADER* pHeader = reinterpret_cast< ED2K_TCP_HEADER* >( pBuffer->m_pBuffer );
 	if ( pHeader->nProtocol != ED2K_PROTOCOL_EDONKEY &&
 		 pHeader->nProtocol != ED2K_PROTOCOL_EMULE &&
 		 pHeader->nProtocol != ED2K_PROTOCOL_EMULE_PACKED ) return NULL;
@@ -572,7 +572,7 @@ CString CEDPacket::ToASCII() const
 								if ( m_nLength >= 28 )
 								{
 									const DWORD& nUDPFlags = *(const DWORD*)( m_pBuffer + 24 );
-									strOutput.AppendFormat( L", udp flags: %s", GetED2KServerUDPFlags( nUDPFlags ) );
+									strOutput.AppendFormat( L", udp flags: %s", (LPCTSTR)GetED2KServerUDPFlags( nUDPFlags ) );
 									if ( m_nLength >= 32 )
 									{
 										const DWORD& nLowID = *(const DWORD*)( m_pBuffer + 28 );
@@ -598,7 +598,7 @@ CString CEDPacket::ToASCII() const
 					const Hashes::Ed2kHash oMD4( *(const Hashes::Ed2kHash::RawStorage*)( m_pBuffer ) );
 					const IN_ADDR& nID = *(const IN_ADDR*)( m_pBuffer+ Hashes::Ed2kHash::byteCount );
 					const WORD& nPort = *(const WORD*)( m_pBuffer + Hashes::Ed2kHash::byteCount + 4 );
-					strOutput.AppendFormat( L"hash: %s, id: %u, port: %u, tags: %s", oMD4.toString(), nID.s_addr, nPort,
+					strOutput.AppendFormat( L"hash: %s, id: %u, port: %u, tags: %s", (LPCTSTR)oMD4.toString(), nID.s_addr, nPort,
 						(LPCTSTR)CEDTag::ToString( m_pBuffer + Hashes::Ed2kHash::byteCount + 4 + 2, m_nLength - ( Hashes::Ed2kHash::byteCount + 4 + 2 ) ) );
 				}
 				break;
@@ -653,7 +653,7 @@ CString CEDPacket::ToASCII() const
 					const DWORD& nClientID = *(const DWORD*)( m_pBuffer + Hashes::Guid::byteCount );
 					const WORD& nPort = *(const WORD*)( m_pBuffer + Hashes::Guid::byteCount + 4 );
 					strOutput.Format( L"guid: %s, id: %u, port: %u, tags: %s", (LPCTSTR)oGUID.toString(), nClientID, nPort,
-						CEDTag::ToString( m_pBuffer + Hashes::Guid::byteCount + 4 + 2, m_nLength - ( Hashes::Guid::byteCount + 4 + 2 ) ) );
+						(LPCTSTR)CEDTag::ToString( m_pBuffer + Hashes::Guid::byteCount + 4 + 2, m_nLength - ( Hashes::Guid::byteCount + 4 + 2 ) ) );
 				}
 				break;
 
@@ -664,7 +664,7 @@ CString CEDPacket::ToASCII() const
 					const IN_ADDR& nIP = *(const IN_ADDR*)( m_pBuffer + Hashes::Guid::byteCount );
 					const WORD& nPort = *(const WORD*)( m_pBuffer + Hashes::Guid::byteCount + 4 );
 					strOutput.Format( L"guid: %s, address: %s:%u, tags: %s", (LPCTSTR)oGUID.toString(), (LPCTSTR)CString( inet_ntoa( nIP ) ), nPort,
-						CEDTag::ToString( m_pBuffer + Hashes::Guid::byteCount + 4 + 2, m_nLength - ( Hashes::Guid::byteCount + 4 + 2 ) ) );
+						(LPCTSTR)CEDTag::ToString( m_pBuffer + Hashes::Guid::byteCount + 4 + 2, m_nLength - ( Hashes::Guid::byteCount + 4 + 2 ) ) );
 				}
 				break;
 
@@ -716,7 +716,7 @@ CString CEDPacket::ToASCII() const
 					if ( m_nLength >= 8 )
 					{
 						const DWORD& nFlags = *(const DWORD*)( m_pBuffer + 4 );
-						strOutput.AppendFormat( L", tcp flags: %s", GetED2KServerTCPFlags( nFlags ) );
+						strOutput.AppendFormat( L", tcp flags: %s", (LPCTSTR)GetED2KServerTCPFlags( nFlags ) );
 						if ( m_nLength >= 12 )
 						{
 							const DWORD& nTCPPort = *(const DWORD*)( m_pBuffer + 8 );
@@ -759,7 +759,7 @@ CString CEDPacket::ToASCII() const
 						const Hashes::Ed2kHash oMD4( *(const Hashes::Ed2kHash::RawStorage*)( m_pBuffer + 4 ) );
 						const IN_ADDR& nID = *(const IN_ADDR*)( m_pBuffer + 4 + Hashes::Ed2kHash::byteCount );
 						const WORD& nPort = *(const WORD*)( m_pBuffer + 4 + Hashes::Ed2kHash::byteCount + 4 );
-						strOutput.AppendFormat( L" -> hash: %s, id: %u, port: %u, tags: %s%s", oMD4.toString(), nID.s_addr, nPort,
+						strOutput.AppendFormat( L" -> hash: %s, id: %u, port: %u, tags: %s%s", (LPCTSTR)oMD4.toString(), nID.s_addr, nPort,
 							(LPCTSTR)CEDTag::ToString( m_pBuffer + 4 + Hashes::Ed2kHash::byteCount + 4 + 2, m_nLength - ( 4 + Hashes::Ed2kHash::byteCount + 4 + 2 ) ),
 							( nCount > 1 ) ? L"..." : L"" );
 					}
@@ -787,7 +787,7 @@ CString CEDPacket::ToASCII() const
 				if ( m_nLength >= Hashes::Ed2kHash::byteCount )
 				{
 					const Hashes::Ed2kHash oMD4( *(const Hashes::Ed2kHash::RawStorage*)m_pBuffer );
-					strOutput.Format( L"hash: %s", oMD4.toString() );
+					strOutput.Format( L"hash: %s", (LPCTSTR)oMD4.toString() );
 				}
 				break;
 
@@ -812,7 +812,7 @@ CString CEDPacket::ToASCII() const
 					const DWORD& nClientID = *(const DWORD*)( m_pBuffer + 1 + Hashes::Guid::byteCount );
 					const WORD& nPort = *(const WORD*)( m_pBuffer + 1 + Hashes::Guid::byteCount + 4 );
 					strOutput.Format( L"guid: %s, id: %u, port: %u, tags: %s", (LPCTSTR)oGUID.toString(), nClientID, nPort,
-						CEDTag::ToString( m_pBuffer + 1 + Hashes::Guid::byteCount + 4 + 2, m_nLength - ( 1 + Hashes::Guid::byteCount + 4 + 2 ) ) );
+						(LPCTSTR)CEDTag::ToString( m_pBuffer + 1 + Hashes::Guid::byteCount + 4 + 2, m_nLength - ( 1 + Hashes::Guid::byteCount + 4 + 2 ) ) );
 				}
 				break;
 
@@ -824,8 +824,8 @@ CString CEDPacket::ToASCII() const
 					const WORD& nPort = *(const WORD*)( m_pBuffer + Hashes::Guid::byteCount + 4 );
 					const IN_ADDR& nServerIP = *(const IN_ADDR*)( m_pBuffer + m_nLength - 2 - 4 );
 					const WORD& nServerPort = *(const WORD*)( m_pBuffer + m_nLength - 2 );
-					strOutput.Format( L"guid: %s, id: %u, port: %u, tags: %s, server: %s:%u", oGUID.toString(), nClientID, nPort,
-						CEDTag::ToString( m_pBuffer + Hashes::Guid::byteCount + 4 + 2, m_nLength - ( Hashes::Guid::byteCount + 4 + 2 ) ),
+					strOutput.Format( L"guid: %s, id: %u, port: %u, tags: %s, server: %s:%u", (LPCTSTR)oGUID.toString(), nClientID, nPort,
+						(LPCTSTR)CEDTag::ToString( m_pBuffer + Hashes::Guid::byteCount + 4 + 2, m_nLength - ( Hashes::Guid::byteCount + 4 + 2 ) ),
 						(LPCTSTR)CString( inet_ntoa( nServerIP ) ), nServerPort );
 				}
 				break;
@@ -913,7 +913,7 @@ CString CEDPacket::ToASCII() const
 					const BYTE& nVers = *(const BYTE*)( m_pBuffer );
 					const BYTE& nProto = *(const BYTE*)( m_pBuffer + 1 );
 					strOutput.Format( L"version: %u, protocol: %u, tags: %s", nVers, nProto,
-						CEDTag::ToString( m_pBuffer + 1 + 1, m_nLength - ( 1 + 1 ) ) );
+						(LPCTSTR)CEDTag::ToString( m_pBuffer + 1 + 1, m_nLength - ( 1 + 1 ) ) );
 				}
 				break;
 
@@ -950,7 +950,7 @@ CString CEDPacket::ToASCII() const
 				{
 					const Hashes::Ed2kHash oMD4( *(const Hashes::Ed2kHash::RawStorage*)m_pBuffer );
 					const QWORD* offset = (const QWORD*)( m_pBuffer + Hashes::Ed2kHash::byteCount );
-					strOutput.Format( L"hash: %s, offsets: %I64u-%I64u, %I64u-%I64u, %I64u-%I64u", oMD4.toString(), offset[0], offset[3], offset[1], offset[4], offset[2], offset[5] );
+					strOutput.Format( L"hash: %s, offsets: %I64u-%I64u, %I64u-%I64u, %I64u-%I64u", (LPCTSTR)oMD4.toString(), offset[0], offset[3], offset[1], offset[4], offset[2], offset[5] );
 				}
 				break;
 

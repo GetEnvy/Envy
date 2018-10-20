@@ -1,8 +1,8 @@
 //
 // CtrlLibraryFileView.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2007
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -147,7 +147,7 @@ CLibraryFileView::CLibraryFileView()
 
 CLibraryFileView::~CLibraryFileView()
 {
-	for ( POSITION pos = m_pServiceDataPages.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pServiceDataPages.GetHeadPosition(); pos; )
 	{
 		delete m_pServiceDataPages.GetNext( pos );
 	}
@@ -460,7 +460,7 @@ void CLibraryFileView::OnLibraryDelete()
 
 		if ( m_bGhostFolder )
 		{
-			for ( INT_PTR nProcess = pList->GetCount() ; nProcess > 0 && pList->GetCount() > 0 ; nProcess-- )
+			for ( INT_PTR nProcess = pList->GetCount(); nProcess > 0 && pList->GetCount() > 0; nProcess-- )
 			{
 				if ( ( pFile = Library.LookupFile( pList->RemoveHead() ) ) != NULL )
 					pFile->Delete( TRUE );
@@ -482,7 +482,7 @@ void CLibraryFileView::OnLibraryDelete()
 			pTransfersLock.Lock();
 			pLibraryLock.Lock();
 
-			for ( INT_PTR nProcess = dlg.m_bAll ? pList->GetCount() : 1 ; nProcess > 0 && pList->GetCount() > 0 ; nProcess-- )
+			for ( INT_PTR nProcess = dlg.m_bAll ? pList->GetCount() : 1; nProcess > 0 && pList->GetCount() > 0; nProcess-- )
 			{
 				if ( ( pFile = Library.LookupFile( pList->RemoveHead(), FALSE, TRUE ) ) != NULL )
 				{
@@ -683,7 +683,7 @@ void CLibraryFileView::OnLibraryProperties()
 	//{
 	//	// Convert path string list to PIDL list
 	//	auto_array< PIDLIST_ABSOLUTE > pShellFileAbs( new PIDLIST_ABSOLUTE [ oFiles.GetCount() ] );
-	//	for ( int i = 0 ; i < oFiles.GetCount() ; ++i )
+	//	for ( int i = 0; i < oFiles.GetCount(); ++i )
 	//	  pShellFileAbs[ i ] = ILCreateFromPath( oFiles.GetHead() );
 	//
 	//	PIDLIST_ABSOLUTE pShellParent = ILCloneFull( pShellFileAbs[ 0 ] );
@@ -691,7 +691,7 @@ void CLibraryFileView::OnLibraryProperties()
 	//
 	//	auto_array< LPCITEMIDLIST > pShellFiles( new LPCITEMIDLIST [ oFiles.GetCount() ] );
 	//	POSITION pos = oFiles.GetHeadPosition();
-	//	for ( int i = 0 ; i < oFiles.GetCount() ; ++i )
+	//	for ( int i = 0; i < oFiles.GetCount(); ++i )
 	//		pShellFiles[ i ] = ILFindChild( pShellParent, pShellFileAbs[ i ] );
 	//
 	//	hr = CIDLData_CreateFromIDArray( pShellParent, oFiles.GetCount(),
@@ -699,7 +699,7 @@ void CLibraryFileView::OnLibraryProperties()
 	//
 	//	ILFree( pShellParent );
 	//
-	//	for ( int i = 0 ; i < oFiles.GetCount() ; ++i )
+	//	for ( int i = 0; i < oFiles.GetCount(); ++i )
 	//		ILFree( (LPITEMIDLIST)pShellFileAbs[ i ] );
 	//}
 	//if ( SUCCEEDED( hr ) )
@@ -882,7 +882,7 @@ void CLibraryFileView::OnSearchForSeries()
 
 void CLibraryFileView::ClearServicePages()
 {
-	for ( POSITION pos = m_pServiceDataPages.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pServiceDataPages.GetHeadPosition(); pos; )
 	{
 		delete m_pServiceDataPages.GetNext( pos );
 	}

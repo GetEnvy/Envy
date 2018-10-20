@@ -1,7 +1,7 @@
 //
 // BENode.cpp
 //
-// This file is part of Torrent Envy (getenvy.com) © 2016
+// This file is part of Torrent Envy (getenvy.com) © 2016-2018
 // Portions copyright PeerProject 2008,2014 and Shareaza 2007
 //
 // Envy is free software; you can redistribute it
@@ -10,8 +10,8 @@
 // either version 3 of the License, or later version (at your option).
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU General Public License for more details.
 // (http://www.gnu.org/licenses/gpl.html)
 //
@@ -74,13 +74,13 @@ void CBENode::Clear()
 		else if ( m_nType == beList )
 		{
 			CBENode** pNode = (CBENode**)m_pValue;
-			for ( ; m_nValue-- ; pNode++ ) delete *pNode;
+			for ( ; m_nValue--; pNode++ ) delete *pNode;
 			delete [] (CBENode**)m_pValue;
 		}
 		else if ( m_nType == beDict )
 		{
 			CBENode** pNode = (CBENode**)m_pValue;
-			for ( ; m_nValue-- ; pNode++ )
+			for ( ; m_nValue--; pNode++ )
 			{
 				delete *pNode++;
 				delete [] (LPBYTE)*pNode;
@@ -198,7 +198,7 @@ CBENode* CBENode::GetNode(LPCSTR pszKey) const
 
 	CBENode** pNode = (CBENode**)m_pValue;
 
-	for ( DWORD nNode = (DWORD)m_nValue ; nNode ; nNode--, pNode += 2 )
+	for ( DWORD nNode = (DWORD)m_nValue; nNode; nNode--, pNode += 2 )
 	{
 		if ( strcmp( pszKey, (LPCSTR)pNode[1] ) == 0 ) return *pNode;
 	}
@@ -212,7 +212,7 @@ CBENode* CBENode::GetNode(const LPBYTE pKey, int nKey) const
 
 	CBENode** pNode = (CBENode**)m_pValue;
 
-	for ( DWORD nNode = (DWORD)m_nValue ; nNode ; nNode--, pNode += 2 )
+	for ( DWORD nNode = (DWORD)m_nValue; nNode; nNode--, pNode += 2 )
 	{
 		if ( memcmp( pKey, (LPBYTE)pNode[1], nKey ) == 0 ) return *pNode;
 	}
@@ -279,7 +279,7 @@ void CBENode::Encode(CBuffer* pBuffer) const
 
 		pBuffer->Print( "l" );
 
-		for ( DWORD nItem = 0 ; nItem < (DWORD)m_nValue ; nItem++, pNode++ )
+		for ( DWORD nItem = 0; nItem < (DWORD)m_nValue; nItem++, pNode++ )
 		{
 			(*pNode)->Encode( pBuffer );
 		}
@@ -292,7 +292,7 @@ void CBENode::Encode(CBuffer* pBuffer) const
 
 		pBuffer->Print( "d" );
 
-		for ( DWORD nItem = 0 ; nItem < m_nValue ; nItem++, pNode += 2 )
+		for ( DWORD nItem = 0; nItem < m_nValue; nItem++, pNode += 2 )
 		{
 			LPCSTR pszKey = (LPCSTR)pNode[1];
 			size_t nKeyLength = strlen( pszKey );

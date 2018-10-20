@@ -2,7 +2,7 @@
 // StdAfx.h
 //
 // This file is part of Envy (getenvy.com) © 2016-2018
-// Portions copyright PeerProject 2008-2016 and Shareaza 2002-2008
+// Portions copyright Shareaza 2002-2008 and PeerProject 2008-2016
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -90,6 +90,8 @@
 #pragma warning ( disable : 4770 )		// (Level 4)	partially validated enum used as index (VS2013+)
 #pragma warning ( disable : 4820 )		// (Level 4)	'bytes' bytes padding added after construct 'member_name'
 
+#pragma warning ( disable : 5045 )		//				Compiler will insert Spectre mitigation for memory load if /Qspectre switch specified
+
 // For detecting Memory Leaks
 //#ifdef _DEBUG
 //#define _CRTDBG_MAP_ALLOC
@@ -147,6 +149,7 @@
 #endif
 
 #define _ATL_NO_COM_SUPPORT
+#define _ATL_CSTRING_NO_CRT
 #define _ATL_CSTRING_EXPLICIT_CONSTRUCTORS
 
 // Smaller filesize VS2012+
@@ -185,6 +188,7 @@
 // ATL
 //
 
+//#include <atlcoll.h>			// Collection classes (CAtlList<>, CAtlMap<>) (for CStringIList)
 #include <atlfile.h>			// Thin file classes
 #include <atltime.h>			// Time classes
 #include <atlsafe.h>			// CComSafeArray class
@@ -290,7 +294,7 @@ using namespace std::tr1::placeholders;
 	#ifdef _STATIC_ASSERT( expr )			// VS2008
 		#define static_assert( expr, text ) _STATIC_ASSERT( expr )
 	#else
-		#define static_assert( expr, text ) ;
+		#define static_assert( expr, text );
 	#endif
 #endif
 
@@ -342,6 +346,10 @@ using augment::IUnknownImplementation;	// For UPnPFinder
 
 //typedef CString StringType;			// Previously for <Hashes>
 
+// Case insensitive string to string map/list
+//typedef CAtlMap< CString, CString, CStringElementTraitsI<CString> > CStringIMap;
+//typedef CAtlList< CString, CStringElementTraitsI< CString > > CStringIList;
+
 //! \brief Hash function needed for CMap with const CString& as ARG_KEY.
 //template<>
 //AFX_INLINE UINT AFXAPI HashKey(const CString& key)
@@ -354,7 +362,7 @@ AFX_INLINE UINT AFXAPI HashKey(const CStringW& key)
 {
 	UINT nHash = 0;
 	const wchar_t* pszKey = key;
-	for ( int nSize = key.GetLength() ; nSize ; ++pszKey, --nSize )
+	for ( int nSize = key.GetLength(); nSize; ++pszKey, --nSize )
 	{
 		nHash = ( nHash << 5 ) + nHash + *pszKey;
 	}
@@ -366,7 +374,7 @@ AFX_INLINE UINT AFXAPI HashKey(const CStringA& key)
 {
 	UINT nHash = 0;
 	const char* pszKey = key;
-	for ( int nSize = key.GetLength() ; nSize ; ++pszKey, --nSize )
+	for ( int nSize = key.GetLength(); nSize; ++pszKey, --nSize )
 	{
 		nHash = ( nHash << 5 ) + nHash + *pszKey;
 	}
@@ -910,7 +918,7 @@ public:
 
 		// Calculate average
 		T sum = 0;
-		for ( CAverageList::const_iterator i = m_Data.begin() ; i != m_Data.end() ; ++i )
+		for ( CAverageList::const_iterator i = m_Data.begin(); i != m_Data.end(); ++i )
 			sum += (*i).first;
 		return sum / (T)m_Data.size();
 	}
@@ -978,7 +986,7 @@ inline bool IsFileNewerThan(LPCTSTR pszFile, const QWORD nMilliseconds)
 inline QWORD GetFileSize(LPCTSTR pszFile)
 {
 	WIN32_FILE_ATTRIBUTE_DATA fd = {};
-	if ( GetFileAttributesEx( pszFile, GetFileExInfoStandard, &fd ) )
+	if ( pszFile && pszFile[ 0 ] && GetFileAttributesEx( ( _tcslen( pszFile ) > 255 && pszFile[ 0 ] != _T('\\') ) ? ( CString( L"\\\\?\\" ) + pszFile ) : pszFile, GetFileExInfoStandard, &fd ) )
 		return MAKEQWORD( fd.nFileSizeLow, fd.nFileSizeHigh );
 
 	return SIZE_UNKNOWN;

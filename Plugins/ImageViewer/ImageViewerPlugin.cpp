@@ -1,7 +1,7 @@
 //
 // ImageViewerPlugin.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
+// This file is part of Envy (getenvy.com) © 2016-2018
 // Portions copyright PeerProject 2008-2012
 //
 // Original author Michael Stokes released portions into the public domain.
@@ -314,7 +314,7 @@ BOOL CImageViewerPlugin::OpenNewWindow(LPCTSTR pszFilePath)
 	// First, check through the linked list of CImageWindow windows, to see if the file is already open.
 
 	CImageWindow* pWindow;
-	for ( pWindow = m_pWindow ; pWindow ; pWindow = pWindow->m_pNext )
+	for ( pWindow = m_pWindow; pWindow; pWindow = pWindow->m_pNext )
 	{
 		if ( pWindow->m_sFile.CompareNoCase( pszFilePath ) == 0 )
 			break;	// Got a match, break out of the loop.
@@ -353,7 +353,7 @@ void CImageViewerPlugin::RemoveWindow(CImageWindow* pWindow)
 
 	// Search through the linked list of CImageWindow objects, and remove the one being closed.
 
-	for ( CImageWindow* pSeek = *ppPrev ; pSeek ; pSeek = pSeek->m_pNext )
+	for ( CImageWindow* pSeek = *ppPrev; pSeek; pSeek = pSeek->m_pNext )
 	{
 		if ( pWindow == pSeek )
 		{

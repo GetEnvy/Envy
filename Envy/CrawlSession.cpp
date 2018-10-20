@@ -1,8 +1,8 @@
 //
 // CrawlSession.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2007
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -53,7 +53,7 @@ CCrawlSession::~CCrawlSession()
 
 void CCrawlSession::Clear()
 {
-	for ( POSITION pos = m_pNodes.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pNodes.GetHeadPosition(); pos; )
 	{
 		delete m_pNodes.GetNext( pos );
 	}
@@ -68,15 +68,11 @@ void CCrawlSession::Bootstrap()
 {
 	CQuickLock oLock( Network.m_pSection );
 
-	for ( POSITION pos = Neighbours.GetIterator() ; pos ; )
+	for ( POSITION pos = Neighbours.GetIterator(); pos; )
 	{
 		CNeighbour* pNeighbour = Neighbours.GetNext( pos );
-
-		if ( pNeighbour->m_nNodeType != ntLeaf &&
-			 pNeighbour->m_nProtocol == PROTOCOL_G2 )
-		{
+		if ( pNeighbour->m_nNodeType != ntLeaf && pNeighbour->m_nProtocol == PROTOCOL_G2 )
 			SendCrawl( &pNeighbour->m_pHost );
-		}
 	}
 }
 
@@ -101,7 +97,7 @@ int CCrawlSession::GetHubCount()
 {
 	int nCount = 0;
 
-	for ( POSITION pos = m_pNodes.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pNodes.GetHeadPosition(); pos; )
 	{
 		CCrawlNode* pNode = m_pNodes.GetNext( pos );
 		if ( pNode->m_nType == CCrawlNode::ntHub ) nCount ++;
@@ -114,7 +110,7 @@ int CCrawlSession::GetLeafCount()
 {
 	int nCount = 0;
 
-	for ( POSITION pos = m_pNodes.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pNodes.GetHeadPosition(); pos; )
 	{
 		CCrawlNode* pNode = m_pNodes.GetNext( pos );
 		if ( pNode->m_nType == CCrawlNode::ntLeaf ) nCount ++;
@@ -132,7 +128,7 @@ void CCrawlSession::OnRun()
 
 	const DWORD tNow = static_cast< DWORD >( time( NULL ) );
 
-	for ( POSITION pos = m_pNodes.GetTailPosition() ; pos ; )
+	for ( POSITION pos = m_pNodes.GetTailPosition(); pos; )
 	{
 		CCrawlNode* pNode = m_pNodes.GetPrev( pos );
 
@@ -168,7 +164,7 @@ void CCrawlSession::OnCrawl(const SOCKADDR_IN* pHost, CG2Packet* pPacket)
 
 CCrawlNode* CCrawlSession::Find(const IN_ADDR* pAddress, BOOL bCreate)
 {
-	for ( POSITION pos = m_pNodes.GetTailPosition() ; pos ; )
+	for ( POSITION pos = m_pNodes.GetTailPosition(); pos; )
 	{
 		CCrawlNode* pNode = m_pNodes.GetPrev( pos );
 

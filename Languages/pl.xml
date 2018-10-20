@@ -3,7 +3,7 @@
 
 <!-- Envy Default Polish Skin File -->
 
-<!-- Translation based on default en.xml r21 -->
+<!-- Translation based on default en.xml r22 -->
 <!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -15,7 +15,7 @@
 <manifest
 	name="Polski"
 	author="Brov, michalg17, Xzbeat"
-	updatedBy="Xzbeat"
+	updatedby="Xzbeat"
 	description="Envy Default Polish Skin File"
 	link="myservice.pl"
 	email="Xzbeat(at)gmail.com"
@@ -3039,7 +3039,7 @@
 	<string id="20795" text="%s do : %s z (Pob:%I64i/Wys:%I64i/Z:%I64i)"/>
 	<string id="20796" text="Files shared over the Internet"/>
 	<string id="20798" text="Envy zakończyła pobieranie następnej wersji programu (%s). Czy chciałbyś upgradeować teraz?\n\nJeżeli wybierzesz tak, Envy chwilowo zamknie się na czas instalacji aktualizacji."/>
-	<string id="20811" text="Wysyłania eDonkey nie powinny być anulowane. Czy jesteś pewien, że chcesz anulować to wysyłanie?"/>
+	<string id="20861" text="Wysyłania eDonkey nie powinny być anulowane. Czy jesteś pewien, że chcesz anulować to wysyłanie?"/>
 	<string id="20841" text="Nowa kolejka"/>
 	<string id="20842" text="Wszystkie pliki"/>
 	<string id="20843" text="DC++ Guard"/>
@@ -3056,12 +3056,12 @@
 	<string id="20854" text="Częściowe"/>
 	<string id="20855" text="Kolejka"/>
 	<string id="20856" text="Wysyłania Torrent"/>
-	<string id="20862" text="Dodaj"/>
-	<string id="20864" text="&amp;Przeglądaj"/>
-	<string id="20865" text="&amp;Połącz"/>
-	<string id="20866" text="Nazwa pliku:"/>
-	<string id="20867" text="Host:"/>
-	<string id="20868" text="Port:"/>
+	<string id="20864" text="Dodaj"/>
+	<string id="20865" text="&amp;Przeglądaj"/>
+	<string id="20866" text="&amp;Połącz"/>
+	<string id="20867" text="Nazwa pliku:"/>
+	<string id="20868" text="Host:"/>
+	<string id="20869" text="Port:"/>
 	<string id="20870" text="Unable to parse URL: Envy does not understand this URL."/>
 	<string id="20871" text="Received URL &quot;%s&quot;"/>
 	<string id="20872" text="Typ:"/>

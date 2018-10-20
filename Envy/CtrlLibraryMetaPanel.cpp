@@ -1,8 +1,8 @@
 //
 // CtrlLibraryMetaPanel.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2008
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2008 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -32,7 +32,6 @@
 #include "ShellIcons.h"
 #include "Skin.h"
 #include "ThumbCache.h"
-#include "ImageServices.h"
 #include "ImageFile.h"
 #include "FileExecutor.h"
 #include "DlgFilePropertiesSheet.h"
@@ -127,7 +126,7 @@ void CLibraryMetaPanel::Update()
 		m_nIcon48	= ShellIcons.Get( pFirst->GetPath(), 48 );
 		m_nRating	= 0;
 
-		for ( POSITION pos = pSel->GetHeadPosition() ; pos ; )
+		for ( POSITION pos = pSel->GetHeadPosition(); pos; )
 		{
 			CLibraryFile* pFile = Library.LookupFile( pSel->GetNext( pos ) );
 			if ( pFile == NULL ) continue;
@@ -152,7 +151,7 @@ void CLibraryMetaPanel::Update()
 
 	if ( pSel )
 	{
-		for ( POSITION pos = pSel->GetHeadPosition() ; pos ; )
+		for ( POSITION pos = pSel->GetHeadPosition(); pos; )
 		{
 			const CLibraryListItem& pItem = pSel->GetNext( pos );
 			if ( pItem.Type != CLibraryListItem::LibraryFile ) continue;
@@ -173,7 +172,7 @@ void CLibraryMetaPanel::Update()
 
 		if ( m_pSchema && pSel )
 		{
-			for ( POSITION pos = pSel->GetHeadPosition() ; pos ; )
+			for ( POSITION pos = pSel->GetHeadPosition(); pos; )
 			{
 				const CLibraryListItem& pItem = pSel->GetNext( pos );
 				if ( pItem.Type != CLibraryListItem::LibraryFile ) continue;
@@ -298,7 +297,7 @@ void CLibraryMetaPanel::OnPaint()
 		CPoint ptStar( rcWork.right - 3, rcWork.top - 2 );
 		m_rcRating.SetRectEmpty();
 
-		for ( int nRating = m_nRating - 1 ; nRating ; nRating-- )
+		for ( int nRating = m_nRating - 1; nRating; nRating-- )
 		{
 			ptStar.x -= 16;
 			CoolInterface.Draw( &dc, IDI_STAR, 16, ptStar.x, ptStar.y, Colors.m_crWindow );

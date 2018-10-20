@@ -1,8 +1,8 @@
 //
 // ShellIcons.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2015 and Shareaza 2002-2008
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2008 and PeerProject 2008-2015
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -38,6 +38,7 @@ CShellIcons::CShellIcons()
 {
 	// Experimental values
 	m_m16.InitHashTable( 31 );
+//	m_m24.InitHashTable( 31 );
 	m_m32.InitHashTable( 31 );
 	m_m48.InitHashTable( 31 );
 	m_MIME.InitHashTable( 31 );
@@ -56,18 +57,24 @@ void CShellIcons::Clear()
 	CQuickLock oLock( m_pSection );
 
 	m_m16.RemoveAll();
+//	m_m24.RemoveAll();
 	m_m32.RemoveAll();
 	m_m48.RemoveAll();
 	m_MIME.RemoveAll();
 	m_Name.RemoveAll();
 
 	if ( m_i16.m_hImageList ) m_i16.DeleteImageList();
+//	if ( m_i24.m_hImageList ) m_i24.DeleteImageList();
 	if ( m_i32.m_hImageList ) m_i32.DeleteImageList();
 	if ( m_i48.m_hImageList ) m_i48.DeleteImageList();
 
 	m_i16.Create( 16, 16, ILC_COLOR32|ILC_MASK, 0, 16 ) ||
 	m_i16.Create( 16, 16, ILC_COLOR24|ILC_MASK, 0, 16 ) ||
 	m_i16.Create( 16, 16, ILC_COLOR16|ILC_MASK, 0, 16 );
+
+//	m_i24.Create( 24, 24, ILC_COLOR32|ILC_MASK, 0, 16 ) ||
+//	m_i24.Create( 24, 24, ILC_COLOR24|ILC_MASK, 0, 16 ) ||
+//	m_i24.Create( 24, 24, ILC_COLOR16|ILC_MASK, 0, 16 );
 
 	m_i32.Create( 32, 32, ILC_COLOR32|ILC_MASK, 0, 16 ) ||
 	m_i32.Create( 32, 32, ILC_COLOR24|ILC_MASK, 0, 16 ) ||
@@ -132,6 +139,11 @@ int CShellIcons::Get(LPCTSTR pszFile, int nSize)
 		pImage = &m_i16;
 		pIndex = &m_m16;
 		break;
+
+	//case 24:
+	//	pImage = &m_i24;
+	//	pIndex = &m_m24;
+	//	break;
 
 	case 32:
 		pImage = &m_i32;
@@ -266,6 +278,8 @@ int CShellIcons::Add(HICON hIcon, int nSize)
 	{
 	case 16:
 		return m_i16.Add( hIcon );
+//	case 24:
+//		return m_i24.Add( hIcon );
 	case 32:
 		return m_i32.Add( hIcon );
 	case 48:
@@ -289,6 +303,9 @@ HICON CShellIcons::ExtractIcon(int nIndex, int nSize)
 	case 16:
 		hIcon = m_i16.ExtractIcon( nIndex );
 		break;
+//	case 24:
+//		hIcon = m_i24.ExtractIcon( nIndex );
+//		break;
 	case 32:
 		hIcon = m_i32.ExtractIcon( nIndex );
 		break;

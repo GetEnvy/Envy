@@ -1,8 +1,8 @@
 //
 // WizardSharePage.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2007
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -92,7 +92,7 @@ BOOL CWizardSharePage::OnInitDialog()
 	{
 		CQuickLock oLock( Library.m_pSection );
 
-		for ( POSITION pos = LibraryFolders.GetFolderIterator() ; pos ; )
+		for ( POSITION pos = LibraryFolders.GetFolderIterator(); pos; )
 		{
 			CLibraryFolder* pFolder = LibraryFolders.GetNextFolder( pos );
 
@@ -164,7 +164,7 @@ void CWizardSharePage::AddPhysicalFolder(LPCTSTR pszFolder)
 	if ( nFlags == 0xFFFFFFFF ) return;
 	if ( ( nFlags & FILE_ATTRIBUTE_DIRECTORY ) == 0 ) return;
 
-	for ( int nItem = 0 ; nItem < m_wndList.GetItemCount() ; nItem++ )
+	for ( int nItem = 0; nItem < m_wndList.GetItemCount(); nItem++ )
 	{
 		if ( m_wndList.GetItemText( nItem, 0 ).CompareNoCase( pszFolder ) == 0 ) return;
 	}
@@ -214,7 +214,7 @@ void CWizardSharePage::OnShareAdd()
 
 void CWizardSharePage::OnShareRemove()
 {
-	for ( int nItem = 0 ; nItem < m_wndList.GetItemCount() ; nItem++ )
+	for ( int nItem = 0; nItem < m_wndList.GetItemCount(); nItem++ )
 	{
 		if ( m_wndList.GetItemState( nItem, LVIS_SELECTED ) )
 			m_wndList.DeleteItem( nItem-- );
@@ -226,7 +226,7 @@ void CWizardSharePage::OnDoubleClick(NMHDR* /*pNMHDR*/, LRESULT* pResult)
 	*pResult = 0;
 
 	// Toggle checkmarks (newly selected items at second click)
-	for ( int nItem = 0 ; nItem < m_wndList.GetItemCount() ; nItem++ )
+	for ( int nItem = 0; nItem < m_wndList.GetItemCount(); nItem++ )
 	{
 		if ( m_wndList.GetItemState( nItem, LVIS_SELECTED ) )
 			m_wndList.SetItemState( nItem, UINT( ( m_wndList.GetCheck(nItem) ? 1 : 2 ) << 12 ), LVIS_STATEIMAGEMASK );
@@ -246,12 +246,12 @@ LRESULT CWizardSharePage::OnWizardNext()
 	{
 		CQuickLock oLock( Library.m_pSection );
 
-		for ( POSITION pos = LibraryFolders.GetFolderIterator() ; pos ; )
+		for ( POSITION pos = LibraryFolders.GetFolderIterator(); pos; )
 		{
 			CLibraryFolder* pFolder = LibraryFolders.GetNextFolder( pos );
 
 			int nItem = 0;
-			for ( ; nItem < m_wndList.GetItemCount() ; nItem++ )
+			for ( ; nItem < m_wndList.GetItemCount(); nItem++ )
 			{
 				CString strFolder = m_wndList.GetItemText( nItem, 0 );
 				if ( strFolder.CompareNoCase( pFolder->m_sPath ) == 0 )
@@ -268,7 +268,7 @@ LRESULT CWizardSharePage::OnWizardNext()
 				LibraryFolders.RemoveFolder( pFolder );
 		}
 
-		for ( int nItem = 0 ; nItem < m_wndList.GetItemCount() ; nItem++ )
+		for ( int nItem = 0; nItem < m_wndList.GetItemCount(); nItem++ )
 		{
 			LibraryFolders.AddFolder( m_wndList.GetItemText( nItem, 0 ), m_wndList.GetCheck( nItem ) );
 		}

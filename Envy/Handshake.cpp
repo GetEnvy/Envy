@@ -1,8 +1,8 @@
 //
 // Handshake.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2007
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -307,7 +307,7 @@ BOOL CHandshake::OnAcceptPush()
 
 	// Read the 16 hexadecimal digits of the GUID, copying it into pGUID
 	Hashes::Guid oGUID;
-	for ( int nByte = 0 ; nByte < 16 ; nByte++ )
+	for ( int nByte = 0; nByte < 16; nByte++ )
 	{
 		int nValue;
 		if ( _stscanf( strLine.Mid( 10 + nByte * 2, 2 ), L"%X", &nValue ) != 1 )
@@ -380,7 +380,7 @@ BOOL CHandshake::OnAcceptGive()
 
 	// The client id text is a 16-byte guid written in 32 characters with text like "00" through "ff" for each byte, read it into pClientID
 	Hashes::Guid oGUID;
-	for ( int nByte = 0 ; nByte < 16 ; nByte++ )
+	for ( int nByte = 0; nByte < 16; nByte++ )
 	{
 		// Convert one set of characters like "00" or "ff" into that byte in pClientID
 		if ( _stscanf( strClient.Mid( nByte * 2, 2 ), L"%X", &nPos ) != 1 )

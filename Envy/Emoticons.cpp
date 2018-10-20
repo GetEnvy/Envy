@@ -1,8 +1,8 @@
 //
 // Emoticons.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2015 and Shareaza 2002-2007
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2015
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -20,7 +20,6 @@
 #include "Settings.h"
 #include "Envy.h"
 #include "Emoticons.h"
-#include "ImageServices.h"
 #include "ImageFile.h"
 #include "XML.h"
 
@@ -61,7 +60,7 @@ LPCTSTR CEmoticons::FindNext(LPCTSTR pszText, int* pnIndex)
 
 	if ( m_pTokens == NULL ) return NULL;
 
-	for ( LPCTSTR pszToken = m_pTokens ; *pszToken ; nIndex++ )
+	for ( LPCTSTR pszToken = m_pTokens; *pszToken; nIndex++ )
 	{
 		LPCTSTR pszFind = _tcsstr( pszText, pszToken );
 
@@ -97,7 +96,7 @@ int CEmoticons::Lookup(LPCTSTR pszText, int nLen) const
 	}
 
 	LPCTSTR pszToken = m_pTokens;
-	for ( ; *pszToken ; nIndex++ )
+	for ( ; *pszToken; nIndex++ )
 	{
 		if ( _tcscmp( pszToken, pszText ) == 0 )
 			break;
@@ -117,7 +116,7 @@ LPCTSTR CEmoticons::GetText(int nIndex) const
 {
 	if ( m_pTokens == NULL ) return NULL;
 
-	for ( LPCTSTR pszToken = m_pTokens ; *pszToken ; )
+	for ( LPCTSTR pszToken = m_pTokens; *pszToken; )
 	{
 		if ( nIndex-- <= 0 ) return pszToken;
 
@@ -147,7 +146,7 @@ CMenu* CEmoticons::CreateMenu()
 	pMenu->CreatePopupMenu();
 
 	int nCount = 0;
-	for ( int nPos = 0 ; nPos < m_pButtons.GetSize() ; nPos++ )
+	for ( int nPos = 0; nPos < m_pButtons.GetSize(); nPos++ )
 	{
 		int nIndex = m_pButtons.GetAt( nPos );
 
@@ -259,7 +258,7 @@ int CEmoticons::AddEmoticon(LPCTSTR pszText, CImageFile* pImage, CRect* pRect, C
 		pInfo.biCompression	= BI_RGB;
 		pInfo.biSizeImage	= EMOTICON_SIZE * EMOTICON_SIZE * 3;
 
-		for ( int nY = EMOTICON_SIZE - 1 ; nY >= 0 ; nY-- )
+		for ( int nY = EMOTICON_SIZE - 1; nY >= 0; nY-- )
 		{
 			SetDIBits( hDCMem1, bmOriginal, nY, 1, pSource, (BITMAPINFO*)&pInfo, DIB_RGB_COLORS );
 			pSource += nPitch;
@@ -299,7 +298,7 @@ void CEmoticons::BuildTokens()
 {
 	int nLength = 2;
 
-	for ( int nIndex = 0 ; nIndex < m_pIndex.GetSize() ; nIndex++ )
+	for ( int nIndex = 0; nIndex < m_pIndex.GetSize(); nIndex++ )
 	{
 		nLength += m_pIndex.GetAt( nIndex ).GetLength() + 1;
 	}
@@ -308,7 +307,7 @@ void CEmoticons::BuildTokens()
 	m_pTokens = new TCHAR[ nLength ];
 
 	DWORD nStart = 0;
-	for ( int nIndex = 0 ; nIndex < m_pIndex.GetSize() ; nIndex++ )
+	for ( int nIndex = 0; nIndex < m_pIndex.GetSize(); nIndex++ )
 	{
 		_tcscpy_s( &m_pTokens[ nStart ], nLength - nStart, m_pIndex.GetAt( nIndex ) );
 		nStart += m_pIndex.GetAt( nIndex ).GetLength() + 1;
@@ -356,7 +355,7 @@ BOOL CEmoticons::LoadXML(LPCTSTR pszFile)
 
 	COLORREF crBack = RGB( pImage.m_pImage[2], pImage.m_pImage[1], pImage.m_pImage[0] );
 
-	for ( POSITION pos = pXML->GetElementIterator() ; pos ; )
+	for ( POSITION pos = pXML->GetElementIterator(); pos; )
 	{
 		CXMLElement* pEmoticon = pXML->GetNextElement( pos );
 		if ( ! pEmoticon->IsNamed( L"emoticon" ) ) continue;
@@ -397,7 +396,7 @@ void CEmoticons::FormatText(CRichDocument* pDocument, LPCTSTR pszBody, BOOL bNew
 	{
 		LPCTSTR pszToken = _tcschr( pszBody, '[' );
 
-		for ( int nURL = 0 ; pszURLs[ nURL ] != NULL ; nURL++ )
+		for ( int nURL = 0; pszURLs[ nURL ] != NULL; nURL++ )
 		{
 			LPCTSTR pszFind = _tcsistr( pszBody, pszURLs[ nURL ] );
 			if ( pszFind != NULL && ( pszToken == NULL || pszFind < pszToken ) ) pszToken = pszFind;
@@ -452,7 +451,7 @@ void CEmoticons::FormatText(CRichDocument* pDocument, LPCTSTR pszBody, BOOL bNew
 		}
 		else if ( *pszBody != '[' )
 		{
-			for ( ; *pszToken ; pszToken++ )
+			for ( ; *pszToken; pszToken++ )
 			{
 				if ( ! _istalnum( *pszToken ) &&
 					_tcschr( L":@/?=&%._-+;~#", *pszToken ) == NULL )

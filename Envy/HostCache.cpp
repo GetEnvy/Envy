@@ -1,8 +1,8 @@
 //
 // HostCache.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2017
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2008
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2008 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -65,7 +65,7 @@ CHostCache::CHostCache()
 
 void CHostCache::Clear()
 {
-	for ( POSITION pos = m_pList.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pList.GetHeadPosition(); pos; )
 	{
 		CHostCacheList* pCache = m_pList.GetNext( pos );
 		pCache->Clear();
@@ -121,7 +121,7 @@ BOOL CHostCache::Load()
 	if ( DC.IsEmpty() )			CheckMinimumServers( PROTOCOL_DC );
 
 	if ( ! bResult )
-		theApp.Message( MSG_ERROR, L"Failed to load host cache: %s", strFile );
+		theApp.Message( MSG_ERROR, L"Failed to load host cache: %s", (LPCTSTR)strFile );
 
 	return bResult;
 }
@@ -135,7 +135,7 @@ BOOL CHostCache::Save()
 	if ( ! pFile.Open( strTemp, CFile::modeWrite | CFile::modeCreate | CFile::shareExclusive | CFile::osSequentialScan ) )
 	{
 		DeleteFile( strTemp );
-		theApp.Message( MSG_ERROR, L"Failed to save host cache: %s", strTemp );
+		theApp.Message( MSG_ERROR, L"Failed to save host cache: %s", (LPCTSTR)strTemp );
 		return FALSE;
 	}
 
@@ -155,7 +155,7 @@ BOOL CHostCache::Save()
 			pFile.Abort();
 			pException->Delete();
 			DeleteFile( strTemp );
-			theApp.Message( MSG_ERROR, L"Failed to save host cache: %s", strTemp );
+			theApp.Message( MSG_ERROR, L"Failed to save host cache: %s", (LPCTSTR)strTemp );
 			return FALSE;
 		}
 		pFile.Close();
@@ -165,14 +165,14 @@ BOOL CHostCache::Save()
 		pFile.Abort();
 		pException->Delete();
 		DeleteFile( strTemp );
-		theApp.Message( MSG_ERROR, L"Failed to save host cache: %s", strTemp );
+		theApp.Message( MSG_ERROR, L"Failed to save host cache: %s", (LPCTSTR)strTemp );
 		return FALSE;
 	}
 
 	if ( ! MoveFileEx( strTemp, strFile, MOVEFILE_COPY_ALLOWED | MOVEFILE_REPLACE_EXISTING ) )
 	{
 		DeleteFile( strTemp );
-		theApp.Message( MSG_ERROR, L"Failed to save host cache: %s", strFile );
+		theApp.Message( MSG_ERROR, L"Failed to save host cache: %s", (LPCTSTR)strFile );
 		return FALSE;
 	}
 
@@ -184,13 +184,13 @@ BOOL CHostCache::Save()
 #define HOSTCACHE_SER_VERSION 1
 
 // nVersion History:
-// 14 - Added m_sCountry
-// 15 - Added m_bDHT and m_oBtGUID (Ryo-oh-ki)
-// 16 - Added m_nUDPPort, m_oGUID and m_nKADVersion (Ryo-oh-ki)
-// 17 - Added m_tConnect (Ryo-oh-ki)
-// 18 - Added m_sUser and m_sPass (Ryo-oh-ki)
-// 19 - Added m_sAddress (Ryo-oh-ki)
-// 1000 - Removed m_bDHT
+// 14 - Add m_sCountry
+// 15 - Add m_bDHT and m_oBtGUID (Ryo-oh-ki)
+// 16 - Add m_nUDPPort, m_oGUID and m_nKADVersion (Ryo-oh-ki)
+// 17 - Add m_tConnect (Ryo-oh-ki)
+// 18 - Add m_sUser and m_sPass (Ryo-oh-ki)
+// 19 - Add m_sAddress (Ryo-oh-ki)
+// 1000 - Remove m_bDHT
 // 1 - (Envy 1.0)
 
 void CHostCache::Serialize(CArchive& ar)
@@ -202,7 +202,7 @@ void CHostCache::Serialize(CArchive& ar)
 		ar << nVersion;
 		ar.WriteCount( m_pList.GetCount() );
 
-		for ( POSITION pos = m_pList.GetHeadPosition() ; pos ; )
+		for ( POSITION pos = m_pList.GetHeadPosition(); pos; )
 		{
 			CHostCacheList* pCache = m_pList.GetNext( pos );
 			ar << pCache->m_nProtocol;
@@ -215,12 +215,12 @@ void CHostCache::Serialize(CArchive& ar)
 		if ( nVersion > INTERNAL_VERSION && nVersion != 1000 )
 			AfxThrowUserException();
 
-		for ( DWORD_PTR nCount = ar.ReadCount() ; nCount > 0 ; nCount-- )
+		for ( DWORD_PTR nCount = ar.ReadCount(); nCount > 0; nCount-- )
 		{
 			PROTOCOLID nProtocol;
 			ar >> nProtocol;
 
-			for ( POSITION pos = m_pList.GetHeadPosition() ; pos ; )
+			for ( POSITION pos = m_pList.GetHeadPosition(); pos; )
 			{
 				CHostCacheList* pCache = m_pList.GetNext( pos );
 				if ( pCache->m_nProtocol == nProtocol )
@@ -243,7 +243,7 @@ void CHostCache::PruneOldHosts()
 
 	if ( tNow > tLastPruneTime + 90 )		// Every minute+ (ToDo: Setting?)
 	{
-		for ( POSITION pos = m_pList.GetHeadPosition() ; pos ; )
+		for ( POSITION pos = m_pList.GetHeadPosition(); pos; )
 		{
 			m_pList.GetNext( pos )->PruneOldHosts( tNow );
 		}
@@ -257,7 +257,7 @@ void CHostCache::PruneOldHosts()
 
 CHostCacheHostPtr CHostCache::Find(const IN_ADDR* pAddress) const
 {
-	for ( POSITION pos = m_pList.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pList.GetHeadPosition(); pos; )
 	{
 		CHostCacheList* pCache = m_pList.GetNext( pos );
 		if ( CHostCacheHostPtr pHost = pCache->Find( pAddress ) )
@@ -268,7 +268,7 @@ CHostCacheHostPtr CHostCache::Find(const IN_ADDR* pAddress) const
 
 CHostCacheHostPtr CHostCache::Find(LPCTSTR szAddress) const
 {
-	for ( POSITION pos = m_pList.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pList.GetHeadPosition(); pos; )
 	{
 		CHostCacheList* pCache = m_pList.GetNext( pos );
 		if ( CHostCacheHostPtr pHost = pCache->Find( szAddress ) )
@@ -279,7 +279,7 @@ CHostCacheHostPtr CHostCache::Find(LPCTSTR szAddress) const
 
 BOOL CHostCache::Check(const CHostCacheHostPtr pHost) const
 {
-	for ( POSITION pos = m_pList.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pList.GetHeadPosition(); pos; )
 	{
 		CHostCacheList* pCache = m_pList.GetNext( pos );
 		if ( pCache->Check( pHost ) )
@@ -290,7 +290,7 @@ BOOL CHostCache::Check(const CHostCacheHostPtr pHost) const
 
 void CHostCache::Remove(CHostCacheHostPtr pHost)
 {
-	for ( POSITION pos = m_pList.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pList.GetHeadPosition(); pos; )
 	{
 		CHostCacheList* pCache = m_pList.GetNext( pos );
 		pCache->Remove( pHost );
@@ -299,7 +299,7 @@ void CHostCache::Remove(CHostCacheHostPtr pHost)
 
 void CHostCache::SanityCheck()
 {
-	for ( POSITION pos = m_pList.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pList.GetHeadPosition(); pos; )
 	{
 		CHostCacheList* pCache = m_pList.GetNext( pos );
 		pCache->SanityCheck();
@@ -308,7 +308,7 @@ void CHostCache::SanityCheck()
 
 void CHostCache::OnResolve(PROTOCOLID nProtocol, LPCTSTR szAddress, const IN_ADDR* pAddress, WORD nPort)
 {
-	for ( POSITION pos = m_pList.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pList.GetHeadPosition(); pos; )
 	{
 		CHostCacheList* pCache = m_pList.GetNext( pos );
 		if ( nProtocol == PROTOCOL_NULL || nProtocol == pCache->m_nProtocol )
@@ -318,7 +318,7 @@ void CHostCache::OnResolve(PROTOCOLID nProtocol, LPCTSTR szAddress, const IN_ADD
 
 void CHostCache::OnFailure(const IN_ADDR* pAddress, WORD nPort, PROTOCOLID nProtocol, bool bRemove)
 {
-	for ( POSITION pos = m_pList.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pList.GetHeadPosition(); pos; )
 	{
 		CHostCacheList* pCache = m_pList.GetNext( pos );
 		if ( nProtocol == PROTOCOL_NULL || nProtocol == pCache->m_nProtocol )
@@ -328,7 +328,7 @@ void CHostCache::OnFailure(const IN_ADDR* pAddress, WORD nPort, PROTOCOLID nProt
 
 void CHostCache::OnSuccess(const IN_ADDR* pAddress, WORD nPort, PROTOCOLID nProtocol, bool bUpdate)
 {
-	for ( POSITION pos = m_pList.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pList.GetHeadPosition(); pos; )
 	{
 		CHostCacheList* pCache = m_pList.GetNext( pos );
 		if ( nProtocol == PROTOCOL_NULL || nProtocol == pCache->m_nProtocol )
@@ -357,7 +357,7 @@ void CHostCacheList::Clear()
 {
 	CQuickLock oLock( m_pSection );
 
-	for ( CHostCacheMapItr i = m_Hosts.begin() ; i != m_Hosts.end() ; ++i )
+	for ( CHostCacheMapItr i = m_Hosts.begin(); i != m_Hosts.end(); ++i )
 	{
 		delete (*i).second;
 	}
@@ -523,7 +523,7 @@ void CHostCacheList::SanityCheck()
 {
 	CQuickLock oLock( m_pSection );
 
-	for ( CHostCacheMapItr i = m_Hosts.begin() ; i != m_Hosts.end() ; )
+	for ( CHostCacheMapItr i = m_Hosts.begin(); i != m_Hosts.end(); )
 	{
 		CHostCacheHostPtr pHost = (*i).second;
 		if ( Security.IsDenied( &pHost->m_pAddress ) ||
@@ -656,7 +656,7 @@ CHostCacheHostPtr CHostCacheList::OnSuccess(const IN_ADDR* pAddress, WORD nPort,
 //{
 //	CQuickLock oLock( m_pSection );
 //	DWORD tNow = static_cast< DWORD >( time( NULL ) );
-//	for ( CHostCacheMap::iterator i = m_Hosts.begin() ; i != m_Hosts.end() ; )
+//	for ( CHostCacheMap::iterator i = m_Hosts.begin(); i != m_Hosts.end(); )
 //	{
 //		bool bRemoved = false;
 //		CHostCacheHostPtr pHost = (*i).second;
@@ -684,7 +684,7 @@ void CHostCacheList::PruneOldHosts(DWORD tNow)
 {
 	CQuickLock oLock( m_pSection );
 
-	for ( CHostCacheMapItr i = m_Hosts.begin() ; i != m_Hosts.end() ; )
+	for ( CHostCacheMapItr i = m_Hosts.begin(); i != m_Hosts.end(); )
 	{
 		CHostCacheHostPtr pHost = (*i).second;
 
@@ -745,8 +745,8 @@ void CHostCacheList::PruneHosts()
 {
 	CQuickLock oLock( m_pSection );
 
-	for ( CHostCacheIndex::iterator i = m_HostsTime.end() ;
-		m_Hosts.size() > Settings.Gnutella.HostCacheSize && i != m_HostsTime.begin() ; )
+	for ( CHostCacheIndex::iterator i = m_HostsTime.end();
+		m_Hosts.size() > Settings.Gnutella.HostCacheSize && i != m_HostsTime.begin(); )
 	{
 		--i;
 		CHostCacheHostPtr pHost = (*i);
@@ -760,8 +760,8 @@ void CHostCacheList::PruneHosts()
 		}
 	}
 
-	for ( CHostCacheIndex::iterator i = m_HostsTime.end() ;
-		m_Hosts.size() > Settings.Gnutella.HostCacheSize && i != m_HostsTime.begin() ; )
+	for ( CHostCacheIndex::iterator i = m_HostsTime.end();
+		m_Hosts.size() > Settings.Gnutella.HostCacheSize && i != m_HostsTime.begin(); )
 	{
 		--i;
 		CHostCacheHostPtr pHost = (*i);
@@ -785,7 +785,7 @@ void CHostCacheList::Serialize(CArchive& ar, int nVersion)
 	if ( ar.IsStoring() )
 	{
 		ar.WriteCount( GetCount() );
-		for ( CHostCacheMapItr i = m_Hosts.begin() ; i != m_Hosts.end() ; ++i )
+		for ( CHostCacheMapItr i = m_Hosts.begin(); i != m_Hosts.end(); ++i )
 		{
 			CHostCacheHostPtr pHost = (*i).second;
 			pHost->Serialize( ar, nVersion );
@@ -794,7 +794,7 @@ void CHostCacheList::Serialize(CArchive& ar, int nVersion)
 	else // Loading
 	{
 		DWORD_PTR nCount = ar.ReadCount();
-		for ( DWORD_PTR nItem = 0 ; nItem < nCount ; nItem++ )
+		for ( DWORD_PTR nItem = 0; nItem < nCount; nItem++ )
 		{
 			CHostCacheHostPtr pHost = new CHostCacheHost( m_nProtocol );
 			if ( pHost )
@@ -852,9 +852,9 @@ int CHostCache::Import(LPCTSTR pszFile, BOOL bFreshOnly)
 	}
 	else if ( _tcsicmp( szExt, L".dat" ) == 0 )
 	{
-		theApp.Message( MSG_NOTICE, L"Importing Nodes file: %s", pszFile );
+		theApp.Message( MSG_NOTICE, L"Importing Kademlia Nodes file: %s", pszFile );
 
-		nImported = ImportNodes( &pFile );
+	//	nImported = ImportNodes( &pFile );	// ToDo: Kademlia
 	}
 //	else if ( _tcsicmp( szExt, L".xml" ) == 0 || _tcsicmp( szExt, L".dat" ) == 0 ) 	// ToDo: G2/Gnutella import/export
 //	{
@@ -905,7 +905,7 @@ int CHostCache::ImportHubList(CFile* pFile)
 		return FALSE;	// Invalid XML file format
 
 	int nHubs = 0;
-	for ( POSITION pos = pHubs->GetElementIterator() ; pos ; )
+	for ( POSITION pos = pHubs->GetElementIterator(); pos; )
 	{
 		CXMLElement* pHub = pHubs->GetNextElement( pos );
 		if ( pHub->IsNamed( L"Hub" ) )
@@ -986,75 +986,70 @@ int CHostCache::ImportMET(CFile* pFile)
 	return nServers;
 }
 
-int CHostCache::ImportNodes(CFile* pFile)
-{
-	int nServers = 0;
-	DWORD nVersion = 0;
-
-	DWORD nCount;
-	if ( pFile->Read( &nCount, sizeof( nCount ) ) != sizeof( nCount ) )
-		return 0;
-	if ( nCount == 0 )
-	{
-		// New format
-		if ( pFile->Read( &nVersion, sizeof( nVersion ) ) != sizeof( nVersion ) )
-			return 0;
-		if ( nVersion == 1 )
-		{
-			if ( pFile->Read( &nCount, sizeof( nCount ) ) != sizeof( nCount ) )
-				return 0;
-		}
-		else
-		{
-			// Unknown format
-			return 0;
-		}
-	}
-	while ( nCount-- > 0 )
-	{
-		Hashes::Guid oGUID;
-		if ( pFile->Read( &oGUID[0], oGUID.byteCount ) != oGUID.byteCount )
-			break;
-		oGUID.validate();
-		IN_ADDR pAddress;
-		if ( pFile->Read( &pAddress, sizeof( pAddress ) ) != sizeof( pAddress ) )
-			break;
-		pAddress.s_addr = ntohl( pAddress.s_addr );
-		WORD nUDPPort;
-		if ( pFile->Read( &nUDPPort, sizeof( nUDPPort ) ) != sizeof( nUDPPort ) )
-			break;
-		WORD nTCPPort;
-		if ( pFile->Read( &nTCPPort, sizeof( nTCPPort ) ) != sizeof( nTCPPort ) )
-			break;
-		BYTE nKADVersion = 0;
-		BYTE nType = 0;
-		if ( nVersion == 1 )
-		{
-			if ( pFile->Read( &nKADVersion, sizeof( nKADVersion ) ) != sizeof( nKADVersion ) )
-				break;
-		}
-		else
-		{
-			if ( pFile->Read( &nType, sizeof( nType ) ) != sizeof( nType ) )
-				break;
-		}
-		if ( nType < 4 )
-		{
-			CQuickLock oLock( Kademlia.m_pSection );
-			CHostCacheHostPtr pCache = Kademlia.Add( &pAddress, nTCPPort );
-			if ( pCache )
-			{
-				pCache->m_oGUID = oGUID;
-				pCache->m_sDescription = oGUID.toString();
-				pCache->m_nUDPPort = nUDPPort;
-				pCache->m_nKADVersion = nKADVersion;
-				nServers++;
-			}
-		}
-	}
-
-	return nServers;
-}
+// ToDo: Kademlia
+//int CHostCache::ImportNodes(CFile* pFile)
+//{
+//	int nServers = 0;
+//	DWORD nVersion = 0;
+//
+//	DWORD nCount;
+//	if ( pFile->Read( &nCount, sizeof( nCount ) ) != sizeof( nCount ) )
+//		return 0;
+//	if ( nCount == 0 )
+//	{
+//		// New format
+//		if ( pFile->Read( &nVersion, sizeof( nVersion ) ) != sizeof( nVersion ) )
+//			return 0;
+//		if ( nVersion != 1 )
+//			return 0;	// Unknown format
+//		if ( pFile->Read( &nCount, sizeof( nCount ) ) != sizeof( nCount ) )
+//			return 0;
+//	}
+//	while ( nCount-- > 0 )
+//	{
+//		Hashes::Guid oGUID;
+//		if ( pFile->Read( &oGUID[0], oGUID.byteCount ) != oGUID.byteCount )
+//			break;
+//		oGUID.validate();
+//		IN_ADDR pAddress;
+//		if ( pFile->Read( &pAddress, sizeof( pAddress ) ) != sizeof( pAddress ) )
+//			break;
+//		pAddress.s_addr = ntohl( pAddress.s_addr );
+//		WORD nUDPPort;
+//		if ( pFile->Read( &nUDPPort, sizeof( nUDPPort ) ) != sizeof( nUDPPort ) )
+//			break;
+//		WORD nTCPPort;
+//		if ( pFile->Read( &nTCPPort, sizeof( nTCPPort ) ) != sizeof( nTCPPort ) )
+//			break;
+//		BYTE nKADVersion = 0;
+//		BYTE nType = 0;
+//		if ( nVersion == 1 )
+//		{
+//			if ( pFile->Read( &nKADVersion, sizeof( nKADVersion ) ) != sizeof( nKADVersion ) )
+//				break;
+//		}
+//		else
+//		{
+//			if ( pFile->Read( &nType, sizeof( nType ) ) != sizeof( nType ) )
+//				break;
+//		}
+//		if ( nType < 4 )
+//		{
+//			CQuickLock oLock( Kademlia.m_pSection );
+//			CHostCacheHostPtr pCache = Kademlia.Add( &pAddress, nTCPPort );
+//			if ( pCache )
+//			{
+//				pCache->m_oGUID = oGUID;
+//				pCache->m_sDescription = oGUID.toString();
+//				pCache->m_nUDPPort = nUDPPort;
+//				pCache->m_nKADVersion = nKADVersion;
+//				nServers++;
+//			}
+//		}
+//	}
+//
+//	return nServers;
+//}
 
 bool CHostCache::EnoughServers(PROTOCOLID nProtocol) const
 {
@@ -1114,8 +1109,8 @@ bool CHostCache::CheckMinimumServers(PROTOCOLID nProtocol)
 			theApp.GetAppDataFolder()
 		};
 
-		for ( int i = 0 ; i < _countof( strRootPaths ) ; ++i )
-			for ( int j = 0 ; j < _countof( sServerMetPaths ) ; ++j )
+		for ( int i = 0; i < _countof( strRootPaths ); ++i )
+			for ( int j = 0; j < _countof( sServerMetPaths ); ++j )
 				Import( strRootPaths[ i ] + sServerMetPaths[ j ], TRUE );
 	}
 
@@ -1217,7 +1212,7 @@ int CHostCache::LoadDefaultServers(PROTOCOLID nProtocol)
 			++szServer;
 		}
 
-		for ( ; *szServer == L' ' || *szServer == L'\t' ; ++szServer );
+		for ( ; *szServer == L' ' || *szServer == L'\t'; ++szServer );
 
 		CQuickLock oLock( pCache->m_pSection );
 		if ( CHostCacheHostPtr pServer = pCache->Add( szServer ) )
@@ -1276,7 +1271,7 @@ CHostCacheHost::CHostCacheHost(PROTOCOLID nProtocol)
 	, m_nKeyHost	( 0 )
 	, m_bCheckedLocally ( FALSE )
 //	, m_bDHT		( FALSE )	// Attributes: DHT (Unused)
-	, m_nKADVersion	( 0 )		// Attributes: Kademlia
+//	, m_nKADVersion	( 0 )		// ToDo: Attributes: Kademlia
 {
 	m_pAddress.s_addr = INADDR_ANY;
 
@@ -1367,7 +1362,6 @@ void CHostCacheHost::Serialize(CArchive& ar, int /*nVersion*/)	// HOSTCACHE_SER_
 
 		ar << m_nUDPPort;
 		ar.Write( &m_oGUID[0], m_oGUID.byteCount );
-		ar << m_nKADVersion;
 
 		ar << m_tConnect;
 
@@ -1375,6 +1369,9 @@ void CHostCacheHost::Serialize(CArchive& ar, int /*nVersion*/)	// HOSTCACHE_SER_
 		ar << m_sPass;
 
 		ar << m_sAddress;
+
+		//if ( m_nProtocol == PROTOCOL_KAD )
+		//	ar << m_nKADVersion;	// ToDo: Kademlia
 	}
 	else // Loading
 	{
@@ -1436,7 +1433,6 @@ void CHostCacheHost::Serialize(CArchive& ar, int /*nVersion*/)	// HOSTCACHE_SER_
 		ar >> m_nUDPPort;
 		ReadArchive( ar, &m_oGUID[0], m_oGUID.byteCount );
 		m_oGUID.validate();
-		ar >> m_nKADVersion;
 
 		ar >> m_tConnect;
 
@@ -1444,6 +1440,9 @@ void CHostCacheHost::Serialize(CArchive& ar, int /*nVersion*/)	// HOSTCACHE_SER_
 		ar >> m_sPass;
 
 		ar >> m_sAddress;
+
+		//if ( m_nProtocol == PROTOCOL_KAD )
+		//	ar >> m_nKADVersion;	// ToDo: Kademlia
 	}
 }
 

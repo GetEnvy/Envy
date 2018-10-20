@@ -3,7 +3,7 @@
 
 <!-- Envy Default Slovenian Skin File -->
 
-<!-- Translation based on default en.xml r21 --> <!-- (Shareaza 2.2.2.12) -->
+<!-- Translation based on default en.xml r22 --> <!-- (Shareaza 2.2.2.12) -->
 <!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -15,7 +15,7 @@
 <manifest
 	name="Slovenščina"
 	author="Martin McDowell, dr.vet.med."
-	updatedBy=""
+	updatedby=""
 	description="Envy Default Slovenian Skin File"
 	link="http://mcdragon.blogspot.com/"
 	email="mcdragon(at)email.si"
@@ -780,134 +780,134 @@
 	</menu>
 	<!-- VIEW POPUP -->
 	<menu name="CMainWnd.View.Basic">
-		<item id="ID_TAB_HOME" text="_Domov"/>
-		<item id="ID_TAB_LIBRARY" text="_Knjižnica"/>
-		<item id="ID_TAB_MEDIA" text="_Mediji"/>
-		<item id="ID_TAB_SEARCH" text="_Iskanje"/>
-		<item id="ID_TAB_TRANSFERS" text="_Prenosi"/>
+		<item id="ID_TAB_HOME" text="Domov"/>
+		<item id="ID_TAB_LIBRARY" text="Knjižnica"/>
+		<item id="ID_TAB_MEDIA" text="Mediji"/>
+		<item id="ID_TAB_SEARCH" text="Iskanje"/>
+		<item id="ID_TAB_TRANSFERS" text="Prenosi"/>
 		<separator/>
-		<menu text="_Napredno">
-			<item id="ID_VIEW_NEIGHBOURS" text="_Sosedje"/>
-			<item id="ID_VIEW_UPLOADS" text="_Naložki (uploads)"/>
-			<item id="ID_VIEW_SECURITY" text="_Varnost"/>
-			<item id="ID_VIEW_HOSTS" text="_Predpomnilnik gostitelja"/>
+		<menu text="Napredno">
+			<item id="ID_VIEW_NEIGHBOURS" text="Sosedje"/>
+			<item id="ID_VIEW_UPLOADS" text="Naložki (uploads)"/>
+			<item id="ID_VIEW_SECURITY" text="Varnost"/>
+			<item id="ID_VIEW_HOSTS" text="Predpomnilnik gostitelja"/>
 		</menu>
 	</menu>
 	<menu name="CMainWnd.View.Tabbed">
-		<item id="ID_TAB_HOME" text="_Domov"/>
-		<item id="ID_TAB_LIBRARY" text="_Knjižnica"/>
-		<item id="ID_TAB_MEDIA" text="_Mediji"/>
-		<item id="ID_TAB_SEARCH" text="_Iskanje"/>
-		<item id="ID_TAB_TRANSFERS" text="_Transfers"/>
-		<item id="ID_TAB_NETWORK" text="_Prenosi"/>
+		<item id="ID_TAB_HOME" text="Domov"/>
+		<item id="ID_TAB_LIBRARY" text="Knjižnica"/>
+		<item id="ID_TAB_MEDIA" text="Mediji"/>
+		<item id="ID_TAB_SEARCH" text="Iskanje"/>
+		<item id="ID_TAB_TRANSFERS" text="Transfers"/>
+		<item id="ID_TAB_NETWORK" text="Prenosi"/>
 		<separator/>
-		<item id="ID_VIEW_SECURITY" text="_Varnost"/>
-		<item id="ID_VIEW_HOSTS" text="_Predpomnilnik gostitelja"/>
-		<item id="ID_VIEW_DISCOVERY" text="_Discovery"/>
-		<item id="ID_VIEW_TRAFFIC" text="_Grafikon"/>
+		<item id="ID_VIEW_SECURITY" text="Varnost"/>
+		<item id="ID_VIEW_HOSTS" text="Predpomnilnik gostitelja"/>
+		<item id="ID_VIEW_DISCOVERY" text="Discovery"/>
+		<item id="ID_VIEW_TRAFFIC" text="Grafikon"/>
 		<separator/>
-		<item id="ID_VIEW_PACKETS" text="_Izmet (dump) paketov"/>
+		<item id="ID_VIEW_PACKETS" text="Izmet (dump) paketov"/>
 		<item id="ID_VIEW_SEARCH_MONITOR" text="Nadzornik i_skanj"/>
 		<item id="ID_VIEW_RESULTS_MONITOR" text="Nadzornik _zadetkov"/>
 	</menu>
 	<menu name="CMainWnd.View.Windowed">
 		<item id="ID_NETWORK_SEARCH" text="Novo _iskanje..."/>
 		<separator/>
-		<item id="ID_VIEW_SYSTEM" text="_Sistem"/>
+		<item id="ID_VIEW_SYSTEM" text="Sistem"/>
 		<item id="ID_VIEW_NEIGHBOURS" text="Sose_dje"/>
-		<item id="ID_VIEW_DOWNLOADS" text="_Prenosi"/>
-		<item id="ID_VIEW_UPLOADS" text="_Naložki (uploads)"/>
-		<item id="ID_VIEW_LIBRARY" text="_Knjižnica"/>
-		<item id="ID_VIEW_MEDIA" text="_Medijski predvajalnik"/>
+		<item id="ID_VIEW_DOWNLOADS" text="Prenosi"/>
+		<item id="ID_VIEW_UPLOADS" text="Naložki (uploads)"/>
+		<item id="ID_VIEW_LIBRARY" text="Knjižnica"/>
+		<item id="ID_VIEW_MEDIA" text="Medijski predvajalnik"/>
 		<separator/>
-		<item id="ID_VIEW_SECURITY" text="_Varnost"/>
-		<item id="ID_VIEW_HOSTS" text="_Predpomnilnik gostitelja"/>
-		<item id="ID_VIEW_DISCOVERY" text="_Discovery"/>
-		<item id="ID_VIEW_TRAFFIC" text="_Grafikon"/>
+		<item id="ID_VIEW_SECURITY" text="Varnost"/>
+		<item id="ID_VIEW_HOSTS" text="Predpomnilnik gostitelja"/>
+		<item id="ID_VIEW_DISCOVERY" text="Discovery"/>
+		<item id="ID_VIEW_TRAFFIC" text="Grafikon"/>
 		<separator/>
-		<item id="ID_VIEW_PACKETS" text="_Izmet (dump) paketov"/>
+		<item id="ID_VIEW_PACKETS" text="Izmet (dump) paketov"/>
 		<item id="ID_VIEW_SEARCH_MONITOR" text="Nadzornik i_skanj"/>
 		<item id="ID_VIEW_RESULTS_MONITOR" text="Nadzornik _zadetkov"/>
 	</menu>
 	<!-- HOME MENU -->
 	<menu name="CHomeWnd.Basic">
-		<item id="ID_TAB_HOME" text="_Domov"/>
-		<item id="ID_TAB_LIBRARY" text="_Knjižnica"/>
-		<item id="ID_TAB_MEDIA" text="_Mediji"/>
-		<item id="ID_TAB_SEARCH" text="_Iskanje"/>
-		<item id="ID_TAB_TRANSFERS" text="_Prenosi"/>
+		<item id="ID_TAB_HOME" text="Domov"/>
+		<item id="ID_TAB_LIBRARY" text="Knjižnica"/>
+		<item id="ID_TAB_MEDIA" text="Mediji"/>
+		<item id="ID_TAB_SEARCH" text="Iskanje"/>
+		<item id="ID_TAB_TRANSFERS" text="Prenosi"/>
 		<separator/>
-		<menu text="_Napredno">
+		<menu text="Napredno">
 			<item id="ID_VIEW_NEIGHBOURS" text="Sose_dje"/>
-			<item id="ID_VIEW_UPLOADS" text="_Naložki (uploads)"/>
-			<item id="ID_VIEW_SECURITY" text="_Varnost"/>
-			<item id="ID_VIEW_HOSTS" text="_Predpomnilnik gostitelja"/>
+			<item id="ID_VIEW_UPLOADS" text="Naložki (uploads)"/>
+			<item id="ID_VIEW_SECURITY" text="Varnost"/>
+			<item id="ID_VIEW_HOSTS" text="Predpomnilnik gostitelja"/>
 		</menu>
 	</menu>
 	<menu name="CHomeWnd.Tabbed">
-		<item id="ID_TAB_HOME" text="_Domov"/>
-		<item id="ID_TAB_LIBRARY" text="_Knjižnica"/>
-		<item id="ID_TAB_MEDIA" text="_Mediji"/>
-		<item id="ID_TAB_SEARCH" text="_Iskanje"/>
-		<item id="ID_TAB_TRANSFERS" text="_Prenosi"/>
-		<item id="ID_TAB_NETWORK" text="_Omrežje"/>
+		<item id="ID_TAB_HOME" text="Domov"/>
+		<item id="ID_TAB_LIBRARY" text="Knjižnica"/>
+		<item id="ID_TAB_MEDIA" text="Mediji"/>
+		<item id="ID_TAB_SEARCH" text="Iskanje"/>
+		<item id="ID_TAB_TRANSFERS" text="Prenosi"/>
+		<item id="ID_TAB_NETWORK" text="Omrežje"/>
 		<separator/>
-		<item id="ID_VIEW_SECURITY" text="_Varnost"/>
-		<item id="ID_VIEW_HOSTS" text="_Predpomnilnik gostitelja"/>
-		<item id="ID_VIEW_DISCOVERY" text="_Discovery"/>
-		<item id="ID_VIEW_TRAFFIC" text="_Grafikon"/>
+		<item id="ID_VIEW_SECURITY" text="Varnost"/>
+		<item id="ID_VIEW_HOSTS" text="Predpomnilnik gostitelja"/>
+		<item id="ID_VIEW_DISCOVERY" text="Discovery"/>
+		<item id="ID_VIEW_TRAFFIC" text="Grafikon"/>
 		<separator/>
-		<item id="ID_VIEW_PACKETS" text="_Izmet (dump) paketov"/>
+		<item id="ID_VIEW_PACKETS" text="Izmet (dump) paketov"/>
 		<item id="ID_VIEW_SEARCH_MONITOR" text="Nadzornik i_skanj"/>
 		<item id="ID_VIEW_RESULTS_MONITOR" text="Nadzornik _zadetkov"/>
 	</menu>
 	<!-- HOST CACHE WINDOW -->
 	<menu name="CHostCacheWnd">
-		<item id="ID_HOSTCACHE_CONNECT" text="_Poveži takoj"/>
+		<item id="ID_HOSTCACHE_CONNECT" text="Poveži takoj"/>
 		<item id="ID_HOSTCACHE_DISCONNECT" text="Pre_kini povezavo"/>
-		<item id="ID_HOSTCACHE_PRIORITY" text="Prednostni _strežnik"/>
+		<item id="ID_HOSTCACHE_PRIORITY" text="Prednostni strežnik"/>
 		<separator/>
-		<item id="ID_HOSTCACHE_REMOVE" text="_Odstrani gostitelja(e)"/>
+		<item id="ID_HOSTCACHE_REMOVE" text="Odstrani gostitelja(e)"/>
 		<separator/>
-		<menu text="_Filter">
-			<item id="ID_HOSTCACHE_G2_HORIZON" text="_Gnutella2 grozd"/>
+		<menu text="Filter">
+			<item id="ID_HOSTCACHE_G2_HORIZON" text="Gnutella2 grozd"/>
 			<item id="ID_HOSTCACHE_G2_CACHE" text="Gnutella_2 predpomnilnik"/>
 			<item id="ID_HOSTCACHE_G1_CACHE" text="Gnutella_1 predpomnilnik"/>
-			<item id="ID_HOSTCACHE_ED2K_CACHE" text="_eDonkey strežniki"/>
+			<item id="ID_HOSTCACHE_ED2K_CACHE" text="eDonkey strežniki"/>
 		</menu>
 		<separator/>
-		<item id="ID_HOSTCACHE_IMPORT" text="_Uvozi datoteko MET..."/>
+		<item id="ID_HOSTCACHE_IMPORT" text="Uvozi datoteko MET..."/>
 		<item id="ID_HOSTCACHE_FILE_DOWNLOAD" text="Prenesi MET..."/>
 	</menu>
 	<!-- SEARCH WINDOW -->
 	<menu name="CSearchWnd.Basic">
-		<item id="ID_SEARCH_DOWNLOAD" text="_Prenesi"/>
+		<item id="ID_SEARCH_DOWNLOAD" text="Prenesi"/>
 		<separator/>
-		<item id="ID_BROWSE_LAUNCH" text="_Brskaj po gostitelju"/>
-		<item id="ID_SEARCH_CHAT" text="_Kramljaj z uporabnikom"/>
+		<item id="ID_BROWSE_LAUNCH" text="Brskaj po gostitelju"/>
+		<item id="ID_SEARCH_CHAT" text="Kramljaj z uporabnikom"/>
 		<separator/>
-		<menu text="_Išči po">
+		<menu text="Išči po">
 			<item id="ID_SEARCH_FOR_SIMILAR" text="Podobnih datotekah"/>
 			<separator/>
 			<item id="ID_SEARCH_FOR_ARTIST" text="Glasbi istega izvajalca"/>
 			<item id="ID_SEARCH_FOR_ALBUM" text="Glasbi istega albuma"/>
 			<item id="ID_SEARCH_FOR_SERIES" text="Epizodah iste serije"/>
 		</menu>
-		<menu id="ID_WEBSERVICES_LIST" text="_Spletne storitve">
-			<item id="ID_LIBRARY_BITPRINTS_WEB" text="Poglej _Bitprints karto"/>
-			<item id="ID_SEARCH_URI" text="Kopiraj _URI..."/>
+		<menu id="ID_WEBSERVICES_LIST" text="Spletne storitve">
+			<item id="ID_LIBRARY_BITPRINTS_WEB" text="Poglej Bitprints karto"/>
+			<item id="ID_SEARCH_URI" text="Kopiraj URI..."/>
 		</menu>
 	</menu>
 	<menu name="CSearchWnd">
-		<item id="ID_SEARCH_DOWNLOAD" text="_Prenesi"/>
+		<item id="ID_SEARCH_DOWNLOAD" text="Prenesi"/>
 		<item id="ID_SEARCH_DOWNLOADNOW" text="P_renesi takoj"/>
-		<item id="ID_SEARCH_URI" text="Kopiraj _URI"/>
+		<item id="ID_SEARCH_URI" text="Kopiraj URI"/>
 		<separator/>
-		<item id="ID_BROWSE_LAUNCH" text="_Brskaj po uporabniku"/>
-		<item id="ID_SEARCH_CHAT" text="_Kramljaj z uporabnikom"/>
-		<item id="ID_SECURITY_BAN" text="_Izobči uporabnika"/>
+		<item id="ID_BROWSE_LAUNCH" text="Brskaj po uporabniku"/>
+		<item id="ID_SEARCH_CHAT" text="Kramljaj z uporabnikom"/>
+		<item id="ID_SECURITY_BAN" text="Izobči uporabnika"/>
 		<separator/>
-		<menu text="_Išči po">
+		<menu text="Išči po">
 			<item id="ID_SEARCH_FOR_THIS" text="Tej datoteki"/>
 			<item id="ID_SEARCH_FOR_SIMILAR" text="Podobnih datotekah"/>
 			<separator/>
@@ -916,45 +916,45 @@
 			<item id="ID_SEARCH_FOR_SERIES" text="Epizodah iste serije"/>
 			<separator/>
 			<item id="ID_VIEW_SEARCH_MONITOR" text="Išči M_onitor"/>
-			<item id="ID_VIEW_RESULTS_MONITOR" text="_Hit Monitor"/>
+			<item id="ID_VIEW_RESULTS_MONITOR" text="Hit Monitor"/>
 		</menu>
-		<menu id="ID_WEBSERVICES_LIST" text="_Spletne storitve">
-			<item id="ID_LIBRARY_BITPRINTS_WEB" text="Poglej _Bitprints karto"/>
+		<menu id="ID_WEBSERVICES_LIST" text="Spletne storitve">
+			<item id="ID_LIBRARY_BITPRINTS_WEB" text="Poglej Bitprints karto"/>
 		</menu>
 		<separator/>
-		<item id="ID_SEARCH_FILTER" text="_Filtriraj rezultate..."/>
-		<item id="ID_SEARCH_FILTER_REMOVE" text="_Odstrani filter"/>
-		<item id="ID_SEARCH_CLEAR" text="_Počisti rezultate"/>
+		<item id="ID_SEARCH_FILTER" text="Filtriraj rezultate..."/>
+		<item id="ID_SEARCH_FILTER_REMOVE" text="Odstrani filter"/>
+		<item id="ID_SEARCH_CLEAR" text="Počisti rezultate"/>
 		<separator/>
-		<item id="ID_SEARCH_COLUMNS" text="_Uredi stolpce..."/>
+		<item id="ID_SEARCH_COLUMNS" text="Uredi stolpce..."/>
 	</menu>
 	<!-- BROWSE HOST WINDOW -->
 	<menu name="CBrowseHostWnd.Basic">
-		<item id="ID_SEARCH_DOWNLOAD" text="_Prenesi"/>
+		<item id="ID_SEARCH_DOWNLOAD" text="Prenesi"/>
 		<item id="ID_SEARCH_DOWNLOADNOW" text="P_renesi takoj"/>
 		<separator/>
-		<item id="ID_SEARCH_CHAT" text="_Kramljaj z uporabnikom"/>
+		<item id="ID_SEARCH_CHAT" text="Kramljaj z uporabnikom"/>
 		<separator/>
-		<menu text="_Išči po">
+		<menu text="Išči po">
 			<item id="ID_SEARCH_FOR_SIMILAR" text="Podobnih datotekah"/>
 			<separator/>
 			<item id="ID_SEARCH_FOR_ARTIST" text="Glasbi istega izvajalca"/>
 			<item id="ID_SEARCH_FOR_ALBUM" text="Glasbi istega albuma"/>
 			<item id="ID_SEARCH_FOR_SERIES" text="Epizodah iste serije"/>
 		</menu>
-		<menu text="_Informacije spletne datoteke">
-			<item id="ID_LIBRARY_BITPRINTS_WEB" text="Poglej _Bitprints karto"/>
-			<item id="ID_SEARCH_URI" text="Kopiraj _URI..."/>
+		<menu text="Informacije spletne datoteke">
+			<item id="ID_LIBRARY_BITPRINTS_WEB" text="Poglej Bitprints karto"/>
+			<item id="ID_SEARCH_URI" text="Kopiraj URI..."/>
 		</menu>
 	</menu>
 	<menu name="CBrowseHostWnd">
-		<item id="ID_SEARCH_DOWNLOAD" text="_Prenesi"/>
+		<item id="ID_SEARCH_DOWNLOAD" text="Prenesi"/>
 		<item id="ID_SEARCH_DOWNLOADNOW" text="P_renesi takoj"/>
-		<item id="ID_SEARCH_URI" text="Kopiraj _URI"/>
+		<item id="ID_SEARCH_URI" text="Kopiraj URI"/>
 		<separator/>
-		<item id="ID_SEARCH_CHAT" text="_Kramljaj z uporabnikom"/>
+		<item id="ID_SEARCH_CHAT" text="Kramljaj z uporabnikom"/>
 		<separator/>
-		<menu text="_Išči po">
+		<menu text="Išči po">
 			<item id="ID_SEARCH_FOR_THIS" text="Tej datoteki"/>
 			<item id="ID_SEARCH_FOR_SIMILAR" text="Podobnih datotekah"/>
 			<separator/>
@@ -962,24 +962,24 @@
 			<item id="ID_SEARCH_FOR_ALBUM" text="Glasbi istega albuma"/>
 			<item id="ID_SEARCH_FOR_SERIES" text="Epizodah iste serije"/>
 		</menu>
-		<menu id="ID_WEBSERVICES_LIST" text="_Spletne storitve">
-			<item id="ID_LIBRARY_BITPRINTS_WEB" text="Poglej _Bitprints karto"/>
+		<menu id="ID_WEBSERVICES_LIST" text="Spletne storitve">
+			<item id="ID_LIBRARY_BITPRINTS_WEB" text="Poglej Bitprints karto"/>
 		</menu>
 		<separator/>
-		<item id="ID_SEARCH_FILTER" text="_Filtriraj rezultate..."/>
-		<item id="ID_SEARCH_FILTER_REMOVE" text="_Odstrani filter"/>
+		<item id="ID_SEARCH_FILTER" text="Filtriraj rezultate..."/>
+		<item id="ID_SEARCH_FILTER_REMOVE" text="Odstrani filter"/>
 		<separator/>
-		<item id="ID_SEARCH_COLUMNS" text="_Uredi stolpce..."/>
+		<item id="ID_SEARCH_COLUMNS" text="Uredi stolpce..."/>
 	</menu>
 	<!-- HIT MONITOR WINDOW -->
 	<menu name="CHitMonitorWnd">
-		<item id="ID_SEARCH_DOWNLOAD" text="_Prenesi"/>
-		<item id="ID_SEARCH_URI" text="Kopiraj _URI"/>
+		<item id="ID_SEARCH_DOWNLOAD" text="Prenesi"/>
+		<item id="ID_SEARCH_URI" text="Kopiraj URI"/>
 		<separator/>
-		<item id="ID_BROWSE_LAUNCH" text="_Brskaj po uporabniku"/>
-		<item id="ID_SEARCH_CHAT" text="_Kramljaj z uporabnikom"/>
+		<item id="ID_BROWSE_LAUNCH" text="Brskaj po uporabniku"/>
+		<item id="ID_SEARCH_CHAT" text="Kramljaj z uporabnikom"/>
 		<separator/>
-		<menu text="_Išči po">
+		<menu text="Išči po">
 			<item id="ID_SEARCH_FOR_THIS" text="Tej datoteki"/>
 			<item id="ID_SEARCH_FOR_SIMILAR" text="Podobnih datotekah"/>
 			<separator/>
@@ -987,137 +987,137 @@
 			<item id="ID_SEARCH_FOR_ALBUM" text="Glasbi istega albuma"/>
 			<item id="ID_SEARCH_FOR_SERIES" text="Epizodah iste serije"/>
 		</menu>
-		<menu id="ID_WEBSERVICES_LIST" text="_Spletne storitve">
-			<item id="ID_LIBRARY_BITPRINTS_WEB" text="Poglej _Bitprints karto"/>
+		<menu id="ID_WEBSERVICES_LIST" text="Spletne storitve">
+			<item id="ID_LIBRARY_BITPRINTS_WEB" text="Poglej Bitprints karto"/>
 		</menu>
 		<separator/>
-		<item id="ID_SEARCH_FILTER" text="_Filtriraj rezultate..."/>
-		<item id="ID_SEARCH_FILTER_REMOVE" text="_Odstrani filter"/>
+		<item id="ID_SEARCH_FILTER" text="Filtriraj rezultate..."/>
+		<item id="ID_SEARCH_FILTER_REMOVE" text="Odstrani filter"/>
 		<separator/>
-		<item id="ID_HITMONITOR_PAUSE" text="_Premor prikaza"/>
+		<item id="ID_HITMONITOR_PAUSE" text="Premor prikaza"/>
 		<item id="ID_HITMONITOR_CLEAR" text="P_očisti prikaz"/>
 		<separator/>
-		<item id="ID_SEARCH_COLUMNS" text="_Uredi stolpce..."/>
+		<item id="ID_SEARCH_COLUMNS" text="Uredi stolpce..."/>
 	</menu>
 	<!-- DOWNLOADS WINDOW -->
 	<menu name="CDownloadsWnd.Download.Basic">
-		<item id="ID_DOWNLOADS_LAUNCH" text="_Predogled"/>
+		<item id="ID_DOWNLOADS_LAUNCH" text="Predogled"/>
 		<separator/>
-		<item id="ID_DOWNLOADS_RESUME" text="_Nadaljuj"/>
+		<item id="ID_DOWNLOADS_RESUME" text="Nadaljuj"/>
 		<item id="ID_DOWNLOADS_PAUSE" text="P_remor"/>
-		<item id="ID_DOWNLOADS_CLEAR_INCOMPLETE" text="_Prekliči"/>
+		<item id="ID_DOWNLOADS_CLEAR_INCOMPLETE" text="Prekliči"/>
 		<separator/>
-		<item id="ID_DOWNLOADS_SOURCES" text="Najdi _dodatne vire"/>
+		<item id="ID_DOWNLOADS_SOURCES" text="Najdi dodatne vire"/>
 		<item id="ID_DOWNLOADS_REMOTE_PREVIEW" text="R_emote Preview"/>
-		<item id="ID_DOWNLOADS_VIEW_REVIEWS" text="Poglej _ocene"/>
+		<item id="ID_DOWNLOADS_VIEW_REVIEWS" text="Poglej ocene"/>
 		<separator/>
-		<item id="ID_DOWNLOADS_HELP" text="_Pomoč..."/>
+		<item id="ID_DOWNLOADS_HELP" text="Pomoč..."/>
 	</menu>
 	<menu name="CDownloadsWnd.Download">
 		<item id="ID_DOWNLOADS_LAUNCH_COPY" text="Pre_view Copy"/>
-		<item id="ID_DOWNLOADS_LAUNCH" text="_Predogled"/>
-		<item id="ID_DOWNLOADS_ENQUEUE" text="_Dodaj predvajalnemu seznamu"/>
+		<item id="ID_DOWNLOADS_LAUNCH" text="Predogled"/>
+		<item id="ID_DOWNLOADS_ENQUEUE" text="Dodaj predvajalnemu seznamu"/>
 		<separator/>
-		<item id="ID_DOWNLOADS_RESUME" text="_Nadaljuj"/>
+		<item id="ID_DOWNLOADS_RESUME" text="Nadaljuj"/>
 		<item id="ID_DOWNLOADS_PAUSE" text="P_remor"/>
 		<item id="ID_DOWNLOADS_CLEAR_INCOMPLETE" text="Pre_kliči"/>
 		<separator/>
-		<item id="ID_DOWNLOADS_VIEW_REVIEWS" text="Poglej _ocene"/>
+		<item id="ID_DOWNLOADS_VIEW_REVIEWS" text="Poglej ocene"/>
 		<item id="ID_DOWNLOADS_REMOTE_PREVIEW" text="R_emote Preview"/>
-		<item id="ID_DOWNLOADS_SOURCES" text="Najdi _dodatne vire"/>
+		<item id="ID_DOWNLOADS_SOURCES" text="Najdi dodatne vire"/>
 		<separator/>
-		<menu text="_Napredno">
+		<menu text="Napredno">
 			<item id="ID_DOWNLOADS_SHARE" text="D_eli datoteko"/>
 			<separator/>
-			<item id="ID_DOWNLOADS_URI" text="_Kopiraj URI"/>
-			<item id="ID_DOWNLOADS_ADD_SOURCE" text="Dodaj _vir..."/>
+			<item id="ID_DOWNLOADS_URI" text="Kopiraj URI"/>
+			<item id="ID_DOWNLOADS_ADD_SOURCE" text="Dodaj vir..."/>
 			<item id="ID_DOWNLOADS_MERGE" text="Spajanje lokalne datoteke"/>
 			<separator/>
-			<item id="ID_DOWNLOADS_MONITOR" text="Okno _nadzornika"/>
+			<item id="ID_DOWNLOADS_MONITOR" text="Okno nadzornika"/>
 		</menu>
 		<menu text="Predn_ost">
-			<item id="ID_DOWNLOADS_BOOST" text="Prezri _omejitev pasovne širine"/>
+			<item id="ID_DOWNLOADS_BOOST" text="Prezri omejitev pasovne širine"/>
 			<separator/>
-			<item id="ID_DOWNLOADS_MOVE_TOP" text="Premakni _gor!"/>
-			<item id="ID_DOWNLOADS_MOVE_BOTTOM" text="Premakni _dol!"/>
-			<item id="ID_DOWNLOADS_MOVE_UP" text="Premakni _gor"/>
-			<item id="ID_DOWNLOADS_MOVE_DOWN" text="Premakni _dol"/>
+			<item id="ID_DOWNLOADS_MOVE_TOP" text="Premakni gor!"/>
+			<item id="ID_DOWNLOADS_MOVE_BOTTOM" text="Premakni dol!"/>
+			<item id="ID_DOWNLOADS_MOVE_UP" text="Premakni gor"/>
+			<item id="ID_DOWNLOADS_MOVE_DOWN" text="Premakni dol"/>
 		</menu>
-		<item id="ID_DOWNLOADS_HELP" text="_Pomoč..."/>
+		<item id="ID_DOWNLOADS_HELP" text="Pomoč..."/>
 		<separator/>
 		<item id="ID_DOWNLOADS_EDIT" text="N_apredno urejanje..."/>
 	</menu>
 	<menu name="CDownloadsWnd.Source">
-		<item id="ID_TRANSFERS_CONNECT" text="_Dostop"/>
+		<item id="ID_TRANSFERS_CONNECT" text="Dostop"/>
 		<separator/>
-		<item id="ID_BROWSE_LAUNCH" text="_Brskaj po uporabniku"/>
-		<item id="ID_TRANSFERS_CHAT" text="_Kramljaj z uporabnikom"/>
+		<item id="ID_BROWSE_LAUNCH" text="Brskaj po uporabniku"/>
+		<item id="ID_TRANSFERS_CHAT" text="Kramljaj z uporabnikom"/>
 		<item id="ID_DOWNLOADS_URI" text="Kopiraj P2P Link (_URI)"/>
 		<separator/>
 		<item id="ID_TRANSFERS_DISCONNECT" text="Prekini po_vezavo"/>
-		<item id="ID_TRANSFERS_FORGET" text="_Pozabi"/>
+		<item id="ID_TRANSFERS_FORGET" text="Pozabi"/>
 	</menu>
 	<menu name="CDownloadsWnd.Completed.Basic">
-		<item id="ID_DOWNLOADS_LAUNCH_COMPLETE" text="_Odpri ali predvajaj"/>
-		<item id="ID_DOWNLOADS_ENQUEUE" text="_Dodaj predvajalnemu seznamu"/>
-		<item id="ID_DOWNLOADS_CLEAR_COMPLETE" text="_Počisti"/>
+		<item id="ID_DOWNLOADS_LAUNCH_COMPLETE" text="Odpri ali predvajaj"/>
+		<item id="ID_DOWNLOADS_ENQUEUE" text="Dodaj predvajalnemu seznamu"/>
+		<item id="ID_DOWNLOADS_CLEAR_COMPLETE" text="Počisti"/>
 		<separator/>
-		<item id="ID_DOWNLOADS_FILE_DELETE" text="_Briši datoteko"/>
+		<item id="ID_DOWNLOADS_FILE_DELETE" text="Briši datoteko"/>
 	</menu>
 	<menu name="CDownloadsWnd.Completed">
-		<item id="ID_DOWNLOADS_LAUNCH_COMPLETE" text="_Odpri ali predvajaj"/>
-		<item id="ID_DOWNLOADS_ENQUEUE" text="_Dodaj predvajalnemu seznamu"/>
-		<item id="ID_DOWNLOADS_FOLDER" text="Odpri _Folder"/>
-		<item id="ID_DOWNLOADS_CLEAR_COMPLETE" text="_Počisti"/>
+		<item id="ID_DOWNLOADS_LAUNCH_COMPLETE" text="Odpri ali predvajaj"/>
+		<item id="ID_DOWNLOADS_ENQUEUE" text="Dodaj predvajalnemu seznamu"/>
+		<item id="ID_DOWNLOADS_FOLDER" text="Odpri Folder"/>
+		<item id="ID_DOWNLOADS_CLEAR_COMPLETE" text="Počisti"/>
 		<separator/>
-		<item id="ID_DOWNLOADS_FILE_DELETE" text="_Briši datoteko"/>
-		<item id="ID_DOWNLOADS_RATE" text="_Oceni datoteko..."/>
-		<item id="ID_DOWNLOADS_URI" text="Kopiraj _URI"/>
+		<item id="ID_DOWNLOADS_FILE_DELETE" text="Briši datoteko"/>
+		<item id="ID_DOWNLOADS_RATE" text="Oceni datoteko..."/>
+		<item id="ID_DOWNLOADS_URI" text="Kopiraj URI"/>
 		<separator/>
 		<item id="ID_DOWNLOADS_EDIT" text="Informacije"/>
 	</menu>
 	<menu name="CDownloadsWnd.Seeding">
-		<item id="ID_DOWNLOADS_LAUNCH_COMPLETE" text="_Odpri"/>
-		<item id="ID_DOWNLOADS_FOLDER" text="Odpri _Folder"/>
-		<item id="ID_DOWNLOADS_CLEAR_COMPLETE" text="_Končaj sejanje (seeding)"/>
+		<item id="ID_DOWNLOADS_LAUNCH_COMPLETE" text="Odpri"/>
+		<item id="ID_DOWNLOADS_FOLDER" text="Odpri Folder"/>
+		<item id="ID_DOWNLOADS_CLEAR_COMPLETE" text="Končaj sejanje (seeding)"/>
 		<separator/>
-		<item id="ID_DOWNLOADS_URI" text="Kopiraj _URI"/>
-		<item id="ID_DOWNLOADS_HELP" text="_Pomoč..."/>
+		<item id="ID_DOWNLOADS_URI" text="Kopiraj URI"/>
+		<item id="ID_DOWNLOADS_HELP" text="Pomoč..."/>
 		<separator/>
-		<item id="ID_DOWNLOADS_EDIT" text="Informacija o _Torrentu..."/>
+		<item id="ID_DOWNLOADS_EDIT" text="Informacija o Torrentu..."/>
 	</menu>
 	<menu name="CDownloadsWnd.Default">
-		<item id="ID_DOWNLOADS_FOLDER" text="Odpri _Folder"/>
+		<item id="ID_DOWNLOADS_FOLDER" text="Odpri Folder"/>
 		<separator/>
 		<item id="ID_TOOLS_DOWNLOAD" text="Start Nova Download"/>
 		<item id="ID_TOOLS_SEEDTORRENT" text="Seed Nova Torrent"/>
-		<item id="ID_DOWNLOADS_CLEAR_COMPLETED" text="Počisti _kočano"/>
+		<item id="ID_DOWNLOADS_CLEAR_COMPLETED" text="Počisti kočano"/>
 		<separator/>
-		<item id="ID_DOWNLOADS_HELP" text="_Pomoč..."/>
+		<item id="ID_DOWNLOADS_HELP" text="Pomoč..."/>
 	</menu>
 	<menu name="CDownloadTabBar">
-		<item id="ID_DOWNLOAD_GROUP_OPEN" text="Odpri _Folder"/>
+		<item id="ID_DOWNLOAD_GROUP_OPEN" text="Odpri Folder"/>
 		<separator/>
-		<item id="ID_DOWNLOAD_GROUP_RESUME" text="_Nadaljuj vse"/>
+		<item id="ID_DOWNLOAD_GROUP_RESUME" text="Nadaljuj vse"/>
 		<item id="ID_DOWNLOAD_GROUP_PAUSE" text="P_remor vsega"/>
-		<item id="ID_DOWNLOAD_GROUP_CLEAR" text="_Počisti vse"/>
+		<item id="ID_DOWNLOAD_GROUP_CLEAR" text="Počisti vse"/>
 		<separator/> <!--
 		<item id="ID_DOWNLOAD_GROUP_SHOW" text="Po_kaži skupine"/>
 		<separator/> -->
-		<item id="ID_DOWNLOAD_GROUP_MOVELEFT" text="Move Group _Left"/>
+		<item id="ID_DOWNLOAD_GROUP_MOVELEFT" text="Move Group Left"/>
 		<item id="ID_DOWNLOAD_GROUP_MOVERIGHT" text="Move Group R_ight"/>
 		<item id="ID_DOWNLOAD_GROUP_REMOVE" text="Ods_trani skupino"/>
 		<item id="ID_DOWNLOAD_GROUP_NEW" text="N_ova skupina..."/>
 		<separator/>
-		<item id="ID_DOWNLOAD_GROUP_PROPERTIES" text="_Lastnosti"/>
+		<item id="ID_DOWNLOAD_GROUP_PROPERTIES" text="Lastnosti"/>
 	</menu>
 	<menu name="CDownloadsWnd.Filter">
-		<item id="ID_DOWNLOADS_FILTER_ALL" text="Pokaži _vse"/>
+		<item id="ID_DOWNLOADS_FILTER_ALL" text="Pokaži vse"/>
 		<separator/>
-		<item id="ID_DOWNLOADS_FILTER_ACTIVE" text="Pokaži _aktivne"/>
+		<item id="ID_DOWNLOADS_FILTER_ACTIVE" text="Pokaži aktivne"/>
 		<item id="ID_DOWNLOADS_FILTER_QUEUED" text="Pokaži ča_kajoče"/>
-		<item id="ID_DOWNLOADS_FILTER_SOURCES" text="Pokaži tiste _brez virov"/>
-		<item id="ID_DOWNLOADS_FILTER_PAUSED" text="Pokaži tiste v _premoru"/>
+		<item id="ID_DOWNLOADS_FILTER_SOURCES" text="Pokaži tiste brez virov"/>
+		<item id="ID_DOWNLOADS_FILTER_PAUSED" text="Pokaži tiste v premoru"/>
 		<item id="ID_DOWNLOADS_FILTER_SEEDS" text="Pokaži see_ds"/>
 		<separator/>
 		<item id="ID_DOWNLOADS_SHOW_SOURCES" text="Pokaži v_se vire"/>
@@ -1126,29 +1126,29 @@
 	</menu>
 	<!-- UPLOADS WINDOW -->
 	<menu name="CUploadsWnd.Upload.Basic">
-		<item id="ID_BROWSE_LAUNCH" text="_Brskanje po uporabniku"/>
-		<item id="ID_UPLOADS_CHAT" text="_Kramljaj z uporabnikom"/>
+		<item id="ID_BROWSE_LAUNCH" text="Brskanje po uporabniku"/>
+		<item id="ID_UPLOADS_CHAT" text="Kramljaj z uporabnikom"/>
 		<separator/>
-		<item id="ID_UPLOADS_HELP" text="_Pomoč..."/>
+		<item id="ID_UPLOADS_HELP" text="Pomoč..."/>
 	</menu>
 	<menu name="CUploadsWnd.Upload">
-		<item id="ID_UPLOADS_LAUNCH" text="Pokaži _Library"/>
-		<item id="ID_UPLOADS_FOLDER" text="Odpri _Folder"/>
+		<item id="ID_UPLOADS_LAUNCH" text="Pokaži Library"/>
+		<item id="ID_UPLOADS_FOLDER" text="Odpri Folder"/>
 		<separator/>
-		<item id="ID_UPLOADS_CLEAR" text="_Počisti"/>
-		<item id="ID_UPLOADS_START" text="_Začni takoj"/>
+		<item id="ID_UPLOADS_CLEAR" text="Počisti"/>
+		<item id="ID_UPLOADS_START" text="Začni takoj"/>
 		<item id="ID_UPLOADS_PRIORITY" text="Prednost"/>
 		<separator/>
-		<item id="ID_BROWSE_LAUNCH" text="_Brskanje po uporabniku"/>
-		<item id="ID_UPLOADS_CHAT" text="_Kramljaj z uporabnikom"/>
-		<item id="ID_SECURITY_BAN" text="_Izobči uporabnika (ban)"/>
+		<item id="ID_BROWSE_LAUNCH" text="Brskanje po uporabniku"/>
+		<item id="ID_UPLOADS_CHAT" text="Kramljaj z uporabnikom"/>
+		<item id="ID_SECURITY_BAN" text="Izobči uporabnika (ban)"/>
 	</menu>
 	<menu name="CUploadsWnd.Default">
 		<item id="ID_LIBRARY_FOLDERS" text="Deli datoteke..."/>
-		<item id="ID_UPLOADS_SETTINGS" text="_Nastavitve čakalne vrste..."/>
-		<item id="ID_UPLOADS_CLEAR_COMPLETED" text="Počisti _končano"/>
+		<item id="ID_UPLOADS_SETTINGS" text="Nastavitve čakalne vrste..."/>
+		<item id="ID_UPLOADS_CLEAR_COMPLETED" text="Počisti končano"/>
 		<separator/>
-		<item id="ID_UPLOADS_HELP" text="_Pomoč..."/>
+		<item id="ID_UPLOADS_HELP" text="Pomoč..."/>
 	</menu>
 	<menu name="CUploadsWnd.Filter">
 		<item id="ID_UPLOADS_FILTER_ALL" text="Pokaži vse"/>
@@ -1158,71 +1158,71 @@
 		<item id="ID_UPLOADS_FILTER_TORRENT" text="Pokaži BitTorrent"/>
 		<item id="ID_UPLOADS_FILTER_HISTORY" text="Pokaži zgodovino"/>
 		<separator/>
-		<item id="ID_UPLOADS_AUTO_CLEAR" text="_Samodejno počisti"/>
+		<item id="ID_UPLOADS_AUTO_CLEAR" text="Samodejno počisti"/>
 	</menu>
 	<!-- LIBRARY FRAME -->
 	<menu name="CLibraryTree.Physical.Basic">
-		<item id="ID_LIBRARY_SHARED_FOLDER" text="_Deljeno"/>
-		<item id="ID_LIBRARY_REMOVE" text="_Odstrani"/>
+		<item id="ID_LIBRARY_SHARED_FOLDER" text="Deljeno"/>
+		<item id="ID_LIBRARY_REMOVE" text="Odstrani"/>
 		<separator/>
 		<item id="ID_LIBRARY_FOLDERS" text="Deli datoteke..."/>
 	</menu>
 	<menu name="CLibraryTree.Physical">
-		<item id="ID_LIBRARY_EXPLORE" text="_Razišči"/>
-		<item id="ID_LIBRARY_REMOVE" text="_Ostrani"/>
+		<item id="ID_LIBRARY_EXPLORE" text="Razišči"/>
+		<item id="ID_LIBRARY_REMOVE" text="Ostrani"/>
 		<separator/>
-		<item id="ID_LIBRARY_SHARED_FOLDER" text="_Deljeno"/>
+		<item id="ID_LIBRARY_SHARED_FOLDER" text="Deljeno"/>
 		<separator/>
-		<item id="ID_LIBRARY_SCAN" text="_Preglej (scan)"/>
-		<item id="ID_LIBRARY_REBUILD" text="_Zgradi ponovno (rebuild)"/>
+		<item id="ID_LIBRARY_SCAN" text="Preglej (scan)"/>
+		<item id="ID_LIBRARY_REBUILD" text="Zgradi ponovno (rebuild)"/>
 		<item id="ID_LIBRARY_FOLDERS" text="Deli datoteke..."/>
 		<separator/>
-		<item id="ID_LIBRARY_FOLDER_FILE_PROPERTIES" text="Lastnosti _datoteke"/>
+		<item id="ID_LIBRARY_FOLDER_FILE_PROPERTIES" text="Lastnosti datoteke"/>
 	</menu>
 	<menu name="CLibraryTree.Virtual.Basic">
-		<item id="ID_LIBRARY_FOLDER_ENQUEUE" text="_Predvajaj album"/>
-		<item id="ID_LIBRARY_FOLDER_DELETE" text="_Briši"/>
+		<item id="ID_LIBRARY_FOLDER_ENQUEUE" text="Predvajaj album"/>
+		<item id="ID_LIBRARY_FOLDER_DELETE" text="Briši"/>
 		<separator/>
-		<item id="ID_LIBRARY_FOLDER_FILE_PROPERTIES" text="Lastnosti _datoteke"/>
+		<item id="ID_LIBRARY_FOLDER_FILE_PROPERTIES" text="Lastnosti datoteke"/>
 		<item id="ID_LIBRARY_FOLDER_PROPERTIES" text="Lastnosti albuma"/>
 	</menu>
 	<menu name="CLibraryTree.Virtual">
-		<item id="ID_LIBRARY_FOLDER_ENQUEUE" text="_Predvajaj album"/>
-		<item id="ID_LIBRARY_FOLDER_DELETE" text="_Briši"/>
+		<item id="ID_LIBRARY_FOLDER_ENQUEUE" text="Predvajaj album"/>
+		<item id="ID_LIBRARY_FOLDER_DELETE" text="Briši"/>
 		<separator/>
-		<item id="ID_LIBRARY_REBUILD" text="_Zgradi ponovno (rebuild)"/>
-		<item id="ID_LIBRARY_EXPORT_COLLECTION" text="_Izvozi zbirko..."/>
+		<item id="ID_LIBRARY_REBUILD" text="Zgradi ponovno (rebuild)"/>
+		<item id="ID_LIBRARY_EXPORT_COLLECTION" text="Izvozi zbirko..."/>
 		<separator/>
-		<item id="ID_LIBRARY_FOLDER_NEW" text="_Nova mapa..."/>
+		<item id="ID_LIBRARY_FOLDER_NEW" text="Nova mapa..."/>
 		<separator/>
-		<item id="ID_LIBRARY_FOLDER_FILE_PROPERTIES" text="Lastnosti _datoteke"/>
-		<item id="ID_LIBRARY_FOLDER_PROPERTIES" text="Lastnosti _albuma"/>
+		<item id="ID_LIBRARY_FOLDER_FILE_PROPERTIES" text="Lastnosti datoteke"/>
+		<item id="ID_LIBRARY_FOLDER_PROPERTIES" text="Lastnosti albuma"/>
 	</menu>
 	<menu name="CLibraryHistoryPanel">
-		<item id="ID_LIBRARY_SHOW_FILE" text="_Show in Library"/>
-		<item id="ID_LIBRARY_CLEAR_HISTORY" text="Clear from _History"/>
-		<item id="ID_LIBRARY_CLEAR_HISTORY_ALL" text="Počisti _vse"/>
+		<item id="ID_LIBRARY_SHOW_FILE" text="Prikaži v knjižnici"/>
+		<item id="ID_LIBRARY_CLEAR_HISTORY" text="Zbriši iz zgodovine"/>
+		<item id="ID_LIBRARY_CLEAR_HISTORY_ALL" text="Počisti vse"/>
 	</menu>
 	<!-- LIBRARY VIEWS -->
 	<menu name="CLibraryTileView">
-		<item id="ID_LIBRARY_ALBUM_OPEN" text="_Odpri"/>
-		<item id="ID_LIBRARY_ALBUM_DELETE" text="_Briši"/>
+		<item id="ID_LIBRARY_ALBUM_OPEN" text="Odpri"/>
+		<item id="ID_LIBRARY_ALBUM_DELETE" text="Briši"/>
 		<separator/>
-		<item id="ID_LIBRARY_ALBUM_PROPERTIES" text="_Lastnosti"/>
+		<item id="ID_LIBRARY_ALBUM_PROPERTIES" text="Lastnosti"/>
 	</menu>
 	<menu name="CLibraryFileView.Basic">
-		<item id="ID_LIBRARY_LAUNCH" text="_Odpri ali predvajaj"/>
-		<item id="ID_LIBRARY_ENQUEUE" text="_Dodaj v predvajalni seznam"/>
-		<item id="ID_LIBRARY_DELETE" text="_Briši"/>
+		<item id="ID_LIBRARY_LAUNCH" text="Odpri ali predvajaj"/>
+		<item id="ID_LIBRARY_ENQUEUE" text="Dodaj v predvajalni seznam"/>
+		<item id="ID_LIBRARY_DELETE" text="Briši"/>
 		<separator/>
-		<item id="ID_LIBRARY_SHARED_FILE" text="_Deljeno"/>
+		<item id="ID_LIBRARY_SHARED_FILE" text="Deljeno"/>
 		<separator/>
-		<menu text="_Organiziraj">
-			<item id="ID_LIBRARY_RENAME" text="_Preimenuj datoteko"/>
-			<item id="ID_LIBRARY_COPY" text="_Kopiraj datoteke..."/>
-			<item id="ID_LIBRARY_MOVE" text="_Premakni datoteke..."/>
+		<menu text="Organiziraj">
+			<item id="ID_LIBRARY_RENAME" text="Preimenuj datoteko"/>
+			<item id="ID_LIBRARY_COPY" text="Kopiraj datoteke..."/>
+			<item id="ID_LIBRARY_MOVE" text="Premakni datoteke..."/>
 		</menu>
-		<menu text="_Išči po">
+		<menu text="Išči po">
 			<item id="ID_SEARCH_FOR_THIS" text="Tej datoteki"/>
 			<item id="ID_SEARCH_FOR_SIMILAR" text="Podobnih datotekah"/>
 			<separator/>
@@ -1230,34 +1230,34 @@
 			<item id="ID_SEARCH_FOR_ALBUM" text="Glasbi istega albuma"/>
 			<item id="ID_SEARCH_FOR_SERIES" text="Epizodah iste serije"/>
 		</menu>
-		<menu text="_Spletne storitve">
-			<item id="ID_LIBRARY_BITPRINTS_WEB" text="Poglej _Bitprints karto"/>
-			<item id="ID_LIBRARY_BITPRINTS_DOWNLOAD" text="_Prenesi metapodatke"/>
+		<menu text="Spletne storitve">
+			<item id="ID_LIBRARY_BITPRINTS_WEB" text="Poglej Bitprints karto"/>
+			<item id="ID_LIBRARY_BITPRINTS_DOWNLOAD" text="Prenesi metapodatke"/>
 			<separator/>
-			<item id="ID_LIBRARY_URI" text="_URI"/>
+			<item id="ID_LIBRARY_URI" text="URI"/>
 		</menu>
 		<separator/>
-		<item id="ID_LIBRARY_PROPERTIES" text="_Lastnosti"/>
+		<item id="ID_LIBRARY_PROPERTIES" text="Lastnosti"/>
 	</menu>
 	<menu name="CLibraryFileView">
-		<item id="ID_LIBRARY_LAUNCH" text="_Odpri ali predvajaj"/>
-		<item id="ID_LIBRARY_ENQUEUE" text="Dodaj v _predvajalni seznam"/>
-		<item id="ID_LIBRARY_DELETE" text="_Briši"/>
+		<item id="ID_LIBRARY_LAUNCH" text="Odpri ali predvajaj"/>
+		<item id="ID_LIBRARY_ENQUEUE" text="Dodaj v predvajalni seznam"/>
+		<item id="ID_LIBRARY_DELETE" text="Briši"/>
 		<separator/>
-		<item id="ID_LIBRARY_SHARED_FILE" text="_Deli"/>
+		<item id="ID_LIBRARY_SHARED_FILE" text="Deli"/>
 		<separator/>
-		<item id="ID_LIBRARY_URI" text="_URI"/>
+		<item id="ID_LIBRARY_URI" text="URI"/>
 		<item id="ID_LIBRARY_CREATETORRENT" text="Ustvari datoteko tipa .torrent"/>
-		<item id="ID_LIBRARY_LAUNCH_FOLDER" text="Odpri _Folder"/>
+		<item id="ID_LIBRARY_LAUNCH_FOLDER" text="Odpri Folder"/>
 		<separator/>
-		<menu text="_Organiziraj">
-			<item id="ID_LIBRARY_UNLINK" text="Remove _datoteke"/>
+		<menu text="Organiziraj">
+			<item id="ID_LIBRARY_UNLINK" text="Remove datoteke"/>
 			<separator/>
-			<item id="ID_LIBRARY_RENAME" text="_Preimenuj datoteko"/>
-			<item id="ID_LIBRARY_COPY" text="_Kopiraj datoteke..."/>
-			<item id="ID_LIBRARY_MOVE" text="_Premakni datoteke..."/>
+			<item id="ID_LIBRARY_RENAME" text="Preimenuj datoteko"/>
+			<item id="ID_LIBRARY_COPY" text="Kopiraj datoteke..."/>
+			<item id="ID_LIBRARY_MOVE" text="Premakni datoteke..."/>
 		</menu>
-		<menu text="_Išči po">
+		<menu text="Išči po">
 			<item id="ID_SEARCH_FOR_THIS" text="Tej datoteki"/>
 			<item id="ID_SEARCH_FOR_SIMILAR" text="Podobnih datotekah"/>
 			<separator/>
@@ -1265,229 +1265,229 @@
 			<item id="ID_SEARCH_FOR_ALBUM" text="Glasbi istega albuma"/>
 			<item id="ID_SEARCH_FOR_SERIES" text="Epizodah iste serije"/>
 		</menu>
-		<menu text="_Spletne storitve">
-			<item id="ID_LIBRARY_BITPRINTS_WEB" text="Poglej _Bitprints karto"/>
-			<item id="ID_LIBRARY_BITPRINTS_DOWNLOAD" text="_Dôbi metapodatke"/>
+		<menu text="Spletne storitve">
+			<item id="ID_LIBRARY_BITPRINTS_WEB" text="Poglej Bitprints karto"/>
+			<item id="ID_LIBRARY_BITPRINTS_DOWNLOAD" text="Dôbi metapodatke"/>
 		</menu>
-		<menu text="_Metapodatke">
+		<menu text="Metapodatke">
 			<item id="ID_LIBRARY_REBUILD_FILE" text="Re_build Hashes"/>
-			<item id="ID_LIBRARY_REFRESH_METADATA" text="_Refresh metapodatke"/>
-			<item id="ID_LIBRARY_REBUILD_ANSI" text="_Lokaliziraj metapodatke"/>
-			<item id="ID_LIBRARY_COLUMNS" text="Izberi _stolpce..."/>
+			<item id="ID_LIBRARY_REFRESH_METADATA" text="Refresh metapodatke"/>
+			<item id="ID_LIBRARY_REBUILD_ANSI" text="Lokaliziraj metapodatke"/>
+			<item id="ID_LIBRARY_COLUMNS" text="Izberi stolpce..."/>
 		</menu>
 		<separator/>
 		<item id="ID_SHELL_MENU" text="Windows Men_u"/>
-		<item id="ID_LIBRARY_PROPERTIES" text="_Lastnosti"/>
+		<item id="ID_LIBRARY_PROPERTIES" text="Lastnosti"/>
 	</menu>
 	<!-- MEDIA WINDOW -->
 	<menu name="CMediaFrame.Basic">
-		<item id="ID_MEDIA_PLAY" text="_Predvajaj"/>
+		<item id="ID_MEDIA_PLAY" text="Predvajaj"/>
 		<item id="ID_MEDIA_PAUSE" text="P_remor"/>
-		<item id="ID_MEDIA_STOP" text="_Ustavi"/>
+		<item id="ID_MEDIA_STOP" text="Ustavi"/>
 		<separator/>
-		<item id="ID_MEDIA_OPEN" text="_Odpri medijsko datoteko..."/>
+		<item id="ID_MEDIA_OPEN" text="Odpri medijsko datoteko..."/>
 		<separator/>
-		<menu text="_Predvajalni seznam">
-			<item id="ID_MEDIA_PREVIOUS" text="_Prejšnji"/>
-			<item id="ID_MEDIA_NEXT" text="_Naslednji"/>
-			<item id="ID_MEDIA_RANDOM" text="_Naključni"/>
+		<menu text="Predvajalni seznam">
+			<item id="ID_MEDIA_PREVIOUS" text="Prejšnji"/>
+			<item id="ID_MEDIA_NEXT" text="Naslednji"/>
+			<item id="ID_MEDIA_RANDOM" text="Naključni"/>
 			<item id="ID_MEDIA_REPEAT" text="P_onovi"/>
 			<separator/>
-			<item id="ID_MEDIA_PLAYLIST" text="Pokaži predvajalni _seznam"/>
+			<item id="ID_MEDIA_PLAYLIST" text="Pokaži predvajalni seznam"/>
 		</menu>
-		<menu text="_Velikost videa">
-			<item id="ID_MEDIA_SIZE_ONE" text="_Izvirna velikost"/>
-			<item id="ID_MEDIA_SIZE_TWO" text="_Dvojna velikost"/>
-			<item id="ID_MEDIA_SIZE_HALF" text="_Trojna velikost"/>
-			<item id="ID_MEDIA_SIZE_FILL" text="_Največja"/>
-			<item id="ID_MEDIA_SIZE_DISTORT" text="_Celotno okno"/>
+		<menu text="Velikost videa">
+			<item id="ID_MEDIA_SIZE_ONE" text="Izvirna velikost"/>
+			<item id="ID_MEDIA_SIZE_TWO" text="Dvojna velikost"/>
+			<item id="ID_MEDIA_SIZE_HALF" text="Trojna velikost"/>
+			<item id="ID_MEDIA_SIZE_FILL" text="Največja"/>
+			<item id="ID_MEDIA_SIZE_DISTORT" text="Celotno okno"/>
 			<separator/>
-			<item id="ID_MEDIA_ASPECT_DEFAULT" text="_Privzeto razmerje"/>
-			<item id="ID_MEDIA_ASPECT_4_3" text="Razmerje _4:3 (TV)"/>
-			<item id="ID_MEDIA_ASPECT_16_9" text="Razmerje _16:9 (kino)"/>
+			<item id="ID_MEDIA_ASPECT_DEFAULT" text="Privzeto razmerje"/>
+			<item id="ID_MEDIA_ASPECT_4_3" text="Razmerje 4:3 (TV)"/>
+			<item id="ID_MEDIA_ASPECT_16_9" text="Razmerje 16:9 (kino)"/>
 			<separator/>
-			<item id="ID_MEDIA_FULLSCREEN" text="_Celozaslonski način"/>
+			<item id="ID_MEDIA_FULLSCREEN" text="Celozaslonski način"/>
 		</menu>
 		<menu text="Nastavitve">
-			<item id="ID_MEDIA_VIS" text="Izberi _vizualizacijo..."/>
+			<item id="ID_MEDIA_VIS" text="Izberi vizualizacijo..."/>
 			<separator/>
-			<item id="ID_MEDIA_PLAYLIST" text="Pokaži _predvajalni seznam"/>
-			<item id="ID_MEDIA_STATUS" text="Pokaži _statusno vrstico"/>
+			<item id="ID_MEDIA_PLAYLIST" text="Pokaži predvajalni seznam"/>
+			<item id="ID_MEDIA_STATUS" text="Pokaži statusno vrstico"/>
 			<separator/>
-			<item id="ID_MEDIA_SETTINGS" text="_Nastavitve medija..."/>
+			<item id="ID_MEDIA_SETTINGS" text="Nastavitve medija..."/>
 		</menu>
 	</menu>
 	<menu name="CMediaFrame">
-		<item id="ID_MEDIA_PLAY" text="_Predvajaj"/>
+		<item id="ID_MEDIA_PLAY" text="Predvajaj"/>
 		<item id="ID_MEDIA_PAUSE" text="P_remor"/>
-		<item id="ID_MEDIA_STOP" text="_Ustavi"/>
+		<item id="ID_MEDIA_STOP" text="Ustavi"/>
 		<separator/>
-		<item id="ID_MEDIA_OPEN" text="_Odpri medijsko datoteko..."/>
-		<item id="ID_MEDIA_CLOSE" text="_Zapri datoteko"/>
+		<item id="ID_MEDIA_OPEN" text="Odpri medijsko datoteko..."/>
+		<item id="ID_MEDIA_CLOSE" text="Zapri datoteko"/>
 		<separator/>
-		<menu text="_Playlist">
-			<item id="ID_MEDIA_PREVIOUS" text="_Prejšnji"/>
-			<item id="ID_MEDIA_NEXT" text="_Naslednji"/>
-			<item id="ID_MEDIA_RANDOM" text="_Naključni"/>
+		<menu text="Playlist">
+			<item id="ID_MEDIA_PREVIOUS" text="Prejšnji"/>
+			<item id="ID_MEDIA_NEXT" text="Naslednji"/>
+			<item id="ID_MEDIA_RANDOM" text="Naključni"/>
 			<item id="ID_MEDIA_REPEAT" text="P_onovi"/>
 			<separator/>
-			<item id="ID_MEDIA_PLAYLIST" text="Pokaži predvajalni _seznam"/>
+			<item id="ID_MEDIA_PLAYLIST" text="Pokaži predvajalni seznam"/>
 		</menu>
 		<menu text="Velikost :videa">
-			<item id="ID_MEDIA_SIZE_ONE" text="_Izvirna velikost"/>
-			<item id="ID_MEDIA_SIZE_TWO" text="_Dvojna velikost"/>
-			<item id="ID_MEDIA_SIZE_HALF" text="_Trojna velikost"/>
-			<item id="ID_MEDIA_SIZE_FILL" text="_Največja"/>
-			<item id="ID_MEDIA_SIZE_DISTORT" text="_Zapolni okno"/>
+			<item id="ID_MEDIA_SIZE_ONE" text="Izvirna velikost"/>
+			<item id="ID_MEDIA_SIZE_TWO" text="Dvojna velikost"/>
+			<item id="ID_MEDIA_SIZE_HALF" text="Trojna velikost"/>
+			<item id="ID_MEDIA_SIZE_FILL" text="Največja"/>
+			<item id="ID_MEDIA_SIZE_DISTORT" text="Zapolni okno"/>
 			<separator/>
-			<item id="ID_MEDIA_ASPECT_DEFAULT" text="_Privzeto razmerje"/>
-			<item id="ID_MEDIA_ASPECT_4_3" text="Razmerje _4:3 (TV)"/>
-			<item id="ID_MEDIA_ASPECT_16_9" text="Razmerje _16:9 (kino)"/>
+			<item id="ID_MEDIA_ASPECT_DEFAULT" text="Privzeto razmerje"/>
+			<item id="ID_MEDIA_ASPECT_4_3" text="Razmerje 4:3 (TV)"/>
+			<item id="ID_MEDIA_ASPECT_16_9" text="Razmerje 16:9 (kino)"/>
 			<separator/>
-			<item id="ID_MEDIA_FULLSCREEN" text="_Celozaslonski način"/>
+			<item id="ID_MEDIA_FULLSCREEN" text="Celozaslonski način"/>
 		</menu>
 		<menu text="Nastavitve">
-			<item id="ID_MEDIA_VIS" text="Izberi _vizualizacijo..."/>
+			<item id="ID_MEDIA_VIS" text="Izberi vizualizacijo..."/>
 			<separator/>
-			<item id="ID_MEDIA_PLAYLIST" text="Pokaži _predvajalni seznam"/>
-			<item id="ID_MEDIA_STATUS" text="Pokaži _statusno vrstico"/>
+			<item id="ID_MEDIA_PLAYLIST" text="Pokaži predvajalni seznam"/>
+			<item id="ID_MEDIA_STATUS" text="Pokaži statusno vrstico"/>
 			<separator/>
-			<item id="ID_MEDIA_SETTINGS" text="_Nastavitve medija..."/>
+			<item id="ID_MEDIA_SETTINGS" text="Nastavitve medija..."/>
 		</menu>
 	</menu>
 	<menu name="CMediaFrame.Zoom">
-		<item id="ID_MEDIA_SIZE_ONE" text="_Izvirna velikost"/>
-		<item id="ID_MEDIA_SIZE_TWO" text="_Dvojna velikost"/>
-		<item id="ID_MEDIA_SIZE_HALF" text="_Trojna velikost"/>
-		<item id="ID_MEDIA_SIZE_FILL" text="_Največja"/>
-		<item id="ID_MEDIA_SIZE_DISTORT" text="_Zapolni okno"/>
+		<item id="ID_MEDIA_SIZE_ONE" text="Izvirna velikost"/>
+		<item id="ID_MEDIA_SIZE_TWO" text="Dvojna velikost"/>
+		<item id="ID_MEDIA_SIZE_HALF" text="Trojna velikost"/>
+		<item id="ID_MEDIA_SIZE_FILL" text="Največja"/>
+		<item id="ID_MEDIA_SIZE_DISTORT" text="Zapolni okno"/>
 		<separator/>
-		<item id="ID_MEDIA_ASPECT_DEFAULT" text="_Privzeto razmerje"/>
-		<item id="ID_MEDIA_ASPECT_4_3" text="Razmerje _4:3 (TV)"/>
-		<item id="ID_MEDIA_ASPECT_16_9" text="Razmerje _16:9 (kino)"/>
+		<item id="ID_MEDIA_ASPECT_DEFAULT" text="Privzeto razmerje"/>
+		<item id="ID_MEDIA_ASPECT_4_3" text="Razmerje 4:3 (TV)"/>
+		<item id="ID_MEDIA_ASPECT_16_9" text="Razmerje 16:9 (kino)"/>
 	</menu>
 	<menu name="CMediaList">
-		<item id="ID_MEDIA_SELECT" text="_Predvajaj"/>
+		<item id="ID_MEDIA_SELECT" text="Predvajaj"/>
 		<separator/>
-		<item id="ID_MEDIA_ADD" text="_Dodaj datoteko..."/>
-		<item id="ID_MEDIA_ADD_FOLDER" text="Dodaj _mapo..."/>
-		<item id="ID_MEDIA_REMOVE" text="_Odstrani"/>
+		<item id="ID_MEDIA_ADD" text="Dodaj datoteko..."/>
+		<item id="ID_MEDIA_ADD_FOLDER" text="Dodaj mapo..."/>
+		<item id="ID_MEDIA_REMOVE" text="Odstrani"/>
 		<separator/>
 		<item id="ID_MEDIA_RANDOM" text="Naključni način"/>
 		<item id="ID_MEDIA_REPEAT" text="Ponavljajoči način"/>
 		<separator/>
-		<item id="ID_MEDIA_OPEN" text="_Odpri predvajalni seznam..."/>
-		<item id="ID_MEDIA_SAVE" text="_Shrani predvajani seznam..."/>
+		<item id="ID_MEDIA_OPEN" text="Odpri predvajalni seznam..."/>
+		<item id="ID_MEDIA_SAVE" text="Shrani predvajani seznam..."/>
 		<item id="ID_MEDIA_EXPORT_COLLECTION" text="I_zvozi zbirko..."/>
-		<item id="ID_MEDIA_CLEAR" text="_Počisti predvajalni seznam"/>
+		<item id="ID_MEDIA_CLEAR" text="Počisti predvajalni seznam"/>
 		<separator/>
 		<item id="ID_MEDIA_PLAYLIST" text="Po_kaži predvajalni seznam"/>
 	</menu>
 	<!-- SYSTEM WINDOW -->
 	<menu name="CSystemWnd">
-		<menu id="ID_SYSTEM_VERBOSE" text="_Verbose način">
-			<item id="ID_SYSTEM_VERBOSE_ERROR" text="_Error"/>
-			<item id="ID_SYSTEM_VERBOSE_WARNING" text="_Warning"/>
-			<item id="ID_SYSTEM_VERBOSE_NOTICE" text="_Notice"/>
-			<item id="ID_SYSTEM_VERBOSE_INFO" text="_Info"/>
-			<item id="ID_SYSTEM_VERBOSE_DEBUG" text="_Debug"/>
+		<menu id="ID_SYSTEM_VERBOSE" text="Verbose način">
+			<item id="ID_SYSTEM_VERBOSE_ERROR" text="Error"/>
+			<item id="ID_SYSTEM_VERBOSE_WARNING" text="Warning"/>
+			<item id="ID_SYSTEM_VERBOSE_NOTICE" text="Notice"/>
+			<item id="ID_SYSTEM_VERBOSE_INFO" text="Info"/>
+			<item id="ID_SYSTEM_VERBOSE_DEBUG" text="Debug"/>
 		</menu>
 		<item id="ID_SYSTEM_TIMESTAMP" text="Ča_sovni žig"/>
 		<separator/>
-		<item id="ID_SYSTEM_COPY" text="_Copy" shortcut="Ctrl+C"/>
+		<item id="ID_SYSTEM_COPY" text="Copy" shortcut="Ctrl+C"/>
 		<separator/>
-		<item id="ID_SYSTEM_CLEAR" text="_Počisti predponilnik"/>
+		<item id="ID_SYSTEM_CLEAR" text="Počisti predponilnik"/>
 	</menu>
 	<!-- NEIGHBOURS WINDOW -->
 	<menu name="CNeighboursWnd.Basic">
-		<item id="ID_BROWSE_LAUNCH" text="_Brskanje po uporabniku"/>
-		<item id="ID_NEIGHBOURS_CHAT" text="_Kramljaj z uporabnikom"/>
+		<item id="ID_BROWSE_LAUNCH" text="Brskanje po uporabniku"/>
+		<item id="ID_NEIGHBOURS_CHAT" text="Kramljaj z uporabnikom"/>
 		<separator/>
-		<item id="ID_NEIGHBOURS_DISCONNECT" text="_Prekini povezavo"/>
+		<item id="ID_NEIGHBOURS_DISCONNECT" text="Prekini povezavo"/>
 		<separator/>
-		<item id="ID_NEIGHBOURS_URI" text="Kopiraj _URI"/>
+		<item id="ID_NEIGHBOURS_URI" text="Kopiraj URI"/>
 	</menu>
 	<menu name="CNeighboursWnd">
-		<item id="ID_BROWSE_LAUNCH" text="_Brskanje po uporabniku"/>
-		<item id="ID_NEIGHBOURS_CHAT" text="_Kramljaj z uporabnikom"/>
-		<item id="ID_SECURITY_BAN" text="_Izobči uporabnika"/>
+		<item id="ID_BROWSE_LAUNCH" text="Brskanje po uporabniku"/>
+		<item id="ID_NEIGHBOURS_CHAT" text="Kramljaj z uporabnikom"/>
+		<item id="ID_SECURITY_BAN" text="Izobči uporabnika"/>
 		<separator/>
-		<item id="ID_NEIGHBOURS_DISCONNECT" text="_Prekini povezavo"/>
+		<item id="ID_NEIGHBOURS_DISCONNECT" text="Prekini povezavo"/>
 		<separator/>
-		<item id="ID_NEIGHBOURS_URI" text="Kopiraj _URI"/>
+		<item id="ID_NEIGHBOURS_URI" text="Kopiraj URI"/>
 		<separator/>
-		<menu text="_Omrežja">
-			<item id="ID_NETWORK_CONNECT" text="_Poveži se"/>
-			<item id="ID_NETWORK_DISCONNECT" text="_Prekini povezavo"/>
+		<menu text="Omrežja">
+			<item id="ID_NETWORK_CONNECT" text="Poveži se"/>
+			<item id="ID_NETWORK_DISCONNECT" text="Prekini povezavo"/>
 			<separator/>
 			<item id="ID_NETWORK_G2" text="Gnutella_2"/>
-			<item id="ID_NETWORK_G1" text="_Gnutella"/>
-			<item id="ID_NETWORK_ED2K" text="_eDonkey2000"/>
-			<item id="ID_NETWORK_DC" text="_DC++"/>
-			<item id="ID_NETWORK_BT" text="_BitTorrent"/>
+			<item id="ID_NETWORK_G1" text="Gnutella"/>
+			<item id="ID_NETWORK_ED2K" text="eDonkey2000"/>
+			<item id="ID_NETWORK_DC" text="DC++"/>
+			<item id="ID_NETWORK_BT" text="BitTorrent"/>
 			<separator/>
-			<item id="ID_VIEW_DISCOVERY" text="_Discovery"/>
-			<item id="ID_VIEW_HOSTS" text="_Predpomnilnik gostitelja"/>
-			<item id="ID_VIEW_SECURITY" text="_Varnost"/>
+			<item id="ID_VIEW_DISCOVERY" text="Discovery"/>
+			<item id="ID_VIEW_HOSTS" text="Predpomnilnik gostitelja"/>
+			<item id="ID_VIEW_SECURITY" text="Varnost"/>
 		</menu>
-		<menu text="_Nadzornik">
-			<item id="ID_NEIGHBOURS_VIEW_ALL" text="Poglej _ves promet"/>
+		<menu text="Nadzornik">
+			<item id="ID_NEIGHBOURS_VIEW_ALL" text="Poglej ves promet"/>
 			<item id="ID_NEIGHBOURS_VIEW_INCOMING" text="Poglej v_hodni promet"/>
 			<item id="ID_NEIGHBOURS_VIEW_OUTGOING" text="Poglej i_zhodni promet"/>
 		</menu>
 	</menu>
 	<!-- SEARCH MONITOR WINDOW -->
 	<menu name="CSearchMonitorWnd">
-		<item id="ID_HITMONITOR_SEARCH" text="_Išči po tem"/>
+		<item id="ID_HITMONITOR_SEARCH" text="Išči po tem"/>
 		<separator/>
-		<item id="ID_SEARCHMONITOR_PAUSE" text="_Premor prikaza"/>
-		<item id="ID_SEARCHMONITOR_CLEAR" text="_Počisti medpomnilnik (buffer)"/>
+		<item id="ID_SEARCHMONITOR_PAUSE" text="Premor prikaza"/>
+		<item id="ID_SEARCHMONITOR_CLEAR" text="Počisti medpomnilnik (buffer)"/>
 	</menu>
 	<!-- GRAPH/TRAFFIC WINDOW -->
 	<menu name="CTrafficWnd">
-		<item id="ID_TRAFFIC_SETUP" text="Izberi _grafikone..."/>
+		<item id="ID_TRAFFIC_SETUP" text="Izberi grafikone..."/>
 		<separator/>
-		<item id="ID_TRAFFIC_GRID" text="_Mrežne črte"/>
-		<item id="ID_TRAFFIC_AXIS" text="_Os"/>
-		<item id="ID_TRAFFIC_LEGEND" text="_Legenda"/>
+		<item id="ID_TRAFFIC_GRID" text="Mrežne črte"/>
+		<item id="ID_TRAFFIC_AXIS" text="Os"/>
+		<item id="ID_TRAFFIC_LEGEND" text="Legenda"/>
 		<separator/>
-		<item id="ID_TRAFFIC_CLEAR" text="_Počisti"/>
+		<item id="ID_TRAFFIC_CLEAR" text="Počisti"/>
 		<separator/>
-		<item id="ID_TRAFFIC_WINDOW" text="_Novo okno"/>
+		<item id="ID_TRAFFIC_WINDOW" text="Novo okno"/>
 	</menu>
 	<!-- SECURITY WINDOW -->
 	<menu name="CSecurityWnd">
 		<item id="ID_SECURITY_ADD" text="D_odaj pravilo..."/>
 		<separator/>
-		<item id="ID_SECURITY_REMOVE" text="_Odstrani"/>
-		<item id="ID_SECURITY_RESET" text="_Ponastavi"/>
+		<item id="ID_SECURITY_REMOVE" text="Odstrani"/>
+		<item id="ID_SECURITY_RESET" text="Ponastavi"/>
 		<separator/>
-		<item id="ID_SECURITY_MOVE_UP" text="Premakni _gor"/>
-		<item id="ID_SECURITY_MOVE_DOWN" text="Premakni _dol"/>
+		<item id="ID_SECURITY_MOVE_UP" text="Premakni gor"/>
+		<item id="ID_SECURITY_MOVE_DOWN" text="Premakni dol"/>
 		<separator/>
-		<item id="ID_SECURITY_IMPORT" text="_Uvozi..."/>
-		<item id="ID_SECURITY_EXPORT" text="_Izvozi..."/>
+		<item id="ID_SECURITY_IMPORT" text="Uvozi..."/>
+		<item id="ID_SECURITY_EXPORT" text="Izvozi..."/>
 		<separator/>
-		<menu text="_Privzeta pravila">
-			<item id="ID_SECURITY_POLICY_ACCEPT" text="_Sprejmi"/>
-			<item id="ID_SECURITY_POLICY_DENY" text="_Zavrni"/>
+		<menu text="Privzeta pravila">
+			<item id="ID_SECURITY_POLICY_ACCEPT" text="Sprejmi"/>
+			<item id="ID_SECURITY_POLICY_DENY" text="Zavrni"/>
 		</menu>
 		<separator/>
-		<item id="ID_SECURITY_EDIT" text="_Lastnosti"/>
+		<item id="ID_SECURITY_EDIT" text="Lastnosti"/>
 	</menu>
 	<!-- DISCOVERY SERVICES WINDOW -->
 	<menu name="CDiscoveryWnd">
-		<item id="ID_DISCOVERY_ADD" text="_Dodaj storitev..."/>
+		<item id="ID_DISCOVERY_ADD" text="Dodaj storitev..."/>
 		<separator/>
-		<item id="ID_DISCOVERY_EDIT" text="_Lastnosti"/>
+		<item id="ID_DISCOVERY_EDIT" text="Lastnosti"/>
 		<item id="ID_DISCOVERY_REMOVE" text="O_dstrani"/>
 		<separator/>
-		<item id="ID_DISCOVERY_QUERY" text="_Poizvedi takoj"/>
-		<item id="ID_DISCOVERY_ADVERTISE" text="_Objavi"/>
-		<item id="ID_DISCOVERY_BROWSE" text="Brskaj po _statistiki"/>
+		<item id="ID_DISCOVERY_QUERY" text="Poizvedi takoj"/>
+		<item id="ID_DISCOVERY_ADVERTISE" text="Objavi"/>
+		<item id="ID_DISCOVERY_BROWSE" text="Brskaj po statistiki"/>
 		<separator/>
-		<item id="ID_DISCOVERY_GNUTELLA" text="Pokaži _Bootstraps"/>
-		<item id="ID_DISCOVERY_WEBCACHE" text="Pokaži _GWebCaches"/>
+		<item id="ID_DISCOVERY_GNUTELLA" text="Pokaži Bootstraps"/>
+		<item id="ID_DISCOVERY_WEBCACHE" text="Pokaži GWebCaches"/>
 		<item id="ID_DISCOVERY_SERVERLIST" text="Pokaži Ser_ver.met's"/>
 		<item id="ID_DISCOVERY_BLOCKED" text="Pokaži Blokirani"/>
 	</menu>
@@ -1496,20 +1496,20 @@
 		<item id="ID_CHAT_CONNECT" text="Po_veži se"/>
 		<item id="ID_CHAT_DISCONNECT" text="Pre_kini povezavo"/>
 		<separator/>
-		<item id="ID_CHAT_BROWSE" text="_Brskanje po uporabniku"/>
-		<!--item id="ID_CHAT_SEND_FILE" text="Pošlji _datoteko..."-->
-		<item id="ID_CHAT_PRIORITY" text="_Potrdi prednost"/>
+		<item id="ID_CHAT_BROWSE" text="Brskanje po uporabniku"/>
+		<!--item id="ID_CHAT_SEND_FILE" text="Pošlji datoteko..."-->
+		<item id="ID_CHAT_PRIORITY" text="Potrdi prednost"/>
 		<separator/>
-		<menu text="_Oblika">
-			<item id="ID_CHAT_BOLD" text="_Krepka pisava"/>
-			<item id="ID_CHAT_ITALIC" text="_Ležeča pisava"/>
-			<item id="ID_CHAT_UNDERLINE" text="_Podčrtana pisava"/>
-			<item id="ID_CHAT_COLOR" text="_Barva pisave"/>
-			<item id="ID_CHAT_EMOTICONS" text="_Smeški (emotikoni)"/>
+		<menu text="Oblika">
+			<item id="ID_CHAT_BOLD" text="Krepka pisava"/>
+			<item id="ID_CHAT_ITALIC" text="Ležeča pisava"/>
+			<item id="ID_CHAT_UNDERLINE" text="Podčrtana pisava"/>
+			<item id="ID_CHAT_COLOR" text="Barva pisave"/>
+			<item id="ID_CHAT_EMOTICONS" text="Smeški (emotikoni)"/>
 		</menu>
 		<separator/>
-		<item id="ID_CHAT_TIMESTAMP" text="_Časovni žig"/>
-		<item id="ID_CHAT_CLEAR" text="Počisti _okno"/>
+		<item id="ID_CHAT_TIMESTAMP" text="Časovni žig"/>
+		<item id="ID_CHAT_CLEAR" text="Počisti okno"/>
 	</menu>
 </menus>
 <!-- Documents -->
@@ -3100,8 +3100,9 @@
 	<string id="20807" text="Zavračam nalaganje &quot;%s&quot; do %s (%s), preveč hkratnih povezav gostitelja."/>
 	<string id="20808" text="Zavrnjeno nalaganje (upload) za &quot;%s&quot; do %s (%s), zaseden in odjemalec ne podpira čakalnih vrst."/>
 	<string id="20809" text="Zavračam nalaganje &quot;%s&quot; do %s (%s), vse enake čakalne vrste so polne."/>
-	<string id="20810" text="Gostitelj za nalaganje %s je zaprosil po nezadovoljivem razponu datoteke &quot;%s&quot;."/>
-	<string id="20811" text="Naložki eDonkey2000 se ne smejo preklicati. Ste prepričani, da želite preklicati nalaganje?"/>
+	<string id="20810" text="Zavračam nalaganje &quot;%s&quot; do %s (%s), Knjižnica je zasedena."/>
+	<string id="20811" text="Gostitelj za nalaganje %s je zaprosil po nezadovoljivem razponu datoteke &quot;%s&quot;."/>
+	<string id="20861" text="Naložki eDonkey2000 se ne smejo preklicati. Ste prepričani, da želite preklicati nalaganje?"/>
 	<string id="20812" text="Ne morem odpreti &quot;%s&quot; za nalaganje do gostitelja %s, napaka na disku ali datoteki."/>
 	<string id="20813" text="Začenjam potisno (push) povezavo do %s. %s"/>
 	<string id="20814" text="Potisna (push) povezava z gostiteljem %s ni uspela."/>
@@ -3147,14 +3148,14 @@
 	<string id="20858" text="Pri čakanju na prošnjo od gostitelja %s za nalaganje je potekla časovna omejitev."/>
 	<string id="20859" text="Zapiram povezavo za nalaganje (upload) %s zaradi pomanjkanja prometa."/>
 	<string id="20860" text="Nalagam 'tiger-tree' podatke za &quot;%s&quot; do %s."/>
-	<string id="20861" text="Odstranil naložek (upload) od &quot;%s&quot; do %s."/>
-	<string id="20862" text="Dodaj"/>
-	<string id="20864" text="&amp;Brskaj"/>
-	<string id="20865" text="&amp;Poveži se"/>
-	<string id="20866" text="Datotečno ime:"/>
-	<string id="20867" text="Gostitelj:"/>
-	<string id="20868" text="Vrata:"/>
-	<!--string id="20869" text="Obvestila o URL akciji ni bilo mogoče prikazati, ker je Envy zaposlena."-->
+	<string id="20862" text="Odstranil naložek (upload) od &quot;%s&quot; do %s."/>
+	<string id="20864" text="Dodaj"/>
+	<string id="20865" text="&amp;Brskaj"/>
+	<string id="20866" text="&amp;Poveži se"/>
+	<string id="20867" text="Datotečno ime:"/>
+	<string id="20868" text="Gostitelj:"/>
+	<string id="20869" text="Vrata:"/>
+	<!--string id="20876" text="Obvestila o URL akciji ni bilo mogoče prikazati, ker je Envy zaposlena."-->
 	<string id="20870" text="Razčlenba (parsanje) URL-ja: Envy ne razume tega URL-ja."/>
 	<string id="20871" text="Sprejel URL &quot;%s&quot;"/>
 	<string id="20872" text="Tip:"/>
@@ -3191,22 +3192,22 @@
 	<dialog name="CGeneralSettingsGroup" cookie="Af" caption="Splošno"/>
 	<dialog name="CInternetSettingsGroup" cookie="Af" caption="Medmrežje"/>
 	<dialog name="CGeneralSettingsPage" cookie="BuBuBuBuBuBuBuBuStCoBuBuBuBuBuBuSyStEdmsStmsBuBuStCoStCo" caption="Splošno">
-		<control text="_Splošno:"/>
+		<control text="Splošno:"/>
 		<control text="Zaženi program, ko se postavi oper.sistem"/>
 		<control text="Samodejno poveži ob zagonu programa"/>
 		<control text="Opozori pred odpiranjem URI-jev"/>
 		<control text="Check for updates"/>
-		<control text="_Prenosi:"/>
+		<control text="Prenosi:"/>
 		<control text="Širjanje novih prenosov naj bo privzeto"/>
 		<control text="Prikaži preprosto vrstico napredka"/>
 		<control text="Pokaži ocene v :"/>
 		<control text="bitih/sekundah|bajtih-ih/sekundah|b/s|B/s|Kb/s|KB/s|Mb/s|MB/s"/>
-		<control text="_Iskanje:"/>
+		<control text="Iskanje:"/>
 		<control text="Širjanje večvirnih datotek naj bo privzeto"/>
 		<control text="Pri prenašanju preklopi na pogled 'Prenosi'"/>
 		<control text="Skrij stransko okno ob začetku iskanja"/>
 		<control text="Pri iskanju od-filtriraj vsebino za odrasle"/>
-		<control text="_Zaslonski namigi:"/>
+		<control text="Zaslonski namigi:"/>
 		<control/>
 		<control text="Zakasnitev(ms):"/>
 		<control/>
@@ -3214,21 +3215,21 @@
 		<control text="Motnost:"/>
 		<control/>
 		<control text="Shadows"/>
-		<control text="_Opravilna vrstica:"/>
+		<control text="Opravilna vrstica:"/>
 		<control text="Ko kliknem zapri:"/>
 		<control text="Vprašaj me|Minimiziraj|Minimiziraj v opravilno vrstico|Zapri po prenosih|Takoj zapri"/>
 		<control text="Ko izberem minimizranje:"/>
 		<control text="Navadno|Minimiziraj v opravilno vrstico"/>
 	</dialog>
 	<dialog name="CLibrarySettingsPage" cookie="BuBuBuBuBuBuBuBuStEdmsStStEdmsStBuBuBuCoBuBuBuCoBuBuBuEdBu" caption="Knjižnica">
-		<control text="_Možnosti:"/>
+		<control text="Možnosti:"/>
 		<control text="Dovoljuj brskanje drugim"/>
 		<control text="Opazuj knjižnične mape"/>
 		<control text="Hitro zgoščevanje (+procesor)"/>
 		<control text="Zapomni si poglede hitro"/>
 		<control text="Smart video series detection"/>
 		<control text="Create ghost files by default"/>
-		<control text="_Nedavne datoteke:"/>
+		<control text="Nedavne datoteke:"/>
 		<control text="Zapomnite si:"/>
 		<control/>
 		<control/>
@@ -3239,35 +3240,35 @@
 		<control text="dni"/>
 		<control text="Počisti zgodovino"/>
 		<control text="Počisti ghosts"/>
-		<control text="_Varno za odpiranje:"/>
+		<control text="Varno za odpiranje:"/>
 		<control/>
-		<control text="_Dodaj"/>
-		<control text="_Odstrani"/>
-		<control text="_Nikoli ne deli:"/>
+		<control text="Dodaj"/>
+		<control text="Odstrani"/>
+		<control text="Nikoli ne deli:"/>
 		<control/>
-		<control text="_Dodaj"/>
-		<control text="_Odstrani"/>
-		<control text="Shrani _zbirke na tem mestu:"/>
+		<control text="Dodaj"/>
+		<control text="Odstrani"/>
+		<control text="Shrani zbirke na tem mestu:"/>
 		<control/>
 		<control/>
 	</dialog>
 	<dialog name="CMediaSettingsPage" cookie="CMediaSettingsPage" caption="Predvajalnik">
-		<control text="_Medijske storitve:"/>
+		<control text="Medijske storitve:"/>
 		<control text="Izberi Medijske Handler:"/>
 		<control/>
 		<control text="Uporabi Envy predvajalnik za PREDVAJANJE spodaj navedenih datotečnih tipov"/>
 		<control text="Uporabi Envy predvajalnik za POSTAVITEV V VRSTO spodaj navedenih datotečnih tipov"/>
-		<control text="_Tipi datotek:"/>
+		<control text="Tipi datotek:"/>
 		<control/>
-		<control text="_Dodaj"/>
-		<control text="_Odstrani"/>
-		<control text="Zvokovni _vizualizacijski vtičnik:"/>
-		<control text="_Izberi vtičnik..."/>
+		<control text="Dodaj"/>
+		<control text="Odstrani"/>
+		<control text="Zvokovni vizualizacijski vtičnik:"/>
+		<control text="Izberi vtičnik..."/>
 		<control text="Note: Choosing an external Media Handler will disable Media/Visualization Plugins."/>
 	</dialog>
 	<!--Missing dialog name="CIRCSettingsPage"-->
 	<dialog name="CCommunitySettingsPage" cookie="BuBuBuBuBuBuBuBuBuSt" caption="Družba">
-		<control text="_Kramljaj:"/>
+		<control text="Kramljaj:"/>
 		<control text="Omogoči P2P kramljanje s združljivimi odjemalci"/>
 		<control text="Omogoči kramljanje na vseh omrežjih"/>
 		<control text="Filtriraj e-slamo (spam) v klepetalniških sporočilih"/>
@@ -3279,10 +3280,10 @@
 		<control text="Uporabljate lahko vaš Gnutella uporabniški profil za prikaz vaših informacij drugim kot npr. interesi, priporočene datoteke, spletne strani itd."/>
 	</dialog>
 	<dialog name="CRemoteSettingsPage" cookie="BuBuStBuStStEdEdStBuSt" caption="Oddaljen dostop">
-		<control text="_Omogoči:"/>
+		<control text="Omogoči:"/>
 		<control text="Omogoči oddaljen dostop do programa Envy:"/>
 		<control/>
-		<control text="_Uporabniški dostop:"/>
+		<control text="Uporabniški dostop:"/>
 		<control text="Uporabniško ime:"/>
 		<control text="Geslo:"/>
 		<control/>
@@ -3292,7 +3293,7 @@
 		<control text="Envy oddaljen dostop vam omogoča, da z zagnanim programom upravljate oddaljeno s pomočjo spletnega brskalnika. Za to boste morali najprej dovoliti vhodne povezave (npr. ustrezno nastavljen usmerjevalnik in požarni zid, itd.)."/>
 	</dialog>
 	<dialog name="CWebSettingsPage" cookie="BuStBuBuBuBuBuBuBuBuCoBuBuSt" caption="Splet">
-		<control text="_P2P obdelava povezav:"/>
+		<control text="P2P obdelava povezav:"/>
 		<control text="Uporabi Envy za odpiranje naslednjih vrst povezav:"/>
 		<control text="Magnet (magnet:)"/>
 		<control text="Gnutella (gnutella:)"/>
@@ -3300,15 +3301,15 @@
 		<control text="Piolet (mp2p:)"/>
 		<control text="DC++ (dchub:)"/>
 		<control text="BitTorrent (.torrent)"/>
-		<control text="_Upravljalec prenosov:"/>
+		<control text="Upravljalec prenosov:"/>
 		<control text="Uporabi Envy za upravljanje vseh spletnih prenosov:"/>
 		<control/>
-		<control text="_Dodaj"/>
-		<control text="_Odstrani"/>
+		<control text="Dodaj"/>
+		<control text="Odstrani"/>
 		<control text="Vtičnik za prenosni upravljalec bo poskušal prenesti samo naslednje datotečne vrste. Druge datotečne vrste bo prevzel spletni brskalnik. Za takšno upravljanje prenosov mora biti Envy obvezno zagnana."/>
 	</dialog>
 	<dialog name="CConnectionSettingsPage" cookie="BuStCoStCoStEdBuBuBuStCoStCoBuStCoBuBuBuStEdmsStEdms" caption="Povezava">
-		<control text="_Vhodni naslov:"/>
+		<control text="Vhodni naslov:"/>
 		<control text="Naslov:"/>
 		<control text="Samodejno"/>
 		<control text="Hitrost:"/>
@@ -3317,17 +3318,17 @@
 		<control/>
 		<control text="Naključna"/>
 		<control text="Prisili navezovanje (binding) na naslednji naslov"/>
-		<control text="_Izhodni naslov:"/>
+		<control text="Izhodni naslov:"/>
 		<control text="Naslov:"/>
 		<control text="Samodejno"/>
 		<control text="Hitrost:"/>
 		<control/>
-		<control text="_Možnosti:"/>
+		<control text="Možnosti:"/>
 		<control text="Dovoljevanje vhodnih povezav"/>
 		<control/>
 		<control text="Prezri zasebne/lokalne IP naslove"/>
 		<control text="Enable Plug'n'Play port-forwarding"/>
-		<control text="_Časovne omejitve:"/>
+		<control text="Časovne omejitve:"/>
 		<control text="Povezava:"/>
 		<control/>
 		<control/>
@@ -3342,7 +3343,7 @@
 		<control text="Shrani _začasne nedokončane datoteke na tem mestu:"/>
 		<control/>
 		<control/>
-		<control text="_Število prenosov:"/>
+		<control text="Število prenosov:"/>
 		<control text="Največ datotek:"/>
 		<control/>
 		<control/>
@@ -3352,18 +3353,18 @@
 		<control text="Prenosov/datoteko:"/>
 		<control/>
 		<control/>
-		<control text="_Omejitve:"/>
+		<control text="Omejitve:"/>
 		<control text="Skupna prenosna pasovna širina:"/>
 		<control/>
 		<control text="Največja dolžina čakalne vrste:"/>
 		<control/>
-		<control text="_Varnost:"/>
+		<control text="Varnost:"/>
 		<control text="Prenašaj (download) in nalagaj (upload) samo na povezana omrežja."/>
 		<control text="AntiVirus:"/>
 		<control/>
 	</dialog>
 	<dialog name="CUploadsSettingsPage" cookie="BuBuBuBuBuStEdmsBuCoBuBuBuStCoStCoBuSyBuBuBuSt" caption="Naložki (uploads)">
-		<control text="_Možnosti:"/>
+		<control text="Možnosti:"/>
 		<control text="Omeji deljenje v 'hub' načinu"/>
 		<control text="Deli NOVE delne prenose"/>
 		<control text="Deljenje datotečnih predogledov"/>
@@ -3371,20 +3372,20 @@
 		<control text="Omeji na edinstv. gostit.:"/>
 		<control/>
 		<control/>
-		<control text="_Filter uporabniškega agenta:"/>
+		<control text="Filter uporabniškega agenta:"/>
 		<control/>
 		<control text="+"/>
 		<control text="-"/>
-		<control text="_Pasovna širina:"/>
+		<control text="Pasovna širina:"/>
 		<control text="Omejitev:"/>
 		<control/>
 		<control text="Način:"/>
 		<control text="Povprečje|Maksimum"/>
-		<control text="_Čakalne vrste:"/>
+		<control text="Čakalne vrste:"/>
 		<control/>
-		<control text="_Nova..."/>
-		<control text="_Uredi..."/>
-		<control text="_Briši"/>
+		<control text="Nova..."/>
+		<control text="Uredi..."/>
+		<control text="Briši"/>
 		<control text="(spremembe pridejo v veljavo takoj)"/>
 	</dialog>
 	<dialog name="CNetworksSettingsPage" cookie="StBuStBuStBuStBuStBuStBuStBuStBuSt" caption="Omrežja">
@@ -3437,21 +3438,21 @@
 		<control text="Vrstnik do vrstnika:"/>
 		<control/>
 		<control/>
-		<control text="_Stiskanje povezave:"/>
+		<control text="Stiskanje povezave:"/>
 		<control text="Zvezdišče do lista"/>
 		<control text="List do zvezdišča"/>
 		<control text="Zvezdišče do zvezd."/>
 	</dialog>
 	<dialog name="CDonkeySettingsPage" cookie="BuBuBuBuStEdmsStBuBuStEdmsStBuBuBuSt" caption="eDonkey">
-		<control text="_eDonkey2000 omrežje:"/>
+		<control text="eDonkey2000 omrežje:"/>
 		<control text="Poveži se v eDonkey2000 takoj"/>
 		<control text="Samodejno poveži v vsaki seji"/>
-		<control text="_Odjemalčeve povezave:"/>
+		<control text="Odjemalčeve povezave:"/>
 		<control text="Poveži se z največ"/>
 		<control/>
 		<control/>
 		<control text="ostalimi eDonkey odjemalci."/>
-		<control text="_Univerzalno iskanje:"/>
+		<control text="Univerzalno iskanje:"/>
 		<control text="Išči poznane oddaljene strežnike v strežniškem medpomnilniku:"/>
 		<control text="Prekini iskanje po"/>
 		<control/>
@@ -3463,22 +3464,22 @@
 		<control text="Prenesi eDonkey seznam strežnikov iz spleta:"/>
 	</dialog>
 	<dialog name="CDCSettingsPage" cookie="BuBuBuBuStEdmsStBuStBuBuSt" caption="DC++">
-		<control text="_DC++ omrežje:"/>
+		<control text="DC++ omrežje:"/>
 		<control text="Poveži se v DC++ takoj"/>
 		<control text="Samodejno poveži v vsaki seji"/>
-		<control text="_Hubs:"/>
+		<control text="Hubs:"/>
 		<control text="Connect by default to:"/>
 		<control/>
 		<control/>
 		<control text="DC++ hubs."/>
-		<control text="_Info:"/>
+		<control text="Info:"/>
 		<control text="DC++ works by connecting to specific &quot;hub&quot; communities. Please select hubs from the &quot;Hostcache&quot; advanced view window (F8), otherwise one will be randomly selected."/>
-		<control text="_Orodja:"/>
+		<control text="Orodja:"/>
 		<control text="Prenesi..."/>
 		<control text="Update DC++ hubs from the web. (hublist.xml.bz2)"/>
 	</dialog>
 	<dialog name="CBitTorrentSettingsPage" cookie="BuEdmsStEdmsStBuBuBuBuBuEdmsStBuEdBuBuEdBuStEd" caption="BitTorrent">
-		<control text="_Prenosne povezave:"/>
+		<control text="Prenosne povezave:"/>
 		<control/>
 		<control/>
 		<control text="Torrentov na enkrat"/>
@@ -3487,16 +3488,16 @@
 		<control text="Povezave odjemalca"/>
 		<control text="Omogoči BitTorrent DHT"/>
 		<control text="Daj prednost torrent virom"/>
-		<control text="_EndGame:"/>
+		<control text="EndGame:"/>
 		<control text="Omogoči EndGame način pri zaključevanju torrentov"/>
 		<control text="Počisti prenešene torrente ...ko deljeni delež doseže:"/>
 		<control/>
 		<control/>
 		<control text="%"/>
-		<control text="_Shrani Torrente na tem mestu:"/>
+		<control text="Shrani Torrente na tem mestu:"/>
 		<control/>
 		<control/>
-		<control text="_Ustvarjalec Torrentov:"/>
+		<control text="Ustvarjalec Torrentov:"/>
 		<control/>
 		<control/>
 		<control text="Privzeti sledilnik:"/>
@@ -3523,7 +3524,7 @@
 		<control/>
 		<control text="Opis:"/>
 		<control/>
-		<control text="_Namestitev..."/>
+		<control text="Namestitev..."/>
 		<control text="Več"/>
 	</dialog>
 	<dialog name="CAdvancedSettingsPage" cookie="SyBuStEdmsEdCoBuBuStEd" caption="Napredno">
@@ -3544,9 +3545,9 @@
 		<control/>
 	</dialog>
 	<dialog name="CQueuePropertiesDlg" cookie="BuEdBuBuBuBuBuEdBuEdBuCoBuEdBuSyBuBuStEdmsStEdmsStEdmsBuStEdStEdmsBuEdmsBuBuBu" caption="Lastnosti čakalne vrste za nalaganje">
-		<control text="_Naziv:"/>
+		<control text="Naziv:"/>
 		<control/>
-		<control text="_Vnosni kriterij:"/>
+		<control text="Vnosni kriterij:"/>
 		<control text="Samo delno prenešene datoteke"/>
 		<control text="Shared Library files only"/>
 		<control text="Both partial and library files"/>
@@ -3560,7 +3561,7 @@
 		<control/>
 		<control text="Protokoli:"/>
 		<control/>
-		<control text="_Zmogljivost:"/>
+		<control text="Zmogljivost:"/>
 		<control text="Omogoči čakalno vrsto"/>
 		<control text="Najmanjše št. prenosov:"/>
 		<control/>
@@ -3571,7 +3572,7 @@
 		<control text="Največje št. v čakalni vrsti:"/>
 		<control/>
 		<control/>
-		<control text="_Parametri storitev:"/>
+		<control text="Parametri storitev:"/>
 		<control text="Odstotek nasičene pasovne širine:"/>
 		<control/>
 		<control text="Pas. šir. za pošiljanje v tej čak. vrsti:"/>
@@ -3602,7 +3603,7 @@
 	<dialog name="CWizardConnectionPage" cookie="StStCoStStCoStCoStCoStEdBuStms" caption="Dobrodošli v Envy (2/8)">
 		<control text="For optimum performance, Envy needs to know a little bit about your connection to the Internet."/>
 		<control text="Če poznate hitrost vaše povezave v medmrežje, jo izberite iz spodnjega seznama:"/>
-		<control text="| Modemska povezava| ISDN 128K| DSL 768K| DSL 1.5| Kabelski 3| DSL 4| DSL2 8| FIOS 10| DSL2 12| FIOS 15| FIOS 20| FIOS 25| FIOS 30| FIOS 50| T1| T3| LAN| OC3"/>
+		<control text="|Modemska povezava|ISDN 128K|DSL 768K|DSL 1.5|Kabelski 3|DSL 4|DSL2 8|FIOS 10|DSL2 12|FIOS 15|FIOS 20|FIOS 25|FIOS 30|FIOS 50|100|200|300|400|Gigabit|T1|T3|LAN|OC3"/>
 		<control text="Preskus pri Speedtest.net"/>
 		<control text="ALI izberite (download):"/>
 		<control/>
@@ -3644,8 +3645,8 @@
 		<control text="Za to, da lahko uporabljate Envy, vam ni nujno potrebno tudi deliti vsebin. Vendar se bodo nekateri programi obnašali drugače, če ne boste sami ponujali nbenih vsebin."/>
 		<control text="Določite katere mape, če sploh, žalite deliti z drugimi. Za dodajanje novih map kliknite na gumb Dodaj."/>
 		<control/>
-		<control text="_Dodaj..."/>
-		<control text="_Odstrani"/>
+		<control text="Dodaj..."/>
+		<control text="Odstrani"/>
 		<control text="OPOZORILO: Distribucija avtorsko zaščitenih del brez dovoljenja avtorja se smatra kot kaznivo dejanje v večini držav."/>
 	</dialog>
 	<dialog name="CFolderScanDlg" cookie="StStStStStStBu" caption="Pregledujem mapo...">
@@ -3722,39 +3723,39 @@
 		<control/>
 		<control text="Info:"/>
 		<control text="{n}G2 (Envy / Shareaza)"/>
-		<control text="_Omogoči:"/>
+		<control text="Omogoči:"/>
 		<control text="Dovoli drugim, da si lahko ogledajo moj uporabniški profil"/>
 	</dialog>
 	<dialog name="CAvatarProfilePage" cookie="BuStBuStBuBu" caption="Sličica">
-		<control text="_Predogled:"/>
+		<control text="Predogled:"/>
 		<control/>
-		<control text="_Izberi:"/>
+		<control text="Izberi:"/>
 		<control text="Drugi uporabniki omrežja Gnutella, ki bodo brskali po vašem profilu in datotekah v skupni rabi, bodo lahko videli vašo sličico (angl. avatar). Te morajo biti velikosti 128x128 svetlobnih točk (pixels) in so lahko v katerikoli podprti obliki slike na vašem PC-ju."/>
-		<control text="_Brskaj..."/>
-		<control text="_Odstrani"/>
+		<control text="Brskaj..."/>
+		<control text="Odstrani"/>
 	</dialog>
 	<dialog name="CProfileProfilePage" cookie="BuStCoStCoBuStEdStEdBuLiBuBuCo" caption="Lokacija">
-		<control text="_Lokacija:"/>
+		<control text="Lokacija:"/>
 		<control text="Država:"/>
 		<control/>
 		<control text="Mesto:"/>
 		<control/>
-		<control text="_Zemljepisna dolžina/širina:"/>
+		<control text="Zemljepisna dolžina/širina:"/>
 		<control text="Širina:"/>
 		<control/>
 		<control text="Dolžina:"/>
 		<control/>
-		<control text="_Stvari, ki vas zanimajo:"/>
+		<control text="Stvari, ki vas zanimajo:"/>
 		<control/>
 		<control text="Dodaj &gt;"/>
 		<control text="&lt; Odstrani"/>
 		<control/>
 	</dialog>
 	<dialog name="CContactProfilePage" cookie="BuStEdBuStEdStEdStEdStEdStEdStEdStEdStEd" caption="Kontakt">
-		<control text="_E-naslovi:"/>
+		<control text="E-naslovi:"/>
 		<control text="Osnovni:"/>
 		<control/>
-		<control text="_Takojšnje sporočanje:"/>
+		<control text="Takojšnje sporočanje:"/>
 		<control text="GetEnvy.com:"/>
 		<control/>
 		<control text="Facebook:"/>
@@ -3776,13 +3777,13 @@
 		<control/>
 	</dialog>
 	<dialog name="CFilesProfilePage" cookie="BuStSy" caption="Datoteke">
-		<control text="_Priljubljene datoteke:"/>
+		<control text="Priljubljene datoteke:"/>
 		<control text="Priljubljene datoteke so priporočljive uporabnikom, ki brskajo po vašem profilu. Priljublje datoteke lahko dodatke tako, da jih dodate v knjiž. mapo &quot;Zaznamki&quot;."/>
 		<control/>
 	</dialog>
 	<dialog name="CFavoritesProfilePage" cookie="SyBuStEdStEdBuBu" caption="Zaznamki">
 		<control/>
-		<control text="_Uredi:"/>
+		<control text="Uredi:"/>
 		<control text="Naslov:"/>
 		<control/>
 		<control text="URL:"/>
@@ -3791,7 +3792,7 @@
 		<control text="Odstrani"/>
 	</dialog>
 	<dialog name="CCertificateProfilePage" cookie="BuStStStStBuBuSt" caption="Certifikat">
-		<control text="_Globalno neponovljiv identifikacijski certifikat:"/>
+		<control text="Globalno neponovljiv identifikacijski certifikat:"/>
 		<control text="Gnutella/G2 GUID:"/>
 		<control/>
 		<control text="BitTorrent GUID:"/>
@@ -3808,9 +3809,9 @@
 		<control/>
 		<control text="Omrežni _protokol:"/>
 		<control/>
-		<control text="_Zatri ultravrstnika"/>
+		<control text="Zatri ultravrstnika"/>
 		<control text="Poveži"/>
-		<control text="_Prekliči"/>
+		<control text="Prekliči"/>
 	</dialog>
 	<dialog name="CDownloadDlg" cookie="StStStEdStBuBuBu" caption="Prenesi datoteko kot Torrent">
 		<control/>
@@ -3818,15 +3819,15 @@
 		<control text="Prav tako prenese datoteke BitTorrent. Torrent lahko opišemo, kot neko xyz.torrent datoteko ali povezavo tipa HTTP to .torrent datoteke. Za prenos torrent HTTP povezave prilepite naslov s zgornje okence. Če .torrent datoteko že imate, kliknite na Odpri Torrent:"/>
 		<control/>
 		<control/>
-		<control text="_Prenesi"/>
-		<control text="_Prekliči"/>
-		<control text="_Odpri Torrent"/>
+		<control text="Prenesi"/>
+		<control text="Prekliči"/>
+		<control text="Odpri Torrent"/>
 	</dialog>
 	<dialog name="CNewSearchDlg" cookie="EdCoBuBu" caption="Novo iskanje|Ponovno iskanje|Išči v knjižnici">
 		<control/>
 		<control/>
-		<control text="_Išči"/>
-		<control text="_Prekliči"/>
+		<control text="Išči"/>
+		<control text="Prekliči"/>
 	</dialog>
 	<dialog name="CFilterSearchDlg" cookie="BuEdBuStBuStEdStEdStEdmsBuBuBuBuBuBuBuBuBuBuBuBuBuCoBuBuBuBuBu" caption="Filter rezultatov">
 		<control text="Pokaži samo rezultate, ki vsebujejo samo _besede:"/>
@@ -3841,7 +3842,7 @@
 		<control text="Z najmanj viri:"/>
 		<control/>
 		<control/>
-		<control text="_Skrij:"/>
+		<control text="Skrij:"/>
 		<control text="Datot., ki se ne ujemajo s filtrom"/>
 		<control text="Datot., ki jih že imate"/>
 		<control text="Sumljive datoteke"/>
@@ -3855,8 +3856,8 @@
 		<control text="Filtri:"/>
 		<control/>
 		<control text="Nastavi kot privzeto"/>
-		<control text="_Shrani kot"/>
-		<control text="_Briši"/>
+		<control text="Shrani kot"/>
+		<control text="Briši"/>
 		<control text="Filter"/>
 		<control text="Prekliči"/>
 	</dialog>
@@ -3936,8 +3937,8 @@
 		<control text="Dodaj nov vir"/>
 		<control/>
 		<control/>
-		<control text="_Dodaj"/>
-		<control text="_Odstrani"/>
+		<control text="Dodaj"/>
+		<control text="Odstrani"/>
 		<control/>
 	</dialog>
 	<dialog name="CFileCopyDlg" cookie="StStStmsmsStBuBu" caption="Kopiraj datoteke|Premakni datoteke">
@@ -3962,10 +3963,10 @@
 	</dialog>
 	<dialog name="CGraphListDlg" cookie="SyBuBuBuBuBuBuBuBuStEdmsStBuEdBuBu" caption="Grafikoni prometa">
 		<control/>
-		<control text="_Dodaj..."/>
-		<control text="_Uredi..."/>
-		<control text="_Odstrani"/>
-		<control text="_Pokaži:"/>
+		<control text="Dodaj..."/>
+		<control text="Uredi..."/>
+		<control text="Odstrani"/>
+		<control text="Pokaži:"/>
 		<control text="Mrežne črte"/>
 		<control text="Navpična os"/>
 		<control text="Legenda"/>
@@ -3974,7 +3975,7 @@
 		<control/>
 		<control/>
 		<control text="ms"/>
-		<control text="_Ime:"/>
+		<control text="Ime:"/>
 		<control/>
 		<control text="V redu"/>
 		<control text="Prekliči"/>
@@ -3982,24 +3983,24 @@
 	<dialog name="CGraphItemDlg" cookie="BuBuBuCoStEdStEdBuBuStBu" caption="Lastnosti grafikonskega elementa">
 		<control text="V redu"/>
 		<control text="Prekliči"/>
-		<control text="_Vir:"/>
+		<control text="Vir:"/>
 		<control/>
 		<control text="Parameter:"/>
 		<control/>
 		<control text="Enote:"/>
 		<control/>
-		<control text="_Prikaz:"/>
+		<control text="Prikaz:"/>
 		<control text="Izberi barvo..."/>
 		<control/>
-		<control text="_Odstrani"/>
+		<control text="Odstrani"/>
 	</dialog>
 	<dialog name="CSecureRuleDlg" cookie="BuStCoStEdBuStEdEdEdEdStEdEdEdEdBuEdBuBuBuBuEdBuBuStCoStCoEdStEdStEdStBuBu" caption="Varnostno pravilo">
-		<control text="_Pravilo:"/>
+		<control text="Pravilo:"/>
 		<control text="Tip:"/>
 		<control text="IP naslov|Vebinski filter|Blok seznam"/>
 		<control text="Komentar:"/>
 		<control/>
-		<control text="_Omrežni naslov:"/>
+		<control text="Omrežni naslov:"/>
 		<control text="IP naslov:"/>
 		<control/>
 		<control/>
@@ -4010,7 +4011,7 @@
 		<control/>
 		<control/>
 		<control/>
-		<control text="_Vsebinski filter:"/>
+		<control text="Vsebinski filter:"/>
 		<control/>
 		<control text="ali (or)"/>
 		<control text="in (and)"/>
@@ -4018,7 +4019,7 @@
 		<control text="Blok seznam datoteke:"/>
 		<control/>
 		<control text="Brskajte"/>
-		<control text="_Možnosti:"/>
+		<control text="Možnosti:"/>
 		<control text="Dejanje:"/>
 		<control text="Nobeno|Sprejmi|Zavrni"/>
 		<control text="Poteče:"/>
@@ -4071,8 +4072,8 @@
 	<dialog name="CShareManagerDlg" cookie="StSyBuBuBuBu" caption="Upravljalec deljenih map">
 		<control text="Tu je naveden seznam map v vaši knjižnici. S pomočjo spodnjih gumbov lahko dodajate in odstranjujete mape. Ko dodate novo mapo je ta takoj na voljo drugim uporabnikom na mreži vendar jo lahko naknadno umaknete iz seznama deljenih map."/>
 		<control/>
-		<control text="_Dodaj..."/>
-		<control text="_Odstrani"/>
+		<control text="Dodaj..."/>
+		<control text="Odstrani"/>
 		<control text="V redu"/>
 		<control text="Prekliči"/>
 	</dialog>
@@ -4092,7 +4093,7 @@
 		<control text="Tiger Root|SHA1|MD5|ED2K (CMD4)|Datotečno ime|Datotečno ime (URI)|Base datotečno ime|Končnica datoteke|Velikost datoteke|Velikost datoteke (v bajtih)|Pot do mape|Lokalni gostitelj|Lokalna vrata"/>
 		<control text="Izberi predizbor:"/>
 		<control text="Magnet|eDonkey|Magnet HTML|eDonkey HTML"/>
-		<control text="_Kopiraj"/>
+		<control text="Kopiraj"/>
 		<control text="Shrani..."/>
 		<control/>
 		<control text="Prekliči"/>
@@ -4107,10 +4108,10 @@
 		<control/>
 		<control/>
 		<control text="Izberite dejanje, ki ga želite, da ga izvede Envy:"/>
-		<control text="_Prenesi takoj"/>
-		<control text="_Išči datoteko"/>
+		<control text="Prenesi takoj"/>
+		<control text="Išči datoteko"/>
 		<control text="Prekliči"/>
-		<control text="_Zapomni si moj izbor za naslednjič"/>
+		<control text="Zapomni si moj izbor za naslednjič"/>
 		<control text="Odpri _nadzorno okno za prenos"/>
 	</dialog>
 	<dialog name="CBitprintsDownloadDlg" cookie="StStmsBuSySt" caption="Prenašanje metapodatkov...">
@@ -4204,8 +4205,8 @@
 		<control text="Opis:"/>
 		<control/>
 		<control text="Briši|_Nazaj"/>
-		<control text="_Naprej|Izvozi"/>
-		<control text="_Prekliči"/>
+		<control text="Naprej|Izvozi"/>
+		<control text="Prekliči"/>
 	</dialog>
 	<dialog name="CTorrentSeedDlg" cookie="StBuBuBuStms" caption="Odpri Torrent datoteko">
 		<control text="Odprli ste BitTorrent torrent datoteko. Želite prenesti njeno vsebino ali pa jo ponovno sejati (re-seed)?"/>
@@ -4225,14 +4226,14 @@
 		<control/>
 		<control/>
 		<control text="Sledilnik:"/>
-		<control text="_Trenutni sledilnik:"/>
+		<control text="Trenutni sledilnik:"/>
 		<control text="Semena (dokončani):"/>
 		<control text="Peers (nedokončani):"/>
 		<control text="Sledilniški način:"/>
 		<control text="Onemogočen|Prilagojen|Sledilnik|Sledilniki|Sledilniki (zaklenjeno)"/>
-		<control text="_Osveži"/>
-		<control text="_Dodaj"/>
-		<control text="_Odstrani"/>
+		<control text="Osveži"/>
+		<control text="Dodaj"/>
+		<control text="Odstrani"/>
 	</dialog>
 	<dialog name="CTorrentGeneralPage" cookie="BuStEdStEdStEdStEdBuStCoEdStStEd" caption="Splošno">
 		<control/>
@@ -4242,7 +4243,7 @@
 		<control/>
 		<control text="&#160;Po potrebi| Ko razmerje preseže 100%| Ob zahtevku| Nikoli"/>
 		<control/>
-		<control text="_Informacije o Torrentu:"/>
+		<control text="Informacije o Torrentu:"/>
 		<control text="Ime:"/>
 		<control text="Ustvarjen:"/>
 		<control text="Ustvaril:"/>
@@ -4286,23 +4287,23 @@
 		<control/>
 		<control/>
 		<control text="Dejanja:"/>
-		<control text="_Brisalec podatkov:"/>
+		<control text="Brisalec podatkov:"/>
 		<control text="Bajtski (byte) niz:"/>
 		<control text="do"/>
 		<control text="Briši"/>
 	</dialog>
 	<dialog name="CDownloadGroupDlg" cookie="BuEdBuEdBuBuBuCoBuBuBuCoStBuBu" caption="Lastnosti prenosne skupine">
-		<control text="_Ime:"/>
+		<control text="Ime:"/>
 		<control/>
-		<control text="_Mapa z dokončanimi datotekami:"/>
+		<control text="Mapa z dokončanimi datotekami:"/>
 		<control/>
 		<control/>
 		<control/>
-		<control text="_Filtri:"/>
+		<control text="Filtri:"/>
 		<control/>
-		<control text="_Dodaj"/>
-		<control text="_Odstrani"/>
-		<control text="_Datotečnih tipov:"/>
+		<control text="Dodaj"/>
+		<control text="Odstrani"/>
+		<control text="Datotečnih tipov:"/>
 		<control/>
 		<control text="*Drag&apos;n&apos;drop any download later."/>
 		<control text="V redu"/>
@@ -4312,7 +4313,7 @@
 		<control text="Izberi vizualizacijo zvoka iz ponujenega seznama:"/>
 		<control/>
 		<control text="Prikaz v vznožju|Celozaslonski način|Velik prikaz|Srednji prikaz|Mali prikaz"/>
-		<control text="_Namestitev..."/>
+		<control text="Namestitev..."/>
 		<control text="V redu"/>
 		<control text="Prekliči"/>
 	</dialog>
@@ -4320,7 +4321,7 @@
 		<control text="Na voljo je nova različica programa Envy. Jo želite posodobiti?"/>
 		<control text="Če boste izbrali Posodobi takoj, bo Envy dodala posodobitev v vašo prenosno čakalno vrsto in bo tudi samodejno pričela s prenosom."/>
 		<control text="Ne preverjaj po novih posodobitvah"/>
-		<control text="_Posodobi takoj"/>
+		<control text="Posodobi takoj"/>
 		<control text="Prekliči"/>
 	</dialog>
 	<dialog name="CDecodeMetadataDlg" cookie="StCoBuBuBuStStBuBu" caption="Lokalizacija metapodatkov">

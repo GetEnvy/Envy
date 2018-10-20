@@ -1,8 +1,8 @@
 //
 // GraphItem.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2012 and Shareaza 2002-2007
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2012
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -112,7 +112,7 @@ DWORD CGraphItem::GetMaximum() const
 {
 	DWORD nMaximum = 0;
 
-	for ( DWORD nPosition = 0 ; nPosition < m_nLength ; nPosition++ )
+	for ( DWORD nPosition = 0; nPosition < m_nLength; nPosition++ )
 	{
 		DWORD nPos = m_nData + m_nPosition - nPosition - 1;
 		if ( nPos >= m_nData ) nPos -= m_nData;
@@ -142,7 +142,7 @@ void CGraphItem::SetHistory(DWORD nSize, BOOL bMax)
 
 	if ( pOldData == NULL ) return;
 
-	for ( DWORD nPosition = 0 ; nPosition < nOldLength ; nPosition++ )
+	for ( DWORD nPosition = 0; nPosition < nOldLength; nPosition++ )
 	{
 		DWORD nPos = nOldTotal + nOldPosition - nOldLength + nPosition;
 		if ( nPos >= nOldTotal ) nPos -= nOldTotal;
@@ -195,7 +195,7 @@ void CGraphItem::MakeGradient(COLORREF crBack)
 
 	int nOffset = ( crBack != RGB( 0, 0, 0 ) ) ? 1 : 0;
 
-	for ( int nLayer = 1 ; nLayer < 4 ; nLayer++ )
+	for ( int nLayer = 1; nLayer < 4; nLayer++ )
 	{
 		int nAlpha	= ( nLayer + nOffset ) * 255 / 5;
 		int nRed	= GetRValue( m_nColor ) * ( 255 - nAlpha ) / 255 + GetRValue( crBack ) * nAlpha / 255;
@@ -398,7 +398,7 @@ const GRAPHITEM* CGraphItem::GetItemDesc(const DWORD nCode)
 {
 	if ( ! nCode ) return NULL;
 
-	for ( int nItem = 1 ; m_pItemDesc[ nItem ].m_nCode ; nItem++ )
+	for ( int nItem = 1; m_pItemDesc[ nItem ].m_nCode; nItem++ )
 	{
 		if ( m_pItemDesc[ nItem ].m_nCode == nCode )
 			return &m_pItemDesc[ nItem ];

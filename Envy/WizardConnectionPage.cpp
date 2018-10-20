@@ -1,8 +1,8 @@
 //
 // WizardConnectionPage.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2016 and Shareaza 2002-2008
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2008 and PeerProject 2008-2016
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -115,10 +115,15 @@ BOOL CWizardConnectionPage::OnInitDialog()
 	m_wndType.SetItemData(11, 25400 );	// FIOS 25
 	m_wndType.SetItemData(12, 30720 );	// FIOS 30
 	m_wndType.SetItemData(13, 50800 );	// FIOS 50
-	m_wndType.SetItemData(14, 1544 );	// T1
-	m_wndType.SetItemData(15, 44800 );	// T3
-	m_wndType.SetItemData(16, 102400 );	// LAN
-	m_wndType.SetItemData(17, 155000 );	// OC3
+	m_wndType.SetItemData(14, 102400 );	// 100
+	m_wndType.SetItemData(15, 204800 );	// 200
+	m_wndType.SetItemData(16, 307200 );	// 300
+	m_wndType.SetItemData(17, 409600 );	// 400
+	m_wndType.SetItemData(18, 972800 );	// 950 Gig
+	m_wndType.SetItemData(19, 1544 );	// T1
+	m_wndType.SetItemData(20, 44800 );	// T3
+	m_wndType.SetItemData(21, 102400 );	// LAN 100
+	m_wndType.SetItemData(22, 155000 );	// OC3
 	m_wndType.SetCurSel( -1 );
 
 	// Set corresponding uploads:  (Must match above)
@@ -136,15 +141,20 @@ BOOL CWizardConnectionPage::OnInitDialog()
 	m_mapSpeed[ 25400 ]		= 10240;	// FIOS 25
 	m_mapSpeed[ 30720 ]		= 10240;	// FIOS 30
 	m_mapSpeed[ 50800 ]		= 20480;	// FIOS 50
+	m_mapSpeed[ 102400 ]	= 102400;	// 100
+	m_mapSpeed[ 204800 ]	= 204800;	// 200
+	m_mapSpeed[ 307200 ]	= 307200;	// 300
+	m_mapSpeed[ 409600 ]	= 409600;	// 400
+	m_mapSpeed[ 972800 ]	= 921600;	// 950
 	m_mapSpeed[ 1544 ]		= 1544; 	// T1
 	m_mapSpeed[ 44800 ]		= 44800;	// T3
 	m_mapSpeed[ 102400 ]	= 102400;	// LAN
 	m_mapSpeed[ 155000 ]	= 155000;	// OC3
 
-	// Translation: |Dial-up Modem|ISDN 128K|DSL 768K|DSL 1.5|Cable 3|DSL 4|DSL2 8|FIOS 10|DSL2 12|FIOS 15|FIOS 20|FIOS 25|FIOS 30|FIOS 50|T1|T3|LAN|OC3
+	// Translation: |Dial-up Modem|ISDN 128K|DSL 768K|DSL 1.5|Cable 3|DSL 4|DSL2 8|FIOS 10|DSL2 12|FIOS 15|FIOS 20|FIOS 25|FIOS 30|FIOS 50|100|200|300|400|Gigabit|T1|T3|LAN|OC3
 
-	const double nSpeeds[] = { 28.8, 33.6, 56, 64, 128, 256, 384, 512, 640, 768, 1024, 1536, 2048, 3072, 4096, 5120, 6144, 7200, 8192, 10240, 12288, 16384, 20480, 24576, 30720, 45050, 50800, 77000, 102400, 0 };
-	for ( int nSpeed = 0 ; nSpeeds[ nSpeed ] ; nSpeed++ )
+	const double nSpeeds[] = { 28.8, 33.6, 56, 64, 128, 256, 384, 512, 640, 768, 1024, 1536, 2048, 3072, 4096, 5120, 6144, 7200, 8192, 10240, 12288, 16384, 20480, 24576, 30720, 45050, 50800, 77000, 102400, 204800, 307200, 409600, 972800, 0 };
+	for ( int nSpeed = 0; nSpeeds[ nSpeed ]; nSpeed++ )
 	{
 		// Populate "0000 kbps  (0.00 MB/s)"
 		strTemp = SpeedFormat( nSpeeds[ nSpeed ] );
@@ -405,8 +415,7 @@ void CWizardConnectionPage::OnRun()
 	//{
 	//	m_wndStatus.SetWindowText( LoadString( IDS_WIZARD_UPNP_SETUP ) );
 	//
-	//	while ( Network.UPnPFinder &&
-	//			Network.UPnPFinder->IsAsyncFindRunning() )
+	//	while ( Network.UPnPFinder && Network.UPnPFinder->IsAsyncFindRunning() )
 	//	{
 	//		Sleep( 1000 );
 	//		if ( nCurrentStep < 30 )
@@ -444,13 +453,13 @@ void CWizardConnectionPage::OnRun()
 		{
 			int i;
 			// It will be checked if it is needed inside DiscoveryServices.Execute()
-			for ( i = 0 ; i < 2 && ! DiscoveryServices.Execute(TRUE, PROTOCOL_G1, 2) ; i++ ) Sleep(200);
+			for ( i = 0; i < 2 && ! DiscoveryServices.Execute(TRUE, PROTOCOL_G1, 2); i++ ) Sleep(200);
 			nCurrentStep += 5;
 			m_wndProgress.PostMessage( PBM_SETPOS, nCurrentStep );
-			for ( i = 0 ; i < 2 && ! DiscoveryServices.Execute(TRUE, PROTOCOL_G2, 2) ; i++ ) Sleep(200);
+			for ( i = 0; i < 2 && ! DiscoveryServices.Execute(TRUE, PROTOCOL_G2, 2); i++ ) Sleep(200);
 			nCurrentStep += 5;
 			m_wndProgress.PostMessage( PBM_SETPOS, nCurrentStep );
-			for ( i = 0 ; i < 2 && ! DiscoveryServices.Execute(TRUE, PROTOCOL_ED2K, 2) ; i++ ) Sleep(200);
+			for ( i = 0; i < 2 && ! DiscoveryServices.Execute(TRUE, PROTOCOL_ED2K, 2); i++ ) Sleep(200);
 			nCurrentStep += 5;
 			m_wndProgress.PostMessage( PBM_SETPOS, nCurrentStep );
 

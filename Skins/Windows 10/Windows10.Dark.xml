@@ -329,14 +329,10 @@
 
 <bitmap path="Dark\Icons.png" mask="CLR_NONE">
  <image id="WINDOW_NEIGHBOURS"/>
- <image />
- <image />
  <image /> <!--Settings-->
  <image id="ID_TOOLS_PROFILE" id1="ID_BROWSE_PROFILE"/>
- <image id="ID_SEARCH_SEARCH" id1="ID_TAB_SEARCH" id2="ID_NETWORK_SEARCH" id3="ID_LIBRARY_SEARCH_QUICK" id4="ID_DOWNLOADS_SOURCES" id5="ID_VIEW_SEARCH_MONITOR" id6="ID_VIEW_RESULTS_MONITOR" id7="ID_HITMONITOR_SEARCH" id8="IDR_SEARCHFRAME"/>
+ <!--image id="ID_SEARCH_SEARCH" id1="ID_TAB_SEARCH" id2="ID_NETWORK_SEARCH" id3="ID_LIBRARY_SEARCH_QUICK" id4="ID_DOWNLOADS_SOURCES" id5="ID_VIEW_SEARCH_MONITOR" id6="ID_VIEW_RESULTS_MONITOR" id7="ID_HITMONITOR_SEARCH" id8="IDR_SEARCHFRAME"-->
  <image id="ID_CHECKMARK"/>
- <image id="ID_TOOLS_WIZARD" id1="IDI_STAR"/>
- <image id="ID_TOOLS_LANGUAGE"/>
 </bitmap>
 
 <bitmap path="Dark\IconsMedia.png" mask="CLR_NONE">
@@ -350,6 +346,14 @@
  <image id="ID_MEDIA_RANDOM"/>
  <image id="ID_MEDIA_ZOOM"/>
  <image id="ID_MEDIA_SETTINGS" id1="ID_TOOLS_SETTINGS"/>
+</bitmap>
+
+<bitmap path="Dark\ChildFrame.png" mask="CLR_NONE">
+ <image id="ID_CHILD_CLOSE_HOVER"/>
+ <image id="ID_CHILD_CLOSE"/>
+ <image id="ID_CHILD_MINIMISE"/>
+ <image id="ID_CHILD_MAXIMISE"/>
+ <image id="ID_CHILD_RESTORE"/>
 </bitmap>
 
 <bitmap path="Dark\Ticks.png" mask="CLR_NONE">

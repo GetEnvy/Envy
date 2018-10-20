@@ -1,8 +1,8 @@
 //
 // ChatCore.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2007
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -102,7 +102,7 @@ BOOL CChatCore::OnPush(const Hashes::Guid& oGUID, CConnection* pConnection)
 	if ( ! pLock.Lock( 250 ) )
 		return FALSE;
 
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		CChatSession* pSession = GetNext( pos );
 		if ( pSession->OnPush( oGUID, pConnection ) )
@@ -120,7 +120,7 @@ CChatSession* CChatCore::FindSession< CDCNeighbour >(const CDCNeighbour* pClient
 {
 	ASSUME_LOCK( m_pSection );
 
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		CChatSession* pSession = GetNext( pos );
 
@@ -164,7 +164,7 @@ CChatSession* CChatCore::FindSession< CEDClient >(const CEDClient* pClient, BOOL
 {
 	ASSUME_LOCK( m_pSection );
 
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		CChatSession* pSession = GetNext( pos );
 
@@ -252,7 +252,7 @@ void CChatCore::Close()
 
 	CQuickLock pLock( m_pSection );
 
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		GetNext( pos )->Close();
 	}
@@ -288,7 +288,7 @@ void CChatCore::OnRun()
 		{
 			if ( GetCount() == 0 ) break;
 
-			for ( POSITION pos = GetIterator() ; pos ; )
+			for ( POSITION pos = GetIterator(); pos; )
 			{
 				GetNext( pos )->DoRun();
 			}

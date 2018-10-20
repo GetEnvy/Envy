@@ -1,8 +1,8 @@
 //
 // NeighboursBase.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2008
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2008 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -111,7 +111,7 @@ CNeighbour* CNeighboursBase::GetNewest(PROTOCOLID nProtocol, int nState, int nNo
 	DWORD tMinTime = 0xffffffff;
 	CNeighbour* pNewestNeighbour = NULL;
 
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		CNeighbour* pNeighbour = GetNext( pos );
 		if ( ( nProtocol == PROTOCOL_ANY || nProtocol == pNeighbour->m_nProtocol ) &&
@@ -143,7 +143,7 @@ DWORD CNeighboursBase::GetCount(PROTOCOLID nProtocol, int nState, int nNodeType)
 
 	DWORD nCount = 0;
 
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		CNeighbour* pNeighbour = GetNext( pos );
 
@@ -171,7 +171,7 @@ DWORD CNeighboursBase::GetCount(PROTOCOLID nProtocol, int nState, int nNodeType)
 //	CSingleLock pLock( &Network.m_pSection, FALSE );
 //	if ( pLock.Lock( 200 ) )
 //	{
-//		for ( POSITION pos = GetIterator() ; pos ; )
+//		for ( POSITION pos = GetIterator(); pos; )
 //		{
 //			CNeighbour* pNeighbour = GetNext( pos );
 //
@@ -208,7 +208,7 @@ void CNeighboursBase::Close()
 {
 	ASSUME_LOCK( Network.m_pSection );
 
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		GetNext( pos )->Close();
 	}
@@ -221,7 +221,7 @@ void CNeighboursBase::Close()
 // Calls DoRun on neighbours in the list, and totals statistics from them
 void CNeighboursBase::OnRun()
 {
-	// Spend here no more than 100 ms at once
+	// Spend no more than 100 ms here at once
 	const DWORD nStop = GetTickCount() + 100;
 
 	// Have the loop test each neighbour's run cookie count against the next number
@@ -240,7 +240,7 @@ void CNeighboursBase::OnRun()
 		bUpdated = false;
 
 		// Loop through the neighbours in the list
-		for ( POSITION pos = GetIterator() ; pos ; )
+		for ( POSITION pos = GetIterator(); pos; )
 		{
 			// Get the neighbour at this position, and move pos to the next position in the m_pUniques map
 			CNeighbour* pNeighbour = GetNext( pos );
@@ -290,7 +290,7 @@ void CNeighboursBase::Remove(CNeighbour* pNeighbour)
 	Network.NodeRoute->Remove( pNeighbour );
 
 	// Remove the neighbour object from the map
-	for ( POSITION pos = m_pNeighbours.GetStartPosition() ; pos ; )
+	for ( POSITION pos = m_pNeighbours.GetStartPosition(); pos; )
 	{
 		CNeighbour* pCurNeighbour = NULL;
 		IN_ADDR nCurAddress = {};

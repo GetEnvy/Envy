@@ -2,7 +2,7 @@
 // Datagrams.cpp
 //
 // This file is part of Envy (getenvy.com) © 2016-2018
-// Portions copyright PeerProject 2008-2015 and Shareaza 2002-2008
+// Portions copyright Shareaza 2002-2008 and PeerProject 2008-2015
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -163,7 +163,7 @@ BOOL CDatagrams::Listen()
 	// LimeWire: 234.21.81.1:6347
 
 	ip_mreq mr = {};
-	mr.imr_multiaddr.s_addr = inet_addr( DEFAULT_G1_MCAST_ADDRESS );
+	mr.imr_multiaddr.s_addr = inet_addr( G1_DEFAULT_MULTICAST_ADDRESS );
 	setsockopt( m_hSocket, IPPROTO_IP, IP_ADD_MEMBERSHIP, (char*)&mr, sizeof( mr ) );
 
 	WSAEventSelect( m_hSocket, Network.GetWakeupEvent(), FD_READ );
@@ -175,7 +175,7 @@ BOOL CDatagrams::Listen()
 
 	CBuffer* pBuffer = m_pBufferBuffer;
 
-	for ( DWORD nPos = m_nBufferBuffer ; nPos ; nPos--, pBuffer++ )
+	for ( DWORD nPos = m_nBufferBuffer; nPos; nPos--, pBuffer++ )
 	{
 		pBuffer->m_pNext = ( nPos == 1 ) ? NULL : ( pBuffer + 1 );
 	}
@@ -186,7 +186,7 @@ BOOL CDatagrams::Listen()
 
 	CDatagramIn* pDGI = m_pInputBuffer;
 
-	for ( DWORD nPos = m_nInputBuffer ; nPos ; nPos--, pDGI++ )
+	for ( DWORD nPos = m_nInputBuffer; nPos; nPos--, pDGI++ )
 	{
 		pDGI->m_pNextHash = ( nPos == 1 ) ? NULL : ( pDGI + 1 );
 	}
@@ -197,7 +197,7 @@ BOOL CDatagrams::Listen()
 
 	CDatagramOut* pDGO = m_pOutputBuffer;
 
-	for ( DWORD nPos = m_nOutputBuffer ; nPos ; nPos--, pDGO++ )
+	for ( DWORD nPos = m_nOutputBuffer; nPos; nPos--, pDGO++ )
 	{
 		pDGO->m_pNextHash = ( nPos == 1 ) ? NULL : ( pDGO + 1 );
 	}
@@ -385,7 +385,7 @@ void CDatagrams::PurgeToken(LPVOID pToken)
 
 	int nCount = 0;
 
-	for ( CDatagramOut* pDG = m_pOutputLast ; pDG ; )
+	for ( CDatagramOut* pDG = m_pOutputLast; pDG; )
 	{
 		CDatagramOut* pNext = pDG->m_pNextTime;
 
@@ -436,7 +436,7 @@ void CDatagrams::Measure()
 	DWORD nInput		= 0;
 	DWORD nOutput		= 0;
 
-	for ( int tNow = METER_LENGTH ; tNow ; tNow-- )
+	for ( int tNow = METER_LENGTH; tNow; tNow-- )
 	{
 		if ( *pInTime >= tCutoff ) nInput += *pInHistory;
 		if ( *pOutTime >= tCutoff ) nOutput += *pOutHistory;
@@ -464,7 +464,7 @@ BOOL CDatagrams::TryWrite()
 		DWORD* pTime	= m_mOutput.pTimes;
 		DWORD nUsed		= 0;
 
-		for ( int nSeek = METER_LENGTH ; nSeek ; nSeek--, pHistory++, pTime++ )
+		for ( int nSeek = METER_LENGTH; nSeek; nSeek--, pHistory++, pTime++ )
 		{
 			if ( *pTime >= tCutoff )
 				nUsed += *pHistory;
@@ -486,7 +486,7 @@ BOOL CDatagrams::TryWrite()
 	while ( nLimit > 0 )
 	{
 		CDatagramOut* pDG = m_pOutputFirst;
-		for ( ; pDG ; pDG = pDG->m_pPrevTime )
+		for ( ; pDG; pDG = pDG->m_pPrevTime )
 		{
 			BYTE* pPacket;
 			DWORD nPacket;
@@ -556,7 +556,7 @@ void CDatagrams::ManageOutput()
 {
 	const DWORD tNow = GetTickCount();
 
-	for ( CDatagramOut* pDG = m_pOutputLast ; pDG ; )
+	for ( CDatagramOut* pDG = m_pOutputLast; pDG; )
 	{
 		CDatagramOut* pNext = pDG->m_pNextTime;
 
@@ -643,7 +643,7 @@ BOOL CDatagrams::TryRead()
 	{
 		// Report unknown packets
 		CString strText;
-		for ( int i = 0 ; i < nLength && i < 80 ; i++ )
+		for ( int i = 0; i < nLength && i < 80; i++ )
 		{
 			strText += ( ( m_pReadBuffer[ i ] < ' ' ) ? '.' : (char)m_pReadBuffer[ i ] );
 		}
@@ -796,7 +796,7 @@ BOOL CDatagrams::OnDatagram(const SOCKADDR_IN* pHost, const BYTE* pBuffer, DWORD
 //	// Report unknown packets
 //	CString strText;
 //	strText.Format( L"UDP: Received unknown packet (%i bytes) from %s", nLength, (LPCTSTR)CString( inet_ntoa( pHost->sin_addr ) ) );
-//	for ( DWORD i = 0 ; i < nLength && i < 80 ; i++ )
+//	for ( DWORD i = 0; i < nLength && i < 80; i++ )
 //	{
 //		if ( ! i ) strText += L": ";
 //		strText += ( ( pBuffer[ i ] < ' ' ) ? '.' : (char)pBuffer[ i ] );
@@ -842,7 +842,7 @@ BOOL CDatagrams::OnReceiveSGP(const SOCKADDR_IN* pHost, const SGP_HEADER* pHeade
 	CDatagramIn** pHash = m_pInputHash + ( nHash & DATAGRAM_HASH_MASK );
 
 	CDatagramIn* pDG = *pHash;
-	for ( ; pDG ; pDG = pDG->m_pNextHash )
+	for ( ; pDG; pDG = pDG->m_pNextHash )
 	{
 		if ( pDG->m_pHost.sin_addr.S_un.S_addr == pHost->sin_addr.S_un.S_addr &&
 			 pDG->m_pHost.sin_port == pHost->sin_port &&
@@ -887,7 +887,7 @@ BOOL CDatagrams::OnReceiveSGP(const SOCKADDR_IN* pHost, const SGP_HEADER* pHeade
 
 	pDG->Create( pHost, pHeader->nFlags, pHeader->nSequence, pHeader->nCount );
 
-	for ( WORD nPart = 0 ; nPart < pDG->m_nCount ; nPart++ )
+	for ( WORD nPart = 0; nPart < pDG->m_nCount; nPart++ )
 	{
 		ASSERT( pDG->m_pBuffer[ nPart ] == NULL );
 		pDG->m_pBuffer[ nPart ] = m_pBufferFree;
@@ -959,7 +959,7 @@ BOOL CDatagrams::OnAcknowledgeSGP(const SOCKADDR_IN* pHost, const SGP_HEADER* pH
 
 	UINT nLimit = 0;
 	CDatagramOut* pDGLast = NULL;
-	for ( CDatagramOut* pDG = *pHash ; pDG ; pDG = pDG->m_pNextHash )
+	for ( CDatagramOut* pDG = *pHash; pDG; pDG = pDG->m_pNextHash )
 	{
 		// Fix for rare loop. ToDo: detect cause properly
 		if ( pDG == pDGLast )
@@ -993,7 +993,7 @@ void CDatagrams::ManagePartials()
 {
 	const DWORD tNow = GetTickCount();
 
-	for ( CDatagramIn* pDG = m_pInputLast ; pDG ; )
+	for ( CDatagramIn* pDG = m_pInputLast; pDG; )
 	{
 		CDatagramIn* pNext = pDG->m_pNextTime;
 
@@ -1009,7 +1009,7 @@ void CDatagrams::ManagePartials()
 
 void CDatagrams::Remove(CDatagramIn* pDG, BOOL bReclaimOnly)
 {
-	for ( int nPart = 0 ; nPart < pDG->m_nCount ; nPart++ )
+	for ( int nPart = 0; nPart < pDG->m_nCount; nPart++ )
 	{
 		if ( pDG->m_pBuffer[ nPart ] )
 		{

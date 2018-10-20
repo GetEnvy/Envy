@@ -1,8 +1,8 @@
 //
 // PageExpert.cpp
 //
-// This file is part of Torrent Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2014 and Shareaza 2007
+// This file is part of Torrent Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2007 and PeerProject 2008-2014
 //
 // Envy is free software; you can redistribute it
 // modify it under the terms of the GNU General Public License
@@ -10,8 +10,8 @@
 // either version 3 of the License, or later version (at your option).
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU General Public License for more details.
 // (http://www.gnu.org/licenses/gpl.html)
 //
@@ -107,7 +107,7 @@ BOOL CExpertPage::OnInitDialog()
 
 	if ( theApp.m_sCommandLinePaths.GetCount() )
 	{
-		for ( int i = (int)theApp.m_sCommandLinePaths.GetCount() ; i ; i-- )
+		for ( int i = (int)theApp.m_sCommandLinePaths.GetCount(); i; i-- )
 		{
 			CString str = theApp.m_sCommandLinePaths.RemoveHead();
 			if ( PathIsDirectory( str ) )
@@ -143,7 +143,7 @@ BOOL CExpertPage::OnInitDialog()
 	}
 
 	int nCount = theApp.GetProfileInt( L"Folders", L"Count", 0 );
-	for ( int nItem = 0 ; nItem < nCount ; nItem++ )
+	for ( int nItem = 0; nItem < nCount; nItem++ )
 	{
 		CString strName, strURL;
 		strName.Format( L"%.3i.Path", nItem + 1 );
@@ -369,7 +369,7 @@ void CExpertPage::OnDropFiles(HDROP hDropInfo)
 	CString strFilename;
 
 	const int nFiles = DragQueryFile( hDropInfo, (UINT)-1, NULL, 0 );
-	for ( int i = 0 ; i < nFiles ; i++ )
+	for ( int i = 0; i < nFiles; i++ )
 	{
 		LPWSTR pszFile = strFilename.GetBuffer( _MAX_PATH );
 		DragQueryFile( hDropInfo, i, pszFile, _MAX_PATH );
@@ -432,7 +432,7 @@ void CExpertPage::OnAddFile()
 
 		if ( *pszFile )
 		{
-			for ( strFolder += '\\' ; *pszFile ; )
+			for ( strFolder += '\\'; *pszFile; )
 			{
 				AddFile( strFolder + pszFile );
 				pszFile += _tcslen( pszFile ) + 1;
@@ -453,7 +453,7 @@ void CExpertPage::OnRemoveFile()
 
 	UpdateData();
 
-	for ( int nItem = m_wndList.GetItemCount() - 1 ; nItem >= 0 ; nItem-- )
+	for ( int nItem = m_wndList.GetItemCount() - 1; nItem >= 0; nItem-- )
 	{
 		if ( m_wndList.GetItemState( nItem, LVIS_SELECTED ) )
 		{
@@ -628,7 +628,7 @@ void CExpertPage::OnSelectTracker()
 void CExpertPage::GetTrackerHistory()
 {
 	int nCount = theApp.GetProfileInt( L"Trackers", L"Count", 0 );
-	for ( int nItem = 0 ; nItem < nCount ; nItem++ )
+	for ( int nItem = 0; nItem < nCount; nItem++ )
 	{
 		CString strName, strURL;
 		strName.Format( L"%.3i.URL", nItem + 1 );
@@ -648,7 +648,7 @@ void CExpertPage::SetTrackerHistory()
 	int nCount = m_wndTrackers.GetCount();
 	if ( ! nCount ) return;
 
-	for ( int nIndex = 0 ; nIndex < nCount ; nIndex++ )
+	for ( int nIndex = 0; nIndex < nCount; nIndex++ )
 	{
 		m_wndTrackers.GetText( nIndex, str );
 		pList.AddTail( str );
@@ -656,7 +656,7 @@ void CExpertPage::SetTrackerHistory()
 
 	nCount = theApp.GetProfileInt( L"Trackers", L"Count", 0 );
 
-	for ( int nIndex = 1 ; nIndex <= nCount ; nIndex++ )
+	for ( int nIndex = 1; nIndex <= nCount; nIndex++ )
 	{
 		str.Format( L"%.3i.URL", nIndex );
 		str = theApp.GetProfileString( L"Trackers", str );
@@ -667,7 +667,7 @@ void CExpertPage::SetTrackerHistory()
 	nCount = 1;
 	theApp.WriteProfileInt( L"Trackers", L"Count", (int)pList.GetCount() );
 
-	for ( POSITION pos = pList.GetHeadPosition() ; pos ; nCount++ )
+	for ( POSITION pos = pList.GetHeadPosition(); pos; nCount++ )
 	{
 		str.Format( L"%.3i.URL", nCount );
 		theApp.WriteProfileString( L"Trackers", str, pList.GetNext( pos ) );

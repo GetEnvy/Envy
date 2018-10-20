@@ -3,7 +3,7 @@
 
 <!-- Envy Default Chinese (Simplified) Skin File -->
 
-<!-- Translation based on default en.xml r21 --> <!-- (Shareaza r6092) -->
+<!-- Translation based on default en.xml r22 --> <!-- (Shareaza r6092) -->
 <!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -15,7 +15,7 @@
 <manifest
 	name="简体中文"
 	author="STC"
-	updatedBy="John"
+	updatedby="John"
 	description="Envy Default Chinese (Simplified) Skin File"
 	link="http://www.p2pnet.cn/shareaza"
 	email="ShareazaSTC(at)gmail.com"
@@ -3212,8 +3212,9 @@
 	<string id="20807" text="拒绝上传 &quot;%s&quot; 到 %s (%s)，存在过多的并发用户连接。"/>
 	<string id="20808" text="拒绝上传 &quot;%s&quot; 到 %s 主机 (%s)，繁忙并且对方不支持队列。"/>
 	<string id="20809" text="拒绝上传 &quot;%s&quot; 到 %s (%s)，所有匹配队列已满。"/>
-	<string id="20810" text="上传主机 %s 请求了 &quot;%s&quot; 文件不被满足的范围。"/>
-	<string id="20811" text="edonkey 的上传不能被取消。您确定您要取消此上传吗？"/>
+	<string id="20810" text="拒绝上传 &quot;%s&quot; 到 %s (%s), 图书馆很忙。"/>
+	<string id="20811" text="上传主机 %s 请求了 &quot;%s&quot; 文件不被满足的范围。"/>
+	<string id="20861" text="edonkey 的上传不能被取消。您确定您要取消此上传吗？"/>
 	<string id="20812" text="不能打开 &quot;%s&quot; 以便上传到 %s 主机，磁盘/文件错误。"/>
 	<string id="20813" text="初始化外送连接到 %s。 %s"/>
 	<string id="20814" text="不能连接到 %s 主机进行外传。"/>
@@ -3259,14 +3260,14 @@
 	<string id="20858" text="到上传主机 %s 的请求超时。"/>
 	<string id="20859" text="缺少通讯导致关闭上传连接 %s。"/>
 	<string id="20860" text="上传 &quot;%s&quot; 的 tiger-tree 到 %s。"/>
-	<string id="20861" text="移除对 %s 主机的上传 &quot;%s&quot;."/>
-	<string id="20862" text="添加"/>
-	<string id="20864" text="浏览"/>
-	<string id="20865" text="连接"/>
-	<string id="20866" text="文件名:"/>
-	<string id="20867" text="主机:"/>
-	<string id="20868" text="端口:"/>
-	<!--string id="20869" text="未能显示链接操作对话框因为 Envy 正忙。"-->
+	<string id="20862" text="移除对 %s 主机的上传 &quot;%s&quot;."/>
+	<string id="20864" text="添加"/>
+	<string id="20865" text="浏览"/>
+	<string id="20866" text="连接"/>
+	<string id="20867" text="文件名:"/>
+	<string id="20868" text="主机:"/>
+	<string id="20869" text="端口:"/>
+	<!--string id="20876" text="未能显示链接操作对话框因为 Envy 正忙。"-->
 	<string id="20870" text="未能粘贴链接: Envy 不能识别此链接。"/>
 	<string id="20871" text="已接收链接 &quot;%s&quot;"/>
 	<string id="20872" text="类型:"/>
@@ -3717,7 +3718,7 @@
 	<dialog name="CWizardConnectionPage" cookie="StStCoStStCoStCoStCoStEdBuStms" caption="欢迎使用 Envy (2/8)">
 		<control text="为获得最佳效果，Envy 必须知道您的互联网连接。"/>
 		<control text="如果您知道互联网连接速度，请在下面做出选择:"/>
-		<control text="| 调制解调器拨号| ISDN 128K| DSL 768K| DSL 1.5| Cable 3| DSL 4| DSL2 8| FIOS 10| DSL2 12| FIOS 15| FIOS 20| FIOS 25| FIOS 30| FIOS 50| T1| T3| LAN| OC3"/>
+		<control text="|调制解调器拨号|ISDN 128K|DSL 768K|DSL 1.5|Cable 3|DSL 4|DSL2 8|FIOS 10|DSL2 12|FIOS 15|FIOS 20|FIOS 25|FIOS 30|FIOS 50|100|200|300|400|Gigabit|T1|T3|LAN|OC3"/>
 		<control text="测试 Speedtest.net"/>
 		<control text="或选择:"/>
 		<control/>

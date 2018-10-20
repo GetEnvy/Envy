@@ -1,8 +1,8 @@
 //
 // NeighboursWithRouting.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2007
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -77,7 +77,7 @@ int CNeighboursWithRouting::Broadcast(CPacket* pPacket, CNeighbour* pExcept, BOO
 	bool bSend = true;
 
 	// Loop through each neighbour in the list
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		// Get the neighbour under pos, and move pos to the next one in the list
 		CNeighbour* pNeighbour = GetNext( pos );
@@ -104,7 +104,7 @@ bool CNeighboursWithRouting::CheckQuery(const CQuerySearch* pSearch)
 	pThisQuery.m_pAddress = pSearch->m_pEndpoint.sin_addr;
 	pThisQuery.m_nTime = GetTickCount();
 
-	for ( POSITION pos = m_pQueries.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pQueries.GetHeadPosition(); pos; )
 	{
 		POSITION posOrig = pos;
 		const CIPTime& pLastQuery = m_pQueries.GetNext( pos );
@@ -154,7 +154,7 @@ int CNeighboursWithRouting::RouteQuery(const CQuerySearch* pSearch, CPacket* pPa
 	}
 
 	// Loop for each connected neighbour
-	for ( pos = GetIterator() ; pos ; )
+	for ( pos = GetIterator(); pos; )
 	{
 		// Get the neighbour at pos, and move pos forward to the next one
 		CNeighbour* pNeighbour = (CNeighbour*)GetNext( pos );
@@ -270,7 +270,7 @@ int CNeighboursWithRouting::RouteQuery(const CQuerySearch* pSearch, CPacket* pPa
 		}
 
 		// Loop through all the computers we're connected to
-		for ( pos = GetIterator() ; pos ; )
+		for ( pos = GetIterator(); pos; )
 		{
 			// Get the neighbouring computer at this position, and move position to the next one
 			CNeighbour* pNeighbour = (CNeighbour*)GetNext( pos );

@@ -1,8 +1,8 @@
 //
 // DownloadGroup.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2007
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -84,7 +84,7 @@ void CDownloadGroup::Clear()
 
 void CDownloadGroup::SetCookie(int nCookie)
 {
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		GetNext( pos )->m_nGroupCookie = nCookie;
 	}
@@ -95,7 +95,7 @@ void CDownloadGroup::SetCookie(int nCookie)
 
 void CDownloadGroup::CopyList(CList< CDownload* >& pList)
 {
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		pList.AddTail( GetNext( pos ) );
 	}
@@ -131,13 +131,13 @@ BOOL CDownloadGroup::Link(CDownload* pDownload)
 	CString strTrackers;
 	if ( pDownload->IsTorrent() )
 	{
-		for ( int i = 0 ; i < pDownload->m_pTorrent.GetTrackerCount() ; i++ )
+		for ( int i = 0; i < pDownload->m_pTorrent.GetTrackerCount(); i++ )
 		{
 			strTrackers += pDownload->m_pTorrent.GetTrackerAddress( i ).MakeLower() + L" ";
 		}
 	}
 
-	for ( POSITION pos = m_pFilters.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pFilters.GetHeadPosition(); pos; )
 	{
 		CString strFilter = m_pFilters.GetNext( pos );
 
@@ -177,7 +177,7 @@ int CDownloadGroup::LinkAll()
 
 	ASSUME_LOCK( Transfers.m_pSection );
 
-	for ( POSITION pos = Downloads.GetIterator() ; pos ; )
+	for ( POSITION pos = Downloads.GetIterator(); pos; )
 	{
 		nCount += Link( Downloads.GetNext( pos ) );
 	}
@@ -218,7 +218,7 @@ void CDownloadGroup::SetSchema(LPCTSTR pszURI, BOOL bRemoveOldFilters)
 		{
 			if ( CSchemaPtr pOldSchema = SchemaCache.Get( m_sSchemaURI ) )
 			{
-				for ( POSITION pos = pOldSchema->GetFilterIterator() ; pos ; )
+				for ( POSITION pos = pOldSchema->GetFilterIterator(); pos; )
 				{
 					CString strFilter;
 					BOOL bResult;
@@ -262,7 +262,7 @@ void CDownloadGroup::SetDefaultFilters()
 {
 	if ( CSchemaPtr pSchema = SchemaCache.Get( m_sSchemaURI ) )
 	{
-		for ( POSITION pos = pSchema->GetFilterIterator() ; pos ; )
+		for ( POSITION pos = pSchema->GetFilterIterator(); pos; )
 		{
 			CString strFilter;
 			BOOL bResult;
@@ -289,14 +289,14 @@ void CDownloadGroup::Serialize(CArchive& ar, int nVersion)
 
 		ar.WriteCount( m_pFilters.GetCount() );
 
-		for ( POSITION pos = m_pFilters.GetHeadPosition() ; pos ; )
+		for ( POSITION pos = m_pFilters.GetHeadPosition(); pos; )
 		{
 			ar << m_pFilters.GetNext( pos );
 		}
 
 		ar.WriteCount( GetCount() );
 
-		for ( POSITION pos = GetIterator() ; pos ; )
+		for ( POSITION pos = GetIterator(); pos; )
 		{
 			DWORD nDownload = GetNext( pos )->m_nSerID;
 			ar << nDownload;
@@ -315,7 +315,7 @@ void CDownloadGroup::Serialize(CArchive& ar, int nVersion)
 
 		if ( nVersion > 0 )
 		{
-			for ( DWORD_PTR nCount = ar.ReadCount() ; nCount > 0 ; nCount-- )
+			for ( DWORD_PTR nCount = ar.ReadCount(); nCount > 0; nCount-- )
 			{
 				CString strFilter;
 				ar >> strFilter;
@@ -327,7 +327,7 @@ void CDownloadGroup::Serialize(CArchive& ar, int nVersion)
 			CString strFilters;
 			ar >> strFilters;
 
-			for ( strFilters += L'|' ; strFilters.GetLength() ; )
+			for ( strFilters += L'|'; strFilters.GetLength(); )
 			{
 				CString strFilter = strFilters.SpanExcluding( L" |" );
 				strFilters = strFilters.Mid( strFilter.GetLength() + 1 );
@@ -337,7 +337,7 @@ void CDownloadGroup::Serialize(CArchive& ar, int nVersion)
 			}
 		}
 
-		for ( DWORD_PTR nCount = ar.ReadCount() ; nCount > 0 ; nCount-- )
+		for ( DWORD_PTR nCount = ar.ReadCount(); nCount > 0; nCount-- )
 		{
 			DWORD nDownload;
 			ar >> nDownload;
@@ -384,7 +384,7 @@ BOOL CDownloadGroup::IsTemporary()
 	if ( m_bTemporary == TRI_FALSE )
 	{
 		BOOL bAllCompleted = TRUE;
-		for ( POSITION pos = GetIterator() ; bAllCompleted && pos ; )
+		for ( POSITION pos = GetIterator(); bAllCompleted && pos; )
 		{
 			CDownload* pDownload = GetNext( pos );
 			if ( Downloads.Check( pDownload ) && ! pDownload->IsCompleted() )

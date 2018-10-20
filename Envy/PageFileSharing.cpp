@@ -1,8 +1,8 @@
 //
 // PageFileSharing.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2007
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -80,7 +80,7 @@ BOOL CFileSharingPage::OnInitDialog()
 
 		CList< CString > pAdded;
 
-		for ( POSITION pos = UploadQueues.GetIterator() ; pos ; )
+		for ( POSITION pos = UploadQueues.GetIterator(); pos; )
 		{
 			CUploadQueue* pQueue = UploadQueues.GetNext( pos );
 
@@ -115,7 +115,7 @@ BOOL CFileSharingPage::OnInitDialog()
 			CLibraryListPtr pList( GetList() );
 			if ( pList )
 			{
-				for ( POSITION pos = pList->GetHeadPosition() ; pos ; )
+				for ( POSITION pos = pList->GetHeadPosition(); pos; )
 				{
 					if ( CLibraryFile* pFile = pList->GetNextFile( pos ) )
 					{
@@ -167,7 +167,7 @@ void CFileSharingPage::OnOK()
 	{
 		CQuickLock oLock( Library.m_pSection );
 
-		for ( POSITION pos = pList->GetHeadPosition() ; pos ; )
+		for ( POSITION pos = pList->GetHeadPosition(); pos; )
 		{
 			if ( CLibraryFile* pFile = pList->GetNextFile( pos ) )
 			{

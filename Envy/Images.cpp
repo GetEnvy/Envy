@@ -417,7 +417,7 @@ void CImages::BlendAlpha(CBitmap* bmImage, COLORREF crBlend /*RGB(255,255,255)*/
 	BYTE* buffer = (BYTE*)malloc( bufferSize );
 	GetBitmapBits( hImage, bufferSize, buffer );	// Get/SetBitmapBits() deprecated by MS, but useful here
 
-	for ( int i = 0, j = 0 ; i < bufferSize ; i += 4, j += 3 )
+	for ( int i = 0, j = 0; i < bufferSize; i += 4, j += 3 )
 	{
 		DWORD nAlpha = (DWORD)buffer[i + 3];
 
@@ -504,7 +504,7 @@ BOOL CImages::PreBlend(HBITMAP hButton)
 	BYTE* buffer = (BYTE*)malloc( bufferSize );
 	GetBitmapBits( hButton, bufferSize, buffer );	// Get/SetBitmapBits() deprecated by MS, but useful here
 
-	for ( int i = 0 ; i < bufferSize ; i += 4 )
+	for ( int i = 0; i < bufferSize; i += 4 )
 	{
 		if ( buffer[i + 3] == 255 ) continue;
 
@@ -537,9 +537,9 @@ BOOL CImages::DrawImage(CDC* pDC, const CRect* prc, CBitmap* bmImage, BOOL bRepe
 
 	if ( bRepeat )
 	{
-		for ( int nY = prc->top ; nY < prc->bottom ; nY += bmWatermark.bmHeight )
+		for ( int nY = prc->top; nY < prc->bottom; nY += bmWatermark.bmHeight )
 		{
-			for ( int nX = prc->left ; nX < prc->right ; nX += bmWatermark.bmWidth )
+			for ( int nX = prc->left; nX < prc->right; nX += bmWatermark.bmWidth )
 			{
 				pDC->BitBlt( nX, nY,
 					min( bmWatermark.bmWidth, prc->right - nX ),
@@ -593,9 +593,9 @@ BOOL CImages::DrawIconButton(CDC* pDC, const CRect* rc, CBitmap* bmButton)
 	}
 	else
 	{
-		for ( int nY = rc->top ; nY < rc->bottom ; nY += szButton.cy )
+		for ( int nY = rc->top; nY < rc->bottom; nY += szButton.cy )
 		{
-			for ( int nX = rc->left ; nX < rc->right ; nX += szButton.cx )
+			for ( int nX = rc->left; nX < rc->right; nX += szButton.cx )
 			{
 				pDC->BitBlt( nX, nY,
 					min( szButton.cx, rc->right - nX ),
@@ -637,9 +637,9 @@ BOOL CImages::DrawButton(CDC* pDC, const CRect* rc, CBitmap* bmButton, CBitmap* 
 		BITMAP pInfo;
 		bmButton->GetBitmap( &pInfo );
 
-		for ( int nY = rc->top ; nY < rc->bottom ; nY += pInfo.bmHeight )
+		for ( int nY = rc->top; nY < rc->bottom; nY += pInfo.bmHeight )
 		{
-			for ( int nX = rc->left ; nX < rc->right - nEdge ; nX += pInfo.bmWidth )
+			for ( int nX = rc->left; nX < rc->right - nEdge; nX += pInfo.bmWidth )
 			{
 				const int nWidth  = min( pInfo.bmWidth, rc->right - nX - nEdge );
 				const int nHeight = min( pInfo.bmHeight, rc->bottom - nY ); 	// No repeat (+ 1 to allow 1px overdraw?)
@@ -693,7 +693,7 @@ BOOL CImages::DrawButtonMap(CDC* pDC, const CRect* rc, CBitmap* bmButtonMap, con
 		BYTE* buffer = (BYTE*)malloc( bufferSize );
 		GetBitmapBits( (HBITMAP)bmButtonMap->m_hObject, bufferSize, buffer );	// Deprecated function but useful
 
-		for ( int i = 3 ; i < ( pInfo.bmWidthBytes * ( nSourceHeight - 1 ) ) ; i += 4 )
+		for ( int i = 3; i < ( pInfo.bmWidthBytes * ( nSourceHeight - 1 ) ); i += 4 )
 		{
 			if ( buffer[i] > 1 )	// Non-zero alpha
 			{
@@ -746,9 +746,9 @@ BOOL CImages::DrawButtonMap(CDC* pDC, const CRect* rc, CBitmap* bmButtonMap, con
 	{
 		if ( rc->Width() > nEdge )
 		{
-			for ( int nY = rc->top ; nY < rc->bottom ; nY += nSourceHeight )
+			for ( int nY = rc->top; nY < rc->bottom; nY += nSourceHeight )
 			{
-				for ( int nX = rc->left ; nX < rc->right - nEdge ; nX += nSourceWidth )
+				for ( int nX = rc->left; nX < rc->right - nEdge; nX += nSourceWidth )
 				{
 					const int nWidth  = min( nSourceWidth, rc->right - nX - nEdge );
 					const int nHeight = min( nSourceHeight, rc->bottom - nY ); 	// No repeat (+ 1 to allow 1px overdraw?)

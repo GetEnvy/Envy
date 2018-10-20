@@ -121,7 +121,7 @@ BOOL LoadResources(LPCTSTR szFilename)
 	if ( _tfopen_s( &pFile, szFilename, _T("rb") ) == 0 )
 	{
 		CStringA sID;
-		for ( States nState = stFile ; nState != stError ; )
+		for ( States nState = stFile; nState != stError; )
 		{
 			CStringA sLine;
 			CHAR* res = fgets( sLine.GetBuffer( 4096 ), 4096, pFile );
@@ -334,7 +334,7 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	LPCTSTR szOutput = NULL;
 
-	for ( int i = 1 ; i < argc ; i++ )
+	for ( int i = 1; i < argc; i++ )
 	{
 		LPCTSTR szFilename = PathFindFileName( argv[ i ] );
 		LPCTSTR szExt = PathFindExtension( szFilename );
@@ -384,7 +384,7 @@ int _tmain(int argc, _TCHAR* argv[])
 		}
 	}
 
-	for ( POSITION pos = g_oDialogs.GetStartPosition() ; pos ; )
+	for ( POSITION pos = g_oDialogs.GetStartPosition(); pos; )
 	{
 		CStringA sID;
 		UINT nID;
@@ -394,7 +394,7 @@ int _tmain(int argc, _TCHAR* argv[])
 			_tprintf( _T("Warning: Found dialog \"%hs\" without guideline\n"), sID );
 	}
 
-	for ( POSITION pos = g_oIDs.GetStartPosition() ; pos ; )
+	for ( POSITION pos = g_oIDs.GetStartPosition(); pos; )
 	{
 		CStringA sID;
 		UINT nID;
@@ -445,7 +445,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	// Sort by ID
 	std::list< CStringA > indexTips;
 	std::list< UINT > indexStrings;
-	for ( POSITION pos = g_oStrings.GetStartPosition() ; pos ; )
+	for ( POSITION pos = g_oStrings.GetStartPosition(); pos; )
 	{
 		UINT nID;
 		CSSPair oPair;
@@ -507,7 +507,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	// Command Tips
 	_ftprintf( pFile,
 		_T("\t<!-- Localised Command Tip Text. The \"message\" is displayed in the status bar, while the \"tip\" is shown in a tooltip -->\n\t<commandTips>\n") );
-	for ( std::list< CStringA >::iterator i = indexTips.begin() ; i != indexTips.end() ; ++i )
+	for ( std::list< CStringA >::iterator i = indexTips.begin(); i != indexTips.end(); ++i )
 	{
 		UINT nID;
 		ATLVERIFY( g_oIDs.Lookup( (*i), nID ) );
@@ -535,7 +535,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	// Strings
 	_ftprintf( pFile,
 		_T("\t<!-- Localised Strings -->\n\t<strings>\n") );
-	for ( std::list< UINT >::iterator i = indexStrings.begin() ; i != indexStrings.end() ; ++i )
+	for ( std::list< UINT >::iterator i = indexStrings.begin(); i != indexStrings.end(); ++i )
 	{
 		CSSPair oPair;
 		ATLVERIFY( g_oStrings.Lookup( (*i), oPair ) );

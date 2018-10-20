@@ -1,8 +1,8 @@
 //
 // EDClients.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2008
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2008 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -112,7 +112,7 @@ void CEDClients::Clear()
 {
 	CQuickLock oLock( m_pSection );
 
-	for ( CEDClient* pClient = m_pFirst ; pClient ; )
+	for ( CEDClient* pClient = m_pFirst; pClient; )
 	{
 		CEDClient* pNext = pClient->m_pEdNext;
 		pClient->Remove();
@@ -211,7 +211,7 @@ CEDClient* CEDClients::GetByIP(const IN_ADDR* pAddress) const
 {
 	CQuickLock oLock( m_pSection );
 
-	for ( CEDClient* pClient = m_pFirst ; pClient ; pClient = pClient->m_pEdNext )
+	for ( CEDClient* pClient = m_pFirst; pClient; pClient = pClient->m_pEdNext )
 	{
 		if ( pClient->m_pHost.sin_addr.S_un.S_addr == pAddress->S_un.S_addr )
 			return pClient;
@@ -222,7 +222,7 @@ CEDClient* CEDClients::GetByIP(const IN_ADDR* pAddress) const
 
 CEDClient* CEDClients::GetByID(DWORD nClientID, IN_ADDR* pServer, const Hashes::Guid& oGUID) const
 {
-	for ( CEDClient* pClient = m_pFirst ; pClient ; pClient = pClient->m_pEdNext )
+	for ( CEDClient* pClient = m_pFirst; pClient; pClient = pClient->m_pEdNext )
 	{
 		if ( pServer && pClient->m_pServer.sin_addr.S_un.S_addr != pServer->S_un.S_addr )
 			continue;
@@ -239,7 +239,7 @@ CEDClient* CEDClients::GetByID(DWORD nClientID, IN_ADDR* pServer, const Hashes::
 
 CEDClient* CEDClients::GetByGUID(const Hashes::Guid& oGUID) const
 {
-	for ( CEDClient* pClient = m_pFirst ; pClient ; pClient = pClient->m_pEdNext )
+	for ( CEDClient* pClient = m_pFirst; pClient; pClient = pClient->m_pEdNext )
 	{
 		if ( validAndEqual( pClient->m_oGUID, oGUID ) ) return pClient;
 	}
@@ -256,7 +256,7 @@ BOOL CEDClients::Merge(CEDClient* pClient)
 
 	ASSERT( pClient != NULL );
 
-	for ( CEDClient* pOther = m_pFirst ; pOther ; pOther = pOther->m_pEdNext )
+	for ( CEDClient* pOther = m_pFirst; pOther; pOther = pOther->m_pEdNext )
 	{
 		if ( pOther != pClient && pOther->Equals( pClient ) )
 		{
@@ -278,7 +278,7 @@ bool CEDClients::IsFull(const CEDClient* pCheckThis)
 
 	// Count the number of connected clients
 	DWORD nCount = 0;
-	for ( CEDClient* pClient = m_pFirst ; pClient ; pClient = pClient->m_pEdNext )
+	for ( CEDClient* pClient = m_pFirst; pClient; pClient = pClient->m_pEdNext )
 	{
 		if ( pClient->IsValid() )
 			++nCount;
@@ -309,7 +309,7 @@ BOOL CEDClients::IsOverloaded() const
 
 	DWORD nCount = 0;
 
-	for ( CEDClient* pClient = m_pFirst ; pClient ; pClient = pClient->m_pEdNext )
+	for ( CEDClient* pClient = m_pFirst; pClient; pClient = pClient->m_pEdNext )
 	{
 		if ( pClient->IsValid() )
 			nCount++;
@@ -322,7 +322,7 @@ BOOL CEDClients::IsMyDownload(const CDownloadTransferED2K* pDownload) const
 {
 	CQuickLock oLock( m_pSection );
 
-	for ( CEDClient* pClient = m_pFirst ; pClient ; pClient = pClient->m_pEdNext )
+	for ( CEDClient* pClient = m_pFirst; pClient; pClient = pClient->m_pEdNext )
 	{
 		if ( pClient->m_pDownloadTransfer == pDownload )
 			return TRUE;
@@ -350,7 +350,7 @@ void CEDClients::OnRun()
 	if ( ! oCTransfersLock.Lock( 250 ) )
 		return;
 
-	for ( CEDClient* pClient = m_pFirst ; pClient ; )
+	for ( CEDClient* pClient = m_pFirst; pClient; )
 	{
 		CEDClient* pNext = pClient->m_pEdNext;
 		pClient->OnRunEx( tNow );

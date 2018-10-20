@@ -1,8 +1,8 @@
 //
 // CtrlBrowseProfile.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2006
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2006 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -328,7 +328,7 @@ void CBrowseProfileCtrl::UpdateDocumentLeft(CHostBrowser* pBrowser, CGProfile* p
 	// 5 Interests
 	if ( CXMLElement* pInterests = pProfile->GetXML( L"interests" ) )
 	{
-		for ( POSITION pos = pInterests->GetElementIterator() ; pos ; )
+		for ( POSITION pos = pInterests->GetElementIterator(); pos; )
 		{
 			CXMLElement* pInterest = pInterests->GetNextElement( pos );
 
@@ -383,7 +383,7 @@ void CBrowseProfileCtrl::UpdateDocumentRight(CHostBrowser* pBrowser, CGProfile* 
 
 			if ( CXMLElement* pBookmarks = pProfile->GetXML( L"bookmarks" ) )
 			{
-				for ( pos = pBookmarks->GetElementIterator() ; pos ; )
+				for ( pos = pBookmarks->GetElementIterator(); pos; )
 				{
 					CXMLElement* pBookmark = pBookmarks->GetNextElement( pos );
 					if ( ! pBookmark->IsNamed( L"bookmark" ) ) continue;

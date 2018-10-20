@@ -1,8 +1,8 @@
 //
 // DlgPluginExtSetup.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2007
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -69,7 +69,7 @@ BOOL CPluginExtSetupDlg::OnInitDialog()
 	INT_PTR nTotal = oTokens.GetCount();
 	INT_PTR nChecked = 0;
 
-	for ( INT_PTR nToken = 0 ; nToken < nTotal ; nToken++ )
+	for ( INT_PTR nToken = 0; nToken < nTotal; nToken++ )
 	{
 		CString strToken = oTokens.GetAt( nToken );
 		if ( strToken.IsEmpty() ) continue;		// Shouldn't happen
@@ -116,7 +116,7 @@ void CPluginExtSetupDlg::OnOK()
 	int nChecked = 0;
 	TRISTATE bCurrState = m_bParentState;
 
-	for ( int nItem = 0 ; nItem < nTotal ; nItem++ )
+	for ( int nItem = 0; nItem < nTotal; nItem++ )
 	{
 		TRISTATE bEnabled = static_cast< TRISTATE >(
 			m_wndList.GetItemState( nItem, LVIS_STATEIMAGEMASK ) >> 12 );

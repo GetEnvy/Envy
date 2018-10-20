@@ -1,8 +1,8 @@
 //
 // DownloadWithSources.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2016 and Shareaza 2002-2008
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2008 and PeerProject 2008-2016
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -70,7 +70,7 @@ CDownloadWithSources::~CDownloadWithSources()
 
 	delete m_pXML;
 
-	for ( POSITION pos = m_pFailedSources.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pFailedSources.GetHeadPosition(); pos; )
 		delete m_pFailedSources.GetNext( pos );
 
 	m_pFailedSources.RemoveAll();
@@ -115,7 +115,7 @@ DWORD CDownloadWithSources::GetSourceCount(BOOL bNoPush, BOOL bSane) const
 	const DWORD tNow = GetTickCount();
 	DWORD nCount = 0;
 
-	for ( POSITION posSource = GetIterator() ; posSource ; )
+	for ( POSITION posSource = GetIterator(); posSource; )
 	{
 		CDownloadSource* pSource = GetNext( posSource );
 
@@ -170,7 +170,7 @@ DWORD CDownloadWithSources::GetBTSourceCount(BOOL bNoPush) const
 	const DWORD tNow = GetTickCount();
 	DWORD nCount = 0;
 
-	for ( POSITION posSource = GetIterator() ; posSource ; )
+	for ( POSITION posSource = GetIterator(); posSource; )
 	{
 		CDownloadSource* pSource = GetNext( posSource );
 
@@ -192,7 +192,7 @@ DWORD CDownloadWithSources::GetED2KCompleteSourceCount() const
 	const DWORD tNow = GetTickCount();
 	DWORD nCount = 0;
 
-	for ( POSITION posSource = GetIterator() ; posSource ; )
+	for ( POSITION posSource = GetIterator(); posSource; )
 	{
 		CDownloadSource* pSource = GetNext( posSource );
 
@@ -222,7 +222,7 @@ void CDownloadWithSources::ClearSources()
 {
 	CQuickLock pLock( Transfers.m_pSection );
 
-	for ( POSITION posSource = GetIterator() ; posSource ; )
+	for ( POSITION posSource = GetIterator(); posSource; )
 	{
 		CDownloadSource* pSource = GetNext( posSource );
 
@@ -386,7 +386,7 @@ BOOL CDownloadWithSources::AddSourceHit(const CMatchFile* pMatchFile, BOOL bForc
 	if ( bForce && pBestHit )
 		bRet = AddSourceHit( pBestHit, TRUE ) || bRet;
 
-	for ( const CQueryHit* pHit = pMatchFile->GetHits() ; pHit; pHit = pHit->m_pNext )
+	for ( const CQueryHit* pHit = pMatchFile->GetHits(); pHit; pHit = pHit->m_pNext )
 	{
 		if ( bForce && pHit == pBestHit )
 			continue;	// Best already added
@@ -407,7 +407,7 @@ BOOL CDownloadWithSources::AddSourceHit(const CEnvyURL& oURL, BOOL bForce, int n
 	if ( oURL.m_pTorrent )
 		((CDownload*)this)->SetTorrent( oURL.m_pTorrent );
 
-	for ( CString sURLs = oURL.m_sURL ; sURLs.GetLength() ; )
+	for ( CString sURLs = oURL.m_sURL; sURLs.GetLength(); )
 	{
 		CString sURL = sURLs.SpanExcluding( L"," );
 		sURLs = sURLs.Mid( sURL.GetLength() + 1 );
@@ -515,7 +515,7 @@ int CDownloadWithSources::AddSourceURLs(LPCTSTR pszURLs, BOOL bFailed)
 	CMapStringToFILETIME oUrls;
 	SplitStringToURLs( pszURLs, oUrls );
 
-	for ( POSITION pos = oUrls.GetStartPosition() ; pos ; )
+	for ( POSITION pos = oUrls.GetStartPosition(); pos; )
 	{
 		CString strURL;
 		FILETIME tSeen = {};
@@ -585,7 +585,7 @@ BOOL CDownloadWithSources::AddSourceInternal(CDownloadSource* pSource)
 			VendorCache.IsExtended( pSource->m_sServer );
 
 		// Remove unneeded sources
-		for ( POSITION posSource = GetIterator() ; posSource ; )
+		for ( POSITION posSource = GetIterator(); posSource; )
 		{
 			CDownloadSource* pExisting = GetNext( posSource );
 
@@ -658,7 +658,7 @@ BOOL CDownloadWithSources::AddSourceInternal(CDownloadSource* pSource)
 		GetSystemTimeAsFileTime( &tNow );
 #endif
 		CSortedSources oIdleSources;
-		for ( POSITION posSource = m_pSources.GetTailPosition() ; posSource && nSourceCount >= Settings.Downloads.SourcesWanted ; )
+		for ( POSITION posSource = m_pSources.GetTailPosition(); posSource && nSourceCount >= Settings.Downloads.SourcesWanted; )
 		{
 			CDownloadSource* pExisting = m_pSources.GetPrev( posSource );
 
@@ -682,7 +682,7 @@ BOOL CDownloadWithSources::AddSourceInternal(CDownloadSource* pSource)
 			}
 		}
 		// Remove older sources first
-		for ( CSortedSources::const_iterator i = oIdleSources.begin() ; i != oIdleSources.end() && nSourceCount >= Settings.Downloads.SourcesWanted ; ++i )
+		for ( CSortedSources::const_iterator i = oIdleSources.begin(); i != oIdleSources.end() && nSourceCount >= Settings.Downloads.SourcesWanted; ++i )
 		{
 			CDownloadSource* pExisting = (*i);
 #ifdef _DEBUG
@@ -722,7 +722,7 @@ CString CDownloadWithSources::GetSourceURLs(CList< CString >* pState, int nMaxim
 
 	CString strSources;
 
-	for ( POSITION posSource = GetIterator() ; posSource ; )
+	for ( POSITION posSource = GetIterator(); posSource; )
 	{
 		CDownloadSource* pSource = GetNext( posSource );
 
@@ -751,7 +751,7 @@ CString CDownloadWithSources::GetSourceURLs(CList< CString >* pState, int nMaxim
 				pSource->m_sURL.Find( L"Z%2C http://" ) >= 0 )
 			{
 				// Ignore buggy URLs
-				TRACE( L"CDownloadWithSources::GetSourceURLs() Bad URL: %s\n", pSource->m_sURL );
+				TRACE( "CDownloadWithSources::GetSourceURLs() Bad URL: %s\n", (LPCSTR)CT2A( pSource->m_sURL ) );
 			}
 			else
 			{
@@ -788,7 +788,7 @@ CString	CDownloadWithSources::GetTopFailedSources(int nMaximum, PROTOCOLID nProt
 	if ( ! oLock.Lock( 150 ) )
 		return str;
 
-	for ( POSITION pos = m_pFailedSources.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pFailedSources.GetHeadPosition(); pos; )
 	{
 		pResult = m_pFailedSources.GetNext( pos );
 		// Only return sources which we detected as failed
@@ -826,7 +826,7 @@ CString	CDownloadWithSources::GetTopFailedSources(int nMaximum, PROTOCOLID nProt
 
 BOOL CDownloadWithSources::OnQueryHits(const CQueryHit* pHits)
 {
-	for ( const CQueryHit* pHit = pHits ; pHit ; pHit = pHit->m_pNext )
+	for ( const CQueryHit* pHit = pHits; pHit; pHit = pHit->m_pNext )
 	{
 		AddSourceHit( pHit );
 	}
@@ -843,7 +843,7 @@ void CDownloadWithSources::RemoveOverlappingSources(QWORD nOffset, QWORD nLength
 	if ( ! oLock.Lock( 150 ) )
 		return;
 
-	for ( POSITION posSource = GetIterator() ; posSource ; )
+	for ( POSITION posSource = GetIterator(); posSource; )
 	{
 		CDownloadSource* pSource = GetNext( posSource );
 
@@ -879,7 +879,7 @@ CFailedSource* CDownloadWithSources::LookupFailedSource(LPCTSTR pszUrl, bool bRe
 
 	CFailedSource* pResult = NULL;
 
-	for ( POSITION pos = m_pFailedSources.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pFailedSources.GetHeadPosition(); pos; )
 	{
 		pResult = m_pFailedSources.GetNext( pos );
 		if ( pResult && pResult->m_sURL.Compare( pszUrl ) == 0 )
@@ -953,7 +953,7 @@ void CDownloadWithSources::ExpireFailedSources()
 	ASSUME_LOCK( Transfers.m_pSection );
 
 	const DWORD tNow = GetTickCount();
-	for ( POSITION pos = m_pFailedSources.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pFailedSources.GetHeadPosition(); pos; )
 	{
 		POSITION posThis = pos;
 		CFailedSource* pBadSource = m_pFailedSources.GetNext( pos );
@@ -975,7 +975,7 @@ void CDownloadWithSources::ClearFailedSources()
 {
 	ASSUME_LOCK( Transfers.m_pSection );
 
-	for ( POSITION pos = m_pFailedSources.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pFailedSources.GetHeadPosition(); pos; )
 	{
 		POSITION posThis = pos;
 		CFailedSource* pBadSource = m_pFailedSources.GetNext( pos );
@@ -1115,7 +1115,7 @@ void CDownloadWithSources::SortSource(CDownloadSource* pSource)
 	m_pSources.RemoveAt( posSource );
 
 	// Run through the sources to the correct position
-	for ( POSITION posCompare = GetIterator() ; posCompare ; )
+	for ( POSITION posCompare = GetIterator(); posCompare; )
 	{
 		posSource = posCompare;
 		CDownloadSource* pCompare = GetNext( posCompare );
@@ -1141,7 +1141,7 @@ int CDownloadWithSources::GetSourceColor()
 	CSingleLock oLock( &Transfers.m_pSection );
 	if ( oLock.Lock( 150 ) )
 	{
-		for ( POSITION posSource = GetIterator() ; posSource ; )
+		for ( POSITION posSource = GetIterator(); posSource; )
 		{
 			CDownloadSource* pSource = GetNext( posSource );
 
@@ -1163,7 +1163,7 @@ int CDownloadWithSources::GetSourceColor()
 
 	nFree = GetRandomNum( 0u, nFree - 1 );
 
-	for ( int nColor = 0 ; nColor < SRC_COLORS ; nColor++ )
+	for ( int nColor = 0; nColor < SRC_COLORS; nColor++ )
 	{
 		if ( bTaken[ nColor ] == FALSE )
 		{
@@ -1191,7 +1191,7 @@ void CDownloadWithSources::Serialize(CArchive& ar, int nVersion)	// DOWNLOAD_SER
 			nSources = (DWORD_PTR)Settings.Downloads.SourcesWanted;	// Don't save more than 500 sources
 		ar.WriteCount( nSources );
 
-		for ( POSITION posSource = GetIterator() ; posSource && nSources ; nSources-- )
+		for ( POSITION posSource = GetIterator(); posSource && nSources; nSources-- )
 		{
 			CDownloadSource* pSource = GetNext( posSource );
 
@@ -1203,7 +1203,7 @@ void CDownloadWithSources::Serialize(CArchive& ar, int nVersion)	// DOWNLOAD_SER
 	}
 	else // Loading
 	{
-		for ( DWORD_PTR nSources = ar.ReadCount() ; nSources ; nSources-- )
+		for ( DWORD_PTR nSources = ar.ReadCount(); nSources; nSources-- )
 		{
 			// Create new source
 			//CDownloadSource* pSource = new CDownloadSource( (CDownload*)this );	// Obsolete

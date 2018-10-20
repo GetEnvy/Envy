@@ -1,8 +1,8 @@
 //
 // QuerySearch.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2015 and Shareaza 2002-2008
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2008 and PeerProject 2008-2015
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -577,7 +577,7 @@ BOOL CQuerySearch::WriteHashesToEDPacket(CEDPacket* pPacket, BOOL bUDP, BOOL bLa
 	const DWORD tNow = GetTickCount();
 
 	// Run through all active downloads
-	for ( POSITION pos = Downloads.GetIterator() ; pos ; )
+	for ( POSITION pos = Downloads.GetIterator(); pos; )
 	{
 		CDownload* pDownload = Downloads.GetNext( pos );
 
@@ -848,7 +848,7 @@ void CQuerySearch::ReadGGEP(CG1Packet* pPacket)
 		Hashes::Md5Hash		oMD5;
 
 		CGGEPItem* pItemPos = pGGEP.GetFirst();
-		for ( BYTE nItemCount = 0 ; pItemPos && nItemCount < pGGEP.GetCount() ;
+		for ( BYTE nItemCount = 0; pItemPos && nItemCount < pGGEP.GetCount();
 			nItemCount++, pItemPos = pItemPos->m_pNext )
 		{
 			if ( pItemPos->IsNamed( GGEP_HEADER_HASH ) )
@@ -1288,7 +1288,7 @@ BOOL CQuerySearch::CheckOverflow(const CString& sSearch)
 
 	if ( m_oSearchHistory.GetCount() > OVERFLOW_HISTORY )
 	{
-		for ( const CHistoryMap::CPair* pData = m_oSearchHistory.PGetFirstAssoc() ; pData ; pData = m_oSearchHistory.PGetNextAssoc( pData ) )
+		for ( const CHistoryMap::CPair* pData = m_oSearchHistory.PGetFirstAssoc(); pData; pData = m_oSearchHistory.PGetNextAssoc( pData ) )
 		{
 			if ( tNow > pData->value + OVERFLOW_TIMEOUT )
 			{
@@ -1366,7 +1366,7 @@ BOOL CQuerySearch::CheckValid(bool bExpression)
 		DWORD nCommonWords = 0;
 
 		// Check we aren't just searching for broad terms - set counters, etc
-		for ( const_iterator pWord = begin() ; pWord != end() ; pWord++ )
+		for ( const_iterator pWord = begin(); pWord != end(); pWord++ )
 		{
 			TCHAR  szChar = *(pWord->first);
 			size_t nLength = pWord->second;
@@ -1591,7 +1591,7 @@ TRISTATE CQuerySearch::MatchMetadata(LPCTSTR pszSchemaURI, const CXMLElement* pX
 	int nCount = 0;
 	const CXMLElement* pRoot = m_pXML->GetFirstElement();
 
-	for ( POSITION pos = m_pSchema->GetMemberIterator() ; pos ; )
+	for ( POSITION pos = m_pSchema->GetMemberIterator(); pos; )
 	{
 		const CSchemaMember* pMember = m_pSchema->GetNextMember( pos );
 
@@ -1628,7 +1628,7 @@ BOOL CQuerySearch::MatchMetadataShallow(LPCTSTR pszSchemaURI, const CXMLElement*
 
 	if ( CSchemaPtr pSchema = SchemaCache.Get( pszSchemaURI ) )
 	{
-		for ( POSITION pos = pSchema->GetMemberIterator() ; pos ; )
+		for ( POSITION pos = pSchema->GetMemberIterator(); pos; )
 		{
 			CSchemaMember* pMember = pSchema->GetNextMember( pos );
 
@@ -1644,7 +1644,7 @@ BOOL CQuerySearch::MatchMetadataShallow(LPCTSTR pszSchemaURI, const CXMLElement*
 	}
 	else
 	{
-		for ( POSITION pos = pXML->GetAttributeIterator() ; pos ; )
+		for ( POSITION pos = pXML->GetAttributeIterator(); pos; )
 		{
 			const CXMLAttribute* pAttribute = pXML->GetNextAttribute( pos );
 
@@ -1669,7 +1669,7 @@ BOOL CQuerySearch::WordMatch(LPCTSTR pszString, LPCTSTR pszFind, bool* bReject)
 	BOOL bSpace		= TRUE;
 	int nCount		= 0;
 
-	for ( ; *pszPtr ; pszPtr++ )
+	for ( ; *pszPtr; pszPtr++ )
 	{
 		if ( ( bQuote && *pszPtr == '\"' ) || ( ! bQuote && ( *pszPtr <= ' ' || *pszPtr == '\t' || *pszPtr == '-' || *pszPtr == '\"' ) ) )
 		{
@@ -1882,7 +1882,7 @@ void CQuerySearch::BuildWordList(bool bExpression, bool /*bLocal*/ )
 	// Build m_sPosKeywords/m_sG2Keywords from m_oWords/m_oNegWords
 
 	// Create string with positive keywords.
-	for ( const_iterator pWord = begin() ; pWord != end() ; ++pWord )
+	for ( const_iterator pWord = begin(); pWord != end(); ++pWord )
 	{
 		m_sPosKeywords.Append( pWord->first, int( pWord->second ) );
 		m_sPosKeywords += L' ';
@@ -1892,7 +1892,7 @@ void CQuerySearch::BuildWordList(bool bExpression, bool /*bLocal*/ )
 	m_sPosKeywords.TrimRight();		// Trim off extra space char at the end of string.
 
 	// Append negative keywords to G2 keywords string.
-	for ( const_iterator pWord = beginNeg() ; pWord != endNeg() ; ++pWord )
+	for ( const_iterator pWord = beginNeg(); pWord != endNeg(); ++pWord )
 	{
 		m_sG2Keywords += L'-';
 		m_sG2Keywords.Append( pWord->first, int( pWord->second ) );
@@ -2043,7 +2043,7 @@ CString CQuerySearch::BuildRegExp(const CString& strPattern) const
 	// <1>...<9> - Insert query keyword number 1-9.
 	// <> - Insert next query keyword.
 
-	for ( LPCTSTR pszPattern = strPattern ; *pszPattern ; ++pszPattern )
+	for ( LPCTSTR pszPattern = strPattern; *pszPattern; ++pszPattern )
 	{
 		LPCTSTR pszLt = _tcschr( pszPattern, L'<' );
 		if ( pszLt )
@@ -2060,7 +2060,7 @@ CString CQuerySearch::BuildRegExp(const CString& strPattern) const
 			bool bNumber = bAll ? false : ( *pszPattern >= '1' && *pszPattern <= '9' );
 
 			// ToDo: Check only after single char?
-			for ( ; *pszPattern ; pszPattern++ )
+			for ( ; *pszPattern; pszPattern++ )
 			{
 				if ( *pszPattern == '>' )
 				{
@@ -2074,7 +2074,7 @@ CString CQuerySearch::BuildRegExp(const CString& strPattern) const
 				if ( bAll )		// <%>,<$>,<_>,<>
 				{
 					// Add all keywords at the "<%>,<$>,<_>" position
-					for ( CQuerySearch::const_iterator i = begin() ; i != end() ; ++i )
+					for ( CQuerySearch::const_iterator i = begin(); i != end(); ++i )
 					{
 						strFilter.AppendFormat( L"%s\\s*",
 							(LPCTSTR)CString( i->first, (int)( i->second ) ) );
@@ -2090,7 +2090,7 @@ CString CQuerySearch::BuildRegExp(const CString& strPattern) const
 						nNumber = ++nTotal;
 
 					// Add specified keyword at the "< >" position
-					for ( CQuerySearch::const_iterator i = begin() ; i != end() ; ++i, ++nWord )
+					for ( CQuerySearch::const_iterator i = begin(); i != end(); ++i, ++nWord )
 					{
 						if ( nWord == nNumber )
 						{

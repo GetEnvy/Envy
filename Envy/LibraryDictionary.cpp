@@ -1,8 +1,8 @@
 //
 // LibraryDictionary.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2007
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -104,7 +104,7 @@ void CLibraryDictionary::ProcessPhrase(CLibraryFile& oFile, const CString& strPh
 
 	CStringList oKeywords;
 	CQueryHashTable::MakeKeywords( strPhrase, oKeywords );
-	for ( POSITION pos = oKeywords.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = oKeywords.GetHeadPosition(); pos; )
 	{
 		ProcessWord( oFile, oKeywords.GetNext( pos ), bAdd, bCanUpload );
 	}
@@ -184,14 +184,14 @@ void CLibraryDictionary::BuildHashTable()
 	// Add words to hash table
 	//TRACE( L"[LD] Dictionary size: %d words\n", m_oWordMap.GetCount() );
 	//TRACE( L"[LD] Hash table size: %d\n", m_oWordMap.GetHashTableSize() );
-	for ( POSITION pos1 = m_oWordMap.GetStartPosition() ; pos1 ; )
+	for ( POSITION pos1 = m_oWordMap.GetStartPosition(); pos1; )
 	{
 		CString strWord;
 		CFileList* pList = NULL;
 		m_oWordMap.GetNextAssoc( pos1, strWord, pList );
 
 		//TRACE( L"[LD] Word \"%hs\" found %d time(s) in %d file(s)\n", (LPCSTR)CT2A( strWord ), oWord.m_nCount, oWord.m_pList->GetCount() );
-		for ( POSITION pos2 = pList->GetHeadPosition() ; pos2 ; )
+		for ( POSITION pos2 = pList->GetHeadPosition(); pos2; )
 		{
 			const CLibraryFile* pFile = pList->GetNext( pos2 );
 
@@ -206,7 +206,7 @@ void CLibraryDictionary::BuildHashTable()
 	}
 
 	// Add sha1/ed2k hashes to hash table
-	for ( POSITION pos = LibraryMaps.GetFileIterator() ; pos ; )
+	for ( POSITION pos = LibraryMaps.GetFileIterator(); pos; )
 	{
 		const CLibraryFile* pFile = LibraryMaps.GetNextFile( pos );
 
@@ -249,7 +249,7 @@ void CLibraryDictionary::Clear()
 {
 	ASSUME_LOCK( Library.m_pSection );
 
-	for ( POSITION pos = m_oWordMap.GetStartPosition() ; pos ; )
+	for ( POSITION pos = m_oWordMap.GetStartPosition(); pos; )
 	{
 		CString strWord;
 		CFileList* pList = NULL;
@@ -289,7 +289,7 @@ CFileList* CLibraryDictionary::Search(const CQuerySearch* pSearch, const int nMa
 
 	CQuerySearch::const_iterator pWordEntry = pSearch->begin();
 	const CQuerySearch::const_iterator pLastWordEntry = pSearch->end();
-	for ( ; pWordEntry != pLastWordEntry ; ++pWordEntry )
+	for ( ; pWordEntry != pLastWordEntry; ++pWordEntry )
 	{
 		if ( pWordEntry->first[ 0 ] == L'-' )
 			continue;
@@ -298,7 +298,7 @@ CFileList* CLibraryDictionary::Search(const CQuerySearch* pSearch, const int nMa
 		CFileList* pList = NULL;
 		if ( m_oWordMap.Lookup( strWord, pList ) )
 		{
-			for ( POSITION pos = pList->GetHeadPosition() ; pos ; )
+			for ( POSITION pos = pList->GetHeadPosition(); pos; )
 			{
 				CLibraryFile* pFile = pList->GetNext( pos );
 
@@ -327,7 +327,7 @@ CFileList* CLibraryDictionary::Search(const CQuerySearch* pSearch, const int nMa
 		( pSearch->tableSize() * 2 / 3 ) : pSearch->tableSize();
 
 	CFileList* pHits = NULL;
-	for ( ; pHit ; pHit = pHit->m_pNextHit )
+	for ( ; pHit; pHit = pHit->m_pNextHit )
 	{
 		ASSERT( pHit->m_nSearchCookie == m_nSearchCookie );
 

@@ -1,8 +1,8 @@
 //
 // ChatWindows.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2007
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -69,7 +69,7 @@ CChatWnd* CChatWindows::GetNext(POSITION& pos) const
 
 //void CChatWindows::Close()
 //{
-//	for ( POSITION pos = GetIterator() ; pos ; )
+//	for ( POSITION pos = GetIterator(); pos; )
 //	{
 //		GetNext( pos )->GetParent()->DestroyWindow();
 //	}
@@ -82,7 +82,7 @@ CChatWnd* CChatWindows::GetNext(POSITION& pos) const
 
 CPrivateChatWnd* CChatWindows::FindPrivate(const Hashes::Guid& oGUID, bool bLive) const
 {
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		CPrivateChatWnd* pFrame = static_cast<CPrivateChatWnd*>( GetNext( pos ) );
 
@@ -98,7 +98,7 @@ CPrivateChatWnd* CChatWindows::FindPrivate(const Hashes::Guid& oGUID, bool bLive
 
 CPrivateChatWnd* CChatWindows::FindPrivate(const SOCKADDR_IN* pAddress) const
 {
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		CPrivateChatWnd* pFrame = static_cast<CPrivateChatWnd*>( GetNext( pos ) );
 
@@ -118,7 +118,7 @@ CPrivateChatWnd* CChatWindows::FindED2KFrame(const SOCKADDR_IN* pAddress) const
 	CString strHighID;
 	strHighID.Format( L"%s:%hu", (LPCTSTR)CString( inet_ntoa( pAddress->sin_addr ) ), ntohs( pAddress->sin_port ) );
 
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		CPrivateChatWnd* pFrame = static_cast<CPrivateChatWnd*>( GetNext( pos ) );
 
@@ -143,7 +143,7 @@ CPrivateChatWnd* CChatWindows::FindED2KFrame(DWORD nClientID, const SOCKADDR_IN*
 		(LPCTSTR)CString( inet_ntoa( pServerAddress->sin_addr ) ),
 		pServerAddress->sin_port );
 
-		for ( POSITION pos = GetIterator() ; pos ; )
+		for ( POSITION pos = GetIterator(); pos; )
 		{
 			CPrivateChatWnd* pFrame = static_cast<CPrivateChatWnd*>( GetNext( pos ) );
 
@@ -320,7 +320,7 @@ CPrivateChatWnd* CChatWindows::OpenPrivateED2K(const Hashes::Guid& oGUID, const 
 //	pParent->SetForegroundWindow();
 //	// Put a 'connecting' message in the window
 //	CString strMessage;
-//	strMessage.Format( LoadString( IDS_CHAT_CONNECTING_TO ), pFrame->m_sNick );
+//	strMessage.Format( LoadString( IDS_CHAT_CONNECTING_TO ), (LPCTSTR)pFrame->m_sNick );
 //	pFrame->OnStatusMessage( 0, strMessage );
 //
 //	if ( oGUID )

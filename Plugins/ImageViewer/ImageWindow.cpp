@@ -1,7 +1,7 @@
 //
 // ImageWindow.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
+// This file is part of Envy (getenvy.com) © 2016-2018
 // Portions copyright PeerProject 2008-2012
 //
 // Original author Michael Stokes released portions into the public domain.
@@ -602,14 +602,14 @@ LRESULT CImageWindow::OnMouseWheel(UINT /*uMsg*/, WPARAM wParam, LPARAM /*lParam
 
 		if ( m_nZoomIndex > 0 )
 		{
-			for ( int nRun = m_nZoomIndex ; nRun ; nRun-- )
+			for ( int nRun = m_nZoomIndex; nRun; nRun-- )
 			{
 				m_nZoomFactor *= 1.5f;
 			}
 		}
 		else if ( m_nZoomIndex < 0 )
 		{
-			for ( int nRun = -m_nZoomIndex ; nRun ; nRun-- )
+			for ( int nRun = -m_nZoomIndex; nRun; nRun-- )
 			{
 				m_nZoomFactor /= 1.5f;
 			}
@@ -845,7 +845,7 @@ void CImageWindow::OnPrevious()
 			{
 				if ( _tcsicmp( szFileName, wfd.cFileName ) == 0 )
 				{
-					for ( POSITION pos = sPrevFiles.GetHeadPosition(); pos ; )
+					for ( POSITION pos = sPrevFiles.GetHeadPosition(); pos; )
 					{
 						m_sFile = sPrevFiles.GetNext( pos );
 						if ( Refresh() )
@@ -919,7 +919,7 @@ void CImageWindow::OnLast()
 		FindClose( hFind );
 	}
 
-	for ( POSITION pos = sPrevFiles.GetHeadPosition(); pos ; )
+	for ( POSITION pos = sPrevFiles.GetHeadPosition(); pos; )
 	{
 		m_sFile = sPrevFiles.GetNext( pos );
 		if ( Refresh() )

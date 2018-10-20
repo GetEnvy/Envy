@@ -1,8 +1,8 @@
 //
 // PageSettingsPlugins.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2006
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2006 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -150,7 +150,7 @@ void CPluginsSettingsPage::OnItemChangedPlugins(NMHDR* pNMHDR, LRESULT* pResult)
 		else
 			strExt = L"-";
 
-		for ( int nDot = 0 ; nDot != -1 ; )
+		for ( int nDot = 0; nDot != -1; )
 		{
 			nDot = strExt.Find( L'.', nDot );
 			if ( nDot != -1 )
@@ -216,7 +216,7 @@ void CPluginsSettingsPage::OnOK()
 	BOOL bChanged = FALSE;
 
 	int nCount = m_wndList.GetItemCount();
-	for ( int nItem = 0 ; nItem < nCount ; nItem++ )
+	for ( int nItem = 0; nItem < nCount; nItem++ )
 	{
 		CPlugin* pPlugin = (CPlugin*)m_wndList.GetItemData( nItem );
 		CString strCLSID = m_wndList.GetItemText( nItem, 1 );
@@ -253,7 +253,7 @@ void CPluginsSettingsPage::InsertPlugin(LPCTSTR pszCLSID, LPCTSTR pszName, int n
 	CString strCurrAssoc, strAssocAdd;
 
 	int nCount = m_wndList.GetItemCount();
-	for ( ; nItem < nCount ; nItem++ )
+	for ( ; nItem < nCount; nItem++ )
 	{
 		LPVOID pExisting = (LPVOID)m_wndList.GetItemData( nItem );
 		CString strExisting = m_wndList.GetItemText( nItem, 0 );
@@ -300,7 +300,7 @@ void CPluginsSettingsPage::EnumerateGenericPlugins()
 {
 	Plugins.Enumerate();
 
-	for ( POSITION pos = Plugins.GetIterator() ; pos ; )
+	for ( POSITION pos = Plugins.GetIterator(); pos; )
 	{
 		CPlugin* pPlugin = Plugins.GetNext( pos );
 
@@ -322,7 +322,7 @@ void CPluginsSettingsPage::EnumerateMiscPlugins()
 	if ( ERROR_SUCCESS != RegOpenKeyEx( HKEY_CURRENT_USER, REGISTRY_KEY L"\\Plugins", 0, KEY_READ, &hPlugins ) )
 		return;
 
-	for ( DWORD nIndex = 0 ; ; nIndex++ )
+	for ( DWORD nIndex = 0; ; nIndex++ )
 	{
 		HKEY hCategory = NULL;
 		TCHAR szName[128];
@@ -349,7 +349,7 @@ void CPluginsSettingsPage::EnumerateMiscPlugins(LPCTSTR pszType, HKEY hRoot)
 	CMap< CString, const CString&, CString, CString& >	pCLSIDs;
 	CString strPath = REGISTRY_KEY L"\\Plugins";
 
-	for ( DWORD nIndex = 0 ; ; nIndex++ )
+	for ( DWORD nIndex = 0; ; nIndex++ )
 	{
 		CWaitCursor pCursor;
 

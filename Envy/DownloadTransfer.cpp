@@ -1,8 +1,8 @@
 //
 // DownloadTransfer.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2007
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -71,7 +71,7 @@ void CDownloadTransfer::DrawStateBar(CDC* pDC, CRect* prcBar, COLORREF crFill, B
 
 	if ( m_nProtocol == PROTOCOL_BT || m_nProtocol == PROTOCOL_ED2K )
 	{
-		for ( Fragments::Queue::const_iterator pItr = m_oRequested.begin() ; pItr != m_oRequested.end() ; ++pItr )
+		for ( Fragments::Queue::const_iterator pItr = m_oRequested.begin(); pItr != m_oRequested.end(); ++pItr )
 		{
 			CFragmentBar::DrawStateBar( pDC, prcBar, m_pDownload->m_nSize, pItr->begin(), pItr->size(), crFill, bTop );
 		}
@@ -390,7 +390,7 @@ blockPair CDownloadTransfer::SelectBlock(const Fragments::List& oPossible, const
 	QWORD nRange[3] = { 0ull, 0ull, 0ull };
 	QWORD nBestRange[3] = { 0ull, 0ull, 0ull };
 
-	for ( ; pItr != pEnd ; ++pItr )
+	for ( ; pItr != pEnd; ++pItr )
 	{
 		QWORD nPart[2] = { pItr->begin(), 0ull };
 		QWORD nBlockBegin = nPart[0] / nBlockSize;
@@ -418,7 +418,7 @@ blockPair CDownloadTransfer::SelectBlock(const Fragments::List& oPossible, const
 		// This fragment contains one or more aligned empty blocks
 		if ( ! nRange[2] )
 		{
-			for ( ; ( nBlockBegin <= nBlockEnd && oBlocks.size() < oBlocks.max_size() ) ; ++nBlockBegin )
+			for ( ; ( nBlockBegin <= nBlockEnd && oBlocks.size() < oBlocks.max_size() ); ++nBlockBegin )
 			{
 				if ( nBlockBegin >= pAvailable.size() || pAvailable[ (DWORD)nBlockBegin ] )
 					oBlocks.push_back( nBlockBegin );

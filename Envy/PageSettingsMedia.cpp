@@ -1,8 +1,8 @@
 //
 // PageSettingsMedia.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2007
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -101,8 +101,8 @@ BOOL CMediaSettingsPage::OnInitDialog()
 	m_bEnablePlay		= Settings.MediaPlayer.EnablePlay;
 	m_bEnableEnqueue	= Settings.MediaPlayer.EnableEnqueue;
 
-	for ( string_set::const_iterator i = Settings.MediaPlayer.FileTypes.begin() ;
-		i != Settings.MediaPlayer.FileTypes.end() ; ++i )
+	for ( string_set::const_iterator i = Settings.MediaPlayer.FileTypes.begin();
+		i != Settings.MediaPlayer.FileTypes.end(); ++i )
 	{
 		m_wndList.AddString( *i );
 	}
@@ -111,8 +111,8 @@ BOOL CMediaSettingsPage::OnInitDialog()
 	m_wndServices.AddString( LoadString( IDS_MEDIA_PLAYER ) );
 	int nSelected = INTERNAL_INDEX;
 
-	for ( string_set::const_iterator i = Settings.MediaPlayer.ServicePath.begin() ;
-		i != Settings.MediaPlayer.ServicePath.end() ; ++i )
+	for ( string_set::const_iterator i = Settings.MediaPlayer.ServicePath.begin();
+		i != Settings.MediaPlayer.ServicePath.end(); ++i )
 	{
 		CString strPlayer = *i;
 		BOOL bSelected = strPlayer.Right( 1 ) == L'*';	// SELECTED_PLAYER_TOKEN
@@ -191,7 +191,7 @@ void CMediaSettingsPage::OnMediaVis()
 void CMediaSettingsPage::OnDestroy()
 {
 	const int nCount = m_wndServices.GetCount();
-	for ( int i = 0 ; i < nCount ; ++i )
+	for ( int i = 0; i < nCount; ++i )
 	{
 		delete (CString*)m_wndServices.GetItemDataPtr( i );
 	}
@@ -214,7 +214,7 @@ void CMediaSettingsPage::OnOK()
 		nSelected = INTERNAL_INDEX;
 
 	const int nCount = m_wndServices.GetCount();
-	for ( int i = 0 ; i < nCount ; ++i )
+	for ( int i = 0; i < nCount; ++i )
 	{
 		CString* psPlayer = (CString*)m_wndServices.GetItemDataPtr( i );
 		if ( ! psPlayer )
@@ -227,7 +227,7 @@ void CMediaSettingsPage::OnOK()
 	Settings.MediaPlayer.ShortPaths = ( nSelected != INTERNAL_INDEX );	// No MAX_LENGTH issues with internal service only?
 
 	CSettingsSheet* pSheet = GetSheet();
-	for ( INT_PTR nPage = 0 ; nPage < pSheet->GetPageCount() ; nPage++ )
+	for ( INT_PTR nPage = 0; nPage < pSheet->GetPageCount(); nPage++ )
 	{
 		if ( CSettingsPage* pPage = pSheet->GetPage( nPage ) )
 		{
@@ -243,7 +243,7 @@ void CMediaSettingsPage::OnOK()
 
 	Settings.MediaPlayer.FileTypes.clear();
 
-	for ( int nItem = 0 ; nItem < m_wndList.GetCount() ; nItem++ )
+	for ( int nItem = 0; nItem < m_wndList.GetCount(); nItem++ )
 	{
 		CString str;
 		m_wndList.GetLBText( nItem, str );
@@ -277,7 +277,7 @@ void CMediaSettingsPage::OnSelChangeMediaService()
 		CString strNewPlayer = dlg.GetPathName();
 
 		const int nCount = m_wndServices.GetCount();
-		for ( int i = 0 ; i < nCount ; ++i )
+		for ( int i = 0; i < nCount; ++i )
 		{
 			CString* psPlayer = (CString*)m_wndServices.GetItemDataPtr( i );
 			if ( ! psPlayer )

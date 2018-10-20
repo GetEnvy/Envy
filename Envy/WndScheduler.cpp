@@ -1,8 +1,8 @@
 //
 // WndScheduler.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2010-2014 and Shareaza 2010
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2010 and PeerProject 2010-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -150,7 +150,7 @@ void CSchedulerWnd::Update(int nColumn, BOOL bSort)
 	CLiveList pLiveList( COL_LAST, Scheduler.GetCount() + Scheduler.GetCount() / 4u );
 
 	int nCount = 1;
-	for ( POSITION pos = Scheduler.GetIterator() ; pos ; nCount++ )
+	for ( POSITION pos = Scheduler.GetIterator(); pos; nCount++ )
 	{
 		CScheduleTask* pSchTask = Scheduler.GetNext( pos );
 
@@ -408,7 +408,7 @@ void CSchedulerWnd::OnSchedulerRemove()
 {
 	CQuickLock oLock( Scheduler.m_pSection );
 
-	for ( int nItem = -1 ; ( nItem = m_wndList.GetNextItem( nItem, LVIS_SELECTED ) ) >= 0 ; )
+	for ( int nItem = -1; ( nItem = m_wndList.GetNextItem( nItem, LVIS_SELECTED ) ) >= 0; )
 	{
 		if ( CScheduleTask* pSchTask = GetItem( nItem ) )
 			Scheduler.Remove( pSchTask );
@@ -508,7 +508,7 @@ void CSchedulerWnd::OnSchedulerRemoveAll()
 
 	CQuickLock oLock( Scheduler.m_pSection );
 
-	for ( int nItem = 0 ; nItem < m_wndList.GetItemCount() ; nItem++ )
+	for ( int nItem = 0; nItem < m_wndList.GetItemCount(); nItem++ )
 	{
 		if ( CScheduleTask* pSchTask = GetItem( nItem ) )
 			Scheduler.Remove( pSchTask );
@@ -548,7 +548,7 @@ void CSchedulerWnd::OnSchedulerExport()
 	pXML->AddAttribute( L"xmlns", CScheduler::xmlns );
 
 	const BOOL bSelection = m_wndList.GetNextItem( -1, LVIS_SELECTED ) >= 0;
-	for ( int nItem = -1 ; ( nItem = m_wndList.GetNextItem( nItem, bSelection ? LVIS_SELECTED : 0 ) ) >= 0 ; )
+	for ( int nItem = -1; ( nItem = m_wndList.GetNextItem( nItem, bSelection ? LVIS_SELECTED : 0 ) ) >= 0; )
 	{
 		CQuickLock oLock( Scheduler.m_pSection );
 
@@ -600,7 +600,7 @@ BOOL CSchedulerWnd::PreTranslateMessage(MSG* pMsg)
 		}
 		if ( pMsg->wParam == 'A' && GetAsyncKeyState( VK_CONTROL ) & 0x8000 )
 		{
-			for ( int nItem = 0 ; nItem < m_wndList.GetItemCount() ; nItem++ )
+			for ( int nItem = 0; nItem < m_wndList.GetItemCount(); nItem++ )
 				m_wndList.SetItemState( nItem, LVIS_SELECTED, LVIS_SELECTED );
 			return TRUE;
 		}

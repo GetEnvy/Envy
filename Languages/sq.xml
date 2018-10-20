@@ -3,7 +3,7 @@
 
 <!-- Envy Default Albanian Skin File -->
 
-<!-- Translation based on default en.xml r21 -->
+<!-- Translation based on default en.xml r22 -->
 <!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -15,7 +15,7 @@
 <manifest
 	name="Shqip"
 	author="Besmir Godole"
-	updatedBy="Besmir Godole"
+	updatedby="Besmir Godole"
 	description="Envy Default Albanian Skin File"
 	link="http://getenvy.com"
 	email="bgodole(at)gmail.com"
@@ -3087,12 +3087,12 @@
 	<string id="20798" text="Envy mbaroi shkarkimin e versionit të ri (%s). A doni të përmirësoni tani?\n\nNëse zgjidhni Po, Envy do të mbyllet përkohësisht deri në instalimin e përmirësimit."/>
 	<string id="20799" text="Nuk diktohet asnjë verion i ri i Envy-s."/>
 	<!-- Missing Upload Queue Strings -->
-	<string id="20862" text="Shto"/>
-	<string id="20864" text="&amp;Shfleto"/>
-	<string id="20865" text="&amp;Lidhu"/>
-	<string id="20866" text="Emri i skedës:"/>
-	<string id="20867" text="Hosti:"/>
-	<string id="20868" text="Porti:"/>
+	<string id="20864" text="Shto"/>
+	<string id="20865" text="&amp;Shfleto"/>
+	<string id="20866" text="&amp;Lidhu"/>
+	<string id="20867" text="Emri i skedës:"/>
+	<string id="20868" text="Hosti:"/>
+	<string id="20869" text="Porti:"/>
 	<string id="20872" text="Lloji:"/>
 	<string id="20874" text="URLi:"/>
 	<string id="20875" text="I pacaktuar"/>
@@ -3578,7 +3578,7 @@
 	<dialog name="CWizardConnectionPage" cookie="StStCoStStCoStCoStCoStEdBuStms" caption="Mirë se erdhët në Envy (2/8)">
 		<control text="Për efektshmëri optimale, Envy duhet të dijë si lidheni në Internet."/>
 		<control text="Zgjidheni llojin e lidhjes me Internet:"/>
-		<control text="| Modem Dial up| ISDN 128K| DSL 768K| DSL 1.5| Kabllo 3| DSL 4| DSL2 8| FIOS 10| DSL2 12| FIOS 15| FIOS 20| FIOS 25| FIOS 30| FIOS 50| T1| T3| LAN| OC3"/>
+		<control text="|Modem Dial up|ISDN 128K|DSL 768K|DSL 1.5|Kabllo 3|DSL 4|DSL2 8|FIOS 10|DSL2 12|FIOS 15|FIOS 20|FIOS 25|FIOS 30|FIOS 50|100|200|300|400|Gigabit|T1|T3|LAN|OC3"/>
 		<control text="Testi në Speedtest.net"/>
 		<control text="Ose zgjidheni shpejtësinë e shkarkimit:"/>
 		<control/>

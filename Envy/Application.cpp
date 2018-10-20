@@ -1,8 +1,8 @@
 //
 // Application.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2008
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2008 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -139,9 +139,8 @@ STDMETHODIMP CApplication::XApplication::CheckVersion(BSTR sVersion)
 	METHOD_PROLOGUE( CApplication, Application )
 	if ( sVersion == NULL ) return E_INVALIDARG;
 
-	UINT nDesired[2];
-	if ( swscanf_s( sVersion, L"%u.%u",
-		 &nDesired[0], &nDesired[1] ) != 2 )
+	WORD nDesired[2];
+	if ( swscanf_s( sVersion, L"%hu.%hu", &nDesired[0], &nDesired[1] ) != 2 )
 		return E_INVALIDARG;
 
 	// Note: Assumes each version component is 8 bit

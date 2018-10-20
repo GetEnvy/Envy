@@ -573,14 +573,14 @@ LRESULT CTextWindow::OnMouseWheel(UINT /*uMsg*/, WPARAM wParam, LPARAM /*lParam*
 
 		if ( m_nZoomIndex > 0 )
 		{
-			for ( int nRun = m_nZoomIndex ; nRun ; nRun-- )
+			for ( int nRun = m_nZoomIndex; nRun; nRun-- )
 			{
 				m_nZoomFactor *= 1.5f;
 			}
 		}
 		else if ( m_nZoomIndex < 0 )
 		{
-			for ( int nRun = -m_nZoomIndex ; nRun ; nRun-- )
+			for ( int nRun = -m_nZoomIndex; nRun; nRun-- )
 			{
 				m_nZoomFactor /= 1.5f;
 			}

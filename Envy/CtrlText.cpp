@@ -1,8 +1,8 @@
 //
 // CtrlText.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2008
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2008 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -94,7 +94,7 @@ void CTextCtrl::Add(const CLogMessage* pMsg)
 
 	CQuickLock pLock( m_pSection );
 
-	for ( int pos = 0 ; ; )
+	for ( int pos = 0; ; )
 	{
 		CString strLine = pMsg->m_strLog.Tokenize( L"\r\n", pos );
 		if ( strLine.IsEmpty() )
@@ -115,7 +115,7 @@ void CTextCtrl::AddLine(WORD nType, const CString& strLine)
 
 	if ( m_pLines.GetSize() >= LINE_BUFFER_LIMIT )
 	{
-		for ( int nCount = 0 ; nCount < LINE_BUFFER_BLOCK ; nCount++ )
+		for ( int nCount = 0; nCount < LINE_BUFFER_BLOCK; nCount++ )
 		{
 			delete m_pLines.GetAt( nCount );
 		}
@@ -138,7 +138,7 @@ void CTextCtrl::Clear(BOOL bInvalidate)
 {
 	CQuickLock pLock( m_pSection );
 
-	for ( int nLine = 0 ; nLine < m_pLines.GetSize() ; nLine++ )
+	for ( int nLine = 0; nLine < m_pLines.GetSize(); nLine++ )
 	{
 		delete m_pLines.GetAt( nLine );
 	}
@@ -249,7 +249,7 @@ void CTextCtrl::OnPaint()
 
 	if ( m_bProcess ) m_nTotal = 0;
 
-	for ( int nLine = 0 ; nLine < m_pLines.GetSize() ; nLine++ )
+	for ( int nLine = 0; nLine < m_pLines.GetSize(); nLine++ )
 	{
 		CTextLine* pLine = m_pLines.GetAt( nLine );
 
@@ -270,7 +270,7 @@ void CTextCtrl::OnPaint()
 
 	dc.SetBkMode( OPAQUE );
 
-	for ( INT_PTR nLine = m_pLines.GetSize() - 1 ; nLine >= 0 && rcLine.bottom > 0 ; nLine-- )
+	for ( INT_PTR nLine = m_pLines.GetSize() - 1; nLine >= 0 && rcLine.bottom > 0; nLine-- )
 	{
 		CTextLine* pLine = m_pLines.GetAt( nLine );
 		const WORD nType = pLine->m_nType & MSG_SEVERITY_MASK;
@@ -313,7 +313,7 @@ int CTextCtrl::HitTest(const CPoint& pt) const
 		GetClientRect( &rcClient );
 		CRect rcLine( rcClient );
 		rcLine.bottom += ( m_nTotal - m_nPosition ) * m_nHeight;
-		for ( int nLine = m_pLines.GetCount() - 1 ; nLine >= 0 && rcLine.bottom > rcClient.top ; nLine-- )
+		for ( int nLine = m_pLines.GetCount() - 1; nLine >= 0 && rcLine.bottom > rcClient.top; nLine-- )
 		{
 			CTextLine* pLine = m_pLines.GetAt( nLine );
 			rcLine.top = rcLine.bottom - pLine->m_nLine * m_nHeight;
@@ -333,7 +333,7 @@ void CTextCtrl::CopyText() const
 	{
 		CQuickLock pLock( m_pSection );
 
-		for ( int i = 0 ; i < m_pLines.GetCount() ; i++ )
+		for ( int i = 0; i < m_pLines.GetCount(); i++ )
 		{
 			CTextLine* pLineTemp = m_pLines.GetAt( i );
 			if ( pLineTemp->m_bSelected )
@@ -402,7 +402,7 @@ void CTextCtrl::OnLButtonDown(UINT nFlags, CPoint point)
 			if ( m_nLastClicked == -1 )
 				m_nLastClicked = nLine;
 
-			for ( int i = 0 ; i < m_pLines.GetCount() ; i++ )
+			for ( int i = 0; i < m_pLines.GetCount(); i++ )
 			{
 				CTextLine* pLineTemp = m_pLines.GetAt( i );
 				pLineTemp->m_bSelected = ( m_nLastClicked < nLine ) ?
@@ -413,7 +413,7 @@ void CTextCtrl::OnLButtonDown(UINT nFlags, CPoint point)
 		else
 		{
 			// Select one, unselect others
-			for ( int i = 0 ; i < m_pLines.GetCount() ; i++ )
+			for ( int i = 0; i < m_pLines.GetCount(); i++ )
 			{
 				CTextLine* pLineTemp = m_pLines.GetAt( i );
 				pLineTemp->m_bSelected = ( pLineTemp == pLine );
@@ -450,7 +450,7 @@ void CTextCtrl::OnKeyDown(UINT nChar, UINT /*nRepCnt*/, UINT /*nFlags*/)
 		case 'A':
 			{
 				CQuickLock pLock( m_pSection );
-				for ( int i = 0 ; i < m_pLines.GetCount() ; i++ )
+				for ( int i = 0; i < m_pLines.GetCount(); i++ )
 				{
 					CTextLine* pLineTemp = m_pLines.GetAt( i );
 					pLineTemp->m_bSelected = TRUE;
@@ -465,7 +465,7 @@ void CTextCtrl::OnKeyDown(UINT nChar, UINT /*nRepCnt*/, UINT /*nFlags*/)
 	{
 		// Esc = Unselect all
 		CQuickLock pLock( m_pSection );
-		for ( int i = 0, nCount = m_pLines.GetCount() ; i < nCount ; i++ )
+		for ( int i = 0, nCount = m_pLines.GetCount(); i < nCount; i++ )
 		{
 			CTextLine* pLineTemp = m_pLines.GetAt( i );
 			pLineTemp->m_bSelected = FALSE;
@@ -544,7 +544,7 @@ int CTextLine::Process(CDC* pDC, int nWidth)
 	int nLength = 0;
 	int nLast = 0;
 
-	for ( LPCTSTR pszText = m_sText ; ; pszText++, nLength++ )
+	for ( LPCTSTR pszText = m_sText; ; pszText++, nLength++ )
 	{
 		if ( *pszText == 32 || *pszText == 0 )
 		{
@@ -611,7 +611,7 @@ void CTextLine::Paint(CDC* pDC, CRect* pRect, BOOL bSkinned)
 	pRect->top		-= ( m_nLine - 1 ) * nHeight;
 	pRect->bottom	-= ( m_nLine - 1 ) * nHeight;
 
-	for ( int nLine = 0 ; nLine < m_nLine ; nLine++ )
+	for ( int nLine = 0; nLine < m_nLine; nLine++ )
 	{
 		if ( m_pLine )
 		{

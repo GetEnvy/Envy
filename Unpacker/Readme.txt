@@ -9,7 +9,7 @@ and containing an appropriate .xml file, with assets.
 
 Copyright Information
 =====================
-Packages is part of Envy (getenvy.com) © 2016
+Unpacker is part of Envy (getenvy.com) © 2016-2018
 
 However this software component has been released into the public domain.
 You are free to redistribute and modify it without any restrictions

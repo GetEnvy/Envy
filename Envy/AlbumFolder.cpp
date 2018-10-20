@@ -1,8 +1,8 @@
 //
 // AlbumFolder.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2017
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2007
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -153,7 +153,7 @@ CAlbumFolder* CAlbumFolder::GetParent() const
 
 CAlbumFolder* CAlbumFolder::GetFolder(LPCTSTR pszName) const
 {
-	for ( POSITION pos = GetFolderIterator() ; pos ; )
+	for ( POSITION pos = GetFolderIterator(); pos; )
 	{
 		CAlbumFolder* pCheck = GetNextFolder( pos );
 		if ( pCheck->m_sName.CompareNoCase( pszName ) == 0 ) return pCheck;
@@ -164,7 +164,7 @@ CAlbumFolder* CAlbumFolder::GetFolder(LPCTSTR pszName) const
 
 CAlbumFolder* CAlbumFolder::GetFolderByURI(LPCTSTR pszURI) const
 {
-	for ( POSITION pos = GetFolderIterator() ; pos ; )
+	for ( POSITION pos = GetFolderIterator(); pos; )
 	{
 		CAlbumFolder* pCheck = GetNextFolder( pos );
 		if ( pCheck->m_pSchema != NULL &&
@@ -178,9 +178,9 @@ BOOL CAlbumFolder::CheckFolder(CAlbumFolder* pFolder, BOOL bRecursive) const
 {
 	if ( this == pFolder ) return TRUE;
 	if ( *this == *pFolder ) return TRUE;
-	for ( POSITION pos = GetFolderIterator() ; pos ; )
+	for ( POSITION pos = GetFolderIterator(); pos; )
 	{
-		CAlbumFolder* pCheck = GetNextFolder( pos );
+		const CAlbumFolder* pCheck = GetNextFolder( pos );
 		if ( pCheck == pFolder ) return TRUE;
 		if ( *pCheck == *pFolder ) return TRUE;
 		if ( bRecursive && pCheck->CheckFolder( pFolder, TRUE ) ) return TRUE;
@@ -208,9 +208,9 @@ CAlbumFolder* CAlbumFolder::GetTarget(CSchemaMember* pMember, LPCTSTR pszValue) 
 		}
 	}
 
-	for ( POSITION pos = GetFolderIterator() ; pos ; )
+	for ( POSITION pos = GetFolderIterator(); pos; )
 	{
-		CAlbumFolder* pCheck  = GetNextFolder( pos );
+		const CAlbumFolder* pCheck = GetNextFolder( pos );
 		CAlbumFolder* pResult = pCheck->GetTarget( pMember, pszValue );
 		if ( pResult ) return pResult;
 	}
@@ -222,7 +222,7 @@ CAlbumFolder* CAlbumFolder::FindCollection(const Hashes::Sha1Hash& oSHA1)
 {
 	if ( validAndEqual( m_oCollSHA1, oSHA1 ) ) return this;
 
-	for ( POSITION pos = GetFolderIterator() ; pos ; )
+	for ( POSITION pos = GetFolderIterator(); pos; )
 	{
 		CAlbumFolder* pFolder = GetNextFolder( pos );
 		if ( CAlbumFolder* pFind = pFolder->FindCollection( oSHA1 ) ) return pFind;
@@ -319,7 +319,7 @@ DWORD CAlbumFolder::GetFileCount(BOOL bRecursive) const
 
 	if ( bRecursive )
 	{
-		for ( POSITION pos = GetFolderIterator() ; pos ; )
+		for ( POSITION pos = GetFolderIterator(); pos; )
 		{
 			const CAlbumFolder* pFolder = GetNextFolder( pos );
 			nCount += pFolder->GetFileCount( bRecursive );
@@ -336,7 +336,7 @@ QWORD CAlbumFolder::GetFileVolume(BOOL bRecursive) const
 
 	QWORD nVolume = 0;
 
-	for ( POSITION pos = GetFileIterator() ; pos ; )
+	for ( POSITION pos = GetFileIterator(); pos; )
 	{
 		const CLibraryFile* pFile = GetNextFile( pos );
 		nVolume += pFile->m_nSize;
@@ -344,7 +344,7 @@ QWORD CAlbumFolder::GetFileVolume(BOOL bRecursive) const
 
 	if ( bRecursive )
 	{
-		for ( POSITION pos = GetFolderIterator() ; pos ; )
+		for ( POSITION pos = GetFolderIterator(); pos; )
 		{
 			const CAlbumFolder* pFolder = GetNextFolder( pos );
 			nVolume += pFolder->GetFileVolume( bRecursive );
@@ -363,7 +363,7 @@ DWORD CAlbumFolder::GetSharedCount(BOOL bRecursive) const
 
 	DWORD nCount = 0;
 
-	for ( POSITION pos = GetFileIterator() ; pos ; )
+	for ( POSITION pos = GetFileIterator(); pos; )
 	{
 		const CLibraryFile* pFile = GetNextFile( pos );
 		if ( pFile->IsShared() ) nCount++;
@@ -371,7 +371,7 @@ DWORD CAlbumFolder::GetSharedCount(BOOL bRecursive) const
 
 	if ( bRecursive )
 	{
-		for ( POSITION pos = GetFolderIterator() ; pos ; )
+		for ( POSITION pos = GetFolderIterator(); pos; )
 		{
 			const CAlbumFolder* pFolder = GetNextFolder( pos );
 			nCount += pFolder->GetSharedCount( bRecursive );
@@ -397,7 +397,7 @@ void CAlbumFolder::RemoveFile(CLibraryFile* pFile)
 
 void CAlbumFolder::OnFileDelete(CLibraryFile* pFile, BOOL bDeleteGhost)
 {
-	for ( POSITION pos = GetFolderIterator() ; pos ; )
+	for ( POSITION pos = GetFolderIterator(); pos; )
 	{
 		GetNextFolder( pos )->OnFileDelete( pFile, bDeleteGhost );
 	}
@@ -446,7 +446,7 @@ DWORD CAlbumFolder::GetFileList(CLibraryList* pList, BOOL bRecursive) const
 
 	int nCount = 0;
 
-	for ( POSITION pos = GetFileIterator() ; pos ; )
+	for ( POSITION pos = GetFileIterator(); pos; )
 	{
 		pList->CheckAndAdd( GetNextFile( pos ) );
 		nCount++;
@@ -454,7 +454,7 @@ DWORD CAlbumFolder::GetFileList(CLibraryList* pList, BOOL bRecursive) const
 
 	if ( bRecursive )
 	{
-		for ( POSITION pos = GetFolderIterator() ; pos ; )
+		for ( POSITION pos = GetFolderIterator(); pos; )
 		{
 			GetNextFolder( pos )->GetFileList( pList, bRecursive );
 		}
@@ -544,7 +544,7 @@ BOOL CAlbumFolder::MetaToFiles(BOOL bAggressive)
 {
 	if ( m_pSchema == NULL || m_pXML == NULL ) return FALSE;
 
-	for ( POSITION pos = GetFileIterator() ; pos ; )
+	for ( POSITION pos = GetFileIterator(); pos; )
 	{
 		CLibraryFile* pFile = GetNextFile( pos );
 
@@ -627,7 +627,7 @@ BOOL CAlbumFolder::MountCollection(const Hashes::Sha1Hash& oSHA1, CCollectionFil
 		{
 			bGoingDeeper = true;
 
-			for ( POSITION pos = GetFolderIterator() ; pos ; )
+			for ( POSITION pos = GetFolderIterator(); pos; )
 			{
 				CAlbumFolder* pSubFolder = GetNextFolder( pos );
 				// Mount it deeper if we can
@@ -657,7 +657,7 @@ BOOL CAlbumFolder::MountCollection(const Hashes::Sha1Hash& oSHA1, CCollectionFil
 	// If the criteria for the mounting didn't match and we haven't iterated subfolders
 	if ( ! bGoingDeeper )
 	{
-		for ( POSITION pos = GetFolderIterator() ; pos ; )
+		for ( POSITION pos = GetFolderIterator(); pos; )
 		{
 			bResult |= GetNextFolder( pos )->MountCollection( oSHA1, pCollection, bForce );
 		}
@@ -683,7 +683,7 @@ void CAlbumFolder::SetCollection(const Hashes::Sha1Hash& oSHA1, CCollectionFile*
 		delete pMetadata;
 	}
 
-	for ( POSITION pos = LibraryMaps.GetFileIterator() ; pos ; )
+	for ( POSITION pos = LibraryMaps.GetFileIterator(); pos; )
 	{
 		CLibraryFile* pFile = LibraryMaps.GetNextFile( pos );
 
@@ -740,7 +740,7 @@ BOOL CAlbumFolder::OrganizeFile(CLibraryFile* pFile)
 			AddFile( pFile );
 			return TRUE;
 		}
-		for ( POSITION pos = GetFolderIterator() ; pos ; )
+		for ( POSITION pos = GetFolderIterator(); pos; )
 		{
 			bResult |= GetNextFolder( pos )->OrganizeFile( pFile );
 		}
@@ -955,7 +955,7 @@ BOOL CAlbumFolder::OrganizeFile(CLibraryFile* pFile)
 //		if ( _tcsistr( strAlbum, L"www.mp3sfinder.com" ) ) return FALSE;
 //		if ( _tcsistr( strAlbum, L"single" ) ) strAlbum = L"Singles";
 //
-//		for ( POSITION pos = GetFolderIterator() ; pos ; )
+//		for ( POSITION pos = GetFolderIterator(); pos; )
 //		{
 //			CAlbumFolder* pAlbum = GetNextFolder( pos );
 //
@@ -1000,7 +1000,7 @@ BOOL CAlbumFolder::OrganizeFile(CLibraryFile* pFile)
 //		strArtist.Replace( L" (www.mp3sfinder.com)", L"" );
 //		if ( strArtist.IsEmpty() ) return FALSE;
 //
-//		for ( POSITION pos = GetFolderIterator() ; pos ; )
+//		for ( POSITION pos = GetFolderIterator(); pos; )
 //		{
 //			CAlbumFolder* pAlbum = GetNextFolder( pos );
 //
@@ -1034,7 +1034,7 @@ BOOL CAlbumFolder::OrganizeFile(CLibraryFile* pFile)
 //		CString strGenre = pFile->m_pMetadata->GetAttributeValue( L"genre" );
 //		if ( strGenre.IsEmpty() ) return FALSE;
 //
-//		for ( POSITION pos = GetFolderIterator() ; pos ; )
+//		for ( POSITION pos = GetFolderIterator(); pos; )
 //		{
 //			CAlbumFolder* pAlbum = GetNextFolder( pos );
 //
@@ -1089,7 +1089,7 @@ BOOL CAlbumFolder::OrganizeFile(CLibraryFile* pFile)
 //			LPTSTR szResults = NULL;
 //			size_t nCount = RegExp::Split( L"(.*)(\\bse?a?s?o?n?)\\s*([0-9]+)\\s*(ep?i?s?o?d?e?)\\s*([0-9]+)[^0-9]+.*", strFileName, &szResults );
 //			LPCTSTR p = szResults;
-//			for ( size_t i = 0 ; i < nCount ; ++i )
+//			for ( size_t i = 0; i < nCount; ++i )
 //			{
 //				results.push_back( p );
 //				p += lstrlen( p ) + 1;
@@ -1121,7 +1121,7 @@ BOOL CAlbumFolder::OrganizeFile(CLibraryFile* pFile)
 //			{
 //				nCount = RegExp::Split( L"(.*[^0-9]+\\b)([0-9]+)\\s*[xX]\\s*([0-9]+)[^0-9]+.*", strFileName, &szResults );
 //				p = szResults;
-//				for ( size_t i = 0 ; i < nCount ; ++i )
+//				for ( size_t i = 0; i < nCount; ++i )
 //				{
 //					results.push_back( p );
 //					p += lstrlen( p ) + 1;
@@ -1162,7 +1162,7 @@ BOOL CAlbumFolder::OrganizeFile(CLibraryFile* pFile)
 //				pFile->m_pMetadata->AddAttribute( L"episodenumber", results[3].c_str() );
 //		}
 //
-//		for ( POSITION pos = GetFolderIterator() ; pos ; )
+//		for ( POSITION pos = GetFolderIterator(); pos; )
 //		{
 //			CAlbumFolder* pAlbum = GetNextFolder( pos );
 //
@@ -1201,7 +1201,7 @@ BOOL CAlbumFolder::OrganizeFile(CLibraryFile* pFile)
 //		CXMLNode::UniformString( strTitle );
 //		if ( strTitle.IsEmpty() ) return FALSE;
 //
-//		for ( POSITION pos = GetFolderIterator() ; pos ; )
+//		for ( POSITION pos = GetFolderIterator(); pos; )
 //		{
 //			CAlbumFolder* pAlbum = GetNextFolder( pos );
 //			if ( pAlbum->m_sName.CompareNoCase( strTitle ) == 0 )
@@ -1249,7 +1249,7 @@ BOOL CAlbumFolder::OrganizeFile(CLibraryFile* pFile)
 //	}
 // End Legacy Unused Subfolders
 
-	for ( POSITION pos = GetFolderIterator() ; pos ; )
+	for ( POSITION pos = GetFolderIterator(); pos; )
 	{
 		bResult |= GetNextFolder( pos )->OrganizeFile( pFile );
 	}
@@ -1281,7 +1281,7 @@ void CAlbumFolder::Serialize(CArchive& ar, int nVersion)
 
 		ar.WriteCount( GetFolderCount() );
 
-		for ( POSITION pos = GetFolderIterator() ; pos ; )
+		for ( POSITION pos = GetFolderIterator(); pos; )
 		{
 			CAlbumFolder* pFolder = GetNextFolder( pos );
 			pFolder->Serialize( ar, nVersion );
@@ -1289,7 +1289,7 @@ void CAlbumFolder::Serialize(CArchive& ar, int nVersion)
 
 		ar.WriteCount( GetFileCount() );
 
-		for ( POSITION pos = GetFileIterator() ; pos ; )
+		for ( POSITION pos = GetFileIterator(); pos; )
 		{
 			CLibraryFile* pFile = GetNextFile( pos );
 			ar << pFile->m_nIndex;
@@ -1385,7 +1385,7 @@ void CAlbumFolder::Clear()
 {
 	ASSUME_LOCK( Library.m_pSection );
 
-	for ( POSITION pos = GetFolderIterator() ; pos ; )
+	for ( POSITION pos = GetFolderIterator(); pos; )
 	{
 		delete GetNextFolder( pos );
 	}
@@ -1445,7 +1445,7 @@ CXMLElement* CAlbumFolder::CreateXML() const
 
 		if ( CXMLElement* pContents = pRoot->AddElement( L"contents" ) )
 		{
-			for ( POSITION pos = GetFileIterator() ; pos ; )
+			for ( POSITION pos = GetFileIterator(); pos; )
 			{
 				if ( const CLibraryFile* pFile = GetNextFile( pos ) )
 				{
@@ -1467,13 +1467,13 @@ CXMLElement* CAlbumFolder::CreateXML() const
 //
 //	pMetadata->SetName( L"s:" + pMetadata->GetName() );
 //
-//	for ( POSITION pos = pMetadata->GetElementIterator() ; pos ; )
+//	for ( POSITION pos = pMetadata->GetElementIterator(); pos; )
 //	{
 //		CXMLElement* pNode = pMetadata->GetNextElement( pos );
 //		pNode->SetName( L"s:" + pNode->GetName() );
 //	}
 //
-//	for ( POSITION pos = pMetadata->GetAttributeIterator() ; pos ; )
+//	for ( POSITION pos = pMetadata->GetAttributeIterator(); pos; )
 //	{
 //		CXMLAttribute* pNode = pMetadata->GetNextAttribute( pos );
 //		pNode->SetName( L"s:" + pNode->GetName() );

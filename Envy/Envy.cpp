@@ -1,8 +1,8 @@
 //
 // Envy.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2017
-// Portions copyright PeerProject 2008-2016 and Shareaza 2002-2008
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2008 and PeerProject 2008-2016
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -37,7 +37,6 @@
 #include "GProfile.h"
 #include "HostCache.h"
 #include "IEProtocol.h"
-#include "ImageServices.h"
 #include "ImageFile.h"	// AfxMsgBox Banners
 #include "Images.h"
 #include "Library.h"
@@ -450,7 +449,7 @@ BOOL CEnvyApp::InitInstance()
 
 		// Obsolete for reference & deletion
 		//WSADATA wsaData;
-		//for ( int i = 1 ; i <= 2 ; i++ )
+		//for ( int i = 1; i <= 2; i++ )
 		//{
 		//	if ( WSAStartup( MAKEWORD( 1, 1 ), &wsaData ) ) return FALSE;
 		//	if ( wsaData.wVersion == MAKEWORD( 1, 1 ) ) break;
@@ -498,7 +497,7 @@ BOOL CEnvyApp::InitInstance()
 				CSchema::uriVideo,
 				NULL
 			};
-			for ( int i = 0 ; szTypes[ i ] ; ++ i )
+			for ( int i = 0; szTypes[ i ]; ++ i )
 			{
 				if ( CSchemaPtr pSchema = SchemaCache.Get( szTypes[ i ] ) )
 					strTypeFilter += pSchema->GetFilterSet();
@@ -519,7 +518,7 @@ BOOL CEnvyApp::InitInstance()
 				CSchema::uriBitTorrent,
 				NULL
 			};
-			for ( int i = 0 ; szTypes[ i ] ; ++ i )
+			for ( int i = 0; szTypes[ i ]; ++ i )
 			{
 				if ( CSchemaPtr pSchema = SchemaCache.Get( szTypes[ i ] ) )
 					strTypeFilter += pSchema->GetFilterSet();
@@ -780,7 +779,7 @@ void CEnvyApp::SplashStep(LPCTSTR pszMessage, int nMax, bool bClosing)
 		m_dlgSplash->Step( pszMessage );
 	}
 
-	TRACE( L"Step: %s\n", pszMessage ? pszMessage : L"Done" );
+	TRACE( "Step: %s\n", pszMessage ? pszMessage : L"Done" );
 }
 
 void CEnvyApp::SplashUpdate(LPCTSTR pszMessage)
@@ -1372,7 +1371,7 @@ void CEnvyApp::GetVersionNumber()
 	GetModuleFileName( NULL, m_strBinaryPath.GetBuffer( MAX_PATH ), MAX_PATH );
 	m_strBinaryPath.ReleaseBuffer( MAX_PATH );
 
-	m_nVersion[0] = m_nVersion[1] = m_nVersion[2] = m_nVersion[3] = 0;
+	m_nVersion[0] = m_nVersion[1] = 0;	// = m_nVersion[2] = m_nVersion[3] = 0
 
 	// Load version from .exe-file properties
 	if ( DWORD dwSize = GetFileVersionInfoSize( m_strBinaryPath, &dwSize ) )
@@ -1793,7 +1792,7 @@ HINSTANCE CEnvyApp::CustomLoadLibrary(LPCTSTR pszFileName)
 		 ( hLibrary = LoadLibrary( Settings.General.Path + L"\\" + pszFileName ) ) != NULL )
 		return hLibrary;
 
-	TRACE( L"DLL not found: %s\r\n", pszFileName );
+	TRACE( "DLL not found: %s\r\n", pszFileName );
 	return NULL;
 }
 
@@ -1880,7 +1879,7 @@ void CEnvyApp::ShowStartupText()
 
 	strBody.Replace( L"{version}", (LPCTSTR)theApp.m_sVersionLong );
 
-	for ( ; strBody.GetLength() ; )
+	for ( ; strBody.GetLength(); )
 	{
 		CString strLine = strBody.SpanExcluding( L"\r\n" );
 		strBody = strBody.Mid( strLine.GetLength() + 1 );
@@ -2073,7 +2072,7 @@ CString GetErrorString(DWORD dwError)
 		NULL
 	};
 
-	for ( int i = 0 ; szModules[ i ] ; i++ )
+	for ( int i = 0; szModules[ i ]; i++ )
 	{
 		if ( HMODULE hModule = LoadLibraryEx( szModules[ i ], NULL, LOAD_LIBRARY_AS_DATAFILE ) )
 		{
@@ -2096,7 +2095,7 @@ CString GetErrorString(DWORD dwError)
 //void ReportError(DWORD dwError)
 //{
 //	CString strError = GetErrorString( dwError );
-//	theApp.Message( MSG_ERROR, L"%s", strError );
+//	theApp.Message( MSG_ERROR, L"%s", (LPCTSTR)strError );
 //	MsgBox( strError, MB_OK | MB_ICONEXCLAMATION );
 //}
 
@@ -2304,7 +2303,7 @@ CRuntimeClass* AfxClassForName(LPCTSTR pszClass)
 
 	AfxLockGlobals( 0 );
 
-	for ( CRuntimeClass* pClass = pModuleState->m_classList ; pClass != NULL ; pClass = pClass->m_pNextClass )
+	for ( CRuntimeClass* pClass = pModuleState->m_classList; pClass != NULL; pClass = pClass->m_pNextClass )
 	{
 		if ( CString( pClass->m_lpszClassName ).CompareNoCase( pszClass ) == 0 )
 		{
@@ -2380,16 +2379,16 @@ DWORD TimeFromString(LPCTSTR pszTime)
 
 	if ( _stscanf( pszTime, L"%i", &nTemp ) != 1 ) return 0;
 	pTime.tm_year = nTemp - 1900;
-	for ( psz = pszTime + 5 ; *psz == '0' ; psz++ );
+	for ( psz = pszTime + 5; *psz == '0'; psz++ );
 	if ( _stscanf( psz, L"%i", &nTemp ) != 1 ) return 0;
 	pTime.tm_mon = nTemp - 1;
-	for ( psz = pszTime + 8 ; *psz == '0' ; psz++ );
+	for ( psz = pszTime + 8; *psz == '0'; psz++ );
 	if ( _stscanf( psz, L"%i", &nTemp ) != 1 ) return 0;
 	pTime.tm_mday = nTemp;
-	for ( psz = pszTime + 11 ; *psz == '0' ; psz++ );
+	for ( psz = pszTime + 11; *psz == '0'; psz++ );
 	if ( _stscanf( psz, L"%i", &nTemp ) != 1 ) return 0;
 	pTime.tm_hour = nTemp;
-	for ( psz = pszTime + 14 ; *psz == '0' ; psz++ );
+	for ( psz = pszTime + 14; *psz == '0'; psz++ );
 	if ( _stscanf( psz, L"%i", &nTemp ) != 1 ) return 0;
 	pTime.tm_min = nTemp;
 
@@ -2437,16 +2436,16 @@ BOOL TimeFromString(LPCTSTR pszTime, FILETIME* pTime)
 
 	if ( _stscanf( pszTime, L"%i", &nTemp ) != 1 ) return FALSE;
 	pOut.wYear = WORD( nTemp );
-	for ( psz = pszTime + 5 ; *psz == '0' ; psz++ );
+	for ( psz = pszTime + 5; *psz == '0'; psz++ );
 	if ( _stscanf( psz, L"%i", &nTemp ) != 1 ) return FALSE;
 	pOut.wMonth = WORD( nTemp );
-	for ( psz = pszTime + 8 ; *psz == '0' ; psz++ );
+	for ( psz = pszTime + 8; *psz == '0'; psz++ );
 	if ( _stscanf( psz, L"%i", &nTemp ) != 1 ) return FALSE;
 	pOut.wDay = WORD( nTemp );
-	for ( psz = pszTime + 11 ; *psz == '0' ; psz++ );
+	for ( psz = pszTime + 11; *psz == '0'; psz++ );
 	if ( _stscanf( psz, L"%i", &nTemp ) != 1 ) return FALSE;
 	pOut.wHour = WORD( nTemp );
-	for ( psz = pszTime + 14 ; *psz == '0' ; psz++ );
+	for ( psz = pszTime + 14; *psz == '0'; psz++ );
 	if ( _stscanf( psz, L"%i", &nTemp ) != 1 ) return FALSE;
 	pOut.wMinute = WORD( nTemp );
 
@@ -2483,7 +2482,7 @@ void RecalcDropWidth(CComboBox* pWnd, int nMargin /*0*/)
 
 	CString str;
 	const int nNumEntries = pWnd->GetCount();
-	for ( int nEntry = 0 ; nEntry < nNumEntries ; ++nEntry )
+	for ( int nEntry = 0; nEntry < nNumEntries; ++nEntry )
 	{
 		pWnd->GetLBText( nEntry, str );
 		int nLength = pDC->GetTextExtent( str ).cx;
@@ -2756,7 +2755,7 @@ CString CEnvyApp::GetWindowsFolder() const
 		}
 	}
 #ifdef XPSUPPORT
-	else	// XP
+	else	// XP Only
 	{
 		HRESULT hr = SHGetFolderPath( NULL, CSIDL_WINDOWS, NULL, NULL, strWindows.GetBuffer( MAX_PATH ) );
 		strWindows.ReleaseBuffer();
@@ -2825,7 +2824,7 @@ CString CEnvyApp::GetProgramFilesFolder() const
 		}
 	}
 #ifdef XPSUPPORT
-	else	// XP
+	else	// XP Only
 	{
 		HRESULT hr = SHGetFolderPath( NULL, CSIDL_PROGRAM_FILES, NULL, NULL, strProgramFiles.GetBuffer( MAX_PATH ) );
 		strProgramFiles.ReleaseBuffer();
@@ -2859,7 +2858,7 @@ CString CEnvyApp::GetDocumentsFolder() const
 		}
 	}
 #ifdef XPSUPPORT
-	else	// XP
+	else	// XP Only
 	{
 		HRESULT hr = SHGetFolderPath( NULL, CSIDL_PERSONAL, NULL, NULL, strDocuments.GetBuffer( MAX_PATH ) );
 		strDocuments.ReleaseBuffer();
@@ -2927,7 +2926,7 @@ CString CEnvyApp::GetAppDataFolder() const
 		}
 	}
 #ifdef XPSUPPORT
-	else	// XP
+	else	// XP Only
 	{
 		HRESULT hr = SHGetFolderPath( NULL, CSIDL_APPDATA, NULL, NULL, strAppData.GetBuffer( MAX_PATH ) );
 		strAppData.ReleaseBuffer();
@@ -2962,7 +2961,7 @@ CString CEnvyApp::GetLocalAppDataFolder() const
 		}
 	}
 #ifdef XPSUPPORT
-	else	// XP
+	else	// XP Only
 	{
 		HRESULT hr = SHGetFolderPath( NULL, CSIDL_LOCAL_APPDATA, NULL, NULL, strLocalAppData.GetBuffer( MAX_PATH ) );
 		strLocalAppData.ReleaseBuffer();
@@ -2994,9 +2993,10 @@ void CEnvyApp::OnRename(LPCTSTR pszSource, LPCTSTR pszTarget)
 	{
 		if ( CMainWnd* pMainWnd = theApp.SafeMainWnd() )
 		{
+			CQuickLock otheAppLock( theApp.m_pSection );
+
 			if ( CMediaWnd* pMediaWnd = (CMediaWnd*)pMainWnd->m_pWindows.Find( RUNTIME_CLASS( CMediaWnd ) ) )
 			{
-				CQuickLock otheAppLock( theApp.m_pSection );
 				pMediaWnd->OnFileDelete( pszSource );
 			}
 		}
@@ -3009,9 +3009,10 @@ CDatabase* CEnvyApp::GetDatabase(int nType /*0*/) const
 
 	// Legacy v1.0 and earlier update (ToDo: Remove after v2.0)
 	static BOOL bCheck = TRUE;
-	if ( bCheck && PathFileExists( Settings.General.DataPath + L"Thumbnails.db3" ) )
+	if ( bCheck && nType == DB_THUMBS )
 	{
-		::MoveFile( Settings.General.DataPath + L"Thumbnails.db3", Settings.General.DataPath + L"Thumbnails.db" );
+		if ( PathFileExists( Settings.General.DataPath + L"Thumbnails.db3" ) )
+			::MoveFile( Settings.General.DataPath + L"Thumbnails.db3", Settings.General.DataPath + L"Thumbnails.db" );
 		bCheck = FALSE;
 	}
 
@@ -3102,7 +3103,7 @@ BOOL CreateDirectory(LPCTSTR szPath)
 	if ( dwAttr != INVALID_FILE_ATTRIBUTES && ( dwAttr & FILE_ATTRIBUTE_DIRECTORY ) )
 		return TRUE;
 
-	for ( int nStart = 3 ; ; )
+	for ( int nStart = 3; ; )
 	{
 		const int nSlash = strDir.Find( L'\\', nStart );
 		if ( nSlash == -1 || nSlash == strDir.GetLength() - 1 )
@@ -3158,7 +3159,7 @@ BOOL DeleteFiles(CStringList& pList)
 		if ( dlg.DoModal() != IDOK )
 			return FALSE;
 
-		for ( INT_PTR nProcess = dlg.m_bAll ? pList.GetCount() : 1 ; nProcess > 0 && pList.GetCount() > 0 ; nProcess-- )
+		for ( INT_PTR nProcess = dlg.m_bAll ? pList.GetCount() : 1; nProcess > 0 && pList.GetCount() > 0; nProcess-- )
 		{
 			const CString strPath = pList.RemoveHead();
 
@@ -3258,7 +3259,7 @@ void PurgeDeletes()
 	if ( ERROR_SUCCESS == nResult )
 	{
 		CList< CString > pRemove;
-		for ( DWORD nIndex = 0 ; ; ++nIndex )
+		for ( DWORD nIndex = 0; ; ++nIndex )
 		{
 			DWORD nPath = MAX_PATH * 2;
 			TCHAR szPath[ MAX_PATH * 2 ] = {};
@@ -3412,7 +3413,7 @@ bool ResourceRequest(const CString& strPath, CBuffer& pResponse, CString& sHeade
 {
 	bool ret = false;
 
-	for ( int i = 0 ; WebResources[ i ].szPath ; i++ )
+	for ( int i = 0; WebResources[ i ].szPath; i++ )
 	{
 		if ( strPath.Compare( WebResources[ i ].szPath ) != 0 )
 			continue;
@@ -3437,7 +3438,7 @@ bool ResourceRequest(const CString& strPath, CBuffer& pResponse, CString& sHeade
 						GRPICONDIRENTRY* piDirEntry = (GRPICONDIRENTRY*)( pSource + sizeof( ICONDIR ) );
 
 						// Find all subicons
-						for ( WORD j = 0 ; j < piDir->idCount ; j++ )
+						for ( WORD j = 0; j < piDir->idCount; j++ )
 						{
 							// pResponse.m_pBuffer may be changed
 							ICONDIRENTRY* piEntry = (ICONDIRENTRY*)( pResponse.m_pBuffer + sizeof( ICONDIR ) );

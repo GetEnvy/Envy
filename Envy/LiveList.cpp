@@ -2,7 +2,7 @@
 // LiveList.cpp
 //
 // This file is part of Envy (getenvy.com) © 2016-2018
-// Portions copyright PeerProject 2008-2015 and Shareaza 2002-2007
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2015
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -56,7 +56,7 @@ void CLiveList::Clear()
 
 	CQuickLock oLock( m_pSection );
 
-	for ( POSITION pos = m_pItems.GetStartPosition() ; pos ; )
+	for ( POSITION pos = m_pItems.GetStartPosition(); pos; )
 	{
 		CLiveItem* pItem;
 		DWORD_PTR nParam;
@@ -108,7 +108,7 @@ void CLiveList::Apply(CListCtrl* pCtrl, BOOL bSort)
 
 	CQuickLock oLock( m_pSection );
 
-	for ( int nItem = 0 ; nItem < nCount ; nItem++ )
+	for ( int nItem = 0; nItem < nCount; nItem++ )
 	{
 		DWORD nParam = (DWORD)pCtrl->GetItemData( nItem );
 		CLiveItem* pItem;
@@ -132,7 +132,7 @@ void CLiveList::Apply(CListCtrl* pCtrl, BOOL bSort)
 
 	nCount = pCtrl->GetItemCount();		// ToDo: Is this double-check needed?
 
-	for ( POSITION pos = m_pItems.GetStartPosition() ; pos ; )
+	for ( POSITION pos = m_pItems.GetStartPosition(); pos; )
 	{
 		CLiveItem* pItem;
 		DWORD_PTR nParam;
@@ -179,7 +179,7 @@ CLiveItem::CLiveItem(int nColumns, DWORD_PTR nParam)
 	m_pColumn.SetSize( nColumns );
 	m_nImage.SetSize( nColumns );
 
-	for ( int i = 0 ; i < nColumns ; ++i )
+	for ( int i = 0; i < nColumns; ++i )
 		m_nImage[ i ] = -1;
 }
 
@@ -278,7 +278,7 @@ int CLiveItem::Add(CListCtrl* pCtrl, int nItem, int nColumns)
 	pItem.iItem		= pCtrl->InsertItem( &pItem );
 	if ( pItem.iItem != -1 )
 	{
-		for ( pItem.iSubItem = 1 ; pItem.iSubItem < nColumns ; pItem.iSubItem++ )
+		for ( pItem.iSubItem = 1; pItem.iSubItem < nColumns; pItem.iSubItem++ )
 		{
 			pItem.mask = LVIF_TEXT;
 			pItem.pszText = (LPTSTR)(LPCTSTR)m_pColumn[ pItem.iSubItem ];
@@ -326,7 +326,7 @@ BOOL CLiveItem::Update(CListCtrl* pCtrl, int nItem, int nColumns)
 		VERIFY( pCtrl->SetItem( &pMainItem ) );
 
 	CString buf;
-	for ( int i = 0 ; i < nColumns ; ++i )
+	for ( int i = 0; i < nColumns; ++i )
 	{
 		LV_ITEM pItem = {
 			LVIF_IMAGE | LVIF_TEXT,
@@ -434,7 +434,7 @@ void CLiveList::Sort(CListCtrl* pCtrl, int nColumn, BOOL bGraphic)
 
 		CHeaderCtrl* pHeader = (CHeaderCtrl*)CWnd::FromHandle( (HWND)pCtrl->SendMessage( LVM_GETHEADER ) );
 		ASSERT_VALID( pHeader );
-		for ( int nCol = 0 ; ; nCol++ )
+		for ( int nCol = 0; ; nCol++ )
 		{
 			HDITEM pColumn = {};
 			pColumn.mask = HDI_BITMAP|HDI_FORMAT;
@@ -612,7 +612,7 @@ BOOL CLiveList::IsNumber(LPCTSTR pszString)
 	BOOL bSpace = FALSE;
 	int nNonDigit = 0;
 
-	for ( ; *pszString ; pszString++ )
+	for ( ; *pszString; pszString++ )
 	{
 		if ( _istdigit( *pszString ) || *pszString == '.' )
 		{
@@ -657,7 +657,7 @@ HBITMAP CLiveList::CreateDragImage(CListCtrl* pList, const CPoint& ptMouse, CPoi
 	pList->SetFocus();
 	pList->GetClientRect( &rcClient );
 
-	for ( nIndex = -1 ; ( nIndex = pList->GetNextItem( nIndex, LVNI_SELECTED ) ) >= 0 ; )
+	for ( nIndex = -1; ( nIndex = pList->GetNextItem( nIndex, LVNI_SELECTED ) ) >= 0; )
 	{
 		pList->GetItemRect( nIndex, rcOne, LVIR_BOUNDS );
 
@@ -719,7 +719,7 @@ HBITMAP CLiveList::CreateDragImage(CListCtrl* pList, const CPoint& ptMouse, CPoi
 		dcDrag.SelectClipRgn( &pRgn );
 	}
 
-	for ( nIndex = -1 ; ( nIndex = pList->GetNextItem( nIndex, LVNI_SELECTED ) ) >= 0 ; )
+	for ( nIndex = -1; ( nIndex = pList->GetNextItem( nIndex, LVNI_SELECTED ) ) >= 0; )
 	{
 		pList->GetItemRect( nIndex, rcOne, LVIR_BOUNDS );
 
@@ -774,7 +774,7 @@ CLiveListCtrl::CLiveListCtrl()
 
 CLiveListCtrl::~CLiveListCtrl()
 {
-	for ( CLiveMap::iterator i = m_pItems.begin() ; i != m_pItems.end() ; ++i )
+	for ( CLiveMap::iterator i = m_pItems.begin(); i != m_pItems.end(); ++i )
 	{
 		CLiveItemPtr pItem = (*i).second;
 		delete pItem;
@@ -823,7 +823,7 @@ CLiveItemPtr CLiveListCtrl::Add(LPVOID pParam)
 void CLiveListCtrl::Apply()
 {
 	// Remove old items
-	for ( CLiveMap::iterator i = m_pItems.begin() ; i != m_pItems.end() ; )
+	for ( CLiveMap::iterator i = m_pItems.begin(); i != m_pItems.end(); )
 	{
 		CLiveItemPtr pItem = (*i).second;
 		if ( pItem->m_bOld )
@@ -840,7 +840,7 @@ void CLiveListCtrl::Apply()
 	// Recreate index
 	m_pIndex.clear();
 	m_pIndex.reserve( m_pItems.size() );
-	for ( CLiveMap::iterator i = m_pItems.begin() ; i != m_pItems.end() ; ++i )
+	for ( CLiveMap::iterator i = m_pItems.begin(); i != m_pItems.end(); ++i )
 	{
 		CLiveItemPtr pItem = (*i).second;
 		pItem->m_bOld = true;
@@ -886,7 +886,7 @@ void CLiveListCtrl::Sort(int nColumn)
 	}
 
 	CHeaderCtrl* pHeader = GetHeaderCtrl();
-	for ( int nCol = 0 ; ; nCol++ )
+	for ( int nCol = 0; ; nCol++ )
 	{
 		HDITEM pColumn = {};
 		pColumn.mask = HDI_BITMAP|HDI_FORMAT;
@@ -926,7 +926,7 @@ void CLiveListCtrl::Sort(int nColumn)
 void CLiveListCtrl::ClearSelection()
 {
 	int nCount = GetItemCount();
-	for ( int i = 0 ; i < nCount ; ++i )
+	for ( int i = 0; i < nCount; ++i )
 	{
 		SetItemState( i, 0, LVIS_SELECTED );
 	}

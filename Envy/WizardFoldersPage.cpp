@@ -9,8 +9,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -236,7 +236,7 @@ void CWizardFoldersPage::DoDonkeyImport()
 	};
 
 	BOOL bFound = FALSE;
-	for ( int nFolder = 0 ; pszFolders[ nFolder ] ; nFolder++ )
+	for ( int nFolder = 0; pszFolders[ nFolder ]; nFolder++ )
 	{
 		if ( PathIsDirectory( pszFolders[ nFolder ] ) )
 		{
@@ -250,7 +250,7 @@ void CWizardFoldersPage::DoDonkeyImport()
 
 	CDonkeyImportDlg dlg( this );
 
-	for ( int nFolder = 0 ; pszFolders[ nFolder ] ; nFolder++ )
+	for ( int nFolder = 0; pszFolders[ nFolder ]; nFolder++ )
 	{
 		if ( PathIsDirectory( pszFolders[ nFolder ] ) )
 			dlg.m_pImporter.AddFolder( pszFolders[ nFolder ] );

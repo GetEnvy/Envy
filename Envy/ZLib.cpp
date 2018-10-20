@@ -1,8 +1,8 @@
 //
 // ZLib.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2007
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -120,7 +120,7 @@ BYTE* CZLib::Compress2(LPCVOID pInput, DWORD nInput, DWORD* pnOutput, DWORD nSug
 auto_array< BYTE > CZLib::Decompress(LPCVOID pInput, DWORD nInput, DWORD* pnOutput)
 {
 	// Guess how big the data will be decompressed, use nSuggest, or just guess it will be 4 times as big
-	for ( DWORD nSuggest = nInput * 4 ; ; nSuggest *= 2 )
+	for ( DWORD nSuggest = nInput * 4; ; nSuggest *= 2 )
 	{
 		*pnOutput = nSuggest;
 
@@ -158,7 +158,7 @@ BYTE* CZLib::Decompress2(LPCVOID pInput, DWORD nInput, DWORD* pnOutput)
 	BYTE* pBuffer = NULL;
 
 	// Guess how big the data will be decompressed, use nSuggest, or just guess it will be 4 times as big
-	for ( DWORD nSuggest = nInput * 4 ; ; nSuggest *= 2 )
+	for ( DWORD nSuggest = nInput * 4; ; nSuggest *= 2 )
 	{
 		*pnOutput = nSuggest;
 

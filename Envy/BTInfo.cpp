@@ -2,7 +2,7 @@
 // BTInfo.cpp
 //
 // This file is part of Envy (getenvy.com) © 2016-2018
-// Portions copyright PeerProject 2008-2015 and Shareaza 2002-2008
+// Portions copyright Shareaza 2002-2008 and PeerProject 2008-2015
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -172,7 +172,7 @@ void CBTInfo::Clear()
 	m_nTotalUpload		= 0;
 	m_nTotalDownload	= 0;
 
-	for ( POSITION pos = m_pFiles.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pFiles.GetHeadPosition(); pos; )
 		delete m_pFiles.GetNext( pos );
 	m_pFiles.RemoveAll();
 
@@ -202,7 +202,7 @@ CBTInfo& CBTInfo::operator=(const CBTInfo& oSource)
 
 	CEnvyFile::operator=( oSource );
 
-	for ( POSITION pos = oSource.m_sURLs.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = oSource.m_sURLs.GetHeadPosition(); pos; )
 		m_sURLs.AddTail( oSource.m_sURLs.GetNext( pos ) );
 
 	m_nBlockSize		= oSource.m_nBlockSize;
@@ -218,7 +218,7 @@ CBTInfo& CBTInfo::operator=(const CBTInfo& oSource)
 	m_nTotalUpload		= oSource.m_nTotalUpload;
 	m_nTotalDownload	= oSource.m_nTotalDownload;
 
-	for ( POSITION pos = oSource.m_pFiles.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = oSource.m_pFiles.GetHeadPosition(); pos; )
 		m_pFiles.AddTail( new CBTFile( this, oSource.m_pFiles.GetNext( pos ) ) );
 
 	m_nEncoding			= oSource.m_nEncoding;
@@ -228,10 +228,10 @@ CBTInfo& CBTInfo::operator=(const CBTInfo& oSource)
 	m_bPrivate			= oSource.m_bPrivate;
 	m_nStartDownloads	= oSource.m_nStartDownloads;
 
-	for ( INT_PTR i = 0 ; i < oSource.m_oTrackers.GetCount() ; ++i )
+	for ( INT_PTR i = 0; i < oSource.m_oTrackers.GetCount(); ++i )
 		m_oTrackers.Add( oSource.m_oTrackers[ i ] );
 
-	for ( POSITION pos = oSource.m_oNodes.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = oSource.m_oNodes.GetHeadPosition(); pos; )
 		m_oNodes.AddTail( oSource.m_oNodes.GetNext( pos ) );
 
 	m_nTrackerIndex		= oSource.m_nTrackerIndex;
@@ -276,7 +276,7 @@ void CBTInfo::Serialize(CArchive& ar)
 		ar << m_nSize;
 		ar << m_nBlockSize;
 		ar << m_nBlockCount;
-		for ( DWORD i = 0 ; i < m_nBlockCount ; ++i )
+		for ( DWORD i = 0; i < m_nBlockCount; ++i )
 		{
 			ar.Write( &*m_pBlockBTH[ i ].begin(), m_pBlockBTH->byteCount );
 		}
@@ -293,7 +293,7 @@ void CBTInfo::Serialize(CArchive& ar)
 		ar << m_bPrivate;
 
 		ar.WriteCount( m_pFiles.GetCount() );
-		for ( POSITION pos = m_pFiles.GetHeadPosition() ; pos ; )
+		for ( POSITION pos = m_pFiles.GetHeadPosition(); pos; )
 			m_pFiles.GetNext( pos )->Serialize( ar, nVersion );
 
 		ar << m_nTrackerIndex;
@@ -301,7 +301,7 @@ void CBTInfo::Serialize(CArchive& ar)
 
 		int nTrackers = (int)m_oTrackers.GetCount();
 		ar.WriteCount( nTrackers );
-		for ( int nTracker = 0 ; nTracker < nTrackers ; nTracker++ )
+		for ( int nTracker = 0; nTracker < nTrackers; nTracker++ )
 		{
 			m_oTrackers[ nTracker ].Serialize( ar, nVersion );
 		}
@@ -337,7 +337,7 @@ void CBTInfo::Serialize(CArchive& ar)
 		{
 			m_pBlockBTH = new Hashes::BtPureHash[ (DWORD)m_nBlockCount ];
 
-			for ( DWORD i = 0 ; i < m_nBlockCount ; ++i )
+			for ( DWORD i = 0; i < m_nBlockCount; ++i )
 			{
 				ReadArchive( ar, &*m_pBlockBTH[ i ].begin(), m_pBlockBTH->byteCount );
 			}
@@ -357,7 +357,7 @@ void CBTInfo::Serialize(CArchive& ar)
 
 		int nFiles = (int)ar.ReadCount();
 		QWORD nOffset = 0;
-		for ( int nFile = 0 ; nFile < nFiles ; nFile++ )
+		for ( int nFile = 0; nFile < nFiles; nFile++ )
 		{
 			CAutoPtr< CBTFile >pBTFile( new CBTFile( this ) );
 			if ( ! pBTFile )
@@ -395,7 +395,7 @@ void CBTInfo::Serialize(CArchive& ar)
 		int nTrackers = (int)ar.ReadCount();
 		if ( nTrackers )
 		{
-			for ( int nTracker = 0 ; nTracker < nTrackers ; nTracker++ )
+			for ( int nTracker = 0; nTracker < nTrackers; nTracker++ )
 			{
 				CBTTracker oTracker;
 				oTracker.Serialize( ar, nVersion );
@@ -471,7 +471,7 @@ void CBTInfo::Serialize(CArchive& ar)
 //	strOf.LoadString( IDS_GENERAL_OF );
 //	QWORD nTotal = 0ull;
 //	DWORD nCount = 0ul;
-//	for ( POSITION pos = m_pFiles.GetHeadPosition() ; pos ; ++nCount )
+//	for ( POSITION pos = m_pFiles.GetHeadPosition(); pos; ++nCount )
 //	{
 //		CBTFile* pFile = m_pFiles.GetNext( pos );
 //
@@ -622,7 +622,7 @@ BOOL CBTInfo::LoadInfoPiece(BYTE *pPiece, DWORD nPieceSize, DWORD nInfoSize, DWO
 			if ( GetTrackerCount() > 1 )
 			{
 				CBENode* pList = oRoot.Add("announce-list")->Add(); 	// "13:announce-listll"
-				for ( int i = 0 ; i < GetTrackerCount() ; i++ )
+				for ( int i = 0; i < GetTrackerCount(); i++ )
 				{
 					pList->Add()->SetString( GetTrackerAddress( i ) );
 				}
@@ -829,7 +829,7 @@ BOOL CBTInfo::LoadTorrentTree(const CBENode* pRoot)
 	const CBENode* pNodeList = pRoot->GetNode( "nodes" );
 	if ( pNodeList && pNodeList->IsType( CBENode::beList ) )
 	{
-		for ( int i = 0 ; i < pNodeList->GetCount() ; ++i )
+		for ( int i = 0; i < pNodeList->GetCount(); ++i )
 		{
 			const CBENode* pNode = pNodeList->GetNode( i );
 			if ( pNode && pNode->IsType( CBENode::beList ) && pNode->GetCount() == 2 )
@@ -856,13 +856,13 @@ BOOL CBTInfo::LoadTorrentTree(const CBENode* pRoot)
 		CList< CString > pTrackers, pBadTrackers;
 
 		// Loop through all the tiers
-		for ( int nTier = 0 ; nTier < pAnnounceList->GetCount() ; nTier++ )
+		for ( int nTier = 0; nTier < pAnnounceList->GetCount(); nTier++ )
 		{
 			const CBENode* pSubList = pAnnounceList->GetNode( nTier );
 			if ( pSubList && pSubList->IsType( CBENode::beList ) )
 			{
 				// Read in the trackers
-				for ( int nTracker = 0 ; nTracker < pSubList->GetCount() ; nTracker++ )
+				for ( int nTracker = 0; nTracker < pSubList->GetCount(); nTracker++ )
 				{
 					const CBENode* pTracker = pSubList->GetNode( nTracker );
 					if ( pTracker && pTracker->IsType( CBENode::beString ) )
@@ -892,7 +892,7 @@ BOOL CBTInfo::LoadTorrentTree(const CBENode* pRoot)
 					// Randomize the tracker order in this tier
 					if ( pTrackers.GetCount() > 1 )
 					{
-						for ( POSITION pos = pTrackers.GetHeadPosition() ; pos ; )
+						for ( POSITION pos = pTrackers.GetHeadPosition(); pos; )
 						{
 							if ( GetRandomNum( 0, 1 ) )
 							{
@@ -909,7 +909,7 @@ BOOL CBTInfo::LoadTorrentTree(const CBENode* pRoot)
 					}
 
 					// Store the trackers
-					for ( POSITION pos = pTrackers.GetHeadPosition() ; pos ; )
+					for ( POSITION pos = pTrackers.GetHeadPosition(); pos; )
 					{
 						// Create the tracker and add it to the list
 						AddTracker( CBTTracker( pTrackers.GetNext( pos ), nTier ) );
@@ -923,7 +923,7 @@ BOOL CBTInfo::LoadTorrentTree(const CBENode* pRoot)
 		// Catch unsupported trackers for display at end of list.
 		if ( ! pBadTrackers.IsEmpty() )
 		{
-			for ( POSITION pos = pBadTrackers.GetHeadPosition() ; pos ; )
+			for ( POSITION pos = pBadTrackers.GetHeadPosition(); pos; )
 			{
 				// Create the tracker and add it to the list
 				AddTracker( CBTTracker( pTrackers.GetNext( pos ), 99 ) );
@@ -1128,7 +1128,7 @@ BOOL CBTInfo::LoadTorrentTree(const CBENode* pRoot)
 		if ( pSources && pSources->IsType( CBENode::beList ) )
 		{
 			int m_nSources = pSources->GetCount();
-			for ( int nSource = 0 ; nSource < m_nSources ; nSource++ )
+			for ( int nSource = 0; nSource < m_nSources; nSource++ )
 			{
 				CBENode* pSource = pSources->GetNode( nSource );
 				if ( ! pSource || ! pSource->IsType( CBENode::beString ) ) continue;
@@ -1155,7 +1155,7 @@ BOOL CBTInfo::LoadTorrentTree(const CBENode* pRoot)
 		m_nSize = 0;
 
 		QWORD nOffset = 0;
-		for ( int nFile = 0 ; nFile < nFiles ; nFile++ )
+		for ( int nFile = 0; nFile < nFiles; nFile++ )
 		{
 			CAutoPtr< CBTFile > pBTFile( new CBTFile( this ) );
 			if ( ! pBTFile )		// Out of Memory
@@ -1227,7 +1227,7 @@ BOOL CBTInfo::LoadTorrentTree(const CBENode* pRoot)
 			// Hack to prefix all
 			pBTFile->m_sPath = SafeFilename( m_sName );
 
-			for ( int nPath = 0 ; nPath < pPath->GetCount() ; nPath++ )
+			for ( int nPath = 0; nPath < pPath->GetCount(); nPath++ )
 			{
 				const CBENode* pPart = pPath->GetNode( nPath );
 				if ( ! pPart || ! pPart->IsType( CBENode::beString ) ) return FALSE;
@@ -1409,7 +1409,7 @@ BOOL CBTInfo::IsDeadTracker(const CString& sTracker)
 
 BOOL CBTInfo::CheckFiles()
 {
-	for ( POSITION pos = m_pFiles.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pFiles.GetHeadPosition(); pos; )
 	{
 		CBTFile* pBTFile = m_pFiles.GetNext( pos );
 		pBTFile->m_sPath.Trim();
@@ -1535,7 +1535,7 @@ void CBTInfo::SetTrackerNext(DWORD tTime)
 	m_nTrackerIndex = 0;
 
 	// Search through the list for an available tracker, or the first one that will become available
-	for ( int nTracker = 0 ; nTracker < m_oTrackers.GetCount() ; ++nTracker )
+	for ( int nTracker = 0; nTracker < m_oTrackers.GetCount(); ++nTracker )
 	{
 		// Check for bad trackers displayed at end of list (but user-added may follow)
 		// m_oTrackers[ nTracker ].m_sAddress.GetAt( 0 ) == BAD_TRACKER_TOKEN		// *https://
@@ -1673,7 +1673,7 @@ void CBTInfo::SetTrackerMode(int nTrackerMode)
 
 int CBTInfo::AddTracker(const CBTTracker& oTracker)
 {
-	for ( int i = 0 ; i < (int)m_oTrackers.GetCount() ; ++i )
+	for ( int i = 0; i < (int)m_oTrackers.GetCount(); ++i )
 	{
 		if ( m_oTrackers[ i ] == oTracker )
 			return i;	// Already have
@@ -1802,11 +1802,11 @@ CString CBTInfo::GetTrackerHash() const
 	// Get concatenated tracker URLs list sorted in alphabetical order
 	string_set oAddr;
 	const int nCount = (int)m_oTrackers.GetCount();
-	for ( int i = 0 ; i < nCount ; ++i )
+	for ( int i = 0; i < nCount; ++i )
 	{
 		oAddr.insert( m_oTrackers[ i ].m_sAddress );
 	}
-	for ( string_set::const_iterator i = oAddr.begin() ; i != oAddr.end() ; i++ )
+	for ( string_set::const_iterator i = oAddr.begin(); i != oAddr.end(); i++ )
 	{
 		sAddress += CT2A( (*i) );
 	}

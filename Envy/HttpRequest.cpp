@@ -1,8 +1,8 @@
 //
 // HttpRequest.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2008
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2008 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -261,7 +261,7 @@ void CHttpRequest::OnRun()
 				for ( ; IsThreadEnabled() &&
 					InternetQueryDataAvailable( hURL, &nRemaining, 0, 0 ) &&
 					nRemaining > 0 &&
-					m_pResponse->EnsureBuffer( nRemaining ) ; )
+					m_pResponse->EnsureBuffer( nRemaining ); )
 				{
 					if ( ! InternetReadFile( hURL, m_pResponse->m_pBuffer +
 						m_pResponse->m_nLength, nRemaining, &nRemaining ) ) break;
@@ -277,7 +277,7 @@ void CHttpRequest::OnRun()
 						LPTSTR pszHeaders = new TCHAR[ nLength + 1 ];
 						pszHeaders[ 0 ] = pszHeaders[ 1 ] = 0;
 						HttpQueryInfo( hURL, HTTP_QUERY_RAW_HEADERS, pszHeaders, &nLength, 0 );
-						for ( LPTSTR pszHeader = pszHeaders ; *pszHeader ; )
+						for ( LPTSTR pszHeader = pszHeaders; *pszHeader; )
 						{
 							CString strHeader( pszHeader );
 							pszHeader += strHeader.GetLength() + 1;

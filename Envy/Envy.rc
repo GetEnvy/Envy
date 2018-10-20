@@ -12,14 +12,12 @@
 /////////////////////////////////////////////////////////////////////////////
 #undef APSTUDIO_READONLY_SYMBOLS
 
-
 /////////////////////////////////////////////////////////////////////////////
 // English (United States) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
 LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
 #pragma code_page(1252)
-
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -2952,6 +2950,16 @@ BEGIN
 0x4620, 0x4f49, 0x2053, 0x3320, 0x0030,
 	IDC_CONNECTION_TYPE, 0x403, 10, 0
 0x4620, 0x4f49, 0x2053, 0x3520, 0x0030,
+	IDC_CONNECTION_TYPE, 0x403, 5, 0
+0x3120, 0x3030, "\000"
+	IDC_CONNECTION_TYPE, 0x403, 5, 0
+0x3220, 0x3030, "\000"
+	IDC_CONNECTION_TYPE, 0x403, 5, 0
+0x3320, 0x3030, "\000"
+	IDC_CONNECTION_TYPE, 0x403, 5, 0
+0x3420, 0x3030, "\000"
+	IDC_CONNECTION_TYPE, 0x403, 9, 0
+0x4720, 0x6769, 0x6261, 0x7469, "\000"
 	IDC_CONNECTION_TYPE, 0x403, 4, 0
 0x5420, 0x0031,
 	IDC_CONNECTION_TYPE, 0x403, 4, 0
@@ -2988,16 +2996,18 @@ END
 
 IDD_DISCOVERY_SERVICE DLGINIT
 BEGIN
-	IDC_SERVICE_TYPE, 0x403, 19, 0
-0x6e47, 0x7475, 0x6c65, 0x616c, 0x4220, 0x6f6f, 0x7374, 0x7274, 0x7061, "\000"
-	IDC_SERVICE_TYPE, 0x403, 13, 0
-0x3147, 0x4720, 0x6557, 0x4362, 0x6361, 0x6568, "\000"
+	IDC_SERVICE_TYPE, 0x403, 16, 0
+0x3247, 0x472f, 0x2031, 0x5747, 0x6265, 0x6143, 0x6863, 0x0065,
 	IDC_SERVICE_TYPE, 0x403, 13, 0
 0x3247, 0x4720, 0x6557, 0x4362, 0x6361, 0x6568, "\000"
-	IDC_SERVICE_TYPE, 0x403, 16, 0
-0x3147, 0x472f, 0x2032, 0x5747, 0x6265, 0x6143, 0x6863, 0x0065,
+	IDC_SERVICE_TYPE, 0x403, 13, 0
+0x3147, 0x4720, 0x6557, 0x4362, 0x6361, 0x6568, "\000"
+	IDC_SERVICE_TYPE, 0x403, 19, 0
+0x6e47, 0x7475, 0x6c65, 0x616c, 0x4220, 0x6f6f, 0x7374, 0x7274, 0x7061, "\000"
 	IDC_SERVICE_TYPE, 0x403, 15, 0
 0x6553, 0x7672, 0x7265, 0x6d2e, 0x7465, 0x5520, 0x4c52, "\000"
+	IDC_SERVICE_TYPE, 0x403, 13, 0
+0x4344, 0x2b2b, 0x4820, 0x6275, 0x696c, 0x7473, "\000"
 	IDC_SERVICE_TYPE, 0x403, 8, 0
 0x6c42, 0x636f, 0x656b, 0x0064,
 	0
@@ -4322,10 +4332,6 @@ BEGIN
 	IDS_NETWORK_RESOLVE_FAIL	"Unable to resolve host ""%s""."
 	IDS_NETWORK_RESOLVING		"Resolving host ""%s""..."
 	IDS_NETWORK_SEARCH_SENT		"Sending query for ""%s"" to %s."
-	IDS_NETWORK_SECURITY_EXISTS "The address %s is already blocked by your security rules."
-	IDS_NETWORK_SECURITY_ADDED  "Added a security rule to block %s."
-	IDS_NETWORK_SECURITY_BLOCKED "Security manager denied connection from %s."
-	IDS_NETWORK_SECURITY_OUTGOING "Security manager barred a connection to %s."
 	IDS_NETWORK_STARTUP			"Starting Envy network core..."
 	IDS_NETWORK_UNLIMIT			"You are running the Scheduler in 'G2 only' mode.  Would you like to turn this mode off, so that all active networks remain connected?"
 	IDS_NETWORK_UPNP_FAILED		"UPnP port mapping failed after 10 attempts."
@@ -4398,6 +4404,11 @@ BEGIN
 	IDS_SECURITY_SESSION		"Session"
 	IDS_SECURITY_REMOVE_CONFIRM	"Are you sure you wish to delete selected security rules?"
 	IDS_SECURITY_TIP_NETMASK	"Last number is 254,252,248,240,224,192,128, or 0.  Others must be 255.\n\n(For Netmasked IP ranges.)\n\nSee getenvy.com/wiki for help."
+	IDS_SECURITY_ADDED          "Added a security rule to block %s."
+	IDS_SECURITY_EXISTS         "The address %s is already blocked by your security rules."
+	IDS_SECURITY_BANNED_USERAGENT "Client %s has prohibited user agent ""%s"", banning."
+	IDS_SECURITY_BLOCKED        "Security manager denied a connection from %s."
+	IDS_SECURITY_OUTGOING       "Security manager barred a connection to %s."
 END
 
 STRINGTABLE
@@ -4597,6 +4608,7 @@ BEGIN
 	IDS_UPLOAD_BUSY_HOST 		"Refusing upload of ""%s"" to %s (%s), too many concurrent from host."
 	IDS_UPLOAD_BUSY_OLD			"Refusing upload of ""%s"" to %s (%s), busy and client does not support queues."
 	IDS_UPLOAD_BUSY_QUEUE		"Refusing upload of ""%s"" to %s (%s), all matching queues are full."
+	IDS_UPLOAD_BUSY_LIBRARY		"Refusing upload of ""%s"" to %s (%s), Library is busy."
 	IDS_UPLOAD_CANCEL_ED2K		"eDonkey uploads should not be cancelled.\nAre you sure you want to cancel this upload?"
 	IDS_UPLOAD_CANTOPEN			"Can't open ""%s"" to upload to host %s due to disk or file error."
 	IDS_UPLOAD_CONNECT			"Initiating a push connection to %s. %s"

@@ -1,8 +1,8 @@
 //
 // G2Neighbour.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2008
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2008 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -99,7 +99,7 @@ CG2Neighbour::~CG2Neighbour()
 	delete m_pHubGroup;
 	delete m_pGUIDCache;
 
-	for ( POSITION pos = m_pOutbound.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pOutbound.GetHeadPosition(); pos; )
 	{
 		CG2Packet* pOutbound = m_pOutbound.GetNext( pos );
 		pOutbound->Release();
@@ -308,7 +308,7 @@ BOOL CG2Neighbour::ProcessPackets(CBuffer* pInput)
 		{
 			BYTE* pLenIn = pInput->m_pBuffer + 1;
 
-			for ( BYTE nIt = nLenLen ; nIt ; nIt-- )
+			for ( BYTE nIt = nLenLen; nIt; nIt-- )
 			{
 				nLength <<= 8;
 				nLength |= *pLenIn++;
@@ -318,7 +318,7 @@ BOOL CG2Neighbour::ProcessPackets(CBuffer* pInput)
 		{
 			BYTE* pLenIn	= pInput->m_pBuffer + 1;
 			BYTE* pLenOut	= (BYTE*)&nLength;
-			for ( BYTE nLenCnt = nLenLen ; nLenCnt-- ; )
+			for ( BYTE nLenCnt = nLenLen; nLenCnt--; )
 			{
 				*pLenOut++ = *pLenIn++;
 			}
@@ -517,7 +517,7 @@ BOOL CG2Neighbour::OnPing(CG2Packet* pPacket, BOOL bTCP)
 		CSingleLock pLock( &Network.m_pSection );
 		if ( SafeLock( pLock ) )
 		{
-			for ( POSITION pos = Neighbours.GetIterator() ; pos ; )
+			for ( POSITION pos = Neighbours.GetIterator(); pos; )
 			{
 				CNeighbour* pNeighbour = Neighbours.GetNext( pos );
 				if ( pNeighbour->m_nProtocol == PROTOCOL_G2 )
@@ -539,7 +539,7 @@ BOOL CG2Neighbour::OnPing(CG2Packet* pPacket, BOOL bTCP)
 		if ( nCount > Settings.Gnutella2.PingRelayLimit )
 			nCount = Settings.Gnutella2.PingRelayLimit;
 
-		for ( INT_PTR nCur( 0 ) ; nCur < nCount ; ++nCur )
+		for ( INT_PTR nCur( 0 ); nCur < nCount; ++nCur )
 		{
 			INT_PTR nRand( GetRandomNum< INT_PTR >( 0, pG2Nodes.GetCount() - 1 ) );
 
@@ -606,7 +606,7 @@ CG2Packet* CG2Neighbour::CreateLNIPacket(CG2Neighbour* pOwner)
 	CSingleLock pLock( &Network.m_pSection );
 	if ( SafeLock( pLock ) )
 	{
-		for ( POSITION pos = Neighbours.GetIterator() ; pos ; )
+		for ( POSITION pos = Neighbours.GetIterator(); pos; )
 		{
 			CNeighbour* pNeighbour = Neighbours.GetNext( pos );
 
@@ -764,7 +764,7 @@ CG2Packet* CG2Neighbour::CreateKHLPacket(CG2Neighbour* pOwner)
 	CSingleLock pLock( &Network.m_pSection );
 	if ( SafeLock( pLock ) )
 	{
-		for ( POSITION pos = Neighbours.GetIterator() ; pos ; )
+		for ( POSITION pos = Neighbours.GetIterator(); pos; )
 		{
 			CG2Neighbour* pNeighbour = (CG2Neighbour*)Neighbours.GetNext( pos );
 
@@ -804,8 +804,8 @@ CG2Packet* CG2Neighbour::CreateKHLPacket(CG2Neighbour* pOwner)
 
 	CQuickLock oLock( HostCache.Gnutella2.m_pSection );
 
-	for ( CHostCacheIterator i = HostCache.Gnutella2.Begin() ;
-		i != HostCache.Gnutella2.End() && nCount > 0 ; ++i )
+	for ( CHostCacheIterator i = HostCache.Gnutella2.Begin();
+		i != HostCache.Gnutella2.End() && nCount > 0; ++i )
 	{
 		CHostCacheHostPtr pHost = (*i);
 
@@ -1045,7 +1045,7 @@ void CG2Neighbour::SendHAW()
 	CSingleLock pLock( &Network.m_pSection );
 	if ( SafeLock( pLock ) )
 	{
-		for ( POSITION pos = Neighbours.GetIterator() ; pos ; )
+		for ( POSITION pos = Neighbours.GetIterator(); pos; )
 		{
 			CNeighbour* pNeighbour = Neighbours.GetNext( pos );
 

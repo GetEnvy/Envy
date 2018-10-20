@@ -1,8 +1,8 @@
 //
 // MetaPanel.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2010 and Shareaza 2002-2008
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2008 and PeerProject 2008-2010
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -66,7 +66,7 @@ int CMetaPanel::Layout(CDC* pDC, int nWidth)
 
 	CFont* pOld = (CFont*)pDC->SelectObject( &CoolInterface.m_fntNormal );
 
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		CMetaItem* pItem = GetNext( pos );
 		if ( pItem->m_pMember && pItem->m_pMember->m_bHidden ) continue;
@@ -168,12 +168,12 @@ void CMetaPanel::Paint(CDC* pDC, const CRect* prcArea)
 	POSITION pos = GetIterator();
 	DWORD dwFlags = ( Settings.General.LanguageRTL ? ETO_RTLREADING : 0 );
 
-	for ( int nRow = 0 ; pos ; nRow++ )
+	for ( int nRow = 0; pos; nRow++ )
 	{
 		pDC->SetBkColor( Colors.m_crSchemaRow[ nRow & 1 ] );
 		int nHeight = 0;
 
-		for ( int nColumn = 0 ; nColumn < 2 && pos ; nColumn++ )
+		for ( int nColumn = 0; nColumn < 2 && pos; nColumn++ )
 		{
 			CMetaItem* pItem = GetNext( pos );
 

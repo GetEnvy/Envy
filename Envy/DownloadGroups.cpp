@@ -1,8 +1,8 @@
 //
 // DownloadGroups.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2007
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -51,6 +51,19 @@ CDownloadGroups::~CDownloadGroups()
 	Clear();
 }
 
+void CDownloadGroups::GetFolders(CList< CString >& oFolders) const		// CStringIList
+{
+	CQuickLock pLock( m_pSection );
+
+	for ( POSITION pos = GetIterator(); pos; )
+	{
+		const CDownloadGroup* pGroup = GetNext( pos );
+
+		if ( ! pGroup->m_sFolder.IsEmpty() && oFolders.Find( pGroup->m_sFolder ) == NULL )
+			oFolders.AddTail( pGroup->m_sFolder );
+	}
+}
+
 //////////////////////////////////////////////////////////////////////
 // CDownloadGroups supergroup
 
@@ -79,7 +92,7 @@ CDownloadGroup* CDownloadGroups::Add(LPCTSTR pszName, BOOL bTemporary, BOOL bUse
 
 	if ( bUseExisting )
 	{
-		for ( POSITION pos = m_pList.GetHeadPosition() ; pos ; )
+		for ( POSITION pos = m_pList.GetHeadPosition(); pos; )
 		{
 			CDownloadGroup* pGroup = m_pList.GetNext( pos );
 			if ( ! pGroup->m_sName.CompareNoCase( pszName ) )
@@ -167,7 +180,7 @@ void CDownloadGroups::Link(CDownload* pDownload)
 
 	GetSuperGroup()->Add( pDownload );
 
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		CDownloadGroup* pGroup = GetNext( pos );
 		pGroup->Link( pDownload );
@@ -182,7 +195,7 @@ void CDownloadGroups::Unlink(CDownload* pDownload, BOOL bAndSuper)
 	ASSUME_LOCK( Transfers.m_pSection );
 	CQuickLock pLock( m_pSection );
 
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		CDownloadGroup* pGroup = GetNext( pos );
 		if ( bAndSuper || pGroup != m_pSuper )
@@ -255,7 +268,7 @@ CString CDownloadGroups::GetCompletedPath(CDownload* pDownload)
 
 	CQuickLock pLock( m_pSection );
 
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		CDownloadGroup* pGroup = GetNext( pos );
 
@@ -281,7 +294,7 @@ void CDownloadGroups::Clear()
 {
 	CQuickLock pLock( m_pSection );
 
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 		delete GetNext( pos );
 	m_pList.RemoveAll();
 
@@ -420,14 +433,14 @@ void CDownloadGroups::Serialize(CArchive& ar)
 
 		ar.WriteCount( Downloads.GetCount() );
 
-		for ( POSITION pos = Downloads.GetIterator() ; pos ; )
+		for ( POSITION pos = Downloads.GetIterator(); pos; )
 		{
 			ar << Downloads.GetNext( pos )->m_nSerID;
 		}
 
 		ar.WriteCount( GetCount() );
 
-		for ( POSITION pos = GetIterator() ; pos ; )
+		for ( POSITION pos = GetIterator(); pos; )
 		{
 			CDownloadGroup* pGroup = GetNext( pos );
 
@@ -445,7 +458,7 @@ void CDownloadGroups::Serialize(CArchive& ar)
 
 		DWORD_PTR nCount = ar.ReadCount();
 
-		for ( ; nCount > 0 ; nCount-- )
+		for ( ; nCount > 0; nCount-- )
 		{
 			DWORD nDownload;
 			ar >> nDownload;
@@ -456,7 +469,7 @@ void CDownloadGroups::Serialize(CArchive& ar)
 		if ( ( nCount = ar.ReadCount() ) != 0 )
 			Clear();
 
-		for ( ; nCount > 0 ; nCount-- )
+		for ( ; nCount > 0; nCount-- )
 		{
 			CDownloadGroup* pGroup = Add();
 
@@ -468,7 +481,7 @@ void CDownloadGroups::Serialize(CArchive& ar)
 
 		GetSuperGroup();
 
-		for ( POSITION pos = Downloads.GetIterator() ; pos ; )
+		for ( POSITION pos = Downloads.GetIterator(); pos; )
 		{
 			m_pSuper->Add( Downloads.GetNext( pos ) );
 		}
@@ -477,7 +490,7 @@ void CDownloadGroups::Serialize(CArchive& ar)
 
 void CDownloadGroups::CleanTemporary()
 {
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		POSITION posCurrent = pos;
 		CDownloadGroup* pGroup = GetNext( pos );

@@ -3,7 +3,7 @@
 
 <!-- Envy Default Hebrew Skin File -->
 
-<!-- Translation based on default en.xml r21 -->
+<!-- Translation based on default en.xml r22 -->
 <!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -20,7 +20,7 @@ gap i newline
 <manifest
 	name="עברית"
 	author="David Aravon"
-	updatedBy="peer (la. Han), Omega"
+	updatedby="peer (la. Han), Omega"
 	description="Envy Default Hebrew Skin File"
 	link="http://getenvy.com"
 	email="peerl_(at)hotmail, omega09(at)sourceforge.net"
@@ -2946,7 +2946,7 @@ gap i newline
 	<string id="20795" text="‪‪%s :‏נכנס‎ %s :‏יוצא‎ (D:%I64i/U:%I64i/H:%I64i)"/>
 	<string id="20796" text="הקבצים המשותפים באמצעות האינטרנט"/>
 	<string id="20798" text="‪?האם אתה מעוניין לשדרג כעת .(%s) שרזה סיים להוריד את הגרסא החדשהnnאם תבחר כן, שרזה תסגר באופן זמני, למהלך ההתקנה"/>
-	<string id="20811" text="?העלאות של אידונקי2000 לא אמורות להיות מבוטלות. האם הינך בטוח/ה שברצונך לבטל את העלאות"/>
+	<string id="20861" text="?העלאות של אידונקי2000 לא אמורות להיות מבוטלות. האם הינך בטוח/ה שברצונך לבטל את העלאות"/>
 	<string id="20834" text="‪מרכז אידונקי"/>
 	<string id="20841" text="‪תור חדש"/>
 	<string id="20842" text="‪כל הקבצים"/>
@@ -2962,13 +2962,13 @@ gap i newline
 	<string id="20854" text="‪חלקי"/>
 	<string id="20855" text="‪הכנס לתור"/>
 	<string id="20856" text="‪העלאות טורנטים"/>
-	<string id="20862" text="‪הוסף"/>
-	<string id="20864" text="‪סייר"/>
-	<string id="20865" text="‪התחבר"/>
-	<string id="20866" text=":‪קובץ"/>
-	<string id="20867" text="‪:כתובת"/>
-	<string id="20868" text="‪:יציאה"/>
-	<!--string id="20869" text="‪.כיוון ששרזה עסוק URL נכשל להציג את חלון הדו-שיח לפעולות"-->
+	<string id="20864" text="‪הוסף"/>
+	<string id="20865" text="‪סייר"/>
+	<string id="20866" text="‪התחבר"/>
+	<string id="20867" text=":‪קובץ"/>
+	<string id="20868" text="‪:כתובת"/>
+	<string id="20869" text="‪:יציאה"/>
+	<!--string id="20876" text="‪.כיוון ששרזה עסוק URL נכשל להציג את חלון הדו-שיח לפעולות"-->
 	<string id="20870" text="‪.שרזה לא מבין את כתובת אינטרנט זו ,URL נכשל לפענח את הכתובת"/>
 	<string id="20871" text="‪&quot;%s&quot;.URL קבלת כתובת"/>
 	<string id="20872" text="‪:סוג"/>

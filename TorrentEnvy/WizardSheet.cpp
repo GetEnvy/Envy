@@ -1,8 +1,8 @@
 //
 // WizardSheet.cpp
 //
-// This file is part of Torrent Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2014 and Shareaza 2007
+// This file is part of Torrent Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2007 and PeerProject 2008-2014
 //
 // Envy is free software; you can redistribute it
 // modify it under the terms of the GNU General Public License
@@ -10,8 +10,8 @@
 // either version 3 of the License, or later version (at your option).
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU General Public License for more details.
 // (http://www.gnu.org/licenses/gpl.html)
 //
@@ -75,7 +75,7 @@ CWizardSheet::CWizardSheet(CWnd *pParentWnd, UINT iSelectPage)
 CWizardPage* CWizardSheet::GetPage(CRuntimeClass* pClass)
 {
 	const int nCount = GetPageCount();
-	for ( int nPage = 0 ; nPage < nCount ; nPage++ )
+	for ( int nPage = 0; nPage < nCount; nPage++ )
 	{
 		CWizardPage* pPage = (CWizardPage*)CPropertySheet::GetPage( nPage );
 		ASSERT_KINDOF(CWizardPage, pPage);
@@ -88,7 +88,7 @@ CWizardPage* CWizardSheet::GetPage(CRuntimeClass* pClass)
 void CWizardSheet::DoReset()
 {
 	const int nCount = GetPageCount();
-	for ( int nPage = 0 ; nPage < nCount ; nPage++ )
+	for ( int nPage = 0; nPage < nCount; nPage++ )
 	{
 		CWizardPage* pPage = (CWizardPage*)CPropertySheet::GetPage( nPage );
 		ASSERT_KINDOF(CWizardPage, pPage);
@@ -217,7 +217,7 @@ void CWizardSheet::OnPaint()
 	dc.BitBlt( rcHeader.left, rcHeader.top, nWidth, m_nBannerHeight, &mdc, 0, 0, SRCCOPY );
 	if ( nImageSize < nWidth )
 	{
-		for ( int nOffset = nImageSize ; nOffset < nWidth ; nOffset += 2 )
+		for ( int nOffset = nImageSize; nOffset < nWidth; nOffset += 2 )
 			dc.BitBlt( nOffset, rcHeader.top, 2, m_nBannerHeight, &mdc, nImageSize - 2, 0, SRCCOPY );
 	}
 	mdc.SelectObject( pOldBitmap );
@@ -374,7 +374,7 @@ void CWizardPage::SetWizardButtons(DWORD dwFlags)
 
 void CWizardPage::StaticReplace(LPCTSTR pszSearch, LPCTSTR pszReplace)
 {
-	for ( CWnd* pChild = GetWindow( GW_CHILD ) ; pChild ; pChild = pChild->GetNextWindow() )
+	for ( CWnd* pChild = GetWindow( GW_CHILD ); pChild; pChild = pChild->GetNextWindow() )
 	{
 		TCHAR szName[32];
 		GetClassName( pChild->GetSafeHwnd(), szName, 32 );

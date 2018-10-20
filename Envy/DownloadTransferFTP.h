@@ -1,8 +1,8 @@
 //
 // DownloadTransferFTP.h
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2007
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2014
 
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -90,22 +90,22 @@ protected:
 
 		virtual QWORD ExtractFileSize() const
 		{
-			TRACE( L"Extracting file size from:\n%ls\n", m_sData );
+			TRACE( "Extracting file size from:\n%ls\n", (LPCSTR)CT2A( m_sData ) );
 			CString in( m_sData ), out;
-			for ( int n = 0 ; Split( in, L' ', out ) ; ++n )
+			for ( int n = 0; Split( in, L' ', out ); ++n )
 			{
 				int i = 0;
-				for ( ; i < out.GetLength() ; ++i )
+				for ( ; i < out.GetLength(); ++i )
 					if ( ! isdigit( out [i] ) )
 						break;
 				if ( i == out.GetLength() && out [0] != L'0' && n != 2 )
 				{
 					QWORD size = _tstoi64( out );
-					TRACE( L"File size: %ld bytes\n", size );
+					TRACE( "File size: %ld bytes\n", size );
 					return size;
 				}
 			}
-			TRACE( L"Unknown file size.\n" );
+			TRACE( "Unknown file size.\n" );
 			return SIZE_UNKNOWN;
 		}
 

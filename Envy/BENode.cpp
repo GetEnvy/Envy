@@ -1,8 +1,8 @@
 //
 // BENode.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2017
-// Portions copyright PeerProject 2008-2015 and Shareaza 2002-2008
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2008 and PeerProject 2008-2015
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -70,14 +70,14 @@ void CBENode::Clear()
 		else if ( m_nType == beList )
 		{
 			CBENode** pNode = (CBENode**)m_pValue;
-			for ( ; m_nValue-- ; pNode++ )
+			for ( ; m_nValue--; pNode++ )
 				delete *pNode;
 			delete [] (CBENode**)m_pValue;
 		}
 		else if ( m_nType == beDict )
 		{
 			CBENode** pNode = (CBENode**)m_pValue;
-			for ( ; m_nValue-- ; pNode++ )
+			for ( ; m_nValue--; pNode++ )
 			{
 				delete *pNode++;
 				delete [] (LPBYTE)*pNode;
@@ -193,7 +193,7 @@ CBENode* CBENode::GetNode(LPCSTR pszKey) const
 
 	CBENode** pNode = (CBENode**)m_pValue;
 
-	for ( DWORD nNode = (DWORD)m_nValue ; nNode ; nNode--, pNode += 2 )
+	for ( DWORD nNode = (DWORD)m_nValue; nNode; nNode--, pNode += 2 )
 	{
 		if ( strcmp( pszKey, (LPCSTR)pNode[1] ) == 0 )
 			return *pNode;
@@ -208,7 +208,7 @@ CBENode* CBENode::GetNode(const LPBYTE pKey, int nKey) const
 
 	CBENode** pNode = (CBENode**)m_pValue;
 
-	for ( DWORD nNode = (DWORD)m_nValue ; nNode ; nNode--, pNode += 2 )
+	for ( DWORD nNode = (DWORD)m_nValue; nNode; nNode--, pNode += 2 )
 	{
 		if ( memcmp( pKey, (LPBYTE)pNode[1], nKey ) == 0 )
 			return *pNode;
@@ -308,7 +308,7 @@ void CBENode::Encode(CBuffer* pBuffer) const
 		{
 			CBENode** pNode = (CBENode**)m_pValue;
 
-			for ( DWORD nItem = 0 ; nItem < (DWORD)m_nValue ; nItem++, pNode++ )
+			for ( DWORD nItem = 0; nItem < (DWORD)m_nValue; nItem++, pNode++ )
 			{
 				(*pNode)->Encode( pBuffer );
 			}
@@ -323,7 +323,7 @@ void CBENode::Encode(CBuffer* pBuffer) const
 		{
 			CBENode** pNode = (CBENode**)m_pValue;
 
-			for ( DWORD nItem = 0 ; nItem < (DWORD)m_nValue ; nItem++, pNode += 2 )
+			for ( DWORD nItem = 0; nItem < (DWORD)m_nValue; nItem++, pNode += 2 )
 			{
 				LPCSTR pszKey = (LPCSTR)pNode[1];
 				size_t nKeyLength = strlen( pszKey );
@@ -355,7 +355,7 @@ const CString CBENode::Encode() const
 		strOutput = L'\"';
 		{
 			const DWORD nLen = (DWORD)min( m_nValue, 100ll );
-			for ( DWORD n = 0 ; n < nLen ; n++ )
+			for ( DWORD n = 0; n < nLen; n++ )
 			{
 				strOutput += ( ( ( (LPSTR)m_pValue )[ n ] < ' ' ) ? '.' : ( (LPSTR)m_pValue )[ n ] );	// Not L''
 			}
@@ -372,7 +372,7 @@ const CString CBENode::Encode() const
 		strOutput = L"{ ";
 		{
 			CBENode** pNode = (CBENode**)m_pValue;
-			for ( DWORD n = 0 ; n < (DWORD)m_nValue ; n++, pNode++ )
+			for ( DWORD n = 0; n < (DWORD)m_nValue; n++, pNode++ )
 			{
 				if ( n ) strOutput += L", ";
 				strOutput += (*pNode)->Encode();
@@ -385,7 +385,7 @@ const CString CBENode::Encode() const
 		strOutput = L"{ ";
 		{
 			CBENode** pNode = (CBENode**)m_pValue;
-			for ( __int64 n = 0 ; n < m_nValue ; n++, pNode += 2 )
+			for ( __int64 n = 0; n < m_nValue; n++, pNode += 2 )
 			{
 				if ( n ) strOutput += L", ";
 				strOutput.AppendFormat( L"%hs=", (LPCSTR)pNode[ 1 ] );
@@ -459,7 +459,7 @@ void CBENode::Decode(LPCBYTE& pInput, DWORD& nInput, DWORD nSize)
 		INC( 1 );
 
 		DWORD nSeek = 1;
-		for ( ; nSeek < 40 ; nSeek++ )
+		for ( ; nSeek < 40; nSeek++ )
 		{
 			if ( nSeek >= nInput )
 				AfxThrowUserException();
@@ -532,7 +532,7 @@ void CBENode::Decode(LPCBYTE& pInput, DWORD& nInput, DWORD nSize)
 int CBENode::DecodeLen(LPCBYTE& pInput, DWORD& nInput)
 {
 	DWORD nSeek = 1;
-	for ( ; nSeek < 32 ; nSeek++ )
+	for ( ; nSeek < 32; nSeek++ )
 	{
 		if ( nSeek >= nInput )
 			AfxThrowUserException();

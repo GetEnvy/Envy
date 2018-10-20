@@ -1,8 +1,8 @@
 //
 // DCNeighbour.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2010-2015 and Shareaza 2010
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2010 and PeerProject 2010-2015
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -59,7 +59,7 @@ CDCNeighbour::~CDCNeighbour()
 
 void CDCNeighbour::RemoveAllUsers()
 {
-	for ( POSITION pos = m_oUsers.GetStartPosition() ; pos ; )
+	for ( POSITION pos = m_oUsers.GetStartPosition(); pos; )
 	{
 		CString strNick;
 		CChatUser* pUser;
@@ -101,7 +101,7 @@ CChatUser* CDCNeighbour::GetUser(const CString& sNick) const
 void CDCNeighbour::OnChatOpen(CChatSession* pSession)
 {
 	// (Re)fill chat user list
-	for ( POSITION pos = m_oUsers.GetStartPosition() ; pos ; )
+	for ( POSITION pos = m_oUsers.GetStartPosition(); pos; )
 	{
 		CString strNick;
 		CChatUser* pUser;
@@ -455,7 +455,7 @@ BOOL CDCNeighbour::OnPacket(CDCPacket* pPacket)
 //	case 'r':		// $Supports [option1]...[optionN]
 //		m_bExtended = TRUE;
 //		m_oFeatures.RemoveAll();
-//		for ( CString strFeatures( strParams.c_str() ) ; ! strFeatures.IsEmpty() ; )
+//		for ( CString strFeatures( strParams.c_str() ); ! strFeatures.IsEmpty(); )
 //		{
 //			CString strFeature = strFeatures.SpanExcluding( L" " );
 //			strFeatures = strFeatures.Mid( strFeature.GetLength() + 1 ).MakeLower();
@@ -723,7 +723,7 @@ BOOL CDCNeighbour::OnSupports(LPSTR szParams)
 	m_bExtended = TRUE;
 
 	m_oFeatures.RemoveAll();
-	for ( CString strFeatures( szParams ) ; ! strFeatures.IsEmpty() ; )
+	for ( CString strFeatures( szParams ); ! strFeatures.IsEmpty(); )
 	{
 		CString strFeature = strFeatures.SpanExcluding( L" " );
 		strFeatures = strFeatures.Mid( strFeature.GetLength() + 1 );
@@ -857,7 +857,7 @@ BOOL CDCNeighbour::OnUserInfo(LPSTR szInfo)
 						{
 							*szTags++ = 0;
 
-							for ( CStringA sTags( szTags ) ; ! sTags.IsEmpty() ; )
+							for ( CStringA sTags( szTags ); ! sTags.IsEmpty(); )
 							{
 								CStringA sTag = sTags.SpanExcluding( "," );
 								sTags = sTags.Mid( sTag.GetLength() + 1 );

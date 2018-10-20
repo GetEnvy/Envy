@@ -1,8 +1,8 @@
 //
 // SharedFolder.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2017
-// Portions copyright PeerProject 2008-2016 and Shareaza 2002-2007
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2016
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -120,12 +120,12 @@ CXMLElement* CLibraryFolder::CreateXML(CXMLElement* pRoot, BOOL bSharedOnly, Xml
 	if ( ! pFolder )
 		return NULL;	// Out of memory
 
-	for ( POSITION pos = GetFolderIterator() ; pos ; )
+	for ( POSITION pos = GetFolderIterator(); pos; )
 	{
 		GetNextFolder( pos )->CreateXML( pFolder, bSharedOnly, nType );
 	}
 
-	for ( POSITION pos = GetFileIterator() ; pos ; )
+	for ( POSITION pos = GetFileIterator(); pos; )
 	{
 		GetNextFile( pos )->CreateXML( pFolder, bSharedOnly, nType );
 	}
@@ -196,7 +196,7 @@ CLibraryFolder* CLibraryFolder::GetFolderByPath(const CString& strPath) const
 	}
 
 	// Test for nested folders
-	for ( POSITION pos = GetFolderIterator() ; pos ; )
+	for ( POSITION pos = GetFolderIterator(); pos; )
 	{
 		CLibraryFolder* pFolder = GetNextFolder( pos )->GetFolderByPath( strPath );
 		if ( pFolder ) return pFolder;
@@ -209,7 +209,7 @@ BOOL CLibraryFolder::CheckFolder(CLibraryFolder* pFolder, BOOL bRecursive) const
 {
 	//ASSUME_LOCK( Library.m_pSection );
 
-	for ( POSITION pos = GetFolderIterator() ; pos ; )
+	for ( POSITION pos = GetFolderIterator(); pos; )
 	{
 		CLibraryFolder* pCheck = GetNextFolder( pos );
 		if ( pCheck == pFolder ) return TRUE;
@@ -272,7 +272,7 @@ DWORD CLibraryFolder::GetFileList(CLibraryList* pList, BOOL bRecursive) const
 {
 	DWORD nCount = 0;
 
-	for ( POSITION pos = GetFileIterator() ; pos ; )
+	for ( POSITION pos = GetFileIterator(); pos; )
 	{
 		const CLibraryFile* pFile = GetNextFile( pos );
 		pList->CheckAndAdd( pFile );
@@ -281,7 +281,7 @@ DWORD CLibraryFolder::GetFileList(CLibraryList* pList, BOOL bRecursive) const
 
 	if ( bRecursive )
 	{
-		for ( POSITION pos = GetFolderIterator() ; pos ; )
+		for ( POSITION pos = GetFolderIterator(); pos; )
 		{
 			const CLibraryFolder* pFolder = GetNextFolder( pos );
 			nCount += pFolder->GetFileList( pList, bRecursive );
@@ -298,7 +298,7 @@ DWORD CLibraryFolder::GetSharedCount(BOOL bRecursive) const
 
 	DWORD nCount = 0;
 
-	for ( POSITION pos = GetFileIterator() ; pos ; )
+	for ( POSITION pos = GetFileIterator(); pos; )
 	{
 		const CLibraryFile* pFile = GetNextFile( pos );
 		if ( pFile->IsShared() ) nCount++;
@@ -306,7 +306,7 @@ DWORD CLibraryFolder::GetSharedCount(BOOL bRecursive) const
 
 	if ( bRecursive )
 	{
-		for ( POSITION pos = GetFolderIterator() ; pos ; )
+		for ( POSITION pos = GetFolderIterator(); pos; )
 		{
 			const CLibraryFolder* pFolder = GetNextFolder( pos );
 			nCount += pFolder->GetSharedCount( bRecursive );
@@ -323,12 +323,12 @@ void CLibraryFolder::Clear()
 {
 	CloseMonitor();
 
-	for ( POSITION pos = GetFolderIterator() ; pos ; )
+	for ( POSITION pos = GetFolderIterator(); pos; )
 	{
 		delete GetNextFolder( pos );
 	}
 
-	for ( POSITION pos = GetFileIterator() ; pos ; )
+	for ( POSITION pos = GetFileIterator(); pos; )
 	{
 		delete GetNextFile( pos );
 	}
@@ -355,14 +355,14 @@ void CLibraryFolder::Serialize(CArchive& ar, int nVersion)
 
 		ar.WriteCount( GetFolderCount() );
 
-		for ( POSITION pos = GetFolderIterator() ; pos ; )
+		for ( POSITION pos = GetFolderIterator(); pos; )
 		{
 			GetNextFolder( pos )->Serialize( ar, nVersion );
 		}
 
 		ar.WriteCount( GetFileCount() );
 
-		for ( POSITION pos = GetFileIterator() ; pos ; )
+		for ( POSITION pos = GetFileIterator(); pos; )
 		{
 			GetNextFile( pos )->Serialize( ar, nVersion );
 		}
@@ -384,7 +384,7 @@ void CLibraryFolder::Serialize(CArchive& ar, int nVersion)
 
 		m_pFolders.InitHashTable( GetBestHashTableSize( nCount ), FALSE );
 
-		for ( ; nCount > 0 ; nCount-- )
+		for ( ; nCount > 0; nCount-- )
 		{
 			CLibraryFolder* pFolder = new CLibraryFolder( this );
 			if ( ! pFolder )
@@ -401,7 +401,7 @@ void CLibraryFolder::Serialize(CArchive& ar, int nVersion)
 		nCount = (UINT)ar.ReadCount();	// DWORD_PTR
 		m_pFiles.InitHashTable( GetBestHashTableSize( nCount ), FALSE );
 
-		for ( ; nCount > 0 ; nCount-- )
+		for ( ; nCount > 0; nCount-- )
 		{
 			//CLibraryFile* pFile = new CLibraryFile( this );
 			CAutoPtr< CLibraryFile > pFile( new CLibraryFile( this ) );
@@ -532,7 +532,7 @@ BOOL CLibraryFolder::ThreadScan(DWORD nScanCookie)
 
 	if ( ! Library.IsThreadEnabled() ) return FALSE;
 
-	for ( POSITION pos = GetFolderIterator() ; pos ; )
+	for ( POSITION pos = GetFolderIterator(); pos; )
 	{
 		CLibraryFolder* pFolder = GetNextFolder( pos );
 
@@ -549,7 +549,7 @@ BOOL CLibraryFolder::ThreadScan(DWORD nScanCookie)
 		}
 	}
 
-	for ( POSITION pos = GetFileIterator() ; pos ; )
+	for ( POSITION pos = GetFileIterator(); pos; )
 	{
 		CLibraryFile* pFile = GetNextFile( pos );
 
@@ -639,7 +639,7 @@ BOOL CLibraryFolder::IsChanged()
 void CLibraryFolder::Scan()
 {
 	CLibraryFolder* pFolder = this;
-	for ( ; pFolder->m_pParent ; pFolder = pFolder->m_pParent );
+	for ( ; pFolder->m_pParent; pFolder = pFolder->m_pParent );
 	if ( pFolder ) pFolder->m_bForceScan = TRUE;
 	Library.Wakeup();
 }
@@ -652,7 +652,7 @@ BOOL CLibraryFolder::IsShared() const
 	if ( m_bOffline )
 		return FALSE;
 
-	for ( const CLibraryFolder* pFolder = this ; pFolder ; pFolder = pFolder->m_pParent )
+	for ( const CLibraryFolder* pFolder = this; pFolder; pFolder = pFolder->m_pParent )
 	{
 		if ( pFolder->m_bShared )
 		{
@@ -704,7 +704,7 @@ BOOL CLibraryFolder::SetOffline()
 		m_bOffline = TRUE;
 		m_nUpdateCookie++;
 
-		for ( POSITION pos = GetFolderIterator() ; pos ; )
+		for ( POSITION pos = GetFolderIterator(); pos; )
 		{
 			GetNextFolder( pos )->SetOffline();
 		}
@@ -723,7 +723,7 @@ BOOL CLibraryFolder::SetOnline()
 		m_bOffline = FALSE;
 		m_nUpdateCookie++;
 
-		for ( POSITION pos = GetFolderIterator() ; pos ; )
+		for ( POSITION pos = GetFolderIterator(); pos; )
 		{
 			GetNextFolder( pos )->SetOnline();
 		}
@@ -761,7 +761,7 @@ void CLibraryFolder::OnDelete(TRISTATE bCreateGhost)
 
 BOOL CLibraryFolder::OnFileDelete(CLibraryFile* pRemovingFile)
 {
-	for ( POSITION pos = GetFileIterator() ; pos ; )
+	for ( POSITION pos = GetFileIterator(); pos; )
 	{
 		CLibraryFile* pFile = GetNextFile( pos );
 		if ( pFile == pRemovingFile )
@@ -774,7 +774,7 @@ BOOL CLibraryFolder::OnFileDelete(CLibraryFile* pRemovingFile)
 		}
 	}
 
-	for ( POSITION pos = GetFolderIterator() ; pos ; )
+	for ( POSITION pos = GetFolderIterator(); pos; )
 	{
 		CLibraryFolder* pFolder = GetNextFolder( pos );
 		if ( pFolder->OnFileDelete( pRemovingFile ) )
@@ -786,7 +786,7 @@ BOOL CLibraryFolder::OnFileDelete(CLibraryFile* pRemovingFile)
 
 void CLibraryFolder::OnFileRename(CLibraryFile* pFile)
 {
-	for ( POSITION pos = m_pFiles.GetStartPosition() ; pos ; )
+	for ( POSITION pos = m_pFiles.GetStartPosition(); pos; )
 	{
 		CLibraryFile* pOld = NULL;
 		CString strName;
@@ -1040,7 +1040,7 @@ STDMETHODIMP CLibraryFolder::XLibraryFolders::get_Item(VARIANT vIndex, ILibraryF
 		if ( va.lVal < 0 || va.lVal >= (LONG)pThis->GetFolderCount() )
 			return E_INVALIDARG;
 
-		for ( POSITION pos = pThis->GetFolderIterator() ; pos ; )
+		for ( POSITION pos = pThis->GetFolderIterator(); pos; )
 		{
 			pFolder = pThis->GetNextFolder( pos );
 			if ( va.lVal-- == 0 ) break;
@@ -1112,7 +1112,7 @@ STDMETHODIMP CLibraryFolder::XLibraryFiles::get_Item(VARIANT vIndex, ILibraryFil
 		if ( va.lVal < 0 || va.lVal >= (LONG)pThis->GetFileCount() )
 			return E_INVALIDARG;
 
-		for ( POSITION pos = pThis->GetFileIterator() ; pos ; )
+		for ( POSITION pos = pThis->GetFileIterator(); pos; )
 		{
 			pFile = pThis->GetNextFile( pos );
 			if ( va.lVal-- == 0 ) break;

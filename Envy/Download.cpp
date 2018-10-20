@@ -1,8 +1,8 @@
 //
 // Download.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2017
-// Portions copyright PeerProject 2008-2016 and Shareaza 2002-2008
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2008 and PeerProject 2008-2016
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -183,7 +183,7 @@ void CDownload::Resume()
 
 	if ( IsFileOpen() )
 	{
-		for ( POSITION posSource = GetIterator() ; posSource ; )
+		for ( POSITION posSource = GetIterator(); posSource; )
 		{
 			CDownloadSource* pSource = GetNext( posSource );
 
@@ -254,7 +254,7 @@ void CDownload::Boost(BOOL bBoost)
 
 	theApp.Message( MSG_NOTICE, IDS_DOWNLOAD_BOOST, (LPCTSTR)GetDisplayName() );
 
-	for ( CDownloadTransfer* pTransfer = GetFirstTransfer() ; pTransfer ; pTransfer = pTransfer->m_pDlNext )
+	for ( CDownloadTransfer* pTransfer = GetFirstTransfer(); pTransfer; pTransfer = pTransfer->m_pDlNext )
 	{
 		pTransfer->Boost( bBoost );
 	}
@@ -716,10 +716,10 @@ BOOL CDownload::OpenDownload()
 	if ( m_nSize != SIZE_UNKNOWN && ! Downloads.IsSpaceAvailable( m_nSize, Downloads.dlPathIncomplete ) )
 	{
 		CString strFileError;
-		strFileError.Format( LoadString( IDS_DOWNLOAD_DISK_SPACE ), m_sName, Settings.SmartVolume( m_nSize ) );
+		strFileError.Format( LoadString( IDS_DOWNLOAD_DISK_SPACE ), (LPCTSTR)m_sName, (LPCTSTR)Settings.SmartVolume( m_nSize ) );
 		SetFileError( ERROR_DISK_FULL, strFileError );
 
-		theApp.Message( MSG_ERROR, L"%s", strFileError );
+		theApp.Message( MSG_ERROR, L"%s", (LPCTSTR)strFileError );
 	}
 
 	return FALSE;
@@ -1226,7 +1226,7 @@ void CDownload::Serialize(CArchive& ar, int nVersion)	// DOWNLOAD_SER_VERSION
 //
 //	CDownloadWithFile::SerializeFile( ar, nVersion );
 //
-//	for ( DWORD_PTR nSources = ar.ReadCount() ; nSources ; nSources-- )
+//	for ( DWORD_PTR nSources = ar.ReadCount(); nSources; nSources-- )
 //	{
 //		CDownloadSource* pSource = new CDownloadSource( this );
 //		pSource->Serialize( ar, nVersion );

@@ -1,8 +1,8 @@
 //
 // WndSettingsSheet.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2006
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2006 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -94,7 +94,7 @@ CSettingsPage* CSettingsSheet::GetPage(INT_PTR nPage) const
 
 CSettingsPage* CSettingsSheet::GetPage(CRuntimeClass* pClass) const
 {
-	for ( int nPage = 0 ; nPage < GetPageCount() ; nPage++ )
+	for ( int nPage = 0; nPage < GetPageCount(); nPage++ )
 	{
 		CSettingsPage* pPage = GetPage( nPage );
 		if ( pPage->IsKindOf( pClass ) ) return pPage;
@@ -104,7 +104,7 @@ CSettingsPage* CSettingsSheet::GetPage(CRuntimeClass* pClass) const
 
 CSettingsPage* CSettingsSheet::GetPage(LPCTSTR pszClass) const
 {
-	for ( int nPage = 0 ; nPage < GetPageCount() ; nPage++ )
+	for ( int nPage = 0; nPage < GetPageCount(); nPage++ )
 	{
 		CSettingsPage* pPage = GetPage( nPage );
 		if ( _tcscmp( CString( pPage->GetRuntimeClass()->m_lpszClassName ), pszClass ) == 0 ) return pPage;
@@ -114,7 +114,7 @@ CSettingsPage* CSettingsSheet::GetPage(LPCTSTR pszClass) const
 
 INT_PTR CSettingsSheet::GetPageIndex(CSettingsPage* pPage) const
 {
-	for ( INT_PTR nPage = 0 ; nPage < GetPageCount() ; nPage++ )
+	for ( INT_PTR nPage = 0; nPage < GetPageCount(); nPage++ )
 	{
 		if ( pPage == GetPage( nPage ) ) return nPage;
 	}
@@ -187,14 +187,14 @@ BOOL CSettingsSheet::SetActivePage(CSettingsPage* pPage)
 	else
 		SetWindowText( m_sCaption );
 
-	for ( HTREEITEM hGroup = m_wndTree.GetRootItem() ; hGroup ; hGroup = m_wndTree.GetNextItem( hGroup, TVGN_NEXT ) )
+	for ( HTREEITEM hGroup = m_wndTree.GetRootItem(); hGroup; hGroup = m_wndTree.GetNextItem( hGroup, TVGN_NEXT ) )
 	{
 		if ( m_wndTree.GetItemData( hGroup ) == (DWORD_PTR)m_pPage )
 		{
 			if ( ( m_wndTree.GetItemState( hGroup, TVIS_SELECTED ) & TVIS_SELECTED ) == 0 )
 				m_wndTree.SelectItem( hGroup );
 		}
-		for ( HTREEITEM hItem = m_wndTree.GetChildItem( hGroup ) ; hItem ; hItem = m_wndTree.GetNextItem( hItem, TVGN_NEXT ) )
+		for ( HTREEITEM hItem = m_wndTree.GetChildItem( hGroup ); hItem; hItem = m_wndTree.GetNextItem( hItem, TVGN_NEXT ) )
 		{
 			if ( m_wndTree.GetItemData( hItem ) == (DWORD_PTR)m_pPage )
 			{
@@ -288,7 +288,7 @@ void CSettingsSheet::BuildTree()
 {
 	HTREEITEM hGroup = TVI_ROOT;
 
-	for ( int nPage = 0 ; nPage < GetPageCount() ; nPage++ )
+	for ( int nPage = 0; nPage < GetPageCount(); nPage++ )
 	{
 		CSettingsPage* pPage = GetPage( nPage );
 
@@ -322,7 +322,7 @@ BOOL CSettingsSheet::SkinMe(LPCTSTR pszSkin, UINT nIcon, BOOL bLanguage)
 
 	m_szPages.cx = m_szPages.cy = 0;
 
-	for ( int nPage = 0 ; nPage < GetPageCount() ; nPage++ )
+	for ( int nPage = 0; nPage < GetPageCount(); nPage++ )
 	{
 		CSettingsPage* pPage = GetPage( nPage );
 		CDialogTemplate pTemplate;
@@ -422,7 +422,7 @@ void CSettingsSheet::OnOK()
 {
 	if ( m_pPage && ! m_pPage->OnKillActive() ) return;
 
-	for ( int nPage = 0 ; nPage < GetPageCount() ; nPage++ )
+	for ( int nPage = 0; nPage < GetPageCount(); nPage++ )
 	{
 		CSettingsPage* pPage = GetPage( nPage );
 		if ( pPage->m_hWnd ) pPage->OnOK();
@@ -433,7 +433,7 @@ void CSettingsSheet::OnOK()
 
 void CSettingsSheet::OnCancel()
 {
-	for ( int nPage = 0 ; nPage < GetPageCount() ; nPage++ )
+	for ( int nPage = 0; nPage < GetPageCount(); nPage++ )
 	{
 		CSettingsPage* pPage = GetPage( nPage );
 		if ( pPage->m_hWnd ) pPage->OnCancel();
@@ -446,7 +446,7 @@ void CSettingsSheet::OnApply()
 {
 	if ( m_pPage && ! m_pPage->OnKillActive() ) return;
 
-	for ( int nPage = 0 ; nPage < GetPageCount() ; nPage++ )
+	for ( int nPage = 0; nPage < GetPageCount(); nPage++ )
 	{
 		CSettingsPage* pPage = GetPage( nPage );
 		if ( pPage->m_hWnd && ! pPage->OnApply() ) return;

@@ -1,7 +1,7 @@
 //
 // Plugin.cpp : Implementation of CPlugin for SearchExport
 //
-// This file is part of Envy (getenvy.com) © 2016
+// This file is part of Envy (getenvy.com) © 2016-2018
 // Portions copyright PeerProject 2009-2014 and Nikolay Raspopov 2009
 //
 // Envy is free software; you can redistribute it
@@ -10,8 +10,8 @@
 // either version 3 of the License, or later version (at your option).
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU General Public License for more details.
 // (http://www.gnu.org/licenses/gpl.html)
 //
@@ -31,7 +31,7 @@ inline CString LoadString(UINT nID)
 // Insert menu item, if no item present
 void CPlugin::InsertCommand(LPCTSTR szTitle, const LPCWSTR* szMenu, UINT nID)
 {
-	for ( int i = 0 ; szMenu[ i ] ; ++i )
+	for ( int i = 0; szMenu[ i ]; ++i )
 	{
 		CComPtr< ISMenu > pMenu;
 		if ( SUCCEEDED( m_pUserInterface->GetMenu( CComBSTR( szMenu[ i ] ), VARIANT_FALSE, &pMenu ) ) && pMenu )
@@ -115,7 +115,7 @@ CString URLEncode(LPCTSTR pszInputT)
 
 	LPCSTR pszInput = pszUTF8;
 	LPTSTR pszOutput = strOutput.GetBuffer( ( nUTF8 - 1 ) * 3 + 1 );
-	for ( ; *pszInput ; pszInput++ )
+	for ( ; *pszInput; pszInput++ )
 	{
 		if ( *pszInput <= 32 || *pszInput > 127 || strchr( pszUnsafe, *pszInput ) != NULL )
 		{

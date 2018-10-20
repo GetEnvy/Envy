@@ -1,8 +1,8 @@
 //
 // DownloadWithTransfers.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2012 and Shareaza 2002-2008
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2008 and PeerProject 2008-2012
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -62,7 +62,7 @@ CDownloadWithTransfers::~CDownloadWithTransfers()
 
 bool CDownloadWithTransfers::HasActiveTransfers() const
 {
-	for ( CDownloadTransfer* pTransfer = m_pTransferFirst ; pTransfer ; pTransfer = pTransfer->m_pDlNext )
+	for ( CDownloadTransfer* pTransfer = m_pTransferFirst; pTransfer; pTransfer = pTransfer->m_pDlNext )
 	{
 		// Metadata, tiger fetch, etc. are also transfers, but very short in time - should we check that?
 		if ( pTransfer->m_nState == dtsDownloading )
@@ -75,7 +75,7 @@ DWORD CDownloadWithTransfers::GetTransferCount() const
 {
 	DWORD nCount = 0;
 
-	for ( CDownloadTransfer* pTransfer = m_pTransferFirst ; pTransfer ; pTransfer = pTransfer->m_pDlNext )
+	for ( CDownloadTransfer* pTransfer = m_pTransferFirst; pTransfer; pTransfer = pTransfer->m_pDlNext )
 	{
 		if ( ( pTransfer->m_nState > dtsNull ) &&
 			 ( pTransfer->m_nProtocol != PROTOCOL_ED2K || pTransfer->m_nState != dtsQueued ) )
@@ -103,14 +103,14 @@ DWORD CDownloadWithTransfers::GetTransferCount(int nState, const IN_ADDR* pAddre
 	switch ( nState )
 	{
 	case dtsCountAll:
-		for ( CDownloadTransfer* pTransfer = m_pTransferFirst ; pTransfer ; pTransfer = pTransfer->m_pDlNext )
+		for ( CDownloadTransfer* pTransfer = m_pTransferFirst; pTransfer; pTransfer = pTransfer->m_pDlNext )
 		{
 			if ( ValidTransfer( pAddress, pTransfer ) )
 				++nCount;
 		}
 		return nCount;
 	case dtsCountNotQueued:
-		for ( CDownloadTransfer* pTransfer = m_pTransferFirst ; pTransfer ; pTransfer = pTransfer->m_pDlNext )
+		for ( CDownloadTransfer* pTransfer = m_pTransferFirst; pTransfer; pTransfer = pTransfer->m_pDlNext )
 		{
 			if ( ValidTransfer( pAddress, pTransfer ) && ( ( pTransfer->m_nState != dtsQueued ) &&
 				( ! ( pTransfer->m_nState == dtsTorrent && static_cast< CDownloadTransferBT* >(pTransfer)->m_bChoked ) ) ) )
@@ -120,7 +120,7 @@ DWORD CDownloadWithTransfers::GetTransferCount(int nState, const IN_ADDR* pAddre
 		}
 		return nCount;
 	case dtsCountNotConnecting:
-		for ( CDownloadTransfer* pTransfer = m_pTransferFirst ; pTransfer ; pTransfer = pTransfer->m_pDlNext )
+		for ( CDownloadTransfer* pTransfer = m_pTransferFirst; pTransfer; pTransfer = pTransfer->m_pDlNext )
 		{
 			if ( ( ! pAddress || pAddress->S_un.S_addr == pTransfer->m_pHost.sin_addr.S_un.S_addr ) &&
 				 ( pTransfer->m_nState > dtsConnecting ) )
@@ -130,7 +130,7 @@ DWORD CDownloadWithTransfers::GetTransferCount(int nState, const IN_ADDR* pAddre
 		}
 		return nCount;
 	case dtsCountTorrentAndActive:
-		for ( CDownloadTransfer* pTransfer = m_pTransferFirst ; pTransfer ; pTransfer = pTransfer->m_pDlNext )
+		for ( CDownloadTransfer* pTransfer = m_pTransferFirst; pTransfer; pTransfer = pTransfer->m_pDlNext )
 		{
 			if ( ValidTransfer( pAddress, pTransfer ) )
 			{
@@ -145,7 +145,7 @@ DWORD CDownloadWithTransfers::GetTransferCount(int nState, const IN_ADDR* pAddre
 		}
 		return nCount;
 	default:
-		for ( CDownloadTransfer* pTransfer = m_pTransferFirst ; pTransfer ; pTransfer = pTransfer->m_pDlNext )
+		for ( CDownloadTransfer* pTransfer = m_pTransferFirst; pTransfer; pTransfer = pTransfer->m_pDlNext )
 		{
 			if ( pTransfer->m_nState == nState )
 				++nCount;
@@ -161,7 +161,7 @@ QWORD CDownloadWithTransfers::GetAmountDownloadedFrom(const IN_ADDR* pAddress) c
 {
 	QWORD nTotal = 0;
 
-	for ( CDownloadTransfer* pTransfer = m_pTransferFirst ; pTransfer ; pTransfer = pTransfer->m_pDlNext )
+	for ( CDownloadTransfer* pTransfer = m_pTransferFirst; pTransfer; pTransfer = pTransfer->m_pDlNext )
 	{
 		if ( pAddress->S_un.S_addr == pTransfer->m_pHost.sin_addr.S_un.S_addr )
 			nTotal += pTransfer->m_nDownloaded;
@@ -253,7 +253,7 @@ BOOL CDownloadWithTransfers::StartNewTransfer(DWORD tNow)
 	if ( static_cast< CDownloadWithTorrent* >( this )->IsTorrent() &&
 		( Settings.BitTorrent.PreferenceBTSources ) )
 	{
-		for ( POSITION posSource = GetIterator() ; posSource ; )
+		for ( POSITION posSource = GetIterator(); posSource; )
 		{
 			CDownloadSource* pSource = GetNext( posSource );
 
@@ -271,7 +271,7 @@ BOOL CDownloadWithTransfers::StartNewTransfer(DWORD tNow)
 		}
 	}
 
-	for ( POSITION posSource = GetIterator() ; posSource ; )
+	for ( POSITION posSource = GetIterator(); posSource; )
 	{
 		CDownloadSource* pSource = GetNext( posSource );
 
@@ -356,7 +356,7 @@ void CDownloadWithTransfers::CloseTransfers()
 	bool bBackup = Downloads.m_bClosing;
 	Downloads.m_bClosing = true;
 
-	for ( CDownloadTransfer* pTransfer = m_pTransferFirst ; pTransfer ; )
+	for ( CDownloadTransfer* pTransfer = m_pTransferFirst; pTransfer; )
 	{
 		CDownloadTransfer* pNext = pTransfer->m_pDlNext;
 		pTransfer->Close( TRI_TRUE );
@@ -375,7 +375,7 @@ DWORD CDownloadWithTransfers::GetAverageSpeed() const
 {
 	DWORD nSpeed = 0;
 
-	for ( CDownloadTransfer* pTransfer = m_pTransferFirst ; pTransfer ; pTransfer = pTransfer->m_pDlNext )
+	for ( CDownloadTransfer* pTransfer = m_pTransferFirst; pTransfer; pTransfer = pTransfer->m_pDlNext )
 	{
 		if ( pTransfer->m_nState == dtsDownloading )
 			nSpeed += pTransfer->GetAverageSpeed();
@@ -391,7 +391,7 @@ DWORD CDownloadWithTransfers::GetMeasuredSpeed() const
 {
 	DWORD nSpeed = 0;
 
-	for ( CDownloadTransfer* pTransfer = m_pTransferFirst ; pTransfer ; pTransfer = pTransfer->m_pDlNext )
+	for ( CDownloadTransfer* pTransfer = m_pTransferFirst; pTransfer; pTransfer = pTransfer->m_pDlNext )
 	{
 		if ( pTransfer->m_nState == dtsDownloading )	// Crash?
 			nSpeed += pTransfer->GetMeasuredSpeed();
@@ -412,7 +412,7 @@ BOOL CDownloadWithTransfers::OnAcceptPush(const Hashes::Guid& oClientID, CConnec
 
 	CDownloadSource* pSource = NULL;
 
-	for ( POSITION posSource = GetIterator() ; posSource ; )
+	for ( POSITION posSource = GetIterator(); posSource; )
 	{
 		pSource = GetNext( posSource );
 
@@ -455,7 +455,7 @@ BOOL CDownloadWithTransfers::OnDonkeyCallback(const CEDClient* pClient, CDownloa
 
 	CDownloadSource* pSource = NULL;
 
-	for ( POSITION posSource = GetIterator() ; posSource ; )
+	for ( POSITION posSource = GetIterator(); posSource; )
 	{
 		pSource = GetNext( posSource );
 

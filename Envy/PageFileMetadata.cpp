@@ -1,8 +1,8 @@
 //
 // PageFileMetadata.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2007
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -81,7 +81,7 @@ BOOL CFileMetadataPage::OnInitDialog()
 	{
 		CQuickLock oLock( Library.m_pSection );
 
-		for ( POSITION pos = pFiles->GetHeadPosition() ; pos ; )
+		for ( POSITION pos = pFiles->GetHeadPosition(); pos; )
 		{
 			if ( CLibraryFile* pFile = pFiles->GetNextFile( pos ) )
 			{
@@ -114,13 +114,13 @@ BOOL CFileMetadataPage::OnInitDialog()
 		{
 			CQuickLock oLock( Library.m_pSection );
 
-			for ( POSITION pos1 = pFiles->GetHeadPosition() ; pos1 ; )
+			for ( POSITION pos1 = pFiles->GetHeadPosition(); pos1; )
 			{
 				if ( CLibraryFile* pFile = pFiles->GetNextFile( pos1 ) )
 				{
 					if ( pFile->m_pMetadata != NULL && pSchema->Equals( pFile->m_pSchema ) )
 					{
-						for ( POSITION pos2 = pSchema->GetMemberIterator() ; pos2 ; )
+						for ( POSITION pos2 = pSchema->GetMemberIterator(); pos2; )
 						{
 							CSchemaMember* pMember = pSchema->GetNextMember( pos2 );
 							CString strOld = pMember->GetValueFrom( m_pXML, NO_VALUE, FALSE, TRUE );
@@ -162,7 +162,7 @@ void CFileMetadataPage::OnSelChangeSchemas()
 	{
 		if ( pXML->IsNamed( L"schemaMappings" ) )
 		{
-			for ( POSITION pos = pXML->GetElementIterator() ; pos ; )
+			for ( POSITION pos = pXML->GetElementIterator(); pos; )
 			{
 				if ( CXMLElement* pMapping = pXML->GetNextElement( pos ) )
 				{
@@ -209,7 +209,7 @@ void CFileMetadataPage::AddCrossAttributes(CXMLElement* pXML, LPCTSTR pszTargetU
 	if ( pXML == NULL ) return;
 	CXMLElement* pTargetURI = NULL;
 
-	for ( POSITION pos = pXML->GetElementIterator() ; pos ; )
+	for ( POSITION pos = pXML->GetElementIterator(); pos; )
 	{
 		pTargetURI = pXML->GetNextElement( pos );
 
@@ -225,7 +225,7 @@ void CFileMetadataPage::AddCrossAttributes(CXMLElement* pXML, LPCTSTR pszTargetU
 
 	if ( pTargetURI == NULL ) return;
 
-	for ( POSITION pos = pTargetURI->GetElementIterator() ; pos ; )
+	for ( POSITION pos = pTargetURI->GetElementIterator(); pos; )
 	{
 		if ( CXMLElement* pAttribute = pTargetURI->GetNextElement( pos ) )
 		{
@@ -272,7 +272,7 @@ void CFileMetadataPage::OnOK()
 	{
 		CQuickLock oLock( Library.m_pSection );
 
-		for ( POSITION pos = pFiles->GetHeadPosition() ; pos ; )
+		for ( POSITION pos = pFiles->GetHeadPosition(); pos; )
 		{
 			if ( CLibraryFile* pFile = pFiles->GetNextFile( pos ) )
 			{
@@ -303,7 +303,7 @@ void CFileMetadataPage::OnOK()
 	{
 		CQuickLock oLock( Library.m_pSection );
 
-		for ( POSITION pos = pFiles->GetHeadPosition() ; pos ; )
+		for ( POSITION pos = pFiles->GetHeadPosition(); pos; )
 		{
 			if ( CLibraryFile* pFile = pFiles->GetNextFile( pos ) )
 				pFile->ClearMetadata();

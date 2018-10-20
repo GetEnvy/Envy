@@ -1,8 +1,8 @@
 //
 // ComboListCtrl.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2017
-// Portions copyright PeerProject 2008-2012 and Shareaza 2008
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2008 and PeerProject 2008-2012
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -129,8 +129,8 @@
 //			m_pCombo->SetFont( GetFont() );
 //
 //			int n = 0, nSelected = 0;
-//			for ( CIntStringMap::const_iterator i = (*column).second.begin() ;
-//				i != (*column).second.end() ; ++i, ++n )
+//			for ( CIntStringMap::const_iterator i = (*column).second.begin();
+//				i != (*column).second.end(); ++i, ++n )
 //			{
 //				m_pCombo->AddString( (*i).second );
 //				if ( (*i).first == (*data).second )
@@ -152,7 +152,7 @@
 //		CIntIntStringMapMap::const_iterator column = m_oColumns.find( m_iSelectedSubItem );
 //		CIntStringMap::const_iterator value = (*column).second.begin();
 //		const int nSelected = m_pCombo->GetCurSel();
-//		for ( int i = 0 ; i != nSelected ; ++value, ++i );
+//		for ( int i = 0; i != nSelected; ++value, ++i );
 //
 //		m_oData[ m_iSelectedItem ].erase( m_iSelectedSubItem );
 //		m_oData[ m_iSelectedItem ].insert( CIntIntMap::value_type( m_iSelectedSubItem, (*value).first ) );

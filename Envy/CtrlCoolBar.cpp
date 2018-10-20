@@ -1,8 +1,8 @@
 //
 // CtrlCoolBar.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2015 and Shareaza 2002-2008
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2008 and PeerProject 2008-2015
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -182,7 +182,7 @@ CCoolBarItem* CCoolBarCtrl::Add(UINT nCtrlID, int nWidth, int nHeight)
 
 CCoolBarItem* CCoolBarCtrl::GetIndex(int nIndex) const
 {
-	for ( POSITION pos = m_pItems.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pItems.GetHeadPosition(); pos; )
 	{
 		CCoolBarItem* pItem = m_pItems.GetNext( pos );
 		if ( ! nIndex-- ) return pItem;
@@ -193,7 +193,7 @@ CCoolBarItem* CCoolBarCtrl::GetIndex(int nIndex) const
 
 CCoolBarItem* CCoolBarCtrl::GetID(UINT nID) const
 {
-	for ( POSITION pos = m_pItems.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pItems.GetHeadPosition(); pos; )
 	{
 		CCoolBarItem* pItem = m_pItems.GetNext( pos );
 		if ( pItem->m_nID == nID ) return pItem;
@@ -206,7 +206,7 @@ int CCoolBarCtrl::GetIndexForID(UINT nID) const
 {
 	int nIndex = 0;
 
-	for ( POSITION pos = m_pItems.GetHeadPosition() ; pos ; nIndex++ )
+	for ( POSITION pos = m_pItems.GetHeadPosition(); pos; nIndex++ )
 	{
 		CCoolBarItem* pItem = m_pItems.GetNext( pos );
 		if ( pItem->m_nID == nID ) return nIndex;
@@ -221,7 +221,7 @@ BOOL CCoolBarCtrl::LoadToolBar(UINT nIDToolBar)
 
 	if ( ! pToolBar.Create( this ) || ! pToolBar.LoadToolBar( nIDToolBar ) ) return FALSE;
 
-	for ( int i = 0 ; i < pToolBar.GetCount() ; i++ )
+	for ( int i = 0; i < pToolBar.GetCount(); i++ )
 	{
 		UINT nID, nStyle;
 		int nImage;
@@ -236,7 +236,7 @@ BOOL CCoolBarCtrl::LoadToolBar(UINT nIDToolBar)
 
 void CCoolBarCtrl::Clear()
 {
-	for ( POSITION pos = m_pItems.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pItems.GetHeadPosition(); pos; )
 	{
 		delete m_pItems.GetNext( pos );
 	}
@@ -248,7 +248,7 @@ void CCoolBarCtrl::Copy(CCoolBarCtrl* pOther)
 {
 	Clear();
 
-	for ( POSITION pos = pOther->m_pItems.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = pOther->m_pItems.GetHeadPosition(); pos; )
 	{
 		CCoolBarItem* pItem = pOther->m_pItems.GetNext( pos );
 		m_pItems.AddTail( new CCoolBarItem( this, pItem ) );
@@ -375,7 +375,7 @@ CSize CCoolBarCtrl::CalcFixedLayout(BOOL bStretch, BOOL /*bHorz*/)
 		CSize size( MARGIN_WIDTH * 2 + 5, m_nHeight );
 		if ( m_bGripper ) size.cx += GRIPPER_WIDTH;
 
-		for ( POSITION pos = m_pItems.GetHeadPosition() ; pos ; )
+		for ( POSITION pos = m_pItems.GetHeadPosition(); pos; )
 		{
 			CCoolBarItem* pItem = m_pItems.GetNext( pos );
 			if ( pItem->m_bVisible )
@@ -413,7 +413,7 @@ CCoolBarItem* CCoolBarCtrl::HitTest(const CPoint& point, CRect* pItemRect, BOOL 
 	PrepareRect( &rcClient );
 	rcItem.CopyRect( &rcClient );
 
-	for ( POSITION pos = m_pItems.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pItems.GetHeadPosition(); pos; )
 	{
 		CCoolBarItem* pItem = m_pItems.GetNext( pos );
 		if ( ! pItem->m_bVisible ) continue;
@@ -423,7 +423,7 @@ CCoolBarItem* CCoolBarCtrl::HitTest(const CPoint& point, CRect* pItemRect, BOOL 
 			int nRight = 0;
 			bRight = TRUE;
 
-			for ( POSITION pos2 = pos ; pos2 ; )
+			for ( POSITION pos2 = pos; pos2; )
 			{
 				CCoolBarItem* pRight = m_pItems.GetNext( pos2 );
 				if ( pRight->m_bVisible )
@@ -460,7 +460,7 @@ BOOL CCoolBarCtrl::GetItemRect(CCoolBarItem* pFind, CRect* pRect) const
 	PrepareRect( &rcClient );
 	rcItem.CopyRect( &rcClient );
 
-	for ( POSITION pos = m_pItems.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pItems.GetHeadPosition(); pos; )
 	{
 		CCoolBarItem* pItem = m_pItems.GetNext( pos );
 		if ( ! pItem->m_bVisible ) continue;
@@ -470,7 +470,7 @@ BOOL CCoolBarCtrl::GetItemRect(CCoolBarItem* pFind, CRect* pRect) const
 			int nRight = 0;
 			bRight = TRUE;
 
-			for ( POSITION pos2 = pos ; pos2 ; )
+			for ( POSITION pos2 = pos; pos2; )
 			{
 				CCoolBarItem* pRight = m_pItems.GetNext( pos2 );
 				if ( pRight->m_bVisible )
@@ -592,7 +592,7 @@ void CCoolBarCtrl::DoPaint(CDC* pDC, CRect& rcClient, BOOL bTransparent)
 
 	if ( m_bGripper && Settings.Skin.MenuGripper )
 	{
-		for ( int nY = rcClient.top + 4 ; nY < rcClient.bottom - 4 ; nY += 2 )
+		for ( int nY = rcClient.top + 4; nY < rcClient.bottom - 4; nY += 2 )
 		{
 			pDC->Draw3dRect( rcClient.left + 3, nY, GRIPPER_WIDTH, bTransparent ? 1 : 2,
 				Colors.m_crDisabled, bTransparent ? Colors.m_crDisabled : Colors.m_crMidtone );
@@ -610,7 +610,7 @@ void CCoolBarCtrl::DoPaint(CDC* pDC, CRect& rcClient, BOOL bTransparent)
 	BOOL bRight = FALSE;
 	CRect rcCopy;
 
-	for ( POSITION pos = m_pItems.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pItems.GetHeadPosition(); pos; )
 	{
 		CCoolBarItem* pItem = m_pItems.GetNext( pos );
 
@@ -619,7 +619,7 @@ void CCoolBarCtrl::DoPaint(CDC* pDC, CRect& rcClient, BOOL bTransparent)
 			int nRight = 0;
 			bRight = TRUE;
 
-			for ( POSITION pos2 = pos ; pos2 ; )
+			for ( POSITION pos2 = pos; pos2; )
 			{
 				CCoolBarItem* pRight = m_pItems.GetNext( pos2 );
 				if ( pRight->m_bVisible ) nRight += pRight->m_nWidth;
@@ -707,7 +707,7 @@ void CCoolBarCtrl::OnUpdateCmdUI(CFrameWnd* pTarget, BOOL bDisableIfNoHndler)
 		if ( ! bLocked ) return;
 	}
 
-	for ( POSITION pos = m_pItems.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pItems.GetHeadPosition(); pos; )
 	{
 		CCoolBarItem* pItem = m_pItems.GetNext( pos );
 
@@ -1111,7 +1111,7 @@ void CCoolBarItem::Paint(CDC* pDC, CRect& rc, BOOL bDown, BOOL bHot, BOOL bMenuG
 
 	if ( m_nCtrlID )
 	{
-		for ( int nShrink = rc.Height() - m_nCtrlHeight ; nShrink > 0 ; nShrink -= 2 )
+		for ( int nShrink = rc.Height() - m_nCtrlHeight; nShrink > 0; nShrink -= 2 )
 		{
 			if ( ! bTransparent )
 				pDC->Draw3dRect( &rc, Colors.m_crMidtone, Colors.m_crMidtone );

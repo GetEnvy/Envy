@@ -2,7 +2,7 @@
 // DownloadTransferHTTP.cpp
 //
 // This file is part of Envy (getenvy.com) © 2016-2018
-// Portions copyright PeerProject 2008-2016 and Shareaza 2002-2008
+// Portions copyright Shareaza 2002-2008 and PeerProject 2008-2016
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -431,7 +431,7 @@ BOOL CDownloadTransferHTTP::SendRequest()
 			{
 				if ( m_pSource->m_nGnutella < 2 )
 				{
-					strLine.Format( L"%s:%i",
+					strLine.Format( L"%s:%u",
 						(LPCTSTR)CString( inet_ntoa( Network.m_pHost.sin_addr ) ),
 						htons( Network.m_pHost.sin_port ) );
 					Write( _P("X-Alt: ") );
@@ -895,7 +895,7 @@ BOOL CDownloadTransferHTTP::OnHeaderLine(CString& strHeader, CString& strValue)
 			Hashes::BtHash oBTH;
 			Hashes::Md5Hash oMD5;
 			CString strURNs = strValue + L',';
-			for ( int nPos = strURNs.Find( L',' ) ; nPos >= 0 ; nPos = strURNs.Find( L',' ) )
+			for ( int nPos = strURNs.Find( L',' ); nPos >= 0; nPos = strURNs.Find( L',' ) )
 			{
 				strValue = strURNs.Left( nPos ).TrimLeft();
 				strURNs = strURNs.Mid( nPos + 1 );
@@ -1310,7 +1310,7 @@ BOOL CDownloadTransferHTTP::ReadContent()
 				{
 					// Looking for "Length<CR><LF>"
 					DWORD i = 1;
-					for ( ; i < pInput->m_nLength - 1 ; i++ )
+					for ( ; i < pInput->m_nLength - 1; i++ )
 					{
 						if ( pInput->m_pBuffer[ i ] == 0x0d &&
 							 pInput->m_pBuffer[ i + 1 ] == 0x0a )
@@ -1513,14 +1513,13 @@ BOOL CDownloadTransferHTTP::ReadTiger(bool bDropped)
 
 		while ( pInput->ReadDIME( &nFlags, &strID, &strType, &nBody ) )
 		{
-			theApp.Message( MSG_DEBUG, L"THEX DIME: %i, '%s', '%s', %i", nFlags, (LPCTSTR)strID, (LPCTSTR)strType, nBody );
+			theApp.Message( MSG_DEBUG, L"THEX DIME: %u, '%s', '%s', %u", nFlags, (LPCTSTR)strID, (LPCTSTR)strType, nBody );
 
 			if ( ( nFlags & 1 ) && strType.CompareNoCase( L"text/xml" ) == 0 && nBody < 1024*1024 )
 			{
 				BOOL bSize = FALSE, bDigest = FALSE, bEncoding = FALSE;
-				CString strXML;
 
-				strXML = pInput->ReadString( nBody, CP_UTF8 );
+				CString strXML = pInput->ReadString( nBody, CP_UTF8 );
 
 				if ( CXMLElement* pXML = CXMLElement::FromString( strXML ) )
 				{
@@ -1529,7 +1528,7 @@ BOOL CDownloadTransferHTTP::ReadTiger(bool bDropped)
 						if ( CXMLElement* pxFile = pXML->GetElementByName( L"file" ) )
 						{
 							QWORD nSize = 0;
-							_stscanf( pxFile->GetAttributeValue( L"size" ), L"%I64i", &nSize );
+							_stscanf( pxFile->GetAttributeValue( L"size" ), L"%I64u", &nSize );
 							bSize = ( nSize == m_pDownload->m_nSize );
 						}
 						if ( CXMLElement* pxDigest = pXML->GetElementByName( L"digest" ) )
@@ -1560,7 +1559,7 @@ BOOL CDownloadTransferHTTP::ReadTiger(bool bDropped)
 			}
 
 			pInput->Remove( ( nBody + 3 ) & ~3 );
-			if ( nFlags & 2 ) break;
+			//if ( nFlags & 2 ) break;	// No break here to consider multiple networks.
 		}
 
 		pInput->Clear();

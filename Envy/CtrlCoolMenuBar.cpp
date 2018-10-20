@@ -1,8 +1,8 @@
 //
 // CtrlCoolMenuBar.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2007
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -80,7 +80,7 @@ void CCoolMenuBarCtrl::SetMenu(HMENU hMenu)
 	CMenu pMenu;
 	pMenu.Attach( m_hMenu );
 
-	for ( UINT nItem = 0 ; nItem < (UINT)pMenu.GetMenuItemCount() ; nItem++ )
+	for ( UINT nItem = 0; nItem < (UINT)pMenu.GetMenuItemCount(); nItem++ )
 	{
 		CString strMenu;
 		pMenu.GetMenuString( nItem, strMenu, MF_BYPOSITION );
@@ -110,7 +110,7 @@ BOOL CCoolMenuBarCtrl::OpenMenuChar(UINT nChar)
 	CMenu pMenu;
 	pMenu.Attach( m_hMenu );
 
-	for ( UINT nItem = 0 ; nItem < (UINT)pMenu.GetMenuItemCount() ; nItem++ )
+	for ( UINT nItem = 0; nItem < (UINT)pMenu.GetMenuItemCount(); nItem++ )
 	{
 		CString strMenu;
 		pMenu.GetMenuString( nItem, strMenu, MF_BYPOSITION );
@@ -202,7 +202,7 @@ void CCoolMenuBarCtrl::UpdateWindowMenu(CMenu* pMenu)
 	// Add child windows list to detected "_Window" menu
 
 	// Clear any previously added entries
-	for ( UINT nIndex = pMenu->GetMenuItemCount() - 1 ; nIndex ; nIndex-- )
+	for ( UINT nIndex = pMenu->GetMenuItemCount() - 1; nIndex; nIndex-- )
 	{
 		if ( pMenu->GetMenuItemID( nIndex ) < AFX_IDM_FIRST_MDICHILD && pMenu->GetMenuItemID( nIndex ) != ID_SEPARATOR )
 			break;
@@ -213,7 +213,7 @@ void CCoolMenuBarCtrl::UpdateWindowMenu(CMenu* pMenu)
 	if ( ! pFrame->IsKindOf( RUNTIME_CLASS(CMDIFrameWnd) ) ) return;
 
 	CWnd* pClient = pFrame->GetWindow( GW_CHILD );
-	for ( ; pClient ; pClient = pClient->GetNextWindow() )
+	for ( ; pClient; pClient = pClient->GetNextWindow() )
 	{
 		TCHAR szClass[64];
 		GetClassName( pClient->GetSafeHwnd(), szClass, 64 );
@@ -225,7 +225,7 @@ void CCoolMenuBarCtrl::UpdateWindowMenu(CMenu* pMenu)
 	CMDIChildWnd* pActive = pFrame->m_pWindows.GetActive();		// Was pFrame->MDIGetActive();
 	BOOL bSeparator = TRUE;
 
-	for ( UINT nIndex = 1, nID = AFX_IDM_FIRST_MDICHILD ; nIndex <= 12 ; nIndex++, nID++ )
+	for ( UINT nIndex = 1, nID = AFX_IDM_FIRST_MDICHILD; nIndex <= 12; nIndex++, nID++ )
 	{
 		CChildWnd* pChildWnd = (CChildWnd*)pClient->GetDlgItem( nID );
 		if ( ! pChildWnd ) break;

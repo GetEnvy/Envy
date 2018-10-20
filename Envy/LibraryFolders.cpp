@@ -1,8 +1,8 @@
 //
 // LibraryFolders.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2016 and Shareaza 2002-2007
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2016
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -97,7 +97,7 @@ CXMLElement* CLibraryFolders::CreateXML(LPCTSTR szRoot, BOOL bSharedOnly, XmlTyp
 	if ( _tcsicmp( szRoot, L"/" ) == 0 )
 	{
 		// All folders
-		for ( POSITION pos = LibraryFolders.GetFolderIterator() ; pos ; )
+		for ( POSITION pos = LibraryFolders.GetFolderIterator(); pos; )
 		{
 			LibraryFolders.GetNextFolder( pos )->CreateXML( pRoot, bSharedOnly, nType );
 		}
@@ -135,7 +135,7 @@ CLibraryFolder* CLibraryFolders::GetFolder(const CString& strPath) const
 {
 	ASSUME_LOCK( Library.m_pSection );
 
-	for ( POSITION pos = GetFolderIterator() ; pos ; )
+	for ( POSITION pos = GetFolderIterator(); pos; )
 	{
 		CLibraryFolder* pFolder = GetNextFolder( pos )->GetFolderByPath( strPath );
 		if ( pFolder != NULL )
@@ -152,7 +152,7 @@ BOOL CLibraryFolders::CheckFolder(CLibraryFolder* pFolder, BOOL bRecursive) cons
 	if ( m_pFolders.Find( pFolder ) != NULL ) return TRUE;
 	if ( ! bRecursive ) return FALSE;
 
-	for ( POSITION pos = GetFolderIterator() ; pos ; )
+	for ( POSITION pos = GetFolderIterator(); pos; )
 	{
 		if ( GetNextFolder( pos )->CheckFolder( pFolder, TRUE ) ) return TRUE;
 	}
@@ -175,7 +175,7 @@ CLibraryFolder* CLibraryFolders::GetFolderByName(LPCTSTR pszName) const
 		strName = strName.Left( nPos );
 	}
 
-	for ( POSITION pos = GetFolderIterator() ; pos ; )
+	for ( POSITION pos = GetFolderIterator(); pos; )
 	{
 		CLibraryFolder* pFolder = GetNextFolder( pos );
 
@@ -212,7 +212,7 @@ CLibraryFolder* CLibraryFolders::AddFolder(LPCTSTR pszPath)
 
 	BOOL bAdded = FALSE;
 
-	for ( POSITION pos = GetFolderIterator() ; pos ; )
+	for ( POSITION pos = GetFolderIterator(); pos; )
 	{
 		POSITION posAdd = pos;
 		if ( GetNextFolder( pos )->m_sName.CompareNoCase( pFolder->m_sName ) < 0 )
@@ -275,7 +275,7 @@ bool CLibraryFolders::AddSharedFolder(CListCtrl& oList)
 
 	// Check if path is already shared
 	bool bForceAdd( false );
-	for ( int nItem( 0 ) ; nItem < oList.GetItemCount() ; ++nItem )
+	for ( int nItem( 0 ); nItem < oList.GetItemCount(); ++nItem )
 	{
 		bool bSubFolder( false );
 		CString strOldLow( oList.GetItemText( nItem, 0 ) );
@@ -304,7 +304,7 @@ bool CLibraryFolders::AddSharedFolder(CListCtrl& oList)
 		if ( bSubFolder )
 		{
 			CString strMessage;
-			strMessage.Format( LoadString( IDS_LIBRARY_SUBFOLDER_IN_LIBRARY ), strPath );
+			strMessage.Format( LoadString( IDS_LIBRARY_SUBFOLDER_IN_LIBRARY ), (LPCTSTR)strPath );
 
 			if ( ! bForceAdd || MsgBox( strMessage, MB_ICONQUESTION|MB_YESNO ) != IDYES )
 				return false;
@@ -319,7 +319,7 @@ bool CLibraryFolders::AddSharedFolder(CListCtrl& oList)
 		else
 		{
 			CString strMessage;
-			strMessage.Format( LoadString( IDS_WIZARD_SHARE_ALREADY ), strOldLow );
+			strMessage.Format( LoadString( IDS_WIZARD_SHARE_ALREADY ), (LPCTSTR)strOldLow );
 
 			MsgBox( strMessage, MB_ICONINFORMATION );
 			return false;
@@ -369,7 +369,7 @@ CLibraryFolder* CLibraryFolders::IsFolderShared(const CString& strPath) const
 
 	CQuickLock oLock( Library.m_pSection );
 
-	for ( POSITION pos = GetFolderIterator() ; pos ; )
+	for ( POSITION pos = GetFolderIterator(); pos; )
 	{
 		CLibraryFolder* pFolder = GetNextFolder( pos );
 
@@ -404,7 +404,7 @@ CLibraryFolder* CLibraryFolders::IsSubFolderShared(const CString& strPath) const
 
 	CQuickLock oLock( Library.m_pSection );
 
-	for ( POSITION pos = GetFolderIterator() ; pos ; )
+	for ( POSITION pos = GetFolderIterator(); pos; )
 	{
 		CLibraryFolder* pFolder = GetNextFolder( pos );
 
@@ -642,7 +642,7 @@ CAlbumFolder* CLibraryFolders::CreateAlbumTree()
 
 	if ( m_pAlbumRoot->GetFolderCount() != nCount )
 	{
-		for ( POSITION pos = LibraryMaps.GetFileIterator() ; pos ; )
+		for ( POSITION pos = LibraryMaps.GetFileIterator(); pos; )
 		{
 			CLibraryFile* pFile = LibraryMaps.GetNextFile( pos );
 			if ( pFile->IsAvailable() )
@@ -663,7 +663,7 @@ BOOL CLibraryFolders::OnFileDelete(CLibraryFile* pFile, BOOL bDeleteGhost)
 	if ( m_pAlbumRoot )
 		m_pAlbumRoot->OnFileDelete( pFile, bDeleteGhost );
 
-	for ( POSITION pos = GetFolderIterator() ; pos ; )
+	for ( POSITION pos = GetFolderIterator(); pos; )
 	{
 		if ( GetNextFolder( pos )->OnFileDelete( pFile ) )
 			return TRUE;
@@ -679,7 +679,7 @@ void CLibraryFolders::Clear()
 {
 	ASSUME_LOCK( Library.m_pSection );
 
-	for ( POSITION pos = GetFolderIterator() ; pos ; )
+	for ( POSITION pos = GetFolderIterator(); pos; )
 		delete GetNextFolder( pos );
 	m_pFolders.RemoveAll();
 
@@ -695,7 +695,7 @@ void CLibraryFolders::ClearGhosts()
 	{
 		if ( CAlbumFolder* pGhosts = m_pAlbumRoot->GetFolderByURI( CSchema::uriGhostFolder ) )
 		{
-			for ( POSITION pos = pGhosts->GetFileIterator() ; pos ; )
+			for ( POSITION pos = pGhosts->GetFileIterator(); pos; )
 			{
 				CLibraryFile* pFile = pGhosts->GetNextFile( pos );
 				ASSERT( ! pFile->IsAvailable() );
@@ -727,7 +727,7 @@ BOOL CLibraryFolders::ThreadScan(const BOOL bForce)
 
 	BOOL bChanged = FALSE;
 
-	for ( POSITION pos = GetFolderIterator() ; pos && Library.IsThreadEnabled() ; )
+	for ( POSITION pos = GetFolderIterator(); pos && Library.IsThreadEnabled(); )
 	{
 		CLibraryFolder* pFolder = GetNextFolder( pos );
 
@@ -763,14 +763,14 @@ void CLibraryFolders::Serialize(CArchive& ar, int nVersion)
 	{
 		ar.WriteCount( GetFolderCount() );
 
-		for ( POSITION pos = GetFolderIterator() ; pos ; )
+		for ( POSITION pos = GetFolderIterator(); pos; )
 		{
 			GetNextFolder( pos )->Serialize( ar, nVersion );
 		}
 	}
 	else // Loading
 	{
-		for ( DWORD_PTR nCount = ar.ReadCount() ; nCount > 0 ; nCount-- )
+		for ( DWORD_PTR nCount = ar.ReadCount(); nCount > 0; nCount-- )
 		{
 			CLibraryFolder* pFolder = new CLibraryFolder( NULL );
 			pFolder->Serialize( ar, nVersion );
@@ -786,7 +786,7 @@ void CLibraryFolders::Maintain()
 	CQuickLock oLock( Library.m_pSection );
 
 #ifndef __IShellLibrary_INTERFACE_DEFINED__	// ~VS2008
-	for ( POSITION pos = GetFolderIterator() ; pos ; )
+	for ( POSITION pos = GetFolderIterator(); pos; )
 	{
 		GetNextFolder( pos )->Maintain( TRUE );
 	}
@@ -796,7 +796,7 @@ void CLibraryFolders::Maintain()
 	// Update desktop.ini's only
 	if ( ! Settings.Library.UseWindowsLibrary || theApp.m_nWinVer < WIN_7 )
 	{
-		for ( POSITION pos = GetFolderIterator() ; pos ; )
+		for ( POSITION pos = GetFolderIterator(); pos; )
 		{
 			GetNextFolder( pos )->Maintain( TRUE );
 		}
@@ -808,7 +808,7 @@ void CLibraryFolders::Maintain()
 	if ( theApp.m_nWinVer >= WIN_7 && Settings.Library.UseWindowsLibrary )
 		pIShellLib.CoCreateInstance( CLSID_ShellLibrary );
 
-	for ( POSITION pos = GetFolderIterator() ; pos ; )
+	for ( POSITION pos = GetFolderIterator(); pos; )
 	{
 		CLibraryFolder* pFolder = GetNextFolder( pos );
 
@@ -884,7 +884,7 @@ STDMETHODIMP CLibraryFolders::XLibraryFolders::get_Item(VARIANT vIndex, ILibrary
 		if ( va.lVal < 0 || va.lVal >= pThis->GetFolderCount() )
 			return E_INVALIDARG;
 
-		for ( POSITION pos = pThis->GetFolderIterator() ; pos ; )
+		for ( POSITION pos = pThis->GetFolderIterator(); pos; )
 		{
 			pFolder = pThis->GetNextFolder( pos );
 			if ( va.lVal-- == 0 ) break;

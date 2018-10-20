@@ -3,7 +3,7 @@
 
 <!-- Envy Default Spanish Skin File -->
 
-<!-- Translation based on default en.xml r21 -->
+<!-- Translation based on default en.xml r22 -->
 <!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -15,7 +15,7 @@
 <manifest
 	name="Español"
 	author="ramdomcrazy"
-	updatedBy="Biasoli"
+	updatedby="Biasoli"
 	description="Envy Default Spanish Skin File"
 	link="http://getenvy.com"
 	email="ramdomcrazy(at)users.sourceforge.net"
@@ -3308,8 +3308,9 @@
 	<string id="20807" text="Rechazando subida de &quot;%s&quot; a %s (%s), demasiadas conexiones del host al mismo tiempo."/>
 	<string id="20808" text="Rechazando subida de &quot;%s&quot; a %s (%s), ocupado o el cliente no soporta colas."/>
 	<string id="20809" text="Rechazando subida de &quot;%s&quot; a %s (%s), todas las colas llenas."/>
-	<string id="20810" text="Host de subida %s solicitó un rango de contenido no obtenido &quot;%s&quot;."/>
-	<string id="20811" text="Subidas eDonkey no deberían ser canceladas. ¿Estas seguro que deseas cancelar esta subida?"/>
+	<string id="20810" text="Rechazando subida de &quot;%s&quot; a %s (%s), la Biblioteca está ocupada."/>
+	<string id="20811" text="Host de subida %s solicitó un rango de contenido no obtenido &quot;%s&quot;."/>
+	<string id="20861" text="Subidas eDonkey no deberían ser canceladas. ¿Estas seguro que deseas cancelar esta subida?"/>
 	<string id="20812" text="No se pudo abrir &quot;%s&quot; para subir a host %s, disco/error de archivo."/>
 	<string id="20813" text="Iniciando conexión push con %s. %s"/>
 	<string id="20814" text="No fue posible conectar con %s en push."/>
@@ -3356,14 +3357,14 @@
 	<string id="20858" text="Timed out esperando la petición de la fuente de subida %s."/>
 	<string id="20859" text="Cerrando conexión de subida %s por la carencia de trafico."/>
 	<string id="20860" text="Subiendo información tiger-tree para &quot;%s&quot; a %s."/>
-	<string id="20861" text="Eliminado subida de &quot;%s&quot; a %s."/>
-	<string id="20862" text="Agregar"/>
-	<string id="20864" text="&amp;Explorar"/>
-	<string id="20865" text="&amp;Conectar"/>
-	<string id="20866" text="Nombre de archivo:"/>
-	<string id="20867" text="Host:"/>
-	<string id="20868" text="Puerto:"/>
-	<!--string id="20869" text="La ventana de URL no pudo ser mostrada, Envy está ocupado."-->
+	<string id="20862" text="Eliminado subida de &quot;%s&quot; a %s."/>
+	<string id="20864" text="Agregar"/>
+	<string id="20865" text="&amp;Explorar"/>
+	<string id="20866" text="&amp;Conectar"/>
+	<string id="20867" text="Nombre de archivo:"/>
+	<string id="20868" text="Host:"/>
+	<string id="20869" text="Puerto:"/>
+	<!--string id="20876" text="La ventana de URL no pudo ser mostrada, Envy está ocupado."-->
 	<string id="20870" text="Envy no entendió el URL."/>
 	<string id="20871" text="URL &quot;%s&quot; recibida"/>
 	<string id="20872" text="Tipo:"/>

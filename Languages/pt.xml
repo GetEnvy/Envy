@@ -3,7 +3,7 @@
 
 <!-- Envy Default Brazilian Portuguese Skin File -->
 
-<!-- Translation based on default en.xml r21 -->
+<!-- Translation based on default en.xml r22 -->
 <!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -15,7 +15,7 @@
 <manifest
 	name="Português Brasileiro"
 	author="Lukas Taves"
-	updatedBy="Felipe"
+	updatedby="Felipe"
 	description="Arquivo de Skin Padrão para o Português Brasileiro do Envy"
 	link="http://getenvy.com"
 	email="Contact(at)GetEnvy.com"
@@ -3374,8 +3374,9 @@
 	<string id="20807" text="Recusando upload de &quot;%s&quot; para %s (%s), muitos concorrentes do host."/>
 	<string id="20808" text="Recusando upload de &quot;%s&quot; para %s (%s), está ocupado e o cliente não suporta filas."/>
 	<string id="20809" text="Recusando upload de &quot;%s&quot; para %s (%s), todas as filas estão cheias."/>
-	<string id="20810" text="O host de upload %s requisitou um intervalo de arquivo que não satisfaz &quot;%s&quot;."/>
-	<string id="20811" text="Uploads do eDonkey não devem ser cancelados. Você tem certeza que você quer cancelar este upload?"/>
+	<string id="20810" text="Recusando upload de &quot;%s&quot; para %s (%s), a Biblioteca está ocupada."/>
+	<string id="20811" text="O host de upload %s requisitou um intervalo de arquivo que não satisfaz &quot;%s&quot;."/>
+	<string id="20861" text="Uploads do eDonkey não devem ser cancelados. Você tem certeza que você quer cancelar este upload?"/>
 	<string id="20812" text="Não pôde abrir &quot;%s&quot; para fazer upload para o host %s, erro de disco/arquivo."/>
 	<string id="20813" text="Inicializando conexão de push com %s. %s"/>
 	<string id="20814" text="Incapaz de conectar com o host %s para o push."/>
@@ -3422,14 +3423,14 @@
 	<string id="20858" text="O tempo limite de espera de pedido para conexão de upload com %s foi ultrapassado."/>
 	<string id="20859" text="Fechando a conexão de upload %s devido a falta de tráfego."/>
 	<string id="20860" text="Enviando a data do TigerTree para &quot;%s&quot; para %s."/>
-	<string id="20861" text="Removido o upload de &quot;%s&quot; para %s."/>
-	<string id="20862" text="Adicionar"/>
-	<string id="20864" text="&amp;Navegar"/>
-	<string id="20865" text="&amp;Conectar"/>
-	<string id="20866" text="Arquivo:"/>
-	<string id="20867" text="Host:"/>
-	<string id="20868" text="Porta:"/>
-	<!--string id="20869" text="Incapaz de exibir diálogo de ação da URL porque o Envy está ocupado."-->
+	<string id="20862" text="Removido o upload de &quot;%s&quot; para %s."/>
+	<string id="20864" text="Adicionar"/>
+	<string id="20865" text="&amp;Navegar"/>
+	<string id="20866" text="&amp;Conectar"/>
+	<string id="20867" text="Arquivo:"/>
+	<string id="20868" text="Host:"/>
+	<string id="20869" text="Porta:"/>
+	<!--string id="20876" text="Incapaz de exibir diálogo de ação da URL porque o Envy está ocupado."-->
 	<string id="20870" text="Impossível analisar URL: Envy não entende esta URL."/>
 	<string id="20871" text="Recebida URL &quot;%s&quot;"/>
 	<string id="20872" text="Tipo:"/>
@@ -3922,7 +3923,7 @@
 	<dialog name="CWizardConnectionPage" cookie="StStCoStStCoStCoStCoStEdBuStms" caption="Bem-Vindo ao Envy &#160;(2/8)">
 		<control text="Para ótima performance, Envy precisa saber um pouco sobre sua conexão com a Internet."/>
 		<control text="Escolha o tipo da sua conexão com a Internet:"/>
-		<control text="| Modem Dial up| ISDN 128K| DSL 768K| DSL 1.5| Cabo 3| DSL 4| DSL2 8| FIOS 10| DSL2 12| FIOS 15| FIOS 20| FIOS 25| FIOS 30| FIOS 50| T1| T3| LAN| OC3"/>
+		<control text="|Modem Dial up|ISDN 128K|DSL 768K|DSL 1.5|Cabo 3|DSL 4|DSL2 8|FIOS 10|DSL2 12|FIOS 15|FIOS 20|FIOS 25|FIOS 30|FIOS 50|100|200|300|400|Gigabit|T1|T3|LAN|OC3"/>
 		<control text="Teste no Speedtest.net"/>
 		<control text="Ou escolha a velocidade do download:"/>
 		<control/>

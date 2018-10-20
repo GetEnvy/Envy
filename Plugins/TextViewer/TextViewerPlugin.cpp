@@ -308,7 +308,7 @@ BOOL CTextViewerPlugin::OpenNewWindow(LPCTSTR pszFilePath)
 	// First, check through the linked list of CTextWindow windows, to see if the file is already open.
 
 	CTextWindow* pWindow;
-	for ( pWindow = m_pWindow ; pWindow ; pWindow = pWindow->m_pNext )
+	for ( pWindow = m_pWindow; pWindow; pWindow = pWindow->m_pNext )
 	{
 		if ( lstrcmpi( pWindow->m_pszFile, pszFilePath ) == 0 )
 			break;	// Got a match, break out of the loop.
@@ -347,7 +347,7 @@ void CTextViewerPlugin::RemoveWindow(CTextWindow* pWindow)
 
 	// Search through the linked list of CTextWindow objects, and remove the one being closed.
 
-	for ( CTextWindow* pSeek = *ppPrev ; pSeek ; pSeek = pSeek->m_pNext )
+	for ( CTextWindow* pSeek = *ppPrev; pSeek; pSeek = pSeek->m_pNext )
 	{
 		if ( pWindow == pSeek )
 		{

@@ -1,8 +1,8 @@
 //
 // TorrentBuilder.cpp
 //
-// This file is part of Torrent Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2014 and Shareaza 2007
+// This file is part of Torrent Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2007 and PeerProject 2008-2014
 //
 // Envy is free software; you can redistribute it
 // modify it under the terms of the GNU General Public License
@@ -10,8 +10,8 @@
 // either version 3 of the License, or later version (at your option).
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU General Public License for more details.
 // (http://www.gnu.org/licenses/gpl.html)
 //
@@ -208,7 +208,7 @@ void CTorrentBuilder::Stop()
 	m_bAbort = TRUE;
 
 	int nAttempt = 5;
-	for ( nAttempt ; nAttempt > 0 ; nAttempt-- )
+	for ( nAttempt; nAttempt > 0; nAttempt-- )
 	{
 		DWORD nCode = 0;
 		if ( ! GetExitCodeThread( m_hThread, &nCode ) || nCode != STILL_ACTIVE ) break;
@@ -346,7 +346,7 @@ BOOL CTorrentBuilder::ScanFiles()
 	m_pFileSize = new QWORD[ m_pFiles.GetCount() ];
 	int nFile = 0;
 
-	for ( POSITION pos = m_pFiles.GetHeadPosition() ; pos && ! m_bAbort ; nFile++ )
+	for ( POSITION pos = m_pFiles.GetHeadPosition(); pos && ! m_bAbort; nFile++ )
 	{
 		CString strFile = m_pFiles.GetNext( pos );
 		if ( strFile.GetLength() > MAX_PATH )
@@ -451,7 +451,7 @@ BOOL CTorrentBuilder::ProcessFiles()
 
 	int nFile = 0;
 
-	for ( POSITION pos = m_pFiles.GetHeadPosition() ; pos && ! m_bAbort ; nFile++ )
+	for ( POSITION pos = m_pFiles.GetHeadPosition(); pos && ! m_bAbort; nFile++ )
 	{
 		CString strFile = m_pFiles.GetNext( pos );
 
@@ -638,7 +638,7 @@ BOOL CTorrentBuilder::WriteOutput()
 
 			CBENode* pList = pAnnounceList->Add( pBuffer, 1 );
 			{
-				for ( POSITION pos = m_pTrackers.GetHeadPosition() ; pos ; )
+				for ( POSITION pos = m_pTrackers.GetHeadPosition(); pos; )
 				{
 					pList->Add( pBuffer, 2 )->SetString( m_pFiles.GetNext( pos ) );
 				}
@@ -718,7 +718,7 @@ BOOL CTorrentBuilder::WriteOutput()
 				pInfo->Add( "sha1" )->SetString( &pFileSHA1, sizeof CSHA::Digest );
 
 				CAutoVectorPtr< CSHA::Digest > pPieceSHA1( new CSHA::Digest[ m_nPieceCount ] );
-				for ( DWORD i = 0 ; i < m_nPieceCount; ++i )
+				for ( DWORD i = 0; i < m_nPieceCount; ++i )
 					m_pPieceSHA1[ i ].GetHash( (uchar*)&pPieceSHA1[ i ][ 0 ] );
 				pInfo->Add( "pieces" )->SetString( pPieceSHA1, m_nPieceCount * sizeof CSHA::Digest );
 			}
@@ -738,7 +738,7 @@ BOOL CTorrentBuilder::WriteOutput()
 				int nCommonPath = 32000;
 				int nFile = 0;
 				POSITION pos = m_pFiles.GetHeadPosition();
-				for ( ; pos ; nFile++ )
+				for ( ; pos; nFile++ )
 				{
 					CString strThis = m_pFiles.GetNext( pos );
 
@@ -747,7 +747,7 @@ BOOL CTorrentBuilder::WriteOutput()
 					LPCTSTR pszFirst = strFirst;
 					LPCTSTR pszThis  = strThis;
 
-					for ( int nPos = 0, nSlash = 0 ; nPos < nCommonPath ; nPos++ )
+					for ( int nPos = 0, nSlash = 0; nPos < nCommonPath; nPos++ )
 					{
 						if ( pszThis[nPos] != pszFirst[nPos] ||
 							 pszThis[nPos] == 0 || pszFirst[nPos] == 0 )
@@ -763,7 +763,7 @@ BOOL CTorrentBuilder::WriteOutput()
 				}
 				nCommonPath ++;
 				pos = m_pFiles.GetHeadPosition();
-				for ( nFile = 0 ; pos ; nFile++ )
+				for ( nFile = 0; pos; nFile++ )
 				{
 					CString strFile = m_pFiles.GetNext( pos );
 					strFile = strFile.Mid( nCommonPath );

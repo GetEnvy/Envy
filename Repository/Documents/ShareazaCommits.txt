@@ -20,10 +20,10 @@ svn+ssh://svn.code.sf.net/p/shareaza/code/trunk shareaza-code
 9698	.	.f	Bumped version 2.7.10.3
 9697	.	.f	Tagged 2.7.10.2
 9696	.	.f	Bumped version 2.7.10.2
-9694		f	Fixed alpha channel of images (addition to r9693)
-9693		f	Added GDI+ loading of common image types
-9692		f	Removed extra header "ImageServices.h"
-9691		f	Fixed crash during skin reload (when compiled by VS 2017)
+9694		6f	Fixed alpha channel of images (addition to r9693)
+9693		3f	Added GDI+ loading of common image types
+9692	r22	18f	Removed extra header "ImageServices.h"
+9691	./	8f	Fixed crash during skin reload (when compiled by VS 2017)
 9690	.	f	Bumped version 2.7.10.0
 9689		1f	Updated clean script
 9688		1f	Described compilation scripts  (Readme)
@@ -31,11 +31,11 @@ svn+ssh://svn.code.sf.net/p/shareaza/code/trunk shareaza-code
 9686		1f	Removed disabled warnings (use IDE's Error window filter instead please)
 9685	.	1f	Updated Microsoft Visual C++ 2017 Redistributable urls
 9684		~f	Cleaned-up a project files from an outdated options.  Windows XP compatibility options were moved out to separate props-file and only build scripts will use it.
-9683		12f	Removed Free Threaded Marshaler due a strange VS2017 crash inside it  (Plugins)
+9683	r22	12f	Removed Free Threaded Marshaler due a strange VS2017 crash inside it  (Plugins)
 9682	.	2f	Updated SQLite up to 3.20.1
-9681		16f	Fixed C4840 (VS2017) warning  (LPCSTR)
-9680		~f	Fixed C4840 (VS2017) warning  (LPCTSTR)
-9679		1f	Fixed warning C4133
+9681	r22/	16f	Fixed C4840 (VS2017) warning  (LPCSTR)
+9680	r22/	~f	Fixed C4840 (VS2017) warning  (LPCTSTR)
+9679		1f	Fixed warning C4133 (MiniUPnPc)
 9678	.	1f	Fixed C4840 (VS2017) warning
 9677		1f	Updated services list
 9676		12f	Updated MiniUPnPc library to 2.0.20170509
@@ -43,19 +43,19 @@ svn+ssh://svn.code.sf.net/p/shareaza/code/trunk shareaza-code
 9674	.	1f	Updated GeoIP database (08 Jun 2017)
 9673		~f	Added support for Visual Studio 2017 (v141)
 9672		3f	Updated BugTrapSort project options
-9671		6f	Added BitTorrent Local Service Discovery (receive only)		http://shareaza.sourceforge.net/phpbb/viewtopic.php?f=13&t=254
+9671	r22	6f	Added BitTorrent Local Service Discovery (receive only)		http://shareaza.sourceforge.net/phpbb/viewtopic.php?f=13&t=254
 (2017.2) (Envy 1)
-9670		2f	Updated Chinese (Traditional)
-9669		3f	Added Connection.MulticastLoop option (Debugging)
+9670	/r22~	2f	Updated Chinese (Traditional)
+9669	r22	3f	Added Connection.MulticastLoop option (Debugging)
 9668	r21	1f	Optimized HTTP backwards uploads
 9667	.	1f	Updated SkinTranslate.exe utility to be more strict
-9666		1f	Addition to r9665
-9665		9f	Added some support for multi-cast packets, Added new options (Connection)
-9664		8f	Improved existing file search for torrents
-9663		3f	Added alone ED2K-hashset sharing over DIME
-9662		13f	Added more "const"s, text formatting
-9661		1f	Unified CLibraryFile::GetTigerTree() and CLibraryFile::GetED2K() code
-9660		6f	Improved services discovery
+9666	r22	1f	Addition to r9665
+9665	r22	9f	Added some support for multi-cast packets, Added new options (Connection)
+9664	r22	8f	Improved existing file search for torrents  (CStringIList)
+9663	r22	3f	Added alone ED2K-hashset sharing over DIME
+9662	r22	13f	Added more "const"s, text formatting
+9661	r22	1f	Unified CLibraryFile::GetTigerTree() and CLibraryFile::GetED2K() code
+9660	r22	6f	Improved services discovery
 9659	.	14f	Fixed warnings
 9658	.	1f	Updated Zlib project options
 9657	.	1f	Updated GeoIP database

@@ -1,8 +1,8 @@
 //
 // CtrlMediaList.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2007
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -190,7 +190,7 @@ int CMediaListCtrl::RecursiveEnqueue(LPCTSTR pszPath)
 
 void CMediaListCtrl::Remove(LPCTSTR pszFile)
 {
-	for ( int nItem = GetItemCount() - 1 ; nItem >= 0 ; nItem-- )
+	for ( int nItem = GetItemCount() - 1; nItem >= 0; nItem-- )
 	{
 		if ( GetItemText( nItem, 1 ).CompareNoCase( pszFile ) == 0 )
 			Remove( nItem );
@@ -233,7 +233,7 @@ BOOL CMediaListCtrl::SaveTextList(LPCTSTR pszFile)
 	strPath = strPath.Left( strPath.ReverseFind( L'\\' ) + 1 );
 
 	CString strFile;
-	for ( int nItem = 0 ; nItem < GetItemCount() ; nItem++ )
+	for ( int nItem = 0; nItem < GetItemCount(); nItem++ )
 	{
 		CString strItem = GetItemText( nItem, 1 );
 
@@ -310,7 +310,7 @@ void CMediaListCtrl::Clear()
 
 int CMediaListCtrl::GetCurrent()
 {
-	for ( int nItem = GetItemCount() - 1 ; nItem >= 0 ; nItem-- )
+	for ( int nItem = GetItemCount() - 1; nItem >= 0; nItem-- )
 	{
 		if ( GetItemState( nItem, STATE_CURRENT ) ) return nItem;
 	}
@@ -320,7 +320,7 @@ int CMediaListCtrl::GetCurrent()
 
 void CMediaListCtrl::SetCurrent(int nCurrent)
 {
-	for ( int nItem = GetItemCount() - 1 ; nItem >= 0 ; nItem-- )
+	for ( int nItem = GetItemCount() - 1; nItem >= 0; nItem-- )
 	{
 		if ( GetItemState( nItem, STATE_CURRENT ) )
 		{
@@ -349,7 +349,7 @@ int CMediaListCtrl::GetNext(BOOL bSet)
 	{
 		int nCount = 0;
 
-		for ( nItem = GetItemCount() - 1 ; nItem >= 0 ; nItem-- )
+		for ( nItem = GetItemCount() - 1; nItem >= 0; nItem-- )
 		{
 			if ( GetItemState( nItem, STATE_PLAYED ) == 0 ) nCount++;
 		}
@@ -358,7 +358,7 @@ int CMediaListCtrl::GetNext(BOOL bSet)
 		{
 			nCount = GetRandomNum( 0, nCount - 1 );
 
-			for ( nItem = GetItemCount() - 1 ; nItem >= 0 ; nItem-- )
+			for ( nItem = GetItemCount() - 1; nItem >= 0; nItem-- )
 			{
 				if ( GetItemState( nItem, STATE_PLAYED ) == 0 )
 				{
@@ -380,7 +380,7 @@ int CMediaListCtrl::GetNext(BOOL bSet)
 
 void CMediaListCtrl::Reset(BOOL bNext)
 {
-	for ( int nItem = GetItemCount() - 1 ; nItem >= 0 ; nItem-- )
+	for ( int nItem = GetItemCount() - 1; nItem >= 0; nItem-- )
 		SetItemState( nItem, 0, STATE_PLAYED );
 	if ( bNext ) SetCurrent( -1 );
 }
@@ -600,7 +600,7 @@ void CMediaListCtrl::OnLButtonUp(UINT nFlags, CPoint point)
 		if ( m_nDragDrop > nItem ) m_nDragDrop--;
 	}
 
-	for ( int nItem = 0 ; nItem < pPaths.GetSize() ; nItem++ )
+	for ( int nItem = 0; nItem < pPaths.GetSize(); nItem++ )
 	{
 		int nIndex = Add( pPaths.GetAt( nItem ), m_nDragDrop++ );
 		SetItemState( nIndex, pStates.GetAt( nItem ), 0xFFFFFFFF );
@@ -615,7 +615,7 @@ BOOL CMediaListCtrl::AreSelectedFilesInLibrary()
 	if ( GetSelectedCount() )
 	{
 		// If at least one selected file is in the library then enable
-		for ( int nItem = -1 ; ( nItem = GetNextItem( nItem, LVIS_SELECTED ) ) >= 0 ; )
+		for ( int nItem = -1; ( nItem = GetNextItem( nItem, LVIS_SELECTED ) ) >= 0; )
 		{
 			CString strPath = GetPath( nItem );
 
@@ -631,7 +631,7 @@ void CMediaListCtrl::ShowFilePropertiesDlg( int nPage )
 {
 	CFilePropertiesSheet dlg;
 
-	for ( int nItem = -1 ; ( nItem = GetNextItem( nItem, LVIS_SELECTED ) ) >= 0 ; )
+	for ( int nItem = -1; ( nItem = GetNextItem( nItem, LVIS_SELECTED ) ) >= 0; )
 	{
 		CString strPath = GetPath( nItem );
 
@@ -704,7 +704,7 @@ void CMediaListCtrl::OnMediaAdd()
 
 	if ( *pszFile )
 	{
-		for ( strFolder += '\\' ; *pszFile ; )
+		for ( strFolder += '\\'; *pszFile; )
 		{
 			Enqueue( strFolder + pszFile, FALSE );
 			pszFile += _tcslen( pszFile ) + 1;
@@ -741,7 +741,7 @@ void CMediaListCtrl::OnUpdateMediaRemove(CCmdUI* pCmdUI)
 
 void CMediaListCtrl::OnMediaRemove()
 {
-	for ( int nItem = GetItemCount() - 1 ; nItem >= 0 ; nItem-- )
+	for ( int nItem = GetItemCount() - 1; nItem >= 0; nItem-- )
 	{
 		if ( GetItemState( nItem, LVIS_SELECTED ) )
 			Remove( nItem );
@@ -837,7 +837,7 @@ void CMediaListCtrl::OnMediaCollection()
 	CAutoPtr< CAlbumFolder > pCollection( new CAlbumFolder( NULL, NULL, L"", TRUE ) );
 	if ( pCollection )
 	{
-		for ( int nItem = GetItemCount() - 1 ; nItem >= 0 ; nItem-- )
+		for ( int nItem = GetItemCount() - 1; nItem >= 0; nItem-- )
 		{
 			CString strPath = GetPath( nItem );
 

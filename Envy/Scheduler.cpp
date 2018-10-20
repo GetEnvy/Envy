@@ -1,8 +1,8 @@
 //
 // Scheduler.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2010
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2010 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -142,7 +142,7 @@ void CScheduler::Serialize(CArchive& ar)
 
 		ar.WriteCount( GetCount() );		// Write the number of scheduled tasks
 
-		for ( POSITION pos = GetIterator() ; pos ; )
+		for ( POSITION pos = GetIterator(); pos; )
 		{
 			CScheduleTask *pSchTask = GetNext( pos );		// Get a pointer to each task
 			pSchTask->Serialize( ar, nVersion );			// Store each task's data
@@ -154,7 +154,7 @@ void CScheduler::Serialize(CArchive& ar)
 
 		ar >> nVersion;
 
-		for ( int nNumTasks = ar.ReadCount() ; nNumTasks > 0 ; nNumTasks-- )	// Read the number of tasks to load
+		for ( int nNumTasks = ar.ReadCount(); nNumTasks > 0; nNumTasks-- )	// Read the number of tasks to load
 		{
 			CScheduleTask *pSchTask = new CScheduleTask();	// Create a new instance of each task
 			pSchTask->Serialize( ar, nVersion );			// Read each task's data
@@ -310,7 +310,7 @@ CXMLElement* CScheduleTask::ToXML()
 	return pXML;
 }
 
-BOOL CScheduleTask::FromXML(CXMLElement* pXML)
+BOOL CScheduleTask::FromXML(const CXMLElement* pXML)
 {
 	BOOL bLegacy = FALSE;
 	CString strValue = pXML->GetAttributeValue( L"action" );
@@ -428,7 +428,7 @@ CScheduleTask* CScheduler::GetGUID(const GUID& pGUID) const
 {
 	CQuickLock oLock( m_pSection );
 
-	for ( POSITION pos = m_pScheduleTasks.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pScheduleTasks.GetHeadPosition(); pos; )
 	{
 		CScheduleTask* pSchTask = m_pScheduleTasks.GetNext( pos );
 		if ( pSchTask->m_pGUID == pGUID )
@@ -472,7 +472,7 @@ void CScheduler::Clear()
 {
 	CQuickLock oLock( m_pSection );
 
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		delete GetNext( pos );
 	}
@@ -495,7 +495,7 @@ void CScheduler::CheckSchedule()
 	//theApp.Message( MSG_DEBUG, L"Calculated time to disconnect is %i hours.", nHoursToDisconnect );
 
 	CQuickLock oLock(m_pSection);
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		CScheduleTask *pSchTask = GetNext( pos );
 
@@ -690,7 +690,7 @@ void CScheduler::HangUpConnection()
 		return; 		// Error unknown
 	}
 
-	for ( DWORD i = 0, loop = 0 ; i < dwConnections ; i++ )			// Loop through all current connections
+	for ( DWORD i = 0, loop = 0; i < dwConnections; i++ )			// Loop through all current connections
 	{
 		RasHangUp( lpRasConn[i].hrasconn );							// Hang up the connection
 		while ( RasGetConnectStatus( lpRasConn[i].hrasconn, RasConStatus ) || loop > 10 )
@@ -756,7 +756,7 @@ bool CScheduler::SetShutdownRights()
 
 bool CScheduler::IsScheduledTimePassed(CScheduleTask* pSchTask) const
 {
-	CTime tNow = CTime::GetCurrentTime();
+	const CTime tNow = CTime::GetCurrentTime();
 
 	if ( tNow.GetHour() < pSchTask->m_tScheduleDateTime.GetHour() )
 		return false;
@@ -781,7 +781,7 @@ bool CScheduler::IsScheduledTimePassed(CScheduleTask* pSchTask) const
 
 int CScheduler::ScheduleFromToday(CScheduleTask* pSchTask) const
 {
-	CTime tNow = CTime::GetCurrentTime();
+	const CTime tNow = CTime::GetCurrentTime();
 
 	// Task should be executed: today 0, in the past -1, or later 1.
 
@@ -813,7 +813,7 @@ LONGLONG CScheduler::GetHoursTo(unsigned int nTaskCombination)
 {
 	int nHoursToTasks = 0xFFFF;
 	POSITION pos = GetIterator();
-	CTime tNow = CTime::GetCurrentTime();
+	const CTime tNow = CTime::GetCurrentTime();
 
 	CQuickLock oLock( m_pSection );
 
@@ -825,7 +825,7 @@ LONGLONG CScheduler::GetHoursTo(unsigned int nTaskCombination)
 			CTimeSpan tToTasks( 1, 0, 0, 0 );
 			if ( pSchTask->m_bSpecificDays )
 			{
-				for ( int i = -1 ; i < 6 ; ++i )
+				for ( int i = -1; i < 6; ++i )
 				{
 					if ( ( ( 1 << ( ( tNow.GetDayOfWeek() + i ) % 7 ) ) & pSchTask->m_nDays ) && ( i != -1 || ! pSchTask->m_bExecuted ) )
 					{
@@ -859,7 +859,7 @@ CXMLElement* CScheduler::ToXML(BOOL bTasks)
 
 	if ( bTasks )
 	{
-		for ( POSITION pos = GetIterator() ; pos ; )
+		for ( POSITION pos = GetIterator(); pos; )
 		{
 			pXML->AddElement( GetNext( pos )->ToXML() );
 		}
@@ -875,7 +875,7 @@ BOOL CScheduler::FromXML(CXMLElement* pXML)
 
 	int nCount = 0;
 
-	for ( POSITION pos = pXML->GetElementIterator() ; pos ; )
+	for ( POSITION pos = pXML->GetElementIterator(); pos; )
 	{
 		CXMLElement* pElement = pXML->GetNextElement( pos );
 

@@ -1,8 +1,8 @@
 //
 // Packet.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2007
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -175,7 +175,7 @@ CString CPacket::ReadString(UINT cp, DWORD nMaximum)
 
 	// Loop for each byte in the packet at and beyond our position in it, searching for a null terminator
 	DWORD nLength = 0;				// When this loop is done, nLength will be the number of ANSI bytes we moved over before finding the null terminator
-	for ( ; nLength < nMaximum ; nLength++ )
+	for ( ; nLength < nMaximum; nLength++ )
 	{
 		// Move the position pointer in this CPacket object to the next byte
 		m_nPosition++;
@@ -357,7 +357,7 @@ CString CPacket::ToHex() const
 	LPTSTR pszDump = strDump.GetBuffer( nLength * 3 + 4 );	// Each byte will become 3 characters
 
 	// Loop i down each byte in the packet
-	for ( DWORD i = 0 ; i < nLength ; i++ )
+	for ( DWORD i = 0; i < nLength; i++ )
 	{
 		// Copy the byte at i into an integer called nChar
 		int nChar = m_pBuffer[i];
@@ -395,7 +395,7 @@ CString CPacket::ToASCII() const
 	LPTSTR pszDump = strDump.GetBuffer( nLength + 4 );		// Write a character for each byte, and 1 more for the null terminator
 
 	// Loop i down each byte in the packet
-	for ( DWORD i = 0 ; i < nLength ; i++ )
+	for ( DWORD i = 0; i < nLength; i++ )
 	{
 		// Copy the byte at i into an integer called nChar
 		int nChar = m_pBuffer[i];
@@ -514,7 +514,7 @@ void CPacketPool::Clear()
 	// Loop from the end of the pointer array back to the start
 	// GetSize returns the number of pointers in the array, start nIndex on the last one
 	// Iterate back one index in the pointer array, including 0, stop when it's -1
-	for ( INT_PTR nIndex = m_pPools.GetSize() - 1 ; nIndex >= 0 ; nIndex-- )
+	for ( INT_PTR nIndex = m_pPools.GetSize() - 1; nIndex >= 0; nIndex-- )
 	{
 		// Point pPool at the packet pool at that position in the array
 		CPacket* pPool = m_pPools.GetAt( nIndex );

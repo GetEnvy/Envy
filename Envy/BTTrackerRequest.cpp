@@ -2,7 +2,7 @@
 // BTTrackerRequest.cpp
 //
 // This file is part of Envy (getenvy.com) © 2016-2018
-// Portions copyright PeerProject 2008-2016 and Shareaza 2002-2008
+// Portions copyright Shareaza 2002-2008 and PeerProject 2008-2016
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -278,7 +278,7 @@ CBTTrackerRequest::CBTTrackerRequest(CDownload* pDownload, BTTrackerEvent nEvent
 	if ( Settings.BitTorrent.PeerID.GetLength() >= 6 )
 	{
 		// Emulate uTorrent 1.6.1.0
-		for ( int i = 0 ; i < 6 ; ++i )
+		for ( int i = 0; i < 6; ++i )
 			m_pPeerID[ i + 1 ] = (BYTE)Settings.BitTorrent.PeerID.GetAt( i );
 	}
 
@@ -394,7 +394,7 @@ CString CBTTrackerRequest::Escape(const Hashes::BtHash& oBTH)
 	CString str;
 	LPTSTR psz = str.GetBuffer( Hashes::BtHash::byteCount * 3 + 1 );
 
-	for ( int nByte = 0 ; nByte < Hashes::BtHash::byteCount ; nByte++ )
+	for ( int nByte = 0; nByte < Hashes::BtHash::byteCount; nByte++ )
 	{
 		int nValue = oBTH[ nByte ];
 
@@ -425,7 +425,7 @@ CString CBTTrackerRequest::Escape(const Hashes::BtGuid& oGUID)
 	CString str;
 	LPTSTR psz = str.GetBuffer( Hashes::BtGuid::byteCount * 3 + 1 );
 
-	for ( int nByte = 0 ; nByte < Hashes::BtGuid::byteCount ; nByte++ )
+	for ( int nByte = 0; nByte < Hashes::BtGuid::byteCount; nByte++ )
 	{
 		int nValue = oGUID[ nByte ];
 
@@ -455,9 +455,13 @@ void CBTTrackerRequest::Cancel()
 
 	Exit();
 
-	if ( m_pRequest && m_pRequest->IsThreadAlive() )
+	if (!m_pRequest)
+		return;
+
+	CSingleLock oLock( &Transfers.m_pSection );
+	if (SafeLock( oLock ) && m_pRequest->IsThreadAlive() )
 		m_pRequest->Cancel();
-	//	theApp.Message( MSG_DEBUG, L"[BT] Canceled tracker request for %s", m_sName );
+	//theApp.Message( MSG_DEBUG, L"[BT] Canceled tracker request for %s", (LPCTSTR)m_sName );
 }
 
 /////////////////////////////////////////////////////////////////////////////
@@ -469,7 +473,7 @@ void CBTTrackerRequest::OnRun()
 	if ( m_sURL.GetLength() < 14 )		// Need to verify m_sURL: Prior crash in CHttpRequest::OnRun()
 	{
 	//	ProcessUDP();	// No URL assume UDP?
-		theApp.Message( MSG_DEBUG, L"[BT] BitTorrent %s for \"%s\" is not supported: %s", szEventInfo[ m_nEvent ], m_sName, m_sAddress );
+		theApp.Message( MSG_DEBUG, L"[BT] BitTorrent %s for \"%s\" is not supported: %s", szEventInfo[ m_nEvent ], (LPCTSTR)m_sName, (LPCTSTR)m_sAddress );
 #ifdef _DEBUG	// Assert Workaround
 		if ( m_dwRef == 1 ) m_dwRef = 0;
 #endif
@@ -483,7 +487,7 @@ void CBTTrackerRequest::OnRun()
 	// BTE_TRACKER_STOPPED
 	// BTE_TRACKER_SCRAPE
 
-	theApp.Message( MSG_DEBUG | MSG_FACILITY_OUTGOING, L"[BT] Sending BitTorrent %s for \"%s\": %s", szEventInfo[ m_nEvent ], m_sName, m_sAddress );
+	theApp.Message( MSG_DEBUG | MSG_FACILITY_OUTGOING, L"[BT] Sending BitTorrent %s for \"%s\": %s", szEventInfo[ m_nEvent ], (LPCTSTR)m_sName, (LPCTSTR)m_sAddress );
 
 	if ( m_bHTTP )
 		ProcessHTTP();
@@ -495,7 +499,7 @@ void CBTTrackerRequest::OnRun()
 
 void CBTTrackerRequest::OnTrackerEvent(bool bSuccess, LPCTSTR pszReason, LPCTSTR pszTip)
 {
-	theApp.Message( ( bSuccess ? MSG_INFO : MSG_ERROR ), L"%s \"%s\": %s", pszReason, m_sName, m_sAddress );
+	theApp.Message( ( bSuccess ? MSG_INFO : MSG_ERROR ), L"%s \"%s\": %s", pszReason, (LPCTSTR)m_sName, (LPCTSTR)m_sAddress );
 
 	if ( ! m_pOnTrackerEvent )
 		return;
@@ -563,7 +567,7 @@ void CBTTrackerRequest::ProcessHTTP()
 	else if ( pRoot && pRoot->IsType( CBENode::beString ) )
 	{
 		CString strError;
-		strError.Format( LoadString( IDS_BT_TRACKER_ERROR ), m_sName, pRoot->GetString() );
+		strError.Format( LoadString( IDS_BT_TRACKER_ERROR ), (LPCTSTR)m_sName, (LPCTSTR)pRoot->GetString() );
 		OnTrackerEvent( false, strError, pRoot->GetString() );
 	}
 	else
@@ -577,13 +581,13 @@ void CBTTrackerRequest::ProcessHTTP()
 
 void CBTTrackerRequest::Process(const CBENode* pRoot)
 {
-	theApp.Message( MSG_DEBUG | MSG_FACILITY_INCOMING, L"[BT] Received BitTorrent tracker response: %s", pRoot->Encode() );
+	theApp.Message( MSG_DEBUG | MSG_FACILITY_INCOMING, L"[BT] Received BitTorrent tracker response: %s", (LPCTSTR)pRoot->Encode() );
 
 	// Check for failure
 	if ( const CBENode* pError = pRoot->GetNode( BT_DICT_FAILURE ) )	// "failure reason"
 	{
 		CString strError;
-		strError.Format( LoadString( IDS_BT_TRACKER_ERROR ), m_sName, pError->GetString() );
+		strError.Format( LoadString( IDS_BT_TRACKER_ERROR ), (LPCTSTR)m_sName, (LPCTSTR)pError->GetString() );
 		OnTrackerEvent( false, strError, pError->GetString() );
 		return;
 	}
@@ -652,7 +656,7 @@ void CBTTrackerRequest::Process(const CBENode* pRoot)
 
 		if ( pPeers && pPeers->IsType( CBENode::beList ) )
 		{
-			for ( int nPeer = 0 ; nPeer < pPeers->GetCount() ; nPeer++ )
+			for ( int nPeer = 0; nPeer < pPeers->GetCount(); nPeer++ )
 			{
 				const CBENode* pPeer = pPeers->GetNode( nPeer );
 				if ( ! pPeer || ! pPeer->IsType( CBENode::beDict ) )
@@ -689,7 +693,7 @@ void CBTTrackerRequest::Process(const CBENode* pRoot)
 			{
 				const BYTE* pPointer = (const BYTE*)pPeers->m_pValue;
 
-				for ( int nPeer = (int)pPeers->m_nValue / 6 ; nPeer > 0 ; nPeer --, pPointer += 6 )
+				for ( int nPeer = (int)pPeers->m_nValue / 6; nPeer > 0; nPeer --, pPointer += 6 )
 				{
 					saPeer.sin_addr = *(const IN_ADDR*)pPointer;
 					saPeer.sin_port = *(const WORD*)( pPointer + 4 );
@@ -700,7 +704,7 @@ void CBTTrackerRequest::Process(const CBENode* pRoot)
 	}
 
 	CString strError;
-	strError.Format( LoadString( IDS_BT_TRACKER_SUCCESS ), m_sName, m_pSources.GetCount() );
+	strError.Format( LoadString( IDS_BT_TRACKER_SUCCESS ), (LPCTSTR)m_sName, (LPCTSTR)m_pSources.GetCount() );
 	OnTrackerEvent( true, strError );
 }
 
@@ -804,7 +808,7 @@ BOOL CBTTrackerRequest::OnAnnounce(CBTTrackerPacket* pPacket)
 	}
 
 	CString strError;
-	strError.Format( LoadString( IDS_BT_TRACKER_SUCCESS ), m_sName, m_pSources.GetCount() );
+	strError.Format( LoadString( IDS_BT_TRACKER_SUCCESS ), (LPCTSTR)m_sName, m_pSources.GetCount() );
 	OnTrackerEvent( true, strError );
 	Cancel();
 
@@ -825,7 +829,7 @@ BOOL CBTTrackerRequest::OnScrape(CBTTrackerPacket* pPacket)
 	}
 
 	CString strError;
-	strError.Format( LoadString( IDS_BT_TRACKER_SUCCESS ), m_sName, 0 );
+	strError.Format( LoadString( IDS_BT_TRACKER_SUCCESS ), (LPCTSTR)m_sName, 0 );
 	OnTrackerEvent( true, strError );
 	Cancel();
 
@@ -837,7 +841,7 @@ BOOL CBTTrackerRequest::OnError(CBTTrackerPacket* pPacket)
 	CString strErrorMsg = pPacket->ReadStringUTF8();
 
 	CString strError;
-	strError.Format( LoadString( IDS_BT_TRACKER_ERROR ), m_sName, strErrorMsg );
+	strError.Format( LoadString( IDS_BT_TRACKER_ERROR ), (LPCTSTR)m_sName, (LPCTSTR)strErrorMsg );
 	OnTrackerEvent( false, strError, strErrorMsg );
 	Cancel();
 

@@ -1,8 +1,8 @@
 //
 // DiscoveryServices.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2017
-// Portions copyright PeerProject 2008-2015 and Shareaza 2002-2008
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2008 and PeerProject 2008-2015
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -97,7 +97,7 @@ DWORD CDiscoveryServices::GetCount(int nType, PROTOCOLID nProtocol) const
 	DWORD nCount = 0;
 	CDiscoveryService* ptr;
 
-	for ( POSITION pos = m_pList.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pList.GetHeadPosition(); pos; )
 	{
 		ptr = m_pList.GetNext( pos );
 		if ( ( nType == CDiscoveryService::dsNull ) || ( ptr->m_nType == nType ) )	// If we're counting all types, or it matches
@@ -187,7 +187,7 @@ BOOL CDiscoveryServices::Add(LPCTSTR pszAddress, int nType, PROTOCOLID nProtocol
 
 	case CDiscoveryService::dsBlocked:
 		pService = new CDiscoveryService( CDiscoveryService::dsBlocked, strAddress );
-		for ( POSITION pos = m_pList.GetHeadPosition() ; pos ; )
+		for ( POSITION pos = m_pList.GetHeadPosition(); pos; )
 		{
 			CDiscoveryService* pItem = m_pList.GetNext( pos );
 
@@ -299,7 +299,7 @@ BOOL CDiscoveryServices::CheckWebCacheValid(LPCTSTR pszAddress)
 		return FALSE;
 
 	// Check it's not blocked
-	for ( POSITION pos = m_pList.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pList.GetHeadPosition(); pos; )
 	{
 		CDiscoveryService* pService = m_pList.GetNext( pos );
 
@@ -361,7 +361,7 @@ CDiscoveryService* CDiscoveryServices::GetByAddress(LPCTSTR pszAddress) const
 {
 	ASSUME_LOCK( Network.m_pSection );
 
-	for ( POSITION pos = m_pList.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pList.GetHeadPosition(); pos; )
 	{
 		CDiscoveryService* pService = m_pList.GetNext( pos );
 
@@ -386,7 +386,7 @@ CDiscoveryService* CDiscoveryServices::GetByAddress(const IN_ADDR* pAddress, WOR
 {
 	ASSUME_LOCK( Network.m_pSection );
 
-	for ( POSITION pos = m_pList.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pList.GetHeadPosition(); pos; )
 	{
 		CDiscoveryService* pService = m_pList.GetNext( pos );
 
@@ -405,7 +405,7 @@ void CDiscoveryServices::Clear()
 
 	Stop();
 
-	for ( POSITION pos = m_pList.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pList.GetHeadPosition(); pos; )
 	{
 		delete m_pList.GetNext( pos );
 	}
@@ -506,7 +506,7 @@ BOOL CDiscoveryServices::Save()
 			pFile.Abort();
 			pException->Delete();
 			DeleteFile( strTemp );
-			theApp.Message( MSG_ERROR, L"Failed to save discovery service list: %s", strTemp );
+			theApp.Message( MSG_ERROR, L"Failed to save discovery service list: %s", (LPCTSTR)strTemp );
 			return FALSE;
 		}
 	}
@@ -515,7 +515,7 @@ BOOL CDiscoveryServices::Save()
 		pFile.Abort();
 		pException->Delete();
 		DeleteFile( strTemp );
-		theApp.Message( MSG_ERROR, L"Failed to save discovery service list: %s", strTemp );
+		theApp.Message( MSG_ERROR, L"Failed to save discovery service list: %s", (LPCTSTR)strTemp );
 		return FALSE;
 	}
 
@@ -524,7 +524,7 @@ BOOL CDiscoveryServices::Save()
 	if ( ! MoveFileEx( strTemp, strFile, MOVEFILE_COPY_ALLOWED | MOVEFILE_REPLACE_EXISTING ) )
 	{
 		DeleteFile( strTemp );
-		theApp.Message( MSG_ERROR, L"Failed to save discovery service list: %s", strFile );
+		theApp.Message( MSG_ERROR, L"Failed to save discovery service list: %s", (LPCTSTR)strFile );
 		return FALSE;
 	}
 
@@ -557,7 +557,7 @@ void CDiscoveryServices::Serialize(CArchive& ar)
 
 		ar.WriteCount( GetCount() );
 
-		for ( POSITION pos = m_pList.GetHeadPosition() ; pos ; )
+		for ( POSITION pos = m_pList.GetHeadPosition(); pos; )
 		{
 			m_pList.GetNext( pos )->Serialize( ar, nVersion );
 		}
@@ -573,7 +573,7 @@ void CDiscoveryServices::Serialize(CArchive& ar)
 		//ar >> m_tMetQueried;
 		//ar >> m_tHubsQueried;
 
-		for ( DWORD_PTR nCount = ar.ReadCount() ; nCount > 0 ; nCount-- )
+		for ( DWORD_PTR nCount = ar.ReadCount(); nCount > 0; nCount-- )
 		{
 			augment::auto_ptr< CDiscoveryService > pService( new CDiscoveryService() );
 			try
@@ -598,7 +598,7 @@ BOOL CDiscoveryServices::EnoughServices() const
 	int nWebCacheCount = 0, nServerMetCount = 0, nHubListCount = 0;	// Types of services
 	int nG1Count = 0, nG2Count = 0;									// Protocols
 
-	for ( POSITION pos = m_pList.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pList.GetHeadPosition(); pos; )
 	{
 		CDiscoveryService* pService = m_pList.GetNext( pos );
 		if ( pService->m_nType == CDiscoveryService::dsWebCache )
@@ -693,7 +693,7 @@ void CDiscoveryServices::AddDefaults()
 	//	theApp.Message( MSG_ERROR, L"Default discovery service load failed" );
 	//
 	//	//CString strServices = L"\n";
-	//	//for ( strServices += '\n' ; ! strServices.IsEmpty() ; )
+	//	//for ( strServices += '\n'; ! strServices.IsEmpty(); )
 	//	//{
 	//	//	CString strService = strServices.SpanExcluding( L"\r\n" );
 	//	//	strServices = strServices.Mid( strService.GetLength() + 1 );
@@ -721,7 +721,7 @@ void CDiscoveryServices::MergeURLs()
 //	theApp.Message( MSG_DEBUG, L"CDiscoveryServices::MergeURLs(): Checking the discovery service WebCache URLs" );
 
 	// Building the arrays...
-	for ( POSITION pos = m_pList.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pList.GetHeadPosition(); pos; )
 	{
 		CDiscoveryService* pService = m_pList.GetNext( pos );
 		if ( pService->m_nType == CDiscoveryService::dsWebCache )
@@ -740,9 +740,9 @@ void CDiscoveryServices::MergeURLs()
 	}
 	if ( ! MultiURLs.IsEmpty() )
 	{
-		for ( int index = 0 ; index < MultiURLs.GetCount() ; index++ )
+		for ( int index = 0; index < MultiURLs.GetCount(); index++ )
 		{
-			for ( int dup_index = 0 ; dup_index < MultiURLs.GetCount() ; dup_index++ )
+			for ( int dup_index = 0; dup_index < MultiURLs.GetCount(); dup_index++ )
 			{
 				// Checking for identical duplicate.
 				if ( MultiURLs.GetAt( index )->m_sAddress == MultiURLs.GetAt( dup_index )->m_sAddress && index != dup_index )
@@ -752,7 +752,7 @@ void CDiscoveryServices::MergeURLs()
 			if ( ! G1URLs.IsEmpty() )
 			{
 				// Remove G1 service if it matches that of a multi.
-				for ( int index2 = 0 ; index2 < G1URLs.GetCount() ; index2++ )
+				for ( int index2 = 0; index2 < G1URLs.GetCount(); index2++ )
 				{
 					if ( MultiURLs.GetAt( index )->m_sAddress == G1URLs.GetAt( index2 )->m_sAddress )
 						G1URLs.RemoveAt( index2 );
@@ -762,7 +762,7 @@ void CDiscoveryServices::MergeURLs()
 			if ( ! G2URLs.IsEmpty() )
 			{
 				// Remove G2 service if it matches that of a multi.
-				for ( int index3 = 0 ; index3 < G2URLs.GetCount() ; index3++ )
+				for ( int index3 = 0; index3 < G2URLs.GetCount(); index3++ )
 				{
 					if ( MultiURLs.GetAt( index )->m_sAddress == G2URLs.GetAt( index3 )->m_sAddress )
 						G2URLs.RemoveAt( index3 );
@@ -773,9 +773,9 @@ void CDiscoveryServices::MergeURLs()
 	}
 	if ( ! G1URLs.IsEmpty() )
 	{
-		for ( int index4 = 0 ; index4 < G1URLs.GetCount() ; index4++ )
+		for ( int index4 = 0; index4 < G1URLs.GetCount(); index4++ )
 		{
-			for ( int dup_index2 = 0 ; dup_index2 < G1URLs.GetCount() ; dup_index2++ )
+			for ( int dup_index2 = 0; dup_index2 < G1URLs.GetCount(); dup_index2++ )
 			{
 				// Checking for identical duplicate.
 				if ( G1URLs.GetAt( index4 )->m_sAddress == G1URLs.GetAt( dup_index2 )->m_sAddress && index4 != dup_index2 )
@@ -785,7 +785,7 @@ void CDiscoveryServices::MergeURLs()
 			if ( ! G2URLs.IsEmpty() )
 			{
 				// If G1 and G2 of the same URL exist, drop one and upgrade the other to multi status.
-				for ( int index5 = 0 ; index5 < G2URLs.GetCount() ; index5++ )
+				for ( int index5 = 0; index5 < G2URLs.GetCount(); index5++ )
 				{
 					if ( G1URLs.GetAt( index4 )->m_sAddress == G2URLs.GetAt( index5 )->m_sAddress )
 					{
@@ -801,9 +801,9 @@ void CDiscoveryServices::MergeURLs()
 	}
 	if ( ! G2URLs.IsEmpty() )
 	{
-		for ( int index6 = 0 ; index6 < G2URLs.GetCount() ; index6++ )
+		for ( int index6 = 0; index6 < G2URLs.GetCount(); index6++ )
 		{
-			for ( int dup_index3 = 0 ; dup_index3 < G2URLs.GetCount() ; dup_index3++ )
+			for ( int dup_index3 = 0; dup_index3 < G2URLs.GetCount(); dup_index3++ )
 			{
 				// Checking for identical duplicate
 				if ( G2URLs.GetAt( index6 )->m_sAddress == G2URLs.GetAt( dup_index3 )->m_sAddress && index6 != dup_index3 )
@@ -818,28 +818,28 @@ void CDiscoveryServices::MergeURLs()
 		m_pList.RemoveAll();
 		if ( ! G1URLs.IsEmpty() )
 		{
-			for ( int g1_index = 0 ; g1_index < G1URLs.GetCount() ; g1_index++ )
+			for ( int g1_index = 0; g1_index < G1URLs.GetCount(); g1_index++ )
 			{
 				m_pList.AddTail( G1URLs.GetAt( g1_index ) );
 			}
 		}
 		if ( ! G2URLs.IsEmpty() )
 		{
-			for ( int g2_index = 0 ; g2_index < G2URLs.GetCount() ; g2_index++ )
+			for ( int g2_index = 0; g2_index < G2URLs.GetCount(); g2_index++ )
 			{
 				m_pList.AddTail( G2URLs.GetAt( g2_index ) );
 			}
 		}
 		if ( ! MultiURLs.IsEmpty() )
 		{
-			for ( int multi_index = 0 ; multi_index < MultiURLs.GetCount() ; multi_index++ )
+			for ( int multi_index = 0; multi_index < MultiURLs.GetCount(); multi_index++ )
 			{
 				m_pList.AddTail( MultiURLs.GetAt( multi_index ) );
 			}
 		}
 		if ( ! OtherURLs.IsEmpty() )
 		{
-			for ( int other_index = 0 ; other_index < OtherURLs.GetCount() ; other_index++ )
+			for ( int other_index = 0; other_index < OtherURLs.GetCount(); other_index++ )
 			{
 				m_pList.AddTail( OtherURLs.GetAt( other_index ) );
 			}
@@ -1059,7 +1059,7 @@ int CDiscoveryServices::ExecuteBootstraps(int nCount, BOOL bUDP, PROTOCOLID nPro
 		break;
 	}
 
-	for ( POSITION pos = m_pList.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pList.GetHeadPosition(); pos; )
 	{
 		CDiscoveryService* pService = m_pList.GetNext( pos );
 		if ( pService->m_nType == CDiscoveryService::dsGnutella &&
@@ -1069,7 +1069,7 @@ int CDiscoveryServices::ExecuteBootstraps(int nCount, BOOL bUDP, PROTOCOLID nPro
 				pRandom.Add( pService );
 	}
 
-	for ( nSuccess = 0 ; nCount > 0 && pRandom.GetSize() > 0 ; )
+	for ( nSuccess = 0; nCount > 0 && pRandom.GetSize() > 0; )
 	{
 		INT_PTR nRandom = GetRandomNum< INT_PTR >( 0, pRandom.GetSize() - 1 );
 		CDiscoveryService* pService = pRandom.GetAt( nRandom );
@@ -1121,7 +1121,7 @@ CDiscoveryService* CDiscoveryServices::GetRandomService(PROTOCOLID nProtocol)
 	const DWORD tNow = static_cast< DWORD >( time( NULL ) );
 
 	// Loops through all services
-	for ( POSITION pos = m_pList.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pList.GetHeadPosition(); pos; )
 	{
 		CDiscoveryService* pService = m_pList.GetNext( pos );
 
@@ -1176,7 +1176,7 @@ CDiscoveryService* CDiscoveryServices::GetRandomWebCache(PROTOCOLID nProtocol, B
 	CArray< CDiscoveryService* > pWebCaches;
 	const DWORD tNow = static_cast< DWORD >( time( NULL ) );
 
-	for ( POSITION pos = m_pList.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pList.GetHeadPosition(); pos; )
 	{
 		CDiscoveryService* pService = m_pList.GetNext( pos );
 
@@ -1452,7 +1452,7 @@ BOOL CDiscoveryServices::RunWebCacheGet(BOOL bCaches)
 
 		// Split line to parts
 		CArray< CString > oParts;
-		for ( CString strTmp = strLine ; ! strTmp.IsEmpty() ; )
+		for ( CString strTmp = strLine; ! strTmp.IsEmpty(); )
 		{
 			CString strPart = strTmp.SpanExcluding( L"|" );
 			strTmp = strTmp.Mid( strPart.GetLength() + 1 );
@@ -1633,7 +1633,7 @@ BOOL CDiscoveryServices::RunWebCacheGet(BOOL bCaches)
 						if ( oParts.GetCount() >= 4 )
 						{
 							BOOL bIsNetwork = FALSE;
-							for ( int i = 0 ; ; )
+							for ( int i = 0; ; )
 							{
 								CString strNetwork = oParts[ 3 ].Tokenize( L"-", i );
 								if ( i == -1 )
@@ -1691,7 +1691,7 @@ BOOL CDiscoveryServices::RunWebCacheGet(BOOL bCaches)
 					if ( oParts.GetCount() >= 3 )
 					{
 						BOOL IsNetwork = FALSE;
-						for ( int i = 2 ; i < oParts.GetCount() ; i++ )
+						for ( int i = 2; i < oParts.GetCount(); i++ )
 						{
 							if ( ( oParts[ i ].CompareNoCase( L"gnutella2" ) == 0 && m_nLastQueryProtocol == PROTOCOL_G2 ) ||
 								 ( oParts[ i ].CompareNoCase( L"gnutella" )  == 0 && m_nLastQueryProtocol != PROTOCOL_G2 ) )
@@ -1710,7 +1710,7 @@ BOOL CDiscoveryServices::RunWebCacheGet(BOOL bCaches)
 					if ( oParts.GetCount() >= 3 )
 					{
 						BOOL IsNetwork = FALSE;
-						for ( int i = 0 ; ; )
+						for ( int i = 0; ; )
 						{
 							if ( i == -1 )
 								break;
@@ -1818,7 +1818,7 @@ BOOL CDiscoveryServices::RunWebCacheUpdate()
 
 		CString strSubmit( m_pSubmit->m_sAddress );
 
-		for ( int nSubmit = 0 ; nSubmit < strSubmit.GetLength() ; nSubmit ++ )
+		for ( int nSubmit = 0; nSubmit < strSubmit.GetLength(); nSubmit ++ )
 		{
 			if ( (WORD)strSubmit.GetAt( nSubmit ) > 127 )
 			{
@@ -1873,7 +1873,7 @@ BOOL CDiscoveryServices::RunWebCacheUpdate()
 
 	//	// Split line to parts
 	//	CArray< CString > oParts;
-	//	for ( int i = 0 ; ; )
+	//	for ( int i = 0; ; )
 	//	{
 	//		CString strPart = strLine.Tokenize( L"|", i ).MakeLower();
 	//		if ( i == -1 )

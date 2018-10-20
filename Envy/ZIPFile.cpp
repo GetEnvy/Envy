@@ -1,8 +1,8 @@
 //
 // ZIPFile.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2007
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -132,7 +132,7 @@ CZIPFile::File* CZIPFile::GetFile(LPCTSTR pszFile, BOOL bSmartSearch) const
 	File* pFile = m_pFile;
 	bool bFound = false;
 
-	for ( int nFile = m_nFile ; nFile ; nFile--, pFile++ )
+	for ( int nFile = m_nFile; nFile; nFile--, pFile++ )
 	{
 		if ( _tcsicoll( pFile->m_sName, pszFile ) == 0 )
 		{
@@ -148,7 +148,7 @@ CZIPFile::File* CZIPFile::GetFile(LPCTSTR pszFile, BOOL bSmartSearch) const
 
 	pFile = m_pFile;
 
-	for ( int nFile = m_nFile ; nFile ; nFile--, pFile++ )
+	for ( int nFile = m_nFile; nFile; nFile--, pFile++ )
 	{
 		LPCTSTR pszName = _tcsrchr( pFile->m_sName, '/' );
 		pszName = pszName ? pszName + 1 : (LPCTSTR)pFile->m_sName;
@@ -191,7 +191,7 @@ BOOL CZIPFile::LocateCentralDirectory()
 
 	ZIP_DIRECTORY_LOC* pLoc = NULL;
 
-	for ( DWORD nScan = 4 ; nScan < nBuffer ; nScan++ )
+	for ( DWORD nScan = 4; nScan < nBuffer; nScan++ )
 	{
 		DWORD* pnSignature = (DWORD*)( pBuffer.get() + nBuffer - nScan );
 
@@ -267,7 +267,7 @@ typedef struct
 
 BOOL CZIPFile::ParseCentralDirectory(BYTE* pDirectory, DWORD nDirectory)
 {
-	for ( int nFile = 0 ; nFile < m_nFile ; nFile++ )
+	for ( int nFile = 0; nFile < m_nFile; nFile++ )
 	{
 		ZIP_CENTRAL_FILE* pRecord = (ZIP_CENTRAL_FILE*)pDirectory;
 
@@ -288,7 +288,7 @@ BOOL CZIPFile::ParseCentralDirectory(BYTE* pDirectory, DWORD nDirectory)
 
 		LPTSTR pszName = m_pFile[ nFile ].m_sName.GetBuffer( pRecord->nNameLen );
 
-		for ( WORD nChar = 0 ; nChar < pRecord->nNameLen ; nChar++ )
+		for ( WORD nChar = 0; nChar < pRecord->nNameLen; nChar++ )
 		{
 			pszName[ nChar ] = (TCHAR)pDirectory[ nChar ];
 			if ( pszName[ nChar ] == '\\' ) pszName[ nChar ] = '/';

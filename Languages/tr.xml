@@ -3,7 +3,7 @@
 
 <!-- Envy Default Turkish Skin File -->
 
-<!-- Translation based on default en.xml r21 -->
+<!-- Translation based on default en.xml r22 -->
 <!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -15,7 +15,7 @@
 <manifest
 	name="Türkçe"
 	author="F. Doğru, F.A. Saraçoğulları"
-	updateBy="Melih Tarı, zigotozor"
+	updatedby="Melih Tarı, zigotozor"
 	description="Envy Default Turkish Skin File"
 	link="http://getenvy.com"
 	email="Contact(at)GetEnvy.com"
@@ -3251,9 +3251,10 @@
 	<string id="20806" text="Sıradaki %s altarımı isteğini çok hızlı yineliyor, bağlantı kapatılıyor."/>
 	<string id="20807" text="Koşutzamanlı hostdan %s (%s)'ye &quot;%s&quot; aktarımı reddediliyor."/>
 	<string id="20808" text="&quot;%s&quot; 'dan %s (%s) 'e aktarım kabul edilmiyor, meşgul ve istemci sırasını desteklemiyor."/>
-	<string id="20809" text="&quot;%s&quot;.den %s (%s)'ye aktarım reddedildi, tüm sıralar doludur."/>
-	<string id="20810" text="%s aktarım hostu &quot;%s&quot; dosyasını uygun olmayan sırada istedi."/>
-	<string id="20811" text="eDonkey2000 aktarımlarının iptal edilmemeleri önerilir. Bu aktarımı iptal etmek istediğinizden emin misiniz?"/>
+	<string id="20809" text="&quot;%s&quot; 'den %s (%s)'ye aktarım reddedildi, tüm sıralar doludur."/>
+	<string id="20810" text="&quot;%s&quot; 'den %s (%s)'ye aktarım reddedildi, Kütüphane meşgul."/>
+	<string id="20811" text="%s aktarım hostu &quot;%s&quot; dosyasını uygun olmayan sırada istedi."/>
+	<string id="20861" text="eDonkey2000 aktarımlarının iptal edilmemeleri önerilir. Bu aktarımı iptal etmek istediğinizden emin misiniz?"/>
 	<string id="20812" text="%s hostunda aktarım için &quot;%s&quot; açılamıyor, disk/dosya hatası."/>
 	<string id="20813" text="%s. %s 'e sıkıştırılmış bağlantı başlatılıyor"/>
 	<string id="20814" text="%s hostuna sıkıştırma için bağlantı kurulamaz."/>
@@ -3300,14 +3301,14 @@
 	<string id="20858" text="%s aktarım hostundan istek bekleme zaman aşımına uğradı."/>
 	<string id="20859" text="Trafik yoğunluğundan dolayı %s aktarım bağlantısı kapanıyor."/>
 	<string id="20860" text="%s'e &quot;%s&quot; için tiger-tree veri aktarılıyor."/>
-	<string id="20861" text="&quot;%s&quot; 'dan %s 'e aktarım kaldırıldı."/>
-	<string id="20862" text="Ekle"/>
-	<string id="20864" text="&amp;Gözat"/>
-	<string id="20865" text="&amp;Bağlan"/>
-	<string id="20866" text="Dosya Adı:"/>
-	<string id="20867" text="Host:"/>
-	<string id="20868" text="Port:"/>
-	<!--string id="20869" text="URL faaliyet diyalogu gösterilemez çünkü Envy meşgul."-->
+	<string id="20862" text="&quot;%s&quot; 'dan %s 'e aktarım kaldırıldı."/>
+	<string id="20864" text="Ekle"/>
+	<string id="20865" text="&amp;Gözat"/>
+	<string id="20866" text="&amp;Bağlan"/>
+	<string id="20867" text="Dosya Adı:"/>
+	<string id="20868" text="Host:"/>
+	<string id="20869" text="Port:"/>
+	<!--string id="20876" text="URL faaliyet diyalogu gösterilemez çünkü Envy meşgul."-->
 	<string id="20870" text="URL ayrıştırılamaz : Envy bu URL'yi anlamıyor."/>
 	<string id="20871" text="&quot;%s&quot; URL alındı"/>
 	<string id="20872" text="Tür:"/>
@@ -3802,7 +3803,7 @@
 	<dialog name="CWizardConnectionPage" cookie="StStCoStStCoStCoStCoStEdBuStms" caption="Envy'ya Hoşgeldiniz (2/8)">
 		<control text="En iyi sonuç için Envy'nın bağlantınız hakkında bazı temel bilgilere ihtiyacı bulunmaktadır."/>
 		<control text="İnternet bağlantınızı Envy'ya belirtin:"/>
-		<control text="| Çevirmeli Modem| ISDN 128K| DSL 768K| DSL 1.5|Kablo 3| DSL 4| DSL2 8| FIOS 10| DSL2 12| FIOS 15| FIOS 20| FIOS 25| FIOS 30| FIOS 50| T1| T3| LAN| OC3"/>
+		<control text="|Çevirmeli Modem|ISDN 128K|DSL 768K|DSL 1.5|Kablo 3|DSL 4|DSL2 8|FIOS 10|DSL2 12|FIOS 15|FIOS 20|FIOS 25|FIOS 30|FIOS 50|100|200|300|400|Gigabit|T1|T3|LAN|OC3"/>
 		<control text="Speedtest.net de testi edin"/>
 		<control text="Ya da indirme hızınızı:"/>
 		<control/>

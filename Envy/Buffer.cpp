@@ -1,8 +1,8 @@
 //
 // Buffer.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2008
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2008 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -84,7 +84,7 @@ void CBuffer::Add(const void* pData, const size_t nLength) //throw()
 
 // Takes offset, a position in the memory block to insert some new memory at
 // Inserts the memory there, shifting anything after it further to the right
-void CBuffer::Insert(const DWORD nOffset, const void * pData, const size_t nLength)
+void CBuffer::Insert(const DWORD nOffset, const void* pData, const size_t nLength)
 {
 	ASSERT( pData );
 	if ( pData == NULL ) return;
@@ -321,7 +321,7 @@ BOOL CBuffer::ReadLine(CString& strLine, BOOL bPeek)
 
 	// Scan down each byte in the buffer
 	DWORD nLength = 0;
-	for ( ; nLength < m_nLength ; nLength++ )
+	for ( ; nLength < m_nLength; nLength++ )
 	{
 		// If the byte at this length is the newline character '\n', exit the loop
 		if ( m_pBuffer[ nLength ] == '\n' ) break;
@@ -597,7 +597,7 @@ BOOL CBuffer::Ungzip()
 	if ( nFlags & 0x08 )
 	{
 		DWORD i = 0;
-		for ( ; m_pBuffer[i] && i < m_nLength ; ++i );
+		for ( ; m_pBuffer[i] && i < m_nLength; ++i );
 		if ( i == m_nLength ) return FALSE;
 		Remove( i + 1 );
 	}
@@ -606,7 +606,7 @@ BOOL CBuffer::Ungzip()
 	if ( nFlags & 0x10 )
 	{
 		DWORD i = 0;
-		for ( ; m_pBuffer[i] && i < m_nLength ; ++i );
+		for ( ; m_pBuffer[i] && i < m_nLength; ++i );
 		if ( i == m_nLength ) return FALSE;
 		Remove( i + 1 );
 	}
@@ -634,7 +634,7 @@ BOOL CBuffer::Ungzip()
 			return FALSE;				// Out of memory
 
 		// Setup a z_stream structure to perform a raw inflate
-		CAutoPtr< z_stream > pStream ( new z_stream );
+		CAutoPtr< z_stream > pStream( new z_stream );
 		ZeroMemory( pStream, sizeof( z_stream ) );
 		if ( Z_OK != inflateInit2(		// Initialize a stream inflation with more options than just inflateInit
 			pStream,					// Stream structure to initialize
@@ -850,7 +850,8 @@ BOOL CBuffer::BZip()
 			pOutBuf.m_nLength = nOutSize;
 			break;
 		}
-		else if ( err == BZ_OUTBUFF_FULL )
+
+		if ( err == BZ_OUTBUFF_FULL )
 			nOutSize *= 2;	// Insufficient output buffer
 		else
 			return FALSE;	// Compression error
@@ -975,12 +976,12 @@ void CBuffer::WriteDIME(
 
 	// Print pszID, which is blank or a GUID in hexadecimal encoding, and bytes of 0 until the total length we added is a multiple of 4
 	Print( pszID, nIDLength );
-	for ( size_t nPad = nIDLength ; nPad & 3 ; nPad++ )
+	for ( size_t nPad = nIDLength; nPad & 3; nPad++ )
 		Add( "", 1 );	// If we added "a", add "000" to get to the next group of 4
 
 	// Print pszType, which is "text/xml" or a URI to an XML specification, and bytes of 0 until the total length we added is a multiple of 4
 	Print( pszType, nTypeLength );
-	for ( size_t nPad = nTypeLength ; nPad & 3 ; nPad++ )
+	for ( size_t nPad = nTypeLength; nPad & 3; nPad++ )
 		Add( "", 1 );	// If we added "abcdef", add "00" to get to the next group of 4
 
 	// If there is body text
@@ -988,7 +989,7 @@ void CBuffer::WriteDIME(
 	{
 		// Add it, followed by bytes of 0 until the total length we added is a multiple of 4
 		Add( pBody, nBody );
-		for ( size_t nPad = nBody ; nPad & 3 ; nPad++ )
+		for ( size_t nPad = nBody; nPad & 3; nPad++ )
 			Add( "", 1 );
 	}
 }

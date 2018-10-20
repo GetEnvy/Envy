@@ -310,7 +310,7 @@ bool ProcessReport(const CString& sInput)
 	_tprintf( _T("Version: %ls\n"), sVersion );
 
 	CString sOutput = g_sOutput;
-	for ( POSITION pos = g_oRules.GetHeadPosition(); pos ; )
+	for ( POSITION pos = g_oRules.GetHeadPosition(); pos; )
 	{
 		CRule r = g_oRules.GetNext( pos );
 		REPLACE( r.sIf );
@@ -458,7 +458,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	GetPrivateProfileString( NULL, NULL, NULL, pSections, 16384, g_sConfig );
 
 	// Загрузка правил из всех секций
-	for ( LPCTSTR szSect = pSections ; szSect && *szSect ; szSect += lstrlen( szSect ) + 1 )
+	for ( LPCTSTR szSect = pSections; szSect && *szSect; szSect += lstrlen( szSect ) + 1 )
 	{
 		if  ( lstrcmpi( szSect, _T("options") ) == 0 )
 			continue;	// Пропуск служебной секции

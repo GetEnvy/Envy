@@ -1,8 +1,8 @@
 //
 // HubHorizon.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2007
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -61,7 +61,7 @@ void CHubHorizonPool::Setup()
 	m_nActive	= 0;
 	m_pFree		= m_pBuffer;
 
-	for ( DWORD nItem = 0 ; nItem < m_nBuffer ; nItem++ )
+	for ( DWORD nItem = 0; nItem < m_nBuffer; nItem++ )
 	{
 		m_pBuffer[ nItem ].m_pNext	= ( nItem < m_nBuffer - 1 )
 									? &m_pBuffer[ nItem + 1 ] : NULL;
@@ -77,7 +77,7 @@ void CHubHorizonPool::Clear()
 	m_nActive	= 0;
 	m_pFree		= m_pBuffer;
 
-	for ( DWORD nItem = 0 ; nItem < m_nBuffer ; nItem++ )
+	for ( DWORD nItem = 0; nItem < m_nBuffer; nItem++ )
 	{
 		m_pBuffer[ nItem ].m_pNext	= ( nItem < m_nBuffer - 1 )
 									? &m_pBuffer[ nItem + 1 ] : NULL;
@@ -90,7 +90,7 @@ void CHubHorizonPool::Clear()
 CHubHorizonHub* CHubHorizonPool::Add(IN_ADDR* pAddress, WORD nPort)
 {
 	CHubHorizonHub* pHub = m_pActive;
-	for ( ; pHub ; pHub = pHub->m_pNext )
+	for ( ; pHub; pHub = pHub->m_pNext )
 	{
 		if ( pHub->m_pAddress.S_un.S_addr == pAddress->S_un.S_addr )
 		{
@@ -123,7 +123,7 @@ void CHubHorizonPool::Remove(CHubHorizonHub* pHub)
 {
 	CHubHorizonHub** ppPrev = &m_pActive;
 
-	for ( CHubHorizonHub* pSeek = *ppPrev ; pSeek ; pSeek = pSeek->m_pNext )
+	for ( CHubHorizonHub* pSeek = *ppPrev; pSeek; pSeek = pSeek->m_pNext )
 	{
 		if ( pHub == pSeek )
 		{
@@ -143,7 +143,7 @@ void CHubHorizonPool::Remove(CHubHorizonHub* pHub)
 
 CHubHorizonHub* CHubHorizonPool::Find(IN_ADDR* pAddress)
 {
-	for ( CHubHorizonHub* pHub = m_pActive ; pHub ; pHub = pHub->m_pNext )
+	for ( CHubHorizonHub* pHub = m_pActive; pHub; pHub = pHub->m_pNext )
 	{
 		if ( pHub->m_pAddress.S_un.S_addr == pAddress->S_un.S_addr )
 			return pHub;
@@ -159,7 +159,7 @@ int CHubHorizonPool::AddHorizonHubs(CG2Packet* pPacket)
 {
 	int nCount = 0;
 
-	for ( CHubHorizonHub* pHub = m_pActive ; pHub ; pHub = pHub->m_pNext )
+	for ( CHubHorizonHub* pHub = m_pActive; pHub; pHub = pHub->m_pNext )
 	{
 		pPacket->WritePacket( G2_PACKET_HORIZON, 6 );
 		pPacket->WriteLongLE( pHub->m_pAddress.S_un.S_addr );
@@ -197,7 +197,7 @@ void CHubHorizonGroup::Add(IN_ADDR* pAddress, WORD nPort)
 {
 	CHubHorizonHub** ppHub = m_pList;
 
-	for ( DWORD nCount = m_nCount ; nCount ; nCount--, ppHub++ )
+	for ( DWORD nCount = m_nCount; nCount; nCount--, ppHub++ )
 	{
 		if ( (*ppHub)->m_pAddress.S_un.S_addr == pAddress->S_un.S_addr )
 		{
@@ -231,7 +231,7 @@ void CHubHorizonGroup::Clear()
 {
 	CHubHorizonHub** ppHub = m_pList;
 
-	for ( DWORD nCount = m_nCount ; nCount ; nCount--, ppHub++ )
+	for ( DWORD nCount = m_nCount; nCount; nCount--, ppHub++ )
 	{
 		if ( -- ( (*ppHub)->m_nReference ) == 0 )
 			HubHorizonPool.Remove( *ppHub );

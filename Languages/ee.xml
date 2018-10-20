@@ -3,7 +3,7 @@
 
 <!-- Envy Default Estonian Skin File -->
 
-<!-- Translation based on default en.xml r21 --> <!-- (Shareaza 2.2.2.9) -->
+<!-- Translation based on default en.xml r22 --> <!-- (Shareaza 2.2.2.9) -->
 <!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -21,7 +21,7 @@
 <manifest
 	name="Eesti"
 	author="Janza"
-	updateBy="Felix Kütt"
+	updatedby="Felix Kütt"
 	description="Envy Default Estonian Skin File"
 	link="http://getenvy.com"
 	email="janekk32(at)solo.delfi.ee"
@@ -3117,8 +3117,9 @@
 	<string id="20807" text="Keeldun &quot;%s&quot; üleslaadimisest %s (%s), liiga palju konkureerivaid servereid."/>
 	<string id="20808" text="Keeldun &quot;%s&quot; üleslaadimisest %s (%s), hõivatud ja klient ei toeta järjekordi."/>
 	<string id="20809" text="Keeldun &quot;%s&quot; üleslaadimisest %s (%s), kõik sobivad järjekorrad on täis."/>
-	<string id="20810" text="Server %s saatis ebarahuldavas ulatuses päringu &quot;%s&quot;."/>
-	<string id="20811" text="eDonkey2000 üleslaadimisi ei tohiks tühistada. Oled kindel, et tahad tühistada?"/>
+	<string id="20810" text="Keeldun &quot;%s&quot; üleslaadimisest %s (%s), Raamatukogu on hõivatud."/>
+	<string id="20811" text="Server %s saatis ebarahuldavas ulatuses päringu &quot;%s&quot;."/>
+	<string id="20861" text="eDonkey2000 üleslaadimisi ei tohiks tühistada. Oled kindel, et tahad tühistada?"/>
 	<string id="20812" text="Ei saa avada &quot;%s&quot; et üleslaadida serverile %s, ketta/faili viga."/>
 	<string id="20813" text="Üritan tõukeühendust serveriga %s. %s"/>
 	<string id="20814" text="Ei suuda luua ühendust %s tõukeks."/>
@@ -3164,14 +3165,14 @@
 	<string id="20858" text="Üleslaadimis serveri ajalimiit ületatud %s."/>
 	<string id="20859" text="Sulgen üleslaadimise %s liikluse puudumise tõttu."/>
 	<string id="20860" text="Laen tiger-tree &quot;%s&quot; infot üles infot üles %s."/>
-	<string id="20861" text="Eemaldatud üleslaadimine &quot;%s&quot; serverist %s."/>
-	<string id="20862" text="Lisa"/>
-	<string id="20864" text="&amp;Sirvi"/>
-	<string id="20865" text="&amp;Ühenda"/>
-	<string id="20866" text="Failinimi:"/>
-	<string id="20867" text="Võõrustaja:"/>
-	<string id="20868" text="Port:"/>
-	<!--string id="20869" text="Ei suuda kuvada URL tegevuste dialoogi, kuna Envy on hõivatud."-->
+	<string id="20862" text="Eemaldatud üleslaadimine &quot;%s&quot; serverist %s."/>
+	<string id="20864" text="Lisa"/>
+	<string id="20865" text="&amp;Sirvi"/>
+	<string id="20866" text="&amp;Ühenda"/>
+	<string id="20867" text="Failinimi:"/>
+	<string id="20868" text="Võõrustaja:"/>
+	<string id="20869" text="Port:"/>
+	<!--string id="20876" text="Ei suuda kuvada URL tegevuste dialoogi, kuna Envy on hõivatud."-->
 	<string id="20870" text="Ei suuda tuvastada URL: Envy ei suuda seda URL-i lugeda."/>
 	<string id="20871" text="Vastuvõetud URL &quot;%s&quot;"/>
 	<string id="20872" text="Tüüp:"/>

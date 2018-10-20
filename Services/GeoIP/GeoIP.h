@@ -1,7 +1,7 @@
 //
 // GeoIP.h
 //
-// This file is part of Envy (getenvy.com) © 2016
+// This file is part of Envy (getenvy.com) © 2016-2018
 // Portions copyright PeerProject 2008-2012 and MaxMind LLC 2006-2007 (v1.4.2)
 //
 // Envy is free software; you can redistribute it and/or
@@ -10,8 +10,8 @@
 // either version 2.1 of the License, or later version (at your option).
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Lesser General Public License for more details.
 // (http://www.gnu.org/licenses/lgpl.html)
 //

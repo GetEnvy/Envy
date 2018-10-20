@@ -2,7 +2,7 @@
 // ImageFile.cpp
 //
 // This file is part of Envy (getenvy.com) © 2016-2018
-// Portions copyright PeerProject 2008-2015 and Shareaza 2002-2008
+// Portions copyright Shareaza 2002-2008 and PeerProject 2008-2015
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -56,12 +56,12 @@ void CImageFile::Clear()
 {
 	delete [] m_pImage;
 
+	m_pImage		= NULL;
 	m_bScanned		= FALSE;
+	m_bLoaded		= FALSE;
 	m_nWidth		= 0;
 	m_nHeight		= 0;
 	m_nComponents	= 0;
-	m_bLoaded		= FALSE;
-	m_pImage		= NULL;
 	m_nFlags		= 0;
 }
 
@@ -149,8 +149,7 @@ BOOL CImageFile::LoadFromURL(LPCTSTR pszURL)
 		if ( pBuffer == NULL ) return FALSE;
 
 		strMIME.Replace( '/', '.' );
-		m_bLoaded = ImageServices.LoadFromMemory( this,
-			strMIME, (LPVOID)pBuffer->m_pBuffer, pBuffer->m_nLength );
+		m_bLoaded = ImageServices.LoadFromMemory( this, strMIME, (LPVOID)pBuffer->m_pBuffer, pBuffer->m_nLength );
 		if ( m_bLoaded )
 			m_nFlags |= idRemote;
 
@@ -162,7 +161,9 @@ BOOL CImageFile::LoadFromURL(LPCTSTR pszURL)
 
 BOOL CImageFile::LoadFromBitmap(HBITMAP hBitmap, BOOL bScanOnly)
 {
-	BITMAP bmInfo;
+	Clear();
+
+	BITMAP bmInfo = {};
 	if ( ! GetObject( hBitmap, sizeof( BITMAP ), &bmInfo ) )
 		return FALSE;
 
@@ -197,12 +198,12 @@ BOOL CImageFile::LoadFromBitmap(HBITMAP hBitmap, BOOL bScanOnly)
 
 	// BGR -> RGB
 	LPBYTE dst = m_pImage;
-	for ( LONG j = 0 ; j < bmInfo.bmHeight ; ++j, dst += line_size )
+	for ( LONG j = 0; j < bmInfo.bmHeight; ++j, dst += line_size )
 	{
 		BYTE c = 0;
 	//	if ( m_nComponents = 4 )
 	//	{
-	//		for ( LONG i = 0 ; i < bmInfo.bmWidth * 4 ; i += 3 )
+	//		for ( LONG i = 0; i < bmInfo.bmWidth * 4; i += 3 )
 	//		{
 	//			c = dst[i + 0];
 	//			dst[i + 0] = dst[i + 2];
@@ -212,7 +213,7 @@ BOOL CImageFile::LoadFromBitmap(HBITMAP hBitmap, BOOL bScanOnly)
 	//	}
 	//	else // if ( m_nComponents = 3 )
 	//	{
-			for ( LONG i = 0, max = bmInfo.bmWidth * m_nComponents ; i < max ; i += 3 )
+			for ( LONG i = 0, max = bmInfo.bmWidth * m_nComponents; i < max; i += 3 )
 			{
 				c = dst[i];
 				dst[i] = dst[i + 2];
@@ -351,12 +352,12 @@ HBITMAP CImageFile::CreateBitmap(HDC hUseDC)
 		{
 			void operator()(BYTE* pBegin, BYTE* pEnd, const int nComponents )
 			{
-				for ( ; pBegin != pEnd ; pBegin += nComponents )
+				for ( ; pBegin != pEnd; pBegin += nComponents )
 					std::swap( pBegin[ 0 ], pBegin[ 2 ] );
 			}
 		};
 
-		for ( int nY = m_nHeight ; nY-- ; )
+		for ( int nY = m_nHeight; nY--; )
 		{
 			SwapRGB()( pLine, pLine + m_nWidth * m_nComponents, m_nComponents );
 
@@ -427,7 +428,7 @@ BOOL CImageFile::Resample(int nNewWidth, int nNewHeight)
 	}
 	int* pColPtr = pColInfo;
 
-	for ( int nX = 0 ; nX < nNewWidth ; nX++ )
+	for ( int nX = 0; nX < nNewWidth; nX++ )
 	{
 		int nFirst = ( nX * m_nWidth / nNewWidth );
 		int nCount = ( (nX+1) * m_nWidth / nNewWidth ) - nFirst + 1;
@@ -436,7 +437,7 @@ BOOL CImageFile::Resample(int nNewWidth, int nNewHeight)
 		*pColPtr++ = nCount;
 	}
 
-	for ( int nY = 0 ; nY < nNewHeight ; nY++ )
+	for ( int nY = 0; nY < nNewHeight; nY++ )
 	{
 		int nFirst = ( nY * m_nHeight / nNewHeight );
 		int nCount = ( ( nY + 1 ) * m_nHeight / nNewHeight ) - nFirst + 1;
@@ -447,15 +448,15 @@ BOOL CImageFile::Resample(int nNewWidth, int nNewHeight)
 		BYTE* pRow = m_pImage + nInPitch * nFirst;
 		pColPtr = pColInfo;
 
-		for ( int nX = 0 ; nX < nNewWidth ; nX++, pColPtr++ )
+		for ( int nX = 0; nX < nNewWidth; nX++, pColPtr++ )
 		{
 			BYTE* pIn = pRow + *pColPtr++;
 
 			DWORD nRed = 0, nGreen = 0, nBlue = 0, nPixels = 0;
 
-			for ( int nYY = nCount ; nYY ; nYY-- )
+			for ( int nYY = nCount; nYY; nYY-- )
 			{
-				for ( int nXX = *pColPtr ; nXX ; nXX-- )
+				for ( int nXX = *pColPtr; nXX; nXX-- )
 				{
 					nRed	+= *pIn++;
 					nGreen	+= *pIn++;
@@ -494,10 +495,10 @@ BOOL CImageFile::Resample(int nNewWidth, int nNewHeight)
 //	BYTE *pNew, *pRow, *pIn, *pOut;
 //	pOut = pNew = new BYTE[ nOutPitch * nNewHeight ];
 //
-//	for ( int nY = 0 ; nY < nNewHeight ; nY++ )
+//	for ( int nY = 0; nY < nNewHeight; nY++ )
 //	{
 //		pRow = m_pImage + nInPitch * ( nY * m_nHeight / nNewHeight );
-//		for ( int nX = 0 ; nX < nNewWidth ; nX++ )
+//		for ( int nX = 0; nX < nNewWidth; nX++ )
 //		{
 //			pIn = pRow + 3 * ( nX * m_nWidth / nNewWidth );
 //			*pOut++ = *pIn++;
@@ -544,12 +545,12 @@ BOOL CImageFile::MonoToRGB()
 	BYTE* pInRow	= m_pImage;
 	BYTE* pOutRow	= pNew;
 
-	for ( int nY = m_nHeight ; nY ; nY-- )
+	for ( int nY = m_nHeight; nY; nY-- )
 	{
 		BYTE* pInCol	= pInRow;
 		BYTE* pOutCol	= pOutRow;
 
-		for ( int nX = m_nWidth ; nX ; nX-- )
+		for ( int nX = m_nWidth; nX; nX-- )
 		{
 			*pOutCol++ = *pInCol;
 			*pOutCol++ = *pInCol;
@@ -581,12 +582,12 @@ BOOL CImageFile::AlphaToRGB(COLORREF crBack)
 	BYTE* pInRow	= m_pImage;
 	BYTE* pOutRow	= pNew;
 
-	for ( int nY = m_nHeight ; nY ; nY-- )
+	for ( int nY = m_nHeight; nY; nY-- )
 	{
 		BYTE* pInCol	= pInRow;
 		BYTE* pOutCol	= pOutRow;
 
-		for ( int nX = m_nWidth ; nX ; nX-- )
+		for ( int nX = m_nWidth; nX; nX-- )
 		{
 			DWORD nAlpha = (DWORD)pInCol[3];
 
@@ -635,12 +636,12 @@ BOOL CImageFile::SwapRGB()
 	BYTE* pImage = m_pImage;
 	BYTE nTemp;
 
-	for ( int nY = m_nHeight ; nY ; nY-- )
+	for ( int nY = m_nHeight; nY; nY-- )
 	{
 		BYTE* pRow = pImage;
 		pImage += nPitch;
 
-		for ( int nX = m_nWidth ; nX ; nX-- )
+		for ( int nX = m_nWidth; nX; nX-- )
 		{
 			nTemp = pRow[0];
 			pRow[0] = pRow[2];
@@ -697,7 +698,7 @@ HBITMAP CImageFile::LoadBitmapFromResource(UINT nResourceID, HINSTANCE hInstance
 //	static const LPCTSTR pTypes[] = { RT_PNG, RT_JPEG };
 //	static const int nCount = _countof( pTypes );
 //
-//	for ( int i = 0 ; i < nCount ; ++i )
+//	for ( int i = 0; i < nCount; ++i )
 //	{
 //		CImageFile pFile;
 //		if ( pFile.LoadFromResource( hInstance, nResourceID, pTypes[ i ] ) )		// && pFile.EnsureRGB()

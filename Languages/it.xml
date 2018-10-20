@@ -3,7 +3,7 @@
 
 <!-- Envy Default Italian Skin File -->
 
-<!-- Translation based on default en.xml r21 -->
+<!-- Translation based on default en.xml r22 -->
 <!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -15,7 +15,7 @@
 <manifest
 	name="Italiano"
 	author="Salvatore Scirè, Francesco Gabrielli"
-	updatedBy="ale5000"
+	updatedby="ale5000"
 	description="Envy Default Italian Skin File"
 	link="http://getenvy.com"
 	email=""
@@ -3322,8 +3322,9 @@
 	<string id="20807" text="Invio di &quot;%s&quot; a %s (%s) rifiutato, troppe richieste dall'host."/>
 	<string id="20808" text="Upload di &quot;%s&quot; con %s (%s) rifiutato, troppi upload."/>
 	<string id="20809" text="Upload di &quot;%s&quot; a %s (%s) rifiutato, tutte le code sono piene."/>
-	<string id="20810" text="L'host di upload %s ha richiesto un range non soddisfacente del file &quot;%s&quot;."/>
-	<string id="20811" text="Gli upload di eDonkey non dovrebbero essere annullati. Sei sicuro di voler annullare questo upload?"/>
+	<string id="20810" text="Upload di &quot;%s&quot; a %s (%s) rifiutato, la Biblioteca è occupata."/>
+	<string id="20811" text="L'host di upload %s ha richiesto un range non soddisfacente del file &quot;%s&quot;."/>
+	<string id="20861" text="Gli upload di eDonkey non dovrebbero essere annullati. Sei sicuro di voler annullare questo upload?"/>
 	<string id="20812" text="Impossibile aprire &quot;%s&quot; per l'invio all'host %s, errore del disco/file."/>
 	<string id="20813" text="Connessione push con %s per upload &quot;%s&quot; avviata."/>
 	<string id="20814" text="Impossibile connettere l'host upload %s al push."/>
@@ -3370,14 +3371,14 @@
 	<string id="20858" text="Tempo di attesa della richiesta dall'host upload %s scaduto."/>
 	<string id="20859" text="Chiusura della connessione di upload a %s per mancanza di traffico."/>
 	<string id="20860" text="Invio dei dati tiger-tree per &quot;%s&quot; a %s."/>
-	<string id="20861" text="Rimosso upload di &quot;%s&quot; a %s."/>
-	<string id="20862" text="Aggiungi"/>
-	<string id="20864" text="&amp;Sfoglia"/>
-	<string id="20865" text="&amp;Connetti"/>
-	<string id="20866" text="Nome file:"/>
-	<string id="20867" text="Host:"/>
-	<string id="20868" text="Porta:"/>
-	<!--string id="20869" text="Impossibile mostrare il dialogo di azione dell'URL perchè Envy è occupato."-->
+	<string id="20862" text="Rimosso upload di &quot;%s&quot; a %s."/>
+	<string id="20864" text="Aggiungi"/>
+	<string id="20865" text="&amp;Sfoglia"/>
+	<string id="20866" text="&amp;Connetti"/>
+	<string id="20867" text="Nome file:"/>
+	<string id="20868" text="Host:"/>
+	<string id="20869" text="Porta:"/>
+	<!--string id="20876" text="Impossibile mostrare il dialogo di azione dell'URL perchè Envy è occupato."-->
 	<string id="20870" text="Impossibile analizzare l'URL: Envy non riesce a leggere questo URL."/>
 	<string id="20871" text="URL &quot;%s&quot; ricevuto"/>
 	<string id="20872" text="Tipo:"/>

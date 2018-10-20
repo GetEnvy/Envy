@@ -1,8 +1,8 @@
 //
 // DownloadSource.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2007
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -905,7 +905,7 @@ void CDownloadSource::SetAvailableRanges(LPCTSTR pszRanges)
 
 	CString strRanges( pszRanges + 6 );
 
-	for ( strRanges += L',' ; strRanges.GetLength() ; )
+	for ( strRanges += L','; strRanges.GetLength(); )
 	{
 		CString strRange = strRanges.SpanExcluding( L", \t" );
 		strRanges = strRanges.Mid( strRange.GetLength() + 1 );
@@ -991,7 +991,7 @@ void CDownloadSource::Draw(CDC* pDC, CRect* prcBar, COLORREF crNatural)
 
 		Fragments::List::const_iterator pItr = m_oAvailable.begin();
 		const Fragments::List::const_iterator pEnd = m_oAvailable.end();
-		for ( ; pItr != pEnd ; ++pItr )
+		for ( ; pItr != pEnd; ++pItr )
 		{
 			CFragmentBar::DrawFragment( pDC, prcBar, m_pDownload->m_nSize,
 				pItr->begin(), pItr->size(), crNatural, FALSE );
@@ -1045,7 +1045,7 @@ void CDownloadSource::Draw(CDC* pDC, CRect* prcBar)
 
 	Fragments::List::const_iterator pItr = m_oPastFragments.begin();
 	const Fragments::List::const_iterator pEnd = m_oPastFragments.end();
-	for ( ; pItr != pEnd ; ++pItr )
+	for ( ; pItr != pEnd; ++pItr )
 	{
 		CFragmentBar::DrawFragment( pDC, prcBar, m_pDownload->m_nSize,
 			pItr->begin(), pItr->size(), crTransfer, TRUE );

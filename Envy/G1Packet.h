@@ -1,8 +1,8 @@
 //
 // G1Packet.h
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2007
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -235,9 +235,9 @@ inline void CG1Packet::CG1PacketPool::FreePoolImpl(CPacket* pPacket)
 
 #define OLD_LW_MAX_QUERY_FIELD_LEN	30
 #define WHAT_IS_NEW_QUERY_STRING	L"whatisnewxoxo"	// "WhatIsNewXOXO" ?
-#define DEFAULT_G1_MCAST_ADDRESS	"234.21.81.1"		// Experimental Multicast (Not widechar)
-#define DEFAULT_G1_MCAST_PORT		6347				// Experimental Multicast
 #define DEFAULT_URN_QUERY			L"\\"
+#define G1_DEFAULT_MULTICAST_ADDRESS "234.21.81.1"		// Experimental Multicast (Not widechar)
+#define G1_DEFAULT_MULTICAST_PORT	6347				// Experimental Multicast
 
 #define QUERY_KEY_LIFETIME		2 * 60 * 60
 #define MIN_QK_SIZE_IN_BYTES	4

@@ -2,7 +2,7 @@
 // CtrlBrowseTree.cpp
 //
 // This file is part of Envy (getenvy.com) © 2016-2018
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2007
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -146,7 +146,7 @@ BOOL CBrowseTreeCtrl::Expand(CBrowseTreeItem* pItem, TRISTATE bExpand, BOOL bInv
 
 	if ( pItem->m_bContract1 == FALSE )
 	{
-		for ( CBrowseTreeItem* pParent = pItem ; pParent != NULL ; pParent = pParent->m_pParent )
+		for ( CBrowseTreeItem* pParent = pItem; pParent != NULL; pParent = pParent->m_pParent )
 			pParent->m_bContract1 = FALSE;
 	}
 
@@ -166,7 +166,7 @@ BOOL CBrowseTreeCtrl::CollapseRecursive(CBrowseTreeItem* pItem)
 
 	CBrowseTreeItem** pChild = pItem->m_pList;
 
-	for ( int nCount = pItem->m_nCount ; nCount ; nCount--, pChild++ )
+	for ( int nCount = pItem->m_nCount; nCount; nCount--, pChild++ )
 	{
 		bChanged |= CollapseRecursive( *pChild );
 	}
@@ -248,7 +248,7 @@ BOOL CBrowseTreeCtrl::DeselectAll(CBrowseTreeItem* pExcept, CBrowseTreeItem* pPa
 
 	BOOL bChanged = FALSE;
 
-	for ( int nCount = pParent->m_nCount ; nCount ; nCount--, pChild++ )
+	for ( int nCount = pParent->m_nCount; nCount; nCount--, pChild++ )
 	{
 		if ( *pChild != pExcept && (*pChild)->m_bSelected )
 		{
@@ -287,7 +287,7 @@ BOOL CBrowseTreeCtrl::Highlight(CBrowseTreeItem* pItem)
 
 	m_pFocus = pItem;
 
-	for ( CBrowseTreeItem* pParent = m_pFocus->m_pParent ; pParent ; pParent = pParent->m_pParent )
+	for ( CBrowseTreeItem* pParent = m_pFocus->m_pParent; pParent; pParent = pParent->m_pParent )
 	{
 		Expand( pParent, TRI_TRUE, FALSE );
 
@@ -297,7 +297,7 @@ BOOL CBrowseTreeCtrl::Highlight(CBrowseTreeItem* pItem)
 
 	CollapseRecursive( m_pRoot );
 
-	for ( CBrowseTreeItem* pParent = m_pFocus->m_pParent ; pParent ; pParent = pParent->m_pParent )
+	for ( CBrowseTreeItem* pParent = m_pFocus->m_pParent; pParent; pParent = pParent->m_pParent )
 	{
 		pParent->m_bContract1 = pParent->m_bContract2;
 	}
@@ -329,7 +329,7 @@ BOOL CBrowseTreeCtrl::CleanItems(CBrowseTreeItem* pItem, DWORD nCookie, BOOL bVi
 	CBrowseTreeItem** pChild = pItem->m_pList + pItem->m_nCount - 1;
 	BOOL bChanged = FALSE;
 
-	for ( int nChild = pItem->m_nCount ; nChild ; nChild--, pChild-- )
+	for ( int nChild = pItem->m_nCount; nChild; nChild--, pChild-- )
 	{
 		if ( (*pChild)->m_nCleanCookie != nCookie )
 		{
@@ -514,11 +514,11 @@ void CBrowseTreeCtrl::OnKeyDown(UINT nChar, UINT /*nRepCnt*/, UINT /*nFlags*/)
 		CBrowseTreeItem* pStart	= m_pFocus;
 		CBrowseTreeItem* pBase	= pStart ? pStart->m_pParent : m_pRoot;
 
-		for ( int nLoop = 0 ; nLoop < 2 ; nLoop++ )
+		for ( int nLoop = 0; nLoop < 2; nLoop++ )
 		{
 			CBrowseTreeItem** pChild = pBase->m_pList;
 
-			for ( int nCount = pBase->m_nCount ; nCount ; nCount--, pChild++ )
+			for ( int nCount = pBase->m_nCount; nCount; nCount--, pChild++ )
 			{
 				if ( pStart != NULL )
 				{
@@ -654,7 +654,7 @@ void CBrowseTreeCtrl::OnPaint()
 
 	CFont* pOldFont = (CFont*)dc.SelectObject( &CoolInterface.m_fntNormal );
 
-	for ( int nCount = m_pRoot->m_nCount ; nCount && pt.y < rcClient.bottom ; nCount--, pChild++ )
+	for ( int nCount = m_pRoot->m_nCount; nCount && pt.y < rcClient.bottom; nCount--, pChild++ )
 	{
 		Paint( dc, rcClient, pt, *pChild );
 	}
@@ -695,7 +695,7 @@ void CBrowseTreeCtrl::Paint(CDC& dc, CRect& rcClient, CPoint& pt, CBrowseTreeIte
 
 		CBrowseTreeItem** pChild = pItem->m_pList;
 
-		for ( int nCount = pItem->m_nCount ; nCount ; nCount--, pChild++ )
+		for ( int nCount = pItem->m_nCount; nCount; nCount--, pChild++ )
 		{
 			Paint( dc, rcClient, pt, *pChild );
 			if ( pt.y >= rcClient.bottom ) break;
@@ -719,7 +719,7 @@ CBrowseTreeItem* CBrowseTreeCtrl::HitTest(const POINT& point, RECT* pRect) const
 
 	CBrowseTreeItem** pChild = m_pRoot->m_pList;
 
-	for ( int nCount = m_pRoot->m_nCount ; nCount && pt.y < rcClient.bottom ; nCount--, pChild++ )
+	for ( int nCount = m_pRoot->m_nCount; nCount && pt.y < rcClient.bottom; nCount--, pChild++ )
 	{
 		if ( CBrowseTreeItem* pItem = HitTest( rcClient, pt, *pChild, point, pRect ) )
 			return pItem;
@@ -755,7 +755,7 @@ CBrowseTreeItem* CBrowseTreeCtrl::HitTest(CRect& rcClient, CPoint& pt, CBrowseTr
 
 		CBrowseTreeItem** pChild = pItem->m_pList;
 
-		for ( int nCount = pItem->m_nCount ; nCount ; nCount--, pChild++ )
+		for ( int nCount = pItem->m_nCount; nCount; nCount--, pChild++ )
 		{
 			if ( CBrowseTreeItem* pHit = HitTest( rcClient, pt, *pChild, point, pRect ) )
 				return pHit;
@@ -782,7 +782,7 @@ BOOL CBrowseTreeCtrl::GetRect(CBrowseTreeItem* pItem, RECT* pRect)
 
 	CBrowseTreeItem** pChild = m_pRoot->m_pList;
 
-	for ( int nCount = m_pRoot->m_nCount ; nCount ; nCount--, pChild++ )
+	for ( int nCount = m_pRoot->m_nCount; nCount; nCount--, pChild++ )
 	{
 		if ( GetRect( pt, *pChild, pItem, pRect ) ) return TRUE;
 	}
@@ -816,7 +816,7 @@ BOOL CBrowseTreeCtrl::GetRect(CPoint& pt, CBrowseTreeItem* pItem, CBrowseTreeIte
 
 		CBrowseTreeItem** pChild = pItem->m_pList;
 
-		for ( int nCount = pItem->m_nCount ; nCount ; nCount--, pChild++ )
+		for ( int nCount = pItem->m_nCount; nCount; nCount--, pChild++ )
 		{
 			if ( GetRect( pt, *pChild, pFind, pRect ) ) return TRUE;
 		}
@@ -877,7 +877,7 @@ void CBrowseTreeCtrl::OnTreePacket(CG2Packet* pPacket, DWORD nFinish, CBrowseTre
 			pItem->m_nFiles = nLength / 4;
 			pItem->m_pFiles = new DWORD[ pItem->m_nFiles ];
 
-			for ( DWORD nCount = pItem->m_nFiles ; nCount ; nCount-- )
+			for ( DWORD nCount = pItem->m_nFiles; nCount; nCount-- )
 			{
 				pItem->m_pFiles[ nCount - 1 ] = pPacket->ReadLongBE();
 			}
@@ -956,7 +956,7 @@ CBrowseTreeItem* CBrowseTreeItem::Add(LPCTSTR pszName)
 		return m_pList[ m_nCount++ ] = new CBrowseTreeItem( this );
 
 	int nFirst = 0;
-	for ( int nLast = m_nCount - 1 ; nLast >= nFirst ; )
+	for ( int nLast = m_nCount - 1; nLast >= nFirst; )
 	{
 		int nMiddle = ( nFirst + nLast ) >> 1;
 
@@ -993,7 +993,7 @@ CBrowseTreeItem* CBrowseTreeItem::Add(CBrowseTreeItem* pNewItem)
 		return m_pList[ m_nCount++ ] = pNewItem;
 
 	int nFirst = 0;
-	for ( int nLast = m_nCount - 1 ; nLast >= nFirst ; )
+	for ( int nLast = m_nCount - 1; nLast >= nFirst; )
 	{
 		int nMiddle = ( nFirst + nLast ) >> 1;
 
@@ -1025,7 +1025,7 @@ void CBrowseTreeItem::Delete(CBrowseTreeItem* pItem)
 
 	CBrowseTreeItem** pChild = m_pList;
 
-	for ( int nChild = m_nCount ; nChild ; nChild--, pChild++ )
+	for ( int nChild = m_nCount; nChild; nChild--, pChild++ )
 	{
 		if ( *pChild == pItem )
 		{
@@ -1055,7 +1055,7 @@ void CBrowseTreeItem::Clear()
 {
 	if ( m_pList )
 	{
-		for ( int nChild = 0 ; nChild < m_nCount ; nChild++ )
+		for ( int nChild = 0; nChild < m_nCount; nChild++ )
 		{
 			delete m_pList[ nChild ];
 		}
@@ -1072,7 +1072,7 @@ void CBrowseTreeItem::Clear()
 
 BOOL CBrowseTreeItem::IsVisible() const
 {
-	for ( CBrowseTreeItem* pRoot = m_pParent ; pRoot ; pRoot = pRoot->m_pParent )
+	for ( CBrowseTreeItem* pRoot = m_pParent; pRoot; pRoot = pRoot->m_pParent )
 	{
 		if ( ! pRoot->m_bExpanded ) return FALSE;
 	}
@@ -1086,7 +1086,7 @@ int CBrowseTreeItem::GetChildCount() const
 
 	CBrowseTreeItem** pChild = m_pList;
 
-	for ( int nChild = m_nCount ; nChild ; nChild--, pChild++ )
+	for ( int nChild = m_nCount; nChild; nChild--, pChild++ )
 	{
 		if ( (*pChild)->m_bExpanded )
 			nCount += (*pChild)->GetChildCount();

@@ -2,7 +2,7 @@
 // TransferFile.cpp
 //
 // This file is part of Envy (getenvy.com) © 2016-2018
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2007
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -87,7 +87,7 @@ void CTransferFiles::Close()
 
 	CString strPath;
 
-	for ( POSITION pos = m_pMap.GetStartPosition() ; pos ; )
+	for ( POSITION pos = m_pMap.GetStartPosition(); pos; )
 	{
 		CTransferFile* pFile;
 		m_pMap.GetNextAssoc( pos, strPath, pFile );
@@ -107,7 +107,7 @@ void CTransferFiles::CommitDeferred()
 {
 	CSingleLock pLock( &m_pSection, TRUE );
 
-	for ( POSITION pos = m_pDeferred.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pDeferred.GetHeadPosition(); pos; )
 	{
 		CTransferFile* pFile = m_pDeferred.GetNext( pos );
 		pFile->DeferredWrite( TRUE );
@@ -369,7 +369,7 @@ void CTransferFile::DeferredWrite(BOOL /*bOffline*/)
 
 	DefWrite* pWrite = m_pDeferred;
 
-	for ( int nDeferred = 0 ; nDeferred < m_nDeferred ; nDeferred++, pWrite++ )
+	for ( int nDeferred = 0; nDeferred < m_nDeferred; nDeferred++, pWrite++ )
 	{
 		DWORD nOffsetLow  = (DWORD)( pWrite->m_nOffset & 0x00000000FFFFFFFF );
 		DWORD nOffsetHigh = (DWORD)( ( pWrite->m_nOffset & 0xFFFFFFFF00000000 ) >> 32 );

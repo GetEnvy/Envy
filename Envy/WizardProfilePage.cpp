@@ -1,8 +1,8 @@
 //
 // WizardProfilePage.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2016 and Shareaza 2002-2007
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2016
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -83,7 +83,7 @@ BOOL CWizardProfilePage::OnInitDialog()
 	CString str, strYearsOld;
 	LoadString( strYearsOld, IDS_WIZARD_YEARS_OLD );
 
-	for ( int nAge = 13 ; nAge < 91 ; nAge++ )
+	for ( int nAge = 13; nAge < 91; nAge++ )
 	{
 		str.Format( L" %i " + strYearsOld, nAge );
 		m_wndAge.SetItemData( m_wndAge.AddString( str ), nAge );
@@ -96,7 +96,7 @@ BOOL CWizardProfilePage::OnInitDialog()
 	VERIFY( m_gdiFlags.Create( Flags.Width, 16, ILC_COLOR32|ILC_MASK, nFlags, 0 ) ||
 			m_gdiFlags.Create( Flags.Width, 16, ILC_COLOR24|ILC_MASK, nFlags, 0 ) ||
 			m_gdiFlags.Create( Flags.Width, 16, ILC_COLOR16|ILC_MASK, nFlags, 0 ) );
-	for ( int nFlag = 0 ; nFlag < nFlags ; nFlag++ )
+	for ( int nFlag = 0; nFlag < nFlags; nFlag++ )
 	{
 		if ( HICON hIcon = Flags.ExtractIcon( nFlag ) )
 		{
@@ -112,7 +112,7 @@ BOOL CWizardProfilePage::OnInitDialog()
 	const CWorldCountry* pCountry = m_pWorld->m_pCountry;
 
 	int nSelect = -1;
-	for ( UINT nCountry = 0 ; nCountry < m_pWorld->m_nCountry ; nCountry++, pCountry++ )
+	for ( UINT nCountry = 0; nCountry < m_pWorld->m_nCountry; nCountry++, pCountry++ )
 	{
 	//	m_wndCountry.SetItemData( m_wndCountry.AddString( pCountry->m_sName ), (LPARAM)pCountry );
 
@@ -175,7 +175,7 @@ BOOL CWizardProfilePage::OnSetActive()
 		int nAge = 0;
 		_stscanf( strAge, L"%i", &nAge );
 
-		for ( int nAgeItem = 0 ; nAgeItem < m_wndAge.GetCount() ; nAgeItem ++ )
+		for ( int nAgeItem = 0; nAgeItem < m_wndAge.GetCount(); nAgeItem ++ )
 		{
 			if ( m_wndAge.GetItemData( nAgeItem ) == (DWORD)nAge )
 			{
@@ -199,7 +199,7 @@ BOOL CWizardProfilePage::OnSetActive()
 		m_sLocCountry = theApp.GetCountryName( Network.m_pHost.sin_addr );
 
 	CString strTest;
-	for ( UINT nCountry = 0 ; nCountry < m_pWorld->m_nCountry ; nCountry++ )
+	for ( UINT nCountry = 0; nCountry < m_pWorld->m_nCountry; nCountry++ )
 	{
 		m_wndCountry.GetLBText( nCountry, strTest );
 		if ( strTest.CompareNoCase( m_sLocCountry ) == 0 )
@@ -231,7 +231,7 @@ void CWizardProfilePage::OnSelChangeCountry()
 	CWorldCity* pCity = pCountry->m_pCity;
 	CString strCity;
 
-	for ( int nCity = pCountry->m_nCity ; nCity ; nCity--, pCity++ )
+	for ( int nCity = pCountry->m_nCity; nCity; nCity--, pCity++ )
 	{
 		if ( ! pCity->m_sName.IsEmpty() && ! pCity->m_sState.IsEmpty() )
 			strCity = pCity->m_sName + L", " + pCity->m_sState;

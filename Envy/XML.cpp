@@ -1,8 +1,8 @@
 //
 // XML.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2016 and Shareaza 2002-2008
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2008 and PeerProject 2008-2016
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -68,10 +68,10 @@ BOOL CXMLNode::ParseMatch(LPCTSTR& pszBase, LPCTSTR pszToken)
 	LPCTSTR pszXML = pszBase;
 	int nParse = 0;
 
-	for ( ; IsSpace( *pszXML ) ; pszXML++, nParse++ );
+	for ( ; IsSpace( *pszXML ); pszXML++, nParse++ );
 	if ( ! *pszXML ) return FALSE;
 
-	for ( ; *pszXML && *pszToken ; pszXML++, pszToken++, nParse++ )
+	for ( ; *pszXML && *pszToken; pszXML++, pszToken++, nParse++ )
 	{
 		if ( *pszXML != *pszToken ) return FALSE;
 	}
@@ -137,7 +137,7 @@ void CXMLNode::UniformString(CString& str)
 	str.Trim();
 	BOOL bSpace = TRUE;
 
-	for ( int nPos = 0 ; nPos < str.GetLength() ; nPos++ )
+	for ( int nPos = 0; nPos < str.GetLength(); nPos++ )
 	{
 		int nChar = (int)(unsigned short)str.GetAt( nPos );
 
@@ -204,7 +204,7 @@ CXMLElement* CXMLElement::Clone(CXMLElement* pParent) const
 	CXMLElement* pClone = new CXMLElement( pParent, m_sName );
 	if ( ! pClone ) return NULL;			// Out of memory
 
-	for ( POSITION pos = GetAttributeIterator() ; pos ; )
+	for ( POSITION pos = GetAttributeIterator(); pos; )
 	{
 		CXMLAttribute* pAttribute = GetNextAttribute( pos )->Clone( pClone );
 		if ( ! pAttribute ) return NULL;	// Out of memory
@@ -223,7 +223,7 @@ CXMLElement* CXMLElement::Clone(CXMLElement* pParent) const
 			pClone->m_pAttributesInsertion.AddTail( strNameLower );		// Track output order workaround
 	}
 
-	for ( POSITION pos = GetElementIterator() ; pos ; )
+	for ( POSITION pos = GetElementIterator(); pos; )
 	{
 		const CXMLElement* pElement = GetNextElement( pos );
 		pClone->m_pElements.AddTail( pElement->Clone( pClone ) );
@@ -242,13 +242,13 @@ CXMLElement* CXMLElement::Prefix(const CString& sPrefix, CXMLElement* pParent) c
 	{
 		pCloned->SetName( sPrefix + pCloned->GetName() );
 
-		for ( POSITION pos = pCloned->GetElementIterator() ; pos ; )
+		for ( POSITION pos = pCloned->GetElementIterator(); pos; )
 		{
 			CXMLElement* pNode = pCloned->GetNextElement( pos );
 			pNode->SetName( sPrefix + pNode->GetName() );
 		}
 
-		for ( POSITION pos = pCloned->GetAttributeIterator() ; pos ; )
+		for ( POSITION pos = pCloned->GetAttributeIterator(); pos; )
 		{
 			CXMLAttribute* pNode = pCloned->GetNextAttribute( pos );
 			pNode->SetName( sPrefix + pNode->GetName() );
@@ -262,7 +262,7 @@ CXMLElement* CXMLElement::Prefix(const CString& sPrefix, CXMLElement* pParent) c
 
 void CXMLElement::DeleteAllElements()
 {
-	for ( POSITION pos = m_pElements.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pElements.GetHeadPosition(); pos; )
 	{
 		delete m_pElements.GetNext( pos );
 	}
@@ -271,7 +271,7 @@ void CXMLElement::DeleteAllElements()
 
 void CXMLElement::DeleteAllAttributes()
 {
-	for ( POSITION pos = m_pAttributes.GetStartPosition() ; pos ; )
+	for ( POSITION pos = m_pAttributes.GetStartPosition(); pos; )
 	{
 		CXMLAttribute* pAttribute;
 		CString strName;
@@ -322,7 +322,7 @@ void CXMLElement::ToString(CString& strXML, BOOL bNewline) const
 	strXML.Append( m_sName );
 
 	POSITION pos = GetAttributeIterator();
-	for ( ; pos ; )
+	for ( ; pos; )
 	{
 		strXML.AppendChar( L' ' );
 		const CXMLAttribute* pAttribute = GetNextAttribute( pos );
@@ -554,7 +554,7 @@ CXMLElement* CXMLElement::FromBytes(BYTE* pByte, DWORD nByte, BOOL bHeader)
 		{
 			pByte += 2;
 
-			for ( DWORD nSwap = 0 ; nSwap < nByte ; nSwap ++ )
+			for ( DWORD nSwap = 0; nSwap < nByte; nSwap ++ )
 			{
 				register CHAR nTemp = pByte[ ( nSwap << 1 ) + 0 ];
 				pByte[ ( nSwap << 1 ) + 0 ] = pByte[ ( nSwap << 1 ) + 1 ];
@@ -625,7 +625,7 @@ BOOL CXMLElement::Equals(CXMLElement* pXML) const
 	if ( GetAttributeCount() != pXML->GetAttributeCount() ) return FALSE;
 	if ( GetElementCount() != pXML->GetElementCount() ) return FALSE;
 
-	for ( POSITION pos = GetAttributeIterator() ; pos ; )
+	for ( POSITION pos = GetAttributeIterator(); pos; )
 	{
 		CXMLAttribute* pAttribute1 = GetNextAttribute( pos );
 		CXMLAttribute* pAttribute2 = pXML->GetAttribute( pAttribute1->m_sName );
@@ -636,7 +636,7 @@ BOOL CXMLElement::Equals(CXMLElement* pXML) const
 	POSITION pos1 = GetElementIterator();
 	POSITION pos2 = pXML->GetElementIterator();
 
-	for ( ; pos1 && pos2 ; )
+	for ( ; pos1 && pos2; )
 	{
 		CXMLElement* pElement1 = GetNextElement( pos1 );
 		CXMLElement* pElement2 = pXML->GetNextElement( pos2 );
@@ -668,7 +668,7 @@ BOOL CXMLElement::Merge(const CXMLElement* pInput, BOOL bOverwrite)
 
 	BOOL bChanged = FALSE;
 
-	for ( POSITION pos = pInput->GetElementIterator() ; pos ; )
+	for ( POSITION pos = pInput->GetElementIterator(); pos; )
 	{
 		const CXMLElement* pElement = pInput->GetNextElement( pos );
 		CXMLElement* pTarget = GetElementByName( pElement->m_sName );
@@ -684,7 +684,7 @@ BOOL CXMLElement::Merge(const CXMLElement* pInput, BOOL bOverwrite)
 		}
 	}
 
-	for ( POSITION pos = pInput->GetAttributeIterator() ; pos ; )
+	for ( POSITION pos = pInput->GetAttributeIterator(); pos; )
 	{
 		CXMLAttribute* pAttribute = pInput->GetNextAttribute( pos );
 		CXMLAttribute* pTarget = GetAttribute( pAttribute->m_sName );
@@ -724,7 +724,7 @@ CString CXMLElement::GetRecursiveWords() const
 
 void CXMLElement::AddRecursiveWords(CString& strWords) const
 {
-	for ( POSITION pos = GetAttributeIterator() ; pos ; )
+	for ( POSITION pos = GetAttributeIterator(); pos; )
 	{
 		CXMLAttribute* pAttribute = GetNextAttribute( pos );
 		CString strText = pAttribute->GetName();
@@ -736,7 +736,7 @@ void CXMLElement::AddRecursiveWords(CString& strWords) const
 		strWords += pAttribute->GetValue();
 	}
 
-	for ( POSITION pos = GetElementIterator() ; pos ; )
+	for ( POSITION pos = GetElementIterator(); pos; )
 	{
 		GetNextElement( pos )->AddRecursiveWords( strWords );
 	}
@@ -760,21 +760,21 @@ void CXMLElement::Serialize(CArchive& ar)
 	{
 		ar.WriteCount( GetAttributeCount() );
 
-		for ( POSITION pos = GetAttributeIterator() ; pos ; )
+		for ( POSITION pos = GetAttributeIterator(); pos; )
 		{
 			GetNextAttribute( pos )->Serialize( ar );
 		}
 
 		ar.WriteCount( GetElementCount() );
 
-		for ( POSITION pos = GetElementIterator() ; pos ; )
+		for ( POSITION pos = GetElementIterator(); pos; )
 		{
 			GetNextElement( pos )->Serialize( ar );
 		}
 	}
 	else // Loading
 	{
-		for ( int nCount = (int)ar.ReadCount() ; nCount > 0 ; nCount-- )
+		for ( int nCount = (int)ar.ReadCount(); nCount > 0; nCount-- )
 		{
 			CXMLAttribute* pAttribute = new CXMLAttribute( this );
 			pAttribute->Serialize( ar );
@@ -800,7 +800,7 @@ void CXMLElement::Serialize(CArchive& ar)
 				m_pAttributesInsertion.AddTail( strNameLower );		// Track output order workaround
 		}
 
-		for ( int nCount = (int)ar.ReadCount() ; nCount > 0 ; nCount-- )
+		for ( int nCount = (int)ar.ReadCount(); nCount > 0; nCount-- )
 		{
 			CXMLElement* pElement = new CXMLElement( this );
 			pElement->Serialize( ar );

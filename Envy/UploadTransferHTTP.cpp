@@ -1,8 +1,8 @@
 //
 // UploadTransferHTTP.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2017
-// Portions copyright PeerProject 2008-2015 and Shareaza 2008
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2008 and PeerProject 2008-2015
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -44,7 +44,6 @@
 #include "Download.h"
 
 #include "LocalSearch.h"
-#include "ImageServices.h"
 #include "ImageFile.h"
 #include "ThumbCache.h"
 #include "Neighbours.h"
@@ -1087,7 +1086,7 @@ void CUploadTransferHTTP::SendFileHeaders()
 	{
 		CString strTigerURL;
 		strTigerURL.Format( L"X-Thex-URI: /gnutella/thex/v1?%s&depth=%u&ed2k=%u;%s\r\n",
-			m_oTiger.toUrn(), Settings.Library.TigerHeight, ( m_bHashset ? 1 : 0 ), m_oTiger.toString() );
+			(LPCTSTR)m_oTiger.toUrn(), Settings.Library.TigerHeight, ( m_bHashset ? 1 : 0 ), (LPCTSTR)m_oTiger.toString() );
 		Write( strTigerURL );
 	}
 
@@ -1853,7 +1852,7 @@ void CUploadTransferHTTP::GetNeighbourList(CString& strOutput)
 
 	const DWORD tNow = GetTickCount();
 
-	for ( POSITION pos = Neighbours.GetIterator() ; pos ; )
+	for ( POSITION pos = Neighbours.GetIterator(); pos; )
 	{
 		CNeighbour* pNeighbour = Neighbours.GetNext( pos );
 

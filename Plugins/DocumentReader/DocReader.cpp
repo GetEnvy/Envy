@@ -1,8 +1,8 @@
 //
 // DocReader.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2007
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2014
 // Originally Created by:	Rolandas Rudomanskis
 //
 // Envy is free software; you can redistribute it and/or
@@ -11,8 +11,8 @@
 // either version 3 of the License, or later version (at your option).
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU General Public License for more details.
 // (http://www.gnu.org/licenses/gpl.html)
 //
@@ -1009,13 +1009,13 @@ STDMETHODIMP CDocReader::GetMSThumbnail(BSTR bsFile, IMAGESERVICEDATA* pParams, 
 	SafeArrayAccessData( *ppImage, (VOID**)&pData );
 
 	// We are reading scanlines from bottom to top
-	for ( int nY = nHeight - 1 ; nY >= 0 ; nY-- )
+	for ( int nY = nHeight - 1; nY >= 0; nY-- )
 	{
 		pRowOut	= &pData[ nOutPitch * nY ];
 
 		if ( nBitCount == 24 )
 		{
-			for ( int nX = 0 ; nX < nWidth ; nX++ )
+			for ( int nX = 0; nX < nWidth; nX++ )
 			{
 				pRowOut[ 0 ] = pBytes[ 2 ];
 				pRowOut[ 1 ] = pBytes[ 1 ];
@@ -1029,7 +1029,7 @@ STDMETHODIMP CDocReader::GetMSThumbnail(BSTR bsFile, IMAGESERVICEDATA* pParams, 
 		}
 		else
 		{
-			for ( int nX = 0 ; nX < nWidth ; nX++ )
+			for ( int nX = 0; nX < nWidth; nX++ )
 			{
 				RGBQUAD& color = pPalette[ *pBytes++ ];
 

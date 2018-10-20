@@ -3,7 +3,7 @@
 
 <!-- Envy Default Japanese Skin File -->
 
-<!-- Translation based on default en.xml r21 --> <!-- (Shareaza 2.2.0.2) -->
+<!-- Translation based on default en.xml r22 --> <!-- (Shareaza 2.2.0.2) -->
 <!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -15,7 +15,7 @@
 <manifest
 	name="日本語"
 	author="ワン公DukeDog, CyberBob"
-	updatedBy=""
+	updatedby=""
 	description="Envy Default Japanese Skin File"
 	link="http://www.dukedog.flnet.org"
 	email="countnyan(at)hotmail.com"
@@ -3156,8 +3156,9 @@
 	<string id="20807" text="ホストからの同時発生が多い為、&quot;%s&quot;.の %s へのアップロードを拒否しています(%s)"/>
 	<string id="20808" text="ビジー状態でクライアントがキューをサポートしていない為、&quot;%s&quot;.の%sへのアップロードを拒否しています(%s)"/>
 	<string id="20809" text="一致した全てのキューに空きが無い為、&quot;%s&quot;.の %s へのアップロードを拒否しています(%s)"/>
-	<string id="20810" text="アップロードホスト %s はファイル &quot;%s&quot; の充足不能な範囲を要求しました"/>
-	<string id="20811" text="eDonkey2000アップロードは取り消すべきではありません。本当にこのアップロードを取り消して宜しいですか?"/>
+	<string id="20810" text="Library is busy. い為、&quot;%s&quot;.の %s へのアップロードを拒否しています(%s)"/>
+	<string id="20811" text="アップロードホスト %s はファイル &quot;%s&quot; の充足不能な範囲を要求しました"/>
+	<string id="20861" text="eDonkey2000アップロードは取り消すべきではありません。本当にこのアップロードを取り消して宜しいですか?"/>
 	<string id="20812" text="&quot;%s&quot; をホスト %sへアップロードする為に開くことが出来ませんでした。ディスク/ファイルエラーです"/>
 	<string id="20813" text="%s へのプッシュ接続を初期化しています。 %s"/>
 	<string id="20814" text="プッシュ用にホスト %s へ接続できませんでした"/>
@@ -3204,14 +3205,14 @@
 	<string id="20858" text="アップロードホスト %s からの要求を待機中に時間切れになりました"/>
 	<string id="20859" text="トラフィック不足のためアップロード接続 %s を閉じています"/>
 	<string id="20860" text="&quot;%s&quot; 用のtiger-treeデータを %s へアップロードしています"/>
-	<string id="20861" text="&quot;%s&quot; の %s へのアップロードを削除しました"/>
-	<string id="20862" text="追加"/>
-	<string id="20864" text="参照"/>
-	<string id="20865" text="接続(&amp;C)"/>
-	<string id="20866" text="ファイル名:"/>
-	<string id="20867" text="ホスト:"/>
-	<string id="20868" text="ポート:"/>
-	<!--string id="20869" text="Envyがビジーの為、URLアクションダイアログを表示できませんでした"-->
+	<string id="20862" text="&quot;%s&quot; の %s へのアップロードを削除しました"/>
+	<string id="20864" text="追加"/>
+	<string id="20865" text="参照"/>
+	<string id="20866" text="接続(&amp;C)"/>
+	<string id="20867" text="ファイル名:"/>
+	<string id="20868" text="ホスト:"/>
+	<string id="20869" text="ポート:"/>
+	<!--string id="20876" text="Envyがビジーの為、URLアクションダイアログを表示できませんでした"-->
 	<string id="20870" text="URLの解析に失敗しました: EnvyはこのURLを理解できません"/>
 	<string id="20871" text="URL &quot;%s&quot; を受信しました"/>
 	<string id="20872" text="種類:"/>

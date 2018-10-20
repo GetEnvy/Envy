@@ -1,8 +1,8 @@
 //
 // PageTorrentFiles.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2017
-// Portions copyright PeerProject 2008-2015 and Shareaza 2002-2007
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2015
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -177,7 +177,7 @@ void CTorrentFilesPage::OnCheckbox(NMHDR* pNMHDR, LRESULT* pResult)
 		if ( nCount > 2 )
 		{
 			CString strName;
-			for ( DWORD i = 0 ; i < nCount ; i++ )
+			for ( DWORD i = 0; i < nCount; i++ )
 			{
 				strName = pFragFile->GetName( i );
 				strName = strName.Mid( strName.ReverseFind( L'\\' ) + 1 );
@@ -254,7 +254,7 @@ BOOL CTorrentFilesPage::OnApply()
 //	if ( ! Downloads.Check( pDownload ) || ! pDownload->IsTorrent() ) return FALSE;
 //	augment::auto_ptr< CFragmentedFile > pFragFile = pDownload->GetFile();
 //	if ( pFragFile.get() )
-//		for ( DWORD i = 0 ; i < pFragFile->GetCount() ; ++i )
+//		for ( DWORD i = 0; i < pFragFile->GetCount(); ++i )
 //			pFragFile->SetPriority( i, m_wndFiles.GetColumnData( i, COL_INDEX ) );
 
 	return CPropertyPageAdv::OnApply();
@@ -276,7 +276,7 @@ void CTorrentFilesPage::UpdateCount()
 		DWORD nTotalCount = m_wndFiles.GetItemCount();
 		DWORD nActiveCount = 0;
 		QWORD nActiveSize  = 0;
-		for ( int nItem = 0 ; nItem < nTotalCount ; nItem++ )
+		for ( int nItem = 0; nItem < nTotalCount; nItem++ )
 		{
 			if ( ! m_wndFiles.GetCheck( nItem ) )
 				continue;
@@ -286,13 +286,13 @@ void CTorrentFilesPage::UpdateCount()
 		}
 
 		if ( nActiveCount != 1 )
-			m_sFilecount.Format( L"%u %s:   %s", nActiveCount, LoadString( IDS_FILES ), Settings.SmartVolume( nActiveSize ) );
+			m_sFilecount.Format( L"%lu %s:   %s", nActiveCount, (LPCTSTR)LoadString( IDS_FILES ), (LPCTSTR)Settings.SmartVolume( nActiveSize ) );
 		else
-			m_sFilecount.Format( L"1 %s:   %u B", LoadString( IDS_FILE ), nActiveSize );
+			m_sFilecount.Format( L"1 %s:   %I64u B", (LPCTSTR)LoadString( IDS_FILE ), nActiveSize );
 	}
 	else
 	{
-		m_sFilecount.Format( L"1 %s:   %u B", LoadString( IDS_FILE ), pFragFile->GetTotal() );
+		m_sFilecount.Format( L"1 %s:   %I64u B", (LPCTSTR)LoadString( IDS_FILE ), pFragFile->GetTotal() );
 	}
 
 	UpdateData( FALSE );
@@ -336,7 +336,7 @@ void CTorrentFilesPage::Update()
 		float fPaddingStatus = 0.000;
 		CString strText;
 
-		for ( int i = 0 ; i < nCount ; i++ )
+		for ( int i = 0; i < nCount; i++ )
 		{
 			strText = pFragFile->GetName( i );
 			strText = strText.Mid( strText.Find( L'\\' ) + 1 );
@@ -385,7 +385,7 @@ void CTorrentFilesPage::GetFiles()
 	QWORD nPaddingSize = 0;
 	BOOL bPaddingCheck = FALSE;
 
-	for ( DWORD i = 0 ; i < nCount ; i++ )
+	for ( DWORD i = 0; i < nCount; i++ )
 	{
 		strText = pFragFile->GetName( i );
 		strText = strText.Mid( strText.Find( L'\\' ) + 1 );

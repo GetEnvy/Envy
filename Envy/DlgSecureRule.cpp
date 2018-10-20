@@ -1,8 +1,8 @@
 //
 // DlgSecureRule.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2016 and Shareaza 2002-2007
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2016
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -124,7 +124,7 @@ BOOL CSecureRuleDlg::OnInitDialog()
 	case CSecureRule::srAddress:
 		m_nType  = 0;
 		m_nMatch = 0;	//(int)CSecureRule::srAddress;
-		for ( int nByte = 0 ; nByte < 4 ; nByte++ )
+		for ( int nByte = 0; nByte < 4; nByte++ )
 		{
 			CString strItem;
 			strItem.Format( L"%lu", m_pRule->m_nMask[ nByte ] );
@@ -272,7 +272,7 @@ BOOL CSecureRuleDlg::PreTranslateMessage(MSG* pMsg)
 		CEdit* pwMask[4]	= { &m_wndMask1, &m_wndMask2, &m_wndMask3, &m_wndMask4 };
 		CWnd* pFocus		= GetFocus();
 
-		for ( int nByte = 0 ; nByte < 4 && pFocus ; nByte++ )
+		for ( int nByte = 0; nByte < 4 && pFocus; nByte++ )
 		{
 			if ( pFocus == pwIP[ nByte ] || pFocus == pwMask[ nByte ] )
 			{
@@ -358,7 +358,7 @@ BOOL CSecureRuleDlg::GetClipboardAddress()
 	if ( str.GetLength() > 8 && str.Find( L'.' ) > 1 )
 	{
 		CString strIP[4] = { L"", L"", L"", L"" };
-		for ( int i = 0, c = 0 ; c < 4 && i < str.GetLength() ; i++ )
+		for ( int i = 0, c = 0; c < 4 && i < str.GetLength(); i++ )
 		{
 			TCHAR Ch = str.GetAt( i );
 			if ( _istdigit( Ch ) )
@@ -405,7 +405,7 @@ BOOL CSecureRuleDlg::GetClipboardAddress()
 
 	if ( str.GetLength() > 3 )
 		str = str.Left( 3 );
-	for ( int i = 0 ; i < str.GetLength() ; i++ )
+	for ( int i = 0; i < str.GetLength(); i++ )
 	{
 		if ( ! _istdigit( str.GetAt( i ) ) )
 			return TRUE;
@@ -428,7 +428,7 @@ void CSecureRuleDlg::OnOK()
 		m_pRule->m_nType = CSecureRule::srAddress;
 		CEdit* pwIP[4]		= { &m_wndIP1, &m_wndIP2, &m_wndIP3, &m_wndIP4 };
 		CEdit* pwMask[4]	= { &m_wndMask1, &m_wndMask2, &m_wndMask3, &m_wndMask4 };
-		for ( int nByte = 0 ; nByte < 4 ; nByte++ )
+		for ( int nByte = 0; nByte < 4; nByte++ )
 		{
 			CString strItem;
 			DWORD nValue = 0;
@@ -486,7 +486,7 @@ void CSecureRuleDlg::OnOK()
 			return;
 		}
 
-		for ( POSITION pos = Security.GetIterator() ; pos ; )
+		for ( POSITION pos = Security.GetIterator(); pos; )
 		{
 			CSecureRule* pRule = Security.GetNext( pos );
 			if ( pRule->m_nType == CSecureRule::srExternal && (LPCTSTR)pRule->m_pContent == (LPCTSTR)m_sPath )

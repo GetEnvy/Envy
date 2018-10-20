@@ -2,9 +2,9 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="9.00"
-	Name="Packages"
+	Name="Unpacker"
 	ProjectGUID="{CAA6FCC8-27B1-42B9-B647-976E7BE79C70}"
-	RootNamespace="Packages"
+	RootNamespace="Unpacker"
 	TargetFrameworkVersion="131072"
 	>
 	<Platforms>
@@ -368,7 +368,7 @@
 				>
 			</File>
 			<File
-				RelativePath="Packages.c"
+				RelativePath="Unpacker.c"
 				>
 			</File>
 			<File
@@ -390,7 +390,7 @@
 				>
 			</File>
 			<File
-				RelativePath="Packages.h"
+				RelativePath="Unpacker.h"
 				>
 			</File>
 		</Filter>
@@ -412,7 +412,7 @@
 				>
 			</File>
 			<File
-				RelativePath="Res\Packages.ico"
+				RelativePath="Res\Unpacker.ico"
 				>
 			</File>
 		</Filter>

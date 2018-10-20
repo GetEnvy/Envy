@@ -1,8 +1,8 @@
 //
 // LibraryBuilderInternals.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2017
-// Portions copyright PeerProject 2008-2015 and Shareaza 2002-2008
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2008 and PeerProject 2008-2015
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -148,7 +148,7 @@ bool PropGetValue(IPropertyStore* pStore, const PROPERTYKEY& key, CString& val)
 				if ( SUCCEEDED( arr.Attach( prop.parray ) ) )
 				{
 					ULONG nCount = arr.GetCount();
-					for ( ULONG i = 0 ; i < nCount ; ++i )
+					for ( ULONG i = 0; i < nCount; ++i )
 					{
 						CString str( CW2T( (LPCWSTR)arr.GetAt( i ) ) );
 						str.Trim();
@@ -162,7 +162,7 @@ bool PropGetValue(IPropertyStore* pStore, const PROPERTYKEY& key, CString& val)
 			break;
 
 		case VT_VECTOR | VT_BSTR:
-			for ( ULONG i = 0 ; i < prop.cabstr.cElems ; ++i )
+			for ( ULONG i = 0; i < prop.cabstr.cElems; ++i )
 			{
 				CString str( CW2T( (LPCWSTR)prop.cabstr.pElems[ i ] ) );
 				str.Trim();
@@ -173,7 +173,7 @@ bool PropGetValue(IPropertyStore* pStore, const PROPERTYKEY& key, CString& val)
 			break;
 
 		case VT_VECTOR | VT_LPWSTR:
-			for ( ULONG i = 0 ; i < prop.calpwstr.cElems ; ++i )
+			for ( ULONG i = 0; i < prop.calpwstr.cElems; ++i )
 			{
 				CString str( CW2T( prop.calpwstr.pElems[ i ] ) );
 				str.Trim();
@@ -184,7 +184,7 @@ bool PropGetValue(IPropertyStore* pStore, const PROPERTYKEY& key, CString& val)
 			break;
 
 		case VT_VECTOR | VT_LPSTR:
-			for ( ULONG i = 0 ; i < prop.calpstr.cElems ; ++i )
+			for ( ULONG i = 0; i < prop.calpstr.cElems; ++i )
 			{
 				CString str( CA2T( prop.calpstr.pElems[ i ] ) );
 				str.Trim();
@@ -649,7 +649,7 @@ bool CLibraryBuilderInternals::CopyID3v1Field(CXMLElement* pXML, LPCTSTR pszAttr
 int CLibraryBuilderInternals::LookupID3v1Genre(const CString& strGenre) const
 {
 	// Loop through all the genres
-	for ( int nGenre = 0 ; nGenre < ID3_GENRES ; nGenre ++ )
+	for ( int nGenre = 0; nGenre < ID3_GENRES; nGenre ++ )
 	{
 		// Compare with listed genre
 		if ( strGenre.CompareNoCase( pszID3Genre[ nGenre ] ) == 0 )
@@ -959,7 +959,7 @@ bool CLibraryBuilderInternals::ReadID3v2(DWORD nIndex, HANDLE hFile)
 			{
 				BYTE* pScan = pBuffer;
 				DWORD nLength = nFrameSize;
-				for ( ; *pScan != '-' && nLength > 0 ; nLength-- )
+				for ( ; *pScan != '-' && nLength > 0; nLength-- )
 					pScan++;
 				nLength = nFrameSize - nLength;
 				auto_array< BYTE > pszYear( new BYTE[ nLength + 1 ] );
@@ -1026,7 +1026,7 @@ bool CLibraryBuilderInternals::CopyID3v2Field(CXMLElement* pXML, LPCTSTR pszAttr
 			LPTSTR pszOutput = strValue.GetBuffer( nLength - nOffset + 1 );
 
 			DWORD nOut = 0, nChar = 0;
-			for ( ; nChar < nLength - nOffset ; nChar++, nOut++ )
+			for ( ; nChar < nLength - nOffset; nChar++, nOut++ )
 			{
 				pszOutput[ nOut ] = (TCHAR)pBuffer[ nOffset + nChar ];
 				if ( pszOutput[ nOut ] == 0 )
@@ -1048,7 +1048,7 @@ bool CLibraryBuilderInternals::CopyID3v2Field(CXMLElement* pXML, LPCTSTR pszAttr
 			{
 				pBuffer += 2;
 				DWORD nOut = 0, nChar = 0;
-				for ( ; nChar < nNewLength ; nChar++, nOut++ )
+				for ( ; nChar < nNewLength; nChar++, nOut++ )
 				{
 					pszOutput[ nOut ] = (TCHAR)pBuffer[ nOffset + nChar*2+0 ] | ( (TCHAR)pBuffer[ nOffset + nChar*2+1 ] << 8 );
 					if ( pszOutput[ nOut ] == 0 )
@@ -1066,7 +1066,7 @@ bool CLibraryBuilderInternals::CopyID3v2Field(CXMLElement* pXML, LPCTSTR pszAttr
 			{
 				pBuffer += 2;
 				DWORD nOut = 0, nChar = 0;
-				for ( ; nChar < nNewLength ; nChar++, nOut++ )
+				for ( ; nChar < nNewLength; nChar++, nOut++ )
 				{
 					pszOutput[ nOut ] = (TCHAR)pBuffer[ nOffset + nChar*2+1 ] | ( (TCHAR)pBuffer[ nOffset + nChar*2+0 ] << 8 );
 					if ( pszOutput[ nOut ] == 0 )
@@ -1092,7 +1092,7 @@ bool CLibraryBuilderInternals::CopyID3v2Field(CXMLElement* pXML, LPCTSTR pszAttr
 			LPTSTR pszOutput = strValue.GetBuffer( nNewLength + 1 );
 
 			DWORD nOut = 0, nChar = 0;
-			for ( ; nChar < nNewLength ; nChar++, nOut++ )
+			for ( ; nChar < nNewLength; nChar++, nOut++ )
 			{
 				pszOutput[ nOut ] = (TCHAR)pBuffer[ nOffset + nChar*2+1 ] | ( (TCHAR)pBuffer[ nOffset + nChar*2+0 ] << 8 );
 				if ( pszOutput[ nOut ] == 0 )
@@ -1253,7 +1253,7 @@ bool CLibraryBuilderInternals::ScanMP3Frame(CXMLElement* pXML, HANDLE hFile, DWO
 
 	nHeader = swapEndianess( nHeader );
 
-	for ( DWORD nSeek = 0 ; bVariable || ( nFrameCount < 16 && nSeek < 4096 * 2 ) ; nSeek++ )
+	for ( DWORD nSeek = 0; bVariable || ( nFrameCount < 16 && nSeek < 4096 * 2 ); nSeek++ )
 	{
 		// "frame sync"
 		// First 11 bits must have bit 1 for MPEG 2.5 extension
@@ -1518,7 +1518,7 @@ DWORD CLibraryBuilderInternals::GetBestLanguageId(LPVOID pBuffer)
 bool CLibraryBuilderInternals::GetLanguageId(LPVOID pBuffer, UINT nSize, WORD nLangId, DWORD &nId, bool bOnlyPrimary)
 {
 	LPWORD pData = NULL;
-	for ( pData = (LPWORD)pBuffer ; (LPBYTE)pData < ( (LPBYTE)pBuffer ) + nSize ; pData += 2 )
+	for ( pData = (LPWORD)pBuffer; (LPBYTE)pData < ( (LPBYTE)pBuffer ) + nSize; pData += 2 )
 	{
 		if ( *pData == nLangId )
 		{
@@ -1530,7 +1530,7 @@ bool CLibraryBuilderInternals::GetLanguageId(LPVOID pBuffer, UINT nSize, WORD nL
 	if ( ! bOnlyPrimary )
 		return false;
 
-	for ( pData = (LPWORD)pBuffer ; (LPBYTE)pData < ( (LPBYTE)pBuffer ) + nSize ; pData += 2 )
+	for ( pData = (LPWORD)pBuffer; (LPBYTE)pData < ( (LPBYTE)pBuffer ) + nSize; pData += 2 )
 	{
 		if ( ( *pData & 0x00FF ) == ( nLangId & 0x00FF ) )
 		{
@@ -1676,7 +1676,7 @@ bool CLibraryBuilderInternals::ReadJPEG(DWORD nIndex, HANDLE hFile)
 	WORD nWidth = 0, nHeight = 0;
 	CString strComment;
 
-	for ( DWORD nSeek = 512 ; nSeek > 0 ; nSeek-- )
+	for ( DWORD nSeek = 512; nSeek > 0; nSeek-- )
 	{
 		if ( ! ReadFile( hFile, &nByte, 1, &nRead, NULL ) || nRead != 1 )
 			return false;
@@ -1737,7 +1737,7 @@ bool CLibraryBuilderInternals::ReadJPEG(DWORD nIndex, HANDLE hFile)
 
 	strComment.Trim();
 
-	for ( int nChar = 0 ; nChar < strComment.GetLength() ; nChar++ )
+	for ( int nChar = 0; nChar < strComment.GetLength(); nChar++ )
 	{
 		if ( strComment[ nChar ] < 32 )
 			strComment.SetAt( nChar, '?' );
@@ -2229,7 +2229,7 @@ bool CLibraryBuilderInternals::ReadFLV(DWORD nIndex, HANDLE hFile)
 
 	DWORD nLastTagSize = 0;
 	DWORD nTags = 0;
-	for ( ; ! bMetadata ; ++nTags )
+	for ( ; ! bMetadata; ++nTags )
 	{
 		UI32 PreviousTagSize;
 		if ( ! ReadFile( hFile, &PreviousTagSize, sizeof( PreviousTagSize ), &nRead, NULL ) || nRead != sizeof( PreviousTagSize ) )
@@ -2257,7 +2257,7 @@ bool CLibraryBuilderInternals::ReadFLV(DWORD nIndex, HANDLE hFile)
 		{
 			TRACE( "FLV found script tag.\n" );
 
-			for ( DWORD nRemaning = nDataSize ; nRemaning > 3 ; )	// Except last SCRIPTDATAOBJECTEND(UI24) == 0x000009
+			for ( DWORD nRemaning = nDataSize; nRemaning > 3; )	// Except last SCRIPTDATAOBJECTEND(UI24) == 0x000009
 			{
 				CComVariant var;
 				if ( ! ReadFLVVariable( hFile, nRemaning, var, pXML ) )
@@ -2435,7 +2435,7 @@ bool CLibraryBuilderInternals::ReadASF(DWORD nIndex, HANDLE hFile)
 			if ( nRead != sizeof( nStrLen ) )
 				break;
 
-			for ( int nStr = 0 ; nStr < 5 ; nStr++ )
+			for ( int nStr = 0; nStr < 5; nStr++ )
 			{
 				if ( ! nStrLen[ nStr ] || nStrLen[ nStr ] & 1 )
 					continue;
@@ -2604,7 +2604,7 @@ bool CLibraryBuilderInternals::ReadMPEG(DWORD nIndex, HANDLE hFile)
 	DWORD nHeader = 0;
 
 	DWORD nSeek = 8192;
-	for ( ; nSeek > 0 ; nSeek--, nHeader <<= 8 )
+	for ( ; nSeek > 0; nSeek--, nHeader <<= 8 )
 	{
 		DWORD nRead = 0;
 		ReadFile( hFile, &nHeader, 1, &nRead, NULL );
@@ -2673,7 +2673,7 @@ bool CLibraryBuilderInternals::ReadOGG(DWORD nIndex, HANDLE hFile)
 	if ( ! ReadFile( hFile, &nHeader, 4, &nDummy, NULL ) )
 		return false;
 
-	for ( DWORD nSeek = 0 ; nSeek < 16384 ; nSeek++ )
+	for ( DWORD nSeek = 0; nSeek < 16384; nSeek++ )
 	{
 		if ( nHeader == 'SggO' )
 			break;
@@ -2717,7 +2717,7 @@ bool CLibraryBuilderInternals::ReadOGG(DWORD nIndex, HANDLE hFile)
 
 	augment::auto_ptr< CXMLElement > pXML( new CXMLElement( NULL, L"audio" ) );
 
-	for ( ; nComments && nOGG > 4 ; nComments-- )
+	for ( ; nComments && nOGG > 4; nComments-- )
 	{
 		if ( ! ReadOGGString( pOGG, nOGG, strComment ) )
 			break;
@@ -2736,7 +2736,7 @@ bool CLibraryBuilderInternals::ReadOGG(DWORD nIndex, HANDLE hFile)
 		// Decode UTF-8 string
 		int nLength = strValue.GetLength();
 		auto_array< CHAR > pszDest( new CHAR[ nLength ] );
-		for ( int nLen = 0 ; nLen < nLength ; nLen++ )
+		for ( int nLen = 0; nLen < nLength; nLen++ )
 			pszDest[ nLen ] = (CHAR)strValue.GetAt( nLen );
 		strValue = UTF8Decode( pszDest.get(), nLength );
 		strValue.Trim();
@@ -2781,7 +2781,7 @@ bool CLibraryBuilderInternals::ReadOGG(DWORD nIndex, HANDLE hFile)
 
 	DWORD nLength = 0;
 
-	for ( nComments = 2 ; ; nComments++ )
+	for ( nComments = 2; ; nComments++ )
 	{
 		if ( ! ReadOGGPage( hFile, nOGG, 0xFF, nComments, 0xFFFFFFFF ) )
 			break;
@@ -2849,7 +2849,7 @@ BYTE* CLibraryBuilderInternals::ReadOGGPage(HANDLE hFile, DWORD& nBuffer, BYTE n
 	if ( nRead != 1 )
 		return NULL;
 
-	for ( ; nByte ; nByte-- )
+	for ( ; nByte; nByte-- )
 	{
 		ReadFile( hFile, &nChunk, 1, &nRead, NULL );
 		if ( nRead != 1 )
@@ -2893,7 +2893,7 @@ bool CLibraryBuilderInternals::ReadOGGString(BYTE*& pOGG, DWORD& nOGG, CString& 
 		return false;
 
 	LPTSTR pszOut = str.GetBuffer( nLen + 1 );
-	for ( ; nLen ; nLen--, nOGG-- )
+	for ( ; nLen; nLen--, nOGG-- )
 		*pszOut++ = (TCHAR)*pOGG++;
 	*pszOut++ = 0;
 	str.ReleaseBuffer();
@@ -2996,7 +2996,7 @@ bool CLibraryBuilderInternals::ReadAPE(DWORD nIndex, HANDLE hFile, bool bPreferF
 		Text[ L"musicip puid" ]				= 'M';
 	}
 
-	for ( int nTag = 0 ; nTag < pFooter.nFields ; nTag++ )
+	for ( int nTag = 0; nTag < pFooter.nFields; nTag++ )
 	{
 		DWORD nLength, nFlags;
 
@@ -3662,7 +3662,7 @@ bool CLibraryBuilderInternals::ReadPDF(DWORD nIndex, HANDLE hFile, LPCTSTR pszPa
 		if ( _stscanf( strLine, L"%lu %lu", &nCountStart, &nCount ) != 2 )
 			return false;
 
-		for ( DWORD nLines = 0 ; nLines < nCount ; nLines++ )
+		for ( DWORD nLines = 0; nLines < nCount; nLines++ )
 			ReadPDFLine( hFile, false );
 		nCount += nCountStart;	// Total number of objects
 	}
@@ -3693,7 +3693,7 @@ bool CLibraryBuilderInternals::ReadPDF(DWORD nIndex, HANDLE hFile, LPCTSTR pszPa
 			return false;
 
 		int nLines;
-		for ( nLines = 10 ; nLines ; --nLines )
+		for ( nLines = 10; nLines; --nLines )
 		{
 			strLine = ReadPDFLine( hFile, true );
 			if ( strLine.CompareNoCase( L"trailer" ) == 0 )
@@ -3782,7 +3782,7 @@ bool CLibraryBuilderInternals::ReadPDF(DWORD nIndex, HANDLE hFile, LPCTSTR pszPa
 			return false;
 
 		// Collect objects positions from the references
-		for ( DWORD nObjectNo = nCountStart ; nObjectNo < nTotal ; nObjectNo++ )
+		for ( DWORD nObjectNo = nCountStart; nObjectNo < nTotal; nObjectNo++ )
 		{
 			strLine = ReadPDFLine( hFile, false );
 			strLine.Trim();
@@ -3791,7 +3791,7 @@ bool CLibraryBuilderInternals::ReadPDF(DWORD nIndex, HANDLE hFile, LPCTSTR pszPa
 			if ( strLine.GetAt( 17 ) == L'n' )
 			{
 				LPCTSTR pszInt = strLine;
-				for ( ; *pszInt == '0' ; pszInt++ );
+				for ( ; *pszInt == '0'; pszInt++ );
 				if ( *pszInt != 0 && _stscanf( pszInt, L"%lu", &pOffset[ nObjectNo ] ) != 1 )
 					return false;
 			}
@@ -3924,7 +3924,7 @@ bool CLibraryBuilderInternals::ReadPDF(DWORD nIndex, HANDLE hFile, LPCTSTR pszPa
 	if ( nPages == 0 )
 	{
 		int nObjPos = 0;
-		for ( nOffset = 0 ; nOffset < nCount ; nOffset++ )
+		for ( nOffset = 0; nOffset < nCount; nOffset++ )
 		{
 			if ( pOffset[ nOffset ] == 0 )
 				continue;
@@ -4016,7 +4016,7 @@ bool CLibraryBuilderInternals::ReadPDF(DWORD nIndex, HANDLE hFile, LPCTSTR pszPa
 						CString strNextLine = ReadPDFLine( hFile, false, true );
 
 						// Workaround for string with embedded zero bytes
-						for ( int i = 0 ; i < strNextLine.GetLength() ; i++ )
+						for ( int i = 0; i < strNextLine.GetLength(); i++ )
 							strLine += strNextLine.GetAt( i );
 
 						if ( strLine.GetAt( strLine.GetLength() - 1 ) == L')' )
@@ -4136,7 +4136,7 @@ CString	CLibraryBuilderInternals::DecodePDFText(CString strInput)
 		LPCTSTR p = strInput;
 		if ( bWide )
 		{
-			for ( DWORD nHex = 0 ; nHex < nByte / 2 ; nHex++, p += 4 )
+			for ( DWORD nHex = 0; nHex < nByte / 2; nHex++, p += 4 )
 			{
 				pByte[ nHex ] =
 					(WCHAR)unhex( p[ 0 ] ) << 12 |
@@ -4148,7 +4148,7 @@ CString	CLibraryBuilderInternals::DecodePDFText(CString strInput)
 		}
 		else
 		{
-			for ( DWORD nHex = 0 ; nHex < nByte ; nHex++, p += 2 )
+			for ( DWORD nHex = 0; nHex < nByte; nHex++, p += 2 )
 			{
 				pByte[ nHex ] =
 					(WCHAR)unhex( p[ 0 ] ) <<  4 |
@@ -4160,7 +4160,7 @@ CString	CLibraryBuilderInternals::DecodePDFText(CString strInput)
 	else
 	{
 		DWORD nShift = 0;
-		for ( DWORD nChar = 0 ; nChar < nByte && nChar >= nShift ; nChar++ )
+		for ( DWORD nChar = 0; nChar < nByte && nChar >= nShift; nChar++ )
 		{
 			WCHAR nTemp = strInput.GetAt( nChar );
 			if ( nTemp == '\\' && nChar + 1 < nByte )
@@ -4243,7 +4243,7 @@ CString	CLibraryBuilderInternals::DecodePDFText(CString strInput)
 	{
 		nByte = ( nByte - bCharsToMove ) / 2;
 		WCHAR* pszDest = strResult.GetBuffer( nByte );
-		for ( DWORD nPos = 0 ; nPos < nByte ; nPos++ )
+		for ( DWORD nPos = 0; nPos < nByte; nPos++ )
 		{
 			pszDest[ nPos ] =
 				pByte[ nPos * 2 + 1 + bCharsToMove ] |
@@ -4278,7 +4278,7 @@ CString CLibraryBuilderInternals::ReadPDFLine(HANDLE hFile, bool bReverse, bool 
 	TCHAR cChar = 0;
 	CString str;
 
-	for ( nLength = 0 ; ReadFile( hFile, &cChar, 1, &nRead, NULL ) && nRead == 1 && nLength++ < 4096 ; )
+	for ( nLength = 0; ReadFile( hFile, &cChar, 1, &nRead, NULL ) && nRead == 1 && nLength++ < 4096; )
 	{
 		if ( bReverse )
 			if ( SetFilePointer( hFile, -2, NULL, FILE_CURRENT ) == 0 )
@@ -4464,7 +4464,7 @@ bool CLibraryBuilderInternals::ReadCHM(DWORD nIndex, HANDLE hFile, LPCTSTR pszPa
 	bool bHFound = false;
 	int nFragmentPos = 0;
 
-	for ( nPos = 0 ; ReadFile( hFile, &szByte, 1, &nRead, NULL ) && nPos++ < MAX_LENGTH_ALLOWED ; )
+	for ( nPos = 0; ReadFile( hFile, &szByte, 1, &nRead, NULL ) && nPos++ < MAX_LENGTH_ALLOWED; )
 	{
 		if ( nRead != 1 )
 		{
@@ -4567,7 +4567,7 @@ bool CLibraryBuilderInternals::ReadCHM(DWORD nIndex, HANDLE hFile, LPCTSTR pszPa
 	}
 	SetFilePointer( hFile, nPos, NULL, FILE_BEGIN );
 
-	for ( int nCount = 1 ; nCount < 5 && ! bCorrupted ; nCount++ )	// nCount may be up to 6
+	for ( int nCount = 1; nCount < 5 && ! bCorrupted; nCount++ )	// nCount may be up to 6
 	{
 		// Unknown data
 		ReadFile( hFile, &nData, sizeof( nData ), &nRead, NULL );
@@ -4894,7 +4894,7 @@ bool CLibraryBuilderInternals::ReadBook(DWORD nIndex, CString strPath)
 		if ( strPath.Find( L"20" ) > 4 || strPath.Find( L"19" ) > 4 )
 		{
 			CString strYear;
-			for ( int i = 2024 ; i > 1940 ; i-- )
+			for ( int i = 2024; i > 1940; i-- )
 			{
 				strYear.Format( L"%i", i );
 				if ( strPath.Find( strYear ) > 4 )

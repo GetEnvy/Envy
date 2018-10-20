@@ -1,8 +1,8 @@
 //
 // RouteCache.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2015 and Shareaza 2002-2007
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2015
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -204,12 +204,12 @@ CRouteCacheTable::~CRouteCacheTable()
 CRouteCacheItem* CRouteCacheTable::Find(const Hashes::Guid& oGUID)
 {
 	WORD nGUID = 0, *ppGUID = (WORD*)&oGUID[ 0 ];
-	for ( int nIt = 8 ; nIt ; nIt-- )
+	for ( int nIt = 8; nIt; nIt-- )
 		nGUID = WORD( ( nGUID + *ppGUID++ ) & 0xffff );
 
 	CRouteCacheItem* pItem = *( m_pHash + ( nGUID & ROUTE_HASH_MASK ) );
 
-	for ( ; pItem ; pItem = pItem->m_pNext )
+	for ( ; pItem; pItem = pItem->m_pNext )
 	{
 		if ( validAndEqual( oGUID, pItem->m_oGUID ) ) return pItem;
 	}
@@ -226,7 +226,7 @@ CRouteCacheItem* CRouteCacheTable::Add(const Hashes::Guid& oGUID, const CNeighbo
 
 	WORD nGUID = 0;
 	WORD *ppGUID = (WORD*)&oGUID[ 0 ];
-	for ( int nIt = 8 ; nIt ; nIt-- )
+	for ( int nIt = 8; nIt; nIt-- )
 		nGUID = WORD( ( nGUID + *ppGUID++ ) & 0xffff );
 
 	CRouteCacheItem** pHash = m_pHash + ( nGUID & ROUTE_HASH_MASK );
@@ -254,11 +254,11 @@ void CRouteCacheTable::Remove(CNeighbour* pNeighbour)
 {
 	CRouteCacheItem** pHash = m_pHash;
 
-	for ( int nHash = 0 ; nHash < ROUTE_HASH_SIZE ; nHash++, pHash++ )
+	for ( int nHash = 0; nHash < ROUTE_HASH_SIZE; nHash++, pHash++ )
 	{
 		CRouteCacheItem** pLast = pHash;
 
-		for ( CRouteCacheItem* pItem = *pLast ; pItem ; )
+		for ( CRouteCacheItem* pItem = *pLast; pItem; )
 		{
 			CRouteCacheItem* pNext = pItem->m_pNext;
 
@@ -317,7 +317,7 @@ void CRouteCacheTable::Resize(DWORD nSize)
 
 	CRouteCacheItem* pItem = m_pBuffer;
 
-	for ( DWORD nPos = m_nBuffer ; nPos ; nPos--, pItem++ )
+	for ( DWORD nPos = m_nBuffer; nPos; nPos--, pItem++ )
 	{
 		if ( nPos == 1 )
 			pItem->m_pNext = NULL;

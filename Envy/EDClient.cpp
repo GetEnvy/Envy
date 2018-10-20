@@ -2,7 +2,7 @@
 // EDClient.cpp
 //
 // This file is part of Envy (getenvy.com) © 2016-2018
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2008
+// Portions copyright Shareaza 2002-2008 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -37,7 +37,6 @@
 #include "DownloadSource.h"
 #include "DownloadTransferED2K.h"
 #include "UploadTransferED2K.h"
-#include "ImageServices.h"
 #include "ImageFile.h"
 #include "ThumbCache.h"
 
@@ -610,7 +609,7 @@ CHostBrowser* CEDClient::GetBrowser() const
 
 	if ( CMainWnd* pMainWnd = theApp.SafeMainWnd() )
 	{
-		for ( POSITION pos = pMainWnd->m_pWindows.GetIterator() ; pos ; )
+		for ( POSITION pos = pMainWnd->m_pWindows.GetIterator(); pos; )
 		{
 			CChildWnd* pChildWnd = pMainWnd->m_pWindows.GetNext( pos );
 			if ( pChildWnd->IsKindOf( RUNTIME_CLASS( CBrowseHostWnd ) ) )
@@ -1725,7 +1724,7 @@ BOOL CEDClient::OnCaptchaRequest(CEDPacket* pPacket)
 	}
 
 	// Skip all tags (future use)
-	for ( BYTE nCount = pPacket->ReadByte() ; nCount && pPacket->GetRemaining() ; --nCount )
+	for ( BYTE nCount = pPacket->ReadByte(); nCount && pPacket->GetRemaining(); --nCount )
 	{
 		CEDTag pTag;
 		if ( ! pTag.Read( pPacket ) )
@@ -1771,7 +1770,7 @@ BOOL CEDClient::OnAskSharedDirs(CEDPacket* /*pPacket*/)
 		{
 			CList< CString > oFolderPath;
 			CList< CLibraryFolder* > oFolders;
-			for ( POSITION pos = LibraryFolders.GetFolderIterator() ; pos ; )
+			for ( POSITION pos = LibraryFolders.GetFolderIterator(); pos; )
 			{
 				oFolders.AddTail( LibraryFolders.GetNextFolder( pos ) );
 			}
@@ -1782,7 +1781,7 @@ BOOL CEDClient::OnAskSharedDirs(CEDPacket* /*pPacket*/)
 				if ( pFolder->IsShared() )
 					oFolderPath.AddTail( pFolder->GetRelativeName() );
 
-				for ( POSITION pos = pFolder->GetFolderIterator() ; pos ; )
+				for ( POSITION pos = pFolder->GetFolderIterator(); pos; )
 				{
 					oFolders.AddTail( pFolder->GetNextFolder( pos ) );
 				}
@@ -1793,7 +1792,7 @@ BOOL CEDClient::OnAskSharedDirs(CEDPacket* /*pPacket*/)
 			{
 				pReply->WriteLongLE( (DWORD)oFolderPath.GetCount() );
 
-				for ( POSITION pos = oFolderPath.GetHeadPosition() ; pos ; )
+				for ( POSITION pos = oFolderPath.GetHeadPosition(); pos; )
 				{
 					CString strPath = oFolderPath.GetNext( pos );
 					pReply->WriteEDString( strPath, m_bEmUnicode );
@@ -1829,7 +1828,7 @@ BOOL CEDClient::OnViewSharedDir(CEDPacket* pPacket)
 			{
 				// Count files
 				DWORD nCount = 0;
-				for ( POSITION pos = pFolder->GetFileIterator() ; pos ; )
+				for ( POSITION pos = pFolder->GetFileIterator(); pos; )
 				{
 					CLibraryFile* pFile = pFolder->GetNextFile( pos );
 					if ( pFile->IsShared() )
@@ -1844,7 +1843,7 @@ BOOL CEDClient::OnViewSharedDir(CEDPacket* pPacket)
 					// Number of files
 					pReply->WriteLongLE( nCount );
 
-					for ( POSITION pos = pFolder->GetFileIterator() ; pos && nCount ; )
+					for ( POSITION pos = pFolder->GetFileIterator(); pos && nCount; )
 					{
 						CLibraryFile* pFile = pFolder->GetNextFile( pos );
 
@@ -2001,7 +2000,7 @@ BOOL CEDClient::OnAskSharedDirsAnswer(CEDPacket* pPacket)
 		// Read number of directories
 		DWORD nCount = pPacket->ReadLongLE();
 
-		for ( DWORD i = 0 ; i < nCount ; i++ )
+		for ( DWORD i = 0; i < nCount; i++ )
 		{
 			if ( pPacket->GetRemaining() < 2 )
 				break;
@@ -2009,7 +2008,7 @@ BOOL CEDClient::OnAskSharedDirsAnswer(CEDPacket* pPacket)
 			// Read directory name
 			CString strDir = pPacket->ReadEDString( m_bEmUnicode );
 
-			TRACE( L"Folder: %s\n", strDir );
+			TRACE( "Folder: %s\n", (LPCSTR)CT2A( strDir ) );
 
 			// Request directory content
 			if ( CEDPacket* pReply = CEDPacket::New( ED2K_C2C_VIEWSHAREDDIR ) )
@@ -2043,7 +2042,7 @@ BOOL CEDClient::OnViewSharedDirAnswer(CEDPacket* pPacket)
 			// Read number of files
 			DWORD nCount = pPacket->ReadLongLE();
 
-			for ( DWORD i = 0 ; i < nCount ; i++ )
+			for ( DWORD i = 0; i < nCount; i++ )
 			{
 				if ( pPacket->GetRemaining() < Hashes::Ed2kHash::byteCount + 4 + 2 + 4 )
 					break;
@@ -2210,7 +2209,7 @@ BOOL CEDClient::OnPreviewAnswer(CEDPacket* pPacket)
 			pPacket->Read( (void*)&nFrames, 1 );
 			if ( nFrames > 0 )
 			{
-				for ( int nFrame = 0 ; nFrame < nFrames ; nFrame++ )
+				for ( int nFrame = 0; nFrame < nFrames; nFrame++ )
 				{
 					DWORD nFrameSize = pPacket->ReadLongLE();
 					if ( pPacket->GetRemaining() < static_cast<int>( nFrameSize ) )
@@ -2226,7 +2225,7 @@ BOOL CEDClient::OnPreviewAnswer(CEDPacket* pPacket)
 						BYTE szByte = 0;
 
 						// Write only the first frame
-						for ( DWORD nByte = 0 ; nByte < nFrameSize ; nByte++ )
+						for ( DWORD nByte = 0; nByte < nFrameSize; nByte++ )
 						{
 							szByte = pPacket->ReadByte();
 							pFile.Write( &szByte, 1 );
@@ -2275,7 +2274,7 @@ BOOL CEDClient::OnSourceRequest(CEDPacket* pPacket)
 
 	if ( CDownload* pDownload = Downloads.FindByED2K( oHash, TRUE ) )
 	{
-		for ( POSITION posSource = pDownload->GetIterator() ; posSource ; )
+		for ( POSITION posSource = pDownload->GetIterator(); posSource; )
 		{
 			CDownloadSource* pSource = pDownload->GetNext( posSource );
 
@@ -2400,11 +2399,11 @@ void CEDClient::WritePartStatus(CEDPacket* pPacket, CDownload* pDownload)
 
 	if ( pDownload->m_pHashsetBlock != NULL && pDownload->m_nHashsetBlock == nParts )
 	{
-		for ( QWORD nPart = 0 ; nPart < nParts ; )
+		for ( QWORD nPart = 0; nPart < nParts; )
 		{
 			BYTE nByte = 0;
 
-			for ( DWORD nBit = 0 ; nBit < 8 && nPart < nParts ; nBit++, nPart++ )
+			for ( DWORD nBit = 0; nBit < 8 && nPart < nParts; nBit++, nPart++ )
 			{
 				if ( pDownload->m_pHashsetBlock[ nPart ] == TRI_TRUE )
 					nByte |= ( 1 << nBit );
@@ -2415,11 +2414,11 @@ void CEDClient::WritePartStatus(CEDPacket* pPacket, CDownload* pDownload)
 	}
 	else
 	{
-		for ( QWORD nPart = 0 ; nPart < nParts ; )
+		for ( QWORD nPart = 0; nPart < nParts; )
 		{
 			BYTE nByte = 0;
 
-			for ( DWORD nBit = 0 ; nBit < 8 && nPart < nParts ; nBit++, nPart++ )
+			for ( DWORD nBit = 0; nBit < 8 && nPart < nParts; nBit++, nPart++ )
 			{
 				QWORD nOffset = nPart * ED2K_PART_SIZE;
 				QWORD nLength = min( (QWORD)ED2K_PART_SIZE, pDownload->m_nSize - nOffset );

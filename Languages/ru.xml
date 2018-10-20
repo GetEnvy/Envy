@@ -3,7 +3,7 @@
 
 <!-- Envy Default Russian Skin File -->
 
-<!-- Translation based on default en.xml r21 -->
+<!-- Translation based on default en.xml r22 -->
 <!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -15,7 +15,7 @@
 <manifest
 	name="Pусский"
 	author="dAbserver"
-	updatedBy="Rolandas Rudomanskis, ryo-oh-ki"
+	updatedby="Rolandas Rudomanskis, ryo-oh-ki"
 	description="Envy Default Russian Skin File"
 	link="http://getenvy.com"
 	email="Contact(at)GetEnvy.com"
@@ -3367,8 +3367,9 @@
 	<string id="20807" text="Отказываю в раздаче «%s» %s (%s), слишком много параллельных соединений с хостом."/>
 	<string id="20808" text="Отказываю в раздаче «%s» на %s (%s), занят и клиент не поддерживает очередей."/>
 	<string id="20809" text="Отказываю в раздаче «%s» %s (%s), все соответствующие очереди переполнены."/>
-	<string id="20810" text="Хост раздачи %s запросил невыполнимый отрезок файла «%s»."/>
-	<string id="20811" text="Загрузки в сети eDonkey отменять не рекомендуется. Уверены, что хотите отменить эту загрузку?"/>
+	<string id="20810" text="Отказываю в раздаче «%s» %s (%s), Библиотека занята."/>
+	<string id="20811" text="Хост раздачи %s запросил невыполнимый отрезок файла «%s»."/>
+	<string id="20861" text="Загрузки в сети eDonkey отменять не рекомендуется. Уверены, что хотите отменить эту загрузку?"/>
 	<string id="20812" text="Не могу открыть «%s», чтобы раздать хосту %s, ошибка диска/файла."/>
 	<string id="20813" text="Инициализирую соединение активной доставки с %s. %s"/>
 	<string id="20814" text="Невозможно соединиться с %s для активной доставки."/>
@@ -3415,14 +3416,14 @@
 	<string id="20858" text="Вышло время для ожидания запроса с хоста раздачи %s."/>
 	<string id="20859" text="Закрываю соединение раздачи на %s из-за нехватки трафика."/>
 	<string id="20860" text="Посылаю данные tiger-tree для «%s» на %s."/>
-	<string id="20861" text="Удалена загрузка «%s» на %s."/>
-	<string id="20862" text="Добавить"/>
-	<string id="20864" text="Просматривать"/>
-	<string id="20865" text="Соединиться"/>
-	<string id="20866" text="Файл:"/>
-	<string id="20867" text="Хост:"/>
-	<string id="20868" text="Порт:"/>
-	<!--string id="20869" text="Невозможно показать диалог действий со ссылками, так как Envy занята."-->
+	<string id="20862" text="Удалена загрузка «%s» на %s."/>
+	<string id="20864" text="Добавить"/>
+	<string id="20865" text="Просматривать"/>
+	<string id="20866" text="Соединиться"/>
+	<string id="20867" text="Файл:"/>
+	<string id="20868" text="Хост:"/>
+	<string id="20869" text="Порт:"/>
+	<!--string id="20876" text="Невозможно показать диалог действий со ссылками, так как Envy занята."-->
 	<string id="20870" text="Невозможно разобрать ссылку: Envy не понимает этой ссылки."/>
 	<string id="20871" text="Получена ссылка «%s»"/>
 	<string id="20872" text="Тип:"/>

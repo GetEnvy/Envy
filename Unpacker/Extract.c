@@ -1,7 +1,7 @@
 //
 // Extract.c
 //
-// This file is part of Envy (getenvy.com) © 2016
+// This file is part of Envy (getenvy.com) © 2016-2018
 //
 // Portions of this page have been previously released into the public domain.
 // You are free to redistribute and modify it without any restrictions
@@ -10,7 +10,7 @@
 // The Zlib  library is Copyright (C) 1995-2002 Jean-loup Gailly and Mark Adler.
 // The Unzip library is Copyright (C) 1998-2003 Gilles Vollant.
 
-#include "Packages.h"
+#include "Unpacker.h"
 
 // EXPORT BEGIN
 void ExtractSkinFile(LPCTSTR szFile)
@@ -85,7 +85,7 @@ int GetSkinFileCount(LPTSTR pszFile)
 	char* tmp = pszDest;
 	LPTSTR pszScanName = pszFile;
 
-	for ( ; *pszScanName ; pszScanName++, pszDest++ ) *pszDest = (char)*pszScanName;
+	for ( ; *pszScanName; pszScanName++, pszDest++ ) *pszDest = (char)*pszScanName;
 	*pszDest = '\0';
 
 	ufile = unzOpen( tmp );
@@ -96,7 +96,7 @@ int GetSkinFileCount(LPTSTR pszFile)
 		pszDest = tmp;
 		if ( GetShortPathNameW( pszFile, pszScanName, (DWORD)wcslen( pszFile ) + 1 ) )
 		{
-			for ( ; *pszScanName ; pszScanName++, pszDest++ ) *pszDest = (char)*pszScanName;
+			for ( ; *pszScanName; pszScanName++, pszDest++ ) *pszDest = (char)*pszScanName;
 			*pszDest = '\0';
 			ufile = unzOpen( tmp );
 		}
@@ -121,7 +121,7 @@ int ValidateSkin(LPTSTR pszFile, HWND hwndDlg)
 	char* tmpName = pszDest;
 	LPTSTR pszScanName = pszFile;
 
-	for ( ; *pszScanName ; pszScanName++, pszDest++ ) *pszDest = (char)*pszScanName;
+	for ( ; *pszScanName; pszScanName++, pszDest++ ) *pszDest = (char)*pszScanName;
 	*pszDest = '\0';
 
 	ufile = unzOpen( tmpName );
@@ -132,7 +132,7 @@ int ValidateSkin(LPTSTR pszFile, HWND hwndDlg)
 		pszDest = tmpName;
 		if ( GetShortPathNameW( pszFile, pszScanName, (DWORD)wcslen( pszFile ) + 1 ) )
 		{
-			for ( ; *pszScanName ; pszScanName++, pszDest++ )
+			for ( ; *pszScanName; pszScanName++, pszDest++ )
 				*pszDest = (char)*pszScanName;
 			*pszDest = '\0';
 			ufile = unzOpen( tmpName );
@@ -234,7 +234,7 @@ int ExtractSkin(LPTSTR pszFile, HWND hwndDlg)
 	char* tmp = pszDest;
 	LPTSTR pszScanName = pszFile;
 
-	for ( ; *pszScanName ; pszScanName++, pszDest++ ) *pszDest = (char)*pszScanName;
+	for ( ; *pszScanName; pszScanName++, pszDest++ ) *pszDest = (char)*pszScanName;
 	*pszDest = '\0';
 
 	ufile = unzOpen( tmp );
@@ -245,7 +245,7 @@ int ExtractSkin(LPTSTR pszFile, HWND hwndDlg)
 		pszDest = tmp;
 		if ( GetShortPathNameW( pszFile, pszScanName, (DWORD)wcslen( pszFile ) + 1 ) )
 		{
-			for ( ; *pszScanName ; pszScanName++, pszDest++ ) *pszDest = (char)*pszScanName;
+			for ( ; *pszScanName; pszScanName++, pszDest++ ) *pszDest = (char)*pszScanName;
 			*pszDest = '\0';
 			ufile = unzOpen( tmp );
 		}

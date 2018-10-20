@@ -1,8 +1,8 @@
 //
 // CtrlMonitorBar.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2007
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -148,7 +148,7 @@ CSize CMonitorBarCtrl::CalcFixedLayout(BOOL /*bStretch*/, BOOL /*bHorz*/)
 	const int nHeight = Settings.General.GUIMode == GUI_WINDOWED ? 30 : 38;
 	CSize size( Settings.Skin.MonitorbarWidth, nHeight );
 
-	for ( int nSnap = 1 ; nSnap >= 0 ; nSnap-- )
+	for ( int nSnap = 1; nSnap >= 0; nSnap-- )
 	{
 		if ( m_pSnapBar[ nSnap ] != NULL && m_pSnapBar[ nSnap ]->IsVisible() )
 		{
@@ -225,7 +225,7 @@ void CMonitorBarCtrl::DoPaint(CDC* pDC)
 	else
 		rcClient.DeflateRect( 2, 3, 2, 1 );
 
-	for ( int nY = rcClient.top + 4 ; nY < rcClient.bottom - 4 ; nY += 2 )
+	for ( int nY = rcClient.top + 4; nY < rcClient.bottom - 4; nY += 2 )
 	{
 		pMemDC->Draw3dRect( rcClient.left + 3, nY, 4, 1,
 			Colors.m_crDisabled, Colors.m_crDisabled );
@@ -303,7 +303,7 @@ void CMonitorBarCtrl::PaintHistory(CDC* pDC, CRect* prc)
 	const DWORD nMax = min( m_pTxItem->m_nLength, (DWORD)rc.Width() );
 	int nX = rc.right - 1;
 
-	for ( DWORD nPos = 0 ; nPos < nMax ; nPos++, nX-- )
+	for ( DWORD nPos = 0; nPos < nMax; nPos++, nX-- )
 	{
 		DWORD nTxValue = m_pTxItem->GetValueAt( nPos );
 		DWORD nRxValue = m_pRxItem->GetValueAt( nPos );
@@ -352,7 +352,7 @@ void CMonitorBarCtrl::PaintCurrent(CDC* pDC, CRect* prc, CGraphItem* pItem, DWOR
 	if ( nMaximum == 0 || pItem->m_nLength < 1 ) return;
 
 	DWORD nValue = (DWORD)pItem->GetValue( pItem->m_nCode );
-	nValue = nValue * rc.Height() / nMaximum ;
+	nValue = nValue * rc.Height() / nMaximum;
 	pDC->FillSolidRect( rc.left, rc.bottom - nValue, rc.Width(), nValue, pItem->m_nColor );
 
 	// Menu Icon Hover Bug Workaround  (ToDo: Also Fix in Proper Place)

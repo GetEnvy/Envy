@@ -2,7 +2,7 @@
 // CoolInterface.cpp
 //
 // This file is part of Envy (getenvy.com) © 2016-2018
-// Portions copyright PeerProject 2008-2015 and Shareaza 2002-2008
+// Portions copyright Shareaza 2002-2008 and PeerProject 2008-2015
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -56,7 +56,7 @@ CCoolInterface::~CCoolInterface()
 
 	HICON hIcon;
 	HWND hWnd;
-	for ( POSITION pos = m_pWindowIcons.GetStartPosition() ; pos ; )
+	for ( POSITION pos = m_pWindowIcons.GetStartPosition(); pos; )
 	{
 		m_pWindowIcons.GetNextAssoc( pos, hIcon, hWnd );
 		VERIFY( DestroyIcon( hIcon ) );
@@ -153,6 +153,7 @@ int CCoolInterface::ImageForID(UINT nID, int nImageListType) const
 	case LVSIL_BIG:
 		return m_pImageMap48.Lookup( nID, nImage ) ? nImage : -1;
 	}
+	theApp.Message( MSG_WARNING, L"Bad Imagemap Size %i for %i", nImageListType, nImage );
 	return -1;
 }
 
@@ -381,7 +382,7 @@ void CCoolInterface::SetIcon(HICON hIcon, BOOL bMirrored, BOOL bBigIcon, CWnd* p
 //		{
 //			if ( TOOLBAR_RES* pData = (TOOLBAR_RES*)LockResource( hGlobal ) )
 //			{
-//				for ( WORD nItem = 0 ; nItem < pData->wItemCount ; nItem++ )
+//				for ( WORD nItem = 0; nItem < pData->wItemCount; nItem++ )
 //				{
 //					if ( pData->items()[ nItem ] != ID_SEPARATOR )
 //					{
@@ -421,7 +422,7 @@ BOOL CCoolInterface::ConfirmImageList()
 void CCoolInterface::LoadIconsTo(CImageList& pImageList, const UINT nID[], BOOL bMirror /*0*/, int nImageListType /*1*/, int nSizeX /*0*/, int nSizeY /*0*/)
 {
 	int nCount = 0;
-	for ( ; nID[ nCount ] ; ++nCount );
+	for ( ; nID[ nCount ]; ++nCount );
 	ASSERT( nCount != 0 );
 
 	if ( nImageListType == 16 )
@@ -449,7 +450,7 @@ void CCoolInterface::LoadIconsTo(CImageList& pImageList, const UINT nID[], BOOL 
 			pImageList.Create( nSizeX, nSizeY, ILC_COLOR24|ILC_MASK, nCount, 0 ) ||
 			pImageList.Create( nSizeX, nSizeY, ILC_COLOR16|ILC_MASK, nCount, 0 ) );
 
-	for ( int i = 0 ; nID[ i ] ; ++i )
+	for ( int i = 0; nID[ i ]; ++i )
 	{
 		if ( HICON hIcon = CoolInterface.ExtractIcon( nID[ i ], bMirror, nImageListType, nSizeX, nSizeY ) )
 		{
@@ -481,7 +482,7 @@ void CCoolInterface::LoadFlagsTo(CImageList& pImageList)
 
 	VERIFY( pImageList.SetImageCount( nImages + nFlags ) );
 
-//	for ( int nTemp = 0 ; nTemp < nImages ; nTemp++ )
+//	for ( int nTemp = 0; nTemp < nImages; nTemp++ )
 //	{
 //		if ( HICON hIcon = ImageList_GetIcon( hList, nTemp, ILD_TRANSPARENT ) )
 //		{
@@ -492,7 +493,7 @@ void CCoolInterface::LoadFlagsTo(CImageList& pImageList)
 //		}
 //	}
 
-	for ( int nFlag = 0 ; nFlag < nFlags ; nFlag++ )
+	for ( int nFlag = 0; nFlag < nFlags; nFlag++ )
 	{
 		if ( HICON hIcon = Flags.ExtractIcon( nFlag ) )
 		{
@@ -518,7 +519,7 @@ void CCoolInterface::LoadFlagsTo(CImageList& pImageList)
 //	bmImages.DeleteObject();
 //
 //	// Replace with the skin images (if fails old images remain)
-//	for ( int nImage = 1 ; nImage < PROTOCOL_LAST ; nImage++ )
+//	for ( int nImage = 1; nImage < PROTOCOL_LAST; nImage++ )
 //	{
 //		if ( HICON hIcon = CoolInterface.ExtractIcon( (UINT)protocolCmdMap[ nImage ].commandID, FALSE ) )
 //		{
@@ -565,24 +566,31 @@ BOOL CCoolInterface::DrawWatermark(CDC* pDC, CRect* pRect, CBitmap* pMark, BOOL 
 	if ( pDC == NULL || pRect == NULL || pMark == NULL || pMark->m_hObject == NULL )
 		return FALSE;
 
-	BITMAP pWatermark;
-	CBitmap* pOldMark;
-	CDC dcMark;
+	BITMAP pWatermark = {};
+	if ( ! pMark->GetBitmap( &pWatermark ) ||
+		! pWatermark.bmWidth ||
+		! pWatermark.bmHeight ||
+		! pWatermark.bmPlanes ||
+		! pWatermark.bmBitsPixel )
+		return FALSE;
 
-	dcMark.CreateCompatibleDC( pDC );
+	CDC dcMark;
+	if ( ! dcMark.CreateCompatibleDC( pDC ) )
+		return FALSE;
+
 	if ( Settings.General.LanguageRTL )
 		SetLayout( dcMark.m_hDC, LAYOUT_BITMAPORIENTATIONPRESERVED );
-	pOldMark = (CBitmap*)dcMark.SelectObject( pMark );
-	pMark->GetBitmap( &pWatermark );
+
+	CBitmap* pOldMark = (CBitmap*)dcMark.SelectObject( pMark );
 
 	if ( ! bOverdraw && nOffX < 0 )		// Rare case fix
 		pDC->ExcludeClipRect( pRect->left + nOffX, pRect->top, pRect->left, pRect->bottom );
 
-	for ( int nY = pRect->top + nOffY ; nY < pRect->bottom ; nY += pWatermark.bmHeight )
+	for ( int nY = pRect->top + nOffY; nY < pRect->bottom; nY += pWatermark.bmHeight )
 	{
 		if ( nY + pWatermark.bmHeight < pRect->top ) continue;
 
-		for ( int nX = pRect->left + nOffX ; nX < pRect->right ; nX += pWatermark.bmWidth )
+		for ( int nX = pRect->left + nOffX; nX < pRect->right; nX += pWatermark.bmWidth )
 		{
 			if ( nX + pWatermark.bmWidth < pRect->left ) continue;
 
@@ -785,7 +793,7 @@ void CCoolInterface::FixThemeControls(CWnd* pWnd, BOOL bForce /*=TRUE*/)
 	if ( bThemed && ! bForce )
 		return;
 
-	for ( CWnd* pChild = pWnd->GetWindow( GW_CHILD ) ; pChild ; pChild = pChild->GetNextWindow() )
+	for ( CWnd* pChild = pWnd->GetWindow( GW_CHILD ); pChild; pChild = pChild->GetNextWindow() )
 	{
 		TCHAR szName[8];
 		GetClassName( pChild->GetSafeHwnd(), szName, 8 );		// Alt detection method for exceptions
@@ -853,29 +861,26 @@ BOOL CCoolInterface::Add(CSkin* pSkin, CXMLElement* pBase, HBITMAP hbmImage, COL
 		L"id7", L"id8", L"id9", L"id10", L"id11", L"id12", NULL };
 	int nIndex = 0;
 	int nIndexRev = GetImageCount( nImageListType ) - 1;	// Total number of images
-	for ( POSITION pos = pBase->GetElementIterator() ; pos ; )
+	for ( POSITION pos = pBase->GetElementIterator(); pos; )
 	{
 		CXMLElement* pXML = pBase->GetNextElement( pos );
 		if ( ! pXML->IsNamed( L"image" ) )
 		{
-			TRACE( L"Unknown tag \"%s\" inside \"%s:%s\" in CCoolInterface::Add\r\n",
-				pXML->GetName(), pBase->GetName(), pBase->GetAttributeValue( L"id" ) );
+			TRACE( "Unknown tag \"%s\" inside \"%s:%s\" in CCoolInterface::Add\r\n",
+				(LPCSTR)CT2A( pXML->GetName() ), (LPCSTR)CT2A( pBase->GetName() ), (LPCSTR)CT2A( pBase->GetAttributeValue( L"id" ) ) );
 			continue;
 		}
 
 		CString strValue = pXML->GetAttributeValue( L"index" );
-		if ( ! strValue.IsEmpty() )
+		if ( ! strValue.IsEmpty() && _stscanf( strValue, L"%i", &nIndex ) != 1 )
 		{
-			if ( _stscanf( strValue, L"%i", &nIndex ) != 1 )
-			{
-				TRACE( L"Image \"%s\" has invalid index \"%s\" in CCoolInterface::Add\r\n",
-					pBase->GetAttributeValue( L"id" ), strValue );
-				continue;
-			}
+			TRACE( "Image \"%s\" has invalid index \"%s\" in CCoolInterface::Add\r\n",
+				(LPCSTR)CT2A( pBase->GetAttributeValue( L"id" ) ), (LPCSTR)CT2A( strValue ) );
+			continue;
 		}
 
 		nIndex += nBase;
-		for ( int nName = 0 ; pszNames[ nName ] ; nName++ )
+		for ( int nName = 0; pszNames[ nName ]; nName++ )
 		{
 			UINT nID = pSkin->LookupCommandID( pXML, pszNames[ nName ] );
 			if ( nID )

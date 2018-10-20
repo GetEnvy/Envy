@@ -1,8 +1,8 @@
 //
 // CtrlSearchDetailPanel.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2008
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2008 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -31,7 +31,6 @@
 
 #include "Colors.h"
 #include "CoolInterface.h"
-#include "ImageServices.h"
 #include "ImageFile.h"
 #include "ShellIcons.h"
 #include "RichElement.h"
@@ -186,7 +185,7 @@ void CSearchDetailPanel::Update()
 	CClientDC dc( this );
 	int nHeight = 54 + m_pMetadata.Layout( &dc, rc.Width() );
 
-	for ( POSITION pos = m_pReviews.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pReviews.GetHeadPosition(); pos; )
 	{
 		Review* pReview = m_pReviews.GetNext( pos );
 		CRect rcReview( rc.left, nHeight, rc.right, nHeight );
@@ -212,7 +211,7 @@ void CSearchDetailPanel::Update()
 
 void CSearchDetailPanel::ClearReviews()
 {
-	for ( POSITION pos = m_pReviews.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pReviews.GetHeadPosition(); pos; )
 	{
 		delete m_pReviews.GetNext( pos );
 	}
@@ -253,7 +252,7 @@ void CSearchDetailPanel::OnVScroll(UINT nSBCode, UINT nPos, CScrollBar* /*pScrol
 	pScroll.fMask	= SIF_ALL;
 	GetScrollInfo( SB_VERT, &pScroll );
 
-	for ( POSITION pos = m_pReviews.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pReviews.GetHeadPosition(); pos; )
 	{
 		Review* pReview = m_pReviews.GetNext( pos );
 		pReview->Reposition( pScroll.nPos );
@@ -314,7 +313,7 @@ void CSearchDetailPanel::OnPaint()
 
 	if ( m_nRating > 1 )
 	{
-		for ( int nRating = m_nRating - 1 ; nRating ; nRating-- )
+		for ( int nRating = m_nRating - 1; nRating; nRating-- )
 		{
 			ptStar.x -= 16;
 			CoolInterface.Draw( &dc, IDI_STAR, 16, ptStar.x, ptStar.y, Colors.m_crWindow );
@@ -379,7 +378,7 @@ void CSearchDetailPanel::OnPaint()
 	dc.SetBkColor( Colors.m_crWindow );
 	dc.SetTextColor( 0 );
 
-	for ( POSITION pos = m_pReviews.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pReviews.GetHeadPosition(); pos; )
 	{
 		Review* pReview = m_pReviews.GetNext( pos );
 		pReview->Paint( &dc, GetScrollPos( SB_VERT ) );
@@ -556,7 +555,7 @@ void Review::Paint(CDC* pDC, int nScroll)
 
 	if ( m_nRating > 1 )
 	{
-		for ( int nRating = m_nRating - 1 ; nRating ; nRating-- )
+		for ( int nRating = m_nRating - 1; nRating; nRating-- )
 		{
 			ptStar.x -= 16;
 			CoolInterface.Draw( pDC, IDI_STAR, 16, ptStar.x, ptStar.y, Colors.m_crWindow );

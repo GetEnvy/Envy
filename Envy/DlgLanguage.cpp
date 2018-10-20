@@ -1,8 +1,8 @@
 //
 // DlgLanguage.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2007
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -162,7 +162,7 @@ void CLanguageDlg::OnPaint()
 	rc.right = rc.left + ITEM_WIDTH;
 	CFont* pOldFont = (CFont*)dc.SelectObject( &m_fntNormal );
 
-	for ( int nCount = 0 ; nCount < m_pPaths.GetSize() ; nCount += 3 )
+	for ( int nCount = 0; nCount < m_pPaths.GetSize(); nCount += 3 )
 	{
 		if ( nScroll > 0 )
 		{
@@ -559,7 +559,7 @@ BOOL CLanguageDlg::AddSkin(LPCTSTR pszPath, LPCTSTR pszName)
 		{
 			pByte += 2;
 
-			for ( DWORD nSwap = 0 ; nSwap < nByte ; nSwap ++ )
+			for ( DWORD nSwap = 0; nSwap < nByte; nSwap ++ )
 			{
 				register CHAR nTemp = pByte[ ( nSwap << 1 ) + 0 ];
 				pByte[ ( nSwap << 1 ) + 0 ] = pByte[ ( nSwap << 1 ) + 1 ];
@@ -648,7 +648,7 @@ BOOL CLanguageDlg::AddSkin(LPCTSTR pszPath, LPCTSTR pszName)
 	UINT nPriority = 100;
 	if ( ! strPriority.IsEmpty() && _stscanf( strPriority, L"%u", &nPriority ) == 1 && nPriority )
 	{
-		for ( int nIndex = 1 ; nIndex < m_pPaths.GetSize() ; nIndex++ )
+		for ( int nIndex = 1; nIndex < m_pPaths.GetSize(); nIndex++ )
 		{
 			if ( m_pPriorities.GetAt( nIndex ) <= nPriority )
 				continue;
@@ -660,7 +660,7 @@ BOOL CLanguageDlg::AddSkin(LPCTSTR pszPath, LPCTSTR pszName)
 			m_pPriorities.InsertAt( nIndex, nPriority );
 
 			m_pImages.Add( hIcon );
-			for ( int nCount = m_pImages.GetImageCount() - 1 ; nCount > nIndex ; nCount-- )
+			for ( int nCount = m_pImages.GetImageCount() - 1; nCount > nIndex; nCount-- )
 			{
 				m_pImages.Copy( nCount - 1, nCount, ILCF_SWAP );
 			}
@@ -684,7 +684,7 @@ void CLanguageDlg::Execute(int nSelected)
 	// Don't try to process selections past the end of the list
 	if ( nSelected - 1 >= m_pPaths.GetSize() ) return;
 
-	for ( int nItem = 0 ; nItem < m_pPaths.GetSize() ; nItem++ )
+	for ( int nItem = 0; nItem < m_pPaths.GetSize(); nItem++ )
 	{
 		theApp.WriteProfileInt( L"Skins", m_pPaths.GetAt( nItem ),
 			( nSelected - 1 ) == nItem );

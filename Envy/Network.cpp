@@ -1,8 +1,8 @@
 //
 // Network.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2017
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2008
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2008 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -77,7 +77,7 @@ inline bool IsValidDomain(LPCTSTR pszHost)
 		return false;	// Empty
 
 	int dot = 0;
-	for ( LPCTSTR p = pszHost ; *p ; ++p )
+	for ( LPCTSTR p = pszHost; *p; ++p )
 	{
 		if ( ! IsValidDomainSymbol( *p ) )
 			return false;	// Invalid symbol
@@ -129,7 +129,7 @@ BOOL CNetwork::Init()
 {
 	// Start Windows Sockets 1.1
 	WSADATA wsaData = {};
-	for ( int i = 1 ; i <= 2 ; i++ )
+	for ( int i = 1; i <= 2; i++ )
 	{
 		if ( WSAStartup( MAKEWORD( 1, 1 ), &wsaData ) )
 			return FALSE;
@@ -570,7 +570,7 @@ UINT CNetwork::GetResolveCount() const
 {
 	CQuickLock pLock( m_pLookupsSection );
 
-	return m_pLookups.GetCount();
+	return (UINT)m_pLookups.GetCount();
 }
 
 CNetwork::ResolveStruct* CNetwork::GetResolve(HANDLE hAsync)
@@ -590,7 +590,7 @@ void CNetwork::ClearResolve()
 {
 	CQuickLock pLock( m_pLookupsSection );
 
-	for ( POSITION pos = m_pLookups.GetStartPosition() ; pos ; )
+	for ( POSITION pos = m_pLookups.GetStartPosition(); pos; )
 	{
 		HANDLE pAsync;
 		ResolveStruct* pResolve;
@@ -739,7 +739,7 @@ bool CNetwork::PreRun()
 	// Get all IPs
 	if ( hostent* h = gethostbyname( m_sHostName ) )
 	{
-		for ( char** p = h->h_addr_list ; p && *p ; p++ )
+		for ( char** p = h->h_addr_list; p && *p; p++ )
 		{
 			AcquireLocalAddress( *(IN_ADDR*)*p );
 		}
@@ -977,10 +977,11 @@ BOOL CNetwork::GetNodeRoute(const Hashes::Guid& oGUID, CNeighbour** ppNeighbour,
 	if ( NodeRoute->Lookup( oGUID, ppNeighbour, pEndpoint ) ) return TRUE;
 	if ( ppNeighbour == NULL ) return FALSE;
 
+	// ToDo: Remove or confirm this lock
 	CSingleLock pLock( &m_pSection );
 	if ( ! SafeLock( pLock ) ) return FALSE;
 
-	for ( POSITION pos = Neighbours.GetIterator() ; pos ; )
+	for ( POSITION pos = Neighbours.GetIterator(); pos; )
 	{
 		CNeighbour* pNeighbour = Neighbours.GetNext( pos );
 

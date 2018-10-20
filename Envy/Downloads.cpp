@@ -1,8 +1,8 @@
 //
 // Downloads.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2015 and Shareaza 2002-2007
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2015
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -329,7 +329,7 @@ void CDownloads::PauseAll()
 	CSingleLock pLock( &Transfers.m_pSection );
 	if ( ! SafeLock( pLock ) ) return;
 
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		GetNext( pos )->Pause( FALSE );
 	}
@@ -340,7 +340,7 @@ void CDownloads::ClearCompleted()
 	CSingleLock pLock( &Transfers.m_pSection );
 	if ( ! SafeLock( pLock ) ) return;
 
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		CDownload* pDownload = GetNext( pos );
 		if ( ( pDownload->IsCompleted() ) && ( ! pDownload->IsSeeding() ) )
@@ -353,7 +353,7 @@ void CDownloads::ClearPaused()
 	CSingleLock pLock( &Transfers.m_pSection );
 	if ( ! SafeLock( pLock ) ) return;
 
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		CDownload* pDownload = GetNext( pos );
 		if ( pDownload->IsPaused() ) pDownload->Remove();
@@ -367,7 +367,7 @@ void CDownloads::Clear(bool bShutdown)
 
 	m_bClosing = true;
 
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		Remove( GetNext( pos ) );
 	}
@@ -383,7 +383,7 @@ void CDownloads::CloseTransfers()
 
 	m_bClosing = true;
 
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		GetNext( pos )->CloseTransfers();
 	}
@@ -405,7 +405,7 @@ INT_PTR CDownloads::GetCount(BOOL bActiveOnly) const
 
 	CQuickLock pLock( Transfers.m_pSection );
 
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		CDownload* pDownload = GetNext( pos );
 
@@ -422,7 +422,7 @@ int CDownloads::GetSeedCount() const
 
 	CQuickLock pLock( Transfers.m_pSection );
 
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		CDownload* pDownload = GetNext( pos );
 
@@ -439,7 +439,7 @@ int CDownloads::GetActiveTorrentCount() const
 
 	CQuickLock pLock( Transfers.m_pSection );
 
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		const CDownload* pDownload = GetNext( pos );
 
@@ -458,7 +458,7 @@ DWORD CDownloads::GetTryingCount(bool bTorrentsOnly) const
 
 	CQuickLock pLock( Transfers.m_pSection );
 
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		const CDownload* pDownload = GetNext( pos );
 
@@ -475,7 +475,7 @@ DWORD CDownloads::GetConnectingTransferCount() const
 
 	CQuickLock pLock( Transfers.m_pSection );
 
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		const CDownload* pDownload = GetNext( pos );
 
@@ -491,7 +491,7 @@ DWORD CDownloads::GetConnectingTransferCount() const
 //
 //	CQuickLock pLock( Transfers.m_pSection );
 //
-//	for ( POSITION pos = GetIterator() ; pos ; )
+//	for ( POSITION pos = GetIterator(); pos; )
 //	{
 //		nCount += GetNext( pos )->GetTransferCount();
 //	}
@@ -516,7 +516,7 @@ BOOL CDownloads::Check(CDownloadSource* pSource) const
 {
 	ASSUME_LOCK( Transfers.m_pSection );
 
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		if ( GetNext( pos )->CheckSource( pSource ) ) return TRUE;
 	}
@@ -525,7 +525,7 @@ BOOL CDownloads::Check(CDownloadSource* pSource) const
 
 bool CDownloads::CheckActive(CDownload* pDownload, int nScope) const
 {
-	for ( POSITION pos = GetReverseIterator() ; pos && nScope > 0 ; )
+	for ( POSITION pos = GetReverseIterator(); pos && nScope > 0; )
 	{
 		CDownload* pTest = GetPrevious( pos );
 		bool bActive = ! pTest->IsPaused() && ! pTest->IsCompleted();
@@ -544,7 +544,7 @@ CDownload* CDownloads::FindByPDName(const CString& sPDName) const
 {
 	ASSUME_LOCK( Transfers.m_pSection );
 
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		CDownload* pDownload = GetNext( pos );
 		if ( sPDName.CompareNoCase( PathFindFileName( pDownload->m_sPath ) ) == 0 )
@@ -557,7 +557,7 @@ CDownload* CDownloads::FindByPath(const CString& sPath) const
 {
 	ASSUME_LOCK( Transfers.m_pSection );
 
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		CDownload* pDownload = GetNext( pos );
 		if ( pDownload->FindByPath( sPath ) )
@@ -612,7 +612,7 @@ CDownload* CDownloads::FindBySHA1(const Hashes::Sha1Hash& oSHA1, BOOL bSharedOnl
 	if ( ! oSHA1 )
 		return NULL;
 
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		CDownload* pDownload = GetNext( pos );
 		if ( validAndEqual( pDownload->m_oSHA1, oSHA1 ) )
@@ -632,7 +632,7 @@ CDownload* CDownloads::FindByTiger(const Hashes::TigerHash& oTiger, BOOL bShared
 	if ( ! oTiger )
 		return NULL;
 
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		CDownload* pDownload = GetNext( pos );
 		if ( validAndEqual( pDownload->m_oTiger, oTiger ) )
@@ -652,7 +652,7 @@ CDownload* CDownloads::FindByED2K(const Hashes::Ed2kHash& oED2K, BOOL bSharedOnl
 	if ( ! oED2K )
 		return NULL;
 
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		CDownload* pDownload = GetNext( pos );
 		if ( validAndEqual( pDownload->m_oED2K, oED2K ) )
@@ -673,7 +673,7 @@ CDownload* CDownloads::FindByBTH(const Hashes::BtHash& oBTH, BOOL bSharedOnly) c
 	if ( ! oBTH )
 		return NULL;
 
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		CDownload* pDownload = GetNext( pos );
 		if ( validAndEqual( pDownload->m_oBTH, oBTH ) )
@@ -693,7 +693,7 @@ CDownload* CDownloads::FindByMD5(const Hashes::Md5Hash& oMD5, BOOL bSharedOnly) 
 	if ( ! oMD5 )
 		return NULL;
 
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		CDownload* pDownload = GetNext( pos );
 		if ( validAndEqual( pDownload->m_oMD5, oMD5 ) )
@@ -714,7 +714,7 @@ CDownload* CDownloads::FindBySID(DWORD nSerID) const
 {
 	ASSUME_LOCK( Transfers.m_pSection );
 
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		CDownload* pDownload = GetNext( pos );
 		if ( pDownload->m_nSerID == nSerID )
@@ -731,7 +731,7 @@ DWORD CDownloads::GetFreeSID()
 	for ( ;; )
 	{
 		DWORD nSerID = GetRandomNum( 0ui32, _UI32_MAX );
-		for ( POSITION pos = GetIterator() ; pos ; )
+		for ( POSITION pos = GetIterator(); pos; )
 		{
 			CDownload* pDownload = GetNext( pos );
 			if ( pDownload->m_nSerID == nSerID )
@@ -834,7 +834,7 @@ QWORD CDownloads::GetAmountDownloadedFrom(IN_ADDR* pAddress)
 
 	CQuickLock pLock( Transfers.m_pSection );
 
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		CDownload* pDownload = GetNext( pos );
 
@@ -853,7 +853,7 @@ DWORD CDownloads::GetBandwidth() const
 
 	CQuickLock pLock( Transfers.m_pSection );
 
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		nTotal += GetNext( pos )->GetMeasuredSpeed();
 	}
@@ -888,7 +888,7 @@ bool CDownloads::AllowMoreTransfers(IN_ADDR* pAddress) const
 	if ( ! oLock.Lock( 200 ) )
 		return false;
 
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		nCount += GetNext( pos )->GetTransferCount( dtsCountAll, pAddress );
 	}
@@ -951,7 +951,7 @@ void CDownloads::OnRun()
 		++m_nRunCookie;
 
 		QWORD nComplete = 0, nTotal = 0;
-		for ( POSITION pos = GetIterator() ; pos ; )
+		for ( POSITION pos = GetIterator(); pos; )
 		{
 			CDownload* pDownload = GetNext( pos );
 
@@ -997,7 +997,7 @@ void CDownloads::OnRun()
 		++m_nRunCookie;
 
 		// Run all the downloads, select the transfers that need bandwidth limiting
-		for ( POSITION pos = GetIterator() ; pos ; )
+		for ( POSITION pos = GetIterator(); pos; )
 		{
 			CDownload* pDownload = GetNext( pos );
 			pDownload->m_nRunCookie = m_nRunCookie;
@@ -1008,7 +1008,7 @@ void CDownloads::OnRun()
 
 			int nTemp = 0;
 
-			for ( CDownloadTransfer* pTransfer = pDownload->GetFirstTransfer() ; pTransfer ; pTransfer = pTransfer->m_pDlNext )
+			for ( CDownloadTransfer* pTransfer = pDownload->GetFirstTransfer(); pTransfer; pTransfer = pTransfer->m_pDlNext )
 			{
 				if ( pTransfer->m_nProtocol == PROTOCOL_ED2K )
 				{
@@ -1068,7 +1068,7 @@ void CDownloads::OnRun()
 		}
 
 		// Limit the transfers. Faster transfers get a bigger share of the bandwidth
-		for ( POSITION pos = pTransfersToLimit.GetHeadPosition() ; pos ; )
+		for ( POSITION pos = pTransfersToLimit.GetHeadPosition(); pos; )
 		{
 			CDownloadTransfer* pTransfer = pTransfersToLimit.GetNext( pos );
 
@@ -1149,7 +1149,7 @@ bool CDownloads::OnQueryHits(const CQueryHit* pHits)
 	CSingleLock pLock( &Transfers.m_pSection );
 	if ( ! pLock.Lock( 250 ) ) return false;
 
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		CDownload* pDownload = GetNext( pos );
 		if ( ! pDownload->IsCompleted() && ! pDownload->IsMoving() )
@@ -1167,7 +1167,7 @@ BOOL CDownloads::OnPush(const Hashes::Guid& oGUID, CConnection* pConnection)
 	CSingleLock pLock( &Transfers.m_pSection );
 	if ( ! pLock.Lock( 250 ) ) return FALSE;
 
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		CDownload* pDownload = GetNext( pos );
 		if ( pDownload->OnAcceptPush( oGUID, pConnection ) ) return TRUE;
@@ -1186,7 +1186,7 @@ BOOL CDownloads::OnDonkeyCallback(CEDClient* pClient, CDownloadSource* pExcept)
 
 	if ( m_bClosing ) return FALSE;
 
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		CDownload* pDownload = GetNext( pos );
 		if ( pDownload->OnDonkeyCallback( pClient, pExcept ) ) return TRUE;
@@ -1203,7 +1203,7 @@ void CDownloads::OnVerify(const CLibraryFile* pFile, TRISTATE bVerified)
 	CSingleLock pLock( &Transfers.m_pSection );
 	if ( ! SafeLock( pLock ) ) return;	// Common...
 
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		if ( GetNext( pos )->OnVerify( pFile, bVerified ) ) break;
 	}
@@ -1252,7 +1252,7 @@ void CDownloads::PreLoad()
 		return;
 
 	int nTotal = (int)pList.GetCount();
-	while( ! pList.IsEmpty() )
+	while ( ! pList.IsEmpty() )
 	{
 		str.Format( L"Downloads %u/%i", nCount, nTotal );
 		theApp.SplashUpdate( str );
@@ -1317,7 +1317,7 @@ void CDownloads::Save(BOOL bForce)
 {
 	CSingleLock pLock( &Transfers.m_pSection, TRUE );
 
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		CDownload* pDownload = GetNext( pos );
 		if ( bForce || pDownload->IsModified() )
@@ -1353,7 +1353,7 @@ void CDownloads::PurgeFiles()
 		return;
 
 	UINT nCount = 0;
-	for ( CString strPath = m_pDelete.RemoveHead() ; ! strPath.IsEmpty() ; strPath = m_pDelete.GetSize() ? m_pDelete.RemoveHead() : L"" )
+	for ( CString strPath = m_pDelete.RemoveHead(); ! strPath.IsEmpty(); strPath = m_pDelete.GetSize() ? m_pDelete.RemoveHead() : L"" )
 	{
 		if ( DeleteFileEx( strPath, FALSE, TRUE, TRUE ) )
 			nCount++;
@@ -1469,7 +1469,7 @@ void CDownloads::PurgeFiles()
 //	ar >> nVersion;
 //	if ( nVersion < 4 ) return;
 //
-//	for ( DWORD_PTR nCount = ar.ReadCount() ; nCount > 0 ; nCount-- )
+//	for ( DWORD_PTR nCount = ar.ReadCount(); nCount > 0; nCount-- )
 //	{
 //		if ( CDownload* pDownload = Add() )	// new CDownload()
 //		{

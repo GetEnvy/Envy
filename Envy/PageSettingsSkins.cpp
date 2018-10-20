@@ -1,8 +1,8 @@
 //
 // PageSettingsSkins.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2017
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2007
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -184,7 +184,7 @@ BOOL CSkinsSettingsPage::AddSkin(LPCTSTR pszPath, LPCTSTR pszName)
 		{
 			pByte += 2;
 
-			for ( DWORD nSwap = 0 ; nSwap < nByte ; nSwap ++ )
+			for ( DWORD nSwap = 0; nSwap < nByte; nSwap ++ )
 			{
 				register CHAR nTemp = pByte[ ( nSwap << 1 ) + 0 ];
 				pByte[ ( nSwap << 1 ) + 0 ] = pByte[ ( nSwap << 1 ) + 1 ];
@@ -356,7 +356,7 @@ void CSkinsSettingsPage::CheckDependencies(CString sPaths)
 		Split( sPaths, L',', oTokens );
 
 		nTotal = oTokens.GetCount();
-		for ( INT_PTR nToken = 0 ; nToken < nTotal ; nToken++ )
+		for ( INT_PTR nToken = 0; nToken < nTotal; nToken++ )
 		{
 			CString strToken = oTokens.GetAt( nToken );
 			strToken.Trim( L" \t\r\n;,'" );
@@ -373,7 +373,7 @@ void CSkinsSettingsPage::CheckDependencies(CString sPaths)
 	}
 
 	const int nCount = m_wndList.GetItemCount();
-	for ( int nItem = 0 ; nItem < nCount ; nItem++ )
+	for ( int nItem = 0; nItem < nCount; nItem++ )
 	{
 		CString strName = m_wndList.GetItemText( nItem, COL_PATH );
 		strName = strName.Mid( strName.ReverseFind( L'\\' ) + 1 );
@@ -385,7 +385,7 @@ void CSkinsSettingsPage::CheckDependencies(CString sPaths)
 			continue;
 		}
 
-		for ( INT_PTR nToken = 0 ; nToken < nTotal ; nToken++ )
+		for ( INT_PTR nToken = 0; nToken < nTotal; nToken++ )
 		{
 			 if ( strName.CompareNoCase( oPaths.GetAt( nToken ) ) == 0 )
 				 m_wndList.SetItemState( nItem, UINT( 2 << 12 ), LVIS_STATEIMAGEMASK );
@@ -522,7 +522,7 @@ void CSkinsSettingsPage::OnDoubleClick(NMHDR* /*pNMHDR*/, LRESULT* pResult)
 	*pResult = 0;
 
 	// Checkmark only selected skin (from first click), clear all others
-	for ( int nItem = 0 ; nItem < m_wndList.GetItemCount() ; nItem++ )
+	for ( int nItem = 0; nItem < m_wndList.GetItemCount(); nItem++ )
 	{
 		m_wndList.SetItemState( nItem, UINT( ( nItem != m_nSelected ? 1 : 2 ) << 12 ), LVIS_STATEIMAGEMASK );
 	}
@@ -553,7 +553,7 @@ void CSkinsSettingsPage::OnOK()
 {
 	BOOL bChanged = FALSE;
 
-	for ( int nItem = 0 ; nItem < m_wndList.GetItemCount() ; nItem++ )
+	for ( int nItem = 0; nItem < m_wndList.GetItemCount(); nItem++ )
 	{
 		CString strSkin = m_wndList.GetItemText( nItem, 3 );
 

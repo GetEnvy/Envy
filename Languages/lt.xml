@@ -3,7 +3,7 @@
 
 <!-- Envy Default Lithuanian Skin File -->
 
-<!-- Translation based on default en.xml r21 -->
+<!-- Translation based on default en.xml r22 -->
 <!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -15,7 +15,7 @@
 <manifest
 	name="Lietuvių"
 	author="Rolandas Rudomanskis"
-	updatedBy="Rolandas Rudomanskis"
+	updatedby="Rolandas Rudomanskis"
 	description="Envy Default Lithuanian Skin File"
 	link="http://getenvy.com"
 	email="rrol2002(at)hotmail.com"
@@ -3324,8 +3324,9 @@
 	<string id="20807" text="Atsakyta išsiųsti failą „%s“ adresatui %s (%s), per daug adresato susijungimų vienu metu."/>
 	<string id="20808" text="Atsakyta išsiųsti „%s“ adresatui %s (%s), užimtas, o klientas nepalaiko eilių."/>
 	<string id="20809" text="Atsakoma išsiųsti failą „%s“ adresatui %s (%s), visos eilės perpildytos."/>
-	<string id="20810" text="Adresatas %s užklausė išsiųsti netenkinamą failo „%s“ atkarpą."/>
-	<string id="20811" text="eDonkey išsiuntimų nederėtų atšaukti. Ar tikrai norite atšaukti šio failo išsiuntimą?"/>
+	<string id="20810" text="Atsakoma išsiųsti failą „%s“ adresatui %s (%s), Biblioteka yra užsiėmusi."/>
+	<string id="20811" text="Adresatas %s užklausė išsiųsti netenkinamą failo „%s“ atkarpą."/>
+	<string id="20861" text="eDonkey išsiuntimų nederėtų atšaukti. Ar tikrai norite atšaukti šio failo išsiuntimą?"/>
 	<string id="20812" text="Neįmanoma atverti „%s“ išsiuntimui adresu %s, disko/failo klaida."/>
 	<string id="20813" text="Užmezgamas įstūmiantysis ryšys su %s. %s"/>
 	<string id="20814" text="Neįmanoma susisiekti su adresatu %s įstūmiančiajam ryšiui užmegzti."/>
@@ -3372,14 +3373,14 @@
 	<string id="20858" text="Užklausos failo išsiuntimui iš adresato %s laiko limitas baigėsi."/>
 	<string id="20859" text="Nutraukiamas išsiuntimo ryšys su %s dėl siuntimų srauto kamščio."/>
 	<string id="20860" text="Išsiunčiami failo „%s“ dryžinės (tiger-tree) maišos duomenys adresatui %s."/>
-	<string id="20861" text="Failas „%s“, skirta adresatui %s, pašalintas iš išsiutimų sąrašo."/>
-	<string id="20862" text="Pridėti"/>
-	<string id="20864" text="&amp;Naršyti"/>
-	<string id="20865" text="&amp;Jungtis"/>
-	<string id="20866" text="Vardas:"/>
-	<string id="20867" text="Adresatas:"/>
-	<string id="20868" text="Prievadas:"/>
-	<!--string id="20869" text="Neįmanoma parodyti URL veiksmo dialogo lango, nes „Envy“ yra užimta."-->
+	<string id="20862" text="Failas „%s“, skirta adresatui %s, pašalintas iš išsiutimų sąrašo."/>
+	<string id="20864" text="Pridėti"/>
+	<string id="20865" text="&amp;Naršyti"/>
+	<string id="20866" text="&amp;Jungtis"/>
+	<string id="20867" text="Vardas:"/>
+	<string id="20868" text="Adresatas:"/>
+	<string id="20869" text="Prievadas:"/>
+	<!--string id="20876" text="Neįmanoma parodyti URL veiksmo dialogo lango, nes „Envy“ yra užimta."-->
 	<string id="20870" text="Neįmanoma išnagrinėti URL: „Envy“ nesupranta šio adreso."/>
 	<string id="20871" text="Gautas URL, adresas „%s“"/>
 	<string id="20872" text="Tipas:"/>

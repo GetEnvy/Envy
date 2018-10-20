@@ -3678,7 +3678,7 @@ struct DIBINFO16 // a BITMAPINFO with 2 additional color bitfields
 	{
 		BITMAPINFOHEADER bmih = { sizeof(BITMAPINFOHEADER), size.cx, size.cy,
 		                          1, 16, BI_BITFIELDS, (DWORD)(2 * size.cx * size.cy), 0, 0, 3 };
-		DWORD dw[3] = DIBINFO16_BITFIELDS ;
+		DWORD dw[3] = DIBINFO16_BITFIELDS;
 
 		bmiHeader = bmih;
 		SecureHelper::memcpy_x(bmiColors, sizeof(bmiColors), dw, 3 * sizeof(DWORD));

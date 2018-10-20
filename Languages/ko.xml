@@ -3,7 +3,7 @@
 
 <!-- Envy Korean Language Skin File -->
 
-<!-- Translation based on default en.xml r21 --> <!--Machine Translated!-->
+<!-- Translation based on default en.xml r22 --> <!--Machine Translated!-->
 <!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -2261,13 +2261,13 @@
 	<string id="20858" text="Timed out waiting for request from upload host %s."/>
 	<string id="20859" text="Closing upload connection %s due to lack of traffic."/>
 	<string id="20860" text="Uploading tiger-tree data for &quot;%s&quot; to %s."/>
-	<string id="20861" text="Removed upload of &quot;%s&quot; to %s."/>
-	<string id="20862" text="추가"/>
-	<string id="20864" text="찾아보기"/>
-	<string id="20865" text="연결"/>
-	<string id="20866" text="파일명:"/>
-	<string id="20867" text="호스트 :"/>
-	<string id="20868" text="포트"/>
+	<string id="20862" text="Removed upload of &quot;%s&quot; to %s."/>
+	<string id="20864" text="추가"/>
+	<string id="20865" text="찾아보기"/>
+	<string id="20866" text="연결"/>
+	<string id="20867" text="파일명:"/>
+	<string id="20868" text="호스트 :"/>
+	<string id="20869" text="포트"/>
 	<!-- Missing URL Parse Messages -->
 	<string id="20872" text="종류:"/>
 	<string id="20874" text="URL:"/>

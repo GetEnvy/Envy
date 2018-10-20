@@ -2,7 +2,7 @@
 // RegExp.cpp
 //
 // This file is part of Envy (getenvy.com) © 2016-2018
-// Portions copyright PeerProject 2010-2014 and Shareaza 2008-2010
+// Portions copyright Shareaza 2008-2010 and PeerProject 2010-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -79,7 +79,7 @@ size_t Split(LPCTSTR szRegExp, LPCTSTR szContent, LPTSTR* pszResult)
 		{
 			const size_t nCount = results.size();
 			size_t len = 0;
-			for ( size_t i = 0 ; i < nCount ; ++i )
+			for ( size_t i = 0; i < nCount; ++i )
 			{
 				len += results.str( i ).size() + 1;
 			}
@@ -87,7 +87,7 @@ size_t Split(LPCTSTR szRegExp, LPCTSTR szContent, LPTSTR* pszResult)
 			if ( LPTSTR p = (LPTSTR)GlobalAlloc( GPTR, len * sizeof( wchar_t ) ) )
 			{
 				*pszResult = p;
-				for ( size_t i = 0 ; i < nCount ; ++i )
+				for ( size_t i = 0; i < nCount; ++i )
 				{
 					wcscpy_s( p, len - ( p - *pszResult ), results.str( i ).c_str() );
 					p += results.str( i ).size() + 1;

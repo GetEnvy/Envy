@@ -1,8 +1,8 @@
 //
 // WndPacket.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2007
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -119,8 +119,8 @@ CPacketWnd::CPacketWnd(CChildWnd* pOwner)
 	, m_nInputFilter ( 0 )
 	, m_nOutputFilter ( 0 )
 {
-	for ( int nType = 0 ; nType < nTypeG1Size ; nType++ ) m_bTypeG1[ nType ] = TRUE;
-	for ( int nType = 0 ; nType < nTypeG2Size ; nType++ ) m_bTypeG2[ nType ] = TRUE;
+	for ( int nType = 0; nType < nTypeG1Size; nType++ ) m_bTypeG1[ nType ] = TRUE;
+	for ( int nType = 0; nType < nTypeG2Size; nType++ ) m_bTypeG2[ nType ] = TRUE;
 
 	Create( IDR_PACKETFRAME );
 }
@@ -132,7 +132,7 @@ CPacketWnd::~CPacketWnd()
 	m_bPaused = TRUE;
 	theApp.m_pPacketWnd = NULL;
 
-	for ( POSITION pos = m_pQueue.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pQueue.GetHeadPosition(); pos; )
 	{
 		delete m_pQueue.GetNext( pos );
 	}
@@ -270,7 +270,7 @@ void CPacketWnd::SmartDump(const CPacket* pPacket, const SOCKADDR_IN* pAddress, 
 		break;
 
 	case PROTOCOL_G2:
-		for ( int nType = 0 ; nType < nTypeG2Size ; nType++ )
+		for ( int nType = 0; nType < nTypeG2Size; nType++ )
 		{
 			if ( ((CG2Packet*)pPacket)->IsType( m_nG2[ nType ] ) )
 			{
@@ -417,7 +417,7 @@ void CPacketWnd::OnContextMenu(CWnd* /*pWnd*/, CPoint point)
 	CSingleLock pLock( &Network.m_pSection );
 	if ( ! SafeLock( pLock ) ) return;
 
-	for ( int nGroup = 0 ; nGroup < 2 ; nGroup++ )
+	for ( int nGroup = 0; nGroup < 2; nGroup++ )
 	{
 		UINT nID = nGroup ? ID_BASE_OUT : ID_BASE_IN;
 
@@ -427,7 +427,7 @@ void CPacketWnd::OnContextMenu(CWnd* /*pWnd*/, CPoint point)
 		AddNeighbour( pHosts, nGroup, nID++, 0, L"Any Neighbour" );
 		pHosts[nGroup].AppendMenu( MF_SEPARATOR, ID_SEPARATOR );
 
-		for ( POSITION pos = Neighbours.GetIterator() ; pos ; nID++ )
+		for ( POSITION pos = Neighbours.GetIterator(); pos; nID++ )
 		{
 			CNeighbour* pNeighbour = Neighbours.GetNext( pos );
 			if ( pNeighbour->m_nState < nrsConnected ) continue;
@@ -439,13 +439,13 @@ void CPacketWnd::OnContextMenu(CWnd* /*pWnd*/, CPoint point)
 	}
 
 	pTypesG1.CreatePopupMenu();
-	for ( int nType = 0 ; nType < nTypeG1Size ; nType++ )
+	for ( int nType = 0; nType < nTypeG1Size; nType++ )
 	{
 		pTypesG1.AppendMenu( MF_STRING|( m_bTypeG1[ nType ] ? MF_CHECKED : 0 ), ID_BASE_G1 + nType, CG1Packet::m_pszPackets[ nType ] );
 	}
 
 	pTypesG2.CreatePopupMenu();
-	for ( int nType = 0 ; nType < nTypeG2Size ; nType++ )
+	for ( int nType = 0; nType < nTypeG2Size; nType++ )
 	{
 		CStringA tmp;
 		tmp.Append( (LPCSTR)&m_nG2[ nType ], G2_TYPE_LEN( m_nG2[ nType ] ) );
@@ -534,7 +534,7 @@ void CPacketWnd::OnContextMenu(CWnd* /*pWnd*/, CPoint point)
 
 		if ( GetAsyncKeyState( VK_SHIFT ) & 0x8000 )
 		{
-			for ( int nType = 0 ; nType < nTypeG1Size ; nType++ )
+			for ( int nType = 0; nType < nTypeG1Size; nType++ )
 			{
 				m_bTypeG1[ nType ] = ( nCmd == (UINT)nType ) ? TRUE : FALSE;
 			}
@@ -553,7 +553,7 @@ void CPacketWnd::OnContextMenu(CWnd* /*pWnd*/, CPoint point)
 
 		if ( GetAsyncKeyState( VK_SHIFT ) & 0x8000 )
 		{
-			for ( int nType = 0 ; nType < nTypeG2Size ; nType++ )
+			for ( int nType = 0; nType < nTypeG2Size; nType++ )
 			{
 				m_bTypeG2[ nType ] = ( nCmd == (UINT)nType ) ? TRUE : FALSE;
 			}
@@ -592,7 +592,7 @@ void CPacketWnd::OnContextMenu(CWnd* /*pWnd*/, CPoint point)
 	else if ( SafeLock( pLock ) )
 	{
 		nCmd -= 2;
-		for ( POSITION pos = Neighbours.GetIterator() ; pos ; nCmd-- )
+		for ( POSITION pos = Neighbours.GetIterator(); pos; nCmd-- )
 		{
 			CNeighbour* pNeighbour = Neighbours.GetNext( pos );
 			if ( ! nCmd )

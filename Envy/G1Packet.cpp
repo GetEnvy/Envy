@@ -1,8 +1,8 @@
 //
 // G1Packet.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2007
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -169,7 +169,7 @@ void CG1Packet::CacheHash()
 	m_nHash = 0;
 
 	// Loop once for every byte in the packet
-	for ( DWORD nPosition = m_nLength ; nPosition ; nPosition-- )			// If there are 10 bytes in the packet, loops 10 times, the loop doesn't use this index
+	for ( DWORD nPosition = m_nLength; nPosition; nPosition-- )			// If there are 10 bytes in the packet, loops 10 times, the loop doesn't use this index
 	{
 		// Use the byte under pInput to adjust a simple 4 byte hash of the packet
 		m_nHash = ( m_nHash << 8 ) | ( ( m_nHash >> 24 ) ^ *pInput++ ); 	// After reading the byte under pInput, move to the next one
@@ -254,7 +254,7 @@ void CG1Packet::ToBuffer(CBuffer* pBuffer, bool /*bTCP*/)
 void CG1Packet::Debug(LPCTSTR pszReason) const
 {
 	CString strOutput;
-	strOutput.Format( L"[G1] %s Type: %s [%u/%u]", pszReason, GetType(), m_nTTL, m_nHops );
+	strOutput.Format( L"[G1] %s Type: %s [%u/%u]", pszReason, (LPCTSTR)GetType(), m_nTTL, m_nHops );
 	CPacket::Debug( strOutput );
 }
 #endif	// Deubg
@@ -312,8 +312,8 @@ void CG1Packet::GGEPWriteRandomCache(CGGEPBlock& pGGEP, LPCTSTR pszID)
 	{
 		CQuickLock oLock( HostCache.Gnutella1.m_pSection );
 
-		for ( CHostCacheIterator i = HostCache.Gnutella1.Begin() ;
-			i != HostCache.Gnutella1.End() ; ++i )
+		for ( CHostCacheIterator i = HostCache.Gnutella1.Begin();
+			i != HostCache.Gnutella1.End(); ++i )
 		{
 			CHostCacheHostPtr pHost = (*i);
 
@@ -333,7 +333,7 @@ void CG1Packet::GGEPWriteRandomCache(CGGEPBlock& pGGEP, LPCTSTR pszID)
 	{
 		CQuickLock oLock( HostCache.G1DNA.m_pSection );
 
-		for ( CHostCacheIterator i = HostCache.G1DNA.Begin() ; i != HostCache.G1DNA.End() ; ++i )
+		for ( CHostCacheIterator i = HostCache.G1DNA.Begin(); i != HostCache.G1DNA.End(); ++i )
 		{
 			CHostCacheHostPtr pHost = (*i);
 
@@ -359,7 +359,7 @@ void CG1Packet::GGEPWriteRandomCache(CGGEPBlock& pGGEP, LPCTSTR pszID)
 
 	if ( CGGEPItem* pItem = pGGEP.Add( pszID ) )
 	{
-		for ( int i = 0 ; i < pHosts.GetCount() ; i++ )
+		for ( int i = 0; i < pHosts.GetCount(); i++ )
 		{
 			pItem->Write( (void*)&pHosts.GetAt( i ).sin_addr.s_addr, 4 );
 			pItem->Write( (void*)&pHosts.GetAt( i ).sin_port, 2 );
@@ -379,7 +379,7 @@ bool CG1Packet::ReadHUGE(CEnvyFile* pFile)
 
 	// Find length of extension (till packet end, G1_PACKET_HIT_SEP or null bytes)
 	DWORD len = 0;
-	for ( ; *p != G1_PACKET_HIT_SEP && *p && len < rem ; ++p, ++len );
+	for ( ; *p != G1_PACKET_HIT_SEP && *p && len < rem; ++p, ++len );
 
 	p = GetCurrent();
 	Seek( len, seekCurrent );
@@ -427,7 +427,7 @@ bool CG1Packet::ReadXML(CSchemaPtr& pSchema, CXMLElement*& pXML)
 
 	// Find length of extension (till packet end, G1_PACKET_HIT_SEP or null bytes)
 	DWORD len = 0;
-	for ( ; *p != G1_PACKET_HIT_SEP && *p && len < rem ; ++p, ++len );
+	for ( ; *p != G1_PACKET_HIT_SEP && *p && len < rem; ++p, ++len );
 
 	p = GetCurrent();
 	Seek( len, seekCurrent );
@@ -466,7 +466,7 @@ bool CG1Packet::ReadXML(CSchemaPtr& pSchema, CXMLElement*& pXML)
 	CString strXML( UTF8Decode( (LPCSTR)p, len ) );
 
 	// Fix <tag attribute="valueZ/> -> <tag attribute="value"/>
-	//for ( DWORD i = 1 ; i + 2 < len ; ++i )
+	//for ( DWORD i = 1; i + 2 < len; ++i )
 	//	if ( szXML[ i ] == 0 && szXML[ i + 1 ] == '/' && szXML[ i + 2 ] == '>' )
 	//		szXML[ i ] = '\"';
 

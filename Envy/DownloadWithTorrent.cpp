@@ -1,8 +1,8 @@
 //
 // DownloadWithTorrent.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2017
-// Portions copyright PeerProject 2008-2015 and Shareaza 2002-2008
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2008 and PeerProject 2008-2015
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -72,7 +72,7 @@ CDownloadWithTorrent::CDownloadWithTorrent()
 	, m_tTorrentSources		( 0 )
 {
 	// Generate random Key value
-	for ( int nChar = 1 ; nChar < 6 ; nChar++ )
+	for ( int nChar = 1; nChar < 6; nChar++ )
 	{
 		m_sKey += GenerateCharacter();
 	}
@@ -264,7 +264,7 @@ void CDownloadWithTorrent::Serialize(CArchive& ar, int nVersion)
 		//		if ( ! pBuffer.get() ) AfxThrowMemoryException();
 		//		// Optimize this by reading only available data
 		//		QWORD nTotal = 0ull;
-		//		for ( QWORD nLength = m_pTorrent.m_nSize ; nLength ; )
+		//		for ( QWORD nLength = m_pTorrent.m_nSize; nLength; )
 		//		{
 		//			DWORD nBuffer = (DWORD)min( nLength, BUFFER_SIZE );
 		//			DWORD nRead = oSource.Read( pBuffer.get(), nBuffer );
@@ -310,7 +310,7 @@ BOOL CDownloadWithTorrent::SubmitData(QWORD nOffset, LPBYTE pData, QWORD nLength
 		CSingleLock oLock( &Transfers.m_pSection );
 		if ( oLock.Lock( 250 ) )
 		{
-			for ( CDownloadTransfer* pTransfer = GetFirstTransfer() ; pTransfer ; pTransfer = pTransfer->m_pDlNext )
+			for ( CDownloadTransfer* pTransfer = GetFirstTransfer(); pTransfer; pTransfer = pTransfer->m_pDlNext )
 			{
 				if ( pTransfer->m_nProtocol == PROTOCOL_BT )
 					pTransfer->UnrequestRange( nOffset, nLength );
@@ -421,13 +421,13 @@ BOOL CDownloadWithTorrent::SetTorrent(const CBTInfo* pTorrent /*NULL*/)
 	}
 
 	// Add sources from torrents - DWK
-	for ( POSITION pos = m_pTorrent.m_sURLs.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pTorrent.m_sURLs.GetHeadPosition(); pos; )
 	{
 		AddSourceURLs( m_pTorrent.m_sURLs.GetNext( pos ) );
 	}
 
 	// Add DHT nodes to host cache
-	for ( POSITION pos = m_pTorrent.m_oNodes.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pTorrent.m_oNodes.GetHeadPosition(); pos; )
 	{
 		HostCache.BitTorrent.Add( m_pTorrent.m_oNodes.GetNext( pos ) );
 	}
@@ -565,7 +565,7 @@ BOOL CDownloadWithTorrent::GenerateTorrentDownloadID()
 	m_pPeerID[ 7 ] = '-';
 
 	// Random characters for the rest of the Client ID
-	for ( int nByte = 8 ; nByte < 20 ; nByte++ )
+	for ( int nByte = 8; nByte < 20; nByte++ )
 	{
 		m_pPeerID[ nByte ] = GetRandomNum( 0ui8, _UI8_MAX );
 	}
@@ -676,7 +676,7 @@ void CDownloadWithTorrent::OnTrackerEvent(bool bSuccess, LPCTSTR pszReason, LPCT
 
 		// Get new sources
 		//int nMax = Settings.Downloads.SourcesWanted;
-		for ( POSITION pos = pEvent->GetSources() ; pos ; )
+		for ( POSITION pos = pEvent->GetSources(); pos; )
 		{
 			const CBTTrackerSource& pSource = pEvent->GetNextSource( pos );
 			AddSourceBT( pSource.m_pPeerID, &pSource.m_pAddress.sin_addr, ntohs( pSource.m_pAddress.sin_port ) );
@@ -743,7 +743,7 @@ CDownloadTransferBT* CDownloadWithTorrent::CreateTorrentTransfer(CBTClient* pCli
 	CDownloadSource* pSource = NULL;
 
 	Hashes::Guid tmp = transformGuid( pClient->m_oGUID );
-	for ( POSITION posSource = GetIterator() ; posSource ; )
+	for ( POSITION posSource = GetIterator(); posSource; )
 	{
 		pSource = GetNext( posSource );
 
@@ -771,7 +771,7 @@ CDownloadTransferBT* CDownloadWithTorrent::CreateTorrentTransfer(CBTClient* pCli
 
 void CDownloadWithTorrent::OnFinishedTorrentBlock(DWORD nBlock)
 {
-	for ( CDownloadTransferBT* pTransfer = (CDownloadTransferBT*)GetFirstTransfer() ; pTransfer ; pTransfer = (CDownloadTransferBT*)pTransfer->m_pDlNext )
+	for ( CDownloadTransferBT* pTransfer = (CDownloadTransferBT*)GetFirstTransfer(); pTransfer; pTransfer = (CDownloadTransferBT*)pTransfer->m_pDlNext )
 	{
 		if ( pTransfer->m_nProtocol == PROTOCOL_BT )
 			pTransfer->SendFinishedBlock( nBlock );
@@ -789,11 +789,11 @@ CBTPacket* CDownloadWithTorrent::CreateBitfieldPacket()
 	CBTPacket* pPacket = CBTPacket::New( BT_PACKET_BITFIELD );
 	int nCount = 0;
 
-	for ( QWORD nBlock = 0 ; nBlock < m_nTorrentBlock ; )
+	for ( QWORD nBlock = 0; nBlock < m_nTorrentBlock; )
 	{
 		BYTE nByte = 0;
 
-		for ( int nBit = 7 ; nBit >= 0 && nBlock < m_nTorrentBlock ; nBit--, nBlock++ )
+		for ( int nBit = 7; nBit >= 0 && nBlock < m_nTorrentBlock; nBit--, nBlock++ )
 		{
 			if ( m_pTorrentBlock[ nBlock ] == TRI_TRUE )
 			{
@@ -828,7 +828,7 @@ void CDownloadWithTorrent::RemoveUpload(CUploadTransferBT* pUpload)
 
 void CDownloadWithTorrent::CloseTorrentUploads()
 {
-	for ( POSITION pos = m_pTorrentUploads.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pTorrentUploads.GetHeadPosition(); pos; )
 	{
 		CUploadTransferBT* pUpload = m_pTorrentUploads.GetNext( pos );
 		pUpload->Close();
@@ -861,7 +861,7 @@ void CDownloadWithTorrent::ChokeTorrent(DWORD tNow)
 		}
 	}
 
-	for ( POSITION pos = m_pTorrentUploads.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pTorrentUploads.GetHeadPosition(); pos; )
 	{
 		CUploadTransferBT* pTransfer = m_pTorrentUploads.GetNext( pos );
 		if ( pTransfer->m_nProtocol != PROTOCOL_BT ) continue;
@@ -882,7 +882,7 @@ void CDownloadWithTorrent::ChokeTorrent(DWORD tNow)
 	{
 		nTotalRandom = GetRandomNum( 0, nTotalRandom - 1 );
 
-		for ( POSITION pos = m_pTorrentUploads.GetHeadPosition() ; pos ; )
+		for ( POSITION pos = m_pTorrentUploads.GetHeadPosition(); pos; )
 		{
 			CUploadTransferBT* pTransfer = m_pTorrentUploads.GetNext( pos );
 			if ( pTransfer->m_nProtocol != PROTOCOL_BT ) continue;
@@ -909,7 +909,7 @@ void CDownloadWithTorrent::ChokeTorrent(DWORD tNow)
 		CUploadTransferBT* pBest = NULL;
 		DWORD nBest = 0;
 
-		for ( POSITION pos = m_pTorrentUploads.GetHeadPosition() ; pos ; )
+		for ( POSITION pos = m_pTorrentUploads.GetHeadPosition(); pos; )
 		{
 			CUploadTransferBT* pTransfer = m_pTorrentUploads.GetNext( pos );
 
@@ -932,8 +932,8 @@ void CDownloadWithTorrent::ChokeTorrent(DWORD tNow)
 		CDownloadTransferBT* pBest = NULL;
 		DWORD nBest = 0;
 
-		for ( CDownloadTransferBT* pTransfer = (CDownloadTransferBT*)GetFirstTransfer() ;
-				pTransfer ; pTransfer = (CDownloadTransferBT*)pTransfer->m_pDlNext )
+		for ( CDownloadTransferBT* pTransfer = (CDownloadTransferBT*)GetFirstTransfer();
+				pTransfer; pTransfer = (CDownloadTransferBT*)pTransfer->m_pDlNext )
 		{
 			if ( pTransfer->m_nProtocol == PROTOCOL_BT &&
 				 pSelected.Find( pTransfer->m_pClient ) == NULL &&
@@ -950,7 +950,7 @@ void CDownloadWithTorrent::ChokeTorrent(DWORD tNow)
 		pSelected.AddTail( pBest->m_pClient );
 	}
 
-	for ( POSITION pos = m_pTorrentUploads.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pTorrentUploads.GetHeadPosition(); pos; )
 	{
 		CUploadTransferBT* pTransfer = m_pTorrentUploads.GetNext( pos );
 		if ( pTransfer->m_nProtocol != PROTOCOL_BT ) continue;
@@ -1023,7 +1023,7 @@ BOOL CDownloadWithTorrent::CheckTorrentRatio() const
 
 BOOL CDownloadWithTorrent::UploadExists(in_addr* pIP) const
 {
-	for ( POSITION pos = m_pTorrentUploads.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pTorrentUploads.GetHeadPosition(); pos; )
 	{
 		CUploadTransferBT* pTransfer = m_pTorrentUploads.GetNext( pos );
 
@@ -1037,7 +1037,7 @@ BOOL CDownloadWithTorrent::UploadExists(in_addr* pIP) const
 
 BOOL CDownloadWithTorrent::UploadExists(const Hashes::BtGuid& oGUID) const
 {
-	for ( POSITION pos = m_pTorrentUploads.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pTorrentUploads.GetHeadPosition(); pos; )
 	{
 		CUploadTransferBT* pTransfer = m_pTorrentUploads.GetNext( pos );
 

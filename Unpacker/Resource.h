@@ -1,7 +1,7 @@
 //
 // Resource.h	(Used by Resource.rc)
 //
-// This file is part of Envy (getenvy.com) © 2016
+// This file is part of Envy (getenvy.com) © 2016-2018
 //
 // Portions of this page have been previously released into the public domain.
 // You are free to redistribute and modify it without any restrictions.

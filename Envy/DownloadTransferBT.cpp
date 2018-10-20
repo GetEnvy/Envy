@@ -1,8 +1,8 @@
 //
 // DownloadTransferBT.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2007
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -170,7 +170,7 @@ BOOL CDownloadTransferBT::OnRun()
 		if ( m_pAvailable.size() != nBlockCount )
 			m_pAvailable.resize( nBlockCount, false );
 
-		for ( DWORD nBlock = 0 ; nBlock < nBlockCount ; nBlock++ )
+		for ( DWORD nBlock = 0; nBlock < nBlockCount; nBlock++ )
 		{
 			if ( m_pAvailable[ nBlock ] )
 			{
@@ -263,11 +263,11 @@ BOOL CDownloadTransferBT::OnBitfield(CBTPacket* pPacket)
 	m_bAvailable = ( nBlockSize > 0 );
 	m_pAvailable.assign( nBlockCount, false );
 
-	for ( DWORD nBlock = 0 ; nBlock < nBlockCount && pPacket->GetRemaining() ; )
+	for ( DWORD nBlock = 0; nBlock < nBlockCount && pPacket->GetRemaining(); )
 	{
 		BYTE nByte = pPacket->ReadByte();
 
-		for ( int nBit = 7 ; nBit >= 0 && nBlock < nBlockCount ; nBit--, nBlock++ )
+		for ( int nBit = 7; nBit >= 0 && nBlock < nBlockCount; nBit--, nBlock++ )
 		{
 			if ( nByte & ( 1 << nBit ) )
 			{
@@ -355,11 +355,11 @@ void CDownloadTransferBT::ShowInterest()
 		Fragments::List oList( m_pDownload->GetWantedFragmentList() );		// Note: High CPU when active
 		Fragments::List::const_iterator pItr = oList.begin();
 		const Fragments::List::const_iterator pEnd = oList.end();
-		for ( ; ! bInterested && pItr != pEnd ; ++pItr )
+		for ( ; ! bInterested && pItr != pEnd; ++pItr )
 		{
 			QWORD nBlock = pItr->begin() / nBlockSize;
 			QWORD nEnd = ( pItr->end() - 1 ) / nBlockSize;
-			for ( ; nBlock <= nEnd ; ++nBlock )
+			for ( ; nBlock <= nEnd; ++nBlock )
 			{
 				if ( nBlock < m_pAvailable.size() && m_pAvailable[ (DWORD)nBlock ] )
 				{
@@ -401,8 +401,8 @@ BOOL CDownloadTransferBT::OnChoked(CBTPacket* /*pPacket*/)
 
 	theApp.Message( MSG_DEBUG, L"Download from %s was choked.", (LPCTSTR)m_sAddress );
 
-	//for ( Fragments::Queue::const_iterator pFragment = m_oRequested.begin() ;
-	//	pFragment != m_oRequested.end() ; ++pFragment )
+	//for ( Fragments::Queue::const_iterator pFragment = m_oRequested.begin();
+	//	pFragment != m_oRequested.end(); ++pFragment )
 	//{
 	//	m_pClient->Cancel(				// BT_PACKET_CANCEL
 	//		(DWORD)( pFragment->begin() / m_pDownload->m_pTorrent.m_nBlockSize ),
@@ -470,11 +470,11 @@ bool CDownloadTransferBT::SendFragmentRequests()
 		{
 			Fragments::List::const_iterator pItr = oPossible.begin();
 			const Fragments::List::const_iterator pEnd = oPossible.end();
-			for ( ; ! bInterested && pItr != pEnd ; ++pItr )
+			for ( ; ! bInterested && pItr != pEnd; ++pItr )
 			{
 				QWORD nBlock = pItr->begin() / nBlockSize;
 				QWORD nEnd = ( pItr->end() - 1 ) / nBlockSize;
-				for ( ; nBlock <= nEnd ; ++nBlock )
+				for ( ; nBlock <= nEnd; ++nBlock )
 				{
 					if ( m_pAvailable[ nBlock ] )
 					{
@@ -510,7 +510,7 @@ bool CDownloadTransferBT::SendFragmentRequests()
 
 	if ( ! m_pDownload->m_bTorrentEndgame )
 	{
-		for ( const CDownloadTransfer* pTransfer = m_pDownload->GetFirstTransfer() ; pTransfer && ! oPossible.empty() ; pTransfer = pTransfer->m_pDlNext )
+		for ( const CDownloadTransfer* pTransfer = m_pDownload->GetFirstTransfer(); pTransfer && ! oPossible.empty(); pTransfer = pTransfer->m_pDlNext )
 		{
 			pTransfer->SubtractRequested( oPossible );
 		}
@@ -587,11 +587,9 @@ bool CDownloadTransferBT::UnrequestRange(QWORD nOffset, QWORD nLength)
 	if ( m_pDownload->m_pTorrent.m_nBlockSize == 0 )
 		return false;
 
-	Fragments::Queue oUnrequests = extract_range( m_oRequested,
-		Fragments::Fragment( nOffset, nOffset + nLength ) );
+	Fragments::Queue oUnrequests = extract_range( m_oRequested, Fragments::Fragment( nOffset, nOffset + nLength ) );
 
-	for ( Fragments::Queue::const_iterator pFragment = oUnrequests.begin() ;
-		pFragment != oUnrequests.end() ; ++pFragment )
+	for ( Fragments::Queue::const_iterator pFragment = oUnrequests.begin(); pFragment != oUnrequests.end(); ++pFragment )
 	{
 		m_pClient->Cancel(							// BT_PACKET_CANCEL
 			(DWORD)( pFragment->begin() / m_pDownload->m_pTorrent.m_nBlockSize ),
@@ -627,7 +625,7 @@ BOOL CDownloadTransferBT::OnPiece(CBTPacket* pPacket)
 
 	BOOL bSuccess = m_pDownload->SubmitData( nOffset, pPacket->m_pBuffer + pPacket->m_nPosition, nLength );
 	if ( ! bSuccess )
-		TRACE( L"[BT] Failed to submit data %I64u-%I64u to \"%s\".\n", nOffset, nOffset + nLength, m_pDownload->m_sPath );
+		TRACE( "[BT] Failed to submit data %I64u-%I64u to \"%s\".\n", nOffset, nOffset + nLength, (LPCSTR)CT2A( m_pDownload->m_sPath ) );
 
 	// Note: SendRequests and ShowInterest are combined...  (Both use high CPU GetWantedFragmentsList)
 	// SendRequests is also going to tell if we are interested or not
@@ -651,7 +649,7 @@ BOOL CDownloadTransferBT::OnSourceResponse(CBTPacket* pPacket)
 
 	int nCount = 0;
 
-	for ( int nPeer = 0 ; nPeer < pPeers->GetCount() ; nPeer++ )
+	for ( int nPeer = 0; nPeer < pPeers->GetCount(); nPeer++ )
 	{
 		const CBENode* pPeer = pPeers->GetNode( nPeer );
 		if ( ! pPeer->IsType( CBENode::beDict ) ) continue;

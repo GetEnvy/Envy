@@ -1,8 +1,8 @@
 //
 // UploadQueue.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2008
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2008 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -63,13 +63,13 @@ CUploadQueue::CUploadQueue()
 
 CUploadQueue::~CUploadQueue()
 {
-	for ( POSITION pos = m_pActive.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pActive.GetHeadPosition(); pos; )
 	{
 		CUploadTransfer* pUpload = m_pActive.GetNext( pos );
 		pUpload->m_pQueue = NULL;
 	}
 
-	for ( DWORD nPosition = 0 ; nPosition < GetQueuedCount() ; nPosition++ )
+	for ( DWORD nPosition = 0; nPosition < GetQueuedCount(); nPosition++ )
 	{
 		CUploadTransfer* pUpload = m_pQueued.GetAt( nPosition );
 		pUpload->m_pQueue = NULL;
@@ -223,7 +223,7 @@ BOOL CUploadQueue::Dequeue(CUploadTransfer* pUpload)
 		return TRUE;
 	}
 
-	for ( DWORD nPosition = 0 ; nPosition < GetQueuedCount() ; nPosition++ )
+	for ( DWORD nPosition = 0; nPosition < GetQueuedCount(); nPosition++ )
 	{
 		if ( m_pQueued.GetAt( nPosition ) == pUpload )
 		{
@@ -246,7 +246,7 @@ int CUploadQueue::GetPosition(CUploadTransfer* pUpload, BOOL bStart)
 
 	if ( m_pActive.Find( pUpload ) ) return 0;
 
-	for ( DWORD nPosition = 0 ; nPosition < GetQueuedCount() ; nPosition++ )
+	for ( DWORD nPosition = 0; nPosition < GetQueuedCount(); nPosition++ )
 	{
 		if ( m_pQueued.GetAt( nPosition ) == pUpload )
 		{
@@ -277,7 +277,7 @@ BOOL CUploadQueue::StealPosition(CUploadTransfer* pTarget, CUploadTransfer* pSou
 		return TRUE;
 	}
 
-	for ( DWORD nPosition = 0 ; nPosition < GetQueuedCount() ; nPosition++ )
+	for ( DWORD nPosition = 0; nPosition < GetQueuedCount(); nPosition++ )
 	{
 		if ( m_pQueued.GetAt( nPosition ) == pSource )
 		{
@@ -362,7 +362,7 @@ DWORD CUploadQueue::GetBandwidthLimit(DWORD nTransfers) const
 	DWORD nTotalPoints = nLocalPoints;
 
 	CQuickLock oLock( UploadQueues.m_pSection );
-	for ( POSITION pos = UploadQueues.GetIterator() ; pos ; )
+	for ( POSITION pos = UploadQueues.GetIterator(); pos; )
 	{
 		CUploadQueue* pOther = UploadQueues.GetNext( pos );
 		if ( pOther != this ) nTotalPoints += pOther->GetBandwidthPoints();
@@ -385,7 +385,7 @@ DWORD CUploadQueue::GetAvailableBandwidth() const
 	DWORD nTotal = GetBandwidthLimit();
 	DWORD nUsed = 0;
 
-	for ( POSITION pos = m_pActive.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pActive.GetHeadPosition(); pos; )
 	{
 		CUploadTransfer* pActive = m_pActive.GetNext( pos );
 		// If newly queued host is set as "Next" don't count allocated bandwidth, max speed in such case is zero.
@@ -419,7 +419,7 @@ void CUploadQueue::SpreadBandwidth()
 		return;		// Nothing to do
 
 	const DWORD nLimit = GetBandwidthLimit() / nCount;
-	for ( POSITION pos = m_pActive.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pActive.GetHeadPosition(); pos; )
 	{
 		CUploadTransfer* pActive = m_pActive.GetNext( pos );
 		pActive->SetSpeedLimit( nLimit );
@@ -443,7 +443,7 @@ void CUploadQueue::RescaleBandwidth()
 		return;
 
 	DWORD nAllocated = 0;
-	for ( POSITION pos = m_pActive.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pActive.GetHeadPosition(); pos; )
 	{
 		CUploadTransfer* pActive = m_pActive.GetNext( pos );
 		// If newly queued host is set as "Next" don't count allocated bandwidth, max speed in such case is zero.
@@ -457,7 +457,7 @@ void CUploadQueue::RescaleBandwidth()
 	}
 
 	const double nScale = (double)nTotal / nAllocated;
-	for ( POSITION pos = m_pActive.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pActive.GetHeadPosition(); pos; )
 	{
 		CUploadTransfer* pActive = m_pActive.GetNext( pos );
 		pActive->SetSpeedLimit( (DWORD)( nScale * pActive->GetMaxSpeed() ) );

@@ -1,8 +1,8 @@
 //
 // Handshakes.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2016 and Shareaza 2002-2007
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2016
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -156,7 +156,7 @@ void CHandshakes::Disconnect()
 	m_tStableTime	= 0;
 
 	// Delete all the handshake objects in the list, and the list itself
-	for ( POSITION pos = m_pList.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pList.GetHeadPosition(); pos; )
 		delete m_pList.GetNext( pos );	// Delete each handshake object
 	m_pList.RemoveAll();				// Remove all the pointers
 }
@@ -202,7 +202,7 @@ BOOL CHandshakes::IsConnectedTo(const IN_ADDR* pAddress) const
 {
 	CSingleLock pLock( &m_pSection, TRUE );
 
-	for ( POSITION pos = m_pList.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pList.GetHeadPosition(); pos; )
 	{
 		const CHandshake* pHandshake = m_pList.GetNext( pos );
 
@@ -276,12 +276,12 @@ void CHandshakes::RunHandshakes()
 		return;
 
 	// Loop through each CHandshake object in the m_pList list of pointers to them
-	for ( POSITION posNext = m_pList.GetHeadPosition() ; posNext ; )
+	for ( POSITION posNext = m_pList.GetHeadPosition(); posNext; )
 	{
 		CHandshake* pHandshake = m_pList.GetNext( posNext );
 
 		// Send and receive data write with the remote computer, deleting the handshake object if we loose the connection
-		if ( ! pHandshake->DoRun() )
+		if ( pHandshake && ! pHandshake->DoRun() )
 			Remove( pHandshake );
 	}
 }
@@ -316,7 +316,7 @@ BOOL CHandshakes::AcceptConnection()
 	//	CNetwork::CloseSocket( hSocket, true );
 	//
 	//	// Report that this connection was denied for security reasons
-	//	theApp.Message( MSG_ERROR, IDS_NETWORK_SECURITY_BLOCKED, (LPCTSTR)CString( inet_ntoa( pHost.sin_addr ) ) );
+	//	theApp.Message( MSG_ERROR, IDS_SECURITY_BLOCKED, (LPCTSTR)CString( inet_ntoa( pHost.sin_addr ) ) );
 	//	return TRUE;
 	//}
 
@@ -357,7 +357,7 @@ int CALLBACK CHandshakes::AcceptCheck(IN LPWSABUF lpCallerId,
 	if ( Security.IsDenied( &pHost->sin_addr ) )
 	{
 		// Record we are rejecting this connection because it is on the watch list, and tell WSAAccept to not connect
-		theApp.Message( MSG_ERROR, IDS_NETWORK_SECURITY_BLOCKED, (LPCTSTR)CString( inet_ntoa( pHost->sin_addr ) ) );
+		theApp.Message( MSG_ERROR, IDS_SECURITY_BLOCKED, (LPCTSTR)CString( inet_ntoa( pHost->sin_addr ) ) );	// IDS_SECURITY_DENIED
 		return CF_REJECT;
 	}
 

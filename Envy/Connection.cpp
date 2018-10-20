@@ -1,8 +1,8 @@
 //
 // Connection.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2015 and Shareaza 2002-2007
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2015
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -171,7 +171,7 @@ BOOL CConnection::ConnectTo(const IN_ADDR* pAddress, WORD nPort)
 	if ( Security.IsDenied( pAddress ) )
 	{
 		// Report that we aren't connecting to this IP address and return false
-		theApp.Message( MSG_ERROR, IDS_NETWORK_SECURITY_OUTGOING, (LPCTSTR)CString( inet_ntoa( *pAddress ) ) );
+		theApp.Message( MSG_ERROR, IDS_SECURITY_OUTGOING, (LPCTSTR)CString( inet_ntoa( *pAddress ) ) );
 		return FALSE;
 	}
 
@@ -323,6 +323,14 @@ void CConnection::Close(UINT nError)
 		{
 			theApp.Message( MSG_ERROR, IDS_HANDSHAKE_REJECTED, (LPCTSTR)m_sAddress, (LPCTSTR)m_sUserAgent );
 		}
+		if ( nError == IDS_SECURITY_BANNED_USERAGENT )
+		{
+			CString strComment;
+			strComment.Format( LoadString( IDS_SECURITY_BANNED_USERAGENT ), (LPCTSTR)m_sAddress, (LPCTSTR)m_sUserAgent );
+			Security.Ban( &m_pHost.sin_addr, ban2Hours, FALSE, strComment );
+
+			theApp.Message( MSG_ERROR, IDS_SECURITY_BANNED_USERAGENT, (LPCTSTR)m_sAddress, (LPCTSTR)m_sUserAgent );
+		}
 		else
 		{
 			BOOL bInfo = ( nError == IDS_CONNECTION_CLOSED || nError == IDS_CONNECTION_PEERPRUNE );
@@ -406,7 +414,7 @@ BOOL CConnection::DoRun()
 	}
 
 	// If the FD_CLOSE network event has occurred, set bClosed to true, otherwise set it to false
-	BOOL bClosed = ( pEvents.lNetworkEvents & FD_CLOSE ) ? TRUE : FALSE;
+	const BOOL bClosed = ( pEvents.lNetworkEvents & FD_CLOSE ) ? TRUE : FALSE;
 
 	// If the close event happened, null a pointer within the TCP bandwidth meter for input (do)
 	if ( bClosed )
@@ -430,8 +438,11 @@ BOOL CConnection::DoRun()
 		return FALSE;
 	}
 
+	if ( this == NULL )		// Workaround Crash below
+		return FALSE;
+
 	// Make sure the handshake doesn't take too long
-	if ( ! OnRun() )
+	if ( ! OnRun() )		// ToDo: Crash here
 		return FALSE;
 
 	// If the queued run state is 2 and OnWrite returns false, leave here with false also

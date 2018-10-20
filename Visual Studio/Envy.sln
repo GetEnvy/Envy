@@ -15,7 +15,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Envy", "..\Envy\Envy.vcxpro
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TorrentEnvy", "..\TorrentEnvy\TorrentEnvy.vcxproj", "{F02EDE36-E2AC-40E8-B6DC-76B1D53F9A5A}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Packages", "..\Packages\Packages.vcxproj", "{CAA6FCC8-27B1-42B9-B647-976E7BE79C70}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Unpacker", "..\Unpacker\Unpacker.vcxproj", "{CAA6FCC8-27B1-42B9-B647-976E7BE79C70}"
 EndProject
 # Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SkinBuilder", "..\SkinBuilder\SkinBuilder.vcxproj", "{40448DA0-0373-4BFB-8A21-2C7F3A02A327}"
 # EndProject

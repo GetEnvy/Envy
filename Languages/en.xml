@@ -3,7 +3,7 @@
 
 <!-- Envy Default English Skin File -->
 
-<!-- Translation based on default en.xml r21 -->
+<!-- Translation based on default en.xml r22 -->
 <!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -15,7 +15,7 @@
 <manifest
 	name="English (Default)"
 	author="Envy Development Team"
-	updatedBy="SkinVista"
+	updatedby="SkinVista"
 	description="Envy Default English Skin File"
 	link="http://getenvy.com"
 	email="Contact(at)GetEnvy.com"
@@ -3509,8 +3509,9 @@
 	<string id="20807" text="Refusing upload of &quot;%s&quot; to %s (%s), too many concurrent from host."/>
 	<string id="20808" text="Refusing upload of &quot;%s&quot; to %s (%s), busy and client does not support queues."/>
 	<string id="20809" text="Refusing upload of &quot;%s&quot; to %s (%s), all matching queues are full."/>
-	<string id="20810" text="Upload host %s requested an unsatisfiable range of file &quot;%s&quot;."/>
-	<string id="20811" text="eDonkey uploads should not be cancelled. Are you sure you want to cancel this upload?"/>
+	<string id="20810" text="Refusing upload of &quot;%s&quot; to %s (%s), Library is busy."/>
+	<string id="20811" text="Upload host %s requested an unsatisfiable range of file &quot;%s&quot;."/>
+	<string id="20861" text="eDonkey uploads should not be cancelled. Are you sure you want to cancel this upload?"/>
 	<string id="20812" text="Can't open &quot;%s&quot; to upload to host %s, disk/file error."/>
 	<string id="20813" text="Initiating a push connection to %s. %s"/>
 	<string id="20814" text="Unable to connect to host %s for push."/>
@@ -3557,14 +3558,14 @@
 	<string id="20858" text="Timed out waiting for request from upload host %s."/>
 	<string id="20859" text="Closing upload connection %s due to lack of traffic."/>
 	<string id="20860" text="Uploading tiger-tree data for &quot;%s&quot; to %s."/>
-	<string id="20861" text="Removed upload of &quot;%s&quot; to %s."/>
-	<string id="20862" text="Add"/>
-	<string id="20864" text="&amp;Browse"/>
-	<string id="20865" text="&amp;Connect"/>
-	<string id="20866" text="Filename:"/>
-	<string id="20867" text="Host:"/>
-	<string id="20868" text="Port:"/>
-	<!--string id="20869" text="Unable to display URL action dialog because Envy is busy."-->
+	<string id="20862" text="Removed upload of &quot;%s&quot; to %s."/>
+	<string id="20864" text="Add"/>
+	<string id="20865" text="&amp;Browse"/>
+	<string id="20866" text="&amp;Connect"/>
+	<string id="20867" text="Filename:"/>
+	<string id="20868" text="Host:"/>
+	<string id="20869" text="Port:"/>
+	<!--string id="20876" text="Unable to display URL action dialog because Envy is busy."-->
 	<string id="20870" text="Unable to parse URL: Envy does not understand this URL."/>
 	<string id="20871" text="Received URL &quot;%s&quot;"/>
 	<string id="20872" text="Type:"/>

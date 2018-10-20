@@ -1,8 +1,8 @@
 //
 // CollectionFile.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2017
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2007
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -92,7 +92,7 @@ BOOL CCollectionFile::Open(LPCTSTR lpszFileName)
 
 void CCollectionFile::Close()
 {
-	for ( POSITION pos = GetFileIterator() ; pos ; )
+	for ( POSITION pos = GetFileIterator(); pos; )
 		delete GetNextFile( pos );
 	m_pFiles.RemoveAll();
 
@@ -121,7 +121,7 @@ CCollectionFile::File* CCollectionFile::FindByURN(LPCTSTR pszURN)
 	oED2K.fromUrn( pszURN );
 	oBTH.fromUrn( pszURN ) || oBTH.fromUrn< Hashes::base16Encoding >( pszURN );
 
-	for ( POSITION pos = GetFileIterator() ; pos ; )
+	for ( POSITION pos = GetFileIterator(); pos; )
 	{
 		File* pFile = GetNextFile( pos );
 
@@ -142,7 +142,7 @@ CCollectionFile::File* CCollectionFile::FindFile(CLibraryFile* pShared, BOOL bAp
 {
 	File* pFile = NULL;
 
-	for ( POSITION pos = GetFileIterator() ; pos ; )
+	for ( POSITION pos = GetFileIterator(); pos; )
 	{
 		pFile = GetNextFile( pos );
 		if ( validAndEqual( pShared->m_oSHA1, pFile->m_oSHA1 ) ) break;
@@ -166,7 +166,7 @@ int CCollectionFile::GetMissingCount() const
 {
 	int nCount = 0;
 
-	for ( POSITION pos = GetFileIterator() ; pos ; )
+	for ( POSITION pos = GetFileIterator(); pos; )
 	{
 		const File* pFile = GetNextFile( pos );
 		if ( ! pFile->IsComplete() && ! pFile->IsDownloading() ) nCount++;
@@ -204,7 +204,7 @@ BOOL CCollectionFile::LoadCollection(LPCTSTR pszFile)
 	CXMLElement* pContents = pXML->GetElementByName( L"contents" );
 	if ( ! pContents ) return FALSE;
 
-	for ( POSITION pos = pContents->GetElementIterator() ; pos ; )
+	for ( POSITION pos = pContents->GetElementIterator(); pos; )
 	{
 		CXMLElement* pElement = pContents->GetNextElement( pos );
 		if ( pElement->IsNamed( L"file" ) )
@@ -268,7 +268,7 @@ BOOL CCollectionFile::LoadEMule(LPCTSTR pszFile)
 			DWORD nCount;
 			if ( pFile.Read( &nCount, sizeof( nCount ) ) == sizeof( nCount ) && nCount > 0 && nCount < 10 )
 			{
-				for ( DWORD i = 0 ; i < nCount ; ++i )
+				for ( DWORD i = 0; i < nCount; ++i )
 				{
 					CEDTag pTag;
 					if ( ! pTag.Read( &pFile ) )
@@ -287,7 +287,7 @@ BOOL CCollectionFile::LoadEMule(LPCTSTR pszFile)
 			if ( pFile.Read( &nFileCount, sizeof( nFileCount ) ) == sizeof( nFileCount ) &&
 				nFileCount > 0 && nFileCount < 20000 )
 			{
-				for ( DWORD i = 0 ; i < nFileCount ; ++i )
+				for ( DWORD i = 0; i < nFileCount; ++i )
 				{
 					augment::auto_ptr< File > pCollectionFile( new File( this ) );
 					if ( pCollectionFile.get() && pCollectionFile->Parse( pFile ) )
@@ -350,7 +350,7 @@ BOOL CCollectionFile::LoadDC(LPCTSTR pszFile)
 
 void CCollectionFile::LoadDC(CXMLElement* pRoot)
 {
-	for ( POSITION pos = pRoot->GetElementIterator() ; pos ; )
+	for ( POSITION pos = pRoot->GetElementIterator(); pos; )
 	{
 		CXMLElement* pElement = pRoot->GetNextElement( pos );
 		if ( pElement->IsNamed( L"Directory" ) )
@@ -439,7 +439,7 @@ CXMLElement* CCollectionFile::CloneMetadata(CXMLElement* pMetadata)
 	if ( _tcsnicmp( strName, L"s:", 2 ) == 0 )
 		pCore->SetName( strName.Mid( 2 ) );
 
-	for ( POSITION pos = pCore->GetElementIterator() ; pos ; )
+	for ( POSITION pos = pCore->GetElementIterator(); pos; )
 	{
 		CXMLNode* pNode = pCore->GetNextElement( pos );
 		CString strNodeName = pNode->GetName();
@@ -447,7 +447,7 @@ CXMLElement* CCollectionFile::CloneMetadata(CXMLElement* pMetadata)
 			pNode->SetName( strNodeName.Mid( 2 ) );
 	}
 
-	for ( POSITION pos = pCore->GetAttributeIterator() ; pos ; )
+	for ( POSITION pos = pCore->GetAttributeIterator(); pos; )
 	{
 		CXMLNode* pNode = pCore->GetNextAttribute( pos );
 		CString strNodeName = pNode->GetName();
@@ -479,7 +479,7 @@ void CCollectionFile::Render(CString& strBuffer) const
 		(LPCTSTR)GetTitle() );
 
 	DWORD i = 1;
-	for ( POSITION pos = GetFileIterator() ; pos ; ++i )
+	for ( POSITION pos = GetFileIterator(); pos; ++i )
 	{
 		CCollectionFile::File* pFile = GetNextFile( pos );
 
@@ -528,7 +528,7 @@ BOOL CCollectionFile::File::Parse(CXMLElement* pRoot)
 {
 	//if ( ! pRoot->IsNamed( L"file" ) ) return FALSE;	// Discards DC++
 
-	for ( POSITION pos = pRoot->GetElementIterator() ; pos ; )
+	for ( POSITION pos = pRoot->GetElementIterator(); pos; )
 	{
 		CXMLElement* pXML = pRoot->GetNextElement( pos );
 
@@ -581,7 +581,7 @@ BOOL CCollectionFile::File::Parse(CFile& pFile)
 	if ( pFile.Read( &nCount, sizeof( nCount ) ) == sizeof( nCount ) &&
 		nCount > 0 && nCount < 10 )
 	{
-		for ( DWORD i = 0 ; i < nCount ; ++i )
+		for ( DWORD i = 0; i < nCount; ++i )
 		{
 			CEDTag pTag;
 			if ( ! pTag.Read( &pFile ) )

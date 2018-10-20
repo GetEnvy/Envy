@@ -1,8 +1,8 @@
 //
 // DownloadWithExtras.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2006
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2006 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -93,7 +93,7 @@ void CDownloadWithExtras::AddPreviewName(LPCTSTR pszFile)
 
 void CDownloadWithExtras::DeletePreviews()
 {
-	for ( POSITION pos = m_pPreviews.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pPreviews.GetHeadPosition(); pos; )
 	{
 		POSITION posRemove = pos;
 		CString strPath = m_pPreviews.GetNext( pos );
@@ -349,7 +349,7 @@ void CDownloadWithExtras::Serialize(CArchive& ar, int nVersion)		// DOWNLOAD_SER
 	{
 		ar.WriteCount( m_pPreviews.GetCount() );
 
-		for ( POSITION pos = m_pPreviews.GetHeadPosition() ; pos ; )
+		for ( POSITION pos = m_pPreviews.GetHeadPosition(); pos; )
 		{
 			ar << m_pPreviews.GetNext( pos );
 		}
@@ -365,14 +365,14 @@ void CDownloadWithExtras::Serialize(CArchive& ar, int nVersion)		// DOWNLOAD_SER
 	}
 	else // Loading
 	{
-		for ( DWORD_PTR nCount = ar.ReadCount() ; nCount ; nCount-- )
+		for ( DWORD_PTR nCount = ar.ReadCount(); nCount; nCount-- )
 		{
 			CString str;
 			ar >> str;
 			m_pPreviews.AddTail( str );
 		}
 
-		for ( DWORD_PTR nCount = ar.ReadCount() ; nCount ; nCount-- )
+		for ( DWORD_PTR nCount = ar.ReadCount(); nCount; nCount-- )
 		{
 			CDownloadReview *pReview = new CDownloadReview;
 			pReview->Serialize( ar, nVersion );

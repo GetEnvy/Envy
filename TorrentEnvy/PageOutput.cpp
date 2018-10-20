@@ -1,7 +1,7 @@
 //
 // PageOutput.cpp
 //
-// This file is part of Torrent Envy (getenvy.com) © 2016
+// This file is part of Torrent Envy (getenvy.com) © 2016-2018
 // Portions copyright PeerProject 2008,2012-2014 and Shareaza 2007
 //
 // Envy is free software; you can redistribute it
@@ -10,8 +10,8 @@
 // either version 3 of the License, or later version (at your option).
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU General Public License for more details.
 // (http://www.gnu.org/licenses/gpl.html)
 //
@@ -82,7 +82,7 @@ BOOL COutputPage::OnInitDialog()
 	m_bED2K 		= theApp.GetProfileInt( L"Folders", L"ED2K", TRUE );
 	m_bMD5			= theApp.GetProfileInt( L"Folders", L"MD5", TRUE );
 
-	for ( int nItem = 0 ; nItem < nCount ; nItem++ )
+	for ( int nItem = 0; nItem < nCount; nItem++ )
 	{
 		CString strName;
 		strName.Format( L"%.3i.Path", nItem + 1 );
@@ -138,7 +138,7 @@ BOOL COutputPage::OnSetActive()
 			CString sName2 = pPackage->m_wndList.GetItemText( nCount - 1, 0 );
 			LPCTSTR pszName1 = sName;
 			LPCTSTR pszName2 = sName2;
-			for ( int i = 0 ; *pszName1 && *pszName2 ; ++pszName1, ++pszName2, ++i )
+			for ( int i = 0; *pszName1 && *pszName2; ++pszName1, ++pszName2, ++i )
 			{
 				if ( *pszName1 != *pszName2 )
 				{

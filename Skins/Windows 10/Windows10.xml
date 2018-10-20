@@ -352,6 +352,14 @@
  <image id="ID_MEDIA_SETTINGS"/>
 </bitmap>
 
+<bitmap path="ChildFrame.png" mask="CLR_NONE">
+ <image id="ID_CHILD_CLOSE_HOVER"/>
+ <image id="ID_CHILD_CLOSE"/>
+ <image id="ID_CHILD_MINIMISE"/>
+ <image id="ID_CHILD_MAXIMISE"/>
+ <image id="ID_CHILD_RESTORE"/>
+</bitmap>
+
 <bitmap path="Ticks.png" mask="CLR_NONE">
  <image id="150"/> <!--"IDI_OPENTICK"-->
  <image id="151"/> <!--"IDI_OPENTICK_HOVER"-->

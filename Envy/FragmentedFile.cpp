@@ -2,7 +2,7 @@
 // FragmentedFile.cpp
 //
 // This file is part of Envy (getenvy.com) © 2016-2018
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2007
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -124,7 +124,7 @@ void CFragmentedFile::AssertValid() const
 	{
 		ASSERT( m_oFile.front().m_nOffset == 0 );
 		CVirtualFile::const_iterator j;
-		for ( CVirtualFile::const_iterator i = m_oFile.begin() ; i != m_oFile.end() ; ++i )
+		for ( CVirtualFile::const_iterator i = m_oFile.begin(); i != m_oFile.end(); ++i )
 		{
 			if ( i != m_oFile.begin() )
 				ASSERT( (*j).m_nOffset + (*j).m_nSize == (*i).m_nOffset );
@@ -138,7 +138,7 @@ void CFragmentedFile::Dump(CDumpContext& dc) const
 	CObject::Dump( dc );
 
 	int n = 1;
-	for ( CVirtualFile::const_iterator i = m_oFile.begin() ; i != m_oFile.end() ; ++i, ++n )
+	for ( CVirtualFile::const_iterator i = m_oFile.begin(); i != m_oFile.end(); ++i, ++n )
 		dc << n << L". File offset " << (*i).m_nOffset << L", "
 			<< (*i).m_nSize << L" bytes, "
 			<< ( (*i).m_bWrite ? L"RW" : L"RO" )
@@ -293,7 +293,7 @@ BOOL CFragmentedFile::Open(const CEnvyFile* pPPFile, BOOL bWrite)
 		return FALSE;
 	}
 
-	//TRACE( L"Fragmented File : Opened from disk \"%s\"\n", (LPCTSTR)pPPFile->GetFilename() );
+	//TRACE( "Fragmented File : Opened from disk \"%s\"\n", (LPCTSTR)pPPFile->GetFilename() );
 
 	return TRUE;
 }
@@ -306,7 +306,7 @@ BOOL CFragmentedFile::Open(const CBTInfo& oInfo, BOOL bWrite)
 	QWORD nOffset = 0;
 	size_t i = 0;
 
-	for ( POSITION pos = oInfo.m_pFiles.GetHeadPosition() ; pos ; ++i )
+	for ( POSITION pos = oInfo.m_pFiles.GetHeadPosition(); pos; ++i )
 	{
 		CBTInfo::CBTFile* pBTFile = oInfo.m_pFiles.GetNext( pos );
 		ASSERT( pBTFile->m_nSize != SIZE_UNKNOWN );
@@ -369,7 +369,7 @@ BOOL CFragmentedFile::FindByPath(const CString& sPath) const
 {
 	CQuickLock oLock( m_pSection );
 
-	for ( CVirtualFile::const_iterator i = m_oFile.begin() ; i != m_oFile.end() ; ++i )
+	for ( CVirtualFile::const_iterator i = m_oFile.begin(); i != m_oFile.end(); ++i )
 	{
 		if ( ! (*i).m_sPath.CompareNoCase( sPath ) )
 			return TRUE;	// Our subfile
@@ -385,7 +385,7 @@ BOOL CFragmentedFile::IsOpen() const
 	if ( m_oFile.empty() )
 		return FALSE;		// No subfiles
 
-	for ( CVirtualFile::const_iterator i = m_oFile.begin() ; i != m_oFile.end() ; ++i )
+	for ( CVirtualFile::const_iterator i = m_oFile.begin(); i != m_oFile.end(); ++i )
 	{
 		if ( ! (*i).m_pFile || ! (*i).m_pFile->IsOpen() )
 			return FALSE;	// Closed subfile
@@ -473,7 +473,7 @@ Fragments::List CFragmentedFile::GetFullFragmentList() const
 	Fragments::List oList( m_oFList.limit() );
 	CVirtualFile::const_iterator pItr = m_oFile.begin();
 	const CVirtualFile::const_iterator pEnd = m_oFile.end();
-	for ( ; pItr != pEnd ; ++pItr )
+	for ( ; pItr != pEnd; ++pItr )
 	{
 		if ( (*pItr).m_nPriority != prUnwanted )
 			oList.insert( Fragments::Fragment( (*pItr).m_nOffset, (*pItr).m_nOffset + (*pItr).m_nSize ) );		// High CPU when active
@@ -491,7 +491,7 @@ Fragments::List CFragmentedFile::GetWantedFragmentList() const
 
 	// Exclude unwanted files
 	Fragments::List oList( m_oFList );
-	for ( CVirtualFile::const_iterator i = m_oFile.begin() ; i != m_oFile.end() ; ++i )
+	for ( CVirtualFile::const_iterator i = m_oFile.begin(); i != m_oFile.end(); ++i )
 	{
 		if ( (*i).m_nPriority == prUnwanted )
 			oList.erase( Fragments::Fragment( (*i).m_nOffset, (*i).m_nOffset + (*i).m_nSize ) );
@@ -546,7 +546,7 @@ int CFragmentedFile::SelectFile(CSingleLock* pLock) const
 			CQuickLock oLock( m_pSection );
 
 			int index = 0;
-			for ( CVirtualFile::const_iterator i = m_oFile.begin() ; i != m_oFile.end() ; ++i, ++index )
+			for ( CVirtualFile::const_iterator i = m_oFile.begin(); i != m_oFile.end(); ++i, ++index )
 			{
 				if ( GetCompleted( (*i).m_nOffset, (*i).m_nSize ) > 0 )
 					dlg.Add( (*i).m_sName, index );
@@ -581,7 +581,7 @@ void CFragmentedFile::Delete()
 		// Enumerate all subfiles
 		CVirtualFile::const_iterator pItr = m_oFile.begin();
 		const CVirtualFile::const_iterator pEnd = m_oFile.end();
-		for ( ; pItr != pEnd ; ++pItr )
+		for ( ; pItr != pEnd; ++pItr )
 		{
 			oPurge.push_back( *pItr );
 		}
@@ -596,7 +596,7 @@ void CFragmentedFile::Delete()
 
 	CVirtualFile::const_iterator pItr = oPurge.begin();
 	const CVirtualFile::const_iterator pEnd = oPurge.end();
-	for ( ; pItr != pEnd ; ++pItr )
+	for ( ; pItr != pEnd; ++pItr )
 	{
 		// Delete subfile
 		BOOL bToRecycleBin = !(*pItr).m_bWrite;
@@ -742,7 +742,7 @@ BOOL CFragmentedFile::SetSize(QWORD nSize)
 	m_oFList.ensure( nSize );
 
 	QWORD nFileSize = 0;
-	for ( CVirtualFile::iterator i = m_oFile.begin() ; i != m_oFile.end() ; ++i )
+	for ( CVirtualFile::iterator i = m_oFile.begin(); i != m_oFile.end(); ++i )
 	{
 		CVirtualFilePart& file = (*i);
 
@@ -799,7 +799,7 @@ void CFragmentedFile::Serialize(CArchive& ar, int nVersion)
 		SerializeOut1( ar, m_oFList );
 
 		ar << (DWORD)m_oFile.size();
-		for ( CVirtualFile::const_iterator i = m_oFile.begin() ; i != m_oFile.end() ; ++i )
+		for ( CVirtualFile::const_iterator i = m_oFile.begin(); i != m_oFile.end(); ++i )
 		{
 			ASSERT( ! (*i).m_sPath.IsEmpty() );
 			ar << (*i).m_sPath;
@@ -827,7 +827,7 @@ void CFragmentedFile::Serialize(CArchive& ar, int nVersion)
 		int nPriority = prNormal;
 
 		ar >> count;
-		for ( DWORD i = 0 ; i < count ; ++i )
+		for ( DWORD i = 0; i < count; ++i )
 		{
 			ar >> strPath;
 			ar >> nOffset;
@@ -851,7 +851,7 @@ void CFragmentedFile::Serialize(CArchive& ar, int nVersion)
 
 			if ( ! Open( strPath, nOffset, nLength, bWrite, strName, nPriority ) )
 			{
-				theApp.Message( MSG_ERROR, IDS_DOWNLOAD_FILE_OPEN_ERROR, strPath );
+				theApp.Message( MSG_ERROR, IDS_DOWNLOAD_FILE_OPEN_ERROR, (LPCTSTR)strPath );
 				if ( nPriority != prUnwanted )		// Allow partial seeds
 					AfxThrowFileException( CFileException::fileNotFound );
 			}
@@ -881,7 +881,7 @@ BOOL CFragmentedFile::Write(QWORD nOffset, LPCVOID pData, QWORD nLength, QWORD* 
 		return FALSE;	// Empty range
 
 	QWORD nProcessed = 0;
-	for ( ; pMatches.first != pMatches.second ; ++pMatches.first )
+	for ( ; pMatches.first != pMatches.second; ++pMatches.first )
 	{
 		QWORD nStart = max( pMatches.first->begin(), oMatch.begin() );
 		QWORD nToWrite = min( pMatches.first->end(), oMatch.end() ) - nStart;
@@ -934,7 +934,7 @@ BOOL CFragmentedFile::VirtualRead(QWORD nOffset, char* pBuffer, QWORD nBuffer, Q
 	if ( pnRead )
 		*pnRead = 0;
 
-	for ( ; nBuffer ; ++i )
+	for ( ; nBuffer; ++i )
 	{
 		if ( i == m_oFile.end() )
 			return FALSE;	// EOF
@@ -984,7 +984,7 @@ BOOL CFragmentedFile::VirtualWrite(QWORD nOffset, const char* pBuffer, QWORD nBu
 	if ( pnWritten )
 		*pnWritten = 0;
 
-	for ( ; nBuffer ; ++i )
+	for ( ; nBuffer; ++i )
 	{
 		if ( i == m_oFile.end() )
 			return FALSE;	// EOF

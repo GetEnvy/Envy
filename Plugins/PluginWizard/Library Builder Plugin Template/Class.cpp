@@ -1,17 +1,17 @@
 //
 // Class.cpp : Implementation of CClass
 //
-// This file is part of Envy (getenvy.com) © 2010
+// This file is part of Envy (getenvy.com) © 2018
 // #COPYRIGHT#
 //
-// Envy is free software; you can redistribute it and/or
-// modify it under the terms of the GNU General Public License
+// Envy is free software. You may redistribute and/or modify it
+// under the terms of the GNU Affero General Public License
 // as published by the Free Software Foundation (fsf.org);
-// either version 3 of the License, or later version (at your option).
+// version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU General Public License for more details.
 // (http://www.gnu.org/licenses/gpl.html)
 //

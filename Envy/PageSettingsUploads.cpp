@@ -1,8 +1,8 @@
 //
 // PageSettingsUploads.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2007
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -125,8 +125,8 @@ BOOL CUploadsSettingsPage::OnInitDialog()
 
 	Settings.SetRange( &Settings.Uploads.MaxPerHost, m_wndMaxPerHost );
 
-	for ( string_set::const_iterator i = Settings.Uploads.BlockAgents.begin() ;
-		i != Settings.Uploads.BlockAgents.end() ; i++ )
+	for ( string_set::const_iterator i = Settings.Uploads.BlockAgents.begin();
+		i != Settings.Uploads.BlockAgents.end(); i++ )
 	{
 		m_wndAgentList.AddString( *i );
 	}
@@ -171,7 +171,7 @@ void CUploadsSettingsPage::UpdateQueues()
 	CLiveList pQueues( 5 );
 	int nIndex = 1;
 
-	for ( POSITION pos = UploadQueues.GetIterator() ; pos ; nIndex++ )
+	for ( POSITION pos = UploadQueues.GetIterator(); pos; nIndex++ )
 	{
 		BOOL bDonkeyOnlyDisabled = FALSE;
 
@@ -292,7 +292,7 @@ void CUploadsSettingsPage::OnQueueEdit()
 
 void CUploadsSettingsPage::OnQueueDelete()
 {
-	for ( int nItem = -1 ; ( nItem = m_wndQueues.GetNextItem( nItem, LVNI_SELECTED ) ) >= 0 ; )
+	for ( int nItem = -1; ( nItem = m_wndQueues.GetNextItem( nItem, LVNI_SELECTED ) ) >= 0; )
 	{
 		CUploadQueue* pQueue = (CUploadQueue*)m_wndQueues.GetItemData( nItem );
 		UploadQueues.Delete( pQueue );
@@ -317,7 +317,7 @@ void CUploadsSettingsPage::OnQueueDrop(NMHDR* pNMHDR, LRESULT* pResult)
 		if ( ! UploadQueues.Check( pTarget ) ) pTarget = NULL;
 	}
 
-	for ( int nItem = -1 ; ( nItem = m_wndQueues.GetNextItem( nItem, LVNI_SELECTED ) ) >= 0 ; )
+	for ( int nItem = -1; ( nItem = m_wndQueues.GetNextItem( nItem, LVNI_SELECTED ) ) >= 0; )
 	{
 		CUploadQueue* pQueue = (CUploadQueue*)m_wndQueues.GetItemData( nItem );
 
@@ -374,7 +374,7 @@ void CUploadsSettingsPage::OnOK()
 	// Set blocked user agents/strings
 	Settings.Uploads.BlockAgents.clear();
 
-	for ( int nItem = 0 ; nItem < m_wndAgentList.GetCount() ; nItem++ )
+	for ( int nItem = 0; nItem < m_wndAgentList.GetCount(); nItem++ )
 	{
 		CString str;
 		m_wndAgentList.GetLBText( nItem, str );
@@ -420,7 +420,7 @@ void CUploadsSettingsPage::OnShowWindow(BOOL bShow, UINT nStatus)
 		( Settings.Connection.OutSpeed * 9 ) / 10,	//  90%
 		Settings.Connection.OutSpeed				// 100%
 	};
-	for ( int nSpeed = 0 ; nSpeed < sizeof( nSpeeds ) / sizeof( DWORD ) ; nSpeed++ )
+	for ( int nSpeed = 0; nSpeed < sizeof( nSpeeds ) / sizeof( DWORD ); nSpeed++ )
 	{
 		CString strSpeed = Settings.SmartSpeed( nSpeeds[ nSpeed ], Kilobits );
 		if ( Settings.ParseVolume( strSpeed, Kilobits )

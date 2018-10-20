@@ -1,8 +1,8 @@
 //
 // ImageServices.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2008
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2008 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -105,7 +105,7 @@ BOOL CImageServices::LoadFromFile(CImageFile* pFile, LPCTSTR szFilename, BOOL bS
 	service_list oList;
 	if ( LookupUniversalPlugins( oList ) )
 	{
-		for ( service_list::const_iterator i = oList.begin() ; i != oList.end() ; ++i )
+		for ( service_list::const_iterator i = oList.begin(); i != oList.end(); ++i )
 		{
 			if ( LoadFromFileHelper( (*i).second.m_T, pFile, szFilename, bScanOnly, bPartialOk ) )
 				return TRUE;
@@ -340,7 +340,7 @@ BOOL CImageServices::LookupUniversalPlugins(service_list& oList)
 	if ( SHRegOpenUSKey( REGISTRY_KEY L"\\Plugins\\ImageService",
 		KEY_READ, NULL, &hKey, FALSE ) == ERROR_SUCCESS )
 	{
-		for ( DWORD nKey = 0 ; ; nKey++ )
+		for ( DWORD nKey = 0; ; nKey++ )
 		{
 			TCHAR szType[ 128 ] = {}, szCLSID[ 64 ] = {};
 			DWORD dwType, dwTypeLen = 128, dwCLSIDLen = 64 * sizeof( TCHAR ) - 1;
@@ -392,7 +392,7 @@ STDMETHODIMP CImageServices::XImageService::LoadFromFile( __in BSTR sFile, __ino
 	service_list oList;
 	if ( ImageServices.LookupUniversalPlugins( oList ) )
 	{
-		for ( service_list::const_iterator i = oList.begin() ; i != oList.end() ; ++i )
+		for ( service_list::const_iterator i = oList.begin(); i != oList.end(); ++i )
 		{
 			if ( SUCCEEDED( (*i).second.m_T->LoadFromFile( sFile, pParams, ppImage ) ) )
 				return S_OK;

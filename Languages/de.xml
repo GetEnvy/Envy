@@ -3,7 +3,7 @@
 
 <!-- Envy Default German Skin File -->
 
-<!-- Translation based on default en.xml r21 -->
+<!-- Translation based on default en.xml r22 -->
 <!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -15,7 +15,7 @@
 <manifest
 	name="Deutsch"
 	author="Jann Röder"
-	updatedBy="Frontier, OldDeath, ZeRO (Daisuke)"
+	updatedby="Frontier, OldDeath, ZeRO (Daisuke)"
 	description="Envy Default German Skin File"
 	link="http://getenvy.com"
 	email="zero9999(at)gmail.com"
@@ -3389,8 +3389,9 @@
 	<string id="20807" text="Hochladen von &quot;%s&quot; an %s (%s) verweigert. Zu viele Verbindungen mit Host."/>
 	<string id="20808" text="Kein freier Slot um &quot;%s&quot; an %s (%s) hochzuladen, Client unterstützt keine Warteschlange."/>
 	<string id="20809" text="Upload von &quot;%s&quot; an %s (%s) verweigert, alle entsprechenden Warteschlangen sind voll."/>
-	<string id="20810" text="Upload-Host %s hat einen nicht verfügbaren Bereich der Datei &quot;%s&quot; angefordert."/>
-	<string id="20811" text="eDonkey-Uploads sollten nicht abgebrochen werden. Sind Sie sicher, dass Sie diesen Upload abbrechen wollen?"/>
+	<string id="20810" text="Upload von &quot;%s&quot; an %s (%s) verweigert, Die Bibliothek ist beschäftigt."/>
+	<string id="20811" text="Upload-Host %s hat einen nicht verfügbaren Bereich der Datei &quot;%s&quot; angefordert."/>
+	<string id="20861" text="eDonkey-Uploads sollten nicht abgebrochen werden. Sind Sie sicher, dass Sie diesen Upload abbrechen wollen?"/>
 	<string id="20812" text="Die Datei &quot;%s&quot; konnte nicht geöffnet werden um an Host %s hochzuladen, Festplatten/Dateifehler."/>
 	<string id="20813" text="Push-Verbindung mit %s wird hergestellt um &quot;%s&quot; hochzuladen."/>
 	<string id="20814" text="Konnte keine Upload-Verbindung zu %s herstellen um einen Push request zu senden."/>
@@ -3437,14 +3438,14 @@
 	<string id="20858" text="Die Wartezeit für Upload-Host %s wurde überschritten."/>
 	<string id="20859" text="Upload an %s mangels Aktivität geschlossen."/>
 	<string id="20860" text="TTH-Daten für &quot;%s&quot; an &quot;%s&quot; senden."/>
-	<string id="20861" text="Upload von &quot;%s&quot; an %s entfernt."/>
-	<string id="20862" text="Hinzu"/>
-	<string id="20864" text="&amp;Durchsuchen"/>
-	<string id="20865" text="&amp;Verbinden"/>
-	<string id="20866" text="Dateiname:"/>
-	<string id="20867" text="Host:"/>
-	<string id="20868" text="Port:"/>
-	<!--string id="20869" text="Der URL-Aktionsdialog kann nicht angezeigt werden, weil Envy beschäftigt ist."-->
+	<string id="20862" text="Upload von &quot;%s&quot; an %s entfernt."/>
+	<string id="20864" text="Hinzu"/>
+	<string id="20865" text="&amp;Durchsuchen"/>
+	<string id="20866" text="&amp;Verbinden"/>
+	<string id="20867" text="Dateiname:"/>
+	<string id="20868" text="Host:"/>
+	<string id="20869" text="Port:"/>
+	<!--string id="20876" text="Der URL-Aktionsdialog kann nicht angezeigt werden, weil Envy beschäftigt ist."-->
 	<string id="20870" text="Auswertung der URL nicht möglich: Envy versteht die URL nicht."/>
 	<string id="20871" text="URL &quot;%s&quot; empfangen"/>
 	<string id="20872" text="Typ:"/>

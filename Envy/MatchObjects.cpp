@@ -1,8 +1,8 @@
 //
 // MatchObjects.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2015 and Shareaza 2002-2008
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2008 and PeerProject 2008-2015
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -167,14 +167,14 @@ void CMatchList::UpdateStats()
 	m_nGnutellaHits = 0;
 	m_nED2KHits = 0;
 
-	for ( DWORD i = 0 ; i < m_nFiles ; ++i )
+	for ( DWORD i = 0; i < m_nFiles; ++i )
 	{
 		if ( DWORD nItemCount = m_pFiles[ i ]->GetItemCount() )
 		{
 			m_nItems += nItemCount;
 			m_nFilteredFiles ++;
 			m_nFilteredHits += m_pFiles[ i ]->m_nFiltered;
-			for ( CQueryHit* pHit = m_pFiles[ i ]->GetHits() ; pHit ; pHit = pHit->m_pNext )
+			for ( CQueryHit* pHit = m_pFiles[ i ]->GetHits(); pHit; pHit = pHit->m_pNext )
 			{
 				switch ( pHit->m_nProtocol )
 				{
@@ -200,7 +200,7 @@ void CMatchList::AddHits(const CQueryHit* pHits, const CQuerySearch* pFilter)
 {
 	CSingleLock pLock( &m_pSection, TRUE );
 	CMatchFile** pMap = NULL;
-	for ( const CQueryHit* pNext = pHits ; pNext ; pNext = pNext->m_pNext )
+	for ( const CQueryHit* pNext = pHits; pNext; pNext = pNext->m_pNext )
 	{
 		// Empty file names mean a hit for the currently downloading file.
 		// We just clicked the search result while the search was in progress.
@@ -293,7 +293,7 @@ void CMatchList::AddHits(const CQueryHit* pHits, const CQuerySearch* pFilter)
 		if ( pFile )	// New hit for an existing file
 		{
 			pMap = m_pFiles;
-			for ( DWORD nCount = m_nFiles ; nCount ; nCount--, pMap++ )
+			for ( DWORD nCount = m_nFiles; nCount; nCount--, pMap++ )
 			{
 				if ( *pMap == pFile )
 				{
@@ -423,7 +423,7 @@ CMatchFile* CMatchList::FindFileAndAddHit(CQueryHit* pHit, const findType nFindF
 		return NULL;
 	}
 
-	for ( CMatchFile* pSeek = *pMap ; pSeek ; )
+	for ( CMatchFile* pSeek = *pMap; pSeek; )
 	{
 		bool bValid = false;
 
@@ -512,7 +512,7 @@ CMatchFile* CMatchList::FindFileAndAddHit(CQueryHit* pHit, const findType nFindF
 void CMatchList::InsertSorted(CMatchFile* pFile)
 {
 	int nFirst = 0;
-	for ( int nLast = m_nFiles - 1 ; nLast >= nFirst ; )
+	for ( int nLast = m_nFiles - 1; nLast >= nFirst; )
 	{
 		DWORD nMiddle = ( nFirst + nLast ) >> 1;
 
@@ -537,7 +537,7 @@ DWORD CMatchList::FileToItem(CMatchFile* pFile)
 
 	CMatchFile** pLoop = m_pFiles;
 
-	for ( DWORD nCount = 0 ; nCount < m_nFiles ; nCount++, pLoop++ )
+	for ( DWORD nCount = 0; nCount < m_nFiles; nCount++, pLoop++ )
 	{
 		if ( *pLoop == pFile ) return nCount;
 	}
@@ -566,7 +566,7 @@ void CMatchList::Clear()
 	{
 		CMatchFile** pLoop = m_pFiles;
 
-		for ( DWORD nCount = m_nFiles ; nCount ; nCount--, pLoop++ )
+		for ( DWORD nCount = m_nFiles; nCount; nCount--, pLoop++ )
 		{
 			if ( *pLoop ) delete (*pLoop);
 		}
@@ -624,7 +624,7 @@ CMatchFile* CMatchList::GetSelectedFile(BOOL bFromHit) const
 
 		CMatchFile** pLoop = m_pFiles;
 
-		for ( DWORD nCount = m_nFiles ; nCount ; nCount--, pLoop++ )
+		for ( DWORD nCount = m_nFiles; nCount; nCount--, pLoop++ )
 		{
 			if ( (*pLoop)->Check( pHit ) ) return *pLoop;
 		}
@@ -659,7 +659,7 @@ BOOL CMatchList::ClearSelection()
 	CMatchFile** pLoop = m_pFiles;
 	BOOL bChanged = FALSE;
 
-	for ( DWORD nCount = 0 ; nCount < m_nFiles ; nCount++, pLoop++ )
+	for ( DWORD nCount = 0; nCount < m_nFiles; nCount++, pLoop++ )
 	{
 		bChanged = (*pLoop)->ClearSelection();
 		if ( bChanged )
@@ -712,7 +712,7 @@ CString CMatchList::CreateRegExpFilter(const CString& strPattern)
 //			bool bEnds = false;
 //			bool bAll = ( *pszPattern == '%' || *pszPattern == '$' || *pszPattern == '_' || *pszPattern == '>' );
 //
-//			for ( ; *pszPattern ; pszPattern++ )
+//			for ( ; *pszPattern; pszPattern++ )
 //			{
 //				if ( *pszPattern == '>' )
 //				{
@@ -729,7 +729,7 @@ CString CMatchList::CreateRegExpFilter(const CString& strPattern)
 //				if ( bAll )	// <%>,<$>,<_>,<>
 //				{
 //					// Add all keywords at the "< >" position
-//					for ( ; itWord != itWordEnd ; itWord++ )
+//					for ( ; itWord != itWordEnd; itWord++ )
 //					{
 //						strNewPattern.AppendFormat( L"%s\\s*",
 //							(LPCTSTR)CString( itWord->first, int(itWord->second) ) );
@@ -746,7 +746,7 @@ CString CMatchList::CreateRegExpFilter(const CString& strPattern)
 //						nNumber = ++nTotal;
 //
 //					// Add specified keyword at the "< >" position
-//					for ( int nWord = 1 ; itWord != itWordEnd ; itWord++, nWord++ )
+//					for ( int nWord = 1; itWord != itWordEnd; itWord++, nWord++ )
 //					{
 //						if ( nWord == nNumber )
 //						{
@@ -814,7 +814,7 @@ void CMatchList::Filter()
 			CList< CString > pWords;
 
 			int nStart = 0, nPos = 0;
-			for ( ; *pszPtr ; nPos++, pszPtr++ )
+			for ( ; *pszPtr; nPos++, pszPtr++ )
 			{
 				if ( *pszPtr == '\"' || ( ! bQuote && ( *pszPtr == ' ' || *pszPtr == '\t' || *pszPtr == '-' ) ) )
 				{
@@ -845,7 +845,7 @@ void CMatchList::Filter()
 			m_pszFilter = new TCHAR[ nWordLen ];
 			LPTSTR pszFilter = m_pszFilter;
 
-			for ( POSITION pos = pWords.GetHeadPosition() ; pos ; )
+			for ( POSITION pos = pWords.GetHeadPosition(); pos; )
 			{
 				CString strWord = pWords.GetNext( pos );
 				CopyMemory( pszFilter, (LPCTSTR)strWord, sizeof( TCHAR ) * ( strWord.GetLength() + 1 ) );
@@ -857,7 +857,7 @@ void CMatchList::Filter()
 		}
 	}
 
-	for ( DWORD i = 0 ; i < m_nFiles ; ++i )
+	for ( DWORD i = 0; i < m_nFiles; ++i )
 	{
 		if ( ! m_pFiles[ i ]->Filter() )
 		{
@@ -918,7 +918,7 @@ BOOL CMatchList::FilterHit(CQueryHit* pHit)
 
 	if ( m_pszFilter )
 	{
-		for ( LPCTSTR pszFilter = m_pszFilter ; *pszFilter ; )
+		for ( LPCTSTR pszFilter = m_pszFilter; *pszFilter; )
 		{
 			if ( *pszFilter == '-' )
 			{
@@ -954,7 +954,7 @@ void CMatchList::SelectSchema(CSchemaPtr pSchema, CList< CSchemaMember* >* pColu
 
 	CMatchFile** pLoop = m_pFiles;
 
-	for ( DWORD nCount = m_nFiles ; nCount ; nCount--, pLoop++ )
+	for ( DWORD nCount = m_nFiles; nCount; nCount--, pLoop++ )
 	{
 		if ( (*pLoop)->m_pColumns )
 		{
@@ -973,7 +973,7 @@ void CMatchList::SelectSchema(CSchemaPtr pSchema, CList< CSchemaMember* >* pColu
 
 	m_pColumns = new CSchemaMember*[ pColumns->GetCount() ];
 
-	for ( POSITION pos = pColumns->GetHeadPosition() ; pos ; )
+	for ( POSITION pos = pColumns->GetHeadPosition(); pos; )
 	{
 		m_pColumns[ m_nColumns++ ] = pColumns->GetNext( pos );
 	}
@@ -1006,7 +1006,7 @@ void CMatchList::SetSortColumn(int nColumn, BOOL bDirection)
 			CMatchFile* pPrevious = m_pFiles[ nFirst ];
 			CMatchFile* pCurrent;
 
-			for ( nIndex = nFirst + 1 ; nIndex <= nLast ; ++nIndex )
+			for ( nIndex = nFirst + 1; nIndex <= nLast; ++nIndex )
 			{
 				pCurrent = m_pFiles[ nIndex ];
 
@@ -1015,7 +1015,7 @@ void CMatchList::SetSortColumn(int nColumn, BOOL bDirection)
 					int nIndex2;
 					m_pFiles[ nIndex ] = pPrevious;
 
-					for ( nIndex2 = nIndex - 1 ; nIndex2 > nFirst ; )
+					for ( nIndex2 = nIndex - 1; nIndex2 > nFirst; )
 					{
 						CMatchFile* pTemp = m_pFiles[ nIndex2 - 1 ];
 
@@ -1139,7 +1139,7 @@ void CMatchList::ClearNew()
 {
 	CSingleLock pLock( &m_pSection, TRUE );
 
-	for ( DWORD nFile = 0 ; nFile < m_nFiles ; nFile++ )
+	for ( DWORD nFile = 0; nFile < m_nFiles; nFile++ )
 	{
 		if ( m_pFiles[ nFile ] )
 			m_pFiles[ nFile ]->ClearNew();
@@ -1188,7 +1188,7 @@ void CMatchList::Serialize(CArchive& ar, int nVersion)
 
 		ar.WriteCount( m_nFiles );
 
-		for ( DWORD nFile = 0 ; nFile < m_nFiles ; nFile++ )
+		for ( DWORD nFile = 0; nFile < m_nFiles; nFile++ )
 		{
 			CMatchFile* pFile = m_pFiles[ nFile ];
 			pFile->Serialize( ar, nVersion );
@@ -1222,7 +1222,7 @@ void CMatchList::Serialize(CArchive& ar, int nVersion)
 		m_pFiles = new CMatchFile*[ m_nFiles ];
 		ZeroMemory( m_pFiles, sizeof( CMatchFile* ) * m_nFiles );
 
-		for ( DWORD nFile = 0 ; nFile < m_nFiles ; nFile++ )
+		for ( DWORD nFile = 0; nFile < m_nFiles; nFile++ )
 		{
 			CMatchFile* pFile = new CMatchFile( this );
 			m_pFiles[ nFile ] = pFile;
@@ -1270,7 +1270,7 @@ void CMatchList::Serialize(CArchive& ar, int nVersion)
 
 void CMatchList::SanityCheck()
 {
-	for ( DWORD nFile = 0 ; nFile < m_nFiles ; )
+	for ( DWORD nFile = 0; nFile < m_nFiles; )
 	{
 		CMatchFile* pFile = m_pFiles[ nFile ];
 
@@ -1353,7 +1353,7 @@ CMatchFile::~CMatchFile()
 	{
 		CMatchFile** pMap = m_pList->m_pSizeMap + (DWORD)( m_nSize & 0xFF );
 		CMatchFile* pPrevFile = NULL;
-		for ( CMatchFile* pFile = *pMap ; pFile ; pFile = pFile->m_pNextSize )
+		for ( CMatchFile* pFile = *pMap; pFile; pFile = pFile->m_pNextSize )
 		{
 			if ( this == pFile )
 			{
@@ -1372,7 +1372,7 @@ CMatchFile::~CMatchFile()
 	{
 		CMatchFile** pMap = m_pList->m_pMapSHA1 + m_oSHA1[ 0 ];
 		CMatchFile* pPrevFile = NULL;
-		for ( CMatchFile* pFile = *pMap ; pFile ; pFile = pFile->m_pNextSHA1 )
+		for ( CMatchFile* pFile = *pMap; pFile; pFile = pFile->m_pNextSHA1 )
 		{
 			if ( this == pFile )
 			{
@@ -1391,7 +1391,7 @@ CMatchFile::~CMatchFile()
 	{
 		CMatchFile** pMap = m_pList->m_pMapTiger + m_oTiger[ 0 ];
 		CMatchFile* pPrevFile = NULL;
-		for ( CMatchFile* pFile = *pMap ; pFile ; pFile = pFile->m_pNextTiger )
+		for ( CMatchFile* pFile = *pMap; pFile; pFile = pFile->m_pNextTiger )
 		{
 			if ( this == pFile )
 			{
@@ -1410,7 +1410,7 @@ CMatchFile::~CMatchFile()
 	{
 		CMatchFile** pMap = m_pList->m_pMapED2K + m_oED2K[ 0 ];
 		CMatchFile* pPrevFile = NULL;
-		for ( CMatchFile* pFile = *pMap ; pFile ; pFile = pFile->m_pNextED2K )
+		for ( CMatchFile* pFile = *pMap; pFile; pFile = pFile->m_pNextED2K )
 		{
 			if ( this == pFile )
 			{
@@ -1429,7 +1429,7 @@ CMatchFile::~CMatchFile()
 	{
 		CMatchFile** pMap = m_pList->m_pMapBTH + m_oBTH[ 0 ];
 		CMatchFile* pPrevFile = NULL;
-		for ( CMatchFile* pFile = *pMap ; pFile ; pFile = pFile->m_pNextBTH )
+		for ( CMatchFile* pFile = *pMap; pFile; pFile = pFile->m_pNextBTH )
 		{
 			if ( this == pFile )
 			{
@@ -1448,7 +1448,7 @@ CMatchFile::~CMatchFile()
 	{
 		CMatchFile** pMap = m_pList->m_pMapMD5 + m_oMD5[ 0 ];
 		CMatchFile* pPrevFile = NULL;
-		for ( CMatchFile* pFile = *pMap ; pFile ; pFile = pFile->m_pNextMD5 )
+		for ( CMatchFile* pFile = *pMap; pFile; pFile = pFile->m_pNextMD5 )
 		{
 			if ( this == pFile )
 			{
@@ -1465,7 +1465,7 @@ CMatchFile::~CMatchFile()
 	// Remove all Hits
 	if ( m_pHits )
 	{
-		for ( CQueryHit* pHit = m_pHits ; pHit ; )
+		for ( CQueryHit* pHit = m_pHits; pHit; )
 		{
 			CQueryHit* pNext = pHit->m_pNext;
 
@@ -1509,7 +1509,7 @@ void CMatchFile::RefreshStatus()
 	oNameRatings.InitHashTable( GetBestHashTableSize( m_nTotal ) );
 
 	DWORD nBestVote = 0;
-	for ( CQueryHit* pHit = m_pHits ; pHit ; pHit = pHit->m_pNext )
+	for ( CQueryHit* pHit = m_pHits; pHit; pHit = pHit->m_pNext )
 	{
 		if ( pHit->m_nRating )
 		{
@@ -1580,7 +1580,7 @@ BOOL CMatchFile::Add(CQueryHit* pHit, BOOL bForce)
 
 	if ( m_pHits )
 	{
-		for ( CQueryHit* pOld = m_pHits ; pOld ; pOld = pOld->m_pNext )
+		for ( CQueryHit* pOld = m_pHits; pOld; pOld = pOld->m_pNext )
 		{
 			BOOL bName = _tcsicmp( pHit->m_sName, pOld->m_sName ) == 0;
 
@@ -1657,7 +1657,7 @@ BOOL CMatchFile::Add(CQueryHit* pHit, BOOL bForce)
 
 BOOL CMatchFile::Check(CQueryHit* pHit) const
 {
-	for ( CQueryHit* pOld = m_pHits ; pOld ; pOld = pOld->m_pNext )
+	for ( CQueryHit* pOld = m_pHits; pOld; pOld = pOld->m_pNext )
 	{
 		if ( pOld == pHit )
 			return TRUE;
@@ -1679,7 +1679,7 @@ BOOL CMatchFile::Expand(BOOL bExpand)
 
 	if ( ! m_bExpanded )
 	{
-		for ( CQueryHit* pHit = m_pHits ; pHit ; pHit = pHit->m_pNext )
+		for ( CQueryHit* pHit = m_pHits; pHit; pHit = pHit->m_pNext )
 		{
 			if ( pHit->m_bSelected )
 				m_pList->Select( this, pHit, FALSE );
@@ -1706,7 +1706,7 @@ DWORD CMatchFile::Filter()
 	m_bTorrent		= FALSE;
 	m_pBest			= NULL;
 
-	for ( CQueryHit* pHit = m_pHits ; pHit ; pHit = pHit->m_pNext )
+	for ( CQueryHit* pHit = m_pHits; pHit; pHit = pHit->m_pNext )
 	{
 		if ( m_pList->FilterHit( pHit ) )
 			Added( pHit );
@@ -1764,7 +1764,7 @@ void CMatchFile::Added(CQueryHit* pHit)
 		CSchemaMember** pMember = m_pList->m_pColumns;
 		CString strValue;
 
-		for ( int nCount = 0 ; nCount < m_nColumns ; nCount ++, pMember ++ )
+		for ( int nCount = 0; nCount < m_nColumns; nCount ++, pMember ++ )
 		{
 			if ( _tcsicmp( (*pMember)->m_sName, L"SHA1" ) == 0 )
 			{
@@ -1831,7 +1831,7 @@ void CMatchFile::Added(CQueryHit* pHit)
 	DWORD nTotal = 0;
 	if ( ! Settings.Experimental.LAN_Mode )
 	{
-		for ( CQueryHit* pFileHits = m_pHits ; pFileHits ; pFileHits = pFileHits->m_pNext, nTotal++ )
+		for ( CQueryHit* pFileHits = m_pHits; pFileHits; pFileHits = pFileHits->m_pNext, nTotal++ )
 		{
 			if ( pFileHits->m_pNext && validAndEqual( pFileHits->m_oClientID, pFileHits->m_pNext->m_oClientID ) )
 				pFileHits->m_bBogus = TRUE;
@@ -1940,7 +1940,7 @@ void CMatchFile::Added(CQueryHit* pHit)
 void CMatchFile::ClearNew()
 {
 	m_bNew = FALSE;
-	for ( CQueryHit* pHit = m_pHits ; pHit ; pHit = pHit->m_pNext )
+	for ( CQueryHit* pHit = m_pHits; pHit; pHit = pHit->m_pNext )
 		pHit->m_bNew = FALSE;
 }
 
@@ -2094,12 +2094,12 @@ void CMatchFile::Serialize(CArchive& ar, int nVersion)	// MATCHLIST_SER_VERSION
 		CArray< CQueryHit* > pHits;
 
 		CQueryHit* pHit = m_pHits;
-		for ( ; pHit ; pHit = pHit->m_pNext )
+		for ( ; pHit; pHit = pHit->m_pNext )
 		{
 			pHits.Add( pHit );
 		}
 
-		for ( int nHit = m_nTotal - 1 ; nHit >= 0 ; nHit-- )
+		for ( int nHit = m_nTotal - 1; nHit >= 0; nHit-- )
 		{
 			pHit = pHits.GetAt( nHit );
 			pHit->Serialize( ar, nVersion );
@@ -2135,7 +2135,7 @@ void CMatchFile::Serialize(CArchive& ar, int nVersion)	// MATCHLIST_SER_VERSION
 
 		m_nTotal = static_cast< DWORD >( ar.ReadCount() );
 
-		for ( int nCount = m_nTotal ; nCount > 0 ; nCount-- )
+		for ( int nCount = m_nTotal; nCount > 0; nCount-- )
 		{
 			CQueryHit* pNext = new CQueryHit( PROTOCOL_NULL );
 			pNext->m_pNext = m_pHits;
@@ -2171,7 +2171,7 @@ CQueryHit*	CMatchFile::GetBest() const
 DWORD CMatchFile::GetBogusHitsCount() const
 {
 	DWORD nBogusCount = 0;
-	for ( CQueryHit* pHits = m_pHits ; pHits ; pHits = pHits->m_pNext )
+	for ( CQueryHit* pHits = m_pHits; pHits; pHits = pHits->m_pNext )
 	{
 		if ( pHits->m_bBogus )
 			nBogusCount++;
@@ -2196,7 +2196,7 @@ DWORD CMatchFile::GetTotalHitsSpeed() const
 //	if ( bForce && m_pBest != NULL )
 //		pDownload->AddSourceHit( m_pBest, TRUE );
 //
-//	for ( CQueryHit* pHit = m_pHits ; pHit ; pHit = pHit->m_pNext )
+//	for ( CQueryHit* pHit = m_pHits; pHit; pHit = pHit->m_pNext )
 //	{
 //		if ( bForce )
 //		{
@@ -2217,11 +2217,11 @@ DWORD CMatchFile::GetTotalHitsSpeed() const
 
 void CMatchFile::AddHitsToXML(CXMLElement* pXML) const
 {
-	for ( CQueryHit* pHit = m_pHits ; pHit ; pHit = pHit->m_pNext )
+	for ( CQueryHit* pHit = m_pHits; pHit; pHit = pHit->m_pNext )
 	{
 		if ( pHit->m_pXML != NULL )
 		{
-			for ( POSITION pos = pHit->m_pXML->GetAttributeIterator() ; pos ; )
+			for ( POSITION pos = pHit->m_pXML->GetAttributeIterator(); pos; )
 			{
 				CXMLAttribute* pAttribute = pHit->m_pXML->GetNextAttribute( pos );
 				pXML->AddAttribute( pAttribute->GetName(), pAttribute->GetValue() );
@@ -2233,7 +2233,7 @@ void CMatchFile::AddHitsToXML(CXMLElement* pXML) const
 CSchemaPtr CMatchFile::GetHitsSchema() const
 {
 	CSchemaPtr pSchema = NULL;
-	for ( CQueryHit* pHit = m_pHits ; pHit ; pHit = pHit->m_pNext )
+	for ( CQueryHit* pHit = m_pHits; pHit; pHit = pHit->m_pNext )
 	{
 		pSchema = pHit->m_pSchema;
 		if ( pSchema ) break;
@@ -2248,7 +2248,7 @@ CSchemaPtr CMatchFile::AddHitsToMetadata(CMetaList& oMetadata) const
 	{
 		oMetadata.Setup( pSchema );
 
-		for ( CQueryHit* pHit = m_pHits ; pHit ; pHit = pHit->m_pNext )
+		for ( CQueryHit* pHit = m_pHits; pHit; pHit = pHit->m_pNext )
 		{
 			if ( pHit->m_pXML && pSchema->Equals( pHit->m_pSchema ) )
 				oMetadata.Combine( pHit->m_pXML );
@@ -2260,7 +2260,7 @@ CSchemaPtr CMatchFile::AddHitsToMetadata(CMetaList& oMetadata) const
 BOOL CMatchFile::AddHitsToPreviewURLs(CList<CString>& oPreviewURLs) const
 {
 	BOOL bCanPreview = FALSE;
-	for ( CQueryHit* pHit = m_pHits ; pHit ; pHit = pHit->m_pNext )
+	for ( CQueryHit* pHit = m_pHits; pHit; pHit = pHit->m_pNext )
 	{
 		if ( pHit->m_oSHA1 && pHit->m_bPush == TRI_FALSE )
 		{
@@ -2291,7 +2291,7 @@ BOOL CMatchFile::AddHitsToPreviewURLs(CList<CString>& oPreviewURLs) const
 
 void CMatchFile::AddHitsToReviews(CList < Review* >& oReviews) const
 {
-	for ( CQueryHit* pHit = m_pHits ; pHit ; pHit = pHit->m_pNext )
+	for ( CQueryHit* pHit = m_pHits; pHit; pHit = pHit->m_pNext )
 	{
 		if ( pHit->IsRated() )
 		{
@@ -2303,7 +2303,7 @@ void CMatchFile::AddHitsToReviews(CList < Review* >& oReviews) const
 
 void CMatchFile::SetBogus( BOOL bBogus )
 {
-	for ( CQueryHit* pHit = m_pHits ; pHit ; pHit = pHit->m_pNext )
+	for ( CQueryHit* pHit = m_pHits; pHit; pHit = pHit->m_pNext )
 	{
 		pHit->m_bBogus = bBogus;
 	}
@@ -2317,7 +2317,7 @@ BOOL CMatchFile::ClearSelection()
 		m_bSelected = FALSE;
 		bChanged = TRUE;
 	}
-	for ( CQueryHit* pHit = m_pHits ; pHit ; pHit = pHit->m_pNext )
+	for ( CQueryHit* pHit = m_pHits; pHit; pHit = pHit->m_pNext )
 	{
 		if ( pHit->m_bSelected )
 		{
@@ -2527,7 +2527,7 @@ void CMatchFile::SanityCheck()
 	int nBadCount = 0;
 
 	CQueryHit* pHitPrev = NULL;
-	for ( CQueryHit* pHit = m_pHits ; pHit ; )
+	for ( CQueryHit* pHit = m_pHits; pHit; )
 	{
 		CQueryHit* pNext = pHit->m_pNext;
 
@@ -2568,7 +2568,7 @@ void CMatchFile::SanityCheck()
 void CMatchFile::Ban(int nBanLength)
 {
 	// Ban by hit host IPs
-	for ( CQueryHit* pHit = m_pHits ; pHit ; pHit = pHit->m_pNext )
+	for ( CQueryHit* pHit = m_pHits; pHit; pHit = pHit->m_pNext )
 		pHit->Ban( nBanLength );
 
 	// Ban hashes

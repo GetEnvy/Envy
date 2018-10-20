@@ -1,8 +1,8 @@
 //
 // WndBaseMatch.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2015 and Shareaza 2002-2008
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2008 and PeerProject 2008-2015
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -273,7 +273,7 @@ void CBaseMatchWnd::OnDownload(BOOL bAddToHead)
 
 	CSingleLock pSingleLock( &m_pMatches->m_pSection, TRUE );
 
-	for ( POSITION pos = m_pMatches->m_pSelectedFiles.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pMatches->m_pSelectedFiles.GetHeadPosition(); pos; )
 	{
 		CMatchFile* pFile = m_pMatches->m_pSelectedFiles.GetNext( pos );
 
@@ -293,7 +293,7 @@ void CBaseMatchWnd::OnDownload(BOOL bAddToHead)
 		pSingleLock.Lock();
 	}
 
-	for ( POSITION pos = m_pMatches->m_pSelectedHits.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pMatches->m_pSelectedHits.GetHeadPosition(); pos; )
 	{
 		CQueryHit* pHit = m_pMatches->m_pSelectedHits.GetNext( pos );
 
@@ -320,14 +320,14 @@ void CBaseMatchWnd::OnDownload(BOOL bAddToHead)
 	CSyncObject* pSync[2] = { &Network.m_pSection, &Transfers.m_pSection };
 	CMultiLock pMultiLock( pSync, 2, TRUE );
 
-	for ( POSITION pos = pFiles.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = pFiles.GetHeadPosition(); pos; )
 	{
 		CMatchFile* pFile = pFiles.GetNext( pos );
 		if ( m_pMatches->m_pSelectedFiles.Find( pFile ) != NULL )
 			Downloads.Add( pFile, bAddToHead );
 	}
 
-	for ( POSITION pos = pHits.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = pHits.GetHeadPosition(); pos; )
 	{
 		CQueryHit* pHit = pHits.GetNext( pos );
 		if ( m_pMatches->m_pSelectedHits.Find( pHit ) != NULL )

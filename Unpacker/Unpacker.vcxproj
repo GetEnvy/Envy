@@ -19,9 +19,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectName>Packages</ProjectName>
+    <ProjectName>Unpacker</ProjectName>
     <ProjectGuid>{CAA6FCC8-27B1-42B9-B647-976E7BE79C70}</ProjectGuid>
-    <RootNamespace>Packages</RootNamespace>
+    <RootNamespace>Unpacker</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
@@ -244,13 +244,13 @@
   <ItemGroup>
     <ClCompile Include="Extract.c" />
     <ClCompile Include="Registry.c" />
-    <ClCompile Include="Packages.c" />
+    <ClCompile Include="Unpacker.c" />
     <ClCompile Include="Utils.c" />
     <ClCompile Include="Window.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Resource.h" />
-    <ClInclude Include="Packages.h" />
+    <ClInclude Include="Unpacker.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Resource.rc" />
@@ -258,7 +258,7 @@
   <ItemGroup>
     <None Include="Res\Banner.bmp" />
     <None Include="Res\Envy.ico" />
-    <None Include="Res\Packages.ico" />
+    <None Include="Res\Unpacker.ico" />
     <None Include="Manifest.xml" />
   </ItemGroup>
   <ItemGroup>

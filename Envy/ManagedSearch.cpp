@@ -1,8 +1,8 @@
 //
 // ManagedSearch.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2007
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -237,7 +237,7 @@ BOOL CManagedSearch::ExecuteNeighbours(const DWORD tTicks, const DWORD tSecs)
 		return FALSE;
 
 	int nCount = 0;
-	for ( POSITION pos = Neighbours.GetIterator() ; pos ; )
+	for ( POSITION pos = Neighbours.GetIterator(); pos; )
 	{
 		if ( ! SafeLock( pLock ) ) continue;
 
@@ -421,8 +421,8 @@ BOOL CManagedSearch::ExecuteG2Mesh(const DWORD /*tTicks*/, const DWORD tSecs)
 
 	CQuickLock oLock( HostCache.Gnutella2.m_pSection );
 
-	for ( CHostCacheIterator i = HostCache.Gnutella2.Begin() ;
-		i != HostCache.Gnutella2.End() ; ++i )
+	for ( CHostCacheIterator i = HostCache.Gnutella2.Begin();
+		i != HostCache.Gnutella2.End(); ++i )
 	{
 		CHostCacheHostPtr pHost = (*i);
 
@@ -538,7 +538,7 @@ BOOL CManagedSearch::ExecuteG2Mesh(const DWORD /*tTicks*/, const DWORD tSecs)
 				if ( SafeLock( pLock ) )
 				{
 					// Otherwise, we need to find a neighbour G2 hub who has acked this query already
-					for ( POSITION pos = Neighbours.GetIterator() ; pos ; pCacheHub = NULL )
+					for ( POSITION pos = Neighbours.GetIterator(); pos; pCacheHub = NULL )
 					{
 						pCacheHub = Neighbours.GetNext( pos );
 
@@ -630,7 +630,7 @@ BOOL CManagedSearch::ExecuteDonkeyMesh(const DWORD /*tTicks*/, const DWORD tSecs
 
 	CQuickLock oLock( HostCache.eDonkey.m_pSection );
 
-	for ( CHostCacheIterator i = HostCache.eDonkey.Begin() ; i != HostCache.eDonkey.End() ; ++i )
+	for ( CHostCacheIterator i = HostCache.eDonkey.Begin(); i != HostCache.eDonkey.End(); ++i )
 	{
 		CHostCacheHostPtr pHost = (*i);
 

@@ -1,8 +1,8 @@
 //
 // WndNeighbours.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2017
-// Portions copyright PeerProject 2008-2015 and Shareaza 2002-2007
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2015
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -190,7 +190,7 @@ int CNeighboursWnd::OnCreate(LPCREATESTRUCT lpCreateStruct)
 //	const int nFlags = Flags.m_pImage.GetImageCount();
 //	VERIFY( m_gdiImageList.SetImageCount( nImages + nFlags ) );
 //
-//	for ( int nFlag = 0 ; nFlag < nFlags ; nFlag++ )
+//	for ( int nFlag = 0; nFlag < nFlags; nFlag++ )
 //	{
 //		if ( HICON hIcon = Flags.m_pImage.ExtractIcon( nFlag ) )
 //		{
@@ -236,7 +236,7 @@ void CNeighboursWnd::Update()
 
 	tLastUpdate = tNow;		// Was m_tLastUpdate
 
-	for ( POSITION pos = Neighbours.GetIterator() ; pos ; )
+	for ( POSITION pos = Neighbours.GetIterator(); pos; )
 	{
 		CString str;
 		CNeighbour* pNeighbour = Neighbours.GetNext( pos );
@@ -280,11 +280,11 @@ void CNeighboursWnd::Update()
 		pNeighbour->Measure();
 
 		pItem->Format( COL_TRAFFIC, L"%s - %s",
-			Settings.SmartSpeed( pNeighbour->m_mInput.nMeasure ),
-			Settings.SmartSpeed( pNeighbour->m_mOutput.nMeasure ) );
+			(LPCTSTR)Settings.SmartSpeed( pNeighbour->m_mInput.nMeasure ),
+			(LPCTSTR)Settings.SmartSpeed( pNeighbour->m_mOutput.nMeasure ) );
 		pItem->Format( COL_TOTAL, L"%s - %s",
-			Settings.SmartVolume( pNeighbour->m_mInput.nTotal ),
-			Settings.SmartVolume( pNeighbour->m_mOutput.nTotal ) );
+			(LPCTSTR)Settings.SmartVolume( pNeighbour->m_mInput.nTotal ),
+			(LPCTSTR)Settings.SmartVolume( pNeighbour->m_mOutput.nTotal ) );
 		pItem->Format( COL_PACKETS, L"%u - %u", pNeighbour->m_nInputCount, pNeighbour->m_nOutputCount );
 		pItem->Format( COL_FLOW, L"%u (%u)", pNeighbour->m_nOutbound, pNeighbour->m_nLostCount );
 
@@ -347,7 +347,6 @@ void CNeighboursWnd::Update()
 				LoadString( str, pED2K->m_nClientID > 0 ? CEDPacket::IsLowID( pED2K->m_nClientID ) ?
 					IDS_NEIGHBOUR_ED2K_LOWID : IDS_NEIGHBOUR_ED2K_HIGHID : IDS_NEIGHBOUR_ED2K_SERVER );
 				pItem->Set( COL_CLIENT, str );
-
 				pItem->Set( COL_MODE, L"ED2K" );
 			}
 			else if ( pNeighbour->m_nProtocol == PROTOCOL_DC )
@@ -457,7 +456,7 @@ void CNeighboursWnd::OnNeighboursDisconnect()
 {
 	CSingleLock pLock( &Network.m_pSection, TRUE );
 
-	for ( int nItem = -1 ; ( nItem = m_wndList.GetNextItem( nItem, LVNI_SELECTED ) ) >= 0 ; )
+	for ( int nItem = -1; ( nItem = m_wndList.GetNextItem( nItem, LVNI_SELECTED ) ) >= 0; )
 	{
 		if ( CNeighbour* pNeighbour = GetItem( nItem ) )
 			pNeighbour->Close( IDS_CONNECTION_CLOSED );
@@ -525,7 +524,7 @@ void CNeighboursWnd::OnNeighboursChat()
 
 	CSingleLock pLock( &Network.m_pSection, TRUE );
 
-	for ( int nItem = -1 ; ( nItem = m_wndList.GetNextItem( nItem, LVNI_SELECTED ) ) >= 0 ; )
+	for ( int nItem = -1; ( nItem = m_wndList.GetNextItem( nItem, LVNI_SELECTED ) ) >= 0; )
 	{
 		if ( CNeighbour* pNeighbour = GetItem( nItem ) )
 		{
@@ -547,7 +546,7 @@ void CNeighboursWnd::OnSecurityBan()
 {
 	CSingleLock pLock( &Network.m_pSection, TRUE );
 
-	for ( int nItem = -1 ; ( nItem = m_wndList.GetNextItem( nItem, LVNI_SELECTED ) ) >= 0 ; )
+	for ( int nItem = -1; ( nItem = m_wndList.GetNextItem( nItem, LVNI_SELECTED ) ) >= 0; )
 	{
 		if ( CNeighbour* pNeighbour = GetItem( nItem ) )
 		{
@@ -649,7 +648,7 @@ void CNeighboursWnd::OpenPacketWnd(BOOL bIncoming, BOOL bOutgoing)
 
 	if ( ! pWnd ) pWnd = new CPacketWnd( this );
 
-	for ( int nItem = 0 ; nItem < m_wndList.GetItemCount() ; nItem++ )
+	for ( int nItem = 0; nItem < m_wndList.GetItemCount(); nItem++ )
 	{
 		if ( CNeighbour* pNeighbour = GetItem( nItem ) )
 		{

@@ -1,8 +1,8 @@
 //
 // DlgURLAction.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2016 and Shareaza 2002-2007
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2016
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -44,8 +44,8 @@ static char THIS_FILE[] = __FILE__;
 IMPLEMENT_DYNAMIC(CURLActionDlg, CSkinDialog)
 
 BEGIN_MESSAGE_MAP(CURLActionDlg, CSkinDialog)
-	ON_BN_CLICKED(IDC_URL_DOWNLOAD, OnUrlDownload)
-	ON_BN_CLICKED(IDC_URL_SEARCH, OnUrlSearch)
+	ON_BN_CLICKED(IDC_URL_DOWNLOAD, &CURLActionDlg::OnUrlDownload)
+	ON_BN_CLICKED(IDC_URL_SEARCH, &CURLActionDlg::OnUrlSearch)
 END_MESSAGE_MAP()
 
 
@@ -73,6 +73,7 @@ CURLActionDlg::~CURLActionDlg()
 void CURLActionDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CSkinDialog::DoDataExchange(pDX);
+
 	DDX_Control(pDX, IDCANCEL, m_wndCancel);
 	DDX_Control(pDX, IDC_NEW_WINDOW, m_wndNewWindow);
 	DDX_Control(pDX, IDC_MESSAGE_1, m_wndMessage1);
@@ -189,10 +190,15 @@ BOOL CURLActionDlg::OnInitDialog()
 		case CDiscoveryService::dsWebCache:
 			m_sHashValue = L"GWebCache";
 			break;
+		case CDiscoveryService::dsGnutella:
+			m_sHashValue = L"Bootstrap";
+			break;
 		case CDiscoveryService::dsServerList:
 			m_sHashValue = m_pURL->m_nProtocol == PROTOCOL_DC ?
 				L"Hublist URL" : L"Server.met URL";
 			break;
+		default:
+			m_sHashValue.Empty();
 		}
 
 		m_wndMessage4.ShowWindow( SW_SHOW );

@@ -150,11 +150,11 @@ void SubAllocator::InitSubAllocator()
   FakeUnitsStart=HeapStart+Size1;
 
   HiUnit=LoUnit+RealSize2;
-  for (i=0,k=1;i < N1     ;i++,k += 1)
+  for (i=0,k=1;i < N1    ;i++,k += 1)
     Indx2Units[i]=k;
-  for (k++;i < N1+N2      ;i++,k += 2)
+  for (k++;i < N1+N2     ;i++,k += 2)
     Indx2Units[i]=k;
-  for (k++;i < N1+N2+N3   ;i++,k += 3)
+  for (k++;i < N1+N2+N3  ;i++,k += 3)
     Indx2Units[i]=k;
   for (k++;i < N1+N2+N3+N4;i++,k += 4)
     Indx2Units[i]=k;

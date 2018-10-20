@@ -1,8 +1,8 @@
 //
 // CtrlSharedFolder.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2007
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -88,7 +88,7 @@ void CLibraryFolderCtrl::Update(DWORD nUpdateCookie)
 {
 	CList< CLibraryFolder* > pAlready;
 
-	for ( HTREEITEM hItem = GetChildItem( m_hRoot ) ; hItem ; )
+	for ( HTREEITEM hItem = GetChildItem( m_hRoot ); hItem; )
 	{
 		HTREEITEM hNext = GetNextSiblingItem( hItem );
 
@@ -107,7 +107,7 @@ void CLibraryFolderCtrl::Update(DWORD nUpdateCookie)
 		hItem = hNext;
 	}
 
-	for ( POSITION pos = LibraryFolders.GetFolderIterator() ; pos ; )
+	for ( POSITION pos = LibraryFolders.GetFolderIterator(); pos; )
 	{
 		CLibraryFolder* pFolder = LibraryFolders.GetNextFolder( pos );
 
@@ -166,7 +166,7 @@ void CLibraryFolderCtrl::Update(CLibraryFolder* pFolder, HTREEITEM hFolder, HTRE
 
 	CList< CLibraryFolder* > pAlready;
 
-	for ( HTREEITEM hItem = GetChildItem( hFolder ) ; hItem ; )
+	for ( HTREEITEM hItem = GetChildItem( hFolder ); hItem; )
 	{
 		HTREEITEM hNext = GetNextSiblingItem( hItem );
 
@@ -185,7 +185,7 @@ void CLibraryFolderCtrl::Update(CLibraryFolder* pFolder, HTREEITEM hFolder, HTRE
 		hItem = hNext;
 	}
 
-	for ( POSITION pos = pFolder->GetFolderIterator() ; pos ; )
+	for ( POSITION pos = pFolder->GetFolderIterator(); pos; )
 	{
 		CLibraryFolder* pChild = pFolder->GetNextFolder( pos );
 
@@ -205,7 +205,7 @@ void CLibraryFolderCtrl::SetSelectedCookie(DWORD nUpdateCookie, HTREEITEM hParen
 {
 	if ( ! hParent ) hParent = m_hRoot;
 
-	for ( HTREEITEM hItem = GetChildItem( hParent ) ; hItem ; )
+	for ( HTREEITEM hItem = GetChildItem( hParent ); hItem; )
 	{
 		BOOL bRecurse = bSelect;
 
@@ -250,7 +250,7 @@ CLibraryFolder* CLibraryFolderCtrl::GetNextSelectedFolder(POSITION& pos) const
 
 		CLibraryFolder* pLastFolder = NULL;
 
-		for ( POSITION posTree = pTree.GetHeadPosition() ; posTree ; pLastFolder = pFolder )
+		for ( POSITION posTree = pTree.GetHeadPosition(); posTree; pLastFolder = pFolder )
 		{
 			hItem = pTree.GetNext( posTree );
 			pFolder = (CLibraryFolder*)GetItemData( hItem );
@@ -417,7 +417,7 @@ void CLibraryFolderCtrl::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 	{
 		BOOL bChanged = FALSE;
 
-		for ( HTREEITEM hItem = GetRootItem() ; hItem != NULL ; hItem = GetNextItem( hItem, TVGN_NEXTVISIBLE ) )
+		for ( HTREEITEM hItem = GetRootItem(); hItem != NULL; hItem = GetNextItem( hItem, TVGN_NEXTVISIBLE ) )
 		{
 			if ( ( GetItemState( hItem, TVIS_SELECTED ) & TVIS_SELECTED ) == 0 )
 			{
@@ -444,7 +444,7 @@ BOOL CLibraryFolderCtrl::ClearSelection(HTREEITEM hExcept, HTREEITEM hItem, BOOL
 
 	if ( hItem == NULL ) hItem = GetRootItem();
 
-	for ( ; hItem != NULL ; hItem = GetNextItem( hItem, TVGN_NEXT ) )
+	for ( ; hItem != NULL; hItem = GetNextItem( hItem, TVGN_NEXT ) )
 	{
 		BOOL bIsSelected = ( GetItemState( hItem, TVIS_SELECTED ) & TVIS_SELECTED ) ? TRUE : FALSE;
 
@@ -505,7 +505,7 @@ BOOL CLibraryFolderCtrl::SelectFolder(CLibraryFolder* pFolder, HTREEITEM hItem)
 {
 	if ( hItem == NULL ) hItem = GetRootItem();
 
-	for ( ; hItem != NULL ; hItem = GetNextItem( hItem, TVGN_NEXT ) )
+	for ( ; hItem != NULL; hItem = GetNextItem( hItem, TVGN_NEXT ) )
 	{
 		if ( pFolder == (CLibraryFolder*)GetItemData( hItem ) )
 		{
@@ -522,7 +522,7 @@ BOOL CLibraryFolderCtrl::SelectFolder(CLibraryFolder* pFolder, HTREEITEM hItem)
 
 HTREEITEM CLibraryFolderCtrl::GetFirstSelectedItem() const
 {
-	for ( HTREEITEM hItem = GetRootItem() ; hItem != NULL ; hItem = GetNextItem( hItem, TVGN_NEXTVISIBLE ) )
+	for ( HTREEITEM hItem = GetRootItem(); hItem != NULL; hItem = GetNextItem( hItem, TVGN_NEXTVISIBLE ) )
 	{
 		if ( GetItemState( hItem, TVIS_SELECTED ) & TVIS_SELECTED ) return hItem;
 	}
@@ -532,7 +532,7 @@ HTREEITEM CLibraryFolderCtrl::GetFirstSelectedItem() const
 
 HTREEITEM CLibraryFolderCtrl::GetNextSelectedItem(HTREEITEM hItem) const
 {
-	for ( hItem = GetNextItem( hItem, TVGN_NEXTVISIBLE ) ; hItem != NULL ; hItem = GetNextItem( hItem, TVGN_NEXTVISIBLE ) )
+	for ( hItem = GetNextItem( hItem, TVGN_NEXTVISIBLE ); hItem != NULL; hItem = GetNextItem( hItem, TVGN_NEXTVISIBLE ) )
 	{
 		if ( GetItemState( hItem, TVIS_SELECTED ) & TVIS_SELECTED ) return hItem;
 	}

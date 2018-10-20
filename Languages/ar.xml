@@ -3,7 +3,7 @@
 
 <!-- Envy Arabic Language Skin File -->
 
-<!-- Translation based on default en.xml r21 -->
+<!-- Translation based on default en.xml r22 -->
 <!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -15,7 +15,7 @@
 <manifest
 	name="Arabic العربية"
 	author="Awadh A Al-Ghaamdi"
-	updatedBy="الأستاذ عوض الغامدي"
+	updatedby="الأستاذ عوض الغامدي"
 	description="Envy Default Arabic Skin File"
 	link="http://getenvy.com"
 	email="awadh_al_ghaamdi@hotmail.com"
@@ -2832,12 +2832,12 @@
 	<!-- Missing Strings -->
 	<string id="20798" text="أنتهى Envy من تحميل نسخة Envy التالية (%s). هل تريد الترقية الآن ؟nnعند إختيار نعم ، Envy سيغلق بشكل مؤقت حتى يتم تثبيت الترقية" />
 	<!-- Missing Upload Queue Strings -->
-	<string id="20862" text="إضافة" />
-	<string id="20864" text="إستعراض" />
-	<string id="20865" text="إتصال" />
-	<string id="20866" text="اسم الملف:" />
-	<string id="20867" text="المستضيف:" />
-	<string id="20868" text="المنفذ:" />
+	<string id="20864" text="إضافة" />
+	<string id="20865" text="إستعراض" />
+	<string id="20866" text="إتصال" />
+	<string id="20867" text="اسم الملف:" />
+	<string id="20868" text="المستضيف:" />
+	<string id="20869" text="المنفذ:" />
 	<!-- Missing Strings -->
 	<string id="20872" text="النوع:" />
 	<string id="20874" text="الرابط:" />

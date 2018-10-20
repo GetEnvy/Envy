@@ -3,7 +3,7 @@
 
 <!-- Envy Default Catalan Skin File -->
 
-<!-- Translation based on default en.xml r21 -->
+<!-- Translation based on default en.xml r22 -->
 <!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -15,7 +15,7 @@
 <manifest
 	name="Català"
 	author="Daniel Olivares Giménez (iniciat per CATMidia.cat)"
-	updatedBy="Equip de FeshoCAT (tradu.feshocat.cat)"
+	updatedby="Equip de FeshoCAT (tradu.feshocat.cat)"
 	description="Envy Default Catalan Skin File"
 	link="http://tradu.feshocat.cat"
 	email="tradu(at)feshocat.cat"
@@ -3221,8 +3221,9 @@
 	<string id="20807" text="Reajustant pujada de &quot;%s&quot; a %s (%s), massa connexions del servidor al mateix temps."/>
 	<string id="20808" text="Actualitzant pujada de &quot;%s&quot; a %s (%s), ocupat o el client no suporta cues."/>
 	<string id="20809" text="Rebutjant la pujada de &quot;%s&quot; a %s (%s), totes les cues estan plenes."/>
-	<string id="20810" text="El servidor de pujada %s ha demanat un rang de contingut impossible de &quot;%s&quot;."/>
-	<string id="20811" text="Les pujades eDonkey no han de ser cancel·lades. Estàs segur(a) que vols cancel·lar aquesta pujada?"/>
+	<string id="20810" text="Rebutjant la pujada de &quot;%s&quot; a %s (%s), la Biblioteca està ocupada"/>
+	<string id="20811" text="El servidor de pujada %s ha demanat un rang de contingut impossible de &quot;%s&quot;."/>
+	<string id="20861" text="Les pujades eDonkey no han de ser cancel·lades. Estàs segur(a) que vols cancel·lar aquesta pujada?"/>
 	<string id="20812" text="No s'ha pogut obrir &quot;%s&quot; per a pujar al servidor %s, error d'arxiu o disc."/>
 	<string id="20813" text="Iniciant Connexió push amb %s. %s"/>
 	<string id="20814" text="No ha estat posible connectar amb %s en push."/>
@@ -3269,14 +3270,14 @@
 	<string id="20858" text="Massa temps esperant la petició de la font de pujada %s."/>
 	<string id="20859" text="Tancant la connexió de pujada %s per carència de trànsit disponible."/>
 	<string id="20860" text="Pujant informació tiger-tree per a &quot;%s&quot; a %s."/>
-	<string id="20861" text="Pujada de &quot;%s&quot; a %s esborrada."/>
-	<string id="20862" text="Afegir"/>
-	<string id="20864" text="&amp;Explorar"/>
-	<string id="20865" text="&amp;Connectar"/>
-	<string id="20866" text="Nom d'arxiu:"/>
-	<string id="20867" text="Servidor:"/>
-	<string id="20868" text="Port:"/>
-	<!--string id="20869" text="L'adreça URL no s'ha pogut processar, Envy no la pot interpretar."-->
+	<string id="20862" text="Pujada de &quot;%s&quot; a %s esborrada."/>
+	<string id="20864" text="Afegir"/>
+	<string id="20865" text="&amp;Explorar"/>
+	<string id="20866" text="&amp;Connectar"/>
+	<string id="20867" text="Nom d'arxiu:"/>
+	<string id="20868" text="Servidor:"/>
+	<string id="20869" text="Port:"/>
+	<!--string id="20876" text="L'adreça URL no s'ha pogut processar, Envy no la pot interpretar."-->
 	<string id="20870" text="Envy no ha entés l'URL &quot;%s&quot;."/>
 	<string id="20871" text="Rebuts URL &quot;%s&quot;"/>
 	<string id="20872" text="tipus:"/>

@@ -3,7 +3,7 @@
 
 <!-- Envy Default Dutch Skin File -->
 
-<!-- Translation based on default en.xml r21 -->
+<!-- Translation based on default en.xml r22 -->
 <!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -15,7 +15,7 @@
 <manifest
 	name="Nederlands"
 	author="Jan-Willem Koornwinder (Thurstydog)"
-	updatedBy="ceceboy, Neglacio, RoestVrijStaal, Han"
+	updatedby="ceceboy, Neglacio, RoestVrijStaal, Han"
 	description="Envy Default Dutch Skin File"
 	link="http://getenvy.com"
 	email="Neglacio@live.nl"
@@ -3332,8 +3332,9 @@
 	<string id="20807" text="Upload van &quot;%s&quot; naar %s is geweigerd (%s), te veel gelijktijdige verbindingen van deze gastheer."/>
 	<string id="20808" text="Uploaden van &quot;%s&quot; naar %s is geweigerd (%s), te druk en de cliënt ondersteunt geen wachtrijen."/>
 	<string id="20809" text="Uploaden van &quot;%s&quot; naar %s (%s) wordt geweigerd, alle passende wachtrijen zijn vol."/>
-	<string id="20810" text="Uploadgastheer %s heeft een onbeschikbaar bereik aangevraagd van bestand &quot;%s&quot;."/>
-	<string id="20811" text="eDonkey uploads zouden niet moeten worden afgebroken. Weet je zeker dat je deze upload wilt beëindigen?"/>
+	<string id="20810" text="Uploaden van &quot;%s&quot; naar %s (%s), Bibliotheek is bezig."/>
+	<string id="20811" text="Uploadgastheer %s heeft een onbeschikbaar bereik aangevraagd van bestand &quot;%s&quot;."/>
+	<string id="20861" text="eDonkey uploads zouden niet moeten worden afgebroken. Weet je zeker dat je deze upload wilt beëindigen?"/>
 	<string id="20812" text="Kan &quot;%s&quot; niet openen voor het uploaden naar gastheer %s, schijf- of bestandsfout."/>
 	<string id="20813" text="Een pushverbinding met %s wordt geïnitieerd voor het downloaden van &quot;%s&quot;"/>
 	<string id="20814" text="Onmogelijk om te verbinden met gastheer %s voor het sturen van een pushaanvraag."/>
@@ -3380,14 +3381,14 @@
 	<string id="20858" text="Wachttijd is overschreden voor de aanvraag aan uploadgastheer %s."/>
 	<string id="20859" text="Uploadverbinding %s is verbroken wegens een gebrek aan verkeer."/>
 	<string id="20860" text="Tiger-tree data voor &quot;%s&quot; wordt geüpload naar %s."/>
-	<string id="20861" text="Upload van &quot;%s&quot; naar %s is verwijderd."/>
-	<string id="20862" text="Toevoegen"/>
-	<string id="20864" text="&amp;Bekijken"/>
-	<string id="20865" text="&amp;Verbinden"/>
-	<string id="20866" text="Bestandsnaam:"/>
-	<string id="20867" text="Gastheer:"/>
-	<string id="20868" text="Poort:"/>
-	<!--string id="20869" text="Niet mogelijk het URL actiescherm weer te geven omdat Envy het druk heeft."-->
+	<string id="20862" text="Upload van &quot;%s&quot; naar %s is verwijderd."/>
+	<string id="20864" text="Toevoegen"/>
+	<string id="20865" text="&amp;Bekijken"/>
+	<string id="20866" text="&amp;Verbinden"/>
+	<string id="20867" text="Bestandsnaam:"/>
+	<string id="20868" text="Gastheer:"/>
+	<string id="20869" text="Poort:"/>
+	<!--string id="20876" text="Niet mogelijk het URL actiescherm weer te geven omdat Envy het druk heeft."-->
 	<string id="20870" text="Niet mogelijk om URL te ontleden omdat Envy deze URL niet begrijpt."/>
 	<string id="20871" text="Ontvangen URL &quot;%s&quot;"/>
 	<string id="20872" text="Type:"/>

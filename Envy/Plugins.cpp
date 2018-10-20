@@ -2,7 +2,7 @@
 // Plugins.cpp
 //
 // This file is part of Envy (getenvy.com) © 2016-2018
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2006
+// Portions copyright Shareaza 2002-2006 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -155,7 +155,7 @@ void CPlugins::Enumerate()
 	if ( SHRegOpenUSKey( REGISTRY_KEY L"\\Plugins\\General",
 		KEY_READ, NULL, &hKey, FALSE ) != ERROR_SUCCESS ) return;
 
-	for ( DWORD nKey = 0 ; ; nKey++ )
+	for ( DWORD nKey = 0; ; nKey++ )
 	{
 		TCHAR szName[ 128 ], szCLSID[ 64 ];
 		DWORD dwType, dwName = _countof( szName ), dwCLSID = sizeof( szCLSID );
@@ -171,7 +171,7 @@ void CPlugins::Enumerate()
 
 		CQuickLock oLock( m_pSection );
 
-		for ( POSITION pos = GetIterator() ; pos ; )
+		for ( POSITION pos = GetIterator(); pos; )
 		{
 			if ( GetNext( pos )->m_pCLSID == pCLSID )
 			{
@@ -203,7 +203,7 @@ void CPlugins::Clear()
 
 	CQuickLock oLock( m_pSection );
 
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		delete GetNext( pos );
 	}
@@ -224,7 +224,7 @@ void CPlugins::Clear()
 //	}
 //
 //	// Delete from generic plugins list
-//	for ( POSITION pos = GetIterator() ; pos ; )
+//	for ( POSITION pos = GetIterator(); pos; )
 //	{
 //		POSITION posOrig = pos;
 //		CPlugin* pPlugin = GetNext( pos );
@@ -294,7 +294,7 @@ BOOL CPlugins::LookupEnable(REFCLSID pCLSID, LPCTSTR pszExt) const
 	INT_PTR nTotal = oTokens.GetCount();
 	INT_PTR nChecked = 0;
 
-	for ( INT_PTR nToken = 0 ; nToken < nTotal ; nToken++ )
+	for ( INT_PTR nToken = 0; nToken < nTotal; nToken++ )
 	{
 		CString strToken = oTokens.GetAt( nToken );
 		if ( strToken[ 0 ] != L'-' )
@@ -312,7 +312,7 @@ IUnknown* CPlugins::GetPlugin(LPCTSTR pszGroup, LPCTSTR pszType)
 	if ( ! LookupCLSID( pszGroup, pszType, pCLSID ) )
 		return NULL;	// Disabled
 
-	for ( int i = 0 ; ; ++i )
+	for ( int i = 0; ; ++i )
 	{
 		{
 			CSingleLock pLock( &m_pSection );
@@ -428,7 +428,7 @@ void CPlugins::OnRun()
 	CQuickLock oLock( m_pSection );
 
 	// Revoke all interfaces
-	for ( POSITION pos = m_pCache.GetStartPosition() ; pos ; )
+	for ( POSITION pos = m_pCache.GetStartPosition(); pos; )
 	{
 		CLSID pCLSID;
 		CPluginPtr* pGITPlugin = NULL;
@@ -443,7 +443,7 @@ void CPlugins::OnRun()
 
 void CPlugins::OnSkinChanged()
 {
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		CPlugin* pPlugin = GetNext( pos );
 
@@ -454,7 +454,7 @@ void CPlugins::OnSkinChanged()
 
 void CPlugins::InsertCommands()
 {
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		CPlugin* pPlugin = GetNext( pos );
 
@@ -470,7 +470,7 @@ void CPlugins::RegisterCommands()
 {
 	m_nCommandID = ID_PLUGIN_FIRST;
 
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		CPlugin* pPlugin = GetNext( pos );
 		if ( pPlugin->m_pCommand )
@@ -515,7 +515,7 @@ BOOL CPlugins::OnUpdate(CChildWnd* pActiveWnd, CCmdUI* pCmdUI)
 		}
 	}
 
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		CPlugin* pPlugin = GetNext( pos );
 
@@ -551,7 +551,7 @@ BOOL CPlugins::OnCommand(CChildWnd* pActiveWnd, UINT nCommandID)
 		}
 	}
 
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		CPlugin* pPlugin = GetNext( pos );
 
@@ -572,7 +572,7 @@ BOOL CPlugins::OnExecuteFile(LPCTSTR pszFile, BOOL bUseImageViewer)
 {
 	CPlugin* pImageViewer = NULL;
 
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		CPlugin* pPlugin = GetNext( pos );
 
@@ -596,7 +596,7 @@ BOOL CPlugins::OnExecuteFile(LPCTSTR pszFile, BOOL bUseImageViewer)
 
 BOOL CPlugins::OnEnqueueFile(LPCTSTR pszFile)
 {
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		CPlugin* pPlugin = GetNext( pos );
 
@@ -614,7 +614,7 @@ BOOL CPlugins::OnChatMessage(LPCTSTR pszChatID, BOOL bOutgoing, LPCTSTR pszFrom,
 {
 	// IChatPlugin capturing (IRC/direct)
 
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		CPlugin* pPlugin = GetNext( pos );
 
@@ -638,7 +638,7 @@ BOOL CPlugins::OnNewFile(CLibraryFile* pFile)
 
 	ILibraryFile* pIFile = (ILibraryFile*)pFile->GetInterface( IID_ILibraryFile );
 
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		CPlugin* pPlugin = GetNext( pos );
 

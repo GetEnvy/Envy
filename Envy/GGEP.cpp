@@ -1,8 +1,8 @@
 //
 // GGEP.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2017
-// Portions copyright PeerProject 2008-2012 and Shareaza 2002-2007
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2012
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -90,7 +90,7 @@ CGGEPItem* CGGEPBlock::Find(LPCTSTR pszID, DWORD nMinLength) const
 {
 	if ( ! pszID || ! *pszID ) return NULL;
 
-	for ( CGGEPItem* pItem = m_pFirst ; pItem ; pItem = pItem->m_pNext )
+	for ( CGGEPItem* pItem = m_pFirst; pItem; pItem = pItem->m_pNext )
 	{
 		if ( pItem->m_sID.Compare( pszID ) == 0 && pItem->m_nLength >= nMinLength )			// GGEP is Case sensitive
 			return pItem;
@@ -162,7 +162,7 @@ CGGEPItem* CGGEPBlock::ReadItem(BYTE nFlags)
 
 	// Get GGEP ID
 	TCHAR szID[ 16 ];
-	for ( BYTE i = 0 ; i < nIDLen && m_nInput ; i++ )
+	for ( BYTE i = 0; i < nIDLen && m_nInput; i++ )
 	{
 		szID[ i ] = (TCHAR)ReadByte();
 		if ( szID[ i ] == 0 )
@@ -175,7 +175,7 @@ CGGEPItem* CGGEPBlock::ReadItem(BYTE nFlags)
 		return NULL;	// Error: Out of memory
 
 	// Decode GGEP data length
-	for ( BYTE i = 0 ; ; i++ )
+	for ( BYTE i = 0; ; i++ )
 	{
 		if ( ! m_nInput )
 			return NULL;	// Error: Packet too short
@@ -242,7 +242,7 @@ void CGGEPBlock::Write(CPacket* pPacket)
 
 	pPacket->WriteByte( GGEP_MAGIC );
 
-	for ( CGGEPItem* pItem = m_pFirst ; pItem ; pItem = pItem->m_pNext )
+	for ( CGGEPItem* pItem = m_pFirst; pItem; pItem = pItem->m_pNext )
 	{
 		pItem->WriteTo( pPacket );
 	}
@@ -362,7 +362,7 @@ CString CGGEPItem::ToString() const
 	LPTSTR pszOut = strValue.GetBuffer( m_nLength );
 	LPCSTR pszIn  = (LPCSTR)m_pBuffer;
 
-	for ( DWORD nChar = 0 ; nChar < m_nLength ; nChar++ )
+	for ( DWORD nChar = 0; nChar < m_nLength; nChar++ )
 	{
 		*pszOut++ = (TCHAR)*pszIn++;
 	}
@@ -396,7 +396,7 @@ void CGGEPItem::WriteTo(CPacket* pPacket)
 	pPacket->WriteByte( nFlags );
 
 	// ID -- 1-15 byte
-	for ( BYTE i = 0 ; i < m_sID.GetLength() ; i++ )
+	for ( BYTE i = 0; i < m_sID.GetLength(); i++ )
 		pPacket->WriteByte( (BYTE)m_sID.GetAt( i ) );
 
 	// Length of the raw extension data -- 1-3 bytes
@@ -422,7 +422,7 @@ BOOL CGGEPItem::Encode()
 		return FALSE;
 
 	DWORD nLength = m_nLength;
-	for ( BYTE* pIn = m_pBuffer ; nLength > 0 ; nLength--, pIn++ )
+	for ( BYTE* pIn = m_pBuffer; nLength > 0; nLength--, pIn++ )
 	{
 		if ( *pIn == 0 )
 			break;
@@ -438,7 +438,7 @@ BOOL CGGEPItem::Encode()
 	BYTE* pRange = NULL;
 	DWORD nRange = 0;
 	nLength = m_nLength;
-	for ( BYTE* pIn = m_pBuffer ; nLength > 0 ; nLength--, pIn++ )
+	for ( BYTE* pIn = m_pBuffer; nLength > 0; nLength--, pIn++ )
 	{
 		if ( *pIn == 0 )
 		{
@@ -498,7 +498,7 @@ BOOL CGGEPItem::Decode()
 	// Calculate decoded data size
 	const BYTE* pIn = m_pBuffer;
 	DWORD nDecodedLength = 0;
-	for ( DWORD nLength = m_nLength ; nLength ; )
+	for ( DWORD nLength = m_nLength; nLength; )
 	{
 		BYTE nCode = *pIn++;
 		if ( nCode == 0 )
@@ -524,7 +524,7 @@ BOOL CGGEPItem::Decode()
 	// Decode
 	pIn = m_pBuffer;
 	BYTE* pOut = pOutput.get();
-	for ( DWORD nLength = m_nLength ; nLength ; )
+	for ( DWORD nLength = m_nLength; nLength; )
 	{
 		BYTE nCode = *pIn++;
 		nLength--;

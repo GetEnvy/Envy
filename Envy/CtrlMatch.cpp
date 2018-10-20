@@ -1,8 +1,8 @@
 //
 // CtrlMatch.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2017
-// Portions copyright PeerProject 2008-2016 and Shareaza 2002-2008
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2008 and PeerProject 2008-2016
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -226,7 +226,7 @@ void CMatchCtrl::SelectSchema(CSchemaPtr pSchema, CList< CSchemaMember* >* pColu
 	{
 		m_pColumns.AddTail( pColumns );
 
-		for ( POSITION pos = m_pColumns.GetHeadPosition() ; pos ; nColumn++ )
+		for ( POSITION pos = m_pColumns.GetHeadPosition(); pos; nColumn++ )
 		{
 			CSchemaMember* pMember = m_pColumns.GetNext( pos );
 			if ( ! pMember->m_bHidden )
@@ -281,7 +281,7 @@ void CMatchCtrl::SetSortColumn(int nColumn, BOOL bDirection)
 
 	HDITEM pColumn = { HDI_BITMAP|HDI_FORMAT };
 
-	for ( int nCol = 0 ; m_wndHeader.GetItem( nCol, &pColumn ) ; nCol++ )
+	for ( int nCol = 0; m_wndHeader.GetItem( nCol, &pColumn ); nCol++ )
 	{
 		if ( nCol == nColumn )
 		{
@@ -350,7 +350,7 @@ void CMatchCtrl::SaveColumnState()
 
 	CString strOrdering, strWidths, strItem;
 
-	for ( int nColumns = 0 ; m_wndHeader.GetItem( nColumns, &pItem ) ; nColumns++ )
+	for ( int nColumns = 0; m_wndHeader.GetItem( nColumns, &pItem ); nColumns++ )
 	{
 		m_wndHeader.GetItem( nColumns, &pItem );
 
@@ -398,7 +398,7 @@ BOOL CMatchCtrl::LoadColumnState()
 		strOrdering = strOrdering.Mid( 2 );
 	}
 
-	for ( int nColumns = 0 ; m_wndHeader.GetItem( nColumns, &pItem ) ; nColumns++ )
+	for ( int nColumns = 0; m_wndHeader.GetItem( nColumns, &pItem ); nColumns++ )
 	{
 		if ( strWidths.GetLength() < 4 || strOrdering.GetLength() < 2 )
 			return FALSE;
@@ -437,7 +437,7 @@ void CMatchCtrl::UpdateScroll(DWORD nScroll)
 
 	int nColumnWidth = 0;
 
-	for ( int nColumn = m_wndHeader.GetItemCount() - 1 ; nColumn >= 0 ; nColumn-- )
+	for ( int nColumn = m_wndHeader.GetItemCount() - 1; nColumn >= 0; nColumn-- )
 	{
 		CRect rcCol;
 		Header_GetItemRect( m_wndHeader.GetSafeHwnd(), nColumn, &rcCol );
@@ -582,7 +582,7 @@ void CMatchCtrl::ScrollTo(DWORD nIndex)
 
 	CMatchFile** ppFile = m_pMatches->m_pFiles;
 
-	for ( DWORD nFiles = 0 ; nFiles < m_pMatches->m_nFiles ; nFiles++, ppFile++ )
+	for ( DWORD nFiles = 0; nFiles < m_pMatches->m_nFiles; nFiles++, ppFile++ )
 	{
 		DWORD nCount = (*ppFile)->GetItemCount();
 		if ( ! nCount ) continue;
@@ -655,7 +655,7 @@ void CMatchCtrl::OnPaint()
 	BOOL bFocus = ( GetFocus() == this );
 
 	DWORD nIndex = m_nTopIndex;
-	for ( ; nIndex < m_pMatches->m_nFiles && rcItem.top < rcClient.bottom ; nIndex++, ppFile++ )
+	for ( ; nIndex < m_pMatches->m_nFiles && rcItem.top < rcClient.bottom; nIndex++, ppFile++ )
 	{
 		CMatchFile* pFile = *ppFile;
 		int nCount = pFile->GetFilteredCount();
@@ -671,7 +671,7 @@ void CMatchCtrl::OnPaint()
 
 		if ( nCount > 1 && pFile->m_bExpanded )
 		{
-			for ( CQueryHit* pHit = pFile->GetHits() ; pHit ; pHit = pHit->m_pNext )
+			for ( CQueryHit* pHit = pFile->GetHits(); pHit; pHit = pHit->m_pNext )
 			{
 				// Don't paint filtered hits.
 				if ( ! pHit->m_bFiltered ) continue;
@@ -813,7 +813,7 @@ void CMatchCtrl::DrawItem(CDC& dc, CRect& rcRow, CMatchFile* pFile, CQueryHit* p
 	dc.SelectObject( Settings.Search.HighlightNew && ( pHit ? pHit->m_bNew : pFile->m_bNew )
 		? &CoolInterface.m_fntBold : &CoolInterface.m_fntNormal );
 
-	for ( int nColumn = 0 ; nColumn < nColumns ; nColumn++ )
+	for ( int nColumn = 0; nColumn < nColumns; nColumn++ )
 	{
 		CRect rcCol;
 		Header_GetItemRect( m_wndHeader.GetSafeHwnd(), nColumn, &rcCol );		// ToDo: Potential high cpu
@@ -1382,8 +1382,8 @@ BOOL CMatchCtrl::HitTest(const CPoint& point, CMatchFile** poFile, CQueryHit** p
 
 	CMatchFile** ppFile = m_pMatches->m_pFiles + m_nTopIndex;
 
-	for ( DWORD nIndex = m_nTopIndex ;
-		nIndex < m_pMatches->m_nFiles && rcItem.top < rcClient.bottom ;
+	for ( DWORD nIndex = m_nTopIndex;
+		nIndex < m_pMatches->m_nFiles && rcItem.top < rcClient.bottom;
 		nIndex++, ppFile++ )
 	{
 		CMatchFile* pFile = *ppFile;
@@ -1404,7 +1404,7 @@ BOOL CMatchCtrl::HitTest(const CPoint& point, CMatchFile** poFile, CQueryHit** p
 
 		if ( nCount > 1 && pFile->m_bExpanded )
 		{
-			for ( CQueryHit* pHit = pFile->GetHits() ; pHit ; pHit = pHit->m_pNext )
+			for ( CQueryHit* pHit = pFile->GetHits(); pHit; pHit = pHit->m_pNext )
 			{
 				if ( ! pHit->m_bFiltered ) continue;
 
@@ -1446,7 +1446,7 @@ BOOL CMatchCtrl::GetItemRect(CMatchFile* pFindFile, CQueryHit* pFindHit, CRect* 
 	{
 		CMatchFile** ppFile = m_pMatches->m_pFiles + m_nTopIndex - 1;
 
-		for ( DWORD nIndex = m_nTopIndex ; nIndex ; nIndex--, ppFile-- )
+		for ( DWORD nIndex = m_nTopIndex; nIndex; nIndex--, ppFile-- )
 		{
 			CMatchFile* pFile = *ppFile;
 			int nCount = pFile->GetFilteredCount();
@@ -1458,7 +1458,7 @@ BOOL CMatchCtrl::GetItemRect(CMatchFile* pFindFile, CQueryHit* pFindHit, CRect* 
 
 			if ( nCount > 1 && pFile->m_bExpanded )
 			{
-				for ( CQueryHit* pHit = pFile->GetHits() ; pHit ; pHit = pHit->m_pNext )
+				for ( CQueryHit* pHit = pFile->GetHits(); pHit; pHit = pHit->m_pNext )
 				{
 					if ( ! pHit->m_bFiltered ) continue;
 
@@ -1471,7 +1471,7 @@ BOOL CMatchCtrl::GetItemRect(CMatchFile* pFindFile, CQueryHit* pFindHit, CRect* 
 
 	CMatchFile** ppFile = ppFile = m_pMatches->m_pFiles;
 
-	for ( DWORD nIndex = m_pMatches->m_nFiles ; nIndex ; nIndex--, ppFile++ )
+	for ( DWORD nIndex = m_pMatches->m_nFiles; nIndex; nIndex--, ppFile++ )
 	{
 		CMatchFile* pFile = *ppFile;
 		int nCount = pFile->GetFilteredCount();
@@ -1489,7 +1489,7 @@ BOOL CMatchCtrl::GetItemRect(CMatchFile* pFindFile, CQueryHit* pFindHit, CRect* 
 
 		if ( nCount > 1 && pFile->m_bExpanded )
 		{
-			for ( CQueryHit* pHit = pFile->GetHits() ; pHit ; pHit = pHit->m_pNext )
+			for ( CQueryHit* pHit = pFile->GetHits(); pHit; pHit = pHit->m_pNext )
 			{
 				if ( ! pHit->m_bFiltered ) continue;
 
@@ -1572,7 +1572,7 @@ void CMatchCtrl::OnLButtonDown(UINT nFlags, CPoint point)
 				BOOL bFileFound = FALSE;
 				BOOL bHitFound = FALSE;
 				CMatchFile** ppCurFile = m_pMatches->m_pFiles;
-				for ( DWORD i = 0 ; i < m_pMatches->m_nFiles && ! bEnd ; i++, ppCurFile++ )
+				for ( DWORD i = 0; i < m_pMatches->m_nFiles && ! bEnd; i++, ppCurFile++ )
 				{
 					if ( *ppCurFile == pFile || *ppCurFile == m_pLastSelectedFile )
 					{
@@ -1594,7 +1594,7 @@ void CMatchCtrl::OnLButtonDown(UINT nFlags, CPoint point)
 						}
 						if ( (*ppCurFile)->m_bExpanded && ! bEnd )
 						{
-							for ( CQueryHit* pCurHit = (*ppCurFile)->GetHits() ; pCurHit ;
+							for ( CQueryHit* pCurHit = (*ppCurFile)->GetHits(); pCurHit;
 								pCurHit = pCurHit->m_pNext )
 							{
 								if ( pCurHit == pHit || pCurHit == m_pLastSelectedHit )
@@ -1691,11 +1691,11 @@ BOOL CMatchCtrl::PixelTest(const CPoint& point)
 	if ( dc.GetPixel( point ) != crEmpty ) return TRUE;
 	GetClientRect( &rc );
 
-	for ( int nDirection = 0 ; nDirection < 4 ; nDirection++ )
+	for ( int nDirection = 0; nDirection < 4; nDirection++ )
 	{
 		CPoint pt( point );
 
-		for ( int nLength = 16 ; nLength ; nLength-- )
+		for ( int nLength = 16; nLength; nLength-- )
 		{
 			pt += pNESW[ nDirection ];
 			if ( ! rc.PtInRect( pt ) ) break;
@@ -1853,7 +1853,7 @@ void CMatchCtrl::MoveFocus(int nDelta, BOOL bShift)
 	CMatchFile** ppFile = m_pMatches->m_pFiles + m_nFocus;
 	int nSign = ( nDelta > 0 ) ? 1 : -1;
 
-	for ( ; m_nFocus < m_pMatches->m_nFiles ;
+	for ( ; m_nFocus < m_pMatches->m_nFiles;
 		  m_nFocus += nSign, ppFile += nSign )
 	{
 		CMatchFile* pFile = *ppFile;
@@ -1869,8 +1869,8 @@ void CMatchCtrl::MoveFocus(int nDelta, BOOL bShift)
 	CMatchFile* pFocus = NULL;
 	nDelta += nSign;
 
-	for ( DWORD nPosition = m_nFocus ;
-		nPosition < m_pMatches->m_nFiles && nDelta != 0 ;
+	for ( DWORD nPosition = m_nFocus;
+		nPosition < m_pMatches->m_nFiles && nDelta != 0;
 		nPosition += nSign, ppFile += nSign )
 	{
 		CMatchFile* pFile = *ppFile;
@@ -1915,14 +1915,14 @@ void CMatchCtrl::DoDelete()
 	m_pLastSelectedFile = NULL;
 	m_pLastSelectedHit = NULL;
 
-	for ( POSITION pos = m_pMatches->m_pSelectedFiles.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pMatches->m_pSelectedFiles.GetHeadPosition(); pos; )
 	{
 		CMatchFile* pFile = (CMatchFile*)m_pMatches->m_pSelectedFiles.GetNext( pos );
 		bChanged |= m_pMatches->Select( pFile, NULL, FALSE );
 		pFile->SetBogus( TRUE );
 	}
 
-	for ( POSITION pos = m_pMatches->m_pSelectedHits.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pMatches->m_pSelectedHits.GetHeadPosition(); pos; )
 	{
 		CQueryHit* pHit = (CQueryHit*)m_pMatches->m_pSelectedHits.GetNext( pos );
 		m_pMatches->Select( NULL, pHit, FALSE );
@@ -1941,7 +1941,7 @@ void CMatchCtrl::DoExpand(BOOL bExpand)
 	CSingleLock pLock( &m_pMatches->m_pSection, TRUE );
 	BOOL bChanged = FALSE;
 
-	for ( POSITION pos = m_pMatches->m_pSelectedFiles.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pMatches->m_pSelectedFiles.GetHeadPosition(); pos; )
 	{
 		CMatchFile* pFile = (CMatchFile*)m_pMatches->m_pSelectedFiles.GetNext( pos );
 
@@ -1963,14 +1963,14 @@ void CMatchCtrl::SelectAll()
 	BOOL bChanged = m_pMatches->ClearSelection();
 
 	CMatchFile** ppCurFile = m_pMatches->m_pFiles;
-	for ( DWORD i = 0 ; i < m_pMatches->m_nFiles ; i++, ppCurFile++ )
+	for ( DWORD i = 0; i < m_pMatches->m_nFiles; i++, ppCurFile++ )
 	{
 		if ( (*ppCurFile)->GetFilteredCount() )
 		{
 			m_pMatches->Select( *ppCurFile, NULL, TRUE );
 			if ( (*ppCurFile)->m_bExpanded )
 			{
-				for ( CQueryHit* pCurHit = (*ppCurFile)->GetHits() ; pCurHit ; pCurHit = pCurHit->m_pNext )
+				for ( CQueryHit* pCurHit = (*ppCurFile)->GetHits(); pCurHit; pCurHit = pCurHit->m_pNext )
 				{
 					if ( pCurHit->m_bFiltered )
 						m_pMatches->Select( *ppCurFile, pCurHit, TRUE );

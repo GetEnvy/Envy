@@ -1,8 +1,8 @@
 //
 // PageFinished.cpp
 //
-// This file is part of Torrent Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2014 and Shareaza 2007
+// This file is part of Torrent Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2007 and PeerProject 2008-2014
 //
 // Envy is free software; you can redistribute it
 // modify it under the terms of the GNU General Public License
@@ -10,8 +10,8 @@
 // either version 3 of the License, or later version (at your option).
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU General Public License for more details.
 // (http://www.gnu.org/licenses/gpl.html)
 //
@@ -136,7 +136,7 @@ void CFinishedPage::Start()
 	{
 		GET_PAGE( CPackagePage, pPackage );
 
-		for ( int nFile = 0 ; nFile < pPackage->m_wndList.GetItemCount() ; nFile++ )
+		for ( int nFile = 0; nFile < pPackage->m_wndList.GetItemCount(); nFile++ )
 		{
 			m_pBuilder->AddFile( pPackage->m_wndList.GetItemText( nFile, 0 ) );
 		}
@@ -147,14 +147,14 @@ void CFinishedPage::Start()
 
 		int nCount = pExpert->m_wndList.GetItemCount();
 
-		for ( int nFile = 0 ; nFile < nCount ; nFile++ )
+		for ( int nFile = 0; nFile < nCount; nFile++ )
 		{
 			m_pBuilder->AddFile( pExpert->m_wndList.GetItemText( nFile, 0 ) );
 		}
 
 		nCount = pExpert->m_wndTrackers.GetCount();
 
-		for ( int nIndex = 0 ; nIndex < nCount ; nIndex++ )
+		for ( int nIndex = 0; nIndex < nCount; nIndex++ )
 		{
 			CString str;
 			pExpert->m_wndTrackers.GetText( nIndex, str );

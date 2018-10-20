@@ -1,8 +1,8 @@
 //
 // DlgConnectTo.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2007
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -104,7 +104,7 @@ BOOL CConnectToDlg::OnInitDialog()
 
 	int nItem, nCount = theApp.GetProfileInt( CONNECT_SECTION, L"Count", 0 );
 
-	for ( nItem = 0 ; nItem < nCount ; nItem++ )
+	for ( nItem = 0; nItem < nCount; nItem++ )
 	{
 		CONNECT_HOST_DATA* pData = new CONNECT_HOST_DATA;
 		if ( pData )
@@ -299,7 +299,7 @@ BOOL CConnectToDlg::UpdateData(BOOL bSaveAndValidate)
 	else
 	{
 		int nIndex = 0;
-		for ( int i = 0 ; i < m_wndProtocol.GetCount() ; i++ )
+		for ( int i = 0; i < m_wndProtocol.GetCount(); i++ )
 		{
 			if ( (PROTOCOLID)m_wndProtocol.GetItemData( i ) == m_nProtocol )
 			{
@@ -322,7 +322,7 @@ void CConnectToDlg::SaveItems()
 	ASSERT( nItem != CB_ERR );
 	theApp.WriteProfileInt( CONNECT_SECTION, L"Last.Index", nItem );
 
-	for ( nItem = 0 ; nItem < nCount ; nItem++ )
+	for ( nItem = 0; nItem < nCount; nItem++ )
 	{
 		CONNECT_HOST_DATA* pData = static_cast< CONNECT_HOST_DATA* >( m_wndHost.GetItemDataPtr( nItem ) );
 		ASSERT( pData != NULL && reinterpret_cast< INT_PTR >( pData ) != -1 );
@@ -339,7 +339,7 @@ void CConnectToDlg::SaveItems()
 
 void CConnectToDlg::OnDestroy()
 {
-	while( m_wndHost.GetCount() )
+	while ( m_wndHost.GetCount() )
 	{
 		CONNECT_HOST_DATA* pData = static_cast< CONNECT_HOST_DATA* >( m_wndHost.GetItemDataPtr( 0 ) );
 		ASSERT( pData != NULL && reinterpret_cast< INT_PTR >( pData ) != -1 );

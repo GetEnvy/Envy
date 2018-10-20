@@ -1,8 +1,8 @@
 //
 // WndHostCache.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2017
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2008
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2008 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -189,7 +189,7 @@ void CHostCacheWnd::Update(BOOL bForce)
 
 	m_nCookie = pCache->m_nCookie;
 
-	for ( CHostCacheIterator i = pCache->Begin() ; i != pCache->End() ; ++i )
+	for ( CHostCacheIterator i = pCache->Begin(); i != pCache->End(); ++i )
 	{
 		CHostCacheHostPtr pHost = (*i);
 
@@ -542,7 +542,7 @@ void CHostCacheWnd::OnHostCacheRemove()
 			HostCache.Remove( pHost );
 	}
 
-	HostCache.CheckMinimumServers( m_nMode ? m_nMode : PROTOCOL_G2 );
+	//HostCache.CheckMinimumServers( m_nMode ? m_nMode : PROTOCOL_G2 );		// Obsolete
 
 	m_wndList.ClearSelection();
 
@@ -706,20 +706,26 @@ BOOL CHostCacheWnd::PreTranslateMessage(MSG* pMsg)
 	}
 	else if ( pMsg->message == WM_KEYDOWN )
 	{
-		if ( GetAsyncKeyState( VK_CONTROL ) & 0x8000 )
+		if ( pMsg->wParam == 'A' && GetAsyncKeyState( VK_CONTROL ) & 0x8000 )
 		{
-			if ( pMsg->wParam == 'A' )
+			for ( int nItem = m_wndList.GetItemCount() - 1; nItem >= 0; nItem-- )
 			{
-				for ( int nItem = m_wndList.GetItemCount() - 1 ; nItem >= 0 ; nItem-- )
-				{
-					m_wndList.SetItemState( nItem, LVIS_SELECTED, LVIS_SELECTED );
-				}
-				return TRUE;
+				m_wndList.SetItemState( nItem, LVIS_SELECTED, LVIS_SELECTED );
 			}
+			return TRUE;
 		}
-		else if ( pMsg->wParam == VK_DELETE )
+		if ( pMsg->wParam == VK_ESCAPE )
+		{
+			for ( int nItem = m_wndList.GetItemCount() - 1; nItem >= 0; nItem-- )
+			{
+				m_wndList.SetItemState( nItem, 0, LVIS_SELECTED );
+			}
+			return TRUE;
+		}
+		if ( pMsg->wParam == VK_DELETE )
 		{
 			OnHostCacheRemove();
+			return TRUE;
 		}
 	}
 	else if ( pMsg->message == WM_MOUSEWHEEL )

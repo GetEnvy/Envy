@@ -1,8 +1,8 @@
 //
 // PageSettingsConnection.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2007
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -129,7 +129,7 @@ BOOL CConnectionSettingsPage::OnInitDialog()
 	{
 		CString strIP;
 		const DWORD nCount = ipAddr->dwNumEntries;
-		for ( DWORD nIf = 0 ; nIf < nCount ; nIf++ )
+		for ( DWORD nIf = 0; nIf < nCount; nIf++ )
 		{
 			ip = ipAddr->table[ nIf ].dwAddr;
 			if ( ip == 0x0100007f || ip == 0x0 )
@@ -360,7 +360,7 @@ void CConnectionSettingsPage::OnShowWindow(BOOL bShow, UINT nStatus)
 		4096, 5120, 8192, 10240, 12288, 24576, 45000, 102400, 155000
 	};
 
-	for ( int nSpeed = 0 ; nSpeed < sizeof( nSpeeds ) / sizeof( DWORD ) ; nSpeed++ )
+	for ( int nSpeed = 0; nSpeed < sizeof( nSpeeds ) / sizeof( DWORD ); nSpeed++ )
 	{
 		CString strSpeed = Settings.SmartSpeed( nSpeeds[ nSpeed ], Kilobits );
 		if ( Settings.ParseVolume( strSpeed, Kilobits )

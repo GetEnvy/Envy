@@ -1,8 +1,8 @@
 //
 // G2Packet.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2008
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2008 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -97,7 +97,7 @@ CG2Packet* CG2Packet::New(BYTE* pSource)
 
 	if ( pPacket->m_bBigEndian )
 	{
-		for ( nLength = 0 ; nLenLen-- ; )
+		for ( nLength = 0; nLenLen--; )
 		{
 			nLength <<= 8;
 			nLength |= *pSource++;
@@ -227,7 +227,7 @@ BOOL CG2Packet::ReadPacket(G2_PACKET& nType, DWORD& nLength, BOOL* pbCompound)
 
 	if ( m_bBigEndian )
 	{
-		for ( nLength = 0 ; nLenLen-- ; )
+		for ( nLength = 0; nLenLen--; )
 		{
 			nLength <<= 8;
 			nLength |= ReadByte();
@@ -289,7 +289,7 @@ BOOL CG2Packet::SkipCompound(DWORD& nLength, DWORD nRemaining)
 
 		if ( m_bBigEndian )
 		{
-			for ( nPacket = 0 ; nLenLen-- ; )
+			for ( nPacket = 0; nLenLen--; )
 			{
 				nPacket <<= 8;
 				nPacket |= ReadByte();
@@ -361,7 +361,7 @@ CString CG2Packet::ReadString(DWORD nMaximum)
 //	BOOL bEncoded	= FALSE;
 
 	DWORD nLength = 0;
-	for ( ; nLength < nMaximum ; nLength++ )
+	for ( ; nLength < nMaximum; nLength++ )
 	{
 		m_nPosition++;
 		if ( ! *pszScan ) break;
@@ -479,7 +479,7 @@ CG2Packet* CG2Packet::ReadBuffer(CBuffer* pBuffer)
 	{
 		BYTE* pLenIn = pBuffer->m_pBuffer + 1;
 
-		for ( BYTE nIt = nLenLen ; nIt ; nIt-- )
+		for ( BYTE nIt = nLenLen; nIt; nIt-- )
 		{
 			nLength <<= 8;
 			nLength |= *pLenIn++;
@@ -489,7 +489,7 @@ CG2Packet* CG2Packet::ReadBuffer(CBuffer* pBuffer)
 	{
 		BYTE* pLenIn	= pBuffer->m_pBuffer + 1;
 		BYTE* pLenOut	= (BYTE*)&nLength;
-		for ( BYTE nLenCnt = nLenLen ; nLenCnt-- ; )
+		for ( BYTE nLenCnt = nLenLen; nLenCnt--; )
 			*pLenOut++ = *pLenIn++;
 	}
 
@@ -618,7 +618,7 @@ CString CG2Packet::Dump(DWORD nTotal)
 			{
 				CStringA sDump;
 				char* c = sDump.GetBuffer( nLength );
-				for ( DWORD i = 0 ; i < nLength ; ++i )
+				for ( DWORD i = 0; i < nLength; ++i )
 				{
 					c[ i ] = ( m_pBuffer[ m_nPosition + i ] < ' ' ) ? '.' : m_pBuffer[ m_nPosition + i ];
 				}
@@ -639,7 +639,7 @@ CString CG2Packet::Dump(DWORD nTotal)
 void CG2Packet::Debug(LPCTSTR pszReason) const
 {
 	CString strOutput;
-	strOutput.Format( L"[G2] %s Type: %s", pszReason, GetType() );
+	strOutput.Format( L"[G2] %s Type: %s", pszReason, (LPCTSTR)GetType() );
 	CPacket::Debug( strOutput );
 }
 #endif	// Debug
@@ -1194,7 +1194,7 @@ BOOL CG2Packet::OnCrawlRequest(const SOCKADDR_IN* pHost)
 	CSingleLock pLock( &Network.m_pSection );
 	if ( SafeLock( pLock ) )
 	{
-		for ( POSITION pos = Neighbours.GetIterator() ; pos ; )
+		for ( POSITION pos = Neighbours.GetIterator(); pos; )
 		{
 			CNeighbour* pNeighbour = Neighbours.GetNext( pos );
 			if ( pNeighbour->m_nState < nrsConnected ) continue;
@@ -1428,7 +1428,7 @@ BOOL CG2Packet::OnKHLR(const SOCKADDR_IN* pHost)
 	CSingleLock pLock( &Network.m_pSection );
 	if ( SafeLock( pLock ) )
 	{
-		for ( POSITION pos = Neighbours.GetIterator() ; pos ; )
+		for ( POSITION pos = Neighbours.GetIterator(); pos; )
 		{
 			CG2Neighbour* pNeighbour = (CG2Neighbour*)Neighbours.GetNext( pos );
 
@@ -1471,8 +1471,8 @@ BOOL CG2Packet::OnKHLR(const SOCKADDR_IN* pHost)
 	{
 		CQuickLock oLock( HostCache.Gnutella2.m_pSection );
 
-		for ( CHostCacheIterator i = HostCache.Gnutella2.Begin() ;
-			i != HostCache.Gnutella2.End() && nCount > 0 ; ++i )
+		for ( CHostCacheIterator i = HostCache.Gnutella2.Begin();
+			i != HostCache.Gnutella2.End() && nCount > 0; ++i )
 		{
 			CHostCacheHostPtr pCachedHost = (*i);
 

@@ -1,8 +1,8 @@
 //
 // LocalSearch.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2017
-// Portions copyright PeerProject 2008-2015 and Shareaza 2002-2008
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2008 and PeerProject 2008-2015
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -186,8 +186,8 @@ bool CLocalSearch::ExecutePartialFiles(INT_PTR nMaximum, INT_PTR& nHits)
 
 	CList< CDownload* > oFilesInPacket;
 
-	for ( POSITION pos = Downloads.GetIterator() ;
-		pos && ( ! nMaximum || ( nHits + oFilesInPacket.GetCount() < nMaximum ) ) ; )
+	for ( POSITION pos = Downloads.GetIterator();
+		pos && ( ! nMaximum || ( nHits + oFilesInPacket.GetCount() < nMaximum ) ); )
 	{
 		CDownload* pDownload = Downloads.GetNext( pos );
 
@@ -235,7 +235,7 @@ bool CLocalSearch::ExecuteSharedFiles(INT_PTR nMaximum, INT_PTR& nHits)
 	{
 		CFileList oFilesInPacket;
 
-		for ( POSITION pos = pFiles->GetHeadPosition() ; pos && ( ! nMaximum || nMaximum > nHits + oFilesInPacket.GetCount() ) ; )
+		for ( POSITION pos = pFiles->GetHeadPosition(); pos && ( ! nMaximum || nMaximum > nHits + oFilesInPacket.GetCount() ); )
 		{
 			CLibraryFile* pFile = pFiles->GetNext( pos );
 
@@ -267,7 +267,7 @@ void CLocalSearch::SendHits(const CList< T* >& oFiles)
 	CSchemaMap pSchemas;
 
 	BYTE nHits = 0;
-	for ( POSITION pos = oFiles.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = oFiles.GetHeadPosition(); pos; )
 	{
 		if ( ! pPacket )
 			pPacket = CreatePacket();
@@ -379,7 +379,7 @@ void CLocalSearch::AddHitG1(CG1Packet* pPacket, CSchemaMap& pSchemas, CLibraryFi
 		{
 			if ( CGGEPItem* pItem = pBlock.Add( GGEP_HEADER_ALTS ) )
 			{
-				for ( POSITION pos = pFile->m_pSources.GetHeadPosition() ; pos ; )
+				for ( POSITION pos = pFile->m_pSources.GetHeadPosition(); pos; )
 				{
 					CSharedSource* pSource = pFile->m_pSources.GetNext( pos );
 					CEnvyURL oURL( pSource->m_sURL );
@@ -998,7 +998,7 @@ CG2Packet* CLocalSearch::CreatePacketG2()
 		CSingleLock pNetworkLock( &Network.m_pSection );
 		if ( pNetworkLock.Lock( 50 ) )
 		{
-			for ( POSITION pos = Neighbours.GetIterator() ; pos ; )
+			for ( POSITION pos = Neighbours.GetIterator(); pos; )
 			{
 				CNeighbour* pNeighbour = Neighbours.GetNext( pos );
 
@@ -1020,7 +1020,7 @@ CG2Packet* CLocalSearch::CreatePacketG2()
 	if ( pQueueLock.Lock( 2000 ) )
 	{
 		int nQueue = 1;
-		for ( POSITION pos = UploadQueues.GetIterator() ; pos ; nQueue++ )
+		for ( POSITION pos = UploadQueues.GetIterator(); pos; nQueue++ )
 		{
 			CUploadQueue* pQueue = UploadQueues.GetNext( pos );
 			pPacket->WritePacket( G2_PACKET_HIT_GROUP, ( 4 + 7 ) + 2, TRUE );
@@ -1086,7 +1086,7 @@ void CLocalSearch::WriteTrailerG1(CG1Packet* pPacket, CSchemaMap& pSchemas, BYTE
 {
 	// Prepare XML
 	CStringA sXML;
-	for ( POSITION pos1 = pSchemas.GetStartPosition() ; pos1 ; )
+	for ( POSITION pos1 = pSchemas.GetStartPosition(); pos1; )
 	{
 		CXMLElement* pGroup;
 		CSchemaPtr pSchema;
@@ -1303,7 +1303,7 @@ CG2Packet* CLocalSearch::AlbumToPacket(CAlbumFolder* pFolder)
 		pPacket->WriteString( strXML, FALSE );
 	}
 
-	for ( POSITION pos = pFolder->GetFolderIterator() ; pos ; )
+	for ( POSITION pos = pFolder->GetFolderIterator(); pos; )
 	{
 		if ( CG2Packet* pChild = AlbumToPacket( pFolder->GetNextFolder( pos ) ) )
 		{
@@ -1316,7 +1316,7 @@ CG2Packet* CLocalSearch::AlbumToPacket(CAlbumFolder* pFolder)
 	{
 		pPacket->WritePacket( G2_PACKET_FILES, nFiles * 4u );
 
-		for ( POSITION pos = pFolder->GetFileIterator() ; pos ; )
+		for ( POSITION pos = pFolder->GetFileIterator(); pos; )
 		{
 			CLibraryFile* pFile = pFolder->GetNextFile( pos );
 			pPacket->WriteLongBE( pFile->m_nIndex );
@@ -1331,7 +1331,7 @@ CG2Packet* CLocalSearch::FoldersToPacket()
 	CG2Packet* pPacket = CG2Packet::New( G2_PACKET_PHYSICAL_FOLDER, TRUE );
 	if ( ! pPacket ) return NULL;
 
-	for ( POSITION pos = LibraryFolders.GetFolderIterator() ; pos ; )
+	for ( POSITION pos = LibraryFolders.GetFolderIterator(); pos; )
 	{
 		if ( CG2Packet* pChild = FolderToPacket( LibraryFolders.GetNextFolder( pos ) ) )
 		{
@@ -1354,7 +1354,7 @@ CG2Packet* CLocalSearch::FolderToPacket(CLibraryFolder* pFolder)
 	pPacket->WritePacket( G2_PACKET_DESCRIPTIVE_NAME, pPacket->GetStringLen( pFolder->m_sName ) );
 	pPacket->WriteString( pFolder->m_sName, FALSE );
 
-	for ( POSITION pos = pFolder->GetFolderIterator() ; pos ; )
+	for ( POSITION pos = pFolder->GetFolderIterator(); pos; )
 	{
 		if ( CG2Packet* pChild = FolderToPacket( pFolder->GetNextFolder( pos ) ) )
 		{
@@ -1367,7 +1367,7 @@ CG2Packet* CLocalSearch::FolderToPacket(CLibraryFolder* pFolder)
 	{
 		pPacket->WritePacket( G2_PACKET_FILES, nFiles * 4u );
 
-		for ( POSITION pos = pFolder->GetFileIterator() ; pos ; )
+		for ( POSITION pos = pFolder->GetFileIterator(); pos; )
 		{
 			const CLibraryFile* pFile = pFolder->GetNextFile( pos );
 			if ( pFile->IsShared() )

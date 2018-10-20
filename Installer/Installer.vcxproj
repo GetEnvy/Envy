@@ -204,7 +204,7 @@
       <Project>{f02ede36-e2ac-40e8-b6dc-76b1d53f9a5a}</Project>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
-    <ProjectReference Include="..\Packages\Packages.vcxproj">
+    <ProjectReference Include="..\Unpacker\Unpacker.vcxproj">
       <Project>{caa6fcc8-27b1-42b9-b647-976e7be79c70}</Project>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>

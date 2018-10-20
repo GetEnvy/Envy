@@ -1,8 +1,8 @@
 //
 // QueryHashTable.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2007
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -121,7 +121,7 @@ bool CQueryHashTable::Merge(const CQueryHashTable* pSource)
 		LPBYTE pSourcePtr	= pSource->m_pHash;
 		LPBYTE pDestPtr		= m_pHash;
 
-		for ( DWORD nPosition = m_nHash >> 3 ; nPosition ; --nPosition )
+		for ( DWORD nPosition = m_nHash >> 3; nPosition; --nPosition )
 		{
 			register BYTE nSourceByte = *pSourcePtr;
 			register BYTE nDestByte = *pDestPtr;
@@ -149,7 +149,7 @@ bool CQueryHashTable::Merge(const CQueryHashTable* pSource)
 		if ( m_nHash > pSource->m_nHash )
 		{
 			DWORD nIterate = pSource->m_nHash;
-			for ( ; nIterate < m_nHash ; nIterate *= 2 )
+			for ( ; nIterate < m_nHash; nIterate *= 2 )
 				++nDestScale;
 
 			if ( nIterate != m_nHash )
@@ -158,7 +158,7 @@ bool CQueryHashTable::Merge(const CQueryHashTable* pSource)
 		else if ( m_nHash < pSource->m_nHash )
 		{
 			DWORD nIterate = m_nHash;
-			for ( ; nIterate < pSource->m_nHash ; nIterate *= 2 )
+			for ( ; nIterate < pSource->m_nHash; nIterate *= 2 )
 				++nSourceScale;
 
 			if ( nIterate != pSource->m_nHash )
@@ -170,11 +170,11 @@ bool CQueryHashTable::Merge(const CQueryHashTable* pSource)
 		BYTE nSourceMask	= 0x01;
 		BYTE nDestMask		= 0x01;
 
-		for ( DWORD nDest = 0, nSource = 0 ; nDest < m_nHash && nSource < pSource->m_nHash ; )
+		for ( DWORD nDest = 0, nSource = 0; nDest < m_nHash && nSource < pSource->m_nHash; )
 		{
 			bool bValue = true;
 
-			for ( int nSample = 0 ; nSample < nSourceScale ; ++nSample, ++nSource )
+			for ( int nSample = 0; nSample < nSourceScale; ++nSample, ++nSource )
 			{
 				if ( ( *pSourcePtr & nSourceMask ) == 0 )
 					bValue = false;
@@ -190,7 +190,7 @@ bool CQueryHashTable::Merge(const CQueryHashTable* pSource)
 				}
 			}
 
-			for ( int nSample = 0 ; nSample < nDestScale ; ++nSample, ++nDest )
+			for ( int nSample = 0; nSample < nDestScale; ++nSample, ++nDest )
 			{
 				if ( ! bValue && ( *pDestPtr & nDestMask ) )
 				{
@@ -226,7 +226,7 @@ bool CQueryHashTable::Merge(const CQueryHashGroup* pSource)
 		LPBYTE pSourcePtr	= pSource->m_pHash;
 		LPBYTE pDestPtr		= m_pHash;
 
-		for ( DWORD nPosition = m_nHash >> 3 ; nPosition ; --nPosition )
+		for ( DWORD nPosition = m_nHash >> 3; nPosition; --nPosition )
 		{
 			register BYTE nDestByte = *pDestPtr;
 
@@ -252,7 +252,7 @@ bool CQueryHashTable::Merge(const CQueryHashGroup* pSource)
 		if ( m_nHash > pSource->m_nHash )
 		{
 			DWORD nIterate = pSource->m_nHash;
-			for ( ; nIterate < m_nHash ; nIterate *= 2 )
+			for ( ; nIterate < m_nHash; nIterate *= 2 )
 				++nDestScale;
 
 			if ( nIterate != m_nHash )
@@ -261,7 +261,7 @@ bool CQueryHashTable::Merge(const CQueryHashGroup* pSource)
 		else if ( m_nHash < pSource->m_nHash )
 		{
 			DWORD nIterate = m_nHash;
-			for ( ; nIterate < pSource->m_nHash ; nIterate *= 2 )
+			for ( ; nIterate < pSource->m_nHash; nIterate *= 2 )
 				++nSourceScale;
 
 			if ( nIterate != pSource->m_nHash )
@@ -272,17 +272,17 @@ bool CQueryHashTable::Merge(const CQueryHashGroup* pSource)
 		LPBYTE pDestPtr		= m_pHash;
 		BYTE nDestMask		= 0x01;
 
-		for ( DWORD nDest = 0, nSource = 0 ; nDest < m_nHash && nSource < pSource->m_nHash ; )
+		for ( DWORD nDest = 0, nSource = 0; nDest < m_nHash && nSource < pSource->m_nHash; )
 		{
 			bool bValue = true;
 
-			for ( int nSample = 0 ; nSample < nSourceScale ; nSample++, nSource++ )
+			for ( int nSample = 0; nSample < nSourceScale; nSample++, nSource++ )
 			{
 				if ( *pSourcePtr++ )
 					bValue = false;
 			}
 
-			for ( int nSample = 0 ; nSample < nDestScale ; ++nSample, ++nDest )
+			for ( int nSample = 0; nSample < nDestScale; ++nSample, ++nDest )
 			{
 				if ( ! bValue && ( *pDestPtr & nDestMask ) )
 				{
@@ -459,7 +459,7 @@ bool CQueryHashTable::PatchTo(const CQueryHashTable* pTarget,
 		};
 		DWORD* const pDwordBuffer = reinterpret_cast< DWORD* >( pBuffer );
 		const DWORD nEnd = ( m_nHash + 7 ) / 8;
-		for ( DWORD nPosition = 0 ; nPosition < nEnd ; ++nPosition )
+		for ( DWORD nPosition = 0; nPosition < nEnd; ++nPosition )
 		{
 			if ( ( pDwordBuffer[ nPosition ] = changeFlag[ pHashS[ nPosition ] ]
 				& changed[ pHashT[ nPosition ] ^ pHashS[ nPosition ] ] ) != 0 )
@@ -476,7 +476,7 @@ bool CQueryHashTable::PatchTo(const CQueryHashTable* pTarget,
 		DWORD* const pDwordBuffer = reinterpret_cast< DWORD* >( pBuffer );
 		const DWORD* const pDwordHashS = reinterpret_cast< DWORD* >( pHashS );
 		const DWORD* const pDwordHashT = reinterpret_cast< DWORD* >( pHashT );
-		for ( DWORD nPosition = 0 ; nPosition < nEnd ; ++nPosition )
+		for ( DWORD nPosition = 0; nPosition < nEnd; ++nPosition )
 		{
 			if ( ( pDwordBuffer[ nPosition ] = pDwordHashS[ nPosition ] ^ pDwordHashT[ nPosition ] ) != 0 )
 				bChanged = true;
@@ -507,7 +507,7 @@ bool CQueryHashTable::PatchTo(const CQueryHashTable* pTarget,
 
 	pBuffer = pCompress.get();
 
-	for ( BYTE nSequence = 1 ; nSequence <= nSequenceMax ; ++nSequence )
+	for ( BYTE nSequence = 1; nSequence <= nSequenceMax; ++nSequence )
 	{
 		CPacket* pPatch = NULL;
 
@@ -546,7 +546,7 @@ bool CQueryHashTable::PatchTo(const CQueryHashTable* pTarget,
 //	DWORD nPosition	= 0;
 //	const DWORD nPacketSize = 4096;
 //
-//	for ( BYTE nSequence = 1 ; nPosition < m_nHash ; ++nSequence )
+//	for ( BYTE nSequence = 1; nPosition < m_nHash; ++nSequence )
 //	{
 //		CG1Packet* pPatch = CG1Packet::New( G1_PACKET_QUERY_ROUTE, 1 );
 //
@@ -558,7 +558,7 @@ bool CQueryHashTable::PatchTo(const CQueryHashTable* pTarget,
 //
 //		BYTE nMask = 1;
 //		DWORD nCount = 0;
-//		for ( ; nCount < nPacketSize ; ++nCount, ++nPosition )
+//		for ( ; nCount < nPacketSize; ++nCount, ++nPosition )
 //		{
 //			BYTE nPatch = ( *pHashT & nMask ) != ( *pHashS & nMask ) ? 7 : 0;
 //			*pHashS = ( *pHashS & ~nMask ) | ( *pHashT & nMask );
@@ -662,7 +662,7 @@ bool CQueryHashTable::OnReset(CPacket* pPacket)
 		delete [] m_pHash;
 		m_pHash = NULL;
 
-		for ( m_nHash = 1, m_nBits = 0 ; m_nHash < nHashSize ; ++m_nBits )
+		for ( m_nHash = 1, m_nBits = 0; m_nHash < nHashSize; ++m_nBits )
 			m_nHash *= 2;
 
 		if ( m_nHash != nHashSize )
@@ -745,9 +745,9 @@ bool CQueryHashTable::OnPatch(CPacket* pPacket)
 
 	if ( nBits == 1 )
 	{
-		for ( DWORD nPosition = ( m_nHash >> 3 ) ; nPosition ; --nPosition, ++pHash, ++pData )
+		for ( DWORD nPosition = ( m_nHash >> 3 ); nPosition; --nPosition, ++pHash, ++pData )
 		{
-			for ( BYTE nMask = 1 ; ; nMask <<= 1 )
+			for ( BYTE nMask = 1; ; nMask <<= 1 )
 			{
 				if ( *pData & nMask )
 				{
@@ -793,7 +793,7 @@ bool CQueryHashTable::OnPatch(CPacket* pPacket)
 	{
 		BYTE nMask = 1;
 
-		for ( DWORD nPosition = 0 ; nPosition < m_nHash ; ++nPosition, ++pData, ++pGroup )
+		for ( DWORD nPosition = 0; nPosition < m_nHash; ++nPosition, ++pData, ++pGroup )
 		{
 			if ( nBits == 8 )
 			{
@@ -896,7 +896,7 @@ void CQueryHashTable::MakeKeywords(const CString& strPhrase, CStringList& oKeywo
 	WORD nKanaType[ 2 ] = { C3_NOTAPPLICABLE, C3_NOTAPPLICABLE };
 	int nPos = 0, nNextWord = 0;
 
-	for ( ; nPos < strPhrase.GetLength() ; ++nPos )
+	for ( ; nPos < strPhrase.GetLength(); ++nPos )
 	{
 		// boundary[ 0 ] -- previous character;
 		// boundary[ 1 ] -- current character;
@@ -1001,7 +1001,7 @@ void CQueryHashTable::MakeKeywords(const CString& strWord, WORD nWordType, CStri
 		if ( nLength < 3 )
 			return;
 
-		for ( int nLen = 2 ; nLen < nLength ; ++nLen )
+		for ( int nLen = 2; nLen < nLength; ++nLen )
 		{
 			oKeywords.AddTail( strWord.Left( nLen ) );
 			oKeywords.AddTail( strWord.Right( nLen ) );
@@ -1021,7 +1021,7 @@ void CQueryHashTable::MakeKeywords(const CString& strWord, WORD nWordType, CStri
 		if ( nLength < 2 )
 			return;
 
-		for ( int nLen = 1 ; nLen < nLength ; ++nLen )
+		for ( int nLen = 1; nLen < nLength; ++nLen )
 		{
 			oKeywords.AddTail( strWord.Left( nLen ) );
 			oKeywords.AddTail( strWord.Right( nLen ) );
@@ -1046,7 +1046,7 @@ void CQueryHashTable::AddFile(const CEnvyFile& oFile)
 
 	CStringList oKeywords;
 	MakeKeywords( oFile.GetSearchName(), oKeywords );
-	for ( POSITION pos = oKeywords.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = oKeywords.GetHeadPosition(); pos; )
 	{
 		AddExactString( oKeywords.GetNext( pos ) );
 	}
@@ -1119,7 +1119,7 @@ bool CQueryHashTable::Check(const CQuerySearch* pSearch) const
 	{
 		CQuerySearch::const_hash_iterator iUrn = pSearch->urnBegin();
 		const CQuerySearch::const_hash_iterator iUrnEnd = pSearch->urnEnd();
-		for ( ; iUrn != iUrnEnd ; ++iUrn )
+		for ( ; iUrn != iUrnEnd; ++iUrn )
 		{
 			if ( CheckHash(*iUrn) )
 				return true;
@@ -1134,7 +1134,7 @@ bool CQueryHashTable::Check(const CQuerySearch* pSearch) const
 	{
 		CQuerySearch::const_hash_iterator iKeyword = pSearch->keywordBegin();
 		const CQuerySearch::const_hash_iterator iKeywordEnd = pSearch->keywordEnd();
-		for ( ; iKeyword != iKeywordEnd ; ++iKeyword )
+		for ( ; iKeyword != iKeywordEnd; ++iKeyword )
 		{
 			++nWords;
 
@@ -1156,7 +1156,7 @@ DWORD CQueryHashTable::HashWord(LPCTSTR pszString, size_t nStart, size_t nLength
 	DWORD nNumber = 0;
 	int nByte = 0;
 
-	for ( pszString += nStart ; nLength ; --nLength, ++pszString )
+	for ( pszString += nStart; nLength; --nLength, ++pszString )
 	{
 		// A known bad using of tolower() with unicode chars but as is...
 		nNumber ^= ( tolower( *pszString ) & 0xFF ) << ( nByte * 8 );

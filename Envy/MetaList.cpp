@@ -1,8 +1,8 @@
 //
 // MetaList.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2008
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2008 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -60,7 +60,7 @@ CMetaList::~CMetaList()
 
 void CMetaList::Clear()
 {
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		delete GetNext( pos );
 	}
@@ -86,7 +86,7 @@ CMetaItem* CMetaList::Add(LPCTSTR pszKey, LPCTSTR pszValue)
 
 CMetaItem* CMetaList::Find(LPCTSTR pszKey) const
 {
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		CMetaItem* pItem = GetNext( pos );
 		if ( pItem->m_sKey.CompareNoCase( pszKey ) == 0 ) return pItem;
@@ -99,7 +99,7 @@ BOOL CMetaList::IsMusicBrainz() const
 {
 	CString strMultiple = LoadString( IDS_MULTIPLE );
 
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		CMetaItem* pItem = GetNext( pos );
 		if ( pItem->m_pMember && ! pItem->m_sValue.IsEmpty() && pItem->m_sValue != strMultiple )
@@ -118,7 +118,7 @@ BOOL CMetaList::IsMusicBrainz() const
 
 void CMetaList::Remove(LPCTSTR pszKey)
 {
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		POSITION posCur = pos;
 
@@ -152,13 +152,13 @@ void CMetaList::Setup(CSchemaPtr pSchema, BOOL bClear)
 		Clear();
 	if ( ! pSchema ) return;
 
-	for ( POSITION pos = pSchema->GetMemberIterator() ; pos ; )
+	for ( POSITION pos = pSchema->GetMemberIterator(); pos; )
 	{
 		CSchemaMember* pMember = pSchema->GetNextMember( pos );
 		m_pItems.AddTail( new CMetaItem( pMember ) );
 	}
 
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		CMetaItem* pItem = GetNext( pos );
 		if ( ! pItem->m_sValue.IsEmpty() )
@@ -173,7 +173,7 @@ void CMetaList::Setup(const CMetaList* pMetaList)
 {
 	if ( pMetaList == NULL ) return;
 
-	for ( POSITION posOther = pMetaList->GetIterator() ; posOther ; )
+	for ( POSITION posOther = pMetaList->GetIterator(); posOther; )
 	{
 		const CMetaItem* pItemOther = pMetaList->GetNext( posOther );
 		CMetaItem* pItem = Find( pItemOther->m_sKey );
@@ -197,7 +197,7 @@ void CMetaList::Setup(const CMetaList* pMetaList)
 			pItem->m_bValueDefined = ! pItemOther->m_sValue.IsEmpty();
 	}
 
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		CMetaItem* pItem = GetNext( pos );
 		const CMetaItem* pItemOther = pMetaList->Find( pItem->m_sKey );
@@ -217,7 +217,7 @@ void CMetaList::Combine(const CXMLElement* pXML)
 {
 	if ( pXML == NULL ) return;
 
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		GetNext( pos )->Combine( pXML );
 	}
@@ -230,7 +230,7 @@ void CMetaList::Combine(const CXMLElement* pXML)
 
 void CMetaList::Vote()
 {
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		GetNext( pos )->Vote();
 	}
@@ -241,7 +241,7 @@ void CMetaList::Vote()
 
 void CMetaList::CreateLinks()
 {
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		CMetaItem* pItem = GetNext( pos );
 		pItem->CreateLink();
@@ -272,7 +272,7 @@ void CMetaList::CreateLinks()
 
 void CMetaList::Clean(int nMaxLength)
 {
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		POSITION posCur = pos;
 		CMetaItem* pItem = GetNext( pos );
@@ -290,7 +290,7 @@ void CMetaList::Clean(int nMaxLength)
 
 void CMetaList::ComputeWidth(CDC* pDC, int& nKeyWidth, int& nValueWidth)
 {
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		CMetaItem* pItem = GetNext( pos );
 		if ( pItem->m_pMember && pItem->m_pMember->m_bHidden ) continue;
@@ -309,7 +309,7 @@ INT_PTR CMetaList::GetCount(BOOL bVisibleOnly) const
 
 	INT_PTR nTotal = 0;
 
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		CMetaItem* pItem = GetNext( pos );
 		if ( pItem->m_pMember && pItem->m_pMember->m_bHidden ) continue;
@@ -324,7 +324,7 @@ INT_PTR CMetaList::GetCount(BOOL bVisibleOnly) const
 
 CMetaItem* CMetaList::HitTest(const CPoint& point, BOOL bLinksOnly)
 {
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		CMetaItem* pItem = GetNext( pos );
 		if ( pItem->m_pMember && pItem->m_pMember->m_bHidden ) continue;
@@ -366,7 +366,7 @@ int CMetaList::Layout(CDC* pDC, int nWidth)
 
 	CFont* pOld = (CFont*)pDC->SelectObject( &CoolInterface.m_fntNormal );
 
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		CMetaItem* pItem = GetNext( pos );
 		if ( pItem->m_pMember && pItem->m_pMember->m_bHidden ) continue;
@@ -468,12 +468,12 @@ void CMetaList::Paint(CDC* pDC, const CRect* prcArea)
 	POSITION pos = GetIterator();
 	DWORD dwFlags = ( Settings.General.LanguageRTL ? ETO_RTLREADING : 0 );
 
-	for ( int nRow = 0 ; pos ; nRow++ )
+	for ( int nRow = 0; pos; nRow++ )
 	{
 		pDC->SetBkColor( Colors.m_crSchemaRow[ nRow & 1 ] );
 		int nHeight = 0;
 
-		for ( int nColumn = 0 ; nColumn < 2 && pos ; nColumn++ )
+		for ( int nColumn = 0; nColumn < 2 && pos; nColumn++ )
 		{
 			CMetaItem* pItem = GetNext( pos );
 
@@ -617,7 +617,7 @@ void CMetaItem::Vote()
 
 	int nBest = 0;
 
-	for ( POSITION pos = m_pVote.GetStartPosition() ; pos ; )
+	for ( POSITION pos = m_pVote.GetStartPosition(); pos; )
 	{
 		CString strValue;
 		int nVote;
@@ -652,7 +652,9 @@ BOOL CMetaItem::Limit(int nMaxLength)
 
 BOOL CMetaItem::CreateLink()
 {
-	if ( StartsWith( m_sValue, _P( L"http://" ) ) || StartsWith( m_sValue, _P( L"www." ) ) )
+	if ( StartsWith( m_sValue, _P( L"http://" ) ) ||
+		 StartsWith( m_sValue, _P( L"https://" ) ) ||
+		 StartsWith( m_sValue, _P( L"www." ) ) )
 	{
 		m_bLink = TRUE;
 
@@ -664,20 +666,33 @@ BOOL CMetaItem::CreateLink()
 		return TRUE;
 	}
 
-	if ( m_pMember == NULL ) return FALSE;
+	if ( ! m_pMember )
+		return FALSE;
 
-	if ( m_pMember->m_sLinkURI.IsEmpty() ) return FALSE;
-	if ( m_pMember->m_sLinkName.IsEmpty() ) return FALSE;
-
+	if ( m_pMember->m_sName == L"hash" )
 	{
-		CQuickLock oLock( Library.m_pSection );		// ASSUME_LOCKs
+		m_bLink = TRUE;
+		m_sLink = L"magnet:?xt=urn:btih:" + m_sValue;
+		m_sLinkName = m_sValue;
 
-		m_bLink = LibraryFolders.GetAlbumTarget( m_pMember->m_sLinkURI, m_pMember->m_sLinkName, m_sValue ) != NULL;
+		return TRUE;
 	}
 
-	if ( m_bLink ) m_sLink = m_sValue;
+	if ( ! m_pMember->m_sLinkURI.IsEmpty() && ! m_pMember->m_sLinkName.IsEmpty() )
+	{
+		CSingleLock pLock( &Library.m_pSection );
+		if ( pLock.Lock( 200 ) )
+		{
+			if ( LibraryFolders.GetAlbumTarget( m_pMember->m_sLinkURI, m_pMember->m_sLinkName, m_sValue ) != NULL )
+			{
+				m_bLink = TRUE;
+				m_sLink = m_sValue;
+				return TRUE;
+			}
+		}
+	}
 
-	return m_bLink;
+	return FALSE;
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -687,23 +702,25 @@ CAlbumFolder* CMetaItem::GetLinkTarget(BOOL bHTTP) const
 {
 	if ( bHTTP )
 	{
-		if ( StartsWith( m_sLink, _P( L"http://" ) ) )
+		if ( StartsWith( m_sLink, _P( L"http://" ) ) ||
+			 StartsWith( m_sLink, _P( L"https://" ) ) ||
+			 StartsWith( m_sLink, _P( L"magnet:?" ) ) )
 		{
-			ShellExecute( AfxGetMainWnd()->GetSafeHwnd(), L"open",
-				m_sLink, NULL, NULL, SW_SHOWNORMAL );
+			ShellExecute( AfxGetMainWnd()->GetSafeHwnd(), L"open", m_sLink, NULL, NULL, SW_SHOWNORMAL );
 			return NULL;
 		}
 		if ( StartsWith( m_sLink, _P( L"www." ) ) )
 		{
-			ShellExecute( AfxGetMainWnd()->GetSafeHwnd(), L"open",
-				L"http://" + m_sLink, NULL, NULL, SW_SHOWNORMAL );
+			ShellExecute( AfxGetMainWnd()->GetSafeHwnd(), L"open", L"http://" + m_sLink, NULL, NULL, SW_SHOWNORMAL );
 			return NULL;
 		}
 	}
 
-	if ( m_pMember == NULL || ! m_bLink ) return NULL;
-	if ( m_pMember->m_sLinkURI.IsEmpty() ) return NULL;
-	if ( m_pMember->m_sLinkName.IsEmpty() ) return NULL;
+	if ( ! m_bLink ||
+		 m_pMember == NULL ||
+		 m_pMember->m_sLinkURI.IsEmpty() ||
+		 m_pMember->m_sLinkName.IsEmpty() )
+		return NULL;
 
 	return LibraryFolders.GetAlbumTarget( m_pMember->m_sLinkURI, m_pMember->m_sLinkName, m_sLink );
 }
@@ -714,9 +731,9 @@ CString CMetaItem::GetMusicBrainzLink() const
 		return CString();
 
 	if ( m_pMember->m_sName == L"mbalbumid" )
-		return L"http://musicbrainz.org/release/" + m_sValue + L".html";
+		return L"http://musicbrainz.org/release/" + m_sValue;
 	if ( m_pMember->m_sName == L"mbartistid" )
-		return L"http://musicbrainz.org/artist/" + m_sValue + L".html";
+		return L"http://musicbrainz.org/artist/" + m_sValue;
 	if ( m_pMember->m_sName == L"mbpuid" )
 		return L"http://musicbrainz.org/show/puid/?matchesonly=0&amp;puid=" + m_sValue;
 

@@ -1,8 +1,8 @@
 //
 // CtrlTaskPanel.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2007
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -123,7 +123,7 @@ void CTaskPanel::ClearBoxes(BOOL bDelete)
 {
 	if ( bDelete )
 	{
-		for ( POSITION pos = GetBoxIterator() ; pos ; )
+		for ( POSITION pos = GetBoxIterator(); pos; )
 			delete GetNextBox( pos );
 	}
 
@@ -241,7 +241,7 @@ void CTaskPanel::Layout(CRect& rcClient)
 
 	if ( m_pStretch && m_pStretch->GetOuterHeight() )
 	{
-		for ( POSITION pos = GetBoxIterator() ; pos ; )
+		for ( POSITION pos = GetBoxIterator(); pos; )
 		{
 			CTaskBox* pBox = GetNextBox( pos );
 
@@ -253,7 +253,7 @@ void CTaskPanel::Layout(CRect& rcClient)
 	// Prevent stretch boxes from having negative height
 	nStretch = max( nStretch, CAPTION_HEIGHT * 2 );
 
-	for ( POSITION pos = GetBoxIterator() ; pos ; )
+	for ( POSITION pos = GetBoxIterator(); pos; )
 	{
 		CTaskBox* pBox = GetNextBox( pos );
 
@@ -269,7 +269,7 @@ void CTaskPanel::Layout(CRect& rcClient)
 			pBox->SetWindowPos( NULL, rcBox.left, rcBox.top, rcBox.Width(), rcBox.Height(),
 				SWP_SHOWWINDOW | SWP_NOZORDER | SWP_NOACTIVATE );
 
-			for ( CWnd* pChild = pBox->GetWindow( GW_CHILD ) ; pChild ;
+			for ( CWnd* pChild = pBox->GetWindow( GW_CHILD ); pChild;
 				pChild = pChild->GetWindow( GW_HWNDNEXT ) )
 			{
 				pChild->ShowWindow( pBox->m_bOpen ? SW_SHOW : SW_HIDE );
@@ -528,6 +528,21 @@ void CTaskBox::PaintBorders()
 
 	GetWindowRect( &rc );
 	rc.OffsetRect( -rc.left, -rc.top );
+
+//	BOOL bCaptionCurve = TRUE;
+//	HBITMAP hbmCaptionmark = Skin.GetWatermark( m_sCaptionmark, TRUE );
+//	if ( ! hbmCaptionmark && m_bPrimary && Colors.m_crTaskBoxPrimaryBack == RGB_DEFAULT_CASE )
+//	{
+//		hbmCaptionmark = Skin.LoadBitmap( IDB_TASKBOX_CAPTION, TRUE );
+//	}
+//	if ( hbmCaptionmark )
+//	{
+//		BITMAP pInfo = {};
+//		if ( GetObject( hbmCaptionmark, sizeof( BITMAP ), &pInfo ) )
+//		{
+//			bCaptionCurve = pInfo.bmWidth < 176;
+//		}
+//	}
 
 	if ( m_bCaptionCurve )	// && m_pPanel->m_nCurve != 0
 	{

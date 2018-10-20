@@ -3,7 +3,7 @@
 
 <!-- Envy Default Czech Skin File -->
 
-<!-- Translation based on default en.xml r21 --> <!-- (Shareaza 2.2.5.7) -->
+<!-- Translation based on default en.xml r22 --> <!-- (Shareaza 2.2.5.7) -->
 <!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -15,7 +15,7 @@
 <manifest
 	name="Čeština"
 	author="Prometheus"
-	updateBy="Odin"
+	updatedby="Odin"
 	description="Envy Default Czech Skin File"
 	link="http://getenvy.com"
 	email="odinuv(at)users.sourceforge.net"
@@ -3201,8 +3201,9 @@
 	<string id="20807" text="Odmítnuto odesílání z &quot;%s&quot; do %s (%s), příliš mnoho souběžných hostitelů."/>
 	<string id="20808" text="Odmítnuto odeslání &quot;%s&quot; do %s (%s), je zaneprázdněn a klient nepodporuje fronty."/>
 	<string id="20809" text="Odmítnuto odesílání z &quot;%s&quot; do %s (%s), všechny odpovídající fronty jsou vytížené."/>
-	<string id="20810" text="Odesílání pro hosta %s požaduje nesprávný rozsah souboru &quot;%s&quot;."/>
-	<string id="20811" text="Odesílání pro eDonkey nemůže být zrušeno. Opravdu chcete zrušit toto odesílání?"/>
+	<string id="20810" text="Odmítnuto odesílání z &quot;%s&quot; do %s (%s), Knihovna je zaneprázdněna."/>
+	<string id="20811" text="Odesílání pro hosta %s požaduje nesprávný rozsah souboru &quot;%s&quot;."/>
+	<string id="20861" text="Odesílání pro eDonkey nemůže být zrušeno. Opravdu chcete zrušit toto odesílání?"/>
 	<string id="20812" text="Nelze otevřít &quot;%s&quot; pro odeslání pro hosta %s, chyba na disku/souboru."/>
 	<string id="20813" text="Zavádím násilím spojení k %s. %s"/>
 	<string id="20814" text="Nelze se násilím připojit k hostit %s."/>
@@ -3249,14 +3250,14 @@
 	<string id="20858" text="Při čekání na žádost o odesílání od hosta čas vypršel %s."/>
 	<string id="20859" text="Pro nedostatek přenosu bylo ukonečno spojení pro odesílání %s."/>
 	<string id="20860" text="Načítám data stromu pro &quot;%s&quot; do %s."/>
-	<string id="20861" text="Odstraněné odesílání od &quot;%s&quot; do %s."/>
-	<string id="20862" text="Přidat"/>
-	<string id="20864" text="&amp;Procházet"/>
-	<string id="20865" text="&amp;Připojit"/>
-	<string id="20866" text="Soubor:"/>
-	<string id="20867" text="Adresa:"/>
-	<string id="20868" text="Port:"/>
-	<!--string id="20869" text="Nelze zobrazit URL protože Envy je přetížená."-->
+	<string id="20862" text="Odstraněné odesílání od &quot;%s&quot; do %s."/>
+	<string id="20864" text="Přidat"/>
+	<string id="20865" text="&amp;Procházet"/>
+	<string id="20866" text="&amp;Připojit"/>
+	<string id="20867" text="Soubor:"/>
+	<string id="20868" text="Adresa:"/>
+	<string id="20869" text="Port:"/>
+	<!--string id="20876" text="Nelze zobrazit URL protože Envy je přetížená."-->
 	<string id="20870" text="Nelze analyzovat URL: Envy nerozumí tomuto URL."/>
 	<string id="20871" text="Přijato URL &quot;%s&quot;"/>
 	<string id="20872" text="Typ:"/>

@@ -1,8 +1,8 @@
 //
 // LibraryHistory.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2012 and Shareaza 2002-2007
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2012
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -83,7 +83,7 @@ void CLibraryHistory::Clear()
 {
 	ASSUME_LOCK( Library.m_pSection );
 
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 		delete GetNext( pos );
 	m_pList.RemoveAll();
 }
@@ -98,7 +98,7 @@ BOOL CLibraryHistory::Check(CLibraryRecent* pRecent, int nScope) const
 	if ( nScope == 0 )
 		return ( m_pList.Find( pRecent ) != NULL );
 
-	for ( POSITION pos = m_pList.GetHeadPosition() ; pos && nScope > 0 ; )
+	for ( POSITION pos = m_pList.GetHeadPosition(); pos && nScope > 0; )
 	{
 		CLibraryRecent* pExisting = m_pList.GetNext( pos );
 		if ( pRecent == pExisting )
@@ -117,7 +117,7 @@ CLibraryRecent* CLibraryHistory::GetByPath(LPCTSTR pszPath) const
 {
 	ASSUME_LOCK( Library.m_pSection );
 
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		CLibraryRecent* pRecent = GetNext( pos );
 		if ( pRecent->m_sPath.CompareNoCase( pszPath ) == 0 )
@@ -172,7 +172,7 @@ void CLibraryHistory::Prune()
 	FILETIME tNow;
 	GetSystemTimeAsFileTime( &tNow );
 
-	for ( POSITION pos = m_pList.GetTailPosition() ; pos ; )
+	for ( POSITION pos = m_pList.GetTailPosition(); pos; )
 	{
 		POSITION posCur = pos;
 		CLibraryRecent* pRecent = m_pList.GetPrev( pos );
@@ -199,7 +199,7 @@ void CLibraryHistory::OnFileDelete(CLibraryFile* pFile)
 {
 	CSingleLock pLock( &Library.m_pSection, TRUE );
 
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		POSITION posCur = pos;
 		CLibraryRecent* pRecent = GetNext( pos );
@@ -227,7 +227,7 @@ void CLibraryHistory::Serialize(CArchive& ar, int nVersion)
 
 	if ( ar.IsStoring() )
 	{
-		for ( pos = GetIterator() ; pos ; )
+		for ( pos = GetIterator(); pos; )
 		{
 			CLibraryRecent* pRecent = GetNext( pos );
 			if ( pRecent->m_pFile != NULL ) nCount ++;
@@ -235,7 +235,7 @@ void CLibraryHistory::Serialize(CArchive& ar, int nVersion)
 
 		ar.WriteCount( nCount );
 
-		for ( pos = GetIterator() ; pos ; )
+		for ( pos = GetIterator(); pos; )
 		{
 			CLibraryRecent* pRecent = GetNext( pos );
 			if ( pRecent->m_pFile != NULL ) pRecent->Serialize( ar, nVersion );
@@ -254,7 +254,7 @@ void CLibraryHistory::Serialize(CArchive& ar, int nVersion)
 	{
 		Clear();
 
-		for ( nCount = ar.ReadCount() ; nCount > 0 ; nCount-- )
+		for ( nCount = ar.ReadCount(); nCount > 0; nCount-- )
 		{
 			//CLibraryRecent* pRecent = new CLibraryRecent();
 			CAutoPtr< CLibraryRecent > pRecent( new CLibraryRecent() );

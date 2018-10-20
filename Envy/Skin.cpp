@@ -1,8 +1,8 @@
 //
 // Skin.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2017
-// Portions copyright PeerProject 2008-2016 and Shareaza 2002-2008
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2008 and PeerProject 2008-2016
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -25,7 +25,6 @@
 #include "CoolMenu.h"
 #include "CoolInterface.h"
 #include "Colors.h"
-#include "ImageServices.h"
 #include "ImageFile.h"
 #include "Images.h"
 #include "Buffer.h"
@@ -184,40 +183,40 @@ void CSkin::Clear()
 	CString strName;
 	POSITION pos;
 
-	for ( pos = m_pMenus.GetStartPosition() ; pos ; )
+	for ( pos = m_pMenus.GetStartPosition(); pos; )
 	{
 		CMenu* pMenu;
 		m_pMenus.GetNextAssoc( pos, strName, pMenu );
 		delete pMenu;
 	}
 
-	for ( pos = m_pToolbars.GetStartPosition() ; pos ; )
+	for ( pos = m_pToolbars.GetStartPosition(); pos; )
 	{
 		CCoolBarCtrl* pBar;
 		m_pToolbars.GetNextAssoc( pos, strName, pBar );
 		delete pBar;
 	}
 
-	for ( pos = m_pDialogs.GetStartPosition() ; pos ; )
+	for ( pos = m_pDialogs.GetStartPosition(); pos; )
 	{
 		CXMLElement* pXML;
 		m_pDialogs.GetNextAssoc( pos, strName, pXML );
 		delete pXML;
 	}
 
-	for ( pos = m_pDocuments.GetStartPosition() ; pos ; )
+	for ( pos = m_pDocuments.GetStartPosition(); pos; )
 	{
 		CXMLElement* pXML;
 		m_pDocuments.GetNextAssoc( pos, strName, pXML );
 		delete pXML;
 	}
 
-	for ( pos = m_pSkins.GetHeadPosition() ; pos ; )
+	for ( pos = m_pSkins.GetHeadPosition(); pos; )
 	{
 		delete m_pSkins.GetNext( pos );
 	}
 
-	for ( pos = m_pFontPaths.GetHeadPosition() ; pos ; )
+	for ( pos = m_pFontPaths.GetHeadPosition(); pos; )
 	{
 		RemoveFontResourceEx( m_pFontPaths.GetNext( pos ), FR_PRIVATE, NULL );
 	}
@@ -270,7 +269,7 @@ BOOL CSkin::SelectCaption(CWnd* pWnd, int nIndex)
 
 BOOL CSkin::SelectCaption(CString& strCaption, int nIndex)
 {
-	for ( strCaption += L'|' ; ; nIndex-- )
+	for ( strCaption += L'|'; ; nIndex-- )
 	{
 		CString strSection = strCaption.SpanExcluding( L"|" );
 		strCaption = strCaption.Mid( strSection.GetLength() + 1 );
@@ -335,7 +334,7 @@ void CSkin::ApplyRecursive(LPCTSTR pszPath /*NULL*/)
 
 BOOL CSkin::LoadFromFile(LPCTSTR pszFile)
 {
-	TRACE( L"Loading skin file: %s\n", pszFile );
+	TRACE( "Loading skin file: %s\n", pszFile );
 
 	CXMLElement* pXML = CXMLElement::FromFile( pszFile );
 	if ( pXML == NULL ) return FALSE;
@@ -412,7 +411,7 @@ BOOL CSkin::LoadFromXML(CXMLElement* pXML, const CString& strPath)
 		Text[ L"tipmap" ]		= 'p';
 	}
 
-	for ( POSITION pos = pXML->GetElementIterator() ; pos ; )
+	for ( POSITION pos = pXML->GetElementIterator(); pos; )
 	{
 		CXMLElement* pSub = pXML->GetNextElement( pos );
 		CString strElement = pSub->GetName();
@@ -490,24 +489,24 @@ BOOL CSkin::LoadFromXML(CXMLElement* pXML, const CString& strPath)
 			if ( pSub->GetAttributeValue( L"type" ).CompareNoCase( L"skin" ) == 0 )
 			{
 				CString strSkinName = pSub->GetAttributeValue( L"name", L"" );
-				theApp.Message( MSG_NOTICE, IDS_SKIN_LOAD, strSkinName );
+				theApp.Message( MSG_NOTICE, IDS_SKIN_LOAD, (LPCTSTR)strSkinName );
 			}
 			else if ( pSub->GetAttributeValue( L"type" ).CompareNoCase( L"language" ) == 0 )
 			{
 				Settings.General.Language = pSub->GetAttributeValue( L"language", L"en" );
 				Settings.General.LanguageRTL = ( pSub->GetAttributeValue( L"dir", L"ltr" ) == L"rtl" );
 				Settings.General.LanguageDefault = Settings.General.Language.Left(2) == L"en";
-				TRACE( L"Loading language: %s\r\n", Settings.General.Language );
-				TRACE( L"RTL: %d\r\n", Settings.General.LanguageRTL );
+				TRACE( "Loading language: %s\r\n", (LPCSTR)CT2A( Settings.General.Language ) );
+				TRACE( "RTL: %d\r\n", Settings.General.LanguageRTL );
 			}
 			else
 			{
-				theApp.Message( MSG_ERROR, IDS_SKIN_ERROR, L"Unknown [type] attribute in [manifest] element", pSub->ToString() );
+				theApp.Message( MSG_ERROR, IDS_SKIN_ERROR, L"Unknown [type] attribute in [manifest] element", (LPCTSTR)pSub->ToString() );
 			}
 			break;
 
 		default:
-			theApp.Message( MSG_ERROR, IDS_SKIN_ERROR, L"Unknown element in root [skin] element", pSub->ToString() );
+			theApp.Message( MSG_ERROR, IDS_SKIN_ERROR, L"Unknown element in root [skin] element", (LPCTSTR)pSub->ToString() );
 			continue;
 		}
 
@@ -523,13 +522,13 @@ BOOL CSkin::LoadFromXML(CXMLElement* pXML, const CString& strPath)
 
 BOOL CSkin::LoadOptions(CXMLElement* pBase)
 {
-	for ( POSITION pos = pBase->GetElementIterator() ; pos ; )
+	for ( POSITION pos = pBase->GetElementIterator(); pos; )
 	{
 		CXMLElement* pXML = pBase->GetNextElement( pos );
 
 		if ( ! pXML->IsNamed( L"option" ) )
 		{
-			theApp.Message( MSG_ERROR, IDS_SKIN_ERROR, L"Unknown element in skin [Options]", pXML->ToString() );
+			theApp.Message( MSG_ERROR, IDS_SKIN_ERROR, L"Unknown element in skin [Options]", (LPCTSTR)pXML->ToString() );
 			continue;		// Failed, but keep trying
 		}
 
@@ -586,7 +585,7 @@ BOOL CSkin::LoadOptions(CXMLElement* pBase)
 		{
 		case 'n':	// "Navbar"
 			if ( ! LoadNavBar( pXML ) )
-				theApp.Message( MSG_ERROR, IDS_SKIN_ERROR, L"Skin Option [Navbar] Failed", pXML->ToString() );
+				theApp.Message( MSG_ERROR, IDS_SKIN_ERROR, L"Skin Option [Navbar] Failed", (LPCTSTR)pXML->ToString() );
 			break;
 		case 'd':	// "DropMenu" or "SubMenu"
 			if ( strValue.CompareNoCase( L"true" ) == 0 )
@@ -700,7 +699,7 @@ BOOL CSkin::LoadOptions(CXMLElement* pBase)
 				nSize = _wtoi(strValue);
 			else
 				break;
-			if ( nSize >= 16 && nSize <= 24 )
+			if ( nSize >= 16 && nSize <= 50 )
 				Settings.Skin.RowSize = nSize;
 		}
 		break;
@@ -767,7 +766,7 @@ BOOL CSkin::LoadString(CString& str, UINT nStringID) const
 
 BOOL CSkin::LoadStrings(CXMLElement* pBase)
 {
-	for ( POSITION pos = pBase->GetElementIterator() ; pos ; )
+	for ( POSITION pos = pBase->GetElementIterator(); pos; )
 	{
 		CXMLElement* pXML = pBase->GetNextElement( pos );
 
@@ -860,7 +859,7 @@ BOOL CSkin::LoadControlTip(CString& str, UINT nCtrlID)
 
 BOOL CSkin::LoadControlTips(CXMLElement* pBase)
 {
-	for ( POSITION pos = pBase->GetElementIterator() ; pos ; )
+	for ( POSITION pos = pBase->GetElementIterator(); pos; )
 	{
 		CXMLElement* pXML = pBase->GetNextElement( pos );
 
@@ -893,7 +892,7 @@ BOOL CSkin::LoadRemoteText(CString& str, const CString& strTag)
 
 BOOL CSkin::LoadRemoteInterface(CXMLElement* pBase)
 {
-	for ( POSITION pos = pBase->GetElementIterator() ; pos ; )
+	for ( POSITION pos = pBase->GetElementIterator(); pos; )
 	{
 		CXMLElement* pXML = pBase->GetNextElement( pos );
 		if ( pXML->IsNamed( L"tag" ) )
@@ -934,7 +933,7 @@ CMenu* CSkin::GetMenu(LPCTSTR pszName) const
 
 	// Legacy method:
 //	ASSERT( Settings.General.GUIMode == GUI_TABBED || Settings.General.GUIMode == GUI_BASIC || Settings.General.GUIMode == GUI_WINDOWED );
-//	for ( int nModeTry = 0 ; m_pszModeSuffix[ Settings.General.GUIMode ][ nModeTry ] ; nModeTry++ )
+//	for ( int nModeTry = 0; m_pszModeSuffix[ Settings.General.GUIMode ][ nModeTry ]; nModeTry++ )
 //	{
 //		if ( m_pMenus.Lookup( strName + m_pszModeSuffix[ Settings.General.GUIMode ][ nModeTry ], pMenu ) )
 //			break;
@@ -948,7 +947,7 @@ CMenu* CSkin::GetMenu(LPCTSTR pszName) const
 
 BOOL CSkin::LoadMenus(CXMLElement* pBase)
 {
-	for ( POSITION pos = pBase->GetElementIterator() ; pos ; )
+	for ( POSITION pos = pBase->GetElementIterator(); pos; )
 	{
 		CXMLElement* pXML = pBase->GetNextElement( pos );
 		if ( pXML->IsNamed( L"menu" ) )
@@ -1031,7 +1030,7 @@ BOOL CSkin::CreateMenu(CXMLElement* pRoot, HMENU hMenu)
 		VERIFY( SetMenuContextHelpId( hMenu, nID ) );
 	}
 
-	for ( POSITION pos = pRoot->GetElementIterator() ; pos ; )
+	for ( POSITION pos = pRoot->GetElementIterator(); pos; )
 	{
 		CXMLElement* pXML	= pRoot->GetNextElement( pos );
 		CString strText		= pXML->GetAttributeValue( L"text" );
@@ -1115,7 +1114,7 @@ BOOL CSkin::CreateToolBar(LPCTSTR pszName, CCoolBarCtrl* pBar)
 
 	if ( pBar->m_hWnd )
 	{
-		for ( CWnd* pChild = pBar->GetWindow( GW_CHILD ) ; pChild ; pChild = pChild->GetNextWindow() )
+		for ( CWnd* pChild = pBar->GetWindow( GW_CHILD ); pChild; pChild = pChild->GetNextWindow() )
 		{
 			pChild->ShowWindow( SW_HIDE );
 		}
@@ -1151,7 +1150,7 @@ BOOL CSkin::CreateToolBar(LPCTSTR pszName, CCoolBarCtrl* pBar)
 
 	// Legacy method:
 //	LPCTSTR* pszModeSuffix = m_pszModeSuffix[ Settings.General.GUIMode ];
-//	for ( int nModeTry = 0 ; nModeTry < 3 && m_pszModeSuffix[ Settings.General.GUIMode ][ nModeTry ] ; nModeTry++ )
+//	for ( int nModeTry = 0; nModeTry < 3 && m_pszModeSuffix[ Settings.General.GUIMode ][ nModeTry ]; nModeTry++ )
 //	{
 //		CString strName( strClassName + pszModeSuffix[ nModeTry ] );
 //		if ( m_pToolbars.Lookup( strName, pBase ) )
@@ -1196,7 +1195,7 @@ CCoolBarCtrl* CSkin::GetToolBar(LPCTSTR pszName) const
 
 	// Legacy method:
 	//LPCTSTR* pszModeSuffix = m_pszModeSuffix[ Settings.General.GUIMode ];
-	//for ( int nModeTry = 0 ; m_pszModeSuffix[ Settings.General.GUIMode ][ nModeTry ] ; nModeTry++ )
+	//for ( int nModeTry = 0; m_pszModeSuffix[ Settings.General.GUIMode ][ nModeTry ]; nModeTry++ )
 	//{
 	//	if ( m_pToolbars.Lookup( strName + m_pszModeSuffix[ Settings.General.GUIMode ][ nModeTry ], pBar ) )
 	//		return pBar;
@@ -1207,7 +1206,7 @@ CCoolBarCtrl* CSkin::GetToolBar(LPCTSTR pszName) const
 
 BOOL CSkin::LoadToolbars(CXMLElement* pBase)
 {
-	for ( POSITION pos = pBase->GetElementIterator() ; pos ; )
+	for ( POSITION pos = pBase->GetElementIterator(); pos; )
 	{
 		CXMLElement* pXML = pBase->GetNextElement( pos );
 
@@ -1242,7 +1241,7 @@ BOOL CSkin::CreateToolBar(CXMLElement* pBase)
 {
 	CCoolBarCtrl* pBar = new CCoolBarCtrl();
 
-	for ( POSITION pos = pBase->GetElementIterator() ; pos ; )
+	for ( POSITION pos = pBase->GetElementIterator(); pos; )
 	{
 		CXMLElement* pXML = pBase->GetNextElement( pos );
 
@@ -1344,7 +1343,7 @@ BOOL CSkin::CreateToolBar(CXMLElement* pBase)
 
 BOOL CSkin::LoadDocuments(CXMLElement* pBase)
 {
-	for ( POSITION posDoc = pBase->GetElementIterator() ; posDoc ; )
+	for ( POSITION posDoc = pBase->GetElementIterator(); posDoc; )
 	{
 		CXMLElement* pDoc = pBase->GetNextElement( posDoc );
 
@@ -1382,6 +1381,9 @@ CXMLElement* CSkin::GetDocument(LPCTSTR pszName)
 
 HBITMAP CSkin::GetWatermark(LPCTSTR pszName)
 {
+	if ( ! pszName || ! *pszName )
+		return NULL;
+
 	//CQuickLock oLock( m_pSection );
 
 	CString strPath;
@@ -1421,7 +1423,7 @@ BOOL CSkin::GetWatermark(CBitmap* pBitmap, LPCTSTR pszName)
 
 BOOL CSkin::LoadWatermarks(CXMLElement* pSub, const CString& strPath)
 {
-	for ( POSITION posMark = pSub->GetElementIterator() ; posMark ; )
+	for ( POSITION posMark = pSub->GetElementIterator(); posMark; )
 	{
 		CXMLElement* pMark = pSub->GetNextElement( posMark );
 
@@ -1564,7 +1566,7 @@ BOOL CSkin::Translate(LPCTSTR pszName, CHeaderCtrl* pCtrl)
 	pColumn.pszText		= szColumn;
 	pColumn.cchTextMax	= 126;
 
-	for ( int nItem = 0 ; nItem < pCtrl->GetItemCount() ; nItem++ )
+	for ( int nItem = 0; nItem < pCtrl->GetItemCount(); nItem++ )
 	{
 		*szColumn = L'\0';
 		pCtrl->GetItem( nItem, &pColumn );
@@ -1610,7 +1612,7 @@ CString CSkin::GetHeaderTranslation(LPCTSTR pszClassName, LPCTSTR pszHeaderName)
 
 BOOL CSkin::LoadListColumns(CXMLElement* pBase)
 {
-	for ( POSITION pos = pBase->GetElementIterator() ; pos ; )
+	for ( POSITION pos = pBase->GetElementIterator(); pos; )
 	{
 		CXMLElement* pXML = pBase->GetNextElement( pos );
 
@@ -1620,7 +1622,7 @@ BOOL CSkin::LoadListColumns(CXMLElement* pBase)
 			if ( strName.IsEmpty() ) continue;
 
 			CString strEdit;
-			for ( POSITION posCol = pXML->GetElementIterator() ; posCol ; )
+			for ( POSITION posCol = pXML->GetElementIterator(); posCol; )
 			{
 				CXMLElement* pCol = pXML->GetNextElement( posCol );
 				if ( pCol->IsNamed( L"column" ) )
@@ -1693,7 +1695,7 @@ BOOL CSkin::Apply(LPCTSTR pszName, CDialog* pDialog, UINT nIconID, CToolTipCtrl*
 
 	CWnd* pWnd = pDialog->GetWindow( GW_CHILD );
 
-	for ( POSITION pos = pBase->GetElementIterator() ; pos && pWnd ; )
+	for ( POSITION pos = pBase->GetElementIterator(); pos && pWnd; )
 	{
 		CXMLElement* pXML = pBase->GetNextElement( pos );
 
@@ -1747,7 +1749,7 @@ BOOL CSkin::Apply(LPCTSTR pszName, CDialog* pDialog, UINT nIconID, CToolTipCtrl*
 					{
 						int nCurSel = pCombo->GetCurSel();
 						pCombo->ResetContent();
-						for ( int i = 0 ; i < nNum ; ++i )
+						for ( int i = 0; i < nNum; ++i )
 						{
 							pCombo->AddString( pItems.GetAt( i ) );
 						}
@@ -1803,7 +1805,7 @@ BOOL CSkin::Dialogscan(CDialog* pDialog, CString sName /*=""*/)
 
 	pFile.WriteString( L"\">\r\n" );
 
-	for ( CWnd* pWnd = pDialog->GetWindow( GW_CHILD ) ; pWnd ; pWnd = pWnd->GetNextWindow() )
+	for ( CWnd* pWnd = pDialog->GetWindow( GW_CHILD ); pWnd; pWnd = pWnd->GetNextWindow() )
 	{
 		TCHAR szClass[64];
 		GetClassName( pWnd->GetSafeHwnd(), szClass, 64 );
@@ -1825,7 +1827,7 @@ BOOL CSkin::Dialogscan(CDialog* pDialog, CString sName /*=""*/)
 		else if ( _tcsistr( szClass, L"ListBox" ) )
 		{
 			CListBox* pListBox = static_cast< CListBox* >( pWnd );
-			for ( int i = 0 ; i < pListBox->GetCount() ; ++i )
+			for ( int i = 0; i < pListBox->GetCount(); ++i )
 			{
 				CString strTemp;
 				pListBox->GetText( i, strTemp );
@@ -1837,7 +1839,7 @@ BOOL CSkin::Dialogscan(CDialog* pDialog, CString sName /*=""*/)
 		else if ( _tcsistr( szClass, L"ComboBox" ) )
 		{
 			CComboBox* pComboBox = static_cast< CComboBox* >( pWnd );
-			for ( int i = 0 ; i < pComboBox->GetCount() ; ++i )
+			for ( int i = 0; i < pComboBox->GetCount(); ++i )
 			{
 				CString strTemp;
 				pComboBox->GetLBText( i, strTemp );
@@ -1882,7 +1884,7 @@ CString CSkin::GetDialogCookie(CDialog* pDialog, CToolTipCtrl* pWndTooltips /*=N
 {
 	CString strCookie, strTip;
 
-	for ( CWnd* pWnd = pDialog->GetWindow( GW_CHILD ) ; pWnd ; pWnd = pWnd->GetNextWindow() )
+	for ( CWnd* pWnd = pDialog->GetWindow( GW_CHILD ); pWnd; pWnd = pWnd->GetNextWindow() )
 	{
 		pWnd->SetFont( &CoolInterface.m_fntNormal );
 
@@ -1930,7 +1932,7 @@ CString CSkin::GetDialogCaption(LPCTSTR pszName)
 
 BOOL CSkin::LoadDialogs(CXMLElement* pBase)
 {
-	for ( POSITION pos = pBase->GetElementIterator() ; pos ; )
+	for ( POSITION pos = pBase->GetElementIterator(); pos; )
 	{
 		CXMLElement* pXML = pBase->GetNextElement( pos );
 
@@ -1964,7 +1966,7 @@ CSkinWindow* CSkin::GetWindowSkin(LPCTSTR pszWindow, LPCTSTR pszAppend)
 	CString strWindow;
 	strWindow.Format( L"|%s%s|", pszWindow, pszAppend ? pszAppend : L"" );
 
-	for ( POSITION pos = m_pSkins.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pSkins.GetHeadPosition(); pos; )
 	{
 		CSkinWindow* pSkin = m_pSkins.GetNext( pos );
 		if ( pSkin->m_sTargets.Find( strWindow ) >= 0 )
@@ -1987,9 +1989,9 @@ CSkinWindow* CSkin::GetWindowSkin(CWnd* pWnd)
 	}
 
 #ifdef _AFXDLL	// ToDo: Clean this up?
-	for ( CRuntimeClass* pClass = pWnd->GetRuntimeClass() ; pClass && pClass->m_pfnGetBaseClass ; pClass = pClass->m_pfnGetBaseClass() )
+	for ( CRuntimeClass* pClass = pWnd->GetRuntimeClass(); pClass && pClass->m_pfnGetBaseClass; pClass = pClass->m_pfnGetBaseClass() )
 #else
-	for ( CRuntimeClass* pClass = pWnd->GetRuntimeClass() ; pClass ; pClass = pClass->m_pBaseClass )
+	for ( CRuntimeClass* pClass = pWnd->GetRuntimeClass(); pClass; pClass = pClass->m_pBaseClass )
 #endif
 	{
 		CString strClassName( pClass->m_lpszClassName );
@@ -2010,7 +2012,7 @@ CSkinWindow* CSkin::GetWindowSkin(CWnd* pWnd)
 
 		// Legacy method:
 	//	LPCTSTR* pszModeSuffix = m_pszModeSuffix[ Settings.General.GUIMode ];
-	//	for ( int nSuffix = 0 ; nSuffix < 3 && pszModeSuffix[ nSuffix ] != NULL ; nSuffix++ )
+	//	for ( int nSuffix = 0; nSuffix < 3 && pszModeSuffix[ nSuffix ] != NULL; nSuffix++ )
 	//	{
 	//		if ( pszModeSuffix[ nSuffix ][0] != 0 || ! bPanel )
 	//		{
@@ -2025,7 +2027,7 @@ CSkinWindow* CSkin::GetWindowSkin(CWnd* pWnd)
 
 BOOL CSkin::LoadWindowSkins(CXMLElement* pSub, const CString& strPath)
 {
-	for ( POSITION posSkin = pSub->GetElementIterator() ; posSkin ; )
+	for ( POSITION posSkin = pSub->GetElementIterator(); posSkin; )
 	{
 		CXMLElement* pSkinElement = pSub->GetNextElement( posSkin );
 
@@ -2102,6 +2104,7 @@ BOOL CSkin::LoadColorScheme(CXMLElement* pBase)
 	pColors.SetAt( L"banner.text", &Colors.m_crBannerText );
 	pColors.SetAt( L"schema.row1", &Colors.m_crSchemaRow[0] );
 	pColors.SetAt( L"schema.row2", &Colors.m_crSchemaRow[1] );
+	pColors.SetAt( L"statusbar.back", &Colors.m_crStatusBar );
 
 //	Active window color is controlled by media player plugin, thus we can not skin it?
 	pColors.SetAt( L"media.window", &Colors.m_crMediaWindowBack );
@@ -2251,28 +2254,6 @@ BOOL CSkin::LoadColorScheme(CXMLElement* pBase)
 	pColors.SetAt( L"system.security.allow", &Colors.m_crSecurityAllow );
 	pColors.SetAt( L"system.security.deny", &Colors.m_crSecurityDeny );
 
-	pColors.SetAt( L"dropdownbox.back", &Colors.m_crDropdownBox );
-	pColors.SetAt( L"dropdownbox.text", &Colors.m_crDropdownText );
-	pColors.SetAt( L"resizebar.edge", &Colors.m_crResizebarEdge );
-	pColors.SetAt( L"resizebar.face", &Colors.m_crResizebarFace );
-	pColors.SetAt( L"resizebar.shadow", &Colors.m_crResizebarShadow );
-	pColors.SetAt( L"resizebar.highlight", &Colors.m_crResizebarHighlight );
-	pColors.SetAt( L"fragmentbar.shaded", &Colors.m_crFragmentShaded );
-	pColors.SetAt( L"fragmentbar.complete", &Colors.m_crFragmentComplete );
-	pColors.SetAt( L"fragmentbar.source1", &Colors.m_crFragmentSource1 );
-	pColors.SetAt( L"fragmentbar.source2", &Colors.m_crFragmentSource2 );
-	pColors.SetAt( L"fragmentbar.source3", &Colors.m_crFragmentSource3 );
-	pColors.SetAt( L"fragmentbar.source4", &Colors.m_crFragmentSource4 );
-	pColors.SetAt( L"fragmentbar.source5", &Colors.m_crFragmentSource5 );
-	pColors.SetAt( L"fragmentbar.source6", &Colors.m_crFragmentSource6 );
-	pColors.SetAt( L"fragmentbar.source7", &Colors.m_crFragmentSource7 );
-	pColors.SetAt( L"fragmentbar.source8", &Colors.m_crFragmentSource8 );
-	pColors.SetAt( L"fragmentbar.pass", &Colors.m_crFragmentPass );
-	pColors.SetAt( L"fragmentbar.fail", &Colors.m_crFragmentFail );
-	pColors.SetAt( L"fragmentbar.request", &Colors.m_crFragmentRequest );
-	pColors.SetAt( L"fragmentbar.border", &Colors.m_crFragmentBorder );
-	pColors.SetAt( L"fragmentbar.border.selected", &Colors.m_crFragmentBorderSelected );
-
 	pColors.SetAt( L"system.environment.borders", &Colors.m_crSysDisabled );
 	pColors.SetAt( L"system.environment.disabled", &Colors.m_crSysDisabled );
 	pColors.SetAt( L"system.environment.window", &Colors.m_crSysWindow );
@@ -2298,11 +2279,34 @@ BOOL CSkin::LoadColorScheme(CXMLElement* pBase)
 	pColors.SetAt( L"navbar.outline.hover", &Colors.m_crNavBarOutlineHover );
 	pColors.SetAt( L"navbar.outline.checked", &Colors.m_crNavBarOutlineChecked );
 
+	pColors.SetAt(L"dropdownbox.back", &Colors.m_crDropdownBox);
+	pColors.SetAt(L"dropdownbox.text", &Colors.m_crDropdownText);
+	pColors.SetAt(L"resizebar.edge", &Colors.m_crResizebarEdge);
+	pColors.SetAt(L"resizebar.face", &Colors.m_crResizebarFace);
+	pColors.SetAt(L"resizebar.shadow", &Colors.m_crResizebarShadow);
+	pColors.SetAt(L"resizebar.highlight", &Colors.m_crResizebarHighlight);
+
+	pColors.SetAt(L"fragmentbar.shaded", &Colors.m_crFragmentShaded);
+	pColors.SetAt(L"fragmentbar.complete", &Colors.m_crFragmentComplete);
+	pColors.SetAt(L"fragmentbar.source1", &Colors.m_crFragmentSource1);
+	pColors.SetAt(L"fragmentbar.source2", &Colors.m_crFragmentSource2);
+	pColors.SetAt(L"fragmentbar.source3", &Colors.m_crFragmentSource3);
+	pColors.SetAt(L"fragmentbar.source4", &Colors.m_crFragmentSource4);
+	pColors.SetAt(L"fragmentbar.source5", &Colors.m_crFragmentSource5);
+	pColors.SetAt(L"fragmentbar.source6", &Colors.m_crFragmentSource6);
+	pColors.SetAt(L"fragmentbar.source7", &Colors.m_crFragmentSource7);
+	pColors.SetAt(L"fragmentbar.source8", &Colors.m_crFragmentSource8);
+	pColors.SetAt(L"fragmentbar.pass", &Colors.m_crFragmentPass);
+	pColors.SetAt(L"fragmentbar.fail", &Colors.m_crFragmentFail);
+	pColors.SetAt(L"fragmentbar.request", &Colors.m_crFragmentRequest);
+	pColors.SetAt(L"fragmentbar.border", &Colors.m_crFragmentBorder);
+	pColors.SetAt(L"fragmentbar.border.selected", &Colors.m_crFragmentBorderSelected);
+
 	// "system.base.xxx" colors trigger recalculating (ToDo: Needs review)
 	BOOL bSystem  = FALSE;
 	BOOL bNonBase = FALSE;
 
-	for ( POSITION pos = pBase->GetElementIterator() ; pos ; )
+	for ( POSITION pos = pBase->GetElementIterator(); pos; )
 	{
 		CXMLElement* pXML = pBase->GetNextElement( pos );
 		if ( pXML->IsNamed( L"color" ) ||
@@ -2365,7 +2369,7 @@ UINT CSkin::LookupCommandID(CXMLElement* pXML, LPCTSTR pszName) const
 
 BOOL CSkin::LoadResourceMap(CXMLElement* pBase)
 {
-	for ( POSITION pos = pBase->GetElementIterator() ; pos ; )
+	for ( POSITION pos = pBase->GetElementIterator(); pos; )
 	{
 		CXMLElement* pXML = pBase->GetNextElement( pos );
 
@@ -2397,7 +2401,7 @@ BOOL CSkin::LoadFonts(CXMLElement* pBase, const CString& strPath)
 {
 	bool bRichDefault = false, bRichHeading = false;
 
-	for ( POSITION pos = pBase->GetElementIterator() ; pos ; )
+	for ( POSITION pos = pBase->GetElementIterator(); pos; )
 	{
 		CXMLElement* pXML = pBase->GetNextElement( pos );
 
@@ -2613,13 +2617,13 @@ CString	CSkin::GetImagePath(UINT nImageID) const
 
 	CString strPath;
 	if ( ! m_pImages.Lookup( nImageID, strPath ) )
-		strPath.Format( L"\"%s\",-%u", theApp.m_strBinaryPath, nImageID );
+		strPath.Format( L"\"%s\",-%u", (LPCTSTR)theApp.m_strBinaryPath, nImageID );
 	return strPath;
 }
 
 BOOL CSkin::LoadCommandImages(CXMLElement* pBase, const CString& strPath)
 {
-	for ( POSITION pos = pBase->GetElementIterator() ; pos ; )
+	for ( POSITION pos = pBase->GetElementIterator(); pos; )
 	{
 		CXMLElement* pXML = pBase->GetNextElement( pos );
 
@@ -2682,6 +2686,9 @@ BOOL CSkin::LoadCommandIcon(CXMLElement* pXML, const CString& strPath)
 		case 16:
 			nType = LVSIL_SMALL;
 			break;
+		case 24:
+			nType = LVSIL_MID;
+			break;
 		case 32:
 			nType = LVSIL_NORMAL;
 			break;
@@ -2730,9 +2737,9 @@ BOOL CSkin::LoadCommandBitmap(CXMLElement* pBase, const CString& strPath)
 	// If nID is 0 then we don't want to include it in strFile because
 	// strFile must be a file system path rather than a resource path.
 	if ( nID )
-		strFile.Format( L"%s%lu%s", strPath, nID, pBase->GetAttributeValue( L"path" ) );
+		strFile.Format( L"%s%lu%s", (LPCTSTR)strPath, nID, (LPCTSTR)pBase->GetAttributeValue( L"path" ) );
 	else
-		strFile.Format( L"%s%s", strPath, pBase->GetAttributeValue( L"path" ) );
+		strFile.Format( L"%s%s", (LPCTSTR)strPath, (LPCTSTR)pBase->GetAttributeValue( L"path" ) );
 
 	COLORREF crMask = NULL;
 	CString strMask = pBase->GetAttributeValue( L"mask", L"00FF00" );
@@ -2859,7 +2866,7 @@ int CSkin::GetTextFlowChange(LPCTSTR pszText, BOOL* bIsRTL)
 	LPCTSTR pszScan = pszText;
 
 	int nPos;
-	for ( nPos = 0 ; ; pszScan++, nPos++ )
+	for ( nPos = 0; ; pszScan++, nPos++ )
 	{
 		// Get the first word with punctuation marks and whitespaces
 		if ( (unsigned short)*pszScan > 32 && (unsigned short)*pszScan != 160 ) continue;
@@ -2876,7 +2883,7 @@ int CSkin::GetTextFlowChange(LPCTSTR pszText, BOOL* bIsRTL)
 			GetStringTypeEx( LOCALE_NEUTRAL, CT_CTYPE2, pszTestWord, nLen + 1, (LPWORD)nCharType );
 			delete [] pszTestWord;
 
-			for ( int i = 0 ; i < nLen ; i++ )
+			for ( int i = 0; i < nLen; i++ )
 			{
 				if ( nCharType[ i ] == C2_LEFTTORIGHT )
 				{
@@ -2977,7 +2984,7 @@ void CSkin::DrawWrappedText(CDC* pDC, CRect* pBox, LPCTSTR pszText, CPoint ptSta
 			pDC->SetTextAlign( nAlignOptionsOld ^ TA_RTLREADING );
 		pszScan += nLenFull - 1;
 		pszWord += nLenFull;
-		for ( int nEnd = nLenFull - 1 ; nEnd >= 0 ; nEnd-- )
+		for ( int nEnd = nLenFull - 1; nEnd >= 0; nEnd-- )
 		{
 			if ( nEnd ) pszScan--;
 			if ( nEnd && (unsigned short)*pszScan > 32 && (unsigned short)*pszScan != 160 ) continue;

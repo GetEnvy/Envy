@@ -1,8 +1,8 @@
 //
 // WndDownloads.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2016 and Shareaza 2002-2007
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2016
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -342,7 +342,7 @@ void CDownloadsWnd::OnTimer(UINT_PTR nIDEvent)
 		CSingleLock pLock( &Transfers.m_pSection );
 		if ( pLock.Lock( 100 ) )
 		{
-			for ( POSITION pos = Downloads.GetIterator() ; pos ; )
+			for ( POSITION pos = Downloads.GetIterator(); pos; )
 			{
 				CDownload* pDownload = Downloads.GetNext( pos );
 				if ( ! pDownload->GotPreview() || ! pDownload->m_bWaitingPreview )
@@ -381,7 +381,7 @@ void CDownloadsWnd::OnTimer(UINT_PTR nIDEvent)
 		if ( ! pLock.Lock( 100 ) ) return;
 
 		// Purge old failed sources ( X-NAlt mesh )
-		for ( POSITION pos = Downloads.GetIterator() ; pos ; )
+		for ( POSITION pos = Downloads.GetIterator(); pos; )
 		{
 			CDownload* pDownload = Downloads.GetNext( pos );
 			pDownload->ExpireFailedSources();
@@ -391,7 +391,7 @@ void CDownloadsWnd::OnTimer(UINT_PTR nIDEvent)
 		if ( Settings.Downloads.AutoClear || Settings.BitTorrent.AutoClear )
 		{
 			// Loop through all downloads
-			for ( POSITION pos = Downloads.GetIterator() ; pos ; )
+			for ( POSITION pos = Downloads.GetIterator(); pos; )
 			{
 				CDownload* pDownload = Downloads.GetNext( pos );
 
@@ -575,7 +575,7 @@ void CDownloadsWnd::Select(CDownload* pSelect)
 	}
 
 	// Find file for Download Monitor "Show" or right-click
-	for ( POSITION pos = Downloads.GetIterator() ; pos ; )
+	for ( POSITION pos = Downloads.GetIterator(); pos; )
 	{
 		CDownload* pDownload = Downloads.GetNext( pos );
 
@@ -596,7 +596,7 @@ void CDownloadsWnd::Select(CDownload* pSelect)
 
 		if ( pDownload->m_bExpanded )
 		{
-			for ( POSITION posSource = pDownload->GetIterator() ; posSource ; )
+			for ( POSITION posSource = pDownload->GetIterator(); posSource; )
 			{
 				CDownloadSource* pSource = pDownload->GetNext( posSource );
 				pSource->m_bSelected = FALSE;
@@ -639,7 +639,7 @@ void CDownloadsWnd::Prepare()
 	BOOL bFirstShare = TRUE;
 	BOOL bPreviewDone = FALSE;
 
-	for ( POSITION pos = Downloads.GetIterator() ; pos ; )
+	for ( POSITION pos = Downloads.GetIterator(); pos; )
 	{
 		CDownload* pDownload = Downloads.GetNext( pos );
 
@@ -704,7 +704,7 @@ void CDownloadsWnd::Prepare()
 
 		pDownload->m_bRemotePreviewCapable = FALSE;
 
-		for ( POSITION posSource = pDownload->GetIterator() ; posSource ; )
+		for ( POSITION posSource = pDownload->GetIterator(); posSource; )
 		{
 			CDownloadSource* pSource = pDownload->GetNext( posSource );
 
@@ -774,7 +774,7 @@ void CDownloadsWnd::OnDownloadsResume()
 	CSingleLock pLock( &Transfers.m_pSection );
 	if ( ! SafeLock( pLock ) ) return;
 
-	for ( POSITION pos = Downloads.GetIterator() ; pos ; )
+	for ( POSITION pos = Downloads.GetIterator(); pos; )
 	{
 		CDownload* pDownload = Downloads.GetNext( pos );
 
@@ -799,7 +799,7 @@ void CDownloadsWnd::OnDownloadsPause()
 	CSingleLock pLock( &Transfers.m_pSection );
 	if ( ! SafeLock( pLock ) ) return;
 
-	for ( POSITION pos = Downloads.GetIterator() ; pos ; )
+	for ( POSITION pos = Downloads.GetIterator(); pos; )
 	{
 		if ( CDownload* pDownload = Downloads.GetNext( pos ) )
 		{
@@ -1006,7 +1006,7 @@ void CDownloadsWnd::OnDownloadsViewReviews()
 	CSingleLock pLock( &Transfers.m_pSection );
 	if ( ! SafeLock( pLock ) ) return;
 
-	for ( POSITION pos = Downloads.GetIterator() ; pos ; )
+	for ( POSITION pos = Downloads.GetIterator(); pos; )
 	{
 		CDownload* pDownload = Downloads.GetNext( pos );
 		if ( pDownload->m_bSelected && ( pDownload->GetReviewCount() >= 0 ) )
@@ -1033,7 +1033,7 @@ void CDownloadsWnd::OnUpdateDownloadsRemotePreview(CCmdUI* pCmdUI)
 	int nSelected = 0;
 	CDownload* pDownload = NULL;
 
-	for ( POSITION pos = Downloads.GetIterator() ; pos && nSelected < 3 ; )
+	for ( POSITION pos = Downloads.GetIterator(); pos && nSelected < 3; )
 	{
 		pDownload = Downloads.GetNext( pos );
 		if ( pDownload->m_bSelected )
@@ -1053,7 +1053,7 @@ void CDownloadsWnd::OnDownloadsRemotePreview()
 	CSingleLock pLock( &Transfers.m_pSection );
 	if ( ! SafeLock( pLock ) ) return;
 
-	for ( POSITION pos = Downloads.GetIterator() ; pos ; )
+	for ( POSITION pos = Downloads.GetIterator(); pos; )
 	{
 		CDownload* pDownload = Downloads.GetNext( pos );
 
@@ -1073,7 +1073,7 @@ void CDownloadsWnd::OnDownloadsRemotePreview()
 			break;
 
 		// Find first client which supports previews
-		for ( POSITION posSource = pDownload->GetIterator() ; posSource ; )
+		for ( POSITION posSource = pDownload->GetIterator(); posSource; )
 		{
 			CDownloadSource* pSource = pDownload->GetNext( posSource );
 
@@ -1229,7 +1229,7 @@ void CDownloadsWnd::OnDownloadsSources()
 	CSingleLock pLock( &Transfers.m_pSection );
 	if ( ! SafeLock( pLock ) ) return;
 
-	for ( POSITION pos = Downloads.GetIterator() ; pos ; )
+	for ( POSITION pos = Downloads.GetIterator(); pos; )
 	{
 		CDownload* pDownload = Downloads.GetNext( pos );
 
@@ -1293,7 +1293,7 @@ void CDownloadsWnd::OnDownloadsAddSource()
 
 			if ( ! Downloads.Check( pDownload ) || pDownload->IsMoving() ) continue;
 
-			for ( POSITION pos = dlg.m_pURLs.GetHeadPosition() ; pos ; )
+			for ( POSITION pos = dlg.m_pURLs.GetHeadPosition(); pos; )
 			{
 				pDownload->AddSourceHit( (CEnvyURL)dlg.m_pURLs.GetNext( pos ) );
 			}
@@ -1317,7 +1317,7 @@ void CDownloadsWnd::OnDownloadsMergeLocal()
 	CSingleLock pLock( &Transfers.m_pSection );
 	if ( ! SafeLock( pLock ) ) return;
 
-	for ( POSITION pos = Downloads.GetIterator() ; pos ; )
+	for ( POSITION pos = Downloads.GetIterator(); pos; )
 	{
 		pDownload = Downloads.GetNext( pos );
 		if ( pDownload->m_bSelected )
@@ -1350,8 +1350,7 @@ void CDownloadsWnd::OnDownloadsMergeLocal()
 			OFN_HIDEREADONLY | OFN_FILEMUSTEXIST | OFN_PATHMUSTEXIST | OFN_NOCHANGEDIR |
 			OFN_ALLOWMULTISELECT, NULL, this );
 
-		CAutoPtr< TCHAR > szFiles( new TCHAR[ 2048 ] );
-		*szFiles = 0;
+		CAutoPtr< TCHAR > szFiles( new TCHAR[ 2048 ]{} );
 		dlgSelectFile.GetOFN().lpstrFile = szFiles;
 		dlgSelectFile.GetOFN().nMaxFile = 2048;
 
@@ -1370,7 +1369,7 @@ void CDownloadsWnd::OnDownloadsMergeLocal()
 
 		CList< CString > oFiles;
 		CString strFolder = (LPCTSTR)szFiles;
-		for ( LPCTSTR szFile = szFiles ; *szFile ; )
+		for ( LPCTSTR szFile = szFiles; *szFile; )
 		{
 			szFile += _tcslen( szFile ) + 1;
 			if ( *szFile )	// Folder + files
@@ -1426,7 +1425,7 @@ void CDownloadsWnd::OnDownloadsBoost()
 	CSingleLock pLock( &Transfers.m_pSection );
 	if ( ! SafeLock( pLock ) ) return;
 
-	for ( POSITION pos = Downloads.GetIterator() ; pos ; )
+	for ( POSITION pos = Downloads.GetIterator(); pos; )
 	{
 		if ( CDownload* pDownload = Downloads.GetNext( pos ) )
 		{
@@ -1456,7 +1455,7 @@ void CDownloadsWnd::OnDownloadsURI()
 	CSingleLock pLock( &Transfers.m_pSection, FALSE );
 	if ( ! SafeLock( pLock ) ) return;
 
-	for ( POSITION pos = Downloads.GetIterator() ; pos ; )
+	for ( POSITION pos = Downloads.GetIterator(); pos; )
 	{
 		CDownload* pDownload = Downloads.GetNext( pos );
 
@@ -1467,7 +1466,7 @@ void CDownloadsWnd::OnDownloadsURI()
 			pList.AddTail( *pDownload );
 		}
 
-		for ( POSITION posSource = pDownload->GetIterator() ; posSource ; )
+		for ( POSITION posSource = pDownload->GetIterator(); posSource; )
 		{
 			const CDownloadSource* pSource = pDownload->GetNext( posSource );
 
@@ -1494,7 +1493,7 @@ void CDownloadsWnd::OnDownloadsURI()
 	else //if ( pList.GetCount() > 0 )
 	{
 		CURLExportDlg dlg;
-		for ( POSITION pos = pList.GetHeadPosition() ; pos ; )
+		for ( POSITION pos = pList.GetHeadPosition(); pos; )
 		{
 			dlg.Add( &pList.GetNext( pos ) );
 		}
@@ -1514,7 +1513,7 @@ void CDownloadsWnd::OnDownloadsShare()
 	CSingleLock pLock( &Transfers.m_pSection );
 	if ( ! SafeLock( pLock ) ) return;
 
-	for ( POSITION pos = Downloads.GetIterator() ; pos ; )
+	for ( POSITION pos = Downloads.GetIterator(); pos; )
 	{
 		CDownload* pDownload = Downloads.GetNext( pos );
 
@@ -1563,7 +1562,7 @@ void CDownloadsWnd::OnDownloadsEdit()
 	CSingleLock pLock( &Transfers.m_pSection );
 	if ( ! SafeLock( pLock ) ) return;
 
-	for ( POSITION pos = Downloads.GetIterator() ; pos ; )
+	for ( POSITION pos = Downloads.GetIterator(); pos; )
 	{
 		CDownload* pDownload = Downloads.GetNext( pos );
 
@@ -1584,7 +1583,7 @@ void CDownloadsWnd::OnDownloadsEdit()
 		{
 			CFilePropertiesSheet dlg;
 
-			for ( DWORD i = 0 ; i < pDownload->GetFileCount() ; i++ )
+			for ( DWORD i = 0; i < pDownload->GetFileCount(); i++ )
 			{
 				CString strPath	= pDownload->GetPath( i );
 				CQuickLock oLibraryLock( Library.m_pSection );
@@ -1642,14 +1641,14 @@ void CDownloadsWnd::OnTransfersConnect()
 	CSingleLock pLock( &Transfers.m_pSection );
 	if ( ! SafeLock( pLock ) ) return;
 
-	for ( POSITION pos = Downloads.GetIterator() ; pos ; )
+	for ( POSITION pos = Downloads.GetIterator(); pos; )
 	{
 		CDownload* pDownload = Downloads.GetNext( pos );
 
 		if ( pDownload->IsMoving() )	// || pDownload->IsCompleted()
 			continue;
 
-		for ( POSITION posSource = pDownload->GetIterator() ; posSource ; )
+		for ( POSITION posSource = pDownload->GetIterator(); posSource; )
 		{
 			CDownloadSource* pSource = pDownload->GetNext( posSource );
 
@@ -1661,7 +1660,7 @@ void CDownloadsWnd::OnTransfersConnect()
 		}
 	}
 
-	for ( POSITION posSource = pSelectedSources.GetHeadPosition() ; posSource ; )
+	for ( POSITION posSource = pSelectedSources.GetHeadPosition(); posSource; )
 	{
 		CDownloadSource* pSource = pSelectedSources.GetNext( posSource );
 		pSource->m_pDownload->Resume();
@@ -1694,11 +1693,11 @@ void CDownloadsWnd::OnTransfersDisconnect()
 	CSingleLock pLock( &Transfers.m_pSection );
 	if ( ! pLock.Lock( 5000 ) && ! SafeLock( pLock ) ) return;
 
-	for ( POSITION pos = Downloads.GetIterator() ; pos ; )
+	for ( POSITION pos = Downloads.GetIterator(); pos; )
 	{
 		CDownload* pDownload = Downloads.GetNext( pos );
 
-		for ( POSITION posSource = pDownload->GetIterator() ; posSource ; )
+		for ( POSITION posSource = pDownload->GetIterator(); posSource; )
 		{
 			CDownloadSource* pSource = pDownload->GetNext( posSource );
 
@@ -1707,7 +1706,7 @@ void CDownloadsWnd::OnTransfersDisconnect()
 		}
 	}
 
-	for ( POSITION posSource = pSelectedSources.GetHeadPosition() ; posSource ; )
+	for ( POSITION posSource = pSelectedSources.GetHeadPosition(); posSource; )
 	{
 		CDownloadSource* pSource = pSelectedSources.GetNext( posSource );
 		pSource->Close();
@@ -1730,11 +1729,11 @@ void CDownloadsWnd::OnTransfersForget()
 	CSingleLock pLock( &Transfers.m_pSection );
 	if ( ! SafeLock( pLock ) ) return;
 
-	for ( POSITION pos = Downloads.GetIterator() ; pos ; )
+	for ( POSITION pos = Downloads.GetIterator(); pos; )
 	{
 		CDownload* pDownload = Downloads.GetNext( pos );
 
-		for ( POSITION posSource = pDownload->GetIterator() ; posSource ; )
+		for ( POSITION posSource = pDownload->GetIterator(); posSource; )
 		{
 			CDownloadSource* pSource = pDownload->GetNext( posSource );
 
@@ -1743,7 +1742,7 @@ void CDownloadsWnd::OnTransfersForget()
 		}
 	}
 
-	for ( POSITION posSource = pSelectedSources.GetHeadPosition(); posSource ; )
+	for ( POSITION posSource = pSelectedSources.GetHeadPosition(); posSource; )
 	{
 		CDownloadSource* pSource = pSelectedSources.GetNext( posSource );
 		pSource->Remove( TRUE, TRUE );
@@ -1764,11 +1763,11 @@ void CDownloadsWnd::OnTransfersChat()
 	CSingleLock pLock( &Transfers.m_pSection );
 	if ( ! SafeLock( pLock ) ) return;
 
-	for ( POSITION pos = Downloads.GetIterator() ; pos ; )
+	for ( POSITION pos = Downloads.GetIterator(); pos; )
 	{
 		CDownload* pDownload = Downloads.GetNext( pos );
 
-		for ( POSITION posSource = pDownload->GetIterator() ; posSource ; )
+		for ( POSITION posSource = pDownload->GetIterator(); posSource; )
 		{
 			CDownloadSource* pSource = pDownload->GetNext( posSource );
 
@@ -1798,11 +1797,11 @@ void CDownloadsWnd::OnBrowseLaunch()
 	CSingleLock pLock( &Transfers.m_pSection );
 	if ( ! SafeLock( pLock ) ) return;
 
-	for ( POSITION pos = Downloads.GetIterator() ; pos ; )
+	for ( POSITION pos = Downloads.GetIterator(); pos; )
 	{
 		CDownload* pDownload = Downloads.GetNext( pos );
 
-		for ( POSITION posSource = pDownload->GetIterator() ; posSource ; )
+		for ( POSITION posSource = pDownload->GetIterator(); posSource; )
 		{
 			CDownloadSource* pSource = pDownload->GetNext( posSource );
 
@@ -1823,18 +1822,24 @@ void CDownloadsWnd::OnBrowseLaunch()
 void CDownloadsWnd::OnUpdateDownloadsFolder(CCmdUI* pCmdUI)
 {
 	Prepare();
-	pCmdUI->Enable( m_bSelDownload );
+	pCmdUI->Enable( m_bSelDownload || ! m_bSelAny );
 }
 
 void CDownloadsWnd::OnDownloadsFolder()
 {
+	if ( ! m_bSelAny )
+	{
+		ShellExecute( GetSafeHwnd(), L"open", Settings.Downloads.CompletePath, NULL, NULL, SW_SHOWNORMAL );
+		return;
+	}
+
 	CStringList pList;
 	UINT nLimit = Settings.Library.ExecuteFilesLimit ? Settings.Library.ExecuteFilesLimit : 999;
 
 	CSingleLock pLock( &Transfers.m_pSection );
 	if ( ! SafeLock( pLock ) ) return;
 
-	for ( POSITION pos = Downloads.GetIterator() ; pos && nLimit ; )
+	for ( POSITION pos = Downloads.GetIterator(); pos && nLimit; )
 	{
 		CDownload* pDownload = Downloads.GetNext( pos );
 		if ( ! pDownload->m_bSelected || ! ( pDownload->IsCompleted() || pDownload->IsSeeding() ) )
@@ -1894,7 +1899,7 @@ void CDownloadsWnd::OnDownloadsFileDelete()
 	CSingleLock pLock( &Transfers.m_pSection );
 	if ( ! SafeLock( pLock ) ) return;
 
-	for ( POSITION pos = Downloads.GetIterator() ; pos ; )
+	for ( POSITION pos = Downloads.GetIterator(); pos; )
 	{
 		CDownload* pDownload = Downloads.GetNext( pos );
 		if ( ! pDownload->m_bSelected || ! pDownload->IsCompleted() )
@@ -1903,7 +1908,7 @@ void CDownloadsWnd::OnDownloadsFileDelete()
 		pDownload->m_bClearing = TRUE;		// Indicate marked for removal (may take awhile)
 
 		const DWORD nCount = pDownload->GetFileCount();
-		for ( DWORD i = 0 ; i < nCount ; ++i )
+		for ( DWORD i = 0; i < nCount; ++i )
 		{
 			pList.AddTail( pDownload->GetPath( i ) );
 		}
@@ -1932,7 +1937,7 @@ void CDownloadsWnd::OnDownloadsFileDelete()
 	if ( ! DeleteFiles( pList ) )
 	{
 		pLock.Lock();
-		for ( POSITION pos = Downloads.GetIterator() ; pos ; )
+		for ( POSITION pos = Downloads.GetIterator(); pos; )
 		{
 			CDownload* pDownload = Downloads.GetNext( pos );
 			pDownload->m_bClearing = FALSE;
@@ -1957,12 +1962,12 @@ void CDownloadsWnd::OnDownloadsRate()
 	CSingleLock pLock( &Transfers.m_pSection );
 	if ( ! SafeLock( pLock ) ) return;
 
-	for ( POSITION pos = Downloads.GetIterator() ; pos ; )
+	for ( POSITION pos = Downloads.GetIterator(); pos; )
 	{
 		CDownload* pDownload = Downloads.GetNext( pos );
 		if ( pDownload->m_bSelected && pDownload->IsCompleted() )
 		{
-			for ( DWORD i = 0 ; i < pDownload->GetFileCount() ; ++i )
+			for ( DWORD i = 0; i < pDownload->GetFileCount(); ++i )
 			{
 				CString strPath	= pDownload->GetPath( i );
 				CQuickLock oLibraryLock( Library.m_pSection );
@@ -2122,7 +2127,7 @@ void CDownloadsWnd::OnDownloadsHelp()
 
 	CDownload* pDownload = NULL;
 
-	for ( POSITION pos = Downloads.GetIterator() ; pos ; )
+	for ( POSITION pos = Downloads.GetIterator(); pos; )
 	{
 		pDownload = Downloads.GetNext( pos );
 		if ( pDownload->m_bSelected ) break;

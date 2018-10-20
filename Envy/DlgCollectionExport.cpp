@@ -1,8 +1,8 @@
 //
 // DlgCollectionExport.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2007
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -425,7 +425,7 @@ BOOL CCollectionExportDlg::Step2()
 		return ErrorMessage( L"Failed to write file:", strFile );	// File write failed
 	}
 
-	for ( int nPosTpl = 0 ; nPosTpl < m_wndWizard.m_pTemplatePaths.GetSize() ; nPosTpl++ )
+	for ( int nPosTpl = 0; nPosTpl < m_wndWizard.m_pTemplatePaths.GetSize(); nPosTpl++ )
 	{
 		CString strTemplateName = m_wndWizard.m_pTemplatePaths.GetAt( nPosTpl );
 		if ( strTemplateName.CompareNoCase( m_wndWizard.m_sMainFilePath ) == 0 )
@@ -445,7 +445,7 @@ BOOL CCollectionExportDlg::Step2()
 		// Substitute item IDs with the values from wizard edit boxes.
 		// The phrase "Individual file replacement" --
 		// when each file has a unique id substitution.
-		for ( POSITION pos = m_wndWizard.m_pItems.GetStartPosition() ; pos != NULL ; )
+		for ( POSITION pos = m_wndWizard.m_pItems.GetStartPosition(); pos != NULL; )
 		{
 			CString strControlID, strMap;
 			m_wndWizard.m_pItems.GetNextAssoc( pos, strControlID, strMap );
@@ -467,7 +467,7 @@ BOOL CCollectionExportDlg::Step2()
 
 			if ( nFileID < (UINT)m_wndWizard.m_pFileDocs.GetSize() && strTemplateName.CompareNoCase( m_sNewFilename ) == 0 )
 			{
-				for ( int nPosDocs = 0 ; nPosDocs < m_wndWizard.m_pFileDocs.GetSize() ; )
+				for ( int nPosDocs = 0; nPosDocs < m_wndWizard.m_pFileDocs.GetSize(); )
 				{
 					CString strNewReplace = strReplace;
 
@@ -532,7 +532,7 @@ BOOL CCollectionExportDlg::Step2()
 		if ( strTemplateName.CompareNoCase( m_sNewFilename ) == 0 )
 		{
 			CString strResult;
-			for ( int nPosFileDocs = 0 ; nPosFileDocs < m_wndWizard.m_pFileDocs.GetSize() ; nPosFileDocs++ )
+			for ( int nPosFileDocs = 0; nPosFileDocs < m_wndWizard.m_pFileDocs.GetSize(); nPosFileDocs++ )
 			{
 				if ( m_bThumbnails )
 				{
@@ -578,7 +578,7 @@ BOOL CCollectionExportDlg::Step2()
 	} // For each template file
 
 	// Copy all non-parsed files such as images, stylesheets etc.
-	for ( int nPosImg = 0 ; nPosImg < m_wndWizard.m_pImagePaths.GetSize() ; nPosImg++ )
+	for ( int nPosImg = 0; nPosImg < m_wndWizard.m_pImagePaths.GetSize(); nPosImg++ )
 	{
 		const CString strFileName = m_wndWizard.m_pImagePaths.GetAt( nPosImg );
 		const CString strTarget = strPath + L'\\' + strFileName;

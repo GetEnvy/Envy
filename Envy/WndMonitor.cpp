@@ -1,8 +1,8 @@
 //
 // WndMonitor.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2015 and Shareaza 2002-2007
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2015
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -85,7 +85,7 @@ CRemoteWnd::CRemoteWnd()
 
 CRemoteWnd::~CRemoteWnd()
 {
-	for ( POSITION pos = m_pButtons.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pButtons.GetHeadPosition(); pos; )
 		delete m_pButtons.GetNext( pos );
 }
 
@@ -212,7 +212,7 @@ CRemoteWnd::CmdButton* CRemoteWnd::HitTestButtons(const CPoint& ptIn, BOOL bAll)
 {
 	if ( m_pSkin == NULL ) return NULL;
 
-	for ( POSITION pos = m_pButtons.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pButtons.GetHeadPosition(); pos; )
 	{
 		CmdButton* pButton = m_pButtons.GetNext( pos );
 		if ( pButton->HitTest( ptIn, bAll ) ) return pButton;
@@ -227,7 +227,7 @@ void CRemoteWnd::UpdateCmdButtons()
 
 	BOOL bChanged = FALSE;
 
-	for ( POSITION pos = m_pButtons.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pButtons.GetHeadPosition(); pos; )
 	{
 		CmdButton* pButton = m_pButtons.GetNext( pos );
 		pButton->m_bChanged = FALSE;
@@ -243,7 +243,7 @@ void CRemoteWnd::UpdateCmdButtons()
 
 void CRemoteWnd::OnSkinChange()
 {
-	for ( POSITION pos = m_pButtons.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pButtons.GetHeadPosition(); pos; )
 		delete m_pButtons.GetNext( pos );
 	m_pCmdHover = m_pCmdDown = NULL;
 	m_pButtons.RemoveAll();
@@ -267,7 +267,7 @@ void CRemoteWnd::OnSkinChange()
 		return;
 	}
 
-	for ( POSITION pos = m_pSkin->m_pAnchorList.GetStartPosition() ; pos ; )
+	for ( POSITION pos = m_pSkin->m_pAnchorList.GetStartPosition(); pos; )
 	{
 		CRect* prcAnchor;
 		CString strAnchor;
@@ -366,7 +366,7 @@ void CRemoteWnd::OnPaint()
 	PaintMedia( pDC );
 	PaintStatus( pDC );
 
-	for ( POSITION pos = m_pButtons.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pButtons.GetHeadPosition(); pos; )
 	{
 		m_pButtons.GetNext( pos )->Paint( pDC, rcClient, m_pSkin, m_pCmdHover, m_pCmdDown );
 	}
@@ -399,7 +399,7 @@ void CRemoteWnd::PaintHistory(CDC* pDC, CGraphItem* pTxItem, CGraphItem* pRxItem
 	DWORD nMax = min( pTxItem->m_nLength, (DWORD)m_rcsHistoryDest.Width() );
 	int nX = m_rcsHistoryDest.right - 1;
 
-	for ( DWORD nPos = 0 ; nPos < nMax ; nPos++, nX-- )
+	for ( DWORD nPos = 0; nPos < nMax; nPos++, nX-- )
 	{
 		DWORD nTxValue = pTxItem->GetValueAt( nPos );
 		DWORD nRxValue = pRxItem->GetValueAt( nPos );

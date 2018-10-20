@@ -1,8 +1,8 @@
 //
 // CtrlSchema.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2007
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -96,7 +96,7 @@ void CSchemaCtrl::SetSchema(CSchemaPtr pSchema, BOOL bPromptOnly)
 	m_pControls.RemoveAll();
 	m_pCaptions.RemoveAll();
 
-	for ( int nControl = 0 ; nControl < pRemove.GetSize() ; nControl++ )
+	for ( int nControl = 0; nControl < pRemove.GetSize(); nControl++ )
 	{
 		CWnd* pControl = (CWnd*)pRemove.GetAt( nControl );
 		pControl->DestroyWindow();
@@ -112,7 +112,7 @@ void CSchemaCtrl::SetSchema(CSchemaPtr pSchema, BOOL bPromptOnly)
 		return;
 	}
 
-	for ( POSITION posSchema = pSchema->GetMemberIterator() ; posSchema ; )
+	for ( POSITION posSchema = pSchema->GetMemberIterator(); posSchema; )
 	{
 		CSchemaMember* pMember = pSchema->GetNextMember( posSchema );
 
@@ -128,7 +128,7 @@ void CSchemaCtrl::SetSchema(CSchemaPtr pSchema, BOOL bPromptOnly)
 			pCombo->Create( WS_CHILD|WS_VISIBLE|WS_BORDER|WS_TABSTOP|CBS_DROPDOWN|CBS_AUTOHSCROLL|WS_VSCROLL,
 				rc, this, IDC_METADATA_CONTROL );
 
-			for ( POSITION posMember = pMember->GetItemIterator() ; posMember ; )
+			for ( POSITION posMember = pMember->GetItemIterator(); posMember; )
 			{
 				CString strSelection = pMember->GetNextItem( posMember );
 				pCombo->AddString( strSelection );
@@ -175,7 +175,7 @@ BOOL CSchemaCtrl::UpdateData(CXMLElement* pBase, BOOL bSaveAndValidate)
 
 	POSITION pos = m_pSchema->GetMemberIterator();
 
-	for ( INT_PTR nControl = 0 ; nControl < m_pControls.GetSize() && pos ; nControl++ )
+	for ( INT_PTR nControl = 0; nControl < m_pControls.GetSize() && pos; nControl++ )
 	{
 		CWnd* pControl = m_pControls.GetAt( nControl );
 		CSchemaMember* pMember = NULL;
@@ -235,7 +235,7 @@ void CSchemaCtrl::Layout()
 
 	int nTop = -m_nScroll;
 
-	for ( INT_PTR nControl = 0 ; nControl < m_pControls.GetSize() ; nControl++ )
+	for ( INT_PTR nControl = 0; nControl < m_pControls.GetSize(); nControl++ )
 	{
 		CWnd* pControl = m_pControls.GetAt( nControl );
 
@@ -291,7 +291,7 @@ void CSchemaCtrl::Disable()
 
 	POSITION pos = m_pSchema->GetMemberIterator();
 
-	for ( INT_PTR nControl = 0 ; nControl < m_pControls.GetSize() && pos ; nControl++ )
+	for ( INT_PTR nControl = 0; nControl < m_pControls.GetSize() && pos; nControl++ )
 	{
 		m_pControls.GetAt( nControl )->EnableWindow( FALSE );
 	}
@@ -309,7 +309,7 @@ void CSchemaCtrl::Enable()
 
 	POSITION pos = m_pSchema->GetMemberIterator();
 
-	for ( INT_PTR nControl = 0 ; nControl < m_pControls.GetSize() && pos ; nControl++ )
+	for ( INT_PTR nControl = 0; nControl < m_pControls.GetSize() && pos; nControl++ )
 	{
 		m_pControls.GetAt( nControl )->EnableWindow( TRUE );
 	}
@@ -370,7 +370,7 @@ void CSchemaCtrl::ScrollBy(int nDelta)
 	m_nScroll = max( 0, min( GetScrollLimit( SB_VERT ), m_nScroll ) );
 	nDelta = m_nScroll - nBefore;
 
-	for ( CWnd* pWnd = GetWindow( GW_CHILD ) ; pWnd ; pWnd = pWnd->GetNextWindow() )
+	for ( CWnd* pWnd = GetWindow( GW_CHILD ); pWnd; pWnd = pWnd->GetNextWindow() )
 	{
 		pWnd->ModifyStyle( WS_VISIBLE, 0 );
 	}
@@ -436,7 +436,7 @@ void CSchemaCtrl::OnPaint()
 
 	nOffset = nOffset / 2 - dc.GetTextExtent( L"Xg" ).cy / 2 - 1;
 
-	for ( INT_PTR nControl = 0 ; nControl < m_pControls.GetSize() ; nControl++ )
+	for ( INT_PTR nControl = 0; nControl < m_pControls.GetSize(); nControl++ )
 	{
 		// dc.SetBkColor( nControl & 1 ? RGB( 240, 240, 255 ) : RGB( 255, 255, 255 ) );
 		dc.SetBkColor( Colors.m_crSchemaRow[ nControl & 1 ] );
@@ -479,7 +479,7 @@ BOOL CSchemaCtrl::OnCommand(WPARAM wParam, LPARAM lParam)
 		{
 			LPTSTR pszOut = strTextOut.GetBuffer( strTextIn.GetLength() );
 
-			for ( LPCTSTR pszIn = strTextIn ; *pszIn ; pszIn++ )
+			for ( LPCTSTR pszIn = strTextIn; *pszIn; pszIn++ )
 			{
 				if ( ( *pszIn >= '0' && *pszIn <= '9' ) || *pszIn == '.' || *pszIn == '-' )
 					*pszOut++ = *pszIn;
@@ -504,7 +504,7 @@ BOOL CSchemaCtrl::OnCommand(WPARAM wParam, LPARAM lParam)
 void CSchemaCtrl::OnControlSetFocus()
 {
 	CWnd* pFocus = GetFocus();
-	for ( int i = 0 ; i < m_pControls.GetCount() ; i++ )
+	for ( int i = 0; i < m_pControls.GetCount(); i++ )
 	{
 		CWnd* pControl = m_pControls.GetAt( i );
 		if ( pControl == pFocus || pControl == pFocus->GetParent() )

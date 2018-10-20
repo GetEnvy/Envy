@@ -1,8 +1,8 @@
 //
 // PageTorrentTrackers.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2006
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2006 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -107,7 +107,7 @@ void CTorrentTrackersPage::UpdateInterface()
 		LVIF_PARAM | LVIF_IMAGE
 	};
 	int nCount = m_wndTrackers.GetItemCount();
-	for ( int i = 0 ; i < nCount ; ++i )
+	for ( int i = 0; i < nCount; ++i )
 	{
 		CString strTracker = m_wndTrackers.GetItemText( i, 0 );
 		const UINT nIconID = ( i == nCurrentItem ) ? ID_MEDIA_SELECT :
@@ -141,7 +141,7 @@ BOOL CTorrentTrackersPage::ApplyTracker()
 	if ( nCount == m_sOriginalTrackers.GetCount() )
 	{
 		int i = 0;
-		for ( POSITION pos = m_sOriginalTrackers.GetHeadPosition() ; pos ; ++i )
+		for ( POSITION pos = m_sOriginalTrackers.GetHeadPosition(); pos; ++i )
 		{
 			if ( m_sOriginalTrackers.GetNext( pos ) != m_wndTrackers.GetItemText( i, 0 ) )
 			{
@@ -177,7 +177,7 @@ BOOL CTorrentTrackersPage::ApplyTracker()
 			m_sOriginalTrackers.RemoveAll();
 
 			oInfo.RemoveAllTrackers();
-			for ( int i = 0 ; i < nCount ; ++i )
+			for ( int i = 0; i < nCount; ++i )
 			{
 				CString strTracker = m_wndTrackers.GetItemText( i, 0 );
 				if ( strTracker == strNewTracker )
@@ -203,7 +203,7 @@ void CTorrentTrackersPage::InsertTracker()
 {
 	// De-select all
 	int nCount = m_wndTrackers.GetItemCount();
-	for ( int i = 0 ; i < nCount ; ++i )
+	for ( int i = 0; i < nCount; ++i )
 		m_wndTrackers.SetItemState( i, 0, LVIS_SELECTED );
 
 	LVITEM lvi =
@@ -367,7 +367,7 @@ BOOL CTorrentTrackersPage::OnInitDialog()
 
 	m_wndTrackers.SetTextColor( Colors.m_crText );
 
-	for ( int nTracker = 0 ; nTracker < nCount ; nTracker++ )
+	for ( int nTracker = 0; nTracker < nCount; nTracker++ )
 	{
 		//LV_ITEM pItem = {};
 		//pItem.mask	= LVIF_TEXT|LVIF_IMAGE|LVIF_PARAM;
@@ -705,7 +705,7 @@ void CTorrentTrackersPage::OnCustomDrawList(NMHDR* pNMHDR, LRESULT* pResult)
 //					{
 //						if ( CBENode* pNode = CBENode::Decode( pResponse ) )
 //						{
-//							theApp.Message( MSG_DEBUG | MSG_FACILITY_INCOMING, L"[BT] Received BitTorrent tracker response: %s", pNode->Encode() );
+//							theApp.Message( MSG_DEBUG | MSG_FACILITY_INCOMING, L"[BT] Received BitTorrent tracker response: %s", (LPCTSTR)pNode->Encode() );
 //
 //							if ( oLock.Lock( 250 ) )
 //							{

@@ -3,7 +3,7 @@
 
 <!-- Envy Default Norwegian Skin File -->
 
-<!-- Translation based on default en.xml r21 --> <!-- (Shareaza 2.2.0.2) -->
+<!-- Translation based on default en.xml r22 --> <!-- (Shareaza 2.2.0.2) -->
 <!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -15,7 +15,7 @@
 <manifest
 	name="Norsk"
 	author="Tom Seland"
-	updatedBy="Tom Seland"
+	updatedby="Tom Seland"
 	description="Envy Default Norwegian Skin File"
 	link="http://getenvy.com"
 	email="Contact(at)GetEnvy.com"
@@ -3003,8 +3003,9 @@
 	<string id="20807" text="Nekter opplasting av &quot;%s&quot; til %s (%s), for mange samlet fra en vert."/>
 	<string id="20808" text="Avviser opplasting av &quot;%s&quot; til %s (%s), opptatt og klienten støtter ikke kø."/>
 	<string id="20809" text="Nekter opplasting av &quot;%s&quot; til %s (%s), alle liknende køer er fulle."/>
-	<string id="20810" text="Opplastingsvertens %s spurte etter et ikke godkjent utvalg av filer &quot;%s&quot;."/>
-	<string id="20811" text="eDonkey2000 opplastinger bør ikke avbrytes. Er du sikker på at du vil avbryte denne opplastingen?"/>
+	<string id="20810" text="Nekter opplasting av &quot;%s&quot; til %s (%s), Biblioteket er opptatt."/>
+	<string id="20811" text="Opplastingsvertens %s spurte etter et ikke godkjent utvalg av filer &quot;%s&quot;."/>
+	<string id="20861" text="eDonkey2000 opplastinger bør ikke avbrytes. Er du sikker på at du vil avbryte denne opplastingen?"/>
 	<string id="20812" text="Kan ikke åpne &quot;%s&quot; for å laste opp til vert %s, disk/fil feil."/>
 	<string id="20813" text="Starter en push-kobling til %s. %s"/>
 	<string id="20814" text="Klarte ikke å koble til vert %s med push."/>
@@ -3050,14 +3051,14 @@
 	<string id="20858" text="Mistet kontakt med opplastingsvert %s."/>
 	<string id="20859" text="Lukker opplastingskobling %s på grunn av mangel på trafikk."/>
 	<string id="20860" text="Laster opp tiger-tree data for &quot;%s&quot; til %s."/>
-	<string id="20861" text="Fjernet opplasting av &quot;%s&quot; til %s."/>
-	<string id="20862" text="Legg til"/>
-	<string id="20864" text="_Utforsk"/>
-	<string id="20865" text="_Koble til"/>
-	<string id="20866" text="Filnavn:"/>
-	<string id="20867" text="Vert:"/>
-	<string id="20868" text="Port:"/>
-	<!--string id="20869" text="Kan ikke vise URL-dialogen fordi Envy er opptatt."-->
+	<string id="20862" text="Fjernet opplasting av &quot;%s&quot; til %s."/>
+	<string id="20864" text="Legg til"/>
+	<string id="20865" text="_Utforsk"/>
+	<string id="20866" text="_Koble til"/>
+	<string id="20867" text="Filnavn:"/>
+	<string id="20868" text="Vert:"/>
+	<string id="20869" text="Port:"/>
+	<!--string id="20876" text="Kan ikke vise URL-dialogen fordi Envy er opptatt."-->
 	<string id="20870" text="Kan ikke motta URL: Envy gjenkjenner ikke denne URL."/>
 	<string id="20871" text="Mottar URL &quot;%s&quot;"/>
 	<string id="20872" text="Type:"/>

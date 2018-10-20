@@ -4,7 +4,7 @@
 <!-- Envy Default Afrikaans Skin File -->
 <!-- Weergawe: 27 Oktober 2005 vir Shareaza 2.2.0.2 -->
 
-<!-- Translation based on default en.xml r21 -->
+<!-- Translation based on default en.xml r22 -->
 <!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -16,7 +16,7 @@
 <manifest
 	name="Afrikaans"
 	author="Johann van der Walt (Thesage)"
-	updatedBy="Thesage, omega09"
+	updatedby="Thesage, omega09"
 	description="Envy Default Afrikaans Skin File"
 	link="http://getenvy.com"
 	email="jvdwalt(at)tuks.co.za"
@@ -3246,8 +3246,9 @@
 	<string id="20807" text="Stuur van &quot;%s&quot; na %s (%s) word geweier, te veel gelyktydige konneksies aan gasheer."/>
 	<string id="20808" text="Oplaai van &quot;%s&quot; na %s (%s) word geweier, beset en kliënt ondersteun nie waglyste nie."/>
 	<string id="20809" text="Oplaai van &quot;%s&quot; na %s (%s) word geweier, alle toepaslike waglyste is vol."/>
-	<string id="20810" text="Oplaaigasheer %s versoek 'n onbevredigende deel van die lêer &quot;%s&quot;."/>
-	<string id="20811" text="eDonkey2000 oplaaie moet nie gekanselleer word nie. Is jy seker jy wil hierdie oplaai kanselleer?"/>
+	<string id="20810" text="Oplaai van &quot;%s&quot; na %s (%s) word geweier, Biblioteek is besig."/>
+	<string id="20811" text="Oplaaigasheer %s versoek 'n onbevredigende deel van die lêer &quot;%s&quot;."/>
+	<string id="20861" text="eDonkey2000 oplaaie moet nie gekanselleer word nie. Is jy seker jy wil hierdie oplaai kanselleer?"/>
 	<string id="20812" text="Kan nie &quot;%s&quot; oopmaak om na gasheer %s op te laai nie, skyf/lêer foutief."/>
 	<string id="20813" text="'n Druk-aanvraag word geïnisieer na %s. %s"/>
 	<string id="20814" text="Kon nie na gasheer %s konnekteer vir druk nie."/>
@@ -3294,14 +3295,14 @@
 	<string id="20858" text="Tyd verstreke terwyl gewag word vir oplaaikonneksie na %s."/>
 	<string id="20859" text="Oplaaikonneksie %s word gesluit as gevolg van 'n tekort aan dataverkeer."/>
 	<string id="20860" text="Tiger-tree data van &quot;%s&quot; word gestuur na %s."/>
-	<string id="20861" text="Verwyder oplaai van &quot;%s&quot; na %s."/>
-	<string id="20862" text="Voeg By"/>
-	<string id="20864" text="&amp;Blaai Deur"/>
-	<string id="20865" text="&amp;Connekteer"/>
-	<string id="20866" text="Lêernaam:"/>
-	<string id="20867" text="Gasheer:"/>
-	<string id="20868" text="Poort:"/>
-	<!--string id="20869" text="Kan nie URL-aksie venster vertoon nie, want Envy is beset."-->
+	<string id="20862" text="Verwyder oplaai van &quot;%s&quot; na %s."/>
+	<string id="20864" text="Voeg By"/>
+	<string id="20865" text="&amp;Blaai Deur"/>
+	<string id="20866" text="&amp;Connekteer"/>
+	<string id="20867" text="Lêernaam:"/>
+	<string id="20868" text="Gasheer:"/>
+	<string id="20869" text="Poort:"/>
+	<!--string id="20876" text="Kan nie URL-aksie venster vertoon nie, want Envy is beset."-->
 	<string id="20870" text="Kan nie URL gebruik nie: Envy verstaan nie hierdie URL nie."/>
 	<string id="20871" text="URL &quot;%s&quot; ontvang"/>
 	<string id="20872" text="Tipe:"/>

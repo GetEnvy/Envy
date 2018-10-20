@@ -1,8 +1,8 @@
 //
 // UploadTransferDC.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2010-2014 and Shareaza 2010
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2010 and PeerProject 2010-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -199,7 +199,7 @@ BOOL CUploadTransferDC::OnWrite()
 			// Reading next data chunk of file
 			QWORD nToRead = min( m_nLength - m_nPosition, (QWORD)Settings.Uploads.ChunkSize );	// ~1000 KB
 			QWORD nRead = 0;
-			auto_array< BYTE > pBuffer( new BYTE[ nToRead ] );
+			auto_array< BYTE > pBuffer( new BYTE[ (size_t)nToRead ] );
 			if ( ! ReadFile( m_nFileBase + m_nOffset + m_nPosition, pBuffer.get(), nToRead, &nRead ) || nToRead != nRead )
 				return FALSE;	// File error
 
@@ -536,7 +536,7 @@ BOOL CUploadTransferDC::RequestTigerTree(CLibraryFile* pFile, QWORD nOffset, QWO
 
 	m_pClient->SendCommand( strAnswer );
 
-	m_pClient->Write( pSerialTree + nOffset, nLength );
+	m_pClient->Write( pSerialTree + nOffset, (size_t)nLength );
 
 	// Start uploading
 	m_nOffset = nOffset;
@@ -630,7 +630,7 @@ BOOL CUploadTransferDC::RequestFileList(BOOL bFile, BOOL bZip, const std::string
 //
 //	if ( strRoot == L"/" )	// All folders
 //	{
-//		for ( POSITION pos = LibraryFolders.GetFolderIterator() ; pos ; )
+//		for ( POSITION pos = LibraryFolders.GetFolderIterator(); pos; )
 //			FolderToFileList( LibraryFolders.GetNextFolder( pos ), pXML );
 //	}
 //	else if ( const CLibraryFolder* pFolder = LibraryFolders.GetFolderByName( strRoot ) )
@@ -651,10 +651,10 @@ BOOL CUploadTransferDC::RequestFileList(BOOL bFile, BOOL bZip, const std::string
 //		Escape( pFolder->m_sName ) );
 //	pXML.Print( strFolder, CP_UTF8 );
 //
-//	for ( POSITION pos = pFolder->GetFolderIterator() ; pos ; )
+//	for ( POSITION pos = pFolder->GetFolderIterator(); pos; )
 //		FolderToFileList( pFolder->GetNextFolder( pos ), pXML );
 //
-//	for ( POSITION pos = pFolder->GetFileIterator() ; pos ; )
+//	for ( POSITION pos = pFolder->GetFileIterator(); pos; )
 //		FileToFileList( pFolder->GetNextFile( pos ), pXML );
 //
 //	pXML.Add( _P("</Directory>\r\n") );

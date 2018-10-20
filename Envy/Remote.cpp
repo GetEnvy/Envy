@@ -1,8 +1,8 @@
 //
 // Remote.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2016 and Shareaza 2002-2007
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2016
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -246,7 +246,7 @@ BOOL CRemote::CheckCookie()
 	const CString strToken = L"envyremote=";
 	const int nToken = strToken.GetLength();
 
-	for ( INT_PTR nHeader = 0 ; nHeader < m_pHeaderName.GetSize() ; nHeader ++ )
+	for ( INT_PTR nHeader = 0; nHeader < m_pHeaderName.GetSize(); nHeader ++ )
 	{
 		if ( m_pHeaderName.GetAt( nHeader ).CompareNoCase( L"Cookie" ) == 0 )
 		{
@@ -274,7 +274,7 @@ BOOL CRemote::RemoveCookie()
 	const CString strToken = L"envyremote=";
 	const int nToken = strToken.GetLength();
 
-	for ( INT_PTR nHeader = 0 ; nHeader < m_pHeaderName.GetSize() ; nHeader ++ )
+	for ( INT_PTR nHeader = 0; nHeader < m_pHeaderName.GetSize(); nHeader ++ )
 	{
 		if ( m_pHeaderName.GetAt( nHeader ).CompareNoCase( L"Cookie" ) == 0 )
 		{
@@ -307,7 +307,7 @@ void CRemote::Prepare(LPCTSTR pszPrefix)
 {
 	if ( pszPrefix )
 	{
-		for ( POSITION pos = m_pKeys.GetStartPosition() ; pos != NULL ; )
+		for ( POSITION pos = m_pKeys.GetStartPosition(); pos != NULL; )
 		{
 			CString strKey, strValue;
 			m_pKeys.GetNextAssoc( pos, strKey, strValue );
@@ -495,7 +495,7 @@ void CRemote::Output(LPCTSTR pszName)
 
 	CList<BOOL> pDisplayStack;
 
-	for ( BOOL bDisplay = TRUE ; ; )
+	for ( BOOL bDisplay = TRUE; ; )
 	{
 		int nStart = strBody.Find( L"<%" );
 
@@ -689,7 +689,7 @@ void CRemote::PageSearch()
 	Prepare();		// Header
 	Output( L"searchHeader" );
 
-	for ( CSearchWnd* pFindWnd = NULL ; ( pFindWnd = static_cast< CSearchWnd* >( pMainWnd->m_pWindows.Find( RUNTIME_CLASS(CSearchWnd), pFindWnd ) ) ) != NULL ; )
+	for ( CSearchWnd* pFindWnd = NULL; ( pFindWnd = static_cast< CSearchWnd* >( pMainWnd->m_pWindows.Find( RUNTIME_CLASS(CSearchWnd), pFindWnd ) ) ) != NULL; )
 	{
 		Prepare();
 		INT_PTR nFindWnd = reinterpret_cast< INT_PTR >( pFindWnd );
@@ -716,7 +716,7 @@ void CRemote::PageSearch()
 	{
 		str.Empty();
 
-		for ( POSITION pos = SchemaCache.GetIterator() ; pos != NULL ; )
+		for ( POSITION pos = SchemaCache.GetIterator(); pos != NULL; )
 		{
 			CSchemaPtr pSchema = SchemaCache.GetNext( pos );
 			if ( ! pSchema->m_bPrivate && pSchema->m_nType == CSchema::stFile )
@@ -760,7 +760,7 @@ void CRemote::PageSearch()
 	if ( ! str.IsEmpty() )
 	{
 		CMatchFile** pLoop = pMatches->m_pFiles;
-		for ( DWORD nCount = 0 ; nCount < pMatches->m_nFiles ; nCount++, pLoop++ )
+		for ( DWORD nCount = 0; nCount < pMatches->m_nFiles; nCount++, pLoop++ )
 		{
 			if ( (*pLoop)->GetURN() == str )
 			{
@@ -775,7 +775,7 @@ void CRemote::PageSearch()
 	if ( ! str.IsEmpty() )
 	{
 		CMatchFile** pLoop = pMatches->m_pFiles;
-		for ( DWORD nCount = 0 ; nCount < pMatches->m_nFiles ; nCount++, pLoop++ )
+		for ( DWORD nCount = 0; nCount < pMatches->m_nFiles; nCount++, pLoop++ )
 		{
 			if ( (*pLoop)->GetURN() == str )
 			{
@@ -817,7 +817,7 @@ void CRemote::PageSearch()
 
 	CMatchFile** pLoop = pMatches->m_pFiles;
 
-	for ( DWORD nCount = 0 ; nCount < pMatches->m_nFiles ; nCount++, pLoop++ )
+	for ( DWORD nCount = 0; nCount < pMatches->m_nFiles; nCount++, pLoop++ )
 	{
 		CMatchFile* pFile = *pLoop;
 		if ( pFile->GetFilteredCount() == 0 ) continue;
@@ -836,7 +836,7 @@ void CRemote::PageSearch()
 		PageSearchRowColumn( MATCH_COL_SIZE, pFile, Settings.SmartVolume( pFile->m_nSize ) );
 
 		str.Empty();
-		for ( INT_PTR nStar = pFile->m_nRating / max( 1, pFile->m_nRated ) ; nStar > 1 ; nStar -- ) str += L'*';
+		for ( INT_PTR nStar = pFile->m_nRating / max( 1, pFile->m_nRated ); nStar > 1; nStar -- ) str += L'*';
 		PageSearchRowColumn( MATCH_COL_RATING, pFile, str );
 
 		str.Empty();
@@ -862,7 +862,7 @@ void CRemote::PageSearch()
 
 		if ( pFile->m_bExpanded )
 		{
-			for ( CQueryHit* pHit = pFile->GetHits() ; pHit != NULL ; pHit = pHit->m_pNext )
+			for ( CQueryHit* pHit = pFile->GetHits(); pHit != NULL; pHit = pHit->m_pNext )
 			{
 				if ( ! pHit->m_bFiltered ) continue;
 
@@ -873,7 +873,7 @@ void CRemote::PageSearch()
 
 				PageSearchRowColumn( MATCH_COL_SIZE, pFile, Settings.SmartVolume( pHit->m_nSize ) );
 				str.Empty();
-				for ( int nStar = pHit->m_nRating ; nStar > 1 ; nStar -- ) str += L"*";
+				for ( int nStar = pHit->m_nRating; nStar > 1; nStar -- ) str += L"*";
 				PageSearchRowColumn( MATCH_COL_RATING, pFile, str );
 
 				str.Empty();
@@ -981,7 +981,7 @@ void CRemote::PageDownloads()
 	BOOL bExclusive = ! GetKey( L"group_exclusive" ).IsEmpty();
 	BOOL bReveal = ! GetKey( L"group_reveal" ).IsEmpty();
 
-	for ( POSITION posGroup = DownloadGroups.GetIterator() ; posGroup != NULL ; )
+	for ( POSITION posGroup = DownloadGroups.GetIterator(); posGroup != NULL; )
 	{
 		CDownloadGroup* pGroup = DownloadGroups.GetNext( posGroup );
 
@@ -1024,7 +1024,7 @@ void CRemote::PageDownloads()
 	Add( L"filter_show_all", Settings.Downloads.ShowSources ? L"checked=\"checked\"" : L"" );
 	Output( L"downloadsTop" );
 
-	for ( POSITION posDownload = Downloads.GetIterator() ; posDownload != NULL ; )
+	for ( POSITION posDownload = Downloads.GetIterator(); posDownload != NULL; )
 	{
 		CDownload* pDownload = Downloads.GetNext( posDownload );
 
@@ -1080,7 +1080,7 @@ void CRemote::PageDownloads()
 
 		CDownloadGroup* pGroup = NULL;
 
-		for ( POSITION posGroup = DownloadGroups.GetIterator() ; posGroup != NULL ; )
+		for ( POSITION posGroup = DownloadGroups.GetIterator(); posGroup != NULL; )
 		{
 			pGroup = DownloadGroups.GetNext( posGroup );
 			if ( pGroup->m_bRemoteSelected && pGroup->Contains( pDownload ) ) break;
@@ -1117,7 +1117,7 @@ void CRemote::PageDownloads()
 
 		if ( pDownload->m_bExpanded && CDownloadsCtrl::IsExpandable( pDownload ) )
 		{
-			for ( POSITION posSource = pDownload->GetIterator() ; posSource ; )
+			for ( POSITION posSource = pDownload->GetIterator(); posSource; )
 			{
 				CDownloadSource* pSource = pDownload->GetNext( posSource );
 
@@ -1235,7 +1235,7 @@ void CRemote::PageUploads()
 
 	Output( L"uploadsHeader" );
 
-	for ( POSITION posQueue = CUploadsCtrl::GetQueueIterator() ; posQueue != NULL ; )
+	for ( POSITION posQueue = CUploadsCtrl::GetQueueIterator(); posQueue != NULL; )
 	{
 		CUploadQueue* pQueue = CUploadsCtrl::GetNextQueue( posQueue );
 
@@ -1396,7 +1396,7 @@ void CRemote::PageNetworkNetwork(int nID, bool* pbConnect, LPCTSTR pszName)
 
 		if ( SafeLock( pLock ) )
 		{
-			for ( POSITION pos = Neighbours.GetIterator() ; pos != NULL ; )
+			for ( POSITION pos = Neighbours.GetIterator(); pos != NULL; )
 			{
 				CNeighbour* pNeighbour = Neighbours.GetNext( pos );
 				if ( pNeighbour->m_nProtocol == PROTOCOL_NULL ||
@@ -1414,7 +1414,7 @@ void CRemote::PageNetworkNetwork(int nID, bool* pbConnect, LPCTSTR pszName)
 
 	pLock.Lock();
 
-	for ( POSITION pos = Neighbours.GetIterator() ; pos != NULL ; )
+	for ( POSITION pos = Neighbours.GetIterator(); pos != NULL; )
 	{
 		CNeighbour* pNeighbour = Neighbours.GetNext( pos );
 		if ( pNeighbour->m_nProtocol != nID ) continue;

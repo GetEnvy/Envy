@@ -21,7 +21,7 @@
     <ClCompile Include="Registry.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Packages.c">
+    <ClCompile Include="Unpacker.c">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Utils.c">
@@ -35,7 +35,7 @@
     <ClInclude Include="Resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Packages.h">
+    <ClInclude Include="Unpacker.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -51,7 +51,7 @@
     <None Include="Res\Envy.ico">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="Res\Packages.ico">
+    <None Include="Res\Unpacker.ico">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="Res\Manifest.xml" />

@@ -1,8 +1,8 @@
 //
 // DlgFilePreview.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2007
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -72,7 +72,7 @@ CFilePreviewDlg::CFilePreviewDlg(CDownloadWithExtras* pDownload, DWORD nIndex, C
 		CString strFileName = m_sDisplayName;
 		strFileName.Replace( L'\\', L'_' );
 
-		for ( int nCount = 0 ; nCount < 20 ; nCount++ )
+		for ( int nCount = 0; nCount < 20; nCount++ )
 		{
 			if ( nCount > 0 )
 			{
@@ -101,7 +101,7 @@ CFilePreviewDlg::CFilePreviewDlg(CDownloadWithExtras* pDownload, DWORD nIndex, C
 		Fragments::List oRanges = inverse( m_pDownload->GetEmptyFragmentList() );
 		Fragments::List::const_iterator pItr = oRanges.begin();
 		const Fragments::List::const_iterator pEnd = oRanges.end();
-		for ( ; pItr != pEnd ; ++pItr )
+		for ( ; pItr != pEnd; ++pItr )
 		{
 			if ( pItr->begin() + pItr->size() >= nOffset
 				&& nOffset + nLength >= pItr->begin() )
@@ -175,7 +175,7 @@ void CFilePreviewDlg::OnSkinChange(BOOL bSet)
 {
 	CQuickLock oLock( m_pSection );
 
-	for ( POSITION pos = m_pWindows.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pWindows.GetHeadPosition(); pos; )
 	{
 		CFilePreviewDlg* pDlg = m_pWindows.GetNext( pos );
 
@@ -195,7 +195,7 @@ void CFilePreviewDlg::CloseAll()
 {
 	CQuickLock oLock( m_pSection );
 
-	for ( POSITION pos = m_pWindows.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pWindows.GetHeadPosition(); pos; )
 	{
 		delete m_pWindows.GetNext( pos );
 	}
@@ -386,7 +386,7 @@ BOOL CFilePreviewDlg::RunManual()
 		return FALSE;
 
 	QWORD nProgressRange = 0;
-	for ( INT_PTR i = 0 ; i < m_pRanges.GetSize() ; i += 2 )
+	for ( INT_PTR i = 0; i < m_pRanges.GetSize(); i += 2 )
 	{
 		nProgressRange += m_pRanges.GetAt( i + 1 );
 	}
@@ -398,7 +398,7 @@ BOOL CFilePreviewDlg::RunManual()
 		return FALSE;
 
 	QWORD nProgressPosition = 0;
-	for ( INT_PTR i = 0 ; i < m_pRanges.GetSize() && IsThreadEnabled() ; i += 2 )
+	for ( INT_PTR i = 0; i < m_pRanges.GetSize() && IsThreadEnabled(); i += 2 )
 	{
 		QWORD nOffset = m_pRanges.GetAt( i );
 		QWORD nLength = m_pRanges.GetAt( i + 1 );
@@ -519,7 +519,7 @@ STDMETHODIMP CFilePreviewDlg::XDownloadPreviewSite::GetAvailableRanges(SAFEARRAY
 	DWORD* pTarget;
 	SafeArrayAccessData( *pArray, (void**)&pTarget );
 
-	for ( int nRange = 0 ; nRange < pThis->m_pRanges.GetSize() ; nRange++, pTarget++ )
+	for ( int nRange = 0; nRange < pThis->m_pRanges.GetSize(); nRange++, pTarget++ )
 	{
 		*pTarget = pThis->m_pRanges.GetAt( nRange );
 	}

@@ -1,8 +1,8 @@
 //
 // WndSecurity.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2017
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2007
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -312,7 +312,7 @@ void CSecurityWnd::OnUpdateSecurityReset(CCmdUI* pCmdUI)
 
 void CSecurityWnd::OnSecurityReset()
 {
-	for ( int nItem = -1 ; ( nItem = m_wndList.GetNextItem( nItem, LVIS_SELECTED ) ) >= 0 ; )
+	for ( int nItem = -1; ( nItem = m_wndList.GetNextItem( nItem, LVIS_SELECTED ) ) >= 0; )
 	{
 		CQuickLock oLock( Security.m_pSection );
 
@@ -337,7 +337,7 @@ void CSecurityWnd::OnSecurityRemove()
 	if ( MsgBox( IDS_SECURITY_REMOVE_CONFIRM, MB_ICONQUESTION|MB_YESNO ) != IDYES )
 		return;
 
-	for ( int nItem = -1 ; ( nItem = m_wndList.GetNextItem( nItem, LVIS_SELECTED ) ) >= 0 ; )
+	for ( int nItem = -1; ( nItem = m_wndList.GetNextItem( nItem, LVIS_SELECTED ) ) >= 0; )
 	{
 		CQuickLock oLock( Security.m_pSection );
 
@@ -356,7 +356,7 @@ void CSecurityWnd::OnUpdateSecurityMoveUp(CCmdUI* pCmdUI)
 
 void CSecurityWnd::OnSecurityMoveUp()
 {
-	for ( int nItem = -1 ; ( nItem = m_wndList.GetNextItem( nItem, LVIS_SELECTED ) ) >= 0 ; )
+	for ( int nItem = -1; ( nItem = m_wndList.GetNextItem( nItem, LVIS_SELECTED ) ) >= 0; )
 	{
 		CQuickLock oLock( Security.m_pSection );
 
@@ -379,7 +379,7 @@ void CSecurityWnd::OnSecurityMoveDown()
 
 	CList< CSecureRule* > pList;
 
-	for ( int nItem = -1 ; ( nItem = m_wndList.GetNextItem( nItem, LVIS_SELECTED ) ) >= 0 ; )
+	for ( int nItem = -1; ( nItem = m_wndList.GetNextItem( nItem, LVIS_SELECTED ) ) >= 0; )
 	{
 		pList.AddHead( GetItem( nItem ) );
 	}
@@ -431,7 +431,7 @@ void CSecurityWnd::OnSecurityExport()
 
 	if ( dlg.GetFileExt().CompareNoCase( L"net" ) == 0 )
 	{
-		for ( int nItem = -1 ; ( nItem = m_wndList.GetNextItem( nItem, LVIS_SELECTED ) ) >= 0 ; )
+		for ( int nItem = -1; ( nItem = m_wndList.GetNextItem( nItem, LVIS_SELECTED ) ) >= 0; )
 		{
 			CQuickLock oLock( Security.m_pSection );
 
@@ -461,7 +461,7 @@ void CSecurityWnd::OnSecurityExport()
 
 		pXML->AddAttribute( L"xmlns", CSecurity::xmlns );
 
-		for ( int nItem = -1 ; ( nItem = m_wndList.GetNextItem( nItem, LVIS_SELECTED ) ) >= 0 ; )
+		for ( int nItem = -1; ( nItem = m_wndList.GetNextItem( nItem, LVIS_SELECTED ) ) >= 0; )
 		{
 			CQuickLock oLock( Security.m_pSection );
 
@@ -523,41 +523,45 @@ BOOL CSecurityWnd::PreTranslateMessage(MSG* pMsg)
 {
 	if ( pMsg->message == WM_KEYDOWN )
 	{
-		if ( GetAsyncKeyState( VK_CONTROL ) & 0x8000 )
+		if ( pMsg->wParam == VK_DOWN || pMsg->wParam == VK_UP || pMsg->wParam == 'A' )
 		{
-			if ( pMsg->wParam == VK_UP )
+			if ( GetAsyncKeyState( VK_CONTROL ) & 0x8000 )
 			{
-				PostMessage( WM_COMMAND, ID_SECURITY_MOVE_UP ); 	// OnSecurityMoveUp()
-				return TRUE;
-			}
-			if ( pMsg->wParam == VK_DOWN )
-			{
-				PostMessage( WM_COMMAND, ID_SECURITY_MOVE_DOWN );	// OnSecurityMoveDown()
-				return TRUE;
-			}
-			if ( pMsg->wParam == 'A' )
-			{
-				for ( int nItem = 0 ; nItem < m_wndList.GetItemCount() ; nItem++ )
+				if ( pMsg->wParam == 'A' )
 				{
-					if ( CSecureRule* pRule = (CSecureRule*)m_wndList.GetItemData( nItem ) )	// Skip Default Policy
-						m_wndList.SetItemState( nItem, LVIS_SELECTED, LVIS_SELECTED );
+					for ( int nItem = 0; nItem < m_wndList.GetItemCount(); nItem++ )
+					{
+						if (CSecureRule* pRule = (CSecureRule*)m_wndList.GetItemData(nItem) )	// Skip Default Policy
+							m_wndList.SetItemState( nItem, LVIS_SELECTED, LVIS_SELECTED );
+					}
+					return TRUE;
 				}
+
+				PostMessage( WM_COMMAND, pMsg->wParam == VK_UP ? ID_SECURITY_MOVE_UP : ID_SECURITY_MOVE_DOWN ); 	// OnSecurityMoveUp() OnSecurityMoveDown()
 				return TRUE;
 			}
+		}
+		else if ( pMsg->wParam == VK_ESCAPE )
+		{
+			for ( int nItem = 0; nItem < m_wndList.GetItemCount(); nItem++ )
+			{
+				m_wndList.SetItemState( nItem, 0, LVIS_SELECTED );
+			}
+			return TRUE;
 		}
 		else if ( pMsg->wParam == VK_DELETE )
 		{
 			PostMessage( WM_COMMAND, ID_SECURITY_REMOVE );			// OnSecurityRemove()
 			return TRUE;
 		}
-		else if ( pMsg->wParam == VK_INSERT )
-		{
-			PostMessage( WM_COMMAND, ID_SECURITY_ADD );
-			return TRUE;
-		}
 		else if ( pMsg->wParam == VK_RETURN )
 		{
 			PostMessage( WM_COMMAND, ID_SECURITY_EDIT );
+			return TRUE;
+		}
+		else if ( pMsg->wParam == VK_INSERT )
+		{
+			PostMessage( WM_COMMAND, ID_SECURITY_ADD );
 			return TRUE;
 		}
 	}

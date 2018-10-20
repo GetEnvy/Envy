@@ -1,7 +1,7 @@
 //
 // ImageViewer.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
+// This file is part of Envy (getenvy.com) © 2016-2018
 // Portions copyright PeerProject 2008-2014
 //
 // Original author Michael Stokes released portions into the public domain.

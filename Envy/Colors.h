@@ -1,7 +1,7 @@
 //
 // Colors.h
 //
-// This file is part of Envy (getenvy.com) © 2016
+// This file is part of Envy (getenvy.com) © 2016-2018
 // Portions copyright PeerProject 2009-2014
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -49,6 +49,8 @@ public:
 	COLORREF	m_crCmdTextSel;
 	COLORREF	m_crDisabled;
 
+	COLORREF	m_crStatusBar;
+//	COLORREF	m_crStatusBarText;
 	COLORREF	m_crSysWindow;
 	COLORREF	m_crSysBtnFace;
 	COLORREF	m_crSysDisabled;
@@ -86,6 +88,10 @@ public:
 	COLORREF	m_crTaskBoxPrimaryText;
 	COLORREF	m_crTaskBoxCaptionHover;
 
+	COLORREF	m_crTrafficWindowBack;
+	COLORREF	m_crTrafficWindowText;
+	COLORREF	m_crTrafficWindowGrid;
+
 	COLORREF	m_crMediaWindowBack;
 	COLORREF	m_crMediaWindowText;
 	COLORREF	m_crMediaStatusBack;
@@ -96,10 +102,6 @@ public:
 	COLORREF	m_crMediaPanelActiveText;
 	COLORREF	m_crMediaPanelCaptionBack;
 	COLORREF	m_crMediaPanelCaptionText;
-
-	COLORREF	m_crTrafficWindowBack;
-	COLORREF	m_crTrafficWindowText;
-	COLORREF	m_crTrafficWindowGrid;
 
 	COLORREF	m_crMonitorHistoryBack;
 	COLORREF	m_crMonitorHistoryBackMax;
@@ -192,6 +194,7 @@ public:
 	COLORREF	m_crResizebarFace;
 	COLORREF	m_crResizebarShadow;
 	COLORREF	m_crResizebarHighlight;
+
 	COLORREF	m_crFragmentShaded;
 	COLORREF	m_crFragmentComplete;
 	COLORREF	m_crFragmentSource1;

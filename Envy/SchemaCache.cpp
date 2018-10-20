@@ -1,8 +1,8 @@
 //
 // SchemaCache.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2017
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2007
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -82,7 +82,7 @@ int CSchemaCache::Load()
 			m_pURIs.SetAt( ToLower( pSchema->GetURI() ), pSchema );
 			m_pNames.SetAt( ToLower( pSchema->m_sSingular ), pSchema );
 
-			for ( POSITION pos = pSchema->GetFilterIterator() ; pos ; )
+			for ( POSITION pos = pSchema->GetFilterIterator(); pos; )
 			{
 				BOOL bResult;
 				CString strType;
@@ -101,7 +101,7 @@ int CSchemaCache::Load()
 
 #ifdef _DEBUG
 		__int64 nEnd = GetMicroCount();
-		TRACE( L"Schema \"%s\" load time : %I64i ms : %s\n", strPath,
+		TRACE( "Schema \"%s\" load time : %I64i ms : %s\n", strPath,
 			( nEnd - nStart ) / 1000, pSchema ? L"SUCCESS" : L"FAILED" );
 #endif
 	}
@@ -111,7 +111,7 @@ int CSchemaCache::Load()
 
 #ifdef _DEBUG
 	__int64 nEndTotal = GetMicroCount();
-	TRACE( L"Schemas load time : %I64i ms. Found %d types.\n",
+	TRACE( "Schemas load time : %I64i ms. Found %d types.\n",
 		( nEndTotal - nStartTotal ) / 1000, m_pTypeFilters.GetCount() );
 #endif
 
@@ -123,7 +123,7 @@ int CSchemaCache::Load()
 
 void CSchemaCache::Clear()
 {
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		delete GetNext( pos );
 	}
@@ -194,7 +194,7 @@ CString CSchemaCache::GetFilter(LPCTSTR pszURI) const
 		CString strTypes;
 		if ( CSchemaPtr pSchemaType = Get( pszURIType ) )
 		{
-			for ( POSITION pos = pSchemaType->GetFilterIterator() ; pos ; )
+			for ( POSITION pos = pSchemaType->GetFilterIterator(); pos; )
 			{
 				BOOL bResult;
 				CString strType;

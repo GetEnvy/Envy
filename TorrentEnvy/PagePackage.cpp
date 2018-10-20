@@ -1,8 +1,8 @@
 //
 // PagePackage.cpp
 //
-// This file is part of Torrent Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2014 and Shareaza 2007
+// This file is part of Torrent Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2007 and PeerProject 2008-2014
 //
 // Envy is free software; you can redistribute it
 // modify it under the terms of the GNU General Public License
@@ -10,8 +10,8 @@
 // either version 3 of the License, or later version (at your option).
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU General Public License for more details.
 // (http://www.gnu.org/licenses/gpl.html)
 //
@@ -224,7 +224,7 @@ void CPackagePage::OnAddFile()
 
 		if ( *pszFile )
 		{
-			for ( strFolder += '\\' ; *pszFile ; )
+			for ( strFolder += '\\'; *pszFile; )
 			{
 				AddFile( strFolder + pszFile );
 				pszFile += _tcslen( pszFile ) + 1;
@@ -243,7 +243,7 @@ void CPackagePage::OnRemoveFile()
 {
 	CWaitCursor wc;
 
-	for ( int nItem = m_wndList.GetItemCount() - 1 ; nItem >= 0 ; nItem-- )
+	for ( int nItem = m_wndList.GetItemCount() - 1; nItem >= 0; nItem-- )
 	{
 		if ( m_wndList.GetItemState( nItem, LVIS_SELECTED ) )
 		{

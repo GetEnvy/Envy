@@ -1,8 +1,8 @@
 //
 // SharedFile.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2017
-// Portions copyright PeerProject 2008-2016 and Shareaza 2002-2008
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2008 and PeerProject 2008-2016
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -120,7 +120,7 @@ CLibraryFile::~CLibraryFile()
 
 	delete m_pMetadata;
 
-	for ( POSITION pos = m_pSources.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pSources.GetHeadPosition(); pos; )
 	{
 		delete m_pSources.GetNext( pos );
 	}
@@ -160,7 +160,7 @@ CString CLibraryFile::GetSearchName() const
 
 	if ( m_pFolder && m_pFolder->m_pParent )
 	{
-		for ( const CLibraryFolder* pFolder = m_pFolder ; ; pFolder = pFolder->m_pParent )
+		for ( const CLibraryFolder* pFolder = m_pFolder; ; pFolder = pFolder->m_pParent )
 		{
 			if ( pFolder->m_pParent == NULL )
 			{
@@ -522,7 +522,7 @@ void CLibraryFile::UpdateMetadata(const CDownload* pDownload)
 		else if ( CXMLElement* pBody = pDownload->m_pXML->GetFirstElement() )
 		{
 			// Recreate metadata
-			TRACE( L"Using download XML:%s", pBody->ToString( FALSE, TRUE ) );
+			TRACE( "Using download XML:%s", pBody->ToString( FALSE, TRUE ) );
 			m_pSchema = SchemaCache.Get( pDownload->m_pXML->GetAttributeValue( CXMLAttribute::schemaName ) );
 			m_pMetadata = pBody->Clone();
 			m_bMetadataAuto = TRUE;
@@ -710,7 +710,7 @@ CSharedSource* CLibraryFile::AddAlternateSources(LPCTSTR pszURLs)
 	CMapStringToFILETIME oUrls;
 	SplitStringToURLs( pszURLs, oUrls );
 
-	for ( POSITION pos = oUrls.GetStartPosition() ; pos ; )
+	for ( POSITION pos = oUrls.GetStartPosition(); pos; )
 	{
 		CString strURL;
 		FILETIME tSeen = {};
@@ -758,7 +758,7 @@ CSharedSource* CLibraryFile::AddAlternateSource(LPCTSTR pszURL, FILETIME* tSeen)
 
 	if ( pURL != *this ) return NULL;
 
-	for ( POSITION pos = m_pSources.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pSources.GetHeadPosition(); pos; )
 	{
 		CSharedSource* pSource = m_pSources.GetNext( pos );
 
@@ -784,7 +784,7 @@ CString CLibraryFile::GetAlternateSources(CList< CString >* pState, int nMaximum
 	GetSystemTime( &stNow );
 	SystemTimeToFileTime( &stNow, &ftNow );
 
-	for ( POSITION pos = m_pSources.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pSources.GetHeadPosition(); pos; )
 	{
 		CSharedSource* pSource = m_pSources.GetNext( pos );
 
@@ -801,7 +801,7 @@ CString CLibraryFile::GetAlternateSources(CList< CString >* pState, int nMaximum
 				pSource->m_sURL.Find( L"Z%2C http://" ) >= 0 )
 			{
 				// Ignore buggy URLs
-				TRACE( L"CLibraryFile::GetAlternateSources() Bad URL: %s\n", pSource->m_sURL );
+				TRACE( "CLibraryFile::GetAlternateSources() Bad URL: %s\n", (LPCSTR)CT2A( pSource->m_sURL ) );
 			}
 			else
 			{
@@ -888,7 +888,7 @@ void CLibraryFile::Serialize(CArchive& ar, int nVersion)
 
 		ar.WriteCount( m_pSources.GetCount() );
 
-		for ( POSITION pos = m_pSources.GetHeadPosition() ; pos ; )
+		for ( POSITION pos = m_pSources.GetHeadPosition(); pos; )
 		{
 			CSharedSource* pSource = m_pSources.GetNext( pos );
 			pSource->Serialize( ar, nVersion );
@@ -962,7 +962,7 @@ void CLibraryFile::Serialize(CArchive& ar, int nVersion)
 			GetSystemTime( &stNow );
 			SystemTimeToFileTime( &stNow, &ftNow );
 
-			for ( DWORD_PTR nSources = ar.ReadCount() ; nSources > 0 ; nSources-- )
+			for ( DWORD_PTR nSources = ar.ReadCount(); nSources > 0; nSources-- )
 			{
 				CSharedSource* pSource = new CSharedSource();
 				if ( pSource == NULL )
@@ -1198,7 +1198,7 @@ BOOL CLibraryFile::PrepareDoc(LPCTSTR pszTemplate, CArray< CString >& oDocs) con
 	{
 		// Should be all meta data replacement
 		const CXMLElement* pMetadata = m_pMetadata;
-		for ( POSITION pos = pMetadata->GetAttributeIterator() ; pos ; )
+		for ( POSITION pos = pMetadata->GetAttributeIterator(); pos; )
 		{
 			const CXMLNode* pNode = pMetadata->GetNextAttribute( pos );
 			CString str = pNode->GetName();

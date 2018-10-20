@@ -1,8 +1,8 @@
 //
 // SecureRule.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2012-2015 and Shareaza 2002-2008
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2008 and PeerProject 2012-2015
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -56,6 +56,7 @@ CSecureRule::CSecureRule(BOOL bCreate)
 
 CSecureRule::CSecureRule(const CSecureRule& pRule)
 {
+	m_nContentLength = 0;
 	m_pContent = NULL;
 	*this = pRule;
 }
@@ -134,7 +135,7 @@ BOOL CSecureRule::Match(LPCTSTR pszContent) const
 	if ( m_nType == srSizeType )	// size:
 		return pszContent[4] == L':' && _tcsistr( pszContent, (LPCTSTR)m_pContent ) != NULL;
 
-	for ( LPCTSTR pszFilter = m_pContent ; *pszFilter ; )
+	for ( LPCTSTR pszFilter = m_pContent; *pszFilter; )
 	{
 		if ( _tcsistr( pszContent, pszFilter ) != NULL )
 		{
@@ -232,7 +233,7 @@ BOOL CSecureRule::Match(const CQuerySearch* pQuery, const CString& strContent) c
 
 	//CString strFilter;
 	//int nTotal = 0;
-	//for ( LPCTSTR pszPattern = m_pContent ; *pszPattern ; pszPattern++ )
+	//for ( LPCTSTR pszPattern = m_pContent; *pszPattern; pszPattern++ )
 	//{
 	//	if ( *pszPattern == '<' )
 	//	{
@@ -242,7 +243,7 @@ BOOL CSecureRule::Match(const CQuerySearch* pQuery, const CString& strContent) c
 	//		bool bAll = ( *pszPattern == '%' || *pszPattern == '$' || *pszPattern == '_' || *pszPattern == '>' );
 	//		if ( ! bAll ) bNumber = ( *pszPattern == '1' || *pszPattern == '2' || *pszPattern == '3' || *pszPattern == '4' ||
 	//			*pszPattern == '5' || *pszPattern == '6' || *pszPattern == '7' || *pszPattern == '8' || *pszPattern == '9' );
-	//		for ( ; *pszPattern ; pszPattern++ )
+	//		for ( ; *pszPattern; pszPattern++ )
 	//		{
 	//			if ( *pszPattern == '>' )
 	//			{
@@ -255,7 +256,7 @@ BOOL CSecureRule::Match(const CQuerySearch* pQuery, const CString& strContent) c
 	//			if ( bAll )	// <%>,<$>,<_>,<>
 	//			{
 	//				// Add all keywords at the "< >" position
-	//				for ( CQuerySearch::const_iterator i = pQuery->begin() ; i != pQuery->end() ; ++i )
+	//				for ( CQuerySearch::const_iterator i = pQuery->begin(); i != pQuery->end(); ++i )
 	//				{
 	//					strFilter.AppendFormat( L"%s\\s*",
 	//						CString( i->first, (int)( i->second ) ) );
@@ -271,7 +272,7 @@ BOOL CSecureRule::Match(const CQuerySearch* pQuery, const CString& strContent) c
 	//					nNumber = ++nTotal;
 	//
 	//				// Add specified keyword at the "< >" position
-	//				for ( CQuerySearch::const_iterator i = pQuery->begin() ; i != pQuery->end() ; ++i, ++nWord )
+	//				for ( CQuerySearch::const_iterator i = pQuery->begin(); i != pQuery->end(); ++i, ++nWord )
 	//				{
 	//					if ( nWord == nNumber )
 	//					{
@@ -327,7 +328,7 @@ void CSecureRule::SetContentWords(const CString& strContent)
 	CList< CString > pWords;
 
 	int nStart = 0, nPos = 0;
-	for ( ; *pszContent ; nPos++, pszContent++ )
+	for ( ; *pszContent; nPos++, pszContent++ )
 	{
 		if ( *pszContent == ' ' || *pszContent == '\t' )
 		{
@@ -358,7 +359,7 @@ void CSecureRule::SetContentWords(const CString& strContent)
 	m_pContent	= new TCHAR[ m_nContentLength = nTotalLength ];
 	pszContent	= m_pContent;
 
-	for ( POSITION pos = pWords.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = pWords.GetHeadPosition(); pos; )
 	{
 		CString strWord = pWords.GetNext( pos );
 		CopyMemory( pszContent, (LPCTSTR)strWord, ( strWord.GetLength() + 1 ) * sizeof( TCHAR ) );
@@ -380,7 +381,7 @@ CString CSecureRule::GetContentWords() const
 	ASSERT( m_nType != srAddress );
 
 	CString strWords;
-	for ( LPCTSTR pszFilter = m_pContent ; *pszFilter ; )
+	for ( LPCTSTR pszFilter = m_pContent; *pszFilter; )
 	{
 		if ( ! strWords.IsEmpty() )
 			strWords += L' ';
@@ -459,7 +460,7 @@ void CSecureRule::Serialize(CArchive& ar, int /*nVersion*/)
 			//
 			//	if ( nVersion < 3 )
 			//	{
-			//		for ( DWORD_PTR nCount = ar.ReadCount() ; nCount > 0 ; nCount-- )
+			//		for ( DWORD_PTR nCount = ar.ReadCount(); nCount > 0; nCount-- )
 			//		{
 			//			CString strWord;
 			//			ar >> strWord;
@@ -560,7 +561,7 @@ CXMLElement* CSecureRule::ToXML()
 	return pXML;
 }
 
-BOOL CSecureRule::FromXML(CXMLElement* pXML)
+BOOL CSecureRule::FromXML(const CXMLElement* pXML)
 {
 	m_sComment = pXML->GetAttributeValue( L"comment" );
 
@@ -568,7 +569,7 @@ BOOL CSecureRule::FromXML(CXMLElement* pXML)
 
 	if ( strType.CompareNoCase( L"address" ) == 0 )
 	{
-		int x[4];
+		int x[4] = {};
 
 		m_nType = srAddress;
 
@@ -662,9 +663,9 @@ CString CSecureRule::ToGnucleusString() const
 	}
 	else
 	{
-		BYTE nFrom[4], nTo[4];
+		BYTE nFrom[4] = {}, nTo[4] = {};
 
-		for ( int nByte = 0 ; nByte < 4 ; nByte++ )
+		for ( int nByte = 0; nByte < 4; nByte++ )
 		{
 			nFrom[ nByte ]	= m_nIP[ nByte ] & m_nMask[ nByte ];
 			nTo[ nByte ]	= m_nIP[ nByte ] | ( ~m_nMask[ nByte ] );
@@ -684,9 +685,9 @@ CString CSecureRule::ToGnucleusString() const
 
 BOOL CSecureRule::FromGnucleusString(CString& str)
 {
-	int nPos, x[4];
+	int x[4] = {};
 
-	nPos = str.Find( L':' );
+	int nPos = str.Find( L':' );
 	if ( nPos < 1 ) return FALSE;
 
 	CString strAddress = str.Left( nPos );
@@ -707,11 +708,11 @@ BOOL CSecureRule::FromGnucleusString(CString& str)
 		if ( _stscanf( strAddress, L"%i.%i.%i.%i", &x[0], &x[1], &x[2], &x[3] ) != 4 )
 			return FALSE;
 
-		for ( int nByte = 0 ; nByte < 4 ; nByte++ )
+		for ( int nByte = 0; nByte < 4; nByte++ )
 		{
 			BYTE nTop = (BYTE)x[ nByte ], nBase = (BYTE)x[ nByte ];
 
-			for ( BYTE nValue = m_nIP[ nByte ] ; nValue < nTop ; nValue++ )
+			for ( BYTE nValue = m_nIP[ nByte ]; nValue < nTop; nValue++ )
 			{
 				m_nMask[ nByte ] &= ~( nValue ^ nBase );
 			}
@@ -735,13 +736,13 @@ void CSecureRule::MaskFix()
 {
 	DWORD nNetwork = 0, nOldMask = 0, nNewMask = 0;
 
-	for ( int nByte = 0 ; nByte < 4 ; nByte++ )		// Convert the byte arrays to dwords
+	for ( int nByte = 0; nByte < 4; nByte++ )		// Convert the byte arrays to dwords
 	{
 		BYTE nMaskByte = 0;
 		BYTE nNetByte = 0;
 		nNetByte = m_nIP[ nByte ];
 		nMaskByte = m_nMask[ nByte ];
-		for ( int nBits = 0 ; nBits < 8 ; nBits++ )
+		for ( int nBits = 0; nBits < 8; nBits++ )
 		{
 			nNetwork <<= 1;
 			if ( nNetByte & 0x80 )
@@ -759,7 +760,7 @@ void CSecureRule::MaskFix()
 
 	DWORD nTempMask = nOldMask;
 
-	for ( int nBits = 0 ; nBits < 32 ; nBits++ )	// Get upper contiguous bits from subnet mask
+	for ( int nBits = 0; nBits < 32; nBits++ )	// Get upper contiguous bits from subnet mask
 	{
 		if ( nTempMask & 0x80000000 )				// Check the high bit
 		{
@@ -781,10 +782,10 @@ void CSecureRule::MaskFix()
 
 	nNetwork &= nNewMask;							// Do the & now so we don't have to each time there's a match
 
-	for ( int nByte = 0 ; nByte < 4 ; nByte++ )		// Convert the dwords back to byte arrays
+	for ( int nByte = 0; nByte < 4; nByte++ )		// Convert the dwords back to byte arrays
 	{
 		BYTE nNetByte = 0;
-		for ( int nBits = 0 ; nBits < 8 ; nBits++ )
+		for ( int nBits = 0; nBits < 8; nBits++ )
 		{
 			nNetByte <<= 1;
 			if ( nNetwork & 0x80000000 )

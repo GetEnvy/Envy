@@ -1,8 +1,8 @@
 //
 // QueryHit.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2016 and Shareaza 2002-2008
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2008 and PeerProject 2008-2016
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -269,7 +269,7 @@ CQueryHit* CQueryHit::FromG1Packet(CG1Packet* pPacket, int* pnHops)
 		pPacket->Read( oClientID );
 
 		DWORD nIndex = 0;
-		for ( CQueryHit* pHit = pFirstHit ; pHit ; pHit = pHit->m_pNext, nIndex++ )
+		for ( CQueryHit* pHit = pFirstHit; pHit; pHit = pHit->m_pNext, nIndex++ )
 		{
 			pHit->ParseAttributes( oClientID, pVendor, nFlags, bChat, bBrowseHost );
 			pHit->Resolve();
@@ -599,7 +599,7 @@ CQueryHit* CQueryHit::FromG2Packet(CG2Packet* pPacket, int* pnHops)
 		bPush = ( nPort == 0 || Network.IsFirewalledAddress( (IN_ADDR*)&nAddress ) );
 
 	DWORD nIndex = 0;
-	for ( CQueryHit* pHit = pFirstHit ; pHit ; pHit = pHit->m_pNext, nIndex++ )
+	for ( CQueryHit* pHit = pFirstHit; pHit; pHit = pHit->m_pNext, nIndex++ )
 	{
 		if ( nGroupState[ pHit->m_nGroup ][0] == FALSE )
 			pHit->m_nGroup = 0;
@@ -639,7 +639,7 @@ CQueryHit* CQueryHit::FromG2Packet(CG2Packet* pPacket, int* pnHops)
 	{
 		if ( pFirstHit && ! Settings.Experimental.LAN_Mode )
 		{
-			for ( CQueryHit* pHit = pFirstHit ; pHit ; pHit = pHit->m_pNext )
+			for ( CQueryHit* pHit = pFirstHit; pHit; pHit = pHit->m_pNext )
 			{
 				pHit->m_bBogus = TRUE;
 			}
@@ -648,7 +648,7 @@ CQueryHit* CQueryHit::FromG2Packet(CG2Packet* pPacket, int* pnHops)
 	else
 	{
 		// Now add all hub list to the route cache
-		for ( NodeIter iter = pTestNodeList.begin() ; iter != pTestNodeList.end() ; iter++ )
+		for ( NodeIter iter = pTestNodeList.begin(); iter != pTestNodeList.end(); iter++ )
 		{
 			SOCKADDR_IN pHub = { AF_INET };
 			pHub.sin_addr.s_addr = iter->first;
@@ -928,10 +928,10 @@ CXMLElement* CQueryHit::ReadXML(CG1Packet* pPacket, int nSize)
 	}
 
 	CXMLElement* pRoot = NULL;
-	for ( ; nSize && pszXML ; pszXML++, nSize-- )
+	for ( ; nSize && pszXML; pszXML++, nSize-- )
 	{
 		// Skip up to "<"
-		for ( ; nSize && *pszXML && *pszXML != '<' ; pszXML++, nSize-- );
+		for ( ; nSize && *pszXML && *pszXML != '<'; pszXML++, nSize-- );
 
 		if ( nSize < 5 )
 			break;
@@ -997,7 +997,7 @@ BOOL CQueryHit::CheckValid() const
 	}
 
 	WORD nCurWord = 0, nWords = 1;
-	for ( LPCTSTR pszName = m_sName ; *pszName ; pszName++ )
+	for ( LPCTSTR pszName = m_sName; *pszName; pszName++ )
 	{
 		if ( _istgraph( *pszName ) && *pszName != L'_' &&
 			*pszName != L'-' && *pszName != L'+' &&
@@ -1102,7 +1102,7 @@ void CQueryHit::ReadGGEP(CG1Packet* pPacket)
 		Hashes::Md5Hash		oMD5;
 
 		CGGEPItem* pItemPos = pGGEP.GetFirst();
-		for ( BYTE nItemCount = 0 ; pItemPos && nItemCount < pGGEP.GetCount() ; nItemCount++, pItemPos = pItemPos->m_pNext )
+		for ( BYTE nItemCount = 0; pItemPos && nItemCount < pGGEP.GetCount(); nItemCount++, pItemPos = pItemPos->m_pNext )
 		{
 			if ( pItemPos->IsNamed( GGEP_HEADER_HASH ) )
 			{
@@ -1809,11 +1809,11 @@ void CQueryHit::Resolve()
 
 BOOL CQueryHit::ParseXML(CXMLElement* pMetaData, DWORD nRealIndex)
 {
-	for ( POSITION pos1 = pMetaData->GetElementIterator() ; pos1 ; )
+	for ( POSITION pos1 = pMetaData->GetElementIterator(); pos1; )
 	{
 		CXMLElement* pXML = pMetaData->GetNextElement( pos1 );
 
-		for ( POSITION pos2 = pXML->GetElementIterator() ; pos2 ; )
+		for ( POSITION pos2 = pXML->GetElementIterator(); pos2; )
 		{
 			CXMLElement* pHit = pXML->GetNextElement( pos2 );
 
@@ -1894,7 +1894,7 @@ CQueryHit& CQueryHit::operator=(const CQueryHit& pOther)
 
 void CQueryHit::Delete()
 {
-	for ( CQueryHit* pHit = this ; pHit ; )
+	for ( CQueryHit* pHit = this; pHit; )
 	{
 		CQueryHit* pNext = pHit->m_pNext;
 		delete pHit;

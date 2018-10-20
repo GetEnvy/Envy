@@ -1,8 +1,8 @@
 //
 // NeighboursWithConnect.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2017
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2008
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2008 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -103,7 +103,7 @@ CNeighbour* CNeighboursWithConnect::ConnectTo(
 	{
 		// If not automatic (do), report that this address is on the block list, and return no new connection made
 		if ( ! bAutomatic )
-			theApp.Message( MSG_ERROR, IDS_NETWORK_SECURITY_OUTGOING, (LPCTSTR)CString( inet_ntoa( pAddress ) ) );
+			theApp.Message( MSG_ERROR, IDS_SECURITY_OUTGOING, (LPCTSTR)CString( inet_ntoa( pAddress ) ) );
 		return NULL;
 	}
 
@@ -255,7 +255,7 @@ void CNeighboursWithConnect::PeerPrune(PROTOCOLID nProtocol)
 	BOOL bNeedMoreAnyProtocol = NeedMoreHubs( PROTOCOL_NULL );
 
 	// Loop through all the neighbours in the list
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		// Get the neighbour at this position in the list, and move to the next one
 		CNeighbour* pNeighbour = GetNext( pos );
@@ -652,7 +652,7 @@ bool CNeighboursWithConnect::NeedMoreHubs(PROTOCOLID nProtocol) const
 	DWORD nConnected[PROTOCOL_LAST] = {};
 
 	// Count the number of hubs we are connected to, by looping for each neighbour in the list
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		const CNeighbour* pNeighbour = GetNext( pos );
 
@@ -712,7 +712,7 @@ bool CNeighboursWithConnect::NeedMoreLeafs(PROTOCOLID nProtocol) const
 	DWORD nConnected[ PROTOCOL_LAST ] = {};
 
 	// Count the number of leaf connections we have, by looping for each neighbour in the list
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		const CNeighbour* pNeighbour = GetNext( pos );
 
@@ -774,7 +774,7 @@ bool CNeighboursWithConnect::NeedMoreLeafs(PROTOCOLID nProtocol) const
 //	DWORD nConnected[ PROTOCOL_LAST ] = {};
 //
 //	// Count how many leaves are connected to us, by looping for each neighbour in the list
-//	for ( POSITION pos = GetIterator() ; pos ; )
+//	for ( POSITION pos = GetIterator(); pos; )
 //	{
 //		CNeighbour* pNeighbour = GetNext( pos );
 //
@@ -814,7 +814,9 @@ void CNeighboursWithConnect::OnRun()
 	// Call DoRun on each neighbour in the list, control goes to CNeighboursBase::OnRun()
 	CNeighboursWithRouting::OnRun();
 
-	if ( ! Network.m_pSection.Lock( 100 ) ) return;
+	CSingleLock pLock( &Network.m_pSection );
+	if ( ! pLock.Lock( 100 ) )
+		return;
 
 	// Maintain the network (do)
 	// Count how many connections of each type we have, calculate how many we should have, and close and open connections accordingly
@@ -824,8 +826,6 @@ void CNeighboursWithConnect::OnRun()
 
 	if ( Network.IsConnected() && Network.m_bAutoConnect )
 		Maintain();
-
-	Network.m_pSection.Unlock();
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -842,7 +842,7 @@ void CNeighboursWithConnect::MaintainNodeStatus()
 	DWORD nBandwidthIn	= 0;
 	DWORD nBandwidthOut	= 0;
 
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		CNeighbour* pNeighbour = GetNext( pos );
 
@@ -901,7 +901,7 @@ void CNeighboursWithConnect::Maintain()
 
 	// Loop down the list of connected neighbours, sorting each by network and role and counting it
 	// Also prune leaf to leaf connections, which shouldn't happen
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		// Get the next neighbour in the list
 		CNeighbour* pNeighbour = GetNext( pos );
@@ -1009,7 +1009,7 @@ void CNeighboursWithConnect::Maintain()
 	nCount[ PROTOCOL_G2 ][ ntNode ] += nCount[ PROTOCOL_NULL ][ ntNode ];
 
 	// Connect to more computers or disconnect from some to get the connection counts where settings wants them to be
-	for ( int nProtocol = PROTOCOL_NULL ; nProtocol < PROTOCOL_LAST ; ++nProtocol )		// Loop once for each protocol
+	for ( int nProtocol = PROTOCOL_NULL; nProtocol < PROTOCOL_LAST; ++nProtocol )		// Loop once for each protocol
 	{
 		// If we're connected to a hub of this protocol, store the tick count now in m_tPresent for this protocol
 		if ( nCount[ nProtocol ][ ntHub ] > 0 ) m_tPresent[ nProtocol ] = tNow;
@@ -1057,8 +1057,8 @@ void CNeighboursWithConnect::Maintain()
 
 			// Handle priority servers
 			// Loop into the host cache until we have as many handshaking connections as we need hub connections
-			for ( CHostCacheIterator i = pCache->Begin() ;
-				i != pCache->End() && nCount[ nProtocol ][ ntNode ] < nAttempt ;
+			for ( CHostCacheIterator i = pCache->Begin();
+				i != pCache->End() && nCount[ nProtocol ][ ntNode ] < nAttempt;
 				++i )
 			{
 				CHostCacheHostPtr pHost = (*i);
@@ -1093,8 +1093,8 @@ void CNeighboursWithConnect::Maintain()
 			if ( tNow > m_tPriority[ nProtocol ] + 10 )
 			{
 				// Handle regular servers, if we need more connections for this network, get IP addresses from the host cache and try to connect to them
-				for ( CHostCacheIterator i = pCache->Begin() ;
-					i != pCache->End() && nCount[ nProtocol ][ ntNode ] < nAttempt ;
+				for ( CHostCacheIterator i = pCache->Begin();
+					i != pCache->End() && nCount[ nProtocol ][ ntNode ] < nAttempt;
 					++i )
 				{
 					CHostCacheHostPtr pHost = (*i);
@@ -1153,7 +1153,7 @@ void CNeighboursWithConnect::Maintain()
 			// Otherwise we have too many hub connections for this protocol,
 			// so find the hub we connected to most recently to remove it.
 			CNeighbour* pNewest = NULL;
-			for ( POSITION pos = GetIterator() ; pos ; )
+			for ( POSITION pos = GetIterator(); pos; )
 			{
 				// Loop through the list of neighbours
 				CNeighbour* pNeighbour = GetNext( pos );
@@ -1180,7 +1180,7 @@ void CNeighboursWithConnect::Maintain()
 		{
 			// Find the leaf we most recently connected to
 			CNeighbour* pNewest = NULL;
-			for ( POSITION pos = GetIterator() ; pos ; )
+			for ( POSITION pos = GetIterator(); pos; )
 			{
 				// Loop for each neighbour in the list
 				CNeighbour* pNeighbour = GetNext( pos );

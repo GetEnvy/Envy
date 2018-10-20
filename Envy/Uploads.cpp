@@ -1,8 +1,8 @@
 //
 // Uploads.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2008
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2008 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -66,7 +66,7 @@ void CUploads::Clear(BOOL bMessage)
 {
 	CQuickLock oTransfersLock( Transfers.m_pSection );
 
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		GetNext( pos )->Remove( bMessage );
 	}
@@ -84,7 +84,7 @@ DWORD CUploads::GetCount(CUploadTransfer* pExcept, int nState) const
 
 	DWORD nCount = 0;
 
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		CUploadTransfer* pUpload = GetNext( pos );
 
@@ -112,7 +112,7 @@ DWORD CUploads::GetTorrentCount(int nState) const
 {
 	DWORD nCount = 0;
 
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		CUploadTransfer* pUpload = GetNext( pos );
 
@@ -152,7 +152,7 @@ DWORD CUploads::GetBandwidth() const
 {
 	DWORD nTotal = 0;
 
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		nTotal += GetNext( pos )->GetMeasuredSpeed();
 	}
@@ -185,7 +185,7 @@ BOOL CUploads::AllowMoreTo(const IN_ADDR* pAddress) const
 {
 	DWORD nCount = 0;
 
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		const CUploadTransfer* pUpload = GetNext( pos );
 
@@ -204,7 +204,7 @@ BOOL CUploads::CanUploadFileTo(const IN_ADDR* pAddress, const CEnvyFile* pFile) 
 {
 	DWORD nCount = 0;
 
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		const CUploadTransfer* pUpload = GetNext( pos );
 
@@ -229,7 +229,7 @@ BOOL CUploads::EnforcePerHostLimit(CUploadTransfer* pHit, BOOL bRequest)
 {
 	DWORD nCount = 0;
 
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		const CUploadTransfer* pUpload = GetNext( pos );
 
@@ -249,7 +249,7 @@ BOOL CUploads::EnforcePerHostLimit(CUploadTransfer* pHit, BOOL bRequest)
 	{
 		CUploadTransfer* pNewest = NULL;
 
-		for ( POSITION pos = GetIterator() ; pos ; )
+		for ( POSITION pos = GetIterator(); pos; )
 		{
 			CUploadTransfer* pUpload = GetNext( pos );
 
@@ -319,7 +319,7 @@ void CUploads::OnRun()
 	m_nBandwidth = 0;
 
 	// Set measured queue speeds to 0
-	for ( POSITION pos = UploadQueues.GetIterator() ; pos ; )
+	for ( POSITION pos = UploadQueues.GetIterator(); pos; )
 	{
 		UploadQueues.GetNext( pos )->m_nMeasured = 0;
 	}
@@ -327,7 +327,7 @@ void CUploads::OnRun()
 	UploadQueues.m_pTorrentQueue->m_nMinTransfers = 0;
 	UploadQueues.m_pTorrentQueue->m_nMaxTransfers = 0;
 
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		CUploadTransfer* pTransfer = GetNext( pos );
 
@@ -406,7 +406,7 @@ BOOL CUploads::OnAccept(CConnection* pConnection)
 
 		if ( CUploadTransfer* pUpload = new CUploadTransferHTTP() )
 		{
-			for ( POSITION pos = GetIterator() ; pos ; )
+			for ( POSITION pos = GetIterator(); pos; )
 			{
 				CUploadTransfer* pTest = GetNext( pos );
 
@@ -431,7 +431,7 @@ void CUploads::OnRename(LPCTSTR pszSource, LPCTSTR pszTarget)
 {
 	CQuickLock oTransfersLock( Transfers.m_pSection );
 
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		GetNext( pos )->OnRename( pszSource, pszTarget );
 	}

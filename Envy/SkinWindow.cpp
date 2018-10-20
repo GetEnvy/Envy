@@ -1,8 +1,8 @@
 //
 // SkinWindow.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2016 and Shareaza 2002-2008
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2008 and PeerProject 2008-2016
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -88,7 +88,7 @@ CSkinWindow::~CSkinWindow()
 
 	if ( m_pRegionXML ) delete m_pRegionXML;
 
-	for ( POSITION pos = m_pPartList.GetStartPosition() ; pos ; )
+	for ( POSITION pos = m_pPartList.GetStartPosition(); pos; )
 	{
 		CRect* pRect;
 		CString str;
@@ -96,7 +96,7 @@ CSkinWindow::~CSkinWindow()
 		delete pRect;
 	}
 
-	for ( POSITION pos = m_pAnchorList.GetStartPosition() ; pos ; )
+	for ( POSITION pos = m_pAnchorList.GetStartPosition(); pos; )
 	{
 		CRect* pRect;
 		CString str;
@@ -144,7 +144,7 @@ BOOL CSkinWindow::Parse(CXMLElement* pBase, const CString& strPath)
 	CString str;
 	CRect rc;
 
-	for ( POSITION pos = pBase->GetElementIterator() ; pos ; )
+	for ( POSITION pos = pBase->GetElementIterator(); pos; )
 	{
 		CXMLElement* pGroup = pBase->GetNextElement( pos );
 
@@ -161,7 +161,7 @@ BOOL CSkinWindow::Parse(CXMLElement* pBase, const CString& strPath)
 		}
 		else if ( pGroup->IsNamed( L"parts" ) )
 		{
-			for ( POSITION posInner = pGroup->GetElementIterator() ; posInner ; )
+			for ( POSITION posInner = pGroup->GetElementIterator(); posInner; )
 			{
 				const CXMLElement* pXML = pGroup->GetNextElement( posInner );
 				if ( ! pXML->IsNamed( L"part" ) )
@@ -185,7 +185,7 @@ BOOL CSkinWindow::Parse(CXMLElement* pBase, const CString& strPath)
 				//	nMode = SKINPARTMODE_TILE;
 
 				int nPart = 0;
-				for ( ; pszPart[ nPart ] ; nPart++ )
+				for ( ; pszPart[ nPart ]; nPart++ )
 				{
 					if ( _tcsicmp( strName, pszPart[ nPart ] ) == 0 )
 					{
@@ -214,7 +214,7 @@ BOOL CSkinWindow::Parse(CXMLElement* pBase, const CString& strPath)
 		}
 		else if ( pGroup->IsNamed( L"anchors" ) )
 		{
-			for ( POSITION posInner = pGroup->GetElementIterator() ; posInner ; )
+			for ( POSITION posInner = pGroup->GetElementIterator(); posInner; )
 			{
 				const CXMLElement* pXML = pGroup->GetNextElement( posInner );
 				if ( ! pXML->IsNamed( L"anchor" ) )
@@ -228,7 +228,7 @@ BOOL CSkinWindow::Parse(CXMLElement* pBase, const CString& strPath)
 				CString strName = pXML->GetAttributeValue( L"name" );
 
 				int nAnchor = 0;
-				for ( ; pszAnchor[ nAnchor ] ; nAnchor++ )
+				for ( ; pszAnchor[ nAnchor ]; nAnchor++ )
 				{
 					if ( _tcsicmp( strName, pszAnchor[ nAnchor ] ) == 0 )
 					{
@@ -789,9 +789,9 @@ BOOL CSkinWindow::OnEraseBkgnd(CWnd* pWnd, CDC* pDC)
 	CRect rc;
 	pWnd->GetClientRect( &rc );
 
-	for ( int nY = rc.top ; nY < rc.bottom ; nY += pWatermark.bmHeight )
+	for ( int nY = rc.top; nY < rc.bottom; nY += pWatermark.bmHeight )
 	{
-		for ( int nX = rc.left ; nX < rc.right ; nX += pWatermark.bmWidth )
+		for ( int nX = rc.left; nX < rc.right; nX += pWatermark.bmWidth )
 		{
 			pDC->BitBlt( nX, nY, pWatermark.bmWidth, pWatermark.bmHeight, &m_dcSkin, 0, 0, SRCCOPY );
 		}
@@ -1075,7 +1075,7 @@ void CSkinWindow::Paint(CWnd* pWnd, TRISTATE bActive)
 
 	// Window Buttons
 
-	for ( int nAnchor = SKINANCHOR_MENU ; nAnchor <= SKINANCHOR_CLOSE ; nAnchor++ )
+	for ( int nAnchor = SKINANCHOR_MENU; nAnchor <= SKINANCHOR_CLOSE; nAnchor++ )
 	{
 		if ( m_bAnchor[ nAnchor ] )
 		{
@@ -1353,7 +1353,7 @@ void CSkinWindow::Paint(CWnd* pWnd, TRISTATE bActive)
 			}
 			else
 			{
-				for ( int nX = rcTop.left ; nX < rcTop.right ; nX += pRect->Width() )
+				for ( int nX = rcTop.left; nX < rcTop.right; nX += pRect->Width() )
 				{
 					pDC->BitBlt( nX, 0, min( pRect->Width(), rcTop.right - nX ),
 						pRect->Height(), &m_dcSkin, pRect->left, pRect->top, SRCCOPY );
@@ -1373,7 +1373,7 @@ void CSkinWindow::Paint(CWnd* pWnd, TRISTATE bActive)
 			}
 			else
 			{
-				for ( int nX = rcTop.left ; nX < rcTop.right ; nX += pRect->Width() )
+				for ( int nX = rcTop.left; nX < rcTop.right; nX += pRect->Width() )
 				{
 					pDC->BitBlt( nX, 0, min( pRect->Width(), rcTop.right - nX ),
 						pRect->Height(), &m_dcSkin, pRect->left, pRect->top, SRCCOPY );
@@ -1397,7 +1397,7 @@ void CSkinWindow::Paint(CWnd* pWnd, TRISTATE bActive)
 			}
 			else
 			{
-				for ( int nY = rcLeft.top ; nY < rcLeft.bottom ; nY += pRect->Height() )
+				for ( int nY = rcLeft.top; nY < rcLeft.bottom; nY += pRect->Height() )
 				{
 					dc.BitBlt( 0, nY, pRect->Width(), min( pRect->Height(), int(rcLeft.bottom - nY) ),
 						&m_dcSkin, pRect->left, pRect->top, SRCCOPY );
@@ -1417,7 +1417,7 @@ void CSkinWindow::Paint(CWnd* pWnd, TRISTATE bActive)
 			}
 			else
 			{
-				for ( int nY = rcLeft.top ; nY < rcLeft.bottom ; nY += pRect->Height() )
+				for ( int nY = rcLeft.top; nY < rcLeft.bottom; nY += pRect->Height() )
 				{
 					dc.BitBlt( 0, nY, pRect->Width(), min( pRect->Height(), int(rcLeft.bottom - nY) ),
 						&m_dcSkin, pRect->left, pRect->top, SRCCOPY );
@@ -1441,7 +1441,7 @@ void CSkinWindow::Paint(CWnd* pWnd, TRISTATE bActive)
 			}
 			else
 			{
-				for ( int nY = rcRight.top ; nY < rcRight.bottom ; nY += pRect->Height() )
+				for ( int nY = rcRight.top; nY < rcRight.bottom; nY += pRect->Height() )
 				{
 					dc.BitBlt( rc.right - pRect->Width(), nY, pRect->Width(),
 						min( pRect->Height(), rcRight.bottom - nY ),
@@ -1462,7 +1462,7 @@ void CSkinWindow::Paint(CWnd* pWnd, TRISTATE bActive)
 			}
 			else
 			{
-				for ( int nY = rcRight.top ; nY < rcRight.bottom ; nY += pRect->Height() )
+				for ( int nY = rcRight.top; nY < rcRight.bottom; nY += pRect->Height() )
 				{
 					dc.BitBlt( rc.right - pRect->Width(), nY, pRect->Width(),
 						min( pRect->Height(), rcRight.bottom - nY ),
@@ -1488,7 +1488,7 @@ void CSkinWindow::Paint(CWnd* pWnd, TRISTATE bActive)
 			}
 			else
 			{
-				for ( int nX = rcBottom.left ; nX < rcBottom.right ; nX += pRect->Width() )
+				for ( int nX = rcBottom.left; nX < rcBottom.right; nX += pRect->Width() )
 				{
 					dc.BitBlt( nX, rc.bottom - pRect->Height(),
 						min( pRect->Width(), rcBottom.right - nX ), pRect->Height(),
@@ -1510,7 +1510,7 @@ void CSkinWindow::Paint(CWnd* pWnd, TRISTATE bActive)
 			}
 			else
 			{
-				for ( int nX = rcBottom.left ; nX < rcBottom.right ; nX += pRect->Width() )
+				for ( int nX = rcBottom.left; nX < rcBottom.right; nX += pRect->Width() )
 				{
 					dc.BitBlt( nX, rc.bottom - pRect->Height(),
 						min( pRect->Width(), rcBottom.right - nX ), pRect->Height(),
@@ -1658,7 +1658,7 @@ void CSkinWindow::SelectRegion(CWnd* pWnd)
 	rcWnd.right++;
 	rcWnd.bottom++;
 
-	for ( POSITION pos = m_pRegionXML->GetElementIterator() ; pos ; )
+	for ( POSITION pos = m_pRegionXML->GetElementIterator(); pos; )
 	{
 		const CXMLElement* pXML = m_pRegionXML->GetNextElement( pos );
 		if ( ! pXML->IsNamed( L"shape" ) ) continue;
@@ -1741,7 +1741,7 @@ CSize CSkinWindow::GetRegionSize()
 
 	CRect rcTotal( 0, 0, 0, 0 );
 
-	for ( POSITION pos = m_pRegionXML->GetElementIterator() ; pos ; )
+	for ( POSITION pos = m_pRegionXML->GetElementIterator(); pos; )
 	{
 		const CXMLElement* pXML = m_pRegionXML->GetNextElement( pos );
 		CRect rcPart;
@@ -1819,7 +1819,7 @@ BOOL CSkinWindow::PreBlend(CBitmap* pbmTarget, const CRect& rcTarget, const CRec
 	nWidth = min( nWidth, pCacheInfo.bmiHeader.biWidth - rcTarget.left );
 	if ( nWidth > 0 )
 	{
-		for ( int nY = min( rcTarget.Height(), rcSource.Height() ) ; nY ; nY--, nSrcY++, nDstY++ )
+		for ( int nY = min( rcTarget.Height(), rcSource.Height() ); nY; nY--, nSrcY++, nDstY++ )
 		{
 			BYTE* pCachePtr = pCacheData.get() + nDstY * nCachePitch + nDstLeft;
 			BYTE* pImagePtr = pImageData.get() + nSrcY * nImagePitch + nSrcLeft;
@@ -1835,7 +1835,7 @@ BOOL CSkinWindow::PreBlend(CBitmap* pbmTarget, const CRect& rcTarget, const CRec
 			else if ( bAlpha && nSrcY < -pAlphaInfo.bmiHeader.biHeight )
 			{
 				BYTE* pAlphaPtr = pAlphaData.get() + nSrcY * nAlphaPitch + nSrcLeft;
-				for ( int nX = nWidth ; nX ; nX-- )
+				for ( int nX = nWidth; nX; nX-- )
 				{
 					register BYTE nAlpha = *pAlphaPtr; pAlphaPtr += 3;
 					*pCachePtr = (BYTE)( ( (DWORD)(*pCachePtr) * ( 255 - nAlpha ) + (*pImagePtr) * nAlpha ) / 255 );

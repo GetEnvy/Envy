@@ -2,7 +2,7 @@
 // CtrlUploads.cpp
 //
 // This file is part of Envy (getenvy.com) © 2016-2018
-// Portions copyright PeerProject 2008-2015 and Shareaza 2002-2007
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2015
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -174,7 +174,7 @@ void CUploadsCtrl::SaveColumnState()
 
 	CString strOrdering, strWidths, strItem;
 
-	for ( int nColumns = 0 ; m_wndHeader.GetItem( nColumns, &pItem ) ; nColumns++ )
+	for ( int nColumns = 0; m_wndHeader.GetItem( nColumns, &pItem ); nColumns++ )
 	{
 		m_wndHeader.GetItem( nColumns, &pItem );
 
@@ -203,7 +203,7 @@ BOOL CUploadsCtrl::LoadColumnState()
 		strOrdering = strOrdering.Mid( 2 );
 	}
 
-	for ( int nColumns = 0 ; m_wndHeader.GetItem( nColumns, &pItem ) ; nColumns++ )
+	for ( int nColumns = 0; m_wndHeader.GetItem( nColumns, &pItem ); nColumns++ )
 	{
 		if ( strWidths.GetLength() < 4 || strOrdering.GetLength() < 2 )
 			return FALSE;
@@ -252,7 +252,7 @@ void CUploadsCtrl::SelectTo(int nIndex)
 	{
 		if ( m_nFocus < nIndex )
 		{
-			for ( m_nFocus++ ; m_nFocus <= nIndex ; m_nFocus++ )
+			for ( m_nFocus++; m_nFocus <= nIndex; m_nFocus++ )
 			{
 				GetAt( m_nFocus, &pQueue, &pFile );
 				if ( pQueue ) pQueue->m_bSelected = TRUE;
@@ -261,7 +261,7 @@ void CUploadsCtrl::SelectTo(int nIndex)
 		}
 		else if ( m_nFocus > nIndex )
 		{
-			for ( m_nFocus-- ; m_nFocus >= nIndex ; m_nFocus-- )
+			for ( m_nFocus--; m_nFocus >= nIndex; m_nFocus-- )
 			{
 				GetAt( m_nFocus, &pQueue, &pFile );
 				if ( pQueue != NULL ) pQueue->m_bSelected = TRUE;
@@ -321,13 +321,13 @@ void CUploadsCtrl::DeselectAll(CUploadFile* /*pExcept*/)
 	UploadQueues.m_pTorrentQueue->m_bSelected = FALSE;
 	UploadQueues.m_pHistoryQueue->m_bSelected = FALSE;
 
-	for ( POSITION pos = UploadQueues.GetIterator() ; pos ; )
+	for ( POSITION pos = UploadQueues.GetIterator(); pos; )
 	{
 		CUploadQueue* pQueue = UploadQueues.GetNext( pos );
 		pQueue->m_bSelected = FALSE;
 	}
 
-	for ( POSITION pos = UploadFiles.GetIterator() ; pos ; )
+	for ( POSITION pos = UploadFiles.GetIterator(); pos; )
 	{
 		CUploadFile* pFile = UploadFiles.GetNext( pos );
 	//	if ( pFile == pExcept ) continue;
@@ -362,7 +362,7 @@ BOOL CUploadsCtrl::HitTest(const CPoint& point, CUploadQueue** ppQueue, CUploadF
 	if ( ! pLock.Lock( 500 ) )
 		return FALSE;
 
-	for ( POSITION posQueue = GetQueueIterator() ; posQueue && rcItem.top < rcClient.bottom ; )
+	for ( POSITION posQueue = GetQueueIterator(); posQueue && rcItem.top < rcClient.bottom; )
 	{
 		CUploadQueue* pQueue = GetNextQueue( posQueue );
 
@@ -430,7 +430,7 @@ BOOL CUploadsCtrl::HitTest(int nIndex, CUploadQueue** ppQueue, CUploadFile** ppF
 	if ( ! pLock.Lock( 500 ) )
 		return FALSE;
 
-	for ( POSITION posQueue = GetQueueIterator() ; posQueue && nCount >= 0 ; )
+	for ( POSITION posQueue = GetQueueIterator(); posQueue && nCount >= 0; )
 	{
 		CUploadQueue* pQueue = GetNextQueue( posQueue );
 
@@ -491,7 +491,7 @@ BOOL CUploadsCtrl::GetAt(int nSelect, CUploadQueue** ppQueue, CUploadFile** ppFi
 	if ( ! SafeLock( pLock ) )
 		return FALSE;
 
-	for ( POSITION posQueue = GetQueueIterator() ; posQueue ; )
+	for ( POSITION posQueue = GetQueueIterator(); posQueue; )
 	{
 		CUploadQueue* pQueue = GetNextQueue( posQueue );
 
@@ -586,7 +586,7 @@ POSITION CUploadsCtrl::GetFileIterator(CUploadQueue* pQueue)
 
 	if ( pQueue == UploadQueues.m_pTorrentQueue )
 	{
-		for ( POSITION posNext = UploadFiles.GetIterator() ; posNext ; )
+		for ( POSITION posNext = UploadFiles.GetIterator(); posNext; )
 		{
 			POSITION posThis = posNext;
 			CUploadFile* pFile = UploadFiles.GetNext( posNext );
@@ -598,7 +598,7 @@ POSITION CUploadsCtrl::GetFileIterator(CUploadQueue* pQueue)
 	}
 	else if ( pQueue == UploadQueues.m_pHistoryQueue )
 	{
-		for ( POSITION posNext = UploadFiles.GetIterator() ; posNext ; )
+		for ( POSITION posNext = UploadFiles.GetIterator(); posNext; )
 		{
 			POSITION posThis = posNext;
 			CUploadFile* pFile = UploadFiles.GetNext( posNext );
@@ -641,7 +641,7 @@ CUploadFile* CUploadsCtrl::GetNextFile(CUploadQueue* pQueue, POSITION& pos, int*
 	{
 		CUploadFile* pReturn = UploadFiles.GetNext( pos );
 
-		for ( ; pos ; )
+		for ( ; pos; )
 		{
 			POSITION posThis = pos;
 			CUploadFile* pFile = UploadFiles.GetNext( pos );
@@ -659,7 +659,7 @@ CUploadFile* CUploadsCtrl::GetNextFile(CUploadQueue* pQueue, POSITION& pos, int*
 	{
 		CUploadFile* pReturn = UploadFiles.GetNext( pos );
 
-		for ( ; pos ; )
+		for ( ; pos; )
 		{
 			POSITION posThis = pos;
 			CUploadFile* pFile = UploadFiles.GetNext( pos );
@@ -721,7 +721,7 @@ void CUploadsCtrl::OnSize(UINT nType, int cx, int cy)
 	HDITEM pColumn = {};
 	pColumn.mask = HDI_WIDTH;
 
-	for ( int nColumn = 0 ; m_wndHeader.GetItem( nColumn, &pColumn ) ; nColumn ++ )
+	for ( int nColumn = 0; m_wndHeader.GetItem( nColumn, &pColumn ); nColumn ++ )
 		nWidth += pColumn.cxy;
 
 	SCROLLINFO pScroll = {};
@@ -743,7 +743,7 @@ void CUploadsCtrl::OnSize(UINT nType, int cx, int cy)
 	if ( ! pUploadQueuesLock.Lock( 250 ) )
 		return;
 
-	for ( POSITION posQueue = GetQueueIterator() ; posQueue ; )
+	for ( POSITION posQueue = GetQueueIterator(); posQueue; )
 	{
 		CUploadQueue* pQueue = GetNextQueue( posQueue );
 
@@ -808,7 +808,7 @@ void CUploadsCtrl::UpdateUploadsData(BOOL bForce /*FALSE*/)
 		return;
 
 	INT_PTR nQueue = 0;
-	for ( POSITION posQueue = GetQueueIterator() ; posQueue ; )
+	for ( POSITION posQueue = GetQueueIterator(); posQueue; )
 	{
 		CUploadQueue* pQueue = GetNextQueue( posQueue );
 
@@ -893,7 +893,7 @@ void CUploadsCtrl::OnPaint()
 
 	int nIndex = 0;
 	int nDisplayCount = (int)m_pDisplayData.GetCount();
-	for ( int nQueue = 0 ; nQueue < nDisplayCount && rcItem.top < rcClient.bottom ; nQueue++ )
+	for ( int nQueue = 0; nQueue < nDisplayCount && rcItem.top < rcClient.bottom; nQueue++ )
 	{
 		const CQueueDisplayData* pQueueData = &m_pDisplayData[ nQueue ];
 
@@ -907,7 +907,7 @@ void CUploadsCtrl::OnPaint()
 		if ( ! pQueueData->m_bExpanded )
 			continue;
 
-		for ( int nUpload = 0 ; (DWORD)nUpload < pQueueData->m_nCount && rcItem.top < rcClient.bottom ; nUpload++ )
+		for ( int nUpload = 0; (DWORD)nUpload < pQueueData->m_nCount && rcItem.top < rcClient.bottom; nUpload++ )
 		{
 			PaintFile( dc, rcItem, &pQueueData->m_pUploadsData[ nUpload ], bFocus && ( nFocus == nIndex ) );
 			rcItem.OffsetRect( 0, Settings.Skin.RowSize );
@@ -957,7 +957,7 @@ void CUploadsCtrl::PaintQueue(CDC& dc, const CRect& rcRow, const CQueueDisplayDa
 
 	dc.SelectObject( &CoolInterface.m_fntBold );
 
-	for ( int nColumn = 0 ; m_wndHeader.GetItem( nColumn, &pColumn ) ; nColumn++ )
+	for ( int nColumn = 0; m_wndHeader.GetItem( nColumn, &pColumn ); nColumn++ )
 	{
 		CString strText;
 		CRect rcCell;
@@ -1141,7 +1141,7 @@ void CUploadsCtrl::PaintFile(CDC& dc, const CRect& rcRow, const CUploadDisplayDa
 	HDITEM pColumn = {};
 	pColumn.mask = HDI_FORMAT | HDI_LPARAM;
 
-	for ( int nColumn = 0 ; m_wndHeader.GetItem( nColumn, &pColumn ) ; nColumn++ )
+	for ( int nColumn = 0; m_wndHeader.GetItem( nColumn, &pColumn ); nColumn++ )
 	{
 		CString strText;
 		CRect rcCell;
@@ -1540,14 +1540,14 @@ void CUploadsCtrl::OnLButtonDown(UINT nFlags, CPoint point)
 
 				if ( ! pQueue->m_bExpanded )
 				{
-					for ( POSITION posActive = pQueue->GetActiveIterator() ; posActive ; )
+					for ( POSITION posActive = pQueue->GetActiveIterator(); posActive; )
 					{
 						CUploadTransfer* pTransfer = pQueue->GetNextActive( posActive );
 						if ( pTransfer->m_pBaseFile != NULL )
 							pTransfer->m_pBaseFile->m_bSelected = FALSE;
 					}
 
-					for ( DWORD nPos = 0 ; nPos < pQueue->GetQueuedCount() ; nPos++ )
+					for ( DWORD nPos = 0; nPos < pQueue->GetQueuedCount(); nPos++ )
 					{
 						CUploadTransfer* pTransfer = (CUploadTransfer*)pQueue->GetQueuedAt( nPos );
 						if ( pTransfer->m_pBaseFile != NULL )
@@ -1725,7 +1725,7 @@ int CUploadsCtrl::GetExpandableColumnX() const
 	HDITEM pColumn = {};
 	pColumn.mask = HDI_LPARAM | HDI_WIDTH;
 
-	for ( int nColumn = 0 ; m_wndHeader.GetItem( m_wndHeader.OrderToIndex( nColumn ), &pColumn ) ; nColumn++ )
+	for ( int nColumn = 0; m_wndHeader.GetItem( m_wndHeader.OrderToIndex( nColumn ), &pColumn ); nColumn++ )
 	{
 		if ( pColumn.lParam == COL_TITLE )
 			break;

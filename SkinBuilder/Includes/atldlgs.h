@@ -3035,7 +3035,7 @@ public:
 
 	BOOL IsTerminating() const       // TRUE if terminating dialog
 	{
-		return ((m_fr.Flags & FR_DIALOGTERM) != 0) ? TRUE : FALSE ;
+		return ((m_fr.Flags & FR_DIALOGTERM) != 0) ? TRUE : FALSE;
 	}
 };
 

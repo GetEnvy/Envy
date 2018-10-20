@@ -1,8 +1,8 @@
 //
 // NeighboursWithED2K.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2007
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -73,7 +73,7 @@ void CNeighboursWithED2K::RunGlobalStatsRequests()
 	CQuickLock oLock( HostCache.eDonkey.m_pSection );
 
 	// Loop through servers in the host cache
-	for ( CHostCacheIterator i = HostCache.eDonkey.Begin() ; i != HostCache.eDonkey.End() ; ++i )
+	for ( CHostCacheIterator i = HostCache.eDonkey.Begin(); i != HostCache.eDonkey.End(); ++i )
 	{
 		CHostCacheHostPtr pHost = (*i);
 
@@ -107,7 +107,7 @@ CEDNeighbour* CNeighboursWithED2K::GetDonkeyServer() const
 	ASSUME_SINGLE_LOCK( Network.m_pSection );
 
 	// Loop through the list of neighbours
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		// Get the neighbour under the current position, and move to the next position
 		CEDNeighbour* pNeighbour = (CEDNeighbour*)GetNext( pos );
@@ -134,7 +134,7 @@ void CNeighboursWithED2K::CloseDonkeys()
 	CSingleLock pLock( &Network.m_pSection, TRUE );
 
 	// Loop through the list of neighbours
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		// Get the neighbour under the current position, and move to the next position
 		CEDNeighbour* pNeighbour = (CEDNeighbour*)GetNext( pos );
@@ -156,7 +156,7 @@ void CNeighboursWithED2K::SendDonkeyDownload(const CDownloadWithTiger* pDownload
 	if ( ! SafeLock( pLock ) ) return;
 
 	// Loop through the list of neighbours
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		// Get the neighbour under the current position, and move to the next position
 		CEDNeighbour* pNeighbour = (CEDNeighbour*)GetNext( pos );

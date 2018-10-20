@@ -1,8 +1,8 @@
 //
 // CtrlHomePanel.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2017
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2008
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2008 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -173,9 +173,9 @@ void CHomeConnectionBox::OnSkinChange()
 	m_pDocument = NULL;
 	m_pdConnectedHours = m_pdConnectedMinutes = NULL;
 
-	for ( int nP = PROTOCOL_NULL ; nP < PROTOCOL_LAST ; ++nP )	// PROTOCOLID
+	for ( int nP = PROTOCOL_NULL; nP < PROTOCOL_LAST; ++nP )	// PROTOCOLID
 	{
-		for ( int nT = ntNode ; nT <= ntLeaf ; nT++ )
+		for ( int nT = ntNode; nT <= ntLeaf; nT++ )
 		{
 			m_pdCount[ nP ][ nT ] = NULL;
 			m_sCount[ nP ][ nT ].Empty();
@@ -211,9 +211,9 @@ void CHomeConnectionBox::OnSkinChange()
 
 	pMap.Lookup( L"DCHubs", m_pdCount[PROTOCOL_DC][ntHub] );
 
-	for ( int nP = PROTOCOL_NULL ; nP < PROTOCOL_LAST ; ++nP )	// PROTOCOLID
+	for ( int nP = PROTOCOL_NULL; nP < PROTOCOL_LAST; ++nP )	// PROTOCOLID
 	{
-		for ( int nT = ntNode ; nT < ntLast ; nT++ )
+		for ( int nT = ntNode; nT < ntLast; nT++ )
 		{
 			if ( m_pdCount[ nP ][ nT ] != NULL )
 				m_sCount[ nP ][ nT ] = m_pdCount[ nP ][ nT ]->m_sText;
@@ -236,7 +236,7 @@ void CHomeConnectionBox::Update()
 	int nTotal = 0;
 	CString str;
 
-	for ( POSITION pos = Neighbours.GetIterator() ; pos ; )
+	for ( POSITION pos = Neighbours.GetIterator(); pos; )
 	{
 		CNeighbour* pNeighbour = Neighbours.GetNext( pos );
 
@@ -273,7 +273,7 @@ void CHomeConnectionBox::Update()
 
 	const BOOL bDetail = Settings.General.GUIMode != GUI_BASIC;
 
-	for ( int nProtocol = PROTOCOL_G1 ; nProtocol < PROTOCOL_LAST ; ++nProtocol )	// PROTOCOLID
+	for ( int nProtocol = PROTOCOL_G1; nProtocol < PROTOCOL_LAST; ++nProtocol )	// PROTOCOLID
 	{
 		if ( ! pEnable[ nProtocol ] )
 			continue;
@@ -385,7 +385,7 @@ CHomeLibraryBox::CHomeLibraryBox()
 
 CHomeLibraryBox::~CHomeLibraryBox()
 {
-	for ( int nItem = 0 ; nItem < m_pList.GetSize() ; nItem++ )
+	for ( int nItem = 0; nItem < m_pList.GetSize(); nItem++ )
 	{
 		delete m_pList.GetAt( nItem );
 	}
@@ -453,7 +453,7 @@ void CHomeLibraryBox::Update()
 	int nCount = 0;
 	CString str;
 
-	for ( INT_PTR nItem = m_pList.GetSize() - 1 ; nItem >= 0 ; nItem-- )
+	for ( INT_PTR nItem = m_pList.GetSize() - 1; nItem >= 0; nItem-- )
 	{
 		Item* pItem = m_pList.GetAt( nItem );
 
@@ -466,13 +466,13 @@ void CHomeLibraryBox::Update()
 		}
 	}
 
-	for ( POSITION pos = LibraryHistory.GetIterator() ; pos && nCount < 6 ; )
+	for ( POSITION pos = LibraryHistory.GetIterator(); pos && nCount < 6; )
 	{
 		CLibraryRecent* pRecent = LibraryHistory.GetNext( pos );
 		if ( pRecent->m_pFile == NULL ) continue;
 
 		INT_PTR nItem = m_pList.GetSize() - 1;
-		for ( ; nItem >= 0 ; nItem-- )
+		for ( ; nItem >= 0; nItem-- )
 		{
 			Item* pItem = m_pList.GetAt( nItem );
 			if ( pItem->m_pRecent == pRecent ) break;
@@ -616,7 +616,7 @@ void CHomeLibraryBox::OnPaint()
 
 	CFont* pOldFont = (CFont*)dc.SelectObject( &m_pFont );
 
-	for ( int nItem = 0 ; nItem < m_pList.GetSize() ; nItem++ )
+	for ( int nItem = 0; nItem < m_pList.GetSize(); nItem++ )
 	{
 		Item* pItem = m_pList.GetAt( nItem );
 
@@ -658,7 +658,7 @@ CHomeLibraryBox::Item* CHomeLibraryBox::HitTest(const CPoint& point) const
 	rcIcon.SetRect( 4, rcClient.top, 4 + 16, rcClient.top + 16 );
 	rcText.SetRect( rcIcon.right, rcIcon.top, rcClient.right - 4, rcIcon.bottom );
 
-	for ( int nItem = 0 ; nItem < m_pList.GetSize() ; nItem++ )
+	for ( int nItem = 0; nItem < m_pList.GetSize(); nItem++ )
 	{
 		Item* pItem = m_pList.GetAt( nItem );
 
@@ -815,7 +815,7 @@ CHomeDownloadsBox::CHomeDownloadsBox()
 
 CHomeDownloadsBox::~CHomeDownloadsBox()
 {
-	for ( int nItem = 0 ; nItem < m_pList.GetSize() ; nItem++ )
+	for ( int nItem = 0; nItem < m_pList.GetSize(); nItem++ )
 	{
 		delete m_pList.GetAt( nItem );
 	}
@@ -890,7 +890,7 @@ void CHomeDownloadsBox::Update()
 	BOOL bChanged = FALSE;
 	CString str;
 
-	for ( INT_PTR nItem = m_pList.GetSize() - 1 ; nItem >= 0 ; nItem-- )
+	for ( INT_PTR nItem = m_pList.GetSize() - 1; nItem >= 0; nItem-- )
 	{
 		Item* pItem = m_pList.GetAt( nItem );
 
@@ -907,7 +907,7 @@ void CHomeDownloadsBox::Update()
 	int nCount = 0;
 	int nInsert = 0;
 
-	for ( POSITION pos = Downloads.GetReverseIterator() ; pos && nCount < 6 ; )
+	for ( POSITION pos = Downloads.GetReverseIterator(); pos && nCount < 6; )
 	{
 		CDownload* pDownload = Downloads.GetPrevious( pos );
 		if ( pDownload->IsPaused() ) continue;
@@ -915,7 +915,7 @@ void CHomeDownloadsBox::Update()
 
 		Item* pItem = NULL;
 
-		for ( int nItem = 0 ; nItem < m_pList.GetSize() ; nItem++ )
+		for ( int nItem = 0; nItem < m_pList.GetSize(); nItem++ )
 		{
 			pItem = m_pList.GetAt( nItem );
 			if ( pItem->m_pDownload == pDownload ) break;
@@ -1082,7 +1082,7 @@ void CHomeDownloadsBox::OnPaint()
 
 	COLORREF crAlt[3] = { RGB( 0, 150, 255 ), RGB( 190, 0, 0 ), RGB( 0, 150, 0 ) };
 
-	for ( int nItem = 0 ; nItem < m_pList.GetSize() ; nItem++ )
+	for ( int nItem = 0; nItem < m_pList.GetSize(); nItem++ )
 	{
 		Item* pItem = m_pList.GetAt( nItem );
 
@@ -1138,7 +1138,7 @@ CHomeDownloadsBox::Item* CHomeDownloadsBox::HitTest(const CPoint& point) const
 	rcIcon.SetRect( 4, rcClient.top, 4 + 20, rcClient.top + 16 );
 	rcText.SetRect( rcIcon.right, rcIcon.top, rcClient.right - 4, rcIcon.bottom );
 
-	for ( int nItem = 0 ; nItem < m_pList.GetSize() ; nItem++ )
+	for ( int nItem = 0; nItem < m_pList.GetSize(); nItem++ )
 	{
 		Item* pItem = m_pList.GetAt( nItem );
 

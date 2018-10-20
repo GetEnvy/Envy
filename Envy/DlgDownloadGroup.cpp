@@ -1,8 +1,8 @@
 //
 // DlgDownloadGroup.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2008
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2008 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -99,7 +99,7 @@ BOOL CDownloadGroupDlg::OnInitDialog()
 		return TRUE;
 	}
 
-	for ( POSITION pos = m_pGroup->m_pFilters.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pGroup->m_pFilters.GetHeadPosition(); pos; )
 	{
 		m_wndFilterList.AddString( m_pGroup->m_pFilters.GetNext( pos ) );
 	}
@@ -178,7 +178,7 @@ void CDownloadGroupDlg::OnCbnCloseupSchemas()
 
 	// Get filters
 	CList< CString > oList;
-	for ( int nItem = 0 ; nItem < m_wndFilterList.GetCount() ; nItem++ )
+	for ( int nItem = 0; nItem < m_wndFilterList.GetCount(); nItem++ )
 	{
 		m_wndFilterList.GetLBText( nItem, strFilter );
 		if ( oList.Find( strFilter ) == NULL )
@@ -188,7 +188,7 @@ void CDownloadGroupDlg::OnCbnCloseupSchemas()
 	// Remove old schema filters (preserve custom ones)
 	if ( CSchemaPtr pOldSchema = SchemaCache.Get( m_sOldSchemaURI ) )
 	{
-		for ( POSITION pos = pOldSchema->GetFilterIterator() ; pos ; )
+		for ( POSITION pos = pOldSchema->GetFilterIterator(); pos; )
 		{
 			CString strFilter;
 			BOOL bResult;
@@ -208,7 +208,7 @@ void CDownloadGroupDlg::OnCbnCloseupSchemas()
 	// Add new schema filters
 	if ( CSchemaPtr pNewSchema = SchemaCache.Get( m_wndSchemas.GetSelectedURI() ) )
 	{
-		for ( POSITION pos = pNewSchema->GetFilterIterator() ; pos ; )
+		for ( POSITION pos = pNewSchema->GetFilterIterator(); pos; )
 		{
 			CString strFilter;
 			BOOL bResult;
@@ -226,7 +226,7 @@ void CDownloadGroupDlg::OnCbnCloseupSchemas()
 
 	// Refill interface filters list
 	m_wndFilterList.ResetContent();
-	for ( POSITION pos = oList.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = oList.GetHeadPosition(); pos; )
 	{
 		m_wndFilterList.AddString( oList.GetNext( pos ) );
 	}
@@ -319,7 +319,7 @@ void CDownloadGroupDlg::OnOK()
 		}
 
 		m_pGroup->m_pFilters.RemoveAll();
-		for ( int nItem = 0 ; nItem < m_wndFilterList.GetCount() ; nItem++ )
+		for ( int nItem = 0; nItem < m_wndFilterList.GetCount(); nItem++ )
 		{
 			CString str;
 			m_wndFilterList.GetLBText( nItem, str );

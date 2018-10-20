@@ -1,8 +1,8 @@
 //
 // Schema.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2015 and Shareaza 2002-2008
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2008 and PeerProject 2008-2015
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -72,7 +72,7 @@ BOOL CSchema::FilterType(LPCTSTR pszFile) const
 CString CSchema::GetFilterSet() const
 {
 	CString strFilters = L"|";
-	for ( POSITION pos = m_pTypeFilters.GetStartPosition() ; pos ; )
+	for ( POSITION pos = m_pTypeFilters.GetStartPosition(); pos; )
 	{
 		CString strType;
 		BOOL bResult;
@@ -110,7 +110,7 @@ CSchemaMember* CSchema::GetMember(LPCTSTR pszName) const
 {
 	if ( ! pszName || ! *pszName ) return NULL;
 
-	for ( POSITION pos = GetMemberIterator() ; pos ; )
+	for ( POSITION pos = GetMemberIterator(); pos; )
 	{
 		CSchemaMember* pMember = GetNextMember( pos );
 		if ( pMember->m_sName.CompareNoCase( pszName ) == 0 )
@@ -141,17 +141,17 @@ CString CSchema::GetFirstMemberName() const
 
 void CSchema::Clear()
 {
-	for ( POSITION pos = GetMemberIterator() ; pos ; )
+	for ( POSITION pos = GetMemberIterator(); pos; )
 	{
 		delete GetNextMember( pos );
 	}
 
-	for ( POSITION pos = m_pContains.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pContains.GetHeadPosition(); pos; )
 	{
 		delete m_pContains.GetNext( pos );
 	}
 
-	for ( POSITION pos = m_pBitprintsMap.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pBitprintsMap.GetHeadPosition(); pos; )
 	{
 		delete m_pBitprintsMap.GetNext( pos );
 	}
@@ -244,7 +244,7 @@ BOOL CSchema::LoadSchema(LPCTSTR pszFile)
 
 	if ( CXMLElement* pMapping = pRoot->GetElementByName( L"mapping" ) )
 	{
-		for ( POSITION pos = pMapping->GetElementIterator() ; pos ; )
+		for ( POSITION pos = pMapping->GetElementIterator(); pos; )
 		{
 			CXMLElement* pNetwork = pMapping->GetNextElement( pos );
 			if ( pNetwork )
@@ -287,7 +287,7 @@ BOOL CSchema::LoadPrimary(const CXMLElement* pRoot, const CXMLElement* pType)
 	if ( ! pType->IsNamed( L"complexType" ) &&
 		 ! pType->IsNamed( L"all" ) ) return FALSE;
 
-	for ( POSITION pos = pType->GetElementIterator() ; pos ; )
+	for ( POSITION pos = pType->GetElementIterator(); pos; )
 	{
 		CXMLElement* pElement	= pType->GetNextElement( pos );
 		CString strElement		= pElement->GetName();
@@ -320,7 +320,7 @@ CXMLElement* CSchema::GetType(const CXMLElement* pRoot, LPCTSTR pszName) const
 {
 	if ( ! pszName || ! *pszName ) return NULL;
 
-	for ( POSITION pos = pRoot->GetElementIterator() ; pos ; )
+	for ( POSITION pos = pRoot->GetElementIterator(); pos; )
 	{
 		CXMLElement* pElement = pRoot->GetNextElement( pos );
 
@@ -352,7 +352,7 @@ BOOL CSchema::LoadDescriptor(LPCTSTR pszFile)
 		return FALSE;
 	}
 
-	for ( POSITION pos = pRoot->GetElementIterator() ; pos ; )
+	for ( POSITION pos = pRoot->GetElementIterator(); pos; )
 	{
 		const CXMLElement* pElement = pRoot->GetNextElement( pos );
 
@@ -429,7 +429,7 @@ BOOL CSchema::LoadDescriptor(LPCTSTR pszFile)
 
 void CSchema::LoadDescriptorTitles(const CXMLElement* pElement)
 {
-	for ( POSITION pos = pElement->GetElementIterator() ; pos ; )
+	for ( POSITION pos = pElement->GetElementIterator(); pos; )
 	{
 		const CXMLElement* pTitle = pElement->GetNextElement( pos );
 		if ( ! pTitle->IsNamed( L"title" ) )
@@ -448,7 +448,7 @@ void CSchema::LoadDescriptorTitles(const CXMLElement* pElement)
 
 void CSchema::LoadDescriptorIcons(const CXMLElement* pElement)
 {
-	for ( POSITION pos = pElement->GetElementIterator() ; pos ; )
+	for ( POSITION pos = pElement->GetElementIterator(); pos; )
 	{
 		const CXMLElement* pIcon = pElement->GetNextElement( pos );
 
@@ -465,7 +465,7 @@ void CSchema::LoadDescriptorMembers(const CXMLElement* pElement)
 {
 	BOOL bPrompt = FALSE;
 
-	for ( POSITION pos = pElement->GetElementIterator() ; pos ; )
+	for ( POSITION pos = pElement->GetElementIterator(); pos; )
 	{
 		const CXMLElement* pDisplay = pElement->GetNextElement( pos );
 
@@ -483,7 +483,7 @@ void CSchema::LoadDescriptorMembers(const CXMLElement* pElement)
 
 	if ( bPrompt ) return;
 
-	for ( POSITION pos = GetMemberIterator() ; pos ; )
+	for ( POSITION pos = GetMemberIterator(); pos; )
 	{
 		GetNextMember( pos )->m_bPrompt = TRUE;
 	}
@@ -491,7 +491,7 @@ void CSchema::LoadDescriptorMembers(const CXMLElement* pElement)
 
 void CSchema::LoadDescriptorExtends(const CXMLElement* pElement)
 {
-	for ( POSITION pos = pElement->GetElementIterator() ; pos ; )
+	for ( POSITION pos = pElement->GetElementIterator(); pos; )
 	{
 		const CXMLElement* pExtend = pElement->GetNextElement( pos );
 
@@ -506,7 +506,7 @@ void CSchema::LoadDescriptorExtends(const CXMLElement* pElement)
 
 void CSchema::LoadDescriptorContains(const CXMLElement* pElement)
 {
-	for ( POSITION pos = pElement->GetElementIterator() ; pos ; )
+	for ( POSITION pos = pElement->GetElementIterator(); pos; )
 	{
 		const CXMLElement* pExtend = pElement->GetNextElement( pos );
 
@@ -524,7 +524,7 @@ void CSchema::LoadDescriptorContains(const CXMLElement* pElement)
 
 void CSchema::LoadDescriptorTypeFilter(const CXMLElement* pElement)
 {
-	for ( POSITION pos = pElement->GetElementIterator() ; pos ; )
+	for ( POSITION pos = pElement->GetElementIterator(); pos; )
 	{
 		const CXMLElement* pType = pElement->GetNextElement( pos );
 
@@ -544,7 +544,7 @@ void CSchema::LoadDescriptorBitprintsImport(const CXMLElement* pElement)
 {
 	m_sBitprintsTest = pElement->GetAttributeValue( L"testExists", NULL );
 
-	for ( POSITION pos = pElement->GetElementIterator() ; pos ; )
+	for ( POSITION pos = pElement->GetElementIterator(); pos; )
 	{
 		const CXMLElement* pBitprints = pElement->GetNextElement( pos );
 
@@ -559,7 +559,7 @@ void CSchema::LoadDescriptorBitprintsImport(const CXMLElement* pElement)
 
 void CSchema::LoadDescriptorHeader(const CXMLElement* pElement)
 {
-	for ( POSITION pos = pElement->GetElementIterator() ; pos ; )
+	for ( POSITION pos = pElement->GetElementIterator(); pos; )
 	{
 		const CXMLElement* pXML = pElement->GetNextElement( pos );
 
@@ -585,7 +585,7 @@ void CSchema::LoadDescriptorView(const CXMLElement* pElement)
 	if ( m_sLibraryView.IsEmpty() )
 		m_sLibraryView = pElement->GetAttributeValue( L"defaultview" );
 
-	for ( POSITION pos = pElement->GetElementIterator() ; pos ; )
+	for ( POSITION pos = pElement->GetElementIterator(); pos; )
 	{
 		const CXMLElement* pXML = pElement->GetNextElement( pos );
 
@@ -642,7 +642,7 @@ BOOL CSchema::LoadIcon(CString sPath /*Empty*/)
 
 CSchemaChild* CSchema::GetContained(LPCTSTR pszURI) const
 {
-	for ( POSITION pos = m_pContains.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pContains.GetHeadPosition(); pos; )
 	{
 		CSchemaChild* pChild = m_pContains.GetNext( pos );
 		if ( pChild->m_sURI.CompareNoCase( pszURI ) == 0 )
@@ -653,7 +653,7 @@ CSchemaChild* CSchema::GetContained(LPCTSTR pszURI) const
 
 CString CSchema::GetContainedURI(int nType) const
 {
-	for ( POSITION pos = m_pContains.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pContains.GetHeadPosition(); pos; )
 	{
 		CSchemaChild* pChild = m_pContains.GetNext( pos );
 
@@ -689,7 +689,7 @@ BOOL CSchema::Validate(CXMLElement* pXML, BOOL bFix) const
 	if ( pBody == NULL ) return FALSE;
 	if ( ! pBody->IsNamed( m_sSingular ) ) return FALSE;
 
-	for ( POSITION pos = GetMemberIterator() ; pos ; )
+	for ( POSITION pos = GetMemberIterator(); pos; )
 	{
 		CSchemaMember* pMember = GetNextMember( pos );
 
@@ -759,7 +759,7 @@ CString CSchema::GetIndexedWords(CXMLElement* pXML) const
 
 	if ( pXML == NULL ) return str;
 
-	for ( POSITION pos = GetMemberIterator() ; pos ; )
+	for ( POSITION pos = GetMemberIterator(); pos; )
 	{
 		CSchemaMember* pMember = GetNextMember( pos );
 
@@ -786,7 +786,7 @@ CString CSchema::GetVisibleWords(CXMLElement* pXML) const
 
 	if ( pXML == NULL ) return str;
 
-	for ( POSITION pos = GetMemberIterator() ; pos ; )
+	for ( POSITION pos = GetMemberIterator(); pos; )
 	{
 		CSchemaMember* pMember = GetNextMember( pos );
 

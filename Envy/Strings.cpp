@@ -2,7 +2,7 @@
 // Strings.cpp
 //
 // This file is part of Envy (getenvy.com) © 2016-2018
-// Portions copyright PeerProject 2010-2016 and Shareaza 2010
+// Portions copyright Shareaza 2010 and PeerProject 2010-2016
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -68,7 +68,7 @@ bool IsKanji(const WCHAR nChar)
 bool IsNumber(LPCTSTR pszString, size_t nStart /*0*/, size_t nLength /*0*/)
 {
 	if ( ! nLength ) nLength--;
-	for ( pszString += nStart ; *pszString && nLength ; pszString++, nLength-- )
+	for ( pszString += nStart; *pszString && nLength; pszString++, nLength-- )
 	{
 		if ( ! _istdigit( *pszString ) )
 			return false;
@@ -78,7 +78,7 @@ bool IsNumber(LPCTSTR pszString, size_t nStart /*0*/, size_t nLength /*0*/)
 
 bool IsWord(LPCTSTR pszString, size_t nStart, size_t nLength)
 {
-	for ( pszString += nStart ; *pszString && nLength ; ++pszString, --nLength )
+	for ( pszString += nStart; *pszString && nLength; ++pszString, --nLength )
 	{
 		if ( _istdigit( *pszString ) )
 			return false;
@@ -90,7 +90,7 @@ void IsType(LPCTSTR pszString, size_t nStart, size_t nLength, bool& bWord, bool&
 {
 	bWord = false;
 	bDigit = false;
-	for ( pszString += nStart ; *pszString && nLength ; ++pszString, --nLength )
+	for ( pszString += nStart; *pszString && nLength; ++pszString, --nLength )
 	{
 		if ( _istdigit( *pszString ) )
 			bDigit = true;
@@ -110,7 +110,7 @@ const CLowerCaseTable ToLower;
 
 CLowerCaseTable::CLowerCaseTable()
 {
-	for ( size_t i = 0 ; i < 65536 ; ++i )	cTable[ i ] = TCHAR( i );
+	for ( size_t i = 0; i < 65536; ++i )	cTable[ i ] = TCHAR( i );
 	CharLowerBuff( cTable, 65536 );
 
 	cTable[ 0x0130 ] = 0x0069;	// Turkish Capital I with dot to "i"			(304 to 105)
@@ -124,19 +124,19 @@ CLowerCaseTable::CLowerCaseTable()
 	cTable[ 0x0439 ] = 0x0438;	// Russian Small Short I to Russian Small I 	(1081 to 1080)
 
 	// Convert fullwidth latin characters to halfwidth
-	for ( size_t i = 65281 ; i < 65313 ; ++i )	cTable[ i ] = TCHAR( i - 65248 );
-	for ( size_t i = 65313 ; i < 65339 ; ++i )	cTable[ i ] = TCHAR( i - 65216 );
-	for ( size_t i = 65339 ; i < 65375 ; ++i )	cTable[ i ] = TCHAR( i - 65248 );
+	for ( size_t i = 65281; i < 65313; ++i )	cTable[ i ] = TCHAR( i - 65248 );
+	for ( size_t i = 65313; i < 65339; ++i )	cTable[ i ] = TCHAR( i - 65216 );
+	for ( size_t i = 65339; i < 65375; ++i )	cTable[ i ] = TCHAR( i - 65248 );
 
 	// Convert circled katakana to ordinary katakana
-	for ( size_t i = 13008 ; i < 13028 ; ++i )	cTable[ i ] = TCHAR( 2 * i - 13566 );
-	for ( size_t i = 13028 ; i < 13033 ; ++i )	cTable[ i ] = TCHAR( i - 538 );
-	for ( size_t i = 13033 ; i < 13038 ; ++i )	cTable[ i ] = TCHAR( 3 * i - 26604 );
-	for ( size_t i = 13038 ; i < 13043 ; ++i )	cTable[ i ] = TCHAR( i - 528 );
-	for ( size_t i = 13043 ; i < 13046 ; ++i )	cTable[ i ] = TCHAR( 2 * i - 13571 );
-	for ( size_t i = 13046 ; i < 13051 ; ++i )	cTable[ i ] = TCHAR( i - 525 );
+	for ( size_t i = 13008; i < 13028; ++i )	cTable[ i ] = TCHAR( 2 * i - 13566 );
+	for ( size_t i = 13028; i < 13033; ++i )	cTable[ i ] = TCHAR( i - 538 );
+	for ( size_t i = 13033; i < 13038; ++i )	cTable[ i ] = TCHAR( 3 * i - 26604 );
+	for ( size_t i = 13038; i < 13043; ++i )	cTable[ i ] = TCHAR( i - 528 );
+	for ( size_t i = 13043; i < 13046; ++i )	cTable[ i ] = TCHAR( 2 * i - 13571 );
+	for ( size_t i = 13046; i < 13051; ++i )	cTable[ i ] = TCHAR( i - 525 );
 	cTable[ 13051 ] = TCHAR( 12527 );
-	for ( size_t i = 13052 ; i < 13055 ; ++i )	cTable[ i ] = TCHAR( i - 524 );
+	for ( size_t i = 13052; i < 13055; ++i )	cTable[ i ] = TCHAR( i - 524 );
 
 	// Map Katakana middle dot to space, since no API identifies it as a punctuation
 	cTable[ 12539 ] = cTable[ 65381 ] = L' ';
@@ -169,7 +169,7 @@ CString& CLowerCaseTable::operator()(CString& strSource) const
 {
 	register const int nLength = strSource.GetLength();
 	register LPTSTR str = strSource.GetBuffer();
-	for ( int i = 0 ; i < nLength ; ++i, ++str )
+	for ( int i = 0; i < nLength; ++i, ++str )
 	{
 		// A...Z -> a...z
 		register TCHAR l = *str;
@@ -186,7 +186,7 @@ CString& CLowerCaseTable::Clean(CString& strSource) const
 	register const int nLength = strSource.GetLength();
 	register const int nExt = strSource.ReverseFind( L'.' );
 	register LPTSTR str = strSource.GetBuffer();
-	for ( int i = 0 ; i < nLength ; ++i, ++str )
+	for ( int i = 0; i < nLength; ++i, ++str )
 	{
 		register TCHAR l = *str;
 		switch ( l )
@@ -342,7 +342,7 @@ CString URLEncode(LPCTSTR pszInputT)
 	TCHAR* __restrict pszOutput = strOutput.GetBuffer( static_cast< int >( ( nUTF8 - 1 ) * 3 + 1 ) );	// Times 3 in case every character gets encoded
 
 	// Loop for each character of input text
-	for ( ; *pszInput ; pszInput++ )
+	for ( ; *pszInput; pszInput++ )
 	{
 		// If the character code is 32 or less, or in the unsafe list
 		if ( *pszInput <= 32 || strchr( pszUnsafe, *pszInput ) != NULL )
@@ -372,7 +372,7 @@ CString URLDecode(LPCTSTR pszInput)
 {
 	// Check each character of input text
 	LPCTSTR pszLoop( pszInput );
-	for ( ; *pszLoop ; pszLoop++ )
+	for ( ; *pszLoop; pszLoop++ )
 	{
 		// This URI is not properly encoded, and has unicode characters in it. URL-decode only
 		if ( *pszLoop > 255 )
@@ -404,7 +404,7 @@ CString URLDecodeANSI(const TCHAR* __restrict pszInput)
 	CHAR* __restrict pszOutput = sOutput.GetBuffer( nLength + 1 );
 
 	// Loop for each character of input text
-	for ( ; *pszInput ; pszInput++ )
+	for ( ; *pszInput; pszInput++ )
 	{
 		if ( *pszInput == '%' )			// Encountered the start of something like %20
 		{
@@ -502,7 +502,7 @@ CString URLDecodeUnicode(const TCHAR* __restrict pszInput)
 	TCHAR* __restrict pszOutput = strOutput.GetBuffer( nLength + 1 );
 
 	// Loop for each character of input text
-	for ( ; *pszInput ; ++pszInput )
+	for ( ; *pszInput; ++pszInput )
 	{
 		if ( *pszInput == '%' )			// Encounterd the start of something like %20
 		{
@@ -674,7 +674,7 @@ bool atoin(__in_bcount(nLen) const char* pszString, __in size_t nLen, __int64& n
 {
 	bool bNeg = false;
 	nNum = 0;
-	for ( size_t i = 0 ; i < nLen ; ++i )
+	for ( size_t i = 0; i < nLen; ++i )
 	{
 		if ( pszString[ i ] >= '0' && pszString[ i ] <= '9' )
 			nNum = nNum * 10 + ( pszString[ i ] - '0' );
@@ -691,7 +691,7 @@ bool atoin(__in_bcount(nLen) const char* pszString, __in size_t nLen, __int64& n
 #ifdef __AFXCOLL_H__
 void Split(const CString& strSource, TCHAR cDelimiter, CStringArray& pAddIt, BOOL bAddFirstEmpty)
 {
-	for ( LPCTSTR start = strSource ; *start ; start++ )
+	for ( LPCTSTR start = strSource; *start; start++ )
 	{
 		LPCTSTR c = _tcschr( start, cDelimiter );
 		const int len = c ? (int) ( c - start ) : (int) _tcslen( start );
@@ -705,6 +705,39 @@ void Split(const CString& strSource, TCHAR cDelimiter, CStringArray& pAddIt, BOO
 	}
 }
 #endif	// __AFXCOLL_H__
+
+int CountOf(const CString& strInput, LPCTSTR pszFind, int nSkip /*0*/)
+{
+	const int nLen = (int)_tcslen( pszFind );
+	int nLimit = strInput.GetLength() - nLen;
+	if (nLimit - nSkip < 0) return 0;
+	int nCount = 0;
+	for (int i = nSkip; i <= nLimit; i++)
+	{
+		if ( strInput[i] != *pszFind )
+			continue;
+		if (nLen == 1)
+		{
+			nCount++;
+			continue;
+		}
+		bool bFound = true;
+		for (int j = 1; j < nLen; j++)
+		{
+			pszFind++;
+			if ( strInput[i + j] == (TCHAR)pszFind[j] )
+				continue;
+			bFound = false;
+			break;
+		}
+		if (!bFound)
+			continue;
+
+		nCount++;
+		i += nLen - 1;
+	}
+	return nCount;
+}
 
 BOOL StartsWith(const CString& strInput, LPCTSTR pszText, int nLen /*0*/)
 {
@@ -723,7 +756,7 @@ BOOL StartsWith(const CString& strInput, LPCTSTR pszText, int nLen /*0*/)
 		return FALSE;
 
 	pszText++;
-	for ( int n = 1 ; n < nLen ; n++ && pszText++ )
+	for ( int n = 1; n < nLen; n++ && pszText++ )
 	{
 		if ( strInput[n] != *pszText && ToLower( strInput[n] ) != ToLower( *pszText ) )
 			return FALSE;
@@ -749,7 +782,7 @@ BOOL EndsWith(const CString& strInput, LPCTSTR pszText, int nLen /*0*/)
 	//
 	//return _tcsnicmp( pszTest, pszText, nLen ) == 0;
 
-	for ( int n = 0 ; n < nLen ; n++ && pszTest++ && pszText++ )
+	for ( int n = 0; n < nLen; n++ && pszTest++ && pszText++ )
 	{
 		if ( *pszTest != *pszText && ToLower( *pszTest ) != ToLower( *pszText ) )
 			return FALSE;
@@ -774,7 +807,7 @@ BOOL IsText(const CString& strInput, LPCTSTR pszText, int nLen /*0*/)
 	//return _tcsnicmp( (LPCTSTR)strInput, pszText, nLen ) == 0;
 
 	pszText++;
-	for ( int n = 1 ; n < nLen ; n++ && pszText++ )
+	for ( int n = 1; n < nLen; n++ && pszText++ )
 	{
 		if ( strInput[ n ] != *pszText && ToLower( strInput[ n ] ) != ToLower( *pszText ) )
 			return FALSE;
@@ -825,7 +858,7 @@ CString LoadFile(LPCTSTR pszPath)
 		if ( pByte[0] == 0xFE && pByte[1] == 0xFF )
 		{
 			pByte += 2;
-			for ( DWORD nSwap = 0 ; nSwap < nByte ; nSwap ++ )
+			for ( DWORD nSwap = 0; nSwap < nByte; nSwap ++ )
 			{
 				register BYTE nTemp = pByte[ ( nSwap << 1 ) + 0 ];
 				pByte[ ( nSwap << 1 ) + 0 ] = pByte[ ( nSwap << 1 ) + 1 ];
@@ -866,7 +899,7 @@ BOOL ReplaceNoCase(CString& sInStr, LPCTSTR pszOldStr, LPCTSTR pszNewStr)
 	result.Preallocate( nInLength );
 
 	TCHAR nOldChar = pszOldStr[ 0 ];
-	for ( DWORD nPos = 0 ; nPos < nInLength ; )
+	for ( DWORD nPos = 0; nPos < nInLength; )
 	{
 		TCHAR nChar = pszInStr[ nPos ];
 		if ( ToLower( nChar ) == nOldChar )
@@ -906,7 +939,7 @@ CString MakeKeywords(const CString& strPhrase, bool bExpression)
 	int nPrevWord = 0;
 	BOOL bNegative = FALSE;
 
-	for ( ; *pszPtr ; nPos++, pszPtr++ )
+	for ( ; *pszPtr; nPos++, pszPtr++ )
 	{
 		// boundary[ 0 ] -- previous character;
 		// boundary[ 1 ] -- current character;
@@ -1022,7 +1055,7 @@ void BuildWordTable(LPCTSTR pszWord, WordTable& oWords, WordTable& oNegWords)
 	BOOL bNegate	= FALSE;
 	BOOL bSpace		= TRUE;
 
-	for ( ; *pszPtr ; pszPtr++ )
+	for ( ; *pszPtr; pszPtr++ )
 	{
 		if ( IsCharacter( *pszPtr ) )
 		{
@@ -1085,7 +1118,7 @@ void BuildWordTable(LPCTSTR pszWord, WordTable& oWords, WordTable& oNegWords)
 
 LPCTSTR SkipSlashes(LPCTSTR pszURL, int nAdd)
 {
-	for ( ; nAdd && *pszURL ; --nAdd, ++pszURL );
+	for ( ; nAdd && *pszURL; --nAdd, ++pszURL );
 	while ( *pszURL == L'/' ) pszURL++;
 	return pszURL;
 }
@@ -1094,7 +1127,7 @@ void SafeString(CString& strInput)
 {
 	strInput.Trim();
 
-	for ( int nIndex = strInput.GetLength() - 1 ; nIndex >= 0 ; nIndex-- )
+	for ( int nIndex = strInput.GetLength() - 1; nIndex >= 0; nIndex-- )
 	{
 		if ( strInput.GetAt( nIndex ) < 32 )	// TCHAR
 			strInput.SetAt( nIndex, '_' );
@@ -1108,7 +1141,7 @@ CString Escape(const CString& strValue)
 	CString strXML;
 	LPTSTR pszXML = strXML.GetBuffer( strValue.GetLength() * 8 + 1 );
 
-	for ( LPCTSTR pszValue = strValue ; *pszValue ; ++pszValue )
+	for ( LPCTSTR pszValue = strValue; *pszValue; ++pszValue )
 	{
 		switch ( *pszValue )
 		{
@@ -1255,7 +1288,7 @@ BOOL IsValidExtension(LPCTSTR pszName)
 
 	BOOL bNum = TRUE;
 	const UINT nLen = (UINT)_tcslen( pszName );
-	for ( UINT nTest = 0 ; nTest < 12 && nTest <= nLen ; nTest++ )
+	for ( UINT nTest = 0; nTest < 12 && nTest <= nLen; nTest++ )
 	{
 		TCHAR cChar = *(pszName + ( nLen - nTest ));
 		if ( bNum && cChar == L'\0' ) continue;
@@ -1280,7 +1313,7 @@ BOOL IsValidExtension(LPCTSTR pszName)
 //	//return FALSE;
 //
 //	CString strIP;
-//	for ( int i = 0, d = 0 ; i < nLength ; i++ )
+//	for ( int i = 0, d = 0; i < nLength; i++ )
 //	{
 //		TCHAR Ch = sInput.GetAt( i );
 //		if ( _istdigit( Ch ) )
@@ -1324,7 +1357,7 @@ DWORD IPStringToDWORD(LPCTSTR pszIP, BOOL bReverse)
 	UINT nCurrent = 0;
 	UINT nSet = 0;
 
-	for ( UINT i = 16 ; i ; i--, pszIP++ )
+	for ( UINT i = 16; i; i--, pszIP++ )
 	{
 		if ( *pszIP == '.' || *pszIP == 0 || *pszIP == ':' || i == 1 )
 		{

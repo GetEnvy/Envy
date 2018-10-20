@@ -2,7 +2,7 @@
 // WindowManager.cpp
 //
 // This file is part of Envy (getenvy.com) © 2016-2018
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2006
+// Portions copyright Shareaza 2002-2006 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -132,7 +132,7 @@ CChildWnd* CWindowManager::Find(CRuntimeClass* pClass, CChildWnd* pAfter, CChild
 
 	BOOL bFound = ( pAfter == NULL );
 
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		CChildWnd* pChild = GetNext( pos );
 
@@ -206,7 +206,7 @@ void CWindowManager::Close()
 
 	CSingleLock pLock( &theApp.m_pSection, TRUE );
 
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		CChildWnd* pChild = GetNext( pos );
 		pClose.AddTail( pChild );
@@ -214,7 +214,7 @@ void CWindowManager::Close()
 		pChild->RemoveSkin();
 	}
 
-	for ( POSITION pos = pClose.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = pClose.GetHeadPosition(); pos; )
 	{
 		CChildWnd* pChild = pClose.GetNext( pos );
 		pChild->DestroyWindow();
@@ -232,7 +232,7 @@ void CWindowManager::AutoResize()
 	GetClientRect( &rcSize );
 	if ( rcSize.right < 64 || rcSize.bottom < 64 ) return;
 
-	for ( pChild = (CChildWnd*)GetWindow( GW_CHILD ) ; pChild ; pChild = (CChildWnd*)pChild->GetNextWindow() )
+	for ( pChild = (CChildWnd*)GetWindow( GW_CHILD ); pChild; pChild = (CChildWnd*)pChild->GetNextWindow() )
 	{
 		if ( ! pChild->IsKindOf( RUNTIME_CLASS(CChildWnd) ) ) continue;
 
@@ -255,7 +255,7 @@ void CWindowManager::AutoResize()
 
 	if ( Settings.General.GUIMode != GUI_WINDOWED )
 	{
-		for ( pChild = (CChildWnd*)GetWindow( GW_CHILD ) ; pChild ; pChild = (CChildWnd*)pChild->GetNextWindow() )
+		for ( pChild = (CChildWnd*)GetWindow( GW_CHILD ); pChild; pChild = (CChildWnd*)pChild->GetNextWindow() )
 		{
 			if ( ! pChild->IsKindOf( RUNTIME_CLASS(CChildWnd) ) ) continue;
 
@@ -288,7 +288,7 @@ void CWindowManager::Cascade(BOOL bActiveOnly)
 
 	CChildWnd* pActive = bActiveOnly ? GetActive() : NULL;
 
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		CChildWnd* pChild = GetNext( pos );
 
@@ -315,7 +315,7 @@ void CWindowManager::ActivateGrouped(CChildWnd* pExcept)
 
 	CChildWnd* pParent = pExcept->m_pGroupParent ? pExcept->m_pGroupParent : pExcept;
 
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		CChildWnd* pChild = GetNext( pos );
 
@@ -415,7 +415,7 @@ void CWindowManager::LoadWindowStates()
 
 	if ( Settings.Interface.SaveOpenWindows && Settings.General.GUIMode != GUI_BASIC )
 	{
-		for ( strWindows += '|' ; strWindows.GetLength() > 1 ; )
+		for ( strWindows += '|'; strWindows.GetLength() > 1; )
 		{
 			CString strClass = strWindows.SpanExcluding( L"| ,.\t" );
 			strWindows = strWindows.Mid( strClass.GetLength() + 1 );
@@ -461,7 +461,7 @@ void CWindowManager::SaveWindowStates() const
 
 	CString strWindows;
 
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		CChildWnd* pChild = GetNext( pos );
 
@@ -569,7 +569,7 @@ BOOL CWindowManager::SaveSearchWindows() const
 		try
 		{
 			DWORD nTotal = 0;
-			for ( POSITION pos = GetIterator() ; pos ; )
+			for ( POSITION pos = GetIterator(); pos; )
 			{
 				CSearchWnd* pWnd = (CSearchWnd*)GetNext( pos );
 				if ( pWnd->IsKindOf( RUNTIME_CLASS(CSearchWnd) ) && pWnd->GetLastSearch() )
@@ -578,7 +578,7 @@ BOOL CWindowManager::SaveSearchWindows() const
 
 			DWORD nSkip = ( nTotal > Settings.Interface.SearchWindowsLimit ) ? ( nTotal - Settings.Interface.SearchWindowsLimit ) : 0;
 
-			for ( POSITION pos = GetIterator() ; pos ; )
+			for ( POSITION pos = GetIterator(); pos; )
 			{
 				CSearchWnd* pWnd = (CSearchWnd*)GetNext( pos );
 				if ( pWnd->IsKindOf( RUNTIME_CLASS(CSearchWnd) ) &&
@@ -710,7 +710,7 @@ BOOL CWindowManager::SaveBrowseHostWindows() const
 		try
 		{
 			DWORD nTotal = 0;
-			for ( POSITION pos = GetIterator() ; pos ; )
+			for ( POSITION pos = GetIterator(); pos; )
 			{
 				CBrowseHostWnd* pWnd = (CBrowseHostWnd*) GetNext( pos );
 				if ( pWnd->IsKindOf( RUNTIME_CLASS(CBrowseHostWnd) ) )
@@ -719,7 +719,7 @@ BOOL CWindowManager::SaveBrowseHostWindows() const
 
 			DWORD nSkip = ( nTotal > Settings.Interface.BrowseWindowsLimit ) ? ( nTotal - Settings.Interface.BrowseWindowsLimit ) : 0;
 
-			for ( POSITION pos = GetIterator() ; pos ; )
+			for ( POSITION pos = GetIterator(); pos; )
 			{
 				CBrowseHostWnd* pWnd = (CBrowseHostWnd*) GetNext( pos );
 				if ( pWnd->IsKindOf( RUNTIME_CLASS(CBrowseHostWnd) ) )
@@ -785,7 +785,7 @@ void CWindowManager::OpenNewSearchWindow()
 	POSITION posSearch = NULL;
 	int nCount = 0;
 
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		CSearchWnd* pChild = (CSearchWnd*)GetNext( pos );
 
@@ -827,7 +827,7 @@ void CWindowManager::OpenNewSearchWindow()
 	}
 
 	// Toggle to next existing search tab
-	for ( ; posSearch ; )
+	for ( ; posSearch; )
 	{
 		CSearchWnd* pChild = (CSearchWnd*)GetNext( posSearch );
 
@@ -846,7 +846,7 @@ void CWindowManager::OpenNewSearchWindow()
 
 void CWindowManager::PostSkinChange()
 {
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		CChildWnd* pChildWnd = GetNext( pos );
 		pChildWnd->OnSkinChange();
@@ -855,7 +855,7 @@ void CWindowManager::PostSkinChange()
 
 void CWindowManager::PostSkinRemove()
 {
-	for ( POSITION pos = GetIterator() ; pos ; )
+	for ( POSITION pos = GetIterator(); pos; )
 	{
 		GetNext( pos )->RemoveSkin();
 	}

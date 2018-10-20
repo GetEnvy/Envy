@@ -1,8 +1,8 @@
 //
 // HostCache.h
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2012 and Shareaza 2002-2007
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2012
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -20,10 +20,10 @@
 
 class CNeighbour;
 class CG1Packet;
-class CVendor;
 class CHostCacheHost;
 class CHostCacheList;
 class CHostCache;
+class CVendor;
 
 
 class CHostCacheHost
@@ -74,10 +74,10 @@ public:
 
 	// Attributes: Kademlia
 	Hashes::Guid	m_oGUID;		// Host GUID (128 bit)
-	BYTE			m_nKADVersion;	// Kademlia version
+//	BYTE			m_nKADVersion;	// ToDo: Kademlia version
 
 	bool		ConnectTo(BOOL bAutomatic = FALSE);
-	CString		ToString(const bool bLong = true) const;	// "10.0.0.1:6346 2002-04-30T08:30Z"
+	CString		ToString(const bool bLong = true) const; // "10.0.0.1:6346 2002-04-30T08:30Z"
 	bool		IsExpired(const DWORD tNow) const;		// Is this host expired?
 	bool		IsThrottled(const DWORD tNow) const;	// Is host temporary throttled down?
 	bool		CanConnect(const DWORD tNow) const;		// Can we connect to this host now?
@@ -155,6 +155,7 @@ struct is_address : public std::binary_function< CHostCacheMapPair, LPCTSTR, boo
 		return ( _Pair.second->m_sAddress.CompareNoCase( _bLocally ) == 0 );
 	}
 };
+
 
 class CHostCacheList
 {
@@ -263,8 +264,8 @@ public:
 	CHostCacheList		Gnutella1;
 	CHostCacheList		G1DNA;
 	CHostCacheList		eDonkey;
-	CHostCacheList		DC;
 	CHostCacheList		Kademlia;
+	CHostCacheList		DC;
 	CHostCacheList		BitTorrent;
 
 	BOOL				Load();
@@ -275,7 +276,7 @@ public:
 	int					Import(LPCTSTR pszFile, BOOL bFreshOnly = FALSE);
 	int					ImportHubList(CFile* pFile);	// Import DC++ hub list .xml.bz2 file
 	int					ImportMET(CFile* pFile);		// Import eDonkey2000 servers .met file
-	int					ImportNodes(CFile* pFile);		// Import Kademlia nodes .dat file
+	//int				ImportNodes(CFile* pFile);		// ToDo: Import Kademlia nodes .dat file
 	//int				ImportCache(CFile* pFile);		// ToDo: Support custom G2/Gnutella import/export .xml/.dat
 
 	bool				CheckMinimumServers(PROTOCOLID nProtocol);

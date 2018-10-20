@@ -1,8 +1,8 @@
 ﻿//
 // CtrlIRCFrame.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2015 and Shareaza 2005-2008
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2005-2008 and PeerProject 2008-2015
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -146,7 +146,7 @@ CIRCFrame::CIRCFrame()
 {
 	if ( g_pIrcFrame == NULL ) g_pIrcFrame = this;
 
-	for ( int nChannel = 0 ; nChannel < MAX_CHANNELS ; ++nChannel )
+	for ( int nChannel = 0; nChannel < MAX_CHANNELS; ++nChannel )
 		m_nCurrentPosLineBuffer[ nChannel ] = -1;
 }
 
@@ -223,7 +223,7 @@ void CIRCFrame::ClearChanListCount()
 {
 	CListCtrl& wndChanList = m_wndPanel.m_boxChans.m_wndChanList;
 	const int nChanCount = wndChanList.GetItemCount();
-	for ( int i = 0 ; i < nChanCount ; ++i )
+	for ( int i = 0; i < nChanCount; ++i )
 	{
 		wndChanList.SetItemText( i, 1, L"" );
 	}
@@ -244,7 +244,7 @@ void CIRCFrame::FillChanListCount(const CString& strUserCount, const CString& st
 	strDisplay = m_pChanList.GetDisplayOfIndex( nIndex );
 
 	const int nChanCount = wndChanList.GetItemCount();
-	for ( nList = 0 ; nList < nChanCount ; nList++ )
+	for ( nList = 0; nList < nChanCount; nList++ )
 	{
 		strList = wndChanList.GetItemText( nList, 0 );
 		if ( strDisplay.CompareNoCase( strList ) == 0 )
@@ -670,7 +670,7 @@ void CIRCFrame::OnContextMenu(CWnd* pWnd, CPoint point)
 	{
 		CRect rcTab;
 		const int nTabCount = m_wndTab.GetItemCount();
-		for ( int nTab = 0 ; nTab < nTabCount ; nTab++ )
+		for ( int nTab = 0; nTab < nTabCount; nTab++ )
 		{
 			m_wndTab.GetItemRect( nTab, rcTab );
 			m_wndTab.ClientToScreen( rcTab );
@@ -696,13 +696,13 @@ void CIRCFrame::OnIrcConnect()
 	//DWORD   Settings.IRC.ServerPort
 
 	CString strMessage;
-	strMessage.Format( LoadString( IDS_CHAT_CONNECTING_TO ), Settings.IRC.ServerName );
+	strMessage.Format( LoadString( IDS_CHAT_CONNECTING_TO ), (LPCTSTR)Settings.IRC.ServerName );
 	StatusMessage( strMessage, ID_COLOR_TEXT );
 
 	struct hostent* host = gethostbyname( (LPCSTR)CT2A( Settings.IRC.ServerName ) );
 	if ( host == NULL )				// Unknown host
 	{
-		strMessage.Format( LoadString( IDS_CHAT_CANT_CONNECT ), Settings.IRC.ServerName );
+		strMessage.Format( LoadString( IDS_CHAT_CANT_CONNECT ), (LPCTSTR)Settings.IRC.ServerName );
 		StatusMessage( strMessage );
 		return;
 	}
@@ -722,7 +722,7 @@ void CIRCFrame::OnIrcConnect()
 
 	if ( RetVal == SOCKET_ERROR )
 	{
-		strMessage.Format( LoadString( IDS_CHAT_CANT_CONNECT ), Settings.IRC.ServerName );
+		strMessage.Format( LoadString( IDS_CHAT_CANT_CONNECT ), (LPCTSTR)Settings.IRC.ServerName );
 		StatusMessage( strMessage );
 		CNetwork::CloseSocket( m_nSocket, false );
 		return;
@@ -1024,7 +1024,7 @@ void CIRCFrame::OnIrcCloseTab()
 	m_pIrcBuffer[ nTab ].RemoveAll();
 	m_pIrcUsersBuffer[ nTab ].RemoveAll();
 
-	for ( ; nTab < m_nBufferCount - 1 ; nTab++ )
+	for ( ; nTab < m_nBufferCount - 1; nTab++ )
 	{
 		m_pIrcBuffer[ nTab ].Append( m_pIrcBuffer[ nTab + 1 ] );
 		m_pIrcUsersBuffer[ nTab ].Append( m_pIrcUsersBuffer[ nTab + 1 ] );
@@ -1060,7 +1060,7 @@ void CIRCFrame::OnIrcDisconnect()
 	KillTimer( 9 );
 
 	// Delete all tabs except Status
-	for ( int nChannel = 1 ; nChannel < MAX_CHANNELS ; nChannel++ )
+	for ( int nChannel = 1; nChannel < MAX_CHANNELS; nChannel++ )
 	{
 		m_wndTab.DeleteItem( nChannel );
 		m_pIrcBuffer[ nChannel ].RemoveAll();
@@ -1187,7 +1187,7 @@ void CIRCFrame::OnTimer(UINT_PTR nIDEvent)
 	if ( nIDEvent == 7 )
 	{
 		//CListCtrl* pChannelList = (CListCtrl*)&(m_wndPanel.m_boxChans.m_wndChanList);
-		//for ( int nList = 0 ; nList < pChannelList->GetItemCount() ; nList++ )
+		//for ( int nList = 0; nList < pChannelList->GetItemCount(); nList++ )
 		//{
 		//	if ( ! pChannelList->GetItemText( nList, 1 ).IsEmpty() )
 		//		pChannelList->SetItemText( nList, 1, L"0" );
@@ -1357,7 +1357,7 @@ void CIRCFrame::OnStatusMessage(LPCTSTR pszText, int nFlags)
 	}
 
 	// Remove invalid characters (0x01 - 0x1F)
-	for ( nIndex = 1 ; nIndex < 32 ; nIndex++ )
+	for ( nIndex = 1; nIndex < 32; nIndex++ )
 		strMessage.Remove( char(nIndex) );
 
 	// Fit the text into the window -- UI libraries handle this automatically...
@@ -1380,7 +1380,7 @@ void CIRCFrame::OnStatusMessage(LPCTSTR pszText, int nFlags)
 //	pWordDivide.Add( strMessage.Mid( nOldChar ) );
 //	nCurrentLength = 0;
 //	strMsgTemp.Empty();
-//	for ( int nWord = 0 ; nWord < pWordDivide.GetCount() ; nWord++ )
+//	for ( int nWord = 0; nWord < pWordDivide.GetCount(); nWord++ )
 //	{
 //		strCurrentWord = pWordDivide.GetAt( nWord ).SpanExcluding( L"\r\n" );
 //		nCurrentLength += strCurrentWord.GetLength();
@@ -1626,7 +1626,7 @@ BOOL CIRCFrame::OnNewMessage(const CString& strMessage)
 	CIRCNewMessage oNewMessage;
 	ParseString( strMessage, oNewMessage );
 
-	for ( int nMessage = 0 ; nMessage < oNewMessage.m_pMessages.GetCount() ; nMessage++ )
+	for ( int nMessage = 0; nMessage < oNewMessage.m_pMessages.GetCount(); nMessage++ )
 	{
 		int nColorID = oNewMessage.m_pMessages[ nMessage ].nColorID;
 		int nTargetWindow = GetTabIndex( oNewMessage.m_pMessages[ nMessage ].sTargetName );
@@ -1925,7 +1925,7 @@ void CIRCFrame::ActivateMessageByID(CIRCNewMessage& oNewMessage, int nMessageTyp
 	case ID_MESSAGE_CHANNEL_LISTEND:
 		{
 			CListCtrl* pChannelList = (CListCtrl*)&(m_wndPanel.m_boxChans.m_wndChanList);
-			for ( int nList = 0 ; nList < pChannelList->GetItemCount() ; nList++ )
+			for ( int nList = 0; nList < pChannelList->GetItemCount(); nList++ )
 			{
 				if ( pChannelList->GetItemText( nList, 1 ) == L"0" )
 					pChannelList->DeleteItem( nList );
@@ -1941,7 +1941,7 @@ void CIRCFrame::ActivateMessageByID(CIRCNewMessage& oNewMessage, int nMessageTyp
 		{
 			CString strChannelName = m_pWords.GetAt( 4 ), strTemp;
 			int nMode, nWord, nModeColumn, nTab = m_wndTab.GetCurSel();
-			for ( nWord = 6 ; nWord < m_pWords.GetCount() - 1 ; nWord++ )
+			for ( nWord = 6; nWord < m_pWords.GetCount() - 1; nWord++ )
 			{
 				strTemp = m_pWords.GetAt( nWord );
 				nModeColumn = 0;
@@ -2027,7 +2027,7 @@ void CIRCFrame::ActivateMessageByID(CIRCNewMessage& oNewMessage, int nMessageTyp
 
 			int oldTab = nTab;
 			// ToDo: m_pIrcBuffer should be an expandable array.  Seriously.
-			for ( ; nTab < m_nBufferCount - 1 ; nTab++ )
+			for ( ; nTab < m_nBufferCount - 1; nTab++ )
 			{
 				m_pIrcBuffer[ nTab ].Append( m_pIrcBuffer[ nTab + 1 ] );
 				m_pIrcUsersBuffer[ nTab ].Append( m_pIrcUsersBuffer[ nTab + 1 ] );
@@ -2051,7 +2051,7 @@ void CIRCFrame::ActivateMessageByID(CIRCNewMessage& oNewMessage, int nMessageTyp
 		{
 			CString strNick = m_pWords.GetAt( 0 );
 			CString strUserMsg = GetStringAfterParsedItem( 6 );
-			for ( int nTab = 1 ; nTab < m_nBufferCount ; nTab++ )
+			for ( int nTab = 1; nTab < m_nBufferCount; nTab++ )
 			{
 				int nListUser = FindInList( strNick, 0, nTab );
 				if ( nTab == m_wndTab.GetCurSel() && nListUser != -1 )
@@ -2113,7 +2113,7 @@ void CIRCFrame::ActivateMessageByID(CIRCNewMessage& oNewMessage, int nMessageTyp
 			CString strMode = m_pWords.GetAt( 7 );
 			BOOL bSign = ( strMode[ 0 ] == L'+' );
 			int nCurNick = 8;
-			for ( int nChar = 1 ; nChar < strMode.GetLength() ; nChar++ )
+			for ( int nChar = 1; nChar < strMode.GetLength(); nChar++ )
 			{
 				if ( m_pWords.GetCount() - 1 < nCurNick ) break;
 
@@ -2174,7 +2174,7 @@ void CIRCFrame::ActivateMessageByID(CIRCNewMessage& oNewMessage, int nMessageTyp
 			CString strCurUser;
 			int nListUser, nTab;
 			const int nTabCount = m_wndTab.GetItemCount();
-			for ( nTab = 0 ; nTab < nTabCount ; nTab++ )
+			for ( nTab = 0; nTab < nTabCount; nTab++ )
 			{
 				nListUser = FindInList( strNick, 2, nTab );
 				if ( nListUser != -1 )
@@ -2413,7 +2413,7 @@ void CIRCFrame::ParseString(const CString& strMessage, CIRCNewMessage& oNewMessa
 		nPos = strMessage.Find( L' ', nPos + 1 );
 	}
 
-	for ( int index = 0 ; index < incomingWords.GetCount() ; index++ )
+	for ( int index = 0; index < incomingWords.GetCount(); index++ )
 	{
 		m_pWords.Add( incomingWords.GetAt( index ) );
 	}
@@ -2427,7 +2427,7 @@ void CIRCFrame::ParseString(const CString& strMessage, CIRCNewMessage& oNewMessa
 
 int CIRCFrame::FindParsedItem(LPCTSTR szMessage, int nFirst)
 {
-	for ( int nItem = nFirst ; nItem < m_pWords.GetCount() - 1 ; nItem++ )
+	for ( int nItem = nFirst; nItem < m_pWords.GetCount() - 1; nItem++ )
 	{
 		if ( m_pWords.GetAt( nItem ).Compare( szMessage ) == 0 )
 			return nItem;
@@ -2438,7 +2438,7 @@ int CIRCFrame::FindParsedItem(LPCTSTR szMessage, int nFirst)
 CString CIRCFrame::GetStringAfterParsedItem(int nItem) const
 {
 	CString strMessage;
-	for ( int nWord = nItem + 1 ; nWord < m_pWords.GetCount() ; nWord++ )
+	for ( int nWord = nItem + 1; nWord < m_pWords.GetCount(); nWord++ )
 		strMessage = strMessage + L" " + m_pWords.GetAt( nWord );
 	strMessage.Trim();
 	return strMessage;
@@ -2459,7 +2459,7 @@ CString CIRCFrame::TrimString(CString strMessage) const
 int CIRCFrame::GetTabIndex(const CString& strTabName) const
 {
 	const int nTabCount = m_wndTab.GetItemCount();
-	for ( int nTab = 0 ; nTab < nTabCount ; nTab++ )
+	for ( int nTab = 0; nTab < nTabCount; nTab++ )
 	{
 		if ( GetTabText( nTab ).CompareNoCase( strTabName ) == 0 )
 			return nTab;
@@ -2474,7 +2474,7 @@ void CIRCFrame::LoadBufferForWindow(int nTab)
 	m_pContent.Clear();
 	CString str;
 	int nFlag;
-	for ( int nLine = 1 ; nLine < m_pIrcBuffer[ nTab ].GetCount() ; nLine++ )
+	for ( int nLine = 1; nLine < m_pIrcBuffer[ nTab ].GetCount(); nLine++ )
 	{
 		str = m_pIrcBuffer[ nTab ].GetAt( nLine );
 		nFlag = int( CHAR( str.GetAt( 0 ) ) );
@@ -2495,10 +2495,10 @@ void CIRCFrame::OnClickTab(NMHDR* /*pNMHDR*/, LRESULT* pResult)
 //{
 //	int nCmpResult, nBiggest, nUser1, nUser2;
 //	CString strUser1, strUser2;
-//	for ( nUser1 = 0 ; nUser1 < m_wndPanel.m_boxUsers.m_wndUserList.GetCount() ; nUser1++ )
+//	for ( nUser1 = 0; nUser1 < m_wndPanel.m_boxUsers.m_wndUserList.GetCount(); nUser1++ )
 //	{
 //		nBiggest = nUser1;
-//		for ( nUser2 = nUser1 + 1 ; nUser2 < m_wndPanel.m_boxUsers.m_wndUserList.GetCount() ; nUser2++ )
+//		for ( nUser2 = nUser1 + 1; nUser2 < m_wndPanel.m_boxUsers.m_wndUserList.GetCount(); nUser2++ )
 //		{
 //			m_wndPanel.m_boxUsers.m_wndUserList.GetText( nBiggest, strUser1 );
 //			m_wndPanel.m_boxUsers.m_wndUserList.GetText( nUser2, strUser2 );
@@ -2555,7 +2555,7 @@ void CIRCFrame::TabClick()
 	int nTab = m_wndTab.GetCurSel(), nMode;
 	HighlightTab( nTab, FALSE );
 
-	for ( int nUser = 0 ; nUser < m_pIrcUsersBuffer[ nTab ].GetCount() ; nUser++ )
+	for ( int nUser = 0; nUser < m_pIrcUsersBuffer[ nTab ].GetCount(); nUser++ )
 	{
 		str = m_pIrcUsersBuffer[ nTab ].GetAt( nUser );
 		nMode = int( str.GetAt( 0 ) ) - 48;
@@ -2826,7 +2826,7 @@ int CIRCFrame::IsUserInList(CString strUser) const
 	strUser = RemoveModeOfNick( strUser );
 
 	int nCount = GetUserCount() - 1;
-	for ( int nUser = 0 ; nUser <= nCount ; nUser++ )
+	for ( int nUser = 0; nUser <= nCount; nUser++ )
 	{
 		CString strNick = RemoveModeOfNick( GetUser( nUser ) );
 		if ( strNick.CompareNoCase( strUser ) == 0 )
@@ -2844,7 +2844,7 @@ int CIRCFrame::FindInList(CString strName, int nList, int nTab)
 	if ( nList == 1 ) nListCount = m_wndPanel.m_boxChans.m_wndChanList.GetItemCount();
 	if ( nList == 2 ) nListCount = m_pIrcUsersBuffer[ nTab ].GetCount();
 
-	for ( int nItem = 0 ; nItem < nListCount ; nItem++ )
+	for ( int nItem = 0; nItem < nListCount; nItem++ )
 	{
 		CString strNick;
 		if ( nList == 0 ) strNick = GetUser( nItem );
@@ -3192,7 +3192,7 @@ void CIRCTabCtrl::DrawTabControl(CDC* pDC)
 	//m_nHoverTab = TabCtrl_HitTest( m_hWnd, &htInfo );
 	int nSel = TabCtrl_GetCurSel( m_hWnd );
 
-	for ( int nTab = 0 ; nTab < tabCount ; nTab++ )
+	for ( int nTab = 0; nTab < tabCount; nTab++ )
 	{
 		if ( nTab == nSel ) continue;
 		TabCtrl_GetItemRect( m_hWnd, nTab, &rcItem );
@@ -3245,7 +3245,7 @@ void CIRCChannelList::RemoveAll(int nType)
 		return;
 	}
 
-	for ( int nChannel = 0 ; nChannel < m_bUserDefined.GetCount() ; nChannel++ )
+	for ( int nChannel = 0; nChannel < m_bUserDefined.GetCount(); nChannel++ )
 	{
 		if ( nType == 1 && m_bUserDefined.GetAt( nChannel ) ||
 			 nType == 0 && ! m_bUserDefined.GetAt( nChannel ) )
@@ -3281,7 +3281,7 @@ void CIRCChannelList::RemoveChannel(const CString& strDisplayName)
 
 int CIRCChannelList::GetIndexOfDisplay(const CString& strDisplayName) const
 {
-	for ( int nChannel = 0 ; nChannel < GetCount() ; nChannel++ )
+	for ( int nChannel = 0; nChannel < GetCount(); nChannel++ )
 	{
 		if ( strDisplayName.CompareNoCase( GetDisplayOfIndex( nChannel ) ) == 0 )
 			return nChannel;
@@ -3291,7 +3291,7 @@ int CIRCChannelList::GetIndexOfDisplay(const CString& strDisplayName) const
 
 int CIRCChannelList::GetIndexOfName(const CString& strName) const
 {
-	for ( int nChannel = 0 ; nChannel < GetCount() ; nChannel++ )
+	for ( int nChannel = 0; nChannel < GetCount(); nChannel++ )
 	{
 		if ( strName.CompareNoCase( GetNameOfIndex( nChannel ) ) == 0 )
 			return nChannel;

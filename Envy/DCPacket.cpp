@@ -1,8 +1,8 @@
 //
 // DCPacket.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2010-2014 and Shareaza 2010
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2010 and PeerProject 2010-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -53,7 +53,7 @@ CString CDCPacket::GetType() const
 		if ( *m_pBuffer == '$' )
 		{
 			const BYTE* p = m_pBuffer;
-			for ( DWORD n = m_nLength ; n && *p != ' ' && *p != '|' ; ++p, --n );
+			for ( DWORD n = m_nLength; n && *p != ' ' && *p != '|'; ++p, --n );
 			return CString( (LPCSTR)&m_pBuffer[ 1 ], p - m_pBuffer - 1 );
 		}
 	}
@@ -68,7 +68,7 @@ CString CDCPacket::ToHex() const
 	{
 		if ( *p == '$' )
 		{
-			for ( ; n && *p != ' ' && *p != '|' ; ++p, --n );
+			for ( ; n && *p != ' ' && *p != '|'; ++p, --n );
 			if ( n && *p == ' ' )
 			{
 				++p;
@@ -86,7 +86,7 @@ CString CDCPacket::ToHex() const
 	LPTSTR pszDump = strDump.GetBuffer( n * 3 );	// Each byte will become 3 characters
 
 	// Loop i down each byte in the packet
-	for ( DWORD i = 0 ; i < n ; i++ )
+	for ( DWORD i = 0; i < n; i++ )
 	{
 		// Copy the byte at i into an integer called nChar
 		int nChar = p[i];
@@ -113,7 +113,7 @@ CString CDCPacket::ToASCII() const
 	{
 		if ( *p == '$' )
 		{
-			for ( ; n && *p != ' ' && *p != '|' ; ++p, --n );
+			for ( ; n && *p != ' ' && *p != '|'; ++p, --n );
 			if ( n && *p == ' ' )
 			{
 				++p;
@@ -129,7 +129,7 @@ CString CDCPacket::ToASCII() const
 	LPSTR pszDump = strDump.GetBuffer( n + 1 );		// We'll write a character for each byte, and 1 more for the null terminator
 
 	// Loop i down each byte in the packet
-	for ( DWORD i = 0 ; i < n ; i++ )
+	for ( DWORD i = 0; i < n; i++ )
 	{
 		// Copy the byte at i into an integer called nChar
 		int nChar = p[i];
@@ -165,7 +165,7 @@ CDCPacket* CDCPacket::ReadBuffer(CBuffer* pBuffer)
 		  pBuffer->m_pBuffer[ 0 ] == '<' ||
 		  pBuffer->m_pBuffer[ 0 ] == '|' ) )
 	{
-		for ( DWORD i = 0 ; i < pBuffer->m_nLength ; ++i )
+		for ( DWORD i = 0; i < pBuffer->m_nLength; ++i )
 		{
 			if ( pBuffer->m_pBuffer[ i ] == '|' )
 			{

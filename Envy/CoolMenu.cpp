@@ -1,8 +1,8 @@
 //
 // CoolMenu.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2015 and Shareaza 2002-2008
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2008 and PeerProject 2008-2015
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -74,7 +74,7 @@ void CCoolMenu::OnInitMenuPopup(CMenu* pPopupMenu, UINT nIndex, BOOL bSysMenu)
 		MENUITEMINFO mii = {};
 		mii.cbSize = sizeof( mii );
 		mii.fMask = MIIM_ID;
-		for ( UINT i = 0 ; i < (UINT)pPopupMenu->GetMenuItemCount() ; i++ )
+		for ( UINT i = 0; i < (UINT)pPopupMenu->GetMenuItemCount(); i++ )
 		{
 			if ( pPopupMenu->GetMenuItemInfo( i, &mii, TRUE ) &&
 				mii.wID >= ID_SHELL_MENU_MIN && mii.wID <= ID_SHELL_MENU_MAX )
@@ -88,7 +88,7 @@ void CCoolMenu::OnInitMenuPopup(CMenu* pPopupMenu, UINT nIndex, BOOL bSysMenu)
 					Skin.AddString( strHelp, mii.wID );
 			}
 		}
-		for ( UINT i = 0 ; i < (UINT)pPopupMenu->GetMenuItemCount() ; i++ )
+		for ( UINT i = 0; i < (UINT)pPopupMenu->GetMenuItemCount(); i++ )
 		{
 			if ( ! pPopupMenu->GetMenuItemInfo( i, &mii, TRUE ) ||
 				mii.wID == ID_SEPARATOR || mii.wID == -1 )
@@ -117,7 +117,7 @@ BOOL CCoolMenu::AddMenu(CMenu* pMenu, BOOL bChild)
 
 	if ( ! Settings.Interface.CoolMenuEnable ) return FALSE;
 
-	for ( int i = 0 ; i < (int)pMenu->GetMenuItemCount() ; i++ )
+	for ( int i = 0; i < (int)pMenu->GetMenuItemCount(); i++ )
 	{
 		TCHAR szBuffer[128] = {};
 		CString strText;
@@ -165,7 +165,7 @@ BOOL CCoolMenu::AddMenu(CMenu* pMenu, BOOL bChild)
 				HMENU pFilters = CreatePopupMenu();
 				DWORD nDefaultFilter = pResultFilters->m_nDefault;
 
-				for ( DWORD nFilter = 0 ; nFilter < pResultFilters->m_nFilters ; nFilter++ )
+				for ( DWORD nFilter = 0; nFilter < pResultFilters->m_nFilters; nFilter++ )
 				{
 					AppendMenu( pFilters, MF_STRING|( nFilter == nDefaultFilter ? MF_CHECKED : 0 ),
 						3000 + nFilter, pResultFilters->m_pFilters[ nFilter ]->m_sName );
@@ -526,11 +526,11 @@ void CCoolMenu::DrawMenuText(CDC* pDC, CRect* pRect, const CString& strText)
 
 void CCoolMenu::DrawWatermark(CDC* pDC, CRect* pRect, int nOffX, int nOffY)
 {
-	for ( int nY = pRect->top - nOffY ; nY < pRect->bottom ; nY += m_czWatermark.cy )
+	for ( int nY = pRect->top - nOffY; nY < pRect->bottom; nY += m_czWatermark.cy )
 	{
 		if ( nY + m_czWatermark.cy < pRect->top ) continue;
 
-		for ( int nX = pRect->left - nOffX ; nX < pRect->right ; nX += m_czWatermark.cx )
+		for ( int nX = pRect->left - nOffX; nX < pRect->right; nX += m_czWatermark.cx )
 		{
 			if ( nX + m_czWatermark.cx < pRect->left ) continue;
 

@@ -164,10 +164,11 @@
 	<resource code="40025" id="ID_CHAT_SEND_FILE"/>
 	<resource code="40026" id="ID_CHAT_TIMESTAMP"/>
 	<resource code="40030" id="ID_CHILD_CLOSE"/>
-	<resource code="40031" id="ID_CHILD_MAXIMISE"/>
+	<resource code="40031" id="ID_CHILD_CLOSE_HOVER"/>
 	<resource code="40032" id="ID_CHILD_MINIMISE"/>
-	<resource code="40033" id="ID_CHILD_RESTORE"/>
-	<resource code="40034" id="ID_CHECKMARK"/>
+	<resource code="40033" id="ID_CHILD_MAXIMISE"/>
+	<resource code="40034" id="ID_CHILD_RESTORE"/>
+	<resource code="40035" id="ID_CHECKMARK"/>
 	<resource code="40040" id="ID_DISCOVERY_ADD"/>
 	<resource code="40041" id="ID_DISCOVERY_EDIT"/>
 	<resource code="40042" id="ID_DISCOVERY_REMOVE"/>

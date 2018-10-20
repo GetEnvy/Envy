@@ -2,7 +2,7 @@
 // CtrlLibraryAlbumView.cpp
 //
 // This file is part of Envy (getenvy.com) © 2016-2018
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2007
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -154,7 +154,7 @@ void CLibraryAlbumView::Update()
 
 	CLibraryAlbumTrack** pList = m_pList + m_nCount - 1;
 
-	for ( int nItem = m_nCount ; nItem ; nItem--, pList-- )
+	for ( int nItem = m_nCount; nItem; nItem--, pList-- )
 	{
 		CLibraryAlbumTrack* pTrack	= *pList;
 		CLibraryFile* pFile			= Library.LookupFile( pTrack->m_nIndex );
@@ -187,7 +187,7 @@ void CLibraryAlbumView::Update()
 		m_nScroll	= max( 0, min( m_nScroll, nMax - rcClient.Height() + 1 ) );
 	}
 
-	for ( POSITION pos = LibraryMaps.GetFileIterator() ; pos ; )
+	for ( POSITION pos = LibraryMaps.GetFileIterator(); pos; )
 	{
 		CLibraryFile* pFile = LibraryMaps.GetNextFile( pos );
 
@@ -229,7 +229,7 @@ BOOL CLibraryAlbumView::Select(DWORD nObject)
 	CLibraryAlbumTrack** pList = m_pList + m_nCount - 1;
 
 	int nItem = m_nCount;
-	for ( ; nItem ; nItem--, pList-- )
+	for ( ; nItem; nItem--, pList-- )
 	{
 		CLibraryAlbumTrack* pTrack = *pList;
 		if ( pTrack->m_nIndex == nObject ) break;
@@ -256,7 +256,7 @@ BOOL CLibraryAlbumView::Select(DWORD nObject)
 void CLibraryAlbumView::SelectAll()
 {
 	CLibraryAlbumTrack** pList = m_pList;
-	for ( int nItem = 0 ; nItem < m_nCount ; nItem++, pList++ )
+	for ( int nItem = 0; nItem < m_nCount; nItem++, pList++ )
 	{
 		Select( *pList, TRI_TRUE );
 	}
@@ -318,7 +318,7 @@ void CLibraryAlbumView::Clear()
 {
 	if ( m_pList )
 	{
-		for ( int nItem = 0 ; nItem < m_nCount ; nItem++ )
+		for ( int nItem = 0; nItem < m_nCount; nItem++ )
 		{
 			delete m_pList[ nItem ];
 		}
@@ -341,7 +341,7 @@ int CLibraryAlbumView::GetTrackIndex(CLibraryAlbumTrack* pTrack) const
 {
 	CLibraryAlbumTrack** pList = m_pList;
 
-	for ( int nItem = 0 ; nItem < m_nCount ; nItem++, pList++ )
+	for ( int nItem = 0; nItem < m_nCount; nItem++, pList++ )
 	{
 		if ( *pList == pTrack ) return nItem;
 	}
@@ -393,7 +393,7 @@ BOOL CLibraryAlbumView::DeselectAll(CLibraryAlbumTrack* pTrack)
 	CLibraryAlbumTrack** pList = m_pList + m_nCount - 1;
 	BOOL bChanged = FALSE;
 
-	for ( int nItem = m_nCount ; nItem ; nItem--, pList-- )
+	for ( int nItem = m_nCount; nItem; nItem--, pList-- )
 	{
 		if ( *pList != pTrack && (*pList)->m_bSelected )
 			bChanged = Select( *pList, TRI_FALSE );
@@ -425,12 +425,12 @@ BOOL CLibraryAlbumView::SelectTo(CLibraryAlbumTrack* pTrack)
 			{
 				if ( nFirst <= nFocus )
 				{
-					for ( ; nFirst <= nFocus ; nFirst++ )
+					for ( ; nFirst <= nFocus; nFirst++ )
 						Select( m_pList[ nFirst ], TRI_TRUE );
 				}
 				else
 				{
-					for ( ; nFocus <= nFirst ; nFocus++ )
+					for ( ; nFocus <= nFirst; nFocus++ )
 						Select( m_pList[ nFocus ], TRI_TRUE );
 				}
 
@@ -660,7 +660,7 @@ void CLibraryAlbumView::OnPaint()
 	rcTrack.OffsetRect( 0, rcClient.top - m_nScroll );
 	rcTrack.OffsetRect( 0, m_szTrack.cy );
 
-	for ( int nItem = 0 ; nItem < m_nCount && rcTrack.top < rcClient.bottom ; nItem++, pList++ )
+	for ( int nItem = 0; nItem < m_nCount && rcTrack.top < rcClient.bottom; nItem++, pList++ )
 	{
 		CLibraryAlbumTrack* pTrack = *pList;
 
@@ -687,7 +687,7 @@ CLibraryAlbumTrack* CLibraryAlbumView::HitTest(const CPoint& point, CRect* pRect
 
 	CLibraryAlbumTrack** pList = m_pList;
 
-	for ( int nItem = m_nCount ; nItem && rcTrack.top < rcClient.bottom ; nItem--, pList++ )
+	for ( int nItem = m_nCount; nItem && rcTrack.top < rcClient.bottom; nItem--, pList++ )
 	{
 		CLibraryAlbumTrack* pTrack = *pList;
 
@@ -712,7 +712,7 @@ BOOL CLibraryAlbumView::GetItemRect(CLibraryAlbumTrack* pTrack, CRect* pRect)
 
 	CLibraryAlbumTrack** pList = m_pList;
 
-	for ( int nItem = m_nCount ; nItem ; nItem--, pList++ )
+	for ( int nItem = m_nCount; nItem; nItem--, pList++ )
 	{
 		if ( *pList == pTrack )
 		{
@@ -866,11 +866,11 @@ void CLibraryAlbumView::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 		{
 			CLibraryAlbumTrack* pStart = m_pFocus;
 
-			for ( int nLoop = 0 ; nLoop < 2 ; nLoop++ )
+			for ( int nLoop = 0; nLoop < 2; nLoop++ )
 			{
 				CLibraryAlbumTrack** pChild = m_pList;
 
-				for ( int nCount = m_nCount ; nCount ; nCount--, pChild++ )
+				for ( int nCount = m_nCount; nCount; nCount--, pChild++ )
 				{
 					if ( pStart != NULL )
 					{
@@ -918,7 +918,7 @@ HBITMAP CLibraryAlbumView::CreateDragImage(const CPoint& ptMouse, CPoint& ptMidd
 
 	GetClientRect( &rcClient );
 
-	for ( POSITION pos = m_pSelTrack.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pSelTrack.GetHeadPosition(); pos; )
 	{
 		CLibraryAlbumTrack* pTrack = m_pSelTrack.GetNext( pos );
 		GetItemRect( pTrack, &rcOne );
@@ -970,7 +970,7 @@ HBITMAP CLibraryAlbumView::CreateDragImage(const CPoint& ptMouse, CPoint& ptMidd
 
 	CFont* pOldFont = (CFont*)pBuffer->SelectObject( &CoolInterface.m_fntNormal );
 
-	for ( POSITION pos = m_pSelTrack.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pSelTrack.GetHeadPosition(); pos; )
 	{
 		CLibraryAlbumTrack* pTrack = m_pSelTrack.GetNext( pos );
 		GetItemRect( pTrack, &rcOne );
@@ -1131,7 +1131,7 @@ BOOL CLibraryAlbumTrack::Update(CLibraryFile* pFile)
 						if ( ! strSize.IsEmpty() )
 						{
 							int nCount = 1;
-							for ( int nIndex = 4 ; nIndex < strSize.GetLength() ; nIndex++ )
+							for ( int nIndex = 4; nIndex < strSize.GetLength(); nIndex++ )
 							{
 								if ( strSize[ nIndex ] == ',' )
 								{
@@ -1196,7 +1196,7 @@ void CLibraryAlbumTrack::Paint(CLibraryAlbumView* pView, CDC* pDC, const CRect& 
 
 	if ( pView->m_pRating == this && m_nSetRating < 7 )
 	{
-		for ( int nRating = 2 ; nRating <= 6 ; nRating++ )
+		for ( int nRating = 2; nRating <= 6; nRating++ )
 		{
 			ImageList_DrawEx( pView->m_pStars, m_nSetRating >= nRating ? 2 : 1,
 				*pDC, ptStar.x, ptStar.y, 12, 12,
@@ -1207,7 +1207,7 @@ void CLibraryAlbumTrack::Paint(CLibraryAlbumView* pView, CDC* pDC, const CRect& 
 	}
 	else
 	{
-		for ( int nRating = 2 ; nRating <= 6 ; nRating++ )
+		for ( int nRating = 2; nRating <= 6; nRating++ )
 		{
 			ImageList_DrawEx( pView->m_pStars, m_nRating >= nRating ? 0 : 1,
 				*pDC, ptStar.x, ptStar.y, 12, 12,
@@ -1355,7 +1355,7 @@ BOOL CLibraryAlbumTrack::HitTestRating(const CRect& rcBlock, const CPoint& point
 
 	int nPos = rcBlock.right - 72;
 
-	for ( m_nSetRating = 1 ; m_nSetRating <= 6 ; m_nSetRating++ )
+	for ( m_nSetRating = 1; m_nSetRating <= 6; m_nSetRating++ )
 	{
 		if ( point.x < nPos ) break;
 		nPos += 12;

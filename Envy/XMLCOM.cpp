@@ -1,8 +1,8 @@
 //
 // XMLCOM.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2010 and Shareaza 2002-2007
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2010
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -595,7 +595,7 @@ STDMETHODIMP CXMLCOMCol::XXMLElements::get_Item(VARIANT vIndex, ISXMLElement FAR
 
 		if ( SUCCEEDED( VariantChangeType( &va, (VARIANT FAR*)&vIndex, 0, VT_I4 ) ) )
 		{
-			for ( POSITION pos = pThis->m_pElement->GetElementIterator() ; pos ; vIndex.lVal-- )
+			for ( POSITION pos = pThis->m_pElement->GetElementIterator(); pos; vIndex.lVal-- )
 			{
 				pElement = pThis->m_pElement->GetNextElement( pos );
 				if ( vIndex.lVal == 0 ) break;
@@ -684,7 +684,7 @@ STDMETHODIMP CXMLCOMCol::XXMLAttributes::get_Item(VARIANT vIndex, ISXMLAttribute
 
 		if ( SUCCEEDED( VariantChangeType( &va, (VARIANT FAR*)&vIndex, 0, VT_I4 ) ) )
 		{
-			for ( POSITION pos = pThis->m_pElement->GetAttributeIterator() ; pos ; vIndex.lVal-- )
+			for ( POSITION pos = pThis->m_pElement->GetAttributeIterator(); pos; vIndex.lVal-- )
 			{
 				pAttribute = pThis->m_pElement->GetNextAttribute( pos );
 				if ( vIndex.lVal == 0 ) break;
@@ -765,10 +765,10 @@ STDMETHODIMP CXMLCOMCol::XEnumVARIANT::Next(ULONG celt, VARIANT FAR* rgvar, ULON
 	else if ( celt > 1 )
 		return E_INVALIDARG;
 
-	for ( i = 0 ; i < celt ; i++ )
+	for ( i = 0; i < celt; i++ )
 		VariantInit( &rgvar[i] );
 
-	for ( i = 0 ; i < celt ; i++ )
+	for ( i = 0; i < celt; i++ )
 	{
 		if ( m_bAttributes )
 		{

@@ -1,8 +1,8 @@
 //
 // WndMain.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2017
-// Portions copyright PeerProject 2008-2016 and Shareaza 2002-2008
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2008 and PeerProject 2008-2016
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -887,7 +887,7 @@ void CMainWnd::OnTimer(UINT_PTR nIDEvent)
 	if ( m_bTimer )	return;
 	m_bTimer = TRUE;
 
-	for ( POSITION pos = m_pWindows.GetIterator() ; pos ; )
+	for ( POSITION pos = m_pWindows.GetIterator(); pos; )
 	{
 		CChildWnd* pChild = m_pWindows.GetNext( pos );
 		pChild->PostMessage( WM_TIMER, 1, 0 );
@@ -1246,7 +1246,7 @@ LRESULT CMainWnd::OnSkinChanged(WPARAM /*wParam*/, LPARAM /*lParam*/)
 			if ( Settings.Skin.DropMenuLabel > 1 )
 			{
 				CString strWidth = L" ";
-				for ( int nCount = 1 ; nCount <= Settings.Skin.DropMenuLabel ; nCount++ )
+				for ( int nCount = 1; nCount <= Settings.Skin.DropMenuLabel; nCount++ )
 					strWidth.Append( L" " );
 				pMenu->ModifyMenu( 0, MF_BYPOSITION|MF_STRING, 0, strWidth );
 			}
@@ -1660,9 +1660,9 @@ void CMainWnd::UpdateMessages()
 			m_pTaskbar->SetProgressState( hWnd, TBPF_NORMAL );
 			m_pTaskbar->SetProgressValue( hWnd, nComplete, nTotal );
 
-			strAppBarTip.Format( L"%s\r\n%s %.2f%%\r\n%s %s", Settings.SmartAgent(),
-				LoadString( IDS_MONITOR_VOLUME_DOWNLOADED ), float( ( 10000 * nComplete ) / nTotal ) / 100.f,
-				LoadString( IDS_MONITOR_TOTAL_SPEED ), Settings.SmartSpeed( CGraphItem::GetValue( GRC_TOTAL_BANDWIDTH_IN ), bits ) );
+			strAppBarTip.Format( L"%s\r\n%s %.2f%%\r\n%s %s", (LPCTSTR)Settings.SmartAgent(),
+				(LPCTSTR)LoadString( IDS_MONITOR_VOLUME_DOWNLOADED ), float( ( 10000 * nComplete ) / nTotal ) / 100.f,
+				(LPCTSTR)LoadString( IDS_MONITOR_TOTAL_SPEED ), (LPCTSTR)Settings.SmartSpeed( CGraphItem::GetValue( GRC_TOTAL_BANDWIDTH_IN ), bits ) );
 		}
 		else
 		{
@@ -1754,27 +1754,24 @@ void CMainWnd::LocalSystemChecks()
 				}
 			}
 		}
-		else
+		else if ( nConnectionFailCount > 0 && Settings.Connection.DetectConnectionReset )
 		{
 			// We are not currently connected. Check if we disconnected because of failure and want to re-connect.
-			if ( nConnectionFailCount > 0 && Settings.Connection.DetectConnectionReset )
+			if ( Network.IsAvailable() )
 			{
-				// See if we can reconnect
-				if ( Network.IsAvailable() )
-				{
-					nConnectionFailCount = 0;
-					PostMessage( WM_COMMAND, ID_NETWORK_CONNECT );
-					theApp.Message( MSG_ERROR, L"Internet reconnect detected - restarting network" );
-				}
+				nConnectionFailCount = 0;
+				PostMessage( WM_COMMAND, ID_NETWORK_CONNECT );
+				theApp.Message( MSG_ERROR, L"Internet reconnect detected - restarting network" );
 			}
 		}
 	}
 
-	// Check we have donkey servers
+	// Check we have minimum servers
 	if ( ! Settings.Live.DefaultED2KServersLoaded )
 	{
 		Settings.Live.DefaultED2KServersLoaded = true;
-		HostCache.CheckMinimumServers( PROTOCOL_ED2K );
+		if ( Settings.eDonkey.Enabled )
+			HostCache.CheckMinimumServers( PROTOCOL_ED2K );
 	}
 
 	if ( ! Settings.Live.DonkeyServerWarning && Settings.eDonkey.Enabled )
@@ -1784,6 +1781,7 @@ void CMainWnd::LocalSystemChecks()
 			PostMessage( WM_COMMAND, ID_HELP_DONKEYSERVERS );
 	}
 
+	// ToDo: Reevaluate this check:
 	// Check for duplicates if LibraryBuilder finished hashing during startup
 	// Happens when Library*.dat files are not saved and Envy crashed
 	// In this case all files are re-added and we can find malicious duplicates
@@ -2530,7 +2528,7 @@ void CMainWnd::OnUpdateToolsDownload(CCmdUI* pCmdUI)
 
 void CMainWnd::OnToolsDownload()
 {
-	for ( BOOL bBreak = FALSE ; ! bBreak ; )
+	for ( BOOL bBreak = FALSE; ! bBreak; )
 	{
 		bBreak = TRUE;
 
@@ -2538,7 +2536,7 @@ void CMainWnd::OnToolsDownload()
 		if ( dlg.DoModal() != IDOK )
 			return;
 
-		for ( POSITION pos = dlg.m_pURLs.GetHeadPosition() ; pos ; )
+		for ( POSITION pos = dlg.m_pURLs.GetHeadPosition(); pos; )
 		{
 			CEnvyURL pURL( dlg.m_pURLs.GetNext( pos ) );
 
@@ -3320,7 +3318,7 @@ bool CMainWnd::SnarlNotify(const CString& sText, const CString& sTitle, DWORD dw
 
 	CStringA sCommand;
 	sCommand.Format( "notify?app-sig=app/%s&timeout=%u&title=%s&text=%s",
-		CLIENT_NAME_CHAR, uTimeout, UTF8Encode( strSafeTitle ), UTF8Encode( strSafeText ) );
+		CLIENT_NAME_CHAR, uTimeout, (LPCSTR)UTF8Encode( strSafeTitle ), (LPCSTR)UTF8Encode( strSafeText ) );
 
 	switch ( dwIcon & NIIF_ICON_MASK )
 	{

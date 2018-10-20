@@ -1,8 +1,8 @@
 //
 // CtrlLibraryFrame.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2007
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -113,7 +113,7 @@ CLibraryFrame::CLibraryFrame()
 
 CLibraryFrame::~CLibraryFrame()
 {
-	for ( POSITION pos = m_pViews.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pViews.GetHeadPosition(); pos; )
 	{
 		delete m_pViews.GetNext( pos );
 	}
@@ -246,38 +246,14 @@ void CLibraryFrame::OnSkinChange()
 
 BOOL CLibraryFrame::OnCmdMsg(UINT nID, int nCode, void* pExtra, AFX_CMDHANDLERINFO* pHandlerInfo)
 {
-	if ( m_wndTreeTop.m_hWnd )
-	{
-		if ( m_wndTreeTop.OnCmdMsg( nID, nCode, pExtra, pHandlerInfo ) ) return TRUE;
-	}
-	if ( m_wndTreeBottom.m_hWnd )
-	{
-		if ( m_wndTreeBottom.OnCmdMsg( nID, nCode, pExtra, pHandlerInfo ) ) return TRUE;
-	}
-	if ( m_wndViewTop.m_hWnd )
-	{
-		if ( m_wndViewTop.OnCmdMsg( nID, nCode, pExtra, pHandlerInfo ) ) return TRUE;
-	}
-	if ( m_wndViewBottom.m_hWnd )
-	{
-		if ( m_wndViewBottom.OnCmdMsg( nID, nCode, pExtra, pHandlerInfo ) ) return TRUE;
-	}
-	if ( m_wndTree.m_hWnd )
-	{
-		if ( m_wndTree.OnCmdMsg( nID, nCode, pExtra, pHandlerInfo ) ) return TRUE;
-	}
-	if ( HasView() )
-	{
-		if ( m_pView->OnCmdMsg( nID, nCode, pExtra, pHandlerInfo ) ) return TRUE;
-	}
-	if ( HasPanel() )
-	{
-		if ( m_pPanel->OnCmdMsg( nID, nCode, pExtra, pHandlerInfo ) ) return TRUE;
-	}
-	if ( m_wndBottomDynamic.m_hWnd )
-	{
-		if ( m_wndBottomDynamic.OnCmdMsg( nID, nCode, pExtra, pHandlerInfo ) ) return TRUE;
-	}
+	if ( m_wndTreeTop.m_hWnd && m_wndTreeTop.OnCmdMsg( nID, nCode, pExtra, pHandlerInfo ) ) return TRUE;
+	if ( m_wndTreeBottom.m_hWnd && m_wndTreeBottom.OnCmdMsg( nID, nCode, pExtra, pHandlerInfo ) ) return TRUE;
+	if ( m_wndViewTop.m_hWnd && m_wndViewTop.OnCmdMsg( nID, nCode, pExtra, pHandlerInfo ) ) return TRUE;
+	if ( m_wndViewBottom.m_hWnd && m_wndViewBottom.OnCmdMsg( nID, nCode, pExtra, pHandlerInfo ) ) return TRUE;
+	if ( m_wndTree.m_hWnd && m_wndTree.OnCmdMsg( nID, nCode, pExtra, pHandlerInfo ) ) return TRUE;
+	if ( HasView() && m_pView->OnCmdMsg( nID, nCode, pExtra, pHandlerInfo ) ) return TRUE;
+	if ( HasPanel() && m_pPanel->OnCmdMsg( nID, nCode, pExtra, pHandlerInfo ) ) return TRUE;
+	if ( m_wndBottomDynamic.m_hWnd && m_wndBottomDynamic.OnCmdMsg( nID, nCode, pExtra, pHandlerInfo ) ) return TRUE;
 
 	return CWnd::OnCmdMsg( nID, nCode, pExtra, pHandlerInfo );
 }
@@ -624,7 +600,7 @@ void CLibraryFrame::SetView(CLibraryView* pView, BOOL bUpdate, BOOL bUser)
 
 	if ( bUser && pView != NULL )
 	{
-		for ( CLibraryTreeItem* pItem = pFolderSelection ; pItem ; pItem = pItem->m_pSelNext )
+		for ( CLibraryTreeItem* pItem = pFolderSelection; pItem; pItem = pItem->m_pSelNext )
 		{
 			if ( pItem->m_pVirtual != NULL )
 				pItem->m_pVirtual->m_sBestView = pView->GetRuntimeClass()->m_lpszClassName;
@@ -792,7 +768,7 @@ BOOL CLibraryFrame::Update(BOOL bForce, BOOL bBestView)
 		strBest = pFolderSelection->m_pVirtual->GetBestView();
 	}
 
-	for ( POSITION pos = m_pViews.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pViews.GetHeadPosition(); pos; )
 	{
 		CLibraryView* pView = m_pViews.GetNext( pos );
 
@@ -1163,7 +1139,7 @@ void CLibraryFrame::RunLocalSearch(CQuerySearch* pSearch)
 
 	if ( CFileList* pFiles = Library.Search( pSearch, 0, TRUE ) )
 	{
-		for ( POSITION pos = pFiles->GetHeadPosition() ; pos ; )
+		for ( POSITION pos = pFiles->GetHeadPosition(); pos; )
 		{
 			const CLibraryFile* pFile = pFiles->GetNext( pos );
 

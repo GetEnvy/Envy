@@ -1,8 +1,8 @@
 //
 // CtrlMainTabBar.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2015 and Shareaza 2002-2008
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2008 and PeerProject 2008-2015
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -61,7 +61,7 @@ CMainTabBarCtrl::CMainTabBarCtrl()
 
 CMainTabBarCtrl::~CMainTabBarCtrl()
 {
-	for ( POSITION pos = m_pItems.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pItems.GetHeadPosition(); pos; )
 	{
 		delete m_pItems.GetNext( pos );
 	}
@@ -132,7 +132,7 @@ void CMainTabBarCtrl::OnSkinChange()
 
 		m_hOldSkin = NULL;
 
-		for ( POSITION pos = m_pItems.GetHeadPosition() ; pos ; )
+		for ( POSITION pos = m_pItems.GetHeadPosition(); pos; )
 		{
 			// TabItem* pItem
 			m_pItems.GetNext( pos )->OnSkinChange( m_pSkin, &m_dcSkin, &m_bmSkin );
@@ -177,7 +177,7 @@ void CMainTabBarCtrl::OnUpdateCmdUI(CFrameWnd* pTarget, BOOL /*bDisableIfNoHndle
 {
 	BOOL bChanged = FALSE;
 
-	for ( POSITION pos = m_pItems.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pItems.GetHeadPosition(); pos; )
 	{
 		TabItem* pItem = m_pItems.GetNext( pos );
 		bChanged |= pItem->Update( pTarget );
@@ -224,7 +224,7 @@ CMainTabBarCtrl::TabItem* CMainTabBarCtrl::HitTest(const CPoint& point) const
 	rcClient.bottom += m_cxRightBorder;
 	ptLocal.Offset( -rcClient.left, -rcClient.top );
 
-	for ( POSITION pos = m_pItems.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pItems.GetHeadPosition(); pos; )
 	{
 		TabItem* pItem = m_pItems.GetNext( pos );
 		if ( pItem->HitTest( ptLocal ) ) return pItem;
@@ -280,7 +280,7 @@ void CMainTabBarCtrl::DoPaint(CDC* pDC)
 	}
 	else if ( m_hOldSkin == NULL )
 	{
-		for ( POSITION pos = m_pItems.GetHeadPosition() ; pos ; )
+		for ( POSITION pos = m_pItems.GetHeadPosition(); pos; )
 		{
 			TabItem* pItem = m_pItems.GetNext( pos );
 			pItem->OnSkinChange( m_pSkin, &m_dcSkin, &m_bmSkin );
@@ -302,7 +302,7 @@ void CMainTabBarCtrl::DoPaint(CDC* pDC)
 
 	CPoint ptOffset = rc.TopLeft();
 
-	for ( POSITION pos = m_pItems.GetHeadPosition() ; pos ; )
+	for ( POSITION pos = m_pItems.GetHeadPosition(); pos; )
 	{
 		TabItem* pItem = m_pItems.GetNext( pos );
 		pItem->Paint( pBuffer, &m_dcSkin, ptOffset,
@@ -518,7 +518,7 @@ void CMainTabBarCtrl::TabItem::OnSkinChange(CSkinWindow* pSkin, CDC* pdcCache, C
 		}
 	}
 
-	for ( int nState = 0 ; pszState[ nState ] != NULL ; nState++ )
+	for ( int nState = 0; pszState[ nState ] != NULL; nState++ )
 	{
 		CRect* pRect = &m_rcSrc[ nState ];
 		pRect->SetRectEmpty();
@@ -653,9 +653,9 @@ void CMainTabBarCtrl::TabItem::Paint(CDC* pDstDC, CDC* pSrcDC, const CPoint& ptO
 	if ( crNavBarOutline != CLR_NONE )
 	{
 		pDstDC->SetTextColor( crNavBarOutline );
-		for ( int x = -1 ; x < 2 ; x++ )
+		for ( int x = -1; x < 2; x++ )
 		{
-			for ( int y = -1 ; y < 2 ; y++ )
+			for ( int y = -1; y < 2; y++ )
 			{
 				if ( x || y )
 					pDstDC->DrawText( m_sTitle, rcTarget + CPoint( x, y ), DT_CENTER|DT_SINGLELINE|DT_VCENTER|DT_NOCLIP );

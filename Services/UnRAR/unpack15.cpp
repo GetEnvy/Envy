@@ -258,7 +258,7 @@ void Unpack::LongLZ()
       else
       {
         for (Length=0;((BitField<<Length)&0x8000)==0;Length++)
-          ;
+         ;
         Inp.faddbits(Length+1);
       }
 

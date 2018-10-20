@@ -1,8 +1,8 @@
 //
 // DlgHitColumns.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016
-// Portions copyright PeerProject 2008-2014 and Shareaza 2002-2007
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright Shareaza 2002-2007 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -10,8 +10,8 @@
 // version 3 or later at your option. (AGPLv3)
 //
 // Envy is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// but AS-IS WITHOUT ANY WARRANTY; without even implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU Affero General Public License 3.0 for details:
 // (http://www.gnu.org/licenses/agpl.html)
 //
@@ -66,7 +66,7 @@ BOOL CSchemaColumnsDlg::OnInitDialog()
 
 	OnSelChangeSchemas();
 
-	for ( int nMember = 0 ; nMember < m_wndColumns.GetItemCount() ; nMember++ )
+	for ( int nMember = 0; nMember < m_wndColumns.GetItemCount(); nMember++ )
 	{
 		bool bChecked = m_pColumns.Find(
 			reinterpret_cast< CSchemaMember* >( m_wndColumns.GetItemData( nMember ) ) ) != NULL;
@@ -89,7 +89,7 @@ void CSchemaColumnsDlg::OnSelChangeSchemas()
 	if ( strMembers == L"(EMPTY)" )
 		strMembers = pSchema->m_sDefaultColumns;
 
-	for ( POSITION pos = pSchema->GetMemberIterator() ; pos ; )
+	for ( POSITION pos = pSchema->GetMemberIterator(); pos; )
 	{
 		CSchemaMember* pMember = pSchema->GetNextMember( pos );
 
@@ -123,7 +123,7 @@ void CSchemaColumnsDlg::OnOK()
 	{
 		m_pColumns.RemoveAll();
 
-		for ( int nMember = 0 ; nMember < m_wndColumns.GetItemCount() ; nMember++ )
+		for ( int nMember = 0; nMember < m_wndColumns.GetItemCount(); nMember++ )
 		{
 			if ( ListView_GetCheckState( m_wndColumns.GetSafeHwnd(), nMember ) )
 			{
@@ -151,7 +151,7 @@ BOOL CSchemaColumnsDlg::LoadColumns(CSchemaPtr pSchema, CList< CSchemaMember* >*
 
 	if ( strMembers == L"(EMPTY)" ) strMembers = pSchema->m_sDefaultColumns;
 
-	for ( POSITION pos = pSchema->GetMemberIterator() ; pos ; )
+	for ( POSITION pos = pSchema->GetMemberIterator(); pos; )
 	{
 		CSchemaMember* pMember = pSchema->GetNextMember( pos );
 		if ( ! pMember->m_bHidden && strMembers.Find( L"|" + pMember->m_sName + L"|" ) >= 0 )
@@ -170,7 +170,7 @@ BOOL CSchemaColumnsDlg::SaveColumns(CSchemaPtr pSchema, CList< CSchemaMember* >*
 
 	CString strMembers;
 
-	for ( POSITION pos = pColumns->GetHeadPosition() ; pos ; )
+	for ( POSITION pos = pColumns->GetHeadPosition(); pos; )
 	{
 		CSchemaMember* pMember = (CSchemaMember*)pColumns->GetNext( pos );
 		strMembers += '|';
@@ -197,7 +197,7 @@ CMenu* CSchemaColumnsDlg::BuildColumnMenu(CSchemaPtr pSchema, CList< CSchemaMemb
 
 	UINT nID = ID_SCHEMA_MENU_MIN;
 
-	for ( POSITION pos = pSchema->GetMemberIterator() ; pos ; nID++ )
+	for ( POSITION pos = pSchema->GetMemberIterator(); pos; nID++ )
 	{
 		CSchemaMember* pMember = pSchema->GetNextMember( pos );
 
@@ -231,7 +231,7 @@ BOOL CSchemaColumnsDlg::ToggleColumnHelper(CSchemaPtr pSchema, CList< CSchemaMem
 	pTarget->RemoveAll();
 	pTarget->AddTail( pSource );
 
-	for ( POSITION pos = pSchema->GetMemberIterator() ; pos ; nID++ )
+	for ( POSITION pos = pSchema->GetMemberIterator(); pos; nID++ )
 	{
 		CSchemaMember* pMember = pSchema->GetNextMember( pos );
 
