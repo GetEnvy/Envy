@@ -167,7 +167,7 @@ protected:
 	afx_msg void OnHelpWeb4();
 	afx_msg void OnHelpWebSkins();
 	afx_msg void OnHelpWebBitprints();
-	afx_msg void OnHelpWebKickbacks();
+	afx_msg void OnHelpWebLove();
 	afx_msg void OnHelpStartpage();
 	afx_msg void OnHelpConnectiontest();
 	afx_msg void OnHelpFaq();

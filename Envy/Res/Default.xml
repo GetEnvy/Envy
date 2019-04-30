@@ -606,8 +606,8 @@
 				<menu text="_Websites">
 					<!--item id="ID_HELP_WEB_3" text="Slyck.com"-->
 					<!--item id="ID_HELP_WEB_1" text="ZeroPaid.com"-->
-					<item id="ID_HELP_WEB_KICKBACKS" text="Envy _Kickbacks"/>
-					<item id="ID_HELP_WEB_SKINS" text="Envy _Skin Site"/>
+					<item id="ID_HELP_WEB_LOVE" text="GetEnvy _Love"/>
+					<item id="ID_HELP_WEB_SKINS" text="GetEnvy _Skin Site"/>
 					<item id="ID_HELP_TEST" text="_Connection Test"/>
 				</menu>
 				<item id="ID_HELP_HOMEPAGE" text="_GetEnvy.com"/>
@@ -719,8 +719,8 @@
 				<separator/>
 				<item id="ID_HELP_FORUMS" text="Envy _Forums"/>
 				<!--item id="ID_HELP_FORUMS_LOCAL" text="English _Local Forum"-->
-				<item id="ID_HELP_WEB_KICKBACKS" text="Envy _Kickbacks"/>
-				<item id="ID_HELP_WEB_SKINS" text="Envy _Skin Site"/>
+				<item id="ID_HELP_WEB_LOVE" text="GetEnvy _Love"/>
+				<item id="ID_HELP_WEB_SKINS" text="GetEnvy _Skin Site"/>
 				<item id="ID_HELP_UPDATE" text="Latest Ne_ws"/>
 				<!--item id="ID_HELP_DONATE" text="_Donate to Envy"-->
 				<!--item id="ID_HELP_WEB_1" text="Zeropaid.com"-->
@@ -895,8 +895,8 @@
 				<separator/>
 				<item id="ID_HELP_FORUMS" text="Envy _Forums"/>
 				<!--item id="ID_HELP_FORUMS_LOCAL" text="_English Local Forum"-->
-				<item id="ID_HELP_WEB_KICKBACKS" text="Envy _Kickbacks"/>
-				<item id="ID_HELP_WEB_SKINS" text="Envy _Skin Site"/>
+				<item id="ID_HELP_WEB_LOVE" text="GetEnvy _Love"/>
+				<item id="ID_HELP_WEB_SKINS" text="GetEnvy _Skin Site"/>
 				<!--item id="ID_HELP_WEB_1" text="Zeropaid.com"-->
 				<!--item id="ID_HELP_UPDATE" text="Latest _News"-->
 				<!--item id="ID_HELP_DONATE" text="_Donate to Envy"-->
@@ -2612,7 +2612,7 @@
 		<image id="ID_SEARCH_DETAILS" id1="ID_LIBRARY_PANEL" id2="ID_WINDOW_REMOTE"/>
 		<!--Pages-->
 		<image id="ID_HELP_TEST" id1="ID_HELP_WEB_1" id2="ID_HELP_WEB_2" id3="ID_HELP_WEB_3" id4="ID_HELP_WEB_4"
-			id5="ID_HELP_WEB_SKINS" id6="ID_HELP_WEB_KICKBACKS" id7="ID_HELP_STARTPAGE"/>
+			id5="ID_HELP_WEB_SKINS" id6="ID_HELP_WEB_LOVE" id7="ID_HELP_STARTPAGE"/>
 		<image id="ID_HELP_FORUMS" id1="ID_HELP_GUIDE" id2="ID_HELP_FAQ" id3="ID_DISCOVERY_BROWSE" id4="ID_DOWNLOADS_ADD_SOURCE"
 			id5="ID_DOWNLOADS_URI" id6="ID_SEARCH_URI" id7="ID_LIBRARY_URI" id8="ID_NEIGHBOURS_URI" id9="ID_WEBSERVICES_LIST"/>
 		<image id="ID_LIBRARY_BITPRINTS_WEB" id1="ID_LIBRARY_BITPRINTS_DOWNLOAD"/>

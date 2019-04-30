@@ -1672,7 +1672,7 @@
 #define ID_HELP_WEB_4                   40124
 #define ID_HELP_WEB_SKINS               40125
 #define ID_HELP_WEB_BITPRINTS           40126
-#define ID_HELP_WEB_KICKBACKS           40127
+#define ID_HELP_WEB_LOVE                40127
 #define ID_HELP_WARNINGS                40128
 #define ID_HELP_STARTPAGE               40129
 #define ID_HOSTCACHE_CONNECT            40130

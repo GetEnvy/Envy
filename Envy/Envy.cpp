@@ -2328,7 +2328,7 @@ BOOL LoadString(CString& str, UINT nID)
 CString LoadString(UINT nID)
 {
 	CString str;
-	LoadString( str, nID );
+	Skin.LoadString( str, nID );
 	return str;
 }
 

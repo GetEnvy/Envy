@@ -3398,7 +3398,7 @@ BEGIN
 	ID_HELP_WEB_4				"Visit this website"
 	ID_HELP_WEB_SKINS			"Visit the Envy Skins Site"
 	ID_HELP_WEB_BITPRINTS		"Visit the Bitprints info site"
-	ID_HELP_WEB_KICKBACKS		"Visit the Envy Kickbacks page, show your appreciation when you shop"
+	ID_HELP_WEB_LOVE			"Visit the GetEnvy Love page, show us some love when you shop."
 	ID_HELP_STARTPAGE			"Visit the Envy Start Page portal"
 END
 

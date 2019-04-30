@@ -203,7 +203,9 @@ CBTInfo& CBTInfo::operator=(const CBTInfo& oSource)
 	CEnvyFile::operator=( oSource );
 
 	for ( POSITION pos = oSource.m_sURLs.GetHeadPosition(); pos; )
+	{
 		m_sURLs.AddTail( oSource.m_sURLs.GetNext( pos ) );
+	}
 
 	m_nBlockSize		= oSource.m_nBlockSize;
 	m_nBlockCount		= oSource.m_nBlockCount;
@@ -219,7 +221,9 @@ CBTInfo& CBTInfo::operator=(const CBTInfo& oSource)
 	m_nTotalDownload	= oSource.m_nTotalDownload;
 
 	for ( POSITION pos = oSource.m_pFiles.GetHeadPosition(); pos; )
+	{
 		m_pFiles.AddTail( new CBTFile( this, oSource.m_pFiles.GetNext( pos ) ) );
+	}
 
 	m_nEncoding			= oSource.m_nEncoding;
 	m_sComment			= oSource.m_sComment;
@@ -229,10 +233,14 @@ CBTInfo& CBTInfo::operator=(const CBTInfo& oSource)
 	m_nStartDownloads	= oSource.m_nStartDownloads;
 
 	for ( INT_PTR i = 0; i < oSource.m_oTrackers.GetCount(); ++i )
+	{
 		m_oTrackers.Add( oSource.m_oTrackers[ i ] );
+	}
 
 	for ( POSITION pos = oSource.m_oNodes.GetHeadPosition(); pos; )
+	{
 		m_oNodes.AddTail( oSource.m_oNodes.GetNext( pos ) );
+	}
 
 	m_nTrackerIndex		= oSource.m_nTrackerIndex;
 	m_nTrackerMode		= oSource.m_nTrackerMode;
@@ -294,7 +302,9 @@ void CBTInfo::Serialize(CArchive& ar)
 
 		ar.WriteCount( m_pFiles.GetCount() );
 		for ( POSITION pos = m_pFiles.GetHeadPosition(); pos; )
+		{
 			m_pFiles.GetNext( pos )->Serialize( ar, nVersion );
+		}
 
 		ar << m_nTrackerIndex;
 		ar << m_nTrackerMode;
@@ -327,7 +337,8 @@ void CBTInfo::Serialize(CArchive& ar)
 			AfxThrowUserException();
 
 		SerializeIn( ar, m_oBTH, nVersion );
-		if ( ! m_oBTH ) return;
+		if ( ! m_oBTH )
+			return;
 
 		ar >> m_nSize;
 		ar >> m_nBlockSize;
@@ -1742,7 +1753,7 @@ void CBTInfo::RemoveAllTrackers()
 //
 //	if ( const CBENode* pNode = CBENode::Decode( pResponse ) )
 //	{
-//		theApp.Message( MSG_DEBUG | MSG_FACILITY_INCOMING, L"[BT] Received BitTorrent tracker response: %s", pNode->Encode() );
+//		theApp.Message( MSG_DEBUG | MSG_FACILITY_INCOMING, L"[BT] Received BitTorrent tracker response: %s", (LPCTSTR)pNode->Encode() );
 //
 //		//if ( ! oLock.Lock( 500 ) ) return FALSE;
 //		//LPBYTE nKey = &m_oBTH[ 0 ];		// Above

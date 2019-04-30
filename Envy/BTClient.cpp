@@ -404,7 +404,7 @@ BOOL CBTClient::OnHandshake1()
 			Close( IDS_BT_CLIENT_WRONG_FILE );
 			return FALSE;
 		}
-		else if ( ! m_pDownload->IsTrying() && ! m_pDownload->IsSeeding() )
+		if ( ! m_pDownload->IsTrying() && ! m_pDownload->IsSeeding() )
 		{
 			// Display an error and exit
 			Close( IDS_BT_CLIENT_INACTIVE_FILE );

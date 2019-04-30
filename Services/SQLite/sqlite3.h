@@ -1,7 +1,7 @@
 ﻿/*
-** sqlite3.h  (3.24.0) (2018-06-05)
+** sqlite3.h  (3.28.0) (2019-04-16)
 **
-** This file is part of Envy (getenvy.com) © 2016-2018
+** This file is part of Envy (getenvy.com) © 2016-2019
 ** The original author disclaimed copyright to this source code.
 */
 /*
@@ -101,9 +101,9 @@ extern "C" {
 /*
 ** CAPI3REF: Compile-Time Library Version Numbers
 */
-#define SQLITE_VERSION        "3.24.0"
-#define SQLITE_VERSION_NUMBER 3024000
-#define SQLITE_SOURCE_ID      "2018-06-04 19:24:41 c7ee0833225bfd8c5ec2f9bf62b97c4e04d03bd9566366d5221ac8fb199a87ca"
+#define SQLITE_VERSION        "3.28.0"
+#define SQLITE_VERSION_NUMBER 3028000
+#define SQLITE_SOURCE_ID      "2019-04-16 19:49:53 884b4b7e502b4e991677b53971277adfaf0a04a284f8e483e2553d0f83156b50"
 
 /*
 ** CAPI3REF: Run-Time Library Version Numbers
@@ -119,6 +119,9 @@ SQLITE_API int sqlite3_libversion_number(void);
 #ifndef SQLITE_OMIT_COMPILEOPTION_DIAGS
 SQLITE_API int sqlite3_compileoption_used(const char *zOptName);
 SQLITE_API const char *sqlite3_compileoption_get(int N);
+#else
+# define sqlite3_compileoption_used(X) 0
+# define sqlite3_compileoption_get(X)  ((void*)0)
 #endif
 
 /*
@@ -225,6 +228,7 @@ SQLITE_API int sqlite3_exec(
 */
 #define SQLITE_ERROR_MISSING_COLLSEQ   (SQLITE_ERROR | (1<<8))
 #define SQLITE_ERROR_RETRY             (SQLITE_ERROR | (2<<8))
+#define SQLITE_ERROR_SNAPSHOT          (SQLITE_ERROR | (3<<8))
 #define SQLITE_IOERR_READ              (SQLITE_IOERR | (1<<8))
 #define SQLITE_IOERR_SHORT_READ        (SQLITE_IOERR | (2<<8))
 #define SQLITE_IOERR_WRITE             (SQLITE_IOERR | (3<<8))
@@ -264,6 +268,7 @@ SQLITE_API int sqlite3_exec(
 #define SQLITE_CANTOPEN_ISDIR          (SQLITE_CANTOPEN | (2<<8))
 #define SQLITE_CANTOPEN_FULLPATH       (SQLITE_CANTOPEN | (3<<8))
 #define SQLITE_CANTOPEN_CONVPATH       (SQLITE_CANTOPEN | (4<<8))
+#define SQLITE_CANTOPEN_DIRTYWAL       (SQLITE_CANTOPEN | (5<<8)) /* Not Used */
 #define SQLITE_CORRUPT_VTAB            (SQLITE_CORRUPT | (1<<8))
 #define SQLITE_CORRUPT_SEQUENCE        (SQLITE_CORRUPT | (2<<8))
 #define SQLITE_READONLY_RECOVERY       (SQLITE_READONLY | (1<<8))
@@ -424,6 +429,8 @@ struct sqlite3_io_methods {
 #define SQLITE_FCNTL_COMMIT_ATOMIC_WRITE    32
 #define SQLITE_FCNTL_ROLLBACK_ATOMIC_WRITE  33
 #define SQLITE_FCNTL_LOCK_TIMEOUT           34
+#define SQLITE_FCNTL_DATA_VERSION           35
+#define SQLITE_FCNTL_SIZE_LIMIT             36
 
 /* deprecated names */
 #define SQLITE_GET_LOCKPROXYFILE      SQLITE_FCNTL_GET_LOCKPROXYFILE
@@ -570,6 +577,7 @@ struct sqlite3_mem_methods {
 #define SQLITE_CONFIG_STMTJRNL_SPILL      26  /* int nByte */
 #define SQLITE_CONFIG_SMALL_MALLOC        27  /* boolean */
 #define SQLITE_CONFIG_SORTERREF_SIZE      28  /* int nByte */
+#define SQLITE_CONFIG_MEMDB_MAXSIZE       29  /* sqlite3_int64 */
 
 /*
 ** CAPI3REF: Database Connection Configuration Options
@@ -584,7 +592,9 @@ struct sqlite3_mem_methods {
 #define SQLITE_DBCONFIG_ENABLE_QPSG           1007 /* int int* */
 #define SQLITE_DBCONFIG_TRIGGER_EQP           1008 /* int int* */
 #define SQLITE_DBCONFIG_RESET_DATABASE        1009 /* int int* */
-#define SQLITE_DBCONFIG_MAX                   1009 /* Largest DBCONFIG */
+#define SQLITE_DBCONFIG_DEFENSIVE             1010 /* int int* */
+#define SQLITE_DBCONFIG_WRITABLE_SCHEMA       1011 /* int int* */
+#define SQLITE_DBCONFIG_MAX                   1011 /* Largest DBCONFIG */
 
 /*
 ** CAPI3REF: Enable Or Disable Extended Result Codes
@@ -824,6 +834,8 @@ SQLITE_API int sqlite3_limit(sqlite3*, int id, int newVal);
 ** CAPI3REF: Prepare Flags
 */
 #define SQLITE_PREPARE_PERSISTENT              0x01
+#define SQLITE_PREPARE_NORMALIZE               0x02
+#define SQLITE_PREPARE_NO_VTAB                 0x04
 
 /*
 ** CAPI3REF: Compiling An SQL Statement
@@ -878,11 +890,17 @@ SQLITE_API int sqlite3_prepare16_v3(
 */
 SQLITE_API const char *sqlite3_sql(sqlite3_stmt *pStmt);
 SQLITE_API char *sqlite3_expanded_sql(sqlite3_stmt *pStmt);
+SQLITE_API const char *sqlite3_normalized_sql(sqlite3_stmt *pStmt);
 
 /*
 ** CAPI3REF: Determine If An SQL Statement Writes The Database
 */
 SQLITE_API int sqlite3_stmt_readonly(sqlite3_stmt *pStmt);
+
+/*
+** CAPI3REF: Query The EXPLAIN Setting For A Prepared Statement
+*/
+SQLITE_API int sqlite3_stmt_isexplain(sqlite3_stmt *pStmt);
 
 /*
 ** CAPI3REF: Determine If A Prepared Statement Has Been Reset
@@ -1047,6 +1065,18 @@ SQLITE_API int sqlite3_create_function_v2(
   void (*xFinal)(sqlite3_context*),
   void(*xDestroy)(void*)
 );
+SQLITE_API int sqlite3_create_window_function(
+  sqlite3 *db,
+  const char *zFunctionName,
+  int nArg,
+  int eTextRep,
+  void *pApp,
+  void (*xStep)(sqlite3_context*,int,sqlite3_value**),
+  void (*xFinal)(sqlite3_context*),
+  void (*xValue)(sqlite3_context*),
+  void (*xInverse)(sqlite3_context*,int,sqlite3_value**),
+  void(*xDestroy)(void*)
+);
 
 /*
 ** CAPI3REF: Text Encodings
@@ -1093,6 +1123,7 @@ SQLITE_API int sqlite3_value_bytes16(sqlite3_value*);
 SQLITE_API int sqlite3_value_type(sqlite3_value*);
 SQLITE_API int sqlite3_value_numeric_type(sqlite3_value*);
 SQLITE_API int sqlite3_value_nochange(sqlite3_value*);
+SQLITE_API int sqlite3_value_frombind(sqlite3_value*);
 
 /*
 ** CAPI3REF: Finding The Subtype Of SQL Values
@@ -1454,6 +1485,9 @@ struct sqlite3_module {
   int (*xSavepoint)(sqlite3_vtab *pVTab, int);
   int (*xRelease)(sqlite3_vtab *pVTab, int);
   int (*xRollbackTo)(sqlite3_vtab *pVTab, int);
+  /* The methods above are in versions 1 and 2 of the sqlite_module object.
+  ** Those below are for version 3 and greater. */
+  int (*xShadowName)(const char*);
 };
 
 /*
@@ -1513,6 +1547,7 @@ struct sqlite3_index_info {
 #define SQLITE_INDEX_CONSTRAINT_ISNOTNULL 70
 #define SQLITE_INDEX_CONSTRAINT_ISNULL    71
 #define SQLITE_INDEX_CONSTRAINT_IS        72
+#define SQLITE_INDEX_CONSTRAINT_FUNCTION 150
 
 /*
 ** CAPI3REF: Register A Virtual Table Implementation
@@ -1704,6 +1739,7 @@ SQLITE_API int sqlite3_test_control(int op, ...);
 #define SQLITE_TESTCTRL_OPTIMIZATIONS           15
 #define SQLITE_TESTCTRL_ISKEYWORD               16  /* NOT USED */
 #define SQLITE_TESTCTRL_SCRATCHMALLOC           17  /* NOT USED */
+#define SQLITE_TESTCTRL_INTERNAL_FUNCTIONS      17
 #define SQLITE_TESTCTRL_LOCALTIME_FAULT         18
 #define SQLITE_TESTCTRL_EXPLAIN_STMT            19  /* NOT USED */
 #define SQLITE_TESTCTRL_ONCE_RESET_THRESHOLD    19

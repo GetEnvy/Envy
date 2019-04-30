@@ -189,7 +189,7 @@ BEGIN_MESSAGE_MAP(CMainWnd, CMDIFrameWnd)
 	ON_COMMAND(ID_HELP_WEB_4, OnHelpWeb4)
 	ON_COMMAND(ID_HELP_WEB_SKINS, OnHelpWebSkins)
 	ON_COMMAND(ID_HELP_WEB_BITPRINTS, OnHelpWebBitprints)
-	ON_COMMAND(ID_HELP_WEB_KICKBACKS, OnHelpWebKickbacks)
+	ON_COMMAND(ID_HELP_WEB_LOVE, OnHelpWebLove)
 	ON_COMMAND(ID_HELP_FAQ, OnHelpFaq)
 	ON_COMMAND(ID_HELP_GUIDE, OnHelpGuide)
 	ON_COMMAND(ID_HELP_FORUMS, OnHelpForums)
@@ -460,10 +460,11 @@ int CMainWnd::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	// Status Bar
 	UINT wID[2] = { ID_SEPARATOR, ID_SEPARATOR };	// wID[3] + ID_SEPARATOR
 	if ( ! m_wndStatusBar.Create( this ) ) return -1;
-	m_wndStatusBar.SetIndicators( wID, 2 );			// 2 = _countof( wID )
+	m_wndStatusBar.SetIndicators( wID, 2 );			// 2 Panels = _countof( wID )
 	m_wndStatusBar.SetPaneInfo( 0, ID_SEPARATOR, SBPS_STRETCH, 0 );
 	m_wndStatusBar.SetPaneInfo( 1, ID_SEPARATOR, SBPS_NORMAL, 220 );	// Status Panel Width (lower-right corner)
 	//m_wndStatusBar.SetPaneInfo( 2, ID_SEPARATOR, SBPS_NORMAL, 120 );	// IP address status panel?
+	//m_wndStatusBar.GetStatusBarCtrl().SetBkColor(Colors.m_crStatusBar);
 
 	EnableDocking( CBRS_ALIGN_ANY );
 
@@ -1130,7 +1131,6 @@ void CMainWnd::OnSysCommand(UINT nID, LPARAM lParam)
 				m_wndMenuBar.OpenMenuChar( static_cast< UINT >( lParam ) );
 			else
 				m_wndMenuBar.OpenMenuBar();
-
 			return;
 		}
 		break;
@@ -1236,6 +1236,8 @@ LRESULT CMainWnd::OnSkinChanged(WPARAM /*wParam*/, LPARAM /*lParam*/)
 	}
 
 	//ModifyStyleEx( 0, WS_EX_COMPOSITED ); // Counter-productive
+
+	//m_wndStatusBar.GetStatusBarCtrl().SetBkColor( Colors.m_crStatusBar );
 
 	m_wndMenuBar.OnSkinChange();	// Set height here
 
@@ -1470,7 +1472,8 @@ LRESULT CMainWnd::OnOpenChat(WPARAM wParam, LPARAM /*lParam*/)
 	CSingleLock pLock( &ChatCore.m_pSection, TRUE );
 
 	CChatSession* pSession = (CChatSession*)wParam;
-	if ( ChatCore.Check( pSession ) ) pSession->OnOpenWindow();
+	if ( ChatCore.Check( pSession ) )
+		pSession->OnOpenWindow();
 	return 0;
 }
 
@@ -1917,7 +1920,7 @@ void CMainWnd::OnNetworkG2()
 
 	if ( ! Settings.Gnutella2.EnableAlways &&
 		 MsgBox( IDS_NETWORK_ALWAYS, MB_ICONQUESTION|MB_YESNO ) == IDYES )
-		Settings.Gnutella1.EnableAlways = true;
+		Settings.Gnutella2.EnableAlways = true;
 }
 
 void CMainWnd::OnUpdateNetworkG1(CCmdUI* pCmdUI)
@@ -2927,17 +2930,17 @@ void CMainWnd::OnHelpWeb4()
 		NULL, NULL, SW_SHOWNORMAL );
 }
 
-void CMainWnd::OnHelpWebKickbacks()
+void CMainWnd::OnHelpWebLove()
 {
 	ShellExecute( GetSafeHwnd(), L"open",
-		CString( WEB_SITE ) + L"kickbacks",
+		CString( WEB_SITE ) + L"love",
 		NULL, NULL, SW_SHOWNORMAL );
 }
 
 void CMainWnd::OnHelpWebBitprints()
 {
 	ShellExecute( GetSafeHwnd(), L"open",
-		L"http://bitprints.getenvy.com",
+		CString( WEB_SITE ) + L"bitprints",
 		NULL, NULL, SW_SHOWNORMAL );
 }
 

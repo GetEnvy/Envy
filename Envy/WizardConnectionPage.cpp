@@ -573,7 +573,7 @@ void CWizardConnectionPage::OnLButtonDown(UINT nFlags, CPoint point)
 	if ( ! rc.PtInRect( point ) )
 		return;
 
-	const CString strTestSite = L"http://www.speedtest.net/switch_language.php?lang=" + Settings.General.Language.Left(2);
+	const CString strTestSite = L"http://www.speedtest.net";	// + '/' + Settings.General.Language.Left(2);
 
 	ShellExecute( GetSafeHwnd(), L"open", strTestSite, NULL, NULL, SW_SHOWNORMAL );
 }
@@ -588,7 +588,7 @@ void CWizardConnectionPage::OnRButtonDown(UINT nFlags, CPoint point)
 	if ( ! rc.PtInRect( point ) )
 		return;
 
-	const CString strTestSite = L"http://www.speedtest.net/switch_language.php?lang=" + Settings.General.Language.Left(2);
+	const CString strTestSite = L"http://www.speedtest.net";	// + '/' + Settings.General.Language.Left(2);
 
 	theApp.SetClipboard( strTestSite, TRUE );
 }

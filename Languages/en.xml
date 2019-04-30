@@ -628,7 +628,7 @@
 				<item id="ID_HELP_VERSION_CHECK" text="Check for _Updates"/>
 				<separator/>
 				<menu text="_Websites">
-					<item id="ID_HELP_WEB_KICKBACKS" text="Envy _Kickbacks"/>
+					<item id="ID_HELP_WEB_LOVE" text="GetEnvy Show Some _Love"/>
 					<item id="ID_HELP_TEST" text="_Connection Test"/>
 					<!--item id="ID_HELP_WEB_SKINS" text="Envy Skin Site"-->
 					<!--item id="ID_HELP_WEB_3" text="Slyck.com"-->
@@ -742,8 +742,8 @@
 				<item id="ID_HELP_FORUMS" text="Envy _Forums"/>
 				<item id="ID_HELP_FORUMS_LOCAL" text="Local _Language Forum"/> <!--Your Language-->
 				<!--item id="ID_HELP_UPDATE" text="Latest news"-->
-				<item id="ID_HELP_WEB_SKINS" text="Envy S_kin Site"/>
-				<!--item id="ID_HELP_WEB_KICKBACKS" text="Envy _Kickbacks"-->
+				<!--item id="ID_HELP_WEB_SKINS" text="GetEnvy S_kin Site"-->
+				<!--item id="ID_HELP_WEB_LOVE" text="GetEnvy _Love"-->
 				<!--item id="ID_HELP_WEB_1" text="Shareaza.sf.net"-->
 				<item id="ID_HELP_TEST" text="_Connection Test"/>
 			</menu>
@@ -915,7 +915,7 @@
 				<separator/>
 				<item id="ID_HELP_FORUMS" text="Envy _Forums"/>
 				<item id="ID_HELP_FORUMS_LOCAL" text="_Local Language Forum"/> <!--Your Language-->
-				<item id="ID_HELP_WEB_KICKBACKS" text="Envy _Kickbacks"/>
+				<item id="ID_HELP_WEB_LOVE" text="GetEnvy _Love"/>
 				<item id="ID_HELP_WEB_SKINS" text="Envy _Skin Site"/>
 				<!--item id="ID_HELP_WEB_1" text="Shareaza.sf.net"-->
 				<!--item id="ID_HELP_UPDATE" text="Latest _News"-->
@@ -2549,7 +2549,7 @@
 	<tip id="ID_HELP_WEB_4" text="Visit this website"/>
 	<tip id="ID_HELP_WEB_SKINS" text="Visit the Envy Skins Site"/>
 	<tip id="ID_HELP_WEB_BITPRINTS" text="Visit the Bitprints info site"/>
-	<tip id="ID_HELP_WEB_KICKBACKS" text="Visit the Envy Kickbacks page, show your appreciation when you shop"/>
+	<tip id="ID_HELP_WEB_LOVE" text="Visit the Envy Love page, show some love when you shop"/>
 	<tip id="ID_HELP_DONATE" text="If you want, you can donate to our legal fund and show your appreciation."/>
 	<tip id="ID_HITMONITOR_CLEAR" text="Clear the hit monitor buffer."/>
 	<tip id="ID_HITMONITOR_PAUSE" text="Pause hit monitoring."/>
@@ -4901,8 +4901,8 @@
 	<tag id="text_typevideo" text="Video"/>
 	<tag id="text_typeimage" text="Image"/>
 	<tag id="text_typebook" text="Book"/>
-	<tag id="text_typedoc" text="Text Document"/>
-	<tag id="text_typerom" text="ROM Image"/>
+	<tag id="text_typedoc" text="Document"/>
+	<tag id="text_typerom" text="ROM"/>
 	<tag id="text_typeskin" text="Skin"/>
 	<tag id="text_typecode" text="Source Code"/>
 	<tag id="text_typespreadsheet" text="Spreadsheet"/>

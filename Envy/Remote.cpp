@@ -370,8 +370,9 @@ void CRemote::Prepare(LPCTSTR pszPrefix)
 		AddText( L"text_typeaudio", L"Audio" );
 		AddText( L"text_typevideo", L"Video" );
 		AddText( L"text_typeimage", L"Image" );
-		AddText( L"text_typedoc", L"Text Document" );
-		AddText( L"text_typerom", L"ROM Image" );
+		AddText( L"text_typebook", L"Book" );
+		AddText( L"text_typedoc", L"Document" );
+		AddText( L"text_typerom", L"ROM" );
 		AddText( L"text_typeskin", L"Skin" );
 		AddText( L"text_typecode", L"Source Code" );
 		AddText( L"text_typespreadsheet", L"Spreadsheet" );

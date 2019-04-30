@@ -510,9 +510,10 @@ void CBrowseProfileCtrl::OnPaint()
 	if ( m_imgHead.m_bLoaded )
 	{
 		CRect rcHead( 10, 10, 138, 138 );
-		CDC dcMem;
 		CBitmap bmHead;
 		bmHead.Attach( m_imgHead.CreateBitmap() );
+
+		CDC dcMem;
 		dcMem.CreateCompatibleDC( &dc );
 		CBitmap* pOldBmp = (CBitmap*)dcMem.SelectObject( &bmHead );
 		dc.BitBlt( rcHead.left, rcHead.top, rcHead.Width(), rcHead.Height(), &dcMem, 0, 0, SRCCOPY );
