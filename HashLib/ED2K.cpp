@@ -300,20 +300,16 @@ BOOL CED2K::FromBytes(BYTE* pOutput, uint32 nOutput, uint64 nSize)
 BOOL CED2K::CheckIntegrity()
 {
 	if ( m_nList == 1 )
-	{
 		return std::equal( &m_pRoot[ 0 ], &m_pRoot[ 4 ], &m_pList[ 0 ][ 0 ] );
-	}
-	else
-	{
-		CMD4 pOverall;
-		CMD4::Digest pRoot;
 
-		pOverall.Add( m_pList, sizeof( CMD4::Digest ) * m_nList );
-		pOverall.Finish();
-		pOverall.GetHash( (uchar*)&pRoot[ 0 ] );
+	CMD4 pOverall;
+	CMD4::Digest pRoot;
 
-		return std::equal( &m_pRoot[ 0 ], &m_pRoot[ 4 ], &pRoot[ 0 ] );
-	}
+	pOverall.Add( m_pList, sizeof( CMD4::Digest ) * m_nList );
+	pOverall.Finish();
+	pOverall.GetHash( (uchar*)&pRoot[ 0 ] );
+
+	return std::equal( &m_pRoot[ 0 ], &m_pRoot[ 4 ], &pRoot[ 0 ] );
 }
 
 BOOL CED2K::IsAvailable() const

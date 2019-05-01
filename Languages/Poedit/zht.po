@@ -6792,11 +6792,11 @@ msgstr "正在拒絕上傳 \"%s\" 至 %s (%s), 因為忙錄, 以及客戶端不�
 msgid "Refusing upload of \"%s\" to %s (%s), all matching queues are full."
 msgstr "正在拒絕上傳 \"%s\" 至 %s (%s), 所有匹配的排隊隊伍已無空位."
 
-#: string;20810
+#: string;20811
 msgid "Upload host %s requested an unsatisfiable range of file \"%s\"."
 msgstr "上傳主機 %s 要求了一個不滿意的檔案分塊 \"%s\"."
 
-#: string;20811
+#: string;20861
 msgid "eDonkey uploads should not be cancelled. Are you sure you want to cancel this upload?"
 msgstr "eDonkey2000 上傳不應該被取消.  您確定要取消這個上傳嗎?"
 
@@ -6960,35 +6960,35 @@ msgstr "正在關閉上傳連線 %s , 因為缺乏流量."
 msgid "Uploading tiger-tree data for \"%s\" to %s."
 msgstr "正在上傳 \"%s\" 的 tiger-tree 資料至 %s."
 
-#: string;20861
+#: string;20862
 msgid "Removed upload of \"%s\" to %s."
 msgstr "移除上傳 \"%s\" 至 %s."
 
-#: string;20862 cfavoritesprofilepage;control;7
+#: string;20864 cfavoritesprofilepage;control;7
 msgid "Add"
 msgstr "新增"
 
-#: string;20864
+#: string;20865
 msgid "&Browse"
 msgstr "瀏覽"
 
-#: string;20865
+#: string;20866
 msgid "&Connect"
 msgstr "連線"
 
-#: string;20866 cdownloadeditpage;control;3
+#: string;20867 cdownloadeditpage;control;3
 msgid "Filename:"
 msgstr "檔案名稱:"
 
-#: string;20867
+#: string;20868
 msgid "Host:"
 msgstr "主機:"
 
-#: string;20868 circsettingspage;control;39 cconnectionsettingspage;control;6
+#: string;20869 circsettingspage;control;39 cconnectionsettingspage;control;6
 msgid "Port:"
 msgstr "連接埠:"
 
-#: string;20869
+#: string;20876
 msgid "Unable to display URL action dialog because Envy is busy."
 msgstr "無法顯示 URL 動作對話框, 因為 Envy 忙祿中."
 
@@ -8633,7 +8633,7 @@ msgid "Discovery Service Type:"
 msgstr "揭示服務類型:"
 
 #: cdiscoveryservicedlg;control;4
-msgid "Gnutella Bootstrap|G1-WebCache|G2-WebCache|G1+G2-WebCache|Server.met URL|Blocked"
+msgid "G2/G1 GWebCache|G2 WebCache|G1 WebCache|Gnutella Bootstrap|Server.met URL|DC++ Hublist|Blocked"
 msgstr "Gnutella Bootstrap|GWeb 快取|Server.met URL"
 
 #: dialog;cdownloadmonitordlg ctorrentseeddlg;control;2

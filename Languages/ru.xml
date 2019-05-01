@@ -4745,9 +4745,9 @@
 	<tag id="text_typevideo" text="Video"/>
 	<tag id="text_typeimage" text="Figurë"/>
 	<tag id="text_typebook" text="Libër"/>
-	<tag id="text_typedoc" text="Procesimi i Fjalës"/>
+	<tag id="text_typedoc" text="Procesimi"/>
 	<tag id="text_typepresent" text="Prezantimi"/>
-	<tag id="text_typerom" text="Imazh ROM"/>
+	<tag id="text_typerom" text="ROM"/>
 	<tag id="text_typeskin" text="Lëvore"/>
 	<tag id="text_typecode" text="Kodburimi"/>
 	<tag id="text_typespreadsheet" text="Faqe e Palosur"/>

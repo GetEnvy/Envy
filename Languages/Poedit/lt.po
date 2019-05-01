@@ -6792,11 +6792,11 @@ msgstr "Atsakyta išsiųsti „%s“ adresatui %s (%s), užimtas, o klientas nep
 msgid "Refusing upload of \"%s\" to %s (%s), all matching queues are full."
 msgstr "Atsakoma išsiųsti failą „%s“ adresatui %s (%s), visos eilės perpildytos."
 
-#: string;20810
+#: string;20811
 msgid "Upload host %s requested an unsatisfiable range of file \"%s\"."
 msgstr "Adresatas %s užklausė išsiųsti netenkinamą failo „%s“ atkarpą."
 
-#: string;20811
+#: string;20861
 msgid "eDonkey uploads should not be cancelled. Are you sure you want to cancel this upload?"
 msgstr "eDonkey išsiuntimų nederėtų atšaukti. Ar tikrai norite atšaukti šio failo išsiuntimą?"
 
@@ -6960,35 +6960,35 @@ msgstr "Nutraukiamas išsiuntimo ryšys su %s dėl siuntimų srauto kamščio."
 msgid "Uploading tiger-tree data for \"%s\" to %s."
 msgstr "Išsiunčiami failo „%s“ dryžinės (tiger-tree) maišos duomenys adresatui %s."
 
-#: string;20861
+#: string;20862
 msgid "Removed upload of \"%s\" to %s."
 msgstr "Failas „%s“, skirta adresatui %s, pašalintas iš išsiutimų sąrašo."
 
-#: string;20862 cfavoritesprofilepage;control;7
+#: string;20864 cfavoritesprofilepage;control;7
 msgid "Add"
 msgstr "Pridėti"
 
-#: string;20864
+#: string;20865
 msgid "&Browse"
 msgstr "&Naršyti"
 
-#: string;20865
+#: string;20866
 msgid "&Connect"
 msgstr "&Jungtis"
 
-#: string;20866 cdownloadeditpage;control;3
+#: string;20867 cdownloadeditpage;control;3
 msgid "Filename:"
 msgstr "Vardas:"
 
-#: string;20867
+#: string;20868
 msgid "Host:"
 msgstr "Adresatas:"
 
-#: string;20868 circsettingspage;control;39 cconnectionsettingspage;control;6
+#: string;20869 circsettingspage;control;39 cconnectionsettingspage;control;6
 msgid "Port:"
 msgstr "Prievadas:"
 
-#: string;20869
+#: string;20876
 msgid "Unable to display URL action dialog because Envy is busy."
 msgstr "Neįmanoma parodyti URL veiksmo dialogo lango, nes „Envy“ yra užimta."
 
@@ -8633,8 +8633,8 @@ msgid "Discovery Service Type:"
 msgstr "Tarnybos tipas:"
 
 #: cdiscoveryservicedlg;control;4
-msgid "Gnutella Bootstrap|G1-WebCache|G2-WebCache|G1+G2-WebCache|Server.met URL|Blocked"
-msgstr "Gnutella Bootstrap|GWebCache|Server.met nuoroda|Blokuota"
+msgid "G2/G1 GWebCache|G2 WebCache|G1 WebCache|Gnutella Bootstrap|Server.met URL|DC++ Hublist|Blocked"
+msgstr "G2/G1 GWebCache|G2 WebCache|G1 WebCache|Gnutella Bootstrap|Server.met nuoroda|Blokuota"
 
 #: dialog;cdownloadmonitordlg ctorrentseeddlg;control;2
 msgid "Download"

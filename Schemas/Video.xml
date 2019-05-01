@@ -1143,6 +1143,7 @@
 		<type extension="3g2"/>
 		<type extension="asf"/>
 		<type extension="avi"/>
+		<type extension="av1"/>
 		<type extension="divx"/>
 		<type extension="dv"/>
 		<type extension="f4v"/>
@@ -1151,6 +1152,7 @@
 		<type extension="gvi"/>
 		<type extension="ivf"/>
 		<type extension="hdmov"/>
+		<type extension="hevc"/>
 		<type extension="m2p"/>
 		<type extension="m2ts"/>
 		<type extension="m2v"/>
@@ -1161,6 +1163,8 @@
 		<type extension="mpe"/>
 		<type extension="mpeg"/>
 		<type extension="mpg"/>
+		<type extension="mts"/>
+		<type extension="mxf"/>
 		<type extension="nsv"/>
 		<type extension="ogm"/>
 		<type extension="ogv"/>

@@ -6792,11 +6792,11 @@ msgstr "ビジー状態でクライアントがキューをサポートしてい
 msgid "Refusing upload of \"%s\" to %s (%s), all matching queues are full."
 msgstr "一致した全てのキューに空きが無い為、\"%s\".の %s へのアップロードを拒否しています(%s)"
 
-#: string;20810
+#: string;20811
 msgid "Upload host %s requested an unsatisfiable range of file \"%s\"."
 msgstr "アップロードホスト %s はファイル \"%s\" の充足不能な範囲を要求しました"
 
-#: string;20811
+#: string;20861
 msgid "eDonkey uploads should not be cancelled. Are you sure you want to cancel this upload?"
 msgstr "eDonkey2000アップロードは取り消すべきではありません。本当にこのアップロードを取り消して宜しいですか?"
 
@@ -6960,35 +6960,35 @@ msgstr "トラフィック不足のためアップロード接続 %s を閉じ�
 msgid "Uploading tiger-tree data for \"%s\" to %s."
 msgstr "\"%s\" 用のtiger-treeデータを %s へアップロードしています"
 
-#: string;20861
+#: string;20862
 msgid "Removed upload of \"%s\" to %s."
 msgstr "\"%s\" の %s へのアップロードを削除しました"
 
-#: string;20862 cfavoritesprofilepage;control;7
+#: string;20864 cfavoritesprofilepage;control;7
 msgid "Add"
 msgstr "追加"
 
-#: string;20864
+#: string;20865
 msgid "&Browse"
 msgstr "参照"
 
-#: string;20865
+#: string;20866
 msgid "&Connect"
 msgstr "接続(&C)"
 
-#: string;20866 cdownloadeditpage;control;3
+#: string;20867 cdownloadeditpage;control;3
 msgid "Filename:"
 msgstr "ファイル名:"
 
-#: string;20867
+#: string;20868
 msgid "Host:"
 msgstr "ホスト:"
 
-#: string;20868 circsettingspage;control;39 cconnectionsettingspage;control;6
+#: string;20869 circsettingspage;control;39 cconnectionsettingspage;control;6
 msgid "Port:"
 msgstr "ポート:"
 
-#: string;20869
+#: string;20876
 msgid "Unable to display URL action dialog because Envy is busy."
 msgstr "Envyがビジーの為、URLアクションダイアログを表示できませんでした"
 
@@ -8633,7 +8633,7 @@ msgid "Discovery Service Type:"
 msgstr "ディスカバリサービス種類:"
 
 #: cdiscoveryservicedlg;control;4
-msgid "Gnutella Bootstrap|G1-WebCache|G2-WebCache|G1+G2-WebCache|Server.met URL|Blocked"
+msgid "G2/G1 GWebCache|G2 WebCache|G1 WebCache|Gnutella Bootstrap|Server.met URL|DC++ Hublist|Blocked"
 msgstr "Gnutellaブートストラップ|GWebCache|Server.met URL|ブロック"
 
 #: dialog;cdownloadmonitordlg ctorrentseeddlg;control;2

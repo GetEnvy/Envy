@@ -101,7 +101,7 @@ UninstallDisplayIcon={app}\Uninstall\Setup.exe
 UninstallDisplayName={#internal_name} {#version}
 UninstallFilesDir={app}\Uninstall
 SetupIconFile=Installer\Res\Install.ico
-WizardSmallImageFile=Installer\Res\CornerLogo.bmp
+WizardSmallImageFile=Installer\Res\CornerLogo.bmp,Installer\Res\CornerLogo.*.bmp
 WizardImageFile=Installer\Res\Sidebar.bmp,Installer\Res\Sidebar.*.bmp
 WizardImageStretch=no
 ;WizardImageBackColor=clWhite
@@ -178,7 +178,7 @@ Name: "{group}\GUI Modes\{#internal_name} ({cm:icons_launchtray})"; Filename: "{
 ;Name: "{group}\GUI Modes\{#internal_name} ({cm:icons_noskin})"; Filename: "{app}\Envy.exe"; Parameters: "-noskin"; WorkingDir: "{app}"; Comment: "{cm:reg_apptitle}"; AppUserModelID: "Envy"
 Name: "{commondesktop}\{#internal_name}"; Filename: "{app}\Envy.exe"; WorkingDir: "{app}"; Comment: "{cm:reg_apptitle}"; Tasks: desktopicon; Check: not FileExists(ExpandConstant('{commondesktop}\{#internal_name}.lnk')); AppUserModelID: "Envy"
 Name: "{commondesktop}\TorrentEnvy"; Filename: "{app}\TorrentEnvy.exe"; WorkingDir: "{app}"; Comment: "Envy Drag'n'Drop Torrent Creator"; Tasks: desktopicontorrents; Check: not FileExists(ExpandConstant('{commondesktop}\TorrentEnvy.lnk')); AppUserModelID: "TorrentEnvy"
-Name: "{commondesktop}\GetEnvy.com Kickbacks"; Filename: "http://getenvy.com/kickbacks"; IconFilename: "{app}\Schemas\Kickbacks.ico"; Tasks: desktopicongetenvy; Check: not FileExists(ExpandConstant('{commondesktop}\GetEnvy.com Kickbacks.url'))
+Name: "{commondesktop}\GetEnvy.com Love"; Filename: "http://getenvy.com/love"; IconFilename: "{app}\Schemas\Love.ico"; Tasks: desktopicongetenvy; Check: not FileExists(ExpandConstant('{commondesktop}\GetEnvy.com Love.url'))
 Name: "{userappdata}\Microsoft\Internet Explorer\Quick Launch\{#internal_name}"; Filename: "{app}\Envy.exe"; WorkingDir: "{app}"; Comment: "{cm:reg_apptitle}"; Tasks: quicklaunch
 
 #if alpha == "True"

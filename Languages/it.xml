@@ -4702,9 +4702,9 @@
 	<tag id="text_typevideo" text="Video"/>
 	<tag id="text_typeimage" text="Immagine"/>
 	<tag id="text_typebook" text="Libro"/>
-	<tag id="text_typedoc" text="Documento di testo"/>
+	<tag id="text_typedoc" text="Documento"/>
 	<tag id="text_typepresent" text="Presentazione"/>
-	<tag id="text_typerom" text="Immagine della ROM"/>
+	<tag id="text_typerom" text="ROM"/>
 	<tag id="text_typeskin" text="Skin"/>
 	<tag id="text_typecode" text="Codice sorgente"/>
 	<tag id="text_typespreadsheet" text="Foglio elettronico"/>

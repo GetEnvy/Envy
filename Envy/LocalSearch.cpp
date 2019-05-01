@@ -48,13 +48,13 @@
 #include "Uploads.h"
 #include "UploadQueue.h"
 #include "UploadQueues.h"
-#include "ImageServices.h"
+#include "ImageServices.h"	// IsFileViewable
 
 #include "Buffer.h"
-#include "ZLib.h"
-#include "XML.h"
 #include "Schema.h"
 #include "SchemaCache.h"
+#include "XML.h"
+#include "ZLib.h"
 
 #ifdef _DEBUG
 #undef THIS_FILE

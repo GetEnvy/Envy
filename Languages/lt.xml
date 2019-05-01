@@ -4704,7 +4704,7 @@
 	<tag id="text_typebook" text="Knyga"/>
 	<tag id="text_typedoc" text="Dokumentas"/>
 	<tag id="text_typepresent" text="Pateiktis"/>
-	<tag id="text_typerom" text="ROM atvaizdis"/>
+	<tag id="text_typerom" text="ROM"/>
 	<tag id="text_typeskin" text="Apvalkalas"/>
 	<tag id="text_typecode" text="Pirminis kodas"/>
 	<tag id="text_typespreadsheet" text="Skaičiuoklė"/>

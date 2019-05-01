@@ -269,7 +269,8 @@ void CDownloadWithFile::CloseFile()
 void CDownloadWithFile::AttachFile(CFragmentedFile* pFile)
 {
 	m_pFile.reset( pFile );
-	if ( m_pFile.get() ) m_pFile->SetDownload( static_cast< CDownload*>( this ) );
+	if ( m_pFile.get() )
+		m_pFile->SetDownload( static_cast< CDownload*>( this ) );
 }
 
 //////////////////////////////////////////////////////////////////////

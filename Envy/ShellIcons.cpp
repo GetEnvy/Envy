@@ -86,42 +86,51 @@ void CShellIcons::Clear()
 
 	// SHI_FILE = 0
 	VERIFY( AddIcon( CoolInterface.ExtractIcon( IDI_FILE, FALSE, LVSIL_SMALL ), m_i16 ) == SHI_FILE );
+//	VERIFY( AddIcon( CoolInterface.ExtractIcon( IDI_FILE, FALSE, LVSIL_MID ), m_i24 ) == SHI_FILE );
 	VERIFY( AddIcon( CoolInterface.ExtractIcon( IDI_FILE, FALSE, LVSIL_NORMAL ), m_i32 ) == SHI_FILE );
 	VERIFY( AddIcon( CoolInterface.ExtractIcon( IDI_FILE, FALSE, LVSIL_BIG ), m_i48 ) == SHI_FILE );
 
 	// SHI_EXECUTABLE = 1
 	VERIFY( AddIcon( CoolInterface.ExtractIcon( IDI_EXECUTABLE, FALSE, LVSIL_SMALL ), m_i16 ) == SHI_EXECUTABLE );
+//	VERIFY( AddIcon( CoolInterface.ExtractIcon( IDI_EXECUTABLE, FALSE, LVSIL_MID ), m_i24 ) == SHI_EXECUTABLE );
 	VERIFY( AddIcon( CoolInterface.ExtractIcon( IDI_EXECUTABLE, FALSE, LVSIL_NORMAL ), m_i32 ) == SHI_EXECUTABLE );
 	VERIFY( AddIcon( CoolInterface.ExtractIcon( IDI_EXECUTABLE, FALSE, LVSIL_BIG ), m_i48 ) == SHI_EXECUTABLE );
 
 	// SHI_COMPUTER = 2
 	VERIFY( AddIcon( CoolInterface.ExtractIcon( IDI_COMPUTER, FALSE, LVSIL_SMALL ), m_i16 ) == SHI_COMPUTER );
+//	VERIFY( AddIcon( CoolInterface.ExtractIcon( IDI_COMPUTER, FALSE, LVSIL_MID ), m_i24 ) == SHI_COMPUTER );
 	VERIFY( AddIcon( CoolInterface.ExtractIcon( IDI_COMPUTER, FALSE, LVSIL_NORMAL ), m_i32 ) == SHI_COMPUTER );
 	VERIFY( AddIcon( CoolInterface.ExtractIcon( IDI_COMPUTER, FALSE, LVSIL_BIG ), m_i48 ) == SHI_COMPUTER );
 
 	// SHI_FOLDER_CLOSED = 3
 	VERIFY( AddIcon( CoolInterface.ExtractIcon( IDI_FOLDER_CLOSED, FALSE, LVSIL_SMALL ), m_i16 ) == SHI_FOLDER_CLOSED );
+//	VERIFY( AddIcon( CoolInterface.ExtractIcon( IDI_FOLDER_CLOSED, FALSE, LVSIL_MID ), m_i24 ) == SHI_FOLDER_CLOSED );
 	VERIFY( AddIcon( CoolInterface.ExtractIcon( IDI_FOLDER_CLOSED, FALSE, LVSIL_NORMAL ), m_i32 ) == SHI_FOLDER_CLOSED );
 	VERIFY( AddIcon( CoolInterface.ExtractIcon( IDI_FOLDER_CLOSED, FALSE, LVSIL_BIG ), m_i48 ) == SHI_FOLDER_CLOSED );
 
 	// SHI_FOLDER_OPEN = 4
 	VERIFY( AddIcon( CoolInterface.ExtractIcon( IDI_FOLDER_OPEN, FALSE, LVSIL_SMALL ), m_i16 ) == SHI_FOLDER_OPEN );
+//	VERIFY( AddIcon( CoolInterface.ExtractIcon( IDI_FOLDER_OPEN, FALSE, LVSIL_MID ), m_i24 ) == SHI_FOLDER_OPEN );
 	VERIFY( AddIcon( CoolInterface.ExtractIcon( IDI_FOLDER_OPEN, FALSE, LVSIL_NORMAL ), m_i32 ) == SHI_FOLDER_OPEN );
 	VERIFY( AddIcon( CoolInterface.ExtractIcon( IDI_FOLDER_OPEN, FALSE, LVSIL_BIG ), m_i48 ) == SHI_FOLDER_OPEN );
 
 	// SHI_LOCKED = 5 (overlay)
 	VERIFY( AddIcon( CoolInterface.ExtractIcon( IDI_LOCKED, FALSE, LVSIL_SMALL ), m_i16 ) == SHI_LOCKED );
+//	VERIFY( AddIcon( CoolInterface.ExtractIcon( IDI_LOCKED, FALSE, LVSIL_MID ), m_i24 ) == SHI_LOCKED );
 //	VERIFY( AddIcon( CoolInterface.ExtractIcon( IDI_LOCKED, FALSE, LVSIL_NORMAL ), m_i32 ) == SHI_LOCKED );
 //	VERIFY( AddIcon( CoolInterface.ExtractIcon( IDI_LOCKED, FALSE, LVSIL_BIG ), m_i48 ) == SHI_LOCKED );
 	m_i16.SetOverlayImage( SHI_LOCKED, SHI_OVERLAY_LOCKED );
+//	m_i24.SetOverlayImage( SHI_LOCKED, SHI_OVERLAY_LOCKED );
 //	m_i32.SetOverlayImage( SHI_LOCKED, SHI_OVERLAY_LOCKED );
 //	m_i48.SetOverlayImage( SHI_LOCKED, SHI_OVERLAY_LOCKED );
 
 	m_m16.SetAt( L".exe", SHI_EXECUTABLE );
+//	m_m24.SetAt( L".exe", SHI_EXECUTABLE );
 	m_m32.SetAt( L".exe", SHI_EXECUTABLE );
 	m_m48.SetAt( L".exe", SHI_EXECUTABLE );
 
 	m_m16.SetAt( L".com", SHI_EXECUTABLE );
+//	m_m24.SetAt( L".com", SHI_EXECUTABLE );
 	m_m32.SetAt( L".com", SHI_EXECUTABLE );
 	m_m48.SetAt( L".com", SHI_EXECUTABLE );
 }
@@ -394,9 +403,11 @@ BOOL CShellIcons::Lookup(LPCTSTR pszType, CString* psName, CString* psMIME, HICO
 	if ( psName ) psName->Empty();
 	if ( psMIME ) psMIME->Empty();
 
-	if ( pszType == NULL || *pszType == 0 ) return FALSE;
+	if ( pszType == NULL || *pszType == 0 )
+		return FALSE;
 
-	if ( RegOpenKeyEx( HKEY_CLASSES_ROOT, pszType, 0, KEY_READ, &hKey ) != ERROR_SUCCESS ) return FALSE;
+	if ( RegOpenKeyEx( HKEY_CLASSES_ROOT, pszType, 0, KEY_READ, &hKey ) != ERROR_SUCCESS )
+		return FALSE;
 
 	if ( psMIME )
 	{
@@ -418,7 +429,8 @@ BOOL CShellIcons::Lookup(LPCTSTR pszType, CString* psName, CString* psMIME, HICO
 	RegCloseKey( hKey );
 	szResult[ nResult / sizeof( TCHAR ) ] = 0;
 
-	if ( RegOpenKeyEx( HKEY_CLASSES_ROOT, szResult, 0, KEY_READ, &hKey ) != ERROR_SUCCESS ) return FALSE;
+	if ( RegOpenKeyEx( HKEY_CLASSES_ROOT, szResult, 0, KEY_READ, &hKey ) != ERROR_SUCCESS )
+		return FALSE;
 
 	if ( psName )
 	{
@@ -504,6 +516,8 @@ void CShellIcons::AttachTo(CListCtrl* const pList, int nSize) const
 {
 	if ( nSize == 16 )
 		pList->SetImageList( const_cast< CImageList* >( &m_i16 ), LVSIL_SMALL );
+//	else if ( nSize == 24 )
+//		pList->SetImageList( const_cast< CImageList* >( &m_i24 ), LVSIL_MID );
 	else if ( nSize == 32 )
 		pList->SetImageList( const_cast< CImageList* >( &m_i32 ), LVSIL_NORMAL );
 	else if ( nSize == 48 )
@@ -528,6 +542,9 @@ BOOL CShellIcons::Draw(CDC* pDC, int nIcon, int nSize, int nX, int nY, COLORREF 
 	case 16:
 		hImages = m_i16.GetSafeHandle();
 		break;
+//	case 24:
+//		hImages = m_i24.GetSafeHandle();
+//		break;
 	case 32:
 		hImages = m_i32.GetSafeHandle();
 		break;
@@ -553,6 +570,9 @@ BOOL CShellIcons::Draw(CDC* pDC, int nIcon, int nSize, int nX, int nY, COLORREF 
 	case 16:
 		hImages = m_i16.GetSafeHandle();
 		break;
+//	case 24:
+//		hImages = m_i24.GetSafeHandle();
+//		break;
 	case 32:
 		hImages = m_i32.GetSafeHandle();
 		break;

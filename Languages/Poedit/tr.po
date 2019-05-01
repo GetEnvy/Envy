@@ -6792,11 +6792,11 @@ msgstr "\"%s\" 'dan %s (%s) 'e aktarım kabul edilmiyor, meşgul ve istemci sır
 msgid "Refusing upload of \"%s\" to %s (%s), all matching queues are full."
 msgstr "\"%s\".den %s (%s)'ye aktarım reddedildi, tüm sıralar doludur."
 
-#: string;20810
+#: string;20811
 msgid "Upload host %s requested an unsatisfiable range of file \"%s\"."
 msgstr "%s aktarım hostu \"%s\" dosyasını uygun olmayan sırada istedi."
 
-#: string;20811
+#: string;20861
 msgid "eDonkey uploads should not be cancelled. Are you sure you want to cancel this upload?"
 msgstr "eDonkey2000 aktarımlarının iptal edilmemeleri önerilir. Bu aktarımı iptal etmek istediğinizden emin misiniz?"
 
@@ -6960,35 +6960,35 @@ msgstr "Trafik yoğunluğundan dolayı %s aktarım bağlantısı kapanıyor."
 msgid "Uploading tiger-tree data for \"%s\" to %s."
 msgstr "%s'e \"%s\" için tiger-tree veri aktarılıyor."
 
-#: string;20861
+#: string;20862
 msgid "Removed upload of \"%s\" to %s."
 msgstr "\"%s\" 'dan %s 'e aktarım kaldırıldı."
 
-#: string;20862 cfavoritesprofilepage;control;7
+#: string;20864 cfavoritesprofilepage;control;7
 msgid "Add"
 msgstr "Ekle"
 
-#: string;20864
+#: string;20865
 msgid "&Browse"
 msgstr "&Gözat"
 
-#: string;20865
+#: string;20866
 msgid "&Connect"
 msgstr "&Bağlan"
 
-#: string;20866 cdownloadeditpage;control;3
+#: string;20867 cdownloadeditpage;control;3
 msgid "Filename:"
 msgstr "Dosya Adı:"
 
-#: string;20867
+#: string;20868
 msgid "Host:"
 msgstr "Host:"
 
-#: string;20868 circsettingspage;control;39 cconnectionsettingspage;control;6
+#: string;20869 circsettingspage;control;39 cconnectionsettingspage;control;6
 msgid "Port:"
 msgstr "Port:"
 
-#: string;20869
+#: string;20876
 msgid "Unable to display URL action dialog because Envy is busy."
 msgstr "URL faaliyet diyalogu gösterilemez çünkü Envy meşgul."
 
@@ -8633,8 +8633,8 @@ msgid "Discovery Service Type:"
 msgstr "Keşif Servis Türü:"
 
 #: cdiscoveryservicedlg;control;4
-msgid "Gnutella Bootstrap|G1-WebCache|G2-WebCache|G1+G2-WebCache|Server.met URL|Blocked"
-msgstr "Gnutella Bootstrap|GWebCache|Server.met URL|Engellenmiş"
+msgid "G2/G1 GWebCache|G2 WebCache|G1 WebCache|Gnutella Bootstrap|Server.met URL|DC++ Hublist|Blocked"
+msgstr "G2/G1 GWebCache|G2 WebCache|G1 WebCache|Gnutella Bootstrap|Server.met URL|Engellenmiş"
 
 #: dialog;cdownloadmonitordlg ctorrentseeddlg;control;2
 msgid "Download"

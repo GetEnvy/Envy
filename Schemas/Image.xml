@@ -510,6 +510,7 @@
 	<typefilter>
 		<type extension="3ds"/>
 		<type extension="ai"/>
+		<type extension="avif"/>
 		<type extension="bmp"/>
 		<type extension="bpg"/>
 		<type extension="bw"/>

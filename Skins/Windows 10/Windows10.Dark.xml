@@ -48,9 +48,9 @@
 
 <colors>
  <color name="Navbar.Text.Up"				value="FFFFFF"/>
- <color name="Navbar.Text.Hover"			value="FFFFFF"/>
+ <color name="Navbar.Text.Hover"			value="F0F0F0"/>
  <color name="Navbar.Text.Checked"			value="FFFFFF"/>
- <color name="Navbar.Shadow.Down"			value="202020"/>
+ <color name="Navbar.Shadow.Down"			value="D0D0D0"/>
  <color name="System.Base.Window"			value="0F0F0F"/>  <!--whitespace-->
  <color name="System.Base.Midtone"			value="181818"/>  <!--toolbars-->
  <color name="System.Base.Text" 			value="FFFFFF"/>
@@ -71,6 +71,7 @@
  <color name="System.TextLink.Selected" 		value="FFFFFF"/>
  <color name="System.TextAlert" 			value="FFFFFF"/>
  <color name="System.TextStatus"			value="FFFFFF"/>
+ <color name="StatusBar.Back"				value="404040"/>
  <color name="Panel.Caption.Text"			value="FFFFFF"/>
  <color name="Panel.Caption.Back"			value="181818"/>
  <color name="TaskPanel.Back"				value="181818"/>
@@ -107,10 +108,10 @@
  <color name="Traffic.Window.Back"			value="1A1816"/>
  <color name="Traffic.Window.Text"			value="68625A"/>
  <color name="Traffic.Window.Grid"			value="343232"/>
- <color name="Monitor.History.Text" 			value="404040"/>
- <color name="Monitor.History.Back" 			value="FFFFFF"/>
- <color name="Monitor.History.Back.Max" 		value="F0F0F0"/>
- <color name="Monitor.Download.Line"			value="A0A0A0"/>
+ <color name="Monitor.History.Text" 			value="808080"/>
+ <color name="Monitor.History.Back" 			value="303030"/>
+ <color name="Monitor.History.Back.Max" 		value="606060"/>
+ <color name="Monitor.Download.Line"			value="808080"/>
  <color name="Monitor.Download.Bar"			value="FFFFFF"/>
  <color name="Monitor.Upload.Line" 			value="809AC0"/>
  <color name="Monitor.Upload.Bar" 			value="809AC0"/>

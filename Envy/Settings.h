@@ -335,7 +335,11 @@ public:
 		DWORD		UPnPRefreshTime;		// UPnP: Refresh time of port mappings
 		bool		SkipWANPPPSetup;		// UPnP: Skip WANPPPConn1 device setup
 		bool		SkipWANIPSetup;			// UPnP: Skip WANIPConn1 device setup
-		DWORD		ZLibCompressionLevel;	// ZLib compression level: 0-9
+		bool		EnableBroadcast;		// Send and accept broadcast packets (default false, for LAN)
+		bool		EnableMulticast;		// Send and accept multi-cast packets (default true)
+		bool		MulticastLoop;			// Use multi-cast loopback (default false, for debugging)
+		DWORD		MulticastTTL;			// TTL for multi-cast packets (default 1)
+		DWORD		ZLibCompressionLevel;	// ZLib compression level: 0-9 (default 1)
 	} Connection;
 
 	struct sBandwidth
@@ -674,6 +678,7 @@ public:
 		bool		QueueLimitWarning;		// Has the user been warned about limiting the max Q position accepted?
 		bool		DonkeyServerWarning;	// Has the user been warned about having an empty server list?
 		bool		DefaultED2KServersLoaded; // Has Envy already loaded default ED2K servers?
+		bool		DefaultDCServersLoaded;	  // Has Envy already loaded default DC++ servers?
 		bool		MaliciousWarning;		// Is the warning dialog triggered? (Single case at startup)
 		CString		LastDuplicateHash;		// Stores the hash of the file about which the warning was shown
 		DWORD		BandwidthScaleIn;		// MonitorBar Download slider setting

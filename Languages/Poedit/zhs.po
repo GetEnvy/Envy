@@ -1,4 +1,4 @@
-msgid ""
+﻿msgid ""
 msgstr ""
 "Project-Id-Version: Envy\n"
 "Report-Msgid-Bugs-To: getenvy.com\n"
@@ -6792,11 +6792,11 @@ msgstr "拒绝上传 \"%s\" 到 %s 主机 (%s)，繁忙并且对方不支持队�
 msgid "Refusing upload of \"%s\" to %s (%s), all matching queues are full."
 msgstr "拒绝上传 \"%s\" 到 %s (%s)，所有匹配队列已满。"
 
-#: string;20810
+#: string;20811
 msgid "Upload host %s requested an unsatisfiable range of file \"%s\"."
 msgstr "上传主机 %s 请求了 \"%s\" 文件不被满足的范围。"
 
-#: string;20811
+#: string;20861
 msgid "eDonkey uploads should not be cancelled. Are you sure you want to cancel this upload?"
 msgstr "edonkey 的上传不能被取消。您确定您要取消此上传吗？"
 
@@ -6960,35 +6960,35 @@ msgstr "缺少通讯导致关闭上传连接 %s。"
 msgid "Uploading tiger-tree data for \"%s\" to %s."
 msgstr "上传 \"%s\" 的 tiger-tree 到 %s。"
 
-#: string;20861
+#: string;20862
 msgid "Removed upload of \"%s\" to %s."
 msgstr "移除对 %s 主机的上传 \"%s\"."
 
-#: string;20862 cfavoritesprofilepage;control;7
+#: string;20864 cfavoritesprofilepage;control;7
 msgid "Add"
 msgstr "添加"
 
-#: string;20864
+#: string;20865
 msgid "&Browse"
 msgstr "浏览"
 
-#: string;20865
+#: string;20866
 msgid "&Connect"
 msgstr "连接(_C)"
 
-#: string;20866 cdownloadeditpage;control;3
+#: string;20867 cdownloadeditpage;control;3
 msgid "Filename:"
 msgstr "文件名:"
 
-#: string;20867
+#: string;20868
 msgid "Host:"
 msgstr "主机:"
 
-#: string;20868 circsettingspage;control;39 cconnectionsettingspage;control;6
+#: string;20869 circsettingspage;control;39 cconnectionsettingspage;control;6
 msgid "Port:"
 msgstr "端口:"
 
-#: string;20869
+#: string;20876
 msgid "Unable to display URL action dialog because Envy is busy."
 msgstr "未能显示链接操作对话框因为 Envy 正忙。"
 
@@ -8633,8 +8633,8 @@ msgid "Discovery Service Type:"
 msgstr "探索服务类型:"
 
 #: cdiscoveryservicedlg;control;4
-msgid "Gnutella Bootstrap|G1-WebCache|G2-WebCache|G1+G2-WebCache|Server.met URL|Blocked"
-msgstr "Gnutella Bootstrap|GWebCache|Server.met 链接"
+msgid "G2/G1 GWebCache|G2 WebCache|G1 WebCache|Gnutella Bootstrap|Server.met URL|DC++ Hublist|Blocked"
+msgstr "G2/G1 GWebCache|G2 WebCache|G1 WebCache|Gnutella Bootstrap|Server.met 链接|Blocked"
 
 #: dialog;cdownloadmonitordlg ctorrentseeddlg;control;2
 msgid "Download"

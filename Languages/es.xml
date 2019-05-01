@@ -4687,9 +4687,9 @@
 	<tag id="text_typevideo" text="Video"/>
 	<tag id="text_typeimage" text="Imagén"/>
 	<tag id="text_typebook" text="Libro"/>
-	<tag id="text_typedoc" text="Documento de Texto"/>
+	<tag id="text_typedoc" text="Documento"/>
 	<tag id="text_typepresent" text="Presentación"/>
-	<tag id="text_typerom" text="ROM Image"/>
+	<tag id="text_typerom" text="ROM"/>
 	<tag id="text_typeskin" text="Skin"/>
 	<tag id="text_typecode" text="Codigo"/>
 	<tag id="text_typespreadsheet" text="Hoja"/>

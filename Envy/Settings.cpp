@@ -61,6 +61,7 @@ CSettings::CSettings()
 	Live.QueueLimitWarning			= false;
 	Live.DonkeyServerWarning		= false;
 	Live.DefaultED2KServersLoaded	= false;
+	Live.DefaultDCServersLoaded		= false;
 	Live.LoadWindowState			= false;
 	Live.BandwidthScaleIn			= 101;
 	Live.BandwidthScaleOut			= 101;
@@ -347,7 +348,11 @@ void CSettings::Load()
 	Add( L"Connection", L"TimeoutTraffic", &Connection.TimeoutTraffic, 140*1000, 1000, 10, 60*60, L" s" );
 	Add( L"Connection", L"UPnPTimeout", &Connection.UPnPTimeout, 5*1000, 1, 0, 60*1000, L" ms" );
 	Add( L"Connection", L"UPnPRefreshTime", &Connection.UPnPRefreshTime, 30*60*1000, 60*1000, 5, 24*60, L" m" );
-	Add( L"Connection", L"ZLibCompressionLevel", &Connection.ZLibCompressionLevel, 8, 1, 0, 9 );
+	Add( L"Connection", L"EnableBroadcast", &Connection.EnableBroadcast, Experimental.LAN_Mode );
+	Add( L"Connection", L"EnableMulticast", &Connection.EnableMulticast, true );
+	Add( L"Connection", L"MulticastLoop", &Connection.MulticastLoop, false );
+	Add( L"Connection", L"MulticastTTL", &Connection.MulticastTTL, 1, 1, 0, 255 );
+	Add( L"Connection", L"ZLibCompressionLevel", &Connection.ZLibCompressionLevel, 2, 1, 0, 9 );
 
 	Add( L"Bandwidth", L"Downloads", &Bandwidth.Downloads, 0 );
 	Add( L"Bandwidth", L"HubIn", &Bandwidth.HubIn, 0, 128, 0, 8192, L" Kb/s" );
@@ -468,9 +473,9 @@ void CSettings::Load()
 	Add( L"Gnutella2", L"UdpMTU", &Gnutella2.UdpMTU, 500, 1, 16, 10*KiloByte );
 
 	Add( L"eDonkey", L"ShowInterface", &eDonkey.ShowInterface, true );
+	Add( L"eDonkey", L"EnableAlways", &eDonkey.EnableAlways, true );
 	Add( L"eDonkey", L"DefaultServerFlags", &eDonkey.DefaultServerFlags, 0xFFFFFFFF );
 	Add( L"eDonkey", L"DequeueTime", &eDonkey.DequeueTime, 3600, 60, 2, 512, L" m" );
-	Add( L"eDonkey", L"EnableAlways", &eDonkey.EnableAlways, true );
 	Add( L"eDonkey", L"Endgame", &eDonkey.Endgame, true );
 	Add( L"eDonkey", L"ExtendedRequest", &eDonkey.ExtendedRequest, 2, 1, 0, 2 );
 	Add( L"eDonkey", L"FastConnect", &eDonkey.FastConnect, false );

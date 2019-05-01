@@ -6792,11 +6792,11 @@ msgstr "Rechazando subida de \"%s\" a %s (%s), ocupado o el cliente no soporta c
 msgid "Refusing upload of \"%s\" to %s (%s), all matching queues are full."
 msgstr "Rechazando subida de \"%s\" a %s (%s), todas las colas llenas."
 
-#: string;20810
+#: string;20811
 msgid "Upload host %s requested an unsatisfiable range of file \"%s\"."
 msgstr "Host de subida %s solicitó un rango de contenido no obtenido \"%s\"."
 
-#: string;20811
+#: string;20861
 msgid "eDonkey uploads should not be cancelled. Are you sure you want to cancel this upload?"
 msgstr "Subidas eDonkey no deberían ser canceladas.  ¿Estas seguro que deseas cancelar esta subida?"
 
@@ -6960,35 +6960,35 @@ msgstr "Cerrando conexión de subida %s por la carencia de trafico."
 msgid "Uploading tiger-tree data for \"%s\" to %s."
 msgstr "Subiendo información tiger-tree para \"%s\" a %s."
 
-#: string;20861
+#: string;20862
 msgid "Removed upload of \"%s\" to %s."
 msgstr "Eliminado subida de \"%s\" a %s."
 
-#: string;20862 cfavoritesprofilepage;control;7
+#: string;20864 cfavoritesprofilepage;control;7
 msgid "Add"
 msgstr "Agregar"
 
-#: string;20864
+#: string;20865
 msgid "&Browse"
 msgstr "&Explorar"
 
-#: string;20865
+#: string;20866
 msgid "&Connect"
 msgstr "&Conectar"
 
-#: string;20866 cdownloadeditpage;control;3
+#: string;20867 cdownloadeditpage;control;3
 msgid "Filename:"
 msgstr "Nombre de archivo:"
 
-#: string;20867
+#: string;20868
 msgid "Host:"
 msgstr "Host:"
 
-#: string;20868 circsettingspage;control;39 cconnectionsettingspage;control;6
+#: string;20869 circsettingspage;control;39 cconnectionsettingspage;control;6
 msgid "Port:"
 msgstr "Puerto:"
 
-#: string;20869
+#: string;20876
 msgid "Unable to display URL action dialog because Envy is busy."
 msgstr "La ventana de URL no pudo ser mostrada, Envy está ocupado."
 
@@ -8633,8 +8633,8 @@ msgid "Discovery Service Type:"
 msgstr "Tipo de servicio de descubrimiento:"
 
 #: cdiscoveryservicedlg;control;4
-msgid "Gnutella Bootstrap|G1-WebCache|G2-WebCache|G1+G2-WebCache|Server.met URL|Blocked"
-msgstr "Gnutella Bootstrap|GWebCache|Server.met URL|Bloqueado"
+msgid "G2/G1 GWebCache|G2 WebCache|G1 WebCache|Gnutella Bootstrap|Server.met URL|DC++ Hublist|Blocked"
+msgstr "G2/G1 GWebCache|G2 WebCache|G1 WebCache|Gnutella Bootstrap|Server.met URL|DC++ Hublist|Bloqueado"
 
 #: dialog;cdownloadmonitordlg ctorrentseeddlg;control;2
 msgid "Download"

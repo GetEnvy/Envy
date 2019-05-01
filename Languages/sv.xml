@@ -4618,7 +4618,7 @@
 	<tag id="text_typebook" text="Bok"/>
 	<tag id="text_typedoc" text="Ordbehandling"/>
 	<tag id="text_typepresent" text="Presentation"/>
-	<tag id="text_typerom" text="ROM-avbild"/>
+	<tag id="text_typerom" text="ROM"/>
 	<tag id="text_typeskin" text="Skinn"/>
 	<tag id="text_typecode" text="Källkod"/>
 	<tag id="text_typespreadsheet" text="Kalkylark"/>

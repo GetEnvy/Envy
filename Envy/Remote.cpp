@@ -374,7 +374,7 @@ void CRemote::Prepare(LPCTSTR pszPrefix)
 		AddText( L"text_typedoc", L"Document" );
 		AddText( L"text_typerom", L"ROM" );
 		AddText( L"text_typeskin", L"Skin" );
-		AddText( L"text_typecode", L"Source Code" );
+		AddText( L"text_typecode", L"Sourcecode" );
 		AddText( L"text_typespreadsheet", L"Spreadsheet" );
 		AddText( L"text_typesubtitle", L"Subtitle" );
 		AddText( L"text_typecollection", L"Collection" );

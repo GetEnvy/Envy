@@ -4355,16 +4355,16 @@
 	<tag id="text_typeapp" text="Aplikim"/>
 	<tag id="text_typeaudio" text="Audio"/>
 	<tag id="text_typebook" text="Libër"/>
+	<tag id="text_typedoc" text="Procesimi"/>
 	<tag id="text_typecollection" text="Koleksioni"/>
 	<tag id="text_typeimage" text="Figurë"/>
 	<tag id="text_typepresent" text="Prezantimi"/>
-	<tag id="text_typerom" text="Imazh ROM"/>
+	<tag id="text_typerom" text="ROM"/>
 	<tag id="text_typeskin" text="Lëvore"/>
 	<tag id="text_typecode" text="Kodburimi"/>
 	<tag id="text_typespreadsheet" text="Faqe e Palosur"/>
 	<tag id="text_typesubtitle" text="Titrat"/>
 	<tag id="text_typevideo" text="Video"/>
-	<tag id="text_typedoc" text="Procesimi i Fjalës"/>
 	<tag id="text_directdownload" text="Shkarkesë Magnet/Torrent:"/>
 	<tag id="text_downloadcleartip" text="pastro shkarkesën prej listës (skeda nuk do të fshihet)"/>
 	<tag id="text_downloadclear" text="Pastro"/>

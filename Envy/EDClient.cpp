@@ -1587,7 +1587,7 @@ BOOL CEDClient::OnHashsetRequest(CEDPacket* pPacket)
 	Hashes::Ed2kHash oHash;
 	pPacket->Read( oHash );
 
-	CED2K* pHashset	= NULL;
+	CED2K* pHashset = NULL;
 	BOOL bDelete = FALSE;
 	CString strName;
 

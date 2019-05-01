@@ -4633,7 +4633,7 @@
 	<tag id="text_typebook" text="Kitap"/>
 	<tag id="text_typedoc" text="Kelime İşlemci"/>
 	<tag id="text_typepresent" text="Tanıtım"/>
-	<tag id="text_typerom" text="ROM Görüntü"/>
+	<tag id="text_typerom" text="ROM"/>
 	<tag id="text_typeskin" text="Arayüz"/>
 	<tag id="text_typecode" text="Kaynak Kod"/>
 	<tag id="text_typespreadsheet" text="Çalışma Alanlarına Bölmek"/>

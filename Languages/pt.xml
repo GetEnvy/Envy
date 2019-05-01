@@ -4752,9 +4752,9 @@
 	<tag id="text_typevideo" text="Vídeo"/>
 	<tag id="text_typeimage" text="Imagem"/>
 	<tag id="text_typebook" text="Livro"/>
-	<tag id="text_typedoc" text="Processamento de Palavras"/>
+	<tag id="text_typedoc" text="Processamento"/>
 	<tag id="text_typepresent" text="Apresentação"/>
-	<tag id="text_typerom" text="Imagem de ROM"/>
+	<tag id="text_typerom" text="ROM"/>
 	<tag id="text_typeskin" text="Skin"/>
 	<tag id="text_typecode" text="Código Fonte"/>
 	<tag id="text_typespreadsheet" text="Spreadsheet"/>

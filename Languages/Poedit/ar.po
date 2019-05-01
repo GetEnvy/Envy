@@ -6796,11 +6796,11 @@ msgstr ""
 msgid "Refusing upload of \"%s\" to %s (%s), all matching queues are full."
 msgstr ""
 
-#: string;20810
+#: string;20811
 msgid "Upload host %s requested an unsatisfiable range of file \"%s\"."
 msgstr ""
 
-#: string;20811
+#: string;20861
 msgid "eDonkey uploads should not be cancelled. Are you sure you want to cancel this upload?"
 msgstr ""
 
@@ -6964,35 +6964,35 @@ msgstr ""
 msgid "Uploading tiger-tree data for \"%s\" to %s."
 msgstr ""
 
-#: string;20861
+#: string;20862
 msgid "Removed upload of \"%s\" to %s."
 msgstr ""
 
-#: string;20862 cfavoritesprofilepage;control;7
+#: string;20864 cfavoritesprofilepage;control;7
 msgid "Add"
 msgstr "إضافة"
 
-#: string;20864
+#: string;20865
 msgid "&Browse"
 msgstr "إستعراض"
 
-#: string;20865
+#: string;20866
 msgid "&Connect"
 msgstr "إتصال"
 
-#: string;20866 cdownloadeditpage;control;3
+#: string;20867 cdownloadeditpage;control;3
 msgid "Filename:"
 msgstr "اسم الملف:"
 
-#: string;20867
+#: string;20868
 msgid "Host:"
 msgstr "المستضيف:"
 
-#: string;20868 circsettingspage;control;39 cconnectionsettingspage;control;6
+#: string;20869 circsettingspage;control;39 cconnectionsettingspage;control;6
 msgid "Port:"
 msgstr "المنفذ:"
 
-#: string;20869
+#: string;20876
 msgid "Unable to display URL action dialog because Envy is busy."
 msgstr ""
 
@@ -8637,8 +8637,8 @@ msgid "Discovery Service Type:"
 msgstr ": نوع خدمة الإكتشاف"
 
 #: cdiscoveryservicedlg;control;4
-msgid "Gnutella Bootstrap|G1-WebCache|G2-WebCache|G1+G2-WebCache|Server.met URL|Blocked"
-msgstr "Gnutella Bootstrap|GWebCache|Server.met رابط|المحجوبة"
+msgid "G2/G1 GWebCache|G2 WebCache|G1 WebCache|Gnutella Bootstrap|Server.met URL|DC++ Hublist|Blocked"
+msgstr "G2/G1 GWebCache|G2 WebCache|G1 WebCache|Gnutella Bootstrap|Server.met رابط|المحجوبة"
 
 #: dialog;cdownloadmonitordlg ctorrentseeddlg;control;2
 msgid "Download"

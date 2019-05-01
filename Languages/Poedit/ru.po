@@ -6792,11 +6792,11 @@ msgstr "Отказываю в раздаче «%s» на %s (%s), занят и 
 msgid "Refusing upload of \"%s\" to %s (%s), all matching queues are full."
 msgstr "Отказываю в раздаче «%s» %s (%s), все соответствующие очереди переполнены."
 
-#: string;20810
+#: string;20811
 msgid "Upload host %s requested an unsatisfiable range of file \"%s\"."
 msgstr "Хост раздачи %s запросил невыполнимый отрезок файла «%s»."
 
-#: string;20811
+#: string;20861
 msgid "eDonkey uploads should not be cancelled. Are you sure you want to cancel this upload?"
 msgstr "Загрузки в сети eDonkey отменять не рекомендуется.  Уверены, что хотите отменить эту загрузку?"
 
@@ -6960,35 +6960,35 @@ msgstr "Закрываю соединение раздачи на %s из-за �
 msgid "Uploading tiger-tree data for \"%s\" to %s."
 msgstr "Посылаю данные tiger-tree для «%s» на %s."
 
-#: string;20861
+#: string;20862
 msgid "Removed upload of \"%s\" to %s."
 msgstr "Удалена загрузка «%s» на %s."
 
-#: string;20862 cfavoritesprofilepage;control;7
+#: string;20864 cfavoritesprofilepage;control;7
 msgid "Add"
 msgstr "Добавить"
 
-#: string;20864
+#: string;20865
 msgid "&Browse"
 msgstr "Просматривать"
 
-#: string;20865
+#: string;20866
 msgid "&Connect"
 msgstr "Соединиться"
 
-#: string;20866 cdownloadeditpage;control;3
+#: string;20867 cdownloadeditpage;control;3
 msgid "Filename:"
 msgstr "Файл:"
 
-#: string;20867
+#: string;20868
 msgid "Host:"
 msgstr "Хост:"
 
-#: string;20868 circsettingspage;control;39 cconnectionsettingspage;control;6
+#: string;20869 circsettingspage;control;39 cconnectionsettingspage;control;6
 msgid "Port:"
 msgstr "Порт:"
 
-#: string;20869
+#: string;20876
 msgid "Unable to display URL action dialog because Envy is busy."
 msgstr "Невозможно показать диалог действий со ссылками, так как Envy занята."
 
@@ -8633,8 +8633,8 @@ msgid "Discovery Service Type:"
 msgstr "Тип ресурса соединений:"
 
 #: cdiscoveryservicedlg;control;4
-msgid "Gnutella Bootstrap|G1-WebCache|G2-WebCache|G1+G2-WebCache|Server.met URL|Blocked"
-msgstr "Gnutella Bootstrap|GWebCache|Server.met ссылка|Блокировано"
+msgid "G2/G1 GWebCache|G2 WebCache|G1 WebCache|Gnutella Bootstrap|Server.met URL|DC++ Hublist|Blocked"
+msgstr "G2/G1 GWebCache|G2 WebCache|G1 WebCache|Gnutella Bootstrap|Server.met ссылка|Блокировано"
 
 #: dialog;cdownloadmonitordlg ctorrentseeddlg;control;2
 msgid "Download"

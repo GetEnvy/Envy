@@ -6792,11 +6792,11 @@ msgstr "Uploaden van \"%s\" naar %s is geweigerd (%s), te druk en de cliënt ond
 msgid "Refusing upload of \"%s\" to %s (%s), all matching queues are full."
 msgstr "Uploaden van \"%s\" naar %s (%s) wordt geweigerd, alle passende wachtrijen zijn vol."
 
-#: string;20810
+#: string;20811
 msgid "Upload host %s requested an unsatisfiable range of file \"%s\"."
 msgstr "Uploadgastheer %s heeft een onbeschikbaar bereik aangevraagd van bestand \"%s\"."
 
-#: string;20811
+#: string;20861
 msgid "eDonkey uploads should not be cancelled. Are you sure you want to cancel this upload?"
 msgstr "eDonkey uploads zouden niet moeten worden afgebroken. Weet je zeker dat je deze upload wilt beëindigen?"
 
@@ -6960,35 +6960,35 @@ msgstr "Uploadverbinding %s is verbroken wegens een gebrek aan verkeer."
 msgid "Uploading tiger-tree data for \"%s\" to %s."
 msgstr "Tiger-tree data voor \"%s\" wordt geüpload naar %s."
 
-#: string;20861
+#: string;20862
 msgid "Removed upload of \"%s\" to %s."
 msgstr "Upload van \"%s\" naar %s is verwijderd."
 
-#: string;20862 cfavoritesprofilepage;control;7
+#: string;20864 cfavoritesprofilepage;control;7
 msgid "Add"
 msgstr "Toevoegen"
 
-#: string;20864
+#: string;20865
 msgid "&Browse"
 msgstr "&Bekijken"
 
-#: string;20865
+#: string;20866
 msgid "&Connect"
 msgstr "&Verbinden"
 
-#: string;20866 cdownloadeditpage;control;3
+#: string;20867 cdownloadeditpage;control;3
 msgid "Filename:"
 msgstr "Bestandsnaam:"
 
-#: string;20867
+#: string;20868
 msgid "Host:"
 msgstr "Gastheer:"
 
-#: string;20868 circsettingspage;control;39 cconnectionsettingspage;control;6
+#: string;20869 circsettingspage;control;39 cconnectionsettingspage;control;6
 msgid "Port:"
 msgstr "Poort:"
 
-#: string;20869
+#: string;20876
 msgid "Unable to display URL action dialog because Envy is busy."
 msgstr "Niet mogelijk het URL actiescherm weer te geven omdat Envy het druk heeft."
 
@@ -8633,8 +8633,8 @@ msgid "Discovery Service Type:"
 msgstr "Discovery service type:"
 
 #: cdiscoveryservicedlg;control;4
-msgid "Gnutella Bootstrap|G1-WebCache|G2-WebCache|G1+G2-WebCache|Server.met URL|Blocked"
-msgstr "Gnutella Bootstrap|GWebCache|Server.met URL|Blocked"
+msgid "G2/G1 GWebCache|G2 WebCache|G1 WebCache|Gnutella Bootstrap|Server.met URL|DC++ Hublist|Blocked"
+msgstr "G2/G1 GWebCache|G2 WebCache|G1 WebCache|Gnutella Bootstrap|Server.met URL|DC++ Hublist|Blocked"
 
 #: dialog;cdownloadmonitordlg ctorrentseeddlg;control;2
 msgid "Download"

@@ -677,14 +677,14 @@ namespace
 
 
 CTigerTree::CTigerTree()
-	: m_nHeight		( 0 )
-	, m_pNode		( NULL )
+	: m_pNode		( NULL )
 	, m_nNodeCount	( 0 )
 	, m_nNodeBase	( 0 )
 	, m_nNodePos	( 0 )
-	, m_nBaseUsed	( 0 )
+	, m_nHeight		( 0 )
 	, m_nBlockCount	( 0 )
 	, m_nBlockPos	( 0 )
+	, m_nBaseUsed	( 0 )
 	, m_pStackBase	( NULL )
 	, m_pStackTop	( NULL )
 {
@@ -709,11 +709,11 @@ void CTigerTree::SetupAndAllocate(uint32 nHeight, uint64 nLength)
 
 	Clear();
 
-	uint64 nCount = (uint32)( nLength / BLOCK_SIZE );
+	uint64 nCount = nLength / BLOCK_SIZE;
 	if ( nLength % BLOCK_SIZE ) nCount++;
 
 	uint32 nActualHeight = 1;
-	for ( uint32 nStep = 1; nStep < nCount; nStep *= 2 )
+	for ( uint64 nStep = 1; nStep < nCount; nStep *= 2 )
 		nActualHeight++;
 
 	m_nHeight = min( nActualHeight, nHeight );
@@ -741,7 +741,7 @@ void CTigerTree::SetupParameters(uint64 nLength)
 	if ( nLength % BLOCK_SIZE ) nCount++;
 
 	uint32 nActualHeight = 1;
-	for ( uint32 nStep = 1; nStep < nCount; nStep *= 2 )
+	for ( uint64 nStep = 1; nStep < nCount; nStep *= 2 )
 		nActualHeight++;
 
 	m_nBlockPos = 0;
@@ -819,8 +819,8 @@ void CTigerTree::SetHeight(uint32 nHeight)
 		m_nNodeCount *= 2;
 		if ( m_nNodeCount > 0xFFFFFFFF / 2 )
 		{
-			m_nHeight		= 0;
-			m_nNodeCount	= 0;
+			m_nHeight = 0;
+			m_nNodeCount = 0;
 			return;
 		}
 	}
@@ -1030,7 +1030,8 @@ BOOL CTigerTree::ToBytes(uint8** ppOutput, uint32* pnOutput, uint32 nHeight)
 	if ( m_pNode == NULL )
 		return FALSE;
 
-	if ( nHeight < 1 || nHeight > m_nHeight ) nHeight = m_nHeight;
+	if ( nHeight < 1 || nHeight > m_nHeight )
+		nHeight = m_nHeight;
 
 	uint32 nNodeCount = ( ( (uint32)1 ) << nHeight ) - 1;
 	nNodeCount = min( nNodeCount, m_nNodeCount );

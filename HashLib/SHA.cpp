@@ -2,7 +2,7 @@
 // SHA.cpp
 //
 // This file is part of Envy (getenvy.com) © 2016-2018
-// Portions copyright PeerProject 2008-2010 and Dr Brian Gladman <brg@gladman.me.uk> 2002
+// Portions copyright Dr Brian Gladman <brg@gladman.me.uk> 2002 and PeerProject 2008-2010
 //
 // Envy is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License

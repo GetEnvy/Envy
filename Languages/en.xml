@@ -3,7 +3,7 @@
 
 <!-- Envy Default English Skin File -->
 
-<!-- Translation based on default en.xml r22 -->
+<!-- Translation based on default en.xml r24 -->
 <!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -4904,7 +4904,7 @@
 	<tag id="text_typedoc" text="Document"/>
 	<tag id="text_typerom" text="ROM"/>
 	<tag id="text_typeskin" text="Skin"/>
-	<tag id="text_typecode" text="Source Code"/>
+	<tag id="text_typecode" text="Sourcecode"/>
 	<tag id="text_typespreadsheet" text="Spreadsheet"/>
 	<tag id="text_typesubtitle" text="Subtitle"/>
 	<tag id="text_typecollection" text="Collection"/>
