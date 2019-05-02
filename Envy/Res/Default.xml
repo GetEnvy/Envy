@@ -2489,7 +2489,7 @@
 		<target window="CRemoteWnd"/>
 		<region>
 			<shape type="rectangle" rect="0,1,412,85"/>
-			<shape type="rectangle" rect="6,0,29,1" combine="or"/>
+			<shape type="rectangle" rect="6,0,30,1" combine="or"/>
 		</region>
 		<anchors>
 			<anchor name="StatusText"		rect="40,5,332,16"/>
@@ -2509,7 +2509,7 @@
 			<anchor name="_ID_MEDIA_MUTE"		rect="294,49,21,18"/>
 			<anchor name="_ID_MEDIA_RANDOM"		rect="26,50,16,15"/>
 			<anchor name="_ID_MEDIA_REPEAT"		rect="57,47,16,19"/>
-			<anchor name="_ID_MEDIA_ADD"		rect="6,1,24,24"/>
+			<anchor name="_ID_MEDIA_ADD"		rect="6,0,24,24"/>
 		</anchors>
 		<parts>
 			<part name="Background"			rect="0,0,412,85"/>
@@ -2543,8 +2543,8 @@
 			<part name="_ID_MEDIA_MUTE.Checked"	rect="390,94,21,18"/>
 			<part name="_ID_MEDIA_RANDOM.Checked"	rect="367,121,16,15"/>
 			<part name="_ID_MEDIA_REPEAT.Checked"	rect="392,118,16,19"/>
-			<part name="_ID_MEDIA_ADD.Hover"	rect="0,137,24,24"/>
-			<part name="_ID_MEDIA_ADD.Down"		rect="24,137,24,24"/>
+			<part name="_ID_MEDIA_ADD.Hover"	rect="0,136,24,24"/>
+			<part name="_ID_MEDIA_ADD.Down"		rect="24,136,24,24"/>
 		</parts>
 		<caption fontFace="Segoe UI" fontSize="13" fontWeight="Normal" color="000000" outlineColor=""/>
 	</windowskin>
@@ -2753,7 +2753,7 @@
 	<icon res="IDI_UNSTABLE" id="IDI_UNSTABLE" types="16" rtl="0"/>
 	<icon res="IDI_COMPUTER" id="IDI_COMPUTER" types="16,32,48" rtl="0"/>
 	<icon res="IDI_EXECUTABLE" id="IDI_EXECUTABLE" types="16,32,48" rtl="0"/>
-	<icon res="IDI_MULTIFILE" id="IDI_MULTIFILE" types="16,32,48" rtl="0"/>
+	<icon res="IDI_TORRENT" id="IDI_TORRENT" types="16,32,48" rtl="0"/>
 	<icon res="IDI_BROWSE" id="IDI_BROWSE" types="16,32,48" rtl="0"/>
 	<icon res="IDI_FOLDER_CLOSED" id="IDI_FOLDER_CLOSED" types="16,32,48" rtl="0"/>
 	<icon res="IDI_FOLDER_OPEN" id="IDI_FOLDER_OPEN" types="16,32,48" rtl="0"/>

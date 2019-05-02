@@ -51,7 +51,7 @@ BEGIN
 			VALUE "FileDescription", "Envy Package Installer"
 			VALUE "Comments", "Envy Package Installer"
 			VALUE "CompanyName", "GetEnvy.com"
-			VALUE "LegalCopyright", "© Envy Development Team 2016-2017"
+			VALUE "LegalCopyright", "© Envy Development Team 2016-2018"
 		END
 	END
 	BLOCK "VarFileInfo"

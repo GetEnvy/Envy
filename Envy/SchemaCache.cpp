@@ -79,8 +79,10 @@ int CSchemaCache::Load()
 		CSchema* pSchema = new CSchema();
 		if ( pSchema && pSchema->Load( strPath ) )
 		{
-			m_pURIs.SetAt( ToLower( pSchema->GetURI() ), pSchema );
 			m_pNames.SetAt( ToLower( pSchema->m_sSingular ), pSchema );
+			m_pURIs.SetAt( ToLower( pSchema->GetURI() ), pSchema );
+			if ( ! pSchema->m_sURIMapping.IsEmpty() )
+				m_pURIs.SetAt( ToLower( pSchema->m_sURIMapping ), pSchema );
 
 			for ( POSITION pos = pSchema->GetFilterIterator(); pos; )
 			{

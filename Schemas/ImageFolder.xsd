@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema targetNamespace="http://schemas.getenvy.com/ImageFolder.xsd" xmlns="http://www.w3.org/2001/XMLSchema">
 
+	<mapping>
+		<map namespace="http://www.shareaza.com/schemas/imageAll.xsd"/>
+	</mapping>
 	<element name="imageFolders">
 		<complexType>
 			<element name="imageFolder" type="foldertype" minOccurs="1" maxOccurs="unbounded"/>

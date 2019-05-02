@@ -60,7 +60,6 @@
 #define IDI_HASH                        183
 #define IDI_LOCKED                      184
 #define IDI_NOTASK                      185
-#define IDI_MULTIFILE                   186
 #define IDI_PARTIAL                     188
 #define IDI_PREVIEW                     189
 #define IDI_PROPERTIES                  190
@@ -90,6 +89,7 @@
 #define IDI_USER_ME                     218
 #define IDI_SECURITY_ACCEPT             219
 #define IDI_SECURITY_DENY               220
+#define IDI_TORRENT                     222
 #define IDC_HAND                        280
 #define IDR_COPY                        281
 #define IDR_MOVE                        282

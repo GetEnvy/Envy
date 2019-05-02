@@ -189,7 +189,7 @@ BOOL CDownloadMonitorDlg::OnInitDialog()
 
 	m_wndFile.SetWindowText( m_sName );
 	if ( m_pDownload->IsTorrent() && ( m_pDownload->IsMultiFileTorrent() || ! IsValidExtension( m_sName ) ) )
-		m_wndIcon.SetIcon( CoolInterface.ExtractIcon( IDI_MULTIFILE, FALSE, LVSIL_NORMAL ) );
+		m_wndIcon.SetIcon( CoolInterface.ExtractIcon( IDI_TORRENT, FALSE, LVSIL_NORMAL ) );
 	else
 		m_wndIcon.SetIcon( ShellIcons.ExtractIcon( ShellIcons.Get( m_sName, 32 ), 32 ) );
 

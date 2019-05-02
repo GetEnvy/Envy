@@ -1287,7 +1287,7 @@ void CDownloadsCtrl::PaintDownload(CDC& dc, const CRect& rcRow, const CDownloadD
 
 			// Draw file icon
 			if ( pDownloadData->m_bMultiFileTorrent )	// Special case
-				CoolInterface.Draw( &dc, IDI_MULTIFILE, 16, rcCell.left, rcCell.top, crLeftMargin, bSelected );
+				CoolInterface.Draw( &dc, IDI_TORRENT, 16, rcCell.left, rcCell.top, crLeftMargin, bSelected );
 			else
 				ShellIcons.Draw( &dc, ShellIcons.Get( pDownloadData->m_sName, 16 ), 16, rcCell.left, rcCell.top, crLeftMargin, bSelected );
 

@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema targetNamespace="http://schemas.getenvy.com/VideoFolder.xsd" xmlns="http://www.w3.org/2001/XMLSchema">
 
+	<mapping>
+		<map namespace="http://www.shareaza.com/schemas/videoAll.xsd"/>
+	</mapping>
 	<element name="videoFolders">
-			<complexType>
-		<element name="videoFolder" type="foldertype" minOccurs="1" maxOccurs="unbounded"/>
+		<complexType>
+			<element name="videoFolder" type="foldertype" minOccurs="1" maxOccurs="unbounded"/>
 		</complexType>
 	</element>
 	<complexType name="foldertype">

@@ -38,7 +38,7 @@ protected:
 	int					m_nGroupCookie;
 
 public:
-	void				GetFolders(CList< CString >& oFolders) const;		// CStringIList
+//	void				GetFolders(CList< CString >& oFolders) const;		// CStringIList
 	CDownloadGroup*		GetSuperGroup();
 	CDownloadGroup*		Add(LPCTSTR pszName = NULL, BOOL bTemporary = FALSE, BOOL bUseExisting = FALSE);
 	void				Remove(CDownloadGroup* pGroup);

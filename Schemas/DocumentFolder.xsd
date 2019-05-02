@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema targetNamespace="http://schemas.getenvy.com/DocumentFolder.xsd" xmlns="http://www.w3.org/2001/XMLSchema">
 
+	<mapping>
+		<map namespace="http://www.shareaza.com/schemas/documentAll.xsd"/>
+	</mapping>
 	<element name="documentFolders">
 		<complexType>
 			<element name="documentFolder" type="foldertype" minOccurs="1" maxOccurs="unbounded"/>

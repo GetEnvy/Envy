@@ -7,5 +7,6 @@ Install the latest Visual Studio Community at no cost:
  - Check "MFC and ATL support" and "Windows 8.1 SDK" options
 
 Other editions of Visual Studio (2008 SP1 or newer) may also be supported:
- - 2017, 2015, 2013, 2012, 2010, 2008-sp1
+ - 2019, 2017, 2015, 2013, 2012, 2010, 2008-sp1
  - Run the appropriate SetVS201X.bat file first to update project files for your version, if not current.
+ - Move files from Legacy folder if required.

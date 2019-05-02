@@ -89,7 +89,6 @@
 	<resource code="183" id="IDI_HASH"/>
 	<resource code="184" id="IDI_LOCKED"/>
 	<resource code="185" id="IDI_NOTASK"/>
-	<resource code="186" id="IDI_MULTIFILE"/>
 	<resource code="188" id="IDI_PARTIAL"/>
 	<resource code="189" id="IDI_PREVIEW"/>
 	<resource code="190" id="IDI_PROPERTIES"/>
@@ -119,6 +118,7 @@
 	<resource code="218" id="IDI_USER_ME"/>
 	<resource code="219" id="IDI_SECURITY_ACCEPT"/>
 	<resource code="220" id="IDI_SECURITY_DENY"/>
+	<resource code="222" id="IDI_TORRENT"/>
 	<!-- Bitmaps -->
 	<resource code="300" id="IDB_MENUBAR"/>
 	<resource code="306" id="IDB_PROTOCOLS"/>

@@ -1174,5 +1174,20 @@ void CBrowseTreeItem::AddXML(const CXMLElement* pXML)
 	}
 
 	if ( m_sText.IsEmpty() )
-		m_sText = L"Unnamed";
+	{
+		// Fallback
+		int nLength = strURI.GetLength() - 4;
+		if ( nLength > 1 && EndsWith( strURI, L".xsd", 4 ) )
+		{
+			int nStart = strURI.ReverseFind( L'/' ) + 1;
+			if ( nStart > 0 )
+				m_sText = strURI.Mid( nStart, nLength - nStart );
+			else
+				m_sText = strURI.Left( nLength );
+		}
+		else
+		{
+			m_sText = L"--";
+		}
+	}
 }

@@ -773,7 +773,8 @@ BOOL EndsWith(const CString& strInput, LPCTSTR pszText, int nLen /*0*/)
 	if ( strInput.GetLength() < nLen )
 		return FALSE;
 
-	LPCTSTR pszTest = strInput.Right( nLen );
+	CString strTrim = strInput.Right( nLen );	// Not inline below
+	LPCTSTR pszTest = (LPCTSTR)strTrim;
 
 	// Fast case-insensitive first char
 	//if ( *pszTest != *pszText && //( *pszText < L'A' ||		// Note extra check causes runtime errors

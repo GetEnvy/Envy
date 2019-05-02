@@ -132,8 +132,7 @@ CString CSchema::GetFirstMemberName() const
 		return pMember->m_sName;
 	}
 
-	CString str( L"title" );
-	return str;
+	return CString( L"title" );
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -246,22 +245,33 @@ BOOL CSchema::LoadSchema(LPCTSTR pszFile)
 	{
 		for ( POSITION pos = pMapping->GetElementIterator(); pos; )
 		{
-			CXMLElement* pNetwork = pMapping->GetNextElement( pos );
-			if ( pNetwork )
+			if ( CXMLElement* pMap = pMapping->GetNextElement( pos ) )
 			{
-				BOOL bFound = pNetwork->IsNamed( L"network" );
+				CString strName = pMap->GetAttributeValue( L"name" );
 
-				CString strName = pNetwork->GetAttributeValue( L"name" );
-				if ( ! bFound || strName != L"ed2k" )
-					continue;
-
-				m_sDonkeyType = pNetwork->GetAttributeValue( L"value" );
-				break;
+				if ( pMap->IsNamed( L"map" ) || pMap->IsNamed( L"mapped" ) )
+				{
+					CString strNamespace = pMap->GetAttributeValue( L"namespace" );
+					if ( ! strNamespace.IsEmpty() )
+						m_sURIMapping = strNamespace;
+					CString strNetwork = pMap->GetAttributeValue( L"network" );
+					if ( strNetwork == L"ed2k" )
+						m_sDonkeyType = pMap->GetAttributeValue( L"type" );
+				}
+				else if ( pMap->IsNamed( L"network" ) )
+				{
+					if ( strName == L"ed2k" )
+						m_sDonkeyType = pMap->GetAttributeValue( L"value" );
+				}
+				else if ( pMap->IsNamed( L"namespace" ) )
+				{
+					m_sURIMapping = strName;
+				}
 			}
 		}
 	}
 
-	// ToDo: External documents
+	// ToDo: External documents?
 	//CString strImported;
 	//if ( CXMLElement* pImported = pRoot->GetElementByName( L"import" ) )
 	//	strImported = pImported->GetAttributeValue( L"schemaLocation" );

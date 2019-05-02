@@ -50,6 +50,7 @@ public:
 	CString			m_sTitle;
 	CString			m_sPlural;
 	CString			m_sSingular;
+	CString			m_sURIMapping;
 	CString			m_sDonkeyType;
 	int				m_nAvailability;
 	BOOL			m_bPrivate;

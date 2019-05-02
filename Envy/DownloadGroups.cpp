@@ -51,18 +51,19 @@ CDownloadGroups::~CDownloadGroups()
 	Clear();
 }
 
-void CDownloadGroups::GetFolders(CList< CString >& oFolders) const		// CStringIList
-{
-	CQuickLock pLock( m_pSection );
-
-	for ( POSITION pos = GetIterator(); pos; )
-	{
-		const CDownloadGroup* pGroup = GetNext( pos );
-
-		if ( ! pGroup->m_sFolder.IsEmpty() && oFolders.Find( pGroup->m_sFolder ) == NULL )
-			oFolders.AddTail( pGroup->m_sFolder );
-	}
-}
+// ToDo:
+//void CDownloadGroups::GetFolders(CList< CString >& oFolders) const		// CStringIList
+//{
+//	CQuickLock pLock( m_pSection );
+//
+//	for ( POSITION pos = GetIterator(); pos; )
+//	{
+//		const CDownloadGroup* pGroup = GetNext( pos );
+//
+//		if ( ! pGroup->m_sFolder.IsEmpty() && oFolders.Find( pGroup->m_sFolder ) == NULL )
+//			oFolders.AddTail( pGroup->m_sFolder );
+//	}
+//}
 
 //////////////////////////////////////////////////////////////////////
 // CDownloadGroups supergroup

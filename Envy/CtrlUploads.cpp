@@ -1173,7 +1173,7 @@ void CUploadsCtrl::PaintFile(CDC& dc, const CRect& rcRow, const CUploadDisplayDa
 					strExt = PathFindExtension( pUploadData->m_sName );
 
 				if ( pUploadData->m_bTorrent && ( strExt.IsEmpty() || ! IsValidExtension( strExt ) ) )
-					CoolInterface.Draw( &dc, IDI_MULTIFILE, 16, rcCell.left, rcCell.top, crLeftMargin, bSelected );
+					CoolInterface.Draw( &dc, IDI_TORRENT, 16, rcCell.left, rcCell.top, crLeftMargin, bSelected );
 				else
 					ShellIcons.Draw( &dc, ShellIcons.Get( strExt, 16 ), 16, rcCell.left, rcCell.top, crLeftMargin, bSelected );
 			}

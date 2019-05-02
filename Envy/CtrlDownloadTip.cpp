@@ -724,7 +724,7 @@ void CDownloadTipCtrl::PrepareFileInfo(CDownload* pDownload)	// CEnvyFile
 			m_sType.Format( L"BitTorrent  ( %u files )", pDownload->m_pTorrent.GetCount() );
 		else
 			m_sType.Format( L"BitTorrent  ( %u %s )", pDownload->m_pTorrent.GetCount(), LoadString( IDS_FILES ) );
-		m_nIcon = ShellIcons.Get( L".torrent", 32 );							// ToDo: IDI_MULTIFILE ?
+		m_nIcon = ShellIcons.Get( L".torrent", 32 );							// ToDo: IDI_TORRENT ?
 		return;
 	}
 

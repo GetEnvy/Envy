@@ -1475,9 +1475,9 @@ void CEnvyURL::Register(BOOL bRegister, BOOL bOnStartup)
 		if ( bRegister && Settings.Web.Torrent )
 		{
 			RegisterShellType( NULL, L"BitTorrent", L"Torrent File", L".torrent",
-				L"Envy", L"ENVYFORMAT", IDR_MAINFRAME );
+				L"Envy", L"ENVYFORMAT", IDI_TORRENT );
 			RegisterShellType( L"Applications\\Envy.exe", NULL, L"Torrent File", L".torrent",
-				L"Envy", L"ENVYFORMAT", IDR_MAINFRAME );
+				L"Envy", L"ENVYFORMAT", IDI_TORRENT );
 		}
 		else
 		{
