@@ -18,7 +18,7 @@
 
 // CHandshake figures out what the remote computer wants from the first 7 bytes it sends us
 // http://shareaza.sourceforge.net/mediawiki/index.php/Developers.Code.CHandshake
-// http://getenvy.com/archives/shareazawiki/Developers.Code.CHandshake.html
+// http://getenvy.com/archives/envywiki/Developers.Code.CHandshake.html
 
 #include "StdAfx.h"
 #include "Settings.h"

@@ -3,7 +3,7 @@
 
 <!-- Envy Default Brazilian Portuguese Skin File -->
 
-<!-- Translation based on default en.xml r22 -->
+<!-- Translation based on default en.xml r26 -->
 <!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -1417,8 +1417,8 @@
 			<item id="ID_MEDIA_FULLSCREEN" text="_Tela Cheia"/>
 		</menu>
 		<menu text="Confi_gurações">
-			<item id="ID_MEDIA_VIS" text="Escolher _Visualização..."/>
-			<separator/>
+			<!--item id="ID_MEDIA_VIS" text="Escolher _Visualização..."-->
+			<!--separator-->
 			<item id="ID_MEDIA_PLAYLIST" text="Mostrar _lista de execuções"/>
 			<item id="ID_MEDIA_STATUS" text="Mostrar _Linha de Status"/>
 			<separator/>
@@ -1455,8 +1455,8 @@
 			<item id="ID_MEDIA_FULLSCREEN" text="Tela Cheia"/>
 		</menu>
 		<menu text="Configurações">
-			<item id="ID_MEDIA_VIS" text="Escolher Visualização..."/>
-			<separator/>
+			<!--item id="ID_MEDIA_VIS" text="Escolher Visualização..."-->
+			<!--separator-->
 			<item id="ID_MEDIA_PLAYLIST" text="Mostrar_lista de execuções"/>
 			<item id="ID_MEDIA_STATUS" text="Mostrar Linha de Status"/>
 			<separator/>

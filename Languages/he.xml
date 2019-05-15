@@ -3,7 +3,7 @@
 
 <!-- Envy Default Hebrew Skin File -->
 
-<!-- Translation based on default en.xml r22 -->
+<!-- Translation based on default en.xml r26 -->
 <!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -1436,8 +1436,8 @@ gap i newline
 			<item id="ID_MEDIA_FULLSCREEN" text="‪מסך מלא"/>
 		</menu>
 		<menu text="‪הגדרות">
-			<item id="ID_MEDIA_VIS" text="‪בחר אפקט ויזואלי"/>
-			<separator/>
+			<!--item id="ID_MEDIA_VIS" text="‪בחר אפקט ויזואלי"-->
+			<!--separator-->
 			<item id="ID_MEDIA_PLAYLIST" text="‪הצג רשימת השמעה"/>
 			<item id="ID_MEDIA_STATUS" text="‪הראה שורת סטטוס"/>
 			<separator/>
@@ -1474,8 +1474,8 @@ gap i newline
 			<item id="ID_MEDIA_FULLSCREEN" text="‪מסך מלא"/>
 		</menu>
 		<menu text="‪הגדרות">
-			<item id="ID_MEDIA_VIS" text="‪בחר אפקט ויזואלי"/>
-			<separator/>
+			<!--item id="ID_MEDIA_VIS" text="‪בחר אפקט ויזואלי"-->
+			<!--separator-->
 			<item id="ID_MEDIA_PLAYLIST" text="‪הצג רשימת השמעה"/>
 			<item id="ID_MEDIA_STATUS" text="‪הראה שורת סטטוס"/>
 			<separator/>

@@ -3,7 +3,7 @@
 
 <!-- Envy Default Slovenian Skin File -->
 
-<!-- Translation based on default en.xml r22 --> <!-- (Shareaza 2.2.2.12) -->
+<!-- Translation based on default en.xml r26 --> <!-- (Shareaza 2.2.2.12) -->
 <!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -1309,8 +1309,8 @@
 			<item id="ID_MEDIA_FULLSCREEN" text="Celozaslonski način"/>
 		</menu>
 		<menu text="Nastavitve">
-			<item id="ID_MEDIA_VIS" text="Izberi vizualizacijo..."/>
-			<separator/>
+			<!--item id="ID_MEDIA_VIS" text="Izberi vizualizacijo..."-->
+			<!--separator-->
 			<item id="ID_MEDIA_PLAYLIST" text="Pokaži predvajalni seznam"/>
 			<item id="ID_MEDIA_STATUS" text="Pokaži statusno vrstico"/>
 			<separator/>
@@ -1347,8 +1347,8 @@
 			<item id="ID_MEDIA_FULLSCREEN" text="Celozaslonski način"/>
 		</menu>
 		<menu text="Nastavitve">
-			<item id="ID_MEDIA_VIS" text="Izberi vizualizacijo..."/>
-			<separator/>
+			<!--item id="ID_MEDIA_VIS" text="Izberi vizualizacijo..."-->
+			<!--separator-->
 			<item id="ID_MEDIA_PLAYLIST" text="Pokaži predvajalni seznam"/>
 			<item id="ID_MEDIA_STATUS" text="Pokaži statusno vrstico"/>
 			<separator/>

@@ -1896,6 +1896,7 @@ void CEnvyApp::ShowStartupText()
 
 	CString strCPU;
 	strCPU.Format( L"%u x CPU.  Features:", System.dwNumberOfProcessors );
+	// Hashlib Utility:
 	if ( Machine::SupportsMMX() )
 		strCPU += L" MMX";
 	if ( Machine::SupportsSSE() )

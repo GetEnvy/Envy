@@ -3,7 +3,7 @@
 
 <!-- Envy Default Croatian Skin File -->
 
-<!-- Translation based on default en.xml r22 --> <!-- (Shareaza 2.2.0.2) -->
+<!-- Translation based on default en.xml r26 --> <!-- (Shareaza 2.2.0.2) -->
 <!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -1308,8 +1308,8 @@
 			<item id="ID_MEDIA_FULLSCREEN" text="Cijeli Ekran"/>
 		</menu>
 		<menu text="Postavke">
-			<item id="ID_MEDIA_VIS" text="Odaberi _Vizualizaciju..."/>
-			<separator/>
+			<!--item id="ID_MEDIA_VIS" text="Odaberi _Vizualizaciju..."-->
+			<!--separator-->
 			<item id="ID_MEDIA_PLAYLIST" text="Pokaži _Playlistu"/>
 			<item id="ID_MEDIA_STATUS" text="Pokaži _Statusnu Liniju"/>
 			<separator/>
@@ -1346,8 +1346,8 @@
 			<item id="ID_MEDIA_FULLSCREEN" text="Cijeli Ekran"/>
 		</menu>
 		<menu text="Postavke">
-			<item id="ID_MEDIA_VIS" text="Odaberi _Vizualizaciju..."/>
-			<separator/>
+			<!--item id="ID_MEDIA_VIS" text="Odaberi _Vizualizaciju..."-->
+			<!--separator-->
 			<item id="ID_MEDIA_PLAYLIST" text="Pokaži _Playlistu"/>
 			<item id="ID_MEDIA_STATUS" text="Pokaži _Statusnu Liniju"/>
 			<separator/>

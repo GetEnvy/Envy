@@ -3,7 +3,7 @@
 
 <!-- Envy Default Czech Skin File -->
 
-<!-- Translation based on default en.xml r22 --> <!-- (Shareaza 2.2.5.7) -->
+<!-- Translation based on default en.xml r26 --> <!-- (Shareaza 2.2.5.7) -->
 <!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -1343,8 +1343,8 @@
 			<item id="ID_MEDIA_FULLSCREEN" text="_Celá obrazovka"/>
 		</menu>
 		<menu text="Nastavení">
-			<item id="ID_MEDIA_VIS" text="Zvolte _vzhled..."/>
-			<separator/>
+			<!--item id="ID_MEDIA_VIS" text="Zvolte _vzhled..."-->
+			<!--separator-->
 			<item id="ID_MEDIA_PLAYLIST" text="Ukázat _Playlist"/>
 			<item id="ID_MEDIA_STATUS" text="Zobrazit _stavový řádek"/>
 			<separator/>
@@ -1381,8 +1381,8 @@
 			<item id="ID_MEDIA_FULLSCREEN" text="_Celá obrazovka"/>
 		</menu>
 		<menu text="Nastavení">
-			<item id="ID_MEDIA_VIS" text="Zvolte _vzhled..."/>
-			<separator/>
+			<!--item id="ID_MEDIA_VIS" text="Zvolte _vzhled..."-->
+			<!--separator-->
 			<item id="ID_MEDIA_PLAYLIST" text="Ukázat _Playlist"/>
 			<item id="ID_MEDIA_STATUS" text="Zobrazit _stavový řádek"/>
 			<separator/>

@@ -3,7 +3,7 @@
 
 <!-- Envy Default Hungarian Skin File -->
 
-<!-- Translation based on default en.xml r22 -->
+<!-- Translation based on default en.xml r26 -->
 <!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -1367,8 +1367,8 @@
 			<item id="ID_MEDIA_FULLSCREEN" text="_Teljes képernyő"/>
 		</menu>
 		<menu text="_Beállítások">
-			<item id="ID_MEDIA_VIS" text="_Képi megjelenítések..."/>
-			<separator/>
+			<!--item id="ID_MEDIA_VIS" text="_Képi megjelenítések..."-->
+			<!--separator-->
 			<item id="ID_MEDIA_PLAYLIST" text="_Lejátszólista megjelenítése"/>
 			<item id="ID_MEDIA_STATUS" text="Áll_apotsor megjelenítése"/>
 			<separator/>
@@ -1405,8 +1405,8 @@
 			<item id="ID_MEDIA_FULLSCREEN" text="_Teljes képernyő"/>
 		</menu>
 		<menu text="_Beállítások">
-			<item id="ID_MEDIA_VIS" text="_Képi megjelenítések..."/>
-			<separator/>
+			<!--item id="ID_MEDIA_VIS" text="_Képi megjelenítések..."-->
+			<!--separator-->
 			<item id="ID_MEDIA_PLAYLIST" text="_Lejátszólista megjelenítése"/>
 			<item id="ID_MEDIA_STATUS" text="Álla_potsor megjelenítése"/>
 			<separator/>

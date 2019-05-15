@@ -18,7 +18,7 @@
 
 // Adds 2 methods helpful for Gnutella2 that look at the list of neighbours
 // http://shareaza.sourceforge.net/mediawiki/index.php/Developers.Code.CNeighboursWithG2
-// http://getenvy.com/archives/shareazawiki/Developers.Code.CNeighboursWithG2.html
+// http://getenvy.com/archives/envywiki/Developers.Code.CNeighboursWithG2.html
 
 #include "StdAfx.h"
 #include "Settings.h"

@@ -380,7 +380,7 @@ BOOL CBTClient::OnHandshake1()
 		return FALSE;
 	}
 
-	Remove( BT_PROTOCOL_HEADER_LEN );	// Todo: RemoveFromInput()
+	RemoveFromInput( BT_PROTOCOL_HEADER_LEN );
 
 	QWORD nFlags = 0;
 	Read( &nFlags, 8 );

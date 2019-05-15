@@ -18,7 +18,7 @@
 
 // CHandshakes listens for remote computers that want to connect to us
 // http://shareaza.sourceforge.net/mediawiki/index.php/Developers.Code.CHandshakes
-// http://getenvy.com/archives/shareazawiki/Developers.Code.CHandshakes.html
+// http://getenvy.com/archives/envywiki/Developers.Code.CHandshakes.html
 
 #include "StdAfx.h"
 #include "Settings.h"

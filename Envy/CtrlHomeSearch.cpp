@@ -119,6 +119,10 @@ void CHomeSearchCtrl::OnSkinChange(COLORREF crWindow, COLORREF crText)
 	m_crWindow = crWindow;
 	m_crText = crText;
 
+	// ToDo: Search Bar
+	//m_wndText.
+	//m_wndSchema.
+
 	// "Search"
 	m_wndSearch.SetWindowText( LoadString( IDS_SEARCH_PANEL_START ) );
 	m_wndSearch.SetCoolIcon( ID_SEARCH_SEARCH );

@@ -3,7 +3,7 @@
 
 <!-- Envy Default Norwegian Skin File -->
 
-<!-- Translation based on default en.xml r22 --> <!-- (Shareaza 2.2.0.2) -->
+<!-- Translation based on default en.xml r26 --> <!-- (Shareaza 2.2.0.2) -->
 <!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -1218,8 +1218,8 @@
 			<item id="ID_MEDIA_FULLSCREEN" text="Full skjerm"/>
 		</menu>
 		<menu text="Innstillinger">
-			<item id="ID_MEDIA_VIS" text="Velg effekter..."/>
-			<separator/>
+			<!--item id="ID_MEDIA_VIS" text="Velg effekter..."-->
+			<!--separator-->
 			<item id="ID_MEDIA_PLAYLIST" text="Vis spilleliste"/>
 			<item id="ID_MEDIA_STATUS" text="Vis statuslinje"/>
 			<separator/>
@@ -1256,8 +1256,8 @@
 			<item id="ID_MEDIA_FULLSCREEN" text="Full skjerm"/>
 		</menu>
 		<menu text="Innstillinger">
-			<item id="ID_MEDIA_VIS" text="Velg effekter..."/>
-			<separator/>
+			<!--item id="ID_MEDIA_VIS" text="Velg effekter..."-->
+			<!--separator-->
 			<item id="ID_MEDIA_PLAYLIST" text="Vis spilleliste"/>
 			<item id="ID_MEDIA_STATUS" text="Vis statuslinje"/>
 			<separator/>

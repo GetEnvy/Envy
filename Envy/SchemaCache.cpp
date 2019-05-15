@@ -40,6 +40,7 @@ CSchemaCache::CSchemaCache()
 {
 	// Experimental values
 	m_pURIs.InitHashTable( 61 );
+	m_pAltURIs.InitHashTable( 61 );
 	m_pNames.InitHashTable( 61 );
 	m_pTypeFilters.InitHashTable( 1021 );
 }
@@ -82,7 +83,7 @@ int CSchemaCache::Load()
 			m_pNames.SetAt( ToLower( pSchema->m_sSingular ), pSchema );
 			m_pURIs.SetAt( ToLower( pSchema->GetURI() ), pSchema );
 			if ( ! pSchema->m_sURIMapping.IsEmpty() )
-				m_pURIs.SetAt( ToLower( pSchema->m_sURIMapping ), pSchema );
+				m_pAltURIs.SetAt( ToLower( pSchema->m_sURIMapping ), pSchema );
 
 			for ( POSITION pos = pSchema->GetFilterIterator(); pos; )
 			{
@@ -131,6 +132,7 @@ void CSchemaCache::Clear()
 	}
 
 	m_pURIs.RemoveAll();
+	m_pAltURIs.RemoveAll();
 	m_pNames.RemoveAll();
 	m_pTypeFilters.RemoveAll();
 }

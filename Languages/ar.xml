@@ -3,7 +3,7 @@
 
 <!-- Envy Arabic Language Skin File -->
 
-<!-- Translation based on default en.xml r22 -->
+<!-- Translation based on default en.xml r26 -->
 <!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -1369,8 +1369,8 @@
 			<item id="ID_MEDIA_FULLSCREEN" text="شاشة كاملة" />
 		</menu>
 		<menu text="إعدادات">
-			<item id="ID_MEDIA_VIS" text="تحديد المرئيات..." />
-			<separator />
+			<!--item id="ID_MEDIA_VIS" text="تحديد المرئيات..." -->
+			<!--separator-->
 			<item id="ID_MEDIA_PLAYLIST" text="إظهار قائمة التشغيل" />
 			<item id="ID_MEDIA_STATUS" text="عرض شريط_ الحالة" />
 			<separator />
@@ -1407,8 +1407,8 @@
 			<item id="ID_MEDIA_FULLSCREEN" text="شاشة كاملة" />
 		</menu>
 		<menu text="إعدادات">
-			<item id="ID_MEDIA_VIS" text="تحديد المرئيات..." />
-			<separator />
+			<!--item id="ID_MEDIA_VIS" text="تحديد المرئيات..." -->
+			<!--separator-->
 			<item id="ID_MEDIA_PLAYLIST" text="إظهار قائمة التشغيل" />
 			<item id="ID_MEDIA_STATUS" text="عرض شريط الحالة" />
 			<separator />

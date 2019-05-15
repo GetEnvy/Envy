@@ -3,7 +3,7 @@
 
 <!-- Envy Default Catalan Skin File -->
 
-<!-- Translation based on default en.xml r22 -->
+<!-- Translation based on default en.xml r26 -->
 <!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -1363,8 +1363,8 @@
 			<item id="ID_MEDIA_FULLSCREEN" text="_Pantalla completa"/>
 		</menu>
 		<menu text="Settings">
-			<item id="ID_MEDIA_VIS" text="Tria _visualització..."/>
-			<separator/>
+			<!--item id="ID_MEDIA_VIS" text="Tria _visualització..."-->
+			<!--separator-->
 			<item id="ID_MEDIA_PLAYLIST" text="Mostra la _llista de reproducció"/>
 			<item id="ID_MEDIA_STATUS" text="Mostra la línia d'_estat"/>
 			<separator/>
@@ -1401,8 +1401,8 @@
 			<item id="ID_MEDIA_FULLSCREEN" text="_Pantalla completa"/>
 		</menu>
 		<menu text="Settings">
-			<item id="ID_MEDIA_VIS" text="Tria _visualització..."/>
-			<separator/>
+			<!--item id="ID_MEDIA_VIS" text="Tria _visualització..."-->
+			<!--separator-->
 			<item id="ID_MEDIA_PLAYLIST" text="Mostra la _llista de reproducció"/>
 			<item id="ID_MEDIA_STATUS" text="Mostra la barra d'_estat"/>
 			<separator/>

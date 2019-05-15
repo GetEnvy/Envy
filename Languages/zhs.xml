@@ -3,7 +3,7 @@
 
 <!-- Envy Default Chinese (Simplified) Skin File -->
 
-<!-- Translation based on default en.xml r22 --> <!-- (Shareaza r6092) -->
+<!-- Translation based on default en.xml r26 --> <!-- (Shareaza r6092) -->
 <!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -1368,8 +1368,8 @@
 			<item id="ID_MEDIA_FULLSCREEN" text="全屏"/>
 		</menu>
 		<menu text="设置">
-			<item id="ID_MEDIA_VIS" text="选择可视化效果..."/>
-			<separator/>
+			<!--item id="ID_MEDIA_VIS" text="选择可视化效果..."-->
+			<!--separator-->
 			<item id="ID_MEDIA_PLAYLIST" text="显示播放列表"/>
 			<item id="ID_MEDIA_STATUS" text="显示状态条"/>
 			<separator/>
@@ -1406,8 +1406,8 @@
 			<item id="ID_MEDIA_FULLSCREEN" text="全屏"/>
 		</menu>
 		<menu text="设置">
-			<item id="ID_MEDIA_VIS" text="选择可视化效果..."/>
-			<separator/>
+			<!--item id="ID_MEDIA_VIS" text="选择可视化效果..."-->
+			<!--separator-->
 			<item id="ID_MEDIA_PLAYLIST" text="显示播放列表"/>
 			<item id="ID_MEDIA_STATUS" text="显示状态条..."/>
 			<separator/>

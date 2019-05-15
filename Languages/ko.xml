@@ -3,7 +3,7 @@
 
 <!-- Envy Korean Language Skin File -->
 
-<!-- Translation based on default en.xml r22 --> <!--Machine Translated!-->
+<!-- Translation based on default en.xml r26 --> <!--Machine Translated!-->
 <!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -533,11 +533,11 @@
 				<item id="ID_NETWORK_CONNECT" text="연결" shortcut="Ctrl+G"/>
 				<item id="ID_NETWORK_DISCONNECT" text="끊습니다"/>
 				<separator/>
-				<item id="ID_NETWORK_G2" text="연결 to Gnutella_2"/>
-				<item id="ID_NETWORK_G1" text="연결 to _Gnutella"/>
-				<item id="ID_NETWORK_ED2K" text="연결 to _eDonkey"/>
-				<item id="ID_NETWORK_DC" text="연결 to _DC++"/>
-				<item id="ID_NETWORK_BT" text="연결 to _BitTorrent"/>
+				<item id="ID_NETWORK_G2" text="연결 to Gnutella2"/>
+				<item id="ID_NETWORK_G1" text="연결 to Gnutella"/>
+				<item id="ID_NETWORK_ED2K" text="연결 to eDonkey"/>
+				<item id="ID_NETWORK_DC" text="연결 to DC++"/>
+				<item id="ID_NETWORK_BT" text="연결 to BitTorrent"/>
 				<separator/>
 				<item id="ID_NETWORK_CONNECT_TO" text="에 연결하려면..." shortcut="Ctrl+T"/>
 				<item id="ID_NETWORK_BROWSE_TO" text="찾아보기 호스트 ..."/>
@@ -560,7 +560,7 @@
 				<item id="ID_TOOLS_PROFILE" text="내 프로필 수정..."/>
 				<item id="ID_TOOLS_WIZARD" text="빠른 마법..."/>
 				<separator/>
-				<item id="ID_TOOLS_SETTINGS" text="_Envy 설정..."/>
+				<item id="ID_TOOLS_SETTINGS" text="Envy 설정..."/>
 			</menu>
 			<menu text="보기">
 				<item id="ID_TAB_HOME" text="홈 Tab" shortcut="Alt-Home"/>
@@ -583,7 +583,7 @@
 				<item id="ID_TAB_SEARCH" text="검색" shortcut="Ctrl-S"/>
 			</menu>
 			<menu text="창">
-				<item id="ID_VIEW_BASIC" text="_기본 모드"/>
+				<item id="ID_VIEW_BASIC" text="기본 모드"/>
 				<item id="ID_VIEW_TABBED" text="탭 모드"/>
 				<item id="ID_VIEW_WINDOWED" text="창 모드"/>
 				<separator/>
@@ -605,7 +605,7 @@
 					<item id="ID_HELP_CODEC" text="코덱 도움말"/>
 				</menu>
 				<separator/>
-				<menu text="_Websites">
+				<menu text="Websites">
 					<separator/>
 					<item id="ID_HELP_FORUMS" text="Envy 포럼"/>
 					<item id="ID_HELP_VERSION_CHECK" text="새 버전에 대한 확인"/>
@@ -613,7 +613,7 @@
 					<item id="ID_HELP_DONATE" text="기부 Envy 로"/>
 					<!--item id="ID_HELP_UPDATE" text="최신 뉴스"-->
 				</menu>
-				<item id="ID_HELP_HOMEPAGE" text="_Envy 사이트 항목"/>
+				<item id="ID_HELP_HOMEPAGE" text="Envy 사이트 항목"/>
 				<separator/>
 				<item id="ID_HELP_ABOUT" text="항목 ID를 Envy..."/>
 			</menu>
@@ -625,11 +625,11 @@
 			<item id="ID_NETWORK_CONNECT" text="연결" shortcut="Ctrl+G"/>
 			<item id="ID_NETWORK_DISCONNECT" text="끊습니다"/>
 			<separator/>
-			<item id="ID_NETWORK_G2" text="연결 to Gnutella_2"/>
-			<item id="ID_NETWORK_G1" text="연결 to _Gnutella"/>
-			<item id="ID_NETWORK_ED2K" text="연결 to _eDonkey"/>
-			<item id="ID_NETWORK_DC" text="연결 to _DC++"/>
-			<item id="ID_NETWORK_BT" text="연결 to _BitTorrent"/>
+			<item id="ID_NETWORK_G2" text="연결 to Gnutella2"/>
+			<item id="ID_NETWORK_G1" text="연결 to Gnutella"/>
+			<item id="ID_NETWORK_ED2K" text="연결 to eDonkey"/>
+			<item id="ID_NETWORK_DC" text="연결 to DC++"/>
+			<item id="ID_NETWORK_BT" text="연결 to BitTorrent"/>
 			<separator/>
 			<item id="ID_NETWORK_CONNECT_TO" text="에 연결하려면..." shortcut="Ctrl+T"/>
 			<item id="ID_NETWORK_BROWSE_TO" text="찾아보기 호스트 ..."/>
@@ -637,7 +637,7 @@
 			<item id="ID_NETWORK_AUTO_CLOSE" text="후종료"/>
 			<item id="ID_NETWORK_EXIT" text="종료"/>
 		</menu>
-		<menu text="_View">
+		<menu text="View">
 			<item id="ID_TAB_HOME" text="홈"/>
 			<item id="ID_TAB_SEARCH" text="검색"/>
 			<item id="ID_TAB_TRANSFERS" text="전학"/>
@@ -670,7 +670,7 @@
 				<item id="ID_TAB_SEARCH" text="검색" shortcut="Ctrl-S"/>
 			</menu>
 			<separator/>
-			<item id="ID_VIEW_BASIC" text="_기본 모드"/>
+			<item id="ID_VIEW_BASIC" text="기본 모드"/>
 			<item id="ID_VIEW_TABBED" text="탭 모드"/>
 			<item id="ID_VIEW_WINDOWED" text="창 모드"/>
 		</menu>
@@ -689,7 +689,7 @@
 			<item id="ID_TOOLS_PROFILE" text="내 프로필 수정..."/>
 			<item id="ID_TOOLS_WIZARD" text="빠른 마법..."/>
 			<separator/>
-			<item id="ID_TOOLS_SETTINGS" text="_Envy 설정..."/>
+			<item id="ID_TOOLS_SETTINGS" text="Envy 설정..."/>
 		</menu>
 		<menu text="창">
 			<item id="ID_WINDOW_NAVBAR" text="보기 네비게이션 바"/>
@@ -711,7 +711,7 @@
 			</menu>
 			<separator/>
 			<menu text="가이드">
-				<item id="ID_HELP_HOMEPAGE" text="_Envy 사이트 항목"/>
+				<item id="ID_HELP_HOMEPAGE" text="Envy 사이트 항목"/>
 				<separator/>
 				<item id="ID_HELP_FORUMS" text="Envy 포럼"/>
 				<item id="ID_HELP_WEB_SKINS" text="Envy스킨 사이트"/>
@@ -728,14 +728,14 @@
 		<menu text="네트워크">
 			<item id="ID_NETWORK_CONNECT" text="연결" shortcut="Ctrl+G"/>
 			<separator/>
-			<item id="ID_NETWORK_G2" text="연결 to Gnutella_2"/>
-			<item id="ID_NETWORK_G1" text="연결 to _Gnutella"/>
+			<item id="ID_NETWORK_G2" text="연결 to Gnutella2"/>
+			<item id="ID_NETWORK_G1" text="연결 to Gnutella"/>
 			<item id="ID_NETWORK_ED2K" text="연결 to eDonkey"/>
 			<separator/>
 			<item id="ID_NETWORK_AUTO_CLOSE" text="종료 After Transfers"/>
 			<item id="ID_NETWORK_EXIT" text="종료"/>
 		</menu>
-		<menu text="_View">
+		<menu text="View">
 			<item id="ID_TAB_HOME" text="홈"/>
 			<item id="ID_TAB_SEARCH" text="검색"/>
 			<item id="ID_TAB_TRANSFERS" text="다운로드"/>
@@ -754,10 +754,10 @@
 				<item id="ID_VIEW_DISCOVERY" text="디스커버"/>
 			</menu>
 			<separator/>
-			<item id="ID_VIEW_BASIC" text="_기본 모드"/>
+			<item id="ID_VIEW_BASIC" text="기본 모드"/>
 			<item id="ID_VIEW_TABBED" text="전원 모드"/>
 		</menu>
-		<menu text="_Tools">
+		<menu text="Tools">
 			<item id="ID_LIBRARY_FOLDERS" text="파일을 공유..."/>
 			<item id="ID_TOOLS_DOWNLOAD" text="다운로드 파일/Torrent..."/>
 			<separator/>
@@ -767,21 +767,21 @@
 			<item id="ID_TOOLS_PROFILE" text="내 프로필 수정..."/>
 			<item id="ID_TOOLS_WIZARD" text="빠른 마법사..."/>
 			<separator/>
-			<item id="ID_TOOLS_SETTINGS" text="_Envy 설정..."/>
+			<item id="ID_TOOLS_SETTINGS" text="Envy 설정..."/>
 		</menu>
-		<menu text="_도움">
+		<menu text="도움">
 			<item id="ID_HELP_FAQ" text="Envy 자주 묻는 질문"/>
 			<item id="ID_HELP_TEST" text="연결 테스트"/>
 			<separator/>
 			<menu text="가이드">
-				<item id="ID_HELP_GUIDE" text="Envy _사용자 가이"/>
-				<item id="ID_HELP_ROUTER" text="_라우터 도움말"/>
+				<item id="ID_HELP_GUIDE" text="Envy 사용자 가이"/>
+				<item id="ID_HELP_ROUTER" text="라우터 도움말"/>
 				<item id="ID_HELP_SECURITY" text="보안 도움말 항목"/>
 				<item id="ID_HELP_CODEC" text="코덱 도움"/>
 			</menu>
 			<separator/>
 			<menu text="가이드">
-				<item id="ID_HELP_HOMEPAGE" text="_Envy 사이트 항목"/>
+				<item id="ID_HELP_HOMEPAGE" text="Envy 사이트 항목"/>
 				<separator/>
 				<item id="ID_HELP_FORUMS" text="Envy 포럼"/>
 				<item id="ID_HELP_WEB_SKINS" text="Envy 스킨 사이트"/>
@@ -804,10 +804,10 @@
 			<item id="ID_NETWORK_CONNECT_TO" text="에 연결하려면..." shortcut="Ctrl+T"/>
 			<item id="ID_NETWORK_BROWSE_TO" text="찾아보기 호스트..."/>
 			<separator/>
-			<item id="ID_NETWORK_G2" text="연결 Gnutella_2"/>
-			<item id="ID_NETWORK_G1" text="연결 _Gnutella"/>
-			<item id="ID_NETWORK_ED2K" text="연결 _eDonkey"/>
-			<item id="ID_NETWORK_ED2K" text="연결 _DC++"/>
+			<item id="ID_NETWORK_G2" text="연결 Gnutella2"/>
+			<item id="ID_NETWORK_G1" text="연결 Gnutella"/>
+			<item id="ID_NETWORK_ED2K" text="연결 eDonkey"/>
+			<item id="ID_NETWORK_ED2K" text="연결 DC++"/>
 			<separator/>
 			<item id="ID_NETWORK_AUTO_CLOSE" text="전학 후 닫기"/>
 			<item id="ID_NETWORK_EXIT" text="종료"/>
@@ -851,7 +851,7 @@
 			<item id="ID_TOOLS_PROFILE" text="프로필 수정..."/>
 			<item id="ID_TOOLS_WIZARD" text="빠른 마법사d..."/>
 			<separator/>
-			<item id="ID_TOOLS_SETTINGS" text="_Envy 설정..."/>
+			<item id="ID_TOOLS_SETTINGS" text="Envy 설정..."/>
 		</menu>
 		<menu text="창">
 			<item id="ID_WINDOW_CASCADE" text="전체 화면"/>
@@ -877,7 +877,7 @@
 			</menu>
 			<separator/>
 			<menu text="웹사이트 ">
-				<item id="ID_HELP_HOMEPAGE" text="_Envy 사이트 항목"/>
+				<item id="ID_HELP_HOMEPAGE" text="Envy 사이트 항목"/>
 				<separator/>
 				<item id="ID_HELP_FORUMS" text="Envy 포럼"/>
 				<item id="ID_HELP_WEB_SKINS" text="Envy 스킨 사이트"/>
@@ -899,7 +899,7 @@
 		<item id="ID_TAB_MEDIA" text="미디어 플레이어"/>
 		<item id="ID_TAB_IRC" text="IRC Chat"/>
 		<separator/>
-		<menu text="_Advanced">
+		<menu text="Advanced">
 			<item id="ID_VIEW_NEIGHBOURS" text="이웃"/>
 			<item id="ID_VIEW_UPLOADS" text="업로드"/>
 			<item id="ID_VIEW_SECURITY" text="보안 항목"/>
@@ -915,7 +915,7 @@
 		<item id="ID_TAB_NETWORK" text="네트워크"/>
 		<item id="ID_TAB_IRC" text="IRC 채팅"/>
 		<separator/>
-		<item id="ID_VIEW_SECURITY" text="Security"/>
+		<item id="ID_VIEW_SECURITY" text="보안"/>
 		<item id="ID_VIEW_HOSTS" text="호스트 캐시"/>
 		<item id="ID_VIEW_DISCOVERY" text="디스커버리"/>
 		<item id="ID_VIEW_TRAFFIC" text="그래프"/>
@@ -935,7 +935,7 @@
 		<item id="ID_VIEW_MEDIA" text="미디어 플레이어"/>
 		<separator/>
 		<item id="ID_VIEW_SECURITY" text="보안 항목"/>
-		<item id="ID_VIEW_SCHEDULER" text="Schedule_r"/>
+		<item id="ID_VIEW_SCHEDULER" text="Scheduler"/>
 		<item id="ID_VIEW_HOSTS" text="호스트 캐시"/>
 		<item id="ID_VIEW_DISCOVERY" text="디스커버리"/>
 		<item id="ID_VIEW_TRAFFIC" text="그래프"/>
@@ -952,7 +952,7 @@
 		<item id="ID_TAB_SEARCH" text="검색"/>
 		<item id="ID_TAB_TRANSFERS" text="다운로드"/>
 		<separator/>
-		<menu text="_Advanced">
+		<menu text="Advanced">
 			<item id="ID_VIEW_NEIGHBOURS" text="이웃"/>
 			<item id="ID_VIEW_UPLOADS" text="업로드"/>
 			<item id="ID_VIEW_SECURITY" text="보안 항목"/>
@@ -979,271 +979,271 @@
 	</menu>
 	<!-- HOST CACHE WINDOW -->
 	<menu name="CHostCacheWnd">
-		<item id="ID_HOSTCACHE_CONNECT" text="_Connect Now"/>
-		<item id="ID_HOSTCACHE_DISCONNECT" text="_Disconnect"/>
-		<item id="ID_NEIGHBOURS_URI" text="Get P2P Link (_URI)"/>
-		<item id="ID_HOSTCACHE_PRIORITY" text="_Priority Server"/>
+		<item id="ID_HOSTCACHE_CONNECT" text="Connect Now"/>
+		<item id="ID_HOSTCACHE_DISCONNECT" text="Disconnect"/>
+		<item id="ID_NEIGHBOURS_URI" text="Get P2P Link (URI)"/>
+		<item id="ID_HOSTCACHE_PRIORITY" text="Priority Server"/>
 		<separator/>
-		<item id="ID_HOSTCACHE_REMOVE" text="_Remove Host"/>
+		<item id="ID_HOSTCACHE_REMOVE" text="Remove Host"/>
 		<separator/>
-		<menu text="_Filter">
-			<item id="ID_HOSTCACHE_G2_HORIZON" text="Gnutella2 Cl_uster"/>
-			<item id="ID_HOSTCACHE_G2_CACHE" text="Gnutella_2 Cache"/>
-			<item id="ID_HOSTCACHE_G1_CACHE" text="Gnutella_1 Cache"/>
-			<item id="ID_HOSTCACHE_ED2K_CACHE" text="_eDonkey Servers"/>
-			<item id="ID_HOSTCACHE_BT_CACHE" text="_BitTorrent Cache"/>
-			<item id="ID_HOSTCACHE_KAD_CACHE" text="_Kademlia Cache"/>
+		<menu text="Filter">
+			<item id="ID_HOSTCACHE_G2_HORIZON" text="Gnutella2 Cluster"/>
+			<item id="ID_HOSTCACHE_G2_CACHE" text="Gnutella2 Cache"/>
+			<item id="ID_HOSTCACHE_G1_CACHE" text="Gnutella1 Cache"/>
+			<item id="ID_HOSTCACHE_ED2K_CACHE" text="eDonkey Servers"/>
+			<item id="ID_HOSTCACHE_BT_CACHE" text="BitTorrent Cache"/>
+			<item id="ID_HOSTCACHE_KAD_CACHE" text="Kademlia Cache"/>
 		</menu>
 		<separator/>
-		<item id="ID_HOSTCACHE_IMPORT" text="_Import MET File..."/>
+		<item id="ID_HOSTCACHE_IMPORT" text="Import MET File..."/>
 		<item id="ID_HOSTCACHE_FILE_DOWNLOAD" text="Download MET/Hublist..."/>
 	</menu>
 	<!-- SEARCH WINDOW -->
 	<menu name="CSearchWnd.Basic">
-		<item id="ID_SEARCH_DOWNLOAD" text="_Download"/>
+		<item id="ID_SEARCH_DOWNLOAD" text="Download"/>
 		<separator/>
-		<item id="ID_BROWSE_LAUNCH" text="_Browse User"/>
-		<item id="ID_SECURITY_BAN" text="B_an User"/>
+		<item id="ID_BROWSE_LAUNCH" text="Browse User"/>
+		<item id="ID_SECURITY_BAN" text="Ban User"/>
 		<separator/>
-		<menu text="_Search For">
-			<item id="ID_SEARCH_FOR_SIMILAR" text="_Similar Files"/>
+		<menu text="Search For">
+			<item id="ID_SEARCH_FOR_SIMILAR" text="Similar Files"/>
 			<separator/>
-			<item id="ID_SEARCH_FOR_ARTIST" text="_Music by the same Artist"/>
-			<item id="ID_SEARCH_FOR_ALBUM" text="Music in the same _Album"/>
-			<item id="ID_SEARCH_FOR_SERIES" text="_Episodes in the same Series"/>
+			<item id="ID_SEARCH_FOR_ARTIST" text="Music by the same Artist"/>
+			<item id="ID_SEARCH_FOR_ALBUM" text="Music in the same Album"/>
+			<item id="ID_SEARCH_FOR_SERIES" text="Episodes in the same Series"/>
 		</menu>
-		<menu id="ID_WEBSERVICES_LIST" text="_Web Services">
+		<menu id="ID_WEBSERVICES_LIST" text="Web Services">
 			<item id="ID_LIBRARY_BITPRINTS_WEB" text="View Bitprints listing"/>
-			<item id="ID_SEARCH_URI" text="Get P2P Link (_URI)"/>
+			<item id="ID_SEARCH_URI" text="Get P2P Link (URI)"/>
 		</menu>
 	</menu>
 	<menu name="CSearchWnd">
-		<item id="ID_SEARCH_DOWNLOAD" text="_Download"/>
-		<item id="ID_SEARCH_DOWNLOADNOW" text="Download _Now"/>
-		<item id="ID_SEARCH_URI" text="Get P2P Link (_URI)"/>
+		<item id="ID_SEARCH_DOWNLOAD" text="Download"/>
+		<item id="ID_SEARCH_DOWNLOADNOW" text="Download Now"/>
+		<item id="ID_SEARCH_URI" text="Get P2P Link (URI)"/>
 		<separator/>
-		<item id="ID_BROWSE_LAUNCH" text="Bro_wse User"/>
-		<item id="ID_SEARCH_CHAT" text="_Chat with User"/>
-		<item id="ID_SECURITY_BAN" text="_Ban User+File"/>
+		<item id="ID_BROWSE_LAUNCH" text="Browse User"/>
+		<item id="ID_SEARCH_CHAT" text="Chat with User"/>
+		<item id="ID_SECURITY_BAN" text="Ban User+File"/>
 		<separator/>
-		<menu text="_Search For">
-			<item id="ID_SEARCH_FOR_THIS" text="_This File"/>
-			<item id="ID_SEARCH_FOR_SIMILAR" text="_Similar Files"/>
+		<menu text="Search For">
+			<item id="ID_SEARCH_FOR_THIS" text="This File"/>
+			<item id="ID_SEARCH_FOR_SIMILAR" text="Similar Files"/>
 			<separator/>
-			<item id="ID_SEARCH_FOR_ARTIST" text="_Music by the same Artist"/>
-			<item id="ID_SEARCH_FOR_ALBUM" text="Music in the same _Album"/>
-			<item id="ID_SEARCH_FOR_SERIES" text="_Episodes in the same Series"/>
+			<item id="ID_SEARCH_FOR_ARTIST" text="Music by the same Artist"/>
+			<item id="ID_SEARCH_FOR_ALBUM" text="Music in the same Album"/>
+			<item id="ID_SEARCH_FOR_SERIES" text="Episodes in the same Series"/>
 			<separator/>
-			<item id="ID_VIEW_SEARCH_MONITOR" text="Search M_onitor"/>
-			<item id="ID_VIEW_RESULTS_MONITOR" text="_Hit Monitor"/>
+			<item id="ID_VIEW_SEARCH_MONITOR" text="Search Monitor"/>
+			<item id="ID_VIEW_RESULTS_MONITOR" text="Hit Monitor"/>
 		</menu>
-		<menu id="ID_WEBSERVICES_LIST" text="_Web Services">
+		<menu id="ID_WEBSERVICES_LIST" text="Web Services">
 			<item id="ID_LIBRARY_BITPRINTS_WEB" text="View Bitprints listing"/>
 		</menu>
 		<separator/>
-		<item id="ID_SEARCH_FILTER" text="_Filter Results..."/>
-		<item id="ID_SEARCH_FILTER_REMOVE" text="_Remove Filter"/>
+		<item id="ID_SEARCH_FILTER" text="Filter Results..."/>
+		<item id="ID_SEARCH_FILTER_REMOVE" text="Remove Filter"/>
 		<separator/>
-		<item id="ID_SEARCH_CLEAR" text="C_lear Results"/>
+		<item id="ID_SEARCH_CLEAR" text="Clear Results"/>
 		<separator/>
-		<item id="ID_SEARCH_COLUMNS" text="Edit C_olumns..."/>
+		<item id="ID_SEARCH_COLUMNS" text="Edit Columns..."/>
 	</menu>
 	<!-- BROWSE HOST WINDOW -->
 	<menu name="CBrowseHostWnd.Basic">
-		<item id="ID_SEARCH_DOWNLOAD" text="_Download"/>
-		<item id="ID_SEARCH_DOWNLOADNOW" text="Download _Now"/>
+		<item id="ID_SEARCH_DOWNLOAD" text="Download"/>
+		<item id="ID_SEARCH_DOWNLOADNOW" text="Download Now"/>
 		<separator/>
-		<item id="ID_SEARCH_CHAT" text="_Chat to User"/>
+		<item id="ID_SEARCH_CHAT" text="Chat to User"/>
 		<separator/>
-		<menu text="_Search For">
-			<item id="ID_SEARCH_FOR_SIMILAR" text="_Similar Files"/>
+		<menu text="Search For">
+			<item id="ID_SEARCH_FOR_SIMILAR" text="Similar Files"/>
 			<separator/>
-			<item id="ID_SEARCH_FOR_ARTIST" text="_Music by the same Artist"/>
-			<item id="ID_SEARCH_FOR_ALBUM" text="Music in the same _Album"/>
-			<item id="ID_SEARCH_FOR_SERIES" text="_Episodes in the same Series"/>
+			<item id="ID_SEARCH_FOR_ARTIST" text="Music by the same Artist"/>
+			<item id="ID_SEARCH_FOR_ALBUM" text="Music in the same Album"/>
+			<item id="ID_SEARCH_FOR_SERIES" text="Episodes in the same Series"/>
 		</menu>
-		<menu text="_Web File Info">
+		<menu text="Web File Info">
 			<item id="ID_LIBRARY_BITPRINTS_WEB" text="View Bitprints listing"/>
-			<item id="ID_SEARCH_URI" text="Get P2P Link (_URI)"/>
+			<item id="ID_SEARCH_URI" text="Get P2P Link (URI)"/>
 		</menu>
 	</menu>
 	<menu name="CBrowseHostWnd">
-		<item id="ID_SEARCH_DOWNLOAD" text="_Download"/>
-		<item id="ID_SEARCH_DOWNLOADNOW" text="Download _Now"/>
-		<item id="ID_SEARCH_URI" text="Get P2P Link (_URI)"/>
+		<item id="ID_SEARCH_DOWNLOAD" text="Download"/>
+		<item id="ID_SEARCH_DOWNLOADNOW" text="Download Now"/>
+		<item id="ID_SEARCH_URI" text="Get P2P Link (URI)"/>
 		<separator/>
-		<item id="ID_SEARCH_CHAT" text="_Chat to User"/>
+		<item id="ID_SEARCH_CHAT" text="Chat to User"/>
 		<separator/>
-		<menu text="_Search For">
-			<item id="ID_SEARCH_FOR_THIS" text="_This File"/>
-			<item id="ID_SEARCH_FOR_SIMILAR" text="_Similar Files"/>
+		<menu text="Search For">
+			<item id="ID_SEARCH_FOR_THIS" text="This File"/>
+			<item id="ID_SEARCH_FOR_SIMILAR" text="Similar Files"/>
 			<separator/>
-			<item id="ID_SEARCH_FOR_ARTIST" text="_Music by the same Artist"/>
-			<item id="ID_SEARCH_FOR_ALBUM" text="Music in the same _Album"/>
-			<item id="ID_SEARCH_FOR_SERIES" text="_Episodes in the same Series"/>
+			<item id="ID_SEARCH_FOR_ARTIST" text="Music by the same Artist"/>
+			<item id="ID_SEARCH_FOR_ALBUM" text="Music in the same Album"/>
+			<item id="ID_SEARCH_FOR_SERIES" text="Episodes in the same Series"/>
 		</menu>
-		<menu id="ID_WEBSERVICES_LIST" text="_Web Services">
+		<menu id="ID_WEBSERVICES_LIST" text="Web Services">
 			<item id="ID_LIBRARY_BITPRINTS_WEB" text="View Bitprints listing"/>
 		</menu>
 		<separator/>
-		<item id="ID_SEARCH_FILTER" text="_Filter Results..."/>
-		<item id="ID_SEARCH_FILTER_REMOVE" text="R_emove Filter"/>
+		<item id="ID_SEARCH_FILTER" text="Filter Results..."/>
+		<item id="ID_SEARCH_FILTER_REMOVE" text="Remove Filter"/>
 		<separator/>
-		<item id="ID_SEARCH_COLUMNS" text="Edit C_olumns..."/>
+		<item id="ID_SEARCH_COLUMNS" text="Edit Columns..."/>
 	</menu>
 	<!-- HIT MONITOR WINDOW -->
 	<menu name="CHitMonitorWnd">
-		<item id="ID_SEARCH_DOWNLOAD" text="_Download"/>
-		<item id="ID_SEARCH_URI" text="Get P2P Link (_URI)"/>
+		<item id="ID_SEARCH_DOWNLOAD" text="Download"/>
+		<item id="ID_SEARCH_URI" text="Get P2P Link (URI)"/>
 		<separator/>
-		<item id="ID_BROWSE_LAUNCH" text="_Browse User"/>
-		<item id="ID_SEARCH_CHAT" text="_Chat to User"/>
+		<item id="ID_BROWSE_LAUNCH" text="Browse User"/>
+		<item id="ID_SEARCH_CHAT" text="Chat to User"/>
 		<separator/>
-		<menu text="_Search For">
-			<item id="ID_SEARCH_FOR_THIS" text="_This File"/>
-			<item id="ID_SEARCH_FOR_SIMILAR" text="_Similar Files"/>
+		<menu text="Search For">
+			<item id="ID_SEARCH_FOR_THIS" text="This File"/>
+			<item id="ID_SEARCH_FOR_SIMILAR" text="Similar Files"/>
 			<separator/>
-			<item id="ID_SEARCH_FOR_ARTIST" text="_Music by the same Artist"/>
-			<item id="ID_SEARCH_FOR_ALBUM" text="Music in the same _Album"/>
-			<item id="ID_SEARCH_FOR_SERIES" text="_Episodes in the same Series"/>
+			<item id="ID_SEARCH_FOR_ARTIST" text="Music by the same Artist"/>
+			<item id="ID_SEARCH_FOR_ALBUM" text="Music in the same Album"/>
+			<item id="ID_SEARCH_FOR_SERIES" text="Episodes in the same Series"/>
 		</menu>
-		<menu id="ID_WEBSERVICES_LIST" text="_Web Services">
+		<menu id="ID_WEBSERVICES_LIST" text="Web Services">
 			<item id="ID_LIBRARY_BITPRINTS_WEB" text="View Bitprints listing"/>
 		</menu>
 		<separator/>
-		<item id="ID_SEARCH_FILTER" text="_Filter Results..."/>
-		<item id="ID_SEARCH_FILTER_REMOVE" text="_Remove Filter"/>
+		<item id="ID_SEARCH_FILTER" text="Filter Results..."/>
+		<item id="ID_SEARCH_FILTER_REMOVE" text="Remove Filter"/>
 		<separator/>
-		<item id="ID_HITMONITOR_PAUSE" text="_Pause Display"/>
-		<item id="ID_HITMONITOR_CLEAR" text="C_lear Display"/>
+		<item id="ID_HITMONITOR_PAUSE" text="Pause Display"/>
+		<item id="ID_HITMONITOR_CLEAR" text="Clear Display"/>
 		<separator/>
-		<item id="ID_SEARCH_COLUMNS" text="Edit C_olumns..."/>
+		<item id="ID_SEARCH_COLUMNS" text="Edit Columns..."/>
 	</menu>
 	<!-- DOWNLOADS WINDOW -->
 	<menu name="CDownloadsWnd.Download.Basic">
-		<item id="ID_DOWNLOADS_LAUNCH" text="_Preview"/>
+		<item id="ID_DOWNLOADS_LAUNCH" text="Preview"/>
 		<separator/>
-		<item id="ID_DOWNLOADS_RESUME" text="_Resume"/>
+		<item id="ID_DOWNLOADS_RESUME" text="Resume"/>
 		<item id="ID_DOWNLOADS_PAUSE" text="일시 중지"/>
 		<item id="ID_DOWNLOADS_CLEAR_INCOMPLETE" text="취소"/>
 		<separator/>
-		<item id="ID_DOWNLOADS_SOURCES" text="_Find More Sources"/>
-		<item id="ID_DOWNLOADS_REMOTE_PREVIEW" text="Re_mote Preview"/>
-		<item id="ID_DOWNLOADS_VIEW_REVIEWS" text="_View Reviews"/>
+		<item id="ID_DOWNLOADS_SOURCES" text="Find More Sources"/>
+		<item id="ID_DOWNLOADS_REMOTE_PREVIEW" text="Remote Preview"/>
+		<item id="ID_DOWNLOADS_VIEW_REVIEWS" text="View Reviews"/>
 		<separator/>
 		<item id="ID_DOWNLOADS_HELP" text="도움..."/>
 	</menu>
 	<menu name="CDownloadsWnd.Download">
-		<item id="ID_DOWNLOADS_LAUNCH_COPY" text="Pre_view File Copy"/>
-		<item id="ID_DOWNLOADS_LAUNCH" text="_Preview Partial File"/>
-		<item id="ID_DOWNLOADS_ENQUEUE" text="Add to Pla_ylist"/>
+		<item id="ID_DOWNLOADS_LAUNCH_COPY" text="Preview File Copy"/>
+		<item id="ID_DOWNLOADS_LAUNCH" text="Preview Partial File"/>
+		<item id="ID_DOWNLOADS_ENQUEUE" text="Add to Playlist"/>
 		<separator/>
-		<item id="ID_DOWNLOADS_RESUME" text="_Resume"/>
+		<item id="ID_DOWNLOADS_RESUME" text="Resume"/>
 		<item id="ID_DOWNLOADS_PAUSE" text="일시 중지"/>
 		<item id="ID_DOWNLOADS_CLEAR_INCOMPLETE" text="취소"/>
 		<separator/>
-		<item id="ID_DOWNLOADS_VIEW_REVIEWS" text="Vie_w Reviews"/>
-		<item id="ID_DOWNLOADS_REMOTE_PREVIEW" text="Re_mote Preview"/>
-		<item id="ID_DOWNLOADS_SOURCES" text="_Find More Sources"/>
+		<item id="ID_DOWNLOADS_VIEW_REVIEWS" text="View Reviews"/>
+		<item id="ID_DOWNLOADS_REMOTE_PREVIEW" text="Remote Preview"/>
+		<item id="ID_DOWNLOADS_SOURCES" text="Find More Sources"/>
 		<separator/>
 		<menu text="고급">
-			<item id="ID_DOWNLOADS_SHARE" text="_Share File"/>
+			<item id="ID_DOWNLOADS_SHARE" text="Share File"/>
 			<separator/>
-			<item id="ID_DOWNLOADS_URI" text="Get P2P Link (_URI)"/>
-			<item id="ID_DOWNLOADS_ADD_SOURCE" text="_Add Source..."/>
+			<item id="ID_DOWNLOADS_URI" text="Get P2P Link (URI)"/>
+			<item id="ID_DOWNLOADS_ADD_SOURCE" text="Add Source..."/>
 			<item id="ID_DOWNLOADS_MERGE" text="로컬 파일을 병합합니다..."/>
 			<separator/>
-			<item id="ID_DOWNLOADS_MONITOR" text="_Monitor Window"/>
+			<item id="ID_DOWNLOADS_MONITOR" text="Monitor Window"/>
 		</menu>
 		<menu text="우선순위">
-			<item id="ID_DOWNLOADS_BOOST" text="_Ignore Bandwidth Limit"/>
+			<item id="ID_DOWNLOADS_BOOST" text="Ignore Bandwidth Limit"/>
 			<separator/>
-			<item id="ID_DOWNLOADS_MOVE_TOP" text="Move to _Top" shortcut="Ctrl+Home"/>
-			<item id="ID_DOWNLOADS_MOVE_BOTTOM" text="Move to _Bottom" shortcut="Ctrl+End"/>
-			<item id="ID_DOWNLOADS_MOVE_UP" text="Move _Up" shortcut="Ctrl+Up"/>
-			<item id="ID_DOWNLOADS_MOVE_DOWN" text="Move _Down" shortcut="Ctrl+Down"/>
+			<item id="ID_DOWNLOADS_MOVE_TOP" text="Move to Top" shortcut="Ctrl+Home"/>
+			<item id="ID_DOWNLOADS_MOVE_BOTTOM" text="Move to Bottom" shortcut="Ctrl+End"/>
+			<item id="ID_DOWNLOADS_MOVE_UP" text="Move Up" shortcut="Ctrl+Up"/>
+			<item id="ID_DOWNLOADS_MOVE_DOWN" text="Move Down" shortcut="Ctrl+Down"/>
 		</menu>
 		<item id="ID_DOWNLOADS_HELP" text="도움..."/>
 		<separator/>
-		<item id="ID_DOWNLOADS_EDIT" text="_Download Properties"/>
+		<item id="ID_DOWNLOADS_EDIT" text="Download Properties"/>
 	</menu>
 	<menu name="CDownloadsWnd.Source">
-		<item id="ID_TRANSFERS_CONNECT" text="_Access"/>
+		<item id="ID_TRANSFERS_CONNECT" text="Access"/>
 		<separator/>
-		<item id="ID_BROWSE_LAUNCH" text="_Browse User"/>
-		<item id="ID_TRANSFERS_CHAT" text="_Chat to User"/>
-		<item id="ID_DOWNLOADS_URI" text="Get P2P Link (_URI)"/>
+		<item id="ID_BROWSE_LAUNCH" text="Browse User"/>
+		<item id="ID_TRANSFERS_CHAT" text="Chat to User"/>
+		<item id="ID_DOWNLOADS_URI" text="Get P2P Link (URI)"/>
 		<separator/>
 		<item id="ID_TRANSFERS_DISCONNECT" text="끊습니다"/>
-		<item id="ID_TRANSFERS_FORGET" text="_Forget"/>
+		<item id="ID_TRANSFERS_FORGET" text="Forget"/>
 	</menu>
 	<menu name="CDownloadsWnd.Completed.Basic">
-		<item id="ID_DOWNLOADS_LAUNCH_COMPLETE" text="_Play or Open"/>
+		<item id="ID_DOWNLOADS_LAUNCH_COMPLETE" text="Play or Open"/>
 		<item id="ID_DOWNLOADS_FOLDER" text="열기 다운로드 폴더"/>
-		<item id="ID_DOWNLOADS_CLEAR_COMPLETE" text="_Clear"/>
+		<item id="ID_DOWNLOADS_CLEAR_COMPLETE" text="Clear"/>
 		<separator/>
-		<item id="ID_DOWNLOADS_FILE_DELETE" text="_Delete File"/>
+		<item id="ID_DOWNLOADS_FILE_DELETE" text="Delete File"/>
 	</menu>
 	<menu name="CDownloadsWnd.Completed">
-		<item id="ID_DOWNLOADS_LAUNCH_COMPLETE" text="_Open or Play"/>
-		<item id="ID_DOWNLOADS_ENQUEUE" text="_Add to Playlist"/>
+		<item id="ID_DOWNLOADS_LAUNCH_COMPLETE" text="Open or Play"/>
+		<item id="ID_DOWNLOADS_ENQUEUE" text="Add to Playlist"/>
 		<item id="ID_DOWNLOADS_FOLDER" text="열기 다운로드 폴더"/>
-		<item id="ID_DOWNLOADS_CLEAR_COMPLETE" text="_Clear"/>
+		<item id="ID_DOWNLOADS_CLEAR_COMPLETE" text="Clear"/>
 		<separator/>
-		<item id="ID_DOWNLOADS_FILE_DELETE" text="_Delete File"/>
-		<item id="ID_DOWNLOADS_RATE" text="_Rate File..."/>
-		<item id="ID_DOWNLOADS_URI" text="Get P2P Link (_URI)"/>
+		<item id="ID_DOWNLOADS_FILE_DELETE" text="Delete File"/>
+		<item id="ID_DOWNLOADS_RATE" text="Rate File..."/>
+		<item id="ID_DOWNLOADS_URI" text="Get P2P Link (URI)"/>
 		<separator/>
-		<item id="ID_DOWNLOADS_EDIT" text="_Properties..."/>
+		<item id="ID_DOWNLOADS_EDIT" text="Properties..."/>
 	</menu>
 	<menu name="CDownloadsWnd.Seeding">
-		<item id="ID_DOWNLOADS_LAUNCH_COMPLETE" text="_Open File"/>
+		<item id="ID_DOWNLOADS_LAUNCH_COMPLETE" text="Open File"/>
 		<item id="ID_DOWNLOADS_FOLDER" text="폴더 열기"/>
-		<item id="ID_DOWNLOADS_CLEAR_COMPLETE" text="_Stop Seeding"/>
+		<item id="ID_DOWNLOADS_CLEAR_COMPLETE" text="Stop Seeding"/>
 		<separator/>
-		<item id="ID_DOWNLOADS_URI" text="Get P2P Link (_URI)"/>
-		<item id="ID_DOWNLOADS_HELP" text="_도움..."/>
+		<item id="ID_DOWNLOADS_URI" text="Get P2P Link (URI)"/>
+		<item id="ID_DOWNLOADS_HELP" text="도움..."/>
 		<separator/>
-		<item id="ID_DOWNLOADS_EDIT" text="Torrent _Properties..."/>
+		<item id="ID_DOWNLOADS_EDIT" text="Torrent Properties..."/>
 	</menu>
 	<menu name="CDownloadsWnd.Default">
 		<item id="ID_DOWNLOADS_FOLDER" text="폴더 열기"/>
 		<separator/>
-		<item id="ID_TOOLS_DOWNLOAD" text="Start New _Download"/>
-		<item id="ID_TOOLS_SEEDTORRENT" text="Seed New _Torrent"/>
-		<item id="ID_DOWNLOADS_CLEAR_COMPLETED" text="_Clear Completed"/>
+		<item id="ID_TOOLS_DOWNLOAD" text="Start New Download"/>
+		<item id="ID_TOOLS_SEEDTORRENT" text="Seed New Torrent"/>
+		<item id="ID_DOWNLOADS_CLEAR_COMPLETED" text="Clear Completed"/>
 		<separator/>
-		<item id="ID_DOWNLOADS_HELP" text="_도움..."/>
+		<item id="ID_DOWNLOADS_HELP" text="도움..."/>
 	</menu>
 	<menu name="CDownloadTabBar">
 		<item id="ID_DOWNLOAD_GROUP_OPEN" text="폴더 열기"/>
 		<separator/>
-		<item id="ID_DOWNLOAD_GROUP_RESUME" text="_Resume All"/>
+		<item id="ID_DOWNLOAD_GROUP_RESUME" text="Resume All"/>
 		<item id="ID_DOWNLOAD_GROUP_PAUSE" text="일시 중지 All"/>
-		<item id="ID_DOWNLOAD_GROUP_CLEAR" text="_Clear All"/>
+		<item id="ID_DOWNLOAD_GROUP_CLEAR" text="Clear All"/>
 		<separator/> <!--
-		<item id="ID_DOWNLOAD_GROUP_SHOW" text="_Hide Groups"/>
+		<item id="ID_DOWNLOAD_GROUP_SHOW" text="Hide Groups"/>
 		<separator/> -->
 		<item id="ID_DOWNLOAD_GROUP_MOVELEFT" text="그룹 왼쪽으로 이동"/>
 		<item id="ID_DOWNLOAD_GROUP_MOVERIGHT" text="그룹을 오른쪽으로 이동"/>
-		<item id="ID_DOWNLOAD_GROUP_REMOVE" text="R_emove Group"/>
-		<item id="ID_DOWNLOAD_GROUP_NEW" text="_New Group..."/>
+		<item id="ID_DOWNLOAD_GROUP_REMOVE" text="Remove Group"/>
+		<item id="ID_DOWNLOAD_GROUP_NEW" text="New Group..."/>
 		<separator/>
-		<item id="ID_DOWNLOAD_GROUP_PROPERTIES" text="_Properties..."/>
+		<item id="ID_DOWNLOAD_GROUP_PROPERTIES" text="Properties..."/>
 	</menu>
 	<menu name="CDownloadsWnd.Filter">
 		<item id="ID_DOWNLOADS_FILTER_ALL" text="모두보기"/>
 		<separator/>
-		<item id="ID_DOWNLOADS_FILTER_ACTIVE" text="보기 A_ctive"/>
+		<item id="ID_DOWNLOADS_FILTER_ACTIVE" text="보기 Active"/>
 		<item id="ID_DOWNLOADS_FILTER_PAUSED" text="보기 일시 중지됨"/>
-		<item id="ID_DOWNLOADS_FILTER_QUEUED" text="보기 _Queued"/>
-		<item id="ID_DOWNLOADS_FILTER_SOURCES" text="보기 _No Sources"/>
-		<item id="ID_DOWNLOADS_FILTER_SEEDS" text="보기 See_ds"/>
+		<item id="ID_DOWNLOADS_FILTER_QUEUED" text="보기 Queued"/>
+		<item id="ID_DOWNLOADS_FILTER_SOURCES" text="보기 No Sources"/>
+		<item id="ID_DOWNLOADS_FILTER_SEEDS" text="보기 Seeds"/>
 		<separator/>
-		<item id="ID_DOWNLOADS_SHOW_SOURCES" text="모두보기 _Sources"/>
-		<item id="ID_DOWNLOADS_AUTO_CLEAR" text="_Auto 맑은"/>
+		<item id="ID_DOWNLOADS_SHOW_SOURCES" text="모두보기 Sources"/>
+		<item id="ID_DOWNLOADS_AUTO_CLEAR" text="Auto 맑은"/>
 		<separator/>
-		<item id="ID_DOWNLOAD_GROUP_SHOW" text="보기 _Groups"/>
+		<item id="ID_DOWNLOAD_GROUP_SHOW" text="보기 Groups"/>
 	</menu>
 	<!-- UPLOADS WINDOW -->
 	<menu name="CUploadsWnd.Upload.Basic">
@@ -1262,24 +1262,24 @@
 		<separator/>
 		<item id="ID_BROWSE_LAUNCH" text="찾아보기 사용자"/>
 		<item id="ID_UPLOADS_CHAT" text="채팅 사용자에게"/>
-		<item id="ID_SECURITY_BAN" text="B_an 사용자"/>
+		<item id="ID_SECURITY_BAN" text="Ban 사용자"/>
 	</menu>
 	<menu name="CUploadsWnd.Default">
 		<item id="ID_LIBRARY_FOLDERS" text="파일을 공유..."/>
-		<item id="ID_UPLOADS_SETTINGS" text="_Queue 설정이..."/>
-		<item id="ID_UPLOADS_CLEAR_COMPLETED" text="_Clear Completed"/>
+		<item id="ID_UPLOADS_SETTINGS" text="Queue 설정이..."/>
+		<item id="ID_UPLOADS_CLEAR_COMPLETED" text="Clear Completed"/>
 		<separator/>
-		<item id="ID_UPLOADS_HELP" text="_도움..."/>
+		<item id="ID_UPLOADS_HELP" text="도움..."/>
 	</menu>
 	<menu name="CUploadsWnd.Filter">
 		<item id="ID_UPLOADS_FILTER_ALL" text="모두보기"/>
 		<separator/>
-		<item id="ID_UPLOADS_FILTER_ACTIVE" text="Show Acti_ve"/>
-		<item id="ID_UPLOADS_FILTER_QUEUED" text="Show _Queued"/>
-		<item id="ID_UPLOADS_FILTER_TORRENT" text="Show _BitTorrent"/>
-		<item id="ID_UPLOADS_FILTER_HISTORY" text="Show _History"/>
+		<item id="ID_UPLOADS_FILTER_ACTIVE" text="Show Active"/>
+		<item id="ID_UPLOADS_FILTER_QUEUED" text="Show Queued"/>
+		<item id="ID_UPLOADS_FILTER_TORRENT" text="Show BitTorrent"/>
+		<item id="ID_UPLOADS_FILTER_HISTORY" text="Show History"/>
 		<separator/>
-		<item id="ID_UPLOADS_AUTO_CLEAR" text="Auto _Clear"/>
+		<item id="ID_UPLOADS_AUTO_CLEAR" text="Auto Clear"/>
 	</menu>
 	<!-- LIBRARY FRAME -->
 	<menu name="CLibraryTree.Physical.Basic">
@@ -1295,34 +1295,34 @@
 		<item id="ID_LIBRARY_SHARED_FOLDER" text="공유"/>
 		<separator/>
 		<item id="ID_LIBRARY_SCAN" text="스캔"/>
-		<item id="ID_LIBRARY_REBUILD" text="Re_build"/>
-		<item id="ID_LIBRARY_FOLDERS" text="Share _Files..."/>
+		<item id="ID_LIBRARY_REBUILD" text="Rebuild"/>
+		<item id="ID_LIBRARY_FOLDERS" text="Share Files..."/>
 		<separator/>
-		<item id="ID_LIBRARY_FOLDER_FILE_PROPERTIES" text="File _Properties"/>
+		<item id="ID_LIBRARY_FOLDER_FILE_PROPERTIES" text="File Properties"/>
 	</menu>
 	<menu name="CLibraryTree.Virtual.Basic">
-		<item id="ID_LIBRARY_FOLDER_ENQUEUE" text="_Play Album"/>
-		<item id="ID_LIBRARY_FOLDER_DELETE" text="_Delete"/>
+		<item id="ID_LIBRARY_FOLDER_ENQUEUE" text="Play Album"/>
+		<item id="ID_LIBRARY_FOLDER_DELETE" text="Delete"/>
 		<separator/>
-		<item id="ID_LIBRARY_FOLDER_FILE_PROPERTIES" text="_File Properties"/>
-		<item id="ID_LIBRARY_FOLDER_PROPERTIES" text="_Album Properties"/>
+		<item id="ID_LIBRARY_FOLDER_FILE_PROPERTIES" text="File Properties"/>
+		<item id="ID_LIBRARY_FOLDER_PROPERTIES" text="Album Properties"/>
 	</menu>
 	<menu name="CLibraryTree.Virtual">
-		<item id="ID_LIBRARY_FOLDER_ENQUEUE" text="_Play Album"/>
-		<item id="ID_LIBRARY_FOLDER_DELETE" text="_Delete"/>
+		<item id="ID_LIBRARY_FOLDER_ENQUEUE" text="Play Album"/>
+		<item id="ID_LIBRARY_FOLDER_DELETE" text="Delete"/>
 		<separator/>
-		<item id="ID_LIBRARY_REBUILD" text="_Rebuild"/>
-		<item id="ID_LIBRARY_EXPORT_COLLECTION" text="_Export Collection..."/>
+		<item id="ID_LIBRARY_REBUILD" text="Rebuild"/>
+		<item id="ID_LIBRARY_EXPORT_COLLECTION" text="Export Collection..."/>
 		<separator/>
 		<item id="ID_LIBRARY_FOLDER_NEW" text="새 폴더..."/>
 		<separator/>
-		<item id="ID_LIBRARY_FOLDER_FILE_PROPERTIES" text="_File Properties"/>
-		<item id="ID_LIBRARY_FOLDER_PROPERTIES" text="_Album Properties"/>
+		<item id="ID_LIBRARY_FOLDER_FILE_PROPERTIES" text="File Properties"/>
+		<item id="ID_LIBRARY_FOLDER_PROPERTIES" text="Album Properties"/>
 	</menu>
 	<menu name="CLibraryHistoryPanel">
-		<item id="ID_LIBRARY_SHOW_FILE" text="_Show in Library"/>
-		<item id="ID_LIBRARY_CLEAR_HISTORY" text="Clear from _History"/>
-		<item id="ID_LIBRARY_CLEAR_HISTORY_ALL" text="Clear _All"/>
+		<item id="ID_LIBRARY_SHOW_FILE" text="Show in Library"/>
+		<item id="ID_LIBRARY_CLEAR_HISTORY" text="Clear from History"/>
+		<item id="ID_LIBRARY_CLEAR_HISTORY_ALL" text="Clear All"/>
 	</menu>
 	<!-- LIBRARY VIEWS -->
 	<menu name="CLibraryTileView">
@@ -1344,15 +1344,15 @@
 			<item id="ID_LIBRARY_COPY" text="파일 복사..."/>
 			<item id="ID_LIBRARY_MOVE" text="파일 이동..."/>
 			<separator/>
-			<item id="ID_LIBRARY_URI" text="Get P2P Link (_URI)"/>
+			<item id="ID_LIBRARY_URI" text="Get P2P Link (URI)"/>
 		</menu>
-		<menu text="S_earch For">
-			<item id="ID_SEARCH_FOR_THIS" text="_이 파일을"/>
+		<menu text="Search For">
+			<item id="ID_SEARCH_FOR_THIS" text="이 파일을"/>
 			<item id="ID_SEARCH_FOR_SIMILAR" text="비슷한 파일"/>
 			<separator/>
-			<item id="ID_SEARCH_FOR_ARTIST" text="_Music by the same Artist"/>
-			<item id="ID_SEARCH_FOR_ALBUM" text="Music in the same _Album"/>
-			<item id="ID_SEARCH_FOR_SERIES" text="_Episodes in the same Series"/>
+			<item id="ID_SEARCH_FOR_ARTIST" text="Music by the same Artist"/>
+			<item id="ID_SEARCH_FOR_ALBUM" text="Music in the same Album"/>
+			<item id="ID_SEARCH_FOR_SERIES" text="Episodes in the same Series"/>
 		</menu>
 		<separator/>
 		<item id="ID_LIBRARY_PROPERTIES" text="등록"/>
@@ -1364,37 +1364,37 @@
 		<separator/>
 		<item id="ID_LIBRARY_SHARED_FILE" text="공유"/>
 		<separator/>
-		<item id="ID_LIBRARY_URI" text="Get P2P Link (_URI)"/>
-		<item id="ID_LIBRARY_CREATETORRENT" text="Create ._torrent File"/>
+		<item id="ID_LIBRARY_URI" text="Get P2P Link (URI)"/>
+		<item id="ID_LIBRARY_CREATETORRENT" text="Create .torrent File"/>
 		<item id="ID_LIBRARY_LAUNCH_FOLDER" text="폴더 열기"/>
 		<separator/>
-		<menu text="O_rganise">
+		<menu text="Organise">
 			<item id="ID_LIBRARY_UNLINK" text="파일 제거"/>
 			<separator/>
 			<item id="ID_LIBRARY_RENAME" text="파일 이름 바꾸"/>
 			<item id="ID_LIBRARY_MOVE" text="파일 이동..."/>
 			<item id="ID_LIBRARY_COPY" text="파일 복사..."/>
 		</menu>
-		<menu text="S_earch">
+		<menu text="Search">
 			<item id="ID_SEARCH_FOR_THIS" text="이 파일을"/>
 			<item id="ID_SEARCH_FOR_SIMILAR" text="비슷한 파일"/>
 			<separator/>
-			<item id="ID_SEARCH_FOR_ARTIST" text="_Music by the same Artist"/>
-			<item id="ID_SEARCH_FOR_ALBUM" text="Music in the same _Album"/>
-			<item id="ID_SEARCH_FOR_SERIES" text="_Episodes in the same Series"/>
+			<item id="ID_SEARCH_FOR_ARTIST" text="Music by the same Artist"/>
+			<item id="ID_SEARCH_FOR_ALBUM" text="Music in the same Album"/>
+			<item id="ID_SEARCH_FOR_SERIES" text="Episodes in the same Series"/>
 		</menu>
-		<menu text="We_b Services">
+		<menu text="Web Services">
 			<item id="ID_LIBRARY_BITPRINTS_WEB" text="View Bitprints listing"/>
 			<item id="ID_LIBRARY_BITPRINTS_DOWNLOAD" text="다운로드 메타"/>
 		</menu>
-		<menu text="_Metadata"> <!--메타 데이터-->
-			<item id="ID_LIBRARY_REBUILD_FILE" text="Re_build Hashes"/>
+		<menu text="Metadata"> <!--메타 데이터-->
+			<item id="ID_LIBRARY_REBUILD_FILE" text="Rebuild Hashes"/>
 			<item id="ID_LIBRARY_REFRESH_METADATA" text="새로고침 메"/>
 			<item id="ID_LIBRARY_REBUILD_ANSI" text="지방적 특색을 메"/>
 			<item id="ID_LIBRARY_COLUMNS" text="열 선택을..."/>
 		</menu>
 		<separator/>
-		<item id="ID_SHELL_MENU" text="S_hell menu"/>
+		<item id="ID_SHELL_MENU" text="Shell menu"/>
 		<item id="ID_LIBRARY_PROPERTIES" text="등록"/>
 	</menu>
 	<!-- MEDIA WINDOW -->
@@ -1403,9 +1403,9 @@
 		<item id="ID_MEDIA_PAUSE" text="일시 중지"/>
 		<item id="ID_MEDIA_STOP" text="중"/>
 		<separator/>
-		<item id="ID_MEDIA_OPEN" text="_Open Media File..."/>
+		<item id="ID_MEDIA_OPEN" text="미디어 파일 열기..."/>
 		<separator/>
-		<menu text="Play_list">
+		<menu text="Playlist">
 			<item id="ID_MEDIA_PREVIOUS" text="이전"/>
 			<item id="ID_MEDIA_NEXT" text="다음"/>
 			<item id="ID_MEDIA_RANDOM" text="랜덤"/>
@@ -1413,7 +1413,7 @@
 			<separator/>
 			<item id="ID_MEDIA_PLAYLIST" text="쇼 재생"/>
 		</menu>
-		<menu text="Video Si_ze">
+		<menu text="Video Size">
 			<item id="ID_MEDIA_SIZE_ONE" text="원본 크기"/>
 			<item id="ID_MEDIA_SIZE_TWO" text="더블 사이즈"/>
 			<item id="ID_MEDIA_SIZE_HALF" text="트리플 크기"/>
@@ -1421,14 +1421,14 @@
 			<item id="ID_MEDIA_SIZE_DISTORT" text="채우기 창"/>
 			<separator/>
 			<item id="ID_MEDIA_ASPECT_DEFAULT" text="기본 화면"/>
-			<item id="ID_MEDIA_ASPECT_4_3" text="_4:3 비율 (텔레비젼)"/>
-			<item id="ID_MEDIA_ASPECT_16_9" text="_16:9 (영화)"/>
+			<item id="ID_MEDIA_ASPECT_4_3" text="4:3 비율 (텔레비젼)"/>
+			<item id="ID_MEDIA_ASPECT_16_9" text="16:9 (영화)"/>
 			<separator/>
 			<item id="ID_MEDIA_FULLSCREEN" text="전체 화면"/>
 		</menu>
-		<menu text="Setti_ngs">
-			<item id="ID_MEDIA_VIS" text="시각화 선택..."/>
-			<separator/>
+		<menu text="Settings">
+			<!--item id="ID_MEDIA_VIS" text="시각화 선택..."-->
+			<!--separator-->
 			<item id="ID_MEDIA_PLAYLIST" text="쇼 재생"/>
 			<item id="ID_MEDIA_STATUS" text="보기 상태 라인"/>
 			<separator/>
@@ -1440,184 +1440,184 @@
 		<item id="ID_MEDIA_PAUSE" text="일시 중지"/>
 		<item id="ID_MEDIA_STOP" text="중"/>
 		<separator/>
-		<item id="ID_MEDIA_OPEN" text="_Open Media File..."/>
-		<item id="ID_MEDIA_CLOSE" text="_닫기 File"/>
+		<item id="ID_MEDIA_OPEN" text="미디어 파일 열기..."/>
+		<item id="ID_MEDIA_CLOSE" text="닫기 File"/>
 		<separator/>
-		<menu text="Play_list">
-			<item id="ID_MEDIA_PREVIOUS" text="Pre_vious"/>
-			<item id="ID_MEDIA_NEXT" text="_Next"/>
-			<item id="ID_MEDIA_RANDOM" text="_Random"/>
-			<item id="ID_MEDIA_REPEAT" text="R_epeat"/>
+		<menu text="Playlist">
+			<item id="ID_MEDIA_PREVIOUS" text="Previous"/>
+			<item id="ID_MEDIA_NEXT" text="Next"/>
+			<item id="ID_MEDIA_RANDOM" text="Random"/>
+			<item id="ID_MEDIA_REPEAT" text="Repeat"/>
 			<separator/>
 			<item id="ID_MEDIA_PLAYLIST" text="쇼 재생"/>
 		</menu>
-		<menu text="Video Si_ze">
-			<item id="ID_MEDIA_SIZE_ONE" text="_Original Size"/>
-			<item id="ID_MEDIA_SIZE_TWO" text="_Double Size"/>
-			<item id="ID_MEDIA_SIZE_HALF" text="_Half Size"/>
-			<item id="ID_MEDIA_SIZE_FILL" text="Best _Fit"/>
-			<item id="ID_MEDIA_SIZE_DISTORT" text="Fill _Window"/>
+		<menu text="Video Size">
+			<item id="ID_MEDIA_SIZE_ONE" text="Original Size"/>
+			<item id="ID_MEDIA_SIZE_TWO" text="Double Size"/>
+			<item id="ID_MEDIA_SIZE_HALF" text="Half Size"/>
+			<item id="ID_MEDIA_SIZE_FILL" text="Best Fit"/>
+			<item id="ID_MEDIA_SIZE_DISTORT" text="Fill Window"/>
 			<separator/>
-			<item id="ID_MEDIA_ASPECT_DEFAULT" text="Default _Aspect"/>
-			<item id="ID_MEDIA_ASPECT_4_3" text="_4:3 Ratio (텔레비젼)"/>
-			<item id="ID_MEDIA_ASPECT_16_9" text="_16:9 Ratio (영화)"/>
+			<item id="ID_MEDIA_ASPECT_DEFAULT" text="Default Aspect"/>
+			<item id="ID_MEDIA_ASPECT_4_3" text="4:3 Ratio (텔레비젼)"/>
+			<item id="ID_MEDIA_ASPECT_16_9" text="16:9 Ratio (영화)"/>
 			<separator/>
-			<item id="ID_MEDIA_FULLSCREEN" text="_Full Screen"/>
+			<item id="ID_MEDIA_FULLSCREEN" text="Full Screen"/>
 		</menu>
 		<menu text="설정이">
-			<item id="ID_MEDIA_VIS" text="Choose _Visualisation..."/>
+			<!--item id="ID_MEDIA_VIS" text="시각화 선택..."-->
+			<!--separator-->
+			<item id="ID_MEDIA_PLAYLIST" text="쇼 재생"/>
+			<item id="ID_MEDIA_STATUS" text="보기 상태 라인"/>
 			<separator/>
-			<item id="ID_MEDIA_PLAYLIST" text="Show _Playlist"/>
-			<item id="ID_MEDIA_STATUS" text="Show _Status Line"/>
-			<separator/>
-			<item id="ID_MEDIA_SETTINGS" text="_Media 설정이..."/>
+			<item id="ID_MEDIA_SETTINGS" text="미디어 설정..."/>
 		</menu>
 	</menu>
 	<menu name="CMediaFrame.Zoom">
-		<item id="ID_MEDIA_SIZE_ONE" text="_Original Size"/>
-		<item id="ID_MEDIA_SIZE_TWO" text="_Double Size"/>
-		<item id="ID_MEDIA_SIZE_HALF" text="_Half Size"/>
-		<item id="ID_MEDIA_SIZE_FILL" text="Best _Fit"/>
-		<item id="ID_MEDIA_SIZE_DISTORT" text="Fill _Window"/>
+		<item id="ID_MEDIA_SIZE_ONE" text="Original Size"/>
+		<item id="ID_MEDIA_SIZE_TWO" text="Double Size"/>
+		<item id="ID_MEDIA_SIZE_HALF" text="Half Size"/>
+		<item id="ID_MEDIA_SIZE_FILL" text="Best Fit"/>
+		<item id="ID_MEDIA_SIZE_DISTORT" text="Fill Window"/>
 		<separator/>
-		<item id="ID_MEDIA_ASPECT_DEFAULT" text="Default _Aspect"/>
-		<item id="ID_MEDIA_ASPECT_4_3" text="_4:3 Ratio (텔레비젼)"/>
-		<item id="ID_MEDIA_ASPECT_16_9" text="_16:9 Ratio (영화)"/>
+		<item id="ID_MEDIA_ASPECT_DEFAULT" text="Default Aspect"/>
+		<item id="ID_MEDIA_ASPECT_4_3" text="4:3 Ratio (텔레비젼)"/>
+		<item id="ID_MEDIA_ASPECT_16_9" text="16:9 Ratio (영화)"/>
 	</menu>
 	<menu name="CMediaList">
 		<item id="ID_MEDIA_SELECT" text="재생"/>
-		<item id="ID_MEDIA_PROPERTIES" text="_Properties..."/>
-		<item id="ID_MEDIA_RATE" text="Ra_te File..."/>
+		<item id="ID_MEDIA_PROPERTIES" text="Properties..."/>
+		<item id="ID_MEDIA_RATE" text="Rate File..."/>
 		<separator/>
-		<item id="ID_MEDIA_ADD" text="_Add Files..."/>
-		<item id="ID_MEDIA_REMOVE" text="_Remove Files"/>
-		<item id="ID_MEDIA_CLEAR" text="_Clear Playlist"/>
+		<item id="ID_MEDIA_ADD" text="Add Files..."/>
+		<item id="ID_MEDIA_REMOVE" text="Remove Files"/>
+		<item id="ID_MEDIA_CLEAR" text="Clear Playlist"/>
 		<separator/>
-		<item id="ID_MEDIA_ADD_FOLDER" text="Add _Folder..."/>
-		<item id="ID_MEDIA_OPEN" text="_Open Playlist..."/>
-		<item id="ID_MEDIA_SAVE" text="_Save Playlist..."/>
-		<item id="ID_MEDIA_EXPORT_COLLECTION" text="E_xport Collection..."/>
+		<item id="ID_MEDIA_ADD_FOLDER" text="Add Folder..."/>
+		<item id="ID_MEDIA_OPEN" text="Open Playlist..."/>
+		<item id="ID_MEDIA_SAVE" text="Save Playlist..."/>
+		<item id="ID_MEDIA_EXPORT_COLLECTION" text="Export Collection..."/>
 		<separator/>
-		<item id="ID_MEDIA_RANDOM" text="Ra_ndom Mode"/>
-		<item id="ID_MEDIA_REPEAT" text="Rep_eat Mode"/>
+		<item id="ID_MEDIA_RANDOM" text="Random Mode"/>
+		<item id="ID_MEDIA_REPEAT" text="Repeat Mode"/>
 		<separator/>
-		<item id="ID_MEDIA_PLAYLIST" text="Hide Pla_ylist"/>
+		<item id="ID_MEDIA_PLAYLIST" text="Hide Playlist"/>
 	</menu>
 	<!-- SYSTEM WINDOW -->
 	<menu name="CSystemWnd">
-		<menu id="ID_SYSTEM_VERBOSE" text="_Verbose Mode">
-			<item id="ID_SYSTEM_VERBOSE_ERROR" text="_Error"/>
-			<item id="ID_SYSTEM_VERBOSE_WARNING" text="_Warning"/>
-			<item id="ID_SYSTEM_VERBOSE_NOTICE" text="_Notice"/>
-			<item id="ID_SYSTEM_VERBOSE_INFO" text="_Info"/>
-			<item id="ID_SYSTEM_VERBOSE_DEBUG" text="_Debug"/>
+		<menu id="ID_SYSTEM_VERBOSE" text="Verbose Mode">
+			<item id="ID_SYSTEM_VERBOSE_ERROR" text="Error"/>
+			<item id="ID_SYSTEM_VERBOSE_WARNING" text="Warning"/>
+			<item id="ID_SYSTEM_VERBOSE_NOTICE" text="Notice"/>
+			<item id="ID_SYSTEM_VERBOSE_INFO" text="Info"/>
+			<item id="ID_SYSTEM_VERBOSE_DEBUG" text="Debug"/>
 		</menu>
-		<item id="ID_SYSTEM_TIMESTAMP" text="_Timestamp"/>
+		<item id="ID_SYSTEM_TIMESTAMP" text="Timestamp"/>
 		<separator/>
-		<item id="ID_SYSTEM_COPY" text="_Copy" shortcut="Ctrl+C"/>
+		<item id="ID_SYSTEM_COPY" text="Copy" shortcut="Ctrl+C"/>
 		<separator/>
-		<item id="ID_SYSTEM_CLEAR" text="Clear _Buffer"/>
+		<item id="ID_SYSTEM_CLEAR" text="Clear Buffer"/>
 	</menu>
 	<!-- NEIGHBOURS WINDOW -->
 	<menu name="CNeighboursWnd.Basic">
-		<item id="ID_BROWSE_LAUNCH" text="_Browse User"/>
-		<item id="ID_NEIGHBOURS_CHAT" text="_Chat to User"/>
+		<item id="ID_BROWSE_LAUNCH" text="Browse User"/>
+		<item id="ID_NEIGHBOURS_CHAT" text="Chat to User"/>
 		<separator/>
 		<item id="ID_NEIGHBOURS_DISCONNECT" text="끊습니다"/>
 		<separator/>
-		<item id="ID_NEIGHBOURS_URI" text="Get P2P Link (_URI)"/>
+		<item id="ID_NEIGHBOURS_URI" text="Get P2P Link (URI)"/>
 	</menu>
 	<menu name="CNeighboursWnd">
-		<item id="ID_BROWSE_LAUNCH" text="_Browse User"/>
-		<item id="ID_NEIGHBOURS_CHAT" text="_Chat to User"/>
-		<item id="ID_SECURITY_BAN" text="B_an User"/>
+		<item id="ID_BROWSE_LAUNCH" text="Browse User"/>
+		<item id="ID_NEIGHBOURS_CHAT" text="Chat to User"/>
+		<item id="ID_SECURITY_BAN" text="Ban User"/>
 		<separator/>
 		<item id="ID_NEIGHBOURS_DISCONNECT" text="끊습니다"/>
 		<separator/>
-		<item id="ID_NEIGHBOURS_URI" text="Get P2P Link (_URI)"/>
+		<item id="ID_NEIGHBOURS_URI" text="Get P2P Link (URI)"/>
 		<separator/>
 		<menu text="네트워크">
 			<item id="ID_NETWORK_CONNECT" text="연결"/>
 			<item id="ID_NETWORK_DISCONNECT" text="끊습니다"/>
 			<separator/>
-			<item id="ID_NETWORK_G2" text="Gnutella_2"/>
-			<item id="ID_NETWORK_G1" text="_Gnutella"/>
-			<item id="ID_NETWORK_ED2K" text="_eDonkey"/>
-			<item id="ID_NETWORK_DC" text="_DC++"/>
-			<item id="ID_NETWORK_BT" text="_BitTorrent"/>
+			<item id="ID_NETWORK_G2" text="Gnutella2"/>
+			<item id="ID_NETWORK_G1" text="Gnutella"/>
+			<item id="ID_NETWORK_ED2K" text="eDonkey"/>
+			<item id="ID_NETWORK_DC" text="DC++"/>
+			<item id="ID_NETWORK_BT" text="BitTorrent"/>
 			<separator/>
 			<item id="ID_VIEW_DISCOVERY" text="디스커버"/>
 			<item id="ID_VIEW_HOSTS" text="호스트 캐시"/>
 			<item id="ID_VIEW_SECURITY" text="보안 항목"/>
 		</menu>
-		<menu text="_Monitor">
-			<item id="ID_NEIGHBOURS_VIEW_ALL" text="View _All Traffic"/>
-			<item id="ID_NEIGHBOURS_VIEW_INCOMING" text="View _Incoming Traffic"/>
-			<item id="ID_NEIGHBOURS_VIEW_OUTGOING" text="View _Outgoing Traffic"/>
+		<menu text="Monitor">
+			<item id="ID_NEIGHBOURS_VIEW_ALL" text="View All Traffic"/>
+			<item id="ID_NEIGHBOURS_VIEW_INCOMING" text="View Incoming Traffic"/>
+			<item id="ID_NEIGHBOURS_VIEW_OUTGOING" text="View Outgoing Traffic"/>
 		</menu>
 	</menu>
 	<!-- SEARCH MONITOR WINDOW -->
 	<menu name="CSearchMonitorWnd">
-		<item id="ID_HITMONITOR_SEARCH" text="_Search for This"/>
+		<item id="ID_HITMONITOR_SEARCH" text="Search for This"/>
 		<separator/>
-		<item id="ID_BROWSE_LAUNCH" text="_Browse User"/>
-		<item id="ID_SECURITY_BAN" text="B_an User"/>
+		<item id="ID_BROWSE_LAUNCH" text="Browse User"/>
+		<item id="ID_SECURITY_BAN" text="Ban User"/>
 		<separator/>
-		<item id="ID_SEARCHMONITOR_PAUSE" text="_Pause Display"/>
-		<item id="ID_SEARCHMONITOR_CLEAR" text="_Clear Buffer"/>
+		<item id="ID_SEARCHMONITOR_PAUSE" text="Pause Display"/>
+		<item id="ID_SEARCHMONITOR_CLEAR" text="Clear Buffer"/>
 	</menu>
 	<!-- GRAPH/TRAFFIC WINDOW -->
 	<menu name="CTrafficWnd">
-		<item id="ID_TRAFFIC_SETUP" text="_Select Graphs..."/>
+		<item id="ID_TRAFFIC_SETUP" text="Select Graphs..."/>
 		<separator/>
-		<item id="ID_TRAFFIC_GRID" text="_Grid Lines"/>
-		<item id="ID_TRAFFIC_AXIS" text="_Axis"/>
-		<item id="ID_TRAFFIC_LEGEND" text="_Legend"/>
+		<item id="ID_TRAFFIC_GRID" text="Grid Lines"/>
+		<item id="ID_TRAFFIC_AXIS" text="Axis"/>
+		<item id="ID_TRAFFIC_LEGEND" text="Legend"/>
 		<separator/>
-		<item id="ID_TRAFFIC_CLEAR" text="_Clear"/>
+		<item id="ID_TRAFFIC_CLEAR" text="Clear"/>
 		<separator/>
-		<item id="ID_TRAFFIC_WINDOW" text="_New Window"/>
+		<item id="ID_TRAFFIC_WINDOW" text="New Window"/>
 	</menu>
 	<!-- SECURITY WINDOW -->
 	<menu name="CSecurityWnd">
 		<item id="ID_SECURITY_ADD" text="추가 Rule..."/>
 		<separator/>
 		<item id="ID_SECURITY_REMOVE" text="삭제"/>
-		<item id="ID_SECURITY_RESET" text="Rese_t"/>
+		<item id="ID_SECURITY_RESET" text="Reset"/>
 		<separator/>
-		<item id="ID_SECURITY_MOVE_UP" text="Move _Up" shortcut="Ctrl+Up"/>
-		<item id="ID_SECURITY_MOVE_DOWN" text="Move _Down" shortcut="Ctrl+Dn"/>
+		<item id="ID_SECURITY_MOVE_UP" text="Move Up" shortcut="Ctrl+Up"/>
+		<item id="ID_SECURITY_MOVE_DOWN" text="Move Down" shortcut="Ctrl+Dn"/>
 		<separator/>
-		<item id="ID_SECURITY_IMPORT" text="_Import..."/>
-		<item id="ID_SECURITY_EXPORT" text="E_xport..."/>
+		<item id="ID_SECURITY_IMPORT" text="Import..."/>
+		<item id="ID_SECURITY_EXPORT" text="Export..."/>
 		<separator/>
-		<menu text="Default P_olicy">
-			<item id="ID_SECURITY_POLICY_ACCEPT" text="_Accept"/>
-			<item id="ID_SECURITY_POLICY_DENY" text="_Deny"/>
+		<menu text="Default Policy">
+			<item id="ID_SECURITY_POLICY_ACCEPT" text="Accept"/>
+			<item id="ID_SECURITY_POLICY_DENY" text="Deny"/>
 		</menu>
 		<separator/>
-		<item id="ID_SECURITY_EDIT" text="_Properties"/>
+		<item id="ID_SECURITY_EDIT" text="Properties"/>
 	</menu>
 	<!-- DISCOVERY SERVICES WINDOW -->
 	<menu name="CDiscoveryWnd">
 		<item id="ID_DISCOVERY_ADD" text="추가..."/>
 		<separator/>
-		<item id="ID_DISCOVERY_EDIT" text="_Edit"/>
+		<item id="ID_DISCOVERY_EDIT" text="Edit"/>
 		<item id="ID_DISCOVERY_REMOVE" text="삭제"/>
 		<separator/>
-		<item id="ID_DISCOVERY_QUERY" text="_Query Now"/>
-		<item id="ID_DISCOVERY_ADVERTISE" text="A_dvertise"/>
-		<item id="ID_DISCOVERY_BROWSE" text="Browse _Statistics"/>
+		<item id="ID_DISCOVERY_QUERY" text="Query Now"/>
+		<item id="ID_DISCOVERY_ADVERTISE" text="Advertise"/>
+		<item id="ID_DISCOVERY_BROWSE" text="Browse Statistics"/>
 		<separator/>
-		<item id="ID_DISCOVERY_GNUTELLA" text="보기 _Bootstraps"/>
-		<item id="ID_DISCOVERY_WEBCACHE" text="보기 _GWebCaches"/>
-		<item id="ID_DISCOVERY_SERVERLIST" text="보기 Ser_ver.met's"/>
+		<item id="ID_DISCOVERY_GNUTELLA" text="보기 Bootstraps"/>
+		<item id="ID_DISCOVERY_WEBCACHE" text="보기 GWebCaches"/>
+		<item id="ID_DISCOVERY_SERVERLIST" text="보기 Server.met's"/>
 		<item id="ID_DISCOVERY_BLOCKED" text="보기 차단된"/>
 	</menu>
 	<!-- PRIVATE CHAT FRAME -->
 	<!-- IRC WINDOW -->
 	<menu name="CIRCTabRClick">
-		<item id="ID_IRC_CLOSETAB" text="_닫기"/>
+		<item id="ID_IRC_CLOSETAB" text="닫기"/>
 	</menu>
 </menus>
 <!-- Documents -->
@@ -2411,12 +2411,12 @@
 		<control/>
 	</dialog>
 	<dialog name="CCommunitySettingsPage" cookie="BuBuBuBuBuBuBuBuBuSt" caption="커뮤니티">
-		<control text="Direct _Chat:"/>
+		<control text="Direct Chat:"/>
 		<control text="Enable peer-to-peer messaging with compatible clients"/>
 		<control text="Enable chat over other protocols where possible"/>
 		<control text="Filter chat messages for spam"/>
 		<control text="Censor profanity in chat"/>
-		<control text="_Profile:"/>
+		<control text="Profile:"/>
 		<control text="Enable browse profile"/>
 		<control text="Update Profile"/>
 		<control text="정보:"/>
@@ -2434,7 +2434,6 @@
 		<control/>
 		<control text="정보:"/>
 		<control text="Remote Access allows you to leave Envy running on your PC, and control it remotely using any web browser. {n}You must be able to accept incoming connections.  (Port-forwarding)"/>
-
 	</dialog>
 	<dialog name="CWebSettingsPage" cookie="BuStBuBuBuBuBuBuBuBuCoBuBuSt" caption="웹 링크">
 		<control text="Peer to Peer Link Handling:"/>
@@ -2746,14 +2745,14 @@
 		<control/>
 		<control/>
 		<control/>
-		<control text="_Vitals:"/>
+		<control text="Vitals:"/>
 		<control text="Gender:"/>
 		<control text="Age:"/>
 		<control text="|Male|Female"/>
 		<control/>
 		<control text="Note:"/>
 		<control text="This profile is available to users who browse your files, primarily on the G2 network.{n}(Envy or Shareaza)"/>
-		<control text="_Active:"/>
+		<control text="Active:"/>
 		<control text="Allow others to browse my user profile"/>
 	</dialog>
 	<!-- Mising Profile Dialogs -->
@@ -2786,11 +2785,11 @@
 		<control text="취소"/>
 	</dialog>
 	<dialog name="CFilterSearchDlg" cookie="BuEdBuStBuStEdStEdStEdmsBuBuBuBuBuBuBuBuBuBuBuBuBuCoBuBuBuBuBu" caption="Filter Matches">
-		<control text="Only show matches with these _words:"/>
+		<control text="Only show matches with these words:"/>
 		<control/>
 		<control text="Reg. Exp."/>
 		<control text="(Exclude -words)"/>
-		<control text="_Limits:"/>
+		<control text="Limits:"/>
 		<control text="Min. size:"/>
 		<control/>
 		<control text="Max. size:"/>
@@ -2798,7 +2797,7 @@
 		<control text="Min. number of sources:"/>
 		<control/>
 		<control/>
-		<control text="_Hide:"/>
+		<control text="Hide:"/>
 		<control text="Files you have already"/>
 		<control text="Non-matching files"/>
 		<control text="Suspicious files"/>
@@ -2812,8 +2811,8 @@
 		<control text="Filters:"/>
 		<control/>
 		<control text="Set as default"/>
-		<control text="_Save as"/>
-		<control text="_Delete"/>
+		<control text="Save as"/>
+		<control text="Delete"/>
 		<control text="Filter"/>
 		<control text="취소"/>
 	</dialog>
@@ -3251,17 +3250,17 @@
 		<control text="Erase"/>
 	</dialog>
 	<dialog name="CDownloadGroupDlg" cookie="BuEdBuEdBuBuBuCoBuBuBuCoStBuBu" caption="Download Group Properties">
-		<control text="_Group Name:"/>
+		<control text="Group Name:"/>
 		<control/>
-		<control text="_Completed File Folder:"/>
+		<control text="Completed File Folder:"/>
 		<control/>
 		<control/>
 		<control/>
-		<control text="_Auto-Filters:"/>
+		<control text="Auto-Filters:"/>
 		<control/>
 		<control text="추가하기"/>
 		<control text="제거"/>
-		<control text="_Types of Files:"/>
+		<control text="Types of Files:"/>
 		<control/>
 		<control text="*Add any download type later."/>
 		<control text="OK"/>
@@ -3279,7 +3278,7 @@
 		<control text="A new version of Envy is now available. Would you like to upgrade?"/>
 		<control text="To update now, the upgrade installer will simply be added to your download queue."/>
 		<control text="Don't check for new versions"/>
-		<control text="_Download"/>
+		<control text="Download"/>
 		<control text="취소"/>
 	</dialog>
 	<dialog name="CDecodeMetadataDlg" cookie="StCoBuBuBuStStBuBu" caption="Metadata Localisation">

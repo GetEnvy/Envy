@@ -362,9 +362,9 @@ BOOL CUploadTransferHTTP::OnHeadersComplete()
 	if ( Security.IsClientBanned( m_sUserAgent ) )
 	{
 		SendResponse( IDR_HTML_BROWSER );
-		theApp.Message( MSG_ERROR, L"Client %s has prohibited user agent \"%s\", banning", (LPCTSTR)m_sAddress, (LPCTSTR)m_sUserAgent );
-		Security.Ban( &m_pHost.sin_addr, ban5Mins, FALSE, CString( L"Blocked user agent: " ) + m_sUserAgent );
-		Remove( FALSE );
+	//	theApp.Message( MSG_ERROR, L"Client %s has prohibited user agent \"%s\", banning", (LPCTSTR)m_sAddress, (LPCTSTR)m_sUserAgent );
+	//	Security.Ban( &m_pHost.sin_addr, ban5Mins, FALSE, CString( L"Blocked user agent: " ) + m_sUserAgent );
+		Remove( FALSE, IDS_SECURITY_BANNED_USERAGENT );
 		return FALSE;
 	}
 
@@ -377,10 +377,9 @@ BOOL CUploadTransferHTTP::OnHeadersComplete()
 		if ( m_bNotEnvy )
 		{
 			SendResponse( IDR_HTML_FILENOTFOUND );
-			theApp.Message( MSG_ERROR, L"Client %s has a spoofed user agent, banning", (LPCTSTR)m_sAddress );
-
-			Security.Ban( &m_pHost.sin_addr, banWeek, FALSE );
-			Remove( FALSE );
+		//	theApp.Message( MSG_ERROR, L"Client %s has a spoofed user agent, banning", (LPCTSTR)m_sAddress );
+		//	Security.Ban( &m_pHost.sin_addr, banWeek, FALSE );
+			Remove( FALSE, IDS_SECURITY_BANNED_USERAGENT );
 			return FALSE;
 		}
 	}

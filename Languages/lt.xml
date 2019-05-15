@@ -3,7 +3,7 @@
 
 <!-- Envy Default Lithuanian Skin File -->
 
-<!-- Translation based on default en.xml r22 -->
+<!-- Translation based on default en.xml r26 -->
 <!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -1410,8 +1410,8 @@
 			<item id="ID_MEDIA_FULLSCREEN" text="Visu _ekranu"/>
 		</menu>
 		<menu text="Nuostatos">
-			<item id="ID_MEDIA_VIS" text="Pasirinkti _muzikos vaizdą..."/>
-			<separator/>
+			<!--item id="ID_MEDIA_VIS" text="Pasirinkti _muzikos vaizdą..."-->
+			<!--separator-->
 			<item id="ID_MEDIA_PLAYLIST" text="_Rodyti grojaraštį"/>
 			<item id="ID_MEDIA_STATUS" text="Rodyti _būsenos juostelę"/>
 			<separator/>
@@ -1448,8 +1448,8 @@
 			<item id="ID_MEDIA_FULLSCREEN" text="Visu _ekranu"/>
 		</menu>
 		<menu text="Nuostatos">
-			<item id="ID_MEDIA_VIS" text="Pasirinkti _muzikos vaizdą..."/>
-			<separator/>
+			<!--item id="ID_MEDIA_VIS" text="Pasirinkti _muzikos vaizdą..."-->
+			<!--separator-->
 			<item id="ID_MEDIA_PLAYLIST" text="_Rodyti grojaraštį"/>
 			<item id="ID_MEDIA_STATUS" text="Rodyti _būsenos juostelę"/>
 			<separator/>

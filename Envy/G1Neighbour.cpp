@@ -18,7 +18,7 @@
 
 // A CG1Neighbour object represents a remote computer running Gnutella software with which we are exchanging Gnutella packets
 // http://shareaza.sourceforge.net/mediawiki/index.php/Developers.Code.CG1Neighbour
-// http://getenvy.com/archives/shareazawiki/Developers.Code.CG1Neighbour.html
+// http://getenvy.com/archives/envywiki/Developers.Code.CG1Neighbour.html
 
 #include "StdAfx.h"
 #include "Settings.h"

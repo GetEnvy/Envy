@@ -4,7 +4,7 @@
 <!-- Envy Default Afrikaans Skin File -->
 <!-- Weergawe: 27 Oktober 2005 vir Shareaza 2.2.0.2 -->
 
-<!-- Translation based on default en.xml r22 -->
+<!-- Translation based on default en.xml r26 -->
 <!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -1355,8 +1355,8 @@
 			<item id="ID_MEDIA_FULLSCREEN" text="_Volskerm"/>
 		</menu>
 		<menu text="Verstellings">
-			<item id="ID_MEDIA_VIS" text="Selekteer _Visualisering..."/>
-			<separator/>
+			<!--item id="ID_MEDIA_VIS" text="Selekteer _Visualisering..."-->
+			<!--separator-->
 			<item id="ID_MEDIA_PLAYLIST" text="Vertoon _Medialys"/>
 			<item id="ID_MEDIA_STATUS" text="Vertoon _Statuslyn"/>
 			<separator/>
@@ -1393,8 +1393,8 @@
 			<item id="ID_MEDIA_FULLSCREEN" text="_Volskerm"/>
 		</menu>
 		<menu text="Verstellings">
-			<item id="ID_MEDIA_VIS" text="Selekteer _Visualisering..."/>
-			<separator/>
+			<!--item id="ID_MEDIA_VIS" text="Selekteer _Visualisering..."-->
+			<!--separator-->
 			<item id="ID_MEDIA_PLAYLIST" text="Vertoon _Medialys"/>
 			<item id="ID_MEDIA_STATUS" text="Vertoon _Statuslyn"/>
 			<separator/>

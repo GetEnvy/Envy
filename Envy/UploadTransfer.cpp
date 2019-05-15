@@ -80,7 +80,7 @@ CUploadTransfer::~CUploadTransfer()
 //////////////////////////////////////////////////////////////////////
 // CUploadTransfer remove record
 
-void CUploadTransfer::Remove(BOOL bMessage)
+void CUploadTransfer::Remove(BOOL bMessage, UINT nError /*0*/)
 {
 	ASSERT( this != NULL );
 
@@ -88,7 +88,7 @@ void CUploadTransfer::Remove(BOOL bMessage)
 		theApp.Message( MSG_NOTICE, IDS_UPLOAD_REMOVE, (LPCTSTR)m_sName, (LPCTSTR)m_sAddress );
 
 	m_nUploaded = 1;
-	Close();
+	Close( nError );
 
 	delete this;
 }

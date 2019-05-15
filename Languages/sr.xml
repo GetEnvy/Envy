@@ -3,7 +3,7 @@
 
 <!-- Envy Default Serbian Skin File -->
 
-<!-- Translation based on default en.xml r22 -->
+<!-- Translation based on default en.xml r26 -->
 <!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -1331,8 +1331,8 @@
 			<item id="ID_MEDIA_FULLSCREEN" text="Celi Ekran"/>
 		</menu>
 		<menu text="Podešavanja">
-			<item id="ID_MEDIA_VIS" text="Odaberi _Vizualizaciju..."/>
-			<separator/>
+			<!--item id="ID_MEDIA_VIS" text="Odaberi _Vizualizaciju..."-->
+			<!--separator-->
 			<item id="ID_MEDIA_PLAYLIST" text="Pokaži _Playlistu"/>
 			<item id="ID_MEDIA_STATUS" text="Pokaži _Statusnu Liniju"/>
 			<separator/>
@@ -1369,8 +1369,8 @@
 			<item id="ID_MEDIA_FULLSCREEN" text="Celi Ekran"/>
 		</menu>
 		<menu text="Podešavanja">
-			<item id="ID_MEDIA_VIS" text="Odaberi _Vizualizaciju..."/>
-			<separator/>
+			<!--item id="ID_MEDIA_VIS" text="Odaberi _Vizualizaciju..."-->
+			<!--separator-->
 			<item id="ID_MEDIA_PLAYLIST" text="Pokaži _Playlistu"/>
 			<item id="ID_MEDIA_STATUS" text="Pokaži _Statusnu Liniju"/>
 			<separator/>

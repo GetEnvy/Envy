@@ -3,7 +3,7 @@
 
 <!-- Envy Default French Skin File -->
 
-<!-- Translation based on default en.xml r22 -->
+<!-- Translation based on default en.xml r26 -->
 <!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -1453,8 +1453,8 @@
 			<item id="ID_MEDIA_FULLSCREEN" text="_Plein écran"/>
 		</menu>
 		<menu text="_Réglages">
-			<item id="ID_MEDIA_VIS" text="Choisir une _visualisation..."/>
-			<separator/>
+			<!--item id="ID_MEDIA_VIS" text="Choisir une _visualisation..."-->
+			<!--separator-->
 			<item id="ID_MEDIA_PLAYLIST" text="Afficher la _liste de lecture"/>
 			<item id="ID_MEDIA_STATUS" text="Afficher la ligne de _statut"/>
 			<separator/>
@@ -1491,8 +1491,8 @@
 			<item id="ID_MEDIA_FULLSCREEN" text="_Plein écran"/>
 		</menu>
 		<menu text="_Réglages">
-			<item id="ID_MEDIA_VIS" text="Choisir une _visualisation..."/>
-			<separator/>
+			<!--item id="ID_MEDIA_VIS" text="Choisir une _visualisation..."-->
+			<!--separator-->
 			<item id="ID_MEDIA_PLAYLIST" text="Afficher la _liste de lecture"/>
 			<item id="ID_MEDIA_STATUS" text="Afficher la ligne de _statut"/>
 			<separator/>

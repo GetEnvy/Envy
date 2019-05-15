@@ -18,7 +18,7 @@
 
 // CG1Packet represents a Gnutella packet, and CG1PacketPool keeps lists of them
 // http://shareaza.sourceforge.net/mediawiki/index.php/Developers.Code.CG1Packet
-// http://getenvy.com/archives/shareazawiki/Developers.Code.CG1Packet.html
+// http://getenvy.com/archives/envywiki/Developers.Code.CG1Packet.html
 
 #pragma once
 

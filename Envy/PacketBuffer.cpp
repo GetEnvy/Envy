@@ -18,7 +18,7 @@
 
 // CG1PacketBuffer holds arrays of packets to send, organized by their type
 // http://shareaza.sourceforge.net/mediawiki/index.php/Developers.Code.CG1PacketBuffer
-// http://getenvy.com/archives/shareazawiki/Developers.Code.CG1PacketBuffer.html
+// http://getenvy.com/archives/envywiki/Developers.Code.CG1PacketBuffer.html
 
 #include "StdAfx.h"
 #include "Settings.h"

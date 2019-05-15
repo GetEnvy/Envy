@@ -1,6 +1,5 @@
 M http://cache.getenvy.com/cachechu/
 M http://cache.getenvy.com/skulls/
-M http://webcache.peerproject.org/
 M http://gwctest.zapto.org:1337/
 M http://disobscure.velum-ultra.com/skulls.php
 M http://tenafly5k.com/gwc/skulls.php
@@ -8,6 +7,7 @@ M http://gweb.4octets.co.uk/skulls.php
 M http://gweb2.4octets.co.uk/gwc.php
 # http://gweb.dwbo.nl/
 # http://cache.w3-hidden.cc/
+# http://webcache.peerproject.org/
 
 # http://cache.getenvy.com/dkac/
 2 http://dkac.trillinux.org/dkac/dkac.php

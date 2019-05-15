@@ -18,8 +18,8 @@
 
 // CShakeNeighbour reads and sends handshake headers to negotiate the Gnutella or Gnutella2 handshake
 // http://shareaza.sourceforge.net/mediawiki/index.php/Developers.Code.CShakeNeighbour
-// http://getenvy.com/archives/shareazawiki/Developers.Code.CShakeNeighbour.html
-// http://getenvy.com/archives/shareazawiki/Developers.Code.CShakeNeighbour.Running.html
+// http://getenvy.com/archives/envywiki/Developers.Code.CShakeNeighbour.html
+// http://getenvy.com/archives/envywiki/Developers.Code.CShakeNeighbour.Running.html
 
 #include "StdAfx.h"
 #include "Settings.h"
@@ -57,7 +57,7 @@ CShakeNeighbour::CShakeNeighbour() : CNeighbour( PROTOCOL_NULL )
 	, m_bUltraPeerSet	( TRI_UNKNOWN )		// Remote hasn't told us if it's ultra or not yet: unknown
 	, m_bUltraPeerNeeded ( TRI_UNKNOWN )	// Remote hasn't told us if it needs more ultra connections yet: unknown
 	, m_bUltraPeerLoaded ( TRI_UNKNOWN )	// May not be in use (do): unknown
-	, m_bDelayClose 	( FALSE )
+	, m_nDelayClose 	( 0 )
 	, m_bCanDeflate 	( Neighbours.IsG2Leaf() ?
 		Settings.Gnutella.DeflateLeaf2Hub : ( Settings.Gnutella.DeflateHub2Leaf || Settings.Gnutella.DeflateHub2Hub ) )
 {
@@ -587,7 +587,7 @@ BOOL CShakeNeighbour::ReadResponse()
 			strLine = strLine.Mid( 13, 3 );
 			m_nState = nrsRejected;		// Set the neighbour state in this CShakeNeighbour object to rejected
 			if ( strLine == L"503" )
-				m_bDelayClose = TRUE;
+				m_nDelayClose = IDS_HANDSHAKE_REJECTED;
 				// "503 Not Good Leaf"
 				// "503 We're Leaves"
 				// "503 Service unavailable"
@@ -717,7 +717,7 @@ BOOL CShakeNeighbour::OnHeaderLine(CString& strHeader, CString& strValue)
 			// Actual leechers and hostile clients. (Ban these only.)
 			m_nState		= nrsRejected;
 			m_bBadClient	= TRUE;
-			m_bDelayClose	= TRUE;
+			m_nDelayClose	= IDS_SECURITY_BANNED_USERAGENT;
 			Security.Ban( &m_pHost.sin_addr, ban2Hours );
 		}
 		else if ( Security.IsAgentBlocked( m_sUserAgent ) )
@@ -725,7 +725,7 @@ BOOL CShakeNeighbour::OnHeaderLine(CString& strHeader, CString& strValue)
 			// Remote computer is running a client the user has blocked.
 			m_nState		= nrsRejected;
 			m_bBadClient	= TRUE;
-			m_bDelayClose	= TRUE;
+			m_nDelayClose	= IDS_HANDSHAKE_REJECTED;
 		}
 		else if ( Security.IsClientBad( m_sUserAgent ) )
 		{
@@ -991,9 +991,9 @@ BOOL CShakeNeighbour::OnHeadersComplete()
 		m_bUltraPeerSet = TRI_FALSE;
 	}
 
-	if ( m_bDelayClose )
+	if ( m_nDelayClose )
 	{
-		DelayClose( IDS_HANDSHAKE_REJECTED );
+		DelayClose( m_nDelayClose );
 	}
 	else if ( ( ( ! m_bInitiated && m_bG2Accept ) || ( m_bInitiated && m_bG2Send ) ) &&
 			Settings.Gnutella2.Enabled && m_nProtocol != PROTOCOL_G1 )

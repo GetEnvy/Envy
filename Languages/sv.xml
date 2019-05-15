@@ -3,7 +3,7 @@
 
 <!-- Envy Default Swedish Skin File -->
 
-<!-- Translation based on default en.xml r22 -->
+<!-- Translation based on default en.xml r26 -->
 <!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -1350,8 +1350,8 @@
 			<item id="ID_MEDIA_FULLSCREEN" text="_Helskärm"/>
 		</menu>
 		<menu text="_Instllningar">
-			<item id="ID_MEDIA_VIS" text="_Välj visualisering"/>
-			<separator/>
+			<!--item id="ID_MEDIA_VIS" text="_Välj visualisering"-->
+			<!--separator-->
 			<item id="ID_MEDIA_PLAYLIST" text="Visa _spellista"/>
 			<item id="ID_MEDIA_STATUS" text="Visa _statusread"/>
 			<separator/>
@@ -1388,8 +1388,8 @@
 			<item id="ID_MEDIA_FULLSCREEN" text="_Helskärm"/>
 		</menu>
 		<menu text="_Instllningar">
-			<item id="ID_MEDIA_VIS" text="_Välj visualisering"/>
-			<separator/>
+			<!--item id="ID_MEDIA_VIS" text="_Välj visualisering"-->
+			<!--separator-->
 			<item id="ID_MEDIA_PLAYLIST" text="Visa _spellista"/>
 			<item id="ID_MEDIA_STATUS" text="Visa _statusread"/>
 			<separator/>

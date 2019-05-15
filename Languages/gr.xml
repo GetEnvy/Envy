@@ -3,7 +3,7 @@
 
 <!-- Envy Default Greek Skin File -->
 
-<!-- Translation based on default en.xml r22 -->
+<!-- Translation based on default en.xml r26 -->
 <!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -1394,8 +1394,8 @@
 			<item id="ID_MEDIA_FULLSCREEN" text="Πλήρης Οθόνη"/>
 		</menu>
 		<menu text="Ρυθμίσεις">
-			<item id="ID_MEDIA_VIS" text="Επιλογή Απεικόνισης..."/>
-			<separator/>
+			<!--item id="ID_MEDIA_VIS" text="Επιλογή Απεικόνισης..."-->
+			<!--separator-->
 			<item id="ID_MEDIA_PLAYLIST" text="Προβολή Λίστας Αναπαραγωγής"/>
 			<item id="ID_MEDIA_STATUS" text="Προβολή Γραμμής Κατάστασης"/>
 			<separator/>
@@ -1432,8 +1432,8 @@
 			<item id="ID_MEDIA_FULLSCREEN" text="Πλήρης οθόνη"/>
 		</menu>
 		<menu text="Ρυθμίσεις">
-			<item id="ID_MEDIA_VIS" text="Επιλογή Απεικόνισης..."/>
-			<separator/>
+			<!--item id="ID_MEDIA_VIS" text="Επιλογή Απεικόνισης..."-->
+			<!--separator-->
 			<item id="ID_MEDIA_PLAYLIST" text="Προβολή Λίστας Αναπαραγωγής"/>
 			<item id="ID_MEDIA_STATUS" text="Προβολή Γραμμής Κατάστασης"/>
 			<separator/>

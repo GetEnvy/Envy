@@ -302,7 +302,8 @@ void CLibraryTipCtrl::OnShow()
 void CLibraryTipCtrl::OnHide()
 {
 	m_pSection.Lock();
-	if ( m_bmThumb.m_hObject ) m_bmThumb.DeleteObject();
+	if ( m_bmThumb.m_hObject )
+		m_bmThumb.DeleteObject();
 	m_pSection.Unlock();
 	m_tHidden = GetTickCount();
 }
@@ -335,36 +336,37 @@ void CLibraryTipCtrl::OnRun()
 {
 	while ( IsThreadEnabled() )
 	{
-		Doze( 1000 );
-
-		if ( ! IsThreadEnabled() )
-			break;
-
 		m_pSection.Lock();
 		CString strPath = m_sPath;
 		m_pSection.Unlock();
 
-		if ( strPath.IsEmpty() )	// ToDo: Make preview requests by hash?
-			continue;
-
-		CImageFile pFile;
-		BOOL bSuccess = CThumbCache::Cache( strPath, &pFile );
-
-		m_pSection.Lock();
-
-		if ( m_bmThumb.m_hObject ) m_bmThumb.DeleteObject();
-
-		if ( m_sPath == strPath )
+		if ( ! strPath.IsEmpty() )	// ToDo: Make preview requests by hash?
 		{
-			m_sPath.Empty();
+			CImageFile pFile;
+			BOOL bSuccess = CThumbCache::Cache( strPath, &pFile );
+	
+			m_pSection.Lock();
+	
+			if ( m_bmThumb.m_hObject )
+				m_bmThumb.DeleteObject();
+	
+			if ( m_sPath == strPath )
+			{
+				m_sPath.Empty();
+	
+				if ( bSuccess )
+				{
+					m_bmThumb.Attach( pFile.CreateBitmap() );
+					Invalidate();
+				}
+			}
+
+			m_pSection.Unlock();
 
 			if ( bSuccess )
-			{
-				m_bmThumb.Attach( pFile.CreateBitmap() );
-				Invalidate();
-			}
+				break;
 		}
-
-		m_pSection.Unlock();
+		
+		Doze( 1000 );
 	}
 }

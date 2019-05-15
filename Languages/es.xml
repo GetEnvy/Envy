@@ -3,7 +3,7 @@
 
 <!-- Envy Default Spanish Skin File -->
 
-<!-- Translation based on default en.xml r22 -->
+<!-- Translation based on default en.xml r26 -->
 <!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -1374,8 +1374,8 @@
 			<item id="ID_MEDIA_FULLSCREEN" text="_Pantalla Completa"/>
 		</menu>
 		<menu text="Configuración">
-			<item id="ID_MEDIA_VIS" text="Seleccionar _Visualización..."/>
-			<separator/>
+			<!--item id="ID_MEDIA_VIS" text="Seleccionar _Visualización..."-->
+			<!--separator-->
 			<item id="ID_MEDIA_PLAYLIST" text="Mostrar _lista de reproducción"/>
 			<item id="ID_MEDIA_STATUS" text="Mostrar _Estado de archivo multimedia"/>
 			<separator/>
@@ -1412,8 +1412,8 @@
 			<item id="ID_MEDIA_FULLSCREEN" text="_Pantalla Completa"/>
 		</menu>
 		<menu text="Configuración">
-			<item id="ID_MEDIA_VIS" text="Seleccionar _Visualización..."/>
-			<separator/>
+			<!--item id="ID_MEDIA_VIS" text="Seleccionar _Visualización..."-->
+			<!--separator-->
 			<item id="ID_MEDIA_PLAYLIST" text="Mostrar _lista de reproducción"/>
 			<item id="ID_MEDIA_STATUS" text="Mostrar _Estado de archivo multimedia"/>
 			<separator/>

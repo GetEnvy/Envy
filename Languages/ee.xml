@@ -3,7 +3,7 @@
 
 <!-- Envy Default Estonian Skin File -->
 
-<!-- Translation based on default en.xml r22 --> <!-- (Shareaza 2.2.2.9) -->
+<!-- Translation based on default en.xml r26 --> <!-- (Shareaza 2.2.2.9) -->
 <!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -1328,8 +1328,8 @@
 			<item id="ID_MEDIA_FULLSCREEN" text="_Täisekraan"/>
 		</menu>
 		<menu text="Seaded">
-			<item id="ID_MEDIA_VIS" text="Vali _Välimus..."/>
-			<separator/>
+			<!--item id="ID_MEDIA_VIS" text="Vali _Välimus..."-->
+			<!--separator-->
 			<item id="ID_MEDIA_PLAYLIST" text="Näita _Playlisti"/>
 			<item id="ID_MEDIA_STATUS" text="Näita _Olekuriba"/>
 			<separator/>
@@ -1366,8 +1366,8 @@
 			<item id="ID_MEDIA_FULLSCREEN" text="_Täisekraan"/>
 		</menu>
 		<menu text="Seaded">
-			<item id="ID_MEDIA_VIS" text="Vali _Välimus..."/>
-			<separator/>
+			<!--item id="ID_MEDIA_VIS" text="Vali _Välimus..."-->
+			<!--separator-->
 			<item id="ID_MEDIA_PLAYLIST" text="Näita _Playlisti"/>
 			<item id="ID_MEDIA_STATUS" text="Näita _Olekuriba"/>
 			<separator/>
@@ -2575,7 +2575,7 @@
 	<string id="20121" text="Sirvin %s"/>
 	<string id="20122" text="BitTorrent ühenduse loomine %s kinnitatud &quot;%s&quot;."/>
 	<string id="20123" text="Sissetulev ühendus %s on BitTorrenti ühendus, kinnitan..."/>
-	<string id="20124" text="Alustan BitTorrenti ühendust %s  kliendiga..."/>
+	<string id="20124" text="Alustan BitTorrenti ühendust %s kliendiga..."/>
 	<string id="20125" text="Aeg läbi ühendades BitTorrenti klienti %s."/>
 	<string id="20126" text="BitTorrent ühendus %s katkes."/>
 	<string id="20127" text="BitTorrenti ühendus %s katkes."/>
@@ -2593,7 +2593,7 @@
 	<string id="20140" text="Kodeerimisviga"/>
 	<string id="20141" text="Privaatne torrent"/>
 	<string id="20142" text="Torrent &quot;%s&quot; on juba sinu tõmbamiste nimekirjas ja seda ei saa enam tõmmata."/>
-	<string id="20143" text="Ilmnes viga, kopeerides &quot;%s&quot;  BitTorrenti jagatavaks failiks."/>
+	<string id="20143" text="Ilmnes viga, kopeerides &quot;%s&quot; BitTorrenti jagatavaks failiks."/>
 	<string id="20144" text="Ei saa luua BitTorrenti faili &quot;%s&quot;."/>
 	<string id="20145" text="Ilmnes tundmatu viga, proovides jagada &quot;%s&quot;."/>
 	<string id="20146" text="Viga, laadides torrent faili &quot;%s&quot;. See ei pruugi torrent olla."/>
@@ -2649,7 +2649,7 @@
 	<string id="20203" text="Kiirendan allalaadimist &quot;%s&quot; eemaldades läbilaske piirangud."/>
 	<string id="20204" text="Server %s on kinni, proovin uuesti %i sekundi pärast."/>
 	<string id="20205" text="Ebapiisav ketta ruum allalaadimaks &quot;%s&quot; (%s)."/>
-	<string id="20206" text="Ei saanud ümber tõsta faili &quot;%s&quot;  &quot;%s&quot;. Kontrolli, et poolik fail ei oleks kasutuses ja, et sul oleks ikka allalaadimis kaust ja sinna oleks võimalik kirjutada."/>
+	<string id="20206" text="Ei saanud ümber tõsta faili &quot;%s&quot; &quot;%s&quot;. Kontrolli, et poolik fail ei oleks kasutuses ja, et sul oleks ikka allalaadimis kaust ja sinna oleks võimalik kirjutada."/>
 	<string id="20207" text="Oled kindel, et tahad peatada/tühistada terve selle allalaadimisgrupi?"/>
 	<string id="20208" text="Sulgen ühenduse %s, ei ole rohkem vaja."/>
 	<string id="20209" text="Server %s saatis küsimata andmeid, sulgen ühenduse."/>
@@ -2658,7 +2658,7 @@
 	<string id="20212" text="Oled kindel, et tahad eemaldada kõik peatatud allalaadimised? Kui see on juba tehtud ei saa neid allalaadimisi enam jätkata."/>
 	<string id="20213" text="Oled kindel, et tahad kustutada &quot;%s&quot;."/>
 	<string id="20214" text="Loodud ühendus allalaadimiseks %s."/>
-	<string id="20215" text="Alustan ühenduse loomist %s porti %i  &quot;%s&quot; allalaadimiseks..."/>
+	<string id="20215" text="Alustan ühenduse loomist %s porti %i &quot;%s&quot; allalaadimiseks..."/>
 	<string id="20216" text="Ei saa allalaadimiseks ühendust luua %s."/>
 	<string id="20217" text="Võtan vastu allalaadimis infot %s (%s)."/>
 	<string id="20218" text="Katkestan allalaadimise &quot;%s&quot; serverist %s (%s), võrk ei vasta."/>
@@ -2697,7 +2697,7 @@
 	<string id="20264" text="Saadan päringu faili &quot;%s&quot; allalaadimiseks..."/>
 	<string id="20265" text="Server %s on hõivatud, ootan järjekorras, positsioonil #%i %i -st (&quot;%s&quot;.."/>
 	<string id="20266" text="ootan järjekorras &quot;%s&quot;."/>
-	<string id="20267" text="Katkestan ühenduse tõmbamise allikaga %s  &quot;%s&quot; failile, kuna järjekorra pikkus %i on liiga suur."/>
+	<string id="20267" text="Katkestan ühenduse tõmbamise allikaga %s &quot;%s&quot; failile, kuna järjekorra pikkus %i on liiga suur."/>
 	<string id="20268" text="Aeg täis, oodates eDonkey2000 allalaadimis järjekorras serverist %s faili &quot;%s&quot;."/>
 	<string id="20269" text="Allalaadimiseks päring %s ei vasta, sulgen ühenduse."/>
 	<string id="20270" text="Puhastatud allalaadimine &quot;%s&quot;."/>
@@ -2841,7 +2841,7 @@
 	<string id="20437" text="Ghost Faili"/>
 	<string id="20438" text="Faili %i andmebaasi muutmine."/>
 	<string id="20439" text="Sa hakkad faili %i andmebaasi muutma, oled kindel, et tahad jätkata?"/>
-	<string id="20440" text="Ei suuda liigutada  %s faili. Mõni teine programm võib seda faili kasutada.\n\nVõib-olla soovid hoopis sellest failist koopia teha?"/>
+	<string id="20440" text="Ei suuda liigutada %s faili. Mõni teine programm võib seda faili kasutada.\n\nVõib-olla soovid hoopis sellest failist koopia teha?"/>
 	<string id="20441" text="Envy ei suutnud ümber nimetada:\n\n%s\nto\n%s"/>
 	<string id="20442" text="Fail on juba olemas:\n\n%s\n\nKas soovid selle üle kirjutada?"/>
 	<string id="20443" text="Näita kõiki failitüüpe"/>

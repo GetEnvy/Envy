@@ -3,7 +3,7 @@
 
 <!-- Envy Default Turkish Skin File -->
 
-<!-- Translation based on default en.xml r22 -->
+<!-- Translation based on default en.xml r26 -->
 <!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -1362,8 +1362,8 @@
 			<item id="ID_MEDIA_FULLSCREEN" text="_Tam Ekran"/>
 		</menu>
 		<menu text="_Ayarlar">
-			<item id="ID_MEDIA_VIS" text="_Görüntü Ekranı Seç..."/>
-			<separator/>
+			<!--item id="ID_MEDIA_VIS" text="_Görüntü Ekranı Seç..."-->
+			<!--separator-->
 			<item id="ID_MEDIA_PLAYLIST" text="_Oynatma Listesini Göster"/>
 			<item id="ID_MEDIA_STATUS" text="_Durum Çubuğunu Göster"/>
 			<separator/>
@@ -1400,8 +1400,8 @@
 			<item id="ID_MEDIA_FULLSCREEN" text="_Tam Ekran"/>
 		</menu>
 		<menu text="_Ayarlar">
-			<item id="ID_MEDIA_VIS" text="_Görüntü Ekranı Seç..."/>
-			<separator/>
+			<!--item id="ID_MEDIA_VIS" text="_Görüntü Ekranı Seç..."-->
+			<!--separator-->
 			<item id="ID_MEDIA_PLAYLIST" text="_Oynatma Listesini Göster"/>
 			<item id="ID_MEDIA_STATUS" text="_Durum Çubuğunu Göster"/>
 			<separator/>

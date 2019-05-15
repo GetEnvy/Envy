@@ -161,7 +161,7 @@
 //#define _HAS_AUTO_PTR_ETC 0
 //#endif
 
-// Workarounds for legacy compilers (No C++11, use std::tr1:: for VS2008sp1)
+// Deprecated Workarounds for legacy compilers (No C++11, use std::tr1:: for VS2008sp1)
 #if defined(_MSC_VER) && (_MSC_VER < 1600)
 #define VS2008
 #endif

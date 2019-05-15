@@ -18,7 +18,7 @@
 
 // CConnection holds a socket used to communicate with a remote computer, and is the root of a big inheritance tree
 // http://shareaza.sourceforge.net/mediawiki/index.php/Developers.Code.CConnection
-// http://getenvy.com/archives/shareazawiki/Developers.Code.CConnection.html
+// http://getenvy.com/archives/envywiki/Developers.Code.CConnection.html
 
 #pragma once
 
@@ -191,7 +191,7 @@ public:
 		return m_pInput->ReadLine( strData, bPeek );
 	}
 
-	inline void Remove(const size_t nLength) throw()
+	inline void RemoveFromInput(const size_t nLength) throw()
 	{
 		CQuickLock oInputLock( *m_pInputSection );
 		m_pInput->Remove( nLength );

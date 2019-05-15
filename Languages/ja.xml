@@ -3,7 +3,7 @@
 
 <!-- Envy Default Japanese Skin File -->
 
-<!-- Translation based on default en.xml r22 --> <!-- (Shareaza 2.2.0.2) -->
+<!-- Translation based on default en.xml r26 --> <!-- (Shareaza 2.2.0.2) -->
 <!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -1329,8 +1329,8 @@
 			<item id="ID_MEDIA_FULLSCREEN" text="フルスクリーン"/>
 		</menu>
 		<menu text="設定">
-			<item id="ID_MEDIA_VIS" text="視覚効果を選択..."/>
-			<separator/>
+			<!--item id="ID_MEDIA_VIS" text="視覚効果を選択..."-->
+			<!--separator-->
 			<item id="ID_MEDIA_PLAYLIST" text="再生リストを表示"/>
 			<item id="ID_MEDIA_STATUS" text="ステータスラインを表示"/>
 			<separator/>
@@ -1367,8 +1367,8 @@
 			<item id="ID_MEDIA_FULLSCREEN" text="フルスクリーン"/>
 		</menu>
 		<menu text="設定">
-			<item id="ID_MEDIA_VIS" text="視覚効果を選択..."/>
-			<separator/>
+			<!--item id="ID_MEDIA_VIS" text="視覚効果を選択..."-->
+			<!--separator-->
 			<item id="ID_MEDIA_PLAYLIST" text="再生リストを表示"/>
 			<item id="ID_MEDIA_STATUS" text="ステータスラインを表示"/>
 			<separator/>

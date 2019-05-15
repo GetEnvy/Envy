@@ -53,7 +53,9 @@ public:
 		strURI.MakeLower();
 
 		CSchemaPtr pSchema = NULL;
-		return ( m_pURIs.Lookup( strURI, pSchema ) ) ? pSchema : NULL;
+		return ( m_pURIs.Lookup( strURI, pSchema ) ) ? pSchema : 
+			( m_pAltURIs.Lookup( strURI, pSchema ) ) ? pSchema :
+			NULL;
 	}
 
 	CSchemaPtr GuessByFilename(LPCTSTR pszFile) const
@@ -100,6 +102,7 @@ public:
 private:
 	typedef CMap< CString, const CString&, CSchemaPtr, CSchemaPtr > CSchemaMap;
 	CSchemaMap m_pURIs;
+	CSchemaMap m_pAltURIs;
 	CSchemaMap m_pNames;
 	CSchemaMap m_pTypeFilters;	// Combined "file type":"schema"
 

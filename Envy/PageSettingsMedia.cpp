@@ -84,7 +84,7 @@ void CMediaSettingsPage::Update()
 	const BOOL bInternal = ( m_wndServices.GetCurSel() == INTERNAL_INDEX );
 	GetDlgItem( IDC_MEDIA_PLAY )->EnableWindow( bInternal );
 	GetDlgItem( IDC_MEDIA_ENQUEUE )->EnableWindow( bInternal );
-	GetDlgItem( IDC_MEDIA_VIS )->EnableWindow( bInternal );
+	GetDlgItem( IDC_MEDIA_VIS )->EnableWindow( FALSE );	// bInternal
 
 	m_wndList.EnableWindow( m_bEnablePlay || m_bEnableEnqueue );
 	m_wndAdd.EnableWindow( ( m_bEnablePlay || m_bEnableEnqueue ) && m_wndList.GetWindowTextLength() > 0 );
@@ -101,8 +101,7 @@ BOOL CMediaSettingsPage::OnInitDialog()
 	m_bEnablePlay		= Settings.MediaPlayer.EnablePlay;
 	m_bEnableEnqueue	= Settings.MediaPlayer.EnableEnqueue;
 
-	for ( string_set::const_iterator i = Settings.MediaPlayer.FileTypes.begin();
-		i != Settings.MediaPlayer.FileTypes.end(); ++i )
+	for ( string_set::const_iterator i = Settings.MediaPlayer.FileTypes.begin(); i != Settings.MediaPlayer.FileTypes.end(); ++i )
 	{
 		m_wndList.AddString( *i );
 	}
@@ -111,8 +110,7 @@ BOOL CMediaSettingsPage::OnInitDialog()
 	m_wndServices.AddString( LoadString( IDS_MEDIA_PLAYER ) );
 	int nSelected = INTERNAL_INDEX;
 
-	for ( string_set::const_iterator i = Settings.MediaPlayer.ServicePath.begin();
-		i != Settings.MediaPlayer.ServicePath.end(); ++i )
+	for ( string_set::const_iterator i = Settings.MediaPlayer.ServicePath.begin(); i != Settings.MediaPlayer.ServicePath.end(); ++i )
 	{
 		CString strPlayer = *i;
 		BOOL bSelected = strPlayer.Right( 1 ) == L'*';	// SELECTED_PLAYER_TOKEN
@@ -158,8 +156,8 @@ void CMediaSettingsPage::OnMediaAdd()
 {
 	UpdateData();
 
-	ToLower( m_sType );
 	m_sType.Trim();
+	ToLower( m_sType );
 	if ( m_sType.IsEmpty() ) return;
 
 	if ( m_wndList.FindStringExact( -1, m_sType ) >= 0 ) return;

@@ -18,8 +18,8 @@
 
 // CShakeNeighbour reads and sends handshake headers to negotiate the Gnutella or Gnutella2 handshake
 // http://shareaza.sourceforge.net/mediawiki/index.php/Developers.Code.CShakeNeighbour
-// http://getenvy.com/archives/shareazawiki/Developers.Code.CShakeNeighbour.html
-// http://getenvy.com/archives/shareazawiki/Developers.Code.CShakeNeighbour.Running.html
+// http://getenvy.com/archives/envywiki/Developers.Code.CShakeNeighbour.html
+// http://getenvy.com/archives/envywiki/Developers.Code.CShakeNeighbour.Running.html
 
 #pragma once
 
@@ -82,7 +82,7 @@ protected:
 
 	// Possibly not in use (do)
 	TRISTATE m_bUltraPeerLoaded;
-	BOOL	m_bDelayClose;			// This is DelayClose
+	UINT	m_nDelayClose;			// This is DelayClose reason (was m_bDelayClose)
 	CString	m_sTryUltrapeers;		// Storage of X-Try-Ultrapeers Header
 	CString	m_sTryHubs;				// Storage of X-Try-Hubs Header
 	CString	m_sTryDNAHubs;			// Storage of X-Try-DNA-Hubs Header

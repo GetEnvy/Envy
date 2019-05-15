@@ -1461,10 +1461,10 @@
 			<item id="ID_MEDIA_FULLSCREEN" text="_Full Screen"/>
 		</menu>
 		<menu text="Setti_ngs">
-			<item id="ID_MEDIA_VIS" text="Choose _Visualisation..."/>
-			<separator/>
+			<!--item id="ID_MEDIA_VIS" text="Choose _Visualisation..."-->
+			<!--separator-->
 			<item id="ID_MEDIA_PLAYLIST" text="Show _Playlist"/>
-			<item id="ID_MEDIA_STATUS" text="Show _Status Line"/>
+			<item id="ID_MEDIA_STATUS" text="Show _Status Bar"/>
 			<separator/>
 			<item id="ID_MEDIA_SETTINGS" text="_Media Settings..."/>
 		</menu>
@@ -1499,10 +1499,10 @@
 			<item id="ID_MEDIA_FULLSCREEN" text="_Full Screen"/>
 		</menu>
 		<menu text="Setti_ngs">
-			<item id="ID_MEDIA_VIS" text="Choose _Visualisation..."/>
-			<separator/>
+			<!--item id="ID_MEDIA_VIS" text="Choose _Visualisation..."-->
+			<!--separator-->
 			<item id="ID_MEDIA_PLAYLIST" text="Show _Playlist"/>
-			<item id="ID_MEDIA_STATUS" text="Show _Status Line"/>
+			<item id="ID_MEDIA_STATUS" text="Show _Status Bar"/>
 			<separator/>
 			<item id="ID_MEDIA_SETTINGS" text="_Media Settings..."/>
 		</menu>

@@ -160,12 +160,13 @@ void CBrowseProfileCtrl::UpdateDocumentLeft(CHostBrowser* pBrowser, CGProfile* p
 	if ( m_pdVendor != NULL && ( ! pBrowser->m_sServer.IsEmpty() || ! pBrowser->m_sCountry.IsEmpty() ) )
 	{
 		// Note: pBrowser->m_sAddress and pBrowser->m_sCountry are empty at this point, but available in 2nd colunm (Invalidate cookie?)
-		CString str = Settings.General.GUIMode == GUI_BASIC ?
+		CString strLoc = Settings.General.GUIMode == GUI_BASIC ?
 			theApp.GetCountryName( pBrowser->m_pAddress ) : (LPCTSTR)CString( inet_ntoa( pBrowser->m_pAddress ) );
-		m_pdAddress->SetText( str );
+		m_pdAddress->SetText( strLoc);
 		m_pdVendor->SetText( (LPCTSTR)pBrowser->m_sServer );
-		str.Format( L"gnutella:browse:%s:%u", (LPCTSTR)str, pBrowser->m_nPort );			// ToDo: Append Private Key?
-		m_pdVendor->m_sLink = L"command:copy:" + str;
+		CString strLink;
+		strLink.Format( L"command:copy:gnutella:browse:%s:%u", (LPCTSTR)strLoc, pBrowser->m_nPort );			// ToDo: Append Private Key?
+		m_pdVendor->m_sLink = strLink;
 
 		if ( ! m_pdAddress->m_hImage )	// Add Flag Once
 		{
