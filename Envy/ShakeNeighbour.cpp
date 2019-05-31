@@ -1,7 +1,7 @@
 //
 // ShakeNeighbour.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2018
+// This file is part of Envy (getenvy.com) Â© 2016-2018
 // Portions copyright Shareaza 2002-2008 and PeerProject 2008-2016
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -647,8 +647,6 @@ BOOL CShakeNeighbour::OnHeaderLine(CString& strHeader, CString& strValue)
 	if ( strHeader.GetLength() < 4 )
 		return TRUE;	// Skip bad/unknown small header
 
-	const CString strCase( strHeader.MakeLower() );
-
 	// Expected Headers:
 	SwitchMap( Text )
 	{
@@ -703,7 +701,7 @@ BOOL CShakeNeighbour::OnHeaderLine(CString& strHeader, CString& strValue)
 		//Text[ L"peers" ]				= '#';
 	}
 
-	switch ( Text[ strCase ] )
+	switch ( Text[ CString( strHeader ).MakeLower() ] )
 	{
 	case 'u':		// "User-Agent"
 		// Save the name and version of the remote program
@@ -822,7 +820,7 @@ BOOL CShakeNeighbour::OnHeaderLine(CString& strHeader, CString& strValue)
 			m_bDeflateSend |= ( strValue.Find( L"deflate" ) >= 0 );
 		break;
 	case 'f':		// "X-Locale-Pref"
-		m_sLocalePref = strValue.MakeLower();	// Unused
+		m_sLocalePref = CString( strValue ).MakeLower();	// Unused
 		break;
 	case 'N':		// "X-Hostname"
 		m_sServerName = strValue;	// Off-chance dns can be given

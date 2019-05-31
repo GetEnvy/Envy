@@ -74,7 +74,8 @@ LPCTSTR CEmoticons::FindNext(LPCTSTR pszText, int* pnIndex)
 		pszToken += _tcslen( pszToken ) + 1;
 	}
 
-	if ( pszBest && pnIndex ) *pnIndex = nBest;
+	if ( pszBest && pnIndex )
+		*pnIndex = nBest;
 
 	return pszBest;
 }
@@ -104,7 +105,8 @@ int CEmoticons::Lookup(LPCTSTR pszText, int nLen) const
 		pszToken += _tcslen( pszToken ) + 1;
 	}
 
-	if ( nLen >= 0 ) ((LPTSTR)pszText)[ nLen ] = cSave;
+	if ( nLen >= 0 )
+		((LPTSTR)pszText)[ nLen ] = cSave;
 
 	return ( *pszToken != 0 ) ? nIndex : -1;
 }
@@ -184,9 +186,11 @@ BOOL CEmoticons::Load()
 
 void CEmoticons::Clear()
 {
-	if ( m_pImage.m_hImageList != NULL ) m_pImage.DeleteImageList();
+	if ( m_pImage.m_hImageList != NULL )
+		m_pImage.DeleteImageList();
 
-	if ( m_pTokens != NULL ) delete [] m_pTokens;
+	if ( m_pTokens != NULL )
+		delete [] m_pTokens;
 	m_pTokens = NULL;
 
 	m_pIndex.RemoveAll();
@@ -198,7 +202,7 @@ void CEmoticons::Clear()
 
 int CEmoticons::AddEmoticon(LPCTSTR pszText, CImageFile* pImage, CRect* pRect, COLORREF crBack, BOOL bButton)
 {
-	ASSERT( pImage->m_bLoaded && pImage->m_nComponents == 3 );	// ToDo: Allow alpha?
+	if ( ! pImage->IsLoaded() || pImage->m_nComponents != 3 ) return -1;	// ToDo: Allow alpha?
 
 	if ( pRect->left < 0 || pRect->left + EMOTICON_SIZE > pImage->m_nWidth ) return -1;
 	if ( pRect->top < 0 || pRect->top > pImage->m_nHeight + EMOTICON_SIZE ) return -1;
@@ -517,8 +521,10 @@ void CEmoticons::FormatText(CRichDocument* pDocument, LPCTSTR pszBody, BOOL bNew
 		if ( *pszBody == '[' )
 		{
 			pszToken = _tcschr( pszBody, ']' );
-			if ( pszToken != NULL ) pszBody = pszToken + 1;
-			else pszBody ++;
+			if ( pszToken != NULL )
+				pszBody = pszToken + 1;
+			else
+				pszBody++;
 		}
 	}
 }

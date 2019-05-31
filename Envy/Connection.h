@@ -1,7 +1,7 @@
 //
 // Connection.h
 //
-// This file is part of Envy (getenvy.com) © 2016-2018
+// This file is part of Envy (getenvy.com) ï¿½ 2016-2018
 // Portions copyright Shareaza 2002-2007 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -137,18 +137,16 @@ public:
 		m_pOutput->Print( strData, nCodePage );
 	}
 
-	inline DWORD Write(CBuffer* pBuffer) throw()
+	inline void Write(const CBuffer* pBuffer) throw()
 	{
 		CQuickLock oOutputLock( *m_pOutputSection );
-		return m_pOutput->AddBuffer( pBuffer );
+		m_pOutput->Add( pBuffer->m_pBuffer, pBuffer->m_nLength );
 	}
 
 	inline void Write(CPacket* pPacket) throw()
 	{
 		CQuickLock oOutputLock( *m_pOutputSection );
-		CBuffer pBuffer;
-		pPacket->ToBuffer( &pBuffer );
-		Write( &pBuffer );
+		pPacket->ToBuffer( m_pOutput );
 	}
 
 	template

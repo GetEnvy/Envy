@@ -2727,7 +2727,7 @@ CString CIRCFrame::GetTextFromRichPoint() const
 	CPoint point;
 	GetCursorPos( &point );
 
-	CString strTemp = m_wndView.GetWordFromPoint( point, L" \r\n\t�<>[](){}`\'\"!,;•*" );
+	CString strTemp = m_wndView.GetWordFromPoint( point, L" \r\n\t�©<>[](){}`\'\"!,;•*" );
 
 // Obsolete:
 //	{

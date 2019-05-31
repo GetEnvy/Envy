@@ -20,8 +20,8 @@ svn+ssh://svn.code.sf.net/p/shareaza/code/trunk shareaza-code
 9698	.	.f	Bumped version 2.7.10.3
 9697	.	.f	Tagged 2.7.10.2
 9696	.	.f	Bumped version 2.7.10.2
-9694		6f	Fixed alpha channel of images (addition to r9693)
-9693		3f	Added GDI+ loading of common image types
+9694	r27	6f	Fixed alpha channel of images (addition to r9693)
+9693	r27	3f	Added GDI+ loading of common image types
 9692	r22	18f	Removed extra header "ImageServices.h"
 9691	./	8f	Fixed crash during skin reload (when compiled by VS 2017)
 9690	.	f	Bumped version 2.7.10.0
@@ -31,10 +31,10 @@ svn+ssh://svn.code.sf.net/p/shareaza/code/trunk shareaza-code
 9686		1f	Removed disabled warnings (use IDE's Error window filter instead please)
 9685	.	1f	Updated Microsoft Visual C++ 2017 Redistributable urls
 9684		~f	Cleaned-up a project files from an outdated options.  Windows XP compatibility options were moved out to separate props-file and only build scripts will use it.
-9683	r22	12f	Removed Free Threaded Marshaler due a strange VS2017 crash inside it  (Plugins)
+9683	r22/12f	Removed Free Threaded Marshaler due a strange VS2017 crash inside it  (Plugins)
 9682	.	2f	Updated SQLite up to 3.20.1
-9681	r22/	16f	Fixed C4840 (VS2017) warning  (LPCSTR)
-9680	r22/	~f	Fixed C4840 (VS2017) warning  (LPCTSTR)
+9681	r22/16f	Fixed C4840 (VS2017) warning  (LPCSTR)
+9680	r22/~f	Fixed C4840 (VS2017) warning  (LPCTSTR)
 9679		1f	Fixed warning C4133 (MiniUPnPc)
 9678	.	1f	Fixed C4840 (VS2017) warning
 9677		1f	Updated services list
@@ -256,7 +256,7 @@ svn+ssh://svn.code.sf.net/p/shareaza/code/trunk shareaza-code
 9263	r105~	11f	Add thumbnails generation in collection wizard, add thumbnails to "basicCollection" template, Add new collection variable: $title$ name of album folder, Fix "GeneralPurpleCollection" and "VideoCollection" collection templates
 9257	+r129	7f	XML element and attribute names must not be lowercased (Fix for http://is.gd/2xAByG)
 9251	/	4f	TorrentWizard: Fix VS2008
-9246	r21	4f	Re-factored CBuffer (socket code moved to CConnection class)
+9246	r27	4f	Re-factored CBuffer (socket code moved to CConnection class)
 
 9149		4f	Windows 2000 compatibility fix.  (~DelayLoadDLLs)
 9146		5+60f	Added support for Windows 7 task bar jump list.		(CreateshellLink etc.)

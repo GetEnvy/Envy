@@ -2148,7 +2148,7 @@ BOOL CSkin::LoadColorScheme(CXMLElement* pBase)
 	pColors.SetAt( L"schema.rating5", &Colors.m_crRating5 );
 
 	pColors.SetAt( L"meta.row", &Colors.m_crSchemaRow[0] );
-	pColors.SetAt( L"meta.row", &Colors.m_crSchemaRow[1] );
+//	pColors.SetAt( L"meta.row", &Colors.m_crSchemaRow[1] );
 	pColors.SetAt( L"meta.row.alt", &Colors.m_crSchemaRow[1] );
 	pColors.SetAt( L"meta.row.odd", &Colors.m_crSchemaRow[0] );
 	pColors.SetAt( L"meta.row.even", &Colors.m_crSchemaRow[1] );

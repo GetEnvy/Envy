@@ -136,6 +136,7 @@ void CSettings::Load()
 	Add( L"Interface", L"AutoComplete", &Interface.AutoComplete, true );
 	Add( L"Interface", L"CoolMenuEnable", &Interface.CoolMenuEnable, true );
 	Add( L"Interface", L"LowResMode", &Interface.LowResMode, false );
+	Add( L"Interface", L"PreferImageServices", &Interface.PreferImageServices, false );
 	Add( L"Interface", L"DisplayScaling", &Interface.DisplayScaling, 100, 1, 100, 200, L" %" );			// Windows high dpi zoom
 	Add( L"Interface", L"RefreshRateGraph", &Interface.RefreshRateGraph, 72, 1, 10, 60000, L" ms" );	// 30sec display areas
 	Add( L"Interface", L"RefreshRateText", &Interface.RefreshRateText, 650, 1, 10, 10000, L" ms" );		// 3x per 2 sec.

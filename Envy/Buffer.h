@@ -1,7 +1,7 @@
 //
 // Buffer.h
 //
-// This file is part of Envy (getenvy.com) © 2016-2018
+// This file is part of Envy (getenvy.com) ï¿½ 2016-2018
 // Portions copyright Shareaza 2002-2008 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -49,13 +49,13 @@ public:
 	inline DWORD GetBufferFree() const { return m_nBuffer - m_nLength; }		// Return the unused #bytes in the buffer
 
 public:
-	void	Add(const void* pData, const size_t nLength); //throw();				// Add data to the end of the buffer
-	void	Insert(const DWORD nOffset, const void* pData, const size_t nLength);	// Insert the data into the buffer
-	void	Remove(const size_t nLength); //throw();								// Removes data from the start of the buffer
-	bool	EnsureBuffer(const size_t nLength); //throw();							// Tell the buffer to prepare to receive this number of additional bytes
-	DWORD	AddBuffer(CBuffer* pBuffer, const size_t nLength);						// Copy all or part of the data in another CBuffer object into this one
-	void	AddReversed(const void* pData, const size_t nLength);					// Add data to this buffer, but with the bytes in reverse order
-	void	Attach(CBuffer* pBuffer);												// Get ownership of another CBuffer object data
+	void	Add(const void* __restrict pData, const size_t nLength) throw();					// Add data to the end of the buffer
+	void	Insert(const DWORD nOffset, const void* __restrict pData, const size_t nLength);	// Insert the data into the buffer
+	void	Remove(const size_t nLength) throw();								// Removes data from the start of the buffer
+	bool	EnsureBuffer(const size_t nLength) throw();							// Tell the buffer to prepare to receive this number of additional bytes
+	DWORD	AddBuffer(CBuffer* pBuffer, const size_t nLength);					// Copy all or part of the data in another CBuffer object into this one
+	void	AddReversed(const void* pData, const size_t nLength);				// Add data to this buffer, but with the bytes in reverse order
+	void	Attach(CBuffer* pBuffer);											// Get ownership of another CBuffer object data
 
 	// Convert Unicode text to ASCII and add it to the buffer
 	void	Print(const LPCWSTR pszText, const size_t nLength, const UINT nCodePage = CP_ACP);
@@ -71,12 +71,6 @@ public:
 	BOOL	Read(void* pData, const size_t nLength); //throw();
 	BOOL	ReadLine(CString& strLine, BOOL bPeek = FALSE);											// Reads until "\r\n". Encoding detection.
 	BOOL	StartsWith(LPCSTR pszString, const size_t nLength, const BOOL bRemove = FALSE) throw();	// Returns true if the buffer starts with this text
-
-	// Use the buffer with a socket
-#ifdef _WINSOCKAPI_
-	DWORD	Receive(SOCKET hSocket, DWORD nSpeedLimit = ~0ul);		// Move incoming data from the socket to this buffer
-	DWORD	Send(SOCKET hSocket, DWORD nSpeedLimit = ~0ul);			// Send the contents of this buffer to the computer on the far end of the socket
-#endif // _WINSOCKAPI_
 
 	// Use the buffer with the ZLib compression library
 #ifdef ZLIB_H
@@ -123,9 +117,6 @@ public:
 
 // Statics
 public:
-	static const size_t	MAX_RECV_SIZE	= 1024ul * 16ul;	// Receive up to 16KB blocks from the socket
-	static const size_t	ZLIB_CHUNK_SIZE	= 1024u;			// Chunk size for ZLib compression/decompression
-
 	// Static means you can call CBuffer::ReverseBuffer without having a CBuffer object at all
 	static void ReverseBuffer(const void* pInput, void* pOutput, size_t nLength);
 };

@@ -376,7 +376,8 @@ CHostCacheHostPtr CHostCacheList::Add(LPCTSTR pszHost, WORD nPort, DWORD tSeen, 
 	strHost.Trim();
 
 	int nPos = strHost.ReverseFind( L' ' );
-	if ( nPos < 1 ) nPos = strHost.ReverseFind( L'\t' );
+	if ( nPos < 1 )
+		nPos = strHost.ReverseFind( L'\t' );
 	if ( nPos > 0 )
 	{
 		CString strTime = strHost.Mid( nPos + 1 );

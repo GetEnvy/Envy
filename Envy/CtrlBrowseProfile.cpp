@@ -23,7 +23,6 @@
 #include "GProfile.h"
 #include "G2Packet.h"
 #include "HostBrowser.h"
-
 #include "RichElement.h"
 #include "RichDocument.h"
 #include "Flags.h"
@@ -132,14 +131,12 @@ void CBrowseProfileCtrl::OnSkinChange()
 
 void CBrowseProfileCtrl::Update(CHostBrowser* pBrowser)
 {
-	CSingleLock pLock( &m_pSection, TRUE );
-
 	if ( m_pDocumentLeft == NULL || m_pDocumentRight == NULL ) return;
 
 	CGProfile* pProfile = pBrowser->m_pProfile;
 	if ( pProfile == NULL || pProfile->IsValid() == FALSE ) return;
 
-	if ( ! pBrowser->IsBrowsing() && pBrowser->m_nHits > 0 && ! m_imgHead.m_bLoaded )
+	if ( ! pBrowser->IsBrowsing() && pBrowser->m_nHits > 0 && ! m_imgHead.IsLoaded() )
 		LoadDefaultHead();
 
 	UpdateDocumentLeft( pBrowser, pProfile );
@@ -151,7 +148,8 @@ void CBrowseProfileCtrl::Update(CHostBrowser* pBrowser)
 
 void CBrowseProfileCtrl::UpdateDocumentLeft(CHostBrowser* pBrowser, CGProfile* pProfile)
 {
-	CSingleLock pLock( &m_pDocumentLeft->m_pSection, TRUE );
+	CSingleLock pLock( &m_pSection, TRUE );
+	CSingleLock pDocLock( &m_pDocumentLeft->m_pSection, TRUE );
 
 	if ( m_pdNick != NULL )
 		m_pdNick->SetText( pProfile->GetNick() );
@@ -359,7 +357,8 @@ void CBrowseProfileCtrl::UpdateDocumentRight(CHostBrowser* pBrowser, CGProfile* 
 {
 	int nBookmarks = 0;
 
-	CSingleLock pLock( &m_pDocumentRight->m_pSection, TRUE );
+	CSingleLock pLock( &m_pSection, TRUE );
+	CSingleLock pDocLock( &m_pDocumentRight->m_pSection, TRUE );
 
 	m_pDocumentRight->ShowGroup( 2, pBrowser->m_bCanChat );
 
@@ -417,8 +416,6 @@ void CBrowseProfileCtrl::OnHeadPacket(CG2Packet* pPacket)
 	G2_PACKET nType;
 	DWORD nLength;
 
-	CSingleLock pLock( &m_pSection, TRUE );
-
 	while ( pPacket->ReadPacket( nType, nLength ) )
 	{
 		DWORD nNext = pPacket->m_nPosition + nLength;
@@ -429,6 +426,8 @@ void CBrowseProfileCtrl::OnHeadPacket(CG2Packet* pPacket)
 		}
 		else if ( nType == G2_PACKET_BODY )
 		{
+			CSingleLock pLock( &m_pSection, TRUE );
+
 			if ( m_imgHead.LoadFromMemory( PathFindExtension( strFile ),
 				 (LPCVOID)( pPacket->m_pBuffer + pPacket->m_nPosition ), nLength ) &&
 				 m_imgHead.EnsureRGB( Colors.m_crWindow ) &&
@@ -448,7 +447,7 @@ void CBrowseProfileCtrl::LoadDefaultHead()
 {
 	CSingleLock pLock( &m_pSection, TRUE );
 
-	if ( m_imgHead.m_bLoaded ) return;
+	if ( m_imgHead.IsLoaded() ) return;
 
 	if ( m_imgHead.LoadFromFile( Settings.General.DataPath + L"DefaultAvatar.png" ) &&
 		 m_imgHead.EnsureRGB( Colors.m_crWindow ) &&
@@ -508,9 +507,10 @@ void CBrowseProfileCtrl::OnPaint()
 
 	GetClientRect( &rcPanel );
 
-	if ( m_imgHead.m_bLoaded )
+	if ( m_imgHead.IsLoaded() )
 	{
 		CRect rcHead( 10, 10, 138, 138 );
+
 		CBitmap bmHead;
 		bmHead.Attach( m_imgHead.CreateBitmap() );
 

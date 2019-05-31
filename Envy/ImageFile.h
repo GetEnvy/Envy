@@ -28,7 +28,6 @@ public:
 public:
 	LPBYTE	m_pImage;
 	BOOL	m_bScanned;
-	BOOL	m_bLoaded;
 	int		m_nWidth;
 	int		m_nHeight;
 	DWORD	m_nComponents;
@@ -38,8 +37,9 @@ public:
 	BOOL	LoadFromMemory(LPCTSTR pszType, LPCVOID pData, DWORD nLength, BOOL bScanOnly = FALSE, BOOL bPartialOk = FALSE);
 	BOOL	LoadFromFile(LPCTSTR pszFile, BOOL bScanOnly = FALSE, BOOL bPartialOk = FALSE);
 	BOOL	LoadFromURL(LPCTSTR pszURL);
-	BOOL	LoadFromBitmap(HBITMAP hBitmap, BOOL bScanOnly = FALSE);	// Get image copy from HBITMAP (24/32-bit only)
-	BOOL	LoadFromResource(HINSTANCE hInstance, UINT nResourceID, LPCTSTR pszType, BOOL bScanOnly = FALSE, BOOL bPartialOk = FALSE);
+	BOOL	LoadFromResource(HINSTANCE hInstance, UINT nResourceID, LPCTSTR pszType);
+	BOOL	LoadFromBitmap(HBITMAP hBitmap, BOOL bAlpha = FALSE, BOOL bScanOnly = FALSE);	// Get image copy from HBITMAP (24/32-bit only)
+	BOOL	LoadFromService(const IMAGESERVICEDATA* pParams, SAFEARRAY* pArray = NULL);
 	BOOL	SaveToMemory(LPCTSTR pszType, int nQuality, LPBYTE* ppBuffer, DWORD* pnLength);
 	BOOL	SaveToFile(LPCTSTR pszFile, int nQuality, DWORD* pnLength = NULL);
 	DWORD	GetSerialSize() const;
@@ -50,6 +50,11 @@ public:
 //	BOOL	FastResample(int nNewWidth, int nNewHeight);
 	BOOL	EnsureRGB(COLORREF crBack = 0xFFFFFFFF);
 	BOOL	SwapRGB();
+
+	inline BOOL IsLoaded() const
+	{
+		return ( m_pImage != NULL );
+	}
 
 	static HBITMAP LoadBitmapFromFile(LPCTSTR pszFile, BOOL bRGB = FALSE);
 	static HBITMAP LoadBitmapFromResource(UINT nResourceID, HINSTANCE hInstance = AfxGetResourceHandle());

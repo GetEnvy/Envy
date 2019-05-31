@@ -41,11 +41,11 @@ BEGIN_MESSAGE_MAP(CSchemaCtrl, CWnd)
 	ON_WM_LBUTTONDOWN()
 	ON_WM_MOUSEWHEEL()
 	ON_WM_VSCROLL()
-	ON_EN_SETFOCUS(IDC_METADATA_CONTROL, OnControlSetFocus)
-	ON_EN_CHANGE(IDC_METADATA_CONTROL, OnControlEdit)
-	ON_CBN_SETFOCUS(IDC_METADATA_CONTROL, OnControlSetFocus)
-	ON_CBN_SELCHANGE(IDC_METADATA_CONTROL, OnControlEdit)
-	ON_CBN_EDITCHANGE(IDC_METADATA_CONTROL, OnControlEdit)
+	ON_EN_SETFOCUS(IDC_METADATA_CONTROL, &CSchemaCtrl::OnControlSetFocus)
+	ON_EN_CHANGE(IDC_METADATA_CONTROL, &CSchemaCtrl::OnControlEdit)
+	ON_CBN_SETFOCUS(IDC_METADATA_CONTROL, &CSchemaCtrl::OnControlSetFocus)
+	ON_CBN_SELCHANGE(IDC_METADATA_CONTROL, &CSchemaCtrl::OnControlEdit)
+	ON_CBN_EDITCHANGE(IDC_METADATA_CONTROL, &CSchemaCtrl::OnControlEdit)
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
@@ -59,6 +59,8 @@ CSchemaCtrl::CSchemaCtrl()
 	, m_nScroll 		( 0 )
 {
 	m_sMultipleString = L"(" + LoadString( IDS_MULTIPLE_VALUES ) + L")";
+
+	// Note theApp.m_nMouseWheel was m_nScrollWheelLines
 }
 
 /////////////////////////////////////////////////////////////////////////////

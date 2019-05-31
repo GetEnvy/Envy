@@ -575,6 +575,7 @@ BOOL CEnvyApp::InitInstance()
 	//pCursor.Restore();
 
 	SplashStep( L"GUI" );
+		DWORD nTimer = GetTickCount();
 		if ( m_cmdInfo.m_bTray )
 			WriteProfileInt( L"Windows", L"CMainWnd.ShowCmd", 0 );
 		TRY
@@ -596,6 +597,10 @@ BOOL CEnvyApp::InitInstance()
 			return FALSE;
 		}
 
+		nTimer = GetTickCount() - nTimer;
+		if ( nTimer > 500 )
+			Message( MSG_NOTICE, L"GUI Load Time: %lu ms", nTimer );
+
 		CoolMenu.EnableHook();
 		if ( m_cmdInfo.m_bTray )
 		{
@@ -609,7 +614,9 @@ BOOL CEnvyApp::InitInstance()
 			m_pMainWnd->UpdateWindow();
 		}
 		// From this point translations would be available, and LoadString returns correct strings
-		Sleep( 60 );	// Allow some splash text visibility
+
+		if ( nTimer < 400 )
+			Sleep( 60 );	// Allow some splash text visibility
 
 	SplashStep( L"Upgrade Manager" );
 		VersionChecker.Start();

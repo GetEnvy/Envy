@@ -1,7 +1,7 @@
 //
 // Connection.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2018
+// This file is part of Envy (getenvy.com) Â© 2016-2018
 // Portions copyright Shareaza 2002-2007 and PeerProject 2008-2015
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -523,9 +523,41 @@ BOOL CConnection::OnRead()
 		// Work out what the bandwidth limit is
 		nLimit = m_mInput.CalculateLimit( tNow, Settings.Live.BandwidthScaleIn );
 	}
+	
+	if ( nLimit > (DWORD)INT_MAX )
+		nLimit = (DWORD)INT_MAX;
 
-	// Read from the socket and record the # bytes read
-	if ( DWORD nTotal = m_pInput->Receive( m_hSocket, nLimit ) )
+	// Start the total at 0
+	DWORD nTotal = 0ul;
+
+	// Read bytes from the socket until the limit has run out
+	while ( nLimit )
+	{
+		// Limit nLength to the free buffer space or the maximum size of an int
+		DWORD nLength = m_pInput->GetBufferFree();
+
+		if ( nLength )	// Limit nLength to the speed limit
+			nLength = min( nLimit, nLength );
+		else			// Limit nLength to the maximum receive size
+			nLength = min( nLimit, 16384ul );	// Receive up to 16KB blocks from the socket
+
+		// Exit loop if the buffer isn't big enough to hold the data
+		if ( ! m_pInput->EnsureBuffer( nLength ) )
+			break;
+
+		// Read the bytes from the socket and record how many are actually read
+		int nRead = CNetwork::Recv( m_hSocket, (char*)m_pInput->GetDataEnd(), (int)nLength );
+
+		// Exit loop if nothing is left or an error occurs
+		if ( nRead <= 0 )
+			break;
+
+		m_pInput->m_nLength	+= nRead;	// Add to the buffer size
+		nTotal				+= nRead;	// Add to the total
+		nLimit				-= nRead;	// Adjust the limit
+	}
+	
+	if ( nTotal )
 	{
 		// Bytes were read, add # bytes to bandwidth meter
 		m_mInput.Add( nTotal, tNow );
@@ -565,11 +597,38 @@ BOOL CConnection::OnWrite()
 		// Work out what the bandwidth limit is
 		nLimit = m_mOutput.CalculateLimit( tNow, Settings.Live.BandwidthScaleOut, Settings.Uploads.ThrottleMode );
 	}
+	
+	nLimit = min( nLimit, m_pOutput->GetCount() );
+	if ( nLimit > (DWORD)INT_MAX )
+		nLimit = (DWORD)INT_MAX;
 
-	// Read from the socket and record the # bytes sent
-	if ( DWORD nTotal = m_pOutput->Send( m_hSocket, nLimit ) )
+	// Point to the data to write
+	const BYTE* pData = m_pOutput->GetData();
+
+	// Start the total at 0
+	DWORD nTotal = 0ul;
+
+	// Write bytes to the socket until our limit has run out
+	while ( nLimit )
 	{
-		// Bytes were sent, add # bytes to bandwidth meter
+		// Send the bytes to the socket and record how many are actually sent
+		int nSend = CNetwork::Send( m_hSocket, (const char*)pData, (int)nLimit );
+
+		// Exit loop if nothing is left or an error occurs
+		if ( nSend <= 0 )
+			break;
+
+		pData	+= nSend;	// Move forward past the sent data
+		nTotal	+= nSend;	// Add to the total
+		nLimit	-= nSend;	// Adjust the limit
+	}
+	
+	if ( nTotal )
+	{
+		// Remove sent bytes from the buffer
+		m_pOutput->Remove( nTotal );
+	
+		// Add sent bytes to bandwidth meter
 		m_mOutput.Add( nTotal, tNow );
 
 		// Add total to statistics

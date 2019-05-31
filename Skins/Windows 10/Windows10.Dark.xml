@@ -129,29 +129,30 @@
  <color name="Richdoc.Text"				value="FFFFFF"/>
  <color name="Richdoc.Heading"				value="FFFFFF"/>
 
- <color name="System.Base.Chat.In"			value="0660CC"/>
- <color name="System.Base.Chat.Out"			value="EA4A60"/>
- <color name="System.Base.Chat.Null"			value="D0CDCB"/>
- <color name="System.Base.Network.Null" 		value="D0CDCB"/>
- <color name="System.Base.Network.G1"			value="888888"/>
- <color name="System.Base.Network.G2"			value="2000D0"/>
- <color name="System.Base.Network.ED2K" 		value="AABA40"/>
- <color name="System.Base.Network.Up"			value="C04020"/>
- <color name="System.Base.Network.Down" 		value="2040C0"/>
- <color name="System.Base.Security.Deny" 		value="FF2000"/>
- <color name="System.Base.Security.Allow" 		value="20D010"/>
- <color name="System.Base.Search.Queued" 		value="20508A"/>
- <color name="System.Base.Search.Queued.Selected" 	value="2050A0"/>
- <color name="System.Base.Search.Exists" 		value="60B020"/>
- <color name="System.Base.Search.Exists.Selected" 	value="60C510"/>
- <color name="System.Base.Transfer.Completed"		value="60C000"/>
- <color name="System.Base.Transfer.Seeding"		value="205080"/>
- <color name="System.Base.Transfer.Failed"		value="EA4A60"/>
- <color name="System.Base.Transfer.Completed.Selected"	value="60C000"/>
- <color name="System.Base.Transfer.Seeding.Selected" 	value="205080"/>
- <color name="System.Base.Transfer.Failed.Selected" 	value="EA4A60"/>
- <color name="System.Base.Transfer.Ranges" 		value="000000"/>
- <color name="System.Base.Transfer.Source" 		value="C0C0C0"/>
+ <!--color name="System.Base."-->
+ <color name="System.Chat.In"				value="0660CC"/>
+ <color name="System.Chat.Out"				value="EA4A60"/>
+ <color name="System.Chat.Null"				value="D0CDCB"/>
+ <color name="System.Network.Null" 			value="D0CDCB"/>
+ <color name="System.Network.G1"			value="888888"/>
+ <color name="System.Network.G2"			value="0078D8"/>
+ <color name="System.Network.ED2K" 			value="AABA40"/>
+ <color name="System.Network.Up"			value="C04020"/>
+ <color name="System.Network.Down" 			value="2040C0"/>
+ <color name="System.Security.Deny" 			value="FF2000"/>
+ <color name="System.Security.Allow" 			value="20D010"/>
+ <color name="System.Search.Queued" 			value="20508A"/>
+ <color name="System.Search.Queued.Selected" 		value="2050A0"/>
+ <color name="System.Search.Exists" 			value="60B020"/>
+ <color name="System.Search.Exists.Selected" 		value="60C510"/>
+ <color name="System.Transfer.Completed"		value="60C000"/>
+ <color name="System.Transfer.Seeding"			value="205080"/>
+ <color name="System.Transfer.Failed"			value="EA4A60"/>
+ <color name="System.Transfer.Completed.Selected"	value="60C000"/>
+ <color name="System.Transfer.Seeding.Selected" 	value="205080"/>
+ <color name="System.Transfer.Failed.Selected" 		value="EA4A60"/>
+ <color name="System.Transfer.Ranges" 			value="000000"/>
+ <color name="System.Transfer.Source" 			value="C0C0C0"/>
 
  <color name="FragmentBar.Shaded" 			value="000000"/>
  <color name="FragmentBar.Complete"			value="D4F8B4"/>
