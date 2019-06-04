@@ -29,7 +29,7 @@ class CLibraryFolder : public CComObject
 	DECLARE_DYNAMIC(CLibraryFolder)
 
 public:
-	CLibraryFolder(CLibraryFolder* pParent, LPCTSTR pszPath = NULL);
+	CLibraryFolder(CLibraryFolder* pParent, LPCTSTR pszPath = L"");
 	virtual ~CLibraryFolder();
 
 public:
@@ -37,18 +37,19 @@ public:
 	DWORD			m_nSelectCookie;
 	CLibraryFolder*	m_pParent;
 	CString			m_sPath;
-	CString			m_sName;
+	LPCTSTR			m_sName;			// Points to name part of m_sPath
 	BOOL			m_bExpanded;
 	DWORD			m_nFiles;
 	QWORD			m_nVolume;
 
 protected:
-	CMap< CString, const CString&, CLibraryFile*, CLibraryFile* >		m_pFiles;
-	CMap< CString, const CString&, CLibraryFolder*, CLibraryFolder* >	m_pFolders;
+	typedef CAtlMap< CString, CLibraryFile*, CStringElementTraitsI< CString > > CFileMap;
+	typedef CAtlMap< CString, CLibraryFolder*, CStringElementTraitsI< CString > > CFolderMap;
 
 	DWORD			m_nScanCookie;
-	CString			m_sNameLow;
 	TRISTATE		m_bShared;
+	CFileMap		m_pFiles;
+	CFolderMap		m_pFolders;
 	HANDLE			m_hMonitor;
 	BOOL			m_bForceScan;		// TRUE - next scan forced (root folder only)
 	BOOL			m_bOffline;			// TRUE - folder absent (root folder only)
@@ -90,7 +91,6 @@ protected:
 	// Disable change notification monitor
 	void			CloseMonitor();
 	void			Clear();
-	void			PathToName();
 	void			RenewGUID();
 	bool			operator==(const CLibraryFolder& val) const;
 

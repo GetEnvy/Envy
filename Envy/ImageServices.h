@@ -39,7 +39,7 @@ protected:
 	static BOOL	LoadFromFileHelper(IImageServicePlugin* pService, CImageFile* pFile, LPCTSTR szFilename, BOOL bScanOnly, BOOL bPartialOk);
 	static SAFEARRAY* ImageToArray(CImageFile* pFile);
 
-// IImageServicePlugin
+	// IImageServicePlugin
 	BEGIN_INTERFACE_PART(ImageService, IImageServicePlugin)
 		STDMETHOD(LoadFromFile)( __in BSTR sFile, __inout IMAGESERVICEDATA* pParams, __out SAFEARRAY** ppImage );
 		STDMETHOD(LoadFromMemory)( __in BSTR sType, __in SAFEARRAY* pMemory, __inout IMAGESERVICEDATA* pParams, __out SAFEARRAY** ppImage );

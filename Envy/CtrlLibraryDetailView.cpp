@@ -199,7 +199,7 @@ int CLibraryDetailView::OnCreate(LPCREATESTRUCT lpCreateStruct)
 
 	if ( CSchemaPtr pSchema = SchemaCache.Get( strSchemaURI ) )
 	{
-		CList< CSchemaMember* > pColumns;
+		CSchemaMemberList pColumns;
 		CSchemaColumnsDlg::LoadColumns( pSchema, &pColumns );
 		SetViewSchema( pSchema, &pColumns, FALSE, FALSE );
 	}
@@ -242,7 +242,7 @@ void CLibraryDetailView::OnDestroy()
 /////////////////////////////////////////////////////////////////////////////
 // CLibraryDetailView schema setup
 
-void CLibraryDetailView::SetViewSchema(CSchemaPtr pSchema, CList< CSchemaMember* >* pColumns, BOOL bSave, BOOL bUpdate)
+void CLibraryDetailView::SetViewSchema(CSchemaPtr pSchema, CSchemaMemberList* pColumns, BOOL bSave, BOOL bUpdate)
 {
 	GET_LIST();
 
@@ -270,7 +270,7 @@ void CLibraryDetailView::SetViewSchema(CSchemaPtr pSchema, CList< CSchemaMember*
 
 	for ( POSITION pos = m_pColumns.GetHeadPosition(); pos; nColumn++ )
 	{
-		CSchemaMember* pMember = m_pColumns.GetNext( pos );
+		CSchemaMemberPtr pMember = m_pColumns.GetNext( pos );
 		pList->InsertColumn( nColumn, pMember->m_sTitle, pMember->m_nColumnAlign, pMember->m_nColumnWidth, nColumn - 1 );
 	}
 
@@ -306,13 +306,13 @@ void CLibraryDetailView::Update()
 
 		if ( m_nStyle == LVS_REPORT )
 		{
-			CString strURI = pTree->m_pVirtual->m_pSchema->GetContainedURI( CSchema::stFile );
+			CString strURI = pTree->m_pVirtual->m_pSchema->GetContainedURI( CSchema::typeFile );
 
 			if ( ! strURI.IsEmpty() && ( ! m_pSchema || ! m_pSchema->CheckURI( strURI ) ) )
 			{
 				if ( CSchemaPtr pSchema = SchemaCache.Get( strURI ) )
 				{
-					CList< CSchemaMember* > pColumns;
+					CSchemaMemberList pColumns;
 					CSchemaColumnsDlg::LoadColumns( pSchema, &pColumns );
 					SetViewSchema( pSchema, &pColumns, TRUE, FALSE );
 				}
@@ -496,7 +496,7 @@ void CLibraryDetailView::CacheItem(int nItem)
 
 	for ( POSITION pos = m_pColumns.GetHeadPosition(); pos; nColumn++ )
 	{
-		CSchemaMember* pMember = m_pColumns.GetNext( pos );
+		CSchemaMemberPtr pMember = m_pColumns.GetNext( pos );
 
 		if ( pMember->m_sName.CompareNoCase( L"SHA1" ) == 0 )
 		{
@@ -715,7 +715,7 @@ int CLibraryDetailView::ListCompare(LPCVOID pA, LPCVOID pB)
 				if ( nColumn >= m_pThis->m_pColumns.GetCount() ) return 0;
 				POSITION pos = m_pThis->m_pColumns.FindIndex( nColumn );
 				if ( pos == NULL ) return 0;
-				CSchemaMember* pMember = m_pThis->m_pColumns.GetAt( pos );
+				CSchemaMemberPtr pMember = m_pThis->m_pColumns.GetAt( pos );
 
 				CString strA, strB;
 				if ( pfA->m_pMetadata ) strA = pMember->GetValueFrom( pfA->m_pMetadata, NULL, TRUE );
@@ -1058,7 +1058,7 @@ void CLibraryDetailView::OnContextMenu(CWnd* pWnd, CPoint point)
 	}
 	else if ( nCmd )
 	{
-		CList< CSchemaMember* > pColumns;
+		CSchemaMemberList pColumns;
 		CSchemaColumnsDlg::ToggleColumnHelper( m_pSchema, &m_pColumns, &pColumns, nCmd, TRUE );
 		SetViewSchema( m_pSchema, &pColumns, TRUE, TRUE );
 	}

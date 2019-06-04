@@ -116,8 +116,8 @@
  <color name="Monitor.Upload.Line" 			value="809AC0"/>
  <color name="Monitor.Upload.Bar" 			value="809AC0"/>
  <color name="Monitor.Graph.Border" 			value="A8A8A8"/>
- <color name="Meta.Row"					value="F2F0ED"/>
- <color name="Meta.Row.Alt"				value="EBEAE8"/>
+ <color name="Meta.Row"					value="404040"/>
+ <color name="Meta.Row.Alt"				value="202020"/>
  <color name="Meta.Rating" 				value="4A4440"/>
  <color name="Meta.Rating0"				value="EA4A60"/>
  <color name="Meta.Rating1"				value="CAC4C0"/>
@@ -271,8 +271,8 @@
  <!--image target="CCoolMenuBar.Hover"			path="Dark\MenuButtonState.png"-->
  <!--image target="CCoolMenuBar.Down"			path="Dark\MenuButtonState.png"-->
  <!--image target="CCoolMenuBar.Checked"		path="Dark\MenuButtonState.png"-->
- <image target="CCoolbar.Control"			path="Dark\MediaSlider10.png"/>
  <image target="CCoolbar.Separator"			path="Dark\ToolbarSeparator.png"/>
+ <image target="CCoolbar.Control"			path="MediaSlider10.png"/>
 
  <!--image target="CCoolbar.Disabled"			path="Dark\ToolbarButtonHover.png"-->
  <!--image target="CCoolbar.Up" 			path="Dark\ToolbarButtonHover.png"-->

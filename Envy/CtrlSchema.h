@@ -18,10 +18,11 @@
 
 #pragma once
 
-#define NO_VALUE		L"(~ns~)"
-#define MULTI_VALUE		L"(~mt~)"
+//#define NO_VALUE		L"(~ns~)"
+//#define MULTI_VALUE	L"(~mt~)"
 
 #include "Schema.h"
+#include "XML.h"
 
 class CXMLElement;
 
@@ -39,13 +40,18 @@ public:
 protected:
 	CSchemaPtr		m_pSchema;
 	CArray< CWnd* >	m_pControls;
-	CArray< CString >	m_pCaptions;
+	CArray< CString > m_pCaptions;
 	int				m_nScroll;
 	CString			m_sMultipleString;
 
+	// Additional items for schema members
+	typedef CMap< CSchemaMemberPtr, CSchemaMemberPtr, CList< CString >*, CList< CString >* > CItemMap;
+	CItemMap		m_pItems;
+
 public:
 	void		SetSchema(CSchemaPtr pSchema, BOOL bPromptOnly = FALSE);
-	BOOL		UpdateData(CXMLElement* pBase, BOOL bSaveAndValidate);
+	DWORD		UpdateData(CXMLElement* pBase, BOOL bSaveAndValidate, BOOL bRealSave = TRUE);
+	void		AddItem(CSchemaMemberPtr pMember, const CString& strItem);
 	CString		GetSchemaURI() const;
 	void		Disable();
 	void		Enable();
@@ -55,7 +61,7 @@ public:
 protected:
 	void		Layout();
 
-	virtual BOOL OnCommand(WPARAM wParam, LPARAM lParam);
+	//virtual BOOL OnCommand(WPARAM wParam, LPARAM lParam);
 
 	afx_msg BOOL OnEraseBkgnd(CDC* pDC);
 	afx_msg void OnDestroy();

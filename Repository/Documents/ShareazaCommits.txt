@@ -4,12 +4,15 @@ Shareaza 2.7.10.0 r9700~
 (Includes PeerProject updates r100-128 to 2016)
 
 http://sourceforge.net/p/shareaza/code/log
-http://sourceforge.net/p/shareaza/code/9600
+http://sourceforge.net/p/shareaza/code/9700
 http://sourceforge.net/p/shareaza/code/HEAD/tree/
 http://sourceforge.net/p/shareaza/code/commit_browser
 http://sourceforge.net/p/shareaza/tickets
 
 svn+ssh://svn.code.sf.net/p/shareaza/code/trunk shareaza-code
+
+v1.0 to r20
+v2.0 to r30
 
 
 •
@@ -43,19 +46,19 @@ svn+ssh://svn.code.sf.net/p/shareaza/code/trunk shareaza-code
 9674	.	1f	Updated GeoIP database (08 Jun 2017)
 9673		~f	Added support for Visual Studio 2017 (v141)
 9672		3f	Updated BugTrapSort project options
-9671	r22	6f	Added BitTorrent Local Service Discovery (receive only)		http://shareaza.sourceforge.net/phpbb/viewtopic.php?f=13&t=254
+9671	r28	6f	Added BitTorrent Local Service Discovery (receive only)		http://shareaza.sourceforge.net/phpbb/viewtopic.php?f=13&t=254
 (2017.2) (Envy 1)
 9670	/r22~	2f	Updated Chinese (Traditional)
 9669	r22	3f	Added Connection.MulticastLoop option (Debugging)
 9668	r21	1f	Optimized HTTP backwards uploads
 9667	.	1f	Updated SkinTranslate.exe utility to be more strict
-9666	r22	1f	Addition to r9665
-9665	r22	9f	Added some support for multi-cast packets, Added new options (Connection)
-9664	r22	8f	Improved existing file search for torrents  (CStringIList)
-9663	r22	3f	Added alone ED2K-hashset sharing over DIME
-9662	r22	13f	Added more "const"s, text formatting
-9661	r22	1f	Unified CLibraryFile::GetTigerTree() and CLibraryFile::GetED2K() code
-9660	r22	6f	Improved services discovery
+9666	r28	1f	Addition to r9665
+9665	r28	9f	Added some support for multi-cast packets, Added new options (Connection)
+9664	r28	8f	Improved existing file search for torrents  (CStringIList)
+9663	r28	3f	Added alone ED2K-hashset sharing over DIME
+9662	r28	13f	Added more "const"s, text formatting
+9661	r28	1f	Unified CLibraryFile::GetTigerTree() and CLibraryFile::GetED2K() code
+9660	r28	6f	Improved services discovery
 9659	.	14f	Fixed warnings
 9658	.	1f	Updated Zlib project options
 9657	.	1f	Updated GeoIP database
@@ -158,9 +161,9 @@ svn+ssh://svn.code.sf.net/p/shareaza/code/trunk shareaza-code
 9562		10f	Optimized case insensitive string maps: CMap replaced by CAtlMap< CStringElementTraitsI >. Fixed upload memory leak.
 9561		17f	Optimized case insensitive string maps: CMap replaced by CAtlMap< CStringElementTraitsI >. Added CStringIMap class
 9560	r125	1f	Fixed space trimming of query string
-9559		4f	Optimized case insensitive string maps: CMap replaced by CAtlMap< CStringElementTraitsI >
-9558		5f	Optimized case insensitive string maps: CMap replaced by CAtlMap< CStringElementTraitsI >
-9557		8f	Added "const" to and renamed "CVendor*" -> "CVendorPtr"    Optimized case insensitive string maps: CMap replaced by CAtlMap< CStringElementTraitsI >.
+9559	r28	4f	Optimized case insensitive string maps: CMap replaced by CAtlMap< CStringElementTraitsI >
+9558	r28	5f	Optimized case insensitive string maps: CMap replaced by CAtlMap< CStringElementTraitsI >
+9557	r28	8f	Added "const" to and renamed "CVendor*" -> "CVendorPtr"    Optimized case insensitive string maps: CMap replaced by CAtlMap< CStringElementTraitsI >.
 9556	r125	2f	Optimized GetMediaFrame function
 9555	r126	1f	Optimized HashKey<CString> function (StdAfx.h)
 9554		1f	Fixed minor warnings (Add StdAfx.cpp pragmas)
@@ -173,7 +176,7 @@ svn+ssh://svn.code.sf.net/p/shareaza/code/trunk shareaza-code
 9547	r125	2f	CXMLNode::SetValue() minor optimization
 9546	r126	1f	Added well-known DC++ hub list
 9545	r125	2f	Fixed stable time calculation
-9544	r21/	12f+30	Added a DC++ hub list URL as a full fledged discovery services (renamed options)
+9544	r21/r28	12f+30	Added a DC++ hub list URL as a full fledged discovery services (renamed options)
 9543	r21	1f	Added DC++ hub list retrieval in the startup wizard
 9542	r21	2f	Improved detection of 3d party ED2K and DC++ client files
 9541	r125	1f	Fixed error in getting of 64-bit "Program Files" folder

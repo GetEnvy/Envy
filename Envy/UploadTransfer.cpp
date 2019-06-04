@@ -60,7 +60,6 @@ CUploadTransfer::CUploadTransfer(PROTOCOLID nProtocol)
 	, m_nAveragePos		( 0 )
 	, m_tRatingTime		( 0 )
 	, m_nMaxRate		( 0 )
-	, m_pFile			( )
 {
 	m_nProtocol			= nProtocol;
 	m_nBandwidth		= Settings.Bandwidth.Request;
@@ -474,11 +473,11 @@ BOOL CUploadTransfer::RequestPartial(CDownload* pDownload)
 	m_bFilePartial = TRUE;
 
 	// Try to get existing file object from download
-	augment::auto_ptr< CFragmentedFile > pDownloadFile( pDownload->GetFile() );
-	if ( ! pDownloadFile.get() )
+	augment::auto_ptr< CFragmentedFile > pFile( pDownload->GetFile() );
+	if ( ! pFile.get() )
 		return FALSE;
 
-	AttachFile( pDownloadFile );
+	AttachFile( pFile.release() );
 
 	if ( m_oSHA1 && ! pDownload->m_oSHA1 )
 		pDownload->m_oSHA1 = m_oSHA1;
@@ -526,7 +525,7 @@ void CUploadTransfer::AllocateBaseFile()
 
 BOOL CUploadTransfer::IsFileOpen() const
 {
-	return ( m_pFile.get() != NULL );
+	return m_pFile.get() && m_pFile->IsOpen();
 }
 
 BOOL CUploadTransfer::OpenFile()
@@ -537,9 +536,12 @@ BOOL CUploadTransfer::OpenFile()
 	augment::auto_ptr< CFragmentedFile > pFile( new CFragmentedFile );
 	if ( pFile.get() && pFile->Open( this, FALSE ) )
 	{
-		AttachFile( pFile );
+		AttachFile( pFile.release() );
 		return TRUE;
 	}
+
+	theApp.Message( MSG_ERROR, IDS_UPLOAD_CANTOPEN, (LPCTSTR)m_sName, (LPCTSTR)m_sAddress );
+
 	return FALSE;
 }
 
@@ -564,11 +566,10 @@ BOOL CUploadTransfer::ReadFile(QWORD nOffset, LPVOID pData, QWORD nLength, QWORD
 	return m_pFile->Read( nOffset, pData, nLength, pnRead );
 }
 
-void CUploadTransfer::AttachFile(augment::auto_ptr< CFragmentedFile >& pFile)
+void CUploadTransfer::AttachFile(CFragmentedFile* pFile)
 {
-//#ifndef VS2008		// VS2010+ std::unique_ptr
-//	m_pFile = std::move( pFile );
-//#else	// VS2008 auto_ptr
-	m_pFile = pFile;
-//#endif
+	if ( pFile && m_pFile.get() == pFile )
+		pFile->Release();
+	else
+		m_pFile.reset( pFile );
 }

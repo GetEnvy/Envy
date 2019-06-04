@@ -26,5 +26,4 @@ public:
 
 private:
 	static HRESULT SafeProcess(ILibraryBuilderPlugin* pPlugin, BSTR szPath, ISXMLElement* pElement);
-	static ILibraryBuilderPlugin* LoadPlugin(LPCTSTR pszType);
 };

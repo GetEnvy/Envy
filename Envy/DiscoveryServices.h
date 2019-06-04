@@ -20,6 +20,10 @@
 
 #include "HttpRequest.h"
 
+#define DSGnutellaTCP		"gnutella1:host:"
+#define DSGnutella2TCP		"gnutella2:host:"
+#define DSGnutellaUDPHC		"uhc:"
+#define DSGnutella2UDPKHL	"ukhl:"
 
 // ToDo: Remove Network locks
 // ToDo: Add support for concurrent webcache requests
@@ -30,12 +34,20 @@ class CDiscoveryService
 public:
 	enum Type
 	{
-		dsNull, dsGnutella, dsWebCache, dsServerList, dsBlocked
+		dsNull,
+		dsWebCache,			// 'M'/'2'/'1'
+		dsGnutella,			// 'U'
+		dsServerList,		// 'D'/'H'	dsServerMet/dsDCHubList
+		dsBlocked			// 'X'
 	};
 
 	enum SubType
 	{
-		dsOldBootStrap, dsGnutellaTCP, dsGnutella2TCP, dsGnutellaUDPHC, dsGnutella2UDPKHL
+		dsOldBootStrap,
+		dsGnutellaTCP,		// "gnutella1:host:"
+		dsGnutella2TCP,		// "gnutella2:host:"
+		dsGnutellaUDPHC,	// "uhc:"
+		dsGnutella2UDPKHL	// "ukhl:"
 	};
 
 	CDiscoveryService(Type nType = dsNull, LPCTSTR pszAddress = NULL, PROTOCOLID nProtocol = PROTOCOL_NULL);
@@ -75,10 +87,11 @@ protected:
 	void		OnHostAdd(int nCount = 1);
 	void		OnURLAdd(int nCount = 1);
 	void		Serialize(CArchive& ar, int nVersion);
-	BOOL		ResolveGnutella();
+	BOOL		ResolveGnutella(BOOL bForced = FALSE);
 
 	friend class CDiscoveryServices;
 };
+
 
 class CDiscoveryServices : public CThreadImpl
 {
@@ -88,7 +101,11 @@ public:
 
 	enum Mode
 	{
-		wcmHosts, wcmCaches, wcmUpdate, wcmSubmit, wcmServerList
+		wcmHosts,		// Query G1/G2/Multi service for hosts
+		wcmCaches,		// Query G1/G2/Multi service for caches
+		wcmUpdate,		// Update web cache (includes advertising)
+		wcmSubmit,		// Advertise web cache to a random web cache
+		wcmServerList	// Query eDonkey/DC++ service (wcmServerMet/wcmDCHubList)
 	};
 
 protected:
@@ -109,11 +126,10 @@ protected:
 public:
 	POSITION			GetIterator() const;
 	CDiscoveryService*	GetNext(POSITION& pos) const;
-	BOOL				Check(CDiscoveryService* pService, CDiscoveryService::Type nType = CDiscoveryService::dsNull) const;
+	BOOL				Check(const CDiscoveryService* pService, CDiscoveryService::Type nType = CDiscoveryService::dsNull) const;
 	BOOL				Add(CDiscoveryService* pService);
-	BOOL				Add(LPCTSTR pszAddress, int nType, PROTOCOLID nProtocol = PROTOCOL_NULL);
+	BOOL				Add(LPCTSTR pszAddress, CDiscoveryService::Type nType, PROTOCOLID nProtocol = PROTOCOL_NULL);
 	BOOL				CheckMinimumServices();
-//	DWORD				MetQueried() const; 		// Obsolete: Unused
 	DWORD				LastExecute() const;
 	CDiscoveryService*	GetByAddress(LPCTSTR pszAddress) const;
 	CDiscoveryService*	GetByAddress(const IN_ADDR* pAddress, WORD nPort, CDiscoveryService::SubType nSubType );
@@ -122,28 +138,29 @@ public:
 	BOOL				Update();
 	void				Stop();
 	void				Clear();
-	BOOL				Execute(BOOL bDiscovery, PROTOCOLID nProtocol, USHORT nForceDiscovery);
-	BOOL				Execute(CDiscoveryService* pService, Mode nMode);
+	BOOL				Query(CDiscoveryService* pService, Mode nMode);
+	BOOL				Execute(PROTOCOLID nProtocol = PROTOCOL_NULL, USHORT nForceDiscovery = FALSE);
+	void				ExecuteBootstraps(PROTOCOLID nProtocol = PROTOCOL_NULL);
 	void				OnResolve(PROTOCOLID nProtocol, LPCTSTR szAddress, const IN_ADDR* pAddress = NULL, WORD nPort = 0);
 
 protected:
 	void				Remove(CDiscoveryService* pService, BOOL bCheck = TRUE);
-	DWORD				GetCount(int nType = 0, PROTOCOLID nProtocol = PROTOCOL_NULL) const;
+	DWORD				GetCount(CDiscoveryService::Type nType = CDiscoveryService::dsNull, PROTOCOLID nProtocol = PROTOCOL_NULL) const;
 	BOOL				CheckWebCacheValid(LPCTSTR pszAddress);
-	int					ExecuteBootstraps(int nCount, BOOL bUDP = FALSE, PROTOCOLID nProtocol = PROTOCOL_NULL);
 	void				Serialize(CArchive& ar);
+	int					ExecuteBootstraps(int nCount, BOOL bUDP = FALSE, PROTOCOLID nProtocol = PROTOCOL_NULL);
 	BOOL				RequestRandomService(PROTOCOLID nProtocol);
 	CDiscoveryService*  GetRandomService(PROTOCOLID nProtocol);
 	CDiscoveryService*	GetRandomWebCache(PROTOCOLID nProtocol, BOOL bWorkingOnly, CDiscoveryService* pExclude = NULL, BOOL bForUpdate = FALSE);
-	BOOL				RequestWebCache(CDiscoveryService* pService, Mode nMode, PROTOCOLID nProtocol);
-	void				OnRun();
+	BOOL				RequestWebCache(BOOL bForced, CDiscoveryService* pService, Mode nMode, PROTOCOLID nProtocol = PROTOCOL_NULL);
 	BOOL				RunWebCacheGet(BOOL bCache);
 	BOOL				RunWebCacheUpdate();
-	BOOL				RunServerList();	// Was RunServerMet()
-	BOOL				SendWebCacheRequest(CString strURL, CString& strOutput);
+	BOOL				RunServerList();	// RunWebCacheFile() -was RunServerMet()
+	BOOL				SendWebCacheRequest(const CString& strURL);
 	BOOL				EnoughServices() const;
 	void				AddDefaults();
 	void				MergeURLs();
+	void				OnRun();
 
 	friend class CDiscoveryService;
 

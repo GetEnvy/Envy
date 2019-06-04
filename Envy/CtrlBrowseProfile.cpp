@@ -86,7 +86,7 @@ void CBrowseProfileCtrl::OnSkinChange()
 
 	if ( CXMLElement* pXML = Skin.GetDocument( L"CBrowseHostProfile.1" ) )
 	{
-		CMap< CString, const CString&, CRichElement*, CRichElement* > pMap;
+		CElementMap pMap;
 		m_pDocumentLeft->LoadXML( pXML, &pMap );
 
 		pMap.Lookup( L"Nick", m_pdNick );
@@ -119,7 +119,7 @@ void CBrowseProfileCtrl::OnSkinChange()
 
 	if ( CXMLElement* pXML = Skin.GetDocument( L"CBrowseHostProfile.2" ) )
 	{
-		CMap< CString, const CString&, CRichElement*, CRichElement* > pMap;
+		CElementMap pMap;
 		m_pDocumentRight->LoadXML( pXML, &pMap );
 
 		pMap.Lookup( L"Bookmarks", m_pdBookmarks );
@@ -546,6 +546,8 @@ void CBrowseProfileCtrl::OnClickView(NMHDR* pNotify, LRESULT* /*pResult*/)
 
 void CBrowseProfileCtrl::Serialize(CArchive& ar, int /*nVersion*/)	// BROWSER_SER_VERSION
 {
+	CSingleLock pLock( &m_pSection, TRUE );
+
 	m_imgHead.Serialize( ar );
 
 	if ( ar.IsLoading() )

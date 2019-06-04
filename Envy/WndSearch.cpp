@@ -131,13 +131,13 @@ int CSearchWnd::OnCreate(LPCREATESTRUCT lpCreateStruct)
 
 	if ( pSearch && pSearch->m_pSchema != NULL )
 	{
-		CList< CSchemaMember* > pColumns;
+		CSchemaMemberList pColumns;
 		CSchemaColumnsDlg::LoadColumns( pSearch->m_pSchema, &pColumns );
 		m_wndList.SelectSchema( pSearch->m_pSchema, &pColumns );
 	}
 	else if ( CSchemaPtr pSchema = SchemaCache.Get( Settings.Search.BlankSchemaURI ) )
 	{
-		CList< CSchemaMember* > pColumns;
+		CSchemaMemberList pColumns;
 		CSchemaColumnsDlg::LoadColumns( pSchema, &pColumns );
 		m_wndList.SelectSchema( pSchema, &pColumns );
 	}
@@ -511,7 +511,7 @@ void CSearchWnd::OnSearchSearch()
 
 		if ( m_pMatches->m_nFiles == 0 && pSearch->m_pSchema != NULL )
 		{
-			CList< CSchemaMember* > pColumns;
+			CSchemaMemberList pColumns;
 			CSchemaColumnsDlg::LoadColumns( pSearch->m_pSchema, &pColumns );
 			m_wndList.SelectSchema( pSearch->m_pSchema, &pColumns );
 		}

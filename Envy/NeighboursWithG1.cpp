@@ -1,7 +1,7 @@
 //
 // NeighboursWithG1.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2018
+// This file is part of Envy (getenvy.com) Â© 2016-2018
 // Portions copyright Shareaza 2002-2007 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -118,9 +118,9 @@ void CNeighboursWithG1::Remove(CNeighbour* pNeighbour)
 
 void CNeighboursWithG1::OnRun()
 {
-	CNeighboursBase::OnRun();
+	CNeighboursBase::OnRun();	// ToDo: Remove this?
 
-	if ( Settings.Gnutella1.Enabled )
+	if ( Settings.Gnutella1.Enabled && Settings.Connection.EnableMulticast )
 	{
 		const DWORD tNow = GetTickCount();
 		if ( tNow > m_tLastPingOut + Settings.Gnutella1.MulticastPingRate )

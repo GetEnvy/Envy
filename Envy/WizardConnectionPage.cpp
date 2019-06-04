@@ -445,7 +445,7 @@ void CWizardConnectionPage::OnRun()
 		m_wndStatus.SetWindowText( LoadString( IDS_WIZARD_DISCOVERY ) );
 
 		DiscoveryServices.CheckMinimumServices();
-		nCurrentStep += 15;
+		nCurrentStep += 10;
 		m_wndProgress.PostMessage( PBM_SETPOS, nCurrentStep );
 
 		BOOL bConnected = Network.IsConnected();
@@ -453,13 +453,16 @@ void CWizardConnectionPage::OnRun()
 		{
 			int i;
 			// It will be checked if it is needed inside DiscoveryServices.Execute()
-			for ( i = 0; i < 2 && ! DiscoveryServices.Execute(TRUE, PROTOCOL_G1, 2); i++ ) Sleep(200);
+			for ( i = 0; i < 2 && ! DiscoveryServices.Execute( PROTOCOL_G1, 2 ); i++ ) Sleep(200);
 			nCurrentStep += 5;
 			m_wndProgress.PostMessage( PBM_SETPOS, nCurrentStep );
-			for ( i = 0; i < 2 && ! DiscoveryServices.Execute(TRUE, PROTOCOL_G2, 2); i++ ) Sleep(200);
+			for ( i = 0; i < 2 && ! DiscoveryServices.Execute( PROTOCOL_G2, 2 ); i++ ) Sleep(200);
 			nCurrentStep += 5;
 			m_wndProgress.PostMessage( PBM_SETPOS, nCurrentStep );
-			for ( i = 0; i < 2 && ! DiscoveryServices.Execute(TRUE, PROTOCOL_ED2K, 2); i++ ) Sleep(200);
+			for ( i = 0; i < 2 && ! DiscoveryServices.Execute( PROTOCOL_ED2K, 2 ); i++ ) Sleep(200);
+			nCurrentStep += 5;
+			m_wndProgress.PostMessage( PBM_SETPOS, nCurrentStep );
+			for ( i = 0; i < 2 && ! DiscoveryServices.Execute( PROTOCOL_DC, 2 ); i++ ) Sleep(200);
 			nCurrentStep += 5;
 			m_wndProgress.PostMessage( PBM_SETPOS, nCurrentStep );
 
@@ -467,7 +470,7 @@ void CWizardConnectionPage::OnRun()
 		}
 		else
 		{
-			nCurrentStep += 15;
+			nCurrentStep += 20;
 			m_wndProgress.PostMessage( PBM_SETPOS, nCurrentStep );
 		}
 	}

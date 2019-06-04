@@ -25,6 +25,7 @@
 #include "Download.h"
 #include "Downloads.h"
 #include "DownloadTask.h"
+#include "DownloadGroups.h"
 #include "FragmentedFile.h"
 #include "Transfers.h"
 #include "Library.h"
@@ -111,53 +112,68 @@ CBTInfo::CBTFile::CBTFile(const CBTInfo* pInfo, const CBTFile* pBTFile)
 		CEnvyFile::operator=( *pBTFile );
 }
 
-CString CBTInfo::CBTFile::FindFile() const
+const CString& CBTInfo::CBTFile::FindFile()
 {
-	CQuickLock oLock( Library.m_pSection );
-
-	// Try complete folder
-	CString strFile = Settings.Downloads.CompletePath + L"\\" + m_sPath;
-	if ( GetFileSize( SafePath( strFile ) ) == m_nSize )
-		return strFile;
-
-	// Try folder of original .torrent
-	CString strTorrentPath = m_pInfo->m_sPath.Left( m_pInfo->m_sPath.ReverseFind( L'\\' ) + 1 );
-	strFile = SafePath( strTorrentPath + m_sPath );
-	if ( GetFileSize( SafePath( strFile ) ) == m_nSize )
-		return strFile;
-
+	CString strShortPath;
 	int nSlash = m_sPath.Find( L'\\' );
 	if ( nSlash != -1 )
+		strShortPath = m_sPath.Mid( nSlash + 1 );
+
+	CList< CString > mTryFolders;	// CStringIList
+	// Try complete folder
+	mTryFolders.AddTail( Settings.Downloads.CompletePath );
+	// Try all possible download folders
+	DownloadGroups.GetFolders( mTryFolders );
+	// Try original .torrent folder
+	mTryFolders.AddTail( m_pInfo->m_sPath.Left( m_pInfo->m_sPath.ReverseFind( L'\\' ) ) );
+
+	for ( POSITION pos = mTryFolders.GetHeadPosition(); pos; )
 	{
-		CString strShortPath = m_sPath.Mid( nSlash + 1 );
-
-		// Try complete folder without outer file directory
-		strFile = Settings.Downloads.CompletePath + L"\\" + strShortPath;
+		const CString sFolder = mTryFolders.GetNext( pos );
+		const CString strFile = sFolder + L"\\" + m_sPath;
 		if ( GetFileSize( SafePath( strFile ) ) == m_nSize )
-			return strFile;
+		{
+			m_sBestPath = strFile;
+			return m_sBestPath;
+		}
 
-		// Try folder of original .torrent without outer file directory
-		strFile = strTorrentPath + strShortPath;
-		if ( GetFileSize( SafePath( strFile ) ) == m_nSize )
-			return strFile;
+		// +Without outer file directory
+		if ( ! strShortPath.IsEmpty() )
+		{
+			const CString strFile = sFolder + L"\\" + strShortPath;
+			if ( GetFileSize( SafePath( strFile ) ) == m_nSize )
+			{
+				m_sBestPath = strFile;
+				return m_sBestPath;
+			}
+		}
 	}
 
-	// Try find by name only
-	if ( const CLibraryFile* pShared = LibraryMaps.LookupFileByName( m_sName, m_nSize, FALSE, TRUE ) )
-	{
-		strFile = pShared->GetPath();
-		if ( GetFileSize( SafePath( strFile ) ) == m_nSize )
-			return strFile;
-	}
+	CQuickLock oLock( Library.m_pSection );
 
-	// Try find by hash
+	// Try find by hash/size
 	if ( const CLibraryFile* pShared = LibraryMaps.LookupFileByHash( this, FALSE, TRUE ) )
 	{
-		strFile = pShared->GetPath();
+		const CString strFile = pShared->GetPath();
 		if ( GetFileSize( SafePath( strFile ) ) == m_nSize )
-			return strFile;
+		{
+			m_sBestPath = strFile;
+			return m_sBestPath;
+		}
 	}
 
+	// Try find by name/size
+	if ( const CLibraryFile* pShared = LibraryMaps.LookupFileByName( m_sName, m_nSize, FALSE, TRUE ) )
+	{
+		const CString strFile = pShared->GetPath();
+		if ( GetFileSize( SafePath( strFile ) ) == m_nSize )
+		{
+			m_sBestPath = strFile;
+			return m_sBestPath;
+		}
+	}
+
+	m_sBestPath.Empty();
 	return m_sPath;
 }
 

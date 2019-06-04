@@ -72,7 +72,11 @@ public:
 	DWORD			m_nOutPackets;
 
 protected:
-	SOCKET			m_hSocket;
+	SOCKET			m_hSocket[ 4 ];		// [ 0 ] - Main Envy port (0.0.0.0:6480)
+										// [ 1 ] - eD2K multi-cast port: 224.0.0.1:5000
+										// [ 2 ] - G1 LimeWire multi-cast port: 234.21.81.1:6347
+										// [ 3 ] - BitTorrent multi-cast port (http://bittorrent.org/beps/bep_0014.html): 239.192.152.143:6771
+
 	WORD			m_nSequence;
 	BOOL			m_bStable;
 	DWORD			m_tLastWrite;
@@ -101,8 +105,8 @@ protected:
 
 private:
 	// Buffer for current incoming UDP packet. It's global since
-	// CDatagrams processes one packet at once only. Maximum UDP size 64KB.
-	BYTE		m_pReadBuffer[ 65536 ];
+	// CDatagrams processes one packet at once only. Maximum UDP size 64KB + 1. Zero terminated.
+	BYTE	m_pReadBuffer[ 65537 ];
 
 public:
 	BOOL	Listen();
@@ -111,7 +115,7 @@ public:
 	// True if the socket is valid, false if closed
 	inline BOOL IsValid() const
 	{
-		return ( m_hSocket != INVALID_SOCKET );
+		return ( m_hSocket[ 0 ] != INVALID_SOCKET );
 	}
 
 	// Avoid using this function directly, use !Network.IsFirewalled(CHECK_UDP) instead
@@ -131,7 +135,7 @@ public:
 	void	OnRun();
 
 protected:
-	BOOL	TryRead();
+	BOOL	TryRead(int nIndex = 0);
 	BOOL	TryWrite();
 	void	Measure();
 	void	ManageOutput();

@@ -143,8 +143,7 @@ BOOL CDownloadGroup::Link(CDownload* pDownload)
 
 		if ( strFilter.GetAt( 0 ) == L'.' )
 		{
-			int nPos( pDownload->m_sName.ReverseFind( L'.' ) );
-			if ( nPos != -1 && ! strFilter.CompareNoCase( pDownload->m_sName.Mid( nPos ) ) )
+			if ( EndsWith( pDownload->m_sName, (LPCTSTR)strFilter, strFilter.GetLength() ) )
 			{
 				// Filter by extension
 				Add( pDownload );

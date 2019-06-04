@@ -388,17 +388,16 @@ BOOL CSkinWindow::Parse(CXMLElement* pBase, const CString& strPath)
 				continue;
 			}
 
-			str = pGroup->GetAttributeValue( L"type" );
-			ToLower( str );
-
 			// ToDo: Add PNG Transparency Support
 
-			if ( str == L"watermark" )
+			str = pGroup->GetAttributeValue( L"type" );
+
+			if ( str.CompareNoCase( L"watermark" ) == 0 )
 			{
 				if ( m_bmWatermark.m_hObject ) m_bmWatermark.DeleteObject();
 				m_bmWatermark.Attach( hBitmap );
 			}
-			else if ( str == L"alpha" )
+			else if ( str.CompareNoCase( L"alpha" ) == 0 )
 			{
 				if ( m_bmAlpha.m_hObject ) m_bmAlpha.DeleteObject();
 				m_bmAlpha.Attach( hBitmap );

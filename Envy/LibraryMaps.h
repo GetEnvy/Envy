@@ -23,6 +23,9 @@
 class CLibrary;
 class CQuerySearch;
 
+#define FILE_HASH_SIZE	512
+#define FILE_INDEX(x)	( *(WORD*)(&(x)[0]) & 511 )
+
 
 class CLibraryMaps : public CComObject
 {
@@ -40,7 +43,7 @@ public:
 	INT_PTR 		GetPathCount() const { return m_pPathMap.GetCount(); }	// For Debug Benchmark
 	void			GetStatistics(DWORD* pnFiles, QWORD* pnVolume);
 
-	CLibraryFile*	LookupFile(DWORD_PTR nIndex, BOOL bSharedOnly = FALSE, BOOL bAvailableOnly = FALSE) const;
+	CLibraryFile*	LookupFile(DWORD nIndex, BOOL bSharedOnly = FALSE, BOOL bAvailableOnly = FALSE) const;
 	CLibraryFile*	LookupFileByName(LPCTSTR pszName, QWORD nSize, BOOL bSharedOnly = FALSE, BOOL bAvailableOnly = FALSE) const;
 	CLibraryFile*	LookupFileByPath(LPCTSTR pszPath, BOOL bSharedOnly = FALSE, BOOL bAvailableOnly = FALSE) const;
 	CLibraryFile*	LookupFileByURN(LPCTSTR pszURN, BOOL bSharedOnly = FALSE, BOOL bAvailableOnly = FALSE) const;
@@ -53,14 +56,17 @@ public:
 	CFileList*		LookupFilesByHash(const CEnvyFile* pFilter, BOOL bSharedOnly = FALSE, BOOL bAvailableOnly = FALSE, int nMaximum = 1) const;
 
 protected:
+	typedef CAtlMap< DWORD, CLibraryFile* > CIndexMap;
+	typedef CAtlMap< CString, CLibraryFile*, CStringElementTraitsI< CString > > CFileMap;
+
 	CIndexMap		m_pIndexMap;
 	CFileMap		m_pNameMap;
 	CFileMap		m_pPathMap;
-	CLibraryFile**	m_pSHA1Map;
-	CLibraryFile**	m_pTigerMap;
-	CLibraryFile**	m_pED2KMap;
-	CLibraryFile**	m_pBTHMap;
-	CLibraryFile**	m_pMD5Map;
+	CLibraryFile*	m_pSHA1Map[ FILE_HASH_SIZE ];
+	CLibraryFile*	m_pTigerMap[ FILE_HASH_SIZE ];
+	CLibraryFile*	m_pED2KMap[ FILE_HASH_SIZE ];
+	CLibraryFile*	m_pBTHMap[ FILE_HASH_SIZE ];
+	CLibraryFile*	m_pMD5Map[ FILE_HASH_SIZE ];
 	CFileList		m_pDeleted;
 	DWORD			m_nNextIndex;
 	DWORD			m_nFiles;

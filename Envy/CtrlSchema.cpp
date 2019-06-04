@@ -21,10 +21,9 @@
 #include "Envy.h"
 #include "CtrlSchema.h"
 
-#include "Schema.h"
 #include "Skin.h"
 #include "Colors.h"
-#include "XML.h"
+//#include "XML.h"
 
 #ifdef _DEBUG
 #undef THIS_FILE
@@ -111,30 +110,48 @@ void CSchemaCtrl::SetSchema(CSchemaPtr pSchema, BOOL bPromptOnly)
 	{
 		Layout();
 		Invalidate();
+
+		for ( POSITION pos = m_pItems.GetStartPosition(); pos; )
+		{
+			CSchemaMemberPtr pMember;
+			CList< CString >* pItems;
+			m_pItems.GetNextAssoc( pos, pMember, pItems );
+			delete pItems;
+		}
+		m_pItems.RemoveAll();
+
 		return;
 	}
 
 	for ( POSITION posSchema = pSchema->GetMemberIterator(); posSchema; )
 	{
-		CSchemaMember* pMember = pSchema->GetNextMember( posSchema );
+		CSchemaMemberPtr pMember = pSchema->GetNextMember( posSchema );
 
 		if ( bPromptOnly && ! pMember->m_bPrompt || pMember->m_bHidden ) continue;
 
 		CWnd* pControl = NULL;
 		CRect rc;
 
-		if ( pMember->GetItemCount() )
+		for ( POSITION posMember = pMember->GetItemIterator(); posMember; )
+		{
+			AddItem( pMember, pMember->GetNextItem( posMember ) );
+		}
+
+		CList< CString >* pItems;
+		if ( m_pItems.Lookup( pMember, pItems ) )
 		{
 			CComboBox* pCombo = new CComboBox();
 
 			pCombo->Create( WS_CHILD|WS_VISIBLE|WS_BORDER|WS_TABSTOP|CBS_DROPDOWN|CBS_AUTOHSCROLL|WS_VSCROLL,
 				rc, this, IDC_METADATA_CONTROL );
 
-			for ( POSITION posMember = pMember->GetItemIterator(); posMember; )
+			for ( POSITION posMember = pItems->GetHeadPosition(); posMember; )
 			{
-				CString strSelection = pMember->GetNextItem( posMember );
-				pCombo->AddString( strSelection );
+				pCombo->AddString( pItems->GetNext( posMember ) );
 			}
+
+			if ( pMember->m_nMaxLength )
+				pCombo->LimitText( pMember->m_nMaxLength );
 
 			pControl = pCombo;
 		}
@@ -144,7 +161,8 @@ void CSchemaCtrl::SetSchema(CSchemaPtr pSchema, BOOL bPromptOnly)
 			pEdit->Create( WS_CHILD|WS_VISIBLE|WS_TABSTOP|ES_AUTOHSCROLL,
 				rc, this, IDC_METADATA_CONTROL );
 			pEdit->ModifyStyleEx( 0, WS_EX_CLIENTEDGE );
-			if ( pMember->m_nMaxLength ) pEdit->LimitText( pMember->m_nMaxLength );
+			if ( pMember->m_nMaxLength )
+				pEdit->LimitText( pMember->m_nMaxLength );
 			pControl = pEdit;
 		}
 
@@ -166,21 +184,49 @@ CString CSchemaCtrl::GetSchemaURI() const
 	return m_pSchema ? m_pSchema->GetURI() : CString();
 }
 
+void CSchemaCtrl::AddItem(CSchemaMemberPtr pMember, const CString& strItem)
+{
+	if ( ! strItem.IsEmpty() && strItem != NO_VALUE && strItem != MULTI_VALUE )
+	{
+		CList< CString >* pItems;
+		if ( ! m_pItems.Lookup( pMember, pItems ) )
+			m_pItems.SetAt( pMember, pItems = new CList< CString >() );
+
+		for ( POSITION pos = pItems->GetHeadPosition(); pos; )
+		{
+			POSITION posCmp = pos;
+			const CString strExisting = pItems->GetNext( pos );
+
+			int nCmp = strExisting.Compare( strItem );
+			if ( nCmp == 0 )
+				return;	// Duplicate
+			if ( nCmp > 0 )
+			{
+				pItems->InsertBefore( posCmp, strItem );
+				return;
+			}
+		}
+		pItems->AddTail( strItem );
+	}
+}
+
 /////////////////////////////////////////////////////////////////////////////
 // CSchemaCtrl data transfer
 
-BOOL CSchemaCtrl::UpdateData(CXMLElement* pBase, BOOL bSaveAndValidate)
+DWORD CSchemaCtrl::UpdateData(CXMLElement* pBase, BOOL bSaveAndValidate, BOOL bRealSave /*True*/)
 {
-	if ( m_pSchema == NULL || pBase == NULL ) return FALSE;
+	if ( m_pSchema == NULL || pBase == NULL ) return 0;
 
-	if ( pBase->GetName().CompareNoCase( m_pSchema->m_sSingular ) ) return FALSE;
+	if ( pBase->GetName().CompareNoCase( m_pSchema->m_sSingular ) != 0 ) return 0;
+
+	DWORD nModified = 0;
 
 	POSITION pos = m_pSchema->GetMemberIterator();
 
 	for ( INT_PTR nControl = 0; nControl < m_pControls.GetSize() && pos; nControl++ )
 	{
 		CWnd* pControl = m_pControls.GetAt( nControl );
-		CSchemaMember* pMember = NULL;
+		CSchemaMemberPtr pMember = NULL;
 		while ( pos )
 		{
 			pMember = m_pSchema->GetNextMember( pos );
@@ -201,7 +247,9 @@ BOOL CSchemaCtrl::UpdateData(CXMLElement* pBase, BOOL bSaveAndValidate)
 			if ( strNewValue != m_sMultipleString && strNewValue != strOldValue &&
 				! ( strNewValue.IsEmpty() && strOldValue == NO_VALUE ) )
 			{
-				pMember->SetValueTo( pBase, strNewValue );
+				++nModified;
+				if ( bRealSave )
+					pMember->SetValueTo( pBase, strNewValue, TRUE );
 			}
 		}
 		else
@@ -215,7 +263,7 @@ BOOL CSchemaCtrl::UpdateData(CXMLElement* pBase, BOOL bSaveAndValidate)
 		}
 	}
 
-	return TRUE;
+	return nModified;
 }
 
 /////////////////////////////////////////////////////////////////////////////
@@ -459,49 +507,51 @@ void CSchemaCtrl::OnPaint()
 }
 
 /////////////////////////////////////////////////////////////////////////////
-// CSchemaCtrl command handler
+// CSchemaCtrl command handler (Obsolete)
 
-BOOL CSchemaCtrl::OnCommand(WPARAM wParam, LPARAM lParam)
-{
-	if ( HIWORD( wParam ) != EN_CHANGE ) return CWnd::OnCommand( wParam, lParam );
-
-	CEdit* pEdit = (CEdit*)CWnd::FromHandle( (HWND)lParam );
-	if ( ! pEdit->IsKindOf( RUNTIME_CLASS(CEdit) ) ) return TRUE;
-
-	CSchemaMember* pMember = (CSchemaMember*)(LONG_PTR)GetWindowLongPtr( (HWND)lParam, GWLP_USERDATA );
-
-	if ( pMember->m_bNumeric )
-	{
-		CString strTextIn, strTextOut;
-		BOOL bChanged = FALSE;
-
-		pEdit->GetWindowText( strTextIn );
-
-		if ( strTextIn != m_sMultipleString )
-		{
-			LPTSTR pszOut = strTextOut.GetBuffer( strTextIn.GetLength() );
-
-			for ( LPCTSTR pszIn = strTextIn; *pszIn; pszIn++ )
-			{
-				if ( ( *pszIn >= '0' && *pszIn <= '9' ) || *pszIn == '.' || *pszIn == '-' )
-					*pszOut++ = *pszIn;
-				else
-					bChanged = TRUE;
-			}
-
-			*pszOut = 0;
-			strTextOut.ReleaseBuffer();
-		}
-
-		if ( bChanged )
-		{
-			pEdit->SetWindowText( strTextOut );
-			pEdit->SetSel( strTextOut.GetLength(), strTextOut.GetLength() );
-		}
-	}
-
-	return CWnd::OnCommand( wParam, lParam );
-}
+//BOOL CSchemaCtrl::OnCommand(WPARAM wParam, LPARAM lParam)
+//{
+//	if ( HIWORD( wParam ) != EN_CHANGE )
+//		return CWnd::OnCommand( wParam, lParam );
+//
+//	CEdit* pEdit = (CEdit*)CWnd::FromHandle( (HWND)lParam );
+//	if ( ! pEdit->IsKindOf( RUNTIME_CLASS(CEdit) ) )
+//		return TRUE;
+//
+//	CSchemaMember* pMember = (CSchemaMember*)(LONG_PTR)GetWindowLongPtr( (HWND)lParam, GWLP_USERDATA );
+//
+//	if ( pMember->m_bNumeric )
+//	{
+//		CString strTextIn, strTextOut;
+//		BOOL bChanged = FALSE;
+//
+//		pEdit->GetWindowText( strTextIn );
+//
+//		if ( strTextIn != m_sMultipleString )
+//		{
+//			LPTSTR pszOut = strTextOut.GetBuffer( strTextIn.GetLength() );
+//
+//			for ( LPCTSTR pszIn = strTextIn; *pszIn; pszIn++ )
+//			{
+//				if ( ( *pszIn >= '0' && *pszIn <= '9' ) || *pszIn == '.' || *pszIn == '-' )
+//					*pszOut++ = *pszIn;
+//				else
+//					bChanged = TRUE;
+//			}
+//
+//			*pszOut = 0;
+//			strTextOut.ReleaseBuffer();
+//		}
+//
+//		if ( bChanged )
+//		{
+//			pEdit->SetWindowText( strTextOut );
+//			pEdit->SetSel( strTextOut.GetLength(), strTextOut.GetLength() );
+//		}
+//	}
+//
+//	return CWnd::OnCommand( wParam, lParam );
+//}
 
 void CSchemaCtrl::OnControlSetFocus()
 {

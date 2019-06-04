@@ -93,7 +93,7 @@ void CLibrary::AddFile(CLibraryFile* pFile)
 	LibraryMaps.OnFileAdd( pFile );
 
 	if ( pFile->HasHash() )
-		LibraryDictionary.AddFile( *pFile );
+		LibraryDictionary.AddFile( pFile );
 
 	if ( pFile->IsAvailable() )
 	{
@@ -127,7 +127,7 @@ void CLibrary::RemoveFile(CLibraryFile* pFile)
 	LibraryBuilder.Remove( pFile );
 
 	if ( pFile->m_nIndex )
-		LibraryDictionary.RemoveFile( *pFile );
+		LibraryDictionary.RemoveFile( pFile );
 }
 
 void CLibrary::CheckDuplicates(const CLibraryFile* pFile, bool bForce) const

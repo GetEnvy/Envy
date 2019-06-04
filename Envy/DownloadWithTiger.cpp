@@ -312,7 +312,7 @@ BOOL CDownloadWithTiger::SetTigerTree(BYTE* pTiger, DWORD nTiger, BOOL bLevel1)
 	return TRUE;
 }
 
-CTigerTree* CDownloadWithTiger::GetTigerTree()
+const CTigerTree* CDownloadWithTiger::GetTigerTree() const
 {
 	CQuickLock oLock( m_pTigerSection );
 
@@ -377,7 +377,7 @@ BOOL CDownloadWithTiger::SetHashset(BYTE* pSource, DWORD nSource)
 	return TRUE;
 }
 
-CED2K* CDownloadWithTiger::GetHashset()
+const CED2K* CDownloadWithTiger::GetHashset() const
 {
 	CQuickLock oLock( m_pTigerSection );
 
@@ -429,16 +429,15 @@ bool CDownloadWithTiger::RunMergeFile(LPCTSTR szFilename, BOOL bMergeValidation,
 	if ( ! oList.size() )
 		return true;		// No available fragments
 
-	// Determine offset if needed
+	// Offset if needed
 	if ( IsMultiFileTorrent() )
 	{
 		const CString strSourceName = PathFindFileName( szFilename );
-		CString strTargetName;
 		QWORD qwOffset = 0;		// qwOffset
-		CBTInfo::CBTFile* pFile;
 		BOOL bFound = FALSE;
 
-		if ( bShift || ( GetAsyncKeyState( VK_SHIFT ) & 0x8000 ) != 0 )		// Forced selection dialog
+		// Forced selection dialog
+		if ( bShift || ( GetAsyncKeyState( VK_SHIFT ) & 0x8000 ) != 0 )
 		{
 			int nIndex = SelectFile();
 			if ( nIndex == 0 )
@@ -450,7 +449,7 @@ bool CDownloadWithTiger::RunMergeFile(LPCTSTR szFilename, BOOL bMergeValidation,
 				CBTInfo::CBTFile* pSelectFile = m_pTorrent.m_pFiles.GetAt( m_pTorrent.m_pFiles.FindIndex( nIndex ) );
 				for ( POSITION pos = m_pTorrent.m_pFiles.GetHeadPosition(); pos; )
 				{
-					pFile = m_pTorrent.m_pFiles.GetNext( pos );
+					const CBTInfo::CBTFile* pFile = m_pTorrent.m_pFiles.GetNext( pos );
 					if ( pFile->m_sPath == pSelectFile->m_sPath )
 					{
 						DEBUG_ONLY( theApp.Message( MSG_DEBUG, L"Merge Selected File: " + pFile->m_sPath ) );
@@ -464,12 +463,62 @@ bool CDownloadWithTiger::RunMergeFile(LPCTSTR szFilename, BOOL bMergeValidation,
 			}
 		}
 
-		if ( ! bFound )		// No forced match, try filename
+		// ToDo: Combined Existing file+size, filename, size-only.
+		//if ( ! bFound )
+		//{
+		//	for ( POSITION pos = m_pTorrent.m_pFiles.GetHeadPosition(); pos; )
+		//	{
+		//		const CBTInfo::CBTFile* pFile = m_pTorrent.m_pFiles.GetNext( pos );
+		//		const CString& strBestName = pFile->GetBestPath();
+		//		const CString strTargetName = PathFindFileName( pFile->m_sPath );
+		//		if ( pFile->m_nSize == qwSourceSize )
+		//		{
+		//			if ((! strBestName.IsEmpty() && strBestName.CompareNoCase( szFilename ) == 0 ) ||
+		//				 strTargetName.CompareNoCase( strSourceName ) == 0)
+		//			{
+		//				// Found
+		//				bFound = TRUE;
+		//				qwSourceOffset = qwOffset;
+		//				break;
+		//			}
+		//			qwSourceOffset = qwOffset;
+		//		}
+		//		else if (strTargetName.CompareNoCase( strSourceName ) == 0)
+		//		{
+		//			// Found
+		//			bFound = TRUE;
+		//			qwSourceOffset = qwOffset;
+		//			break;
+		//		}
+		//	}
+		//}
+
+		// Best fit existing filepath+size
+		if ( ! bFound )
 		{
 			for ( POSITION pos = m_pTorrent.m_pFiles.GetHeadPosition(); pos; )
 			{
-				pFile = m_pTorrent.m_pFiles.GetNext( pos );
-				strTargetName = PathFindFileName( pFile->m_sPath );
+				const CBTInfo::CBTFile* pFile = m_pTorrent.m_pFiles.GetNext( pos );
+				const CString& strBestName = pFile->GetBestPath();
+
+				if ( pFile->m_nSize == qwSourceSize && ! strBestName.IsEmpty() && strBestName.CompareNoCase( szFilename ) == 0 )
+				{
+					// Found
+					bFound = TRUE;
+					qwSourceOffset = qwOffset;
+					break;
+				}
+				qwOffset += pFile->m_nSize;
+			}
+		}
+
+		// Filename
+		if ( ! bFound )
+		{
+			for ( POSITION pos = m_pTorrent.m_pFiles.GetHeadPosition(); pos; )
+			{
+				const CBTInfo::CBTFile* pFile = m_pTorrent.m_pFiles.GetNext( pos );
+				const CString strTargetName = PathFindFileName( pFile->m_sPath );
 
 				if ( strTargetName.CompareNoCase( strSourceName ) == 0 )
 				{
@@ -483,12 +532,13 @@ bool CDownloadWithTiger::RunMergeFile(LPCTSTR szFilename, BOOL bMergeValidation,
 			}
 		}
 
-		if ( ! bFound )		// No filename match, try exact size
+		// Size only
+		if ( ! bFound )
 		{
 			qwOffset = 0;
 			for ( POSITION pos = m_pTorrent.m_pFiles.GetHeadPosition(); pos; )
 			{
-				pFile = m_pTorrent.m_pFiles.GetNext( pos );
+				const CBTInfo::CBTFile* pFile = m_pTorrent.m_pFiles.GetNext( pos );
 
 				if ( pFile->m_nSize == qwSourceSize )	// && strExt == PathFindExtension( pFile->m_sPath )
 				{
@@ -501,7 +551,7 @@ bool CDownloadWithTiger::RunMergeFile(LPCTSTR szFilename, BOOL bMergeValidation,
 				qwOffset += pFile->m_nSize;
 			}
 		}
-	}
+	}	// Multifile offset
 
 	const float fIncrement = fProgress / oList.size();
 

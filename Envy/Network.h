@@ -19,6 +19,7 @@
 #pragma once
 
 #include "ThreadImpl.h"
+#include "Settings.h"
 
 class CBuffer;
 class CPacket;
@@ -186,7 +187,7 @@ public:
 	BOOL		AsyncResolve(LPCTSTR pszAddress, WORD nPort, PROTOCOLID nProtocol, BYTE nCommand);
 	UINT		GetResolveCount() const;				// Pending network name resolves queue size
 	BOOL		IsReserved(const IN_ADDR* pAddress) const;
-	BOOL		IsFirewalledAddress(const IN_ADDR* pAddress, BOOL bIncludeSelf = FALSE) const;
+	BOOL		IsFirewalledAddress(const IN_ADDR* pAddress, BOOL bIncludeSelf = FALSE, BOOL bIgnoreLocalIP = static_cast<BOOL>(Settings.Connection.IgnoreLocalIP)) const;
 	WORD		RandomPort() const;
 	WORD		GetPort() const;
 	void		CreateID(Hashes::Guid& oID);

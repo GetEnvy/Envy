@@ -154,7 +154,7 @@ void CMetaList::Setup(CSchemaPtr pSchema, BOOL bClear)
 
 	for ( POSITION pos = pSchema->GetMemberIterator(); pos; )
 	{
-		CSchemaMember* pMember = pSchema->GetNextMember( pos );
+		CSchemaMemberPtr pMember = pSchema->GetNextMember( pos );
 		m_pItems.AddTail( new CMetaItem( pMember ) );
 	}
 
@@ -573,7 +573,7 @@ BOOL CMetaList::OnClick(const CPoint& point)
 //////////////////////////////////////////////////////////////////////
 // CMetaItem construction
 
-CMetaItem::CMetaItem(CSchemaMember* pMember)
+CMetaItem::CMetaItem(CSchemaMemberPtr pMember)
 	: CRect()
 	, m_pMember 	( pMember )
 	, m_bLink		( FALSE )

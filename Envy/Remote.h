@@ -28,7 +28,7 @@ class CRemote : public CTransfer
 {
 public:
 	CRemote(CConnection* pConnection);
-	~CRemote();
+	virtual ~CRemote();
 
 protected:
 	CString			m_sHandshake;
@@ -36,7 +36,7 @@ protected:
 	CString			m_sHeader;
 	CString			m_sResponse;
 	CBuffer			m_pResponse;
-	CMap< CString, const CString&, CString, const CString& > m_pKeys;
+	CStringIMap		m_pKeys;
 	static CList<int> m_pCookies;
 
 	enum ActiveTab { tabNone, tabHome, tabDownloads, tabUploads, tabNetwork, tabSearch };
@@ -59,7 +59,7 @@ protected:
 	void			Output(LPCTSTR pszName);
 
 protected:
-	void			PageSwitch(CString& strPath);
+	void			PageSwitch(const CString& strPath);
 	void			PageLogin();
 	void			PageLogout();
 	void			PageHome();
@@ -69,8 +69,8 @@ protected:
 	void			PageNewDownload();
 	void			PageUploads();
 	void			PageNetwork();
-	void			PageBanner(CString& strPath);
-	void			PageImage(CString& strPath);
+	void			PageBanner(const CString& strPath);
+	void			PageImage(const CString& strPath);
 
 	void			PageSearchHeaderColumn(int nColumnID, LPCTSTR pszCaption, LPCTSTR pszAlign);
 	void			PageSearchRowColumn(int nColumnID, CMatchFile* pFile, LPCTSTR pszValue, LPCTSTR pszAlign = L"center");

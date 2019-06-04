@@ -213,7 +213,7 @@ BOOL CDownloadEditPage::OnApply()
 		pLock.Lock();
 		pDownload = pSheet->GetDownload();
 		if ( ! pDownload ) return CPropertyPageAdv::OnApply();
-		pDownload->m_nSize = nNewSize;
+		pDownload->Resize( nNewSize );
 		pDownload->CloseTransfers();
 		pDownload->ClearVerification();
 		bCriticalChange = true;

@@ -34,7 +34,6 @@ public:
 		smfNone, smfTimeMMSS, smfBitrate, smfFrequency, smfTimeHHMMSSdec
 	};
 
-	CSchema*	m_pSchema;
 	CString		m_sName;
 	CString		m_sType;
 	CString		m_sTitle;
@@ -59,28 +58,32 @@ public:
 	CString		m_sLinkURI;
 	CString		m_sLinkName;
 
-	CList< CString > m_pItems;
+	inline POSITION GetItemIterator() const { return m_pItems.GetHeadPosition(); }
+	inline CString GetNextItem(POSITION& pos) const { return m_pItems.GetNext( pos ); }
+	inline INT_PTR GetItemCount() const { return m_pItems.GetCount(); }
+	inline bool IsEqual(CSchemaPtr pSchema) const { return ( pSchema == m_pSchema ); }
 
-public:
-	POSITION	GetItemIterator() const;
-	CString		GetNextItem(POSITION& pos) const;
-	INT_PTR		GetItemCount() const { return m_pItems.GetCount(); }
 	CString		GetValueFrom(const CXMLElement* pElement, LPCTSTR pszDefault = NULL, BOOL bFormat = FALSE, BOOL bNoValidation = FALSE) const;
-	void		SetValueTo(CXMLElement* pBase, LPCTSTR pszValue);
+	void		SetValueTo(CXMLElement* pBase, const CString& strValue = CString(), BOOL bFormat = FALSE) const;
+
+	BOOL		LoadSchema(const CXMLElement* pRoot, const CXMLElement* pElement);
+	BOOL		LoadDescriptor(const CXMLElement* pXML);
 
 protected:
-	BOOL		LoadSchema(const CXMLElement* pRoot, const CXMLElement* pElement);
-	BOOL		LoadType(const CXMLElement* pType);
-	BOOL		LoadDescriptor(const CXMLElement* pXML);
-	BOOL		LoadDisplay(const CXMLElement* pXML);
+	CSchema*	m_pSchema;
+	CList< CString > m_pItems;
 
-	friend class CSchema;
+	void		AddItem(const CString& strItem);
+	BOOL		LoadType(const CXMLElement* pType);
+	BOOL		LoadDisplay(const CXMLElement* pXML);
 
 private:
 	CSchemaMember(const CSchemaMember&);
 	CSchemaMember& operator=(const CSchemaMember&);
 };
 
+typedef const CSchemaMember* CSchemaMemberPtr;
+typedef CList< CSchemaMemberPtr > CSchemaMemberList;
 
 //#ifdef WIN64
 //

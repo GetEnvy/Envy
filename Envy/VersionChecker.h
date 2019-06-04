@@ -34,8 +34,8 @@ public:
 	CString		m_sUpgradePath;
 
 protected:
-	CMap< CString, const CString&, CString, CString& > m_pResponse;
 	CHttpRequest m_pRequest;
+	CStringIMap	m_pResponse;
 	bool		m_bVerbose;
 
 public:

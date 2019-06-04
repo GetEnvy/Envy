@@ -20,26 +20,37 @@
 
 #include "Schema.h"
 
-class CXMLElement;
+class CSchema;
+class CSchemaChild;
 class CSchemaChildMap;
+class CXMLElement;
 
+typedef const CSchemaChildMap* CSchemaChildMapPtr;
 
 class CSchemaChild
 {
 public:
 	CSchemaChild(CSchemaPtr pSchema);
-	virtual ~CSchemaChild();
+	~CSchemaChild();
 
 public:
-	CSchemaPtr	m_pSchema;
 	CString		m_sURI;
-	int			m_nType;
-
-	CList< const CSchemaChildMap* >	m_pMap;
+	CSchema::SchemaType m_nType;
 
 	BOOL		Load(const CXMLElement* pXML);
 	BOOL		MemberCopy(CXMLElement* pLocal, CXMLElement* pRemote, BOOL bToRemote = FALSE, BOOL bAggressive = FALSE) const;
+
+	inline INT_PTR GetCount() const { return m_pMap.GetCount(); }
+
+protected:
+	CSchemaPtr	m_pSchema;
+	CList< CSchemaChildMapPtr > m_pMap;
+
 	void		Clear();
+
+private:
+	CSchemaChild(const CSchemaChild&);
+	CSchemaChild& operator=(const CSchemaChild&);
 };
 
 
@@ -55,4 +66,8 @@ public:
 	CString		m_sRemote;
 
 	BOOL		Load(const CXMLElement* pXML);
+
+private:
+	CSchemaChildMap(const CSchemaChildMap&);
+	CSchemaChildMap& operator=(const CSchemaChildMap&);
 };

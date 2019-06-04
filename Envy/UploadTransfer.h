@@ -92,13 +92,13 @@ protected:
 	BOOL			RequestPartial(CDownload* pDownload);
 	void			StartSending(int nState);
 	void			AllocateBaseFile();
+	void			AttachFile(CFragmentedFile* pFile);
 
 	virtual BOOL	IsFileOpen() const;
 	virtual BOOL	OpenFile();
 	virtual void	CloseFile();
 	virtual BOOL	WriteFile(QWORD nOffset, LPCVOID pData, QWORD nLength, QWORD* pnWritten = NULL);
 	virtual BOOL	ReadFile(QWORD nOffset, LPVOID pData, QWORD nLength, QWORD* pnRead = NULL);
-	void			AttachFile(augment::auto_ptr< CFragmentedFile >& pFile);
 };
 
 enum UserRating

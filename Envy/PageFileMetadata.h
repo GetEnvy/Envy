@@ -39,7 +39,9 @@ public:
 protected:
 	CAutoPtr< CXMLElement > m_pSchemaContainer;
 
+	DWORD UpdateFileData(BOOL bRealSave = TRUE);
 	void AddCrossAttributes(CXMLElement* pXML, LPCTSTR pszTargetURI);
+
 	virtual void DoDataExchange(CDataExchange* pDX);
 	virtual void OnOK();
 	virtual BOOL OnInitDialog();

@@ -185,7 +185,7 @@ BOOL CURLActionDlg::OnInitDialog()
 
 		m_sNameValue = m_pURL->m_sURL;
 
-		switch ( m_pURL->m_nSize )
+		switch ( m_pURL->GetDiscoveryService() )
 		{
 		case CDiscoveryService::dsWebCache:
 			m_sHashValue = L"GWebCache";
@@ -353,7 +353,7 @@ void CURLActionDlg::OnUrlDownload()
 		Network.ConnectTo( m_pURL->m_sName, m_pURL->m_nPort, m_pURL->m_nProtocol );
 		break;
 	case CEnvyURL::uriDiscovery:
-		DiscoveryServices.Add( m_pURL->m_sURL, (int)m_pURL->m_nSize );
+		DiscoveryServices.Add( m_pURL->m_sURL, m_pURL->GetDiscoveryService() );
 		break;
 	//case CEnvyURL::uriSearch:
 	//default:

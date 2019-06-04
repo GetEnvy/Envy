@@ -51,19 +51,18 @@ CDownloadGroups::~CDownloadGroups()
 	Clear();
 }
 
-// ToDo:
-//void CDownloadGroups::GetFolders(CList< CString >& oFolders) const		// CStringIList
-//{
-//	CQuickLock pLock( m_pSection );
-//
-//	for ( POSITION pos = GetIterator(); pos; )
-//	{
-//		const CDownloadGroup* pGroup = GetNext( pos );
-//
-//		if ( ! pGroup->m_sFolder.IsEmpty() && oFolders.Find( pGroup->m_sFolder ) == NULL )
-//			oFolders.AddTail( pGroup->m_sFolder );
-//	}
-//}
+void CDownloadGroups::GetFolders(CList< CString >& oFolders) const		// CStringIList
+{
+	CQuickLock pLock( m_pSection );
+
+	for ( POSITION pos = GetIterator(); pos; )
+	{
+		const CDownloadGroup* pGroup = GetNext( pos );
+
+		if ( ! pGroup->m_sFolder.IsEmpty() && oFolders.Find( pGroup->m_sFolder ) == NULL )
+			oFolders.AddTail( pGroup->m_sFolder );
+	}
+}
 
 //////////////////////////////////////////////////////////////////////
 // CDownloadGroups supergroup
@@ -262,7 +261,7 @@ void CDownloadGroups::CreateDefault()
 //////////////////////////////////////////////////////////////////////
 // CDownloadGroups completed path
 
-CString CDownloadGroups::GetCompletedPath(CDownload* pDownload)
+CString CDownloadGroups::GetCompletedPath(CDownload* pDownload) const
 {
 	if ( Settings.Downloads.CompletePath.GetLength() < 3 )
 		Settings.Downloads.CompletePath = Settings.General.Path + L"\\Downloads";
@@ -271,7 +270,7 @@ CString CDownloadGroups::GetCompletedPath(CDownload* pDownload)
 
 	for ( POSITION pos = GetIterator(); pos; )
 	{
-		CDownloadGroup* pGroup = GetNext( pos );
+		const CDownloadGroup* pGroup = GetNext( pos );
 
 		if ( pGroup != m_pSuper && pGroup->Contains( pDownload ) )
 		{

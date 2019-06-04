@@ -61,6 +61,9 @@ static char THIS_FILE[] = __FILE__;
 #define new DEBUG_NEW
 #endif	// Debug
 
+#define TOKEN		L"envyremote="
+#define TOKENSIZE	(_countof(TOKEN)-1)
+
 CList<int> CRemote::m_pCookies;
 
 /////////////////////////////////////////////////////////////////////////////
@@ -146,8 +149,7 @@ BOOL CRemote::OnHeadersComplete()
 
 	m_sHandshake = m_sHandshake.Mid( 4 ).SpanExcluding( L" \t" );
 
-	CString strPath = m_sHandshake.SpanExcluding( L"?&" );
-	ToLower( strPath );
+	const CString strPath = m_sHandshake.SpanExcluding( L"?&" );
 
 	m_sRedirect.Empty();
 	m_sHeader.Empty();
@@ -243,22 +245,14 @@ CString CRemote::GetKey(LPCTSTR pszName)
 
 BOOL CRemote::CheckCookie()
 {
-	const CString strToken = L"envyremote=";
-	const int nToken = strToken.GetLength();
-
 	for ( INT_PTR nHeader = 0; nHeader < m_pHeaderName.GetSize(); nHeader ++ )
 	{
 		if ( m_pHeaderName.GetAt( nHeader ).CompareNoCase( L"Cookie" ) == 0 )
 		{
-			CString strValue( m_pHeaderValue.GetAt( nHeader ) );
-			ToLower( strValue );
-
-			int nPos = strValue.Find( strToken );
-
-			if ( nPos >= 0 )
+			if ( LPCTSTR szPos = _tcsistr( m_pHeaderValue.GetAt( nHeader ), TOKEN ) )
 			{
 				int nCookie = 0;
-				_stscanf( strValue.Mid( nPos + nToken ), L"%i", &nCookie );
+				_stscanf( szPos + TOKENSIZE, L"%i", &nCookie );
 				if ( m_pCookies.Find( nCookie ) != NULL ) return FALSE;
 			}
 		}
@@ -271,22 +265,14 @@ BOOL CRemote::CheckCookie()
 // Determines what session ID is currently being used by the logged in user and removes it from the cookie list.
 BOOL CRemote::RemoveCookie()
 {
-	const CString strToken = L"envyremote=";
-	const int nToken = strToken.GetLength();
-
 	for ( INT_PTR nHeader = 0; nHeader < m_pHeaderName.GetSize(); nHeader ++ )
 	{
 		if ( m_pHeaderName.GetAt( nHeader ).CompareNoCase( L"Cookie" ) == 0 )
 		{
-			CString strValue( m_pHeaderValue.GetAt( nHeader ) );
-			ToLower( strValue );
-
-			int nPos = strValue.Find( strToken );
-
-			if ( nPos >= 0 )
+			if ( LPCTSTR szPos = _tcsistr( m_pHeaderValue.GetAt( nHeader ), TOKEN ) )
 			{
 				int nCookie = 0;
-				_stscanf( strValue.Mid( nPos + nToken ), L"%i", &nCookie );		// APP_LENGTH LETTERCOUNT + 7
+				_stscanf( szPos + TOKENSIZE, L"%i", &nCookie );		// APP_LENGTH LETTERCOUNT + 7
 				POSITION pos = m_pCookies.Find( nCookie );
 				if ( pos != NULL )
 				{
@@ -451,21 +437,16 @@ void CRemote::Prepare(LPCTSTR pszPrefix)
 
 void CRemote::Add(LPCTSTR pszKey, LPCTSTR pszValue)
 {
-	CString strKey( pszKey );
-	ToLower( strKey );
-
-	m_pKeys.SetAt( strKey, pszValue );
+	m_pKeys.SetAt( pszKey, pszValue );
 }
 
 void CRemote::AddText(LPCTSTR pszKey, LPCTSTR pszDefault /*NULL*/)
 {
-	CString strKey( pszKey ), str;
-	ToLower( strKey );
-
-	if ( Skin.LoadRemoteText( str, strKey ) )
-		m_pKeys.SetAt( strKey, str );
+	CString str;
+	if ( Skin.LoadRemoteText( str, pszKey ) )
+		m_pKeys.SetAt( pszKey, str );
 	else if ( pszDefault )
-		m_pKeys.SetAt( strKey, pszDefault );
+		m_pKeys.SetAt( pszKey, pszDefault );
 }
 
 /////////////////////////////////////////////////////////////////////////////
@@ -567,29 +548,30 @@ void CRemote::Output(LPCTSTR pszName)
 /////////////////////////////////////////////////////////////////////////////
 // CRemote page switch
 
-void CRemote::PageSwitch(CString& strPath)
+void CRemote::PageSwitch(const CString& strPath)
 {
+	// ToDo: "/" = IDR_HTML_ABOUT
 	if ( strPath == L"/" || strPath == L"/remote" )
 		m_sRedirect = L"/remote/";
-	else if ( strPath == L"/remote/" )
+	else if ( ::StartsWith( strPath, L"/remote/" ) )
 		PageLogin();
-	else if ( strPath == L"/remote/logout" )
+	else if ( ::StartsWith( strPath, L"/remote/logout" ) )
 		PageLogout();
-	else if ( strPath == L"/remote/home" )
+	else if ( ::StartsWith( strPath, L"/remote/home" ) )
 		PageHome();
-	else if ( strPath == L"/remote/search" )
+	else if ( ::StartsWith( strPath, L"/remote/search" ) )
 		PageSearch();
-	else if ( strPath == L"/remote/newsearch" )
+	else if ( ::StartsWith( strPath, L"/remote/newsearch" ) )
 		PageNewSearch();
-	else if ( strPath == L"/remote/downloads" )
+	else if ( ::StartsWith( strPath, L"/remote/downloads" ) )
 		PageDownloads();
-	else if ( strPath == L"/remote/newdownload" )
+	else if ( ::StartsWith( strPath, L"/remote/newdownload" ) )
 		PageNewDownload();
-	else if ( strPath == L"/remote/uploads" )
+	else if ( ::StartsWith( strPath, L"/remote/uploads" ) )
 		PageUploads();
-	else if ( strPath == L"/remote/network" )
+	else if ( ::StartsWith( strPath, L"/remote/network" ) )
 		PageNetwork();
-	else if ( strPath.Find( L"/remote/resources/" ) == 0 )
+	else if ( ::StartsWith( strPath, L"/remote/resources/" ) )
 		PageImage( strPath );
 	else
 		PageBanner( strPath );
@@ -720,7 +702,7 @@ void CRemote::PageSearch()
 		for ( POSITION pos = SchemaCache.GetIterator(); pos != NULL; )
 		{
 			CSchemaPtr pSchema = SchemaCache.GetNext( pos );
-			if ( ! pSchema->m_bPrivate && pSchema->m_nType == CSchema::stFile )
+			if ( ! pSchema->m_bPrivate && pSchema->m_nType == CSchema::typeFile )
 			{
 				str += L"<option value=\"" + pSchema->GetURI();
 				str += L"\">" + pSchema->m_sTitle;
@@ -1555,7 +1537,7 @@ void CRemote::PageNetworkNetwork(int nID, bool* pbConnect, LPCTSTR pszName)
 /////////////////////////////////////////////////////////////////////////////
 // CRemote page : banner
 
-void CRemote::PageBanner(CString& strPath)
+void CRemote::PageBanner(const CString& strPath)
 {
 	ResourceRequest( strPath, m_pResponse, m_sHeader );
 }
@@ -1563,19 +1545,14 @@ void CRemote::PageBanner(CString& strPath)
 /////////////////////////////////////////////////////////////////////////////
 // CRemote page : image server
 
-void CRemote::PageImage(CString& strPath)
+void CRemote::PageImage(const CString& strPath)
 {
 	if ( CheckCookie() ) return;
 
-	strPath = strPath.Mid( 15 );
-	if ( strPath.Find( L'%' ) >= 0 ) return;
-	if ( strPath.Find( L'/' ) >= 0 ) return;
-	if ( strPath.Find( L'\\' ) >= 0 ) return;
-
-	strPath = Settings.General.Path + L"\\Remote\\Resources\\" + strPath;
+	const CString strResPath = Settings.General.Path + L"\\Remote\\Resources\\" + SafeFilename( strPath.Mid( TOKENSIZE ) );
 
 	CFile hFile;
-	if ( hFile.Open( strPath, CFile::modeRead ) )
+	if ( hFile.Open( strResPath, CFile::modeRead ) )
 	{
 		m_pResponse.EnsureBuffer( (DWORD)hFile.GetLength() );
 		hFile.Read( m_pResponse.m_pBuffer, (UINT)hFile.GetLength() );

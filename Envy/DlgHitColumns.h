@@ -31,25 +31,24 @@ public:
 	enum { IDD = IDD_SCHEMA_COLUMNS };
 
 public:
-	CListCtrl	m_wndColumns;
+	CListCtrl		m_wndColumns;
 	CSchemaCombo	m_wndSchemas;
 
-public:
-	CSchemaPtr	m_pSchema;
-	CList< CSchemaMember* >	m_pColumns;
+	CSchemaPtr		m_pSchema;
+	CSchemaMemberList m_pColumns;
 
 public:
-	static CMenu*	BuildColumnMenu(CSchemaPtr pSchema, CList< CSchemaMember* >* pColumns = NULL);
-	static BOOL		LoadColumns(CSchemaPtr pSchema, CList< CSchemaMember* >* pColumns);
-	static BOOL		SaveColumns(CSchemaPtr pSchema, CList< CSchemaMember* >* pColumns);
-	static BOOL		ToggleColumnHelper(CSchemaPtr pSchema, CList< CSchemaMember* >* pSource, CList< CSchemaMember* >* pTarget, UINT nToggleID, BOOL bSave = FALSE);
+	static CMenu*	BuildColumnMenu(CSchemaPtr pSchema, CSchemaMemberList* pColumns = NULL);
+	static BOOL		LoadColumns(CSchemaPtr pSchema, CSchemaMemberList* pColumns);
+	static BOOL		SaveColumns(CSchemaPtr pSchema, CSchemaMemberList* pColumns);
+	static BOOL		ToggleColumnHelper(CSchemaPtr pSchema, CSchemaMemberList* pSource, CSchemaMemberList* pTarget, UINT nToggleID, BOOL bSave = FALSE);
 
 protected:
 	virtual void DoDataExchange(CDataExchange* pDX);
 
-protected:
 	virtual BOOL OnInitDialog();
 	virtual void OnOK();
+
 	afx_msg void OnSelChangeSchemas();
 
 	DECLARE_MESSAGE_MAP()

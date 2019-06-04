@@ -104,7 +104,7 @@ BOOL CFolderPropertiesDlg::OnInitDialog()
 	if ( LibraryFolders.CheckAlbum( m_pFolder ) )
 	{
 		m_wndTitle.SetWindowText( m_pFolder->m_sName );
-		m_wndSchemas.Load( m_pFolder->m_sSchemaURI, CSchema::stFolder );
+		m_wndSchemas.Load( m_pFolder->m_sSchemaURI, CSchema::typeFolder );
 		if ( m_wndSchemas.GetCurSel() < 0 ) m_wndSchemas.SetCurSel( 0 );
 
 		OnSelChangeSchemas();
@@ -125,9 +125,9 @@ BOOL CFolderPropertiesDlg::OnInitDialog()
 	CString strSchemaURI = m_wndData.GetSchemaURI();
 	if ( CSchemaPtr pSchema = SchemaCache.Get( strSchemaURI ) )
 	{
-		CString strChildURI = pSchema->GetContainedURI( CSchema::stFile );
-		CSchemaChild* pContained = pSchema->GetContained( strChildURI );
-		if ( pContained == NULL || pContained->m_pMap.GetCount() == 0 )
+		CString strChildURI = pSchema->GetContainedURI( CSchema::typeFile );
+		CSchemaChildPtr pContained = pSchema->GetContained( strChildURI );
+		if ( pContained == NULL || pContained->GetCount() == 0 )
 			m_wndApply.ShowWindow( SW_HIDE );
 	}
 
@@ -281,9 +281,9 @@ void CFolderPropertiesDlg::OnSelChangeSchemas()
 	CString strSchemaURI = m_wndData.GetSchemaURI();
 	if ( CSchemaPtr pSchema = SchemaCache.Get( strSchemaURI ) )
 	{
-		CString strChildURI = pSchema->GetContainedURI( CSchema::stFile );
-		CSchemaChild* pContained = pSchema->GetContained( strChildURI );
-		if ( pContained == NULL || pContained->m_pMap.GetCount() == 0 )
+		CString strChildURI = pSchema->GetContainedURI( CSchema::typeFile );
+		CSchemaChildPtr pContained = pSchema->GetContained( strChildURI );
+		if ( pContained == NULL || pContained->GetCount() == 0 )
 			m_wndApply.ShowWindow( SW_HIDE );
 		else
 			m_wndApply.ShowWindow( SW_SHOW );

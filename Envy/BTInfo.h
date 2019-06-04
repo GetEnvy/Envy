@@ -59,11 +59,19 @@ public:
 	class CBTFile : public CEnvyFile
 	{
 	public:
-		CString	FindFile() const;		// Find file on disk
+		// Find file on disk
+		const CString& FindFile();
+
+		// Get existing file on disk for this file
+		inline const CString& GetBestPath() const
+		{
+			return m_sBestPath;
+		}
 
 	private:
 		const CBTInfo*	m_pInfo;		// Parent torrent handler
 		QWORD			m_nOffset;		// File offset inside torrent (cached)
+		CString			m_sBestPath;	// Best existing file on disk for this file (cached)
 
 		CBTFile(const CBTInfo* pInfo, const CBTFile* pFile = NULL);
 		void Serialize(CArchive& ar, int nVersion);

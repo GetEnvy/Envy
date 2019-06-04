@@ -62,11 +62,10 @@ protected:
 	CString		m_sStatusString;
 //	CBuffer*	m_pPost;
 	CBuffer*	m_pResponse;
+	CStringIMap	m_pResponseHeaders;
 	HWND		m_hNotifyWnd;
 	UINT		m_nNotifyMsg;
 	WPARAM		m_nNotifyParam;
-	typedef CMap< CString, const CString&, CString, CString& > Map;
-	Map			m_pResponseHeaders;
 
 	void		OnRun();
 

@@ -345,10 +345,9 @@ BOOL CFilePreviewDlg::RunPlugin()
 
 	CSingleLock oLock( &m_pSection, TRUE );
 
-	CString strType = PathFindExtension( m_sTargetName );
-	strType.MakeLower();
+	LPCTSTR szType = PathFindExtension( m_sTargetName );	// ".ext"
 
-	m_pPlugin = Plugins.GetPlugin( L"DownloadPreview", strType );
+	m_pPlugin = Plugins.GetPlugin( L"DownloadPreview", szType );
 	if ( ! m_pPlugin )
 		return FALSE;
 

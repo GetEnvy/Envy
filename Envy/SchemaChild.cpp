@@ -35,7 +35,7 @@ static char THIS_FILE[] = __FILE__;
 
 CSchemaChild::CSchemaChild(CSchemaPtr pSchema)
 	: m_pSchema	( pSchema )
-	, m_nType	( CSchema::stFile )
+	, m_nType	( CSchema::typeFile )
 {
 }
 
@@ -55,9 +55,9 @@ BOOL CSchemaChild::Load(const CXMLElement* pXML)
 	CString strType = pXML->GetAttributeValue( L"type" );
 
 	if ( strType == L"folder" )
-		m_nType = CSchema::stFolder;
+		m_nType = CSchema::typeFolder;
 	else if ( strType == L"file" )
-		m_nType = CSchema::stFile;
+		m_nType = CSchema::typeFile;
 	else
 		return FALSE;
 
@@ -108,9 +108,9 @@ BOOL CSchemaChild::MemberCopy(CXMLElement* pLocal, CXMLElement* pRemote, BOOL bT
 
 	for ( POSITION pos = m_pMap.GetHeadPosition(); pos; )
 	{
-		const CSchemaChildMap* pMap	= m_pMap.GetNext( pos );
-		CXMLAttribute* pAttribute1	= NULL;
-		CXMLAttribute* pAttribute2	= NULL;
+		CSchemaChildMapPtr pMap = m_pMap.GetNext( pos );
+		const CXMLAttribute* pAttribute1 = NULL;
+		const CXMLAttribute* pAttribute2 = NULL;
 
 		if ( bToRemote )
 		{

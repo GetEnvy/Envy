@@ -39,8 +39,8 @@ CSchemaCache SchemaCache;
 CSchemaCache::CSchemaCache()
 {
 	// Experimental values
-	m_pURIs.InitHashTable( 61 );
-	m_pAltURIs.InitHashTable( 61 );
+	m_pURIs.InitHashTable( 31 );
+	m_pAltURIs.InitHashTable( 31 );
 	m_pNames.InitHashTable( 61 );
 	m_pTypeFilters.InitHashTable( 1021 );
 }
@@ -77,13 +77,14 @@ int CSchemaCache::Load()
 #endif
 		strPath.Format( L"%s\\Schemas\\%s", (LPCTSTR)Settings.General.Path, pFind.cFileName );
 
+	//	const std::shared_ptr< CSchema > pSchema( new CSchema );
 		CSchema* pSchema = new CSchema();
 		if ( pSchema && pSchema->Load( strPath ) )
 		{
-			m_pNames.SetAt( ToLower( pSchema->m_sSingular ), pSchema );
-			m_pURIs.SetAt( ToLower( pSchema->GetURI() ), pSchema );
+			m_pNames.SetAt( pSchema->m_sSingular, pSchema );
+			m_pURIs.SetAt( pSchema->GetURI(), pSchema );
 			if ( ! pSchema->m_sURIMapping.IsEmpty() )
-				m_pAltURIs.SetAt( ToLower( pSchema->m_sURIMapping ), pSchema );
+				m_pAltURIs.SetAt( pSchema->m_sURIMapping, pSchema );
 
 			for ( POSITION pos = pSchema->GetFilterIterator(); pos; )
 			{
@@ -94,7 +95,7 @@ int CSchemaCache::Load()
 					m_pTypeFilters.SetAt( strType, pSchema );
 			}
 
-			nCount++;
+			++nCount;
 		}
 		else
 		{
@@ -104,8 +105,8 @@ int CSchemaCache::Load()
 
 #ifdef _DEBUG
 		__int64 nEnd = GetMicroCount();
-		TRACE( "Schema \"%s\" load time : %I64i ms : %s\n", strPath,
-			( nEnd - nStart ) / 1000, pSchema ? L"SUCCESS" : L"FAILED" );
+		TRACE( "Schema \"%s\" load time : %I64i ms : %s\n", (LPCSTR)CT2A( strPath ),
+			( nEnd - nStart ) / 1000, pSchema ? "SUCCESS" : "FAILED" );
 #endif
 	}
 	while ( FindNextFile( hSearch, &pFind ) );
@@ -126,10 +127,16 @@ int CSchemaCache::Load()
 
 void CSchemaCache::Clear()
 {
-	for ( POSITION pos = GetIterator(); pos; )
+#ifndef PUBLIC_RELEASE
+	// ToDo: Crash at exit (Fix properly)
+	for ( POSITION pos = m_pURIs.GetStartPosition(); pos; )
 	{
-		delete GetNext( pos );
+		if ( CSchemaPtr i = m_pURIs.GetNextValue( pos ) )
+		{
+			delete i;
+		}
 	}
+#endif
 
 	m_pURIs.RemoveAll();
 	m_pAltURIs.RemoveAll();

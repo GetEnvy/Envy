@@ -148,9 +148,8 @@ CString CHttpRequest::GetStatusString() const
 
 CString CHttpRequest::GetHeader(LPCTSTR pszName) const
 {
-	CString strIn( pszName ), strOut;
-	ToLower( strIn );
-	return ( ! IsPending() && m_pResponseHeaders.Lookup( strIn, strOut ) ) ? strOut : L"";
+	CString strOut;
+	return ( ! IsPending() && m_pResponseHeaders.Lookup( pszName, strOut ) ) ? strOut : L"";
 }
 
 CString CHttpRequest::GetResponseString(UINT nCodePage /*CP_UTF8*/) const
@@ -284,13 +283,11 @@ void CHttpRequest::OnRun()
 							const int nColon = strHeader.Find( L':' );
 							if ( nColon > 0 )
 							{
-								CString strValue, strName = strHeader.Left( nColon );
-								strName.Trim();
-								ToLower( strName );
+								CString strValue;
+								CString strName = strHeader.Left( nColon ).Trim();
 								while ( m_pResponseHeaders.Lookup( strName, strValue ) )
 									strName += L'_';
-								strValue = strHeader.Mid( nColon + 1 );
-								strValue.Trim();
+								strValue = strHeader.Mid( nColon + 1 ).Trim();
 								m_pResponseHeaders.SetAt( strName, strValue );
 							}
 						}

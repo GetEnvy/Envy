@@ -464,8 +464,6 @@ BOOL CUploadTransferDC::SendFile()
 {
 	if ( ! OpenFile() )
 	{
-		theApp.Message( MSG_ERROR, IDS_UPLOAD_CANTOPEN, (LPCTSTR)m_sName, (LPCTSTR)m_sAddress );
-
 		m_pClient->SendCommand( FILE_NOT_AVAILABLE );
 
 		return FALSE;
@@ -510,7 +508,7 @@ BOOL CUploadTransferDC::RequestTigerTree(CLibraryFile* pFile, QWORD nOffset, QWO
 
 	theApp.Message( MSG_INFO, IDS_UPLOAD_TIGER_SEND, (LPCTSTR)m_sName, (LPCTSTR)m_sAddress );
 
-	CAutoPtr< CTigerTree > pTigerTree( pFile->GetTigerTree() );
+	CAutoPtr< const CTigerTree > pTigerTree( pFile->GetTigerTree() );
 	if ( ! pTigerTree )
 		return FALSE;
 

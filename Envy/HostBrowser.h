@@ -18,19 +18,19 @@
 
 #pragma once
 
-#include "Transfer.h"
-//#include "zlib.h"
-
+class CBuffer;
 class CG1Packet;
 class CG2Packet;
 class CEDPacket;
 class CQueryHit;
 class CGProfile;
 class CLibraryFile;
-class CBuffer;
-class CVendor;
 class CBrowseHostWnd;
 class CXMLElement;
+
+#include "Transfer.h"
+#include "VendorCache.h"
+//#include "zlib.h"
 
 
 class CHostBrowser : public CTransfer
@@ -56,7 +56,7 @@ public:
 //	CString			m_sKey;		// ToDo: Proposed Private Key
 
 protected:
-	CVendor*		m_pVendor;
+	CVendorPtr		m_pVendor;
 	CBuffer*		m_pBuffer;
 	CString			m_sNick;
 	DWORD			m_nReceived;

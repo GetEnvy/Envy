@@ -87,7 +87,7 @@ public:
 	BOOL			AddSourceHit(const CMatchFile* pMatchFile, BOOL bForce = FALSE);
 	BOOL			AddSourceHit(const CEnvyURL& oURL, BOOL bForce = FALSE, int nRedirectionCount = 0);
 	BOOL			AddSourceED2K(DWORD nClientID, WORD nClientPort, DWORD nServerIP, WORD nServerPort, const Hashes::Guid& oGUID);
-	BOOL			AddSourceBT(const Hashes::BtGuid& oGUID, const IN_ADDR* pAddress, WORD nPort);
+	BOOL			AddSourceBT(const Hashes::BtGuid& oGUID, const IN_ADDR* pAddress, WORD nPort, BOOL bIgnoreLocalIP = FALSE);
 	BOOL			AddSourceURL(LPCTSTR pszURL, FILETIME* pLastSeen = NULL, int nRedirectionCount = 0, BOOL bFailed = FALSE);
 	int				AddSourceURLs(LPCTSTR pszURLs, BOOL bFailed = FALSE);
 	void			RemoveSource(CDownloadSource* pSource, BOOL bBan);

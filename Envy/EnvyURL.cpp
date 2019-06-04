@@ -22,11 +22,12 @@
 #include "EnvyURL.h"
 #include "Transfer.h"
 #include "QuerySearch.h"
-#include "DiscoveryServices.h"
 #include "Network.h"
 #include "BTInfo.h"
 #include "Skin.h"
 #include "Registry.h"
+
+//#include "DiscoveryServices.h" (header)
 
 #ifdef _DEBUG
 #undef THIS_FILE

@@ -33,12 +33,12 @@
 #include "Packet.h"
 #include "G1Packet.h"
 #include "G2Packet.h"
-#include "SearchManager.h"
+#include "GProfile.h"
+#include "QueryHit.h"
 #include "QueryHashTable.h"
 #include "QueryHashGroup.h"
 #include "QueryHashMaster.h"
-#include "QueryHit.h"
-#include "GProfile.h"
+#include "SearchManager.h"
 #include "Statistics.h"
 
 #ifdef _DEBUG
@@ -155,7 +155,7 @@ CNeighbour::CNeighbour(PROTOCOLID nProtocol, CNeighbour* pBase)
 
 	Neighbours.Add( this );		// Call CNeighboursBase::Add to keep track of this newly created CNeighbours object
 
-	m_bAutoDelete = TRUE;		// pBase->m_bAutoDelete ?
+	m_bAutoDelete = pBase->m_bAutoDelete;
 }
 
 // Delete this CNeighbour object

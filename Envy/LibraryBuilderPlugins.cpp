@@ -51,12 +51,11 @@ HRESULT CLibraryBuilderPlugins::SafeProcess(ILibraryBuilderPlugin* pPlugin, BSTR
 
 bool CLibraryBuilderPlugins::ExtractPluginMetadata(DWORD nIndex, const CString& strPath)
 {
-	CString strType = PathFindExtension( strPath );
-	strType.MakeLower();
+	LPCTSTR szType = PathFindExtension( strPath );
 
 	for ( int i = 0; i < 2; ++i )
 	{
-		CComPtr< ILibraryBuilderPlugin > pPlugin( LoadPlugin( strType ) );
+		CComQIPtr< ILibraryBuilderPlugin > pPlugin( Plugins.GetPlugin( L"LibraryBuilder", szType ) );
 		if ( ! pPlugin )
 			break;
 
@@ -84,7 +83,7 @@ bool CLibraryBuilderPlugins::ExtractPluginMetadata(DWORD nIndex, const CString& 
 		}
 		else if ( SERVERLOST( hr ) )
 		{
-			Plugins.ReloadPlugin( L"LibraryBuilder", strType );
+			Plugins.ReloadPlugin( L"LibraryBuilder", szType );
 
 			pPlugin.Release();
 
@@ -97,13 +96,10 @@ bool CLibraryBuilderPlugins::ExtractPluginMetadata(DWORD nIndex, const CString& 
 	return false;
 }
 
-//////////////////////////////////////////////////////////////////////
-// CLibraryBuilderPlugins load plugin
 
-ILibraryBuilderPlugin* CLibraryBuilderPlugins::LoadPlugin(LPCTSTR pszType)
-{
-	CComQIPtr< ILibraryBuilderPlugin > pPlugin(
-		Plugins.GetPlugin( L"LibraryBuilder", pszType ) );
-
-	return pPlugin.Detach();
-}
+// CLibraryBuilderPlugins load plugin (Obsolete)
+//ILibraryBuilderPlugin* CLibraryBuilderPlugins::LoadPlugin(LPCTSTR pszType)
+//{
+//	CComQIPtr< ILibraryBuilderPlugin > pPlugin( Plugins.GetPlugin( L"LibraryBuilder", pszType ) );
+//	return pPlugin.Detach();
+//}

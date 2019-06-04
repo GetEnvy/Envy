@@ -36,8 +36,8 @@ static char THIS_FILE[] = __FILE__;
 #endif	// Debug
 
 BEGIN_MESSAGE_MAP(CSchemaCombo, CComboBox)
-	ON_MESSAGE(WM_CTLCOLORLISTBOX, OnCtlColorListBox)
-	ON_CONTROL_REFLECT(CBN_DROPDOWN, OnDropDown)
+	ON_MESSAGE(WM_CTLCOLORLISTBOX, &CSchemaCombo::OnCtlColorListBox)
+	ON_CONTROL_REFLECT(CBN_DROPDOWN, &CSchemaCombo::OnDropDown)
 END_MESSAGE_MAP()
 
 
@@ -45,7 +45,8 @@ END_MESSAGE_MAP()
 // CSchemaCombo construction
 
 CSchemaCombo::CSchemaCombo()
-	: m_pWndProc	( NULL )
+	: m_nType		( CSchema::typeFile )
+	, m_pWndProc	( NULL )
 	, m_hListBox	( 0 )
 {
 }
@@ -64,7 +65,7 @@ void CSchemaCombo::SetEmptyString(UINT nID)
 	LoadString( m_sNoSchemaText, nID );
 }
 
-void CSchemaCombo::Load(LPCTSTR pszSelectURI, int nType, int nAvailability, BOOL bReset)
+void CSchemaCombo::Load(LPCTSTR pszSelectURI, CSchema::SchemaType nType /*typeFile*/, CSchema::SchemaLevel nAvailability /*saDefault*/, BOOL bReset /*True*/)
 {
 	if ( ( GetStyle() & CBS_OWNERDRAWVARIABLE ) == 0 )
 		ModifyStyle( 0, CBS_OWNERDRAWVARIABLE|CBS_HASSTRINGS );

@@ -286,11 +286,14 @@ Flags:
 */
 
 /*
-Notes: Removed
+ARCHIVE_INTERFACE(IArchiveOpen2, 0x62)
+{
+  STDMETHOD(ArcOpen2)(ISequentialInStream *stream, UInt32 flags, IArchiveOpenCallback *openCallback) PURE;
+};
+*/
 
-The order of calling for hard links:
-  - GetStream()
-  - GetProperty(kpidHardLink)
+/*
+Notes: Removed
 */
 
 #define INTERFACE_IArchiveUpdateCallback(x) \
@@ -379,6 +382,17 @@ ARCHIVE_INTERFACE(IOutArchive, 0xA0)
 {
   INTERFACE_IOutArchive(PURE)
 };
+
+
+/*
+ISetProperties::SetProperties()
+  PROPVARIANT values[i].vt:
+    VT_EMPTY
+    VT_BOOL
+    VT_UI4   - if 32-bit number
+    VT_UI8   - if 64-bit number
+    VT_BSTR
+*/
 
 ARCHIVE_INTERFACE(ISetProperties, 0x03)
 {

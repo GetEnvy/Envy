@@ -377,7 +377,7 @@ public:
 		DWORD		AccessThrottle;
 		DWORD		Lowpoint;
 		DWORD		FailureLimit;
-		DWORD		UpdatePeriod;
+		DWORD		AccessPeriod;
 		DWORD		DefaultUpdate;
 		DWORD		BootstrapCount;
 		DWORD		CacheCount;				// Limit ability to learn new caches
@@ -494,7 +494,7 @@ public:
 		DWORD		QueryThrottle;			// Max rate at which an individual server can be queried (sec) (was QueryServerThrottle)
 		DWORD		PacketThrottle;			// ED2K packet rate limiter
 		DWORD		SourceThrottle;			// ED2K source rate limiter
-		bool		MetAutoQuery;			// Auto query for a new server list
+		bool		AutoDiscovery;			// Auto query for a new met server list using discovery services
 		bool		LearnNewServers;		// Get new servers from servers
 		bool		LearnNewServersClient;	// Get new servers from clients
 		CString		ServerListURL;
@@ -517,12 +517,11 @@ public:
 		bool		Enabled;				// Was DC.EnableToday
 		bool		EnableAlways;			// Do  DC.EnableStartup ?
 		bool		ShowInterface;			// Allow hiding some UI features
+		bool		AutoDiscovery;			// Auto query for a new server list using discovery services
 		DWORD		NumServers;				// Default 1 hub
 		DWORD		QueryThrottle;			// Throttle for DC++ neighbor searches (s), default 2 min delay
 		DWORD		ReAskTime;				// How often to re-ask a remote client about download (ms), default every minute
 		DWORD		DequeueTime;			// Timeout for remote client confirmation of upload queue (ms), default 5 min
-	//	DWORD		HubListQueryPeriod; 	// Auto-update hublist fetching (d), default should be ~weeks
-		bool		HubListAutoQuery;		// Auto query for a new server list
 		CString		HubListURL;				// Default hublist.xml.bz2 location
 	} DC;
 

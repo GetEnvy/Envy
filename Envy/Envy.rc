@@ -25,8 +25,8 @@ LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
 //
 
 VS_VERSION_INFO VERSIONINFO
- PRODUCTVERSION 1,2
- FILEVERSION 1,2
+ PRODUCTVERSION 1,9
+ FILEVERSION 1,9
  FILEFLAGSMASK 0x1fL
 #ifdef _DEBUG
  FILEFLAGS 0x1L
@@ -42,8 +42,8 @@ BEGIN
 		BLOCK "000004b0"
 		BEGIN
 			VALUE "ProductName", "Envy"
-			VALUE "ProductVersion", "1.2"
-			VALUE "FileVersion", "1.2"
+			VALUE "ProductVersion", "1.9"
+			VALUE "FileVersion", "1.9"
 			VALUE "Title", "Envy"
 			VALUE "InternalName", "Envy"
 			VALUE "OriginalFilename", "Envy.exe"
@@ -843,14 +843,14 @@ BEGIN
 	LTEXT			"This QuickStart wizard can help configure the software in a few simple steps, \neven if you haven't used Envy or other P2P client before.",IDC_STATIC,10,25,265,20
 	LTEXT			"More advanced users can access the full range of Envy's options via the Tools menu.  Click Exit at any time to leave the wizard.",IDC_STATIC,10,50,265,25
 	LTEXT			"This wizard will assist you to:",IDC_STATIC,10,80,265,10
-	ICON			IDI_WIZARD_DOT,IDC_STATIC,14,94,16,16,SS_REALSIZEIMAGE
-	LTEXT			"Tell Envy about your Internet connection",IDC_STATIC,30,94,184,10,SS_CENTERIMAGE
-	ICON			IDI_WIZARD_DOT,IDC_STATIC,14,108,16,16,SS_REALSIZEIMAGE
-	LTEXT			"Connect to your choice of P2P networks",IDC_STATIC,30,108,184,10,SS_CENTERIMAGE
-	ICON			IDI_WIZARD_DOT,IDC_STATIC,14,122,16,16,SS_REALSIZEIMAGE
-	LTEXT			"Choose which files to share, and",IDC_STATIC,30,122,184,10,SS_CENTERIMAGE
-	ICON			IDI_WIZARD_DOT,IDC_STATIC,14,136,16,16,SS_REALSIZEIMAGE
-	LTEXT			"Get started using Envy.",IDC_STATIC,30,136,184,10,SS_CENTERIMAGE
+	ICON			IDI_WIZARD_DOT,IDC_STATIC,14,94,14,14,SS_REALSIZEIMAGE
+	LTEXT			"Tell Envy about your Internet connection",IDC_STATIC,30,94,184,14,SS_CENTERIMAGE
+	ICON			IDI_WIZARD_DOT,IDC_STATIC,14,108,14,14,SS_REALSIZEIMAGE
+	LTEXT			"Connect to your choice of P2P networks",IDC_STATIC,30,108,184,14,SS_CENTERIMAGE
+	ICON			IDI_WIZARD_DOT,IDC_STATIC,14,122,14,14,SS_REALSIZEIMAGE
+	LTEXT			"Choose which files to share, and",IDC_STATIC,30,122,184,14,SS_CENTERIMAGE
+	ICON			IDI_WIZARD_DOT,IDC_STATIC,14,136,14,14,SS_REALSIZEIMAGE
+	LTEXT			"Get started using Envy.",IDC_STATIC,30,136,184,14,SS_CENTERIMAGE
 	CONTROL			IDR_LOGO,IDC_LOGO,"Static",SS_BITMAP|SS_CENTERIMAGE|SS_REALSIZEIMAGE,225,94,54,55
 END
 

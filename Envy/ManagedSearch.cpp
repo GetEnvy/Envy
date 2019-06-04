@@ -191,7 +191,7 @@ BOOL CManagedSearch::Execute(int nPriorityClass)
 	BOOL bSuccess = ExecuteNeighbours( tTicks, tSecs );
 
 	// G1 multicast search. (UDP)
-	if ( Settings.Gnutella1.Enabled && m_bAllowG1 &&
+	if ( Settings.Gnutella1.Enabled && m_bAllowG1 && Settings.Connection.EnableMulticast &&
 		 tTicks >= m_tLastG1 + Settings.Gnutella1.QueryGlobalThrottle &&
 		 Network.IsListening() )
 	{

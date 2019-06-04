@@ -73,22 +73,21 @@ public:
 //	}
 
 private:
-	typedef CMap< CString, const CString&, int, int > CIconMap;
-	typedef CMap< CString, const CString&, CString, const CString& > CStringMap;
+	typedef CAtlMap< CString, int, CStringElementTraitsI< CString > > CIconMap;
 
-	CCriticalSection	m_pSection;
-	CImageList	m_i16;
-//	CImageList	m_i24;
-	CImageList	m_i32;
-	CImageList	m_i48;
-	CIconMap	m_m16;
-//	CIconMap	m_m24;
-	CIconMap	m_m32;
-	CIconMap	m_m48;
-	CStringMap	m_MIME;
-	CStringMap	m_Name;
+	CCriticalSection m_pSection;
+	CImageList		m_i16;
+//	CImageList		m_i24;
+	CImageList		m_i32;
+	CImageList		m_i48;
+	CIconMap		m_m16;
+//	CIconMap		m_m24;
+	CIconMap		m_m32;
+	CIconMap		m_m48;
+	CStringIMap		m_MIME;
+	CStringIMap		m_Name;
 
-	BOOL		Lookup(LPCTSTR pszType, CString* psName, CString* psMIME, HICON* phSmallIcon, HICON* phLargeIcon = NULL, HICON* phHugeIcon = NULL);
+	BOOL			Lookup(LPCTSTR pszType, CString* psName, CString* psMIME, HICON* phSmallIcon, HICON* phLargeIcon = NULL, HICON* phHugeIcon = NULL);
 
 	CShellIcons(const CShellIcons&);
 	CShellIcons& operator=(const CShellIcons&);

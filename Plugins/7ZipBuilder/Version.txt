@@ -1,6 +1,6 @@
-LZMA SDK 16.4  (Oct 2016)
+LZMA SDK 19.0  (Feb 2019)
 
-DLL Source: 7z1604-extra.7z
-Header Source: 7z1604-src.7z
+DLL Source: 7z1900-extra.7z
+Header Source: 7z1900-src.7z
 
 http://sourceforge.net/projects/sevenzip/files/7-Zip/

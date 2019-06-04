@@ -25,7 +25,7 @@ class CSchemaCache
 {
 public:
 	CSchemaCache();
-	virtual ~CSchemaCache();
+	~CSchemaCache();
 
 public:
 	int		Load();
@@ -40,21 +40,16 @@ public:
 
 	CSchemaPtr GetNext(POSITION& pos) const
 	{
-		CSchemaPtr pSchema = NULL;
-		CString strURI;
-		m_pURIs.GetNextAssoc( pos, strURI, pSchema );
-		return pSchema;
+		return m_pURIs.GetNextValue( pos );
 	}
 
 	CSchemaPtr Get(LPCTSTR pszURI) const
 	{
 		if ( ! pszURI || ! *pszURI ) return NULL;
-		CString strURI( pszURI );
-		strURI.MakeLower();
 
-		CSchemaPtr pSchema = NULL;
-		return ( m_pURIs.Lookup( strURI, pSchema ) ) ? pSchema : 
-			( m_pAltURIs.Lookup( strURI, pSchema ) ) ? pSchema :
+		CSchemaPtr pSchema;
+		return ( m_pURIs.Lookup( pszURI, pSchema ) ) ? pSchema :
+			( m_pAltURIs.Lookup( pszURI, pSchema ) ) ? pSchema :
 			NULL;
 	}
 
@@ -67,40 +62,36 @@ public:
 		if ( ! *pszExt )
 			return NULL;
 
-		const CSchemaMap::CPair* pPair = m_pTypeFilters.PLookup(
-			CString( pszExt + 1 ).MakeLower() );
-
-		return pPair ? pPair->value : NULL;
+		CSchemaPtr pSchema;
+		return m_pTypeFilters.Lookup( pszExt + 1, pSchema ) ? pSchema : NULL;
 	}
 
 	CSchemaPtr Guess(LPCTSTR pszName) const
 	{
 		if ( ! pszName || ! *pszName ) return NULL;
-		CString strName( pszName );
-		strName.MakeLower();
-
-		CSchemaPtr pSchema = NULL;
 
 		// A quick hack for Limewire documents schema
 		// ToDo: Remove it when the full schema mapping is verified
 		//if ( strName == L"document" )
 		//	return m_pNames.Lookup( L"wordprocessing", pSchema ) ? pSchema : NULL;
 
-		return m_pNames.Lookup( strName, pSchema ) ? pSchema : NULL;
-	}
-
-	inline BOOL IsFilter(const CString& sType) const
-	{
-		return ( m_pTypeFilters.PLookup( sType ) != NULL );
+		CSchemaPtr pSchema;
+		return m_pNames.Lookup( pszName, pSchema ) ? pSchema : NULL;
 	}
 
 	CString GetFilter(LPCTSTR pszURI) const;
+
+	inline bool IsFilter(const CString& sType) const
+	{
+		CSchemaPtr pSchema;
+		return m_pTypeFilters.Lookup( sType, pSchema );
+	}
 
 	// Detect schema and normilize resulting XML
 	bool Normalize(CSchemaPtr& pSchema, CXMLElement*& pXML) const;
 
 private:
-	typedef CMap< CString, const CString&, CSchemaPtr, CSchemaPtr > CSchemaMap;
+	typedef CAtlMap< CString, CSchemaPtr, CStringElementTraitsI< CString > > CSchemaMap;
 	CSchemaMap m_pURIs;
 	CSchemaMap m_pAltURIs;
 	CSchemaMap m_pNames;

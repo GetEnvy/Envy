@@ -19,16 +19,16 @@
 #pragma once
 
 #include "EnvyFile.h"
+#include "VendorCache.h"
 #include "Schema.h"
 
-class CVendor;
-class CMatchFile;
-class CXMLElement;
-class CQuerySearch;
 class CG1Packet;
 class CG2Packet;
 class CEDPacket;
 class CDCPacket;
+class CMatchFile;
+class CQuerySearch;
+class CXMLElement;
 
 class CQueryHit : public CEnvyFile
 {
@@ -48,7 +48,7 @@ public:
 	WORD			m_nPort;
 	DWORD			m_nSpeed;
 	CString			m_sSpeed;
-	CVendor*		m_pVendor;
+	CVendorPtr		m_pVendor;
 	TRISTATE		m_bPush;
 	TRISTATE		m_bBusy;
 	TRISTATE		m_bStable;
@@ -101,7 +101,7 @@ public:
 	void		Resolve();
 	void		ReadEDPacket(CEDPacket* pPacket, const SOCKADDR_IN* pServer, BOOL bUnicode);
 protected:
-	void		ParseAttributes(const Hashes::Guid& pClientID, CVendor* pVendor, BYTE* nFlags, BOOL bChat, BOOL bBrowseHost);
+	void		ParseAttributes(const Hashes::Guid& pClientID, CVendorPtr pVendor, BYTE* nFlags, BOOL bChat, BOOL bBrowseHost);
 	void		ReadG1Packet(CG1Packet* pPacket);
 	void		ReadGGEP(CG1Packet* pPacket);
 	BOOL		CheckValid() const;

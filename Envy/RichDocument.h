@@ -21,6 +21,8 @@
 class CRichElement;
 class CXMLElement;
 
+typedef CAtlMap< CString, CRichElement*, CStringRefElementTraits< CString > > CElementMap;
+
 
 class CRichDocument
 {
@@ -59,7 +61,7 @@ public:
 	void			SetModified();
 	void			Clear();
 	void			CreateFonts(const LOGFONT* lpLogFont = NULL, const LOGFONT* lpHeading = NULL);
-	BOOL			LoadXML(CXMLElement* pBase, CMap< CString, const CString&, CRichElement*, CRichElement* >* pMap = NULL, int nGroup = 0);
+	BOOL			LoadXML(CXMLElement* pBase, CElementMap* pMap = NULL, int nGroup = 0);
 
 protected:
 	CList< CRichElement* >	m_pElements;

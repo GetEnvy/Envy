@@ -54,12 +54,13 @@ private:
 	mutable QWORD				m_nWFLCookie;			// Wanted fragment list cookie
 
 public:
-	CTigerTree*	GetTigerTree();
+	const CTigerTree* GetTigerTree() const;
+	const CED2K* GetHashset() const;
 	BOOL		SetTigerTree(BYTE* pTiger, DWORD nTiger, BOOL bLevel1 = FALSE);
+	BOOL		SetHashset(BYTE* pSource, DWORD nSource);
 	BOOL		NeedTigerTree() const;
 	BOOL		NeedHashset() const;
-	BOOL		SetHashset(BYTE* pSource, DWORD nSource);
-	CED2K*		GetHashset();
+
 	void		ResetVerification();
 	void		ClearVerification();
 	void		RunValidation();

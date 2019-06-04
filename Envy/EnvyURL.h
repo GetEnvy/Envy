@@ -18,6 +18,7 @@
 
 #pragma once
 
+#include "DiscoveryServices.h"
 #include "QuerySearch.h"
 
 class CBTInfo;
@@ -60,6 +61,11 @@ public:
 	BOOL	Parse(const CString& sText, CList< CString >& pURLs, BOOL bResolve = FALSE);	// Parse URL list
 	BOOL	Parse(LPCTSTR pszURL, BOOL bResolve = TRUE);		// Parse single URL
 	CQuerySearchPtr ToQuery() const;							// Construct CQuerySearch object
+
+	CDiscoveryService::Type	GetDiscoveryService() const
+	{
+		return (CDiscoveryService::Type)(int)m_nSize;
+	}
 
 protected:
 	void	Clear();

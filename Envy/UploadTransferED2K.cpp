@@ -476,8 +476,6 @@ BOOL CUploadTransferED2K::ServeRequests()
 
 		if ( ! OpenFile() )
 		{
-			theApp.Message( MSG_ERROR, IDS_UPLOAD_CANTOPEN, (LPCTSTR)m_sName, (LPCTSTR)m_sAddress );
-
 			CEDPacket* pReply = CEDPacket::New( ED2K_C2C_FILENOTFOUND );
 			pReply->Write( m_oED2K );
 			Send( pReply );

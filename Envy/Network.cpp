@@ -604,7 +604,7 @@ void CNetwork::ClearResolve()
 //////////////////////////////////////////////////////////////////////
 // CNetwork firewalled address checking
 
-BOOL CNetwork::IsFirewalledAddress(const IN_ADDR* pAddress, BOOL bIncludeSelf) const
+BOOL CNetwork::IsFirewalledAddress(const IN_ADDR* pAddress, BOOL bIncludeSelf, BOOL bIgnoreLocalIP /*Settings.Connection.IgnoreLocalIP*/) const
 {
 	if ( ! pAddress ) return TRUE;
 	if ( bIncludeSelf && IsSelfIP( *pAddress ) ) return TRUE;
@@ -619,7 +619,7 @@ BOOL CNetwork::IsFirewalledAddress(const IN_ADDR* pAddress, BOOL bIncludeSelf) c
 		return TRUE;
 	}
 
-	if ( ! Settings.Connection.IgnoreLocalIP ) return FALSE;
+	if ( ! bIgnoreLocalIP ) return FALSE;
 	if ( ( pAddress->S_un.S_addr & 0xFFFF ) == 0xA8C0 ) return TRUE;	// 192.168.0.0/16
 	if ( ( pAddress->S_un.S_addr & 0xF0FF ) == 0x10AC ) return TRUE;	// 172.16.0.0/12
 	if ( ( pAddress->S_un.S_addr & 0xFFFF ) == 0xFEA9 ) return TRUE;	// 169.254.0.0/16
@@ -845,11 +845,9 @@ void CNetwork::OnRun()
 
 					Neighbours.IsG2HubCapable( FALSE, TRUE );			// Debug notes?
 					Neighbours.IsG1UltrapeerCapable( FALSE, TRUE );		// Debug notes?
-
-					// It will check if it is needed inside the function
-					DiscoveryServices.Execute( TRUE, PROTOCOL_NULL, FALSE );
 				}
 
+				DiscoveryServices.Execute();
 				Datagrams.OnRun();
 				SearchManager.OnRun();
 				QueryHashMaster.Build();

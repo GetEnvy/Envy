@@ -212,7 +212,7 @@ void CMatchCtrl::DestructiveUpdate()
 	m_wndTip.Hide();
 }
 
-void CMatchCtrl::SelectSchema(CSchemaPtr pSchema, CList< CSchemaMember* >* pColumns)
+void CMatchCtrl::SelectSchema(CSchemaPtr pSchema, CSchemaMemberList* pColumns)
 {
 	SaveColumnState();
 
@@ -228,7 +228,7 @@ void CMatchCtrl::SelectSchema(CSchemaPtr pSchema, CList< CSchemaMember* >* pColu
 
 		for ( POSITION pos = m_pColumns.GetHeadPosition(); pos; nColumn++ )
 		{
-			CSchemaMember* pMember = m_pColumns.GetNext( pos );
+			CSchemaMemberPtr pMember = m_pColumns.GetNext( pos );
 			if ( ! pMember->m_bHidden )
 				InsertColumn( nColumn, pMember->m_sTitle, pMember->m_nColumnAlign, pMember->m_nColumnWidth );
 			else

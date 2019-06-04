@@ -57,7 +57,7 @@ public:
 	CMatchList*		m_pMatches;
 	LPCTSTR			m_sType;
 	CSchemaPtr		m_pSchema;
-	CList< CSchemaMember* > m_pColumns;
+	CSchemaMemberList m_pColumns;
 
 protected:
 	CHeaderCtrl		m_wndHeader;
@@ -83,12 +83,12 @@ protected:
 public:
 	void	Update();
 	void	DestructiveUpdate();
-	void	SelectSchema(CSchemaPtr pSchema, CList< CSchemaMember* >* pColumns);
+	void	SelectSchema(CSchemaPtr pSchema, CSchemaMemberList* pColumns);
 	void	SetBrowseMode();
-	BOOL	HitTestHeader(const CPoint& point);
 	void	SetSortColumn(int nColumn = -1, BOOL bDirection = FALSE);
 	void	SetMessage(UINT nMessageID, BOOL bLink = FALSE);
 	void	SetMessage(LPCTSTR pszMessage, BOOL bLink = FALSE);
+	BOOL	HitTestHeader(const CPoint& point);
 	void	EnableTips(BOOL bTips);
 protected:
 	BOOL	LoadColumnState();

@@ -70,7 +70,7 @@ protected:
 	DWORD			m_nOffset;
 	DWORD			m_nBuffer;
 
-	HASHDB_INDEX*	Lookup(DWORD nIndex, DWORD nType);
+	HASHDB_INDEX*	Lookup(DWORD nIndex, DWORD nType) const;
 	HASHDB_INDEX*	PrepareToStore(DWORD nIndex, DWORD nType, DWORD nLength);
 	BOOL			Erase(DWORD nIndex, DWORD nType);
 	BOOL			Commit();

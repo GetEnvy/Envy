@@ -471,7 +471,7 @@ void CShakeNeighbour::SendPrivateHeaders()
 void CShakeNeighbour::SendHostHeaders(LPCSTR pszMessage, size_t nLength)
 {
 	// Local variables
-	DWORD nTime = static_cast< DWORD >( time( NULL ) ); 	// Number of seconds since midnight January 1, 1970
+	const DWORD nTime = static_cast< DWORD >( time( NULL ) ); 	// Number of seconds since midnight January 1, 1970
 
 	// If this method was given a message
 	if ( pszMessage )
@@ -1577,6 +1577,36 @@ void CShakeNeighbour::OnHandshakeComplete()
 		theApp.Message( MSG_INFO, IDS_HANDSHAKE_GOTLEAF, (LPCTSTR)m_sAddress );
 	}
 
-	// Delete this CShakeNeighbour object now that it has been turned into a CG1Neighbour or CG2Neighbour object
+#ifdef PUBLIC_RELEASE
+	// Workaround: Occassional crash in destructor (Memory leak)
+	static UINT nCount = 0;
+	if ( m_nProtocol == PROTOCOL_G2 && ++nCount > 20 )
+	{
+		// Partially delete this as CNeighbour object only
+		//CNeighbour::~CNeighbour()
+		{
+			ASSERT( Neighbours.Get( (DWORD_PTR)this ) == NULL );
+
+			CBuffer::DeflateStreamCleanup( m_pZSOutput );
+			CBuffer::InflateStreamCleanup( m_pZSInput );
+
+			// If any of these objects exist, delete them
+			if ( m_pProfile )
+				delete m_pProfile;
+			if ( m_pZOutput )
+				delete m_pZOutput;
+			if ( m_pZInput )
+				delete m_pZInput;
+			if ( m_pQueryTableRemote )
+				delete m_pQueryTableRemote;
+			if ( m_pQueryTableLocal )
+				delete m_pQueryTableLocal;
+			m_sTryHubs = L"";
+		}
+	}
+	return;
+#endif
+
+	// Delete this CShakeNeighbour object now that it has been turned into a CG1Neighbour or CG2Neighbour object	(Note occassional crash in destructor)
 	delete this;
 }

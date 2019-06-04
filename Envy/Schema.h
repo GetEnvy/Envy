@@ -19,12 +19,12 @@
 #pragma once
 
 class CSchema;
-class CSchemaMember;
 class CSchemaChild;
 class CSchemaBitprints;
 class CXMLElement;
 
 typedef const CSchema* CSchemaPtr;
+typedef const CSchemaChild* CSchemaChildPtr;
 
 #ifdef WIN64
 
@@ -43,21 +43,24 @@ class CSchema
 {
 public:
 	CSchema();
-	virtual ~CSchema();
+	~CSchema();
 
 public:
-	int				m_nType;
+	enum SchemaType { typeAny = -1, typeFile, typeFolder };
+	enum SchemaLevel { saDefault, saAdvanced, saSystem, saMax };
+
+	SchemaType		m_nType;
+	SchemaLevel		m_nAvailability;
 	CString			m_sTitle;
 	CString			m_sPlural;
 	CString			m_sSingular;
 	CString			m_sURIMapping;
 	CString			m_sDonkeyType;
-	int				m_nAvailability;
 	BOOL			m_bPrivate;
 
 	CList< CString >		m_pExtends;
 	CList< CSchemaMember* >	m_pMembers;
-	CList< CSchemaChild* >	m_pContains;
+	CList< CSchemaChildPtr >	m_pContains;
 	CList< CSchemaBitprints* >	m_pBitprintsMap;
 	CString			m_sDefaultColumns;
 	CString			m_sBitprintsTest;
@@ -72,9 +75,6 @@ public:
 	int				m_nIcon32;
 	int				m_nIcon48;
 
-	enum { stFile, stFolder };
-	enum { saDefault, saAdvanced, saSystem, saMax };
-
 public:
 	void			Clear();
 	BOOL			Load(LPCTSTR pszName);
@@ -86,22 +86,22 @@ public:
 	POSITION		GetFilterIterator() const;
 	void			GetNextFilter(POSITION& pos, CString& sType, BOOL& bResult) const;
 	POSITION		GetMemberIterator() const;
-	CSchemaMember*	GetNextMember(POSITION& pos) const;
-	CSchemaMember*	GetMember(LPCTSTR pszName) const;
+	CSchemaMemberPtr GetNextMember(POSITION& pos) const;
+	CSchemaMemberPtr GetMember(LPCTSTR pszName) const;
 	INT_PTR			GetMemberCount() const;
 	CString			GetFirstMemberName() const;
-	CSchemaChild*	GetContained(LPCTSTR pszURI) const;
-	CString			GetContainedURI(int nType) const;
-	CString			GetIndexedWords(CXMLElement* pXML) const;
-	CString			GetVisibleWords(CXMLElement* pXML) const;
+	const CXMLElement* GetType(const CXMLElement* pRoot, LPCTSTR pszName) const;
+	CSchemaChildPtr	GetContained(LPCTSTR pszURI) const;
+	CString			GetContainedURI(SchemaType nType) const;
+	CString			GetIndexedWords(const CXMLElement* pXML) const;
+	CString			GetVisibleWords(const CXMLElement* pXML) const;
 	void			ResolveTokens(CString& str, CXMLElement* pXML) const;
 
 protected:
-	typedef CMap < CString, const CString&, BOOL, BOOL& > CStringBoolMap;
+	typedef CAtlMap < CString, BOOL, CStringElementTraitsI< CString > > CStringBoolMap;
 	CStringBoolMap	m_pTypeFilters;
 	CString			m_sURI;
 
-	CXMLElement*	GetType(const CXMLElement* pRoot, LPCTSTR pszName) const;
 	BOOL			LoadSchema(LPCTSTR pszFile);
 	BOOL			LoadPrimary(const CXMLElement* pRoot, const CXMLElement* pType);
 	BOOL			LoadDescriptor(LPCTSTR pszFile);
@@ -115,6 +115,8 @@ protected:
 	void			LoadDescriptorView(const CXMLElement* pElement);
 	void			LoadDescriptorBitprintsImport(const CXMLElement* pElement);
 	BOOL			LoadIcon(CString sPath = L"");
+
+	CSchemaMember*	GetWritableMember(LPCTSTR pszName) const;
 
 // Inlines
 public:
@@ -134,8 +136,7 @@ public:
 		if ( m_sURI.CompareNoCase( pszURI ) == 0 ) return true;
 		for ( POSITION pos = m_pExtends.GetHeadPosition(); pos; )
 		{
-			CString strURI = m_pExtends.GetNext( pos );
-			if ( strURI.CompareNoCase( pszURI ) == 0 ) return true;
+			if ( m_pExtends.GetNext( pos ).CompareNoCase( pszURI ) == 0 ) return true;
 		}
 		return false;
 	}
@@ -179,8 +180,6 @@ public:
 
 	// Legacy sorted subfolders removed. (Root/All/Collection)
 
-	friend class CSchemaMember;
-
 private:
 	CSchema(const CSchema&);
 	CSchema& operator=(const CSchema&);
@@ -196,3 +195,7 @@ public:
 
 	BOOL		Load(const CXMLElement* pXML);
 };
+
+
+#define NO_VALUE		(L"(~ns~)")
+#define MULTI_VALUE		(L"(~mt~)")

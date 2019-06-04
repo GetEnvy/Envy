@@ -762,7 +762,7 @@ BOOL CDownload::SeedTorrent()
 	if ( IsSingleFileTorrent() )
 	{
 		// Refill missing hashes for single-file torrent
-		const CBTInfo::CBTFile* pBTFile = m_pTorrent.m_pFiles.GetHead();
+		CBTInfo::CBTFile* pBTFile = m_pTorrent.m_pFiles.GetHead();
 		if ( ! m_pTorrent.m_oSHA1 && pBTFile->m_oSHA1 )
 			m_pTorrent.m_oSHA1 = pBTFile->m_oSHA1;
 		if ( ! m_pTorrent.m_oTiger && pBTFile->m_oTiger )

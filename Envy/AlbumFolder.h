@@ -23,7 +23,6 @@
 class CCollectionFile;
 class CLibraryFile;
 class CLibraryList;
-class CSchemaMember;
 class CXMLElement;
 
 
@@ -63,7 +62,7 @@ public:
 	CAlbumFolder*		GetFolderByURI(LPCTSTR pszURI) const;
 	DWORD				GetFolderCount() const;
 	BOOL				CheckFolder(CAlbumFolder* pFolder, BOOL bRecursive = FALSE) const;
-	CAlbumFolder*		GetTarget(CSchemaMember* pMember, LPCTSTR pszValue) const;
+	CAlbumFolder*		GetTarget(CSchemaMemberPtr pMember, LPCTSTR pszValue) const;
 	CAlbumFolder*		FindCollection(const Hashes::Sha1Hash& oSHA1);
 	CAlbumFolder*		FindFolder(const Hashes::Guid& oGUID);
 

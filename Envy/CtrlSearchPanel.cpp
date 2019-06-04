@@ -256,14 +256,14 @@ void CSearchPanel::OnSchemaChange()
 	CBaseMatchWnd* pMainSearchFrame = static_cast< CBaseMatchWnd* >(GetParent());
 	if ( pMainSearchFrame )
 	{
-		CList< CSchemaMember* > pColumns;
+		CSchemaMemberList pColumns;
 
 		if ( pSchema )
 		{
 			CString strMembers = pSchema->m_sDefaultColumns;
 			for ( POSITION pos = pSchema->GetMemberIterator(); pos; )
 			{
-				CSchemaMember* pMember = pSchema->GetNextMember( pos );
+				CSchemaMemberPtr pMember = pSchema->GetNextMember( pos );
 
 				if ( strMembers.Find( L"|" + pMember->m_sName + L"|" ) >= 0 )
 					pColumns.AddTail( pMember );

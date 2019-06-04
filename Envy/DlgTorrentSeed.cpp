@@ -142,11 +142,16 @@ void CTorrentSeedDlg::OnDownload()
 
 			for ( POSITION pos = pDownload->m_pTorrent.m_pFiles.GetHeadPosition(); pos; )
 			{
-				const CBTInfo::CBTFile* pBTFile = pDownload->m_pTorrent.m_pFiles.GetNext( pos );
-				if ( CLibraryFile* pFile = LibraryMaps.LookupFileByName( pBTFile->m_sPath, pBTFile->m_nSize, FALSE, TRUE ) )
-				{
-					oFiles.AddTail( pFile->GetPath() );
-				}
+				CBTInfo::CBTFile* pBTFile = pDownload->m_pTorrent.m_pFiles.GetNext( pos );
+				pBTFile->FindFile();
+				const CString& strFile = pBTFile->GetBestPath();
+				if ( ! strFile.IsEmpty() )
+					oFiles.AddTail( strFile );
+				// Was:
+				//if ( CLibraryFile* pFile = LibraryMaps.LookupFileByName( pBTFile->m_sPath, pBTFile->m_nSize, FALSE, TRUE ) )
+				//{
+				//	oFiles.AddTail( pFile->GetPath() );
+				//}
 			}
 
 			oLibraryLock.Unlock();

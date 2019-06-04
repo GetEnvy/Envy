@@ -280,10 +280,11 @@ BOOL CUploadTransferBT::OpenFile()
 	if ( m_pClient && Downloads.Check( m_pClient->m_pDownload ) )
 	{
 		// Try to get existing file object from download
+		// ToDo: Change to CUploadTransfer::RequestPartial(CDownload* pDownload) ?
 		augment::auto_ptr< CFragmentedFile > pFile( m_pClient->m_pDownload->GetFile() );
 		if ( pFile.get() )
 		{
-			AttachFile( pFile );
+			AttachFile( pFile.release() );
 			return TRUE;
 		}
 
@@ -295,7 +296,7 @@ BOOL CUploadTransferBT::OpenFile()
 			{
 				if ( pSeedingFile->Open( m_pClient->m_pDownload->m_pTorrent, FALSE ) )
 				{
-					AttachFile( pSeedingFile );
+					AttachFile( pSeedingFile.release() );
 					return TRUE;
 				}
 			}

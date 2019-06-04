@@ -385,7 +385,7 @@ void CSettings::Load()
 	Add( L"Discovery", L"EnableG1GWC", &Discovery.EnableG1GWC, true );
 	Add( L"Discovery", L"FailureLimit", &Discovery.FailureLimit, 2, 1, 1, 512 );
 	Add( L"Discovery", L"Lowpoint", &Discovery.Lowpoint, 10, 1, 1, 512 );
-	Add( L"Discovery", L"UpdatePeriod", &Discovery.UpdatePeriod, 30*60, 60, 1, 60*24, L" m" );
+	Add( L"Discovery", L"AccessPeriod", &Discovery.AccessPeriod, 30*60, 60, 1, 60*24, L" m" );
 
 	Add( L"Gnutella", L"ConnectFactor", &Gnutella.ConnectFactor, 4, 1, 1, 20, L"x" );
 	Add( L"Gnutella", L"ConnectThrottle", &Gnutella.ConnectThrottle, 30, 1, 0, 60*60, L" s" );
@@ -475,6 +475,7 @@ void CSettings::Load()
 
 	Add( L"eDonkey", L"ShowInterface", &eDonkey.ShowInterface, true );
 	Add( L"eDonkey", L"EnableAlways", &eDonkey.EnableAlways, true );
+	Add( L"eDonkey", L"AutoDiscovery", &eDonkey.AutoDiscovery, true );
 	Add( L"eDonkey", L"DefaultServerFlags", &eDonkey.DefaultServerFlags, 0xFFFFFFFF );
 	Add( L"eDonkey", L"DequeueTime", &eDonkey.DequeueTime, 3600, 60, 2, 512, L" m" );
 	Add( L"eDonkey", L"Endgame", &eDonkey.Endgame, true );
@@ -490,7 +491,6 @@ void CSettings::Load()
 	Add( L"eDonkey", L"MaxLinks", &eDonkey.MaxLinks, 200, 1, 1, 2048 );
 	Add( L"eDonkey", L"MaxResults", &eDonkey.MaxResults, 400, 1, 1, 999 );
 	Add( L"eDonkey", L"MaxShareCount", &eDonkey.MaxShareCount, 1000, 1, 25, 20000 );
-	Add( L"eDonkey", L"MetAutoQuery", &eDonkey.MetAutoQuery, true );
 	Add( L"eDonkey", L"MinServerFileSize", &eDonkey.MinServerFileSize, 0, 1, 0, 50, L" MB" );
 	Add( L"eDonkey", L"NumServers", &eDonkey.NumServers, 1, 1, 0, 2 );
 	Add( L"eDonkey", L"PacketThrottle", &eDonkey.PacketThrottle, 500, 1, 250, 5000, L" ms" );
@@ -510,6 +510,7 @@ void CSettings::Load()
 
 	Add( L"DC", L"ShowInterface", &DC.ShowInterface, true );
 	Add( L"DC", L"EnableAlways", &DC.EnableAlways, false );
+	Add( L"DC", L"AutoDiscovery", &DC.AutoDiscovery, true );
 	Add( L"DC", L"NumServers", &DC.NumServers, 1, 1, 0, 5 );
 	Add( L"DC", L"QueryThrottle", &DC.QueryThrottle, 2*60, 1, 30, 60*60, L" s" );
 	Add( L"DC", L"ReAskTime", &DC.ReAskTime, 60*1000, 1000, 30, 60*60, L" s" );

@@ -39,11 +39,11 @@ public:
 	CString m_sEvenFilePath;
 	CString m_sOddFilePath;
 
-	CArray< CString > m_pFileDocs;	// All documents for each file
-	CArray< CString > m_pFilePaths;	// All file paths
-	CArray< CString > m_pImagePaths;
-	CArray< CString > m_pTemplatePaths;
-	CMap< CString, const CString&, CString, const CString& > m_pItems;
+	CArray< CString >	m_pFileDocs;	// All documents for each file
+	CArray< CString >	m_pFilePaths;	// All file paths
+	CArray< CString >	m_pImagePaths;
+	CArray< CString >	m_pTemplatePaths;
+	CStringIMap			m_pItems;
 
 protected:
 	int		m_nCaptionWidth;

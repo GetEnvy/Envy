@@ -41,7 +41,8 @@ CTransferFiles::CTransferFiles()
 
 CTransferFiles::~CTransferFiles()
 {
-	Close();
+	ASSERT( m_pMap.IsEmpty() );
+	ASSERT( m_pDeferred.IsEmpty() );
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -76,28 +77,6 @@ CTransferFile* CTransferFiles::Open(LPCTSTR pszFile, BOOL bWrite)
 	}
 
 	return pFile;
-}
-
-//////////////////////////////////////////////////////////////////////
-// CTransferFiles close all files
-
-void CTransferFiles::Close()
-{
-	CSingleLock pLock( &m_pSection, TRUE );
-
-	CString strPath;
-
-	for ( POSITION pos = m_pMap.GetStartPosition(); pos; )
-	{
-		CTransferFile* pFile;
-		m_pMap.GetNextAssoc( pos, strPath, pFile );
-		pFile->Release();
-
-		TRACE( "Transfer Files : Closed \"%s\"\n", (LPCSTR)CT2A( strPath ) );
-	}
-
-	m_pMap.RemoveAll();
-	m_pDeferred.RemoveAll();
 }
 
 //////////////////////////////////////////////////////////////////////

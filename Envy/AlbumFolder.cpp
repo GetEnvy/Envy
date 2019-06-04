@@ -109,7 +109,7 @@ CAlbumFolder* CAlbumFolder::AddFolder(LPCTSTR pszSchemaURI, LPCTSTR pszName, BOO
 	ASSUME_LOCK( Library.m_pSection );
 
 	if ( pszSchemaURI == NULL && m_pSchema != NULL )
-		pszSchemaURI = m_pSchema->GetContainedURI( CSchema::stFolder );
+		pszSchemaURI = m_pSchema->GetContainedURI( CSchema::typeFolder );
 
 	if ( pszSchemaURI == NULL )
 		pszSchemaURI = CSchema::uriFolder;
@@ -192,9 +192,9 @@ BOOL CAlbumFolder::CheckFolder(CAlbumFolder* pFolder, BOOL bRecursive) const
 //////////////////////////////////////////////////////////////////////
 // CAlbumFolder search for objects
 
-CAlbumFolder* CAlbumFolder::GetTarget(CSchemaMember* pMember, LPCTSTR pszValue) const
+CAlbumFolder* CAlbumFolder::GetTarget(CSchemaMemberPtr pMember, LPCTSTR pszValue) const
 {
-	if ( m_pSchema == pMember->m_pSchema )
+	if ( pMember->IsEqual( m_pSchema ) )
 	{
 		if ( pszValue == NULL )
 			return (CAlbumFolder*)this;
@@ -526,7 +526,7 @@ BOOL CAlbumFolder::SetMetadata(CXMLElement* pXML)
 //{
 //	if ( m_pSchema == NULL || pFile->m_pMetadata == NULL ) return FALSE;
 //
-//	CSchemaChild* pChild = m_pSchema->GetContained( pFile->m_pSchema->GetURI() );
+//	CSchemaChildPtr pChild = m_pSchema->GetContained( pFile->m_pSchema->GetURI() );
 //	if ( pChild == NULL ) return FALSE;
 //
 //	if ( m_pXML == NULL )
@@ -550,7 +550,7 @@ BOOL CAlbumFolder::MetaToFiles(BOOL bAggressive)
 
 		if ( pFile->m_pMetadata && pFile->m_pSchema )
 		{
-			if ( CSchemaChild* pChild = m_pSchema->GetContained( pFile->m_pSchema->GetURI() ) )
+			if ( CSchemaChildPtr pChild = m_pSchema->GetContained( pFile->m_pSchema->GetURI() ) )
 			{
 				CXMLElement* pXML = pFile->m_pMetadata->Clone();
 

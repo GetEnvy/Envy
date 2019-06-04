@@ -51,7 +51,7 @@ CVendorCache::~CVendorCache()
 //////////////////////////////////////////////////////////////////////
 // CVendorCache lookup
 
-CVendor* CVendorCache::LookupByName(LPCTSTR pszName) const
+CVendorPtr CVendorCache::LookupByName(LPCTSTR pszName) const
 {
 	ASSERT( pszName );
 
@@ -62,9 +62,8 @@ CVendor* CVendorCache::LookupByName(LPCTSTR pszName) const
 	int n = strName.FindOneOf( L"/ \t\r\n\\" );
 	if ( n > 0 )
 		strName = strName.Left( n );
-	strName.MakeLower();
 
-	CVendor* pVendor;
+	CVendorPtr pVendor;
 	if ( m_pNameMap.Lookup( strName, pVendor ) )
 		return pVendor;
 
@@ -76,10 +75,10 @@ CVendor* CVendorCache::LookupByName(LPCTSTR pszName) const
 
 void CVendorCache::Clear()
 {
-	CVendor* pItem;
-	CString strCode;
 	for ( POSITION pos = m_pCodeMap.GetStartPosition(); pos; )
 	{
+		CString strCode;
+		CVendorPtr pItem;
 		m_pCodeMap.GetNextAssoc( pos, strCode, pItem );
 		delete pItem;
 	}
@@ -113,14 +112,13 @@ BOOL CVendorCache::Load()
 //////////////////////////////////////////////////////////////////////
 // CVendorCache load internal
 
-BOOL CVendorCache::LoadFrom(CXMLElement* pXML)
+BOOL CVendorCache::LoadFrom(const CXMLElement* pXML)
 {
 	if ( ! pXML->IsNamed( L"vendorCache" ) ) return FALSE;
 
-	CVendor* pFoo;
 	for ( POSITION pos = pXML->GetElementIterator(); pos; )
 	{
-		CXMLElement* pKey = pXML->GetNextElement( pos );
+		const CXMLElement* pKey = pXML->GetNextElement( pos );
 
 		if ( pKey->IsNamed( L"vendor" ) )
 		{
@@ -128,6 +126,7 @@ BOOL CVendorCache::LoadFrom(CXMLElement* pXML)
 
 			if ( pVendor->LoadFrom( pKey ) )
 			{
+				CVendorPtr pFoo;
 				if ( m_pCodeMap.Lookup( pVendor->m_sCode, pFoo ) )
 				{
 					theApp.Message( MSG_ERROR, L"Duplicate Vendors.xml code for \"%s\"",
@@ -137,7 +136,7 @@ BOOL CVendorCache::LoadFrom(CXMLElement* pXML)
 				else
 				{
 					m_pCodeMap.SetAt( pVendor->m_sCode, pVendor );
-					m_pNameMap.SetAt( CString( pVendor->m_sName ).MakeLower(), pVendor );
+					m_pNameMap.SetAt( pVendor->m_sName, pVendor );
 				}
 			}
 			else
@@ -159,7 +158,7 @@ bool CVendorCache::IsExtended(LPCTSTR pszCode) const
 		return false;
 
 	// Find by product name (Server or User-Agent HTTP-headers)
-	CVendor* pVendor = LookupByName( pszCode );
+	CVendorPtr pVendor = LookupByName( pszCode );
 	if ( ! pVendor )
 		pVendor = Lookup( pszCode );	// Find by vendor code
 
@@ -195,21 +194,17 @@ CVendor::CVendor(LPCTSTR pszCode)
 			m_sCode += L' ';
 }
 
-CVendor::~CVendor()
-{
-}
-
 //////////////////////////////////////////////////////////////////////
 // CVendor load
 
-BOOL CVendor::LoadFrom(CXMLElement* pXML)
+BOOL CVendor::LoadFrom(const CXMLElement* pXML)
 {
 	m_sCode = pXML->GetAttributeValue( L"code" );
 	if ( m_sCode.GetLength() != 4 ) return FALSE;
 
 	for ( POSITION pos = pXML->GetElementIterator(); pos; )
 	{
-		CXMLElement* pKey = pXML->GetNextElement( pos );
+		const CXMLElement* pKey = pXML->GetNextElement( pos );
 
 		if ( pKey->IsNamed( L"title" ) )
 		{
@@ -223,13 +218,13 @@ BOOL CVendor::LoadFrom(CXMLElement* pXML)
 		}
 		else if ( pKey->IsNamed( L"capability" ) )
 		{
-			const CString strCap = pKey->GetAttributeValue( L"name" ).MakeLower();
+			const CString strCap = pKey->GetAttributeValue( L"name" );
 
-			if ( strCap == L"chatflag" )
+			if ( strCap.CompareNoCase( L"chatflag" ) == 0 )
 				m_bChatFlag = true;
-			else if ( strCap == L"htmlhostbrowse" || strCap == L"browseflag" )
+			else if ( strCap.CompareNoCase( L"htmlhostbrowse" ) == 0 || strCap.CompareNoCase( L"browseflag" ) == 0 )
 				m_bBrowseFlag = true;
-			else if ( strCap == L"extended" )
+			else if ( strCap.CompareNoCase( L"extended" ) == 0 )
 				m_bExtended = true;
 			// ToDo: Other flags? g2,g1,ed2k,dc,bt,etc.
 		}

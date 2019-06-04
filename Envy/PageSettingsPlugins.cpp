@@ -346,7 +346,7 @@ void CPluginsSettingsPage::EnumerateMiscPlugins()
 
 void CPluginsSettingsPage::EnumerateMiscPlugins(LPCTSTR pszType, HKEY hRoot)
 {
-	CMap< CString, const CString&, CString, CString& >	pCLSIDs;
+	CStringIMap pCLSIDs;
 	CString strPath = REGISTRY_KEY L"\\Plugins";
 
 	for ( DWORD nIndex = 0; ; nIndex++ )

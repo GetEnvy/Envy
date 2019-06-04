@@ -100,17 +100,17 @@ void CFragmentBar::DrawStateBar(CDC* pDC, CRect* prcBar, QWORD nTotal, QWORD nOf
 	if ( nTotal == 0 || nLength == 0 || nTotal == SIZE_UNKNOWN || nOffset == SIZE_UNKNOWN || nLength == SIZE_UNKNOWN )
 		return;
 
+	if ( nLength == nOffset )					// ToDo: Why does this happen? (torrents)
+		return;
 	ASSERT( nLength <= nTotal - nOffset );		// ToDo: Why does this fail?
 
 	if ( Settings.General.LanguageRTL )
 		nOffset = nTotal - nOffset - nLength;
 
 	CRect rcArea;
-
 	rcArea.left 	= prcBar->left + LONG( ( prcBar->Width() + 1 ) * nOffset / nTotal );
 	rcArea.right	= prcBar->left + LONG( ( prcBar->Width() + 1 ) * ( nOffset + nLength ) / nTotal );
-
-	rcArea.left 	= max( rcArea.left, prcBar->left );
+//	rcArea.left 	= max( rcArea.left, prcBar->left );
 	rcArea.right	= min( rcArea.right, prcBar->right );
 
 	if ( bTop )
@@ -309,9 +309,12 @@ void CFragmentBar::DrawSource(CDC* pDC, CRect* prcBar, const CSourceDisplayData*
 		}
 	}
 
-	for ( Fragments::List::const_iterator pItr = pSourceData->m_oPastFragments.begin(); pItr != pSourceData->m_oPastFragments.end(); ++pItr )
+	Fragments::List oList( pSourceData->m_oPastFragments );
+	Fragments::List::const_iterator pItr = oList.begin();
+	const Fragments::List::const_iterator pEnd = oList.end();
+	for ( ; pItr != pEnd; ++pItr )
 	{
-		CFragmentBar::DrawFragment( pDC, prcBar, pSourceData->m_nSize, pItr->begin(), pItr->size(), crTransfer, TRUE, TRUE );
+		DrawFragment( pDC, prcBar, pSourceData->m_nSize, pItr->begin(), pItr->size(), crTransfer, TRUE, TRUE );
 	}
 
 	if ( ! bDrawEmpty )

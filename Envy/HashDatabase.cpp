@@ -165,7 +165,7 @@ void CHashDatabase::Close()
 //////////////////////////////////////////////////////////////////////
 // CHashDatabase lookup
 
-HASHDB_INDEX* CHashDatabase::Lookup(DWORD nIndex, DWORD nType)
+HASHDB_INDEX* CHashDatabase::Lookup(DWORD nIndex, DWORD nType) const
 {
 	ASSERT( m_bOpen );
 	HASHDB_INDEX* pIndex = m_pIndex;

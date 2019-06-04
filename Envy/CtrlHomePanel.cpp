@@ -193,7 +193,7 @@ void CHomeConnectionBox::OnSkinChange()
 
 	m_pDocument = new CRichDocument();
 
-	CMap< CString, const CString&, CRichElement*, CRichElement* > pMap;
+	CElementMap pMap;
 	if ( ! m_pDocument->LoadXML( pXML, &pMap ) ) return;
 
 	pMap.Lookup( L"ConnectedHours", m_pdConnectedHours );
@@ -426,7 +426,7 @@ void CHomeLibraryBox::OnSkinChange()
 
 	m_pDocument = new CRichDocument();
 
-	CMap< CString, const CString&, CRichElement*, CRichElement* > pMap;
+	CElementMap pMap;
 	if ( ! m_pDocument->LoadXML( pXML, &pMap ) ) return;
 
 	pMap.Lookup( L"LibraryFiles", m_pdLibraryFiles );
@@ -857,7 +857,7 @@ void CHomeDownloadsBox::OnSkinChange()
 
 	m_pDocument = new CRichDocument();
 
-	CMap< CString, const CString&, CRichElement*, CRichElement* > pMap;
+	CElementMap pMap;
 	if ( ! m_pDocument->LoadXML( pXML, &pMap ) ) return;
 
 	pMap.Lookup( L"DownloadsNone", m_pdDownloadsNone );
@@ -1276,7 +1276,7 @@ void CHomeUploadsBox::OnSkinChange()
 
 	m_pDocument = new CRichDocument();
 
-	CMap< CString, const CString&, CRichElement*, CRichElement* > pMap;
+	CElementMap pMap;
 	if ( ! m_pDocument->LoadXML( pXML, &pMap ) ) return;
 
 	pMap.Lookup( L"UploadsNone", m_pdUploadsNone );

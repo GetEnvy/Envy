@@ -60,43 +60,43 @@ CLibraryDictionary::~CLibraryDictionary()
 //////////////////////////////////////////////////////////////////////
 // CLibraryDictionary add and remove
 
-void CLibraryDictionary::AddFile(CLibraryFile& oFile)
+void CLibraryDictionary::AddFile(const CLibraryFile* pFile)
 {
 	ASSUME_LOCK( Library.m_pSection );
 
-	const bool bCanUpload = oFile.IsShared();
+	const bool bCanUpload = pFile->IsShared();
 
-	ProcessFile( oFile, true, bCanUpload );
+	ProcessFile( pFile, true, bCanUpload );
 
 	if ( bCanUpload && m_bValid )
-		m_pTable->AddHashes( oFile );
+		m_pTable->AddHashes( *pFile );
 }
 
-void CLibraryDictionary::RemoveFile(CLibraryFile& oFile)
+void CLibraryDictionary::RemoveFile(const CLibraryFile* pFile)
 {
 	ASSUME_LOCK( Library.m_pSection );
 
-	ProcessFile( oFile, false, oFile.IsShared() );
+	ProcessFile( pFile, false, pFile->IsShared() );
 
 	// Always invalidate the table when removing a hashed file...
 	// ToDo: Is this wise?  It will happen all the time.
-	if ( oFile.IsHashed() )
+	if ( pFile->IsHashed() )
 		Invalidate();
 }
 
 //////////////////////////////////////////////////////////////////////
 // CLibraryDictionary process file
 
-void CLibraryDictionary::ProcessFile(CLibraryFile& oFile, bool bAdd, bool bCanUpload)
+void CLibraryDictionary::ProcessFile(const CLibraryFile* pFile, bool bAdd, bool bCanUpload)
 {
-	ProcessPhrase( oFile, oFile.GetSearchName(), bAdd, bCanUpload );
-	ProcessPhrase( oFile, oFile.GetMetadataWords(), bAdd, bCanUpload );
+	ProcessPhrase( pFile, pFile->GetSearchName(), bAdd, bCanUpload );
+	ProcessPhrase( pFile, pFile->GetMetadataWords(), bAdd, bCanUpload );
 }
 
 //////////////////////////////////////////////////////////////////////
 // CLibraryDictionary phrase parser
 
-void CLibraryDictionary::ProcessPhrase(CLibraryFile& oFile, const CString& strPhrase, bool bAdd,
+void CLibraryDictionary::ProcessPhrase(const CLibraryFile* pFile, const CString& strPhrase, bool bAdd,
 	bool bCanUpload)
 {
 	if ( strPhrase.IsEmpty() )
@@ -106,21 +106,21 @@ void CLibraryDictionary::ProcessPhrase(CLibraryFile& oFile, const CString& strPh
 	CQueryHashTable::MakeKeywords( strPhrase, oKeywords );
 	for ( POSITION pos = oKeywords.GetHeadPosition(); pos; )
 	{
-		ProcessWord( oFile, oKeywords.GetNext( pos ), bAdd, bCanUpload );
+		ProcessWord( pFile, oKeywords.GetNext( pos ), bAdd, bCanUpload );
 	}
 }
 
 //////////////////////////////////////////////////////////////////////
 // CLibraryDictionary word add and remove
 
-void CLibraryDictionary::ProcessWord(CLibraryFile& oFile, const CString& strWord, bool bAdd, bool bCanUpload)
+void CLibraryDictionary::ProcessWord(const CLibraryFile* pFile, const CString& strWord, bool bAdd, bool bCanUpload)
 {
 	ASSUME_LOCK( Library.m_pSection );
 
 	CFileList* pList = NULL;
 	if ( m_oWordMap.Lookup( strWord, pList ) )
 	{
-		if ( POSITION pos = pList->Find( &oFile ) )
+		if ( POSITION pos = pList->Find( const_cast< CLibraryFile* >( pFile ) ) )
 		{
 			if ( ! bAdd )
 			{
@@ -136,15 +136,12 @@ void CLibraryDictionary::ProcessWord(CLibraryFile& oFile, const CString& strWord
 				}
 			}
 		}
-		else
+		else if ( bAdd )
 		{
-			if ( bAdd )
-			{
-				pList->AddTail( &oFile );
+			pList->AddTail( const_cast< CLibraryFile* >( pFile ) );
 
-				if ( bCanUpload && m_bValid )
-					m_pTable->AddExactString( strWord );
-			}
+			if ( bCanUpload && m_bValid )
+				m_pTable->AddExactString( strWord );
 		}
 	}
 	else if ( bAdd )
@@ -152,7 +149,7 @@ void CLibraryDictionary::ProcessWord(CLibraryFile& oFile, const CString& strWord
 		pList = new CFileList;
 		if ( pList )
 		{
-			pList->AddTail( &oFile );
+			pList->AddTail( const_cast< CLibraryFile* >( pFile ) );
 			m_oWordMap.SetAt( strWord, pList );
 
 			if ( bCanUpload && m_bValid )
@@ -182,15 +179,15 @@ void CLibraryDictionary::BuildHashTable()
 	m_pTable->Clear();
 
 	// Add words to hash table
-	//TRACE( L"[LD] Dictionary size: %d words\n", m_oWordMap.GetCount() );
-	//TRACE( L"[LD] Hash table size: %d\n", m_oWordMap.GetHashTableSize() );
+	//TRACE( "[LD] Dictionary size: %d words\n", m_oWordMap.GetCount() );
+	//TRACE( "[LD] Hash table size: %d\n", m_oWordMap.GetHashTableSize() );
 	for ( POSITION pos1 = m_oWordMap.GetStartPosition(); pos1; )
 	{
 		CString strWord;
 		CFileList* pList = NULL;
 		m_oWordMap.GetNextAssoc( pos1, strWord, pList );
 
-		//TRACE( L"[LD] Word \"%hs\" found %d time(s) in %d file(s)\n", (LPCSTR)CT2A( strWord ), oWord.m_nCount, oWord.m_pList->GetCount() );
+		//TRACE( "[LD] Word \"%hs\" found %d time(s) in %d file(s)\n", (LPCSTR)CT2A( strWord ), oWord.m_nCount, oWord.m_pList->GetCount() );
 		for ( POSITION pos2 = pList->GetHeadPosition(); pos2; )
 		{
 			const CLibraryFile* pFile = pList->GetNext( pos2 );

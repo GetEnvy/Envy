@@ -113,7 +113,8 @@ LRESULT CPanelWnd::OnNcHitTest(CPoint point)
 	if ( m_bPanelMode && ! m_pSkin )
 	{
 		BITMAP info = { 0, 0, CAPTION_HEIGHT };
-		if ( Images.m_bmPanelMark.m_hObject ) Images.m_bmPanelMark.GetBitmap( &info );
+		if ( Images.m_bmPanelMark.m_hObject )
+			Images.m_bmPanelMark.GetBitmap( &info );
 
 		CRect rc;
 		GetWindowRect( &rc );
@@ -181,15 +182,16 @@ LRESULT CPanelWnd::OnSetText(WPARAM /*wParam*/, LPARAM /*lParam*/)
 
 void CPanelWnd::PaintCaption(CDC& dc)
 {
-	CString strCaption;
-	CRect rc, rcWnd;
-
 	BITMAP info = { 0, 0, CAPTION_HEIGHT };
-	if ( Images.m_bmPanelMark.m_hObject ) Images.m_bmPanelMark.GetBitmap( &info );
+	if ( Images.m_bmPanelMark.m_hObject )
+		Images.m_bmPanelMark.GetBitmap( &info );
 
+	CString strCaption;
+	GetWindowText( strCaption );
+
+	CRect rc, rcWnd;
 	GetWindowRect( &rcWnd );
 	rc.SetRect( 0, 0, rcWnd.Width(), info.bmHeight );
-	GetWindowText( strCaption );
 
 	CSize size = rc.Size();
 	CDC* pBuffer = CoolInterface.GetBuffer( dc, size );
@@ -335,9 +337,8 @@ void CPanelWnd::PanelSizeLoop()
 		nSplitter += nOffset;
 
 		if ( nSplitter < 0.1f ) nSplitter = 0.1f;
-		if ( nSplitter > 0.9f ) nSplitter = 0.9f;
-
-		if ( nSplitter > 0.47f && nSplitter < 0.53f ) nSplitter = 0.5f;
+		else if ( nSplitter > 0.9f ) nSplitter = 0.9f;
+		else if ( nSplitter > 0.47f && nSplitter < 0.53f ) nSplitter = 0.5f;
 
 		if ( nSplitter != m_pGroupParent->m_nGroupSize )
 		{

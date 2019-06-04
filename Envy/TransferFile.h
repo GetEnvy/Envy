@@ -25,10 +25,10 @@ class CTransferFiles
 {
 public:
 	CTransferFiles();
-	virtual ~CTransferFiles();
+	~CTransferFiles();
 
 public:
-	typedef CMap< CString, const CString&, CTransferFile*, CTransferFile* > CTransferFileMap;
+	typedef CAtlMap< CString, CTransferFile*, CStringElementTraitsI< CString > > CTransferFileMap;
 	typedef CList< CTransferFile* > CTransferFileList;
 
 	CTransferFile*		Open(LPCTSTR pszFile, BOOL bWrite);
@@ -39,7 +39,6 @@ protected:
 	CTransferFileMap	m_pMap;
 	CTransferFileList	m_pDeferred;
 
-	void				Close();
 	void				QueueDeferred(CTransferFile* pFile);
 	void				Remove(CTransferFile* pFile);
 

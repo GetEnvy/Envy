@@ -336,6 +336,7 @@ void CHostCache::OnSuccess(const IN_ADDR* pAddress, WORD nPort, PROTOCOLID nProt
 	}
 }
 
+
 //////////////////////////////////////////////////////////////////////
 // CHostCacheList construction
 
@@ -357,10 +358,14 @@ void CHostCacheList::Clear()
 {
 	CQuickLock oLock( m_pSection );
 
+#ifndef PUBLIC_RELEASE
+	// ToDo: Crash at exit, Fix properly
 	for ( CHostCacheMapItr i = m_Hosts.begin(); i != m_Hosts.end(); ++i )
 	{
 		delete (*i).second;
 	}
+#endif
+
 	m_Hosts.clear();
 	m_HostsTime.clear();
 
@@ -1121,7 +1126,7 @@ bool CHostCache::CheckMinimumServers(PROTOCOLID nProtocol)
 		return true;
 
 	// Get server list from Web
-	DiscoveryServices.Execute( TRUE, nProtocol, TRUE );
+	DiscoveryServices.Execute( nProtocol, TRUE );
 
 	return false;
 }

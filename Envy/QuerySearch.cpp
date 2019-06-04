@@ -1593,7 +1593,7 @@ TRISTATE CQuerySearch::MatchMetadata(LPCTSTR pszSchemaURI, const CXMLElement* pX
 
 	for ( POSITION pos = m_pSchema->GetMemberIterator(); pos; )
 	{
-		const CSchemaMember* pMember = m_pSchema->GetNextMember( pos );
+		const CSchemaMemberPtr pMember = m_pSchema->GetNextMember( pos );
 
 		CString strSearch = pMember->GetValueFrom( pRoot );
 		CString strTarget = pMember->GetValueFrom( pXML );
@@ -1630,7 +1630,7 @@ BOOL CQuerySearch::MatchMetadataShallow(LPCTSTR pszSchemaURI, const CXMLElement*
 	{
 		for ( POSITION pos = pSchema->GetMemberIterator(); pos; )
 		{
-			CSchemaMember* pMember = pSchema->GetNextMember( pos );
+			CSchemaMemberPtr pMember = pSchema->GetNextMember( pos );
 
 			if ( pMember->m_bSearched )
 			{

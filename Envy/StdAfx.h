@@ -1,7 +1,7 @@
 //
 // StdAfx.h
 //
-// This file is part of Envy (getenvy.com) © 2016-2018
+// This file is part of Envy (getenvy.com) © 2016-2019
 // Portions copyright Shareaza 2002-2008 and PeerProject 2008-2016
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -24,6 +24,8 @@
 #pragma once
 
 
+#define PUBLIC_RELEASE
+
 #if defined(_MSC_VER) && (_MSC_FULL_VER < 150030000)
 	#error Visual Studio 2008 SP1 or higher required for building
 #endif
@@ -35,6 +37,12 @@
 #if !defined(XPSUPPORT) && !defined(WIN64)
 	#define XPSUPPORT	// No Windows XP support needed on x64 builds
 #endif
+
+// Deprecated Workarounds for legacy compilers (No C++11, use std::tr1:: for VS2008sp1)
+#if defined(_MSC_VER) && (_MSC_VER < 1600)
+	#define VS2008
+#endif
+
 
 //
 // Generate Manifest  (Themed controls)
@@ -161,11 +169,6 @@
 //#define _HAS_AUTO_PTR_ETC 0
 //#endif
 
-// Deprecated Workarounds for legacy compilers (No C++11, use std::tr1:: for VS2008sp1)
-#if defined(_MSC_VER) && (_MSC_VER < 1600)
-#define VS2008
-#endif
-
 #pragma warning ( push, 0 )		// Suppress Microsoft warnings
 
 //
@@ -188,7 +191,7 @@
 // ATL
 //
 
-//#include <atlcoll.h>			// Collection classes (CAtlList<>, CAtlMap<>) (for CStringIList)
+#include <atlcoll.h>			// Collection classes (CAtlList<>, CAtlMap<>, case-insensitive)
 #include <atlfile.h>			// Thin file classes
 #include <atltime.h>			// Time classes
 #include <atlsafe.h>			// CComSafeArray class
@@ -347,8 +350,8 @@ using augment::IUnknownImplementation;	// For UPnPFinder
 //typedef CString StringType;			// Previously for <Hashes>
 
 // Case insensitive string to string map/list
-//typedef CAtlMap< CString, CString, CStringElementTraitsI<CString> > CStringIMap;
-//typedef CAtlList< CString, CStringElementTraitsI< CString > > CStringIList;
+typedef CAtlMap< CString, CString, CStringElementTraitsI<CString> > CStringIMap;
+typedef CAtlList< CString, CStringElementTraitsI< CString > > CStringIList;
 
 //! \brief Hash function needed for CMap with const CString& as ARG_KEY.
 //template<>

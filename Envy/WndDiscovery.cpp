@@ -181,21 +181,15 @@ void CDiscoveryWnd::Update()
 
 		switch ( pService->m_nType )
 		{
-		case CDiscoveryService::dsGnutella:
-			if ( ! m_bShowGnutella ) continue;
-			pItem = m_wndList.Add( pService );
-			pItem->Set( COL_TYPE, L"Bootstrap" );
-			pItem->SetImage( 0 );			// IDR_HOSTCACHEFRAME
-			break;
 		case CDiscoveryService::dsWebCache:
 			if ( ! m_bShowWebCache ) continue;
 			pItem = m_wndList.Add( pService );
 			if ( pService->m_bGnutella2 && ! pService->m_sPong.IsEmpty() )
 				pItem->Set( COL_PONG, pService->m_sPong );
 			if ( pService->m_bGnutella2 && ! pService->m_bGnutella1 )
-				pItem->Set( COL_TYPE, L"GWebCache2" );
+				pItem->Set( COL_TYPE, L"G2WebCache" );
 			else if ( pService->m_bGnutella1 && ! pService->m_bGnutella2 )
-				pItem->Set( COL_TYPE, L"GWebCache1" );
+				pItem->Set( COL_TYPE, L"G1WebCache" );
 			else
 				pItem->Set( COL_TYPE, L"GWebCache " );
 			if ( pService->m_bGnutella2 && pService->m_bGnutella1 )
@@ -206,6 +200,12 @@ void CDiscoveryWnd::Update()
 				pItem->SetImage( 3 );		// IDI_DISCOVERY_GRAY
 			else
 				pItem->SetImage( 4 );		// Blank?
+			break;
+		case CDiscoveryService::dsGnutella:
+			if ( ! m_bShowGnutella ) continue;
+			pItem = m_wndList.Add( pService );
+			pItem->Set( COL_TYPE, L"G1Bootstrap" );
+			pItem->SetImage( 0 );			// IDR_HOSTCACHEFRAME
 			break;
 		case CDiscoveryService::dsServerList:
 			if ( ! m_bShowServerList ) continue;
@@ -354,10 +354,9 @@ void CDiscoveryWnd::OnDiscoveryQuery()
 	for ( int nItem = -1; ( nItem = m_wndList.GetNextItem( nItem, LVIS_SELECTED ) ) >= 0; )
 	{
 		CDiscoveryService* pService = GetItem( nItem );
-
-		if ( pService != NULL )
+		if ( pService && pService->m_nType != CDiscoveryService::dsBlocked )
 		{
-			DiscoveryServices.Execute( pService,
+			DiscoveryServices.Query( pService,
 				( GetAsyncKeyState( VK_SHIFT ) & 0x8000 ) ?
 				CDiscoveryServices::wcmCaches : CDiscoveryServices::wcmHosts );
 			break;
@@ -385,9 +384,8 @@ void CDiscoveryWnd::OnDiscoveryAdvertise()
 	if ( ! SafeLock( pLock ) ) return;
 
 	CDiscoveryService* pService = GetItem( m_wndList.GetNextItem( -1, LVIS_SELECTED ) );
-
-	if ( pService )
-		DiscoveryServices.Execute( pService, CDiscoveryServices::wcmSubmit );
+	if ( pService && pService->m_nType == CDiscoveryService::dsWebCache )
+		DiscoveryServices.Query( pService, CDiscoveryServices::wcmSubmit );
 }
 
 void CDiscoveryWnd::OnUpdateDiscoveryBrowse(CCmdUI* pCmdUI)

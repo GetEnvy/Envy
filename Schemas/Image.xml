@@ -556,6 +556,7 @@
 		<type extension="pgm"/>
 		<type extension="pic"/>
 		<type extension="pict"/>
+		<type extension="pik"/>
 		<type extension="png"/>
 		<type extension="ppm"/>
 		<type extension="ps"/>

@@ -132,7 +132,6 @@ CLibraryFile::~CLibraryFile()
 const CLibraryFolder* CLibraryFile::GetFolderPtr() const
 {
 	ASSUME_LOCK( Library.m_pSection );
-	ASSERT_VALID( this );
 
 	return m_pFolder;
 }
@@ -674,26 +673,26 @@ CTigerTree* CLibraryFile::GetTigerTree()
 
 CED2K* CLibraryFile::GetED2K()
 {
-	if ( ! m_oED2K ) return NULL;
-	if ( ! m_pFolder ) return NULL;
+	// Not hashed yet, or Virtual file
+	if ( ! m_oED2K || ! m_pFolder ) return NULL;
 
-	CED2K* pED2K = new CED2K();
+	CAutoPtr< CED2K > pED2K( new CED2K() );
+	if ( ! pED2K ) return NULL;		// Out of memory
 
-	if ( LibraryHashDB.GetED2K( m_nIndex, pED2K ) )
-	{
-		Hashes::Ed2kHash oRoot;
-		pED2K->GetRoot( &oRoot[ 0 ] );
-		oRoot.validate();
-		if ( m_oED2K == oRoot ) return pED2K;
+	if ( ! LibraryHashDB.GetED2K( m_nIndex, pED2K ) )
+		return NULL;	// Database error
 
-		LibraryHashDB.DeleteED2K( m_nIndex );
-	}
+	Hashes::Ed2kHash oRoot;
+	pED2K->GetRoot( &oRoot[ 0 ] );
+	oRoot.validate();
+	if ( m_oED2K == oRoot )
+		return pED2K.Detach();
 
-	delete pED2K;
+	// Wrong hash
+	LibraryHashDB.DeleteED2K( m_nIndex );
 	Library.RemoveFile( this );
 	m_oED2K.clear();
 	Library.AddFile( this );
-
 	return NULL;
 }
 

@@ -1,7 +1,7 @@
 //
 // Neighbour.h
 //
-// This file is part of Envy (getenvy.com) © 2016-2018
+// This file is part of Envy (getenvy.com) Â© 2016-2018
 // Portions copyright Shareaza 2002-2008 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -22,15 +22,15 @@
 
 #pragma once
 
-#include "Connection.h"
-#include "zlib.h"
-
 class CBuffer;
 class CPacket;
-class CVendor;
 class CGProfile;
 class CQuerySearch;
 class CQueryHashTable;
+
+#include "Connection.h"
+#include "VendorCache.h"
+#include "zlib.h"
 
 // Keep track of what stage of communications we are in with the remote computer
 typedef enum NeighbourStateEnum
@@ -57,7 +57,7 @@ typedef enum NeighbourNodeEnum
 } NrsNode;
 
 // Make the m_nPongNeeded buffer an array of 32 bytes
-const uchar PONG_NEEDED_BUFFER = 32;
+const BYTE PONG_NEEDED_BUFFER = 32;
 
 
 // Define the CNeighbour class to inherit from CConnection, picking up a socket and methods to connect it and read data through it
@@ -72,7 +72,7 @@ protected:
 public:
 	DWORD		m_nRunCookie;			// The number of times this neighbour has been run, CNeighboursBase::OnRun uses this to run each neighbour in the list once
 	NrsState	m_nState;				// Neighbour state, like connecting, handshake 1, 2, or 3, or rejected
-	CVendor*	m_pVendor;
+	CVendorPtr	m_pVendor;
 	CGProfile*	m_pProfile;
 	Hashes::Guid m_oGUID;
 	Hashes::Guid m_oMoreResultsGUID;	// GUID of the last search, used to get more results (do)

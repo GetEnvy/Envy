@@ -164,30 +164,29 @@ CLibraryFolder* CLibraryFolders::GetFolderByName(LPCTSTR pszName) const
 {
 	ASSUME_LOCK( Library.m_pSection );
 
-	CString strName( pszName );
-	strName.MakeLower();		// Was ToLower()
-
-	CString strNextName;
-	const int nPos = strName.FindOneOf( L"\\/" );
-	if ( nPos != -1 )
+	LPCTSTR szNextName = _tcschr( pszName, L'\\' );
+	if ( szNextName )
 	{
-		strNextName = strName.Mid( nPos + 1 );
-		strName = strName.Left( nPos );
-	}
+		CString strName( pszName, (int)( szNextName - pszName ) );
 
-	for ( POSITION pos = GetFolderIterator(); pos; )
-	{
-		CLibraryFolder* pFolder = GetNextFolder( pos );
-
-		if ( pFolder->m_sName.CompareNoCase( strName ) == 0 )
+		for ( POSITION pos = GetFolderIterator(); pos; )
 		{
-			if ( ! strNextName.IsEmpty() )
-				pFolder = pFolder->GetFolderByName( strNextName );
+			CLibraryFolder* pFolder = GetNextFolder( pos );
 
-			return pFolder;
+			if ( _tcsicmp( pFolder->m_sName, strName ) == 0 )
+				return pFolder->GetFolderByName( szNextName + 1 );
 		}
 	}
+	else
+	{
+		for ( POSITION pos = GetFolderIterator(); pos; )
+		{
+			CLibraryFolder* pFolder = GetNextFolder( pos );
 
+			if ( _tcsicmp( pFolder->m_sName, pszName ) == 0 )
+				return pFolder;
+		}
+	}
 	return NULL;
 }
 
@@ -215,7 +214,7 @@ CLibraryFolder* CLibraryFolders::AddFolder(LPCTSTR pszPath)
 	for ( POSITION pos = GetFolderIterator(); pos; )
 	{
 		POSITION posAdd = pos;
-		if ( GetNextFolder( pos )->m_sName.CompareNoCase( pFolder->m_sName ) < 0 )
+		if ( _tcsicmp( GetNextFolder( pos )->m_sName, pFolder->m_sName ) < 0 )
 			continue;
 
 		m_pFolders.InsertBefore( posAdd, pFolder );
@@ -257,7 +256,10 @@ bool CLibraryFolders::AddSharedFolder(CListCtrl& oList)
 
 	// Let user select a path to share
 	CString strPath( BrowseForFolder( L"Select folder to share:", strLastPath ) );
-	if ( strPath.IsEmpty() )
+	strPath.Trim();
+	strPath.TrimRight( L"\\" );
+	const int nLength = strPath.GetLength();
+	if ( ! nLength )
 		return false;
 
 	strLastPath = strPath;
@@ -269,31 +271,29 @@ bool CLibraryFolders::AddSharedFolder(CListCtrl& oList)
 		return false;
 	}
 
-	// Convert path to lowercase
-	CString strPathLow( strPath );
-	ToLower( strPathLow );
-
 	// Check if path is already shared
-	bool bForceAdd( false );
-	for ( int nItem( 0 ); nItem < oList.GetItemCount(); ++nItem )
+	bool bForceAdd = false;
+	for ( int nItem = 0; nItem < oList.GetItemCount(); ++nItem )
 	{
-		bool bSubFolder( false );
-		CString strOldLow( oList.GetItemText( nItem, 0 ) );
-		ToLower( strOldLow );
+		bool bSubFolder = false;
+		const CString strOld = oList.GetItemText( nItem, 0 );
+		const int nOldLength = strOld.GetLength();
 
-		if ( strPathLow.Compare( strOldLow ) == 0 )
+		if ( nLength == nOldLength && strPath.CompareNoCase( strOld ) == 0 )
 		{
 			// Matches exactly
 		}
-		else if ( strPathLow.GetLength() > strOldLow.GetLength() )
+		else if ( nLength > nOldLength )
 		{
-			if ( strPathLow.Left( strOldLow.GetLength() + 1 ) != strOldLow + '\\' )
+			if ( strPath.GetAt( nOldLength ) != L'\\' ||
+				 strPath.Left( nOldLength ).CompareNoCase( strOld ) != 0 )
 				continue;
 		}
-		else if ( strPathLow.GetLength() < strOldLow.GetLength() )
+		else if ( nLength < nOldLength )
 		{
 			bSubFolder = true;
-			if ( strOldLow.Left( strPathLow.GetLength() + 1 ) != strPathLow + L'\\' )
+			if ( strOld.GetAt( nLength ) != L'\\' ||
+				 strOld.Left( nLength ).CompareNoCase( strPath ) != 0 )
 				continue;
 		}
 		else
@@ -319,7 +319,7 @@ bool CLibraryFolders::AddSharedFolder(CListCtrl& oList)
 		else
 		{
 			CString strMessage;
-			strMessage.Format( LoadString( IDS_WIZARD_SHARE_ALREADY ), (LPCTSTR)strOldLow );
+			strMessage.Format( LoadString( IDS_WIZARD_SHARE_ALREADY ), (LPCTSTR)strOld );
 
 			MsgBox( strMessage, MB_ICONINFORMATION );
 			return false;
@@ -362,10 +362,7 @@ BOOL CLibraryFolders::RemoveFolder(CLibraryFolder* pFolder)
 
 CLibraryFolder* CLibraryFolders::IsFolderShared(const CString& strPath) const
 {
-	// Convert path to lowercase
-	CString strPathLow( strPath );
-	ToLower( strPathLow );
-	const int nPathLength = strPathLow.GetLength();
+	const int nLength = strPath.GetLength();
 
 	CQuickLock oLock( Library.m_pSection );
 
@@ -373,19 +370,17 @@ CLibraryFolder* CLibraryFolders::IsFolderShared(const CString& strPath) const
 	{
 		CLibraryFolder* pFolder = GetNextFolder( pos );
 
-		CString strOldLow( pFolder->m_sPath );
-		ToLower( strOldLow );
-		const int nLength = strOldLow.GetLength();
-
-		if ( nPathLength > nLength )
+		const int nOldLength = pFolder->m_sPath.GetLength();
+		if ( nLength > nOldLength )
 		{
-			if ( strPathLow.Left( nLength ) == strOldLow &&
-				 strPathLow.GetAt( nLength ) == L'\\' )
+			if ( strPath.GetAt( nOldLength ) == L'\\' &&
+				 strPath.Left( nOldLength ).CompareNoCase( pFolder->m_sPath ) == 0 )
 				return pFolder;
 		}
-		else if ( strPathLow.Compare( strOldLow ) == 0 )
+		else if ( nLength == nOldLength )
 		{
-			return pFolder;
+			if ( strPath.CompareNoCase( pFolder->m_sPath ) == 0 )
+				return pFolder;
 		}
 	}
 
@@ -397,10 +392,7 @@ CLibraryFolder* CLibraryFolders::IsFolderShared(const CString& strPath) const
 
 CLibraryFolder* CLibraryFolders::IsSubFolderShared(const CString& strPath) const
 {
-	// Convert path to lowercase
-	CString strPathLow( strPath );
-	ToLower( strPathLow );
-	const int nLength = strPathLow.GetLength();
+	const int nLength = strPath.GetLength();
 
 	CQuickLock oLock( Library.m_pSection );
 
@@ -408,13 +400,11 @@ CLibraryFolder* CLibraryFolders::IsSubFolderShared(const CString& strPath) const
 	{
 		CLibraryFolder* pFolder = GetNextFolder( pos );
 
-		CString strOldLow( pFolder->m_sPath );
-		ToLower( strOldLow );
-
-		if ( nLength < strOldLow.GetLength() )
+		const int nOldLength = pFolder->m_sPath.GetLength();
+		if ( nLength < nOldLength )
 		{
-			if ( strOldLow.Left( nLength ) == strPathLow &&
-				 strOldLow.GetAt( nLength ) == L'\\' )
+			if ( pFolder->m_sPath.GetAt( nLength ) == L'\\' &&
+				 pFolder->m_sPath.Left( nLength ).CompareNoCase( strPath ) == 0 )
 				return pFolder;
 		}
 	}
@@ -492,7 +482,7 @@ CAlbumFolder* CLibraryFolders::GetAlbumTarget(LPCTSTR pszSchemaURI, LPCTSTR pszM
 	CSchemaPtr pSchema = SchemaCache.Get( pszSchemaURI );
 	if ( pSchema == NULL ) return NULL;
 
-	CSchemaMember* pMember = pSchema->GetMember( pszMember );
+	CSchemaMemberPtr pMember = pSchema->GetMember( pszMember );
 
 	if ( pMember == NULL )
 	{

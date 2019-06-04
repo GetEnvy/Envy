@@ -241,8 +241,7 @@ void CPlugins::Clear()
 
 BOOL CPlugins::LookupCLSID(LPCTSTR pszGroup, LPCTSTR pszKey, CLSID& pCLSID) const
 {
-	CString strCLSID = theApp.GetProfileString(
-		CString( L"Plugins\\" ) + pszGroup, pszKey, L"" );
+	const CString strCLSID = theApp.GetProfileString( CString( L"Plugins\\" ) + pszGroup, pszKey, L"" );
 	return ! strCLSID.IsEmpty() &&
 		Hashes::fromGuid( strCLSID, &pCLSID ) &&
 		LookupEnable( pCLSID, pszKey );
@@ -282,11 +281,7 @@ BOOL CPlugins::LookupEnable(REFCLSID pCLSID, LPCTSTR pszExt) const
 		strExtensions = strExtensions.Mid( 1 );
 
 	if ( pszExt )	// Checking only a certain extension
-	{
-		CString strToFind;
-		strToFind.Format( L"|%s|", pszExt );
-		return strExtensions.Find( strToFind ) != -1;
-	}
+		return _tcsistr( strExtensions, CString( L"|" ) + pszExt + L"|" ) != NULL;
 
 	// For Settings page
 	CStringArray oTokens;

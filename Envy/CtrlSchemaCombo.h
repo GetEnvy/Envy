@@ -28,8 +28,8 @@ public:
 
 public:
 	CString		m_sNoSchemaText;
-	int			m_nType;
-	int			m_nAvailability;
+	CSchema::SchemaType  m_nType;
+	CSchema::SchemaLevel m_nAvailability;
 protected:
 	HWND		m_hListBox;
 	WNDPROC		m_pWndProc;
@@ -37,7 +37,7 @@ protected:
 
 public:
 	void		SetEmptyString(UINT nID);
-	void		Load(LPCTSTR pszSelectURI = NULL, int nType = 0, int nAvailability = 0, BOOL bReset = TRUE);
+	void		Load(LPCTSTR pszSelectURI = NULL, CSchema::SchemaType nType = CSchema::typeFile, CSchema::SchemaLevel nAvailability = CSchema::saDefault, BOOL bReset = TRUE);
 	void		Select(LPCTSTR pszURI);
 	void		Select(CSchemaPtr pSchema);
 	CSchemaPtr	GetSelected() const;

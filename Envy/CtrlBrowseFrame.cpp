@@ -460,14 +460,14 @@ void CBrowseFrameCtrl::OnTreeSelection(NMHDR* /*pNotify*/, LRESULT* pResult)
 
 	if ( pTree != NULL && pTree->m_pSelNext == NULL && pTree->m_pSchema != NULL )
 	{
-		CString strURI = pTree->m_pSchema->GetContainedURI( CSchema::stFile );
+		CString strURI = pTree->m_pSchema->GetContainedURI( CSchema::typeFile );
 
 		if ( ! strURI.IsEmpty() &&
 			 ( m_wndList->m_pSchema == NULL || ! m_wndList->m_pSchema->CheckURI( strURI ) ) )
 		{
 			if ( CSchemaPtr pSchema = SchemaCache.Get( strURI ) )
 			{
-				CList< CSchemaMember* > pColumns;
+				CSchemaMemberList pColumns;
 				CSchemaColumnsDlg::LoadColumns( pSchema, &pColumns );
 				m_wndList->SelectSchema( pSchema, &pColumns );
 			}

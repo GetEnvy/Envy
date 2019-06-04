@@ -48,6 +48,7 @@ CVersionChecker::CVersionChecker()
 
 CVersionChecker::~CVersionChecker()
 {
+	// Note possible crash at exit
 	Stop();
 }
 

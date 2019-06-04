@@ -29,7 +29,7 @@ public:
 	virtual ~CDownloadGroups();
 
 public:
-	CCriticalSection	m_pSection;
+	CCriticalSection	mutable m_pSection;
 protected:
 	CList< CDownloadGroup* > m_pList;
 	CDownloadGroup*		m_pSuper;
@@ -38,7 +38,7 @@ protected:
 	int					m_nGroupCookie;
 
 public:
-//	void				GetFolders(CList< CString >& oFolders) const;		// CStringIList
+	void				GetFolders(CList< CString >& oFolders) const;		// CStringIList
 	CDownloadGroup*		GetSuperGroup();
 	CDownloadGroup*		Add(LPCTSTR pszName = NULL, BOOL bTemporary = FALSE, BOOL bUseExisting = FALSE);
 	void				Remove(CDownloadGroup* pGroup);
@@ -47,7 +47,7 @@ public:
 	void				Link(CDownload* pDownload);
 	void				Unlink(CDownload* pDownload, BOOL bAndSuper = TRUE);
 	void				CreateDefault();
-	CString				GetCompletedPath(CDownload* pDownload);
+	CString				GetCompletedPath(CDownload* pDownload) const;
 
 	void				Clear();
 	BOOL				Load();

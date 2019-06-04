@@ -32,7 +32,6 @@
 #include "EnvyFile.h"
 #include "Schema.h"
 
-class CSchemaMember;
 class CQuerySearch;
 class CQueryHit;
 class CMatchFile;
@@ -103,7 +102,7 @@ protected:
 	CMatchFile**	m_pMapMD5;
 	LPTSTR			m_pszFilter;
 	CBaseMatchWnd*	m_pParent;
-	CSchemaMember**	m_pColumns;
+	CSchemaMemberPtr* m_pColumns;
 	int				m_nColumns;
 
 	enum findType
@@ -128,7 +127,7 @@ public:
 	void		Clear();
 	void		Filter();
 	CString		CreateRegExpFilter(const CString& strPattern);
-	void		SelectSchema(CSchemaPtr pSchema, CList< CSchemaMember* >* pColumns);
+	void		SelectSchema(CSchemaPtr pSchema, CSchemaMemberList* pColumns);
 	void		SetSortColumn(int nColumn = -1, BOOL bDirection = FALSE);
 	void		UpdateRange(DWORD nMin = 0, DWORD nMax = 0xFFFFFFFF);
 	void		ClearUpdated();

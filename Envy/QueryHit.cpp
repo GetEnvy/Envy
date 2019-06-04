@@ -157,7 +157,7 @@ CQueryHit* CQueryHit::FromG1Packet(CG1Packet* pPacket, int* pnHops)
 		}
 
 		// Read Vendor Code
-		CVendor* pVendor = VendorCache.m_pNull;
+		CVendorPtr pVendor = VendorCache.m_pNull;
 		if ( pPacket->GetRemaining() >= Hashes::Guid::byteCount + 4u )
 		{
 			CHAR szaVendor[ 4 ];
@@ -323,7 +323,7 @@ CQueryHit* CQueryHit::FromG2Packet(CG2Packet* pPacket, int* pnHops)
 	BOOL		bBrowseHost	= FALSE;
 	BOOL		bPeerChat	= FALSE;
 	bool		bSpam		= false;
-	CVendor*	pVendor		= VendorCache.m_pNull;
+	CVendorPtr	pVendor		= VendorCache.m_pNull;
 	DWORD		nGroupState[8][4] = {};
 	BOOL		bCompound;
 	CString		strNick;
@@ -1219,7 +1219,7 @@ void CQueryHit::ReadGGEP(CG1Packet* pPacket)
 //////////////////////////////////////////////////////////////////////
 // CQueryHit G1 attributes suffix
 
-void CQueryHit::ParseAttributes(const Hashes::Guid& oClientID, CVendor* pVendor, BYTE* nFlags, BOOL bChat, BOOL bBrowseHost)
+void CQueryHit::ParseAttributes(const Hashes::Guid& oClientID, CVendorPtr pVendor, BYTE* nFlags, BOOL bChat, BOOL bBrowseHost)
 {
 	m_oClientID		= oClientID;
 	m_pVendor		= pVendor ? pVendor : VendorCache.m_pNull;

@@ -92,10 +92,10 @@ public:
 class CMetaItem : public CRect
 {
 public:
-	CMetaItem(CSchemaMember* pMember = NULL);
+	CMetaItem(CSchemaMemberPtr pMember = NULL);
 
 public:
-	CSchemaMember*	m_pMember;
+	CSchemaMemberPtr m_pMember;
 	CMap< CString, const CString&, int, int > m_pVote;
 	CString			m_sKey;
 	CString			m_sValue;

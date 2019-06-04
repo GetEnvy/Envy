@@ -37,7 +37,7 @@ static char THIS_FILE[] = __FILE__;
 // CSchema construction
 
 CSchema::CSchema()
-	: m_nType		( stFile )
+	: m_nType		( typeFile )
 	, m_nAvailability ( saDefault )
 	, m_bPrivate	( FALSE )
 	, m_nIcon16 	( -1 )
@@ -64,9 +64,8 @@ BOOL CSchema::FilterType(LPCTSTR pszFile) const
 	if ( ! *pszExt )
 		return FALSE;
 
-	const CStringBoolMap::CPair* pPair = m_pTypeFilters.PLookup( CString( pszExt + 1 ).MakeLower() );
-
-	return pPair && pPair->value;
+	BOOL bValue;
+	return m_pTypeFilters.Lookup( pszExt + 1, bValue ) ? bValue : FALSE;
 }
 
 CString CSchema::GetFilterSet() const
@@ -101,20 +100,32 @@ POSITION CSchema::GetMemberIterator() const
 	return m_pMembers.GetHeadPosition();
 }
 
-CSchemaMember* CSchema::GetNextMember(POSITION& pos) const
+CSchemaMemberPtr CSchema::GetNextMember(POSITION& pos) const
 {
 	return m_pMembers.GetNext( pos );
 }
 
-CSchemaMember* CSchema::GetMember(LPCTSTR pszName) const
+CSchemaMemberPtr CSchema::GetMember(LPCTSTR pszName) const
 {
 	if ( ! pszName || ! *pszName ) return NULL;
 
-	for ( POSITION pos = GetMemberIterator(); pos; )
+	for ( POSITION pos = m_pMembers.GetHeadPosition(); pos; )
 	{
-		CSchemaMember* pMember = GetNextMember( pos );
+		CSchemaMemberPtr pMember = m_pMembers.GetNext( pos );
 		if ( pMember->m_sName.CompareNoCase( pszName ) == 0 )
 			return pMember;
+	}
+	return NULL;
+}
+
+CSchemaMember* CSchema::GetWritableMember(LPCTSTR pszName) const
+{
+	if ( ! pszName || ! *pszName ) return NULL;
+
+	for ( POSITION pos = m_pMembers.GetHeadPosition(); pos; )
+	{
+		CSchemaMember* pMember = m_pMembers.GetNext( pos );
+		if ( pMember->m_sName.CompareNoCase( pszName ) == 0 ) return pMember;
 	}
 	return NULL;
 }
@@ -124,11 +135,12 @@ INT_PTR CSchema::GetMemberCount() const
 	return m_pMembers.GetCount();
 }
 
+
 CString CSchema::GetFirstMemberName() const
 {
 	if ( m_pMembers.GetCount() )
 	{
-		CSchemaMember* pMember = m_pMembers.GetHead();
+		CSchemaMemberPtr pMember = m_pMembers.GetHead();
 		return pMember->m_sName;
 	}
 
@@ -140,9 +152,13 @@ CString CSchema::GetFirstMemberName() const
 
 void CSchema::Clear()
 {
-	for ( POSITION pos = GetMemberIterator(); pos; )
+	for ( POSITION pos = m_pMembers.GetHeadPosition(); pos; )
 	{
-		delete GetNextMember( pos );
+		if ( CSchemaMember* i = m_pMembers.GetNext( pos ) )
+		{
+			delete i;
+			i = NULL;
+		}
 	}
 
 	for ( POSITION pos = m_pContains.GetHeadPosition(); pos; )
@@ -202,24 +218,24 @@ BOOL CSchema::Load(LPCTSTR pszFile)
 
 BOOL CSchema::LoadSchema(LPCTSTR pszFile)
 {
-	CXMLElement* pRoot = CXMLElement::FromFile( pszFile );
+	const CXMLElement* pRoot = CXMLElement::FromFile( pszFile );
 	if ( pRoot == NULL ) return FALSE;
 
 	BOOL bResult = FALSE;
 
 	m_sURI = pRoot->GetAttributeValue( L"targetNamespace", L"" );
 
-	CXMLElement* pPlural = pRoot->GetElementByName( L"element" );
+	const CXMLElement* pPlural = pRoot->GetElementByName( L"element" );
 
 	if ( pPlural && ! m_sURI.IsEmpty() )
 	{
 		m_sPlural = pPlural->GetAttributeValue( L"name" );
 
-		CXMLElement* pComplexType = pPlural->GetFirstElement();
+		const CXMLElement* pComplexType = pPlural->GetFirstElement();
 
 		if ( pComplexType && pComplexType->IsNamed( L"complexType" ) && ! m_sPlural.IsEmpty() )
 		{
-			CXMLElement* pElement = pComplexType->GetFirstElement();
+			const CXMLElement* pElement = pComplexType->GetFirstElement();
 
 			if ( pElement && pElement->IsNamed( L"element" ) )
 			{
@@ -231,7 +247,7 @@ BOOL CSchema::LoadSchema(LPCTSTR pszFile)
 				}
 				else
 				{
-					CString strType = pElement->GetAttributeValue( L"type" );
+					const CString strType = pElement->GetAttributeValue( L"type" );
 					bResult = LoadPrimary( pRoot, GetType( pRoot, strType ) );
 				}
 
@@ -241,11 +257,11 @@ BOOL CSchema::LoadSchema(LPCTSTR pszFile)
 		}
 	}
 
-	if ( CXMLElement* pMapping = pRoot->GetElementByName( L"mapping" ) )
+	if ( const CXMLElement* pMapping = pRoot->GetElementByName( L"mapping" ) )
 	{
 		for ( POSITION pos = pMapping->GetElementIterator(); pos; )
 		{
-			if ( CXMLElement* pMap = pMapping->GetNextElement( pos ) )
+			if ( const CXMLElement* pMap = pMapping->GetNextElement( pos ) )
 			{
 				CString strName = pMap->GetAttributeValue( L"name" );
 
@@ -299,8 +315,8 @@ BOOL CSchema::LoadPrimary(const CXMLElement* pRoot, const CXMLElement* pType)
 
 	for ( POSITION pos = pType->GetElementIterator(); pos; )
 	{
-		CXMLElement* pElement	= pType->GetNextElement( pos );
-		CString strElement		= pElement->GetName();
+		const CXMLElement* pElement = pType->GetNextElement( pos );
+		const CString strElement = pElement->GetName();
 
 		if ( strElement.CompareNoCase( L"attribute" ) == 0 ||
 			 strElement.CompareNoCase( L"element" ) == 0 )
@@ -326,15 +342,15 @@ BOOL CSchema::LoadPrimary(const CXMLElement* pRoot, const CXMLElement* pType)
 	return TRUE;
 }
 
-CXMLElement* CSchema::GetType(const CXMLElement* pRoot, LPCTSTR pszName) const
+const CXMLElement* CSchema::GetType(const CXMLElement* pRoot, LPCTSTR pszName) const
 {
 	if ( ! pszName || ! *pszName ) return NULL;
 
 	for ( POSITION pos = pRoot->GetElementIterator(); pos; )
 	{
-		CXMLElement* pElement = pRoot->GetNextElement( pos );
+		const CXMLElement* pElement = pRoot->GetNextElement( pos );
 
-		CString strElement = pElement->GetName();
+		const CString strElement = pElement->GetName();
 
 		if ( strElement.CompareNoCase( L"simpleType" ) == 0 ||
 			 strElement.CompareNoCase( L"complexType" ) == 0 )
@@ -368,20 +384,18 @@ BOOL CSchema::LoadDescriptor(LPCTSTR pszFile)
 
 		if ( pElement->IsNamed( L"object" ) )
 		{
-			CString strType = pElement->GetAttributeValue( L"type" );
-			ToLower( strType );
+			const CString strType = pElement->GetAttributeValue( L"type" );
 
-			if ( strType == L"file" )
-				m_nType = stFile;
-			else if ( strType == L"folder" || strType == L"album" )
-				m_nType = stFolder;
+			if ( strType.CompareNoCase( L"file" ) == 0 )
+				m_nType = typeFile;
+			else if ( strType.CompareNoCase( L"folder" ) == 0 || strType.CompareNoCase( L"album" ) == 0 )
+				m_nType = typeFolder;
 
-			strType = pElement->GetAttributeValue( L"availability" );
-			ToLower( strType );
+			const CString strLevel = pElement->GetAttributeValue( L"availability" );
 
-			if ( strType == L"system" )
+			if ( strLevel.CompareNoCase( L"system" ) == 0 )
 				m_nAvailability = saSystem;
-			else if ( strType == L"advanced" )
+			else if ( strLevel.CompareNoCase( L"advanced" ) == 0 )
 				m_nAvailability = saAdvanced;
 			else // "default"
 				m_nAvailability = saDefault;
@@ -481,9 +495,9 @@ void CSchema::LoadDescriptorMembers(const CXMLElement* pElement)
 
 		if ( pDisplay->IsNamed( L"member" ) )
 		{
-			CString strMember = pDisplay->GetAttributeValue( L"name" );
+			const CString strMember = pDisplay->GetAttributeValue( L"name" );
 
-			if ( CSchemaMember* pMember = GetMember( strMember ) )
+			if ( CSchemaMember* pMember = GetWritableMember( strMember ) )
 			{
 				pMember->LoadDescriptor( pDisplay );
 				bPrompt |= pMember->m_bPrompt;
@@ -493,9 +507,9 @@ void CSchema::LoadDescriptorMembers(const CXMLElement* pElement)
 
 	if ( bPrompt ) return;
 
-	for ( POSITION pos = GetMemberIterator(); pos; )
+	for ( POSITION pos = m_pMembers.GetHeadPosition(); pos; )
 	{
-		GetNextMember( pos )->m_bPrompt = TRUE;
+		m_pMembers.GetNext( pos )->m_bPrompt = TRUE;
 	}
 }
 
@@ -524,7 +538,7 @@ void CSchema::LoadDescriptorContains(const CXMLElement* pElement)
 		{
 			CSchemaChild* pChild = new CSchemaChild( this );
 
-			if ( pChild->Load( pExtend ) )
+			if ( pChild && pChild->Load( pExtend ) )
 				m_pContains.AddTail( pChild );
 			else
 				delete pChild;
@@ -544,8 +558,7 @@ void CSchema::LoadDescriptorTypeFilter(const CXMLElement* pElement)
 			if ( strType.IsEmpty() )
 				strType = pType->GetAttributeValue( L"keyword", L"" );
 
-			BOOL bResult = TRUE;
-			m_pTypeFilters.SetAt( strType.MakeLower(), bResult );
+			m_pTypeFilters.SetAt( strType, TRUE );
 		}
 	}
 }
@@ -650,22 +663,22 @@ BOOL CSchema::LoadIcon(CString sPath /*Empty*/)
 //////////////////////////////////////////////////////////////////////
 // CSchema contained object helpers
 
-CSchemaChild* CSchema::GetContained(LPCTSTR pszURI) const
+CSchemaChildPtr CSchema::GetContained(LPCTSTR pszURI) const
 {
 	for ( POSITION pos = m_pContains.GetHeadPosition(); pos; )
 	{
-		CSchemaChild* pChild = m_pContains.GetNext( pos );
+		CSchemaChildPtr pChild = m_pContains.GetNext( pos );
 		if ( pChild->m_sURI.CompareNoCase( pszURI ) == 0 )
 			return pChild;
 	}
 	return NULL;
 }
 
-CString CSchema::GetContainedURI(int nType) const
+CString CSchema::GetContainedURI(SchemaType nType) const
 {
 	for ( POSITION pos = m_pContains.GetHeadPosition(); pos; )
 	{
-		CSchemaChild* pChild = m_pContains.GetNext( pos );
+		CSchemaChildPtr pChild = m_pContains.GetNext( pos );
 
 		if ( pChild->m_nType == nType )
 			return pChild->m_sURI;
@@ -699,12 +712,12 @@ BOOL CSchema::Validate(CXMLElement* pXML, BOOL bFix) const
 	if ( pBody == NULL ) return FALSE;
 	if ( ! pBody->IsNamed( m_sSingular ) ) return FALSE;
 
-	for ( POSITION pos = GetMemberIterator(); pos; )
+	for ( POSITION pos = m_pMembers.GetHeadPosition(); pos; )
 	{
-		CSchemaMember* pMember = GetNextMember( pos );
+		CSchemaMemberPtr pMember = GetNextMember( pos );
 
-		CString str = pMember->GetValueFrom( pBody, L"(~np~)", FALSE );
-		if ( str == L"(~np~)" ) continue;
+		CString str = pMember->GetValueFrom( pBody, NO_VALUE, FALSE );	// "(~np~)"
+		if ( str == NO_VALUE ) continue;	// "(~np~)"
 
 		if ( pMember->m_bNumeric )
 		{
@@ -763,15 +776,15 @@ BOOL CSchema::Validate(CXMLElement* pXML, BOOL bFix) const
 //////////////////////////////////////////////////////////////////////
 // CSchema indexed words
 
-CString CSchema::GetIndexedWords(CXMLElement* pXML) const
+CString CSchema::GetIndexedWords(const CXMLElement* pXML) const
 {
 	CString str;
 
 	if ( pXML == NULL ) return str;
 
-	for ( POSITION pos = GetMemberIterator(); pos; )
+	for ( POSITION pos = m_pMembers.GetHeadPosition(); pos; )
 	{
-		CSchemaMember* pMember = GetNextMember( pos );
+		CSchemaMemberPtr pMember = m_pMembers.GetNext( pos );
 
 		if ( pMember->m_bIndexed )
 		{
@@ -790,15 +803,15 @@ CString CSchema::GetIndexedWords(CXMLElement* pXML) const
 	return str;
 }
 
-CString CSchema::GetVisibleWords(CXMLElement* pXML) const
+CString CSchema::GetVisibleWords(const CXMLElement* pXML) const
 {
 	CString str;
 
 	if ( pXML == NULL ) return str;
 
-	for ( POSITION pos = GetMemberIterator(); pos; )
+	for ( POSITION pos = m_pMembers.GetHeadPosition(); pos; )
 	{
-		CSchemaMember* pMember = GetNextMember( pos );
+		CSchemaMemberPtr pMember = m_pMembers.GetNext( pos );
 
 		if ( ! pMember->m_bHidden )
 		{
@@ -831,8 +844,10 @@ void CSchema::ResolveTokens(CString& str, CXMLElement* pXML) const
 		CString strMember = str.Mid( nOpen + 1, nClose - nOpen - 1 ).Trim();
 
 		CString strValue;
-		if ( CSchemaMember* pMember = GetMember( strMember ) )
+		if ( CSchemaMemberPtr pMember = GetMember( strMember ) )
+		{
 			strValue = pMember->GetValueFrom( pXML, NULL, TRUE );
+		}
 
 		str = str.Left( nOpen ) + strValue + str.Mid( nClose + 1 );
 	}

@@ -44,7 +44,7 @@ END_INTERFACE_MAP()
 
 BOOL CImageServices::LoadFromMemory(CImageFile* pFile, LPCTSTR pszType, LPCVOID pData, DWORD nLength, BOOL bScanOnly, BOOL bPartialOk)
 {
-	// Try to load common types first (JPEG/GIF/BMP/PNG)
+	// Try to load common types first (PNG/JPEG/GIF/BMP)
 	if ( ! Settings.Interface.PreferImageServices )
 	{
 		CComPtr< IStream > pStream = SHCreateMemStream( (const BYTE*)pData, nLength );
@@ -109,7 +109,7 @@ BOOL CImageServices::LoadFromMemory(CImageFile* pFile, LPCTSTR pszType, LPCVOID 
 	if ( bSuccess )
 		return TRUE;
 
-	// Or try to load common types last (JPEG/GIF/BMP/PNG) (slow)
+	// Or try to load common types last (PNG/JPEG/GIF/BMP) (slow)
 	if ( Settings.Interface.PreferImageServices )
 	{
 		CComPtr< IStream > pStream = SHCreateMemStream( (const BYTE*)pData, nLength );
@@ -134,7 +134,7 @@ BOOL CImageServices::LoadFromFile(CImageFile* pFile, LPCTSTR szFilename, BOOL bS
 	// Get file extension
 	LPCTSTR szType = PathFindExtension( szFilename ); // ".ext"
 
-	// Try to load common types first (JPEG/GIF/BMP/PNG)
+	// Try to load common types first (PNG/JPEG/GIF/BMP)
 	if ( ! Settings.Interface.PreferImageServices )
 	{
 		CImage image;
@@ -165,7 +165,7 @@ BOOL CImageServices::LoadFromFile(CImageFile* pFile, LPCTSTR szFilename, BOOL bS
 		}
 	}
 
-	// Or try to load common types last (JPEG/GIF/BMP/PNG) (slow)
+	// Or try to load common types last (PNG/JPEG/GIF/BMP) (slow)
 	if ( Settings.Interface.PreferImageServices )
 	{
 		CImage image;
@@ -290,11 +290,9 @@ BOOL CImageServices::SaveToFile(CImageFile* pFile, LPCTSTR szFilename, int nQual
 		*pnLength = 0;
 
 	// Get file extension
-	CString strType( PathFindExtension( szFilename ) ); // ".ext"
-	strType.MakeLower();
+	LPCTSTR szType = PathFindExtension( szFilename );	// ".ext"
 
-	CComQIPtr< IImageServicePlugin > pService(
-		Plugins.GetPlugin( L"ImageService", strType ) );
+	CComQIPtr< IImageServicePlugin > pService( Plugins.GetPlugin( L"ImageService", szType ) );
 	if ( ! pService )
 		return FALSE;
 

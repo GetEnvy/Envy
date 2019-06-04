@@ -94,7 +94,7 @@ void CHomeViewCtrl::OnSkinChange()
 		Skin.GetWatermark( &m_bmHeader2, L"CHomeViewCtrl.HeaderRepeat" );
 
 	CXMLElement* pXML = Skin.GetDocument( L"CHomeViewCtrl" );
-	CMap< CString, const CString&, CRichElement*, CRichElement* > pMap;
+	CElementMap pMap;
 
 	if ( pXML == NULL || ! m_pDocument.LoadXML( pXML, &pMap ) )
 	{

@@ -217,7 +217,7 @@ void CRichDocument::CreateFonts(const LOGFONT* lpDefault, const LOGFONT* lpHeadi
 //////////////////////////////////////////////////////////////////////
 // CRichDocument XML Load
 
-BOOL CRichDocument::LoadXML(CXMLElement* pBase, CMap< CString, const CString&, CRichElement*, CRichElement* >* pMap, int nGroup)
+BOOL CRichDocument::LoadXML(CXMLElement* pBase, CElementMap* pMap, int nGroup)
 {
 	CSingleLock pLock( &m_pSection, TRUE );
 
@@ -358,14 +358,14 @@ BOOL CRichDocument::LoadXML(CXMLElement* pBase, CMap< CString, const CString&, C
 		strTemp = pXML->GetAttributeValue( L"format" );
 		ToLower( strTemp );
 
-		if ( strTemp.Find( L'b' ) >= 0 )	pElement->m_nFlags |= retfBold;
-		if ( strTemp.Find( L'i' ) >= 0 )	pElement->m_nFlags |= retfItalic;
-		if ( strTemp.Find( L'u' ) >= 0 )	pElement->m_nFlags |= retfUnderline;
+		if ( strTemp.FindOneOf( L"bB" ) >= 0 )	pElement->m_nFlags |= retfBold;
+		if ( strTemp.FindOneOf( L"iI" ) >= 0 )	pElement->m_nFlags |= retfItalic;
+		if ( strTemp.FindOneOf( L"uU" ) >= 0 )	pElement->m_nFlags |= retfUnderline;
 
 		strTemp = pXML->GetAttributeValue( L"align" );
-		ToLower( strTemp );
 
-		if ( strTemp == L"middle" ) pElement->m_nFlags |= retfMiddle;
+		if ( strTemp.CompareNoCase( L"middle" ) == 0 )
+			pElement->m_nFlags |= retfMiddle;
 
 		if ( Skin.LoadColor( pXML, L"color",  &pElement->m_cColor ) ||
 			 Skin.LoadColor( pXML, L"colour", &pElement->m_cColor ) )
@@ -420,7 +420,11 @@ BOOL CRichDocument::LoadXMLStyles(CXMLElement* pParent)
 	for ( POSITION pos = pParent->GetElementIterator(); pos; )
 	{
 		CXMLElement* pXML = pParent->GetNextElement( pos );
-		if ( ! pXML->IsNamed( L"style" ) ) continue;
+		if ( ! pXML->IsNamed( L"style" ) )
+		{
+			theApp.Message( MSG_ERROR, IDS_SKIN_ERROR, L"Unknown element in [styles] element", (LPCTSTR)pXML->ToString() );
+			continue;
+		}
 
 		CString strName = pXML->GetAttributeValue( L"name" );
 		strName.MakeLower();

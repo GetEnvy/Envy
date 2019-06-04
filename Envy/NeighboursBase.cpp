@@ -1,7 +1,7 @@
 //
 // NeighboursBase.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2018
+// This file is part of Envy (getenvy.com) Â© 2016-2018
 // Portions copyright Shareaza 2002-2008 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -61,16 +61,16 @@ POSITION CNeighboursBase::GetIterator() const
 {
 	ASSUME_LOCK( Network.m_pSection );
 
-	return m_pNeighbours.GetStartPosition();
+	return m_pIndex.GetStartPosition();
 }
 
 CNeighbour* CNeighboursBase::GetNext(POSITION& pos) const
 {
 	ASSUME_LOCK( Network.m_pSection );
 
-	IN_ADDR nAddress;
-	CNeighbour* pNeighbour;
-	m_pNeighbours.GetNextAssoc( pos, nAddress, pNeighbour );
+	DWORD_PTR nKey = 0;
+	CNeighbour* pNeighbour = NULL;
+	m_pIndex.GetNextAssoc( pos, nKey, pNeighbour );
 	return pNeighbour;
 }
 
@@ -137,15 +137,15 @@ CNeighbour* CNeighboursBase::GetNewest(PROTOCOLID nProtocol, int nState, int nNo
 // Counts the number of neighbours in the list that match these criteria, pass -1 to count them all
 DWORD CNeighboursBase::GetCount(PROTOCOLID nProtocol, int nState, int nNodeType) const
 {
-	CSingleLock pLock( &Network.m_pSection );
-	if ( ! pLock.Lock( 100 ) )
-		return 0;
-
 	DWORD nCount = 0;
+
+	CSingleLock pLock( &Network.m_pSection );
+	if ( ! pLock.Lock( 200 ) )
+		return 0;
 
 	for ( POSITION pos = GetIterator(); pos; )
 	{
-		CNeighbour* pNeighbour = GetNext( pos );
+		const CNeighbour* pNeighbour = GetNext( pos );
 
 		// If this neighbour has the protocol we are looking for, or nProtocl is negative to count them all
 		if ( nProtocol == PROTOCOL_ANY || nProtocol == pNeighbour->m_nProtocol )

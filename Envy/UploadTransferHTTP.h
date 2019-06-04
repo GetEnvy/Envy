@@ -70,8 +70,8 @@ protected:
 	BOOL	ReadRequest();
 	BOOL	RequestSharedFile(CLibraryFile* pFile, CSingleLock& oLibraryLock);
 	BOOL	RequestPartialFile(CDownload* pFile);
-	BOOL	RequestTigerTreeRaw(CTigerTree* pTigerTree, BOOL bDelete);
-	BOOL	RequestTigerTreeDIME(CTigerTree* pTigerTree, int nDepth, CED2K* pHashset, BOOL bDelete);
+	BOOL	RequestTigerTreeRaw(const CTigerTree* pTigerTree, BOOL bDelete);
+	BOOL	RequestTigerTreeDIME(const CTigerTree* pTigerTree, int nDepth, const CED2K* pHashset, BOOL bDelete);
 	BOOL	RequestMetadata(CXMLElement* pMetadata);
 	BOOL	RequestPreview(CLibraryFile* pFile, CSingleLock& oLibraryLock);
 	BOOL	RequestHostBrowse();

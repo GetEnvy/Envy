@@ -1569,8 +1569,7 @@ void CMainWnd::UpdateMessages()
 			if ( Settings.General.GUIMode == GUI_BASIC )
 			{
 				// In the basic GUI, don't bother with mode details or neighbour count.
-				strStatusbar.Format( LoadString( IDS_STATUS_BAR_CONNECTED_SIMPLE ),
-					Settings.SmartVolume( nLocalVolume, KiloBytes ) );
+				strStatusbar.Format( LoadString( IDS_STATUS_BAR_CONNECTED_SIMPLE ), Settings.SmartVolume( nLocalVolume, KiloBytes ) );
 			}
 			else // Default Views
 			{
@@ -1585,8 +1584,7 @@ void CMainWnd::UpdateMessages()
 		{
 			// If only BitTorrent is enabled say connected (others are disabled)
 			if ( ! Settings.Gnutella2.Enabled && ! Settings.Gnutella1.Enabled && ! Settings.eDonkey.Enabled && ! Settings.DC.Enabled )
-				strStatusbar.Format( LoadString( IDS_STATUS_BAR_CONNECTED_SIMPLE ),
-					Settings.SmartVolume( nLocalVolume, KiloBytes ) );
+				strStatusbar.Format( LoadString( IDS_STATUS_BAR_CONNECTED_SIMPLE ), Settings.SmartVolume( nLocalVolume, KiloBytes ) );
 			else	// Trying to connect
 				LoadString( strStatusbar, IDS_STATUS_BAR_CONNECTING );
 		}
@@ -1777,10 +1775,17 @@ void CMainWnd::LocalSystemChecks()
 			HostCache.CheckMinimumServers( PROTOCOL_ED2K );
 	}
 
+	if ( ! Settings.Live.DefaultDCServersLoaded )
+	{
+		Settings.Live.DefaultDCServersLoaded = true;
+		if ( Settings.DC.Enabled )
+			HostCache.CheckMinimumServers( PROTOCOL_DC );
+	}
+
 	if ( ! Settings.Live.DonkeyServerWarning && Settings.eDonkey.Enabled )
 	{
 		Settings.Live.DonkeyServerWarning = true;
-		if ( ! Settings.eDonkey.MetAutoQuery && HostCache.eDonkey.CountHosts(TRUE) < 1 )
+		if ( ! Settings.eDonkey.AutoDiscovery && HostCache.eDonkey.CountHosts(TRUE) < 1 )
 			PostMessage( WM_COMMAND, ID_HELP_DONKEYSERVERS );
 	}
 
@@ -1916,7 +1921,7 @@ void CMainWnd::OnNetworkG2()
 	if ( ! Network.IsConnected() )
 		Network.Connect( TRUE );
 	else
-		DiscoveryServices.Execute( FALSE, PROTOCOL_G2, FALSE );
+		DiscoveryServices.ExecuteBootstraps( PROTOCOL_G2 );
 
 	if ( ! Settings.Gnutella2.EnableAlways &&
 		 MsgBox( IDS_NETWORK_ALWAYS, MB_ICONQUESTION|MB_YESNO ) == IDYES )
@@ -1949,7 +1954,7 @@ void CMainWnd::OnNetworkG1()
 	if ( ! Network.IsConnected() )
 		Network.Connect( TRUE );
 	else
-		DiscoveryServices.Execute( FALSE, PROTOCOL_G1, FALSE );
+		DiscoveryServices.ExecuteBootstraps( PROTOCOL_G1 );
 
 	if ( ! Settings.Gnutella1.EnableAlways &&
 		 MsgBox( IDS_NETWORK_ALWAYS, MB_ICONQUESTION|MB_YESNO ) == IDYES )
@@ -3366,15 +3371,13 @@ void CMainWnd::ShowTrayPopup(const CString& sText, const CString& sTitle, DWORD 
 
 	_tcsncpy( m_pTray.szInfo, sText, _countof( m_pTray.szInfo ) - 1 );
 	m_pTray.szInfo[ _countof( m_pTray.szInfo ) - 1 ] = L'\0';
-	if ( sText.GetLength() >= _countof( m_pTray.szInfo ) - 1 )
+	if ( sText.GetLength() >= _countof( m_pTray.szInfo ) - 1 &&
+		 sText[ _countof( m_pTray.szInfo ) - 1 ] != L' ' )
 	{
-		if ( sText[ _countof( m_pTray.szInfo ) - 1 ] != L' ' )
+		if ( LPTSTR pWordEnd = _tcsrchr( m_pTray.szInfo, L' ' ) )
 		{
-			if ( LPTSTR pWordEnd = _tcsrchr( m_pTray.szInfo, L' ' ) )
-			{
-				pWordEnd[ 0 ] = L'\x2026';
-				pWordEnd[ 1 ] = L'\0';
-			}
+			pWordEnd[ 0 ] = L'\x2026';
+			pWordEnd[ 1 ] = L'\0';
 		}
 	}
 

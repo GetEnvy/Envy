@@ -19,12 +19,9 @@
 #include "StdAfx.h"
 #include "Envy.h"
 #include "PageFileMetadata.h"
-
-#include "Library.h"
 #include "SharedFile.h"
-#include "SchemaCache.h"
-#include "Schema.h"
-#include "XML.h"
+#include "Library.h"
+
 
 #ifdef _DEBUG
 #undef THIS_FILE
@@ -35,8 +32,8 @@ static char THIS_FILE[] = __FILE__;
 IMPLEMENT_DYNCREATE(CFileMetadataPage, CFilePropertiesPage)
 
 BEGIN_MESSAGE_MAP(CFileMetadataPage, CFilePropertiesPage)
-	ON_CBN_SELCHANGE(IDC_SCHEMAS, OnSelChangeSchemas)
-	ON_CBN_CLOSEUP(IDC_SCHEMAS, OnCloseUpSchemas)
+	ON_CBN_SELCHANGE(IDC_SCHEMAS, &CFileMetadataPage::OnSelChangeSchemas)
+	ON_CBN_CLOSEUP(IDC_SCHEMAS, &CFileMetadataPage::OnCloseUpSchemas)
 END_MESSAGE_MAP()
 
 
@@ -62,12 +59,10 @@ BOOL CFileMetadataPage::OnInitDialog()
 {
 	CFilePropertiesPage::OnInitDialog();
 
-	CLibraryListPtr pFiles( GetList() );
-
 	CRect rcClient, rcCombo;
 	GetClientRect( &rcClient );
-
 	m_wndSchemas.GetWindowRect( &rcCombo );
+
 	ScreenToClient( &rcCombo );
 	rcCombo.top = rcCombo.bottom + 8;
 	rcCombo.bottom = rcClient.bottom - 8;
@@ -75,71 +70,78 @@ BOOL CFileMetadataPage::OnInitDialog()
 	m_wndData.Create( WS_CHILD|WS_VISIBLE|WS_BORDER|WS_TABSTOP, rcCombo, this, IDC_METADATA );
 	m_wndSchemas.m_sNoSchemaText = LoadString( IDS_SEARCH_NO_METADATA );
 
+	CQuickLock oLock( Library.m_pSection );
+
+	CLibraryListPtr pFiles( GetList() );
+
 	BOOL bCollection = FALSE;
 	CSchemaPtr pSchema = NULL;
 
+	for ( POSITION pos = pFiles->GetHeadPosition(); pos; )
 	{
-		CQuickLock oLock( Library.m_pSection );
-
-		for ( POSITION pos = pFiles->GetHeadPosition(); pos; )
+		if ( CLibraryFile* pFile = pFiles->GetNextFile( pos ) )
 		{
-			if ( CLibraryFile* pFile = pFiles->GetNextFile( pos ) )
+			CSchemaPtr pThisSchema = pFile->m_pSchema;
+
+			if ( pThisSchema != NULL && pThisSchema->m_nType == CSchema::typeFolder )
+				bCollection = TRUE;
+
+			if ( pSchema == NULL )
 			{
-				CSchemaPtr pThisSchema = pFile->m_pSchema;
-
-				if ( pThisSchema != NULL && pThisSchema->m_nType == CSchema::stFolder )
-					bCollection = TRUE;
-
-				if ( pSchema == NULL )
-				{
-					pSchema = pThisSchema;
-				}
-				else if ( pSchema != pThisSchema )
-				{
-					pSchema = NULL;
-					break;
-				}
+				pSchema = pThisSchema;
+			}
+			else if ( pSchema != pThisSchema )
+			{
+				pSchema = NULL;
+				break;
 			}
 		}
 	}
 
-	m_wndSchemas.Load( pSchema != NULL ? pSchema->GetURI() : L"", bCollection ? -1 : 0 );
-	OnSelChangeSchemas();
+	m_wndSchemas.Load( pSchema != NULL ? pSchema->GetURI() : L"", bCollection ? CSchema::typeAny : CSchema::typeFile );
 
 	if ( pSchema != NULL )
 	{
 		m_pSchemaContainer.Attach( pSchema->Instantiate( TRUE ) );
 		m_pXML = m_pSchemaContainer->AddElement( pSchema->m_sSingular );
 
+		for ( POSITION pos1 = pFiles->GetHeadPosition(); pos1; )
 		{
-			CQuickLock oLock( Library.m_pSection );
-
-			for ( POSITION pos1 = pFiles->GetHeadPosition(); pos1; )
+			if ( CLibraryFile* pFile = pFiles->GetNextFile( pos1 ) )
 			{
-				if ( CLibraryFile* pFile = pFiles->GetNextFile( pos1 ) )
+				if ( pFile->m_pMetadata != NULL && pSchema->Equals( pFile->m_pSchema ) )
 				{
-					if ( pFile->m_pMetadata != NULL && pSchema->Equals( pFile->m_pSchema ) )
+					for ( POSITION pos2 = pSchema->GetMemberIterator(); pos2; )
 					{
-						for ( POSITION pos2 = pSchema->GetMemberIterator(); pos2; )
+						CSchemaMemberPtr pMember = pSchema->GetNextMember( pos2 );
+						CString strOld = pMember->GetValueFrom( m_pXML, NO_VALUE, FALSE, TRUE );
+						if ( strOld != MULTI_VALUE )
 						{
-							CSchemaMember* pMember = pSchema->GetNextMember( pos2 );
-							CString strOld = pMember->GetValueFrom( m_pXML, NO_VALUE, FALSE, TRUE );
-							if ( strOld != MULTI_VALUE )
+							CString strNew = pMember->GetValueFrom( pFile->m_pMetadata, L"", FALSE );
+							if ( strOld == NO_VALUE )
 							{
-								CString strNew = pMember->GetValueFrom( pFile->m_pMetadata, NO_VALUE );
-								if ( strOld == NO_VALUE && strNew != NO_VALUE )
-									m_pXML->AddAttribute( pMember->m_sName, strNew );
-								else if ( strOld != strNew )
-									m_pXML->AddAttribute( pMember->m_sName, MULTI_VALUE );
+								m_pXML->AddAttribute( pMember->m_sName, strNew );
 							}
+							else if ( strOld != strNew )
+							{
+								m_wndData.AddItem( pMember, pMember->GetValueFrom( m_pXML, L"", TRUE, TRUE ) );
+								m_wndData.AddItem( pMember, pMember->GetValueFrom( pFile->m_pMetadata, L"", TRUE ) );
+								m_pXML->AddAttribute( pMember->m_sName, MULTI_VALUE );
+							}
+						}
+						else
+						{
+							m_wndData.AddItem( pMember, pMember->GetValueFrom( pFile->m_pMetadata, L"", TRUE ) );
 						}
 					}
 				}
 			}
 		}
-
-		m_wndData.UpdateData( m_pXML, FALSE );
 	}
+
+	OnSelChangeSchemas();
+
+	m_wndData.UpdateData( m_pXML, FALSE );
 
 	return TRUE;
 }
@@ -257,60 +259,83 @@ void CFileMetadataPage::OnCloseUpSchemas()
 
 void CFileMetadataPage::OnOK()
 {
-	CLibraryListPtr pFiles( GetList() );
+	UpdateData();
 
-	if ( ! pFiles ) return;
+	DWORD nModified = UpdateFileData( FALSE );
 
-	if ( pFiles->GetCount() >= 10 )
+	if ( nModified >= 10 )
 	{
 		CString strMessage;
-		strMessage.Format( LoadString( IDS_LIBRARY_METADATA_MANY ), pFiles->GetCount() );
+		strMessage.Format( LoadString( IDS_LIBRARY_METADATA_MANY ), nModified );
 		if ( MsgBox( strMessage, MB_YESNO|MB_ICONQUESTION ) != IDYES ) return;
 	}
 
-	if ( CSchemaPtr pSchema = m_wndSchemas.GetSelected() )
+	CProgressDialog dlgProgress( LoadString( ID_LIBRARY_REFRESH_METADATA ) + L"..." );
+
+	UpdateFileData();
+
+	CFilePropertiesPage::OnOK();
+}
+
+DWORD CFileMetadataPage::UpdateFileData(BOOL bRealSave /*True*/)
+{
+	CQuickLock oLock( Library.m_pSection );
+
+	DWORD nModified = 0;
+	CLibraryListPtr pFiles( GetList() );
+	if ( pFiles )
 	{
-		CQuickLock oLock( Library.m_pSection );
-
-		for ( POSITION pos = pFiles->GetHeadPosition(); pos; )
+		if ( CSchemaPtr pSchema = m_wndSchemas.GetSelected() )
 		{
-			if ( CLibraryFile* pFile = pFiles->GetNextFile( pos ) )
+			for ( POSITION pos1 = pFiles->GetHeadPosition() ; pos1 ; )
 			{
-				CXMLElement* pContainer = pSchema->Instantiate( TRUE );
-				if ( pContainer )
+				if ( CLibraryFile* pFile = pFiles->GetNextFile( pos1 ) )
 				{
-					CXMLElement* pXML = NULL;
-
-					if ( pFile->m_pMetadata != NULL )
+					if ( CXMLElement* pContainer = pSchema->Instantiate( TRUE ) )
 					{
-						pXML = pContainer->AddElement( pFile->m_pMetadata->Clone() );
-						pXML->SetName( pSchema->m_sSingular );		// Change schema
-					}
-					else
-					{
-						pXML = pContainer->AddElement( pSchema->m_sSingular );
-					}
+						CXMLElement* pXML = NULL;
 
-					// Save changed data to pXML
-					m_wndData.UpdateData( pXML, TRUE );
-					pFile->SetMetadata( pContainer );
-					delete pContainer;
+						if ( pFile->m_pMetadata != NULL )
+						{
+							pXML = pContainer->AddElement( pFile->m_pMetadata->Clone() );
+							// Change schema
+							pXML->SetName( pSchema->m_sSingular );
+						}
+						else
+						{
+							pXML = pContainer->AddElement( pSchema->m_sSingular );
+						}
+
+						// Save changed data to pXML
+						nModified += m_wndData.UpdateData( pXML, TRUE, bRealSave );
+
+						if ( bRealSave )
+							pFile->SetMetadata( pContainer );
+
+						delete pContainer;
+					}
 				}
 			}
 		}
-	}
-	else
-	{
-		CQuickLock oLock( Library.m_pSection );
-
-		for ( POSITION pos = pFiles->GetHeadPosition(); pos; )
+		else
 		{
-			if ( CLibraryFile* pFile = pFiles->GetNextFile( pos ) )
-				pFile->ClearMetadata();
+			for ( POSITION pos1 = pFiles->GetHeadPosition(); pos1; )
+			{
+				if ( CLibraryFile* pFile = pFiles->GetNextFile( pos1 ) )
+				{
+					if ( pFile->m_pMetadata )
+					{
+						++nModified;
+
+						if ( bRealSave )
+							pFile->ClearMetadata();
+					}
+				}
+			}
 		}
+
+		if ( bRealSave && nModified )
+			Library.Update();
 	}
-
-	Library.Update();
-
-	CFilePropertiesPage::OnOK();
+	return nModified;
 }
