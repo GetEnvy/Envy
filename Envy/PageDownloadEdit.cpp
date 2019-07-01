@@ -95,7 +95,10 @@ BOOL CDownloadEditPage::OnInitDialog()
 	if ( pDownload->m_nSize != SIZE_UNKNOWN )
 		m_sFileSize.Format( L"%I64u", pDownload->m_nSize );
 
-	m_wndDate.SetTime( &pDownload->m_tDate );
+	if ( pDownload->m_tDate.GetYear() > 2018 )
+		m_wndDate.SetTime( &pDownload->m_tDate );
+	else
+		m_wndDate.SetTime( &CTime::GetCurrentTime() );
 
 	if ( pDownload->m_oSHA1 )
 		m_sSHA1 = pDownload->m_oSHA1.toString();
@@ -219,10 +222,15 @@ BOOL CDownloadEditPage::OnApply()
 		bCriticalChange = true;
 	}
 
-	SYSTEMTIME tDate;
-	m_wndDate.GetTime( &tDate );
-	if ( pDownload->m_tDate != tDate )
-		pDownload->m_tDate = tDate;
+	// Note crash if date is less than 1970 (Why 1969?) 
+#ifndef PUBLIC_RELEASE_FIX
+	{
+		SYSTEMTIME tDate;
+		m_wndDate.GetTime( &tDate );
+		if ( pDownload->m_tDate != tDate )
+			pDownload->m_tDate = tDate;
+	}
+#endif
 
 	if ( pDownload->m_oSHA1.isValid() != oSHA1.isValid()
 		|| validAndUnequal( pDownload->m_oSHA1, oSHA1 ) )

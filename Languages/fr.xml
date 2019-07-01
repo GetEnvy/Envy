@@ -3,7 +3,7 @@
 
 <!-- Envy Default French Skin File -->
 
-<!-- Translation based on default en.xml r26 -->
+<!-- Translation based on default en.xml r28 -->
 <!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -3296,7 +3296,7 @@
 	<string id="20678" text="Le réseau eDonkey utilise de larges files d'attente avec de longs temps d'attente. En acceptant de limiter trop strictement le nombre maximum de place dans la file d'attente, vous pourriez avoir des problèmes pour avoir des téléchargements qui commencent.nÊtes-vous certain de vouloir limiter le nombre de positions en file d'attente que vous acceptez ?"/>
 	<string id="20680" text="Réglages Envy"/>
 	<string id="20682" text="L'accès à distance est désactivé."/>
-	<string id="20684" text="http://%s:%i/remote - Nom d'utilisateur et passe ?"/>
+	<string id="20684" text="Nom d'utilisateur et passe ?"/>
 	<string id="20685" text="Impossible d'accepter des connexions, URL indisponible."/>
 	<string id="20692" text="Êtes-vous certain de vouloir supprimer le thème « %s »? Ceci est irréversible."/>
 	<string id="20699" text="&amp;Schémas"/>

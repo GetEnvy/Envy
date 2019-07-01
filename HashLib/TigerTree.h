@@ -47,7 +47,7 @@ public:
 	};
 
 	BOOL	GetRoot(__in_bcount(24) uchar* pHash) const;
-	void	Assume(CTigerTree* pSource);
+//	void	Assume(CTigerTree* pSource);
 
 	void	BeginFile(uint32 nHeight, uint64 nLength);
 	void	AddToFile(const void* pInput, uint32 nLength);
@@ -58,11 +58,10 @@ public:
 	BOOL	FinishBlockTest(uint32 nBlock);
 
 
-	BOOL	ToBytes(uint8** ppOutput, uint32* pnOutput, uint32 nHeight = 0);		// Extract hash tree  (To free ppOutput, use GlobalFree function)
-	BOOL	ToBytesLevel1(uint8** ppOutput, uint32* pnOutput);						// Extract first level of hash tree  (To free ppOutput, use GlobalFree function)
-	BOOL	FromBytes(const uint8* pOutput, uint32 nOutput, uint32 nHeight, uint64 nLength);		// Create hash tree from full tree data
-	BOOL	FromBytesLevel1(const uint8* pInput, uint32 nInput, uint64 nLength);		// Create hash tree from first level of tree data
-	BOOL	CheckIntegrity();														// Check hash tree integrity (rebuilding missed hashes if needed)
+	BOOL	ToBytes(uint8** ppOutput, uint32* pnOutput, uint32 nHeight = 0) const;			// Extract hash tree  (To free ppOutput, use GlobalFree function)
+	BOOL	ToBytesLevel1(uint8** ppOutput, uint32* pnOutput) const;						// Extract first level of hash tree  (To free ppOutput, use GlobalFree function)
+	BOOL	FromBytes(const uint8* pInput, uint32 nInput, uint32 nHeight, uint64 nLength);	// Create hash tree from full tree data
+	BOOL	FromBytesLevel1(const uint8* pInput, uint32 nInput, uint64 nLength);			// Create hash tree from first level of tree data
 
 	BOOL	IsAvailable() const;
 	void	SetHeight(uint32 nHeight);
@@ -86,7 +85,9 @@ private:
 
 	mutable CRITICAL_SECTION	m_pSection;
 
-	void	Collapse();
-	void	BlocksToNode();
+	// Check hash tree integrity (rebuild hashes if needed)
+	BOOL		CheckIntegrity() const;
+	void		Collapse();
+	void		BlocksToNode();
 	static void	Tiger(LPCVOID pInput, uint64 nInput, uint64* pOutput, uint64* pInput1 = NULL, uint64* pInput2 = NULL);
 };

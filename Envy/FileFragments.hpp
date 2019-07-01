@@ -24,7 +24,11 @@
 
 #include "Envy.h"
 
-#include "FileFragments/Ranges.hpp"
+#include "FileFragments/Exception.hpp"
+#include "FileFragments/Range.hpp"
+#include "FileFragments/List.hpp"
+#include "FileFragments/Queue.hpp"
+//#include "FileFragments/Compatibility.hpp"	// Note must follow below
 
 namespace Fragments
 {
@@ -48,7 +52,8 @@ public:
 
 	void ensure(range_size_type limit)
 	{
-		m_limit = ( m_limit == SIZE_UNKNOWN ) ? limit : max( m_limit, limit );
+		if ( m_limit == SIZE_UNKNOWN || m_limit < limit )
+			m_limit = limit;
 	}
 
 // Following functions have to be declared
@@ -67,8 +72,7 @@ protected:
 		return where->size();
 	}
 	template< class container_type >
-	range_size_type merge_and_replace(container_type& set,
-		iterator_pair sequence, const range_type& new_range)
+	range_size_type merge_and_replace(container_type& set, iterator_pair sequence, const range_type& new_range)
 	{
 		ASSERT( sequence.first != sequence.second );
 		if ( sequence.first->begin() <= new_range.begin()
@@ -107,13 +111,7 @@ typedef Ranges::ListError< Fragment > ListError;
 typedef Ranges::List< Fragment, ListTraits > List;
 typedef Ranges::Queue< Fragment > Queue;
 
-//template Fragment;
-//template FragmentError;
-//template ListError;
-//template List;
-//template Queue;
-
 } // namespace Fragments
 
 
-#include "FileFragments/Compatibility.hpp"
+#include "FileFragments/Compatibility.hpp"	// Note must follow here

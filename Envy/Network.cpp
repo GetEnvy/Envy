@@ -99,6 +99,7 @@ inline bool IsValidDomain(LPCTSTR pszHost)
 	return true;
 }
 
+
 CNetwork Network;
 
 //////////////////////////////////////////////////////////////////////
@@ -118,6 +119,7 @@ CNetwork::CNetwork()
 	, m_tUPnPMap			( 0 )
 {
 	m_pHost.sin_family = AF_INET;
+	m_sAddress.Format( L"0.0.0.0:%u" + Settings.Connection.InPort );
 }
 
 CNetwork::~CNetwork()
@@ -465,11 +467,13 @@ BOOL CNetwork::AcquireLocalAddress(const IN_ADDR& pAddress, WORD nPort /*0*/)
 	if ( nPort )
 		m_pHost.sin_port = htons( nPort );
 
-	CQuickLock oLock( m_pHostAddressSection );
+	{
+		CQuickLock oLock( m_pHostAddressSection );
 
-	// Add new address to address list
-	if ( ! m_pHostAddresses.Find( pAddress.s_addr ) )
-		m_pHostAddresses.AddTail( pAddress.s_addr );
+		// Add new address to address list
+		if ( ! m_pHostAddresses.Find( pAddress.s_addr ) )
+			m_pHostAddresses.AddTail( pAddress.s_addr );
+	}
 
 	if ( IsFirewalledAddress( &pAddress ) )
 		return FALSE;
@@ -477,6 +481,10 @@ BOOL CNetwork::AcquireLocalAddress(const IN_ADDR& pAddress, WORD nPort /*0*/)
 	// Allow real IP only	ToDo: Verify given address before trusting?
 	if ( m_pHost.sin_addr.s_addr != pAddress.s_addr )
 		m_pHost.sin_addr.s_addr = pAddress.s_addr;
+
+	m_sAddress.Format( L"%s:%hu",
+		(LPCTSTR)CString( inet_ntoa( m_pHost.sin_addr ) ),
+		ntohs( m_pHost.sin_port ) );
 
 	return TRUE;
 }
@@ -900,6 +908,8 @@ void CNetwork::PostRun()
 		CQuickLock oLock( m_pHostAddressSection );
 		m_pHostAddresses.RemoveAll();
 	}
+
+	m_sAddress.Format( L"0.0.0.0:%u", Settings.Connection.InPort );
 
 	// Indicate regular non-server application to Windows when not connected
 	SetThreadExecutionState( ES_CONTINUOUS );

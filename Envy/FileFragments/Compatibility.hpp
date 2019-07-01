@@ -55,8 +55,7 @@ inline Ranges::Range< uint64 > SerializeIn(CArchive& ar, int /*version*/)
 }
 
 // Used in FragmentedFile.cpp
-inline void SerializeOut1(CArchive& ar,
-	const Ranges::List< Ranges::Range< uint64 >, ListTraits >& out)
+inline void SerializeOut1(CArchive& ar, const Ranges::List< Ranges::Range< uint64 >, ListTraits >& out)
 {
 	uint64 nTotal = out.limit();
 	uint64 nRemaining = out.length_sum();
@@ -70,8 +69,7 @@ inline void SerializeOut1(CArchive& ar,
 	}
 }
 
-inline void SerializeIn1(CArchive& ar,
-	Ranges::List< Ranges::Range< uint64 >, ListTraits >& in, int version)
+inline void SerializeIn1(CArchive& ar, Ranges::List< Ranges::Range< uint64 >, ListTraits >& in, int version)
 {
 	//if ( version > 28 )
 	//{
@@ -130,8 +128,7 @@ inline void SerializeIn1(CArchive& ar,
 }
 
 // Used in DownloadSource.cpp
-inline void SerializeOut2(CArchive& ar,
-	const Ranges::List< Ranges::Range< uint64 >, ListTraits >& out)
+inline void SerializeOut2(CArchive& ar, const Ranges::List< Ranges::Range< uint64 >, ListTraits >& out)
 {
 	ar.WriteCount( out.size() );
 
@@ -142,8 +139,7 @@ inline void SerializeOut2(CArchive& ar,
 	}
 }
 
-inline void SerializeIn2(CArchive& ar,
-	Ranges::List< Ranges::Range< uint64 >, ListTraits >& in, int version)
+inline void SerializeIn2(CArchive& ar, Ranges::List< Ranges::Range< uint64 >, ListTraits >& in, int version)
 {
 	try
 	{

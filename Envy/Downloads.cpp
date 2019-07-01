@@ -100,13 +100,13 @@ BOOL CDownloads::Check(CDownload* pDownload) const
 {
 	ASSUME_LOCK( Transfers.m_pSection );
 
-	return m_pList.Find( pDownload ) != NULL;
+	return pDownload && m_pList.Find( pDownload ) != NULL;
 }
 
 //////////////////////////////////////////////////////////////////////
 // CDownloads add an empty download (privileged)
 
-CDownload* CDownloads::Add(BOOL bAddToHead)
+CDownload* CDownloads::Add(BOOL bAddToHead /*False*/)
 {
 	ASSUME_LOCK( Transfers.m_pSection );
 
@@ -124,7 +124,7 @@ CDownload* CDownloads::Add(BOOL bAddToHead)
 //////////////////////////////////////////////////////////////////////
 // CDownloads add download from a hit or from a file
 
-CDownload* CDownloads::Add(CQueryHit* pHit, BOOL bAddToHead)
+CDownload* CDownloads::Add(CQueryHit* pHit, BOOL bAddToHead /*False*/)
 {
 	CSingleLock pLock( &Transfers.m_pSection, TRUE );
 
@@ -178,7 +178,7 @@ CDownload* CDownloads::Add(CQueryHit* pHit, BOOL bAddToHead)
 	return pDownload;
 }
 
-CDownload* CDownloads::Add(CMatchFile* pFile, BOOL bAddToHead)
+CDownload* CDownloads::Add(CMatchFile* pFile, BOOL bAddToHead /*False*/)
 {
 	CSingleLock pLock( &Transfers.m_pSection, TRUE );
 
@@ -236,14 +236,15 @@ CDownload* CDownloads::Add(CMatchFile* pFile, BOOL bAddToHead)
 //////////////////////////////////////////////////////////////////////
 // CDownloads add download from a URL
 
-CDownload* CDownloads::Add(const CEnvyURL& oURL, BOOL bAddToHead)
+CDownload* CDownloads::Add(const CEnvyURL& oURL, BOOL bAddToHead /*False*/)
 {
 	if ( oURL.m_nAction != CEnvyURL::uriDownload &&
-		 oURL.m_nAction != CEnvyURL::uriSource ) return NULL;
-
-	CSingleLock pLock( &Transfers.m_pSection, TRUE );
+		 oURL.m_nAction != CEnvyURL::uriSource )
+		return NULL;
 
 	CDownload* pDownload = NULL;
+
+	CSingleLock pLock( &Transfers.m_pSection, TRUE );
 
 	if ( oURL.m_oSHA1 )
 		pDownload = FindBySHA1( oURL.m_oSHA1 );

@@ -142,7 +142,7 @@ void CSettings::Load()
 	Add( L"Interface", L"RefreshRateText", &Interface.RefreshRateText, 650, 1, 10, 10000, L" ms" );		// 3x per 2 sec.
 	Add( L"Interface", L"RefreshRateUI", &Interface.RefreshRateUI, theApp.m_nWinVer < WIN_VISTA ? 300 : 100, 1, 10, 2000, L" ms" );	// 3/10x per sec. (Button status)
 	Add( L"Interface", L"SaveOpenWindows", &Interface.SaveOpenWindows, General.GUIMode != GUI_BASIC );
-	Add( L"Interface", L"TipDelay", &Interface.TipDelay, 500, 1, 100, 5000, L" ms" );
+	Add( L"Interface", L"TipDelay", &Interface.TipDelay, 250, 1, 50, 9999, L" ms" );
 	Add( L"Interface", L"TipAlpha", &Interface.TipAlpha, 240, 1, 50, 255 );
 	Add( L"Interface", L"TipDownloads", &Interface.TipDownloads, true );
 	Add( L"Interface", L"TipUploads", &Interface.TipUploads, true );
@@ -454,7 +454,7 @@ void CSettings::Load()
 	else // Default
 	{
 		Add( L"Gnutella2", L"NumHubs",  &Gnutella2.NumHubs, 2, 1, 1, 3 );
-		Add( L"Gnutella2", L"NumLeafs", &Gnutella2.NumLeafs, 300, 1, 50, 1024 );
+		Add( L"Gnutella2", L"NumLeafs", &Gnutella2.NumLeafs, 400, 1, 50, 1024 );
 		Add( L"Gnutella2", L"NumPeers", &Gnutella2.NumPeers, 6, 1, 2, 64 );
 	}
 	Add( L"Gnutella2", L"PingRate", &Gnutella2.PingRate, 15000, 1000, 5, 180, L" s" );
@@ -587,7 +587,7 @@ void CSettings::Load()
 	Add( L"Downloads", L"ShowGroups", &Downloads.ShowGroups, true );
 	Add( L"Downloads", L"ShowMonitorURLs", &Downloads.ShowMonitorURLs, true );
 	Add( L"Downloads", L"ShowPercent", &Downloads.ShowPercent, false );
-	Add( L"Downloads", L"ShowSources", &Downloads.ShowSources, false );
+	Add( L"Downloads", L"ShowAllSources", &Downloads.ShowAllSources, false );
 	Add( L"Downloads", L"SimpleBar", &Downloads.SimpleBar, false );
 	Add( L"Downloads", L"SortColumns", &Downloads.SortColumns, true );
 	Add( L"Downloads", L"SortSources", &Downloads.SortSources, true );
@@ -969,7 +969,7 @@ void CSettings::OnChangeConnectionSpeed()
 		Gnutella2.NumLeafs				= 300;
 		BitTorrent.DownloadTorrents		= 4;
 	}
-	else if ( Connection.InSpeed <= 10500 )
+	else if ( Connection.InSpeed <= 10500 || theApp.m_nWinVer < 1000 )
 	{
 		Downloads.MaxFiles				= 100;
 		Downloads.MaxTransfers			= 250;
@@ -980,7 +980,7 @@ void CSettings::OnChangeConnectionSpeed()
 		Search.GeneralThrottle			= 150;
 
 		Gnutella1.NumHubs				= 4;
-		Gnutella2.NumLeafs				= 400;	// Can probably support more leaves
+		Gnutella2.NumLeafs				= 350;	// Can probably support more leaves
 		BitTorrent.DownloadTorrents 	= 8;	// Should be able to handle several torrents
 	}
 	else // Extreme Broadband
@@ -994,7 +994,7 @@ void CSettings::OnChangeConnectionSpeed()
 		Search.GeneralThrottle			= 100;
 
 		Gnutella1.NumHubs				= 4;
-		Gnutella2.NumLeafs				= 500;	// Can probably support more leaves
+		Gnutella2.NumLeafs				= 400;	// Can probably support more leaves
 		BitTorrent.DownloadTorrents 	= 10;	// Should be able to handle several torrents
 	}
 

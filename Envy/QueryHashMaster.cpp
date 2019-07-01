@@ -47,7 +47,9 @@ CQueryHashMaster::CQueryHashMaster()
 
 CQueryHashMaster::~CQueryHashMaster()
 {
+#ifndef PUBLIC_RELEASE_FIX
 	ASSERT( GetCount() == 0 );
+#endif
 }
 
 //////////////////////////////////////////////////////////////////////

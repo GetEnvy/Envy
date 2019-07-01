@@ -3,7 +3,7 @@
 
 <!-- Envy Default Chinese (Simplified) Skin File -->
 
-<!-- Translation based on default en.xml r26 --> <!-- (Shareaza r6092) -->
+<!-- Translation based on default en.xml r28 --> <!-- (Shareaza r6092) -->
 <!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -3113,7 +3113,7 @@
 	<string id="20678" text="eDonkey 网络使用需要等待很长时间的队列。限制最大可接受的队列位置如果非常严格的话，您可能难以开始下载。\n您确定要限制您能接受的队列位置吗？"/>
 	<string id="20680" text="Envy 设置"/>
 	<string id="20682" text="远程访问已禁用。"/>
-	<string id="20684" text="http://%s:%i/remote - 您必须选择一个用户名和密码。"/>
+	<string id="20684" text="您必须选择一个用户名和密码。"/>
 	<string id="20685" text="未能接受连接，链接不可用。"/>
 	<string id="20692" text="您确定要删除 &quot;%s&quot; 皮肤吗？ 此操作不可逆。"/>
 	<string id="20699" text="构架"/>

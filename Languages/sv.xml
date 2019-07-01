@@ -3,7 +3,7 @@
 
 <!-- Envy Default Swedish Skin File -->
 
-<!-- Translation based on default en.xml r26 -->
+<!-- Translation based on default en.xml r28 -->
 <!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -3138,7 +3138,7 @@
 	<string id="20678" text="Nätverket eDonkey använder långa köer med långa väntetider. Om du begränsar den maximala köpositionen kan du få problem med att ladda ner filer.\nÄr du säker på att du vill begränsa köpositioner?"/>
 	<string id="20680" text="Inställningar"/>
 	<string id="20682" text="Fjärråtkomst är avstängd."/>
-	<string id="20684" text="http://%s:%i/remote - välja ett användarnamn och lösenord."/>
+	<string id="20684" text="välja ett användarnamn och lösenord."/>
 	<string id="20685" text="Kan inte acceptera anslutningar. URL otillgänlig."/>
 	<string id="20692" text="Är du säker på att du vill radera skinnet &quot;%s&quot;. Detta kan inte ångras."/>
 	<string id="20699" text="&amp;Scheman"/>

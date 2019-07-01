@@ -74,7 +74,7 @@ BEGIN
 			VALUE "FileDescription", "SWF Library Builder & Image Service Plugins"
 			VALUE "Comments", "Extract metadata & previews from Flash files."
 			VALUE "CompanyName", "GetEnvy.com"
-			VALUE "LegalCopyright", "© Envy Development Team 2016"
+			VALUE "LegalCopyright", "© Envy Development Team 2016-2018"
 		END
 	END
 	BLOCK "VarFileInfo"

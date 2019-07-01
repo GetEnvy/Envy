@@ -1,7 +1,8 @@
 //
 // DisplayData.cpp
 //
-// This file is part of Envy (getenvy.com) © 2014-2018
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright PeerProject 2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -184,7 +185,7 @@ CDownloadDisplayData::CDownloadDisplayData(const CDownload* pDownload)
 	, m_oEmptyFragments		( pDownload->GetEmptyFragmentList() )
 	, m_nSourceCount		( pDownload->GetSourceCount() )
 {
-	m_pSourcesData.SetSize( m_nSourceCount );
+//	m_pSourcesData.SetSize( m_nSourceCount );
 };
 
 CDownloadDisplayData& CDownloadDisplayData::operator=(const CDownloadDisplayData& pDownload)

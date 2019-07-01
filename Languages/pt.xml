@@ -3,7 +3,7 @@
 
 <!-- Envy Default Brazilian Portuguese Skin File -->
 
-<!-- Translation based on default en.xml r26 -->
+<!-- Translation based on default en.xml r28 -->
 <!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -3273,7 +3273,7 @@
 	<string id="20678" text="A rede eDonkey faz uso de longas filas com longos tempos de espera. Em limitar a posição máxima na fila que você aceitará tão estritamente, você pode ter problemas para iniciar seu downloads.\nVocê tem certeza que você quer limitar quais as posições máximas na fila que você aceitará?"/>
 	<string id="20680" text="Configurações do Envy"/>
 	<string id="20682" text="O acesso remoto está desativado."/>
-	<string id="20684" text="http://%s:%i/remote - Escolher um nome de usuário e senha."/>
+	<string id="20684" text="Escolher um nome de usuário e senha."/>
 	<string id="20685" text="Incapaz de aceitar conexões, URL indisponível."/>
 	<string id="20692" text="Você tem certeza que você quer apagar a &quot;%s&quot; skin? Isto não pode ser desfeito."/>
 	<string id="20699" text="&amp;Schemas"/>

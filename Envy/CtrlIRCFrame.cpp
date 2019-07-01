@@ -1904,8 +1904,8 @@ void CIRCFrame::ActivateMessageByID(CIRCNewMessage& oNewMessage, int nMessageTyp
 		{
 			CString strReply;
 			if ( Settings.Community.ServeFiles )
-				strReply.Format( L"/NOTICE %s :\x01USERINFO :Browse my files by double-clicking this link:  gnutella:browse:%s:%u\x01",
-					(LPCTSTR)m_pWords.GetAt( 0 ), (LPCTSTR)CString( inet_ntoa( Network.m_pHost.sin_addr ) ), htons( Network.m_pHost.sin_port ) );
+				strReply.Format( L"/NOTICE %s :\x01USERINFO :Browse my files by double-clicking this link:  gnutella:browse:%s\x01",
+					(LPCTSTR)m_pWords.GetAt( 0 ), (LPCTSTR)Network.m_sAddress );
 			else
 				strReply = L"/NOTICE %s :\x01USERINFO :Browse not available.";
 			OnLocalText( strReply );

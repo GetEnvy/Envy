@@ -409,9 +409,11 @@ void CUploadTipCtrl::OnTrackerEvent(bool bSuccess, LPCTSTR /*pszReason*/, LPCTST
 	CSingleLock pLock( &Transfers.m_pSection );
 	if ( pLock.Lock( 150 ) )
 	{
-		CDownload* pDownload = Downloads.FindByBTH( m_pUploadFile->GetActive()->m_oBTH );	// Transfers lock required
-		pDownload->m_pTorrent.m_nTrackerSeeds = nComplete;
-		pDownload->m_pTorrent.m_nTrackerPeers = nIncomplete;
+		if ( CDownload* pDownload = Downloads.FindByBTH( m_pUploadFile->GetActive()->m_oBTH ) )		// Transfers lock required
+		{
+			pDownload->m_pTorrent.m_nTrackerSeeds = nComplete;
+			pDownload->m_pTorrent.m_nTrackerPeers = nIncomplete;
+		}
 	//	pLock.Unlock();
 	}
 }

@@ -47,7 +47,7 @@ protected:
 	BOOL		LoadColumnState();
 	void		SelectTo(int nIndex);
 	void		BubbleSortDownloads(int nColumn);
-	void		SelectAll(CDownload* pExcept1 = NULL, CDownloadSource* pExcept2 = NULL);
+	void		SelectAll();
 	void		DeselectAll(CDownload* pExcept1 = NULL, CDownloadSource* pExcept2 = NULL);
 	BOOL		GetSelectedList(CList< CDownload* >& pList, BOOL bClearing = FALSE);
 	int 		GetSelectedCount();
@@ -60,9 +60,9 @@ protected:
 	BOOL		GetRect(CDownload* pSelect, RECT* prcItem);
 	void		PaintDownload(CDC& dc, const CRect& rcRow, const CDownloadDisplayData* pDownloadData, BOOL bFocus = FALSE);
 	void		PaintSource(CDC& dc, const CRect& rcRow, const CSourceDisplayData* pSourceData, BOOL bFocus = FALSE);
-	void		UpdateDownloadsData(BOOL bForce = FALSE);
 	void		OnBeginDrag(CPoint ptAction);
 	CImageList*	CreateDragImage(CList< CDownload* >* pSel, const CPoint& ptMouse);	// ToDo: Remove List
+//	CDownloadDisplayData UpdateDownloadData(const CDownload** ppDownload, const CDownloadSource** ppSource = NULL);
 public:
 	static bool	IsFiltered(const CDownload* pDownload);
 	static BOOL	IsExpandable(const CDownload* pDownload);
@@ -87,7 +87,7 @@ protected:
 	BOOL				m_bShowSearching;
 //	DWORD				m_tSwitchTimer;		// Using static
 
-	CArray< CDownloadDisplayData > m_pDownloadsData;
+//	CArray< CDownloadDisplayData > m_pDownloadsData;	// Using static
 
 public:
 	afx_msg int  OnCreate(LPCREATESTRUCT lpCreateStruct);

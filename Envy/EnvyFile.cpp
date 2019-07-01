@@ -58,6 +58,7 @@ END_INTERFACE_MAP()
 
 CEnvyFile::CEnvyFile()
 	: m_nSize	( SIZE_UNKNOWN )
+	, m_tDate	( CTime::GetCurrentTime() )
 {
 	EnableDispatch( IID_IEnvyFile );
 }
@@ -72,6 +73,7 @@ CEnvyFile::CEnvyFile(const CEnvyFile& pFile)
 	, m_oMD5	( pFile.m_oMD5 )
 	, m_sPath	( pFile.m_sPath )
 	, m_sURL	( pFile.m_sURL )
+	, m_tDate	( pFile.m_tDate )
 {
 	EnableDispatch( IID_IEnvyFile );
 }
@@ -87,6 +89,7 @@ CEnvyFile& CEnvyFile::operator=(const CEnvyFile& pFile)
 	m_oMD5  = pFile.m_oMD5;
 	m_sPath = pFile.m_sPath;
 	m_sURL  = pFile.m_sURL;
+	m_tDate = pFile.m_tDate;
 	return *this;
 }
 
@@ -135,27 +138,27 @@ CString CEnvyFile::GetURL(const IN_ADDR& nAddress, WORD nPort) const
 	CString strURL;
 	if ( m_oSHA1 )
 	{
-		strURL.Format( L"http://%s:%i/uri-res/N2R?%s",
+		strURL.Format( L"http://%s:%u/uri-res/N2R?%s",
 			(LPCTSTR)CString( inet_ntoa( nAddress ) ), nPort, (LPCTSTR)m_oSHA1.toUrn() );
 	}
 	else if ( m_oTiger )
 	{
-		strURL.Format( L"http://%s:%i/uri-res/N2R?%s",
+		strURL.Format( L"http://%s:%u/uri-res/N2R?%s",
 			(LPCTSTR)CString( inet_ntoa( nAddress ) ), nPort, (LPCTSTR)m_oTiger.toUrn() );
 	}
 	else if ( m_oED2K )
 	{
-		strURL.Format( L"http://%s:%i/uri-res/N2R?%s",
+		strURL.Format( L"http://%s:%u/uri-res/N2R?%s",
 			(LPCTSTR)CString( inet_ntoa( nAddress ) ), nPort, (LPCTSTR)m_oED2K.toUrn() );
 	}
 	else if ( m_oMD5 )
 	{
-		strURL.Format( L"http://%s:%i/uri-res/N2R?%s",
+		strURL.Format( L"http://%s:%u/uri-res/N2R?%s",
 			(LPCTSTR)CString( inet_ntoa( nAddress ) ), nPort, (LPCTSTR)m_oMD5.toUrn() );
 	}
 	else if ( m_oBTH )
 	{
-		strURL.Format( L"http://%s:%i/uri-res/N2R?%s",
+		strURL.Format( L"http://%s:%u/uri-res/N2R?%s",
 			(LPCTSTR)CString( inet_ntoa( nAddress ) ), nPort, (LPCTSTR)m_oBTH.toUrn() );
 	}
 	return strURL;

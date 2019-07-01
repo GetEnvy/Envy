@@ -3,7 +3,7 @@
 
 <!-- Envy Default Norwegian Skin File -->
 
-<!-- Translation based on default en.xml r26 --> <!-- (Shareaza 2.2.0.2) -->
+<!-- Translation based on default en.xml r28 --> <!-- (Shareaza 2.2.0.2) -->
 <!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -2906,7 +2906,7 @@
 	<string id="20678" text="eDonkey-nettverket har lange køer med lange ventetider. Ved å begrense den maksimale akseptable køposisjonen så strengt, kan du få problemer med å få nedlastinger til å begynne.\nEr du sikker på at du vil begrense hvilken køposisjon du vil akseptere?"/>
 	<string id="20680" text="Innstillinger"/>
 	<string id="20682" text="Fjern konsoll er AV."/>
-	<string id="20684" text="http://%s:%i/remote - velge et brukernavn og et passord."/>
+	<string id="20684" text="velge et brukernavn og et passord."/>
 	<string id="20685" text="Klarte ikke motta tilkoblinger, URL ikke tilgjengelig."/>
 	<string id="20692" text="Er du sikker på at du vil slette dette &quot;%s&quot; skinnet? Det kan ikke gjenopprettes."/>
 	<string id="20699" text="&amp;Skjemaer"/>

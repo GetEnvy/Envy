@@ -23,8 +23,8 @@
 
 #pragma once
 
-
-#define PUBLIC_RELEASE
+// Uncomment for temporary workarounds:
+#define PUBLIC_RELEASE_FIX
 
 #if defined(_MSC_VER) && (_MSC_FULL_VER < 150030000)
 	#error Visual Studio 2008 SP1 or higher required for building
@@ -34,7 +34,7 @@
 	#error Unicode Required
 #endif
 
-#if !defined(XPSUPPORT) && !defined(WIN64)
+#if !defined(XPSUPPORT) && !defined(WIN64) //&& (_MSC_VER < 1920)
 	#define XPSUPPORT	// No Windows XP support needed on x64 builds
 #endif
 
@@ -162,6 +162,17 @@
 
 // Smaller filesize VS2012+
 #define _AFX_NO_MFC_CONTROLS_IN_DIALOGS
+
+//#ifdef XPSUPPORT
+//#define _ATL_XP_TARGETING
+//#define PSAPI_VERSION 1
+//#undef _WIN32_WINNT
+//#define _WIN32_WINNT 0x0502
+//#define NTDDI_VERSION	NTDDI_WINXPSP3
+// Note Fix GDI+ in 7.1A SDK:
+// GdiPlusStringFormat.h StringFormat::GetTrimming to GetTrimming
+// GdiPlusHeaders.h Metafile::EmfToWmfBits to EmfToWmfBits
+//#endif
 
 // Test deprecated c++ features for future visual studio
 // ToDo: Verify augment::auto_ptr or std::unique_ptr for VS2010+

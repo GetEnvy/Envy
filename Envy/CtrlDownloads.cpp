@@ -283,7 +283,7 @@ BOOL CDownloadsCtrl::IsExpandable(const CDownload* pDownload)
 	if ( pDownload->IsSeeding() && ! Settings.General.DebugBTSources )
 		return FALSE;
 
-	if ( Settings.Downloads.ShowSources )
+	if ( Settings.Downloads.ShowAllSources )
 		return ( pDownload->GetSourceCount() > 0 );
 
 	for ( POSITION posSource = pDownload->GetIterator(); posSource; )
@@ -312,8 +312,6 @@ void CDownloadsCtrl::SelectTo(int nIndex)
 	{
 		if ( m_pDeselect1 == NULL && m_pDeselect2 == NULL )
 			DeselectAll();
-		if ( nIndex < m_pDownloadsData.GetSize() )
-			m_pDownloadsData[ nIndex ].m_bSelected = TRUE;
 	}
 
 	CDownload* pDownload;
@@ -378,25 +376,14 @@ void CDownloadsCtrl::SelectTo(int nIndex)
 	else
 		bUpdate = FALSE;
 
-	UpdateDownloadsData( TRUE );
-
 	pLock.Unlock();
 
 	bUpdate ? Update() : Invalidate();
 }
 
-void CDownloadsCtrl::SelectAll(CDownload* /*pDownload*/, CDownloadSource* /*pSource*/)
+void CDownloadsCtrl::SelectAll()
 {
 //	ASSUME_LOCK( Transfers.m_pSection );
-
-	// Update display data immediately
-	for ( int nIndex = m_pDownloadsData.GetUpperBound(); nIndex >= 0; nIndex-- )
-	{
-		m_pDownloadsData[ nIndex ].m_bSelected = TRUE;
-		if ( m_pDownloadsData[ nIndex ].m_pSourcesData.GetUpperBound() <= 0 ) continue;
-		for ( int nSource = m_pDownloadsData[ nIndex ].m_pSourcesData.GetUpperBound(); nSource >= 0; nSource-- )
-			m_pDownloadsData[ nIndex ].m_pSourcesData[ nSource ].m_bSelected = TRUE;
-	}
 
 	CSingleLock pLock( &Transfers.m_pSection );
 	if ( ! SafeLock( pLock ) ) return;
@@ -447,23 +434,13 @@ void CDownloadsCtrl::SelectAll(CDownload* /*pDownload*/, CDownloadSource* /*pSou
 		}
 	}
 
-	UpdateDownloadsData( TRUE );
-
 	pLock.Unlock();
 	Invalidate();
 }
 
 void CDownloadsCtrl::DeselectAll(CDownload* pExcept1, CDownloadSource* pExcept2)
 {
-	// Update display data immediately
-	for ( int nIndex = m_pDownloadsData.GetUpperBound(); nIndex >= 0; nIndex-- )
-	{
-		m_pDownloadsData[ nIndex ].m_bSelected = FALSE;
-		if ( m_pDownloadsData[ nIndex ].m_pSourcesData.GetUpperBound() <= 0 ) continue;
-		for ( int nSource = m_pDownloadsData[ nIndex ].m_pSourcesData.GetUpperBound(); nSource >= 0; nSource-- )
-			m_pDownloadsData[ nIndex ].m_pSourcesData[ nSource ].m_bSelected = FALSE;
-	}
-
+//	ASSUME_LOCK( Transfers.m_pSection );
 	CSingleLock pLock( &Transfers.m_pSection );
 	if ( ! SafeLock( pLock ) ) return;
 
@@ -576,7 +553,7 @@ BOOL CDownloadsCtrl::HitTest(const CPoint& point, CDownload** ppDownload, CDownl
 		if ( ! pDownload->m_bExpanded || ( pDownload->IsSeeding() && ! Settings.General.DebugBTSources ) )
 			continue;
 
-		if ( Settings.Downloads.ShowSources )
+		if ( Settings.Downloads.ShowAllSources )
 		{
 			int nSources = pDownload->GetSourceCount();
 
@@ -592,7 +569,7 @@ BOOL CDownloadsCtrl::HitTest(const CPoint& point, CDownload** ppDownload, CDownl
 		{
 			CDownloadSource* pSource = pDownload->GetNext( posSource );
 
-			if ( Settings.Downloads.ShowSources || pSource->IsConnected() )
+			if ( Settings.Downloads.ShowAllSources || pSource->IsConnected() )
 			{
 				if ( nScroll > 0 )
 				{
@@ -655,7 +632,7 @@ BOOL CDownloadsCtrl::HitTest(int nIndex, CDownload** ppDownload, CDownloadSource
 		if ( ! pDownload->m_bExpanded || ( pDownload->IsSeeding() && ! Settings.General.DebugBTSources ) )
 			continue;
 
-		if ( Settings.Downloads.ShowSources )
+		if ( Settings.Downloads.ShowAllSources )
 		{
 			int nSources = pDownload->GetSourceCount();
 
@@ -670,7 +647,7 @@ BOOL CDownloadsCtrl::HitTest(int nIndex, CDownload** ppDownload, CDownloadSource
 		{
 			CDownloadSource* pSource = pDownload->GetNext( posSource );
 
-			if ( Settings.Downloads.ShowSources || pSource->IsConnected() )
+			if ( Settings.Downloads.ShowAllSources || pSource->IsConnected() )
 			{
 				if ( nScroll > 0 )
 				{
@@ -725,7 +702,7 @@ BOOL CDownloadsCtrl::GetAt(int nSelect, CDownload** ppDownload, CDownloadSource*
 		{
 			CDownloadSource* pSource = pDownload->GetNext( posSource );
 
-			if ( Settings.Downloads.ShowSources || pSource->IsConnected() )
+			if ( Settings.Downloads.ShowAllSources || pSource->IsConnected() )
 			{
 				if ( nIndex++ == nSelect )
 				{
@@ -775,7 +752,7 @@ BOOL CDownloadsCtrl::GetRect(CDownload* pSelect, RECT* prcItem)
 		if ( ! pDownload->m_bExpanded )
 			continue;
 
-		if ( Settings.Downloads.ShowSources )
+		if ( Settings.Downloads.ShowAllSources )
 		{
 			int nSources = pDownload->GetSourceCount();
 			rcItem.OffsetRect( 0, Settings.Skin.RowSize * nSources );
@@ -944,12 +921,12 @@ void CDownloadsCtrl::OnSize(UINT nType, int cx, int cy)
 			continue;
 		}
 
-		nHeight ++;
+		++nHeight;
 
 		if ( ! pDownload->m_bExpanded || ( pDownload->IsSeeding() && ! Settings.General.DebugBTSources ) )
 			continue;
 
-		if ( Settings.Downloads.ShowSources )
+		if ( Settings.Downloads.ShowAllSources )
 		{
 			nHeight += pDownload->GetSourceCount();
 		}
@@ -957,9 +934,7 @@ void CDownloadsCtrl::OnSize(UINT nType, int cx, int cy)
 		{
 			for ( POSITION posSource = pDownload->GetIterator(); posSource; )
 			{
-				CDownloadSource* pSource = pDownload->GetNext( posSource );
-
-				if ( /*Settings.Downloads.ShowSources ||*/ pSource->IsConnected() )
+				if ( pDownload->GetNext( posSource )->IsConnected() )
 					nHeight ++;
 			}
 		}
@@ -981,103 +956,105 @@ void CDownloadsCtrl::OnSize(UINT nType, int cx, int cy)
 }
 
 //////////////////////////////////////////////////////////////////////////////
-// CDownloadsCtrl populate duplicate Downloads/Sources data (isolated to minimize locks)
+// CDownloadsCtrl populate duplicate Downloads/Sources data (isolated to minimize locks) Obsolete.
 
-void CDownloadsCtrl::UpdateDownloadsData(BOOL bForce /*FALSE*/)
-{
-	static DWORD tUpdate = 0;
-	if ( ! bForce && tUpdate + 500 > GetTickCount() )
-		return;
-
-	CRect rcClient;
-	GetClientRect( &rcClient );
-	const int nMin = GetScrollPos( SB_VERT );
-	const int nMax = nMin + ( rcClient.Height() / (int)Settings.Skin.RowSize ) + 1;
-	int nCount = 0;
-
-	CSingleLock pTransfersLock( &Transfers.m_pSection );
-	if ( ! pTransfersLock.Lock( bForce ? 250 : 50 ) )
-		return;
-
-	INT_PTR nIndex = 0;
-	for ( POSITION posDownload = Downloads.GetIterator(); posDownload; )
-	{
-		const CDownload* pDownload = Downloads.GetNext( posDownload );
-
-		if ( ( m_nGroupCookie != 0 && m_nGroupCookie != pDownload->m_nGroupCookie ) || IsFiltered( pDownload ) )
-			continue;
-
-		if ( nCount++ < nMin - 1 && ! pDownload->m_bExpanded )
-		{
-		//	m_pDownloadsData.SetAtGrow( nIndex, CDownloadDisplayData() );
-			nIndex++;
-			continue;
-		}
-
-		CDownloadDisplayData pDownloadData( pDownload );
-
-		UINT nRange = 0;
-		BOOL bvSuccess;		// Pass/Fail
-		for ( QWORD nvOffset = 0, nvLength = 0; pDownload->GetNextVerifyRange( nvOffset, nvLength, bvSuccess ); nRange++ )
-		{
-#if defined(_MSC_VER) && (_MSC_VER >= 1800)		// VS2013+
-			pDownloadData.m_pVerifyRanges.SetAtGrow( nRange, { nvOffset, nvLength, bvSuccess } );
-#else	// VS2008 (VS2012?)
-			CDownloadDisplayData::VERIFYRANGE pVerifyRange = { nvOffset, nvLength, bvSuccess };
-			pDownloadData.m_pVerifyRanges.SetAtGrow( nRange, pVerifyRange );
-#endif
-			nvOffset += nvLength;
-		}
-
-		if ( ! pDownloadData.m_bCompleted && ! pDownload->IsPaused() && ( ! pDownloadData.m_bSeeding || Settings.General.DebugBTSources ) )		// Not just for pDownloadData.m_bExpanded
-		{
-			UINT nSource = 0;
-			for ( POSITION posSource = pDownload->GetIterator(); posSource; )
-			{
-				CDownloadSource* pSource = pDownload->GetNext( posSource );
-
-				if ( pDownloadData.m_bSeeding && ! pDownloadData.m_bExpanded )
-				{
-					pDownloadData.m_bExpandable = TRUE;
-					break;
-				}
-
-				if ( ! Settings.Downloads.ShowSources && ! pSource->IsConnected() )
-					continue;
-
-				if ( ! pDownloadData.m_bExpanded && ! pSource->GetTransfer()->m_nLength && pSource->m_oAvailable.empty() && pSource->m_oPastFragments.empty() )
-					continue;
-
-				if ( pSource->m_nColor < 0 )
-					pSource->GetColor();
-
-				pDownloadData.m_pSourcesData.SetAtGrow( nSource, CSourceDisplayData( pSource ) );
-				nSource++;
-
-			//	if ( pDownloadData.m_bExpanded && nCount++ > nMax )
-			//		break;
-			}
-
-			if ( nSource )
-				pDownloadData.m_bExpandable = TRUE;
-
-			pDownloadData.m_nSourceCount = nSource;
-		}
-
-		m_pDownloadsData.SetAtGrow( nIndex, pDownloadData );
-
-		nIndex++;
-		if ( nCount > nMax )
-			break;
-	}
-
-	pTransfersLock.Unlock();
-
-	while ( m_pDownloadsData.GetCount() > nIndex )
-		m_pDownloadsData.RemoveAt( nIndex );
-
-	tUpdate = GetTickCount();
-}
+//CDownloadDisplayData CDownloadsCtrl::UpdateDownloadData(const CDownload** ppDownload, const CDownloadSource** ppSource /*NULL*/)
+//{
+//	ASSUME_LOCK( Transfers.m_pSection );
+//
+////	static DWORD tUpdate = 0;
+////	if (  tUpdate + 500 > GetTickCount() )
+////		return;
+//
+//	CRect rcClient;
+//	GetClientRect( &rcClient );
+//	const int nMin = GetScrollPos( SB_VERT );
+//	const int nMax = nMin + ( rcClient.Height() / (int)Settings.Skin.RowSize ) + 1;
+//	int nCount = 0;
+//
+////	CSingleLock pTransfersLock( &Transfers.m_pSection );
+////	if ( ! pTransfersLock.Lock( bForce ? 250 : 50 ) )
+////		return;
+//
+//	INT_PTR nIndex = 0;
+//	for ( POSITION posDownload = Downloads.GetIterator(); posDownload; )
+//	{
+//		const CDownload* pDownload = Downloads.GetNext( posDownload );
+//
+//		if ( ( m_nGroupCookie != 0 && m_nGroupCookie != pDownload->m_nGroupCookie ) || IsFiltered( pDownload ) )
+//			continue;
+//
+//		if ( nCount++ < nMin - 1 && ! pDownload->m_bExpanded )
+//		{
+//		//	m_pDownloadsData.SetAtGrow( nIndex, CDownloadDisplayData() );
+//			nIndex++;
+//			continue;
+//		}
+//
+//		CDownloadDisplayData pDownloadData( pDownload );
+//
+//		UINT nRange = 0;
+//		BOOL bvSuccess;		// Pass/Fail
+//		for ( QWORD nvOffset = 0, nvLength = 0; pDownload->GetNextVerifyRange( nvOffset, nvLength, bvSuccess ); nRange++ )
+//		{
+//#if defined(_MSC_VER) && (_MSC_VER >= 1800)		// VS2013+
+//			pDownloadData.m_pVerifyRanges.SetAtGrow( nRange, { nvOffset, nvLength, bvSuccess } );
+//#else	// VS2008 (VS2012?)
+//			CDownloadDisplayData::VERIFYRANGE pVerifyRange = { nvOffset, nvLength, bvSuccess };
+//			pDownloadData.m_pVerifyRanges.SetAtGrow( nRange, pVerifyRange );
+//#endif
+//			nvOffset += nvLength;
+//		}
+//
+//		if ( ! pDownloadData.m_bCompleted && ! pDownload->IsPaused() && ( ! pDownloadData.m_bSeeding || Settings.General.DebugBTSources ) )		// Not just for pDownloadData.m_bExpanded
+//		{
+//			UINT nSource = 0;
+//			for ( POSITION posSource = pDownload->GetIterator(); posSource; )
+//			{
+//				CDownloadSource* pSource = pDownload->GetNext( posSource );
+//
+//				if ( pDownloadData.m_bSeeding && ! pDownloadData.m_bExpanded )
+//				{
+//					pDownloadData.m_bExpandable = TRUE;
+//					break;
+//				}
+//
+//				if ( ! Settings.Downloads.ShowAllSources && ! pSource->IsConnected() )
+//					continue;
+//
+//				if ( ! pDownloadData.m_bExpanded && ! pSource->GetTransfer()->m_nLength && pSource->m_oAvailable.empty() && pSource->m_oPastFragments.empty() )
+//					continue;
+//
+//				if ( pSource->m_nColor < 0 )
+//					pSource->GetColor();
+//
+//				pDownloadData.m_pSourcesData.SetAtGrow( nSource, CSourceDisplayData( pSource ) );
+//				nSource++;
+//
+//			//	if ( pDownloadData.m_bExpanded && nCount++ > nMax )
+//			//		break;
+//			}
+//
+//			if ( nSource )
+//				pDownloadData.m_bExpandable = TRUE;
+//
+//			pDownloadData.m_nSourceCount = nSource;
+//		}
+//
+//		m_pDownloadsData.SetAtGrow( nIndex, pDownloadData );
+//
+//		nIndex++;
+//		if ( nCount > nMax )
+//			break;
+//	}
+//
+//	pTransfersLock.Unlock();
+//
+//	while ( m_pDownloadsData.GetCount() > nIndex )
+//		m_pDownloadsData.RemoveAt( nIndex );
+//
+//	tUpdate = GetTickCount();
+//}
 
 //////////////////////////////////////////////////////////////////////////////
 // CDownloadsCtrl painting
@@ -1089,14 +1066,15 @@ void CDownloadsCtrl::OnPaint()
 	const DWORD tNow = GetTickCount();
 	const BOOL bFocus = ( GetFocus() == this );
 
+	static CList< CDownloadDisplayData > pDownloadsData;
+	static DWORD tDownloadsData = 0;
+
 	static DWORD tSwitchTimer = 0;
 	if ( tNow > tSwitchTimer + 8000 )
 	{
 		tSwitchTimer = tNow;
 		m_bShowSearching = ! m_bShowSearching;
 	}
-
-	UpdateDownloadsData();
 
 	CFont* pfOld = (CFont*)dc.SelectObject( &CoolInterface.m_fntNormal );
 	if ( Settings.General.LanguageRTL )
@@ -1112,55 +1090,119 @@ void CDownloadsCtrl::OnPaint()
 	int nScroll = GetScrollPos( SB_VERT );
 	int nIndex = 0;
 
-	for ( INT_PTR nDownload = 0; nDownload < m_pDownloadsData.GetCount(); nDownload++ )
+	// Update DisplayData
+	if ( tDownloadsData < tNow - 50 )
+	{
+		CSingleLock pTransfersLock( &Transfers.m_pSection );
+		if ( pTransfersLock.Lock( 250 ) )
+		{
+			pDownloadsData.RemoveAll();
+
+			for ( POSITION posDownload = Downloads.GetIterator() ; posDownload ; )
+			{
+				CDownload* pDownload = Downloads.GetNext( posDownload );
+				
+				if ( m_nGroupCookie != 0 && m_nGroupCookie != pDownload->m_nGroupCookie )
+					continue;
+
+				if ( IsFiltered( pDownload ) )
+					continue;
+
+				if ( nScroll > 0 )
+				{
+					--nScroll;
+				}
+				else
+				{
+				//	PaintDownload( dc, rcItem, pDownload, bFocus && ( m_nFocus == nIndex ), m_pDragDrop == pDownload );
+					pDownloadsData.AddTail( CDownloadDisplayData( pDownload ) );
+					rcItem.OffsetRect( 0, (int)Settings.Skin.RowSize );
+				}
+
+				++nIndex;
+
+				if ( ! pDownload->m_bExpanded )
+					continue;
+
+			//	if ( pDownload->IsSeeding() && ! pDownload->IsCompleted() && ! pDownload->IsPaused() && ! Settings.General.DebugBTSources )
+			//	{
+			//		pDownload->m_bExpanded = false;
+			//		continue;
+			//	}
+				
+				int nSources = pDownload->GetSourceCount();
+				if ( nScroll >= nSources )
+				{
+					nScroll -= nSources;
+					nIndex += nSources;
+					continue;
+				}
+				
+				if ( nScroll > 0 && pDownloadsData.IsEmpty() )
+					pDownloadsData.AddTail( CDownloadDisplayData() );
+
+				UINT nSource = 0;
+				for ( POSITION posSource = pDownload->GetIterator(); posSource && rcItem.top < rcClient.bottom; )
+				{
+					CDownloadSource* pSource = pDownload->GetNext( posSource );
+
+					if ( Settings.Downloads.ShowAllSources || pSource->IsConnected() )
+					{
+						if ( nScroll > 0 )
+						{
+							--nScroll;
+						}
+						else
+						{
+						//	PaintSource( dc, rcItem, pDownload, pSource, bFocus && ( m_nFocus == nIndex ) );
+							pDownloadsData.GetTail().m_pSourcesData.SetAtGrow( nSource, CSourceDisplayData( pSource ) );
+							++nSource;
+							rcItem.OffsetRect( 0, (int)Settings.Skin.RowSize );
+						}
+						++nIndex;
+					}
+				}
+			}
+
+			tDownloadsData = GetTickCount();
+		}
+	}
+
+	// Reset
+	nIndex = 0;
+	rcItem.top = rcClient.top;
+	rcItem.bottom = rcItem.top + (LONG)Settings.Skin.RowSize;
+
+	// Paint DisplayData
+	for ( POSITION pos = pDownloadsData.GetHeadPosition(); pos; )
 	{
 		if ( rcItem.top > rcClient.bottom )
 			break;
 
-		const CDownloadDisplayData* pDownloadData = &m_pDownloadsData[ nDownload ];
+		const CDownloadDisplayData* pDownloadData = &pDownloadsData.GetNext( pos );
 
-		if ( nScroll > 0 )
-		{
-			nScroll--;
-		}
-		else
+		if ( pDownloadData == NULL )
+			continue;
+
+		if ( ! pDownloadData->m_sName.IsEmpty() )
 		{
 			PaintDownload( dc, rcItem, pDownloadData, nIndex == m_nFocus && bFocus );
 			rcItem.OffsetRect( 0, (int)Settings.Skin.RowSize );
 			if ( rcItem.top > rcClient.bottom )
 				break;
+			nIndex++;
 		}
 
-		nIndex++;
-
-		if ( ! pDownloadData->m_bExpanded || ! pDownloadData->m_bExpandable || ( pDownloadData->m_bSeeding && ! Settings.General.DebugBTSources ) )
-			continue;
-
-		const int nSources = (int)pDownloadData->m_nSourceCount;
+		const int nSources = (int)pDownloadData->m_pSourcesData.GetCount();
 		if ( ! nSources )
 			continue;
 
-		if ( Settings.Downloads.ShowSources && nScroll >= nSources )
-		{
-			nScroll -= nSources;
-			nIndex  += nSources;
-			continue;
-		}
-
 		for ( int nSource = 0; nSource < nSources; nSource++ )
 		{
-			if ( nScroll > 0 )
-			{
-				--nScroll;
-			}
-			else
-			{
-				PaintSource( dc, rcItem, &pDownloadData->m_pSourcesData[ nSource ], nIndex == m_nFocus && bFocus );
-				rcItem.OffsetRect( 0, (int)Settings.Skin.RowSize );
-				if ( rcItem.top > rcClient.bottom )
-					break;
-			}
-
+			PaintSource( dc, rcItem, &pDownloadData->m_pSourcesData[ nSource ], nIndex == m_nFocus && bFocus );
+			rcItem.OffsetRect( 0, (int)Settings.Skin.RowSize );
+			if ( rcItem.top > rcClient.bottom )
+				break;
 			nIndex++;
 		}
 	}
@@ -1188,7 +1230,7 @@ void CDownloadsCtrl::PaintDownload(CDC& dc, const CRect& rcRow, const CDownloadD
 
 	// Skinnable Selection Highlight
 	BOOL bSelectmark = FALSE;
-	if ( bSelected && Images.DrawButtonState( &dc, &rcRow, ( GetFocus() != this ? IMAGE_SELECTED : IMAGE_SELECTEDGREY ) ) )
+	if ( bSelected && Images.DrawButtonState( &dc, &rcRow, ( GetFocus() == this ? IMAGE_SELECTED : IMAGE_SELECTEDGREY ) ) )
 	{
 		// Was CoolInterface.DrawWatermark( &dc, &rcDraw, &Images.m_bmSelected );
 		bSelectmark = TRUE;
@@ -1453,7 +1495,7 @@ void CDownloadsCtrl::PaintSource(CDC& dc, const CRect& rcRow, const CSourceDispl
 
 	// Skinnable Selection Highlight
 	BOOL bSelectmark = FALSE;
-	if ( bSelected && Images.DrawButtonState( &dc, &rcRow, ( GetFocus() != this ? IMAGE_SELECTED : IMAGE_SELECTEDGREY ) ) )
+	if ( bSelected && Images.DrawButtonState( &dc, &rcRow, ( GetFocus() == this ? IMAGE_SELECTED : IMAGE_SELECTEDGREY ) ) )
 	{
 		// Was CoolInterface.DrawWatermark( &dc, &CRect( rcRow ), &Images.m_bmSelected );	// Non-const
 		bSelectmark = TRUE;
@@ -1758,7 +1800,7 @@ void CDownloadsCtrl::OnVScroll(UINT nSBCode, UINT nPos, CScrollBar* /*pScrollBar
 	SetScrollInfo( SB_VERT, &pInfo, TRUE );
 
 	m_nHover = -1;
-	UpdateDownloadsData( TRUE );
+//	UpdateDownloadsData( TRUE );	// Obsolete
 	Invalidate();
 }
 
@@ -2030,7 +2072,9 @@ void CDownloadsCtrl::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 					MoveSelected( -1 );
 			}
 			else
+			{
 				SelectTo( m_nFocus - nRows );
+			}
 		}
 		return;
 	case VK_NEXT:
@@ -2045,7 +2089,9 @@ void CDownloadsCtrl::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 					MoveSelected( 1 );
 			}
 			else
+			{
 				SelectTo( m_nFocus + nRows );
+			}
 		}
 		return;
 	case VK_LEFT:
@@ -2068,7 +2114,7 @@ void CDownloadsCtrl::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 				if ( pDownload && pDownload->m_bExpanded )
 				{
 					pDownload->m_bExpanded = FALSE;
-					UpdateDownloadsData( TRUE );
+				//	UpdateDownloadsData( TRUE );	// Obsolete
 					Update();
 					return;
 				}
@@ -2085,7 +2131,7 @@ void CDownloadsCtrl::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 			if ( GetAt( m_nFocus, &pDownload, NULL ) && pDownload != NULL && pDownload->m_bExpanded == FALSE && ! pDownload->IsCompleted() )
 			{
 				pDownload->m_bExpanded = TRUE;
-				UpdateDownloadsData( TRUE );
+			//	UpdateDownloadsData( TRUE );	// Obsolete
 				Update();
 				return;
 			}
@@ -2373,6 +2419,8 @@ void CDownloadsCtrl::OnMouseMove(UINT nFlags, CPoint point)
 		return;
 	}
 
+	m_nHover = nIndex;
+
 	// ToDo: Delay lock for Settings.Interface.TipDelay
 	//if ( ! m_wndTip.IsVisible() )
 	//{
@@ -2383,8 +2431,6 @@ void CDownloadsCtrl::OnMouseMove(UINT nFlags, CPoint point)
 	//	if ( tUpdate != tNow )
 	//		return;
 	//}
-
-	m_nHover = nIndex;
 
 	CSingleLock pLock( &Transfers.m_pSection );
 	if ( pLock.Lock( 100 ) )
@@ -2559,8 +2605,7 @@ CImageList* CDownloadsCtrl::CreateDragImage(CList< CDownload* >* pSel, const CPo
 
 	CFont* pOldFont = (CFont*)dcDrag.SelectObject( &CoolInterface.m_fntNormal );
 
-	int nIndex = 0;		// Workaround
-	for ( POSITION pos = pSel->GetHeadPosition(); pos; nIndex++ )
+	for ( POSITION pos = pSel->GetHeadPosition(); pos; )
 	{
 		CDownload* pDownload = (CDownload*)pSel->GetNext( pos );
 		GetRect( pDownload, &rcOne );
@@ -2569,10 +2614,10 @@ CImageList* CDownloadsCtrl::CreateDragImage(CList< CDownload* >* pSel, const CPo
 		if ( ! rcDummy.IntersectRect( &rcAll, &rcOne ) )
 			continue;
 
-		for ( ; ! m_pDownloadsData[ nIndex ].m_bSelected && nIndex <= m_pDownloadsData.GetUpperBound(); nIndex++ );	// Workaround loop	(ToDo: Fix properly)
+	//	for ( ; ! m_pDownloadsData[ nIndex ].m_bSelected && nIndex <= m_pDownloadsData.GetUpperBound(); nIndex++ );	// Workaround loop	(ToDo: Fix properly)
 
 		dcDrag.FillSolidRect( &rcOut, DRAG_COLOR_KEY );
-		PaintDownload( dcDrag, rcOut, &m_pDownloadsData[ nIndex ] );
+		PaintDownload( dcDrag, rcOut, &CDownloadDisplayData( pDownload ) );
 	}
 
 	dcDrag.SelectObject( pOldFont );

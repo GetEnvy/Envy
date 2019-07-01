@@ -2,7 +2,7 @@
 // Builder.cpp : Implementation of CBuilder
 //
 // This file is part of Envy (getenvy.com) © 2016-2018
-// Portions copyright PeerProject 2008-2014 and Nikolay Raspopov 2005
+// Portions copyright Nikolay Raspopov 2005 and PeerProject 2008-2014
 //
 // Envy is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
@@ -18,16 +18,6 @@
 
 #include "StdAfx.h"
 #include "Builder.h"
-
-HRESULT CBuilder::FinalConstruct() throw()
-{
-	return CoCreateFreeThreadedMarshaler( GetControllingUnknown(), &m_pUnkMarshaler.p );
-}
-
-void CBuilder::FinalRelease() throw()
-{
-	m_pUnkMarshaler.Release();
-}
 
 STDMETHODIMP CBuilder::Process(
 	/* [in] */ BSTR sFile,

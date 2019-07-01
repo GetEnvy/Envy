@@ -3,7 +3,7 @@
 
 <!-- Envy Default Turkish Skin File -->
 
-<!-- Translation based on default en.xml r26 -->
+<!-- Translation based on default en.xml r28 -->
 <!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -3152,7 +3152,7 @@
 	<string id="20678" text="eDonkey ağı uzun zamanla uzun sıra kullanılır. Maksimum sıra pozisyonu limitini kabul ederken dikkatli olmalısınız, indirmelere başlamak zor olabilir.\nKabul edeceğin sıra pozisyonunu kısıtlamak istediğinden emin misin?"/>
 	<string id="20680" text="Envy Ayarları"/>
 	<string id="20682" text="Uzaktan erişim engellendi."/>
-	<string id="20684" text="http://%s:%i/remote - Bir kullanıcı adı ve şifresi seçmelisiniz."/>
+	<string id="20684" text="Bir kullanıcı adı ve şifresi seçmelisiniz."/>
 	<string id="20685" text="Bağlantı onaylanılamaz, URL kullanılamaz."/>
 	<string id="20692" text="&quot;%s&quot; arayüzünü silmek istediğinizden emin misiniz? Bu yapılamaz."/>
 	<string id="20699" text="Şemalar"/>

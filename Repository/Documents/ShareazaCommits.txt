@@ -18,7 +18,7 @@ v2.0 to r30
 •
 
 (2017.9) (Envy 2) (Shareaza 2.7.10.2)
-9700		.f	Updated 7ZipBuilder plugin's Z-Zip library to 17.1.0
+9700	r28	.f	Updated 7ZipBuilder plugin's Z-Zip library to 17.1.0 (19.0)
 9699		.f	Updated UnRAR version to 5.50.100.2418
 9698	.	.f	Bumped version 2.7.10.3
 9697	.	.f	Tagged 2.7.10.2
@@ -150,16 +150,16 @@ v2.0 to r30
 9573	r126	6f	Fixed minor 64-bit warnings
 9572		6f	Added limit of ghost files (new option "Library.GhostLimit", defaulted to 1000 files)
 9571		4f	Added metadata restoring from ghost files.  Added creating of sharable ghost files during automatic deletion.  (Refactored r9574)
-9570		2f	Fixed unused half of library files hash map
+9570	r28	2f	Fixed unused half of library files hash map
 9569	r126	4f	Renamed macroses to be with different names
 9568	r126	1f	Optimized initial hash table size
 9567	.	1f	Removed unneeded ASSERT
-9566		7f	Optimized case insensitive string maps: CMap replaced by CAtlMap< CStringElementTraitsI >
-9565		2f	Refactored (LibraryMaps)
+9566	r28	7f	Optimized case insensitive string maps: CMap replaced by CAtlMap< CStringElementTraitsI >
+9565	r28	2f	Refactored (LibraryMaps)
 9564	r126	4f	Fixed minor warnings (skin-installer)
 9563	.	1f	Updated GeoIP database (06 May 2015)
-9562		10f	Optimized case insensitive string maps: CMap replaced by CAtlMap< CStringElementTraitsI >. Fixed upload memory leak.
-9561		17f	Optimized case insensitive string maps: CMap replaced by CAtlMap< CStringElementTraitsI >. Added CStringIMap class
+9562	r28	10f	Optimized case insensitive string maps: CMap replaced by CAtlMap< CStringElementTraitsI >. Fixed upload memory leak.
+9561	r28	17f	Optimized case insensitive string maps: CMap replaced by CAtlMap< CStringElementTraitsI >. Added CStringIMap class
 9560	r125	1f	Fixed space trimming of query string
 9559	r28	4f	Optimized case insensitive string maps: CMap replaced by CAtlMap< CStringElementTraitsI >
 9558	r28	5f	Optimized case insensitive string maps: CMap replaced by CAtlMap< CStringElementTraitsI >
@@ -274,18 +274,20 @@ v2.0 to r30
 8824		14f	Updated Language Support (Scheduler Dialog Strings Sorted, HashWndAlpha, etc.)
 8764		8f	Colorful download sources
 8763		2f	Flexible hash progress window
-8513	r21	1f	Attempt to fix a lost neighbor
+8513	r28	1f	Attempt to fix a lost neighbor
 
 8156?		7f	Fix plugin description and icon retrieving. Add support for .exe plugins. Plugins enumeration speed increased ten times. (LoadCLSIDIcon) (2009)
 
 Check ShareazaPlus:	http://sourceforge.net/p/shareazaplus/code/HEAD/tree/branches/TestingCode/
 
 ToDos:			Add ID_TAB_MENU ?
-			Add Private Shared Folders (Keycode)
+			Add Private Shared Folders (Keyword)
 			Save Browse/Chat IPs (Bookmarks)
 			Default Downloads Location <My Docs>  ?
 			File Formats. .lst, .urls, .grx (getright), .metalink, .magma, etc.
 			JumpLists: r9146 http://msdn.microsoft.com/en-us/gg465010#_Toc243450447
-			r8625+ BENode TorrentWizard
+			r8625+ BENode in TorrentWizard ?
 			BitTorrent DNS, uTP
-			C++11  VS2012+	https://msdn.microsoft.com/en-us/library/hh567368.aspx
+			Bitprint Fast Hashing
+			Threadpooling
+			C++11  VS2012+	https://docs.microsoft.com/en-us/previous-versions/hh567368(v=vs.140)

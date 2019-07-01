@@ -63,6 +63,7 @@ public:
 
 	CMutexEx		m_pSection;
 	SOCKADDR_IN		m_pHost;					// Structure (Windows Sockets) which holds address of the local machine
+	CString			m_sAddress;					// ip:port
 	volatile bool	m_bConnected;				// Network has finished initializing and is connected
 	BOOL			m_bAutoConnect;
 	DWORD			m_tStartedConnecting;		// Time Envy started trying to connect

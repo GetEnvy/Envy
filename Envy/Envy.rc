@@ -25,8 +25,8 @@ LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
 //
 
 VS_VERSION_INFO VERSIONINFO
- PRODUCTVERSION 1,9
- FILEVERSION 1,9
+ PRODUCTVERSION 2,0
+ FILEVERSION 2,0
  FILEFLAGSMASK 0x1fL
 #ifdef _DEBUG
  FILEFLAGS 0x1L
@@ -42,8 +42,8 @@ BEGIN
 		BLOCK "000004b0"
 		BEGIN
 			VALUE "ProductName", "Envy"
-			VALUE "ProductVersion", "1.9"
-			VALUE "FileVersion", "1.9"
+			VALUE "ProductVersion", "2.0"
+			VALUE "FileVersion", "2.0"
 			VALUE "Title", "Envy"
 			VALUE "InternalName", "Envy"
 			VALUE "OriginalFilename", "Envy.exe"
@@ -4365,7 +4365,7 @@ BEGIN
 	IDS_PROFILE_NO_NICK			"You haven't entered a screen name in your user profile."
 	IDS_PROFILE_NO_VITALS		"You have not selected your age and gender. \n\nAre you sure you want to continue?"
 	IDS_REMOTE_DISABLED			"Remote access is disabled."
-	IDS_REMOTE_ENABLED			"http://%s:%i/remote  -  Username/password required."
+	IDS_REMOTE_ENABLED			"Username/password required."
 	IDS_REMOTE_UNAVAILABLE		"Unable to accept connections, URL unavailable."
 	IDS_SCHEMA_LOAD_ERROR		"Failed to load Library metadata schemas.  Please reinstall application.\n\nContinue loading?"
 	IDS_SCHEMAS					"&Schemas"

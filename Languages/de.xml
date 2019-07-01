@@ -3,7 +3,7 @@
 
 <!-- Envy Default German Skin File -->
 
-<!-- Translation based on default en.xml r26 -->
+<!-- Translation based on default en.xml r28 -->
 <!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -3289,7 +3289,7 @@
 	<string id="20678" text="Das eDonkey-Netzwerk benutzt lange Warteschlangen mit langen Wartezeiten. Wenn Sie die Maximale Warteschlangenlänge zu strikt einstellen, könnten Sie Probleme bekommen, Dateien herunterzuladen. \nSind Sie sicher, dass Sie die Maximale Warteschlangenposition auf diesen Wert setzen wollen?"/>
 	<string id="20680" text="Einstellungen"/>
 	<string id="20682" text="Remote-Zugriff ist deaktiviert."/>
-	<string id="20684" text="http://%s:%i/remote - Benutzername und Passwort angeben."/>
+	<string id="20684" text="Benutzername und Passwort angeben."/>
 	<string id="20685" text="Kann keine eingehenden Verbindungen akzeptieren, URL nicht verfügbar."/>
 	<string id="20692" text="Wollen Sie den Skin &quot;%s&quot; wirklich löschen? Dies kann nicht rückgängig gemacht werden."/>
 	<string id="20699" text="&amp;Schemas"/>

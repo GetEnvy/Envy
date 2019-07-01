@@ -2,7 +2,7 @@
 // Object.cpp : Implementation of CWebHook
 //
 // This file is part of Envy (getenvy.com) © 2016-2018
-// Portions copyright PeerProject 2009,2012,2014 and Shareaza 2009
+// Portions copyright Shareaza 2009 and PeerProject 2009-2014
 //
 // Envy is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
@@ -31,17 +31,13 @@ CWebHook::CWebHook()
 
 HRESULT CWebHook::FinalConstruct()
 {
-	if ( ! IsEnabled() )
-		return E_FAIL;
-
-	return CoCreateFreeThreadedMarshaler( GetControllingUnknown(), &m_pUnkMarshaler.p );
+	return IsEnabled() ? S_OK : E_FAIL;
 }
 
 void CWebHook::FinalRelease()
 {
 	Disconnect();
 	m_spUnkSite.Release();
-	m_pUnkMarshaler.Release();
 }
 
 bool CWebHook::IsEnabled() const
@@ -154,7 +150,7 @@ STDMETHODIMP CWebHook::Invoke(
 
 				if ( ! m_sURL.IsEmpty() )
 				{
-					ATLTRACE( "[Web Hook] File download: %s\n", m_sURL );
+					ATLTRACE( "[Web Hook] File download: %s\n", (LPCSTR)CT2A( m_sURL ) );
 					AddLink( m_sURL );
 					m_sURL.Empty();
 					*pCancel = VARIANT_TRUE;

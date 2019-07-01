@@ -3,7 +3,7 @@
 
 <!-- Envy Default Hungarian Skin File -->
 
-<!-- Translation based on default en.xml r26 -->
+<!-- Translation based on default en.xml r28 -->
 <!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -3137,7 +3137,7 @@
 	<string id="20678" text="Az eDonkey hálózaton sokáig kell sorbanállni és várakozni egy fájlért. Ha csökkenti a sorok maximális számát, valószínűleg nem fognak elidulni a letöltések.\nBiztos csökkenteni akarja a számodra kirendelt sorszámot?"/>
 	<string id="20680" text="Beállítások"/>
 	<string id="20682" text="Távoli használat kikapcsolva."/>
-	<string id="20684" text="http://%s:%i/remote - Egy felhasználónevet és egy jelszót kell választania."/>
+	<string id="20684" text="Egy felhasználónevet és egy jelszót kell választania."/>
 	<string id="20685" text="Nem tudom fogadni a kapcsolatokat, URL érvénytelen."/>
 	<string id="20692" text="Biztos, hogy törölni akarja a(z) &quot;%s&quot; kinézetet? Ezt már nem lehet később visszavonni."/>
 	<string id="20699" text="&amp;Sémák"/>

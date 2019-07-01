@@ -1258,14 +1258,14 @@
 	<menu name="CDownloadsWnd.Filter">
 		<item id="ID_DOWNLOADS_FILTER_ALL" text="Show _All"/>
 		<separator/>
-		<item id="ID_DOWNLOADS_FILTER_ACTIVE" text="Show A_ctive"/>
+		<item id="ID_DOWNLOADS_FILTER_ACTIVE" text="Show Acti_ve"/>
 		<item id="ID_DOWNLOADS_FILTER_PAUSED" text="Show _Paused"/>
 		<item id="ID_DOWNLOADS_FILTER_QUEUED" text="Show _Queued"/>
 		<item id="ID_DOWNLOADS_FILTER_SOURCES" text="Show _No Sources"/>
 		<item id="ID_DOWNLOADS_FILTER_SEEDS" text="Show See_ds"/>
 		<separator/>
 		<item id="ID_DOWNLOADS_SHOW_SOURCES" text="Show All _Sources"/>
-		<item id="ID_DOWNLOADS_AUTO_CLEAR" text="_Auto Clear"/>
+		<item id="ID_DOWNLOADS_AUTO_CLEAR" text="Auto _Clear"/>
 		<separator/>
 		<item id="ID_DOWNLOAD_GROUP_SHOW" text="Show _Groups"/>
 	</menu>
@@ -1275,7 +1275,7 @@
 		<separator/>
 		<item id="ID_BROWSE_LAUNCH" text="_Browse User"/>
 		<item id="ID_UPLOADS_CHAT" text="_Chat with User"/>
-		<item id="ID_SECURITY_BAN" text="B_an User"/>
+		<item id="ID_SECURITY_BAN" text="Ba_n User"/>
 		<separator/>
 		<item id="ID_UPLOADS_HELP" text="_Help..."/>
 	</menu>

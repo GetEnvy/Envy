@@ -610,7 +610,7 @@ bool CLibraryBuilder::HashFile(LPCTSTR szPath, HANDLE hFile)
 		if ( ! nBlock )
 			break;
 
-		pFileHash->Add( pBuffer, nBlock );
+		pFileHash->Add( pBuffer, nBlock );		// High CPU for HashLib
 
 		nLength -= nBlock;
 	}

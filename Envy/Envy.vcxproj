@@ -1587,7 +1587,6 @@
     <ClInclude Include="FileFragments\List.hpp" />
     <ClInclude Include="FileFragments\Queue.hpp" />
     <ClInclude Include="FileFragments\Range.hpp" />
-    <ClInclude Include="FileFragments\Ranges.hpp" />
     <ClInclude Include="Hashes.hpp" />
     <ClInclude Include="Hashes\CheckingPolicies.hpp" />
     <ClInclude Include="Hashes\Compatibility.hpp" />

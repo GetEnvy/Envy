@@ -385,7 +385,7 @@ STDMETHODIMP CHtmlCollection::XView::Hover(BSTR sURN)
 	}
 
 	if ( pView->m_nWebIndex != 0 )
-		pView->GetToolTip()->Show( pView->m_nWebIndex, pView->m_pWebCtrl->GetSafeHwnd() );
+		pView->GetToolTip()->Show( pView->m_nWebIndex, NULL, pView->m_pWebCtrl->GetSafeHwnd() );
 	else
 		pView->GetToolTip()->Hide();
 

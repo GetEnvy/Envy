@@ -50,8 +50,8 @@ private:
 
 	mutable CMutexEx			m_pTigerSection;
 
-	mutable Fragments::List		m_oWFLCache;			// Wanted fragment list cache
-	mutable QWORD				m_nWFLCookie;			// Wanted fragment list cookie
+	mutable Fragments::List		m_oWantedListCache;			// Wanted fragment list cache, was m_oWFLCache
+	mutable QWORD				m_nWantedListCookie;		// Wanted fragment list last modified cookie, was m_nWFLCookie
 
 public:
 	const CTigerTree* GetTigerTree() const;

@@ -2,7 +2,7 @@
 // SWFBuilder.cpp : Implementation of CSWFBuilder
 //
 // This file is part of Envy (getenvy.com) © 2016-2018
-// Portions copyright PeerProject 2008-2014 and Nikolay Raspopov 2005
+// Portions copyright Nikolay Raspopov 2005 and PeerProject 2008-2014
 //
 // GFL Library, GFL SDK and XnView
 // Copyright (c) 1991-2004 Pierre-E Gougelet
@@ -21,16 +21,6 @@
 
 #include "StdAfx.h"
 #include "SWFBuilder.h"
-
-HRESULT CSWFBuilder::FinalConstruct() throw()
-{
-	return CoCreateFreeThreadedMarshaler( GetControllingUnknown(), &m_pUnkMarshaler.p );
-}
-
-void CSWFBuilder::FinalRelease() throw()
-{
-	m_pUnkMarshaler.Release();
-}
 
 STDMETHODIMP CSWFBuilder::Process(
 	/*[in]*/ BSTR /*sFile*/,

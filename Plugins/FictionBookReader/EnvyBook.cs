@@ -62,10 +62,10 @@ namespace Schemas
 		[XmlAttribute(Namespace = "")]
 		public string description;
 
-		private PeerGenreType _genre;
+		private EnvyGenreType _genre;
 
 		[XmlAttribute(AttributeName = "genre", Namespace = "")]
-		public PeerGenreType Genre {
+		public EnvyGenreType Genre {
 			get { return _genre; }
 			set { _genre = value; }
 		}
@@ -267,7 +267,7 @@ namespace Schemas
 
 				if (fb.description.titleinfo.genre != null && fb.description.titleinfo.genre.Length > 0)
 				{
-					this._genre = GenreMap.GetPeerGenre(fb.description.titleinfo.genre[0].Value);
+					this._genre = GenreMap.GetEnvyGenre(fb.description.titleinfo.genre[0].Value);
 				}
 				// this.year = fb.description.titleinfo.date.value.Year;
 				if (fb.description.titleinfo.keywords != null)
@@ -307,7 +307,7 @@ namespace Schemas
 		private string GetGenres(IEnumerable enu) {
 			StringBuilder sb = new StringBuilder();
 			foreach (FictionBookDescriptionTitleinfoGenre genre in enu) {
-				string sGenre = GenreMap.GetPeerGenre(genre.Value).ToString();
+				string sGenre = GenreMap.GetEnvyGenre(genre.Value).ToString();
 				if (!String.IsNullOrEmpty(sGenre))
 					sb.Append(sGenre + "; ");
 			}
@@ -373,7 +373,7 @@ namespace Schemas
 		}
 
 		[XmlType(Namespace = "http://www.limewire.com/schemas/book.xsd")]
-		public enum PeerGenreType
+		public enum EnvyGenreType
 		{
 			[XmlEnum("Arts & Photograhy")]
 			ArtsPhotograhy,

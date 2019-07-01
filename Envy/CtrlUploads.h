@@ -41,13 +41,14 @@ protected:
 	void		SaveColumnState();
 	BOOL		LoadColumnState();
 	void		SelectTo(int nIndex);
+//	void		SelectAll();
 	void		DeselectAll(CUploadFile* pExcept = NULL);
 	BOOL		HitTest(const CPoint& point, CUploadQueue** ppQueue, CUploadFile** ppFile, int* pnIndex, RECT* prcItem);
 	BOOL		HitTest(int nIndex, CUploadQueue** ppQueue, CUploadFile** ppFile);
 	BOOL		GetAt(int nSelect, CUploadQueue** ppQueue, CUploadFile** ppFile);
 	void		PaintQueue(CDC& dc, const CRect& rcRow, const CQueueDisplayData* pQueueData, BOOL bFocus);
 	void		PaintFile(CDC& dc, const CRect& rcRow, const CUploadDisplayData* pUploadData, BOOL bFocus);
-	void		UpdateUploadsData(BOOL bForce = FALSE);
+//	void		UpdateUploadsData(BOOL bForce = FALSE);
 	int			GetExpandableColumnX() const;
 	void		OnSkinChange();
 
@@ -69,6 +70,7 @@ public:
 	static CUploadQueue*	GetNextQueue(POSITION& pos);
 	static POSITION			GetFileIterator(CUploadQueue* pQueue);
 	static CUploadFile*		GetNextFile(CUploadQueue* pQueue, POSITION& pos, int* pnPosition = NULL);
+	static UINT				GetFileCount(CUploadQueue* pQueue);
 
 public:
 	afx_msg int  OnCreate(LPCREATESTRUCT lpCreateStruct);

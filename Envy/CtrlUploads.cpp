@@ -306,7 +306,7 @@ void CUploadsCtrl::SelectTo(int nIndex)
 			bUpdate = FALSE;
 	}
 
-	UpdateUploadsData( TRUE );
+//	UpdateUploadsData( TRUE );	// Obsolete
 
 	pLock.Unlock();
 
@@ -706,6 +706,36 @@ CUploadFile* CUploadsCtrl::GetNextFile(CUploadQueue* pQueue, POSITION& pos, int*
 	}
 }
 
+UINT CUploadsCtrl::GetFileCount(CUploadQueue* pQueue)
+{
+	ASSUME_LOCK( UploadQueues.m_pSection );
+
+	if ( pQueue == UploadQueues.m_pTorrentQueue )
+		return (UINT)pQueue->GetActiveCount();
+
+	if ( pQueue != UploadQueues.m_pHistoryQueue )
+		return (UINT)pQueue->GetQueuedCount();
+
+	CSingleLock pTransfersLock( &Transfers.m_pSection );
+	if ( ! pTransfersLock.Lock( 500 ) )
+		return 0;
+
+	// History
+	UINT nCount = 0;
+	for ( POSITION pos = UploadFiles.GetIterator(); pos; )
+	{
+		CUploadFile* pFile = UploadFiles.GetNext( pos );
+		CUploadTransfer* pTransfer = pFile->GetActive();
+		if ( pTransfer != NULL )
+		{
+			if ( pTransfer->m_nProtocol == PROTOCOL_BT && pTransfer->m_nState != upsNull ) continue;
+			if ( pTransfer->m_pQueue != NULL ) continue;
+		}
+		++nCount;
+	}
+	return nCount;
+}
+
 //////////////////////////////////////////////////////////////////////////////
 // CUploadsCtrl presentation message handlers
 
@@ -735,9 +765,7 @@ void CUploadsCtrl::OnSize(UINT nType, int cx, int cy)
 	int nScroll = GetScrollPos( SB_HORZ );
 	m_wndHeader.SetWindowPos( NULL, -nScroll, 0, rcClient.right + nScroll, HEADER_HEIGHT, SWP_SHOWWINDOW );
 
-	CSingleLock pTransfersLock( &Transfers.m_pSection );		// First, for GetNextFile()
-	if ( ! pTransfersLock.Lock( 500 ) )
-		return;
+	// Note no transfers lock here, in get file count if needed.
 
 	CSingleLock pUploadQueuesLock( &UploadQueues.m_pSection );
 	if ( ! pUploadQueuesLock.Lock( 250 ) )
@@ -747,28 +775,20 @@ void CUploadsCtrl::OnSize(UINT nType, int cx, int cy)
 	{
 		CUploadQueue* pQueue = GetNextQueue( posQueue );
 
-		POSITION posFile = GetFileIterator( pQueue );
-
-		if ( posFile == NULL )
+		UINT nCount = GetFileCount( pQueue );
+		if ( nCount == 0 )
 		{
 			pQueue->m_bSelected = FALSE;
 			continue;
 		}
 
-		nHeight++;
+		++nHeight;
 
-		if ( ! pQueue->m_bExpanded )
-			continue;
-
-		while ( posFile )
-		{
-			if ( GetNextFile( pQueue, posFile ) )
-				nHeight++;
-		}
+		if ( pQueue->m_bExpanded )
+			nHeight += nCount;
 	}
 
 	pUploadQueuesLock.Unlock();
-	pTransfersLock.Unlock();
 
 	ZeroMemory( &pScroll, sizeof( pScroll ) );
 	pScroll.cbSize	= sizeof( pScroll );
@@ -785,85 +805,85 @@ void CUploadsCtrl::OnSize(UINT nType, int cx, int cy)
 
 
 //////////////////////////////////////////////////////////////////////////////
-// CDownloadsCtrl populate duplicate Uploads/Queues data (isolated to minimize locks)
+// CDownloadsCtrl populate duplicate Uploads/Queues data (isolated to minimize locks)  Obsolete.
 
-void CUploadsCtrl::UpdateUploadsData(BOOL bForce /*FALSE*/)
-{
-	static DWORD tUpdate = 0;
-	if ( ! bForce && tUpdate + 500 > GetTickCount() )
-		return;
-
-	CRect rcClient;
-	GetClientRect( &rcClient );
-	const int nMin = GetScrollPos( SB_VERT );
-	const int nMax = nMin + ( rcClient.Height() / Settings.Skin.RowSize ) + 1;
-	int nCount = 0;
-
-	CSingleLock pUploadQueuesLock( &UploadQueues.m_pSection );
-	if ( ! pUploadQueuesLock.Lock( 250 ) )
-		return;
-
-	CSingleLock pTransfersLock( &Transfers.m_pSection );
-	if ( ! pTransfersLock.Lock( 50 ) )
-		return;
-
-	INT_PTR nQueue = 0;
-	for ( POSITION posQueue = GetQueueIterator(); posQueue; )
-	{
-		CUploadQueue* pQueue = GetNextQueue( posQueue );
-
-		POSITION posFile = GetFileIterator( pQueue );
-		if ( posFile == NULL )
-			continue;
-
-		if ( nCount++ < nMin - 1 && ! pQueue->m_bExpanded )
-			continue;
-
-		CQueueDisplayData pQueueData( pQueue );
-
-		if ( pQueue->m_bExpanded )
-		{
-			if ( nCount < nMin )
-				pQueueData.m_sName.Empty();		// Do not display
-
-			if ( pQueueData.m_nCount )
-				pQueueData.m_pUploadsData.SetSize( min( pQueueData.m_nCount, (DWORD)nMax - nCount ) );
-
-			UINT nUpload = 0;
-			while ( posFile )
-			{
-				int nPosition;
-				CUploadFile* pFile = GetNextFile( pQueue, posFile, &nPosition );
-				if ( pFile == NULL )
-					continue;
-
-				if ( nCount++ < nMin )
-					continue;
-
-				pQueueData.m_pUploadsData.SetAtGrow( nUpload, CUploadDisplayData( pFile, pFile->GetActive() ) );
-				nUpload++;
-
-				if ( nCount > nMax )
-					break;
-			}
-			pQueueData.m_nCount = nUpload;
-		}
-
-		m_pDisplayData.SetAtGrow( nQueue, pQueueData );
-		nQueue++;
-
-		if ( nCount > nMax )
-			break;
-	}
-
-	pTransfersLock.Unlock();
-	pUploadQueuesLock.Unlock();
-
-	while ( m_pDisplayData.GetCount() > nQueue )
-		m_pDisplayData.RemoveAt( nQueue );
-
-	tUpdate = GetTickCount();
-}
+//void CUploadsCtrl::UpdateUploadsData(BOOL bForce /*FALSE*/)
+//{
+//	static DWORD tUpdate = 0;
+//	if ( ! bForce && tUpdate + 500 > GetTickCount() )
+//		return;
+//
+//	CRect rcClient;
+//	GetClientRect( &rcClient );
+//	const int nMin = GetScrollPos( SB_VERT );
+//	const int nMax = nMin + ( rcClient.Height() / Settings.Skin.RowSize ) + 1;
+//	int nCount = 0;
+//
+//	CSingleLock pUploadQueuesLock( &UploadQueues.m_pSection );
+//	if ( ! pUploadQueuesLock.Lock( 250 ) )
+//		return;
+//
+//	CSingleLock pTransfersLock( &Transfers.m_pSection );
+//	if ( ! pTransfersLock.Lock( 50 ) )
+//		return;
+//
+//	INT_PTR nQueue = 0;
+//	for ( POSITION posQueue = GetQueueIterator(); posQueue; )
+//	{
+//		CUploadQueue* pQueue = GetNextQueue( posQueue );
+//
+//		POSITION posFile = GetFileIterator( pQueue );
+//		if ( posFile == NULL )
+//			continue;
+//
+//		if ( nCount++ < nMin - 1 && ! pQueue->m_bExpanded )
+//			continue;
+//
+//		CQueueDisplayData pQueueData( pQueue );
+//
+//		if ( pQueue->m_bExpanded )
+//		{
+//			if ( nCount < nMin )
+//				pQueueData.m_sName.Empty();		// Do not display
+//
+//			if ( pQueueData.m_nCount )
+//				pQueueData.m_pUploadsData.SetSize( min( pQueueData.m_nCount, (DWORD)nMax - nCount ) );
+//
+//			UINT nUpload = 0;
+//			while ( posFile )
+//			{
+//				int nPosition;
+//				CUploadFile* pFile = GetNextFile( pQueue, posFile, &nPosition );
+//				if ( pFile == NULL )
+//					continue;
+//
+//				if ( nCount++ < nMin )
+//					continue;
+//
+//				pQueueData.m_pUploadsData.SetAtGrow( nUpload, CUploadDisplayData( pFile, pFile->GetActive() ) );
+//				nUpload++;
+//
+//				if ( nCount > nMax )
+//					break;
+//			}
+//			pQueueData.m_nCount = nUpload;
+//		}
+//
+//		m_pDisplayData.SetAtGrow( nQueue, pQueueData );
+//		nQueue++;
+//
+//		if ( nCount > nMax )
+//			break;
+//	}
+//
+//	pTransfersLock.Unlock();
+//	pUploadQueuesLock.Unlock();
+//
+//	while ( m_pDisplayData.GetCount() > nQueue )
+//		m_pDisplayData.RemoveAt( nQueue );
+//
+//	tUpdate = GetTickCount();
+//}
 
 //////////////////////////////////////////////////////////////////////////////
 // CUploadsCtrl painting
@@ -880,46 +900,124 @@ void CUploadsCtrl::OnPaint()
 	rcItem.left -= GetScrollPos( SB_HORZ );
 	rcItem.bottom = rcItem.top + Settings.Skin.RowSize;
 
-	// ToDo: Better Focus scroll tracking for limited DisplayData
+	int nScroll = GetScrollPos( SB_VERT );
 	const BOOL bFocus = ( GetFocus() == this );
-	const int nFocus  = bFocus ? m_nFocus - GetScrollPos( SB_VERT ) : -1;
+	const int nFocus  = bFocus ? m_nFocus - nScroll : -1;
 
+	CFont* pfOld = (CFont*)dc.SelectObject( &CoolInterface.m_fntNormal );
 	if ( Settings.General.LanguageRTL )
 		dc.SetTextAlign( TA_RTLREADING );
 
-	UpdateUploadsData();
-
-	CFont* pfOld = (CFont*)dc.SelectObject( &CoolInterface.m_fntNormal );
-
+	static CList< CQueueDisplayData > pUploadsData;
+	static DWORD tUploadsData = 0;
 	int nIndex = 0;
-	int nDisplayCount = (int)m_pDisplayData.GetCount();
-	for ( int nQueue = 0; nQueue < nDisplayCount && rcItem.top < rcClient.bottom; nQueue++ )
-	{
-		const CQueueDisplayData* pQueueData = &m_pDisplayData[ nQueue ];
 
-		if ( rcItem.bottom > rcClient.top && ! pQueueData->m_sName.IsEmpty() )
+	// Update DisplayData
+	if ( tUploadsData < GetTickCount() - 50 )
+	{
+		CSingleLock pTransfersLock( &Transfers.m_pSection );
+		CSingleLock pQueuesLock( &UploadQueues.m_pSection, FALSE );
+		if ( pTransfersLock.Lock( 250 ) && pQueuesLock.Lock( 250 ) )
 		{
-			PaintQueue( dc, rcItem, pQueueData, bFocus && ( nFocus == nIndex ) );
-			rcItem.OffsetRect( 0, Settings.Skin.RowSize );
+			pUploadsData.RemoveAll();
+
+			for ( POSITION posQueue = GetQueueIterator(); posQueue && rcItem.top < rcClient.bottom; )
+			{
+				CUploadQueue* pQueue = GetNextQueue( posQueue );
+				POSITION posFile = GetFileIterator( pQueue );
+				if ( posFile == NULL ) continue;
+
+				if ( nScroll > 0 )
+				{
+					--nScroll;
+				}
+				else
+				{
+					if ( rcItem.bottom > rcClient.top )
+						pUploadsData.AddTail( CQueueDisplayData( pQueue ) );
+					//	PaintQueue( dc, rcItem, pQueue, bFocus && ( m_nFocus == nIndex ) );
+					rcItem.OffsetRect( 0, Settings.Skin.RowSize );
+				}
+
+				++nIndex;
+
+				if ( ! pQueue->m_bExpanded )
+					continue;
+
+				UINT nFile = 0;
+				while ( posFile && rcItem.top < rcClient.bottom )
+				{
+					int nPosition;
+					CUploadFile* pFile = GetNextFile( pQueue, posFile, &nPosition );
+					if ( pFile == NULL ) continue;
+
+					if ( nScroll > 0 )
+					{
+						--nScroll;
+					}
+					else
+					{
+						if ( pUploadsData.IsEmpty() )
+							pUploadsData.AddTail( CQueueDisplayData( pQueue ) );
+
+						pUploadsData.GetTail().m_pUploadsData.SetAtGrow( nFile, CUploadDisplayData( pFile, pFile->GetActive() ) );
+						// Was PaintFile( dc, rcItem, pQueue, pFile, nPosition, bFocus && ( m_nFocus == nIndex ) );
+						rcItem.OffsetRect( 0, Settings.Skin.RowSize );
+					}
+
+					++nFile;
+				}
+			}
+
+			tUploadsData = GetTickCount();
+		}
+	}
+
+	// Reset
+	nIndex = 0;
+	rcItem.top = rcClient.top;
+	rcItem.bottom = rcItem.top + Settings.Skin.RowSize;
+
+	// Paint DisplayData
+	for ( POSITION pos = pUploadsData.GetHeadPosition(); pos; )
+	{
+		if ( rcItem.top > rcClient.bottom )
+			break;
+
+		const CQueueDisplayData* pQueueData = &pUploadsData.GetNext( pos );
+
+		if ( pQueueData == NULL )
+			continue;
+
+		if ( ! pQueueData->m_sName.IsEmpty() )
+		{
+			PaintQueue( dc, rcItem, pQueueData, nIndex == m_nFocus && bFocus );
+			rcItem.OffsetRect( 0, (int)Settings.Skin.RowSize );
+			if ( rcItem.top > rcClient.bottom )
+				break;
 			nIndex++;
 		}
 
 		if ( ! pQueueData->m_bExpanded )
 			continue;
 
-		for ( int nUpload = 0; (DWORD)nUpload < pQueueData->m_nCount && rcItem.top < rcClient.bottom; nUpload++ )
+		for ( INT_PTR nUpload = 0, nMax = pQueueData->m_pUploadsData.GetUpperBound(); nUpload <= nMax && rcItem.top < rcClient.bottom; nUpload++ )
 		{
-			PaintFile( dc, rcItem, &pQueueData->m_pUploadsData[ nUpload ], bFocus && ( nFocus == nIndex ) );
+			PaintFile( dc, rcItem, &pQueueData->m_pUploadsData.GetAt( nUpload ), bFocus && ( nFocus == nIndex ) );
 			rcItem.OffsetRect( 0, Settings.Skin.RowSize );
+			if ( rcItem.top > rcClient.bottom )
+				break;
 			nIndex++;
 		}
 	}
 
-	dc.SelectObject( pfOld );
-
-	rcClient.top = rcItem.top;
-	if ( rcClient.top < rcClient.bottom )
+	if ( rcItem.top < rcClient.bottom )
+	{
+		rcClient.top = rcItem.top;
 		dc.FillSolidRect( &rcClient, Colors.m_crWindow );
+	}
+
+	dc.SelectObject( pfOld );
 }
 
 void CUploadsCtrl::PaintQueue(CDC& dc, const CRect& rcRow, const CQueueDisplayData* pQueueData, BOOL bFocus)
@@ -1111,13 +1209,12 @@ void CUploadsCtrl::PaintFile(CDC& dc, const CRect& rcRow, const CUploadDisplayDa
 
 	// Skinnable Selection Highlight
 	BOOL bSelectmark = FALSE;
-	if ( bSelected && Images.m_bmSelected.m_hObject )
+	if ( bSelected && Images.DrawButtonState( &dc, &rcRow, GetFocus() == this ? IMAGE_SELECTED : IMAGE_SELECTEDGREY ) )
 	{
-		CRect rcDraw = rcRow;
-		if ( Images.m_bmSelectedGrey.m_hObject && GetFocus() != this )
-			CoolInterface.DrawWatermark( &dc, &rcDraw, &Images.m_bmSelectedGrey );
-		else
-			CoolInterface.DrawWatermark( &dc, &rcDraw, &Images.m_bmSelected );
+	//	if ( Images.m_bmSelectedGrey.m_hObject && GetFocus() != this )
+	//		CoolInterface.DrawWatermark( &dc, &rcDraw, &Images.m_bmSelectedGrey );
+	//	else
+	//		CoolInterface.DrawWatermark( &dc, &rcDraw, &Images.m_bmSelected );
 		bSelectmark = TRUE;
 	}
 	else
@@ -1143,9 +1240,7 @@ void CUploadsCtrl::PaintFile(CDC& dc, const CRect& rcRow, const CUploadDisplayDa
 
 	for ( int nColumn = 0; m_wndHeader.GetItem( nColumn, &pColumn ); nColumn++ )
 	{
-		CString strText;
 		CRect rcCell;
-
 		m_wndHeader.GetItemRect( nColumn, &rcCell );
 		rcCell.left		+= rcRow.left;
 		rcCell.right	+= rcRow.left;
@@ -1155,6 +1250,7 @@ void CUploadsCtrl::PaintFile(CDC& dc, const CRect& rcRow, const CUploadDisplayDa
 		if ( rcCell.Width() < 6 )
 			continue;
 
+		CString strText;
 		switch ( pColumn.lParam )
 		{
 		case COL_TITLE:
@@ -1217,12 +1313,13 @@ void CUploadsCtrl::PaintFile(CDC& dc, const CRect& rcRow, const CUploadDisplayDa
 			{
 				strText.Format( L"%s %i", (LPCTSTR)LoadString( IDS_STATUS_Q ), pUploadData->m_nPosition );
 			}
+			else if ( pUploadData->m_nSpeed )
+			{
+				strText = Settings.SmartSpeed( pUploadData->m_nSpeed );
+			}
 			else
 			{
-				if ( pUploadData->m_nSpeed )
-					strText = Settings.SmartSpeed( pUploadData->m_nSpeed );
-				else
-					LoadString( strText, IDS_STATUS_NEXT );
+				LoadString( strText, IDS_STATUS_NEXT );
 			}
 			break;
 
@@ -1555,7 +1652,7 @@ void CUploadsCtrl::OnLButtonDown(UINT nFlags, CPoint point)
 					}
 				}
 
-				UpdateUploadsData( TRUE );
+			//	UpdateUploadsData( TRUE );	// Obsolete
 
 				pLock.Unlock();
 				Update();
@@ -1685,7 +1782,7 @@ void CUploadsCtrl::OnMouseMove(UINT nFlags, CPoint point)
 	}
 
 	CSingleLock pLock( &Transfers.m_pSection );
-	if ( pLock.Lock( 100 ) )
+	if ( pLock.Lock( 50 ) )
 	{
 		m_nHover = nIndex;
 		CUploadFile* pFile;

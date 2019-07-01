@@ -2,7 +2,7 @@
 // PreviewPlugin.h : Declaration of the CPreviewPlugin
 //
 // This file is part of Envy (getenvy.com) © 2016-2018
-// Portions copyright PeerProject 2009-2010 and Nikolay Raspopov 2009
+// Portions copyright Nikolay Raspopov 2009 and PeerProject 2009-2010
 //
 // Envy is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
@@ -38,18 +38,15 @@ DECLARE_REGISTRY_RESOURCEID(IDR_PREVIEWPLUGIN)
 BEGIN_COM_MAP(CPreviewPlugin)
 	COM_INTERFACE_ENTRY(IGeneralPlugin)
 	COM_INTERFACE_ENTRY(IDownloadPreviewPlugin2)
-	COM_INTERFACE_ENTRY_AGGREGATE(IID_IMarshal, m_pUnkMarshaler.p)
 END_COM_MAP()
 
 DECLARE_PROTECT_FINAL_CONSTRUCT()
-DECLARE_GET_CONTROLLING_UNKNOWN()
 
 public:
 	HRESULT FinalConstruct();
 	void FinalRelease();
 
 protected:
-	CComPtr<IUnknown>				m_pUnkMarshaler;
 	CComPtr<IDownloadPreviewSite>	m_pSite;
 	bool							m_bCancel;		// Got cancel request
 	CHandle							m_hProcess;		// External process handler

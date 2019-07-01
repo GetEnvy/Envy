@@ -3,7 +3,7 @@
 
 <!-- Envy Arabic Language Skin File -->
 
-<!-- Translation based on default en.xml r26 -->
+<!-- Translation based on default en.xml r28 -->
 <!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -2652,7 +2652,7 @@
 	<string id="20056" text="السبت" />
 	<string id="20057" text="الأحد" />
 	<string id="20060" text="(No Rating)" />
-	<string id="20061" text="Fake / Corrupt" />
+	<string id="20061" text="Fake/Corrupt" />
 	<string id="20062" text="Poor" />
 	<string id="20063" text="Average" />
 	<string id="20064" text="Good" />
@@ -2682,10 +2682,10 @@
 	<!-- Missing Connection Strings -->
 	<!-- Missing Strings -->
 	<string id="20407" text="إزالة" />
-	<string id="20408" text="Users" />
-	<string id="20410" text="Exploring Your Envy Library" />
-	<string id="20411" text="Exploring" />
-	<string id="20412" text="Exploring the contents of %i folders" />
+	<!--string id="20408" text="Users" -->
+	<!--string id="20410" text="Exploring Your Envy Library" -->
+	<!--string id="20411" text="Exploring" -->
+	<!--string id="20412" text="Exploring the contents of %i folders" -->
 	<string id="20413" text="%i الملف المحدد" />
 	<string id="20414" text="Multiple folders" />
 	<string id="20415" text="لم يتم تحديد الملفات" />
@@ -2694,8 +2694,8 @@
 	<!-- Missing Strings -->
 	<string id="20436" text="إضافة هذا المجلد إلى المكتبة الخاصة بك؟\n\n%s" />
 	<string id="20443" text="عرض جميع امتداد الملفات" />
-	<string id="20444" text="Copy &amp;URI" />
-	<string id="20445" text="Export &amp;URIs..." />
+	<!--string id="20444" text="Copy &amp;URI" -->
+	<!--string id="20445" text="Export &amp;URIs..." -->
 	<string id="20448" text="جمهور" />	<!--Shared-->
 	<string id="20449" text="خاص" />	<!--Unshared-->
 	<!-- Missing Strings -->
@@ -2706,15 +2706,15 @@
 	<string id="20470" text="إلغاء الأمر" />
 	<string id="20471" text="Open" />
 	<string id="20472" text="مكمل" />
-	<string id="20473" text="Estimated time remaining:" />
-	<string id="20474" text="Number of reviews:" />
+	<!--string id="20473" text="Estimated time remaining:" -->
+	<!--string id="20474" text="Number of reviews:" -->
 	<string id="20475" text="عدد المصادر:" />
-	<string id="20476" text="No sources" />
+	<!--string id="20476" text="No sources" -->
 	<string id="20477" text="%i days %i ساعات و" />
 	<string id="20478" text="%i ساعات و %i دقائق" />
 	<string id="20479" text="%i دقائق و %i ثواني" />
 	<string id="20480" text="%i ثواني" />
-	<string id="20481" text="Total transfer speed:" />
+	<!--string id="20481" text="Total transfer speed:" -->
 	<string id="20482" text="حجم التحميل:" />
 	<string id="20483" text="حجم التحميل:" />
 	<string id="20484" text="الحد من سرعة التحميل" />
@@ -2728,41 +2728,41 @@
 	<string id="20542" text="متصل" />
 	<string id="20543" text="قطع الإتصال" />
 	<!-- Missing Scheduler/Security Strings -->
-	<string id="20620" text="Envy is actively searching the network..." />
+	<!-- string id="20620" text="Envy is actively searching the network..." -->
 	<string id="20621" text="اضغط هنا للبحث مره اخرى" />
-	<string id="20622" text="All Networks" />
-	<string id="20623" text="You are about to start a new search. Would you like to clear the results of your previous search?" />
+	<!-- string id="20622" text="All Networks" -->
+	<!-- string id="20623" text="You are about to start a new search. Would you like to clear the results of your previous search?" />
 	<string id="20624" text="هذه المنطقة تعرض المزيد من المعلومات حول الملف المحدد." />
 	<string id="20625" text="%s يكتب:" />
-	<string id="20626" text="%s rates this file:" />
+	<!-- string id="20626" text="%s rates this file:" -->
 	<string id="20627" text="إنقر للإستعراض" />
 	<string id="20628" text="الإستعراض..." />
-	<string id="20629" text="Unable to download preview content from &quot;%s&quot;." />
+	<!-- string id="20629" text="Unable to download preview content from &quot;%s&quot;." -->
 	<string id="20630" text="مراجعات %i هنالك." />
 	<string id="20631" text="هناك مراجعة واحدة." />
 	<string id="20632" text="%i المصادر متوفرة (%s/s)" />
 	<string id="20633" text="مصدر واحد متوفر (%s/s)" />
-	<string id="20634" text="The network has not returned any matches yet." />
-	<string id="20635" text="Some results are available, but were filtered out." />
+	<!-- string id="20634" text="The network has not returned any matches yet." -->
+	<!-- string id="20635" text="Some results are available, but were filtered out." -->
 	<string id="20636" text="لا يوجد عمليات بحث بدات في هذه النافذه حتى الان." />
-	<string id="20637" text="No Metadata" />
-	<string id="20638" text="No Schema Columns" />
-	<string id="20640" text="(Clear Search History)" />
+	<!-- string id="20637" text="No Metadata" -->
+	<!-- string id="20638" text="No Schema Columns" -->
+	<!-- string id="20640" text="(Clear Search History)" -->
 	<string id="20641" text="بحث Envy" />
 	<string id="20642" text="ما هو نوع الملف المطلوب ؟" />
 	<string id="20643" text="أكتب بعض الكلمات الرئيسية للبحث عنها :" />
 	<string id="20644" text="متقدم..." />
 	<string id="20645" text="أي نوع ملف" />
 	<string id="20646" text="إزالة" />
-	<string id="20648" text="Hide the Search Panel" />
+	<!-- string id="20648" text="Hide the Search Panel" -->
 	<string id="20650" text="بحث" />
 	<string id="20651" text="نوع البحث هنا:" />
 	<string id="20652" text="البحث عن هذا نوع من الملفات:" />
 	<string id="20653" text="Network:" />
 	<string id="20654" text="دقيقة الحجم:" />
 	<string id="20655" text="أقصى حجم:" />
-	<string id="20656" text="Search More" />
-	<string id="20657" text="Show the Search Panel" />
+	<!--string id="20656" text="Search More" -->
+	<!--string id="20657" text="Show the Search Panel" -->
 	<string id="20658" text="بدء البحث" />
 	<string id="20659" text="توقف" />
 	<string id="20660" text="لا يوجد ملفات" />
@@ -2770,18 +2770,19 @@
 	<string id="20662" text="لا يفتّش حاليا" />
 	<string id="20663" text="النتائج" />
 	<string id="20664" text="%lu file in %lu hit|%lu file in %lu hits|%lu files in %lu hits" />
-	<string id="20665" text="Found:" />
+	<string id="20665" text="وجدت:" />
 	<string id="20666" text="البحث:" />
 	<string id="20668" text="البحث..." />
 	<!-- Missing Strings -->
 	<string id="20680" text="إعدادات شير-أزا" />
+	<string id="20684" text="اسم المستخدم / كلمة المرور مطلوبة" />
 	<string id="20692" text="هل تريد فعلا حذف غلاف &quot;%s&quot; ؟ هذا لا يمكن التراجع عنه" />
 	<string id="20699" text="ال&amp;مخطط" />
 	<string id="20700" text="%s في : %s خارج (d:%I64i/u:%I64i)" />
 	<string id="20701" text="متصلة الجيران %lu. %s في المكتبة المحلية." />
 	<string id="20702" text="وضع المركز مع جيرانها %lu. %s في المكتبة المحلية." />
 	<string id="20703" text="وضع المركز مع جيرانها %lu. %s في المكتبة المحلية." />
-	<string id="20704" text="وضع المركز مع جيرانها %lu.. %s في المكتبة المحلية." />
+	<string id="20704" text="وضع المركز مع جيرانها %lu. %s في المكتبة المحلية." />
 	<string id="20705" text="متصلة. %s في المكتبة الخاصة بك." />
 	<string id="20706" text="الاتصال بالشبكة..." />
 	<string id="20707" text="غير متصلة بالشبكة." />

@@ -3,7 +3,7 @@
 
 <!-- Envy Default Lithuanian Skin File -->
 
-<!-- Translation based on default en.xml r26 -->
+<!-- Translation based on default en.xml r28 -->
 <!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -3224,7 +3224,7 @@
 	<string id="20678" text="eDonkey tinkle naudojamos didelės eilės, ir jose laukiama ilgai. Sumažinę eilės dydį Jūs priimsite susijungimus labai griežtomis sąlygomis ir galite turėti problemų su atsisiuntimu.\nAr įsitikinę, kad norite apriboti eilės numerius?"/>
 	<string id="20680" text="„Envy“ nuostatos"/>
 	<string id="20682" text="Nuotolinė prieiga neįgalinta."/>
-	<string id="20684" text="http://%s:%i/remote - įrašyti naudotojo vardą ir slaptažodį."/>
+	<string id="20684" text="įrašyti naudotojo vardą ir slaptažodį."/>
 	<string id="20685" text="Neįmanoma priimti susijungimų, nuoroda nepasiekiama."/>
 	<string id="20692" text="Ar tikrai norite ištrinti „%s“ apvalkalą? Atstatyti vėliau bus neįmanoma."/>
 	<string id="20699" text="&amp;Schemos"/>

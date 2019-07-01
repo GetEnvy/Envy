@@ -50,7 +50,7 @@ protected:
 	HWND	m_hAltWnd;
 	BOOL	m_bTimer;
 	DWORD	m_tOpen;
-	CPoint	m_pOpen;
+	CPoint	m_ptOpen;
 	CSize	m_sz;
 
 	void	ShowImpl(bool bChanged = false);

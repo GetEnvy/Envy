@@ -1,7 +1,8 @@
 //
 // DisplayData.h
 //
-// This file is part of Envy (getenvy.com) © 2014
+// This file is part of Envy (getenvy.com) © 2016-2018
+// Portions copyright PeerProject 2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -104,9 +105,9 @@ public:
 	BOOL			m_bReadContent;			// pSource->m_bReadContent
 	BOOL			m_bHasFragments;		// IsOnline() && HasUsefulRanges() || ! m_oPastFragments.empty()
 	BOOL			m_bTransferBackwards;	// m_pTransfer->m_bRecvBackwards
-	DWORD			m_nTransferLength;		// m_pTransfer->m_nLength
-	DWORD			m_nTransferOffset;		// m_pTransfer->m_nOffset
-	DWORD			m_nTransferPosition;	// m_pTransfer->m_nPosition
+	QWORD			m_nTransferLength;		// m_pTransfer->m_nLength
+	QWORD			m_nTransferOffset;		// m_pTransfer->m_nOffset
+	QWORD			m_nTransferPosition;	// m_pTransfer->m_nPosition
 	Fragments::List	m_oAvailable;			// pSource->m_oAvailable
 	Fragments::List	m_oPastFragments;		// pSource->m_oPastFragments
 };

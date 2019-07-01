@@ -3,7 +3,7 @@
 
 <!-- Envy Default Croatian Skin File -->
 
-<!-- Translation based on default en.xml r26 --> <!-- (Shareaza 2.2.0.2) -->
+<!-- Translation based on default en.xml r28 --> <!-- (Shareaza 2.2.0.2) -->
 <!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -2791,7 +2791,7 @@
 	<string id="20678" text="The eDonkey network uses large queues with long wait times. By limiting the maximum queue position you will accept so strictly, you may have trouble getting downloads to begin.nAre you sure you want to limit what queue positions you will accept?"/>
 	<string id="20680" text="Envy Postavke"/>
 	<string id="20682" text="Pristup na daljinu je onemogučen."/>
-	<string id="20684" text="http://%s:%i/remote - Morate odabrati ime i lozinku"/>
+	<string id="20684" text="Morate odabrati ime i lozinku"/>
 	<string id="20685" text="U nemogučnosti sam primati veze, URL je nedostupan."/>
 	<string id="20692" text="Jeste li sigurni da želite izbrisati &quot;%s&quot; skin?Ne može se povratiti."/>
 	<string id="20699" text="Šeme"/>

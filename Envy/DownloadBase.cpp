@@ -61,9 +61,9 @@ void CDownloadBase::SetModified()
 }
 
 //////////////////////////////////////////////////////////////////////
-// CDownloadBase serialize
+// CDownloadBase serialize  (via DownloadWithSources)
 
-void CDownloadBase::Serialize(CArchive& ar, int nVersion)
+void CDownloadBase::Serialize(CArchive& ar, int nVersion)	// DOWNLOAD_SER_VERSION
 {
 	if ( ar.IsStoring() )
 	{

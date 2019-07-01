@@ -127,7 +127,7 @@ int CSchemaCache::Load()
 
 void CSchemaCache::Clear()
 {
-#ifndef PUBLIC_RELEASE
+#ifndef PUBLIC_RELEASE_FIX
 	// ToDo: Crash at exit (Fix properly)
 	for ( POSITION pos = m_pURIs.GetStartPosition(); pos; )
 	{

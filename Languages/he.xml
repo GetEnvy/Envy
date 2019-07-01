@@ -3,7 +3,7 @@
 
 <!-- Envy Default Hebrew Skin File -->
 
-<!-- Translation based on default en.xml r26 -->
+<!-- Translation based on default en.xml r28 -->
 <!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -2857,7 +2857,7 @@ gap i newline
 	<string id="20677" text="‪Please type the bandwidth limit you wish to set in the form &quot;123 kb/s&quot; for kilobits per second, or &quot;123 KB/s&quot; for kilobytes per second."/>
 	<string id="20680" text="‪‪הגדרות שרזה"/>
 	<string id="20682" text="‪גישה מרחוק לא מאופשרת"/>
-	<string id="20684" text="‪.אתה חייב לבחור שם משתמש וסיסמא http://%s:%i/remote"/>
+	<string id="20684" text="‪.אתה חייב לבחור שם משתמש וסיסמא"/>
 	<string id="20685" text="‪לא מצליח לקבל התקשרויות, כתובת האינטרנט לא זמינה"/>
 	<string id="20692" text="‪.המעטפת תימחק לקיבעון &quot;%s&quot; האם אתה בטוח שברצונך למחוק את המעטפת"/>
 	<string id="20699" text="‪‪סכמות"/>

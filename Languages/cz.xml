@@ -3,7 +3,7 @@
 
 <!-- Envy Default Czech Skin File -->
 
-<!-- Translation based on default en.xml r26 --> <!-- (Shareaza 2.2.5.7) -->
+<!-- Translation based on default en.xml r28 --> <!-- (Shareaza 2.2.5.7) -->
 <!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -3101,7 +3101,7 @@
 	<string id="20678" text="Síť eDonkey používá velké fronty a dlouhé čekání. Striktní omezení délky fronty může způsobit problém se stahováním souborů.nOpravdu chcete omezit délku fronty?"/>
 	<string id="20680" text="Nastavení Envy"/>
 	<string id="20682" text="Vzdálený přístup je vypnutý."/>
-	<string id="20684" text="http://%s:%i/remote - Musíte zadat uživatelské jméno a heslo."/>
+	<string id="20684" text="Musíte zadat uživatelské jméno a heslo."/>
 	<string id="20685" text="Nelze přijmout spojení, URL je nedostupné."/>
 	<string id="20692" text="Opravdu chcete vymazat skin &quot;%s&quot;. Tento skin nemůže být odstraněný."/>
 	<string id="20699" text="schéma"/>

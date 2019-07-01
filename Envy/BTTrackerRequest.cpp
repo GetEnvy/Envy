@@ -328,7 +328,7 @@ CBTTrackerRequest::CBTTrackerRequest(CDownload* pDownload, BTTrackerEvent nEvent
 				{
 					// Note: Some trackers ignore this value and take the IP the request came from. (Usually the same)
 					m_sURL += L"&ip=";
-					m_sURL += inet_ntoa( Network.m_pHost.sin_addr );
+					m_sURL += CString( inet_ntoa( Network.m_pHost.sin_addr ) );
 				}
 			}
 

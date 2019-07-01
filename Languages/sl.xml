@@ -3,7 +3,7 @@
 
 <!-- Envy Default Slovenian Skin File -->
 
-<!-- Translation based on default en.xml r26 --> <!-- (Shareaza 2.2.2.12) -->
+<!-- Translation based on default en.xml r28 --> <!-- (Shareaza 2.2.2.12) -->
 <!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -3001,7 +3001,7 @@
 	<string id="20678" text="eDonkey omrežje uporablja dolge čakalne vrste z dolgimi čakalnimi dobami. Z omejevanjem največjega mesta v čakalni vrsti boste lahko imeli težave pri pridobivanju rež za prenose saj se lahko zgodi, da nikakor ne boste mogli priti na vrsto.\nSte prepričani, da želite omejiti največjo dovoljeno mesto v čakalni vrsti?"/>
 	<string id="20680" text="Envy nastavitve"/>
 	<string id="20682" text="Oddaljen dostop je onemogočen."/>
-	<string id="20684" text="http://%s:%i/remote - Vnesti morate uporabniško ime in geslo."/>
+	<string id="20684" text="Vnesti morate uporabniško ime in geslo."/>
 	<string id="20685" text="Sprejemanje povezav ni mogoče, URL ni na voljo."/>
 	<string id="20692" text="Ste prepričani, da želite brisati preobleko &quot;%s&quot;. Dejanja ne bo mogoče razveljaviti."/>
 	<string id="20699" text="&amp;Sheme"/>

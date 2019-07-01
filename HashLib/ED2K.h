@@ -46,9 +46,8 @@ public:
 	void	AddToTest(LPCVOID pInput, uint32 nLength);
 	BOOL	FinishBlockTest(uint32 nBlock);
 
-	BOOL	ToBytes(BYTE** ppOutput, uint32* pnOutput);	// To free ppOutput, use GlobalFree function
+	BOOL	ToBytes(BYTE** ppOutput, uint32* pnOutput) const;	// To free ppOutput use GlobalFree function
 	BOOL	FromBytes(BYTE* pOutput, uint32 nOutput, uint64 nSize = 0);
-	BOOL	CheckIntegrity();
 
 	BOOL	IsAvailable() const;
 	void	SetSize(uint32 nSize);
@@ -56,11 +55,14 @@ public:
 	uint32	GetBlockCount() const;
 
 private:
-	CMD4::Digest m_pRoot;
+	CMD4	m_pSegment;
+	CMD4::Digest  m_pRoot;
 	CMD4::Digest* m_pList;
 	uint32	m_nList;
 	uint32	m_nCurHash;
 	uint32	m_nCurByte;
-	CMD4	m_pSegment;
 	bool	m_bNullBlock;
+
+	// Check hash tree integrity (rebuild hashes if needed)
+	BOOL	CheckIntegrity() const;
 };

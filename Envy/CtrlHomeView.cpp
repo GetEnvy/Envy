@@ -157,10 +157,7 @@ void CHomeViewCtrl::Update()
 
 	if ( m_peRemoteBrowse )
 	{
-		CString strURL;
-		strURL.Format( L"gnutella:browse:%s:%i",
-			(LPCTSTR)CString( inet_ntoa( Network.m_pHost.sin_addr ) ),
-			(int)ntohs( Network.m_pHost.sin_port ) );
+		CString strURL = L"gnutella:browse:" + Network.m_sAddress;
 
 		if ( Settings.Community.ServeFiles )
 			m_peRemoteBrowse->m_sLink = L"command:copy:" + strURL;
@@ -174,18 +171,13 @@ void CHomeViewCtrl::Update()
 	{
 		if ( m_peRemote1 )
 		{
-			CString strURL;
-			strURL.Format( L"http://%s:%i/remote",
-				(LPCTSTR)CString( inet_ntoa( Network.m_pHost.sin_addr ) ),
-				(int)ntohs( Network.m_pHost.sin_port ) );
+			CString strURL = L"http://" + Network.m_sAddress + L"/remote";
 			m_peRemote1->SetText( Settings.General.LanguageRTL ? L"\x202A" + strURL : strURL );
 			m_peRemote1->m_sLink = strURL + L"/?username=" + Settings.Remote.Username;
 		}
 		if ( m_peRemote2 )
 		{
-			CString strURL;
-			strURL.Format( L"http://localhost:%i/remote",
-				(int)ntohs( Network.m_pHost.sin_port ) );
+			CString strURL = L"http://" + Network.m_sAddress + L"/remote";
 			m_peRemote2->SetText( Settings.General.LanguageRTL ? L"\x202A" + strURL : strURL );
 			m_peRemote2->m_sLink = strURL + L"/?username=" + Settings.Remote.Username;
 		}

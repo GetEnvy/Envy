@@ -3,7 +3,7 @@
 
 <!-- Envy Default Russian Skin File -->
 
-<!-- Translation based on default en.xml r26 -->
+<!-- Translation based on default en.xml r28 -->
 <!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -3266,7 +3266,7 @@
 	<string id="20678" text="В сети eDonkey используются длинные очереди, и в них приходится ждать долго. Если уменьшите величину, Вы начнете принимать соединения очень ограниченно и у Вас могут возникнуть проблемы с загрузкой.\nУверены, что хотите уменьшить число очередей?"/>
 	<string id="20680" text="Установки Envy"/>
 	<string id="20682" text="Удаленный доступ отключен."/>
-	<string id="20684" text="http://%s:%i/remote - выбрать имя пользователя и пароль."/>
+	<string id="20684" text="выбрать имя пользователя и пароль."/>
 	<string id="20685" text="Невозможно принять соединений, ссылка недоступна."/>
 	<string id="20692" text="Уверены, что хотите удалить шкурку «%s»? Действие будет необратимое."/>
 	<string id="20699" text="Схемы"/>

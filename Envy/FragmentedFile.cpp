@@ -250,7 +250,7 @@ BOOL CFragmentedFile::Open(LPCTSTR pszFile, QWORD nOffset, QWORD nLength, BOOL b
 	return pFile && ( m_nFileError == ERROR_SUCCESS );
 }
 
-BOOL CFragmentedFile::Open(const CEnvyFile* pPPFile, BOOL bWrite)
+BOOL CFragmentedFile::Open(const CEnvyFile* pEnvyFile, BOOL bWrite)
 {
 	m_sFileError.Empty();
 
@@ -264,27 +264,27 @@ BOOL CFragmentedFile::Open(const CEnvyFile* pPPFile, BOOL bWrite)
 	{
 		// Generate new filename (inside incomplete folder)
 		strSource.Format( L"%s\\%s.partial",
-			(LPCTSTR)Settings.Downloads.IncompletePath, (LPCTSTR)pPPFile->GetFilename() );
+			(LPCTSTR)Settings.Downloads.IncompletePath, (LPCTSTR)pEnvyFile->GetFilename() );
 	}
-	else if ( GetFileAttributes( SafePath( pPPFile->m_sPath ) ) != INVALID_FILE_ATTRIBUTES )
+	else if ( GetFileAttributes( SafePath( pEnvyFile->m_sPath ) ) != INVALID_FILE_ATTRIBUTES )
 	{
 		// Use specified file path
-		strSource = pPPFile->m_sPath;
+		strSource = pEnvyFile->m_sPath;
 	}
 	else
 	{
 		// Open existing file from library
 		CSingleLock oLock( &Library.m_pSection, TRUE );
-		if ( CLibraryFile* pFile = LibraryMaps.LookupFileByHash( pPPFile, TRUE, TRUE ) )
+		if ( CLibraryFile* pFile = LibraryMaps.LookupFileByHash( pEnvyFile, TRUE, TRUE ) )
 			strSource = pFile->GetPath();
 	}
 
 	//ASSERT( lstrcmpi( PathFindExtension( strSource ), L".pd" ) != 0 );
 
-	//if ( pPPFile->m_sPath.IsEmpty() )
-	//	pPPFile->m_sPath = strSource;	// For seeded file uploading via Gnutella
+	//if ( pEnvyFile->m_sPath.IsEmpty() )
+	//	pEnvyFile->m_sPath = strSource;	// For seeded file uploading via Gnutella
 
-	if ( ! Open( strSource, 0, pPPFile->m_nSize, bWrite, pPPFile->m_sName ) )
+	if ( ! Open( strSource, 0, pEnvyFile->m_nSize, bWrite, pEnvyFile->m_sName ) )
 	{
 		m_sFileError.Format( LoadString( bWrite ? IDS_DOWNLOAD_FILE_CREATE_ERROR : IDS_DOWNLOAD_FILE_OPEN_ERROR ), (LPCTSTR)strSource );
 		theApp.Message( MSG_ERROR, L"%s %s", (LPCTSTR)m_sFileError, (LPCTSTR)GetErrorString( m_nFileError ) );
@@ -293,7 +293,7 @@ BOOL CFragmentedFile::Open(const CEnvyFile* pPPFile, BOOL bWrite)
 		return FALSE;
 	}
 
-	//TRACE( "Fragmented File : Opened from disk \"%s\"\n", (LPCTSTR)pPPFile->GetFilename() );
+	//TRACE( "Fragmented File : Opened from disk \"%s\"\n", (LPCTSTR)pEnvyFile->GetFilename() );
 
 	return TRUE;
 }

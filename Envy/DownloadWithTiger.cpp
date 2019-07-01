@@ -57,8 +57,8 @@ CDownloadWithTiger::CDownloadWithTiger()
 	, m_nVerifyLength	( 0ul )
 	, m_tVerifyLast		( 0ul )
 	, m_nVerifyHash		( HASH_NULL )
-	, m_nWFLCookie		( SIZE_UNKNOWN )
-	, m_oWFLCache		( 0 )
+	, m_nWantedListCookie ( SIZE_UNKNOWN )
+	, m_oWantedListCache ( 0 )
 {
 }
 
@@ -918,27 +918,15 @@ Fragments::List CDownloadWithTiger::GetHashableFragmentList() const
 		return oList;
 
 	// Select hash with smallest parts
-	int nHash = HASH_NULL;
 	DWORD nSmallest = 0xffffffff;
 	if ( m_pTorrentBlock && Settings.Downloads.VerifyTorrent )
-	{
-		nHash = HASH_TORRENT;
 		nSmallest = m_nTorrentSize;
-	}
-	if ( m_pTigerBlock && Settings.Downloads.VerifyTiger &&
-		 nSmallest > m_nTigerSize )
-	{
-		nHash = HASH_TIGERTREE;
+	if ( m_pTigerBlock && Settings.Downloads.VerifyTiger && nSmallest > m_nTigerSize )
 		nSmallest = m_nTigerSize;
-	}
-	if ( m_pHashsetBlock && Settings.Downloads.VerifyED2K &&
-		 nSmallest > ED2K_PART_SIZE )
-	{
-		nHash = HASH_ED2K;
+	if ( m_pHashsetBlock && Settings.Downloads.VerifyED2K && nSmallest > ED2K_PART_SIZE )
 		nSmallest = ED2K_PART_SIZE;
-	}
 
-	if ( nHash == HASH_NULL )
+	if ( nSmallest == 0xffffffff )
 		return oList;	// No verify
 
 	Fragments::List oResultList = oList;
@@ -961,15 +949,15 @@ Fragments::List CDownloadWithTiger::GetWantedFragmentList() const
 		return Fragments::List( 0 );
 
 	const QWORD nNow = GetVolumeComplete();
-	if ( nNow != m_nWFLCookie || nNow == 0 )
+	if ( nNow != m_nWantedListCookie || nNow == 0 )
 	{
-		m_nWFLCookie = nNow;
+		m_nWantedListCookie = nNow;
 		const Fragments::List oList = inverse( GetHashableFragmentList() );
-		m_oWFLCache = GetEmptyFragmentList();
-		m_oWFLCache.erase( oList.begin(), oList.end() );
+		m_oWantedListCache = GetEmptyFragmentList();
+		m_oWantedListCache.erase( oList.begin(), oList.end() );
 	}
 
-	return m_oWFLCache;
+	return m_oWantedListCache;
 }
 
 BOOL CDownloadWithTiger::AreRangesUseful(const Fragments::List& oAvailable) const

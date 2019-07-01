@@ -297,7 +297,7 @@ BOOL CLibraryHistoryPanel::OnSetCursor(CWnd* pWnd, UINT nHitTest, UINT message)
 	int nIndex = GetIndex( point );
 	if ( nIndex >= 0 )
 	{
-		m_wndTip.Show( nIndex );
+		m_wndTip.Show( nIndex, point );
 		SetCursor( AfxGetApp()->LoadCursor( IDC_HAND ) );
 		return TRUE;
 	}

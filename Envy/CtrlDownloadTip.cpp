@@ -94,21 +94,23 @@ void CDownloadTipCtrl::OnCalcSize(CDC* pDC)
 
 void CDownloadTipCtrl::OnShow()
 {
-	if ( m_pGraph ) delete m_pGraph;
+	delete m_pGraph;
 
 	m_pGraph = CreateLineGraph();
 	m_pItem  = new CGraphItem( 0, 1.0f, RGB( 0, 0, 0xFF ) );
 	m_pGraph->AddItem( m_pItem );
 
-	CSingleLock pLock( &Transfers.m_pSection );
-	if ( SafeLock( pLock ) )
-		TrackerRequests.Request( m_pDownload, BTE_TRACKER_SCRAPE, 0, this );
-	//	pLock.Unlock();
+	if ( m_pDownload && m_pDownload->IsTorrent() )
+	{
+		CSingleLock pLock( &Transfers.m_pSection );
+		if ( SafeLock( pLock ) )
+			TrackerRequests.Request( m_pDownload, BTE_TRACKER_SCRAPE, 0, this );
+	}
 }
 
 void CDownloadTipCtrl::OnHide()
 {
-	if ( m_pGraph ) delete m_pGraph;
+	delete m_pGraph;
 	m_pGraph = NULL;
 	m_pItem  = NULL;
 }
@@ -1021,7 +1023,7 @@ void CDownloadTipCtrl::OnTrackerEvent(bool bSuccess, LPCTSTR /*pszReason*/, LPCT
 
 	//m_nRequest = 0;		// Need no cancel
 
-	if ( ! bSuccess )
+	if ( ! bSuccess || ! m_pDownload )
 		return;
 
 	DWORD nComplete   = pEvent->GetComplete();		// ->m_nSeeders

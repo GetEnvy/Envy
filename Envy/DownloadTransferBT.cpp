@@ -460,7 +460,7 @@ bool CDownloadTransferBT::SendFragmentRequests()
 	if ( ! nBlockSize )
 		return true;
 
-	Fragments::List oPossible( m_pDownload->GetWantedFragmentList() );		// Note: High CPU when active
+	Fragments::List oPossible = m_pDownload->GetWantedFragmentList();		// Note: High CPU when active
 
 	// Integrated ShowInterest():
 	{

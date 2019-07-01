@@ -3,7 +3,7 @@
 
 <!-- Envy Korean Language Skin File -->
 
-<!-- Translation based on default en.xml r26 --> <!--Machine Translated!-->
+<!-- Translation based on default en.xml r28 --> <!--Machine Translated!-->
 <!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -2149,8 +2149,8 @@
 	<string id="20673" text="자동"/>
 	<!-- Missing Info Strings -->
 	<string id="20680" text="Envy 설정"/>
-	<string id="20682" text="Remote access is disabled."/>
-	<string id="20684" text="http://%s:%i/remote - Username/password required."/>
+	<string id="20682" text="원격 액세스가 사용되지 않습니다."/>
+	<string id="20684" text="사용자 이름 / 암호 필요."/>
 	<string id="20685" text="Unable to accept connections, URL unavailable."/>
 	<string id="20699" text="&amp;Schemas"/>
 	<string id="20700" text="%s in : %s out (d:%I64i/u:%I64i)"/>

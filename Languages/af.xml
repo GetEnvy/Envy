@@ -4,7 +4,7 @@
 <!-- Envy Default Afrikaans Skin File -->
 <!-- Weergawe: 27 Oktober 2005 vir Shareaza 2.2.0.2 -->
 
-<!-- Translation based on default en.xml r26 -->
+<!-- Translation based on default en.xml r28 -->
 <!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -3145,7 +3145,7 @@
 	<string id="20678" text="Die eDonkey netwerk gebruik groot waglyste met lang wagtye. Deur die maksimum aanvaarde waglysposisie so streng te beperk, mag jou aflaaie dalk sukkel om te begin.\nIs jy seker jy wil die waglysposisies beperk?"/>
 	<string id="20680" text="Envy Verstellings"/>
 	<string id="20682" text="Web toegang is afgeskakel."/>
-	<string id="20684" text="http://%s:%i/remote - Jy moet 'n gebruikersnaam en wagwoord kies."/>
+	<string id="20684" text="Jy moet 'n gebruikersnaam en wagwoord kies."/>
 	<string id="20685" text="Kan nie konneksies ontvang nie, URL nie beskikbaar."/>
 	<string id="20692" text="Is jy seker jy wil die &quot;%s&quot; omslag skrap? Dit kan nie herroep word nie."/>
 	<string id="20699" text="&amp;Skemas"/>

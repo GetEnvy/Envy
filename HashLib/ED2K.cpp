@@ -81,11 +81,14 @@ void CED2K::Load(const uchar* pBuf)
 
 	CopyMemory( &m_pRoot[ 0 ], pBuf, sizeof( CMD4::Digest ) );
 	pBuf += sizeof( CMD4::Digest );
-	m_pList = new CMD4::Digest[ m_nList ];
-	if ( m_nList > 1 )
-		CopyMemory( m_pList, pBuf, sizeof( CMD4::Digest ) * m_nList );
-	else if ( m_nList == 1 )
-		std::copy( &m_pRoot[ 0 ], &m_pRoot[ 4 ], &m_pList[ 0 ][ 0 ] );
+	m_pList = new (std::nothrow) CMD4::Digest[ m_nList ];
+	if ( m_pList )
+	{
+		if ( m_nList > 1 )
+			CopyMemory( m_pList, pBuf, sizeof( CMD4::Digest ) * m_nList );
+		else if ( m_nList == 1 )
+			std::copy( &m_pRoot[ 0 ], &m_pRoot[ 4 ], &m_pList[ 0 ][ 0 ] );
+	}
 }
 
 uint32 CED2K::GetSerialSize() const
@@ -106,7 +109,7 @@ void CED2K::BeginFile(uint64 nLength)
 	m_nList = nLength ? (uint32)( ( nLength + ED2K_PART_SIZE ) / ED2K_PART_SIZE ) : 0;
 	if ( nLength % ED2K_PART_SIZE == 0 && nLength )
 		m_bNullBlock = true;
-	m_pList = new CMD4::Digest[ m_nList ];
+	m_pList = new (std::nothrow) CMD4::Digest[ m_nList ];
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -215,7 +218,7 @@ BOOL CED2K::FinishBlockTest(uint32 nBlock)
 //////////////////////////////////////////////////////////////////////
 // CED2K encode to bytes
 
-BOOL CED2K::ToBytes(BYTE** ppOutput, uint32* pnOutput)
+BOOL CED2K::ToBytes(BYTE** ppOutput, uint32* pnOutput) const
 {
 	if ( m_nList == 0 ) return FALSE;
 
@@ -244,7 +247,7 @@ void CED2K::FromRoot(__in_bcount(16) const uchar* pHash)
 	Clear();
 
 	m_nList = 1;
-	m_pList = new CMD4::Digest[ m_nList ];
+	m_pList = new (std::nothrow) CMD4::Digest[ m_nList ];
 	if ( ! m_pList ) return;
 	std::copy( (uint32*)pHash, ( (uint32*)pHash ) + 4, &m_pRoot[ 0 ] );
 	std::copy( (uint32*)pHash, ( (uint32*)pHash ) + 4, &m_pList[ 0 ][ 0 ] );
@@ -274,7 +277,7 @@ BOOL CED2K::FromBytes(BYTE* pOutput, uint32 nOutput, uint64 nSize)
 	}
 
 	m_nList = nOutput / sizeof( CMD4::Digest );
-	m_pList = new CMD4::Digest[ m_nList ];
+	m_pList = new (std::nothrow) CMD4::Digest[ m_nList ];
 	if ( ! m_pList ) return FALSE;
 
 	CopyMemory( m_pList, pOutput, nOutput );
@@ -297,7 +300,7 @@ BOOL CED2K::FromBytes(BYTE* pOutput, uint32 nOutput, uint64 nSize)
 //////////////////////////////////////////////////////////////////////
 // CED2K integrity checking
 
-BOOL CED2K::CheckIntegrity()
+BOOL CED2K::CheckIntegrity() const
 {
 	if ( m_nList == 1 )
 		return std::equal( &m_pRoot[ 0 ], &m_pRoot[ 4 ], &m_pList[ 0 ][ 0 ] );

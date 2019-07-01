@@ -2,7 +2,7 @@
 // SWFBuilder.h : Declaration of the CSWFBuilder
 //
 // This file is part of Envy (getenvy.com) © 2016-2018
-// Portions copyright PeerProject 2008-2010 and Nikolay Raspopov 2005
+// Portions copyright Nikolay Raspopov 2005 and PeerProject 2008-2010
 //
 // GFL Library, GFL SDK and XnView
 // Copyright (c) 1991-2004 Pierre-E Gougelet
@@ -30,29 +30,18 @@ class ATL_NO_VTABLE CSWFBuilder :
 	public ILibraryBuilderPlugin
 {
 public:
-	CSWFBuilder() throw()
-	{
-		m_pUnkMarshaler = NULL;
-	}
 
 DECLARE_REGISTRY_RESOURCEID(IDR_SWFBUILDER)
 
 BEGIN_COM_MAP(CSWFBuilder)
 	COM_INTERFACE_ENTRY(ILibraryBuilderPlugin)
-	COM_INTERFACE_ENTRY_AGGREGATE(IID_IMarshal, m_pUnkMarshaler.p)
 END_COM_MAP()
-
-DECLARE_PROTECT_FINAL_CONSTRUCT()
-DECLARE_GET_CONTROLLING_UNKNOWN()
-
-	HRESULT FinalConstruct () throw();
-	void FinalRelease () throw();
-
-	CComPtr<IUnknown> m_pUnkMarshaler;
 
 // ILibraryBuilderPlugin
 public:
-	STDMETHOD(Process)(/*[in]*/ BSTR sFile, /*[in]*/ ISXMLElement* pXML);
+	STDMETHOD(Process)(
+		/* [in] */ BSTR sFile,
+		/* [in] */ ISXMLElement* pXML);
 };
 
 OBJECT_ENTRY_AUTO(__uuidof(SWFBuilder), CSWFBuilder)

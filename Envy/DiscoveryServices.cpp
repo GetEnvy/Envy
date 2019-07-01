@@ -1774,10 +1774,9 @@ BOOL CDiscoveryServices::RunWebCacheUpdate()
 	{
 		if ( ! Network.IsListening() ) return TRUE;
 
-		strURL.Format( L"%s?ip=%s:%hu&x.leaves=%u&uptime=%u&x.max=%u",
+		strURL.Format( L"%s?ip=%s&x.leaves=%u&uptime=%u&x.max=%u",
 			(LPCTSTR)m_pWebCache->m_sAddress,
-			(LPCTSTR)CString( inet_ntoa( Network.m_pHost.sin_addr ) ),
-			htons( Network.m_pHost.sin_port ),
+			(LPCTSTR)Network.m_sAddress,
 			Neighbours.GetCount( PROTOCOL_ANY, -1, ntLeaf ),
 			Network.GetStableTime(),
 			( m_nLastUpdateProtocol == PROTOCOL_G2 ) ? Settings.Gnutella2.NumLeafs : Settings.Gnutella1.NumLeafs );

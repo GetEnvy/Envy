@@ -3,7 +3,7 @@
 
 <!-- Envy Default Catalan Skin File -->
 
-<!-- Translation based on default en.xml r26 -->
+<!-- Translation based on default en.xml r28 -->
 <!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -3120,7 +3120,7 @@
 	<string id="20678" text="La Xarxa eDonkey utilitza llargues cues amb temps llargs d' espera. Limitant la teva màxima cua de posició pots tenir problemes per a iniciar les descàrregues.nEstàs segur/a que vols limitar les posicions de cua que acceptaràs?"/>
 	<string id="20680" text="Configuració de Envy"/>
 	<string id="20682" text="L'accès remot està deshabilitat."/>
-	<string id="20684" text="http://%s:%i/remote - Nom d'usuari i contrasenya?"/>
+	<string id="20684" text="Nom d'usuari i contrasenya?"/>
 	<string id="20685" text="No es poden acceptar connexions, URL no disponible."/>
 	<string id="20692" text="Estàs segur que vols esborrar l'interfície &quot;%s&quot;. Aquesta decisió no es pot desfer."/>
 	<string id="20699" text="&amp;Esquemes"/>

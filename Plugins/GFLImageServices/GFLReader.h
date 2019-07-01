@@ -2,7 +2,7 @@
 // GFLReader.h : Declaration of the CGFLReader
 //
 // This file is part of Envy (getenvy.com) © 2016-2018
-// Portions copyright PeerProject 2008 and Nikolay Raspopov 2005
+// Portions copyright Nikolay Raspopov 2005 and PeerProject 2008
 //
 // Envy is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
@@ -27,25 +27,12 @@ class ATL_NO_VTABLE CGFLReader :
 	public IImageServicePlugin
 {
 public:
-	CGFLReader () throw()
-	{
-		m_pUnkMarshaler = NULL;
-	}
 
 DECLARE_REGISTRY_RESOURCEID(IDR_GFLREADER)
 
 BEGIN_COM_MAP(CGFLReader)
 	COM_INTERFACE_ENTRY(IImageServicePlugin)
-	COM_INTERFACE_ENTRY_AGGREGATE(IID_IMarshal, m_pUnkMarshaler.p)
 END_COM_MAP()
-
-DECLARE_PROTECT_FINAL_CONSTRUCT()
-DECLARE_GET_CONTROLLING_UNKNOWN()
-
-	HRESULT FinalConstruct () throw();
-	void FinalRelease () throw();
-
-	CComPtr<IUnknown> m_pUnkMarshaler;
 
 // IImageServicePlugin
 public:

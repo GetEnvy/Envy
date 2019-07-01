@@ -718,18 +718,25 @@ void CTigerTree::SetupAndAllocate(uint32 nHeight, uint64 nLength)
 
 	m_nHeight = min( nActualHeight, nHeight );
 
-	m_nBlockPos = 0;
-	if ( nActualHeight > nHeight )
-		m_nBlockCount = ( ( (uint32)1 ) << ( nActualHeight - nHeight ) );
-	else
-		m_nBlockCount = 1;
+	m_nBlockCount	= 1;
+	m_nBlockPos		= 0;
 
-	m_nNodeCount = ( ( (uint32)1 ) << m_nHeight );
+	if ( nActualHeight > nHeight )
+	{
+		for ( uint32 nStep = nActualHeight - nHeight; nStep; nStep-- )
+			m_nBlockCount *= 2;
+	}
+
+	m_nNodeCount = 1;
+	for ( uint32 nStep = m_nHeight; nStep; nStep-- )
+		m_nNodeCount *= 2;
+
 	m_nNodeBase	= ( m_nNodeCount / 2 );
+	m_nNodeCount--;
 	m_nBaseUsed	= (uint32)( nCount / m_nBlockCount );
 	if ( nCount % m_nBlockCount ) m_nBaseUsed++;
 
-	m_pNode		= new CTigerNode[ --m_nNodeCount ];
+	m_pNode		= new (std::nothrow) CTigerNode[ m_nNodeCount ];
 	m_nNodePos	= 0;
 }
 
@@ -744,15 +751,23 @@ void CTigerTree::SetupParameters(uint64 nLength)
 	for ( uint64 nStep = 1; nStep < nCount; nStep *= 2 )
 		nActualHeight++;
 
-	m_nBlockPos = 0;
-	if ( nActualHeight > m_nHeight )
-		m_nBlockCount = ( ( (uint32)1 ) << ( nActualHeight - m_nHeight ) );
-	else
-		m_nBlockCount = 1;
+	m_nBlockCount	= 1;
+	m_nBlockPos		= 0;
 
-	m_nNodeCount = ( ( (uint32)1 ) << m_nHeight );
-	m_nNodeBase  = ( m_nNodeCount-- / 2 );
-	m_nBaseUsed  = (uint32)( nCount / m_nBlockCount );
+	if ( nActualHeight > m_nHeight )
+	{
+		for ( uint32 nStep = nActualHeight - m_nHeight; nStep; nStep-- )
+			m_nBlockCount *= 2;
+	}
+
+	m_nNodeCount = 1;
+	for ( uint32 nStep = m_nHeight; nStep; nStep-- )
+		m_nNodeCount *= 2;
+
+	m_nNodeBase = ( m_nNodeCount / 2 );
+	m_nNodeCount--;
+
+	m_nBaseUsed	= (uint32)( nCount / m_nBlockCount );
 	if ( nCount % m_nBlockCount )
 		m_nBaseUsed++;
 }
@@ -793,7 +808,7 @@ void CTigerTree::Load(const uchar* pBuf)
 
 	if ( ! m_nHeight ) return;
 
-	if ( CTigerNode* pNode = new CTigerNode[ m_nNodeCount ] )
+	if ( CTigerNode* pNode = new (std::nothrow) CTigerNode[ m_nNodeCount ] )
 	{
 		m_pNode = pNode;
 		for ( DWORD nStep = m_nNodeCount; nStep; nStep--, pNode++ )
@@ -846,21 +861,21 @@ BOOL CTigerTree::GetRoot(__in_bcount(24) uchar* pHash) const
 //////////////////////////////////////////////////////////////////////
 // CTigerTree assume
 
-void CTigerTree::Assume(CTigerTree* pSource)
-{
-	CSectionLock oLock( &m_pSection );
-
-	Clear();
-	if ( pSource->m_pNode == NULL ) return;
-
-	m_nHeight		= pSource->m_nHeight;
-	m_nNodeCount	= pSource->m_nNodeCount;
-	m_pNode			= pSource->m_pNode;
-
-	pSource->m_nHeight		= 0;
-	pSource->m_nNodeCount	= 0;
-	pSource->m_pNode		= NULL;
-}
+//void CTigerTree::Assume(CTigerTree* pSource)
+//{
+//	CSectionLock oLock( &m_pSection );
+//
+//	Clear();
+//	if ( pSource->m_pNode == NULL ) return;
+//
+//	m_nHeight		= pSource->m_nHeight;
+//	m_nNodeCount	= pSource->m_nNodeCount;
+//	m_pNode			= pSource->m_pNode;
+//
+//	pSource->m_nHeight		= 0;
+//	pSource->m_nNodeCount	= 0;
+//	pSource->m_pNode		= NULL;
+//}
 
 //////////////////////////////////////////////////////////////////////
 // CTigerTree create from file
@@ -872,7 +887,7 @@ void CTigerTree::BeginFile(uint32 nHeight, uint64 nLength)
 	SetupAndAllocate( nHeight, nLength );
 
 	if ( m_pStackBase == NULL )
-		m_pStackBase = new CTigerNode[ STACK_SIZE ];
+		m_pStackBase = new (std::nothrow) CTigerNode[ STACK_SIZE ];
 	m_pStackTop	= m_pStackBase;
 	m_nBlockPos = 0;
 }
@@ -966,7 +981,7 @@ void CTigerTree::BeginBlockTest()
 	CSectionLock oLock( &m_pSection );
 
 	if ( m_pStackBase == NULL )
-		m_pStackBase = new CTigerNode[ STACK_SIZE ];
+		m_pStackBase = new (std::nothrow) CTigerNode[ STACK_SIZE ];
 	m_pStackTop	= m_pStackBase;
 	m_nBlockPos = 0;
 }
@@ -1023,7 +1038,7 @@ BOOL CTigerTree::FinishBlockTest(uint32 nBlock)
 //////////////////////////////////////////////////////////////////////
 // CTigerTree breadth-first serialize
 
-BOOL CTigerTree::ToBytes(uint8** ppOutput, uint32* pnOutput, uint32 nHeight)
+BOOL CTigerTree::ToBytes(uint8** ppOutput, uint32* pnOutput, uint32 nHeight) const
 {
 	CSectionLock oLock( &m_pSection );
 
@@ -1060,7 +1075,7 @@ BOOL CTigerTree::ToBytes(uint8** ppOutput, uint32* pnOutput, uint32 nHeight)
 	return TRUE;
 }
 
-BOOL CTigerTree::ToBytesLevel1(uint8** ppOutput, uint32* pnOutput)
+BOOL CTigerTree::ToBytesLevel1(uint8** ppOutput, uint32* pnOutput) const
 {
 	CSectionLock oLock( &m_pSection );
 
@@ -1207,13 +1222,13 @@ BOOL CTigerTree::FromBytesLevel1(const uint8* pInput, uint32 nInput, uint64 nLen
 //////////////////////////////////////////////////////////////////////
 // CTigerTree integrity check
 
-BOOL CTigerTree::CheckIntegrity()
+BOOL CTigerTree::CheckIntegrity() const
 {
 	CSectionLock oLock( &m_pSection );
 
 	if ( m_pNode == NULL ) return FALSE;
 
-	m_nNodeBase = ( m_nNodeCount + 1 ) / 2;
+	_ASSERT( m_nNodeBase == ( m_nNodeCount + 1 ) / 2 );
 	CTigerNode* pBase = m_pNode + m_nNodeCount - m_nNodeBase;
 
 	for ( uint32 nCombine = m_nNodeBase; nCombine > 1; )
@@ -1246,10 +1261,7 @@ BOOL CTigerTree::CheckIntegrity()
 				else if ( memcmp( pIn[0].value, pOut->value, TIGER_SIZE ) )
 					return FALSE;
 			}
-			else
-			{
-				// pOut is bValid=false
-			}
+			//else	// pOut is bValid=false
 		}
 
 		if ( nCombine == 2 && ! pOut->bValid )

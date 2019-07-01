@@ -2,7 +2,7 @@
 // GFLReader.cpp : Implementation of CGFLReader
 //
 // This file is part of Envy (getenvy.com) © 2016-2018
-// Portions copyright PeerProject 2008-2014 and Nikolay Raspopov 2005
+// Portions copyright Nikolay Raspopov 2005 and PeerProject 2008-2014
 //
 // GFL Library, GFL SDK and XnView
 // Copyright (c) 1991-2009 Pierre-E Gougelet
@@ -22,17 +22,7 @@
 #include "StdAfx.h"
 #include "GFLReader.h"
 
-HRESULT CGFLReader::FinalConstruct() throw()
-{
-	return CoCreateFreeThreadedMarshaler( GetControllingUnknown(), &m_pUnkMarshaler.p );
-}
-
-void CGFLReader::FinalRelease() throw()
-{
-	m_pUnkMarshaler.Release();
-}
-
-HRESULT BitmapToSafeArray ( SAFEARRAY** const ppImage, const IMAGESERVICEDATA* const pParams, const GFL_BITMAP* hGflBitmap ) throw ()
+HRESULT BitmapToSafeArray( SAFEARRAY** const ppImage, const IMAGESERVICEDATA* const pParams, const GFL_BITMAP* hGflBitmap ) throw ()
 {
 	HRESULT hr = E_OUTOFMEMORY;
 	ULONG line_size = ( ( pParams->nWidth * pParams->nComponents ) + 3 ) & ( -4 );
@@ -60,7 +50,7 @@ HRESULT BitmapToSafeArray ( SAFEARRAY** const ppImage, const IMAGESERVICEDATA* c
 	return hr;
 }
 
-STDMETHODIMP CGFLReader::LoadFromFile (
+STDMETHODIMP CGFLReader::LoadFromFile(
 	/* [in] */ BSTR sFile,
 	/* [in,out] */ IMAGESERVICEDATA* pParams,
 	/* [out] */ SAFEARRAY** ppImage )
@@ -109,9 +99,9 @@ STDMETHODIMP CGFLReader::LoadFromFile (
 			prm.Flags = GFL_LOAD_IGNORE_READ_ERROR | GFL_LOAD_ONLY_FIRST_FRAME | GFL_LOAD_FORCE_COLOR_MODEL;
 			prm.ColorModel = ( inf.ComponentsPerPixel == 4 ) ? GFL_RGBA : GFL_RGB;
 			prm.FormatIndex = inf.FormatIndex;
-			hr = SAFEgflLoadBitmap ( *pszPath ? pszPath : (LPCWSTR)sFile, &hGflBitmap, &prm, &inf);
+			hr = SAFEgflLoadBitmap( *pszPath ? pszPath : (LPCWSTR)sFile, &hGflBitmap, &prm, &inf);
 			if ( SUCCEEDED( hr ) )
-				hr = BitmapToSafeArray (ppImage, pParams, hGflBitmap);
+				hr = BitmapToSafeArray( ppImage, pParams, hGflBitmap );
 		}
 	}
 	else
@@ -132,7 +122,7 @@ STDMETHODIMP CGFLReader::LoadFromFile (
 	return hr;
 }
 
-STDMETHODIMP CGFLReader::LoadFromMemory (
+STDMETHODIMP CGFLReader::LoadFromMemory(
 	/* [in] */ BSTR /* sType */,
 	/* [in] */ SAFEARRAY* pMemory,
 	/* [in,out] */ IMAGESERVICEDATA* pParams,
@@ -208,7 +198,7 @@ STDMETHODIMP CGFLReader::LoadFromMemory (
 	return hr;
 }
 
-STDMETHODIMP CGFLReader::SaveToFile (
+STDMETHODIMP CGFLReader::SaveToFile(
 	/* [in] */ BSTR sFile,
 	/* [in,out] */ IMAGESERVICEDATA* pParams,
 	/* [in] */ SAFEARRAY* pImage )
@@ -257,7 +247,7 @@ STDMETHODIMP CGFLReader::SaveToFile (
 	return hr;
 }
 
-STDMETHODIMP CGFLReader::SaveToMemory (
+STDMETHODIMP CGFLReader::SaveToMemory(
 	/* [in] */ BSTR sType,
 	/* [out] */ SAFEARRAY** ppMemory,
 	/* [in,out] */ IMAGESERVICEDATA* pParams,
@@ -283,7 +273,7 @@ STDMETHODIMP CGFLReader::SaveToMemory (
 		if ( SUCCEEDED( hr ) )
 		{
 			hr = E_OUTOFMEMORY;
-			GFL_BITMAP* hGflBitmap = gflAllockBitmapEx (
+			GFL_BITMAP* hGflBitmap = gflAllockBitmapEx(
 				pParams->nComponents == 4 ? GFL_RGBA : GFL_RGB,
 				pParams->nWidth, pParams->nHeight, 8, 4, NULL );
 			if ( hGflBitmap )

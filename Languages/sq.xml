@@ -3,7 +3,7 @@
 
 <!-- Envy Default Albanian Skin File -->
 
-<!-- Translation based on default en.xml r26 -->
+<!-- Translation based on default en.xml r28 -->
 <!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -2995,7 +2995,7 @@
 	<string id="20678" text="The eDonkey network uses large queues with long wait times. By limiting the maximum queue position you will accept so strictly, you may have trouble getting downloads to begin.\nAre you sure you want to limit what queue positions you will accept?"/>
 	<string id="20680" text="Vendosjet e Envy-s"/>
 	<string id="20682" text="Hyrja në largësi është çaktivizuar."/>
-	<string id="20684" text="http://%s:%i/remote - një emër përdoruesi dhe fjalëkalimi."/>
+	<string id="20684" text="një emër përdoruesi dhe fjalëkalimi."/>
 	<string id="20685" text="Nuk mund të pranoj lidhjet, URLi pa vlerë."/>
 	<string id="20692" text="A jeni i sigurt se doni të fshini lëvoren &quot;%s&quot;. Këtë nuk mund ta ktheni."/>
 	<string id="20699" text="&amp;Skema"/>

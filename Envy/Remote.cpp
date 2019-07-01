@@ -996,7 +996,7 @@ void CRemote::PageDownloads()
 		if ( GetKey( L"filter_queued" ) == L"1" ) Settings.Downloads.FilterMask |= DLF_QUEUED;
 		if ( GetKey( L"filter_sources" ) == L"1" ) Settings.Downloads.FilterMask |= DLF_SOURCES;
 		if ( GetKey( L"filter_seeds" ) == L"1" )  Settings.Downloads.FilterMask |= DLF_SEED;
-		Settings.Downloads.ShowSources = ( GetKey( L"filter_show_all" ) == L"1" );
+		Settings.Downloads.ShowAllSources = ( GetKey( L"filter_show_all" ) == L"1" );
 	}
 
 	Add( L"filter_active", ( Settings.Downloads.FilterMask & DLF_ACTIVE ) ? L"checked=\"checked\"" : L"" );
@@ -1004,7 +1004,7 @@ void CRemote::PageDownloads()
 	Add( L"filter_queued", ( Settings.Downloads.FilterMask & DLF_QUEUED ) ? L"checked=\"checked\"" : L"" );
 	Add( L"filter_sources", ( Settings.Downloads.FilterMask & DLF_SOURCES ) ? L"checked=\"checked\"" : L"" );
 	Add( L"filter_seeds", ( Settings.Downloads.FilterMask & DLF_PAUSED ) ? L"checked=\"checked\"" : L"" );
-	Add( L"filter_show_all", Settings.Downloads.ShowSources ? L"checked=\"checked\"" : L"" );
+	Add( L"filter_show_all", Settings.Downloads.ShowAllSources ? L"checked=\"checked\"" : L"" );
 	Output( L"downloadsTop" );
 
 	for ( POSITION posDownload = Downloads.GetIterator(); posDownload != NULL; )
@@ -1137,7 +1137,7 @@ void CRemote::PageDownloads()
 					}
 				}
 
-				if ( Settings.Downloads.ShowSources || pSource->IsConnected() )
+				if ( Settings.Downloads.ShowAllSources || pSource->IsConnected() )
 				{
 					Add( L"source_id", strSourceID );
 					Add( L"source_agent", pSource->m_sServer );

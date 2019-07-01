@@ -195,19 +195,20 @@ void CFragmentBar::DrawDownload(CDC* pDC, CRect* prcBar, const CDownloadDisplayD
 			pDC->FillSolidRect( prcBar, crNatural );
 	}
 
-	Fragments::List oList( pDownloadData->m_oEmptyFragments );
-	Fragments::List::const_iterator pItr = oList.begin();
-	const Fragments::List::const_iterator pEnd = oList.end();
+//	Fragments::List oList( pDownloadData->m_oEmptyFragments );
+	Fragments::List::const_iterator pItr = pDownloadData->m_oEmptyFragments.begin();
+	const Fragments::List::const_iterator pEnd = pDownloadData->m_oEmptyFragments.end();
 	for ( ; pItr != pEnd; ++pItr )
 	{
 		DrawFragment( pDC, prcBar, pDownloadData->m_nSize, pItr->begin(), pItr->size(), crNatural, FALSE );
 	}
 
-	for ( UINT nSource = 0; nSource < pDownloadData->m_nSourceCount; nSource++ )
+	const UINT nMax = min( pDownloadData->m_nSourceCount, (DWORD)pDownloadData->m_pSourcesData.GetCount() );
+	for ( UINT nSource = 0; nSource < nMax; nSource++ )
 	{
 		// Note: Was pDownload->GetNext( posSource )->Draw( pDC, prcBar );
 		if ( ! ( pDownloadData->m_bCompleted || pDownloadData->m_bSeeding ) || ! pDownloadData->m_pSourcesData[ nSource ].m_oPastFragments.empty() )
-			DrawSource( pDC, prcBar, &pDownloadData->m_pSourcesData.GetAt( nSource ), crNatural, FALSE );
+			DrawSource( pDC, prcBar, &pDownloadData->m_pSourcesData[ nSource ], crNatural, FALSE );
 	}
 }
 
@@ -309,12 +310,14 @@ void CFragmentBar::DrawSource(CDC* pDC, CRect* prcBar, const CSourceDisplayData*
 		}
 	}
 
-	Fragments::List oList( pSourceData->m_oPastFragments );
-	Fragments::List::const_iterator pItr = oList.begin();
-	const Fragments::List::const_iterator pEnd = oList.end();
-	for ( ; pItr != pEnd; ++pItr )
 	{
-		DrawFragment( pDC, prcBar, pSourceData->m_nSize, pItr->begin(), pItr->size(), crTransfer, TRUE, TRUE );
+		const Fragments::List oList = pSourceData->m_oPastFragments;	// High cpu
+		Fragments::List::const_iterator pItr = oList.begin();
+		const Fragments::List::const_iterator pEnd = oList.end();
+		for ( ; pItr != pEnd; ++pItr )
+		{
+			DrawFragment( pDC, prcBar, pSourceData->m_nSize, pItr->begin(), pItr->size(), crTransfer, TRUE, TRUE );
+		}
 	}
 
 	if ( ! bDrawEmpty )
@@ -323,7 +326,10 @@ void CFragmentBar::DrawSource(CDC* pDC, CRect* prcBar, const CSourceDisplayData*
 	// Draw empty bar areas
 	if ( ! pSourceData->m_oAvailable.empty() )
 	{
-		for ( Fragments::List::const_iterator pItr = pSourceData->m_oAvailable.begin(); pItr != pSourceData->m_oAvailable.end(); ++pItr )
+		const Fragments::List oList = pSourceData->m_oAvailable;
+		Fragments::List::const_iterator pItr = oList.begin();
+		const Fragments::List::const_iterator pEnd = oList.end();
+		for ( ; pItr != pEnd; ++pItr )
 		{
 			CFragmentBar::DrawFragment( pDC, prcBar, pSourceData->m_nSize, pItr->begin(), pItr->size(), crNatural, FALSE, TRUE );		// ToDo: Crash here?
 		}
@@ -471,15 +477,20 @@ void CFragmentBar::DrawUpload(CDC* pDC, CRect* prcBar, const CUploadDisplayData*
 			pDC->FillSolidRect( prcBar, crNatural );
 	}
 
-#if (_MSC_VER > 1700)	// VS2012 for C++11
-	for ( const auto &frag : pUploadData->m_oFragments )
+#if !defined(PUBLIC_RELEASE_FIX) && (_MSC_VER > 1700)	// VS2012 for C++11
+	for ( const auto &frag : pUploadData->m_oFragments )	// Crash here: cannot dereference value-initialized map/set iterator
 	{
-		DrawFragment( pDC, prcBar, pUploadData->m_nSize, frag.begin(), frag.size(), Colors.m_crFragmentComplete, TRUE );
+		DrawFragment( pDC, prcBar, pUploadData->m_nSize, frag.begin(), frag.size(), Colors.m_crFragmentComplete, FALSE );
 	}
 #else
-	for ( Fragments::List::const_iterator pItr = pUploadData->m_oFragments.begin(); pItr != pUploadData->m_oFragments.end(); pItr++ )
 	{
-		DrawFragment( pDC, prcBar, pUploadData->m_nSize, pItr->begin(), pItr->size(), Colors.m_crFragmentComplete, TRUE );
+		const Fragments::List oList = pUploadData->m_oFragments;
+		Fragments::List::const_iterator pItr = oList.begin();
+		const Fragments::List::const_iterator pEnd = oList.end();
+		for ( ; pItr != pEnd; ++pItr )
+		{
+			DrawFragment( pDC, prcBar, pUploadData->m_nSize, pItr->begin(), pItr->size(), Colors.m_crFragmentComplete, FALSE );
+		}
 	}
 #endif
 
@@ -509,7 +520,7 @@ void CFragmentBar::DrawUpload(CDC* pDC, CRect* prcBar, const CUploadDisplayData*
 }
 
 // Legacy locking method:  (CtrlUploadTip)
-void CFragmentBar::DrawUpload(CDC* pDC, CRect* prcBar, CUploadFile* pFile, COLORREF crNatural)
+void CFragmentBar::DrawUpload(CDC* pDC, CRect* prcBar, const CUploadFile* pFile, COLORREF crNatural)
 {
 	CUploadTransfer* pUpload = pFile->GetActive();
 	if ( ! pUpload ) return;

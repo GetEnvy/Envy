@@ -144,8 +144,8 @@ protected:
 
 	mutable CCriticalSection	m_pSection;
 	CVirtualFile				m_oFile;
-	QWORD						m_nUnflushed;
 	Fragments::List				m_oFList;
+	QWORD						m_nUnflushed;
 	DWORD						m_nFileError;
 	CString						m_sFileError;
 	volatile LONG				m_dwRef;
@@ -159,7 +159,7 @@ protected:
 
 public:
 	// By hash from library: Open file from disk or create file inside incomplete folder
-	BOOL	Open(const CEnvyFile* pPPFile, BOOL bWrite);
+	BOOL	Open(const CEnvyFile* pEnvyFile, BOOL bWrite);
 	// By .torrent: Open file from disk or create file inside incomplete folder file(s)
 	BOOL	Open(const CBTInfo& oInfo, BOOL bWrite);
 protected:
@@ -254,18 +254,19 @@ public:
 	// Get total size of whole file (in bytes)
 	inline QWORD GetTotal() const
 	{
-		CQuickLock oLock( m_pSection );
+	//	CQuickLock oLock( m_pSection );
 
 		return m_oFList.limit();
 	}
 
 	inline QWORD GetRemaining() const
 	{
-		CQuickLock oLock( m_pSection );
+		//	CQuickLock oLock( m_pSection );
 
-		return ( ( m_oFList.limit() == 0 ) ||
-			( m_oFList.limit() == SIZE_UNKNOWN && m_oFList.length_sum() ) ) ?
-			SIZE_UNKNOWN : m_oFList.length_sum();
+		if ( m_oFList.limit() == 0 || m_oFList.limit() == SIZE_UNKNOWN && m_oFList.length_sum() )
+			return SIZE_UNKNOWN;
+
+		return m_oFList.length_sum();
 	}
 
 	// Get list of all fragments which must be downloaded
@@ -274,7 +275,7 @@ public:
 	// Get list of empty fragments
 	inline Fragments::List GetEmptyFragmentList() const
 	{
-		CQuickLock oLock( m_pSection );
+	//	CQuickLock oLock( m_pSection );		// High Contention?
 
 		return m_oFList;
 	}

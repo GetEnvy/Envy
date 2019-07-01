@@ -608,6 +608,7 @@ CString CBTClient::GetUserAgentAzureusStyle(LPCSTR pszVendor)
 		Vendors[ L"BE" ] = L"BareTorrent";
 		Vendors[ L"BF" ] = L"Bitflu";
 		Vendors[ L"BG" ] = L"BTG";
+	//	Vendors[ L"BI" ] = L"BI";
 	//	Vendors[ L"BL" ] = L"BL";
 		Vendors[ L"BM" ] = L"BitsMagnet";
 		Vendors[ L"BO" ] = L"BitsOnWheels";
@@ -661,7 +662,7 @@ CString CBTClient::GetUserAgentAzureusStyle(LPCSTR pszVendor)
 		Vendors[ L"PC" ] = L"CacheLogic";
 		Vendors[ L"PD" ] = L"Pando";
 		Vendors[ L"PE" ] = L"PeerProject";
-		Vendors[ L"PP" ] = L"PeerProject";	// Unused
+	//	Vendors[ L"PP" ] = L"PeerProject";	// Unused
 		Vendors[ L"PT" ] = L"PHPTracker";
 		Vendors[ L"pX" ] = L"pHoeniX";
 		Vendors[ L"qB" ] = L"qBittorrent";
@@ -690,6 +691,7 @@ CString CBTClient::GetUserAgentAzureusStyle(LPCSTR pszVendor)
 		Vendors[ L"TT" ] = L"TuoTu";
 		Vendors[ L"TI" ] = L"Tixati";
 		Vendors[ L"TX" ] = L"Tixati";
+	//	Vendors[ L"tT" ] = L"tT";
 		Vendors[ L"UL" ] = L"uLeecher";
 		Vendors[ L"UE" ] = L"\x00B5Torrent Embed";
 		Vendors[ L"UM" ] = L"\x00B5Torrent Mac";
@@ -731,19 +733,19 @@ CString CBTClient::GetUserAgentAzureusStyle(LPCSTR pszVendor)
 	}
 
 	// Parse versioning schemes
-	int nCount = CountOf(strUserAgent, L"%c", 5);
+	const int nChars = CountOf( strUserAgent, L"%c", 4 );
 
-	if ( nCount == 0 && (TCHAR)pszVendor[5] > '0' )	// Default 0.0.0.0
+	if ( nChars == 0 && (TCHAR)pszVendor[5] > '0' && (TCHAR)pszVendor[5] < 'B' )	// Default 0.0.0.0
 		strUserAgent.Format( L"%s %c.%c.%c.%c", (LPCTSTR)strUserAgent, (TCHAR)pszVendor[2], (TCHAR)pszVendor[3], (TCHAR)pszVendor[4], (TCHAR)pszVendor[5] );
-	else if ( nCount == 0 )	// Default 0.0.0
+	else if ( nChars == 0 )	// Default 0.0.0
 		strUserAgent.Format( L"%s %c.%c.%c", (LPCTSTR)strUserAgent, (TCHAR)pszVendor[2], (TCHAR)pszVendor[3], (TCHAR)pszVendor[4] );
-	else if ( nCount >= 4 )
+	else if ( nChars >= 4 )
 		strUserAgent.Format( (LPCTSTR)strUserAgent, (TCHAR)pszVendor[2], (TCHAR)pszVendor[3], (TCHAR)pszVendor[4], (TCHAR)pszVendor[5] );
-	else if ( nCount == 3 )
+	else if ( nChars == 3 )
 		strUserAgent.Format( (LPCTSTR)strUserAgent, (TCHAR)pszVendor[2], (TCHAR)pszVendor[3], (TCHAR)pszVendor[4] );
-	else if ( nCount == 2 )
+	else if ( nChars == 2 )
 		strUserAgent.Format( (LPCTSTR)strUserAgent, (TCHAR)pszVendor[2], (TCHAR)pszVendor[3] );
-	else if ( nCount == 1 )
+	else if ( nChars == 1 )
 		strUserAgent.Format( (LPCTSTR)strUserAgent, (TCHAR)pszVendor[2] );
 
 	return strUserAgent;

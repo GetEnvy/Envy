@@ -86,6 +86,7 @@ BEGIN_MESSAGE_MAP(CDownloadsWnd, CPanelWnd)
 	ON_WM_KEYDOWN()
 	ON_WM_KEYUP()
 	ON_WM_SETCURSOR()
+	ON_WM_CAPTURECHANGED()
 	ON_UPDATE_COMMAND_UI(ID_DOWNLOADS_RESUME, OnUpdateDownloadsResume)
 	ON_COMMAND(ID_DOWNLOADS_RESUME, OnDownloadsResume)
 	ON_UPDATE_COMMAND_UI(ID_DOWNLOADS_PAUSE, OnUpdateDownloadsPause)
@@ -171,7 +172,6 @@ BEGIN_MESSAGE_MAP(CDownloadsWnd, CPanelWnd)
 	ON_COMMAND(ID_DOWNLOADS_HELP, OnDownloadsHelp)
 	ON_COMMAND(ID_DOWNLOADS_SETTINGS, OnDownloadsSettings)
 	ON_COMMAND(ID_DOWNLOADS_FILTER_MENU, OnDownloadsFilterMenu)
-	ON_WM_CAPTURECHANGED()
 END_MESSAGE_MAP()
 
 
@@ -600,7 +600,7 @@ void CDownloadsWnd::Select(CDownload* pSelect)
 			{
 				CDownloadSource* pSource = pDownload->GetNext( posSource );
 				pSource->m_bSelected = FALSE;
-				if ( nIndex < UINT_MAX && ( Settings.Downloads.ShowSources || ! pSource->IsIdle() ) )
+				if ( nIndex < UINT_MAX && ( Settings.Downloads.ShowAllSources || ! pSource->IsIdle() ) )
 					nIndex++;
 			}
 		}
@@ -1986,12 +1986,12 @@ void CDownloadsWnd::OnDownloadsRate()
 
 void CDownloadsWnd::OnUpdateDownloadsShowSources(CCmdUI* pCmdUI)
 {
-	pCmdUI->SetCheck( Settings.Downloads.ShowSources );
+	pCmdUI->SetCheck( Settings.Downloads.ShowAllSources );
 }
 
 void CDownloadsWnd::OnDownloadsShowSources()
 {
-	Settings.Downloads.ShowSources = ! Settings.Downloads.ShowSources;
+	Settings.Downloads.ShowAllSources = ! Settings.Downloads.ShowAllSources;
 	Update();
 }
 

@@ -34,28 +34,20 @@ namespace Schemas
 	[XmlType()]
 	public class FictionBookDescription
 	{
-		/// <remarks>
-		/// Generic information about the book
-		///</remarks>
+		// Generic information about the book
 		[XmlElement("title-info")]
 		public FictionBookDescriptionTitleinfo titleinfo;
 
-		/// <remarks>
-		/// Information about this particular (xml) document
-		///</remarks>
+		// Information about this particular (xml) document
 		[XmlElement("document-info")]
 		public FictionBookDescriptionDocumentinfo documentinfo;
 
-		/// <remarks>
-		/// Information about some paper/other published document, that was used as a
-		/// source of this xml document
-		///</remarks>
+		// Information about some paper/other published document,
+		// that was used as a source of this xml document
 		[XmlElement("publish-info")]
 		public FictionBookDescriptionPublishinfo publishinfo;
 
-		/// <remarks>
-		/// Any other information about the book/document that didn't fit in the above groups
-		///</remarks>
+		// Any other information about the book/document that didn't fit in the above groups
 		[XmlElement("custom-info")]
 		public FictionBookDescriptionCustominfo[] custominfo;
 	}
@@ -63,41 +55,29 @@ namespace Schemas
 	[XmlType()]
 	public class FictionBookDescriptionTitleinfo
 	{
-		/// <remarks>
-		/// Genre of this book, with the optional match percentage
-		///</remarks>
+		// Genre of this book, with the optional match percentage
 		[XmlElement()]
 		public FictionBookDescriptionTitleinfoGenre[] genre;
 
-		/// <remarks>
-		/// Author(s) of this book
-		///</remarks>
+		// Author(s) of this book
 		[XmlElement()]
 		public FictionBookDescriptionTitleinfoAuthor[] author;
 
-		/// <remarks>
-		/// Book title
-		///</remarks>
+		// Book title
 		[XmlElement("book-title")]
 		public TextFieldType booktitle;
 
-		/// <remarks>
-		/// Annotation for this book
-		///</remarks>
+		// Annotation for this book
         [XmlElement()]
 		public AnnotationType annotation;
 
-		/// <remarks>
-		/// Any keywords for this book, intended for use in search engines
-		///</remarks>
+		// Any keywords for this book, intended for use in search engines
         [XmlElement()]
 		public TextFieldType keywords;
 
-		/// <remarks>
-		/// Date this book was written, can be not exact, e.g. 1863-1867.
-		/// If an optional attribute is present, then it should contain some computer-readable
-		/// date from the interval for use by search and indexing engines
-		///</remarks>
+		// Date this book was written, can be inexact (2001-2002).
+		// If an optional attribute is present, then it should contain some computer-readable
+		// date from the interval for use by search and indexing engines
         [XmlElement()]
 		public DateType date;
 
@@ -107,21 +87,15 @@ namespace Schemas
 		[XmlElement(DataType="language")]
 		public string lang;
 
-		/// <remarks>
-		/// Book's source language if this is a translation
-		///</remarks>
+		// Book source language if translation
 		[XmlElement("src-lang", DataType="language")]
 		public string srclang;
 
-		/// <remarks>
-		/// Translators if this is a translation
-		///</remarks>
+		// Translators if this is a translation
 		[XmlElement()]
 		public AuthorType[] translator;
 
-		/// <remarks>
-		/// Any sequences this book might be part of
-		///</remarks>
+		// Any sequences this book might be part of
 		[XmlElement()]
 		public SequenceType[] sequence;
 	}
@@ -140,7 +114,7 @@ namespace Schemas
 	[XmlType()]
 	public enum genreType
 	{
-		// SF, Fantasy
+		// SciFi, Fantasy
 		sf_history,			// Alternative history
 		sf_action,
 		sf_epic,
@@ -262,9 +236,7 @@ namespace Schemas
 	{
 	}
 
-	/// <remarks>
-	/// Information about a single author
-	///</remarks>
+	// Information about a single author
 	[XmlType()]
 	[XmlInclude(typeof(FictionBookDescriptionTitleinfoAuthor))]
 	public class AuthorType
@@ -300,9 +272,7 @@ namespace Schemas
 		public string infotype;
 	}
 
-	/// <remarks>
-	/// A cut-down version of <section> used in annotations
-	///</remarks>
+	// A cut-down version of <section> used in annotations
 	[XmlType()]
 	public class AnnotationType
 	{
@@ -319,9 +289,7 @@ namespace Schemas
 		public object[] Items;
 	}
 
-	/// <remarks>
-	/// A basic paragraph, may include simple formatting inside
-	///</remarks>
+	// A basic paragraph, may include simple formatting inside
 	[XmlType()]
 	public class ParaType : StyleType
 	{
@@ -332,9 +300,7 @@ namespace Schemas
 		public string style;
 	}
 
-	/// <remarks>
-	/// Markup
-	///</remarks>
+	// Markup
 	[XmlType()]
 	[XmlInclude(typeof(ParaType))]
 	public class StyleType
@@ -357,9 +323,7 @@ namespace Schemas
 		public string[] Text;
 	}
 
-	/// <remarks>
-	/// Markup
-	///</remarks>
+	// Markup
 	[XmlType()]
     [XmlInclude(typeof(StyleType))]
     public class NamedStyleType : StyleType
@@ -368,10 +332,8 @@ namespace Schemas
 		public string name;
 	}
 
-	/// <remarks>
-	/// Generic hyperlinks. Cannot be nested. Footnotes should be implemented by links referring to
-	/// additional bodies in the same document
-	///</remarks>
+	// Generic hyperlinks. Cannot be nested. Footnotes should be implemented by links
+	// referring to additional bodies in the same document
 	[XmlType()]
 	public class LinkType
 	{
@@ -429,9 +391,8 @@ namespace Schemas
         homepage,
         email
     }
-	/// <remarks>
-	/// Markup
-	///</remarks>
+
+	// Markup
 	[XmlType()]
 	public class StyleLinkType
 	{
@@ -456,9 +417,7 @@ namespace Schemas
 		style
 	}
 
-	/// <remarks>
-	/// An empty element with an image name as an attribute
-	///</remarks>
+	// An empty element with an image name as an attribute
 	[XmlType()]
 	public class ImageType
 	{
@@ -472,9 +431,7 @@ namespace Schemas
 		public string alt;
 	}
 
-	/// <remarks>
-	/// A poem
-	///</remarks>
+	// A poem
 	[XmlType()]
 	public class PoemType
 	{
@@ -484,36 +441,26 @@ namespace Schemas
 		[XmlAttribute(Namespace="http://www.w3.org/XML/1998/namespace")]
 		public string lang;
 
-		/// <remarks>
-		/// Poem title
-		///</remarks>
+		// Poem title
 		public TitleType title;
 
-		/// <remarks>
-		/// Poem epigraph(s), if any
-		///</remarks>
+		// Poem epigraph(s), if any
 		[XmlElement()]
 		public EpigraphType[] epigraph;
 
-		/// <remarks>
-		/// Each poem should have at least one stanza. Stanzas are usually separated with
-		/// empty lines by user agents.
-		///</remarks>
-		[XmlElement()]
+        // Each poem should have at least one stanza.
+        // Stanzas are usually separated with empty lines by user agents.
+        [XmlElement()]
 		public PoemTypeStanza[] stanza;
 
 		[XmlElement("text-author")]
 		public TextFieldType[] textauthor;
 
-		/// <remarks>
-		/// Date this poem was written.
-		///</remarks>
+		// Date this poem was written.
 		public DateType date;
 	}
 
-	/// <remarks>
-	/// A title, used in sections, poems and body elements
-	///</remarks>
+	// A title, used in sections, poems and body elements
 	[XmlType()]
 	public class TitleType
 	{
@@ -525,9 +472,7 @@ namespace Schemas
         public object[] Items;
 	}
 
-	/// <remarks>
-	/// An epigraph
-	///</remarks>
+	// An epigraph
 	[XmlType()]
 	public class EpigraphType
 	{
@@ -544,9 +489,7 @@ namespace Schemas
 		public TextFieldType[] textauthor;
 	}
 
-	/// <remarks>
-	/// A citation with an optional citation author at the end
-	///</remarks>
+	// A citation with an optional citation author at the end
 	[XmlType()]
 	public class CiteType
 	{
@@ -581,54 +524,38 @@ namespace Schemas
 	[XmlType()]
 	public class FictionBookDescriptionDocumentinfo
 	{
-		/// <remarks>
-		/// Author(s) of this particular document
-		///</remarks>
+		// Author(s) of this particular document
 		[XmlElement()]
 		public AuthorType[] author;
 
-		/// <remarks>
-		/// Any software used in preparation of this document, in free format
-		///</remarks>
+		// Any software used in preparation of this document, in free format
 		[XmlElement("program-used")]
 		public TextFieldType programused;
 
-		/// <remarks>
-		/// Date this document was created, same guidelines as in the <title-info> section apply
-		///</remarks>
+		// Date this document was created, same guidelines as in the <title-info> section apply
 		public DateType date;
 
-		/// <remarks>
-		/// Source URL if this document is a conversion of some other (online) document
-		///</remarks>
+		// Source URL if this document is a conversion of some other (online) document
 		[XmlElement("src-url")]
 		public string[] srcurl;
 
-		/// <remarks>
-		/// Author of the original (online) document, if this is a conversion
-		///</remarks>
+		// Author of the original (online) document, if this is a conversion
 		[XmlElement("src-ocr")]
 		public TextFieldType srcocr;
 
-		/// <remarks>
-		/// This is a unique identifier for a document. this must not change unless you
-		/// make substantial updates to the document
-		///</remarks>
+		// This is a unique identifier for a document.
+		// This must not change unless you make substantial updates to the document
 		[XmlElement(DataType="token")]
 		public string id;
 
-		/// <remarks>
-		/// Document version, in free format, should be incremented if the document is changed
-		/// and re-released to the public
-		///</remarks>
+		// Document version, in free format, should be incremented if the document is changed
+		// and re-released to the public
 		public System.Single version;
 
 		public AnnotationType history;
 	}
 
-	/// <remarks>
-	///A human readable date, maybe not exact, with an optional computer readable variant
-	///</remarks>
+	// Human readable date, maybe not exact, with an optional computer readable variant
 	[XmlType()]
 	public class DateType
 	{
@@ -648,25 +575,17 @@ namespace Schemas
 	[XmlType()]
 	public class FictionBookDescriptionPublishinfo
 	{
-		/// <remarks>
-		/// Original (paper) book name
-		///</remarks>
+		// Original (paper) book name
 		[XmlElement("book-name")]
 		public TextFieldType bookname;
 
-		/// <remarks>
-		/// Original (paper) book publisher
-		///</remarks>
+		// Original (paper) book publisher
 		public TextFieldType publisher;
 
-		/// <remarks>
-		/// City where the original (paper) book was published
-		///</remarks>
+		// City where the original (paper) book was published
 		public TextFieldType city;
 
-		/// <remarks>
-		/// Year of the original (paper) publication
-		///</remarks>
+		// Year of the original (paper) publication
 		[XmlElement(DataType="gYear")]
 		public string year;
 
@@ -676,9 +595,7 @@ namespace Schemas
 		public SequenceType[] sequence;
 	}
 
-	/// <remarks>
-	/// Book sequences
-	///</remarks>
+	// Book sequences
     [XmlType()]
 	public class SequenceType
 	{
@@ -703,9 +620,7 @@ namespace Schemas
 		public TitleType title;
 		public ParaType subtitle;
 
-		/// <remarks>
-		/// An individual line in a stanza
-		///</remarks>
+		// An individual line in a stanza
 		[XmlElement()]
 		public ParaType[] v;
 	}

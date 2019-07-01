@@ -3,7 +3,7 @@
 
 <!-- Envy Default Dutch Skin File -->
 
-<!-- Translation based on default en.xml r26 -->
+<!-- Translation based on default en.xml r28 -->
 <!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -3232,7 +3232,7 @@
 	<string id="20678" text="Het eDonkey netwerk gebruikt grote wachtrijen met grote wachttijden. Door de maximum rijpositie te beperken zal u zo strikt goedkeuren, dat u problemen kunt ondervinden bij downloads om te beginnen.\nWeet u zeker dat u de maximale rijpositie die u wilt goedkeuren, beperken?"/>
 	<string id="20680" text="Envy instellingen"/>
 	<string id="20682" text="Web Interface is uitgeschakeld."/>
-	<string id="20684" text="http://%s:%i/remote - Gebruikersnaam en wachtwoord kiezen."/>
+	<string id="20684" text="Gebruikersnaam en wachtwoord kiezen."/>
 	<string id="20685" text="Niet mogelijk om verbindingen te accepteren, de URL is niet beschikbaar."/>
 	<string id="20692" text="Weet je zeker dat je de skin &quot;%s&quot; wilt verwijderen? Dit kan niet ongedaan worden gemaakt."/>
 	<string id="20699" text="&amp;Schemas"/>

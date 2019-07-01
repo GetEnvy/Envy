@@ -272,11 +272,8 @@ void CURLCopyDlg::OnIncludeSelf()
 			(LPCTSTR)m_pFile.m_oED2K.toString() );
 
 		if ( bIncludeSelf )
-			m_sED2K += L"|sources," + HostToString( &Network.m_pHost ) + L"|/";
-
-			//CString strURL;	// Obsolete
-			//strURL.Format( L"%s:%i", (LPCTSTR)CString( inet_ntoa( Network.m_pHost.sin_addr ) ), htons( Network.m_pHost.sin_port ) );
-			//m_sED2K += L"|sources," + strURL + L"|/";
+			m_sED2K += L"|sources," + Network.m_sAddress + L"|/";
+		//	m_sED2K += L"|sources," + HostToString( &Network.m_pHost ) + L"|/";
 	}
 	else
 	{

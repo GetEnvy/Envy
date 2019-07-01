@@ -2,7 +2,7 @@
 // SWFReader.cpp : Implementation of CSWFReader
 //
 // This file is part of Envy (getenvy.com) © 2016-2018
-// Portions copyright PeerProject 2008-2014 and Nikolay Raspopov 2005-2008
+// Portions copyright Nikolay Raspopov 2005-2008 and PeerProject 2008-2014
 //
 // GFL Library, GFL SDK and XnView
 // Copyright (c) 1991-2004 Pierre-E Gougelet
@@ -21,16 +21,6 @@
 
 #include "StdAfx.h"
 #include "SWFReader.h"
-
-HRESULT CSWFReader::FinalConstruct() throw()
-{
-	return CoCreateFreeThreadedMarshaler(GetControllingUnknown(), &m_pUnkMarshaler.p);
-}
-
-void CSWFReader::FinalRelease() throw()
-{
-	m_pUnkMarshaler.Release();
-}
 
 // Convert BGR down-up bitmap to RGB up-down bitmap
 inline void BGRA_DU2RGBA_UD (char* dest, int width, int height, int components) throw()
@@ -186,7 +176,7 @@ DWORD WINAPI LoadSWF (void* filename)
 								Sleep (0);
 							}
 							hr = E_OUTOFMEMORY;
-							_Data = new MY_DATA;
+							_Data = new (std::nothrow) MY_DATA;
 							if (_Data) {
 								_Data->hBitmap = NULL;
 								ZeroMemory (&_Data->bmiHeader, sizeof (_Data->bmiHeader));

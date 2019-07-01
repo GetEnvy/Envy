@@ -293,7 +293,7 @@ void CURLExportDlg::MakeURL(CEnvyFile pFile, CString& strLine)
 	{
 		CString strItem = CString( inet_ntoa( Network.m_pHost.sin_addr ) );
 		strLine.Replace( L"[LocalHost]", strItem );
-		strItem.Format( L"%lu", htons( Network.m_pHost.sin_port ) );
+		strItem.Format( L"%hu", htons( Network.m_pHost.sin_port ) );
 		strLine.Replace( L"[LocalPort]", strItem );
 	}
 

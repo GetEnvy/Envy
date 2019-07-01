@@ -2,7 +2,7 @@
 // PreviewPlugin.cpp : Implementation of CPreviewPlugin
 //
 // This file is part of Envy (getenvy.com) © 2016-2018
-// Portions copyright PeerProject 2009 and Nikolay Raspopov 2009
+// Portions copyright Nikolay Raspopov 2009 and PeerProject 2009
 //
 // Envy is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
@@ -30,13 +30,12 @@ CPreviewPlugin::CPreviewPlugin()
 
 HRESULT CPreviewPlugin::FinalConstruct()
 {
-	return CoCreateFreeThreadedMarshaler( GetControllingUnknown(), &m_pUnkMarshaler.p );
+	return S_OK;
 }
 
 void CPreviewPlugin::FinalRelease()
 {
 	m_pSite.Release();
-	m_pUnkMarshaler.Release();
 }
 
 bool CPreviewPlugin::Execute(LPCTSTR szCommand)

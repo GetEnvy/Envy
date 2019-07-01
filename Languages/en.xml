@@ -3,7 +3,7 @@
 
 <!-- Envy Default English Skin File -->
 
-<!-- Translation based on default en.xml r26 -->
+<!-- Translation based on default en.xml r28 -->
 <!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -3405,7 +3405,7 @@
 	<string id="20678" text="The eDonkey network uses large queues with long wait times. By limiting the maximum queue position you will accept so strictly, you may have trouble getting downloads to begin.\nAre you sure you want to limit what queue positions you will accept?"/>
 	<string id="20680" text="Envy Settings"/>
 	<string id="20682" text="Remote access is disabled."/>
-	<string id="20684" text="http://%s:%i/remote - Username/password required."/>
+	<string id="20684" text="Username/password required."/>
 	<string id="20685" text="Unable to accept connections, URL unavailable."/>
 	<string id="20690" text="Loading skin: %s"/>
 	<string id="20691" text="Skin load error: %s. Element: %s"/>

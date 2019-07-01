@@ -3,7 +3,7 @@
 
 <!-- Envy Default Chinese (Traditional) Skin File -->
 
-<!-- Translation based on default en.xml r26 --> <!-- (Shareaza 2.2.2.12) -->
+<!-- Translation based on default en.xml r28 --> <!-- (Shareaza 2.2.2.12) -->
 <!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -3058,7 +3058,7 @@
 	<string id="20678" text="eDonkey 網路實施漫長的排隊長度與很長的等待時間。 如果您限制您能接受的排隊隊伍的長度, 您可能無法開始下載。\n您確定要限制您能夠接受的排隊隊伍的長度嗎?"/>
 	<string id="20680" text="Envy 設定"/>
 	<string id="20682" text="遠端操控已經停用"/>
-	<string id="20684" text="http://%s:%i/remote - 您必須選擇一個使用者名稱與密碼"/>
+	<string id="20684" text="您必須選擇一個使用者名稱與密碼"/>
 	<string id="20685" text="無法接受連線, 沒有可用的URL。"/>
 	<string id="20692" text="您確定要刪除 &quot;%s&quot; 外觀嗎? 這個動作將不能回復。"/>
 	<string id="20699" text="构架"/>

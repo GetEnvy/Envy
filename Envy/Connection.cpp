@@ -813,11 +813,7 @@ BOOL CConnection::SendMyAddress()
 	if ( Network.IsListening() )
 	{
 		// Compose header text
-		CString strHeader;
-		strHeader.Format(
-			L"Listen-IP: %s:%hu\r\n",								// Make it like "Listen-IP: 67.176.34.172:6346\r\n"
-			(LPCTSTR)CString( inet_ntoa( Network.m_pHost.sin_addr ) ),	// Insert the IP address like "67.176.34.172"
-			htons( Network.m_pHost.sin_port ) );						// Our port number in big endian
+		CString strHeader = L"Listen-IP: " + Network.m_sAddress + L"\r\n";
 
 		// Print the line into the bottom of the output buffer
 		Write( strHeader );		// It will be sent to the remote computer on the next write

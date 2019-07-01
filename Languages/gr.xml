@@ -3,7 +3,7 @@
 
 <!-- Envy Default Greek Skin File -->
 
-<!-- Translation based on default en.xml r26 -->
+<!-- Translation based on default en.xml r28 -->
 <!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -3205,7 +3205,7 @@
 	<string id="20678" text="Το δίκτυο ED2K χρησιμοποιεί μακριές ουρές με μεγάλους χρόνους αναμονής. Περιορίζοντας τη μέγιστη θέση αναμονής σε ουρά, ίσως δυσκολευτείται να ξεκινήσετε λήψεις!nΘέλετε σίγουρα να περιορίσετε τη θέση αναμονής σε ουρά που θα ανέχεστε;"/>
 	<string id="20680" text="Οι ρυθμίσεις του Envy"/>
 	<string id="20682" text="Η απομακρυσμένη πρόσβαση είναι απενεργοποιημένη."/>
-	<string id="20684" text="http://%s:%i/remote - Πρέπει να διαλέξετε ένα όνομα και έναν κωδικό."/>
+	<string id="20684" text="Πρέπει να διαλέξετε ένα όνομα και έναν κωδικό."/>
 	<string id="20685" text="Αδυναμία υποδοχής συνδέσεων, μη διαθέσιμο URL."/>
 	<string id="20692" text="Θέλετε σίγουρα να διαγράψετε τον φλοιό &quot;%s&quot;. Αυτό δεν μπορεί να αναιρεθεί."/>
 	<string id="20699" text="&amp;Schemas"/>

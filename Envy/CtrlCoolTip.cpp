@@ -94,7 +94,7 @@ void CCoolTipCtrl::Hide()
 		ShowWindow( SW_HIDE );
 		ModifyStyleEx( WS_EX_LAYERED, 0 );
 		m_bVisible = FALSE;
-		GetCursorPos( &m_pOpen );
+		GetCursorPos( &m_ptOpen );
 	}
 
 	if ( m_bTimer )
@@ -105,7 +105,7 @@ void CCoolTipCtrl::Hide()
 	}
 }
 
-void CCoolTipCtrl::ShowImpl(bool bChanged)
+void CCoolTipCtrl::ShowImpl(bool bChanged /*False*/)
 {
 	if ( m_pbEnable != NULL && *m_pbEnable == false )
 		return;
@@ -122,9 +122,9 @@ void CCoolTipCtrl::ShowImpl(bool bChanged)
 
 		Hide();
 	}
-	else if ( point != m_pOpen )
+	else if ( point != m_ptOpen )
 	{
-		m_pOpen = point;
+		m_ptOpen = point;
 		m_tOpen = GetTickCount() + Settings.Interface.TipDelay;
 
 		if ( ! m_bTimer )
@@ -144,11 +144,11 @@ void CCoolTipCtrl::ShowImpl(bool bChanged)
 	if ( ! OnPrepare() )
 		return;
 
-	CRect rc( m_pOpen.x + TIP_OFFSET_X, m_pOpen.y + TIP_OFFSET_Y, 0, 0 );
+	CRect rc( m_ptOpen.x + TIP_OFFSET_X, m_ptOpen.y + TIP_OFFSET_Y, 0, 0 );
 	rc.right = rc.left + m_sz.cx + TIP_MARGIN * 2;
 	rc.bottom = rc.top + m_sz.cy + TIP_MARGIN * 2;
 
-	HMONITOR hMonitor = MonitorFromPoint( m_pOpen, MONITOR_DEFAULTTONEAREST );
+	HMONITOR hMonitor = MonitorFromPoint( m_ptOpen, MONITOR_DEFAULTTONEAREST );
 
 	MONITORINFO oMonitor = {0};
 	oMonitor.cbSize = sizeof( MONITORINFO );
@@ -416,6 +416,7 @@ void CCoolTipCtrl::OnTimer(UINT_PTR /*nIDEvent*/)
 
 	if ( ! WindowFromPointBelongsToOwner( point ) )
 	{
+		m_tOpen = 0;
 		if ( m_bVisible )
 			Hide();
 		return;
@@ -424,7 +425,7 @@ void CCoolTipCtrl::OnTimer(UINT_PTR /*nIDEvent*/)
 	if ( ! m_bVisible && m_tOpen && GetTickCount() >= m_tOpen )
 	{
 		m_tOpen = 0;
-		if ( point == m_pOpen || m_hAltWnd != NULL )
+		if ( point == m_ptOpen || m_hAltWnd != NULL )
 			ShowImpl();
 	}
 }

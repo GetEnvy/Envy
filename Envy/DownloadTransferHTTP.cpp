@@ -431,9 +431,7 @@ BOOL CDownloadTransferHTTP::SendRequest()
 			{
 				if ( m_pSource->m_nGnutella < 2 )
 				{
-					strLine.Format( L"%s:%u",
-						(LPCTSTR)CString( inet_ntoa( Network.m_pHost.sin_addr ) ),
-						htons( Network.m_pHost.sin_port ) );
+					strLine = Network.m_sAddress;
 					Write( _P("X-Alt: ") );
 				}
 				else

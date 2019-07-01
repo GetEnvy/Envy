@@ -132,15 +132,13 @@ void CRemoteSettingsPage::OnBnClickedRemoteEnable()
 	{
 		if ( Network.IsListening() )
 		{
-			strURL.Format( L"http://%s:%i/remote",
-				(LPCTSTR)CString( inet_ntoa( Network.m_pHost.sin_addr ) ),
-				(int)ntohs( Network.m_pHost.sin_port ) );
+			strURL = L"http://" + Network.m_sAddress + L"/remote";
 			m_wndURL.EnableWindow( TRUE );
 		}
 		else if ( Handshakes.IsValid() && Network.m_pHost.sin_port != 0 )
 		{
-			strURL.Format( L"http://localhost:%i/remote",
-				(int)ntohs( Network.m_pHost.sin_port ) );
+			strURL.Format( L"http://localhost:%hu/remote",
+				ntohs( Network.m_pHost.sin_port ) );
 			m_wndURL.EnableWindow( TRUE );
 		}
 		else
@@ -151,10 +149,7 @@ void CRemoteSettingsPage::OnBnClickedRemoteEnable()
 	}
 	else if ( m_bEnable )
 	{
-		LoadString( strURL, IDS_REMOTE_ENABLED );
-		strURL.Format( strURL,
-			(LPCTSTR)CString( inet_ntoa( Network.m_pHost.sin_addr ) ),
-			(int)ntohs( Network.m_pHost.sin_port ) );
+		strURL = Network.m_sAddress + L"  -  " + LoadString( IDS_REMOTE_ENABLED );
 		m_wndURL.EnableWindow( FALSE );
 	}
 	else

@@ -358,7 +358,7 @@ void CHostCacheList::Clear()
 {
 	CQuickLock oLock( m_pSection );
 
-#ifndef PUBLIC_RELEASE
+#ifndef PUBLIC_RELEASE_FIX
 	// ToDo: Crash at exit, Fix properly
 	for ( CHostCacheMapItr i = m_Hosts.begin(); i != m_Hosts.end(); ++i )
 	{

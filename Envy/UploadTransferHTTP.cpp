@@ -1813,7 +1813,7 @@ void CUploadTransferHTTP::SendResponse(UINT nResourceID, BOOL bFileHeaders)
 		else if ( strReplace.CompareNoCase( L"ListenIP" ) == 0 )
 		{
 			if ( Network.IsListening() )
-				strReplace.Format( L"%s:%i", (LPCTSTR)CString( inet_ntoa( Network.m_pHost.sin_addr ) ), htons( Network.m_pHost.sin_port ) );
+				strReplace = Network.m_sAddress;
 			else
 				strReplace.Empty();
 		}

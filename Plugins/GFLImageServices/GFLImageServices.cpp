@@ -2,7 +2,7 @@
 // GFLImageServices.cpp : Implementation of DLL Exports.
 //
 // This file is part of Envy (getenvy.com) © 2016-2018
-// Portions copyright PeerProject 2008-2014 and Nikolay Raspopov 2005
+// Portions copyright Nikolay Raspopov 2005 and PeerProject 2008-2014
 //
 // GFL Library, GFL SDK and XnView
 // Copyright (c) 1991-2004 Pierre-E Gougelet
@@ -66,7 +66,7 @@ inline void FillExtMap()
 						ext = "pspframe";
 				}
 
-				ATLTRACE( " .%s", ext );
+				ATLTRACE( " .%s", (LPCSTR)ext );
 				GFL_INT32 index;
 				if ( ! _ExtMap.Lookup( ext, index ) )
 					_ExtMap.SetAt( ext, info.Index );
@@ -154,7 +154,7 @@ STDAPI DllRegisterServer(void)
 		_ExtMap.GetNextAssoc( pos, ext, index );
 		if ( ext == "vst" ) continue;
 		ext.Insert( 0, '.' );
-		ATLTRACE( "Add %s\n", ext );
+		ATLTRACE( "Add %s\n", (LPCSTR)ext );
 		SHSetValue( HKEY_CURRENT_USER, REG_IMAGESERVICE_KEY, CA2T( ext ), REG_SZ,
 			L"{C9314782-CB91-40B8-B375-F631FF30C1C8}",
 			38 * sizeof(TCHAR) );
@@ -175,7 +175,7 @@ STDAPI DllUnregisterServer(void)
 		_ExtMap.GetNextAssoc( pos, ext, index );
 		if ( ext == "vst" ) continue;
 		ext.Insert( 0, '.' );
-		ATLTRACE( "Remove %s\n", ext );
+		ATLTRACE( "Remove %s\n", (LPCSTR)ext );
 		SHDeleteValue( HKEY_CURRENT_USER, REG_IMAGESERVICE_KEY, CA2T( ext ) );
 	}
 

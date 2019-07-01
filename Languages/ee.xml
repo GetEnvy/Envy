@@ -3,7 +3,7 @@
 
 <!-- Envy Default Estonian Skin File -->
 
-<!-- Translation based on default en.xml r26 --> <!-- (Shareaza 2.2.2.9) -->
+<!-- Translation based on default en.xml r28 --> <!-- (Shareaza 2.2.2.9) -->
 <!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -3018,7 +3018,7 @@
 	<string id="20678" text="eDonkey võrk kasutab suuri järjekordi ja pikki ooteaegu. Piirates maksimaalset järjekorra kohta, võib sul tekkida probleeme allalaadimiste alustusega.nOled kindel, et tahad seada piirangu, millise järjekorra kohaga leppida?"/>
 	<string id="20680" text="Envy Seaded"/>
 	<string id="20682" text="Kaugtöö ei ole käivitatud."/>
-	<string id="20684" text="http://%s:%i/remote - Sa pead valima kasutajanime ja salasõna."/>
+	<string id="20684" text="Sa pead valima kasutajanime ja salasõna."/>
 	<string id="20685" text="Ei saa ühendust, URL ei ole saadaval."/>
 	<string id="20692" text="Oled kindel, et tahad kustutada &quot;%s&quot; naha? Seda ei saa enam tagasi võtta."/>
 	<string id="20699" text="&amp;Skeemid"/>
