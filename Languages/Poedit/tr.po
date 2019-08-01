@@ -6116,13 +6116,13 @@ msgstr "Komşu %s geçersiz adres verisiyle bir pong gönderdi, görmezlikten ge
 msgid "Neighbor %s forwarded a push request to a firewalled address, ignoring."
 msgstr "Komşu %s güvenlik duvarına sıkıştırılmış bir istek gönderdi, görmezlikten geliniyor."
 
-#: string;20590
+#: string;20682
 msgid "Remote access is disabled."
 msgstr "Uzaktan erişim engellendi."
 
-#: string;20591
-msgid "http://%s:%i/remote - Username/password required."
-msgstr "http://%s:%i/remote - Bir kullanıcı adı ve şifresi seçmelisiniz."
+#: string;20684
+msgid "Username/password required."
+msgstr "Bir kullanıcı adı ve şifresi seçmelisiniz."
 
 #: string;20592
 msgid "Unable to accept connections, URL unavailable."
@@ -6432,15 +6432,15 @@ msgstr "eDonkey ağı uzun zamanla uzun sıra kullanılır. Maksimum sıra pozis
 msgid "Envy Settings"
 msgstr "Envy Ayarları"
 
-#: string;20681
+#: string;20690
 msgid "Loading skin: %s"
 msgstr ""
 
-#: string;20682
+#: string;20691
 msgid "Skin load error: %s. Element: %s"
 msgstr ""
 
-#: string;20684
+#: string;20692
 msgid "Are you sure you wish to delete the \"%s\" skin? This cannot be undone."
 msgstr "\"%s\" arayüzünü silmek istediğinizden emin misiniz? Bu yapılamaz."
 

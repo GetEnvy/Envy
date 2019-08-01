@@ -3,7 +3,7 @@
 
 <!-- Envy Default Japanese Skin File -->
 
-<!-- Translation based on default en.xml r28 --> <!-- (Shareaza 2.2.0.2) -->
+<!-- Translation based on default en.xml r30 --> <!-- (Shareaza 2.2.0.2) -->
 <!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -3129,6 +3129,7 @@
 	<string id="20776" text="ハッシュセット無し"/>
 	<string id="20777" text="部分ソース (%.2f%% が利用可能)"/>
 	<string id="20778" text="アップロードスロット: %i, 待機中のキュー: %i"/>
+	<string id="20779" text="時間"/>
 	<string id="20780" text="サイズ"/>
 	<string id="20781" text="このソースは現在ビジー状態です"/>
 	<string id="20782" text="このソースはファイアーウォールされています"/>

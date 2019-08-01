@@ -3,7 +3,7 @@
 
 <!-- Envy Default Hebrew Skin File -->
 
-<!-- Translation based on default en.xml r28 -->
+<!-- Translation based on default en.xml r30 -->
 <!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -2916,7 +2916,7 @@ gap i newline
 	<string id="20764" text="‪אתה הורדת ומחקת את קובץ זה בעבר"/>
 	<string id="20765" text="‪הקובץ כבר קיים אצלך ברשימת ההורדות"/>
 	<string id="20766" text="‪כבר יש לך את קובץ זה בספריה"/>
-	<string id="20767" text="‪ה‪מקורות לקובץ כרגע עסוקים"/>
+	<string id="20767" text="‪‪מקורות לקובץ כרגע עסוקים"/>
 	<string id="20768" text="‪המקורות לקובץ כרגע מוגנים בחומת אש"/>
 	<string id="20769" text="‪המקורות לקובץ כרגע במצב לא יציב"/>
 	<string id="20770" text="‪מחיצת"/>
@@ -2928,7 +2928,8 @@ gap i newline
 	<string id="20776" text="לא חשיש"/>
 	<string id="20777" text="‪‪:(%.2f%%) חלקי מקור זמינים"/>
 	<string id="20778" text="‪‫‪קווים פנויים: %i, בתור: %i"/>
-	<string id="20780" text="‪‫גודל"/>
+	<string id="20779" text="זמן"/>
+	<string id="20780" text="גודל"/>
 	<string id="20781" text="‪המקור כרגע עסוק"/>
 	<string id="20782" text="‪המקור מוגן בחומת אש"/>
 	<string id="20783" text="‪המקור עלול להיות לא יציב"/>

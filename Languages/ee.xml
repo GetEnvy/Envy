@@ -3,7 +3,7 @@
 
 <!-- Envy Default Estonian Skin File -->
 
-<!-- Translation based on default en.xml r28 --> <!-- (Shareaza 2.2.2.9) -->
+<!-- Translation based on default en.xml r30 --> <!-- (Shareaza 2.2.2.9) -->
 <!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -3090,6 +3090,7 @@
 	<string id="20776" text="Ei ole Hashset"/>
 	<string id="20777" text="Osalised allikad (%.2f%% saadaval)"/>
 	<string id="20778" text="%i üleslaadimis kohti, %i järjekorras"/>
+	<string id="20779" text="Aeg"/>
 	<string id="20780" text="Suurus"/>
 	<string id="20781" text="See allikas on hetkel hõivatud"/>
 	<string id="20782" text="See allikas on tulemüüritud"/>

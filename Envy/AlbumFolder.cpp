@@ -775,13 +775,13 @@ BOOL CAlbumFolder::OrganizeFile(CLibraryFile* pFile)
 			 pFile->IsSchemaURI( CSchema::uriImage ) ||
 			 pFile->IsSchemaURI( CSchema::uriArchive ) ||
 			 pFile->IsSchemaURI( CSchema::uriApplication ) ||
-			 pFile->IsSchemaURI( CSchema::uriDocument ) ||
+			 pFile->IsSchemaURI( CSchema::uriBitTorrent ) ||
 			 pFile->IsSchemaURI( CSchema::uriBook ) ||
-			 pFile->IsSchemaURI( CSchema::uriROM ) ||
+			 pFile->IsSchemaURI( CSchema::uriDocument ) ||
 			 pFile->IsSchemaURI( CSchema::uriSpreadsheet ) ||
 			 pFile->IsSchemaURI( CSchema::uriPresentation ) ||
 			 pFile->IsSchemaURI( CSchema::uriCollection ) ||
-			 pFile->IsSchemaURI( CSchema::uriBitTorrent ) )
+			 pFile->IsSchemaURI( CSchema::uriROM ) )
 			return FALSE;
 
 		AddFile( pFile );
@@ -813,7 +813,7 @@ BOOL CAlbumFolder::OrganizeFile(CLibraryFile* pFile)
 	}
 
 	// Application Folder
-	if ( CheckURI( m_sSchemaURI, CSchema::uriFolder ) )
+	if ( CheckURI( m_sSchemaURI, CSchema::uriApplicationFolder ) )
 	{
 		if ( ! pFile->IsSchemaURI( CSchema::uriApplication ) &&
 			 ! pFile->IsSchemaURI( CSchema::uriROM ) )

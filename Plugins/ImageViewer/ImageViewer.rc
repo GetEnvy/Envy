@@ -51,7 +51,7 @@ END
 //
 
 VS_VERSION_INFO VERSIONINFO
- PRODUCTVERSION 1,0
+ PRODUCTVERSION 2,0
  FILEVERSION 1,0,0,0
  FILEFLAGSMASK 0x3fL
 #ifdef _DEBUG
@@ -68,7 +68,7 @@ BEGIN
 		BLOCK "0c0904b0"
 		BEGIN
 			VALUE "ProductName", "Envy"
-			VALUE "ProductVersion", "1.0"
+			VALUE "ProductVersion", "2.0"
 			VALUE "FileVersion", "1.0.0.0"
 			VALUE "InternalName", "ImageViewer"
 			VALUE "OriginalFilename", "ImageViewer.dll"
@@ -130,7 +130,7 @@ IDR_SKIN			HTML			"Skin.xml"
 STRINGTABLE
 BEGIN
     IDS_PROJNAME	"ImageViewer"
-    IDS_ABOUT		"Envy Image Viewer Plugin\n© Envy Development Team, 2008-2014\n(Portions © Michael Stokes, 2002) "
+    IDS_ABOUT		"Envy Image Viewer Plugin\n© Envy Development Team, 2008-2018\n(Portions © Michael Stokes, 2002) "
 END
 
 #endif    // English resources

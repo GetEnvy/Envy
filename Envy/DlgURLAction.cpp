@@ -144,7 +144,7 @@ BOOL CURLActionDlg::OnInitDialog()
 		LoadString( m_sHashTitle, IDS_URL_PORT );
 
 		m_sNameValue = m_pURL->m_sName;
-		m_sHashValue.Format( L"%lu", m_pURL->m_nPort );
+		m_sHashValue.Format( L"%u", m_pURL->m_nPort );
 
 		m_wndMessage2.ShowWindow( SW_SHOW );
 		m_wndNewWindow.ShowWindow( SW_HIDE );
@@ -169,7 +169,7 @@ BOOL CURLActionDlg::OnInitDialog()
 		LoadString( m_sHashTitle, IDS_URL_PORT );
 
 		m_sNameValue = m_pURL->m_sName;
-		m_sHashValue.Format( L"%lu", m_pURL->m_nPort );
+		m_sHashValue.Format( L"%u", m_pURL->m_nPort );
 
 		m_wndMessage3.ShowWindow( SW_SHOW );
 		m_wndNewWindow.ShowWindow( SW_HIDE );

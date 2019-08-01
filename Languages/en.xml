@@ -3,7 +3,7 @@
 
 <!-- Envy Default English Skin File -->
 
-<!-- Translation based on default en.xml r28 -->
+<!-- Translation based on default en.xml r30 -->
 <!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -3480,6 +3480,7 @@
 	<string id="20776" text="No Hashset"/>
 	<string id="20777" text="Partial Source (%.2f%% available)"/>
 	<string id="20778" text="%i upload slots, %i waiting in queue"/>
+	<string id="20779" text="Time"/>
 	<string id="20780" text="Size"/>
 	<string id="20781" text="This source is currently busy"/>
 	<string id="20782" text="This source is firewalled"/>

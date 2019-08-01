@@ -3,7 +3,7 @@
 
 <!-- Envy Default Greek Skin File -->
 
-<!-- Translation based on default en.xml r28 -->
+<!-- Translation based on default en.xml r30 -->
 <!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -3277,6 +3277,7 @@
 	<string id="20776" text="Κανένα Hashset"/>
 	<string id="20777" text="Μερική Πηγή (%.2f%% διαθέσιμο)"/>
 	<string id="20778" text="%i υποδοχές αποστολής, %i σε αναμονή στην ουρά"/>
+	<string id="20779" text="Ημερομηνία"/>
 	<string id="20780" text="Μέγεθος"/>
 	<string id="20781" text="Αυτή η πηγή είναι απασχολημένη"/>
 	<string id="20782" text="Αυτή η πηγή είναι πίσω από firewall"/>

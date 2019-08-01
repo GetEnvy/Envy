@@ -3,7 +3,7 @@
 
 <!-- Envy Default Polish Skin File -->
 
-<!-- Translation based on default en.xml r28 -->
+<!-- Translation based on default en.xml r30 -->
 <!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -3021,6 +3021,7 @@
 	<string id="20776" text="Brak Hashset'u"/> <!-- ? A co to jest?sprawdzić! ?? -->
 	<string id="20777" text="Częściowe źródło (%.2f%% dostępne)"/>
 	<string id="20778" text="%i upload slotów, %i czekających w kolejce"/>
+	<string id="20779" text="Czas"/>
 	<string id="20780" text="Wielkość"/>
 	<string id="20781" text="To żródło jest w tej chwili zajęte"/>
 	<string id="20782" text="To żródło jest za firewallem"/>

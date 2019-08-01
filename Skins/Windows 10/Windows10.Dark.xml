@@ -1250,10 +1250,10 @@
 <target window="CMainTabBarCtrl.Tabbed"/>
 <target window="CMainTabBarCtrl.Windowed"/>
 <parts>
- <part name="_ID_TAB_HOME.Up" rect="200,0,80,24"/>
- <part name="_ID_TAB_HOME.Checked" rect="200,24,80,24"/>
- <part name="_ID_TAB_HOME.Hover" rect="200,48,80,24"/>
- <part name="_ID_TAB_HOME.Down" rect="200,72,80,24"/>
+ <part name="_ID_TAB_HOME.Up" rect="200,0,90,24"/>
+ <part name="_ID_TAB_HOME.Checked" rect="200,24,90,24"/>
+ <part name="_ID_TAB_HOME.Hover" rect="200,48,90,24"/>
+ <part name="_ID_TAB_HOME.Down" rect="200,72,90,24"/>
  <part name="_ID_TAB_TRANSFERS.Up" rect="60,0,66,24"/>
  <part name="_ID_TAB_TRANSFERS.Checked" rect="60,24,66,24"/>
  <part name="_ID_TAB_TRANSFERS.Hover" rect="60,48,66,24"/>
@@ -1263,13 +1263,13 @@
  <part name="_ID_TAB_NETWORK.Hover" rect="60,48,66,24"/>
  <part name="_ID_TAB_NETWORK.Down" rect="60,72,66,24"/>
  <part name="_ID_TAB_LIBRARY.Up" rect="200,0,80,24"/>
- <part name="_ID_TAB_LIBRARY.Checked" rect="280,24,80,24"/>
- <part name="_ID_TAB_LIBRARY.Hover" rect="200,48,80,24"/>
- <part name="_ID_TAB_LIBRARY.Down" rect="200,72,80,24"/>
- <part name="_ID_TAB_MEDIA.Up" rect="60,0,66,24"/>
- <part name="_ID_TAB_MEDIA.Checked" rect="60,24,66,24"/>
- <part name="_ID_TAB_MEDIA.Hover" rect="60,48,66,24"/>
- <part name="_ID_TAB_MEDIA.Down" rect="60,72,66,24"/>
+ <part name="_ID_TAB_LIBRARY.Checked" rect="280,24,90,24"/>
+ <part name="_ID_TAB_LIBRARY.Hover" rect="200,48,90,24"/>
+ <part name="_ID_TAB_LIBRARY.Down" rect="200,72,90,24"/>
+ <part name="_ID_TAB_MEDIA.Up" rect="60,0,60,24"/>
+ <part name="_ID_TAB_MEDIA.Checked" rect="60,24,60,24"/>
+ <part name="_ID_TAB_MEDIA.Hover" rect="60,48,60,24"/>
+ <part name="_ID_TAB_MEDIA.Down" rect="60,72,60,24"/>
  <part name="_ID_TAB_IRC.Up" rect="0,0,60,24"/>
  <part name="_ID_TAB_IRC.Checked" rect="0,24,60,24"/>
  <part name="_ID_TAB_IRC.Hover" rect="0,48,60,24"/>
@@ -1280,14 +1280,14 @@
  <part name="_ID_TAB_SEARCH.Down" rect="60,72,66,24"/>
 </parts>
 <anchors>
- <anchor name="Background" rect="0,0,496,30"/>
- <anchor name="_ID_TAB_HOME" rect="6,2,80,24"/>
- <anchor name="_ID_TAB_TRANSFERS" rect="86,2,66,24"/>
- <anchor name="_ID_TAB_NETWORK" rect="152,2,66,24"/>
- <anchor name="_ID_TAB_LIBRARY" rect="218,2,80,24"/>
- <anchor name="_ID_TAB_MEDIA" rect="298,2,66,24"/>
- <anchor name="_ID_TAB_IRC" rect="364,2,60,24"/>
- <anchor name="_ID_TAB_SEARCH" rect="424,2,66,24"/>
+ <anchor name="Background" rect="0,0,514,30"/>
+ <anchor name="_ID_TAB_HOME" rect="6,2,90,24"/>
+ <anchor name="_ID_TAB_TRANSFERS" rect="96,2,66,24"/>
+ <anchor name="_ID_TAB_NETWORK" rect="162,2,66,24"/>
+ <anchor name="_ID_TAB_LIBRARY" rect="228,2,90,24"/>
+ <anchor name="_ID_TAB_MEDIA" rect="318,2,60,24"/>
+ <anchor name="_ID_TAB_IRC" rect="378,2,60,24"/>
+ <anchor name="_ID_TAB_SEARCH" rect="438,2,66,24"/>
 </anchors>
 </windowskin>
 

@@ -3,7 +3,7 @@
 
 <!-- Envy Default Brazilian Portuguese Skin File -->
 
-<!-- Translation based on default en.xml r28 -->
+<!-- Translation based on default en.xml r30 -->
 <!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -3345,6 +3345,7 @@
 	<string id="20776" text="Sem Hashset"/>
 	<string id="20777" text="Fonte Parcial (%.2f%% disponível)"/>
 	<string id="20778" text="%i slots de upload, %i esperando na fila"/>
+	<string id="20779" text="Tempo"/>
 	<string id="20780" text="Tamanho"/>
 	<string id="20781" text="Esta fonte está atualmente ocupada"/>
 	<string id="20782" text="Esta fonte está atrás de um firewall"/>

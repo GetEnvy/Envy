@@ -1474,7 +1474,7 @@ void CQueryHit::ReadG2Packet(CG2Packet* pPacket, DWORD nLength)
 
 void CQueryHit::ReadEDPacket(CEDPacket* pPacket, const SOCKADDR_IN* pServer, BOOL bUnicode)
 {
-	CString strLength, strBitrate, strCodec, strTitle, strArtist, strAlbum;
+	CString strBitrate, strCodec, strTitle, strArtist, strAlbum;
 	DWORD nLength = 0;
 	pPacket->Read( m_oED2K );
 
@@ -1665,10 +1665,7 @@ void CQueryHit::ReadEDPacket(CEDPacket* pPacket, const SOCKADDR_IN* pServer, BOO
 		{
 			// Audio
 			if ( nLength > 0 )
-			{
-				strLength.Format( L"%lu", nLength );
-				m_pXML->AddAttribute( L"seconds", strLength );
-			}
+				m_pXML->AddAttribute( L"seconds", Str( nLength ) );
 
 			if ( ! strBitrate.IsEmpty() )
 				m_pXML->AddAttribute( L"bitrate", strBitrate );
@@ -1681,6 +1678,7 @@ void CQueryHit::ReadEDPacket(CEDPacket* pPacket, const SOCKADDR_IN* pServer, BOO
 			// Video
 			if ( nLength > 0 )
 			{
+				CString strLength;
 				strLength.Format( L"%.3f", (double)nLength / (double)60 );
 				m_pXML->AddAttribute( L"minutes", strLength );
 			}

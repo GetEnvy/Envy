@@ -3,7 +3,7 @@
 
 <!-- Envy Default Serbian Skin File -->
 
-<!-- Translation based on default en.xml r28 -->
+<!-- Translation based on default en.xml r30 -->
 <!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -3007,6 +3007,7 @@
 	<string id="20775" text="Sledeći na Redu"/>
 	<string id="20777" text="Delimičnih Izvora (%.2f%% dostupno)"/>
 	<string id="20778" text="%i dostupnih linija, %i na čekanju"/>
+	<string id="20779" text="Vreme"/>
 	<string id="20780" text="Veličina"/>
 	<string id="20781" text="Ovaj izvor je trenutno zauzet"/>
 	<string id="20782" text="Ovaj izvor je iza vatrozida"/>

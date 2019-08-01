@@ -1039,8 +1039,9 @@ void CLibraryDetailView::OnContextMenu(CWnd* pWnd, CPoint point)
 
 	CMenu* pMenu = CSchemaColumnsDlg::BuildColumnMenu( m_pSchema, &m_pColumns );
 
+	CString strSchemas = LoadString( IDS_SCHEMAS ) + L"...";
 	pMenu->AppendMenu( MF_SEPARATOR, ID_SEPARATOR, (LPCTSTR)NULL );
-	pMenu->AppendMenu( MF_STRING, ID_LIBRARY_COLUMNS, LoadString( IDS_SCHEMAS ) + L"..." );
+	pMenu->AppendMenu( MF_STRING, ID_LIBRARY_COLUMNS, (LPCTSTR)strSchemas );
 
 	m_pCoolMenu = new CCoolMenu();
 	m_pCoolMenu->AddMenu( pMenu, TRUE );

@@ -168,7 +168,7 @@ BOOL CCoolMenu::AddMenu(CMenu* pMenu, BOOL bChild)
 				for ( DWORD nFilter = 0; nFilter < pResultFilters->m_nFilters; nFilter++ )
 				{
 					AppendMenu( pFilters, MF_STRING|( nFilter == nDefaultFilter ? MF_CHECKED : 0 ),
-						3000 + nFilter, pResultFilters->m_pFilters[ nFilter ]->m_sName );
+						nFilter + (DWORD)3000, pResultFilters->m_pFilters[ nFilter ]->m_sName );
 				}
 				ReplaceMenuText( pMenu, i, &mii, m_sFilterString.GetBuffer() );
 
@@ -577,18 +577,6 @@ void CCoolMenu::RegisterEdge(int nLeft, int nTop, int nLength)
 	m_nEdgeSize	= nLength;
 }
 
-static HRESULT SafeQueryContextMenu(IContextMenu* pContextMenu, HMENU hmenu, UINT indexMenu, UINT idCmdFirst, UINT idCmdLast, UINT uFlags) throw()
-{
-	__try
-	{
-		return pContextMenu->QueryContextMenu( hmenu, indexMenu, idCmdFirst, idCmdLast, uFlags );
-	}
-	__except( EXCEPTION_EXECUTE_HANDLER )
-	{
-		return E_UNEXPECTED;
-	}
-}
-
 static UINT_PTR SafeTrackPopupMenu(HMENU hMenu, UINT nFlags, POINT point, HWND hWnd) throw()
 {
 	__try
@@ -604,18 +592,35 @@ static UINT_PTR SafeTrackPopupMenu(HMENU hMenu, UINT nFlags, POINT point, HWND h
 	}
 }
 
+static HRESULT SafeQueryContextMenu(IContextMenu* pContextMenu, HMENU hMenu, UINT indexMenu, UINT idCmdFirst, UINT idCmdLast, UINT uFlags) throw()
+{
+	__try
+	{
+		return pContextMenu->QueryContextMenu( hMenu, indexMenu, idCmdFirst, idCmdLast, uFlags );
+	}
+	__except( EXCEPTION_EXECUTE_HANDLER )
+	{
+		return E_UNEXPECTED;
+	}
+}
+
 void CCoolMenu::DoExplorerMenu(HWND hwnd, const CStringList& oFiles, POINT point, HMENU hMenu, HMENU hSubMenu, UINT nFlags)
 {
 	HRESULT hr = S_OK;
 
 	CComPtr< IContextMenu > pContextMenu1;
-	CShellList oItemIDListList( oFiles );
-	oItemIDListList.GetMenu( hwnd, (void**)&pContextMenu1 );
-	if ( pContextMenu1 )
+	CShellList oItemIDList( oFiles );
+	if ( oItemIDList.GetMenu( hwnd, (void**)&pContextMenu1 ) && pContextMenu1 )
 	{
 		CWaitCursor wc;
 		hr = SafeQueryContextMenu( pContextMenu1, hSubMenu, 0,
-			ID_SHELL_MENU_MIN, ID_SHELL_MENU_MAX, CMF_NORMAL | CMF_EXPLORE );
+			ID_SHELL_MENU_MIN, ID_SHELL_MENU_MAX,
+#ifdef PUBLIC_RELEASE_FIX
+			CMF_DEFAULTONLY	// Safe (limited shell menu)
+#else
+			CMF_NORMAL	// Library Crash (full shell menu)
+#endif
+			);
 	}
 	if ( SUCCEEDED( hr ) )
 	{

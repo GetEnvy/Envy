@@ -446,17 +446,103 @@ void CDownloadsWnd::OnContextMenu(CWnd* /*pWnd*/, CPoint point)
 		m_wndDownloads.ClientToScreen( &point );
 
 		Prepare();
-		if ( m_bSelDownload )
+		if ( ! m_bSelDownload )
 		{
-			if ( m_bSelCompleted && m_bSelTorrent )
-				Skin.TrackPopupMenu( L"CDownloadsWnd.Seeding", point, ID_DOWNLOADS_LAUNCH_COMPLETE );
-			else if ( m_bSelCompleted )
-				Skin.TrackPopupMenu( L"CDownloadsWnd.Completed", point, ID_DOWNLOADS_LAUNCH_COMPLETE );
-			else
-				Skin.TrackPopupMenu( L"CDownloadsWnd.Download", point, ID_DOWNLOADS_LAUNCH_COPY );
+			Skin.TrackPopupMenu( L"CDownloadsWnd.Default", point, ID_DOWNLOADS_HELP );
 			return;
 		}
-		Skin.TrackPopupMenu( L"CDownloadsWnd.Default", point, ID_DOWNLOADS_HELP );
+
+		// ToDo: Find first selected offset for point.y
+		//int nScroll = GetScrollPos( SB_VERT );
+		//int nIndex = 0;
+		//
+		//// Find First Selected
+		//CSingleLock pTransfersLock( &Transfers.m_pSection );
+		//if ( pTransfersLock.Lock( 250 ) )
+		//{
+		//	for ( POSITION posDownload = Downloads.GetIterator(); posDownload; )
+		//	{
+		//		CDownload* pDownload = Downloads.GetNext( posDownload );
+		//
+		//		if ( m_nGroupCookie != 0 && m_nGroupCookie != pDownload->m_nGroupCookie )
+		//			continue;
+		//
+		//		if ( IsFiltered( pDownload ) )
+		//			continue;
+		//
+		//		if ( pDownload->m_bSelected )
+		//		{
+		//			if ( nScroll <= 0 )
+		//				point.y += nIndex * Settings.Skin.RowSize;
+		//			break;
+		//		}
+		//
+		//		if ( nScroll > 0 )
+		//		{
+		//			--nScroll;
+		//		}
+		//		else
+		//		{
+		//			//	PaintDownload( dc, rcItem, pDownload, bFocus && ( m_nFocus == nIndex ), m_pDragDrop == pDownload );
+		//			//pDownloadsData.AddTail( CDownloadDisplayData( pDownload ) );
+		//			rcItem.OffsetRect( 0, (int)Settings.Skin.RowSize );
+		//		}
+		//
+		//		++nIndex;
+		//
+		//		if ( ! pDownload->m_bExpanded )
+		//			continue;
+		//
+		//		//	if ( pDownload->IsSeeding() && ! pDownload->IsCompleted() && ! pDownload->IsPaused() && ! Settings.General.DebugBTSources )
+		//		//	{
+		//		//		pDownload->m_bExpanded = false;
+		//		//		continue;
+		//		//	}
+		//
+		//		int nSources = pDownload->GetSourceCount();
+		//		if ( nScroll >= nSources )
+		//		{
+		//			nScroll -= nSources;
+		//			nIndex += nSources;
+		//			continue;
+		//		}
+		//
+		//		UINT nSource = 0;
+		//		for ( POSITION posSource = pDownload->GetIterator(); posSource && rcItem.top < rcClient.bottom; )
+		//		{
+		//			CDownloadSource* pSource = pDownload->GetNext( posSource );
+		//
+		//			if ( Settings.Downloads.ShowAllSources || pSource->IsConnected() )
+		//			{
+		//				if ( pSource->m_bSelected )
+		//				{
+		//					if ( nScroll <= 0 )
+		//						point.y += nIndex * Settings.Skin.RowSize;
+		//					break;
+		//				}
+		//
+		//				if ( nScroll > 0 )
+		//				{
+		//					--nScroll;
+		//				}
+		//				else
+		//				{
+		//					//PaintSource( dc, rcItem, pDownload, pSource, bFocus && ( m_nFocus == nIndex ) );
+		//					++nSource;
+		//					rcItem.OffsetRect( 0, (int)Settings.Skin.RowSize );
+		//				}
+		//				++nIndex;
+		//			}
+		//		}
+		//	}
+		//}
+
+		if ( m_bSelCompleted && m_bSelTorrent )
+			Skin.TrackPopupMenu( L"CDownloadsWnd.Seeding", point, ID_DOWNLOADS_LAUNCH_COMPLETE );
+		else if ( m_bSelCompleted )
+			Skin.TrackPopupMenu( L"CDownloadsWnd.Completed", point, ID_DOWNLOADS_LAUNCH_COMPLETE );
+		else
+			Skin.TrackPopupMenu( L"CDownloadsWnd.Download", point, ID_DOWNLOADS_LAUNCH_COPY );
 		return;
 	}
 

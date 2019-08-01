@@ -3,7 +3,7 @@
 
 <!-- Envy Default Norwegian Skin File -->
 
-<!-- Translation based on default en.xml r28 --> <!-- (Shareaza 2.2.0.2) -->
+<!-- Translation based on default en.xml r30 --> <!-- (Shareaza 2.2.0.2) -->
 <!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -2977,6 +2977,7 @@
 	<string id="20776" text="(Intet hashsett)"/>
 	<string id="20777" text="Delvis kilde (%.2f%% tilgjengelig)"/>
 	<string id="20778" text="%i opplastings slots, %i venter i kø"/>
+	<string id="20779" text="Tid"/>
 	<string id="20780" text="Str"/>
 	<string id="20781" text="Kilden er for tiden opptatt"/>
 	<string id="20782" text="Denne kilden er bak brannmur"/>

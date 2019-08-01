@@ -2,7 +2,7 @@
 ; Build x64 first then Win32 in Release for unified installer
 
 ; Change from "True" to "False" or "Preview" on the next line for public releases.
-#define alpha "True"
+#define alpha "False"
 
 ; Optional: Change to match signing certificate password, if available
 #define signpass "XXXXXX"
@@ -22,6 +22,7 @@
 #define version       GetStringFileInfo("..\..\Envy\" + ConfigurationName + " " + PlatformName + "\Envy.exe", FILE_VERSION)
 ; #define version     GetFileVersion("..\..\Envy\" + ConfigurationName + " " + PlatformName + "\Envy.exe");
 #define publisher     "GetEnvy.com"
+#define copyright     "© 2016-2019 Envy Development Team"
 #define description   internal_name + " Filesharing"
 #define date          GetDateTimeString('yyyy/mm/dd', '-', '')
 
@@ -129,7 +130,7 @@ SourceDir=..\..
 VersionInfoVersion={#version}
 VersionInfoDescription={#description}
 AppPublisher={#publisher}
-AppCopyright=© Envy Development Team
+AppCopyright={#copyright}
 
 ; Links to website for software panel
 AppPublisherURL=http://getenvy.com
@@ -430,7 +431,7 @@ Source: "Schemas\*.Safe.ico"; DestDir: "{app}\Schemas"; Flags: ignoreversion ove
 #endif
 
 ; Skins
-Source: "Skins\*"; DestDir: "{app}\Skins"; Flags: ignoreversion overwritereadonly uninsremovereadonly sortfilesbyextension recursesubdirs; Excludes: ".svn,*.bak"
+Source: "Skins\*"; DestDir: "{app}\Skins"; Flags: ignoreversion overwritereadonly uninsremovereadonly sortfilesbyextension recursesubdirs; Excludes: ".svn,*.bak,*.bak.*"
 
 ; Languages
 Source: "Languages\*.ico"; DestDir: "{app}\Skins\Languages"; Flags: ignoreversion overwritereadonly uninsremovereadonly sortfilesbyextension

@@ -498,4 +498,4 @@ const LPCTSTR RT_GZIP = L"GZIP";
 
 
 // Saved-State Serialization:	(Set Smart Version and _SER_VERSIONs)
-#define INTERNAL_VERSION		1
+#define INTERNAL_VERSION		2

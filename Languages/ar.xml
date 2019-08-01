@@ -3,7 +3,7 @@
 
 <!-- Envy Arabic Language Skin File -->
 
-<!-- Translation based on default en.xml r28 -->
+<!-- Translation based on default en.xml r30 -->
 <!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -2831,6 +2831,8 @@
 	<string id="20762" text="هذا الملف يبدو أن الرسائل غير المرغوب فيها." />
 	<string id="20763" text="مدرج في القائمة السوداء: " />
 	<!-- Missing Strings -->
+	<string id="20779" text="الوقت"/>
+	<string id="20780" text="الحجم"/>
 	<string id="20798" text="أنتهى Envy من تحميل نسخة Envy التالية (%s). هل تريد الترقية الآن ؟nnعند إختيار نعم ، Envy سيغلق بشكل مؤقت حتى يتم تثبيت الترقية" />
 	<!-- Missing Upload Queue Strings -->
 	<string id="20864" text="إضافة" />

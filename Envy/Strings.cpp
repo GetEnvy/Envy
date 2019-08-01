@@ -1282,6 +1282,112 @@ CString Unescape(const TCHAR* __restrict pszXML, int nLength)
 	return strValue;
 }
 
+CString Str(QWORD num, BOOL commas /*False*/)
+{
+//#if defined(_MSC_VER) && (_MSC_VER >= 1700)
+//	return CString( std::to_wstring( num ).c_str() );
+//#endif
+	CString str;
+	//str.Format( L"%llu", num );
+	_ui64tow_s( num, str.GetBufferSetLength( 20 ), 20, 10 );
+	if ( ! commas || num < 1000 )
+		return str;
+	str.ReleaseBuffer();
+	for ( int npos = str.GetLength() - 3; npos > 0; npos -= 3 )
+	{
+		str.Insert( npos, L"," );
+	}
+	return str;
+}
+
+CString Str(DWORD num, BOOL commas /*False*/)
+{
+//#if defined(_MSC_VER) && (_MSC_VER >= 1700)
+//	return CString( std::to_wstring( num ).c_str() );
+//#endif
+	CString str;
+	//str.Format( L"%lu", num );
+	_ultow_s( num, str.GetBufferSetLength( 12 ), 12, 10 );
+	if ( ! commas || num < 1000 )
+		return str;
+	str.ReleaseBuffer();
+	for ( int npos = str.GetLength() - 3; npos > 0; npos -= 3 )
+	{
+		str.Insert( npos, L"," );
+	}
+	return str;
+}
+
+CString Str(WORD num, BOOL commas /*False*/)
+{
+	CString str;
+	str.Format( L"%hu", num );
+	if ( ! commas || str.GetLength() < 4 )
+		return str;
+	str.ReleaseBuffer();
+	for ( int npos = str.GetLength() - 3; npos > 0; npos -= 3 )
+	{
+		str.Insert( npos, L"," );
+	}
+	return str;
+}
+
+CString Str(BYTE num)
+{
+	CString str;
+	str.Format( L"%hhu", num );
+	return str;
+}
+
+CString Str(UINT num, BOOL commas /*False*/)
+{
+	CString str;
+	str.Format( L"%u", num );
+	if ( ! commas || num < 1000 )
+		return str;
+	str.ReleaseBuffer();
+	for ( int npos = str.GetLength() - 3; npos > 0; npos -= 3 )
+	{
+		str.Insert( npos, L"," );
+	}
+	return str;
+}
+
+CString Str(int num, BOOL commas /*False*/)
+{
+	CString str;
+	//str.Format( L"%i", num );
+	_itow_s( num, str.GetBufferSetLength( 12 ), 12, 10 );
+	if ( ! commas || num < 1000 )
+		return str;
+	str.ReleaseBuffer();
+	for ( int npos = str.GetLength() - 3; npos > 0; npos -= 3 )
+	{
+		str.Insert( npos, L"," );
+	}
+	return str;
+}
+
+CString Str(double num)
+{
+	CString str;
+	str.Format( L"%f", num );
+	return str;
+}
+
+#ifdef __ATLTIME_H__
+CString Str(CTime time)
+{
+	CString strFull = time.Format( L"%Y.%m.%d  %#I:%M%p" );
+	const int nLen = strFull.GetLength() - 2;
+	return strFull[ nLen ] == L'P' ?
+		strFull.Left( nLen ) + L'p' :
+		strFull[ nLen ] == L'A' ?
+		strFull.Left( nLen ) + L'a' :
+		strFull.Left( nLen + 1 );
+}
+#endif
+
 BOOL IsValidExtension(LPCTSTR pszName)
 {
 //	const int nDot = sName.ReverseFind( L'.' );

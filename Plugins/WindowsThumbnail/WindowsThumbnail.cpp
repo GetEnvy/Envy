@@ -2,7 +2,7 @@
 // WindowsThumbnail.cpp : Implementation of WinMain
 //
 // This file is part of Envy (getenvy.com) © 2016-2018
-// Portions copyright PeerProject 2009 and Nikolay Raspopov 2009
+// Portions copyright Nikolay Raspopov 2009
 //
 // Envy is free software; you can redistribute it
 // modify it under the terms of the GNU General Public License
@@ -31,8 +31,7 @@ CWindowsThumbnailModule _AtlModule;
 
 extern "C" int WINAPI _tWinMain(HINSTANCE /*hInstance*/, HINSTANCE /*hPrevInstance*/, LPTSTR /*lpCmdLine*/, int nShowCmd)
 {
-	SetErrorMode( SEM_NOGPFAULTERRORBOX | SEM_NOOPENFILEERRORBOX |
-		SEM_NOALIGNMENTFAULTEXCEPT | SEM_FAILCRITICALERRORS );
+	SetErrorMode( SEM_NOGPFAULTERRORBOX | SEM_NOOPENFILEERRORBOX | SEM_NOALIGNMENTFAULTEXCEPT | SEM_FAILCRITICALERRORS );
 
     return _AtlModule.WinMain( nShowCmd );
 }

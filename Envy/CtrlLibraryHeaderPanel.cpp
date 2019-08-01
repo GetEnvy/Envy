@@ -85,15 +85,12 @@ int CLibraryHeaderPanel::Update()
 
 	if ( pFolder->GetParent() == NULL )
 	{
-		QWORD nTotalVolume;
 		DWORD nTotalFiles;
-		CString str;
-
+		QWORD nTotalVolume;
 		LibraryMaps.GetStatistics( &nTotalFiles, &nTotalVolume );
-		str.Format( L"%lu", nTotalFiles );
-		m_sSubtitle.Replace( L"{totalFiles}", str );
-		str = Settings.SmartVolume( nTotalVolume, KiloBytes );
-		m_sSubtitle.Replace( L"{totalVolume}", str );
+
+		m_sSubtitle.Replace( L"{totalFiles}", Str( nTotalFiles, TRUE ) );
+		m_sSubtitle.Replace( L"{totalVolume}", Settings.SmartVolume( nTotalVolume, KiloBytes ) );
 	}
 
 	pFolder->m_pSchema->ResolveTokens( m_sTitle, pFolder->m_pXML );

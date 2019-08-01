@@ -798,7 +798,7 @@
 #define IDC_STATIC_7                    1807
 #define IDC_STATIC_8                    1808
 #define IDC_STATIC_9                    1809
-#define IDS_ENVY                 20000
+#define IDS_ENVY                        20000
 #define IDS_GENERAL_YES                 20001
 #define IDS_GENERAL_NO                  20002
 #define IDS_GENERAL_OK                  20003
@@ -1450,6 +1450,7 @@
 #define IDS_TIP_NOHASHSET               20776
 #define IDS_TIP_PARTIAL                 20777
 #define IDS_TIP_QUEUE                   20778
+#define IDS_TIP_TIME                    20779
 #define IDS_TIP_SIZE                    20780
 #define IDS_TIP_SOURCE_BUSY             20781
 #define IDS_TIP_SOURCE_FIREWALLED       20782

@@ -3,7 +3,7 @@
 
 <!-- Envy Default Lithuanian Skin File -->
 
-<!-- Translation based on default en.xml r28 -->
+<!-- Translation based on default en.xml r30 -->
 <!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -3296,6 +3296,7 @@
 	<string id="20776" text="Be maišos rinkinio"/>
 	<string id="20777" text="Dalinio failo šaltinis (turima %.2f%%)"/>
 	<string id="20778" text="%i išsiuntimo vietų, %i laukia eilėje"/>
+	<string id="20779" text="Laikas"/>
 	<string id="20780" text="Dydis"/>
 	<string id="20781" text="Šis šaltinis šiuo metu užimtas"/>
 	<string id="20782" text="Šis šaltinis yra už užkardos"/>

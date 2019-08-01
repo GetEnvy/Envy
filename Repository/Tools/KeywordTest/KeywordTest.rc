@@ -26,12 +26,52 @@ LANGUAGE LANG_NEUTRAL, SUBLANG_NEUTRAL
 
 /////////////////////////////////////////////////////////////////////////////
 //
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,0
+ PRODUCTVERSION 1,0
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "000004b0"
+        BEGIN
+            VALUE "CompanyName", "GetEnvy.com"
+            VALUE "FileDescription", "Envy Keyword Test"
+            VALUE "FileVersion", "1.0.0.0"
+            VALUE "InternalName", "KeywordTest.exe"
+            VALUE "LegalCopyright", "© Envy Development Team, 2016. Portions Shareaza"
+            VALUE "OriginalFilename", "KeywordTest.exe"
+            VALUE "ProductName", "Envy"
+            VALUE "ProductVersion", "1.0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x0, 1200
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
 // Icon
 //
 
 // Icon with lowest ID value placed first to ensure
 // application icon remains consistent on all systems.
 IDR_MAINFRAME           ICON                    "..\\Envy\\Res\\Envy.ico"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -55,45 +95,6 @@ BEGIN
     CONTROL         "as expression",IDC_EXP,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,183,60,60,10
     LTEXT           "How Envy splits search text to keywords? Let's see...",IDC_STATIC,7,7,186,8
     CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDHORZ,0,23,250,1
-END
-
-
-/////////////////////////////////////////////////////////////////////////////
-//
-// Version
-//
-
-VS_VERSION_INFO VERSIONINFO
- FILEVERSION 1,0,0,0
- PRODUCTVERSION 1,0,0,0
- FILEFLAGSMASK 0x3fL
-#ifdef _DEBUG
- FILEFLAGS 0x1L
-#else
- FILEFLAGS 0x0L
-#endif
- FILEOS 0x4L
- FILETYPE 0x1L
- FILESUBTYPE 0x0L
-BEGIN
-    BLOCK "StringFileInfo"
-    BEGIN
-        BLOCK "000004b0"
-        BEGIN
-            VALUE "CompanyName", "GetEnvy.com"
-            VALUE "FileDescription", "Envy Keyword Test"
-            VALUE "FileVersion", "1.0.0.0"
-            VALUE "InternalName", "KeywordTest.exe"
-            VALUE "LegalCopyright", "© Envy Development Team, 2012. Portions Shareaza"
-            VALUE "OriginalFilename", "KeywordTest.exe"
-            VALUE "ProductName", "Envy"
-            VALUE "ProductVersion", "1.0.0.0"
-        END
-    END
-    BLOCK "VarFileInfo"
-    BEGIN
-        VALUE "Translation", 0x0, 1200
-    END
 END
 
 

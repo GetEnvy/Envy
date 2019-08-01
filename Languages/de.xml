@@ -3,7 +3,7 @@
 
 <!-- Envy Default German Skin File -->
 
-<!-- Translation based on default en.xml r28 -->
+<!-- Translation based on default en.xml r30 -->
 <!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -3361,6 +3361,7 @@
 	<string id="20776" text="(Kein Hashset)"/>
 	<string id="20777" text="Unvollständige Quelle (%.2f%% verfügbar)"/>
 	<string id="20778" text="%i Upload-Slots, %i in Warteschlange"/>
+	<string id="20779" text="Zeit"/>
 	<string id="20780" text="Größe"/>
 	<string id="20781" text="Diese Quelle hat zur Zeit keine freien Upload-Slots"/>
 	<string id="20782" text="Diese Quelle ist hinter einer Firewall"/>

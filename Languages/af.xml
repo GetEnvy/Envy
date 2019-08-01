@@ -4,7 +4,7 @@
 <!-- Envy Default Afrikaans Skin File -->
 <!-- Weergawe: 27 Oktober 2005 vir Shareaza 2.2.0.2 -->
 
-<!-- Translation based on default en.xml r28 -->
+<!-- Translation based on default en.xml r30 -->
 <!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -3217,6 +3217,7 @@
 	<string id="20776" text="(Geen Hashset)"/>
 	<string id="20777" text="Onvolledige Bron (%.2f%% beskikbaar)"/>
 	<string id="20778" text="%i oplaaiposisies, %i op waglys"/>
+	<string id="20779" text="Tyd"/>
 	<string id="20780" text="Tot"/>
 	<string id="20781" text="Hierdie bron is tans besig"/>
 	<string id="20782" text="Hierdie bron is agter 'n netskans"/>

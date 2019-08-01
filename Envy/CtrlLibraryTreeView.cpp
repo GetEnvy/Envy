@@ -364,7 +364,8 @@ BOOL CLibraryTreeView::SelectAll(CLibraryTreeItem* pParent, BOOL bInvalidate)
 			bChanged |= SelectAll( &**pChild, FALSE );
 	}
 
-	if ( bInvalidate && bChanged && pParent == m_pRoot ) Invalidate();
+	if ( bInvalidate && bChanged && pParent == m_pRoot )
+		Invalidate();
 
 	return bChanged;
 }
@@ -457,9 +458,11 @@ BOOL CLibraryTreeView::CleanItems(CLibraryTreeItem* pItem, DWORD nCookie, BOOL b
 	{
 		if ( (*pChild)->m_nCleanCookie != nCookie )
 		{
-			if ( m_pFocus == &**pChild ) m_pFocus = NULL;
+			if ( m_pFocus == &**pChild )
+				m_pFocus = NULL;
 
-			if ( (*pChild)->m_bSelected ) Select( &**pChild, TRI_FALSE, FALSE );
+			if ( (*pChild)->m_bSelected )
+				Select( &**pChild, TRI_FALSE, FALSE );
 			bChanged |= DeselectAll( NULL, &**pChild, FALSE );
 
 			if ( bVisible )
@@ -2063,9 +2066,7 @@ void CLibraryTreeView::OnLibraryExportCollection()
 
 void CLibraryTreeView::OnUpdateLibraryCreateTorrent(CCmdUI* pCmdUI)
 {
-	pCmdUI->Enable( ! m_bVirtual &&
-		! Settings.BitTorrent.TorrentCreatorPath.IsEmpty() &&
-		GetSelectedCount() < 2 );
+	pCmdUI->Enable( ! m_bVirtual && ! Settings.BitTorrent.TorrentCreatorPath.IsEmpty() && GetSelectedCount() < 2 );		// ToDo: Allow m_bVirtual
 }
 
 void CLibraryTreeView::OnLibraryCreateTorrent()
@@ -2077,16 +2078,22 @@ void CLibraryTreeView::OnLibraryCreateTorrent()
 	{
 		if ( CLibraryTreeItem* pItem = GetFirstSelected() )
 		{
-			CString strPath = pItem->m_pPhysical->m_sPath;
+			CString strPath;
+			if ( m_bVirtual )
+			{
+				// ToDo:
+			}
+			else
+			{
+				strPath = pItem->m_pPhysical->m_sPath;
+			}
 			pLock.Unlock();
 
 			if ( ! strPath.IsEmpty() )
 			{
-				CString strCommandLine =
-					L" -sourcefile \"" + strPath +
-					L"\" -destination \"" + Settings.Downloads.TorrentPath +
-					L"\" -tracker \"" + Settings.BitTorrent.DefaultTracker +
-					L"\"";
+				CString strCommandLine = L" -sourcefile \"" + strPath + L"\"";
+				if ( Settings.BitTorrent.DefaultTracker.GetLength() > 10 && Settings.Downloads.TorrentPath.GetLength() > 4 )
+					strCommandLine += L" -destination \"" + Settings.Downloads.TorrentPath + L"\" -tracker \"" + Settings.BitTorrent.DefaultTracker + L"\"";
 			}
 		}
 		else

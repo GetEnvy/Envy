@@ -6120,13 +6120,13 @@ msgstr "O Vizinho %s repassou um pong com dados de endereço inválidos, ignoran
 msgid "Neighbor %s forwarded a push request to a firewalled address, ignoring."
 msgstr "O Vizinho %s enviou uma requisição de push para um endereço atrás de um firewall, ignorando."
 
-#: string;20590
+#: string;20682
 msgid "Remote access is disabled."
 msgstr "O acesso remoto está desativado."
 
-#: string;20591
-msgid "http://%s:%i/remote - Username/password required."
-msgstr "http://%s:%i/remote - Escolher um nome de usuário e senha."
+#: string;20684
+msgid "Username/password required."
+msgstr "Escolher um nome de usuário e senha."
 
 #: string;20592
 msgid "Unable to accept connections, URL unavailable."
@@ -6436,15 +6436,15 @@ msgstr "A rede eDonkey faz uso de longas filas com longos tempos de espera. Em l
 msgid "Envy Settings"
 msgstr "Configurações do Envy"
 
-#: string;20681
+#: string;20690
 msgid "Loading skin: %s"
 msgstr ""
 
-#: string;20682
+#: string;20691
 msgid "Skin load error: %s. Element: %s"
 msgstr ""
 
-#: string;20684
+#: string;20692
 msgid "Are you sure you wish to delete the \"%s\" skin? This cannot be undone."
 msgstr "Você tem certeza que você quer apagar a \"%s\" skin? Isto não pode ser desfeito."
 

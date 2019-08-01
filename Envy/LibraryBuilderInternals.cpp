@@ -403,11 +403,7 @@ bool CLibraryBuilderInternals::ExtractProperties(DWORD nIndex, const CString& st
 				{
 					LONG nPages;
 					if ( PropGetValue( pStore, PKEY_Document_PageCount, nPages ) && nPages > 0 )
-					{
-						CString strItem;
-						strItem.Format( L"%lu", nPages );
-						pXML->AddAttribute( L"pages", strItem );
-					}
+						pXML->AddAttribute( L"pages", Str( nPages ) );
 
 					CString strFormat;
 					if ( PropGetValue( pStore, PKEY_ItemTypeText, strFormat ) )
@@ -425,19 +421,11 @@ bool CLibraryBuilderInternals::ExtractProperties(DWORD nIndex, const CString& st
 				{
 					DWORD nWidth;
 					if ( PropGetValue( pStore, PKEY_Image_HorizontalSize, nWidth ) && nWidth )
-					{
-						CString strItem;
-						strItem.Format( L"%lu", nWidth );
-						pXML->AddAttribute( L"width", strItem );
-					}
+						pXML->AddAttribute( L"width", Str( nWidth ) );
 
 					DWORD nHeight;
 					if ( PropGetValue( pStore, PKEY_Image_VerticalSize, nHeight ) && nHeight )
-					{
-						CString strItem;
-						strItem.Format( L"%lu", nHeight );
-						pXML->AddAttribute( L"height", strItem );
-					}
+						pXML->AddAttribute( L"height", Str( nHeight ) );
 
 					DWORD nBitDepth;
 					if ( PropGetValue( pStore, PKEY_Image_BitDepth, nBitDepth ) && nBitDepth )
@@ -456,11 +444,7 @@ bool CLibraryBuilderInternals::ExtractProperties(DWORD nIndex, const CString& st
 				{
 					DWORD nSampleRate;
 					if ( PropGetValue( pStore, PKEY_Audio_SampleRate, nSampleRate ) && nSampleRate )
-					{
-						CString strItem;
-						strItem.Format( L"%lu", nSampleRate );
-						pXML->AddAttribute( L"sampleRate", strItem );
-					}
+						pXML->AddAttribute( L"sampleRate", Str( nSampleRate ) );
 
 					DWORD nBitrate;
 					if ( PropGetValue( pStore, PKEY_Audio_EncodingBitrate, nBitrate ) && nBitrate )
@@ -475,20 +459,11 @@ bool CLibraryBuilderInternals::ExtractProperties(DWORD nIndex, const CString& st
 
 					QWORD nContentLength;
 					if ( PropGetValue( pStore, PKEY_Media_Duration, nContentLength ) && nContentLength )
-					{
-						DWORD nSeconds = (DWORD)( nContentLength / 10000000ui64 );
-						CString strItem;
-						strItem.Format( L"%lu", nSeconds );
-						pXML->AddAttribute( L"seconds", strItem );
-					}
+						pXML->AddAttribute( L"seconds", Str( nContentLength / 10000000ui64 ) );
 
 					DWORD nChannelCount;
 					if ( PropGetValue( pStore, PKEY_Audio_ChannelCount, nChannelCount ) && nChannelCount )
-					{
-						CString strItem;
-						strItem.Format( L"%lu", nChannelCount );
-						pXML->AddAttribute( L"channels", strItem );
-					}
+						pXML->AddAttribute( L"channels", Str( nChannelCount ) );
 				}
 				break;
 
@@ -499,19 +474,11 @@ bool CLibraryBuilderInternals::ExtractProperties(DWORD nIndex, const CString& st
 				{
 					DWORD nVideoWidth;
 					if ( PropGetValue( pStore, PKEY_Video_FrameWidth, nVideoWidth ) && nVideoWidth )
-					{
-						CString strItem;
-						strItem.Format( L"%lu", nVideoWidth );
-						pXML->AddAttribute( L"width", strItem );
-					}
+						pXML->AddAttribute( L"width", Str( nVideoWidth ) );
 
 					DWORD nVideoHeight;
 					if ( PropGetValue( pStore, PKEY_Video_FrameHeight, nVideoHeight ) && nVideoHeight )
-					{
-						CString strItem;
-						strItem.Format( L"%lu", nVideoHeight );
-						pXML->AddAttribute( L"height", strItem );
-					}
+						pXML->AddAttribute( L"height", Str( nVideoHeight ) );
 
 					DWORD nFourCC;
 					if ( PropGetValue( pStore, PKEY_Video_FourCC, nFourCC ) )
@@ -1370,22 +1337,16 @@ bool CLibraryBuilderInternals::ScanMP3Frame(CXMLElement* pXML, HANDLE hFile, DWO
 		nFrameCount += ( dwMusicSize / nFrameSize ) - 1;
 	}
 
-	DWORD nFrameTime = ( nLayer == 3 ? 384 : 1152 ) * 100000 / nBaseFrequency;
-	DWORD nTotalTime = (DWORD)( (__int64)nFrameCount * (__int64)nFrameTime / 100000 );
+	const DWORD nFrameTime = ( nLayer == 3 ? 384 : 1152 ) * 100000 / nBaseFrequency;
+	const DWORD nTotalTime = (DWORD)( (__int64)nFrameCount * (__int64)nFrameTime / 100000 );
 
-	CString strValue;
+	pXML->AddAttribute( L"bitrate", Str( nBaseBitrate / 1000 ) + ( bVariable ? L"~" : L"" ) );
 
-	strValue.Format( bVariable ? L"%lu~" : L"%lu", nBaseBitrate / 1000 );
-	pXML->AddAttribute( L"bitrate", strValue );
+	pXML->AddAttribute( L"seconds", Str( nTotalTime ) );
 
-	strValue.Format( L"%lu", nTotalTime );
-	pXML->AddAttribute( L"seconds", strValue );
+	pXML->AddAttribute( L"sampleRate", Str( nBaseFrequency ) );
 
-	strValue.Format( L"%lu", nBaseFrequency );
-	pXML->AddAttribute( L"sampleRate", strValue );
-
-	strValue.Format( L"%d", nBaseChannel );
-	pXML->AddAttribute( L"channels", strValue );
+	pXML->AddAttribute( L"channels", Str( nBaseChannel ) );
 
 	pXML->AddAttribute( L"soundType", strBaseSoundType );
 
@@ -1790,9 +1751,9 @@ bool CLibraryBuilderInternals::ReadGIF(DWORD nIndex, HANDLE hFile)
 	augment::auto_ptr< CXMLElement > pXML( new CXMLElement( NULL, L"image" ) );
 	CString strItem;
 
-	strItem.Format( L"%lu", nWidth );
+	strItem.Format( L"%u", nWidth );
 	pXML->AddAttribute( L"width", strItem );
-	strItem.Format( L"%lu", nHeight );
+	strItem.Format( L"%u", nHeight );
 	pXML->AddAttribute( L"height", strItem );
 
 	pXML->AddAttribute( L"colors", L"256" );
@@ -2625,20 +2586,16 @@ bool CLibraryBuilderInternals::ReadMPEG(DWORD nIndex, HANDLE hFile)
 		return false;
 
 	augment::auto_ptr< CXMLElement > pXML( new CXMLElement( NULL, L"video" ) );
-	CString strItem;
 
-	DWORD nWidth, nHeight;
-	nWidth = ( (DWORD)nBuffer[0] << 4 ) | (DWORD)nBuffer[1] >> 4;
-	nHeight = ( ( (DWORD)nBuffer[1] & 0x0F ) << 8 ) | (DWORD)nBuffer[2];
+	const DWORD nWidth = ( (DWORD)nBuffer[0] << 4 ) | (DWORD)nBuffer[1] >> 4;
+	const DWORD nHeight = ( ( (DWORD)nBuffer[1] & 0x0F ) << 8 ) | (DWORD)nBuffer[2];
 
-	strItem.Format( L"%lu", nWidth );
-	pXML->AddAttribute( L"width", strItem );
-	strItem.Format( L"%lu", nHeight );
-	pXML->AddAttribute( L"height", strItem );
+	pXML->AddAttribute( L"width", Str( nWidth ) );
+	pXML->AddAttribute( L"height", Str( nHeight ) );
 	pXML->AddAttribute( L"codec", L"MPEG" );
 
 	LPCTSTR pszFPS[] = { L"23.976", L"24", L"25", L"29.97", L"30", L"50", L"59.94", L"60" };
-	int nFrameIndex = ( nBuffer[3] & 0x0F );
+	const int nFrameIndex = ( nBuffer[3] & 0x0F );
 
 	if ( nFrameIndex >= 1 && nFrameIndex < 9 )
 		pXML->AddAttribute( L"frameRate", pszFPS[ nFrameIndex - 1 ] );
@@ -2796,14 +2753,11 @@ bool CLibraryBuilderInternals::ReadOGG(DWORD nIndex, HANDLE hFile)
 		nBitrate = GetFileSize( hFile, NULL ) / ( nLength / nFrequency ) * 8;
 	}
 
-	strComment.Format( L"%lu", nBitrate / 1000 );
-	pXML->AddAttribute( L"bitrate", strComment );
+	pXML->AddAttribute( L"bitrate", Str( nBitrate / 1000 ) );
 
-	strComment.Format( L"%lu", nFrequency );
-	pXML->AddAttribute( L"sampleRate", strComment );
+	pXML->AddAttribute( L"sampleRate", Str( nFrequency ) );
 
-	strComment.Format( L"%lu", nChannels );
-	pXML->AddAttribute( L"channels", strComment );
+	pXML->AddAttribute( L"channels", Str( nChannels ) );
 
 	LibraryBuilder.SubmitMetadata( nIndex, CSchema::uriAudio, pXML.release() );
 
@@ -3543,14 +3497,13 @@ bool CLibraryBuilderInternals::ReadAVI(DWORD nIndex, HANDLE hFile)
 	if ( ! bMoviFound )
 		return false;
 
-	CString strItem;
-
 	double nTime = (double)pHeader.dwMicroSecPerFrame / 1000000.0f;
 	nTime *= (double)pHeader.dwTotalFrames;
 	nTime /= 60.0f;
 
 	double nRate = 1000000.0f / (double)pHeader.dwMicroSecPerFrame;
 
+	CString strItem;
 	strItem.Format( L"%lu", pHeader.dwWidth );
 	pXML->AddAttribute( L"width", strItem );
 	strItem.Format( L"%lu", pHeader.dwHeight );
@@ -3606,7 +3559,9 @@ bool CLibraryBuilderInternals::ReadPDF(DWORD nIndex, HANDLE hFile, LPCTSTR pszPa
 		{
 			CString strEntry = strLine.Left( nData );
 			if ( strEntry.CompareNoCase( L"linearized" ) == 0 )
+			{
 				bLinearized = ( strLine.Mid( nData + 1 ) == L"1" );
+			}
 			else if ( strEntry.CompareNoCase( L"n" ) == 0 )
 			{
 				if ( _stscanf( strLine.Mid( nData + 1 ), L"%lu", &nPages ) != 1 )
@@ -3635,7 +3590,9 @@ bool CLibraryBuilderInternals::ReadPDF(DWORD nIndex, HANDLE hFile, LPCTSTR pszPa
 			nPages = 0;
 		}
 		else // Return back
+		{
 			SetFilePointer( hFile, nOffset, NULL, FILE_BEGIN );
+		}
 	}
 
 	// nOffset - the first reference position to which we will go

@@ -2822,8 +2822,8 @@ void CSkin::TrackPopupMenu(LPCTSTR pszMenu, const CPoint& point, UINT nDefaultID
 		pInfo.cbSize = sizeof( pInfo );
 		pInfo.fMask = MIIM_SUBMENU | MIIM_STATE;
 		pInfo.fState = MFS_ENABLED;
-		HMENU hSubMenu = pInfo.hSubMenu = ::CreatePopupMenu();
-		ASSERT( hSubMenu );
+		pInfo.hSubMenu = ::CreateMenu();	// ::CreatePopupMenu()
+		ASSERT( pInfo.hSubMenu );
 		if ( pPopup->SetMenuItemInfo( ID_SHELL_MENU, &pInfo ) )
 		{
 			CoolMenu.DoExplorerMenu( pWnd->GetSafeHwnd(), oFiles,
@@ -2833,10 +2833,9 @@ void CSkin::TrackPopupMenu(LPCTSTR pszMenu, const CPoint& point, UINT nDefaultID
 			// Change ID_SHELL_MENU back
 			pInfo.hSubMenu = NULL;
 			VERIFY( pPopup->SetMenuItemInfo( ID_SHELL_MENU, &pInfo ) );
-
 			return;
 		}
-		VERIFY( DestroyMenu( hSubMenu ) );
+		VERIFY( DestroyMenu( pInfo.hSubMenu ) );
 	}
 
 	__try	// Fix for strange TrackPopupMenu crash inside GUI

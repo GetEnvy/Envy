@@ -132,6 +132,22 @@ DWORD IPStringToDWORD(LPCTSTR pszIP, BOOL bReverse = TRUE);
 CString HostToString(const SOCKADDR_IN* pHost);
 #endif	// _WINSOCKAPI_
 
+__if_not_exists(QWORD)
+{
+	typedef unsigned __int64 QWORD;
+}
+
+CString Str(QWORD num, BOOL commas = FALSE);
+CString Str(DWORD num, BOOL commas = FALSE);
+CString Str(WORD num, BOOL commas = FALSE);
+CString Str(BYTE num);
+CString Str(UINT num, BOOL commas = FALSE);
+CString Str(int num, BOOL commas = FALSE);
+CString Str(double num);
+#ifdef __ATLTIME_H__
+CString Str(CTime time);
+#endif
+
 // Format long paths if needed "\\?\"
 LPCTSTR SafePath(const CString& sPath);
 BOOL MakeSafePath(CString& sPath);

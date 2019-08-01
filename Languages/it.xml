@@ -3,7 +3,7 @@
 
 <!-- Envy Default Italian Skin File -->
 
-<!-- Translation based on default en.xml r28 -->
+<!-- Translation based on default en.xml r30 -->
 <!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -3293,6 +3293,7 @@
 	<string id="20776" text="Non Hashset"/>
 	<string id="20777" text="Fonte parziale (%.2f%% disponibile)"/>
 	<string id="20778" text="%i slot upload, %i in attesa in coda"/>
+	<string id="20779" text="Tempo"/>
 	<string id="20780" text="Dim."/>
 	<string id="20781" text="Questo sorgente è al momento occupato"/>
 	<string id="20782" text="Questo sorgente è firewallato"/>

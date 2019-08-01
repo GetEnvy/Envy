@@ -6116,13 +6116,13 @@ msgstr "Grannen %s skickade ett pongpaket med en felaktig adress, ignorerar."
 msgid "Neighbor %s forwarded a push request to a firewalled address, ignoring."
 msgstr "Grannen %s skickade vidare en anslutningsbegäran till en adress bakom brandvägg, ignorerar."
 
-#: string;20590
+#: string;20682
 msgid "Remote access is disabled."
 msgstr "Fjärråtkomst är avstängd."
 
-#: string;20591
-msgid "http://%s:%i/remote - Username/password required."
-msgstr "http://%s:%i/remote - välja ett användarnamn och lösenord."
+#: string;20684
+msgid "Username/password required."
+msgstr "välja ett användarnamn och lösenord."
 
 #: string;20592
 msgid "Unable to accept connections, URL unavailable."
@@ -6432,15 +6432,15 @@ msgstr "Nätverket eDonkey använder långa köer med långa väntetider. Om du 
 msgid "Envy Settings"
 msgstr "Inställningar"
 
-#: string;20681
+#: string;20690
 msgid "Loading skin: %s"
 msgstr ""
 
-#: string;20682
+#: string;20691
 msgid "Skin load error: %s. Element: %s"
 msgstr ""
 
-#: string;20684
+#: string;20692
 msgid "Are you sure you wish to delete the \"%s\" skin? This cannot be undone."
 msgstr "Är du säker på att du vill radera skinnet \"%s\". Detta kan inte ångras."
 

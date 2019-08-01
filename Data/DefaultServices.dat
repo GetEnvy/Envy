@@ -1,38 +1,35 @@
 M http://cache.getenvy.com/cachechu/
 M http://cache.getenvy.com/skulls/
 M http://gwctest.zapto.org:1337/
+M http://midian.jayl.de/g2/bazooka.php
 M http://disobscure.velum-ultra.com/skulls.php
 M http://tenafly5k.com/gwc/skulls.php
-M http://gweb.4octets.co.uk/skulls.php
-M http://gweb2.4octets.co.uk/gwc.php
-# http://gweb.dwbo.nl/
-# http://cache.w3-hidden.cc/
+M http://gwc.centrump2p.com/skulls.php
+# http://gweb.4octets.co.uk/skulls.php
+# http://gweb2.4octets.co.uk/gwc.php
 # http://webcache.peerproject.org/
 
-# http://cache.getenvy.com/dkac/
+2 http://cache.getenvy.com/dkac/
 2 http://dkac.trillinux.org/dkac/dkac.php
 2 http://cache.trillinux.org/g2/bazooka.php
 2 http://cache.ce3c.be/
 2 http://cache.ibel.de/
-2 http://ping.pongwar.com/
 2 http://www.k33bz.com/g2/bazooka.php
-2 http://htmlhell.com/
-# http://gwc2.wodi.org/skulls.php
-# http://silvers.zyns.com/gwc/dkac.php
-# http://midian.jayl.de/g2/bazooka.php
+# http://htmlhell.com/
+# http://ping.pongwar.com/
 # http://cache2.bazookanetworks.com/g2/bazooka.php
 # http://dogma.cloud.bishopston.net:33559/
 # http://karma.cloud.bishopston.net:33559/
-# http://g2.uk.dyslexicfish.net:33558/
-2 http://uk.gnutella.dyslexicfish.net:3559/
 2 http://useast.gnutella.dyslexicfish.net:3559/
 2 http://uswest.gnutella.dyslexicfish.net:3559/
+2 http://uk.gnutella.dyslexicfish.net:3559/
+2 http://au.gnutella.dyslexicfish.net:3559
 
 1 http://useast.gnutella.dyslexicfish.net:3558/
 1 http://uswest.gnutella.dyslexicfish.net:3558/
 1 http://uk.gnutella.dyslexicfish.net:3558/
-# http://g1.uswest.dyslexicfish.net:33558/
-# http://g1.uk.dyslexicfish.net:33558/
+1 http://au.gnutella.dyslexicfish.net:3558/
+
 # http://gwc.ak-electron.eu:12050/
 # http://gwc.dietpac.com:8080/
 # http://gwc.glucolene.com:8080/
@@ -50,7 +47,8 @@ D http://www.emule-server.de/server.met/max/server.met
 
 H http://dchublist.com/hublist.xml.bz2
 H http://dchublist.ru/hublist.xml.bz2
-H http://www.hublista.hu/hublist.xml.bz2
+H http://tankafett.biz/?do=hublist&get=hublist.xml.bz2
+# http://www.hublista.hu/hublist.xml.bz2
 # http://publichublist.com/?do=hublist.xml.bz2
 # http://openhublist.org
 
@@ -75,4 +73,4 @@ X http://gwc.gofoxy.net:2108/gwc/cgi-bin/fc
 # Test: http://cache.getenvy.com/cachechu/?get=1&net=gnutella2&client=TEST1.0
 # Latest version at http://sourceforge.net/p/getenvy/code/HEAD/tree/trunk/Data/DefaultServices.dat
 #
-# Last updated June 2018
+# Last updated July 2019

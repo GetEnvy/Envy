@@ -98,6 +98,8 @@ BOOL CLibraryTipCtrl::OnPrepare()
 		m_sPath.Empty();
 
 	m_sSize = Settings.SmartVolume( pFile->GetSize() );
+	if ( Settings.General.GUIMode == GUI_BASIC )
+		m_sSize +=  L"    (" + Str( pFile->GetSize(), TRUE ) + L")";
 
 	if ( pLibraryFile )
 		m_sFolder = pLibraryFile->GetFolder();
@@ -138,7 +140,7 @@ BOOL CLibraryTipCtrl::OnPrepare()
 		m_pMetadata.Add( LoadString( IDS_TIP_TYPE ), m_sType );
 
 	if ( m_sSize )
-		m_pMetadata.Add( LoadString( IDS_TIP_SIZE ), m_sSize );
+		m_pMetadata.Add( LoadString( IDS_TIP_SIZE ), m_sSize );		// "MB (Bytes)"
 
 	if ( pLibraryFile )
 	{
@@ -156,6 +158,7 @@ BOOL CLibraryTipCtrl::OnPrepare()
 		}
 	}
 
+	pLock.Unlock();
 	oLock.Unlock();
 
 	CalcSizeHelper();
@@ -311,14 +314,17 @@ void CLibraryTipCtrl::OnHide()
 void CLibraryTipCtrl::OnTimer(UINT_PTR nIDEvent)
 {
 	CCoolTipCtrl::OnTimer( nIDEvent );
-
-	if ( ! m_bVisible && GetTickCount() - m_tHidden > 20000 )
+#ifndef PUBLIC_RELEASE_FIX
+	if ( ! m_bVisible && GetTickCount() - m_tHidden > 20000 && IsThreadAlive() )
 		StopThread();
+#endif
 }
 
 void CLibraryTipCtrl::OnDestroy()
 {
+#ifndef PUBLIC_RELEASE_FIX
 	StopThread();
+#endif
 
 	CCoolTipCtrl::OnDestroy();
 }
@@ -336,37 +342,37 @@ void CLibraryTipCtrl::OnRun()
 {
 	while ( IsThreadEnabled() )
 	{
+		Doze( 1000 );
+
+		if ( theApp.m_bClosing || ! IsThreadEnabled() )
+			break;
+
 		m_pSection.Lock();
 		CString strPath = m_sPath;
 		m_pSection.Unlock();
 
-		if ( ! strPath.IsEmpty() )	// ToDo: Make preview requests by hash?
-		{
-			CImageFile pFile;
-			BOOL bSuccess = CThumbCache::Cache( strPath, &pFile );
-	
-			m_pSection.Lock();
-	
-			if ( m_bmThumb.m_hObject )
-				m_bmThumb.DeleteObject();
-	
-			if ( m_sPath == strPath )
-			{
-				m_sPath.Empty();
-	
-				if ( bSuccess )
-				{
-					m_bmThumb.Attach( pFile.CreateBitmap() );
-					Invalidate();
-				}
-			}
+		if ( strPath.IsEmpty() )
+			continue;
 
-			m_pSection.Unlock();
+		CImageFile pFile;
+		BOOL bSuccess = CThumbCache::Cache( strPath, &pFile );
+
+		m_pSection.Lock();
+
+		if ( m_bmThumb.m_hObject )
+			m_bmThumb.DeleteObject();
+
+		if ( m_sPath == strPath )
+		{
+			m_sPath.Empty();
 
 			if ( bSuccess )
-				break;
+			{
+				m_bmThumb.Attach( pFile.CreateBitmap() );
+				Invalidate();
+			}
 		}
-		
-		Doze( 1000 );
+
+		m_pSection.Unlock();
 	}
 }

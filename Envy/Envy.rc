@@ -4577,6 +4577,7 @@ BEGIN
 	IDS_TIP_NOHASHSET			"No Hashset"
 	IDS_TIP_PARTIAL				"Partial Source (%.2f%% available)"
 	IDS_TIP_QUEUE				"%i upload slots, %i waiting in queue"
+	IDS_TIP_TIME				"Time"
 	IDS_TIP_SIZE				"Size"
 	IDS_TIP_SOURCE_BUSY			"This source is currently busy"
 	IDS_TIP_SOURCE_FIREWALLED	"This source is firewalled"

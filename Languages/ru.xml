@@ -3,7 +3,7 @@
 
 <!-- Envy Default Russian Skin File -->
 
-<!-- Translation based on default en.xml r28 -->
+<!-- Translation based on default en.xml r30 -->
 <!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -3338,6 +3338,7 @@
 	<string id="20776" text="Без набора хеша"/>
 	<string id="20777" text="Частичный источник (%.2f%% доступно)"/>
 	<string id="20778" text="%i слота(ов) раздачи, %i - в очереди"/>
+	<string id="20779" text="Время"/>
 	<string id="20780" text="Размер"/>
 	<string id="20781" text="Этот источник сейчас занят"/>
 	<string id="20782" text="Этот источник находится за брандмауэром"/>

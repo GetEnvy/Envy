@@ -236,18 +236,15 @@ HANDLE CEnvyThread::BeginThread(LPCSTR pszName, AFX_THREADPROC pfnThreadProc, LP
 	return NULL;
 }
 
-void CEnvyThread::CloseThread(DWORD nThreadID, DWORD dwTimeout)
+void CEnvyThread::CloseThread(DWORD nThreadID, DWORD dwTimeout) throw()
 {
 	__try
 	{
-		if ( HANDLE hThread = GetHandle( nThreadID ) )
+		if ( const HANDLE hThread = GetHandle( nThreadID ) )
 		{
 			DWORD dwExitCode;
-			while ( GetExitCodeThread( hThread, &dwExitCode ) && dwExitCode == STILL_ACTIVE )
+			while ( IsThreadAlive( nThreadID ) && GetExitCodeThread( hThread, &dwExitCode ) && dwExitCode == STILL_ACTIVE )
 			{
-				if ( ! IsThreadAlive( nThreadID ) )
-					return;
-
 				::SetThreadPriority( hThread, THREAD_PRIORITY_NORMAL );
 
 				SafeMessageLoop();

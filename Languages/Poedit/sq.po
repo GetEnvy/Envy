@@ -6120,13 +6120,13 @@ msgstr "Fqinji %s përcolli një pong me të dhëna adrese invalide, përbuzje."
 msgid "Neighbor %s forwarded a push request to a firewalled address, ignoring."
 msgstr ""
 
-#: string;20590
+#: string;20682
 msgid "Remote access is disabled."
 msgstr "Hyrja në largësi është çaktivizuar."
 
-#: string;20591
-msgid "http://%s:%i/remote - Username/password required."
-msgstr "http://%s:%i/remote - një emër përdoruesi dhe fjalëkalimi."
+#: string;20684
+msgid "Username/password required."
+msgstr "një emër përdoruesi dhe fjalëkalimi."
 
 #: string;20592
 msgid "Unable to accept connections, URL unavailable."
@@ -6436,15 +6436,15 @@ msgstr "The eDonkey network uses large queues with long wait times. By limiting 
 msgid "Envy Settings"
 msgstr "Vendosjet e Envy-s"
 
-#: string;20681
+#: string;20690
 msgid "Loading skin: %s"
 msgstr ""
 
-#: string;20682
+#: string;20691
 msgid "Skin load error: %s. Element: %s"
 msgstr ""
 
-#: string;20684
+#: string;20692
 msgid "Are you sure you wish to delete the \"%s\" skin? This cannot be undone."
 msgstr "A jeni i sigurt se doni të fshini lëvoren \"%s\". Këtë nuk mund ta ktheni."
 

@@ -12,8 +12,13 @@
 #endif
 
 // TargetVer.h: (WINVER)
+#ifdef WIN64
+#define NTDDI_VERSION	0x06000000	// NTDDI_VISTA
+#define _WIN32_WINNT	0x0600		// Vista
+#else
 #define NTDDI_VERSION	0x05010200	// NTDDI_WINXPSP2
 #define _WIN32_WINNT	0x0501		// XP
+#endif
 #include <sdkddkver.h>
 
 #define VC_EXTRALEAN

@@ -3,7 +3,7 @@
 
 <!-- Envy Default Turkish Skin File -->
 
-<!-- Translation based on default en.xml r28 -->
+<!-- Translation based on default en.xml r30 -->
 <!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -3224,6 +3224,7 @@
 	<string id="20776" text="(Hashset yok)"/>
 	<string id="20777" text="Kısmi kaynak (%.2f%% mevcut)"/>
 	<string id="20778" text="%i aktarım programları, %i sıra bekliyor"/>
+	<string id="20779" text="Zaman"/>
 	<string id="20780" text="Boyut"/>
 	<string id="20781" text="Kaynak şimdilik meşgul"/>
 	<string id="20782" text="Kaynak güvenlik duvarı arkasında"/>

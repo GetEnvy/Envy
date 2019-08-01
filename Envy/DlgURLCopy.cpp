@@ -255,10 +255,15 @@ void CURLCopyDlg::OnIncludeSelf()
 
 	if ( ! m_sHash.IsEmpty() )
 	{
+		if ( m_pFile.m_nSize && m_pFile.m_nSize != SIZE_UNKNOWN )
+		{
+			CString strSize;
+			strSize.Format( L"	(%llu)", m_pFile.m_nSize );
+			m_sHash += strSize;
+		}
+
 		if ( ! m_pFile.m_sName.IsEmpty() )
-			m_sHash.Format( L"%s	(%I64u)	%s", (LPCTSTR)m_sHash, m_pFile.m_nSize, (LPCTSTR)m_pFile.m_sName );
-		else if ( m_pFile.m_nSize && m_pFile.m_nSize != SIZE_UNKNOWN )
-			m_sHash.Format( L"%s	(%I64u)", (LPCTSTR)m_sHash, m_pFile.m_nSize );
+			m_sHash += L"	" + m_pFile.m_sName;
 	}
 
 	if ( m_pFile.m_oED2K &&
@@ -266,7 +271,7 @@ void CURLCopyDlg::OnIncludeSelf()
 		 m_pFile.m_nSize != SIZE_UNKNOWN &&
 		! m_pFile.m_sName.IsEmpty() )
 	{
-		m_sED2K.Format( L"ed2k://|file|%s|%I64u|%s|/",
+		m_sED2K.Format( L"ed2k://|file|%s|%llu|%s|/",
 			(LPCTSTR)URLEncode( m_pFile.m_sName ),
 			m_pFile.m_nSize,
 			(LPCTSTR)m_pFile.m_oED2K.toString() );

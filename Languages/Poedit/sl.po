@@ -6116,13 +6116,13 @@ msgstr "Sosed %s je posredoval pong z neveljavnimi naslovnimi podatki (invalid a
 msgid "Neighbor %s forwarded a push request to a firewalled address, ignoring."
 msgstr "Sosed %s je posredoval potisno (push) prošnjo v naslov, ki je za požarnim zidom, ignoriram."
 
-#: string;20590
+#: string;20682
 msgid "Remote access is disabled."
 msgstr "Oddaljen dostop je onemogočen."
 
-#: string;20591
-msgid "http://%s:%i/remote - Username/password required."
-msgstr "http://%s:%i/remote - Vnesti morate uporabniško ime in geslo."
+#: string;20684
+msgid "Username/password required."
+msgstr "Vnesti morate uporabniško ime in geslo."
 
 #: string;20592
 msgid "Unable to accept connections, URL unavailable."
@@ -6432,15 +6432,15 @@ msgstr "eDonkey omrežje uporablja dolge čakalne vrste z dolgimi čakalnimi dob
 msgid "Envy Settings"
 msgstr "Envy nastavitve"
 
-#: string;20681
+#: string;20690
 msgid "Loading skin: %s"
 msgstr ""
 
-#: string;20682
+#: string;20691
 msgid "Skin load error: %s. Element: %s"
 msgstr ""
 
-#: string;20684
+#: string;20692
 msgid "Are you sure you wish to delete the \"%s\" skin? This cannot be undone."
 msgstr "Ste prepričani, da želite brisati preobleko \"%s\".  Dejanja ne bo mogoče razveljaviti."
 

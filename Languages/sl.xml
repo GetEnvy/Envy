@@ -3,7 +3,7 @@
 
 <!-- Envy Default Slovenian Skin File -->
 
-<!-- Translation based on default en.xml r28 --> <!-- (Shareaza 2.2.2.12) -->
+<!-- Translation based on default en.xml r30 --> <!-- (Shareaza 2.2.2.12) -->
 <!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -3073,6 +3073,7 @@
 	<string id="20776" text="No Hashset"/> <!--Manjka nabor izvlečkov-->
 	<string id="20777" text="Delni vir (na voljo: %.2f%%)"/>
 	<string id="20778" text="%i naložnih rež, %i čaka v vrsti"/>
+	<string id="20779" text="Čas"/>
 	<string id="20780" text="Velikost"/>
 	<string id="20781" text="Vir je trenutno zaseden"/>
 	<string id="20782" text="Vir je za požarnim zidom"/>

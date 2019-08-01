@@ -3,7 +3,7 @@
 
 <!-- Envy Default Hungarian Skin File -->
 
-<!-- Translation based on default en.xml r28 -->
+<!-- Translation based on default en.xml r30 -->
 <!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -3209,6 +3209,7 @@
 	<string id="20776" text="(Nincs Hash)"/>
 	<string id="20777" text="Részforrás (%.2f%% található)"/>
 	<string id="20778" text="%i feltöltés, %i várnak a sorukra"/>
+	<string id="20779" text="Idő"/>
 	<string id="20780" text="Méret"/>
 	<string id="20781" text="Ez a forrás elfoglalt"/>
 	<string id="20782" text="Ez a forrás passzív"/>

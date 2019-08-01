@@ -183,6 +183,13 @@ void CLibraryMetaPanel::Update()
 					{
 						m_pMetadata->Combine( pFile->m_pMetadata );
 					}
+
+					// Additional metadata
+					if ( Settings.General.GUIMode != GUI_BASIC )
+					{
+						m_pMetadata->Add( LoadString( IDS_TIP_TIME ), Str( pFile->m_pTime ) );
+						m_pMetadata->Add( LoadString( IDS_TIP_SIZE ), Str( pFile->GetSize(), TRUE ) );
+					}
 				}
 			}
 		}

@@ -3,7 +3,7 @@
 
 <!-- Envy Default Chinese (Simplified) Skin File -->
 
-<!-- Translation based on default en.xml r28 --> <!-- (Shareaza r6092) -->
+<!-- Translation based on default en.xml r30 --> <!-- (Shareaza r6092) -->
 <!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -3185,6 +3185,7 @@
 	<string id="20776" text="无 Hashset"/>
 	<string id="20777" text="部分资源 (%.2f%% 可用)"/>
 	<string id="20778" text="%i 个上传通道，%i 个在队列中等待"/>
+	<string id="20779" text="时间"/>
 	<string id="20780" text="大小"/>
 	<string id="20781" text="此来源正忙"/>
 	<string id="20782" text="此来源有防火墙"/>

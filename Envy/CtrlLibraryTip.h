@@ -33,10 +33,10 @@ public:
 	virtual ~CLibraryTipCtrl();
 
 public:
-	void Show(DWORD pContext, CPoint pt = NULL, HWND hAltWnd = NULL)
+	void Show(DWORD nIndex, CPoint pt = NULL, HWND hAltWnd = NULL)
 	{
-		bool bChanged = ( pContext != m_nFileIndex );
-		m_nFileIndex = pContext;
+		bool bChanged = ( nIndex != m_nFileIndex );
+		m_nFileIndex = nIndex;
 		m_pFile = NULL;
 		m_hAltWnd = hAltWnd;
 		ShowImpl( bChanged );

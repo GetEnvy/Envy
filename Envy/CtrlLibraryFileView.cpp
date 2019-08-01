@@ -231,10 +231,10 @@ void CLibraryFileView::OnContextMenu(CWnd* /*pWnd*/, CPoint point)
 	if ( point.x == -1 && point.y == -1 )	// Keyboard fix
 		ClientToScreen( &point );
 
-	CString strName( m_pszToolBar );
+//	CString strName( m_pszToolBar );
 //	strName += Settings.Library.ShowVirtual ? L".Virtual" : L".Physical";		// For now, CLibraryFileView.Virtual = CLibraryFileView.Physical
 
-	Skin.TrackPopupMenu( strName, point, ID_LIBRARY_LAUNCH, oFiles );
+	Skin.TrackPopupMenu( m_pszToolBar, point, ID_LIBRARY_LAUNCH, oFiles );
 }
 
 void CLibraryFileView::OnMouseMove(UINT nFlags, CPoint point)
@@ -503,7 +503,7 @@ void CLibraryFileView::OnUpdateLibraryCreateTorrent(CCmdUI* pCmdUI)
 
 void CLibraryFileView::OnLibraryCreateTorrent()
 {
-	if ( GetSelectedCount() == 1 && Settings.BitTorrent.DefaultTracker.GetLength() > 10 )
+	if ( GetSelectedCount() == 1 )
 	{
 		CSingleLock pLock( &Library.m_pSection, TRUE );
 
@@ -514,11 +514,9 @@ void CLibraryFileView::OnLibraryCreateTorrent()
 
 			if ( ! strPath.IsEmpty() )
 			{
-				CString strCommandLine =
-					L" -sourcefile \"" + strPath +
-					L"\" -destination \"" + Settings.Downloads.TorrentPath +
-					L"\" -tracker \"" + Settings.BitTorrent.DefaultTracker +
-					L"\"";
+				CString strCommandLine = L" -sourcefile \"" + strPath + L"\"";
+				if ( Settings.BitTorrent.DefaultTracker.GetLength() > 10 && Settings.Downloads.TorrentPath.GetLength() > 4 )
+					strCommandLine += L" -destination \"" + Settings.Downloads.TorrentPath + L"\" -tracker \"" + Settings.BitTorrent.DefaultTracker + L"\"";
 
 				ShellExecute( GetSafeHwnd(), L"open", Settings.BitTorrent.TorrentCreatorPath, strCommandLine, NULL, SW_SHOWNORMAL );
 

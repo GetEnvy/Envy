@@ -3,7 +3,7 @@
 
 <!-- Envy Default Czech Skin File -->
 
-<!-- Translation based on default en.xml r28 --> <!-- (Shareaza 2.2.5.7) -->
+<!-- Translation based on default en.xml r30 --> <!-- (Shareaza 2.2.5.7) -->
 <!-- github.com/GetEnvy/Envy/blob/master/Languages/en.xml -->
 
 <!-- This skin template represents current Envy defaults. -->
@@ -3173,6 +3173,7 @@
 	<string id="20776" text="(Žádný Hashset)"/>
 	<string id="20777" text="Částečný zdroj (%.2f%% je dostupný)"/>
 	<string id="20778" text="%i slot pro odesílání, %i čeká ve frontě"/>
+	<string id="20779" text="Čas"/>
 	<string id="20780" text="Velké"/>
 	<string id="20781" text="Tento zdroj je právě přetížen"/>
 	<string id="20782" text="Tento zdroj je za firewallem"/>
