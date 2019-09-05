@@ -52,6 +52,19 @@
 		<capability name="bt"/>
 	</vendor>
 
+	<vendor code="RAZI">
+		<title>iShareaza</title>
+		<link>https://github.com/ivan386/Shareaza</link>
+		<capability name="htmlHostBrowse"/>
+		<capability name="chatFlag"/>
+		<capability name="extended"/>
+		<capability name="g1"/>
+		<capability name="g2"/>
+		<capability name="ed2k"/>
+		<capability name="dc"/>
+		<capability name="bt"/>
+	</vendor>
+
 	<vendor code="RZCA">
 		<title>ShareazaPlus Alpha</title>
 		<link>http://sourceforge.net/projects/ShareazaPlus</link>

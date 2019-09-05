@@ -1293,6 +1293,14 @@ void CEDClient::DetermineUserAgent()
 				( ( m_nSoftwareVersion >> 17 ) &0x7F ), ( ( m_nSoftwareVersion >> 10 ) &0x7F ),
 				( ( m_nSoftwareVersion >>  7 ) &0x07 ), ( ( m_nSoftwareVersion ) &0x7F ) );
 			break;
+		case 41:		// iShareaza
+			if ( m_bEmAICH )
+				break;
+			// Note 2nd last number (Beta build #) may be truncated, since it's only 3 bits.
+			m_sUserAgent.Format( L"iShareaza %u.%u.%u.%u",
+				((m_nSoftwareVersion >> 17) & 0x7F), ((m_nSoftwareVersion >> 10) & 0x7F),
+				((m_nSoftwareVersion >> 7) & 0x07), ((m_nSoftwareVersion) & 0x7F) );
+			break;
 		case 80:		// Envy (Proposed 0x50) (Was PeerProject)
 			if ( m_bEmAICH )
 			{
@@ -1385,7 +1393,7 @@ void CEDClient::DetermineUserAgent()
 						m_sUserAgent.Format( L"eMule Mod (80) v%u", m_nEmVersion );
 					break;
 				}
-				m_sUserAgent = L"Envy";		// ToDo: Detect PeerProject?
+				m_sUserAgent = L"Envy";
 				break;
 			case 203:		// ShareazaPlus RazaCB
 				m_sUserAgent.Format( L"ShareazaPlus" );

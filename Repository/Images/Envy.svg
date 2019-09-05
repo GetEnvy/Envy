@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="190"
+   height="230"
+   viewBox="0 0 190 230"
+   version="1.1"
+   id="svg4595"
+   sodipodi:docname="Envy.svg"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
+   inkscape:export-filename="C:\Source\EnvyArt\Logo.230.png"
+   inkscape:export-xdpi="262.95654"
+   inkscape:export-ydpi="262.95654">
+  <defs
+     id="defs4589">
+    <linearGradient
+       inkscape:collect="always"
+       id="Fade-1">
+      <stop
+         style="stop-color:#feb414;stop-opacity:1;"
+         offset="0"
+         id="stop5163" />
+      <stop
+         style="stop-color:#feb414;stop-opacity:0;"
+         offset="1"
+         id="stop5165" />
+    </linearGradient>
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#Fade-1"
+       id="radialGradient5177"
+       cx="30"
+       cy="311.125"
+       fx="30"
+       fy="311.125"
+       r="30"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(3.2360816,1.1607273e-8,0,0.83333333,4.6229746e-7,16.854178)" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#Fade-1"
+       id="radialGradient5177-6"
+       cx="30"
+       cy="311.125"
+       fx="30"
+       fy="311.125"
+       r="30"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(3.2360816,1.1607273e-8,0,0.83333333,0,-53.14582)" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#Fade-1"
+       id="radialGradient5177-1"
+       cx="30"
+       cy="311.125"
+       fx="30"
+       fy="311.125"
+       r="30"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(3.2360816,1.1607273e-8,0,0.83333333,0,-123.14582)" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="0.15686275"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="2.8284271"
+     inkscape:cx="110.37973"
+     inkscape:cy="99.362246"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="true"
+     units="px"
+     inkscape:window-width="1920"
+     inkscape:window-height="1057"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     showguides="false"
+     inkscape:pagecheckerboard="true"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0">
+    <inkscape:grid
+       type="xygrid"
+       id="grid4601"
+       spacingx="1"
+       spacingy="1"
+       dotted="false"
+       empspacing="10"
+       originx="4.8927489e-07"
+       originy="-3.1957835e-06" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata4592">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+        <cc:license
+           rdf:resource="" />
+        <dc:publisher>
+          <cc:Agent>
+            <dc:title>GetEnvy.com</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Fade Back"
+     inkscape:groupmode="layer"
+     id="g5280"
+     transform="translate(4.8927489e-7,-111.125)"
+     style="display:inline" />
+  <g
+     transform="translate(4.8927489e-7,-111.125)"
+     id="g5266"
+     inkscape:groupmode="layer"
+     inkscape:label="Fade Mid"
+     style="display:inline" />
+  <g
+     inkscape:label="Fade"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(4.8927489e-7,-111.125)"
+     style="display:inline">
+    <rect
+       style="opacity:1;fill:#feb414;fill-opacity:1;stroke:url(#radialGradient5177);stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect4603"
+       width="194.16487"
+       height="50"
+       x="0"
+       y="251.125"
+       transform="matrix(0.97854979,0.20601048,0,1,0,0)" />
+    <rect
+       y="181.125"
+       x="0"
+       height="50"
+       width="194.16487"
+       id="rect181-1"
+       style="display:inline;opacity:1;fill:#feb414;fill-opacity:1;stroke:url(#radialGradient5177-6);stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       transform="matrix(0.97854979,0.20601048,0,1,0,0)" />
+    <rect
+       y="111.125"
+       x="0"
+       height="50"
+       width="194.16487"
+       id="rect181-0"
+       style="display:inline;opacity:1;fill:#feb414;fill-opacity:1;stroke:url(#radialGradient5177-1);stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       transform="matrix(0.97854979,0.20601048,0,1,0,0)" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer3"
+     inkscape:label="Subtext"
+     style="display:none"
+     transform="translate(4.8927489e-7,170)">
+    <rect
+       style="fill:#ffe696;fill-opacity:1;fill-rule:evenodd;stroke-width:1.01748526"
+       id="rect5240"
+       width="28.987734"
+       height="10"
+       x="33.128838"
+       y="13.923056"
+       transform="matrix(0.96592583,0.25881905,0,1,0,0)" />
+    <rect
+       style="fill:#ffe696;fill-opacity:1;fill-rule:evenodd;stroke-width:1.01748526"
+       id="rect5242"
+       width="10.352762"
+       height="40"
+       x="42.446323"
+       y="3.9230549"
+       transform="matrix(0.96592583,0.25881905,0,1,0,0)" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Text"
+     transform="translate(4.8927489e-7,170)"
+     style="display:inline" />
+</svg>

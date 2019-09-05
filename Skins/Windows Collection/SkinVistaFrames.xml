@@ -53,7 +53,7 @@
 <region>
  <shape type="roundRect"	rect="0,2,-1,-1" size="12,12"/>
  <shape type="roundRect"	rect="0,-20,-1,-1" size="9,9" combine="or"/>
- <shape type="rectangle"	rect="8,1,32,2" combine="or"/>
+ <shape type="rectangle"	rect="8,1,10,2" combine="or"/>
 </region>
 <maximiseCrop rect="4,8,-4,-4"/>
 </windowSkin>

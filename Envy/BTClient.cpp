@@ -637,6 +637,7 @@ CString CBTClient::GetUserAgentAzureusStyle(LPCSTR pszVendor)
 		Vendors[ L"HL" ] = L"Halite";
 		Vendors[ L"HN" ] = L"Hydranode";
 		Vendors[ L"IL" ] = L"iLivid";
+		Vendors[ L"iS" ] = L"iShareaza";
 		Vendors[ L"JS" ] = L"JustSeed.It";
 		Vendors[ L"JT" ] = L"JavaTorrent";
 		Vendors[ L"KG" ] = L"KGet";

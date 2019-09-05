@@ -527,6 +527,7 @@
 		<type extension="eps"/>
 		<type extension="fla"/>
 		<type extension="flif"/>
+		<type extension="fuif"/>
 		<type extension="fpx"/>
 		<type extension="gif"/>
 		<type extension="hdp"/>
@@ -542,8 +543,9 @@
 		<type extension="jpe"/>
 		<type extension="jpeg"/>
 		<type extension="jpg"/>
-		<type extension="jxr"/>
 		<type extension="jsl"/>
+		<type extension="jxl"/>
+		<type extension="jxr"/>
 		<type extension="kra"/>
 		<type extension="mac"/>
 		<type extension="mng"/>

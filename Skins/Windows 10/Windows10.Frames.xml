@@ -41,18 +41,18 @@
  <part name="MaximiseDown"	rect="218,69,46,30"/>
  <part name="CloseHover"	rect="144,69,46,30"/>
  <part name="CloseDown" 	rect="264,69,46,30"/>
- <part name="MenuHover" 	rect="1,66,50,33"/>
+ <part name="MenuHover" 	rect="1,67,48,32"/>
 </parts>
 <anchors>
  <!--anchor name="System"	rect="1,3,48,30"-->
- <anchor name="Menu"		rect="1,0,50,33"/>
+ <anchor name="Menu"		rect="1,1,48,32"/>
  <anchor name="Minimise"	rect="-139,3,46,30"/>
  <anchor name="Maximise"	rect="-93,3,46,30"/>
  <anchor name="Close"		rect="-47,3,46,30"/>
 </anchors>
 <region>
  <shape type="rectangle"	rect="0,2,-1,-1"/>
- <shape type="rectangle"	rect="9,0,41,2" combine="or"/>
+ <shape type="rectangle"	rect="11,1,13,2" combine="or"/>
 </region>
 <!--maximisecrop rect="0,0,0,0"-->
 <minimumsize width="700" height="260"/>

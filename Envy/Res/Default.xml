@@ -2489,7 +2489,7 @@
 		<target window="CRemoteWnd"/>
 		<region>
 			<shape type="rectangle" rect="0,1,412,85"/>
-			<shape type="rectangle" rect="6,0,30,1" combine="or"/>
+			<shape type="rectangle" rect="6,0,8,1" combine="or"/>
 		</region>
 		<anchors>
 			<anchor name="StatusText"		rect="40,5,332,16"/>
@@ -2509,7 +2509,7 @@
 			<anchor name="_ID_MEDIA_MUTE"		rect="294,49,21,18"/>
 			<anchor name="_ID_MEDIA_RANDOM"		rect="26,50,16,15"/>
 			<anchor name="_ID_MEDIA_REPEAT"		rect="57,47,16,19"/>
-			<anchor name="_ID_MEDIA_ADD"		rect="6,0,24,24"/>
+			<anchor name="_ID_MEDIA_ADD"		rect="6,0,24,28"/>
 		</anchors>
 		<parts>
 			<part name="Background"			rect="0,0,412,85"/>
@@ -2523,8 +2523,8 @@
 			<!--part name="HistoryTx1"		rect=""-->
 			<!--part name="HistoryRx1"		rect=""-->
 			<!--part name="ScalerTab"		rect=""-->
-			<part name="_ID_MONITOR_CLOSE.Hover"	rect="0,115,31,20"/>
-			<part name="_ID_MONITOR_CLOSE.Down"	rect="31,115,31,20"/>
+			<part name="_ID_MONITOR_CLOSE.Hover"	rect="294,115,31,20"/>
+			<part name="_ID_MONITOR_CLOSE.Down"	rect="325,115,31,20"/>
 			<part name="_ID_MEDIA_PLAY.Up"		rect="184,35,44,45"/>
 			<part name="_ID_MEDIA_PLAY.Hover"	rect="250,115,44,45"/>
 			<part name="_ID_MEDIA_PLAY.Down"	rect="206,115,44,45"/>
@@ -2543,8 +2543,8 @@
 			<part name="_ID_MEDIA_MUTE.Checked"	rect="390,94,21,18"/>
 			<part name="_ID_MEDIA_RANDOM.Checked"	rect="367,121,16,15"/>
 			<part name="_ID_MEDIA_REPEAT.Checked"	rect="392,118,16,19"/>
-			<part name="_ID_MEDIA_ADD.Hover"	rect="0,136,24,24"/>
-			<part name="_ID_MEDIA_ADD.Down"		rect="24,136,24,24"/>
+			<part name="_ID_MEDIA_ADD.Hover"	rect="0,115,24,28"/>
+			<part name="_ID_MEDIA_ADD.Down"		rect="24,115,24,28"/>
 		</parts>
 		<caption fontFace="Segoe UI" fontSize="13" fontWeight="Normal" color="000000" outlineColor=""/>
 	</windowskin>
