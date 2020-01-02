@@ -18,9 +18,9 @@ begin {
 	# Header:
 	$copyright = @"
 /*
-** sqlite3.c  (3.2x.0) (20xx-xx-xx)
+** sqlite3.c  (3.3x.0) (200x-xx-xx)
 **
-** This file is part of Envy (getenvy.com) © 2016-2018
+** This file is part of Envy (getenvy.com) © 2016-2020
 ** The original author disclaimed copyright to this source code.
 */
 

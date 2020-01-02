@@ -25,8 +25,8 @@ LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
 //
 
 VS_VERSION_INFO VERSIONINFO
- PRODUCTVERSION 2,1
- FILEVERSION 2,1
+ PRODUCTVERSION 2,2
+ FILEVERSION 2,2
  FILEFLAGSMASK 0x1fL
 #ifdef _DEBUG
  FILEFLAGS 0x1L
@@ -42,15 +42,15 @@ BEGIN
 		BLOCK "000004b0"
 		BEGIN
 			VALUE "ProductName", "Envy"
-			VALUE "ProductVersion", "2.1"
-			VALUE "FileVersion", "2.1"
+			VALUE "ProductVersion", "2.2"
+			VALUE "FileVersion", "2.2"
 			VALUE "Title", "Envy"
 			VALUE "InternalName", "Envy"
 			VALUE "OriginalFilename", "Envy.exe"
 			VALUE "FileDescription", "Envy Filesharing"
 			VALUE "Comments", "Envy Filesharing"
 			VALUE "CompanyName", "GetEnvy.com"
-			VALUE "LegalCopyright", "© Envy Development Team, 2016-2019"
+			VALUE "LegalCopyright", "© Envy Development Team 2016-2020"
 		END
 	END
 	BLOCK "VarFileInfo"

@@ -576,6 +576,7 @@
 		<type extension="envy"/>
 		<type extension="iso"/>
 		<type extension="jar"/>
+		<type extension="msix"/>
 		<type extension="msi"/>
 		<type extension="msu"/>
 		<type extension="ppa"/>
@@ -583,6 +584,7 @@
 		<type extension="sks"/>
 		<type extension="sit"/>
 		<type extension="tgz"/>
+		<type extension="vsix"/>
 		<type extension="xla"/>
 		<type keyword="installer"/>
 		<type keyword="setup"/>

@@ -500,9 +500,10 @@
 		<type extension="cmd"/>
 		<type extension="cod"/>
 		<type extension="cpp"/>
-		<type extension="cz"/>
-		<type extension="cxx"/>
+		<type extension="cs"/>
+		<type extension="csproj"/>
 		<type extension="css"/>
+		<type extension="cxx"/>
 		<type extension="d"/>
 		<type extension="epl"/>
 		<type extension="ex"/>
@@ -527,6 +528,7 @@
 		<type extension="js"/>
 		<type extension="json"/>
 		<type extension="jss"/>
+		<type extension="jsx"/>
 		<type extension="mat"/>
 		<type extension="opl"/>
 		<type extension="pas"/>
@@ -564,7 +566,6 @@
 		<type extension="vxml"/>
 		<type extension="vcproj"/>
 		<type extension="vcxproj"/>
-		<type extension="wcs"/>
 		<type extension="xml"/>
 		<type extension="xsd"/>
 		<type extension="xsl"/>

@@ -22,7 +22,7 @@
 #define version       GetStringFileInfo("..\..\Envy\" + ConfigurationName + " " + PlatformName + "\Envy.exe", FILE_VERSION)
 ; #define version     GetFileVersion("..\..\Envy\" + ConfigurationName + " " + PlatformName + "\Envy.exe");
 #define publisher     "GetEnvy.com"
-#define copyright     "© 2016-2019 Envy Development Team"
+#define copyright     "© 2016-2020 Envy Development Team"
 #define description   internal_name + " Filesharing"
 #define date          GetDateTimeString('yyyy/mm/dd', '-', '')
 
