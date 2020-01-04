@@ -1,7 +1,7 @@
 //
 // StdAfx.h
 //
-// This file is part of Envy (getenvy.com) © 2016-2019
+// This file is part of Envy (getenvy.com) © 2016-2020
 // Portions copyright Shareaza 2002-2008 and PeerProject 2008-2016
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -34,7 +34,7 @@
 	#error Unicode Required
 #endif
 
-#if !defined(XPSUPPORT) && !defined(WIN64) //&& (_MSC_VER < 1920)
+#if !defined(XPSUPPORT) && !defined(NOXPSUPPORT) && !defined(WIN64) //&& (_MSC_VER < 1920)
 	#define XPSUPPORT	// No Windows XP support needed on x64 builds
 #endif
 

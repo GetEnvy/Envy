@@ -4119,9 +4119,9 @@
 	<dialog name="CWizardInterfacePage" cookie="StBuBuBuStStBuSt" caption="Welcome to Envy &#160;(6/8)">
 		<control text="Envy supports a flexible user interface, so you can choose what is most comfortable for you.  You can change these options at any time."/>
 		<control text="Select user interface:"/>
-		<control text="Normal Mode"/>
+		<control text="Standard Mode"/>
 		<control text="Basic Mode"/>
-		<control text="Standard view offers all available commands, windows, abilities."/>
+		<control text="Default view offers all available commands, windows, abilities."/>
 		<control text="Simple, easy to use menus with fewer options. Limited for new users."/>
 		<control text="Display simple download progress bars.  (Less detail)"/>
 		<control text="Select a skin:"/>

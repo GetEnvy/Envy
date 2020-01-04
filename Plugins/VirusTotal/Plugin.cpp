@@ -19,6 +19,8 @@
 #include "StdAfx.h"
 #include "Plugin.h"
 
+// ToDo: API https://developers.virustotal.com/reference
+
 static const LPCWSTR VIRUSTOTAL_CHECK	= L"&VirusTotal Check";
 static const LPCWSTR VIRUSTOTAL_HOME	= L"http://www.virustotal.com";
 static const LPCWSTR VIRUSTOTAL_URL		= L"http://www.virustotal.com/latest-report.html?resource=";

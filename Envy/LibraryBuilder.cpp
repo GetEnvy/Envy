@@ -1,7 +1,7 @@
 //
 // LibraryBuilder.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2018
+// This file is part of Envy (getenvy.com) © 2016-2020
 // Portions copyright Shareaza 2002-2008 and PeerProject 2008-2015
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -586,20 +586,23 @@ bool CLibraryBuilder::HashFile(LPCTSTR szPath, HANDLE hFile)
 		if ( m_nElapsed > 0 && m_nReaded > 0 )
 		{
 			// Calculation of compensation delay
-			QWORD nSpeed = ( m_nReaded * 1000000ull ) / m_nElapsed;	// B/s
-			QWORD nMaxSpeed = 1024 * 1024 * ( m_bPriority ?
-				Settings.Library.HighPriorityHashing :
-				Settings.Library.LowPriorityHashing );				// B/s
-			if ( nMaxSpeed && nSpeed > nMaxSpeed )
+			if ( ! m_bPriority || Settings.Library.HighPriorityHashing > 1 )
 			{
-				DWORD nDelay = (DWORD)( ( ( ( nSpeed * m_nElapsed ) / nMaxSpeed ) - m_nElapsed ) / 1000ull );	// ms
-				if ( nDelay > 1000 )
-					nDelay = 1000;	// 1 s
-				else if ( nDelay < 1 )
-					nDelay = 1;		// 1 ms
+				const QWORD nSpeed = ( m_nReaded * 1000000ull ) / m_nElapsed;	// B/s
+				const QWORD nMaxSpeed = 1024 * 1024 * ( m_bPriority ?
+					Settings.Library.HighPriorityHashing :
+					Settings.Library.LowPriorityHashing );				// B/s
+				if ( nSpeed > nMaxSpeed && nMaxSpeed)
+				{
+					DWORD nDelay = (DWORD)( ( ( ( nSpeed * m_nElapsed ) / nMaxSpeed ) - m_nElapsed ) / 1000ull );	// ms
+					if ( nDelay > 1000 )
+						nDelay = 1000;	// 1 s
+					else if ( nDelay < 1 )
+						nDelay = 1;		// 1 ms
 
-				// Compensation
-				Sleep( nDelay );
+					// Compensation
+					Sleep( nDelay );
+				}
 			}
 
 			m_nElapsed = 0;	// mks
@@ -839,315 +842,315 @@ bool CLibraryBuilder::DetectVirtualID3v2(HANDLE hFile, QWORD& nOffset, QWORD& nL
 	return true;
 }
 
-bool CLibraryBuilder::DetectVirtualAPEHeader(HANDLE hFile, QWORD& nOffset, QWORD& nLength)
-{
-	APE_HEADER pHeader = {};
-	DWORD nRead;
+//bool CLibraryBuilder::DetectVirtualAPEHeader(HANDLE hFile, QWORD& nOffset, QWORD& nLength)
+//{
+//	APE_HEADER pHeader = {};
+//	DWORD nRead;
+//
+//	LONG nPosLow  = (LONG)( nOffset & 0xFFFFFFFF );
+//	LONG nPosHigh = (LONG)( nOffset >> 32 );
+//	SetFilePointer( hFile, nPosLow, &nPosHigh, FILE_BEGIN );
+//
+//	if ( ! ReadFile( hFile, &pHeader, sizeof( pHeader ), &nRead, NULL ) )
+//		return false;
+//	if ( nRead != sizeof( pHeader ) )
+//		return false;
+//
+//	const char szMAC[ 4 ] = "MAC";
+//	if ( memcmp( pHeader.cID, szMAC, 3 ) )
+//		return false;
+//
+//	DWORD nTagSize = 0;
+//	if ( pHeader.nVersion >= APE2_VERSION )
+//	{
+//		APE_HEADER_NEW pNewHeader = {};
+//		SetFilePointer( hFile, nPosLow, &nPosHigh, FILE_BEGIN );
+//		if ( ! ReadFile( hFile, &pNewHeader, sizeof( pNewHeader ), &nRead, NULL ) )
+//			return false;
+//		if ( nRead != sizeof( pNewHeader ) )
+//			return false;
+//		nTagSize = pNewHeader.nHeaderBytes + sizeof( pNewHeader );
+//	}
+//	else
+//		nTagSize = pHeader.nHeaderBytes + sizeof( pHeader );
+//
+//	if ( nLength <= nTagSize )
+//		return false;
+//
+//	nOffset += nTagSize;
+//	nLength -= nTagSize;
+//
+//	return true;
+//}
 
-	LONG nPosLow  = (LONG)( nOffset & 0xFFFFFFFF );
-	LONG nPosHigh = (LONG)( nOffset >> 32 );
-	SetFilePointer( hFile, nPosLow, &nPosHigh, FILE_BEGIN );
+//bool CLibraryBuilder::DetectVirtualAPEFooter(HANDLE hFile, QWORD& nOffset, QWORD& nLength)
+//{
+//	APE_TAG_FOOTER pFooter = { 0 };
+//	if ( nLength < sizeof( pFooter ) )
+//		return false;
+//
+//	DWORD nRead;
+//	LONG nPosLow  = (LONG)( ( nOffset + nLength - sizeof( pFooter ) ) & 0xFFFFFFFF );
+//	LONG nPosHigh = (LONG)( ( nOffset + nLength - sizeof( pFooter ) ) >> 32 );
+//
+//	SetFilePointer( hFile, nPosLow, &nPosHigh, FILE_BEGIN );
+//	if ( ! ReadFile( hFile, &pFooter, sizeof( pFooter ), &nRead, NULL ) )
+//		return false;
+//	if ( nRead != sizeof( pFooter ) )
+//		return false;
+//
+//	const char szAPE[ 9 ] = "APETAGEX";
+//	if ( memcmp( pFooter.cID, szAPE, 8 ) )
+//		return false;
+//	if ( pFooter.nSize + sizeof( pFooter ) > nLength )
+//		return false;
+//
+//	nLength -= sizeof( pFooter ) + pFooter.nSize;
+//
+//	return true;
+//}
 
-	if ( ! ReadFile( hFile, &pHeader, sizeof( pHeader ), &nRead, NULL ) )
-		return false;
-	if ( nRead != sizeof( pHeader ) )
-		return false;
+//bool CLibraryBuilder::DetectVirtualLyrics(HANDLE hFile, QWORD& nOffset, QWORD& nLength)
+//{
+//	typedef struct Lyrics3v2
+//	{
+//		CHAR nSize[6];
+//		struct LyricsTag
+//		{
+//			CHAR szID[6];
+//			CHAR szVersion[3];
+//		} Tag;
+//	} LYRICS3_2;
+//
+//	if ( nLength < 15 )
+//		return false;
+//
+//	LYRICS3_2 pFooter = { 0 };
+//	DWORD nRead;
+//
+//	LONG nPosLow  = (LONG)( ( nOffset + nLength - sizeof( pFooter ) ) & 0xFFFFFFFF );
+//	LONG nPosHigh = (LONG)( ( nOffset + nLength - sizeof( pFooter ) ) >> 32 );
+//	SetFilePointer( hFile, nPosLow, &nPosHigh, FILE_BEGIN );
+//
+//	if ( ! ReadFile( hFile, &pFooter, sizeof( pFooter ), &nRead, NULL ) )
+//		return false;
+//	if ( nRead != sizeof( pFooter ) )
+//		return false;
+//
+//	const char cLyrics[ 7 ] = "LYRICS";
+//	const char cVersion[ 4 ] = "200";	// version 2.00
+//	const char cEnd[ 4 ] = "END";		// version 1.00
+//
+//	if ( memcmp( pFooter.Tag.szID, cLyrics, 6 ) )
+//		return false;
+//
+//	CString strLength( pFooter.nSize, 6 );
+//	QWORD nSize = 0;
+//	if ( memcmp( pFooter.Tag.szVersion, cVersion, 3 ) == 0 &&
+//		 _stscanf( strLength.TrimLeft('0'), L"%I64u", &nSize ) == 1 )
+//	{
+//		if ( nSize + sizeof( pFooter ) > nLength )
+//			return false;
+//		nLength -= nSize + sizeof( pFooter );
+//		return true;
+//	}
+//	else if ( memcmp( pFooter.Tag.szVersion, cEnd, 3 ) )
+//	{
+//		// ToDo: Find "LYRICSBEGIN" reading backwards and count the length manually
+//		return false;
+//	}
+//
+//	return false;
+//}
 
-	const char szMAC[ 4 ] = "MAC";
-	if ( memcmp( pHeader.cID, szMAC, 3 ) )
-		return false;
-
-	DWORD nTagSize = 0;
-	if ( pHeader.nVersion >= APE2_VERSION )
-	{
-		APE_HEADER_NEW pNewHeader = {};
-		SetFilePointer( hFile, nPosLow, &nPosHigh, FILE_BEGIN );
-		if ( ! ReadFile( hFile, &pNewHeader, sizeof( pNewHeader ), &nRead, NULL ) )
-			return false;
-		if ( nRead != sizeof( pNewHeader ) )
-			return false;
-		nTagSize = pNewHeader.nHeaderBytes + sizeof( pNewHeader );
-	}
-	else
-		nTagSize = pHeader.nHeaderBytes + sizeof( pHeader );
-
-	if ( nLength <= nTagSize )
-		return false;
-
-	nOffset += nTagSize;
-	nLength -= nTagSize;
-
-	return true;
-}
-
-bool CLibraryBuilder::DetectVirtualAPEFooter(HANDLE hFile, QWORD& nOffset, QWORD& nLength)
-{
-	APE_TAG_FOOTER pFooter = { 0 };
-	if ( nLength < sizeof( pFooter ) )
-		return false;
-
-	DWORD nRead;
-	LONG nPosLow  = (LONG)( ( nOffset + nLength - sizeof( pFooter ) ) & 0xFFFFFFFF );
-	LONG nPosHigh = (LONG)( ( nOffset + nLength - sizeof( pFooter ) ) >> 32 );
-
-	SetFilePointer( hFile, nPosLow, &nPosHigh, FILE_BEGIN );
-	if ( ! ReadFile( hFile, &pFooter, sizeof( pFooter ), &nRead, NULL ) )
-		return false;
-	if ( nRead != sizeof( pFooter ) )
-		return false;
-
-	const char szAPE[ 9 ] = "APETAGEX";
-	if ( memcmp( pFooter.cID, szAPE, 8 ) )
-		return false;
-	if ( pFooter.nSize + sizeof( pFooter ) > nLength )
-		return false;
-
-	nLength -= sizeof( pFooter ) + pFooter.nSize;
-
-	return true;
-}
-
-bool CLibraryBuilder::DetectVirtualLyrics(HANDLE hFile, QWORD& nOffset, QWORD& nLength)
-{
-	typedef struct Lyrics3v2
-	{
-		CHAR nSize[6];
-		struct LyricsTag
-		{
-			CHAR szID[6];
-			CHAR szVersion[3];
-		} Tag;
-	} LYRICS3_2;
-
-	if ( nLength < 15 )
-		return false;
-
-	LYRICS3_2 pFooter = { 0 };
-	DWORD nRead;
-
-	LONG nPosLow  = (LONG)( ( nOffset + nLength - sizeof( pFooter ) ) & 0xFFFFFFFF );
-	LONG nPosHigh = (LONG)( ( nOffset + nLength - sizeof( pFooter ) ) >> 32 );
-	SetFilePointer( hFile, nPosLow, &nPosHigh, FILE_BEGIN );
-
-	if ( ! ReadFile( hFile, &pFooter, sizeof( pFooter ), &nRead, NULL ) )
-		return false;
-	if ( nRead != sizeof( pFooter ) )
-		return false;
-
-	const char cLyrics[ 7 ] = "LYRICS";
-	const char cVersion[ 4 ] = "200";	// version 2.00
-	const char cEnd[ 4 ] = "END";		// version 1.00
-
-	if ( memcmp( pFooter.Tag.szID, cLyrics, 6 ) )
-		return false;
-
-	CString strLength( pFooter.nSize, 6 );
-	QWORD nSize = 0;
-	if ( memcmp( pFooter.Tag.szVersion, cVersion, 3 ) == 0 &&
-		 _stscanf( strLength.TrimLeft('0'), L"%I64u", &nSize ) == 1 )
-	{
-		if ( nSize + sizeof( pFooter ) > nLength )
-			return false;
-		nLength -= nSize + sizeof( pFooter );
-		return true;
-	}
-	else if ( memcmp( pFooter.Tag.szVersion, cEnd, 3 ) )
-	{
-		// ToDo: Find "LYRICSBEGIN" reading backwards and count the length manually
-		return false;
-	}
-
-	return false;
-}
-
-bool CLibraryBuilder::DetectVirtualLAME(HANDLE hFile, QWORD& nOffset, QWORD& nLength)
-{
-	BYTE nFrameHeader[4] = { 0 };
-	DWORD nRead;
-
-	LONG nPosLow  = (LONG)( nOffset & 0xFFFFFFFF );
-	LONG nPosHigh = (LONG)( nOffset >> 32 );
-	SetFilePointer( hFile, nPosLow, &nPosHigh, FILE_BEGIN );
-
-	if ( ! ReadFile( hFile, nFrameHeader, sizeof( nFrameHeader ), &nRead, NULL ) )
-		return false;
-	if ( nRead != sizeof( nFrameHeader ) )
-		return false;
-
-	const int bitrate_table[ 3 ][ 16 ] = {
-		{ 0, 8, 16, 24, 32, 40, 48, 56, 64, 80, 96, 112, 128, 144, 160, -1 },		// MPEG 2
-		{ 0, 32, 40, 48, 56, 64, 80, 96, 112, 128, 160, 192, 224, 256, 320, -1 },	// MPEG 1
-		{ 0, 8, 16, 24, 32, 40, 48, 56, 64, -1, -1, -1, -1, -1, -1, -1 }			// MPEG 2.5
-	};
-
-	const int samplerate_table[ 3 ][ 4 ] = {
-		{ 22050, 24000, 16000, -1 },	// MPEG 2
-		{ 44100, 48000, 32000, -1 },	// MPEG 1
-		{ 11025, 12000, 8000, -1 }		// MPEG 2.5
-	};
-
-	// Get MPEG header data
-	int nId = ( nFrameHeader[1] >> 3 ) & 1;
-	int nSampleRateIndex = ( nFrameHeader[2] >> 2 ) & 3;
-	int nMode = ( nFrameHeader[3] >> 6 ) & 3;
-	int nBitrate = ( nFrameHeader[2] >> 4 ) & 0xf;
-	nBitrate = bitrate_table[ nId ][ nBitrate ];
-
-	int nSampleRate = 0;
-	// Check for FFE syncword
-	if ( ( nFrameHeader[1] >> 4 ) == 0xE )
-		nSampleRate = samplerate_table[ 2 ][ nSampleRateIndex ];
-	else
-		nSampleRate = samplerate_table[ nId ][ nSampleRateIndex ];
-	UINT nFrameSize = ( ( nId + 1 ) * 72000 * nBitrate ) / nSampleRate;
-	if ( nFrameSize > nLength )
-		return false;
-
-	int nVbrHeaderOffset = GetVbrHeaderOffset( nId, nMode );
-	LARGE_INTEGER nNewOffset = { 0 };
-	nNewOffset.HighPart = (LONG)( ( nOffset + nVbrHeaderOffset ) >> 32 );
-	nNewOffset.LowPart  = (LONG)( ( nOffset + nVbrHeaderOffset ) & 0xFFFFFFFF );
-	nNewOffset.LowPart  = SetFilePointer( hFile, nNewOffset.LowPart, &(nNewOffset.HighPart), FILE_BEGIN );
-
-	if ( nNewOffset.LowPart == INVALID_SET_FILE_POINTER && GetLastError() != NO_ERROR )
-		return false;
-
-	LAME_FRAME pFrame = { 0 };
-	const LAME_FRAME pEmtyRef = { 0 };
-	bool bChanged = false;
-
-	if ( ! ReadFile( hFile, &pFrame, sizeof( pFrame ), &nRead, NULL ) || nRead != sizeof( pFrame ) )
-		return false;
-	if ( memcmp( &pFrame, &pEmtyRef, sizeof( pFrame ) ) == 0 )	// All zeros, strip them off
-	{
-		bChanged = true;
-		nLength -= nVbrHeaderOffset + sizeof( pFrame );
-		nOffset = nNewOffset.QuadPart + sizeof( pFrame );
-		nNewOffset.LowPart  = (LONG)( nOffset & 0xFFFFFFFF );
-		nNewOffset.HighPart = (LONG)( nOffset >> 32 );
-		SetFilePointer( hFile, nNewOffset.LowPart, &(nNewOffset.HighPart), FILE_BEGIN );
-		CHAR szByte;
-		while ( ReadFile( hFile, &szByte, 1, &nRead, NULL ) && nRead == 1 && szByte == '\0' )
-		{
-			nOffset++;
-			nLength--;
-		}
-	}
-	else if ( memcmp( &pFrame, "Xing", 4 ) == 0 )
-	{
-		bChanged = true;
-		nOffset += nFrameSize;
-		nLength -= nFrameSize;
-	}
-	else if ( memcmp( pFrame.ClassID, "LAME", 4 ) == 0 )	// LAME encoder
-	{
-		bChanged = true;
-		DWORD nMusicLength = swapEndianess( pFrame.MusicLength ) - nFrameSize;	// Minus the first frame
-		nOffset += nFrameSize;
-
-		if ( nFrameSize + nMusicLength > nLength )
-			return false;
-		nLength = nMusicLength;
-	}
-
-	nFrameSize++;
-
-	char szTrail = '\0';
-
-	// Strip off silence and incomplete frames from the end (hackish way)
-	for ( ; nFrameSize > 0; )
-	{
-		nNewOffset.LowPart  = (LONG)( ( nOffset + nLength - nFrameSize ) & 0xFFFFFFFF );
-		nNewOffset.HighPart = (LONG)( ( nOffset + nLength - nFrameSize ) >> 32 );
-		nNewOffset.LowPart = SetFilePointer( hFile, nNewOffset.LowPart, &(nNewOffset.HighPart), FILE_BEGIN );
-		if ( nNewOffset.LowPart == INVALID_SET_FILE_POINTER && GetLastError() != NO_ERROR )
-			break;
-
-		WORD nTestBytes = 0;
-		if ( ! ReadFile( hFile, &nTestBytes, sizeof( nTestBytes ), &nRead, NULL ) || nRead != sizeof( WORD ) )
-			break;
-		if ( memcmp( &nTestBytes, nFrameHeader, 2 ) )	// Doesn't match the start of the first frame
-		{
-			nFrameSize--;	// Shorten frame size from the end until it becomes so small to fit header
-			continue;
-		}
-
-		nFrameHeader[ 0 ] = LOBYTE( nTestBytes );
-		nFrameHeader[ 1 ] = HIBYTE( nTestBytes );
-		if ( ! ReadFile( hFile, &nTestBytes, sizeof( nTestBytes ), &nRead, NULL ) || nRead != sizeof( WORD ) )
-			break;
-		nFrameHeader[ 2 ] = LOBYTE( nTestBytes );
-		nFrameHeader[ 3 ] = HIBYTE( nTestBytes );
-
-		// Get MPEG header data
-		nId   = ( nFrameHeader[1] >> 3 ) & 1;
-		nMode = ( nFrameHeader[3] >> 6 ) & 3;
-		nVbrHeaderOffset  = GetVbrHeaderOffset( nId, nMode );
-		QWORD nCurrOffset = nNewOffset.QuadPart + nVbrHeaderOffset;
-		nNewOffset.LowPart  = (LONG)( nCurrOffset & 0xFFFFFFFF );
-		nNewOffset.HighPart = (LONG)( nCurrOffset >> 32 );
-		nNewOffset.LowPart  = SetFilePointer( hFile, nNewOffset.LowPart, &(nNewOffset.HighPart), FILE_BEGIN );
-
-		if ( nNewOffset.LowPart == INVALID_SET_FILE_POINTER && GetLastError() != NO_ERROR )
-			break;
-
-		int nLen = sizeof( pFrame );
-		ZeroMemory( &pFrame, nLen );
-		if ( ! ReadFile( hFile, &pFrame, min( (DWORD)nLen, (DWORD)( nFrameSize - nVbrHeaderOffset ) ), &nRead, NULL ) )
-			break;
-
-		nLen--;
-		char* pszChars = (char*)&pFrame;
-		while ( nLen && pszChars[ nLen-- ] == pFrame.ClassID[ 0 ] );
-
-		if ( nLen != 0 )
-			break;
-
-		// All bytes equal
-		bChanged = true;
-		nLength -= nFrameSize;
-		szTrail = pFrame.ClassID[ 0 ];
-	}
-
-	// Remove trailing bytes
-	for ( ;; )
-	{
-		nNewOffset.LowPart  = (LONG)( ( nOffset + nLength - 1 ) & 0xFFFFFFFF );
-		nNewOffset.HighPart = (LONG)( ( nOffset + nLength - 1 ) >> 32 );
-		nNewOffset.LowPart = SetFilePointer( hFile, nNewOffset.LowPart, &(nNewOffset.HighPart), FILE_BEGIN );
-		if ( nNewOffset.LowPart == INVALID_SET_FILE_POINTER && GetLastError() != NO_ERROR )
-			break;
-		CHAR szByte;
-		if ( ! ReadFile( hFile, &szByte, 1, &nRead, NULL ) || nRead != 1 || szByte != szTrail )
-			break;
-
-		bChanged = true;
-		nLength--;
-	}
-
-	// Last LAME ID is one byte shorter (Bug? verify beta versions)
-	nNewOffset.LowPart  = (LONG)( ( nOffset + nLength - 8 ) & 0xFFFFFFFF );
-	nNewOffset.HighPart = (LONG)( ( nOffset + nLength - 8 ) >> 32 );
-	nNewOffset.LowPart = SetFilePointer( hFile, nNewOffset.LowPart, &(nNewOffset.HighPart), FILE_BEGIN );
-	if ( nNewOffset.LowPart == INVALID_SET_FILE_POINTER && GetLastError() != NO_ERROR )
-		return bChanged;
-
-	if ( ! ReadFile( hFile, pFrame.ClassID, 9, &nRead, NULL ) || nRead != 9 )
-		return bChanged;
-
-	if ( memcmp( pFrame.ClassID, "LAME", 4 ) == 0 )
-	{
-		bChanged = true;
-		nLength -= 8;
-	}
-
-	return bChanged;
-}
+//bool CLibraryBuilder::DetectVirtualLAME(HANDLE hFile, QWORD& nOffset, QWORD& nLength)
+//{
+//	BYTE nFrameHeader[4] = { 0 };
+//	DWORD nRead;
+//
+//	LONG nPosLow  = (LONG)( nOffset & 0xFFFFFFFF );
+//	LONG nPosHigh = (LONG)( nOffset >> 32 );
+//	SetFilePointer( hFile, nPosLow, &nPosHigh, FILE_BEGIN );
+//
+//	if ( ! ReadFile( hFile, nFrameHeader, sizeof( nFrameHeader ), &nRead, NULL ) )
+//		return false;
+//	if ( nRead != sizeof( nFrameHeader ) )
+//		return false;
+//
+//	const int bitrate_table[ 3 ][ 16 ] = {
+//		{ 0, 8, 16, 24, 32, 40, 48, 56, 64, 80, 96, 112, 128, 144, 160, -1 },		// MPEG 2
+//		{ 0, 32, 40, 48, 56, 64, 80, 96, 112, 128, 160, 192, 224, 256, 320, -1 },	// MPEG 1
+//		{ 0, 8, 16, 24, 32, 40, 48, 56, 64, -1, -1, -1, -1, -1, -1, -1 }			// MPEG 2.5
+//	};
+//
+//	const int samplerate_table[ 3 ][ 4 ] = {
+//		{ 22050, 24000, 16000, -1 },	// MPEG 2
+//		{ 44100, 48000, 32000, -1 },	// MPEG 1
+//		{ 11025, 12000, 8000, -1 }		// MPEG 2.5
+//	};
+//
+//	// Get MPEG header data
+//	int nId = ( nFrameHeader[1] >> 3 ) & 1;
+//	int nSampleRateIndex = ( nFrameHeader[2] >> 2 ) & 3;
+//	int nMode = ( nFrameHeader[3] >> 6 ) & 3;
+//	int nBitrate = ( nFrameHeader[2] >> 4 ) & 0xf;
+//	nBitrate = bitrate_table[ nId ][ nBitrate ];
+//
+//	int nSampleRate = 0;
+//	// Check for FFE syncword
+//	if ( ( nFrameHeader[1] >> 4 ) == 0xE )
+//		nSampleRate = samplerate_table[ 2 ][ nSampleRateIndex ];
+//	else
+//		nSampleRate = samplerate_table[ nId ][ nSampleRateIndex ];
+//	UINT nFrameSize = ( ( nId + 1 ) * 72000 * nBitrate ) / nSampleRate;
+//	if ( nFrameSize > nLength )
+//		return false;
+//
+//	int nVbrHeaderOffset = GetVbrHeaderOffset( nId, nMode );
+//	LARGE_INTEGER nNewOffset = { 0 };
+//	nNewOffset.HighPart = (LONG)( ( nOffset + nVbrHeaderOffset ) >> 32 );
+//	nNewOffset.LowPart  = (LONG)( ( nOffset + nVbrHeaderOffset ) & 0xFFFFFFFF );
+//	nNewOffset.LowPart  = SetFilePointer( hFile, nNewOffset.LowPart, &(nNewOffset.HighPart), FILE_BEGIN );
+//
+//	if ( nNewOffset.LowPart == INVALID_SET_FILE_POINTER && GetLastError() != NO_ERROR )
+//		return false;
+//
+//	LAME_FRAME pFrame = { 0 };
+//	const LAME_FRAME pEmtyRef = { 0 };
+//	bool bChanged = false;
+//
+//	if ( ! ReadFile( hFile, &pFrame, sizeof( pFrame ), &nRead, NULL ) || nRead != sizeof( pFrame ) )
+//		return false;
+//	if ( memcmp( &pFrame, &pEmtyRef, sizeof( pFrame ) ) == 0 )	// All zeros, strip them off
+//	{
+//		bChanged = true;
+//		nLength -= nVbrHeaderOffset + sizeof( pFrame );
+//		nOffset = nNewOffset.QuadPart + sizeof( pFrame );
+//		nNewOffset.LowPart  = (LONG)( nOffset & 0xFFFFFFFF );
+//		nNewOffset.HighPart = (LONG)( nOffset >> 32 );
+//		SetFilePointer( hFile, nNewOffset.LowPart, &(nNewOffset.HighPart), FILE_BEGIN );
+//		CHAR szByte;
+//		while ( ReadFile( hFile, &szByte, 1, &nRead, NULL ) && nRead == 1 && szByte == '\0' )
+//		{
+//			nOffset++;
+//			nLength--;
+//		}
+//	}
+//	else if ( memcmp( &pFrame, "Xing", 4 ) == 0 )
+//	{
+//		bChanged = true;
+//		nOffset += nFrameSize;
+//		nLength -= nFrameSize;
+//	}
+//	else if ( memcmp( pFrame.ClassID, "LAME", 4 ) == 0 )	// LAME encoder
+//	{
+//		bChanged = true;
+//		DWORD nMusicLength = swapEndianess( pFrame.MusicLength ) - nFrameSize;	// Minus the first frame
+//		nOffset += nFrameSize;
+//
+//		if ( nFrameSize + nMusicLength > nLength )
+//			return false;
+//		nLength = nMusicLength;
+//	}
+//
+//	nFrameSize++;
+//
+//	char szTrail = '\0';
+//
+//	// Strip off silence and incomplete frames from the end (hackish way)
+//	for ( ; nFrameSize > 0; )
+//	{
+//		nNewOffset.LowPart  = (LONG)( ( nOffset + nLength - nFrameSize ) & 0xFFFFFFFF );
+//		nNewOffset.HighPart = (LONG)( ( nOffset + nLength - nFrameSize ) >> 32 );
+//		nNewOffset.LowPart = SetFilePointer( hFile, nNewOffset.LowPart, &(nNewOffset.HighPart), FILE_BEGIN );
+//		if ( nNewOffset.LowPart == INVALID_SET_FILE_POINTER && GetLastError() != NO_ERROR )
+//			break;
+//
+//		WORD nTestBytes = 0;
+//		if ( ! ReadFile( hFile, &nTestBytes, sizeof( nTestBytes ), &nRead, NULL ) || nRead != sizeof( WORD ) )
+//			break;
+//		if ( memcmp( &nTestBytes, nFrameHeader, 2 ) )	// Doesn't match the start of the first frame
+//		{
+//			nFrameSize--;	// Shorten frame size from the end until it becomes so small to fit header
+//			continue;
+//		}
+//
+//		nFrameHeader[ 0 ] = LOBYTE( nTestBytes );
+//		nFrameHeader[ 1 ] = HIBYTE( nTestBytes );
+//		if ( ! ReadFile( hFile, &nTestBytes, sizeof( nTestBytes ), &nRead, NULL ) || nRead != sizeof( WORD ) )
+//			break;
+//		nFrameHeader[ 2 ] = LOBYTE( nTestBytes );
+//		nFrameHeader[ 3 ] = HIBYTE( nTestBytes );
+//
+//		// Get MPEG header data
+//		nId   = ( nFrameHeader[1] >> 3 ) & 1;
+//		nMode = ( nFrameHeader[3] >> 6 ) & 3;
+//		nVbrHeaderOffset  = GetVbrHeaderOffset( nId, nMode );
+//		QWORD nCurrOffset = nNewOffset.QuadPart + nVbrHeaderOffset;
+//		nNewOffset.LowPart  = (LONG)( nCurrOffset & 0xFFFFFFFF );
+//		nNewOffset.HighPart = (LONG)( nCurrOffset >> 32 );
+//		nNewOffset.LowPart  = SetFilePointer( hFile, nNewOffset.LowPart, &(nNewOffset.HighPart), FILE_BEGIN );
+//
+//		if ( nNewOffset.LowPart == INVALID_SET_FILE_POINTER && GetLastError() != NO_ERROR )
+//			break;
+//
+//		int nLen = sizeof( pFrame );
+//		ZeroMemory( &pFrame, nLen );
+//		if ( ! ReadFile( hFile, &pFrame, min( (DWORD)nLen, (DWORD)( nFrameSize - nVbrHeaderOffset ) ), &nRead, NULL ) )
+//			break;
+//
+//		nLen--;
+//		char* pszChars = (char*)&pFrame;
+//		while ( nLen && pszChars[ nLen-- ] == pFrame.ClassID[ 0 ] );
+//
+//		if ( nLen != 0 )
+//			break;
+//
+//		// All bytes equal
+//		bChanged = true;
+//		nLength -= nFrameSize;
+//		szTrail = pFrame.ClassID[ 0 ];
+//	}
+//
+//	// Remove trailing bytes
+//	for ( ;; )
+//	{
+//		nNewOffset.LowPart  = (LONG)( ( nOffset + nLength - 1 ) & 0xFFFFFFFF );
+//		nNewOffset.HighPart = (LONG)( ( nOffset + nLength - 1 ) >> 32 );
+//		nNewOffset.LowPart = SetFilePointer( hFile, nNewOffset.LowPart, &(nNewOffset.HighPart), FILE_BEGIN );
+//		if ( nNewOffset.LowPart == INVALID_SET_FILE_POINTER && GetLastError() != NO_ERROR )
+//			break;
+//		CHAR szByte;
+//		if ( ! ReadFile( hFile, &szByte, 1, &nRead, NULL ) || nRead != 1 || szByte != szTrail )
+//			break;
+//
+//		bChanged = true;
+//		nLength--;
+//	}
+//
+//	// Last LAME ID is one byte shorter (Bug? verify beta versions)
+//	nNewOffset.LowPart  = (LONG)( ( nOffset + nLength - 8 ) & 0xFFFFFFFF );
+//	nNewOffset.HighPart = (LONG)( ( nOffset + nLength - 8 ) >> 32 );
+//	nNewOffset.LowPart = SetFilePointer( hFile, nNewOffset.LowPart, &(nNewOffset.HighPart), FILE_BEGIN );
+//	if ( nNewOffset.LowPart == INVALID_SET_FILE_POINTER && GetLastError() != NO_ERROR )
+//		return bChanged;
+//
+//	if ( ! ReadFile( hFile, pFrame.ClassID, 9, &nRead, NULL ) || nRead != 9 )
+//		return bChanged;
+//
+//	if ( memcmp( pFrame.ClassID, "LAME", 4 ) == 0 )
+//	{
+//		bChanged = true;
+//		nLength -= 8;
+//	}
+//
+//	return bChanged;
+//}
 
 bool CLibraryBuilder::RefreshMetadata(const CString& sPath)
 {
-	CWaitCursor wc;
 	DWORD nIndex;
+	CWaitCursor wc;
 
 	{
 		CQuickLock oLibraryLock( Library.m_pSection );

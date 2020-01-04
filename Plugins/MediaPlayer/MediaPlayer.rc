@@ -27,7 +27,7 @@ LANGUAGE LANG_NEUTRAL, SUBLANG_NEUTRAL
 //
 
 VS_VERSION_INFO VERSIONINFO
- PRODUCTVERSION 2,0
+ PRODUCTVERSION 3,0
  FILEVERSION 1,0,0,0
  FILEFLAGSMASK 0x3fL
 #ifdef _DEBUG
@@ -44,7 +44,7 @@ BEGIN
 		BLOCK "000004b0"
 		BEGIN
 			VALUE "ProductName", "Envy"
-			VALUE "ProductVersion", "2.0"
+			VALUE "ProductVersion", "3.0"
 			VALUE "FileVersion", "1.0.0.0"
 			VALUE "InternalName", "MediaPlayer"
 			VALUE "OriginalFilename", "MediaPlayer.dll"

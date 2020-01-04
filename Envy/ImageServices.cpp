@@ -1,7 +1,7 @@
 //
 // ImageServices.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2018
+// This file is part of Envy (getenvy.com) © 2016-2020
 // Portions copyright Shareaza 2002-2008 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -169,11 +169,11 @@ BOOL CImageServices::LoadFromFile(CImageFile* pFile, LPCTSTR szFilename, BOOL bS
 	if ( Settings.Interface.PreferImageServices )
 	{
 		CImage image;
-		HRESULT hr = image.Load(szFilename);
-		if (SUCCEEDED(hr) && image.IsDIBSection())
+		HRESULT hr = image.Load( szFilename );
+		if ( SUCCEEDED(hr) && image.IsDIBSection() )
 		{
-			BOOL bAlpha = (image.GetBPP() == 32) && (_tcsicmp(szType, L".png") == 0);
-			if (pFile->LoadFromBitmap(image, bAlpha, bScanOnly))
+			BOOL bAlpha = ( image.GetBPP() == 32 ) && ( _tcsicmp(szType, L".png" ) == 0 );
+			if ( pFile->LoadFromBitmap( image, bAlpha, bScanOnly ) )
 				return TRUE;
 		}
 	}

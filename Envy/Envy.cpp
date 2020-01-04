@@ -1,7 +1,7 @@
 //
 // Envy.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2018
+// This file is part of Envy (getenvy.com) © 2016-2020
 // Portions copyright Shareaza 2002-2008 and PeerProject 2008-2016
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -833,7 +833,7 @@ BOOL CEnvyApp::ParseCommandLine()
 		Images.m_bmBanner.Attach( CImageFile::LoadBitmapFromResource( IDB_BANNER ) );
 		Skin.m_nBanner = 50;
 
-#ifdef WIN64
+#ifndef XPSUPPORT
 		const BOOL bIsXP = FALSE;
 #else // Win32 (Obsolete)
 		OSVERSIONINFOEX pVersion = { sizeof( OSVERSIONINFOEX ) };

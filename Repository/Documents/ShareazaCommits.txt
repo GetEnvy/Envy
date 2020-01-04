@@ -146,12 +146,12 @@ v3.0 to r35 2020.1
 9579	.	2f	Fixed IPv4 or OPv6 selection logic
 9578	r126	2f	Updated BT DHT library to 0.24
 9577		42f	Fixed type size warnings  (_stscanf)
-9576		2f	Fixed legacy GetVersionEx() warnings
+9576	.	2f	Fixed legacy GetVersionEx() warnings
 9575	r127?	2f	Fixed VS2010 compatibility
-9574		3f	Refactoring for r9571 (fixed share status)
+9574*		3f	Refactoring for r9571 (fixed share status)
 9573	r126	6f	Fixed minor 64-bit warnings
 9572		6f	Added limit of ghost files (new option "Library.GhostLimit", defaulted to 1000 files)
-9571		4f	Added metadata restoring from ghost files.  Added creating of sharable ghost files during automatic deletion.  (Refactored r9574)
+9571*		4f	Added metadata restoring from ghost files.  Added creating of sharable ghost files during automatic deletion.  (Refactored r9574)
 9570	r28	2f	Fixed unused half of library files hash map
 9569	r126	4f	Renamed macroses to be with different names
 9568	r126	1f	Optimized initial hash table size
@@ -199,7 +199,7 @@ v3.0 to r35 2020.1
 9526	r126	2f	Fixed black splash dialog on Windows shutdown
 (2014)
 9525	.	1f	Bumped version 2.7.8.1
-9524		4f	Added partial support of BEP 19 : "WebSeed - HTTP/FTP Seeding (GetRight style)" - http://bit.ly/1wUJNhj (by ivan386)
+9524*		4f	Added partial support of BEP 19 : "WebSeed - HTTP/FTP Seeding (GetRight style)" - http://bit.ly/1wUJNhj (by ivan386)
 9522	.	.	Tagged version 2.7.8.0
 9517		6f	Added Release build scripts
 9516		10f	Optimized build scripts
@@ -208,7 +208,7 @@ v3.0 to r35 2020.1
 9513		2f	Updated UnRAR version to 5.20.4.1419
 9512		24f	Updated MiniUPnPc library to 1.9.20141117
 9504	\r119	3f	Adjusted project options (Preview Plugin)
-9503		5f	Changed file externals to SVN externals
+9503		5f	Changed file externals to SVN externals (TorrentWizard)
 9501	\r119	48f	Fixed 64-bit warnings
 9500	.	.	Tagged version 2.7.7.0
 9495	\r119	4f+15regAdded more crash protection to the metadata extractors	(Breaks GFL)
@@ -281,6 +281,7 @@ v3.0 to r35 2020.1
 8156?		7f	Fix plugin description and icon retrieving. Add support for .exe plugins. Plugins enumeration speed increased ten times. (LoadCLSIDIcon) (2009)
 
 Check ShareazaPlus:	http://sourceforge.net/p/shareazaplus/code/HEAD/tree/branches/TestingCode/
+			https://github.com/ivan386/Shareaza
 
 ToDos:			Add ID_TAB_MENU ?
 			Add Private Shared Folders (Keyword)
@@ -291,5 +292,5 @@ ToDos:			Add ID_TAB_MENU ?
 			r8625+ BENode in TorrentWizard ?
 			BitTorrent DNS, uTP
 			Bitprint Fast Hashing
-			Threadpooling
+			Threadpooling?
 			C++11  VS2012+	https://docs.microsoft.com/en-us/previous-versions/hh567368(v=vs.140)

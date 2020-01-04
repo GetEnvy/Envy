@@ -1,7 +1,7 @@
 //
 // Strings.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2018
+// This file is part of Envy (getenvy.com) © 2016-2020
 // Portions copyright Shareaza 2010 and PeerProject 2010-2016
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -1290,9 +1290,9 @@ CString Str(QWORD num, BOOL commas /*False*/)
 	CString str;
 	//str.Format( L"%llu", num );
 	_ui64tow_s( num, str.GetBufferSetLength( 20 ), 20, 10 );
+	str.ReleaseBuffer();
 	if ( ! commas || num < 1000 )
 		return str;
-	str.ReleaseBuffer();
 	for ( int npos = str.GetLength() - 3; npos > 0; npos -= 3 )
 	{
 		str.Insert( npos, L"," );
@@ -1308,9 +1308,9 @@ CString Str(DWORD num, BOOL commas /*False*/)
 	CString str;
 	//str.Format( L"%lu", num );
 	_ultow_s( num, str.GetBufferSetLength( 12 ), 12, 10 );
+	str.ReleaseBuffer();
 	if ( ! commas || num < 1000 )
 		return str;
-	str.ReleaseBuffer();
 	for ( int npos = str.GetLength() - 3; npos > 0; npos -= 3 )
 	{
 		str.Insert( npos, L"," );
@@ -1358,9 +1358,9 @@ CString Str(int num, BOOL commas /*False*/)
 	CString str;
 	//str.Format( L"%i", num );
 	_itow_s( num, str.GetBufferSetLength( 12 ), 12, 10 );
+	str.ReleaseBuffer();
 	if ( ! commas || num < 1000 )
 		return str;
-	str.ReleaseBuffer();
 	for ( int npos = str.GetLength() - 3; npos > 0; npos -= 3 )
 	{
 		str.Insert( npos, L"," );

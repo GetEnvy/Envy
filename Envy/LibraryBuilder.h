@@ -1,7 +1,7 @@
 //
 // LibraryBuilder.h
 //
-// This file is part of Envy (getenvy.com) © 2016-2018
+// This file is part of Envy (getenvy.com) © 2016-2020
 // Portions copyright Shareaza 2002-2008 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -36,11 +36,13 @@ public:
 	void CopyTo(CLibraryFile* pFile) const;
 
 protected:
+	// Hashlib:
 	CTigerTree	m_pTiger;
-	CED2K		m_pED2K;
 	CSHA		m_pSHA1;
+	CED2K		m_pED2K;
 	CMD5		m_pMD5;
 };
+
 
 class CLibraryBuilder :
 	public CLibraryBuilderInternals
@@ -72,6 +74,7 @@ public:
 	bool		SubmitCorrupted(DWORD nIndex);
 
 	bool		RefreshMetadata(const CString& sPath);
+
 
 private:
 	class CFileInfo
@@ -115,10 +118,10 @@ private:
 	bool		DetectVirtualFile(LPCTSTR szPath, HANDLE hFile, QWORD& nOffset, QWORD& nLength);
 	bool		DetectVirtualID3v1(HANDLE hFile, QWORD& nOffset, QWORD& nLength);
 	bool		DetectVirtualID3v2(HANDLE hFile, QWORD& nOffset, QWORD& nLength);
-	bool		DetectVirtualLAME(HANDLE hFile, QWORD& nOffset, QWORD& nLength);
-	bool		DetectVirtualAPEHeader(HANDLE hFile, QWORD& nOffset, QWORD& nLength);
-	bool		DetectVirtualAPEFooter(HANDLE hFile, QWORD& nOffset, QWORD& nLength);
-	bool		DetectVirtualLyrics(HANDLE hFile, QWORD& nOffset, QWORD& nLength);
+//	bool		DetectVirtualLAME(HANDLE hFile, QWORD& nOffset, QWORD& nLength);
+//	bool		DetectVirtualAPEHeader(HANDLE hFile, QWORD& nOffset, QWORD& nLength);
+//	bool		DetectVirtualAPEFooter(HANDLE hFile, QWORD& nOffset, QWORD& nLength);
+//	bool		DetectVirtualLyrics(HANDLE hFile, QWORD& nOffset, QWORD& nLength);
 
 	inline bool	IsSkipped() { return WaitForSingleObject( m_oSkip, 0 ) != WAIT_TIMEOUT; }
 

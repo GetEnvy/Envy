@@ -28,7 +28,7 @@ LANGUAGE LANG_NEUTRAL, SUBLANG_NEUTRAL
 //
 
 VS_VERSION_INFO VERSIONINFO
- PRODUCTVERSION 2,0
+ PRODUCTVERSION 3,0
  FILEVERSION 1,0,0,0
  FILEFLAGSMASK 0x17L
 #ifdef _DEBUG
@@ -45,14 +45,14 @@ BEGIN
 		BLOCK "000004b0"
 		BEGIN
 			VALUE "ProductName", "Envy"
-			VALUE "ProductVersion", "2.0"
+			VALUE "ProductVersion", "3.0"
 			VALUE "FileVersion", "1.0.0.0"
 			VALUE "InternalName", "HashLib"
 			VALUE "OriginalFilename", "HashLib.dll"
 			VALUE "FileDescription", "HashLib DLL"
 			VALUE "Comments", "SHA1, MD5, MD4, TigerTree classes"
 			VALUE "CompanyName", "GetEnvy.com"
-			VALUE "LegalCopyright", "© Envy Development Team 2016-2018"
+			VALUE "LegalCopyright", "© Envy Development Team 2016-2020"
 		END
 	END
 	BLOCK "VarFileInfo"

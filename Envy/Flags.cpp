@@ -1,7 +1,7 @@
 //
 // Flags.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2018
+// This file is part of Envy (getenvy.com) © 2016-2020
 // Portions copyright Shareaza 2002-2007 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -56,6 +56,8 @@ BOOL CFlags::Load()
 
 	const CString strDefault = Settings.General.DataPath + L"Flags.png";
 
+//	const DWORD nTimer = GetTickCount();
+
 	CImageFile pImage;
 	HBITMAP hBitmap = Skin.GetWatermark( L"CFlags" );
 	if ( ! hBitmap ||
@@ -72,8 +74,8 @@ BOOL CFlags::Load()
 			pImage.m_nWidth < 6 * 26 ||
 			pImage.m_nHeight < 6 * 26 ||
 			pImage.m_nHeight > 32 * 26 ||
-		//	pImage.m_nWidth % 26 != 0 ||
-		//	pImage.m_nHeight % 26 != 0 ||
+			pImage.m_nWidth % 26 != 0 ||
+			pImage.m_nHeight % 26 != 0 ||
 			! pImage.EnsureRGB( GetSysColor( COLOR_WINDOW ) ) ||
 			! pImage.SwapRGB() )
 		{
@@ -96,11 +98,14 @@ BOOL CFlags::Load()
 	{
 		for ( int j = 0; j < 26; j++ )
 		{
+			if ( i == 25 && j == 25 )
+				break;	// Workaround: Last flag can crash
 			CRect rc( i * Width, j * Height, i * Width + Width, j * Height + Height );
 			AddFlag( &pImage, &rc, crMask );
 		}
 	}
 
+//	theApp.LogMessage( L"Flags Load " + Str( GetTickCount() - nTimer ) + L"ms" );
 	return TRUE;
 }
 
@@ -142,6 +147,7 @@ void CFlags::AddFlag(CImageFile* pImage, CRect* pRect, COLORREF crBack)
 
 	for ( int nY = Height - 1; nY >= 0; nY-- )
 	{
+		// ToDo: Fix properly. Last scan line of last flag can crash in release builds w/ internal flags load
 		SetDIBits( hDCMem1, bmOriginal, nY, 1, pSource, (BITMAPINFO*)&pInfo, DIB_RGB_COLORS );
 		pSource += nPitch;
 	}
@@ -158,6 +164,8 @@ void CFlags::AddFlag(CImageFile* pImage, CRect* pRect, COLORREF crBack)
 	int nOffset = ( m_nImagelistHeight - Height ) / 2;
 	StretchBlt( hDCMem2, 0, nOffset, Width, Height,
 				hDCMem1, 0, 0, Width, Height, SRCCOPY );
+	//VERIFY( BitBlt( hDCMem2, 0, nOffset, Width, Height,
+	//				  hDCMem1, 0, nOffset, SRCCOPY ) );
 
 	SelectObject( hDCMem1, hOld_bm1 );
 	SelectObject( hDCMem2, hOld_bm2 );
