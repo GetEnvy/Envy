@@ -1,7 +1,7 @@
 //
 // Skin.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2018
+// This file is part of Envy (getenvy.com) © 2016-2020
 // Portions copyright Shareaza 2002-2008 and PeerProject 2008-2016
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -110,6 +110,7 @@ void CSkin::CreateDefault()
 	Settings.SetDefault( &Settings.Skin.ToolbarHeight );	// 28
 	Settings.SetDefault( &Settings.Skin.TaskbarHeight );	// 26
 	Settings.SetDefault( &Settings.Skin.TaskbarTabWidth );	// 0	// 200/140 set in WndMain
+//	Settings.SetDefault( &Settings.Skin.StatusbarHeight );	// 0	// System Default
 	Settings.SetDefault( &Settings.Skin.GroupsbarHeight );	// 24
 	Settings.SetDefault( &Settings.Skin.HeaderbarHeight );	// 64
 	Settings.SetDefault( &Settings.Skin.MonitorbarWidth );	// 120
@@ -125,6 +126,7 @@ void CSkin::CreateDefault()
 	Settings.SetDefault( &Settings.Skin.RoundedSelect );	// false
 	Settings.SetDefault( &Settings.Skin.DropMenu ); 		// false
 	Settings.SetDefault( &Settings.Skin.DropMenuLabel ); 	// true
+	Settings.Skin.StatusbarHeight = 0;
 	m_ptNavBarOffset = CPoint( 0, 0 );
 
 	// Command Icons
@@ -550,6 +552,7 @@ BOOL CSkin::LoadOptions(CXMLElement* pBase)
 			Text[ L"menuborders" ]	= 'b';
 			Text[ L"menugripper" ]	= 'p';
 			Text[ L"grippers" ] 	= 'p';
+			Text[ L"statusbar" ]	= 'u';
 			Text[ L"toolbar" ]		= 't';
 			Text[ L"toolbars" ]		= 't';
 			Text[ L"taskbar" ]		= 'k';
@@ -619,6 +622,12 @@ BOOL CSkin::LoadOptions(CXMLElement* pBase)
 				Settings.Skin.MenubarHeight = _wtoi(strHeight);
 			else if ( ! strValue.IsEmpty() )
 				Settings.Skin.MenubarHeight = _wtoi(strValue);
+			break;
+		case 'u':	// "Statusbar"
+			if ( ! strHeight.IsEmpty() )
+				Settings.Skin.StatusbarHeight = _wtoi( strHeight );
+			else if ( ! strValue.IsEmpty() )
+				Settings.Skin.StatusbarHeight = _wtoi( strValue );
 			break;
 		case 't':	// "Toolbar" or "Toolbars"
 			if ( ! strHeight.IsEmpty() )
@@ -2105,6 +2114,7 @@ BOOL CSkin::LoadColorScheme(CXMLElement* pBase)
 	pColors.SetAt( L"schema.row1", &Colors.m_crSchemaRow[0] );
 	pColors.SetAt( L"schema.row2", &Colors.m_crSchemaRow[1] );
 	pColors.SetAt( L"statusbar.back", &Colors.m_crStatusBar );
+//	pColors.SetAt( L"statusbar.text", &Colors.m_crStatusBarText );
 
 //	Active window color is controlled by media player plugin, thus we can not skin it?
 	pColors.SetAt( L"media.window", &Colors.m_crMediaWindowBack );

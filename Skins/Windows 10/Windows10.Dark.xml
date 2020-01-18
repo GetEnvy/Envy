@@ -34,6 +34,7 @@
  <option name="FrameEdge" value="false"/>
  <option name="ButtonEdge" value="3"/>
  <option name="Taskbar" value="25" width="204"/>
+ <option name="Statusbar" value="22"/>
  <option name="Menubar" value="36"/>
  <option name="Toolbar" value="27"/>
  <!--option name="Titlebar" value="64"-->
@@ -71,7 +72,7 @@
  <color name="System.TextLink.Selected" 		value="FFFFFF"/>
  <color name="System.TextAlert" 			value="FFFFFF"/>
  <color name="System.TextStatus"			value="FFFFFF"/>
- <color name="StatusBar.Back"				value="404040"/>
+ <color name="StatusBar.Back"				value="3C3C3C"/>
  <color name="Panel.Caption.Text"			value="FFFFFF"/>
  <color name="Panel.Caption.Back"			value="181818"/>
  <color name="TaskPanel.Back"				value="181818"/>

@@ -1,7 +1,7 @@
 //
 // WndMain.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2018
+// This file is part of Envy (getenvy.com) © 2016-2020
 // Portions copyright Shareaza 2002-2008 and PeerProject 2008-2016
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -464,7 +464,6 @@ int CMainWnd::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	m_wndStatusBar.SetPaneInfo( 0, ID_SEPARATOR, SBPS_STRETCH, 0 );
 	m_wndStatusBar.SetPaneInfo( 1, ID_SEPARATOR, SBPS_NORMAL, 220 );	// Status Panel Width (lower-right corner)
 	//m_wndStatusBar.SetPaneInfo( 2, ID_SEPARATOR, SBPS_NORMAL, 120 );	// IP address status panel?
-	//m_wndStatusBar.GetStatusBarCtrl().SetBkColor(Colors.m_crStatusBar);
 
 	EnableDocking( CBRS_ALIGN_ANY );
 
@@ -1237,7 +1236,30 @@ LRESULT CMainWnd::OnSkinChanged(WPARAM /*wParam*/, LPARAM /*lParam*/)
 
 	//ModifyStyleEx( 0, WS_EX_COMPOSITED ); // Counter-productive
 
-	//m_wndStatusBar.GetStatusBarCtrl().SetBkColor( Colors.m_crStatusBar );
+	// Status Bar
+#ifndef XPSUPPORT
+	static int nHeightDefault = 0;
+	if ( nHeightDefault == 0 )
+	{
+		RECT rc;
+		m_wndStatusBar.GetClientRect( &rc );
+		nHeightDefault = rc.bottom;
+	}
+	m_wndStatusBar.GetStatusBarCtrl().SetMinHeight( Settings.Skin.StatusbarHeight > 0 ? Settings.Skin.StatusbarHeight : nHeightDefault );
+	if ( Colors.m_crStatusBar != RGB_DEFAULT_CASE )
+	{
+		SetWindowTheme( m_wndStatusBar.m_hWnd, L" ", L" " );
+		m_wndStatusBar.GetStatusBarCtrl().SetBkColor( Colors.m_crStatusBar );
+		m_wndStatusBar.SetPaneStyle( 0, SBPS_NOBORDERS|SBPS_STRETCH );
+		m_wndStatusBar.SetPaneStyle( 1, SBPS_NOBORDERS );
+	//	m_wndStatusBar.GetStatusBarCtrl().ModifyStyle( WS_BORDER, 0 );
+	//	m_wndStatusBar.GetStatusBarCtrl().ModifyStyleEx( WS_EX_CLIENTEDGE, 0, SWP_NOSIZE | SWP_FRAMECHANGED );
+	}
+	else
+	{
+		SetWindowTheme( m_wndStatusBar.m_hWnd, NULL, NULL );
+	}
+#endif
 
 	m_wndMenuBar.OnSkinChange();	// Set height here
 
@@ -1595,6 +1617,8 @@ void CMainWnd::UpdateMessages()
 
 		if ( ! Settings.VersionCheck.Quote.IsEmpty() )
 			strStatusbar += L"  " + Settings.VersionCheck.Quote;
+
+		strStatusbar = L"  " + strStatusbar;
 
 		if ( m_nIDLastMessage == AFX_IDS_IDLEMESSAGE )
 		{
