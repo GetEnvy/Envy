@@ -1,7 +1,7 @@
 //
 // Colors.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2018
+// This file is part of Envy (getenvy.com) © 2016-2020
 // Portions copyright PeerProject 2009-2014
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -67,7 +67,8 @@ void CColors::CalculateColors(BOOL bCustom)
 	m_crSys3DHighlight			= GetSysColor( COLOR_3DHIGHLIGHT );
 	m_crSysActiveCaption		= GetSysColor( COLOR_ACTIVECAPTION );
 	m_crSysMenuText 			= GetSysColor( COLOR_MENUTEXT );
-	m_crStatusBar				= GetSysColor( COLOR_WINDOWFRAME );
+	m_crStatusBar				= RGB_DEFAULT_CASE;					// GetSysColor( COLOR_WINDOWFRAME );
+//	m_crStatusBarText			= 0;
 
 	m_crDialog					= CalculateColor( m_crSysBtnFace, m_crSysWindow, 100 );
 	m_crDialogText				= RGB( 0, 0, 0 );

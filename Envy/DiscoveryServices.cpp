@@ -1,7 +1,7 @@
 //
 // DiscoveryServices.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2018
+// This file is part of Envy (getenvy.com) © 2016-2020
 // Portions copyright Shareaza 2002-2008 and PeerProject 2008-2015
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -1425,11 +1425,15 @@ BOOL CDiscoveryServices::RunWebCacheGet(BOOL bCaches)
 	// Split answer to lines
 	while ( ! strOutput.IsEmpty() )
 	{
+		strOutput = strOutput.Trim( L"\r\n\t " );
+		if ( strOutput.IsEmpty() )
+			break;
+
 		CString strLine	= strOutput.SpanExcluding( L"\r\n" );
-		strOutput		= strOutput.Mid( strLine.GetLength() + 1 );
-		strLine.Trim( L"\r\n \t" );
-		if ( strLine.IsEmpty() )
-			continue;
+		if ( strLine.GetLength() == strOutput.GetLength() )
+			strOutput.Empty();
+		else
+			strOutput = strOutput.Mid( strLine.GetLength() + 1 );
 
 		//theApp.Message( MSG_DEBUG, L"GWebCache %s : %s", (LPCTSTR)m_pWebCache->m_sAddress, (LPCTSTR)strLine );
 
@@ -1472,15 +1476,14 @@ BOOL CDiscoveryServices::RunWebCacheGet(BOOL bCaches)
 			if ( oParts.GetCount() >= 5 && ! oParts[ 4 ].IsEmpty() )
 			{
 				int nCurrentLeavesTmp;
-				if ( _stscanf( oParts[ 4 ], L"%i", &nCurrentLeavesTmp ) == 1 &&
-					nCurrentLeavesTmp >= 0 && nCurrentLeavesTmp < 2048 )
+				if ( _stscanf( oParts[4], L"%i", &nCurrentLeavesTmp ) != 1 ||
+					nCurrentLeavesTmp < 0 ||
+					nCurrentLeavesTmp > 2048 )
 				{
-					nCurrentLeaves = nCurrentLeavesTmp;
+					return FALSE;	// Bad current leaves format
 				}
-				else	// Bad current leaves format
-				{
-					return FALSE;
-				}
+				
+				nCurrentLeaves = nCurrentLeavesTmp;
 			}
 
 			// Get vendor field
@@ -1498,15 +1501,14 @@ BOOL CDiscoveryServices::RunWebCacheGet(BOOL bCaches)
 			if ( oParts.GetCount() >= 7 && ! oParts[ 6 ].IsEmpty() )
 			{
 				int tUptimeTmp;
-				if ( _stscanf( oParts[ 6 ], L"%i", &tUptimeTmp ) == 1 &&
-					tUptimeTmp > 60 && tUptimeTmp < 60 * 60 * 24 * 365 )
+				if ( _stscanf( oParts[6], L"%i", &tUptimeTmp ) != 1 ||
+					tUptimeTmp < 60 ||
+					tUptimeTmp > 60 * 60 * 24 * 365 )
 				{
-					tUptime = tUptimeTmp;
+					return FALSE;	// Bad uptime format
 				}
-				else	// Bad uptime format
-				{
-					return FALSE;
-				}
+				
+				tUptime = tUptimeTmp;
 			}
 
 			// Get leaf limit field
@@ -1514,15 +1516,14 @@ BOOL CDiscoveryServices::RunWebCacheGet(BOOL bCaches)
 			if ( oParts.GetCount() >= 8 && ! oParts[ 7 ].IsEmpty() )
 			{
 				int nLeafLimitTmp;
-				if ( _stscanf( oParts[ 7 ], L"%i", &nLeafLimitTmp ) == 1 &&
-					nLeafLimitTmp >= 0 && nLeafLimitTmp < 2048 )
+				if ( _stscanf( oParts[7], L"%i", &nLeafLimitTmp ) != 1 ||
+					nLeafLimitTmp < 0 ||
+					nLeafLimitTmp > 2048 )
 				{
-					nLeafLimit = nLeafLimitTmp;
+					return FALSE;	// Bad uptime format
 				}
-				else	// Bad uptime format
-				{
-					return FALSE;
-				}
+				
+				nLeafLimit = nLeafLimitTmp;
 			}
 
 			const DWORD tSeen = tNow - nSeconds;
@@ -1734,9 +1735,9 @@ BOOL CDiscoveryServices::RunWebCacheGet(BOOL bCaches)
 		{
 			// Plain URL, G1
 			m_pWebCache->OnURLAdd();
-			nCaches++;
 			m_pWebCache->m_bGnutella2 = FALSE;
 			m_pWebCache->m_bGnutella1 = TRUE;
+			nCaches++;
 		}
 		else
 			return FALSE;

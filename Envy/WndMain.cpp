@@ -1292,8 +1292,6 @@ LRESULT CMainWnd::OnSkinChanged(WPARAM /*wParam*/, LPARAM /*lParam*/)
 	m_wndMenuBar.SetWatermark( Skin.GetWatermark( L"CCoolMenuBar" ) );
 	m_wndTabBar.OnSkinChange();
 
-	// ToDo: Skin m_wndStatusBar?
-
 	// Make Menu Dock Area Skinnable
 	if ( CWnd* pDockBar = GetDlgItem( AFX_IDW_DOCKBAR_TOP ) )
 	{

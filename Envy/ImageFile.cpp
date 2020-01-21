@@ -1,7 +1,7 @@
 //
 // ImageFile.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2018
+// This file is part of Envy (getenvy.com) © 2016-2020
 // Portions copyright Shareaza 2002-2008 and PeerProject 2008-2015
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -177,17 +177,18 @@ BOOL CImageFile::LoadFromBitmap(HBITMAP hBitmap, BOOL bAlpha, BOOL bScanOnly /*F
 	m_nHeight = bmInfo.bmHeight;
 	if ( bmInfo.bmBitsPixel == 32 )
 		m_nComponents = 4;
-	else if ( bmInfo.bmBitsPixel == 24 )
+	else //if ( bmInfo.bmBitsPixel == 24 )
 		m_nComponents = 3;
-	else if ( bmInfo.bmBitsPixel == 8 )
-		m_nComponents = 1;
-	else // ?
-		m_nComponents = 0;
+	//else if ( bmInfo.bmBitsPixel == 8 )
+	//	m_nComponents = 1;
+	//else // ?
+	//	m_nComponents = 0;
 
 	if ( bScanOnly )
 		return TRUE;
 
 	const DWORD line_size = ( m_nWidth * m_nComponents + 3 ) & ~3;
+
 	m_pImage = new BYTE[ line_size * m_nHeight ];
 	if ( m_pImage )
 	{
