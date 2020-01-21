@@ -462,7 +462,7 @@ int CMainWnd::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	if ( ! m_wndStatusBar.Create( this ) ) return -1;
 	m_wndStatusBar.SetIndicators( wID, 2 );			// 2 Panels = _countof( wID )
 	m_wndStatusBar.SetPaneInfo( 0, ID_SEPARATOR, SBPS_STRETCH, 0 );
-	m_wndStatusBar.SetPaneInfo( 1, ID_SEPARATOR, SBPS_NORMAL, 220 );	// Status Panel Width (lower-right corner)
+	m_wndStatusBar.SetPaneInfo( 1, ID_SEPARATOR, SBPS_NORMAL, SCALE( 220 ) );	// Status Panel Width (lower-right corner)
 	//m_wndStatusBar.SetPaneInfo( 2, ID_SEPARATOR, SBPS_NORMAL, 120 );	// IP address status panel?
 
 	EnableDocking( CBRS_ALIGN_ANY );

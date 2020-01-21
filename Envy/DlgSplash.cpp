@@ -1,7 +1,7 @@
 //
 // DlgSplash.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2018
+// This file is part of Envy (getenvy.com) © 2016-2020
 // Portions copyright Shareaza 2002-2008 and PeerProject 2008-2015
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -64,7 +64,13 @@ CSplashDlg::CSplashDlg(int nMax, bool bClosing)
 	, m_sState		( Settings.SmartAgent() )	//  Was theApp.m_sSmartAgent
 {
 	if ( ! m_bmSplash.m_hObject )
-		m_bmSplash.Attach( CImageFile::LoadBitmapFromFile( Settings.General.DataPath + L"Splash.png" ) );
+	{
+		CString strPath = Settings.General.DataPath + L"Splash.png";
+		if ( Settings.Interface.DisplayScaling > 140 && GetFileAttributes( Settings.General.DataPath + L"Splash.HiRes.png" ) != INVALID_FILE_ATTRIBUTES )
+			strPath = Settings.General.DataPath + L"Splash.HiRes.png";
+
+		m_bmSplash.Attach( CImageFile::LoadBitmapFromFile( strPath ) );
+	}
 
 	Create( IDD, GetDesktopWindow() );
 }
@@ -221,7 +227,7 @@ void CSplashDlg::DoPaint(CDC* pDC)
 	CFont* pOldFont = (CFont*)dcMemory.SelectObject( &theApp.m_gdiFontBold );
 	dcMemory.SetBkMode( TRANSPARENT );
 
-	CRect rc( 8, m_nHeight - 18, m_nWidth - 98, m_nHeight - 2 );				// Text Position
+	CRect rc( SCALE( 8 ), m_nHeight - SCALE( 18 ), m_nWidth - SCALE( 98 ), m_nHeight - SCALE( 2 ) );				// Text Position
 	const UINT nFormat = DT_LEFT|DT_VCENTER|DT_SINGLELINE|DT_NOPREFIX;
 
 	dcMemory.SetTextColor( COLOR_TEXT_FADE );									// Text Outline/Fade
@@ -247,7 +253,7 @@ void CSplashDlg::DoPaint(CDC* pDC)
 
 	dcMemory.SelectObject( pOldFont );
 
-	rc.SetRect( m_nWidth - 90, m_nHeight - 14, m_nWidth - 8, m_nHeight - 5 );	// Progress Bar Position ( 440, 222, 522, 231 )
+	rc.SetRect( m_nWidth - SCALE( 90 ), m_nHeight - SCALE( 14 ), m_nWidth - SCALE( 8 ), m_nHeight - SCALE( 5 ) );	// Progress Bar Position ( 440, 222, 522, 231 )
 //	dcMemory.Draw3dRect( &rc, COLOR_BAR_UPPEREDGE, COLOR_BAR_LOWEREDGE );		// Progress Bar Outline
 	rc.DeflateRect( 1, 1 );
 	dcMemory.FillSolidRect( &rc, COLOR_BAR_FILL ); 								// Progress Bar Background

@@ -1,7 +1,7 @@
 //
 // CoolInterface.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2018
+// This file is part of Envy (getenvy.com) © 2016-2020
 // Portions copyright Shareaza 2002-2008 and PeerProject 2008-2015
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -759,7 +759,7 @@ void CCoolInterface::CreateFonts(LPCTSTR pszFace /*0*/, int nSize /*0*/)
 
 	// ToDo: Fix settings page high dpi richtext (this doesn't work)
 	if ( Settings.Interface.DisplayScaling > 101 && nSize == Settings.Fonts.DefaultSize )
-		nSize = (int)( nSize * Settings.Interface.DisplayScaling / 100 ) + 1;
+		nSize = SCALE(nSize) + 1;
 
 	m_fntRichDefault.CreateFont( -nSize - 1, 0, 0, 0, FW_BOLD, FALSE, FALSE, FALSE,
 		DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS, Settings.Fonts.Quality,

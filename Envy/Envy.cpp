@@ -206,8 +206,8 @@ CEnvyApp::CEnvyApp()
 	, m_bIsWinXP				( false )
 	, m_bLimitedConnections 	( false )
 	, m_bMenuWasVisible			( FALSE )
-	, m_nLastInput				( 0ul )
-	, m_nWinVer					( 0ul )
+	, m_nLastInput				( 0 )
+	, m_nWinVer					( 0 )
 	, m_nMouseWheel 			( 3 )
 	, m_hHookMouse				( NULL )
 	, m_hHookKbd				( NULL )
@@ -1715,7 +1715,7 @@ void CEnvyApp::InitResources()
 		Settings.Interface.DisplayScaling =
 			nDPI < 100 ? 100 :
 			nDPI > 190 ? 200 :
-			(DWORD)( ( nDPI * 100 ) / 96 );
+			(DWORD)( nDPI * 100 / 96 );
 	}
 
 	//
@@ -1759,15 +1759,17 @@ void CEnvyApp::InitResources()
 	if ( Settings.Fonts.PacketDumpFont.IsEmpty() )
 		Settings.Fonts.PacketDumpFont = L"Lucida Console";
 
-	m_gdiFont.CreateFont( -(int)Settings.Fonts.DefaultSize, 0, 0, 0, FW_NORMAL, FALSE, FALSE, FALSE,
+	const int nFontSize = SCALE( Settings.Fonts.DefaultSize );
+
+	m_gdiFont.CreateFont( -nFontSize, 0, 0, 0, FW_NORMAL, FALSE, FALSE, FALSE,
 		DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS, Settings.Fonts.Quality,
 		DEFAULT_PITCH|FF_DONTCARE, Settings.Fonts.DefaultFont );
 
-	m_gdiFontBold.CreateFont( -(int)Settings.Fonts.DefaultSize, 0, 0, 0, FW_BOLD, FALSE, FALSE, FALSE,
+	m_gdiFontBold.CreateFont( -nFontSize, 0, 0, 0, FW_BOLD, FALSE, FALSE, FALSE,
 		DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS, Settings.Fonts.Quality,
 		DEFAULT_PITCH|FF_DONTCARE, Settings.Fonts.DefaultFont );
 
-	m_gdiFontLine.CreateFont( -(int)Settings.Fonts.DefaultSize, 0, 0, 0, FW_NORMAL, FALSE, TRUE, FALSE,
+	m_gdiFontLine.CreateFont( -nFontSize, 0, 0, 0, FW_NORMAL, FALSE, TRUE, FALSE,
 		DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS, Settings.Fonts.Quality,
 		DEFAULT_PITCH|FF_DONTCARE, Settings.Fonts.DefaultFont );
 

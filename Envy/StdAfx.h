@@ -1029,6 +1029,8 @@ INT_PTR MsgBox(UINT nIDPrompt, UINT nType = MB_OK, UINT nIDHelp = 0, DWORD* pnDe
 	((hr)==RPC_E_SERVERFAULT)|| \
 	((hr)==RPC_E_INVALID_OBJECT))
 
+#define SCALE(size)		( Settings.Interface.DisplayScaling < 110UL ? (size) : (size) * (int)Settings.Interface.DisplayScaling / 100 )
+
 #define TIMER_START		DWORD tTest = GetTickCount();		// Temporary testing purposes [PPD]
 #define TIMER_STOP		tTest = GetTickCount() - tTest; CString strTest; strTest.Format( L"\r\n %.3f seconds", tTest / 1000.000 ); \
 	CFile pFile; if ( pFile.Open( Settings.General.Path + L"\\Timer.txt", CFile::modeReadWrite ) ) pFile.Seek( 0, CFile::end ); \

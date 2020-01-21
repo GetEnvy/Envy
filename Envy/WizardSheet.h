@@ -1,7 +1,7 @@
 //
 // WizardSheet.h
 //
-// This file is part of Envy (getenvy.com) © 2016-2018
+// This file is part of Envy (getenvy.com) © 2016-2020
 // Portions copyright Shareaza 2002-2007 and PeerProject 2008-2012
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -29,8 +29,9 @@ class CWizardSheet : public CPropertySheetAdv
 public:
 	CWizardSheet(CWnd *pParentWnd = NULL, UINT iSelectPage = 0);
 
-	CRect			m_rcPage;
 	CBitmap			m_bmHeader;
+	CRect			m_rcPage;
+	int				m_nNavBar;
 
 	static BOOL 	RunWizard(CWnd* pParent = NULL);
 

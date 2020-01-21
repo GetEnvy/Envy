@@ -1,7 +1,7 @@
 //
 // WndSettingsSheet.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2018
+// This file is part of Envy (getenvy.com) © 2016-2020
 // Portions copyright Shareaza 2002-2006 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -153,7 +153,7 @@ BOOL CSettingsSheet::SetActivePage(CSettingsPage* pPage)
 		m_pPage = NULL;
 	}
 
-	CRect rc( LISTWIDTH + LEFTMARGIN + LISTDIVIDER, 0, 0, 0 );
+	CRect rc( SCALE( LISTWIDTH ) + LEFTMARGIN + LISTDIVIDER, 0, 0, 0 );
 	if ( GetDlgItem( IDC_BANNER ) )
 		rc.top	= Skin.m_nBanner + 1;
 	rc.right	= rc.left + m_szPages.cx;
@@ -292,7 +292,8 @@ void CSettingsSheet::BuildTree()
 	{
 		CSettingsPage* pPage = GetPage( nPage );
 
-		if ( pPage->m_bGroup ) hGroup = TVI_ROOT;
+		if ( pPage->m_bGroup )
+			hGroup = TVI_ROOT;
 
 		HTREEITEM hItem = m_wndTree.InsertItem(
 			TVIF_PARAM|TVIF_TEXT|TVIF_STATE,
@@ -327,7 +328,8 @@ BOOL CSettingsSheet::SkinMe(LPCTSTR pszSkin, UINT nIcon, BOOL bLanguage)
 		CSettingsPage* pPage = GetPage( nPage );
 		CDialogTemplate pTemplate;
 
-		if ( pPage->GetTemplateName() == NULL )  continue;
+		if ( pPage->GetTemplateName() == NULL )
+			continue;
 
 		if ( pTemplate.Load( pPage->GetTemplateName() ) )
 		{
@@ -338,24 +340,24 @@ BOOL CSettingsSheet::SkinMe(LPCTSTR pszSkin, UINT nIcon, BOOL bLanguage)
 		}
 	}
 
-	CRect rcWindow( 0, 0, m_szPages.cx + LISTWIDTH + LISTDIVIDER + LEFTMARGIN, m_szPages.cy + m_nButtonHeight + BUTTONGAP*2 + 1 );
+	CRect rcWindow( 0, 0, m_szPages.cx + SCALE( LISTWIDTH ) + LEFTMARGIN + LISTDIVIDER, m_szPages.cy + m_nButtonHeight + SCALE( BUTTONGAP*2 ) + 1 );
 	CalcWindowRect( &rcWindow );
 	SetWindowPos( &wndTop, 0, 0, rcWindow.Width(), rcWindow.Height(), SWP_NOMOVE|SWP_NOZORDER );
 
-	CRect rcTree( LEFTMARGIN, 0, LISTWIDTH, m_szPages.cy + 1 );	// Skin.m_nBanner
+	CRect rcTree( LEFTMARGIN, 0, SCALE( LISTWIDTH ), m_szPages.cy + 1 );	// Skin.m_nBanner
 	m_wndTree.MoveWindow( &rcTree );
 	m_wndTree.SetBkColor( Colors.m_crDialogMenu );
 	m_wndTree.SetTextColor( Colors.m_crDialogMenuText );
 
-	CRect rcButton( m_szPages.cx + LISTWIDTH + LISTDIVIDER - BUTTONWIDTH - BUTTONGAP - 1,
-		m_szPages.cy + BUTTONGAP + 1, BUTTONWIDTH, m_nButtonHeight );
+	CRect rcButton( ( m_szPages.cx + SCALE( LISTWIDTH ) + LEFTMARGIN + LISTDIVIDER ) - SCALE( BUTTONWIDTH + BUTTONGAP ) - 1,
+		m_szPages.cy + SCALE( BUTTONGAP ) + 1, SCALE( BUTTONWIDTH ), m_nButtonHeight );
 	rcButton.right += rcButton.left;
 	rcButton.bottom += rcButton.top;
 
 	m_wndCancel.MoveWindow( &rcButton );
-	rcButton.OffsetRect( - BUTTONWIDTH - BUTTONGAP, 0 );
+	rcButton.OffsetRect( - SCALE( BUTTONWIDTH + BUTTONGAP ), 0 );
 	m_wndOK.MoveWindow( &rcButton );
-	rcButton.OffsetRect( - BUTTONWIDTH - BUTTONGAP, 0 );
+	rcButton.OffsetRect( - SCALE( BUTTONWIDTH + BUTTONGAP ), 0 );
 	m_wndApply.MoveWindow( &rcButton );
 
 	CenterWindow();
@@ -400,9 +402,9 @@ void CSettingsSheet::OnPaint()
 void CSettingsSheet::DoPaint(CDC& dc)
 {
 	// Draw Splitter Bar
-	CRect rc( LEFTMARGIN, Skin.m_nBanner, 0, 0 );
+	CRect rc( SCALE( LEFTMARGIN ), Skin.m_nBanner, 0, 0 );
 
-	rc.left		+= LISTWIDTH;
+	rc.left		+= SCALE( LISTWIDTH );
 	rc.right	= rc.left + LISTDIVIDER;
 	rc.bottom	= rc.top  + m_szPages.cy + 1;
 
@@ -412,7 +414,7 @@ void CSettingsSheet::DoPaint(CDC& dc)
 	dc.FillSolidRect( rc.left + 2, rc.top, rc.Width() - 3, rc.Height(), Colors.m_crResizebarFace );
 
 	GetClientRect( &rc );
-	rc.top = rc.bottom - ( m_nButtonHeight + BUTTONGAP*2 );
+	rc.top = rc.bottom - ( m_nButtonHeight + SCALE( BUTTONGAP*2 ) );
 
 	dc.FillSolidRect( rc.left, rc.top, rc.Width(), 1, Colors.m_crSysBtnFace );
 	dc.FillSolidRect( rc.left, rc.top + 1, rc.Width(), 1, Colors.m_crSys3DHighlight );
@@ -420,12 +422,14 @@ void CSettingsSheet::DoPaint(CDC& dc)
 
 void CSettingsSheet::OnOK()
 {
-	if ( m_pPage && ! m_pPage->OnKillActive() ) return;
+	if ( m_pPage && ! m_pPage->OnKillActive() )
+		return;
 
 	for ( int nPage = 0; nPage < GetPageCount(); nPage++ )
 	{
 		CSettingsPage* pPage = GetPage( nPage );
-		if ( pPage->m_hWnd ) pPage->OnOK();
+		if ( pPage->m_hWnd )
+			pPage->OnOK();
 	}
 
 	EndDialog( IDOK );
@@ -436,7 +440,8 @@ void CSettingsSheet::OnCancel()
 	for ( int nPage = 0; nPage < GetPageCount(); nPage++ )
 	{
 		CSettingsPage* pPage = GetPage( nPage );
-		if ( pPage->m_hWnd ) pPage->OnCancel();
+		if ( pPage->m_hWnd )
+			pPage->OnCancel();
 	}
 
 	EndDialog( IDCANCEL );
@@ -444,12 +449,14 @@ void CSettingsSheet::OnCancel()
 
 void CSettingsSheet::OnApply()
 {
-	if ( m_pPage && ! m_pPage->OnKillActive() ) return;
+	if ( m_pPage && ! m_pPage->OnKillActive() )
+		return;
 
 	for ( int nPage = 0; nPage < GetPageCount(); nPage++ )
 	{
 		CSettingsPage* pPage = GetPage( nPage );
-		if ( pPage->m_hWnd && ! pPage->OnApply() ) return;
+		if ( pPage->m_hWnd && ! pPage->OnApply() )
+			return;
 	}
 
 	SetModified( FALSE );

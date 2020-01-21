@@ -1,7 +1,7 @@
 //
 // WizardSheet.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2018
+// This file is part of Envy (getenvy.com) © 2016-2020
 // Portions copyright Shareaza 2002-2007 and PeerProject 2008-2016
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -40,7 +40,7 @@ static char THIS_FILE[] = __FILE__;
 #define new DEBUG_NEW
 #endif	// Debug
 
-#define CONTROLBAR_HEIGHT	44
+#define CONTROLBAR_HEIGHT	44		// m_nNavBar Default
 #define BUTTON_GAP			8
 
 /////////////////////////////////////////////////////////////////////////////
@@ -108,6 +108,8 @@ BOOL CWizardSheet::OnInitDialog()
 	CRect rc;
 	GetClientRect( &rc );
 	const int nCenter = rc.Width() / 2 + 1;		// Accomodate HighDPI
+
+	m_nNavBar = SCALE( CONTROLBAR_HEIGHT );
 
 	SetIcon( CoolInterface.ExtractIcon( IDR_MAINFRAME, FALSE ), FALSE );
 	SetFont( &theApp.m_gdiFont );
@@ -200,7 +202,7 @@ void CWizardSheet::OnSize(UINT nType, int cx, int cy)
 		GetClientRect( &m_rcPage );
 
 		m_rcPage.top += Skin.m_nBanner;
-		m_rcPage.bottom -= CONTROLBAR_HEIGHT + 2;
+		m_rcPage.bottom -= m_nNavBar + 2;
 
 		pWnd->SetWindowPos( NULL, m_rcPage.left, m_rcPage.top, m_rcPage.Width(), m_rcPage.Height(), SWP_NOSIZE );
 	}
@@ -226,14 +228,14 @@ void CWizardSheet::OnPaint()
 	//dc.Draw3dRect( 0, Skin.m_nBanner, rc.Width() + 1, 1, RGB( 128, 128, 128 ), RGB( 128, 128, 128 ) );
 
 	//GetClientRect( &rc );
-	rc.top = rc.bottom - CONTROLBAR_HEIGHT;
+	rc.top = rc.bottom - m_nNavBar;
 
 	dc.Draw3dRect( 0, rc.top - 2, rc.Width() + 1, 2, RGB( 142, 141, 140 ), RGB( 255, 255, 255 ) );	// ToDo: Skinned bevel color?
 
 	if ( Images.m_bmDialog.m_hObject )
 		CoolInterface.DrawWatermark( &dc, &rc, &Images.m_bmDialog );
 	else
-		dc.FillSolidRect( rc.left, rc.top, rc.Width(), CONTROLBAR_HEIGHT, Colors.m_crSysBtnFace );	// Colors.m_crDialog?
+		dc.FillSolidRect( rc.left, rc.top, rc.Width(), m_nNavBar, Colors.m_crSysBtnFace );	// Colors.m_crDialog?
 }
 
 HBRUSH CWizardSheet::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
