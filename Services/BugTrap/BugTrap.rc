@@ -95,7 +95,7 @@ LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
 //
 
 VS_VERSION_INFO VERSIONINFO
- PRODUCTVERSION 3,0
+ PRODUCTVERSION 4,0
  FILEVERSION 1,4,0,0
  FILEFLAGSMASK 0x17L
 #ifdef _DEBUG
@@ -112,7 +112,7 @@ BEGIN
 		BLOCK "040904b0"
 		BEGIN
 			VALUE "ProductName", "Envy"
-			VALUE "ProductVersion", "3.0"
+			VALUE "ProductVersion", "4.0"
 			VALUE "FileVersion", "1.4.0.0"
 			VALUE "InternalName", "BugTrap"
 			VALUE "OriginalFilename", "BugTrap.dll"
