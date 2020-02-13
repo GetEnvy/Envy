@@ -1,7 +1,7 @@
 //
 // CtrlWizard.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2018
+// This file is part of Envy (getenvy.com) © 2016-2020
 // Portions copyright Shareaza 2002-2007 and PeerProject 2008-2015
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -163,14 +163,10 @@ void CWizardCtrl::OnPaint()
 	else  // No customizations
 	{
 		CString str;
-		if ( ! m_bValid )
-			LoadString( str, IDS_COLLECTION_WIZARD_NOTVALID );
-		else
-			LoadString( str, IDS_COLLECTION_WIZARD_NOCUSTOM );
+		LoadString( str, m_bValid ? IDS_COLLECTION_WIZARD_NOCUSTOM : IDS_COLLECTION_WIZARD_NOTVALID );
 		nOffsetX = rcClient.Width() / 2 - dc.GetTextExtent( str ).cx / 2 - 1;
 		nOffsetY = rcClient.Height() / 2 - dc.GetTextExtent( L"Xg" ).cy / 2 - 1;
-		dc.ExtTextOut( rcItem.left + nOffsetX, rcItem.top + nOffsetY, ETO_OPAQUE|ETO_CLIPPED,
-					   &rcItem, str, NULL );
+		dc.ExtTextOut( rcItem.left + nOffsetX, rcItem.top + nOffsetY, ETO_OPAQUE|ETO_CLIPPED, &rcItem, str, NULL );
 	}
 
 	dc.SelectObject( pOldFont );

@@ -1,7 +1,7 @@
 //
 // CtrlMatch.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2018
+// This file is part of Envy (getenvy.com) © 2016-2020
 // Portions copyright Shareaza 2002-2008 and PeerProject 2008-2016
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -338,8 +338,8 @@ void CMatchCtrl::InsertColumn(int nColumn, LPCTSTR pszCaption, int nFormat, int 
 
 	pItem.pszText		= (LPTSTR)pszCaption;
 	pItem.cchTextMax	= static_cast< int >( _tcslen( pszCaption ) );
+	pItem.cxy			= SCALE( nWidth );
 	pItem.fmt			= nFormat;
-	pItem.cxy			= nWidth;
 
 	m_wndHeader.InsertItem( nColumn, &pItem );
 }

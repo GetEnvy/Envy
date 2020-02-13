@@ -1482,7 +1482,7 @@ BOOL CDiscoveryServices::RunWebCacheGet(BOOL bCaches)
 				{
 					return FALSE;	// Bad current leaves format
 				}
-				
+
 				nCurrentLeaves = nCurrentLeavesTmp;
 			}
 
@@ -1507,7 +1507,7 @@ BOOL CDiscoveryServices::RunWebCacheGet(BOOL bCaches)
 				{
 					return FALSE;	// Bad uptime format
 				}
-				
+
 				tUptime = tUptimeTmp;
 			}
 
@@ -1522,7 +1522,7 @@ BOOL CDiscoveryServices::RunWebCacheGet(BOOL bCaches)
 				{
 					return FALSE;	// Bad uptime format
 				}
-				
+
 				nLeafLimit = nLeafLimitTmp;
 			}
 

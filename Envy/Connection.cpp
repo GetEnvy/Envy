@@ -1,7 +1,7 @@
 //
 // Connection.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2018
+// This file is part of Envy (getenvy.com) © 2016-2020
 // Portions copyright Shareaza 2002-2007 and PeerProject 2008-2015
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -51,8 +51,8 @@ CConnection::CConnection(PROTOCOLID nProtocol)
 	, m_nProtocol		( nProtocol )
 	, m_bClientExtended ( FALSE )
 	, m_bAutoDelete		( FALSE )
-	, m_nQueuedRun		( 0 )			// DoRun sets it to 0, QueueRun sets it to 2 (do)
 	, m_nDelayCloseReason ( 0 )
+	, m_nQueuedRun		( 0 )			// DoRun sets it to 0, QueueRun sets it to 2 (do)
 {
 	ZeroMemory( &m_pHost, sizeof( m_pHost ) );
 	m_pHost.sin_family = AF_INET;
@@ -323,7 +323,7 @@ void CConnection::Close(UINT nError)
 		{
 			theApp.Message( MSG_ERROR, IDS_HANDSHAKE_REJECTED, (LPCTSTR)m_sAddress, (LPCTSTR)m_sUserAgent );
 		}
-		if ( nError == IDS_SECURITY_BANNED_USERAGENT )
+		else if ( nError == IDS_SECURITY_BANNED_USERAGENT )
 		{
 			CString strComment;
 			strComment.Format( LoadString( IDS_SECURITY_BANNED_USERAGENT ), (LPCTSTR)m_sAddress, (LPCTSTR)m_sUserAgent );
@@ -331,10 +331,13 @@ void CConnection::Close(UINT nError)
 
 			theApp.Message( MSG_ERROR, IDS_SECURITY_BANNED_USERAGENT, (LPCTSTR)m_sAddress, (LPCTSTR)m_sUserAgent );
 		}
+		else if ( nError == IDS_CONNECTION_CLOSED || nError == IDS_CONNECTION_PEERPRUNE || nError == IDS_HANDSHAKE_TIMEOUT )
+		{
+			theApp.Message( MSG_INFO, nError, (LPCTSTR)m_sAddress );
+		}
 		else
 		{
-			BOOL bInfo = ( nError == IDS_CONNECTION_CLOSED || nError == IDS_CONNECTION_PEERPRUNE );
-			theApp.Message( bInfo ? MSG_INFO : MSG_ERROR, nError, (LPCTSTR)m_sAddress );
+			theApp.Message( MSG_ERROR, nError, (LPCTSTR)m_sAddress);
 		}
 	}
 
@@ -344,7 +347,10 @@ void CConnection::Close(UINT nError)
 	m_bConnected = FALSE;
 
 	if ( m_bAutoDelete )
-		delete this;
+	{
+		Sleep( 50 );		// Workaround?
+		delete this;		// Sometimes Crashes on CString Release for CShakeNeighbor
+	}
 }
 
 // Close the connection, but not until we've written the buffered outgoing data first
@@ -438,7 +444,7 @@ BOOL CConnection::DoRun()
 		return FALSE;
 	}
 
-	if ( this == NULL )		// Workaround Crash below
+	if ( this == NULL )		// Workaround Crash below?
 		return FALSE;
 
 	// Make sure the handshake doesn't take too long
@@ -523,7 +529,7 @@ BOOL CConnection::OnRead()
 		// Work out what the bandwidth limit is
 		nLimit = m_mInput.CalculateLimit( tNow, Settings.Live.BandwidthScaleIn );
 	}
-	
+
 	if ( nLimit > (DWORD)INT_MAX )
 		nLimit = (DWORD)INT_MAX;
 
@@ -556,7 +562,7 @@ BOOL CConnection::OnRead()
 		nTotal				+= nRead;	// Add to the total
 		nLimit				-= nRead;	// Adjust the limit
 	}
-	
+
 	if ( nTotal )
 	{
 		// Bytes were read, add # bytes to bandwidth meter
@@ -597,7 +603,7 @@ BOOL CConnection::OnWrite()
 		// Work out what the bandwidth limit is
 		nLimit = m_mOutput.CalculateLimit( tNow, Settings.Live.BandwidthScaleOut, Settings.Uploads.ThrottleMode );
 	}
-	
+
 	nLimit = min( nLimit, m_pOutput->GetCount() );
 	if ( nLimit > (DWORD)INT_MAX )
 		nLimit = (DWORD)INT_MAX;
@@ -622,12 +628,12 @@ BOOL CConnection::OnWrite()
 		nTotal	+= nSend;	// Add to the total
 		nLimit	-= nSend;	// Adjust the limit
 	}
-	
+
 	if ( nTotal )
 	{
 		// Remove sent bytes from the buffer
 		m_pOutput->Remove( nTotal );
-	
+
 		// Add sent bytes to bandwidth meter
 		m_mOutput.Add( nTotal, tNow );
 

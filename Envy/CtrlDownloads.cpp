@@ -1,7 +1,7 @@
 //
 // CtrlDownloads.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2018
+// This file is part of Envy (getenvy.com) © 2016-2020
 // Portions copyright Shareaza 2002-2008 and PeerProject 2008-2015
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -190,8 +190,8 @@ void CDownloadsCtrl::InsertColumn(int nColumn, LPCTSTR pszCaption, int nFormat, 
 	HDITEM pColumn = {};
 
 	pColumn.mask	= HDI_FORMAT | HDI_LPARAM | HDI_TEXT | HDI_WIDTH;
-	pColumn.cxy		= nWidth;
 	pColumn.pszText	= (LPTSTR)pszCaption;
+	pColumn.cxy		= SCALE( nWidth );
 	pColumn.fmt		= nFormat;
 	pColumn.lParam	= nColumn;
 
@@ -1101,7 +1101,7 @@ void CDownloadsCtrl::OnPaint()
 			for ( POSITION posDownload = Downloads.GetIterator() ; posDownload ; )
 			{
 				CDownload* pDownload = Downloads.GetNext( posDownload );
-				
+
 				if ( m_nGroupCookie != 0 && m_nGroupCookie != pDownload->m_nGroupCookie )
 					continue;
 
@@ -1129,7 +1129,7 @@ void CDownloadsCtrl::OnPaint()
 			//		pDownload->m_bExpanded = false;
 			//		continue;
 			//	}
-				
+
 				int nSources = pDownload->GetSourceCount();
 				if ( nScroll >= nSources )
 				{
@@ -1137,7 +1137,7 @@ void CDownloadsCtrl::OnPaint()
 					nIndex += nSources;
 					continue;
 				}
-				
+
 				if ( nScroll > 0 && pDownloadsData.IsEmpty() )
 					pDownloadsData.AddTail( CDownloadDisplayData() );
 

@@ -1,7 +1,7 @@
 //
 // WizardWelcomePage.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2018
+// This file is part of Envy (getenvy.com) © 2016-2020
 // Portions copyright Shareaza 2002-2007 and PeerProject 2008-2010
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -70,12 +70,16 @@ BOOL CWizardWelcomePage::OnInitDialog()
 
 BOOL CWizardWelcomePage::OnSetActive()
 {
-	//Wizard Window Caption Workaround
+	// Wizard Window Caption Workaround
 	CString strCaption;
 	GetWindowText( strCaption );
 	GetParent()->SetWindowText( strCaption );
 
 	SetWizardButtons( PSWIZB_NEXT );
+	//GetSheet()->SendMessage( DM_SETDEFID, ID_WIZNEXT );
+	//GetSheet()->GetDlgItem( ID_WIZNEXT )->SetFocus();
+	//GotoDlgCtrl( GetSheet()->GetDlgItem( ID_WIZNEXT ) );	// Set Focus
+
 	return CWizardPage::OnSetActive();
 }
 

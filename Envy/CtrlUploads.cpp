@@ -1,7 +1,7 @@
 //
 // CtrlUploads.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2018
+// This file is part of Envy (getenvy.com) © 2016-2020
 // Portions copyright Shareaza 2002-2007 and PeerProject 2008-2015
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -160,8 +160,8 @@ void CUploadsCtrl::InsertColumn(int nColumn, LPCTSTR pszCaption, int nFormat, in
 	HDITEM pColumn = {};
 
 	pColumn.mask	= HDI_FORMAT | HDI_LPARAM | HDI_TEXT | HDI_WIDTH;
-	pColumn.cxy		= nWidth;
 	pColumn.pszText	= (LPTSTR)pszCaption;
+	pColumn.cxy		= SCALE( nWidth );
 	pColumn.fmt		= nFormat;
 	pColumn.lParam	= nColumn;
 
