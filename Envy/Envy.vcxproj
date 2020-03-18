@@ -1094,6 +1094,8 @@
     <None Include="Res\DownloadMonitor.ico" />
     <None Include="Res\Downloads.ico" />
     <None Include="Res\Executable.ico" />
+    <None Include="Res\Envy.rc2" />
+    <None Include="Res\Envy.ico" />
     <None Include="Res\Fake.ico" />
     <None Include="Res\File.ico" />
     <None Include="Res\FileNotFound.htm" />
@@ -1116,6 +1118,7 @@
     <None Include="Res\LargeLogo.png" />
     <None Include="Res\Library.ico" />
     <None Include="Res\Locked.ico" />
+    <None Include="Res\Logo.png" />
     <None Include="Res\Manifest.xml" />
     <None Include="Res\Mail.ico" />
     <None Include="Res\Media.ico" />
@@ -1134,8 +1137,6 @@
     <None Include="Res\Packets.ico" />
     <None Include="Res\PanelMark.bmp" />
     <None Include="Res\Partial.ico" />
-    <None Include="Res\Envy.ico" />
-    <None Include="Res\Envy.rc2" />
     <None Include="Res\PointerArrowIn.ico" />
     <None Include="Res\PointerArrowOut.ico" />
     <None Include="Res\Preview.ico" />
@@ -1640,4 +1641,3 @@
     </VisualStudio>
   </ProjectExtensions>
 </Project>
-

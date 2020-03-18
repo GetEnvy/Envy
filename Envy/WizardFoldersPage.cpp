@@ -1,7 +1,8 @@
 //
 // WizardFoldersPage.cpp
 //
-// This file is part of Envy (getenvy.com) © 2011-2014
+// This file is part of Envy (getenvy.com) © 2016-2020
+// Portions copyright PeerProject 2011-2014
 //
 // Envy is free software. You may redistribute and/or modify it
 // under the terms of the GNU Affero General Public License
@@ -96,14 +97,6 @@ BOOL CWizardFoldersPage::OnInitDialog()
 	return TRUE;
 }
 
-void CWizardFoldersPage::OnXButtonDown(UINT /*nFlags*/, UINT nButton, CPoint /*point*/)
-{
-	if ( nButton == 1 )
-		GetSheet()->PressButton( PSBTN_BACK );
-	else if ( nButton == 2 )
-		GetSheet()->PressButton( PSBTN_NEXT );
-}
-
 BOOL CWizardFoldersPage::OnSetActive()
 {
 	// Wizard Window Caption Workaround
@@ -114,7 +107,16 @@ BOOL CWizardFoldersPage::OnSetActive()
 	CoolInterface.FixThemeControls( this );		// Checkbox/Groupbox text colors (Remove theme if needed)
 
 	SetWizardButtons( PSWIZB_BACK | PSWIZB_NEXT );
+
 	return CWizardPage::OnSetActive();
+}
+
+void CWizardFoldersPage::OnXButtonDown(UINT /*nFlags*/, UINT nButton, CPoint /*point*/)
+{
+	if ( nButton == 1 )
+		GetSheet()->PressButton( PSBTN_BACK );
+	else if ( nButton == 2 )
+		GetSheet()->PressButton( PSBTN_NEXT );
 }
 
 void CWizardFoldersPage::OnDownloadsBrowse()

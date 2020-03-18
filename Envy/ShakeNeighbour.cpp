@@ -1,7 +1,7 @@
 //
 // ShakeNeighbour.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2018
+// This file is part of Envy (getenvy.com) © 2016-2020
 // Portions copyright Shareaza 2002-2008 and PeerProject 2008-2016
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -148,6 +148,7 @@ void CShakeNeighbour::Close(UINT nError)
 		bFail = false;
 	case IDS_HANDSHAKE_TIMEOUT:
 		bRemove = m_nState == nrsRejected && m_bInitiated;
+		m_bAutoDelete = FALSE;		// Workaround Crashfix
 		break;
 	case IDS_CONNECTION_DROPPED:
 		bRemove = true;
@@ -158,10 +159,10 @@ void CShakeNeighbour::Close(UINT nError)
 	case IDS_HANDSHAKE_REJECTED:
 		bRemove = true;
 		break;
-	case IDS_CONNECTION_TIMEOUT_CONNECT:
-		break;
 	case IDS_HANDSHAKE_FAIL:
 		bRemove = true;
+		break;
+	case IDS_CONNECTION_TIMEOUT_CONNECT:
 		break;
 	case IDS_CONNECTION_PEERPRUNE:
 		bRemove = true;

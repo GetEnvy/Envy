@@ -1,7 +1,7 @@
 //
 // WizardSharePage.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2018
+// This file is part of Envy (getenvy.com) © 2016-2020
 // Portions copyright Shareaza 2002-2007 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -80,7 +80,9 @@ BOOL CWizardSharePage::OnInitDialog()
 	ShellIcons.AttachTo( &m_wndList, 16 );	// .SetImageList()
 
 	if ( m_wndList.SetBkImage( Skin.GetWatermark( L"CListCtrl" ) ) )		// || m_wndList.SetBkImage( Images.m_bmSystemWindow.m_hObject )		"System.Windows"
+	{
 		m_wndList.SetExtendedStyle( LVS_EX_FULLROWSELECT|LVS_EX_LABELTIP|LVS_EX_CHECKBOXES );	// No LVS_EX_DOUBLEBUFFER
+	}
 	else
 	{
 		m_wndList.SetBkColor( Colors.m_crWindow );
@@ -154,6 +156,7 @@ BOOL CWizardSharePage::OnSetActive()
 	GetParent()->SetWindowText( strCaption );
 
 	SetWizardButtons( PSWIZB_BACK | PSWIZB_NEXT );
+
 	return CWizardPage::OnSetActive();
 }
 

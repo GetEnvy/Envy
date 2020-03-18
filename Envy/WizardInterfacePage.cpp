@@ -1,7 +1,7 @@
 //
 // WizardInterfacePage.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2018
+// This file is part of Envy (getenvy.com) © 2016-2020
 // Portions copyright Shareaza 2002-2007 and PeerProject 2008-2015
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -101,6 +101,7 @@ BOOL CWizardInterfacePage::OnSetActive()
 	CoolInterface.FixThemeControls( this );		// Checkbox/Groupbox text colors (Remove theme if needed)
 
 	SetWizardButtons( PSWIZB_BACK | PSWIZB_NEXT );
+
 	return CWizardPage::OnSetActive();
 }
 
@@ -230,11 +231,13 @@ void CWizardInterfacePage::ClearSkins(LPCTSTR pszPath /*NULL*/)
 	{
 		do
 		{
-			if ( pFind.cFileName[0] == L'.' ) continue;
+			if ( pFind.cFileName[0] == L'.' )
+				continue;
 
 			if ( pFind.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY )
 			{
-				if ( _tcsicmp( pFind.cFileName, L"Languages" ) == 0 ) continue;
+				if ( _tcsicmp( pFind.cFileName, L"Languages" ) == 0 )
+					continue;
 
 				strPath.Format( L"%s%s\\",
 					pszPath ? pszPath : L"", pFind.cFileName );

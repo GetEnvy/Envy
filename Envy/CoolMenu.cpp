@@ -1,7 +1,7 @@
 //
 // CoolMenu.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2018
+// This file is part of Envy (getenvy.com) © 2016-2020
 // Portions copyright Shareaza 2002-2008 and PeerProject 2008-2015
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -149,9 +149,10 @@ BOOL CCoolMenu::AddMenu(CMenu* pMenu, BOOL bChild)
 			}
 			else if ( pResultFilters->m_nFilters == 0 )
 			{
-				CMenu* pSubMenu = pMenu->GetSubMenu( i );
-				if ( pSubMenu )
+				if ( CMenu* pSubMenu = pMenu->GetSubMenu( i ) )
+				{
 					pSubMenu->DestroyMenu();
+				}
 
 				mii.hSubMenu = NULL;
 				mii.wID = ID_SEARCH_FILTER;
@@ -317,12 +318,12 @@ void CCoolMenu::OnMeasureItemInternal(LPMEASUREITEMSTRUCT lpMeasureItemStruct)
 
 		ReleaseDC( 0, dc.Detach() );
 
-		lpMeasureItemStruct->itemWidth	= sz.cx + 32;
-		lpMeasureItemStruct->itemHeight	= 23;
+		lpMeasureItemStruct->itemWidth	= sz.cx + SCALE( 32 );
+		lpMeasureItemStruct->itemHeight	= SCALE( 23 );	// ToDo: Skinnable option
 	}
 
 	if ( m_hMsgHook == NULL )
-		lpMeasureItemStruct->itemHeight ++;
+		lpMeasureItemStruct->itemHeight++;
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -342,8 +343,10 @@ void CCoolMenu::OnDrawItem(LPDRAWITEMSTRUCT lpDrawItemStruct)
 		{
 		}
 	}
-	else
+	else // Below
+	{
 		OnDrawItemInternal( lpDrawItemStruct );
+	}
 }
 
 void CCoolMenu::OnDrawItemInternal(LPDRAWITEMSTRUCT lpDrawItemStruct)
@@ -351,33 +354,36 @@ void CCoolMenu::OnDrawItemInternal(LPDRAWITEMSTRUCT lpDrawItemStruct)
 	CRect rcItem, rcText;
 	CString strText;
 	int nIcon = -1;
+
+	static const int nIconSize = SCALE( 16 );	// ToDo: CommandIconSize Setting
+
+	const BOOL bSelected = lpDrawItemStruct->itemState & ODS_SELECTED;
+	const BOOL bChecked  = lpDrawItemStruct->itemState & ODS_CHECKED;
+	const BOOL bDisabled = lpDrawItemStruct->itemState & ODS_GRAYED;
+	const BOOL bEdge	 = m_bPrinted;
+	BOOL bKeyboard = FALSE;
+
 	CDC dc;
-
-	BOOL bSelected	= lpDrawItemStruct->itemState & ODS_SELECTED;
-	BOOL bChecked	= lpDrawItemStruct->itemState & ODS_CHECKED;
-	BOOL bDisabled	= lpDrawItemStruct->itemState & ODS_GRAYED;
-	BOOL bKeyboard	= FALSE;
-	BOOL bEdge		= TRUE;
-
 	dc.Attach( lpDrawItemStruct->hDC );
 
 	if ( CWnd* pWnd = dc.GetWindow() )
 	{
 		CRect rcScreen( &lpDrawItemStruct->rcItem );
-		CPoint ptCursor;
-
-		GetCursorPos( &ptCursor );
 		pWnd->ClientToScreen( &rcScreen );
+
+		CPoint ptCursor;
+		GetCursorPos( &ptCursor );
 
 		bKeyboard = ! rcScreen.PtInRect( ptCursor );
 	}
 
 	rcItem.CopyRect( &lpDrawItemStruct->rcItem );
 	rcItem.OffsetRect( -rcItem.left, -rcItem.top );
-	if ( m_hMsgHook != NULL ) rcItem.bottom += ( bEdge = m_bPrinted );
+	if ( m_hMsgHook != NULL )
+		rcItem.bottom += bEdge;
 
 	rcText.CopyRect( &rcItem );
-	rcText.left += 32;
+	rcText.left += nIconSize + 16;
 	rcText.right -= 2;
 
 	CSize size = rcItem.Size();
@@ -389,8 +395,8 @@ void CCoolMenu::OnDrawItemInternal(LPDRAWITEMSTRUCT lpDrawItemStruct)
 	}
 	else
 	{
-		pDC->FillSolidRect( rcItem.left, rcItem.top, 24, rcItem.Height(), Colors.m_crMargin );
-		pDC->FillSolidRect( rcItem.left + 24, rcItem.top, rcItem.Width() - 24, rcItem.Height(), Colors.m_crBackNormal );
+		pDC->FillSolidRect( rcItem.left, rcItem.top, nIconSize + 8, rcItem.Height(), Colors.m_crMargin );
+		pDC->FillSolidRect( rcItem.left + nIconSize + 8, rcItem.top, rcItem.Width() - nIconSize - 8, rcItem.Height(), Colors.m_crBackNormal );
 	}
 
 	if ( m_pStrings.Lookup( lpDrawItemStruct->itemData, strText ) == FALSE )
@@ -413,21 +419,17 @@ void CCoolMenu::OnDrawItemInternal(LPDRAWITEMSTRUCT lpDrawItemStruct)
 	{
 		const COLORREF crBack = bDisabled ? Colors.m_crBackNormal : Colors.m_crBackSel;
 
-		pDC->Draw3dRect( rcItem.left + 1, rcItem.top + 1,
-			rcItem.Width() - 2, rcItem.Height() - 1 - bEdge,
-			Colors.m_crBorder, Colors.m_crBorder );
-		pDC->FillSolidRect( rcItem.left + 2, rcItem.top + 2,
-			rcItem.Width() - 4, rcItem.Height() - 3 - bEdge,
-			crBack );
+		pDC->Draw3dRect( rcItem.left + 1, rcItem.top + 1, rcItem.Width() - 2, rcItem.Height() - 1 - bEdge, Colors.m_crBorder, Colors.m_crBorder );
+		pDC->FillSolidRect( rcItem.left + 2, rcItem.top + 2, rcItem.Width() - 4, rcItem.Height() - 3 - bEdge, crBack );
 
 		pDC->SetBkColor( crBack );
 	}
 
 	if ( bChecked ) 	// Checked-icon box Position
 	{
-		pDC->Draw3dRect( rcItem.left + ICONOFFSET_X - 2, rcItem.top + ICONOFFSET_Y - 2, 20, 20, //rcItem.Height() - 3 - bEdge,
+		pDC->Draw3dRect( rcItem.left + ICONOFFSET_X - 2, rcItem.top + ICONOFFSET_Y - 2, nIconSize + 4, nIconSize + 4, //rcItem.Height() - 3 - bEdge,
 			Colors.m_crBorder, Colors.m_crBorder );
-		pDC->FillSolidRect( rcItem.left + ICONOFFSET_X - 1, rcItem.top + ICONOFFSET_Y - 1, 18, 18, //rcItem.Height() - 5 - bEdge ),
+		pDC->FillSolidRect( rcItem.left + ICONOFFSET_X - 1, rcItem.top + ICONOFFSET_Y - 1, nIconSize + 2, nIconSize + 2, //rcItem.Height() - 5 - bEdge ),
 			( bSelected && ! bDisabled ) ? Colors.m_crBackCheckSel : Colors.m_crBackCheck );
 	}
 

@@ -222,7 +222,7 @@ BOOL CDownloadEditPage::OnApply()
 		bCriticalChange = true;
 	}
 
-	// Note crash if date is less than 1970 (Why 1969?) 
+	// Note crash if date is less than 1970 (Why 1969?)
 #ifndef PUBLIC_RELEASE_FIX
 	{
 		SYSTEMTIME tDate;

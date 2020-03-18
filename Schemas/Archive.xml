@@ -326,6 +326,7 @@
 		<type extension="cbz"/>
 		<type extension="cb7"/>
 		<type extension="dat"/>
+		<type extension="deb"/>
 		<type extension="envy"/>
 		<type extension="env"/>
 		<type extension="exe"/>

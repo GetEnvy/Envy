@@ -2,9 +2,9 @@
 @setLocal EnableExtensions EnableDelayedExpansion
 @echo off
 
-set "version=2.0"
-set "commaver=2,0"
-set "internalver=2"
+set "version=4.0"
+set "commaver=4,0"
+set "internalver=4"
 
 set "productvertext=			VALUE "ProductVersion","
 set "filevertext=			VALUE "FileVersion","

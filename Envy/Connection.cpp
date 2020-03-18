@@ -99,6 +99,9 @@ void CConnection::AttachTo(CConnection* pConnection)
 		m_nProtocol		= pConnection->m_nProtocol;
 	m_nDelayCloseReason	= pConnection->m_nDelayCloseReason;
 
+	// Record the current time in the input and output TCP bandwidth meters
+	m_mInput.tLast = m_mOutput.tLast = GetTickCount();
+
 	// Invalidate the socket in the given connection object so it's just here now
 	pConnection->m_hSocket	= INVALID_SOCKET;
 
@@ -109,9 +112,6 @@ void CConnection::AttachTo(CConnection* pConnection)
 	// Zero the memory of the input and output TCPBandwidthMeter objects
 	ZeroMemory( &pConnection->m_mInput, sizeof( m_mInput ) );
 	ZeroMemory( &pConnection->m_mOutput, sizeof( m_mOutput ) );
-
-	// Record the current time in the input and output TCP bandwidth meters
-	m_mInput.tLast = m_mOutput.tLast = GetTickCount();
 }
 
 // Delete this CConnection object
@@ -347,10 +347,7 @@ void CConnection::Close(UINT nError)
 	m_bConnected = FALSE;
 
 	if ( m_bAutoDelete )
-	{
-		Sleep( 50 );		// Workaround?
-		delete this;		// Sometimes Crashes on CString Release for CShakeNeighbor
-	}
+		delete this;		// Sometimes Crashed on CString Release for CShakeNeighbor
 }
 
 // Close the connection, but not until we've written the buffered outgoing data first

@@ -1719,7 +1719,7 @@ void CEnvyApp::InitResources()
 	}
 
 	//
-	// Setup default fonts:
+	// Setup default fonts:5aa
 	//
 
 	// Set Settings.Fonts.Quality to ClearType
@@ -1759,7 +1759,7 @@ void CEnvyApp::InitResources()
 	if ( Settings.Fonts.PacketDumpFont.IsEmpty() )
 		Settings.Fonts.PacketDumpFont = L"Lucida Console";
 
-	const int nFontSize = SCALE( Settings.Fonts.DefaultSize );
+	const int nFontSize = SCALE( Settings.Fonts.DefaultSize );	// ToDo: Remove redundant SCALE, verify size above
 
 	m_gdiFont.CreateFont( -nFontSize, 0, 0, 0, FW_NORMAL, FALSE, FALSE, FALSE,
 		DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS, Settings.Fonts.Quality,

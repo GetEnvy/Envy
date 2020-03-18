@@ -565,11 +565,12 @@
 		</member>
 	</members>
 	<typefilter>
-		<type extension="appx"/>
+		<type extension="apk"/>
 		<type extension="air"/>
 		<type extension="bin"/>
 		<type extension="cab"/>
 		<type extension="cue"/>
+		<type extension="dmg"/>
 		<type extension="dll"/>
 		<type extension="exe"/>
 		<type extension="env"/>

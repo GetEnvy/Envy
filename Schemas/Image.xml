@@ -543,6 +543,7 @@
 		<type extension="jpe"/>
 		<type extension="jpeg"/>
 		<type extension="jpg"/>
+		<type extension="jpx"/>
 		<type extension="jsl"/>
 		<type extension="jxl"/>
 		<type extension="jxr"/>

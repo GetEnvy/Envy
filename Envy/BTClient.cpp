@@ -1,7 +1,7 @@
 //
 // BTClient.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2018
+// This file is part of Envy (getenvy.com) © 2016-2020
 // Portions copyright Shareaza 2002-2008 and PeerProject 2008-2015
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -628,7 +628,7 @@ CString CBTClient::GetUserAgentAzureusStyle(LPCSTR pszVendor)
 		Vendors[ L"EV" ] = L"Envy";			// Unused
 		Vendors[ L"FC" ] = L"FileCroc";
 		Vendors[ L"FG" ] = L"FlashGet";		// Was vXX.XX
-		Vendors[ L"FL" ] = L"FL";			// ToDo:?
+	//	Vendors[ L"FL" ] = L"FL";			// ToDo:?
 		Vendors[ L"FT" ] = L"FoxTorrent";
 		Vendors[ L"FX" ] = L"Freebox";
 		Vendors[ L"GR" ] = L"GetRight";
@@ -656,7 +656,7 @@ CString CBTClient::GetUserAgentAzureusStyle(LPCSTR pszVendor)
 		Vendors[ L"MP" ] = L"MooPolice";
 		Vendors[ L"MT" ] = L"Moonlight";
 		Vendors[ L"NB" ] = L"CPAN:Net:BitTorrent";
-		Vendors[ L"NS" ] = L"NS";			// ToDo:?
+	//	Vendors[ L"NS" ] = L"NS";			// ToDo:?
 		Vendors[ L"NX" ] = L"NetTransport";
 		Vendors[ L"OS" ] = L"OneSwarm";
 		Vendors[ L"OT" ] = L"OmegaTorrent";
@@ -694,9 +694,10 @@ CString CBTClient::GetUserAgentAzureusStyle(LPCSTR pszVendor)
 		Vendors[ L"TX" ] = L"Tixati";
 	//	Vendors[ L"tT" ] = L"tT";
 		Vendors[ L"UL" ] = L"uLeecher";
-		Vendors[ L"UE" ] = L"\x00B5Torrent Embed";
-		Vendors[ L"UM" ] = L"\x00B5Torrent Mac";
-		Vendors[ L"UT" ] = L"\x00B5Torrent";
+		Vendors[ L"UE" ] = L"\x00B5Torrent Embed %c.%c.%c";
+		Vendors[ L"UM" ] = L"\x00B5Torrent Mac %c.%c.%c";
+		Vendors[ L"UW" ] = L"\x00B5Torrent Web %c.%c.%c";
+		Vendors[ L"UT" ] = L"\x00B5Torrent %c.%c.%c";
 		Vendors[ L"VG" ] = L"Vagaa";
 		Vendors[ L"WD" ] = L"WebTorrentApp";
 		Vendors[ L"WS" ] = L"WireShare";
@@ -718,11 +719,9 @@ CString CBTClient::GetUserAgentAzureusStyle(LPCSTR pszVendor)
 	if ( strUserAgent.IsEmpty() )
 	{
 		theApp.Message( MSG_NOTICE, L"BitTorrent Unknown Vendor Code: %s", (LPCTSTR)strVendor.Left( 6 ) );
-		return strUserAgent;
+		strUserAgent = strVendor.Left( 2 );
 	}
-
-	// Our special case for -EN0010- Envy 1.0
-	if ( IsText( strUserAgent, _P( L"Envy" ) ) )
+	else if ( IsText( strUserAgent, _P( L"Envy" ) ) )		// Our special case for -EN0010- Envy 1.0
 	{
 		if ( (TCHAR)pszVendor[2] > '0' && (TCHAR)pszVendor[2] <= '9')
 			strUserAgent.Format( L"Envy %c%c%c.%c", (TCHAR)pszVendor[2], (TCHAR)pszVendor[3], (TCHAR)pszVendor[4], (TCHAR)pszVendor[5] );
@@ -732,22 +731,50 @@ CString CBTClient::GetUserAgentAzureusStyle(LPCSTR pszVendor)
 			strUserAgent.Format( L"Envy %c.%c", (TCHAR)pszVendor[4], (TCHAR)pszVendor[5] );
 		return strUserAgent;
 	}
+	else if ( const int nChars = CountOf( strUserAgent, L"%c", 4 ) )	// Parse versioning schemes
+	{
+		if ( nChars >= 4 )
+			strUserAgent.Format( (LPCTSTR)strUserAgent, (TCHAR)pszVendor[2], (TCHAR)pszVendor[3], (TCHAR)pszVendor[4], (TCHAR)pszVendor[5] );
+		else if ( nChars == 3 )
+			strUserAgent.Format( (LPCTSTR)strUserAgent, (TCHAR)pszVendor[2], (TCHAR)pszVendor[3], (TCHAR)pszVendor[4] );
+		else if ( nChars == 2 )
+			strUserAgent.Format( (LPCTSTR)strUserAgent, (TCHAR)pszVendor[2], (TCHAR)pszVendor[3] );
+		else // if ( nChars == 1 )
+			strUserAgent.Format( (LPCTSTR)strUserAgent, (TCHAR)pszVendor[2] );
 
-	// Parse versioning schemes
-	const int nChars = CountOf( strUserAgent, L"%c", 4 );
+		return strUserAgent;
+	}
 
-	if ( nChars == 0 && (TCHAR)pszVendor[5] > '0' && (TCHAR)pszVendor[5] < 'B' )	// Default 0.0.0.0
-		strUserAgent.Format( L"%s %c.%c.%c.%c", (LPCTSTR)strUserAgent, (TCHAR)pszVendor[2], (TCHAR)pszVendor[3], (TCHAR)pszVendor[4], (TCHAR)pszVendor[5] );
-	else if ( nChars == 0 )	// Default 0.0.0
-		strUserAgent.Format( L"%s %c.%c.%c", (LPCTSTR)strUserAgent, (TCHAR)pszVendor[2], (TCHAR)pszVendor[3], (TCHAR)pszVendor[4] );
-	else if ( nChars >= 4 )
-		strUserAgent.Format( (LPCTSTR)strUserAgent, (TCHAR)pszVendor[2], (TCHAR)pszVendor[3], (TCHAR)pszVendor[4], (TCHAR)pszVendor[5] );
-	else if ( nChars == 3 )
-		strUserAgent.Format( (LPCTSTR)strUserAgent, (TCHAR)pszVendor[2], (TCHAR)pszVendor[3], (TCHAR)pszVendor[4] );
-	else if ( nChars == 2 )
-		strUserAgent.Format( (LPCTSTR)strUserAgent, (TCHAR)pszVendor[2], (TCHAR)pszVendor[3] );
-	else if ( nChars == 1 )
-		strUserAgent.Format( (LPCTSTR)strUserAgent, (TCHAR)pszVendor[2] );
+	// Default 0.0.0.0
+	strUserAgent += L' ';
+	for ( int i = 2; i < 6; ++i )
+	{
+		TCHAR ch = (TCHAR)pszVendor[i];
+		if ( ch < '0' || ch > 'Z' )
+			break;
+		if ( ch >= 'A' )
+		{
+			if ( ch >= 'U' )
+			{
+				strUserAgent += L'3';
+				ch -= 'U';
+			}
+			else if ( ch >= 'K' )
+			{
+				strUserAgent += L'2';
+				ch -= 'K';
+			}
+			else // 'A'
+			{
+				strUserAgent += L'1';
+				ch -= 'A';
+			}
+			ch += L'0';
+		}
+		strUserAgent += ch;
+		strUserAgent += L'.';
+	}
+	strUserAgent.TrimRight( L'.' );
 
 	return strUserAgent;
 }

@@ -533,6 +533,7 @@
 		<type extension="lit"/>
 		<type extension="log"/>
 		<type extension="lwp"/>
+		<type extension="md"/>
 		<type extension="mif"/>
 		<type extension="mht"/>
 		<type extension="nfo"/>

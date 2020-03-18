@@ -1,7 +1,7 @@
 //
 // DownloadWithTiger.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2018
+// This file is part of Envy (getenvy.com) © 2016-2020
 // Portions copyright Shareaza 2002-2007 and PeerProject 2008-2015
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -57,6 +57,7 @@ CDownloadWithTiger::CDownloadWithTiger()
 	, m_nVerifyLength	( 0ul )
 	, m_tVerifyLast		( 0ul )
 	, m_nVerifyHash		( HASH_NULL )
+	, m_nWantedListTime ( 0 )
 	, m_nWantedListCookie ( SIZE_UNKNOWN )
 	, m_oWantedListCache ( 0 )
 {
@@ -948,13 +949,17 @@ Fragments::List CDownloadWithTiger::GetWantedFragmentList() const
 	if ( ! oLock.Lock( 250 ) )
 		return Fragments::List( 0 );
 
-	const QWORD nNow = GetVolumeComplete();
-	if ( nNow != m_nWantedListCookie || nNow == 0 )
+	if ( m_nWantedListTime < GetTickCount() - 200 )		// ToDo: Setting
 	{
-		m_nWantedListCookie = nNow;
-		const Fragments::List oList = inverse( GetHashableFragmentList() );
-		m_oWantedListCache = GetEmptyFragmentList();
-		m_oWantedListCache.erase( oList.begin(), oList.end() );
+		const QWORD nSizeNow = GetVolumeComplete();
+		if ( nSizeNow != m_nWantedListCookie || nSizeNow == 0 )
+		{
+			const Fragments::List oList = inverse( GetHashableFragmentList() );
+			m_oWantedListCache = GetEmptyFragmentList();			// HighCPU
+			m_oWantedListCache.erase( oList.begin(), oList.end() );
+			m_nWantedListCookie = nSizeNow;
+			m_nWantedListTime = GetTickCount();
+		}
 	}
 
 	return m_oWantedListCache;

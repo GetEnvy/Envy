@@ -228,9 +228,11 @@ BOOL CWizardConnectionPage::OnSetActive()
 
 	CoolInterface.FixThemeControls( this );		// Checkbox/Groupbox text colors (Remove theme if needed)
 
-	SetWizardButtons( PSWIZB_BACK | PSWIZB_NEXT );
 	m_wndProgress.SetPos( 0 );
 	m_wndStatus.SetWindowText( L"" );
+
+	SetWizardButtons( PSWIZB_BACK | PSWIZB_NEXT );
+
 	return CWizardPage::OnSetActive();
 }
 
@@ -498,7 +500,8 @@ BOOL CWizardConnectionPage::OnQueryCancel()
 
 void CWizardConnectionPage::OnTimer(UINT_PTR nIDEvent)
 {
-	if ( nIDEvent != 1 ) return;
+	if ( nIDEvent != 1 )
+		return;
 
 	CloseThread();
 

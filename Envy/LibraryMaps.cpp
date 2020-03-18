@@ -569,7 +569,7 @@ void CLibraryMaps::OnFileAdd(CLibraryFile* pFile)
 		m_nVolume += pFile->m_nSize;
 		m_nFiles ++;
 	}
-	
+
 	// ToDo: Prefer real files
 
 	m_pNameMap.SetAt( pFile->m_sName, pFile );

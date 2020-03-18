@@ -5,7 +5,6 @@
 set "header1=Microsoft Visual Studio Solution File, Format Version 12.00"
 set "header2=# Visual Studio 16"
 set "version=v142"
-set "versionxp=v141_xp"
 
 (
 echo %header1%
@@ -26,19 +25,12 @@ set counter=0
 for /r %%n in (*.vcxproj) do (
   echo %%n
   set update=0
-  set newversion=%versionxp%
+  set newversion=%version%
   if exist %%n.temp del /f %%n.temp
 
 (
   for /f "delims=" %%l in (%%n) do (
     set "linetest=%%l"
-
-    if "!linetest:~2,24!"=="<PropertyGroup Condition" (
-      if "!linetest:~61,13!"=="Release|Win32" (set newversion=%versionxp%
-      ) else if "!linetest:~61,11!"=="Debug|Win32" (set newversion=%versionxp%
-      ) else if "!linetest:~61,11!"=="Release|x64" (set newversion=%version%
-      ) else if "!linetest:~61,9!"=="Debug|x64" (set newversion=%version%)
-    )
 
     if "!linetest:~5,15!"=="PlatformToolset" (
       if not "!linetest:~21,4!"=="%version%" (set /a update+=1 && set /a counter+=1) && echo     ^<PlatformToolset^>!newversion!^</PlatformToolset^>

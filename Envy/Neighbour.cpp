@@ -1,7 +1,7 @@
 //
 // Neighbour.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2018
+// This file is part of Envy (getenvy.com) © 2016-2020
 // Portions copyright Shareaza 2002-2008 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -155,7 +155,7 @@ CNeighbour::CNeighbour(PROTOCOLID nProtocol, CNeighbour* pBase)
 
 	Neighbours.Add( this );		// Call CNeighboursBase::Add to keep track of this newly created CNeighbours object
 
-	m_bAutoDelete = pBase->m_bAutoDelete;
+	m_bAutoDelete = TRUE;	//pBase->m_bAutoDelete;
 }
 
 // Delete this CNeighbour object

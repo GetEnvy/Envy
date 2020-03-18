@@ -1,7 +1,7 @@
 //
 // DownloadWithTiger.h
 //
-// This file is part of Envy (getenvy.com) © 2016-2018
+// This file is part of Envy (getenvy.com) © 2016-2020
 // Portions copyright Shareaza 2002-2007 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -48,10 +48,11 @@ private:
 	QWORD		m_nVerifyLength;
 	DWORD		m_tVerifyLast;
 
-	mutable CMutexEx			m_pTigerSection;
+	mutable CMutexEx		m_pTigerSection;
 
-	mutable Fragments::List		m_oWantedListCache;			// Wanted fragment list cache, was m_oWFLCache
-	mutable QWORD				m_nWantedListCookie;		// Wanted fragment list last modified cookie, was m_nWFLCookie
+	mutable Fragments::List	m_oWantedListCache;			// Wanted fragment list cache, was m_oWFLCache
+	mutable QWORD			m_nWantedListCookie;		// Wanted fragment list last modified size cookie, was m_nWFLCookie
+	mutable DWORD			m_nWantedListTime;			// Wanted fragment list last modified time
 
 public:
 	const CTigerTree* GetTigerTree() const;

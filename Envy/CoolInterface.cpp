@@ -856,9 +856,7 @@ BOOL CCoolInterface::Add(CSkin* pSkin, CXMLElement* pBase, HBITMAP hbmImage, COL
 	if ( nBase < 0 )
 		return FALSE;
 
-	const static LPCTSTR pszNames[] = {
-		L"id",  L"id1", L"id2", L"id3", L"id4", L"id5", L"id6",
-		L"id7", L"id8", L"id9", L"id10", L"id11", L"id12", NULL };
+	const static LPCTSTR pszNames[] = { L"id",  L"id1", L"id2", L"id3", L"id4", L"id5", L"id6", L"id7", L"id8", L"id9", L"id10", L"id11", L"id12", NULL };	// ToDo: Single parsed string (comma/pipe/space)
 	int nIndex = 0;
 	int nIndexRev = GetImageCount( nImageListType ) - 1;	// Total number of images
 	for ( POSITION pos = pBase->GetElementIterator(); pos; )
@@ -880,6 +878,8 @@ BOOL CCoolInterface::Add(CSkin* pSkin, CXMLElement* pBase, HBITMAP hbmImage, COL
 		}
 
 		nIndex += nBase;
+
+		// ToDo: Single parsed string (comma/pipe/space) not ID#s
 		for ( int nName = 0; pszNames[ nName ]; nName++ )
 		{
 			UINT nID = pSkin->LookupCommandID( pXML, pszNames[ nName ] );
@@ -928,7 +928,7 @@ CImageList* CCoolInterface::SetImageListTo(CListCtrl& pWnd, int nImageListType)
 	return NULL;
 }
 
-BOOL CCoolInterface::Draw(CDC* pDC, int nImage, POINT pt, UINT nStyle, int nImageListType) const
+BOOL CCoolInterface::Draw(CDC* pDC, int nImage, POINT pt, UINT nStyle, int nImageListType /*LVSIL_SMALL*/) const
 {
 	//CQuickLock oLock( m_pSection );
 
@@ -951,7 +951,7 @@ BOOL CCoolInterface::Draw(CDC* pDC, int nImage, POINT pt, UINT nStyle, int nImag
 	return ImageList_Draw( hList, nImage, pDC->GetSafeHdc(), pt.x, pt.y, nStyle );
 }
 
-BOOL CCoolInterface::DrawEx(CDC* pDC, int nImage, POINT pt, SIZE sz, COLORREF clrBk, COLORREF clrFg, UINT nStyle, int nImageListType) const
+BOOL CCoolInterface::DrawEx(CDC* pDC, int nImage, POINT pt, SIZE sz, COLORREF clrBk, COLORREF clrFg, UINT nStyle, int nImageListType /*LVSIL_SMALL*/) const
 {
 	//CQuickLock oLock( m_pSection );
 
@@ -971,8 +971,7 @@ BOOL CCoolInterface::DrawEx(CDC* pDC, int nImage, POINT pt, SIZE sz, COLORREF cl
 		hList = m_pImages48.GetSafeHandle();
 		break;
 	}
-	return ImageList_DrawEx( hList, nImage, pDC->GetSafeHdc(),
-		pt.x, pt.y, sz.cx, sz.cy, clrBk, clrFg, nStyle );
+	return ImageList_DrawEx( hList, nImage, pDC->GetSafeHdc(), pt.x, pt.y, sz.cx, sz.cy, clrBk, clrFg, nStyle );
 }
 
 //BOOL CCoolInterface::DrawIndirect(CDC* pDC, int nImage, POINT pt, SIZE sz, COLORREF clrBk, COLORREF clrFg, UINT nStyle, DWORD nState /*=ILS_ALPHA*/, DWORD nAlpha /*=200*/, int nImageListType /*=LVSIL_SMALL*/) const

@@ -1,7 +1,7 @@
 //
 // Connection.h
 //
-// This file is part of Envy (getenvy.com) � 2016-2018
+// This file is part of Envy (getenvy.com) © 2016-2020
 // Portions copyright Shareaza 2002-2007 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -42,8 +42,8 @@ public:
 	BOOL		m_bConnected;		// True when the socket is connected
 	DWORD		m_tConnected;		// The tick count when the socket connection was made
 	SOCKET		m_hSocket;			// The actual Windows socket for the Internet connection to the remote computer
-	CString		m_sUserAgent;		// The name of the program the remote computer is running
 	BOOL		m_bClientExtended;	// Does remote computer support extended functions? (Running Envy/Shareaza/compatible mod. for chat, browse, etc.)
+	CString		m_sUserAgent;		// The name of the program the remote computer is running
 	CString		m_sLastHeader;		// The handshake header that ReadHeaders most recently read
 	PROTOCOLID	m_nProtocol;		// Detected protocol
 

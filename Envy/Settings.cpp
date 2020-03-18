@@ -170,10 +170,10 @@ void CSettings::Load()
 	Add( L"Skin", L"GroupsbarHeight", &Skin.GroupsbarHeight, 24, 1, 0, 100, L" px" );
 	Add( L"Skin", L"HeaderbarHeight", &Skin.HeaderbarHeight, 64, 1, 0, 100, L" px" );
 	Add( L"Skin", L"MonitorbarWidth", &Skin.MonitorbarWidth, 120, 1, 0, 1000, L" px" );
-	Add( L"Skin", L"SidebarWidth", &Skin.SidebarWidth, 200, 1, 0, 500, L" px" );
+	Add( L"Skin", L"SidebarWidth", &Skin.SidebarWidth, SCALE( 200 ), 1, 0, 800, L" px" );
 	Add( L"Skin", L"SidebarPadding", &Skin.SidebarPadding, 12, 1, 0, 100, L" px" );
 	Add( L"Skin", L"Splitter", &Skin.Splitter, 6, 1, 1, 100, L" px" );
-	Add( L"Skin", L"RowSize", &Skin.RowSize, 17, 1, 16, 20, L" px" );
+	Add( L"Skin", L"RowSize", &Skin.RowSize, SCALE( 17 ), 1, 16, 40, L" px" );
 	Add( L"Skin", L"LibIconsX", &Skin.LibIconsX, 220, 1, 30, 500, L" px" );
 	Add( L"Skin", L"LibIconsY", &Skin.LibIconsY, 56, 1, 30, 100, L" px" );
 	Add( L"Skin", L"AltIcons", &Skin.AltIcons, theApp.m_nWinVer < WIN_10 );
@@ -186,7 +186,7 @@ void CSettings::Load()
 	Add( L"Toolbars", L"ShowMonitor", &Toolbars.ShowMonitor, true );
 
 	Add( L"Fonts", L"Quality", &Fonts.Quality, 0, 1, 0, 6 );	// 	CLEARTYPE_QUALITY etc.
-	Add( L"Fonts", L"DefaultSize", &Fonts.DefaultSize, 11, 1, 8, 16, L" px" );
+	Add( L"Fonts", L"DefaultSize", &Fonts.DefaultSize, SCALE( 11 ), 1, 8, 16, L" px" );
 #ifdef XPSUPPORT
 	Add( L"Fonts", L"DefaultFont", &Fonts.DefaultFont, theApp.m_bIsWinXP ? L"Tahoma" : L"Segoe UI", false, setFont );
 	Add( L"Fonts", L"SystemLogFont", &Fonts.SystemLogFont, theApp.m_bIsWinXP ? L"Tahoma" : L"Segoe UI", false, setFont );

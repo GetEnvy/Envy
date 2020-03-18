@@ -381,8 +381,8 @@
 		<member name="OS">
 			<title language="en">OS</title>
 			<title language="af">OS</title>
-			<title language="ca">Sistema operatiu</title>
-			<title language="zhs">操作系统</title>
+			<title language="ca">Sistema</title>
+			<title language="cz">OS</title>
 			<title language="de">Betriebssystem</title>
 			<title language="ee">OS</title>
 			<title language="es">OS</title>
@@ -390,21 +390,21 @@
 			<title language="gr">Λειτουργικό Σύστημα</title>
 			<title language="he">מערכת הפעלה</title>
 			<title language="hr">OS</title>
-			<title language="hu">Operációs rendszer</title>
+			<title language="hu">Rendszer</title>
 			<title language="it">SO</title>
 			<title language="lt">OS</title>
 			<title language="nl">OS</title>
 			<title language="no">OS</title>
 			<title language="pt">Sistema</title>
 			<title language="ru">ОС</title>
-			<title language="sl">Operac. sistem</title>
-			<title language="sq">Sistemi Operativ</title>
+			<title language="sl">Sistem</title>
+			<title language="sq">Sistemi</title>
 			<title language="sr">OS</title>
 			<title language="sv">OS</title>
-			<title language="tr">İşletim Sistemi</title>
+			<title language="tr">Sistemi</title>
 			<title language="ja">OS</title>
+			<title language="zhs">操作系统</title>
 			<title language="zht">OS</title>
-			<title language="cz">OS</title>
 		</member>
 		<member name="link">
 			<title language="en">Link</title>
@@ -501,6 +501,7 @@
 		<type extension="cod"/>
 		<type extension="cpp"/>
 		<type extension="cs"/>
+		<type extension="cshtml"/>
 		<type extension="csproj"/>
 		<type extension="css"/>
 		<type extension="cxx"/>
@@ -529,6 +530,7 @@
 		<type extension="json"/>
 		<type extension="jss"/>
 		<type extension="jsx"/>
+		<type extension="lua"/>
 		<type extension="mat"/>
 		<type extension="opl"/>
 		<type extension="pas"/>
@@ -539,6 +541,7 @@
 		<type extension="php"/>
 		<type extension="pl"/>
 		<type extension="ps"/>
+		<type extension="ps1"/>
 		<type extension="py"/>
 		<type extension="pyc"/>
 		<type extension="rb"/>
@@ -566,6 +569,7 @@
 		<type extension="vxml"/>
 		<type extension="vcproj"/>
 		<type extension="vcxproj"/>
+		<type extension="xaml"/>
 		<type extension="xml"/>
 		<type extension="xsd"/>
 		<type extension="xsl"/>

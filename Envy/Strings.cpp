@@ -709,31 +709,31 @@ void Split(const CString& strSource, TCHAR cDelimiter, CStringArray& pAddIt, BOO
 int CountOf(const CString& strInput, LPCTSTR pszFind, int nSkip /*0*/)
 {
 	const int nLen = (int)_tcslen( pszFind );
-	int nLimit = strInput.GetLength() - nLen;
-	if (nLimit - nSkip < 0) return 0;
+	const int nLimit = strInput.GetLength() - nLen;
+	if ( nLimit - nSkip < 0 )
+		return 0;
 	int nCount = 0;
-	for (int i = nSkip; i <= nLimit; i++)
+	for ( int i = nSkip; i <= nLimit; i++ )
 	{
 		if ( strInput[i] != *pszFind )
 			continue;
-		if (nLen == 1)
+		if ( nLen == 1 )
 		{
 			nCount++;
 			continue;
 		}
 		bool bFound = true;
-		for (int j = 1; j < nLen; j++)
+		for ( int j = 1; j < nLen; j++ )
 		{
-			pszFind++;
 			if ( strInput[i + j] == (TCHAR)pszFind[j] )
 				continue;
 			bFound = false;
 			break;
 		}
-		if (!bFound)
+		if ( ! bFound )
 			continue;
 
-		nCount++;
+		++nCount;
 		i += nLen - 1;
 	}
 	return nCount;

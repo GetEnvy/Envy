@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<skin xmlns="http://schemas.getenvy.com/Skin.xsd" version="1.0">
+<manifest
+ name="Slim"
+ author="Envy"
+ description="Minimal defaults"
+ link="http://getenvy.com"
+ email="Contact(at)GetEnvy.com"
+ version="1.0"
+ type="Skin"
+/>
+
+<images>
+ <image target="CBanner" path="Banner.Slim.png" mode="LoRes"/>
+</images>
+</skin>
+
+ <!--
+ Alternative Loading From Resources:
+ <icon id="236" path="..\..\Envy.exe,-244" types="16,32,48" rtl="0"/>
+ -->
