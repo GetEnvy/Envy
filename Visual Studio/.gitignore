@@ -1,0 +1,130 @@
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.VC.db
+*.VC.VC.opendb
+
+# Build results
+[Bb]uild*/
+[Dd]ebug*/
+[Rr]elease*/
+*.obj
+*.exe
+*.dll
+*.lib
+*.pdb
+*.idb
+*.ipdb
+*.iobj
+*.log
+*.tlog
+*.pch
+*.bsc
+*.sbr
+*.sdf
+*.opensdf
+*.cache
+*.db
+*.aps
+*.ncb
+*.opendb
+*.tmp
+*.bak
+*.swp
+*.scc
+*.vssscc
+*.vspscc
+*.psess
+*.vsp
+*.vsmdi
+*.testsettings
+*.vsix
+*.vsixmanifest
+*.vsixlangpack
+*.vsixpkg
+*.vsixconfig
+*.vsixsetup
+*.vsixgallery
+
+# CMake
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# Qt Creator
+*.pro.user
+*.qbs.user
+*.moc/
+*.qrc.depends
+*.qrc.translations
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Crash dumps
+*.dmp
+
+# Others
+*.orig
+*.rej
+*.gch
+*.ipch
+*.rsp
+*.suo
+*.tlb
+*.tli
+*.tlh
+*.bak
+*.old
+*.sdf
+*.cache
+*.db
+*.sbr
+*.sdf
+*.opensdf
+*.VC.db
+*.VC.VC.opendb
+*.suo
+*.user
+*.sln.docstates
+*.tmp
+*.log
+*.vspscc
+*.vssscc
+*.psess
+*.vsp
+*.vsmdi
+*.testsettings
+*.vsix
+*.vsixmanifest
+*.vsixlangpack
+*.vsixpkg
+*.vsixconfig
+*.vsixsetup
+*.vsixgallery
+
+# Ignore plugin and service build outputs
+Plugins/*/Debug*/
+Plugins/*/Release*/
+Services/*/Debug*/
+Services/*/Release*/
+
+# Ignore backup and temp files
+*~
+*.tmp
+*.bak
+
+# Ignore package managers
+/.nuget/
+
+# Ignore Python virtual environments
+venv/
+ENV/
+
+# Ignore node_modules
+node_modules/
