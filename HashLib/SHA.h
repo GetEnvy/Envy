@@ -1,7 +1,7 @@
 //
 // SHA.h
 //
-// This file is part of Envy (getenvy.com) © 2016-2018
+// This file is part of Envy (getenvy.com) ï¿½ 2016-2018
 // Portions copyright Shareaza 2002-2008 and PeerProject 2008-2012
 //
 // Envy is free software; you can redistribute it and/or
@@ -23,6 +23,13 @@ class HASHLIB_API CSHA
 public:
 	CSHA();
 	~CSHA() {}
+
+	// Default copy and move operations (Rule of Five)
+	// Hash state is POD, so default copy/move is safe
+	CSHA(const CSHA&) = default;
+	CSHA& operator=(const CSHA&) = default;
+	CSHA(CSHA&&) = default;
+	CSHA& operator=(CSHA&&) = default;
 
 public:
 	void Reset();

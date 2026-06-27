@@ -1,7 +1,7 @@
-//
+ï»¿//
 // BTInfo.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2018
+// This file is part of Envy (getenvy.com) ï¿½ 2016-2018
 // Portions copyright Shareaza 2002-2008 and PeerProject 2008-2015
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -70,6 +70,7 @@ CBTInfo::CBTInfo()
 	, m_nStartDownloads	( dtAlways )
 	, m_bEncodingError	( false )
 	, m_nEncoding		( Settings.BitTorrent.TorrentCodePage )
+	, m_bIsHybrid		( false )
 {
 	CBENode::m_nDefaultCP = Settings.BitTorrent.TorrentCodePage;
 }
@@ -90,6 +91,7 @@ CBTInfo::CBTInfo(const CBTInfo& oSource)
 	, m_nStartDownloads	( dtAlways )
 	, m_bEncodingError	( false )
 	, m_nEncoding		( Settings.BitTorrent.TorrentCodePage )
+	, m_bIsHybrid		( false )
 {
 	*this = oSource;
 
@@ -207,6 +209,11 @@ void CBTInfo::Clear()
 	m_pSource.Clear();
 	m_nInfoSize			= 0;
 	m_nInfoStart		= 0;
+
+	// BitTorrent v2 - ToDo: Implement fully
+	// m_oBTHv2.Reset();
+	m_bIsHybrid			= false;
+	m_sMetaVersion.Empty();
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -230,7 +237,7 @@ CBTInfo& CBTInfo::operator=(const CBTInfo& oSource)
 	{
 		m_pBlockBTH = new Hashes::BtPureHash[ m_nBlockCount ];
 		std::copy( oSource.m_pBlockBTH, oSource.m_pBlockBTH + m_nBlockCount,
-			stdext::make_checked_array_iterator( m_pBlockBTH, m_nBlockCount ) );
+			m_pBlockBTH );
 	}
 
 	m_nTotalUpload		= oSource.m_nTotalUpload;
@@ -268,6 +275,11 @@ CBTInfo& CBTInfo::operator=(const CBTInfo& oSource)
 	m_nInfoSize			= oSource.m_nInfoSize;
 	m_nInfoStart		= oSource.m_nInfoStart;
 
+	// BitTorrent v2 - ToDo: Implement fully
+	// m_oBTHv2			= oSource.m_oBTHv2;
+	m_bIsHybrid			= oSource.m_bIsHybrid;
+	m_sMetaVersion		= oSource.m_sMetaVersion;
+
 	return *this;
 }
 
@@ -275,7 +287,7 @@ CBTInfo& CBTInfo::operator=(const CBTInfo& oSource)
 // CBTInfo serialize
 
 // Set at INTERNAL_VERSION on change:
-#define BTINFO_SER_VERSION 1
+#define BTINFO_SER_VERSION 2
 
 // nVersion History:
 //  7 - redesigned tracker list (ryo-oh-ki)
@@ -285,6 +297,7 @@ CBTInfo& CBTInfo::operator=(const CBTInfo& oSource)
 // 11 - added m_nInfoStart & m_nInfoSize (ivan386)
 // 1000 - (11)
 // 1 - (Envy 1.0)
+// 2 - added BitTorrent v2 support (m_oBTHv2, m_bIsHybrid, m_sMetaVersion)
 
 void CBTInfo::Serialize(CArchive& ar)
 {
@@ -343,6 +356,11 @@ void CBTInfo::Serialize(CArchive& ar)
 		{
 			ar << (DWORD)0;
 		}
+
+		// BitTorrent v2 support (version 2+) - ToDo: Implement fully
+		// SerializeOut( ar, m_oBTHv2 );
+		ar << m_bIsHybrid;
+		ar << m_sMetaVersion;
 	}
 	else // Loading
 	{
@@ -442,6 +460,14 @@ void CBTInfo::Serialize(CArchive& ar)
 				ar >> m_nInfoStart;
 				ar >> m_nInfoSize;
 			}
+		}
+
+		// BitTorrent v2 support (version 2+) - ToDo: Implement fully
+		if ( nVersion >= 2 )
+		{
+			// SerializeIn( ar, m_oBTHv2, nVersion );
+			ar >> m_bIsHybrid;
+			ar >> m_sMetaVersion;
 		}
 
 		SetTrackerNext();
@@ -1081,7 +1107,7 @@ BOOL CBTInfo::LoadTorrentTree(const CBENode* pRoot)
 
 	std::copy( static_cast< const Hashes::BtHash::RawStorage* >( pHash->m_pValue ),
 		static_cast< const Hashes::BtHash::RawStorage* >( pHash->m_pValue ) + m_nBlockCount,
-		stdext::make_checked_array_iterator( m_pBlockBTH, m_nBlockCount ) );
+		m_pBlockBTH );
 
 	// Hash info
 	if ( const CBENode* pSHA1 = pInfo->GetNode( "sha1" ) )
@@ -1398,6 +1424,28 @@ BOOL CBTInfo::LoadTorrentTree(const CBENode* pRoot)
 	CSHA oSHA = pInfo->GetSHA1();
 	oSHA.GetHash( &m_oBTH[ 0 ] );
 	m_oBTH.validate();
+
+	// Check for BitTorrent v2 support (BEP-52) - ToDo: Implement fully
+	const CBENode* pMetaVersion = pInfo->GetNode( "meta version" );
+	if ( pMetaVersion && pMetaVersion->IsType( CBENode::beInt ) )
+	{
+		int nMetaVersion = (int)pMetaVersion->GetInt();
+		if ( nMetaVersion == 2 )
+		{
+			// This is a v2 torrent
+			m_sMetaVersion = L"2";
+
+			// Calculate SHA-256 info hash for v2 - ToDo: Implement
+			// CSHA256 oSHA256 = pInfo->GetSHA256();
+			// oSHA256.GetHash( &m_oBTHv2[ 0 ] );
+
+			// Check if this is a hybrid torrent (has both v1 and v2 info)
+			if ( m_oBTH )  // v1 hash already calculated
+			{
+				m_bIsHybrid = true;
+			}
+		}
+	}
 
 	if ( m_pSource.m_nLength > 0 && pInfo->m_nSize
 		 && pInfo->m_nPosition + pInfo->m_nSize < m_pSource.m_nLength )
@@ -1895,6 +1943,23 @@ bool CBTInfo::CBTTracker::operator==(const CBTTracker& oSource)
 	return ( m_sAddress == oSource.m_sAddress );
 }
 
+
+//////////////////////////////////////////////////////////////////////
+// CBTInfo BitTorrent v2 support - ToDo: Implement fully
+
+// CString CBTInfo::GetInfoHashV2String() const
+// {
+//	if ( ! m_oBTHv2 ) return CString();
+//
+//	CString strHash;
+//	for ( int nByte = 0; nByte < HASHSIZE; nByte++ )
+//	{
+//		CString strByte;
+//		strByte.Format( L"%02x", m_oBTHv2[nByte] );
+//		strHash += strByte;
+//	}
+//	return strHash;
+// }
 
 //////////////////////////////////////////////////////////////////////
 // CBTInfo::CBTTracker serialize

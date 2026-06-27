@@ -1,5 +1,63 @@
 #include "rar.hpp"
 
+// CVE-2025-8088 Security Fix: Validate extraction path to prevent directory traversal
+bool ValidateExtractPath(const wchar *ExtractRoot, const wchar *DestPath)
+{
+  if (ExtractRoot == NULL || DestPath == NULL)
+    return false;
+
+  // If no extraction root is specified, allow absolute paths
+  if (*ExtractRoot == 0)
+    return true;
+
+  // Convert relative paths to absolute and normalize them
+  wchar RootPath[NM];
+  wchar FullDestPath[NM];
+
+  // Get absolute path for extraction root
+  if (!IsFullPath(ExtractRoot))
+  {
+    // Relative extraction root - convert to absolute
+    GetCurrentDirectory(ASIZE(RootPath), RootPath);
+    AddEndSlash(RootPath, ASIZE(RootPath));
+    wcsncatz(RootPath, ExtractRoot, ASIZE(RootPath));
+  }
+  else
+  {
+    wcsncpyz(RootPath, ExtractRoot, ASIZE(RootPath));
+  }
+
+  // Get absolute path for destination
+  if (!IsFullPath(DestPath))
+  {
+    // Relative destination - combine with current directory
+    GetCurrentDirectory(ASIZE(FullDestPath), FullDestPath);
+    AddEndSlash(FullDestPath, ASIZE(FullDestPath));
+    wcsncatz(FullDestPath, DestPath, ASIZE(FullDestPath));
+  }
+  else
+  {
+    wcsncpyz(FullDestPath, DestPath, ASIZE(FullDestPath));
+  }
+
+  // Normalize paths by resolving .. sequences
+  wchar NormRoot[NM];
+  wchar NormDest[NM];
+  ConvertPath(RootPath, NormRoot);
+  ConvertPath(FullDestPath, NormDest);
+
+  // Ensure both paths end with directory separator for proper comparison
+  AddEndSlash(NormRoot, ASIZE(NormRoot));
+  AddEndSlash(NormDest, ASIZE(NormDest));
+
+  // Check if destination path is within or at the extraction root
+  size_t RootLen = wcslen(NormRoot);
+  if (wcsnicomp(NormDest, NormRoot, RootLen) != 0)
+    return false; // Destination is not within extraction root
+
+  return true;
+}
+
 CmdExtract::CmdExtract(CommandData *Cmd)
 {
   CmdExtract::Cmd=Cmd;
@@ -862,6 +920,19 @@ void CmdExtract::ExtrPrepareName(Archive &Arc,const wchar *ArcFileName,wchar *De
     wcsncatz(DestName,PointToName(ArcFileName),DestSize);
   else
     wcsncatz(DestName,ArcFileName,DestSize);
+
+  // CVE-2025-8088 Security Fix: Prevent directory traversal attacks
+  // Validate that the destination path doesn't escape the extraction directory
+  if (!ValidateExtractPath(Cmd->ExtrPath, DestName))
+  {
+    uiMsg(UIERROR_INVALIDNAME, Arc.FileName, DestName);
+    ErrHandler.SetErrorCode(RARX_BADPWD);
+#ifdef RARDLL
+    Cmd->DllError=ERAR_EOPEN;
+#endif
+    *DestName=0; // Clear destination name to prevent extraction
+    return;
+  }
 
   wchar DiskLetter=toupperw(DestName[0]);
 

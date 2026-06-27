@@ -1,0 +1,37 @@
+---
+name: Mark stale issues and PRs
+
+on:
+  schedule:
+    - cron: "0 6 * * *"
+  workflow_dispatch:
+
+permissions:
+  issues: write
+  pull-requests: write
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+
+jobs:
+  stale:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/stale@v10
+        with:
+          days-before-issue-stale: 90
+          days-before-issue-close: 14
+          days-before-pr-stale: 45
+          days-before-pr-close: 21
+          stale-issue-label: stale
+          stale-pr-label: stale
+          exempt-issue-labels: pinned,security,roadmap
+          exempt-pr-labels: pinned,dependencies,security
+          stale-issue-message: >
+            This issue has been inactive for 90 days. It will be closed in
+            14 days if no further activity occurs. Comment to keep it open.
+          stale-pr-message: >
+            This pull request has been inactive for 45 days. It will be
+            closed in 21 days. Please rebase or comment to keep it open.
+          operations-per-run: 100

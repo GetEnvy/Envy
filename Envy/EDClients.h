@@ -1,7 +1,7 @@
 //
 // EDClients.h
 //
-// This file is part of Envy (getenvy.com) © 2016-2018
+// This file is part of Envy (getenvy.com)  2016-2018
 // Portions copyright Shareaza 2002-2008 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -61,12 +61,34 @@ public:
 	BOOL			IsOverloaded() const;
 	BOOL			IsMyDownload(const CDownloadTransferED2K* pDownload) const;
 
+	Hashes::Guid	GetUDPSearchGUID(DWORD nServerIP, WORD nServerUDPPort, BYTE nOpcode) const;	// Lookup search GUID for UDP query
+	void			SetUDPSearchGUID(DWORD nServerIP, WORD nServerUDPPort, BYTE nOpcode, const Hashes::Guid& oGUID);	// Record search GUID for UDP query
+	BOOL			OnServerSearchResultRaw(const SOCKADDR_IN* pHost, const BYTE* pBuffer, DWORD nLength, BYTE nOpcode);	// Server search result packet received (raw buffer for concatenated packets)
+
 protected:
 	CEDClient*		GetByID(DWORD nClientID, IN_ADDR* pServer, const Hashes::Guid& oGUID) const;
 	CEDClient*		GetByGUID(const Hashes::Guid& oGUID) const;
 
 	BOOL			OnServerStatus(const SOCKADDR_IN* pHost, CEDPacket* pPacket);		// Server status packet received
 	BOOL			OnServerSearchResult(const SOCKADDR_IN* pHost, CEDPacket* pPacket);	// Server search result packet received
+
+	// UDP search GUID tracking: maps composite key (serverIP, serverUDPPort, opcode) -> (searchGUID, timestamp)
+	// Use QWORD as composite key: high 32 bits = serverIP, low 32 bits = (serverUDPPort << 8) | opcode
+	struct SUDPSearchValue
+	{
+		Hashes::Guid oSearchGUID;
+		DWORD tTimestamp;
+	};
+
+	mutable CMutex	m_pSearchGUIDSection;		// Guard for UDP search GUID map
+	CMap< QWORD, QWORD, SUDPSearchValue, SUDPSearchValue& > m_oUDPSearchGUIDs;	// UDP search GUID tracking map
+
+	static QWORD MakeUDPSearchKey(DWORD nServerIP, WORD nServerUDPPort, BYTE nOpcode)
+	{
+		return ( (QWORD)nServerIP << 32 ) | ( (QWORD)nServerUDPPort << 8 ) | (QWORD)nOpcode;
+	}
+
+	void			CleanupStaleUDPSearchGUIDs();	// Remove stale GUID entries (> 60 seconds old)
 };
 
 extern CEDClients EDClients;

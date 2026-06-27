@@ -1,7 +1,7 @@
 //
 // UploadTransferBT.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2018
+// This file is part of Envy (getenvy.com) ï¿½ 2016-2018
 // Portions copyright Shareaza 2002-2007 and PeerProject 2008-2015
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -288,7 +288,8 @@ BOOL CUploadTransferBT::OpenFile()
 			return TRUE;
 		}
 
-		// HACK: Open from disk (ToDo: Replace this with SeedTorrent in OnDownloadComplete)
+		// Temporary implementation: Open seeding file from disk
+		// TODO: Replace with proper SeedTorrent architecture in OnDownloadComplete
 		if ( m_pClient->m_pDownload->IsSeeding() )
 		{
 			augment::auto_ptr< CFragmentedFile > pSeedingFile( new CFragmentedFile );

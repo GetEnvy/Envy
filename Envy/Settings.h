@@ -1,7 +1,7 @@
 //
 // Settings.h
 //
-// This file is part of Envy (getenvy.com) © 2016-2020
+// This file is part of Envy (getenvy.com) ï¿½ 2016-2020
 // Portions copyright Shareaza 2002-2008 and PeerProject 2008-2016
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -478,6 +478,7 @@ public:
 	{
 		bool		Enabled;				// Was eDonkey.EnableToday
 		bool		EnableAlways;			// Do  eDonkey.EnableStartup ?
+		bool		EnableKad;				// Enable Kademlia DHT for eDonkey
 		bool		ShowInterface;			// Allow hiding some UI features
 		bool		FastConnect;			// Try connecting to 2 servers to get online faster
 		bool		ForceHighID;			// Reconnect if low-id
@@ -511,6 +512,24 @@ public:
 		DWORD		DefaultServerFlags;		// Default server flags (for UDP searches)
 		bool		LargeFileSupport;		// Allow 64 bit file sizes (for server)
 		bool		Endgame;				// Allow endgame mode when completing downloads. (Download same chunk from multiple sources)
+
+		// Advanced ED2K Protocol Features (2026 enhancements)
+		bool		EnableAICH;				// Enable Advanced Integrity Check Hashing
+		bool		AICHTrustEveryHash;	// Trust every AICH hash received (less secure but faster)
+		DWORD		AICHHashSetTimeout;	// Timeout for AICH hash set requests (seconds)
+		bool		AICHRecover;			// Try to recover from AICH verification failures
+
+		bool		EnableKadHello;			// Enable KADEMLIA2_HELLO_REQ/RES protocol
+		bool		KadFindValue;			// Enable KADEMLIA_FIND_VALUE searches
+		DWORD		KadHelloTimeout;		// Timeout for Kad hello requests (seconds)
+		DWORD		KadFindValueTimeout;	// Timeout for Kad find value requests (seconds)
+
+		bool		EnableMultiPacketExt2;	// Enable MultiPacket Ext2 for bulk transfers
+		bool		EnableHashSetRequest2;	// Enable HashSetRequest2 with FileIdentifier
+
+		bool		PreferIPv6;				// Prefer IPv6 connections when available
+		bool		EnableDualStack;		// Allow both IPv4 and IPv6 connections
+		DWORD		IPv6ConnectTimeout;	// IPv6 connection timeout (seconds)
 	} eDonkey;
 
 	struct sDC
@@ -560,6 +579,7 @@ public:
 		DWORD		BandwidthPercentage;	// Percentage of bandwidth to use when BT active.
 		bool		TrackerKey;				// Send a key (random value) to trackers
 		bool		PreferenceBTSources;	// Preference downloading from BT sources where appropriate
+		DWORD		Encryption;				// MSE/PE: 0=disabled, 1=enabled (prefer), 2=required
 		bool		SkipPaddingFiles;		// Deselect BitComet "____padding_file_..."
 		bool		SkipTrackerFiles;		// Deselect "Torrent downloaded from ... .txt" files
 	} BitTorrent;
@@ -694,6 +714,13 @@ public:
 		bool		Enable;
 		CString		Username;
 		CString		Password;
+		CString		BindAddress;			// IP address to bind Remote interface (default: "127.0.0.1" for localhost only)
+		bool		AllowExternal;			// Allow external access (requires explicit user configuration) - DEPRECATED, use AllowLAN/AllowWAN
+		bool		AllowLAN;				// Allow access from RFC1918 private networks + local subnet (default: false)
+		bool		AllowWAN;				// Allow access from WAN/Internet (default: false, shows warning)
+		std::set<CString>	AllowedCIDRs;			// Optional whitelist of allowed CIDR ranges
+		DWORD		RateLimitRequests;		// Maximum requests per minute per IP (default: 10)
+		DWORD		RateLimitWindow;		// Rate limit window in milliseconds (default: 60000 = 1 minute)
 	} Remote;
 
 	struct sScheduler

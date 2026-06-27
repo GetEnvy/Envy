@@ -38,6 +38,9 @@
 #  define crc32                 z_crc32
 #  define crc32_combine         z_crc32_combine
 #  define crc32_combine64       z_crc32_combine64
+#  define crc32_combine_gen     z_crc32_combine_gen
+#  define crc32_combine_gen64   z_crc32_combine_gen64
+#  define crc32_combine_op      z_crc32_combine_op
 #  define crc32_z               z_crc32_z
 #  define deflate               z_deflate
 #  define deflateBound          z_deflateBound
@@ -168,6 +171,9 @@
 #if defined(__MSDOS__) && !defined(MSDOS)
 #  define MSDOS
 #endif
+#if (defined(OS_2) || defined(__OS2__)) && !defined(OS2)
+#  define OS2
+#endif
 #if defined(_WINDOWS) && !defined(WINDOWS)
 #  define WINDOWS
 #endif
@@ -176,7 +182,7 @@
 #    define WIN32
 #  endif
 #endif
-#if (defined(MSDOS) || defined(WINDOWS)) && !defined(WIN32)
+#if (defined(MSDOS) || defined(OS2) || defined(WINDOWS)) && !defined(WIN32)
 #  if !defined(__GNUC__) && !defined(__FLAT__) && !defined(__386__)
 #    ifndef SYS16BIT
 #      define SYS16BIT
@@ -208,13 +214,13 @@
 #if !defined(STDC) && (defined(__STDC__) || defined(__cplusplus))
 #  define STDC
 #endif
-#if !defined(STDC) && (defined(__GNUC__) )
+#if !defined(STDC) && (defined(__GNUC__) || defined(__BORLANDC__))
 #  define STDC
 #endif
 #if !defined(STDC) && (defined(MSDOS) || defined(WINDOWS) || defined(WIN32))
 #  define STDC
 #endif
-#if !defined(STDC) && defined(__HOS_AIX__)
+#if !defined(STDC) && (defined(OS2) || defined(__HOS_AIX__))
 #  define STDC
 #endif
 
@@ -235,7 +241,11 @@
 #endif
 
 #ifdef Z_SOLO
-   typedef unsigned long z_size_t;
+#  ifdef _WIN64
+     typedef unsigned long long z_size_t;
+#  else
+     typedef unsigned long z_size_t;
+#  endif
 #else
 #  define z_longlong long long
 #  if defined(NO_SIZE_T)
@@ -260,7 +270,8 @@
 
 /* Maximum value for windowBits in deflateInit2 and inflateInit2.
  * WARNING: reducing MAX_WBITS makes minigzip unable to extract .gz files
- * created by gzip. (Files created by minigzip can still be extracted by gzip.)
+ * created by gzip. (Files created by minigzip can still be extracted by
+ * gzip.)
  */
 #ifndef MAX_WBITS
 #  define MAX_WBITS   15 /* 32K LZ77 window */
@@ -275,7 +286,7 @@
  Of course this will generally degrade compression (there's no free lunch).
 
    The memory requirements for inflate are (in bytes) 1 << windowBits
- that is, 32K for windowBits=15 (default value) plus a few kilobytes
+ that is, 32K for windowBits=15 (default value) plus about 7 kilobytes
  for small objects.
 */
 
@@ -329,7 +340,7 @@
     * This is not mandatory, but it offers a little performance increase.
     */
 #  ifdef ZLIB_DLL
-#    if defined(WIN32)
+#    if defined(WIN32) && (!defined(__BORLANDC__) || (__BORLANDC__ >= 0x500))
 #      ifdef ZLIB_INTERNAL
 #        define ZEXTERN extern __declspec(dllexport)
 #      else
@@ -345,6 +356,9 @@
 #    ifdef FAR
 #      undef FAR
 #    endif
+#    ifndef WIN32_LEAN_AND_MEAN
+#      define WIN32_LEAN_AND_MEAN
+#    endif
 #    include <windows.h>
      /* No need for _export, use ZLIB.DEF instead. */
      /* For complete Windows compatibility, use WINAPI, not __stdcall. */
@@ -357,17 +371,17 @@
 #  endif
 #endif
 
-//#if defined (__BEOS__)
-//#  ifdef ZLIB_DLL
-//#    ifdef ZLIB_INTERNAL
-//#      define ZEXPORT   __declspec(dllexport)
-//#      define ZEXPORTVA __declspec(dllexport)
-//#    else
-//#      define ZEXPORT   __declspec(dllimport)
-//#      define ZEXPORTVA __declspec(dllimport)
-//#    endif
-//#  endif
-//#endif
+#if defined (__BEOS__)
+#  ifdef ZLIB_DLL
+#    ifdef ZLIB_INTERNAL
+#      define ZEXPORT   __declspec(dllexport)
+#      define ZEXPORTVA __declspec(dllexport)
+#    else
+#      define ZEXPORT   __declspec(dllimport)
+#      define ZEXPORTVA __declspec(dllimport)
+#    endif
+#  endif
+#endif
 
 #ifndef ZEXTERN
 #  define ZEXTERN extern
@@ -463,11 +477,18 @@ typedef uLong FAR uLongf;
 #  undef _LARGEFILE64_SOURCE
 #endif
 
-#if defined(__WATCOMC__) && !defined(Z_HAVE_UNISTD_H)
-#  define Z_HAVE_UNISTD_H
+#ifndef Z_HAVE_UNISTD_H
+#  ifdef __WATCOMC__
+#    define Z_HAVE_UNISTD_H
+#  endif
+#endif
+#ifndef Z_HAVE_UNISTD_H
+#  if defined(_LARGEFILE64_SOURCE) && !defined(_WIN32)
+#    define Z_HAVE_UNISTD_H
+#  endif
 #endif
 #ifndef Z_SOLO
-#  if defined(Z_HAVE_UNISTD_H) || defined(_LARGEFILE64_SOURCE)
+#  if defined(Z_HAVE_UNISTD_H)
 #    include <unistd.h>         /* for SEEK_*, off_t, and _LFS64_LARGEFILE */
 #    ifdef VMS
 #      include <unixio.h>       /* for off_t */
@@ -503,7 +524,7 @@ typedef uLong FAR uLongf;
 #if !defined(_WIN32) && defined(Z_LARGE64)
 #  define z_off64_t off64_t
 #else
-#  if defined(_WIN32) && !defined(__GNUC__) && !defined(Z_SOLO)
+#  if defined(_WIN32) && !defined(__GNUC__)
 #    define z_off64_t __int64
 #  else
 #    define z_off64_t z_off_t

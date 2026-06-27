@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <skin xmlns="http://schemas.getenvy.com/Skin.xsd" version="1.0">
 
 <!-- Envy Default English Skin File -->
@@ -1618,6 +1618,9 @@
 		<item id="ID_SEARCHMONITOR_PAUSE" text="_Pause Display"/>
 		<item id="ID_SEARCHMONITOR_CLEAR" text="_Clear Buffer"/>
 		<separator/>
+		<item id="ID_SEARCHMONITOR_FILTER" text="_Advanced Filter..."/>
+		<item id="ID_SEARCHMONITOR_FILTER_REMOVE" text="_Remove Filter"/>
+		<separator/>
 		<item id="ID_SECURITY_BAN" text="_Ban End User"/>
 	</menu>
 	<!-- GRAPH/TRAFFIC WINDOW -->
@@ -2693,6 +2696,8 @@
 	<tip id="ID_SEARCH_STOP" text="Stop receiving results in this window."/>
 	<tip id="ID_SEARCHMONITOR_CLEAR" text="Clear the search monitor buffer."/>
 	<tip id="ID_SEARCHMONITOR_PAUSE" text="Pause search monitoring."/>
+	<tip id="ID_SEARCHMONITOR_FILTER" text="Configure advanced filtering options for search monitoring."/>
+	<tip id="ID_SEARCHMONITOR_FILTER_REMOVE" text="Remove all active filters."/>
 	<tip id="ID_SECURITY_BAN" text="Filter out the selected host for an extended period."/>
 	<tip id="ID_SECURITY_ADD" text="Add a new rule to the security chain..."/>
 	<tip id="ID_SECURITY_EDIT" text="Edit the selected security rule..."/>

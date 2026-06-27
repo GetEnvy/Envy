@@ -1,7 +1,7 @@
 //
 // Remote.h
 //
-// This file is part of Envy (getenvy.com) © 2016-2018
+// This file is part of Envy (getenvy.com) Â© 2016-2018
 // Portions copyright Shareaza 2002-2007 and PeerProject 2008-2016
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -24,6 +24,13 @@
 class CMatchFile;
 
 
+// Rate limiting structure for Remote interface
+struct RemoteRateLimitInfo
+{
+	DWORD		tFirstRequest;		// Time of first request in window
+	DWORD		nRequestCount;		// Number of requests in current window
+};
+
 class CRemote : public CTransfer
 {
 public:
@@ -38,6 +45,8 @@ protected:
 	CBuffer			m_pResponse;
 	CStringIMap		m_pKeys;
 	static CList<int> m_pCookies;
+	static CMap<CString, CString, RemoteRateLimitInfo*, RemoteRateLimitInfo*&> m_pRateLimits;  // IP -> Rate limit info
+	static CCriticalSection m_pRateLimitSection;  // Protection for rate limit map
 
 	enum ActiveTab { tabNone, tabHome, tabDownloads, tabUploads, tabNetwork, tabSearch };
 	ActiveTab		m_nTab;
@@ -53,6 +62,7 @@ protected:
 	CString			GetKey(LPCTSTR pszName);
 	BOOL			CheckCookie();
 	BOOL			RemoveCookie();
+	CString			GetCSRFToken();  // Get CSRF token for current session
 	void			Prepare(LPCTSTR pszPrefix = NULL);
 	void			Add(LPCTSTR pszKey, LPCTSTR pszValue);
 	void			AddText(LPCTSTR pszKey, LPCTSTR pszDefault = NULL);

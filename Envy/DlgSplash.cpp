@@ -1,7 +1,7 @@
-//
+﻿//
 // DlgSplash.cpp
 //
-// This file is part of Envy (getenvy.com) � 2016-2020
+// This file is part of Envy (getenvy.com) © 2016-2020
 // Portions copyright Shareaza 2002-2008 and PeerProject 2008-2015
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -69,7 +69,26 @@ CSplashDlg::CSplashDlg(int nMax, bool bClosing)
 		if ( Settings.Interface.DisplayScaling > 140 && GetFileAttributes( Settings.General.DataPath + L"Splash.HiRes.png" ) != INVALID_FILE_ATTRIBUTES )
 			strPath = Settings.General.DataPath + L"Splash.HiRes.png";
 
-		m_bmSplash.Attach( CImageFile::LoadBitmapFromFile( strPath ) );
+		HBITMAP hBitmap = CImageFile::LoadBitmapFromFile( strPath );
+		if ( hBitmap )
+		{
+			m_bmSplash.Attach( hBitmap );
+		}
+		else
+		{
+			TRACE("[Splash] Warning: Splash image file not found or failed to load: %ls\n", strPath.GetString());
+			// Try to load from resources as fallback
+			HBITMAP hResBitmap = CImageFile::LoadBitmapFromResource(IDR_LARGE_LOGO, AfxGetResourceHandle());
+			if ( hResBitmap )
+			{
+				m_bmSplash.Attach( hResBitmap );
+				TRACE("[Splash] Fallback: Loaded splash image from resources.\n");
+			}
+			else
+			{
+				TRACE("[Splash] Error: No splash image available.\n");
+			}
+		}
 	}
 
 	Create( IDD, GetDesktopWindow() );

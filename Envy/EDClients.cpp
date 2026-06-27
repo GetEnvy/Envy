@@ -1,7 +1,7 @@
 //
 // EDClients.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2018
+// This file is part of Envy (getenvy.com) ï¿½ 2016-2018
 // Portions copyright Shareaza 2002-2008 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -53,6 +53,7 @@ CEDClients::CEDClients()
 	, m_tLastRun		( 0ul )
 	, m_tLastMaxClients	( 0ul )
 {
+	m_oUDPSearchGUIDs.InitHashTable( GetBestHashTableSize( 256 ) );
 }
 
 CEDClients::~CEDClients()
@@ -337,6 +338,14 @@ void CEDClients::OnRun()
 {
 	const DWORD tNow = GetTickCount();
 
+	// Cleanup stale UDP search GUID entries periodically (every 30 seconds)
+	static DWORD tLastCleanup = 0;
+	if ( tNow - tLastCleanup > 30000 )
+	{
+		CleanupStaleUDPSearchGUIDs();
+		tLastCleanup = tNow;
+	}
+
 	// Delay to limit the rate of ed2k packets being sent.
 	// Keep ed2k transfers under 10 KB/s per source
 	if ( tNow < m_tLastRun + Settings.eDonkey.PacketThrottle )
@@ -417,6 +426,16 @@ BOOL CEDClients::OnAccept(CConnection* pConnection)
 
 BOOL CEDClients::OnPacket(const SOCKADDR_IN* pHost, CEDPacket* pPacket)
 {
+	// For EMULE_PACKED packets that were deferred from ReadBuffer(), inflate now
+	if ( pPacket->m_nEdProtocol == ED2K_PROTOCOL_EMULE_PACKED )
+	{
+		if ( ! pPacket->Inflate() )
+		{
+			// Inflation failed - discard packet
+			return FALSE;
+		}
+	}
+
 	pPacket->SmartDump( pHost, TRUE, FALSE );
 
 	if ( pPacket->m_nEdProtocol == ED2K_PROTOCOL_EDONKEY )
@@ -598,6 +617,61 @@ BOOL CEDClients::OnServerStatus(const SOCKADDR_IN* pHost, CEDPacket* pPacket)
 	return TRUE;
 }
 
+Hashes::Guid CEDClients::GetUDPSearchGUID(DWORD nServerIP, WORD nServerUDPPort, BYTE nOpcode) const
+{
+	CQuickLock oLock( m_pSearchGUIDSection );
+
+	QWORD nKey = MakeUDPSearchKey( nServerIP, nServerUDPPort, nOpcode );
+	SUDPSearchValue oValue;
+	if ( m_oUDPSearchGUIDs.Lookup( nKey, oValue ) )
+	{
+		const DWORD tNow = GetTickCount();
+		// Check if entry is stale (older than 60 seconds)
+		if ( tNow - oValue.tTimestamp < 60000 )
+		{
+			return oValue.oSearchGUID;
+		}
+	}
+
+	// Fallback to empty GUID (will match last search via QueryHit matching logic)
+	return Hashes::Guid();
+}
+
+void CEDClients::SetUDPSearchGUID(DWORD nServerIP, WORD nServerUDPPort, BYTE nOpcode, const Hashes::Guid& oGUID)
+{
+	CSingleLock oLock( &m_pSearchGUIDSection );
+	if ( ! oLock.Lock( 250 ) )
+		return;
+
+	QWORD nKey = MakeUDPSearchKey( nServerIP, nServerUDPPort, nOpcode );
+	SUDPSearchValue oValue;
+	oValue.oSearchGUID = oGUID;
+	oValue.tTimestamp = GetTickCount();
+
+	m_oUDPSearchGUIDs.SetAt( nKey, oValue );
+}
+
+void CEDClients::CleanupStaleUDPSearchGUIDs()
+{
+	CQuickLock oLock( m_pSearchGUIDSection );
+
+	const DWORD tNow = GetTickCount();
+	const DWORD tStaleThreshold = 60000; // 60 seconds
+
+	// Remove stale entries (older than 60 seconds)
+	for ( POSITION pos = m_oUDPSearchGUIDs.GetStartPosition(); pos; )
+	{
+		QWORD nKey;
+		SUDPSearchValue oValue;
+		m_oUDPSearchGUIDs.GetNextAssoc( pos, nKey, oValue );
+
+		if ( tNow - oValue.tTimestamp >= tStaleThreshold )
+		{
+			m_oUDPSearchGUIDs.RemoveKey( nKey );
+		}
+	}
+}
+
 BOOL CEDClients::OnServerSearchResult(const SOCKADDR_IN* pHost, CEDPacket* pPacket)
 {
 	CQuickLock oLock( HostCache.eDonkey.m_pSection );
@@ -613,13 +687,18 @@ BOOL CEDClients::OnServerSearchResult(const SOCKADDR_IN* pHost, CEDPacket* pPack
 	pAddress.sin_addr = pServer->m_pAddress;
 	pAddress.sin_port = htons( pServer->m_nPort + 4 );
 
-	// Check server details in host cache
+	// Extract unicode flag from server UDP flags
 	DWORD nServerFlags = ( pServer && pServer->m_nUDPFlags ) ? pServer->m_nUDPFlags : Settings.eDonkey.DefaultServerFlags;
+	BOOL bUnicode = ( nServerFlags & ED2K_SERVER_UDP_UNICODE ) != 0;
+
+	// Lookup search GUID for this UDP query
+	WORD nServerUDPPort = htons( pHost->sin_port );
+	Hashes::Guid oSearchGUID = GetUDPSearchGUID( pHost->sin_addr.s_addr, nServerUDPPort, pPacket->m_nType );
 
 	// Decode packet and create hits
-	if ( CQueryHit* pHits = CQueryHit::FromEDPacket( pPacket, &pAddress, nServerFlags ) )
+	if ( CQueryHit* pHits = CQueryHit::FromEDPacket( pPacket, &pAddress, bUnicode, oSearchGUID ) )
 	{
-		// Assume UDPis stable
+		// Assume UDP is stable
 		Datagrams.SetStable();
 
 		// Update the server variables
@@ -644,4 +723,136 @@ BOOL CEDClients::OnServerSearchResult(const SOCKADDR_IN* pHost, CEDPacket* pPack
 	}
 
 	return FALSE;
+}
+
+// Handle concatenated ED2K UDP sub-packets in a single datagram (eMule-compatible)
+BOOL CEDClients::OnServerSearchResultRaw(const SOCKADDR_IN* pHost, const BYTE* pBuffer, DWORD nLength, BYTE nOpcode)
+{
+	CQuickLock oLock( HostCache.eDonkey.m_pSection );
+
+	CHostCacheHostPtr pServer = HostCache.eDonkey.Find( &pHost->sin_addr );
+	if ( pServer == NULL )
+	{
+		theApp.Message( MSG_WARNING, L"eDonkey server %s:%u search result received, but server not found in host cache", (LPCTSTR)CString( inet_ntoa( pHost->sin_addr ) ), htons( pHost->sin_port ) );
+		return FALSE;
+	}
+
+	SOCKADDR_IN pAddress = {};
+	pAddress.sin_addr = pServer->m_pAddress;
+	pAddress.sin_port = htons( pServer->m_nPort + 4 );
+
+	// Extract unicode flag from server UDP flags
+	DWORD nServerFlags = ( pServer && pServer->m_nUDPFlags ) ? pServer->m_nUDPFlags : Settings.eDonkey.DefaultServerFlags;
+	BOOL bUnicode = ( nServerFlags & ED2K_SERVER_UDP_UNICODE ) != 0;
+
+	// Lookup search GUID for this UDP query
+	WORD nServerUDPPort = htons( pHost->sin_port );
+	Hashes::Guid oSearchGUID = GetUDPSearchGUID( pHost->sin_addr.s_addr, nServerUDPPort, nOpcode );
+
+	// Assume UDP is stable
+	Datagrams.SetStable();
+
+	// Update the server variables
+	pServer->m_tAck			= 0;
+	pServer->m_nFailures	= 0;
+	pServer->m_tFailure		= 0;
+	pServer->m_bCheckedLocally	= TRUE;
+
+	HostCache.eDonkey.Update( pServer );
+
+	// Loop through concatenated ED2K UDP sub-packets (eMule-compatible)
+	// Format: [0xE3][opcode][payload] [0xE3][opcode][payload] ...
+	// Parse each packet sequentially until we can't parse any more
+	DWORD nOffset = 0;
+	BOOL bHandled = FALSE;
+
+	while ( nOffset + sizeof( ED2K_UDP_HEADER ) <= nLength )
+	{
+		const ED2K_UDP_HEADER* pHeader = reinterpret_cast< const ED2K_UDP_HEADER* >( pBuffer + nOffset );
+
+		// Verify protocol and opcode match
+		if ( pHeader->nProtocol != ED2K_PROTOCOL_EDONKEY ||
+			 pHeader->nType != nOpcode )
+		{
+			// Not a matching ED2K packet, stop parsing
+			break;
+		}
+
+		// Calculate remaining bytes in buffer after this header
+		DWORD nRemainingBytes = nLength - nOffset - sizeof( ED2K_UDP_HEADER );
+
+		// Create packet from this sub-packet (CEDPacket::New will take all remaining bytes)
+		// We'll determine actual packet size by parsing it
+		if ( CEDPacket* pPacket = CEDPacket::New( pHeader, nRemainingBytes + sizeof( ED2K_UDP_HEADER ) ) )
+		{
+			try
+			{
+				// CEDPacket::New() already calls Inflate() - protocol has been changed if needed
+				// No need to check/inflate again here
+
+				// Reset position to start of payload before parsing
+				// Write() in CEDPacket::New sets m_nPosition to end, but we need to read from start
+				pPacket->Seek( 0 );
+
+				// Track position before parsing to calculate consumed bytes
+				// UDP packets don't have a length field, so we must track consumed bytes
+				DWORD nPositionBefore = pPacket->m_nPosition;
+
+				// Decode packet and create hits
+				if ( CQueryHit* pHits = CQueryHit::FromEDPacket( pPacket, &pAddress, bUnicode, oSearchGUID ) )
+				{
+					if ( nOpcode == ED2K_S2CG_SEARCHRESULT )
+					{
+						Network.OnQueryHits( pHits );
+					}
+					else // ED2K_S2CG_FOUNDSOURCES
+					{
+						Downloads.OnQueryHits( pHits );
+						pHits->Delete();
+					}
+					bHandled = TRUE;
+
+					// Calculate actual packet size: header + payload size
+					// For UDP packets, we must calculate payload size by tracking consumed bytes
+					// The payload size is the difference between position after and before parsing
+					DWORD nPayloadSize = pPacket->m_nPosition - nPositionBefore;
+					DWORD nPacketSize = sizeof( ED2K_UDP_HEADER ) + nPayloadSize;
+
+					// Move to next potential sub-packet
+					nOffset += nPacketSize;
+
+					// Check if there's another packet header
+					if ( nOffset + sizeof( ED2K_UDP_HEADER ) > nLength )
+						break;
+
+					// Peek at next protocol byte to see if there's another ED2K packet
+					const BYTE nNextProtocol = pBuffer[ nOffset ];
+					if ( nNextProtocol != ED2K_PROTOCOL_EDONKEY )
+						break; // Not another ED2K packet, stop parsing
+				}
+				else
+				{
+					// Parsing failed, stop
+					pPacket->Release();
+					break;
+				}
+			}
+			catch ( CException* pException )
+			{
+				pException->Delete();
+				DEBUG_ONLY( pPacket->Debug( L"Malformed concatenated ED2K packet." ) );
+				pPacket->Release();
+				break; // Stop on parsing error
+			}
+
+			pPacket->Release();
+		}
+		else
+		{
+			// Failed to create packet, stop
+			break;
+		}
+	}
+
+	return bHandled;
 }

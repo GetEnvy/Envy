@@ -1,7 +1,7 @@
 //
 // MD4.h (ED2K)
 //
-// This file is part of Envy (getenvy.com) © 2016-2018
+// This file is part of Envy (getenvy.com) ï¿½ 2016-2018
 // Portions copyright Shareaza 2002-2006 and PeerProject 2008-2012
 //
 // Envy is free software; you can redistribute it and/or
@@ -23,6 +23,13 @@ class HASHLIB_API CMD4
 public:
 	CMD4();
 	~CMD4() {}
+
+	// Default copy and move operations (Rule of Five)
+	// Hash state is POD, so default copy/move is safe
+	CMD4(const CMD4&) = default;
+	CMD4& operator=(const CMD4&) = default;
+	CMD4(CMD4&&) = default;
+	CMD4& operator=(CMD4&&) = default;
 
 public:
 	void Reset();

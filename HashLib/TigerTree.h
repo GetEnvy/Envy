@@ -1,7 +1,7 @@
 //
 // TigerTree.h
 //
-// This file is part of Envy (getenvy.com) © 2016-2018
+// This file is part of Envy (getenvy.com) ï¿½ 2016-2018
 // Portions copyright Shareaza 2008 and PeerProject 2008-2012
 //
 // Envy is free software; you can redistribute it and/or
@@ -31,6 +31,12 @@ class HASHLIB_API CTigerTree
 public:
 	CTigerTree();
 	~CTigerTree();
+
+	// Delete copy and move operations (Rule of Five)
+	CTigerTree(const CTigerTree&) = delete;
+	CTigerTree& operator=(const CTigerTree&) = delete;
+	CTigerTree(CTigerTree&&) = delete;
+	CTigerTree& operator=(CTigerTree&&) = delete;
 
 	void	SetupAndAllocate(uint32 nHeight, uint64 nLength);
 	void	SetupParameters(uint64 nLength);

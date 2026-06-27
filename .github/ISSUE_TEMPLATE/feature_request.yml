@@ -1,0 +1,38 @@
+name: Feature request
+description: Suggest an enhancement or new feature for Envy.
+title: "[Feature]: "
+labels: ["enhancement", "triage"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem statement
+      description: What real-world use case is poorly supported today?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+  - type: dropdown
+    id: scope
+    attributes:
+      label: Component
+      multiple: true
+      options:
+        - Core (Envy/)
+        - BitTorrent (TorrentEnvy / BTClient / DHT)
+        - Gnutella / eDonkey / DC++
+        - UI / skins
+        - Installer
+        - Plugins
+        - Build / CI
+        - Documentation / translations
+    validations:
+      required: true

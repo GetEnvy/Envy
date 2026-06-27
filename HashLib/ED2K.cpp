@@ -1,7 +1,7 @@
 //
 // ED2K.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2018
+// This file is part of Envy (getenvy.com) Â© 2016-2018
 // Portions copyright Shareaza 2002-2006 and PeerProject 2008-2014
 //
 // Envy is free software; you can redistribute it and/or
@@ -29,7 +29,7 @@ CED2K::CED2K()
 	, m_nCurByte	( 0 )
 	, m_bNullBlock	( FALSE )
 {
-	std::fill_n( &m_pRoot[ 0 ], 4, 0 );
+	std::fill_n( &m_pRoot[ 0 ], 4U, 0U );
 }
 
 CED2K::~CED2K()
@@ -42,7 +42,7 @@ CED2K::~CED2K()
 
 void CED2K::Clear()
 {
-	std::fill_n( &m_pRoot[ 0 ], 4, 0 );
+	std::fill_n( &m_pRoot[ 0 ], 4, 0U );
 	delete [] m_pList;
 	m_pList = NULL;
 	m_nList = 0;

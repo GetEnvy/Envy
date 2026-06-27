@@ -1,0 +1,44 @@
+version: 2
+updates:
+  # Native C/C++ dependencies via vcpkg manifest.
+  # Dependabot advances vcpkg-configuration.json's builtin-baseline commit hash
+  # rather than bumping individual packages - keeps the curated set consistent.
+  - package-ecosystem: "vcpkg"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "07:00"
+      timezone: "Europe/Paris"
+    open-pull-requests-limit: 5
+    labels:
+      - "dependencies"
+      - "vcpkg"
+    commit-message:
+      prefix: "deps(vcpkg)"
+      include: "scope"
+    groups:
+      vcpkg-baseline:
+        patterns:
+          - "*"
+
+  # Pin and update GitHub Actions versions.
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "07:00"
+      timezone: "Europe/Paris"
+    open-pull-requests-limit: 5
+    labels:
+      - "dependencies"
+      - "github-actions"
+    commit-message:
+      prefix: "ci"
+      include: "scope"
+    groups:
+      actions-minor-patch:
+        update-types:
+          - "minor"
+          - "patch"

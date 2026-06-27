@@ -1,7 +1,7 @@
 //
 // UploadQueue.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2018
+// This file is part of Envy (getenvy.com) Â© 2016-2018
 // Portions copyright Shareaza 2002-2008 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -130,8 +130,6 @@ CString CUploadQueue::GetCriteriaString() const
 		str += LoadString( IDS_UPLOAD_QUEUE_LIBRARY );
 	}
 
-	// ToDo: Add Release States Queue!
-
 	return str;
 }
 
@@ -172,20 +170,16 @@ BOOL CUploadQueue::Enqueue(CUploadTransfer* pUpload, BOOL bForce, BOOL bStart)
 	ASSERT( pUpload != NULL );
 	ASSERT( pUpload->m_pQueue == NULL );
 
-	if ( ! bForce && ! bStart )		// If this upload isn't forced, check to see if it's valid to queue
+	if ( ! bForce && ! bStart )
 	{
 		if ( m_bRewardUploaders && ( pUpload->m_nUserRating > urSharing ) )
 		{
-			// If reward is on, a non-sharer might not queue.
-			// Check if the # already queued plus # reserved by the reward
-			// percentage is greater than the queue would be able to hold.
 			DWORD nReserved = m_nCapacity * Settings.Uploads.RewardQueuePercentage / 100ul;
 			if ( GetQueuedCount() + nReserved >= m_nCapacity )
 				return FALSE;
 		}
 		else
 		{
-			// If reward is off, or user is known to share, just check if the queue is full
 			if ( IsFull() )
 				return FALSE;
 		}
@@ -335,8 +329,10 @@ void CUploadQueue::StartImpl(CUploadTransfer* pUpload)
 	pUpload->m_pQueue = this;
 	if ( pUpload->m_nProtocol == PROTOCOL_ED2K )
 	{
-		CUploadTransferED2K * pEdUpload = static_cast<CUploadTransferED2K *>(pUpload);
-		pEdUpload->m_pClient->Connect();
+		CUploadTransferED2K* pEdUpload = dynamic_cast< CUploadTransferED2K* >( pUpload );
+		ASSERT( pEdUpload != NULL );
+		if ( pEdUpload != NULL && pEdUpload->m_pClient != NULL )
+			pEdUpload->m_pClient->Connect();
 	}
 }
 
@@ -388,7 +384,6 @@ DWORD CUploadQueue::GetAvailableBandwidth() const
 	for ( POSITION pos = m_pActive.GetHeadPosition(); pos; )
 	{
 		CUploadTransfer* pActive = m_pActive.GetNext( pos );
-		// If newly queued host is set as "Next" don't count allocated bandwidth, max speed in such case is zero.
 		nUsed += pActive->GetMaxSpeed();
 	}
 
@@ -404,7 +399,6 @@ DWORD CUploadQueue::GetAvailableBandwidth() const
 
 DWORD CUploadQueue::GetPredictedBandwidth() const
 {
-	// This could be more accurate
 	return GetBandwidthLimit( m_nMinTransfers ) /
 		min( max( m_nMinTransfers, 1ul ), GetTransferCount() + 1 );
 }
@@ -416,7 +410,7 @@ void CUploadQueue::SpreadBandwidth()
 {
 	const DWORD nCount = GetTransferCount();
 	if ( nCount == 0 )
-		return;		// Nothing to do
+		return;
 
 	const DWORD nLimit = GetBandwidthLimit() / nCount;
 	for ( POSITION pos = m_pActive.GetHeadPosition(); pos; )
@@ -430,7 +424,7 @@ void CUploadQueue::RescaleBandwidth()
 {
 	const DWORD nCount = GetTransferCount();
 	if ( nCount == 0 )
-		return;		// Nothing to do
+		return;
 
 	if ( nCount <= m_nMinTransfers )
 	{
@@ -446,7 +440,6 @@ void CUploadQueue::RescaleBandwidth()
 	for ( POSITION pos = m_pActive.GetHeadPosition(); pos; )
 	{
 		CUploadTransfer* pActive = m_pActive.GetNext( pos );
-		// If newly queued host is set as "Next" don't count allocated bandwidth, max speed in such case is zero.
 		nAllocated += pActive->GetMaxSpeed();
 	}
 
@@ -492,7 +485,7 @@ void CUploadQueue::Serialize(CArchive& ar, int /*nVersion*/)
 
 		ar << m_bExpanded;
 	}
-	else // Loading
+	else
 	{
 		ar >> m_sName;
 		ar >> m_bEnable;
@@ -500,18 +493,7 @@ void CUploadQueue::Serialize(CArchive& ar, int /*nVersion*/)
 		ar >> m_nProtocols;
 		ar >> m_nMinSize;
 		ar >> m_nMaxSize;
-
-		//if ( nVersion >= 6 )
-		//{
-			ar >> m_nFileStateFlag;
-		//}
-		//else
-		//{
-		//	BOOL bPartial;
-		//	ar >> bPartial;
-		//	m_nFileStateFlag = bPartial ? ulqPartial : ulqBoth;
-		//}
-
+		ar >> m_nFileStateFlag;
 		ar >> m_sShareTag;
 		ar >> m_sNameMatch;
 

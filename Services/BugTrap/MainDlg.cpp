@@ -161,7 +161,8 @@ static void InitStackTrace(HWND hwnd)
 		const BYTE arrUTF8[] = { 0xEF, 0xBB, 0xBF };
 		const int nSize = sizeof(Entry.m_szFunctionInfo) + sizeof(Entry.m_szSourceFile) + sizeof(Entry.m_szLineInfo);
 		TCHAR szLine[ nSize ];
-		char *utf8 = (char *) malloc(nSize * sizeof(TCHAR));
+		const int nUtf8BufferBytes = nSize * sizeof(TCHAR);
+		char *utf8 = (char *) malloc(nUtf8BufferBytes);
 
 		// Custom output file:
 		HANDLE hFile = CreateFile(_T("StackTrace.txt"), GENERIC_WRITE, 0, NULL, OPEN_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
@@ -185,8 +186,8 @@ static void InitStackTrace(HWND hwnd)
 			ListView_SetItemText(hwndStack, iItemPos, CID_WIN32_ENTRY_MODULE, Entry.m_szModule);
 			ListView_SetItemText(hwndStack, iItemPos, CID_WIN32_ENTRY_ADDRESS, Entry.m_szAddress);
 
-			_stprintf_s(szLine, sizeof(szLine), _T("%s\t\t%s\t\t%s\r\n"), Entry.m_szSourceFile, Entry.m_szLineInfo, Entry.m_szFunctionInfo);
-			nBytes = WideCharToMultiByte(CP_UTF8, 0, szLine, -1, utf8, nSize, NULL, NULL) - 1;
+			_stprintf_s(szLine, _countof(szLine), _T("%s\t\t%s\t\t%s\r\n"), Entry.m_szSourceFile, Entry.m_szLineInfo, Entry.m_szFunctionInfo);
+			nBytes = WideCharToMultiByte(CP_UTF8, 0, szLine, -1, utf8, nUtf8BufferBytes, NULL, NULL) - 1;
 			WriteFile(hFile, utf8, nBytes, &dwBytesWritten, NULL);
 
 			++iItemPos;

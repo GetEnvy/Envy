@@ -1,7 +1,7 @@
 //
 // HostCache.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2018
+// This file is part of Envy (getenvy.com) Â 2016-2018
 // Portions copyright Shareaza 2002-2008 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -860,7 +860,7 @@ int CHostCache::Import(LPCTSTR pszFile, BOOL bFreshOnly)
 	{
 		theApp.Message( MSG_NOTICE, L"Importing Kademlia Nodes file: %s", pszFile );
 
-	//	nImported = ImportNodes( &pFile );	// ToDo: Kademlia
+		nImported = ImportNodes( &pFile );
 	}
 //	else if ( _tcsicmp( szExt, L".xml" ) == 0 || _tcsicmp( szExt, L".dat" ) == 0 ) 	// ToDo: G2/Gnutella import/export
 //	{
@@ -992,70 +992,69 @@ int CHostCache::ImportMET(CFile* pFile)
 	return nServers;
 }
 
-// ToDo: Kademlia
-//int CHostCache::ImportNodes(CFile* pFile)
-//{
-//	int nServers = 0;
-//	DWORD nVersion = 0;
+int CHostCache::ImportNodes(CFile* pFile)
+{
+	int nServers = 0;
+	DWORD nVersion = 0;
 //
-//	DWORD nCount;
-//	if ( pFile->Read( &nCount, sizeof( nCount ) ) != sizeof( nCount ) )
-//		return 0;
-//	if ( nCount == 0 )
-//	{
-//		// New format
-//		if ( pFile->Read( &nVersion, sizeof( nVersion ) ) != sizeof( nVersion ) )
-//			return 0;
-//		if ( nVersion != 1 )
-//			return 0;	// Unknown format
-//		if ( pFile->Read( &nCount, sizeof( nCount ) ) != sizeof( nCount ) )
-//			return 0;
-//	}
-//	while ( nCount-- > 0 )
-//	{
-//		Hashes::Guid oGUID;
-//		if ( pFile->Read( &oGUID[0], oGUID.byteCount ) != oGUID.byteCount )
-//			break;
-//		oGUID.validate();
-//		IN_ADDR pAddress;
-//		if ( pFile->Read( &pAddress, sizeof( pAddress ) ) != sizeof( pAddress ) )
-//			break;
-//		pAddress.s_addr = ntohl( pAddress.s_addr );
-//		WORD nUDPPort;
-//		if ( pFile->Read( &nUDPPort, sizeof( nUDPPort ) ) != sizeof( nUDPPort ) )
-//			break;
-//		WORD nTCPPort;
-//		if ( pFile->Read( &nTCPPort, sizeof( nTCPPort ) ) != sizeof( nTCPPort ) )
-//			break;
-//		BYTE nKADVersion = 0;
-//		BYTE nType = 0;
-//		if ( nVersion == 1 )
-//		{
-//			if ( pFile->Read( &nKADVersion, sizeof( nKADVersion ) ) != sizeof( nKADVersion ) )
-//				break;
-//		}
-//		else
-//		{
-//			if ( pFile->Read( &nType, sizeof( nType ) ) != sizeof( nType ) )
-//				break;
-//		}
-//		if ( nType < 4 )
-//		{
-//			CQuickLock oLock( Kademlia.m_pSection );
-//			CHostCacheHostPtr pCache = Kademlia.Add( &pAddress, nTCPPort );
-//			if ( pCache )
-//			{
-//				pCache->m_oGUID = oGUID;
-//				pCache->m_sDescription = oGUID.toString();
-//				pCache->m_nUDPPort = nUDPPort;
-//				pCache->m_nKADVersion = nKADVersion;
-//				nServers++;
-//			}
-//		}
-//	}
-//
-//	return nServers;
-//}
+	DWORD nCount;
+	if ( pFile->Read( &nCount, sizeof( nCount ) ) != sizeof( nCount ) )
+		return 0;
+	if ( nCount == 0 )
+	{
+		// New format
+		if ( pFile->Read( &nVersion, sizeof( nVersion ) ) != sizeof( nVersion ) )
+			return 0;
+		if ( nVersion != 1 )
+			return 0;	// Unknown format
+		if ( pFile->Read( &nCount, sizeof( nCount ) ) != sizeof( nCount ) )
+			return 0;
+	}
+	while ( nCount-- > 0 )
+	{
+		Hashes::Guid oGUID;
+		if ( pFile->Read( &oGUID[0], oGUID.byteCount ) != oGUID.byteCount )
+			break;
+		oGUID.validate();
+		IN_ADDR pAddress;
+		if ( pFile->Read( &pAddress, sizeof( pAddress ) ) != sizeof( pAddress ) )
+			break;
+		// IP addresses are stored in network byte order (as read from file)
+		WORD nUDPPort;
+		if ( pFile->Read( &nUDPPort, sizeof( nUDPPort ) ) != sizeof( nUDPPort ) )
+			break;
+		WORD nTCPPort;
+		if ( pFile->Read( &nTCPPort, sizeof( nTCPPort ) ) != sizeof( nTCPPort ) )
+			break;
+		BYTE nKADVersion = 0;
+		BYTE nType = 0;
+		if ( nVersion == 1 )
+		{
+			if ( pFile->Read( &nKADVersion, sizeof( nKADVersion ) ) != sizeof( nKADVersion ) )
+				break;
+		}
+		else
+		{
+			if ( pFile->Read( &nType, sizeof( nType ) ) != sizeof( nType ) )
+				break;
+		}
+		if ( nVersion == 1 || nType < 4 )
+		{
+			CQuickLock oLock( Kademlia.m_pSection );
+			CHostCacheHostPtr pCache = Kademlia.Add( &pAddress, nTCPPort );
+			if ( pCache )
+			{
+				pCache->m_oGUID = oGUID;
+				pCache->m_sDescription = oGUID.toString();
+				pCache->m_nUDPPort = nUDPPort;
+				pCache->m_nKADVersion = nKADVersion;
+				nServers++;
+			}
+		}
+	}
+
+	return nServers;
+}
 
 bool CHostCache::EnoughServers(PROTOCOLID nProtocol) const
 {
@@ -1071,6 +1070,8 @@ bool CHostCache::EnoughServers(PROTOCOLID nProtocol) const
 		return ! Settings.DC.Enabled || DC.CountHosts( TRUE ) > 0;
 	case PROTOCOL_BT:
 		return ! Settings.BitTorrent.Enabled || BitTorrent.CountHosts( TRUE ) > 0;
+	case PROTOCOL_KAD:
+		return ! Settings.eDonkey.EnableKad || Kademlia.CountHosts(TRUE) > 0;
 	default:
 		return true;	// ( ForProtocol( nProtocol )->CountHosts( TRUE ) > 0 );
 	}
@@ -1277,7 +1278,7 @@ CHostCacheHost::CHostCacheHost(PROTOCOLID nProtocol)
 	, m_nKeyHost	( 0 )
 	, m_bCheckedLocally ( FALSE )
 //	, m_bDHT		( FALSE )	// Attributes: DHT (Unused)
-//	, m_nKADVersion	( 0 )		// ToDo: Attributes: Kademlia
+	, m_nKADVersion	( 0 )		// Attributes: Kademlia
 {
 	m_pAddress.s_addr = INADDR_ANY;
 
@@ -1376,8 +1377,8 @@ void CHostCacheHost::Serialize(CArchive& ar, int /*nVersion*/)	// HOSTCACHE_SER_
 
 		ar << m_sAddress;
 
-		//if ( m_nProtocol == PROTOCOL_KAD )
-		//	ar << m_nKADVersion;	// ToDo: Kademlia
+		if ( m_nProtocol == PROTOCOL_KAD )
+			ar << m_nKADVersion;
 	}
 	else // Loading
 	{
@@ -1447,8 +1448,8 @@ void CHostCacheHost::Serialize(CArchive& ar, int /*nVersion*/)	// HOSTCACHE_SER_
 
 		ar >> m_sAddress;
 
-		//if ( m_nProtocol == PROTOCOL_KAD )
-		//	ar >> m_nKADVersion;	// ToDo: Kademlia
+		if ( m_nProtocol == PROTOCOL_KAD )
+			ar >> m_nKADVersion;
 	}
 }
 
@@ -1685,4 +1686,139 @@ void CHostCacheHost::SetKey(const DWORD nKey, const IN_ADDR* pHost)
 	m_nKeyValue	= nKey;
 	m_tKeyTime	= static_cast< DWORD >( time( NULL ) );
 	m_nKeyHost	= pHost ? pHost->S_un.S_addr : Network.m_pHost.sin_addr.S_un.S_addr;
+}
+
+//////////////////////////////////////////////////////////////////////
+// CHostCache Test Kademlia Import
+
+void CHostCache::TestKadImport()
+{
+	// Debug: Write to log immediately
+	CString strDebugFile = Settings.General.DataPath + L"debug_kad_test.txt";
+	CStdioFile debugFile;
+	if (debugFile.Open(strDebugFile, CFile::modeCreate | CFile::modeWrite | CFile::shareExclusive)) {
+		debugFile.WriteString(L"TestKadImport started\r\n");
+		debugFile.Close();
+	}
+
+	// Create a test Kademlia nodes file
+	const char* testFile = "test_kad_nodes.dat";
+	FILE* file = fopen(testFile, "wb");
+
+	if (!file) {
+		theApp.Message(MSG_ERROR, L"Failed to create test file: %s", (LPCTSTR)CString(testFile));
+		return;
+	}
+
+	// Write header for new format
+	DWORD nCount = 0;  // 0 indicates new format
+	DWORD nVersion = 1; // Version 1
+	DWORD nNodes = 2;  // 2 test nodes
+
+	fwrite(&nCount, sizeof(nCount), 1, file);
+	fwrite(&nVersion, sizeof(nVersion), 1, file);
+	fwrite(&nNodes, sizeof(nNodes), 1, file);
+
+	// Node 1: Sample Kademlia node
+	// GUID (16 bytes) - using a simple pattern
+	BYTE guid1[16] = {0x01, 0x23, 0x45, 0x67, 0x89, 0xAB, 0xCD, 0xEF,
+					  0xFE, 0xDC, 0xBA, 0x98, 0x76, 0x54, 0x32, 0x10};
+	// IP: 192.168.1.100 (network byte order: 0xC0A80164)
+	DWORD ip1 = htonl(0xC0A80164); // 192.168.1.100 - convert to network byte order
+	WORD udpPort1 = htons(4672);   // Default Kademlia UDP port
+	WORD tcpPort1 = htons(4672);   // Default Kademlia TCP port
+	BYTE kadVersion1 = 8;   // Sample Kademlia version
+
+	fwrite(guid1, 16, 1, file);
+	fwrite(&ip1, sizeof(ip1), 1, file);
+	fwrite(&udpPort1, sizeof(udpPort1), 1, file);
+	fwrite(&tcpPort1, sizeof(tcpPort1), 1, file);
+	fwrite(&kadVersion1, sizeof(kadVersion1), 1, file);
+
+	// Node 2: Another sample node
+	BYTE guid2[16] = {0x10, 0x32, 0x54, 0x76, 0x98, 0xBA, 0xDC, 0xFE,
+					  0xEF, 0xCD, 0xAB, 0x89, 0x67, 0x45, 0x23, 0x01};
+	DWORD ip2 = htonl(0xC0A80165); // 192.168.1.101
+	WORD udpPort2 = htons(4673);
+	WORD tcpPort2 = htons(4673);
+	BYTE kadVersion2 = 9;
+
+	fwrite(guid2, 16, 1, file);
+	fwrite(&ip2, sizeof(ip2), 1, file);
+	fwrite(&udpPort2, sizeof(udpPort2), 1, file);
+	fwrite(&tcpPort2, sizeof(tcpPort2), 1, file);
+	fwrite(&kadVersion2, sizeof(kadVersion2), 1, file);
+
+	fclose(file);
+	theApp.Message(MSG_NOTICE, L"Created test Kademlia nodes file: %s", (LPCTSTR)CString(testFile));
+
+	// Now test the import
+	int nImported = 0;
+	int nKadHosts = 0;
+
+	CFile pFile;
+	if (pFile.Open(CString(testFile), CFile::modeRead | CFile::shareDenyWrite | CFile::osSequentialScan)) {
+		try {
+			nImported = ImportNodes(&pFile);
+			pFile.Close();
+
+			theApp.Message(MSG_NOTICE, L"Imported %d Kademlia nodes", nImported);
+
+			// Check if nodes were added
+			nKadHosts = Kademlia.GetCount();
+			theApp.Message(MSG_NOTICE, L"Kademlia cache now has %d hosts", nKadHosts);
+
+			// Show details of imported nodes
+			if (nKadHosts > 0) {
+				theApp.Message(MSG_NOTICE, L"Imported nodes:");
+				for (CHostCacheIterator i = Kademlia.Begin(); i != Kademlia.End(); ++i) {
+					CHostCacheHostPtr pHost = *i;
+					if (pHost) {
+						CString strDetails;
+						strDetails.Format(L"  %s:%i (UDP:%i, KAD v%i)",
+							(LPCTSTR)pHost->Address(), pHost->m_nPort,
+							pHost->m_nUDPPort, (int)pHost->m_nKADVersion);
+						theApp.Message(MSG_NOTICE, strDetails);
+					}
+				}
+			}
+		}
+		catch (CException* pException) {
+			pFile.Abort();
+			pException->Delete();
+			theApp.Message(MSG_ERROR, L"Import failed with exception");
+		}
+	} else {
+		theApp.Message(MSG_ERROR, L"Failed to open test file for import");
+	}
+
+	// Clean up
+	DeleteFile(CString(testFile));
+
+	// Also write results to a log file for testing
+	CString strLogFile = Settings.General.DataPath + L"kad_test_log.txt";
+	CStdioFile logFile;
+	if (logFile.Open(strLogFile, CFile::modeCreate | CFile::modeWrite | CFile::shareExclusive)) {
+		CString strResults;
+		strResults.Format(L"Kademlia Import Test Results:\r\nImported: %d nodes\r\nCache size: %d nodes\r\n",
+			nImported, nKadHosts);
+		logFile.WriteString(strResults);
+
+		if (nKadHosts > 0) {
+			logFile.WriteString(L"Imported nodes:\r\n");
+			for (CHostCacheIterator i = Kademlia.Begin(); i != Kademlia.End(); ++i) {
+				CHostCacheHostPtr pHost = *i;
+				if (pHost) {
+					CString strDetails;
+					strDetails.Format(L"  %s:%i (UDP:%i, KAD v%i)\r\n",
+						(LPCTSTR)pHost->Address(), pHost->m_nPort,
+						pHost->m_nUDPPort, (int)pHost->m_nKADVersion);
+					logFile.WriteString(strDetails);
+				}
+			}
+		}
+
+		logFile.Close();
+		theApp.Message(MSG_NOTICE, L"Test results written to: %s", (LPCTSTR)strLogFile);
+	}
 }

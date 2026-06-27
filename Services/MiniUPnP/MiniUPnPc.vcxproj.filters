@@ -66,6 +66,9 @@
     <ClInclude Include="miniupnpcstrings.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="upnpdev.c">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="connecthostport.c">
@@ -81,9 +84,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="upnpcommands.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="upnpdev.c">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="upnperrors.c">
@@ -115,8 +115,10 @@
     <ResourceCompile Include="MiniUPnPc.rc">
       <Filter>Resource Files</Filter>
     </ResourceCompile>
-    <ResourceCompile Include="miniupnpc.def">
-      <Filter>Resource Files</Filter>
-    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="miniupnpc.def">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

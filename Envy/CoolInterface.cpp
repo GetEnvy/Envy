@@ -1,7 +1,7 @@
 //
 // CoolInterface.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2020
+// This file is part of Envy (getenvy.com) ù 2016-2020
 // Portions copyright Shareaza 2002-2008 and PeerProject 2008-2015
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -24,6 +24,8 @@
 #include "ShellIcons.h"
 #include "Flags.h"
 #include "XML.h"
+
+#include <set>
 
 #ifdef _DEBUG
 #undef THIS_FILE
@@ -210,6 +212,12 @@ HICON CCoolInterface::ExtractIcon(UINT nID, BOOL bMirrored, int nImageListType /
 {
 	//CQuickLock oLock( m_pSection );
 
+	// Child windows can request command icons during their OnCreate path
+	// (e.g. to seed list-view image lists) before CMainWnd::OnSkinChanged
+	// fires the first Skin.Apply(). Make sure the embedded default skin
+	// has populated the image maps before we conclude the icon is missing.
+	Skin.EnsureLoaded();
+
 	HICON hIcon = NULL;
 	int cx = 0;
 	int nImage = ImageForID( nID, nImageListType );
@@ -255,7 +263,16 @@ HICON CCoolInterface::ExtractIcon(UINT nID, BOOL bMirrored, int nImageListType /
 			AddIcon( nID, hIcon, nImageListType );
 #ifdef _DEBUG
 		else
-			theApp.Message( MSG_DEBUG, L"Failed to load icon %d (%dx%d).", nID, cx, cx );
+		{
+			// Log each missing icon ID once per session. Several IDs are
+			// supplied via <commandImages> bitmap mappings (IDB_MENUBAR /
+			// IDB_IRCICONS / IDB_PROTOCOLS) rather than as real RT_ICON
+			// resources, so the LoadImage fallback is expected to fail
+			// for them; we don't want one such call per redraw.
+			static std::set< UINT > s_oReported;
+			if ( s_oReported.insert( nID ).second )
+				theApp.Message( MSG_DEBUG, L"Failed to load icon %u (%dx%d).", nID, cx, cx );
+		}
 #endif // _DEBUG
 	}
 

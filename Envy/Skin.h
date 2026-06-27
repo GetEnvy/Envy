@@ -46,10 +46,23 @@ public:
 	void		DrawWrappedText(CDC* pDC, CRect* pBox, LPCTSTR pszText, CPoint ptStart, BOOL bExclude = TRUE);
 	static BOOL LoadColor(CXMLElement* pXML, LPCTSTR pszName, COLORREF* pColor);
 	static COLORREF	GetColor(CString sColor);
+	// Lazily populate the embedded default skin definitions (toolbars,
+	// menus, command images) the first time any consumer asks for them.
+	// Child windows can request toolbar/icon lookups during their own
+	// OnCreate (via LoadState -> virtual OnSkinChange), which is reached
+	// before CMainWnd::OnSkinChanged runs the first full Skin.Apply().
+	// Without this guard those early calls would hit an empty map and
+	// emit spurious "Toolbar Lookup" / "Failed to load icon" diagnostics.
+	void		EnsureLoaded();
+	bool		IsLoaded() const { return m_bDefaultLoaded; }
 protected:
 	void		ApplyRecursive(LPCTSTR pszPath = NULL);
 	void		CreateDefault();
 	void		CreateDefaultColors();
+	bool		m_bDefaultLoaded;	// True once CreateDefault has populated built-in resources
+#ifdef _DEBUG
+	void		ValidateLoaded() const;	// Debug-only post-Apply sanity check
+#endif
 
 // Strings
 public:

@@ -1,7 +1,7 @@
 //
 // HttpRequest.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2018
+// This file is part of Envy (getenvy.com) ï¿½ 2016-2018
 // Portions copyright Shareaza 2002-2008 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -80,7 +80,18 @@ BOOL CHttpRequest::SetURL(LPCTSTR pszURL)
 {
 	if ( IsPending() )
 		return FALSE;
-	if ( pszURL == NULL || _tcsncmp( pszURL, L"http", 4 ) )
+	if ( pszURL == NULL )
+		return FALSE;
+	// Validate URL scheme is strictly http:// or https:// with a valid host
+	LPCTSTR pszHost = NULL;
+	if ( _tcsnicmp( pszURL, L"https://", 8 ) == 0 )
+		pszHost = pszURL + 8;
+	else if ( _tcsnicmp( pszURL, L"http://", 7 ) == 0 )
+		pszHost = pszURL + 7;
+	else
+		return FALSE;
+	// Reject empty or delimiter-only host (e.g. "http:///path", "http://?q")
+	if ( *pszHost == L'\0' || *pszHost == L'/' || *pszHost == L'?' || *pszHost == L'#' )
 		return FALSE;
 
 	m_sURL = pszURL;

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source Files">
@@ -441,12 +441,6 @@
     <ClCompile Include="PongCache.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="qrencode.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="QRCode.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="QueryHashGroup.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -886,6 +880,9 @@
       <Filter>Source Files\Dialogs</Filter>
     </ClCompile>
     <ClCompile Include="DlgFilterSearch.cpp">
+      <Filter>Source Files\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgSearchMonitorFilter.cpp">
       <Filter>Source Files\Dialogs</Filter>
     </ClCompile>
     <ClCompile Include="DlgFolderProperties.cpp">
@@ -1596,6 +1593,9 @@
     <None Include="Res\favicon.ico">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="Res\Logo.png">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AlbumFolder.h">
@@ -1910,9 +1910,6 @@
     <ClInclude Include="MetaList.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClCompile Include="MiniUPnP.h">
-      <Filter>Header Files</Filter>
-    </ClCompile>
     <ClInclude Include="MinMax.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -2522,6 +2519,9 @@
     <ClInclude Include="DlgFilterSearch.h">
       <Filter>Header Files\Dialogs</Filter>
     </ClInclude>
+    <ClInclude Include="DlgSearchMonitorFilter.h">
+      <Filter>Header Files\Dialogs</Filter>
+    </ClInclude>
     <ClInclude Include="DlgFolderProperties.h">
       <Filter>Header Files\Dialogs</Filter>
     </ClInclude>
@@ -2780,9 +2780,6 @@
     <ClInclude Include="FileFragments\Range.hpp">
       <Filter>Header Files\File Fragments\FileFragments</Filter>
     </ClInclude>
-    <ClInclude Include="FileFragments\Ranges.hpp">
-      <Filter>Header Files\File Fragments\FileFragments</Filter>
-    </ClInclude>
     <ClInclude Include="Hashes.hpp">
       <Filter>Header Files\Hash Algorithms</Filter>
     </ClInclude>
@@ -2824,6 +2821,42 @@
     </ClInclude>
     <ClInclude Include="BitTorrentDHT\dht.c">
       <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Kademlia.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="KBucket.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="KadProtocol.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="KadStorage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Kademlia.cpp">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="KademliaPlatform.cpp">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="KBucket.cpp">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="KadProtocol.cpp">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="KadStorage.cpp">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="qrencode.c">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="QRCode.cpp">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MiniUPnP.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

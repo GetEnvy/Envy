@@ -1,7 +1,7 @@
 //
 // EDNeighbour.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2018
+// This file is part of Envy (getenvy.com) ï¿½ 2016-2018
 // Portions copyright Shareaza 2002-2008 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -223,6 +223,23 @@ BOOL CEDNeighbour::ProcessPackets(CBuffer* pInput)
 	{
 		try
 		{
+			// Inflate compressed server packets before processing
+			// Server packets can arrive with ED2K_PROTOCOL_EMULE_PACKED (0xD4)
+			if ( pPacket->m_nEdProtocol == ED2K_PROTOCOL_EMULE_PACKED )
+			{
+				// Use 512 KB cap for server packets to prevent zip-bomb attacks while allowing
+				// typical search results and control traffic (most ED2K server responses are < 100 KB)
+				const DWORD MAX_SERVER_PACKET_SIZE = 512 * 1024;	// 512 KB
+				if ( ! pPacket->Inflate( MAX_SERVER_PACKET_SIZE ) )
+				{
+					// Inflation failed or exceeded size cap - discard packet safely
+					pPacket->Release();
+					continue;
+				}
+				// After inflation, treat as EDONKEY protocol for server responses (eMule behavior)
+				pPacket->m_nEdProtocol = ED2K_PROTOCOL_EDONKEY;
+			}
+
 			bSuccess = OnPacket( pPacket );
 		}
 		catch ( CException* pException )
@@ -287,23 +304,65 @@ BOOL CEDNeighbour::OnRejected(CEDPacket* /*pPacket*/)
 
 BOOL CEDNeighbour::OnServerMessage(CEDPacket* pPacket)
 {
-	if ( pPacket->GetRemaining() < 4 ) return TRUE;
+	// Server message format: <len 2><Message len>
+	// Need at least 2 bytes for the length field
+	if ( pPacket->GetRemaining() < 2 ) return TRUE;
 
+	// Read the message string with Unicode support if server indicates it
 	CString	strMessage = pPacket->ReadEDString(
 		( m_nTCPFlags & ED2K_SERVER_TCP_UNICODE ) != 0 );
 
-	while ( ! strMessage.IsEmpty() )
+	// Validate message length (prevent buffer overflow attacks)
+	if ( strMessage.GetLength() > 5000 ) // Reasonable limit for server messages
 	{
-		CString strLine = strMessage.SpanExcluding( L"\r\n" );
+		theApp.Message( MSG_WARNING, L"ED2K server message too long from %s", (LPCTSTR)m_sAddress );
+		return TRUE;
+	}
 
-		if ( ! strLine.IsEmpty() )
+	// Debug logging for server messages
+	#ifdef _DEBUG
+	theApp.Message( MSG_DEBUG, L"ED2K server message from %s: %s", (LPCTSTR)m_sAddress, (LPCTSTR)strMessage );
+	#endif
+
+	// Handle empty messages
+	if ( strMessage.IsEmpty() ) return TRUE;
+
+	// Parse message line by line, handling different line endings properly
+	int nStart = 0;
+	while ( nStart < strMessage.GetLength() )
+	{
+		// Find the end of the current line
+		int nEnd = nStart;
+		while ( nEnd < strMessage.GetLength() )
 		{
-			strMessage = strMessage.Mid( strLine.GetLength() );
-			theApp.Message( MSG_NOTICE, IDS_ED2K_SERVER_MESSAGE, (LPCTSTR)m_sAddress, (LPCTSTR)strLine );
+			TCHAR ch = strMessage[nEnd];
+			if ( ch == L'\r' || ch == L'\n' )
+				break;
+			nEnd++;
 		}
 
-		if ( ! strMessage.IsEmpty() )
-			strMessage = strMessage.Mid( 1 );
+		// Extract the line
+		if ( nEnd > nStart )
+		{
+			CString strLine = strMessage.Mid( nStart, nEnd - nStart );
+			if ( ! strLine.IsEmpty() )
+			{
+				theApp.Message( MSG_NOTICE, IDS_ED2K_SERVER_MESSAGE, (LPCTSTR)m_sAddress, (LPCTSTR)strLine );
+			}
+		}
+
+		// Skip line ending characters (\r\n, \n, or \r)
+		if ( nEnd < strMessage.GetLength() )
+		{
+			TCHAR ch = strMessage[nEnd];
+			nEnd++; // Skip the \r or \n
+			if ( ch == L'\r' && nEnd < strMessage.GetLength() && strMessage[nEnd] == L'\n' )
+			{
+				nEnd++; // Skip the \n in \r\n sequence
+			}
+		}
+
+		nStart = nEnd;
 	}
 
 	return TRUE;
@@ -540,14 +599,23 @@ BOOL CEDNeighbour::OnCallbackRequested(CEDPacket* pPacket)
 
 BOOL CEDNeighbour::OnSearchResults(CEDPacket* pPacket)
 {
-	if ( m_pQueries.GetCount() == 0 )
+	Hashes::Guid oGUID;
+	bool bHasValidGUID = false;
+
+	// Try to get the search GUID for this response
+	if ( m_pQueries.GetCount() > 0 )
 	{
-		Statistics.Current.eDonkey.Dropped++;
-		m_nDropCount++;
-		return TRUE;
+		oGUID = m_pQueries.RemoveHead();
+		bHasValidGUID = true;
+	}
+	else
+	{
+		// No pending queries - this might be a GetSources response or stray packet
+		// Use an empty GUID, which will still allow processing but won't match any search
+		oGUID.clear();
+		bHasValidGUID = false;
 	}
 
-	Hashes::Guid oGUID = m_pQueries.RemoveHead();
 	CQueryHit* pHits = CQueryHit::FromEDPacket( pPacket, &m_pHost, m_nTCPFlags & ED2K_SERVER_TCP_UNICODE, oGUID );
 
 	if ( pHits == NULL )
@@ -564,7 +632,7 @@ BOOL CEDNeighbour::OnSearchResults(CEDPacket* pPacket)
 	}
 
 	// Process the 'more results available' packet.
-	if ( pPacket->m_nType == ED2K_S2C_SEARCHRESULTS && pPacket->GetRemaining() == 1 && m_pQueries.IsEmpty() )
+	if ( pPacket->m_nType == ED2K_S2C_SEARCHRESULTS && pPacket->GetRemaining() == 1 && bHasValidGUID )
 	{
 		// This will be remembered by the neighbour, and if the search continues, more results can be requested.
 		if ( pPacket->ReadByte() == TRUE )
@@ -646,9 +714,9 @@ BOOL CEDNeighbour::SendLogin()
 	CEDTag( ED2K_CT_SOFTWAREVERSION,
 		( ( ( ED2K_CLIENT_ID & 0xFF ) << 24 ) |
 		( ( theApp.m_nVersion[0] & 0x7F ) << 17 ) |
-		( ( theApp.m_nVersion[1] & 0x7F ) << 10 ) ) ).Write(pPacket);
-	//	( ( theApp.m_nVersion[2] & 0x07 ) << 7  ) |
-	//	( ( theApp.m_nVersion[3] & 0x7F )       ) ) ).Write( pPacket );
+		( ( theApp.m_nVersion[1] & 0x7F ) << 10 ) |
+		( ( theApp.m_nVersion[2] & 0x07 ) << 7  ) |
+		( ( theApp.m_nVersion[3] & 0x7F )       ) ) ).Write( pPacket );
 
 	// 5 - Port
 	if ( Settings.eDonkey.SendPortServer )
@@ -782,9 +850,9 @@ BOOL CEDNeighbour::SendQuery(const CQuerySearch* pSearch, CPacket* pPacket, BOOL
 	if ( m_nClientID == 0 )
 		return FALSE;	// We're not ready
 
-	// Don't add the GUID for GetSources
-	if ( ! pSearch->m_oED2K || ( pSearch->m_bWantDN && Settings.eDonkey.MagnetSearch ) )
-		m_pQueries.AddTail( pSearch->m_oGUID );
+	// Add GUID for all queries that might return SEARCHRESULTS
+	// This includes text searches and GetSources requests (in case servers send SEARCHRESULTS instead of FOUNDSOURCES)
+	m_pQueries.AddTail( pSearch->m_oGUID );
 
 	return CNeighbour::SendQuery( pSearch, pPacket, bLocal );
 }

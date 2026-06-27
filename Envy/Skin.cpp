@@ -1,7 +1,7 @@
-//
+﻿//
 // Skin.cpp
 //
-// This file is part of Envy (getenvy.com) � 2016-2020
+// This file is part of Envy (getenvy.com) © 2016-2020
 // Portions copyright Shareaza 2002-2008 and PeerProject 2008-2016
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -21,6 +21,8 @@
 #include "Envy.h"
 #include "Skin.h"
 #include "SkinWindow.h"
+
+#include <set>
 #include "CtrlCoolBar.h"
 #include "CoolMenu.h"
 #include "CoolInterface.h"
@@ -48,6 +50,7 @@ BOOL CSkin::m_bSkinChanging = FALSE;	// Static system state indicator (Active CM
 // CSkin construction
 
 CSkin::CSkin()
+	: m_bDefaultLoaded( false )
 {
 	// Experimental values (ToDo:?)
 	m_pStrings.InitHashTable( 1531 );
@@ -86,10 +89,24 @@ void CSkin::Apply()
 
 	Plugins.OnSkinChanged();
 
-//#ifdef _DEBUG
+#ifdef _DEBUG
+	ValidateLoaded();
 //	theApp.Message( MSG_INFO, L"Icons: 16px %i, 32px %i, 48px %i",
 //		CoolInterface.GetImageCount(LVSIL_SMALL), CoolInterface.GetImageCount(LVSIL_NORMAL), CoolInterface.GetImageCount(LVSIL_BIG) );
-//#endif
+#endif
+}
+
+void CSkin::EnsureLoaded()
+{
+	// Recursion guard: CreateDefault eventually populates the maps and
+	// sets m_bDefaultLoaded; nested calls during that work must be no-ops.
+	static bool s_bLoading = false;
+	if ( m_bDefaultLoaded || s_bLoading )
+		return;
+
+	s_bLoading = true;
+	CreateDefault();
+	s_bLoading = false;
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -151,6 +168,8 @@ void CSkin::CreateDefault()
 //	CoolInterface.CopyIcon( ID_HELP_FAQ, ID_HELP_WEB_4 );
 //	CoolInterface.CopyIcon( ID_HELP_FAQ, ID_HELP_WEB_BITPRINT );
 //	CoolInterface.CopyIcon( ID_HELP_FAQ, ID_HELP_WEB_SKINS );
+
+	m_bDefaultLoaded = true;
 }
 
 void CSkin::CreateDefaultColors()
@@ -234,6 +253,8 @@ void CSkin::Clear()
 	m_pSkins.RemoveAll();
 	m_pFontPaths.RemoveAll();
 	m_pImages.RemoveAll();
+
+	m_bDefaultLoaded = false;
 
 //	if ( m_brDialog.m_hObject ) m_brDialog.DeleteObject();
 //	if ( m_brDialogPanel.m_hObject ) m_brDialogPanel.DeleteObject();
@@ -948,10 +969,14 @@ CMenu* CSkin::GetMenu(LPCTSTR pszName) const
 //			break;
 //	}
 
-	ASSERT_VALID( pMenu );
-	ASSERT( pMenu->GetMenuItemCount() > 0 );
-
-	return pMenu;
+       if (pMenu == nullptr) {
+               // Log error or handle gracefully
+               theApp.Message(MSG_ERROR, IDS_SKIN_ERROR, L"Menu not found: %s", strName.GetString());
+               return nullptr;
+       }
+       ASSERT_VALID(pMenu);
+       ASSERT(pMenu->GetMenuItemCount() > 0);
+       return pMenu;
 }
 
 BOOL CSkin::LoadMenus(CXMLElement* pBase)
@@ -1121,6 +1146,12 @@ BOOL CSkin::CreateToolBar(LPCTSTR pszName, CCoolBarCtrl* pBar)
 	if ( pszName == NULL )
 		return FALSE;
 
+	// Child windows may call this from their own OnCreate -> LoadState
+	// -> virtual OnSkinChange path, which runs before CMainWnd's first
+	// Skin.Apply(). Fall back to the embedded default skin so we serve
+	// a valid built-in toolbar instead of emitting a spurious miss.
+	EnsureLoaded();
+
 	if ( pBar->m_hWnd )
 	{
 		for ( CWnd* pChild = pBar->GetWindow( GW_CHILD ); pChild; pChild = pChild->GetNextWindow() )
@@ -1180,7 +1211,11 @@ BOOL CSkin::CreateToolBar(LPCTSTR pszName, CCoolBarCtrl* pBar)
 
 #ifdef _DEBUG
 	//ASSERT( pBase == NULL );
-	theApp.Message( MSG_ERROR, IDS_SKIN_ERROR, L"Toolbar Lookup", strClassName );
+	// Log each missing toolbar name once per session to keep startup logs
+	// readable when a skin is missing entries for less common windows.
+	static std::set< CString > s_oReported;
+	if ( s_oReported.insert( strClassName ).second )
+		theApp.Message( MSG_ERROR, IDS_SKIN_ERROR, L"Toolbar Lookup", strClassName );
 #endif
 	return FALSE;
 }
@@ -1191,6 +1226,10 @@ CCoolBarCtrl* CSkin::GetToolBar(LPCTSTR pszName) const
 
 	ASSERT( pszName );
 	ASSERT( Settings.General.GUIMode == GUI_TABBED || Settings.General.GUIMode == GUI_BASIC || Settings.General.GUIMode == GUI_WINDOWED );
+
+	// Match CreateToolBar's behaviour for callers that hit us before the
+	// first full Skin.Apply() (early window creation path).
+	const_cast< CSkin* >( this )->EnsureLoaded();
 
 	CCoolBarCtrl* pBar = NULL;
 	CString strName( pszName );
@@ -2625,6 +2664,8 @@ CString	CSkin::GetImagePath(UINT nImageID) const
 {
 	//CQuickLock oLock( m_pSection );
 
+	const_cast< CSkin* >( this )->EnsureLoaded();
+
 	CString strPath;
 	if ( ! m_pImages.Lookup( nImageID, strPath ) )
 		strPath.Format( L"\"%s\",-%u", (LPCTSTR)theApp.m_strBinaryPath, nImageID );
@@ -2811,6 +2852,69 @@ BOOL CSkin::LoadCommandBitmap(CXMLElement* pBase, const CString& strPath)
 
 	return TRUE;
 }
+
+//////////////////////////////////////////////////////////////////////
+// CSkin debug validator
+
+#ifdef _DEBUG
+void CSkin::ValidateLoaded() const
+{
+	// Headline: how much of the built-in skin actually wired up.
+	const INT_PTR nToolbars = m_pToolbars.GetCount();
+	const INT_PTR nImages   = m_pImages.GetCount();
+	theApp.Message( MSG_DEBUG,
+		L"Skin loaded: toolbars=%Ii, commandImageMappings=%Ii, defaultsReady=%d",
+		nToolbars, nImages, m_bDefaultLoaded ? 1 : 0 );
+
+	// Toolbars referenced from first-party code (Skin.CreateToolBar /
+	// GetToolBar call-sites). Missing entries here mean the active skin
+	// chain is genuinely incomplete, not just a transient early-call miss.
+	static const LPCTSTR s_pszCriticalToolbars[] =
+	{
+		L"CMainWnd",
+		L"CDownloadsWnd",
+		L"CUploadsWnd",
+		L"CNeighboursWnd",
+		L"CIRCFrame",
+		L"CSearchWnd.Panel",
+		L"CSearchWnd.Full",
+		L"CLibraryTree.Top",
+		L"CLibraryTree.Virtual",
+		L"CLibraryTree.Physical",
+		L"CLibraryHeaderBar.Physical",
+		L"CLibraryHeaderBar.Virtual",
+		L"CLibraryTileView.Physical",
+		NULL
+	};
+	for ( int i = 0; s_pszCriticalToolbars[ i ]; ++i )
+	{
+		CCoolBarCtrl* pBar = NULL;
+		if ( ! m_pToolbars.Lookup( CString( s_pszCriticalToolbars[ i ] ), pBar ) )
+			theApp.Message( MSG_DEBUG, L"Skin missing toolbar: %s", s_pszCriticalToolbars[ i ] );
+	}
+
+	// Command IDs whose images are supplied by IDB_MENUBAR / IDB_IRCICONS /
+	// IDB_PROTOCOLS in Default.xml. If they are absent, the bitmap load or
+	// its <image> mapping silently failed and runtime ExtractIcon calls
+	// will fall through to "Failed to load icon" noise.
+	static const UINT s_anCriticalIcons[] =
+	{
+		ID_IRC_ADD, ID_IRC_REMOVE,
+		ID_NETWORK_G2, ID_NETWORK_G1, ID_NETWORK_ED2K, ID_NETWORK_KAD,
+		ID_NETWORK_DC, ID_NETWORK_BT, ID_NETWORK_HTTP, ID_NETWORK_FTP,
+		ID_NETWORK_NULL,
+		ID_SEARCH_SEARCH, ID_SEARCH_DETAILS,
+		0
+	};
+	for ( int i = 0; s_anCriticalIcons[ i ]; ++i )
+	{
+		const UINT nID = s_anCriticalIcons[ i ];
+		if ( CoolInterface.ImageForID( nID, LVSIL_SMALL ) < 0 )
+			theApp.Message( MSG_DEBUG, L"Skin missing command image: %u", nID );
+	}
+}
+#endif // _DEBUG
+
 
 //////////////////////////////////////////////////////////////////////
 // CSkin popup menu helper

@@ -1,0 +1,20 @@
+# gitleaks configuration for Envy
+# Extends gitleaks' default ruleset and adds an allowlist for known
+# false-positive paths (third-party amalgamations and translation files).
+
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Envy global allowlist"
+paths = [
+  # Upstream SQLite amalgamation (sqlite3.c is ~9 MB of vendored code).
+  # Matches like 'sqlite3_api->xxx' and integer keys trip generic-api-key
+  # at high entropy without being real secrets.
+  '''Services/SQLite/sqlite3\.c''',
+  '''Services/SQLite/sqlite3\.h''',
+
+  # Translation catalogs - long ID/hash-like strings are msgid keys, not
+  # secrets.
+  '''Languages/.*\.po''',
+]

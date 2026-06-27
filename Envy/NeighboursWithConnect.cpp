@@ -189,8 +189,9 @@ CNeighbour* CNeighboursWithConnect::ConnectTo(
 
 	case PROTOCOL_KAD:
 		{
-			SOCKADDR_IN pHost = { AF_INET, htons( nPort ), pAddress };
-			Kademlia.Bootstrap( &pHost );
+			// Kad2 bootstrap uses host cache automatically
+			// If a specific contact is provided, it will be added to cache first
+			Kademlia.Bootstrap();
 		}
 		break;
 

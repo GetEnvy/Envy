@@ -1,7 +1,7 @@
-//
+﻿//
 // Hashes/HashDescriptors.hpp
 //
-// This file is part of Envy (getenvy.com) � 2016-2018
+// This file is part of Envy (getenvy.com) © 2016-2018
 // Portions copyright Shareaza 2005 and PeerProject 2008-2014
 //
 // Envy is free software; you can redistribute it and/or
@@ -190,6 +190,22 @@ namespace Hashes
 			static const size_t byteCount = wordCount * sizeof( WordType );
 			static const Encoding encoding = base16Encoding;
 			static const size_t numUrns = 0;
+			typedef std::array< uchar, byteCount > RawStorage;
+			typedef std::array< WordType, wordCount > AlignedStorage;
+			static std::vector< AlignedStorage > blackList;
+		};
+
+		//! \brief  A model of \ref hashdescriptorpage "Hash Descriptor" for SHA256 hashes.
+		//! SHA256 is used for BitTorrent v2 support. It is computed directly over a 32bit stream,
+		//! with each 32bit word consisting of 4 bytes in big endian order.
+		struct Sha256Descriptor
+		{
+			typedef uint32 WordType;
+			static const size_t wordCount = 8;
+			static const size_t byteCount = wordCount * sizeof( WordType );
+			static const size_t numUrns = 2;
+			static const UrnString urns[ numUrns ];
+			static const Encoding encoding = base32Encoding;
 			typedef std::array< uchar, byteCount > RawStorage;
 			typedef std::array< WordType, wordCount > AlignedStorage;
 			static std::vector< AlignedStorage > blackList;

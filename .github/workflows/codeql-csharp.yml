@@ -1,0 +1,57 @@
+name: CodeQL C# Manual Build
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  security-events: write
+  actions: read
+
+concurrency:
+  group: codeql-csharp-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+
+jobs:
+  analyze-csharp:
+    name: Analyze (csharp)
+    runs-on: windows-2025-vs2026
+    timeout-minutes: 60
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Add MSBuild to PATH
+        uses: microsoft/setup-msbuild@v3
+        with:
+          msbuild-architecture: x64
+
+      - name: Initialize CodeQL (manual C# build)
+        uses: github/codeql-action/init@v4
+        with:
+          languages: csharp
+          build-mode: manual
+          queries: security-extended,security-and-quality
+
+      - name: Build SkinUpdater solution (Release, Any CPU)
+        shell: cmd
+        run: |
+          msbuild "Languages\Tools\SkinUpdater\SkinUpdater.sln" ^
+            /m ^
+            /nologo ^
+            /verbosity:minimal ^
+            /p:Configuration=Release ^
+            /p:Platform="Any CPU"
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v4
+        with:
+          category: /language:csharp

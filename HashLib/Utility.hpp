@@ -1,7 +1,7 @@
 //
 // Utility.hpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2018
+// This file is part of Envy (getenvy.com) ï¿½ 2016-2018
 // Portions copyright Shareaza 2008 and PeerProject 2008-2014
 //
 // Envy is free software; you can redistribute it and/or
@@ -284,7 +284,7 @@ inline void for_each_if(InputIterator first, InputIterator last,
 	for ( ; first != last; ++first )
 	{
 		if ( pred( *first ) )
-			f( *first )
+			f( *first );
 	}
 }
 

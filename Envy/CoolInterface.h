@@ -105,11 +105,11 @@ private:
 
 extern CCoolInterface CoolInterface;
 
-typedef struct
+struct TOOLBAR_RES
 {
 	WORD wVersion;
 	WORD wWidth;
 	WORD wHeight;
 	WORD wItemCount;
 	WORD* items() { return (WORD*)(this+1); }
-} TOOLBAR_RES;
+};

@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+title: Envy
+message: "If you use Envy in research or articles, please cite it as below."
+type: software
+authors:
+  - name: Envy Development Team
+    website: "https://github.com/mika3578/envy"
+repository-code: "https://github.com/mika3578/envy"
+url: "https://github.com/mika3578/envy"
+abstract: >
+  Envy is a multi-network peer-to-peer filesharing and BitTorrent client
+  for Microsoft Windows, supporting Gnutella, eDonkey/eMule (ed2k/Kad),
+  BitTorrent (including DHT, uTP, magnet) and DC++ protocols.
+keywords:
+  - peer-to-peer
+  - bittorrent
+  - gnutella
+  - filesharing
+  - windows
+license: AGPL-3.0-or-later

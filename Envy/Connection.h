@@ -66,12 +66,12 @@ private:
 	CConnection& operator=(const CConnection&);
 
 public:
-	inline CLockedBuffer GetInput() const throw()
+	inline CLockedBuffer GetInput() const noexcept
 	{
 		return CLockedBuffer( m_pInput, m_pInputSection );
 	}
 
-	inline CLockedBuffer GetOutput() const throw()
+	inline CLockedBuffer GetOutput() const noexcept
 	{
 		return CLockedBuffer( m_pOutput, m_pOutputSection );
 	}
@@ -90,60 +90,60 @@ public:
 	void LogOutgoing();
 
 	// True if the socket is valid, false if its closed
-	inline BOOL IsValid() const throw()
+	inline BOOL IsValid() const noexcept
 	{
 		return ( m_hSocket != INVALID_SOCKET );
 	}
 
-	inline bool IsOutputExist() const throw()
+	inline bool IsOutputExist() const noexcept
 	{
 		CQuickLock oOutputLock( *m_pOutputSection );
 		return ( m_pOutput != NULL );
 	}
 
-	inline bool IsInputExist() const throw()
+	inline bool IsInputExist() const noexcept
 	{
 		CQuickLock oOutputLock( *m_pInputSection );
 		return ( m_pInput != NULL );
 	}
 
-	inline DWORD GetOutputLength() const throw()
+	inline DWORD GetOutputLength() const noexcept
 	{
 		CQuickLock oOutputLock( *m_pOutputSection );
 		return m_pOutput->m_nLength;
 	}
 
-	inline DWORD GetInputLength() const throw()
+	inline DWORD GetInputLength() const noexcept
 	{
 		CQuickLock oOutputLock( *m_pInputSection );
 		return m_pInput->m_nLength;
 	}
 
-	inline void WriteReversed(const void* pData, const size_t nLength) throw()
+	inline void WriteReversed(const void* pData, const size_t nLength) noexcept
 	{
 		CQuickLock oOutputLock( *m_pOutputSection );
 		m_pOutput->AddReversed( pData, nLength );
 	}
 
-	inline void Write(const void* pData, const size_t nLength) throw()
+	inline void Write(const void* pData, const size_t nLength) noexcept
 	{
 		CQuickLock oOutputLock( *m_pOutputSection );
 		m_pOutput->Add( pData, nLength );
 	}
 
-	inline void Write(const CString& strData, const UINT nCodePage = CP_ACP) throw()
+	inline void Write(const CString& strData, const UINT nCodePage = CP_ACP) noexcept
 	{
 		CQuickLock oOutputLock( *m_pOutputSection );
 		m_pOutput->Print( strData, nCodePage );
 	}
 
-	inline void Write(const CBuffer* pBuffer) throw()
+	inline void Write(const CBuffer* pBuffer) noexcept
 	{
 		CQuickLock oOutputLock( *m_pOutputSection );
 		m_pOutput->Add( pBuffer->m_pBuffer, pBuffer->m_nLength );
 	}
 
-	inline void Write(CPacket* pPacket) throw()
+	inline void Write(CPacket* pPacket) noexcept
 	{
 		CQuickLock oOutputLock( *m_pOutputSection );
 		pPacket->ToBuffer( m_pOutput );
@@ -157,7 +157,7 @@ public:
 		template< typename > class ValidationPolicy
 		>
 	inline void Write(Hashes::Hash< Descriptor, StoragePolicy,
-		CheckingPolicy, ValidationPolicy >& oHash) throw()
+		CheckingPolicy, ValidationPolicy >& oHash) noexcept
 	{
 		CQuickLock oOutputLock( *m_pOutputSection );
 		m_pOutput->Add( &oHash[ 0 ], oHash.byteCount );
@@ -171,37 +171,37 @@ public:
 		template< typename > class ValidationPolicy
 		>
 	inline void Read(Hashes::Hash< Descriptor, StoragePolicy,
-		CheckingPolicy, ValidationPolicy >& oHash) throw()
+		CheckingPolicy, ValidationPolicy >& oHash) noexcept
 	{
 		CQuickLock oInputLock( *m_pInputSection );
 		m_pInput->Read( &oHash[ 0 ], oHash.byteCount );
 	}
 
-	inline BOOL Read(void* pData, const size_t nLength) throw()
+	inline BOOL Read(void* pData, const size_t nLength) noexcept
 	{
 		CQuickLock oInputLock( *m_pInputSection );
 		return m_pInput->Read( pData, nLength );
 	}
 
-	inline BOOL Read(CString& strData, BOOL bPeek = FALSE) throw()
+	inline BOOL Read(CString& strData, BOOL bPeek = FALSE) noexcept
 	{
 		CQuickLock oInputLock( *m_pInputSection );
 		return m_pInput->ReadLine( strData, bPeek );
 	}
 
-	inline void RemoveFromInput(const size_t nLength) throw()
+	inline void RemoveFromInput(const size_t nLength) noexcept
 	{
 		CQuickLock oInputLock( *m_pInputSection );
 		m_pInput->Remove( nLength );
 	}
 
-	inline void Prefix(LPCSTR pszText, const size_t nLength) throw()
+	inline void Prefix(LPCSTR pszText, const size_t nLength) noexcept
 	{
 		CQuickLock oInputLock( *m_pInputSection );
 		m_pInput->Prefix( pszText, nLength );
 	}
 
-	inline BYTE PeekAt(const size_t nPos) const throw()
+	inline BYTE PeekAt(const size_t nPos) const noexcept
 	{
 		CQuickLock oInputLock( *m_pInputSection );
 		return m_pInput->m_pBuffer[ nPos ];
@@ -213,7 +213,7 @@ public:
 		return m_pInput->StartsWith( pszString, nLength, FALSE );
 	}
 
-	inline void CreateBuffers() throw()
+	inline void CreateBuffers() noexcept
 	{
 		{
 			CQuickLock oInputLock( *m_pInputSection );
@@ -227,7 +227,7 @@ public:
 		}
 	}
 
-	inline void DestroyBuffers() throw()
+	inline void DestroyBuffers() noexcept
 	{
 		{
 			CQuickLock oInputLock( *m_pInputSection );
@@ -267,7 +267,7 @@ public:
 	static const DWORD	METER_PERIOD	= METER_MINIMUM * METER_LENGTH;	// The time that the bandwidth meter keeps information for
 
 	// Keep track of how fast we are reading or writing bytes to a socket
-	typedef struct
+	struct TCPBandwidthMeter
 	{
 		// Options to limit bandwidth
 		DWORD*	pLimit;		// Points to a DWORD that holds the limit for this bandwidth meter
@@ -288,7 +288,7 @@ public:
 		DWORD	CalculateLimit(DWORD tNow, DWORD nBandwidthScale, bool bMaxMode = false) const;	// Work out the limit
 		DWORD	CalculateUsage(DWORD tTime ) const;						// Work out the meter usage from a given time over 30sec   (optimal for time periods more than METER_LENGTH / 2)
 		DWORD	CalculateUsage(DWORD tTime, bool bShortPeriod ) const;	// Work out the meter usage from a given time under 30sec  (optimal for time periods less than METER_LENGTH / 2)
-	} TCPBandwidthMeter;
+	};
 
 	// Structures to control bandwidth in each direction
 	TCPBandwidthMeter m_mInput;		// Input TCP bandwidth meter

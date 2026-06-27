@@ -1,7 +1,7 @@
 //
 // HubHorizon.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2018
+// This file is part of Envy (getenvy.com) Â© 2016-2018
 // Portions copyright Shareaza 2002-2007 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -187,7 +187,11 @@ CHubHorizonGroup::CHubHorizonGroup()
 CHubHorizonGroup::~CHubHorizonGroup()
 {
 	Clear();
-	if ( m_pList != NULL ) delete [] m_pList;
+	if ( m_pList != NULL )
+	{
+		delete [] m_pList;
+		m_pList = NULL;
+	}
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -217,6 +221,7 @@ void CHubHorizonGroup::Add(IN_ADDR* pAddress, WORD nPort)
 		{
 			if ( m_nCount ) CopyMemory( pList, m_pList, sizeof(CHubHorizonHub*) * m_nCount );
 			delete [] m_pList;
+			m_pList = NULL;
 		}
 		m_pList = pList;
 	}

@@ -1,0 +1,64 @@
+name: Build failure
+description: A clean checkout fails to compile.
+title: "[Build]: "
+labels: ["build", "triage"]
+body:
+  - type: input
+    id: vs-version
+    attributes:
+      label: Visual Studio version
+      placeholder: "Visual Studio 2026 18.6.0"
+    validations:
+      required: true
+  - type: input
+    id: msvc-version
+    attributes:
+      label: MSVC Build Tools version
+      placeholder: "14.50.xx"
+    validations:
+      required: true
+  - type: dropdown
+    id: toolset
+    attributes:
+      label: Platform toolset
+      options:
+        - v145 (VS 2026)
+        - v143 (VS 2022)
+        - other (please specify)
+    validations:
+      required: true
+  - type: dropdown
+    id: config
+    attributes:
+      label: Configuration
+      options:
+        - Release x64
+        - Release Win32
+        - Release ARM64
+        - Debug x64
+        - Debug Win32
+    validations:
+      required: true
+  - type: input
+    id: commit
+    attributes:
+      label: Commit hash
+      placeholder: "git rev-parse HEAD"
+    validations:
+      required: true
+  - type: textarea
+    id: error
+    attributes:
+      label: Error output
+      render: shell
+    validations:
+      required: true
+  - type: checkboxes
+    id: tried
+    attributes:
+      label: Steps already attempted
+      options:
+        - label: Ran `Cleanup.bat`
+        - label: Reinstalled vcpkg dependencies
+        - label: Ran `Visual Studio\SetVS2026.bat`
+        - label: Tried with all dependent Components installed (MFC, ATL, Spectre libs)

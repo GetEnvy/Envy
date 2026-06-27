@@ -1,0 +1,32 @@
+---
+description: Naming conventions (MFC/C++): prefixes, casing, and file/class naming
+globs: ["**/*.cpp", "**/*.h", "**/*.hpp", "**/*.rc", "**/Resource.h"]
+alwaysApply: false
+---
+
+# Naming conventions (Envy)
+
+## Classes / structs
+- MFC classes: `C` + PascalCase (e.g., `CDownloadTask`)
+- Plain structs: PascalCase (e.g., `FileMetadata`)
+
+## Member prefixes (actual codebase)
+- `m_s*`: strings (`CString`, `CStringList`) **(hard rule: use `m_s`, not `m_str`)**
+- `m_n*`: numbers/sizes/counts
+- `m_b*`: booleans (**use `BOOL` for MFC members**)
+- `m_p*`: pointers (raw or smart pointers)
+- `m_h*`: handles (`HANDLE`, `SOCKET`, hooks)
+- `m_t*`: time/tick values
+- `m_o*`: object/collection members
+
+## Locals / parameters
+- Use short type-prefix locals when it improves clarity: `str`, `n`, `b`, `p`, `h`, `t`, `o`.
+- Avoid single-letter names except loop counters (`i`, `j`, `k`).
+
+## Functions / methods
+- Methods: PascalCase (public + private).
+- MFC handlers: `On...` (e.g., `OnBnClickedOk`, `OnTimer`, `OnSize`).
+
+## Files
+- Prefer file names that match the primary class: `Foo.h` / `Foo.cpp`.
+- Related helpers: `FooHelpers.cpp`, `FooTests.cpp` (only when it improves navigation).

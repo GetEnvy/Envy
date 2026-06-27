@@ -1,0 +1,61 @@
+name: Dependency review
+
+on:
+  pull_request:
+    branches: [main, master, develop]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+concurrency:
+  group: dep-review-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+
+jobs:
+  review:
+    name: Dependency review
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Dependency Review
+        uses: actions/dependency-review-action@v5
+        with:
+          fail-on-severity: high
+          comment-summary-in-pr: on-failure
+          deny-licenses: GPL-2.0, GPL-3.0, AGPL-1.0
+          # AGPL-3.0 is allowed because Envy itself is AGPL-3.0+.
+
+  vcpkg-baseline-check:
+    name: Vcpkg manifest sanity
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Validate vcpkg.json against schema
+        shell: bash
+        run: |
+          if ! command -v jq >/dev/null; then
+            sudo apt-get update && sudo apt-get install -y jq
+          fi
+          # Use bracket notation: jq parses `.version-string` as
+          # subtraction because of the dash.
+          jq -e '.name and .["version-string"] and (.dependencies | type == "array")' \
+            vcpkg.json > /dev/null
+          echo "vcpkg.json is structurally valid."
+
+      - name: Warn if builtin-baseline is unset
+        shell: bash
+        run: |
+          baseline=$(jq -r '.["builtin-baseline"] // empty' vcpkg.json)
+          if [ -z "$baseline" ] || [ "$baseline" = "0000000000000000000000000000000000000000" ]; then
+            echo "::warning::vcpkg.json builtin-baseline is unset or placeholder; Dependabot will populate it on first run."
+          else
+            echo "builtin-baseline = $baseline"
+          fi

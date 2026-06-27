@@ -1,7 +1,7 @@
-//
+﻿//
 // Library.cpp
 //
-// This file is part of Envy (getenvy.com) � 2016-2018
+// This file is part of Envy (getenvy.com)  2016-2018
 // Portions copyright Shareaza 2002-2008 and PeerProject 2008-2015
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -66,6 +66,8 @@ CLibrary::CLibrary()
 	, m_nScanTime		( 0 )
 	, m_nSaveCookie		( 0 )
 	, m_nSaveTime		( 0 )
+	, m_bLazyLoaded		( false )
+	, m_bLazyComplete	( false )
 //	, m_nFileSwitch		( 0 )	// Using static
 {
 	EnableDispatch( IID_ILibrary );
@@ -100,7 +102,8 @@ void CLibrary::AddFile(CLibraryFile* pFile)
 		if ( pFile->IsHashed() )
 		{
 			LibraryHistory.Submit( pFile );
-			GetAlbumRoot()->OrganizeFile( pFile );
+			if ( CAlbumFolder* pRoot = GetAlbumRoot() )
+				pRoot->OrganizeFile( pFile );
 
 			if ( pFile->IsNewFile() )			// The new file was hashed
 			{
@@ -116,7 +119,8 @@ void CLibrary::AddFile(CLibraryFile* pFile)
 	}
 	else
 	{
-		GetAlbumRoot()->OrganizeFile( pFile );
+		if ( CAlbumFolder* pRoot = GetAlbumRoot() )
+			pRoot->OrganizeFile( pFile );
 	}
 }
 
@@ -409,10 +413,13 @@ BOOL CLibrary::Load()
 		LibraryFolders.AddFolder( Settings.Downloads.TorrentPath );
 	}
 
-	LibraryFolders.CreateAlbumTree();
-//	LibraryFolders.Maintain();			// Update desktop.ini's	(May take several seconds, call separately)
+	// Mark basic loading as complete - core data structures are loaded
+	m_bLazyLoaded = true;
 
-	LibraryHashDB.Create();
+	// Defer expensive operations to lazy loading
+	// LibraryFolders.CreateAlbumTree();	// Deferred
+	// LibraryHashDB.Create();			// Deferred
+
 	LibraryBuilder.BoostPriority( Settings.Library.HighPriorityHash );
 
 #ifdef _DEBUG
@@ -429,6 +436,21 @@ BOOL CLibrary::Load()
 
 	m_nSaveCookie = m_nUpdateCookie;
 	m_nSaveTime = GetTickCount();
+
+	// Start background thread for lazy operations if we have data to process
+	if ( LibraryMaps.GetFileCount() > 0 )
+	{
+		BeginThread( "LibraryLazy", THREAD_PRIORITY_BELOW_NORMAL );
+#ifdef _DEBUG
+		theApp.Message( MSG_DEBUG, L"Library lazy loading started - %d files loaded, completing album tree and hash DB in background\n",
+			LibraryMaps.GetFileCount() );
+#endif
+	}
+	else
+	{
+		// No files, mark lazy loading as complete
+		m_bLazyComplete = true;
+	}
 
 	BeginThread( "Library" );
 
@@ -502,6 +524,15 @@ BOOL CLibrary::Save()
 
 void CLibrary::OnRun()
 {
+	// Check if this is a lazy loading thread
+	if ( m_bLazyLoaded && ! m_bLazyComplete )
+	{
+		// This is the lazy loading thread - complete expensive operations
+		CompleteLazyLoading();
+		return;
+	}
+
+	// Regular library maintenance thread
 	while ( IsThreadEnabled() )
 	{
 		Doze( 1000 );
@@ -708,4 +739,30 @@ STDMETHODIMP CLibrary::XLibrary::FindByIndex(LONG nIndex, ILibraryFile FAR* FAR*
 	CLibraryFile* pFile = pThis->LookupFile( (DWORD)nIndex );
 	*ppFile = pFile ? (ILibraryFile*)pFile->GetInterface( IID_ILibraryFile, TRUE ) : NULL;
 	return pFile ? S_OK : S_FALSE;
+}
+
+//////////////////////////////////////////////////////////////////////
+// CLibrary lazy loading support
+
+/**
+ * @brief Completes lazy loading operations that were deferred during startup
+ *
+ * This method performs the expensive operations that were skipped during Load()
+ * to allow the application to start faster. Should be called when the UI is ready.
+ */
+void CLibrary::CompleteLazyLoading()
+{
+	if ( m_bLazyComplete ) return;  // Already completed
+
+	CSingleLock pLock( &m_pSection, TRUE );
+
+	// Perform deferred expensive operations
+	LibraryFolders.CreateAlbumTree();
+	LibraryHashDB.Create();
+
+	m_bLazyComplete = true;
+
+#ifdef _DEBUG
+	theApp.Message( MSG_DEBUG, L"Lazy loading completed - Album tree and hash DB initialized\n" );
+#endif
 }

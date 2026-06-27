@@ -1,0 +1,82 @@
+name: clang-tidy (advisory)
+
+on:
+  pull_request:
+    branches: [main, develop]
+    paths:
+      - Envy/**.cpp
+      - Envy/**.h
+      - TorrentEnvy/**.cpp
+      - TorrentEnvy/**.h
+      - HashLib/**.cpp
+      - HashLib/**.h
+      - .clang-tidy
+      - .github/workflows/clang-tidy.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  tidy:
+    name: clang-tidy diff
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    # Advisory only: this job always exits 0 and surfaces findings as
+    # ::warning:: lines so the check shows green while the legacy codebase
+    # is still being cleaned up. Flip to required once the baseline is clean.
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Install clang-tidy
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y clang-tidy
+
+      - name: Find changed C/C++ files and lint
+        shell: bash
+        run: |
+          set +e
+          base="${{ github.event.pull_request.base.sha }}"
+          head="${{ github.event.pull_request.head.sha }}"
+          if [ -z "$base" ] || [ -z "$head" ]; then
+            echo "No PR context (base/head SHAs missing); skipping."
+            exit 0
+          fi
+          files=$(git diff --name-only "$base...$head" -- '*.cpp' '*.h' '*.cxx' '*.hpp' 2>/dev/null \
+            | grep -E '^(Envy|TorrentEnvy|HashLib)/' \
+            | grep -vE '^(Services|Plugins/PluginWizard|Plugins/RatDVDPlugin|Plugins/SWFPlugin)/' \
+            || true)
+          if [ -z "$files" ]; then
+            echo "No relevant C/C++ files changed."
+            exit 0
+          fi
+          echo "Changed C/C++ files:"
+          echo "$files"
+          : > clang-tidy.log
+          warned=0
+          for f in $files; do
+            [ -f "$f" ] || continue
+            echo "::group::clang-tidy $f"
+            # Without a compile_commands.json on Linux this is a syntax-only
+            # check (no MFC headers). We only surface findings, never fail.
+            clang-tidy --quiet "$f" -- -std=c++20 -DWIN32 -D_WINDOWS -D_UNICODE -DUNICODE \
+              2>&1 | tee -a clang-tidy.log
+            echo "::endgroup::"
+            warned=1
+          done
+          if [ "$warned" -eq 1 ]; then
+            echo "::warning::clang-tidy completed with advisory findings - see the uploaded report."
+          fi
+          exit 0
+
+      - name: Upload report
+        if: always()
+        uses: actions/upload-artifact@v6
+        with:
+          name: clang-tidy-report
+          path: clang-tidy.log
+          if-no-files-found: ignore
+          retention-days: 7

@@ -1,0 +1,36 @@
+---
+description: Modern C++ standards (C++20 target) + safe modernization guidelines
+globs: ["**/*.cpp", "**/*.h", "**/*.hpp", "**/*.cxx", "**/*.hxx"]
+alwaysApply: false
+---
+
+# C++ standards (Envy)
+
+## Baseline
+- Target: **C++20**, keep changes **C++17 compatible** unless the project has been bumped.
+- Prefer small, local modernizations; avoid “rewrite” refactors.
+
+## Ownership + lifetime (hard rules)
+- Use RAII. Prefer `std::unique_ptr` / `std::shared_ptr` for ownership.
+- Raw pointers are **non-owning** unless explicitly documented (who owns, who deletes).
+- Avoid manual `new`/`delete` in new code.
+
+## Safety + clarity
+- Use `nullptr` (avoid `NULL` in new code).
+- Use `override` for overridden virtual methods.
+- Prefer `constexpr` over `#define` for constants.
+- Prefer `noexcept` over legacy `throw()` when touching signatures.
+- Prefer `const&` for inputs; move (`T&&`) only when ownership transfer is intended.
+
+## Optional / error signaling
+- Prefer `std::optional<T>` for “value may be missing”.
+- Avoid sentinel values (empty string / 0) unless required by existing interfaces.
+
+## Style (practical)
+- Use range-for and standard algorithms when they improve readability.
+- Use `auto` for iterators/long types; keep explicit types when it aids clarity with MFC types.
+- Keep includes grouped: standard → MFC/Win32 → project.
+
+## MFC interoperability notes
+- For MFC class members: use `BOOL` for flags (locals can use `bool`).
+- Prefer `CString`/Unicode-friendly APIs in UI/MFC-facing code paths.

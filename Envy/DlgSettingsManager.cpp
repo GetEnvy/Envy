@@ -1,7 +1,7 @@
 //
 // DlgSettingsManager.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2018
+// This file is part of Envy (getenvy.com) ï¿½ 2016-2018
 // Portions copyright Shareaza 2002-2007 and PeerProject 2008-2016
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -36,6 +36,7 @@
 #include "PageSettingsNetworks.h"
 #include "PageSettingsGnutella.h"
 #include "PageSettingsDonkey.h"
+#include "PageSettingsDonkeyAdvanced.h"
 #include "PageSettingsDC.h"
 #include "PageSettingsBitTorrent.h"
 #include "PageSettingsProtocols.h"
@@ -124,6 +125,7 @@ INT_PTR CSettingsManagerDlg::DoModal(LPCTSTR pszWindow)
 	CAutoPtr< CNetworksSettingsPage >	gNetworks( new CNetworksSettingsPage );
 	CAutoPtr< CGnutellaSettingsPage >	pGnutella( new CGnutellaSettingsPage );
 	CAutoPtr< CDonkeySettingsPage >		pDonkey( new CDonkeySettingsPage );
+	CAutoPtr< CDonkeyAdvancedSettingsPage > pDonkeyAdvanced( new CDonkeyAdvancedSettingsPage );
 	CAutoPtr< CDCSettingsPage > 		pDC( new CDCSettingsPage );
 	CAutoPtr< CBitTorrentSettingsPage >	pTorrent( new CBitTorrentSettingsPage );
 	CAutoPtr< CSkinsSettingsPage >		pSkins( new CSkinsSettingsPage );
@@ -156,6 +158,7 @@ INT_PTR CSettingsManagerDlg::DoModal(LPCTSTR pszWindow)
 		{
 			//if ( Settings.eDonkey.ShowInterface )
 			AddPage( pDonkey );		// IDD_SETTINGS_DONKEY
+			//AddPage( pDonkeyAdvanced );	// IDD_SETTINGS_DONKEY_ADVANCED  // ToDo: Missing dialog resource
 			//if ( Settings.DC.ShowInterface )
 			AddPage( pDC );			// IDD_SETTINGS_DC
 			AddPage( pTorrent );	// IDD_SETTINGS_BITTORRENT

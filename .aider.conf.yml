@@ -1,0 +1,25 @@
+# Aider configuration for Envy.
+# Canonical rules live in AGENTS.md - this file just tells aider to read it.
+
+read:
+  - AGENTS.md
+  - docs/DEV_TRACKER.md
+  - MODERNIZATION.md
+
+auto-commits: false
+dirty-commits: false
+attribute-author: false
+attribute-committer: false
+attribute-commit-message-author: false
+attribute-commit-message-committer: false
+
+# Match the codebase tone: terse English commits, no AI marketing tags.
+commit-prompt: |
+  Write a single-paragraph conventional-commit-style message in English.
+  Subject in imperative mood, max 72 chars. No emoji, no AI attribution.
+
+# Default model preferences (override locally if needed).
+# model: claude-opus-4-7
+
+# Honor .gitignore and avoid pulling vcpkg/vendor trees into context.
+gitignore: true

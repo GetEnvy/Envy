@@ -37,6 +37,7 @@
 #include "Transfers.h"
 #include "Statistics.h"
 #include "Security.h"
+#include "EDClients.h"
 
 #ifdef _DEBUG
 #undef THIS_FILE
@@ -812,6 +813,19 @@ BOOL CDatagrams::OnDatagram(const SOCKADDR_IN* pHost, const BYTE* pBuffer, DWORD
 		case ED2K_PROTOCOL_KAD_PACKED:
 		case ED2K_PROTOCOL_REVCONNECT:
 		case ED2K_PROTOCOL_REVCONNECT_PACKED:
+			// Check if this is a server search result that might contain concatenated packets
+			if ( pMULE->nType == ED2K_S2CG_SEARCHRESULT || pMULE->nType == ED2K_S2CG_FOUNDSOURCES )
+			{
+				// Handle concatenated ED2K UDP sub-packets (eMule-compatible)
+				// Pass raw buffer to handle multiple packets in one datagram
+				if ( EDClients.OnServerSearchResultRaw( pHost, pBuffer, nLength, pMULE->nType ) )
+				{
+					m_nInPackets++;
+					return TRUE;
+				}
+			}
+
+			// Regular single packet handling
 			if ( CEDPacket* pPacket = CEDPacket::New( pMULE, nLength ) )
 			{
 				try

@@ -1,0 +1,14 @@
+{
+  "name": "envy-remote-security-tests",
+  "version": "1.0.0",
+  "private": true,
+  "type": "commonjs",
+  "scripts": {
+    "test": "jest --runInBand"
+  },
+  "devDependencies": {
+    "dompurify": "^3.4.11",
+    "jest": "^30.0.0",
+    "jsdom": "^26.1.0"
+  }
+}

@@ -1,0 +1,634 @@
+<!-- Modern Downloads Page -->
+<div class="content-area">
+    <h1 class="page-title">Downloads</h1>
+
+    <!-- Controls Bar -->
+    <div class="section">
+        <div class="controls-bar">
+            <div class="controls-left">
+                <button class="btn btn-secondary" onclick="refreshPage()">
+                    <span class="icon">🔄</span> Refresh
+                </button>
+                <button class="btn btn-primary" onclick="selectAll()">
+                    Select All
+                </button>
+                <button class="btn btn-danger" onclick="clearSelected()" disabled>
+                    Clear Selected
+                </button>
+            </div>
+            <div class="controls-right">
+                <form class="filter-form" method="get" data-ajax>
+                    <input type="hidden" name="filter_set" value="1" />
+                    <div class="filter-group">
+                        <label for="filter-status">Status:</label>
+                        <select id="filter-status" name="filter_status" class="form-control">
+                            <option value="">All</option>
+                            <option value="active">Active</option>
+                            <option value="paused">Paused</option>
+                            <option value="completed">Completed</option>
+                            <option value="error">Error</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="filter-search">Search:</label>
+                        <input type="text" id="filter-search" name="filter_search" class="form-control" placeholder="Filename...">
+                    </div>
+                    <button type="submit" class="btn btn-secondary">Filter</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Downloads Table -->
+    <div class="section">
+        <div class="table-container">
+            <table class="table table-sortable" id="downloads-table">
+                <thead>
+                    <tr>
+                        <th><input type="checkbox" id="select-all"></th>
+                        <th data-sort="filename">Filename</th>
+                        <th data-sort="size">Size</th>
+                        <th data-sort="progress">Progress</th>
+                        <th data-sort="speed">Speed</th>
+                        <th data-sort="sources">Sources</th>
+                        <th data-sort="status">Status</th>
+                        <th data-sort="priority">Priority</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Dynamic content will be loaded here -->
+                    <tr class="loading-row">
+                        <td colspan="9" class="text-center">
+                            <div class="loading"></div>
+                            Loading downloads...
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Bulk Actions -->
+    <div class="section">
+        <h3>Bulk Actions</h3>
+        <div class="bulk-actions">
+            <button class="btn btn-success" onclick="startSelected()" disabled>
+                Start Selected
+            </button>
+            <button class="btn btn-warning" onclick="pauseSelected()" disabled>
+                Pause Selected
+            </button>
+            <button class="btn btn-danger" onclick="cancelSelected()" disabled>
+                Cancel Selected
+            </button>
+            <button class="btn btn-secondary" onclick="moveSelected()" disabled>
+                Change Priority
+            </button>
+        </div>
+    </div>
+
+    <!-- Statistics -->
+    <div class="section">
+        <h3>Download Statistics</h3>
+        <div class="grid grid-3">
+            <div class="stat-card">
+                <div class="stat-value" data-stat="total_downloads">0</div>
+                <div class="stat-label">Total Downloads</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" data-stat="active_downloads">0</div>
+                <div class="stat-label">Active</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" data-stat="completed_downloads">0</div>
+                <div class="stat-label">Completed</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.controls-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.controls-left,
+.controls-right {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.filter-form {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.filter-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.filter-group label {
+    margin: 0;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.table-container {
+    overflow-x: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.table th[data-sort] {
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+}
+
+.table th[data-sort]:hover {
+    background: #e9ecef;
+}
+
+.table th[data-sort]::after {
+    content: '↕️';
+    margin-left: 0.5rem;
+    opacity: 0.5;
+}
+
+.table th[data-sort][data-direction="asc"]::after {
+    content: '↑';
+    opacity: 1;
+}
+
+.table th[data-sort][data-direction="desc"]::after {
+    content: '↓';
+    opacity: 1;
+}
+
+.filename {
+    max-width: 250px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.progress-cell {
+    width: 120px;
+}
+
+.progress-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.progress-text {
+    font-size: 0.8rem;
+    color: #6c757d;
+    min-width: 45px;
+}
+
+.speed-cell {
+    font-family: monospace;
+    font-size: 0.9rem;
+}
+
+.sources-cell {
+    text-align: center;
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.priority-select {
+    padding: 0.25rem;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    font-size: 0.8rem;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 0.25rem;
+}
+
+.bulk-actions {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.stat-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.stat-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #007bff;
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    color: #6c757d;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.loading-row {
+    background: #f8f9fa;
+}
+
+.icon {
+    margin-right: 0.5rem;
+}
+
+/* Enhanced table row interactions */
+.table tbody tr {
+    transition: background-color 0.2s ease;
+}
+
+.table tbody tr:hover {
+    background: #f8f9fa;
+}
+
+.table tbody tr.selected {
+    background: #e3f2fd;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .controls-bar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .controls-left,
+    .controls-right {
+        justify-content: center;
+    }
+
+    .filter-form {
+        justify-content: center;
+    }
+
+    .table {
+        font-size: 0.9rem;
+    }
+
+    .filename {
+        max-width: 150px;
+    }
+
+    .bulk-actions {
+        justify-content: center;
+    }
+
+    .stat-card {
+        padding: 1rem;
+    }
+
+    .stat-value {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .controls-left,
+    .controls-right {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .filter-form {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .filter-group {
+        justify-content: space-between;
+    }
+
+    .bulk-actions {
+        flex-direction: column;
+    }
+
+    .bulk-actions .btn {
+        width: 100%;
+    }
+}
+</style>
+
+<script>
+// Enhanced downloads functionality
+(function() {
+    let selectedDownloads = new Set();
+    let downloadsData = [];
+
+    // Initialize
+    loadDownloads();
+
+    // Event listeners
+    document.getElementById('select-all').addEventListener('change', toggleSelectAll);
+    document.addEventListener('change', handleCheckboxChange);
+
+    // Functions
+    function loadDownloads() {
+        showLoadingState();
+
+        EnvyRemote.ajaxRequest('/api/downloads')
+            .then(data => {
+                downloadsData = data.downloads || [];
+                renderDownloadsTable(downloadsData);
+                updateStatistics(data.stats);
+                hideLoadingState();
+            })
+            .catch(error => {
+                console.error('Failed to load downloads:', error);
+                showErrorState('Failed to load downloads. Please refresh the page.');
+            });
+    }
+
+    function renderDownloadsTable(downloads) {
+        const tbody = document.querySelector('#downloads-table tbody');
+        tbody.innerHTML = '';
+
+        if (downloads.length === 0) {
+            tbody.innerHTML = `
+                <tr>
+                    <td colspan="9" class="text-center">
+                        No downloads found. <a href="/remote/home">Start a new download</a>.
+                    </td>
+                </tr>
+            `;
+            return;
+        }
+
+        downloads.forEach(download => {
+            const row = createDownloadRow(download);
+            tbody.appendChild(row);
+        });
+
+        updateBulkActionsState();
+    }
+
+    function createDownloadRow(download) {
+        const row = document.createElement('tr');
+        row.setAttribute('data-download-id', download.id);
+
+        const statusClass = getStatusClass(download.status);
+        const progressPercent = download.progress || 0;
+
+        row.innerHTML = `
+            <td><input type="checkbox" class="download-checkbox" value="${download.id}"></td>
+            <td class="filename" title="${download.filename}">${download.filename}</td>
+            <td data-sort-value="${download.size}">${formatBytes(download.size)}</td>
+            <td class="progress-cell">
+                <div class="progress-container">
+                    <div class="progress">
+                        <div class="progress-bar" style="width: ${progressPercent}%"
+                             data-progress-id="${download.id}"></div>
+                    </div>
+                    <span class="progress-text">${progressPercent}%</span>
+                </div>
+            </td>
+            <td class="speed-cell">${formatSpeed(download.speed)}</td>
+            <td class="sources-cell">${download.sources || 0}/${download.totalSources || 0}</td>
+            <td><span class="status-badge status-${statusClass}">${download.status}</span></td>
+            <td>
+                <select class="priority-select" onchange="changePriority('${download.id}', this.value)">
+                    <option value="low" ${download.priority === 'low' ? 'selected' : ''}>Low</option>
+                    <option value="normal" ${download.priority === 'normal' ? 'selected' : ''}>Normal</option>
+                    <option value="high" ${download.priority === 'high' ? 'selected' : ''}>High</option>
+                </select>
+            </td>
+            <td class="action-buttons">
+                <button class="action-btn btn-success" onclick="startDownload('${download.id}')" title="Start">
+                    ▶️
+                </button>
+                <button class="action-btn btn-warning" onclick="pauseDownload('${download.id}')" title="Pause">
+                    ⏸️
+                </button>
+                <button class="action-btn btn-danger" onclick="cancelDownload('${download.id}')" title="Cancel">
+                    🗑️
+                </button>
+            </td>
+        `;
+
+        return row;
+    }
+
+    function getStatusClass(status) {
+        const statusMap = {
+            'active': 'active',
+            'paused': 'paused',
+            'completed': 'completed',
+            'error': 'error',
+            'queued': 'paused'
+        };
+        return statusMap[status] || 'error';
+    }
+
+    function formatBytes(bytes) {
+        if (!bytes) return '0 B';
+        const k = 1024;
+        const sizes = ['B', 'KB', 'MB', 'GB', 'TB'];
+        const i = Math.floor(Math.log(bytes) / Math.log(k));
+        return parseFloat((bytes / Math.pow(k, i)).toFixed(1)) + ' ' + sizes[i];
+    }
+
+    function formatSpeed(bytesPerSecond) {
+        if (!bytesPerSecond) return '0 B/s';
+        return formatBytes(bytesPerSecond) + '/s';
+    }
+
+    function toggleSelectAll() {
+        const selectAllCheckbox = document.getElementById('select-all');
+        const checkboxes = document.querySelectorAll('.download-checkbox');
+
+        checkboxes.forEach(checkbox => {
+            checkbox.checked = selectAllCheckbox.checked;
+        });
+
+        updateSelectedDownloads();
+    }
+
+    function handleCheckboxChange(e) {
+        if (e.target.classList.contains('download-checkbox')) {
+            updateSelectedDownloads();
+        }
+    }
+
+    function updateSelectedDownloads() {
+        selectedDownloads.clear();
+        document.querySelectorAll('.download-checkbox:checked').forEach(checkbox => {
+            selectedDownloads.add(checkbox.value);
+            checkbox.closest('tr').classList.add('selected');
+        });
+
+        document.querySelectorAll('.download-checkbox:not(:checked)').forEach(checkbox => {
+            checkbox.closest('tr').classList.remove('selected');
+        });
+
+        updateBulkActionsState();
+    }
+
+    function updateBulkActionsState() {
+        const bulkButtons = document.querySelectorAll('.bulk-actions .btn');
+        const hasSelection = selectedDownloads.size > 0;
+
+        bulkButtons.forEach(btn => {
+            btn.disabled = !hasSelection;
+        });
+    }
+
+    function updateStatistics(stats) {
+        if (!stats) return;
+
+        Object.keys(stats).forEach(key => {
+            const element = document.querySelector(`[data-stat="${key}"]`);
+            if (element) {
+                element.textContent = stats[key];
+            }
+        });
+    }
+
+    function showLoadingState() {
+        const tbody = document.querySelector('#downloads-table tbody');
+        tbody.innerHTML = `
+            <tr class="loading-row">
+                <td colspan="9" class="text-center">
+                    <div class="loading"></div>
+                    Loading downloads...
+                </td>
+            </tr>
+        `;
+    }
+
+    function hideLoadingState() {
+        // Table content is replaced by renderDownloadsTable
+    }
+
+    function showErrorState(message) {
+        const tbody = document.querySelector('#downloads-table tbody');
+        tbody.innerHTML = `
+            <tr class="loading-row">
+                <td colspan="9" class="text-center">
+                    <div class="alert alert-error" style="margin: 0;">${message}</div>
+                </td>
+            </tr>
+        `;
+    }
+
+    // Global functions for button actions
+    window.selectAll = function() {
+        document.getElementById('select-all').checked = true;
+        toggleSelectAll();
+    };
+
+    window.clearSelected = function() {
+        if (confirm('Are you sure you want to clear the selected downloads?')) {
+            selectedDownloads.forEach(id => {
+                cancelDownload(id);
+            });
+            selectedDownloads.clear();
+            updateBulkActionsState();
+        }
+    };
+
+    window.startSelected = function() {
+        selectedDownloads.forEach(id => startDownload(id));
+    };
+
+    window.pauseSelected = function() {
+        selectedDownloads.forEach(id => pauseDownload(id));
+    };
+
+    window.cancelSelected = function() {
+        if (confirm('Are you sure you want to cancel the selected downloads?')) {
+            selectedDownloads.forEach(id => cancelDownload(id));
+        }
+    };
+
+    window.moveSelected = function() {
+        // Priority change dialog would go here
+        alert('Priority change feature coming soon!');
+    };
+
+    window.startDownload = function(id) {
+        EnvyRemote.ajaxRequest(`/api/downloads/${id}/start`, { method: 'POST' })
+            .then(() => {
+                EnvyRemote.showNotification('Download started', 'success');
+                loadDownloads();
+            })
+            .catch(error => {
+                EnvyRemote.showNotification('Failed to start download', 'error');
+            });
+    };
+
+    window.pauseDownload = function(id) {
+        EnvyRemote.ajaxRequest(`/api/downloads/${id}/pause`, { method: 'POST' })
+            .then(() => {
+                EnvyRemote.showNotification('Download paused', 'success');
+                loadDownloads();
+            })
+            .catch(error => {
+                EnvyRemote.showNotification('Failed to pause download', 'error');
+            });
+    };
+
+    window.cancelDownload = function(id) {
+        if (confirm('Are you sure you want to cancel this download?')) {
+            EnvyRemote.ajaxRequest(`/api/downloads/${id}/cancel`, { method: 'DELETE' })
+                .then(() => {
+                    EnvyRemote.showNotification('Download cancelled', 'success');
+                    loadDownloads();
+                })
+                .catch(error => {
+                    EnvyRemote.showNotification('Failed to cancel download', 'error');
+                });
+        }
+    };
+
+    window.changePriority = function(id, priority) {
+        EnvyRemote.ajaxRequest(`/api/downloads/${id}/priority`, {
+            method: 'PUT',
+            body: { priority }
+        })
+        .then(() => {
+            EnvyRemote.showNotification('Priority updated', 'success');
+        })
+        .catch(error => {
+            EnvyRemote.showNotification('Failed to update priority', 'error');
+        });
+    };
+
+    window.refreshPage = function() {
+        loadDownloads();
+    };
+
+    // Auto-refresh every 30 seconds
+    setInterval(loadDownloads, 30000);
+})();
+</script>

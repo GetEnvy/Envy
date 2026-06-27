@@ -1,0 +1,35 @@
+name: "CodeQL Config for Envy"
+
+# Paths to include in analysis
+paths:
+  - Envy
+  - Plugins
+  - Services
+  - HashLib
+  - TorrentEnvy
+
+# Paths to exclude from analysis
+paths-ignore:
+  - "**/test/**"
+  - "**/tests/**"
+  - "**/*test.cpp"
+  - "**/build/**"
+  - "**/Debug*/**"
+  - "**/Release*/**"
+  - "Services/*/lib/**"
+  - "Services/*/include/**"
+
+# Disable default queries to use custom ones
+disable-default-queries: false
+
+# Additional queries to run
+queries:
+  - uses: security-and-quality
+  - uses: security-extended
+
+# Query filters
+query-filters:
+  - exclude:
+      id: cpp/poorly-documented-function
+  - exclude:
+      id: cpp/fixme-comment

@@ -1,0 +1,25 @@
+{
+  "$schema": "https://raw.githubusercontent.com/microsoft/vcpkg-tool/main/docs/vcpkg.schema.json",
+  "name": "envy",
+  "version-string": "5.0.0",
+  "description": "Envy - Multi-Network P2P Filesharing and BitTorrent Client for Windows",
+  "homepage": "https://github.com/mika3578/envy",
+  "license": "AGPL-3.0-or-later",
+  "supports": "windows & (x86 | x64 | arm64)",
+  "builtin-baseline": "f3e10653cc27d62a37a3763cd84b38bca07c6075",
+  "dependencies": [
+    "zlib",
+    "bzip2",
+    "sqlite3",
+    "miniupnpc",
+    "openssl"
+  ],
+  "features": {
+    "tests": {
+      "description": "Build HashLib unit tests",
+      "dependencies": [
+        "gtest"
+      ]
+    }
+  }
+}

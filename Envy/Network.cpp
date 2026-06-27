@@ -1,7 +1,7 @@
 //
 // Network.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2018
+// This file is part of Envy (getenvy.com) ï¿½ 2016-2018
 // Portions copyright Shareaza 2002-2008 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -1298,6 +1298,16 @@ bool CNetwork::ProcessQuerySearch(CNetwork::CJob& oJob)
 	case 0:
 		// Send searches to monitor window
 		{
+			// Ensure endpoint is set in CQuerySearch from CLocalSearch
+			if ( CQuerySearch* pQuerySearch = const_cast<CQuerySearch*>( pSearch->GetSearch() ) )
+			{
+				if ( pSearch->m_pEndpoint.sin_addr.s_addr && ! pQuerySearch->m_pEndpoint.sin_addr.s_addr )
+				{
+					// Copy endpoint from CLocalSearch to CQuerySearch if not set
+					pQuerySearch->m_pEndpoint = pSearch->m_pEndpoint;
+				}
+			}
+
 			CSingleLock oAppLock( &theApp.m_pSection );
 			if ( oAppLock.Lock( 250 ) )
 			{

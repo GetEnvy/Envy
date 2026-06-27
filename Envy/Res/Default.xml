@@ -193,6 +193,10 @@
 	<toolbar name="CLibraryTree.Virtual">
 		<button id="ID_LIBRARY_FOLDERS" text="Share Files..."/>
 	</toolbar>
+	<!-- Physical-mode counterpart: CLibraryFrame::OnSkinChange requests this
+	     name and CLibraryFrame hides the bar (SW_HIDE) when ShowVirtual is
+	     false, so an empty definition satisfies the lookup with no UI change. -->
+	<toolbar name="CLibraryTree.Physical"/>
 	<toolbar name="CLibraryHeaderBar.Physical">
 		<button id="ID_LIBRARY_PARENT" text="Back"/>
 		<button id="ID_LIBRARY_VIEW" text="View"/>

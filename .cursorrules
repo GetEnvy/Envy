@@ -1,0 +1,43 @@
+# Cursor rules for Envy
+#
+# Canonical rules live in AGENTS.md - keep this file as a thin pointer.
+# When the rules change, change AGENTS.md, not this file.
+
+Read AGENTS.md before acting on this repo. Highlights:
+
+1. Language: chat replies follow the user's language; all artifacts
+   (code, comments, commits, PRs, docs) are in English.
+2. Toolchain: Visual Studio 2026, toolset v145, MSVC 14.50, C++20 for
+   first-party code, C++17 for legacy plugins.
+3. OS target: Windows 10 1809+. Never re-introduce XP/Vista/7/8 support.
+4. Build: `msbuild "Visual Studio\Envy.sln" /m /p:Configuration=Release
+   /p:Platform=x64 /p:PlatformToolset=v145
+   /p:WindowsTargetPlatformVersion=10.0 /p:VcpkgEnableManifest=true
+   /p:VcpkgTriplet=x64-windows-static`.
+5. Dependencies are managed via vcpkg manifest (vcpkg.json). Do not
+   add ad-hoc submodules or bundled sources.
+6. Never edit files under Plugins/PluginWizard/** (project templates).
+7. Never bulk-format existing files. .clang-format is advisory.
+8. Record strategic progress in docs/DEVELOPMENT_PLAN.md; session notes
+   go in .local/DEV_TRACKER.md (gitignored).
+9. Branch off develop with conventional type/short-kebab-summary names;
+   push only your feature branch. Never push to main, develop, or legacy.
+   Never use claude/, cursor/, or other tool/agent branch prefixes.
+10. `throw()` is removed in C++20 - use `noexcept`. `register` is
+    removed in C++17 - drop it. Source files in this repo are mixed
+    encoding (ISO-8859/UTF-8) - never bulk-convert.
+
+Style:
+- Tabs for indentation, width 4.
+- Allman braces.
+- Hungarian-ish naming: m_, p, n, b, str, dw, lp.
+- Prefer CString/CAtlList/CMap over std:: inside MFC code.
+- Headers include StdAfx.h first.
+
+Branch model:
+- develop: default integration branch (linear history).
+- main: protected stable branch.
+- legacy: frozen pre-modernization snapshot.
+- Work branches: type/short-kebab-summary off develop (feat/, fix/, docs/, ...).
+
+See MODERNIZATION.md for the full multi-phase plan.

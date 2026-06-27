@@ -1,7 +1,7 @@
 //
 // UploadQueues.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2018
+// This file is part of Envy (getenvy.com) ï¿½ 2016-2018
 // Portions copyright Shareaza 2002-2007 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -140,6 +140,32 @@ BOOL CUploadQueues::StealPosition(CUploadTransfer* pTarget, CUploadTransfer* pSo
 }
 
 //////////////////////////////////////////////////////////////////////
+// CUploadQueues reorder queues
+
+BOOL CUploadQueues::Reorder(CUploadQueue* pQueue, CUploadQueue* pBefore)
+{
+	CQuickLock oLock( m_pSection );
+
+	POSITION pos1 = m_pList.Find( pQueue );
+	if ( pos1 == NULL ) return FALSE;
+
+	if ( pBefore != NULL )
+	{
+		POSITION pos2 = m_pList.Find( pBefore );
+		if ( pos2 == NULL || pos1 == pos2 ) return FALSE;
+		m_pList.RemoveAt( pos1 );
+		m_pList.InsertBefore( pos2, pQueue );
+	}
+	else
+	{
+		m_pList.RemoveAt( pos1 );
+		m_pList.AddTail( pQueue );
+	}
+
+	return TRUE;
+}
+
+//////////////////////////////////////////////////////////////////////
 // CUploadQueues create and delete queues
 
 CUploadQueue* CUploadQueues::Create(LPCTSTR pszName, BOOL bTop)
@@ -169,29 +195,6 @@ void CUploadQueues::Delete(CUploadQueue* pQueue)
 		m_pList.RemoveAt( pos );
 
 	delete pQueue;
-}
-
-BOOL CUploadQueues::Reorder(CUploadQueue* pQueue, CUploadQueue* pBefore)
-{
-	CQuickLock oLock( m_pSection );
-
-	POSITION pos1 = m_pList.Find( pQueue );
-	if ( pos1 == NULL ) return FALSE;
-
-	if ( pBefore != NULL )
-	{
-		POSITION pos2 = m_pList.Find( pBefore );
-		if ( pos2 == NULL || pos1 == pos2 ) return FALSE;
-		m_pList.RemoveAt( pos1 );
-		m_pList.InsertBefore( pos2, pQueue );
-	}
-	else
-	{
-		m_pList.RemoveAt( pos1 );
-		m_pList.AddTail( pQueue );
-	}
-
-	return TRUE;
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -224,7 +227,7 @@ CUploadQueue* CUploadQueues::SelectQueue(PROTOCOLID nProtocol, LPCTSTR pszName, 
 }
 
 //////////////////////////////////////////////////////////////////////
-// CUploadQueues counting
+// CUploadQueues bandwidth methods
 
 DWORD CUploadQueues::GetTotalBandwidthPoints( BOOL ActiveOnly )
 {
@@ -240,9 +243,9 @@ DWORD CUploadQueues::GetTotalBandwidthPoints( BOOL ActiveOnly )
 			if ( ! pQptr->m_bEnable )
 				continue;
 
-			if ( ( ( pQptr->m_nProtocols & ( 1 << PROTOCOL_ED2K ) ) != 0 ) && ( Settings.Connection.RequireForTransfers ) )
+			if ( ( pQptr->m_nProtocols & ( 1 << PROTOCOL_ED2K ) ) != 0 )
 			{
-				if ( ! ( Settings.eDonkey.EnableAlways | Settings.eDonkey.Enabled ) )
+				if ( ! Settings.eDonkey.EnableAlways && ! Settings.eDonkey.Enabled )
 					continue;
 			}
 		}
@@ -251,59 +254,6 @@ DWORD CUploadQueues::GetTotalBandwidthPoints( BOOL ActiveOnly )
 
 	return nCount;
 }
-
-// CPU Intensive
-//DWORD CUploadQueues::GetQueueCapacity()
-//{
-//	CQuickLock oLock( m_pSection );
-//	DWORD nCount = 0;
-//
-//	for ( POSITION pos = GetIterator(); pos; )
-//	{
-//		nCount += GetNext( pos )->GetQueueCapacity();
-//	}
-//
-//	return nCount;
-//}
-
-//DWORD CUploadQueues::GetQueuedCount()
-//{
-//	CQuickLock oLock( m_pSection );
-//	DWORD nCount = 0;
-//
-//	for ( POSITION pos = GetIterator(); pos; )
-//	{
-//		nCount += GetNext( pos )->GetQueuedCount();
-//	}
-//
-//	return nCount;
-//}
-
-//DWORD CUploadQueues::GetQueueRemaining()
-//{
-//	CQuickLock oLock( m_pSection );
-//	DWORD nCount = 0;
-//
-//	for ( POSITION pos = GetIterator(); pos; )
-//	{
-//		nCount += GetNext( pos )->GetQueueRemaining();
-//	}
-//
-//	return nCount;
-//}
-
-//DWORD CUploadQueues::GetTransferCount()
-//{
-//	CQuickLock oLock( m_pSection );
-//	DWORD nCount = 0;
-//
-//	for ( POSITION pos = GetIterator(); pos; )
-//	{
-//		nCount += GetNext( pos )->GetTransferCount();
-//	}
-//
-//	return nCount;
-//}
 
 BOOL CUploadQueues::IsTransferAvailable()
 {
@@ -317,109 +267,32 @@ BOOL CUploadQueues::IsTransferAvailable()
 	return FALSE;
 }
 
-DWORD CUploadQueues::GetMinimumDonkeyBandwidth()
+BOOL CUploadQueues::CanUpload(PROTOCOLID nProtocol, CLibraryFile const * const pFile, BOOL bCanQueue)
 {
-	CQuickLock oLock( m_pSection );
-
-	// Check ED2K ratio limiter
-	DWORD nTotal = Settings.Connection.OutSpeed * 128;
-	DWORD nLimit = Settings.Bandwidth.Uploads;
-	DWORD nDonkeyPoints = 0, nTotalPoints = 0, nBandwidth = 0;
-
-	if ( nLimit == 0 || nLimit > nTotal ) nLimit = nTotal;
-
-	for ( POSITION pos = GetIterator(); pos; )
-	{
-		CUploadQueue* pQueue = GetNext( pos );
-
-		nTotalPoints += pQueue->m_nBandwidthPoints;
-
-		if ( pQueue->m_nProtocols == 0 || ( pQueue->m_nProtocols & ( 1 << PROTOCOL_ED2K ) ) != 0 )
-			nDonkeyPoints += pQueue->m_nBandwidthPoints;
-	}
-
-	if ( nTotalPoints < 1 ) nTotalPoints = 1;
-
-	nBandwidth = nLimit * nDonkeyPoints / nTotalPoints;
-
-	return nBandwidth;
-}
-
-DWORD CUploadQueues::GetCurrentDonkeyBandwidth()
-{
-	DWORD nBandwidth = 0;
-	CQuickLock oLock( m_pSection );
-
-	for ( POSITION pos = GetIterator(); pos; )
-	{
-		CUploadQueue* pQueue = GetNext( pos );
-
-		if ( pQueue->m_nProtocols == 0 || ( pQueue->m_nProtocols & ( 1 << PROTOCOL_ED2K ) ) != 0 )
-			nBandwidth += pQueue->GetBandwidthLimit( pQueue->m_nMaxTransfers );
-	}
-
-	return nBandwidth;
-}
-
-BOOL CUploadQueues::CanUpload(PROTOCOLID nProtocol, CLibraryFile const * const pFile, BOOL bCanQueue )
-{ 	// Can the specified file be uploaded with the current queue setup?
-
-	// Don't bother with 0 byte files
 	if ( pFile->m_nSize == 0 ) return FALSE;
-
-	// Detect Ghosts
 	if ( ! pFile->IsAvailable() ) return FALSE;
 
-	// G1 and G2 both use HTTP transfers, Envy doesn't consider them different.
 	if ( nProtocol == PROTOCOL_G1 || nProtocol == PROTOCOL_G2 )
 		nProtocol = PROTOCOL_HTTP;
 
 	CQuickLock oLock( m_pSection );
 
-	// Check each queue
 	for ( POSITION pos = GetIterator(); pos; )
 	{
 		CUploadQueue* pQueue = GetNext( pos );
 
 		if ( pQueue->CanAccept(	nProtocol, pFile->m_sName, pFile->m_nSize, CUploadQueue::ulqLibrary, pFile->m_sShareTags ) )
 		{
-			// If this queue will accept this file, and we don't care if there is space now, or the queue isn't full
-			if ( ! bCanQueue || pQueue->IsFull() )
-				return TRUE;	// Then this file can be uploaded
+			if ( ! bCanQueue || ! pQueue->IsFull() )
+				return TRUE;
 		}
 	}
 
-	return FALSE;	// This file is not uploadable with the current queue setup
+	return FALSE;
 }
 
-// Unused?
-//DWORD CUploadQueues::QueueRank(PROTOCOLID nProtocol, CLibraryFile const * const pFile )
-//{	// If the specified file was requested now, what queue position would it be in?
-//	// 0x7FFF (max int) indicates the file cannot be downloaded
-//	// Don't bother with 0 byte files
-//	if ( pFile->m_nSize == 0 ) return 0x7FFF;
-//	// Detect Ghosts
-//	if ( pFile->IsGhost() ) return 0x7FFF;
-//	// G1 and G2 both use HTTP transfers, Envy doesn't consider them different.
-//	if ( ( nProtocol == PROTOCOL_G1 ) || ( nProtocol == PROTOCOL_G2 ) )
-//		nProtocol = PROTOCOL_HTTP;
-//
-//	CSingleLock pLock( &m_pSection, TRUE );
-//	for ( POSITION pos = GetIterator(); pos; )	// Check each queue
-//	{
-//		CUploadQueue* pQueue = GetNext( pos );
-//		if ( pQueue->CanAccept(	nProtocol, pFile->m_sName, pFile->m_nSize, CUploadQueue::ulqLibrary, pFile->m_sShareTags ) )
-//		{
-//			// If this queue will accept this file
-//			if ( pQueue->GetQueueRemaining() > 0 )
-//				return pQueue->GetQueuedCount();
-//		}
-//	}
-//	return 0x7FFF;	// This file is not uploadable with the current queue setup
-//}
-
 //////////////////////////////////////////////////////////////////////
-// CUploadQueues clear
+// CUploadQueues management
 
 void CUploadQueues::Clear()
 {
@@ -433,331 +306,62 @@ void CUploadQueues::Clear()
 	m_pList.RemoveAll();
 }
 
-//////////////////////////////////////////////////////////////////////
-// CUploadQueues load and save
-
 BOOL CUploadQueues::Load()
 {
-	const CString strFile = Settings.General.DataPath + L"UploadQueues.dat";
-
-	{
-		CQuickLock oLock( m_pSection );
-
-		LoadString( m_pTorrentQueue->m_sName, IDS_UPLOAD_QUEUE_TORRENT );
-		LoadString( m_pHistoryQueue->m_sName, IDS_UPLOAD_QUEUE_HISTORY );
-	}
-
-	BOOL bSuccess = FALSE;
+	CQuickLock oLock( m_pSection );
 
 	CFile pFile;
-	if ( pFile.Open( strFile, CFile::modeRead | CFile::shareDenyWrite | CFile::osSequentialScan ) )
+	if ( ! pFile.Open( Settings.General.UserPath + L"\\Data\\UploadQueues.dat", CFile::modeRead ) )
+		return FALSE;
+
+	try
 	{
-		try
-		{
-			CArchive ar( &pFile, CArchive::load );	// 4 KB buffer
-			try
-			{
-				CQuickLock oLock( m_pSection );
-
-				Serialize( ar );
-				ar.Close();
-
-				bSuccess = TRUE;	// Success
-			}
-			catch ( CException* pException )
-			{
-				ar.Abort();
-				pFile.Abort();
-				pException->Delete();
-			}
-		}
-		catch ( CException* pException )
-		{
-			pFile.Abort();
-			pException->Delete();
-		}
-
-		pFile.Close();
+		CArchive ar( &pFile, CArchive::load );
+		Serialize( ar );
+		ar.Close();
+	}
+	catch ( CException* pException )
+	{
+		pException->Delete();
+		return FALSE;
 	}
 
-	if ( ! bSuccess )
-		theApp.Message( MSG_ERROR, L"Failed to load upload queues: %s", (LPCTSTR)strFile );
-
-	if ( GetCount() == 0 )
-		CreateDefault();
-
-	Validate();
-
+	pFile.Close();
 	return TRUE;
 }
 
 BOOL CUploadQueues::Save()
 {
-	CString strFile = Settings.General.DataPath + L"UploadQueues.dat";
-	CString strTemp = Settings.General.DataPath + L"UploadQueues.tmp";
+	CQuickLock oLock( m_pSection );
 
 	CFile pFile;
-	if ( pFile.Open( strTemp, CFile::modeWrite | CFile::modeCreate | CFile::shareExclusive | CFile::osSequentialScan ) )
+	if ( ! pFile.Open( Settings.General.UserPath + L"\\Data\\UploadQueues.dat", CFile::modeWrite | CFile::modeCreate ) )
+		return FALSE;
+
+	try
 	{
-		try
-		{
-			CArchive ar( &pFile, CArchive::store );	// 4 KB buffer
-			try
-			{
-				{
-					CQuickLock oLock( m_pSection );
-
-					Serialize( ar );
-					ar.Close();
-				}
-
-				pFile.Close();
-
-				if ( MoveFileEx( strTemp, strFile, MOVEFILE_COPY_ALLOWED | MOVEFILE_REPLACE_EXISTING ) )
-					return TRUE;	// Success
-			}
-			catch ( CException* pException )
-			{
-				ar.Abort();
-				pFile.Abort();
-				pException->Delete();
-			}
-		}
-		catch ( CException* pException )
-		{
-			pFile.Abort();
-			pException->Delete();
-		}
-
-		pFile.Close();
-		DeleteFile( strTemp );
+		CArchive ar( &pFile, CArchive::store );
+		Serialize( ar );
+		ar.Close();
+	}
+	catch ( CException* pException )
+	{
+		pException->Delete();
+		return FALSE;
 	}
 
-	theApp.Message( MSG_ERROR, L"Failed to save upload queues: %s", (LPCTSTR)strFile );
-	return FALSE;
+	pFile.Close();
+	return TRUE;
 }
-
-//////////////////////////////////////////////////////////////////////
-// CUploadQueues serialize
-
-// Set at INTERNAL_VERSION on change:
-#define UPLOADQUEUES_SER_VERSION 1
-
-// nVersion History:
-// 6 - Shareaza 2.3 (ryo-oh-ki)
-// 1000 - (6)
-// 1 - (Envy 1.0)
-
-void CUploadQueues::Serialize(CArchive& ar)
-{
-	ASSUME_LOCK( m_pSection );
-
-	int nVersion = UPLOADQUEUES_SER_VERSION;
-
-	if ( ar.IsStoring() )
-	{
-		ar << nVersion;
-
-		ar.WriteCount( GetCount() );
-
-		for ( POSITION pos = GetIterator(); pos; )
-		{
-			GetNext( pos )->Serialize( ar, nVersion );
-		}
-	}
-	else // Loading
-	{
-		Clear();
-
-		ar >> nVersion;
-		if ( nVersion > UPLOADQUEUES_SER_VERSION && nVersion != 1000 )
-			AfxThrowUserException();
-
-		for ( DWORD_PTR nCount = ar.ReadCount(); nCount > 0; nCount-- )
-		{
-			Create()->Serialize( ar, nVersion );
-		}
-	}
-}
-
-//////////////////////////////////////////////////////////////////////
-// CUploadQueues create default
 
 void CUploadQueues::CreateDefault()
 {
-	CQuickLock oLock( m_pSection );
-
-	theApp.Message( MSG_NOTICE, L"Creating default upload queues" );
-
-	CUploadQueue* pQueue = NULL;
-
-	Clear();
 	CString strQueueName;
 
-	if ( Settings.Experimental.LAN_Mode )
-	{
-		LoadString( strQueueName, IDS_FILES_ALL );
-		pQueue						= Create( strQueueName );
-		pQueue->m_nBandwidthPoints	= 40;
-		pQueue->m_nProtocols		= 0;
-		pQueue->m_nFileStateFlag	= CUploadQueue::ulqBoth;
-		pQueue->m_nCapacity			= 1000;
-		pQueue->m_nMinTransfers		= 4;
-		pQueue->m_nMaxTransfers		= 6;
-		pQueue->m_bRotate			= TRUE;
-		pQueue->m_nRotateTime		= 10*60;
-		pQueue->m_bRewardUploaders	= TRUE;
-	}
-	else if ( Settings.Connection.OutSpeed > 1200 )	// 1200 Kb/s (Massive connection)
+	if ( Settings.Connection.OutSpeed > 100 )	// >100 Kb/s (Broadband)
 	{
 		LoadString( strQueueName, IDS_UPLOAD_QUEUE_ED2K_PARTIALS );
-		pQueue						= Create( strQueueName );
-		pQueue->m_nBandwidthPoints	= 40;
-		pQueue->m_nProtocols		= (1<<PROTOCOL_ED2K);
-		pQueue->m_nFileStateFlag	= CUploadQueue::ulqPartial;
-		pQueue->m_nCapacity			= 2000;
-		pQueue->m_nMinTransfers		= 4;
-		pQueue->m_nMaxTransfers		= 6;
-		pQueue->m_bRotate			= TRUE;
-		pQueue->m_nRotateTime		= 10*60;
-		pQueue->m_bRewardUploaders	= TRUE;
-
-		LoadString( strQueueName, IDS_UPLOAD_QUEUE_ED2K_CORE );
-		pQueue						= Create( strQueueName );
-		pQueue->m_nBandwidthPoints	= 20;
-		pQueue->m_nProtocols		= (1<<PROTOCOL_ED2K);
-		pQueue->m_nFileStateFlag	= CUploadQueue::ulqLibrary;
-		pQueue->m_nCapacity			= 2000;
-		pQueue->m_nMinTransfers		= 2;
-		pQueue->m_nMaxTransfers		= 5;
-		pQueue->m_bRotate			= TRUE;
-		pQueue->m_nRotateTime		= 10*60;
-		pQueue->m_bRewardUploaders	= TRUE;
-
-		LoadString( strQueueName, IDS_UPLOAD_QUEUE_PARTIAL_FILES );
-		pQueue						= Create( strQueueName );
-		pQueue->m_nBandwidthPoints	= 50;
-		pQueue->m_nProtocols		= (1<<PROTOCOL_HTTP);
-		pQueue->m_nFileStateFlag	= CUploadQueue::ulqPartial;
-		pQueue->m_nMinTransfers		= 4;
-		pQueue->m_nMaxTransfers		= 6;
-		pQueue->m_bRotate			= TRUE;
-		pQueue->m_nRotateTime		= 5*60;
-		pQueue->m_bRewardUploaders	= TRUE;
-
-		LoadString( strQueueName, IDS_UPLOAD_QUEUE_SMALL_FILES );
-		pQueue						= Create( strQueueName );
-		pQueue->m_nBandwidthPoints	= 10;
-		pQueue->m_nProtocols		= (1<<PROTOCOL_HTTP);
-		pQueue->m_nFileStateFlag	= CUploadQueue::ulqLibrary;
-		pQueue->m_nMaxSize			= 1 * 1024 * 1024;
-		pQueue->m_nCapacity			= 10;
-		pQueue->m_nMinTransfers		= 2;
-		pQueue->m_nMaxTransfers		= 5;
-		pQueue->m_bRewardUploaders	= FALSE;
-
-		LoadString( strQueueName, IDS_UPLOAD_QUEUE_MEDIUM_FILES );
-		pQueue						= Create( strQueueName );
-		pQueue->m_nBandwidthPoints	= 10;
-		pQueue->m_nProtocols		= (1<<PROTOCOL_HTTP);
-		pQueue->m_nFileStateFlag	= CUploadQueue::ulqLibrary;
-		pQueue->m_nMinSize			= 1  * 1024 * 1024 + 1;
-		pQueue->m_nMaxSize			= 10 * 1024 * 1024 - 1;
-		pQueue->m_nCapacity			= 10;
-		pQueue->m_nMinTransfers		= 2;
-		pQueue->m_nMaxTransfers		= 5;
-		pQueue->m_bRewardUploaders	= FALSE;
-
-		LoadString( strQueueName, IDS_UPLOAD_QUEUE_LARGE_FILES );
-		pQueue						= Create( strQueueName );
-		pQueue->m_nBandwidthPoints	= 20;
-		pQueue->m_nProtocols		= (1<<PROTOCOL_HTTP);
-		pQueue->m_nFileStateFlag	= CUploadQueue::ulqLibrary;
-		pQueue->m_nMinSize			= 10 * 1024 * 1024;
-		pQueue->m_nCapacity			= 10;
-		pQueue->m_nMinTransfers		= 3;
-		pQueue->m_nMaxTransfers		= 5;
-		pQueue->m_bRotate			= TRUE;
-		pQueue->m_nRotateTime		= 60*60;
-		pQueue->m_bRewardUploaders	= FALSE;
-	}
-	else if ( Settings.Connection.OutSpeed > 800 )	// 800 Kb/s (Fast Broadband)
-	{
-		LoadString( strQueueName, IDS_UPLOAD_QUEUE_ED2K_PARTIALS );
-		pQueue						= Create( strQueueName );
-		pQueue->m_nBandwidthPoints	= 40;
-		pQueue->m_nProtocols		= (1<<PROTOCOL_ED2K);
-		pQueue->m_nFileStateFlag	= CUploadQueue::ulqPartial;
-		pQueue->m_nCapacity			= 2000;
-		pQueue->m_nMinTransfers		= 3;
-		pQueue->m_nMaxTransfers		= 5;
-		pQueue->m_bRotate			= TRUE;
-		pQueue->m_nRotateTime		= 10*60;
-		pQueue->m_bRewardUploaders	= TRUE;
-
-		LoadString( strQueueName, IDS_UPLOAD_QUEUE_ED2K_CORE );
-		pQueue						= Create( strQueueName );
-		pQueue->m_nBandwidthPoints	= 20;
-		pQueue->m_nProtocols		= (1<<PROTOCOL_ED2K);
-		pQueue->m_nFileStateFlag	= CUploadQueue::ulqLibrary;
-		pQueue->m_nCapacity			= 2000;
-		pQueue->m_nMinTransfers		= 2;
-		pQueue->m_nMaxTransfers		= 5;
-		pQueue->m_bRotate			= TRUE;
-		pQueue->m_nRotateTime		= 10*60;
-		pQueue->m_bRewardUploaders	= TRUE;
-
-		LoadString( strQueueName, IDS_UPLOAD_QUEUE_PARTIAL_FILES );
-		pQueue						= Create( strQueueName );
-		pQueue->m_nBandwidthPoints	= 50;
-		pQueue->m_nProtocols		= (1<<PROTOCOL_HTTP);
-		pQueue->m_nFileStateFlag	= CUploadQueue::ulqPartial;
-		pQueue->m_nMinTransfers		= 3;
-		pQueue->m_nMaxTransfers		= 5;
-		pQueue->m_bRotate			= TRUE;
-		pQueue->m_nRotateTime		= 5*60;
-		pQueue->m_bRewardUploaders	= TRUE;
-
-		LoadString( strQueueName, IDS_UPLOAD_QUEUE_SMALL_FILES );
-		pQueue						= Create( strQueueName );
-		pQueue->m_nBandwidthPoints	= 10;
-		pQueue->m_nProtocols		= (1<<PROTOCOL_HTTP);
-		pQueue->m_nFileStateFlag	= CUploadQueue::ulqLibrary;
-		pQueue->m_nMaxSize			= 1 * 1024 * 1024;
-		pQueue->m_nCapacity			= 10;
-		pQueue->m_nMinTransfers		= 1;
-		pQueue->m_nMaxTransfers		= 4;
-		pQueue->m_bRewardUploaders	= FALSE;
-
-		LoadString( strQueueName, IDS_UPLOAD_QUEUE_MEDIUM_FILES );
-		pQueue						= Create( strQueueName );
-		pQueue->m_nBandwidthPoints	= 10;
-		pQueue->m_nProtocols		= (1<<PROTOCOL_HTTP);
-		pQueue->m_nFileStateFlag	= CUploadQueue::ulqLibrary;
-		pQueue->m_nMinSize			= 1  * 1024 * 1024 + 1;
-		pQueue->m_nMaxSize			= 10 * 1024 * 1024 - 1;
-		pQueue->m_nCapacity			= 10;
-		pQueue->m_nMinTransfers		= 2;
-		pQueue->m_nMaxTransfers		= 4;
-		pQueue->m_bRewardUploaders	= FALSE;
-
-		LoadString( strQueueName, IDS_UPLOAD_QUEUE_LARGE_FILES );
-		pQueue						= Create( strQueueName );
-		pQueue->m_nBandwidthPoints	= 20;
-		pQueue->m_nProtocols		= (1<<PROTOCOL_HTTP);
-		pQueue->m_nFileStateFlag	= CUploadQueue::ulqLibrary;
-		pQueue->m_nMinSize			= 10 * 1024 * 1024;
-		pQueue->m_nCapacity			= 10;
-		pQueue->m_nMinTransfers		= 3;
-		pQueue->m_nMaxTransfers		= 4;
-		pQueue->m_bRotate			= TRUE;
-		pQueue->m_nRotateTime		= 60*60;
-		pQueue->m_bRewardUploaders	= FALSE;
-	}
-	else if ( Settings.Connection.OutSpeed > 250 )	// >250 Kb/s (Good Broadband)
-	{
-		LoadString( strQueueName, IDS_UPLOAD_QUEUE_ED2K_PARTIALS );
-		pQueue						= Create( strQueueName );
+		CUploadQueue* pQueue = Create( strQueueName );
 		pQueue->m_nBandwidthPoints	= 30;
 		pQueue->m_nProtocols		= (1<<PROTOCOL_ED2K);
 		pQueue->m_nFileStateFlag	= CUploadQueue::ulqPartial;
@@ -815,59 +419,10 @@ void CUploadQueues::CreateDefault()
 		pQueue->m_nRotateTime		= 60*60;
 		pQueue->m_bRewardUploaders	= FALSE;
 	}
-	else if ( Settings.Connection.OutSpeed > 120 )	// >120 Kb/s (Average Broadband)
-	{
-		LoadString( strQueueName, IDS_UPLOAD_QUEUE_ED2K_PARTIALS );
-		pQueue						= Create( strQueueName );
-		pQueue->m_nBandwidthPoints	= 30;
-		pQueue->m_nProtocols		= (1<<PROTOCOL_ED2K);
-		pQueue->m_nFileStateFlag	= CUploadQueue::ulqPartial;
-		pQueue->m_nCapacity			= 2000;
-		pQueue->m_nMinTransfers		= 1;
-		pQueue->m_nMaxTransfers		= 4;
-		pQueue->m_bRotate			= TRUE;
-		pQueue->m_nRotateTime		= 10*60;
-		pQueue->m_bRewardUploaders	= TRUE;
-
-		LoadString( strQueueName, IDS_UPLOAD_QUEUE_ED2K_CORE );
-		pQueue						= Create( strQueueName );
-		pQueue->m_nBandwidthPoints	= 10;
-		pQueue->m_nProtocols		= (1<<PROTOCOL_ED2K);
-		pQueue->m_nFileStateFlag	= CUploadQueue::ulqLibrary;
-		pQueue->m_nCapacity			= 1000;
-		pQueue->m_nMinTransfers		= 1;
-		pQueue->m_nMaxTransfers		= 4;
-		pQueue->m_bRotate			= TRUE;
-		pQueue->m_nRotateTime		= 10*60;
-		pQueue->m_bRewardUploaders	= TRUE;
-
-		LoadString( strQueueName, IDS_UPLOAD_QUEUE_PARTIAL_FILES );
-		pQueue						= Create( strQueueName );
-		pQueue->m_nBandwidthPoints	= 30;
-		pQueue->m_nProtocols		= (1<<PROTOCOL_HTTP);
-		pQueue->m_nFileStateFlag	= CUploadQueue::ulqPartial;
-		pQueue->m_nMinTransfers		= 2;
-		pQueue->m_nMaxTransfers		= 4;
-		pQueue->m_bRotate			= TRUE;
-		pQueue->m_nRotateTime		= 5*60;
-		pQueue->m_bRewardUploaders	= TRUE;
-
-		LoadString( strQueueName, IDS_UPLOAD_QUEUE_COMPLETE );
-		pQueue						= Create( strQueueName );
-		pQueue->m_nBandwidthPoints	= 40;
-		pQueue->m_nProtocols		= (1<<PROTOCOL_HTTP);
-		pQueue->m_nFileStateFlag	= CUploadQueue::ulqLibrary;
-		pQueue->m_nMinTransfers		= 2;
-		pQueue->m_nMaxTransfers		= 4;
-		pQueue->m_nCapacity			= 10;
-		pQueue->m_bRotate			= TRUE;
-		pQueue->m_nRotateTime		= 60*60;
-		pQueue->m_bRewardUploaders	= FALSE;
-	}
 	else if ( Settings.Connection.OutSpeed > 50 )	// >50 Kb/s (Slow Broadband/ISDN)
 	{
 		LoadString( strQueueName, IDS_UPLOAD_QUEUE_ED2K_CORE );
-		pQueue						= Create( strQueueName );
+		CUploadQueue* pQueue		= Create( strQueueName );
 		pQueue->m_nBandwidthPoints	= 20;
 		pQueue->m_nProtocols		= (1<<PROTOCOL_ED2K);
 		pQueue->m_nFileStateFlag	= CUploadQueue::ulqBoth;
@@ -905,7 +460,7 @@ void CUploadQueues::CreateDefault()
 	else  // < 50 Kb/s (Dial up modem)
 	{
 		LoadString( strQueueName, IDS_UPLOAD_QUEUE_ED2K_CORE );
-		pQueue						= Create( strQueueName );
+		CUploadQueue* pQueue		= Create( strQueueName );
 		pQueue->m_nBandwidthPoints	= 20;
 		pQueue->m_nProtocols		= (1<<PROTOCOL_ED2K);
 		pQueue->m_nFileStateFlag	= CUploadQueue::ulqBoth;
@@ -932,9 +487,6 @@ void CUploadQueues::CreateDefault()
 	Save();
 }
 
-//////////////////////////////////////////////////////////////////////
-// CUploadQueues validate
-
 void CUploadQueues::Validate()
 {
 	CQuickLock oLock( m_pSection );
@@ -952,13 +504,6 @@ void CUploadQueues::Validate()
 	const bool bED2K_NoLibrary =
 		SelectQueue( PROTOCOL_ED2K, L"Filename", 1, CUploadQueue::ulqLibrary ) == NULL ||
 		SelectQueue( PROTOCOL_ED2K, L"Filename", SIZE_UNKNOWN - 1, CUploadQueue::ulqLibrary ) == NULL;
-
-	const bool bDC_NoPartial =
-		SelectQueue( PROTOCOL_DC, L"Filename", 1, CUploadQueue::ulqPartial ) == NULL ||
-		SelectQueue( PROTOCOL_DC, L"Filename", SIZE_UNKNOWN - 1, CUploadQueue::ulqPartial ) == NULL;
-	const bool bDC_NoLibrary =
-		SelectQueue( PROTOCOL_DC, L"Filename", 1, CUploadQueue::ulqLibrary ) == NULL ||
-		SelectQueue( PROTOCOL_DC, L"Filename", SIZE_UNKNOWN - 1, CUploadQueue::ulqLibrary ) == NULL;
 
 	if ( bHTTP_NoPartial || bHTTP_NoLibrary )
 	{
@@ -1012,34 +557,87 @@ void CUploadQueues::Validate()
 		}
 	}
 
-	if ( bDC_NoPartial || bDC_NoLibrary )
-	{
-		CUploadQueue* pQueue		= Create( LoadString( IDS_UPLOAD_QUEUE_DC_GUARD ) );
-		pQueue->m_nProtocols		= ( 1 << PROTOCOL_DC );
-		pQueue->m_nMaxTransfers		= 5;
-		pQueue->m_bRotate			= TRUE;
-		pQueue->m_nFileStateFlag	= ( bDC_NoPartial && bDC_NoLibrary ) ?
-			CUploadQueue::ulqBoth : ( bDC_NoPartial ? CUploadQueue::ulqPartial : CUploadQueue::ulqLibrary );
-
-		if ( Settings.Connection.OutSpeed > 100 )
-		{
-			pQueue->m_nMinTransfers		= 2;
-			pQueue->m_nBandwidthPoints	= 30;
-			pQueue->m_nCapacity			= 10;
-			pQueue->m_nRotateTime		= 10*60;
-		}
-		else
-		{
-			pQueue->m_nMinTransfers		= 1;
-			pQueue->m_nBandwidthPoints	= 20;
-			pQueue->m_nCapacity			= 5;
-			pQueue->m_nRotateTime		= 30*60;
-		}
-	}
-
 	m_bDonkeyLimited = ( GetMinimumDonkeyBandwidth() < 10240 );
 
-	// Display warning if needed
 	if ( m_bDonkeyLimited && Settings.eDonkey.Enabled || Settings.eDonkey.EnableAlways )
 		theApp.Message( MSG_NOTICE, L"eDonkey upload ratio active: Low uploads may slow downloads." );
+}
+
+DWORD CUploadQueues::GetMinimumDonkeyBandwidth()
+{
+	CQuickLock oLock( m_pSection );
+
+	DWORD nTotal = Settings.Connection.OutSpeed * 128;
+	DWORD nLimit = Settings.Bandwidth.Uploads;
+	DWORD nDonkeyPoints = 0, nTotalPoints = 0, nBandwidth = 0;
+
+	if ( nLimit == 0 || nLimit > nTotal ) nLimit = nTotal;
+
+	for ( POSITION pos = GetIterator(); pos; )
+	{
+		CUploadQueue* pQueue = GetNext( pos );
+
+		nTotalPoints += pQueue->m_nBandwidthPoints;
+
+		if ( pQueue->m_nProtocols == 0 || ( pQueue->m_nProtocols & ( 1 << PROTOCOL_ED2K ) ) != 0 )
+			nDonkeyPoints += pQueue->m_nBandwidthPoints;
+	}
+
+	if ( nTotalPoints < 1 ) nTotalPoints = 1;
+
+	nBandwidth = nLimit * nDonkeyPoints / nTotalPoints;
+
+	return nBandwidth;
+}
+
+DWORD CUploadQueues::GetCurrentDonkeyBandwidth()
+{
+	DWORD nBandwidth = 0;
+	CQuickLock oLock( m_pSection );
+
+	for ( POSITION pos = GetIterator(); pos; )
+	{
+		CUploadQueue* pQueue = GetNext( pos );
+
+		if ( pQueue->m_nProtocols == 0 || ( pQueue->m_nProtocols & ( 1 << PROTOCOL_ED2K ) ) != 0 )
+			nBandwidth += pQueue->GetBandwidthLimit( pQueue->m_nMaxTransfers );
+	}
+
+	return nBandwidth;
+}
+
+//////////////////////////////////////////////////////////////////////
+// CUploadQueues serialize
+
+void CUploadQueues::Serialize(CArchive& ar)
+{
+	int nVersion = 1;
+
+	if ( ar.IsStoring() )
+	{
+		ar << nVersion;
+
+		ar << (INT_PTR)m_pList.GetCount();
+
+		for ( POSITION pos = GetIterator(); pos; )
+		{
+			GetNext( pos )->Serialize( ar, nVersion );
+		}
+	}
+	else
+	{
+		ar >> nVersion;
+
+		Clear();
+
+		INT_PTR nCount;
+		ar >> nCount;
+
+		for ( INT_PTR nItem = 0; nItem < nCount; nItem++ )
+		{
+			CUploadQueue* pQueue = new CUploadQueue();
+			pQueue->Serialize( ar, nVersion );
+			m_pList.AddTail( pQueue );
+		}
+	}
 }

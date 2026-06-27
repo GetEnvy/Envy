@@ -1,7 +1,7 @@
-//
+﻿//
 // UPnPFinder.h
 //
-// This file is part of Envy (getenvy.com) � 2016-2018
+// This file is part of Envy (getenvy.com) © 2016-2018
 // Portions copyright Shareaza 2002-2007 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -50,8 +50,11 @@ private:
 
 	static FinderPointer CreateFinderInstance() throw();
 
-	struct FindDevice : public std::unary_function< DevicePointer, bool >
+	struct FindDevice
 	{
+		typedef DevicePointer argument_type;
+		typedef bool result_type;
+
 		FindDevice(const CComBSTR& udn) : m_udn( udn ) {}
 		result_type operator()(argument_type device) const
 		{

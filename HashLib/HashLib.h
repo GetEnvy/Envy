@@ -1,7 +1,7 @@
 //
 // HashLib.h
 //
-// This file is part of Envy (getenvy.com) © 2016-2018
+// This file is part of Envy (getenvy.com) ï¿½ 2016-2018
 // Portions copyright Shareaza 2008 and PeerProject 2008
 //
 // Envy is free software; you can redistribute it and/or
@@ -25,8 +25,8 @@
 #include "Utility.hpp"
 
 #include "SHA.h"
+#include "SHA256.h"
 #include "MD4.h"
 #include "MD5.h"
 #include "ED2K.h"
 #include "TigerTree.h"
-

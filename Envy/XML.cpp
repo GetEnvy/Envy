@@ -1,7 +1,7 @@
 //
 // XML.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2018
+// This file is part of Envy (getenvy.com) Â© 2016-2018
 // Portions copyright Shareaza 2002-2008 and PeerProject 2008-2016
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -45,18 +45,15 @@ CXMLNode::~CXMLNode()
 {
 }
 
+void CXMLNode::RemoveFromParent()
+{
+}
+
 void CXMLNode::Delete()
 {
 	if ( this == NULL ) return;
 
-	if ( m_pParent != NULL )
-	{
-		if ( m_nNode == xmlElement )
-			m_pParent->RemoveElement( (CXMLElement*)this );
-		else if ( m_nNode == xmlAttribute )
-			m_pParent->RemoveAttribute( (CXMLAttribute*)this );
-	}
-
+	RemoveFromParent();
 	delete this;
 }
 
@@ -180,6 +177,12 @@ CXMLElement::CXMLElement(CXMLElement* pParent, LPCTSTR pszName) : CXMLNode( pPar
 {
 	m_nNode = xmlElement;
 	m_bOrdered = TRUE;		// Retain Attribute inserton order (workaround)
+}
+
+void CXMLElement::RemoveFromParent()
+{
+	if ( m_pParent != NULL )
+		m_pParent->RemoveElement( this );
 }
 
 CXMLElement::~CXMLElement()
@@ -820,6 +823,12 @@ LPCTSTR CXMLAttribute::schemaName		= L"xsi:noNamespaceSchemaLocation";
 CXMLAttribute::CXMLAttribute(CXMLElement* pParent, LPCTSTR pszName) : CXMLNode( pParent, pszName )
 {
 	m_nNode = xmlAttribute;
+}
+
+void CXMLAttribute::RemoveFromParent()
+{
+	if ( m_pParent != NULL )
+		m_pParent->RemoveAttribute( this );
 }
 
 CXMLAttribute::~CXMLAttribute()

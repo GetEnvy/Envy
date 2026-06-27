@@ -1,7 +1,7 @@
 //
 // WndSearchMonitor.h
 //
-// This file is part of Envy (getenvy.com) © 2016-2018
+// This file is part of Envy (getenvy.com) ï¿½ 2016-2018
 // Portions copyright Shareaza 2002-2007 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -22,6 +22,19 @@
 
 class CLiveItem;
 
+// Structure for advanced filtering criteria
+struct SearchFilterCriteria
+{
+	CString sTextFilter;          // Text filtering
+	CStringArray aProtocols;      // Protocols to include (G2, G1, ED2K, DC++)
+	QWORD nMinSize;              // Minimum size (0 = no limit)
+	QWORD nMaxSize;              // Maximum size (0 = no limit)
+	CString sIPFilter;           // IP address filtering (with wildcard support)
+	CString sSchemaFilter;       // Schema filtering
+	bool bFilterEnabled;         // Whether filtering is active
+
+	SearchFilterCriteria() : nMinSize(0), nMaxSize(0), bFilterEnabled(false) {}
+};
 
 class CSearchMonitorWnd : public CPanelWnd
 {
@@ -40,9 +53,24 @@ protected:
 	CList< CLiveItem* >	m_pQueue;
 	CMutexEx			m_pSection;
 
+	// Advanced filtering
+	SearchFilterCriteria m_FilterCriteria;
+
 protected:
 	virtual void OnQuerySearch(const CQuerySearch* pSearch);
 	virtual void OnSkinChange();
+
+	// Advanced filtering methods
+	bool ShouldDisplaySearch(const CQuerySearch* pSearch) const;
+	bool MatchesTextFilter(const CQuerySearch* pSearch) const;
+	bool MatchesProtocolFilter(const CQuerySearch* pSearch) const;
+	bool MatchesSizeFilter(const CQuerySearch* pSearch) const;
+	bool MatchesIPFilter(const CQuerySearch* pSearch) const;
+	bool MatchesSchemaFilter(const CQuerySearch* pSearch) const;
+	bool MatchesWildcard(const CString& sText, const CString& sPattern) const;
+	void ShowFilterDialog();
+	void ClearAllFilters();
+	void UpdateFilterStatus();
 
 protected:
 	afx_msg int  OnCreate(LPCREATESTRUCT lpCreateStruct);
@@ -61,6 +89,10 @@ protected:
 	afx_msg void OnDblClkList(NMHDR* pNotifyStruct, LRESULT *pResult);
 	afx_msg void OnCustomDrawList(NMHDR* pNMHDR, LRESULT* pResult);
 	afx_msg void OnTimer(UINT_PTR nIDEvent);
+	afx_msg void OnUpdateSearchMonitorFilter(CCmdUI* pCmdUI);
+	afx_msg void OnSearchMonitorFilter();
+	afx_msg void OnUpdateSearchMonitorFilterRemove(CCmdUI* pCmdUI);
+	afx_msg void OnSearchMonitorFilterRemove();
 
 	DECLARE_MESSAGE_MAP()
 };

@@ -1,7 +1,7 @@
 //
 // QuerySearch.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2018
+// This file is part of Envy (getenvy.com) ï¿½ 2016-2018
 // Portions copyright Shareaza 2002-2008 and PeerProject 2008-2015
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -448,7 +448,17 @@ CEDPacket* CQuerySearch::ToEDPacket(BOOL bUDP, DWORD nServerFlags) const
 
 	CEDPacket* pPacket = NULL;
 
-	CString strWords = m_pSchema->GetIndexedWords( m_pXML->GetFirstElement() );
+	// Only compute strWords when schema and XML are available (consistent with BuildWordList)
+	// Harden against null pointer crashes
+	CString strWords;
+	if ( m_pSchema != NULL && m_pXML != NULL )
+	{
+		CXMLElement* pFirstElement = m_pXML->GetFirstElement();
+		if ( pFirstElement != NULL )
+		{
+			strWords = m_pSchema->GetIndexedWords( pFirstElement );
+		}
+	}
 
 	if ( bUDP )
 	{
@@ -506,9 +516,45 @@ CEDPacket* CQuerySearch::ToEDPacket(BOOL bUDP, DWORD nServerFlags) const
 			}
 		}
 	}
-	else if ( ! m_sKeywords.IsEmpty() && ! m_sSearch.IsEmpty() || ! strWords.IsEmpty() )
+	else if ( ( ! m_sKeywords.IsEmpty() && ! m_sSearch.IsEmpty() ) || ! strWords.IsEmpty() )
 	{
-		pPacket = CEDPacket::New( bUDP ? ED2K_C2SG_SEARCHREQUEST : ED2K_C2S_SEARCHREQUEST );
+		// Select appropriate UDP opcode: 0x92 for search_tree only, 0x98 as fallback
+		// For TCP, always use 0x16
+		BYTE nSearchOpcode = bUDP ? ED2K_C2SG_SEARCHREQUEST : ED2K_C2S_SEARCHREQUEST;
+
+		// Use newer opcodes for UDP when appropriate (no tag set needed for simple searches)
+		if ( bUDP && ( m_pSchema == NULL || m_pSchema->m_sDonkeyType.IsEmpty() ) )
+		{
+			// Simple search with only search_tree - use OP_GLOBSEARCHREQ2 (0x92)
+			nSearchOpcode = ED2K_C2SG_SEARCHREQUEST2;
+		}
+
+		pPacket = CEDPacket::New( nSearchOpcode );
+
+#ifdef _DEBUG
+		// Log which ED2K search opcode is being used
+		CString strDebugMsg;
+		if ( bUDP )
+		{
+			if ( nSearchOpcode == ED2K_C2SG_SEARCHREQUEST2 )
+				strDebugMsg.Format( L"Creating ED2K UDP search (opcode 0x%02X) - search_tree only", nSearchOpcode );
+			else if ( nSearchOpcode == ED2K_C2SG_SEARCHREQUEST3 )
+				strDebugMsg.Format( L"Creating ED2K UDP search (opcode 0x%02X) - tag set + search_tree", nSearchOpcode );
+			else
+				strDebugMsg.Format( L"Creating ED2K UDP search (opcode 0x%02X) - legacy", nSearchOpcode );
+		}
+		else
+		{
+			strDebugMsg.Format( L"Creating ED2K TCP search (opcode 0x%02X)", nSearchOpcode );
+		}
+
+		if ( ! strWords.IsEmpty() )
+			strDebugMsg += L" - includes schema/XML words";
+		else if ( m_pSchema == NULL || m_pXML == NULL )
+			strDebugMsg += L" - no schema/XML";
+
+		theApp.Message( MSG_DEBUG, strDebugMsg );
+#endif // _DEBUG
 
 		if ( m_nMinSize > 0 || m_nMaxSize < 0xFFFFFFFF )
 		{

@@ -1,7 +1,7 @@
 //
 // BTClient.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2020
+// This file is part of Envy (getenvy.com) ï¿½ 2016-2020
 // Portions copyright Shareaza 2002-2008 and PeerProject 2008-2015
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -62,6 +62,8 @@ CBTClient::CBTClient()
 	, m_bSeeder				( FALSE )
 	, m_bDHTPort			( FALSE )
 	, m_bPrefersEncryption	( FALSE )
+	, m_bEncrypted			( FALSE )
+	, m_bMSEHandshaking		( FALSE )
 	, m_tLastKeepAlive		( GetTickCount() )
 	, m_tLastUtPex			( 0 )
 	, m_nUtMetadataID		( 0 )	// 0 or BT_EXTENSION_UT_METADATA
@@ -250,6 +252,23 @@ BOOL CBTClient::OnRun()
 BOOL CBTClient::OnConnected()
 {
 	theApp.Message( MSG_INFO, IDS_BT_CLIENT_HANDSHAKING, (LPCTSTR)m_sAddress );
+
+	if ( Settings.BitTorrent.Encryption > 0 && m_pDownload && m_pDownload->m_oBTH )
+	{
+		// Initiate MSE/PE encrypted handshake
+		m_bMSEHandshaking = TRUE;
+		m_crypto.SetInfoHash( m_pDownload->m_oBTH );
+		CBuffer output;
+		if ( m_crypto.InitiateHandshake( m_pDownload->m_oBTH, &output ) )
+		{
+			Write( output.m_pBuffer, output.m_nLength );
+			OnWrite();
+			return TRUE;
+		}
+		// Fall through to plaintext if MSE init failed
+		m_bMSEHandshaking = FALSE;
+	}
+
 	SendHandshake( TRUE, TRUE );
 	return TRUE;
 }
@@ -275,6 +294,14 @@ BOOL CBTClient::OnWrite()
 	if ( m_bClosing )
 		return FALSE;
 
+	// If MSE is active, encrypt outgoing data before sending
+	if ( m_bEncrypted && m_crypto.IsActive() )
+	{
+		CLockedBuffer pOutput( GetOutput() );
+		if ( pOutput->m_nLength > 0 )
+			m_crypto.Encrypt( pOutput->m_pBuffer, pOutput->m_nLength );
+	}
+
 	CTransfer::OnWrite();
 
 	return TRUE;
@@ -292,6 +319,45 @@ BOOL CBTClient::OnRead()
 		return FALSE;
 
 	CLockedBuffer pInput( GetInput() );
+
+	// Handle MSE/PE handshake if in progress
+	if ( m_bMSEHandshaking )
+	{
+		CBuffer output;
+		if ( ! m_crypto.ProcessHandshake( pInput, &output ) )
+		{
+			// MSE handshake failed, fall back to plaintext
+			m_bMSEHandshaking = FALSE;
+			if ( m_crypto.GetState() == MSE_FAILED )
+			{
+				Close( IDS_HANDSHAKE_FAIL );
+				return FALSE;
+			}
+		}
+
+		if ( output.m_nLength > 0 )
+		{
+			Write( output.m_pBuffer, output.m_nLength );
+			OnWrite();
+		}
+
+		if ( m_crypto.IsActive() || m_crypto.IsPlaintext() )
+		{
+			// MSE handshake complete, now send BT handshake
+			m_bMSEHandshaking = FALSE;
+			m_bEncrypted = m_crypto.IsActive();
+			m_bPrefersEncryption = m_bEncrypted;
+			SendHandshake( TRUE, TRUE );
+		}
+
+		return TRUE;
+	}
+
+	// If MSE is active, decrypt incoming data before BT processing
+	if ( m_bEncrypted && m_crypto.IsActive() && pInput->m_nLength > 0 )
+	{
+		m_crypto.Decrypt( pInput->m_pBuffer, pInput->m_nLength );
+	}
 
 	BOOL bSuccess = TRUE;
 	if ( m_bOnline )
@@ -325,12 +391,6 @@ BOOL CBTClient::OnRead()
 
 		if ( bSuccess && m_bShake && pInput->m_nLength >= Hashes::Sha1Hash::byteCount )
 			bSuccess = OnHandshake2();
-
-	//	else if ( bSuccess && m_bShake )
-	//	{
-	//		if ( GetTickCount() - m_tConnected > Settings.Connection.TimeoutHandshake / 2 )
-	//			theApp.Message( MSG_ERROR, L"No peer-id received" );
-	//	}
 	}
 
 	return bSuccess;

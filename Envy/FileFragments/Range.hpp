@@ -1,7 +1,7 @@
-//
+﻿//
 // FileFragments/Range.hpp
 //
-// This file is part of Envy (getenvy.com) � 2016-2018
+// This file is part of Envy (getenvy.com) © 2016-2018
 // Portions copyright Shareaza 2002-2007 and PeerProject 2008
 //
 // Envy is free software; you can redistribute it and/or
@@ -102,8 +102,11 @@ bool operator!=(const Range< SizeT, PayloadT >& lhs, const Range< SizeT, Payload
 
 template< typename SizeT, class PayloadT >
 struct RangeCompare
-: public std::binary_function< Range< SizeT, PayloadT >, Range< SizeT, PayloadT >, bool >
 {
+	typedef Range< SizeT, PayloadT > first_argument_type;
+	typedef Range< SizeT, PayloadT > second_argument_type;
+	typedef bool result_type;
+
 	result_type operator()(first_argument_type lhs, second_argument_type rhs) const
 	{
 		return lhs.end() <= rhs.begin();

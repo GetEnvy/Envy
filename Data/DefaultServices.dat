@@ -40,10 +40,12 @@ U uhc:uhc.gtk-gnutella.nl:15749
 # uhc:uhc.udp-host-cache.com:9999
 # uhc:uhc2.limewire.com:20181
 
-D http://peerates.net/servers.php
+D https://peerates.net/servers.met
 D http://www.gruk.org/server.met
 D http://upd.emule-security.org/server.met
 D http://www.emule-server.de/server.met/max/server.met
+D https://www.emule-security.org/server.met
+#D https://www.shortypower.org/server.met
 
 H http://dchublist.com/hublist.xml.bz2
 H http://dchublist.ru/hublist.xml.bz2
@@ -73,4 +75,4 @@ X http://gwc.gofoxy.net:2108/gwc/cgi-bin/fc
 # Test: http://cache.getenvy.com/cachechu/?get=1&net=gnutella2&client=TEST1.0
 # Latest version at http://sourceforge.net/p/getenvy/code/HEAD/tree/trunk/Data/DefaultServices.dat
 #
-# Last updated July 2019
+# Last updated January 2025

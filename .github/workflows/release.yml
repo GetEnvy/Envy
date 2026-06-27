@@ -1,0 +1,201 @@
+name: Release
+
+# checkov:skip=CKV_GHA_7:Release tag is operator-supplied for manual publishes.
+on:
+  push:
+    tags: [v*]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Release tag (e.g. v5.0.0)
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+  SOLUTION: Visual Studio\Envy.sln
+  PLATFORM_TOOLSET: v145
+
+jobs:
+  build:
+    name: Build Release ${{ matrix.platform }}
+    # windows-2025-vs2026 is the GA hosted image (since 2026-05-04) that
+    # ships Visual Studio 2026 (v145 / MSVC 14.50). v145 is the only
+    # supported toolset for this branch - a failure here is a real failure.
+    runs-on: windows-2025-vs2026
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      matrix:
+        platform: [x64, Win32]
+    # Hosted runners hit C1083 (PCH permission denied) when Envy.pch is built
+    # under parallel CL/MSBuild; serialize the solution build for reliability.
+    env:
+      MSBUILD_PARALLEL: /m:1
+      MSBUILD_USE_MULTI_TOOL_TASK: false
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          submodules: recursive
+          fetch-depth: 0
+
+      - name: Add MSBuild to PATH
+        uses: microsoft/setup-msbuild@v3
+        with:
+          msbuild-architecture: x64
+
+      - name: Verify Visual Studio 2026 with v145 is installed
+        shell: pwsh
+        run: |
+          msbuild -version
+          $vswhere = "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vswhere.exe"
+          if (-not (Test-Path $vswhere)) {
+            Write-Error "vswhere.exe not found at $vswhere - cannot validate VS install."
+            exit 1
+          }
+          $installVersion = (& $vswhere -latest -prerelease -property installationVersion) -as [string]
+          $installPath    = (& $vswhere -latest -prerelease -property installationPath) -as [string]
+          Write-Host "Installation : $installPath"
+          Write-Host "Version      : $installVersion"
+
+          $msvcDir = Join-Path $installPath "VC\Tools\MSVC"
+          if (-not (Test-Path $msvcDir)) {
+            Write-Error "VC\Tools\MSVC directory not found in $installPath."
+            exit 1
+          }
+          $vc145 = Get-ChildItem $msvcDir -Directory | Where-Object { $_.Name -match "^14\.5" } | Sort-Object Name -Descending
+          if (-not $vc145) {
+            Write-Host "Installed MSVC tool directories:"
+            Get-ChildItem $msvcDir -Directory | ForEach-Object { Write-Host "  $($_.Name)" }
+            Write-Error "::error::v145 (MSVC 14.5x) tool directory NOT found in $msvcDir. Expected runner image is windows-2025-vs2026."
+            exit 1
+          }
+          Write-Host "::notice::v145 (MSVC $($vc145[0].Name)) toolset detected at $($vc145[0].FullName)"
+          if ($installVersion -notmatch "^18\.") {
+            Write-Error "::error::VS major version is $installVersion, expected 18.x (Visual Studio 2026)."
+            exit 1
+          }
+
+      - name: Bootstrap vcpkg
+        shell: pwsh
+        run: |
+          $vcpkgRoot = Join-Path $env:GITHUB_WORKSPACE "vcpkg"
+          if (-not (Test-Path (Join-Path $vcpkgRoot ".git"))) {
+            git clone https://github.com/microsoft/vcpkg.git $vcpkgRoot
+          }
+
+          $baseline = $null
+          $vcpkgConfig = Join-Path $env:GITHUB_WORKSPACE "vcpkg-configuration.json"
+          if (Test-Path $vcpkgConfig) {
+            $baseline = (Get-Content $vcpkgConfig -Raw | ConvertFrom-Json)."builtin-baseline"
+          }
+          if (-not $baseline) {
+            $vcpkgManifest = Join-Path $env:GITHUB_WORKSPACE "vcpkg.json"
+            $baseline = (Get-Content $vcpkgManifest -Raw | ConvertFrom-Json)."builtin-baseline"
+          }
+          if ($baseline) {
+            git -C $vcpkgRoot checkout $baseline
+          }
+
+          & "$vcpkgRoot/bootstrap-vcpkg.bat" -disableMetrics
+          $resolvedCommit = (git -C $vcpkgRoot rev-parse HEAD).Trim()
+          echo "VCPKG_INSTALLATION_ROOT=$vcpkgRoot" >> $env:GITHUB_ENV
+          echo "VCPKG_COMMIT=$resolvedCommit" >> $env:GITHUB_ENV
+          echo "VCPKG_BINARY_SOURCES=clear;files,${{ github.workspace }}/vcpkg_cache,readwrite" >> $env:GITHUB_ENV
+
+      - name: Cache vcpkg binary cache
+        uses: actions/cache@v5
+        with:
+          path: |
+            ${{ github.workspace }}/vcpkg_cache
+          key: vcpkg-release-${{ runner.os }}-${{ matrix.platform }}-${{ env.PLATFORM_TOOLSET }}-${{ env.VCPKG_COMMIT }}-${{ hashFiles('vcpkg.json', 'vcpkg-configuration.json') }}
+          restore-keys: |
+            vcpkg-release-${{ runner.os }}-${{ matrix.platform }}-${{ env.PLATFORM_TOOLSET }}-${{ env.VCPKG_COMMIT }}-
+            vcpkg-release-${{ runner.os }}-${{ matrix.platform }}-${{ env.PLATFORM_TOOLSET }}-
+
+      - name: Install vcpkg dependencies (manifest mode)
+        shell: pwsh
+        run: |
+          $triplet = if ("${{ matrix.platform }}" -eq "x64") { "x64-windows-static" } else { "x86-windows-static" }
+          echo "VCPKG_TARGET_TRIPLET=$triplet" >> $env:GITHUB_ENV
+          & "$env:VCPKG_INSTALLATION_ROOT/vcpkg.exe" install --triplet=$triplet
+
+      - name: Build solution
+        shell: cmd
+        run: |
+          msbuild "%SOLUTION%" ^
+            %MSBUILD_PARALLEL% ^
+            /nologo ^
+            /verbosity:minimal ^
+            /p:Configuration=Release ^
+            /p:Platform=${{ matrix.platform }} ^
+            /p:PlatformToolset=%PLATFORM_TOOLSET% ^
+            /p:WindowsTargetPlatformVersion=10.0 ^
+            /p:UseMultiToolTask=%MSBUILD_USE_MULTI_TOOL_TASK% ^
+            /p:EnforceProcessCountAcrossBuilds=true ^
+            /p:VcpkgEnableManifest=true ^
+            /p:VcpkgEnabled=true ^
+            /p:VcpkgTriplet=%VCPKG_TARGET_TRIPLET% ^
+            /p:TreatWarningsAsErrors=false ^
+            /flp:LogFile=release-${{ matrix.platform }}.log;Verbosity=detailed;Encoding=UTF-8 ^
+            /flp1:LogFile=release-${{ matrix.platform }}.errors.log;ErrorsOnly;Verbosity=normal
+
+      - name: Upload build logs
+        if: always()
+        uses: actions/upload-artifact@v6
+        with:
+          name: release-build-logs-${{ matrix.platform }}
+          path: release-*.log
+          if-no-files-found: ignore
+          retention-days: 30
+
+      - name: Stage artifacts
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force -Path artifacts | Out-Null
+          Get-ChildItem -Recurse -Include *.exe, *.dll -Path Envy, Plugins, TorrentEnvy `
+            | Where-Object { $_.FullName -match "Release" } `
+            | Copy-Item -Destination artifacts -Force
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v6
+        with:
+          name: envy-${{ matrix.platform }}-release
+          path: artifacts/**
+          retention-days: 30
+
+  release:
+    name: Publish GitHub Release
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/download-artifact@v6
+        with:
+          path: dist
+          pattern: envy-*-release
+
+      - name: Create release archives
+        shell: bash
+        run: |
+          mkdir -p release
+          for d in dist/envy-*-release; do
+            name=$(basename "$d")
+            (cd "$d" && zip -9 -r "../../release/${name}.zip" .)
+          done
+
+      - name: Publish release
+        uses: softprops/action-gh-release@v2
+        with:
+          generate_release_notes: true
+          draft: true
+          files: release/*.zip

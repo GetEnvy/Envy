@@ -1,7 +1,7 @@
 //
 // ED2K.h
 //
-// This file is part of Envy (getenvy.com) © 2016-2018
+// This file is part of Envy (getenvy.com) ï¿½ 2016-2018
 // Portions copyright Shareaza 2002-2006 and PeerProject 2008-2012
 //
 // Envy is free software; you can redistribute it and/or
@@ -28,6 +28,12 @@ class HASHLIB_API CED2K
 public:
 	CED2K();
 	~CED2K();
+
+	// Delete copy and move operations (Rule of Five)
+	CED2K(const CED2K&) = delete;
+	CED2K& operator=(const CED2K&) = delete;
+	CED2K(CED2K&&) = delete;
+	CED2K& operator=(CED2K&&) = delete;
 
 	void	Clear();
 	void	Save(uchar* pBuf) const;

@@ -147,7 +147,8 @@
 #define IDD_SETTINGS_NETWORKS           511
 #define IDD_SETTINGS_GNUTELLA           512
 #define IDD_SETTINGS_DONKEY             513
-#define IDD_SETTINGS_DC                 514
+#define IDD_SETTINGS_DONKEY_ADVANCED    514
+#define IDD_SETTINGS_DC                 529
 #define IDD_SETTINGS_BITTORRENT         515
 #define IDD_SETTINGS_SKINS              516
 #define IDD_SETTINGS_PLUGINS            517
@@ -204,6 +205,7 @@
 #define IDD_CONNECT_TO                  627
 #define IDD_FILTER_SAVE_AS              628
 #define IDD_FILTER_SEARCH               629
+#define IDD_SEARCHMONITOR_FILTER        653
 #define IDD_FOLDER_PROPERTIES           630
 #define IDD_FOLDER_SCAN                 631
 #define IDD_GRAPH_ITEM                  632
@@ -305,6 +307,21 @@
 #define IDC_DOWNLOADS_SIMPLEBAR         1086
 #define IDC_ED2K_ENABLE                 1087
 #define IDC_ED2K_SETUP                  1088
+
+// Donkey Advanced Settings Page Controls
+#define IDC_ED2K_ENABLE_AICH            1089
+#define IDC_ED2K_AICH_TRUST_EVERY_HASH  1090
+#define IDC_ED2K_AICH_HASHSET_TIMEOUT   1091
+#define IDC_ED2K_AICH_RECOVER           1092
+#define IDC_ED2K_ENABLE_KAD_HELLO       1093
+#define IDC_ED2K_KAD_FIND_VALUE         1094
+#define IDC_ED2K_KAD_HELLO_TIMEOUT      1095
+#define IDC_ED2K_KAD_FIND_VALUE_TIMEOUT 1096
+#define IDC_ED2K_ENABLE_MULTIPACKET_EXT2 1097
+#define IDC_ED2K_ENABLE_HASHSET_REQUEST2 1098
+#define IDC_ED2K_PREFER_IPV6            1099
+#define IDC_ED2K_ENABLE_DUAL_STACK      1100
+#define IDC_ED2K_IPV6_CONNECT_TIMEOUT   1101
 #define IDC_EDIT_PROFILE                1089
 #define IDC_ENABLE                      1090
 #define IDC_ENABLE_ALWAYS               1091
@@ -360,6 +377,16 @@
 #define IDC_FILTER_RESTRICTED           1145
 #define IDC_FILTER_SUSPECT              1146
 #define IDC_FILTER_UNSTABLE             1147
+#define IDC_FILTER_TEXT                 1148
+#define IDC_FILTER_IP                   1149
+#define IDC_FILTER_SCHEMA               1150
+#define IDC_FILTER_MIN_SIZE             1151
+#define IDC_FILTER_MAX_SIZE             1152
+#define IDC_FILTER_PROTOCOL_G2          1153
+#define IDC_FILTER_PROTOCOL_G1          1154
+#define IDC_FILTER_PROTOCOL_ED2K        1155
+#define IDC_FILTER_PROTOCOL_DC          1156
+#define IDC_FILTER_ENABLED              1157
 #define IDC_FORGET_SOURCES              1148
 #define IDC_FORGET_VERIFY               1149
 #define IDC_G1_ENABLE                   1150
@@ -1846,6 +1873,8 @@
 #define ID_NETWORK_AUTO_CLOSE           40337
 #define ID_SEARCHMONITOR_CLEAR          40338
 #define ID_SEARCHMONITOR_PAUSE          40339
+#define ID_SEARCHMONITOR_FILTER         40340
+#define ID_SEARCHMONITOR_FILTER_REMOVE  40341
 #define ID_SEARCH_SEARCH                40340
 #define ID_SEARCH_STOP                  40341
 #define ID_SEARCH_CLEAR                 40342

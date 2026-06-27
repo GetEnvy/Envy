@@ -1,7 +1,7 @@
 //
 // DlgUpdateServers.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2018
+// This file is part of Envy (getenvy.com) ï¿½ 2016-2018
 // Portions copyright Shareaza 2002-2008 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -81,7 +81,7 @@ BOOL CUpdateServersDlg::IsValidURL()
 {
 	return
 		m_sURL.GetLength() > 12 &&
-		StartsWith( m_sURL, L"http://", 7 ) &&
+		( StartsWith( m_sURL, L"http://", 7 ) || StartsWith( m_sURL, L"https://", 8 ) ) &&
 	//	m_sURL.Find( L'/', 7 ) > 12 &&
 		m_sURL.Find( L'.', 7 ) > 8;
 }

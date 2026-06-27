@@ -427,6 +427,8 @@
 	<resource code="40337" id="ID_NETWORK_AUTO_CLOSE"/>
 	<resource code="40338" id="ID_SEARCHMONITOR_CLEAR"/>
 	<resource code="40339" id="ID_SEARCHMONITOR_PAUSE"/>
+	<resource code="40340" id="ID_SEARCHMONITOR_FILTER"/>
+	<resource code="40341" id="ID_SEARCHMONITOR_FILTER_REMOVE"/>
 	<resource code="40340" id="ID_SEARCH_SEARCH"/>
 	<resource code="40341" id="ID_SEARCH_STOP"/>
 	<resource code="40342" id="ID_SEARCH_CLEAR"/>

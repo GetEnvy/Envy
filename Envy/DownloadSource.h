@@ -242,9 +242,9 @@ public:
 };
 
 template<>
-struct std::less< CDownloadSource* > : public std::binary_function < CDownloadSource*, CDownloadSource*, bool >
+struct std::less< CDownloadSource* >
 {
-	inline bool operator()( const CDownloadSource* _Left, const CDownloadSource* _Right ) const throw( )
+	inline bool operator()( const CDownloadSource* _Left, const CDownloadSource* _Right ) const noexcept
 	{
 		return ( CompareFileTime( &_Left->m_tLastSeen, &_Right->m_tLastSeen ) < 0 );
 	}

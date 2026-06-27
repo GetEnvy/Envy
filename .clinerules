@@ -1,0 +1,29 @@
+# Cline rules for Envy
+#
+# Canonical rules live in AGENTS.md.
+
+Before making changes, read AGENTS.md and docs/DEVELOPMENT_PLAN.md.
+
+Required:
+- Branch off develop; push only your feature branch (never main, develop,
+  or legacy). Use type/short-kebab-summary names; no tool/agent prefixes.
+- Record strategic progress in docs/DEVELOPMENT_PLAN.md; session notes
+  go in .local/DEV_TRACKER.md (gitignored).
+- All artifacts (code, comments, commits, PRs, docs) in English; chat
+  replies follow the user's language.
+- Match the surrounding MFC style (tabs/4, Allman braces, Hungarian
+  prefixes).
+- Don't bulk-reformat files.
+- Don't edit Plugins/PluginWizard/** (templates).
+- Don't reintroduce XP/Vista/7/8 support (v141_xp, _ATL_XP_TARGETING,
+  _WIN32_WINNT < 0x0A00).
+- Use noexcept (not throw()); drop the register keyword.
+- Manage dependencies through vcpkg.json, not bundled sources.
+
+Build:
+msbuild "Visual Studio\Envy.sln" /m /p:Configuration=Release
+  /p:Platform=x64 /p:PlatformToolset=v145
+  /p:WindowsTargetPlatformVersion=10.0
+  /p:VcpkgEnableManifest=true /p:VcpkgTriplet=x64-windows-static
+
+See MODERNIZATION.md for the multi-phase plan.

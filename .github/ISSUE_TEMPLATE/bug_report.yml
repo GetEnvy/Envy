@@ -1,0 +1,68 @@
+name: Bug report
+description: Report a crash, regression, or incorrect behavior in Envy.
+title: "[Bug]: "
+labels: ["bug", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to file a bug. Please fill out the
+        sections below so we can reproduce and fix the issue quickly.
+  - type: input
+    id: envy-version
+    attributes:
+      label: Envy version
+      description: From Help -> About, or the installer filename.
+      placeholder: "5.0.0 (commit abcdef0)"
+    validations:
+      required: true
+  - type: dropdown
+    id: arch
+    attributes:
+      label: Architecture
+      options:
+        - x64
+        - Win32 (x86)
+        - ARM64
+    validations:
+      required: true
+  - type: input
+    id: os
+    attributes:
+      label: Windows version
+      placeholder: "Windows 11 24H2 build 26100.2033"
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Steps to reproduce
+      description: Be specific. Include network type (Gnutella / BitTorrent / eDonkey / DC), file size, peer count if relevant.
+      placeholder: |
+        1. Open Envy.
+        2. ...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior (crash dump, log, stack trace)
+      description: Attach `BugTrap` dumps from `%APPDATA%\Envy\` if available.
+    validations:
+      required: true
+  - type: dropdown
+    id: regression
+    attributes:
+      label: Is this a regression?
+      options:
+        - "I don't know"
+        - "No, always behaved this way"
+        - "Yes, worked in a previous version"
+    validations:
+      required: true

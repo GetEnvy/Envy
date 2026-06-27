@@ -1,0 +1,92 @@
+---
+description: Documentation standards, doc organization, and API/comment guidelines
+globs: ["docs/**", "README.md", "CHANGELOG.md"]
+alwaysApply: false
+---
+
+# Documentation Standards
+
+## Source of truth
+
+- Canonical documentation lives in `docs/` (not in `.cursor/rules/`).
+- The **authoritative docs-sync / definition-of-done rule** is `09-docs-auto-update.mdc`.
+
+## Documentation map (single source of truth)
+
+Keep documentation in **one canonical location** per topic. Prefer updating an existing doc over creating a new one.
+
+- `docs/00_index/`
+  - `README.md`: main entry point
+  - `CURSOR_INDEX.md`: quick navigation for AI + humans
+  - `MASTER_PLAN.md`, `MIGRATION_MAP.md`: planning
+  - `DECISIONS.md`: ADR-lite decision log
+  - `KNOWN_INCONSISTENCIES.md`: doc/code mismatches to resolve
+
+- `docs/10_dev/`
+  - build/how-to, standards, contributing, status, roadmap
+
+- `docs/20_arch/`
+  - architecture and design explanations
+
+- `docs/30_protocols/<proto>/`
+  - protocol specs, compatibility notes, packet layouts, diagnostics, test fixtures
+
+- `docs/40_quality/`
+  - security, performance, testing schedules, audits
+
+- `docs/50_user/`
+  - end-user guides, settings reference
+
+Also keep the small “moved” pointer files at `docs/STATUS.md`, `docs/ROADMAP.md`, etc. aligned with the canonical targets.
+
+## Create vs update
+
+Before creating any new doc:
+1. Search the repository for an existing doc to extend (`rg -n "<keyword>" docs/`).
+2. If an existing doc covers 70%+ of the topic, **update it**.
+3. If a new doc is truly required, place it in the correct folder and add it to:
+   - `docs/00_index/CURSOR_INDEX.md` (if it’s a primary entry point)
+   - `docs/00_index/README.md` if it changes the overall navigation
+
+Avoid duplicates like multiple “status” or “roadmap” docs with different truth.
+
+## Required header for developer docs
+
+For developer-facing docs, include a metadata block at the top (keep it current):
+
+```markdown
+Status: draft|active|deprecated
+Last updated: YYYY-MM-DD
+Scope: <one sentence>
+Source of truth: <code paths / spec links>
+```
+
+Update “Last updated” whenever substantive content changes.
+
+## Writing conventions
+
+- **English only** for developer docs, comments, and commit messages.
+- Prefer Markdown. Avoid heavy HTML; keep docs readable in plain text.
+- Prefer short sections and lists; avoid “wall of text”.
+- Always link claims to:
+  - code paths (file/function names), and/or
+  - protocol specs, and/or
+  - test fixtures / reproduction steps.
+
+## Code and comment documentation (in code)
+
+- Comments must be in English.
+- For public-facing classes/functions, prefer Doxygen-style blocks and document:
+  - purpose/behavior
+  - parameters and return values
+  - ownership/lifetime and thread-safety notes when relevant
+- Avoid comment drift: if behavior changes, update or remove the outdated comment.
+
+## Avoid
+
+- Outdated comments that don't match code
+- Obvious comments that just repeat the code
+- Missing documentation for public APIs
+- Not documenting thread safety requirements
+- Not documenting ownership semantics
+- Comments in languages other than English

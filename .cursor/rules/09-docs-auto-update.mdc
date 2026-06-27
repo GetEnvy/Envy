@@ -1,0 +1,37 @@
+---
+description: "AUTO: Keep docs in sync with code changes (definition of done)."
+globs: ["**/*"]
+alwaysApply: true
+---
+
+# Live documentation (must follow on every change)
+
+## Hard rule
+If you make ANY change that affects behavior, APIs, protocol handling, UI, config, build, CI, security, performance, or troubleshooting:
+- You MUST update the relevant documentation in the same work session BEFORE you finish.
+- If no docs changes are needed, you MUST explicitly say: `Docs: no changes required (reason: ...)`.
+
+## Minimal required outputs (every request that edits code)
+Before finishing, include a "Docs updated" section:
+- Docs updated:
+  - <file> — <1–2 bullets of what changed>
+OR:
+- Docs: no changes required (reason: ...)
+
+## What to update (choose what applies)
+- `CHANGELOG.md` for user-visible changes (features, fixes, behavior changes).
+- `docs/` developer or user docs that describe the changed area.
+- A “status/progress” doc if the repo has one (e.g., `docs/10_dev/status.md`).
+- Protocol changes: update the matching `docs/30_protocols/**` page(s).
+- Security changes: update `docs/40_quality/security/**` (or the repo’s security doc).
+- Troubleshooting/log changes: update the relevant `docs/10_dev/**`, `docs/50_user/**`, and/or protocol doc under `docs/30_protocols/**`.
+
+## Prevent doc sprawl
+- Before creating a new doc, search for an existing relevant doc and update it instead.
+- Prefer adding a section over creating a new file unless clearly necessary.
+- Keep docs single-source-of-truth: don’t duplicate the same info in multiple places.
+
+## Doc drift handling
+If you discover something unclear or inconsistent (code vs docs):
+- Fix it immediately if possible, otherwise record it in `docs/00_index/KNOWN_INCONSISTENCIES.md` with:
+  - file/area, what’s inconsistent, and what follow-up is needed.

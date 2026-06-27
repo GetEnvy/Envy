@@ -1,0 +1,26 @@
+---
+description: Index of project rules (what exists, what to attach, and when)
+globs: ["**/*"]
+alwaysApply: true
+---
+
+# Cursor Rules Index (Envy)
+
+## Always (core rules)
+- `00-rules-index.mdc`: what rules exist + maintenance hook
+- `00-project-context.mdc`: repo context + key conventions
+- `08-dev-workflow.mdc`: workflow gates (branching, testing, small PRs) + docs requirement
+- `09-docs-auto-update.mdc`: **definition of done** (must end with Docs updated / Docs: no changes)
+
+## Auto-attached (via `globs`, only when relevant)
+- `01-cpp-standards.mdc`: C++20/17 guidance + RAII + safe modernization
+- `02-mfc-patterns.mdc`: MFC patterns + **GUI resource de-dup** rule
+- `03-naming-conventions.mdc`: naming prefixes + file/class naming
+- `04-error-handling.mdc`: Win32/MFC error handling + logging patterns
+- `05-performance.mdc`: profiling-first + hot-path rules
+- `06-p2p-protocols.mdc`: protocol/network input validation + compatibility rules
+- `07-documentation.mdc`: docs map + writing conventions (applies to `docs/**`, `README.md`, `CHANGELOG.md`)
+
+## Rules maintenance hook
+- After any major feature/fix: run **Rules Curator** to merge duplicates and prevent drift.
+- If a rule exceeds ~150 lines: prune examples, convert to checklist, or split by scope.

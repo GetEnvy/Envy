@@ -1,0 +1,91 @@
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Envy Remote Control</h4>
+                    <p>Modern web interface for P2P file sharing</p>
+                    <p>Version 2026.1</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="/remote/home">Home</a></li>
+                        <li><a href="/remote/downloads">Downloads</a></li>
+                        <li><a href="/remote/uploads">Uploads</a></li>
+                        <li><a href="/remote/network">Network</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="https://getenvy.com/help" target="_blank">Help & Documentation</a></li>
+                        <li><a href="https://getenvy.com/forums" target="_blank">Community Forums</a></li>
+                        <li><a href="mailto:support@getenvy.com">Contact Support</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Envy Project. Licensed under AGPL v3.0.</p>
+                <div class="footer-status">
+                    <span id="connection-status" class="status-indicator status-online">
+                        <span class="status-dot"></span>
+                        Online
+                    </span>
+                    <span id="last-updated" class="last-updated">
+                        Last updated: <span data-timestamp="0">Just now</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Error Modal -->
+    <div id="error-modal" class="modal" role="dialog" aria-labelledby="error-title" aria-hidden="true">
+        <div class="modal-backdrop" data-close-modal="error-modal"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="error-title">Error</h3>
+                <button type="button" class="modal-close" data-close-modal="error-modal" aria-label="Close">
+                    ×
+                </button>
+            </div>
+            <div class="modal-body" id="error-content">
+                An error occurred.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-close-modal="error-modal">
+                    OK
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confirm Modal -->
+    <div id="confirm-modal" class="modal" role="dialog" aria-labelledby="confirm-title" aria-hidden="true">
+        <div class="modal-backdrop" data-close-modal="confirm-modal"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="confirm-title">Confirm Action</h3>
+                <button type="button" class="modal-close" data-close-modal="confirm-modal" aria-label="Close">
+                    ×
+                </button>
+            </div>
+            <div class="modal-body" id="confirm-content">
+                Are you sure?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-close-modal="confirm-modal">
+                    Cancel
+                </button>
+                <button type="button" class="btn btn-danger" id="confirm-ok-btn">
+                    OK
+                </button>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

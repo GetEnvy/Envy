@@ -995,14 +995,18 @@ BOOL CShakeNeighbour::OnHeadersComplete()
 		DelayClose( m_nDelayClose );
 	}
 	else if ( ( ( ! m_bInitiated && m_bG2Accept ) || ( m_bInitiated && m_bG2Send ) ) &&
-			Settings.Gnutella2.Enabled && m_nProtocol != PROTOCOL_G1 )
+			Settings.Gnutella2.Enabled && ( ! m_bInitiated || m_nProtocol != PROTOCOL_G1 ) )
 	{
+		// For incoming connections, allow switching to G2 based on Accept header
+		// For outgoing connections, only switch if not explicitly forced to G1
 		m_nProtocol = PROTOCOL_G2;		// This is a G2 connection
 		bResult = OnHeadersCompleteG2();
 	}
 	else if ( ( ( ! m_bInitiated && m_bG1Accept ) || ( m_bInitiated && m_bG1Send ) ) &&
-			Settings.Gnutella1.Enabled && m_nProtocol != PROTOCOL_G2 )
+			Settings.Gnutella1.Enabled && ( ! m_bInitiated || m_nProtocol != PROTOCOL_G2 ) )
 	{
+		// For incoming connections, allow switching to G1 based on Accept header
+		// For outgoing connections, only switch if not explicitly forced to G2
 		// Remote computer doesn't accept Gnutella2 packets, or it's not going to send them because we contacted it
 		m_nProtocol = PROTOCOL_G1;		// This is a Gnutella connection
 		bResult = OnHeadersCompleteG1();

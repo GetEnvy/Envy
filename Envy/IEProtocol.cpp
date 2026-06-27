@@ -327,7 +327,8 @@ STDMETHODIMP CIEProtocolRequest::XInternetProtocolInfo::ParseUrl(LPCWSTR pwzUrl,
 	METHOD_PROLOGUE(CIEProtocolRequest, InternetProtocolInfo)
 	UNUSED_ALWAYS( pwzUrl );
 
-	// HACK: Security bypass
+	// Security bypass required for IE protocol handler integration
+	// IE requires specific security domain information for protocol handlers
 	switch ( ParseAction )
 	{
 	case PARSE_SECURITY_URL:

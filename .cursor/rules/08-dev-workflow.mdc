@@ -1,0 +1,38 @@
+---
+description: Development workflow gates (planning, branching, testing) + rules maintenance
+globs: ["**/*"]
+alwaysApply: true
+---
+
+# Dev workflow (enforceable gates)
+
+## Branching + history
+- Work on short-lived feature branches.
+- Keep history **linear**: rebase on `develop` before merging; avoid merge commits unless explicitly required.
+- Keep PRs small and reviewable (prefer multiple PRs over “mega PRs”).
+
+## Planning gate (before editing code)
+- Write a short plan: goal, constraints, files likely to change, verification approach.
+
+## Testing gate (before committing / opening a PR)
+- Build at least one relevant configuration (e.g., Debug x64).
+- If the change is user-visible or risky: also build Release x64.
+- If tests exist for the area you touched: run them (or document why not).
+
+## Docs gate (definition of done)
+- Follow `09-docs-auto-update.mdc`.
+- Your final response MUST end with either:
+  - `Docs updated:` (list files + 1–2 bullets each), OR
+  - `Docs: no changes required (reason: ...)`
+
+## Rules maintenance hook
+- If a repeated pattern appears: **update/merge existing rules** instead of adding new ones.
+- After any major feature/fix: run **Rules Curator** to remove duplicates and keep rules <150 lines.
+
+
+## Additional repository operating rules
+- Prefer small, reviewable PRs with one logical change area.
+- Never silently remove tests/coverage/workflows/docs/artifacts/legacy files.
+- Every meaningful PR updates: `CHANGELOG.md` + `docs/DEVELOPMENT_PLAN.md` (strategic).
+- Always include testing performed, testing not performed, and environment limitations.
+- Treat `Visual Studio/Envy.sln` + MSVC `v145` as authoritative; CMake is partial only.

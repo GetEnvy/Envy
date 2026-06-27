@@ -1,0 +1,27 @@
+# CppCheck suppressions for Envy project
+# Temporary suppressions for legacy code patterns that will be addressed during modernization
+
+# Windows API specific
+windowsInclude:*
+windowsFile:*
+windowsGlobal:*
+
+# MFC specific patterns
+missingIncludeSystem:*.h
+unusedFunction:*
+
+# Legacy code patterns to be modernized
+unusedPrivateFunction:*
+unusedStructMember:*
+variableScope:*
+
+# Intentional null pointer usage (legacy code)
+nullPointer:*
+
+# Intentional memory handling (will migrate to smart pointers)
+memleak:*
+resourceLeak:*
+
+# Win32 API conventions
+windowsStyle:*
+style:unusedFunction

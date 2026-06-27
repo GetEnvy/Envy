@@ -1,7 +1,7 @@
 //
 // Library.h
 //
-// This file is part of Envy (getenvy.com) © 2016-2018
+// This file is part of Envy (getenvy.com) ù 2016-2018
 // Portions copyright Shareaza 2002-2008 and PeerProject 2008-2015
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -60,6 +60,10 @@ protected:
 	volatile LONG	m_nSaveCookie;			// Library last save cookie (ms)
 	volatile DWORD	m_nSaveTime;			// Library last save time (ms)
 
+	// Lazy loading support
+	bool			m_bLazyLoaded;			// Basic library data loaded
+	bool			m_bLazyComplete;		// All lazy operations finished
+
 // Sync Operations
 public:
 	inline DWORD GetCookie() const
@@ -87,6 +91,11 @@ public:
 		if ( bForce )
 			InterlockedExchange( &m_nForcedUpdate, TRUE );
 	}
+
+	// Lazy loading support
+	bool	IsLazyLoaded() const { return m_bLazyLoaded; }
+	bool	IsLazyComplete() const { return m_bLazyComplete; }
+	void	CompleteLazyLoading();		// Finish lazy operations
 
 // File and Folder Operations
 public:

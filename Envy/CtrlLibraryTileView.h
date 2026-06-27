@@ -124,7 +124,7 @@ protected:
 	virtual HBITMAP			CreateDragImage(const CPoint& ptMouse, CPoint& ptMiddle);
 
 	// For std::list sort, note not using boost::ptr_list
-	struct SortList : public std::binary_function<CLibraryTileItem, CLibraryTileItem, bool >
+	struct SortList
 	{
 		bool operator()(const CLibraryTileItem* lhs, const CLibraryTileItem* rhs) const
 		{

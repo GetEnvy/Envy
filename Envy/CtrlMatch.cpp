@@ -1,7 +1,7 @@
 //
 // CtrlMatch.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2020
+// This file is part of Envy (getenvy.com) ï¿½ 2016-2020
 // Portions copyright Shareaza 2002-2008 and PeerProject 2008-2016
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -1063,7 +1063,13 @@ void CMatchCtrl::DrawItem(CDC& dc, CRect& rcRow, CMatchFile* pFile, CQueryHit* p
 		case MATCH_COL_CLIENT:
 			if ( pHit )
 			{
-				pszText = pHit->m_pVendor->m_sName;
+				// Show client version string (m_sNick) if available, otherwise show vendor name
+				// For ED2K: m_sNick contains client software/version when parsed from tags
+				// For other protocols: m_sNick contains user nickname, m_pVendor->m_sName is client name
+				if ( pHit->m_nProtocol == PROTOCOL_ED2K && ! pHit->m_sNick.IsEmpty() )
+					pszText = pHit->m_sNick;
+				else
+					pszText = pHit->m_pVendor->m_sName;
 			//	if ( ! bSelected && pHit->m_bBrowseHost )
 			//		dc.SetTextColor( Colors.m_crTextStatus );
 			}

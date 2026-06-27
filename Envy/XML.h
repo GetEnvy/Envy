@@ -1,7 +1,7 @@
 //
 // XML.h
 //
-// This file is part of Envy (getenvy.com) © 2016-2018
+// This file is part of Envy (getenvy.com) Â© 2016-2018
 // Portions copyright Shareaza 2002-2008 and PeerProject 2008-2015
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -47,6 +47,7 @@ protected:
 
 public:
 	void			Delete();
+	virtual void	RemoveFromParent();
 	int				GetType() const;
 	CXMLNode*		AsNode() const;
 	CXMLElement*	AsElement() const;
@@ -83,6 +84,7 @@ protected:
 	void			ToString(CString& strXML, BOOL bNewline) const;
 
 public:
+	void			RemoveFromParent() override;
 	CXMLElement*	Detach();
 	CXMLElement*	Clone(CXMLElement* pParent = NULL) const;
 	CXMLElement*	Prefix(const CString& sPrefix, CXMLElement* pParent = NULL) const;		// Clone element then rename all elements and attributes by using specified prefix
@@ -129,6 +131,8 @@ public:
 	virtual ~CXMLAttribute();
 
 public:
+	virtual void	RemoveFromParent();
+
 	static LPCTSTR	xmlnsSchema;
 	static LPCTSTR	xmlnsInstance;
 	static LPCTSTR	schemaName;

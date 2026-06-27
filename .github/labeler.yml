@@ -1,0 +1,72 @@
+build:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "**/*.vcxproj"
+          - "**/*.vcxproj.filters"
+          - "**/*.sln"
+          - "**/*.props"
+          - "**/*.targets"
+          - "Visual Studio/**"
+
+ci:
+  - changed-files:
+      - any-glob-to-any-file:
+          - ".github/**"
+
+dependencies:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "vcpkg.json"
+          - "vcpkg-configuration.json"
+
+core:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "Envy/**"
+
+bittorrent:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "Envy/BT*.*"
+          - "Envy/BitTorrentDHT/**"
+          - "TorrentEnvy/**"
+          - "Services/LibUTP/**"
+
+plugins:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "Plugins/**"
+
+installer:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "Installer/**"
+
+documentation:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "**/*.md"
+          - "ReadMe.txt"
+
+translations:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "Languages/**"
+
+skins:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "Skins/**"
+          - "SkinBuilder/**"
+
+third-party:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "Services/zlib/**"
+          - "Services/SQLite/**"
+          - "Services/Bzlib/**"
+          - "Services/UnRAR/**"
+          - "Services/MiniUPnP/**"
+          - "Services/GeoIP/**"
+          - "Services/LibUTP/**"
+          - "Services/BugTrap/**"

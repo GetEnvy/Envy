@@ -1,0 +1,45 @@
+root = true
+
+[*]
+charset = utf-8
+end_of_line = crlf
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[*.{cpp,cxx,cc,h,hpp,hxx,inl,c}]
+indent_style = tab
+indent_size = 4
+tab_width = 4
+
+[*.{vcxproj,vcxproj.filters,sln,props,targets,manifest}]
+indent_style = space
+indent_size = 2
+end_of_line = crlf
+
+[*.{yml,yaml,json}]
+indent_style = space
+indent_size = 2
+end_of_line = lf
+
+[*.{bat,cmd}]
+end_of_line = crlf
+indent_style = space
+indent_size = 2
+
+[*.{ps1,psm1,psd1}]
+end_of_line = crlf
+indent_style = space
+indent_size = 4
+
+[*.md]
+trim_trailing_whitespace = false
+indent_style = space
+indent_size = 2
+
+[Makefile]
+indent_style = tab
+
+[*.{xml,iss}]
+indent_style = space
+indent_size = 2
+end_of_line = crlf

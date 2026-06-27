@@ -1,7 +1,7 @@
-//
+ï»¿//
 // BTInfo.h
 //
-// This file is part of Envy (getenvy.com) © 2016-2018
+// This file is part of Envy (getenvy.com) ï¿½ 2016-2018
 // Portions copyright Shareaza 2002-2008 and PeerProject 2008-2015
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -21,7 +21,7 @@
 #include "Buffer.h"
 #include "EnvyFile.h"
 
-#define BAD_TRACKER_TOKEN L'•'	// *udp:// for display only
+#define BAD_TRACKER_TOKEN L'ï¿½'	// *udp:// for display only
 
 class CBuffer;
 class CBENode;
@@ -135,6 +135,11 @@ private:
 	DWORD		m_nInfoStart;
 	DWORD		m_nInfoSize;
 
+	// BitTorrent v2 support (BEP-52) - ToDo: Implement fully
+	// CSHA256	m_oBTHv2;				// SHA-256 info hash for v2 torrents
+	bool		m_bIsHybrid;			// True if torrent supports both v1 and v2
+	CString		m_sMetaVersion;			// Metadata version ("2" for v2)
+
 	BOOL		CheckFiles();
 
 public:
@@ -187,6 +192,24 @@ public:
 	{
 		return IsAvailable() && m_nBlockSize && m_nBlockCount;
 	}
+
+	// BitTorrent v2 support - ToDo: Implement fully
+	inline bool IsBitTorrentV2() const
+	{
+		return false; // m_oBTHv2;
+	}
+
+	inline bool IsHybrid() const
+	{
+		return m_bIsHybrid;
+	}
+
+	// inline const CSHA256& GetInfoHashV2() const
+	// {
+	//	return m_oBTHv2;
+	// }
+
+	// CString GetInfoHashV2String() const;
 
 	inline bool HasEncodingError() const
 	{

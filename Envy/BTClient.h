@@ -1,7 +1,7 @@
 //
 // BTClient.h
 //
-// This file is part of Envy (getenvy.com) © 2016-2018
+// This file is part of Envy (getenvy.com) ù 2016-2018
 // Portions copyright Shareaza 2002-2007 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -19,6 +19,7 @@
 #pragma once
 
 #include "Transfer.h"
+#include "BTCrypto.h"
 
 class CBTPacket;
 class CDownload;
@@ -42,9 +43,12 @@ public:
 	BOOL				m_bDHTPort;			// DHT Port support
 	BOOL				m_bSeeder;
 	BOOL				m_bPrefersEncryption;
+	BOOL				m_bEncrypted;		// MSE/PE encryption active
 
 protected:
 	BOOL				m_bShake;
+	CBTCrypto			m_crypto;			// MSE/PE encryption context
+	BOOL				m_bMSEHandshaking;	// MSE handshake in progress
 	BOOL				m_bOnline;
 	BOOL				m_bClosing;
 	DWORD				m_tLastKeepAlive;

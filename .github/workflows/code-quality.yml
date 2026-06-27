@@ -1,0 +1,163 @@
+name: Code Quality
+
+on:
+  push:
+    branches: [ main, master, develop ]
+  pull_request:
+    branches: [ main, master, develop ]
+  schedule:
+    # Nightly run (default branch only) so the expensive MSVC code-analysis
+    # build stays off the PR critical path while still being exercised daily.
+    - cron: "0 3 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  # One group per PR (so superseded PR runs are cancelled) and a unique group
+  # per non-PR event (so pushes / scheduled runs / manual runs never queue
+  # behind each other).
+  group: code-quality-${{ github.event_name == 'pull_request' && github.event.pull_request.number || github.run_id }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+# Third-party JS actions (markdown link check, dependency-review) lack Node 24 builds.
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+
+jobs:
+  static-analysis:
+    name: Static Analysis
+    runs-on: windows-2025-vs2026
+    # Expensive full-solution code-analysis build. Skip it on pull_request -
+    # CodeQL (security-and-quality) already gates PRs; this runs on push to
+    # the integration branches, on the nightly schedule, and on demand.
+    if: github.event_name != 'pull_request'
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v5
+
+    # The windows-2025-vs2026 runner already ships Visual Studio 2026 with the
+    # v145 / ATLMFC toolset, so no Chocolatey install is needed here.
+    - name: Add MSBuild to PATH
+      uses: microsoft/setup-msbuild@v3
+
+    - name: Restore NuGet packages
+      run: nuget restore "Visual Studio/Envy.sln"
+
+    - name: Run Code Analysis
+      run: |
+        msbuild /m /p:Configuration=Release /p:Platform=x64 /p:RunCodeAnalysis=true /p:CodeAnalysisRuleSet=NativeRecommendedRules.ruleset "Visual Studio/Envy.sln"
+      continue-on-error: true
+
+    - name: Upload Analysis Results
+      uses: actions/upload-artifact@v6
+      if: always()
+      with:
+        name: code-analysis-results
+        path: |
+          **/*.nativecodeanalysis.xml
+        retention-days: 7
+
+  lint-check:
+    name: Format Check
+    runs-on: ubuntu-latest
+    # The nightly schedule only needs Static Analysis; this still runs on
+    # pull_request (required check) and on push.
+    if: github.event_name != 'schedule'
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v5
+
+    - name: Install clang-format
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y clang-format
+
+    - name: Check formatting (dry-run)
+      run: |
+        find . -name "*.cpp" -o -name "*.h" | while read file; do
+          clang-format --dry-run --Werror "$file" 2>&1 | tee -a format-errors.txt || true
+        done
+      continue-on-error: true
+
+    - name: Show formatting issues
+      if: always()
+      run: |
+        if [ -f format-errors.txt ]; then
+          echo "Formatting issues found:"
+          cat format-errors.txt
+        else
+          echo "No formatting issues found"
+        fi
+
+  documentation-check:
+    name: Documentation Check
+    runs-on: ubuntu-latest
+    # Not needed on the nightly schedule (Static Analysis only).
+    if: github.event_name != 'schedule'
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v5
+      with:
+        fetch-depth: 0
+
+    - name: Check for README updates
+      if: github.event_name == 'pull_request'
+      run: |
+        base="${{ github.event.pull_request.base.sha }}"
+        head="${{ github.event.pull_request.head.sha }}"
+        if [ -z "$base" ] || [ -z "$head" ]; then
+          echo "Missing PR SHAs; skipping README advisory."
+          exit 0
+        fi
+        changed=$(git diff --name-only "$base...$head" || true)
+        if [ -z "$changed" ]; then
+          echo "No files changed in this pull request; skipping README advisory."
+          exit 0
+        fi
+        if echo "$changed" | grep -qE '^(Envy|Services|Plugins|HashLib|TorrentEnvy|Remote)/'; then
+          if ! echo "$changed" | grep -Fxq 'README.md'; then
+            echo "::notice::No README updates in this PR"
+          fi
+        fi
+
+    - name: Check for broken links in markdown
+      uses: gaurav-nelson/github-action-markdown-link-check@v1
+      with:
+        use-quiet-mode: 'yes'
+        use-verbose-mode: 'no'
+      continue-on-error: true
+
+
+  remote-js-security-tests:
+    name: Remote JS Security Tests
+    runs-on: ubuntu-latest
+    # Not needed on the nightly schedule (Static Analysis only).
+    if: github.event_name != 'schedule'
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v5
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v6
+      with:
+        node-version: '24'
+        cache: npm
+        cache-dependency-path: Remote/tests/package-lock.json
+
+    - name: Install JS test dependencies
+      working-directory: Remote/tests
+      run: npm ci --no-audit --no-fund
+
+    - name: Run Remote JS tests
+      working-directory: Remote/tests
+      run: npm test
+
+  # Dependency review and the vcpkg manifest sanity check live in the
+  # dedicated dependency-review.yml workflow (single source of truth) and are
+  # intentionally not duplicated here.

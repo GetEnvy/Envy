@@ -1,5 +1,5 @@
 /* deflate.h -- internal compression state
- * Copyright (C) 1995-2016 Jean-loup Gailly
+ * Copyright (C) 1995-2018 Jean-loup Gailly
  * For conditions of distribution and use, see copyright notice in zlib.h
  */
 
@@ -121,8 +121,8 @@ typedef struct internal_state {
      * and move to the first half later to keep a dictionary of at least wSize
      * bytes. With this organization, matches are limited to a distance of
      * wSize-MAX_MATCH bytes, but this ensures that IO is always
-     * performed with a length multiple of the block size. Also,
-     * it limits the window size to 64K, which is quite useful on MSDOS.
+     * performed with a length multiple of the block size. Also, it limits
+     * the window size to 64K, which is quite useful on MSDOS.
      * To do: use the user input buffer as sliding window.
      */
 
@@ -152,8 +152,8 @@ typedef struct internal_state {
      */
 
     long block_start;
-    /* Window position at the beginning of the current output block.
-     * Gets negative when the window is moved backwards.
+    /* Window position at the beginning of the current output block. Gets
+     * negative when the window is moved backwards.
      */
 
     uInt match_length;           /* length of best match */
@@ -169,13 +169,15 @@ typedef struct internal_state {
      */
 
     uInt max_chain_length;
-    /* To speed up deflation, hash chains are never searched beyond this length.
-     * A higher limit improves compression ratio but degrades the speed.
+    /* To speed up deflation, hash chains are never searched beyond this
+     * length.  A higher limit improves compression ratio but degrades the
+     * speed.
      */
 
     uInt max_lazy_match;
-    /* Attempt to find a better match only when the current match is strictly smaller
-     * than this value. This mechanism is used only for compression levels >= 4.
+    /* Attempt to find a better match only when the current match is strictly
+     * smaller than this value. This mechanism is used only for compression
+     * levels >= 4.
      */
 #   define max_insert_length  max_lazy_match
     /* Insert new strings in the hash table only if the match length is not
@@ -215,11 +217,11 @@ typedef struct internal_state {
     /* Depth of each subtree used as tie breaker for trees of equal frequency
      */
 
-    uchf *l_buf;          /* buffer for literals or lengths */
+    uchf *sym_buf;        /* buffer for distances and literals/lengths */
 
     uInt  lit_bufsize;
-    /* Size of match buffer for literals/lengths.
-     * There are 4 reasons for limiting lit_bufsize to 64K:
+    /* Size of match buffer for literals/lengths.  There are 4 reasons for
+     * limiting lit_bufsize to 64K:
      *   - frequencies can be kept in 16 bit counters
      *   - if compression is not successful for the first block, all input
      *     data is still in the window so we can still emit a stored block even
@@ -234,15 +236,11 @@ typedef struct internal_state {
      *     a highly compressible string table.) Smaller buffer sizes give
      *     fast adaptation but have of course the overhead of transmitting
      *     trees more frequently.
+     *   - I can't count above 4
      */
 
-    uInt last_lit;      /* running index in l_buf */
-
-    ushf *d_buf;
-    /* Buffer for distances. To simplify the code, d_buf and l_buf have
-     * the same number of elements. To use different lengths, an extra flag
-     * array would be necessary.
-     */
+    uInt sym_next;      /* running index in sym_buf */
+    uInt sym_end;       /* symbol table full when sym_next reaches this */
 
     ulg opt_len;        /* bit length of current block with optimal trees */
     ulg static_len;     /* bit length of current block with static trees */
@@ -255,8 +253,8 @@ typedef struct internal_state {
 #endif
 
     ush bi_buf;
-    /* Output buffer. bits are inserted starting at the bottom
-     * (least significant bits).
+    /* Output buffer. bits are inserted starting at the bottom (least
+     * significant bits).
      */
     int bi_valid;
     /* Number of valid bits in bi_buf.  All bits above the last valid bit
@@ -293,19 +291,20 @@ typedef struct internal_state {
    memory checker errors from longest match routines */
 
         /* in trees.c */
-void ZLIB_INTERNAL _tr_init OF((deflate_state *s));
-int ZLIB_INTERNAL _tr_tally OF((deflate_state *s, unsigned dist, unsigned lc));
-void ZLIB_INTERNAL _tr_flush_block OF((deflate_state *s, charf *buf,
-                        ulg stored_len, int last));
-void ZLIB_INTERNAL _tr_flush_bits OF((deflate_state *s));
-void ZLIB_INTERNAL _tr_align OF((deflate_state *s));
-void ZLIB_INTERNAL _tr_stored_block OF((deflate_state *s, charf *buf,
-                        ulg stored_len, int last));
+void ZLIB_INTERNAL _tr_init(deflate_state *s);
+int ZLIB_INTERNAL _tr_tally(deflate_state *s, unsigned dist, unsigned lc);
+void ZLIB_INTERNAL _tr_flush_block(deflate_state *s, charf *buf,
+                                   ulg stored_len, int last);
+void ZLIB_INTERNAL _tr_flush_bits(deflate_state *s);
+void ZLIB_INTERNAL _tr_align(deflate_state *s);
+void ZLIB_INTERNAL _tr_stored_block(deflate_state *s, charf *buf,
+                                    ulg stored_len, int last);
 
 #define d_code(dist) \
    ((dist) < 256 ? _dist_code[dist] : _dist_code[256+((dist)>>7)])
 /* Mapping from a distance to a distance code. dist is the distance - 1 and
- * must not have side effects. _dist_code[256] and _dist_code[257] are never used.
+ * must not have side effects. _dist_code[256] and _dist_code[257] are never
+ * used.
  */
 
 #ifndef ZLIB_DEBUG
@@ -321,20 +320,22 @@ void ZLIB_INTERNAL _tr_stored_block OF((deflate_state *s, charf *buf,
 
 # define _tr_tally_lit(s, c, flush) \
   { uch cc = (c); \
-    s->d_buf[s->last_lit] = 0; \
-    s->l_buf[s->last_lit++] = cc; \
+    s->sym_buf[s->sym_next++] = 0; \
+    s->sym_buf[s->sym_next++] = 0; \
+    s->sym_buf[s->sym_next++] = cc; \
     s->dyn_ltree[cc].Freq++; \
-    flush = (s->last_lit == s->lit_bufsize-1); \
+    flush = (s->sym_next == s->sym_end); \
    }
 # define _tr_tally_dist(s, distance, length, flush) \
   { uch len = (uch)(length); \
     ush dist = (ush)(distance); \
-    s->d_buf[s->last_lit] = dist; \
-    s->l_buf[s->last_lit++] = len; \
+    s->sym_buf[s->sym_next++] = (uch)dist; \
+    s->sym_buf[s->sym_next++] = (uch)(dist >> 8); \
+    s->sym_buf[s->sym_next++] = len; \
     dist--; \
     s->dyn_ltree[_length_code[len]+LITERALS+1].Freq++; \
     s->dyn_dtree[d_code(dist)].Freq++; \
-    flush = (s->last_lit == s->lit_bufsize-1); \
+    flush = (s->sym_next == s->sym_end); \
   }
 #else
 # define _tr_tally_lit(s, c, flush) flush = _tr_tally(s, 0, c)

@@ -1,7 +1,7 @@
 //
 // Envy.h
 //
-// This file is part of Envy (getenvy.com) © 2016-2020
+// This file is part of Envy (getenvy.com) ï¿½ 2016-2020
 // Portions copyright Shareaza 2002-2008 and PeerProject 2008-2016
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -56,6 +56,9 @@ public:
 	BOOL			m_bWait;
 	BOOL			m_bNoSplash;
 	BOOL			m_bNoAlphaWarning;
+	BOOL			m_bNoLibrary;
+	BOOL			m_bNoDownloads;
+	BOOL			m_bNoLazyLibrary;
 	INT				m_nGUIMode;
 	CString			m_sTask;
 
@@ -225,6 +228,7 @@ protected:
 
 	void			GetVersionNumber();
 	void			InitResources();
+	BOOL			InitKademlia();
 
 	void			LoadCountry();		// Load the GeoIP library for mapping IPs to countries
 	void			FreeCountry();		// Free GeoIP resources
@@ -353,6 +357,10 @@ struct CompareNums
 		return lhs > rhs;
 	}
 };
+
+// Generate cryptographically secure random bytes
+// Returns TRUE if successful, FALSE if no secure random source available
+BOOL GenerateCryptographicBytes(BYTE* pBuffer, size_t nLength);
 
 // Use with whole numbers only
 template <typename T>

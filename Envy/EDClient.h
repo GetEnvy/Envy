@@ -1,7 +1,7 @@
 //
 // EDClient.h
 //
-// This file is part of Envy (getenvy.com) © 2016-2018
+// This file is part of Envy (getenvy.com) ï¿½ 2016-2018
 // Portions copyright Shareaza 2002-2006 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -20,6 +20,9 @@
 
 #include "Transfer.h"
 #include "HostBrowser.h"
+#include "RC4.h"
+#include "CryptoProvider.h"
+#include "AICHManager.h"
 
 class CEDPacket;
 class CDownload;
@@ -52,6 +55,23 @@ public:
 	DWORD		m_nEmCompatible;
 	DWORD		m_nSoftwareVersion;
 
+	// SecureID authentication
+	BYTE		m_nSecureIdent[6];		// SecureID challenge/response data
+	DWORD		m_nSecureIdentState;	// SecureID state (0=none, 1=challenging, 2=responding, 3=verified)
+
+	// CryptLayer support
+	BOOL		m_bCryptLayerActive;	// CryptLayer encryption is active
+	BOOL		m_bCryptLayerRequested;	// CryptLayer handshake requested
+	BOOL		m_bCryptLayerInitiator;	// TRUE if we initiated the handshake
+	DWORD		m_nCryptLayerState;		// CryptLayer state (0=none, 2=negotiating, 3=active)
+	BYTE*		m_pPeerPublicKey;		// Peer's RSA public key
+	DWORD		m_nPeerKeyLen;			// Peer's public key length
+	BYTE		m_RC4SendKey[16];		// RC4 send key
+	BYTE		m_RC4RecvKey[16];		// RC4 receive key
+	CRC4		m_RC4Send;				// RC4 send context
+	CRC4		m_RC4Recv;				// RC4 receive context
+	CCryptoProvider m_Crypto;			// Crypto provider for RSA operations
+
 // Client capabilities 1
 	BOOL		m_bEmAICH;					// Not supported
 	BOOL		m_bEmUnicode;
@@ -68,7 +88,7 @@ public:
 
 // Client capabilities 2
 	BOOL		m_bEmSupportsCaptcha;
-	BOOL		m_bEmSupportsSourceEx2;		// Not supported
+	BOOL		m_bEmSupportsSourceEx2;		// Source Exchange v2 support
 	BOOL		m_bEmRequiresCryptLayer;	// Not supported
 	BOOL		m_bEmRequestsCryptLayer;	// Not supported
 	BOOL		m_bEmSupportsCryptLayer;	// Not supported
@@ -132,6 +152,28 @@ protected:
 	virtual BOOL	OnRead();
 
 protected:
+	// CryptLayer methods
+	void	InitCryptLayer();
+	BOOL	StartCryptLayerHandshake();
+	BOOL	ProcessCryptLayerHandshake(CEDPacket* pPacket);
+	BOOL	OnCryptLayerPublicKey(CEDPacket* pPacket);
+	BOOL	SendCryptLayerAnswer();
+	BOOL	OnCryptLayerAnswer(CEDPacket* pPacket);
+	BOOL	EncryptPacket(BYTE* pData, DWORD nLength);
+	BOOL	DecryptPacket(BYTE* pData, DWORD nLength);
+	BOOL	ShouldInitiateCryptLayer() const;
+
+	// SecureID methods
+	void	GenerateSecureIdent();
+	void	GenerateSecureIdentResponse();
+	BOOL	SendSecureIdentChallenge();
+	BOOL	ProcessSecureIdentChallenge(CEDPacket* pPacket);
+	BOOL	SendSecureIdentResponse();
+	BOOL	ProcessSecureIdentResponse(CEDPacket* pPacket);
+	BOOL	VerifySecureIdentResponse(const BYTE* response) const;
+	BOOL	VerifySecureIdent() const;
+
+protected:
 	BOOL	OnPacket(CEDPacket* pPacket);
 	void	SendHello(BYTE nType);
 	BOOL	OnHello(CEDPacket* pPacket);
@@ -140,9 +182,14 @@ protected:
 	BOOL	OnFileRequest(CEDPacket* pPacket);
 	BOOL	OnFileStatusRequest(CEDPacket* pPacket);
 	BOOL	OnHashsetRequest(CEDPacket* pPacket);
+	BOOL	OnHashsetRequest2(CEDPacket* pPacket);
 	BOOL	OnQueueRequest(CEDPacket* pPacket);
+	BOOL	OnMultiPacketExt2(CEDPacket* pPacket);
+	BOOL	OnMultiPacketAnswerExt2(CEDPacket* pPacket);
 	BOOL	OnSourceRequest(CEDPacket* pPacket);
 	BOOL	OnSourceAnswer(CEDPacket* pPacket);
+	BOOL	OnSourceRequest2(CEDPacket* pPacket);
+	BOOL	OnSourceAnswer2(CEDPacket* pPacket);
 	BOOL	OnRequestPreview(CEDPacket* pPacket);
 	BOOL	OnPreviewAnswer(CEDPacket* pPacket);
 // Chat:

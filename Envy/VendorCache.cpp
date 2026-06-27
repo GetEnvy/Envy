@@ -1,7 +1,7 @@
 //
 // VendorCache.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2018
+// This file is part of Envy (getenvy.com) ï¿½ 2016-2018
 // Portions copyright Shareaza 2002-2007 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -91,20 +91,111 @@ void CVendorCache::Clear()
 
 BOOL CVendorCache::Load()
 {
-	const CString strPath = Settings.General.DataPath + L"Vendors.xml";
-
-	CXMLElement* pXML = CXMLElement::FromFile( strPath, TRUE );
+	// Try primary path: user DataPath (e.g., %APPDATA%\Envy\Data\Vendors.xml)
+	CString strPath = Settings.General.DataPath + L"Vendors.xml";
+	CString strSourcePath;	// Track which path was actually used
 	BOOL bSuccess = FALSE;
 
+	CXMLElement* pXML = CXMLElement::FromFile( strPath, TRUE );
 	if ( pXML != NULL )
 	{
 		bSuccess = LoadFrom( pXML );
 		delete pXML;
-		if ( ! bSuccess )
-			theApp.Message( MSG_ERROR, L"Invalid Vendors.xml file" );
+		if ( bSuccess )
+		{
+			strSourcePath = strPath;
+			theApp.Message( MSG_NOTICE, L"Loaded Vendors.xml from: %s", (LPCTSTR)strPath );
+		}
+		else
+		{
+			theApp.Message( MSG_ERROR, L"Invalid Vendors.xml file: %s", (LPCTSTR)strPath );
+		}
 	}
-	else
-		theApp.Message( MSG_ERROR, L"Missing Vendors.xml file" );
+
+	// Fallback to install path if primary path failed
+	if ( ! bSuccess )
+	{
+		// Try install path: Settings.General.Path + "\\Data\\Vendors.xml"
+		CString strInstallPath = Settings.General.Path + L"\\Data\\Vendors.xml";
+		pXML = CXMLElement::FromFile( strInstallPath, TRUE );
+		if ( pXML != NULL )
+		{
+			bSuccess = LoadFrom( pXML );
+			delete pXML;
+			if ( bSuccess )
+			{
+				strSourcePath = strInstallPath;
+				theApp.Message( MSG_NOTICE, L"Loaded Vendors.xml from install path: %s", (LPCTSTR)strInstallPath );
+
+				// Copy install Vendors.xml to user DataPath for future runs
+				// Only copy if user DataPath file is missing (not if it was invalid)
+				if ( GetFileAttributes( strPath ) == INVALID_FILE_ATTRIBUTES )
+				{
+					// Ensure DataPath directory exists
+					CString strDataDir = Settings.General.DataPath;
+					strDataDir.TrimRight( L"\\/" );
+					CreateDirectory( strDataDir, NULL );
+
+					// Copy file
+					if ( CopyFile( strInstallPath, strPath, FALSE ) )
+					{
+						theApp.Message( MSG_NOTICE, L"Copied Vendors.xml to user DataPath: %s", (LPCTSTR)strPath );
+					}
+					else
+					{
+						theApp.Message( MSG_WARNING, L"Failed to copy Vendors.xml to user DataPath: %s", (LPCTSTR)strPath );
+					}
+				}
+			}
+			else
+			{
+				theApp.Message( MSG_ERROR, L"Invalid Vendors.xml file: %s", (LPCTSTR)strInstallPath );
+			}
+		}
+	}
+
+	// Final fallback: try binary folder + "\\Data\\Vendors.xml"
+	if ( ! bSuccess )
+	{
+		// Get binary folder from module path
+		CString strBinaryPath = theApp.m_strBinaryPath;
+		int nLastSlash = strBinaryPath.ReverseFind( L'\\' );
+		if ( nLastSlash > 0 )
+		{
+			CString strBinaryDataPath = strBinaryPath.Left( nLastSlash ) + L"\\Data\\Vendors.xml";
+			pXML = CXMLElement::FromFile( strBinaryDataPath, TRUE );
+			if ( pXML != NULL )
+			{
+				bSuccess = LoadFrom( pXML );
+				delete pXML;
+				if ( bSuccess )
+				{
+					strSourcePath = strBinaryDataPath;
+					theApp.Message( MSG_NOTICE, L"Loaded Vendors.xml from binary folder: %s", (LPCTSTR)strBinaryDataPath );
+
+					// Copy to user DataPath if missing
+					if ( GetFileAttributes( strPath ) == INVALID_FILE_ATTRIBUTES )
+					{
+						CString strDataDir = Settings.General.DataPath;
+						strDataDir.TrimRight( L"\\/" );
+						CreateDirectory( strDataDir, NULL );
+
+						if ( CopyFile( strBinaryDataPath, strPath, FALSE ) )
+						{
+							theApp.Message( MSG_NOTICE, L"Copied Vendors.xml to user DataPath: %s", (LPCTSTR)strPath );
+						}
+					}
+				}
+			}
+		}
+	}
+
+	// Report failure if all paths failed
+	if ( ! bSuccess )
+	{
+		theApp.Message( MSG_ERROR, L"Missing Vendors.xml file (tried: %s, %s, and binary folder)",
+			(LPCTSTR)strPath, (LPCTSTR)(Settings.General.Path + L"\\Data\\Vendors.xml") );
+	}
 
 	return bSuccess;
 }
@@ -154,7 +245,7 @@ bool CVendorCache::IsExtended(LPCTSTR pszCode) const
 {
 	ASSERT( pszCode );
 
-	if ( ! *pszCode || *pszCode == L'µ' || _tcsicmp( pszCode, L"BitTorrent" ) == 0 )
+	if ( ! *pszCode || *pszCode == L'ï¿½' || _tcsicmp( pszCode, L"BitTorrent" ) == 0 )
 		return false;
 
 	// Find by product name (Server or User-Agent HTTP-headers)

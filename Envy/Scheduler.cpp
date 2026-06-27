@@ -69,7 +69,12 @@ BOOL CScheduler::Load()
 	CFile pFile;
 	if ( ! pFile.Open( strFile, CFile::modeRead ) )
 	{
-		theApp.Message( MSG_ERROR, L"Failed to open Scheduler.dat" );
+		// File may not exist on first run - this is not an error
+		if ( GetFileAttributes( strFile ) != INVALID_FILE_ATTRIBUTES )
+		{
+			// File exists but can't be opened - this is an error
+			theApp.Message( MSG_ERROR, L"Failed to open Scheduler.dat" );
+		}
 		return FALSE;
 	}
 

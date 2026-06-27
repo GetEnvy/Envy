@@ -1,0 +1,32 @@
+# Setup steps GitHub Copilot uses when it opens this repo in a remote
+# environment. Keeps the agent on a known-good toolchain without forcing the
+# whole MSVC install.
+name: Copilot setup
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  copilot-setup-steps:
+    runs-on: windows-2025-vs2026
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          submodules: recursive
+
+      - name: Add MSBuild to PATH
+        uses: microsoft/setup-msbuild@v3
+
+      - name: Bootstrap vcpkg
+        shell: pwsh
+        run: |
+          git clone https://github.com/microsoft/vcpkg.git "$env:GITHUB_WORKSPACE/vcpkg"
+          & "$env:GITHUB_WORKSPACE/vcpkg/bootstrap-vcpkg.bat" -disableMetrics
+
+      - name: Restore vcpkg manifest
+        shell: pwsh
+        run: |
+          & "$env:GITHUB_WORKSPACE/vcpkg/vcpkg.exe" install --triplet=x64-windows-static

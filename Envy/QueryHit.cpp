@@ -1,7 +1,7 @@
 //
 // QueryHit.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2018
+// This file is part of Envy (getenvy.com) ï¿½ 2016-2018
 // Portions copyright Shareaza 2002-2008 and PeerProject 2008-2016
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -695,7 +695,8 @@ CQueryHit* CQueryHit::FromEDPacket(CEDPacket* pPacket, const SOCKADDR_IN* pServe
 				pHit->m_bBrowseHost = TRUE;
 				pHit->m_bChat = TRUE;
 
-				pHit->m_pVendor = VendorCache.Lookup( L"ED2K" );
+				// Use ASCII lookup to avoid log spam from wide string lookup
+				pHit->m_pVendor = VendorCache.Lookup( "ED2K" );
 				if ( ! pHit->m_pVendor ) pHit->m_pVendor = VendorCache.m_pNull;
 
 				pHit->ReadEDPacket( pPacket, pServer, bUnicode );
@@ -729,7 +730,8 @@ CQueryHit* CQueryHit::FromEDPacket(CEDPacket* pPacket, const SOCKADDR_IN* pServe
 				pHit->m_bBrowseHost = TRUE;
 				pHit->m_bChat = TRUE;
 				pHit->m_oED2K = oHash;
-				pHit->m_pVendor = VendorCache.Lookup( L"ED2K" );
+				// Use ASCII lookup to avoid log spam from wide string lookup
+				pHit->m_pVendor = VendorCache.Lookup( "ED2K" );
 				if ( ! pHit->m_pVendor )
 					pHit->m_pVendor = VendorCache.m_pNull;
 
@@ -1484,6 +1486,11 @@ void CQueryHit::ReadEDPacket(CEDPacket* pPacket, const SOCKADDR_IN* pServer, BOO
 
 	ULARGE_INTEGER nSize = {};
 
+	// Client version information (if available in packet - typically not in server search results)
+	DWORD nSoftwareVersion = 0;
+	DWORD nEmCompatible = 0;
+	CString strModVersion;
+
 	while ( nTags-- > 0 )
 	{
 		if ( pPacket->GetRemaining() < 1 )
@@ -1499,17 +1506,11 @@ void CQueryHit::ReadEDPacket(CEDPacket* pPacket, const SOCKADDR_IN* pServer, BOO
 			m_sName = pTag.m_sValue;
 			break;
 		case ED2K_FT_FILESIZE:
-			if ( pTag.m_nValue <= 0xFFFFFFFF )
-			{
-				nSize.LowPart = (DWORD)pTag.m_nValue;
-			}
-			else
-			{
-				nSize.LowPart  = (DWORD)(   pTag.m_nValue & 0x00000000FFFFFFFF );
-				nSize.HighPart = (DWORD)( ( pTag.m_nValue & 0xFFFFFFFF00000000 ) >> 32 );
-			}
+			// FILESIZE tag contains the low 32 bits of the file size
+			nSize.LowPart = (DWORD)pTag.m_nValue;
 			break;
 		case ED2K_FT_FILESIZE_HI:
+			// FILESIZE_HI tag contains the high 32 bits of the file size
 			nSize.HighPart = (DWORD)pTag.m_nValue;
 			break;
 		case ED2K_FT_SOURCES:
@@ -1527,7 +1528,19 @@ void CQueryHit::ReadEDPacket(CEDPacket* pPacket, const SOCKADDR_IN* pServer, BOO
 			//else
 				//theApp.Message( MSG_NOTICE, L"ED2K_FT_COMPLETESOURCES tag reports complete sources present." );
 			break;
-		case ED2K_FT_MAXSOURCES:
+		case ED2K_FT_MAXSOURCES:	// Value 0x55 - also used by ED2K_CT_MODVERSION in different context
+			// Handle both ED2K_FT_MAXSOURCES (file tag) and ED2K_CT_MODVERSION (client tag)
+			// Both have value 0x55, but appear in different contexts
+			// In file search results, this is typically ED2K_FT_MAXSOURCES (file tag, INT type)
+			// In client info, this would be ED2K_CT_MODVERSION (client tag, STRING type)
+			// Distinguish by tag type: file tags are usually INT, client mod version is STRING
+			if ( pTag.m_nType == ED2K_TAG_STRING )
+			{
+				// Client mod version (string) - ED2K_CT_MODVERSION
+				strModVersion = pTag.m_sValue;
+			}
+			// Otherwise treat as ED2K_FT_MAXSOURCES (file tag) - no action needed
+			break;
 		case ED2K_FT_LASTSEENCOMPLETE:
 			//theApp.Message( MSG_NOTICE, L"Last seen complete");
 			break;
@@ -1578,6 +1591,15 @@ void CQueryHit::ReadEDPacket(CEDPacket* pPacket, const SOCKADDR_IN* pServer, BOO
 			// The percentage of clients that have given ratings is:
 			// = ( pTag.m_nValue >> 8 ) & 0xFF;
 			// ToDo: We could use this value in the future to weight the rating...
+			break;
+
+		case ED2K_CT_SOFTWAREVERSION:
+			// Client software version tag (rarely in server search results, but handle if present)
+			if ( pTag.m_nType == ED2K_TAG_INT )
+			{
+				nSoftwareVersion = pTag.m_nValue & 0x00FFFFFF;
+				nEmCompatible = (DWORD)( pTag.m_nValue >> 24 );
+			}
 			break;
 
 		case 0:		// ToDo: Maybe ignore these old style keys? They seem to have a lot of bad values...
@@ -1700,6 +1722,96 @@ void CQueryHit::ReadEDPacket(CEDPacket* pPacket, const SOCKADDR_IN* pServer, BOO
 		if ( ! strAlbum.IsEmpty() )
 			m_pXML->AddAttribute( L"album", strAlbum );
 	}
+
+	// Format client version string if we have client version information
+	// (Note: ED2K server search results typically don't include client version tags,
+	// but handle it if present for compatibility)
+	if ( nSoftwareVersion > 0 )
+	{
+		// Format client name/version similar to CEDClient::DetermineUserAgent()
+		switch ( nEmCompatible )
+		{
+		case 0:
+			m_sNick.Format( L"eMule %u.%u%c",
+				( ( nSoftwareVersion >> 17 ) & 0x7F ), ( ( nSoftwareVersion >> 10 ) & 0x7F ),
+				( ( nSoftwareVersion >> 7 ) & 0x07 ) + 'a' );
+			break;
+		case 1:
+			m_sNick.Format( L"cDonkey %u.%u%c",
+				( ( nSoftwareVersion >> 17 ) & 0x7F ), ( ( nSoftwareVersion >> 10 ) & 0x7F ),
+				( ( nSoftwareVersion >> 7 ) & 0x07 ) + 'a' );
+			break;
+		case 2:
+			m_sNick.Format( L"xMule %u.%u%c",
+				( ( nSoftwareVersion >> 17 ) & 0x7F ), ( ( nSoftwareVersion >> 10 ) & 0x7F ),
+				( ( nSoftwareVersion >> 7 ) & 0x07 ) + 'a' );
+			break;
+		case 3:
+			m_sNick.Format( L"aMule %u.%u.%u",
+				( ( nSoftwareVersion >> 17 ) & 0x7F ), ( ( nSoftwareVersion >> 10 ) & 0x7F ),
+				( ( nSoftwareVersion >> 7 ) & 0x07 ) );
+			break;
+		case 5:
+			m_sNick.Format( L"ePlus %u.%u%c",
+				( ( nSoftwareVersion >> 17 ) & 0x7F ), ( ( nSoftwareVersion >> 10 ) & 0x7F ),
+				( ( nSoftwareVersion >> 7 ) & 0x07 ) + 'a' );
+			break;
+		case 8:
+			m_sNick.Format( L"easyMule %u.%u%c",
+				( ( nSoftwareVersion >> 17 ) & 0x7F ), ( ( nSoftwareVersion >> 10 ) & 0x7F ),
+				( ( nSoftwareVersion >> 7 ) & 0x07 ) + 'a' );
+			break;
+		case 10:
+		case 52:
+			m_sNick.Format( L"MLdonkey %u.%u%c",
+				( ( nSoftwareVersion >> 17 ) & 0x7F ), ( ( nSoftwareVersion >> 10 ) & 0x7F ),
+				( ( nSoftwareVersion >> 7 ) & 0x07 ) + 'a' );
+			break;
+		case 20:
+			m_sNick.Format( L"Lphant %u.%u%c",
+				( ( nSoftwareVersion >> 17 ) & 0x7F ), ( ( nSoftwareVersion >> 10 ) & 0x7F ),
+				( ( nSoftwareVersion >> 7 ) & 0x07 ) + 'a' );
+			break;
+		case 40:
+			m_sNick.Format( L"Shareaza %u.%u.%u.%u",
+				( ( nSoftwareVersion >> 17 ) & 0x7F ), ( ( nSoftwareVersion >> 10 ) & 0x7F ),
+				( ( nSoftwareVersion >> 7 ) & 0x07 ), ( ( nSoftwareVersion ) & 0x7F ) );
+			break;
+		case 80:
+			m_sNick.Format( L"Envy %u.%u.%u.%u",
+				( ( nSoftwareVersion >> 17 ) & 0x7F ), ( ( nSoftwareVersion >> 10 ) & 0x7F ),
+				( ( nSoftwareVersion >> 7 ) & 0x07 ), ( ( nSoftwareVersion ) & 0x7F ) );
+			break;
+		case 152:
+			m_sNick.Format( L"MLdonkey %u.%u%c",
+				( ( nSoftwareVersion >> 17 ) & 0x7F ), ( ( nSoftwareVersion >> 10 ) & 0x7F ),
+				( ( nSoftwareVersion >> 7 ) & 0x07 ) + 'a' );
+			break;
+		case 170:
+			m_sNick.Format( L"JMule %u.%u%c",
+				( ( nSoftwareVersion >> 17 ) & 0x7F ), ( ( nSoftwareVersion >> 10 ) & 0x7F ),
+				( ( nSoftwareVersion >> 7 ) & 0x07 ) + 'a' );
+			break;
+		case 203:
+			m_sNick.Format( L"ShareazaPlus %u.%u.%u.%u",
+				( ( nSoftwareVersion >> 17 ) & 0x7F ), ( ( nSoftwareVersion >> 10 ) & 0x7F ),
+				( ( nSoftwareVersion >> 7 ) & 0x07 ), ( ( nSoftwareVersion ) & 0x7F ) );
+			break;
+		default:
+			if ( ! strModVersion.IsEmpty() )
+			{
+				// Use mod version string if available
+				m_sNick.Format( L"eMule Mod (%u) %s", nEmCompatible, (LPCTSTR)strModVersion );
+			}
+			else
+			{
+				m_sNick.Format( L"eMule Mod (%u) %u.%u%c", nEmCompatible,
+					( ( nSoftwareVersion >> 17 ) & 0x7F ), ( ( nSoftwareVersion >> 10 ) & 0x7F ),
+					( ( nSoftwareVersion >> 7 ) & 0x07 ) + 'a' );
+			}
+			break;
+		}
+	}
 }
 
 void CQueryHit::ReadEDAddress(CEDPacket* pPacket, const SOCKADDR_IN* pServer)
@@ -1709,6 +1821,9 @@ void CQueryHit::ReadEDAddress(CEDPacket* pPacket, const SOCKADDR_IN* pServer)
 		AfxThrowUserException();
 
 	m_nPort = pPacket->ReadShortLE();
+
+	// Set country code from IP address (for display in search results)
+	m_sCountry = theApp.GetCountryCode( m_pAddress );
 
 	Hashes::Guid::iterator i = m_oClientID.begin();
 	*i++ = pServer->sin_addr.S_un.S_addr;

@@ -1,5 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
@@ -19,32 +19,34 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
     <ProjectName>Installer</ProjectName>
     <ProjectGuid>{3D7C87D6-A044-4334-8BB4-3B88B4E1757D}</ProjectGuid>
     <RootNamespace>Installer</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Utility</ConfigurationType>
     <CharacterSet>Unicode</CharacterSet>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <PlatformToolset>v141_xp</PlatformToolset>
+    <PlatformToolset>v145</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Utility</ConfigurationType>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v141_xp</PlatformToolset>
+    <PlatformToolset>v145</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Utility</ConfigurationType>
     <CharacterSet>Unicode</CharacterSet>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v145</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Utility</ConfigurationType>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v145</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -98,29 +100,32 @@
     <BuildLog>
       <Path>$(ProjectDir)$(IntDir)$(ProjectName).log</Path>
     </BuildLog>
+    <ClCompile>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+    </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
     <CustomBuild Include="Scripts\Main.iss">
       <FileType>Document</FileType>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Performing Installer Build</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"InnoSetup\ISCC.exe" "/Ssigntoolparams=signtool.exe $p" "%(FullPath)" "/dConfigurationName=$(Configuration)" "/dPlatformName=$(Platform)" /v9
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">if exist "$(ProjectDir)InnoSetup\ISCC.exe" ("$(ProjectDir)InnoSetup\ISCC.exe" "/Ssigntoolparams=signtool.exe $p" "%(FullPath)" "/dConfigurationName=$(Configuration)" "/dPlatformName=$(Platform)" /v9) else (echo [Installer] InnoSetup\ISCC.exe not found, skipping installer build. &amp; exit /b 0)
 </Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\Envy\$(Platform) $(Configuration)\Envy.exe;%(AdditionalInputs)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\Envy\$(Configuration) $(Platform)\Envy.exe;%(AdditionalInputs)</AdditionalInputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Scripts\Preprocessed.iss;%(Outputs)</Outputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Performing Installer Build</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"InnoSetup\ISCC.exe" "/Ssigntoolparams=signtool.exe $p" "%(FullPath)" "/dConfigurationName=$(Configuration)" "/dPlatformName=$(Platform)" /v9
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">if exist "$(ProjectDir)InnoSetup\ISCC.exe" ("$(ProjectDir)InnoSetup\ISCC.exe" "/Ssigntoolparams=signtool.exe $p" "%(FullPath)" "/dConfigurationName=$(Configuration)" "/dPlatformName=$(Platform)" /v9) else (echo [Installer] InnoSetup\ISCC.exe not found, skipping installer build. &amp; exit /b 0)
 </Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\Envy\$(Platform) $(Configuration)\Envy.exe;%(AdditionalInputs)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\Envy\$(Configuration) $(Platform)\Envy.exe;%(AdditionalInputs)</AdditionalInputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Scripts\Preprocessed.iss;%(Outputs)</Outputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Performing Installer Build</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"InnoSetup\ISCC.exe" "/Ssigntoolparams=signtool.exe $p" "%(FullPath)" "/dConfigurationName=$(Configuration)" "/dPlatformName=$(Platform)" /v9
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">if exist "$(ProjectDir)InnoSetup\ISCC.exe" ("$(ProjectDir)InnoSetup\ISCC.exe" "/Ssigntoolparams=signtool.exe $p" "%(FullPath)" "/dConfigurationName=$(Configuration)" "/dPlatformName=$(Platform)" /v9) else (echo [Installer] InnoSetup\ISCC.exe not found, skipping installer build. &amp; exit /b 0)
 </Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\Envy\$(Platform) $(Configuration)\Envy.exe;%(AdditionalInputs)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\Envy\$(Configuration) $(Platform)\Envy.exe;%(AdditionalInputs)</AdditionalInputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Scripts\Preprocessed.iss;%(Outputs)</Outputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Performing Installer Build</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"InnoSetup\ISCC.exe" "/Ssigntoolparams=signtool.exe $p" "%(FullPath)" "/dConfigurationName=$(Configuration)" "/dPlatformName=$(Platform)" /v9
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">if exist "$(ProjectDir)InnoSetup\ISCC.exe" ("$(ProjectDir)InnoSetup\ISCC.exe" "/Ssigntoolparams=signtool.exe $p" "%(FullPath)" "/dConfigurationName=$(Configuration)" "/dPlatformName=$(Platform)" /v9) else (echo [Installer] InnoSetup\ISCC.exe not found, skipping installer build. &amp; exit /b 0)
 </Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\Envy\$(Platform) $(Configuration)\Envy.exe;%(AdditionalInputs)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\Envy\$(Configuration) $(Platform)\Envy.exe;%(AdditionalInputs)</AdditionalInputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Scripts\Preprocessed.iss;%(Outputs)</Outputs>
     </CustomBuild>
     <None Include="Scripts\Languages.iss" />
@@ -208,7 +213,7 @@
       <Project>{caa6fcc8-27b1-42b9-b647-976e7be79c70}</Project>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
-<!--
+    <!--
     <ProjectReference Include="..\SkinBuilder\SkinBuilder.vcxproj">
       <Project>{40448da0-0373-4bfb-8a21-2c7f3a02a327}</Project>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>

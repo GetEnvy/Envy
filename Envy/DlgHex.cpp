@@ -1,7 +1,7 @@
-//
+ï»¿//
 // DlgHex.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2018
+// This file is part of Envy (getenvy.com) ï¿½ 2016-2018
 // Portions copyright Shareaza 2014 and PeerProject 2014
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -18,14 +18,15 @@
 // Debug-only
 
 #include "StdAfx.h"
+
+#ifdef _DEBUG
+
 #include "Envy.h"
 #include "DlgHex.h"
 
-#ifdef _DEBUG
 #undef THIS_FILE
 static char THIS_FILE[] = __FILE__;
 #define new DEBUG_NEW
-#endif	// Debug
 
 IMPLEMENT_DYNAMIC(CHexDlg, CSkinDialog)
 
@@ -121,3 +122,5 @@ void CHexDlg::OnOK()
 
 	CSkinDialog::OnOK();
 }
+
+#endif // _DEBUG

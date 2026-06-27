@@ -1,0 +1,55 @@
+name: Security
+
+on:
+  push:
+    branches: [main, master, develop]
+  pull_request:
+    branches: [main, master, develop]
+  schedule:
+    - cron: 0 0 * * 1
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  security-events: write
+
+concurrency:
+  # One group per PR (so superseded PR runs are cancelled) and a unique group
+  # per non-PR event (so pushes / scheduled scans / manual runs never queue
+  # behind each other).
+  group: security-${{ github.event_name == 'pull_request' && github.event.pull_request.number || github.run_id }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+# CodeQL scanning is handled by codeql.yml. Dependency review and the
+# vcpkg manifest sanity check are handled by dependency-review.yml on pull
+# requests. This workflow adds secret scanning not covered elsewhere.
+
+jobs:
+  secret-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      # gitleaks-action@v2 still ships on Node 20 (no v3 yet); invoke the Go
+      # binary directly so the job is unaffected by the Node 24 migration.
+      - name: Install gitleaks
+        env:
+          GITLEAKS_VERSION: "8.30.1"
+          GITLEAKS_SHA256: "551f6fc83ea457d62a0d98237cbad105af8d557003051f41f3e7ca7b3f2470eb"
+        run: |
+          set -euo pipefail
+          curl -sSL --fail \
+            "https://github.com/gitleaks/gitleaks/releases/download/v${GITLEAKS_VERSION}/gitleaks_${GITLEAKS_VERSION}_linux_x64.tar.gz" \
+            -o gitleaks.tar.gz
+          echo "${GITLEAKS_SHA256}  gitleaks.tar.gz" | sha256sum -c -
+          sudo tar -xzf gitleaks.tar.gz -C /usr/local/bin gitleaks
+          rm -f gitleaks.tar.gz
+          gitleaks version
+      - name: Secret scan (gitleaks)
+        run: gitleaks detect --source . --redact --verbose --no-banner --report-format sarif --report-path gitleaks.sarif
+      - name: Upload gitleaks SARIF
+        if: always() && hashFiles('gitleaks.sarif') != ''
+        uses: github/codeql-action/upload-sarif@v4
+        with:
+          sarif_file: gitleaks.sarif

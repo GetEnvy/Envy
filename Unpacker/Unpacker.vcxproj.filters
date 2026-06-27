@@ -54,6 +54,6 @@
     <None Include="Res\Unpacker.ico">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="Res\Manifest.xml" />
+    <None Include="Manifest.xml" />
   </ItemGroup>
 </Project>

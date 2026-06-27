@@ -1,7 +1,7 @@
 //
 // ZLib.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2018
+// This file is part of Envy (getenvy.com) ï¿½ 2016-2018
 // Portions copyright Shareaza 2002-2007 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -117,11 +117,20 @@ BYTE* CZLib::Compress2(LPCVOID pInput, DWORD nInput, DWORD* pnOutput, DWORD nSug
 // Decompresses the memory into a new buffer this function allocates
 // Returns a pointer to the new buffer, and writes its size under pnOutput
 
-auto_array< BYTE > CZLib::Decompress(LPCVOID pInput, DWORD nInput, DWORD* pnOutput)
+auto_array< BYTE > CZLib::Decompress(LPCVOID pInput, DWORD nInput, DWORD* pnOutput, DWORD nMaxOutput)
 {
 	// Guess how big the data will be decompressed, use nSuggest, or just guess it will be 4 times as big
+	// Cap growth at nMaxOutput to prevent zip-bomb attacks (0 = unlimited)
 	for ( DWORD nSuggest = nInput * 4; ; nSuggest *= 2 )
 	{
+		// Stop growing if we've exceeded the maximum output size cap
+		if ( nMaxOutput > 0 && nSuggest > nMaxOutput )
+		{
+			// Decompression would exceed maximum size - reject to prevent zip-bomb
+			*pnOutput = 0;
+			return auto_array< BYTE >();
+		}
+
 		*pnOutput = nSuggest;
 
 		auto_array< BYTE > pBuffer( new BYTE[ *pnOutput ] );
@@ -153,13 +162,23 @@ auto_array< BYTE > CZLib::Decompress(LPCVOID pInput, DWORD nInput, DWORD* pnOutp
 	//return pOutput;										// Return a pointer to the perfectly sized one
 }
 
-BYTE* CZLib::Decompress2(LPCVOID pInput, DWORD nInput, DWORD* pnOutput)
+BYTE* CZLib::Decompress2(LPCVOID pInput, DWORD nInput, DWORD* pnOutput, DWORD nMaxOutput)
 {
 	BYTE* pBuffer = NULL;
 
 	// Guess how big the data will be decompressed, use nSuggest, or just guess it will be 4 times as big
+	// Cap growth at nMaxOutput to prevent zip-bomb attacks (0 = unlimited)
 	for ( DWORD nSuggest = nInput * 4; ; nSuggest *= 2 )
 	{
+		// Stop growing if we've exceeded the maximum output size cap
+		if ( nMaxOutput > 0 && nSuggest > nMaxOutput )
+		{
+			// Decompression would exceed maximum size - reject to prevent zip-bomb
+			free( pBuffer );
+			*pnOutput = 0;
+			return NULL;
+		}
+
 		*pnOutput = nSuggest;
 
 		BYTE* pNewBuffer = (BYTE*)realloc( pBuffer, *pnOutput );

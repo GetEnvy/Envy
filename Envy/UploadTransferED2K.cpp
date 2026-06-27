@@ -1,7 +1,7 @@
-//
+﻿//
 // UploadTransferED2K.cpp
 //
-// This file is part of Envy (getenvy.com) � 2016-2018
+// This file is part of Envy (getenvy.com)  2016-2018
 // Portions copyright Shareaza 2002-2007 and PeerProject 2008-2015
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -822,6 +822,23 @@ BOOL CUploadTransferED2K::OnReask()
 
 //////////////////////////////////////////////////////////////////////
 // CUploadTransferED2K 64bit Large file support
+
+//////////////////////////////////////////////////////////////////////
+// CUploadTransferED2K start upload
+
+BOOL CUploadTransferED2K::OnStartUpload(CEDPacket* /*pPacket*/)
+{
+	if ( m_nState == upsRequest )
+	{
+		m_nState = upsUploading;
+		theApp.Message( MSG_NOTICE, IDS_UPLOAD_FILE, (LPCTSTR)m_sName, (LPCTSTR)m_sAddress );
+		return TRUE;
+	}
+	return FALSE;
+}
+
+//////////////////////////////////////////////////////////////////////
+// CUploadTransferED2K request parts 64bit
 
 BOOL CUploadTransferED2K::OnRequestParts64(CEDPacket* pPacket)
 {

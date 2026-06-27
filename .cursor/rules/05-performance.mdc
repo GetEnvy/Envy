@@ -1,0 +1,25 @@
+---
+description: Performance guidelines (profiling-first, hot paths, allocations)
+globs: ["**/*.cpp", "**/*.h", "**/*.hpp"]
+alwaysApply: false
+---
+
+# Performance (Envy)
+
+## Profiling-first
+- Don’t optimize blindly: identify the hot path first (CPU, allocations, lock contention).
+
+## Hot-path rules
+- Avoid heap allocations and logging inside tight loops.
+- Reuse buffers where practical (network read/write buffers, temp arrays).
+- Pre-size containers when the size is known (`reserve`, `Preallocate`).
+
+## Avoid copies
+- Prefer `const&` parameters for large objects/strings.
+- Use moves only when ownership transfer is intended.
+
+## Strings
+- Avoid repeated `CString` concatenation in loops; prefer `Format`/preallocation.
+
+## UI responsiveness
+- Batch UI updates; don’t repaint/update controls per-item in large loops.

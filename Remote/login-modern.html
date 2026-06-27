@@ -1,0 +1,73 @@
+<!-- Modern Login Page -->
+<div class="content-area">
+    <div class="login-container">
+        <div class="login-card">
+            <div class="login-header">
+                <h1><%= text_welcome || 'Welcome to Envy Remote' %></h1>
+                <p><%= text_logininfo || 'Please enter your credentials to access the remote control interface.' %></p>
+            </div>
+
+            <%? failure %>
+            <div class="alert alert-error" role="alert">
+                <%= text_loginfail || 'Username or password was incorrect, please try again.' %>
+            </div>
+            <%?%>
+
+            <form method="get" action="" class="login-form" data-ajax>
+                <input type="hidden" name="submit" value="1" />
+
+                <div class="form-group">
+                    <label for="username"><%= text_loginuser || 'Username' %></label>
+                    <input type="text" id="username" name="username" class="form-control"
+                           value="<%= user_name %>" required autofocus
+                           aria-describedby="username-help">
+                    <small id="username-help" class="form-text">
+                        Enter your Envy username
+                    </small>
+                </div>
+
+                <div class="form-group">
+                    <label for="password"><%= text_loginpass || 'Password' %></label>
+                    <input type="password" id="password" name="password" class="form-control"
+                           required aria-describedby="password-help">
+                    <small id="password-help" class="form-text">
+                        Enter your Envy password
+                    </small>
+                </div>
+
+                <div class="form-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="remember" value="1">
+                        Remember me
+                    </label>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block">
+                    <%= text_loginsubmit || 'Login' %>
+                </button>
+            </form>
+
+            <div class="login-footer">
+                <p>
+                    <a href="#" class="forgot-password-link" data-forgot-password="true">
+                        Forgot your password?
+                    </a>
+                </p>
+                <p class="login-info">
+                    For security reasons, ensure you're accessing this interface over HTTPS.
+                </p>
+            </div>
+        </div>
+
+        <!-- Security Info -->
+        <div class="security-notice">
+            <h3>Security Notice</h3>
+            <ul>
+                <li>Use a strong, unique password</li>
+                <li>Enable HTTPS for secure connections</li>
+                <li>Keep your Envy client updated</li>
+                <li>Logout when finished</li>
+            </ul>
+        </div>
+    </div>
+</div>

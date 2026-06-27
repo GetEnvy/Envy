@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="<%= current_language || 'en' %>">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Envy P2P Client Remote Control Interface">
+    <meta name="author" content="Envy Development Team">
+    <meta name="robots" content="noindex, nofollow">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Security Headers -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self'; img-src 'self' data: https:; font-src 'self' https:;">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+
+    <!-- Preload critical resources -->
+    <link rel="preload" href="Envy-modern.css" as="style">
+    <link rel="preload" href="envy-modern.js" as="script">
+
+    <!-- Favicon and Icons -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+
+    <title><%= text_metatitle || 'Envy Remote Control' %></title>
+
+    <!-- Modern CSS -->
+    <link rel="stylesheet" type="text/css" href="Envy-modern.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="modern-inline.css" media="screen">
+
+    <!-- JavaScript Libraries -->
+    <script src="vendor/purify.min.js" defer></script>
+    <script src="security-utils.js" defer></script>
+    <script src="security-config.js" defer></script>
+    <script src="envy-modern.js" defer></script>
+    <script src="modern-page-handlers.js" defer></script>
+
+    <!-- Theme Color for Mobile Browsers -->
+    <meta name="theme-color" content="#007bff">
+    <meta name="msapplication-TileColor" content="#007bff">
+
+    <!-- Open Graph for Social Sharing -->
+    <meta property="og:title" content="<%= text_metatitle %>">
+    <meta property="og:description" content="Remote control interface for Envy P2P client">
+    <meta property="og:type" content="website">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <h2>Loading Envy Remote...</h2>
+            <p>Please wait while we connect to your client</p>
+        </div>
+    </div>
+
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="sr-only">Skip to main content</a>
+
+    <!-- Header -->
+    <header class="header" role="banner">
+        <h1 class="logo"><%= text_envy || 'Envy' %></h1>
+        <nav aria-label="User actions">
+            <a href="/remote/logout" class="logout-btn" aria-label="Logout from remote interface">
+                <%= text_logout || 'Logout' %>
+            </a>
+        </nav>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="nav-tabs" role="navigation" aria-label="Main navigation">
+        <ul>
+            <li class="<%= tabstyle_home %>">
+                <a href="<%= tablink_home %>" aria-current="<%= current_page === 'home' ? 'page' : 'false' %>">
+                    <%= text_tabhome || 'Home' %>
+                </a>
+            </li>
+            <li class="<%= tabstyle_downloads %>">
+                <a href="<%= tablink_downloads %>" aria-current="<%= current_page === 'downloads' ? 'page' : 'false' %>">
+                    <%= text_tabdownloads || 'Downloads' %>
+                </a>
+            </li>
+            <li class="<%= tabstyle_uploads %>">
+                <a href="<%= tablink_uploads %>" aria-current="<%= current_page === 'uploads' ? 'page' : 'false' %>">
+                    <%= text_tabuploads || 'Uploads' %>
+                </a>
+            </li>
+            <li class="<%= tabstyle_networks %>">
+                <a href="<%= tablink_networks %>" aria-current="<%= current_page === 'networks' ? 'page' : 'false' %>">
+                    <%= text_tabnetworks || 'Networks' %>
+                </a>
+            </li>
+            <li class="<%= tabstyle_search %>">
+                <a href="<%= tablink_search %>" aria-current="<%= current_page === 'search' ? 'page' : 'false' %>">
+                    <%= text_tabsearch || 'Search' %>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main id="main-content" class="container" role="main">

@@ -1,0 +1,115 @@
+<!-- Modern Home Page -->
+<div class="content-area">
+    <h1 class="page-title"><%= text_welcome || 'Welcome to Envy Remote' %></h1>
+
+    <div class="alert alert-info">
+        <p><%= text_homeinfo || 'This modern web interface allows you to control searches, downloads, uploads and network connections with enhanced features and real-time updates.' %></p>
+    </div>
+
+    <!-- Quick Actions Grid -->
+    <div class="grid grid-2">
+        <!-- Quick Search -->
+        <div class="card">
+            <div class="card-header">
+                <h3><%= text_homestart || 'Quick Actions' %></h3>
+            </div>
+            <div class="card-body">
+                <form method="get" action="newsearch" data-ajax>
+                    <div class="form-group">
+                        <label for="quick-search"><%= text_homequick || 'Quick Search' %></label>
+                        <input type="text" id="quick-search" name="search" class="form-control" placeholder="Enter search terms..." required>
+                    </div>
+                    <div class="form-group">
+                        <label for="search-schema">File Type</label>
+                        <select id="search-schema" name="schema" class="form-control">
+                            <option value=""><%= text_anyfile || 'Any File' %></option>
+                            <option value="http://schemas.getenvy.com/BitTorrent.xsd"><%= text_typetorrent || 'Torrent' %></option>
+                            <option value="http://schemas.getenvy.com/Audio.xsd"><%= text_typeaudio || 'Audio' %></option>
+                            <option value="http://schemas.getenvy.com/Video.xsd"><%= text_typevideo || 'Video' %></option>
+                            <option value="http://schemas.getenvy.com/Image.xsd"><%= text_typeimage || 'Image' %></option>
+                            <option value="http://schemas.getenvy.com/Document.xsd"><%= text_typedoc || 'Document' %></option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <%= text_submit || 'Search' %>
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Direct Download -->
+        <div class="card">
+            <div class="card-header">
+                <h3><%= text_homedirect || 'Direct Download' %></h3>
+            </div>
+            <div class="card-body">
+                <form method="get" action="newdownload" data-ajax>
+                    <div class="form-group">
+                        <label for="direct-url">Magnet/Torrent URL</label>
+                        <input type="url" id="direct-url" name="uri" class="form-control" placeholder="magnet:?xt=urn:btih:..." required>
+                    </div>
+                    <button type="submit" class="btn btn-success">
+                        <%= text_submit || 'Download' %>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Statistics Dashboard -->
+    <div class="section">
+        <h3>Network Statistics</h3>
+        <div class="grid grid-3">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h4 data-stat="downloads_active">0</h4>
+                    <p>Active Downloads</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body text-center">
+                    <h4 data-stat="uploads_active">0</h4>
+                    <p>Active Uploads</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body text-center">
+                    <h4 data-stat="connected_peers">0</h4>
+                    <p>Connected Peers</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recent Activity -->
+    <div class="section">
+        <h3>Recent Activity</h3>
+        <div id="recent-activity" class="card">
+            <div class="card-body">
+                <div class="loading"></div>
+                <p>Loading recent activity...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Useful Links -->
+    <div class="section">
+        <h3><%= text_homelinks || 'Useful Links' %></h3>
+        <div class="grid grid-2">
+            <div>
+                <ul class="link-list">
+                    <li><a href="http://getenvy.com" class="external-link">GetEnvy.com</a></li>
+                    <li><a href="http://getenvy.com/love" class="external-link">GetEnvy.com/Love</a></li>
+                    <li><a href="http://contentdb.emule-project.net" class="external-link">eMule content DB</a></li>
+                </ul>
+            </div>
+            <div>
+                <ul class="link-list">
+                    <li><a href="http://peerweb.org" class="external-link">PeerWeb.org</a></li>
+                    <li><a href="http://legaltorrents.com" class="external-link">Legal Torrents</a></li>
+                    <li><a href="<%= text_customlink || '#' %>" class="external-link"><%= text_customlink || 'Custom Link' %></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

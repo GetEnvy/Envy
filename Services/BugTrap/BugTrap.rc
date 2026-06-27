@@ -119,7 +119,7 @@ BEGIN
 			VALUE "FileDescription", "BugTrap DLL"
 			VALUE "Comments", "BugTrap - Error reporting tool"
 			VALUE "CompanyName", "IntelleSoft"
-			VALUE "LegalCopyright", "© 2005-2010 IntelleSoft"
+			VALUE "LegalCopyright", "ï¿½ 2005-2010 IntelleSoft"
 		END
 	END
 	BLOCK "VarFileInfo"
@@ -168,7 +168,7 @@ FONT 8, "MS Shell Dlg", 0, 0, 0x0
 BEGIN
     ICON            IDI_BUG,IDC_STATIC,7,7,20,20,WS_GROUP
     LTEXT           "BugTrap - software error reporting tool\nVersion 1.2",IDC_VERSION_STRING,34,7,128,16
-    LTEXT           "Copyright © 2005-2010 IntelleSoft",IDC_STATIC,7,32,113,8
+    LTEXT           "Copyright ï¿½ 2005-2010 IntelleSoft",IDC_STATIC,7,32,113,8
     LTEXT           "http://www.intellesoft.net",IDC_URL,7,42,72,10,WS_TABSTOP
     LTEXT           "As modified for Envy, under LGPL",IDC_PORTIONS_COPYRIGHT,7,59,228,10,SS_NOPREFIX | SS_SUNKEN
     DEFPUSHBUTTON   "Close",IDCANCEL,195,7,40,14,WS_GROUP
@@ -349,7 +349,7 @@ BEGIN
     IDS_STATUS_REPORTSENT   "Thank you for your patience!\nError report complete."
     IDS_ERROR_TRANSFERFAILED "Error: can't send error report to the server"
     IDS_COLUMN_FUNCTION     "Function"
-    IDS_UNDEFINED_ERROR_EX  "Undefined error (0x%08lX)"
+    IDS_UNDEFINED_ERROR_EX  "Undefined error"
     IDS_ADDITIONAL_INFORMATION "\nAdditional information:\n"
     IDS_COLUMN_ADDRESS      "Address"
     IDS_COLUMN_FILE         "File"

@@ -1,0 +1,30 @@
+---
+description: Error handling patterns (Win32/MFC), assertions, and exception safety
+globs: ["**/*.cpp", "**/*.h", "**/*.hpp"]
+alwaysApply: false
+---
+
+# Error handling (Envy)
+
+## Hard rules
+- Check return values from Win32/MFC APIs. Do not assume success.
+- Include context in failures (what operation, which file/peer/ID, which error code).
+- Do not swallow errors silently.
+
+## Reporting
+- Use `theApp.Message(MSG_ERROR, ...)` for user-visible errors.
+- Log/propagate underlying Win32/WSA error codes when available.
+
+## Assertions
+- `ASSERT(...)`: debug-only invariants (programmer errors).
+- `VERIFY(...)`: calls that must run in release even if you don’t branch on the result.
+
+## Exception safety
+- Prefer RAII for cleanup (handles, sockets, locks).
+- Catch specific exceptions where recovery is possible; otherwise, add context and fail fast.
+- Never throw from destructors.
+- Avoid exceptions for normal control flow.
+
+## Network failures
+- Handle timeouts and partial send/recv as expected conditions.
+- Treat malformed/oversized input as a protocol error: reject safely and continue.

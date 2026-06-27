@@ -695,9 +695,10 @@ void CUPnPFinder::DeleteExistingPortMappings(ServicePointer pService)
 			nEntry++;			// Entries are pushed from bottom to top after success
 		if ( nEntry > 30 )
 		{
-			// ToDo: FIXME. This is a sanitize check,
-			// since some routers seem to repond to invalid GetGenericPortMappingEntry numbers.
-			// Proper way would be to get the actual portmapping count, but needs testing.
+			// FIXME: This is a sanitize check since some routers respond to invalid
+			// GetGenericPortMappingEntry indices. Proper implementation would query
+			// the actual port mapping count using GetPortMappingNumberOfEntries(),
+			// but this requires extensive testing across different UPnP device models.
 			theApp.Message( MSG_INFO, L"UPnP GetGenericPortMappingEntry maximum count exceeded, quitting." );
 			break;
 		}

@@ -1,7 +1,7 @@
 //
 // Downloads.h
 //
-// This file is part of Envy (getenvy.com) © 2016-2018
+// This file is part of Envy (getenvy.com) ï¿½ 2016-2018
 // Portions copyright Shareaza 2002-2007 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -18,6 +18,8 @@
 
 #pragma once
 
+#include "ThreadImpl.h"
+
 class CDownload;
 class CDownloadSource;
 class CConnection;
@@ -29,7 +31,7 @@ class CEDClient;
 class CBuffer;
 
 
-class CDownloads
+class CDownloads : public CThreadImpl
 {
 public:
 	enum { dlPathNull, dlPathComplete, dlPathIncomplete };
@@ -57,6 +59,12 @@ private:
 	DWORD		m_nLimitDonkey;
 	bool		m_bAllowMoreDownloads;
 	bool		m_bAllowMoreTransfers;
+
+	// Background loading support
+	CStringList m_pPreloadFiles;			// Files to preload in background
+	bool		m_bPreloadCompleted;		// Background preload finished
+	DWORD		m_nPreloadTotal;			// Total files to preload
+	DWORD		m_nPreloadCurrent;			// Current preload progress
 
 public:
 	CDownload*	Add(BOOL bAddToHead = FALSE);
@@ -90,9 +98,12 @@ public:
 	CDownload*	FindBySID(DWORD nSerID) const;
 	DWORD		GetFreeSID();
 
-	void		PreLoad();
+	void		PreLoad();						// Synchronous preload (legacy)
+	void		PreLoadAsync();					// Asynchronous background preload
 	void		Load();							// Load all available .pd-files from Incomplete folder
 	CDownload*	Load(const CString& strPath);	// Load specified .pd-file
+	bool		IsPreloadCompleted() const;		// Check if background preload finished
+	DWORD		GetPreloadProgress() const;		// Get current preload progress (0-100)
 	void		Save(BOOL bForce = TRUE);
 	void		PurgeFiles();					// Was PurgePreviews
 	void		OnRun();

@@ -1,7 +1,7 @@
-//
+ï»¿//
 // WndSearchMonitor.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2018
+// This file is part of Envy (getenvy.com) ï¿½ 2016-2018
 // Portions copyright Shareaza 2002-2007 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -29,6 +29,7 @@
 #include "Security.h"
 #include "Skin.h"
 #include "XML.h"
+#include "DlgSearchMonitorFilter.h"
 
 #ifdef _DEBUG
 #undef THIS_FILE
@@ -70,6 +71,10 @@ BEGIN_MESSAGE_MAP(CSearchMonitorWnd, CPanelWnd)
 	ON_COMMAND(ID_SECURITY_BAN, OnSecurityBan)
 	ON_UPDATE_COMMAND_UI(ID_BROWSE_LAUNCH, OnUpdateBrowseLaunch)
 	ON_COMMAND(ID_BROWSE_LAUNCH, OnBrowseLaunch)
+	ON_UPDATE_COMMAND_UI(ID_SEARCHMONITOR_FILTER, OnUpdateSearchMonitorFilter)
+	ON_COMMAND(ID_SEARCHMONITOR_FILTER, OnSearchMonitorFilter)
+	ON_UPDATE_COMMAND_UI(ID_SEARCHMONITOR_FILTER_REMOVE, OnUpdateSearchMonitorFilterRemove)
+	ON_COMMAND(ID_SEARCHMONITOR_FILTER_REMOVE, OnSearchMonitorFilterRemove)
 	ON_NOTIFY(LVN_COLUMNCLICK, IDC_SEARCHES, OnDblClkList)
 	ON_NOTIFY(NM_CUSTOMDRAW, IDC_SEARCHES, OnCustomDrawList)
 END_MESSAGE_MAP()
@@ -237,6 +242,10 @@ void CSearchMonitorWnd::OnQuerySearch(const CQuerySearch* pSearch)
 	if ( m_bPaused || m_hWnd == NULL )
 		return;
 
+	// Apply advanced filtering if enabled
+	if ( m_FilterCriteria.bFilterEnabled && ! ShouldDisplaySearch( pSearch ) )
+		return;
+
 	CSingleLock pLock( &m_pSection );
 	if ( ! pLock.Lock( 250 ) )
 		return;
@@ -246,7 +255,23 @@ void CSearchMonitorWnd::OnQuerySearch(const CQuerySearch* pSearch)
 
 	CLiveItem* pItem = new CLiveItem( COL_LAST, NULL );
 
-	CString strSearch = pSearch->m_sSearch;
+	// Prioritize showing actual search keywords, not file hashes
+	CString strSearch;
+	if ( ! pSearch->m_sPosKeywords.IsEmpty() )
+	{
+		// Use positive keywords (actual search terms)
+		strSearch = pSearch->m_sPosKeywords;
+	}
+	else if ( ! pSearch->m_sKeywords.IsEmpty() )
+	{
+		// Fall back to keywords
+		strSearch = pSearch->m_sKeywords;
+	}
+	else if ( ! pSearch->m_sSearch.IsEmpty() )
+	{
+		// Use search string
+		strSearch = pSearch->m_sSearch;
+	}
 
 //	LoadString( strSchema, IDS_NEIGHBOUR_COMPRESSION_NONE );	// ToDo: Generic "None" translation ?
 //	LoadString( strURN, IDS_NEIGHBOUR_COMPRESSION_NONE );
@@ -298,9 +323,9 @@ void CSearchMonitorWnd::OnQuerySearch(const CQuerySearch* pSearch)
 
 	if ( pSearch->m_pXML )
 	{
-		strSearch += L'«';
+		strSearch += L'ï¿½';
 		strSearch += pSearch->m_pXML->GetRecursiveWords();
-		strSearch += L'»';
+		strSearch += L'ï¿½';
 	}
 
 	CString strSchema;
@@ -318,12 +343,19 @@ void CSearchMonitorWnd::OnQuerySearch(const CQuerySearch* pSearch)
 			strSchema = strSize;
 	}
 
-	if ( ! strURN.IsEmpty() )
+	// Only append hash if there's actual search text, otherwise indicate it's a hash-based search
+	if ( pSearch->HasHash() && ! strURN.IsEmpty() && strURN != L"None" )
 	{
 		if ( strSearch.GetLength() > 1 )
+		{
+			// Append hash to search text
 			strSearch += L"  " + strURN;
+		}
 		else
-			strSearch = strURN;
+		{
+			// Hash-based search with no text - indicate it's a hash search
+			strSearch = L"[Hash Search]  " + strURN;
+		}
 	}
 
 	pItem->Set( COL_SEARCH, strSearch );
@@ -342,13 +374,19 @@ void CSearchMonitorWnd::OnTimer(UINT_PTR nIDEvent)
 
 	BOOL bScroll = m_wndList.GetTopIndex() + m_wndList.GetCountPerPage() >= m_wndList.GetItemCount();
 
+	// Process multiple items per timer tick to reduce UI thread blocking
+	// Limit to 10 items per tick to maintain responsiveness
+	const int MAX_ITEMS_PER_TICK = 10;
+	int nProcessed = 0;
+
 	for ( ;; )
 	{
 		CLiveItem* pItem;
 
 		{
 			CSingleLock pLock( &m_pSection );
-			if ( ! pLock.Lock( 250 ) )
+			// Use shorter timeout to avoid blocking UI thread
+			if ( ! pLock.Lock( 100 ) )
 				break;
 
 			if ( m_pQueue.GetCount() == 0 )
@@ -363,6 +401,10 @@ void CSearchMonitorWnd::OnTimer(UINT_PTR nIDEvent)
 		/*int nItem =*/ pItem->Add( &m_wndList, -1, COL_LAST );
 
 		delete pItem;
+
+		// Limit processing per tick to maintain UI responsiveness
+		if ( ++nProcessed >= MAX_ITEMS_PER_TICK )
+			break;
 	}
 
 	if ( bScroll )
@@ -413,4 +455,225 @@ void CSearchMonitorWnd::OnCustomDrawList(NMHDR* /*pNMHDR*/, LRESULT* pResult)
 	//NMLVCUSTOMDRAW* pDraw = (NMLVCUSTOMDRAW*)pNMHDR;
 
 	*pResult = CDRF_DODEFAULT;
+}
+
+/////////////////////////////////////////////////////////////////////////////
+// Advanced filtering implementation
+
+bool CSearchMonitorWnd::ShouldDisplaySearch(const CQuerySearch* pSearch) const
+{
+	// Early exit if filtering is disabled
+	if (!m_FilterCriteria.bFilterEnabled) return true;
+
+	// Check filters in order of likely rejection (fastest checks first)
+	// IP filter is fastest (simple address comparison)
+	if (!MatchesIPFilter(pSearch)) return false;
+
+	// Protocol filter is fast (enum comparison)
+	if (!MatchesProtocolFilter(pSearch)) return false;
+
+	// Size filter is medium speed (numeric comparison)
+	if (!MatchesSizeFilter(pSearch)) return false;
+
+	// Schema filter is medium speed (string comparison)
+	if (!MatchesSchemaFilter(pSearch)) return false;
+
+	// Text filter is slowest (string search), check last
+	if (!MatchesTextFilter(pSearch)) return false;
+
+	return true;
+}
+
+bool CSearchMonitorWnd::MatchesTextFilter(const CQuerySearch* pSearch) const
+{
+	if (m_FilterCriteria.sTextFilter.IsEmpty()) return true;
+
+	// Early exit optimization: check if filter is longer than any possible search text
+	// Check if the search text contains the filter string
+	CString strSearch;
+	if (!pSearch->m_sPosKeywords.IsEmpty())
+		strSearch = pSearch->m_sPosKeywords;
+	else if (!pSearch->m_sKeywords.IsEmpty())
+		strSearch = pSearch->m_sKeywords;
+	else if (!pSearch->m_sSearch.IsEmpty())
+		strSearch = pSearch->m_sSearch;
+	else
+		return false; // No search text to match
+
+	// Use case-insensitive search for better matching
+	CString strSearchUpper = strSearch;
+	strSearchUpper.MakeUpper();
+	CString strFilterUpper = m_FilterCriteria.sTextFilter;
+	strFilterUpper.MakeUpper();
+	return (strSearchUpper.Find(strFilterUpper) >= 0);
+}
+
+bool CSearchMonitorWnd::MatchesProtocolFilter(const CQuerySearch* pSearch) const
+{
+	if (m_FilterCriteria.aProtocols.GetSize() == 0) return true;
+
+	// Check if the protocol is in the allowed list
+	CString strProtocol;
+	switch (pSearch->m_nProtocol)
+	{
+	case PROTOCOL_G2: strProtocol = L"G2"; break;
+	case PROTOCOL_G1: strProtocol = L"G1"; break;
+	case PROTOCOL_ED2K: strProtocol = L"ED2K"; break;
+	case PROTOCOL_DC: strProtocol = L"DC++"; break;
+	default: strProtocol = L"OTHER"; break;
+	}
+
+	for (int i = 0; i < m_FilterCriteria.aProtocols.GetSize(); i++)
+	{
+		if (m_FilterCriteria.aProtocols[i] == strProtocol)
+			return true;
+	}
+
+	return false;
+}
+
+bool CSearchMonitorWnd::MatchesSizeFilter(const CQuerySearch* pSearch) const
+{
+	if (m_FilterCriteria.nMinSize == 0 && m_FilterCriteria.nMaxSize == 0) return true;
+
+	// Check size constraints
+	QWORD nMinSize = pSearch->m_nMinSize;
+	QWORD nMaxSize = pSearch->m_nMaxSize;
+
+	// If no size specified in search, allow it
+	if (nMinSize == 0 && nMaxSize == 0) return true;
+
+	// Check minimum size
+	if (m_FilterCriteria.nMinSize > 0)
+	{
+		if (nMaxSize > 0 && nMaxSize < m_FilterCriteria.nMinSize) return false;
+		if (nMinSize > 0 && nMinSize < m_FilterCriteria.nMinSize) return false;
+	}
+
+	// Check maximum size
+	if (m_FilterCriteria.nMaxSize > 0)
+	{
+		if (nMinSize > 0 && nMinSize > m_FilterCriteria.nMaxSize) return false;
+		if (nMaxSize > 0 && nMaxSize > m_FilterCriteria.nMaxSize) return false;
+	}
+
+	return true;
+}
+
+bool CSearchMonitorWnd::MatchesIPFilter(const CQuerySearch* pSearch) const
+{
+	if (m_FilterCriteria.sIPFilter.IsEmpty()) return true;
+
+	// Get IP address from search endpoint
+	CString strIP;
+	if (pSearch->m_pEndpoint.sin_addr.s_addr)
+		strIP = inet_ntoa(pSearch->m_pEndpoint.sin_addr);
+
+	// Simple wildcard matching (* and ?)
+	return MatchesWildcard(strIP, m_FilterCriteria.sIPFilter);
+}
+
+bool CSearchMonitorWnd::MatchesSchemaFilter(const CQuerySearch* pSearch) const
+{
+	if (m_FilterCriteria.sSchemaFilter.IsEmpty()) return true;
+
+	// Check schema name
+	CString strSchema;
+	if (pSearch->m_pSchema)
+		strSchema = pSearch->m_pSchema->m_sTitle;
+
+	return (strSchema.Find(m_FilterCriteria.sSchemaFilter) >= 0);
+}
+
+bool CSearchMonitorWnd::MatchesWildcard(const CString& sText, const CString& sPattern) const
+{
+	// Simple wildcard implementation (* and ?)
+	int iText = 0, iPattern = 0;
+	int textLen = sText.GetLength();
+	int patternLen = sPattern.GetLength();
+
+	while (iText < textLen && iPattern < patternLen)
+	{
+		if (sPattern[iPattern] == L'*')
+		{
+			// Skip multiple characters
+			iPattern++;
+			if (iPattern == patternLen) return true; // * at end matches rest
+
+			// Find next matching character
+			while (iText < textLen && sText[iText] != sPattern[iPattern])
+				iText++;
+
+			continue;
+		}
+		else if (sPattern[iPattern] == L'?' || sText[iText] == sPattern[iPattern])
+		{
+			iText++;
+			iPattern++;
+		}
+		else
+		{
+			return false;
+		}
+	}
+
+	// Check remaining pattern
+	while (iPattern < patternLen && sPattern[iPattern] == L'*')
+		iPattern++;
+
+	return (iPattern == patternLen && iText <= textLen);
+}
+
+void CSearchMonitorWnd::ShowFilterDialog()
+{
+	CDlgSearchMonitorFilter dlg(this, &m_FilterCriteria);
+
+	if (dlg.DoModal() == IDOK)
+	{
+		UpdateFilterStatus();
+	}
+}
+
+void CSearchMonitorWnd::ClearAllFilters()
+{
+	m_FilterCriteria.sTextFilter.Empty();
+	m_FilterCriteria.aProtocols.RemoveAll();
+	m_FilterCriteria.nMinSize = 0;
+	m_FilterCriteria.nMaxSize = 0;
+	m_FilterCriteria.sIPFilter.Empty();
+	m_FilterCriteria.sSchemaFilter.Empty();
+	m_FilterCriteria.bFilterEnabled = false;
+
+	UpdateFilterStatus();
+}
+
+void CSearchMonitorWnd::UpdateFilterStatus()
+{
+	// Update window title or status to show filter status
+	CString strTitle = L"Search Monitor";
+	if (m_FilterCriteria.bFilterEnabled)
+		strTitle += L" [FILTERED]";
+
+	SetWindowText(strTitle);
+}
+
+// Menu handlers for filtering
+void CSearchMonitorWnd::OnUpdateSearchMonitorFilter(CCmdUI* pCmdUI)
+{
+	pCmdUI->Enable(TRUE);
+}
+
+void CSearchMonitorWnd::OnSearchMonitorFilter()
+{
+	ShowFilterDialog();
+}
+
+void CSearchMonitorWnd::OnUpdateSearchMonitorFilterRemove(CCmdUI* pCmdUI)
+{
+	pCmdUI->Enable(m_FilterCriteria.bFilterEnabled);
+}
+
+void CSearchMonitorWnd::OnSearchMonitorFilterRemove()
+{
+	ClearAllFilters();
 }

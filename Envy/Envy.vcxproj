@@ -1,5 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
     <ProjectName>Envy</ProjectName>
     <ProjectGuid>{F9C719B3-35FB-427D-A795-91105DFECAAF}</ProjectGuid>
     <RootNamespace>Envy</RootNamespace>
@@ -26,7 +27,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(WindowsTargetPlatformVersion)'==''">
     <LatestTargetPlatformVersion>$([Microsoft.Build.Utilities.ToolLocationHelper]::GetLatestSDKTargetPlatformVersion('Windows', '10.0'))</LatestTargetPlatformVersion>
-    <WindowsTargetPlatformVersion Condition="'$(WindowsTargetPlatformVersion)' == ''">$(LatestTargetPlatformVersion)</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion Condition="'$(WindowsTargetPlatformVersion)' == ''">10.0</WindowsTargetPlatformVersion>
     <TargetPlatformVersion>$(WindowsTargetPlatformVersion)</TargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -35,28 +36,28 @@
     <UseOfMfc>Static</UseOfMfc>
     <CharacterSet>Unicode</CharacterSet>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <PlatformToolset>v141_xp</PlatformToolset>
+    <PlatformToolset>v145</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseOfMfc>Static</UseOfMfc>
     <CharacterSet>Unicode</CharacterSet>
     <LinkIncremental>true</LinkIncremental>
-    <PlatformToolset>v141_xp</PlatformToolset>
+    <PlatformToolset>v145</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseOfMfc>Static</UseOfMfc>
     <CharacterSet>Unicode</CharacterSet>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v145</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseOfMfc>Static</UseOfMfc>
     <CharacterSet>Unicode</CharacterSet>
     <LinkIncremental>true</LinkIncremental>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v145</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -90,7 +91,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <PreBuildEvent>
       <Message>Pre-Build Dependencies...</Message>
-      <Command>PreBuild.cmd $(ConfigurationName) $(PlatformName)</Command>
+      <Command>.\PreBuild.cmd $(ConfigurationName) $(PlatformName)</Command>
     </PreBuildEvent>
     <Midl>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -99,8 +100,10 @@
       <InterfaceIdentifierFileName>Envy_i.c</InterfaceIdentifierFileName>
     </Midl>
     <ClCompile>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <ConformanceMode>false</ConformanceMode>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>_DEBUG;WIN32;_WINDOWS;_ATL_XP_TARGETING;_ENVY;ENVY_USE_ASM;ZLIB_WINAPI;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;_WINSOCK_DEPRECATED_NO_WARNINGS;_MSC_PLATFORM_TOOLSET=$(PlatformToolsetVersion);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;WIN32;_WINDOWS;_ENVY;ZLIB_WINAPI;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;_WINSOCK_DEPRECATED_NO_WARNINGS;_MSC_PLATFORM_TOOLSET=$(PlatformToolsetVersion);%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>..\Services;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>/Wall /Zc:threadSafeInit- %(AdditionalOptions)</AdditionalOptions>
       <SDLCheck>true</SDLCheck>
@@ -143,11 +146,16 @@
     <BuildLog>
       <Path>$(ProjectDir)$(IntDir)$(ProjectName).log</Path>
     </BuildLog>
+    <PostBuildEvent>
+      <Message>Copying Data folder to output directory...</Message>
+      <Command>if not exist "$(TargetDir)Data" mkdir "$(TargetDir)Data"
+if exist "$(SolutionDir)Data\Vendors.xml" copy /Y "$(SolutionDir)Data\Vendors.xml" "$(TargetDir)Data\Vendors.xml"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <PreBuildEvent>
       <Message>Pre-Build Dependencies...</Message>
-      <Command>PreBuild.cmd $(ConfigurationName) $(PlatformName)</Command>
+      <Command>.\PreBuild.cmd $(ConfigurationName) $(PlatformName)</Command>
     </PreBuildEvent>
     <Midl>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -156,6 +164,8 @@
       <TargetEnvironment>X64</TargetEnvironment>
     </Midl>
     <ClCompile>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <ConformanceMode>false</ConformanceMode>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;WIN64;_WINDOWS;_ENVY;ZLIB_WINAPI;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;_WINSOCK_DEPRECATED_NO_WARNINGS;_MSC_PLATFORM_TOOLSET=$(PlatformToolsetVersion);%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>..\Services;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -198,11 +208,16 @@
     <BuildLog>
       <Path>$(ProjectDir)$(IntDir)$(ProjectName).log</Path>
     </BuildLog>
+    <PostBuildEvent>
+      <Message>Copying Data folder to output directory...</Message>
+      <Command>if not exist "$(TargetDir)Data" mkdir "$(TargetDir)Data"
+if exist "$(SolutionDir)Data\Vendors.xml" copy /Y "$(SolutionDir)Data\Vendors.xml" "$(TargetDir)Data\Vendors.xml"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <PreBuildEvent>
       <Message>Pre-Build Dependencies...</Message>
-      <Command>PreBuild.cmd $(ConfigurationName) $(PlatformName)</Command>
+      <Command>.\PreBuild.cmd $(ConfigurationName) $(PlatformName)</Command>
     </PreBuildEvent>
     <Midl>
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -211,9 +226,11 @@
       <TargetEnvironment>Win32</TargetEnvironment>
     </Midl>
     <ClCompile>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <ConformanceMode>false</ConformanceMode>
       <Optimization>Full</Optimization>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
-      <PreprocessorDefinitions>NDEBUG;WIN32;_WINDOWS;_ATL_XP_TARGETING;_ENVY;ENVY_USE_ASM;ZLIB_WINAPI;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;_WINSOCK_DEPRECATED_NO_WARNINGS;_MSC_PLATFORM_TOOLSET=$(PlatformToolsetVersion);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;WIN32;_WINDOWS;_ENVY;ZLIB_WINAPI;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;_WINSOCK_DEPRECATED_NO_WARNINGS;_MSC_PLATFORM_TOOLSET=$(PlatformToolsetVersion);%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>..\Services;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>/Wall /Zc:threadSafeInit- %(AdditionalOptions)</AdditionalOptions>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
@@ -262,12 +279,17 @@
     <BuildLog>
       <Path>$(ProjectDir)$(IntDir)$(ProjectName).log</Path>
     </BuildLog>
+    <PostBuildEvent>
+      <Message>Copying Data folder to output directory...</Message>
+      <Command>if not exist "$(TargetDir)Data" mkdir "$(TargetDir)Data"
+if exist "$(SolutionDir)Data\Vendors.xml" copy /Y "$(SolutionDir)Data\Vendors.xml" "$(TargetDir)Data\Vendors.xml"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <PreBuildEvent>
       <Message>Copying DLL Services and SVN Revision...</Message>
       <Message>Pre-Build Dependencies...</Message>
-      <Command>PreBuild.cmd $(ConfigurationName) $(PlatformName)</Command>
+      <Command>.\PreBuild.cmd $(ConfigurationName) $(PlatformName)</Command>
     </PreBuildEvent>
     <Midl>
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -276,6 +298,8 @@
       <TargetEnvironment>X64</TargetEnvironment>
     </Midl>
     <ClCompile>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <ConformanceMode>false</ConformanceMode>
       <Optimization>Full</Optimization>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;_ENVY;ZLIB_WINAPI;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;_WINSOCK_DEPRECATED_NO_WARNINGS;_MSC_PLATFORM_TOOLSET=$(PlatformToolsetVersion);%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -298,6 +322,7 @@
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <DisableSpecificWarnings>4710;4711;4738;%(DisableSpecificWarnings)</DisableSpecificWarnings>
       <WarningLevel>Level4</WarningLevel>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>NDEBUG;WIN64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -325,9 +350,19 @@
     <BuildLog>
       <Path>$(ProjectDir)$(IntDir)$(ProjectName).log</Path>
     </BuildLog>
+    <PostBuildEvent>
+      <Message>Copying Data folder to output directory...</Message>
+      <Command>if not exist "$(TargetDir)Data" mkdir "$(TargetDir)Data"
+if exist "$(SolutionDir)Data\Vendors.xml" copy /Y "$(SolutionDir)Data\Vendors.xml" "$(TargetDir)Data\Vendors.xml"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="BitTorrentDHT\dht.c" />
+    <ClCompile Include="Kademlia.cpp" />
+    <ClCompile Include="KademliaPlatform.cpp" />
+    <ClCompile Include="KBucket.cpp" />
+    <ClCompile Include="KadProtocol.cpp" />
+    <ClCompile Include="KadStorage.cpp" />
     <ClCompile Include="AlbumFolder.cpp" />
     <ClCompile Include="AntiVirus.cpp" />
     <ClCompile Include="Application.cpp" />
@@ -335,6 +370,7 @@
     <ClCompile Include="BENode.cpp" />
     <ClCompile Include="BitprintsDownloader.cpp" />
     <ClCompile Include="BTClient.cpp" />
+    <ClCompile Include="BTCrypto.cpp" />
     <ClCompile Include="BTClients.cpp" />
     <ClCompile Include="BTInfo.cpp" />
     <ClCompile Include="BTPacket.cpp" />
@@ -352,6 +388,8 @@
     <ClCompile Include="CoolInterface.cpp" />
     <ClCompile Include="CoolMenu.cpp" />
     <ClCompile Include="CrawlSession.cpp" />
+    <ClCompile Include="CryptoProvider.cpp" />
+    <ClCompile Include="RC4.cpp" />
     <ClCompile Include="Datagram.cpp" />
     <ClCompile Include="DatagramPart.cpp" />
     <ClCompile Include="Datagrams.cpp" />
@@ -389,6 +427,7 @@
     <ClCompile Include="EDPartImporter.cpp" />
     <ClCompile Include="Emoticons.cpp" />
     <ClCompile Include="FileExecutor.cpp" />
+    <ClCompile Include="FileIdentifier.cpp" />
     <ClCompile Include="Firewall.cpp" />
     <ClCompile Include="Flags.cpp" />
     <ClCompile Include="FragmentBar.cpp" />
@@ -413,7 +452,6 @@
     <ClCompile Include="ImageFile.cpp" />
     <ClCompile Include="ImageServices.cpp" />
     <ClCompile Include="Images.cpp" />
-    <ClCompile Include="Kademlia.cpp" />
     <ClCompile Include="Library.cpp" />
     <ClCompile Include="LibraryBuilder.cpp" />
     <ClCompile Include="LibraryBuilderInternals.cpp" />
@@ -479,6 +517,7 @@
     <ClCompile Include="Registry.cpp" />
     <ClCompile Include="RelatedSearch.cpp" />
     <ClCompile Include="Remote.cpp" />
+    <ClCompile Include="RemoteSecurity.cpp" />
     <ClCompile Include="ResultFilters.cpp" />
     <ClCompile Include="RichDocument.cpp" />
     <ClCompile Include="RichElement.cpp" />
@@ -852,14 +891,13 @@
     <ClCompile Include="DlgFilePropertiesPage.cpp" />
     <ClCompile Include="DlgFilePropertiesSheet.cpp" />
     <ClCompile Include="DlgFilterSearch.cpp" />
+    <ClCompile Include="DlgSearchMonitorFilter.cpp" />
     <ClCompile Include="DlgFolderProperties.cpp" />
     <ClCompile Include="DlgFolderScan.cpp" />
     <ClCompile Include="DlgGraphItem.cpp" />
     <ClCompile Include="DlgGraphList.cpp" />
     <ClCompile Include="DlgHelp.cpp" />
-    <ClCompile Include="DlgHex.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)'=='Release'">true</ExcludedFromBuild>
-    </ClCompile>
+    <ClCompile Include="DlgHex.cpp" />
     <ClCompile Include="DlgHitColumns.cpp" />
     <ClCompile Include="DlgIrcInput.cpp" />
     <ClCompile Include="DlgLanguage.cpp" />
@@ -966,6 +1004,7 @@
     <ClCompile Include="PageSettingsConnection.cpp" />
     <ClCompile Include="PageSettingsDC.cpp" />
     <ClCompile Include="PageSettingsDonkey.cpp" />
+    <ClCompile Include="PageSettingsDonkeyAdvanced.cpp" />
     <ClCompile Include="PageSettingsDownloads.cpp" />
     <ClCompile Include="PageSettingsGeneral.cpp" />
     <ClCompile Include="PageSettingsGnutella.cpp" />
@@ -1203,6 +1242,7 @@
     <ClInclude Include="BENode.h" />
     <ClInclude Include="BitprintsDownloader.h" />
     <ClInclude Include="BTClient.h" />
+    <ClInclude Include="BTCrypto.h" />
     <ClInclude Include="BTClients.h" />
     <ClInclude Include="BTInfo.h" />
     <ClInclude Include="BTPacket.h" />
@@ -1254,9 +1294,11 @@
     <ClInclude Include="EDClients.h" />
     <ClInclude Include="EDNeighbour.h" />
     <ClInclude Include="EDPacket.h" />
+    <ClInclude Include="EDSourcePacketValidate.h" />
     <ClInclude Include="EDPartImporter.h" />
     <ClInclude Include="Emoticons.h" />
     <ClInclude Include="FileExecutor.h" />
+    <ClInclude Include="FileIdentifier.h" />
     <ClInclude Include="Firewall.h" />
     <ClInclude Include="Flags.h" />
     <ClInclude Include="FragmentBar.h" />
@@ -1333,6 +1375,7 @@
     <ClInclude Include="Registry.h" />
     <ClInclude Include="RelatedSearch.h" />
     <ClInclude Include="Remote.h" />
+    <ClInclude Include="RemoteSecurity.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="ResultFilters.h" />
     <ClInclude Include="Revision.h" />
@@ -1504,14 +1547,13 @@
     <ClInclude Include="DlgFilePropertiesPage.h" />
     <ClInclude Include="DlgFilePropertiesSheet.h" />
     <ClInclude Include="DlgFilterSearch.h" />
+    <ClInclude Include="DlgSearchMonitorFilter.h" />
     <ClInclude Include="DlgFolderProperties.h" />
     <ClInclude Include="DlgFolderScan.h" />
     <ClInclude Include="DlgGraphItem.h" />
     <ClInclude Include="DlgGraphList.h" />
     <ClInclude Include="DlgHelp.h" />
-    <ClInclude Include="DlgHex.h">
-      <ExcludedFromBuild Condition="'$(Configuration)'=='Release'">true</ExcludedFromBuild>
-    </ClInclude>
+    <ClInclude Include="DlgHex.h" />
     <ClInclude Include="DlgHitColumns.h" />
     <ClInclude Include="DlgIrcInput.h" />
     <ClInclude Include="DlgLanguage.h" />
@@ -1569,6 +1611,7 @@
     <ClInclude Include="PageSettingsConnection.h" />
     <ClInclude Include="PageSettingsDC.h" />
     <ClInclude Include="PageSettingsDonkey.h" />
+    <ClInclude Include="PageSettingsDonkeyAdvanced.h" />
     <ClInclude Include="PageSettingsDownloads.h" />
     <ClInclude Include="PageSettingsGeneral.h" />
     <ClInclude Include="PageSettingsGnutella.h" />
@@ -1605,6 +1648,9 @@
     <ClInclude Include="Augment\auto_ptr.hpp" />
     <ClInclude Include="Augment\IUnknownImplementation.hpp" />
     <ClInclude Include="BitTorrentDHT\dht.h" />
+    <ClInclude Include="KBucket.h" />
+    <ClInclude Include="KadProtocol.h" />
+    <ClInclude Include="KadStorage.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HashLib\HashLib.vcxproj">

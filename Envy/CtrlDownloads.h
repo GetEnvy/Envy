@@ -1,7 +1,7 @@
 //
 // CtrlDownloads.h
 //
-// This file is part of Envy (getenvy.com) © 2016-2018
+// This file is part of Envy (getenvy.com) ï¿½ 2016-2018
 // Portions copyright Shareaza 2002-2007 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -41,6 +41,7 @@ public:
 	BOOL		DropObjects(CList< CDownload* >* pSel, const CPoint& ptScreen);
 	void		OnMouseMoveDrag(const CPoint& ptScreen);	// Was DropShowTarget(CList< CDownload* >* pSel, const CPoint& ptScreen)
 	void		OnSkinChange();
+	void		InvalidateBatched();	// Batched UI update method
 protected:
 	void		InsertColumn(int nColumn, LPCTSTR pszCaption, int nFormat, int nWidth);
 	void		SaveColumnState();
@@ -86,6 +87,8 @@ protected:
 	BOOL*				m_pbSortAscending;
 	BOOL				m_bShowSearching;
 //	DWORD				m_tSwitchTimer;		// Using static
+	BOOL				m_bPendingInvalidate;	// UI update batching flag
+	UINT_PTR			m_nUpdateTimer;		// Timer ID for batched updates
 
 //	CArray< CDownloadDisplayData > m_pDownloadsData;	// Using static
 
@@ -110,6 +113,7 @@ public:
 	afx_msg void OnSetFocus(CWnd* pOldWnd);
 	afx_msg void OnKillFocus(CWnd* pNewWnd);
 	afx_msg UINT OnGetDlgCode();
+	afx_msg void OnTimer(UINT_PTR nIDEvent);
 
 protected:
 	DECLARE_MESSAGE_MAP()

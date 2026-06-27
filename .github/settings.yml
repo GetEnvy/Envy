@@ -1,0 +1,212 @@
+# Repository settings configuration
+# This file can be used with Probot Settings app for automated repository configuration
+
+repository:
+  # Repository information
+  name: Envy
+  description: "Multi-Network P2P Filesharing and BitTorrent Client for Windows"
+  homepage: http://getenvy.com
+  topics:
+    - p2p
+    - bittorrent
+    - file-sharing
+    - gnutella
+    - ed2k
+    - cpp
+    - cpp20
+    - windows
+    - mfc
+    - peer-to-peer
+
+  # Repository settings
+  private: false
+  has_issues: true
+  has_projects: true
+  has_wiki: true
+  has_downloads: true
+  default_branch: develop
+  allow_squash_merge: true
+  allow_merge_commit: false
+  allow_rebase_merge: true
+  delete_branch_on_merge: true
+  enable_automated_security_fixes: true
+  enable_vulnerability_alerts: true
+
+# Labels for issues and pull requests
+labels:
+  # Type labels
+  - name: "bug"
+    color: "d73a4a"
+    description: "Something isn't working"
+
+  - name: "enhancement"
+    color: "a2eeef"
+    description: "New feature or request"
+
+  - name: "documentation"
+    color: "0075ca"
+    description: "Improvements or additions to documentation"
+
+  - name: "refactor"
+    color: "fbca04"
+    description: "Code refactoring"
+
+  - name: "performance"
+    color: "00ff00"
+    description: "Performance improvements"
+
+  - name: "security"
+    color: "ee0701"
+    description: "Security vulnerability or concern"
+
+  - name: "dependencies"
+    color: "0366d6"
+    description: "Pull requests that update a dependency file"
+
+  # Status labels
+  - name: "needs-triage"
+    color: "fef2c0"
+    description: "Needs initial assessment"
+
+  - name: "work-in-progress"
+    color: "ffcc00"
+    description: "Work in progress"
+
+  - name: "blocked"
+    color: "b60205"
+    description: "Blocked by another issue or PR"
+
+  - name: "ready-for-review"
+    color: "0e8a16"
+    description: "Ready for code review"
+
+  - name: "stale"
+    color: "eeeeee"
+    description: "Inactive issue or PR"
+
+  # Priority labels
+  - name: "priority: critical"
+    color: "d93f0b"
+    description: "Critical priority"
+
+  - name: "priority: high"
+    color: "ff9900"
+    description: "High priority"
+
+  - name: "priority: medium"
+    color: "fbca04"
+    description: "Medium priority"
+
+  - name: "priority: low"
+    color: "c5def5"
+    description: "Low priority"
+
+  # Difficulty labels
+  - name: "good-first-issue"
+    color: "7057ff"
+    description: "Good for newcomers"
+
+  - name: "help-wanted"
+    color: "008672"
+    description: "Extra attention is needed"
+
+  # Area labels
+  - name: "area: build"
+    color: "c2e0c6"
+    description: "Build system and compilation"
+
+  - name: "area: ci/cd"
+    color: "c2e0c6"
+    description: "Continuous integration and deployment"
+
+  - name: "area: network"
+    color: "c2e0c6"
+    description: "Network protocols and connectivity"
+
+  - name: "area: ui"
+    color: "c2e0c6"
+    description: "User interface"
+
+  - name: "area: download"
+    color: "c2e0c6"
+    description: "Download management"
+
+  - name: "area: upload"
+    color: "c2e0c6"
+    description: "Upload management"
+
+  - name: "area: library"
+    color: "c2e0c6"
+    description: "File library system"
+
+  - name: "area: search"
+    color: "c2e0c6"
+    description: "Search functionality"
+
+  - name: "area: plugins"
+    color: "c2e0c6"
+    description: "Plugin system"
+
+  # Platform labels
+  - name: "platform: windows"
+    color: "0075ca"
+    description: "Windows platform specific"
+
+  - name: "platform: x64"
+    color: "0075ca"
+    description: "64-bit specific"
+
+  - name: "platform: x86"
+    color: "0075ca"
+    description: "32-bit specific"
+
+  # Misc labels
+  - name: "question"
+    color: "d876e3"
+    description: "Further information is requested"
+
+  - name: "duplicate"
+    color: "cfd3d7"
+    description: "This issue or pull request already exists"
+
+  - name: "invalid"
+    color: "e4e669"
+    description: "This doesn't seem right"
+
+  - name: "wontfix"
+    color: "ffffff"
+    description: "This will not be worked on"
+
+  - name: "github-actions"
+    color: "000000"
+    description: "GitHub Actions related"
+
+  - name: "breaking-change"
+    color: "d93f0b"
+    description: "Introduces a breaking change"
+
+# Milestones
+milestones:
+  - title: "v1.0 Modernization"
+    description: "Complete modernization of codebase with C++20 and modern practices"
+    state: open
+
+# Branch protection rules (example)
+branches:
+  - name: develop
+    protection:
+      required_linear_history: true
+      required_pull_request_reviews:
+        required_approving_review_count: 1
+        dismiss_stale_reviews: true
+        require_code_owner_reviews: false
+      required_status_checks:
+        strict: true
+        contexts:
+          - "Build and Test (Win32)"
+          - "Build and Test (x64)"
+          - "CodeQL Security Scan"
+      enforce_admins: false
+      allow_force_pushes: false
+      allow_deletions: false
+      restrictions: null

@@ -1,7 +1,7 @@
 //
 // EDPacket.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2018
+// This file is part of Envy (getenvy.com) ï¿½ 2016-2018
 // Portions copyright Shareaza 2002-2007 and PeerProject 2008-2015
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -133,6 +133,9 @@ public:
 			{ ED2K_C2C_COMPRESSEDPART_I64,	ED2K_PROTOCOL_EMULE,	FALSE,	FALSE,	L"CompFragment64" },
 			{ ED2K_C2C_REQUESTPARTS_I64,	ED2K_PROTOCOL_EMULE,	FALSE,	FALSE,	L"RequestFrag64" },
 			{ ED2K_C2C_SENDINGPART_I64,		ED2K_PROTOCOL_EMULE,	FALSE,	FALSE,	L"Fragment64" },
+			{ ED2K_C2C_MULTIPACKET_EXT2,	ED2K_PROTOCOL_EMULE,	FALSE,	FALSE,	L"MultiPacketExt2" },
+			{ ED2K_C2C_MULTIPACKETANSWER_EXT2, ED2K_PROTOCOL_EMULE,	FALSE,	FALSE,	L"MultiPacketAnswerExt2" },
+			{ ED2K_C2C_HASHSETREQUEST2,		ED2K_PROTOCOL_EMULE,	FALSE,	FALSE,	L"HashSetRequest2" },
 
 		// Client - Client, UDP
 			{ ED2K_C2C_UDP_REASKFILEPING,	ED2K_PROTOCOL_EMULE,	FALSE,	TRUE,	L"Re-AskFile" },
@@ -247,8 +250,9 @@ void CEDPacket::WriteFile(const CEnvyFile* pEnvyFile, QWORD nSize,
 {
 	ASSERT( ( pClient && ! pServer ) || ( ! pClient && pServer ) );
 
-	const CLibraryFile* pFile = bPartial ?
-		NULL : static_cast< const CLibraryFile* >( pEnvyFile );
+	const CLibraryFile* pFile = NULL;
+	if ( ! bPartial )
+		pFile = dynamic_cast< const CLibraryFile* >( pEnvyFile );
 
 	bool bDeflate = ( pServer && ( pServer->m_nTCPFlags & ED2K_SERVER_TCP_DEFLATE ) != 0 );
 	bool bUnicode = ( pServer && ( pServer->m_nTCPFlags & ED2K_SERVER_TCP_UNICODE ) != 0 ) ||
@@ -454,10 +458,10 @@ CEDPacket* CEDPacket::ReadBuffer(CBuffer* pBuffer)
 	if ( pBuffer->m_nLength - sizeof( *pHeader ) + 1 < pHeader->nLength ) return NULL;
 	CEDPacket* pPacket = CEDPacket::New( pHeader );
 	pBuffer->Remove( sizeof( *pHeader ) + pHeader->nLength - 1 );
-	if ( pPacket->Inflate() )
-		return pPacket;
-	pPacket->Release();
-	return NULL;
+
+	// Always defer inflation to allow for potential CryptLayer decryption
+	// The caller (CEDClient::OnRead) will handle decryption and inflation as needed
+	return pPacket;
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -488,7 +492,7 @@ BOOL CEDPacket::Deflate()
 	return TRUE;
 }
 
-BOOL CEDPacket::Inflate()
+BOOL CEDPacket::Inflate(DWORD nMaxOutput)
 {
 	if ( m_nEdProtocol != ED2K_PROTOCOL_EMULE_PACKED &&
 		 m_nEdProtocol != ED2K_PROTOCOL_KAD_PACKED &&
@@ -496,7 +500,7 @@ BOOL CEDPacket::Inflate()
 		return TRUE;
 
 	DWORD nOutput = 0;
-	auto_array< BYTE > pOutput( CZLib::Decompress( m_pBuffer, m_nLength, &nOutput ) );
+	auto_array< BYTE > pOutput( CZLib::Decompress( m_pBuffer, m_nLength, &nOutput, nMaxOutput ) );
 	if ( ! pOutput.get() )
 		return FALSE;
 
@@ -740,10 +744,53 @@ CString CEDPacket::ToASCII() const
 				break;
 
 			case ED2K_S2C_SERVERMESSAGE:
-				if ( m_nLength >= 4 )
+				if ( m_nLength >= 2 )
 				{
-					const WORD& nLen = *(const WORD*)( m_pBuffer );
-					strOutput.Format( L"\"%s\" (%u bytes)", (LPCTSTR)UTF8Decode( (char*)m_pBuffer + 2, nLen ), nLen );
+					try
+					{
+						// Read the length prefix (little endian)
+						const WORD nMsgLen = *(const WORD*)m_pBuffer;
+						if ( nMsgLen > 0 && nMsgLen <= m_nLength - 2 )
+						{
+							// Try to decode as UTF-8 first
+							CString strMessage = UTF8Decode( (char*)m_pBuffer + 2, nMsgLen );
+
+							// If UTF-8 decoding failed or looks wrong, try as ANSI
+							if ( strMessage.IsEmpty() || strMessage.Find( L'ï¿½' ) != -1 )
+							{
+								strMessage = UTF8Decode( (char*)m_pBuffer + 2, nMsgLen );
+								if ( strMessage.IsEmpty() || strMessage.Find( L'ï¿½' ) != -1 )
+								{
+									// Fallback to ANSI decoding
+									int nWide = MultiByteToWideChar( CP_ACP, 0, (char*)m_pBuffer + 2, nMsgLen, NULL, 0 );
+									if ( nWide > 0 )
+									{
+										strMessage.GetBuffer( nWide );
+										MultiByteToWideChar( CP_ACP, 0, (char*)m_pBuffer + 2, nMsgLen, strMessage.GetBuffer(), nWide );
+										strMessage.ReleaseBuffer( nWide );
+									}
+								}
+							}
+
+							// Truncate long messages for display
+							if ( strMessage.GetLength() > 100 )
+							{
+								strMessage = strMessage.Left( 97 ) + L"...";
+							}
+
+							// Replace newlines with spaces for single-line display
+							strMessage.Replace( L"\r\n", L" | " );
+							strMessage.Replace( L"\n", L" | " );
+							strMessage.Replace( L"\r", L" | " );
+
+							strOutput.Format( L"\"%s\"", (LPCTSTR)strMessage );
+						}
+					}
+					catch ( ... )
+					{
+						// Fallback to raw display if parsing fails
+						strOutput = L"<parse error>";
+					}
 				}
 				break;
 
@@ -1403,8 +1450,47 @@ BOOL CEDTag::Read(CEDPacket* pPacket, BOOL bUnicode)
 		}
 		else
 		{
-			theApp.Message( MSG_DEBUG, L"Unknown ED2K tag type 0x%02x", m_nType );
-			return FALSE;
+			// Unknown tag type - try to skip it gracefully
+			// Log the unknown type but try common value formats to skip the tag
+			theApp.Message( MSG_DEBUG, L"Unknown ED2K tag type 0x%02x - skipping tag value", m_nType );
+
+			// Try to skip based on common value formats
+			// Most tags use INT (4 bytes) or STRING (2-byte length + data)
+			// Try STRING format first (most common for unknown extensions)
+			if ( pPacket->GetRemaining() >= 2 )
+			{
+				DWORD nPos = pPacket->m_nPosition;
+				WORD nValueLen = pPacket->ReadShortLE();
+				if ( pPacket->GetRemaining() >= nValueLen && nValueLen < 1024 )
+				{
+					// Valid string length - skip the string data
+					pPacket->Seek( nValueLen, CPacket::seekCurrent );
+				}
+				else
+				{
+					// Invalid string length - try INT format (4 bytes)
+					pPacket->m_nPosition = nPos;
+					if ( pPacket->GetRemaining() >= 4 )
+					{
+						pPacket->Seek( 4, CPacket::seekCurrent );
+					}
+					else
+					{
+						// Not enough data for any known format - fail gracefully
+						return FALSE;
+					}
+				}
+			}
+			else if ( pPacket->GetRemaining() >= 4 )
+			{
+				// Try INT format (4 bytes)
+				pPacket->Seek( 4, CPacket::seekCurrent );
+			}
+			else
+			{
+				// Not enough data - fail gracefully
+				return FALSE;
+			}
 		}
 	}
 
@@ -1537,8 +1623,43 @@ BOOL CEDTag::Read(CFile* pFile)
 		}
 		else
 		{
-			theApp.Message( MSG_DEBUG, L"Unknown ED2K tag type 0x%02x", m_nType );
-			return FALSE;
+			// Unknown tag type - try to skip it gracefully
+			// Log the unknown type but try common value formats to skip the tag
+			theApp.Message( MSG_DEBUG, L"Unknown ED2K tag type 0x%02x - skipping tag value", m_nType );
+
+			// Try to skip based on common value formats
+			// Most tags use INT (4 bytes) or STRING (2-byte length + data)
+			// For safety, try STRING format first (2-byte length + data)
+			DWORD nPos = pFile->GetPosition();
+			WORD nValueLen = 0;
+			if ( pFile->Read( &nValueLen, sizeof( nValueLen ) ) == sizeof( nValueLen ) )
+			{
+				// Try STRING format - check if length is reasonable
+				if ( nValueLen < 1024 && pFile->GetLength() - pFile->GetPosition() >= nValueLen )
+				{
+					// Valid string length - skip the string data
+					pFile->Seek( nValueLen, CFile::current );
+				}
+				else
+				{
+					// Invalid string length - assume INT format (4 bytes total)
+					// We've already read 2 bytes, so just skip 2 more
+					pFile->Seek( nPos + 4, CFile::begin );
+				}
+			}
+			else
+			{
+				// Couldn't read length - assume INT format (4 bytes)
+				if ( pFile->GetLength() - pFile->GetPosition() >= 4 )
+				{
+					pFile->Seek( 4, CFile::current );
+				}
+				else
+				{
+					// Not enough data - fail gracefully
+					return FALSE;
+				}
+			}
 		}
 	}
 

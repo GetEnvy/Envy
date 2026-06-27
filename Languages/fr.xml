@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <skin xmlns="http://schemas.getenvy.com/Skin.xsd" version="1.0">
 
 <!-- Envy Default French Skin File -->
@@ -1588,6 +1588,11 @@
 		<separator/>
 		<item id="ID_SEARCHMONITOR_PAUSE" text="Mettre en _pause l'affichage"/>
 		<item id="ID_SEARCHMONITOR_CLEAR" text="Netto_yer le tampon"/>
+		<separator/>
+		<item id="ID_SEARCHMONITOR_FILTER" text="_Filtre avancé..."/>
+		<item id="ID_SEARCHMONITOR_FILTER_REMOVE" text="_Supprimer le filtre"/>
+		<separator/>
+		<item id="ID_SECURITY_BAN" text="_Bannir l'utilisateur final"/>
 	</menu>
 	<!-- GRAPH/TRAFFIC WINDOW -->
 	<menu name="CTrafficWnd">
@@ -1705,7 +1710,7 @@
 	<menu name="WebServices.List.Menu">
 		<item id="ID_LIBRARY_BITPRINTS_DOWNLOAD" text="_Bitprints"/>
 		<item id="ID_WEBSERVICES_MUSICBRAINZ" text="_MusicBrainz"/>
-		<item id="ID_WEBSERVICES_SHAREMONKEY" text="_ShareMonkey"/>
+		<!--item id="ID_WEBSERVICES_SHAREMONKEY" text="_ShareMonkey"-->
 	</menu>
 	<!-- PLUGIN MENUS -->
 	<menu name="ImageViewer_Context">
@@ -2629,6 +2634,8 @@
 	<tip id="ID_SEARCH_STOP" text="Stopper la réception de nouveaux résultats dans cette fenêtre."/>
 	<tip id="ID_SEARCHMONITOR_CLEAR" text="Nettoyer le tampon du moniteur de recherche."/>
 	<tip id="ID_SEARCHMONITOR_PAUSE" text="Mettre en pause le moniteur de recherche."/>
+	<tip id="ID_SEARCHMONITOR_FILTER" text="Configurer les options de filtrage avancé pour le moniteur de recherche."/>
+	<tip id="ID_SEARCHMONITOR_FILTER_REMOVE" text="Supprimer tous les filtres actifs."/>
 	<tip id="ID_SECURITY_BAN" text="Bannir l'hôte sélectionné pour la durée de cette session."/>
 	<tip id="ID_SECURITY_ADD" text="Ajouter une nouvelle règle à la chaîne de sécurité..."/>
 	<tip id="ID_SECURITY_EDIT" text="Éditer la règle de sécurité sélectionnée..."/>
@@ -2719,7 +2726,7 @@
 	<tip id="ID_WINDOW_TILE_VERT" text="Arrange les fenêtres ouvertes en tuiles verticales."/>
 	<tip id="ID_WINDOW_TOOLBAR" text="Afficher ou masquer la barre d'outils."/>
 	<tip id="ID_WEBSERVICES_LIST" text="Choisir le service Web pour chercher des informations supplémentaires sur le fichier sélectionné."/>
-	<tip id="ID_WEBSERVICES_SHAREMONKEY" text="Chercher des informations sur le fichier en utilisant le service Sharemonkey."/>
+	<!--tip id="ID_WEBSERVICES_SHAREMONKEY" text="Chercher des informations sur le fichier en utilisant le service Sharemonkey."/-->
 	<!-- PLUGIN TIPS -->
 	<tip id="PluginID_ImageViewer_BestFit" text="Mettre l'image à la taille de la fenêtre."/>
 	<tip id="PluginID_ImageViewer_FullSize" text="Mettre l'image à sa taille réelle."/>

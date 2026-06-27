@@ -1,0 +1,35 @@
+name: Pull request labeler
+
+on:
+  pull_request_target:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+# actions/labeler@v6 has no Node 24 release yet; opt in until upstream ships one.
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+
+jobs:
+  label:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Detect changed files
+        id: changes
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          COUNT=$(gh api "repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/files" --paginate | jq -s 'map(.[]) | length')
+          echo "count=$COUNT" >> "$GITHUB_OUTPUT"
+          if [ "$COUNT" = "0" ]; then
+            echo "No files changed in this pull request; labeler will be skipped."
+          fi
+
+      - uses: actions/labeler@v6
+        if: steps.changes.outputs.count != '0'
+        with:
+          configuration-path: .github/labeler.yml
+          sync-labels: true

@@ -1,7 +1,7 @@
 //
 // ZLib.h
 //
-// This file is part of Envy (getenvy.com) © 2016-2018
+// This file is part of Envy (getenvy.com) ï¿½ 2016-2018
 // Portions copyright Shareaza 2002-2007 and PeerProject 2008-2010
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -30,9 +30,9 @@ public:
 
 	// After use free memory by delete[] function:
 	static auto_array< BYTE > Compress(LPCVOID pInput, DWORD nInput, DWORD* pnOutput, DWORD nSuggest = 0);
-	static auto_array< BYTE > Decompress(LPCVOID pInput, DWORD nInput, DWORD* pnOutput);
+	static auto_array< BYTE > Decompress(LPCVOID pInput, DWORD nInput, DWORD* pnOutput, DWORD nMaxOutput = 0);
 
 	// Or, after use free memory by free() function:
 	static BYTE* Compress2(LPCVOID pInput, DWORD nInput, DWORD* pnOutput, DWORD nSuggest = 0);
-	static BYTE* Decompress2(LPCVOID pInput, DWORD nInput, DWORD* pnOutput);
+	static BYTE* Decompress2(LPCVOID pInput, DWORD nInput, DWORD* pnOutput, DWORD nMaxOutput = 0);
 };

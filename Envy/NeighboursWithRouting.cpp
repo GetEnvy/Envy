@@ -1,7 +1,7 @@
 //
 // NeighboursWithRouting.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2018
+// This file is part of Envy (getenvy.com) ï¿½ 2016-2018
 // Portions copyright Shareaza 2002-2007 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -28,6 +28,7 @@
 #include "Network.h"
 #include "Datagrams.h"
 #include "QuerySearch.h"
+#include "QueryKeys.h"
 #include "G1Packet.h"
 #include "G2Packet.h"
 #include "Statistics.h"
@@ -104,16 +105,32 @@ bool CNeighboursWithRouting::CheckQuery(const CQuerySearch* pSearch)
 	pThisQuery.m_pAddress = pSearch->m_pEndpoint.sin_addr;
 	pThisQuery.m_nTime = GetTickCount();
 
+	// Optimize: Collect expired items first, then remove them in reverse order
+	// This avoids O(nÂ²) complexity from RemoveAt() on forward iteration
+	CList<POSITION> expiredPositions;
+
 	for ( POSITION pos = m_pQueries.GetHeadPosition(); pos; )
 	{
 		POSITION posOrig = pos;
 		const CIPTime& pLastQuery = m_pQueries.GetNext( pos );
 
 		if ( pThisQuery.m_nTime >= pLastQuery.m_nTime + 5 * 1000 )	// Maximum 1 query per 5 seconds
-			m_pQueries.RemoveAt( posOrig );		// Remove old
+		{
+			// Collect expired positions for batch removal
+			expiredPositions.AddTail( posOrig );
+		}
 		else if ( pThisQuery.m_pAddress.s_addr == pLastQuery.m_pAddress.s_addr )
+		{
+			// Found matching query - too early, remove expired items and return
+			for ( POSITION posExp = expiredPositions.GetHeadPosition(); posExp; )
+				m_pQueries.RemoveAt( expiredPositions.GetNext( posExp ) );
 			return false;	// Too early
+		}
 	}
+
+	// Remove all expired items
+	for ( POSITION posExp = expiredPositions.GetHeadPosition(); posExp; )
+		m_pQueries.RemoveAt( expiredPositions.GetNext( posExp ) );
 
 	m_pQueries.AddHead( pThisQuery );
 
@@ -197,9 +214,24 @@ int CNeighboursWithRouting::RouteQuery(const CQuerySearch* pSearch, CPacket* pPa
 				// This isn't a Gnutella2 packet
 				if ( pG2 == NULL )
 				{
-					// Turn it into one
-					//pG2 = pG2Q1 = CG2Packet::New( G2_PACKET_QUERY_WRAP, pG1, Settings.Gnutella1.TranslateTTL );
-					theApp.Message( MSG_ERROR, L"CNeighboursWithRouting::RouteQuery not relaying wrapped packet to leaf" );
+					// Convert G1 packet to G2 format
+					SOCKADDR_IN* pUDP = NULL;
+					DWORD nKey = 0;
+
+					// If not firewalled, use UDP endpoint
+					if ( ! Network.IsFirewalled( CHECK_UDP ) )
+					{
+						pUDP = &Network.m_pHost;
+						nKey = Network.QueryKeys->Create( Network.m_pHost.sin_addr.S_un.S_addr );
+					}
+
+					pG2 = pSearch->ToG2Packet( pUDP, nKey );
+					if ( pG2 == NULL )
+					{
+						theApp.Message( MSG_ERROR, L"CNeighboursWithRouting::RouteQuery failed to convert G1 packet to G2 for leaf" );
+						continue;
+					}
+					pG2Q1 = pG2;
 				}
 
 				// Send the packet to this remote computer
@@ -212,9 +244,24 @@ int CNeighboursWithRouting::RouteQuery(const CQuerySearch* pSearch, CPacket* pPa
 				{
 					if ( pG2 == NULL )	// In fact, it's not a Gnutella2 packet at all
 					{
-						// Turn it into one
-						//pG2 = pG2Q1 = CG2Packet::New( G2_PACKET_QUERY_WRAP, pG1, Settings.Gnutella1.TranslateTTL );
-						theApp.Message( MSG_ERROR, L"CNeighboursWithRouting::RouteQuery not relaying wrapped packet to hub" );
+						// Convert G1 packet to G2 format
+						SOCKADDR_IN* pUDP = NULL;
+						DWORD nKey = 0;
+
+						// If not firewalled, use UDP endpoint
+						if ( ! Network.IsFirewalled( CHECK_UDP ) )
+						{
+							pUDP = &Network.m_pHost;
+							nKey = Network.QueryKeys->Create( Network.m_pHost.sin_addr.S_un.S_addr );
+						}
+
+						pG2 = pSearch->ToG2Packet( pUDP, nKey );
+						if ( pG2 == NULL )
+						{
+							theApp.Message( MSG_ERROR, L"CNeighboursWithRouting::RouteQuery failed to convert G1 packet to G2 for hub" );
+							continue;
+						}
+						pG2Q1 = pG2;
 					}
 
 					// Send the packet to this remote computer

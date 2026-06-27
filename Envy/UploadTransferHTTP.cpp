@@ -1,7 +1,7 @@
 //
 // UploadTransferHTTP.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2018
+// This file is part of Envy (getenvy.com) ù 2016-2018
 // Portions copyright Shareaza 2008 and PeerProject 2008-2015
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -20,6 +20,7 @@
 #include "Settings.h"
 #include "Envy.h"
 #include "UploadTransferHTTP.h"
+#include "RemoteSecurity.h"
 
 #include "Uploads.h"
 #include "UploadFile.h"
@@ -459,6 +460,16 @@ BOOL CUploadTransferHTTP::OnHeadersComplete()
 
 		if ( Settings.Remote.Enable )
 		{
+			// Security: Check IP access policy using new RemoteSecurity class
+			if ( ! CRemoteSecurity::IsRemoteAccessAllowed( m_pHost.sin_addr ) )
+			{
+				// Reject connection based on IP access policy
+				theApp.Message( MSG_ERROR, L"Remote interface access denied from %s (IP access policy violation)", (LPCTSTR)m_sAddress );
+				SendResponse( IDR_HTML_FILENOTFOUND );
+				DelayClose( IDS_CONNECTION_CLOSED );
+				return TRUE;
+			}
+
 			Prefix( _P("GET /remote/ HTTP/1.1\r\n\r\n") );
 			new CRemote( this );
 			Remove( FALSE );

@@ -1,7 +1,7 @@
-//
+ï»¿//
 // UploadTransferED2K.h
 //
-// This file is part of Envy (getenvy.com) © 2016-2018
+// This file is part of Envy (getenvy.com) ï¿½ 2016-2018
 // Portions copyright Shareaza 2002-2007 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -52,6 +52,8 @@ public:
 	BOOL	OnRunEx(DWORD tNow);
 	BOOL	OnQueueRelease(CEDPacket* pPacket);
 	BOOL	OnRequestParts(CEDPacket* pPacket);
+	BOOL	OnRequestParts64(CEDPacket* pPacket);	// 64bit Large file support
+	BOOL	OnStartUpload(CEDPacket* pPacket);
 	BOOL	OnReask();
 protected:
 	void	Cleanup(BOOL bDequeue = TRUE);
@@ -62,7 +64,4 @@ protected:
 	BOOL	StartNextRequest();
 	BOOL	DispatchNextChunk();
 	BOOL	CheckFinishedRequest();
-
-public:
-	BOOL	OnRequestParts64(CEDPacket* pPacket);		// 64bit Large file support
 };

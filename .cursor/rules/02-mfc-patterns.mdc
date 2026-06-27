@@ -1,0 +1,33 @@
+---
+description: MFC patterns + mandatory GUI resource de-dup gate
+globs: ["**/*.cpp", "**/*.h", "**/*.hpp", "**/*.rc", "**/Resource.h"]
+alwaysApply: false
+---
+
+# MFC patterns (Envy)
+
+## UI/threading hard rules
+- Never block the UI thread on network/disk operations.
+- Never touch UI controls from worker threads. Use `PostMessage` / message handlers.
+- Use existing synchronization patterns (`CCriticalSectionPtr`, `CQuickLock`, `CLocked<T>`) for shared state.
+
+## Message maps
+- Use `DECLARE_MESSAGE_MAP()` / `BEGIN_MESSAGE_MAP` consistently.
+- Handler naming: `On...` (`afx_msg void OnSize(...)`, `afx_msg LRESULT On...(...)`).
+
+## Strings + Unicode
+- Prefer `CString` and `_T("...")` for UI/MFC-facing strings.
+- Treat all paths/strings as Unicode (UTF-16).
+
+## GUI resource de-duplication (non-negotiable)
+Before adding ANY new dialog/control/menu/toolbar/accelerator/icon/string-table entry:
+- Search existing resources by **ID**, **symbolic name**, and **caption text**.
+- Search code for usage (`IDD_*`, `ID_*`, `GetDlgItem`, `DDX_*`, message map IDs).
+- Prefer extending/reusing an existing resource.
+
+If a new resource is unavoidable, you MUST provide (in your output):
+- Existing resources checked (IDs/names/text searched)
+- Chosen free slot / new ID (and why it won’t collide)
+- Where used (file path + class/function)
+
+If you cannot verify existing resources: do NOT create the new resource yet.

@@ -1,7 +1,7 @@
 //
 // WndMain.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2020
+// This file is part of Envy (getenvy.com) ï¿½ 2016-2020
 // Portions copyright Shareaza 2002-2008 and PeerProject 2008-2016
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -25,6 +25,7 @@
 #include "Network.h"
 #include "Handshake.h"
 #include "HostCache.h"
+#include "Kademlia.h"
 #include "Neighbours.h"
 #include "Transfers.h"
 #include "Downloads.h"
@@ -921,6 +922,11 @@ void CMainWnd::OnTimer(UINT_PTR nIDEvent)
 
 		// Scheduler
 		Scheduler.CheckSchedule();
+
+		// Kad2 maintenance
+		if ( Settings.eDonkey.EnableKad ) {
+			Kademlia.OnTimer();
+		}
 
 		if ( tNow > tLast60SecInterval + 60 )
 		{

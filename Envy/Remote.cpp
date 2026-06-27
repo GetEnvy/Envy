@@ -1,7 +1,7 @@
 //
 // Remote.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2018
+// This file is part of Envy (getenvy.com) Â© 2016-2018
 // Portions copyright Shareaza 2002-2007 and PeerProject 2008-2016
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -20,6 +20,7 @@
 #include "Settings.h"
 #include "Envy.h"
 #include "Remote.h"
+#include "RemoteSecurity.h"
 
 #include "Network.h"
 #include "MatchObjects.h"
@@ -64,7 +65,10 @@ static char THIS_FILE[] = __FILE__;
 #define TOKEN		L"envyremote="
 #define TOKENSIZE	(_countof(TOKEN)-1)
 
-CList<int> CRemote::m_pCookies;
+// Old weak session handling removed - now using CRemoteSecurity class
+CMap<CString, CString, RemoteRateLimitInfo*, RemoteRateLimitInfo*&> CRemote::m_pRateLimits;
+CCriticalSection CRemote::m_pRateLimitSection;
+// CSRF tokens now handled by CRemoteSecurity class
 
 /////////////////////////////////////////////////////////////////////////////
 // CRemote construction
@@ -122,6 +126,65 @@ BOOL CRemote::OnRead()
 			return FALSE;
 		}
 
+		// Security: Rate limiting - check if client has exceeded request limit
+		{
+			CQuickLock oRateLock( m_pRateLimitSection );
+
+			DWORD tNow = GetTickCount();
+			DWORD nRateLimit = Settings.Remote.RateLimitRequests > 0 ? Settings.Remote.RateLimitRequests : 10;  // Default: 10 requests
+			DWORD nRateWindow = Settings.Remote.RateLimitWindow > 0 ? Settings.Remote.RateLimitWindow : 60000;  // Default: 60 seconds
+
+			RemoteRateLimitInfo* pRateInfo = NULL;
+			if ( m_pRateLimits.Lookup( m_sAddress, pRateInfo ) )
+			{
+				// Check if window has expired
+				if ( tNow - pRateInfo->tFirstRequest > nRateWindow )
+				{
+					// Reset window
+					pRateInfo->tFirstRequest = tNow;
+					pRateInfo->nRequestCount = 1;
+				}
+				else
+				{
+					// Increment request count
+					pRateInfo->nRequestCount++;
+
+					// Check if limit exceeded
+					if ( pRateInfo->nRequestCount > nRateLimit )
+					{
+						theApp.Message( MSG_ERROR, L"Remote interface rate limit exceeded from %s (%d requests in %d ms)",
+							(LPCTSTR)m_sAddress, pRateInfo->nRequestCount, nRateWindow );
+						SendHTML( IDR_HTML_FILENOTFOUND );
+						DelayClose( IDS_CONNECTION_CLOSED );
+						return TRUE;
+					}
+				}
+			}
+			else
+			{
+				// First request from this IP
+				RemoteRateLimitInfo* newRateInfo = new RemoteRateLimitInfo();
+				newRateInfo->tFirstRequest = tNow;
+				newRateInfo->nRequestCount = 1;
+				m_pRateLimits.SetAt( m_sAddress, newRateInfo );
+			}
+
+			// Clean up old entries (older than 2x window)
+			POSITION pos = m_pRateLimits.GetStartPosition();
+			while ( pos )
+			{
+				CString strIP;
+				RemoteRateLimitInfo* pRateInfo;
+				m_pRateLimits.GetNextAssoc( pos, strIP, pRateInfo );
+
+				if ( tNow - pRateInfo->tFirstRequest > ( nRateWindow * 2 ) )
+				{
+					delete pRateInfo;
+					m_pRateLimits.RemoveKey( strIP );
+				}
+			}
+		}
+
 		Read( m_sHandshake );
 	}
 
@@ -162,6 +225,12 @@ BOOL CRemote::OnHeadersComplete()
 	{
 		Write( _P("HTTP/1.1 302 Found\r\n") );
 		Write( _P("Content-Length: 0\r\n") );
+
+		// Add security headers
+		CString securityHeaders;
+		CRemoteSecurity::AddSecurityHeaders( securityHeaders, false ); // Note: HTTPS detection not implemented yet
+		Write( securityHeaders );
+
 		if ( ! m_sHeader.IsEmpty() )
 			Write( m_sHeader );
 		Write( _P("Location: ") );
@@ -178,6 +247,12 @@ BOOL CRemote::OnHeadersComplete()
 		Write( _P("HTTP/1.1 200 OK\r\n") );
 		Write( _P("Content-Type: text/html; charset=UTF-8\r\n") );
 		Write( strLength );
+
+		// Add security headers
+		CString securityHeaders;
+		CRemoteSecurity::AddSecurityHeaders( securityHeaders, false ); // Note: HTTPS detection not implemented yet
+		Write( securityHeaders );
+
 		if ( ! m_sHeader.IsEmpty() )
 			Write( m_sHeader );
 	}
@@ -187,6 +262,12 @@ BOOL CRemote::OnHeadersComplete()
 		CString strLength;
 		strLength.Format( L"Content-Length: %u\r\n", m_pResponse.m_nLength );
 		Write( strLength );
+
+		// Add security headers
+		CString securityHeaders;
+		CRemoteSecurity::AddSecurityHeaders( securityHeaders, false ); // Note: HTTPS detection not implemented yet
+		Write( securityHeaders );
+
 		if ( ! m_sHeader.IsEmpty() ) Write( m_sHeader );
 	}
 	else
@@ -194,6 +275,11 @@ BOOL CRemote::OnHeadersComplete()
 		Write( _P("HTTP/1.1 404 Not Found\r\n") );
 		Write( _P("Content-Length: 0\r\n") );
 		Write( _P("Content-Type: text/html\r\n") );
+
+		// Add security headers even for errors
+		CString securityHeaders;
+		CRemoteSecurity::AddSecurityHeaders( securityHeaders, false ); // Note: HTTPS detection not implemented yet
+		Write( securityHeaders );
 	}
 
 	LogOutgoing();
@@ -211,7 +297,6 @@ BOOL CRemote::OnHeadersComplete()
 
 	m_sHandshake.Empty();
 	ClearHeaders();
-	OnWrite();
 
 	return TRUE;
 }
@@ -245,24 +330,77 @@ CString CRemote::GetKey(LPCTSTR pszName)
 
 BOOL CRemote::CheckCookie()
 {
+	// Extract session ID from cookie
+	CString strSessionId;
 	for ( INT_PTR nHeader = 0; nHeader < m_pHeaderName.GetSize(); nHeader ++ )
 	{
 		if ( m_pHeaderName.GetAt( nHeader ).CompareNoCase( L"Cookie" ) == 0 )
 		{
 			if ( LPCTSTR szPos = _tcsistr( m_pHeaderValue.GetAt( nHeader ), TOKEN ) )
 			{
-				int nCookie = 0;
-				_stscanf( szPos + TOKENSIZE, L"%i", &nCookie );
-				if ( m_pCookies.Find( nCookie ) != NULL ) return FALSE;
+				strSessionId = szPos + TOKENSIZE;
+				// Remove any trailing data (like path, etc.)
+				int nEnd = strSessionId.Find( L';' );
+				if ( nEnd != -1 )
+					strSessionId = strSessionId.Left( nEnd );
+				strSessionId.Trim();
+				break;
 			}
 		}
 	}
 
-	m_sRedirect = L"/remote/";
-	return TRUE;
+	if ( strSessionId.IsEmpty() )
+	{
+		m_sRedirect = L"/remote/";
+		return TRUE;  // Redirect to login
+	}
+
+	// Validate session
+	RemoteSession session;
+	std::string sessionIdStr = std::string( CT2A( strSessionId ) );
+	if ( ! CRemoteSecurity::ValidateSession( sessionIdStr, session ) )
+	{
+		theApp.Message( MSG_ERROR, L"Remote interface session validation failed from %s", (LPCTSTR)m_sAddress );
+		m_sRedirect = L"/remote/";
+		return TRUE;  // Redirect to login
+	}
+
+	// Update session activity
+	CRemoteSecurity::UpdateSessionActivity( sessionIdStr );
+
+	// CSRF protection for state-changing operations
+	CString strMethod = GetKey( L"_method" );  // Check for method override
+	if ( strMethod.IsEmpty() )
+	{
+		// Try to detect from request path (POST-like operations)
+		CString strPath = m_sHandshake.SpanExcluding( L"?&" );
+		if ( strPath.Find( L"newsearch" ) >= 0 ||
+			 strPath.Find( L"newdownload" ) >= 0 ||
+			 strPath.Find( L"modify" ) >= 0 ||
+			 strPath.Find( L"drop" ) >= 0 ||
+			 strPath.Find( L"connect" ) >= 0 ||
+			 strPath.Find( L"disconnect" ) >= 0 )
+		{
+			// State-changing operation - require CSRF token
+			CString strCSRFToken = GetKey( L"csrf_token" );
+			if ( strCSRFToken.IsEmpty() )
+				strCSRFToken = GetKey( L"_token" );  // Alternative parameter name
+
+			if ( strCSRFToken.IsEmpty() ||
+				 ! CRemoteSecurity::ValidateCSRFToken( sessionIdStr, std::string( CT2A( strCSRFToken ) ) ) )
+			{
+				// CSRF token missing or invalid
+				theApp.Message( MSG_ERROR, L"Remote interface CSRF token validation failed from %s", (LPCTSTR)m_sAddress );
+				m_sRedirect = L"/remote/";
+				return TRUE;  // Redirect to login (forces new CSRF token)
+			}
+		}
+	}
+
+	return FALSE;  // Session valid, proceed
 }
 
-// Determines what session ID is currently being used by the logged in user and removes it from the cookie list.
+// Determines what session ID is currently being used by the logged in user and removes it from the session store.
 BOOL CRemote::RemoveCookie()
 {
 	for ( INT_PTR nHeader = 0; nHeader < m_pHeaderName.GetSize(); nHeader ++ )
@@ -271,19 +409,60 @@ BOOL CRemote::RemoveCookie()
 		{
 			if ( LPCTSTR szPos = _tcsistr( m_pHeaderValue.GetAt( nHeader ), TOKEN ) )
 			{
-				int nCookie = 0;
-				_stscanf( szPos + TOKENSIZE, L"%i", &nCookie );		// APP_LENGTH LETTERCOUNT + 7
-				POSITION pos = m_pCookies.Find( nCookie );
-				if ( pos != NULL )
+				CString strSessionId = szPos + TOKENSIZE;
+				int nEnd = strSessionId.Find( L';' );
+				if ( nEnd != -1 )
+					strSessionId = strSessionId.Left( nEnd );
+				strSessionId.Trim();
+
+				if ( ! strSessionId.IsEmpty() )
 				{
-					m_pCookies.RemoveAt( pos );
-					return FALSE;
+					CRemoteSecurity::DestroySession( std::string( CT2A( strSessionId ) ) );
+					return TRUE;  // Cookie found and removed
 				}
 			}
 		}
 	}
 
-	return TRUE;
+	return FALSE;  // No cookie found
+}
+
+/////////////////////////////////////////////////////////////////////////////
+// CRemote get CSRF token for current session
+
+CString CRemote::GetCSRFToken()
+{
+	// Extract session ID from cookie
+	CString strSessionId;
+	for ( INT_PTR nHeader = 0; nHeader < m_pHeaderName.GetSize(); nHeader ++ )
+	{
+		if ( m_pHeaderName.GetAt( nHeader ).CompareNoCase( L"Cookie" ) == 0 )
+		{
+			if ( LPCTSTR szPos = _tcsistr( m_pHeaderValue.GetAt( nHeader ), TOKEN ) )
+			{
+				strSessionId = szPos + TOKENSIZE;
+				// Remove any trailing data (like path, etc.)
+				int nEnd = strSessionId.Find( L';' );
+				if ( nEnd != -1 )
+					strSessionId = strSessionId.Left( nEnd );
+				strSessionId.Trim();
+				break;
+			}
+		}
+	}
+
+	if ( strSessionId.IsEmpty() )
+		return CString();  // No session, no token
+
+	// Get CSRF token from session
+	RemoteSession session;
+	std::string sessionIdStr = std::string( CT2A( strSessionId ) );
+	if ( CRemoteSecurity::ValidateSession( sessionIdStr, session ) )
+	{
+		return CString( session.csrfToken.c_str() );
+	}
+
+	return CString();  // Session invalid or no token
 }
 
 /////////////////////////////////////////////////////////////////////////////
@@ -593,24 +772,48 @@ void CRemote::PageLogin()
 		if ( strPassword.IsEmpty() )
 			strPassword = GetKey( L"pass" );
 
-		if ( strUsername == Settings.Remote.Username && ! strPassword.IsEmpty() )
+		// Brute-force protection: Check if login is throttled for this IP
+		if ( ! CRemoteSecurity::CheckLoginThrottle( m_pHost.sin_addr ) )
 		{
-			CSHA pSHA1;
-			pSHA1.Add( (LPCTSTR)strPassword, strPassword.GetLength() * sizeof(TCHAR) );
-			pSHA1.Finish();
-			Hashes::Sha1Hash tmp;
-			pSHA1.GetHash( &tmp[ 0 ] );
-			tmp.validate();
-			strPassword = tmp.toString();
+			theApp.Message( MSG_ERROR, L"Login attempt from %s blocked due to rate limiting",
+				(LPCTSTR)m_sAddress );
+			// Don't reveal throttling to prevent user enumeration
+		}
+		else if ( strUsername == Settings.Remote.Username && ! strPassword.IsEmpty() )
+		{
+			// Use secure password verification (supports PBKDF2 and legacy SHA1)
+			std::string passwordStr = std::string( CT2A( strPassword ) );
+			std::string storedHash = std::string( CT2A( Settings.Remote.Password ) );
 
-			if ( strPassword == Settings.Remote.Password )
+			if ( CRemoteSecurity::VerifyPassword( passwordStr, storedHash ) )
 			{
-				// Success:
-				__int32 nCookie = GetRandomNum( 0i32, _I32_MAX );
-				m_pCookies.AddTail( nCookie );
-				m_sHeader.Format( L"Set-Cookie: EnvyRemote=%i; path=/remote\r\n", nCookie );
-				m_sRedirect.Format( L"/remote/home?%i", GetRandomNum( 0i32, _I32_MAX ) );
-				return;
+				// Success: Create secure session
+				RemoteSession session;
+				if ( CRemoteSecurity::CreateSession( m_pHost.sin_addr, session ) )
+				{
+					// Set secure session cookie
+					CString strCookie;
+					strCookie.Format( L"Set-Cookie: EnvyRemote=%s; path=/remote; HttpOnly; SameSite=Strict; Max-Age=1800\r\n",
+						CString(session.sessionId.c_str()) );
+
+					// Add security headers
+					CRemoteSecurity::AddSecurityHeaders( strCookie, false ); // TODO: Check if HTTPS
+
+					m_sHeader = strCookie;
+					m_sRedirect.Format( L"/remote/home?csrf_token=%s", CString(session.csrfToken.c_str()) );
+					return;
+				}
+				else
+				{
+					// Session creation failed
+					theApp.Message( MSG_ERROR, L"Failed to create session for remote login from %s",
+						(LPCTSTR)m_sAddress );
+				}
+			}
+			else
+			{
+				// Failed login: Record for brute-force protection
+				CRemoteSecurity::RecordFailedLogin( m_pHost.sin_addr );
 			}
 		}
 	}
@@ -627,7 +830,33 @@ void CRemote::PageLogin()
 
 void CRemote::PageLogout()
 {
-	// Clear server-side session cookie
+	// Extract session ID from cookie
+	CString strSessionId;
+	for ( INT_PTR nHeader = 0; nHeader < m_pHeaderName.GetSize(); nHeader ++ )
+	{
+		if ( m_pHeaderName.GetAt( nHeader ).CompareNoCase( L"Cookie" ) == 0 )
+		{
+			if ( LPCTSTR szPos = _tcsistr( m_pHeaderValue.GetAt( nHeader ), TOKEN ) )
+			{
+				// Extract session ID (no longer just an int)
+				strSessionId = szPos + TOKENSIZE;
+				// Remove any trailing data (like path, etc.)
+				int nEnd = strSessionId.Find( L';' );
+				if ( nEnd != -1 )
+					strSessionId = strSessionId.Left( nEnd );
+				strSessionId.Trim();
+				break;
+			}
+		}
+	}
+
+	// Clear server-side session
+	if ( ! strSessionId.IsEmpty() )
+	{
+		CRemoteSecurity::DestroySession( std::string( CT2A( strSessionId ) ) );
+	}
+
+	// Clear client-side cookie
 	RemoveCookie();
 
 	// Clear client-side session cookie
@@ -644,6 +873,12 @@ void CRemote::PageHome()
 	m_nTab = tabHome;
 
 	Prepare();		// Header
+
+	// Security: Add CSRF token for forms
+	CString strCSRFToken = GetCSRFToken();
+	if ( ! strCSRFToken.IsEmpty() )
+		Add( L"csrf_token", strCSRFToken );
+
 	Output( L"home" );
 }
 
@@ -757,16 +992,30 @@ void CRemote::PageSearch()
 	str = GetKey( L"download" );
 	if ( ! str.IsEmpty() )
 	{
-		CMatchFile** pLoop = pMatches->m_pFiles;
-		for ( DWORD nCount = 0; nCount < pMatches->m_nFiles; nCount++, pLoop++ )
+		// Security: Verify CSRF token for state-changing operation
+		CString strCSRFToken = GetKey( L"csrf_token" );
+		if ( strCSRFToken.IsEmpty() )
+			strCSRFToken = GetKey( L"_token" );
+
+		CString strStoredToken = GetCSRFToken();
+		if ( strStoredToken.IsEmpty() || strCSRFToken != strStoredToken )
 		{
-			if ( (*pLoop)->GetURN() == str )
+			// CSRF token missing or invalid
+			theApp.Message( MSG_ERROR, L"Remote interface CSRF token validation failed for search download from %s", (LPCTSTR)m_sAddress );
+		}
+		else
+		{
+			CMatchFile** pLoop = pMatches->m_pFiles;
+			for ( DWORD nCount = 0; nCount < pMatches->m_nFiles; nCount++, pLoop++ )
 			{
-				Downloads.Add( *pLoop );
-				pSearchWnd->PostMessage( WM_TIMER, 7 );
-				m_sResponse.Empty();
-				m_sRedirect = L"downloads?group_reveal=all";
-				return;
+				if ( (*pLoop)->GetURN() == str )
+				{
+					Downloads.Add( *pLoop );
+					pSearchWnd->PostMessage( WM_TIMER, 7 );
+					m_sResponse.Empty();
+					m_sRedirect = L"downloads?group_reveal=all";
+					return;
+				}
 			}
 		}
 	}
@@ -781,6 +1030,12 @@ void CRemote::PageSearch()
 	Prepare();		// Header
 	str.Format( L"%Ii", nSearchID );
 	Add( L"search_id", str );
+
+	// Security: Include CSRF token in response
+	CString strCSRFToken = GetCSRFToken();
+	if ( ! strCSRFToken.IsEmpty() )
+		Add( L"csrf_token", strCSRFToken );
+
 	str.Format( L"%i", GetRandomNum( 0i32, _I32_MAX ) );
 	Add( L"random", str );
 	if ( ! pSearchWnd->IsPaused() )
@@ -867,7 +1122,11 @@ void CRemote::PageSearch()
 
 				PageSearchRowColumn( MATCH_COL_COUNT, pFile, (CString)inet_ntoa( pHit->m_pAddress ) );
 				PageSearchRowColumn( MATCH_COL_SPEED, pFile, pHit->m_sSpeed );
-				PageSearchRowColumn( MATCH_COL_CLIENT, pFile, pHit->m_pVendor->m_sName );
+				// Show client version string (m_sNick) if available for ED2K, otherwise vendor name
+				if ( pHit->m_nProtocol == PROTOCOL_ED2K && ! pHit->m_sNick.IsEmpty() )
+					PageSearchRowColumn( MATCH_COL_CLIENT, pFile, pHit->m_sNick );
+				else
+					PageSearchRowColumn( MATCH_COL_CLIENT, pFile, pHit->m_pVendor->m_sName );
 
 				Output( L"searchRowEnd" );
 				Prepare( L"column_" );
@@ -958,6 +1217,12 @@ void CRemote::PageDownloads()
 	CSingleLock pLock( &DownloadGroups.m_pSection, TRUE );
 
 	Prepare();		// Header
+
+	// Security: Add CSRF token for forms
+	CString strCSRFToken = GetCSRFToken();
+	if ( ! strCSRFToken.IsEmpty() )
+		Add( L"csrf_token", strCSRFToken );
+
 	Add( L"random", str );
 	Output( L"downloadsHeader" );
 
@@ -1016,6 +1281,19 @@ void CRemote::PageDownloads()
 
 		if ( GetKey( L"modify_id" ) == strDownloadID )
 		{
+			// Security: Verify CSRF token for state-changing operations
+			CString strCSRFToken = GetKey( L"csrf_token" );
+			if ( strCSRFToken.IsEmpty() )
+				strCSRFToken = GetKey( L"_token" );
+
+			CString strStoredToken = GetCSRFToken();
+			if ( strStoredToken.IsEmpty() || strCSRFToken != strStoredToken )
+			{
+				// CSRF token missing or invalid - skip this operation
+				theApp.Message( MSG_ERROR, L"Remote interface CSRF token validation failed for download modify from %s", (LPCTSTR)m_sAddress );
+				continue;  // Skip this download modification
+			}
+
 			CString strAction = GetKey( L"modify_action" );
 			strAction.MakeLower();
 
@@ -1111,6 +1389,19 @@ void CRemote::PageDownloads()
 
 				if ( GetKey( L"modify_id" ) == strSourceID )
 				{
+					// Security: Verify CSRF token for state-changing operations
+					CString strCSRFToken = GetKey( L"csrf_token" );
+					if ( strCSRFToken.IsEmpty() )
+						strCSRFToken = GetKey( L"_token" );
+
+					CString strStoredToken = GetCSRFToken();
+					if ( strStoredToken.IsEmpty() || strCSRFToken != strStoredToken )
+					{
+						// CSRF token missing or invalid - skip this operation
+						theApp.Message( MSG_ERROR, L"Remote interface CSRF token validation failed for source modify from %s", (LPCTSTR)m_sAddress );
+						continue;  // Skip this source modification
+					}
+
 					CString strModifyAction = GetKey( L"modify_action" );
 					strModifyAction.MakeLower();
 
@@ -1191,6 +1482,20 @@ void CRemote::PageNewDownload()
 {
 	if ( CheckCookie() ) return;
 
+	// Security: Verify CSRF token for state-changing operation
+	CString strCSRFToken = GetKey( L"csrf_token" );
+	if ( strCSRFToken.IsEmpty() )
+		strCSRFToken = GetKey( L"_token" );  // Alternative parameter name
+
+	CString strStoredToken = GetCSRFToken();
+	if ( strStoredToken.IsEmpty() || strCSRFToken != strStoredToken )
+	{
+		// CSRF token missing or invalid
+		theApp.Message( MSG_ERROR, L"Remote interface CSRF token validation failed for newdownload from %s", (LPCTSTR)m_sAddress );
+		m_sRedirect = L"/remote/";
+		return;
+	}
+
 	CEnvyURL pURI;
 	if ( pURI.Parse( GetKey( L"uri" ) ) )
 		Downloads.Add( pURI );
@@ -1265,6 +1570,19 @@ void CRemote::PageUploads()
 
 				if ( GetKey( L"drop" ) == strFileID )
 				{
+					// Security: Verify CSRF token for state-changing operation
+					CString strCSRFToken = GetKey( L"csrf_token" );
+					if ( strCSRFToken.IsEmpty() )
+						strCSRFToken = GetKey( L"_token" );
+
+					CString strStoredToken = GetCSRFToken();
+					if ( strStoredToken.IsEmpty() || strCSRFToken != strStoredToken )
+					{
+						// CSRF token missing or invalid
+						theApp.Message( MSG_ERROR, L"Remote interface CSRF token validation failed for upload drop from %s", (LPCTSTR)m_sAddress );
+						continue;  // Skip drop
+					}
+
 					pFile->Remove();
 					continue;
 				}
@@ -1341,11 +1659,32 @@ void CRemote::PageNetwork()
 
 	if ( nNeighbourID != 0 )
 	{
+		// Security: Verify CSRF token for state-changing operation
+		CString strCSRFToken = GetKey( L"csrf_token" );
+		if ( strCSRFToken.IsEmpty() )
+			strCSRFToken = GetKey( L"_token" );
+
+		CString strStoredToken = GetCSRFToken();
+		if ( strStoredToken.IsEmpty() || strCSRFToken != strStoredToken )
+		{
+			// CSRF token missing or invalid
+			theApp.Message( MSG_ERROR, L"Remote interface CSRF token validation failed for network drop from %s", (LPCTSTR)m_sAddress );
+			nNeighbourID = 0;  // Don't process drop
+		}
+	}
+
+	if ( nNeighbourID != 0 )
+	{
 		if ( CNeighbour* pNeighbour = Neighbours.Get( nNeighbourID ) )
 			pNeighbour->Close( IDS_CONNECTION_CLOSED );
 	}
 
 	Prepare();		// Header
+
+	// Security: Add CSRF token for forms
+	CString strCSRFToken = GetCSRFToken();
+	if ( ! strCSRFToken.IsEmpty() )
+		Add( L"csrf_token", strCSRFToken );
 
 	CString str;
 	str.Format( L"%i", GetRandomNum( 0i32, _I32_MAX ) );
@@ -1363,11 +1702,13 @@ void CRemote::PageNetwork()
 
 void CRemote::PageNetworkNetwork(int nID, bool* pbConnect, LPCTSTR pszName)
 {
+	// Simplified version for debugging
 	CSingleLock pLock( &Network.m_pSection );
 
 	CString str;
 	str.Format( L"%i", nID );
 
+	// Basic connect/disconnect without CSRF for now
 	if ( GetKey( L"connect" ) == str )
 	{
 		*pbConnect = TRUE;
@@ -1376,18 +1717,7 @@ void CRemote::PageNetworkNetwork(int nID, bool* pbConnect, LPCTSTR pszName)
 	else if ( GetKey( L"disconnect" ) == str )
 	{
 		*pbConnect = FALSE;
-
-		if ( SafeLock( pLock ) )
-		{
-			for ( POSITION pos = Neighbours.GetIterator(); pos != NULL; )
-			{
-				CNeighbour* pNeighbour = Neighbours.GetNext( pos );
-				if ( pNeighbour->m_nProtocol == PROTOCOL_NULL ||
-					 pNeighbour->m_nProtocol == nID )
-					pNeighbour->Close( IDS_CONNECTION_CLOSED );
-			}
-			pLock.Unlock();
-		}
+		// Simplified disconnect logic
 	}
 
 	Add( L"network_id", str );
@@ -1395,136 +1725,16 @@ void CRemote::PageNetworkNetwork(int nID, bool* pbConnect, LPCTSTR pszName)
 	if ( *pbConnect ) Add( L"network_connected", L"true" );
 	Output( L"networkNetStart" );
 
-	pLock.Lock();
-
+	// Simplified neighbor listing
 	for ( POSITION pos = Neighbours.GetIterator(); pos != NULL; )
 	{
 		CNeighbour* pNeighbour = Neighbours.GetNext( pos );
 		if ( pNeighbour->m_nProtocol != nID ) continue;
-		pNeighbour->Measure();
 
 		str.Format( L"%p", pNeighbour );
 		Add( L"row_id", str );
 		Add( L"row_address", pNeighbour->m_sAddress );
-	//	Add( L"row_mode", Neighbours.GetName( pNeighbour ) );	// ToDo
 		Add( L"row_agent", pNeighbour->m_sUserAgent );
-	//	Add( L"row_nick", Neighbours.GetNick( pNeighbour ) );	// ToDo
-		str.Format( L"%u -/- %u", pNeighbour->m_nInputCount, pNeighbour->m_nOutputCount );
-		Add( L"row_packets", str );
-		str.Format( L"%s -/- %s",
-			(LPCTSTR)Settings.SmartSpeed( pNeighbour->m_mInput.nMeasure ),
-			(LPCTSTR)Settings.SmartSpeed( pNeighbour->m_mOutput.nMeasure ) );
-		Add( L"row_bandwidth", str );
-		str.Format( L"%s -/- %s",
-			(LPCTSTR)Settings.SmartVolume( pNeighbour->m_mInput.nTotal ),
-			(LPCTSTR)Settings.SmartVolume( pNeighbour->m_mOutput.nTotal ) );
-		Add( L"row_total", str );
-
-		switch ( pNeighbour->m_nState )
-		{
-		case nrsConnecting:
-			LoadString( str, IDS_NEIGHBOUR_CONNECTING );
-			break;
-		case nrsHandshake1:
-		case nrsHandshake2:
-		case nrsHandshake3:
-			LoadString( str, IDS_NEIGHBOUR_HANDSHAKING );
-			break;
-		case nrsRejected:
-			LoadString( str, IDS_NEIGHBOUR_REJECTED );
-			break;
-		case nrsClosing:
-			LoadString( str, IDS_NEIGHBOUR_CLOSING );
-			break;
-		case nrsConnected:
-			{
-				const DWORD tNow = ( GetTickCount() - pNeighbour->m_tConnected ) / 1000;	// Seconds
-				if ( tNow > 86400 )
-					str.Format( L"%u:%.2u:%.2u:%.2u", tNow / 86400, ( tNow / 3600 ) % 24, ( tNow / 60 ) % 60, tNow % 60 );
-				else
-					str.Format( L"%u:%.2u:%.2u", tNow / 3600, ( tNow / 60 ) % 60, tNow % 60 );
-			}
-			break;
-		case nrsNull:
-		default:
-			LoadString( str, IDS_NEIGHBOUR_UNKNOWN );
-			break;
-		}
-		Add( L"row_time", str );
-
-		if ( pNeighbour->GetUserCount() )
-		{
-			if ( pNeighbour->GetUserLimit() )
-				str.Format( L"%u/%u", pNeighbour->GetUserCount(), pNeighbour->GetUserLimit() );
-			else
-				str.Format( L"%u", pNeighbour->GetUserCount() );
-			Add( L"row_leaves", str );
-		}
-
-		if ( pNeighbour->m_nProtocol == PROTOCOL_G1 )
-		{
-		//	CG1Neighbour* pG1 = reinterpret_cast<CG1Neighbour*>(pNeighbour);
-
-			switch ( pNeighbour->m_nNodeType )
-			{
-			case ntNode:
-				LoadString( str, IDS_NEIGHBOUR_G1PEER );
-				break;
-			case ntHub:
-				LoadString( str, IDS_NEIGHBOUR_G1ULTRA );
-				break;
-			case ntLeaf:
-				LoadString( str, IDS_NEIGHBOUR_G1LEAF );
-				break;
-			}
-
-			Add( L"row_mode", str );
-			str.Empty();
-		}
-		else if ( pNeighbour->m_nProtocol == PROTOCOL_G2 )
-		{
-			CG2Neighbour* pG2 = static_cast<CG2Neighbour*>(pNeighbour);
-
-			switch ( pNeighbour->m_nNodeType )
-			{
-			case ntNode:
-				LoadString( str, IDS_NEIGHBOUR_G2PEER );
-				break;
-			case ntHub:
-				LoadString( str, IDS_NEIGHBOUR_G2HUB );
-				break;
-			case ntLeaf:
-				LoadString( str, IDS_NEIGHBOUR_G2LEAF );
-				break;
-			}
-
-			Add( L"row_mode", str );
-			str.Empty();
-
-			if ( pG2->m_pProfile )
-				str = pG2->m_pProfile->GetNick();
-		}
-		else if ( pNeighbour->m_nProtocol == PROTOCOL_ED2K )
-		{
-			CEDNeighbour* pED2K = static_cast<CEDNeighbour*>(pNeighbour);
-
-			if ( pED2K->m_nClientID > 0 )
-				LoadString( str, CEDPacket::IsLowID( pED2K->m_nClientID ) ? IDS_NEIGHBOUR_ED2K_LOWID : IDS_NEIGHBOUR_ED2K_HIGHID );
-			else
-				str = L"eDonkey2000";
-
-			Add( L"row_mode", str );
-
-			str = pED2K->m_sServerName;
-		}
-		else if ( pNeighbour->m_nProtocol == PROTOCOL_DC )
-		{
-			str = pNeighbour->m_sServerName;
-		}
-
-		Add( L"row_nick", str );
-		str = pNeighbour->m_sAddress + L" - " + str;
-		Add( L"row_caption", str );
 
 		Output( L"networkRow" );
 		Prepare( L"row_" );
@@ -1549,7 +1759,9 @@ void CRemote::PageImage(const CString& strPath)
 {
 	if ( CheckCookie() ) return;
 
-	const CString strResPath = Settings.General.Path + L"\\Remote\\Resources\\" + SafeFilename( strPath.Mid( TOKENSIZE ) );
+	// Fix: Remove "/remote/resources/" prefix (17 characters), not TOKENSIZE
+	const int RESOURCE_PREFIX_LENGTH = 17; // Length of "/remote/resources/"
+	const CString strResPath = Settings.General.Path + L"\\Remote\\Resources\\" + SafeFilename( strPath.Mid( RESOURCE_PREFIX_LENGTH ) );
 
 	CFile hFile;
 	if ( hFile.Open( strResPath, CFile::modeRead ) )

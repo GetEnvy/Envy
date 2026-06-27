@@ -1,7 +1,7 @@
 //
 // DownloadTransferED2K.h
 //
-// This file is part of Envy (getenvy.com) © 2016-2018
+// This file is part of Envy (getenvy.com) ï¿½ 2016-2018
 // Portions copyright Shareaza 2002-2007 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -49,6 +49,7 @@ public:
 	BOOL	OnFileNotFound(CEDPacket* pPacket);
 	BOOL	OnFileStatus(CEDPacket* pPacket);
 	BOOL	OnHashsetAnswer(CEDPacket* pPacket);
+	BOOL	OnHashsetAnswer2(CEDPacket* pPacket);
 	BOOL	OnQueueRank(CEDPacket* pPacket);
 	BOOL	OnRankingInfo(CEDPacket* pPacket);
 	BOOL	OnFileComment(CEDPacket* pPacket);

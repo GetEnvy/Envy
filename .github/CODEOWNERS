@@ -1,0 +1,27 @@
+# Default owner for everything in the repo.
+# Replace with concrete maintainer handles when known.
+*                                @mika3578
+
+# Build & CI
+/.github/                         @mika3578
+/Visual Studio/                   @mika3578
+*.vcxproj                         @mika3578
+*.vcxproj.filters                 @mika3578
+*.sln                             @mika3578
+*.props                           @mika3578
+*.targets                         @mika3578
+vcpkg.json                        @mika3578
+vcpkg-configuration.json          @mika3578
+
+# Core application
+/Envy/                            @mika3578
+
+# Third-party / vendored - changes should be rare and reviewed carefully.
+/Services/                        @mika3578
+/Plugins/                         @mika3578
+/HashLib/                         @mika3578
+
+# Documentation
+*.md                              @mika3578
+/Templates/                       @mika3578
+/Languages/                       @mika3578

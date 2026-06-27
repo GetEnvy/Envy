@@ -1,0 +1,25 @@
+---
+description: P2P protocol-specific considerations, network code guidelines, and security
+globs: ["**/Services/**", "**/Envy/**", "**/*Network*.cpp", "**/*Network*.h", "**/*Protocol*.cpp", "**/*Protocol*.h", "**/*P2P*.cpp", "**/*P2P*.h"]
+alwaysApply: false
+---
+
+# P2P protocols (Envy)
+
+## Treat the network as hostile (hard rules)
+- Validate sizes, bounds, and types before parsing.
+- Reject malformed/oversized packets safely (no crashes, no allocations based on untrusted sizes).
+- Never trust remote-provided paths/names: prevent traversal and invalid characters.
+
+## Timeouts + responsiveness
+- All sockets must have sane send/recv timeouts.
+- Never block the UI thread on network I/O.
+- Handle partial sends/receives and transient errors (`WSAEWOULDBLOCK`, `WSAEINTR`) correctly.
+
+## Rate limiting + resource caps
+- Apply rate limiting where appropriate (per-peer and/or global).
+- Cap memory growth from peer-controlled inputs (queues, buffers, message maps).
+
+## Compatibility
+- Preserve backward compatibility: gate new behavior behind capability/version detection.
+- Unknown/extra fields: ignore safely when possible; never assume a fixed layout.

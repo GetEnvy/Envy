@@ -1,0 +1,12 @@
+CompileFlags:
+  Add:
+    # Completely suppress clang diagnostics for legacy MFC code
+    - "-Wno-everything"
+    - "-w"  # Suppress all warnings
+    # Basic Windows defines (may help with some type recognition)
+    - "-D _WINDOWS"
+    - "-D WIN32"
+    - "-D _WIN32"
+    - "-D UNICODE"
+    - "-D _UNICODE"
+    - "-D _ENVY"

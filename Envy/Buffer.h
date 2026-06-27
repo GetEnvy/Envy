@@ -49,10 +49,10 @@ public:
 	inline DWORD GetBufferFree() const { return m_nBuffer - m_nLength; }		// Return the unused #bytes in the buffer
 
 public:
-	void	Add(const void* __restrict pData, const size_t nLength) throw();					// Add data to the end of the buffer
+	void	Add(const void* __restrict pData, const size_t nLength) noexcept;					// Add data to the end of the buffer
 	void	Insert(const DWORD nOffset, const void* __restrict pData, const size_t nLength);	// Insert the data into the buffer
-	void	Remove(const size_t nLength) throw();								// Removes data from the start of the buffer
-	bool	EnsureBuffer(const size_t nLength) throw();							// Tell the buffer to prepare to receive this number of additional bytes
+	void	Remove(const size_t nLength) noexcept;								// Removes data from the start of the buffer
+	bool	EnsureBuffer(const size_t nLength) noexcept;							// Tell the buffer to prepare to receive this number of additional bytes
 	DWORD	AddBuffer(CBuffer* pBuffer, const size_t nLength);					// Copy all or part of the data in another CBuffer object into this one
 	void	AddReversed(const void* pData, const size_t nLength);				// Add data to this buffer, but with the bytes in reverse order
 	void	Attach(CBuffer* pBuffer);											// Get ownership of another CBuffer object data
@@ -60,7 +60,7 @@ public:
 	// Convert Unicode text to ASCII and add it to the buffer
 	void	Print(const LPCWSTR pszText, const size_t nLength, const UINT nCodePage = CP_ACP);
 
-	inline DWORD ReadDWORD() const throw()
+	inline DWORD ReadDWORD() const noexcept
 	{
 		return ( m_nLength >= 4 ) ? *reinterpret_cast< DWORD* >( m_pBuffer ) : 0;
 	}
@@ -68,9 +68,9 @@ public:
 	// Read the data in the buffer as text
 	CString ReadString(const size_t nBytes, const UINT nCodePage = CP_ACP) const;					// Reads nBytes of ASCII characters as a string
 
-	BOOL	Read(void* pData, const size_t nLength); //throw();
+	BOOL	Read(void* pData, const size_t nLength) noexcept;
 	BOOL	ReadLine(CString& strLine, BOOL bPeek = FALSE);											// Reads until "\r\n". Encoding detection.
-	BOOL	StartsWith(LPCSTR pszString, const size_t nLength, const BOOL bRemove = FALSE) throw();	// Returns true if the buffer starts with this text
+	BOOL	StartsWith(LPCSTR pszString, const size_t nLength, const BOOL bRemove = FALSE) noexcept;	// Returns true if the buffer starts with this text
 
 	// Use the buffer with the ZLib compression library
 #ifdef ZLIB_H
@@ -97,7 +97,7 @@ public:
 // Inlines
 public:
 	// Clears the memory from the buffer
-	inline void	Clear() throw()
+	inline void	Clear() noexcept
 	{
 		m_nLength = 0;
 	}

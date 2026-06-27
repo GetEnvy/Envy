@@ -1,7 +1,7 @@
 //
 // HashDatabase.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2018
+// This file is part of Envy (getenvy.com) ï¿½ 2016-2018
 // Portions copyright Shareaza 2002-2007 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -196,7 +196,8 @@ HASHDB_INDEX* CHashDatabase::PrepareToStore(DWORD nIndex, DWORD nType, DWORD nLe
 		pIndex = NULL;
 	}
 
-	HASHDB_INDEX* pBestIndex = NULL;
+	size_t nBestPos = 0;
+	BOOL bHaveBest = FALSE;
 	DWORD nBestOverhead = 0xFFFFFFFF;
 	DWORD nCount;
 
@@ -208,16 +209,19 @@ HASHDB_INDEX* CHashDatabase::PrepareToStore(DWORD nIndex, DWORD nType, DWORD nLe
 
 			if ( nOverhead < nBestOverhead )
 			{
-				pBestIndex = pIndex;
+				const ptrdiff_t nDiff = pIndex - m_pIndex;
+				ASSERT( nDiff >= 0 && static_cast< DWORD >( nDiff ) < m_nBuffer );
+				nBestPos = static_cast< size_t >( nDiff );
+				bHaveBest = TRUE;
 				nBestOverhead = nOverhead;
 				if ( nOverhead == 0 ) break;
 			}
 		}
 	}
 
-	if ( pBestIndex != NULL )
+	if ( bHaveBest )
 	{
-		pIndex = pBestIndex;
+		pIndex = m_pIndex + nBestPos;
 	}
 	else
 	{

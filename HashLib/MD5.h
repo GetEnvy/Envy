@@ -1,7 +1,7 @@
 //
 // MD5.h
 //
-// This file is part of Envy (getenvy.com) © 2016-2018
+// This file is part of Envy (getenvy.com) ï¿½ 2016-2018
 // Portions copyright Shareaza 2002-2006 and PeerProject 2008-2012
 //
 // Envy is free software; you can redistribute it and/or
@@ -23,6 +23,13 @@ class HASHLIB_API CMD5
 public:
 	CMD5();
 	~CMD5() {}
+
+	// Default copy and move operations (Rule of Five)
+	// Hash state is POD, so default copy/move is safe
+	CMD5(const CMD5&) = default;
+	CMD5& operator=(const CMD5&) = default;
+	CMD5(CMD5&&) = default;
+	CMD5& operator=(CMD5&&) = default;
 
 public:
 	void Reset();

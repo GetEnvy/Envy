@@ -1,7 +1,7 @@
 //
 // CtrlDownloads.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2020
+// This file is part of Envy (getenvy.com) Â© 2016-2020
 // Portions copyright Shareaza 2002-2008 and PeerProject 2008-2015
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -65,6 +65,7 @@ BEGIN_MESSAGE_MAP(CDownloadsCtrl, CWnd)
 	ON_WM_DESTROY()
 	ON_WM_SIZE()
 	ON_WM_PAINT()
+	ON_WM_TIMER()
 	ON_WM_VSCROLL()
 	ON_WM_HSCROLL()
 	ON_WM_KEYDOWN()
@@ -170,6 +171,10 @@ int CDownloadsCtrl::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	m_pbSortAscending	= new BOOL[ COL_LAST ];		// Was COLUMNS_TO_SORT
 	for ( int i = 0; i < COL_LAST; i++ )
 		m_pbSortAscending[ i ] = TRUE;
+
+	// Initialize UI update batching timer (250ms interval for smooth updates)
+	m_nUpdateTimer = SetTimer( 1, 250, NULL );
+	m_bPendingInvalidate = FALSE;
 
 	return 0;
 }
@@ -378,7 +383,7 @@ void CDownloadsCtrl::SelectTo(int nIndex)
 
 	pLock.Unlock();
 
-	bUpdate ? Update() : Invalidate();
+	bUpdate ? Update() : InvalidateBatched();
 }
 
 void CDownloadsCtrl::SelectAll()
@@ -1090,15 +1095,21 @@ void CDownloadsCtrl::OnPaint()
 	int nScroll = GetScrollPos( SB_VERT );
 	int nIndex = 0;
 
-	// Update DisplayData
+	// Update DisplayData - minimize lock time by collecting data quickly
 	if ( tDownloadsData < tNow - 50 )
 	{
+		// Collect visible items count first to limit processing
+		int nVisibleItems = ( rcClient.bottom - rcClient.top ) / Settings.Skin.RowSize + 2;
+		int nItemsToProcess = nScroll + nVisibleItems;
+
 		CSingleLock pTransfersLock( &Transfers.m_pSection );
-		if ( pTransfersLock.Lock( 250 ) )
+		// Use shorter timeout to avoid blocking UI thread
+		if ( pTransfersLock.Lock( 100 ) )
 		{
 			pDownloadsData.RemoveAll();
 
-			for ( POSITION posDownload = Downloads.GetIterator() ; posDownload ; )
+			int nProcessed = 0;
+			for ( POSITION posDownload = Downloads.GetIterator() ; posDownload && nProcessed < nItemsToProcess; )
 			{
 				CDownload* pDownload = Downloads.GetNext( posDownload );
 
@@ -1111,12 +1122,14 @@ void CDownloadsCtrl::OnPaint()
 				if ( nScroll > 0 )
 				{
 					--nScroll;
+					++nProcessed;
 				}
 				else
 				{
 				//	PaintDownload( dc, rcItem, pDownload, bFocus && ( m_nFocus == nIndex ), m_pDragDrop == pDownload );
 					pDownloadsData.AddTail( CDownloadDisplayData( pDownload ) );
 					rcItem.OffsetRect( 0, (int)Settings.Skin.RowSize );
+					++nProcessed;
 				}
 
 				++nIndex;
@@ -1135,14 +1148,16 @@ void CDownloadsCtrl::OnPaint()
 				{
 					nScroll -= nSources;
 					nIndex += nSources;
+					nProcessed += nSources;
 					continue;
 				}
 
-				if ( nScroll > 0 && pDownloadsData.IsEmpty() )
+				// Ensure list has at least one item before accessing GetTail()
+				if ( pDownloadsData.IsEmpty() )
 					pDownloadsData.AddTail( CDownloadDisplayData() );
 
 				UINT nSource = 0;
-				for ( POSITION posSource = pDownload->GetIterator(); posSource && rcItem.top < rcClient.bottom; )
+				for ( POSITION posSource = pDownload->GetIterator(); posSource && rcItem.top < rcClient.bottom && nProcessed < nItemsToProcess; )
 				{
 					CDownloadSource* pSource = pDownload->GetNext( posSource );
 
@@ -1151,13 +1166,16 @@ void CDownloadsCtrl::OnPaint()
 						if ( nScroll > 0 )
 						{
 							--nScroll;
+							++nProcessed;
 						}
 						else
 						{
 						//	PaintSource( dc, rcItem, pDownload, pSource, bFocus && ( m_nFocus == nIndex ) );
+							// Safe to call GetTail() since we ensured list is not empty above
 							pDownloadsData.GetTail().m_pSourcesData.SetAtGrow( nSource, CSourceDisplayData( pSource ) );
 							++nSource;
 							rcItem.OffsetRect( 0, (int)Settings.Skin.RowSize );
+							++nProcessed;
 						}
 						++nIndex;
 					}
@@ -1801,7 +1819,7 @@ void CDownloadsCtrl::OnVScroll(UINT nSBCode, UINT nPos, CScrollBar* /*pScrollBar
 
 	m_nHover = -1;
 //	UpdateDownloadsData( TRUE );	// Obsolete
-	Invalidate();
+	InvalidateBatched();
 }
 
 void CDownloadsCtrl::OnHScroll(UINT nSBCode, UINT nPos, CScrollBar* /*pScrollBar*/)
@@ -2491,13 +2509,13 @@ void CDownloadsCtrl::OnMouseMoveDrag(const CPoint& ptScreen)
 void CDownloadsCtrl::OnSetFocus(CWnd* pOldWnd)
 {
 	CWnd::OnSetFocus( pOldWnd );
-	Invalidate();
+	InvalidateBatched();
 }
 
 void CDownloadsCtrl::OnKillFocus(CWnd* pNewWnd)
 {
 	CWnd::OnKillFocus( pNewWnd );
-	Invalidate();
+	InvalidateBatched();
 }
 
 void CDownloadsCtrl::OnBeginDrag(CPoint ptAction)
@@ -2658,4 +2676,28 @@ int CDownloadsCtrl::GetExpandableColumnX() const
 UINT CDownloadsCtrl::OnGetDlgCode()
 {
 	return DLGC_WANTARROWS;
+}
+
+//////////////////////////////////////////////////////////////////////////////
+// CDownloadsCtrl UI update batching
+
+void CDownloadsCtrl::InvalidateBatched()
+{
+	// Mark that we need an update, but don't invalidate immediately
+	// The timer will batch multiple updates together
+	m_bPendingInvalidate = TRUE;
+}
+
+void CDownloadsCtrl::OnTimer(UINT_PTR nIDEvent)
+{
+	if ( nIDEvent == 1 && m_bPendingInvalidate )
+	{
+		// Perform the batched invalidate
+		m_bPendingInvalidate = FALSE;
+		Invalidate();
+	}
+	else
+	{
+		CWnd::OnTimer( nIDEvent );
+	}
 }

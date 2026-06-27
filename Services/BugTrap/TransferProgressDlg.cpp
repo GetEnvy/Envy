@@ -63,7 +63,7 @@ static BOOL TransferStatusPane_OnInitDialog(HWND hwnd, HWND hwndFocus, LPARAM /*
 			TCHAR szErrorMessageTemplate[256];
 			LoadString(g_hInstance, IDS_UNDEFINED_ERROR_EX, szErrorMessageTemplate, countof(szErrorMessageTemplate));
 			TCHAR szErrorMessage[256];
-			_stprintf_s(szErrorMessage, countof(szErrorMessage), szErrorMessageTemplate, dwErrorCode);
+			_stprintf_s(szErrorMessage, countof(szErrorMessage), _T("%s (0x%08lX)"), szErrorMessageTemplate, static_cast<unsigned long>(dwErrorCode));
 			pszErrorMessage = szErrorMessage;
 		}
 		Stream << pszErrorMessage;

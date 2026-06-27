@@ -1,7 +1,7 @@
-//
+﻿//
 // FileFragments/List.hpp
 //
-// This file is part of Envy (getenvy.com) � 2016-2018
+// This file is part of Envy (getenvy.com) © 2016-2018
 // Portions copyright Shareaza 2002-2007 and PeerProject 2008
 //
 // Envy is free software; you can redistribute it and/or
@@ -204,15 +204,22 @@ public:
 // Implementation
 private:
 	container_type m_set;
-	struct cmp_size : public std::binary_function< RangeT, RangeT, bool >
+	struct cmp_size
 	{
+		typedef RangeT first_argument_type;
+		typedef RangeT second_argument_type;
+		typedef bool result_type;
+
 		result_type operator()(first_argument_type lhs, second_argument_type rhs) const
 		{
 			return lhs.size() < rhs.size();
 		}
 	};
-	struct overlaps_helper : public std::unary_function< RangeT, bool >
+	struct overlaps_helper
 	{
+		typedef RangeT argument_type;
+		typedef bool result_type;
+
 		overlaps_helper(const List& list) : m_list( list ) { }
 		result_type operator()(argument_type arg) const
 		{

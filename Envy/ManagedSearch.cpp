@@ -1,7 +1,7 @@
-//
+﻿//
 // ManagedSearch.cpp
 //
-// This file is part of Envy (getenvy.com) � 2016-2018
+// This file is part of Envy (getenvy.com) © 2016-2018
 // Portions copyright Shareaza 2002-2007 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -34,6 +34,7 @@
 #include "G1Packet.h"
 #include "EDPacket.h"
 #include "DCPacket.h"
+#include "EDClients.h"
 
 
 #ifdef _DEBUG
@@ -662,6 +663,23 @@ BOOL CManagedSearch::ExecuteDonkeyMesh(const DWORD /*tTicks*/, const DWORD tSecs
 			if ( Datagrams.Send( &pHost->m_pAddress, pHost->m_nPort + 4, pPacket, TRUE ) )
 			{
 				theApp.Message( MSG_DEBUG | MSG_FACILITY_SEARCH, L"Sending UDP query to %s", (LPCTSTR)CString( inet_ntoa( pHost->m_pAddress ) ) );
+
+				// Record search GUID for UDP query tracking
+				// Determine opcode from packet type
+				BYTE nOpcode = 0;
+				if ( CEDPacket* pEDPacket = static_cast< CEDPacket* >( pPacket ) )
+				{
+					nOpcode = pEDPacket->m_nType;
+					// Record GUID for both SEARCHRESULT and FOUNDSOURCES responses
+					if ( nOpcode == ED2K_C2SG_SEARCHREQUEST || nOpcode == ED2K_C2SG_SEARCHREQUEST2 || nOpcode == ED2K_C2SG_SEARCHREQUEST3 )
+					{
+						EDClients.SetUDPSearchGUID( pHost->m_pAddress.s_addr, pHost->m_nPort + 4, ED2K_S2CG_SEARCHRESULT, m_pSearch->m_oGUID );
+					}
+					else if ( nOpcode == ED2K_C2SG_GETSOURCES || nOpcode == ED2K_C2SG_GETSOURCES2 )
+					{
+						EDClients.SetUDPSearchGUID( pHost->m_pAddress.s_addr, pHost->m_nPort + 4, ED2K_S2CG_FOUNDSOURCES, m_pSearch->m_oGUID );
+					}
+				}
 
 				return TRUE;
 			}

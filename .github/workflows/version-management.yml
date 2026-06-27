@@ -1,0 +1,122 @@
+name: Version Management
+
+# checkov:skip=CKV_GHA_7:Version bump inputs are required for manual release prep.
+on:
+  workflow_dispatch:
+    inputs:
+      version_action:
+        description: Version action to perform
+        required: true
+        default: patch
+        type: choice
+        options:
+          - patch
+          - minor
+          - major
+          - prerelease
+      prerelease_label:
+        description: Pre-release label (only for prerelease action)
+        required: false
+        default: dev
+        type: string
+      update_files:
+        description: Update project files with new version
+        required: false
+        default: true
+        type: boolean
+
+permissions:
+  contents: write
+
+jobs:
+  version-management:
+    name: Version Management
+    runs-on: windows-2025
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Configure Git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Run Version Management
+        shell: pwsh
+        run: |
+          Write-Host "Running version management action: ${{ inputs.version_action }}" -ForegroundColor Green
+
+          # Build the command based on inputs
+          $command = ".\scripts\auto-version.ps1"
+
+          switch ("${{ inputs.version_action }}") {
+            "patch" {
+              $command += " -IncrementPatch"
+            }
+            "minor" {
+              $command += " -IncrementMinor"
+            }
+            "major" {
+              $command += " -IncrementMajor"
+            }
+            "prerelease" {
+              $command += " -PreRelease -PreReleaseLabel ${{ inputs.prerelease_label }}"
+            }
+          }
+
+          if ("${{ inputs.update_files }}" -eq "true") {
+            $command += " -UpdateFiles"
+          }
+
+          Write-Host "Executing: $command" -ForegroundColor Yellow
+          Invoke-Expression $command
+
+          # Display results
+          if (Test-Path version.json) {
+            $versionData = Get-Content version.json | ConvertFrom-Json
+            Write-Host "Updated Version: $($versionData.displayVersion)" -ForegroundColor Cyan
+            Write-Host "Full Version: $($versionData.fullVersion)" -ForegroundColor Cyan
+          }
+
+      - name: Commit Version Changes
+        shell: pwsh
+        run: |
+          # Check if there are changes to commit
+          $hasChanges = git status --porcelain
+          if ($hasChanges) {
+            Write-Host "Committing version changes..." -ForegroundColor Yellow
+
+            # Get version info for commit message
+            $versionData = Get-Content version.json | ConvertFrom-Json
+            $commitMessage = "chore: bump version to $($versionData.displayVersion)"
+
+            git add .
+            git commit -m $commitMessage
+            git push
+
+            Write-Host "Version changes committed and pushed!" -ForegroundColor Green
+          } else {
+            Write-Host "No changes to commit" -ForegroundColor Gray
+          }
+
+      - name: Create Version Tag (for releases)
+        if: inputs.version_action == 'patch' || inputs.version_action == 'minor' || inputs.version_action == 'major'
+        shell: pwsh
+        run: |
+          $versionData = Get-Content version.json | ConvertFrom-Json
+          $tagName = "v$($versionData.major).$($versionData.minor).$($versionData.patch)"
+
+          # Check if tag already exists
+          $tagExists = git tag -l | Select-String -Pattern "^$tagName$" -Quiet
+
+          if (-not $tagExists) {
+            Write-Host "Creating tag: $tagName" -ForegroundColor Yellow
+            git tag $tagName
+            git push origin $tagName
+            Write-Host "Tag created and pushed: $tagName" -ForegroundColor Green
+          } else {
+            Write-Host "Tag already exists: $tagName" -ForegroundColor Gray
+          }

@@ -1,7 +1,7 @@
 //
 // SchemaCache.h
 //
-// This file is part of Envy (getenvy.com) © 2016-2018
+// This file is part of Envy (getenvy.com) Â© 2016-2018
 // Portions copyright Shareaza 2002-2008 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -106,6 +106,10 @@ extern CSchemaCache	SchemaCache;
 // Compare two schema URIs with schema mapping
 inline bool CheckURI(const CString& strURI1, LPCTSTR szURI2)
 {
+	// Add NULL safety check for szURI2 parameter
+	if ( szURI2 == NULL )
+		return false;
+
 	if ( strURI1.CompareNoCase( szURI2 ) == 0 )
 		return true;
 	const CSchemaPtr pSchema1 = SchemaCache.Get( strURI1 );

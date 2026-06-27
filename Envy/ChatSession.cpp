@@ -1,7 +1,7 @@
 //
 // ChatSession.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2018
+// This file is part of Envy (getenvy.com) ï¿½ 2016-2018
 // Portions copyright Shareaza 2002-2007 and PeerProject 2008-2015
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -643,6 +643,17 @@ BOOL CChatSession::ReadED2K()
 	{
 		try
 		{
+			// For EMULE_PACKED packets that were deferred from ReadBuffer(), inflate now
+			if ( pPacket->m_nEdProtocol == ED2K_PROTOCOL_EMULE_PACKED )
+			{
+				if ( ! pPacket->Inflate() )
+				{
+					// Inflation failed - discard packet
+					pPacket->Release();
+					continue;
+				}
+			}
+
 			// Note: This isn't a "real" packet parser. Message packets are simply dumped into
 			// the input buffer by the EDClient, so all packets should be valid ED2K chat messages.
 			switch ( pPacket->m_nType )

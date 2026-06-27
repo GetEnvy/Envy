@@ -1,11 +1,11 @@
 //
 // UploadTransferBT.h
 //
-// This file is part of Envy (getenvy.com) © 2016-2018
+// This file is part of Envy (getenvy.com) ï¿½ 2016-2018
 // Portions copyright Shareaza 2002-2007 and PeerProject 2008-2014
 //
 // Envy is free software. You may redistribute and/or modify it
-// under the terms of the GNU Affero General Public License
+// under the terms of the GNU Affero General License
 // as published by the Free Software Foundation (fsf.org);
 // version 3 or later at your option. (AGPLv3)
 //

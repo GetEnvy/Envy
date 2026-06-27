@@ -1,0 +1,69 @@
+# Clang-Tidy configuration for Envy project
+# Static analysis for C++ code quality and security
+
+Checks: >
+  # Disable all checks for legacy MFC code - too many false positives
+  -*
+
+WarningsAsErrors: ''
+
+HeaderFilterRegex: '.*'
+
+# Disable specific checks that may conflict with legacy code
+# (can be enabled gradually during modernization)
+DisableChecks: >
+  bugprone-easily-swappable-parameters,
+  readability-magic-numbers,
+  cppcoreguidelines-avoid-magic-numbers,
+  cppcoreguidelines-pro-bounds-pointer-arithmetic,
+  cppcoreguidelines-pro-bounds-array-to-pointer-decay,
+  modernize-use-trailing-return-type,
+  # MFC-related checks that cause false positives
+  cppcoreguidelines-pro-type-static-cast-downcast,
+  cppcoreguidelines-pro-type-cstyle-cast,
+  modernize-avoid-c-arrays,
+  # Windows API and legacy function checks
+  cert-dcl37-c,
+  cert-dcl51-cpp,
+  # Unicode and string handling (MSVC-specific functions)
+  misc-include-cleaner,
+  # MFC message map related
+  readability-static-accessed-through-instance,
+  # Performance checks that may not apply to legacy code
+  performance-noexcept-move-constructor,
+  # Disable problematic checks for legacy Windows/MFC code
+  clang-diagnostic-unknown-type,
+  clang-diagnostic-error,
+  misc-unused-parameters,
+  readability-convert-member-functions-to-static
+
+# Format style
+FormatStyle: file
+
+# Check options
+CheckOptions:
+  - key: readability-identifier-length.MinimumLength
+    value: '2'
+  - key: readability-identifier-length.IgnoredVariableNames
+    value: 'i;j;k;m;n;x;y;z;c;pDC;pOldDC'
+  - key: readability-function-cognitive-complexity.Threshold
+    value: '25'
+  - key: performance-unnecessary-value-param.AllowedTypes
+    value: 'gsl::span'
+  - key: cert-err33-c.Notes
+    value: 'Slightly relaxed for legacy code'
+  - key: modernize-use-trailing-return-type.IgnoreMacros
+    value: 'true'
+  - key: readability-function-size.LineThreshold
+    value: '500'
+  - key: readability-function-size.ParameterThreshold
+    value: '10'
+  - key: readability-function-size.StatementThreshold
+    value: '150'
+  - key: readability-function-size.NestingThreshold
+    value: '5'
+  # Relax some checks for MFC compatibility
+  - key: cppcoreguidelines-pro-type-member-init.IgnoreArrays
+    value: 'true'
+  - key: modernize-loop-convert.MinConfidence
+    value: 'risky'

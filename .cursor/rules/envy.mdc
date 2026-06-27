@@ -1,0 +1,35 @@
+---
+description: Envy repository - canonical AI rules
+globs:
+  - "**/*"
+alwaysApply: true
+---
+
+# Envy - AI rules
+
+The full ruleset lives in `AGENTS.md`. This file is a pointer.
+
+Highlights:
+
+1. **Toolchain**: Visual Studio 2026, toolset v145, MSVC 14.50.
+   C++20 first-party, C++17 legacy plugins.
+2. **OS target**: Windows 10 1809+. Never re-introduce XP/Vista/7/8
+   support (`_ATL_XP_TARGETING`, `v141_xp`, `_WIN32_WINNT < 0x0A00`).
+3. **Build**:
+   ```
+   msbuild "Visual Studio\Envy.sln" /m /p:Configuration=Release
+     /p:Platform=x64 /p:PlatformToolset=v145
+     /p:WindowsTargetPlatformVersion=10.0
+     /p:VcpkgEnableManifest=true /p:VcpkgTriplet=x64-windows-static
+   ```
+4. **Dependencies** are managed via vcpkg manifest (`vcpkg.json`).
+5. **Style**: tabs/4, Allman braces, Hungarian-ish naming.
+6. **Don't bulk-reformat** existing files; `.clang-format` is advisory.
+7. **Don't edit** `Plugins/PluginWizard/**` - those are templates.
+8. **Record progress** in `docs/DEVELOPMENT_PLAN.md` (strategic) and
+   `.local/DEV_TRACKER.md` (session notes, gitignored).
+9. **English** for all artifacts (code, comments, commits, PRs, docs).
+   Chat replies follow the user's language.
+10. **No GPL-2.0 or GPL-3.0** dependencies. AGPL-3.0 is fine.
+
+Read `AGENTS.md` for the full set.

@@ -1,0 +1,56 @@
+name: Format check
+
+on:
+  pull_request:
+    branches: [main, develop]
+    paths:
+      - "Envy/**.cpp"
+      - "Envy/**.h"
+      - "TorrentEnvy/**.cpp"
+      - "TorrentEnvy/**.h"
+      - "HashLib/**.cpp"
+      - "HashLib/**.h"
+      - ".clang-format"
+      - ".clang-format-ignore"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  clang-format:
+    name: clang-format diff
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    continue-on-error: true  # advisory until baseline is reformatted
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Install clang-format
+        run: sudo apt-get update && sudo apt-get install -y clang-format
+
+      - name: clang-format --dry-run on changed files
+        shell: bash
+        run: |
+          base="${{ github.event.pull_request.base.sha }}"
+          head="${{ github.event.pull_request.head.sha }}"
+          files=$(git diff --name-only "$base...$head" -- '*.cpp' '*.h' '*.cxx' '*.hpp' \
+            | grep -E '^(Envy|TorrentEnvy|HashLib)/' \
+            | grep -vE '^(Services|Plugins/PluginWizard|Plugins/RatDVDPlugin|Plugins/SWFPlugin)/' \
+            || true)
+          if [ -z "$files" ]; then
+            echo "No relevant files changed."
+            exit 0
+          fi
+          fail=0
+          for f in $files; do
+            [ -f "$f" ] || continue
+            if ! clang-format --dry-run --Werror "$f" 2>&1; then
+              fail=1
+            fi
+          done
+          if [ "$fail" -ne 0 ]; then
+            echo "::warning::Formatting differences detected. Run clang-format locally."
+          fi

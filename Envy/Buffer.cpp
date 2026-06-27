@@ -61,7 +61,7 @@ CBuffer::~CBuffer()
 // CBuffer add
 
 // Add data to the buffer
-void CBuffer::Add(const void* __restrict pData, const size_t nLength) throw()
+void CBuffer::Add(const void* __restrict pData, const size_t nLength) noexcept
 {
 	// If the text is blank, don't do anything
 	if ( pData == NULL ) return;
@@ -108,7 +108,7 @@ void CBuffer::Insert(const DWORD nOffset, const void* __restrict pData, const si
 
 // Takes a number of bytes
 // Removes this number from the start of the buffer, shifting the memory after it to the start
-void CBuffer::Remove(const size_t nLength) throw()
+void CBuffer::Remove(const size_t nLength) noexcept
 {
 	if ( nLength >= m_nLength )
 	{
@@ -186,10 +186,12 @@ void CBuffer::AddReversed(const void *pData, const size_t nLength)
 
 // Takes a number of new bytes we're about to add to this buffer
 // Makes sure the buffer will be big enough to hold them, allocating more memory if necessary
-bool CBuffer::EnsureBuffer(const size_t nLength) throw()
+bool CBuffer::EnsureBuffer(const size_t nLength) noexcept
 {
-	// Limit buffer size to a signed int. This is the most that can be sent/received from a socket in one call.
-	if ( nLength > 0xffffffff - m_nBuffer ) return false;
+	// Prevent integer overflow in subsequent m_nLength + nLength + rounding calculations.
+	// BLOCK_MASK (0xFFFFFC00) is the maximum allocatable buffer size after KB rounding.
+	// This ensures the addition and rounding on the allocation path cannot wrap a DWORD.
+	if ( m_nLength > BLOCK_MASK || nLength > static_cast< size_t >( BLOCK_MASK ) - m_nLength ) return false;
 
 	// If the size of the buffer minus the size filled is bigger than or big enough for the given length, do nothing
 	if ( m_nBuffer - m_nLength >= nLength )
@@ -290,7 +292,7 @@ CString CBuffer::ReadString(const size_t nBytes, const UINT nCodePage) const
 ///////////////////////////////////////////////////////////////////////////////
 // CBuffer read helper
 
-BOOL CBuffer::Read(void* pData, const size_t nLength) throw()
+BOOL CBuffer::Read(void* pData, const size_t nLength) noexcept
 {
 	if ( nLength > m_nLength )
 		return FALSE;
@@ -344,7 +346,7 @@ BOOL CBuffer::ReadLine(CString& strLine, BOOL bPeek)
 // Takes a pointer to ASCII text, and the option to remove these characters from the start of the buffer if they are found there
 // Looks at the bytes at the start of the buffer, and determines if they are the same as the given ASCII text
 // Returns true if the text matches, false if it doesn't
-BOOL CBuffer::StartsWith(LPCSTR pszString, const size_t nLength, const BOOL bRemove) throw()
+BOOL CBuffer::StartsWith(LPCSTR pszString, const size_t nLength, const BOOL bRemove) noexcept
 {
 	// If the buffer isn't long enough to contain the given string, report the buffer doesn't start with it
 	if ( m_nLength < nLength ) return FALSE;
@@ -778,8 +780,10 @@ void CBuffer::ReverseBuffer(const void* pInput, void* pOutput, size_t nLength)
 	// Point pOutputWords at the start of the output buffer
 	DWORD* pOutputWords = (DWORD*)( pOutput );
 
-	// Make a new local DWORD called nTemp, and request that Visual Studio place it in a machine register
-	register DWORD nTemp;	// The register keyword asks that nTemp be a machine register, making it really fast
+	// Local DWORD used inside the byte-reversal hot loop. The historical
+	// `register` keyword was reserved in C++17 and is no longer permitted as
+	// a storage class; modern optimizers handle register allocation here.
+	DWORD nTemp;
 
 	// Loop while nLength is bigger than 4, grabbing bytes 4 at a time and reversing them
 	while ( nLength > 4 )

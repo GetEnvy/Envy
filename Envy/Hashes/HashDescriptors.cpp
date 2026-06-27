@@ -1,7 +1,7 @@
-//
+﻿//
 // Hashes/HashDescriptors.cpp
 //
-// This file is part of Envy (getenvy.com) � 2016-2018
+// This file is part of Envy (getenvy.com) © 2016-2018
 // Portions copyright Shareaza 2005-2007 and PeerProject 2008
 //
 // Envy is free software; you can redistribute it and/or
@@ -70,6 +70,22 @@ namespace Hashes
 			{ 32 +  9,  9, 9, L"urn:btih:" },
 			{ 32 +  5,  5, 5, L"btih:" }
 		};
+
+		const UrnString Sha256Descriptor::urns[ Sha256Descriptor::numUrns ] =
+		{
+			{ 52 + 11, 11, 11, L"urn:sha256:" },
+			{ 52 +  7,  7,  7, L"sha256:" }
+		};
+
+		// Static blacklist vectors
+		std::vector< Sha1Descriptor::AlignedStorage > Sha1Descriptor::blackList;
+		std::vector< TigerDescriptor::AlignedStorage > TigerDescriptor::blackList;
+		std::vector< Ed2kDescriptor::AlignedStorage > Ed2kDescriptor::blackList;
+		std::vector< Md5Descriptor::AlignedStorage > Md5Descriptor::blackList;
+		std::vector< BthDescriptor::AlignedStorage > BthDescriptor::blackList;
+		std::vector< GuidDescriptor::AlignedStorage > GuidDescriptor::blackList;
+		std::vector< BtGuidDescriptor::AlignedStorage > BtGuidDescriptor::blackList;
+		std::vector< Sha256Descriptor::AlignedStorage > Sha256Descriptor::blackList;
 	} // namespace Policies
 
 } // namespace Hashes

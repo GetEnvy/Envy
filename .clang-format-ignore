@@ -1,0 +1,12 @@
+# Third-party / vendored sources - never reformat
+Services/zlib/**
+Services/SQLite/**
+Services/Bzlib/**
+Services/UnRAR/**
+Services/MiniUPnP/**
+Services/GeoIP/**
+Services/LibUTP/**
+Services/BugTrap/**
+HashLib/HashLib/**
+Plugins/RatDVDPlugin/**
+Plugins/SWFPlugin/**

@@ -1,0 +1,333 @@
+name: Build
+
+# checkov:skip=CKV_GHA_7:Manual reruns need an operator-selected configuration.
+on:
+  push:
+    branches: [main, develop, claude/**]
+    paths-ignore:
+      # yamllint disable-line rule:quoted-strings -- ** must be quoted (YAML alias)
+      - "**.md"
+      - Languages/**
+      - Templates/**
+      - Skins/**
+      - Data/**
+  pull_request:
+    branches: [main, develop]
+  workflow_dispatch:
+    inputs:
+      configuration:
+        description: Build configuration
+        required: true
+        default: Release
+        type: choice
+        options: [Release, Debug]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+concurrency:
+  group: build-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+env:
+  SOLUTION: Visual Studio\Envy.sln
+  PLATFORM_TOOLSET: v145
+
+jobs:
+  build:
+    name: Build ${{ matrix.platform }} ${{ matrix.configuration }}
+    # windows-2025-vs2026 is the public-preview hosted image that ships
+    # Visual Studio 2026 (v145 / MSVC 14.50). v145 is the only supported
+    # toolset for this branch - a failure here is a real failure.
+    runs-on: windows-2025-vs2026
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      matrix:
+        platform: [x64, Win32]
+        # PRs only build the two required Release configs (x64 + Win32) for
+        # fast feedback; pushes to the integration branches still build Debug
+        # too, so coverage is unchanged; manual runs honour the
+        # workflow_dispatch `configuration` input. The list is varied by event
+        # via the `github` and `inputs` contexts.
+        configuration: ${{ github.event_name == 'pull_request' && fromJSON('["Release"]') || github.event_name == 'workflow_dispatch' && fromJSON(format('["{0}"]', inputs.configuration)) || fromJSON('["Release", "Debug"]') }}
+        include:
+          - platform: x64
+            msbuild_platform: x64
+          - platform: Win32
+            msbuild_platform: Win32
+    # Hosted runners hit C1083 (PCH permission denied) when Envy.pch is built
+    # under parallel CL/MSBuild; serialize the solution build for reliability.
+    env:
+      MSBUILD_PARALLEL: /m:1
+      MSBUILD_USE_MULTI_TOOL_TASK: false
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          submodules: recursive
+          fetch-depth: 0
+
+      - name: Add MSBuild to PATH
+        uses: microsoft/setup-msbuild@v3
+        with:
+          msbuild-architecture: x64
+
+      - name: Verify Visual Studio 2026 with v145 is installed
+        shell: pwsh
+        run: |
+          msbuild -version
+          $vswhere = "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vswhere.exe"
+          if (-not (Test-Path $vswhere)) {
+            Write-Error "vswhere.exe not found at $vswhere - cannot validate VS install."
+            exit 1
+          }
+          $installVersion = (& $vswhere -latest -prerelease -property installationVersion) -as [string]
+          $displayName    = (& $vswhere -latest -prerelease -property displayName)    -as [string]
+          $installPath    = (& $vswhere -latest -prerelease -property installationPath) -as [string]
+          Write-Host "Installation : $installPath"
+          Write-Host "Display name : $displayName"
+          Write-Host "Version      : $installVersion"
+
+          # On the windows-2025-vs2026 runner the default v145 toolset is
+          # exposed as `Microsoft.VisualStudio.Component.VC.Tools.x86.x64`
+          # (no .14.50 suffix). The .14.4x variants are the v143 fallback
+          # tools shipped alongside it. We confirm v145 by checking the
+          # MSVC tool directory under VC\Tools\MSVC for a 14.5x folder.
+          $msvcDir = Join-Path $installPath "VC\Tools\MSVC"
+          if (-not (Test-Path $msvcDir)) {
+            Write-Error "VC\Tools\MSVC directory not found in $installPath."
+            exit 1
+          }
+          $vc145 = Get-ChildItem $msvcDir -Directory | Where-Object { $_.Name -match "^14\.5" } | Sort-Object Name -Descending
+          if (-not $vc145) {
+            Write-Host "Installed MSVC tool directories:"
+            Get-ChildItem $msvcDir -Directory | ForEach-Object { Write-Host "  $($_.Name)" }
+            Write-Error "::error::v145 (MSVC 14.5x) tool directory NOT found in $msvcDir. Expected runner image is windows-2025-vs2026."
+            exit 1
+          }
+          $vcToolsVersion = $vc145[0].Name
+          Write-Host "::notice::v145 (MSVC $vcToolsVersion) toolset detected at $($vc145[0].FullName)"
+          # Major version 18 = VS 2026.
+          if ($installVersion -notmatch "^18\.") {
+            Write-Error "::error::VS major version is $installVersion, expected 18.x (Visual Studio 2026)."
+            exit 1
+          }
+
+      - name: Cache vcpkg binary cache
+        uses: actions/cache@v5
+        with:
+          path: |
+            ${{ github.workspace }}/vcpkg_cache
+          # Stable, content-addressed key: keyed by OS, target platform, the
+          # pinned toolset and a hash of the vcpkg manifest. The same entry is
+          # reused across runs and only rotates when one of those inputs
+          # changes, so a populated cache is restored on every run without
+          # creating a new entry each time (which would churn the cache and
+          # evict other entries). The "v3-" prefix starts a clean namespace.
+          key: vcpkg-v3-${{ runner.os }}-${{ matrix.platform }}-${{ env.PLATFORM_TOOLSET }}-${{ hashFiles('vcpkg.json', 'vcpkg-configuration.json') }}
+          restore-keys: |
+            vcpkg-v3-${{ runner.os }}-${{ matrix.platform }}-${{ env.PLATFORM_TOOLSET }}-
+            vcpkg-v3-${{ runner.os }}-${{ matrix.platform }}-
+
+      - name: Bootstrap vcpkg
+        shell: pwsh
+        run: |
+          if (-not (Test-Path "$env:VCPKG_INSTALLATION_ROOT")) {
+            git clone https://github.com/microsoft/vcpkg.git "$env:GITHUB_WORKSPACE/vcpkg"
+            & "$env:GITHUB_WORKSPACE/vcpkg/bootstrap-vcpkg.bat" -disableMetrics
+            echo "VCPKG_INSTALLATION_ROOT=$env:GITHUB_WORKSPACE/vcpkg" >> $env:GITHUB_ENV
+          }
+          echo "VCPKG_BINARY_SOURCES=clear;files,${{ github.workspace }}/vcpkg_cache,readwrite" >> $env:GITHUB_ENV
+
+      - name: Install vcpkg dependencies (manifest mode)
+        shell: pwsh
+        run: |
+          $triplet = if ("${{ matrix.platform }}" -eq "x64") { "x64-windows-static" } else { "x86-windows-static" }
+          echo "VCPKG_TARGET_TRIPLET=$triplet" >> $env:GITHUB_ENV
+          & "$env:VCPKG_INSTALLATION_ROOT/vcpkg.exe" install --triplet=$triplet
+
+      - name: Restore NuGet packages (if any)
+        shell: pwsh
+        run: |
+          if (Test-Path "Visual Studio\Envy.sln") {
+            nuget restore "Visual Studio\Envy.sln" -NonInteractive 2>$null
+          }
+        continue-on-error: true
+
+      - name: Export effective PlatformToolset
+        id: toolset
+        shell: pwsh
+        run: |
+          # The runner image (windows-2025-vs2026) is verified to carry v145
+          # above. We pin to it strictly here so any future image regression
+          # surfaces as a clear error rather than a silent toolset downgrade.
+          $effective = "$env:PLATFORM_TOOLSET"
+          [System.IO.File]::AppendAllText($env:GITHUB_OUTPUT, "PlatformToolset=$effective`n", [System.Text.UTF8Encoding]::new($false))
+          [System.IO.File]::AppendAllText($env:GITHUB_ENV, "EFFECTIVE_TOOLSET=$effective`n", [System.Text.UTF8Encoding]::new($false))
+          Write-Host "Effective PlatformToolset = $effective"
+
+      - name: Build solution
+        shell: cmd
+        run: |
+          msbuild "%SOLUTION%" ^
+            %MSBUILD_PARALLEL% ^
+            /nologo ^
+            /verbosity:minimal ^
+            /p:Configuration=${{ matrix.configuration }} ^
+            /p:Platform=${{ matrix.msbuild_platform }} ^
+            /p:PlatformToolset=${{ steps.toolset.outputs.PlatformToolset }} ^
+            /p:WindowsTargetPlatformVersion=10.0 ^
+            /p:UseMultiToolTask=%MSBUILD_USE_MULTI_TOOL_TASK% ^
+            /p:EnforceProcessCountAcrossBuilds=true ^
+            /p:VcpkgEnableManifest=true ^
+            /p:VcpkgEnabled=true ^
+            /p:VcpkgTriplet=%VCPKG_TARGET_TRIPLET% ^
+            /p:TreatWarningsAsErrors=false ^
+            /flp:LogFile=build-${{ matrix.platform }}-${{ matrix.configuration }}.log;Verbosity=detailed;Encoding=UTF-8 ^
+            /flp1:LogFile=build-${{ matrix.platform }}-${{ matrix.configuration }}.warnings.log;WarningsOnly;Verbosity=normal ^
+            /flp2:LogFile=build-${{ matrix.platform }}-${{ matrix.configuration }}.errors.log;ErrorsOnly;Verbosity=normal
+
+      - name: Upload build logs
+        if: always()
+        uses: actions/upload-artifact@v6
+        with:
+          name: build-logs-${{ matrix.platform }}-${{ matrix.configuration }}
+          path: |
+            build-*.log
+          if-no-files-found: ignore
+          retention-days: 14
+
+      - name: Surface build errors to step summary and PR comment
+        if: failure() && github.event_name == 'pull_request'
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          $errLog = "build-${{ matrix.platform }}-${{ matrix.configuration }}.errors.log"
+          $warnLog = "build-${{ matrix.platform }}-${{ matrix.configuration }}.warnings.log"
+          $vcpkgLog = "$env:VCPKG_INSTALLATION_ROOT/buildtrees/install-x64-windows-static-rel-out.log"
+          $body = New-Object System.Collections.Generic.List[string]
+          $body.Add("### Build ${{ matrix.platform }} ${{ matrix.configuration }} - failures") | Out-Null
+          $body.Add("") | Out-Null
+          $body.Add("- Effective PlatformToolset: ``$($env:EFFECTIVE_TOOLSET)``") | Out-Null
+          $body.Add("- Commit: ``${{ github.event.pull_request.head.sha }}``") | Out-Null
+          $body.Add("- Run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}") | Out-Null
+          $body.Add("") | Out-Null
+
+          $reachedMsbuild = Test-Path $errLog
+
+          if ($reachedMsbuild) {
+            $errLines = @(Get-Content -LiteralPath $errLog -ErrorAction SilentlyContinue)
+            $errFirst = $errLines | Select-Object -First 200
+            $body.Add("**Reached MSBuild.** Errors captured: $($errLines.Count). Showing first $([Math]::Min(200, $errLines.Count)).") | Out-Null
+            $body.Add("") | Out-Null
+            $body.Add("<details><summary>First 200 MSBuild error lines</summary>") | Out-Null
+            $body.Add("") | Out-Null
+            $body.Add('```') | Out-Null
+            foreach ($l in $errFirst) { $body.Add($l) | Out-Null }
+            $body.Add('```') | Out-Null
+            $body.Add("</details>") | Out-Null
+            if (Test-Path $warnLog) {
+              $warn = @(Get-Content -LiteralPath $warnLog -ErrorAction SilentlyContinue) | Select-Object -First 80
+              if ($warn.Count -gt 0) {
+                $body.Add("") | Out-Null
+                $body.Add("<details><summary>First 80 warning lines</summary>") | Out-Null
+                $body.Add("") | Out-Null
+                $body.Add('```') | Out-Null
+                foreach ($l in $warn) { $body.Add($l) | Out-Null }
+                $body.Add('```') | Out-Null
+                $body.Add("</details>") | Out-Null
+              }
+            }
+          } else {
+            $body.Add("**Build failed before MSBuild started.** Likely a setup-msbuild, vcpkg bootstrap, or vcpkg install issue.") | Out-Null
+            $body.Add("") | Out-Null
+            # Try to surface vcpkg logs if any
+            $vcpkgLogs = @()
+            if (Test-Path "$env:VCPKG_INSTALLATION_ROOT/buildtrees") {
+              $vcpkgLogs = Get-ChildItem -LiteralPath "$env:VCPKG_INSTALLATION_ROOT/buildtrees" -Recurse -Filter "*.log" -ErrorAction SilentlyContinue | Sort-Object LastWriteTime -Descending | Select-Object -First 3
+            }
+            if ($vcpkgLogs.Count -gt 0) {
+              foreach ($lg in $vcpkgLogs) {
+                $tail = @(Get-Content -LiteralPath $lg.FullName -Tail 80 -ErrorAction SilentlyContinue)
+                $body.Add("<details><summary>vcpkg log: $($lg.FullName) (last 80 lines)</summary>") | Out-Null
+                $body.Add("") | Out-Null
+                $body.Add('```') | Out-Null
+                foreach ($l in $tail) { $body.Add($l) | Out-Null }
+                $body.Add('```') | Out-Null
+                $body.Add("</details>") | Out-Null
+              }
+            } else {
+              $body.Add("_No vcpkg buildtree logs found - the failure is likely in setup-msbuild or the toolset detection step._") | Out-Null
+            }
+            # Dump the workspace top level so we can see what's there
+            $body.Add("") | Out-Null
+            $body.Add("<details><summary>Workspace listing</summary>") | Out-Null
+            $body.Add("") | Out-Null
+            $body.Add('```') | Out-Null
+            Get-ChildItem -Path . -File | ForEach-Object { $body.Add(("  " + $_.Name + "  (" + $_.Length + " bytes)")) | Out-Null }
+            $body.Add('```') | Out-Null
+            $body.Add("</details>") | Out-Null
+          }
+
+          $bodyText = $body -join "`n"
+          # Write to step summary (visible on the run page)
+          [System.IO.File]::AppendAllText($env:GITHUB_STEP_SUMMARY, $bodyText + "`n", [System.Text.UTF8Encoding]::new($false))
+          # Also post as a PR comment so external tooling can read it.
+          [System.IO.File]::WriteAllText("comment-body.md", $bodyText, [System.Text.UTF8Encoding]::new($false))
+          gh pr comment ${{ github.event.pull_request.number }} `
+            --repo ${{ github.repository }} `
+            --body-file comment-body.md
+
+      - name: Upload binaries
+        if: success() && matrix.configuration == 'Release'
+        uses: actions/upload-artifact@v6
+        with:
+          name: envy-${{ matrix.platform }}-${{ matrix.configuration }}
+          path: |
+            Envy/**/Release/*.exe
+            Envy/**/Release/*.dll
+            Plugins/**/Release/*.dll
+            Builds/**
+          if-no-files-found: warn
+          retention-days: 14
+
+  lint-build-files:
+    name: Lint build files
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Verify all vcxproj use v145
+        shell: bash
+        run: |
+          bad=$(grep -l "v141_xp\|<PlatformToolset>v14[01234]<" $(find . -name "*.vcxproj" -not -path "./.git/*" -not -path "./Plugins/PluginWizard/*") || true)
+          if [ -n "$bad" ]; then
+            echo "::error::Projects still using legacy toolset:"
+            echo "$bad"
+            exit 1
+          fi
+          echo "All .vcxproj files use v145 or newer."
+
+      - name: Verify Envy.sln is VS 16+ format
+        shell: bash
+        run: |
+          if ! grep -q "Format Version 12.00" "Visual Studio/Envy.sln"; then
+            echo "::error::Envy.sln is not Format Version 12.00"
+            exit 1
+          fi
+
+      - name: Verify no _ATL_XP_TARGETING remains
+        shell: bash
+        run: |
+          # PluginWizard templates are intentionally left untouched.
+          bad=$(grep -lr "_ATL_XP_TARGETING" --include="*.vcxproj" --exclude-dir=PluginWizard . || true)
+          if [ -n "$bad" ]; then
+            echo "::error::_ATL_XP_TARGETING preprocessor macro must be removed from:"
+            echo "$bad"
+            exit 1
+          fi
+          echo "_ATL_XP_TARGETING absent from first-party vcxproj files."
