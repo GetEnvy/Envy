@@ -30,26 +30,26 @@
     <UseOfAtl>Static</UseOfAtl>
     <CharacterSet>Unicode</CharacterSet>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <PlatformToolset>v141_xp</PlatformToolset>
+    <PlatformToolset>v145</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseOfAtl>Static</UseOfAtl>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v141_xp</PlatformToolset>
+    <PlatformToolset>v145</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseOfAtl>Static</UseOfAtl>
     <CharacterSet>Unicode</CharacterSet>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v145</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseOfAtl>Static</UseOfAtl>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v145</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -91,8 +91,10 @@
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>..\..\Envy;..\Common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <TargetEnvironment>Win32</TargetEnvironment>
-      <DllDataFileName></DllDataFileName>
-      <ProxyFileName></ProxyFileName>
+      <DllDataFileName>
+      </DllDataFileName>
+      <ProxyFileName>
+      </ProxyFileName>
       <ValidateAllParameters>true</ValidateAllParameters>
     </Midl>
     <ClCompile>
@@ -132,8 +134,10 @@
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>..\..\Envy;..\Common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <TargetEnvironment>X64</TargetEnvironment>
-      <DllDataFileName></DllDataFileName>
-      <ProxyFileName></ProxyFileName>
+      <DllDataFileName>
+      </DllDataFileName>
+      <ProxyFileName>
+      </ProxyFileName>
     </Midl>
     <ClCompile>
       <Optimization>Disabled</Optimization>
@@ -170,8 +174,10 @@
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>..\..\Envy;..\Common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <TargetEnvironment>Win32</TargetEnvironment>
-      <DllDataFileName></DllDataFileName>
-      <ProxyFileName></ProxyFileName>
+      <DllDataFileName>
+      </DllDataFileName>
+      <ProxyFileName>
+      </ProxyFileName>
       <ValidateAllParameters>true</ValidateAllParameters>
     </Midl>
     <ClCompile>
@@ -216,8 +222,10 @@
       <AdditionalIncludeDirectories>..\..\Envy;..\Common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <WarningLevel>2</WarningLevel>
       <TargetEnvironment>X64</TargetEnvironment>
-      <DllDataFileName></DllDataFileName>
-      <ProxyFileName></ProxyFileName>
+      <DllDataFileName>
+      </DllDataFileName>
+      <ProxyFileName>
+      </ProxyFileName>
     </Midl>
     <ClCompile>
       <Optimization>Full</Optimization>

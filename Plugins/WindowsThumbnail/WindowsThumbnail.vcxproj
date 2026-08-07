@@ -28,24 +28,24 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v141_xp</PlatformToolset>
+    <PlatformToolset>v145</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v141_xp</PlatformToolset>
+    <PlatformToolset>v145</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v145</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v145</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -90,15 +90,18 @@
       <TypeLibraryName>$(IntDir)%(Filename).tlb</TypeLibraryName>
       <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
       <HeaderFileName>%(Filename).h</HeaderFileName>
-      <DllDataFileName></DllDataFileName>
-      <ProxyFileName></ProxyFileName>
+      <DllDataFileName>
+      </DllDataFileName>
+      <ProxyFileName>
+      </ProxyFileName>
     </Midl>
     <ClCompile>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;WIN32;_WINDOWS;_ATL_XP_TARGETING;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>%(RootDir)%(Directory);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>/Zc:threadSafeInit- %(AdditionalOptions)</AdditionalOptions>
-      <ExceptionHandling></ExceptionHandling>
+      <ExceptionHandling>
+      </ExceptionHandling>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -138,14 +141,17 @@
       <TypeLibraryName>$(IntDir)%(Filename).tlb</TypeLibraryName>
       <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
       <HeaderFileName>%(Filename).h</HeaderFileName>
-      <DllDataFileName></DllDataFileName>
-      <ProxyFileName></ProxyFileName>
+      <DllDataFileName>
+      </DllDataFileName>
+      <ProxyFileName>
+      </ProxyFileName>
     </Midl>
     <ClCompile>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;WIN64;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>%(RootDir)%(Directory);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <ExceptionHandling></ExceptionHandling>
+      <ExceptionHandling>
+      </ExceptionHandling>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <RuntimeTypeInfo>false</RuntimeTypeInfo>
@@ -184,8 +190,10 @@
       <TypeLibraryName>$(IntDir)%(Filename).tlb</TypeLibraryName>
       <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
       <HeaderFileName>%(Filename).h</HeaderFileName>
-      <DllDataFileName></DllDataFileName>
-      <ProxyFileName></ProxyFileName>
+      <DllDataFileName>
+      </DllDataFileName>
+      <ProxyFileName>
+      </ProxyFileName>
     </Midl>
     <ClCompile>
       <Optimization>Full</Optimization>
@@ -198,7 +206,8 @@
       <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
       <OmitFramePointers>true</OmitFramePointers>
       <StringPooling>true</StringPooling>
-      <ExceptionHandling></ExceptionHandling>
+      <ExceptionHandling>
+      </ExceptionHandling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <RuntimeTypeInfo>false</RuntimeTypeInfo>
       <PrecompiledHeader>Use</PrecompiledHeader>
@@ -237,8 +246,10 @@
       <TypeLibraryName>$(IntDir)%(Filename).tlb</TypeLibraryName>
       <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
       <HeaderFileName>%(Filename).h</HeaderFileName>
-      <DllDataFileName></DllDataFileName>
-      <ProxyFileName></ProxyFileName>
+      <DllDataFileName>
+      </DllDataFileName>
+      <ProxyFileName>
+      </ProxyFileName>
     </Midl>
     <ClCompile>
       <Optimization>Full</Optimization>
@@ -249,7 +260,8 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <OmitFramePointers>true</OmitFramePointers>
       <StringPooling>true</StringPooling>
-      <ExceptionHandling></ExceptionHandling>
+      <ExceptionHandling>
+      </ExceptionHandling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <RuntimeTypeInfo>false</RuntimeTypeInfo>
       <PrecompiledHeader>Use</PrecompiledHeader>

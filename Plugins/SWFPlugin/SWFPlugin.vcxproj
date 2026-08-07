@@ -29,23 +29,23 @@
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <CharacterSet>Unicode</CharacterSet>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <PlatformToolset>v141_xp</PlatformToolset>
+    <PlatformToolset>v145</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v141_xp</PlatformToolset>
+    <PlatformToolset>v145</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <CharacterSet>Unicode</CharacterSet>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v145</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v145</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -90,8 +90,10 @@
       <TypeLibraryName>$(IntDir)%(Filename).tlb</TypeLibraryName>
       <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
       <HeaderFileName>%(Filename).h</HeaderFileName>
-      <DllDataFileName></DllDataFileName>
-      <ProxyFileName></ProxyFileName>
+      <DllDataFileName>
+      </DllDataFileName>
+      <ProxyFileName>
+      </ProxyFileName>
     </Midl>
     <ClCompile>
       <Optimization>Disabled</Optimization>
@@ -141,8 +143,10 @@
       <TypeLibraryName>$(IntDir)%(Filename).tlb</TypeLibraryName>
       <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
       <HeaderFileName>%(Filename).h</HeaderFileName>
-      <DllDataFileName></DllDataFileName>
-      <ProxyFileName></ProxyFileName>
+      <DllDataFileName>
+      </DllDataFileName>
+      <ProxyFileName>
+      </ProxyFileName>
     </Midl>
     <ClCompile>
       <Optimization>Disabled</Optimization>
@@ -188,8 +192,10 @@
       <TypeLibraryName>$(IntDir)%(Filename).tlb</TypeLibraryName>
       <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
       <HeaderFileName>%(Filename).h</HeaderFileName>
-      <DllDataFileName></DllDataFileName>
-      <ProxyFileName></ProxyFileName>
+      <DllDataFileName>
+      </DllDataFileName>
+      <ProxyFileName>
+      </ProxyFileName>
     </Midl>
     <ClCompile>
       <Optimization>Full</Optimization>
@@ -243,8 +249,10 @@
       <TypeLibraryName>$(IntDir)%(Filename).tlb</TypeLibraryName>
       <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
       <HeaderFileName>%(Filename).h</HeaderFileName>
-      <DllDataFileName></DllDataFileName>
-      <ProxyFileName></ProxyFileName>
+      <DllDataFileName>
+      </DllDataFileName>
+      <ProxyFileName>
+      </ProxyFileName>
     </Midl>
     <ClCompile>
       <Optimization>Full</Optimization>

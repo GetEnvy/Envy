@@ -39,10 +39,10 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Midl Include="..\..\Envy\Envy.idl">
+    <Midl Include="ShortURL.idl">
       <Filter>Source Files</Filter>
     </Midl>
-    <Midl Include="ShortURL.idl">
+    <Midl Include="..\Common\Envy.idl">
       <Filter>Source Files</Filter>
     </Midl>
   </ItemGroup>

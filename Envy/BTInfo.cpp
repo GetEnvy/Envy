@@ -1,7 +1,7 @@
 //
 // BTInfo.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2018
+// This file is part of Envy (getenvy.com) © 2016-2026
 // Portions copyright Shareaza 2002-2008 and PeerProject 2008-2015
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -228,9 +228,11 @@ CBTInfo& CBTInfo::operator=(const CBTInfo& oSource)
 
 	if ( oSource.m_pBlockBTH )
 	{
+		if (m_pBlockBTH)
+			delete[] m_pBlockBTH;
+
 		m_pBlockBTH = new Hashes::BtPureHash[ m_nBlockCount ];
-		std::copy( oSource.m_pBlockBTH, oSource.m_pBlockBTH + m_nBlockCount,
-			stdext::make_checked_array_iterator( m_pBlockBTH, m_nBlockCount ) );
+		std::copy( oSource.m_pBlockBTH, oSource.m_pBlockBTH + m_nBlockCount, m_pBlockBTH );		// Was stdext::make_checked_array_iterator( m_pBlockBTH, m_nBlockCount )
 	}
 
 	m_nTotalUpload		= oSource.m_nTotalUpload;
@@ -880,7 +882,7 @@ BOOL CBTInfo::LoadTorrentTree(const CBENode* pRoot)
 	{
 		m_nTrackerMode = tMultiFinding;
 
-		CList< CString > pTrackers, pBadTrackers;
+		CStringList pTrackers, pBadTrackers;	// CList<CString>
 
 		// Loop through all the tiers
 		for ( int nTier = 0; nTier < pAnnounceList->GetCount(); nTier++ )
@@ -1077,11 +1079,13 @@ BOOL CBTInfo::LoadTorrentTree(const CBENode* pRoot)
 	m_nBlockCount = (DWORD)( pHash->m_nValue / Hashes::Sha1Hash::byteCount );
 	if ( ! m_nBlockCount || m_nBlockCount > 209716 ) return FALSE;
 
+	if ( m_pBlockBTH )
+		delete[] m_pBlockBTH;
+
 	m_pBlockBTH = new Hashes::BtPureHash[ m_nBlockCount ];
 
 	std::copy( static_cast< const Hashes::BtHash::RawStorage* >( pHash->m_pValue ),
-		static_cast< const Hashes::BtHash::RawStorage* >( pHash->m_pValue ) + m_nBlockCount,
-		stdext::make_checked_array_iterator( m_pBlockBTH, m_nBlockCount ) );
+		static_cast< const Hashes::BtHash::RawStorage* >( pHash->m_pValue ) + m_nBlockCount, m_pBlockBTH );		// Was stdext::make_checked_array_iterator( m_pBlockBTH, m_nBlockCount )
 
 	// Hash info
 	if ( const CBENode* pSHA1 = pInfo->GetNode( "sha1" ) )

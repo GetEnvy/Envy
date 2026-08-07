@@ -1,7 +1,7 @@
 //
 // Skin.cpp
 //
-// This file is part of Envy (getenvy.com) © 2016-2020
+// This file is part of Envy (getenvy.com) © 2016-2026
 // Portions copyright Shareaza 2002-2008 and PeerProject 2008-2016
 //
 // Envy is free software. You may redistribute and/or modify it
@@ -273,8 +273,7 @@ BOOL CSkin::SelectCaption(CString& strCaption, int nIndex)
 {
 	for ( strCaption += L'|'; ; nIndex-- )
 	{
-		CString strSection = strCaption.SpanExcluding( L"|" );
-		strCaption = strCaption.Mid( strSection.GetLength() + 1 );
+		CString strSection = strCaption.SpanExcluding( L"|" ).Mid( strSection.GetLength() + 1 );
 		if ( strSection.IsEmpty() ) break;
 
 		if ( nIndex <= 0 )
@@ -2874,11 +2873,11 @@ int CSkin::GetTextFlowChange(LPCTSTR pszText, BOOL* bIsRTL)
 	LPCTSTR pszWord = pszText;
 	LPCTSTR pszScan = pszText;
 
-	int nPos;
-	for ( nPos = 0; ; pszScan++, nPos++ )
+	for ( int nPos = 0; ; pszScan++, nPos++ )
 	{
 		// Get the first word with punctuation marks and whitespaces
-		if ( (unsigned short)*pszScan > 32 && (unsigned short)*pszScan != 160 ) continue;
+		if ( (unsigned short)*pszScan > 32 && (unsigned short)*pszScan != 160 )
+			continue;
 
 		if ( pszWord < pszScan )
 		{

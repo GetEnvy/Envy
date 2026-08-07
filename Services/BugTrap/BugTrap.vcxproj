@@ -28,24 +28,24 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v141_xp</PlatformToolset>
+    <PlatformToolset>v145</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v141_xp</PlatformToolset>
+    <PlatformToolset>v145</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v145</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v145</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -94,7 +94,8 @@
       <PreprocessorDefinitions>_DEBUG;WIN32;_WIN32;_WINDOWS;_USRDLL;_ATL_XP_TARGETING;BUGTRAP_EXPORTS;ZLIB_WINAPI;ZLIB_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>..\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>/Zc:threadSafeInit- %(AdditionalOptions)</AdditionalOptions>
-      <ExceptionHandling></ExceptionHandling>
+      <ExceptionHandling>
+      </ExceptionHandling>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <RuntimeTypeInfo>false</RuntimeTypeInfo>
@@ -123,7 +124,8 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;WIN64;_WIN64;_WINDOWS;_USRDLL;BUGTRAP_EXPORTS;ZLIB_WINAPI;ZLIB_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>..\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <ExceptionHandling></ExceptionHandling>
+      <ExceptionHandling>
+      </ExceptionHandling>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <RuntimeTypeInfo>false</RuntimeTypeInfo>
@@ -138,7 +140,8 @@
     </ResourceCompile>
     <Link>
       <AdditionalDependencies>comctl32.lib;version.lib;shlwapi.lib;ws2_32.lib;wininet.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <ModuleDefinitionFile></ModuleDefinitionFile>
+      <ModuleDefinitionFile>
+      </ModuleDefinitionFile>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <LargeAddressAware>true</LargeAddressAware>
       <SubSystem>Windows</SubSystem>
@@ -160,7 +163,8 @@
       <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
       <OmitFramePointers>false</OmitFramePointers>
       <StringPooling>true</StringPooling>
-      <ExceptionHandling></ExceptionHandling>
+      <ExceptionHandling>
+      </ExceptionHandling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <RuntimeTypeInfo>false</RuntimeTypeInfo>
       <PrecompiledHeader>Use</PrecompiledHeader>
@@ -196,7 +200,8 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <OmitFramePointers>false</OmitFramePointers>
       <StringPooling>true</StringPooling>
-      <ExceptionHandling></ExceptionHandling>
+      <ExceptionHandling>
+      </ExceptionHandling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <RuntimeTypeInfo>false</RuntimeTypeInfo>
       <PrecompiledHeader>Use</PrecompiledHeader>
@@ -210,7 +215,8 @@
     </ResourceCompile>
     <Link>
       <AdditionalDependencies>comctl32.lib;version.lib;shlwapi.lib;ws2_32.lib;wininet.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <ModuleDefinitionFile></ModuleDefinitionFile>
+      <ModuleDefinitionFile>
+      </ModuleDefinitionFile>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
