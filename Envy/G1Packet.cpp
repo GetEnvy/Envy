@@ -45,6 +45,7 @@
 #include "SchemaCache.h"
 #include "GProfile.h"
 #include "XML.h"
+#include "XmlParseValidate.h"
 
 #ifdef _DEBUG
 #undef THIS_FILE
@@ -417,7 +418,7 @@ bool CG1Packet::ReadHUGE(CEnvyFile* pFile)
 	return true;
 }
 
-bool CG1Packet::ReadXML(CSchemaPtr& pSchema, CXMLElement*& pXML)
+bool CG1Packet::ReadXML(CSchemaPtr& pSchema, CXMLElement*& pXML, XmlParseBudget* pBudget)
 {
 	const DWORD rem = GetRemaining();
 	if ( rem == 0 )
@@ -466,19 +467,30 @@ bool CG1Packet::ReadXML(CSchemaPtr& pSchema, CXMLElement*& pXML)
 	if ( len < 2 )
 		return false;	// Too short
 
-	CString strXML( UTF8Decode( (LPCSTR)p, len ) );
+	// Bound before UTF8Decode/CString materialization (HostBrowser G1 frames
+	// may be larger than the peer XML parse budget).
+	if (len > XML_PEER_PARSE_CHARS_MAX)
+		return false;
 
-	// Fix <tag attribute="valueZ/> -> <tag attribute="value"/>
-	//for ( DWORD i = 1; i + 2 < len; ++i )
-	//	if ( szXML[ i ] == 0 && szXML[ i + 1 ] == '/' && szXML[ i + 2 ] == '>' )
-	//		szXML[ i ] = '\"';
+	XmlParseBudget oLocal = XmlParseBudget::PeerDefaults();
+	XmlParseBudget* pActive = pBudget ? pBudget : &oLocal;
+	if (!ChargeSharedPeerXmlChars(*pActive, len))
+		return false;
 
-	// Decode XML
-	pXML = CXMLElement::FromString( strXML );
-	if ( ! pXML )
-		pXML = AutoDetectSchema( strXML );	// Reconstruct XML from non-XML legacy data
+	CString strXML(UTF8Decode((LPCSTR)p, len));
 
-	if ( SchemaCache.Normalize( pSchema, pXML ) )
+	// Decode XML - reuse packet-lifetime budget when provided.
+	pXML = CXMLElement::FromPeerString(strXML, FALSE, NULL, pActive);
+	if (!pXML)
+	{
+		// Legacy non-XML audio text rebuilds a synthetic <audio> root. The
+		// fallback funds its own objects from the shared budget so a failed
+		// FromPeerString at the node cap cannot keep adding unbounded
+		// Autodetect elements.
+		pXML = AutoDetectSchema(strXML, pActive);
+	}
+
+	if (SchemaCache.Normalize(pSchema, pXML))
 		return true;
 
 	// Invalid XML
@@ -491,18 +503,18 @@ bool CG1Packet::ReadXML(CSchemaPtr& pSchema, CXMLElement*& pXML)
 	return false;
 }
 
-CXMLElement* CG1Packet::AutoDetectSchema(LPCTSTR pszInfo)
+CXMLElement* CG1Packet::AutoDetectSchema(LPCTSTR pszInfo, XmlParseBudget* pBudget)
 {
 	if ( _tcsstr( pszInfo, L" Kbps" ) != NULL &&
 		 _tcsstr( pszInfo, L" kHz " ) != NULL )
 	{
-		return AutoDetectAudio( pszInfo );
+		return AutoDetectAudio(pszInfo, pBudget);
 	}
 
 	return NULL;
 }
 
-CXMLElement* CG1Packet::AutoDetectAudio(LPCTSTR pszInfo)
+CXMLElement* CG1Packet::AutoDetectAudio(LPCTSTR pszInfo, XmlParseBudget* pBudget)
 {
 	int nBitrate	= 0;
 	int nFrequency	= 0;
@@ -515,6 +527,19 @@ CXMLElement* CG1Packet::AutoDetectAudio(LPCTSTR pszInfo)
 		bVariable = TRUE;
 		if ( _stscanf( pszInfo, L"%i Kbps(VBR) %i kHz %i:%i", &nBitrate, &nFrequency, &nMinutes, &nSeconds ) != 4 )
 			return NULL;
+	}
+
+	// The synthetic tree holds one root plus two retained attributes. Fund
+	// all three objects from the shared node budget before constructing
+	// anything so a budget with fewer remaining units returns nothing rather
+	// than an under-funded tree.
+	if (pBudget)
+	{
+		for (int i = 0; i < 3; i++)
+		{
+			if (!pBudget->AddNode())
+				return NULL;
+		}
 	}
 
 	if ( CXMLElement* pXML = new CXMLElement( NULL, L"audio" ) )

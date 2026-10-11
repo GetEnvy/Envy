@@ -199,6 +199,7 @@
     <ClCompile Include="test_remote_password_policy_smoke.cpp" />
     <ClCompile Include="test_remote_html_escape_smoke.cpp" />
     <ClCompile Include="test_remote_access_smoke.cpp" />
+    <ClCompile Include="test_xml_peer_parse_smoke.cpp" />
     <ClCompile Include="test_firewall_wfas_policy_smoke.cpp" />
     <ClCompile Include="test_network_job_queue_smoke.cpp" />
     <ClCompile Include="test_chat_session_queue_smoke.cpp" />

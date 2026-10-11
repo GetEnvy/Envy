@@ -529,6 +529,12 @@ BOOL CConnection::OnRun()
 // Read data waiting in the socket into the input buffer
 BOOL CConnection::OnRead()
 {
+	return OnReadBounded(~0ul);
+}
+
+// Read into the input buffer without growing it past nMaxLength.
+BOOL CConnection::OnReadBounded(DWORD nMaxLength)
+{
 	CQuickLock oInputLock( *m_pInputSection );
 
 	// Make sure the socket is valid
@@ -536,6 +542,9 @@ BOOL CConnection::OnRead()
 		return FALSE;
 
 	if ( m_nDelayCloseReason )
+		return TRUE;
+
+	if (m_pInput->m_nLength >= nMaxLength)
 		return TRUE;
 
 	const DWORD tNow = GetTickCount();	// The time right now
@@ -553,6 +562,8 @@ BOOL CConnection::OnRead()
 	if ( nLimit > (DWORD)INT_MAX )
 		nLimit = (DWORD)INT_MAX;
 
+	nLimit = min(nLimit, nMaxLength - m_pInput->m_nLength);
+
 	// Start the total at 0
 	DWORD nTotal = 0ul;
 
@@ -566,6 +577,10 @@ BOOL CConnection::OnRead()
 			nLength = min( nLimit, nLength );
 		else			// Limit nLength to the maximum receive size
 			nLength = min( nLimit, 16384ul );	// Receive up to 16KB blocks from the socket
+
+		nLength = min(nLength, nMaxLength - m_pInput->m_nLength);
+		if (nLength == 0)
+			break;
 
 		// Exit loop if the buffer isn't big enough to hold the data
 		if ( ! m_pInput->EnsureBuffer( nLength ) )

@@ -259,6 +259,10 @@ public:
 	virtual BOOL OnHeadersComplete();	// (do) just returns true
 	virtual BOOL OnHeaderLine(CString& strHeader, CString& strValue);	// Processes a single line from the headers
 
+protected:
+	// Like OnRead, but never grows m_pInput past nMaxLength (for peer-body caps).
+	BOOL OnReadBounded(DWORD nMaxLength);
+
 public:
 	// Hard-coded settings for the bandwidth transfer meter
 	static const DWORD	METER_SECOND	= 1000ul;						// 1000 milliseconds is 1 second

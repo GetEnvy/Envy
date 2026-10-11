@@ -35,6 +35,7 @@
 #include "GGEP.h"
 #include "PacketLengthValidate.h"
 #include "XML.h"
+#include "XmlParseValidate.h"
 
 #include "WndSearch.h"
 #include "DlgHelp.h"
@@ -792,6 +793,8 @@ CQuerySearchPtr CQuerySearch::FromPacket(CPacket* pPacket, const SOCKADDR_IN* pE
 BOOL CQuerySearch::ReadG1Packet(CG1Packet* pPacket, const SOCKADDR_IN* pEndpoint)
 {
 	m_nHops = pPacket->m_nHops;
+	// One peer XML budget for G1 query extensions, matching G2.
+	XmlParseBudget oQueryXmlBudget = XmlParseBudget::PeerDefaults();
 
 	if ( pEndpoint )
 		m_pEndpoint = *pEndpoint;
@@ -862,8 +865,8 @@ BOOL CQuerySearch::ReadG1Packet(CG1Packet* pPacket, const SOCKADDR_IN* pEndpoint
 		}
 		else if ( nPeek == '<' || nPeek == '{' )
 		{
-			// XML extensions
-			pPacket->ReadXML( m_pSchema, m_pXML );
+			// XML extensions - peer-sourced; share oQueryXmlBudget.
+			pPacket->ReadXML(m_pSchema, m_pXML, &oQueryXmlBudget);
 		}
 		else	// if ( nPeek == 0 || nPeek == G1_PACKET_HIT_SEP )
 		{
@@ -1039,6 +1042,7 @@ BOOL CQuerySearch::ReadG2Packet(CG2Packet* pPacket, const SOCKADDR_IN* pEndpoint
 
 	G2_PACKET nType;
 	DWORD nLength;
+	XmlParseBudget oQueryXmlBudget = XmlParseBudget::PeerDefaults();
 
 	m_bAndG1 = FALSE;
 
@@ -1140,30 +1144,50 @@ BOOL CQuerySearch::ReadG2Packet(CG2Packet* pPacket, const SOCKADDR_IN* pEndpoint
 			//MakeKeywords( m_sKeywords, false );
 			break;
 		case G2_PACKET_METADATA:
+		{
+			// Bound before ReadString; share one packet budget across sibling
+			// METADATA children. Oversized fragments clear prior XML; shared-
+			// budget misses omit the extra fragment and keep earlier metadata.
+			if (nLength == 0 || nLength > XML_PEER_PARSE_CHARS_MAX)
 			{
-				CString strXML = pPacket->ReadString( nLength );
-
-				m_pXML->Delete();
-				m_pXML = CXMLElement::FromString( strXML );
-				m_pSchema = NULL;
-
-				if ( m_pXML != NULL )
+				if (m_pXML != NULL)
 				{
-					if ( CXMLAttribute *pURI = m_pXML->GetAttribute( CXMLAttribute::schemaName ) )
-					{
-						m_pSchema = SchemaCache.Get( pURI->GetValue() );
-					}
-					else if ( m_pSchema = SchemaCache.Guess( m_pXML->GetName() ) )
-					{
-						CXMLElement* pRoot = m_pSchema->Instantiate( TRUE );
-						pRoot->AddElement( m_pXML );
-						m_pXML = pRoot;
-					}
+					m_pXML->Delete();
+					m_pXML = NULL;
+				}
+				m_pSchema = NULL;
+				break;
+			}
+			if (!ChargeSharedPeerXmlChars(oQueryXmlBudget, nLength))
+			{
+				theApp.Message(MSG_DEBUG, L"[G2] Query metadata exceeds shared parse budget (%u)", nLength);
+				break;
+			}
+
+			CString strXML = pPacket->ReadString(nLength);
+
+			if (m_pXML != NULL)
+				m_pXML->Delete();
+			m_pXML = CXMLElement::FromPeerString(strXML, FALSE, NULL, &oQueryXmlBudget);
+			m_pSchema = NULL;
+
+			if (m_pXML != NULL)
+			{
+				if (CXMLAttribute* pURI = m_pXML->GetAttribute(CXMLAttribute::schemaName))
+				{
+					m_pSchema = SchemaCache.Get(pURI->GetValue());
+				}
+				else if (m_pSchema = SchemaCache.Guess(m_pXML->GetName()))
+				{
+					CXMLElement* pRoot = m_pSchema->Instantiate(TRUE);
+					pRoot->AddElement(m_pXML);
+					m_pXML = pRoot;
 				}
 			}
-			break;
+		}
+		break;
 		case G2_PACKET_SIZE_RESTRICTION:
-			if ( nLength == 8 )
+			if (nLength == 8)
 			{
 				m_nMinSize = pPacket->ReadLongBE();
 				m_nMaxSize = pPacket->ReadLongBE();

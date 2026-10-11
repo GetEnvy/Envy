@@ -30,6 +30,7 @@
 #include "SchemaCache.h"
 #include "ShellIcons.h"
 #include "XML.h"
+#include "XmlParseValidate.h"
 
 #ifdef _DEBUG
 #undef THIS_FILE
@@ -838,7 +839,8 @@ void CBrowseTreeCtrl::OnTreePacket(CG2Packet* pPacket)
 	Clear( FALSE );
 
 	pPacket->Seek( 0 );
-	OnTreePacket( pPacket, pPacket->m_nLength, m_pRoot );
+	XmlParseBudget oBudget = XmlParseBudget::PeerDefaults();
+	OnTreePacket(pPacket, pPacket->m_nLength, m_pRoot, &oBudget);
 	m_nTotal = m_pRoot->GetChildCount();
 
 	PostMessage( WM_UPDATE );
@@ -937,7 +939,7 @@ void CBrowseTreeCtrl::BuildFromDcListing(const CStringList* pHitPaths, const CDW
 	PostMessage(WM_UPDATE);
 }
 
-void CBrowseTreeCtrl::OnTreePacket(CG2Packet* pPacket, DWORD nFinish, CBrowseTreeItem* pItem)
+void CBrowseTreeCtrl::OnTreePacket(CG2Packet* pPacket, DWORD nFinish, CBrowseTreeItem* pItem, XmlParseBudget* pBudget)
 {
 	BOOL bCompound;
 	G2_PACKET nType;
@@ -948,32 +950,40 @@ void CBrowseTreeCtrl::OnTreePacket(CG2Packet* pPacket, DWORD nFinish, CBrowseTre
 	{
 		DWORD nNext = pPacket->m_nPosition + nLength;
 
-		if ( ( nType == G2_PACKET_PHYSICAL_FOLDER || nType == G2_PACKET_VIRTUAL_FOLDER ) && bCompound == TRUE )
+		if ((nType == G2_PACKET_PHYSICAL_FOLDER || nType == G2_PACKET_VIRTUAL_FOLDER) && bCompound == TRUE)
 		{
-			CBrowseTreeItem* pChild = new CBrowseTreeItem( pItem );
-			OnTreePacket( pPacket, nNext, pChild );
-			pChild->m_bExpanded = ( pItem == m_pRoot );
-			pItem->Add( pChild );
+			CBrowseTreeItem* pChild = new CBrowseTreeItem(pItem);
+			OnTreePacket(pPacket, nNext, pChild, pBudget);
+			pChild->m_bExpanded = (pItem == m_pRoot);
+			pItem->Add(pChild);
 		}
-		else if ( nType == G2_PACKET_DESCRIPTIVE_NAME && bCompound == FALSE )
+		else if (nType == G2_PACKET_DESCRIPTIVE_NAME && bCompound == FALSE)
 		{
-			pItem->m_sText = pPacket->ReadString( nLength );
+			pItem->m_sText = pPacket->ReadString(nLength);
 		}
-		else if ( nType == G2_PACKET_METADATA && bCompound == FALSE )
+		else if (nType == G2_PACKET_METADATA && bCompound == FALSE)
 		{
-			CAutoPtr< CXMLElement > pXML( CXMLElement::FromString( pPacket->ReadString( nLength ) ) );
-			pItem->AddXML( pXML );
+			// Bound before ReadString; oversized packets still advance via nNext below.
+			// Shared pBudget across the whole browse tree so sibling METADATA
+			// children cannot reset peer node/char caps independently.
+			if (nLength <= XML_PEER_PARSE_CHARS_MAX &&
+			    pBudget && ChargeSharedPeerXmlChars(*pBudget, nLength))
+			{
+				CAutoPtr<CXMLElement> pXML(CXMLElement::FromPeerString(
+				    pPacket->ReadString(nLength), FALSE, NULL, pBudget));
+				pItem->AddXML(pXML);
+			}
 		}
-		else if ( nType == G2_PACKET_FILES && bCompound == FALSE )
+		else if (nType == G2_PACKET_FILES && bCompound == FALSE)
 		{
-			if ( pItem->m_pFiles != NULL ) delete [] pItem->m_pFiles;
+			if (pItem->m_pFiles != NULL) delete[] pItem->m_pFiles;
 
 			pItem->m_nFiles = nLength / 4;
-			pItem->m_pFiles = new DWORD[ pItem->m_nFiles ];
+			pItem->m_pFiles = new DWORD[pItem->m_nFiles];
 
-			for ( DWORD nCount = pItem->m_nFiles; nCount; nCount-- )
+			for (DWORD nCount = pItem->m_nFiles; nCount; nCount--)
 			{
-				pItem->m_pFiles[ nCount - 1 ] = pPacket->ReadLongBE();
+				pItem->m_pFiles[nCount - 1] = pPacket->ReadLongBE();
 			}
 		}
 

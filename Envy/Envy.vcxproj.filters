@@ -2015,6 +2015,12 @@
     <ClInclude Include="NetworkJobValidate.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="XmlParseValidate.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DownloadTransferHttpValidate.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="Ed2kHelloCapabilities.h">
       <Filter>Header Files</Filter>
     </ClInclude>

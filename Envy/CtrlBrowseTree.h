@@ -24,6 +24,7 @@ class CBrowseTreeItem;
 class CG2Packet;
 class CXMLElement;
 class CQueryHit;
+struct XmlParseBudget;
 
 
 class CBrowseTreeCtrl : public CWnd
@@ -71,9 +72,9 @@ protected:
 	BOOL				CleanItems(CBrowseTreeItem* pItem, DWORD nCookie, BOOL bVisible);
 	BOOL				CollapseRecursive(CBrowseTreeItem* pItem);
 	void				NotifySelection();
-	void				OnTreePacket(CG2Packet* pPacket, DWORD nFinish, CBrowseTreeItem* pItem);
+	void OnTreePacket(CG2Packet* pPacket, DWORD nFinish, CBrowseTreeItem* pItem, XmlParseBudget* pBudget);
 
-// Inlines
+	// Inlines
 public:
 	inline CSyncObject* SyncRoot()
 	{

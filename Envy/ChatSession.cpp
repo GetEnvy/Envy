@@ -43,6 +43,7 @@
 #include "ImageFile.h"
 #include "Buffer.h"
 #include "XML.h"
+#include "XmlParseValidate.h"
 
 #ifdef _DEBUG
 #undef THIS_FILE
@@ -1090,29 +1091,41 @@ BOOL CChatSession::OnProfileDelivery(CG2Packet* pPacket)
 
 	G2_PACKET nType;
 	DWORD nLength;
+	XmlParseBudget oBudget = XmlParseBudget::PeerDefaults();
 
 	while ( pPacket->ReadPacket( nType, nLength ) )
 	{
 		DWORD nOffset = pPacket->m_nPosition + nLength;
 
-		if ( nType == G2_PACKET_XML )
+		if (nType == G2_PACKET_XML)
 		{
-			CXMLElement* pXML = CXMLElement::FromString( pPacket->ReadString( nLength ), TRUE );
-
-			if ( pXML != NULL )
+			// Bound before ReadString; oversized XML still advances via nOffset.
+			if (nLength <= XML_PEER_PARSE_CHARS_MAX &&
+			    ChargeSharedPeerXmlChars(oBudget, nLength))
 			{
-				m_pProfile = new CGProfile();
+				CXMLElement* pXML = CXMLElement::FromPeerString(
+				    pPacket->ReadString(nLength), TRUE, NULL, &oBudget);
 
-				if ( m_pProfile == NULL )
+				if (pXML != NULL)
 				{
-					//theApp.Message( MSG_ERROR, L"Error in CChatSession::OnProfileDelivery()" );
-					delete pXML;
-				}
-				else if ( ! m_pProfile->FromXML( pXML ) || ! m_pProfile->IsValid() )
-				{
-					delete pXML;
-					delete m_pProfile;
-					m_pProfile = NULL;
+					// FromXML adopts pXML on success; only delete pXML when
+					// FromXML rejects it. IsValid failure must delete the
+					// profile (and the adopted XML) without touching pXML again.
+					if (m_pProfile == NULL)
+						m_pProfile = new CGProfile();
+					if (m_pProfile == NULL)
+					{
+						delete pXML;
+					}
+					else if (!m_pProfile->FromXML(pXML))
+					{
+						delete pXML;
+					}
+					else if (!m_pProfile->IsValid())
+					{
+						delete m_pProfile;
+						m_pProfile = NULL;
+					}
 				}
 			}
 		}
@@ -1120,7 +1133,7 @@ BOOL CChatSession::OnProfileDelivery(CG2Packet* pPacket)
 		pPacket->m_nPosition = nOffset;
 	}
 
-	if ( m_pProfile == NULL ) return TRUE;
+	if (m_pProfile == NULL) return TRUE;
 
 	m_sNick = m_pProfile->GetNick();
 

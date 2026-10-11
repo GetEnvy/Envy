@@ -19,6 +19,7 @@
 #include "StdAfx.h"
 #include "Strings.h"
 #include "XML.h"
+#include "XmlParseValidate.h"
 
 #ifdef DEBUG_NEW
 #undef THIS_FILE
@@ -426,7 +427,7 @@ CXMLElement* CXMLElement::FromString(LPCTSTR pszXML, BOOL bHeader, CString* pEnc
 
 		pElement = new CXMLElement();
 
-		if ( ! pElement->ParseString( pszXML ) )
+		if (!pElement->ParseString(pszXML, NULL))
 		{
 			delete pElement;
 			pElement = NULL;
@@ -442,8 +443,119 @@ CXMLElement* CXMLElement::FromString(LPCTSTR pszXML, BOOL bHeader, CString* pEnc
 	return pElement;
 }
 
-BOOL CXMLElement::ParseString(LPCTSTR& strXML)
+CXMLElement* CXMLElement::FromPeerString(LPCTSTR pszXML, BOOL bHeader, CString* pEncoding, XmlParseBudget* pBudget)
 {
+	if (pszXML == NULL)
+		return NULL;
+
+	XmlParseBudget oLocal = XmlParseBudget::PeerDefaults();
+	XmlParseBudget* pActive = pBudget ? pBudget : &oLocal;
+
+	// Shared budgets already charged characters for the whole peer payload.
+	if (!pBudget)
+	{
+		// Compare size_t before DWORD cast so lengths > MAXDWORD cannot wrap
+		// to a small value and bypass the peer character cap.
+		const size_t nLen = _tcslen(pszXML);
+		if (nLen > XML_PEER_PARSE_CHARS_MAX)
+			return NULL;
+		if (!AdmitPeerXmlChars(*pActive, static_cast<DWORD>(nLen)))
+			return NULL;
+	}
+
+	CXMLElement* pElement = NULL;
+	LPCTSTR pszElement = NULL;
+	XmlParseDepthRestore oDepth(*pActive);
+
+	try
+	{
+		if (ParseMatch(pszXML, L"<?xml version=\""))
+		{
+			pszElement = _tcsstr(pszXML, L"?>");
+			if (!pszElement)
+				return NULL;
+			if (pEncoding)
+			{
+				LPCTSTR pszEncoding = _tcsstr(pszXML, L"encoding=\"");
+				if (pszEncoding && pszEncoding < pszElement)
+				{
+					pszEncoding += 10;
+					LPCTSTR pszEncodingEnd = _tcschr(pszEncoding, L'\"');
+					if (pszEncodingEnd && pszEncodingEnd < pszElement)
+						pEncoding->Append(pszEncoding, (int)(pszEncodingEnd - pszEncoding));
+				}
+			}
+			pszXML = pszElement + 2;
+		}
+		else if (bHeader)
+		{
+			return NULL;
+		}
+
+		while (ParseMatch(pszXML, L"<!--"))
+		{
+			pszElement = _tcsstr(pszXML, L"-->");
+			if (!pszElement || *pszElement != '-')
+				return NULL;
+			pszXML = pszElement + 3;
+		}
+
+		while (ParseMatch(pszXML, L"<?xml"))
+		{
+			pszElement = _tcsstr(pszXML, L"?>");
+			if (!pszElement)
+				return NULL;
+			pszXML = pszElement + 2;
+		}
+
+		if (ParseMatch(pszXML, L"<!DOCTYPE"))
+		{
+			pszElement = _tcsstr(pszXML, L">");
+			if (!pszElement)
+				return NULL;
+			pszXML = pszElement + 1;
+		}
+
+		while (ParseMatch(pszXML, L"<!--"))
+		{
+			pszElement = _tcsstr(pszXML, L"-->");
+			if (!pszElement || *pszElement != '-')
+				return NULL;
+			pszXML = pszElement + 3;
+		}
+
+		pElement = new CXMLElement();
+
+		// Count the root toward depth so XML_PEER_PARSE_DEPTH_MAX is inclusive.
+		if (!pActive->EnterElement())
+		{
+			delete pElement;
+			return NULL;
+		}
+
+		if (!pElement->ParseString(pszXML, pActive))
+		{
+			delete pElement;
+			pElement = NULL;
+		}
+		// Root LeaveElement is XmlParseDepthRestore: success, FALSE, early
+		// return, and CException all restore the pre-fragment depth.
+	}
+	catch (CException* pException)
+	{
+		pException->Delete();
+		delete pElement;
+		pElement = NULL;
+	}
+
+	return pElement;
+}
+
+BOOL CXMLElement::ParseString(LPCTSTR& strXML, XmlParseBudget* pBudget)
+{
+	if (pBudget && !pBudget->AddNode())
+		return FALSE;
+
 	if ( ! ParseMatch( strXML, L"<" ) )
 		return FALSE;
 
@@ -456,6 +568,12 @@ BOOL CXMLElement::ParseString(LPCTSTR& strXML)
 			return ParseMatch( strXML, L">" );
 
 		if ( ! *strXML )
+			return FALSE;
+
+		// Attributes are retained objects too: charge the shared peer budget
+		// per attribute so a single element tag cannot allocate unbounded
+		// CXMLAttribute objects and map entries inside the advertised node cap.
+		if (pBudget && !pBudget->AddNode())
 			return FALSE;
 
 		CXMLAttribute* pAttribute = new CXMLAttribute( this );
@@ -527,7 +645,16 @@ BOOL CXMLElement::ParseString(LPCTSTR& strXML)
 		{
 			CXMLElement* pElement = new CXMLElement( this );
 
-			if ( pElement->ParseString( strXML ) )
+			XmlEnterElement oChildDepth;
+			if (!oChildDepth.Enter(pBudget))
+			{
+				delete pElement;
+				return FALSE;
+			}
+
+			const BOOL bParsed = pElement->ParseString(strXML, pBudget);
+
+			if (bParsed)
 			{
 				m_pElements.AddTail( pElement );
 			}
@@ -545,7 +672,9 @@ BOOL CXMLElement::ParseString(LPCTSTR& strXML)
 //////////////////////////////////////////////////////////////////////
 // CXMLElement from bytes
 
-CXMLElement* CXMLElement::FromBytes(BYTE* pByte, DWORD nByte, BOOL bHeader)
+namespace
+{
+CString DecodeXmlBytesToString(BYTE* pByte, DWORD nByte)
 {
 	CString strXML;
 
@@ -583,7 +712,22 @@ CXMLElement* CXMLElement::FromBytes(BYTE* pByte, DWORD nByte, BOOL bHeader)
 		strXML = UTF8Decode( (LPCSTR)pByte, nByte );
 	}
 
-	return FromString( strXML, bHeader );
+	return strXML;
+}
+} // namespace
+
+CXMLElement* CXMLElement::FromBytes(BYTE* pByte, DWORD nByte, BOOL bHeader)
+{
+	return FromString(DecodeXmlBytesToString(pByte, nByte), bHeader);
+}
+
+CXMLElement* CXMLElement::FromPeerBytes(BYTE* pByte, DWORD nByte, BOOL bHeader, XmlParseBudget* pBudget)
+{
+	// Bound the wire representation before decoding allocates a CString.
+	// FromPeerString applies character accounting unless the caller owns it.
+	if (pByte == NULL || !AdmitPeerXmlBytes(nByte))
+		return NULL;
+	return FromPeerString(DecodeXmlBytesToString(pByte, nByte), bHeader, NULL, pBudget);
 }
 
 //////////////////////////////////////////////////////////////////////

@@ -1,6 +1,14 @@
 # DEVELOPMENT PLAN (LIVING)
 
-- **Last Updated:** 2026-10-10
+- **Last Updated:** 2026-10-11
+
+- **Changelog Entry:** 2026-10-11 - #393: maintainer reports successful validation of ac29717 (EnvyTests 735/735, PeerXmlTests 18/18 and fixture HTTP 21/21); Release x64/Win32 CI builds passed. Correct the validation guide: loopback sources are rejected by the application's reserved-address policy, so fixture self-tests are not application integration evidence. Separate native parser coverage from admitted-peer application tests and document THEX/Tiger/legacy MD4 DIME type identifiers without changing protocol bytes or network protections. Historical Gnutella issues #453/#319 remain outside this PR.
+
+- **Changelog Entry:** 2026-10-11 - #393/#391: distinguish valid THEX descriptor state from an empty identity; retain empty DIME ID compatibility and guard missing/empty URI fallback by an existing TTH. Validate complete binary rows and both historic depth conventions, strict numeric metadata/Content-Length and DIME message framing. Native tests now execute production SetTigerTree with HashLib. Reference source comparisons, client-specific G1/G2 steps, synthetic fixtures and manual Visual Studio instructions are in `docs/10_dev/peer-xml-validation.md`. Full application builds/live interoperability remain maintainer work; local corrections must not be pushed before those results.
+
+- **Changelog Entry:** 2026-10-11 - #393: add isolated native tests compiling the unchanged production THEX/DIME methods; cover every two-read boundary, descriptor identity/reset, truncation, malformed framing, early size rejection and invalid-descriptor draining. Full transfer/profile/live interoperability remains pending.
+
+- **Changelog Entry:** 2026-10-11 — #393/#391: synchronize with current develop, drain HTTP socket data across capped header/body phases before close handling, reject zero-length file responses before mutating download size, and add native MFC XML plus loopback receive regressions. Preserve THEX type identifiers; document the Sonar HTTP warning as a protocol-identifier false positive. Explicit native-suite commands and controlled HTTP/THEX/manual peer checks are in `docs/10_dev/peer-xml-validation.md`; live interoperability remains pending.
 
 - **Changelog Entry:** 2026-10-10 — #422/#419: independently recheck every shipped bootstrap endpoint and ED2K/Kad/DC/DHT alternatives; add the AirDC++-documented Team Elite HTTPS hublist after bounded BZip2/XML and NMDC compatibility validation. Preserve three DHT routers within the existing DNS budget, reject stale/unverified Kad alternatives, and enforce blocked identities and truncated-row rejection offline. Persisted-service migration (#419), private-torrent isolation (#317), defaults (#418), Kad runtime/retry (#86/#430), UDP obfuscation (#431) and live interoperability (#160) remain separate open work.
 
@@ -12,10 +20,20 @@
 - **Changelog Entry:** 2026-10-07 - P2P reference registry refresh (#387 resumed): `REFERENCE_IMPLEMENTATIONS.md` expanded (amule-org, eMuleBB/padMule/MorphXT/heritage/BT/DC); October ecosystem audit; optional ignored clones via `tools/references/` -> `Examples/References/` (D-023). No AGENTS/governance change; no protocol code.
 - **Changelog Entry:** 2026-10-01 — Finalization of #395 preserves one non-author approval, all eight live required contexts, CodeQL/Gitleaks and GitHub Code Quality (severity All). Retain the staged Draft/live-test/Ready workflow and manual maintainer transitions; squash summaries remain curated. #397 owns review outcome tracking, not merge authority.
 
+- **Changelog Entry:** 2026-10-06 — #393: ChatSession profile ownership matches HostBrowser; move ordinary CL=0 reject after HTTP control classification; clear breadth-first THEX remainder; `ReadDIME` reuses `PeekDIME`; shared HTTP/THEX admission helpers + EnvyTests.
+
+- **Changelog Entry:** 2026-10-06 — #393: restore historical copyright bytes on edited ISO-8859 sources; RAII restore of shared XML parse depth after failure; share G2 query METADATA budget; EnvyTests depth-restore and DWORD ConsumeChars overflow cases.
+
+- **Changelog Entry:** 2026-10-05 — #393: sync onto `develop` after #392; `ChargeSharedPeerXmlChars`/`AdmitPeerXml*` entry helpers; THEX `XML_PEER_THEX_BODY_CAP` pre-accept reject; Metadata wrapper node funding; expanded EnvyTests peer-entry smoke (helpers only — no MFC `CXMLElement` link).
+
+
 - **Changelog Entry:** 2026-10-01 — Proactive Draft stabilization: remove fixed correction-attempt stops, retain complete history and human decisions, automate supported reviewer requests and validated lifecycle transitions, and preserve privacy/naming and native review/security gates. #397 supplies the host coordinator; external app entitlement and live pilot remain explicit rollout evidence.
 
 > **LIVING DOCUMENT** — Must be updated after every meaningful change (feature, architectural decision, scope change, blocker resolution).
 
+- **Changelog Entry:** 2026-09-30 — #393: share one `XmlParseBudget` across G1 per-hit `ReadXML` extensions and the trailer; THEX/MetaFetch receive caps; reject keep-alive unknown THEX length; finish buffered known-length MetaFetch on drop; parse THEX headers before the 16 KiB header-phase fail-closed; `PeekDIME` rejects oversized DIME `text/xml` before buffering the body.
+- **Changelog Entry:** 2026-09-30 — #393: gate G1 hit XML raw allocation and charge shared G2 METADATA character budget before `ReadString`; add EnvyTests filter entry for the peer-XML smoke test.
+- **Changelog Entry:** 2026-09-30 — #393: share peer XML parse budgets across multi-fragment G1/G2 metadata and gate profile/query `ReadString` behind the 256 KiB pre-materialization cap.
 - **Changelog Entry:** 2026-09-30 — PR governance simplification (D-022): keep one non-author approving review as the trust boundary against PR-controlled CI self-bypass; path-based conditional Windows builds; Sonar/advisory bots; ruleset-as-code audit; `docs/10_dev/pr-workflow.md`.
 - **Changelog Entry:** 2026-09-29 — (superseded wording) earlier D-022 draft considered zero mandatory approvals; rejected after review of PR-controlled classify/build bypass risk.
 - **Changelog Entry:** 2026-09-29 — #327: retire Renovate; Dependabot owns vcpkg, `Remote/tests` npm, and GitHub Actions; docs/ownership inventory aligned; Dependency Review on PRs targeting `main`/`master`/`develop`; **Repository Status** CI/merge text aligned with post-#381 (no PR Gate poller; optional branch-commit signatures).

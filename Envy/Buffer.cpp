@@ -971,53 +971,77 @@ BOOL CBuffer::ReadDIME(
 	CString* psType,	// Writes "text/xml" or a URI to an XML specification
 	DWORD* pnBody)		// Writes how long the body of the DIME message is
 {
-	// Make sure the buffer has at least 12 bytes
-	if ( m_nLength < 12 ) return FALSE;
+	// Share header validation with PeekDIME so THEX framing cannot drift.
+	DWORD nBody = 0;
+	DWORD nSkip = 0;
+	if (!PeekDIME(pnFlags, psID, psType, &nBody, &nSkip))
+		return FALSE;
 
-	// Point pIn at the start of this buffer
+	// PeekDIME only requires the header; wait until the padded body is present
+	// and reject lengths that would wrap the padding arithmetic.
+	if (nBody > MAXDWORD - 3u)
+		return FALSE;
+	const DWORD nPaddedBody = (nBody + 3) & ~3;
+	if (nPaddedBody > MAXDWORD - nSkip || m_nLength < nSkip + nPaddedBody)
+		return FALSE;
+
+	if (pnBody != NULL)
+		*pnBody = nBody;
+
+	Remove(nSkip);
+	return TRUE;
+}
+
+// Peek a DIME record header (flags/id/type/body length) without requiring the
+// body bytes and without removing anything. Used to reject oversized peer XML
+// before ReadDIME would wait for the full declared body in m_pInput.
+BOOL CBuffer::PeekDIME(
+    DWORD* pnFlags,
+    CString* psID,
+    CString* psType,
+    DWORD* pnBody,
+    DWORD* pnHeaderBytes)
+{
+	if (m_nLength < 12) return FALSE;
+
 	BYTE* pIn = m_pBuffer;
 
-	// The first 5 bits of the first byte, 00000---, must not be 00001---
-	if ( ( *pIn & 0xF8 ) != 0x08 ) return FALSE;
+	if ((*pIn & 0xF8) != 0x08) return FALSE;
 
-	// If this method was passed a pnFlags DWORD
-	if ( pnFlags != NULL )
+	if (pnFlags != NULL)
 	{
-		// Write it for the caller
-		*pnFlags = 0;			// Start it out as 0
-		if ( *pIn & 4 ) *pnFlags |= 1;	// If the first byte in the buffer has a bit here -----1--, put one here -------1 in pnFlags
-		if ( *pIn & 2 ) *pnFlags |= 2;	// If the first byte in the buffer has a bit here ------1-, put one here ------1- in pnFlags
+		*pnFlags = 0;
+		if (*pIn & 4) *pnFlags |= 1;
+		if (*pIn & 2) *pnFlags |= 2;
 	}
 
-	// Move the pIn pointer to the second byte in the buffer, and make sure it's not 00001010 or 00010100
 	pIn++;
-	if ( *pIn != 0x10 && *pIn != 0x20 ) return FALSE;
+	if (*pIn != 0x10 && *pIn != 0x20) return FALSE;
 
-	// Make sure bytes 3 and 4 in the buffer aren't 0, and move pIn a distance of 4 bytes into the buffer, pointing at the 5th byte
 	pIn++;
-	if ( *pIn++ != 0x00 ) return FALSE;
-	if ( *pIn++ != 0x00 ) return FALSE;
+	if (*pIn++ != 0x00) return FALSE;
+	if (*pIn++ != 0x00) return FALSE;
 
-	// Read nID, nType, and pnBody from the buffer, and move the pointer forward 8 bytes
-	WORD nID	= ( pIn[0] << 8 ) + pIn[1]; pIn += 2;
-	WORD nType	= ( pIn[0] << 8 ) + pIn[1]; pIn += 2;
-	*pnBody 	= ( pIn[0] << 24 ) + ( pIn[1] << 16 ) + ( pIn[2] << 8 ) + pIn[3];	// Write the body length in the DWORD from the caller
-	pIn += 4;	// Move forward another 4 bytes to total 8 bytes for this section
+	WORD nID = (pIn[0] << 8) + pIn[1];
+	pIn += 2;
+	WORD nType = (pIn[0] << 8) + pIn[1];
+	pIn += 2;
+	DWORD nBody = (pIn[0] << 24) + (pIn[1] << 16) + (pIn[2] << 8) + pIn[3];
+	pIn += 4;
 
-	// Skip forward a distance determined by the lengths we just read
-	DWORD nSkip = 12 + ( ( nID + 3 ) & ~3 ) + ( ( nType + 3 ) & ~3 );
-	if ( m_nLength < nSkip + ( ( *pnBody + 3 ) & ~3 ) )
-		return FALSE;					// Make sure the buffer is big enough to skip this far forward
+	const DWORD nSkip = 12 + ((nID + 3) & ~3) + ((nType + 3) & ~3);
+	if (m_nLength < nSkip)
+		return FALSE;
 
-	// Read psID, a GUID in hexadecimal encoding
-	*psID = CString( reinterpret_cast< char* >( pIn ), nID );
-	pIn += ( nID + 3 ) & ~3;			// Move pIn forward beyond the psID text and align at 4 bytes
+	if (pnBody != NULL)
+		*pnBody = nBody;
+	if (pnHeaderBytes != NULL)
+		*pnHeaderBytes = nSkip;
+	if (psID != NULL)
+		*psID = CString(reinterpret_cast<char*>(pIn), nID);
+	pIn += (nID + 3) & ~3;
+	if (psType != NULL)
+		*psType = CString(reinterpret_cast<char*>(pIn), nType);
 
-	// Read psType, a GUID in hexadecimal encoding
-	*psType = CString( reinterpret_cast< char* >( pIn ), nType );
-	pIn += ( nType + 3 ) & ~3;			// Move pIn forward beyond the pszType text and align at 4 bytes
-
-	// Remove the first part of the DIME message from the buffer, and report success
-	Remove( nSkip );
 	return TRUE;
 }

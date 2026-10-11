@@ -29,6 +29,7 @@ class CDCPacket;
 class CMatchFile;
 class CQuerySearch;
 class CXMLElement;
+struct XmlParseBudget;
 
 class CQueryHit : public CEnvyFile
 {
@@ -91,7 +92,7 @@ public:
 	static CQueryHit* FromDCPacket(CDCPacket* pPacket, UINT nNmdcCodePage = 0);
 
 protected:
-	static CXMLElement*	ReadXML(CG1Packet* pPacket, int nSize);
+	static CXMLElement* ReadXML(CG1Packet* pPacket, int nSize, XmlParseBudget* pBudget = NULL);
 
 public:
 	CQueryHit&	operator=(const CQueryHit& pOther);
@@ -103,10 +104,10 @@ public:
 	void		ReadEDPacket(CEDPacket* pPacket, const SOCKADDR_IN* pServer, BOOL bUnicode);
 protected:
 	void		ParseAttributes(const Hashes::Guid& pClientID, CVendorPtr pVendor, BYTE* nFlags, BOOL bChat, BOOL bBrowseHost);
-	void		ReadG1Packet(CG1Packet* pPacket);
+	void ReadG1Packet(CG1Packet* pPacket, XmlParseBudget* pBudget = NULL);
 	void		ReadGGEP(CG1Packet* pPacket);
 	BOOL		CheckValid() const;
-	void		ReadG2Packet(CG2Packet* pPacket, DWORD nLength);
+	void ReadG2Packet(CG2Packet* pPacket, DWORD nLength, XmlParseBudget* pBudget = NULL);
 	void		ReadEDAddress(CEDPacket* pPacket, const SOCKADDR_IN* pServer);
 	BOOL		ParseXML(CXMLElement* pXML, DWORD nRealIndex);
 

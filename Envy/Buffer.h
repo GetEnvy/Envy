@@ -94,8 +94,10 @@ public:
 	// Read and write a DIME message in the buffer
 	void	WriteDIME(DWORD nFlags, LPCSTR pszID, size_t nIDLength, LPCSTR pszType, size_t nTypeLength, LPCVOID pBody, size_t nBody);
 	BOOL	ReadDIME(DWORD* pnFlags, CString* psID, CString* psType, DWORD* pnBody);
+	// Header/id/type only -- does not require the body and does not consume bytes.
+	BOOL PeekDIME(DWORD* pnFlags, CString* psID, CString* psType, DWORD* pnBody, DWORD* pnHeaderBytes = NULL);
 
-// Inlines
+	// Inlines
 public:
 	// Clears the memory from the buffer
 	inline void	Clear() noexcept

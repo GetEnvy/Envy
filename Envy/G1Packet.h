@@ -27,6 +27,7 @@
 #include "Schema.h"
 
 class CEnvyFile;		// Compilation Fix
+struct XmlParseBudget;
 
 // Instruct compiler to align bytes and DWORDs on a 1 byte boundary (No spaces)
 #pragma pack(1)
@@ -97,11 +98,11 @@ public:
 	static void GGEPWriteRandomCache(CGGEPBlock& pGGEP, LPCTSTR pszID);
 
 	bool ReadHUGE(CEnvyFile* pFile);			// Read Gnutella HUGE extension
-	bool ReadXML(CSchemaPtr& pSchema, CXMLElement*& pXML);	// Read Gnutella XML extension
+	bool ReadXML(CSchemaPtr& pSchema, CXMLElement*& pXML, XmlParseBudget* pBudget = NULL); // Read Gnutella XML extension
 
 	// Decode metadata and Schema from text or XML deflated or plain
-	static CXMLElement* AutoDetectSchema(LPCTSTR pszInfo);
-	static CXMLElement* AutoDetectAudio(LPCTSTR pszInfo);
+	static CXMLElement* AutoDetectSchema(LPCTSTR pszInfo, XmlParseBudget* pBudget);
+	static CXMLElement* AutoDetectAudio(LPCTSTR pszInfo, XmlParseBudget* pBudget);
 
 protected:
 	// Create a nested class, CG1PacketPool, that holds arrays of Gnutella packets we can use quickly

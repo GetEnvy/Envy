@@ -39,6 +39,7 @@
 #include "VendorCache.h"
 #include "GProfile.h"
 #include "XML.h"
+#include "XmlParseValidate.h"
 #include "DcBrowse.h"
 #include "DcFileListValidate.h"
 
@@ -1094,25 +1095,33 @@ void CHostBrowser::OnProfilePacket(CG2Packet* pPacket)
 {
 	G2_PACKET nType;
 	DWORD nLength;
+	XmlParseBudget oBudget = XmlParseBudget::PeerDefaults();
 
 	while ( pPacket->ReadPacket( nType, nLength ) )
 	{
 		DWORD nOffset = pPacket->m_nPosition + nLength;
 
-		if ( nType == G2_PACKET_XML )
+		if (nType == G2_PACKET_XML)
 		{
-			CXMLElement* pXML = CXMLElement::FromString( pPacket->ReadString( nLength ), TRUE );
-
-			if ( pXML != NULL )
+			// Bound before ReadString; oversized XML still advances via nOffset.
+			// Shared budget across sibling XML children in one profile delivery.
+			if (nLength <= XML_PEER_PARSE_CHARS_MAX &&
+			    ChargeSharedPeerXmlChars(oBudget, nLength))
 			{
-				if ( m_pProfile == NULL )
-					m_pProfile = new CGProfile();
-				if ( m_pProfile && ! m_pProfile->FromXML( pXML ) )
-					delete pXML;
-				if ( m_pProfile && ! m_pProfile->IsValid() )
+				CXMLElement* pXML = CXMLElement::FromPeerString(
+				    pPacket->ReadString(nLength), TRUE, NULL, &oBudget);
+
+				if (pXML != NULL)
 				{
-					delete m_pProfile;
-					m_pProfile = NULL;
+					if (m_pProfile == NULL)
+						m_pProfile = new CGProfile();
+					if (m_pProfile && !m_pProfile->FromXML(pXML))
+						delete pXML;
+					if (m_pProfile && !m_pProfile->IsValid())
+					{
+						delete m_pProfile;
+						m_pProfile = NULL;
+					}
 				}
 			}
 		}

@@ -18,6 +18,8 @@
 
 #pragma once
 
+struct XmlParseBudget;
+
 class CXMLNode;
 class CXMLElement;
 class CXMLAttribute;
@@ -110,7 +112,7 @@ public:
 	void			DeleteAttribute(LPCTSTR pszName);
 	void			DeleteAllAttributes();
 	CString			ToString(BOOL bHeader = FALSE, BOOL bNewline = FALSE, BOOL bEncoding = FALSE, TRISTATE bStandalone = TRI_UNKNOWN) const;
-	BOOL			ParseString(LPCTSTR& strXML);
+	BOOL ParseString(LPCTSTR& strXML, XmlParseBudget* pBudget = NULL);
 	BOOL			Equals(CXMLElement* pXML) const;
 	// Add missing elements and attributes from pInput, preserve or overwrite existing
 	BOOL			Merge(const CXMLElement* pInput, BOOL bOverwrite = FALSE);
@@ -118,7 +120,11 @@ public:
 	void			Serialize(CArchive& ar);
 
 	static CXMLElement*	FromString(LPCTSTR pszXML, BOOL bHeader = FALSE, CString* pEncoding = NULL);
+	// When pBudget is non-null, reuse it across fragments (aggregate node/depth caps);
+	// the caller owns character accounting for that shared payload.
+	static CXMLElement* FromPeerString(LPCTSTR pszXML, BOOL bHeader = FALSE, CString* pEncoding = NULL, XmlParseBudget* pBudget = NULL);
 	static CXMLElement* FromBytes(BYTE* pByte, DWORD nByte, BOOL bHeader = FALSE);
+	static CXMLElement* FromPeerBytes(BYTE* pByte, DWORD nByte, BOOL bHeader = FALSE, XmlParseBudget* pBudget = NULL);
 	static CXMLElement* FromFile(LPCTSTR pszPath, BOOL bHeader = FALSE);
 	static CXMLElement* FromFile(HANDLE hFile, BOOL bHeader = FALSE);
 };
