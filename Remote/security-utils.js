@@ -65,8 +65,86 @@
             return null;
         }
 
+        if (/[\u0000-\u001F\u007F]/.test(value)) {
+            return null;
+        }
+
+        const rawPathname = value.split(/[?#]/, 1)[0];
+        const rawPathnames = [rawPathname];
+        let decodedPath;
+        try {
+            decodedPath = decodeURIComponent(rawPathname);
+        } catch (error) {
+            return null;
+        }
+        rawPathnames.push(decodedPath);
+
+        let decodingComplete = false;
+        for (let i = 1; i < 10; i += 1) {
+            let nextPath = '';
+            let changed = false;
+            for (let offset = 0; offset < decodedPath.length;) {
+                if (decodedPath[offset] !== '%' || !/^[0-9A-Fa-f]{2}$/.test(decodedPath.slice(offset + 1, offset + 3))) {
+                    nextPath += decodedPath[offset];
+                    offset += 1;
+                    continue;
+                }
+
+                let end = offset;
+                while (decodedPath[end] === '%' && /^[0-9A-Fa-f]{2}$/.test(decodedPath.slice(end + 1, end + 3))) {
+                    end += 3;
+                }
+
+                const encodedRun = decodedPath.slice(offset, end);
+                try {
+                    nextPath += decodeURIComponent(encodedRun);
+                } catch (error) {
+                    nextPath += encodedRun;
+                }
+                changed = true;
+                offset = end;
+            }
+
+            if (!changed || nextPath === decodedPath) {
+                decodingComplete = true;
+                break;
+            }
+            decodedPath = nextPath;
+            rawPathnames.push(decodedPath);
+        }
+
+        if (!decodingComplete) {
+            return null;
+        }
+
+        if (rawPathnames.some(pathname => /[\u0000-\u001F\u007F]/.test(pathname) || pathname.includes('\\') || pathname.split('/').some(segment => segment === '.' || segment === '..'))) {
+            return null;
+        }
+
+        if (/[\u0000-\u001F\u007F]/.test(decodedPath) || decodedPath.includes('\\')) {
+            return null;
+        }
+
+        let parsed;
+        let normalizedParsed;
+        try {
+            parsed = new URL(value, 'http://localhost/');
+            normalizedParsed = new URL(decodedPath, 'http://localhost/');
+        } catch (error) {
+            return null;
+        }
+
+        const pathname = parsed.pathname;
+        const normalizedPathname = normalizedParsed.pathname;
+        if (pathname.includes('\\') || normalizedPathname.includes('\\') || normalizedPathname.split('/').some(segment => segment === '.' || segment === '..')) {
+            return null;
+        }
+
         const validPrefixes = allowlist || ['/remote', '/api'];
-        const isAllowed = validPrefixes.some(prefix => value === prefix || value.startsWith(prefix + '/') || (prefix === '/' && value.startsWith('/')));
+        const isAllowed = validPrefixes.some(prefix => {
+            const matchesPrefix = candidate => candidate === prefix || candidate.startsWith(prefix + '/') || (prefix === '/' && candidate.startsWith('/'));
+            return matchesPrefix(pathname) && matchesPrefix(normalizedPathname);
+        });
 
         return isAllowed ? value : null;
     }
@@ -141,3 +219,4 @@
         module.exports = api;
     }
 })(typeof window !== 'undefined' ? window : globalThis);
+
