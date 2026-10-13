@@ -49,7 +49,7 @@ jobs:
       # schedule, and manual runs keep a full traced MSBuild for precision.
       - name: Initialize CodeQL (PR, no build)
         if: github.event_name == 'pull_request'
-        uses: github/codeql-action/init@2892aa5e19bbd11bc0cff5427e3b750a04d9e3c2  # v4
+        uses: github/codeql-action/init@24c54180a607b1449ed407dd24f251e4e9147c8d  # v4
         with:
           languages: c-cpp
           build-mode: none
@@ -111,7 +111,7 @@ jobs:
 
       - name: Initialize CodeQL (manual build)
         if: github.event_name != 'pull_request'
-        uses: github/codeql-action/init@2892aa5e19bbd11bc0cff5427e3b750a04d9e3c2  # v4
+        uses: github/codeql-action/init@24c54180a607b1449ed407dd24f251e4e9147c8d  # v4
         with:
           languages: c-cpp
           build-mode: manual
@@ -133,7 +133,7 @@ jobs:
             /p:TreatWarningsAsErrors=false
 
       - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@2892aa5e19bbd11bc0cff5427e3b750a04d9e3c2  # v4
+        uses: github/codeql-action/analyze@24c54180a607b1449ed407dd24f251e4e9147c8d  # v4
         with:
           category: /language:c-cpp
 
@@ -153,7 +153,7 @@ jobs:
           fetch-depth: 1
 
       - name: Initialize CodeQL
-        uses: github/codeql-action/init@2892aa5e19bbd11bc0cff5427e3b750a04d9e3c2  # v4
+        uses: github/codeql-action/init@24c54180a607b1449ed407dd24f251e4e9147c8d  # v4
         with:
           languages: javascript-typescript
           build-mode: none
@@ -161,7 +161,7 @@ jobs:
           config-file: .github/codeql/codeql-config-javascript.yml
 
       - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@2892aa5e19bbd11bc0cff5427e3b750a04d9e3c2  # v4
+        uses: github/codeql-action/analyze@24c54180a607b1449ed407dd24f251e4e9147c8d  # v4
         with:
           category: /language:javascript-typescript
 
@@ -181,7 +181,7 @@ jobs:
           fetch-depth: 1
 
       - name: Initialize CodeQL
-        uses: github/codeql-action/init@2892aa5e19bbd11bc0cff5427e3b750a04d9e3c2  # v4
+        uses: github/codeql-action/init@24c54180a607b1449ed407dd24f251e4e9147c8d  # v4
         with:
           languages: python
           build-mode: none
@@ -190,7 +190,7 @@ jobs:
           config-file: .github/codeql/codeql-config-python.yml
 
       - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@2892aa5e19bbd11bc0cff5427e3b750a04d9e3c2  # v4
+        uses: github/codeql-action/analyze@24c54180a607b1449ed407dd24f251e4e9147c8d  # v4
         with:
           category: /language:python
 
@@ -210,7 +210,7 @@ jobs:
           fetch-depth: 1
 
       - name: Initialize CodeQL
-        uses: github/codeql-action/init@2892aa5e19bbd11bc0cff5427e3b750a04d9e3c2  # v4
+        uses: github/codeql-action/init@24c54180a607b1449ed407dd24f251e4e9147c8d  # v4
         with:
           languages: actions
           build-mode: none
@@ -218,6 +218,6 @@ jobs:
           config-file: .github/codeql/codeql-config-actions.yml
 
       - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@2892aa5e19bbd11bc0cff5427e3b750a04d9e3c2  # v4
+        uses: github/codeql-action/analyze@24c54180a607b1449ed407dd24f251e4e9147c8d  # v4
         with:
           category: /language:actions
