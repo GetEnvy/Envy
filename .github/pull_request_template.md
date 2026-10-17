@@ -43,7 +43,7 @@ Issue reference: `Fixes #...` / `Closes #...` / `Related to #...` / `None`
 
 ## Checklist
 - [ ] Changes are scoped and reviewable
-- [ ] No AI-tool attribution or personal emails in contributor text (`AGENTS.md`)
+- [ ] No personal emails; no forged bot identities; avoid AI promo signatures (`AGENTS.md` rule 16)
 - [ ] Tests added/updated where practical
 - [ ] Documentation updated when behavior or policy changed
 - [ ] Changelog updated for user-visible changes

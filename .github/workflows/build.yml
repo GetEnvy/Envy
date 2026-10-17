@@ -92,6 +92,10 @@ jobs:
         shell: bash
         run: bash .github/scripts/classify-changes.selftest.sh
 
+      - name: Authorship hygiene self-test
+        shell: bash
+        run: bash .github/scripts/check-agent-attribution.selftest.sh
+
       - name: PR lifecycle regression tests
         run: python3 .github/scripts/pr-phase.selftest.py
 

@@ -218,27 +218,51 @@ Branch model:
 16. **Authorship, privacy, and source comments (hard).** The repository
     documents the software and its architecture, not the tool or agent that
     produced a change. Git history and GitHub PRs/issues keep process
-    history; source comments keep technical meaning.
+    history; source comments keep technical meaning. The
+    `authorship-hygiene` check classifies findings as **FAIL** (blocks CI),
+    **WARN** (annotates, does not block), or **PASS**. Details:
+    `docs/10_dev/agents-and-automation.md` (Authorship hygiene policy).
+    - **FAIL (blocking):** personal/non-allowlisted emails in contribution
+      metadata or added text; forged or mismatched bot identities; malicious
+      or unreadable critical scanner inputs. Do not weaken these for merge
+      convenience.
+    - **WARN (non-blocking):** unsigned commits when signatures are optional;
+      unverifiable signatures; plausible automation without strong provenance;
+      AI promotional signatures (`Generated with …`); AI `Co-authored-by`
+      trailers; process-only source comments. Prefer fixing WARNs, but do not
+      rewrite history solely to clear an advisory warning.
+    - **PASS:** human GitHub noreply authors; trusted automation with
+      established provenance (allowlisted GitHub App `{id}+{login}[bot]@users.noreply.github.com`,
+      or allowlisted runners when GitHub links the commit author to the
+      expected runner login and reports a verified signature); technical mentions of Cursor, Copilot,
+      CodeRabbit, Codex, and similar tools in titles/docs; recognized bot
+      review/summary blocks on the PR conversation.
     - **Do not** add `Co-authored-by` trailers for AI assistants, agents,
       Cursor, Copilot, Codex, Claude, ChatGPT, OpenAI, Anthropic, or other
       tools. Those tools are not Git co-authors. Do not add `Generated-by`,
       `Generated with`, `Created with`, `AI-generated`, or equivalent
-      advertising signatures to commits or contributor-authored PR text.
+      advertising signatures to commits or contributor-authored PR text
+      (CI warns; privacy/forgery remains FAIL).
     - GitHub bot comments, reviews, and auto-generated summary blocks
       (CodeRabbit, Cubic, Amazon Q, Sonar, Copilot summaries, and similar)
-      are allowed on the PR conversation. The authorship scanner ignores
-      recognized bot output; it enforces policy on commits, added source
-      lines, and contributor-authored PR title/body text.
-    - Agents must never invent a git identity and must never commit as
-      Cursor, Copilot, Codex, or another assistant. Use a GitHub noreply
-      address (`scripts/configure-git-noreply.sh`) and set
-      `user.useConfigOnly=true`. Humans use
-      `<id>+<login>@users.noreply.github.com`.
+      are allowed on the PR conversation. The authorship scanner may ignore
+      recognized bot summary delimiters for editorial checks only; privacy
+      scans still use the full contributor PR body. It enforces policy on
+      commits, added source lines, and contributor-authored PR title/body text.
+    - Prefer a human GitHub noreply identity for agent-assisted work
+      (`scripts/configure-git-noreply.sh`, `user.useConfigOnly=true`):
+      `<id>+<login>@users.noreply.github.com`. Do not invent a fake tool
+      identity. Trusted automation accounts (GitHub Apps / verified runners
+      on the scanner allowlist) are accepted with the provenance rules above;
+      git name/email alone is forgeable and is not treated as cryptographic
+      authentication.
     - **Do not** publish personal email addresses in commits, PR titles or
       bodies, GitHub comments you write as the contributor, documentation,
       tests, CI scripts, or source comments. CI uses a positive allowlist
-      (GitHub noreply domains and documented technical mailboxes). Do not
-      maintain a denylist of real personal addresses.
+      (GitHub noreply domains, documented technical mailboxes, and allowlisted
+      automation runners). Do not maintain a denylist of real personal
+      addresses. Example domains (`example.com`, …) and URL userinfo are not
+      treated as mailboxes.
     - Human `Co-authored-by` trailers remain valid when a real person
       co-authored the change **and** the trailer uses a GitHub noreply
       address. Dependabot `Signed-off-by` is allowed. This repository does
@@ -246,8 +270,10 @@ Branch model:
       attribution trailers must not smuggle a personal mailbox.
     - **Pull request titles** are English, short, and technical. Prefer
       `type(scope): short description` (`feat`, `fix`, `docs`, `refactor`,
-      `perf`, `test`, `build`, `ci`, `chore`, `security`). Do not put agent
-      names, tool brands, emails, `Co-authored-by`, or marketing text in the
+      `perf`, `test`, `build`, `ci`, `chore`, `security`). Technical tool
+      names in a title are allowed (for example
+      `fix(ci): correct Copilot review classification`). Do not put personal
+      emails, `Co-authored-by`, or promotional generation signatures in the
       title. No arbitrary character-limit CI rule.
     - **Pull request descriptions** are the detailed review artifact:
       problem/motivation, changes, validation, risks/compatibility,
@@ -257,8 +283,9 @@ Branch model:
       body when applicable), not in source comments.
     - **`develop` squash merges (title, body, references).** Merges onto
       `develop` are squash-only. Use the **PR title** as the base squash
-      commit title (`type(scope): short description` in English; no tool/agent
-      names). With live GitHub `squash_merge_commit_title: PR_TITLE` (verify
+      commit title (`type(scope): short description` in English; technical tool
+      names allowed when they describe the change). With live GitHub
+      `squash_merge_commit_title: PR_TITLE` (verify
       under Settings → General → Pull Requests), start from the PR title; do
       **not** normally insert `(#n)` into contributor-authored PR titles
       merely to influence `develop` history. At manual squash merge, inspect

@@ -314,14 +314,91 @@ settings and security/authorship rules require explicit maintainer review of
 the final diff. This PR is itself in that category.
 
 The existing authorship workflow is retained: read-only permissions, scanner
-extracted from base, PR commits/text inspected as data. Its `pull_request_target`
-path does not run PR code and it runs only on PR lifecycle/content changes;
-review/comment events do not retrigger it. This is not a universal
+loaded from the base SHA via the Contents API (no `actions/checkout` of the PR
+workspace), PR commits/text inspected as data in a throwaway git mirror. Loading
+the scanner fails closed on every API, permission, transient, or 404 error;
+the scanner is on `develop`, so there is no bootstrap pass. Its
+`pull_request_target` path does not run PR code and it runs only on PR
+lifecycle/content changes; review/comment events do not retrigger it. This is not a universal
 trusted-policy guarantee. No new privileged trigger is introduced. Build errors use summaries/artifacts rather
 than PR comments, removing the build token's PR write permission and extra
 subscription events. Approval tools disabled in Cursor are a product control;
 GitHub `pull-requests: write` itself does not distinguish comment from approval.
 Verify actual tool/token exposure instead of claiming a prompt is a hard ACL.
+
+## Authorship hygiene policy
+
+Canonical CI entry points:
+
+- Workflow: `.github/workflows/authorship-hygiene.yml`
+- Scanner: `.github/scripts/check-agent-attribution.py`
+- Self-test: `.github/scripts/check-agent-attribution.selftest.sh` (also run from
+  `build.yml`)
+
+### Severity levels
+
+| Level | CI effect | Typical causes |
+| --- | --- | --- |
+| **FAIL** | Job fails | Personal/non-allowlisted email; bot display name that does not match its noreply login; `[bot]` identity outside the trusted allowlist, or an AI-tool name on a non-noreply mailbox; unreadable critical inputs / path traversal |
+| **WARN** | Job succeeds with `::warning::` annotations | Unsigned or unverifiable commit when signatures are optional; trusted runner without verified signature; unknown automation noreply; AI-tool display name on a human GitHub noreply (for example a person named Claude); AI promotional signatures; AI `Co-authored-by`; process-only comments |
+| **PASS** | Clean success | Human GitHub noreply; allowlisted GitHub App bot noreply; verified allowlisted runner; technical tool names in titles/docs; recognized bot summary blocks |
+
+Git author/committer strings are forgeable. The scanner therefore:
+
+1. Accepts explicit allowlisted GitHub App noreply identities
+   (`{id}+{login}[bot]@users.noreply.github.com`) when the display name matches
+   the login.
+2. Accepts allowlisted runners (see `TRUSTED_RUNNER_EMAILS` in the scanner)
+   only when GitHub links the commit author to the expected runner login **and**
+   commit verification reports `verified: true`. A verified signature on a
+   different GitHub account is **FAIL**; missing linkage is **FAIL** when
+   provenance was loaded.
+3. When `--github-repo` is set, loads GitHub commit provenance (linked author
+   login/type and verification) for commits that claim trusted automation.
+   Lookup volume is capped (`MAX_PROVENANCE_API_CALLS` in the scanner). A login
+   mismatch against a claimed trusted bot or runner is **FAIL**.
+4. Never rewrites or reassigns commit authorship.
+
+This repository does **not** require DCO. Optional commit signatures remain
+optional under the live Protect develop ruleset; missing signatures are WARN,
+not FAIL.
+
+### Trusted automation allowlist
+
+Maintained in the scanner (`TRUSTED_BOT_LOGINS`, `TRUSTED_RUNNER_EMAILS`).
+Adding a bot requires a reviewed governance PR (this path is privileged). Do not
+hard-code PR numbers or SHAs as exceptions.
+
+### Revalidation after policy merge
+
+The workflow always loads the scanner from the **PR base SHA**. A policy change
+does not affect other open PRs until it is squash-merged into `develop` (or
+another base) and those PRs re-run against the new base.
+
+After merging an authorship-policy PR:
+
+1. Ensure the squash commit is on `origin/develop`.
+2. For each affected open PR (for example one that previously failed on a
+   trusted bot identity): update the PR branch with `develop`
+   (`gh pr update-branch <n>` or equivalent) **or** push an empty commit / use
+   Re-run jobs so `pull_request_target` fires with the new base SHA.
+3. Confirm `authorship-hygiene` uses `Using authorship checker from base <new>`
+   in the log and that FAIL/WARN outcomes match the new policy.
+4. Do not rewrite existing branch history unless a true FAIL (privacy/forgery)
+   remains after revalidation.
+
+### Open-source practice notes (non-binding)
+
+- GitHub commit signature verification authenticates signed commits; bot
+  signatures are issued when commits are created through the authenticated Apps
+  API without custom author fields
+  ([About commit signature verification](https://docs.github.com/en/authentication/managing-commit-signature-verification/about-commit-signature-verification)).
+- `pull_request_target` must not execute untrusted PR head code
+  ([Securely using pull_request_target](https://docs.github.com/en/actions/reference/security/securely-using-pull_request_target)).
+- DCO apps ([dcoapp/app](https://github.com/dcoapp/app),
+  [cncf/dco2](https://github.com/cncf/dco2)) are useful for CLA-style attestation;
+  Envy deliberately keeps DCO optional and focuses on privacy + provenance
+  hygiene instead.
 
 Maintainer preparation: create `stage:live-test` and `needs-human` labels;
 disable approval/competing writer automations; inspect GitHub Copilot approval
