@@ -1,5 +1,65 @@
 {
   "files.autoSave": "off",
+  "files.eol": "auto",
+  "files.autoGuessEncoding": true,
+  "files.candidateGuessEncodings": [
+    "utf8",
+    "windows1252"
+  ],
   "editor.formatOnSave": false,
-  "editorconfig.enable": true
+  "editorconfig.enable": true,
+  "files.associations": {
+    "*.vcxproj": "xml",
+    "*.vcxproj.filters": "xml",
+    "*.props": "xml",
+    "*.targets": "xml"
+  },
+  "C_Cpp.autocomplete": "Disabled",
+  "C_Cpp.errorSquiggles": "Disabled",
+  "C_Cpp.experimentalFeatures": "Disabled",
+  "C_Cpp.formatting": "Disabled",
+  "C_Cpp.intelliSenseEngine": "disabled",
+  "clangd.semanticHighlighting": true,
+  "clangd.arguments": [
+    "--compile-commands-dir=${workspaceFolder}"
+  ],
+  "sonarqube.pathToCompileCommands": "${workspaceFolder}\\compile_commands.json",
+  "files.exclude": {
+    "**/.git": true,
+    "**/.vs": true,
+    "**/Builds": true,
+    "**/vcpkg_installed": true,
+    "**/.local": true,
+    "**/.cache": true
+  },
+  "files.watcherExclude": {
+    "**/.git/**": true,
+    "**/.vs/**": true,
+    "**/Builds/**": true,
+    "**/vcpkg_installed/**": true,
+    "**/.local/**": true,
+    "**/.cache/**": true
+  },
+  "search.exclude": {
+    "**/.git": true,
+    "**/.vs": true,
+    "**/Builds": true,
+    "**/vcpkg_installed": true,
+    "**/compile_commands.json": true
+  },
+  "VsCodeTaskButtons.showCounter": true,
+  "VsCodeTaskButtons.tasks": [
+    {
+      "label": "$(gear) Fast Build",
+      "task": "Envy: Fast Build",
+      "tooltip": "Envy + dependencies only, no Installer (prompts for Debug/Release and x64/Win32)",
+      "alignment": "left"
+    },
+    {
+      "label": "$(rocket) Full Build",
+      "task": "Envy: Full Build",
+      "tooltip": "Whole solution incl. Installer (prompts for Debug/Release and x64/Win32)",
+      "alignment": "left"
+    }
+  ]
 }

@@ -58,6 +58,7 @@ Do **not** pass `/p:VcpkgEnableManifest` or `/p:VcpkgTriplet` for **x64** builds
 The repository versions a **minimal** `.vscode/` policy:
 
 - `files.autoSave`: off (avoid silent saves on legacy encodings)
+- `files.autoGuessEncoding`: true with `files.candidateGuessEncodings` limited to `utf8` / `windows1252` — legacy single-byte sources (CP1252 header bytes) usually round-trip byte-preserved instead of being saved back with `U+FFFD`. Detection is heuristic: on failure VS Code falls back to `files.encoding`, so **confirm the detected encoding in the status bar before saving a legacy file** (see encoding below)
 - `editor.formatOnSave`: false (formatting is clang-format / CI on changed hunks)
 - `editorconfig.enable`: true (with a safe `.editorconfig`; see encoding below)
 
@@ -65,6 +66,35 @@ Recommended extensions (see `.vscode/extensions.json`):
 
 - **EditorConfig** — applies repository editor rules
 - **clangd** — C++ navigation when `compile_commands.json` exists
+- **YAML**, **GitHub Actions**, and **Actionlint** — workflow editing,
+  schema support, and local workflow linting
+- **GitHub Pull Requests** — repository review workflow when GitHub access is available
+- **PowerShell** — repository build and validation scripts
+- **XML** — MSBuild and project-file editing
+- **Task Buttons** — status-bar buttons for the versioned build tasks (`.vscode/tasks.json`)
+- **Inno Setup** — installer-script editing (use the maintained `chouzz.vscode-innosetup` fork; `idleberg.innosetup` is discontinued)
+
+### Build tasks from Cursor
+
+`.vscode/tasks.json` is **versioned** and exposes two portable MSBuild tasks
+driven by [`tools/dev/run-msbuild.ps1`](../../tools/dev/run-msbuild.ps1):
+
+- **Envy: Fast Build** — `/t:Envy` (Envy + solution dependencies, no Installer)
+- **Envy: Full Build** — `/t:Build` (whole solution including Installer / ISCC)
+
+Both prompt for Configuration (`Debug` / `Release`, default `Debug`) and
+Platform (`x64` / `Win32`, default `x64`). The runner locates MSBuild via
+`vswhere.exe` (prerelease-aware, covers Build Tools) and never embeds
+machine-specific paths; an `msbuild.exe` found on `PATH` is used only when its
+Visual Studio install has a usable v145 toolset. Concurrent runs on the same
+checkout are serialized by a cross-process lock (builds started from Visual
+Studio do not take it). `Ctrl+Shift+B` runs Fast Build. Rebuild, Clean, and
+Installer-only remain available in Visual Studio / MSBuild; Full Build uses
+the same Installer CustomBuild path as Visual Studio "Build Solution"
+(bundled `Installer/InnoSetup/ISCC.exe`, live repo `SourceDir`). If that
+bundled `ISCC.exe` is missing, the Installer project now fails the build
+(any configuration) instead of skipping packaging; use Fast Build when no
+package is needed.
 
 Use **one** C++ language service: prefer **clangd** for IntelliSense/navigation. Disable duplicate MSVC IntelliSense in personal settings if both are active. The repo lists `ms-vscode.cpptools` under `unwantedRecommendations` only to reduce accidental dual-IntelliSense installs; you may still install it for MSVC debugging if your workflow needs it.
 
@@ -78,14 +108,14 @@ Use **one** C++ language service: prefer **clangd** for IntelliSense/navigation.
 .\tools\dev\generate-compile-commands.ps1 -Configuration 'Release|x64'
 ```
 
-clangd needs MSVC as the query driver. Set this in **personal** (gitignored) settings or user settings, not in the repo — paths vary by machine:
-
-```json
-"clangd.arguments": [
-  "--compile-commands-dir=${workspaceFolder}",
-  "--query-driver=**/cl.exe"
-]
-```
+clangd resolves the MSVC and Windows SDK headers from the include paths recorded
+in `compile_commands.json`. Do **not** configure `--query-driver` with `cl.exe`:
+clangd's query-driver mechanism only supports GCC-compatible drivers, and
+`cl.exe` does not implement that interface. If system headers stay unresolved,
+regenerate the database and verify that its `command` entries carry the full
+`/I` include paths for the MSVC toolset and Windows SDK (run MSBuild from an
+environment where those paths resolve). Apply any extra include-path workarounds
+in **personal** (gitignored) or user settings — never in the repository.
 
 Install LLVM **clangd** via the clangd extension or a system LLVM build.
 
@@ -115,7 +145,7 @@ Tracked in [issue #350](https://github.com/Mika3578/Envy/issues/350).
 | Versioned | Local / gitignored |
 | --- | --- |
 | `.editorconfig`, `.gitattributes` | Personal VS/Cursor user settings |
-| `.vscode/settings.json`, `extensions.json` | Other `.vscode/*` files |
+| `.vscode/settings.json`, `extensions.json`, `tasks.json` | Other `.vscode/*` files |
 | `tools/dev/*.ps1` | `compile_commands.json` |
 | CI scripts | `vcpkg_installed/`, build outputs, `.vs/` |
 

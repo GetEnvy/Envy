@@ -128,6 +128,10 @@ jobs:
         shell: pwsh
         run: pwsh ./tools/dev/generate-compile-commands.ps1 -SelfTest
 
+      - name: Self-test portable MSBuild runner
+        shell: pwsh
+        run: pwsh ./tools/dev/run-msbuild.ps1 -SelfTest
+
   build-x64-release:
     name: Build x64 Release
     permissions:

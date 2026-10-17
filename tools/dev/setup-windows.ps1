@@ -62,71 +62,97 @@ Write-Section 'Visual Studio / MSBuild'
 $vswhere = Join-Path ${env:ProgramFiles(x86)} 'Microsoft Visual Studio\Installer\vswhere.exe'
 if (Test-Path -LiteralPath $vswhere)
 {
-    # Envy requires v145 tools plus optional MFC/ATL components (StdAfx.h).
-    $installPath = & $vswhere -latest -prerelease -products * `
+    # v145 component IDs vary between Visual Studio channels. Require the
+    # generic C++ tools, then verify the installed 14.5x MSVC toolset directly.
+    # vswhere lists instances newest-first; prefer the newest instance whose
+    # toolset is complete (x64+x86 compilers and ATL/MFC headers) and fall
+    # back to the newest with a usable toolset, so one incomplete or
+    # component-partial install cannot shadow a fully usable older one.
+    $installPath = $null
+    $v145Toolsets = @()
+    $fallbackPath = $null
+    $fallbackToolsets = @()
+    $candidateInstances = @(& $vswhere -prerelease -products * `
         -requires Microsoft.VisualStudio.Component.VC.Tools.x86.x64 `
-        -requires Microsoft.VisualStudio.Component.VC.v145.x86.x64 `
-        -requires Microsoft.VisualStudio.Component.VC.ATL `
-        -requires Microsoft.VisualStudio.Component.VC.ATLMFC `
-        -property installationPath 2>$null | Select-Object -First 1
+        -property installationPath 2>$null)
+    foreach ($candidate in $candidateInstances)
+    {
+        if ([string]::IsNullOrWhiteSpace($candidate)) { continue }
+        # Both host/target compiler flavors are required: Release x64 and the
+        # legacy Win32 builds use this toolset. Sort toolsets numerically
+        # ([version]), not lexicographically: a plain name sort ranks
+        # 14.50.9 above 14.50.10. Regex mirrors Select-Msvc145ToolsetDir in
+        # generate-compile-commands.ps1 so the [version] cast only sees
+        # dotted numeric names.
+        $candidateToolsets = @(Get-ChildItem -LiteralPath (Join-Path $candidate 'VC\Tools\MSVC') -Directory -ErrorAction SilentlyContinue |
+            Where-Object {
+                $_.Name -match '^14\.5\d+(\.\d+)*$' -and
+                (Test-Path -LiteralPath (Join-Path $_.FullName 'bin\Hostx64\x64\cl.exe')) -and
+                (Test-Path -LiteralPath (Join-Path $_.FullName 'bin\Hostx64\x86\cl.exe'))
+            } |
+            Sort-Object { [version]$_.Name } -Descending)
+        if ($candidateToolsets.Count -eq 0) { continue }
+        # atlmfc headers live inside the toolset folder and are arch-neutral,
+        # so the component verdict stays tied to the selected instance.
+        $hasAtl = Test-Path -LiteralPath (Join-Path $candidateToolsets[0].FullName 'atlmfc\include\atlbase.h')
+        $hasMfc = Test-Path -LiteralPath (Join-Path $candidateToolsets[0].FullName 'atlmfc\include\afxwin.h')
+        if ($hasAtl -and $hasMfc)
+        {
+            $installPath = $candidate
+            $v145Toolsets = $candidateToolsets
+            break
+        }
+        if ([string]::IsNullOrWhiteSpace($fallbackPath))
+        {
+            $fallbackPath = $candidate
+            $fallbackToolsets = $candidateToolsets
+        }
+    }
+    if ([string]::IsNullOrWhiteSpace($installPath) -and -not [string]::IsNullOrWhiteSpace($fallbackPath))
+    {
+        $installPath = $fallbackPath
+        $v145Toolsets = $fallbackToolsets
+    }
     if (-not [string]::IsNullOrWhiteSpace($installPath))
     {
-        $displayName = & $vswhere -latest -prerelease -products * `
+        # Resolve display metadata from the same instance that owns the
+        # toolset. vswhere writes pretty-printed multi-line JSON, so join the
+        # captured lines before parsing instead of parsing line-by-line.
+        $instanceJson = (& $vswhere -prerelease -products * `
             -requires Microsoft.VisualStudio.Component.VC.Tools.x86.x64 `
-            -requires Microsoft.VisualStudio.Component.VC.v145.x86.x64 `
-            -requires Microsoft.VisualStudio.Component.VC.ATL `
-            -requires Microsoft.VisualStudio.Component.VC.ATLMFC `
-            -property displayName 2>$null | Select-Object -First 1
-        $installVersion = & $vswhere -latest -prerelease -products * `
-            -requires Microsoft.VisualStudio.Component.VC.Tools.x86.x64 `
-            -requires Microsoft.VisualStudio.Component.VC.v145.x86.x64 `
-            -requires Microsoft.VisualStudio.Component.VC.ATL `
-            -requires Microsoft.VisualStudio.Component.VC.ATLMFC `
-            -property installationVersion 2>$null | Select-Object -First 1
-        Write-Host "  OK   $displayName $installVersion (v145 + ATL/MFC)"
-        Write-Host "       $installPath"
-    }
-    else
-    {
-        $v145Path = & $vswhere -latest -prerelease -products * `
-            -requires Microsoft.VisualStudio.Component.VC.Tools.x86.x64 `
-            -requires Microsoft.VisualStudio.Component.VC.v145.x86.x64 `
-            -property installationPath 2>$null | Select-Object -First 1
-        if (-not [string]::IsNullOrWhiteSpace($v145Path))
+            -format json 2>$null) -join "`n"
+        # Windows PowerShell 5.1 emits the parsed JSON array as one object;
+        # ForEach-Object enumerates it so the filter sees each instance.
+        $instance = @($instanceJson | ConvertFrom-Json -ErrorAction SilentlyContinue) |
+            ForEach-Object { $_ } |
+            Where-Object { $_.installationPath -eq $installPath } |
+            Select-Object -First 1
+        $displayName = $instance.displayName
+        $installVersion = $instance.installationVersion
+        # Report missing components against the selected toolset instance.
+        $missing = @()
+        if (-not (Test-Path -LiteralPath (Join-Path $v145Toolsets[0].FullName 'atlmfc\include\atlbase.h'))) { $missing += 'ATL' }
+        if (-not (Test-Path -LiteralPath (Join-Path $v145Toolsets[0].FullName 'atlmfc\include\afxwin.h'))) { $missing += 'MFC' }
+        if ($missing.Count -gt 0)
         {
-            $hasAtl = -not [string]::IsNullOrWhiteSpace((& $vswhere -latest -prerelease -products * `
-                    -requires Microsoft.VisualStudio.Component.VC.Tools.x86.x64 `
-                    -requires Microsoft.VisualStudio.Component.VC.v145.x86.x64 `
-                    -requires Microsoft.VisualStudio.Component.VC.ATL `
-                    -property installationPath 2>$null | Select-Object -First 1))
-            $hasMfc = -not [string]::IsNullOrWhiteSpace((& $vswhere -latest -prerelease -products * `
-                    -requires Microsoft.VisualStudio.Component.VC.Tools.x86.x64 `
-                    -requires Microsoft.VisualStudio.Component.VC.v145.x86.x64 `
-                    -requires Microsoft.VisualStudio.Component.VC.ATLMFC `
-                    -property installationPath 2>$null | Select-Object -First 1))
-            $missing = @()
-            if (-not $hasAtl) { $missing += 'ATL' }
-            if (-not $hasMfc) { $missing += 'MFC' }
-            Write-Host ("  MISS Visual Studio C++ {0} for v145 (vswhere)" -f ($missing -join '/'))
+            Write-Host ("  MISS Visual Studio C++ {0} for v145" -f ($missing -join '/'))
             $issues += ('Install C++ {0} for the latest MSVC/v145 toolset via Visual Studio Installer (Desktop development with C++ -> ATL/MFC).' -f ($missing -join ' and '))
         }
         else
         {
-            # Distinguish missing VS vs missing v145 when ATL/MFC is not the blocker.
-            $anyVc = & $vswhere -latest -prerelease -products * `
-                -requires Microsoft.VisualStudio.Component.VC.Tools.x86.x64 `
-                -property installationPath 2>$null | Select-Object -First 1
-            if (-not [string]::IsNullOrWhiteSpace($anyVc))
-            {
-                Write-Host '  MISS Visual Studio C++ toolset v145 (vswhere)'
-                $issues += 'Install the MSVC v145 (VS 2026) x86/x64 build tools component.'
-            }
-            else
-            {
-                Write-Host '  MISS Visual Studio with VC++ tools (vswhere)'
-                $issues += 'Install Visual Studio 2026 with Desktop development with C++ (toolset v145, ATL, and MFC).'
-            }
+            Write-Host "  OK   $displayName $installVersion (v145 / $($v145Toolsets[0].Name) + ATL/MFC)"
+            Write-Host "       $installPath"
         }
+    }
+    elseif (@($candidateInstances | Where-Object { -not [string]::IsNullOrWhiteSpace($_) }).Count -gt 0)
+    {
+        Write-Host '  MISS Visual Studio C++ toolset v145 (no 14.5x MSVC toolset found)'
+        $issues += 'Install the MSVC v145 (VS 2026) x86/x64 build tools component.'
+    }
+    else
+    {
+        Write-Host '  MISS Visual Studio with VC++ tools (vswhere)'
+        $issues += 'Install Visual Studio 2026 with Desktop development with C++ (toolset v145, ATL, and MFC).'
     }
 }
 else

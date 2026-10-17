@@ -7,7 +7,7 @@ This guide provides comprehensive testing procedures for the modernized Envy rem
 ## Test Environment Setup
 
 ### Prerequisites
-- Node.js 16+ for testing tools
+- Node.js 24 LTS for testing tools (matching the repository CI baseline)
 - Modern web browsers (Chrome, Firefox, Safari, Edge)
 - Mobile devices or emulators
 - Screen reader software (NVDA, JAWS, VoiceOver)
@@ -449,11 +449,11 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v7
       - name: Setup Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v7
         with:
-          node-version: '16'
+          node-version: '24'
       - name: Install dependencies
         run: npm ci
       - name: Run tests

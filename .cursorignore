@@ -1,0 +1,10 @@
+.git/
+.vs/
+Builds/
+vcpkg/
+vcpkg_installed/
+**/node_modules/
+.local/
+.cache/
+.continue/
+compile_commands.json

@@ -1,41 +1,14 @@
 # Clang-Tidy configuration for Envy project
 # Static analysis for C++ code quality and security
 
-Checks: >
-  # Disable all checks for legacy MFC code - too many false positives
-  -*
+Checks: '-*'
 
 WarningsAsErrors: ''
 
 HeaderFilterRegex: '.*'
 
-# Disable specific checks that may conflict with legacy code
-# (can be enabled gradually during modernization)
-DisableChecks: >
-  bugprone-easily-swappable-parameters,
-  readability-magic-numbers,
-  cppcoreguidelines-avoid-magic-numbers,
-  cppcoreguidelines-pro-bounds-pointer-arithmetic,
-  cppcoreguidelines-pro-bounds-array-to-pointer-decay,
-  modernize-use-trailing-return-type,
-  # MFC-related checks that cause false positives
-  cppcoreguidelines-pro-type-static-cast-downcast,
-  cppcoreguidelines-pro-type-cstyle-cast,
-  modernize-avoid-c-arrays,
-  # Windows API and legacy function checks
-  cert-dcl37-c,
-  cert-dcl51-cpp,
-  # Unicode and string handling (MSVC-specific functions)
-  misc-include-cleaner,
-  # MFC message map related
-  readability-static-accessed-through-instance,
-  # Performance checks that may not apply to legacy code
-  performance-noexcept-move-constructor,
-  # Disable problematic checks for legacy Windows/MFC code
-  clang-diagnostic-unknown-type,
-  clang-diagnostic-error,
-  misc-unused-parameters,
-  readability-convert-member-functions-to-static
+# Checks remain disabled by default for the legacy MFC tree. Keep the
+# individual options below ready for gradual, separately validated enablement.
 
 # Format style
 FormatStyle: file

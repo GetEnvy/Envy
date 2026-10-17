@@ -1,9 +1,19 @@
 {
   "recommendations": [
+    "spencerwmiles.vscode-task-buttons",
     "EditorConfig.EditorConfig",
-    "llvm-vs-code-extensions.vscode-clangd"
+    "llvm-vs-code-extensions.vscode-clangd",
+    "redhat.vscode-yaml",
+    "github.vscode-github-actions",
+    "jimeh.actionlint",
+    "github.vscode-pull-request-github",
+    "ms-vscode.powershell",
+    "redhat.vscode-xml",
+    "chouzz.vscode-innosetup"
   ],
   "unwantedRecommendations": [
-    "ms-vscode.cpptools"
+    "ms-vscode.cpptools",
+    "anysphere.cpptools",
+    "dotjoshjohnson.xml"
   ]
 }

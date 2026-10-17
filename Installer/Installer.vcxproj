@@ -107,28 +107,28 @@
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <!--
+      Call bundled ISCC.exe directly (same path as Visual Studio / CI). No
+      TEMP snapshot layer: Main.iss SourceDir is the repo root.
+      Stamp under $(IntDir) so Debug/Release and x64/Win32 do not share one
+      Scripts\Preprocessed.iss marker. The stamp is deleted before ISCC runs
+      and rewritten only after it succeeds, so a failed run (including the
+      first one) is never seen as up to date. Missing ISCC.exe fails the build
+      (do not report success without a package). AdditionalInputs list
+      packaging binaries so plugin/service updates invalidate the installer.
+    -->
     <CustomBuild Include="Scripts\Main.iss">
       <FileType>Document</FileType>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Performing Installer Build</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">if exist "$(ProjectDir)InnoSetup\ISCC.exe" ("$(ProjectDir)InnoSetup\ISCC.exe" "/Ssigntoolparams=signtool.exe $p" "%(FullPath)" "/dConfigurationName=$(Configuration)" "/dPlatformName=$(Platform)" "/dalpha=$(InstallerAlpha)" /v9) else (echo [Installer] InnoSetup\ISCC.exe not found, skipping installer build. &amp; exit /b 0)
+      <Message>Performing Installer Build</Message>
+      <Command>if not exist "$(IntDir)" mkdir "$(IntDir)"
+if not exist "$(ProjectDir)InnoSetup\ISCC.exe" (echo [Installer] InnoSetup\ISCC.exe not found. &amp; exit /b 1)
+if exist "$(IntDir)iscc.stamp" del /f /q "$(IntDir)iscc.stamp"
+"$(ProjectDir)InnoSetup\ISCC.exe" "/Ssigntoolparams=signtool.exe $p" "%(FullPath)" "/dConfigurationName=$(Configuration)" "/dPlatformName=$(Platform)" "/dalpha=$(InstallerAlpha)" /v9
+if errorlevel 1 exit /b 1
+echo. &gt; "$(IntDir)iscc.stamp"
 </Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\Envy\$(Configuration) $(Platform)\Envy.exe;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Scripts\Preprocessed.iss;%(Outputs)</Outputs>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Performing Installer Build</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">if exist "$(ProjectDir)InnoSetup\ISCC.exe" ("$(ProjectDir)InnoSetup\ISCC.exe" "/Ssigntoolparams=signtool.exe $p" "%(FullPath)" "/dConfigurationName=$(Configuration)" "/dPlatformName=$(Platform)" "/dalpha=$(InstallerAlpha)" /v9) else (echo [Installer] InnoSetup\ISCC.exe not found, skipping installer build. &amp; exit /b 0)
-</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\Envy\$(Configuration) $(Platform)\Envy.exe;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Scripts\Preprocessed.iss;%(Outputs)</Outputs>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Performing Installer Build</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">if exist "$(ProjectDir)InnoSetup\ISCC.exe" ("$(ProjectDir)InnoSetup\ISCC.exe" "/Ssigntoolparams=signtool.exe $p" "%(FullPath)" "/dConfigurationName=$(Configuration)" "/dPlatformName=$(Platform)" "/dalpha=$(InstallerAlpha)" /v9) else (echo [Installer] InnoSetup\ISCC.exe not found, skipping installer build. &amp; exit /b 0)
-</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\Envy\$(Configuration) $(Platform)\Envy.exe;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Scripts\Preprocessed.iss;%(Outputs)</Outputs>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Performing Installer Build</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">if exist "$(ProjectDir)InnoSetup\ISCC.exe" ("$(ProjectDir)InnoSetup\ISCC.exe" "/Ssigntoolparams=signtool.exe $p" "%(FullPath)" "/dConfigurationName=$(Configuration)" "/dPlatformName=$(Platform)" "/dalpha=$(InstallerAlpha)" /v9) else (echo [Installer] InnoSetup\ISCC.exe not found, skipping installer build. &amp; exit /b 0)
-</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\Envy\$(Configuration) $(Platform)\Envy.exe;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Scripts\Preprocessed.iss;%(Outputs)</Outputs>
+      <AdditionalInputs>..\Envy\$(Configuration) $(Platform)\Envy.exe;..\HashLib\$(Configuration) $(Platform)\HashLib.dll;..\TorrentEnvy\$(Configuration) $(Platform)\TorrentEnvy.exe;..\Unpacker\$(Configuration) $(Platform)\Unpacker.exe;..\Services\GeoIP\$(Configuration) $(Platform)\GeoIP.dll;..\Plugins\7ZipBuilder\$(Configuration) $(Platform)\7ZipBuilder.dll;..\Plugins\DocumentReader\$(Configuration) $(Platform)\DocumentReader.dll;..\Plugins\GFLImageServices\$(Configuration) $(Platform)\GFLImageServices.dll;..\Plugins\GFLLibraryBuilder\$(Configuration) $(Platform)\GFLLibraryBuilder.dll;..\Plugins\ImageViewer\$(Configuration) $(Platform)\ImageViewer.dll;..\Plugins\MediaImageServices\$(Configuration) $(Platform)\MediaImageServices.dll;..\Plugins\MediaLibraryBuilder\$(Configuration) $(Platform)\MediaLibraryBuilder.dll;..\Plugins\MediaPlayer\$(Configuration) $(Platform)\MediaPlayer.dll;..\Plugins\RARBuilder\$(Configuration) $(Platform)\RARBuilder.dll;..\Plugins\SearchExport\$(Configuration) $(Platform)\SearchExport.dll;..\Plugins\SkinScan\$(Configuration) $(Platform)\SkinScan.dll;..\Plugins\SWFPlugin\$(Configuration) $(Platform)\SWFPlugin.dll;..\Plugins\VirusTotal\$(Configuration) $(Platform)\VirusTotal.dll;..\Plugins\WindowsThumbnail\$(Configuration) $(Platform)\WindowsThumbnail.exe;..\Plugins\ZIPBuilder\$(Configuration) $(Platform)\ZIPBuilder.dll;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs>$(IntDir)iscc.stamp;%(Outputs)</Outputs>
     </CustomBuild>
     <None Include="Scripts\Languages.iss" />
     <None Include="Scripts\Settings.iss" />

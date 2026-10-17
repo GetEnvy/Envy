@@ -1,0 +1,81 @@
+// Envy build tasks for Cursor. Both tasks go through tools/dev/run-msbuild.ps1,
+// which locates MSBuild via vswhere (prerelease-aware) and never modifies the
+// Visual Studio .sln/.vcxproj files.
+//
+//   Fast  /t:Envy   - Envy + its solution dependencies, no Installer.
+//   Full  /t:Build  - whole solution incl. Installer (same as VS Build Solution).
+//
+// Rebuild / Clean / Installer-only remain available in Visual Studio / MSBuild.
+// Win32 adds the vcpkg manifest properties documented in AGENTS.md; x64
+// intentionally does not consume the manifest. Do not harmonize these.
+// "type": "process" runs powershell.exe directly (no MSYS argument mangling).
+{
+	"version": "2.0.0",
+	"inputs": [
+		{
+			"id": "buildConfig",
+			"type": "pickString",
+			"description": "Configuration",
+			"options": ["Debug", "Release"],
+			"default": "Debug"
+		},
+		{
+			"id": "buildPlatform",
+			"type": "pickString",
+			"description": "Platform",
+			"options": ["x64", "Win32"],
+			"default": "x64"
+		}
+	],
+	"tasks": [
+		{
+			"label": "Envy: Fast Build",
+			"detail": "Envy + dependencies only, no Installer (/t:Envy)",
+			"type": "process",
+			"command": "powershell.exe",
+			"args": [
+				"-NoProfile", "-ExecutionPolicy", "Bypass",
+				"-File", "tools\\dev\\run-msbuild.ps1",
+				"-Mode", "Fast",
+				"-Configuration", "${input:buildConfig}",
+				"-Platform", "${input:buildPlatform}"
+			],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"options": {
+				"cwd": "${workspaceFolder}"
+			},
+			"problemMatcher": "$msCompile",
+			"presentation": {
+				"reveal": "always",
+				"panel": "shared",
+				"echo": false
+			}
+		},
+		{
+			"label": "Envy: Full Build",
+			"detail": "Whole solution incl. Installer (/t:Build) - same as VS Build Solution",
+			"type": "process",
+			"command": "powershell.exe",
+			"args": [
+				"-NoProfile", "-ExecutionPolicy", "Bypass",
+				"-File", "tools\\dev\\run-msbuild.ps1",
+				"-Mode", "Full",
+				"-Configuration", "${input:buildConfig}",
+				"-Platform", "${input:buildPlatform}"
+			],
+			"group": "build",
+			"options": {
+				"cwd": "${workspaceFolder}"
+			},
+			"problemMatcher": "$msCompile",
+			"presentation": {
+				"reveal": "always",
+				"panel": "shared",
+				"echo": false
+			}
+		}
+	]
+}

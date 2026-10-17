@@ -91,35 +91,34 @@ function Find-MsvcClExe
         throw "vswhere.exe not found at: $vswhere. Install Visual Studio 2026 with the C++ workload."
     }
 
-    $installPath = & $vswhere -latest -prerelease -products * `
+    $candidateInstances = @(& $vswhere -prerelease -products * `
         -requires Microsoft.VisualStudio.Component.VC.Tools.x86.x64 `
-        -requires Microsoft.VisualStudio.Component.VC.v145.x86.x64 `
-        -property installationPath 2>$null | Select-Object -First 1
-    if ([string]::IsNullOrWhiteSpace($installPath))
+        -property installationPath 2>$null)
+    foreach ($candidate in $candidateInstances)
     {
-        throw 'No Visual Studio installation with VC++ v145 tools found (vswhere). Install Visual Studio 2026 with toolset v145.'
+        if ([string]::IsNullOrWhiteSpace($candidate)) { continue }
+
+        $msvcRoot = Join-Path $candidate 'VC\Tools\MSVC'
+        if (-not (Test-Path -LiteralPath $msvcRoot))
+        {
+            continue
+        }
+
+        # Skip toolset folders without the requested architecture's compiler
+        # before choosing the newest one, so an incomplete newest folder
+        # cannot shadow an older usable toolset.
+        $versionDirs = @(Get-ChildItem -LiteralPath $msvcRoot -Directory -ErrorAction SilentlyContinue |
+            Where-Object {
+                Test-Path -LiteralPath (Join-Path $_.FullName "bin\Hostx64\$targetArch\cl.exe")
+            })
+        $versionDir = Select-Msvc145ToolsetDir -VersionDirs $versionDirs
+        if ($versionDir)
+        {
+            return (Resolve-Path -LiteralPath (Join-Path $versionDir.FullName "bin\Hostx64\$targetArch\cl.exe")).Path
+        }
     }
 
-    $msvcRoot = Join-Path $installPath 'VC\Tools\MSVC'
-    if (-not (Test-Path -LiteralPath $msvcRoot))
-    {
-        throw "MSVC toolset directory missing under: $msvcRoot"
-    }
-
-    $versionDirs = @(Get-ChildItem -LiteralPath $msvcRoot -Directory)
-    $versionDir = Select-Msvc145ToolsetDir -VersionDirs $versionDirs
-    if (-not $versionDir)
-    {
-        throw "No MSVC 14.5x (v145) toolset folder under: $msvcRoot (found: $($versionDirs.Name -join ', ')). Install Visual Studio 2026 with toolset v145."
-    }
-
-    $cl = Join-Path $versionDir.FullName "bin\Hostx64\$targetArch\cl.exe"
-    if (-not (Test-Path -LiteralPath $cl))
-    {
-        throw "cl.exe not found at: $cl"
-    }
-
-    return (Resolve-Path -LiteralPath $cl).Path
+    throw "No Visual Studio installation with a usable MSVC 14.5x (v145) x86/x64 cl.exe was found (vswhere). Install Visual Studio 2026 with toolset v145."
 }
 
 function Split-TlogSourceMarker
