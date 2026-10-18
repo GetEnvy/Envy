@@ -21,6 +21,10 @@
 #include <commctrl.h>
 #include <unzip.h>
 #include <errno.h>
+#include <stdlib.h>
+#include <string.h>
+#include <limits.h>
+#include <strsafe.h>
 #include "Resource.h"
 
 #define VERSION        L"1.0"
@@ -49,20 +53,32 @@ extern TCHAR  skins_dir[MAX_PATH];	// Full path to Skin folder
 
 // Extract.c
 void ExtractSkinFile(LPCTSTR pszFile);
-void GetInstallDirectory();
+int GetInstallDirectory();
 int GetSkinFileCount(LPTSTR pszFile);
 int ValidateSkin(LPTSTR pszFile, HWND hwndDlg);
 int ExtractSkin(LPTSTR pszFile, HWND hwndDlg);
 LPCTSTR GetUnicodeString(char* pszString);
+
+typedef struct
+{
+	HANDLE handles[MAX_PATH];
+	size_t count;
+} PACKAGE_DIRECTORY;
+
+int PackageRelativePath(LPCTSTR path, int directoryEntry);
+int PackageJoin(LPTSTR result, LPCTSTR root, LPCTSTR relative);
+int PackageLockDirectory(LPCTSTR path, PACKAGE_DIRECTORY* directory, int create);
+void PackageUnlock(PACKAGE_DIRECTORY* directory);
+int PackageCanReplace(LPCTSTR path);
+int PackageRenameLeaf(HANDLE file, LPCTSTR leaf);
 
 // Registry.c
 LSTATUS CreateSkinKeys();
 LSTATUS DeleteSkinKeys();
 
 // Utils.c
-void LoadManifestInfo(char *buf);
+int LoadManifestInfo(char *buf);
 int SetSkinAsDefault();
-int MakeDirectory(LPCTSTR newdir);
 
 // Window.c
 INT_PTR CALLBACK ExtractProc(HWND hwndDlg, UINT msg, WPARAM wParam, LPARAM lParam);

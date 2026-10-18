@@ -67,18 +67,18 @@ INT_PTR CALLBACK ExtractProc(HWND hwndDlg, UINT msg, WPARAM wParam, LPARAM lPara
 			if ( szPath )
 			{
 				TCHAR buf[MAX_PATH], tbuf[MAX_PATH];
-				_snwprintf(buf, MAX_PATH, L"%s %s", szName, szVersion ? szVersion : L"");
-				_snwprintf(tbuf, MAX_PATH, L"%s - %s", szName, skinType ? PACKAGE_TITLE : SKIN_TITLE);
+				StringCchPrintfW(buf, MAX_PATH, L"%s %s", szName, szVersion ? szVersion : L"");
+				StringCchPrintfW(tbuf, MAX_PATH, L"%s - %s", szName, skinType ? PACKAGE_TITLE : SKIN_TITLE);
 				SetDlgItemText(hwndDlg, IDC_NAME, buf);
 				SetWindowText(hwndDlg, tbuf);
 			}
 			if ( szAuthor )
 			{
 				TCHAR buf[MAX_PATH];
-				_snwprintf(buf, MAX_PATH, L"By %s", szAuthor);
+				StringCchPrintfW(buf, MAX_PATH, L"By %s", szAuthor);
 				SetDlgItemText(hwndDlg, IDC_AUTH, buf);
 			}
-			if ( szUpdates && wcscmp(szAuthor, szUpdates) != 0 )
+			if ( szUpdates && (!szAuthor || wcscmp(szAuthor, szUpdates) != 0) )
 			{
 				TCHAR buf[MAX_PATH];
 				if ( szAuthor )
@@ -86,17 +86,17 @@ INT_PTR CALLBACK ExtractProc(HWND hwndDlg, UINT msg, WPARAM wParam, LPARAM lPara
 #if defined(_MSC_VER) && (_MSC_VER >= 1800)
 					GetDlgItemText(hwndDlg, IDC_AUTH, buf, MAX_PATH);
 					size_t len = wcslen(buf);
-					_snwprintf(buf + len, MAX_PATH - len, L",  Updated by %s", szUpdates);
+					StringCchPrintfW(buf + len, MAX_PATH - len, L",  Updated by %s", szUpdates);
 #else	// VS2012~
 					TCHAR upbuf[MAX_PATH];
-					_snwprintf(upbuf, MAX_PATH, L",  Updated by %s", szUpdates);
+					StringCchPrintfW(upbuf, MAX_PATH, L",  Updated by %s", szUpdates);
 					GetDlgItemText(hwndDlg, IDC_AUTH, buf, MAX_PATH);
-					wcsncat(buf, upbuf, MAX_PATH - wcslen(buf));
+					StringCchCatW(buf, MAX_PATH, upbuf);
 #endif
 				}
 				else
 				{
-					_snwprintf(buf, MAX_PATH, L"Updated by %s", szUpdates);
+					StringCchPrintfW(buf, MAX_PATH, L"Updated by %s", szUpdates);
 				}
 				SetDlgItemText(hwndDlg, IDC_AUTH, buf);
 			}
@@ -105,12 +105,12 @@ INT_PTR CALLBACK ExtractProc(HWND hwndDlg, UINT msg, WPARAM wParam, LPARAM lPara
 				TCHAR buf[MAX_PATH], updbuf[MAX_PATH];
 				if ( szAuthor )
 				{
-					_snwprintf(updbuf, MAX_PATH, L"        (%s Folder)", szPath);
+					StringCchPrintfW(updbuf, MAX_PATH, L"        (%s Folder)", szPath);
 					GetDlgItemText(hwndDlg, IDC_AUTH, buf, 256);
-					wcsncat(buf, updbuf, MAX_PATH - wcslen(buf));
+					StringCchCatW(buf, MAX_PATH, updbuf);
 				}
 				else
-					_snwprintf(buf, MAX_PATH, L"(%s Folder)", szPath);
+					StringCchPrintfW(buf, MAX_PATH, L"(%s Folder)", szPath);
 				SetDlgItemText(hwndDlg, IDC_AUTH, buf);
 			}
 			SetWindowLongPtr( GetDlgItem(hwndDlg,IDC_WHITERECT), GWL_STYLE, WS_VISIBLE|WS_CHILD|SS_LEFT|SS_OWNERDRAW );
@@ -150,8 +150,7 @@ INT_PTR CALLBACK ExtractProc(HWND hwndDlg, UINT msg, WPARAM wParam, LPARAM lPara
 			break;
 		case IDC_INSTALL:
 			{
-				GetInstallDirectory();
-				if ( !ExtractSkin(szFile, hwndDlg) )
+				if ( !GetInstallDirectory() || !ExtractSkin(szFile, hwndDlg) )
 				{
 					SendDlgItemMessage(hwndDlg, IDC_PROGRESS, PBM_SETPOS, maxPos, 0);
 					SetWindowText(GetDlgItem(hwndDlg, IDC_STATUS), !skinType ?

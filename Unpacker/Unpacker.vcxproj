@@ -258,6 +258,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Extract.c" />
+    <ClCompile Include="PackagePath.c" />
     <ClCompile Include="Registry.c" />
     <ClCompile Include="Unpacker.c" />
     <ClCompile Include="Utils.c" />

@@ -11,6 +11,7 @@
 #include "test_framework.h"
 
 // Test modules register their tests via these functions
+void register_unpacker_tests(TestSuite& suite);
 void register_hashlib_tests(TestSuite& suite);
 void register_protocol_parser_smoke_tests(TestSuite& suite);
 void register_secureident_policy_smoke_tests(TestSuite& suite);
@@ -60,6 +61,7 @@ int main(int argc, char** argv)
 	(void)argv;
 	TestSuite suite;
 
+	register_unpacker_tests(suite);
 	register_hashlib_tests(suite);
 	register_protocol_parser_smoke_tests(suite);
 	register_secureident_policy_smoke_tests(suite);

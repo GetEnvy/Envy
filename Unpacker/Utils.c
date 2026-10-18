@@ -12,292 +12,158 @@
 
 #include "Unpacker.h"
 
-static LPCTSTR GetManifestValue(LPCTSTR manifest, LPCTSTR searchKey);
-static int CheckManifestForSkin(LPCTSTR pszFile);
+static const WCHAR* ManifestKeys[] = { L"type", L"name", L"path", L"version", L"author", L"updatedby" };
 
-// EXPORT BEGIN
-void LoadManifestInfo(char *buf)
+static void FreeManifest(WCHAR** values)
 {
-	TCHAR* p;
-	char* tmp = buf;
-	int nLen = 0;
-	LPTSTR pszBuf;
+	unsigned i;
+	for (i = 0; i < 6; ++i) { free(values[i]); values[i] = NULL; }
+}
 
-	if ( strlen(buf) > 3 && (UCHAR)(*tmp) == 0xEF && (UCHAR)*(tmp+1) == 0xBB && (UCHAR)*(tmp+2) == 0xBF )
-		buf += 3;
+static int ManifestSpace(WCHAR c)
+{
+	return c == L' ' || c == L'\t' || c == L'\r' || c == L'\n';
+}
 
-	nLen = MultiByteToWideChar( CP_UTF8, 0, (LPCSTR)buf, -1, NULL, 0 );
-	pszBuf = (TCHAR*)malloc( nLen * sizeof(TCHAR) );
-	MultiByteToWideChar( CP_UTF8, 0, (LPCSTR)buf, -1, pszBuf, nLen );
+// Parse only a complete manifest start tag, with one owner per retained value.
+static int ParseManifest(const WCHAR* text, WCHAR** values)
+{
+	const WCHAR* p = text;
+	if (!p || wcsncmp(p, L"<manifest", 9) || !ManifestSpace(p[9])) return 0;
+	p += 9;
+	for (;;)
+	{
+		const WCHAR *key, *value;
+		size_t keyLength, valueLength;
+		WCHAR quote;
+		unsigned i;
+		while (ManifestSpace(*p)) ++p;
+		if (*p == L'>' || (*p == L'/' && p[1] == L'>')) return 1;
+		key = p;
+		while (*p && !ManifestSpace(*p) && *p != L'=' && *p != L'>' && *p != L'/') ++p;
+		keyLength = p - key;
+		while (ManifestSpace(*p)) ++p;
+		if (!keyLength || *p != L'=') return 0;
+		++p;
+		while (ManifestSpace(*p)) ++p;
+		quote = *p++;
+		if (quote != L'\'' && quote != L'"') return 0;
+		value = p;
+		while (*p && *p != quote && *p != L'<') ++p;
+		if (*p != quote) return 0;
+		valueLength = p++ - value;
+		for (i = 0; i < 6; ++i)
+		{
+			if (wcslen(ManifestKeys[i]) == keyLength && !_wcsnicmp(key, ManifestKeys[i], keyLength))
+			{
+				if (values[i]) return 0;
+				values[i] = (WCHAR*)malloc((valueLength + 1) * sizeof(WCHAR));
+				if (!values[i]) return 0;
+				memcpy(values[i], value, valueLength * sizeof(WCHAR));
+				values[i][valueLength] = 0;
+			}
+		}
+		if (!ManifestSpace(*p) && *p != L'/' && *p != L'>') return 0;
+	}
+}
 
-	if ( ( p=(TCHAR*)GetManifestValue(pszBuf, L"type") ) != NULL )
+int LoadManifestInfo(char* buffer)
+{
+	WCHAR* text = (WCHAR*)GetUnicodeString(buffer);
+	WCHAR* values[6] = { 0 };
+	WCHAR* path = NULL;
+	int type = typeSkin, valid = 0;
+	if (!text || !ParseManifest(text, values)) goto done;
+	if (values[0])
 	{
-		if ( !_wcsicmp(p, L"skin") )
-			;	//skinType = typeSkin;	// 0
-		else if ( !_wcsicmp(p, L"language") )
-			skinType = typeLang;	// 1
-		else if ( !_wcsicmp(p, L"schemas") )
-			skinType = typeSchemas;	// 2
-		else if ( !_wcsicmp(p, L"plugin") )
-			skinType = typePlugin;	// 3
-		else if ( !_wcsicmp(p, L"data") )
-			skinType = typeData;	// 4
-		else if ( !_wcsicmp(p, L"security") )
-			skinType = typeData;	// 4
-		//else if (!_wcsicmp(p, L"template"))
-		//	skinType = typeSkin;	// 0
-		//else
-		//	skinType = typeSkin;	// ("skin")
-		free(p);
+		if (!_wcsicmp(values[0], L"skin")) type = typeSkin;
+		else if (!_wcsicmp(values[0], L"language")) type = typeLang;
+		else if (!_wcsicmp(values[0], L"schemas")) type = typeSchemas;
+		else if (!_wcsicmp(values[0], L"plugin")) type = typePlugin;
+		else if (!_wcsicmp(values[0], L"data") || !_wcsicmp(values[0], L"security")) type = typeData;
+		else goto done;
 	}
-	if ( (p=(TCHAR*)GetManifestValue(pszBuf, L"name")) != NULL )
+	// A name is only a folder when no path is given; with a path it is display text,
+	// and shipped skins use names such as "Windows8/Alt" next to path="Windows".
+	if (!values[1] || !PackageRelativePath(values[1], 0) || (!values[2] && wcspbrk(values[1], L"/\\"))) goto done;
+	if (values[2] && !PackageRelativePath(values[2], 0)) goto done;
+	path = _wcsdup(values[2] ? values[2] : values[1]);
+	if (!path) goto done;
 	{
-		szName = _wcsdup(p);
-		free(p);
+		WCHAR* separator;
+		for (separator = path; *separator; ++separator) if (*separator == L'/') *separator = L'\\';
 	}
-	if ( (p=(TCHAR*)GetManifestValue(pszBuf, L"version")) != NULL )
-	{
-		szVersion = _wcsdup(p);
-		free(p);
-	}
-	if ( (p=(TCHAR*)GetManifestValue(pszBuf, L"author")) != NULL )
-	{
-		szAuthor = _wcsdup(p);
-		free(p);
-	}
-	if ( (p=(TCHAR*)GetManifestValue(pszBuf, L"updatedby")) != NULL )
-	{
-		szUpdates = _wcsdup(p);
-		free(p);
-	}
+	free(szName); szName = values[1]; values[1] = NULL;
+	free(szPath); szPath = path; path = NULL;
+	free(szVersion); szVersion = values[3]; values[3] = NULL;
+	free(szAuthor); szAuthor = values[4]; values[4] = NULL;
+	free(szUpdates); szUpdates = values[5]; values[5] = NULL;
+	skinType = type;
+	valid = 1;
+done:
+	free(path);
+	free(text);
+	FreeManifest(values);
+	return valid;
+}
 
-	if ( (p=(TCHAR*)GetManifestValue(pszBuf, L"path")) != NULL )
-	{
-		if ( wcsstr(p, _T(":")) || wcsstr(p, _T("..\\..\\")) || wcsstr(p, _T("../../")) )
-			szPath = szName;
-		else
-			szPath = _wcsdup(p);
-
-		free(p);
-	}
-	else
-	{
-		szPath = szName;
-	}
+static int CheckManifestForSkin(LPCTSTR relative)
+{
+	WCHAR file[MAX_PATH];
+	FILE* stream;
+	long size;
+	char* bytes = NULL;
+	WCHAR *text = NULL, *manifest;
+	WCHAR* values[6] = { 0 };
+	int skin = 0;
+	if (!PackageJoin(file, skins_dir, relative)) return 0;
+	stream = _wfopen(file, L"rb");
+	if (!stream) return 0;
+	if (fseek(stream, 0, SEEK_END)) goto done;
+	size = ftell(stream);
+	if (size <= 0 || size > 4 * 1024 * 1024) goto done;
+	if (fseek(stream, 0, SEEK_SET)) goto done;
+	bytes = (char*)malloc((size_t)size + 1);
+	if (!bytes || fread(bytes, 1, size, stream) != (size_t)size || memchr(bytes, 0, size)) goto done;
+	bytes[size] = 0;
+	text = (WCHAR*)GetUnicodeString(bytes);
+	if (!text) goto done;
+	manifest = wcsstr(text, L"<manifest");
+	if (!manifest) skin = 1;
+	else if (ParseManifest(manifest, values)) skin = !values[0] || !_wcsicmp(values[0], L"skin");
+done:
+	FreeManifest(values);
+	free(text);
+	free(bytes);
+	fclose(stream);
+	return skin;
 }
 
 int SetSkinAsDefault()
 {
-	HKEY hkey;
-	TCHAR szXMLNorm[MAX_PATH];
-
-	if (szXML==NULL) return 0;
-	wcscpy(szXMLNorm, (LPCTSTR)szName);
-	wcscat(szXMLNorm, L"\\");
-	wcscat(szXMLNorm, (LPCTSTR)szXML);
-
-	if ( ERROR_SUCCESS == RegOpenKeyEx(HKEY_CURRENT_USER, L"Software\\Envy\\Envy\\Skins", 0, KEY_ALL_ACCESS, &hkey) )
-	{
-		int i = 0, needsKey = 1;
-		TCHAR key[256];
-		DWORD keys;
-		DWORD dval;
-
-		for( i=0;; i++ )
-		{
-			keys = 256;
-			if ( RegEnumValue(hkey, i, key, &keys, NULL, NULL, NULL, NULL) != ERROR_SUCCESS ) break;
-			if ( !_wcsicmp((LPCTSTR)key, (LPCTSTR)szXMLNorm) )
-			{
-				needsKey = 0;
-				dval = 1;
-				RegSetValueEx(hkey,key,0,REG_DWORD,(LPBYTE)&dval,sizeof(DWORD));
-			}
-			else if ( wcslen((LPCTSTR)key) )
-			{
-				if ( CheckManifestForSkin(key) )
-				{
-					dval = 0;
-					RegSetValueEx(hkey,key,0,REG_DWORD,(LPBYTE)&dval,sizeof(DWORD));
-				}
-			}
-		}
-		if (needsKey)
-		{
-			dval = 1;
-			RegSetValueEx(hkey,szXMLNorm,0,REG_DWORD,(LPBYTE)&dval,sizeof(DWORD));
-		}
-		RegCloseKey(hkey);
-	}
-	else
-	{
-		free(szXMLNorm);
+	HKEY key;
+	WCHAR xml[MAX_PATH];
+	DWORD index, enabled;
+	if (skinType != typeSkin || !szXML || !PackageJoin(xml, szPath, szXML)) return 0;
+	if (RegOpenKeyExW(HKEY_CURRENT_USER, L"Software\\Envy\\Envy\\Skins", 0, KEY_QUERY_VALUE | KEY_SET_VALUE, &key) != ERROR_SUCCESS)
 		return 0;
-	}
-//	free(szXMLNorm);
-	return 1;
-}
-
-int MakeDirectory(LPCTSTR newdir)
-{
-	TCHAR* buffer;
-	TCHAR* p;
-	size_t len = wcslen(newdir);
-
-	if (len<=0) return 0;
-	buffer = (TCHAR*)malloc((len+1)*sizeof(TCHAR));
-	wcscpy(buffer, newdir);
-	if (buffer[len-1]=='/')
+	for (index = 0; ; ++index)
 	{
-		buffer[len-1] = '\0';
-	}
-	if ( CreateDirectory((LPCTSTR)buffer, NULL) )
-	{
-		free(buffer);
-		return 1;
-	}
-	p = buffer + 1;
-	for ( ;; )
-	{
-		TCHAR hold;
-		while( *p&&*p != '\\' && *p != '/' ) p++;
-		hold = *p;
-		*p = 0;
-		if ( ( CreateDirectory((LPCTSTR)buffer, NULL)==FALSE) && (GetLastError() != ERROR_ALREADY_EXISTS) )
+		WCHAR name[MAX_PATH];
+		DWORD length = MAX_PATH;
+		LSTATUS status = RegEnumValueW(key, index, name, &length, NULL, NULL, NULL, NULL);
+		if (status == ERROR_NO_MORE_ITEMS) break;
+		if (status != ERROR_SUCCESS) continue;
+		if (_wcsicmp(name, xml) && CheckManifestForSkin(name))
 		{
-			free(buffer);
-			return 0;
-		}
-		if ( hold == 0 )
-			break;
-		*p++ = hold;
-	}
-	free(buffer);
-	return 1;
-}
-// EXPORT END
-
-static LPCTSTR GetManifestValue(LPCTSTR manifest, LPCTSTR searchKey)
-{
-	TCHAR* p;
-	LPTSTR kstart, vstart;
-	ptrdiff_t klen, vlen;
-	TCHAR* key;
-	TCHAR* val;
-	TCHAR* info;
-	TCHAR* ret;
-	TCHAR* start;
-	size_t len = wcslen(manifest);
-
-	info = (TCHAR*)malloc((len+1)*sizeof(TCHAR));
-	memcpy(info, manifest, ( len + 1 ) * sizeof(TCHAR) );
-	start = info;
-	if ( (p = wcsstr(info, L"/>")) != NULL )
-	{
-		info += 10;
-		*p = '\0';
-		for ( p=info;; )
-		{
-			for ( ;*p!='\0' && (*p==' ' || *p=='\t' || *p=='\r' || *p=='\n'); p++ );
-			if (*p == '\0') break;
-			kstart = p;
-			for ( ;*p!='\0' && *p!='=' && *p!=' ' && *p!='\t'; p++ );
-			klen = p-kstart;
-			for ( ;*p!='\0' && (*p==' ' || *p=='\t'); p++ );
-			if ( *p == '\0' ) break;
-			if ( *p != '=' ) continue;
-			p++;
-			for ( ;*p!='\0' && (*p==' ' || *p=='\t'); p++ );
-			if ( *p == '\0' )	break;
-			if ( *p=='\'' || *p=='"' )
-			{
-				p++;
-				vstart = p;
-				for ( ;*p!='\0' && *p!=*(vstart-1); p++ );
-				vlen = p-vstart;
-				if (*p != '\0') p++;
-			}
-			else
-			{
-				vstart = p;
-				for ( ;*p!='\0' && *p!=' ' && *p!='\t' && *p!='\r' && *p!='\n'; p++ );
-				vlen = p-vstart;
-			}
-			key = (TCHAR*) malloc((klen+1)*sizeof(TCHAR));
-			wcsncpy(key, kstart, klen);
-			key[klen] = '\0';
-			val = (TCHAR*) malloc((vlen+1)*sizeof(TCHAR));
-			wcsncpy(val, vstart, vlen);
-			val[vlen] = '\0';
-			if ( klen && !_wcsicmp(key, searchKey) )
-			{
-				ret = _wcsdup(val);
-				free(key);
-				free(val);
-				free(start);
-				return ret;
-			}
-			free(key);
-			free(val);
+			enabled = 0;
+			RegSetValueExW(key, name, 0, REG_DWORD, (BYTE*)&enabled, sizeof(enabled));
 		}
 	}
-	free(start);
-	return NULL;
-}
-
-static int CheckManifestForSkin(LPCTSTR pszFile)
-{
-	TCHAR *tt, *val;
-	FILE * pFile;
-	long lSize;
-	char *buffer;
-	int skin = 0, nLen = 0;
-	LPTSTR pszBuf;
-	char* p;
-	BOOL bBOM = 0;
-
-	SetCurrentDirectory( skins_dir );
-
-	pFile = _wfopen(pszFile , L"rb");
-	if ( pFile == NULL ) return 0;
-
-	fseek(pFile , 0 , SEEK_END);
-	lSize = ftell(pFile);
-	rewind(pFile);
-
-	buffer = (char*) malloc(lSize);
-	p = buffer;
-	if ( buffer == NULL ) return 0;
-	fread(buffer, 1, lSize, pFile);
-
-	if ( strlen(buffer) > 3 && (UCHAR)(*p) == 0xEF && (UCHAR)*(p+1) == 0xBB && (UCHAR)*(p+2) == 0xBF )
+	enabled = 1;
 	{
-		bBOM = TRUE;
-		buffer += 3;
+		LSTATUS status = RegSetValueExW(key, xml, 0, REG_DWORD, (BYTE*)&enabled, sizeof(enabled));
+		RegCloseKey(key);
+		return status == ERROR_SUCCESS;
 	}
-
-	nLen = MultiByteToWideChar( CP_UTF8, 0, (LPCSTR)buffer, (DWORD)strlen(buffer) , NULL, 0 );
-	pszBuf = (TCHAR*)malloc( nLen * sizeof(TCHAR) );
-	MultiByteToWideChar( CP_UTF8, 0, (LPCSTR)buffer, (DWORD)strlen(buffer), pszBuf, nLen );
-	if ( bBOM ) buffer -= 3;
-	free(buffer);
-
-	if ( (tt = wcsstr(pszBuf, L"<manifest")) == NULL )
-	{
-		fclose(pFile);
-		free(pszBuf);
-		return 1;
-	}
-
-	val = (TCHAR*)GetManifestValue(tt, L"type");
-	if (!val)
-		skin = 1;
-	else
-	{
-		if ( !_wcsicmp(val, L"skin") ) skin = 1;
-		free(val);
-	}
-	fclose(pFile);
-	free(pszBuf);
-	return skin;
 }

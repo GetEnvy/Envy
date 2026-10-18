@@ -91,7 +91,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
       <AdditionalLibraryDirectories>$(ProjectDir)..\HashLib\$(Configuration) $(Platform);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>HashLib.lib;bcrypt.lib;advapi32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>HashLib.lib;bcrypt.lib;advapi32.lib;comctl32.lib;shlwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Message>Copy HashLib.dll to test output...</Message>
@@ -116,7 +116,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
       <AdditionalLibraryDirectories>$(ProjectDir)..\HashLib\$(Configuration) $(Platform);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>HashLib.lib;bcrypt.lib;advapi32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>HashLib.lib;bcrypt.lib;advapi32.lib;comctl32.lib;shlwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Message>Copy HashLib.dll to test output...</Message>
@@ -141,7 +141,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <SubSystem>Console</SubSystem>
       <AdditionalLibraryDirectories>$(ProjectDir)..\HashLib\$(Configuration) $(Platform);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>HashLib.lib;bcrypt.lib;advapi32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>HashLib.lib;bcrypt.lib;advapi32.lib;comctl32.lib;shlwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Message>Copy HashLib.dll to test output...</Message>
@@ -166,7 +166,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <SubSystem>Console</SubSystem>
       <AdditionalLibraryDirectories>$(ProjectDir)..\HashLib\$(Configuration) $(Platform);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>HashLib.lib;bcrypt.lib;advapi32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>HashLib.lib;bcrypt.lib;advapi32.lib;comctl32.lib;shlwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Message>Copy HashLib.dll to test output...</Message>
@@ -176,6 +176,22 @@
   <!-- Source files -->
   <ItemGroup>
     <ClCompile Include="test_main.cpp" />
+    <ClCompile Include="test_unpacker.cpp">
+      <AdditionalIncludeDirectories>$(ProjectDir)..\Services\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NOCRYPT;ZLIB_DLL;ZLIB_WINAPI;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\Unpacker\Extract.c">
+      <AdditionalIncludeDirectories>$(ProjectDir)..\Services\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NOCRYPT;ZLIB_DLL;ZLIB_WINAPI;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\Unpacker\Utils.c">
+      <AdditionalIncludeDirectories>$(ProjectDir)..\Services\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NOCRYPT;ZLIB_DLL;ZLIB_WINAPI;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\Unpacker\PackagePath.c">
+      <AdditionalIncludeDirectories>$(ProjectDir)..\Services\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NOCRYPT;ZLIB_DLL;ZLIB_WINAPI;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
     <ClCompile Include="test_hashlib.cpp" />
     <ClCompile Include="test_protocol_parser_smoke.cpp" />
     <ClCompile Include="test_secureident_policy_smoke.cpp" />
@@ -222,6 +238,15 @@
   <ItemGroup>
     <ClInclude Include="test_framework.h" />
     <ClInclude Include="test_envy_rc_fixture.h" />
+  </ItemGroup>
+  <Target Name="CopyUnpackerTestRuntime" AfterTargets="Build">
+    <Copy SourceFiles="$(ProjectDir)..\Services\zlib\$(Configuration) $(Platform)\zlibwapi.dll" DestinationFolder="$(OutDir)" />
+  </Target>
+  <ItemGroup>
+    <ProjectReference Include="..\Services\zlib\zlibwapi.vcxproj">
+      <Project>{39f34f2c-d42a-41d2-a0bc-54d7972e2bc5}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
   </ItemGroup>
   <!-- HashLib dependency -->
   <ItemGroup>
