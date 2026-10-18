@@ -1,0 +1,54 @@
+name: Review digest
+
+# Keeps one comment that lists the unresolved review threads of a pull request,
+# so agents read a compact digest instead of the whole conversation. It never
+# requests reviews, approves, merges, or sets a status. The script always comes
+# from the default branch; PR code is never checked out or executed.
+on:
+  pull_request:
+    types: [synchronize]
+  pull_request_review:
+    types: [submitted, dismissed]
+  pull_request_review_comment:
+    types: [created]
+  workflow_dispatch:
+    inputs:
+      pr:
+        description: Pull request number
+        required: true
+        type: number
+
+permissions:
+  contents: read
+
+jobs:
+  digest:
+    name: Update review digest
+    # Fork PRs get a read-only token; skip them instead of failing.
+    if: >-
+      github.event_name == 'workflow_dispatch'
+      || github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    concurrency:
+      group: review-digest-${{ github.event.pull_request.number || inputs.pr }}
+      cancel-in-progress: true
+    permissions:
+      contents: read
+      issues: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+          persist-credentials: false
+      - name: Summarize unresolved threads
+        env:
+          PR: ${{ github.event.pull_request.number || inputs.pr }}
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          if [ ! -f .github/scripts/review-digest.py ]; then
+            echo "Review digest not on the default branch yet; nothing to do."
+            exit 0
+          fi
+          python3 .github/scripts/review-digest.py --pr "$PR"

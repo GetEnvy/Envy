@@ -102,6 +102,9 @@ jobs:
       - name: Ruleset audit self-test
         run: python3 .github/scripts/audit-ruleset.selftest.py
 
+      - name: Review digest self-test
+        run: python3 .github/scripts/review-digest.selftest.py
+
       - name: BugSplat SDK import self-test
         shell: pwsh
         run: pwsh scripts/import-bugsplat-sdk.selftest.ps1
