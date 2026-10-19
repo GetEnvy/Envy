@@ -7,7 +7,7 @@
     "test": "jest --runInBand"
   },
   "devDependencies": {
-    "dompurify": "^3.4.16",
+    "dompurify": "^3.4.17",
     "jest": "^30.5.2",
     "jsdom": "^26.1.0"
   }
