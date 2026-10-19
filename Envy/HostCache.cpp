@@ -1303,26 +1303,73 @@ bool CHostCache::CheckMinimumServers(PROTOCOLID nProtocol)
 
 int CHostCache::LoadDefaultServers(PROTOCOLID nProtocol)
 {
-	const CString strFile = Settings.General.DataPath + L"DefaultServers.dat";
+	const CString strWritablePath = Settings.General.DataPath + L"DefaultServers.dat";
+	const int nBinaryDirectory = static_cast<int>(BootstrapModuleDirectoryLength(theApp.m_strBinaryPath));
+	const CString strPackagedPath = nBinaryDirectory ? theApp.m_strBinaryPath.Left(nBinaryDirectory) + L"\\Data\\DefaultServers.dat" : CString();
+	const wchar_t* pszCataloguePath = BootstrapSelectCataloguePath(
+	    strWritablePath, ::PathFileExists(strWritablePath),
+	    strPackagedPath, ::PathFileExists(strPackagedPath));
+	CString strFile = pszCataloguePath ? pszCataloguePath : L"";
 	int nServers = 0;
 
 	// Ignore old files (300 days)
 	//if ( ! IsFileNewerThan( strFile, 300ull * 24 * 60 * 60 * 1000 ) )
 	//	return 0;
 
-	CStdioFile pFile;	// Load default list from file if possible
-	if ( ! pFile.Open( strFile, CFile::modeRead | CFile::shareDenyWrite | CFile::osSequentialScan ) )
+	CStdioFile pFile; // Load default list from writable or packaged data
+	BOOL bOpened = !strFile.IsEmpty() && pFile.Open(strFile, CFile::modeRead | CFile::shareDenyWrite | CFile::osSequentialScan);
+	if (!bOpened && strFile == strWritablePath && !strPackagedPath.IsEmpty() && ::PathFileExists(strPackagedPath)) // Unreadable writable copy
+	{
+		theApp.Message(MSG_ERROR, L"Writable default server catalogue could not be opened; using packaged data");
+		strFile = strPackagedPath;
+		bOpened = pFile.Open(strFile, CFile::modeRead | CFile::shareDenyWrite | CFile::osSequentialScan);
+	}
+	if (!bOpened)
+	{
+		static LONG s_nMissingCatalogueLogged = 0;
+		if (InterlockedCompareExchange(&s_nMissingCatalogueLogged, 1, 0) == 0)
+			theApp.Message(MSG_ERROR, L"No readable default server catalogue was found in writable or packaged data");
 		return 0;
+	}
+	ULONGLONG nCatalogueLength = 0;
+	try
+	{
+		nCatalogueLength = pFile.GetLength();
+	}
+	catch (CException* pException)
+	{
+		pFile.Abort();
+		pException->Delete();
+		theApp.Message(MSG_ERROR, L"Failed to inspect the default server catalogue");
+		return 0;
+	}
+	if (nCatalogueLength > 1024 * 1024)
+	{
+		pFile.Close();
+		theApp.Message(MSG_ERROR, L"Default server catalogue exceeds the 1 MiB limit");
+		return 0;
+	}
 
-	theApp.Message( MSG_NOTICE, L"Loading default server list" );
+	theApp.Message(MSG_NOTICE, L"Loading default server catalogue from %s data", strFile == strWritablePath ? L"writable" : L"packaged");
+	int nInvalidRows = 0;
 
 	// Format: PE 255.255.255.255:1024	# NameForConvenience
 
 	for ( ;; )
 	{
 		CString strLine;
-		if ( ! pFile.ReadString( strLine ) )
-			break;	// End of file
+		try
+		{
+			if (!pFile.ReadString(strLine))
+				break; // End of file
+		}
+		catch (CException* pException)
+		{
+			pFile.Abort();
+			pException->Delete();
+			theApp.Message(MSG_ERROR, L"Failed while reading the default server catalogue");
+			return nServers;
+		}
 
 		strLine.Trim( L" \t\r\n" );
 
@@ -1330,10 +1377,15 @@ int CHostCache::LoadDefaultServers(PROTOCOLID nProtocol)
 		bool bParsedPriority = false;
 		const wchar_t* pszHost = nullptr;
 		size_t nHost = 0;
-		if (BootstrapParseServerLine(
-		        strLine, static_cast<size_t>(strLine.GetLength()),
-		        &cType, &bParsedPriority, &pszHost, &nHost) != BootstrapParseStatus::Ok)
+		const BootstrapParseStatus nParse = BootstrapParseServerLine(
+		    strLine, static_cast<size_t>(strLine.GetLength()),
+		    &cType, &bParsedPriority, &pszHost, &nHost);
+		if (nParse != BootstrapParseStatus::Ok)
+		{
+			if (nParse == BootstrapParseStatus::Invalid)
+				++nInvalidRows;
 			continue;
+		}
 
 		CHostCacheList* pCache = NULL;
 		switch (BootstrapClassifyServerType(cType))
@@ -1393,6 +1445,9 @@ int CHostCache::LoadDefaultServers(PROTOCOLID nProtocol)
 	//		nServers++;
 	//	}
 	}
+	pFile.Close();
+	if (nInvalidRows)
+		theApp.Message(MSG_ERROR, L"Skipped %d invalid row(s) in the default server catalogue", nInvalidRows);
 
 	return nServers;
 }

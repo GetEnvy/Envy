@@ -1,7 +1,7 @@
 # Bootstrap sources versus discovered hosts
 
 Status: active
-Last updated: 2026-10-10
+Last updated: 2026-10-15
 Scope: Cold-start catalogues shipped with Envy. Not a claim that every protocol is complete.
 
 **Bootstrap sources ≠ discovered peers/servers.** Envy already keeps those layers apart:
@@ -12,7 +12,15 @@ Scope: Cold-start catalogues shipped with Envy. Not a claim that every protocol 
 | B. Learned runtime data | `Discovery.dat`, `HostCache.dat` | GWC URLs, ED2K servers, G1/G2 hosts, BT DHT nodes, Kad contacts learned while running |
 | C. Last-known-good remote catalogue | *planned* | Refresh A independently of the binary, never blocking startup |
 
-Do not copy B back into A. Do not compile bootstrap IPs into `.cpp` / `.h`. The old `CDiscoveryServices::AddDefaults()` built-in string list is **commented out**; if the data files are missing, Envy does not invent a second C++ list.
+The Visual Studio application build stages only `DefaultServices.dat` and
+`DefaultServers.dat` into `$(TargetDir)Data` for Debug/Release and x64/Win32.
+It does not copy runtime caches or user state. At startup, loaders prefer a
+catalogue under `Settings.General.DataPath` and fall back to the packaged
+`<executable directory>\Data` copy when the writable copy is absent. Existing
+`Discovery.dat`, `HostCache.dat`, and manually added services remain separate
+and are not reset to make defaults load.
+
+Do not copy B back into A. Do not compile bootstrap IPs into `.cpp` / `.h`. The old `CDiscoveryServices::AddDefaults()` built-in string list is **commented out**; if both the writable and packaged data files are missing, Envy reports the missing catalogue instead of inventing a second C++ list.
 
 Status vocabulary: catalogue refresh is **implemented** for the shipped files; remote last-known-good is **planned**; local Kad `nodes.dat` v1/v2/v3 parsing is **implemented**; remote validated Kad `nodes.dat` cold-start download is **implemented** (HTTPS `K` rows, size-capped validation, same-directory replace with `.lkg` backup) and does **not** make Kad2 routing/search interop complete.
 
@@ -27,6 +35,27 @@ Status vocabulary: catalogue refresh is **implemented** for the shipped files; r
 | DC NMDC | implemented (hublist) | Four HTTPS hublists. `adc://` / `adcs://` skipped until #163. |
 | ADC/ADCS | not implemented | `adc://` / `adcs://` rows are ignored; NMDC rows in the same hublists are still imported. Do not treat import as ADC support. |
 | BitTorrent DHT | implemented (bootstrap) | `DefaultServers.dat` `B` DNS routers loaded into HostCache. `CDHT::Connect` inserts cached node IDs; if none exist it sends BEP 5 `find_node` to up to 8 HostCache BitTorrent hosts (blocking DNS capped at 3 names; empty cache reloads `DefaultServers.dat`). No extra C++ DNS list. If the catalogue file is missing or every name fails DNS, DHT still marks connected and waits for later PEX/tracker nodes — D-012 forbids compiling `router.bittorrent.com` (or any replacement) into `.cpp`. Successful nodes persist in `HostCache.dat`. |
+
+### Gnutella 1 cache compatibility
+
+G1 GWebCaches and UDP Host Caches (UHCs) are separate discovery mechanisms.
+GWebCache uses HTTP requests to exchange peer addresses and cache URLs; a UHC
+answers Gnutella UDP ping/pong traffic and is identified through the UDPHC GGEP
+extension. A historical `Discovery.dat` with enough G1 GWebCaches but no UHC
+therefore still needs repair. `EnoughServices()` checks the UHC minimum
+independently, `Load()` adds the shipped UHC rows and saves the augmented
+cache, and the following startup sees that persisted UHC and does not inject
+the defaults again. `AddDefaults()` adds missing identities; it does not clear
+learned or manually added services.
+
+This distinction matches the [GWebCache HTTP specification](https://www.gnucleus.org/gwebcache/specs.html)
+and the [Gnutella UDP Host Cache description](https://www.gnutellaforums.com/attachments/general-gnutella-development-discussion/7007d1589595075-resources-gnutella-developers-udp-host-cache-gnutella-developers.pdf).
+The maintained gtk-gnutella source keeps these paths in separate [GWebCache](https://gtk-gnutella.sourceforge.io/doxygen/gwcache_8c.html)
+and [UHC](https://gtk-gnutella.sourceforge.io/doxygen/uhc_8c.html) modules,
+and its changelog records UHC-list/port maintenance
+([source project](https://github.com/gtk-gnutella/gtk-gnutella)).
+This catalogue distinction does not claim complete Gnutella 1 or Gnutella2
+network support or end-to-end interoperability.
 
 ## Shipped sources (latest inventory: 2026-10-10)
 
@@ -146,7 +175,7 @@ Audited `develop` at `59695b173bac6510388aa90f29cd88d60db35b74`. Existing work: 
 
 Validation used bounded HTTP GETs (20 s, 1 MiB read cap), normal TLS certificate verification, binary headers/counts, BZip2/XML decoding, DNS and one bounded BEP 5 `find_node` probe per router. On the 2026-10-09 recheck, eMule-Security `server.met` returned HTTP 200 with 12 records and `nodes.dat` returned HTTP 200 with version 2 and 189 contacts. The direct shortypower `server.met` and `nodes.dat` URLs timed out in this check. The maintained aMule documentation still identifies eMule-Security and shortypower as compatible `server.met` sources and eMule-Security as the maintained `nodes.dat` default. The three retained hublists returned HTTP 200, valid BZip2/XML, and 273, 267, and 91 hub entries respectively. Transmission and libtorrent replied with matching transactions; BitTorrent timed out. These are point-in-time observations, not guarantees of uptime or full Envy runtime interoperability. No peer IPs from responses are added to shipped data. No live UHC UDP interoperability is claimed; the six retained endpoints are present in maintained gtk-gnutella `boot_hosts` (three additional peer ports there are not needed for the minimum catalogue). Candidate alternatives such as `router.bt.ouinet.work:6881` were documented by libtorrent but not added because they were not independently validated in this audit.
 
-The offline catalogue test compares all parsed source identities with the vetted set, rejecting invalid, truncated, duplicate or unexpected extra rows rather than merely checking minima. The three blocked `X` identities must also remain present; they are security entries, not bootstrap providers. Existing `Discovery.dat` is not migrated by this PR; #419 remains open.
+The offline catalogue test compares all parsed source identities with the vetted set, rejecting invalid, truncated, duplicate or unexpected extra rows rather than merely checking minima. The three blocked `X` identities must also remain present; they are security entries, not bootstrap providers. Existing `Discovery.dat` is never cleared or rewritten wholesale: missing shipped identities (including the G1 UHC row) are added additively, and the broader persisted-service migration remains open in #419.
 
 Primary references consulted:
 

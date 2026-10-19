@@ -166,7 +166,7 @@
       <Path>$(ProjectDir)$(IntDir)$(ProjectName).log</Path>
     </BuildLog>
     <PostBuildEvent>
-      <Message>Copying Data folder to output directory...</Message>
+      <Message>Copying Vendors.xml to output directory...</Message>
       <Command>if not exist "$(TargetDir)Data" mkdir "$(TargetDir)Data"
 if exist "$(SolutionDir)Data\Vendors.xml" copy /Y "$(SolutionDir)Data\Vendors.xml" "$(TargetDir)Data\Vendors.xml"
 $(EnvyCrashPostBuildCmd)</Command>
@@ -230,7 +230,7 @@ $(EnvyCrashPostBuildCmd)</Command>
       <Path>$(ProjectDir)$(IntDir)$(ProjectName).log</Path>
     </BuildLog>
     <PostBuildEvent>
-      <Message>Copying Data folder to output directory...</Message>
+      <Message>Copying Vendors.xml to output directory...</Message>
       <Command>if not exist "$(TargetDir)Data" mkdir "$(TargetDir)Data"
 if exist "$(SolutionDir)Data\Vendors.xml" copy /Y "$(SolutionDir)Data\Vendors.xml" "$(TargetDir)Data\Vendors.xml"
 $(EnvyCrashPostBuildCmd)</Command>
@@ -303,7 +303,7 @@ $(EnvyCrashPostBuildCmd)</Command>
       <Path>$(ProjectDir)$(IntDir)$(ProjectName).log</Path>
     </BuildLog>
     <PostBuildEvent>
-      <Message>Copying Data folder to output directory...</Message>
+      <Message>Copying Vendors.xml to output directory...</Message>
       <Command>if not exist "$(TargetDir)Data" mkdir "$(TargetDir)Data"
 if exist "$(SolutionDir)Data\Vendors.xml" copy /Y "$(SolutionDir)Data\Vendors.xml" "$(TargetDir)Data\Vendors.xml"
 $(EnvyCrashPostBuildCmd)</Command>
@@ -376,7 +376,7 @@ $(EnvyCrashPostBuildCmd)</Command>
       <Path>$(ProjectDir)$(IntDir)$(ProjectName).log</Path>
     </BuildLog>
     <PostBuildEvent>
-      <Message>Copying Data folder to output directory...</Message>
+      <Message>Copying Vendors.xml to output directory...</Message>
       <Command>if not exist "$(TargetDir)Data" mkdir "$(TargetDir)Data"
 if exist "$(SolutionDir)Data\Vendors.xml" copy /Y "$(SolutionDir)Data\Vendors.xml" "$(TargetDir)Data\Vendors.xml"
 $(EnvyCrashPostBuildCmd)</Command>
@@ -1249,6 +1249,7 @@ $(EnvyCrashPostBuildCmd)</Command>
     <None Include="..\ReadMe.txt" />
     <None Include="..\Data\Splash.png" />
     <None Include="..\Data\DefaultServices.dat" />
+    <None Include="..\Data\DefaultServers.dat" />
     <None Include="..\Schemas\SchemaMappings.xml" />
     <!--
     <CustomBuild Include="..\Schemas\SchemaMappings.xml">
@@ -1755,6 +1756,19 @@ $(EnvyCrashPostBuildCmd)</Command>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
+  <Target Name="ValidateBootstrapCatalogueInputs" BeforeTargets="Build" Condition="'$(DesignTimeBuild)' != 'true'">
+    <Error Condition="!Exists('$(MSBuildProjectDirectory)\..\Data\DefaultServices.dat')" Text="Missing Data\DefaultServices.dat required for Envy bootstrap." />
+    <Error Condition="!Exists('$(MSBuildProjectDirectory)\..\Data\DefaultServers.dat')" Text="Missing Data\DefaultServers.dat required for Envy bootstrap." />
+  </Target>
+  <!-- No Inputs/Outputs: dependency analysis would skip Copy when a staged catalogue was altered
+       but is newer than its source; always copy so a staged catalogue is restored byte for byte. -->
+  <Target Name="StageBootstrapCatalogues" AfterTargets="Build"
+          Condition="'$(DesignTimeBuild)' != 'true'">
+    <MakeDir Directories="$(TargetDir)Data" />
+    <Copy SourceFiles="$(MSBuildProjectDirectory)\..\Data\DefaultServices.dat;$(MSBuildProjectDirectory)\..\Data\DefaultServers.dat"
+          DestinationFiles="$(TargetDir)Data\DefaultServices.dat;$(TargetDir)Data\DefaultServers.dat"
+          SkipUnchangedFiles="false" />
+  </Target>
   <!-- vcpkg.targets is not imported here. VcpkgEnabled/VcpkgEnableManifest only
        restore packages if the machine has vcpkg MSBuild integration, and even
        then restore is BeforeTargets=ClCompile/Midl — after PreBuildEvent.

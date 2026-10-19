@@ -611,6 +611,7 @@ void CDiscoveryServices::Serialize(CArchive& ar)
 BOOL CDiscoveryServices::EnoughServices() const
 {
 	int nWebCacheCount = 0, nServerMetCount = 0, nHubListCount = 0, nKadNodesCount = 0;
+	int nG1UdpCount = 0;
 	int nG1Count = 0, nG2Count = 0;									// Protocols
 
 	for ( POSITION pos = m_pList.GetHeadPosition(); pos; )
@@ -625,7 +626,11 @@ BOOL CDiscoveryServices::EnoughServices() const
 		}
 		else if ( pService->m_nType == CDiscoveryService::dsGnutella )
 		{
-			if ( pService->m_nSubType == CDiscoveryService::dsGnutellaUDPHC )	nG1Count++;
+			if (pService->m_nSubType == CDiscoveryService::dsGnutellaUDPHC)
+			{
+				nG1Count++;
+				nG1UdpCount++;
+			}
 			if ( pService->m_nSubType == CDiscoveryService::dsGnutella2UDPKHL )	nG2Count++;
 		}
 		else if ( pService->m_nType == CDiscoveryService::dsServerList )
@@ -639,12 +644,13 @@ BOOL CDiscoveryServices::EnoughServices() const
 		}
 	}
 
-	return ((nWebCacheCount >= BootstrapMinWebCaches) &&                                   // At least 1 webcache
-	        (nG2Count >= BootstrapMinG2Services) &&                                        // At least 3 G2 services
-	        (nG1Count >= BootstrapMinG1Services || !Settings.Gnutella1.ShowInterface) &&   // At least 2 G1 services, if exposed
-	        (nServerMetCount >= BootstrapMinEd2kMet || !Settings.eDonkey.ShowInterface) && // At least 2 server.met, if exposed
-	        (nHubListCount >= BootstrapMinDcHublists || !Settings.DC.ShowInterface) &&     // At least 2 hublist, if exposed
-	        (nKadNodesCount >= BootstrapMinKadNodesDat || !Settings.eDonkey.EnableKad));   // Kad nodes.dat when Kad enabled
+	return BootstrapDiscoveryMinimumsSatisfied(
+	    nWebCacheCount, nG2Count, nG1Count, nG1UdpCount,
+	    nServerMetCount, nHubListCount, nKadNodesCount,
+	    Settings.Gnutella1.ShowInterface != FALSE,
+	    Settings.eDonkey.ShowInterface != FALSE,
+	    Settings.DC.ShowInterface != FALSE,
+	    Settings.eDonkey.EnableKad != FALSE);
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -652,16 +658,35 @@ BOOL CDiscoveryServices::EnoughServices() const
 
 void CDiscoveryServices::AddDefaults()
 {
-	const CString strFile = Settings.General.DataPath + L"DefaultServices.dat";
+	const CString strWritablePath = Settings.General.DataPath + L"DefaultServices.dat";
+	const int nBinaryDirectory = static_cast<int>(BootstrapModuleDirectoryLength(theApp.m_strBinaryPath));
+	const CString strPackagedPath = nBinaryDirectory ? theApp.m_strBinaryPath.Left(nBinaryDirectory) + L"\\Data\\DefaultServices.dat" : CString();
+	const wchar_t* pszCataloguePath = BootstrapSelectCataloguePath(
+	    strWritablePath, ::PathFileExists(strWritablePath),
+	    strPackagedPath, ::PathFileExists(strPackagedPath));
+	CString strFile = pszCataloguePath ? pszCataloguePath : L"";
 
 	CFile pFile;
-	if ( pFile.Open( strFile, CFile::modeRead ) )			// Load default list from file if possible
+	BOOL bOpened = !strFile.IsEmpty() && pFile.Open(strFile, CFile::modeRead | CFile::shareDenyWrite);
+	if (!bOpened && strFile == strWritablePath && !strPackagedPath.IsEmpty() && ::PathFileExists(strPackagedPath)) // Unreadable writable copy
 	{
-		theApp.Message( MSG_NOTICE, L"Loading default discovery service list: %s", (LPCTSTR)strFile );
+		theApp.Message(MSG_ERROR, L"Writable default discovery service catalogue could not be opened; using packaged data");
+		strFile = strPackagedPath;
+		bOpened = pFile.Open(strFile, CFile::modeRead | CFile::shareDenyWrite);
+	}
+	if (bOpened) // Load default list from writable or packaged data
+	{
+		theApp.Message(MSG_NOTICE, L"Loading default discovery service catalogue from %s data", strFile == strWritablePath ? L"writable" : L"packaged");
 
 		try
 		{
 			int nCount = 0;
+			int nInvalidRows = 0;
+			if (pFile.GetLength() > 1024 * 1024)
+			{
+				theApp.Message(MSG_ERROR, L"Default discovery service catalogue exceeds the 1 MiB limit");
+				return;
+			}
 
 			CBuffer pBuffer;
 			pBuffer.EnsureBuffer( (DWORD)pFile.GetLength() );
@@ -683,7 +708,7 @@ void CDiscoveryServices::AddDefaults()
 					continue;
 				if (nParse != BootstrapParseStatus::Ok)
 				{
-					theApp.Message(MSG_ERROR, L"Error line in discovery service list: %s", (LPCTSTR)strLine);
+					++nInvalidRows;
 					continue;
 				}
 
@@ -731,14 +756,26 @@ void CDiscoveryServices::AddDefaults()
 				}
 			}
 
-			theApp.Message( MSG_DEBUG, L"[DiscoveryServices] Loaded %d services.", nCount );
+			if (nInvalidRows)
+				theApp.Message(MSG_ERROR, L"Skipped %d invalid row(s) in the default discovery service catalogue", nInvalidRows);
+			if (nCount == 0)
+				theApp.Message(MSG_ERROR, L"Default discovery service catalogue contains no usable entries");
+			if (!EnoughServices())
+				theApp.Message(MSG_ERROR, L"One or more required discovery bootstrap categories remain unavailable after loading defaults");
+			theApp.Message(MSG_DEBUG, L"[DiscoveryServices] Loaded %d default services.", nCount);
 		}
 		catch ( CException* pException )
 		{
 			pFile.Abort();
 			pException->Delete();
-			theApp.Message( MSG_ERROR, L"Failed to load discovery service list: %s", (LPCTSTR)strFile );
+			theApp.Message(MSG_ERROR, L"Failed to read the default discovery service catalogue");
 		}
+	}
+	else
+	{
+		static LONG s_nMissingCatalogueLogged = 0;
+		if (InterlockedCompareExchange(&s_nMissingCatalogueLogged, 1, 0) == 0)
+			theApp.Message(MSG_ERROR, L"No readable default discovery service catalogue was found in writable or packaged data");
 	}
 
 	// Obsolete: If file can't be used or didn't have enough services, drop back to the built-in list

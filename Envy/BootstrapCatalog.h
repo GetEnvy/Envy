@@ -27,6 +27,7 @@
 constexpr int BootstrapMinWebCaches = 1;
 constexpr int BootstrapMinG2Services = 3;
 constexpr int BootstrapMinG1Services = 2;
+constexpr int BootstrapMinG1UdpServices = 1;
 constexpr int BootstrapMinEd2kMet = 2;
 constexpr int BootstrapMinDcHublists = 2;
 constexpr int BootstrapMinKadNodesDat = 1;
@@ -35,6 +36,51 @@ constexpr int BootstrapMinKadNodesDat = 1;
 constexpr int BootstrapDhtRouterPingCap = 8;
 // Cap blocking gethostbyname calls on the network thread during Connect.
 constexpr int BootstrapDhtBlockingResolveCap = 3;
+
+// Directory part of a module path, without the trailing separator.
+// theApp.m_strBinaryPath names Envy.exe itself, so packaged Data lives
+// beside it, not under it. Returns 0 when no directory part exists.
+inline size_t BootstrapModuleDirectoryLength(const wchar_t* pszModulePath)
+{
+	const wchar_t* pszSlash = pszModulePath ? std::wcsrchr(pszModulePath, L'\\') : nullptr;
+	return pszSlash ? static_cast<size_t>(pszSlash - pszModulePath) : 0;
+}
+
+// Prefer mutable per-user catalogues when present, but never make them the
+// only copy of immutable bootstrap defaults.
+inline const wchar_t* BootstrapSelectCataloguePath(
+    const wchar_t* pszWritablePath,
+    bool bWritableExists,
+    const wchar_t* pszPackagedPath,
+    bool bPackagedExists)
+{
+	if (bWritableExists)
+		return pszWritablePath;
+	if (bPackagedExists)
+		return pszPackagedPath;
+	return nullptr;
+}
+
+inline bool BootstrapDiscoveryMinimumsSatisfied(
+    int nWebCaches,
+    int nG2Services,
+    int nG1Services,
+    int nG1UdpServices,
+    int nEd2kMet,
+    int nDcHublists,
+    int nKadNodesDat,
+    bool bG1Enabled,
+    bool bEd2kEnabled,
+    bool bDcEnabled,
+    bool bKadEnabled)
+{
+	return nWebCaches >= BootstrapMinWebCaches &&
+	       nG2Services >= BootstrapMinG2Services &&
+	       ((nG1Services >= BootstrapMinG1Services && nG1UdpServices >= BootstrapMinG1UdpServices) || !bG1Enabled) &&
+	       (nEd2kMet >= BootstrapMinEd2kMet || !bEd2kEnabled) &&
+	       (nDcHublists >= BootstrapMinDcHublists || !bDcEnabled) &&
+	       (nKadNodesDat >= BootstrapMinKadNodesDat || !bKadEnabled);
+}
 
 enum class BootstrapParseStatus
 {

@@ -85,9 +85,9 @@ const wchar_t* kShippedServices =
 	L"X http://www.myfoxy.net/gwc/cgi-bin/fc\n"
 	L"X http://gwc.gofoxy.net:2108/gwc/cgi-bin/fc\n";
 
-void CountServices(const wchar_t* blob, int* nWeb, int* nG2, int* nG1, int* nMet, int* nHub, int* nNodesDat)
+void CountServices(const wchar_t* blob, int* nWeb, int* nG2, int* nG1, int* nG1Udp, int* nMet, int* nHub, int* nNodesDat)
 {
-	*nWeb = *nG2 = *nG1 = *nMet = *nHub = *nNodesDat = 0;
+	*nWeb = *nG2 = *nG1 = *nG1Udp = *nMet = *nHub = *nNodesDat = 0;
 	const wchar_t* p = blob;
 	while ( p && *p )
 	{
@@ -115,7 +115,10 @@ void CountServices(const wchar_t* blob, int* nWeb, int* nG2, int* nG1, int* nMet
 			{
 				// UHC counts as G1 in EnoughServices.
 				if ( n >= 4 && wcsncmp( psz, L"uhc:", 4 ) == 0 )
+				{
 					++(*nG1);
+					++(*nG1Udp);
+				}
 				if ( n >= 5 && wcsncmp( psz, L"ukhl:", 5 ) == 0 )
 					++(*nG2);
 			}
@@ -254,11 +257,12 @@ static bool test_kad_nodes_dat_accepts_https_url()
 
 static bool test_shipped_catalogue_meets_minima()
 {
-	int nWeb = 0, nG2 = 0, nG1 = 0, nMet = 0, nHub = 0, nNodesDat = 0;
-	CountServices( kShippedServices, &nWeb, &nG2, &nG1, &nMet, &nHub, &nNodesDat );
+	int nWeb = 0, nG2 = 0, nG1 = 0, nG1Udp = 0, nMet = 0, nHub = 0, nNodesDat = 0;
+	CountServices( kShippedServices, &nWeb, &nG2, &nG1, &nG1Udp, &nMet, &nHub, &nNodesDat );
 	return nWeb >= BootstrapMinWebCaches
 		&& nG2 >= BootstrapMinG2Services
 		&& nG1 >= BootstrapMinG1Services
+		&& nG1Udp >= BootstrapMinG1UdpServices
 		&& nMet >= BootstrapMinEd2kMet
 		&& nHub >= BootstrapMinDcHublists
 		&& nNodesDat >= BootstrapMinKadNodesDat;
@@ -322,8 +326,8 @@ static bool test_shipped_default_services_dat()
 	std::wstring wide;
 	if ( ! LoadRepoDataFile( "DefaultServices.dat", &wide ) )
 		return false;
-	int nWeb = 0, nG2 = 0, nG1 = 0, nMet = 0, nHub = 0, nNodesDat = 0;
-	CountServices( wide.c_str(), &nWeb, &nG2, &nG1, &nMet, &nHub, &nNodesDat );
+	int nWeb = 0, nG2 = 0, nG1 = 0, nG1Udp = 0, nMet = 0, nHub = 0, nNodesDat = 0;
+	CountServices( wide.c_str(), &nWeb, &nG2, &nG1, &nG1Udp, &nMet, &nHub, &nNodesDat );
 	// Compare parsed identities, so comments cannot satisfy the check
 	// and an accidental extra retired source cannot hide behind minimum counts.
 	// Blocked identities must also survive catalogue maintenance.
@@ -361,6 +365,7 @@ static bool test_shipped_default_services_dat()
 	return nWeb >= BootstrapMinWebCaches
 		&& nG2 >= BootstrapMinG2Services
 		&& nG1 >= BootstrapMinG1Services
+		&& nG1Udp >= BootstrapMinG1UdpServices
 		&& nMet >= BootstrapMinEd2kMet
 		&& nHub >= BootstrapMinDcHublists
 		&& nNodesDat >= BootstrapMinKadNodesDat
@@ -505,9 +510,80 @@ static bool test_catalogue_truncated_rows()
 static bool test_catalogue_network_limits()
 {
 	return BootstrapMinWebCaches == 1 && BootstrapMinG2Services == 3
-		&& BootstrapMinG1Services == 2 && BootstrapMinEd2kMet == 2
+		&& BootstrapMinG1Services == 2 && BootstrapMinG1UdpServices == 1
+		&& BootstrapMinEd2kMet == 2
 		&& BootstrapMinDcHublists == 2 && BootstrapMinKadNodesDat == 1
 		&& BootstrapDhtRouterPingCap == 8 && BootstrapDhtBlockingResolveCap == 3;
+}
+
+static bool test_catalogue_path_falls_back_to_packaged_defaults()
+{
+	const wchar_t* const writablePath = L"C:\\UserData\\Data\\DefaultServices.dat";
+	const wchar_t* const packagedPath = L"C:\\Program Files\\Envy\\Data\\DefaultServices.dat";
+
+	// Fresh output and existing Discovery.dat / HostCache.dat caches both leave
+	// the writable catalogue absent, so packaged defaults must still be selected.
+	return BootstrapSelectCataloguePath( writablePath, false, packagedPath, true ) == packagedPath
+		&& BootstrapSelectCataloguePath( writablePath, true, packagedPath, true ) == writablePath
+		&& BootstrapSelectCataloguePath( writablePath, false, packagedPath, false ) == nullptr;
+}
+
+static bool test_packaged_catalogue_directory_is_beside_executable()
+{
+	// The module path names the executable, so packaged Data is a sibling
+	// of Envy.exe rather than a child of it.
+	const wchar_t* const modulePath = L"C:\\Program Files\\Envy\\Envy.exe";
+	const std::wstring directory( modulePath, BootstrapModuleDirectoryLength( modulePath ) );
+	return directory == L"C:\\Program Files\\Envy"
+		&& directory + L"\\Data\\DefaultServices.dat" == L"C:\\Program Files\\Envy\\Data\\DefaultServices.dat"
+		&& BootstrapModuleDirectoryLength( L"Envy.exe" ) == 0
+		&& BootstrapModuleDirectoryLength( nullptr ) == 0;
+}
+
+static bool test_unrelated_gwcs_do_not_replace_g1_udp_bootstrap()
+{
+	const int nWebCaches = BootstrapMinWebCaches;
+	const int nG2 = BootstrapMinG2Services;
+	const int nG1 = BootstrapMinG1Services;
+	const int nEd2k = BootstrapMinEd2kMet;
+	const int nDc = BootstrapMinDcHublists;
+	const int nKad = BootstrapMinKadNodesDat;
+
+	return ! BootstrapDiscoveryMinimumsSatisfied(
+		nWebCaches, nG2, nG1, 0, nEd2k, nDc, nKad, true, true, true, true )
+		&& BootstrapDiscoveryMinimumsSatisfied(
+			nWebCaches, nG2, nG1, BootstrapMinG1UdpServices,
+			nEd2k, nDc, nKad, true, true, true, true )
+		&& BootstrapDiscoveryMinimumsSatisfied(
+			nWebCaches, nG2, 0, 0, nEd2k, nDc, nKad, false, true, true, true );
+}
+
+static bool test_legacy_g1_cache_needs_udp_top_up()
+{
+	std::wstring shipped;
+	if ( ! LoadRepoDataFile( "DefaultServices.dat", &shipped ) )
+		return false;
+
+	int nWeb = 0, nG2 = 0, nG1 = 0, nG1Udp = 0, nMet = 0, nHub = 0, nNodesDat = 0;
+	CountServices( shipped.c_str(), &nWeb, &nG2, &nG1, &nG1Udp, &nMet, &nHub, &nNodesDat );
+	if (nG1Udp < BootstrapMinG1UdpServices)
+		return false;
+
+	const int nHistoricG1Gwc = BootstrapMinG1Services;
+	const bool bHistoricCacheNeedsRepair = !BootstrapDiscoveryMinimumsSatisfied(
+	    BootstrapMinWebCaches, BootstrapMinG2Services, nHistoricG1Gwc, 0,
+	    BootstrapMinEd2kMet, BootstrapMinDcHublists, BootstrapMinKadNodesDat,
+	    true, true, true, true);
+
+	// Load() adds missing defaults and saves the augmented Discovery.dat. On the
+	// next startup the persisted UHC row satisfies the separate UDP minimum.
+	const int nPersistedG1 = nHistoricG1Gwc + nG1Udp;
+	const bool bReloadIsComplete = BootstrapDiscoveryMinimumsSatisfied(
+	    BootstrapMinWebCaches, BootstrapMinG2Services, nPersistedG1, nG1Udp,
+	    BootstrapMinEd2kMet, BootstrapMinDcHublists, BootstrapMinKadNodesDat,
+	    true, true, true, true);
+
+	return bHistoricCacheNeedsRepair && bReloadIsComplete;
 }
 
 void register_bootstrap_catalog_smoke_tests( TestSuite& suite )
@@ -542,4 +618,8 @@ void register_bootstrap_catalog_smoke_tests( TestSuite& suite )
 	suite.add_test( "bootstrap_dht_boot_slot_cap_and_dns_budget", test_dht_boot_slot_cap_and_dns_budget );
 	suite.add_test( "bootstrap_catalogue_truncated_rows", test_catalogue_truncated_rows );
 	suite.add_test( "bootstrap_catalogue_network_limits", test_catalogue_network_limits );
+	suite.add_test( "bootstrap_catalogue_path_fallback", test_catalogue_path_falls_back_to_packaged_defaults );
+	suite.add_test( "bootstrap_packaged_catalogue_beside_executable", test_packaged_catalogue_directory_is_beside_executable );
+	suite.add_test( "bootstrap_required_g1_udp_category", test_unrelated_gwcs_do_not_replace_g1_udp_bootstrap );
+	suite.add_test( "bootstrap_legacy_g1_cache_needs_udp_top_up", test_legacy_g1_cache_needs_udp_top_up );
 }
