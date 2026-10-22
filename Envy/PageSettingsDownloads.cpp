@@ -306,7 +306,7 @@ void CDownloadsSettingsPage::OnOK()
 
 			if ( MsgBox( strMessage, MB_ICONQUESTION|MB_YESNO ) == IDYES )
 			{
-				CLibraryFolder* pFolder = LibraryFolders.AddFolder( m_sDownloadsPath );
+				CLibraryFolder* pFolder = LibraryFolders.AddFolder(m_sDownloadsPath);
 
 				if ( pFolder )
 				{

@@ -2929,7 +2929,6 @@
 	<string id="20447" text="确定要移除 &quot;可能不安全&quot; 的文件吗？"/>
 	<string id="20448" text="公众"/>	<!--Shared-->
 	<string id="20449" text="私人"/>	<!--Unshared-->
-	<string id="20450" text="选定文件夹的子目录 &quot;%s&quot; 已经是您收藏的一部分。\n添加此文件夹将导致重新 Hash 某些文件。\n\n您希望继续吗？"/>
 	<string id="20451" text="没有文件被播放。请在您的收藏中双击媒体文件进行播放。"/>
 	<string id="20452" text="所有媒体文件|*.asx;*.wax;*.m3u;*.wvx;*.wmx;*.asf;*.wav;*.snd;*.au;*.aif;*.aifc;*.aiff;*.wma;*.rm;*.mp3;*.ogg;*.ogm;*.cda;*.mid;*.rmi;*.midi;*.avi;*.asf;*.mpeg;*.mpg;*.m1v;*.mp2;*.mpa;*.mpe;*.wmv|播放列表文件|*.asx;*.wax;*.m3u;*.wvx;*.wmx|音频文件|*.asf;*.wav;*.snd;*.au;*.aif;*.aifc;*.aiff;*.wma;*.rm;*.mp3;*.ogg;*.ogm|视频文件|*.avi;*.asf;*.mpeg;*.mpg;*.m1v;*.mp2;*.mpa;*.mpe;*.wmv|CD 音轨|*.cda|MIDI 文件|*.mid;*.rmi;*.midi|所有文件|*.*||"/>
 	<string id="20453" text="未能载入媒体文件 &quot;%s&quot;"/>

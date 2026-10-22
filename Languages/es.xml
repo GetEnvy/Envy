@@ -3034,7 +3034,6 @@
 	<string id="20447" text="¿Quieres quitar el atributo de &quot;potencialmente inseguro&quot; de este archivo?"/>
 	<string id="20448" text="Público"/>	<!--Shared-->
 	<string id="20449" text="Privado"/>	<!--Unshared-->
-	<string id="20450" text="Una subcarpeta de la carpeta seleccionada &quot;%s&quot; forma parte de Colección.\nAñadir esta carpeta causará la refusión de algunos ficheros.\n\n¿Quieres continuar?"/>
 	<string id="20451" text="No hay ningún archivo reproduciendose. Haz doble click a un archivo de media en tu librería para reproducirlo."/>
 	<string id="20452" text="Todos los archivos de Media|*.asx;*.wax;*.m3u;*.wvx;*.wmx;*.asf;*.wav;*.snd;*.au;*.aif;*.aifc;*.aiff;*.wma;*.rm;*.mp3;*.ogg;*.ogm;*.cda;*.mid;*.rmi;*.midi;*.avi;*.asf;*.mpeg;*.mpg;*.m1v;*.mp2;*.mpa;*.mpe;*.wmv|Playlists|*.asx;*.wax;*.m3u;*.wvx;*.wmx|Audio Files|*.asf;*.wav;*.snd;*.au;*.aif;*.aifc;*.aiff;*.wma;*.rm;*.mp3;*.ogg;*.ogm|Video Files|*.avi;*.asf;*.mpeg;*.mpg;*.m1v;*.mp2;*.mpa;*.mpe;*.wmv|CD Audio Tracks|*.cda|MIDI Files|*.mid;*.rmi;*.midi|All Files|*.*||"/>
 	<string id="20453" text="El archivo &quot;%s&quot;, no se pudo cargar."/>

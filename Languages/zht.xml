@@ -2887,7 +2887,6 @@
 	<string id="20448" text="公眾"/>	<!--Shared-->
 	<string id="20449" text="私人"/>	<!--Unshared-->
 	<string id="20086" text="這個檔案 &quot;%s&quot; 尚未切細。 請等到檔案完成切細後,再試一次。"/>
-	<string id="20450" text="選擇的資料夾的次資料夾 &quot;%s&quot; 已經是您的收藏的一部份了。\n新增這個資料夾會引起某些檔案被重新切細。\n\n您要繼續嗎?"/>
 	<string id="20451" text="目前沒有播放任何檔案。 在您的收藏裡雙點一個多媒體檔案播放。"/>
 	<string id="20452" text="所有的多媒體檔案|*.asx;*.wax;*.m3u;*.wvx;*.wmx;*.asf;*.wav;*.snd;*.au;*.aif;*.aifc;*.aiff;*.wma;*.rm;*.mp3;*.ogg;*.ogm;*.cda;*.mid;*.rmi;*.midi;*.avi;*.asf;*.mpeg;*.mpg;*.m1v;*.mp2;*.mpa;*.mpe;*.wmv|播放清單|*.asx;*.wax;*.m3u;*.wvx;*.wmx|音訊檔|*.asf;*.wav;*.snd;*.au;*.aif;*.aifc;*.aiff;*.wma;*.rm;*.mp3;*.ogg;*.ogm|視訊檔|*.avi;*.asf;*.mpeg;*.mpg;*.m1v;*.mp2;*.mpa;*.mpe;*.wmv|CD 音軌|*.cda|MIDI 檔|*.mid;*.rmi;*.midi|所有的檔案|*.*||"/>
 	<string id="20453" text="無法載入多媒體檔 &quot;%s&quot;"/>

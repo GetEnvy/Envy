@@ -1913,6 +1913,12 @@
     <ClInclude Include="LibraryDictionary.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="LibraryFileSystem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LibraryScanState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="LibraryFolders.h">
       <Filter>Header Files</Filter>
     </ClInclude>

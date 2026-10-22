@@ -3032,7 +3032,6 @@
 	<string id="20447" text="Θέλετε να αφαιρέσετε την &quot;εν δυνάμει επικίνδυνη&quot; ιδιότητα από αυτό το αρχείο;"/>
 	<string id="20448" text="Δημόσια"/>	<!--Shared-->
 	<string id="20449" text="Ιδιωτική"/>	<!--Unshared-->
-	<string id="20450" text="Ένας υποφάκελος του επιλεγμένου φακέλου &quot;%s&quot; είναι ήδη μέρος της Βιβλιοθήκης.nΠροσθέτοντας αυτόν τον φάκελο θα προκαλέσει επανασάρωση μερικών αρχείων.nnΘέλετε να συνεχίσετε;"/>
 	<string id="20451" text="Κανένα αρχείο υπό αναπαραγωγή. Για αναπαραγωγή, διπλό κλικ σε ένα αρχείο στη Βιβλιοθήκη."/>
 	<string id="20452" text="Όλα τα Αρχεία Πολυμέσων|*.asx;*.wax;*.m3u;*.wvx;*.wmx;*.asf;*.wav;*.snd;*.au;*.aif;*.aifc;*.aiff;*.wma;*.rm;*.mp3;*.ogg;*.ogm;*.cda;*.mid;*.rmi;*.midi;*.avi;*.asf;*.mpeg;*.mpg;*.m1v;*.mp2;*.mpa;*.mpe;*.wmv|Λίστες|*.asx;*.wax;*.m3u;*.wvx;*.wmx|Αρχεία Ήχου|*.asf;*.wav;*.snd;*.au;*.aif;*.aifc;*.aiff;*.wma;*.rm;*.mp3;*.ogg;*.ogm|Αρχεία Video|*.avi;*.asf;*.mpeg;*.mpg;*.m1v;*.mp2;*.mpa;*.mpe;*.wmv|Κομμάτια CD Audio|*.cda|Αρχεία MIDI|*.mid;*.rmi;*.midi|Όλα τα Αρχεία|*.*||"/>
 	<string id="20453" text="Αδυναμία φόρτωσης αρχείου &quot;%s&quot;"/>

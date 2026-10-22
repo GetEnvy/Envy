@@ -2964,7 +2964,6 @@
 	<string id="20447" text="El akarja távolítani a fájl &quot;potenciálisan veszélyes&quot; attribútumát?"/>
 	<string id="20448" text="Nyilvános"/>	<!--Shared-->
 	<string id="20449" text="Magán"/>	<!--Unshared-->
-	<string id="20450" text="A kész és a félkész fájlok ne legyenek azonos mappában."/>
 	<string id="20451" text="Nincs semmilyen lejátszás folyamatban. Kattintson duplán egy médiafájlra a lejátszáshoz."/>
 	<string id="20452" text="Minden médiafájl|*.asx;*.wax;*.m3u;*.wvx;*.wmx;*.asf;*.wav;*.snd;*.au;*.aif;*.aifc;*.aiff;*.wma;*.rm;*.mp3;*.ogg;*.ogm;*.cda;*.mid;*.rmi;*.midi;*.avi;*.asf;*.mpeg;*.mpg;*.m1v;*.mp2;*.mpa;*.mpe;*.wmv|Lejátszólisták|*.asx;*.wax;*.m3u;*.wvx;*.wmx|Audiófájlok|*.asf;*.wav;*.snd;*.au;*.aif;*.aifc;*.aiff;*.wma;*.rm;*.mp3;*.ogg;*.ogm|Videófájlok|*.avi;*.asf;*.mpeg;*.mpg;*.m1v;*.mp2;*.mpa;*.mpe;*.wmv|AudióCD hangsávok|*.cda|MIDI fájlok|*.mid;*.rmi;*.midi|Minden fájl|*.*||"/>
 	<string id="20453" text="Médiafájl betöltése sikertelen: &quot;%s&quot;"/>

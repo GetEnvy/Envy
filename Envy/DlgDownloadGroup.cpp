@@ -358,15 +358,9 @@ void CDownloadGroupDlg::OnOK()
 					LoadString( strFormat, IDS_LIBRARY_SUBFOLDER_IN_LIBRARY );
 					strMessage.Format( strFormat, (LPCTSTR)m_sFolder );
 
+					// AddFolder below moves the nested shares under the new folder,
+					// keeping their files and hashes.
 					bAdd = ( MsgBox( strMessage, MB_ICONQUESTION|MB_YESNO ) == IDYES );
-					if ( bAdd )
-					{
-						CLibraryFolder* pFolder;
-						while ( ( pFolder = LibraryFolders.IsSubFolderShared( m_sFolder ) ) != NULL )
-						{
-							LibraryFolders.RemoveFolder( pFolder );
-						}
-					}
 				}
 				if ( bAdd )
 				{
@@ -379,7 +373,12 @@ void CDownloadGroupDlg::OnOK()
 				}
 				if ( bAdd )
 				{
-					if ( CLibraryFolder* pFolder = LibraryFolders.AddFolder( m_sFolder ) )
+					CLibraryFolder* pFolder = NULL;
+					{
+						CQuickLock oLock(Library.m_pSection);
+						pFolder = LibraryFolders.AddFolder(m_sFolder);
+					}
+					if (pFolder)
 					{
 						BOOL bShare = MsgBox( IDS_LIBRARY_DOWNLOADS_SHARE, MB_ICONQUESTION|MB_YESNO ) == IDYES;
 

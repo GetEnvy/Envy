@@ -2065,7 +2065,6 @@
 	<string id="20447" text="Would you like to remove the &quot;potentially unsafe&quot; attribute from this file?"/>
 	<string id="20448" text="공공"/> 	<!--Shared-->
 	<string id="20449" text="개인"/> 	<!--Unshared-->
-	<string id="20450" text="A subfolder of the selected folder &quot;%s&quot; is already part of your library.nAdding this folder will cause re-hashing of some files.\n\nDo you want to continue ?"/>
 	<string id="20451" text="아니 파일을 재생합니다. 미디어를 클릭하여 라이브러리에서 파일을 재생할 수있습니다."/>
 	<!-- Missing Media Strings -->
 	<string id="20456" text="재생 목록:"/>

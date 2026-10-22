@@ -3211,7 +3211,7 @@
 	<string id="20447" text="Would you like to remove the &quot;potentially unsafe&quot; attribute from this file?"/>
 	<string id="20448" text="Public"/>	<!--Shared-->
 	<string id="20449" text="Private"/>	<!--Unshared-->
-	<string id="20450" text="A subfolder of the selected folder &quot;%s&quot; is already part of your library.\nAdding this folder will cause re-hashing of some files.\n\nDo you want to continue ?"/>
+	<string id="20450" text="A subfolder of the selected folder &quot;%s&quot; is already part of your library.\nIt will be moved under this folder and keep its files and hashes; only new files will be hashed.\n\nDo you want to continue?"/>
 	<string id="20451" text="There is no file playing. Double-click a media file in your library to play it."/>
 	<string id="20452" text="All Media Files|*.asx;*.wax;*.m3u;*.wvx;*.wmx;*.asf;*.wav;*.snd;*.au;*.aif;*.aifc;*.aiff;*.wma;*.rm;*.mp3;*.ogg;*.ogm;*.cda;*.mid;*.rmi;*.midi;*.avi;*.asf;*.mpeg;*.mpg;*.m1v;*.mp2;*.mpa;*.mpe;*.wmv|Playlists|*.asx;*.wax;*.m3u;*.wvx;*.wmx|Audio Files|*.asf;*.wav;*.snd;*.au;*.aif;*.aifc;*.aiff;*.wma;*.rm;*.mp3;*.ogg;*.ogm|Video Files|*.avi;*.asf;*.mpeg;*.mpg;*.m1v;*.mp2;*.mpa;*.mpe;*.wmv|CD Audio Tracks|*.cda|MIDI Files|*.mid;*.rmi;*.midi|All Files|*.*||"/>
 	<string id="20453" text="Unable to load media file &quot;%s&quot;"/>
@@ -3599,6 +3599,10 @@
 	<string id="20897" text="The folder you are sharing is already shared as part of another shared folder:\n\n%s"/>
 	<string id="20898" text="You have not specified any folders to share. Are you sure?"/>
 	<string id="20899" text="year old"/>
+	<string id="20902" text="Waiting for the library scanner to start..."/>
+	<string id="20903" text="Scanning shared folders..."/>
+	<string id="20904" text="The library scanner is not running, so the shared-folder scan could not run. Existing entries were kept."/>
+	<string id="20905" text="Shared-folder scan failed on %s (%s, Windows error %lu). Existing entries were kept."/>
 	<!--string value="Torrent Information"-->
 	<!--string value="Tracker did not respond. Retrying announce (%i of %i)"-->
 	<!--string value="You already have the file &quot;%s&quot; in your library. Do you still wish to download it?"-->

@@ -101,6 +101,7 @@ private:
 
 	mutable CMutex	m_pSection;					// Guarding
 	CFileInfoList	m_pFiles;					// File list
+	CMap<DWORD, DWORD, bool, bool> m_pQueued;   // Library indexes in m_pFiles, for O(1) duplicate checks
 	CString			m_sPath;					// Hashing filename
 	bool			m_bPriority;				// Fast/Slow Hash Speed
 	float			m_nProgress;				// Hashing file progress (0. - 100.0%)

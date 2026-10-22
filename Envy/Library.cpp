@@ -60,8 +60,6 @@ CLibrary Library;
 
 CLibrary::CLibrary()
 	: m_nUpdateCookie	( 0 )
-	, m_nForcedUpdate	( FALSE )
-	, m_nScanCount		( 0 )
 	, m_nScanCookie		( 1 )
 	, m_nScanTime		( 0 )
 	, m_nSaveCookie		( 0 )
@@ -416,9 +414,10 @@ BOOL CLibrary::Load()
 	// Mark basic loading as complete - core data structures are loaded
 	m_bLazyLoaded = true;
 
-	// Defer expensive operations to lazy loading
-	// LibraryFolders.CreateAlbumTree();	// Deferred
-	// LibraryHashDB.Create();			// Deferred
+	// The hash builder stores tiger trees and ED2K hash sets as soon as the
+	// application is live, so the hash database must be open before any file
+	// can finish hashing; only the album tree is deferred to the worker.
+	LibraryHashDB.Create();
 
 	LibraryBuilder.BoostPriority( Settings.Library.HighPriorityHash );
 
@@ -437,22 +436,12 @@ BOOL CLibrary::Load()
 	m_nSaveCookie = m_nUpdateCookie;
 	m_nSaveTime = GetTickCount();
 
-	// Start background thread for lazy operations if we have data to process
-	if ( LibraryMaps.GetFileCount() > 0 )
-	{
-		BeginThread( "LibraryLazy", THREAD_PRIORITY_BELOW_NORMAL );
-#ifdef _DEBUG
-		theApp.Message( MSG_DEBUG, L"Library lazy loading started - %d files loaded, completing album tree and hash DB in background\n",
-			LibraryMaps.GetFileCount() );
-#endif
-	}
-	else
-	{
-		// No files, mark lazy loading as complete
-		m_bLazyComplete = true;
-	}
-
-	BeginThread( "Library" );
+	// One worker completes the deferred loading and then keeps scanning.
+	// CThreadImpl::BeginThread() ignores a second start while the first thread
+	// is alive, so a separate lazy-loading thread would silently suppress the
+	// maintenance thread whenever the library already holds files.
+	if (!BeginThread("Library"))
+		theApp.Message(MSG_ERROR, L"Library worker failed to start; shared folders will not be scanned.");
 
 	return TRUE;
 }
@@ -524,28 +513,25 @@ BOOL CLibrary::Save()
 
 void CLibrary::OnRun()
 {
-	// Check if this is a lazy loading thread
-	if ( m_bLazyLoaded && ! m_bLazyComplete )
+	theApp.Message(MSG_DEBUG, L"Library worker started.");
+
+	EnvyLibraryScan::RunWorker(*this);
+
+	theApp.Message(MSG_DEBUG, L"Library worker stopped (shutdown requested).");
+}
+
+void CLibrary::RunMaintenancePass()
+{
+	Doze(1000);
+
+	// Delay thread load at startup
+	if (!theApp.m_bLive)
 	{
-		// This is the lazy loading thread - complete expensive operations
-		CompleteLazyLoading();
+		Sleep(0);
 		return;
 	}
 
-	// Regular library maintenance thread
-	while ( IsThreadEnabled() )
-	{
-		Doze( 1000 );
-
-		// Delay thread load at startup
-		if ( ! theApp.m_bLive )
-		{
-			Sleep( 0 );
-			continue;
-		}
-
-		ThreadScan();
-	}
+	ThreadScan();
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -556,21 +542,40 @@ BOOL CLibrary::ThreadScan()
 	// Do not start scanning until app is loaded
 	if ( ! theApp.m_bLive || theApp.m_bClosing ) return FALSE;
 
-	CSingleLock pLock( &m_pSection );
-	if ( ! pLock.Lock( 100 ) )
+	LONG nGeneration = 0;
+	bool bForcedScan = false;
+	bool bPeriodicScan = false;
+	BOOL bChanged = FALSE;
+	CList<CString> pRoots;
+	const DWORD nStart = GetTickCount();
 	{
-		Wakeup();	// Skip default delay
-		return FALSE;
+		CSingleLock pLock(&m_pSection);
+		if (!pLock.Lock(100))
+		{
+			Wakeup(); // Skip default delay
+			return FALSE;
+		}
+
+		// Scan was requested by Library.Update( true ) or RequestScan(). Requests
+		// made from here on need the next pass.
+		bForcedScan = m_oScanGeneration.Begin(nGeneration);
+
+		// If folders not watched then scan them at periodic basis (default 5 seconds)
+		const DWORD nPeriod = Settings.Library.WatchFoldersTimeout * 1000;
+		bPeriodicScan = !Settings.Library.WatchFolders &&
+		                (m_nScanTime == 0 || EnvyLibraryScan::Elapsed(nStart, m_nScanTime, nPeriod));
+
+		bChanged = LibraryFolders.SelectRootsToScan(bPeriodicScan || bForcedScan, pRoots);
 	}
 
-	// Scan was requested by Library.Update( true ) call
-	BOOL bForcedScan = InterlockedCompareExchange( &m_nForcedUpdate, FALSE, TRUE );
+	// Roots are scanned without holding the library lock across the whole tree.
+	for (POSITION pos = pRoots.GetHeadPosition(); pos && IsThreadEnabled();)
+	{
+		if (LibraryFolders.ThreadScanRoot(pRoots.GetNext(pos)))
+			bChanged = TRUE;
+	}
 
-	// If folders not watched then scan them at periodic basis (default 5 seconds)
-	BOOL bPeriodicScan = ! Settings.Library.WatchFolders &&
-		( m_nScanTime < GetTickCount() - Settings.Library.WatchFoldersTimeout * 1000 );
-
-	BOOL bChanged = LibraryFolders.ThreadScan( bPeriodicScan || bForcedScan );
+	CQuickLock oLock(m_pSection);
 
 	if ( bPeriodicScan || bForcedScan || bChanged )
 	{
@@ -580,13 +585,30 @@ BOOL CLibrary::ThreadScan()
 			Update();	// Mark library as changed
 	}
 
-	m_nScanCount++;
+	if (bForcedScan)
+	{
+		// A pass cut short by shutdown leaves the request pending.
+		if (IsThreadEnabled())
+		{
+			m_oScanGeneration.Complete(nGeneration);
+			theApp.Message(MSG_DEBUG, L"Library scan %ld completed in %lu ms (changes: %s, files queued for hashing: %u).",
+			               nGeneration, GetTickCount() - nStart, bChanged ? L"yes" : L"no",
+			               (UINT)LibraryBuilder.GetRemaining());
+		}
+		else
+			theApp.Message(MSG_DEBUG, L"Library scan %ld interrupted by shutdown.", nGeneration);
+	}
 
+	SaveIfDue();
+
+	return bChanged;
+}
+
+void CLibrary::SaveIfDue()
+{
 	// Save library changes but not frequently (30 seconds)
 	if ( m_nUpdateCookie != m_nSaveCookie && GetTickCount() - m_nSaveTime > 30000 )
 		Save();
-
-	return bChanged;
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -752,17 +774,20 @@ STDMETHODIMP CLibrary::XLibrary::FindByIndex(LONG nIndex, ILibraryFile FAR* FAR*
  */
 void CLibrary::CompleteLazyLoading()
 {
-	if ( m_bLazyComplete ) return;  // Already completed
-
 	CSingleLock pLock( &m_pSection, TRUE );
+
+	// Checked under the lock: the worker and the -nolazylibrary startup path
+	// may both get here.
+	if (m_bLazyComplete)
+		return;
+
+	const DWORD nStart = GetTickCount();
 
 	// Perform deferred expensive operations
 	LibraryFolders.CreateAlbumTree();
-	LibraryHashDB.Create();
 
 	m_bLazyComplete = true;
 
-#ifdef _DEBUG
-	theApp.Message( MSG_DEBUG, L"Lazy loading completed - Album tree and hash DB initialized\n" );
-#endif
+	theApp.Message(MSG_DEBUG, L"Library deferred loading completed in %lu ms (%u files).", GetTickCount() - nStart,
+	               (UINT)LibraryMaps.GetFileCount());
 }

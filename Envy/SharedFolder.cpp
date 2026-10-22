@@ -20,6 +20,8 @@
 #include "Settings.h"
 #include "Envy.h"
 #include "SharedFolder.h"
+#include "LibraryFileSystem.h"
+#include "DlgFolderScan.h"
 #include "SharedFile.h"
 #include "Library.h"
 #include "LibraryDictionary.h"
@@ -414,93 +416,79 @@ CString CLibraryFolder::GetRelativeName() const
 //////////////////////////////////////////////////////////////////////
 // CLibraryFolder threaded scan
 
-BOOL CLibraryFolder::ThreadScan(DWORD nScanCookie)
+BOOL CLibraryFolder::ApplyListing(const std::vector<EnvyFileSystem::DirectoryEntry>& pEntries, DWORD nFindError,
+                                  CList<CString>& pSubFolders)
 {
 	ASSUME_LOCK( Library.m_pSection );
 
-	if ( m_sPath.CompareNoCase( Settings.Downloads.IncompletePath ) == 0 )
-		return FALSE;
-
-	WIN32_FIND_DATA pFind;
-	HANDLE hSearch = FindFirstFile( SafePath( m_sPath + L"\\*.*" ), &pFind );
-
-	m_nScanCookie	= nScanCookie;
-	nScanCookie		= Library.GetScanCookie();
+	const DWORD nScanCookie = Library.GetScanCookie();
 
 	BOOL bChanged = FALSE;
 
-	if ( hSearch != INVALID_HANDLE_VALUE )
+	for (const EnvyFileSystem::DirectoryEntry& oEntry : pEntries)
 	{
-		do
+		const CString strName(oEntry.name.c_str());
+
+		// Directory reparse points can escape a share root or form traversal loops.
+		if (EnvyFileSystem::IsDirectoryReparsePoint(oEntry.attributes) ||
+		    CLibrary::IsBadFile(strName, m_sPath, oEntry.attributes))
+			continue;
+
+		if (oEntry.attributes & FILE_ATTRIBUTE_DIRECTORY)
 		{
-			if ( CLibrary::IsBadFile( pFind.cFileName, m_sPath, pFind.dwFileAttributes ) )
-				continue;
-
-			if ( pFind.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY )
+			// The folder map is case-insensitive, so a case-only rename keeps the
+			// existing folder and its contents.
+			CLibraryFolder* pFolder = GetFolderByName(strName);
+			if (pFolder == NULL)
 			{
-				CLibraryFolder* pFolder = GetFolderByName( pFind.cFileName );
-				if ( pFolder != NULL )
-				{
-					m_nFiles  -= pFolder->m_nFiles;
-					m_nVolume -= pFolder->m_nVolume;
+				pFolder = new CLibraryFolder(this, m_sPath + L"\\" + strName);
+				m_pFolders.SetAt(pFolder->m_sName, pFolder);
+				m_nUpdateCookie++;
+				bChanged = TRUE;
+			}
 
-					if ( _tcsicmp( pFolder->m_sName, pFind.cFileName ) != 0 )
-					{
-						VERIFY( m_pFolders.RemoveKey( pFolder->m_sName ) );
-						pFolder->OnDelete();
-						pFolder = new CLibraryFolder( this, m_sPath + L"\\" + pFind.cFileName );
-						m_pFolders.SetAt( pFolder->m_sName, pFolder );
-						m_nUpdateCookie++;
-						bChanged = TRUE;
-					}
-				}
-				else
+			// Listed folders are scanned next, each with its own listing.
+			pFolder->m_nScanCookie = nScanCookie;
+			pSubFolders.AddTail(pFolder->m_sPath);
+		}
+		else
+		{
+			BOOL bNew;
+			CLibraryFile* pFile = AddFile(strName, bNew);
+			if (!bNew)
+			{
+				if (pFile->m_sName.CompareNoCase(strName))
 				{
-					pFolder = new CLibraryFolder( this, m_sPath + L"\\" + pFind.cFileName );
-					m_pFolders.SetAt( pFolder->m_sName, pFolder );
-					m_nUpdateCookie++;
+					Library.RemoveFile(pFile);
+					pFile->m_sName = strName;
+					Library.AddFile(pFile);
 					bChanged = TRUE;
 				}
-
-				if ( pFolder->ThreadScan( nScanCookie ) )
-					bChanged = TRUE;
-
-				m_nFiles	+= pFolder->m_nFiles;
-				m_nVolume	+= pFolder->m_nVolume;
 			}
 			else
-			{
-				BOOL bNew;
-				CLibraryFile* pFile = AddFile( pFind.cFileName, bNew );
-				if ( ! bNew )
-				{
-					m_nVolume -= pFile->m_nSize;
-					if ( pFile->m_sName.CompareNoCase( pFind.cFileName ) )
-					{
-						Library.RemoveFile( pFile );
-						pFile->m_sName = pFind.cFileName;
-						Library.AddFile( pFile );
-						bChanged = TRUE;
-					}
-				}
-				else
-					bChanged = TRUE;
+				bChanged = TRUE;
 
-				QWORD nLongSize = (QWORD)pFind.nFileSizeLow |
-					( (QWORD)pFind.nFileSizeHigh << 32 );
-
-				if ( pFile->ThreadScan( nScanCookie, nLongSize, &pFind.ftLastWriteTime ) )
-					bChanged = TRUE;
-
-				m_nVolume += pFile->m_nSize;
-			}
+			FILETIME ftLastWrite = oEntry.lastWrite;
+			if (pFile->ThreadScan(nScanCookie, oEntry.size, &ftLastWrite))
+				bChanged = TRUE;
 		}
-		while ( Library.IsThreadEnabled() && FindNextFile( hSearch, &pFind ) );
-
-		FindClose( hSearch );
 	}
 
-	if ( ! Library.IsThreadEnabled() ) return FALSE;
+	if (!EnvyFileSystem::EnumerationComplete(nFindError))
+	{
+		// An incomplete listing cannot justify removing entries absent from it.
+		// A shutdown or cancellation is not an error to report.
+		if (nFindError != ERROR_CANCELLED)
+		{
+			// Log a failure once per error, not on every rescan.
+			CFolderScanDlg::ReportError(nFindError, m_sPath, nFindError != m_nScanError);
+			m_nScanError = nFindError;
+		}
+		if (bChanged)
+			m_nUpdateCookie++;
+		return bChanged;
+	}
+	m_nScanError = ERROR_SUCCESS;
 
 	CList< CLibraryFolder* > pExtraFolders;
 	for ( POSITION pos = GetFolderIterator(); pos; )
@@ -528,9 +516,6 @@ BOOL CLibraryFolder::ThreadScan(DWORD nScanCookie)
 	{
 		CLibraryFolder* pFolder = pExtraFolders.GetNext( pos );
 
-		m_nFiles	-= pFolder->m_nFiles;
-		m_nVolume	-= pFolder->m_nVolume;
-
 		VERIFY( m_pFolders.RemoveKey( pFolder->m_sName ) );
 		pFolder->OnDelete( Settings.Library.CreateGhosts ? TRI_TRUE : TRI_FALSE );
 
@@ -550,6 +535,101 @@ BOOL CLibraryFolder::ThreadScan(DWORD nScanCookie)
 		m_nUpdateCookie++;
 
 	return bChanged;
+}
+
+void CLibraryFolder::RecalculateTotals()
+{
+	ASSUME_LOCK(Library.m_pSection);
+
+	m_nFiles = (DWORD)m_pFiles.GetCount();
+	m_nVolume = 0;
+
+	for (POSITION pos = GetFileIterator(); pos;)
+	{
+		const CLibraryFile* pFile = GetNextFile(pos);
+		if (pFile->m_nSize != SIZE_UNKNOWN)
+			m_nVolume += pFile->m_nSize;
+	}
+
+	for (POSITION pos = GetFolderIterator(); pos;)
+	{
+		CLibraryFolder* pFolder = GetNextFolder(pos);
+		pFolder->RecalculateTotals();
+		m_nFiles += pFolder->m_nFiles;
+		m_nVolume += pFolder->m_nVolume;
+	}
+}
+
+void CLibraryFolder::UpdateTotals(DWORD nOldFiles, QWORD nOldVolume)
+{
+	ASSUME_LOCK(Library.m_pSection);
+
+	// Direct files plus the cached totals of the subfolders, which their own
+	// listings keep current.
+	DWORD nFiles = (DWORD)m_pFiles.GetCount();
+	QWORD nVolume = 0;
+
+	for (POSITION pos = GetFileIterator(); pos;)
+	{
+		const CLibraryFile* pFile = GetNextFile(pos);
+		if (pFile->m_nSize != SIZE_UNKNOWN)
+			nVolume += pFile->m_nSize;
+	}
+
+	for (POSITION pos = GetFolderIterator(); pos;)
+	{
+		const CLibraryFolder* pFolder = GetNextFolder(pos);
+		nFiles += pFolder->m_nFiles;
+		nVolume += pFolder->m_nVolume;
+	}
+
+	m_nFiles = nFiles;
+	m_nVolume = nVolume;
+
+	// Ancestors include this folder's totals, so they follow by the difference.
+	const LONGLONG nDeltaFiles = (LONGLONG)nFiles - (LONGLONG)nOldFiles;
+	const LONGLONG nDeltaVolume = (LONGLONG)nVolume - (LONGLONG)nOldVolume;
+	for (CLibraryFolder* pParent = m_pParent; pParent; pParent = pParent->m_pParent)
+	{
+		pParent->m_nFiles = (DWORD)((LONGLONG)pParent->m_nFiles + nDeltaFiles);
+		pParent->m_nVolume = (QWORD)((LONGLONG)pParent->m_nVolume + nDeltaVolume);
+	}
+}
+
+BOOL CLibraryFolder::Adopt(CLibraryFolder* pRoot)
+{
+	ASSUME_LOCK(Library.m_pSection);
+	ASSERT(pRoot->m_pParent == NULL);
+
+	// Walk or create the intermediate folders between this root and pRoot.
+	CLibraryFolder* pParent = this;
+	CString strRelative = pRoot->m_sPath.Mid(m_sPath.GetLength() + 1);
+	for (int nSlash = strRelative.Find(L'\\'); nSlash > 0; nSlash = strRelative.Find(L'\\'))
+	{
+		const CString strName = strRelative.Left(nSlash);
+		strRelative = strRelative.Mid(nSlash + 1);
+
+		CLibraryFolder* pChild = pParent->GetFolderByName(strName);
+		if (pChild == NULL)
+		{
+			pChild = new CLibraryFolder(pParent, pParent->m_sPath + L"\\" + strName);
+			pParent->m_pFolders.SetAt(pChild->m_sName, pChild);
+		}
+		pParent = pChild;
+	}
+
+	if (pParent->GetFolderByName(pRoot->m_sName) != NULL)
+		return FALSE; // Already known below this root; pRoot is left untouched
+
+	// pRoot keeps its files and hashes; only root-only state goes. Its explicit
+	// shared or unshared choice stays, so a shared folder remains shared when
+	// its new parent is not.
+	pRoot->CloseMonitor();
+	pRoot->m_bOffline = FALSE;
+	pRoot->m_pParent = pParent;
+	pParent->m_pFolders.SetAt(pRoot->m_sName, pRoot);
+	m_nUpdateCookie++;
+	return TRUE;
 }
 
 CLibraryFile* CLibraryFolder::AddFile(LPCTSTR szName, BOOL& bNew)
@@ -596,6 +676,8 @@ BOOL CLibraryFolder::IsChanged()
 
 		default:				// Errors
 			CloseMonitor();
+			// Notifications may have been lost: reconcile with a full rescan.
+			bChanged = TRUE;
 		}
 	}
 
@@ -711,6 +793,9 @@ BOOL CLibraryFolder::SetOnline()
 	{
 		m_bOffline = FALSE;
 		m_nUpdateCookie++;
+
+		// Changes made while the folder was unreachable produced no notification.
+		m_bForceScan = TRUE;
 
 		for ( POSITION pos = GetFolderIterator(); pos; )
 		{

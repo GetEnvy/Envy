@@ -2790,7 +2790,6 @@
 	<!-- Missing Library File Strings -->
 	<string id="20448" text="Публиц"/>	<!--Shared-->
 	<string id="20449" text="Приватно"/>	<!--Unshared-->
-	<string id="20450" text="Podfascikla u odabranoj fascikli &quot;%s&quot; je već deo vaše kolekcije.\nDodavanje ove fascikle će izazvati re-hashing nekih datoteka.\n\nŽelite li svejedno nastaviti?"/>
 	<string id="20453" text="Ne mogu učitati datoteku &quot;%s&quot;"/>
 	<!-- Missing Media Strings -->
 	<string id="20456" text="Playlista:"/>

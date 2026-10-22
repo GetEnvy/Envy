@@ -35,14 +35,21 @@ public:
 	CStatic	m_wndFile;
 
 public:
-	static void Update(LPCTSTR pszName, DWORD nVolume);	//, BOOL bLock);
+	static void Update(LPCTSTR pszName, DWORD nVolume);
+	// Logs a scan failure when bLog is set, and records the first
+	// failure of the scan the open dialog requested.
+	static void ReportError(DWORD nError, LPCTSTR pszPath, bool bLog = true);
 	void	InstanceUpdate(LPCTSTR pszName, DWORD nVolume);
 
 protected:
 	static	CFolderScanDlg*	m_pDialog;
-	DWORD	m_nCookie;
+	static CCriticalSection m_pProgressSection;
+	LONG m_nGeneration; // Library scan generation this dialog waits for
 	DWORD	m_nFiles;
-	DWORD	m_nVolume;
+	QWORD m_nVolume;
+	DWORD m_nError;
+	CString m_sErrorPath; // Folder whose scan reported m_nError
+	CString m_sCurrentFile;
 	DWORD	m_tLastUpdate;
 	BOOL	m_bActive;
 

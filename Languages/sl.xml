@@ -2834,7 +2834,6 @@
 	<string id="20447" text="Želite odstraniti &quot;potencialno nevarne&quot; atribute iz te datoteke?"/>
 	<string id="20448" text="Javno"/>	<!--Shared-->
 	<string id="20449" text="Zasebno"/>	<!--Unshared-->
-	<string id="20450" text="Podmapa izbrane mape &quot;%s&quot; je že del vaše knjižnice.\nČe boste dodali to mapo, boste povzročili sprožitev ponovnega zgoščevanja (re-hashing) nekaterih datotek.\n\nŽelite nadaljevati?"/>
 	<string id="20451" text="Trenutno se ne predvaja nobena datoteka. Dvokliknite na datoteko v svoji knjižnici za njeno predvajanje."/>
 	<string id="20452" text="Vse medijske datoteke|*.asx;*.wax;*.m3u;*.wvx;*.wmx;*.asf;*.wav;*.snd;*.au;*.aif;*.aifc;*.aiff;*.wma;*.rm;*.mp3;*.ogg;*.ogm;*.cda;*.mid;*.rmi;*.midi;*.avi;*.asf;*.mpeg;*.mpg;*.m1v;*.mp2;*.mpa;*.mpe;*.wmv|Predvajalni seznami|*.asx;*.wax;*.m3u;*.wvx;*.wmx|Zvočne datoteke|*.asf;*.wav;*.snd;*.au;*.aif;*.aifc;*.aiff;*.wma;*.rm;*.mp3;*.ogg;*.ogm|Video datoteke|*.avi;*.asf;*.mpeg;*.mpg;*.m1v;*.mp2;*.mpa;*.mpe;*.wmv|Glasba na zgoščenki|*.cda|MIDI datoteke|*.mid;*.rmi;*.midi|Vse datoteke|*.*||"/>
 	<string id="20453" text="Medijska datoteka &quot;%s&quot; ni bila uspešno naložena"/>

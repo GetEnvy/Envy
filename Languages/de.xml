@@ -3100,7 +3100,6 @@
 	<string id="20447" text="Wollen sie das &quot;potenziell unsicher&quot;-Atribut von dieser Datei entfernen?"/>
 	<string id="20448" text="Öffent"/>	<!--Shared-->
 	<string id="20449" text="Privat"/>	<!--Unshared-->
-	<string id="20450" text="Ein Unterordner des ausgewählten Ordners &quot;%s&quot; befindet sich schon in ihrer Bibliothek.nDas Hinzufügen dieses Ordners hat zur Folge, dass einige Dateien neu verifiziert werden müssen.\n\nMöchten Sie fortfahren?"/>
 	<string id="20451" text="Es wird keine Datei wiedergegeben. Doppelklicken Sie eine Datei in Ihrer Bibliothek an, um sie abzuspielen."/>
 	<string id="20452" text="Alle Multimedia Dateien|*.asx;*.wax;*.m3u;*.wvx;*.wmx;*.asf;*.wav;*.snd;*.au;*.aif;*.aifc;*.aiff;*.wma;*.rm;*.mp3;*.ogg;*.ogm;*.cda;*.mid;*.rmi;*.midi;*.avi;*.asf;*.mpeg;*.mpg;*.m1v;*.mp2;*.mpa;*.mpe;*.wmv|Wiedergabelisten|*.asx;*.wax;*.m3u;*.wvx;*.wmx|Audio Dateien|*.asf;*.wav;*.snd;*.au;*.aif;*.aifc;*.aiff;*.wma;*.rm;*.mp3;*.ogg;|Video Dateien|*.avi;*.asf;*.mpeg;*.mpg;*.m1v;*.mp2;*.mpa;*.mpe;*.ogm;*.wmv|CD Audio Tracks|*.cda|MIDI Dateien|*.mid;*.rmi;*.midi|Alle Dateien|*.*||"/>
 	<string id="20453" text="Fehler beim Laden von &quot;%s&quot;"/>

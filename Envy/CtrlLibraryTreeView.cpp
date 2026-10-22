@@ -1812,8 +1812,13 @@ void CLibraryTreeView::OnLibraryAdd()
 
 	CFolderScanDlg dlgScan;
 
-	LibraryFolders.AddFolder( strPath );
-
+	{
+		// AdoptNestedRoots walks and rewrites the shared-folder map, which the
+		// scan worker mutates between per-directory listings.
+		CQuickLock oLock(Library.m_pSection);
+		LibraryFolders.AddFolder(strPath);
+	}
+	Library.Update(true);
 	dlgScan.DoModal();
 }
 

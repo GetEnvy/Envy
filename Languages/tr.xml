@@ -2979,7 +2979,6 @@
 	<string id="20447" text="Bu dosyadan &quot;gizlilik ve tehlikeli&quot; özniteliklerini kaldırmak istiyor musunuz?"/>
 	<string id="20448" text="Kamu"/>	<!--Shared-->
 	<string id="20449" text="Özel"/>	<!--Unshared-->
-	<string id="20450" text="Seçilen klasör &quot;%s&quot; klasörünün alt klasörü, zaten kütüphanenizin parçasıdır.\nEklenen bu klasör bazı dosyaların bozulmasına neden olacaktır.\n\nDevam etmek istiyor musunuz ?"/>
 	<string id="20451" text="Oynayacak dosya yok. Kütüphanenizdeki bir ortam dosyasını oynatmak için çift-tıklın."/>
 	<string id="20452" text="Tüm ortam dosyaları|*.asx;*.wax;*.m3u;*.wvx;*.wmx;*.asf;*.wav;*.snd;*.au;*.aif;*.aifc;*.aiff;*.wma;*.rm;*.mp3;*.ogg;*.ogm;*.cda;*.mid;*.rmi;*.midi;*.avi;*.asf;*.mpeg;*.mpg;*.m1v;*.mp2;*.mpa;*.mpe;*.wmv|Oynatma Listeleri|*.asx;*.wax;*.m3u;*.wvx;*.wmx|Ses Dosyaları|*.asf;*.wav;*.snd;*.au;*.aif;*.aifc;*.aiff;*.wma;*.rm;*.mp3;*.ogg;*.ogm|Video Dosyaları|*.avi;*.asf;*.mpeg;*.mpg;*.m1v;*.mp2;*.mpa;*.mpe;*.wmv|CD Ses Trackleri|*.cda|MIDI Dosyalar|*.mid;*.rmi;*.midi|Tüm Dosyalar|*.*||"/>
 	<string id="20453" text="&quot;%s&quot; ortam dosyası yüklenemez"/>

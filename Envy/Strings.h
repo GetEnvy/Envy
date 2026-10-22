@@ -149,7 +149,7 @@ CString Str(CTime time);
 #endif
 
 // Format long paths if needed "\\?\"
-LPCTSTR SafePath(const CString& sPath);
+CString SafePath(const CString& sPath);
 BOOL MakeSafePath(CString& sPath);
 
 // Function is used to split a phrase in Asian languages to separate keywords

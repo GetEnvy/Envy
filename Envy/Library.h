@@ -20,6 +20,7 @@
 
 #include "ComObject.h"
 #include "ThreadImpl.h"
+#include "LibraryScanState.h"
 #include "SharedFile.h"
 
 class CQueryHit;
@@ -54,9 +55,8 @@ protected:
 //	int				m_nFileSwitch;			// Library next save .dat/.bak	(Using local static)
 	volatile LONG	m_nUpdateCookie;		// Library cookie (ms)
 	volatile LONG	m_nScanCookie;			// Used by CLibraryFolder::ThreadScan()
-	volatile DWORD	m_nScanCount;			// Library scan counter
 	volatile DWORD	m_nScanTime;			// Last library scan time (ms)
-	volatile LONG	m_nForcedUpdate;		// Forced update request
+	EnvyLibraryScan::Generation m_oScanGeneration; // Full rescan requests (Update( true ), RequestScan())
 	volatile LONG	m_nSaveCookie;			// Library last save cookie (ms)
 	volatile DWORD	m_nSaveTime;			// Library last save time (ms)
 
@@ -76,9 +76,19 @@ public:
 		return (DWORD)InterlockedIncrement( &m_nScanCookie );
 	}
 
-	inline DWORD GetScanCount() const
+	// Ask the library worker for a full rescan and return the generation to
+	// pass to GetScanPhase() to follow that rescan. Joins an already pending
+	// unstarted request instead of stacking a second full pass.
+	inline LONG RequestScan()
 	{
-		return m_nScanCount;
+		const LONG nGeneration = m_oScanGeneration.RequestOrJoin();
+		Wakeup();
+		return nGeneration;
+	}
+
+	inline EnvyLibraryScan::Phase GetScanPhase(LONG nGeneration) const
+	{
+		return m_oScanGeneration.GetPhase(nGeneration);
 	}
 
 	// Mark library as modified:
@@ -89,7 +99,7 @@ public:
 		InterlockedExchange( &m_nUpdateCookie, (LONG)GetTickCount() );
 
 		if ( bForce )
-			InterlockedExchange( &m_nForcedUpdate, TRUE );
+			m_oScanGeneration.Request();
 	}
 
 	// Lazy loading support
@@ -114,7 +124,9 @@ public:
 	void			Clear();
 	BOOL			Load();
 	BOOL			Save();
+	void SaveIfDue(); // Save when changed and the last save is 30 seconds old
 	void			StopThread();
+	void RunMaintenancePass(); // One worker pass: wait, then scan once the application is live
 	bool			OnQueryHits(const CQueryHit* pHits);
 	static BOOL		IsBadFile(LPCTSTR szFilenameOnly, LPCTSTR szPathOnly = NULL, DWORD dwFileAttributes = 0);
 	CFileList*		Search(const CQuerySearch* pSearch, int nMaximum = 0, bool bLocal = false, bool bAvailableOnly = false);

@@ -33,36 +33,31 @@ BEGIN_MESSAGE_MAP(CFolderScanDlg, CSkinDialog)
 END_MESSAGE_MAP()
 
 CFolderScanDlg* CFolderScanDlg::m_pDialog = NULL;
+CCriticalSection CFolderScanDlg::m_pProgressSection;
 
 
 /////////////////////////////////////////////////////////////////////////////
 // CFolderScanDlg dialog
 
 CFolderScanDlg::CFolderScanDlg(CWnd* pParent)
-	: CSkinDialog(CFolderScanDlg::IDD, pParent)
-	, m_nCookie		( 0 )
-	, m_nFiles		( 0 )
-	, m_nVolume		( 0 )
+    : CSkinDialog(CFolderScanDlg::IDD, pParent)
+    , m_nGeneration(0)
+    , m_nFiles(0)
+    , m_nVolume(0)
+    , m_nError(ERROR_SUCCESS)
 {
-	m_tLastUpdate	= 0;
-	m_bActive		= FALSE;
+	m_tLastUpdate = 0;
+	m_bActive = FALSE;
 
-	CSingleLock oLock( &Library.m_pSection );
-	if ( oLock.Lock( 800 ) )
-	{
-		m_pDialog	= this;
-		m_nCookie	= Library.GetScanCount();
-	}
+	CSingleLock oLock(&m_pProgressSection, TRUE);
+	m_pDialog = this;
 }
 
 CFolderScanDlg::~CFolderScanDlg()
 {
-	if ( m_pDialog )
-	{
-		CSingleLock pLock( &Library.m_pSection );
-		if ( pLock.Lock( 5000 ) || SafeLock( pLock ) )
-			m_pDialog = NULL;
-	}
+	CSingleLock pLock(&m_pProgressSection, TRUE);
+	if (m_pDialog == this)
+		m_pDialog = NULL;
 }
 
 void CFolderScanDlg::DoDataExchange(CDataExchange* pDX)
@@ -82,6 +77,16 @@ BOOL CFolderScanDlg::OnInitDialog()
 
 	SkinMe( L"CFolderScanDlg", IDR_LIBRARYFRAME );
 
+	// Callers change the shared folders before showing the dialog, so a scan
+	// requested now covers those changes; earlier or concurrent passes do not
+	// complete it.
+	{
+		// Under the progress lock so ReportError() sees the generation as soon
+		// as the worker can start it.
+		CSingleLock oLock(&m_pProgressSection, TRUE);
+		m_nGeneration = Library.RequestScan();
+	}
+
 	SetTimer( 1, 500, NULL );
 	m_tLastUpdate	= 0;
 	m_bActive		= TRUE;
@@ -91,56 +96,100 @@ BOOL CFolderScanDlg::OnInitDialog()
 
 void CFolderScanDlg::OnTimer(UINT_PTR /*nIDEvent*/)
 {
-	CSingleLock pLock( &Library.m_pSection );
-
-	if ( pLock.Lock( 50 ) && m_nCookie != Library.GetScanCount() )
+	DWORD nFiles, nError;
+	QWORD nVolume;
+	CString strFile, strErrorPath;
 	{
-		pLock.Unlock();
-		CSkinDialog::OnCancel();
+		CSingleLock pLock(&m_pProgressSection, TRUE);
+		nFiles = m_nFiles;
+		nVolume = m_nVolume;
+		nError = m_nError;
+		strFile = m_sCurrentFile;
+		strErrorPath = m_sErrorPath;
+	}
+
+	const EnvyLibraryScan::Phase nPhase = Library.GetScanPhase(m_nGeneration);
+	if (strFile.IsEmpty() && nPhase != EnvyLibraryScan::Phase::Completed)
+		strFile = LoadString(nPhase == EnvyLibraryScan::Phase::Pending ? IDS_FOLDER_SCAN_WAITING
+		                                                               : IDS_FOLDER_SCAN_RUNNING);
+
+	CString strItem;
+	strItem.Format(L"%lu", nFiles);
+	m_wndFiles.SetWindowText(strItem);
+	m_wndVolume.SetWindowText(Settings.SmartVolume(nVolume, KiloBytes));
+	m_wndFile.SetWindowText(strFile);
+
+	if (nPhase != EnvyLibraryScan::Phase::Completed && !Library.IsThreadAlive())
+	{
+		// Without the worker the request can never complete; say so instead of
+		// leaving the counter at zero.
+		KillTimer(1);
+		MsgBox(LoadString(IDS_FOLDER_SCAN_NO_WORKER), MB_OK | MB_ICONWARNING);
+		OnCancel();
+		return;
+	}
+
+	if (nPhase == EnvyLibraryScan::Phase::Completed)
+	{
+		KillTimer(1);
+		{
+			// The scan has finished: read the error it may have reported meanwhile.
+			CSingleLock pProgressLock(&m_pProgressSection, TRUE);
+			nError = m_nError;
+			strErrorPath = m_sErrorPath;
+		}
+		if (nError != ERROR_SUCCESS)
+		{
+			strItem.Format(LoadString(IDS_FOLDER_SCAN_FAILED), (LPCTSTR)strErrorPath, (LPCTSTR)GetErrorString(nError),
+			               nError);
+			MsgBox(strItem, MB_OK | MB_ICONWARNING);
+		}
+		OnCancel();
 	}
 }
 
 void CFolderScanDlg::OnCancel()
 {
+	// Closing the dialog only stops watching: the scan goes on in the background
+	// and is cancelled by application shutdown, which never prunes entries the
+	// interrupted listing did not reach.
 	m_bActive = FALSE;
-
-	if ( m_pDialog )
-	{
-		CSingleLock pLock( &Library.m_pSection );
-		if ( SafeLock( pLock ) )
-			m_pDialog = NULL;
-	}
+	CSingleLock pLock(&m_pProgressSection, TRUE);
+	if (m_pDialog == this)
+		m_pDialog = NULL;
+	pLock.Unlock();
 
 	CSkinDialog::OnCancel();
 }
 
 void CFolderScanDlg::Update(LPCTSTR pszName, DWORD nVolume)
 {
-	CSingleLock oLock( &Library.m_pSection );
-	if ( m_pDialog != NULL && oLock.Lock( 10 ) )
-		m_pDialog->InstanceUpdate( pszName, nVolume );
+	CSingleLock oLock(&m_pProgressSection, TRUE);
+	if (m_pDialog != NULL)
+		m_pDialog->InstanceUpdate(pszName, nVolume);
+}
+
+void CFolderScanDlg::ReportError(DWORD nError, LPCTSTR pszPath, bool bLog)
+{
+	if (bLog)
+		theApp.Message(MSG_ERROR,
+		               L"Shared-folder scan failed on %s (%s, Windows error %lu). Existing entries were kept.", pszPath,
+		               (LPCTSTR)GetErrorString(nError), nError);
+
+	CSingleLock oLock(&m_pProgressSection, TRUE);
+	// The dialog reports the first failure of the scan it requested; failures
+	// from passes that started earlier only reach the log.
+	if (m_pDialog != NULL && m_pDialog->m_nError == ERROR_SUCCESS && m_pDialog->m_nGeneration != 0 &&
+	    Library.GetScanPhase(m_pDialog->m_nGeneration) != EnvyLibraryScan::Phase::Pending)
+	{
+		m_pDialog->m_nError = nError;
+		m_pDialog->m_sErrorPath = pszPath;
+	}
 }
 
 void CFolderScanDlg::InstanceUpdate(LPCTSTR pszName, DWORD nVolume)
 {
-	const DWORD tNow = GetTickCount();
-
 	m_nFiles++;
 	m_nVolume += nVolume;
-
-	if ( m_bActive && tNow > m_tLastUpdate + Settings.Interface.RefreshRateUI )
-	{
-		m_tLastUpdate = tNow;
-
-		m_wndFile.SetWindowText( pszName );
-
-		CString strItem;
-		strItem.Format( L"%lu", m_nFiles );
-		m_wndFiles.SetWindowText( strItem );
-
-		strItem = Settings.SmartVolume( m_nVolume, KiloBytes );
-		m_wndVolume.SetWindowText( strItem );
-
-		RedrawWindow();
-	}
+	m_sCurrentFile = pszName;
 }

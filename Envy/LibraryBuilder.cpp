@@ -107,9 +107,9 @@ CLibraryBuilder::CLibraryBuilder()
 
 bool CLibraryBuilder::Add(const CLibraryFile* pFile)
 {
-	if ( ! pFile->IsReadable() )	// || m_bBusy
-		return false;
-
+	// Called for every unhashed file while a scan holds the library lock, so it
+	// must stay cheap: no file is opened here (OnRun() handles files that turn
+	// out unreadable) and duplicates are found through m_pQueued, not a list walk.
 	const DWORD nIndex = pFile->m_nIndex;
 	const CString strPath = pFile->GetPath();
 
@@ -117,12 +117,14 @@ bool CLibraryBuilder::Add(const CLibraryFile* pFile)
 		CQuickLock pLock( m_pSection );
 
 		// Check queue
-		if ( std::find( m_pFiles.begin(), m_pFiles.end(), nIndex ) == m_pFiles.end() )
+		bool bQueued;
+		if (!m_pQueued.Lookup(nIndex, bQueued))
 		{
 			// Check current file
 			if ( m_sPath.CompareNoCase( strPath ) != 0 )
 			{
 				m_pFiles.push_back( nIndex );
+				m_pQueued.SetAt(nIndex, true);
 
 				BeginThread( "LibraryBuilder", m_bPriority ?
 					THREAD_PRIORITY_BELOW_NORMAL : THREAD_PRIORITY_IDLE );
@@ -140,6 +142,9 @@ void CLibraryBuilder::Remove(DWORD nIndex)
 	if ( ! nIndex ) return;
 
 	CQuickLock oLock( m_pSection );
+
+	if (!m_pQueued.RemoveKey(nIndex))
+		return;
 
 	CFileInfoList::iterator i = std::find( m_pFiles.begin(), m_pFiles.end(), nIndex );
 	if ( i != m_pFiles.end() )

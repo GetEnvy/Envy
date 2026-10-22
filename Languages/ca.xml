@@ -2948,7 +2948,6 @@
 	<string id="20447" text="Vols treure l'atribut &quot;potencialment insegur&quot; d'aquest arxiu?"/>
 	<string id="20448" text="Públic"/>	<!--Shared-->
 	<string id="20449" text="Privat"/>	<!--Unshared-->
-	<string id="20450" text="Una subcarpeta de la carpeta seleccionada &quot;%s&quot; ja és actualment part de la col·lecció.nAfegir aquesta carpeta causarà una reverificació dels arxius.\n\nDe segur que dessitja continuar?"/>
 	<string id="20451" text="No hi ha cap arxiu reproduïnt-se. Fes doble clic a un arxiu de media en la teva biblioteca per a reproduir-lo."/>
 	<string id="20452" text="Tots els arxius de Media|*.asx;*.wax;*.m3u;*.wvx;*.wmx;*.asf;*.wav;*.snd;*.au;*.aif;*.aifc;*.aiff;*.wma;*.rm;*.mp3;*.ogg;*.ogm;*.cda;*.mid;*.rmi;*.midi;*.avi;*.asf;*.mpeg;*.mpg;*.m1v;*.mp2;*.mpa;*.mpe;*.wmv|Playlists|*.asx;*.wax;*.m3u;*.wvx;*.wmx|Audio Files|*.asf;*.wav;*.snd;*.au;*.aif;*.aifc;*.aiff;*.wma;*.rm;*.mp3;*.ogg;*.ogm|Video Files|*.avi;*.asf;*.mpeg;*.mpg;*.m1v;*.mp2;*.mpa;*.mpe;*.wmv|CD Audio Tracks|*.cda|MIDI Files|*.mid;*.rmi;*.midi|All Files|*.*||"/>
 	<string id="20453" text="l'arxiu &quot;%s&quot;, no es pogué carregar."/>

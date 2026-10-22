@@ -18,6 +18,7 @@
 
 #include "StdAfx.h"
 #include "Strings.h"
+#include "LibraryFileSystem.h"
 #include "PacketLengthValidate.h"
 
 #ifndef XPSUPPORT	// inet_ntoa deprecated, use InetNtop Vista+
@@ -1502,10 +1503,9 @@ CString HostToString(const SOCKADDR_IN* pHost)
 }
 #endif	// _WINSOCKAPI_
 
-LPCTSTR SafePath(const CString& sPath)
+CString SafePath(const CString& sPath)
 {
-	return ( sPath.GetLength() < MAX_PATH - 4 || sPath[2] == L'?' ) ?
-		(LPCTSTR)sPath : CString( L"\\\\?\\" ) + sPath;
+	return CString(EnvyFileSystem::ApiPath((LPCTSTR)sPath).c_str());
 }
 
 BOOL MakeSafePath(CString& sPath)
@@ -1514,7 +1514,6 @@ BOOL MakeSafePath(CString& sPath)
 		return FALSE;
 
 //	ASSERT( StartsWith( sPath, _P( L"\\\\?\\" ) ) );
-	if ( sPath[2] != L'?' )
-		sPath = CString( L"\\\\?\\" ) + sPath;
+	sPath = SafePath(sPath);
 	return TRUE;
 }

@@ -2966,7 +2966,6 @@
 	<string id="20447" text="Vill du radera det &quot;eventuellt osäkra&quot; attributet från denna fil?"/>
 	<string id="20448" text="Allmän"/>	<!--Shared-->
 	<string id="20449" text="Privat"/>	<!--Unshared-->
-	<string id="20450" text="En undermapp till mappen &quot;%s&quot; finns redan i ditt bibliotek.\nOm du lgger till den här mappen måste hashen beråknas om för vissa filer.\n\nVill du fortsätta?"/>
 	<string id="20451" text="Ingen fil spelas. Dubbelklicka på en mediafil i ditt bibliotek för att spela den."/>
 	<string id="20452" text="Alla mediafiler|*.asx;*.wax;*.m3u;*.wvx;*.wmx;*.asf;*.wav;*.snd;*.au;*.aif;*.aifc;*.aiff;*.wma;*.rm;*.mp3;*.ogg;*.ogm;*.cda;*.mid;*.rmi;*.midi;*.avi;*.asf;*.mpeg;*.mpg;*.m1v;*.mp2;*.mpa;*.mpe;*.wmv|Spellistor|*.asx;*.wax;*.m3u;*.wvx;*.wmx|Ljudfiler|*.asf;*.wav;*.snd;*.au;*.aif;*.aifc;*.aiff;*.wma;*.rm;*.mp3;*.ogg;*.ogm|Videofiler|*.avi;*.asf;*.mpeg;*.mpg;*.m1v;*.mp2;*.mpa;*.mpe;*.wmv|Ljudspår på CD|*.cda|MIDI-filer|*.mid;*.rmi;*.midi|Alla filer|*.*||"/>
 	<string id="20453" text="Kan inte ladda mediafilen &quot;%s&quot;"/>

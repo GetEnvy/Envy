@@ -625,6 +625,11 @@ void CMainWnd::OnClose()
 	theApp.m_bClosing = true;
 	theApp.m_pSafeWnd = NULL;
 
+	// Ask the library scanner and hasher to stop first: they may hold the library
+	// lock for a while, and the steps below can need it.
+	LibraryBuilder.StopThread();
+	Library.StopThread();
+
 	DISABLE_DROP()
 
 	DeleteTray();
@@ -632,9 +637,6 @@ void CMainWnd::OnClose()
 	SaveState();
 	theApp.HideApplication();
 	RemoveSkin();
-
-	LibraryBuilder.StopThread();
-	Library.StopThread();
 
 	m_pWindows.SaveSearchWindows();
 	m_pWindows.SaveBrowseHostWindows();

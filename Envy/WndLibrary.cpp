@@ -201,9 +201,12 @@ BOOL CLibraryWnd::OnCollection(LPCTSTR pszPath)
 	// Create the collection folder (in case it doesn't exist)
 	CreateDirectory( Settings.Downloads.CollectionPath );
 	// Add the collection folder to the library (in case it isn't there)
-	pLibFolder = LibraryFolders.AddFolder( Settings.Downloads.CollectionPath );
+	{
+		CQuickLock oLock(Library.m_pSection);
+		pLibFolder = LibraryFolders.AddFolder(Settings.Downloads.CollectionPath);
+		pLibFolder = LibraryFolders.GetFolder(Settings.Downloads.CollectionPath);
+	}
 	// Force a scan of it (in case watch library folders is disabled)
-	pLibFolder = LibraryFolders.GetFolder( Settings.Downloads.CollectionPath );
 	if ( pLibFolder != NULL ) pLibFolder->Scan();
 
 	CSingleLock oLock( &Library.m_pSection, TRUE );

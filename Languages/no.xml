@@ -2739,7 +2739,6 @@
 	<string id="20447" text="Vil du fjerne den &quot;potensielt usikkre&quot; egenskapen til denne filen?"/>
 	<string id="20448" text="Offentlig"/>	<!--Shared-->
 	<string id="20449" text="Privat"/>	<!--Unshared-->
-	<string id="20450" text="Mappen for fullstendige filer og mappen for ufullstendige filer bør ikke være den samme"/>
 	<string id="20451" text="Det er ingen filer som spilles av. Dobbelt-klikk på en av dine filer for å spille av."/>
 	<string id="20452" text="Alle media filer|*.asx;*.wax;*.m3u;*.wvx;*.wmx;*.asf;*.wav;*.snd;*.au;*.aif;*.aifc;*.aiff;*.wma;*.rm;*.mp3;*.ogg;*.ogm;*.cda;*.mid;*.rmi;*.midi;*.avi;*.asf;*.mpeg;*.mpg;*.m1v;*.mp2;*.mpa;*.mpe;*.wmv|Playlists|*.asx;*.wax;*.m3u;*.wvx;*.wmx|Audio Files|*.asf;*.wav;*.snd;*.au;*.aif;*.aifc;*.aiff;*.wma;*.rm;*.mp3;*.ogg;*.ogm|Video Filer|*.avi;*.asf;*.mpeg;*.mpg;*.m1v;*.mp2;*.mpa;*.mpe;*.wmv|CD lyd Tracks|*.cda|MIDI filer|*.mid;*.rmi;*.midi|Alle filer|*.*||"/>
 	<string id="20453" text="Klarte ikke å åpne media fil &quot;%s&quot;"/>

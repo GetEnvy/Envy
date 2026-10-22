@@ -2638,7 +2638,6 @@
 	<!--string id="20447" text="Would you like to remove the &quot;potentially unsafe&quot; attribute from this file?"-->
 	<string id="20448" text="Javnost"/>	<!--Shared-->
 	<string id="20449" text="Privatna"/>	<!--Unshared-->
-	<string id="20450" text="Podmapa u odabranoj mapi &quot;%s&quot; je već dio vaše kolekcije.nDodavanje ove mape če izazvati re-hashing nekih datoteka.nnŽelite li svejedno nastaviti?"/>
 	<!--string id="20451" text="There is no file playing. Double-click a media file in your library to play it."-->
 	<string id="20452" text="All Media Files|*.asx;*.wax;*.m3u;*.wvx;*.wmx;*.asf;*.wav;*.snd;*.au;*.aif;*.aifc;*.aiff;*.wma;*.rm;*.mp3;*.ogg;*.ogm;*.cda;*.mid;*.rmi;*.midi;*.avi;*.asf;*.mpeg;*.mpg;*.m1v;*.mp2;*.mpa;*.mpe;*.wmv|Playlists|*.asx;*.wax;*.m3u;*.wvx;*.wmx|Audio Files|*.asf;*.wav;*.snd;*.au;*.aif;*.aifc;*.aiff;*.wma;*.rm;*.mp3;*.ogg;*.ogm|Video Files|*.avi;*.asf;*.mpeg;*.mpg;*.m1v;*.mp2;*.mpa;*.mpe;*.wmv|CD Audio Tracks|*.cda|MIDI Files|*.mid;*.rmi;*.midi|All Files|*.*||"/>
 	<string id="20453" text="Ne mogu učitati datoteku &quot;%s&quot;"/>

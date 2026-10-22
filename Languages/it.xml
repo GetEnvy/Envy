@@ -3048,7 +3048,6 @@
 	<string id="20447" text="Desideri rimuovere l'attributo &quot;potenzialmente non sicuro&quot; da questo file?"/>
 	<string id="20448" text="Pubblico"/>	<!--Shared-->
 	<string id="20449" text="Privato"/>	<!--Unshared-->
-	<string id="20450" text="Una sottocartella della cartella selezionata &quot;%s&quot; è già parte della tua libreria.nAggiungere questa cartella causerà il re-hashing di alcuni file.\n\nVuoi continuare?"/>
 	<string id="20451" text="Nessun file in riproduzione. Fai doppio click su un file multimediale della tua libreria per riprodurlo."/>
 	<string id="20452" text="Tutti i file multimediali|*.asx;*.wax;*.m3u;*.wvx;*.wmx;*.asf;*.wav;*.snd;*.au;*.aif;*.aifc;*.aiff;*.wma;*.rm;*.mp3;*.ogg;*.ogm;*.cda;*.mid;*.rmi;*.midi;*.avi;*.asf;*.mpeg;*.mpg;*.m1v;*.mp2;*.mpa;*.mpe;*.wmv|Playlist|*.asx;*.wax;*.m3u;*.wvx;*.wmx|File audio|*.asf;*.wav;*.snd;*.au;*.aif;*.aifc;*.aiff;*.wma;*.rm;*.mp3;*.ogg;*.ogm|File video|*.avi;*.asf;*.mpeg;*.mpg;*.m1v;*.mp2;*.mpa;*.mpe;*.wmv|Tracce CD audio|*.cda|File MIDI|*.mid;*.rmi;*.midi|Tutti i file|*.*||"/>
 	<string id="20453" text="Impossibile caricare il file multimediale &quot;%s&quot;"/>

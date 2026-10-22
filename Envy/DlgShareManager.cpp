@@ -111,9 +111,8 @@ void CShareManagerDlg::OnItemChangedShareFolders(NMHDR* /*pNMHDR*/, LRESULT* pRe
 
 void CShareManagerDlg::OnShareAdd()
 {
-	LibraryFolders.AddSharedFolder( m_wndList );
-
-	m_wndList.SetItemState( m_wndList.GetItemCount() - 1, 2 << 12, LVIS_STATEIMAGEMASK );	// Checked box
+	if (LibraryFolders.AddSharedFolder(m_wndList))
+		m_wndList.SetItemState(m_wndList.GetItemCount() - 1, 2 << 12, LVIS_STATEIMAGEMASK); // Checked box
 }
 
 void CShareManagerDlg::OnShareRemove()
@@ -141,8 +140,16 @@ void CShareManagerDlg::OnDoubleClick(NMHDR* /*pNMHDR*/, LRESULT* pResult)
 
 void CShareManagerDlg::OnOK()
 {
+	CFolderScanDlg dlgScan;
 	{
 		CQuickLock oLock( Library.m_pSection );
+
+		// Add first: a new parent share adopts the nested shares it replaces, with
+		// their files and hashes, before the removal pass below would drop them.
+		for (int nItem = 0; nItem < m_wndList.GetItemCount(); nItem++)
+		{
+			LibraryFolders.AddFolder(m_wndList.GetItemText(nItem, 0), m_wndList.GetCheck(nItem));
+		}
 
 		for ( POSITION pos = LibraryFolders.GetFolderIterator(); pos; )
 		{
@@ -166,13 +173,20 @@ void CShareManagerDlg::OnOK()
 				LibraryFolders.RemoveFolder( pFolder );
 		}
 
+		// Then add the shares that were nested in a share removed above.
 		for ( int nItem = 0; nItem < m_wndList.GetItemCount(); nItem++ )
 		{
 			LibraryFolders.AddFolder( m_wndList.GetItemText( nItem, 0 ), m_wndList.GetCheck( nItem ) );
 		}
+
+		// Folders adopted below a new parent, or already nested, keep their own choice.
+		for (int nItem = 0; nItem < m_wndList.GetItemCount(); nItem++)
+		{
+			LibraryFolders.ApplyShare(m_wndList.GetItemText(nItem, 0), m_wndList.GetCheck(nItem));
+		}
 	}
 
-	CFolderScanDlg dlgScan;
+	Library.Update(true);
 	dlgScan.DoModal();
 
 	CDialog::OnOK();

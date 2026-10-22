@@ -20,6 +20,8 @@
 #include "Settings.h"
 #include "Envy.h"
 #include "LibraryFolders.h"
+#include "DlgFolderScan.h"
+#include "LibraryFileSystem.h"
 
 #include "AlbumFolder.h"
 #include "Application.h"
@@ -209,6 +211,8 @@ CLibraryFolder* CLibraryFolders::AddFolder(LPCTSTR pszPath)
 	CLibraryFolder* pFolder = new CLibraryFolder( NULL, strPath );
 	if ( ! pFolder ) return NULL;
 
+	AdoptNestedRoots(pFolder);
+
 	BOOL bAdded = FALSE;
 
 	for ( POSITION pos = GetFolderIterator(); pos; )
@@ -236,12 +240,68 @@ CLibraryFolder* CLibraryFolders::AddFolder(LPCTSTR pszPath)
 
 CLibraryFolder* CLibraryFolders::AddFolder(LPCTSTR pszPath, BOOL bShared)
 {
+	// Held across the share choice too, so the scan worker never sees a new root
+	// without it.
+	CQuickLock oLock(Library.m_pSection);
+
 	CLibraryFolder* pFolder = AddFolder( pszPath );
 
 	if ( pFolder )
 		pFolder->SetShared( bShared ? TRI_TRUE : TRI_FALSE );
 
 	return pFolder;
+}
+
+void CLibraryFolders::AdoptNestedRoots(CLibraryFolder* pFolder)
+{
+	ASSUME_LOCK(Library.m_pSection);
+
+	// Shorter paths first, so a root nested in another nested root lands below it.
+	CList<CLibraryFolder*> pNested;
+	for (POSITION pos = GetFolderIterator(); pos;)
+	{
+		CLibraryFolder* pRoot = GetNextFolder(pos);
+		if (EnvyFileSystem::RelatePaths((LPCTSTR)pFolder->m_sPath, (LPCTSTR)pRoot->m_sPath) !=
+		    EnvyFileSystem::PathRelation::Ancestor)
+			continue;
+
+		POSITION posInsert = pNested.GetHeadPosition();
+		while (posInsert && pNested.GetAt(posInsert)->m_sPath.GetLength() <= pRoot->m_sPath.GetLength())
+			pNested.GetNext(posInsert);
+		if (posInsert)
+			pNested.InsertBefore(posInsert, pRoot);
+		else
+			pNested.AddTail(pRoot);
+	}
+
+	for (POSITION pos = pNested.GetHeadPosition(); pos;)
+	{
+		CLibraryFolder* pRoot = pNested.GetNext(pos);
+
+		// The former root keeps its files and hashes, so the parent's first scan
+		// finds them unchanged instead of hashing them again. If it cannot be
+		// moved it stays a root of its own: nothing is deleted.
+		if (!pFolder->Adopt(pRoot))
+			continue;
+
+		if (POSITION posRoot = m_pFolders.Find(pRoot))
+			m_pFolders.RemoveAt(posRoot);
+		pRoot->Maintain(FALSE); // No longer a root: drop its desktop.ini customisation
+	}
+}
+
+void CLibraryFolders::ApplyShare(const CString& strPath, BOOL bShared)
+{
+	ASSUME_LOCK(Library.m_pSection);
+
+	CLibraryFolder* pFolder = GetFolder(strPath);
+	if (pFolder == NULL)
+		return;
+
+	if (bShared && !pFolder->IsShared())
+		pFolder->SetShared(TRI_TRUE);
+	else if (!bShared && (pFolder->IsShared() || pFolder->IsOffline()))
+		pFolder->SetShared(TRI_FALSE); // IsShared() is false offline, but the choice must survive reconnection
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -271,59 +331,40 @@ bool CLibraryFolders::AddSharedFolder(CListCtrl& oList)
 		return false;
 	}
 
-	// Check if path is already shared
-	bool bForceAdd = false;
-	for ( int nItem = 0; nItem < oList.GetItemCount(); ++nItem )
+	// Check the new path against the listed shares before changing the list, so
+	// declining (or an overlap with a parent share) leaves it untouched.
+	CArray<int> pNested;
+	for (int nItem = 0; nItem < oList.GetItemCount(); ++nItem)
 	{
-		bool bSubFolder = false;
-		const CString strOld = oList.GetItemText( nItem, 0 );
-		const int nOldLength = strOld.GetLength();
-
-		if ( nLength == nOldLength && strPath.CompareNoCase( strOld ) == 0 )
+		const CString strOld = oList.GetItemText(nItem, 0);
+		switch (EnvyFileSystem::RelatePaths((LPCTSTR)strPath, (LPCTSTR)strOld))
 		{
-			// Matches exactly
-		}
-		else if ( nLength > nOldLength )
-		{
-			if ( strPath.GetAt( nOldLength ) != L'\\' ||
-				 strPath.Left( nOldLength ).CompareNoCase( strOld ) != 0 )
-				continue;
-		}
-		else if ( nLength < nOldLength )
-		{
-			bSubFolder = true;
-			if ( strOld.GetAt( nLength ) != L'\\' ||
-				 strOld.Left( nLength ).CompareNoCase( strPath ) != 0 )
-				continue;
-		}
-		else
-		{
-			continue;
-		}
-
-		if ( bSubFolder )
+		case EnvyFileSystem::PathRelation::Same:
+		case EnvyFileSystem::PathRelation::Descendant:
 		{
 			CString strMessage;
-			strMessage.Format( LoadString( IDS_LIBRARY_SUBFOLDER_IN_LIBRARY ), (LPCTSTR)strPath );
-
-			if ( ! bForceAdd || MsgBox( strMessage, MB_ICONQUESTION|MB_YESNO ) != IDYES )
-				return false;
-
-			// Don't bother asking again- remove all sub-folders
-			bForceAdd = true;
-
-			// Remove the sub-folder
-			oList.DeleteItem( nItem );
-			--nItem;
-		}
-		else
-		{
-			CString strMessage;
-			strMessage.Format( LoadString( IDS_WIZARD_SHARE_ALREADY ), (LPCTSTR)strOld );
-
-			MsgBox( strMessage, MB_ICONINFORMATION );
+			strMessage.Format(LoadString(IDS_WIZARD_SHARE_ALREADY), (LPCTSTR)strOld);
+			MsgBox(strMessage, MB_ICONINFORMATION);
 			return false;
 		}
+		case EnvyFileSystem::PathRelation::Ancestor:
+			pNested.Add(nItem);
+			break;
+		default:
+			break;
+		}
+	}
+
+	if (pNested.GetCount())
+	{
+		CString strMessage;
+		strMessage.Format(LoadString(IDS_LIBRARY_SUBFOLDER_IN_LIBRARY), (LPCTSTR)strPath);
+		if (MsgBox(strMessage, MB_ICONQUESTION | MB_YESNO) != IDYES)
+			return false;
+
+		// The nested shares become part of the new one.
+		for (INT_PTR i = pNested.GetCount() - 1; i >= 0; --i)
+			oList.DeleteItem(pNested[i]);
 	}
 
 	// Add path to shared list
@@ -716,7 +757,7 @@ DWORD CLibraryFolders::GetGhostCount() const
 //////////////////////////////////////////////////////////////////////
 // CLibraryFolders thread scan
 
-BOOL CLibraryFolders::ThreadScan(const BOOL bForce)
+BOOL CLibraryFolders::SelectRootsToScan(const BOOL bForce, CList<CString>& pRoots)
 {
 	ASSUME_LOCK( Library.m_pSection );
 
@@ -731,15 +772,82 @@ BOOL CLibraryFolders::ThreadScan(const BOOL bForce)
 			if ( pFolder->SetOnline() ) bChanged = TRUE;
 
 			if ( pFolder->IsChanged() || bForce )
-			{
-				if ( pFolder->ThreadScan() ) bChanged = TRUE;
-			}
+				pRoots.AddTail(pFolder->m_sPath);
 		}
 		else
 		{
-			if ( pFolder->SetOffline() ) bChanged = TRUE;
+			const DWORD nError = GetLastError();
+			const BOOL bWentOffline = pFolder->SetOffline();
+			if (bWentOffline)
+				bChanged = TRUE;
+			// Every pass probes an offline folder; log only the transition.
+			CFolderScanDlg::ReportError(nError, pFolder->m_sPath, bWentOffline != FALSE);
 		}
 	}
+
+	return bChanged;
+}
+
+CLibraryFolder* CLibraryFolders::GetScanFolder(const CString& strRoot, const CString& strPath) const
+{
+	ASSUME_LOCK(Library.m_pSection);
+
+	for (POSITION pos = GetFolderIterator(); pos;)
+	{
+		CLibraryFolder* pRoot = GetNextFolder(pos);
+		if (pRoot->m_sPath.CompareNoCase(strRoot) != 0)
+			continue;
+		if (strPath.GetLength() == strRoot.GetLength())
+			return pRoot;
+		return pRoot->GetFolderByName(strPath.Mid(strRoot.GetLength() + 1));
+	}
+	return NULL;
+}
+
+BOOL CLibraryFolders::ThreadScanRoot(const CString& strRoot)
+{
+	// Folders are listed without the library lock, which is then held only to
+	// apply one listing, so the UI and the hash builder are never blocked for
+	// a whole tree on a slow disk or network share. Folder objects are looked
+	// up again by path under the lock because they may be removed meanwhile.
+	BOOL bChanged = FALSE;
+	CList<CString> pPending;
+	pPending.AddTail(strRoot);
+
+	while (!pPending.IsEmpty() && Library.IsThreadEnabled())
+	{
+		const CString strPath = pPending.RemoveHead();
+		if (strPath.CompareNoCase(Settings.Downloads.IncompletePath) == 0)
+			continue;
+
+		std::vector<EnvyFileSystem::DirectoryEntry> pEntries;
+		const DWORD nError = EnvyFileSystem::ListDirectory((LPCTSTR)SafePath(strPath + L"\\*.*"), pEntries,
+		                                                   []()
+		                                                   { return !Library.IsThreadEnabled(); });
+
+		CQuickLock oLock(Library.m_pSection);
+		if (CLibraryFolder* pFolder = GetScanFolder(strRoot, strPath))
+		{
+			const DWORD nOldFiles = pFolder->m_nFiles;
+			const QWORD nOldVolume = pFolder->m_nVolume;
+
+			if (pFolder->ApplyListing(pEntries, nError, pPending))
+			{
+				bChanged = TRUE;
+				Library.Update();
+			}
+
+			// Totals follow each applied listing, also for partial or cancelled ones.
+			pFolder->UpdateTotals(nOldFiles, nOldVolume);
+		}
+
+		// A long first scan keeps its progress if the application stops early.
+		Library.SaveIfDue();
+	}
+
+	CQuickLock oLock(Library.m_pSection);
+	if (CLibraryFolder* pRoot = GetScanFolder(strRoot, strRoot))
+		pRoot->RecalculateTotals();
 
 	return bChanged;
 }

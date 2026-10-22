@@ -2974,7 +2974,6 @@
 	<string id="20447" text="Wil jy die &quot;moontlik skadelik&quot; eienskap van hierdie lêer verwyder?"/>
 	<string id="20448" text="Publiek"/>	<!--Shared-->
 	<string id="20449" text="Privaat"/>	<!--Unshared-->
-	<string id="20450" text="'n Subgids van die geselekteerde gids &quot;%s&quot; is alreeds deel van jou biblioteek.\nDie byvoeging van hierdie gids sal die herprosessering van sommige lêers veroorsaak.\n\nIs jy seker jy wil voortgaan ?"/>
 	<string id="20451" text="Daar is geen lêers wat speel nie. Dubbelkliek 'n medialêer in jou biblioteek om dit te speel, of kliek op Open"/>
 	<string id="20452" text="Alle Media Lêers|*.asx;*.wax;*.m3u;*.wvx;*.wmx;*.asf;*.wav;*.snd;*.au;*.aif;*.aifc;*.aiff;*.wma;*.rm;*.mp3;*.ogg;*.ogm;*.cda;*.mid;*.rmi;*.midi;*.avi;*.asf;*.mpeg;*.mpg;*.m1v;*.mp2;*.mpa;*.mpe;*.wmv|Medialyste|*.asx;*.wax;*.m3u;*.wvx;*.wmx|Klanklêers|*.asf;*.wav;*.snd;*.au;*.aif;*.aifc;*.aiff;*.wma;*.rm;*.mp3;*.ogg;*.ogm|Video Lêers|*.avi;*.asf;*.mpeg;*.mpg;*.m1v;*.mp2;*.mpa;*.mpe;*.wmv|CD Klank Snitte|*.cda|MIDI Lêers|*.mid;*.rmi;*.midi|Alle Lêers|*.*||"/>
 	<string id="20453" text="Kon nie medialêer &quot;%s&quot; laai nie"/>

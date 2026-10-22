@@ -3042,7 +3042,6 @@
 	<string id="20447" text="Wil je de eigenschap &quot;mogelijk onveilig&quot; van dit bestand verwijderen?"/>
 	<string id="20448" text="Publiek"/> 	<!--Shared-->
 	<string id="20449" text="Particulier"/>	<!--Unshared-->
-	<string id="20450" text="De complete en incomplete mappen mogen niet dezelfde zijn"/>
 	<string id="20451" text="Er is geen bestand aan het afspelen. Dubbelklik op een mediabestand uit je bibliotheek om het af te spelen."/>
 	<string id="20452" text="Alle mediabestanden|*.asx;*.wax;*.m3u;*.wvx;*.wmx;*.asf;*.wav;*.snd;*.au;*.aif;*.aifc;*.aiff;*.wma;*.rm;*.mp3;*.ogg;*.ogm;*.cda;*.mid;*.rmi;*.midi;*.avi;*.asf;*.mpeg;*.mpg;*.m1v;*.mp2;*.mpa;*.mpe;*.wmv|Afspeellijsten|*.asx;*.wax;*.m3u;*.wvx;*.wmx|Audiobestanden|*.asf;*.wav;*.snd;*.au;*.aif;*.aifc;*.aiff;*.wma;*.rm;*.mp3;*.ogg;*.ogm|Videobestanden|*.avi;*.asf;*.mpeg;*.mpg;*.m1v;*.mp2;*.mpa;*.mpe;*.wmv|CD audiobestanden|*.cda|MIDI bestanden|*.mid;*.rmi;*.midi|Alle bestanden|*.*||"/>
 	<string id="20453" text="Niet mogelijk om mediabestand &quot;%s&quot; te laden"/>

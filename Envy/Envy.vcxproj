@@ -1407,10 +1407,12 @@ $(EnvyCrashPostBuildCmd)</Command>
     <ClInclude Include="LibraryBuilderInternals.h" />
     <ClInclude Include="LibraryBuilderPlugins.h" />
     <ClInclude Include="LibraryDictionary.h" />
+    <ClInclude Include="LibraryFileSystem.h" />
     <ClInclude Include="LibraryFolders.h" />
     <ClInclude Include="LibraryHistory.h" />
     <ClInclude Include="LibraryList.h" />
     <ClInclude Include="LibraryMaps.h" />
+    <ClInclude Include="LibraryScanState.h" />
     <ClInclude Include="LiveList.h" />
     <ClInclude Include="LiveListSizer.h" />
     <ClInclude Include="LocalSearch.h" />

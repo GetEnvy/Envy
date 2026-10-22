@@ -2929,7 +2929,6 @@
 	<string id="20447" text="Chcete odstranit &quot;potenciálně nebezpečnou&quot; vlastnist z tohoto souboru?"/>
 	<string id="20448" text="Veřejné"/>	<!--Shared-->
 	<string id="20449" text="Soukromý"/>	<!--Unshared-->
-	<string id="20450" text="Kompletní a neúplné složky by neměly být stejné"/>
 	<string id="20451" text="Nepřehrává se žádný soubor. Dvojitým kliknutím soubor ve vaší knihovně přehrajete."/>
 	<string id="20452" text="Všechny multimediální soubory|*.asx;*.wax;*.m3u;*.wvx;*.wmx;*.asf;*.wav;*.snd;*.au;*.aif;*.aifc;*.aiff;*.wma;*.rm;*.mp3;*.ogg;*.ogm;*.cda;*.mid;*.rmi;*.midi;*.avi;*.asf;*.mpeg;*.mpg;*.m1v;*.mp2;*.mpa;*.mpe;*.wmv|Playlisty|*.asx;*.wax;*.m3u;*.wvx;*.wmx|Audio soubory|*.asf;*.wav;*.snd;*.au;*.aif;*.aifc;*.aiff;*.wma;*.rm;*.mp3;*.ogg;*.ogm|Video soubory|*.avi;*.asf;*.mpeg;*.mpg;*.m1v;*.mp2;*.mpa;*.mpe;*.wmv|CD stopy|*.cda|MIDI soubory|*.mid;*.rmi;*.midi|Všechny soubory|*.*||"/>
 	<string id="20453" text="Nelze načíst multimediální soubor &quot;%s&quot;"/>

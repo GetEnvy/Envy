@@ -3053,7 +3053,6 @@
 	<string id="20447" text="Ar norėtumėte pašalinti „galimai nesaugus“ požymį nuo šio failo?"/>
 	<string id="20448" text="Viešos"/>	<!--Shared-->
 	<string id="20449" text="Privatus"/>	<!--Unshared-->
-	<string id="20450" text="Pasirinkto aplanko „%s“ poaplankis jau yra Jūsų kolekcijoje.\nPridėjus šį aplanką, kai kurių failų maišos bus perskaičiuotos.\n\n\nAr norite tęsti?"/>
 	<string id="20451" text="Joks failas negrojamas. Grojimui spragtelkite grotuvo failą savo kolekcijoje."/>
 	<string id="20452" text="Visi grotuvo failai|*.asx;*.wax;*.m3u;*.wvx;*.wmx;*.asf;*.wav;*.snd;*.au;*.aif;*.aifc;*.aiff;*.wma;*.rm;*.mp3;*.ogg;*.ogm;*.cda;*.mid;*.rmi;*.midi;*.avi;*.asf;*.mpeg;*.mpg;*.m1v;*.mp2;*.mpa;*.mpe;*.wmv|Grojaraščiai|*.asx;*.wax;*.m3u;*.wvx;*.wmx|Garso failai|*.asf;*.wav;*.snd;*.au;*.aif;*.aifc;*.aiff;*.wma;*.rm;*.mp3;*.ogg;*.ogm|Vaizdo failai|*.avi;*.asf;*.mpeg;*.mpg;*.m1v;*.mp2;*.mpa;*.mpe;*.wmv|CD garso takeliai|*.cda|MIDI failai|*.mid;*.rmi;*.midi|Visi failai|*.*||"/>
 	<string id="20453" text="Neįmanoma įkelti grotuvo failo „%s“"/>

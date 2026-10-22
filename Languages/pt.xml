@@ -3084,7 +3084,6 @@
 	<string id="20447" text="Você gostaria de remover o atributo de &quot;potencialmente inseguro&quot; deste arquivo?"/>
 	<string id="20448" text="Público"/>	<!--Shared-->
 	<string id="20449" text="Privado"/>	<!--Unshared-->
-	<string id="20450" text="Uma sub-pasta do diretório selecionado &quot;%s&quot; já é parte da sua biblioteca.\nAdicionar esta pasta causará o re-hashing de alguns arquivos.\n\nVocê quer continuar ?"/>
 	<string id="20451" text="Não há arquivo tocando. Clique duas vezes num arquivo de mídia na sua biblioteca para tocá-lo."/>
 	<string id="20452" text="Todos os Arquivos de Mídia|*.asx;*.wax;*.m3u;*.wvx;*.wmx;*.asf;*.wav;*.snd;*.au;*.aif;*.aifc;*.aiff;*.wma;*.rm;*.mp3;*.ogg;*.ogm;*.cda;*.mid;*.rmi;*.midi;*.avi;*.asf;*.mpeg;*.mpg;*.m1v;*.mp2;*.mpa;*.mpe;*.wmv|Playlists|*.asx;*.wax;*.m3u;*.wvx;*.wmx|Arquivos de Áudio|*.asf;*.wav;*.snd;*.au;*.aif;*.aifc;*.aiff;*.wma;*.rm;*.mp3;*.ogg;*.ogm|Arquivos de Vídeo|*.avi;*.asf;*.mpeg;*.mpg;*.m1v;*.mp2;*.mpa;*.mpe;*.wmv|Faixas de Áudio de CD|*.cda|Arquivos MIDI|*.mid;*.rmi;*.midi|Todos os Arquivos|*.*||"/>
 	<string id="20453" text="Incapaz de carregar o arquivo de mídia &quot;%s&quot;"/>

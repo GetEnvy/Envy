@@ -13,6 +13,8 @@
 // Test modules register their tests via these functions
 void register_unpacker_tests(TestSuite& suite);
 void register_hashlib_tests(TestSuite& suite);
+void register_library_filesystem_smoke_tests(TestSuite& suite);
+void register_library_scan_state_smoke_tests(TestSuite& suite);
 void register_protocol_parser_smoke_tests(TestSuite& suite);
 void register_secureident_policy_smoke_tests(TestSuite& suite);
 void register_ed2k_hello_capabilities_smoke_tests(TestSuite& suite);
@@ -104,6 +106,8 @@ int main(int argc, char** argv)
 	register_ed2k_lowid_callback_smoke_tests(suite);
 	register_albumfolder_mountcollection_smoke_tests(suite);
 	register_btinfo_piece_hash_smoke_tests(suite);
+	register_library_filesystem_smoke_tests(suite);
+	register_library_scan_state_smoke_tests(suite);
 
 	int failures = suite.run_all_tests();
 

@@ -2851,7 +2851,6 @@
 	<string id="20447" text="Kas tahad eemaldada &quot;ebaturvalisee&quot; osa, sellest failist?"/>
 	<string id="20448" text="Avalik"/>	<!--Shared-->
 	<string id="20449" text="Privaatne"/>	<!--Unshared-->
-	<string id="20450" text="Valitud kausta alamkaust &quot;%s&quot; on juba sinu raamatukogus.nSelle kausta lisamine võib mõnede failide ümberjagamist mõjutada.\n\nKas soovid jätkata ?"/>
 	<string id="20451" text="Ühtegi faili ei mängi hetkel. Topeltklikk failil, et alustada meediafaili mängimist."/>
 	<string id="20452" text="Kõik Meedia Failid|*.asx;*.wax;*.m3u;*.wvx;*.wmx;*.asf;*.wav;*.snd;*.au;*.aif;*.aifc;*.aiff;*.wma;*.rm;*.mp3;*.ogg;*.ogm;*.cda;*.mid;*.rmi;*.midi;*.avi;*.asf;*.mpeg;*.mpg;*.m1v;*.mp2;*.mpa;*.mpe;*.wmv|Playlistid|*.asx;*.wax;*.m3u;*.wvx;*.wmx|Audio Failid|*.asf;*.wav;*.snd;*.au;*.aif;*.aifc;*.aiff;*.wma;*.rm;*.mp3;*.ogg;*.ogm|Video Failid|*.avi;*.asf;*.mpeg;*.mpg;*.m1v;*.mp2;*.mpa;*.mpe;*.wmv|CD Audio Tracks|*.cda|MIDI Failid|*.mid;*.rmi;*.midi|Kõik Failid|*.*||"/>
 	<string id="20453" text="Ei saa avada meedia faili &quot;%s&quot;"/>

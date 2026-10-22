@@ -2888,7 +2888,6 @@
 	<string id="20447" text="このファイルから&quot;潜在的に危険のある&quot;属性を取り除きますか?"/>
 	<string id="20448" text="公共"/>	<!--Shared-->
 	<string id="20449" text="プライベート"/>	<!--Unshared-->
-	<string id="20450" text="選択したフォルダ &quot;%s&quot; のサブフォルダが既にライブラリ内に存在します。nこのフォルダを追加すればいくつかのファイルを再ハッシュする可能性があります。\n\nこのまま続けて宜しいですか?"/>
 	<string id="20451" text="再生中のファイルはありません。 ライブラリ内のメディアファイルをダブルクリックすれば再生できます"/>
 	<string id="20452" text="全てのメディアファイル|*.asx;*.wax;*.m3u;*.wvx;*.wmx;*.asf;*.wav;*.snd;*.au;*.aif;*.aifc;*.aiff;*.wma;*.rm;*.mp3;*.ogg;*.ogm;*.cda;*.mid;*.rmi;*.midi;*.avi;*.asf;*.mpeg;*.mpg;*.m1v;*.mp2;*.mpa;*.mpe;*.wmv|再生リスト|*.asx;*.wax;*.m3u;*.wvx;*.wmx|オーディオファイル|*.asf;*.wav;*.snd;*.au;*.aif;*.aifc;*.aiff;*.wma;*.rm;*.mp3;*.ogg;*.ogm|ビデオファイル|*.avi;*.asf;*.mpeg;*.mpg;*.m1v;*.mp2;*.mpa;*.mpe;*.wmv|CDオーディオトラック|*.cda|MIDIファイル|*.mid;*.rmi;*.midi|全てのファイル|*.*||"/>
 	<string id="20453" text="メディアファイル &quot;%s&quot; を読み込めませんでした"/>
